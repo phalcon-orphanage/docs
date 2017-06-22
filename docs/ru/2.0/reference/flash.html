@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Информационные сообщения &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Сохранение данных в сессии" href="session.html" />
+    <link rel="prev" title="Генерация ссылок (URLs)" href="url.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="session.html" title="Сохранение данных в сессии"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="url.html" title="Генерация ссылок (URLs)"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Информационные сообщения</a><ul>
+<li><a class="reference internal" href="#id2">Адаптеры</a></li>
+<li><a class="reference internal" href="#id3">Использование</a></li>
+<li><a class="reference internal" href="#id4">Вывод сообщений</a></li>
+<li><a class="reference internal" href="#direct-session">Понимание разницы между адаптерами Direct и Session</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="url.html" title="предыдущая глава">&lt; Генерация ссылок (URLs)</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="session.html" title="следующая глава">Сохранение данных в сессии &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/flash.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="id1">
+<h1>Информационные сообщения<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Информационные сообщения используются для уведомления пользователей о состоянии выполненных действий или просто
+показывают необходимую информацию.
+Такой тип сообщений может быть сгенерирован с помощью этого компонента.</p>
+<div class="section" id="id2">
+<h2>Адаптеры<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Этот компонент включает в себя несколько адаптеров, чтобы определить поведение сообщения:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Адаптер</th>
+<th class="head">Описание</th>
+<th class="head">API</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Direct</td>
+<td>Выводит сообщение напрямую пользователю</td>
+<td><a class="reference internal" href="../api/Phalcon_Flash_Direct.html"><em>Phalcon\Flash\Direct</em></a></td>
+</tr>
+<tr class="row-odd"><td>Session</td>
+<td>Временно сохраняет сообщения в сессию для вывода в следующем запросе</td>
+<td><a class="reference internal" href="../api/Phalcon_Flash_Session.html"><em>Phalcon\Flash\Session</em></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>Использование<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Обычно компонент всплывающих сообщений доступен из контейнера сервисов. Если вы используете <a class="reference internal" href="../api/Phalcon_DI_FactoryDefault.html"><em>Phalcon\DI\FactoryDefault</em></a>,
+то <a class="reference internal" href="../api/Phalcon_Flash_Direct.html"><em>Phalcon\Flash\Direct</em></a> будет автоматически зарегистрирован как &#8220;flash&#8221; сервис:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Устанавливаем сервис</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;flash&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">\Phalcon\Flash\Direct</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Таким образом, вы можете использовать его в контроллерах или в представлениях (view):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s2">&quot;The post was correctly saved!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Существует четыре типа встроенных сообщений:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">&quot;too bad! the form had errors&quot;</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s2">&quot;yes!, everything went very smoothly&quot;</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">notice</span><span class="p">(</span><span class="s2">&quot;this a very important information&quot;</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s2">&quot;best check yo self, you&#39;re not looking too good.&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Вы можете добавлять сообщения со своими типами:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">(</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span> <span class="s2">&quot;this is debug message, you don&#39;t say&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Вывод сообщений<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Сообщения, посланные в компонент, автоматически форматируются с html:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;errorMessage&quot;</span><span class="nt">&gt;</span>too bad! the form had errors<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;successMessage&quot;</span><span class="nt">&gt;</span>yes!, everything went very smoothly<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;noticeMessage&quot;</span><span class="nt">&gt;</span>this a very important information<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;warningMessage&quot;</span><span class="nt">&gt;</span>best check yo self, you&#39;re not looking too good.<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p>Как видно на примере выше - используются некоторые CSS классы, которые автоматически добавляются в тег &#8216;DIV&#8217;. Эти классы позволяют вам
+видоизменять вывод сообщений. CSS классы могут быть изменены, например, если вы используете Twitter Bootstrap, то можно указать следующие классы:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Регистрируем компонент сообщений с CSS классами</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;flash&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(){</span>
+    <span class="nv">$flash</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Flash\Direct</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;error&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;alert alert-error&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;success&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;alert alert-success&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;notice&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;alert alert-info&#39;</span><span class="p">,</span>
+    <span class="p">));</span>
+    <span class="k">return</span> <span class="nv">$flash</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>После этого сообщения будут выводиться таким образом:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-error&quot;</span><span class="nt">&gt;</span>too bad! the form had errors<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-success&quot;</span><span class="nt">&gt;</span>yes!, everything went very smoothly<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-info&quot;</span><span class="nt">&gt;</span>this a very important information<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="direct-session">
+<h2>Понимание разницы между адаптерами Direct и Session<a class="headerlink" href="#direct-session" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В зависимости от адаптера, используемого для отправки сообщений, вывод будет производиться сразу или временно сохраняться в сессии для дальнейшего вывода.
+В каких случаях надо их использовать? Это обычно зависит от типа перенаправления, которое вы делаете после отправки сообщения.
+Например, если вы делаете прямой вывод (или внутреннее перенаправление), то сохранять в сессии нет необходимости, но если вы делаете HTTP-перенаправление, то
+сообщения необходимо сохранить в сессии, чтобы их можно было позже вывести пользователю:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">ContactController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Сохраняем объект в БД</span>
+
+        <span class="c1">// Выводим прямое сообщение</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s2">&quot;Your information were stored correctly!&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Делаем внутреннее перенаправление на другое действие</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Или используя HTTP-перенаправление:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">ContactController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Сохраняем объект в БД</span>
+
+        <span class="c1">// Отправляем сообщение в сессию</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flashSession</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s2">&quot;Your information were stored correctly!&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Делаем полное HTTP-перенаправление</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">&quot;contact/index&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>В таком случае вам необходимо вручную вывести сообщение в соответствующем представлении:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- app/views/contact/index.phtml --&gt;</span>
+
+<span class="nt">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flashSession</span><span class="o">-&gt;</span><span class="na">output</span><span class="p">()</span> <span class="cp">?&gt;</span><span class="nt">&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p>Атрибут &#8216;flashSession&#8217; означает, каким способом изначально был задан компонент в контейнере сервисов.
+Вам необходимо запустить <a class="reference internal" href="session.html"><em>сессии</em></a>, чтобы успешно использовать такой тип сообщений.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="session.html" title="Сохранение данных в сессии"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="url.html" title="Генерация ссылок (URLs)"
+             >предыдущий</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

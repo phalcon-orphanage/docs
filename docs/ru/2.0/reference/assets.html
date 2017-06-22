@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Управление ресурсами (Assets Management) &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Шаблонизатор Volt" href="volt.html" />
+    <link rel="prev" title="Помощники представлений" href="tags.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="volt.html" title="Шаблонизатор Volt"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="tags.html" title="Помощники представлений"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Управление ресурсами (Assets Management)</a><ul>
+<li><a class="reference internal" href="#id1">Добавление ресурсов</a></li>
+<li><a class="reference internal" href="#id2">Локальные/удаленные ресурсы</a></li>
+<li><a class="reference internal" href="#id3">Коллекции</a></li>
+<li><a class="reference internal" href="#id4">Префиксы</a></li>
+<li><a class="reference internal" href="#id5">Минимизация/ Фильтрация</a><ul>
+<li><a class="reference internal" href="#id6">Встроенные фильтры</a></li>
+<li><a class="reference internal" href="#id7">Пользовательские фильтры</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">Пользовательский вывод</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="tags.html" title="предыдущая глава">&lt; Помощники представлений</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="volt.html" title="следующая глава">Шаблонизатор Volt &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/assets.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="assets-management">
+<h1>Управление ресурсами (Assets Management)<a class="headerlink" href="#assets-management" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Phalcon\Assets - это компонент позволяющий разработчику управлять статичными ресурсами в веб-приложении,
+такими как каскадные таблицы стилей или javascript&#8217;ы.</p>
+<p><a class="reference internal" href="../api/Phalcon_Assets_Manager.html"><em>Phalcon\Assets\Manager</em></a> доступен в контейнере сервисов,
+т.ч. вы можете добавлять ресурсы из любой части приложения, где он доступен.</p>
+<div class="section" id="id1">
+<h2>Добавление ресурсов<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Поддерживаются ресурсы двух типов: каскадные таблицы стилей и javascript&#8217;ы, но при необходимости,
+можете создать и другие. Внутренний механизм менеджера ресурсов хранит две коллекции, одну
+для javascript&#8217;ов, а другую для каскадных таблиц стилей.</p>
+<p>Добавить ресурсы в эти коллекции очень просто:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">IndexController</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Добавляем некоторые локальные таблицы стилей</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span>
+            <span class="o">-&gt;</span><span class="na">addCss</span><span class="p">(</span><span class="s1">&#39;css/style.css&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">addCss</span><span class="p">(</span><span class="s1">&#39;css/index.css&#39;</span><span class="p">);</span>
+
+        <span class="c1">// и javascript&#39;ы</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span>
+            <span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;js/jquery.js&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;js/bootstrap.min.js&#39;</span><span class="p">);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Далее, добавленные ресурсы могут быть отображены в представлениях:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Некоторый удивительный веб-сайт<span class="nt">&lt;/title&gt;</span>
+        <span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">outputCss</span><span class="p">()</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+
+        <span class="c">&lt;!-- ... --&gt;</span>
+
+        <span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">outputJs</span><span class="p">()</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Локальные/удаленные ресурсы<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Локальные ресурсы это те, которые предоставляются вами в том же приложении.
+Ссылки на локальные ресурсы генерируются с помощью сервиса &#8216;url&#8217;, чаще
+с применением <a class="reference internal" href="../api/Phalcon_Mvc_Url.html"><em>Phalcon\Mvc\Url</em></a>.</p>
+<p>Удаленные ресурсы, такие как общие библиотеки, на подобии jquery, bootstrap или пр. предоставляемые посредством CDN.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Добавляем некоторые локальные и удаленные ресурсы</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span>
+    <span class="o">-&gt;</span><span class="na">addCss</span><span class="p">(</span><span class="s1">&#39;//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">addCss</span><span class="p">(</span><span class="s1">&#39;css/style.css&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Коллекции<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В коллекциях группируются однотипные ресурсы. Менеджер ресурсов безоговорочно создает две: css и js.
+Для группирования специфичных ресурсов вы можете создавать дополнительные:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Javascript&#39;ы в заголовке</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span>
+    <span class="o">-&gt;</span><span class="na">collection</span><span class="p">(</span><span class="s1">&#39;header&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;js/jquery.js&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;js/bootstrap.min.js&#39;</span><span class="p">);</span>
+
+<span class="c1">// Javascript&#39;ы в &quot;подвале&quot;</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span>
+    <span class="o">-&gt;</span><span class="na">collection</span><span class="p">(</span><span class="s1">&#39;footer&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;js/jquery.js&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;js/bootstrap.min.js&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>затем в представлении:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Некоторый удивительный веб-сайт<span class="nt">&lt;/title&gt;</span>
+        <span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">outputJs</span><span class="p">(</span><span class="s1">&#39;header&#39;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+
+        <span class="c">&lt;!-- ... --&gt;</span>
+
+        <span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">outputJs</span><span class="p">(</span><span class="s1">&#39;footer&#39;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Префиксы<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>К коллекциям могут применяться URL префиксы, это позволит в любой момент легко изменить расположение ресурсов с одного сервера на другой:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$scripts</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">collection</span><span class="p">(</span><span class="s1">&#39;footer&#39;</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$config</span><span class="o">-&gt;</span><span class="na">enviroment</span> <span class="o">==</span> <span class="s1">&#39;development&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$scripts</span><span class="o">-&gt;</span><span class="na">setPrefix</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$scripts</span><span class="o">-&gt;</span><span class="na">setPrefix</span><span class="p">(</span><span class="s1">&#39;http:://cdn.example.com/&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$scripts</span><span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;js/jquery.js&#39;</span><span class="p">)</span>
+        <span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;js/bootstrap.min.js&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Также, доступен синтаксис цепочки (chainable):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$scripts</span> <span class="o">=</span> <span class="nv">$assets</span>
+    <span class="o">-&gt;</span><span class="na">collection</span><span class="p">(</span><span class="s1">&#39;header&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setPrefix</span><span class="p">(</span><span class="s1">&#39;http://cdn.example.com/&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setLocal</span><span class="p">(</span><span class="k">false</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;js/jquery.js&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;js/bootstrap.min.js&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Минимизация/ Фильтрация<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>PhalconAssets предоставляет встроенную возможность минимизации javascript и CSS.
+Разработчик может создать коллекцию ресурсов с указаниями для Assets Manager, к
+каким ресурсам должны быть применены фильтры, а к каким нет. В дополнении к
+вышесказанному, “Jsmin” Дугласа Крокфорда (Douglas Crockford) входит в состав ядра
+минимизации javascript для увеличения производительности. Для минимизации CSS
+используется “CSSMin” Райна Дэйя (Ryan Day).</p>
+<p>Следующий пример показывает, как минимизировать набор ресурсов:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$manager</span>
+
+    <span class="c1">// Этот javascript расположен внизу страницы</span>
+    <span class="o">-&gt;</span><span class="na">collection</span><span class="p">(</span><span class="s1">&#39;jsFooter&#39;</span><span class="p">)</span>
+
+    <span class="c1">//Название получаемого файла</span>
+    <span class="o">-&gt;</span><span class="na">setTargetPath</span><span class="p">(</span><span class="s1">&#39;final.js&#39;</span><span class="p">)</span>
+
+    <span class="c1">// С таким URI генерируется тэг html</span>
+    <span class="o">-&gt;</span><span class="na">setTargetUri</span><span class="p">(</span><span class="s1">&#39;production/final.js&#39;</span><span class="p">)</span>
+
+    <span class="c1">// Это удаленный ресурс, не нуждающийся в фильтрации</span>
+    <span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;code.jquery.com/jquery-1.10.0.min.js&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+
+    <span class="c1">// Это локальные ресурсы, к которым необходимо применить фильтры</span>
+    <span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;common-functions.js&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;page-functions.js&#39;</span><span class="p">)</span>
+
+    <span class="c1">// Объединяем все ресурсы в один файл</span>
+    <span class="o">-&gt;</span><span class="na">join</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+
+    <span class="c1">// Используем встроенный фильтр Jsmin</span>
+    <span class="o">-&gt;</span><span class="na">addFilter</span><span class="p">(</span><span class="k">new</span> <span class="nx">Phalcon\Assets\Filters\Jsmin</span><span class="p">())</span>
+
+    <span class="c1">// Используем пользовательский фильтр</span>
+    <span class="o">-&gt;</span><span class="na">addFilter</span><span class="p">(</span><span class="k">new</span> <span class="nx">MyApp\Assets\Filters\LicenseStamper</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>Менеджер начинает получать набор ресурсов от Assets Manager, который может содержать либо javascript,
+либо CSS, но не оба типа ресурсов. Некоторые ресурсы могут быть удаленными, то есть, полученными с
+помощью HTTP запроса для дальнейшей фильтрации. Преобразования внешних ресурсов рекомендуется для
+устранения накладных расходов на их получение.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Этот javascript расположен внизу</span>
+<span class="nv">$js</span> <span class="o">=</span> <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">collection</span><span class="p">(</span><span class="s1">&#39;jsFooter&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Как показано выше, метод addJs используется для добавления ресурсов в коллекцию, второй параметр
+указывает, является ли ресурс внешних или нет, и третий параметр указывает, должен ли ресурс быть
+отфильтрован или нет:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Это удаленный ресурс, не нуждающийся в фильтрации</span>
+<span class="nv">$js</span><span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;code.jquery.com/jquery-1.10.0.min.js&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+
+<span class="c1">// Это локальные ресурсы, к которым необходимо применить фильтры</span>
+<span class="nv">$js</span><span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;common-functions.js&#39;</span><span class="p">);</span>
+<span class="nv">$js</span><span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;page-functions.js&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Фильтры регистрируются в коллекции, допускается регистрировать несколько фильтров. Ресурсы в наборе
+фильтруются в том же порядке, в каком были зарегистрированы фильтры:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Используем встроенный фильтр Jsmin</span>
+<span class="nv">$js</span><span class="o">-&gt;</span><span class="na">addFilter</span><span class="p">(</span><span class="k">new</span> <span class="nx">Phalcon\Assets\Filters\Jsmin</span><span class="p">());</span>
+
+<span class="c1">// Используем пользовательский фильтр</span>
+<span class="nv">$js</span><span class="o">-&gt;</span><span class="na">addFilter</span><span class="p">(</span><span class="k">new</span> <span class="nx">MyApp\Assets\Filters\LicenseStamper</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>Заметим, что встроенные и пользовательские фильтры могут сразу применяться к набору ресурсов.
+Последний шаг, определяет, стоит ли объединять все ресурсы набора в один файл, или использовать
+каждый по отдельности. Если все ресурсы набора должны объединяться в один файл, вы можете использовать
+метод &#8216;join&#8217;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Объединяем все ресурсы в один файл</span>
+<span class="nv">$js</span><span class="o">-&gt;</span><span class="na">join</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+
+<span class="c1">// Название получаемого файла</span>
+<span class="nv">$js</span><span class="o">-&gt;</span><span class="na">setTargetPath</span><span class="p">(</span><span class="s1">&#39;public/production/final.js&#39;</span><span class="p">);</span>
+
+<span class="c1">// С таким URI генерируется тэг html</span>
+<span class="nv">$js</span><span class="o">-&gt;</span><span class="na">setTargetUri</span><span class="p">(</span><span class="s1">&#39;production/final.js&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Если ресурсы должны быть объединены, то вы должны также определить какой файл будет использоваться для
+хранения ресурсов и по какому URI он будет доступен. Эти параметры настраиваются с помощью методов
+setTargetPath() и setTargetUri().</p>
+<div class="section" id="id6">
+<h3>Встроенные фильтры<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Phalcon имеет два встроенных фильтра минимизации javascript и CSS, их реализация на C обеспечивает
+минимальные накладные расходы для решения подобной задачи:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Фильтр</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Phalcon\Assets\Filters\Jsmin</td>
+<td>Минимизирует JavaScript удаляя не нужны символы, которые игнорируются интерпретатором/компилятором JavaScript</td>
+</tr>
+<tr class="row-odd"><td>Phalcon\Assets\Filters\Cssmin</td>
+<td>Минимизирует CSS удаляя ненужные символы, которые игнорируются браузерами</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id7">
+<h3>Пользовательские фильтры<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Кроме использования встроенных фильтров, разработчик может создавать свои собственные фильтры. Вы можете
+воспользоваться существующими более продвинутыми инструментами, такими как <a class="reference external" href="http://yui.github.io/yuicompressor/">YUI</a>, <a class="reference external" href="http://sass-lang.com/">Sass</a>, <a class="reference external" href="https://developers.google.com/closure/compiler/?hl=fr">Closure</a> и другие.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Assets\FilterInterface</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Filters CSS content using YUI</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param string $contents</span>
+<span class="sd"> * @return string</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">CssYUICompressor</span> <span class="k">implements</span> <span class="nx">FilterInterface</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_options</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * CssYUICompressor constructor</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param array $options</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$options</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_options</span> <span class="o">=</span> <span class="nv">$options</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Do the filtering</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $contents</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">filter</span><span class="p">(</span><span class="nv">$contents</span><span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="c1">//Write the string contents into a temporal file</span>
+        <span class="nb">file_put_contents</span><span class="p">(</span><span class="s1">&#39;temp/my-temp-1.css&#39;</span><span class="p">,</span> <span class="nv">$contents</span><span class="p">);</span>
+
+        <span class="nb">system</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_options</span><span class="p">[</span><span class="s1">&#39;java-bin&#39;</span><span class="p">]</span> <span class="o">.</span>
+            <span class="s1">&#39; -jar &#39;</span> <span class="o">.</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_options</span><span class="p">[</span><span class="s1">&#39;yui&#39;</span><span class="p">]</span> <span class="o">.</span>
+            <span class="s1">&#39; --type css &#39;</span><span class="o">.</span>
+            <span class="s1">&#39;temp/my-temp-file-1.css &#39;</span> <span class="o">.</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_options</span><span class="p">[</span><span class="s1">&#39;extra-options&#39;</span><span class="p">]</span> <span class="o">.</span>
+            <span class="s1">&#39; -o temp/my-temp-file-2.css&#39;</span>
+        <span class="p">);</span>
+
+        <span class="c1">//Return the contents of file</span>
+        <span class="k">return</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s2">&quot;temp/my-temp-file-2.css&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Применение:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Get some CSS collection</span>
+<span class="nv">$css</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">);</span>
+
+<span class="c1">//Add/Enable the YUI compressor filter in the collection</span>
+<span class="nv">$css</span><span class="o">-&gt;</span><span class="na">addFilter</span><span class="p">(</span><span class="k">new</span> <span class="nx">CssYUICompressor</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+     <span class="s1">&#39;java-bin&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/usr/local/bin/java&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;yui&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/some/path/yuicompressor-x.y.z.jar&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;extra-options&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;--charset utf8&#39;</span>
+<span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Пользовательский вывод<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Методы outputJs и outputCss создают требуемую HTML-разметку в соответствии с каждым типом ресурсов, но
+вы можете переопределить эти методы и создать разметку вручную:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">collection</span><span class="p">(</span><span class="s1">&#39;js&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$resource</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nx">\Phalcon\Tag</span><span class="o">::</span><span class="na">javascriptInclude</span><span class="p">(</span><span class="nv">$resource</span><span class="o">-&gt;</span><span class="na">getPath</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="volt.html" title="Шаблонизатор Volt"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="tags.html" title="Помощники представлений"
+             >предыдущий</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

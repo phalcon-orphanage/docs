@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Nasza motywacja &mdash; Phalcon 1.3.0 documentation</title>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Porównanie Frameworków" href="benchmark.html" />
+    <link rel="prev" title="Witaj!" href="../index.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Indeks ogólny"
+             accesskey="I">indeks</a></li>
+        <li class="right" >
+          <a href="benchmark.html" title="Porównanie Frameworków"
+             accesskey="N">dalej</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Witaj!"
+             accesskey="P">wstecz</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+                <hr>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Spis treści</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Nasza motywacja</a><ul>
+<li><a class="reference internal" href="#pytanie">Pytanie</a></li>
+<li><a class="reference internal" href="#dlaczego">Dlaczego?</a></li>
+<li><a class="reference internal" href="#jak-php-funkcjonuje-wewnatrz">Jak PHP funkcjonuje wewnątrz?</a></li>
+<li><a class="reference internal" href="#jak-dzialaja-tradycyjne-frameworki-php">Jak działają tradycyjne frameworki PHP?</a></li>
+<li><a class="reference internal" href="#jak-dziala-c-rozszerzenie-php">Jak działa C-rozszerzenie PHP?</a></li>
+<li><a class="reference internal" href="#jak-dziala-phalcon">Jak działa Phalcon?</a></li>
+<li><a class="reference internal" href="#dlaczego-potrzebuje-phalcona">Dlaczego potrzebuję Phalcona?</a></li>
+<li><a class="reference internal" href="#wnioski">Wnioski</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Poprzedni temat</h4>
+            <p class="topless"><a href="../index.html" title="poprzedni rozdział">&lt; Witaj!</a></p>
+            <h4>Następny temat</h4>
+            <p class="topless"><a href="benchmark.html" title="następny rozdział">Porównanie Frameworków &gt;</a></p>
+            <h3>Ta strona</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/motivation.txt" rel="nofollow">Pokaż źródło</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="nasza-motywacja">
+<h1>Nasza motywacja<a class="headerlink" href="#nasza-motywacja" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<p>Istnieje wiele frameworków PHP w dzisiejszych czasach, ale żaden z nich nie jest jak Phalcon (naprawdę, zaufaj nam i temu jednemu :) ).</p>
+<p>Prawie wszyscy programiści wolą używać frameworka. Jest to przede wszystkim dlatego, że oferuje wiele funkcji, które są już przetestowane
+i gotowe do użycia, a więc utrzymują kod DRY (nie powtarzający się). Jednak sam framework wymaga wielu inkluzji plików i setek linii kodu, które
+mają być interpretowane i wykonywane na każde żądanie z aktualnej aplikacji. Frameworki zorientowane obiektowo dodają również wiele nadmiarowych
+realizacji i zwalniają złożone aplikacje. Wszystkie te operacje spowalniają aplikację i wpływają na doświadczenia użytkownika końcowego.</p>
+<div class="section" id="pytanie">
+<h2>Pytanie<a class="headerlink" href="#pytanie" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Dlaczego nie możemy mieć solidnego frameworka ze wszystkimi jego zaletami, ale bez wad lub z ich bardzo niewielką ilością?</p>
+<p>To dlatego narodził się Phalcon!</p>
+<p>W ciągu ostatnich kilku miesięcy, szeroko badaliśmy zachowanie PHP, szukaliśmy obszarów dla znaczących optymalizacji (małych i dużych).
+Poprzez tego zrozumienie, udało nam się usunąć niepotrzebne walidacje, ubito kod, przeprowadzono optymalizacje i wygenerowano rozwiązania
+na niskim poziomie w celu osiągnięcia maksymalnej wydajności z Phalconem.</p>
+</div>
+<div class="section" id="dlaczego">
+<h2>Dlaczego?<a class="headerlink" href="#dlaczego" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<ul class="simple">
+<li>Stosowanie frameworków stało się obowiązkowe w profesjonalnym rozwoju z PHP</li>
+<li>Frameworki oferują filozofię zorganizowaną na łatwe utrzymanie projektów, pisanie mniej kodu i czynią pracę bardziej zabawną</li>
+<li>Kochamy PHP i myślimy, że może być używany do tworzenia większych i bardziej ambitnych projektów</li>
+</ul>
+</div>
+<div class="section" id="jak-php-funkcjonuje-wewnatrz">
+<h2>Jak PHP funkcjonuje wewnątrz?<a class="headerlink" href="#jak-php-funkcjonuje-wewnatrz" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<ul class="simple">
+<li>PHP ma dynamiczne i statyczne typy zmiennych. Za każdym razem gdy operacja binarna jest dokonywana (np. 2 + &#8220;2&#8221;), PHP sprawdza typy operandów w celu wykonania potencjalnej konwersji</li>
+<li>PHP jest interpretowany, a nie kompilowany. Główną wadą jest utrata wydajności</li>
+<li>Za każdym żądaniem skryptu musi on najpierw zostać zinterpretowany</li>
+<li>Jeśli pamięć podręczna kodu binarnego (np. APC) nie jest używana, sprawdzanie składni odbywa się za każdym razem, dla każdego pliku w żądaniu</li>
+</ul>
+</div>
+<div class="section" id="jak-dzialaja-tradycyjne-frameworki-php">
+<h2>Jak działają tradycyjne frameworki PHP?<a class="headerlink" href="#jak-dzialaja-tradycyjne-frameworki-php" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<ul class="simple">
+<li>Wiele plików z klasami i funkcjami jest odczytywanych na każdym wywołaniem żądania. Czytanie z dysku jest kosztowne pod względem wydajności zwłaszcza, gdy plik obejmuje głębokie struktury folderów</li>
+<li>Nowoczesne frameworki używają leniwego załadunku (automatycznego ładowania) w celu zwiększenia wydajności (dla ładowania i wykonywania tylko potrzebnego kodu)</li>
+<li>Niektóre z tych klas zawierają metody, które nie są używane w każdym żądaniu, ale są ładowane zawsze zużywając pamięć</li>
+<li>Ciągłe ładowanie lub interpretowanie jest drogie i wpływa na wydajność</li>
+<li>Kod frameworka nie zmienia się bardzo często, a jednak aplikacja musi załadować i zinterpretować go za każdym razem, kiedy żądanie zostało złożone</li>
+</ul>
+</div>
+<div class="section" id="jak-dziala-c-rozszerzenie-php">
+<h2>Jak działa C-rozszerzenie PHP?<a class="headerlink" href="#jak-dziala-c-rozszerzenie-php" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<ul class="simple">
+<li>Rozszerzenia C są ładowane wraz z PHP jeden raz w momencie, kiedy demon serwera www startuje proces</li>
+<li>Klasy i funkcje dostarczone przez rozszerzenie są gotowe do użycia w każdej aplikacji</li>
+<li>Kod nie jest interpretowany, ponieważ jest już skompilowany do konkretnej platformy i procesora</li>
+</ul>
+</div>
+<div class="section" id="jak-dziala-phalcon">
+<h2>Jak działa Phalcon?<a class="headerlink" href="#jak-dziala-phalcon" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<ul class="simple">
+<li>Elementy są luźno powiązane. Z Phalconem, nic nie jest narzucone na Ciebie: możesz swobodnie korzystać z całego frameworka, czy tylko niektórych jego części, jako sklejanych składników.</li>
+<li>Niskopoziomowe optymalizacje zapewnia najniższe obciążenie dla aplikacji opartych o MVC</li>
+<li>Interakcje z bazami danych z maksymalną wydajnością przy użyciu ORM w C-języku dla PHP</li>
+<li>Phalcon ma bezpośredni dostęp do wewnętrznych struktur PHP optymalizując w ten sposób ich wykonanie</li>
+</ul>
+</div>
+<div class="section" id="dlaczego-potrzebuje-phalcona">
+<h2>Dlaczego potrzebuję Phalcona?<a class="headerlink" href="#dlaczego-potrzebuje-phalcona" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Każde wymagania aplikacji i zadania różnią się od siebie. Niektóre na przykład są zaprojektowane do robienia zestawu zadań i generowania treści, które rzadko się zmieniają.
+Aplikacje te mogą być tworzone w dowolnym języku programowania lub frameworku. Korzystanie z pamięci podręcznej front-endu zazwyczaj sprawia, że bez względu na to, jak źle
+zaprojektowane lub powolne to może być, wykonuje się bardzo szybko.</p>
+<p>Inne aplikacje generują treści niemal natychmiast, kiedy powstały zmiany od żądania do żądania. W tym przypadku, PHP służy do adresowania wszystkich żądań i wytwarzania materiałów.
+Aplikacjami tymi mogą być API, fora dyskusyjne z dużym obciążeniem ruchu, blogi z dużą liczbą komentarzy i użytkowników, aplikacje statystyczne, kokpity administratorów, systemy planowania
+zasobami przedsiębiorstwa (ERP), oprogramowanie inteligentnego biznesu pracującego z danymi czasu rzeczywistego i więcej.</p>
+<p>Aplikacja będzie tak wolna, jak jej najwolniejsze części/procesy. Phalcon oferuje bardzo szybki, bogaty framework, który pozwala programistom skupić się na tworzeniu swoich aplikacji/szybkim programowaniu.
+W następstwie odpowiednich procesów kodowania, Phalcon może dostarczyć dużo więcej funkcjonalności/żądań z mniejszą konsumpcją pamięci i przetwarzaniem cykli.</p>
+</div>
+<div class="section" id="wnioski">
+<h2>Wnioski<a class="headerlink" href="#wnioski" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Phalcon is an effort to build the fastest framework for PHP. You now have an even easier and robust way
+to develop applications with a framework implemented with the philosophy &#8220;Performance Really Matters&#8221;! Enjoy!</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Indeks ogólny"
+             >indeks</a></li>
+        <li class="right" >
+          <a href="benchmark.html" title="Porównanie Frameworków"
+             >dalej</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Witaj!"
+             >wstecz</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+
+          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Except where otherwise noted, content on this site is licensed under the
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Ostatnia modyfikacja Oct 21, 2014.
+            Utworzone przy pomocy <a href="http://sphinx.pocoo.org/">Sphinx</a>'a 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team and contributors.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Donate to Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    or
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+      /*window.setTimeout(function(){
+        $('.gsc-search-button').css({
+          'background': '#f06715',
+          'padding': '2px',
+          'border': '0'
+        });
+      }, 1000)*/
+    });
+    </script>
+
+  </body>
+</html>

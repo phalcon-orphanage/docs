@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial 2: Introducing INVO &mdash; documentación de Phalcon - 3.1.1 (Spanish / Español)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="documentación de Phalcon - 3.1.1" href="../index.html" />
+    <link rel="next" title="Tutorial 3: Securing INVO" href="tutorial-invo-2.html" />
+    <link rel="prev" title="Tutorial 1: Aprendamos usando ejemplos" href="tutorial.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="tutorial-invo-2.html" title="Tutorial 3: Securing INVO"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial 1: Aprendamos usando ejemplos"
+             accesskey="P">anterior</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">documentación de Phalcon - 3.1.1</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Tabla de Contenidos</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Tutorial 2: Introducing INVO</a><ul>
+<li><a class="reference internal" href="#estructura-del-proyecto">Estructura del Proyecto</a></li>
+<li><a class="reference internal" href="#enrutamiento">Enrutamiento</a></li>
+<li><a class="reference internal" href="#configuracion">Configuración</a></li>
+<li><a class="reference internal" href="#autocargadores">Autocargadores</a></li>
+<li><a class="reference internal" href="#atendiendo-la-peticion">Atendiendo la petición</a></li>
+<li><a class="reference internal" href="#handling-the-request">Handling the Request</a></li>
+<li><a class="reference internal" href="#inyeccion-de-dependencias">Inyección de Dependencias</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Tema anterior</h4>
+            <p class="topless"><a href="tutorial.html" title="capítulo anterior">&lt; Tutorial 1: Aprendamos usando ejemplos</a></p>
+            <h4>Próximo tema</h4>
+            <p class="topless"><a href="tutorial-invo-2.html" title="próximo capítulo">Tutorial 3: Securing INVO &gt;</a></p>
+            <h3>Esta página</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/tutorial-invo.txt" rel="nofollow">Mostrar el código</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="tutorial-2-introducing-invo">
+<h1>Tutorial 2: Introducing INVO<a class="headerlink" href="#tutorial-2-introducing-invo" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>En este segundo tutorial, explicaremos una aplicación más completa con el objetivo de profundizar en el desarrollo con Phalcon.
+INVO es una de las aplicaciones que hemos creado como ejemplo. INVO es un pequeño sitio web que permite a sus clientes
+generar facturas, además de otras tareas como administrar clientes y productos. Puedes clonar su código fuente de <a class="reference external" href="https://github.com/phalcon/invo">Github</a>.</p>
+<p>Adicionalmente, INVO fue creada con <a class="reference external" href="http://getbootstrap.com/">Bootstrap</a> como framework en el cliente. A pesar que la aplicación
+no genera facturas sirve como ejemplo para entender muchos aspectos y funcionalidades en el framework.</p>
+<div class="section" id="estructura-del-proyecto">
+<h2>Estructura del Proyecto<a class="headerlink" href="#estructura-del-proyecto" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Una vez clones el proyecto en tu raíz de directorios verás la siguiente estructura:</p>
+<div class="highlight-bash"><div class="highlight"><pre>invo/
+    app/
+        config/
+        controllers/
+        forms/
+        library/
+        logs/
+        models/
+        plugins/
+        views/
+    cache/
+        volt/
+    docs/
+    public/
+        css/
+        fonts/
+        js/
+    schemas/
+</pre></div>
+</div>
+<p>Como sabes, Phalcon no te impone una estructura de directorios en particular. Este proyecto tiene una
+estructura de directorios para un MVC sencillo y una raíz pública de documentos.</p>
+<p>Una vez abres la aplicación en tu navegador: <a class="reference external" href="http://localhost/invo">http://localhost/invo</a> verás algo como:</p>
+<div class="figure align-center">
+<img alt="../_images/invo-1.png" src="../_images/invo-1.png" />
+</div>
+<p>La aplicación está dividida en dos partes, un frontend, que es la parte pública donde los visitante pueden recivir
+información además de solicitar información de contácto. La segunda parte es el backend, un área administrativa
+donde un usuario registrado puede administrar sus productos y clientes.</p>
+</div>
+<div class="section" id="enrutamiento">
+<h2>Enrutamiento<a class="headerlink" href="#enrutamiento" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>INVO usa la forma estándar de enrutar que viene con el componente de enrutamiento. Estas rutas usán el
+patrón que viene con el componente Router. El patrón es: /:controller/:action/:params. Esto significa que
+la primera parte de la URI es el controlador, la segunda la acción y el resto son los parámetros.</p>
+<p>La ruta <cite>/session/register</cite> ejecuta el controlador SessionController y su acción registerAction.</p>
+</div>
+<div class="section" id="configuracion">
+<h2>Configuración<a class="headerlink" href="#configuracion" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>INVO tiene un archivo de configuración que establece parametros generales en la aplicación.
+Este archivo es leído en las primeras líneas del bootstrap (public/index.php):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Config\Adapter\Ini</span> <span class="k">as</span> <span class="nx">ConfigIni</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="c1">// Leer la configuración</span>
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ConfigIni</span><span class="p">(</span>
+    <span class="nx">APP_PATH</span> <span class="o">.</span> <span class="s2">&quot;app/config/config.ini&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="config.html"><em>Phalcon\Config</em></a> nos permite manipular el archivo
+usando programación orientada a objetos. El archivo de configuración
+contiene la siguiente configuración:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span class="k">[database]</span>
+<span class="na">host</span>     <span class="o">=</span> <span class="s">localhost</span>
+<span class="na">username</span> <span class="o">=</span> <span class="s">root</span>
+<span class="na">password</span> <span class="o">=</span> <span class="s">secret</span>
+<span class="na">name</span>     <span class="o">=</span> <span class="s">invo</span>
+
+<span class="k">[application]</span>
+<span class="na">controllersDir</span> <span class="o">=</span> <span class="s">app/controllers/</span>
+<span class="na">modelsDir</span>      <span class="o">=</span> <span class="s">app/models/</span>
+<span class="na">viewsDir</span>       <span class="o">=</span> <span class="s">app/views/</span>
+<span class="na">pluginsDir</span>     <span class="o">=</span> <span class="s">app/plugins/</span>
+<span class="na">formsDir</span>       <span class="o">=</span> <span class="s">app/forms/</span>
+<span class="na">libraryDir</span>     <span class="o">=</span> <span class="s">app/library/</span>
+<span class="na">baseUri</span>        <span class="o">=</span> <span class="s">/invo/</span>
+</pre></div>
+</div>
+<p>Phalcon no tiene convenciones de configuración predeterminadas. Las secciones en el archivo nos ayudan a organizar la configuración
+de manera apropiada. En este archivo hay trés secciones que se usarán luego.</p>
+</div>
+<div class="section" id="autocargadores">
+<h2>Autocargadores<a class="headerlink" href="#autocargadores" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Una segunda parte que aparece en el bootstrap (public/index.php) es el autocargador (autoloader):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Auto-loader configuration</span>
+<span class="sd"> */</span>
+<span class="k">require</span> <span class="nx">APP_PATH</span> <span class="o">.</span> <span class="s2">&quot;app/config/loader.php&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Este registra un conjunto de directorios que la aplicación utilizará para cargar
+las clases que eventualmente necesitará.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Loader</span><span class="p">();</span>
+
+<span class="c1">// We&#39;re a registering a set of directories taken from the configuration file</span>
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="nx">APP_PATH</span> <span class="o">.</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">controllersDir</span><span class="p">,</span>
+        <span class="nx">APP_PATH</span> <span class="o">.</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">pluginsDir</span><span class="p">,</span>
+        <span class="nx">APP_PATH</span> <span class="o">.</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">libraryDir</span><span class="p">,</span>
+        <span class="nx">APP_PATH</span> <span class="o">.</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">modelsDir</span><span class="p">,</span>
+        <span class="nx">APP_PATH</span> <span class="o">.</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">formsDir</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Lo que se ha hecho es registrar los directorios que están definidos en el archivo de configuración. El único
+directorio que no está registrado es el viewsDir, porque estas no contienen clases sino HTML y PHP.
+Also, note that we have using a constant called APP_PATH, this constant is defined in the bootstrap
+(public/index.php) to allow us have a reference to the root of our project:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// ...</span>
+
+<span class="nb">define</span><span class="p">(</span>
+    <span class="s2">&quot;APP_PATH&quot;</span><span class="p">,</span>
+    <span class="nb">realpath</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="atendiendo-la-peticion">
+<h2>Atendiendo la petición<a class="headerlink" href="#atendiendo-la-peticion" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Vallamos mucho más adelante, al final del archivo, la petición es finalmente atendida por <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a>,
+esta clase inicializa y ejecuta todo lo necesario para que la aplicación sea ejecutada:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Load application services</span>
+<span class="sd"> */</span>
+<span class="k">require</span> <span class="nx">APP_PATH</span> <span class="o">.</span> <span class="s2">&quot;app/config/services.php&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Service registration is achieved as in the previous tutorial, making use of a closure to lazily loads
+the required components:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span> <span class="k">as</span> <span class="nx">UrlProvider</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * The URL component is used to generate all kind of URLs in the application</span>
+<span class="sd"> */</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$config</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UrlProvider</span><span class="p">();</span>
+
+        <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">setBaseUri</span><span class="p">(</span>
+            <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">application</span><span class="o">-&gt;</span><span class="na">baseUri</span>
+        <span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$url</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>We will discuss this file in depth later.</p>
+</div>
+<div class="section" id="handling-the-request">
+<h2>Handling the Request<a class="headerlink" href="#handling-the-request" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>If we skip to the end of the file (public/index.php), the request is finally handled by <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a>
+which initializes and executes all that is necessary to make the application run:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Application</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="nv">$application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
+
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inyeccion-de-dependencias">
+<h2>Inyección de Dependencias<a class="headerlink" href="#inyeccion-de-dependencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En el código anterior, la variable <code class="code docutils literal"><span class="pre">$di</span></code> es pasada al constructor de <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a>.
+¿Cuál es el proposito de esta variable? Como Phalcon es un framework altamente desacoplado, necesitamos un componente
+que actúe como intermediario entre los distintos componentes para hacer que todo trabaje junto de una manera sencilla.
+Este componente es <a class="reference internal" href="../api/Phalcon_Di.html"><em>Phalcon\Di</em></a>. Es un contenedor de servicios que también permite injeccción de dependencias,
+instanciando e inicializando todos los componentes a medida que son requeridos por la aplicación.</p>
+<p>Hay muchas formas de registrar servicios en el contenedor. En INVO, la mayoría de servicios han sido registrados
+usando funciones anonimas. Gracias a esto, Los objetos son instanciados solo cuando son requeridos, reduciendo
+la cantidad de recursos requeridos por la aplicación.</p>
+<p>Por ejemplo, en el siguiente codigo, el servicio de sesión es registrado, la función anónima solo es ejecutada
+si la aplicación requiere acceder a datos de sessión:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Session\Adapter\Files</span> <span class="k">as</span> <span class="nx">Session</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="c1">// Iniciar la sesión solamente la primera vez que un componente requiera el servicio de sesión</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;session&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$session</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Session</span><span class="p">();</span>
+
+        <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$session</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Gracias a esto, tenemos la libertad de cambiar el adaptador, ejecutar inicializaciones adicionales y mucho más.
+Ten en cuenta que el servicio se registró usando el nombre &#8220;session&#8221;. Esta es una convención que ayudará a los demás
+componentes a solicitar el servicio correcto en el contenedor de servicios.</p>
+<p>Una petición puede usar muchos servicios, registrar cada servicio puede ser tedioso. Por esta razón,
+el framework proporciona una variante <a class="reference internal" href="../api/Phalcon_Di.html"><em>Phalcon\Di</em></a> llamada <a class="reference internal" href="../api/Phalcon_Di_FactoryDefault.html"><em>Phalcon\Di\FactoryDefault</em></a> cuyo objetivo es registrar
+todos los servicios proporcionados por un framework full-stack.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Di\FactoryDefault</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="c1">// El FactoryDefault Dependency Injector registra automáticamente</span>
+<span class="c1">// todos los servicios proporcionando un framework full stack</span>
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Así se registran la mayoria de servicios con componentes proporcionados por el framework como estándar. Si queremos
+reemplazar la definición de un servicio podemos hacerla como hicimos antes con el servicio &#8220;session&#8221;. Esta es la razón
+de la existencia de la variable <code class="code docutils literal"><span class="pre">$di</span></code>.</p>
+<p>In next chapter, we will see how to authentication and authorization is implemented in INVO.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="tutorial-invo-2.html" title="Tutorial 3: Securing INVO"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial 1: Aprendamos usando ejemplos"
+             >anterior</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+  </body>
+</html>

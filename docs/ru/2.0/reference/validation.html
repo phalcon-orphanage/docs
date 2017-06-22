@@ -1,0 +1,554 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Валидация &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Формы" href="forms.html" />
+    <link rel="prev" title="Контекстное экранирование" href="escaper.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="forms.html" title="Формы"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="escaper.html" title="Контекстное экранирование"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Валидация</a><ul>
+<li><a class="reference internal" href="#id2">Инициализация валидации</a></li>
+<li><a class="reference internal" href="#id3">Валидаторы</a></li>
+<li><a class="reference internal" href="#id4">Сообщения валидации</a></li>
+<li><a class="reference internal" href="#id5">Фильтрация данных</a></li>
+<li><a class="reference internal" href="#id6">События валидации</a></li>
+<li><a class="reference internal" href="#id7">Отмена валидации</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="escaper.html" title="предыдущая глава">&lt; Контекстное экранирование</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="forms.html" title="следующая глава">Формы &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/validation.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="id1">
+<h1>Валидация<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Компонент PhalconValidation реализует независимую возможность проверки произвольного набора данных.
+Компонент можно использовать для проверки данных не относящихся к моделям или коллекциям.</p>
+<p>Ниже показан пример использования компонента:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Validation\Validator\PresenceOf</span><span class="p">,</span>
+    <span class="nx">Phalcon\Validation\Validator\Email</span><span class="p">;</span>
+
+<span class="nv">$validation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Validation</span><span class="p">();</span>
+
+<span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">PresenceOf</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The name is required&#39;</span>
+<span class="p">)));</span>
+
+<span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">PresenceOf</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The e-mail is required&#39;</span>
+<span class="p">)));</span>
+
+<span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Email</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The e-mail is not valid&#39;</span>
+<span class="p">)));</span>
+
+<span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$messages</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Свободная блочная конструкция этого компонента позволяет вам создавать свои собственные валидаторы
+наряду с теми, что предоставляет фреймворк.</p>
+<div class="section" id="id2">
+<h2>Инициализация валидации<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Как вы уже поняли, цепочка проверок может быть инициализирована простым добавлением их в объект Phalcon\Validation.
+Вы можете повторно использовать код или лучше организовывать проверки, размещая их в отдельных файлах:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Validation</span><span class="p">,</span>
+    <span class="nx">Phalcon\Validation\Validator\PresenceOf</span><span class="p">,</span>
+    <span class="nx">Phalcon\Validation\Validator\Email</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyValidation</span> <span class="k">extends</span> <span class="nx">Validation</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">PresenceOf</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The name is required&#39;</span>
+        <span class="p">)));</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">PresenceOf</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The e-mail is required&#39;</span>
+        <span class="p">)));</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Email</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The e-mail is not valid&#39;</span>
+        <span class="p">)));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$validation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyValidation</span><span class="p">();</span>
+
+<span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$messages</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Валидаторы<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Базовый компонент валидации Phalcon предоставляет следующие правила проверки:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="63%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Название</th>
+<th class="head">Описание</th>
+<th class="head">Пример</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PresenceOf</td>
+<td>Проверяет, что значение поля не равно null или пустой строке.</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_PresenceOf.html"><em>Пример</em></a></td>
+</tr>
+<tr class="row-odd"><td>Identical</td>
+<td>Проверяет, что значение поля соответствует какому-то конкретному значению</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Identical.html"><em>Пример</em></a></td>
+</tr>
+<tr class="row-even"><td>Email</td>
+<td>Проверяет соответствие формату электронной почты</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Email.html"><em>Пример</em></a></td>
+</tr>
+<tr class="row-odd"><td>ExclusionIn</td>
+<td>Проверяет, что значение не входит в список возможных значений</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_ExclusionIn.html"><em>Пример</em></a></td>
+</tr>
+<tr class="row-even"><td>InclusionIn</td>
+<td>Проверяет, что значение находится в списке возможных значений</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_InclusionIn.html"><em>Пример</em></a></td>
+</tr>
+<tr class="row-odd"><td>Regex</td>
+<td>Проверяет, что значение поля соответствует регулярному выражению</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Regex.html"><em>Пример</em></a></td>
+</tr>
+<tr class="row-even"><td>StringLength</td>
+<td>Проверяет длину строки</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_StringLength.html"><em>Пример</em></a></td>
+</tr>
+<tr class="row-odd"><td>Between</td>
+<td>Проверяет, что значение находится между двумя другими значениями</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Between.html"><em>Пример</em></a></td>
+</tr>
+<tr class="row-even"><td>Confirmation</td>
+<td>Проверяет, что значение соответствует другому значению</td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Confirmation.html"><em>Пример</em></a></td>
+</tr>
+</tbody>
+</table>
+<p>Дополнительные проверки могут быть реализованы самостоятельно. Следующий класс объясняет, как создать правило валидации для этого компонента:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Validation\Validator</span><span class="p">,</span>
+    <span class="nx">Phalcon\Validation\ValidatorInterface</span><span class="p">,</span>
+    <span class="nx">Phalcon\Validation\Message</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">IpValidator</span> <span class="k">extends</span> <span class="nx">Validator</span> <span class="k">implements</span> <span class="nx">ValidatorInterface</span>
+<span class="p">{</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Выполнение валидации</span>
+<span class="sd">         *</span>
+<span class="sd">         * @param Phalcon\Validation $validator</span>
+<span class="sd">         * @param string $attribute</span>
+<span class="sd">         * @return boolean</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">$validator</span><span class="p">,</span> <span class="nv">$attribute</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$value</span> <span class="o">=</span> <span class="nv">$validator</span><span class="o">-&gt;</span><span class="na">getValue</span><span class="p">(</span><span class="nv">$attribute</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$value</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_IP</span><span class="p">,</span> <span class="nx">FILTER_FLAG_IPV4</span> <span class="o">|</span> <span class="nx">FILTER_FLAG_IPV6</span><span class="p">))</span> <span class="p">{</span>
+
+                <span class="nv">$message</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getOption</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;IP адрес не правилен&#39;</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="nv">$validator</span><span class="o">-&gt;</span><span class="na">appendMessage</span><span class="p">(</span><span class="k">new</span> <span class="nx">Message</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="nv">$attribute</span><span class="p">,</span> <span class="s1">&#39;Ip&#39;</span><span class="p">));</span>
+
+                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Важно помнить, что валидаторы возвращают булево значение, показывающее, прошла валидация успешно, либо нет.</p>
+</div>
+<div class="section" id="id4">
+<h2>Сообщения валидации<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Компонент <a class="reference internal" href="../api/Phalcon_Validation.html"><em>Phalcon\Validation</em></a> имеет внутреннюю подсистему работы с сообщениями.
+Она обеспечивает гибкую работу с хранением и выводом проверочных сообщений, генерируемых в ходе проверки.</p>
+<p>Каждое сообщение состоит из экземпляра класса <a class="reference internal" href="../api/Phalcon_Mvc_Model_Message.html"><em>Phalcon\Validation\Message</em></a>. Набор
+сгенерированных сообщений может быть получен с помощью метода getMessages(). Каждое сообщение содержит расширенную информацию - атрибут,
+текст и тип сообщения:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$messages</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;Сообщение: &quot;</span><span class="p">,</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">&quot;Поле: &quot;</span><span class="p">,</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getField</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">&quot;Тип: &quot;</span><span class="p">,</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Метод getMessages() может быть переопределен в наследующем классе для замены/перевода текста сообщения по умолчанию,
+это особенно актуально для автоматически создаваемых валидаторов:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">MyValidation</span> <span class="k">extends</span> <span class="nx">Phalcon\Validation</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getMessages</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="k">parent</span><span class="o">::</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">())</span> <span class="p">{</span>
+                <span class="k">case</span> <span class="s1">&#39;PresenceOf&#39;</span><span class="o">:</span>
+                    <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;Заполнение поля &#39;</span> <span class="o">.</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getField</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39; обязательно&#39;</span><span class="p">;</span>
+                    <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nv">$messages</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Или вы можете передать сообщение параметром по умолчанию в каждый валидатор:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Validation\Validator\Email</span><span class="p">;</span>
+
+<span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Email</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The e-mail is not valid&#39;</span>
+<span class="p">)));</span>
+</pre></div>
+</div>
+<p>По умолчанию метод &#8216;getMessages&#8217; возвращает все сообщения сгенерированные валидатором. Вы можете отфильтровать
+сообщения используя &#8216;filter&#8217;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$messages</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// Отфильтровать только те сообщения, которые были сгенерированы для поля &#39;name&#39;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$message</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Фильтрация данных<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Данные фильтруются для того, чтобы быть уверенным, что вредоносные или неверные данные не будут пропущены приложением.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$validation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Validation</span><span class="p">();</span>
+
+<span class="nv">$validation</span>
+    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">PresenceOf</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The name is required&#39;</span>
+    <span class="p">)))</span>
+    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">PresenceOf</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The email is required&#39;</span>
+    <span class="p">)));</span>
+
+<span class="c1">// Избавимся от лишних пробелов</span>
+<span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">setFilters</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;trim&#39;</span><span class="p">);</span>
+<span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">setFilters</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;trim&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Фильтрация и очистка производятся с помощью компонента <a class="reference internal" href="filter.html"><em>filter</em></a>. Вы можете добавлять в него свои фильтры,
+либо пользоваться встроенными.</p>
+</div>
+<div class="section" id="id6">
+<h2>События валидации<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Когда в классах определена валидация, вы также можете реализовать методы &#8216;beforeValidation&#8217; и &#8216;afterValidation&#8217;, чтобы
+добавить дополнительные проверки, очистку и т.п. Если &#8216;beforeValidation&#8217; возвращает &#8216;false&#8217;, валидация не будет пройдена:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Validation</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">LoginValidation</span> <span class="k">extends</span> <span class="nx">Validation</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Выполняется перед валидацией</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param array $data</span>
+<span class="sd">     * @param object $entity</span>
+<span class="sd">     * @param Phalcon\Validation\Message\Group $messages</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeValidation</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="nv">$entity</span><span class="p">,</span> <span class="nv">$messages</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getHttpHost</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;admin.mydomain.com&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$messages</span><span class="o">-&gt;</span><span class="na">appendMessage</span><span class="p">(</span><span class="k">new</span> <span class="nx">Message</span><span class="p">(</span><span class="s1">&#39;Users only can log on in the administration domain&#39;</span><span class="p">));</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Выполняется после валидации</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param array $data</span>
+<span class="sd">     * @param object $entity</span>
+<span class="sd">     * @param Phalcon\Validation\Message\Group $messages</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">afterValidation</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="nv">$entity</span><span class="p">,</span> <span class="nv">$messages</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//... добавляем дополнительные сообщения или валидацию</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Отмена валидации<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>По умолчанию проверяются все валидаторы, присвоенные полю, независимо от того, успешно ли прошла валидация одного из них или нет.
+Вы можете изменить такое поведение, если укажете валидатору на каком из правил ему следует остановить дальнейшую проверку:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Validation\Validator\PresenceOf</span><span class="p">,</span>
+    <span class="nx">Phalcon\Validation\Validator\Regex</span><span class="p">;</span>
+
+<span class="nv">$validation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Validation</span><span class="p">();</span>
+
+<span class="nv">$validation</span>
+    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;telephone&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">PresenceOf</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The telephone is required&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;cancelOnFail&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+    <span class="p">)))</span>
+    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;telephone&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Regex</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The telephone is required&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;pattern&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/\+44 [0-9]+/&#39;</span>
+    <span class="p">)))</span>
+    <span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;telephone&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">StringLength</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;minimumMessage&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The telephone is too short&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;min&#39;</span> <span class="o">=&gt;</span> <span class="mi">2</span>
+    <span class="p">)));</span>
+</pre></div>
+</div>
+<p>Первый валидатор имеет свойство &#8216;cancelOnFail&#8217; =&gt; true, поэтому если валидация не пройдёт эту проверку, то
+дальнейшие проверки в цепочке не будут выполнены.</p>
+<p>Если вы создаёте собственные валидаторы, то можете динамически останавливать их используя свойство &#8216;cancelOnFail&#8217;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Validation\Validator</span><span class="p">,</span>
+    <span class="nx">Phalcon\Validation\ValidatorInterface</span><span class="p">,</span>
+    <span class="nx">Phalcon\Validation\Message</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyValidator</span> <span class="k">extends</span> <span class="nx">Validator</span> <span class="k">implements</span> <span class="nx">ValidatorInterface</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Выполняем проверку</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param Phalcon\Validation $validator</span>
+<span class="sd">     * @param string $attribute</span>
+<span class="sd">     * @return boolean</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">$validator</span><span class="p">,</span> <span class="nv">$attribute</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Если имя атрибута &#39;name&#39; - останавливаем дальнейшие проверки</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$attribute</span> <span class="o">==</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$validator</span><span class="o">-&gt;</span><span class="na">setOption</span><span class="p">(</span><span class="s1">&#39;cancelOnFail&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="forms.html" title="Формы"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="escaper.html" title="Контекстное экранирование"
+             >предыдущий</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

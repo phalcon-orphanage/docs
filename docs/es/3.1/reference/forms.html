@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Forms &mdash; documentación de Phalcon - 3.1.1 (Spanish / Español)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="documentación de Phalcon - 3.1.1" href="../index.html" />
+    <link rel="next" title="Reading Configurations" href="config.html" />
+    <link rel="prev" title="Validation" href="validation.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="config.html" title="Reading Configurations"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="validation.html" title="Validation"
+             accesskey="P">anterior</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">documentación de Phalcon - 3.1.1</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Tabla de Contenidos</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Forms</a><ul>
+<li><a class="reference internal" href="#initializing-forms">Initializing forms</a></li>
+<li><a class="reference internal" href="#validation">Validation</a></li>
+<li><a class="reference internal" href="#filtering">Filtering</a></li>
+<li><a class="reference internal" href="#forms-entities">Forms + Entities</a></li>
+<li><a class="reference internal" href="#form-elements">Form Elements</a></li>
+<li><a class="reference internal" href="#event-callbacks">Event Callbacks</a></li>
+<li><a class="reference internal" href="#rendering-forms">Rendering Forms</a></li>
+<li><a class="reference internal" href="#creating-form-elements">Creating Form Elements</a></li>
+<li><a class="reference internal" href="#forms-manager">Forms Manager</a></li>
+<li><a class="reference internal" href="#external-resources">External Resources</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Tema anterior</h4>
+            <p class="topless"><a href="validation.html" title="capítulo anterior">&lt; Validation</a></p>
+            <h4>Próximo tema</h4>
+            <p class="topless"><a href="config.html" title="próximo capítulo">Reading Configurations &gt;</a></p>
+            <h3>Esta página</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/forms.txt" rel="nofollow">Mostrar el código</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="forms">
+<h1>Forms<a class="headerlink" href="#forms" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><code class="code docutils literal"><span class="pre">Phalcon\Forms</span></code> is a component that aids you in the creation and maintenance of forms in web applications.</p>
+<p>The following example shows its basic usage:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Form</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Select</span><span class="p">;</span>
+
+<span class="nv">$form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Form</span><span class="p">();</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+        <span class="s2">&quot;name&quot;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+        <span class="s2">&quot;telephone&quot;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Select</span><span class="p">(</span>
+        <span class="s2">&quot;telephoneType&quot;</span><span class="p">,</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;H&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Home&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;C&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Cell&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Forms can be rendered based on the form definition:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>
+    Contacts
+<span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;p&gt;</span>
+        <span class="nt">&lt;label&gt;</span>
+            Name
+        <span class="nt">&lt;/label&gt;</span>
+
+        <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;p&gt;</span>
+        <span class="nt">&lt;label&gt;</span>
+            Telephone
+        <span class="nt">&lt;/label&gt;</span>
+
+        <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s2">&quot;telephone&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;p&gt;</span>
+        <span class="nt">&lt;label&gt;</span>
+            Type
+        <span class="nt">&lt;/label&gt;</span>
+
+        <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s2">&quot;telephoneType&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+
+
+
+    <span class="nt">&lt;p&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Save&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;/form&gt;</span>
+</pre></div>
+</div>
+<p>Each element in the form can be rendered as required by the developer. Internally,
+<a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> is used to produce the correct HTML for each element and you can pass additional HTML attributes as the second parameter of <code class="code docutils literal"><span class="pre">render()</span></code>:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;p&gt;</span>
+    <span class="nt">&lt;label&gt;</span>
+        Name
+    <span class="nt">&lt;/label&gt;</span>
+
+    <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;maxlength&quot;</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;placeholder&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Type your name&quot;</span><span class="p">]);</span> <span class="cp">?&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p>HTML attributes also can be set in the element&#8217;s definition:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;maxlength&quot;</span>   <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+            <span class="s2">&quot;placeholder&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Type your name&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="initializing-forms">
+<h2>Initializing forms<a class="headerlink" href="#initializing-forms" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>As seen before, forms can be initialized outside the form class by adding elements to it. You can re-use code or organize your form
+classes implementing the form in a separated file:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Form</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Select</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ContactForm</span> <span class="k">extends</span> <span class="nx">Form</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+                <span class="s2">&quot;name&quot;</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+                <span class="s2">&quot;telephone&quot;</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nx">Select</span><span class="p">(</span>
+                <span class="s2">&quot;telephoneType&quot;</span><span class="p">,</span>
+                <span class="nx">TelephoneTypes</span><span class="o">::</span><span class="na">find</span><span class="p">(),</span>
+                <span class="p">[</span>
+                    <span class="s2">&quot;using&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                        <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                    <span class="p">]</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../api/Phalcon_Forms_Form.html"><em>Phalcon\Forms\Form</em></a> extends <a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><em>Phalcon\Di\Injectable</em></a>
+so you have access to the application services if needed:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Form</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Hidden</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ContactForm</span> <span class="k">extends</span> <span class="nx">Form</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * This method returns the default value for field &#39;csrf&#39;</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCsrf</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Set the same form as entity</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setEntity</span><span class="p">(</span><span class="nv">$this</span><span class="p">);</span>
+
+        <span class="c1">// Add a text element to capture the &#39;email&#39;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+                <span class="s2">&quot;email&quot;</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Add a text element to put a hidden CSRF</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nx">Hidden</span><span class="p">(</span>
+                <span class="s2">&quot;csrf&quot;</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The associated entity added to the form in the initialization and custom user options are passed to the form constructor:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Form</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Hidden</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UsersForm</span> <span class="k">extends</span> <span class="nx">Form</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Forms initializer</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param Users $user</span>
+<span class="sd">     * @param array $options</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="nx">Users</span> <span class="nv">$user</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$options</span><span class="p">[</span><span class="s2">&quot;edit&quot;</span><span class="p">])</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">Hidden</span><span class="p">(</span>
+                    <span class="s2">&quot;id&quot;</span>
+                <span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+                    <span class="s2">&quot;id&quot;</span>
+                <span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+                <span class="s2">&quot;name&quot;</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the form&#8217;s instantiation you must use:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UsersForm</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Users</span><span class="p">(),</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;edit&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Phalcon forms are integrated with the <a class="reference internal" href="validation.html"><em>validation</em></a> component to offer instant validation. Built-in or
+custom validators could be set to each element:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Validation\Validator\PresenceOf</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Validation\Validator\StringLength</span><span class="p">;</span>
+
+<span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+    <span class="s2">&quot;name&quot;</span>
+<span class="p">);</span>
+
+<span class="nv">$name</span><span class="o">-&gt;</span><span class="na">addValidator</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">PresenceOf</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;The name is required&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$name</span><span class="o">-&gt;</span><span class="na">addValidator</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">StringLength</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;min&quot;</span>            <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;messageMinimum&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;The name is too short&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Then you can validate the form according to the input entered by the user:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">();</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Validators are executed in the same order as they were registered.</p>
+<p>By default messages generated by all the elements in the form are joined so they can be traversed using a single foreach,
+you can change this behavior to get the messages separated by the field:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">(</span><span class="k">false</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$attribute</span> <span class="o">=&gt;</span> <span class="nv">$messages</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Messages generated by &quot;</span><span class="p">,</span> <span class="nv">$attribute</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Or get specific messages for an element:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">getMessagesFor</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filtering">
+<h2>Filtering<a class="headerlink" href="#filtering" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>A form is also able to filter data before it is validated. You can set filters in each element:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
+
+<span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+    <span class="s2">&quot;name&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// Set multiple filters</span>
+<span class="nv">$name</span><span class="o">-&gt;</span><span class="na">setFilters</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;trim&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+
+
+
+<span class="nv">$email</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+    <span class="s2">&quot;email&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// Set one filter</span>
+<span class="nv">$email</span><span class="o">-&gt;</span><span class="na">setFilters</span><span class="p">(</span>
+    <span class="s2">&quot;email&quot;</span>
+<span class="p">);</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$email</span><span class="p">);</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>Learn more about filtering in Phalcon by reading the <a class="reference internal" href="filter.html"><em>Filter documentation</em></a>.</div></blockquote>
+</div>
+<div class="section" id="forms-entities">
+<h2>Forms + Entities<a class="headerlink" href="#forms-entities" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>An entity such as a model/collection/plain instance or just a plain PHP class can be linked to the form in order to set default values
+in the form&#8217;s elements or assign the values from the form to the entity easily:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+<span class="nv">$form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Form</span><span class="p">(</span><span class="nv">$robot</span><span class="p">);</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+        <span class="s2">&quot;name&quot;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+        <span class="s2">&quot;year&quot;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Once the form is rendered if there is no default values assigned to the elements it will use the ones provided by the entity:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<p>You can validate the form and assign the values from the user input in the following way:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">,</span> <span class="nv">$robot</span><span class="p">);</span>
+
+<span class="c1">// Check if the form is valid</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// Save the entity</span>
+    <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Setting up a plain class as entity also is possible:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Preferences</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$timezone</span> <span class="o">=</span> <span class="s2">&quot;Europe/Amsterdam&quot;</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$receiveEmails</span> <span class="o">=</span> <span class="s2">&quot;No&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Using this class as entity, allows the form to take the default values from it:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Form</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Preferences</span><span class="p">()</span>
+<span class="p">);</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Select</span><span class="p">(</span>
+        <span class="s2">&quot;timezone&quot;</span><span class="p">,</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;America/New_York&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;New York&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Europe/Amsterdam&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;Amsterdam&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;America/Sao_Paulo&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Sao Paulo&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Asia/Tokyo&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Select</span><span class="p">(</span>
+        <span class="s2">&quot;receiveEmails&quot;</span><span class="p">,</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;Yes&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Yes, please!&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;No&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;No, thanks&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Entities can implement getters, which have a higher precedence than public properties. These methods
+give you more freedom to produce values:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Preferences</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$timezone</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$receiveEmails</span><span class="p">;</span>
+
+
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getTimezone</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;Europe/Amsterdam&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getReceiveEmails</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;No&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="form-elements">
+<h2>Form Elements<a class="headerlink" href="#form-elements" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the <a class="reference internal" href="../api/Phalcon_Forms_Element.html"><em>Phalcon\Forms\Element</em></a> namespace:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="../api/Phalcon_Forms_Element_Text.html"><em>Phalcon\Forms\Element\Text</em></a></td>
+<td>Generate INPUT[type=text] elements</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/Phalcon_Forms_Element_Password.html"><em>Phalcon\Forms\Element\Password</em></a></td>
+<td>Generate INPUT[type=password] elements</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/Phalcon_Forms_Element_Select.html"><em>Phalcon\Forms\Element\Select</em></a></td>
+<td>Generate SELECT tag (combo lists) elements based on choices</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/Phalcon_Forms_Element_Check.html"><em>Phalcon\Forms\Element\Check</em></a></td>
+<td>Generate INPUT[type=check] elements</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/Phalcon_Forms_Element_TextArea.html"><em>Phalcon\Forms\Element\TextArea</em></a></td>
+<td>Generate TEXTAREA elements</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/Phalcon_Forms_Element_Hidden.html"><em>Phalcon\Forms\Element\Hidden</em></a></td>
+<td>Generate INPUT[type=hidden] elements</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/Phalcon_Forms_Element_File.html"><em>Phalcon\Forms\Element\File</em></a></td>
+<td>Generate INPUT[type=file] elements</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/Phalcon_Forms_Element_Date.html"><em>Phalcon\Forms\Element\Date</em></a></td>
+<td>Generate INPUT[type=date] elements</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/Phalcon_Forms_Element_Numeric.html"><em>Phalcon\Forms\Element\Numeric</em></a></td>
+<td>Generate INPUT[type=number] elements</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/Phalcon_Forms_Element_Submit.html"><em>Phalcon\Forms\Element\Submit</em></a></td>
+<td>Generate INPUT[type=submit] elements</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="event-callbacks">
+<h2>Event Callbacks<a class="headerlink" href="#event-callbacks" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Whenever forms are implemented as classes, the callbacks: <code class="code docutils literal"><span class="pre">beforeValidation()</span></code> and <code class="code docutils literal"><span class="pre">afterValidation()</span></code> can be implemented
+in the form&#8217;s class to perform pre-validations and post-validations:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Form</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ContactForm</span> <span class="k">extends</span> <span class="nx">Form</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeValidation</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rendering-forms">
+<h2>Rendering Forms<a class="headerlink" href="#rendering-forms" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="o">&lt;</span><span class="nx">form</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;?</span><span class="nx">php</span>
+
+        <span class="c1">// Traverse the form</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$form</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Get any generated messages for the current element</span>
+            <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">getMessagesFor</span><span class="p">(</span>
+                <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span>
+            <span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$messages</span><span class="p">))</span> <span class="p">{</span>
+                <span class="c1">// Print each element</span>
+                <span class="k">echo</span> <span class="s1">&#39;&lt;div class=&quot;messages&quot;&gt;&#39;</span><span class="p">;</span>
+
+                <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">echo</span> <span class="nv">$message</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="k">echo</span> <span class="s2">&quot;&lt;/div&gt;&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">echo</span> <span class="s2">&quot;&lt;p&gt;&quot;</span><span class="p">;</span>
+
+            <span class="k">echo</span> <span class="s1">&#39;&lt;label for=&quot;&#39;</span><span class="p">,</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span> <span class="s1">&#39;&quot;&gt;&#39;</span><span class="p">,</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">getLabel</span><span class="p">(),</span> <span class="s2">&quot;&lt;/label&gt;&quot;</span><span class="p">;</span>
+
+            <span class="k">echo</span> <span class="nv">$element</span><span class="p">;</span>
+
+            <span class="k">echo</span> <span class="s2">&quot;&lt;/p&gt;&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+    <span class="cp">?&gt;</span>
+
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Send&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre></div>
+</div>
+<p>Or reuse the logic in your form class:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Form</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ContactForm</span> <span class="k">extends</span> <span class="nx">Form</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">renderDecorated</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$element</span>  <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+
+        <span class="c1">// Get any generated messages for the current element</span>
+        <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMessagesFor</span><span class="p">(</span>
+            <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span>
+        <span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$messages</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// Print each element</span>
+            <span class="k">echo</span> <span class="s1">&#39;&lt;div class=&quot;messages&quot;&gt;&#39;</span><span class="p">;</span>
+
+            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">echo</span> <span class="s2">&quot;&lt;/div&gt;&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">echo</span> <span class="s2">&quot;&lt;p&gt;&quot;</span><span class="p">;</span>
+
+        <span class="k">echo</span> <span class="s1">&#39;&lt;label for=&quot;&#39;</span><span class="p">,</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span> <span class="s1">&#39;&quot;&gt;&#39;</span><span class="p">,</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">getLabel</span><span class="p">(),</span> <span class="s2">&quot;&lt;/label&gt;&quot;</span><span class="p">;</span>
+
+        <span class="k">echo</span> <span class="nv">$element</span><span class="p">;</span>
+
+        <span class="k">echo</span> <span class="s2">&quot;&lt;/p&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the view:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">renderDecorated</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">renderDecorated</span><span class="p">(</span><span class="s2">&quot;telephone&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-form-elements">
+<h2>Creating Form Elements<a class="headerlink" href="#creating-form-elements" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>In addition to the form elements provided by Phalcon you can create your own custom elements:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyElement</span> <span class="k">extends</span> <span class="nx">Element</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">render</span><span class="p">(</span><span class="nv">$attributes</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$html</span> <span class="o">=</span> <span class="c1">// ... Produce some HTML</span>
+
+        <span class="k">return</span> <span class="nv">$html</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="forms-manager">
+<h2>Forms Manager<a class="headerlink" href="#forms-manager" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>This component provides a forms manager that can be used by the developer to register forms and access them via the service locator:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Manager</span> <span class="k">as</span> <span class="nx">FormsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;forms&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">FormsManager</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Forms are added to the forms manager and referenced by a unique name:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">forms</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;login&quot;</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">LoginForm</span><span class="p">()</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Using the unique name, forms can be accessed in any part of the application:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$loginForm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">forms</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;login&quot;</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$loginForm</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="external-resources">
+<h2>External Resources<a class="headerlink" href="#external-resources" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://vokuro.phalconphp.com">Vökuró</a>, is a sample application that uses the forms builder to create and manage forms, [<a class="reference external" href="https://github.com/phalcon/vokuro">Github</a>]</li>
+</ul>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="config.html" title="Reading Configurations"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="validation.html" title="Validation"
+             >anterior</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+  </body>
+</html>

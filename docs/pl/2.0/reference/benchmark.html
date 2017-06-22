@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Porównanie Frameworków &mdash; Phalcon 1.3.0 documentation</title>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Hello World Benchmark" href="benchmark/hello-world.html" />
+    <link rel="prev" title="Nasza motywacja" href="motivation.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Indeks ogólny"
+             accesskey="I">indeks</a></li>
+        <li class="right" >
+          <a href="benchmark/hello-world.html" title="Hello World Benchmark"
+             accesskey="N">dalej</a> |</li>
+        <li class="right" >
+          <a href="motivation.html" title="Nasza motywacja"
+             accesskey="P">wstecz</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+                <hr>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Spis treści</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Porównanie Frameworków</a><ul>
+<li><a class="reference internal" href="#jakie-bylo-srodowisko-testowe">Jakie było środowisko testowe?</a></li>
+<li><a class="reference internal" href="#lista-benchmarkow">Lista Benchmarków</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#historia-zmian">Historia Zmian</a></li>
+<li><a class="reference internal" href="#zrodla-zewnetrzne">Źródła Zewnętrzne</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Poprzedni temat</h4>
+            <p class="topless"><a href="motivation.html" title="poprzedni rozdział">&lt; Nasza motywacja</a></p>
+            <h4>Następny temat</h4>
+            <p class="topless"><a href="benchmark/hello-world.html" title="następny rozdział">Hello World Benchmark &gt;</a></p>
+            <h3>Ta strona</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/benchmark.txt" rel="nofollow">Pokaż źródło</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="porownanie-frameworkow">
+<h1>Porównanie Frameworków<a class="headerlink" href="#porownanie-frameworkow" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<p>W przeszłości, wydajność nie była jednym z głównych priorytetów podczas tworzenia aplikacji internetowych. Rozsądny sprzęt był ją w stanie zrekompensować.
+Jednak, gdy Google  <a class="reference external" href="http://googlewebmastercentral.blogspot.com/2010/04/using-site-speed-in-web-search-ranking.html">decided</a> to, że czas ładowania strony będzie miał wpływ na jej pozycję w rankingach wyszukiwań, wydajność stała się jednym z głównych priorytetów, tuż obok funkcjonalności.
+Jest to kolejny sposób, w którym poprawa wydajności strony ma pozytywny wpływ na stronę internetową.</p>
+<p>Benchmarki poniżej pokazują jak efektywny jest Phalcon w porównaniu z innymi, tradycyjnymi frameworkami PHP.
+Benchmarki te są aktualizowane, gdy  tylko wydawane są stabilne wersje wspomnianych frameworków lub Phalcona.</p>
+<p>Zachęcamy programistów do klonowania pakietów testowych, których używamy do naszych benchmarków.
+Jeżeli masz jakiekolwiek dodatkowe optymalizacje lub komentarze, prosimy  <a class="reference external" href="https://github.com/phalcon/framework-bench">write us</a>. <a class="reference external" href="https://github.com/phalcon/framework-bench">Check out source at Github</a></p>
+<div class="section" id="jakie-bylo-srodowisko-testowe">
+<h2>Jakie było środowisko testowe?<a class="headerlink" href="#jakie-bylo-srodowisko-testowe" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p><a class="reference external" href="http://php.net/manual/en/book.apc.php">APC</a> intermediate cachowanie kodu było włączone dla wszystkich frameworków. Funkcje przepisywania linków Apache zostały wyłączone, aby uniknąć potencjalnych różnic .</p>
+<p>Testowe środowisko sprzętowe jest następujące:</p>
+<ul class="simple">
+<li>System Operacyjny: Mac OS X Lion 10.7.4</li>
+<li>Serwer WWW: Apache httpd 2.2.22</li>
+<li>PHP: 5.3.15</li>
+<li>CPU: 2.04 Ghz Intel Core i5</li>
+<li>Pamięć RAM: 4GB 1333 MHz DDR3</li>
+<li>Dysk Twardy: 500GB SATA Disk</li>
+</ul>
+<p><em>Wersja PHP i phpinfo():</em></p>
+<div class="figure align-center">
+<img alt="../_images/bench-4.png" src="../_images/bench-4.png" />
+</div>
+<p><em>Ustawienia APC:</em></p>
+<div class="figure align-center">
+<img alt="../_images/bench-5.png" src="../_images/bench-5.png" />
+</div>
+</div>
+<div class="section" id="lista-benchmarkow">
+<h2>Lista Benchmarków<a class="headerlink" href="#lista-benchmarkow" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="benchmark/hello-world.html">Hello World Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark/micro.html">Micro Benchmark</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="historia-zmian">
+<h2>Historia Zmian<a class="headerlink" href="#historia-zmian" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p class="versionadded">
+<span class="versionmodified">Nowe w wersji 1.0: </span>Aktualizacja 20 Marca 2012: Benchmarks redone changing the apc.stat setting to Off. More Info</p>
+<p class="versionchanged">
+<span class="versionmodified">Zmienione w wersji 1.1: </span>Aktualizacja 13 Maja 2012: Benchmarks redone PHP plain templating engine instead of Twig for Symfony. Configuration settings for Yii were also changed as recommended.</p>
+<p class="versionchanged">
+<span class="versionmodified">Zmienione w wersji 1.2: </span>Aktualizacja 20 Maja 2012: Dodano Fuel Framework.</p>
+<p class="versionchanged">
+<span class="versionmodified">Zmienione w wersji 1.3: </span>Aktualizacja 4 Czerwca 2012: Dodano Cake Framework. Jednakże nie jest obecny w zestawieniach, gdyż przez 30 sekund zdołał przetworzyć 10 z 1000 zapytań...</p>
+<p class="versionchanged">
+<span class="versionmodified">Zmienione w wersji 1.4: </span>Aktualizacja 27 Sierpnia 2012: PHP zaktualizowany do 5.3.15, APC zaktualizowany do 3.1.11, Yii  zaktualizowany do 1.1.12, Phalcon zaktualizowany do 0.5.0, Dodano Laravel, OS zaktualizowany do Mac OS X Lion. Uaktualnienie Hardware.</p>
+</div>
+<div class="section" id="zrodla-zewnetrzne">
+<h2>Źródła Zewnętrzne<a class="headerlink" href="#zrodla-zewnetrzne" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://www.nytimes.com/2012/03/01/technology/impatient-web-users-flee-slow-loading-sites.html?pagewanted=all&amp;_r=0">For Impatient Web Users, an Eye Blink Is Just Too Long to Wait</a></li>
+<li><a class="reference external" href="https://github.com/zenorocha/browser-diet/wiki/Impact-of-performance">Millionaires performance cases: Impact of performance</a></li>
+<li><a class="reference external" href="http://www.stevesouders.com/blog/2013/05/09/how-fast-are-we-going-now/">How fast are we going now?</a></li>
+<li><cite>Speed, performance and human perception</cite> &lt;<a class="reference external" href="http://chimera.labs.oreilly.com/books/1230000000545/ch10.html#SPEED_PERFORMANCE_HUMAN_PERCEPTION">http://chimera.labs.oreilly.com/books/1230000000545/ch10.html#SPEED_PERFORMANCE_HUMAN_PERCEPTION</a>&gt;`_</li>
+</ul>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Indeks ogólny"
+             >indeks</a></li>
+        <li class="right" >
+          <a href="benchmark/hello-world.html" title="Hello World Benchmark"
+             >dalej</a> |</li>
+        <li class="right" >
+          <a href="motivation.html" title="Nasza motywacja"
+             >wstecz</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+
+          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Except where otherwise noted, content on this site is licensed under the
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Ostatnia modyfikacja Oct 21, 2014.
+            Utworzone przy pomocy <a href="http://sphinx.pocoo.org/">Sphinx</a>'a 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team and contributors.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Donate to Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    or
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+      /*window.setTimeout(function(){
+        $('.gsc-search-button').css({
+          'background': '#f06715',
+          'padding': '2px',
+          'border': '0'
+        });
+      }, 1000)*/
+    });
+    </script>
+
+  </body>
+</html>

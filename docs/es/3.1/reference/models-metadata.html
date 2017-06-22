@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Models Metadata &mdash; documentación de Phalcon - 3.1.1 (Spanish / Español)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="documentación de Phalcon - 3.1.1" href="../index.html" />
+    <link rel="next" title="Model Transactions" href="model-transactions.html" />
+    <link rel="prev" title="Model Behaviors" href="model-behaviors.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="model-transactions.html" title="Model Transactions"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="model-behaviors.html" title="Model Behaviors"
+             accesskey="P">anterior</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">documentación de Phalcon - 3.1.1</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Tabla de Contenidos</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Models Metadata</a><ul>
+<li><a class="reference internal" href="#caching-metadata">Caching Metadata</a></li>
+<li><a class="reference internal" href="#metadata-strategies">Metadata Strategies</a><ul>
+<li><a class="reference internal" href="#database-introspection-strategy">Database Introspection Strategy</a></li>
+<li><a class="reference internal" href="#annotations-strategy">Annotations Strategy</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manual-metadata">Manual Metadata</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Tema anterior</h4>
+            <p class="topless"><a href="model-behaviors.html" title="capítulo anterior">&lt; Model Behaviors</a></p>
+            <h4>Próximo tema</h4>
+            <p class="topless"><a href="model-transactions.html" title="próximo capítulo">Model Transactions &gt;</a></p>
+            <h3>Esta página</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/models-metadata.txt" rel="nofollow">Mostrar el código</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="models-metadata">
+<h1>Models Metadata<a class="headerlink" href="#models-metadata" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>To speed up development <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> helps you to query fields and constraints from tables
+related to models. To achieve this, <a class="reference internal" href="../api/Phalcon_Mvc_Model_MetaData.html"><em>Phalcon\Mvc\Model\MetaData</em></a> is available to manage
+and cache table metadata.</p>
+<p>Sometimes it is necessary to get those attributes when working with models. You can get a metadata instance as follows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+
+<span class="c1">// Get Phalcon\Mvc\Model\Metadata instance</span>
+<span class="nv">$metadata</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getModelsMetaData</span><span class="p">();</span>
+
+<span class="c1">// Get robots fields names</span>
+<span class="nv">$attributes</span> <span class="o">=</span> <span class="nv">$metadata</span><span class="o">-&gt;</span><span class="na">getAttributes</span><span class="p">(</span><span class="nv">$robot</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$attributes</span><span class="p">);</span>
+
+<span class="c1">// Get robots fields data types</span>
+<span class="nv">$dataTypes</span> <span class="o">=</span> <span class="nv">$metadata</span><span class="o">-&gt;</span><span class="na">getDataTypes</span><span class="p">(</span><span class="nv">$robot</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$dataTypes</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="caching-metadata">
+<h2>Caching Metadata<a class="headerlink" href="#caching-metadata" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each
+time you use the table. This could be done caching the metadata using any of the following adapters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="2%" />
+<col width="77%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Adapter</th>
+<th class="head">Description</th>
+<th class="head">API</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Memory</td>
+<td>This adapter is the default. The metadata is cached only during the request. When the request is completed, the metadata are released as part of the normal memory of the request. This adapter is perfect when the application is in development so as to refresh the metadata in each request containing the new and/or modified fields.</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_MetaData_Memory.html"><em>Phalcon\Mvc\Model\MetaData\Memory</em></a></td>
+</tr>
+<tr class="row-odd"><td>Session</td>
+<td>This adapter stores metadata in the <code class="code docutils literal"><span class="pre">$_SESSION</span></code> superglobal. This adapter is recommended only when the application is actually using a small number of models. The metadata are refreshed every time a new session starts. This also requires the use of <code class="code docutils literal"><span class="pre">session_start()</span></code> to start the session before using any models.</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_MetaData_Session.html"><em>Phalcon\Mvc\Model\MetaData\Session</em></a></td>
+</tr>
+<tr class="row-even"><td>Apc</td>
+<td>This adapter uses the <a class="reference external" href="http://www.php.net/manual/es/book.apc.php">Alternative PHP Cache (APC)</a> to store the table metadata. You can specify the lifetime of the metadata with options. This is the most recommended way to store metadata when the application is in production stage.</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_MetaData_Apc.html"><em>Phalcon\Mvc\Model\MetaData\Apc</em></a></td>
+</tr>
+<tr class="row-odd"><td>XCache</td>
+<td>This adapter uses <a class="reference external" href="http://xcache.lighttpd.net/">XCache</a> to store the table metadata. You can specify the lifetime of the metadata with options. This is the most recommended way to store metadata when the application is in production stage.</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_MetaData_Xcache.html"><em>Phalcon\Mvc\Model\MetaData\Xcache</em></a></td>
+</tr>
+<tr class="row-even"><td>Files</td>
+<td>This adapter uses plain files to store metadata. By using this adapter the disk-reading is increased but the database access is reduced.</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_MetaData_Files.html"><em>Phalcon\Mvc\Model\MetaData\Files</em></a></td>
+</tr>
+</tbody>
+</table>
+<p>As other ORM&#8217;s dependencies, the metadata manager is requested from the services container:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\MetaData\Apc</span> <span class="k">as</span> <span class="nx">ApcMetaData</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;modelsMetadata&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create a metadata manager with APC</span>
+    <span class="nv">$metadata</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ApcMetaData</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">86400</span><span class="p">,</span>
+            <span class="s2">&quot;prefix&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;my-prefix&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$metadata</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="metadata-strategies">
+<h2>Metadata Strategies<a class="headerlink" href="#metadata-strategies" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>As mentioned above the default strategy to obtain the model&#8217;s metadata is database introspection. In this strategy, the information
+schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.</p>
+<p>You can change the default metadata introspection in the following way:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\MetaData\Apc</span> <span class="k">as</span> <span class="nx">ApcMetaData</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;modelsMetadata&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Instantiate a metadata adapter</span>
+    <span class="nv">$metadata</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ApcMetaData</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">86400</span><span class="p">,</span>
+            <span class="s2">&quot;prefix&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;my-prefix&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">);</span>
+
+    <span class="c1">// Set a custom metadata introspection strategy</span>
+    <span class="nv">$metadata</span><span class="o">-&gt;</span><span class="na">setStrategy</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nx">MyIntrospectionStrategy</span><span class="p">()</span>
+    <span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$metadata</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="section" id="database-introspection-strategy">
+<h3>Database Introspection Strategy<a class="headerlink" href="#database-introspection-strategy" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>This strategy doesn&#8217;t require any customization and is implicitly used by all the metadata adapters.</p>
+</div>
+<div class="section" id="annotations-strategy">
+<h3>Annotations Strategy<a class="headerlink" href="#annotations-strategy" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>This strategy makes use of <a class="reference internal" href="annotations.html"><em>annotations</em></a> to describe the columns in a model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @Primary</span>
+<span class="sd">     * @Identity</span>
+<span class="sd">     * @Column(type=&quot;integer&quot;, nullable=false)</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Column(type=&quot;string&quot;, length=70, nullable=false)</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Column(type=&quot;string&quot;, length=32, nullable=false)</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$type</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Column(type=&quot;integer&quot;, nullable=false)</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$year</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the &#64;Column annotation
+are handled as simple class attributes.</p>
+<p>The following annotations are supported:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Primary</td>
+<td>Mark the field as part of the table&#8217;s primary key</td>
+</tr>
+<tr class="row-odd"><td>Identity</td>
+<td>The field is an auto_increment/serial column</td>
+</tr>
+<tr class="row-even"><td>Column</td>
+<td>This marks an attribute as a mapped column</td>
+</tr>
+</tbody>
+</table>
+<p>The annotation &#64;Column supports the following parameters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>The column&#8217;s type (string, integer, decimal, boolean)</td>
+</tr>
+<tr class="row-odd"><td>length</td>
+<td>The column&#8217;s length if any</td>
+</tr>
+<tr class="row-even"><td>nullable</td>
+<td>Set whether the column accepts null values or not</td>
+</tr>
+</tbody>
+</table>
+<p>The annotations strategy could be set up this way:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\MetaData\Apc</span> <span class="k">as</span> <span class="nx">ApcMetaData</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\MetaData\Strategy\Annotations</span> <span class="k">as</span> <span class="nx">StrategyAnnotations</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;modelsMetadata&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Instantiate a metadata adapter</span>
+    <span class="nv">$metadata</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ApcMetaData</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">86400</span><span class="p">,</span>
+            <span class="s2">&quot;prefix&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;my-prefix&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">);</span>
+
+    <span class="c1">// Set a custom metadata database introspection</span>
+    <span class="nv">$metadata</span><span class="o">-&gt;</span><span class="na">setStrategy</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nx">StrategyAnnotations</span><span class="p">()</span>
+    <span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$metadata</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="manual-metadata">
+<h2>Manual Metadata<a class="headerlink" href="#manual-metadata" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Phalcon can obtain the metadata for each model automatically without the developer must set them manually
+using any of the introspection strategies presented above.</p>
+<p>The developer also has the option of define the metadata manually. This strategy overrides
+any strategy set in the metadata manager. New columns added/modified/removed to/from the mapped
+table must be added/modified/removed also for everything to work properly.</p>
+<p>The following example shows how to define the metadata manually:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Db\Column</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\MetaData</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">metaData</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+            <span class="c1">// Every column in the mapped table</span>
+            <span class="nx">MetaData</span><span class="o">::</span><span class="na">MODELS_ATTRIBUTES</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;year&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+
+            <span class="c1">// Every column part of the primary key</span>
+            <span class="nx">MetaData</span><span class="o">::</span><span class="na">MODELS_PRIMARY_KEY</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+
+            <span class="c1">// Every column that isn&#39;t part of the primary key</span>
+            <span class="nx">MetaData</span><span class="o">::</span><span class="na">MODELS_NON_PRIMARY_KEY</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;year&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+
+            <span class="c1">// Every column that doesn&#39;t allows null values</span>
+            <span class="nx">MetaData</span><span class="o">::</span><span class="na">MODELS_NOT_NULL</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+
+            <span class="c1">// Every column and their data types</span>
+            <span class="nx">MetaData</span><span class="o">::</span><span class="na">MODELS_DATA_TYPES</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">&quot;id&quot;</span>   <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_VARCHAR</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_VARCHAR</span><span class="p">,</span>
+                <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
+            <span class="p">],</span>
+
+            <span class="c1">// The columns that have numeric data types</span>
+            <span class="nx">MetaData</span><span class="o">::</span><span class="na">MODELS_DATA_TYPES_NUMERIC</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">&quot;id&quot;</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="p">],</span>
+
+            <span class="c1">// The identity column, use boolean false if the model doesn&#39;t have</span>
+            <span class="c1">// an identity column</span>
+            <span class="nx">MetaData</span><span class="o">::</span><span class="na">MODELS_IDENTITY_COLUMN</span> <span class="o">=&gt;</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+
+            <span class="c1">// How every column must be bound/casted</span>
+            <span class="nx">MetaData</span><span class="o">::</span><span class="na">MODELS_DATA_TYPES_BIND</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">&quot;id&quot;</span>   <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">BIND_PARAM_INT</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">BIND_PARAM_STR</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">BIND_PARAM_STR</span><span class="p">,</span>
+                <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">BIND_PARAM_INT</span><span class="p">,</span>
+            <span class="p">],</span>
+
+            <span class="c1">// Fields that must be ignored from INSERT SQL statements</span>
+            <span class="nx">MetaData</span><span class="o">::</span><span class="na">MODELS_AUTOMATIC_DEFAULT_INSERT</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="p">],</span>
+
+            <span class="c1">// Fields that must be ignored from UPDATE SQL statements</span>
+            <span class="nx">MetaData</span><span class="o">::</span><span class="na">MODELS_AUTOMATIC_DEFAULT_UPDATE</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="p">],</span>
+
+            <span class="c1">// Default values for columns</span>
+            <span class="nx">MetaData</span><span class="o">::</span><span class="na">MODELS_DEFAULT_VALUES</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;2015&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+
+            <span class="c1">// Fields that allow empty strings</span>
+            <span class="nx">MetaData</span><span class="o">::</span><span class="na">MODELS_EMPTY_STRING_VALUES</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="model-transactions.html" title="Model Transactions"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="model-behaviors.html" title="Model Behaviors"
+             >anterior</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+  </body>
+</html>

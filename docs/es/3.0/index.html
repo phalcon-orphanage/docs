@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome &mdash; Phalcon 3.1.1 documentation (English)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="_static/docs.js"></script>
+    <link rel="shortcut icon" href="https://static.phalconphp.com/www/images/favicon.ico"/>
+    <link rel="top" title="Phalcon 3.1.1 documentation" href="#" />
+    <link rel="next" title="Installation" href="reference/install.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="reference/install.html" title="Installation"
+             accesskey="N">next</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="#">Phalcon 3.1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="#">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Welcome</a><ul>
+<li><a class="reference internal" href="#what-is-phalcon">What is Phalcon</a></li>
+<li><a class="reference internal" href="#table-of-contents">Table of Contents</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li><a class="reference internal" href="#components">Components</a></li>
+<li><a class="reference internal" href="#in-depth-explanations-further-reading">In Depth Explanations / Further Reading</a></li>
+<li><a class="reference internal" href="#api">API</a></li>
+<li><a class="reference internal" href="#legal">Legal</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#previous-versions">Previous Versions</a></li>
+<li><a class="reference internal" href="#other-formats">Other formats</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Next topic</h4>
+            <p class="topless"><a href="reference/install.html" title="next chapter">Installation &gt;</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/index.txt" rel="nofollow">Show Source</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="welcome">
+<h1>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to Phalcon framework. Our mission is to give you an advanced tool for developing the faster web sites and applications with PHP.</p>
+<div class="section" id="what-is-phalcon">
+<h2>What is Phalcon<a class="headerlink" href="#what-is-phalcon" title="Permalink to this headline">¶</a></h2>
+<p>Phalcon is an open source, full stack framework for PHP written as a C-extension, optimized for high performance.
+You don&#8217;t need to learn or use the C language, since the functionality is exposed as PHP classes ready for you to use.
+Phalcon also is loosely coupled, allowing you to use its objects as glue components based on the needs of your application.</p>
+<p>Phalcon is not only about performance, our goal is to make it robust, rich in features and easy to use!</p>
+</div>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/install.html#windows">Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/install.html#related-guides">Related Guides</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/install.html#linux-solaris">Linux/Solaris</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/install.html#debian-ubuntu">Debian / Ubuntu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/install.html#rpm-distributions-i-e-centos">RPM distributions (i.e. CentOS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/install.html#compile-from-source">Compile from source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/install.html#mac-os-x">Mac OS X</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/install.html#requirements">Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/install.html#freebsd">FreeBSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/install.html#checking-your-installation">Checking your installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/install.html#installation-notes">Installation Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/apache.html">Apache Installation Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/nginx.html">Nginx Installation Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/cherokee.html">Cherokee Installation Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/built-in.html">Using PHP Built-in webserver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/nginx.html">Nginx Installation Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/nginx.html#configuring-nginx-for-phalcon">Configuring Nginx for Phalcon</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/nginx.html#basic-configuration">Basic configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/apache.html">Apache Installation Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/apache.html#configuring-apache-for-phalcon">Configuring Apache for Phalcon</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/apache.html#directory-under-the-main-document-root">Directory under the main Document Root</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/apache.html#virtual-hosts">Virtual Hosts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/cherokee.html">Cherokee Installation Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/cherokee.html#configuring-cherokee-for-phalcon">Configuring Cherokee for Phalcon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/tools.html">Phalcon Developer Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/tools.html#download">Download</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/tools.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tools.html#getting-available-commands">Getting Available Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tools.html#generating-a-project-skeleton">Generating a Project Skeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tools.html#generating-controllers">Generating Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tools.html#preparing-database-settings">Preparing Database Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tools.html#generating-models">Generating Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tools.html#scaffold-a-crud">Scaffold a CRUD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tools.html#web-interface-to-tools">Web Interface to Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tools.html#integrating-tools-with-phpstorm-ide">Integrating Tools with PhpStorm IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tools.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/linuxtools.html">Phalcon Developer Tools on Linux</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/linuxtools.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/linuxtools.html#download">Download</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/linuxtools.html#related-guides">Related Guides</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/mactools.html">Phalcon Developer Tools on Mac OS X</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/mactools.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/mactools.html#download">Download</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/mactools.html#related-guides">Related Guides</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/wintools.html">Phalcon Developer Tools on Windows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/wintools.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/wintools.html#download">Download</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/wintools.html#adding-php-and-tools-to-your-system-path">Adding PHP and Tools to your system PATH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/wintools.html#related-guides">Related Guides</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="tutorials">
+<h3>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/tutorial.html">Tutorial 1: Let&#8217;s learn by example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial.html#file-structure">File structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/tutorial.html#autoloaders">Autoloaders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/tutorial.html#dependency-management">Dependency Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/tutorial.html#handling-the-application-request">Handling the application request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/tutorial.html#putting-everything-together">Putting everything together</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial.html#creating-a-controller">Creating a Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial.html#sending-output-to-a-view">Sending output to a view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial.html#designing-a-sign-up-form">Designing a sign up form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial.html#creating-a-model">Creating a Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial.html#setting-a-database-connection">Setting a Database Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial.html#storing-data-using-models">Storing data using models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/tutorial-invo.html">Tutorial 2: Introducing INVO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo.html#project-structure">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo.html#routing">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo.html#autoloaders">Autoloaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo.html#registering-services">Registering services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo.html#handling-the-request">Handling the Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo.html#dependency-injection">Dependency Injection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/tutorial-invo-2.html">Tutorial 3: Securing INVO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo-2.html#log-into-the-application">Log into the Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo-2.html#securing-the-backend">Securing the Backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/tutorial-invo-2.html#events-management">Events Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/tutorial-invo-2.html#providing-an-acl-list">Providing an ACL list</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/tutorial-invo-3.html">Tutorial 4: Working with the CRUD</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo-3.html#the-search-form">The Search Form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo-3.html#performing-a-search">Performing a Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo-3.html#creating-and-updating-records">Creating and Updating Records</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/tutorial-invo-4.html">Tutorial 5: Customizing INVO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo-4.html#user-components">User Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-invo-4.html#changing-the-title-dynamically">Changing the Title Dynamically</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/tutorial-vokuro.html">Tutorial 6: Vökuró</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-vokuro.html#project-structure">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-vokuro.html#load-classes-and-dependencies">Load Classes and Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-vokuro.html#sign-up">Sign Up</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/tutorial-rest.html">Tutorial 7: Creating a Simple REST API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-rest.html#defining-the-api">Defining the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-rest.html#creating-the-application">Creating the Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-rest.html#creating-a-model">Creating a Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-rest.html#retrieving-data">Retrieving Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-rest.html#inserting-data">Inserting Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-rest.html#updating-data">Updating Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-rest.html#deleting-data">Deleting Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-rest.html#testing-our-application">Testing our Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tutorial-rest.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/samples.html">List of examples</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="components">
+<h3>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/di.html">Dependency Injection/Service Location</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/di.html#registering-services-in-the-container">Registering services in the Container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/di.html#simple-registration">Simple Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/di.html#complex-registration">Complex Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/di.html#array-syntax">Array Syntax</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/di.html#resolving-services">Resolving Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/di.html#events">Events</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/di.html#shared-services">Shared services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/di.html#manipulating-services-individually">Manipulating services individually</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/di.html#instantiating-classes-via-the-service-container">Instantiating classes via the Service Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/di.html#automatic-injecting-of-the-di-itself">Automatic Injecting of the DI itself</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/di.html#organizing-services-in-files">Organizing services in files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/di.html#accessing-the-di-in-a-static-way">Accessing the DI in a static way</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/di.html#factory-default-di">Factory Default DI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/di.html#service-name-conventions">Service Name Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/di.html#implementing-your-own-di">Implementing your own DI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/mvc.html">The MVC Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/mvc.html#models">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/mvc.html#views">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/mvc.html#controllers">Controllers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/controllers.html">Using Controllers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/controllers.html#dispatch-loop">Dispatch Loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/controllers.html#initializing-controllers">Initializing Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/controllers.html#injecting-services">Injecting Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/controllers.html#request-and-response">Request and Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/controllers.html#session-data">Session Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/controllers.html#using-services-as-controllers">Using Services as Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/controllers.html#events-in-controllers">Events in Controllers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/models.html">Working with Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/models.html#creating-models">Creating Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/models.html#public-properties-vs-setters-getters">Public properties vs. Setters/Getters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models.html#understanding-records-to-objects">Understanding Records To Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models.html#finding-records">Finding Records</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/models.html#model-resultsets">Model Resultsets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/models.html#filtering-resultsets">Filtering Resultsets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/models.html#binding-parameters">Binding Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models.html#initializing-preparing-fetched-records">Initializing/Preparing fetched records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models.html#generating-calculations">Generating Calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models.html#creating-updating-records">Creating/Updating Records</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/models.html#create-update-with-confidence">Create/Update with Confidence</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models.html#deleting-records">Deleting Records</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/model-relationships.html">Model Relationships</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-relationships.html#relationships-between-models">Relationships between Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/model-relationships.html#unidirectional-relationships">Unidirectional relationships</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/model-relationships.html#bidirectional-relations">Bidirectional relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/model-relationships.html#defining-relationships">Defining relationships</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/model-relationships.html#taking-advantage-of-relationships">Taking advantage of relationships</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/model-relationships.html#aliasing-relationships">Aliasing Relationships</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/model-relationships.html#magic-getters-vs-explicit-methods">Magic Getters vs. Explicit methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-relationships.html#virtual-foreign-keys">Virtual Foreign Keys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/model-relationships.html#cascade-restrict-actions">Cascade/Restrict actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-relationships.html#storing-related-records">Storing Related Records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-relationships.html#operations-over-resultsets">Operations over Resultsets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/model-relationships.html#updating-related-records">Updating related records</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/model-relationships.html#deleting-related-records">Deleting related records</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/model-events.html">Model Events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-events.html#events-and-events-manager">Events and Events Manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/model-events.html#implementing-events-in-the-model-s-class">Implementing Events in the Model&#8217;s class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/model-events.html#using-a-custom-events-manager">Using a custom Events Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-events.html#logging-low-level-sql-statements">Logging Low-Level SQL Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-events.html#profiling-sql-statements">Profiling SQL Statements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/model-behaviors.html">Model Behaviors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-behaviors.html#timestampable">Timestampable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-behaviors.html#softdelete">SoftDelete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-behaviors.html#creating-your-own-behaviors">Creating your own behaviors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-behaviors.html#using-traits-as-behaviors">Using Traits as behaviors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/models-metadata.html">Models Metadata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-metadata.html#caching-metadata">Caching Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-metadata.html#metadata-strategies">Metadata Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/models-metadata.html#database-introspection-strategy">Database Introspection Strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/models-metadata.html#annotations-strategy">Annotations Strategy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-metadata.html#manual-metadata">Manual Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/model-transactions.html">Model Transactions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-transactions.html#manual-transactions">Manual Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-transactions.html#implicit-transactions">Implicit Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-transactions.html#isolated-transactions">Isolated Transactions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/model-validation.html">Validating Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-validation.html#validating-data-integrity">Validating Data Integrity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-validation.html#validation-messages">Validation Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/model-validation.html#validation-failed-events">Validation Failed Events</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/models-advanced.html">Working with Models (Advanced)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-advanced.html#hydration-modes">Hydration Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-advanced.html#auto-generated-identity-columns">Auto-generated identity columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-advanced.html#skipping-columns">Skipping Columns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/models-advanced.html#dynamic-update">Dynamic Update</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-advanced.html#independent-column-mapping">Independent Column Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-advanced.html#record-snapshots">Record Snapshots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-advanced.html#pointing-to-a-different-schema">Pointing to a different schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-advanced.html#setting-multiple-databases">Setting multiple databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-advanced.html#injecting-services-into-models">Injecting services into Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-advanced.html#disabling-enabling-features">Disabling/Enabling Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-advanced.html#stand-alone-component">Stand-Alone component</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/phql.html">Phalcon Query Language (PHQL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#usage-example">Usage Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#creating-phql-queries">Creating PHQL Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#selecting-records">Selecting Records</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/phql.html#result-types">Result Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/phql.html#joins">Joins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/phql.html#aggregations">Aggregations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/phql.html#conditions">Conditions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#inserting-data">Inserting Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#updating-data">Updating Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#deleting-data">Deleting Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#creating-queries-using-the-query-builder">Creating queries using the Query Builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/phql.html#bound-parameters">Bound Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#disallow-literals-in-phql">Disallow literals in PHQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#escaping-reserved-words">Escaping Reserved Words</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#phql-lifecycle">PHQL Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#using-raw-sql">Using Raw SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/models-cache.html">Caching in the ORM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-cache.html#caching-resultsets">Caching Resultsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-cache.html#forcing-cache">Forcing Cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-cache.html#caching-phql-queries">Caching PHQL Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-cache.html#reusable-related-records">Reusable Related Records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-cache.html#caching-related-records">Caching Related Records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-cache.html#caching-related-records-recursively">Caching Related Records Recursively</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-cache.html#caching-based-on-conditions">Caching based on Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/models-cache.html#caching-of-phql-planning">Caching of PHQL planning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/odm.html">ODM (Object-Document Mapper)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/odm.html#creating-models">Creating Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/odm.html#understanding-documents-to-objects">Understanding Documents To Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/odm.html#models-in-namespaces">Models in Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/odm.html#setting-a-connection">Setting a Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/odm.html#finding-documents">Finding Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/odm.html#aggregations">Aggregations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/odm.html#creating-updating-records">Creating Updating/Records</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/odm.html#validation-messages">Validation Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/odm.html#validation-events-and-events-manager">Validation Events and Events Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/odm.html#implementing-a-business-rule">Implementing a Business Rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/odm.html#validating-data-integrity">Validating Data Integrity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/odm.html#deleting-records">Deleting Records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/odm.html#validation-failed-events">Validation Failed Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/odm.html#implicit-ids-vs-user-primary-keys">Implicit Ids vs. User Primary Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/odm.html#setting-multiple-databases">Setting multiple databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/odm.html#injecting-services-into-models">Injecting services into Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/views.html">Using Views</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/views.html#integrating-views-with-controllers">Integrating Views with Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/views.html#hierarchical-rendering">Hierarchical Rendering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/views.html#using-templates">Using Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/views.html#control-rendering-levels">Control Rendering Levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/views.html#disabling-render-levels">Disabling render levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/views.html#picking-views">Picking Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/views.html#disabling-the-view">Disabling the view</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/views.html#simple-rendering">Simple Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/views.html#using-partials">Using Partials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/views.html#transfer-values-from-the-controller-to-views">Transfer values from the controller to views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/views.html#caching-view-fragments">Caching View Fragments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/views.html#template-engines">Template Engines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/views.html#creating-your-own-template-engine-adapter">Creating your own Template Engine Adapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/views.html#changing-the-template-engine">Changing the Template Engine</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/views.html#injecting-services-in-view">Injecting services in View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/views.html#stand-alone-component">Stand-Alone Component</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/views.html#id1">Hierarchical Rendering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/views.html#id2">Simple Rendering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/views.html#view-events">View Events</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/tags.html">View Helpers (Tags)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/tags.html#document-type-of-content">Document Type of Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tags.html#generating-links">Generating Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tags.html#creating-forms">Creating Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tags.html#helpers-to-generate-form-elements">Helpers to Generate Form Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tags.html#making-select-boxes">Making Select Boxes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tags.html#assigning-html-attributes">Assigning HTML attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tags.html#setting-helper-values">Setting Helper Values</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/tags.html#from-controllers">From Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/tags.html#from-the-request">From the Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/tags.html#specifying-values-directly">Specifying values directly</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tags.html#changing-dynamically-the-document-title">Changing dynamically the Document Title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tags.html#static-content-helpers">Static Content Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/tags.html#images">Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/tags.html#stylesheets">Stylesheets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/tags.html#javascript">Javascript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/tags.html#html5-elements-generic-html-helper">HTML5 elements - generic HTML helper</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tags.html#tag-service">Tag Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/tags.html#creating-your-own-helpers">Creating your own helpers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/assets.html">Assets Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/assets.html#adding-resources">Adding Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/assets.html#local-remote-resources">Local/Remote resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/assets.html#collections">Collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/assets.html#url-prefixes">URL Prefixes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/assets.html#minification-filtering">Minification/Filtering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/assets.html#built-in-filters">Built-In Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/assets.html#custom-filters">Custom Filters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/assets.html#custom-output">Custom Output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/volt.html">Volt: Template Engine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#activating-volt">Activating Volt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#variables">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#filters">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#comments">Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#list-of-control-structures">List of Control Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#for">For</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#loop-controls">Loop Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#if">If</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#loop-context">Loop Context</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#assignments">Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#expressions">Expressions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#literals">Literals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#arrays">Arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#math">Math</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#comparisons">Comparisons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#logic">Logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#other-operators">Other Operators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#tests">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#macros">Macros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#using-tag-helpers">Using Tag Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#view-integration">View Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#include">Include</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#partial-vs-include">Partial vs Include</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#template-inheritance">Template Inheritance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#multiple-inheritance">Multiple Inheritance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#autoescape-mode">Autoescape mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#extending-volt">Extending Volt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#id1">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#id2">Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/volt.html#extensions">Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#caching-view-fragments">Caching view fragments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#inject-services-into-a-template">Inject Services into a Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#stand-alone-component">Stand-alone component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/volt.html#external-resources">External Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/applications.html">MVC Applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/applications.html#single-or-multi-module-applications">Single or Multi Module Applications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/applications.html#single-module">Single Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/applications.html#multi-module">Multi Module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/applications.html#application-events">Application Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/applications.html#external-resources">External Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/routing.html">Routing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#defining-routes">Defining Routes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/routing.html#parameters-with-names">Parameters with Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/routing.html#short-syntax">Short Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/routing.html#mixing-array-and-short-syntax">Mixing Array and Short Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/routing.html#routing-to-modules">Routing to Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/routing.html#http-method-restrictions">HTTP Method Restrictions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/routing.html#using-conversors">Using conversors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/routing.html#groups-of-routes">Groups of Routes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#matching-routes">Matching Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#naming-routes">Naming Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#usage-examples">Usage Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#default-behavior">Default Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#setting-the-default-route">Setting the default route</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#not-found-paths">Not Found Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#setting-default-paths">Setting default paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#dealing-with-extra-trailing-slashes">Dealing with extra/trailing slashes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#match-callbacks">Match Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#hostname-constraints">Hostname Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#uri-sources">URI Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#testing-your-routes">Testing your routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#annotations-router">Annotations Router</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#registering-router-instance">Registering Router instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/routing.html#implementing-your-own-router">Implementing your own Router</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/dispatching.html">Dispatching Controllers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/dispatching.html#the-dispatch-loop">The Dispatch Loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/dispatching.html#dispatch-loop-events">Dispatch Loop Events</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/dispatching.html#forwarding-to-other-actions">Forwarding to other actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/dispatching.html#preparing-parameters">Preparing Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/dispatching.html#getting-parameters">Getting Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/dispatching.html#preparing-actions">Preparing actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/dispatching.html#camelize-action-names">Camelize action names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/dispatching.html#remove-legacy-extensions">Remove legacy extensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/dispatching.html#inject-model-instances">Inject model instances</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/dispatching.html#handling-not-found-exceptions">Handling Not-Found Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/dispatching.html#implementing-your-own-dispatcher">Implementing your own Dispatcher</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/micro.html">Micro Applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#creating-a-micro-application">Creating a Micro Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#defining-routes">Defining routes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/micro.html#routes-with-parameters">Routes with Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/micro.html#starting-route">Starting Route</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/micro.html#rewrite-rules">Rewrite Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#working-with-responses">Working with Responses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#making-redirections">Making redirections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#generating-urls-for-routes">Generating URLs for Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#interacting-with-the-dependency-injector">Interacting with the Dependency Injector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#not-found-handler">Not-Found Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#models-in-micro-applications">Models in Micro Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#inject-model-instances">Inject model instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#micro-application-events">Micro Application Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#middleware-events">Middleware events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#using-controllers-as-handlers">Using Controllers as Handlers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#returning-responses">Returning Responses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#rendering-views">Rendering Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/micro.html#related-sources">Related Sources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/namespaces.html">Working with Namespaces</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/namespaces.html#setting-up-the-framework">Setting up the framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/namespaces.html#controllers-in-namespaces">Controllers in Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/namespaces.html#models-in-namespaces">Models in Namespaces</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/events.html">Events Manager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/events.html#naming-convention">Naming Convention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/events.html#usage-example">Usage Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/events.html#creating-components-that-trigger-events">Creating components that trigger Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/events.html#using-services-from-the-di">Using Services From The DI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/events.html#event-propagation-cancellation">Event Propagation/Cancellation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/events.html#listener-priorities">Listener Priorities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/events.html#collecting-responses">Collecting Responses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/events.html#implementing-your-own-eventsmanager">Implementing your own EventsManager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/request.html">Request Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/request.html#getting-values">Getting Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/request.html#accessing-the-request-from-controllers">Accessing the Request from Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/request.html#uploading-files">Uploading Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/request.html#working-with-headers">Working with Headers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/response.html">Returning Responses</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/response.html#working-with-headers">Working with Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/response.html#making-redirections">Making Redirections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/response.html#http-cache">HTTP Cache</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/response.html#setting-an-expiration-time">Setting an Expiration Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/response.html#cache-control">Cache-Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/response.html#e-tag">E-Tag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/cookies.html">Cookies Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/cookies.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cookies.html#encryption-decryption-of-cookies">Encryption/Decryption of Cookies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/url.html">Generating URLs and Paths</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/url.html#setting-a-base-uri">Setting a base URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/url.html#generating-uris">Generating URIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/url.html#producing-urls-without-mod-rewrite">Producing URLs without mod_rewrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/url.html#producing-urls-from-volt">Producing URLs from Volt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/url.html#static-vs-dynamic-uris">Static vs. Dynamic URIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/url.html#implementing-your-own-url-generator">Implementing your own URL Generator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/flash.html">Flashing Messages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/flash.html#adapters">Adapters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/flash.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/flash.html#printing-messages">Printing Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/flash.html#implicit-flush-vs-session">Implicit Flush vs. Session</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/session.html">Storing data in Session</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/session.html#starting-the-session">Starting the Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/session.html#storing-retrieving-data-in-session">Storing/Retrieving data in Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/session.html#removing-destroying-sessions">Removing/Destroying Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/session.html#isolating-session-data-between-applications">Isolating Session Data between Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/session.html#session-bags">Session Bags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/session.html#persistent-data-in-components">Persistent Data in Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/session.html#implementing-your-own-adapters">Implementing your own adapters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/filter.html">Filtering and Sanitizing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/filter.html#types-of-built-in-filters">Types of Built-in Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/filter.html#sanitizing-data">Sanitizing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/filter.html#sanitizing-from-controllers">Sanitizing from Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/filter.html#filtering-action-parameters">Filtering Action Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/filter.html#filtering-data">Filtering data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/filter.html#combining-filters">Combining Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/filter.html#creating-your-own-filters">Creating your own Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/filter.html#complex-sanitizing-and-filtering">Complex Sanitizing and Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/filter.html#implementing-your-own-filter">Implementing your own Filter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/escaper.html">Contextual Escaping</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/escaper.html#escaping-html">Escaping HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/escaper.html#escaping-html-attributes">Escaping HTML Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/escaper.html#escaping-urls">Escaping URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/escaper.html#escaping-css">Escaping CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/escaper.html#escaping-javascript">Escaping JavaScript</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/validation.html">Validation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/validation.html#initializing-validation">Initializing Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/validation.html#validators">Validators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/validation.html#callback-validator">Callback Validator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/validation.html#validation-messages">Validation Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/validation.html#filtering-of-data">Filtering of Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/validation.html#validation-events">Validation Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/validation.html#cancelling-validations">Cancelling Validations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/validation.html#avoid-validate-empty-values">Avoid validate empty values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/validation.html#recursive-validation">Recursive Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/forms.html">Forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/forms.html#initializing-forms">Initializing forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/forms.html#validation">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/forms.html#filtering">Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/forms.html#forms-entities">Forms + Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/forms.html#form-elements">Form Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/forms.html#event-callbacks">Event Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/forms.html#rendering-forms">Rendering Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/forms.html#creating-form-elements">Creating Form Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/forms.html#forms-manager">Forms Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/forms.html#external-resources">External Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/config.html">Reading Configurations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/config.html#native-arrays">Native Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/config.html#file-adapters">File Adapters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/config.html#reading-ini-files">Reading INI Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/config.html#merging-configurations">Merging Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/config.html#injecting-configuration-dependency">Injecting Configuration Dependency</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/pagination.html">Pagination</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/pagination.html#data-adapters">Data Adapters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/pagination.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/pagination.html#adapters-usage">Adapters Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/pagination.html#page-attributes">Page Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/pagination.html#implementing-your-own-adapters">Implementing your own adapters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/cache.html">Improving Performance with Cache</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/cache.html#when-to-implement-cache">When to implement cache?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cache.html#caching-behavior">Caching Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cache.html#caching-output-fragments">Caching Output Fragments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cache.html#caching-arbitrary-data">Caching Arbitrary Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/cache.html#file-backend-example">File Backend Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/cache.html#memcached-backend-example">Memcached Backend Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cache.html#querying-the-cache">Querying the cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cache.html#deleting-data-from-the-cache">Deleting data from the cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cache.html#checking-cache-existence">Checking cache existence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cache.html#lifetime">Lifetime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cache.html#multi-level-cache">Multi-Level Cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cache.html#frontend-adapters">Frontend Adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/cache.html#implementing-your-own-frontend-adapters">Implementing your own Frontend adapters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cache.html#backend-adapters">Backend Adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/cache.html#implementing-your-own-backend-adapters">Implementing your own Backend adapters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/cache.html#file-backend-options">File Backend Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/cache.html#memcached-backend-options">Memcached Backend Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/cache.html#apc-backend-options">APC Backend Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/cache.html#mongo-backend-options">Mongo Backend Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/cache.html#xcache-backend-options">XCache Backend Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/cache.html#redis-backend-options">Redis Backend Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/security.html#password-hashing">Password Hashing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/security.html#cross-site-request-forgery-csrf-protection">Cross-Site Request Forgery (CSRF) protection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/security.html#setting-up-the-component">Setting up the component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/security.html#random">Random</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/security.html#external-resources">External Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/crypt.html">Encryption/Decryption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/crypt.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/crypt.html#encryption-options">Encryption Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/crypt.html#base64-support">Base64 Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/crypt.html#setting-up-an-encryption-service">Setting up an Encryption service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/acl.html">Access Control Lists (ACL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/acl.html#creating-an-acl">Creating an ACL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/acl.html#adding-roles-to-the-acl">Adding Roles to the ACL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/acl.html#adding-resources">Adding Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/acl.html#defining-access-controls">Defining Access Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/acl.html#querying-an-acl">Querying an ACL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/acl.html#function-based-access">Function based access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/acl.html#objects-as-role-name-and-resource-name">Objects as role name and resource name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/acl.html#roles-inheritance">Roles Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/acl.html#serializing-acl-lists">Serializing ACL lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/acl.html#acl-events">ACL Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/acl.html#implementing-your-own-adapters">Implementing your own adapters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/translate.html">Multi-lingual Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/translate.html#adapters">Adapters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/translate.html#component-usage">Component Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/translate.html#implementing-your-own-adapters">Implementing your own adapters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/loader.html">Class Autoloader</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/loader.html#security-layer">Security Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/loader.html#registering-namespaces">Registering Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/loader.html#registering-directories">Registering Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/loader.html#registering-classes">Registering Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/loader.html#registering-files">Registering Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/loader.html#additional-file-extensions">Additional file extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/loader.html#modifying-current-strategies">Modifying current strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/loader.html#autoloading-events">Autoloading Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/loader.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/logging.html">Logging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/logging.html#adapters">Adapters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/logging.html#creating-a-log">Creating a Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/logging.html#transactions">Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/logging.html#logging-to-multiple-handlers">Logging to Multiple Handlers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/logging.html#message-formatting">Message Formatting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/logging.html#line-formatter">Line Formatter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/logging.html#implementing-your-own-formatters">Implementing your own formatters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/logging.html#id1">Adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/logging.html#stream-logger">Stream Logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/logging.html#file-logger">File Logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/logging.html#syslog-logger">Syslog Logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/logging.html#firephp-logger">FirePHP Logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/logging.html#implementing-your-own-adapters">Implementing your own adapters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/annotations.html">Annotations Parser</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/annotations.html#reading-annotations">Reading Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/annotations.html#types-of-annotations">Types of Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/annotations.html#practical-usage">Practical Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/annotations.html#cache-enabler-with-annotations">Cache Enabler with Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/annotations.html#private-public-areas-with-annotations">Private/Public areas with Annotations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/annotations.html#annotations-adapters">Annotations Adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/annotations.html#implementing-your-own-adapters">Implementing your own adapters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/annotations.html#external-resources">External Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/cli.html">Command Line Applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/cli.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cli.html#creating-a-bootstrap">Creating a Bootstrap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cli.html#tasks">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cli.html#processing-action-parameters">Processing action parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cli.html#running-tasks-in-a-chain">Running tasks in a chain</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/images.html">Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/images.html#adapters">Adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/images.html#implementing-your-own-adapters">Implementing your own adapters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/images.html#saving-and-rendering-images">Saving and rendering images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/images.html#resizing-images">Resizing images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/images.html#phalcon-image-width"><code class="code docutils literal"><span class="pre">\Phalcon\Image::WIDTH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/images.html#phalcon-image-height"><code class="code docutils literal"><span class="pre">\Phalcon\Image::HEIGHT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/images.html#phalcon-image-none"><code class="code docutils literal"><span class="pre">\Phalcon\Image::NONE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/images.html#phalcon-image-tensile"><code class="code docutils literal"><span class="pre">\Phalcon\Image::TENSILE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/images.html#cropping-images">Cropping images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/images.html#rotating-images">Rotating images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/images.html#flipping-images">Flipping images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/images.html#sharpening-images">Sharpening images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/images.html#adding-watermarks-to-images">Adding watermarks to images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/images.html#blurring-images">Blurring images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/images.html#pixelating-images">Pixelating images</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/queue.html">Queueing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/queue.html#putting-jobs-into-the-queue">Putting Jobs into the Queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/queue.html#retrieving-messages">Retrieving Messages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/db.html">Database Abstraction Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/db.html#database-adapters">Database Adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/db.html#implementing-your-own-adapters">Implementing your own adapters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/db.html#database-dialects">Database Dialects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/db.html#implementing-your-own-dialects">Implementing your own dialects</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/db.html#connecting-to-databases">Connecting to Databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/db.html#setting-up-additional-pdo-options">Setting up additional PDO options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/db.html#finding-rows">Finding Rows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/db.html#binding-parameters">Binding Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/db.html#inserting-updating-deleting-rows">Inserting/Updating/Deleting Rows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/db.html#transactions-and-nested-transactions">Transactions and Nested Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/db.html#database-events">Database Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/db.html#profiling-sql-statements">Profiling SQL Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/db.html#logging-sql-statements">Logging SQL Statements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/db.html#implementing-your-own-logger">Implementing your own Logger</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/db.html#describing-tables-views">Describing Tables/Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/db.html#creating-altering-dropping-tables">Creating/Altering/Dropping Tables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/db.html#creating-tables">Creating Tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/db.html#altering-tables">Altering Tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/db.html#dropping-tables">Dropping Tables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/intl.html">Internationalization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/intl.html#find-out-best-available-locale">Find out best available Locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/intl.html#formatting-messages-based-on-locale">Formatting messages based on Locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/intl.html#locale-sensitive-comparison">Locale-Sensitive comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/intl.html#transliteration">Transliteration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/migrations.html">Database Migrations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/migrations.html#schema-dumping">Schema Dumping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/migrations.html#migration-class-anatomy">Migration Class Anatomy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/migrations.html#defining-columns">Defining Columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/migrations.html#defining-indexes">Defining Indexes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/migrations.html#defining-references">Defining References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/migrations.html#writing-migrations">Writing Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/migrations.html#running-migrations">Running Migrations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/debug.html">Debugging Applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/debug.html#catching-exceptions">Catching Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/debug.html#debug-component">Debug component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/debug.html#reflection-and-introspection">Reflection and Introspection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/debug.html#using-xdebug">Using XDebug</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/unit-testing.html">Unit testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/unit-testing.html#integrating-phpunit-with-phalcon">Integrating PHPunit with phalcon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/unit-testing.html#the-phpunit-helper-file">The PHPunit helper file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/unit-testing.html#phpunit-xml-file">PHPunit.xml file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/unit-testing.html#sample-unit-test">Sample unit test</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="in-depth-explanations-further-reading">
+<h3>In Depth Explanations / Further Reading<a class="headerlink" href="#in-depth-explanations-further-reading" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/whats-next.html">Increasing Performance: What&#8217;s next?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/whats-next.html#profile-on-the-server">Profile on the Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/whats-next.html#profiling-with-xdebug">Profiling with XDebug</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/whats-next.html#profiling-with-xhprof">Profiling with Xhprof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/whats-next.html#profiling-sql-statements">Profiling SQL Statements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/whats-next.html#profile-on-the-client">Profile on the Client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/whats-next.html#profile-with-chrome-firefox">Profile with Chrome/Firefox</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/whats-next.html#yahoo-yslow">Yahoo! YSlow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/whats-next.html#profile-with-speed-tracer">Profile with Speed Tracer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/whats-next.html#use-a-recent-php-version">Use a recent PHP version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/whats-next.html#use-a-php-bytecode-cache">Use a PHP Bytecode Cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/whats-next.html#do-blocking-work-in-the-background">Do blocking work in the background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/whats-next.html#google-page-speed">Google Page Speed</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/di-explained.html">Dependency Injection Explained</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/applications-explained.html">Understanding How Phalcon Applications Work</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/applications-explained.html#manual-bootstrapping">Manual bootstrapping</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="api">
+<h3>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Indice</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Acl.html">Abstract class <strong>Phalcon\Acl</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Acl_Adapter.html">Abstract class <strong>Phalcon\Acl\Adapter</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Acl_Adapter_Memory.html">Class <strong>Phalcon\Acl\Adapter\Memory</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Acl_Exception.html">Class <strong>Phalcon\Acl\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Acl_Resource.html">Class <strong>Phalcon\Acl\Resource</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Acl_Role.html">Class <strong>Phalcon\Acl\Role</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Annotations_Adapter.html">Abstract class <strong>Phalcon\Annotations\Adapter</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Annotations_Adapter_Apc.html">Class <strong>Phalcon\Annotations\Adapter\Apc</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Annotations_Adapter_Files.html">Class <strong>Phalcon\Annotations\Adapter\Files</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Annotations_Adapter_Memory.html">Class <strong>Phalcon\Annotations\Adapter\Memory</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Annotations_Adapter_Xcache.html">Class <strong>Phalcon\Annotations\Adapter\Xcache</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Annotations_Annotation.html">Class <strong>Phalcon\Annotations\Annotation</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Annotations_Collection.html">Class <strong>Phalcon\Annotations\Collection</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Annotations_Exception.html">Class <strong>Phalcon\Annotations\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Annotations_Reader.html">Class <strong>Phalcon\Annotations\Reader</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Annotations_Reflection.html">Class <strong>Phalcon\Annotations\Reflection</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Application.html">Abstract class <strong>Phalcon\Application</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Application_Exception.html">Class <strong>Phalcon\Application\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Assets_Collection.html">Class <strong>Phalcon\Assets\Collection</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Assets_Exception.html">Class <strong>Phalcon\Assets\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Assets_Filters_Cssmin.html">Class <strong>Phalcon\Assets\Filters\Cssmin</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Assets_Filters_Jsmin.html">Class <strong>Phalcon\Assets\Filters\Jsmin</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Assets_Filters_None.html">Class <strong>Phalcon\Assets\Filters\None</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Assets_Inline.html">Class <strong>Phalcon\Assets\Inline</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Assets_Inline_Css.html">Class <strong>Phalcon\Assets\Inline\Css</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Assets_Inline_Js.html">Class <strong>Phalcon\Assets\Inline\Js</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Assets_Manager.html">Class <strong>Phalcon\Assets\Manager</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Assets_Resource.html">Class <strong>Phalcon\Assets\Resource</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Assets_Resource_Css.html">Class <strong>Phalcon\Assets\Resource\Css</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Assets_Resource_Js.html">Class <strong>Phalcon\Assets\Resource\Js</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Backend.html">Abstract class <strong>Phalcon\Cache\Backend</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Backend_Apc.html">Class <strong>Phalcon\Cache\Backend\Apc</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Backend_File.html">Class <strong>Phalcon\Cache\Backend\File</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Backend_Libmemcached.html">Class <strong>Phalcon\Cache\Backend\Libmemcached</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Backend_Memcache.html">Class <strong>Phalcon\Cache\Backend\Memcache</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Backend_Memory.html">Class <strong>Phalcon\Cache\Backend\Memory</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Backend_Mongo.html">Class <strong>Phalcon\Cache\Backend\Mongo</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Backend_Redis.html">Class <strong>Phalcon\Cache\Backend\Redis</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Backend_Xcache.html">Class <strong>Phalcon\Cache\Backend\Xcache</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Exception.html">Class <strong>Phalcon\Cache\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Frontend_Base64.html">Class <strong>Phalcon\Cache\Frontend\Base64</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Frontend_Data.html">Class <strong>Phalcon\Cache\Frontend\Data</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Frontend_Igbinary.html">Class <strong>Phalcon\Cache\Frontend\Igbinary</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Frontend_Json.html">Class <strong>Phalcon\Cache\Frontend\Json</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Frontend_Msgpack.html">Class <strong>Phalcon\Cache\Frontend\Msgpack</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Frontend_None.html">Class <strong>Phalcon\Cache\Frontend\None</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Frontend_Output.html">Class <strong>Phalcon\Cache\Frontend\Output</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_Multiple.html">Class <strong>Phalcon\Cache\Multiple</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cli_Console.html">Class <strong>Phalcon\Cli\Console</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cli_Console_Exception.html">Class <strong>Phalcon\Cli\Console\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cli_Dispatcher.html">Class <strong>Phalcon\Cli\Dispatcher</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cli_Dispatcher_Exception.html">Class <strong>Phalcon\Cli\Dispatcher\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cli_Router.html">Class <strong>Phalcon\Cli\Router</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cli_Router_Exception.html">Class <strong>Phalcon\Cli\Router\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cli_Router_Route.html">Class <strong>Phalcon\Cli\Router\Route</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cli_Task.html">Class <strong>Phalcon\Cli\Task</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Config.html">Class <strong>Phalcon\Config</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Config_Adapter_Ini.html">Class <strong>Phalcon\Config\Adapter\Ini</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Config_Adapter_Json.html">Class <strong>Phalcon\Config\Adapter\Json</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Config_Adapter_Php.html">Class <strong>Phalcon\Config\Adapter\Php</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Config_Adapter_Yaml.html">Class <strong>Phalcon\Config\Adapter\Yaml</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Config_Exception.html">Class <strong>Phalcon\Config\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Crypt.html">Class <strong>Phalcon\Crypt</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Crypt_Exception.html">Class <strong>Phalcon\Crypt\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db.html">Abstract class <strong>Phalcon\Db</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Adapter.html">Abstract class <strong>Phalcon\Db\Adapter</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Adapter_Pdo.html">Abstract class <strong>Phalcon\Db\Adapter\Pdo</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Adapter_Pdo_Mysql.html">Class <strong>Phalcon\Db\Adapter\Pdo\Mysql</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Adapter_Pdo_Postgresql.html">Class <strong>Phalcon\Db\Adapter\Pdo\Postgresql</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Adapter_Pdo_Sqlite.html">Class <strong>Phalcon\Db\Adapter\Pdo\Sqlite</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Column.html">Class <strong>Phalcon\Db\Column</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Dialect.html">Abstract class <strong>Phalcon\Db\Dialect</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Dialect_Mysql.html">Class <strong>Phalcon\Db\Dialect\Mysql</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Dialect_Postgresql.html">Class <strong>Phalcon\Db\Dialect\Postgresql</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Dialect_Sqlite.html">Class <strong>Phalcon\Db\Dialect\Sqlite</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Exception.html">Class <strong>Phalcon\Db\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Index.html">Class <strong>Phalcon\Db\Index</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Profiler.html">Class <strong>Phalcon\Db\Profiler</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Profiler_Item.html">Class <strong>Phalcon\Db\Profiler\Item</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_RawValue.html">Class <strong>Phalcon\Db\RawValue</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Reference.html">Class <strong>Phalcon\Db\Reference</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_Result_Pdo.html">Class <strong>Phalcon\Db\Result\Pdo</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Debug.html">Class <strong>Phalcon\Debug</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Debug_Dump.html">Class <strong>Phalcon\Debug\Dump</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Debug_Exception.html">Class <strong>Phalcon\Debug\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Di.html">Class <strong>Phalcon\Di</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Di_Exception.html">Class <strong>Phalcon\Di\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Di_FactoryDefault.html">Class <strong>Phalcon\Di\FactoryDefault</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Di_FactoryDefault_Cli.html">Class <strong>Phalcon\Di\FactoryDefault\Cli</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Di_Injectable.html">Abstract class <strong>Phalcon\Di\Injectable</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Di_Service.html">Class <strong>Phalcon\Di\Service</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Di_Service_Builder.html">Class <strong>Phalcon\Di\Service\Builder</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Dispatcher.html">Abstract class <strong>Phalcon\Dispatcher</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Escaper.html">Class <strong>Phalcon\Escaper</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Escaper_Exception.html">Class <strong>Phalcon\Escaper\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Events_Event.html">Class <strong>Phalcon\Events\Event</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Events_Exception.html">Class <strong>Phalcon\Events\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Events_Manager.html">Class <strong>Phalcon\Events\Manager</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Exception.html">Class <strong>Phalcon\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Filter.html">Class <strong>Phalcon\Filter</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Filter_Exception.html">Class <strong>Phalcon\Filter\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Flash.html">Abstract class <strong>Phalcon\Flash</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Flash_Direct.html">Class <strong>Phalcon\Flash\Direct</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Flash_Exception.html">Class <strong>Phalcon\Flash\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Flash_Session.html">Class <strong>Phalcon\Flash\Session</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Element.html">Abstract class <strong>Phalcon\Forms\Element</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Element_Check.html">Class <strong>Phalcon\Forms\Element\Check</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Element_Date.html">Class <strong>Phalcon\Forms\Element\Date</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Element_Email.html">Class <strong>Phalcon\Forms\Element\Email</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Element_File.html">Class <strong>Phalcon\Forms\Element\File</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Element_Hidden.html">Class <strong>Phalcon\Forms\Element\Hidden</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Element_Numeric.html">Class <strong>Phalcon\Forms\Element\Numeric</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Element_Password.html">Class <strong>Phalcon\Forms\Element\Password</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Element_Radio.html">Class <strong>Phalcon\Forms\Element\Radio</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Element_Select.html">Class <strong>Phalcon\Forms\Element\Select</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Element_Submit.html">Class <strong>Phalcon\Forms\Element\Submit</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Element_Text.html">Class <strong>Phalcon\Forms\Element\Text</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Element_TextArea.html">Class <strong>Phalcon\Forms\Element\TextArea</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Exception.html">Class <strong>Phalcon\Forms\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Form.html">Class <strong>Phalcon\Forms\Form</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_Manager.html">Class <strong>Phalcon\Forms\Manager</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_Cookie.html">Class <strong>Phalcon\Http\Cookie</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_Cookie_Exception.html">Class <strong>Phalcon\Http\Cookie\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_Request.html">Class <strong>Phalcon\Http\Request</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_Request_Exception.html">Class <strong>Phalcon\Http\Request\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_Request_File.html">Class <strong>Phalcon\Http\Request\File</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_Response.html">Class <strong>Phalcon\Http\Response</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_Response_Cookies.html">Class <strong>Phalcon\Http\Response\Cookies</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_Response_Exception.html">Class <strong>Phalcon\Http\Response\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_Response_Headers.html">Class <strong>Phalcon\Http\Response\Headers</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Image.html">Class <strong>Phalcon\Image</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Image_Adapter.html">Abstract class <strong>Phalcon\Image\Adapter</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Image_Adapter_Gd.html">Class <strong>Phalcon\Image\Adapter\Gd</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Image_Adapter_Imagick.html">Class <strong>Phalcon\Image\Adapter\Imagick</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Image_Exception.html">Class <strong>Phalcon\Image\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Kernel.html">Class <strong>Phalcon\Kernel</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Loader.html">Class <strong>Phalcon\Loader</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Loader_Exception.html">Class <strong>Phalcon\Loader\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger.html">Abstract class <strong>Phalcon\Logger</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_Adapter.html">Abstract class <strong>Phalcon\Logger\Adapter</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_Adapter_File.html">Class <strong>Phalcon\Logger\Adapter\File</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_Adapter_Firephp.html">Class <strong>Phalcon\Logger\Adapter\Firephp</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_Adapter_Stream.html">Class <strong>Phalcon\Logger\Adapter\Stream</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_Adapter_Syslog.html">Class <strong>Phalcon\Logger\Adapter\Syslog</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_Exception.html">Class <strong>Phalcon\Logger\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_Formatter.html">Abstract class <strong>Phalcon\Logger\Formatter</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_Formatter_Firephp.html">Class <strong>Phalcon\Logger\Formatter\Firephp</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_Formatter_Json.html">Class <strong>Phalcon\Logger\Formatter\Json</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_Formatter_Line.html">Class <strong>Phalcon\Logger\Formatter\Line</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_Formatter_Syslog.html">Class <strong>Phalcon\Logger\Formatter\Syslog</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_Item.html">Class <strong>Phalcon\Logger\Item</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_Multiple.html">Class <strong>Phalcon\Logger\Multiple</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Application.html">Class <strong>Phalcon\Mvc\Application</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Application_Exception.html">Class <strong>Phalcon\Mvc\Application\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Collection.html">Abstract class <strong>Phalcon\Mvc\Collection</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Collection_Behavior.html">Abstract class <strong>Phalcon\Mvc\Collection\Behavior</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Collection_Behavior_SoftDelete.html">Class <strong>Phalcon\Mvc\Collection\Behavior\SoftDelete</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Collection_Behavior_Timestampable.html">Class <strong>Phalcon\Mvc\Collection\Behavior\Timestampable</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Collection_Document.html">Class <strong>Phalcon\Mvc\Collection\Document</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Collection_Exception.html">Class <strong>Phalcon\Mvc\Collection\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Collection_Manager.html">Class <strong>Phalcon\Mvc\Collection\Manager</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Controller.html">Abstract class <strong>Phalcon\Mvc\Controller</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Dispatcher.html">Class <strong>Phalcon\Mvc\Dispatcher</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Dispatcher_Exception.html">Class <strong>Phalcon\Mvc\Dispatcher\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Micro.html">Class <strong>Phalcon\Mvc\Micro</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Micro_Collection.html">Class <strong>Phalcon\Mvc\Micro\Collection</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Micro_Exception.html">Class <strong>Phalcon\Mvc\Micro\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Micro_LazyLoader.html">Class <strong>Phalcon\Mvc\Micro\LazyLoader</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model.html">Abstract class <strong>Phalcon\Mvc\Model</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Behavior.html">Abstract class <strong>Phalcon\Mvc\Model\Behavior</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Behavior_SoftDelete.html">Class <strong>Phalcon\Mvc\Model\Behavior\SoftDelete</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Behavior_Timestampable.html">Class <strong>Phalcon\Mvc\Model\Behavior\Timestampable</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Binder.html">Class <strong>Phalcon\Mvc\Model\Binder</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Criteria.html">Class <strong>Phalcon\Mvc\Model\Criteria</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Exception.html">Class <strong>Phalcon\Mvc\Model\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Manager.html">Class <strong>Phalcon\Mvc\Model\Manager</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Message.html">Class <strong>Phalcon\Mvc\Model\Message</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MetaData.html">Abstract class <strong>Phalcon\Mvc\Model\MetaData</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MetaData_Apc.html">Class <strong>Phalcon\Mvc\Model\MetaData\Apc</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MetaData_Files.html">Class <strong>Phalcon\Mvc\Model\MetaData\Files</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MetaData_Libmemcached.html">Class <strong>Phalcon\Mvc\Model\MetaData\Libmemcached</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MetaData_Memcache.html">Class <strong>Phalcon\Mvc\Model\MetaData\Memcache</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MetaData_Memory.html">Class <strong>Phalcon\Mvc\Model\MetaData\Memory</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MetaData_Redis.html">Class <strong>Phalcon\Mvc\Model\MetaData\Redis</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MetaData_Session.html">Class <strong>Phalcon\Mvc\Model\MetaData\Session</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MetaData_Strategy_Annotations.html">Class <strong>Phalcon\Mvc\Model\MetaData\Strategy\Annotations</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MetaData_Strategy_Introspection.html">Class <strong>Phalcon\Mvc\Model\MetaData\Strategy\Introspection</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MetaData_Xcache.html">Class <strong>Phalcon\Mvc\Model\MetaData\Xcache</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Query.html">Class <strong>Phalcon\Mvc\Model\Query</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Query_Builder.html">Class <strong>Phalcon\Mvc\Model\Query\Builder</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Query_Lang.html">Abstract class <strong>Phalcon\Mvc\Model\Query\Lang</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Query_Status.html">Class <strong>Phalcon\Mvc\Model\Query\Status</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Relation.html">Class <strong>Phalcon\Mvc\Model\Relation</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Resultset.html">Abstract class <strong>Phalcon\Mvc\Model\Resultset</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Resultset_Complex.html">Class <strong>Phalcon\Mvc\Model\Resultset\Complex</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Resultset_Simple.html">Class <strong>Phalcon\Mvc\Model\Resultset\Simple</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Row.html">Class <strong>Phalcon\Mvc\Model\Row</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Transaction.html">Class <strong>Phalcon\Mvc\Model\Transaction</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Transaction_Exception.html">Class <strong>Phalcon\Mvc\Model\Transaction\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Transaction_Failed.html">Class <strong>Phalcon\Mvc\Model\Transaction\Failed</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Transaction_Manager.html">Class <strong>Phalcon\Mvc\Model\Transaction\Manager</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_ValidationFailed.html">Class <strong>Phalcon\Mvc\Model\ValidationFailed</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Validator.html">Abstract class <strong>Phalcon\Mvc\Model\Validator</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Validator_Email.html">Class <strong>Phalcon\Mvc\Model\Validator\Email</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Validator_Exclusionin.html">Class <strong>Phalcon\Mvc\Model\Validator\Exclusionin</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Validator_Inclusionin.html">Class <strong>Phalcon\Mvc\Model\Validator\Inclusionin</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Validator_Ip.html">Class <strong>Phalcon\Mvc\Model\Validator\Ip</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Validator_Numericality.html">Class <strong>Phalcon\Mvc\Model\Validator\Numericality</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Validator_PresenceOf.html">Class <strong>Phalcon\Mvc\Model\Validator\PresenceOf</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Validator_Regex.html">Class <strong>Phalcon\Mvc\Model\Validator\Regex</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Validator_StringLength.html">Class <strong>Phalcon\Mvc\Model\Validator\StringLength</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Validator_Uniqueness.html">Class <strong>Phalcon\Mvc\Model\Validator\Uniqueness</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Validator_Url.html">Class <strong>Phalcon\Mvc\Model\Validator\Url</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Router.html">Class <strong>Phalcon\Mvc\Router</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Router_Annotations.html">Class <strong>Phalcon\Mvc\Router\Annotations</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Router_Exception.html">Class <strong>Phalcon\Mvc\Router\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Router_Group.html">Class <strong>Phalcon\Mvc\Router\Group</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Router_Route.html">Class <strong>Phalcon\Mvc\Router\Route</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Url.html">Class <strong>Phalcon\Mvc\Url</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Url_Exception.html">Class <strong>Phalcon\Mvc\Url\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_User_Component.html">Class <strong>Phalcon\Mvc\User\Component</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_User_Module.html">Class <strong>Phalcon\Mvc\User\Module</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_User_Plugin.html">Class <strong>Phalcon\Mvc\User\Plugin</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_View.html">Class <strong>Phalcon\Mvc\View</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_View_Engine.html">Abstract class <strong>Phalcon\Mvc\View\Engine</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_View_Engine_Php.html">Class <strong>Phalcon\Mvc\View\Engine\Php</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_View_Engine_Volt.html">Class <strong>Phalcon\Mvc\View\Engine\Volt</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_View_Engine_Volt_Compiler.html">Class <strong>Phalcon\Mvc\View\Engine\Volt\Compiler</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_View_Engine_Volt_Exception.html">Class <strong>Phalcon\Mvc\View\Engine\Volt\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_View_Exception.html">Class <strong>Phalcon\Mvc\View\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_View_Simple.html">Class <strong>Phalcon\Mvc\View\Simple</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Paginator_Adapter.html">Abstract class <strong>Phalcon\Paginator\Adapter</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Paginator_Adapter_Model.html">Class <strong>Phalcon\Paginator\Adapter\Model</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Paginator_Adapter_NativeArray.html">Class <strong>Phalcon\Paginator\Adapter\NativeArray</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Paginator_Adapter_QueryBuilder.html">Class <strong>Phalcon\Paginator\Adapter\QueryBuilder</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Paginator_Exception.html">Class <strong>Phalcon\Paginator\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Queue_Beanstalk.html">Class <strong>Phalcon\Queue\Beanstalk</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Queue_Beanstalk_Exception.html">Class <strong>Phalcon\Queue\Beanstalk\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Queue_Beanstalk_Job.html">Class <strong>Phalcon\Queue\Beanstalk\Job</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Registry.html">Final class <strong>Phalcon\Registry</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Security.html">Class <strong>Phalcon\Security</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Security_Exception.html">Class <strong>Phalcon\Security\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Security_Random.html">Class <strong>Phalcon\Security\Random</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Session_Adapter.html">Abstract class <strong>Phalcon\Session\Adapter</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Session_Adapter_Files.html">Class <strong>Phalcon\Session\Adapter\Files</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Session_Adapter_Libmemcached.html">Class <strong>Phalcon\Session\Adapter\Libmemcached</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Session_Adapter_Memcache.html">Class <strong>Phalcon\Session\Adapter\Memcache</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Session_Adapter_Redis.html">Class <strong>Phalcon\Session\Adapter\Redis</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Session_Bag.html">Class <strong>Phalcon\Session\Bag</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Session_Exception.html">Class <strong>Phalcon\Session\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Tag.html">Class <strong>Phalcon\Tag</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Tag_Exception.html">Class <strong>Phalcon\Tag\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Tag_Select.html">Abstract class <strong>Phalcon\Tag\Select</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Text.html">Abstract class <strong>Phalcon\Text</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Translate.html">Abstract class <strong>Phalcon\Translate</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Translate_Adapter.html">Abstract class <strong>Phalcon\Translate\Adapter</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Translate_Adapter_Csv.html">Class <strong>Phalcon\Translate\Adapter\Csv</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Translate_Adapter_Gettext.html">Class <strong>Phalcon\Translate\Adapter\Gettext</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Translate_Adapter_NativeArray.html">Class <strong>Phalcon\Translate\Adapter\NativeArray</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Translate_Exception.html">Class <strong>Phalcon\Translate\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Translate_Interpolator_AssociativeArray.html">Class <strong>Phalcon\Translate\Interpolator\AssociativeArray</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Translate_Interpolator_IndexedArray.html">Class <strong>Phalcon\Translate\Interpolator\IndexedArray</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation.html">Class <strong>Phalcon\Validation</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_CombinedFieldsValidator.html">Abstract class <strong>Phalcon\Validation\CombinedFieldsValidator</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Exception.html">Class <strong>Phalcon\Validation\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Message.html">Class <strong>Phalcon\Validation\Message</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Message_Group.html">Class <strong>Phalcon\Validation\Message\Group</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator.html">Abstract class <strong>Phalcon\Validation\Validator</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Alnum.html">Class <strong>Phalcon\Validation\Validator\Alnum</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Alpha.html">Class <strong>Phalcon\Validation\Validator\Alpha</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Between.html">Class <strong>Phalcon\Validation\Validator\Between</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Callback.html">Class <strong>Phalcon\Validation\Validator\Callback</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Confirmation.html">Class <strong>Phalcon\Validation\Validator\Confirmation</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_CreditCard.html">Class <strong>Phalcon\Validation\Validator\CreditCard</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Date.html">Class <strong>Phalcon\Validation\Validator\Date</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Digit.html">Class <strong>Phalcon\Validation\Validator\Digit</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Email.html">Class <strong>Phalcon\Validation\Validator\Email</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Exception.html">Class <strong>Phalcon\Validation\Validator\Exception</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_ExclusionIn.html">Class <strong>Phalcon\Validation\Validator\ExclusionIn</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_File.html">Class <strong>Phalcon\Validation\Validator\File</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Identical.html">Class <strong>Phalcon\Validation\Validator\Identical</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_InclusionIn.html">Class <strong>Phalcon\Validation\Validator\InclusionIn</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Numericality.html">Class <strong>Phalcon\Validation\Validator\Numericality</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_PresenceOf.html">Class <strong>Phalcon\Validation\Validator\PresenceOf</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Regex.html">Class <strong>Phalcon\Validation\Validator\Regex</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_StringLength.html">Class <strong>Phalcon\Validation\Validator\StringLength</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Uniqueness.html">Class <strong>Phalcon\Validation\Validator\Uniqueness</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_Validator_Url.html">Class <strong>Phalcon\Validation\Validator\Url</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Version.html">Class <strong>Phalcon\Version</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Acl_AdapterInterface.html">Interface <strong>Phalcon\Acl\AdapterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Acl_ResourceAware.html">Interface <strong>Phalcon\Acl\ResourceAware</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Acl_ResourceInterface.html">Interface <strong>Phalcon\Acl\ResourceInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Acl_RoleAware.html">Interface <strong>Phalcon\Acl\RoleAware</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Acl_RoleInterface.html">Interface <strong>Phalcon\Acl\RoleInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Annotations_AdapterInterface.html">Interface <strong>Phalcon\Annotations\AdapterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Annotations_ReaderInterface.html">Interface <strong>Phalcon\Annotations\ReaderInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Assets_FilterInterface.html">Interface <strong>Phalcon\Assets\FilterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_BackendInterface.html">Interface <strong>Phalcon\Cache\BackendInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cache_FrontendInterface.html">Interface <strong>Phalcon\Cache\FrontendInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cli_DispatcherInterface.html">Interface <strong>Phalcon\Cli\DispatcherInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cli_RouterInterface.html">Interface <strong>Phalcon\Cli\RouterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cli_Router_RouteInterface.html">Interface <strong>Phalcon\Cli\Router\RouteInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Cli_TaskInterface.html">Interface <strong>Phalcon\Cli\TaskInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_CryptInterface.html">Interface <strong>Phalcon\CryptInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_AdapterInterface.html">Interface <strong>Phalcon\Db\AdapterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_ColumnInterface.html">Interface <strong>Phalcon\Db\ColumnInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_DialectInterface.html">Interface <strong>Phalcon\Db\DialectInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_IndexInterface.html">Interface <strong>Phalcon\Db\IndexInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_ReferenceInterface.html">Interface <strong>Phalcon\Db\ReferenceInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Db_ResultInterface.html">Interface <strong>Phalcon\Db\ResultInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_DiInterface.html">Interface <strong>Phalcon\DiInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Di_InjectionAwareInterface.html">Interface <strong>Phalcon\Di\InjectionAwareInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Di_ServiceInterface.html">Interface <strong>Phalcon\Di\ServiceInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_DispatcherInterface.html">Interface <strong>Phalcon\DispatcherInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_EscaperInterface.html">Interface <strong>Phalcon\EscaperInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Events_EventInterface.html">Interface <strong>Phalcon\Events\EventInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Events_EventsAwareInterface.html">Interface <strong>Phalcon\Events\EventsAwareInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Events_ManagerInterface.html">Interface <strong>Phalcon\Events\ManagerInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_FilterInterface.html">Interface <strong>Phalcon\FilterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Filter_UserFilterInterface.html">Interface <strong>Phalcon\Filter\UserFilterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_FlashInterface.html">Interface <strong>Phalcon\FlashInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Forms_ElementInterface.html">Interface <strong>Phalcon\Forms\ElementInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_CookieInterface.html">Interface <strong>Phalcon\Http\CookieInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_RequestInterface.html">Interface <strong>Phalcon\Http\RequestInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_Request_FileInterface.html">Interface <strong>Phalcon\Http\Request\FileInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_ResponseInterface.html">Interface <strong>Phalcon\Http\ResponseInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_Response_CookiesInterface.html">Interface <strong>Phalcon\Http\Response\CookiesInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Http_Response_HeadersInterface.html">Interface <strong>Phalcon\Http\Response\HeadersInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Image_AdapterInterface.html">Interface <strong>Phalcon\Image\AdapterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_AdapterInterface.html">Interface <strong>Phalcon\Logger\AdapterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Logger_FormatterInterface.html">Interface <strong>Phalcon\Logger\FormatterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_CollectionInterface.html">Interface <strong>Phalcon\Mvc\CollectionInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Collection_BehaviorInterface.html">Interface <strong>Phalcon\Mvc\Collection\BehaviorInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Collection_ManagerInterface.html">Interface <strong>Phalcon\Mvc\Collection\ManagerInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_ControllerInterface.html">Interface <strong>Phalcon\Mvc\ControllerInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Controller_BindModelInterface.html">Interface <strong>Phalcon\Mvc\Controller\BindModelInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_DispatcherInterface.html">Interface <strong>Phalcon\Mvc\DispatcherInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_EntityInterface.html">Interface <strong>Phalcon\Mvc\EntityInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Micro_CollectionInterface.html">Interface <strong>Phalcon\Mvc\Micro\CollectionInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Micro_MiddlewareInterface.html">Interface <strong>Phalcon\Mvc\Micro\MiddlewareInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_ModelInterface.html">Interface <strong>Phalcon\Mvc\ModelInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_BehaviorInterface.html">Interface <strong>Phalcon\Mvc\Model\BehaviorInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_BinderInterface.html">Interface <strong>Phalcon\Mvc\Model\BinderInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Binder_BindableInterface.html">Interface <strong>Phalcon\Mvc\Model\Binder\BindableInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_CriteriaInterface.html">Interface <strong>Phalcon\Mvc\Model\CriteriaInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_ManagerInterface.html">Interface <strong>Phalcon\Mvc\Model\ManagerInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MessageInterface.html">Interface <strong>Phalcon\Mvc\Model\MessageInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MetaDataInterface.html">Interface <strong>Phalcon\Mvc\Model\MetaDataInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_MetaData_StrategyInterface.html">Interface <strong>Phalcon\Mvc\Model\MetaData\StrategyInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_QueryInterface.html">Interface <strong>Phalcon\Mvc\Model\QueryInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Query_BuilderInterface.html">Interface <strong>Phalcon\Mvc\Model\Query\BuilderInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Query_StatusInterface.html">Interface <strong>Phalcon\Mvc\Model\Query\StatusInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_RelationInterface.html">Interface <strong>Phalcon\Mvc\Model\RelationInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_ResultInterface.html">Interface <strong>Phalcon\Mvc\Model\ResultInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_ResultsetInterface.html">Interface <strong>Phalcon\Mvc\Model\ResultsetInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_TransactionInterface.html">Interface <strong>Phalcon\Mvc\Model\TransactionInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_Transaction_ManagerInterface.html">Interface <strong>Phalcon\Mvc\Model\Transaction\ManagerInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Model_ValidatorInterface.html">Interface <strong>Phalcon\Mvc\Model\ValidatorInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_ModuleDefinitionInterface.html">Interface <strong>Phalcon\Mvc\ModuleDefinitionInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_RouterInterface.html">Interface <strong>Phalcon\Mvc\RouterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Router_GroupInterface.html">Interface <strong>Phalcon\Mvc\Router\GroupInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_Router_RouteInterface.html">Interface <strong>Phalcon\Mvc\Router\RouteInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_UrlInterface.html">Interface <strong>Phalcon\Mvc\UrlInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_ViewBaseInterface.html">Interface <strong>Phalcon\Mvc\ViewBaseInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_ViewInterface.html">Interface <strong>Phalcon\Mvc\ViewInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Mvc_View_EngineInterface.html">Interface <strong>Phalcon\Mvc\View\EngineInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Paginator_AdapterInterface.html">Interface <strong>Phalcon\Paginator\AdapterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Session_AdapterInterface.html">Interface <strong>Phalcon\Session\AdapterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Session_BagInterface.html">Interface <strong>Phalcon\Session\BagInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Translate_AdapterInterface.html">Interface <strong>Phalcon\Translate\AdapterInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Translate_InterpolatorInterface.html">Interface <strong>Phalcon\Translate\InterpolatorInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_ValidationInterface.html">Interface <strong>Phalcon\ValidationInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_MessageInterface.html">Interface <strong>Phalcon\Validation\MessageInterface</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/Phalcon_Validation_ValidatorInterface.html">Interface <strong>Phalcon\Validation\ValidatorInterface</strong></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="legal">
+<h3>Legal<a class="headerlink" href="#legal" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/license.html">License</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="previous-versions">
+<h2>Previous Versions<a class="headerlink" href="#previous-versions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><cite>2.0.0 &lt;https://docs.phalconphp.com/en/2.0.0/&gt;</cite></li>
+</ul>
+</div>
+<div class="section" id="other-formats">
+<h2>Other formats<a class="headerlink" href="#other-formats" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://media.readthedocs.org/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf">PDF</a></li>
+<li><a class="reference external" href="https://media.readthedocs.org/htmlzip/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.zip">HTML in one Zip</a></li>
+<li><a class="reference external" href="http://media.readthedocs.org/epub/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.epub">ePub</a></li>
+</ul>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="reference/install.html" title="Installation"
+             >next</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.lazyload.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/highlight.pack.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.backstretch.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/custom.js"></script>
+
+  </body>
+</html>

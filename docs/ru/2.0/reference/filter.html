@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Фильтрация и очистка &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Контекстное экранирование" href="escaper.html" />
+    <link rel="prev" title="Сохранение данных в сессии" href="session.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="escaper.html" title="Контекстное экранирование"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="session.html" title="Сохранение данных в сессии"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Фильтрация и очистка</a><ul>
+<li><a class="reference internal" href="#id2">Очистка данных</a></li>
+<li><a class="reference internal" href="#id3">Очистка из контроллеров</a></li>
+<li><a class="reference internal" href="#action">Фильтруем параметры действия (Action)</a></li>
+<li><a class="reference internal" href="#id4">Фильтрация данных</a></li>
+<li><a class="reference internal" href="#id5">Типы встроенных фильтров</a></li>
+<li><a class="reference internal" href="#id6">Создание собственных фильтров</a></li>
+<li><a class="reference internal" href="#id7">Сложная очистка и фильтрация</a></li>
+<li><a class="reference internal" href="#id8">Разработка собственной системы фильтрации</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="session.html" title="предыдущая глава">&lt; Сохранение данных в сессии</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="escaper.html" title="следующая глава">Контекстное экранирование &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/filter.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="id1">
+<h1>Фильтрация и очистка<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Фильтрация пользовательского ввода является критической частью разработки приложений. Доверие или пренебрежение очисткой и
+фильтрацией ввода произведенного пользователем может привести к несанкционированному доступу к контенту вашего приложения,
+данным или даже к серверу, где ваше приложение размещено.</p>
+<div class="figure align-center">
+<img alt="../_images/sql.png" src="../_images/sql.png" />
+</div>
+<p>Полное изображение (с сайта xkcd)</p>
+<p>Компонент <a class="reference internal" href="../api/Phalcon_Filter.html"><em>Phalcon\Filter</em></a> предоставляет набор основных фильтров для корректирования данных.
+Он обеспечивает объектно-ориентированную обертку вокруг PHP-фильтра.</p>
+<div class="section" id="id2">
+<h2>Очистка данных<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Очистка - это процесс, который удаляет определенный символ из значения, которое было введено пользователем.
+С помощью очистки входных данных мы гарантируем, что целостность приложения не будет нарушена.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$filter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Filter</span><span class="p">();</span>
+
+<span class="c1">// возвращает &quot;someone@example.com&quot;</span>
+<span class="nv">$filter</span><span class="o">-&gt;</span><span class="na">sanitize</span><span class="p">(</span><span class="s2">&quot;some(one)@exa\mple.com&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">);</span>
+
+<span class="c1">// возвращает &quot;hello&quot;</span>
+<span class="nv">$filter</span><span class="o">-&gt;</span><span class="na">sanitize</span><span class="p">(</span><span class="s2">&quot;hello&lt;&lt;&quot;</span><span class="p">,</span> <span class="s2">&quot;string&quot;</span><span class="p">);</span>
+
+<span class="c1">// возвращает &quot;100019&quot;</span>
+<span class="nv">$filter</span><span class="o">-&gt;</span><span class="na">sanitize</span><span class="p">(</span><span class="s2">&quot;!100a019&quot;</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">);</span>
+
+<span class="c1">// возвращает &quot;100019.01&quot;</span>
+<span class="nv">$filter</span><span class="o">-&gt;</span><span class="na">sanitize</span><span class="p">(</span><span class="s2">&quot;!100a019.01a&quot;</span><span class="p">,</span> <span class="s2">&quot;float&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Очистка из контроллеров<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Доступ к объекту <a class="reference internal" href="../api/Phalcon_Filter.html"><em>Phalcon\Filter</em></a> можно получить из контроллера для очистки GET или POST входных данных.
+Первым параметром является название переменной, которую необходимо получить, а вторым - название фильтра, который должен быть применен относительно этой переменной.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">ProductsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Чистим price из ввода</span>
+        <span class="nv">$price</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="s2">&quot;double&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Чистим email из ввода</span>
+        <span class="nv">$email</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;customerEmail&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="action">
+<h2>Фильтруем параметры действия (Action)<a class="headerlink" href="#action" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Следующий пример показывает, как чистить параметры действий в контроллере:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">ProductsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">(</span><span class="nv">$productId</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$productId</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">filter</span><span class="o">-&gt;</span><span class="na">sanitize</span><span class="p">(</span><span class="nv">$productId</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Фильтрация данных<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В дополнение к очистке, класс <a class="reference internal" href="../api/Phalcon_Filter.html"><em>Phalcon\Filter</em></a> так же предоставляет фильтрацию, которая изменяет или удаляет
+данные в соответствии с ожидаемым форматом.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$filter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Filter</span><span class="p">();</span>
+
+<span class="c1">// возвращает &quot;Hello&quot;</span>
+<span class="nv">$filter</span><span class="o">-&gt;</span><span class="na">sanitize</span><span class="p">(</span><span class="s2">&quot;&lt;h1&gt;Hello&lt;/h1&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;striptags&quot;</span><span class="p">);</span>
+
+<span class="c1">// возвращает &quot;Hello&quot;</span>
+<span class="nv">$filter</span><span class="o">-&gt;</span><span class="na">sanitize</span><span class="p">(</span><span class="s2">&quot;  Hello   &quot;</span><span class="p">,</span> <span class="s2">&quot;trim&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Типы встроенных фильтров<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В таблице приведены все типы фильтров, которыми распологает компонент:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Название</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>string</td>
+<td>Преобразовывает теги</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>Удаляет все символы, за исключением букв, цифр и !#$%&amp;*+-/=?^_`{|}~&#64;.[].</td>
+</tr>
+<tr class="row-even"><td>int</td>
+<td>Удаляет все символы, за исключением цифр и знаков плюс/минус.</td>
+</tr>
+<tr class="row-odd"><td>float</td>
+<td>Удаляет все символы, за исключением цифр, точек и знаков плюс/минус.</td>
+</tr>
+<tr class="row-even"><td>alphanum</td>
+<td>Удаляет все символы, за исключением [a-zA-Z0-9]</td>
+</tr>
+<tr class="row-odd"><td>striptags</td>
+<td>Применяет <a class="reference external" href="http://www.php.net/manual/ru/function.strip-tags.php">strip_tags</a> функцию</td>
+</tr>
+<tr class="row-even"><td>trim</td>
+<td>Применяет <a class="reference external" href="http://www.php.net/manual/ru/function.trim.php">trim</a> функцию</td>
+</tr>
+<tr class="row-odd"><td>lower</td>
+<td>Применяет <a class="reference external" href="http://www.php.net/manual/ru/function.strtolower.php">strtolower</a> функцию</td>
+</tr>
+<tr class="row-even"><td>upper</td>
+<td>Применяет <a class="reference external" href="http://www.php.net/manual/ru/function.strtoupper.php">strtoupper</a> функцию</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h2>Создание собственных фильтров<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Вы можете добавлять свои фильтры в <a class="reference internal" href="../api/Phalcon_Filter.html"><em>Phalcon\Filter</em></a>. Функция фильтрации может быть анонимной:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$filter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Filter</span><span class="p">();</span>
+
+<span class="c1">// Используем анонимную функцию</span>
+<span class="nv">$filter</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;md5&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">&#39;/[^0-9a-f]/&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$value</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Используем &quot;md5&quot; фильтр</span>
+<span class="nv">$filtered</span> <span class="o">=</span> <span class="nv">$filter</span><span class="o">-&gt;</span><span class="na">sanitize</span><span class="p">(</span><span class="nv">$possibleMd5</span><span class="p">,</span> <span class="s2">&quot;md5&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Вы можете реализовать фильтр с помощью класса:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">IPv4Filter</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">filter</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">filter_var</span><span class="p">(</span><span class="nv">$value</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_IP</span><span class="p">,</span> <span class="nx">FILTER_FLAG_IPV4</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="nv">$filter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Filter</span><span class="p">();</span>
+
+<span class="c1">// Используем объект</span>
+<span class="nv">$filter</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;ipv4&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">IPv4Filter</span><span class="p">());</span>
+
+<span class="c1">// Фильтруем с помощью &quot;ipv4&quot;</span>
+<span class="nv">$filteredIp</span> <span class="o">=</span> <span class="nv">$filter</span><span class="o">-&gt;</span><span class="na">sanitize</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="s2">&quot;ipv4&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Сложная очистка и фильтрация<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>PHP предоставляет отличную фильтрацию, которой вы можете воспользоваться. Посмотрите на документацию: <a class="reference external" href="http://www.php.net/manual/ru/book.filter.php">Фильтрация данных в документации PHP</a></p>
+</div>
+<div class="section" id="id8">
+<h2>Разработка собственной системы фильтрации<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Используйте интерфейс <a class="reference internal" href="../api/Phalcon_FilterInterface.html"><em>Phalcon\FilterInterface</em></a> для создания собственной системы фильтрации,
+чтобы заменить существующую в Phalcon.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="escaper.html" title="Контекстное экранирование"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="session.html" title="Сохранение данных в сессии"
+             >предыдущий</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

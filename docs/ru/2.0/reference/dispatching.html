@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Диспетчер контроллеров &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Микроприложения" href="micro.html" />
+    <link rel="prev" title="Маршрутизация (Routing, Роутинг)" href="routing.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="micro.html" title="Микроприложения"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="routing.html" title="Маршрутизация (Routing, Роутинг)"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Диспетчер контроллеров</a><ul>
+<li><a class="reference internal" href="#id2">Цикл работы диспетчера</a><ul>
+<li><a class="reference internal" href="#id3">События при работе диспетчера</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">Переадресация на другое действие</a></li>
+<li><a class="reference internal" href="#id5">Получение параметров</a></li>
+<li><a class="reference internal" href="#id6">Обработка исключений &#8220;Не найдено&#8221;</a></li>
+<li><a class="reference internal" href="#id7">Реализация собственных диспетчеров</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="routing.html" title="предыдущая глава">&lt; Маршрутизация (Routing, Роутинг)</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="micro.html" title="следующая глава">Микроприложения &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/dispatching.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="id1">
+<h1>Диспетчер контроллеров<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Компонент <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a>  отвечает за инициализацию контроллеров и выполнения в них действий, для MVC
+приложения. Понимание его работы и его возможностей помогает нам получить больше возможностей предоставляемых фреймворком.</p>
+<div class="section" id="id2">
+<h2>Цикл работы диспетчера<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Это важнейший процесс, который имеет много общего с работой MVC, особенно в части работы контроллеров. Работа контроллера вызывается диспетчером.
+Файлы контроллера считываются, загружаются, инициализируются, чтобы затем выполнить необходимые действия. Если действие направляет поток на другой
+котроллер/действие (action), диспетчер контроллера стартует снова. Для лучшей иллюстрации в примере ниже показан приблизительный процесс происходящий
+внутри <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Цикл диспетчера</span>
+<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nv">$finished</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$finished</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+    <span class="nv">$controllerClass</span> <span class="o">=</span> <span class="nv">$controllerName</span> <span class="o">.</span> <span class="s2">&quot;Controller&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Создание экземпляра класса контроллера, с помощью автозагрузчика</span>
+    <span class="nv">$controller</span> <span class="o">=</span> <span class="k">new</span> <span class="nv">$controllerClass</span><span class="p">();</span>
+
+    <span class="c1">// Выполнение действия</span>
+    <span class="nb">call_user_func_array</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="nv">$controller</span><span class="p">,</span> <span class="nv">$actionName</span> <span class="o">.</span> <span class="s2">&quot;Action&quot;</span><span class="p">),</span> <span class="nv">$params</span><span class="p">);</span>
+
+    <span class="c1">// Значение переменной должно быть изменено при необходимости запуска другого контроллера</span>
+    <span class="nv">$finished</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Этот код, безусловно, нуждается в дополнительных проверках и доработке, но здесь наглядно показана типичная последовательность операций в диспетчере.</p>
+<div class="section" id="id3">
+<h3>События при работе диспетчера<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a> может отправлять события <a class="reference internal" href="events.html"><em>EventsManager</em></a> если это необходимо.
+События вызываются с помощью типа &#8220;dispatch&#8221;. Некоторые события, при возвращении false, могут остановить активную операцию.
+Поддерживаются следующие события:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="76%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Название события</th>
+<th class="head">Время срабатывания</th>
+<th class="head">Прерывает операцию?</th>
+<th class="head">Triggered to</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>beforeDispatchLoop</td>
+<td>До запуска цикла диспетчера. В этот момент диспетчер не знает, существуют ли контроллеры или действия, которые должны быть выполнены. Диспетчер владеет только информацией поступившей из маршрутизатора</td>
+<td>Да</td>
+<td>Listeners</td>
+</tr>
+<tr class="row-odd"><td>beforeDispatch</td>
+<td>До выполнения цикла диспетчера. В этот момент диспетчер не знает, существуют ли контроллеры или действия, которые должны быть выполнены. Диспетчер знает только информацию, поступившую из маршрутизатора</td>
+<td>Да</td>
+<td>Listeners</td>
+</tr>
+<tr class="row-even"><td>beforeExecuteRoute</td>
+<td>До выполнения действия в контроллере. В этой точке контроллер инициализирован и знает о существовании действия (action)</td>
+<td>Да</td>
+<td>Listeners/Controllers</td>
+</tr>
+<tr class="row-odd"><td>afterExecuteRoute</td>
+<td>После выполнения действия в контроллере. Не останавливает текущую операцию, используйте это событие только для завершения/очистки после выполненного действия</td>
+<td>Нет</td>
+<td>Controllers</td>
+</tr>
+<tr class="row-even"><td>beforeNotFoundAction</td>
+<td>Когда действие не найдено в контроллере</td>
+<td>Нет</td>
+<td>Listeners/Controllers</td>
+</tr>
+<tr class="row-odd"><td>beforeException</td>
+<td>До вызова диспетчером любого исключения</td>
+<td>Да</td>
+<td>Listeners</td>
+</tr>
+<tr class="row-even"><td>afterDispatch</td>
+<td>После выполнения цикла диспетчера. Не останавливает текущую операцию, используйте это событие только для завершения/очистки после выполненного действия</td>
+<td>Да</td>
+<td>Listeners</td>
+</tr>
+<tr class="row-odd"><td>afterDispatchLoop</td>
+<td>После завершения цикла диспетчера</td>
+<td>Нет</td>
+<td>Listeners</td>
+</tr>
+</tbody>
+</table>
+<p>В обучающем материале <a class="reference internal" href="tutorial-invo.html"><em>INVO</em></a> показано, как воспользоваться диспетчером событий для реализации фильтра безопасности <a class="reference internal" href="acl.html"><em>Acl</em></a>.</p>
+<p>В примере ниже показано как прикрепить слушателей (listeners) к событиям контроллера:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">,</span>
+    <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(){</span>
+
+    <span class="c1">// Создание менеджера событий</span>
+    <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+    <span class="c1">// Прикрепление функции-слушателя для событий типа &quot;dispatch&quot;</span>
+    <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s2">&quot;dispatch&quot;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//...</span>
+    <span class="p">});</span>
+
+    <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+
+    <span class="c1">// Связывание менеджера событий с диспетчером</span>
+    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+
+<span class="p">},</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Экземпляр контроллера автоматически выступает в качестве слушателя для событий, так что вы можете реализовать методы в самом контроллере:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeExecuteRoute</span><span class="p">(</span><span class="nv">$dispatcher</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Выполняется перед каждым найденным действием</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">afterExecuteRoute</span><span class="p">(</span><span class="nv">$dispatcher</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Выполняется после каждого выполненного действия</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Переадресация на другое действие<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Цикл диспетчера позволяет перенаправить поток на другой контроллер/действие. Это очень полезно, для проверки может ли пользователь иметь
+доступ к определенным функциям, перенаправления пользователя на другую страницу или просто для повторного использования кода.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">(</span><span class="nv">$year</span><span class="p">,</span> <span class="nv">$postTitle</span><span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="c1">// .. сохраняем данные и перенаправляем пользователя</span>
+
+        <span class="c1">// Перенаправляем на действие index</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Имейте ввиду, использование метода &#8220;forward&#8221; - это не то же самое что редирект в HTTP. Хотя внешне результат будет таким же.
+Метод &#8220;forward&#8221; не перезагружает текущую страницу, все перенаправления выполняются в одном запросе, тогда как HTTP редирект требует два
+запроса для завершения процесса.</p>
+<p>Пример перенаправлений:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Направляем поток на другое действие текущего контроллера</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;search&quot;</span>
+<span class="p">));</span>
+
+<span class="c1">// Направляем поток на другое действие текущего контроллера с передачей параметров</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;search&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;params&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>Метод forward принимает следующие параметры:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Параметр</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>controller</td>
+<td>Правильное имя контроллера для вызова</td>
+</tr>
+<tr class="row-odd"><td>action</td>
+<td>Правильное название действия для вызова</td>
+</tr>
+<tr class="row-even"><td>params</td>
+<td>Массив параметров для действия (action)</td>
+</tr>
+<tr class="row-odd"><td>namespace</td>
+<td>Пространство имён, которому принадлежит контроллер</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h2>Получение параметров<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Если текущий маршрут содержит именованные параметры, вы можете получить их в контроллере, представлении или любом другом компоненте,
+расширяющим <a class="reference internal" href="../api/Phalcon_DI_Injectable.html"><em>Phalcon\DI\Injectable</em></a>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Получение параметра title, находящимся в параметрах URL</span>
+        <span class="nv">$title</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Получение параметра year, пришедшего из URL и отфильтрованного как число</span>
+        <span class="nv">$year</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>Обработка исключений &#8220;Не найдено&#8221;<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Используйте возможности <a class="reference internal" href="events.html"><em>EventsManager</em></a> для установки событий, выполняемых при отсутствии требуемого контроллера/действия.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Dispatcher</span><span class="p">,</span>
+    <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">,</span>
+    <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Создаем менеджер событий</span>
+    <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+    <span class="c1">// Прикрепляем слушателя</span>
+    <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s2">&quot;dispatch:beforeException&quot;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">,</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="k">switch</span> <span class="p">(</span><span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getCode</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="nx">Dispatcher</span><span class="o">::</span><span class="na">EXCEPTION_HANDLER_NOT_FOUND</span><span class="o">:</span>
+            <span class="k">case</span> <span class="nx">Dispatcher</span><span class="o">::</span><span class="na">EXCEPTION_ACTION_NOT_FOUND</span><span class="o">:</span>
+                <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;show404&#39;</span>
+                <span class="p">));</span>
+                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+
+    <span class="c1">//Прикрепляем менеджер событий к диспетчеру</span>
+    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+
+<span class="p">},</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Реализация собственных диспетчеров<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для создания диспетчеров необходимо реализовать интерфейс <a class="reference internal" href="../api/Phalcon_Mvc_DispatcherInterface.html"><em>Phalcon\Mvc\DispatcherInterface</em></a> и подменить
+диспетчер Phalcon.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="micro.html" title="Микроприложения"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="routing.html" title="Маршрутизация (Routing, Роутинг)"
+             >предыдущий</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

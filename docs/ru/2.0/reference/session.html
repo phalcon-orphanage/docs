@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Сохранение данных в сессии &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Фильтрация и очистка" href="filter.html" />
+    <link rel="prev" title="Информационные сообщения" href="flash.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="filter.html" title="Фильтрация и очистка"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="flash.html" title="Информационные сообщения"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Сохранение данных в сессии</a><ul>
+<li><a class="reference internal" href="#id2">Запуск сессий</a></li>
+<li><a class="reference internal" href="#id3">Сохранение/получение данных из сессий</a></li>
+<li><a class="reference internal" href="#id4">Удаление/очистка сессий</a></li>
+<li><a class="reference internal" href="#id5">Изоляция данных сессии внутри приложения</a></li>
+<li><a class="reference internal" href="#session-bags">Наборы сессий (Session Bags)</a></li>
+<li><a class="reference internal" href="#id6">Сохранение данных в компонентах</a><ul>
+<li><a class="reference internal" href="#id7">Реализация собственных адаптеров сессий</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="flash.html" title="предыдущая глава">&lt; Информационные сообщения</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="filter.html" title="следующая глава">Фильтрация и очистка &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/session.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="id1">
+<h1>Сохранение данных в сессии<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Компонент <a class="reference internal" href="../api/Phalcon_Session.html"><em>Phalcon\Session</em></a> предоставляет объектно-ориентированный интерфейс для работы с сессиями.</p>
+<p>Причины использования этого компонента, а не обычных сессий:</p>
+<ul class="simple">
+<li>Вы можете легко изолировать сессии данных в различных приложениях на одном домене</li>
+<li>Можно перехватить места  установки/получения данных в приложении</li>
+<li>Использование адаптера сессий, оптимального для текущего приложения</li>
+</ul>
+<div class="section" id="id2">
+<h2>Запуск сессий<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Некоторые приложения активно используют в своей работе сессии, используя их в каждом действии. Другие наоборот, используют сессии мало и не часто.
+Благодаря использованию контейнера сервисов, мы можем гарантировать, что запуск сессий будет произведён только по необходимости.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Сессии запустятся один раз, при первом обращении к объекту</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$session</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Session\Adapter\Files</span><span class="p">();</span>
+    <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nv">$session</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Сохранение/получение данных из сессий<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Из контроллера, представления (view) или другого компонента расширяющего <a class="reference internal" href="../api/Phalcon_DI_Injectable.html"><em>Phalcon\DI\Injectable</em></a> можно
+получить доступ к сессиям и работать с ними следующим образом:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">UserController</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Установка значения сессии</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;user-name&quot;</span><span class="p">,</span> <span class="s2">&quot;Michael&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">welcomeAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Проверка наличия переменной сессии</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="s2">&quot;user-name&quot;</span><span class="p">))</span> <span class="p">{</span>
+
+            <span class="c1">// Получение значения</span>
+            <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;user-name&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Удаление/очистка сессий<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Таким же способом можно удалить переменную сессии, или целиком очистить сессию:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">UserController</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">removeAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Удаление переменной сессии</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="s2">&quot;user-name&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">logoutAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Полная очистка сессии</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">destroy</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Изоляция данных сессии внутри приложения<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Иногда пользователь может запускать одно и тоже приложение несколько раз, на одном и том же сервере, в одно время. Естественно, используя
+переменные сессий нам бы хотелось, чтобы все приложения получали доступ к разным сессиям (хотя в одинаковых приложениях и код одинаковый и названия переменных).
+Для решения этой проблемы можно использовать префикс для переменных сессий, разный для разных приложений.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Изоляция данных сессий</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(){</span>
+
+    <span class="c1">// Все переменные этого приложения будет иметь префикс &quot;my-app-1&quot;</span>
+    <span class="nv">$session</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Session\Adapter\Files</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;uniqueId&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my-app-1&#39;</span>
+        <span class="p">)</span>
+    <span class="p">);</span>
+
+    <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nv">$session</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>На работе это никак не скажется. Добавлять префикс вручную во время установки или чтения сессий нет необходимости.</p>
+</div>
+<div class="section" id="session-bags">
+<h2>Наборы сессий (Session Bags)<a class="headerlink" href="#session-bags" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Компонент <a class="reference internal" href="../api/Phalcon_Session_Bag.html"><em>Phalcon\Session\Bag</em></a> (Session Bags, дословно &#8220;Мешки с сессиями&#8221;)
+позволяет работать с сессиями разделяя их по пространствам имён. Работая таким образом, вы можете легко создавать
+группы переменных сессии в приложении. Установив значение переменной такого объекта, оно автоматически сохранится в сессии:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$user</span>       <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Session\Bag</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">);</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="na">setDI</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Kimbra Johnson&quot;</span><span class="p">;</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="na">age</span>  <span class="o">=</span> <span class="mi">22</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>Сохранение данных в компонентах<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Контроллеры, компоненты и классы расширяющие <a class="reference internal" href="../api/Phalcon_DI_Injectable.html"><em>Phalcon\DI\Injectable</em></a> могут работать
+с <a class="reference internal" href="../api/Phalcon_Session_Bag.html"><em>Phalcon\Session\Bag</em></a> напрямую. Компонент в таком случае изолирует данные для каждого класса.
+Благодаря этому вы можете сохранять данные между запросами, используя их как обычные переменные.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">UserController</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Создаётся постоянная (persistent) переменная &quot;name&quot;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">persistent</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Laura&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">welcomeAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">persistent</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">&quot;Привет, &quot;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">persistent</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>И в компоненте:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Security</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\User\Component</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">auth</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Создаётся постоянная (persistent) переменная &quot;name&quot;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">persistent</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Laura&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAuthName</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">persistent</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Данные, добавленные непосредственно в сессию ($this-&gt;session) доступны во всём приложении, в то время как persistent ($this-&gt;persistent)
+переменные доступны только внутри своего текущего класса.</p>
+<div class="section" id="id7">
+<h3>Реализация собственных адаптеров сессий<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для создания адаптера необходимо реализовать интерфейс <a class="reference internal" href="../api/Phalcon_Session_AdapterInterface.html"><em>Phalcon\Session\AdapterInterface</em></a>,
+или использовать наследование от готового с доработкой необходимой логики.</p>
+<p>У нас есть некоторые готовые адаптеры для сессий <a class="reference external" href="https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter">Phalcon Incubator</a></p>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="filter.html" title="Фильтрация и очистка"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="flash.html" title="Информационные сообщения"
+             >предыдущий</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

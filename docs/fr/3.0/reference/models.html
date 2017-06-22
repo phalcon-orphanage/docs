@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Working with Models &mdash; Phalcon 3.1.1 documentation (English)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="https://static.phalconphp.com/www/images/favicon.ico"/>
+    <link rel="top" title="Phalcon 3.1.1 documentation" href="../index.html" />
+    <link rel="next" title="Model Relationships" href="model-relationships.html" />
+    <link rel="prev" title="Using Controllers" href="controllers.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="model-relationships.html" title="Model Relationships"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="controllers.html" title="Using Controllers"
+             accesskey="P">previous</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 3.1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Working with Models</a><ul>
+<li><a class="reference internal" href="#creating-models">Creating Models</a><ul>
+<li><a class="reference internal" href="#public-properties-vs-setters-getters">Public properties vs. Setters/Getters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#understanding-records-to-objects">Understanding Records To Objects</a></li>
+<li><a class="reference internal" href="#finding-records">Finding Records</a><ul>
+<li><a class="reference internal" href="#model-resultsets">Model Resultsets</a></li>
+<li><a class="reference internal" href="#filtering-resultsets">Filtering Resultsets</a></li>
+<li><a class="reference internal" href="#binding-parameters">Binding Parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#initializing-preparing-fetched-records">Initializing/Preparing fetched records</a></li>
+<li><a class="reference internal" href="#generating-calculations">Generating Calculations</a></li>
+<li><a class="reference internal" href="#creating-updating-records">Creating/Updating Records</a><ul>
+<li><a class="reference internal" href="#create-update-with-confidence">Create/Update with Confidence</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deleting-records">Deleting Records</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="controllers.html" title="previous chapter">&lt; Using Controllers</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="model-relationships.html" title="next chapter">Model Relationships &gt;</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/models.txt" rel="nofollow">Show Source</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="working-with-models">
+<h1>Working with Models<a class="headerlink" href="#working-with-models" title="Permalink to this headline">¶</a></h1>
+<p>A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing
+the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in
+your application. The bulk of your application&#8217;s business logic will be concentrated in the models.</p>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> is the base for all models in a Phalcon application. It provides database independence, basic
+CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.
+<a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> avoids the need of having to use SQL statements because it translates
+methods dynamically to the respective database engine operations.</p>
+<blockquote class="highlights">
+<div>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the
+<a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> component documentation.</div></blockquote>
+<div class="section" id="creating-models">
+<h2>Creating Models<a class="headerlink" href="#creating-models" title="Permalink to this headline">¶</a></h2>
+<p>A model is a class that extends from <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>. Its class name should be in camel case notation:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RobotParts</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>If you&#8217;re using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save
+memory and reduce the memory allocation.</div></blockquote>
+<p>By default, the model &#8220;Store\Toys\RobotParts&#8221; will refer to the table &#8220;robot_parts&#8221;. If you want to manually specify another name for the mapping table,
+you can use the <code class="code docutils literal"><span class="pre">setSource()</span></code> method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RobotParts</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setSource</span><span class="p">(</span><span class="s2">&quot;toys_robot_parts&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The model RobotParts now maps to &#8220;toys_robot_parts&#8221; table. The <code class="code docutils literal"><span class="pre">initialize()</span></code> method aids in setting up the model with a custom behavior i.e. a different table.</p>
+<p>The <code class="code docutils literal"><span class="pre">initialize()</span></code> method is only called once during the request, it&#8217;s intended to perform initializations that apply for
+all instances of the model created within the application. If you want to perform initialization tasks for every instance
+created you can use the <code class="code docutils literal"><span class="pre">onConstruct()</span></code> method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RobotParts</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">onConstruct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="public-properties-vs-setters-getters">
+<h3>Public properties vs. Setters/Getters<a class="headerlink" href="#public-properties-vs-setters-getters" title="Permalink to this headline">¶</a></h3>
+<p>Models can be implemented with properties of public scope, meaning that each property can be read/updated
+from any part of the code that has instantiated that model class without any restrictions:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$price</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By using getters and setters you can control which properties are visible publicly perform various transformations
+to the data (which would be impossible otherwise) and also add validation rules to the data stored in the object:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">InvalidArgumentException</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$price</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setName</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// The name is too short?</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">InvalidArgumentException</span><span class="p">(</span>
+                <span class="s2">&quot;The name is too short&quot;</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setPrice</span><span class="p">(</span><span class="nv">$price</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Negative prices aren&#39;t allowed</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$price</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">InvalidArgumentException</span><span class="p">(</span>
+                <span class="s2">&quot;Price can&#39;t be negative&quot;</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span> <span class="o">=</span> <span class="nv">$price</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPrice</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Convert the value to double before be used</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nx">double</span><span class="p">)</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Public properties provide less complexity in development. However getters/setters can heavily increase the testability,
+extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
+application they are creating. The ORM is compatible with both schemes of defining properties.</p>
+<blockquote class="highlights">
+<div>Underscores in property names can be problematic when using getters and setters.</div></blockquote>
+<p>If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use
+with magic methods. (e.g. $model-&gt;getPropertyName instead of $model-&gt;getProperty_name, $model-&gt;findByPropertyName
+instead of $model-&gt;findByProperty_name, etc.). As much of the system expects camel case, and underscores are commonly
+removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a
+column map (as described above) to ensure proper mapping of your properties to their database counterparts.</p>
+</div>
+</div>
+<div class="section" id="understanding-records-to-objects">
+<h2>Understanding Records To Objects<a class="headerlink" href="#understanding-records-to-objects" title="Permalink to this headline">¶</a></h2>
+<p>Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example,
+for a table &#8220;robots&#8221; with the records:</p>
+<div class="highlight-bash"><div class="highlight"><pre>mysql&gt; <span class="k">select</span> * from robots<span class="p">;</span>
++----+------------+------------+------+
+<span class="p">|</span> id <span class="p">|</span> name       <span class="p">|</span> <span class="nb">type</span>       <span class="p">|</span> year <span class="p">|</span>
++----+------------+------------+------+
+<span class="p">|</span>  <span class="m">1</span> <span class="p">|</span> Robotina   <span class="p">|</span> mechanical <span class="p">|</span> <span class="m">1972</span> <span class="p">|</span>
+<span class="p">|</span>  <span class="m">2</span> <span class="p">|</span> Astro Boy  <span class="p">|</span> mechanical <span class="p">|</span> <span class="m">1952</span> <span class="p">|</span>
+<span class="p">|</span>  <span class="m">3</span> <span class="p">|</span> Terminator <span class="p">|</span> cyborg     <span class="p">|</span> <span class="m">2029</span> <span class="p">|</span>
++----+------------+------------+------+
+<span class="m">3</span> rows in <span class="nb">set</span> <span class="o">(</span>0.00 sec<span class="o">)</span>
+</pre></div>
+</div>
+<p>You could find a certain record by its primary key and then print its name:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="c1">// Find record with id = 3</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="c1">// Prints &quot;Terminator&quot;</span>
+<span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Once the record is in memory, you can make modifications to its data and then save changes:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;RoboCop&quot;</span><span class="p">;</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>As you can see, there is no need to use raw SQL statements. <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> provides high database
+abstraction for web applications.</p>
+</div>
+<div class="section" id="finding-records">
+<h2>Finding Records<a class="headerlink" href="#finding-records" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> also offers several methods for querying records. The following examples will show you
+how to query one or more records from a model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="c1">// How many robots are there?</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
+<span class="k">echo</span> <span class="s2">&quot;There are &quot;</span><span class="p">,</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$robots</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// How many mechanical robots are there?</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s2">&quot;type = &#39;mechanical&#39;&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;There are &quot;</span><span class="p">,</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$robots</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// Get and print virtual robots ordered by name</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;type = &#39;virtual&#39;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Get first 100 virtual robots ordered by name</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;type = &#39;virtual&#39;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>If you want find record by external data (such as user input) or variable data you must use <a class="reference internal" href="#binding-parameters">Binding Parameters</a>.</div></blockquote>
+<p>You could also use the <code class="code docutils literal"><span class="pre">findFirst()</span></code> method to get only the first record matching the given criteria:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="c1">// What&#39;s the first robot in robots table?</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+<span class="k">echo</span> <span class="s2">&quot;The robot name is &quot;</span><span class="p">,</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// What&#39;s the first mechanical robot in robots table?</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="s2">&quot;type = &#39;mechanical&#39;&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;The first mechanical robot name is &quot;</span><span class="p">,</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// Get first virtual robot ordered by name</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;type = &#39;virtual&#39;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;The first virtual robot name is &quot;</span><span class="p">,</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Both <code class="code docutils literal"><span class="pre">find()</span></code> and <code class="code docutils literal"><span class="pre">findFirst()</span></code> methods accept an associative array specifying the search criteria:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;type = &#39;virtual&#39;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;name DESC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;conditions&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;type = ?1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span>       <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s2">&quot;virtual&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The available query options are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="72%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>conditions</td>
+<td>Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> assumes the first parameter are the conditions.</td>
+<td><code class="code docutils literal"><span class="pre">&quot;conditions&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;name</span> <span class="pre">LIKE</span> <span class="pre">'steve%'&quot;</span></code></td>
+</tr>
+<tr class="row-odd"><td>columns</td>
+<td>Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned</td>
+<td><code class="code docutils literal"><span class="pre">&quot;columns&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;id,</span> <span class="pre">name&quot;</span></code></td>
+</tr>
+<tr class="row-even"><td>bind</td>
+<td>Bind is used together with options, by replacing placeholders and escaping values thus increasing security</td>
+<td><code class="code docutils literal"><span class="pre">&quot;bind&quot;</span> <span class="pre">=&gt;</span> <span class="pre">[&quot;status&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;A&quot;,</span> <span class="pre">&quot;type&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;some-time&quot;]</span></code></td>
+</tr>
+<tr class="row-odd"><td>bindTypes</td>
+<td>When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security</td>
+<td><code class="code docutils literal"><span class="pre">&quot;bindTypes&quot;</span> <span class="pre">=&gt;</span> <span class="pre">[Column::BIND_PARAM_STR,</span> <span class="pre">Column::BIND_PARAM_INT]</span></code></td>
+</tr>
+<tr class="row-even"><td>order</td>
+<td>Is used to sort the resultset. Use one or more fields separated by commas.</td>
+<td><code class="code docutils literal"><span class="pre">&quot;order&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;name</span> <span class="pre">DESC,</span> <span class="pre">status&quot;</span></code></td>
+</tr>
+<tr class="row-odd"><td>limit</td>
+<td>Limit the results of the query to results to certain range</td>
+<td><code class="code docutils literal"><span class="pre">&quot;limit&quot;</span> <span class="pre">=&gt;</span> <span class="pre">10</span></code></td>
+</tr>
+<tr class="row-even"><td>offset</td>
+<td>Offset the results of the query by a certain amount</td>
+<td><code class="code docutils literal"><span class="pre">&quot;offset&quot;</span> <span class="pre">=&gt;</span> <span class="pre">5</span></code></td>
+</tr>
+<tr class="row-odd"><td>group</td>
+<td>Allows to collect data across multiple records and group the results by one or more columns</td>
+<td><code class="code docutils literal"><span class="pre">&quot;group&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;name,</span> <span class="pre">status&quot;</span></code></td>
+</tr>
+<tr class="row-even"><td>for_update</td>
+<td>With this option, <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> reads the latest available data, setting exclusive locks on each row it reads</td>
+<td><code class="code docutils literal"><span class="pre">&quot;for_update&quot;</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td>shared_lock</td>
+<td>With this option, <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> reads the latest available data, setting shared locks on each row it reads</td>
+<td><code class="code docutils literal"><span class="pre">&quot;shared_lock&quot;</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></td>
+</tr>
+<tr class="row-even"><td>cache</td>
+<td>Cache the resultset, reducing the continuous access to the relational system</td>
+<td><code class="code docutils literal"><span class="pre">&quot;cache&quot;</span> <span class="pre">=&gt;</span> <span class="pre">[&quot;lifetime&quot;</span> <span class="pre">=&gt;</span> <span class="pre">3600,</span> <span class="pre">&quot;key&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;my-find-key&quot;]</span></code></td>
+</tr>
+<tr class="row-odd"><td>hydration</td>
+<td>Sets the hydration strategy to represent each returned record in the result</td>
+<td><code class="code docutils literal"><span class="pre">&quot;hydration&quot;</span> <span class="pre">=&gt;</span> <span class="pre">Resultset::HYDRATE_OBJECTS</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">&quot;type = :type:&quot;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s2">&quot;year &lt; 2000&quot;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">bind</span><span class="p">([</span><span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">])</span>
+    <span class="o">-&gt;</span><span class="na">order</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The static method <code class="code docutils literal"><span class="pre">query()</span></code> returns a <a class="reference internal" href="../api/Phalcon_Mvc_Model_Criteria.html"><em>Phalcon\Mvc\Model\Criteria</em></a> object that is friendly with IDE autocompleters.</p>
+<p>All the queries are internally handled as <a class="reference internal" href="phql.html"><em>PHQL</em></a> queries. PHQL is a high-level, object-oriented and SQL-like language.
+This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.</p>
+<p>Lastly, there is the <code class="code docutils literal"><span class="pre">findFirstBy&lt;property-name&gt;()</span></code> method. This method expands on the <code class="code docutils literal"><span class="pre">findFirst()</span></code> method mentioned earlier. It allows you to quickly perform a
+retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
+An example is in order, so taking our Robots model mentioned earlier:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$price</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We have three properties to work with here: <code class="code docutils literal"><span class="pre">$id</span></code>, <code class="code docutils literal"><span class="pre">$name</span></code> and <code class="code docutils literal"><span class="pre">$price</span></code>. So, let&#8217;s say you want to retrieve the first record in
+the table with the name &#8216;Terminator&#8217;. This could be written like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$name</span> <span class="o">=</span> <span class="s2">&quot;Terminator&quot;</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirstByName</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;The first robot with the name &quot;</span> <span class="o">.</span> <span class="nv">$name</span> <span class="o">.</span> <span class="s2">&quot; cost &quot;</span> <span class="o">.</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">price</span> <span class="o">.</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;There were no robots found in our table with the name &quot;</span> <span class="o">.</span> <span class="nv">$name</span> <span class="o">.</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notice that we used &#8216;Name&#8217; in the method call and passed the variable <code class="code docutils literal"><span class="pre">$name</span></code> to it, which contains the name
+we are looking for in our table. Notice also that when we find a match with our query, all the other properties
+are available to us as well.</p>
+<div class="section" id="model-resultsets">
+<h3>Model Resultsets<a class="headerlink" href="#model-resultsets" title="Permalink to this headline">¶</a></h3>
+<p>While <code class="code docutils literal"><span class="pre">findFirst()</span></code> returns directly an instance of the called class (when there is data to be returned), the <code class="code docutils literal"><span class="pre">find()</span></code> method returns a
+<a class="reference internal" href="../api/Phalcon_Mvc_Model_Resultset_Simple.html"><em>Phalcon\Mvc\Model\Resultset\Simple</em></a>. This is an object that encapsulates all the functionality
+a resultset has like traversing, seeking specific records, counting, etc.</p>
+<p>These objects are more powerful than standard arrays. One of the greatest features of the <a class="reference internal" href="../api/Phalcon_Mvc_Model_Resultset.html"><em>Phalcon\Mvc\Model\Resultset</em></a>
+is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="c1">// Get all robots</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
+
+<span class="c1">// Traversing with a foreach</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Traversing with a while</span>
+<span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">rewind</span><span class="p">();</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">valid</span><span class="p">())</span> <span class="p">{</span>
+    <span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">current</span><span class="p">();</span>
+
+    <span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+    <span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">next</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Count the resultset</span>
+<span class="k">echo</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$robots</span><span class="p">);</span>
+
+<span class="c1">// Alternative way to count the resultset</span>
+<span class="k">echo</span> <span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">();</span>
+
+<span class="c1">// Move the internal cursor to the third robot</span>
+<span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">seek</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">current</span><span class="p">();</span>
+
+<span class="c1">// Access a robot by its position in the resultset</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$robots</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+
+<span class="c1">// Check if there is a record in certain position</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$robots</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span> <span class="p">{</span>
+   <span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$robots</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// Get the first record in the resultset</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">getFirst</span><span class="p">();</span>
+
+<span class="c1">// Get the last record</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">getLast</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Phalcon&#8217;s resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer
+to a specific position. Note that some database systems don&#8217;t support scrollable cursors, this forces to re-execute the query
+in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset
+is traversed several times, the query must be executed the same number of times.</p>
+<p>As storing large query results in memory could consume many resources, resultsets are obtained
+from the database in chunks of 32 rows - reducing the need to re-execute the request in several cases.</p>
+<p>Note that resultsets can be serialized and stored in a cache backend. <a class="reference internal" href="cache.html"><em>Phalcon\Cache</em></a> can help with that task. However,
+serializing data causes <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> to retrieve all the data from the database in an array,
+thus consuming more memory while this process takes place.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Query all records from model parts</span>
+<span class="nv">$parts</span> <span class="o">=</span> <span class="nx">Parts</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
+
+<span class="c1">// Store the resultset into a file</span>
+<span class="nb">file_put_contents</span><span class="p">(</span>
+    <span class="s2">&quot;cache.txt&quot;</span><span class="p">,</span>
+    <span class="nb">serialize</span><span class="p">(</span><span class="nv">$parts</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Get parts from file</span>
+<span class="nv">$parts</span> <span class="o">=</span> <span class="nb">unserialize</span><span class="p">(</span>
+    <span class="nb">file_get_contents</span><span class="p">(</span><span class="s2">&quot;cache.txt&quot;</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Traverse the parts</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$parts</span> <span class="k">as</span> <span class="nv">$part</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$part</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filtering-resultsets">
+<h3>Filtering Resultsets<a class="headerlink" href="#filtering-resultsets" title="Permalink to this headline">¶</a></h3>
+<p>The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster.
+Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$customers</span> <span class="o">=</span> <span class="nx">Customers</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
+
+<span class="nv">$customers</span> <span class="o">=</span> <span class="nv">$customers</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span>
+    <span class="k">function</span> <span class="p">(</span><span class="nv">$customer</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Return only customers with a valid e-mail</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">email</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_EMAIL</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$customer</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="binding-parameters">
+<h3>Binding Parameters<a class="headerlink" href="#binding-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Bound parameters are also supported in <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>. You are encouraged to use
+this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks.
+Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="c1">// Query robots binding parameters with string placeholders</span>
+<span class="c1">// Parameters whose keys are the same as placeholders</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;name = :name: AND type = :type:&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Robotina&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;maid&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Query robots binding parameters with integer placeholders</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;name = ?1 AND type = ?2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s2">&quot;Robotina&quot;</span><span class="p">,</span>
+            <span class="mi">2</span> <span class="o">=&gt;</span> <span class="s2">&quot;maid&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Query robots binding parameters with both string and integer placeholders</span>
+<span class="c1">// Parameters whose keys are the same as placeholders</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;name = :name: AND type = ?1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Robotina&quot;</span><span class="p">,</span>
+            <span class="mi">1</span>      <span class="o">=&gt;</span> <span class="s2">&quot;maid&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case &#8220;1&#8221; or &#8220;2&#8221; are considered strings
+and not numbers, so the placeholder could not be successfully replaced.</p>
+<p>Strings are automatically escaped using <a class="reference external" href="http://php.net/manual/en/pdo.prepared-statements.php">PDO</a>. This function takes into account the connection charset, so its recommended to define
+the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects
+when storing or retrieving data.</p>
+<p>Additionally you can set the parameter &#8220;bindTypes&#8221;, this allows defining how the parameters should be bound according to its data type:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Db\Column</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="c1">// Bind parameters</span>
+<span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Robotina&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">2008</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="c1">// Casting Types</span>
+<span class="nv">$types</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">BIND_PARAM_STR</span><span class="p">,</span>
+    <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">BIND_PARAM_INT</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="c1">// Query robots binding parameters with string placeholders</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;name = :name: AND year = :year:&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span>      <span class="o">=&gt;</span> <span class="nv">$parameters</span><span class="p">,</span>
+        <span class="s2">&quot;bindTypes&quot;</span> <span class="o">=&gt;</span> <span class="nv">$types</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>Since the default bind-type is <code class="code docutils literal"><span class="pre">Phalcon\Db\Column::BIND_PARAM_STR</span></code>, there is no need to specify the
+&#8220;bindTypes&#8221; parameter if all of the columns are of that type.</div></blockquote>
+<p>If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">];</span> <span class="c1">// $array: [[0] =&gt; &quot;a&quot;, [1] =&gt; &quot;b&quot;, [2] =&gt; &quot;c&quot;]</span>
+
+<span class="nb">unset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// $array: [[0] =&gt; &quot;a&quot;, [2] =&gt; &quot;c&quot;]</span>
+
+<span class="c1">// Now we have to renumber the keys</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="nb">array_values</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span> <span class="c1">// $array: [[0] =&gt; &quot;a&quot;, [1] =&gt; &quot;c&quot;]</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s1">&#39;letter IN ({letter:array})&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;bind&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;letter&#39;</span> <span class="o">=&gt;</span> <span class="nv">$array</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>Bound parameters are available for all query methods such as <code class="code docutils literal"><span class="pre">find()</span></code> and <code class="code docutils literal"><span class="pre">findFirst()</span></code> but also the calculation
+methods like <code class="code docutils literal"><span class="pre">count()</span></code>, <code class="code docutils literal"><span class="pre">sum()</span></code>, <code class="code docutils literal"><span class="pre">average()</span></code> etc.</div></blockquote>
+<p>If you&#8217;re using &#8220;finders&#8221;, bound parameters are automatically used for you:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="c1">// Explicit query using bound parameters</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;name = ?0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">&quot;Ultron&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Implicit query using bound parameters</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findByName</span><span class="p">(</span><span class="s2">&quot;Ultron&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="initializing-preparing-fetched-records">
+<h2>Initializing/Preparing fetched records<a class="headerlink" href="#initializing-preparing-fetched-records" title="Permalink to this headline">¶</a></h2>
+<p>May be the case that after obtaining a record from the database is necessary to initialise the data before
+being used by the rest of the application. You can implement the <code class="code docutils literal"><span class="pre">afterFetch()</span></code> method in a model, this event
+will be executed just after create the instance and assign the data to it:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$status</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeSave</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Convert the array into a string</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">status</span> <span class="o">=</span> <span class="nb">join</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">status</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">afterFetch</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Convert the string to an array</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">status</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">status</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">afterSave</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Convert the string to an array</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">status</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">status</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you use getters/setters instead of/or together with public properties, you can initialize the field once it is
+accessed:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$status</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getStatus</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">status</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-calculations">
+<h2>Generating Calculations<a class="headerlink" href="#generating-calculations" title="Permalink to this headline">¶</a></h2>
+<p>Calculations (or aggregations) are helpers for commonly used functions of database systems such as COUNT, SUM, MAX, MIN or AVG.
+<a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> allows to use these functions directly from the exposed methods.</p>
+<p>Count examples:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// How many employees are?</span>
+<span class="nv">$rowcount</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">count</span><span class="p">();</span>
+
+<span class="c1">// How many different areas are assigned to employees?</span>
+<span class="nv">$rowcount</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">count</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;distinct&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;area&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// How many employees are in the Testing area?</span>
+<span class="nv">$rowcount</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">count</span><span class="p">(</span>
+    <span class="s2">&quot;area = &#39;Testing&#39;&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// Count employees grouping results by their area</span>
+<span class="nv">$group</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">count</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;group&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;area&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$group</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="s2">&quot;There are &quot;</span><span class="p">,</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">rowcount</span><span class="p">,</span> <span class="s2">&quot; in &quot;</span><span class="p">,</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">area</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Count employees grouping by their area and ordering the result by count</span>
+<span class="nv">$group</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">count</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;group&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;area&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;rowcount&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Avoid SQL injections using bound parameters</span>
+<span class="nv">$group</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">count</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;type &gt; ?0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="nv">$type</span>
+        <span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Sum examples:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// How much are the salaries of all employees?</span>
+<span class="nv">$total</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">sum</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;column&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;salary&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// How much are the salaries of all employees in the Sales area?</span>
+<span class="nv">$total</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">sum</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;column&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;salary&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;conditions&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;area = &#39;Sales&#39;&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Generate a grouping of the salaries of each area</span>
+<span class="nv">$group</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">sum</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;column&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;salary&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;group&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;area&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$group</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="s2">&quot;The sum of salaries of the &quot;</span><span class="p">,</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">area</span><span class="p">,</span> <span class="s2">&quot; is &quot;</span><span class="p">,</span> <span class="nv">$row</span><span class="o">-&gt;</span><span class="na">sumatory</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Generate a grouping of the salaries of each area ordering</span>
+<span class="c1">// salaries from higher to lower</span>
+<span class="nv">$group</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">sum</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;column&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;salary&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;group&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;area&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;order&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;sumatory DESC&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Avoid SQL injections using bound parameters</span>
+<span class="nv">$group</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">sum</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;conditions&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;area &gt; ?0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span>       <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="nv">$area</span>
+        <span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Average examples:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// What is the average salary for all employees?</span>
+<span class="nv">$average</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">average</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;column&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;salary&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// What is the average salary for the Sales&#39;s area employees?</span>
+<span class="nv">$average</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">average</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;column&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;salary&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;conditions&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;area = &#39;Sales&#39;&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Avoid SQL injections using bound parameters</span>
+<span class="nv">$average</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">average</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;column&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;conditions&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;area &gt; ?0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span>       <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="nv">$area</span>
+        <span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Max/Min examples:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// What is the oldest age of all employees?</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">maximum</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;column&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// What is the oldest of employees from the Sales area?</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">maximum</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;column&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;conditions&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;area = &#39;Sales&#39;&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// What is the lowest salary of all employees?</span>
+<span class="nv">$salary</span> <span class="o">=</span> <span class="nx">Employees</span><span class="o">::</span><span class="na">minimum</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;column&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;salary&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-updating-records">
+<h2>Creating/Updating Records<a class="headerlink" href="#creating-updating-records" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::save()</span></code> method allows you to create/update records according to whether they already exist in the table
+associated with a model. The save method is called internally by the create and update methods of <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>.
+For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record
+should be updated or created.</p>
+<p>Also the method executes associated validators, virtual foreign keys and events that are defined in the model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">=</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Astro Boy&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">=</span> <span class="mi">1952</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">()</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Umh, We can&#39;t store robots right now: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+    <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">();</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Great, a new robot was saved successfully!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>An array could be passed to &#8220;save&#8221; to avoid assign every column manually. <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> will check if there are setters implemented for
+the columns passed in the array giving priority to them instead of assign directly the values of the attributes:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Astro Boy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">1952</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass
+an insecure array without worrying about possible SQL injections:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">);</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>Without precautions mass assignment could allow attackers to set any database column&#8217;s value. Only use this feature
+if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted
+form.</div></blockquote>
+<p>You can set an additional parameter in &#8216;save&#8217; to set a whitelist of fields that only must taken into account when doing
+the mass assignment:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span>
+    <span class="nv">$_POST</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="create-update-with-confidence">
+<h3>Create/Update with Confidence<a class="headerlink" href="#create-update-with-confidence" title="Permalink to this headline">¶</a></h3>
+<p>When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
+could happen if we use <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::save()</span></code> to persist the records in the database. If we want to be absolutely
+sure that a record is created or updated, we can change the <code class="code docutils literal"><span class="pre">save()</span></code> call with <code class="code docutils literal"><span class="pre">create()</span></code> or <code class="code docutils literal"><span class="pre">update()</span></code>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">=</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Astro Boy&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">=</span> <span class="mi">1952</span><span class="p">;</span>
+
+<span class="c1">// This record only must be created</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">()</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Umh, We can&#39;t store robots right now: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+    <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">();</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Great, a new robot was created successfully!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>These methods &#8220;create&#8221; and &#8220;update&#8221; also accept an array of values as parameter.</p>
+</div>
+</div>
+<div class="section" id="deleting-records">
+<h2>Deleting Records<a class="headerlink" href="#deleting-records" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::delete()</span></code> method allows to delete a record. You can use it as follows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">()</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;Sorry, we can&#39;t delete the robot right now: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+        <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">();</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;The robot was deleted successfully!&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also delete many records by traversing a resultset with a foreach:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="s2">&quot;type = &#39;mechanical&#39;&quot;</span>
+<span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">()</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;Sorry, we can&#39;t delete the robot right now: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+        <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">();</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;The robot was deleted successfully!&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following events are available to define custom business rules that can be executed when a delete operation is
+performed:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="16%" />
+<col width="24%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">Name</th>
+<th class="head">Can stop operation?</th>
+<th class="head">Explanation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Deleting</td>
+<td>beforeDelete</td>
+<td>YES</td>
+<td>Runs before the delete operation is made</td>
+</tr>
+<tr class="row-odd"><td>Deleting</td>
+<td>afterDelete</td>
+<td>NO</td>
+<td>Runs after the delete operation was made</td>
+</tr>
+</tbody>
+</table>
+<p>With the above events can also define business rules in the models:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeDelete</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">status</span> <span class="o">===</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">&quot;The robot is active, it can&#39;t be deleted&quot;</span><span class="p">;</span>
+
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="model-relationships.html" title="Model Relationships"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="controllers.html" title="Using Controllers"
+             >previous</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.lazyload.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/highlight.pack.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.backstretch.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/custom.js"></script>
+
+  </body>
+</html>

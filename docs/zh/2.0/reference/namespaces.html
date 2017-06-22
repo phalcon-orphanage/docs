@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>使用命名空间（Working with Namespaces） &mdash; Phalcon 1.3.0 documentation</title>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="事件管理器（Events Manager）" href="events.html" />
+    <link rel="prev" title="微应用（Micro Applications）" href="micro.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="events.html" title="事件管理器（Events Manager）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="micro.html" title="微应用（Micro Applications）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+                <hr>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">使用命名空间（Working with Namespaces）</a><ul>
+<li><a class="reference internal" href="#setting-up-the-framework">设置框架（Setting up the framework）</a></li>
+<li><a class="reference internal" href="#controllers-in-namespaces">控制器加入命名空间（Controllers in Namespaces）</a></li>
+<li><a class="reference internal" href="#models-in-namespaces">模型加入命名空间（Models in Namespaces）</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="micro.html" title="上一章">&lt; 微应用（Micro Applications）</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="events.html" title="下一章">事件管理器（Events Manager） &gt;</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/namespaces.txt" rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="working-with-namespaces">
+<h1>使用命名空间（Working with Namespaces）<a class="headerlink" href="#working-with-namespaces" title="永久链接至标题">¶</a></h1>
+<p><a class="reference external" href="http://php.net/manual/en/language.namespaces.php">Namespaces</a> can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name,
+a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.</p>
+<div class="section" id="setting-up-the-framework">
+<h2>设置框架（Setting up the framework）<a class="headerlink" href="#setting-up-the-framework" title="永久链接至标题">¶</a></h2>
+<p>Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary
+to perform one or all of the following tasks:</p>
+<p>Use an autoload strategy that takes into account the namespaces, for example with Phalcon\Loader:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerNamespaces</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+       <span class="s1">&#39;Store\Admin\Controllers&#39;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;../bundles/admin/controllers/&quot;</span><span class="p">,</span>
+       <span class="s1">&#39;Store\Admin\Models&#39;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;../bundles/admin/models/&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Specify it in the routes as a separate parameter in the route&#8217;s paths:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s1">&#39;/admin/users/my-profile&#39;</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;namespace&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Store\Admin&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Users&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;profile&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Passing it as part of the route:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s1">&#39;/:namespace/admin/users/my-profile&#39;</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;namespace&#39;</span>  <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Users&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;profile&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>If you are only working with the same namespace for every controller in your application, then you can define a default namespace
+in the Dispatcher, by doing this, you don&#8217;t need to specify a full class name in the router path:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Registering a dispatcher</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\Dispatcher</span><span class="p">();</span>
+    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setDefaultNamespace</span><span class="p">(</span><span class="s1">&#39;Store\Admin\Controllers&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="controllers-in-namespaces">
+<h2>控制器加入命名空间（Controllers in Namespaces）<a class="headerlink" href="#controllers-in-namespaces" title="永久链接至标题">¶</a></h2>
+<p>The following example shows how to implement a controller that use namespaces:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Admin\Controllers</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UsersController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">profileAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="models-in-namespaces">
+<h2>模型加入命名空间（Models in Namespaces）<a class="headerlink" href="#models-in-namespaces" title="永久链接至标题">¶</a></h2>
+<p>Take the following into consideration when using models in namespaces:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Models</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If models have relationships they must include the namespace too:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Models</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;Store\Models\Parts&#39;</span><span class="p">,</span> <span class="s1">&#39;robots_id&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;alias&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;parts&#39;</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In PHQL you must write the statements including namespaces:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$phql</span> <span class="o">=</span> <span class="s1">&#39;SELECT r.* FROM Store\Models\Robots r JOIN Store\Models\Parts p&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="events.html" title="事件管理器（Events Manager）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="micro.html" title="微应用（Micro Applications）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+
+          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Except where otherwise noted, content on this site is licensed under the
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             最后更新日期是 Oct 21, 2014.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; 版权所有 2014, Phalcon Team and contributors.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Donate to Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    or
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+      /*window.setTimeout(function(){
+        $('.gsc-search-button').css({
+          'background': '#f06715',
+          'padding': '2px',
+          'border': '0'
+        });
+      }, 1000)*/
+    });
+    </script>
+
+  </body>
+</html>

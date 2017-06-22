@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Command Line Applications &mdash; documentación de Phalcon - 3.1.1 (Spanish / Español)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="documentación de Phalcon - 3.1.1" href="../index.html" />
+    <link rel="next" title="Images" href="images.html" />
+    <link rel="prev" title="Annotations Parser" href="annotations.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="images.html" title="Images"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="annotations.html" title="Annotations Parser"
+             accesskey="P">anterior</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">documentación de Phalcon - 3.1.1</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Tabla de Contenidos</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Command Line Applications</a><ul>
+<li><a class="reference internal" href="#structure">Structure</a></li>
+<li><a class="reference internal" href="#creating-a-bootstrap">Creating a Bootstrap</a></li>
+<li><a class="reference internal" href="#tasks">Tasks</a></li>
+<li><a class="reference internal" href="#processing-action-parameters">Processing action parameters</a></li>
+<li><a class="reference internal" href="#running-tasks-in-a-chain">Running tasks in a chain</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Tema anterior</h4>
+            <p class="topless"><a href="annotations.html" title="capítulo anterior">&lt; Annotations Parser</a></p>
+            <h4>Próximo tema</h4>
+            <p class="topless"><a href="images.html" title="próximo capítulo">Images &gt;</a></p>
+            <h3>Esta página</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/cli.txt" rel="nofollow">Mostrar el código</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="command-line-applications">
+<h1>Command Line Applications<a class="headerlink" href="#command-line-applications" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.</p>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>A minimal structure of a CLI application will look like this:</p>
+<ul class="simple">
+<li>app/config/config.php</li>
+<li>app/tasks/MainTask.php</li>
+<li>app/cli.php &lt;&#8211; main bootstrap file</li>
+</ul>
+</div>
+<div class="section" id="creating-a-bootstrap">
+<h2>Creating a Bootstrap<a class="headerlink" href="#creating-a-bootstrap" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.</p>
+<p>Below is a sample bootstrap that is being used for this example.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Di\FactoryDefault\Cli</span> <span class="k">as</span> <span class="nx">CliDI</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Cli\Console</span> <span class="k">as</span> <span class="nx">ConsoleApp</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
+
+
+
+<span class="c1">// Using the CLI factory default services container</span>
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CliDI</span><span class="p">();</span>
+
+
+
+<span class="sd">/**</span>
+<span class="sd"> * Register the autoloader and tell it to register the tasks directory</span>
+<span class="sd"> */</span>
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Loader</span><span class="p">();</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/tasks&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+
+
+
+<span class="c1">// Load the configuration file (if any)</span>
+
+<span class="nv">$configFile</span> <span class="o">=</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/config/config.php&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">is_readable</span><span class="p">(</span><span class="nv">$configFile</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$config</span> <span class="o">=</span> <span class="k">include</span> <span class="nv">$configFile</span><span class="p">;</span>
+
+    <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="nv">$config</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+
+<span class="c1">// Create a console application</span>
+<span class="nv">$console</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ConsoleApp</span><span class="p">();</span>
+
+<span class="nv">$console</span><span class="o">-&gt;</span><span class="na">setDI</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+
+
+
+<span class="sd">/**</span>
+<span class="sd"> * Process the console arguments</span>
+<span class="sd"> */</span>
+<span class="nv">$arguments</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$argv</span> <span class="k">as</span> <span class="nv">$k</span> <span class="o">=&gt;</span> <span class="nv">$arg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$k</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$arguments</span><span class="p">[</span><span class="s2">&quot;task&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$arg</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$k</span> <span class="o">===</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$arguments</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$arg</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$k</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$arguments</span><span class="p">[</span><span class="s2">&quot;params&quot;</span><span class="p">][]</span> <span class="o">=</span> <span class="nv">$arg</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Handle incoming arguments</span>
+    <span class="nv">$console</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$arguments</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Phalcon\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+
+    <span class="k">exit</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This piece of code can be run using:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/cli.php
+
+This is the default task and the default action
+</pre></div>
+</div>
+</div>
+<div class="section" id="tasks">
+<h2>Tasks<a class="headerlink" href="#tasks" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.</p>
+<p>Below is an example of the app/tasks/MainTask.php file:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Cli\Task</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MainTask</span> <span class="k">extends</span> <span class="nx">Task</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">mainAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;This is the default task and the default action&quot;</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="processing-action-parameters">
+<h2>Processing action parameters<a class="headerlink" href="#processing-action-parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>It&#8217;s possible to pass parameters to actions, the code for this is already present in the sample bootstrap.</p>
+<p>If you run the application with the following parameters and action:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Cli\Task</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MainTask</span> <span class="k">extends</span> <span class="nx">Task</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">mainAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;This is the default task and the default action&quot;</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param array $params</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testAction</span><span class="p">(</span><span class="k">array</span> <span class="nv">$params</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="nb">sprintf</span><span class="p">(</span>
+            <span class="s2">&quot;hello %s&quot;</span><span class="p">,</span>
+            <span class="nv">$params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+        <span class="k">echo</span> <span class="nb">sprintf</span><span class="p">(</span>
+            <span class="s2">&quot;best regards, %s&quot;</span><span class="p">,</span>
+            <span class="nv">$params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We can then run the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/cli.php main <span class="nb">test </span>world universe
+
+hello world
+best regards, universe
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-tasks-in-a-chain">
+<h2>Running tasks in a chain<a class="headerlink" href="#running-tasks-in-a-chain" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>It&#8217;s also possible to run tasks in a chain if it&#8217;s required. To accomplish this you must add the console itself to the DI:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span><span class="s2">&quot;console&quot;</span><span class="p">,</span> <span class="nv">$console</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Handle incoming arguments</span>
+    <span class="nv">$console</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$arguments</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Phalcon\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+
+    <span class="k">exit</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then you can use the console inside of any task. Below is an example of a modified MainTask.php:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Cli\Task</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MainTask</span> <span class="k">extends</span> <span class="nx">Task</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">mainAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;This is the default task and the default action&quot;</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">console</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;task&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;I will get printed too!&quot;</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>However, it&#8217;s a better idea to extend <a class="reference internal" href="../api/Phalcon_Cli_Task.html"><em>Phalcon\Cli\Task</em></a> and implement this kind of logic there.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="images.html" title="Images"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="annotations.html" title="Annotations Parser"
+             >anterior</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+  </body>
+</html>

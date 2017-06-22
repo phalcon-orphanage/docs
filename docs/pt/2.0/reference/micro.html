@@ -1,0 +1,833 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Micro Applications &mdash; Phalcon 1.3.0 documentation</title>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Working with Namespaces" href="namespaces.html" />
+    <link rel="prev" title="Dispatching Controllers" href="dispatching.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="namespaces.html" title="Working with Namespaces"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dispatching.html" title="Dispatching Controllers"
+             accesskey="P">previous</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+                <hr>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Micro Applications</a><ul>
+<li><a class="reference internal" href="#creating-a-micro-application">Creating a Micro Application</a></li>
+<li><a class="reference internal" href="#defining-routes">Defining routes</a><ul>
+<li><a class="reference internal" href="#routes-with-parameters">Routes with Parameters</a></li>
+<li><a class="reference internal" href="#starting-route">Starting Route</a></li>
+<li><a class="reference internal" href="#rewrite-rules">Rewrite Rules</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#working-with-responses">Working with Responses</a></li>
+<li><a class="reference internal" href="#making-redirections">Making redirections</a></li>
+<li><a class="reference internal" href="#generating-urls-for-routes">Generating URLs for Routes</a></li>
+<li><a class="reference internal" href="#interacting-with-the-dependency-injector">Interacting with the Dependency Injector</a></li>
+<li><a class="reference internal" href="#not-found-handler">Not-Found Handler</a></li>
+<li><a class="reference internal" href="#models-in-micro-applications">Models in Micro Applications</a></li>
+<li><a class="reference internal" href="#micro-application-events">Micro Application Events</a></li>
+<li><a class="reference internal" href="#middleware-events">Middleware events</a></li>
+<li><a class="reference internal" href="#using-controllers-as-handlers">Using Controllers as Handlers</a></li>
+<li><a class="reference internal" href="#returning-responses">Returning Responses</a></li>
+<li><a class="reference internal" href="#rendering-views">Rendering Views</a></li>
+<li><a class="reference internal" href="#related-sources">Related Sources</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="dispatching.html" title="previous chapter">&lt; Dispatching Controllers</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="namespaces.html" title="next chapter">Working with Namespaces &gt;</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/micro.txt" rel="nofollow">Show Source</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="micro-applications">
+<h1>Micro Applications<a class="headerlink" href="#micro-applications" title="Permalink to this headline">¶</a></h1>
+<p>With Phalcon you can create &#8220;Micro-Framework like&#8221; applications. By doing this, you only need to write a minimal amount of
+code to create a PHP application. Micro applications are suitable to implement small applications, APIs and
+prototypes in a practical way.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/welcome/{name}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Welcome </span><span class="si">$name</span><span class="s2">!&lt;/h1&gt;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="section" id="creating-a-micro-application">
+<h2>Creating a Micro Application<a class="headerlink" href="#creating-a-micro-application" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Micro.html"><em>Phalcon\Mvc\Micro</em></a> is the class responsible for implementing a micro application.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="defining-routes">
+<h2>Defining routes<a class="headerlink" href="#defining-routes" title="Permalink to this headline">¶</a></h2>
+<p>After instantiating the object, you will need to add some routes. <a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><em>Phalcon\Mvc\Router</em></a> manages routing internally.
+Routes must always start with /. A HTTP method constraint is optionally required when defining routes, so as to instruct
+the router to match only if the request also matches the HTTP methods. The following example shows how to define
+a route for the method GET:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/hello/{name}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello! </span><span class="si">$name</span><span class="s2">&lt;/h1&gt;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The &#8220;get&#8221; method indicates that the associated HTTP method is GET. The route /say/hello/{name} also has a parameter {$name} that is passed
+directly to the route handler (the anonymous function). Handlers are executed when a route is matched. A handler could be
+any callable item in the PHP userland. The following example shows how to define different types of handlers:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// With a function</span>
+<span class="k">function</span> <span class="nf">say_hello</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello! </span><span class="si">$name</span><span class="s2">&lt;/h1&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/hello/{name}&#39;</span><span class="p">,</span> <span class="s2">&quot;say_hello&quot;</span><span class="p">);</span>
+
+<span class="c1">// With a static method</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/hello/{name}&#39;</span><span class="p">,</span> <span class="s2">&quot;SomeClass::someSayMethod&quot;</span><span class="p">);</span>
+
+<span class="c1">// With a method in an object</span>
+<span class="nv">$myController</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyController</span><span class="p">();</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/hello/{name}&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="nv">$myController</span><span class="p">,</span> <span class="s2">&quot;someAction&quot;</span><span class="p">));</span>
+
+<span class="c1">//Anonymous function</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/hello/{name}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello! </span><span class="si">$name</span><span class="s2">&lt;/h1&gt;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Micro.html"><em>Phalcon\Mvc\Micro</em></a> provides a set of methods to define the HTTP method (or methods)
+which the route is constrained for:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Matches if the HTTP method is GET</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/products&#39;</span><span class="p">,</span> <span class="s2">&quot;get_products&quot;</span><span class="p">);</span>
+
+<span class="c1">//Matches if the HTTP method is POST</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/api/products/add&#39;</span><span class="p">,</span> <span class="s2">&quot;add_product&quot;</span><span class="p">);</span>
+
+<span class="c1">//Matches if the HTTP method is PUT</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;/api/products/update/{id}&#39;</span><span class="p">,</span> <span class="s2">&quot;update_product&quot;</span><span class="p">);</span>
+
+<span class="c1">//Matches if the HTTP method is DELETE</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;/api/products/remove/{id}&#39;</span><span class="p">,</span> <span class="s2">&quot;delete_product&quot;</span><span class="p">);</span>
+
+<span class="c1">//Matches if the HTTP method is OPTIONS</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">(</span><span class="s1">&#39;/api/products/info/{id}&#39;</span><span class="p">,</span> <span class="s2">&quot;info_product&quot;</span><span class="p">);</span>
+
+<span class="c1">//Matches if the HTTP method is PATCH</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">patch</span><span class="p">(</span><span class="s1">&#39;/api/products/update/{id}&#39;</span><span class="p">,</span> <span class="s2">&quot;info_product&quot;</span><span class="p">);</span>
+
+<span class="c1">//Matches if the HTTP method is GET or POST</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">map</span><span class="p">(</span><span class="s1">&#39;/repos/store/refs&#39;</span><span class="p">,</span><span class="s2">&quot;action_product&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">via</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<div class="section" id="routes-with-parameters">
+<h3>Routes with Parameters<a class="headerlink" href="#routes-with-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Defining parameters in routes is very easy as demonstrated above. The name of the parameter has to be enclosed in brackets. Parameter
+formatting is also available using regular expressions to ensure consistency of data. This is demonstrated in the example below:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//This route have two parameters and each of them have a format</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/posts/{year:[0-9]+}/{title:[a-zA-Z\-]+}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$year</span><span class="p">,</span> <span class="nv">$title</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Title: </span><span class="si">$title</span><span class="s2">&lt;/h1&gt;&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h2&gt;Year: </span><span class="si">$year</span><span class="s2">&lt;/h2&gt;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="starting-route">
+<h3>Starting Route<a class="headerlink" href="#starting-route" title="Permalink to this headline">¶</a></h3>
+<p>Normally, the starting route in an application is the route /, and it will more frequent to be accessed by the method GET.
+This scenario is coded as follows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//This is the start route</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Welcome!&lt;/h1&gt;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rewrite-rules">
+<h3>Rewrite Rules<a class="headerlink" href="#rewrite-rules" title="Permalink to this headline">¶</a></h3>
+<p>The following rules can be used together with Apache to rewrite the URis:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
+    <span class="nb">RewriteEngine</span> <span class="k">On</span>
+    <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-f
+    <span class="nb">RewriteRule</span> ^(.*)$ index.php?_url=/$1 [QSA,L]
+<span class="nt">&lt;/IfModule&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="working-with-responses">
+<h2>Working with Responses<a class="headerlink" href="#working-with-responses" title="Permalink to this headline">¶</a></h2>
+<p>You are free to produce any kind of response in a handler: directly make an output, use a template engine, include a view,
+return a json, etc.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Direct output</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/hello&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello! </span><span class="si">$name</span><span class="s2">&lt;/h1&gt;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">//Requiring another file</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/show/results&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">require</span> <span class="s1">&#39;views/results.php&#39;</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">//Returning a JSON</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/get/some-json&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;some&quot;</span><span class="p">,</span> <span class="s2">&quot;important&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>In addition to that, you have access to the service <a class="reference internal" href="response.html"><em>&#8220;response&#8221;</em></a>, with which you can manipulate better the
+response:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/show/data&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">//Set the Content-Type header</span>
+    <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s1">&#39;text/plain&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sendHeaders</span><span class="p">();</span>
+
+    <span class="c1">//Print a file</span>
+    <span class="nb">readfile</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">);</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Or create a response object and return it from the handler:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/show/data&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">//Create a response</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Response</span><span class="p">();</span>
+
+    <span class="c1">//Set the Content-Type header</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s1">&#39;text/plain&#39;</span><span class="p">);</span>
+
+    <span class="c1">//Pass the content of a file</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="nb">file_get_contents</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">));</span>
+
+    <span class="c1">//Return the response</span>
+    <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="making-redirections">
+<h2>Making redirections<a class="headerlink" href="#making-redirections" title="Permalink to this headline">¶</a></h2>
+<p>Redirections could be performed to forward the execution flow to another route:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//This route makes a redirection to another route</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/old/welcome&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">&quot;new/welcome&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/new/welcome&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">&#39;This is the new Welcome&#39;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-urls-for-routes">
+<h2>Generating URLs for Routes<a class="headerlink" href="#generating-urls-for-routes" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="url.html"><em>Phalcon\Mvc\Url</em></a> can be used to produce URLs based on the defined routes. You need to set up a name for the route;
+by this way the &#8220;url&#8221; service can produce the corresponding URL:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Set a route with the name &quot;show-post&quot;</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/blog/{year}/{title}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$year</span><span class="p">,</span> <span class="nv">$title</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">//.. show the post here</span>
+
+<span class="p">})</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">&#39;show-post&#39;</span><span class="p">);</span>
+
+<span class="c1">//produce an URL somewhere</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">echo</span> <span class="s1">&#39;&lt;a href=&quot;&#39;</span><span class="p">,</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">url</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;for&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;show-post&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;php-is-a-great-framework&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;year&#39;</span> <span class="o">=&gt;</span> <span class="mi">2012</span>
+    <span class="p">)),</span> <span class="s1">&#39;&quot;&gt;Show the post&lt;/a&gt;&#39;</span><span class="p">;</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="interacting-with-the-dependency-injector">
+<h2>Interacting with the Dependency Injector<a class="headerlink" href="#interacting-with-the-dependency-injector" title="Permalink to this headline">¶</a></h2>
+<p>In the micro application, a <a class="reference internal" href="di.html"><em>Phalcon\DI\FactoryDefault</em></a> services container is created implicitly; additionally you
+can create outside the application a container to manipulate its services:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\DI\FactoryDefault</span><span class="p">,</span>
+    <span class="nx">Phalcon\Mvc\Micro</span><span class="p">,</span>
+    <span class="nx">Phalcon\Config\Adapter\Ini</span> <span class="k">as</span> <span class="nx">IniConfig</span><span class="p">;</span>
+
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">IniConfig</span><span class="p">(</span><span class="s2">&quot;config.ini&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Micro</span><span class="p">();</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">setDI</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//Read a setting from the config</span>
+    <span class="k">echo</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">app_name</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/contact&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s1">&#39;Yes!, the contact was made!&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The array-syntax is allowed to easily set/get services in the internal services container:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">,</span>
+    <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">MysqlAdapter</span><span class="p">;</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Micro</span><span class="p">();</span>
+
+<span class="c1">//Setup the database service</span>
+<span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;db&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">MysqlAdapter</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;test_db&quot;</span>
+    <span class="p">));</span>
+<span class="p">};</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/blog&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$news</span> <span class="o">=</span> <span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;db&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM news&#39;</span><span class="p">);</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$news</span> <span class="k">as</span> <span class="nv">$new</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$new</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="not-found-handler">
+<h2>Not-Found Handler<a class="headerlink" href="#not-found-handler" title="Permalink to this headline">¶</a></h2>
+<p>When an user tries to access a route that is not defined, the micro application will try to execute the &#8220;Not-Found&#8221; handler.
+An example of that behavior is below:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">notFound</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s2">&quot;Not Found&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sendHeaders</span><span class="p">();</span>
+    <span class="k">echo</span> <span class="s1">&#39;This is crazy, but this page was not found!&#39;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="models-in-micro-applications">
+<h2>Models in Micro Applications<a class="headerlink" href="#models-in-micro-applications" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="models.html"><em>Models</em></a> can be used transparently in Micro Applications, only is required an autoloader to load models:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Loader</span><span class="p">();</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/models/&#39;</span>
+<span class="p">))</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/products/find&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(){</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$product</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="micro-application-events">
+<h2>Micro Application Events<a class="headerlink" href="#micro-application-events" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Micro.html"><em>Phalcon\Mvc\Micro</em></a> is able to send events to the <a class="reference internal" href="events.html"><em>EventsManager</em></a> (if it is present).
+Events are triggered using the type &#8220;micro&#8221;. The following events are supported:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="74%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Event Name</th>
+<th class="head">Triggered</th>
+<th class="head">Can stop operation?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>beforeHandleRoute</td>
+<td>The main method is just called, at this point the application doesn&#8217;t know if there is some matched route</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>beforeExecuteRoute</td>
+<td>A route has been matched and it contains a valid handler, at this point the handler has not been executed</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>afterExecuteRoute</td>
+<td>Triggered after running the handler</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>beforeNotFound</td>
+<td>Triggered when any of the defined routes match the requested URI</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>afterHandleRoute</td>
+<td>Triggered after completing the whole process in a successful way</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>In the following example, we explain how to control the application security using events:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">,</span>
+    <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="c1">//Create a events manager</span>
+<span class="nv">$eventManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+<span class="c1">//Listen all the application events</span>
+<span class="nv">$eventManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;micro&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;beforeExecuteRoute&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">flashSession</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">&quot;The user isn&#39;t authenticated&quot;</span><span class="p">);</span>
+            <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">);</span>
+
+            <span class="c1">//Return (false) stop the operation</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">});</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Micro</span><span class="p">();</span>
+
+<span class="c1">//Bind the events manager to the app</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="middleware-events">
+<h2>Middleware events<a class="headerlink" href="#middleware-events" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the events manager, events can be added using the methods &#8216;before&#8217;, &#8216;after&#8217; and &#8216;finish&#8217;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="c1">//Executed before every route is executed</span>
+<span class="c1">//Return false cancels the route execution</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">before</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;session&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">map</span><span class="p">(</span><span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OK&#39;</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">after</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//This is executed after the route was executed</span>
+    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">getReturnedValue</span><span class="p">());</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">finish</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//This is executed when the request has been served</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>You can call the methods several times to add more events of the same type:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">finish</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//First &#39;finish&#39; middleware</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">finish</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//Second &#39;finish&#39; middleware</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Code for middlewares can be reused using separate classes:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro\MiddlewareInterface</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * CacheMiddleware</span>
+<span class="sd"> *</span>
+<span class="sd"> * Caches pages to reduce processing</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">CacheMiddleware</span> <span class="k">implements</span> <span class="nx">MiddlewareInterface</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">call</span><span class="p">(</span><span class="nv">$application</span><span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="nv">$cache</span> <span class="o">=</span> <span class="nv">$application</span><span class="p">[</span><span class="s1">&#39;cache&#39;</span><span class="p">];</span>
+        <span class="nv">$router</span> <span class="o">=</span> <span class="nv">$application</span><span class="p">[</span><span class="s1">&#39;router&#39;</span><span class="p">];</span>
+
+        <span class="nv">$key</span> <span class="o">=</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">&#39;/^[a-zA-Z0-9]/&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">getRewriteUri</span><span class="p">());</span>
+
+        <span class="c1">//Check if the request is cached</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">exists</span><span class="p">(</span><span class="nv">$key</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then add the instance to the application:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">before</span><span class="p">(</span><span class="k">new</span> <span class="nx">CacheMiddleware</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>The following middleware events are available:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="74%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Event Name</th>
+<th class="head">Triggered</th>
+<th class="head">Can stop operation?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>before</td>
+<td>Before executing the handler. It can be used to control the access to the application</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>after</td>
+<td>Executed after the handler is executed. It can be used to prepare the response</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>finish</td>
+<td>Executed after sending the response. It can be used to perform clean-up</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="using-controllers-as-handlers">
+<h2>Using Controllers as Handlers<a class="headerlink" href="#using-controllers-as-handlers" title="Permalink to this headline">¶</a></h2>
+<p>Medium applications using the Micro\MVC approach may require organize handlers in controllers.
+You can use <a class="reference internal" href="../api/Phalcon_Mvc_Micro_Collection.html"><em>Phalcon\Mvc\Micro\Collection</em></a> to group handlers that belongs to controllers:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro\Collection</span> <span class="k">as</span> <span class="nx">MicroCollection</span><span class="p">;</span>
+
+<span class="nv">$posts</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MicroCollection</span><span class="p">();</span>
+
+<span class="c1">//Set the main handler. ie. a controller instance</span>
+<span class="nv">$posts</span><span class="o">-&gt;</span><span class="na">setHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">PostsController</span><span class="p">());</span>
+
+<span class="c1">//Set a common prefix for all routes</span>
+<span class="nv">$posts</span><span class="o">-&gt;</span><span class="na">setPrefix</span><span class="p">(</span><span class="s1">&#39;/posts&#39;</span><span class="p">);</span>
+
+<span class="c1">//Use the method &#39;index&#39; in PostsController</span>
+<span class="nv">$posts</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">);</span>
+
+<span class="c1">//Use the method &#39;show&#39; in PostsController</span>
+<span class="nv">$posts</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/show/{slug}&#39;</span><span class="p">,</span> <span class="s1">&#39;show&#39;</span><span class="p">);</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">mount</span><span class="p">(</span><span class="nv">$posts</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The controller &#8216;PostsController&#8217; might look like this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nv">$slug</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above example the controller is directly instantiated, Collection also have the ability to lazy-load controllers, this option
+provide better performance loading controllers only if the related routes are matched:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$posts</span><span class="o">-&gt;</span><span class="na">setHandler</span><span class="p">(</span><span class="s1">&#39;PostsController&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="nv">$posts</span><span class="o">-&gt;</span><span class="na">setHandler</span><span class="p">(</span><span class="s1">&#39;Blog\Controllers\PostsController&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="returning-responses">
+<h2>Returning Responses<a class="headerlink" href="#returning-responses" title="Permalink to this headline">¶</a></h2>
+<p>Handlers may return raw responses using <a class="reference internal" href="response.html"><em>Phalcon\Http\Response</em></a> or a component that implements the relevant interface.
+When responses are returned by handlers they are automatically sent by the application.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">,</span>
+    <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Micro</span><span class="p">();</span>
+
+<span class="c1">//Return a response</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/welcome/index&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">();</span>
+
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">401</span><span class="p">,</span> <span class="s2">&quot;Unauthorized&quot;</span><span class="p">);</span>
+
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="s2">&quot;Access is not authorized&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rendering-views">
+<h2>Rendering Views<a class="headerlink" href="#rendering-views" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="views.html"><em>Phalcon\Mvc\View\Simple</em></a> can be used to render views, the following example shows how to do that:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\View</span><span class="p">();</span>
+    <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;app/views/&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">//Return a rendered view</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/products/show&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Render app/views/products/show.phtml passing some variables</span>
+    <span class="k">echo</span> <span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;view&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;products/show&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Artichoke&#39;</span>
+    <span class="p">));</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="related-sources">
+<h2>Related Sources<a class="headerlink" href="#related-sources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="tutorial-rest.html"><em>Creating a Simple REST API</em></a> is a tutorial that explains how to create a micro application to implement a RESTful web service.</li>
+<li><a class="reference external" href="http://store.phalconphp.com">Stickers Store</a> is a very simple micro-application making use of the micro-mvc approach [<a class="reference external" href="https://github.com/phalcon/store">Github</a>].</li>
+</ul>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="namespaces.html" title="Working with Namespaces"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dispatching.html" title="Dispatching Controllers"
+             >previous</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+
+          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Except where otherwise noted, content on this site is licensed under the
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Last updated on Oct 21, 2014.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team and contributors.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Donate to Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    or
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+      /*window.setTimeout(function(){
+        $('.gsc-search-button').css({
+          'background': '#f06715',
+          'padding': '2px',
+          'border': '0'
+        });
+      }, 1000)*/
+    });
+    </script>
+
+  </body>
+</html>

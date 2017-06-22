@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Универсальный загрузчик классов &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Логирование" href="logging.html" />
+    <link rel="prev" title="Поддержка многоязычности" href="translate.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="logging.html" title="Логирование"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="translate.html" title="Поддержка многоязычности"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Универсальный загрузчик классов</a><ul>
+<li><a class="reference internal" href="#id2">Регистрация пространств имён</a></li>
+<li><a class="reference internal" href="#id3">Регистрация префиксов</a></li>
+<li><a class="reference internal" href="#id4">Регистрация каталогов</a></li>
+<li><a class="reference internal" href="#id5">Регистрация классов</a></li>
+<li><a class="reference internal" href="#id6">Дополнительные расширения файлов</a></li>
+<li><a class="reference internal" href="#id7">Изменение текущей стратегии</a></li>
+<li><a class="reference internal" href="#id8">События автозагрузки классов</a></li>
+<li><a class="reference internal" href="#id9">Устранение неполадок</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="translate.html" title="предыдущая глава">&lt; Поддержка многоязычности</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="logging.html" title="следующая глава">Логирование &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/loader.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="id1">
+<h1>Универсальный загрузчик классов<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Компонент <a class="reference internal" href="../api/Phalcon_Loader.html"><em>Phalcon\Loader</em></a> позволяет осуществлять автоматическую загрузку классов, основываясь
+на установленных правилах. Компонент написан на Си и обеспечивает очень низкие накладные расходы на чтение и интерпретацию PHP-файлов.</p>
+<p>Поведение компонента основано на стандартной для PHP возможности <a class="reference external" href="http://www.php.net/manual/ru/language.oop5.autoload.php">автозагрузки классов</a>. Если используемый в коде класс не существует,
+специальный обработчик будет пытаться найти его и загрузить. <a class="reference internal" href="../api/Phalcon_Loader.html"><em>Phalcon\Loader</em></a> создан как раз для этой операции.
+Загрузка только необходимых для работы классов положительно сказывается на производительности приложения, так как в работе участвуют только файлы,
+непосредственно требуемые для текущей операции. Такая технология называется <a class="reference external" href="http://ru.wikipedia.org/wiki/%D0%9E%D1%82%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F_%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F">отложенная (ленивая) инициализация</a>.</p>
+<p>С помощью этого класса возможна загрузка файлов сторонних проектов и производителей, компонент полностью совместим со <a class="reference external" href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md">стандартом PSR-0</a>.</p>
+<p><a class="reference internal" href="../api/Phalcon_Loader.html"><em>Phalcon\Loader</em></a> поддерживает 4 варианта правил автозагрузки классов. Вы можете использовать их по отдельности, или комбинировать.</p>
+<div class="section" id="id2">
+<h2>Регистрация пространств имён<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Если организация вашего кода подразумевает пространства имён, или использованы внешние библиотеки с их использованием, то для регистрации
+стоит использовать метод registerNamespaces(). Метод принимает ассоциативный массив, в котором ключами являются префиксы пространств имен,
+а их значениями - каталоги в которых эти классы расположены. Разделитель пространства имен (namespace) (&#8220;\&#8221;), будет заменен разделителем
+директорий (&#8220;/&#8221;), во время поиска класса загрузчиком. Не забывайте всегда добавлять заключительный слеш в конце пути каталогов:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Создание загрузчика</span>
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Loader</span><span class="p">();</span>
+
+<span class="c1">// Регистрация пространств имён</span>
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerNamespaces</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+       <span class="s2">&quot;Example\Base&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;vendor/example/base/&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;Example\Adapter&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;vendor/example/adapter/&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;Example&quot;</span>         <span class="o">=&gt;</span> <span class="s2">&quot;vendor/example/&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Регистрация автозагрузчика</span>
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+
+<span class="c1">// Требуемый файл должен располагаться в vendor/example/adapter/Some.php</span>
+<span class="nv">$some</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Example\Adapter\Some</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Регистрация префиксов<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Эта стратегия похожа на работу с пространствами имён. Для работы используется ассоциативный массив, в котором ключами являются префиксы,
+а их значениями - каталоги в которых эти классы расположены. Разделитель пространства имен (&#8220;\&#8221;) и символ подчеркивания &#8220;_&#8221;, будет заменен разделителем
+директорий (&#8220;/&#8221;), во время поиска класса загрузчиком. Не забывайте всегда добавлять заключительный слеш в конце пути каталогов:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Создание загрузчика</span>
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Loader</span><span class="p">();</span>
+
+<span class="c1">// Регистрация некоторых префиксов</span>
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerPrefixes</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+       <span class="s2">&quot;Example_Base&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;vendor/example/base/&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;Example_Adapter&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;vendor/example/adapter/&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;Example_&quot;</span>         <span class="o">=&gt;</span> <span class="s2">&quot;vendor/example/&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Регистрация автозагрузчика</span>
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+
+<span class="c1">// Требуемый файл будет искаться в vendor/example/adapter/Some.php</span>
+<span class="nv">$some</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Example_Adapter_Some</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Регистрация каталогов<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Третий вариант - регистрация каталогов для поиска файлов. Этот вариант не очень рекомендуется с точки зрения производительности, при его использовании
+Phalcon будет вынужден обрабатывать данные по каждому каталогу и искать в них файл с таким же именем что и название требуемого класса. Важно регистрировать
+каталоги в правильном порядке, так же не забывайте всегда добавлять заключительный слеш в конце пути:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Создание загрузчика</span>
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Loader</span><span class="p">();</span>
+
+<span class="c1">// Регистрация каталогов</span>
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;library/MyComponent/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;library/OtherComponent/Other/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;vendor/example/adapters/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;vendor/example/&quot;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Регистрация автозагрузчика</span>
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+
+<span class="c1">// Требуемый файл будет автоматически подключен из первого каталога в котором он будет найден</span>
+<span class="c1">// например library/OtherComponent/Other/Some.php</span>
+<span class="nv">$some</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Some</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Регистрация классов<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Последний вариант - регистрация названия класса и пути к нему. Это решение может быть полезно при использовании стратегий, не позволяющих
+легко получить файл, используя название или путь к классу. Это самый быстрый способ автозагрузки. Но при разрастании приложения, число
+файлов так же будет расти, увеличивая список автозагрузки. Разрастание списка снижает эффективность и не рекомендуется по вопросам производительности.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Создание загрузчика</span>
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Loader</span><span class="p">();</span>
+
+<span class="c1">// Регистрация классов</span>
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerClasses</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;Some&quot;</span>         <span class="o">=&gt;</span> <span class="s2">&quot;library/OtherComponent/Other/Some.php&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Example\Base&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;vendor/example/adapters/Example/BaseClass.php&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Регистрация автозагрузчика</span>
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+
+<span class="c1">// Искомый класс будет искаться на соответствующее зарегистрированное значение массива</span>
+<span class="c1">// например library/OtherComponent/Other/Some.php</span>
+<span class="nv">$some</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Some</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>Дополнительные расширения файлов<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Автозагрузка с использованием префиксов, пространств имён и регистрации каталогов автоматически добавляет расширение &#8220;php&#8221; во время поиска файлов. Если
+у вас используются дополнительные расширения, их можно указать с помощью метода &#8220;setExtensions&#8221;. Файлы при этом будут проверять в порядке регистрации расширений:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+ <span class="c1">// Создание загрузчика</span>
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Loader</span><span class="p">();</span>
+
+<span class="c1">// Установка расширений файлов для поиска классов</span>
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">setExtensions</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;php&quot;</span><span class="p">,</span> <span class="s2">&quot;inc&quot;</span><span class="p">,</span> <span class="s2">&quot;phb&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Изменение текущей стратегии<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Дополнительные данные могут быть добавлены к существующим значениям стратегии следующим образом:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Регистрация дополнительных каталогов</span>
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;../app/library/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;../app/plugins/&quot;</span>
+    <span class="p">),</span>
+    <span class="k">true</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Использование &#8220;true&#8221; в качестве второго параметра позволит добавить новые значения к уже имеющимся.</p>
+</div>
+<div class="section" id="id8">
+<h2>События автозагрузки классов<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В следующем примере, EventsManager работает с загрузчиком класса, что позволяет нам получать отладочную информацию о выполнении работы:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Events\Manager</span><span class="p">();</span>
+
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Loader</span><span class="p">();</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerNamespaces</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+   <span class="s1">&#39;Example\\Base&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;vendor/example/base/&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;Example\\Adapter&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;vendor/example/adapter/&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;Example&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;vendor/example/&#39;</span>
+<span class="p">));</span>
+
+<span class="c1">// Прослушивание всех событий загрузчика</span>
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;loader&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$loader</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;beforeCheckPath&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">getCheckedPath</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Некоторые события при возвращении логического &#8220;false&#8221; могут остановить активную операцию. Список поддерживаемых событий:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="40%" />
+<col width="32%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Название события</th>
+<th class="head" colspan="2">Условия срабатывания</th>
+<th class="head">Останавливает операцию?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>beforeCheckClass</td>
+<td colspan="2">До начала процесса автозагрузки</td>
+<td>Да</td>
+</tr>
+<tr class="row-odd"><td>pathFound</td>
+<td colspan="2">Когда найдено расположение класса</td>
+<td>Нет</td>
+</tr>
+<tr class="row-even"><td>afterCheckClass</td>
+<td colspan="2">После завершения процесса автозагрузки. Событие вызывается, если автозагрузчик не обнаружил искомый класс</td>
+<td>Нет</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id9">
+<h2>Устранение неполадок<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Некоторые вещи, которые стоит иметь в виду при использовании универсального автозагрузчика:</p>
+<ul class="simple">
+<li>Загрузчик чувствителен к регистру</li>
+<li>Стратегии, основанные на пространствах имён и префиксах, быстрее, чем стратегии на каталогах</li>
+<li>Если доступен <a class="reference external" href="http://php.net/manual/en/book.apc.php">APC</a>, он будет использован для запрашиваемого файла (и этот файл будет кэширован)</li>
+</ul>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="logging.html" title="Логирование"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="translate.html" title="Поддержка многоязычности"
+             >предыдущий</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

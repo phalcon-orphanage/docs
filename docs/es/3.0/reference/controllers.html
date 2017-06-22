@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using Controllers &mdash; Phalcon 3.1.1 documentation (English)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="https://static.phalconphp.com/www/images/favicon.ico"/>
+    <link rel="top" title="Phalcon 3.1.1 documentation" href="../index.html" />
+    <link rel="next" title="Working with Models" href="models.html" />
+    <link rel="prev" title="The MVC Architecture" href="mvc.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="models.html" title="Working with Models"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mvc.html" title="The MVC Architecture"
+             accesskey="P">previous</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 3.1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Using Controllers</a><ul>
+<li><a class="reference internal" href="#dispatch-loop">Dispatch Loop</a></li>
+<li><a class="reference internal" href="#initializing-controllers">Initializing Controllers</a></li>
+<li><a class="reference internal" href="#injecting-services">Injecting Services</a></li>
+<li><a class="reference internal" href="#request-and-response">Request and Response</a></li>
+<li><a class="reference internal" href="#session-data">Session Data</a></li>
+<li><a class="reference internal" href="#using-services-as-controllers">Using Services as Controllers</a></li>
+<li><a class="reference internal" href="#events-in-controllers">Events in Controllers</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="mvc.html" title="previous chapter">&lt; The MVC Architecture</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="models.html" title="next chapter">Working with Models &gt;</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/controllers.txt" rel="nofollow">Show Source</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="using-controllers">
+<h1>Using Controllers<a class="headerlink" href="#using-controllers" title="Permalink to this headline">¶</a></h1>
+<p>Actions are methods on a controller that handle requests. By default all
+public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating
+the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.</p>
+<p>For instance, when you access a URL like this: <a class="reference external" href="http://localhost/blog/posts/show/2015/the-post-title">http://localhost/blog/posts/show/2015/the-post-title</a> Phalcon by default will decompose each
+part like this:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="59%" />
+<col width="41%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Phalcon Directory</strong></td>
+<td>blog</td>
+</tr>
+<tr class="row-even"><td><strong>Controller</strong></td>
+<td>posts</td>
+</tr>
+<tr class="row-odd"><td><strong>Action</strong></td>
+<td>show</td>
+</tr>
+<tr class="row-even"><td><strong>Parameter</strong></td>
+<td>2015</td>
+</tr>
+<tr class="row-odd"><td><strong>Parameter</strong></td>
+<td>the-post-title</td>
+</tr>
+</tbody>
+</table>
+<p>In this case, the PostsController will handle this request. There is no a special location to put controllers in an application, they
+could be loaded using <a class="reference internal" href="loader.html"><em>autoloaders</em></a>, so you&#8217;re free to organize your controllers as you need.</p>
+<p>Controllers must have the suffix &#8220;Controller&#8221; while actions the suffix &#8220;Action&#8221;. A sample of a controller is as follows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">(</span><span class="nv">$year</span><span class="p">,</span> <span class="nv">$postTitle</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can
+optionally extend <a class="reference internal" href="../api/Phalcon_Mvc_Controller.html"><em>Phalcon\Mvc\Controller</em></a>. By doing this, the controller can have easy access to
+the application services.</p>
+<p>Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">(</span><span class="nv">$year</span> <span class="o">=</span> <span class="mi">2015</span><span class="p">,</span> <span class="nv">$postTitle</span> <span class="o">=</span> <span class="s2">&quot;some default title&quot;</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$year</span>      <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">);</span>
+        <span class="nv">$postTitle</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s2">&quot;postTitle&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="dispatch-loop">
+<h2>Dispatch Loop<a class="headerlink" href="#dispatch-loop" title="Permalink to this headline">¶</a></h2>
+<p>The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one
+action was executed. Now we&#8217;ll see how the <code class="code docutils literal"><span class="pre">forward()</span></code> method can provide a more complex flow of operation in the dispatch loop, by forwarding
+execution to a different controller/action.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">(</span><span class="nv">$year</span><span class="p">,</span> <span class="nv">$postTitle</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span>
+            <span class="s2">&quot;You don&#39;t have permission to access this area&quot;</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Forward flow to another action</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;users&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;signin&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If users don&#8217;t have permission to access a certain action then they will be forwarded to the &#8216;signin&#8217; action in the Users controller.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UsersController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">signinAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>There is no limit on the &#8220;forwards&#8221; you can have in your application, so long as they do not result in circular references, at which point
+your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke
+the view layer of the MVC that is managed by <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a>.</p>
+</div>
+<div class="section" id="initializing-controllers">
+<h2>Initializing Controllers<a class="headerlink" href="#initializing-controllers" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Controller.html"><em>Phalcon\Mvc\Controller</em></a> offers the <code class="code docutils literal"><span class="pre">initialize()</span></code> method, which is executed first, before any
+action is executed on a controller. The use of the <code class="code docutils literal"><span class="pre">__construct()</span></code> method is not recommended.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$settings</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">settings</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;mySetting&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">settings</span><span class="p">[</span><span class="s2">&quot;mySetting&quot;</span><span class="p">]</span> <span class="o">===</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>The <code class="code docutils literal"><span class="pre">initialize()</span></code> method is only called if the &#8216;beforeExecuteRoute&#8217; event is executed with success. This avoid
+that application logic in the initializer cannot be executed without authorization.</div></blockquote>
+<p>If you want to execute some initialization logic just after the controller object is constructed then you can implement the
+<code class="code docutils literal"><span class="pre">onConstruct()</span></code> method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">onConstruct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>Be aware that <code class="code docutils literal"><span class="pre">onConstruct()</span></code> method is executed even if the action to be executed doesn&#8217;t exist
+in the controller or the user does not have access to it (according to custom control access
+provided by the developer).</div></blockquote>
+</div>
+<div class="section" id="injecting-services">
+<h2>Injecting Services<a class="headerlink" href="#injecting-services" title="Permalink to this headline">¶</a></h2>
+<p>If a controller extends <a class="reference internal" href="../api/Phalcon_Mvc_Controller.html"><em>Phalcon\Mvc\Controller</em></a> then it has easy access to the service
+container in application. For example, if we have registered a service like this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Di</span><span class="p">;</span>
+
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Di</span><span class="p">();</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;storage&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Storage</span><span class="p">(</span>
+            <span class="s2">&quot;/some/directory&quot;</span>
+        <span class="p">);</span>
+    <span class="p">},</span>
+    <span class="k">true</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Then, we can access that service in several ways:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FilesController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Injecting the service by just accessing the property with the same name</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">storage</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s2">&quot;/some/file&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Accessing the service from the DI</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;storage&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s2">&quot;/some/file&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Another way to access the service using the magic getter</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">di</span><span class="o">-&gt;</span><span class="na">getStorage</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s2">&quot;/some/file&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Another way to access the service using the magic getter</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDi</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStorage</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s2">&quot;/some/file&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Using the array-syntax</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">di</span><span class="p">[</span><span class="s2">&quot;storage&quot;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s2">&quot;/some/file&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you&#8217;re using Phalcon as a full-stack framework, you can read the services provided <a class="reference internal" href="di.html"><em>by default</em></a> in the framework.</p>
+</div>
+<div class="section" id="request-and-response">
+<h2>Request and Response<a class="headerlink" href="#request-and-response" title="Permalink to this headline">¶</a></h2>
+<p>Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment.
+The &#8220;request&#8221; service contains an instance of <a class="reference internal" href="../api/Phalcon_Http_Request.html"><em>Phalcon\Http\Request</em></a> and the &#8220;response&#8221;
+contains a <a class="reference internal" href="../api/Phalcon_Http_Response.html"><em>Phalcon\Http\Response</em></a> representing what is going to be sent back to the client.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Check if request has made with POST</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">isPost</span><span class="p">())</span> <span class="p">{</span>
+            <span class="c1">// Access POST data</span>
+            <span class="nv">$customerName</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">);</span>
+            <span class="nv">$customerBorn</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;born&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in
+an afterDispatch event - it can be useful to access the response directly:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">notFoundAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Send a HTTP 404 response header</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s2">&quot;Not Found&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Learn more about the HTTP environment in their dedicated articles <a class="reference internal" href="request.html"><em>request</em></a> and <a class="reference internal" href="response.html"><em>response</em></a>.</p>
+</div>
+<div class="section" id="session-data">
+<h2>Session Data<a class="headerlink" href="#session-data" title="Permalink to this headline">¶</a></h2>
+<p>Sessions help us maintain persistent data between requests. You can access a <a class="reference internal" href="../api/Phalcon_Session_Bag.html"><em>Phalcon\Session\Bag</em></a>
+from any controller to encapsulate data that needs to be persistent:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UserController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">persistent</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Michael&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">welcomeAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;Welcome, &quot;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">persistent</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-services-as-controllers">
+<h2>Using Services as Controllers<a class="headerlink" href="#using-services-as-controllers" title="Permalink to this headline">¶</a></h2>
+<p>Services may act as controllers, controllers classes are always requested from the services container. Accordingly,
+any other class registered with its name can easily replace a controller:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Register a controller as a service</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;IndexController&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$component</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Component</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$component</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// Register a namespaced controller as a service</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;Backend</span><span class="se">\\</span><span class="s2">Controllers</span><span class="se">\\</span><span class="s2">IndexController&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$component</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Component</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$component</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="events-in-controllers">
+<h2>Events in Controllers<a class="headerlink" href="#events-in-controllers" title="Permalink to this headline">¶</a></h2>
+<p>Controllers automatically act as listeners for <a class="reference internal" href="dispatching.html"><em>dispatcher</em></a> events, implementing methods with those event names allow
+you to implement hook points before/after the actions are executed:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeExecuteRoute</span><span class="p">(</span><span class="nv">$dispatcher</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// This is executed before every found action</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">()</span> <span class="o">===</span> <span class="s2">&quot;save&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span>
+                <span class="s2">&quot;You don&#39;t have permission to save posts&quot;</span>
+            <span class="p">);</span>
+
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+                <span class="p">]</span>
+            <span class="p">);</span>
+
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">afterExecuteRoute</span><span class="p">(</span><span class="nv">$dispatcher</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Executed after every found action</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="models.html" title="Working with Models"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mvc.html" title="The MVC Architecture"
+             >previous</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.lazyload.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/highlight.pack.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.backstretch.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/custom.js"></script>
+
+  </body>
+</html>

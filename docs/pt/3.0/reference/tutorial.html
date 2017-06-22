@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial 1: Let’s learn by example &mdash; Phalcon 3.1.1 documentation (English)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="https://static.phalconphp.com/www/images/favicon.ico"/>
+    <link rel="top" title="Phalcon 3.1.1 documentation" href="../index.html" />
+    <link rel="next" title="Tutorial 2: Introducing INVO" href="tutorial-invo.html" />
+    <link rel="prev" title="Phalcon Developer Tools on Windows" href="wintools.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tutorial-invo.html" title="Tutorial 2: Introducing INVO"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="wintools.html" title="Phalcon Developer Tools on Windows"
+             accesskey="P">previous</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 3.1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Tutorial 1: Let&#8217;s learn by example</a><ul>
+<li><a class="reference internal" href="#file-structure">File structure</a></li>
+<li><a class="reference internal" href="#bootstrap">Bootstrap</a><ul>
+<li><a class="reference internal" href="#autoloaders">Autoloaders</a></li>
+<li><a class="reference internal" href="#dependency-management">Dependency Management</a></li>
+<li><a class="reference internal" href="#handling-the-application-request">Handling the application request</a></li>
+<li><a class="reference internal" href="#putting-everything-together">Putting everything together</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-a-controller">Creating a Controller</a></li>
+<li><a class="reference internal" href="#sending-output-to-a-view">Sending output to a view</a></li>
+<li><a class="reference internal" href="#designing-a-sign-up-form">Designing a sign up form</a></li>
+<li><a class="reference internal" href="#creating-a-model">Creating a Model</a></li>
+<li><a class="reference internal" href="#setting-a-database-connection">Setting a Database Connection</a></li>
+<li><a class="reference internal" href="#storing-data-using-models">Storing data using models</a></li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="wintools.html" title="previous chapter">&lt; Phalcon Developer Tools on Windows</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="tutorial-invo.html" title="next chapter">Tutorial 2: Introducing INVO &gt;</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/tutorial.txt" rel="nofollow">Show Source</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="tutorial-1-let-s-learn-by-example">
+<h1>Tutorial 1: Let&#8217;s learn by example<a class="headerlink" href="#tutorial-1-let-s-learn-by-example" title="Permalink to this headline">¶</a></h1>
+<p>Throughout this first tutorial, we&#8217;ll walk you through the creation of an application with a simple registration
+form from the ground up. We will also explain the basic aspects of the framework&#8217;s behavior. If you are interested
+in automatic code generation tools for Phalcon, you can check our <a class="reference internal" href="tools.html"><em>developer tools</em></a>.</p>
+<p>The best way to use this guide is to follow each step in turn. You can get the complete code
+<a class="reference external" href="https://github.com/phalcon/tutorial">here</a>.</p>
+<div class="section" id="file-structure">
+<h2>File structure<a class="headerlink" href="#file-structure" title="Permalink to this headline">¶</a></h2>
+<p>Phalcon does not impose a particular file structure for application development. Due to the fact that it is
+loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.</p>
+<p>For the purposes of this tutorial and as a starting point, we suggest this very simple structure:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">tutorial/</span>
+<span class="x">  app/</span>
+<span class="x">    controllers/</span>
+<span class="x">    models/</span>
+<span class="x">    views/</span>
+<span class="x">  public/</span>
+<span class="x">    css/</span>
+<span class="x">    img/</span>
+<span class="x">    js/</span>
+</pre></div>
+</div>
+<p>Note that you don&#8217;t need any &#8220;library&#8221; directory related to Phalcon. The framework is available in memory,
+ready for you to use.</p>
+<p>Before continuing, please be sure you&#8217;ve successfully <a class="reference internal" href="install.html"><em>installed Phalcon</em></a> and have setup either <a class="reference internal" href="nginx.html"><em>Nginx</em></a>, <a class="reference internal" href="apache.html"><em>Apache</em></a> or <a class="reference internal" href="cherokee.html"><em>Cherokee</em></a>.</p>
+</div>
+<div class="section" id="bootstrap">
+<h2>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this headline">¶</a></h2>
+<p>The first file you need to create is the bootstrap file. This file is very important; since it serves
+as the base of your application, giving you control of all aspects of it. In this file you can implement
+initialization of components as well as application behavior.</p>
+<p>Ultimately, it is responsible for doing 3 things:</p>
+<ol class="arabic simple">
+<li>Setting up the autoloader.</li>
+<li>Configuring the Dependency Injector.</li>
+<li>Handling the application request.</li>
+</ol>
+<div class="section" id="autoloaders">
+<h3>Autoloaders<a class="headerlink" href="#autoloaders" title="Permalink to this headline">¶</a></h3>
+<p>The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component <a class="reference internal" href="../api/Phalcon_Loader.html"><em>Phalcon\Loader</em></a>.</p>
+<p>With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Loader</span><span class="p">();</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;../app/controllers/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;../app/models/&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dependency-management">
+<h3>Dependency Management<a class="headerlink" href="#dependency-management" title="Permalink to this headline">¶</a></h3>
+<p>A very important concept that must be understood when working with Phalcon is its <a class="reference internal" href="di.html"><em>dependency injection container</em></a>. It may sound complex but is actually very simple and practical.</p>
+<p>A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, <a class="reference internal" href="../api/Phalcon_Di.html"><em>Phalcon\Di</em></a> acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Di\FactoryDefault</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="c1">// Create a DI</span>
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../api/Phalcon_Di_FactoryDefault.html"><em>Phalcon\Di\FactoryDefault</em></a> is a variant of <a class="reference internal" href="../api/Phalcon_Di.html"><em>Phalcon\Di</em></a>. To make things easier,
+it has registered most of the components that come with Phalcon. Thus we should not register them one by one.
+Later there will be no problem in replacing a factory service.</p>
+<p>In the next part, we register the &#8220;view&#8221; service indicating the directory where the framework will find the views files.
+As the views do not correspond to classes, they cannot be charged with an autoloader.</p>
+<p>Services can be registered in several ways, but for our tutorial we&#8217;ll use an <a class="reference external" href="http://php.net/manual/en/functions.anonymous.php">anonymous function</a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="c1">// Setup the view component</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;view&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
+
+        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s2">&quot;../app/views/&quot;</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Next we register a base URI so that all URIs generated by Phalcon include the &#8220;tutorial&#8221; folder we setup earlier.
+This will become important later on in this tutorial when we use the class <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a>
+to generate a hyperlink.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span> <span class="k">as</span> <span class="nx">UrlProvider</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="c1">// Setup a base URI so that all generated URIs include the &quot;tutorial&quot; folder</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UrlProvider</span><span class="p">();</span>
+
+        <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">setBaseUri</span><span class="p">(</span><span class="s2">&quot;/tutorial/&quot;</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$url</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="handling-the-application-request">
+<h3>Handling the application request<a class="headerlink" href="#handling-the-application-request" title="Permalink to this headline">¶</a></h3>
+<p>In the last part of this file, we find <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a>. Its purpose
+is to initialize the request environment, route the incoming request, and then dispatch any discovered actions;
+it aggregates any responses and returns them when the process is complete.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Application</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="nv">$application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
+
+<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="putting-everything-together">
+<h3>Putting everything together<a class="headerlink" href="#putting-everything-together" title="Permalink to this headline">¶</a></h3>
+<p>The tutorial/public/index.php file should look like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Di\FactoryDefault</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span> <span class="k">as</span> <span class="nx">UrlProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">DbAdapter</span><span class="p">;</span>
+
+
+
+<span class="c1">// Register an autoloader</span>
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Loader</span><span class="p">();</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;../app/controllers/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;../app/models/&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+
+
+
+<span class="c1">// Create a DI</span>
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
+
+<span class="c1">// Setup the view component</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;view&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
+
+        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s2">&quot;../app/views/&quot;</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// Setup a base URI so that all generated URIs include the &quot;tutorial&quot; folder</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UrlProvider</span><span class="p">();</span>
+
+        <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">setBaseUri</span><span class="p">(</span><span class="s2">&quot;/tutorial/&quot;</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$url</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+
+
+<span class="nv">$application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Handle the request</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
+
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Exception: &quot;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set
+ourselves a flexible MVC application in less than 30 lines of code.</p>
+</div>
+</div>
+<div class="section" id="creating-a-controller">
+<h2>Creating a Controller<a class="headerlink" href="#creating-a-controller" title="Permalink to this headline">¶</a></h2>
+<p>By default Phalcon will look for a controller named &#8220;Index&#8221;. It is the starting point when no controller or
+action has been passed in the request. The index controller (app/controllers/IndexController.php) looks like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">IndexController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello!&lt;/h1&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The controller classes must have the suffix &#8220;Controller&#8221; and controller actions must have the suffix &#8220;Action&#8221;. If you access the application from your browser, you should see something like this:</p>
+<div class="figure align-center">
+<img alt="../_images/tutorial-1.png" src="../_images/tutorial-1.png" />
+</div>
+<p>Congratulations, you&#8217;re flying with Phalcon!</p>
+</div>
+<div class="section" id="sending-output-to-a-view">
+<h2>Sending output to a view<a class="headerlink" href="#sending-output-to-a-view" title="Permalink to this headline">¶</a></h2>
+<p>Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (app/views/index/index.phtml):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello!&lt;/h1&gt;&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Our controller (app/controllers/IndexController.php) now has an empty action definition:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">IndexController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The browser output should remain the same. The <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> static component is automatically created when the action execution has ended. Learn more about <a class="reference internal" href="views.html"><em>views usage here</em></a>.</p>
+</div>
+<div class="section" id="designing-a-sign-up-form">
+<h2>Designing a sign up form<a class="headerlink" href="#designing-a-sign-up-form" title="Permalink to this headline">¶</a></h2>
+<p>Now we will change the index.phtml view file, to add a link to a new controller named &#8220;signup&#8221;. The goal is to allow users to sign up within our application.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello!&lt;/h1&gt;&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">linkTo</span><span class="p">(</span>
+    <span class="s2">&quot;signup&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Sign Up Here!&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The generated HTML code displays an anchor (&#8220;a&#8221;) HTML tag linking to a new controller:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>Hello!<span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/tutorial/signup&quot;</span><span class="nt">&gt;</span>Sign Up Here!<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+</div>
+<p>To generate the tag we use the class <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a>. This is a utility class that allows
+us to build HTML tags with framework conventions in mind. As this class is a also a service registered in the DI
+we use <code class="code docutils literal"><span class="pre">$this-&gt;tag</span></code> to access it.</p>
+<p>A more detailed article regarding HTML generation can be <a class="reference internal" href="tags.html"><em>found here</em></a>.</p>
+<div class="figure align-center">
+<img alt="../_images/tutorial-2.png" src="../_images/tutorial-2.png" />
+</div>
+<p>Here is the Signup controller (app/controllers/SignupController.php):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SignupController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The empty index action gives the clean pass to a view with the form definition (app/views/signup/index.phtml):</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;h2&gt;</span>
+    Sign up using this form
+<span class="nt">&lt;/h2&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="s2">&quot;signup/register&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+
+    <span class="nt">&lt;p&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
+            Name
+        <span class="nt">&lt;/label&gt;</span>
+
+        <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">textField</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;p&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;email&quot;</span><span class="nt">&gt;</span>
+            E-Mail
+        <span class="nt">&lt;/label&gt;</span>
+
+        <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">textField</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+
+
+
+    <span class="nt">&lt;p&gt;</span>
+        <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">submitButton</span><span class="p">(</span><span class="s2">&quot;Register&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;/form&gt;</span>
+</pre></div>
+</div>
+<p>Viewing the form in your browser will show something like this:</p>
+<div class="figure align-center">
+<img alt="../_images/tutorial-3.png" src="../_images/tutorial-3.png" />
+</div>
+<p><a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> also provides useful methods to build form elements.</p>
+<p>The <code class="code docutils literal"><span class="pre">Phalcon\Tag::form()</span></code> method receives only one parameter for instance, a relative URI to a controller/action in
+the application.</p>
+<p>By clicking the &#8220;Send&#8221; button, you will notice an exception thrown from the framework, indicating that we are missing the &#8220;register&#8221; action in the controller &#8220;signup&#8221;. Our public/index.php file throws this exception:</p>
+<blockquote>
+<div>Exception: Action &#8220;register&#8221; was not found on handler &#8220;signup&#8221;</div></blockquote>
+<p>Implementing that method will remove the exception:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SignupController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you click the &#8220;Send&#8221; button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.</p>
+</div>
+<div class="section" id="creating-a-model">
+<h2>Creating a Model<a class="headerlink" href="#creating-a-model" title="Permalink to this headline">¶</a></h2>
+<p>Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.</p>
+<p>Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">users</span><span class="o">`</span> <span class="p">(</span>
+    <span class="o">`</span><span class="n">id</span><span class="o">`</span>    <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>     <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="o">`</span><span class="n">name</span><span class="o">`</span>  <span class="nb">varchar</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>          <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="o">`</span><span class="n">email</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>          <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+
+    <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>A model should be located in the app/models directory (app/models/Users.php). The model maps to the &#8220;users&#8221; table:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Users</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$email</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-a-database-connection">
+<h2>Setting a Database Connection<a class="headerlink" href="#setting-a-database-connection" title="Permalink to this headline">¶</a></h2>
+<p>In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">DbAdapter</span><span class="p">;</span>
+
+<span class="c1">// Setup the database service</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;db&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DbAdapter</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;test_db&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>With the correct database parameters, our models are ready to work and interact with the rest of the application.</p>
+</div>
+<div class="section" id="storing-data-using-models">
+<h2>Storing data using models<a class="headerlink" href="#storing-data-using-models" title="Permalink to this headline">¶</a></h2>
+<p>Receiving data from the form and storing them in the table is the next step.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SignupController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Users</span><span class="p">();</span>
+
+        <span class="c1">// Store and check for errors</span>
+        <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(),</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;email&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$success</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">&quot;Thanks for registering!&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">&quot;Sorry, the following problems were generated: &quot;</span><span class="p">;</span>
+
+            <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">();</span>
+
+            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">echo</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">disable</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields
+of the record in the users table. Setting the relevant values in the new record and calling <code class="code docutils literal"><span class="pre">save()</span></code> will store the data in the database for that record. The <code class="code docutils literal"><span class="pre">save()</span></code> method returns a boolean value which indicates whether the storing of the data was successful or not.</p>
+<p>The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the <code class="code docutils literal"><span class="pre">save()</span></code> method.</p>
+<p>Additional validation happens automatically on fields that are defined as not null (required). If we don&#8217;t enter any of the required fields in the sign up form our screen will look like this:</p>
+<div class="figure align-center">
+<img alt="../_images/tutorial-4.png" src="../_images/tutorial-4.png" />
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>This is a very simple tutorial and as you can see, it&#8217;s easy to start building an application using Phalcon.
+The fact that Phalcon is an extension on your web server has not interfered with the ease of development or
+features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tutorial-invo.html" title="Tutorial 2: Introducing INVO"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="wintools.html" title="Phalcon Developer Tools on Windows"
+             >previous</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.lazyload.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/highlight.pack.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.backstretch.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/custom.js"></script>
+
+  </body>
+</html>

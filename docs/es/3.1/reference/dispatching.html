@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dispatching Controllers &mdash; documentación de Phalcon - 3.1.1 (Spanish / Español)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="documentación de Phalcon - 3.1.1" href="../index.html" />
+    <link rel="next" title="Micro Applications" href="micro.html" />
+    <link rel="prev" title="Routing" href="routing.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="micro.html" title="Micro Applications"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="routing.html" title="Routing"
+             accesskey="P">anterior</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">documentación de Phalcon - 3.1.1</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Tabla de Contenidos</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Dispatching Controllers</a><ul>
+<li><a class="reference internal" href="#the-dispatch-loop">The Dispatch Loop</a><ul>
+<li><a class="reference internal" href="#dispatch-loop-events">Dispatch Loop Events</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#forwarding-to-other-actions">Forwarding to other actions</a></li>
+<li><a class="reference internal" href="#preparing-parameters">Preparing Parameters</a></li>
+<li><a class="reference internal" href="#getting-parameters">Getting Parameters</a></li>
+<li><a class="reference internal" href="#preparing-actions">Preparing actions</a><ul>
+<li><a class="reference internal" href="#camelize-action-names">Camelize action names</a></li>
+<li><a class="reference internal" href="#remove-legacy-extensions">Remove legacy extensions</a></li>
+<li><a class="reference internal" href="#inject-model-instances">Inject model instances</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#handling-not-found-exceptions">Handling Not-Found Exceptions</a></li>
+<li><a class="reference internal" href="#implementing-your-own-dispatcher">Implementing your own Dispatcher</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Tema anterior</h4>
+            <p class="topless"><a href="routing.html" title="capítulo anterior">&lt; Routing</a></p>
+            <h4>Próximo tema</h4>
+            <p class="topless"><a href="micro.html" title="próximo capítulo">Micro Applications &gt;</a></p>
+            <h3>Esta página</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/dispatching.txt" rel="nofollow">Mostrar el código</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="dispatching-controllers">
+<h1>Dispatching Controllers<a class="headerlink" href="#dispatching-controllers" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a> is the component responsible for instantiating controllers and executing the required actions
+on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.</p>
+<div class="section" id="the-dispatch-loop">
+<h2>The Dispatch Loop<a class="headerlink" href="#the-dispatch-loop" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller
+dispatcher. The controller files are read, loaded, and instantiated. Then the required actions are executed. If an action forwards the flow to another
+controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed
+within <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Dispatch loop</span>
+<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nv">$finished</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$finished</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+    <span class="nv">$controllerClass</span> <span class="o">=</span> <span class="nv">$controllerName</span> <span class="o">.</span> <span class="s2">&quot;Controller&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Instantiating the controller class via autoloaders</span>
+    <span class="nv">$controller</span> <span class="o">=</span> <span class="k">new</span> <span class="nv">$controllerClass</span><span class="p">();</span>
+
+    <span class="c1">// Execute the action</span>
+    <span class="nb">call_user_func_array</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="nv">$controller</span><span class="p">,</span>
+            <span class="nv">$actionName</span> <span class="o">.</span> <span class="s2">&quot;Action&quot;</span>
+        <span class="p">],</span>
+        <span class="nv">$params</span>
+    <span class="p">);</span>
+
+    <span class="c1">// &#39;$finished&#39; should be reloaded to check if the flow was forwarded to another controller</span>
+    <span class="nv">$finished</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The code above lacks validations, filters and additional checks, but it demonstrates the normal flow of operation in the dispatcher.</p>
+<div class="section" id="dispatch-loop-events">
+<h3>Dispatch Loop Events<a class="headerlink" href="#dispatch-loop-events" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a> is able to send events to an <a class="reference internal" href="events.html"><em>EventsManager</em></a> if it is present. Events are triggered using the type &#8220;dispatch&#8221;. Some events when returning boolean false could stop the active operation. The following events are supported:</p>
+<p>The <a class="reference internal" href="tutorial-invo.html"><em>INVO</em></a> tutorial shows how to take advantage of dispatching events implementing a security filter with <a class="reference internal" href="acl.html"><em>Acl</em></a></p>
+<p>The following example demonstrates how to attach listeners to this component:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;dispatcher&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Create an event manager</span>
+        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+        <span class="c1">// Attach a listener for type &quot;dispatch&quot;</span>
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s2">&quot;dispatch&quot;</span><span class="p">,</span>
+            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// ...</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+
+        <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+
+        <span class="c1">// Bind the eventsManager to the view component</span>
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="k">true</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>An instantiated controller automatically acts as a listener for dispatch events, so you can implement methods as callbacks:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeExecuteRoute</span><span class="p">(</span><span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Executed before every found action</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">afterExecuteRoute</span><span class="p">(</span><span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Executed after every found action</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Methods on event listeners accept an <a class="reference internal" href="../api/Phalcon_Events_Event.html"><em>Phalcon\Events\Event</em></a> object as their first parameter - methods in controllers do not.</p>
+</div>
+</div>
+</div>
+<div class="section" id="forwarding-to-other-actions">
+<h2>Forwarding to other actions<a class="headerlink" href="#forwarding-to-other-actions" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can
+access to certain options, redirect users to other screens or simply reuse code.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">(</span><span class="nv">$year</span><span class="p">,</span> <span class="nv">$postTitle</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ... Store some product and forward the user</span>
+
+        <span class="c1">// Forward flow to the index action</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;posts&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Keep in mind that making a &#8220;forward&#8221; is not the same as making a HTTP redirect. Although they apparently got the same result.
+The &#8220;forward&#8221; doesn&#8217;t reload the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests
+to complete the process.</p>
+<p>More forwarding examples:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Forward flow to another action in the current controller</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;search&quot;</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Forward flow to another action in the current controller</span>
+<span class="c1">// passing parameters</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;search&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;params&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>A forward action accepts the following parameters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Triggered</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>controller</td>
+<td>A valid controller name to forward to.</td>
+</tr>
+<tr class="row-odd"><td>action</td>
+<td>A valid action name to forward to.</td>
+</tr>
+<tr class="row-even"><td>params</td>
+<td>An array of parameters for the action</td>
+</tr>
+<tr class="row-odd"><td>namespace</td>
+<td>A valid namespace name where the controller is part of</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="preparing-parameters">
+<h2>Preparing Parameters<a class="headerlink" href="#preparing-parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Thanks to the hooks points provided by <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a> you can easily
+adapt your application to any URL schema:</p>
+<p>For example, you want your URLs look like: <a class="reference external" href="http://example.com/controller/key1/value1/key2/value">http://example.com/controller/key1/value1/key2/value</a></p>
+<p>Parameters by default are passed as they come in the URL to actions, you can transform them to the desired schema:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Dispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;dispatcher&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Create an EventsManager</span>
+        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+        <span class="c1">// Attach a listener</span>
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s2">&quot;dispatch:beforeDispatchLoop&quot;</span><span class="p">,</span>
+            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$params</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">();</span>
+
+                <span class="nv">$keyParams</span> <span class="o">=</span> <span class="p">[];</span>
+
+                <span class="c1">// Use odd parameters as keys and even as values</span>
+                <span class="k">foreach</span> <span class="p">(</span><span class="nv">$params</span> <span class="k">as</span> <span class="nv">$i</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="c1">// Previous param</span>
+                        <span class="nv">$key</span> <span class="o">=</span> <span class="nv">$params</span><span class="p">[</span><span class="nv">$i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+
+                        <span class="nv">$keyParams</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+
+                <span class="c1">// Override parameters</span>
+                <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setParams</span><span class="p">(</span><span class="nv">$keyParams</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+
+        <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>If the desired schema is: <a class="reference external" href="http://example.com/controller/key1:value1/key2:value">http://example.com/controller/key1:value1/key2:value</a>, the following code is required:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Dispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;dispatcher&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Create an EventsManager</span>
+        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+        <span class="c1">// Attach a listener</span>
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s2">&quot;dispatch:beforeDispatchLoop&quot;</span><span class="p">,</span>
+            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$params</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">();</span>
+
+                <span class="nv">$keyParams</span> <span class="o">=</span> <span class="p">[];</span>
+
+                <span class="c1">// Explode each parameter as key,value pairs</span>
+                <span class="k">foreach</span> <span class="p">(</span><span class="nv">$params</span> <span class="k">as</span> <span class="nv">$number</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$parts</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="nv">$value</span><span class="p">);</span>
+
+                    <span class="nv">$keyParams</span><span class="p">[</span><span class="nv">$parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nv">$parts</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+                <span class="p">}</span>
+
+                <span class="c1">// Override parameters</span>
+                <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setParams</span><span class="p">(</span><span class="nv">$keyParams</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+
+        <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-parameters">
+<h2>Getting Parameters<a class="headerlink" href="#getting-parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>When a route provides named parameters you can receive them in a controller, a view or any other component that extends
+<a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><em>Phalcon\Di\Injectable</em></a>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Get the post&#39;s title passed in the URL as parameter</span>
+        <span class="c1">// or prepared in an event</span>
+        <span class="nv">$title</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Get the post&#39;s year passed in the URL as parameter</span>
+        <span class="c1">// or prepared in an event also filtering it</span>
+        <span class="nv">$year</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">);</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preparing-actions">
+<h2>Preparing actions<a class="headerlink" href="#preparing-actions" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>You can also define an arbitrary schema for actions before be dispatched.</p>
+<div class="section" id="camelize-action-names">
+<h3>Camelize action names<a class="headerlink" href="#camelize-action-names" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>If the original URL is: <a class="reference external" href="http://example.com/admin/products/show-latest-products">http://example.com/admin/products/show-latest-products</a>,
+and for example you want to camelize &#8216;show-latest-products&#8217; to &#8216;ShowLatestProducts&#8217;,
+the following code is required:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Text</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;dispatcher&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Create an EventsManager</span>
+        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+        <span class="c1">// Camelize actions</span>
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s2">&quot;dispatch:beforeDispatchLoop&quot;</span><span class="p">,</span>
+            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span>
+                    <span class="nx">Text</span><span class="o">::</span><span class="na">camelize</span><span class="p">(</span><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">())</span>
+                <span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+
+        <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="remove-legacy-extensions">
+<h3>Remove legacy extensions<a class="headerlink" href="#remove-legacy-extensions" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>If the original URL always contains a &#8216;.php&#8217; extension:</p>
+<p><a class="reference external" href="http://example.com/admin/products/show-latest-products.php">http://example.com/admin/products/show-latest-products.php</a>
+<a class="reference external" href="http://example.com/admin/products/index.php">http://example.com/admin/products/index.php</a></p>
+<p>You can remove it before dispatch the controller/action combination:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;dispatcher&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Create an EventsManager</span>
+        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+        <span class="c1">// Remove extension before dispatch</span>
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s2">&quot;dispatch:beforeDispatchLoop&quot;</span><span class="p">,</span>
+            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$action</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">();</span>
+
+                <span class="c1">// Remove extension</span>
+                <span class="nv">$action</span> <span class="o">=</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s2">&quot;/\.php$/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nv">$action</span><span class="p">);</span>
+
+                <span class="c1">// Override action</span>
+                <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span><span class="nv">$action</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+
+        <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inject-model-instances">
+<h3>Inject model instances<a class="headerlink" href="#inject-model-instances" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically
+inject model instances.</p>
+<p>The controller looks like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Shows posts</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param \Posts $post</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">(</span><span class="nx">Posts</span> <span class="nv">$post</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">post</span> <span class="o">=</span> <span class="nv">$post</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Method &#8216;showAction&#8217; receives an instance of the model Posts, the developer could inspect this
+before dispatch the action preparing the parameter accordingly:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Exception</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">ReflectionMethod</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;dispatcher&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Create an EventsManager</span>
+        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s2">&quot;dispatch:beforeDispatchLoop&quot;</span><span class="p">,</span>
+            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Possible controller class name</span>
+                <span class="nv">$controllerName</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getControllerClass</span><span class="p">();</span>
+
+                <span class="c1">// Possible method name</span>
+                <span class="nv">$actionName</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActiveMethod</span><span class="p">();</span>
+
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="c1">// Get the reflection for the method to be executed</span>
+                    <span class="nv">$reflection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ReflectionMethod</span><span class="p">(</span><span class="nv">$controllerName</span><span class="p">,</span> <span class="nv">$actionName</span><span class="p">);</span>
+
+                    <span class="nv">$parameters</span> <span class="o">=</span> <span class="nv">$reflection</span><span class="o">-&gt;</span><span class="na">getParameters</span><span class="p">();</span>
+
+                    <span class="c1">// Check parameters</span>
+                    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$parameters</span> <span class="k">as</span> <span class="nv">$parameter</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="c1">// Get the expected model name</span>
+                        <span class="nv">$className</span> <span class="o">=</span> <span class="nv">$parameter</span><span class="o">-&gt;</span><span class="na">getClass</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+
+                        <span class="c1">// Check if the parameter expects a model instance</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="nb">is_subclass_of</span><span class="p">(</span><span class="nv">$className</span><span class="p">,</span> <span class="nx">Model</span><span class="o">::</span><span class="na">class</span><span class="p">))</span> <span class="p">{</span>
+                            <span class="nv">$model</span> <span class="o">=</span> <span class="nv">$className</span><span class="o">::</span><span class="na">findFirstById</span><span class="p">(</span><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()[</span><span class="mi">0</span><span class="p">]);</span>
+
+                            <span class="c1">// Override the parameters by the model instance</span>
+                            <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setParams</span><span class="p">([</span><span class="nv">$model</span><span class="p">]);</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">// An exception has occurred, maybe the class or action does not exist?</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+
+        <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The above example has been simplified for academic purposes.
+A developer can improve it to inject any kind of dependency or model in actions before be executed.</p>
+<p>From 3.1.x onwards the dispatcher also comes with an option to handle this internally for all models passed into a controller action by using <a class="reference internal" href="../api/Phalcon_Mvc_Model_Binder.html"><em>Phalcon\Mvc\Model\Binder</em></a>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">use Phalcon\Mvc\Dispatcher;</span>
+<span class="x">use Phalcon\Mvc\Model\Binder;</span>
+
+<span class="x">$dispatcher = new Dispatcher();</span>
+
+<span class="x">$dispatcher-&gt;setModelBinder(new Binder());</span>
+
+<span class="x">return $dispatcher;</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>Since Binder object is using internally Reflection Api which can be heavy there is ability to set cache. This can be done by
+using second argument in <code class="code docutils literal"><span class="pre">setModelBinder()</span></code> which can also accept service name or just by passing cache instance to <code class="code docutils literal"><span class="pre">Binder</span></code> constructor.</div></blockquote>
+<p>It also introduces a new interface <a class="reference internal" href="../api/Phalcon_Mvc_Model_Binder_BindableInterface.html"><em>Phalcon\Mvc\Model\Binder\BindableInterface</em></a>
+which allows you to define the controllers associated models to allow models binding in base controllers.</p>
+<p>For example, you have a base CrudController which your PostsController extends from. Your CrudController looks something like this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">use Phalcon\Mvc\Controller;</span>
+<span class="x">use Phalcon\Mvc\Model;</span>
+
+<span class="x">class CrudController extends Controller</span>
+<span class="x">{</span>
+<span class="x">    /**</span>
+<span class="x">     * Show action</span>
+<span class="x">     *</span>
+<span class="x">     * @param Model $model</span>
+<span class="x">     */</span>
+<span class="x">    public function showAction(Model $model)</span>
+<span class="x">    {</span>
+<span class="x">        $this-&gt;view-&gt;model = $model;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>In your PostsController you need to define which model the controller is associated with. This is done by implementing the
+<a class="reference internal" href="../api/Phalcon_Mvc_Model_Binder_BindableInterface.html"><em>Phalcon\Mvc\Model\Binder\BindableInterface</em></a>
+which will add the <code class="code docutils literal"><span class="pre">getModelName()</span></code> method from which you can return the model name. It can return string with just one model name or associative array
+where key is parameter name.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">use Phalcon\Mvc\Model\Binder\BindableInterface;</span>
+<span class="x">use Models\Posts;</span>
+
+<span class="x">class PostsController extends CrudController implements BindableInterface</span>
+<span class="x">{</span>
+<span class="x">    public static function getModelName()</span>
+<span class="x">    {</span>
+<span class="x">        return Posts::class;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>By declaring the model associated with the PostsController the binder can check the controller for the <code class="code docutils literal"><span class="pre">getModelName()</span></code> method before passing
+the defined model into the parent show action.</p>
+<p>If your project structure does not use any parent controller you can of course still bind the model directly into the controller action:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">use Phalcon\Mvc\Controller;</span>
+<span class="x">use Models\Posts;</span>
+
+<span class="x">class PostsController extends Controller</span>
+<span class="x">{</span>
+<span class="x">    /**</span>
+<span class="x">     * Shows posts</span>
+<span class="x">     *</span>
+<span class="x">     * @param Posts $post</span>
+<span class="x">     */</span>
+<span class="x">    public function showAction(Posts $post)</span>
+<span class="x">    {</span>
+<span class="x">        $this-&gt;view-&gt;post = $post;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>Currently the binder will only use the models primary key to perform a <code class="code docutils literal"><span class="pre">findFirst()</span></code> on.
+An example route for the above would be /posts/show/{1}</div></blockquote>
+</div>
+</div>
+<div class="section" id="handling-not-found-exceptions">
+<h2>Handling Not-Found Exceptions<a class="headerlink" href="#handling-not-found-exceptions" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Using the <a class="reference internal" href="events.html"><em>EventsManager</em></a> it&#8217;s possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn&#8217;t found:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Exception</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Dispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher\Exception</span> <span class="k">as</span> <span class="nx">DispatchException</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span>
+    <span class="s2">&quot;dispatcher&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Create an EventsManager</span>
+        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+        <span class="c1">// Attach a listener</span>
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s2">&quot;dispatch:beforeException&quot;</span><span class="p">,</span>
+            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">,</span> <span class="nx">Exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Handle 404 exceptions</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$exception</span> <span class="nx">instanceof</span> <span class="nx">DispatchException</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+                        <span class="p">[</span>
+                            <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;show404&quot;</span><span class="p">,</span>
+                        <span class="p">]</span>
+                    <span class="p">);</span>
+
+                    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="c1">// Alternative way, controller or action doesn&#39;t exist</span>
+                <span class="k">switch</span> <span class="p">(</span><span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getCode</span><span class="p">())</span> <span class="p">{</span>
+                    <span class="k">case</span> <span class="nx">Dispatcher</span><span class="o">::</span><span class="na">EXCEPTION_HANDLER_NOT_FOUND</span><span class="o">:</span>
+                    <span class="k">case</span> <span class="nx">Dispatcher</span><span class="o">::</span><span class="na">EXCEPTION_ACTION_NOT_FOUND</span><span class="o">:</span>
+                        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+                            <span class="p">[</span>
+                                <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;show404&quot;</span><span class="p">,</span>
+                            <span class="p">]</span>
+                        <span class="p">);</span>
+
+                        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+
+        <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+
+        <span class="c1">// Bind the EventsManager to the dispatcher</span>
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Of course, this method can be moved onto independent plugin classes, allowing more than one class
+take actions when an exception is produced in the dispatch loop:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Exception</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher\Exception</span> <span class="k">as</span> <span class="nx">DispatchException</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ExceptionsPlugin</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeException</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">,</span> <span class="nx">Exception</span> <span class="nv">$exception</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Default error action</span>
+        <span class="nv">$action</span> <span class="o">=</span> <span class="s2">&quot;show503&quot;</span><span class="p">;</span>
+
+        <span class="c1">// Handle 404 exceptions</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$exception</span> <span class="nx">instanceof</span> <span class="nx">DispatchException</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$action</span> <span class="o">=</span> <span class="s2">&quot;show404&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="nv">$action</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>Only exceptions produced by the dispatcher and exceptions produced in the executed action
+are notified in the &#8216;beforeException&#8217; events. Exceptions produced in listeners or
+controller events are redirected to the latest try/catch.</div></blockquote>
+</div>
+<div class="section" id="implementing-your-own-dispatcher">
+<h2>Implementing your own Dispatcher<a class="headerlink" href="#implementing-your-own-dispatcher" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>The <a class="reference internal" href="../api/Phalcon_Mvc_DispatcherInterface.html"><em>Phalcon\Mvc\DispatcherInterface</em></a> interface must be implemented to create your own dispatcher
+replacing the one provided by Phalcon.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="micro.html" title="Micro Applications"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="routing.html" title="Routing"
+             >anterior</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+  </body>
+</html>

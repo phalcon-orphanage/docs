@@ -1,0 +1,1077 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Кэширование в ORM &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="ODM (Object-Document Mapper)" href="odm.html" />
+    <link rel="prev" title="Язык запросов Phalcon (PHQL)" href="phql.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="odm.html" title="ODM (Object-Document Mapper)"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="phql.html" title="Язык запросов Phalcon (PHQL)"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Кэширование в ORM</a><ul>
+<li><a class="reference internal" href="#id1">Кэширование наборов данных</a></li>
+<li><a class="reference internal" href="#find-findfirst">Переопределение find/findFirst</a></li>
+<li><a class="reference internal" href="#id2">Форсирование кэша</a></li>
+<li><a class="reference internal" href="#phql">Кэширование PHQL запросов</a></li>
+<li><a class="reference internal" href="#id3">Многократное использование связанных записей</a></li>
+<li><a class="reference internal" href="#id4">Кэширование связанных записей</a></li>
+<li><a class="reference internal" href="#id5">Рекурсивное кэшировоние связанных записей</a></li>
+<li><a class="reference internal" href="#id6">Кэширование на основе условий</a></li>
+<li><a class="reference internal" href="#caching-of-phql-planning">Caching of PHQL planning</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="phql.html" title="предыдущая глава">&lt; Язык запросов Phalcon (PHQL)</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="odm.html" title="следующая глава">ODM (Object-Document Mapper) &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/models-cache.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="orm">
+<h1>Кэширование в ORM<a class="headerlink" href="#orm" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Каждое приложение уникально: у нас могут быть модели c часто изменяемыми данными, так и модели с данными,
+которые редко  изменяют свои значения. Обращение к базе данных часто является одним из наиболее распространенных
+узких мест в плане производительности приложения. Это связано со сложными процессами подключения/коммуникации,
+которые PHP должен выполнять при каждом запросе к базе данных для получения требуемых данных. Поэтому, если мы
+хотим добиться хорошей производительности, мы должны добавить несколько слоев кэширования, когда приложение в
+этом нуждается.</p>
+<p>В этой главе рассматриваются места, где можно реализовать кэширование для повышения производительности. Фреймворк
+дает вам инструмент для реализации кэша, в тех местах где вам нужно в соответствии с архитектурой приложения.</p>
+<div class="section" id="id1">
+<h2>Кэширование наборов данных<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Имеется методика позволяющая избежать постоянного обращения к базе данных, это кэширование редко изменяемых
+наборов данных, используя систему с более быстрым доступом (обычно это память).</p>
+<p>Когда <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> требуется сервис для кэша набоов данных, он будет
+запрашивать у контейнера зависимостей этот сервис с именем «modelsCache».</p>
+<p>Phalcon предоставляет компонент <a class="reference internal" href="cache.html"><em>cache</em></a> для кэширования любых данных, мы объясним как интегрировать
+его с моделями. Во-первых, вы должны зарегистрировать его в качестве сервиса в контейнере зависимостей:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Регистрация сервиса кэша моделей</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;modelsCache&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">//По умолчанию данные кэша хранятся один день</span>
+    <span class="nv">$frontCache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Cache\Frontend\Data</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">86400</span>
+    <span class="p">));</span>
+
+    <span class="c1">// Настройки соединения с memcached</span>
+    <span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Cache\Backend\Memcache</span><span class="p">(</span><span class="nv">$frontCache</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;port&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;11211&quot;</span>
+    <span class="p">));</span>
+
+    <span class="k">return</span> <span class="nv">$cache</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Вы имеете полный контроль в создании и настройке кэша перед его использованием путем регистрации сервиса в
+качестве анонимной функции. После того, как настройка кэша правильно определена, можно кэшировать наборы данных:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Получить продукта без кэширования</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
+
+<span class="c1">// Используем кэширование наборов данных. Кэзш остается в памяти в течении 1 часа (3600 секунд).</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;my-cache&quot;</span><span class="p">)</span>
+<span class="p">));</span>
+
+<span class="c1">// Кэш набора данных хранится всего 5 минут</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;my-cache&quot;</span><span class="p">,</span> <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">300</span><span class="p">)</span>
+<span class="p">));</span>
+
+<span class="c1">// Использование пользовательского кэша</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="nv">$myCache</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Кэш может быть также применен к набору данных, генерируемых с помощью отношений:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Запрос некоторого сообщения</span>
+<span class="nv">$post</span> <span class="o">=</span> <span class="nx">Post</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+<span class="c1">// Получаем комментарии, относящиеся к сообщению, и кэшируем их</span>
+<span class="nv">$comments</span> <span class="o">=</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">getComments</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;my-key&quot;</span><span class="p">)</span>
+<span class="p">));</span>
+
+<span class="c1">// Получаем комментарии относящиеся к сообщению и устанавливаем срок их хранения</span>
+<span class="nv">$comments</span> <span class="o">=</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">getComments</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;my-key&quot;</span><span class="p">,</span> <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">3600</span><span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>Когда кэшируемые наборы данных должны быть признаны недействительными, вы можете просто удалить их из кэша с
+использованием ранее указанного ключа.</p>
+<p>Обратите внимание, что не все наборы данных должны быть в кэше. Данные, которые меняют свои значения очень
+часто не следует кэшировать, так как они становятся не действительными очень быстро, и кэширование в этом случаи
+отрицательно влияет на производительность приложения. Кроме того, большие наборы данных, которые не часто
+меняют свои значения, могут располагаться в кэше, но для реализации этой идеи необходимо оценить имеющиеся
+механизмы кэширования  и влияния на производительность, так как это не всегда будет способствовать увеличению
+производительности приложения.</p>
+</div>
+<div class="section" id="find-findfirst">
+<h2>Переопределение find/findFirst<a class="headerlink" href="#find-findfirst" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Как показано выше, эти методы доступны в моделях, которые наследуют <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">findFirst</span><span class="p">(</span><span class="nv">$parameters</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Сделав это, вы будите перехватывать все вызовы этих методов, таким образом, вы можете добавить
+кэширующий слой или запускать запросы к базе данных, если кэша нет. Например, очень простой
+реализацией кэша является использование статического свойства, чтобы избежать того, что запись
+будет запрашиваться несколько раз в одной и том же запросе:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="k">static</span> <span class="nv">$_cache</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Реализация метода, который возвращает</span>
+<span class="sd">     * строковый ключ на основе параметров запроса</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$uniqueKey</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$parameters</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">is_scalar</span><span class="p">(</span><span class="nv">$value</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nv">$uniqueKey</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$key</span> <span class="o">.</span> <span class="s1">&#39;:&#39;</span> <span class="o">.</span> <span class="nv">$value</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nb">is_array</span><span class="p">(</span><span class="nv">$value</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nv">$uniqueKey</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$key</span> <span class="o">.</span> <span class="s1">&#39;:[&#39;</span> <span class="o">.</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createKey</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">.</span><span class="s1">&#39;]&#39;</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nb">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="nv">$uniqueKey</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Создание уникального ключа на основе параметров</span>
+        <span class="nv">$key</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="c1">//Store the result in the memory cache</span>
+            <span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Вернуть результат в кэше</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">findFirst</span><span class="p">(</span><span class="nv">$parameters</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Доступ к базе данных в несколько раз медленнее, чем вычисление ключа кэша, вы свободны в
+реализации стратегии генерации ключа, которая лучше подходит для ваших задач.  Следует
+отметить, что хороший ключ позволяет избежать конфликтов, насколько это возможно, это
+означает, что разные ключи возвращают unrelated records to the find parameters.</p>
+<p>В приведенном выше примере мы использовали кэш в памяти, он полезен в качестве первого
+уровня кэша. Как только у нас есть кэш в памяти, мы можем реализовать слой кэша второго
+уровня с помощью APC / XCache или базы данных NoSQL:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+
+    <span class="c1">// Создание уникального ключа на основе параметров</span>
+    <span class="nv">$key</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">]))</span> <span class="p">{</span>
+
+        <span class="c1">//Мы используем APC как кэш второго уровня</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">apc_exists</span><span class="p">(</span><span class="nv">$key</span><span class="p">))</span> <span class="p">{</span>
+
+            <span class="nv">$data</span> <span class="o">=</span> <span class="nb">apc_fetch</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+
+            <span class="c1">//Сохраните результат в кэш памяти</span>
+            <span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">;</span>
+
+            <span class="k">return</span> <span class="nv">$data</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">//Если нет кэша в памяти или в APC</span>
+        <span class="nv">$data</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+
+        <span class="c1">//Сохраните результат в кэш памяти</span>
+        <span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">;</span>
+
+        <span class="c1">//Сохраните результат в APC</span>
+        <span class="nb">apc_store</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$data</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">//Вернуть результат в кэше</span>
+    <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Это дает вам полный контроль над тем, как кэши должны быть реализованы для
+каждой модели, эта стратегия может быть общей для нескольких моделей,
+которую можно вынести в отдельный базовый класс для всех подобных классов:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">CacheableModel</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// .. create a cache key based on the parameters</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//.. custom caching strategy</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">findFirst</span><span class="p">(</span><span class="nv">$parameters</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//.. custom caching strategy</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Затем используйте этот класс в качестве базового класса для каждой модели &#8216;Cacheable&#8217;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">CacheableModel</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Форсирование кэша<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Ранее мы видели, как Phalcon\Mvc\Model имеет встроенную интеграцию с компонентом
+кэширования, предоставленного фреймворком. Чтобы сделать запись/результирующий набор кэшируемым,
+мы передаем ключ &#8216;cache&#8217; в массиве параметров:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Кэшируем результирующий набор всего на 5 минут</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;my-cache&quot;</span><span class="p">,</span> <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">300</span><span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>Это дает нам свободу для кэширования конкретных запросов, поэтому если мы хотим кэшировать
+глобально все запросы, выполняемые моделью, мы можем переопределить метод find/findFirst,
+чтобы заставить кэшировать каждый запрос.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// .. создаем ключ кэша на основе параметров</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Преобразование параметров в массив</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_array</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Проверяем, что ключ кэша не был передан</span>
+        <span class="c1">//и создаем параметры кэша</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">[</span><span class="s1">&#39;cache&#39;</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$parameters</span><span class="p">[</span><span class="s1">&#39;cache&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">),</span>
+                <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">300</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">findFirst</span><span class="p">(</span><span class="nv">$parameters</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="phql">
+<h2>Кэширование PHQL запросов<a class="headerlink" href="#phql" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Все запросы в ORM, независимо от того, насколько высокоуровневый синтаксис
+мы использовали для их создания, обрабатываются внутри с помощью PHQL. Этот
+язык дает гораздо больше свободы для создания запросов всех видов. Конечно,
+эти запросы могут кэшироваться:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Cars WHERE name = :name:&quot;</span><span class="p">;</span>
+
+<span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">);</span>
+
+<span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setCache</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;cars-by-name&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">300</span>
+<span class="p">));</span>
+
+<span class="nv">$cars</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Audi&#39;</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>Если вы не хотите использовать неявный кэш, просто сохраните результирующий набор
+в предпочтительный для вас серверный кэш:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Cars WHERE name = :name:&quot;</span><span class="p">;</span>
+
+<span class="nv">$cars</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Audi&#39;</span>
+<span class="p">));</span>
+
+<span class="nb">apc_store</span><span class="p">(</span><span class="s1">&#39;my-cars&#39;</span><span class="p">,</span> <span class="nv">$cars</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Многократное использование связанных записей<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Некоторые модели могут иметь связи с другими моделями. Это позволяет нам легко проверить записи,
+которые относятся к экземплярам в памяти:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Получаем некоторый счет</span>
+<span class="nv">$invoice</span> <span class="o">=</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+<span class="c1">// Получаем клиента связанного со счетом</span>
+<span class="nv">$customer</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">customer</span><span class="p">;</span>
+
+<span class="c1">// Выводим его/ее имя</span>
+<span class="k">echo</span> <span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Этот пример очень простой, клиент получает запрос и который может быть использован при
+необходимости, например, чтобы показать свое имя. Это также касается случаев если мы
+извлекаем наборы счетов, чтобы показать клиентам, которые являются владельцами этих счетов:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Получаем набор счетов</span>
+<span class="c1">// SELECT * FROM invoices</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nx">Invoices</span><span class="o">::</span><span class="na">find</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$invoice</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Получаем клиента связанного с заказом</span>
+    <span class="c1">// SELECT * FROM customers WHERE id = ?</span>
+    <span class="nv">$customer</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">customer</span><span class="p">;</span>
+
+    <span class="c1">// Выводим его/ее имя</span>
+    <span class="k">echo</span> <span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Клиент может иметь один или несколько счетов, это означает, что клиент может быть
+вызван вызван более одного раза. Чтобы избежать этого, мы можем отметить связь как
+многоразовую , таким образом, мы говорим ORM автоматически использовать прошлые
+записи вместо того, чтобы вновь и вновь выполнять один и тот же запросы:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Invoices</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="s2">&quot;customers_id&quot;</span><span class="p">,</span> <span class="s2">&quot;Customer&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;reusable&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Этот кэш работает только в памяти, это означает, что кэшированные данные
+предоставляются, когда запрос уже был выполнен. Вы можете добавить более сложные
+кэш для этого сценария, переопределив менеджер модели:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">CustomModelsManager</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model\Manager</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Возвращает многократно используемый объект из кэша</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $modelName</span>
+<span class="sd">     * @param string $key</span>
+<span class="sd">     * @return object</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getReusableRecords</span><span class="p">(</span><span class="nv">$modelName</span><span class="p">,</span> <span class="nv">$key</span><span class="p">){</span>
+
+        <span class="c1">// Если модель Products использует кэш APC</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$modelName</span> <span class="o">==</span> <span class="s1">&#39;Products&#39;</span><span class="p">){</span>
+            <span class="k">return</span> <span class="nb">apc_fetch</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Для остальных, использовать кэш памяти</span>
+        <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">getReusableRecords</span><span class="p">(</span><span class="nv">$modelName</span><span class="p">,</span> <span class="nv">$key</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Сохраняет повторно используемый запись в кэше</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $modelName</span>
+<span class="sd">     * @param string $key</span>
+<span class="sd">     * @param mixed $records</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setReusableRecords</span><span class="p">(</span><span class="nv">$modelName</span><span class="p">,</span> <span class="nv">$key</span><span class="p">,</span> <span class="nv">$records</span><span class="p">){</span>
+
+        <span class="c1">// Если модель Products использует кэш APC</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$modelName</span> <span class="o">==</span> <span class="s1">&#39;Products&#39;</span><span class="p">){</span>
+            <span class="nb">apc_store</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$records</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Для остальных, использовать кэш памяти</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">setReusableRecords</span><span class="p">(</span><span class="nv">$modelName</span><span class="p">,</span> <span class="nv">$key</span><span class="p">,</span> <span class="nv">$records</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Не забудьте зарегистрировать свой менеджер моделей в DI:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span><span class="s1">&#39;modelsManager&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">CustomModelsManager</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Кэширование связанных записей<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Когда запрашиваются связанные запись, внутри ORM строится соответствующие состояние,
+и передаются необходимые записи с помощью Find / FindFirst в целевую модель в
+соответствии со следующей таблицей:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="64%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Тип</th>
+<th class="head">Описание</th>
+<th class="head">Вызываемый метод</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Belongs-To</td>
+<td>Возвращает непосредственно экземпляр модели взаимосвязанной записи</td>
+<td>findFirst</td>
+</tr>
+<tr class="row-odd"><td>Has-One</td>
+<td>Возвращает непосредственно экземпляр модели взаимосвязанной записи</td>
+<td>findFirst</td>
+</tr>
+<tr class="row-even"><td>Has-Many</td>
+<td>Возвращает коллекцию экземпляров модели которые ссылаются на модель</td>
+<td>find</td>
+</tr>
+</tbody>
+</table>
+<p>Это означает, что когда вы получаете связанные записи, вы можете изменить способ
+получения данных путем реализации соответствующего метода:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Получаем счет</span>
+<span class="nv">$invoice</span> <span class="o">=</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+<span class="c1">// Получаем владельца счета</span>
+<span class="nv">$customer</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">customer</span><span class="p">;</span> <span class="c1">// Invoices::findFirst(&#39;...&#39;);</span>
+
+<span class="c1">// То же самое</span>
+<span class="nv">$customer</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">getCustomer</span><span class="p">();</span> <span class="c1">// Invoices::findFirst(&#39;...&#39;);</span>
+</pre></div>
+</div>
+<p>Соответственно, мы могли бы заменить метод FindFirst в моделе счетов и осуществлять
+кэширование наиболее подходящим способом:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Invoices</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">findFirst</span><span class="p">(</span><span class="nv">$parameters</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//.. здесь реализуем кэширование данных</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Рекурсивное кэшировоние связанных записей<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В этом сценарии мы предполагаем, что каждый раз когда мы запрашиваем набор данных, мы также получить
+все связанные записи для данного набора. Если мы будем хранить записи найденные вместе с их связанными
+сущностями, возможно, мы сможем немного уменьшить накладные расходы для получения всех сущностей:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Invoices</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// .. создаем ключ кэша на основе параметров</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_getCache</span><span class="p">(</span><span class="nv">$key</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// .. возвращаем данные из кэша</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_setCache</span><span class="p">(</span><span class="nv">$key</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// .. сохраняет данные в кэше</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Создать уникальный ключ</span>
+        <span class="nv">$key</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+
+        <span class="c1">// Проверяем наличие данных в кэше</span>
+        <span class="nv">$results</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">_getCache</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+
+        <span class="c1">// Полученные данные должны быть объектом</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">is_object</span><span class="p">(</span><span class="nv">$results</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$results</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$results</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+        <span class="nv">$invoices</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$invoices</span> <span class="k">as</span> <span class="nv">$invoice</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="c1">// Получение соответствующего клиента</span>
+            <span class="nv">$customer</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">customer</span><span class="p">;</span>
+
+            <span class="c1">// Помещаем его в запись</span>
+            <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">customer</span> <span class="o">=</span> <span class="nv">$customer</span><span class="p">;</span>
+
+            <span class="nv">$results</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Сохраняем счета и их клиентов в кэше</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">_setCache</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$results</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$results</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// .. добавляем связи и инициализируем другие вещи</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Получение из кэша счетов уже содержащих данные о клиентах выполняется всего за одно
+действие, что снижает общую нагрузку на данную операцию. Следует отметить, что этот
+процесс можно также проводить с PHQL с помощью следующего альтернативного решения:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Invoices</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// .. добавляем связи и инициализируем другие вещи</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_createKey</span><span class="p">(</span><span class="nv">$conditions</span><span class="p">,</span> <span class="nv">$params</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// .. создаем ключ кэша на основе параметров</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getInvoicesCustomers</span><span class="p">(</span><span class="nv">$conditions</span><span class="p">,</span> <span class="nv">$params</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT Invoices.*, Customers.*</span>
+<span class="s2">        FROM Invoices JOIN Customers WHERE &quot;</span> <span class="o">.</span> <span class="nv">$conditions</span><span class="p">;</span>
+
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getModelsManager</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">);</span>
+
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setCache</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createKey</span><span class="p">(</span><span class="nv">$conditions</span><span class="p">,</span> <span class="nv">$params</span><span class="p">),</span>
+            <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">300</span>
+        <span class="p">));</span>
+
+        <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$params</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>Кэширование на основе условий<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<p>В этом случае, кэш реализуется  в соответствии с текущими полученными условиями.
+В соответствии с областью, куда попадает первичный ключ, выбирается соответствующий способ кэширования.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Значение</th>
+<th class="head">Способ кэширования</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1 - 10000</td>
+<td>mongo1</td>
+</tr>
+<tr class="row-odd"><td>10000 - 20000</td>
+<td>mongo2</td>
+</tr>
+<tr class="row-even"><td>&gt; 20000</td>
+<td>mongo3</td>
+</tr>
+</tbody>
+</table>
+<p>Самый простой способ это добавление статического метода к модели,
+который выбирает правильный кэш для использования:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">queryCache</span><span class="p">(</span><span class="nv">$initial</span><span class="p">,</span> <span class="nv">$final</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$initial</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$final</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;id &gt;= &#39;</span> <span class="o">.</span> <span class="nv">$initial</span> <span class="o">.</span> <span class="s1">&#39; AND id &lt;= &#39;</span><span class="o">.</span><span class="nv">$final</span><span class="p">,</span>
+                <span class="s1">&#39;cache&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;service&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mongo1&#39;</span><span class="p">)</span>
+            <span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$initial</span> <span class="o">&gt;=</span> <span class="mi">10000</span> <span class="o">&amp;&amp;</span> <span class="nv">$final</span> <span class="o">&lt;=</span> <span class="mi">20000</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;id &gt;= &#39;</span> <span class="o">.</span> <span class="nv">$initial</span> <span class="o">.</span> <span class="s1">&#39; AND id &lt;= &#39;</span><span class="o">.</span><span class="nv">$final</span><span class="p">,</span>
+                <span class="s1">&#39;cache&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;service&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mongo2&#39;</span><span class="p">)</span>
+            <span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$initial</span> <span class="o">&gt;</span> <span class="mi">20000</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;id &gt;= &#39;</span> <span class="o">.</span> <span class="nv">$initial</span><span class="p">,</span>
+                <span class="s1">&#39;cache&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;service&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mongo3&#39;</span><span class="p">)</span>
+            <span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Такой подход решает проблему, однако, если мы хотим добавить другие параметры,
+такие как сортировка или условия, мы должны были бы создать более сложный метод.
+Кроме того, этот метод не работает, если данные получаются с использованием
+связанных записей или find/FindFirst:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;id &lt; 1000&#39;</span><span class="p">);</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;id &gt; 100 AND type = &quot;A&quot;&#39;</span><span class="p">);</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;(id &gt; 100 AND type = &quot;A&quot;) AND id &lt; 2000&#39;</span><span class="p">);</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;(id &gt; ?0 AND type = &quot;A&quot;) AND id &lt; ?1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bind&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2000</span><span class="p">),</span>
+    <span class="s1">&#39;order&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;type&#39;</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>Для достижения этой цели мы должны перехватить промежуточное представление (IR),
+порожденную PHQL анализатором и таким образом получить возможность настроить
+способы кэширования:</p>
+<p>Для начала, необходимо реализовать пользовательский конструктор запросов,
+в котором мы сможем генерировать полностью настраиваемые запросы к базе данных:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">CustomQueryBuilder</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model\Query\Builder</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getQuery</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$query</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CustomQuery</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getPhql</span><span class="p">());</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setDI</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">());</span>
+        <span class="k">return</span> <span class="nv">$query</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Вместо того, чтобы непосредственно возвращать Phalcon\Mvc\Model\Query,
+наш конструктор возвращает экземпляр класса CustomQuery, этот класс выглядит
+следующим образом:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">CustomQuery</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model\Query</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * The execute method is overrided</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">execute</span><span class="p">(</span><span class="nv">$params</span><span class="o">=</span><span class="k">null</span><span class="p">,</span> <span class="nv">$types</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Разбор промежуточных представлений для SELECT</span>
+        <span class="nv">$ir</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">parse</span><span class="p">();</span>
+
+        <span class="c1">// Проверяем, что наш запрос имеет условия</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$ir</span><span class="p">[</span><span class="s1">&#39;where&#39;</span><span class="p">]))</span> <span class="p">{</span>
+
+            <span class="c1">// Поля в условии могут иметь любой порядок</span>
+            <span class="c1">// Нам нужно рекурсивно проверить дерево условий,</span>
+            <span class="c1">// чтобы найти информацию, которую мы ищем</span>
+            <span class="nv">$visitor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CustomNodeVisitor</span><span class="p">();</span>
+
+            <span class="c1">// Рекурсивно просматриваем узлы</span>
+            <span class="nv">$visitor</span><span class="o">-&gt;</span><span class="na">visit</span><span class="p">(</span><span class="nv">$ir</span><span class="p">[</span><span class="s1">&#39;where&#39;</span><span class="p">]);</span>
+
+            <span class="nv">$initial</span> <span class="o">=</span> <span class="nv">$visitor</span><span class="o">-&gt;</span><span class="na">getInitial</span><span class="p">();</span>
+            <span class="nv">$final</span> <span class="o">=</span> <span class="nv">$visitor</span><span class="o">-&gt;</span><span class="na">getFinal</span><span class="p">();</span>
+
+            <span class="c1">// Выбираем кэш в зависимости от диапазона</span>
+            <span class="c1">//...</span>
+
+            <span class="c1">// Проверяем, что кэш имеет данные</span>
+            <span class="c1">//...</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Выполняем запрос</span>
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_executeSelect</span><span class="p">(</span><span class="nv">$ir</span><span class="p">,</span> <span class="nv">$params</span><span class="p">,</span> <span class="nv">$types</span><span class="p">);</span>
+
+        <span class="c1">// Сохраняем результат в кэш</span>
+
+        <span class="c1">//...</span>
+
+        <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Реализация помощника (CustomNodeVisitor), который рекурсивно проверяет
+условия на наличие полей, которые передают диапазон возможных значений,
+который будет использоваться при кэшировании:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">CustomNodeVisitor</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_initial</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$_final</span> <span class="o">=</span> <span class="mi">25000</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">visit</span><span class="p">(</span><span class="nv">$node</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">])</span> <span class="p">{</span>
+
+            <span class="k">case</span> <span class="s1">&#39;binary-op&#39;</span><span class="o">:</span>
+
+                <span class="nv">$left</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">visit</span><span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]);</span>
+                <span class="nv">$right</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">visit</span><span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$left</span> <span class="o">||</span> <span class="o">!</span><span class="nv">$right</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$left</span><span class="o">==</span><span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;op&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_initial</span> <span class="o">=</span> <span class="nv">$right</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;op&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;=&#39;</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_initial</span> <span class="o">=</span> <span class="nv">$right</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;op&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">)</span>    <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_initial</span> <span class="o">=</span> <span class="nv">$right</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;op&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_final</span> <span class="o">=</span> <span class="nv">$right</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;op&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">)</span>    <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_final</span> <span class="o">=</span> <span class="nv">$right</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="k">case</span> <span class="s1">&#39;qualified&#39;</span><span class="o">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="s1">&#39;id&#39;</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="k">case</span> <span class="s1">&#39;literal&#39;</span><span class="o">:</span>
+                <span class="k">return</span> <span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">];</span>
+
+            <span class="k">default</span><span class="o">:</span>
+                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getInitial</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_initial</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getFinal</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_final</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Наконец, мы можем заменить поисковый метод в модели Robots
+и использовать пользовательские классы, которые мы создали:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="o">=</span><span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_array</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CustomQueryBuilder</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+        <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nb">get_called_class</span><span class="p">());</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">[</span><span class="s1">&#39;bind&#39;</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">[</span><span class="s1">&#39;bind&#39;</span><span class="p">]);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="caching-of-phql-planning">
+<h2>Caching of PHQL planning<a class="headerlink" href="#caching-of-phql-planning" title="Ссылка на этот заголовок">¶</a></h2>
+<p>As well as most moderns database systems PHQL internally caches the execution plan,
+if the same statement is executed several times PHQL reuses the previously generated plan
+improving performance, for a developer to take better advantage of this is highly recommended
+build all your SQL statements passing variable parameters as bound parameters:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Store</span><span class="se">\R</span><span class="s2">obots WHERE id = &quot;</span> <span class="o">.</span> <span class="nv">$i</span><span class="p">;</span>
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">);</span>
+
+    <span class="c1">//...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above example, ten plans were generated increasing the memory usage and processing in the application.
+Rewriting the code to take advantage of bound parameters reduces the processing by both ORM and database system:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Store</span><span class="se">\R</span><span class="s2">obots WHERE id = ?0&quot;</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="nv">$i</span><span class="p">));</span>
+
+    <span class="c1">//...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Performance can be also improved reusing the PHQL query:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Store</span><span class="se">\R</span><span class="s2">obots WHERE id = ?0&quot;</span><span class="p">;</span>
+<span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="nv">$i</span><span class="p">));</span>
+
+    <span class="c1">//...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Execution plans for queries involving <a class="reference external" href="http://en.wikipedia.org/wiki/Prepared_statement">prepared statements</a> are also cached by most database systems
+reducing the overall execution time, also protecting your application against <a class="reference external" href="http://en.wikipedia.org/wiki/SQL_injection">SQL Injections</a>.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="odm.html" title="ODM (Object-Document Mapper)"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="phql.html" title="Язык запросов Phalcon (PHQL)"
+             >предыдущий</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

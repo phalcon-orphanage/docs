@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Model Events &mdash; Phalcon 3.1.1 documentation (English)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="https://static.phalconphp.com/www/images/favicon.ico"/>
+    <link rel="top" title="Phalcon 3.1.1 documentation" href="../index.html" />
+    <link rel="next" title="Model Behaviors" href="model-behaviors.html" />
+    <link rel="prev" title="Model Relationships" href="model-relationships.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="model-behaviors.html" title="Model Behaviors"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="model-relationships.html" title="Model Relationships"
+             accesskey="P">previous</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 3.1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Model Events</a><ul>
+<li><a class="reference internal" href="#events-and-events-manager">Events and Events Manager</a><ul>
+<li><a class="reference internal" href="#implementing-events-in-the-model-s-class">Implementing Events in the Model&#8217;s class</a></li>
+<li><a class="reference internal" href="#using-a-custom-events-manager">Using a custom Events Manager</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logging-low-level-sql-statements">Logging Low-Level SQL Statements</a></li>
+<li><a class="reference internal" href="#profiling-sql-statements">Profiling SQL Statements</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="model-relationships.html" title="previous chapter">&lt; Model Relationships</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="model-behaviors.html" title="next chapter">Model Behaviors &gt;</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/model-events.txt" rel="nofollow">Show Source</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="model-events">
+<h1>Model Events<a class="headerlink" href="#model-events" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="events-and-events-manager">
+<h2>Events and Events Manager<a class="headerlink" href="#events-and-events-manager" title="Permalink to this headline">¶</a></h2>
+<p>Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> and their order of execution:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="13%" />
+<col width="12%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">Name</th>
+<th class="head">Can stop operation?</th>
+<th class="head">Explanation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Inserting/Updating</td>
+<td>beforeValidation</td>
+<td>YES</td>
+<td>Is executed before the fields are validated for not nulls/empty strings or foreign keys</td>
+</tr>
+<tr class="row-odd"><td>Inserting</td>
+<td>beforeValidationOnCreate</td>
+<td>YES</td>
+<td>Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made</td>
+</tr>
+<tr class="row-even"><td>Updating</td>
+<td>beforeValidationOnUpdate</td>
+<td>YES</td>
+<td>Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made</td>
+</tr>
+<tr class="row-odd"><td>Inserting/Updating</td>
+<td>onValidationFails</td>
+<td>YES (already stopped)</td>
+<td>Is executed after an integrity validator fails</td>
+</tr>
+<tr class="row-even"><td>Inserting</td>
+<td>afterValidationOnCreate</td>
+<td>YES</td>
+<td>Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made</td>
+</tr>
+<tr class="row-odd"><td>Updating</td>
+<td>afterValidationOnUpdate</td>
+<td>YES</td>
+<td>Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made</td>
+</tr>
+<tr class="row-even"><td>Inserting/Updating</td>
+<td>afterValidation</td>
+<td>YES</td>
+<td>Is executed after the fields are validated for not nulls/empty strings or foreign keys</td>
+</tr>
+<tr class="row-odd"><td>Inserting/Updating</td>
+<td>beforeSave</td>
+<td>YES</td>
+<td>Runs before the required operation over the database system</td>
+</tr>
+<tr class="row-even"><td>Updating</td>
+<td>beforeUpdate</td>
+<td>YES</td>
+<td>Runs before the required operation over the database system only when an updating operation is being made</td>
+</tr>
+<tr class="row-odd"><td>Inserting</td>
+<td>beforeCreate</td>
+<td>YES</td>
+<td>Runs before the required operation over the database system only when an inserting operation is being made</td>
+</tr>
+<tr class="row-even"><td>Updating</td>
+<td>afterUpdate</td>
+<td>NO</td>
+<td>Runs after the required operation over the database system only when an updating operation is being made</td>
+</tr>
+<tr class="row-odd"><td>Inserting</td>
+<td>afterCreate</td>
+<td>NO</td>
+<td>Runs after the required operation over the database system only when an inserting operation is being made</td>
+</tr>
+<tr class="row-even"><td>Inserting/Updating</td>
+<td>afterSave</td>
+<td>NO</td>
+<td>Runs after the required operation over the database system</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="implementing-events-in-the-model-s-class">
+<h3>Implementing Events in the Model&#8217;s class<a class="headerlink" href="#implementing-events-in-the-model-s-class" title="Permalink to this headline">¶</a></h3>
+<p>The easier way to make a model react to events is to implement a method with the same name of the event in the model&#8217;s class:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeValidationOnCreate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;This is executed before creating a Robot!&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Events can be used to assign values before performing an operation, for example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Products</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeCreate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Set the creation date</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">created_at</span> <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;Y-m-d H:i:s&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeUpdate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Set the modification date</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modified_in</span> <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;Y-m-d H:i:s&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-a-custom-events-manager">
+<h3>Using a custom Events Manager<a class="headerlink" href="#using-a-custom-events-manager" title="Permalink to this headline">¶</a></h3>
+<p>Additionally, this component is integrated with <a class="reference internal" href="../api/Phalcon_Events_Manager.html"><em>Phalcon\Events\Manager</em></a>,
+this means we can create listeners that run when an event is triggered.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+        <span class="c1">// Attach an anonymous function as a listener for &quot;model&quot; events</span>
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s2">&quot;model:beforeSave&quot;</span><span class="p">,</span>
+            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">===</span> <span class="s2">&quot;Scooby Doo&quot;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">echo</span> <span class="s2">&quot;Scooby Doo isn&#39;t a robot!&quot;</span><span class="p">;</span>
+
+                    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Attach the events manager to the event</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the example given above, the Events Manager only acts as a bridge between an object and a listener (the anonymous function).
+Events will be fired to the listener when &#8216;robots&#8217; are saved:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Scooby Doo&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">=</span> <span class="mi">1969</span><span class="p">;</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="c1">// Registering the modelsManager service</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span>
+    <span class="s2">&quot;modelsManager&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+        <span class="c1">// Attach an anonymous function as a listener for &quot;model&quot; events</span>
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s2">&quot;model:beforeSave&quot;</span><span class="p">,</span>
+            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$model</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Catch events produced by the Robots model</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nb">get_class</span><span class="p">(</span><span class="nv">$model</span><span class="p">)</span> <span class="o">===</span> <span class="s2">&quot;Store</span><span class="se">\\</span><span class="s2">Toys</span><span class="se">\\</span><span class="s2">Robots&quot;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$model</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">===</span> <span class="s2">&quot;Scooby Doo&quot;</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">echo</span> <span class="s2">&quot;Scooby Doo isn&#39;t a robot!&quot;</span><span class="p">;</span>
+
+                        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+
+                <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Setting a default EventsManager</span>
+        <span class="nv">$modelsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ModelsManager</span><span class="p">();</span>
+
+        <span class="nv">$modelsManager</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$modelsManager</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>If a listener returns false that will stop the operation that is executing currently.</p>
+</div>
+</div>
+<div class="section" id="logging-low-level-sql-statements">
+<h2>Logging Low-Level SQL Statements<a class="headerlink" href="#logging-low-level-sql-statements" title="Permalink to this headline">¶</a></h2>
+<p>When using high-level abstraction components such as <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> to access a database, it is
+difficult to understand which statements are finally sent to the database system. <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>
+is supported internally by <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a>. <a class="reference internal" href="../api/Phalcon_Logger.html"><em>Phalcon\Logger</em></a> interacts
+with <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a>, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL
+statements as they happen.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\File</span> <span class="k">as</span> <span class="nx">FileLogger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">Connection</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;db&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+        <span class="nv">$logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileLogger</span><span class="p">(</span><span class="s2">&quot;app/logs/debug.log&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Listen all the database events</span>
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s2">&quot;db:beforeQuery&quot;</span><span class="p">,</span>
+            <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$logger</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span>
+                    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">(),</span>
+                    <span class="nx">Logger</span><span class="o">::</span><span class="na">INFO</span>
+                <span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Connection</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;invo&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Assign the eventsManager to the db adapter instance</span>
+        <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$connection</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>As models access the default database connection, all SQL statements that are sent to the database system will be logged in the file:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span>       <span class="o">=</span> <span class="s2">&quot;Robby the Robot&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">created_at</span> <span class="o">=</span> <span class="s2">&quot;1956-07-21&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">()</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Cannot save robot&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As above, the file <em>app/logs/db.log</em> will contain something like this:</p>
+<div class="highlight-irc"><div class="highlight"><pre>[Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots
+(name, created_at) VALUES (&#39;Robby the Robot&#39;, &#39;1956-07-21&#39;)
+</pre></div>
+</div>
+</div>
+<div class="section" id="profiling-sql-statements">
+<h2>Profiling SQL Statements<a class="headerlink" href="#profiling-sql-statements" title="Permalink to this headline">¶</a></h2>
+<p>Thanks to <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a>, the underlying component of <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>,
+it&#8217;s possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With
+this you can diagnose performance problems and to discover bottlenecks.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Db\Profiler</span> <span class="k">as</span> <span class="nx">ProfilerDb</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">MysqlPdo</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;profiler&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">ProfilerDb</span><span class="p">();</span>
+    <span class="p">},</span>
+    <span class="k">true</span>
+<span class="p">);</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;db&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$di</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+        <span class="c1">// Get a shared instance of the DbProfiler</span>
+        <span class="nv">$profiler</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getProfiler</span><span class="p">();</span>
+
+        <span class="c1">// Listen all the database events</span>
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s2">&quot;db&quot;</span><span class="p">,</span>
+            <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$profiler</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">===</span> <span class="s2">&quot;beforeQuery&quot;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$profiler</span><span class="o">-&gt;</span><span class="na">startProfile</span><span class="p">(</span>
+                        <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">()</span>
+                    <span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">===</span> <span class="s2">&quot;afterQuery&quot;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$profiler</span><span class="o">-&gt;</span><span class="na">stopProfile</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">);</span>
+
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MysqlPdo</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;invo&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Assign the eventsManager to the db adapter instance</span>
+        <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$connection</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Profiling some queries:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="c1">// Send some SQL statements to the database</span>
+<span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
+
+<span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Get the generated profiles from the profiler</span>
+<span class="nv">$profiles</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;profiler&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getProfiles</span><span class="p">();</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$profiles</span> <span class="k">as</span> <span class="nv">$profile</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="s2">&quot;SQL Statement: &quot;</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+   <span class="k">echo</span> <span class="s2">&quot;Start Time: &quot;</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getInitialTime</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+   <span class="k">echo</span> <span class="s2">&quot;Final Time: &quot;</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getFinalTime</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+   <span class="k">echo</span> <span class="s2">&quot;Total Elapsed Time: &quot;</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getTotalElapsedSeconds</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each generated profile contains the duration in milliseconds that each instruction takes to complete as well as the generated SQL statement.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="model-behaviors.html" title="Model Behaviors"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="model-relationships.html" title="Model Relationships"
+             >previous</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.lazyload.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/highlight.pack.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.backstretch.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/custom.js"></script>
+
+  </body>
+</html>

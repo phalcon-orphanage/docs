@@ -1,0 +1,1246 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Использование Dependency Injection &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Архитектура MVC" href="mvc.html" />
+    <link rel="prev" title="Список примеров" href="samples.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="mvc.html" title="Архитектура MVC"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="samples.html" title="Список примеров"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Использование Dependency Injection</a><ul>
+<li><a class="reference internal" href="#id1">Наш подход</a></li>
+<li><a class="reference internal" href="#id2">Регистрация сервисов в Контейнере сервисов</a><ul>
+<li><a class="reference internal" href="#id3">Простая регистрация</a><ul>
+<li><a class="reference internal" href="#id4">Строчный</a></li>
+<li><a class="reference internal" href="#id5">Объект</a></li>
+<li><a class="reference internal" href="#id6">Замыкания/Анонимные функции</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">Сложная регистрация</a><ul>
+<li><a class="reference internal" href="#constructor-injection">Constructor Injection</a></li>
+<li><a class="reference internal" href="#setter-injection">Setter Injection</a></li>
+<li><a class="reference internal" href="#properties-injection">Properties Injection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">Доступ к сервисам</a></li>
+<li><a class="reference internal" href="#id9">Совместный доступ к сервисам</a></li>
+<li><a class="reference internal" href="#id10">Ручное управление сервисами</a></li>
+<li><a class="reference internal" href="#id11">Создание экземпляров класссов через контейнер сервисов</a></li>
+<li><a class="reference internal" href="#di">Автоматическое внедрение DI</a></li>
+<li><a class="reference internal" href="#id12">Избежание разрешения сервисов</a></li>
+<li><a class="reference internal" href="#id13">Размещение сервисов в файлах</a></li>
+<li><a class="reference internal" href="#id14">Статический доступ к DI</a></li>
+<li><a class="reference internal" href="#factory-default-di">Factory Default DI</a></li>
+<li><a class="reference internal" href="#id15">Соглашение именования сервисов</a></li>
+<li><a class="reference internal" href="#id16">Реализация собственного DI</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="samples.html" title="предыдущая глава">&lt; Список примеров</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="mvc.html" title="следующая глава">Архитектура MVC &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/di.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="dependency-injection">
+<h1>Использование Dependency Injection<a class="headerlink" href="#dependency-injection" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Следующий пример немного длинный, но объясняет использование контейнера сервисов (service container), service location и dependency injection.
+Итак, представим, что мы разрабатываем компонент, назовём его SomeComponent. Сейчас нам не важно, какую именно задачу он выполняет.
+Наш компонент имеет некоторую зависимость, отвечающую за соединение с базой данных.</p>
+<p>В первом примере соединение устанавливается внутри компонента. Такой подход не является практичным, он не позволяет
+нам изменить параметры соединения или тип СУБД, потому как компонент работает только так, как был создан.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Объект соединения жестко вписан в компонент,</span>
+<span class="sd">     * что усложняет его замену на какой-то</span>
+<span class="sd">     * внешний или изменение его поведения</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">someDbTask</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Connection</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;invo&quot;</span>
+        <span class="p">));</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="nv">$some</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SomeComponent</span><span class="p">();</span>
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">someDbTask</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Чтобы решить эту проблему, создадим сеттер (setter), который внедрит внешнюю зависимость перед использованием.
+Теперь это похоже на хорошее решение:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_connection</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Назначает внешнее соединение</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setConnection</span><span class="p">(</span><span class="nv">$connection</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_connection</span> <span class="o">=</span> <span class="nv">$connection</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">someDbTask</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_connection</span><span class="p">;</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="nv">$some</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SomeComponent</span><span class="p">();</span>
+
+<span class="c1">// Создание соединения с БД</span>
+<span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Connection</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;invo&quot;</span>
+<span class="p">));</span>
+
+<span class="c1">// Внедрение соединения в компонент</span>
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">setConnection</span><span class="p">(</span><span class="nv">$connection</span><span class="p">);</span>
+
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">someDbTask</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Теперь примем во внимание тот факт, что мы используем компонент в различных частях приложения,
+поэтому появляется необходимость создавать соединение несколько раз и передавать его в компонент.
+С помощью некоторого глобального регистра будем получать копию соединения, тем самым нам больше
+нет надобности создавать его вновь и вновь:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Registry</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Возвращает соединение</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getConnection</span><span class="p">()</span>
+    <span class="p">{</span>
+       <span class="k">return</span> <span class="k">new</span> <span class="nx">Connection</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;invo&quot;</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_connection</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Sets the connection externally</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setConnection</span><span class="p">(</span><span class="nv">$connection</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_connection</span> <span class="o">=</span> <span class="nv">$connection</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">someDbTask</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_connection</span><span class="p">;</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="nv">$some</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SomeComponent</span><span class="p">();</span>
+
+<span class="c1">// Передает соединение, определяемое в регистре</span>
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">setConnection</span><span class="p">(</span><span class="nx">Registry</span><span class="o">::</span><span class="na">getConnection</span><span class="p">());</span>
+
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">someDbTask</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Теперь представим, что нам необходимо реализовать в компоненте два метода: первый всегда нуждается в создании нового соединения, а второй всегда использует уже установленное (shared):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Registry</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="k">static</span> <span class="nv">$_connection</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Создаёт соединение</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_createConnection</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Connection</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;invo&quot;</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Создаёт соединение единожды и возвращает его</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getSharedConnection</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="nv">$_connection</span><span class="o">===</span><span class="k">null</span><span class="p">){</span>
+            <span class="nv">$connection</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createConnection</span><span class="p">();</span>
+            <span class="nx">self</span><span class="o">::</span><span class="nv">$_connection</span> <span class="o">=</span> <span class="nv">$connection</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$_connection</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Всегда возвращает новое соединение</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getNewConnection</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createConnection</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_connection</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Назначает внешнее соединение</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setConnection</span><span class="p">(</span><span class="nv">$connection</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_connection</span> <span class="o">=</span> <span class="nv">$connection</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * ля этого метода всегда требуется уже установленное соединение</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">someDbTask</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_connection</span><span class="p">;</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Для этого метода всегда требуется новое соединение</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">someOtherDbTask</span><span class="p">(</span><span class="nv">$connection</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="nv">$some</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SomeComponent</span><span class="p">();</span>
+
+<span class="c1">// Тут внедряется уже установленное (shared) соединение</span>
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">setConnection</span><span class="p">(</span><span class="nx">Registry</span><span class="o">::</span><span class="na">getSharedConnection</span><span class="p">());</span>
+
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">someDbTask</span><span class="p">();</span>
+
+<span class="c1">// А здесь всегда в качестве параметра передаётся новое соединение</span>
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">someOtherDbTask</span><span class="p">(</span><span class="nx">Registry</span><span class="o">::</span><span class="na">getNewConnection</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>До сих пор мы рассматривали случаи, когда внедрение зависимостей решает наши задачи. Передача зависимости в качестве аргументов
+вместо создания их внутри кода делает наше приложение более гибким и уменьшает его связанность. Однако, в перспективе,
+такая форма внедрения зависимостей имеет некоторые недостатки.</p>
+<p>Например, если компонент имеет много зависимостей, мы будем вынуждены создавать сеттеры с множеством аргументов
+для передачи зависимостей или конструктор, который принимает их в качестве большого числа аргументов, вдобавок к этому,
+всякий раз создавать ещё и сами зависимости до использования компонента. Это сделает наш код слишком сложным для сопровождения:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Создание зависимостей или получение их из регистра</span>
+<span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Connection</span><span class="p">();</span>
+<span class="nv">$session</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Session</span><span class="p">();</span>
+<span class="nv">$fileSystem</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileSystem</span><span class="p">();</span>
+<span class="nv">$filter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Filter</span><span class="p">();</span>
+<span class="nv">$selector</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Selector</span><span class="p">();</span>
+
+<span class="c1">// Передача их в конструктор в качестве параметров</span>
+<span class="nv">$some</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SomeComponent</span><span class="p">(</span><span class="nv">$connection</span><span class="p">,</span> <span class="nv">$session</span><span class="p">,</span> <span class="nv">$fileSystem</span><span class="p">,</span> <span class="nv">$filter</span><span class="p">,</span> <span class="nv">$selector</span><span class="p">);</span>
+
+<span class="c1">// ... или использование сеттеров</span>
+
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">setConnection</span><span class="p">(</span><span class="nv">$connection</span><span class="p">);</span>
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">setSession</span><span class="p">(</span><span class="nv">$session</span><span class="p">);</span>
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">setFileSystem</span><span class="p">(</span><span class="nv">$fileSystem</span><span class="p">);</span>
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">setFilter</span><span class="p">(</span><span class="nv">$filter</span><span class="p">);</span>
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">setSelector</span><span class="p">(</span><span class="nv">$selector</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Думаю, пришлось бы создавать этот объект во многих частях нашего приложения. Если когда-нибудь мы перестанем нуждаться в какой-либо
+зависимости, нам придётся пройтись по всем этим местам и удалить соответствующий параметр в вызовах конструктора или сеттерах.
+Чтобы решить эту проблему, вернёмся к глобальному регистру для создания компонента. Однако, это добавит новый уровень абстракции,
+предшествующий созданию объекта:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Определение метода factory, который создаёт экземпляр SomeComponent и внедряет в него зависимости</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">factory</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Connection</span><span class="p">();</span>
+        <span class="nv">$session</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Session</span><span class="p">();</span>
+        <span class="nv">$fileSystem</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileSystem</span><span class="p">();</span>
+        <span class="nv">$filter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Filter</span><span class="p">();</span>
+        <span class="nv">$selector</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Selector</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">self</span><span class="p">(</span><span class="nv">$connection</span><span class="p">,</span> <span class="nv">$session</span><span class="p">,</span> <span class="nv">$fileSystem</span><span class="p">,</span> <span class="nv">$filter</span><span class="p">,</span> <span class="nv">$selector</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Минуточку, мы снова вернулись туда, откуда начали: создание зависимостей внутри компонента! Мы можем двигаться дальше и находить способ
+решать эту проблему каждый раз. Но, это означает, что мы снова и снова будем наступать на те же грабли.</p>
+<p>Практически применимый и элегантный способ решить эту проблему — это использовать контейнер для зависимостей. Он играет ту же роль, что и
+глобальный регистр, который мы видели выше. Использование контейнера в качестве моста к зависимостям позволяет нам уменьшить сложность
+нашего компонента:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_di</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$di</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_di</span> <span class="o">=</span> <span class="nv">$di</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">someDbTask</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Получение сервиса соединений</span>
+        <span class="c1">// Всегда возвращает соединение</span>
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">someOtherDbTask</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="c1">// Получение сервиса соединения, предназначенного для общего доступа,</span>
+        <span class="c1">// всегда возвращает одно и то же соединение</span>
+        <span class="nv">$connection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_di</span><span class="o">-&gt;</span><span class="na">getShared</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">);</span>
+
+        <span class="c1">// Этот метод так же требует сервиса фильтрации входных данных</span>
+        <span class="nv">$filter</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;filter&#39;</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\DI</span><span class="p">();</span>
+
+<span class="c1">// Регистрация в контейнере сервиса &quot;db&quot;</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Connection</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;invo&quot;</span>
+    <span class="p">));</span>
+<span class="p">});</span>
+
+<span class="c1">// Регистрация в контейнере сервиса &quot;filter&quot;</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Filter</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c1">// Регистрация в контейнере сервиса &quot;session&quot;</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Session</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c1">// Передача контейнера сервисов в качестве единственного параметра</span>
+<span class="nv">$some</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SomeComponent</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+
+<span class="nv">$some</span><span class="o">-&gt;</span><span class="na">someTask</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Теперь компонент имеет простой доступ к сервисам, которые ему необходимы. Если сервис не востребован, он не будет инициализирован,
+тем самым экономя ресурсы. Так же компонент теперь обладает низкой связанностью. Например, можно заменить способ создания соединений,
+поведение или любой другой аспект их работы, и это никак не отразится на компоненте.</p>
+<div class="section" id="id1">
+<h2>Наш подход<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Phalcon\DI — это компонент, реализующий Dependency Injection и Location сервисов и является контейнером для них.</p>
+<p>Поскольку Phalcon обладает низкой связанностью, Phalcon\DI необходимо обеспечить интеграцию различных компонентов фреймворка.
+Разработчики так же могут использовать этот компонент для внедрения зависимостей и использования глобальных экземпляров различных классов, используемых в приложении.</p>
+<p>В основе своей, компонент реализует паттерн <a class="reference external" href="http://en.wikipedia.org/wiki/Inversion_of_control">Инверсии управления</a>. Применяя его, объекты получают их зависимости не с использованием сеттеров или конструкторов,
+а с помощью сервиса внедрения зависимостей. Это снижает общую сложность, поскольку остаётся только один способ получения зависимостей в компоненте.</p>
+<p>К тому же, этот паттерн увеличивает тестируемость в коде, что позволяет снизить &#8220;ошибочность&#8221; кода.</p>
+</div>
+<div class="section" id="id2">
+<h2>Регистрация сервисов в Контейнере сервисов<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Регистрация сервисов возможна как разработчиком, так и самим фреймворком. Когда компоненту A требуется компонент B (или экземпляр его класса) для работы,
+он может запросить его из контейнера, а не создавать новый экземпляр.</p>
+<p>Такой способ работы даёт нам много преимуществ:</p>
+<ul class="simple">
+<li>Мы можем легко заменять компонент на созданный нами или кем-то другим.</li>
+<li>Мы обладаем полным контролем над инициализацией объекта, что позволяет нам настраивать эти объекты так, как нам необходимо, прежде, чем передать их компонентам.</li>
+<li>Мы можем получать глобальный экземпляр компонента структурированным и унифицированным образом.</li>
+</ul>
+<p>Зарегистрировать сервисы можно несколькими различными способами:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Создание контейнера Dependency Injector</span>
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\DI</span><span class="p">();</span>
+
+<span class="c1">// По названию класса</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">,</span> <span class="s1">&#39;Phalcon\Http\Request&#39;</span><span class="p">);</span>
+
+<span class="c1">// С использованием анонимной функции для отложенной загрузки</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Request</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c1">// Регистрация экземпляра напрямую</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Request</span><span class="p">());</span>
+
+<span class="c1">// Определение с помощью массива</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;className&quot;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon\Http\Request&#39;</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>Для регистрации сервисов можно так же использовать синтаксис массивов:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Создание контейнера DI</span>
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\DI</span><span class="p">();</span>
+
+<span class="c1">// По названию класса</span>
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;request&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Phalcon\Http\Request&#39;</span><span class="p">;</span>
+
+<span class="c1">// С использованием анонимной функции для отложенной загрузки</span>
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;request&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Request</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="c1">// Регистрация экземпляра напрямую</span>
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;request&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Request</span><span class="p">();</span>
+
+<span class="c1">// Определение с помощью массива</span>
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;request&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;className&quot;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon\Http\Request&#39;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>В примере, данном выше, когда фреймворк нуждается в доступе к запрашиваемым данным, он будет запрашивать в контейнере сервис, названный &#8216;request&#8217;.
+Контейнер, в свою очередь, возвращает экземпляр затребованного сервиса. Разработчик, в конечном итоге, может заменить компонент, когда захочет.</p>
+<p>Каждый из методов регистрации сервисов имеет свои достоинства и недостатки. Какой из них использовать — зависит только от разработчика и
+от конкретных требований.</p>
+<p>Назначение сервиса строкой очень простое, но лишено гибкости. В качестве массива — предоставляет большую гибкость, но делает код менее понятным.
+Анонимные функции неплохо балансируют между этими двумя способами, но им может потребоваться больше обслуживания, чем это ожидается.</p>
+<p>Phalcon\DI предоставляет отложенную загрузку для каждого хранимого им сервиса. Если разработчик не решит создавать экземпляр объекта напрямую и
+хранить его в контейнере, любой объект сохранённый в нём (через массив, строку и т.д.) будет загружен отложенно (lazy load), т.е. создастся только тогда, когда будет востребован.</p>
+<div class="section" id="id3">
+<h3>Простая регистрация<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Как было показано выше, есть несколько способов для регистрации сервисов. Следующие из них мы называем &#8220;простыми&#8221;:</p>
+<div class="section" id="id4">
+<h4>Строчный<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Этот способ ожидает в качестве параметра имя существующего класса, возвращает его объект, если класс не был загружен автолоадером.
+Такой способ не позволяет передавать аргументы для конструктора класса или настраивать параметры:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Возвращает новый Phalcon\Http\Request();</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">,</span> <span class="s1">&#39;Phalcon\Http\Request&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h4>Объект<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Этот способ в качестве параметра принимает объект. Объект не нуждается в создании, потому как объект
+уже является объектом сам по себе. Вообще говоря, в данном случае это не является настоящим внедрением
+зависимости, однако такой способ вполне используем, если вы хотите быть уверены в том, что возвращаемая
+зависимость всегда будет одним и тем же объектом/значением:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Возвращает новый Phalcon\Http\Request();</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Request</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h4>Замыкания/Анонимные функции<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Этот метод дает больше свободы для построения зависимости, если этого захотеть, тем не менее, он весьма
+сложен в плане изменения некоторых параметров извне без полного замещения определения зависимости:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;db&quot;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\Adapter\Pdo\Mysql</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+         <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;blog&quot;</span>
+    <span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Некоторые ограничения можно преодолеть путём передачи дополнительных переменных в область видимости замыкания:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Using the $config variable in the current scope</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;db&quot;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$config</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\Adapter\Pdo\Mysql</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+         <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">host</span><span class="p">,</span>
+         <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">username</span><span class="p">,</span>
+         <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">password</span><span class="p">,</span>
+         <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">name</span>
+    <span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>Сложная регистрация<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Если потребуется изменить определение сервиса без создания экземпляра, тогда нам придётся определять его
+с использованием синтаксиса массивов. Такое определение может оказаться чуть более длинным:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Регистрация сервиса &#39;logger&#39; с помощью имени класса и параметров для него</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon\Logger\Adapter\File&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;parameter&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;../apps/logs/error.log&#39;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">));</span>
+
+<span class="c1">// Или в виде анонимной функции</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">\Phalcon\Logger\Adapter\File</span><span class="p">(</span><span class="s1">&#39;../apps/logs/error.log&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Оба способа приведут к одинаковому результату. Определение же с помощью массива позволяет изменение параметров, если это необходимо:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Измнение названия класса для сервиса</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getService</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">setClassName</span><span class="p">(</span><span class="s1">&#39;MyCustomLogger&#39;</span><span class="p">);</span>
+
+<span class="c1">// Измнение первого параметра без пересоздания экземпляра сервиса logger</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getService</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;parameter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;../apps/logs/error.log&#39;</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>В дополнение к этому, используя синтаксис массивов, можно использовать три типа внедрения зависимостей:</p>
+<div class="section" id="constructor-injection">
+<h4>Constructor Injection<a class="headerlink" href="#constructor-injection" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Этот тип передаёт зависимости/аргументы в конструктор класса.
+Представим, что у нас есть следующий компонент:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">SomeApp</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_response</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$_someFlag</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nx">Response</span> <span class="nv">$response</span><span class="p">,</span> <span class="nv">$someFlag</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_response</span> <span class="o">=</span> <span class="nv">$response</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_someFlag</span> <span class="o">=</span> <span class="nv">$someFlag</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Сервис может быть зарегистрирован следующим образом:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon\Http\Response&#39;</span>
+<span class="p">));</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;someComponent&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;SomeApp\SomeComponent&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span><span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;service&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;response&#39;</span><span class="p">),</span>
+        <span class="k">array</span><span class="p">(</span><span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;parameter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>Сервис &#8220;response&#8221; (Phalcon\Http\Response) передаётся в конструктор в качестве первого параметра,
+в то время как вторым параметром передаётся булевое значение (true) без изменений.</p>
+</div>
+<div class="section" id="setter-injection">
+<h4>Setter Injection<a class="headerlink" href="#setter-injection" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Классы могут иметь сеттеры для внедрения дополнительных зависимостей. Наш предыдущий класс может быть изменён, чтобы принимать зависимости с помощью сеттеров:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">SomeApp</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_response</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$_someFlag</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setResponse</span><span class="p">(</span><span class="nx">Response</span> <span class="nv">$response</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_response</span> <span class="o">=</span> <span class="nv">$response</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setFlag</span><span class="p">(</span><span class="nv">$someFlag</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_someFlag</span> <span class="o">=</span> <span class="nv">$someFlag</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Сервис с сеттерами для зависимостей может быть зарегистрирован следующим образом:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon\Http\Response&#39;</span>
+<span class="p">));</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;someComponent&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;SomeApp\SomeComponent&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;calls&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;method&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;setResponse&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="k">array</span><span class="p">(</span><span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;service&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;response&#39;</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;method&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;setFlag&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="k">array</span><span class="p">(</span><span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;parameter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="properties-injection">
+<h4>Properties Injection<a class="headerlink" href="#properties-injection" title="Ссылка на этот заголовок">¶</a></h4>
+<p>Менее распространённым способом является внедрение зависимостей или полей класса напрямую:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">SomeApp</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="nv">$response</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$someFlag</span><span class="p">;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Сервис с прямым внедрением может быть зарегистрирован следующим способом:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon\Http\Response&#39;</span>
+<span class="p">));</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;someComponent&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;SomeApp\SomeComponent&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;properties&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;response&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;service&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;response&#39;</span><span class="p">)</span>
+        <span class="p">),</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;someFlag&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;parameter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>Поддерживаются параметры следующих типов:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="37%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Тип</th>
+<th class="head">Описание</th>
+<th class="head">Пример</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>parameter</td>
+<td>Буквенное значение, передаваемое в качестве параметра</td>
+<td>array(&#8216;type&#8217; =&gt; &#8216;parameter&#8217;, &#8216;value&#8217; =&gt; 1234)</td>
+</tr>
+<tr class="row-odd"><td>service</td>
+<td>Другой сервис в контейнере</td>
+<td>array(&#8216;type&#8217; =&gt; &#8216;service&#8217;, &#8216;name&#8217; =&gt; &#8216;request&#8217;)</td>
+</tr>
+<tr class="row-even"><td>instance</td>
+<td>Объект, который должен создаваться динамически</td>
+<td>array(&#8216;type&#8217; =&gt; &#8216;instance&#8217;, &#8216;className&#8217; =&gt; &#8216;DateTime&#8217;, &#8216;arguments&#8217; =&gt; array(&#8216;now&#8217;))</td>
+</tr>
+</tbody>
+</table>
+<p>Получение сервисов, определение которых весьма сложно может быть немного медленнее, чем рассмотренные выше определения.
+Однако, это предоставляет больше возможностей для определения и внедрения сервисов.</p>
+<p>Можно совмещать различные типы определения, определяя для себя наиболее подходящий способ регистрации сервиса в соответствии
+с потребностями приложения.</p>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Доступ к сервисам<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Получение сервиса из контейнера очень просто производится вызовом метода &#8220;get&#8221;. Будет возвращен новый экземпляр сервиса:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Так же можно вызвать магический метод:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Или использовать доступ как к массиву:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$di</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Аргументы могут быть переданы в конструктор добавлением массива параметров в метод &#8220;get&#8221;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// новый MyComponent(&quot;some-parameter&quot;, &quot;other&quot;)</span>
+<span class="nv">$component</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;MyComponent&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;some-parameter&quot;</span><span class="p">,</span> <span class="s2">&quot;other&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>Совместный доступ к сервисам<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Сервисы могут быть сразу зарегистрированы, как предназначенные для совместного (&#8220;shared&#8221;) доступа. Это означает, что они всегда будут синглетонами
+(<a class="reference external" href="http://en.wikipedia.org/wiki/Singleton_pattern">singletons</a>). После того, как этот сервис будет один раз создан, всегда будет возвращаться тот же самый его экземпляр:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Регистрация сервиса сессий, как &quot;always shared&quot;</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$session</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Session\Adapter\Files</span><span class="p">();</span>
+    <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nv">$session</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nv">$session</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">);</span> <span class="c1">// Locates the service for the first time</span>
+<span class="nv">$session</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getSession</span><span class="p">();</span> <span class="c1">// Returns the first instantiated object</span>
+</pre></div>
+</div>
+<p>Так же можно зарегистрировать сервис с совместным доступом, передав &#8220;true&#8221; в качестве третьего параметра метода &#8220;set&#8221;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Регистрация сервиса сессий, как &quot;always shared&quot;</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+<span class="p">},</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Если сервис не был зарегистрирован для общего доступа и вы хотите всё же получать один и тот же экземпляр каждый раз,
+то можно получать его, используя метод DI &#8220;getShared&#8221;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getShared</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>Ручное управление сервисами<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h2>
+<p>После того, как сервис был зарегистрирован в контейнере, вы можете управлять им вручную:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Регистрация сервиса сессий</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">,</span> <span class="s1">&#39;Phalcon\Http\Request&#39;</span><span class="p">);</span>
+
+<span class="c1">// Получение сервиса</span>
+<span class="nv">$requestService</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getService</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
+
+<span class="c1">// Изменение его определение</span>
+<span class="nv">$requestService</span><span class="o">-&gt;</span><span class="na">setDefinition</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Request</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c1">// Назначение его как &quot;always shared&quot;</span>
+<span class="nv">$requestService</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+
+<span class="c1">//Получение сервиса (возвращает экземпляр Phalcon\Http\Request)</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$requestService</span><span class="o">-&gt;</span><span class="na">resolve</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>Создание экземпляров класссов через контейнер сервисов<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Когда вы запрашиваете какой-то сервис из контейнера, и он не может найти его по такому имени, контейнер пытается загрузить класс с таким
+же названием. С помощью этого вы можете легко заменить какой-либо класс на любой другой, зарегистрировав сервис с таким же названием:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Регистрация контроллера как сервиса</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;IndexController&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$component</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Component</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nv">$component</span><span class="p">;</span>
+<span class="p">},</span> <span class="k">true</span><span class="p">);</span>
+
+<span class="c1">// Регистрация компонента как сервиса</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;MyOtherComponent&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//Actually returns another component</span>
+    <span class="nv">$component</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AnotherComponent</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nv">$component</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">// Создание экземпляра объекта с помощью контейнера сервисов</span>
+<span class="nv">$myComponent</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;MyOtherComponent&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Вы можете пользоваться этим, всегда создавая экземпляры объектов ваших классов с помощью контейнера сервисов (даже если они не регистрировались как сервисы).
+DI будет запускать правильный автозагрузчик для того, чтобы в итоге загрузить класс. Делая так, вы сможете легко заменить любой класс в будущем, реализовав
+его определение.</p>
+</div>
+<div class="section" id="di">
+<h2>Автоматическое внедрение DI<a class="headerlink" href="#di" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Если класс или компонент требует DI для нахождения сервисов, DI может автоматически внедрить себя в экземпляры этих компонентов или объектов,
+чтобы сделать это вам необходимо реализовать <a class="reference internal" href="../api/Phalcon_DI_InjectionAwareInterface.html"><em>Phalcon\DI\InjectionAwareInterface</em></a> в своём классе:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span> <span class="k">implements</span> <span class="nx">\Phalcon\DI\InjectionAwareInterface</span>
+<span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$_di</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setDi</span><span class="p">(</span><span class="nv">$di</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_di</span> <span class="o">=</span> <span class="nv">$di</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDi</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_di</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Когда сервис будет запрошен, $di будет передан в setDi автоматически:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Регистрация сервиса</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;myClass&#39;</span><span class="p">,</span> <span class="s1">&#39;MyClass&#39;</span><span class="p">);</span>
+
+<span class="c1">// Получение сервиса (ВНИМАНИЕ: $myClass-&gt;setDi($di) вызовется автоматически)</span>
+<span class="nv">$myClass</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;myClass&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>Избежание разрешения сервисов<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Сервисы, которые используются при каждом обращении к приложению, могут избежать процесса их разрешения, что может немного
+увеличить производительность:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Внешнее разрешение объекта вместо его определения</span>
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyRouter</span><span class="p">();</span>
+
+<span class="c1">// Передача уже созданного объекта</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;router&#39;</span><span class="p">,</span> <span class="nv">$router</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h2>Размещение сервисов в файлах<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Вы можете улучшить организацию вашего приложения переместив регистрацию сервисов в отдельные файлы, которые
+делают всё, что происходит при старте приложения:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;router&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">include</span> <span class="s2">&quot;../app/config/routes.php&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>А файл &#8221;../app/config/routes.php&#8221; вернёт готовый объект:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyRouter</span><span class="p">();</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">);</span>
+
+<span class="k">return</span> <span class="nv">$router</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>Статический доступ к DI<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h2>
+<p>При необходимости вы можете получить доступ к последнему созданному DI в статической функции следующим образом:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">someMethod</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Получение сервиса сессий</span>
+        <span class="nv">$session</span> <span class="o">=</span> <span class="nx">Phalcon\DI</span><span class="o">::</span><span class="na">getDefault</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getSession</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="factory-default-di">
+<h2>Factory Default DI<a class="headerlink" href="#factory-default-di" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Несмотря на то, что разрозненный характер Phalcon дарит нам огромную свободу и гибкость, возможно мы захотим легко использовать полноценный
+фреймворк. Для достижения этой цели фреймворк предоставляет Phalcon\DI называющийся Phalcon\DI\FactoryDefault. Этот класс автоматически
+регистрирует такие сервисы, которые обычно определены в полноценном фреймворке.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\DI\FactoryDefault</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>Соглашение именования сервисов<a class="headerlink" href="#id15" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Хотя, вы и можете регистрировать сервисы с любыми именами, какие вам только понравятся, Phalcon имеет некоторое соглашение
+именования сервисов, что позволяет ему правильно работать с сервисами, когда они вам необходимы.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="25%" />
+<col width="56%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Название сервиса</th>
+<th class="head">Описание</th>
+<th class="head">По умолчанию</th>
+<th class="head">Общий доступ</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>dispatcher</td>
+<td>Диспетчер контроллеров</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-odd"><td>router</td>
+<td>Роутер</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><em>Phalcon\Mvc\Router</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-even"><td>url</td>
+<td>Генератор URL&#8217;ов</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Url.html"><em>Phalcon\Mvc\Url</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-odd"><td>request</td>
+<td>Окружение HTTP запросов</td>
+<td><a class="reference internal" href="../api/Phalcon_Http_Request.html"><em>Phalcon\Http\Request</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-even"><td>response</td>
+<td>Окружение HTTP ответов</td>
+<td><a class="reference internal" href="../api/Phalcon_Http_Response.html"><em>Phalcon\Http\Response</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-odd"><td>cookies</td>
+<td>Сервис управления HTTP Cookies</td>
+<td><a class="reference internal" href="../api/Phalcon_Http_Response_Cookies.html"><em>Phalcon\Http\Response\Cookies</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-even"><td>filter</td>
+<td>Входной фильтр</td>
+<td><a class="reference internal" href="../api/Phalcon_Filter.html"><em>Phalcon\Filter</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-odd"><td>flash</td>
+<td>Всплывающие сообщения</td>
+<td><a class="reference internal" href="../api/Phalcon_Flash_Direct.html"><em>Phalcon\Flash\Direct</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-even"><td>flashSession</td>
+<td>Сессия всплывающих сообщений</td>
+<td><a class="reference internal" href="../api/Phalcon_Flash_Session.html"><em>Phalcon\Flash\Session</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-odd"><td>session</td>
+<td>Сессия</td>
+<td><a class="reference internal" href="../api/Phalcon_Session_Adapter_Files.html"><em>Phalcon\Session\Adapter\Files</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-even"><td>eventsManager</td>
+<td>Управление событиями</td>
+<td><a class="reference internal" href="../api/Phalcon_Events_Manager.html"><em>Phalcon\Events\Manager</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-odd"><td>db</td>
+<td>Низкоуровневый коннектор к базе данных</td>
+<td><a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-even"><td>security</td>
+<td>Помощник безопасности</td>
+<td><a class="reference internal" href="../api/Phalcon_Security.html"><em>Phalcon\Security</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-odd"><td>crypt</td>
+<td>Encrypt/Decrypt data</td>
+<td><a class="reference internal" href="../api/Phalcon_Crypt.html"><em>Phalcon\Crypt</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-even"><td>tag</td>
+<td>генератор HTML конструкций</td>
+<td><a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-odd"><td>escaper</td>
+<td>Контекстное экранирование</td>
+<td><a class="reference internal" href="../api/Phalcon_Escaper.html"><em>Phalcon\Escaper</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-even"><td>annotations</td>
+<td>Парсер аннотаций</td>
+<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Memory.html"><em>Phalcon\Annotations\Adapter\Memory</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-odd"><td>modelsManager</td>
+<td>Управление моделями</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_Manager.html"><em>Phalcon\Mvc\Model\Manager</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-even"><td>modelsMetadata</td>
+<td>Мета-данные моделей</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_MetaData_Memory.html"><em>Phalcon\Mvc\Model\MetaData\Memory</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-odd"><td>transactionManager</td>
+<td>Управление транзакциями моделей</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_Transaction_Manager.html"><em>Phalcon\Mvc\Model\Transaction\Manager</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-even"><td>modelsCache</td>
+<td>Кэширование для моделей</td>
+<td>None</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>viewsCache</td>
+<td>Кэширование для частичных представлений</td>
+<td>None</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id16">
+<h2>Реализация собственного DI<a class="headerlink" href="#id16" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для создания собственного DI необходимо реализовать интерфейс <a class="reference internal" href="../api/Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a>, или использовать наследование и переопределить стандартный компонент Phalcon.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="mvc.html" title="Архитектура MVC"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="samples.html" title="Список примеров"
+             >предыдущий</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

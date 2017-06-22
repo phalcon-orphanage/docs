@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Db\Dialect\Sqlite &mdash; Phalcon 3.1.1 documentation (English)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="https://static.phalconphp.com/www/images/favicon.ico"/>
+    <link rel="top" title="Phalcon 3.1.1 documentation" href="../index.html" />
+    <link rel="up" title="API Indice" href="index.html" />
+    <link rel="next" title="Class Phalcon\Db\Exception" href="Phalcon_Db_Exception.html" />
+    <link rel="prev" title="Class Phalcon\Db\Dialect\Postgresql" href="Phalcon_Db_Dialect_Postgresql.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Phalcon_Db_Exception.html" title="Class Phalcon\Db\Exception"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Db_Dialect_Postgresql.html" title="Class Phalcon\Db\Dialect\Postgresql"
+             accesskey="P">previous</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 3.1.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Indice</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Db\Dialect\Sqlite</strong></a><ul>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="Phalcon_Db_Dialect_Postgresql.html" title="previous chapter">&lt; Class <strong>Phalcon\Db\Dialect\Postgresql</strong></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="Phalcon_Db_Exception.html" title="next chapter">Class <strong>Phalcon\Db\Exception</strong> &gt;</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/Phalcon_Db_Dialect_Sqlite.txt" rel="nofollow">Show Source</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="class-phalcon-db-dialect-sqlite">
+<h1>Class <strong>Phalcon\Db\Dialect\Sqlite</strong><a class="headerlink" href="#class-phalcon-db-dialect-sqlite" title="Permalink to this headline">¶</a></h1>
+<p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_Db_DialectInterface.html"><em>Phalcon\Db\DialectInterface</em></a></p>
+<p><span class="raw-html"><a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/dialect/sqlite.zep" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
+<p>Generates database specific SQL for the Sqlite RDBMS</p>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<p>public  <strong>getColumnDefinition</strong> (<a class="reference internal" href="Phalcon_Db_ColumnInterface.html"><em>Phalcon\Db\ColumnInterface</em></a> $column)</p>
+<p>Gets the column name in SQLite</p>
+<p>public  <strong>addColumn</strong> (<em>mixed</em> $tableName, <em>mixed</em> $schemaName, <a class="reference internal" href="Phalcon_Db_ColumnInterface.html"><em>Phalcon\Db\ColumnInterface</em></a> $column)</p>
+<p>Generates SQL to add a column to a table</p>
+<p>public  <strong>modifyColumn</strong> (<em>mixed</em> $tableName, <em>mixed</em> $schemaName, <a class="reference internal" href="Phalcon_Db_ColumnInterface.html"><em>Phalcon\Db\ColumnInterface</em></a> $column, [<a class="reference internal" href="Phalcon_Db_ColumnInterface.html"><em>Phalcon\Db\ColumnInterface</em></a> $currentColumn])</p>
+<p>Generates SQL to modify a column in a table</p>
+<p>public  <strong>dropColumn</strong> (<em>mixed</em> $tableName, <em>mixed</em> $schemaName, <em>mixed</em> $columnName)</p>
+<p>Generates SQL to delete a column from a table</p>
+<p>public  <strong>addIndex</strong> (<em>mixed</em> $tableName, <em>mixed</em> $schemaName, <a class="reference internal" href="Phalcon_Db_IndexInterface.html"><em>Phalcon\Db\IndexInterface</em></a> $index)</p>
+<p>Generates SQL to add an index to a table</p>
+<p>public  <strong>dropIndex</strong> (<em>mixed</em> $tableName, <em>mixed</em> $schemaName, <em>mixed</em> $indexName)</p>
+<p>Generates SQL to delete an index from a table</p>
+<p>public  <strong>addPrimaryKey</strong> (<em>mixed</em> $tableName, <em>mixed</em> $schemaName, <a class="reference internal" href="Phalcon_Db_IndexInterface.html"><em>Phalcon\Db\IndexInterface</em></a> $index)</p>
+<p>Generates SQL to add the primary key to a table</p>
+<p>public  <strong>dropPrimaryKey</strong> (<em>mixed</em> $tableName, <em>mixed</em> $schemaName)</p>
+<p>Generates SQL to delete primary key from a table</p>
+<p>public  <strong>addForeignKey</strong> (<em>mixed</em> $tableName, <em>mixed</em> $schemaName, <a class="reference internal" href="Phalcon_Db_ReferenceInterface.html"><em>Phalcon\Db\ReferenceInterface</em></a> $reference)</p>
+<p>Generates SQL to add an index to a table</p>
+<p>public  <strong>dropForeignKey</strong> (<em>mixed</em> $tableName, <em>mixed</em> $schemaName, <em>mixed</em> $referenceName)</p>
+<p>Generates SQL to delete a foreign key from a table</p>
+<p>public  <strong>createTable</strong> (<em>mixed</em> $tableName, <em>mixed</em> $schemaName, <em>array</em> $definition)</p>
+<p>Generates SQL to create a table</p>
+<p>public  <strong>truncateTable</strong> (<em>mixed</em> $tableName, <em>mixed</em> $schemaName)</p>
+<p>Generates SQL to truncate a table</p>
+<p>public  <strong>dropTable</strong> (<em>mixed</em> $tableName, [<em>mixed</em> $schemaName], [<em>mixed</em> $ifExists])</p>
+<p>Generates SQL to drop a table</p>
+<p>public  <strong>createView</strong> (<em>mixed</em> $viewName, <em>array</em> $definition, [<em>mixed</em> $schemaName])</p>
+<p>Generates SQL to create a view</p>
+<p>public  <strong>dropView</strong> (<em>mixed</em> $viewName, [<em>mixed</em> $schemaName], [<em>mixed</em> $ifExists])</p>
+<p>Generates SQL to drop a view</p>
+<p>public  <strong>tableExists</strong> (<em>mixed</em> $tableName, [<em>mixed</em> $schemaName])</p>
+<p>Generates SQL checking for the existence of a schema.table</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">,</span> <span class="s2">&quot;blog&quot;</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>public  <strong>viewExists</strong> (<em>mixed</em> $viewName, [<em>mixed</em> $schemaName])</p>
+<p>Generates SQL checking for the existence of a schema.view</p>
+<p>public  <strong>describeColumns</strong> (<em>mixed</em> $table, [<em>mixed</em> $schema])</p>
+<p>Generates SQL describing a table</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nb">print_r</span><span class="p">(</span>
+    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>public  <strong>listTables</strong> ([<em>mixed</em> $schemaName])</p>
+<p>List all tables in database</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nb">print_r</span><span class="p">(</span>
+    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>public  <strong>listViews</strong> ([<em>mixed</em> $schemaName])</p>
+<p>Generates the SQL to list all views of a schema or user</p>
+<p>public  <strong>listIndexesSql</strong> (<em>mixed</em> $table, [<em>mixed</em> $schema], [<em>mixed</em> $keyName])</p>
+<p>Generates the SQL to get query list of indexes</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nb">print_r</span><span class="p">(</span>
+    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">listIndexesSql</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>public  <strong>describeIndexes</strong> (<em>mixed</em> $table, [<em>mixed</em> $schema])</p>
+<p>Generates SQL to query indexes on a table</p>
+<p>public  <strong>describeIndex</strong> (<em>mixed</em> $index)</p>
+<p>Generates SQL to query indexes detail on a table</p>
+<p>public  <strong>describeReferences</strong> (<em>mixed</em> $table, [<em>mixed</em> $schema])</p>
+<p>Generates SQL to query foreign keys on a table</p>
+<p>public  <strong>tableOptions</strong> (<em>mixed</em> $table, [<em>mixed</em> $schema])</p>
+<p>Generates the SQL to describe the table creation options</p>
+<p>public  <strong>registerCustomFunction</strong> (<em>mixed</em> $name, <em>mixed</em> $customFunction) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Registers custom SQL functions</p>
+<p>public  <strong>getCustomFunctions</strong> () inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Returns registered functions</p>
+<p>final public  <strong>escapeSchema</strong> (<em>mixed</em> $str, [<em>mixed</em> $escapeChar]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Escape Schema</p>
+<p>final public  <strong>escape</strong> (<em>mixed</em> $str, [<em>mixed</em> $escapeChar]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Escape identifiers</p>
+<p>public  <strong>limit</strong> (<em>mixed</em> $sqlQuery, <em>mixed</em> $number) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Generates the SQL for LIMIT clause</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$sql</span><span class="p">;</span> <span class="c1">// SELECT * FROM robots LIMIT 10</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">]);</span>
+<span class="k">echo</span> <span class="nv">$sql</span><span class="p">;</span> <span class="c1">// SELECT * FROM robots LIMIT 10 OFFSET 50</span>
+</pre></div>
+</div>
+<p>public  <strong>forUpdate</strong> (<em>mixed</em> $sqlQuery) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Returns a SQL modified with a FOR UPDATE clause</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">forUpdate</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$sql</span><span class="p">;</span> <span class="c1">// SELECT * FROM robots FOR UPDATE</span>
+</pre></div>
+</div>
+<p>public  <strong>sharedLock</strong> (<em>mixed</em> $sqlQuery) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Returns a SQL modified with a LOCK IN SHARE MODE clause</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">sharedLock</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$sql</span><span class="p">;</span> <span class="c1">// SELECT * FROM robots LOCK IN SHARE MODE</span>
+</pre></div>
+</div>
+<p>final public  <strong>getColumnList</strong> (<em>array</em> $columnList, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Gets a list of columns with escaped identifiers</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">getColumnList</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;column1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;column&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>final public  <strong>getSqlColumn</strong> (<em>mixed</em> $column, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve Column expressions</p>
+<p>public  <strong>getSqlExpression</strong> (<em>array</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Transforms an intermediate representation for an expression into a database system valid expression</p>
+<p>final public  <strong>getSqlTable</strong> (<em>mixed</em> $table, [<em>mixed</em> $escapeChar]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Transform an intermediate representation of a schema/table into a database system valid expression</p>
+<p>public  <strong>select</strong> (<em>array</em> $definition) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Builds a SELECT statement</p>
+<p>public  <strong>supportsSavepoints</strong> () inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Checks whether the platform supports savepoints</p>
+<p>public  <strong>supportsReleaseSavepoints</strong> () inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Checks whether the platform supports releasing savepoints.</p>
+<p>public  <strong>createSavepoint</strong> (<em>mixed</em> $name) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Generate SQL to create a new savepoint</p>
+<p>public  <strong>releaseSavepoint</strong> (<em>mixed</em> $name) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Generate SQL to release a savepoint</p>
+<p>public  <strong>rollbackSavepoint</strong> (<em>mixed</em> $name) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Generate SQL to rollback a savepoint</p>
+<p>final protected  <strong>getSqlExpressionScalar</strong> (<em>array</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve Column expressions</p>
+<p>final protected  <strong>getSqlExpressionObject</strong> (<em>array</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve object expressions</p>
+<p>final protected  <strong>getSqlExpressionQualified</strong> (<em>array</em> $expression, [<em>mixed</em> $escapeChar]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve qualified expressions</p>
+<p>final protected  <strong>getSqlExpressionBinaryOperations</strong> (<em>array</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve binary operations expressions</p>
+<p>final protected  <strong>getSqlExpressionUnaryOperations</strong> (<em>array</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve unary operations expressions</p>
+<p>final protected  <strong>getSqlExpressionFunctionCall</strong> (<em>array</em> $expression, <em>mixed</em> $escapeChar, [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve function calls</p>
+<p>final protected  <strong>getSqlExpressionList</strong> (<em>array</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve Lists</p>
+<p>final protected  <strong>getSqlExpressionAll</strong> (<em>array</em> $expression, [<em>mixed</em> $escapeChar]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve *</p>
+<p>final protected  <strong>getSqlExpressionCastValue</strong> (<em>array</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve CAST of values</p>
+<p>final protected  <strong>getSqlExpressionConvertValue</strong> (<em>array</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve CONVERT of values encodings</p>
+<p>final protected  <strong>getSqlExpressionCase</strong> (<em>array</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve CASE expressions</p>
+<p>final protected  <strong>getSqlExpressionFrom</strong> (<em>mixed</em> $expression, [<em>mixed</em> $escapeChar]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve a FROM clause</p>
+<p>final protected  <strong>getSqlExpressionJoins</strong> (<em>mixed</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve a JOINs clause</p>
+<p>final protected  <strong>getSqlExpressionWhere</strong> (<em>mixed</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve a WHERE clause</p>
+<p>final protected  <strong>getSqlExpressionGroupBy</strong> (<em>mixed</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve a GROUP BY clause</p>
+<p>final protected  <strong>getSqlExpressionHaving</strong> (<em>array</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve a HAVING clause</p>
+<p>final protected  <strong>getSqlExpressionOrderBy</strong> (<em>mixed</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve an ORDER BY clause</p>
+<p>final protected  <strong>getSqlExpressionLimit</strong> (<em>mixed</em> $expression, [<em>mixed</em> $escapeChar], [<em>mixed</em> $bindCounts]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Resolve a LIMIT clause</p>
+<p>protected  <strong>prepareColumnAlias</strong> (<em>mixed</em> $qualified, [<em>mixed</em> $alias], [<em>mixed</em> $escapeChar]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Prepares column for this RDBMS</p>
+<p>protected  <strong>prepareTable</strong> (<em>mixed</em> $table, [<em>mixed</em> $schema], [<em>mixed</em> $alias], [<em>mixed</em> $escapeChar]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Prepares table for this RDBMS</p>
+<p>protected  <strong>prepareQualified</strong> (<em>mixed</em> $column, [<em>mixed</em> $domain], [<em>mixed</em> $escapeChar]) inherited from <a class="reference internal" href="Phalcon_Db_Dialect.html"><em>Phalcon\Db\Dialect</em></a></p>
+<p>Prepares qualified for this RDBMS</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Phalcon_Db_Exception.html" title="Class Phalcon\Db\Exception"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Db_Dialect_Postgresql.html" title="Class Phalcon\Db\Dialect\Postgresql"
+             >previous</a> |</li>
+          <li class="right"><a href="index.html" >API Indice</a> &raquo;</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.lazyload.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/highlight.pack.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.backstretch.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/custom.js"></script>
+
+  </body>
+</html>

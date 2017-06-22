@@ -1,0 +1,684 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Урок 3: Создание простейшего REST API &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Список примеров" href="samples.html" />
+    <link rel="prev" title="Tutorial 2: Explaining INVO" href="tutorial-invo.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="samples.html" title="Список примеров"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="tutorial-invo.html" title="Tutorial 2: Explaining INVO"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Урок 3: Создание простейшего REST API</a><ul>
+<li><a class="reference internal" href="#api">Определение API</a></li>
+<li><a class="reference internal" href="#id1">Создание приложения</a></li>
+<li><a class="reference internal" href="#id2">Создание модели</a></li>
+<li><a class="reference internal" href="#id3">Получение данных</a></li>
+<li><a class="reference internal" href="#id4">Вставка данных</a></li>
+<li><a class="reference internal" href="#id5">Обновление данных</a></li>
+<li><a class="reference internal" href="#id6">Удаление данных</a></li>
+<li><a class="reference internal" href="#id7">Тестирование приложения</a></li>
+<li><a class="reference internal" href="#id8">Заключение</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="tutorial-invo.html" title="предыдущая глава">&lt; Tutorial 2: Explaining INVO</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="samples.html" title="следующая глава">Список примеров &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/tutorial-rest.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="rest-api">
+<h1>Урок 3: Создание простейшего REST API<a class="headerlink" href="#rest-api" title="Ссылка на этот заголовок">¶</a></h1>
+<p>В этом уроке мы объясним, как создать простейшее приложение, предоставляющее <a class="reference external" href="http://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a> API с использованием
+различных HTTP методов:</p>
+<ul class="simple">
+<li>GET для получения и поиска данных</li>
+<li>POST для добавления данных</li>
+<li>PUT для обновления данных</li>
+<li>DELETE для удаления данных</li>
+</ul>
+<div class="section" id="api">
+<h2>Определение API<a class="headerlink" href="#api" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Наше API содержит следующие методы:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="30%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="3">Метод |  URL                       | Действие</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>GET</td>
+<td>/api/robots</td>
+<td>Возвращает всех роботов</td>
+</tr>
+<tr class="row-odd"><td>GET</td>
+<td>/api/robots/search/Astro</td>
+<td>роизводит поиск роботов с &#8220;Astro&#8221; в имени</td>
+</tr>
+<tr class="row-even"><td>GET</td>
+<td>/api/robots/2</td>
+<td>Возвращает робота по его ключу (primary key)</td>
+</tr>
+<tr class="row-odd"><td>POST</td>
+<td>/api/robots</td>
+<td>Добавляет нового робота</td>
+</tr>
+<tr class="row-even"><td>PUT</td>
+<td>/api/robots/2</td>
+<td>Обновляет робота по его ключу</td>
+</tr>
+<tr class="row-odd"><td>DELETE</td>
+<td>/api/robots/2</td>
+<td>Удаляет робота по его ключу</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id1">
+<h2>Создание приложения<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Поскольку приложение очень простое, мы не будем включать полное MVC окружение для его разработки. В этом случае для
+достижения нашей цели мы будем использовать <a class="reference internal" href="micro.html"><em>micro application</em></a>.</p>
+<p>Такой структуры файлов будет более, чем достаточно:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">my-rest-api/</span>
+<span class="x">    models/</span>
+<span class="x">        Robots.php</span>
+<span class="x">    index.php</span>
+<span class="x">    .htaccess</span>
+</pre></div>
+</div>
+<p>Прежде всего, нам понадобится файл .htaccess, который содержит все правила перенаправления URI на файл index.php.
+Для нашего приложения он будет таким:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
+    <span class="nb">RewriteEngine</span> <span class="k">On</span>
+    <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-f
+    <span class="nb">RewriteRule</span> ^(.*)$ index.php?_url=/$1 [QSA,L]
+<span class="nt">&lt;/IfModule&gt;</span>
+</pre></div>
+</div>
+<p>После этого, создаём файл index.php:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="c1">// тут определяются роуты</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Теперь мы пропишем роуты, как определили выше:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="c1">// Получение списка всех роботов</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">});</span>
+
+<span class="c1">// Поиск роботов с $name в названии</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/robots/search/{name}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">});</span>
+
+<span class="c1">// Получение робота по указанному ключу</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">});</span>
+
+<span class="c1">// Добавление нового робота</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">});</span>
+
+<span class="c1">// Обновление робота по ключу</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">});</span>
+
+<span class="c1">// Удаление робота по ключу</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Каждый роут задан с помощью метода таким же названием, что и HTTP метод. В качестве первого параметра мы передаём шаблон роута,
+вторым — обработчик, который, в нашем случае является анонимной функцией. Такой роут как &#8216;/api/robots/{id:[0-9]+}&#8217;
+однозначно устанавливает, что параметр &#8220;id&#8221; должен быть числом.</p>
+<p>Когда определено соответствие роутов запрашиваемым URI, тогда приложение выполняет соответствующие им обработчики.</p>
+</div>
+<div class="section" id="id2">
+<h2>Создание модели<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Наше API предоставляет информацию о &#8220;роботах&#8221;, хранящуюся в базе данных. Описанная ниже модель позволяет нам получить доступ к таблице объектно-ориентированным путём. Мы реализуем немного бизнес-правил, используя встроенные валидаторы с простейшими проверками. Мы делаем это, чтобы иметь уверенность в том, что сохраняемые данные отвечают требованиям нашего приложения:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">,</span>
+    <span class="nx">Phalcon\Mvc\Model\Message</span><span class="p">,</span>
+    <span class="nx">Phalcon\Mvc\Model\Validator\InclusionIn</span><span class="p">,</span>
+    <span class="nx">Phalcon\Mvc\Model\Validator\Uniqueness</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">validation</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Тип робота должен быть: droid, mechanical или virtual</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">(</span><span class="k">new</span> <span class="nx">InclusionIn</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;field&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;domain&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;droid&quot;</span><span class="p">,</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">,</span> <span class="s2">&quot;virtual&quot;</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">));</span>
+
+        <span class="c1">// Имя робота должно быть уникально</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">(</span><span class="k">new</span> <span class="nx">Uniqueness</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;field&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;The robot name must be unique&quot;</span>
+            <span class="p">)</span>
+        <span class="p">));</span>
+
+        <span class="c1">// Год не может быть меньше нулевого</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appendMessage</span><span class="p">(</span><span class="k">new</span> <span class="nx">Message</span><span class="p">(</span><span class="s2">&quot;The year cannot be less than zero&quot;</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Проверяет, были ли получены какие-либо сообщения при валидации</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validationHasFailed</span><span class="p">()</span> <span class="o">==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Теперь мы должны настроить соединение с базой данных, чтобы использовать его в этой модели</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\DI\FactoryDefault</span><span class="p">();</span>
+
+<span class="c1">// Настройка сервиса базы данных</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\Adapter\Pdo\Mysql</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;asimov&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;zeroth&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;robotics&quot;</span>
+    <span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\Micro</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Получение данных<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Сначала мы реализуем обработчик, который отвечает на GET-запрос и возвращает всех доступных роботов. Для выполнения
+этой задачи будем использовать PHQL, который будет возвращать результат выполнения простого запроса в формате JSON:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Получение всех роботов</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Robots ORDER BY name&quot;</span><span class="p">;</span>
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">);</span>
+
+    <span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+    <span class="k">foreach</span><span class="p">(</span> <span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">){</span>
+        <span class="nv">$data</span><span class="p">[]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="phql.html"><em>PHQL</em></a> позволяет нам писать запросы с помощью высокоуровневого, объектно-ориентированного SQL-диалекта,
+которые внутри него будут переведён в правильные SQL-операторы в зависимости от используемой СУБД. Условие &#8220;use&#8221; при
+определении анонимной функции позволяет нам легко передать некоторые переменные из глобальной области видимости в локальную.</p>
+<p>Обработчик поиска по названию будет выглядеть следующим образом:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Поиск роботов, в названии которых содержится $name</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/robots/search/{name}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Robots WHERE name LIKE :name: ORDER BY name&quot;</span><span class="p">;</span>
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;%&#39;</span> <span class="o">.</span> <span class="nv">$name</span> <span class="o">.</span> <span class="s1">&#39;%&#39;</span>
+    <span class="p">));</span>
+
+    <span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">){</span>
+        <span class="nv">$data</span><span class="p">[]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>В нашем случае поиск по полю &#8220;id&#8221; очень похож, кроме того, мы сообщаем, найден робот или нет:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Получение робота по ключу</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Robots WHERE id = :id:&quot;</span><span class="p">;</span>
+    <span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span>
+    <span class="p">))</span><span class="o">-&gt;</span><span class="na">getFirst</span><span class="p">();</span>
+
+    <span class="c1">//Create a response</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Response</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;NOT-FOUND&#39;</span><span class="p">));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;FOUND&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;data&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+                <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span>
+            <span class="p">)</span>
+        <span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Вставка данных<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Получая данные в виде JSON-строки, вставленной в тело запроса, мы точно так же используем PHQL для вставки:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Добавление нового робота</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getJsonRawBody</span><span class="p">();</span>
+
+    <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO Robots (name, type, year) VALUES (:name:, :type:, :year:)&quot;</span><span class="p">;</span>
+
+    <span class="nv">$status</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+        <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span><span class="p">,</span>
+        <span class="s1">&#39;year&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span>
+    <span class="p">));</span>
+
+    <span class="c1">// Формируем ответ</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Response</span><span class="p">();</span>
+
+    <span class="c1">//Проверка, что вставка произведена успешно</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">()</span> <span class="o">==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">// Изменение HTML статуса</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">201</span><span class="p">,</span> <span class="s2">&quot;Created&quot;</span><span class="p">);</span>
+
+        <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$status</span><span class="o">-&gt;</span><span class="na">getModel</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OK&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="p">));</span>
+
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+        <span class="c1">// Изменение HTML статуса</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">409</span><span class="p">,</span> <span class="s2">&quot;Conflict&quot;</span><span class="p">);</span>
+
+        <span class="c1">//Отправляем сообщение об ошибке клиенту</span>
+        <span class="nv">$errors</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$errors</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">,</span> <span class="s1">&#39;messages&#39;</span> <span class="o">=&gt;</span> <span class="nv">$errors</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Обновление данных<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Обновление данных аналогично их вставке. Полученный параметр &#8220;id&#8221; сообщает о том, информацию о каком роботе необходимо обновить:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Обновление робота по ключу</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="k">use</span><span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getJsonRawBody</span><span class="p">();</span>
+
+    <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:&quot;</span><span class="p">;</span>
+    <span class="nv">$status</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+        <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span><span class="p">,</span>
+        <span class="s1">&#39;year&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span>
+    <span class="p">));</span>
+
+    <span class="c1">// Формируем ответ</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Response</span><span class="p">();</span>
+
+    <span class="c1">// Проверка, что обновление произведено успешно</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">()</span> <span class="o">==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OK&#39;</span><span class="p">));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+        <span class="c1">//Изменение HTML статуса</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">409</span><span class="p">,</span> <span class="s2">&quot;Conflict&quot;</span><span class="p">);</span>
+
+        <span class="nv">$errors</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$errors</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">,</span> <span class="s1">&#39;messages&#39;</span> <span class="o">=&gt;</span> <span class="nv">$errors</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>Удаление данных<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Удаление очень похоже на обновление. Полученный параметр &#8220;id&#8221; сообщает о том, какого робота необходимо удалить:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Удаление робота по ключу</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;DELETE FROM Robots WHERE id = :id:&quot;</span><span class="p">;</span>
+    <span class="nv">$status</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span>
+    <span class="p">));</span>
+
+    <span class="c1">// Формируем ответ</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Response</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">()</span> <span class="o">==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OK&#39;</span><span class="p">));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+        <span class="c1">// Изменение HTTP статуса</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">409</span><span class="p">,</span> <span class="s2">&quot;Conflict&quot;</span><span class="p">);</span>
+
+        <span class="nv">$errors</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$errors</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">,</span> <span class="s1">&#39;messages&#39;</span> <span class="o">=&gt;</span> <span class="nv">$errors</span><span class="p">));</span>
+
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Тестирование приложения<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Используя <a class="reference external" href="http://en.wikipedia.org/wiki/CURL">curl</a> мы протестируем все роуты нашего приложения для проверки правильности его функционирования:</p>
+<p>Получение всех роботов:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X GET http://localhost/my-rest-api/api/robots
+
+HTTP/1.1 200 OK
+Date: Wed, 12 Sep 2012 07:05:13 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 117
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">[{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;1&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Robotina&quot;</span><span class="o">}</span>,<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;2&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Astro Boy&quot;</span><span class="o">}</span>,<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Terminator&quot;</span><span class="o">}]</span>
+</pre></div>
+</div>
+<p>Поиск робота по имени:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
+
+HTTP/1.1 200 OK
+Date: Wed, 12 Sep 2012 07:09:23 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 31
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">[{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;2&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Astro Boy&quot;</span><span class="o">}]</span>
+</pre></div>
+</div>
+<p>Получение робота по id:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X GET http://localhost/my-rest-api/api/robots/3
+
+HTTP/1.1 200 OK
+Date: Wed, 12 Sep 2012 07:12:18 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 56
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;FOUND&quot;</span>,<span class="s2">&quot;data&quot;</span>:<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Terminator&quot;</span><span class="o">}}</span>
+</pre></div>
+</div>
+<p>Добавление робота:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X POST -d <span class="s1">&#39;{&quot;name&quot;:&quot;C-3PO&quot;,&quot;type&quot;:&quot;droid&quot;,&quot;year&quot;:1977}&#39;</span>
+    http://localhost/my-rest-api/api/robots
+
+HTTP/1.1 201 Created
+Date: Wed, 12 Sep 2012 07:15:09 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 75
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;OK&quot;</span>,<span class="s2">&quot;data&quot;</span>:<span class="o">{</span><span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;C-3PO&quot;</span>,<span class="s2">&quot;type&quot;</span>:<span class="s2">&quot;droid&quot;</span>,<span class="s2">&quot;year&quot;</span>:1977,<span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;4&quot;</span><span class="o">}}</span>
+</pre></div>
+</div>
+<p>Попытка добавить робота с уже существующим именем:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X POST -d <span class="s1">&#39;{&quot;name&quot;:&quot;C-3PO&quot;,&quot;type&quot;:&quot;droid&quot;,&quot;year&quot;:1977}&#39;</span>
+    http://localhost/my-rest-api/api/robots
+
+HTTP/1.1 409 Conflict
+Date: Wed, 12 Sep 2012 07:18:28 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 63
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;ERROR&quot;</span>,<span class="s2">&quot;messages&quot;</span>:<span class="o">[</span><span class="s2">&quot;The robot name must be unique&quot;</span><span class="o">]}</span>
+</pre></div>
+</div>
+<p>Или обновление робота с непонятным типом:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X PUT -d <span class="s1">&#39;{&quot;name&quot;:&quot;ASIMO&quot;,&quot;type&quot;:&quot;humanoid&quot;,&quot;year&quot;:2000}&#39;</span>
+    http://localhost/my-rest-api/api/robots/4
+
+HTTP/1.1 409 Conflict
+Date: Wed, 12 Sep 2012 08:48:01 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 104
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;ERROR&quot;</span>,<span class="s2">&quot;messages&quot;</span>:<span class="o">[</span><span class="s2">&quot;Value of field &#39;type&#39; must be part of</span>
+<span class="s2">    list: droid, mechanical, virtual&quot;</span><span class="o">]}</span>
+</pre></div>
+</div>
+<p>И, наконец, удаление робота:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
+
+HTTP/1.1 200 OK
+Date: Wed, 12 Sep 2012 08:49:29 GMT
+Server: Apache/2.2.22 <span class="o">(</span>Unix<span class="o">)</span> DAV/2
+Content-Length: 15
+Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
+
+<span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;OK&quot;</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Заключение<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Как видно, с помощью Phalcon легко разработать RESTful API. Позже мы подробно объясним в документации как использовать
+микро-приложения и язык <a class="reference internal" href="phql.html"><em>PHQL</em></a>.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="samples.html" title="Список примеров"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="tutorial-invo.html" title="Tutorial 2: Explaining INVO"
+             >предыдущий</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

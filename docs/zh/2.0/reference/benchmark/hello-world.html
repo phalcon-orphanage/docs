@@ -1,0 +1,774 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hello World Benchmark &mdash; Phalcon 1.3.0 documentation</title>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../../index.html" />
+    <link rel="up" title="框架基准测试（Framework Benchmarks）" href="../benchmark.html" />
+    <link rel="next" title="Micro Benchmark" href="micro.html" />
+    <link rel="prev" title="框架基准测试（Framework Benchmarks）" href="../benchmark.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="micro.html" title="Micro Benchmark"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="../benchmark.html" title="框架基准测试（Framework Benchmarks）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li>
+          <li><a href="../benchmark.html" accesskey="U">框架基准测试（Framework Benchmarks）</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+                <hr>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                </div></div>
+            </div>
+            <h3><a href="../../index.html">內容目录</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Hello World Benchmark</a><ul>
+<li><a class="reference internal" href="#how-the-benchmarks-were-performed">How the benchmarks were performed?</a></li>
+<li><a class="reference internal" href="#what-measurements-were-recorded">What measurements were recorded?</a></li>
+<li><a class="reference internal" href="#participant-frameworks">Participant Frameworks</a></li>
+<li><a class="reference internal" href="#results">Results</a><ul>
+<li><a class="reference internal" href="#yii-yii-debug-false-version-yii-1-1-13">Yii (YII_DEBUG=false) Version yii-1.1.13</a></li>
+<li><a class="reference internal" href="#symfony-version-2-1-6">Symfony Version 2.1.6</a></li>
+<li><a class="reference internal" href="#codeigniter-2-1-0">CodeIgniter 2.1.0</a></li>
+<li><a class="reference internal" href="#kohana-3-2-0">Kohana 3.2.0</a></li>
+<li><a class="reference internal" href="#fuel-1-2-1">Fuel 1.2.1</a></li>
+<li><a class="reference internal" href="#zend-framework-1-11-11">Zend Framework 1.11.11</a></li>
+<li><a class="reference internal" href="#laravel-3-2-5">Laravel 3.2.5</a></li>
+<li><a class="reference internal" href="#phalcon-version-0-8-0">Phalcon Version 0.8.0</a></li>
+<li><a class="reference internal" href="#graphs">Graphs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>上一个主题</h4>
+            <p class="topless"><a href="../benchmark.html" title="上一章">&lt; 框架基准测试（Framework Benchmarks）</a></p>
+            <h4>下一个主题</h4>
+            <p class="topless"><a href="micro.html" title="下一章">Micro Benchmark &gt;</a></p>
+            <h3>本页</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/reference/benchmark/hello-world.txt" rel="nofollow">显示源代码</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="hello-world-benchmark">
+<h1>Hello World Benchmark<a class="headerlink" href="#hello-world-benchmark" title="永久链接至标题">¶</a></h1>
+<div class="section" id="how-the-benchmarks-were-performed">
+<h2>How the benchmarks were performed?<a class="headerlink" href="#how-the-benchmarks-were-performed" title="永久链接至标题">¶</a></h2>
+<p>We created a &#8220;Hello World&#8221; benchmark seeking to identify the smallest load overhead of each framework. Many
+people don&#8217;t like this kind of benchmark because real-world applications require more complex features or
+structures. However, these tests identify the minimum time spent by each framework to perform a simple task.
+Such a task represents the minimum requirement for every framework to process a single request.</p>
+<p>More specifically, the benchmark only measures the time it takes for a framework to start, run an action and
+free up resources at the end of the request. Any PHP application based on an MVC architecture will require
+this time. Due to the simplicity of the benchmark, we ensure that the time needed for a more complex
+request will be higher.</p>
+<p>A controller and a view have been created for each framework. The controller &#8220;say&#8221; and action &#8220;hello&#8221;. The
+action only sends data to the view which displays it (&#8220;Hello!&#8221;). Using the &#8220;ab&#8221; benchmark tool we sent 2000
+requests using 10 concurrent connections to each framework.</p>
+</div>
+<div class="section" id="what-measurements-were-recorded">
+<h2>What measurements were recorded?<a class="headerlink" href="#what-measurements-were-recorded" title="永久链接至标题">¶</a></h2>
+<p>These were the measurements we record to identify the overall performance of each framework:</p>
+<ul class="simple">
+<li>Requests per second</li>
+<li>Time across all concurrent requests</li>
+<li>Number of included PHP files on a single request (measured using function <a class="reference external" href="http://www.php.net/manual/en/function.get-included-files.php">get_included_files</a>.</li>
+<li>Memory Usage per request (measured using function <a class="reference external" href="http://php.net/manual/en/function.memory-get-usage.php">memory_get_usage</a>.</li>
+</ul>
+</div>
+<div class="section" id="participant-frameworks">
+<h2>Participant Frameworks<a class="headerlink" href="#participant-frameworks" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://www.yiiframework.com/">Yii</a></li>
+<li><a class="reference external" href="http://symfony.com/">Symfony</a></li>
+<li><a class="reference external" href="http://framework.zend.com">Zend Framework</a></li>
+<li><a class="reference external" href="http://kohanaframework.org/index">Kohana</a></li>
+<li><a class="reference external" href="http://fuelphp.com/">FuelPHP</a></li>
+<li><a class="reference external" href="http://www.laravel.com/">Laravel</a></li>
+<li><a class="reference external" href="http://codeigniter.com/">CodeIgniter</a></li>
+</ul>
+</div>
+<div class="section" id="results">
+<h2>Results<a class="headerlink" href="#results" title="永久链接至标题">¶</a></h2>
+<div class="section" id="yii-yii-debug-false-version-yii-1-1-13">
+<h3>Yii (YII_DEBUG=false) Version yii-1.1.13<a class="headerlink" href="#yii-yii-debug-false-version-yii-1-1-13" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="x"># ab -n 2000 -c 10 http://localhost/bench/helloworld/yii/index.php?r=say/hello</span>
+<span class="x">This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;</span>
+<span class="x">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span>
+<span class="x">Licensed to The Apache Software Foundation, http://www.apache.org/</span>
+
+<span class="x">Benchmarking localhost (be patient)</span>
+
+
+<span class="x">Server Software:        Apache/2.2.22</span>
+<span class="x">Server Hostname:        localhost</span>
+<span class="x">Server Port:            80</span>
+
+<span class="x">Document Path:          /bench/helloworld/yii/index.php?r=say/hello</span>
+<span class="x">Document Length:        61 bytes</span>
+
+<span class="x">Concurrency Level:      10</span>
+<span class="x">Time taken for tests:   2.081 seconds</span>
+<span class="x">Complete requests:      2000</span>
+<span class="x">Failed requests:        0</span>
+<span class="x">Write errors:           0</span>
+<span class="x">Total transferred:      508000 bytes</span>
+<span class="x">HTML transferred:       122000 bytes</span>
+<span class="x">Requests per second:    961.28 [#/sec] (mean)</span>
+<span class="x">Time per request:       10.403 [ms] (mean)</span>
+<span class="x">Time per request:       1.040 [ms] (mean, across all concurrent requests)</span>
+<span class="x">Transfer rate:          238.44 [Kbytes/sec] received</span>
+
+<span class="x">Connection Times (ms)</span>
+<span class="x">              min  mean[+/-sd] median   max</span>
+<span class="x">Connect:        0   10   4.3      9      42</span>
+<span class="x">Processing:     0    0   1.0      0      24</span>
+<span class="x">Waiting:        0    0   0.8      0      17</span>
+<span class="x">Total:          3   10   4.3      9      42</span>
+
+<span class="x">Percentage of the requests served within a certain time (ms)</span>
+<span class="x">  50%      9</span>
+<span class="x">  66%     11</span>
+<span class="x">  75%     13</span>
+<span class="x">  80%     14</span>
+<span class="x">  90%     15</span>
+<span class="x">  95%     17</span>
+<span class="x">  98%     21</span>
+<span class="x">  99%     26</span>
+<span class="x"> 100%     42 (longest request)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="symfony-version-2-1-6">
+<h3>Symfony Version 2.1.6<a class="headerlink" href="#symfony-version-2-1-6" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="x"># ab -n 2000 -c 10 http://localhost/bench/Symfony/web/app.php/say/hello/</span>
+<span class="x">This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;</span>
+<span class="x">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span>
+<span class="x">Licensed to The Apache Software Foundation, http://www.apache.org/</span>
+
+<span class="x">Benchmarking localhost (be patient)</span>
+
+
+<span class="x">Server Software:        Apache/2.2.22</span>
+<span class="x">Server Hostname:        localhost</span>
+<span class="x">Server Port:            80</span>
+
+<span class="x">Document Path:          /bench/Symfony/web/app.php/say/hello/</span>
+<span class="x">Document Length:        16 bytes</span>
+
+<span class="x">Concurrency Level:      5</span>
+<span class="x">Time taken for tests:   1.848 seconds</span>
+<span class="x">Complete requests:      1000</span>
+<span class="x">Failed requests:        0</span>
+<span class="x">Write errors:           0</span>
+<span class="x">Total transferred:      249000 bytes</span>
+<span class="x">HTML transferred:       16000 bytes</span>
+<span class="x">Requests per second:    541.01 [#/sec] (mean)</span>
+<span class="x">Time per request:       9.242 [ms] (mean)</span>
+<span class="x">Time per request:       1.848 [ms] (mean, across all concurrent requests)</span>
+<span class="x">Transfer rate:          131.55 [Kbytes/sec] received</span>
+
+<span class="x">Connection Times (ms)</span>
+<span class="x">              min  mean[+/-sd] median   max</span>
+<span class="x">Connect:        0    9   4.8      8      61</span>
+<span class="x">Processing:     0    0   0.6      0      15</span>
+<span class="x">Waiting:        0    0   0.6      0      15</span>
+<span class="x">Total:          4    9   4.8      8      61</span>
+
+<span class="x">Percentage of the requests served within a certain time (ms)</span>
+<span class="x">  50%      8</span>
+<span class="x">  66%      9</span>
+<span class="x">  75%     11</span>
+<span class="x">  80%     12</span>
+<span class="x">  90%     15</span>
+<span class="x">  95%     18</span>
+<span class="x">  98%     22</span>
+<span class="x">  99%     30</span>
+<span class="x"> 100%     61 (longest request)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="codeigniter-2-1-0">
+<h3>CodeIgniter 2.1.0<a class="headerlink" href="#codeigniter-2-1-0" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="x"># ab -n 2000 -c 10 http://localhost/bench/codeigniter/index.php/say/hello</span>
+<span class="x">This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;</span>
+<span class="x">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span>
+<span class="x">Licensed to The Apache Software Foundation, http://www.apache.org/</span>
+
+<span class="x">Benchmarking localhost (be patient)</span>
+
+
+<span class="x">Server Software:        Apache/2.2.22</span>
+<span class="x">Server Hostname:        localhost</span>
+<span class="x">Server Port:            80</span>
+
+<span class="x">Document Path:          /bench/helloworld/codeigniter/index.php/say/hello</span>
+<span class="x">Document Length:        16 bytes</span>
+
+<span class="x">Concurrency Level:      10</span>
+<span class="x">Time taken for tests:   1.888 seconds</span>
+<span class="x">Complete requests:      2000</span>
+<span class="x">Failed requests:        0</span>
+<span class="x">Write errors:           0</span>
+<span class="x">Total transferred:      418000 bytes</span>
+<span class="x">HTML transferred:       32000 bytes</span>
+<span class="x">Requests per second:    1059.05 [#/sec] (mean)</span>
+<span class="x">Time per request:       9.442 [ms] (mean)</span>
+<span class="x">Time per request:       0.944 [ms] (mean, across all concurrent requests)</span>
+<span class="x">Transfer rate:          216.15 [Kbytes/sec] received</span>
+
+<span class="x">Connection Times (ms)</span>
+<span class="x">              min  mean[+/-sd] median   max</span>
+<span class="x">Connect:        0    9   4.1      9      33</span>
+<span class="x">Processing:     0    0   0.8      0      19</span>
+<span class="x">Waiting:        0    0   0.7      0      16</span>
+<span class="x">Total:          3    9   4.2      9      33</span>
+
+<span class="x">Percentage of the requests served within a certain time (ms)</span>
+<span class="x">  50%      9</span>
+<span class="x">  66%     10</span>
+<span class="x">  75%     11</span>
+<span class="x">  80%     12</span>
+<span class="x">  90%     14</span>
+<span class="x">  95%     16</span>
+<span class="x">  98%     21</span>
+<span class="x">  99%     24</span>
+<span class="x"> 100%     33 (longest request)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="kohana-3-2-0">
+<h3>Kohana 3.2.0<a class="headerlink" href="#kohana-3-2-0" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="x"># ab -n 2000 -c 10 http://localhost/bench/helloworld/kohana/index.php/say/hello</span>
+<span class="x">This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;</span>
+<span class="x">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span>
+<span class="x">Licensed to The Apache Software Foundation, http://www.apache.org/</span>
+
+<span class="x">Benchmarking localhost (be patient)</span>
+
+
+<span class="x">Server Software:        Apache/2.2.22</span>
+<span class="x">Server Hostname:        localhost</span>
+<span class="x">Server Port:            80</span>
+
+<span class="x">Document Path:          /bench/helloworld/kohana/index.php/say/hello</span>
+<span class="x">Document Length:        15 bytes</span>
+
+<span class="x">Concurrency Level:      10</span>
+<span class="x">Time taken for tests:   2.324 seconds</span>
+<span class="x">Complete requests:      2000</span>
+<span class="x">Failed requests:        0</span>
+<span class="x">Write errors:           0</span>
+<span class="x">Total transferred:      446446 bytes</span>
+<span class="x">HTML transferred:       30030 bytes</span>
+<span class="x">Requests per second:    860.59 [#/sec] (mean)</span>
+<span class="x">Time per request:       11.620 [ms] (mean)</span>
+<span class="x">Time per request:       1.162 [ms] (mean, across all concurrent requests)</span>
+<span class="x">Transfer rate:          187.60 [Kbytes/sec] received</span>
+
+<span class="x">Connection Times (ms)</span>
+<span class="x">              min  mean[+/-sd] median   max</span>
+<span class="x">Connect:        0   11   5.1     10      64</span>
+<span class="x">Processing:     0    0   1.9      0      39</span>
+<span class="x">Waiting:        0    0   1.4      0      35</span>
+<span class="x">Total:          3   11   5.3     11      64</span>
+
+<span class="x">Percentage of the requests served within a certain time (ms)</span>
+<span class="x">  50%     11</span>
+<span class="x">  66%     13</span>
+<span class="x">  75%     15</span>
+<span class="x">  80%     15</span>
+<span class="x">  90%     17</span>
+<span class="x">  95%     18</span>
+<span class="x">  98%     24</span>
+<span class="x">  99%     31</span>
+<span class="x"> 100%     64 (longest request)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fuel-1-2-1">
+<h3>Fuel 1.2.1<a class="headerlink" href="#fuel-1-2-1" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="x"># ab -n 2000 -c 10 http://localhost/bench/helloworld/fuel/public/say/hello</span>
+<span class="x">This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;</span>
+<span class="x">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span>
+<span class="x">Licensed to The Apache Software Foundation, http://www.apache.org/</span>
+
+<span class="x">Benchmarking localhost (be patient)</span>
+
+
+<span class="x">Server Software:        Apache/2.2.22</span>
+<span class="x">Server Hostname:        localhost</span>
+<span class="x">Server Port:            80</span>
+
+<span class="x">Document Path:          /bench/helloworld/fuel/public/say/hello</span>
+<span class="x">Document Length:        16 bytes</span>
+
+<span class="x">Concurrency Level:      10</span>
+<span class="x">Time taken for tests:   2.742 seconds</span>
+<span class="x">Complete requests:      2000</span>
+<span class="x">Failed requests:        0</span>
+<span class="x">Write errors:           0</span>
+<span class="x">Total transferred:      418000 bytes</span>
+<span class="x">HTML transferred:       32000 bytes</span>
+<span class="x">Requests per second:    729.42 [#/sec] (mean)</span>
+<span class="x">Time per request:       13.709 [ms] (mean)</span>
+<span class="x">Time per request:       1.371 [ms] (mean, across all concurrent requests)</span>
+<span class="x">Transfer rate:          148.88 [Kbytes/sec] received</span>
+
+<span class="x">Connection Times (ms)</span>
+<span class="x">              min  mean[+/-sd] median   max</span>
+<span class="x">Connect:        0   13   6.0     12      79</span>
+<span class="x">Processing:     0    0   1.3      0      22</span>
+<span class="x">Waiting:        0    0   0.8      0      21</span>
+<span class="x">Total:          4   14   6.1     13      80</span>
+
+<span class="x">Percentage of the requests served within a certain time (ms)</span>
+<span class="x">  50%     13</span>
+<span class="x">  66%     15</span>
+<span class="x">  75%     17</span>
+<span class="x">  80%     17</span>
+<span class="x">  90%     19</span>
+<span class="x">  95%     24</span>
+<span class="x">  98%     30</span>
+<span class="x">  99%     38</span>
+<span class="x"> 100%     80 (longest request)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="zend-framework-1-11-11">
+<h3>Zend Framework 1.11.11<a class="headerlink" href="#zend-framework-1-11-11" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="x"># ab -n 2000 -c 10 http://localhost/bench/helloworld/zendfw/public/index.php</span>
+<span class="x">This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;</span>
+<span class="x">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span>
+<span class="x">Licensed to The Apache Software Foundation, http://www.apache.org/</span>
+
+<span class="x">Benchmarking localhost (be patient)</span>
+
+
+<span class="x">Server Software:        Apache/2.2.22</span>
+<span class="x">Server Hostname:        localhost</span>
+<span class="x">Server Port:            80</span>
+
+<span class="x">Document Path:          /bench/helloworld/zendfw/public/index.php</span>
+<span class="x">Document Length:        16 bytes</span>
+
+<span class="x">Concurrency Level:      10</span>
+<span class="x">Time taken for tests:   5.641 seconds</span>
+<span class="x">Complete requests:      2000</span>
+<span class="x">Failed requests:        0</span>
+<span class="x">Write errors:           0</span>
+<span class="x">Total transferred:      418000 bytes</span>
+<span class="x">HTML transferred:       32000 bytes</span>
+<span class="x">Requests per second:    354.55 [#/sec] (mean)</span>
+<span class="x">Time per request:       28.205 [ms] (mean)</span>
+<span class="x">Time per request:       2.820 [ms] (mean, across all concurrent requests)</span>
+<span class="x">Transfer rate:          72.36 [Kbytes/sec] received</span>
+
+<span class="x">Connection Times (ms)</span>
+<span class="x">              min  mean[+/-sd] median   max</span>
+<span class="x">Connect:        0   27   9.6     25      89</span>
+<span class="x">Processing:     0    1   3.0      0      70</span>
+<span class="x">Waiting:        0    0   2.9      0      70</span>
+<span class="x">Total:          9   28   9.6     26      90</span>
+
+<span class="x">Percentage of the requests served within a certain time (ms)</span>
+<span class="x">  50%     26</span>
+<span class="x">  66%     28</span>
+<span class="x">  75%     32</span>
+<span class="x">  80%     34</span>
+<span class="x">  90%     41</span>
+<span class="x">  95%     46</span>
+<span class="x">  98%     55</span>
+<span class="x">  99%     62</span>
+<span class="x"> 100%     90 (longest request)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="laravel-3-2-5">
+<h3>Laravel 3.2.5<a class="headerlink" href="#laravel-3-2-5" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="x"># ab -n 2000 -c 10 http://localhost/bench/helloworld/laravel/public/say/hello</span>
+
+<span class="x">This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;</span>
+<span class="x">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span>
+<span class="x">Licensed to The Apache Software Foundation, http://www.apache.org/</span>
+
+<span class="x">Benchmarking localhost (be patient)</span>
+
+
+<span class="x">Server Software:        Apache/2.2.22</span>
+<span class="x">Server Hostname:        localhost</span>
+<span class="x">Server Port:            80</span>
+
+<span class="x">Document Path:          /bench/helloworld/laravel/public/say/hello</span>
+<span class="x">Document Length:        15 bytes</span>
+
+<span class="x">Concurrency Level:      10</span>
+<span class="x">Time taken for tests:   4.090 seconds</span>
+<span class="x">Complete requests:      2000</span>
+<span class="x">Failed requests:        0</span>
+<span class="x">Write errors:           0</span>
+<span class="x">Total transferred:      1665162 bytes</span>
+<span class="x">HTML transferred:       30045 bytes</span>
+<span class="x">Requests per second:    489.03 [#/sec] (mean)</span>
+<span class="x">Time per request:       20.449 [ms] (mean)</span>
+<span class="x">Time per request:       2.045 [ms] (mean, across all concurrent requests)</span>
+<span class="x">Transfer rate:          397.61 [Kbytes/sec] received</span>
+
+<span class="x">Connection Times (ms)</span>
+<span class="x">              min  mean[+/-sd] median   max</span>
+<span class="x">Connect:        0   20   7.6     19      92</span>
+<span class="x">Processing:     0    0   2.5      0      53</span>
+<span class="x">Waiting:        0    0   2.5      0      53</span>
+<span class="x">Total:          6   20   7.6     19      93</span>
+
+<span class="x">Percentage of the requests served within a certain time (ms)</span>
+<span class="x">  50%     19</span>
+<span class="x">  66%     21</span>
+<span class="x">  75%     23</span>
+<span class="x">  80%     24</span>
+<span class="x">  90%     29</span>
+<span class="x">  95%     34</span>
+<span class="x">  98%     42</span>
+<span class="x">  99%     48</span>
+<span class="x"> 100%     93 (longest request)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="phalcon-version-0-8-0">
+<h3>Phalcon Version 0.8.0<a class="headerlink" href="#phalcon-version-0-8-0" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="x"># ab -n 2000 -c 10 http://localhost/bench/helloworld/phalcon/index.php?_url=/say/hello</span>
+<span class="x">This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;</span>
+<span class="x">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span>
+<span class="x">Licensed to The Apache Software Foundation, http://www.apache.org/</span>
+
+<span class="x">Benchmarking localhost (be patient)</span>
+
+
+<span class="x">Server Software:        Apache/2.2.22</span>
+<span class="x">Server Hostname:        localhost</span>
+<span class="x">Server Port:            80</span>
+
+<span class="x">Document Path:          /bench/helloworld/phalcon/index.php?_url=/say/hello</span>
+<span class="x">Document Length:        16 bytes</span>
+
+<span class="x">Concurrency Level:      10</span>
+<span class="x">Time taken for tests:   0.789 seconds</span>
+<span class="x">Complete requests:      2000</span>
+<span class="x">Failed requests:        0</span>
+<span class="x">Write errors:           0</span>
+<span class="x">Total transferred:      418000 bytes</span>
+<span class="x">HTML transferred:       32000 bytes</span>
+<span class="x">Requests per second:    2535.82 [#/sec] (mean)</span>
+<span class="x">Time per request:       3.943 [ms] (mean)</span>
+<span class="x">Time per request:       0.394 [ms] (mean, across all concurrent requests)</span>
+<span class="x">Transfer rate:          517.56 [Kbytes/sec] received</span>
+
+<span class="x">Connection Times (ms)</span>
+<span class="x">              min  mean[+/-sd] median   max</span>
+<span class="x">Connect:        0    4   1.7      3      23</span>
+<span class="x">Processing:     0    0   0.2      0       6</span>
+<span class="x">Waiting:        0    0   0.2      0       6</span>
+<span class="x">Total:          2    4   1.7      3      23</span>
+
+<span class="x">Percentage of the requests served within a certain time (ms)</span>
+<span class="x">  50%      3</span>
+<span class="x">  66%      4</span>
+<span class="x">  75%      4</span>
+<span class="x">  80%      4</span>
+<span class="x">  90%      5</span>
+<span class="x">  95%      6</span>
+<span class="x">  98%      8</span>
+<span class="x">  99%     14</span>
+<span class="x"> 100%     23 (longest request)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="graphs">
+<h3>Graphs<a class="headerlink" href="#graphs" title="永久链接至标题">¶</a></h3>
+<p>The first graph shows how many requests per second each framework was able to accept. The second shows the average time across all concurrent requests.</p>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Framework');
+        data.addColumn('number', 'Requests per second');
+        data.addRows([
+            ['Zend', 354.55],
+            ['Laravel', 489.03],
+            ['Symfony', 541.01],
+            ['Fuel', 568.41],
+            ['Yii', 851.83],
+            ['Kohana', 860.59],
+            ['CodeIgniter', 1059.05],
+            ['Phalcon', 2535.82]
+        ]);
+
+        var options = {
+            title: 'Framework / Requests per second (#/sec) [more is better]',
+            colors: ['#3366CC'],
+            animation: {
+                duration: 0.5
+            },
+            fontSize: 12,
+            chartArea: {
+                width: '600px'
+            }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('rps_div'));
+        chart.draw(data, options);
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Framework');
+        data.addColumn('number', 'Time per Request');
+        data.addRows([
+            ['Zend', 2.820],
+            ['Laravel', 2.045],
+            ['Symfony', 1.848],
+            ['Fuel', 1.371],
+            ['Yii', 1.174],
+            ['Kohana', 1.162],
+            ['CodeIgniter', 0.944],
+            ['Phalcon', 0.394]
+        ]);
+
+        var options = {
+            title: 'Framework / Time per Request (mean, across all concurrent requests) [less is better]',
+            colors: ['#3366CC'],
+            fontSize: 11
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('tpr_div'));
+        chart.draw(data, options);
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Framework');
+        data.addColumn('number', 'Memory Usage (MB)');
+        data.addRows([
+            ['Zend', 1.75],
+            ['Symfony', 1.5],
+            ['Yii', 1.5],
+            ['Laravel', 1.25],
+            ['Kohana', 1.25],
+            ['CodeIgniter', 1.1],
+            ['Fuel', 1.0],
+            ['Phalcon', 0.75]
+        ]);
+
+        var options = {
+            title: 'Framework / Memory Usage (mean, megabytes per request) [less is better]',
+            colors: ['#3366CC'],
+            fontSize: 11
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('mpr_div'));
+        chart.draw(data, options);
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Framework');
+        data.addColumn('number', 'Number of included PHP files');
+        data.addRows([
+            ['Zend', 66],
+            ['Laravel', 46],
+            ['Kohana', 46],
+            ['Fuel', 30],
+            ['Yii', 27],
+            ['CodeIgniter', 23],
+            ['Symfony', 18],
+            ['Phalcon', 4]
+        ]);
+
+        var options = {
+            title: 'Framework / Number of included PHP files (mean, number on a single request) [less is better]',
+            colors: ['#3366CC'],
+            fontSize: 11
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('nfi_div'));
+        chart.draw(data, options);
+
+    }
+</script>
+<div align="center">
+    <div id="rps_div" style="width: 600px; height: 400px; position: relative; "><iframe name="Drawing_Frame_31166" id="Drawing_Frame_31166" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div></div></div>
+    <div id="tpr_div" style="width: 600px; height: 400px; position: relative; "><iframe name="Drawing_Frame_89467" id="Drawing_Frame_89467" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div></div></div>
+    <div id="nfi_div" style="width: 600px; height: 400px; position: relative; "><iframe name="Drawing_Frame_49746" id="Drawing_Frame_49746" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div></div></div>
+    <div id="mpr_div" style="width: 600px; height: 400px; position: relative; "><iframe name="Drawing_Frame_77939" id="Drawing_Frame_77939" width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div></div></div>
+</div></div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="永久链接至标题">¶</a></h2>
+<p>The compiled nature of Phalcon offers extraordinary performance that outperforms all other frameworks measured in these benchmarks.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="micro.html" title="Micro Benchmark"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="../benchmark.html" title="框架基准测试（Framework Benchmarks）"
+             >上一页</a> |</li>
+          <li class="right"><a href="../benchmark.html" >框架基准测试（Framework Benchmarks）</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+
+          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Except where otherwise noted, content on this site is licensed under the
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             最后更新日期是 Oct 21, 2014.
+            使用 <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; 版权所有 2014, Phalcon Team and contributors.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Donate to Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    or
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+      /*window.setTimeout(function(){
+        $('.gsc-search-button').css({
+          'background': '#f06715',
+          'padding': '2px',
+          'border': '0'
+        });
+      }, 1000)*/
+    });
+    </script>
+
+  </body>
+</html>

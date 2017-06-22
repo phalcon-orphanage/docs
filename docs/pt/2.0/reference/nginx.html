@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Notas de Instalação do Nginx &mdash; Phalcon 1.3.0 documentation</title>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="up" title="Instalação" href="install.html" />
+    <link rel="next" title="Notas de Instalação do Cherokee" href="cherokee.html" />
+    <link rel="prev" title="Notas de Instalação do Apache" href="apache.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="cherokee.html" title="Notas de Instalação do Cherokee"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="apache.html" title="Notas de Instalação do Apache"
+             accesskey="P">previous</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li>
+          <li><a href="install.html" accesskey="U">Instalação</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+                <hr>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Notas de Instalação do Nginx</a><ul>
+<li><a class="reference internal" href="#configurando-nginx-para-o-phalcon">Configurando Nginx para o Phalcon</a><ul>
+<li><a class="reference internal" href="#configuracao-basica">Configuração Básica</a></li>
+<li><a class="reference internal" href="#instancia-dedicada">Instância Dedicada</a></li>
+<li><a class="reference internal" href="#configuracao-por-host">Configuração por Host</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="apache.html" title="previous chapter">&lt; Notas de Instalação do Apache</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="cherokee.html" title="next chapter">Notas de Instalação do Cherokee &gt;</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/nginx.txt" rel="nofollow">Show Source</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="notas-de-instalacao-do-nginx">
+<h1>Notas de Instalação do Nginx<a class="headerlink" href="#notas-de-instalacao-do-nginx" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://wiki.nginx.org/Main">Nginx</a> é um servidor http e proxy reverso de alto desempenho, livre, de código aberto, e bem conhecido como um servidor proxy de IMAP/POP3. Diferente dos servidores tradicionais, <a class="reference external" href="http://wiki.nginx.org/Main">Nginx</a> não depende de threads para processar as requisições. Ao invés, utiliza uma arquitetura orientada a eventos(assíncrono) muito mais escalonável. Esta arquitetura utiliza pequenas quantidades de memória, e muito mais importante do que isso, utiliza porções de memória configuradas sob demanda.</p>
+<p>O <a class="reference external" href="http://php-fpm.org/">PHP-FPM</a> (FastCGI Process Manager) é normalmente utilizado para permitir o <a class="reference external" href="http://wiki.nginx.org/Main">Nginx</a> processar arquivos PHP. Hoje em dia, <a class="reference external" href="http://php-fpm.org/">PHP-FPM</a> vem com qualquer distribuição UNIX PHP. Phalcon + <a class="reference external" href="http://wiki.nginx.org/Main">Nginx</a> + <a class="reference external" href="http://php-fpm.org/">PHP-FPM</a>  provê um poderoso conjunto de ferramentas que oferece o máximo de desempenho para sua aplicação PHP.</p>
+<div class="section" id="configurando-nginx-para-o-phalcon">
+<h2>Configurando Nginx para o Phalcon<a class="headerlink" href="#configurando-nginx-para-o-phalcon" title="Permalink to this headline">¶</a></h2>
+<p>A seguir existem possíveis configurações que você pode utilizar para configurar o Phalcon com o nginx:</p>
+<div class="section" id="configuracao-basica">
+<h3>Configuração Básica<a class="headerlink" href="#configuracao-basica" title="Permalink to this headline">¶</a></h3>
+<p>Utilizando $_GET[&#8216;_url&#8217;] como fonte das URIs:</p>
+<div class="highlight-nginx"><div class="highlight"><pre><span class="k">server</span> <span class="p">{</span>
+
+    <span class="kn">listen</span>   <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">localhost.dev</span><span class="p">;</span>
+
+    <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+    <span class="kn">set</span> <span class="nv">$root_path</span> <span class="s">&#39;/var/www/phalcon/public&#39;</span><span class="p">;</span>
+    <span class="kn">root</span> <span class="nv">$root_path</span><span class="p">;</span>
+
+    <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">@rewrite</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">@rewrite</span> <span class="p">{</span>
+        <span class="kn">rewrite</span> <span class="s">^/(.*)</span>$ <span class="s">/index.php?_url=/</span><span class="nv">$1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php</span> <span class="p">{</span>
+        <span class="kn">fastcgi_pass</span> <span class="s">unix:/run/php-fpm/php-fpm.sock</span><span class="p">;</span>
+        <span class="kn">fastcgi_index</span> <span class="s">/index.php</span><span class="p">;</span>
+
+        <span class="kn">include</span> <span class="s">/etc/nginx/fastcgi_params</span><span class="p">;</span>
+
+        <span class="kn">fastcgi_split_path_info</span>       <span class="s">^(.+\.php)(/.+)</span>$<span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">PATH_INFO</span>       <span class="nv">$fastcgi_path_info</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">PATH_TRANSLATED</span> <span class="nv">$document_root$fastcgi_path_info</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">^/(css|img|js|flv|swf|download)/(.+)</span>$ <span class="p">{</span>
+        <span class="kn">root</span> <span class="nv">$root_path</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">/\.ht</span> <span class="p">{</span>
+        <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Utilizando $_SERVER[&#8216;REQUEST_URI&#8217;] como fonte das URIs:</p>
+<div class="highlight-nginx"><div class="highlight"><pre><span class="k">server</span> <span class="p">{</span>
+
+    <span class="kn">listen</span>   <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">localhost.dev</span><span class="p">;</span>
+
+    <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+    <span class="kn">set</span> <span class="nv">$root_path</span> <span class="s">&#39;/var/www/phalcon/public&#39;</span><span class="p">;</span>
+    <span class="kn">root</span> <span class="nv">$root_path</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.php</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
+            <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+            <span class="kn">fastcgi_split_path_info</span> <span class="s">^(.+\.php)(/.+)</span>$<span class="p">;</span>
+            <span class="kn">fastcgi_pass</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+            <span class="kn">fastcgi_index</span> <span class="s">index.php</span><span class="p">;</span>
+            <span class="kn">fastcgi_param</span>  <span class="s">SCRIPT_FILENAME</span>  <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+            <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">^/(css|img|js|flv|swf|download)/(.+)</span>$ <span class="p">{</span>
+        <span class="kn">root</span> <span class="nv">$root_path</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">/\.ht</span> <span class="p">{</span>
+        <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="instancia-dedicada">
+<h3>Instância Dedicada<a class="headerlink" href="#instancia-dedicada" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-nginx"><div class="highlight"><pre><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span>       <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span>  <span class="s">localhost</span><span class="p">;</span>
+
+    <span class="kn">charset</span>      <span class="s">utf-8</span><span class="p">;</span>
+
+    <span class="c1">#access_log  /var/log/nginx/host.access.log  main;</span>
+
+    <span class="kn">set</span> <span class="nv">$root_path</span> <span class="s">&#39;/srv/www/htdocs/phalcon-website/public&#39;</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">root</span>   <span class="nv">$root_path</span><span class="p">;</span>
+        <span class="kn">index</span>  <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+
+        <span class="c1"># if file exists return it right away</span>
+        <span class="kn">if</span> <span class="s">(-f</span> <span class="nv">$request_filename</span><span class="s">)</span> <span class="p">{</span>
+            <span class="kn">break</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1"># otherwise rewrite it</span>
+        <span class="kn">if</span> <span class="s">(!-e</span> <span class="nv">$request_filename</span><span class="s">)</span> <span class="p">{</span>
+            <span class="kn">rewrite</span> <span class="s">^(.+)</span>$ <span class="s">/index.php?_url=</span><span class="nv">$1</span> <span class="s">last</span><span class="p">;</span>
+            <span class="kn">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php</span> <span class="p">{</span>
+        <span class="c1"># try_files    $uri =404;</span>
+
+        <span class="kn">fastcgi_index</span>  <span class="s">/index.php</span><span class="p">;</span>
+        <span class="kn">fastcgi_pass</span>   <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+
+        <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
+        <span class="kn">fastcgi_split_path_info</span>       <span class="s">^(.+\.php)(/.+)</span>$<span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">PATH_INFO</span>       <span class="nv">$fastcgi_path_info</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">PATH_TRANSLATED</span> <span class="nv">$document_root$fastcgi_path_info</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">^/(css|img|js|flv|swf|download)/(.+)</span>$ <span class="p">{</span>
+        <span class="kn">root</span> <span class="nv">$root_path</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuracao-por-host">
+<h3>Configuração por Host<a class="headerlink" href="#configuracao-por-host" title="Permalink to this headline">¶</a></h3>
+<p>Esta segunda configuração permite você ter diferentes configurações por host:</p>
+<div class="highlight-nginx"><div class="highlight"><pre><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span>      <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">localhost</span><span class="p">;</span>
+    <span class="kn">set</span>         <span class="nv">$root_path</span> <span class="s">&#39;/var/www/</span><span class="nv">$host/public&#39;</span><span class="p">;</span>
+    <span class="kn">root</span>        <span class="nv">$root_path</span><span class="p">;</span>
+
+    <span class="kn">access_log</span>  <span class="s">/var/log/nginx/</span><span class="nv">$host-access.log</span><span class="p">;</span>
+    <span class="kn">error_log</span>   <span class="s">/var/log/nginx/</span><span class="nv">$host-error.log</span> <span class="s">error</span><span class="p">;</span>
+
+    <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+
+    <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">@rewrite</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">@rewrite</span> <span class="p">{</span>
+        <span class="kn">rewrite</span> <span class="s">^/(.*)</span>$ <span class="s">/index.php?_url=</span><span class="nv">$1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php</span> <span class="p">{</span>
+        <span class="c1"># try_files    $uri =404;</span>
+
+        <span class="kn">fastcgi_index</span>  <span class="s">/index.php</span><span class="p">;</span>
+        <span class="kn">fastcgi_pass</span>   <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+
+        <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
+        <span class="kn">fastcgi_split_path_info</span>       <span class="s">^(.+\.php)(/.+)</span>$<span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">PATH_INFO</span>       <span class="nv">$fastcgi_path_info</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">PATH_TRANSLATED</span> <span class="nv">$document_root$fastcgi_path_info</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">^/(css|img|js|flv|swf|download)/(.+)</span>$ <span class="p">{</span>
+        <span class="kn">root</span> <span class="nv">$root_path</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">/\.ht</span> <span class="p">{</span>
+        <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="cherokee.html" title="Notas de Instalação do Cherokee"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="apache.html" title="Notas de Instalação do Apache"
+             >previous</a> |</li>
+          <li class="right"><a href="install.html" >Instalação</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+
+          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Except where otherwise noted, content on this site is licensed under the
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Last updated on Oct 21, 2014.
+            Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team and contributors.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Donate to Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    or
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+      /*window.setTimeout(function(){
+        $('.gsc-search-button').css({
+          'background': '#f06715',
+          'padding': '2px',
+          'border': '0'
+        });
+      }, 1000)*/
+    });
+    </script>
+
+  </body>
+</html>

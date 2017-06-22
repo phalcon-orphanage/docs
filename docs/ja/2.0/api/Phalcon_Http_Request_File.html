@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Http\Request\File &mdash; Phalcon 1.3.1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.1 documentation" href="../index.html" />
+    <link rel="up" title="API Indice" href="index.html" />
+    <link rel="next" title="Class Phalcon\Http\Response" href="Phalcon_Http_Response.html" />
+    <link rel="prev" title="Class Phalcon\Http\Request\Exception" href="Phalcon_Http_Request_Exception.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Http_Response.html" title="Class Phalcon\Http\Response"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Http_Request_Exception.html" title="Class Phalcon\Http\Request\Exception"
+             accesskey="P">前へ</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Indice</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">目次</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Http\Request\File</strong></a><ul>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>前のトピックへ</h4>
+            <p class="topless"><a href="Phalcon_Http_Request_Exception.html" title="前の章へ">&lt; Class <strong>Phalcon\Http\Request\Exception</strong></a></p>
+            <h4>次のトピックへ</h4>
+            <p class="topless"><a href="Phalcon_Http_Response.html" title="次の章へ">Class <strong>Phalcon\Http\Response</strong> &gt;</a></p>
+            <h3>このページ</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/Phalcon_Http_Request_File.txt" rel="nofollow">ソースコードを表示</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="class-phalcon-http-request-file">
+<h1>Class <strong>Phalcon\Http\Request\File</strong><a class="headerlink" href="#class-phalcon-http-request-file" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p><em>extends</em> SplFileInfo</p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_Http_Request_FileInterface.html"><em>Phalcon\Http\Request\FileInterface</em></a></p>
+<p>Provides OO wrappers to the $_FILES superglobal</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">uploadAction</span><span class="p">()</span>
+    <span class="p">{</span>
+            <span class="c1">//Check if the user has uploaded files</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">hasFiles</span><span class="p">()</span> <span class="o">==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">//Print the real file names and their sizes</span>
+                    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getUploadedFiles</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">){</span>
+                            <span class="k">echo</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getSize</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+                    <span class="p">}</span>
+            <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>public  <strong>__construct</strong> (<em>array</em> $file)</p>
+<p>Phalcon\Http\Request\File constructor</p>
+<p>public <em>int</em>  <strong>getSize</strong> ()</p>
+<p>Returns the file size of the uploaded file</p>
+<p>public <em>string</em>  <strong>getName</strong> ()</p>
+<p>Returns the real name of the uploaded file</p>
+<p>public <em>string</em>  <strong>getTempName</strong> ()</p>
+<p>Returns the temporary name of the uploaded file</p>
+<p>public <em>string</em>  <strong>getType</strong> ()</p>
+<p>Returns the mime type reported by the browser This mime type is not completely secure, use getRealType() instead</p>
+<p>public <em>string</em>  <strong>getRealType</strong> ()</p>
+<p>Gets the real mime type of the upload file using finfo</p>
+<p>public <em>string</em>  <strong>getError</strong> ()</p>
+<p>Returns the error code</p>
+<p>public <em>string</em>  <strong>getKey</strong> ()</p>
+<p>Returns the file key</p>
+<p>public <em>boolean</em>  <strong>isUploadedFile</strong> ()</p>
+<p>Checks whether the file has been uploaded via Post.</p>
+<p>public <em>boolean</em>  <strong>moveTo</strong> (<em>string</em> $destination)</p>
+<p>Moves the temporary file to a destination within the application</p>
+<p>public static  <strong>__set_state</strong> (<em>unknown</em> $params)</p>
+<p>...</p>
+<p>public <em>string</em>  <strong>getExtension</strong> ()</p>
+<p>Returns the file extension</p>
+<p>public  <strong>getPath</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getFilename</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getBasename</strong> ([<em>unknown</em> $suffix]) inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getPathname</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getPerms</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getInode</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getOwner</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getGroup</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getATime</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getMTime</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getCTime</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>isWritable</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>isReadable</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>isExecutable</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>isFile</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>isDir</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>isLink</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getLinkTarget</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getRealPath</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getFileInfo</strong> ([<em>unknown</em> $class_name]) inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>getPathInfo</strong> ([<em>unknown</em> $class_name]) inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>openFile</strong> ([<em>unknown</em> $open_mode], [<em>unknown</em> $use_include_path], [<em>unknown</em> $context]) inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>setFileClass</strong> ([<em>unknown</em> $class_name]) inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>setInfoClass</strong> ([<em>unknown</em> $class_name]) inherited from SplFileInfo</p>
+<p>...</p>
+<p>final public  <strong>_bad_state_ex</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+<p>public  <strong>__toString</strong> () inherited from SplFileInfo</p>
+<p>...</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Phalcon_Http_Response.html" title="Class Phalcon\Http\Response"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="Phalcon_Http_Request_Exception.html" title="Class Phalcon\Http\Request\Exception"
+             >前へ</a> |</li>
+          <li class="right"><a href="index.html" >API Indice</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+
+          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Except where otherwise noted, content on this site is licensed under the
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             最終更新: Oct 21, 2014
+            このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3 で生成しました。
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team and contributors.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Donate to Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    or
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

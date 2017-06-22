@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>インストール &mdash; Phalcon 1.3.1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.1 documentation" href="../index.html" />
+    <link rel="next" title="XAMPPへのインストール" href="xampp.html" />
+    <link rel="prev" title="マイクロ ベンチマーク" href="benchmark/micro.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="xampp.html" title="XAMPPへのインストール"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="benchmark/micro.html" title="マイクロ ベンチマーク"
+             accesskey="P">前へ</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+            <h3><a href="../index.html">目次</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">インストール</a><ul>
+<li><a class="reference internal" href="#windows">Windows</a><ul>
+<li><a class="reference internal" href="#id3">関連ガイド</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#linux-solaris-mac">Linux/Solaris/Mac</a><ul>
+<li><a class="reference internal" href="#id4">必要条件</a></li>
+<li><a class="reference internal" href="#id5">コンパイル</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#freebsd">FreeBSD</a></li>
+<li><a class="reference internal" href="#id6">インストール ノート</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>前のトピックへ</h4>
+            <p class="topless"><a href="benchmark/micro.html" title="前の章へ">&lt; マイクロ ベンチマーク</a></p>
+            <h4>次のトピックへ</h4>
+            <p class="topless"><a href="xampp.html" title="次の章へ">XAMPPへのインストール &gt;</a></p>
+            <h3>このページ</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/install.txt" rel="nofollow">ソースコードを表示</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="id1">
+<h1>インストール<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>PHP拡張モジュールは、従来のPHPベースのライブラリやフレームワークとは若干異なるインストール方法をとります。
+あなたのシステム向けのバイナリパッケージをダウンロードするか、ソースコードからビルドする２つの方法があります。</p>
+<blockquote class="highlights">
+<div>PhalconはPHP 5.3.1以降でコンパイルできますが、古いPHPはメモリリークを引き起こすバグがあるため、少なくとも PHP 5.3.11以降を使用することを推奨しています。</div></blockquote>
+<blockquote class="highlights">
+<div>PHP 5.3.9 以前のものには、いくつかのセキュリティ的な欠陥があり、商用環境のWEBサイトでの使用は推奨しておりません。 <a class="reference external" href="http://www.infoworld.com/d/security/php-539-fixes-hash-collision-dos-vulnerability-183947">詳細はこちら</a></div></blockquote>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Windows上でPhalconを使用するには、DLLライブラリをダウンロードします。そして php.iniを編集し、最後に次の行を追加します。</p>
+<blockquote>
+<div>extension=php_phalcon.dll</div></blockquote>
+<p>最後にWEBサーバーを再起動します。</p>
+<p>次のスクリーンキャストは、Windows上にPhalconをインストールするステップバイステップガイドです。</p>
+<div align="center"><iframe src="http://player.vimeo.com/video/40265988" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div><div class="section" id="id3">
+<h3>関連ガイド<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="xampp.html">XAMPPへのインストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wamp.html">WAMPへのインストール</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="linux-solaris-mac">
+<h2>Linux/Solaris/Mac<a class="headerlink" href="#linux-solaris-mac" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Linux/Solaris/Mac の環境では、簡単に拡張モジュールをソースコードからコンパイルしてインストールすることができます。</p>
+<div class="section" id="id4">
+<h3>必要条件<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>必要となるパッケージは次の通りです：</p>
+<ul class="simple">
+<li>PHP 5.3.x/5.4.x/5.5.x development resources</li>
+<li>GCC compiler (Linux/Solaris) or Xcode (Mac)</li>
+<li>Git (if not already installed in your system - unless you download the package from GitHub and upload it on your server via FTP/SFTP)</li>
+</ul>
+<p>一般的なプラットフォームにおける具体的なパッケージ:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#Ubuntu</span>
+sudo apt-get install git-core gcc autoconf
+sudo apt-get install php5-dev php5-mysql
+
+<span class="c">#Suse</span>
+sudo yast -i gcc make autoconf2.13
+sudo yast -i php5-devel php5-pear php5-mysql
+
+<span class="c">#CentOS/RedHat</span>
+sudo yum install gcc make
+sudo yum install php-devel
+
+<span class="c">#Solaris</span>
+pkg install gcc-45
+pkg install php-53 apache-php53
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>コンパイル<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>拡張モジュールの作成：</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone git://github.com/phalcon/cphalcon.git
+<span class="nb">cd </span>cphalcon/build
+sudo ./install
+</pre></div>
+</div>
+<p>php.iniに拡張モジュールを追加します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">extension</span><span class="o">=</span>phalcon.so
+</pre></div>
+</div>
+<p>最後にWEBサーバーを再起動します。</p>
+<p>Phalconは自動的にシステムのアーキテクチャを判定しますが、指定したアーキテクチャ向けにコンパイルすることを強制することができます。</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo ./install 32bits
+sudo ./install 64bits
+sudo ./install safe
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="freebsd">
+<h2>FreeBSD<a class="headerlink" href="#freebsd" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>FreeBSDではportを利用することができます。インストールするには、次のシンプルなコマンドを叩くだけです。</p>
+<div class="highlight-bash"><div class="highlight"><pre>pkg_add -r phalcon
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-O2 -fno-delete-null-pointer-checks&quot;</span>
+<span class="nb">cd</span> /usr/ports/www/phalcon <span class="o">&amp;&amp;</span> make install clean
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>インストール ノート<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>各WEBサーバーにおけるインストールノート</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="apache.html">Apache インストール ノート</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nginx.html">Nginx インストール ノート</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cherokee.html">Cherokee インストール ノート</a></li>
+<li class="toctree-l1"><a class="reference internal" href="built-in.html">PHP ビルトインサーバーの利用</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="xampp.html" title="XAMPPへのインストール"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="benchmark/micro.html" title="マイクロ ベンチマーク"
+             >前へ</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Found a typo or an error? Want to improve this document? The documentation sources are available on <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Need support or have questions? Check our <a href="http://phalconphp.com/support">Support Page</a></p>
+
+          <p>The Phalcon PHP Framework is released under the <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Except where otherwise noted, content on this site is licensed under the
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             最終更新: Oct 21, 2014
+            このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3 で生成しました。
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team and contributors.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Donate to Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    or
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

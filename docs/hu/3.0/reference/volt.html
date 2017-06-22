@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Volt: Template Engine &mdash; Phalcon 3.1.1 documentation (English)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="https://static.phalconphp.com/www/images/favicon.ico"/>
+    <link rel="top" title="Phalcon 3.1.1 documentation" href="../index.html" />
+    <link rel="next" title="MVC Applications" href="applications.html" />
+    <link rel="prev" title="Assets Management" href="assets.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="applications.html" title="MVC Applications"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="assets.html" title="Assets Management"
+             accesskey="P">previous</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 3.1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Volt: Template Engine</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#activating-volt">Activating Volt</a></li>
+<li><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
+<li><a class="reference internal" href="#variables">Variables</a></li>
+<li><a class="reference internal" href="#filters">Filters</a></li>
+<li><a class="reference internal" href="#comments">Comments</a></li>
+<li><a class="reference internal" href="#list-of-control-structures">List of Control Structures</a><ul>
+<li><a class="reference internal" href="#for">For</a></li>
+<li><a class="reference internal" href="#loop-controls">Loop Controls</a></li>
+<li><a class="reference internal" href="#if">If</a></li>
+<li><a class="reference internal" href="#loop-context">Loop Context</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#assignments">Assignments</a></li>
+<li><a class="reference internal" href="#expressions">Expressions</a><ul>
+<li><a class="reference internal" href="#literals">Literals</a></li>
+<li><a class="reference internal" href="#arrays">Arrays</a></li>
+<li><a class="reference internal" href="#math">Math</a></li>
+<li><a class="reference internal" href="#comparisons">Comparisons</a></li>
+<li><a class="reference internal" href="#logic">Logic</a></li>
+<li><a class="reference internal" href="#other-operators">Other Operators</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tests">Tests</a></li>
+<li><a class="reference internal" href="#macros">Macros</a></li>
+<li><a class="reference internal" href="#using-tag-helpers">Using Tag Helpers</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#view-integration">View Integration</a><ul>
+<li><a class="reference internal" href="#include">Include</a></li>
+<li><a class="reference internal" href="#partial-vs-include">Partial vs Include</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#template-inheritance">Template Inheritance</a><ul>
+<li><a class="reference internal" href="#multiple-inheritance">Multiple Inheritance</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#autoescape-mode">Autoescape mode</a></li>
+<li><a class="reference internal" href="#extending-volt">Extending Volt</a><ul>
+<li><a class="reference internal" href="#id1">Functions</a></li>
+<li><a class="reference internal" href="#id2">Filters</a></li>
+<li><a class="reference internal" href="#extensions">Extensions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#caching-view-fragments">Caching view fragments</a></li>
+<li><a class="reference internal" href="#inject-services-into-a-template">Inject Services into a Template</a></li>
+<li><a class="reference internal" href="#stand-alone-component">Stand-alone component</a></li>
+<li><a class="reference internal" href="#external-resources">External Resources</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="assets.html" title="previous chapter">&lt; Assets Management</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="applications.html" title="next chapter">MVC Applications &gt;</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/volt.txt" rel="nofollow">Show Source</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="volt-template-engine">
+<h1>Volt: Template Engine<a class="headerlink" href="#volt-template-engine" title="Permalink to this headline">¶</a></h1>
+<p>Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of
+helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon,
+just as you can use it as a stand-alone component in your applications.</p>
+<div class="figure align-center">
+<img alt="../_images/volt.jpg" src="../_images/volt.jpg" />
+</div>
+<p>Volt is inspired by <a class="reference external" href="http://jinja.pocoo.org/">Jinja</a>, originally created by <a class="reference external" href="https://github.com/mitsuhiko">Armin Ronacher</a>. Therefore many developers will be in familiar
+territory using the same syntax they have been using with similar template engines. Volt&#8217;s syntax and features
+have been enhanced with more elements and of course with the performance that developers have been
+accustomed to while working with Phalcon.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# app/views/products/show.volt #}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">last_products</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">product</span> <span class="k">in</span> <span class="nv">products</span> <span class="cp">%}</span>
+    * Name: <span class="cp">{{</span> <span class="nv">product.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">product.status</span> <span class="o">===</span> <span class="s2">&quot;Active&quot;</span> <span class="cp">%}</span>
+       Price: <span class="cp">{{</span> <span class="nv">product.price</span> <span class="o">+</span> <span class="nv">product.taxes</span><span class="o">/</span><span class="m">100</span> <span class="cp">}}</span>
+    <span class="cp">{%</span> <span class="k">endif</span>  <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endfor</span>  <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="activating-volt">
+<h2>Activating Volt<a class="headerlink" href="#activating-volt" title="Permalink to this headline">¶</a></h2>
+<p>As with other templating engines, you may register Volt in the view component, using a new extension or
+reusing the standard .phtml:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\View\Engine\Volt</span><span class="p">;</span>
+
+<span class="c1">// Register Volt as a service</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;voltService&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$di</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$volt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Volt</span><span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$di</span><span class="p">);</span>
+
+        <span class="nv">$volt</span><span class="o">-&gt;</span><span class="na">setOptions</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;compiledPath&quot;</span>      <span class="o">=&gt;</span> <span class="s2">&quot;../app/compiled-templates/&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;compiledExtension&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;.compiled&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$volt</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// Register Volt as template engine</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;view&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
+
+        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s2">&quot;../app/views/&quot;</span><span class="p">);</span>
+
+        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;.volt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;voltService&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Use the standard &#8221;.phtml&#8221; extension:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;.phtml&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;voltService&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>You don&#8217;t have to specify the Volt Service in the DI; you can also use the Volt engine with the default settings:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;.volt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Phalcon</span><span class="se">\\</span><span class="s2">Mvc</span><span class="se">\\</span><span class="s2">View</span><span class="se">\\</span><span class="s2">Engine</span><span class="se">\\</span><span class="s2">Volt&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>If you do not want to reuse Volt as a service, you can pass an anonymous function to register the engine instead of a service name:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\View\Engine\Volt</span><span class="p">;</span>
+
+<span class="c1">// Register Volt as template engine with an anonymous function</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;view&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\View</span><span class="p">();</span>
+
+        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s2">&quot;../app/views/&quot;</span><span class="p">);</span>
+
+        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;.volt&quot;</span> <span class="o">=&gt;</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$di</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$volt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Volt</span><span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$di</span><span class="p">);</span>
+
+                    <span class="c1">// Set some options here</span>
+
+                    <span class="k">return</span> <span class="nv">$volt</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The following options are available in Volt:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="78%" />
+<col width="6%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">compiledPath</span></code></td>
+<td>A writable path where the compiled PHP templates will be placed</td>
+<td>./</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">compiledExtension</span></code></td>
+<td>An additional extension appended to the compiled PHP file</td>
+<td>.php</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">compiledSeparator</span></code></td>
+<td>Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory</td>
+<td>%%</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">stat</span></code></td>
+<td>Whether Phalcon must check if exists differences between the template file and its compiled path</td>
+<td>true</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">compileAlways</span></code></td>
+<td>Tell Volt if the templates must be compiled in each request or only when they change</td>
+<td>false</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">prefix</span></code></td>
+<td>Allows to prepend a prefix to the templates in the compilation path</td>
+<td>null</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">autoescape</span></code></td>
+<td>Enables globally autoescape of HTML</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p>The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path,
+an anonymous function can be used to generate it, this function receives the relative path to the template in the
+views directory. The following examples show how to change the compilation path dynamically:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Just append the .php extension to the template path</span>
+<span class="c1">// leaving the compiled templates in the same directory</span>
+<span class="nv">$volt</span><span class="o">-&gt;</span><span class="na">setOptions</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;compiledPath&quot;</span> <span class="o">=&gt;</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$templatePath</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$templatePath</span> <span class="o">.</span> <span class="s2">&quot;.php&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Recursively create the same structure in another directory</span>
+<span class="nv">$volt</span><span class="o">-&gt;</span><span class="na">setOptions</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;compiledPath&quot;</span> <span class="o">=&gt;</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$templatePath</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$dirName</span> <span class="o">=</span> <span class="nb">dirname</span><span class="p">(</span><span class="nv">$templatePath</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_dir</span><span class="p">(</span><span class="s2">&quot;cache/&quot;</span> <span class="o">.</span> <span class="nv">$dirName</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nb">mkdir</span><span class="p">(</span><span class="s2">&quot;cache/&quot;</span> <span class="o">.</span> <span class="nv">$dirName</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="s2">&quot;cache/&quot;</span> <span class="o">.</span> <span class="nv">$dirName</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span> <span class="nv">$templatePath</span> <span class="o">.</span> <span class="s2">&quot;.php&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="basic-usage">
+<h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<p>A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into
+Volt mode. <code class="code docutils literal"><span class="pre">{%</span> <span class="pre">...</span> <span class="pre">%}</span></code> is used to execute statements such as for-loops or assign values and <code class="code docutils literal"><span class="pre">{{</span> <span class="pre">...</span> <span class="pre">}}</span></code>,
+prints the result of an expression to the template.</p>
+<p>Below is a minimal template that illustrates a few basics:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# app/views/posts/show.phtml #}</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span><span class="cp">{{</span> <span class="nv">title</span> <span class="cp">}}</span> - An example blog<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">show_navigation</span> <span class="cp">%}</span>
+            <span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;navigation&quot;</span><span class="nt">&gt;</span>
+                <span class="cp">{%</span> <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">menu</span> <span class="cp">%}</span>
+                    <span class="nt">&lt;li&gt;</span>
+                        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">item.href</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+                            <span class="cp">{{</span> <span class="nv">item.caption</span> <span class="cp">}}</span>
+                        <span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/li&gt;</span>
+                <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+            <span class="nt">&lt;/ul&gt;</span>
+        <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+        <span class="nt">&lt;h1&gt;</span><span class="cp">{{</span> <span class="nv">post.title</span> <span class="cp">}}</span><span class="nt">&lt;/h1&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+            <span class="cp">{{</span> <span class="nv">post.content</span> <span class="cp">}}</span>
+        <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>Using <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> you can pass variables from the controller to the views.
+In the above example, four variables were passed to the view: <code class="code docutils literal"><span class="pre">show_navigation</span></code>, <code class="code docutils literal"><span class="pre">menu</span></code>, <code class="code docutils literal"><span class="pre">title</span></code> and <code class="code docutils literal"><span class="pre">post</span></code>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$post</span> <span class="o">=</span> <span class="nx">Post</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+        <span class="nv">$menu</span> <span class="o">=</span> <span class="nx">Menu</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">show_navigation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">menu</span>            <span class="o">=</span> <span class="nv">$menu</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">title</span>           <span class="o">=</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">post</span>            <span class="o">=</span> <span class="nv">$post</span><span class="p">;</span>
+
+        <span class="c1">// Or...</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;show_navigation&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;menu&quot;</span><span class="p">,</span>            <span class="nv">$menu</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span>           <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;post&quot;</span><span class="p">,</span>            <span class="nv">$post</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+<p>Object variables may have attributes which can be accessed using the syntax: <code class="code docutils literal"><span class="pre">foo.bar</span></code>.
+If you are passing arrays, you have to use the square bracket syntax: <code class="code docutils literal"><span class="pre">foo['bar']</span></code></p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="nv">post.title</span> <span class="cp">}}</span><span class="x"> </span><span class="c">{# for $post-&gt;title #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="nv">post</span><span class="o">[</span><span class="s1">&#39;title&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x"> </span><span class="c">{# for $post[&#39;title&#39;] #}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filters">
+<h2>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h2>
+<p>Variables can be formatted or modified using filters. The pipe operator <code class="code docutils literal"><span class="pre">|</span></code> is used to apply filters to
+variables:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="nv">post.title</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="nv">post.content</span><span class="o">|</span><span class="nf">striptags</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="nv">name</span><span class="o">|</span><span class="nf">capitalize</span><span class="o">|</span><span class="nf">trim</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>The following is the list of available built-in filters in Volt:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Filter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">e</span></code></td>
+<td>Applies <code class="code docutils literal"><span class="pre">Phalcon\Escaper-&gt;escapeHtml()</span></code> to the value</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">escape</span></code></td>
+<td>Applies <code class="code docutils literal"><span class="pre">Phalcon\Escaper-&gt;escapeHtml()</span></code> to the value</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">escape_css</span></code></td>
+<td>Applies <code class="code docutils literal"><span class="pre">Phalcon\Escaper-&gt;escapeCss()</span></code> to the value</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">escape_js</span></code></td>
+<td>Applies <code class="code docutils literal"><span class="pre">Phalcon\Escaper-&gt;escapeJs()</span></code> to the value</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">escape_attr</span></code></td>
+<td>Applies <code class="code docutils literal"><span class="pre">Phalcon\Escaper-&gt;escapeHtmlAttr()</span></code> to the value</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">trim</span></code></td>
+<td>Applies the <a class="reference external" href="http://php.net/manual/en/function.trim.php">trim</a> PHP function to the value. Removing extra spaces</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">left_trim</span></code></td>
+<td>Applies the <a class="reference external" href="http://php.net/manual/en/function.ltrim.php">ltrim</a> PHP function to the value. Removing extra spaces</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">right_trim</span></code></td>
+<td>Applies the <a class="reference external" href="http://php.net/manual/en/function.rtrim.php">rtrim</a> PHP function to the value. Removing extra spaces</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">striptags</span></code></td>
+<td>Applies the <a class="reference external" href="http://php.net/manual/en/function.striptags.php">striptags</a> PHP function to the value. Removing HTML tags</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">slashes</span></code></td>
+<td>Applies the <a class="reference external" href="http://php.net/manual/en/function.slashes.php">slashes</a> PHP function to the value. Escaping values</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">stripslashes</span></code></td>
+<td>Applies the <a class="reference external" href="http://php.net/manual/en/function.stripslashes.php">stripslashes</a> PHP function to the value. Removing escaped quotes</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">capitalize</span></code></td>
+<td>Capitalizes a string by applying the <a class="reference external" href="http://php.net/manual/en/function.ucwords.php">ucwords</a> PHP function to the value</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">lower</span></code></td>
+<td>Change the case of a string to lowercase</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">upper</span></code></td>
+<td>Change the case of a string to uppercase</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">length</span></code></td>
+<td>Counts the string length or how many items are in an array or object</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">nl2br</span></code></td>
+<td>Changes newlines \n by line breaks (&lt;br /&gt;). Uses the PHP function <a class="reference external" href="http://php.net/manual/en/function.nl2br.php">nl2br</a></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">sort</span></code></td>
+<td>Sorts an array using the PHP function <a class="reference external" href="http://php.net/manual/en/function.asort.php">asort</a></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">keys</span></code></td>
+<td>Returns the array keys using <a class="reference external" href="http://php.net/manual/en/function.array-keys.php">array_keys</a></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">join</span></code></td>
+<td>Joins the array parts using a separator <a class="reference external" href="http://php.net/manual/en/function.join.php">join</a></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">format</span></code></td>
+<td>Formats a string using <a class="reference external" href="http://php.net/manual/en/function.sprintf.php">sprintf</a>.</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">json_encode</span></code></td>
+<td>Converts a value into its <a class="reference external" href="http://php.net/manual/en/function.json-encode.php">JSON</a> representation</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">json_decode</span></code></td>
+<td>Converts a value from its <a class="reference external" href="http://php.net/manual/en/function.json-encode.php">JSON</a> representation to a PHP representation</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">abs</span></code></td>
+<td>Applies the <a class="reference external" href="http://php.net/manual/en/function.abs.php">abs</a> PHP function to a value.</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">url_encode</span></code></td>
+<td>Applies the <a class="reference external" href="http://php.net/manual/en/function.urlencode.php">urlencode</a> PHP function to the value</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">default</span></code></td>
+<td>Sets a default value in case that the evaluated expression is empty
+(is not set or evaluates to a falsy value)</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">convert_encoding</span></code></td>
+<td>Converts a string from one charset to another</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="c">{# e or escape filter #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;&lt;h1&gt;Hello&lt;h1&gt;&quot;</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;&lt;h1&gt;Hello&lt;h1&gt;&quot;</span><span class="o">|</span><span class="nf">escape</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="c">{# trim filter #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;   hello   &quot;</span><span class="o">|</span><span class="nf">trim</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="c">{# striptags filter #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;&lt;h1&gt;Hello&lt;h1&gt;&quot;</span><span class="o">|</span><span class="nf">striptags</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="c">{# slashes filter #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;&#39;this is a string&#39;&quot;</span><span class="o">|</span><span class="nf">slashes</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="c">{# stripslashes filter #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;\&#39;this is a string\&#39;&quot;</span><span class="o">|</span><span class="nf">stripslashes</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="c">{# capitalize filter #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;hello&quot;</span><span class="o">|</span><span class="nf">capitalize</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="c">{# lower filter #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;HELLO&quot;</span><span class="o">|</span><span class="nf">lower</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="c">{# upper filter #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;hello&quot;</span><span class="o">|</span><span class="nf">upper</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="c">{# length filter #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;robots&quot;</span><span class="o">|</span><span class="nf">length</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="o">[</span><span class="m">1</span><span class="o">,</span> <span class="m">2</span><span class="o">,</span> <span class="m">3</span><span class="o">]|</span><span class="nf">length</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="c">{# nl2br filter #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;some\ntext&quot;</span><span class="o">|</span><span class="nf">nl2br</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="c">{# sort filter #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">sorted</span> <span class="o">=</span> <span class="o">[</span><span class="m">3</span><span class="o">,</span> <span class="m">1</span><span class="o">,</span> <span class="m">2</span><span class="o">]|</span><span class="nf">sort</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="c">{# keys filter #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">keys</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;first&#39;</span><span class="o">:</span> <span class="m">1</span><span class="o">,</span> <span class="s1">&#39;second&#39;</span><span class="o">:</span> <span class="m">2</span><span class="o">,</span> <span class="s1">&#39;third&#39;</span><span class="o">:</span> <span class="m">3</span><span class="o">]|</span><span class="nf">keys</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="c">{# join filter #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">joined</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span><span class="p">..</span><span class="s2">&quot;z&quot;</span><span class="o">|</span><span class="nf">join</span><span class="o">(</span><span class="s2">&quot;,&quot;</span><span class="o">)</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="c">{# format filter #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;My real name is %s&quot;</span><span class="o">|</span><span class="nf">format</span><span class="o">(</span><span class="nv">name</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="c">{# json_encode filter #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">encoded</span> <span class="o">=</span> <span class="nv">robots</span><span class="o">|</span><span class="nf">json_encode</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="c">{# json_decode filter #}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">decoded</span> <span class="o">=</span> <span class="s1">&#39;{&quot;one&quot;:1,&quot;two&quot;:2,&quot;three&quot;:3}&#39;</span><span class="o">|</span><span class="nf">json_decode</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="c">{# url_encode filter #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="nv">post.permanent_link</span><span class="o">|</span><span class="nf">url_encode</span> <span class="cp">}}</span><span class="x"></span>
+
+<span class="c">{# convert_encoding filter #}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;désolé&quot;</span><span class="o">|</span><span class="nf">convert_encoding</span><span class="o">(</span><span class="s1">&#39;utf8&#39;</span><span class="o">,</span> <span class="s1">&#39;latin1&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
+<p>Comments may also be added to a template using the <code class="code docutils literal"><span class="pre">{#</span> <span class="pre">...</span> <span class="pre">#}</span></code> delimiters. All text inside them is just ignored in the final output:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="c">{# note: this is a comment</span>
+<span class="c">    {% set price = 100; %}</span>
+<span class="c">#}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-of-control-structures">
+<h2>List of Control Structures<a class="headerlink" href="#list-of-control-structures" title="Permalink to this headline">¶</a></h2>
+<p>Volt provides a set of basic but powerful control structures for use in templates:</p>
+<div class="section" id="for">
+<h3>For<a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h3>
+<p>Loop over each item in a sequence. The following example shows how to traverse a set of &#8220;robots&#8221; and print his/her name:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>Robots<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;ul&gt;</span>
+    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">robot</span> <span class="k">in</span> <span class="nv">robots</span> <span class="cp">%}</span>
+        <span class="nt">&lt;li&gt;</span>
+            <span class="cp">{{</span> <span class="nv">robot.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span>
+        <span class="nt">&lt;/li&gt;</span>
+    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+<p>for-loops can also be nested:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>Robots<span class="nt">&lt;/h1&gt;</span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">robot</span> <span class="k">in</span> <span class="nv">robots</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">part</span> <span class="k">in</span> <span class="nv">robot.parts</span> <span class="cp">%}</span>
+        Robot: <span class="cp">{{</span> <span class="nv">robot.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span> Part: <span class="cp">{{</span> <span class="nv">part.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span> <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>You can get the element &#8220;keys&#8221; as in the PHP counterpart using the following syntax:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">set</span> <span class="nv">numbers</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;one&#39;</span><span class="o">:</span> <span class="m">1</span><span class="o">,</span> <span class="s1">&#39;two&#39;</span><span class="o">:</span> <span class="m">2</span><span class="o">,</span> <span class="s1">&#39;three&#39;</span><span class="o">:</span> <span class="m">3</span><span class="o">]</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">name</span><span class="o">,</span> <span class="nv">value</span> <span class="k">in</span> <span class="nv">numbers</span> <span class="cp">%}</span>
+    Name: <span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span> Value: <span class="cp">{{</span> <span class="nv">value</span> <span class="cp">}}</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>An &#8220;if&#8221; evaluation can be optionally set:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">set</span> <span class="nv">numbers</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;one&#39;</span><span class="o">:</span> <span class="m">1</span><span class="o">,</span> <span class="s1">&#39;two&#39;</span><span class="o">:</span> <span class="m">2</span><span class="o">,</span> <span class="s1">&#39;three&#39;</span><span class="o">:</span> <span class="m">3</span><span class="o">]</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">value</span> <span class="k">in</span> <span class="nv">numbers</span> <span class="k">if</span> <span class="nv">value</span> <span class="o">&lt;</span> <span class="m">2</span> <span class="cp">%}</span>
+    Value: <span class="cp">{{</span> <span class="nv">value</span> <span class="cp">}}</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">name</span><span class="o">,</span> <span class="nv">value</span> <span class="k">in</span> <span class="nv">numbers</span> <span class="k">if</span> <span class="nv">name</span> <span class="p">!</span><span class="o">==</span> <span class="s1">&#39;two&#39;</span> <span class="cp">%}</span>
+    Name: <span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span> Value: <span class="cp">{{</span> <span class="nv">value</span> <span class="cp">}}</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>If an &#8216;else&#8217; is defined inside the &#8216;for&#8217;, it will be executed if the expression in the iterator result in zero iterations:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>Robots<span class="nt">&lt;/h1&gt;</span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">robot</span> <span class="k">in</span> <span class="nv">robots</span> <span class="cp">%}</span>
+    Robot: <span class="cp">{{</span> <span class="nv">robot.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span> Part: <span class="cp">{{</span> <span class="nv">part.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span> <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+    There are no robots to show
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>Alternative syntax:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>Robots<span class="nt">&lt;/h1&gt;</span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">robot</span> <span class="k">in</span> <span class="nv">robots</span> <span class="cp">%}</span>
+    Robot: <span class="cp">{{</span> <span class="nv">robot.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span> Part: <span class="cp">{{</span> <span class="nv">part.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span> <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="cp">{%</span> <span class="k">elsefor</span> <span class="cp">%}</span>
+    There are no robots to show
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loop-controls">
+<h3>Loop Controls<a class="headerlink" href="#loop-controls" title="Permalink to this headline">¶</a></h3>
+<p>The &#8216;break&#8217; and &#8216;continue&#8217; statements can be used to exit from a loop or force an iteration in the current block:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# skip the even robots #}</span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">index</span><span class="o">,</span> <span class="nv">robot</span> <span class="k">in</span> <span class="nv">robots</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">index</span> <span class="k">is</span> <span class="nf">even</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">continue</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+    ...
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# exit the foreach on the first even robot #}</span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">index</span><span class="o">,</span> <span class="nv">robot</span> <span class="k">in</span> <span class="nv">robots</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">index</span> <span class="k">is</span> <span class="nf">even</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">break</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+    ...
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="if">
+<h3>If<a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h3>
+<p>As PHP, an &#8220;if&#8221; statement checks if an expression is evaluated as true or false:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>Cyborg Robots<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;ul&gt;</span>
+    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">robot</span> <span class="k">in</span> <span class="nv">robots</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">robot.type</span> <span class="o">===</span> <span class="s2">&quot;cyborg&quot;</span> <span class="cp">%}</span>
+            <span class="nt">&lt;li&gt;</span><span class="cp">{{</span> <span class="nv">robot.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="nt">&lt;/li&gt;</span>
+        <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+<p>The else clause is also supported:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>Robots<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;ul&gt;</span>
+    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">robot</span> <span class="k">in</span> <span class="nv">robots</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">robot.type</span> <span class="o">===</span> <span class="s2">&quot;cyborg&quot;</span> <span class="cp">%}</span>
+            <span class="nt">&lt;li&gt;</span><span class="cp">{{</span> <span class="nv">robot.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="nt">&lt;/li&gt;</span>
+        <span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+            <span class="nt">&lt;li&gt;</span><span class="cp">{{</span> <span class="nv">robot.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span> (not a cyborg)<span class="nt">&lt;/li&gt;</span>
+        <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+<p>The &#8216;elseif&#8217; control flow structure can be used together with if to emulate a &#8216;switch&#8217; block:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">if</span> <span class="nv">robot.type</span> <span class="o">===</span> <span class="s2">&quot;cyborg&quot;</span> <span class="cp">%}</span>
+    Robot is a cyborg
+<span class="cp">{%</span> <span class="k">elseif</span> <span class="nv">robot.type</span> <span class="o">===</span> <span class="s2">&quot;virtual&quot;</span> <span class="cp">%}</span>
+    Robot is virtual
+<span class="cp">{%</span> <span class="k">elseif</span> <span class="nv">robot.type</span> <span class="o">===</span> <span class="s2">&quot;mechanical&quot;</span> <span class="cp">%}</span>
+    Robot is mechanical
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loop-context">
+<h3>Loop Context<a class="headerlink" href="#loop-context" title="Permalink to this headline">¶</a></h3>
+<p>A special variable is available inside &#8216;for&#8217; loops providing you information about</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Variable</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">loop.index</span></code></td>
+<td>The current iteration of the loop. (1 indexed)</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">loop.index0</span></code></td>
+<td>The current iteration of the loop. (0 indexed)</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">loop.revindex</span></code></td>
+<td>The number of iterations from the end of the loop (1 indexed)</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">loop.revindex0</span></code></td>
+<td>The number of iterations from the end of the loop (0 indexed)</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">loop.first</span></code></td>
+<td>True if in the first iteration.</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">loop.last</span></code></td>
+<td>True if in the last iteration.</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">loop.length</span></code></td>
+<td>The number of items to iterate</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">for</span> <span class="nv">robot</span> <span class="k">in</span> <span class="nv">robots</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nb">loop</span><span class="nv">.first</span> <span class="cp">%}</span>
+        <span class="nt">&lt;table&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+                <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Id<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Name<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+            <span class="nt">&lt;tr&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nb">loop</span><span class="nv">.index</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">robot.id</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span><span class="cp">{{</span> <span class="nv">robot.name</span> <span class="cp">}}</span><span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nb">loop</span><span class="nv">.last</span> <span class="cp">%}</span>
+        <span class="nt">&lt;/table&gt;</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="assignments">
+<h2>Assignments<a class="headerlink" href="#assignments" title="Permalink to this headline">¶</a></h2>
+<p>Variables may be changed in a template using the instruction &#8220;set&#8221;:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">set</span> <span class="nv">fruits</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;Apple&#39;</span><span class="o">,</span> <span class="s1">&#39;Banana&#39;</span><span class="o">,</span> <span class="s1">&#39;Orange&#39;</span><span class="o">]</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">name</span> <span class="o">=</span> <span class="nv">robot.name</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>Multiple assignments are allowed in the same instruction:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">set</span> <span class="nv">fruits</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;Apple&#39;</span><span class="o">,</span> <span class="s1">&#39;Banana&#39;</span><span class="o">,</span> <span class="s1">&#39;Orange&#39;</span><span class="o">],</span> <span class="nv">name</span> <span class="o">=</span> <span class="nv">robot.name</span><span class="o">,</span> <span class="nv">active</span> <span class="o">=</span> <span class="kp">true</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>Additionally, you can use compound assignment operators:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">set</span> <span class="nv">price</span> <span class="o">+=</span> <span class="m">100.00</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">age</span> <span class="o">*=</span> <span class="m">5</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>The following operators are available:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>=</td>
+<td>Standard Assignment</td>
+</tr>
+<tr class="row-odd"><td>+=</td>
+<td>Addition assignment</td>
+</tr>
+<tr class="row-even"><td>-=</td>
+<td>Subtraction assignment</td>
+</tr>
+<tr class="row-odd"><td>*=</td>
+<td>Multiplication assignment</td>
+</tr>
+<tr class="row-even"><td>/=</td>
+<td>Division assignment</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="expressions">
+<h2>Expressions<a class="headerlink" href="#expressions" title="Permalink to this headline">¶</a></h2>
+<p>Volt provides a basic set of expression support, including literals and common operators.</p>
+<p>A expression can be evaluated and printed using the &#8216;{{&#8216; and &#8216;}}&#8217; delimiters:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="o">(</span><span class="m">1</span> <span class="o">+</span> <span class="m">1</span><span class="o">)</span> <span class="o">*</span> <span class="m">2</span> <span class="cp">}}</span>
+</pre></div>
+</div>
+<p>If an expression needs to be evaluated without be printed the &#8216;do&#8217; statement can be used:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">do</span> <span class="o">(</span><span class="m">1</span> <span class="o">+</span> <span class="m">1</span><span class="o">)</span> <span class="o">*</span> <span class="m">2</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<div class="section" id="literals">
+<h3>Literals<a class="headerlink" href="#literals" title="Permalink to this headline">¶</a></h3>
+<p>The following literals are supported:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Filter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#8220;this is a string&#8221;</td>
+<td>Text between double quotes or single quotes are handled as strings</td>
+</tr>
+<tr class="row-odd"><td>100.25</td>
+<td>Numbers with a decimal part are handled as doubles/floats</td>
+</tr>
+<tr class="row-even"><td>100</td>
+<td>Numbers without a decimal part are handled as integers</td>
+</tr>
+<tr class="row-odd"><td>false</td>
+<td>Constant &#8220;false&#8221; is the boolean false value</td>
+</tr>
+<tr class="row-even"><td>true</td>
+<td>Constant &#8220;true&#8221; is the boolean true value</td>
+</tr>
+<tr class="row-odd"><td>null</td>
+<td>Constant &#8220;null&#8221; is the Null value</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="arrays">
+<h3>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h3>
+<p>Whether you&#8217;re using PHP 5.3 or &gt;= 5.4 you can create arrays by enclosing a list of values in square brackets:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# Simple array #}</span>
+<span class="cp">{{</span> <span class="o">[</span><span class="s1">&#39;Apple&#39;</span><span class="o">,</span> <span class="s1">&#39;Banana&#39;</span><span class="o">,</span> <span class="s1">&#39;Orange&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+
+<span class="c">{# Other simple array #}</span>
+<span class="cp">{{</span> <span class="o">[</span><span class="s1">&#39;Apple&#39;</span><span class="o">,</span> <span class="m">1</span><span class="o">,</span> <span class="m">2.5</span><span class="o">,</span> <span class="kp">false</span><span class="o">,</span> <span class="nv">null</span><span class="o">]</span> <span class="cp">}}</span>
+
+<span class="c">{# Multi-Dimensional array #}</span>
+<span class="cp">{{</span> <span class="o">[[</span><span class="m">1</span><span class="o">,</span> <span class="m">2</span><span class="o">],</span> <span class="o">[</span><span class="m">3</span><span class="o">,</span> <span class="m">4</span><span class="o">],</span> <span class="o">[</span><span class="m">5</span><span class="o">,</span> <span class="m">6</span><span class="o">]]</span> <span class="cp">}}</span>
+
+<span class="c">{# Hash-style array #}</span>
+<span class="cp">{{</span> <span class="o">[</span><span class="s1">&#39;first&#39;</span><span class="o">:</span> <span class="m">1</span><span class="o">,</span> <span class="s1">&#39;second&#39;</span><span class="o">:</span> <span class="m">4</span><span class="o">/</span><span class="m">2</span><span class="o">,</span> <span class="s1">&#39;third&#39;</span><span class="o">:</span> <span class="s1">&#39;3&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+</pre></div>
+</div>
+<p>Curly braces also can be used to define arrays or hashes:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">set</span> <span class="nv">myArray</span> <span class="o">=</span> <span class="o">{</span><span class="s1">&#39;Apple&#39;</span><span class="o">,</span> <span class="s1">&#39;Banana&#39;</span><span class="o">,</span> <span class="s1">&#39;Orange&#39;</span><span class="o">}</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">myHash</span>  <span class="o">=</span> <span class="o">{</span><span class="s1">&#39;first&#39;</span><span class="o">:</span> <span class="m">1</span><span class="o">,</span> <span class="s1">&#39;second&#39;</span><span class="o">:</span> <span class="m">4</span><span class="o">/</span><span class="m">2</span><span class="o">,</span> <span class="s1">&#39;third&#39;</span><span class="o">:</span> <span class="s1">&#39;3&#39;</span><span class="o">}</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="math">
+<h3>Math<a class="headerlink" href="#math" title="Permalink to this headline">¶</a></h3>
+<p>You may make calculations in templates using the following operators:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">+</span></code></td>
+<td>Perform an adding operation. <code class="code docutils literal"><span class="pre">{{</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">3</span> <span class="pre">}}</span></code> returns 5</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">-</span></code></td>
+<td>Perform a substraction operation <code class="code docutils literal"><span class="pre">{{</span> <span class="pre">2</span> <span class="pre">-</span> <span class="pre">3</span> <span class="pre">}}</span></code> returns -1</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">*</span></code></td>
+<td>Perform a multiplication operation <code class="code docutils literal"><span class="pre">{{</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">}}</span></code> returns 6</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">/</span></code></td>
+<td>Perform a division operation <code class="code docutils literal"><span class="pre">{{</span> <span class="pre">10</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">}}</span></code> returns 5</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">%</span></code></td>
+<td>Calculate the remainder of an integer division <code class="code docutils literal"><span class="pre">{{</span> <span class="pre">10</span> <span class="pre">%</span> <span class="pre">3</span> <span class="pre">}}</span></code> returns 1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="comparisons">
+<h3>Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this headline">¶</a></h3>
+<p>The following comparison operators are available:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">==</span></code></td>
+<td>Check whether both operands are equal</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">!=</span></code></td>
+<td>Check whether both operands aren&#8217;t equal</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">&lt;&gt;</span></code></td>
+<td>Check whether both operands aren&#8217;t equal</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">&gt;</span></code></td>
+<td>Check whether left operand is greater than right operand</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">&lt;</span></code></td>
+<td>Check whether left operand is less than right operand</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">&lt;=</span></code></td>
+<td>Check whether left operand is less or equal than right operand</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">&gt;=</span></code></td>
+<td>Check whether left operand is greater or equal than right operand</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">===</span></code></td>
+<td>Check whether both operands are identical</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">!==</span></code></td>
+<td>Check whether both operands aren&#8217;t identical</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="logic">
+<h3>Logic<a class="headerlink" href="#logic" title="Permalink to this headline">¶</a></h3>
+<p>Logic operators are useful in the &#8220;if&#8221; expression evaluation to combine multiple tests:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">or</span></code></td>
+<td>Return true if the left or right operand is evaluated as true</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">and</span></code></td>
+<td>Return true if both left and right operands are evaluated as true</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">not</span></code></td>
+<td>Negates an expression</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">(</span> <span class="pre">expr</span> <span class="pre">)</span></code></td>
+<td>Parenthesis groups expressions</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="other-operators">
+<h3>Other Operators<a class="headerlink" href="#other-operators" title="Permalink to this headline">¶</a></h3>
+<p>Additional operators seen the following operators are available:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">~</span></code></td>
+<td>Concatenates both operands <code class="code docutils literal"><span class="pre">{{</span> <span class="pre">&quot;hello</span> <span class="pre">&quot;</span> <span class="pre">~</span> <span class="pre">&quot;world&quot;</span> <span class="pre">}}</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">|</span></code></td>
+<td>Applies a filter in the right operand to the left <code class="code docutils literal"><span class="pre">{{</span> <span class="pre">&quot;hello&quot;|uppercase</span> <span class="pre">}}</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">..</span></code></td>
+<td>Creates a range <code class="code docutils literal"><span class="pre">{{</span> <span class="pre">'a'..'z'</span> <span class="pre">}}</span></code> <code class="code docutils literal"><span class="pre">{{</span> <span class="pre">1..10</span> <span class="pre">}}</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">is</span></code></td>
+<td>Same as == (equals), also performs tests</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">in</span></code></td>
+<td>To check if an expression is contained into other expressions <code class="code docutils literal"><span class="pre">if</span> <span class="pre">&quot;a&quot;</span> <span class="pre">in</span> <span class="pre">&quot;abc&quot;</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">is</span> <span class="pre">not</span></code></td>
+<td>Same as != (not equals)</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">'a'</span> <span class="pre">?</span> <span class="pre">'b'</span> <span class="pre">:</span> <span class="pre">'c'</span></code></td>
+<td>Ternary operator. The same as the PHP ternary operator</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">++</span></code></td>
+<td>Increments a value</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">--</span></code></td>
+<td>Decrements a value</td>
+</tr>
+</tbody>
+</table>
+<p>The following example shows how to use operators:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">set</span> <span class="nv">robots</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;Voltron&#39;</span><span class="o">,</span> <span class="s1">&#39;Astro Boy&#39;</span><span class="o">,</span> <span class="s1">&#39;Terminator&#39;</span><span class="o">,</span> <span class="s1">&#39;C3PO&#39;</span><span class="o">]</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">index</span> <span class="k">in</span> <span class="m">0.</span><span class="nv">.robots</span><span class="o">|</span><span class="nf">length</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">robots</span><span class="o">[</span><span class="nv">index</span><span class="o">]</span> <span class="k">is</span> <span class="nf">defined</span> <span class="cp">%}</span>
+        <span class="cp">{{</span> <span class="s2">&quot;Name: &quot;</span> <span class="o">~</span> <span class="nv">robots</span><span class="o">[</span><span class="nv">index</span><span class="o">]</span> <span class="cp">}}</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h2>
+<p>Tests can be used to test if a variable has a valid expected value. The operator &#8220;is&#8221; is used to perform the tests:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">set</span> <span class="nv">robots</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;1&#39;</span><span class="o">:</span> <span class="s1">&#39;Voltron&#39;</span><span class="o">,</span> <span class="s1">&#39;2&#39;</span><span class="o">:</span> <span class="s1">&#39;Astro Boy&#39;</span><span class="o">,</span> <span class="s1">&#39;3&#39;</span><span class="o">:</span> <span class="s1">&#39;Terminator&#39;</span><span class="o">,</span> <span class="s1">&#39;4&#39;</span><span class="o">:</span> <span class="s1">&#39;C3PO&#39;</span><span class="o">]</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">position</span><span class="o">,</span> <span class="nv">name</span> <span class="k">in</span> <span class="nv">robots</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">position</span> <span class="k">is</span> <span class="nf">odd</span> <span class="cp">%}</span>
+        <span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>The following built-in tests are available in Volt:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Test</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">defined</span></code></td>
+<td>Checks if a variable is defined (<code class="code docutils literal"><span class="pre">isset()</span></code>)</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">empty</span></code></td>
+<td>Checks if a variable is empty</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">even</span></code></td>
+<td>Checks if a numeric value is even</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">odd</span></code></td>
+<td>Checks if a numeric value is odd</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">numeric</span></code></td>
+<td>Checks if value is numeric</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">scalar</span></code></td>
+<td>Checks if value is scalar (not an array or object)</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">iterable</span></code></td>
+<td>Checks if a value is iterable. Can be traversed by a &#8220;for&#8221; statement</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">divisibleby</span></code></td>
+<td>Checks if a value is divisible by other value</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">sameas</span></code></td>
+<td>Checks if a value is identical to other value</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">type</span></code></td>
+<td>Checks if a value is of the specified type</td>
+</tr>
+</tbody>
+</table>
+<p>More examples:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">if</span> <span class="nv">robot</span> <span class="k">is</span> <span class="nf">defined</span> <span class="cp">%}</span>
+    The robot variable is defined
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">robot</span> <span class="k">is</span> <span class="nf">empty</span> <span class="cp">%}</span>
+    The robot is null or isn&#39;t defined
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">key</span><span class="o">,</span> <span class="nv">name</span> <span class="k">in</span> <span class="o">[</span><span class="m">1</span><span class="o">:</span> <span class="s1">&#39;Voltron&#39;</span><span class="o">,</span> <span class="m">2</span><span class="o">:</span> <span class="s1">&#39;Astroy Boy&#39;</span><span class="o">,</span> <span class="m">3</span><span class="o">:</span> <span class="s1">&#39;Bender&#39;</span><span class="o">]</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">key</span> <span class="k">is</span> <span class="nf">even</span> <span class="cp">%}</span>
+        <span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">key</span><span class="o">,</span> <span class="nv">name</span> <span class="k">in</span> <span class="o">[</span><span class="m">1</span><span class="o">:</span> <span class="s1">&#39;Voltron&#39;</span><span class="o">,</span> <span class="m">2</span><span class="o">:</span> <span class="s1">&#39;Astroy Boy&#39;</span><span class="o">,</span> <span class="m">3</span><span class="o">:</span> <span class="s1">&#39;Bender&#39;</span><span class="o">]</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">key</span> <span class="k">is</span> <span class="nf">odd</span> <span class="cp">%}</span>
+        <span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">key</span><span class="o">,</span> <span class="nv">name</span> <span class="k">in</span> <span class="o">[</span><span class="m">1</span><span class="o">:</span> <span class="s1">&#39;Voltron&#39;</span><span class="o">,</span> <span class="m">2</span><span class="o">:</span> <span class="s1">&#39;Astroy Boy&#39;</span><span class="o">,</span> <span class="s1">&#39;third&#39;</span><span class="o">:</span> <span class="s1">&#39;Bender&#39;</span><span class="o">]</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">key</span> <span class="k">is</span> <span class="nf">numeric</span> <span class="cp">%}</span>
+        <span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">robots</span> <span class="o">=</span> <span class="o">[</span><span class="m">1</span><span class="o">:</span> <span class="s1">&#39;Voltron&#39;</span><span class="o">,</span> <span class="m">2</span><span class="o">:</span> <span class="s1">&#39;Astroy Boy&#39;</span><span class="o">]</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">robots</span> <span class="k">is</span> <span class="nf">iterable</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">robot</span> <span class="k">in</span> <span class="nv">robots</span> <span class="cp">%}</span>
+        ...
+    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">world</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">world</span> <span class="k">is</span> <span class="nf">sameas</span><span class="o">(</span><span class="s2">&quot;hello&quot;</span><span class="o">)</span> <span class="cp">%}</span>
+    <span class="cp">{{</span> <span class="s2">&quot;it&#39;s hello&quot;</span> <span class="cp">}}</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">external</span> <span class="o">=</span> <span class="kp">false</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">external</span> <span class="k">is</span> <span class="nf">type</span><span class="o">(</span><span class="s1">&#39;boolean&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+    <span class="cp">{{</span> <span class="s2">&quot;external is false or true&quot;</span> <span class="cp">}}</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="macros">
+<h2>Macros<a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<p>Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# Macro &quot;display a list of links to related topics&quot; #}</span>
+<span class="cp">{%</span>- <span class="k">macro</span> <span class="nv">related_bar</span><span class="o">(</span><span class="nv">related_links</span><span class="o">)</span> <span class="cp">%}</span>
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="cp">{%</span>- <span class="k">for</span> <span class="nv">link</span> <span class="k">in</span> <span class="nv">related_links</span> <span class="cp">%}</span>
+            <span class="nt">&lt;li&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">url</span><span class="o">(</span><span class="nv">link.url</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">title=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">link.title</span><span class="o">|</span><span class="nf">striptags</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+                    <span class="cp">{{</span> <span class="nv">link.text</span> <span class="cp">}}</span>
+                <span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="cp">{%</span>- <span class="k">endfor</span> <span class="cp">%}</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="cp">{%</span>- <span class="k">endmacro</span> <span class="cp">%}</span>
+
+<span class="c">{# Print related links #}</span>
+<span class="cp">{{</span> <span class="nv">related_bar</span><span class="o">(</span><span class="nv">links</span><span class="o">)</span> <span class="cp">}}</span>
+
+<span class="nt">&lt;div&gt;</span>This is the content<span class="nt">&lt;/div&gt;</span>
+
+<span class="c">{# Print related links again #}</span>
+<span class="cp">{{</span> <span class="nv">related_bar</span><span class="o">(</span><span class="nv">links</span><span class="o">)</span> <span class="cp">}}</span>
+</pre></div>
+</div>
+<p>When calling macros, parameters can be passed by name:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span>- <span class="k">macro</span> <span class="nv">error_messages</span><span class="o">(</span><span class="nv">message</span><span class="o">,</span> <span class="nv">field</span><span class="o">,</span> <span class="nv">type</span><span class="o">)</span> <span class="cp">%}</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;error-type&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">type</span> <span class="cp">}}</span><span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;error-field&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">field</span> <span class="cp">}}</span><span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;error-message&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">message</span> <span class="cp">}}</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="cp">{%</span>- <span class="k">endmacro</span> <span class="cp">%}</span>
+
+<span class="c">{# Call the macro #}</span>
+<span class="cp">{{</span> <span class="nv">error_messages</span><span class="o">(</span><span class="s1">&#39;type&#39;</span><span class="o">:</span> <span class="s1">&#39;Invalid&#39;</span><span class="o">,</span> <span class="s1">&#39;message&#39;</span><span class="o">:</span> <span class="s1">&#39;The name is invalid&#39;</span><span class="o">,</span> <span class="s1">&#39;field&#39;</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span><span class="o">)</span> <span class="cp">}}</span>
+</pre></div>
+</div>
+<p>Macros can return values:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span>- <span class="k">macro</span> <span class="nv">my_input</span><span class="o">(</span><span class="nv">name</span><span class="o">,</span> <span class="nv">class</span><span class="o">)</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">return</span> <span class="nv">text_field</span><span class="o">(</span><span class="nv">name</span><span class="o">,</span> <span class="s1">&#39;class&#39;</span><span class="o">:</span> <span class="nv">class</span><span class="o">)</span> <span class="cp">%}</span>
+<span class="cp">{%</span>- <span class="k">endmacro</span> <span class="cp">%}</span>
+
+<span class="c">{# Call the macro #}</span>
+<span class="cp">{{</span> <span class="s1">&#39;&lt;p&gt;&#39;</span> <span class="o">~</span> <span class="nv">my_input</span><span class="o">(</span><span class="s1">&#39;name&#39;</span><span class="o">,</span> <span class="s1">&#39;input-text&#39;</span><span class="o">)</span> <span class="o">~</span> <span class="s1">&#39;&lt;/p&gt;&#39;</span> <span class="cp">}}</span>
+</pre></div>
+</div>
+<p>And receive optional parameters:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span>- <span class="k">macro</span> <span class="nv">my_input</span><span class="o">(</span><span class="nv">name</span><span class="o">,</span> <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;input-text&quot;</span><span class="o">)</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">return</span> <span class="nv">text_field</span><span class="o">(</span><span class="nv">name</span><span class="o">,</span> <span class="s1">&#39;class&#39;</span><span class="o">:</span> <span class="nv">class</span><span class="o">)</span> <span class="cp">%}</span>
+<span class="cp">{%</span>- <span class="k">endmacro</span> <span class="cp">%}</span>
+
+<span class="c">{# Call the macro #}</span>
+<span class="cp">{{</span> <span class="s1">&#39;&lt;p&gt;&#39;</span> <span class="o">~</span> <span class="nv">my_input</span><span class="o">(</span><span class="s1">&#39;name&#39;</span><span class="o">)</span> <span class="o">~</span> <span class="s1">&#39;&lt;/p&gt;&#39;</span> <span class="cp">}}</span>
+<span class="cp">{{</span> <span class="s1">&#39;&lt;p&gt;&#39;</span> <span class="o">~</span> <span class="nv">my_input</span><span class="o">(</span><span class="s1">&#39;name&#39;</span><span class="o">,</span> <span class="s1">&#39;input-text&#39;</span><span class="o">)</span> <span class="o">~</span> <span class="s1">&#39;&lt;/p&gt;&#39;</span> <span class="cp">}}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-tag-helpers">
+<h2>Using Tag Helpers<a class="headerlink" href="#using-tag-helpers" title="Permalink to this headline">¶</a></h2>
+<p>Volt is highly integrated with <a class="reference internal" href="tags.html"><em>Phalcon\Tag</em></a>, so it&#8217;s easy to use the helpers provided by that component in a Volt template:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="nv">javascript_include</span><span class="o">(</span><span class="s2">&quot;js/jquery.js&quot;</span><span class="o">)</span> <span class="cp">}}</span>
+
+<span class="cp">{{</span> <span class="nv">form</span><span class="o">(</span><span class="s1">&#39;products/save&#39;</span><span class="o">,</span> <span class="s1">&#39;method&#39;</span><span class="o">:</span> <span class="s1">&#39;post&#39;</span><span class="o">)</span> <span class="cp">}}</span>
+
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/label&gt;</span>
+    <span class="cp">{{</span> <span class="nv">text_field</span><span class="o">(</span><span class="s2">&quot;name&quot;</span><span class="o">,</span> <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="m">32</span><span class="o">)</span> <span class="cp">}}</span>
+
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>Type<span class="nt">&lt;/label&gt;</span>
+    <span class="cp">{{</span> <span class="nv">select</span><span class="o">(</span><span class="s2">&quot;type&quot;</span><span class="o">,</span> <span class="nv">productTypes</span><span class="o">,</span> <span class="s1">&#39;using&#39;</span><span class="o">:</span> <span class="o">[</span><span class="s1">&#39;id&#39;</span><span class="o">,</span> <span class="s1">&#39;name&#39;</span><span class="o">])</span> <span class="cp">}}</span>
+
+    <span class="cp">{{</span> <span class="nv">submit_button</span><span class="o">(</span><span class="s1">&#39;Send&#39;</span><span class="o">)</span> <span class="cp">}}</span>
+
+<span class="cp">{{</span> <span class="nv">end_form</span><span class="o">()</span> <span class="cp">}}</span>
+</pre></div>
+</div>
+<p>The following PHP is generated:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">javascriptInclude</span><span class="p">(</span><span class="s2">&quot;js/jquery.js&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;products/save&#39;</span><span class="p">,</span> <span class="s1">&#39;method&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;post&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span>
+
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/label&gt;</span>
+    <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">textField</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span> <span class="o">=&gt;</span> <span class="mi">32</span><span class="p">));</span> <span class="cp">?&gt;</span>
+
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>Type<span class="nt">&lt;/label&gt;</span>
+    <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">select</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="nv">$productTypes</span><span class="p">,</span> <span class="s1">&#39;using&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)));</span> <span class="cp">?&gt;</span>
+
+    <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">submitButton</span><span class="p">(</span><span class="s1">&#39;Send&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+
+{{ end_form() }}
+</pre></div>
+</div>
+<p>To call a <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> helper, you only need to call an uncamelized version of the method:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="59%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Method</th>
+<th class="head">Volt function</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::linkTo</span></code></td>
+<td><code class="code docutils literal"><span class="pre">link_to</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::textField</span></code></td>
+<td><code class="code docutils literal"><span class="pre">text_field</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::passwordField</span></code></td>
+<td><code class="code docutils literal"><span class="pre">password_field</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::hiddenField</span></code></td>
+<td><code class="code docutils literal"><span class="pre">hidden_field</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::fileField</span></code></td>
+<td><code class="code docutils literal"><span class="pre">file_field</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::checkField</span></code></td>
+<td><code class="code docutils literal"><span class="pre">check_field</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::radioField</span></code></td>
+<td><code class="code docutils literal"><span class="pre">radio_field</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::dateField</span></code></td>
+<td><code class="code docutils literal"><span class="pre">date_field</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::emailField</span></code></td>
+<td><code class="code docutils literal"><span class="pre">email_field</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::numericField</span></code></td>
+<td><code class="code docutils literal"><span class="pre">numeric_field</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::submitButton</span></code></td>
+<td><code class="code docutils literal"><span class="pre">submit_button</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::selectStatic</span></code></td>
+<td><code class="code docutils literal"><span class="pre">select_static</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::select</span></code></td>
+<td><code class="code docutils literal"><span class="pre">select</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::textArea</span></code></td>
+<td><code class="code docutils literal"><span class="pre">text_area</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::form</span></code></td>
+<td><code class="code docutils literal"><span class="pre">form</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::endForm</span></code></td>
+<td><code class="code docutils literal"><span class="pre">end_form</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::getTitle</span></code></td>
+<td><code class="code docutils literal"><span class="pre">get_title</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::stylesheetLink</span></code></td>
+<td><code class="code docutils literal"><span class="pre">stylesheet_link</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::javascriptInclude</span></code></td>
+<td><code class="code docutils literal"><span class="pre">javascript_include</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::image</span></code></td>
+<td><code class="code docutils literal"><span class="pre">image</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">Phalcon\Tag::friendlyTitle</span></code></td>
+<td><code class="code docutils literal"><span class="pre">friendly_title</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>The following built-in functions are available in Volt:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">content</span></code></td>
+<td>Includes the content produced in a previous rendering stage</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">get_content</span></code></td>
+<td>Same as <code class="code docutils literal"><span class="pre">content</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">partial</span></code></td>
+<td>Dynamically loads a partial view in the current template</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">super</span></code></td>
+<td>Render the contents of the parent block</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">time</span></code></td>
+<td>Calls the PHP function with the same name</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">date</span></code></td>
+<td>Calls the PHP function with the same name</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">dump</span></code></td>
+<td>Calls the PHP function <code class="code docutils literal"><span class="pre">var_dump()</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">version</span></code></td>
+<td>Returns the current version of the framework</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">constant</span></code></td>
+<td>Reads a PHP constant</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">url</span></code></td>
+<td>Generate a URL using the &#8216;url&#8217; service</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="view-integration">
+<h2>View Integration<a class="headerlink" href="#view-integration" title="Permalink to this headline">¶</a></h2>
+<p>Also, Volt is integrated with <a class="reference internal" href="views.html"><em>Phalcon\Mvc\View</em></a>, you can play with the view hierarchy and include partials as well:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="nv">content</span><span class="o">()</span> <span class="cp">}}</span>
+
+<span class="c">&lt;!-- Simple include of a partial --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">partial</span><span class="o">(</span><span class="s2">&quot;partials/footer&quot;</span><span class="o">)</span> <span class="cp">}}</span><span class="nt">&lt;/div&gt;</span>
+
+<span class="c">&lt;!-- Passing extra variables --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">partial</span><span class="o">(</span><span class="s2">&quot;partials/footer&quot;</span><span class="o">,</span> <span class="o">[</span><span class="s1">&#39;links&#39;</span><span class="o">:</span> <span class="nv">links</span><span class="o">])</span> <span class="cp">}}</span><span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p>A partial is included in runtime, Volt also provides &#8220;include&#8221;, this compiles the content of a view and returns its contents
+as part of the view which was included:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# Simple include of a partial #}</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;partials/footer&quot;</span> <span class="cp">%}</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="c">{# Passing extra variables #}</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;partials/footer&quot;</span> <span class="k">with</span> <span class="o">[</span><span class="s1">&#39;links&#39;</span><span class="o">:</span> <span class="nv">links</span><span class="o">]</span> <span class="cp">%}</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="include">
+<h3>Include<a class="headerlink" href="#include" title="Permalink to this headline">¶</a></h3>
+<p>&#8216;include&#8217; has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension
+when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent
+template where it&#8217;s included. Templates aren&#8217;t inlined if the &#8216;include&#8217; have variables passed with &#8216;with&#8217;:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# The contents of &#39;partials/footer.volt&#39; is compiled and inlined #}</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;partials/footer.volt&quot;</span> <span class="cp">%}</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="partial-vs-include">
+<h3>Partial vs Include<a class="headerlink" href="#partial-vs-include" title="Permalink to this headline">¶</a></h3>
+<p>Keep the following points in mind when choosing to use the &#8220;partial&#8221; function or &#8220;include&#8221;:</p>
+<ul class="simple">
+<li>&#8216;Partial&#8217; allows you to include templates made in Volt and in other template engines as well</li>
+<li>&#8216;Partial&#8217; allows you to pass an expression like a variable allowing to include the content of other view dynamically</li>
+<li>&#8216;Partial&#8217; is better if the content that you have to include changes frequently</li>
+<li>&#8216;Include&#8217; copies the compiled content into the view which improves the performance</li>
+<li>&#8216;Include&#8217; only allows to include templates made with Volt</li>
+<li>&#8216;Include&#8217; requires an existing template at compile time</li>
+</ul>
+</div>
+</div>
+<div class="section" id="template-inheritance">
+<h2>Template Inheritance<a class="headerlink" href="#template-inheritance" title="Permalink to this headline">¶</a></h2>
+<p>With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template
+define <em>blocks</em> than can be overridden by a child template. Let&#8217;s pretend that we have the following base template:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# templates/base.volt #}</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="cp">{%</span> <span class="k">block</span> <span class="nv">head</span> <span class="cp">%}</span>
+            <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;style.css&quot;</span> <span class="nt">/&gt;</span>
+        <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+        <span class="nt">&lt;title&gt;</span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}{%</span> <span class="k">endblock</span> <span class="cp">%}</span> - My Webpage<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+            <span class="cp">{%</span> <span class="k">block</span> <span class="nv">footer</span> <span class="cp">%}</span><span class="ni">&amp;copy;</span> Copyright 2015, All rights reserved.<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>From other template we could extend the base template replacing the blocks:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;templates/base.volt&quot;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>Index<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">head</span> <span class="cp">%}</span><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span><span class="nc">.important</span> <span class="p">{</span> <span class="k">color</span><span class="o">:</span> <span class="m">#336699</span><span class="p">;</span> <span class="p">}</span><span class="nt">&lt;/style&gt;</span><span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;h1&gt;</span>Index<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;important&quot;</span><span class="nt">&gt;</span>Welcome on my awesome homepage.<span class="nt">&lt;/p&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>Not all blocks must be replaced at a child template, only those that are needed. The final output produced will be the following:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span><span class="nc">.important</span> <span class="p">{</span> <span class="k">color</span><span class="o">:</span> <span class="m">#336699</span><span class="p">;</span> <span class="p">}</span><span class="nt">&lt;/style&gt;</span>
+
+        <span class="nt">&lt;title&gt;</span>Index - My Webpage<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1&gt;</span>Index<span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;important&quot;</span><span class="nt">&gt;</span>Welcome on my awesome homepage.<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span>
+            <span class="ni">&amp;copy;</span> Copyright 2015, All rights reserved.
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="multiple-inheritance">
+<h3>Multiple Inheritance<a class="headerlink" href="#multiple-inheritance" title="Permalink to this headline">¶</a></h3>
+<p>Extended templates can extend other templates. The following example illustrates this:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# main.volt #}</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Title<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+
+    <span class="nt">&lt;body&gt;</span>
+        <span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>Template &#8220;layout.volt&#8221; extends &#8220;main.volt&#8221;</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# layout.volt #}</span>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;main.volt&quot;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+
+    <span class="nt">&lt;h1&gt;</span>Table of contents<span class="nt">&lt;/h1&gt;</span>
+
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>Finally a view that extends &#8220;layout.volt&#8221;:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# index.volt #}</span>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;layout.volt&quot;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+
+    <span class="cp">{{</span> <span class="nb">super</span><span class="o">()</span> <span class="cp">}}</span>
+
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Some option<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Some other option<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>Rendering &#8220;index.volt&#8221; produces:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Title<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+
+    <span class="nt">&lt;body&gt;</span>
+
+        <span class="nt">&lt;h1&gt;</span>Table of contents<span class="nt">&lt;/h1&gt;</span>
+
+        <span class="nt">&lt;ul&gt;</span>
+            <span class="nt">&lt;li&gt;</span>Some option<span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;</span>Some other option<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>Note the call to the function <code class="code docutils literal"><span class="pre">super()</span></code>. With that function it&#8217;s possible to render the contents of the parent block.</p>
+<p>As partials, the path set to &#8220;extends&#8221; is a relative path under the current views directory (i.e. app/views/).</p>
+<blockquote class="highlights">
+<div>By default, and for performance reasons, Volt only checks for changes in the children templates
+to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option
+<code class="code docutils literal"><span class="pre">'compileAlways'</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code>. Thus, the templates are compiled always taking into account changes in
+the parent templates.</div></blockquote>
+</div>
+</div>
+<div class="section" id="autoescape-mode">
+<h2>Autoescape mode<a class="headerlink" href="#autoescape-mode" title="Permalink to this headline">¶</a></h2>
+<p>You can enable auto-escaping of all variables printed in a block using the autoescape mode:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre>Manually escaped: <span class="cp">{{</span> <span class="nv">robot.name</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span>
+
+<span class="cp">{%</span> <span class="k">autoescape</span> <span class="kp">true</span> <span class="cp">%}</span>
+    Autoescaped: <span class="cp">{{</span> <span class="nv">robot.name</span> <span class="cp">}}</span>
+    <span class="cp">{%</span> <span class="k">autoescape</span> <span class="kp">false</span> <span class="cp">%}</span>
+        No Autoescaped: <span class="cp">{{</span> <span class="nv">robot.name</span> <span class="cp">}}</span>
+    <span class="cp">{%</span> <span class="k">endautoescape</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endautoescape</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extending-volt">
+<h2>Extending Volt<a class="headerlink" href="#extending-volt" title="Permalink to this headline">¶</a></h2>
+<p>Unlike other template engines, Volt itself is not required to run the compiled templates.
+Once the templates are compiled there is no dependence on Volt. With performance independence in mind,
+Volt only acts as a compiler for PHP templates.</p>
+<p>The Volt compiler allow you to extend it adding more functions, tests or filters to the existing ones.</p>
+<div class="section" id="id1">
+<h3>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Functions act as normal PHP functions, a valid string name is required as function name.
+Functions can be added using two strategies, returning a simple string or using an anonymous
+function. Always is required that the chosen strategy returns a valid PHP string expression:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\View\Engine\Volt</span><span class="p">;</span>
+
+<span class="nv">$volt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Volt</span><span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$di</span><span class="p">);</span>
+
+<span class="nv">$compiler</span> <span class="o">=</span> <span class="nv">$volt</span><span class="o">-&gt;</span><span class="na">getCompiler</span><span class="p">();</span>
+
+<span class="c1">// This binds the function name &#39;shuffle&#39; in Volt to the PHP function &#39;str_shuffle&#39;</span>
+<span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">addFunction</span><span class="p">(</span><span class="s2">&quot;shuffle&quot;</span><span class="p">,</span> <span class="s2">&quot;str_shuffle&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Register the function with an anonymous function. This case we use <code class="code docutils literal"><span class="pre">$resolvedArgs</span></code> to pass the arguments exactly
+as were passed in the arguments:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">addFunction</span><span class="p">(</span>
+    <span class="s2">&quot;widget&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">(</span><span class="nv">$resolvedArgs</span><span class="p">,</span> <span class="nv">$exprArgs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;MyLibrary</span><span class="se">\\</span><span class="s2">Widgets::get(&quot;</span> <span class="o">.</span> <span class="nv">$resolvedArgs</span> <span class="o">.</span> <span class="s2">&quot;)&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Treat the arguments independently and unresolved:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">addFunction</span><span class="p">(</span>
+    <span class="s2">&quot;repeat&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">(</span><span class="nv">$resolvedArgs</span><span class="p">,</span> <span class="nv">$exprArgs</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$compiler</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Resolve the first argument</span>
+        <span class="nv">$firstArgument</span> <span class="o">=</span> <span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">expression</span><span class="p">(</span><span class="nv">$exprArgs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;expr&#39;</span><span class="p">]);</span>
+
+        <span class="c1">// Checks if the second argument was passed</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$exprArgs</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$secondArgument</span> <span class="o">=</span> <span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">expression</span><span class="p">(</span><span class="nv">$exprArgs</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;expr&#39;</span><span class="p">]);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// Use &#39;10&#39; as default</span>
+            <span class="nv">$secondArgument</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="s2">&quot;str_repeat(&quot;</span> <span class="o">.</span> <span class="nv">$firstArgument</span> <span class="o">.</span> <span class="s2">&quot;, &quot;</span> <span class="o">.</span> <span class="nv">$secondArgument</span> <span class="o">.</span> <span class="s2">&quot;)&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Generate the code based on some function availability:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">addFunction</span><span class="p">(</span>
+    <span class="s2">&quot;contains_text&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">(</span><span class="nv">$resolvedArgs</span><span class="p">,</span> <span class="nv">$exprArgs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">function_exists</span><span class="p">(</span><span class="s2">&quot;mb_stripos&quot;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s2">&quot;mb_stripos(&quot;</span> <span class="o">.</span> <span class="nv">$resolvedArgs</span> <span class="o">.</span> <span class="s2">&quot;)&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s2">&quot;stripos(&quot;</span> <span class="o">.</span> <span class="nv">$resolvedArgs</span> <span class="o">.</span> <span class="s2">&quot;)&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Built-in functions can be overridden adding a function with its name:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Replace built-in function dump</span>
+<span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">addFunction</span><span class="p">(</span><span class="s2">&quot;dump&quot;</span><span class="p">,</span> <span class="s2">&quot;print_r&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Filters<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters
+is similar as seen with the functions:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// This creates a filter &#39;hash&#39; that uses the PHP function &#39;md5&#39;</span>
+<span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">addFilter</span><span class="p">(</span><span class="s2">&quot;hash&quot;</span><span class="p">,</span> <span class="s2">&quot;md5&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">addFilter</span><span class="p">(</span>
+    <span class="s2">&quot;int&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">(</span><span class="nv">$resolvedArgs</span><span class="p">,</span> <span class="nv">$exprArgs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;intval(&quot;</span> <span class="o">.</span> <span class="nv">$resolvedArgs</span> <span class="o">.</span> <span class="s2">&quot;)&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Built-in filters can be overridden adding a function with its name:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Replace built-in filter &#39;capitalize&#39;</span>
+<span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">addFilter</span><span class="p">(</span><span class="s2">&quot;capitalize&quot;</span><span class="p">,</span> <span class="s2">&quot;lcfirst&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extensions">
+<h3>Extensions<a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h3>
+<p>With extensions the developer has more flexibility to extend the template engine, and override the compilation
+of a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.</p>
+<p>An extension is a class that implements the events triggered by Volt as a method of itself.</p>
+<p>For example, the class below allows to use any PHP function in Volt:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">PhpFunctionExtension</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * This method is called on any attempt to compile a function call</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">compileFunction</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$arguments</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">function_exists</span><span class="p">(</span><span class="nv">$name</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$name</span> <span class="o">.</span> <span class="s2">&quot;(&quot;</span><span class="o">.</span> <span class="nv">$arguments</span> <span class="o">.</span> <span class="s2">&quot;)&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The above class implements the method &#8216;compileFunction&#8217; which is invoked before any attempt to compile a function call in any
+template. The purpose of the extension is to verify if a function to be compiled is a PHP function allowing to call it
+from the template. Events in extensions must return valid PHP code, this will be used as result of the compilation
+instead of the one generated by Volt. If an event doesn&#8217;t return an string the compilation is done using the default
+behavior provided by the engine.</p>
+<p>The following compilation events are available to be implemented in extensions:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Event/Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">compileFunction</span></code></td>
+<td>Triggered before trying to compile any function call in a template</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">compileFilter</span></code></td>
+<td>Triggered before trying to compile any filter call in a template</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">resolveExpression</span></code></td>
+<td>Triggered before trying to compile any expression. This allows the developer to override operators</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">compileStatement</span></code></td>
+<td>Triggered before trying to compile any expression. This allows the developer to override any statement</td>
+</tr>
+</tbody>
+</table>
+<p>Volt extensions must be in registered in the compiler making them available in compile time:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Register the extension in the compiler</span>
+<span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">addExtension</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">PhpFunctionExtension</span><span class="p">()</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="caching-view-fragments">
+<h2>Caching view fragments<a class="headerlink" href="#caching-view-fragments" title="Permalink to this headline">¶</a></h2>
+<p>With Volt it&#8217;s easy cache view fragments. This caching improves performance preventing
+that the contents of a block from being executed by PHP each time the view is displayed:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">cache</span> <span class="s2">&quot;sidebar&quot;</span> <span class="cp">%}</span>
+    <span class="c">&lt;!-- generate this content is slow so we are going to cache it --&gt;</span>
+<span class="cp">{%</span> <span class="k">endcache</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>Setting a specific number of seconds:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# cache the sidebar by 1 hour #}</span>
+<span class="cp">{%</span> <span class="k">cache</span> <span class="s2">&quot;sidebar&quot;</span> <span class="m">3600</span> <span class="cp">%}</span>
+    <span class="c">&lt;!-- generate this content is slow so we are going to cache it --&gt;</span>
+<span class="cp">{%</span> <span class="k">endcache</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>Any valid expression can be used as cache key:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">cache</span> <span class="o">(</span><span class="s2">&quot;article-&quot;</span> <span class="o">~</span> <span class="nv">post.id</span><span class="o">)</span> <span class="m">3600</span> <span class="cp">%}</span>
+
+    <span class="nt">&lt;h1&gt;</span><span class="cp">{{</span> <span class="nv">post.title</span> <span class="cp">}}</span><span class="nt">&lt;/h1&gt;</span>
+
+    <span class="nt">&lt;p&gt;</span><span class="cp">{{</span> <span class="nv">post.content</span> <span class="cp">}}</span><span class="nt">&lt;/p&gt;</span>
+
+<span class="cp">{%</span> <span class="k">endcache</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>The caching is done by the <a class="reference internal" href="cache.html"><em>Phalcon\Cache</em></a> component via the view component.
+Learn more about how this integration works in the section <a class="reference internal" href="views.html"><em>&#8220;Caching View Fragments&#8221;</em></a>.</p>
+</div>
+<div class="section" id="inject-services-into-a-template">
+<h2>Inject Services into a Template<a class="headerlink" href="#inject-services-into-a-template" title="Permalink to this headline">¶</a></h2>
+<p>If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="c">{# Inject the &#39;flash&#39; service #}</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;messages&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">flash.output</span><span class="o">()</span> <span class="cp">}}</span><span class="nt">&lt;/div&gt;</span>
+
+<span class="c">{# Inject the &#39;security&#39; service #}</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name=</span><span class="s">&quot;token&quot;</span> <span class="na">value=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">security.getToken</span><span class="o">()</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stand-alone-component">
+<h2>Stand-alone component<a class="headerlink" href="#stand-alone-component" title="Permalink to this headline">¶</a></h2>
+<p>Using Volt in a stand-alone mode can be demonstrated below:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\View\Engine\Volt\Compiler</span> <span class="k">as</span> <span class="nx">VoltCompiler</span><span class="p">;</span>
+
+<span class="c1">// Create a compiler</span>
+<span class="nv">$compiler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VoltCompiler</span><span class="p">();</span>
+
+<span class="c1">// Optionally add some options</span>
+<span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">setOptions</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="c1">// ...</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Compile a template string returning PHP code</span>
+<span class="k">echo</span> <span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">compileString</span><span class="p">(</span>
+    <span class="s2">&quot;{{ &#39;hello&#39; }}&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// Compile a template in a file specifying the destination file</span>
+<span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">compileFile</span><span class="p">(</span>
+    <span class="s2">&quot;layouts/main.volt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cache/layouts/main.volt.php&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// Compile a template in a file based on the options passed to the compiler</span>
+<span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">compile</span><span class="p">(</span>
+    <span class="s2">&quot;layouts/main.volt&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// Require the compiled templated (optional)</span>
+<span class="k">require</span> <span class="nv">$compiler</span><span class="o">-&gt;</span><span class="na">getCompiledTemplatePath</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="external-resources">
+<h2>External Resources<a class="headerlink" href="#external-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>A bundle for Sublime/Textmate is available <a class="reference external" href="https://github.com/phalcon/volt-sublime-textmate">here</a></li>
+<li><a class="reference external" href="http://album-o-rama.phalconphp.com">Album-O-Rama</a> is a sample application using Volt as template engine, [<a class="reference external" href="https://github.com/phalcon/album-o-rama">Album-O-Rama on Github</a>]</li>
+<li><a class="reference external" href="http://phalconphp.com">Our website</a> is running using Volt as template engine, [<a class="reference external" href="https://github.com/phalcon/website">Our website on Github</a>]</li>
+<li><a class="reference external" href="http://forum.phalconphp.com">Phosphorum</a>, the Phalcon&#8217;s forum, also uses Volt, [<a class="reference external" href="https://github.com/phalcon/forum">Phosphorum on Github</a>]</li>
+<li><a class="reference external" href="http://vokuro.phalconphp.com">Vökuró</a>, is another sample application that use Volt, [<a class="reference external" href="https://github.com/phalcon/vokuro">Vökuró on Github</a>]</li>
+</ul>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="applications.html" title="MVC Applications"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="assets.html" title="Assets Management"
+             >previous</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.lazyload.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/highlight.pack.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.backstretch.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/custom.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Установка на Apache &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="up" title="Установка" href="install.html" />
+    <link rel="next" title="Установка на Nginx" href="nginx.html" />
+    <link rel="prev" title="Установка на WAMP" href="wamp.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="nginx.html" title="Установка на Nginx"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="wamp.html" title="Установка на WAMP"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li>
+          <li><a href="install.html" accesskey="U">Установка</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Установка на Apache</a><ul>
+<li><a class="reference internal" href="#apache-phalcon">Конфигурация Apache для Phalcon</a><ul>
+<li><a class="reference internal" href="#id1">Корневой каталог документов</a></li>
+<li><a class="reference internal" href="#id2">Виртуальные хосты</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="wamp.html" title="предыдущая глава">&lt; Установка на WAMP</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="nginx.html" title="следующая глава">Установка на Nginx &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/apache.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="apache">
+<h1>Установка на Apache<a class="headerlink" href="#apache" title="Ссылка на этот заголовок">¶</a></h1>
+<p><a class="reference external" href="http://httpd.apache.org/">Apache</a> - популярный веб-сервер, доступный на большинстве современных платформ.</p>
+<div class="section" id="apache-phalcon">
+<h2>Конфигурация Apache для Phalcon<a class="headerlink" href="#apache-phalcon" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Следующие инструкции позволят настроить Phalcon на Apache. В основном они сводятся к настройке поведения модуля
+mod-rewrite позволяющего использовать человеко-понятные URL (ЧПУ) и <a class="reference internal" href="routing.html"><em>роутера компонентов</em></a>.
+Типичное приложение имеет следующую структуру:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">test/</span>
+<span class="x">  app/</span>
+<span class="x">    controllers/</span>
+<span class="x">    models/</span>
+<span class="x">    views/</span>
+<span class="x">  public/</span>
+<span class="x">    css/</span>
+<span class="x">    img/</span>
+<span class="x">    js/</span>
+<span class="x">    index.php</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h3>Корневой каталог документов<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Самый распространённый случай - когда приложение устанавливается в любой подкаталог корневой директории. В таких случаях мы используем два .htaccess
+файла. Первый будет скрывать код приложения и перенаправлять запросы к корню приложения (public/).</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="c"># test/.htaccess</span>
+
+<span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
+    <span class="nb">RewriteEngine</span> <span class="k">on</span>
+    <span class="nb">RewriteRule</span>  ^$ public/    [L]
+    <span class="nb">RewriteRule</span>  (.*) public/$1 [L]
+<span class="nt">&lt;/IfModule&gt;</span>
+</pre></div>
+</div>
+<p>Второй .htaccess будет располагаться уже в каталоге public/, и будет перенаправлять все запросы на файл public/index.php:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="c"># test/public/.htaccess</span>
+
+<span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
+    <span class="nb">RewriteEngine</span> <span class="k">On</span>
+    <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-d
+    <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-f
+    <span class="nb">RewriteRule</span> ^(.*)$ index.php?_url=/$1 [QSA,L]
+<span class="nt">&lt;/IfModule&gt;</span>
+</pre></div>
+</div>
+<p>Если нет желания или возможности использовать файлы .htaccess, то параметры также можно прописать в главном файле конфигурации Apache:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;Directory</span> <span class="s">&quot;/var/www/test&quot;</span><span class="nt">&gt;</span>
+        <span class="nb">RewriteEngine</span> <span class="k">on</span>
+        <span class="nb">RewriteRule</span>  ^$ public/    [L]
+        <span class="nb">RewriteRule</span>  (.*) public/$1 [L]
+    <span class="nt">&lt;/Directory&gt;</span>
+
+    <span class="nt">&lt;Directory</span> <span class="s">&quot;/var/www/test/public&quot;</span><span class="nt">&gt;</span>
+        <span class="nb">RewriteEngine</span> <span class="k">On</span>
+        <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-d
+        <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-f
+        <span class="nb">RewriteRule</span> ^(.*)$ index.php?_url=/$1 [QSA,L]
+    <span class="nt">&lt;/Directory&gt;</span>
+
+<span class="nt">&lt;/IfModule&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Виртуальные хосты<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Параметры можно также прописать в настройках конкретного виртуального хоста:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+
+    <span class="nb">ServerAdmin</span> admin@example.host
+    <span class="nb">DocumentRoot</span> <span class="s2">&quot;/var/vhosts/test/public&quot;</span>
+    <span class="nb">DirectoryIndex</span> index.php
+    <span class="nb">ServerName</span> example.host
+    <span class="nb">ServerAlias</span> www.example.host
+
+    <span class="nt">&lt;Directory</span> <span class="s">&quot;/var/vhosts/test/public&quot;</span><span class="nt">&gt;</span>
+        <span class="nb">Options</span> <span class="k">All</span>
+        <span class="nb">AllowOverride</span> <span class="k">All</span>
+        <span class="nb">Allow</span> from <span class="k">all</span>
+    <span class="nt">&lt;/Directory&gt;</span>
+
+<span class="nt">&lt;/VirtualHost&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="nginx.html" title="Установка на Nginx"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="wamp.html" title="Установка на WAMP"
+             >предыдущий</a> |</li>
+          <li class="right"><a href="install.html" >Установка</a> &raquo;</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

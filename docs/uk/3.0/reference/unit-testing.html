@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Unit testing &mdash; Phalcon 3.1.1 documentation (English)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="https://static.phalconphp.com/www/images/favicon.ico"/>
+    <link rel="top" title="Phalcon 3.1.1 documentation" href="../index.html" />
+    <link rel="next" title="Increasing Performance: What’s next?" href="whats-next.html" />
+    <link rel="prev" title="Debugging Applications" href="debug.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="whats-next.html" title="Increasing Performance: What’s next?"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="debug.html" title="Debugging Applications"
+             accesskey="P">previous</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 3.1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Unit testing</a><ul>
+<li><a class="reference internal" href="#integrating-phpunit-with-phalcon">Integrating PHPunit with phalcon</a></li>
+<li><a class="reference internal" href="#the-phpunit-helper-file">The PHPunit helper file</a></li>
+<li><a class="reference internal" href="#phpunit-xml-file">PHPunit.xml file</a></li>
+<li><a class="reference internal" href="#sample-unit-test">Sample unit test</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="debug.html" title="previous chapter">&lt; Debugging Applications</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="whats-next.html" title="next chapter">Increasing Performance: What&#8217;s next? &gt;</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/unit-testing.txt" rel="nofollow">Show Source</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="unit-testing">
+<h1>Unit testing<a class="headerlink" href="#unit-testing" title="Permalink to this headline">¶</a></h1>
+<p>Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.</p>
+<div class="section" id="integrating-phpunit-with-phalcon">
+<h2>Integrating PHPunit with phalcon<a class="headerlink" href="#integrating-phpunit-with-phalcon" title="Permalink to this headline">¶</a></h2>
+<p>If you don&#8217;t already have phpunit installed, you can do it by using the following composer command:</p>
+<div class="highlight-bash"><div class="highlight"><pre>composer require phpunit/phpunit:^5.0
+</pre></div>
+</div>
+<p>or by manually adding it to composer.json:</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;require-dev&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;phpunit/phpunit&quot;</span><span class="p">:</span> <span class="s2">&quot;^5.0&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Once phpunit is installed create a directory called &#8216;tests&#8217; in your root directory:</p>
+<div class="highlight-bash"><div class="highlight"><pre>app/
+public/
+tests/
+</pre></div>
+</div>
+<p>Next, we need a &#8216;helper&#8217; file to bootstrap the application for unit testing.</p>
+</div>
+<div class="section" id="the-phpunit-helper-file">
+<h2>The PHPunit helper file<a class="headerlink" href="#the-phpunit-helper-file" title="Permalink to this headline">¶</a></h2>
+<p>A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your tests/ directory as TestHelper.php.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Di</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Di\FactoryDefault</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
+
+<span class="nb">ini_set</span><span class="p">(</span><span class="s2">&quot;display_errors&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">error_reporting</span><span class="p">(</span><span class="k">E_ALL</span><span class="p">);</span>
+
+<span class="nb">define</span><span class="p">(</span><span class="s2">&quot;ROOT_PATH&quot;</span><span class="p">,</span> <span class="nx">__DIR__</span><span class="p">);</span>
+
+<span class="nb">set_include_path</span><span class="p">(</span>
+    <span class="nx">ROOT_PATH</span> <span class="o">.</span> <span class="nx">PATH_SEPARATOR</span> <span class="o">.</span> <span class="nb">get_include_path</span><span class="p">()</span>
+<span class="p">);</span>
+
+<span class="c1">// Required for phalcon/incubator</span>
+<span class="k">include</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/../vendor/autoload.php&quot;</span><span class="p">;</span>
+
+<span class="c1">// Use the application autoloader to autoload the classes</span>
+<span class="c1">// Autoload the dependencies found in composer</span>
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Loader</span><span class="p">();</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="nx">ROOT_PATH</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
+
+<span class="nx">Di</span><span class="o">::</span><span class="na">reset</span><span class="p">();</span>
+
+<span class="c1">// Add any needed services to the DI here</span>
+
+<span class="nx">Di</span><span class="o">::</span><span class="na">setDefault</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your main application.</p>
+<p>To help you build the unit tests, we made a few abstract classes you can use to bootstrap the unit tests themselves.
+These files exist in the Phalcon incubator &#64; <a class="reference external" href="https://github.com/phalcon/incubator">https://github.com/phalcon/incubator</a>.</p>
+<p>You can use the incubator library by adding it as a dependency:</p>
+<div class="highlight-bash"><div class="highlight"><pre>composer require phalcon/incubator
+</pre></div>
+</div>
+<p>or by manually adding it to composer.json:</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;require&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;phalcon/incubator&quot;</span><span class="p">:</span> <span class="s2">&quot;^3.0&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also clone the repository using the repo link above.</p>
+</div>
+<div class="section" id="phpunit-xml-file">
+<h2>PHPunit.xml file<a class="headerlink" href="#phpunit-xml-file" title="Permalink to this headline">¶</a></h2>
+<p>Now, create a phpunit file:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;phpunit</span> <span class="na">bootstrap=</span><span class="s">&quot;./TestHelper.php&quot;</span>
+         <span class="na">backupGlobals=</span><span class="s">&quot;false&quot;</span>
+         <span class="na">backupStaticAttributes=</span><span class="s">&quot;false&quot;</span>
+         <span class="na">verbose=</span><span class="s">&quot;true&quot;</span>
+         <span class="na">colors=</span><span class="s">&quot;false&quot;</span>
+         <span class="na">convertErrorsToExceptions=</span><span class="s">&quot;true&quot;</span>
+         <span class="na">convertNoticesToExceptions=</span><span class="s">&quot;true&quot;</span>
+         <span class="na">convertWarningsToExceptions=</span><span class="s">&quot;true&quot;</span>
+         <span class="na">processIsolation=</span><span class="s">&quot;false&quot;</span>
+         <span class="na">stopOnFailure=</span><span class="s">&quot;false&quot;</span>
+         <span class="na">syntaxCheck=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;testsuite</span> <span class="na">name=</span><span class="s">&quot;Phalcon - Testsuite&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;directory&gt;</span>./<span class="nt">&lt;/directory&gt;</span>
+    <span class="nt">&lt;/testsuite&gt;</span>
+<span class="nt">&lt;/phpunit&gt;</span>
+</pre></div>
+</div>
+<p>Modify the phpunit.xml to fit your needs and save it in tests/.</p>
+<p>This will run any tests under the tests/ directory.</p>
+</div>
+<div class="section" id="sample-unit-test">
+<h2>Sample unit test<a class="headerlink" href="#sample-unit-test" title="Permalink to this headline">¶</a></h2>
+<p>To run any unit tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.</p>
+<p>This example does not contain a config file, most test cases however, do need one. You can add it to the DI to get the UnitTestCase file.</p>
+<p>First create a base unit test called UnitTestCase.php in your /tests directory:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Di</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Test\UnitTestCase</span> <span class="k">as</span> <span class="nx">PhalconTestCase</span><span class="p">;</span>
+
+<span class="k">abstract</span> <span class="k">class</span> <span class="nc">UnitTestCase</span> <span class="k">extends</span> <span class="nx">PhalconTestCase</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var bool</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$_loaded</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">setUp</span><span class="p">();</span>
+
+        <span class="c1">// Load any additional services that might be required during testing</span>
+        <span class="nv">$di</span> <span class="o">=</span> <span class="nx">Di</span><span class="o">::</span><span class="na">getDefault</span><span class="p">();</span>
+
+        <span class="c1">// Get any DI components here. If you have a config, be sure to pass it to the parent</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setDi</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_loaded</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Check if the test case is setup properly</span>
+<span class="sd">     *</span>
+<span class="sd">     * @throws \PHPUnit_Framework_IncompleteTestError;</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__destruct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_loaded</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">\PHPUnit_Framework_IncompleteTestError</span><span class="p">(</span>
+                <span class="s2">&quot;Please run parent::setUp().&quot;</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It&#8217;s always a good idea to separate your Unit tests in namespaces. For this test we will create the namespace &#8216;Test&#8217;. So create a file called testsTestUnitTest.php:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Test</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Class UnitTest</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">UnitTest</span> <span class="k">extends</span> <span class="nx">\UnitTestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testTestCase</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span>
+            <span class="s2">&quot;works&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;works&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;This is OK&quot;</span>
+        <span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span>
+            <span class="s2">&quot;works&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;works1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;This will fail&quot;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now when you execute &#8216;phpunit&#8217; in your command-line from the tests directory you will get the following output:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>phpunit
+PHPUnit 3.7.23 by Sebastian Bergmann.
+
+Configuration <span class="nb">read </span>from /private/var/www/tests/phpunit.xml
+
+Time: <span class="m">3</span> ms, Memory: 3.25Mb
+
+There was <span class="m">1</span> failure:
+
+1<span class="o">)</span> Test<span class="se">\U</span>nitTest::testTestCase
+This will fail
+Failed asserting that two strings are equal.
+--- Expected
++++ Actual
+@@ @@
+-<span class="s1">&#39;works&#39;</span>
++<span class="s1">&#39;works1&#39;</span>
+
+/private/var/www/tests/Test/UnitTest.php:25
+
+FAILURES!
+Tests: 1, Assertions: 2, Failures: 1.
+</pre></div>
+</div>
+<p>Now you can start building your unit tests. You can view a good guide here (we also recommend reading the PHPunit documentation if you&#8217;re not familiar with PHPunit):</p>
+<p><a class="reference external" href="http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/">http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/</a></p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="whats-next.html" title="Increasing Performance: What’s next?"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="debug.html" title="Debugging Applications"
+             >previous</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.lazyload.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/highlight.pack.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.backstretch.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/custom.js"></script>
+
+  </body>
+</html>

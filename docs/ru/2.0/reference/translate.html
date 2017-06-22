@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Поддержка многоязычности &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Универсальный загрузчик классов" href="loader.html" />
+    <link rel="prev" title="Списки Контроля Доступа (ACL)" href="acl.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="loader.html" title="Универсальный загрузчик классов"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="acl.html" title="Списки Контроля Доступа (ACL)"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Поддержка многоязычности</a><ul>
+<li><a class="reference internal" href="#id2">Адаптеры</a></li>
+<li><a class="reference internal" href="#id3">Использование компонента</a></li>
+<li><a class="reference internal" href="#id4">Реализация собственных адаптеров</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="acl.html" title="предыдущая глава">&lt; Списки Контроля Доступа (ACL)</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="loader.html" title="следующая глава">Универсальный загрузчик классов &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/translate.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="id1">
+<h1>Поддержка многоязычности<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Компонент <a class="reference internal" href="../api/Phalcon_Translate.html"><em>Phalcon\Translate</em></a> поможет в создании многоязычных приложений. Приложения, использующие
+этот компонент, отображают контент на разных языках, основываясь на выборе пользователя из поддерживаемых приложением.</p>
+<div class="section" id="id2">
+<h2>Адаптеры<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Этот компонент позволяет использовать адаптеры для чтения, перевода сообщений из различных источников в едином виде.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Адаптер</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>NativeArray</td>
+<td>Использует PHP массивы для хранения. Это лучший вариант с точки зрения производительности.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>Использование компонента<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Строки переводов хранятся в файлах. Структура этих файлов может отличаться в зависимости от используемого адаптера. Phalcon дает вам свободу
+выбора в организации правил перевода строк. Типичной структурой может быть:</p>
+<div class="highlight-bash"><div class="highlight"><pre>app/messages/en.php
+app/messages/es.php
+app/messages/fr.php
+app/messages/zh.php
+</pre></div>
+</div>
+<p>Каждый файл содержит массив строк с переводами в виде ключ=&gt;значение. Для каждого файла перевода, ключи уникальны. Один и тот же массив используется в
+разных файлах, ключи в нём остаются прежними, а значения содержат переводы строк, разные для разных языков.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//app/messages/en.php</span>
+<span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;hi&quot;</span>      <span class="o">=&gt;</span> <span class="s2">&quot;Hello&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bye&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;Good Bye&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hi-name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Hello %name%&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;song&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;This song is %song%&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//app/messages/ru.php</span>
+<span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;hi&quot;</span>      <span class="o">=&gt;</span> <span class="s2">&quot;Здарова&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bye&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;Прощай&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hi-name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Здарова %name%&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;song&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;Композиция %song%&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Механизм осуществления перевода в приложении тривиален, но зависит от того, как вы хотите реализовать ее. Вы можете использовать
+автоматическое определение языка из браузера пользователя, или вы можете предоставить выбор языка пользователю.</p>
+<p>Простой способ обнаружения языка пользователя - разбор содержимого $_SERVER[&#8216;HTTP_ACCEPT_LANGUAGE&#8217;], доступ к нему можно получить
+непосредственно обратившись в $this-&gt;request-&gt;getBestLanguage() из действия/контроллера:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">UserController</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+
+  <span class="k">protected</span> <span class="k">function</span> <span class="nf">_getTranslation</span><span class="p">()</span>
+  <span class="p">{</span>
+
+    <span class="c1">// Получение оптимального языка из браузера</span>
+    <span class="nv">$language</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getBestLanguage</span><span class="p">();</span>
+
+    <span class="c1">// Проверка существования перевода для полученного языка</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="s2">&quot;app/messages/&quot;</span><span class="o">.</span><span class="nv">$language</span><span class="o">.</span><span class="s2">&quot;.php&quot;</span><span class="p">))</span> <span class="p">{</span>
+       <span class="k">require</span> <span class="s2">&quot;app/messages/&quot;</span><span class="o">.</span><span class="nv">$language</span><span class="o">.</span><span class="s2">&quot;.php&quot;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+       <span class="c1">// Переключение на язык по умолчанию</span>
+       <span class="k">require</span> <span class="s2">&quot;app/messages/en.php&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Возвращение объекта работы с переводом</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">\Phalcon\Translate\Adapter\NativeArray</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+       <span class="s2">&quot;content&quot;</span> <span class="o">=&gt;</span> <span class="nv">$messages</span>
+    <span class="p">));</span>
+
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;Mike&quot;</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_getTranslation</span><span class="p">());</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Метод _getTranslation в этом примере доступен для всех действий требующих перевода. Переменная $t передается в представление и позволяет
+непосредственно переводить строки:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- welcome --&gt;</span>
+<span class="c">&lt;!-- String: hi =&gt; &#39;Hello&#39; --&gt;</span>
+<span class="nt">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">),</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="nv">$name</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="nt">&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p>The &#8220;_&#8221; function is returning the translated string based on the index passed. Some strings need to incorporate placeholders for
+calculated data i.e. Hello %name%. These placeholders can be replaced with passed parameters in the &#8220;_ function. The passed parameters
+are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:</p>
+<p>Функция &#8220;_&#8221; возвращает переведенные строки на основе используемого индекса. В некоторых строках необходимо использовать шаблоны подстановок,
+например: &#8220;Здравствуйте % name%&#8221;. Эти подстановки (placeholders) могут быть заменены передаваемыми параметрами в функцию &#8220;_&#8221;. Параметры должны
+передаваться в виде массива ключ/значение, где ключ соответствует названию подстановки, а значение - фактическим данным для заменены:</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- welcome --&gt;</span>
+<span class="c">&lt;!-- String: hi-user =&gt; &#39;Hello %name%&#39; --&gt;</span>
+<span class="nt">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s2">&quot;hi-user&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="nt">&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p>Существуют так же приложения с многоязычностью основанной на параметрах в URL, например как <a class="reference external" href="http://www.mozilla.org/">http://www.mozilla.org/</a><strong>es-ES</strong>/firefox/.
+Реализовать такую схему на Phalcon можно используя компонент <a class="reference internal" href="routing.html"><em>Router</em></a>.</p>
+</div>
+<div class="section" id="id4">
+<h2>Реализация собственных адаптеров<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для создания адаптера необходимо реализовать интерфейс <a class="reference internal" href="../api/Phalcon_Translate_AdapterInterface.html"><em>Phalcon\Translate\AdapterInterface</em></a> или расширить существующий:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">MyTranslateAdapter</span> <span class="k">implements</span> <span class="nx">Phalcon\Translate\AdapterInterface</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Adapter constructor</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param array $data</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$options</span><span class="p">);</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Возвращает перевод строки по ключу</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param   string $translateKey</span>
+<span class="sd">     * @param   array $placeholders</span>
+<span class="sd">     * @return  string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">_</span><span class="p">(</span><span class="nv">$translateKey</span><span class="p">,</span> <span class="nv">$placeholders</span><span class="o">=</span><span class="k">null</span><span class="p">);</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Возвращает перевод, связанный с заданным ключом</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param   string $index</span>
+<span class="sd">     * @param   array $placeholders</span>
+<span class="sd">     * @return  string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">query</span><span class="p">(</span><span class="nv">$index</span><span class="p">,</span> <span class="nv">$placeholders</span><span class="o">=</span><span class="k">null</span><span class="p">);</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Проверяет существование перевода ключа во внутреннем массиве</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param   string $index</span>
+<span class="sd">     * @return  bool</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">exists</span><span class="p">(</span><span class="nv">$index</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Больше адаптеров перевода можно найти в <a class="reference external" href="https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter">Инкубаторе Phalcon</a></p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="loader.html" title="Универсальный загрузчик классов"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="acl.html" title="Списки Контроля Доступа (ACL)"
+             >предыдущий</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

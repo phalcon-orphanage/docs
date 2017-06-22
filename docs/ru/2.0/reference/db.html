@@ -1,0 +1,1087 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Уровень абстракции баз данных &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Интернационализация" href="intl.html" />
+    <link rel="prev" title="Очереди" href="queue.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="intl.html" title="Интернационализация"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="queue.html" title="Очереди"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Уровень абстракции баз данных</a><ul>
+<li><a class="reference internal" href="#id2">Адаптеры базы данных</a><ul>
+<li><a class="reference internal" href="#id3">Реализации собственных адаптеров</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">Диалекты баз данных</a><ul>
+<li><a class="reference internal" href="#id5">Реализации собственных диалектов</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">Подключение к базе данных</a></li>
+<li><a class="reference internal" href="#pdo">Настройка дополнительных параметров PDO</a></li>
+<li><a class="reference internal" href="#id7">Извлечение строк</a></li>
+<li><a class="reference internal" href="#id8">Подготавливаемые запросы</a></li>
+<li><a class="reference internal" href="#id9">Вставка/Обновление/Удаление строк</a></li>
+<li><a class="reference internal" href="#id10">Транзакции и вложенные транзакции</a></li>
+<li><a class="reference internal" href="#id11">События базы данных</a></li>
+<li><a class="reference internal" href="#sql">Профилирование запросов SQL</a></li>
+<li><a class="reference internal" href="#id12">Логирование SQL запросов</a><ul>
+<li><a class="reference internal" href="#id13">Реализация собственного логера</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">Описание Таблиц / Представлений</a></li>
+<li><a class="reference internal" href="#id15">Создание / Изменение / удаление таблиц</a><ul>
+<li><a class="reference internal" href="#id16">Создание таблиц</a></li>
+<li><a class="reference internal" href="#id17">Изменение таблиц</a></li>
+<li><a class="reference internal" href="#id18">Удаление таблицы</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="queue.html" title="предыдущая глава">&lt; Очереди</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="intl.html" title="следующая глава">Интернационализация &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/db.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="id1">
+<h1>Уровень абстракции баз данных<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p><a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> является компонентом, располагающимся под <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>,
+который обеспечивает уровень моделей во фреймворке. Он состоит из независимых абстракций высокого уровня для баз данных,
+полностью написанных на C.</p>
+<p>Этот компонент позволяет производить манипуляции с базой данных на более низком уровне, чем при использовании традиционных моделей.</p>
+<blockquote class="highlights">
+<div>Данное руководство не претендует на полную документацию доступных методов и аргументов. Пожалуйста, посетите: <a class="reference internal" href="../api/index.html"><em>API</em></a>
+для подробного изучения.</div></blockquote>
+<div class="section" id="id2">
+<h2>Адаптеры базы данных<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Данный компонент позволяет использовать адаптеры для инкапсуляции конкретных деталей системы баз данных. Phalcon использует PDO для подключения к базам данных. Поддерживаются следующие СУБД:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="69%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Имя</th>
+<th class="head">Описание</th>
+<th class="head">API</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>MySQL</td>
+<td>Наиболее часто используемая реляционная система управления базами данных (RDBMS), которая работает как сервер, обеспечивающий многопользовательский доступ к некоторому набору баз данных</td>
+<td><a class="reference internal" href="../api/Phalcon_Db_Adapter_Pdo_Mysql.html"><em>Phalcon\Db\Adapter\Pdo\Mysql</em></a></td>
+</tr>
+<tr class="row-odd"><td>PostgreSQL</td>
+<td>PostgreSQL является мощной RDBMS с открытым исходным кодом. PostgreSQL – это более чем 15 лет активного развития и проверенная архитектура, чем и завоевала прочную репутацию за надежность, целостность данных и точность.</td>
+<td><a class="reference internal" href="../api/Phalcon_Db_Adapter_Pdo_Postgresql.html"><em>Phalcon\Db\Adapter\Pdo\Postgresql</em></a></td>
+</tr>
+<tr class="row-even"><td>SQLite</td>
+<td>Библиотека SQLite реализует автономную, бессерверную, не требующую конфигурации и при этом поддерживающую транзакции базу данных на основе языка SQL.</td>
+<td><a class="reference internal" href="../api/Phalcon_Db_Adapter_Pdo_Sqlite.html"><em>Phalcon\Db\Adapter\Pdo\Sqlite</em></a></td>
+</tr>
+<tr class="row-odd"><td>Oracle</td>
+<td>Oracle является объектно-реляционной системой управления базами данных, производится и продается компанией Oracle Corporation.</td>
+<td><a class="reference internal" href="../api/Phalcon_Db_Adapter_Pdo_Oracle.html"><em>Phalcon\Db\Adapter\Pdo\Oracle</em></a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id3">
+<h3>Реализации собственных адаптеров<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Интерфейс <a class="reference internal" href="../api/Phalcon_Db_AdapterInterface.html"><em>Phalcon\Db\AdapterInterface</em></a> должен быть реализован для того, чтобы создать свой собственный адаптер базы данных или расширить существующий.</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Диалекты баз данных<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Приложение инкапсулирует специфические детали каждого компонента баз данных в диалектах. Которые в свою очередь предоставляют адаптером общие функции и генератор SQL.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="37%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Имя</th>
+<th class="head">Описание</th>
+<th class="head">API</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>MySQL</td>
+<td>Специфичные диалекты SQL для MySQL</td>
+<td><a class="reference internal" href="../api/Phalcon_Db_Dialect_Mysql.html"><em>Phalcon\Db\Dialect\Mysql</em></a></td>
+</tr>
+<tr class="row-odd"><td>PostgreSQL</td>
+<td>Специфичные диалекты SQL для PostgreSQL</td>
+<td><a class="reference internal" href="../api/Phalcon_Db_Dialect_Postgresql.html"><em>Phalcon\Db\Dialect\Postgresql</em></a></td>
+</tr>
+<tr class="row-even"><td>SQLite</td>
+<td>Специфичные диалекты SQL для SQLite</td>
+<td><a class="reference internal" href="../api/Phalcon_Db_Dialect_Sqlite.html"><em>Phalcon\Db\Dialect\Sqlite</em></a></td>
+</tr>
+<tr class="row-odd"><td>Oracle</td>
+<td>Специфичные диалекты SQL для Oracle</td>
+<td><a class="reference internal" href="../api/Phalcon_Db_Dialect_Oracle.html"><em>Phalcon\Db\Dialect\Oracle</em></a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id5">
+<h3>Реализации собственных диалектов<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Интерфейс <a class="reference internal" href="../api/Phalcon_Db_DialectInterface.html"><em>Phalcon\Db\DialectInterface</em></a> должен быть реализован для того, чтобы создать свой собственный диалект базы данных или расширить существующий.</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>Подключение к базе данных<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Чтобы создать подключение необходимо создать экземпляр класса адаптера. Для этого требуется только массив с параметрами соединения. В приведенном примере ниже показано, как создать соединение
+с обязательными и необязательными параметрами:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Обязательные</span>
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mike&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sigma&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;test_db&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// Необязательные</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s2">&quot;persistent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+<span class="c1">// Создаем соединение</span>
+<span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\Adapter\Pdo\Mysql</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Обязательные</span>
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;template&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// Необязательные</span>
+<span class="nv">$config</span><span class="p">[</span><span class="s2">&quot;schema&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;public&quot;</span><span class="p">;</span>
+
+<span class="c1">//  Создаем соединение</span>
+<span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\Adapter\Pdo\Postgresql</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Обязательные</span>
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;/path/to/database.db&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">//  Создаем соединение</span>
+<span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\Adapter\Pdo\Sqlite</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Базовая конфигурация</span>
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;scott&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;tiger&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dbname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.10.145/orcl&#39;</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="c1">// Расширенная конфигурация</span>
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;dbname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=xe)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=20)(DELAY=5))))&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;scott&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;tiger&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;charset&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;AL32UTF8&#39;</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="c1">// Создаем соединение</span>
+<span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\Adapter\Pdo\Oracle</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pdo">
+<h2>Настройка дополнительных параметров PDO<a class="headerlink" href="#pdo" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Вы можете установить опции  PDO во время соединения, передавая параметры ‘options’:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Создаем соединение с настройками PDO</span>
+<span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\Adapter\Pdo\Mysql</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sigma&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;test_db&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;options&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="nx">PDO</span><span class="o">::</span><span class="na">MYSQL_ATTR_INIT_COMMAND</span> <span class="o">=&gt;</span> <span class="s2">&quot;SET NAMES \&#39;UTF8\&#39;&quot;</span><span class="p">,</span>
+        <span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_CASE</span> <span class="o">=&gt;</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">CASE_LOWER</span>
+    <span class="p">)</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Извлечение строк<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> предоставляет несколько методов для получения строк из таблиц.
+В данном случае требуется использовать синтаксис SQL  используемой СУБД:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, name FROM robots ORDER BY name&quot;</span><span class="p">;</span>
+
+<span class="c1">//Отправляем SQL в базу данных</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+<span class="c1">// Выводим на экран имя робота</span>
+<span class="k">while</span> <span class="p">(</span><span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">())</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="nv">$robot</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// Получаем все строки из таблицы в виде массива</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="nv">$robot</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// Получаем только первую строку из таблицы</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchOne</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>По умолчанию эти методы создают массив с ассоциативными и числовыми индексами.
+Вы можете изменить это поведение с помощью Phalcon\Db\Result::setFetchMode().
+Этот метод получает константу, которая определяет, какой тип индекса требуется.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Константа</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Phalcon\Db::FETCH_NUM</td>
+<td>Возвращает массив с числовыми индексами</td>
+</tr>
+<tr class="row-odd"><td>Phalcon\Db::FETCH_ASSOC</td>
+<td>Возвращает массив с ассоциативными индексами</td>
+</tr>
+<tr class="row-even"><td>Phalcon\Db::FETCH_BOTH</td>
+<td>Возвращает массив с ассоциативными и числовыми индексами</td>
+</tr>
+<tr class="row-odd"><td>Phalcon\Db::FETCH_OBJ</td>
+<td>Возвращает объект вместо массива</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, name FROM robots ORDER BY name&quot;</span><span class="p">;</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+<span class="nv">$result</span><span class="o">-&gt;</span><span class="na">setFetchMode</span><span class="p">(</span><span class="nx">Phalcon\Db</span><span class="o">::</span><span class="na">FETCH_NUM</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">())</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="nv">$robot</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Phalcon\Db::query() возвращает экземпляр класса <a class="reference internal" href="../api/Phalcon_Db_Result_Pdo.html"><em>Phalcon\Db\Result\Pdo</em></a>.
+Эти объекты инкапсулируют все методы, которые связаны с возвращаемым набором данных, т.е. перебор набора данных,
+поиск конкретной записи, получение количества строк в наборе данных и т.д.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, name FROM robots&quot;</span><span class="p">;</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+<span class="c1">//  Перебор набора данных</span>
+<span class="k">while</span> <span class="p">(</span><span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">())</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="nv">$robot</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// Получение третьей строки</span>
+<span class="nv">$result</span><span class="o">-&gt;</span><span class="na">seek</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">();</span>
+
+<span class="c1">// Получение количества строк в наборе данных</span>
+<span class="k">echo</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">numRows</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Подготавливаемые запросы<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Подготавливаемые запросы также поддерживается в  <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a>.Хотя при ее использовании есть
+минимальное влияние на производительность, рекомендуется использовать эту методику, чтобы исключить возможность
+SQL инъекций в  вашем коде. Поддерживаются как именованные, так и неименованные псевдопеременные. Связывание параметров
+может просто быть достигнуто следующим образом:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Подготовленный запрос с неименованными псевдопеременными</span>
+<span class="nv">$sql</span>    <span class="o">=</span> <span class="s2">&quot;SELECT * FROM robots WHERE name = ? ORDER BY name&quot;</span><span class="p">;</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Wall-E&quot;</span><span class="p">));</span>
+
+<span class="c1">// Подготовленный запрос с именованными псевдопеременными</span>
+<span class="nv">$sql</span>     <span class="o">=</span> <span class="s2">&quot;INSERT INTO `robots`(name`, year) VALUES (:name, :year)&quot;</span><span class="p">;</span>
+<span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Astro Boy&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">1952</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>Вставка/Обновление/Удаление строк<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Вставлять, обновлять и удалять строки вы можете с помощью стандартного SQL запроса или использовать методы,
+предоставляемые классом:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Вставка с помощью стандартного SQL запроса</span>
+<span class="nv">$sql</span>     <span class="o">=</span> <span class="s2">&quot;INSERT INTO `robots`(`name`, `year`) VALUES (&#39;Astro Boy&#39;, 1952)&quot;</span><span class="p">;</span>
+<span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+<span class="c1">// с помощью подготовленного запроса</span>
+<span class="nv">$sql</span>     <span class="o">=</span> <span class="s2">&quot;INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)&quot;</span><span class="p">;</span>
+<span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Astroy Boy&#39;</span><span class="p">,</span> <span class="mi">1952</span><span class="p">));</span>
+
+<span class="c1">// Динамическое создание запроса с помощью метода класса</span>
+<span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>
+   <span class="s2">&quot;robots&quot;</span><span class="p">,</span>
+   <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Astro Boy&quot;</span><span class="p">,</span> <span class="mi">1952</span><span class="p">),</span>
+   <span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Обновление с помощью стандартного SQL запроса</span>
+<span class="nv">$sql</span>     <span class="o">=</span> <span class="s2">&quot;UPDATE `robots` SET `name` = &#39;Astro boy&#39; WHERE `id` = 101&quot;</span><span class="p">;</span>
+<span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+<span class="c1">// с помощью подготовленного запроса</span>
+<span class="nv">$sql</span>     <span class="o">=</span> <span class="s2">&quot;UPDATE `robots` SET `name` = ? WHERE `id` = ?&quot;</span><span class="p">;</span>
+<span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Astroy Boy&#39;</span><span class="p">,</span> <span class="mi">101</span><span class="p">));</span>
+
+<span class="c1">// Динамическое создание запроса с помощью метода класса</span>
+<span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span>
+   <span class="s2">&quot;robots&quot;</span><span class="p">,</span>
+   <span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">),</span>
+   <span class="k">array</span><span class="p">(</span><span class="s2">&quot;New Astro Boy&quot;</span><span class="p">),</span>
+   <span class="s2">&quot;id = 101&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// Удаление с помощью стандартного SQL запроса</span>
+<span class="nv">$sql</span>     <span class="o">=</span> <span class="s2">&quot;DELETE `robots` WHERE `id` = 101&quot;</span><span class="p">;</span>
+<span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+<span class="c1">// с помощью подготовленного запроса</span>
+<span class="nv">$sql</span>     <span class="o">=</span> <span class="s2">&quot;DELETE `robots` WHERE `id` = ?&quot;</span><span class="p">;</span>
+<span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="mi">101</span><span class="p">));</span>
+
+<span class="c1">// Динамическое создание запроса с помощью метода класса</span>
+<span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s2">&quot;robots&quot;</span><span class="p">,</span> <span class="s2">&quot;id = 101&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>Транзакции и вложенные транзакции<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Работа с транзакциями поддерживается с помощью PDO.  Манипуляции с данными внутри транзакции часто увеличивает
+скорость работы базы данных на большинстве систем.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">try</span> <span class="p">{</span>
+
+    <span class="c1">// Начало новой транзакции</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">begin</span><span class="p">();</span>
+
+    <span class="c1">// Выполнение нескольких команд SQL</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="s2">&quot;DELETE `robots` WHERE `id` = 101&quot;</span><span class="p">);</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="s2">&quot;DELETE `robots` WHERE `id` = 102&quot;</span><span class="p">);</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="s2">&quot;DELETE `robots` WHERE `id` = 103&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Фиксируем изменения в транзакции, если все хорошо.</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
+
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// В случаи исключения откатываем все изменения</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">rollback</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>В дополнение к стандартным транзакциям, Phalcon\Db обеспечивает встроенную поддержку <a class="reference external" href="http://en.wikipedia.org/wiki/Nested_transaction">вложенных транзакции</a>
+(если база данных поддерживает их). Когда вы вызываете метод begin() во второй раз – создается вложенная транзакция:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">try</span> <span class="p">{</span>
+
+    <span class="c1">// Начало новой транзакции</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">begin</span><span class="p">();</span>
+
+    <span class="c1">// Выполнение нескольких команд SQL</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="s2">&quot;DELETE `robots` WHERE `id` = 101&quot;</span><span class="p">);</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+
+        <span class="c1">// Начало вложенной транзакции</span>
+        <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">begin</span><span class="p">();</span>
+
+        <span class="c1">// Выполнение нескольких команд SQL во вложенной транзакции</span>
+        <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="s2">&quot;DELETE `robots` WHERE `id` = 102&quot;</span><span class="p">);</span>
+        <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="s2">&quot;DELETE `robots` WHERE `id` = 103&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Создаем точку сохранения</span>
+        <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
+
+    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// В случаи исключения откатываем все изменения</span>
+        <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">rollback</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Продолжаем Выполнение нескольких команд SQL</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="s2">&quot;DELETE `robots` WHERE `id` = 104&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Фиксируем изменения в транзакции, если все хорошо.</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
+
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// В случаи исключения откатываем все изменения</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">rollback</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>События базы данных<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> способен передавать <a class="reference internal" href="events.html"><em>EventsManager</em></a>, если оно есть.
+Некоторые события при возвращении булева значения ‘false’ могут остановить выполняемую операцию. Поддерживаются
+следующие события:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="56%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Название</th>
+<th class="head">Когда срабатывает</th>
+<th class="head">Может остановить работу?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>afterConnect</td>
+<td>После успешного подключения к БД</td>
+<td>Нет</td>
+</tr>
+<tr class="row-odd"><td>beforeQuery</td>
+<td>Перед отправкой SQL в БД</td>
+<td>Да</td>
+</tr>
+<tr class="row-even"><td>afterQuery</td>
+<td>После отправки запроса в БД</td>
+<td>Нет</td>
+</tr>
+<tr class="row-odd"><td>beforeDisconnect</td>
+<td>Перед закрытием временного соединения с БД</td>
+<td>Нет</td>
+</tr>
+<tr class="row-even"><td>beginTransaction</td>
+<td>Перед началом транзакции</td>
+<td>Нет</td>
+</tr>
+<tr class="row-odd"><td>rollbackTransaction</td>
+<td>Перед откатом изменений произведенных в транзакции</td>
+<td>Нет</td>
+</tr>
+<tr class="row-even"><td>commitTransaction</td>
+<td>Перед фиксацией транзакции</td>
+<td>Нет</td>
+</tr>
+</tbody>
+</table>
+<p>Привязать менеджер событий к соединению просто, <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> будет вызывать событие с
+именем “db”:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">,</span>
+    <span class="nx">\Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">Connection</span><span class="p">;</span>
+
+<span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+<span class="c1">// Прослушать все события базы данных</span>
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="nv">$dbListener</span><span class="p">);</span>
+
+<span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Connection</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;invo&quot;</span>
+<span class="p">));</span>
+
+<span class="c1">// Назначаем менеджер событий экземпляру адаптера БД</span>
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Иметь возможность остановить выполнение SQL очень полезно, если вы хотите осуществить последнюю проверку SQL на наличие SQL инъекций:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;db:beforeQuery&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Проверка на наличие вредоносных ключевых слов в SQL</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s1">&#39;/DROP|ALTER/i&#39;</span><span class="p">,</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">()))</span> <span class="p">{</span>
+        <span class="c1">// DROP / ALTER операции не разрешено использовать в приложении,</span>
+        <span class="c1">// это должно быть SQL инъекция!</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">//Все хорошо</span>
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sql">
+<h2>Профилирование запросов SQL<a class="headerlink" href="#sql" title="Ссылка на этот заголовок">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> включает в себя компонент профилирования SQL запросов под
+названием <a class="reference internal" href="../api/Phalcon_Db_Profiler.html"><em>Phalcon\Db\Profiler</em></a>, который используется для анализа
+производительности запросов к базе данных для того, чтобы диагностировать проблему с производительностью
+и обнаружить узкие места.</p>
+<p>Профилировать базу данных легко с помощью <a class="reference internal" href="../api/Phalcon_Db_Profiler.html"><em>Phalcon\Db\Profiler</em></a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">,</span>
+    <span class="nx">Phalcon\Db\Profiler</span> <span class="k">as</span> <span class="nx">DbProfiler</span><span class="p">;</span>
+
+<span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+<span class="nv">$profiler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DbProfiler</span><span class="p">();</span>
+
+<span class="c1">// Слушаем все события БД</span>
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$profiler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;beforeQuery&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Запуск профайлера с текущим соединением</span>
+        <span class="nv">$profiler</span><span class="o">-&gt;</span><span class="na">startProfile</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">());</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;afterQuery&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Остановка текущего профайлера</span>
+        <span class="nv">$profiler</span><span class="o">-&gt;</span><span class="na">stopProfile</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// Назначаем менеджер событий соединению</span>
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT buyer_name, quantity, product_name &quot;</span>
+     <span class="o">.</span> <span class="s2">&quot;FROM buyers &quot;</span>
+     <span class="o">.</span> <span class="s2">&quot;LEFT JOIN products ON buyers.pid = products.id&quot;</span><span class="p">;</span>
+
+<span class="c1">// Выполняем SQLзапрос</span>
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+<span class="c1">// Получаем последний профиль в профайлере</span>
+<span class="nv">$profile</span> <span class="o">=</span> <span class="nv">$profiler</span><span class="o">-&gt;</span><span class="na">getLastProfile</span><span class="p">();</span>
+
+<span class="k">echo</span> <span class="s2">&quot;SQL Statement: &quot;</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;Start Time: &quot;</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getInitialTime</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;Final Time: &quot;</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getFinalTime</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;Total Elapsed Time: &quot;</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getTotalElapsedSeconds</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Вы также можете создать свой собственный компонент профилирования на основе <a class="reference internal" href="../api/Phalcon_Db_Profiler.html"><em>Phalcon\Db\Profiler</em></a>
+для записи статистики запросов к БД в режиме реального времени:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">,</span>
+    <span class="nx">Phalcon\Db\Profiler</span> <span class="k">as</span> <span class="nx">Profiler</span><span class="p">,</span>
+    <span class="nx">Phalcon\Db\Profiler\Item</span> <span class="k">as</span> <span class="nx">Item</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DbProfiler</span> <span class="k">extends</span> <span class="nx">Profiler</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Выполняется перед отправкой SQL запроса на сервер БД</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeStartProfile</span><span class="p">(</span><span class="nx">Item</span> <span class="nv">$profile</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Выполняется после отправки SQL запроса на сервер БД</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">afterEndProfile</span><span class="p">(</span><span class="nx">Item</span> <span class="nv">$profile</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getTotalElapsedSeconds</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">// Создание менеджера событий</span>
+<span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+<span class="c1">// Создание слушателя</span>
+<span class="nv">$dbProfiler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DbProfiler</span><span class="p">();</span>
+
+<span class="c1">// Прикрепляем слушателя ко всем событиям базы данных</span>
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="nv">$dbProfiler</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>Логирование SQL запросов<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Использование компонентов высокого уровня абстракции для доступа к базам данных, таких как
+<a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a>, усложняет понимание того, какие запросы отправляются в базу данных.
+<a class="reference internal" href="../api/Phalcon_Logger.html"><em>Phalcon\Logger</em></a> взаимодействует с <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a>,
+обеспечивая возможность логирования в слое абстракции базы данных.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Logger</span><span class="p">,</span>
+    <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">,</span>
+    <span class="nx">Phalcon\Logger\Adapter\File</span> <span class="k">as</span> <span class="nx">FileLogger</span><span class="p">;</span>
+
+<span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+<span class="nv">$logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileLogger</span><span class="p">(</span><span class="s2">&quot;app/logs/db.log&quot;</span><span class="p">);</span>
+
+<span class="c1">// Слушаем все события БД</span>
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$logger</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;beforeQuery&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">(),</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">INFO</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// Назначаем менеджер событий соединению</span>
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+<span class="c1">// Выполняем несколько SQL запросов</span>
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>
+    <span class="s2">&quot;products&quot;</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Hot pepper&quot;</span><span class="p">,</span> <span class="mf">3.50</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Упомянутый выше файл <em>app/logs/db.log</em> будет содержать что-то похожее на это:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">[Sun, 29 Apr 12 22:35:26 -0500][DEBUG][Resource Id #77] INSERT INTO products</span>
+<span class="x">(name, price) VALUES (&#39;Hot pepper&#39;, 3.50)</span>
+</pre></div>
+</div>
+<div class="section" id="id13">
+<h3>Реализация собственного логера<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Вы можете реализовать свой собственный класс логера запросов к базе данных, путем создания класса, который реализует
+единственный метод, именуемый «log». Метод должен принимать строку в качестве первого аргумента. Затем Вы можете
+передать ваш объект логера в  метод Phalcon\Db::setLogger(), после чего любые выполняемые запросы SQL будут
+вызывать этот метод для логирования результата запроса.</p>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>Описание Таблиц / Представлений<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> также предоставляет методы для получения подробной информации о таблицах и
+представлениях:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Получаем таблицы из базы данных test_db</span>
+<span class="nv">$tables</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">&quot;test_db&quot;</span><span class="p">);</span>
+
+<span class="c1">// Есть ли таблица &#39;robots&#39; в базе данных?</span>
+<span class="nv">$exists</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">&quot;robots&quot;</span><span class="p">);</span>
+
+<span class="c1">// Получаем имена, типы данных и свойства полей таблицы &#39;robots&#39;</span>
+<span class="nv">$fields</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">&quot;robots&quot;</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$fields</span> <span class="k">as</span> <span class="nv">$field</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Column Type: &quot;</span><span class="p">,</span> <span class="nv">$field</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// Получаем индексы таблицы &#39;robots&#39;</span>
+<span class="nv">$indexes</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeIndexes</span><span class="p">(</span><span class="s2">&quot;robots&quot;</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$indexes</span> <span class="k">as</span> <span class="nv">$index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$index</span><span class="o">-&gt;</span><span class="na">getColumns</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// Получаем внешние ключи на таблицу &#39;robots&#39;</span>
+<span class="nv">$references</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeReferences</span><span class="p">(</span><span class="s2">&quot;robots&quot;</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$references</span> <span class="k">as</span> <span class="nv">$reference</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Выводим на экран ссылаемые столбцы</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$reference</span><span class="o">-&gt;</span><span class="na">getReferencedColumns</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Таблица описания  очень похожа на результат команды “DESCRIBE” в MySQL, она содержит следующую информацию:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Индексы</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Field</td>
+<td>Имя поля</td>
+</tr>
+<tr class="row-odd"><td>Type</td>
+<td>Тип столбца</td>
+</tr>
+<tr class="row-even"><td>Key</td>
+<td>Является ли столбец частью первичного ключа или индексом?</td>
+</tr>
+<tr class="row-odd"><td>Null</td>
+<td>Допускается ли значение NULL.</td>
+</tr>
+</tbody>
+</table>
+<p>Методы для получения сведений о представлениях также реализованы для всех поддерживаемых баз данных:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Получить все представления из базы данных ’test_db’</span>
+<span class="nv">$tables</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">listViews</span><span class="p">(</span><span class="s2">&quot;test_db&quot;</span><span class="p">);</span>
+
+<span class="c1">// Есть ли представление ‘robots’ в базе данных?</span>
+<span class="nv">$exists</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">viewExists</span><span class="p">(</span><span class="s2">&quot;robots&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>Создание / Изменение / удаление таблиц<a class="headerlink" href="#id15" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Различные системы баз данных (MySQL, PostgreSQL и др.) предоставляют возможность создавать, изменять
+или удалять таблицы с использованием  таких команды как CREATE, ALTER или DROP. Синтаксис SQL отличается в
+зависимости от того, какая база данных используется системой.
+<a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> предлагает единый интерфейс для изменения таблиц, без необходимости
+дифференцировать синтаксис SQL на основании системы хранения данных.</p>
+<div class="section" id="id16">
+<h3>Создание таблиц<a class="headerlink" href="#id16" title="Ссылка на этот заголовок">¶</a></h3>
+<p>В следующем примере показано, как создать таблицу:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">\Phalcon\Db\Column</span> <span class="k">as</span> <span class="nx">Column</span><span class="p">;</span>
+
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">createTable</span><span class="p">(</span>
+    <span class="s2">&quot;robots&quot;</span><span class="p">,</span>
+    <span class="k">null</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span>
+       <span class="s2">&quot;columns&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span>
+                <span class="k">array</span><span class="p">(</span>
+                    <span class="s2">&quot;type&quot;</span>          <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
+                    <span class="s2">&quot;size&quot;</span>          <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+                    <span class="s2">&quot;notNull&quot;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                    <span class="s2">&quot;autoIncrement&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">),</span>
+            <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                <span class="k">array</span><span class="p">(</span>
+                    <span class="s2">&quot;type&quot;</span>    <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_VARCHAR</span><span class="p">,</span>
+                    <span class="s2">&quot;size&quot;</span>    <span class="o">=&gt;</span> <span class="mi">70</span><span class="p">,</span>
+                    <span class="s2">&quot;notNull&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">),</span>
+            <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">,</span>
+                <span class="k">array</span><span class="p">(</span>
+                    <span class="s2">&quot;type&quot;</span>    <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
+                    <span class="s2">&quot;size&quot;</span>    <span class="o">=&gt;</span> <span class="mi">11</span><span class="p">,</span>
+                    <span class="s2">&quot;notNull&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Phalcon\Db::createTable() принимает ассоциативный массив описывающий таблицу. Столбцы определяются классом
+<a class="reference internal" href="../api/Phalcon_Db_Column.html"><em>Phalcon\Db\Column</em></a>. В таблице ниже показаны варианты, доступные для определения
+столбца:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="80%" />
+<col width="10%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Опция</th>
+<th class="head">Описани</th>
+<th class="head">Необязательный?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#8220;type&#8221;</td>
+<td>Тип столбца. Должен быть  константой быть Phalcon\Db\Column constant (см. ниже список)</td>
+<td>Нет</td>
+</tr>
+<tr class="row-odd"><td>&#8220;primary&#8221;</td>
+<td>True, если столбец является частью первичного ключа таблицы</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>&#8220;size&#8221;</td>
+<td>Некоторые типы столбцов, такие как VARCHAR или INTEGER, могут иметь определенный размер</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>&#8220;scale&#8221;</td>
+<td>DECIMAL или NUMBER столбцы могут  указывать точность (до какого десятичного знака требуется хранить числа).</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>&#8220;unsigned&#8221;</td>
+<td>INTEGER столбцы могут быть знаковыми или беззнаковыми. Эта опция не распространяется на другие типы столбцов.</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>&#8220;notNull&#8221;</td>
+<td>Может ли столбец хранить нулевые значения?</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>&#8220;autoIncrement&#8221;</td>
+<td>С помощью этой опции, столбец заполняется автоматически с автоинкрементным целым. Только один столбец в таблице может иметь этот атрибут.</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>&#8220;bind&#8221;</td>
+<td>Одна из BIND_TYPE_* констант говорящая, как колонки должны быть привязаны перед сохранением.</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>&#8220;first&#8221;</td>
+<td>Колонки должны быть расположены на первой позиции в порядке столбцов</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>&#8220;after&#8221;</td>
+<td>Колонка должна быть расположена после указанного столбца</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Phalcon\Db поддерживает следующие типы столбцов базы данных:</p>
+<ul class="simple">
+<li>Phalcon\Db\Column::TYPE_INTEGER</li>
+<li>Phalcon\Db\Column::TYPE_DATE</li>
+<li>Phalcon\Db\Column::TYPE_VARCHAR</li>
+<li>Phalcon\Db\Column::TYPE_DECIMAL</li>
+<li>Phalcon\Db\Column::TYPE_DATETIME</li>
+<li>Phalcon\Db\Column::TYPE_CHAR</li>
+<li>Phalcon\Db\Column::TYPE_TEXT</li>
+</ul>
+<p>Ассоциативный массив, переданный в  Phalcon\Db::createTable() может иметь возможных ключей:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="81%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Индекс</th>
+<th class="head">Описание</th>
+<th class="head">Необязательный?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#8220;columns&#8221;</td>
+<td>Массив с набором столбцов таблицы определен с <a class="reference internal" href="../api/Phalcon_Db_Column.html"><em>Phalcon\Db\Column</em></a></td>
+<td>Нет</td>
+</tr>
+<tr class="row-odd"><td>&#8220;indexes&#8221;</td>
+<td>Массив с набором индексов таблицы, определенные с <a class="reference internal" href="../api/Phalcon_Db_Index.html"><em>Phalcon\Db\Index</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-even"><td>&#8220;references&#8221;</td>
+<td>Массив с набором ссылок на таблицы (внешние ключи), определенный с <a class="reference internal" href="../api/Phalcon_Db_Reference.html"><em>Phalcon\Db\Reference</em></a></td>
+<td>Да</td>
+</tr>
+<tr class="row-odd"><td>&#8220;options&#8221;</td>
+<td>Массив с набором опций для создания таблицы. Эти опции часто связаны с системой базы данных, в которых миграции был сгенерирован.</td>
+<td>Да</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id17">
+<h3>Изменение таблиц<a class="headerlink" href="#id17" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Если ваше приложение растет, вам, возможно, потребуется вносить изменения в  базу данных, как часть рефакторинга или
+добавление нового функционала. Не все базы данных позволяют изменять существующие столбцы или добавить столбцы между
+двумя существующими. <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> ограничено  этими особенностями реализации.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Db\Column</span> <span class="k">as</span> <span class="nx">Column</span><span class="p">;</span>
+
+<span class="c1">// Добавляем новый столбец</span>
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s2">&quot;robots&quot;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span><span class="s2">&quot;robot_type&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;type&quot;</span>    <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_VARCHAR</span><span class="p">,</span>
+        <span class="s2">&quot;size&quot;</span>    <span class="o">=&gt;</span> <span class="mi">32</span><span class="p">,</span>
+        <span class="s2">&quot;notNull&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+        <span class="s2">&quot;after&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;name&quot;</span>
+    <span class="p">))</span>
+<span class="p">);</span>
+
+<span class="c1">// Изменение существующего столбца</span>
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">modifyColumn</span><span class="p">(</span><span class="s2">&quot;robots&quot;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_VARCHAR</span><span class="p">,</span>
+    <span class="s2">&quot;size&quot;</span> <span class="o">=&gt;</span> <span class="mi">40</span><span class="p">,</span>
+    <span class="s2">&quot;notNull&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<span class="p">)));</span>
+
+<span class="c1">// Удаление столбца “name”</span>
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">deleteColumn</span><span class="p">(</span><span class="s2">&quot;robots&quot;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id18">
+<h3>Удаление таблицы<a class="headerlink" href="#id18" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Пример удаления таблицы:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Удаление таблицы “robots” из активной базы данных</span>
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">dropTable</span><span class="p">(</span><span class="s2">&quot;robots&quot;</span><span class="p">);</span>
+
+<span class="c1">//Удаление таблицы &quot;robots&quot; из базы данных &quot;machines&quot;</span>
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">dropTable</span><span class="p">(</span><span class="s2">&quot;robots&quot;</span><span class="p">,</span> <span class="s2">&quot;machines&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="intl.html" title="Интернационализация"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="queue.html" title="Очереди"
+             >предыдущий</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

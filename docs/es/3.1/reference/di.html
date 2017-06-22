@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Inyección de Dependencias/Localización de Servicios &mdash; documentación de Phalcon - 3.1.1 (Spanish / Español)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="documentación de Phalcon - 3.1.1" href="../index.html" />
+    <link rel="next" title="The MVC Architecture" href="mvc.html" />
+    <link rel="prev" title="List of examples" href="samples.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="mvc.html" title="The MVC Architecture"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="samples.html" title="List of examples"
+             accesskey="P">anterior</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">documentación de Phalcon - 3.1.1</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Tabla de Contenidos</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Inyección de Dependencias/Localización de Servicios</a><ul>
+<li><a class="reference internal" href="#registrar-servicios-en-el-contenedor">Registrar servicios en el contenedor</a><ul>
+<li><a class="reference internal" href="#registro-simple">Registro simple</a><ul>
+<li><a class="reference internal" href="#string">String</a></li>
+<li><a class="reference internal" href="#objetos">Objetos</a></li>
+<li><a class="reference internal" href="#funciones-anonimas">Funciones anónimas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#registro-avanzado">Registro Avanzado</a><ul>
+<li><a class="reference internal" href="#inyeccion-en-el-constructor">Inyección en el Constructor</a></li>
+<li><a class="reference internal" href="#inyeccion-via-setters">Inyección via Setters</a></li>
+<li><a class="reference internal" href="#inyeccion-de-propiedades">Inyección de Propiedades</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#array-syntax">Array Syntax</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#resolver-servicios">Resolver Servicios</a><ul>
+<li><a class="reference internal" href="#events">Events</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#servicios-compartidos">Servicios Compartidos</a></li>
+<li><a class="reference internal" href="#manipular-servicios-individualmente">Manipular servicios individualmente</a></li>
+<li><a class="reference internal" href="#instanciar-clases-via-el-contenedor-de-servicios">Instanciar clases via el contenedor de servicios</a></li>
+<li><a class="reference internal" href="#automatic-injecting-of-the-di-itself">Automatic Injecting of the DI itself</a></li>
+<li><a class="reference internal" href="#organizing-services-in-files">Organizing services in files</a></li>
+<li><a class="reference internal" href="#accessing-the-di-in-a-static-way">Accessing the DI in a static way</a></li>
+<li><a class="reference internal" href="#factory-default-di">Factory Default DI</a></li>
+<li><a class="reference internal" href="#service-name-conventions">Service Name Conventions</a></li>
+<li><a class="reference internal" href="#implementing-your-own-di">Implementing your own DI</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Tema anterior</h4>
+            <p class="topless"><a href="samples.html" title="capítulo anterior">&lt; List of examples</a></p>
+            <h4>Próximo tema</h4>
+            <p class="topless"><a href="mvc.html" title="próximo capítulo">The MVC Architecture &gt;</a></p>
+            <h3>Esta página</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/di.txt" rel="nofollow">Mostrar el código</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="inyeccion-de-dependencias-localizacion-de-servicios">
+<h1>Inyección de Dependencias/Localización de Servicios<a class="headerlink" href="#inyeccion-de-dependencias-localizacion-de-servicios" title="Enlazar permanentemente con este título">¶</a></h1>
+<blockquote class="highlights">
+<div>Before reading this section, it is wise to read <a class="reference internal" href="di-explained.html"><em>the section which explains why Phalcon uses service location and dependency injection</em></a>.</div></blockquote>
+<p><a class="reference internal" href="../api/Phalcon_Di.html"><em>Phalcon\Di</em></a> es un componente que implementa inyección de dependencias y localización de servicios, de la misma manera es un contenedor para ellos.</p>
+<p>Ya que Phalcon es altamente desacoplado, <a class="reference internal" href="../api/Phalcon_Di.html"><em>Phalcon\Di</em></a> es esencial para integrar los diferentes componentes del framework. El desarrollador puede
+usar este componente para inyectar dependencias y administrar instancias globales de las distintas clases usadas en el framework.</p>
+<p>Basicamente, la localización de servicios significa que los objetos no reciben sus dependencias
+a partir de setters o en su constructor, sino que los solicitan al localizador. Esto reduce la complejidad ya que solo hay
+una manera únificada de acceder a las dependencias requeridas dentro de un componente.</p>
+<p>Adicionalmente, este patrón hace el código más testeable, haciendolo menos propenso a errores.</p>
+<div class="section" id="registrar-servicios-en-el-contenedor">
+<h2>Registrar servicios en el contenedor<a class="headerlink" href="#registrar-servicios-en-el-contenedor" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El framework en si mismo ó el desarrollador pueden registrar servicios. Cuando un componente A requiere del componente B (o una instancia de su clase) para operar,
+puede obtener el componente B del contenedor, en vez de crear una instancia directamente del componente B.</p>
+<p>Esta manera de trabajar nos da muchas ventajas:</p>
+<ul class="simple">
+<li>Podemos facilmente reemplazar un componente con uno creado por nosotros mismos o un tercero.</li>
+<li>Podemos controlar la manera en la que los objetos se inicializan, permitiendonos configurarlos como se requiera antes de entregarlos a sus componentes.</li>
+<li>Podemos mantener instancias globales de componentes de manera estructurada y únificada.</li>
+</ul>
+<p>Los servicios pueden ser registrados de distintas maneras:</p>
+<div class="section" id="registro-simple">
+<h3>Registro simple<a class="headerlink" href="#registro-simple" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Como se vió anteriormente, hay muchos tipos de registrar servicios, a estos les denomiamos simples:</p>
+<div class="section" id="string">
+<h4>String<a class="headerlink" href="#string" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Este tipo requiere un nombre de clase válido, y devuelve un objeto de la clase indicada, si la clase no está cargada se usará un auto-loader.
+Este tipo de definición no permite indicar parámetros para su constructor o setters:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Devuelve new Phalcon\Http\Request();</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;request&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Phalcon</span><span class="se">\\</span><span class="s2">Http</span><span class="se">\\</span><span class="s2">Request&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="objetos">
+<h4>Objetos<a class="headerlink" href="#objetos" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Este tipo requiere un objeto. Debido a que el objeto como
+tal ya está resuelto no necesita resolverse nuevamente.
+Es útil cuando queremos forzar el objeto sea el mismo y
+no pueda ser cambiado:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Http\Request</span><span class="p">;</span>
+
+<span class="c1">// Devuelve new Phalcon\Http\Request();</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;request&quot;</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Request</span><span class="p">()</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="funciones-anonimas">
+<h4>Funciones anónimas<a class="headerlink" href="#funciones-anonimas" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Este método ofrece una gran libertad pra construir las dependencias como se requiera, sin embargo, puede ser díficil
+cambiar la definición del servicio en runtime ó dinámicamente sin tener que cambiar la definición en código de la dependencia:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">PdoMysql</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;db&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">PdoMysql</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;blog&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Alguna de las limitaciones pueden compensarse pasando variables adicionales al contexto de la función anónima:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Config</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">PdoMysql</span><span class="p">;</span>
+
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Config</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;pass&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;my_database&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Usar la variable $config en el contexto de la función anónima</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;db&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$config</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">PdoMysql</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">host</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">username</span><span class="p">,</span>
+                <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">password</span><span class="p">,</span>
+                <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>You can also access other DI services using the <code class="code docutils literal"><span class="pre">get()</span></code> method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Config</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">PdoMysql</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;config&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Config</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;pass&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;my_database&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// Using the &#39;config&#39; service from the DI</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;db&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$config</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;config&quot;</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">PdoMysql</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">host</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">username</span><span class="p">,</span>
+                <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">password</span><span class="p">,</span>
+                <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="registro-avanzado">
+<h3>Registro Avanzado<a class="headerlink" href="#registro-avanzado" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Si es requerido cambiar la definición del servicio sin instanciar o resolver el servicio,
+luego, necesitamos definir el servicio usando la sintaxís de array. Definir un servicio usando la definición de array
+puede requerir más código:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\File</span> <span class="k">as</span> <span class="nx">LoggerFile</span><span class="p">;</span>
+
+<span class="c1">// Registrar el servicio &#39;logger&#39; con un nombre de clase y sus parámetros</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;logger&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;className&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Phalcon</span><span class="se">\\</span><span class="s2">Logger</span><span class="se">\\</span><span class="s2">Adapter</span><span class="se">\\</span><span class="s2">File&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;arguments&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;type&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;parameter&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;../apps/logs/error.log&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Igual pero usando una función anónima</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;logger&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">LoggerFile</span><span class="p">(</span><span class="s2">&quot;../apps/logs/error.log&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Ambas definiciones construyen la instancia de la misma manera, sin embargo la definición de array, permite alterar los parámetros del servicio de manera más sencilla si se requiere:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Cambiar el nombre de la clase</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getService</span><span class="p">(</span><span class="s2">&quot;logger&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">setClassName</span><span class="p">(</span><span class="s2">&quot;MyCustomLogger&quot;</span><span class="p">);</span>
+
+<span class="c1">// Cambiar el primer parámetro</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getService</span><span class="p">(</span><span class="s2">&quot;logger&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;type&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;parameter&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;../apps/logs/error.log&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Adicionalmente, al usar la construcción avanzada de dependencias puedes usar 3 tipos de inyección de dependencias:</p>
+<div class="section" id="inyeccion-en-el-constructor">
+<h4>Inyección en el Constructor<a class="headerlink" href="#inyeccion-en-el-constructor" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Este tipo de inyección pasa sus dependencias/argumentos al constructor de su clase.
+Prentendamos que tenemos el siguiente componente:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">SomeApp</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var Response</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$_response</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$_someFlag</span><span class="p">;</span>
+
+
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nx">Response</span> <span class="nv">$response</span><span class="p">,</span> <span class="nv">$someFlag</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_response</span> <span class="o">=</span> <span class="nv">$response</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_someFlag</span> <span class="o">=</span> <span class="nv">$someFlag</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>El servicio puede ser registrado de la siguiente forma:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;response&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;className&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Phalcon</span><span class="se">\\</span><span class="s2">Http</span><span class="se">\\</span><span class="s2">Response&quot;</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;someComponent&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;className&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;SomeApp</span><span class="se">\\</span><span class="s2">SomeComponent&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;arguments&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;service&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;response&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;type&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;parameter&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>El servicio &#8220;response&#8221; (<a class="reference internal" href="../api/Phalcon_Http_Response.html"><em>Phalcon\Http\Response</em></a>) es resuelto y se pasa como primer argumetno del constructor,
+mientras que el segundo es un valor booleano (true) que se pasa tal y como está.</p>
+</div>
+<div class="section" id="inyeccion-via-setters">
+<h4>Inyección via Setters<a class="headerlink" href="#inyeccion-via-setters" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Las clases pueden tener setters que inyectan dependencias opcionales, nuestra clase previa puede ser cambiada para aceptar las dependencias con setters:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">SomeApp</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var Response</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$_response</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$_someFlag</span><span class="p">;</span>
+
+
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setResponse</span><span class="p">(</span><span class="nx">Response</span> <span class="nv">$response</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_response</span> <span class="o">=</span> <span class="nv">$response</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setFlag</span><span class="p">(</span><span class="nv">$someFlag</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_someFlag</span> <span class="o">=</span> <span class="nv">$someFlag</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Un servicio con inyección de setters se puede registrar así:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;response&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;className&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Phalcon</span><span class="se">\\</span><span class="s2">Http</span><span class="se">\\</span><span class="s2">Response&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;someComponent&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;className&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;SomeApp</span><span class="se">\\</span><span class="s2">SomeComponent&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;calls&quot;</span>     <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;method&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;setResponse&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;arguments&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;service&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;response&quot;</span><span class="p">,</span>
+                    <span class="p">]</span>
+                <span class="p">]</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;method&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;setFlag&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;arguments&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;type&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;parameter&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;value&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                    <span class="p">]</span>
+                <span class="p">]</span>
+            <span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inyeccion-de-propiedades">
+<h4>Inyección de Propiedades<a class="headerlink" href="#inyeccion-de-propiedades" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Una estrategia menos común es inyectar las dependencias directamente a los atributos públicos de la clase:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">SomeApp</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var Response</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$response</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$someFlag</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Un servicio con dependencias inyectadas en sus propiedades se puede registrar así:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;response&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;className&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Phalcon</span><span class="se">\\</span><span class="s2">Http</span><span class="se">\\</span><span class="s2">Response&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;someComponent&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;className&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;SomeApp</span><span class="se">\\</span><span class="s2">SomeComponent&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;properties&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;name&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;response&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;service&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;response&quot;</span><span class="p">,</span>
+                <span class="p">],</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;name&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;someFlag&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s2">&quot;type&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;parameter&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;value&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                <span class="p">],</span>
+            <span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Los tipos de parámetros soportados incluyen los siguientes:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="38%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tipo</th>
+<th class="head">Descripción</th>
+<th class="head">Ejemplo</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>parameter</td>
+<td>Representa un valor literal a ser inyectado</td>
+<td><code class="code docutils literal"><span class="pre">[&quot;type&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;parameter&quot;,</span> <span class="pre">&quot;value&quot;</span> <span class="pre">=&gt;</span> <span class="pre">1234]</span></code></td>
+</tr>
+<tr class="row-odd"><td>service</td>
+<td>Representa el resultado de resolver otro servicio en DI</td>
+<td><code class="code docutils literal"><span class="pre">[&quot;type&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;service&quot;,</span> <span class="pre">&quot;name&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;request&quot;]</span></code></td>
+</tr>
+<tr class="row-even"><td>instance</td>
+<td>Representa un objeto que debe ser construído por el DI</td>
+<td><code class="code docutils literal"><span class="pre">[&quot;type&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;instance&quot;,</span> <span class="pre">&quot;className&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;DateTime&quot;,</span> <span class="pre">&quot;arguments&quot;</span> <span class="pre">=&gt;</span> <span class="pre">[&quot;now&quot;]]</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>Resolver un servicio de esta manera puede ser un poco más complicado y algo más lento con respecto a las definiciones vistas inicialmente. Sin embargo,
+estas proporcionan una estrategía más robusta para inyectar servicios.</p>
+<p>Mezclar distintos tipos de definiciones está permitido, cada quien puede decidir cuál es la forma más apropiada
+de acuerdo a las necesidades de la aplicación.</p>
+</div>
+</div>
+<div class="section" id="array-syntax">
+<h3>Array Syntax<a class="headerlink" href="#array-syntax" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>También podemos registrar servicios en el DI usando la sintaxis de array:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Di</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Http\Request</span><span class="p">;</span>
+
+<span class="c1">// Crear el inyector de dependencias</span>
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Di</span><span class="p">();</span>
+
+<span class="c1">// Por su nombre de clase</span>
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;request&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Phalcon</span><span class="se">\\</span><span class="s2">Http</span><span class="se">\\</span><span class="s2">Request&quot;</span><span class="p">;</span>
+
+<span class="c1">// Usar una función anónima, la instancia se creará solo cuando el servicio sea accedido</span>
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;request&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="c1">// Registrar la instancia directamente</span>
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;request&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
+
+<span class="c1">// Usar un array como definición</span>
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;request&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;className&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Phalcon</span><span class="se">\\</span><span class="s2">Http</span><span class="se">\\</span><span class="s2">Request&quot;</span><span class="p">,</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<p>En el ejemplo anterior, cuando el framework o algún componente requiera acceder a los datos de la petición, lo que hará es solicitar un servicio identificado como &#8216;request&#8217; en el contenedor.
+Este lo que hará es &#8220;resolver&#8221; el servicio requerido devolviendo una instancia de él. Un desarrollador puede eventualmente reemplazar la clase usada como componente, su configuración, etc, siempre y cuando la instancia retornada cumpla con una interface convenida entre ambas partes.</p>
+<p>En el ejemplo anterior, cada uno de las formas de registrar servicios tiene ventajas y desventajas.
+Depende del desarrollador y de sus necesidades particulares escoger la que más le convenga.</p>
+<p>Establecer un servicio por su nombre de clase es sencillo pero carece de flexibilidad. Establecer servicios usando un array ofrece más flexibilidad pero puede ser
+un poco más complicado. La función anónima ofrece un buen balance entre ambas pero puede ser más díficil cambiar algún parámetro de inicialización sino es editando directamente su código.</p>
+<p>La mayoría de estrategias para registrar servicios en <a class="reference internal" href="../api/Phalcon_Di.html"><em>Phalcon\Di</em></a> inicializan los servicios solo la primera vez
+que son requeridas.</p>
+</div>
+</div>
+<div class="section" id="resolver-servicios">
+<h2>Resolver Servicios<a class="headerlink" href="#resolver-servicios" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Resolver y obtener un servicio del contenedor es simplemente usar el método &#8220;get&#8221;. Una nueva instancia del servicio será devuelta:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>También es posible usar métodos mágicos:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>O usar la sintaxis de array:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;request&quot;</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Los argumentos se pueden pasar al constructor agregando un array como parámetro del método &#8220;get&#8221;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// new MyComponent(&quot;some-parameter&quot;, &quot;other&quot;)</span>
+<span class="nv">$component</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span>
+    <span class="s2">&quot;MyComponent&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;some-parameter&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;other&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="events">
+<h3>Events<a class="headerlink" href="#events" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><a class="reference internal" href="../api/Phalcon_Di.html"><em>Phalcon\Di</em></a> is able to send events to an <a class="reference internal" href="events.html"><em>EventsManager</em></a> if it is present.
+Events are triggered using the type &#8220;di&#8221;. Some events when returning boolean false could stop the active operation.
+The following events are supported:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="67%" />
+<col width="11%" />
+<col width="10%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Event Name</th>
+<th class="head">Triggered</th>
+<th class="head">Can stop operation?</th>
+<th class="head">Triggered on</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>beforeServiceResolve</td>
+<td>Triggered before resolve service. Listeners receive the service name and the parameters passed to it.</td>
+<td>No</td>
+<td>Listeners</td>
+</tr>
+<tr class="row-odd"><td>afterServiceResolve</td>
+<td>Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it.</td>
+<td>No</td>
+<td>Listeners</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="servicios-compartidos">
+<h2>Servicios Compartidos<a class="headerlink" href="#servicios-compartidos" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los servicios pueden ser registrados como compartidos esto significa que actuarán como <a class="reference external" href="http://es.wikipedia.org/wiki/Singleton">singletons</a>. Una vez el servicio se resuelva por primera vez
+la misma instancia será retornada cada vez que alguien consuma el servicio en el contenedor:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Session\Adapter\Files</span> <span class="k">as</span> <span class="nx">SessionFiles</span><span class="p">;</span>
+
+<span class="c1">// Registrar el servicio &quot;session&quot; como siempre compartido</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span>
+    <span class="s2">&quot;session&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$session</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SessionFiles</span><span class="p">();</span>
+
+        <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$session</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// Localiza y resuelve el servicio por primera vez</span>
+<span class="nv">$session</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;session&quot;</span><span class="p">);</span>
+
+<span class="c1">// Devuelve el objeto instanciado inicialmente</span>
+<span class="nv">$session</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getSession</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Una manera alternativa de registrar un servicio compartido es pasar &#8220;true&#8221; como tercer parámetro de &#8220;set&#8221;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Registrar un servicio como &quot;siempre compartido&quot;</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;session&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">},</span>
+    <span class="k">true</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Si un servicio no está registrado como compartido y lo que quieres es estar seguro que una instancia compartida será siempre devuelta,
+entonces debes usar el método &#8216;getShared&#8217;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getShared</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="manipular-servicios-individualmente">
+<h2>Manipular servicios individualmente<a class="headerlink" href="#manipular-servicios-individualmente" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Una vez un servicio está registrado en el contenedor de servicios, puedes obtenerlo y manipularlo indivualmente:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Http\Request</span><span class="p">;</span>
+
+<span class="c1">// Registrar el servicio de sesión</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">,</span> <span class="s2">&quot;Phalcon</span><span class="se">\\</span><span class="s2">Http</span><span class="se">\\</span><span class="s2">Request&quot;</span><span class="p">);</span>
+
+<span class="c1">// Obtener el servicio como tal</span>
+<span class="nv">$requestService</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getService</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">);</span>
+
+<span class="c1">// Cambiar su definición</span>
+<span class="nv">$requestService</span><span class="o">-&gt;</span><span class="na">setDefinition</span><span class="p">(</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// Volverlo compartido</span>
+<span class="nv">$requestService</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+
+<span class="c1">// Resolver el servicio (devuelve una instancia de Phalcon\Http\Request)</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$requestService</span><span class="o">-&gt;</span><span class="na">resolve</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="instanciar-clases-via-el-contenedor-de-servicios">
+<h2>Instanciar clases via el contenedor de servicios<a class="headerlink" href="#instanciar-clases-via-el-contenedor-de-servicios" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Cuando solicitas un servicio al contenedor de servicios y este no ha sido registrado con ese nombre, el tratará de obtener un nombre de clase con
+el mismo nombre. With this behavior we can replace any class by another simply by registering a service with its name:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Register a controller as a service</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;IndexController&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$component</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Component</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$component</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="k">true</span>
+<span class="p">);</span>
+
+<span class="c1">// Register a controller as a service</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;MyOtherComponent&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Actually returns another component</span>
+        <span class="nv">$component</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AnotherComponent</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$component</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// Create an instance via the service container</span>
+<span class="nv">$myComponent</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;MyOtherComponent&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can take advantage of this, always instantiating your classes via the service container (even if they aren&#8217;t registered as services). The DI will
+fallback to a valid autoloader to finally load the class. By doing this, you can easily replace any class in the future by implementing a definition
+for it.</p>
+</div>
+<div class="section" id="automatic-injecting-of-the-di-itself">
+<h2>Automatic Injecting of the DI itself<a class="headerlink" href="#automatic-injecting-of-the-di-itself" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates,
+to do this, you need to implement the <a class="reference internal" href="../api/Phalcon_Di_InjectionAwareInterface.html"><em>Phalcon\Di\InjectionAwareInterface</em></a> in your classes:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\DiInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Di\InjectionAwareInterface</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span> <span class="k">implements</span> <span class="nx">InjectionAwareInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var DiInterface</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$_di</span><span class="p">;</span>
+
+
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setDi</span><span class="p">(</span><span class="nx">DiInterface</span> <span class="nv">$di</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_di</span> <span class="o">=</span> <span class="nv">$di</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDi</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_di</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then once the service is resolved, the <code class="code docutils literal"><span class="pre">$di</span></code> will be passed to <code class="code docutils literal"><span class="pre">setDi()</span></code> automatically:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Register the service</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;myClass&quot;</span><span class="p">,</span> <span class="s2">&quot;MyClass&quot;</span><span class="p">);</span>
+
+<span class="c1">// Resolve the service (NOTE: $myClass-&gt;setDi($di) is automatically called)</span>
+<span class="nv">$myClass</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;myClass&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="organizing-services-in-files">
+<h2>Organizing services in files<a class="headerlink" href="#organizing-services-in-files" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>You can better organize your application by moving the service registration to individual files instead of
+doing everything in the application&#8217;s bootstrap:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;router&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">include</span> <span class="s2">&quot;../app/config/routes.php&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Then in the file (&#8221;../app/config/routes.php&#8221;) return the object resolved:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyRouter</span><span class="p">();</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s2">&quot;/login&quot;</span><span class="p">);</span>
+
+<span class="k">return</span> <span class="nv">$router</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="accessing-the-di-in-a-static-way">
+<h2>Accessing the DI in a static way<a class="headerlink" href="#accessing-the-di-in-a-static-way" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>If needed you can access the latest DI created in a static function in the following way:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Di</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SomeComponent</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">someMethod</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Get the session service</span>
+        <span class="nv">$session</span> <span class="o">=</span> <span class="nx">Di</span><span class="o">::</span><span class="na">getDefault</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getSession</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="factory-default-di">
+<h2>Factory Default DI<a class="headerlink" href="#factory-default-di" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack
+framework. To achieve this, the framework provides a variant of <a class="reference internal" href="../api/Phalcon_Di.html"><em>Phalcon\Di</em></a> called <a class="reference internal" href="../api/Phalcon_Di_FactoryDefault.html"><em>Phalcon\Di\FactoryDefault</em></a>. This class automatically
+registers the appropriate services bundled with the framework to act as full-stack.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Di\FactoryDefault</span><span class="p">;</span>
+
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="service-name-conventions">
+<h2>Service Name Conventions<a class="headerlink" href="#service-name-conventions" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Although you can register services with the names you want, Phalcon has a several naming conventions that allow it to get the
+the correct (built-in) service when you need it.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="26%" />
+<col width="57%" />
+<col width="5%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Service Name</th>
+<th class="head">Description</th>
+<th class="head">Default</th>
+<th class="head">Shared</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>dispatcher</td>
+<td>Controllers Dispatching Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>router</td>
+<td>Routing Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><em>Phalcon\Mvc\Router</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>url</td>
+<td>URL Generator Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Url.html"><em>Phalcon\Mvc\Url</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>request</td>
+<td>HTTP Request Environment Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Http_Request.html"><em>Phalcon\Http\Request</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>response</td>
+<td>HTTP Response Environment Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Http_Response.html"><em>Phalcon\Http\Response</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>cookies</td>
+<td>HTTP Cookies Management Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Http_Response_Cookies.html"><em>Phalcon\Http\Response\Cookies</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>filter</td>
+<td>Input Filtering Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Filter.html"><em>Phalcon\Filter</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>flash</td>
+<td>Flash Messaging Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Flash_Direct.html"><em>Phalcon\Flash\Direct</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>flashSession</td>
+<td>Flash Session Messaging Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Flash_Session.html"><em>Phalcon\Flash\Session</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>session</td>
+<td>Session Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Session_Adapter_Files.html"><em>Phalcon\Session\Adapter\Files</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>eventsManager</td>
+<td>Events Management Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Events_Manager.html"><em>Phalcon\Events\Manager</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>db</td>
+<td>Low-Level Database Connection Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>security</td>
+<td>Security helpers</td>
+<td><a class="reference internal" href="../api/Phalcon_Security.html"><em>Phalcon\Security</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>crypt</td>
+<td>Encrypt/Decrypt data</td>
+<td><a class="reference internal" href="../api/Phalcon_Crypt.html"><em>Phalcon\Crypt</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>tag</td>
+<td>HTML generation helpers</td>
+<td><a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>escaper</td>
+<td>Contextual Escaping</td>
+<td><a class="reference internal" href="../api/Phalcon_Escaper.html"><em>Phalcon\Escaper</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>annotations</td>
+<td>Annotations Parser</td>
+<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Memory.html"><em>Phalcon\Annotations\Adapter\Memory</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>modelsManager</td>
+<td>Models Management Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_Manager.html"><em>Phalcon\Mvc\Model\Manager</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>modelsMetadata</td>
+<td>Models Meta-Data Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_MetaData_Memory.html"><em>Phalcon\Mvc\Model\MetaData\Memory</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>transactionManager</td>
+<td>Models Transaction Manager Service</td>
+<td><a class="reference internal" href="../api/Phalcon_Mvc_Model_Transaction_Manager.html"><em>Phalcon\Mvc\Model\Transaction\Manager</em></a></td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>modelsCache</td>
+<td>Cache backend for models cache</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>viewsCache</td>
+<td>Cache backend for views fragments</td>
+<td>None</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="implementing-your-own-di">
+<h2>Implementing your own DI<a class="headerlink" href="#implementing-your-own-di" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>The <a class="reference internal" href="../api/Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a> interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="mvc.html" title="The MVC Architecture"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="samples.html" title="List of examples"
+             >anterior</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+  </body>
+</html>

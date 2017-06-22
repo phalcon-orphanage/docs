@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Улучшение производительности с помощью Кэширования &mdash; Phalcon 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic,400italic,500italic&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Phalcon 1.3.0 documentation" href="../index.html" />
+    <link rel="next" title="Безопасность" href="security.html" />
+    <link rel="prev" title="Постраничная навигация (Paginators)" href="pagination.html" /> 
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <div class="size-wrap">
+
+            <div class="header clear-fix">
+                <a class="header-logo" href="http://phalconphp.com"><span class="logo-text">Phalcon</span></a>
+                <div class="header-right">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="http://phalconphp.com/" class="header-nav-link">Home</a></li>
+                    <li><a href="http://phalconphp.com/download" class="header-nav-link">Download</a></li>
+                    <li><a href="http://forum.phalconphp.com/" class="header-nav-link active">Forum</a></li>
+                    <li><a href="http://blog.phalconphp.com/" class="header-nav-link">Blog</a></li>
+                    <li><a href="http://phalconphp.com/support" class="header-nav-link">Support</a></li>
+                    <li><a href="http://store.phalconphp.com/" class="header-nav-link">Store</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon" class="header-nav-link">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    <div class="header-line">
+      <div class="size-wrap">
+        <div class="header-line-title title-white">Documentation</div>
+      </div>
+    </div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             accesskey="I">словарь</a></li>
+        <li class="right" >
+          <a href="security.html" title="Безопасность"
+             accesskey="N">следующий</a> |</li>
+        <li class="right" >
+          <a href="pagination.html" title="Постраничная навигация (Paginators)"
+             accesskey="P">предыдущий</a> |</li>
+        <li><a href="http://phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 1.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="90%" align="center">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div id="searchbox" style="">
+                <form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="15" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>
+            </div>
+          <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                  <div class="carbonad"><div id="azcarbon"></div>
+                      <script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/56496/azcarbon_2_1_0_VERT"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+                  </div>
+              </div>
+          </div>
+            <h3><a href="../index.html">Содержание</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Улучшение производительности с помощью Кэширования</a><ul>
+<li><a class="reference internal" href="#id2">Где применять кэширование?</a></li>
+<li><a class="reference internal" href="#id3">Поведение системы кэширования</a></li>
+<li><a class="reference internal" href="#id4">Кэширование выходных фрагментов</a></li>
+<li><a class="reference internal" href="#id5">Кэширование произвольных данных</a><ul>
+<li><a class="reference internal" href="#backend">Пример файлового Backend</a></li>
+<li><a class="reference internal" href="#memcached-backend">Пример использования Memcached в качестве Backend</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">Запрос данных из кэша</a></li>
+<li><a class="reference internal" href="#id7">Удаление данных из кэша</a></li>
+<li><a class="reference internal" href="#id8">Проверяем наличие кэша</a></li>
+<li><a class="reference internal" href="#id9">Время жизни</a></li>
+<li><a class="reference internal" href="#id10">Многоуровневое кэширование</a></li>
+<li><a class="reference internal" href="#frontend">Frontend Адаптеры</a><ul>
+<li><a class="reference internal" href="#id11">Реализация собственных Frontend адаптеров</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">Backend Адаптеры</a><ul>
+<li><a class="reference internal" href="#id13">Реализация собственных Backend адаптеров</a></li>
+<li><a class="reference internal" href="#id14">Опции файлового Backend</a></li>
+<li><a class="reference internal" href="#id15">Опции Memcached Backend</a></li>
+<li><a class="reference internal" href="#apc-backend">Опции APC Backend</a></li>
+<li><a class="reference internal" href="#mongo-backend">Опции Mongo Backend</a></li>
+<li><a class="reference internal" href="#xcache-backend">Опции XCache Backend</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Предыдущий раздел</h4>
+            <p class="topless"><a href="pagination.html" title="предыдущая глава">&lt; Постраничная навигация (Paginators)</a></p>
+            <h4>Следующий раздел</h4>
+            <p class="topless"><a href="security.html" title="следующая глава">Безопасность &gt;</a></p>
+            <h3>На этой странице</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/cache.txt" rel="nofollow">Показать исходный текст</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="id1">
+<h1>Улучшение производительности с помощью Кэширования<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Phalcon предоставляет класс <a class="reference internal" href=""><em>Phalcon\Cache</em></a>, дающий быстрый доступ к часто используемым или уже сгенерированным данным.
+<a class="reference internal" href=""><em>Phalcon\Cache</em></a> написан на языке C, поэтому он предоставляет высокую производительность и пониженный расход ресурсов.
+Этот класс использует два компонента: frontend и backend. Frontend компонент является входным источником или интерфейсом, в то время
+как backend предоставляет опции хранения данных.</p>
+<div class="section" id="id2">
+<h2>Где применять кэширование?<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Несмотря на то, что этот компонент очень быстрый, его использование в случаях, где он не нужен, может привести к потери
+производительности. Мы рекомендуем проверить эти ситуации, прежде, чем использовать кэширование:</p>
+<ul class="simple">
+<li>Вы делаете сложные расчеты, которые каждый раз возвращают один и тот же результат (или результат редко изменяется)</li>
+<li>Вы используете много помощников (helper), и результат генерации почти всегда одинаковый</li>
+<li>Получение данных из БД, которые редко меняются</li>
+</ul>
+<blockquote class="highlights">
+<div><em>Примечание</em> Даже, после создания кэширования вы должны проверить скорость выполнения. Это можно легко проверить,
+особенно используя Memcache или Apc, с помощью соответствующих инструментов, предоставляемыми этими приложениями.</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>Поведение системы кэширования<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Процесс кэширования делится на две части:</p>
+<ul class="simple">
+<li><strong>Frontend</strong>: Эта часть отвечает за проверку времени жизни ключа и выполняет дополнительные преобразования над данными, до операции сохранения или извлечения их из backend</li>
+<li><strong>Backend</strong>: Эта часть отвечает за коммуникацию, запись/чтение данных по запросу frontend</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>Кэширование выходных фрагментов<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Выходные фрагменты - это части HTML или текста, которые кэшируются &#8220;как есть&#8221; и возвращаются &#8220;как есть&#8221;. Выходные данные автоматически
+захватываются из ob_* функции или из выходного потока PHP и сохраняются в кэш.  Следующий пример демонстрирует такое использование.
+Он получает сгенерированные выходные данные и сохраняет их в файл. Кэш обновляется каждые 172800 секунд (2 дня).</p>
+<p>Реализация этого механизма позволяет нам повысить производительность за счет исключения работы помощника Phalcon\Tag::linkTo,
+который вызывается каждый раз в этом участке кода.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Создание frontend для выходных данных. Кэшируем файлы на 2 дня</span>
+<span class="nv">$frontCache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Frontend\Output</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">172800</span>
+<span class="p">));</span>
+
+<span class="c1">// Создаем компонент, который будем кэшировать из &quot;Выходных данных&quot; в &quot;Файл&quot;</span>
+<span class="c1">// Устанавливаем папку для кэшируемых файлов - важно указать символ &quot;/&quot; в конце пути</span>
+<span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Backend\File</span><span class="p">(</span><span class="nv">$frontCache</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;cacheDir&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;../app/cache/&quot;</span>
+<span class="p">));</span>
+
+<span class="c1">// Получить/Создать кэшируемый файл ../app/cache/my-cache.html</span>
+<span class="nv">$content</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">(</span><span class="s2">&quot;my-cache.html&quot;</span><span class="p">);</span>
+
+<span class="c1">// Если $content является значением NULL, значит данных в кэше нет и их надо сгенерировать</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$content</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Выводим дату и время</span>
+    <span class="k">echo</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Генерируем ссылку на &quot;регистрацию&quot;</span>
+    <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">linkTo</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;user/signup&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Sign Up&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;class&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;signup-button&quot;</span>
+        <span class="p">)</span>
+    <span class="p">);</span>
+
+    <span class="c1">// Сохраняем вывод в кэш</span>
+    <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+    <span class="c1">// Ввыводим кэшируемые данные</span>
+    <span class="k">echo</span> <span class="nv">$content</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>Примечание</em> В этом примере наш код остается таким же и выводит те же данные пользователю. Наш компонент кэширования
+незаметно перехватывает вывод и сохраняет его в кэшируемый файл (когда кэш сгенерирован) или он отправляет уже готовые данные обратно
+к пользователю, а это естественно позволяет экономить на выполнении операций.</p>
+</div>
+<div class="section" id="id5">
+<h2>Кэширование произвольных данных<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Кэширование различных данных, не менее важно для вашего приложения. Кэширование может уменьшить нагрузку базы данных за счет
+повторного использования сгенерированных данных (но не обновленных), что и увеличивает скорость выполнения вашего приложения.</p>
+<div class="section" id="backend">
+<h3>Пример файлового Backend<a class="headerlink" href="#backend" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Существует файловый адаптер кэширования. Единственным параметром для него является место, где будут храниться закэшированные
+файлы. Этот параметр называется &#8220;cacheDir&#8221;, в него передается путь к месту хранения, <em>важно</em> добавлять в конце символ &#8220;/&#8221;.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Кэшируем данные на 2 дня</span>
+<span class="nv">$frontCache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Frontend\Data</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">172800</span>
+<span class="p">));</span>
+
+<span class="c1">// Создаем компонент, который будем кэшировать из &quot;Выходных данных&quot; в &quot;Файл&quot;</span>
+<span class="c1">// Устанавливаем папку для кэшируемых файлов - важно сохранить символ &quot;/&quot; в конце пути</span>
+<span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Backend\File</span><span class="p">(</span><span class="nv">$frontCache</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;cacheDir&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;../app/cache/&quot;</span>
+<span class="p">));</span>
+
+<span class="c1">// Пробуем получить закэшированные записи</span>
+<span class="nv">$cacheKey</span> <span class="o">=</span> <span class="s1">&#39;robots_order_id.cache&#39;</span><span class="p">;</span>
+<span class="nv">$robots</span>    <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robots</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// $robots может иметь значение NULL из-за того, что истекла годность хранения или данных просто не существует</span>
+    <span class="c1">// Получим данные из БД</span>
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;id&quot;</span><span class="p">));</span>
+
+    <span class="c1">// Сохраняем их в кэше</span>
+    <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">,</span> <span class="nv">$robots</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Используем $robots :)</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="memcached-backend">
+<h3>Пример использования Memcached в качестве Backend<a class="headerlink" href="#memcached-backend" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для этого нам достаточно немного изменить вышестоящий пример. В частности изменится конфигурация.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Кэшируем данные на 1 час</span>
+<span class="nv">$frontCache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Frontend\Data</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">3600</span>
+<span class="p">));</span>
+
+<span class="c1">// Создаем компонент, который будет кэшировать данные в Memcache</span>
+<span class="c1">// Настройки подключения к Memcache</span>
+<span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Backend\Memcache</span><span class="p">(</span><span class="nv">$frontCache</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;port&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;11211&quot;</span>
+<span class="p">));</span>
+
+<span class="c1">// Пробуем получить закэшированные записи</span>
+<span class="nv">$cacheKey</span> <span class="o">=</span> <span class="s1">&#39;robots_order_id.cache&#39;</span><span class="p">;</span>
+<span class="nv">$robots</span>    <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robots</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// $robots может иметь значение NULL из-за того, что истекла годность хранения или данных просто не существует</span>
+    <span class="c1">// Получим данные из БД</span>
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;id&quot;</span><span class="p">));</span>
+
+    <span class="c1">// Сохраняем их в кэше</span>
+    <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">,</span> <span class="nv">$robots</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Используем $robots :)</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>Запрос данных из кэша<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Все элементы добавляемые в кэш идентифицируются по ключам. В случае с файловым backend ключом является название файла.
+Для получения данных из кэша нам необходимо выполнить запрос к кэшу с указанием уникального ключа. Если ключа не существует,
+метод вернет значение NULL.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Получаем продукты по ключу &quot;myProducts&quot;</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;myProducts&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Для того чтобы узнать какие ключи сейчас хранятся можно выполнить метод queryKeys:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Получаем все ключи, которые хранятся в кэше</span>
+<span class="nv">$keys</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">queryKeys</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$keys</span> <span class="k">as</span> <span class="nv">$key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$data</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="s2">&quot;Key=&quot;</span><span class="p">,</span> <span class="nv">$key</span><span class="p">,</span> <span class="s2">&quot; Data=&quot;</span><span class="p">,</span> <span class="nv">$data</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Получаем все ключи, которые начинаются с префикса &quot;my-prefix&quot;</span>
+<span class="nv">$keys</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">queryKeys</span><span class="p">(</span><span class="s2">&quot;my-prefix&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Удаление данных из кэша<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Могут возникнуть ситуации, когда вам необходимо удалить данные из кэша. Единственным требованием для этого является
+знание необходимого ключа по которому хранятся данные.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Удаляем элемент по определенному ключу</span>
+<span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s2">&quot;someKey&quot;</span><span class="p">);</span>
+
+<span class="c1">// Удаляем все из кэша</span>
+<span class="nv">$keys</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">queryKeys</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$keys</span> <span class="k">as</span> <span class="nv">$key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Проверяем наличие кэша<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Существует возможность проверить наличие данных в кэше.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">exists</span><span class="p">(</span><span class="s2">&quot;someKey&quot;</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;someKey&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Данных в кэше не существует!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>Время жизни<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h2>
+<p>&#8220;Время жизни&#8221; (lifetime) - это время, исчисляемое в секундах, которое означает, сколько будут храниться данные в backend кэше.
+По умолчанию все данные получают &#8220;время жизни&#8221;, которое было указано при создании frontend компонента.
+Вы можете указать другое значение при сохранении или получении данных из кэша:</p>
+<p>Задаем время жизни при получении:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$cacheKey</span> <span class="o">=</span> <span class="s1">&#39;my.cache&#39;</span><span class="p">;</span>
+
+<span class="c1">// Получаем кэш и задаем время жизни</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">,</span> <span class="mi">3600</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robots</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="s2">&quot;some robots&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Сохраняем в кэше</span>
+    <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">,</span> <span class="nv">$robots</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Задаем время жизни при сохранении:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$cacheKey</span> <span class="o">=</span> <span class="s1">&#39;my.cache&#39;</span><span class="p">;</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robots</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="s2">&quot;some robots&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Задаем время жизни, сохраняя данные</span>
+    <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">,</span> <span class="nv">$robots</span><span class="p">,</span> <span class="mi">3600</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Существуют некоторые различия в поведении backend компонентов. Например, файловый адаптер требует установку времени жизни при
+получении, в то время как APC при сохранении.</p>
+<p>Во избежание конфликтов можно использовать такую хитрость:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$lifetime</span> <span class="o">=</span> <span class="mi">3600</span><span class="p">;</span>
+<span class="nv">$cacheKey</span> <span class="o">=</span> <span class="s1">&#39;my.cache&#39;</span><span class="p">;</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">,</span> <span class="nv">$lifetime</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robots</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="s2">&quot;some robots&quot;</span><span class="p">;</span>
+
+    <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$cacheKey</span><span class="p">,</span> <span class="nv">$robots</span><span class="p">,</span> <span class="nv">$lifetime</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>Многоуровневое кэширование<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Эта возможность компонента кэширования позволяет разработчику осуществлять кэш в несколько уровней. Возможность
+будет полезна при сохранении кэша в нескольких местах (системах кэширования) с разным временем жизни, и последующим
+поочерёдным чтением из них начиная с самого быстрого (в порядке регистрации) и заканчивая самым медленным, пока срок жизни во всех них не истечет.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$ultraFastFrontend</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Frontend\Data</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">3600</span>
+<span class="p">));</span>
+
+<span class="nv">$fastFrontend</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Frontend\Data</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">86400</span>
+<span class="p">));</span>
+
+<span class="nv">$slowFrontend</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Frontend\Data</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">604800</span>
+<span class="p">));</span>
+
+<span class="c1">// Backends от самого быстрого до самого медленного</span>
+<span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Cache\Multiple</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Phalcon\Cache\Backend\Apc</span><span class="p">(</span><span class="nv">$ultraFastFrontend</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;prefix&quot;</span> <span class="o">=&gt;</span> <span class="s1">&#39;cache&#39;</span><span class="p">,</span>
+    <span class="p">)),</span>
+    <span class="k">new</span> <span class="nx">Phalcon\Cache\Backend\Memcache</span><span class="p">(</span><span class="nv">$fastFrontend</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;prefix&quot;</span> <span class="o">=&gt;</span> <span class="s1">&#39;cache&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;port&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;11211&quot;</span>
+    <span class="p">)),</span>
+    <span class="k">new</span> <span class="nx">Phalcon\Cache\Backend\File</span><span class="p">(</span><span class="nv">$slowFrontend</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;prefix&quot;</span> <span class="o">=&gt;</span> <span class="s1">&#39;cache&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;cacheDir&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;../app/cache/&quot;</span>
+    <span class="p">))</span>
+<span class="p">));</span>
+
+<span class="c1">// Сохраняем, сохраняется сразу во все адаптеры кэширования</span>
+<span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s1">&#39;my-key&#39;</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="frontend">
+<h2>Frontend Адаптеры<a class="headerlink" href="#frontend" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Доступные адаптеры приведены в таблице:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="63%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Адаптер</th>
+<th class="head">Описание</th>
+<th class="head">Пример</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Output</td>
+<td>Считывает данные из стандартного PHP вывода</td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Output.html"><em>Phalcon\Cache\Frontend\Output</em></a></td>
+</tr>
+<tr class="row-odd"><td>Data</td>
+<td>Используется для кэширования любых данных в PHP (big arrays, objects, text, и т.д.). Прежде чем сохранить данные, адаптер сериализирует их.</td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Data.html"><em>Phalcon\Cache\Frontend\Data</em></a></td>
+</tr>
+<tr class="row-even"><td>Base64</td>
+<td>Используется для кэширования бинарных данных. Данные сериализируется с использованием base64_encode.</td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Base64.html"><em>Phalcon\Cache\Frontend\Base64</em></a></td>
+</tr>
+<tr class="row-odd"><td>Json</td>
+<td>Данные перед кеширование сериализуются в JSON. Можно использовать для обмена данными с другими фреймворками.</td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Json.html"><em>Phalcon\Cache\Frontend\Json</em></a></td>
+</tr>
+<tr class="row-even"><td>IgBinary</td>
+<td>Он используется для кэширования любых данных PHP (большие массивы, объекты, тексты и т.д.). Данные сериализуются c помощью IgBinary перед сохранением в бэкэнд.</td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Igbinary.html"><em>Phalcon\Cache\Frontend\Igbinary</em></a></td>
+</tr>
+<tr class="row-odd"><td>None</td>
+<td>Используется для кэширования любых типов данных без сериализации.</td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_None.html"><em>Phalcon\Cache\Frontend\None</em></a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id11">
+<h3>Реализация собственных Frontend адаптеров<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для создания адаптера необходимо реализовать интерфейс <a class="reference internal" href="../api/Phalcon_Cache_FrontendInterface.html"><em>Phalcon\Cache\FrontendInterface</em></a>.</p>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>Backend Адаптеры<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Доступные адаптеры приведены в таблице:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="27%" />
+<col width="7%" />
+<col width="13%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Адаптер</th>
+<th class="head">Описание</th>
+<th class="head">Информация</th>
+<th class="head">Необходимо дополнение</th>
+<th class="head">Пример</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>File</td>
+<td>Сохраняет данные в локальный текстовый файл</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_File.html"><em>Phalcon\Cache\Backend\File</em></a></td>
+</tr>
+<tr class="row-odd"><td>Memcached</td>
+<td>Сохраняет данные на memcached сервере</td>
+<td><a class="reference external" href="http://ru.wikipedia.org/wiki/Memcached">Memcached</a></td>
+<td><a class="reference external" href="http://pecl.php.net/package/memcache">memcache</a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Memcache.html"><em>Phalcon\Cache\Backend\Memcache</em></a></td>
+</tr>
+<tr class="row-even"><td>APC</td>
+<td>Сохраняет данные в Alternative PHP Cache (APC)</td>
+<td><a class="reference external" href="http://ru.wikipedia.org/wiki/Alternative_PHP_Cache#Alternative_PHP_Cache">APC</a></td>
+<td><a class="reference external" href="http://pecl.php.net/package/APC">APC extension</a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Apc.html"><em>Phalcon\Cache\Backend\Apc</em></a></td>
+</tr>
+<tr class="row-odd"><td>Mongo</td>
+<td>Сохраняет данные в Mongo БД</td>
+<td><a class="reference external" href="http://ru.wikipedia.org/wiki/MongoDB">MongoDb</a></td>
+<td><a class="reference external" href="http://pecl.php.net/package/mongo">Mongo</a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Mongo.html"><em>Phalcon\Cache\Backend\Mongo</em></a></td>
+</tr>
+<tr class="row-even"><td>XCache</td>
+<td>Сохроняет данные в XCache</td>
+<td><a class="reference external" href="http://xcache.lighttpd.net/">XCache</a></td>
+<td><a class="reference external" href="http://pecl.php.net/package/xcache">xcache extension</a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Xcache.html"><em>Phalcon\Cache\Backend\Xcache</em></a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id13">
+<h3>Реализация собственных Backend адаптеров<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для создания адаптера необходимо реализовать интерфейс <a class="reference internal" href="../api/Phalcon_Cache_BackendInterface.html"><em>Phalcon\Cache\BackendInterface</em></a>.</p>
+</div>
+<div class="section" id="id14">
+<h3>Опции файлового Backend<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Данные будут сохранены в файлы на локальном сервере. Доступные опции:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Опция</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>prefix</td>
+<td>Префикс, который будет автоматически добавляться в кэш ключей</td>
+</tr>
+<tr class="row-odd"><td>cacheDir</td>
+<td>Папка с правами на запись, в которую будут сохраняться кэшируемые файлы</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id15">
+<h3>Опции Memcached Backend<a class="headerlink" href="#id15" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Данные будут сохранены на memcached сервере. Доступные опции:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Опция</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>prefix</td>
+<td>Префикс, который будет автоматически добавляться в кэш ключей</td>
+</tr>
+<tr class="row-odd"><td>host</td>
+<td>Адрес сервера memcached</td>
+</tr>
+<tr class="row-even"><td>port</td>
+<td>Порт сервера memcached</td>
+</tr>
+<tr class="row-odd"><td>persistent</td>
+<td>Использовать постоянное соединение с memcached?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="apc-backend">
+<h3>Опции APC Backend<a class="headerlink" href="#apc-backend" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Данные будут сохранены в Alternative PHP Cache (<a class="reference external" href="http://ru.wikipedia.org/wiki/Alternative_PHP_Cache#Alternative_PHP_Cache">APC</a>). Доступна лишь одна опция:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Опция</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>prefix</td>
+<td>Префикс, который будет автоматически добавляться в кэш ключей</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="mongo-backend">
+<h3>Опции Mongo Backend<a class="headerlink" href="#mongo-backend" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Данные будут сохранены на MongoDB сервере. Доступные опции:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Опция</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>prefix</td>
+<td>Префикс, который будет автоматически добавляться в кэш ключей</td>
+</tr>
+<tr class="row-odd"><td>server</td>
+<td>Строка подключения к MongoDB</td>
+</tr>
+<tr class="row-even"><td>db</td>
+<td>Название базы данных</td>
+</tr>
+<tr class="row-odd"><td>collection</td>
+<td>Коллекция в базе данных</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="xcache-backend">
+<h3>Опции XCache Backend<a class="headerlink" href="#xcache-backend" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Данные будут сохранены в кэше XCache (<a class="reference external" href="http://xcache.lighttpd.net/">XCache</a>). Доступна лишь одна опция:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Опция</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>prefix</td>
+<td>Префикс, который будет автоматически добавляться в кэш ключей</td>
+</tr>
+</tbody>
+</table>
+<p>Существует еще несколько типов адаптеров, их можно получить в &#8220;Инкубаторе&#8221; - <a class="reference external" href="https://github.com/phalcon/incubator">Phalcon Incubator</a></p>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Словарь-указатель"
+             >словарь</a></li>
+        <li class="right" >
+          <a href="security.html" title="Безопасность"
+             >следующий</a> |</li>
+        <li class="right" >
+          <a href="pagination.html" title="Постраничная навигация (Paginators)"
+             >предыдущий</a> |</li> 
+      </ul>
+    </div>
+        <div id="footer">
+
+          <p>Нашли ошибку или опечатку? Желаете улучшить этот документ? Исходники русской документации доступны на <a href="http://github.com/phalcon/docs">Github</a></p>
+          <p>Нужна помощь или возникли вопросы? Посетите <a href="http://phalconphp.com/ru/support">страницу помощи<</a></p>
+
+          <p>Фреймворк Phalcon PHP распространяется с учетом <a href="https://github.com/phalcon/cphalcon/blob/master/docs/LICENSE.md">new BSD license</a>.</p>
+          <p>Кроме случаев, когда указано иное, содержимое на этом сайте, защищено в соответствии с
+            <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a></p>
+             Последнее обновление Oct 21, 2014.
+            Создано с использованием <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+
+          <p>
+             &copy; Copyright 2014, Phalcon Team.
+          </p>
+
+            <div class="size-wrap footer-wrap">
+
+                <div class="donate-wrap">
+                    Поддержать Phalcon: <a href="http://flattr.com/thing/1134206/Phalcon-PHP-Framework" target="_blank" class="button button-small orange">Flattr</a>
+                    или
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7LSYMNMFZNG8W">
+                        <input class="button button-small orange" style="border: inherit; display: inline; font-weight: bold" type="submit" value="via Paypal" title="PayPal — The safer, easier way to pay online.">
+                    </form>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/phalconphp" class="social-link tw">Twitter</a>
+                    <a href="http://www.facebook.com/pages/Phalcon/134230726685897" class="social-link fb">Facebook</a>
+                    <a href="https://plus.google.com/102376109340560896457" class="social-link gp">Google Plus</a>
+                    <a href="http://vimeo.com/user10964377" class="social-link vm">Vimeo</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+  </body>
+</html>

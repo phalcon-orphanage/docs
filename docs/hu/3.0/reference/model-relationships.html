@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Model Relationships &mdash; Phalcon 3.1.1 documentation (English)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="https://static.phalconphp.com/www/images/favicon.ico"/>
+    <link rel="top" title="Phalcon 3.1.1 documentation" href="../index.html" />
+    <link rel="next" title="Model Events" href="model-events.html" />
+    <link rel="prev" title="Working with Models" href="models.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="model-events.html" title="Model Events"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Working with Models"
+             accesskey="P">previous</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 3.1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Model Relationships</a><ul>
+<li><a class="reference internal" href="#relationships-between-models">Relationships between Models</a><ul>
+<li><a class="reference internal" href="#unidirectional-relationships">Unidirectional relationships</a></li>
+<li><a class="reference internal" href="#bidirectional-relations">Bidirectional relations</a></li>
+<li><a class="reference internal" href="#defining-relationships">Defining relationships</a></li>
+<li><a class="reference internal" href="#taking-advantage-of-relationships">Taking advantage of relationships</a></li>
+<li><a class="reference internal" href="#aliasing-relationships">Aliasing Relationships</a></li>
+<li><a class="reference internal" href="#magic-getters-vs-explicit-methods">Magic Getters vs. Explicit methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#virtual-foreign-keys">Virtual Foreign Keys</a><ul>
+<li><a class="reference internal" href="#cascade-restrict-actions">Cascade/Restrict actions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#storing-related-records">Storing Related Records</a></li>
+<li><a class="reference internal" href="#operations-over-resultsets">Operations over Resultsets</a><ul>
+<li><a class="reference internal" href="#updating-related-records">Updating related records</a></li>
+<li><a class="reference internal" href="#deleting-related-records">Deleting related records</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="models.html" title="previous chapter">&lt; Working with Models</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="model-events.html" title="next chapter">Model Events &gt;</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/model-relationships.txt" rel="nofollow">Show Source</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="model-relationships">
+<h1>Model Relationships<a class="headerlink" href="#model-relationships" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="relationships-between-models">
+<h2>Relationships between Models<a class="headerlink" href="#relationships-between-models" title="Permalink to this headline">¶</a></h2>
+<p>There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be
+unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models).
+The model manager manages foreign key constraints for these relationships, the definition of these helps referential
+integrity as well as easy and fast access of related records to a model. Through the implementation of relations,
+it is easy to access data in related models from each record in a uniform way.</p>
+<div class="section" id="unidirectional-relationships">
+<h3>Unidirectional relationships<a class="headerlink" href="#unidirectional-relationships" title="Permalink to this headline">¶</a></h3>
+<p>Unidirectional relations are those that are generated in relation to one another but not vice versa.</p>
+</div>
+<div class="section" id="bidirectional-relations">
+<h3>Bidirectional relations<a class="headerlink" href="#bidirectional-relations" title="Permalink to this headline">¶</a></h3>
+<p>The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.</p>
+</div>
+<div class="section" id="defining-relationships">
+<h3>Defining relationships<a class="headerlink" href="#defining-relationships" title="Permalink to this headline">¶</a></h3>
+<p>In Phalcon, relationships must be defined in the <code class="code docutils literal"><span class="pre">initialize()</span></code> method of a model. The methods <code class="code docutils literal"><span class="pre">belongsTo()</span></code>, <code class="code docutils literal"><span class="pre">hasOne()</span></code>,
+<code class="code docutils literal"><span class="pre">hasMany()</span></code> and <code class="code docutils literal"><span class="pre">hasManyToMany()</span></code> define the relationship between one or more fields from the current model to fields in
+another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hasMany</td>
+<td>Defines a 1-n relationship</td>
+</tr>
+<tr class="row-odd"><td>hasOne</td>
+<td>Defines a 1-1 relationship</td>
+</tr>
+<tr class="row-even"><td>belongsTo</td>
+<td>Defines a n-1 relationship</td>
+</tr>
+<tr class="row-odd"><td>hasManyToMany</td>
+<td>Defines a n-n relationship</td>
+</tr>
+</tbody>
+</table>
+<p>The following schema shows 3 tables whose relations will serve us as an example regarding relationships:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">robots</span><span class="o">`</span> <span class="p">(</span>
+    <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="o">`</span><span class="n">name</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="o">`</span><span class="k">type</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="o">`</span><span class="k">year</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">robots_parts</span><span class="o">`</span> <span class="p">(</span>
+    <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="o">`</span><span class="n">robots_id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="o">`</span><span class="n">parts_id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="o">`</span><span class="n">created_at</span><span class="o">`</span> <span class="nb">DATE</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span>
+    <span class="k">KEY</span> <span class="o">`</span><span class="n">robots_id</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">robots_id</span><span class="o">`</span><span class="p">),</span>
+    <span class="k">KEY</span> <span class="o">`</span><span class="n">parts_id</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">parts_id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">parts</span><span class="o">`</span> <span class="p">(</span>
+    <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="o">`</span><span class="n">name</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The model &#8220;Robots&#8221; has many &#8220;RobotsParts&#8221;.</li>
+<li>The model &#8220;Parts&#8221; has many &#8220;RobotsParts&#8221;.</li>
+<li>The model &#8220;RobotsParts&#8221; belongs to both &#8220;Robots&#8221; and &#8220;Parts&#8221; models as a many-to-one relation.</li>
+<li>The model &#8220;Robots&#8221; has a relation many-to-many to &#8220;Parts&#8221; through &#8220;RobotsParts&#8221;.</li>
+</ul>
+<p>Check the EER diagram to understand better the relations:</p>
+<div class="figure align-center">
+<img alt="../_images/eer-1.png" src="../_images/eer-1.png" />
+</div>
+<p>The models with their relations could be implemented as follows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;RobotsParts&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;robots_id&quot;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Parts</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;RobotsParts&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;parts_id&quot;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RobotsParts</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$robots_id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$parts_id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span>
+            <span class="s2">&quot;robots_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Store</span><span class="se">\\</span><span class="s2">Toys</span><span class="se">\\</span><span class="s2">Robots&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span>
+        <span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span>
+            <span class="s2">&quot;parts_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Parts&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The first parameter indicates the field of the local model used in the relationship; the second indicates the name
+of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.</p>
+<p>Many to many relationships require 3 models and define the attributes involved in the relationship:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasManyToMany</span><span class="p">(</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;RobotsParts&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;robots_id&quot;</span><span class="p">,</span> <span class="s2">&quot;parts_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Parts&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="taking-advantage-of-relationships">
+<h3>Taking advantage of relationships<a class="headerlink" href="#taking-advantage-of-relationships" title="Permalink to this headline">¶</a></h3>
+<p>When explicitly defining the relationships between models, it is easy to find related records for a particular record.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">robotsParts</span> <span class="k">as</span> <span class="nv">$robotPart</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$robotPart</span><span class="o">-&gt;</span><span class="na">parts</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Phalcon uses the magic methods <code class="code docutils literal"><span class="pre">__set</span></code>/<code class="code docutils literal"><span class="pre">__get</span></code>/<code class="code docutils literal"><span class="pre">__call</span></code> to store or retrieve related data using relationships.</p>
+<p>By accessing an attribute with the same name as the relationship will retrieve all its related record(s).</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+<span class="c1">// All the related records in RobotsParts</span>
+<span class="nv">$robotsParts</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">robotsParts</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Also, you can use a magic getter:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+<span class="c1">// All the related records in RobotsParts</span>
+<span class="nv">$robotsParts</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getRobotsParts</span><span class="p">();</span>
+
+<span class="c1">// Passing parameters</span>
+<span class="nv">$robotsParts</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getRobotsParts</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>If the called method has a &#8220;get&#8221; prefix <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> will return a
+<code class="code docutils literal"><span class="pre">findFirst()</span></code>/<code class="code docutils literal"><span class="pre">find()</span></code> result. The following example compares retrieving related results with using magic methods
+and without:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="c1">// Robots model has a 1-n (hasMany)</span>
+<span class="c1">// relationship to RobotsParts then</span>
+<span class="nv">$robotsParts</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">robotsParts</span><span class="p">;</span>
+
+<span class="c1">// Only parts that match conditions</span>
+<span class="nv">$robotsParts</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getRobotsParts</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;created_at = :date:&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">&quot;date&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;2015-03-15&quot;</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$robotPart</span> <span class="o">=</span> <span class="nx">RobotsParts</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// RobotsParts model has a n-1 (belongsTo)</span>
+<span class="c1">// relationship to RobotsParts then</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$robotPart</span><span class="o">-&gt;</span><span class="na">robots</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Getting related records manually:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="c1">// Robots model has a 1-n (hasMany)</span>
+<span class="c1">// relationship to RobotsParts, then</span>
+<span class="nv">$robotsParts</span> <span class="o">=</span> <span class="nx">RobotsParts</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;robots_id = :id:&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Only parts that match conditions</span>
+<span class="nv">$robotsParts</span> <span class="o">=</span> <span class="nx">RobotsParts</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;robots_id = :id: AND created_at = :date:&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">&quot;id&quot;</span>   <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+            <span class="s2">&quot;date&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;2015-03-15&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$robotPart</span> <span class="o">=</span> <span class="nx">RobotsParts</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// RobotsParts model has a n-1 (belongsTo)</span>
+<span class="c1">// relationship to RobotsParts then</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;id = :id:&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nv">$robotPart</span><span class="o">-&gt;</span><span class="na">robots_id</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The prefix &#8220;get&#8221; is used to <code class="code docutils literal"><span class="pre">find()</span></code>/<code class="code docutils literal"><span class="pre">findFirst()</span></code> related records. Depending on the type of relation it will use
+<code class="code docutils literal"><span class="pre">find()</span></code> or <code class="code docutils literal"><span class="pre">findFirst()</span></code>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="73%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+<th class="head">Implicit Method</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Belongs-To</td>
+<td>Returns a model instance of the related record directly</td>
+<td>findFirst</td>
+</tr>
+<tr class="row-odd"><td>Has-One</td>
+<td>Returns a model instance of the related record directly</td>
+<td>findFirst</td>
+</tr>
+<tr class="row-even"><td>Has-Many</td>
+<td>Returns a collection of model instances of the referenced model</td>
+<td>find</td>
+</tr>
+<tr class="row-odd"><td>Has-Many-to-Many</td>
+<td>Returns a collection of model instances of the referenced model, it implicitly does &#8216;inner joins&#8217; with the involved models</td>
+<td>(complex query)</td>
+</tr>
+</tbody>
+</table>
+<p>You can also use the &#8220;count&#8221; prefix to return an integer denoting the count of the related records:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">&quot;The robot has &quot;</span><span class="p">,</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">countRobotsParts</span><span class="p">(),</span> <span class="s2">&quot; parts</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="aliasing-relationships">
+<h3>Aliasing Relationships<a class="headerlink" href="#aliasing-relationships" title="Permalink to this headline">¶</a></h3>
+<p>To explain better how aliases work, let&#8217;s check the following example:</p>
+<p>The &#8220;robots_similar&#8221; table has the function to define what robots are similar to others:</p>
+<div class="highlight-bash"><div class="highlight"><pre>mysql&gt; desc robots_similar<span class="p">;</span>
++-------------------+------------------+------+-----+---------+----------------+
+<span class="p">|</span> Field             <span class="p">|</span> Type             <span class="p">|</span> Null <span class="p">|</span> Key <span class="p">|</span> Default <span class="p">|</span> Extra          <span class="p">|</span>
++-------------------+------------------+------+-----+---------+----------------+
+<span class="p">|</span> id                <span class="p">|</span> int<span class="o">(</span>10<span class="o">)</span> unsigned <span class="p">|</span> NO   <span class="p">|</span> PRI <span class="p">|</span> NULL    <span class="p">|</span> auto_increment <span class="p">|</span>
+<span class="p">|</span> robots_id         <span class="p">|</span> int<span class="o">(</span>10<span class="o">)</span> unsigned <span class="p">|</span> NO   <span class="p">|</span> MUL <span class="p">|</span> NULL    <span class="p">|</span>                <span class="p">|</span>
+<span class="p">|</span> similar_robots_id <span class="p">|</span> int<span class="o">(</span>10<span class="o">)</span> unsigned <span class="p">|</span> NO   <span class="p">|</span>     <span class="p">|</span> NULL    <span class="p">|</span>                <span class="p">|</span>
++-------------------+------------------+------+-----+---------+----------------+
+<span class="m">3</span> rows in <span class="nb">set</span> <span class="o">(</span>0.00 sec<span class="o">)</span>
+</pre></div>
+</div>
+<p>Both &#8220;robots_id&#8221; and &#8220;similar_robots_id&#8221; have a relation to the model Robots:</p>
+<div class="figure align-center">
+<img alt="../_images/eer-2.png" src="../_images/eer-2.png" />
+</div>
+<p>A model that maps this table and its relationships is the following:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">RobotsSimilar</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span>
+            <span class="s2">&quot;robots_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Store</span><span class="se">\\</span><span class="s2">Toys</span><span class="se">\\</span><span class="s2">Robots&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span>
+        <span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span>
+            <span class="s2">&quot;similar_robots_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Store</span><span class="se">\\</span><span class="s2">Toys</span><span class="se">\\</span><span class="s2">Robots&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Since both relations point to the same model (Robots), obtain the records related to the relationship could not be clear:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robotsSimilar</span> <span class="o">=</span> <span class="nx">RobotsSimilar</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+<span class="c1">// Returns the related record based on the column (robots_id)</span>
+<span class="c1">// Also as is a belongsTo it&#39;s only returning one record</span>
+<span class="c1">// but the name &#39;getRobots&#39; seems to imply that return more than one</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$robotsSimilar</span><span class="o">-&gt;</span><span class="na">getRobots</span><span class="p">();</span>
+
+<span class="c1">// but, how to get the related record based on the column (similar_robots_id)</span>
+<span class="c1">// if both relationships have the same name?</span>
+</pre></div>
+</div>
+<p>The aliases allow us to rename both relationships to solve these problems:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RobotsSimilar</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span>
+            <span class="s2">&quot;robots_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Store</span><span class="se">\\</span><span class="s2">Toys</span><span class="se">\\</span><span class="s2">Robots&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;alias&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Robot&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span>
+            <span class="s2">&quot;similar_robots_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Store</span><span class="se">\\</span><span class="s2">Toys</span><span class="se">\\</span><span class="s2">Robots&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;alias&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;SimilarRobot&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>With the aliasing we can get the related records easily:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robotsSimilar</span> <span class="o">=</span> <span class="nx">RobotsSimilar</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+<span class="c1">// Returns the related record based on the column (robots_id)</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$robotsSimilar</span><span class="o">-&gt;</span><span class="na">getRobot</span><span class="p">();</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$robotsSimilar</span><span class="o">-&gt;</span><span class="na">robot</span><span class="p">;</span>
+
+<span class="c1">// Returns the related record based on the column (similar_robots_id)</span>
+<span class="nv">$similarRobot</span> <span class="o">=</span> <span class="nv">$robotsSimilar</span><span class="o">-&gt;</span><span class="na">getSimilarRobot</span><span class="p">();</span>
+<span class="nv">$similarRobot</span> <span class="o">=</span> <span class="nv">$robotsSimilar</span><span class="o">-&gt;</span><span class="na">similarRobot</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="magic-getters-vs-explicit-methods">
+<h3>Magic Getters vs. Explicit methods<a class="headerlink" href="#magic-getters-vs-explicit-methods" title="Permalink to this headline">¶</a></h3>
+<p>Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters,
+instead of use the magic getters you can optionally define those methods explicitly with the corresponding
+docblocks helping the IDE to produce a better auto-completion:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;RobotsParts&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;robots_id&quot;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Return the related &quot;robots parts&quot;</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return \RobotsParts[]</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getRobotsParts</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRelated</span><span class="p">(</span><span class="s2">&quot;RobotsParts&quot;</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="virtual-foreign-keys">
+<h2>Virtual Foreign Keys<a class="headerlink" href="#virtual-foreign-keys" title="Permalink to this headline">¶</a></h2>
+<p>By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid
+value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter
+when defining a relationship.</p>
+<p>The RobotsPart model can be changed to demonstrate this feature:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RobotsParts</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$robots_id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$parts_id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span>
+            <span class="s2">&quot;robots_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Store</span><span class="se">\\</span><span class="s2">Toys</span><span class="se">\\</span><span class="s2">Robots&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;foreignKey&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span>
+            <span class="s2">&quot;parts_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Parts&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;foreignKey&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;The part_id does not exist on the Parts model&quot;</span>
+                <span class="p">]</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you alter a <code class="code docutils literal"><span class="pre">belongsTo()</span></code> relationship to act as foreign key, it will validate that the values inserted/updated on those fields have a
+valid value on the referenced model. Similarly, if a <code class="code docutils literal"><span class="pre">hasMany()</span></code>/<code class="code docutils literal"><span class="pre">hasOne()</span></code> is altered it will validate that the records cannot be deleted
+if that record is used on a referenced model.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Parts</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;RobotsParts&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;parts_id&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;foreignKey&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;The part cannot be deleted because other robots are using it&quot;</span><span class="p">,</span>
+                <span class="p">]</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A virtual foreign key can be set up to allow null values as follows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RobotsParts</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$robots_id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$parts_id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span>
+            <span class="s2">&quot;parts_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Parts&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;foreignKey&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s2">&quot;allowNulls&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                    <span class="s2">&quot;message&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;The part_id does not exist on the Parts model&quot;</span><span class="p">,</span>
+                <span class="p">]</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="cascade-restrict-actions">
+<h3>Cascade/Restrict actions<a class="headerlink" href="#cascade-restrict-actions" title="Permalink to this headline">¶</a></h3>
+<p>Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records
+to maintain the integrity of data:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Relation</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Parts&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;robots_id&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;foreignKey&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="nx">Relation</span><span class="o">::</span><span class="na">ACTION_CASCADE</span><span class="p">,</span>
+                <span class="p">]</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.</p>
+</div>
+</div>
+<div class="section" id="storing-related-records">
+<h2>Storing Related Records<a class="headerlink" href="#storing-related-records" title="Permalink to this headline">¶</a></h2>
+<p>Magic properties can be used to store a record and its related properties:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Create an artist</span>
+<span class="nv">$artist</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Artists</span><span class="p">();</span>
+
+<span class="nv">$artist</span><span class="o">-&gt;</span><span class="na">name</span>    <span class="o">=</span> <span class="s2">&quot;Shinichi Osawa&quot;</span><span class="p">;</span>
+<span class="nv">$artist</span><span class="o">-&gt;</span><span class="na">country</span> <span class="o">=</span> <span class="s2">&quot;Japan&quot;</span><span class="p">;</span>
+
+<span class="c1">// Create an album</span>
+<span class="nv">$album</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Albums</span><span class="p">();</span>
+
+<span class="nv">$album</span><span class="o">-&gt;</span><span class="na">name</span>   <span class="o">=</span> <span class="s2">&quot;The One&quot;</span><span class="p">;</span>
+<span class="nv">$album</span><span class="o">-&gt;</span><span class="na">artist</span> <span class="o">=</span> <span class="nv">$artist</span><span class="p">;</span> <span class="c1">// Assign the artist</span>
+<span class="nv">$album</span><span class="o">-&gt;</span><span class="na">year</span>   <span class="o">=</span> <span class="mi">2008</span><span class="p">;</span>
+
+<span class="c1">// Save both records</span>
+<span class="nv">$album</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Saving a record and its related records in a has-many relation:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Get an existing artist</span>
+<span class="nv">$artist</span> <span class="o">=</span> <span class="nx">Artists</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span>
+    <span class="s2">&quot;name = &#39;Shinichi Osawa&#39;&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// Create an album</span>
+<span class="nv">$album</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Albums</span><span class="p">();</span>
+
+<span class="nv">$album</span><span class="o">-&gt;</span><span class="na">name</span>   <span class="o">=</span> <span class="s2">&quot;The One&quot;</span><span class="p">;</span>
+<span class="nv">$album</span><span class="o">-&gt;</span><span class="na">artist</span> <span class="o">=</span> <span class="nv">$artist</span><span class="p">;</span>
+
+<span class="nv">$songs</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="c1">// Create a first song</span>
+<span class="nv">$songs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>           <span class="o">=</span> <span class="k">new</span> <span class="nx">Songs</span><span class="p">();</span>
+<span class="nv">$songs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">name</span>     <span class="o">=</span> <span class="s2">&quot;Star Guitar&quot;</span><span class="p">;</span>
+<span class="nv">$songs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">duration</span> <span class="o">=</span> <span class="s2">&quot;5:54&quot;</span><span class="p">;</span>
+
+<span class="c1">// Create a second song</span>
+<span class="nv">$songs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>           <span class="o">=</span> <span class="k">new</span> <span class="nx">Songs</span><span class="p">();</span>
+<span class="nv">$songs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">name</span>     <span class="o">=</span> <span class="s2">&quot;Last Days&quot;</span><span class="p">;</span>
+<span class="nv">$songs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">duration</span> <span class="o">=</span> <span class="s2">&quot;4:29&quot;</span><span class="p">;</span>
+
+<span class="c1">// Assign the songs array</span>
+<span class="nv">$album</span><span class="o">-&gt;</span><span class="na">songs</span> <span class="o">=</span> <span class="nv">$songs</span><span class="p">;</span>
+
+<span class="c1">// Save the album + its songs</span>
+<span class="nv">$album</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Saving the album and the artist at the same time implicitly makes use of a transaction so if anything
+goes wrong with saving the related records, the parent will not be saved either. Messages are
+passed back to the user for information regarding any errors.</p>
+<p>Note: Adding related entities by overloading the following methods is not possible:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::beforeSave()</span></code></li>
+<li><code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::beforeCreate()</span></code></li>
+<li><code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::beforeUpdate()</span></code></li>
+</ul>
+</div></blockquote>
+<p>You need to overload <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::save()</span></code> for this to work from within a model.</p>
+</div>
+<div class="section" id="operations-over-resultsets">
+<h2>Operations over Resultsets<a class="headerlink" href="#operations-over-resultsets" title="Permalink to this headline">¶</a></h2>
+<p>If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:</p>
+<div class="section" id="updating-related-records">
+<h3>Updating related records<a class="headerlink" href="#updating-related-records" title="Permalink to this headline">¶</a></h3>
+<p>Instead of doing this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$parts</span> <span class="o">=</span> <span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">getParts</span><span class="p">();</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$parts</span> <span class="k">as</span> <span class="nv">$part</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$part</span><span class="o">-&gt;</span><span class="na">stock</span>      <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+    <span class="nv">$part</span><span class="o">-&gt;</span><span class="na">updated_at</span> <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$part</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">()</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$part</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">();</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="nv">$message</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>you can do this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">getParts</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;stock&quot;</span>      <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s2">&quot;updated_at&quot;</span> <span class="o">=&gt;</span> <span class="nb">time</span><span class="p">(),</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>&#8216;update&#8217; also accepts an anonymous function to filter what records must be updated:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;stock&quot;</span>      <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">&quot;updated_at&quot;</span> <span class="o">=&gt;</span> <span class="nb">time</span><span class="p">(),</span>
+<span class="p">];</span>
+
+<span class="c1">// Update all the parts except those whose type is basic</span>
+<span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">getParts</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span>
+    <span class="nv">$data</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">(</span><span class="nv">$part</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$part</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">===</span> <span class="nx">Part</span><span class="o">::</span><span class="na">TYPE_BASIC</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-related-records">
+<h3>Deleting related records<a class="headerlink" href="#deleting-related-records" title="Permalink to this headline">¶</a></h3>
+<p>Instead of doing this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$parts</span> <span class="o">=</span> <span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">getParts</span><span class="p">();</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$parts</span> <span class="k">as</span> <span class="nv">$part</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$part</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">()</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$part</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">();</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="nv">$message</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>you can do this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">getParts</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><code class="code docutils literal"><span class="pre">delete()</span></code> also accepts an anonymous function to filter what records must be deleted:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Delete only whose stock is greater or equal than zero</span>
+<span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">getParts</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span>
+    <span class="k">function</span> <span class="p">(</span><span class="nv">$part</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$part</span><span class="o">-&gt;</span><span class="na">stock</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="model-events.html" title="Model Events"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Working with Models"
+             >previous</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.lazyload.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/highlight.pack.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.backstretch.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/custom.js"></script>
+
+  </body>
+</html>

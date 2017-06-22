@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Routing &mdash; documentación de Phalcon - 3.1.1 (Spanish / Español)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="documentación de Phalcon - 3.1.1" href="../index.html" />
+    <link rel="next" title="Dispatching Controllers" href="dispatching.html" />
+    <link rel="prev" title="MVC Applications" href="applications.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="dispatching.html" title="Dispatching Controllers"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="applications.html" title="MVC Applications"
+             accesskey="P">anterior</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">documentación de Phalcon - 3.1.1</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Tabla de Contenidos</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Routing</a><ul>
+<li><a class="reference internal" href="#defining-routes">Defining Routes</a><ul>
+<li><a class="reference internal" href="#parameters-with-names">Parameters with Names</a></li>
+<li><a class="reference internal" href="#short-syntax">Short Syntax</a></li>
+<li><a class="reference internal" href="#mixing-array-and-short-syntax">Mixing Array and Short Syntax</a></li>
+<li><a class="reference internal" href="#routing-to-modules">Routing to Modules</a></li>
+<li><a class="reference internal" href="#http-method-restrictions">HTTP Method Restrictions</a></li>
+<li><a class="reference internal" href="#using-conversors">Using conversors</a></li>
+<li><a class="reference internal" href="#groups-of-routes">Groups of Routes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#matching-routes">Matching Routes</a></li>
+<li><a class="reference internal" href="#naming-routes">Naming Routes</a></li>
+<li><a class="reference internal" href="#usage-examples">Usage Examples</a></li>
+<li><a class="reference internal" href="#default-behavior">Default Behavior</a></li>
+<li><a class="reference internal" href="#setting-the-default-route">Setting the default route</a></li>
+<li><a class="reference internal" href="#not-found-paths">Not Found Paths</a></li>
+<li><a class="reference internal" href="#setting-default-paths">Setting default paths</a></li>
+<li><a class="reference internal" href="#dealing-with-extra-trailing-slashes">Dealing with extra/trailing slashes</a></li>
+<li><a class="reference internal" href="#match-callbacks">Match Callbacks</a></li>
+<li><a class="reference internal" href="#hostname-constraints">Hostname Constraints</a></li>
+<li><a class="reference internal" href="#uri-sources">URI Sources</a></li>
+<li><a class="reference internal" href="#testing-your-routes">Testing your routes</a></li>
+<li><a class="reference internal" href="#annotations-router">Annotations Router</a></li>
+<li><a class="reference internal" href="#registering-router-instance">Registering Router instance</a></li>
+<li><a class="reference internal" href="#implementing-your-own-router">Implementing your own Router</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Tema anterior</h4>
+            <p class="topless"><a href="applications.html" title="capítulo anterior">&lt; MVC Applications</a></p>
+            <h4>Próximo tema</h4>
+            <p class="topless"><a href="dispatching.html" title="próximo capítulo">Dispatching Controllers &gt;</a></p>
+            <h3>Esta página</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/routing.txt" rel="nofollow">Mostrar el código</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="routing">
+<h1>Routing<a class="headerlink" href="#routing" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>The router component allows you to define routes that are mapped to controllers or handlers that should receive
+the request. A router simply parses a URI to determine this information. The router has two modes: MVC
+mode and match-only mode. The first mode is ideal for working with MVC applications.</p>
+<div class="section" id="defining-routes">
+<h2>Defining Routes<a class="headerlink" href="#defining-routes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><em>Phalcon\Mvc\Router</em></a> provides advanced routing capabilities. In MVC mode,
+you can define routes and map them to controllers/actions that you require. A route is defined as follows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
+
+<span class="c1">// Create the router</span>
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">();</span>
+
+<span class="c1">// Define a route</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/admin/users/my-profile&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;users&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;profile&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Another route</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/admin/users/change-password&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;users&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;changePassword&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The first parameter of the <code class="code docutils literal"><span class="pre">add()</span></code> method is the pattern you want to match and, optionally, the second parameter is a set of paths.
+In this case, if the URI is /admin/users/my-profile, then the &#8220;users&#8221; controller with its action &#8220;profile&#8221;
+will be executed. It&#8217;s important to remember that the router does not execute the controller and action, it only collects this
+information to inform the correct component (ie. <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a>)
+that this is the controller/action it should execute.</p>
+<p>An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can
+create more flexible routes:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
+
+<span class="c1">// Create the router</span>
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">();</span>
+
+<span class="c1">// Define a route</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/admin/:controller/a/:action/:params&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;params&quot;</span>     <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>In the example above, we&#8217;re using wildcards to make a route valid for many URIs. For example, by accessing the
+following URL (/admin/users/a/delete/dave/301) would produce:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Controller</td>
+<td>users</td>
+</tr>
+<tr class="row-even"><td>Action</td>
+<td>delete</td>
+</tr>
+<tr class="row-odd"><td>Parameter</td>
+<td>dave</td>
+</tr>
+<tr class="row-even"><td>Parameter</td>
+<td>301</td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="code docutils literal"><span class="pre">add()</span></code> method receives a pattern that can optionally have predefined placeholders and regular expression
+modifiers. All the routing patterns must start with a forward slash character (/). The regular expression syntax used
+is the same as the <a class="reference external" href="http://www.php.net/manual/en/book.pcre.php">PCRE regular expressions</a>. Note that, it is not necessary to add regular expression
+delimiters. All route patterns are case-insensitive.</p>
+<p>The second parameter defines how the matched parts should bind to the controller/action/parameters. Matching
+parts are placeholders or subpatterns delimited by parentheses (round brackets). In the example given above, the
+first subpattern matched (<code class="code docutils literal"><span class="pre">:controller</span></code>) is the controller part of the route, the second the action and so on.</p>
+<p>These placeholders help writing regular expressions that are more readable for developers and easier
+to understand. The following placeholders are supported:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="19%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Placeholder</th>
+<th class="head">Regular Expression</th>
+<th class="head">Usage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">/:module</span></code></td>
+<td><code class="code docutils literal"><span class="pre">/([a-zA-Z0-9\_\-]+)</span></code></td>
+<td>Matches a valid module name with alpha-numeric characters only</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">/:controller</span></code></td>
+<td><code class="code docutils literal"><span class="pre">/([a-zA-Z0-9\_\-]+)</span></code></td>
+<td>Matches a valid controller name with alpha-numeric characters only</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">/:action</span></code></td>
+<td><code class="code docutils literal"><span class="pre">/([a-zA-Z0-9\_]+)</span></code></td>
+<td>Matches a valid action name with alpha-numeric characters only</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">/:params</span></code></td>
+<td><code class="code docutils literal"><span class="pre">(/.*)*</span></code></td>
+<td>Matches a list of optional words separated by slashes. Only use this placeholder at the end of a route</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal"><span class="pre">/:namespace</span></code></td>
+<td><code class="code docutils literal"><span class="pre">/([a-zA-Z0-9\_\-]+)</span></code></td>
+<td>Matches a single level namespace name</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal"><span class="pre">/:int</span></code></td>
+<td><code class="code docutils literal"><span class="pre">/([0-9]+)</span></code></td>
+<td>Matches an integer parameter</td>
+</tr>
+</tbody>
+</table>
+<p>Controller names are camelized, this means that characters (<code class="code docutils literal"><span class="pre">-</span></code>) and (<code class="code docutils literal"><span class="pre">_</span></code>) are removed and the next character
+is uppercased. For instance, some_controller is converted to SomeController.</p>
+<p>Since you can add many routes as you need using the <code class="code docutils literal"><span class="pre">add()</span></code> method, the order in which routes are added indicate
+their relevance, latest routes added have more relevance than first added. Internally, all defined routes
+are traversed in reverse order until <a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><em>Phalcon\Mvc\Router</em></a> finds the
+one that matches the given URI and processes it, while ignoring the rest.</p>
+<div class="section" id="parameters-with-names">
+<h3>Parameters with Names<a class="headerlink" href="#parameters-with-names" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>The example below demonstrates how to define names to route parameters:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/news/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;posts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;show&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span>       <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// ([0-9]{4})</span>
+        <span class="s2">&quot;month&quot;</span>      <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="c1">// ([0-9]{2})</span>
+        <span class="s2">&quot;day&quot;</span>        <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="c1">// ([0-9]{2})</span>
+        <span class="s2">&quot;params&quot;</span>     <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="c1">// :params</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>In the above example, the route doesn&#8217;t define a &#8220;controller&#8221; or &#8220;action&#8221; part. These parts are replaced
+with fixed values (&#8220;posts&#8221; and &#8220;show&#8221;). The user will not know the controller that is really dispatched
+by the request. Inside the controller, those named parameters can be accessed as follows:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Get &quot;year&quot; parameter</span>
+        <span class="nv">$year</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Get &quot;month&quot; parameter</span>
+        <span class="nv">$month</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s2">&quot;month&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Get &quot;day&quot; parameter</span>
+        <span class="nv">$day</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s2">&quot;day&quot;</span><span class="p">);</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that the values of the parameters are obtained from the dispatcher. This happens because it is the
+component that finally interacts with the drivers of your application. Moreover, there is also another
+way to create named parameters as part of the pattern:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/documentation/{chapter}/{name}.{type:[a-z]+}&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;documentation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;show&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>You can access their values in the same way as before:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DocumentationController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Get &quot;name&quot; parameter</span>
+        <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Get &quot;type&quot; parameter</span>
+        <span class="nv">$type</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">);</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="short-syntax">
+<h3>Short Syntax<a class="headerlink" href="#short-syntax" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>If you don&#8217;t like using an array to define the route paths, an alternative syntax is also available.
+The following examples produce the same result:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Short form</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/posts/{year:[0-9]+}/{title:[a-z\-]+}&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Posts::show&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// Array form</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/posts/([0-9]+)/([a-z\-]+)&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+       <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;posts&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;show&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;year&quot;</span>       <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+       <span class="s2">&quot;title&quot;</span>      <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mixing-array-and-short-syntax">
+<h3>Mixing Array and Short Syntax<a class="headerlink" href="#mixing-array-and-short-syntax" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Array and short syntax can be mixed to define a route, in this case note that named parameters automatically
+are added to the route paths according to the position on which they were defined:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// First position must be skipped because it is used for</span>
+<span class="c1">// the named parameter &#39;country&#39;</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;section&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="c1">// Positions start with 2</span>
+        <span class="s2">&quot;article&quot;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="routing-to-modules">
+<h3>Routing to Modules<a class="headerlink" href="#routing-to-modules" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>You can define routes whose paths include modules. This is specially suitable to multi-module applications.
+It&#8217;s possible define a default route that includes a module wildcard:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
+
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/:module/:controller/:action/:params&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;module&quot;</span>     <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;params&quot;</span>     <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>In this case, the route always must have the module name as part of the URL. For example, the following
+URL: /admin/users/edit/sonny, will be processed as:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Module</td>
+<td>admin</td>
+</tr>
+<tr class="row-even"><td>Controller</td>
+<td>users</td>
+</tr>
+<tr class="row-odd"><td>Action</td>
+<td>edit</td>
+</tr>
+<tr class="row-even"><td>Parameter</td>
+<td>sonny</td>
+</tr>
+</tbody>
+</table>
+<p>Or you can bind specific routes to specific modules:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;module&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;backend&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/products/:action&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;module&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;frontend&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;products&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Or bind them to specific namespaces:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/:namespace/login&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;namespace&quot;</span>  <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Namespaces/class names must be passed separated:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;namespace&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;Backend</span><span class="se">\\</span><span class="s2">Controllers&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="http-method-restrictions">
+<h3>HTTP Method Restrictions<a class="headerlink" href="#http-method-restrictions" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>When you add a route using simply <code class="code docutils literal"><span class="pre">add()</span></code>, the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method,
+this is especially useful when creating RESTful applications:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// This route only will be matched if the HTTP method is GET</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">addGet</span><span class="p">(</span>
+    <span class="s2">&quot;/products/edit/{id}&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Products::edit&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// This route only will be matched if the HTTP method is POST</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">addPost</span><span class="p">(</span>
+    <span class="s2">&quot;/products/save&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Products::save&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// This route will be matched if the HTTP method is POST or PUT</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/products/update&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Products::update&quot;</span>
+<span class="p">)</span><span class="o">-&gt;</span><span class="na">via</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;PUT&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-conversors">
+<h3>Using conversors<a class="headerlink" href="#using-conversors" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Conversors allow you to freely transform the route&#8217;s parameters before passing them to the dispatcher.
+The following examples show how to use them:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// The action name allows dashes, an action can be: /products/new-ipod-nano-4-generation</span>
+<span class="nv">$route</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/products/{slug:[a-z\-]+}&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;products&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;show&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$route</span><span class="o">-&gt;</span><span class="na">convert</span><span class="p">(</span>
+    <span class="s2">&quot;slug&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">(</span><span class="nv">$slug</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Transform the slug removing the dashes</span>
+        <span class="k">return</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nv">$slug</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Another use case for conversors is binding a model into a route. This allows the model to be passed into the defined action directly:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// This example works off the assumption that the ID is being used as parameter in the url: /products/4</span>
+<span class="nv">$route</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/products/{id}&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;products&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;show&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$route</span><span class="o">-&gt;</span><span class="na">convert</span><span class="p">(</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Fetch the model</span>
+        <span class="k">return</span> <span class="nx">Product</span><span class="o">::</span><span class="na">findFirstById</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="groups-of-routes">
+<h3>Groups of Routes<a class="headerlink" href="#groups-of-routes" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>If a set of routes have common paths they can be grouped to easily maintain them:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router\Group</span> <span class="k">as</span> <span class="nx">RouterGroup</span><span class="p">;</span>
+
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">();</span>
+
+<span class="c1">// Create a group with a common module and controller</span>
+<span class="nv">$blog</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RouterGroup</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;module&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;blog&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// All the routes start with /blog</span>
+<span class="nv">$blog</span><span class="o">-&gt;</span><span class="na">setPrefix</span><span class="p">(</span><span class="s2">&quot;/blog&quot;</span><span class="p">);</span>
+
+<span class="c1">// Add a route to the group</span>
+<span class="nv">$blog</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/save&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;save&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Add another route to the group</span>
+<span class="nv">$blog</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/edit/{id}&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;edit&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// This route maps to a controller different than the default</span>
+<span class="nv">$blog</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/blog&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;blog&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Add the group to the router</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">mount</span><span class="p">(</span><span class="nv">$blog</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can move groups of routes to separate files in order to improve the organization and code reusing in the application:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router\Group</span> <span class="k">as</span> <span class="nx">RouterGroup</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">BlogRoutes</span> <span class="k">extends</span> <span class="nx">RouterGroup</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Default paths</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setPaths</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;module&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;blog&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;namespace&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Blog</span><span class="se">\\</span><span class="s2">Controllers&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="c1">// All the routes start with /blog</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setPrefix</span><span class="p">(</span><span class="s2">&quot;/blog&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Add a route to the group</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+            <span class="s2">&quot;/save&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;save&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Add another route to the group</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+            <span class="s2">&quot;/edit/{id}&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;edit&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="c1">// This route maps to a controller different than the default</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+            <span class="s2">&quot;/blog&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;blog&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then mount the group in the router:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Add the group to the router</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">mount</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">BlogRoutes</span><span class="p">()</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="matching-routes">
+<h2>Matching Routes<a class="headerlink" href="#matching-routes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>A valid URI must be passed to the Router so that it can process it and find a matching route.
+By default, the routing URI is taken from the <code class="code docutils literal"><span class="pre">$_GET[&quot;_url&quot;]</span></code> variable that is created by the rewrite engine
+module. A couple of rewrite rules that work very well with Phalcon are:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nb">RewriteEngine</span> <span class="k">On</span>
+<span class="nb">RewriteCond</span>   %{REQUEST_FILENAME} !-d
+<span class="nb">RewriteCond</span>   %{REQUEST_FILENAME} !-f
+<span class="nb">RewriteRule</span>   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
+</pre></div>
+</div>
+<p>In this configuration, any requests to files or folders that don&#8217;t exist will be sent to index.php.</p>
+<p>The following example shows how to use this component in stand-alone mode:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
+
+<span class="c1">// Creating a router</span>
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">();</span>
+
+<span class="c1">// Define routes here if any</span>
+<span class="c1">// ...</span>
+
+<span class="c1">// Taking URI from $_GET[&quot;_url&quot;]</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
+
+<span class="c1">// Or Setting the URI value directly</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="s2">&quot;/employees/edit/17&quot;</span><span class="p">);</span>
+
+<span class="c1">// Getting the processed controller</span>
+<span class="k">echo</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">getControllerName</span><span class="p">();</span>
+
+<span class="c1">// Getting the processed action</span>
+<span class="k">echo</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">();</span>
+
+<span class="c1">// Get the matched route</span>
+<span class="nv">$route</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">getMatchedRoute</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="naming-routes">
+<h2>Naming Routes<a class="headerlink" href="#naming-routes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Each route that is added to the router is stored internally as a <a class="reference internal" href="../api/Phalcon_Mvc_Router_Route.html"><em>Phalcon\Mvc\Router\Route</em></a> object.
+That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application.
+This is especially useful if you want to create URLs from it.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$route</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/posts/{year}/{title}&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Posts::show&quot;</span>
+<span class="p">);</span>
+
+<span class="nv">$route</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s2">&quot;show-posts&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Then, using for example the component <a class="reference internal" href="../api/Phalcon_Mvc_Url.html"><em>Phalcon\Mvc\Url</em></a> we can build routes from its name:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Returns /posts/2012/phalcon-1-0-released</span>
+<span class="k">echo</span> <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;for&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;show-posts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;2012&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;phalcon-1-0-released&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage-examples">
+<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>The following are examples of custom routes:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Matches &quot;/system/admin/a/edit/7001&quot;</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/system/:controller/a/:action/:params&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;params&quot;</span>     <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Matches &quot;/es/news&quot;</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/([a-z]{2})/:controller&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;language&quot;</span>   <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Matches &quot;/es/news&quot;</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/{language:[a-z]{2}}/:controller&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Matches &quot;/admin/posts/edit/100&quot;</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/admin/:controller/:action/:int&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span>         <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Matches &quot;/posts/2015/02/some-cool-content&quot;</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;posts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;show&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span>       <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;month&quot;</span>      <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span>      <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Matches &quot;/manual/en/translate.adapter.html&quot;</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/manual/([a-z]{2})/([a-z\.]+)\.html&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;manual&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;show&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;language&quot;</span>   <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;file&quot;</span>       <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Matches /feed/fr/le-robots-hot-news.atom</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/feed/{lang:[a-z]+}/{blog:[a-z\-]+}\.{type:[a-z\-]+}&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Feed::get&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// Matches /api/v1/users/peter.json</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;api&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;version&quot;</span>    <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;format&quot;</span>     <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>Beware of characters allowed in regular expression for controllers and namespaces. As these
+become class names and in turn they&#8217;re passed through the file system could be used by attackers to
+read unauthorized files. A safe regular expression is: <code class="code docutils literal"><span class="pre">/([a-zA-Z0-9\_\-]+)</span></code></div></blockquote>
+</div>
+<div class="section" id="default-behavior">
+<h2>Default Behavior<a class="headerlink" href="#default-behavior" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><em>Phalcon\Mvc\Router</em></a> has a default behavior that provides a very simple routing that
+always expects a URI that matches the following pattern: /:controller/:action/:params</p>
+<p>For example, for a URL like this <em>http://phalconphp.com/documentation/show/about.html</em>, this router will translate it as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Controller</td>
+<td>documentation</td>
+</tr>
+<tr class="row-even"><td>Action</td>
+<td>show</td>
+</tr>
+<tr class="row-odd"><td>Parameter</td>
+<td>about.html</td>
+</tr>
+</tbody>
+</table>
+<p>If you don&#8217;t want the router to have this behavior, you must create the router passing <code class="code docutils literal"><span class="pre">false</span></code> as the first parameter:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
+
+<span class="c1">// Create the router without default routes</span>
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-the-default-route">
+<h2>Setting the default route<a class="headerlink" href="#setting-the-default-route" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>When your application is accessed without any route, the &#8216;/&#8217; route is used to determine what paths must be used to show the initial page
+in your website/application:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="not-found-paths">
+<h2>Not Found Paths<a class="headerlink" href="#not-found-paths" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>If none of the routes specified in the router are matched, you can define a group of paths to be used in this scenario:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Set 404 paths</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">notFound</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;route404&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>This is typically for an Error 404 page.</p>
+</div>
+<div class="section" id="setting-default-paths">
+<h2>Setting default paths<a class="headerlink" href="#setting-default-paths" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>It&#8217;s possible to define default values for the module, controller or action. When a route is missing any of
+those paths they can be automatically filled by the router:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Setting a specific default</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setDefaultModule</span><span class="p">(</span><span class="s2">&quot;backend&quot;</span><span class="p">);</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setDefaultNamespace</span><span class="p">(</span><span class="s2">&quot;Backend</span><span class="se">\\</span><span class="s2">Controllers&quot;</span><span class="p">);</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setDefaultController</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">);</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setDefaultAction</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">);</span>
+
+<span class="c1">// Using an array</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setDefaults</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dealing-with-extra-trailing-slashes">
+<h2>Dealing with extra/trailing slashes<a class="headerlink" href="#dealing-with-extra-trailing-slashes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Sometimes a route could be accessed with extra/trailing slashes.
+Those extra slashes would lead to produce a not-found status in the dispatcher.
+You can set up the router to automatically remove the slashes from the end of handled route:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
+
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">();</span>
+
+<span class="c1">// Remove trailing slashes automatically</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">removeExtraSlashes</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Or, you can modify specific routes to optionally accept trailing slashes:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// The [/]{0,1} allows this route to have optionally have a trailing slash</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/{language:[a-z]{2}}/:controller[/]{0,1}&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="match-callbacks">
+<h2>Match Callbacks<a class="headerlink" href="#match-callbacks" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Sometimes, routes should only be matched if they meet specific conditions.
+You can add arbitrary conditions to routes using the <code class="code docutils literal"><span class="pre">beforeMatch()</span></code> callback.
+If this function return <code class="code docutils literal"><span class="pre">false</span></code>, the route will be treated as non-matched:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$route</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;/login&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;module&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;session&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$route</span><span class="o">-&gt;</span><span class="na">beforeMatch</span><span class="p">(</span>
+    <span class="k">function</span> <span class="p">(</span><span class="nv">$uri</span><span class="p">,</span> <span class="nv">$route</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Check if the request was made with Ajax</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_X_REQUESTED_WITH&quot;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_X_REQUESTED_WITH&quot;</span><span class="p">]</span> <span class="o">===</span> <span class="s2">&quot;XMLHttpRequest&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>You can re-use these extra conditions in classes:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">AjaxFilter</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">check</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_X_REQUESTED_WITH&quot;</span><span class="p">]</span> <span class="o">===</span> <span class="s2">&quot;XMLHttpRequest&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And use this class instead of the anonymous function:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$route</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/get/info/{id}&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;products&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;info&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$route</span><span class="o">-&gt;</span><span class="na">beforeMatch</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">AjaxFilter</span><span class="p">(),</span>
+        <span class="s2">&quot;check&quot;</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>As of Phalcon 3, there is another way to check this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$route</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;module&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;session&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$route</span><span class="o">-&gt;</span><span class="na">beforeMatch</span><span class="p">(</span>
+    <span class="k">function</span> <span class="p">(</span><span class="nv">$uri</span><span class="p">,</span> <span class="nv">$route</span><span class="p">)</span> <span class="p">{</span>
+        <span class="sd">/**</span>
+<span class="sd">         * @var string $uri</span>
+<span class="sd">         * @var \Phalcon\Mvc\Router\Route $route</span>
+<span class="sd">         * @var \Phalcon\DiInterface $this</span>
+<span class="sd">         * @var \Phalcon\Http\Request $request</span>
+<span class="sd">         */</span>
+        <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getShared</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Check if the request was made with Ajax</span>
+        <span class="k">return</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">isAjax</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hostname-constraints">
+<h2>Hostname Constraints<a class="headerlink" href="#hostname-constraints" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>The router allows you to set hostname constraints, this means that specific routes or a group of routes can be restricted
+to only match if the route also meets the hostname constraint:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$route</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;module&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;session&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$route</span><span class="o">-&gt;</span><span class="na">setHostName</span><span class="p">(</span><span class="s2">&quot;admin.company.com&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The hostname can also be passed as a regular expressions:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$route</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;module&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;session&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$route</span><span class="o">-&gt;</span><span class="na">setHostName</span><span class="p">(</span><span class="s2">&quot;([a-z]+).company.com&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In groups of routes you can set up a hostname constraint that apply for every route in the group:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router\Group</span> <span class="k">as</span> <span class="nx">RouterGroup</span><span class="p">;</span>
+
+<span class="c1">// Create a group with a common module and controller</span>
+<span class="nv">$blog</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RouterGroup</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;module&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;blog&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;posts&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Hostname restriction</span>
+<span class="nv">$blog</span><span class="o">-&gt;</span><span class="na">setHostName</span><span class="p">(</span><span class="s2">&quot;blog.mycompany.com&quot;</span><span class="p">);</span>
+
+<span class="c1">// All the routes start with /blog</span>
+<span class="nv">$blog</span><span class="o">-&gt;</span><span class="na">setPrefix</span><span class="p">(</span><span class="s2">&quot;/blog&quot;</span><span class="p">);</span>
+
+<span class="c1">// Default route</span>
+<span class="nv">$blog</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Add a route to the group</span>
+<span class="nv">$blog</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/save&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;save&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Add another route to the group</span>
+<span class="nv">$blog</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/edit/{id}&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;edit&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// Add the group to the router</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">mount</span><span class="p">(</span><span class="nv">$blog</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="uri-sources">
+<h2>URI Sources<a class="headerlink" href="#uri-sources" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>By default the URI information is obtained from the <code class="code docutils literal"><span class="pre">$_GET[&quot;_url&quot;]</span></code> variable, this is passed by the Rewrite-Engine to
+Phalcon, you can also use <code class="code docutils literal"><span class="pre">$_SERVER[&quot;REQUEST_URI&quot;]</span></code> if required:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="c1">// Use $_GET[&quot;_url&quot;] (default)</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setUriSource</span><span class="p">(</span>
+    <span class="nx">Router</span><span class="o">::</span><span class="na">URI_SOURCE_GET_URL</span>
+<span class="p">);</span>
+
+<span class="c1">// Use $_SERVER[&quot;REQUEST_URI&quot;]</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setUriSource</span><span class="p">(</span>
+    <span class="nx">Router</span><span class="o">::</span><span class="na">URI_SOURCE_SERVER_REQUEST_URI</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Or you can manually pass a URI to the <code class="code docutils literal"><span class="pre">handle()</span></code> method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="s2">&quot;/some/route/to/handle&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing-your-routes">
+<h2>Testing your routes<a class="headerlink" href="#testing-your-routes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Since this component has no dependencies, you can create a file as shown below to test your routes:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
+
+<span class="c1">// These routes simulate real URIs</span>
+<span class="nv">$testRoutes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;/index&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;/index/index&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;/index/test&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;/products&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;/products/index/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;/products/show/101&quot;</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">();</span>
+
+<span class="c1">// Add here your custom routes</span>
+<span class="c1">// ...</span>
+
+<span class="c1">// Testing each route</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$testRoutes</span> <span class="k">as</span> <span class="nv">$testRoute</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Handle the route</span>
+    <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$testRoute</span><span class="p">);</span>
+
+    <span class="k">echo</span> <span class="s2">&quot;Testing &quot;</span><span class="p">,</span> <span class="nv">$testRoute</span><span class="p">,</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Check if some route was matched</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">wasMatched</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;Controller: &quot;</span><span class="p">,</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">getControllerName</span><span class="p">(),</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">&quot;Action: &quot;</span><span class="p">,</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">(),</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;The route wasn&#39;t matched by any route&lt;br&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="annotations-router">
+<h2>Annotations Router<a class="headerlink" href="#annotations-router" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>This component provides a variant that&#8217;s integrated with the <a class="reference internal" href="annotations.html"><em>annotations</em></a> service. Using this strategy
+you can write the routes directly in the controllers instead of adding them in the service registration:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router\Annotations</span> <span class="k">as</span> <span class="nx">RouterAnnotations</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;router&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Use the annotations router. We&#39;re passing false as we don&#39;t want the router to add its default patterns</span>
+    <span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RouterAnnotations</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+
+    <span class="c1">// Read the annotations from ProductsController if the URI starts with /api/products</span>
+    <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">addResource</span><span class="p">(</span><span class="s2">&quot;Products&quot;</span><span class="p">,</span> <span class="s2">&quot;/api/products&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$router</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>The annotations can be defined in the following way:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @RoutePrefix(&quot;/api/products&quot;)</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">ProductsController</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @Get(</span>
+<span class="sd">     *     &quot;/&quot;</span>
+<span class="sd">     * )</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Get(</span>
+<span class="sd">     *     &quot;/edit/{id:[0-9]+}&quot;,</span>
+<span class="sd">     *     name=&quot;edit-robot&quot;</span>
+<span class="sd">     * )</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">editAction</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Route(</span>
+<span class="sd">     *     &quot;/save&quot;,</span>
+<span class="sd">     *     methods={&quot;POST&quot;, &quot;PUT&quot;},</span>
+<span class="sd">     *     name=&quot;save-robot&quot;</span>
+<span class="sd">     * )</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Route(</span>
+<span class="sd">     *     &quot;/delete/{id:[0-9]+}&quot;,</span>
+<span class="sd">     *     methods=&quot;DELETE&quot;,</span>
+<span class="sd">     *     conversors={</span>
+<span class="sd">     *         id=&quot;MyConversors::checkId&quot;</span>
+<span class="sd">     *     }</span>
+<span class="sd">     * )</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">deleteAction</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">infoAction</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Only methods marked with valid annotations are used as routes. List of annotations supported:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="52%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Usage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>RoutePrefix</td>
+<td>A prefix to be prepended to each route URI. This annotation must be placed at the class&#8217; docblock</td>
+<td><code class="code docutils literal"><span class="pre">&#64;RoutePrefix(&quot;/api/products&quot;)</span></code></td>
+</tr>
+<tr class="row-odd"><td>Route</td>
+<td>This annotation marks a method as a route. This annotation must be placed in a method docblock</td>
+<td><code class="code docutils literal"><span class="pre">&#64;Route(&quot;/api/products/show&quot;)</span></code></td>
+</tr>
+<tr class="row-even"><td>Get</td>
+<td>This annotation marks a method as a route restricting the HTTP method to GET</td>
+<td><code class="code docutils literal"><span class="pre">&#64;Get(&quot;/api/products/search&quot;)</span></code></td>
+</tr>
+<tr class="row-odd"><td>Post</td>
+<td>This annotation marks a method as a route restricting the HTTP method to POST</td>
+<td><code class="code docutils literal"><span class="pre">&#64;Post(&quot;/api/products/save&quot;)</span></code></td>
+</tr>
+<tr class="row-even"><td>Put</td>
+<td>This annotation marks a method as a route restricting the HTTP method to PUT</td>
+<td><code class="code docutils literal"><span class="pre">&#64;Put(&quot;/api/products/save&quot;)</span></code></td>
+</tr>
+<tr class="row-odd"><td>Delete</td>
+<td>This annotation marks a method as a route restricting the HTTP method to DELETE</td>
+<td><code class="code docutils literal"><span class="pre">&#64;Delete(&quot;/api/products/delete/{id}&quot;)</span></code></td>
+</tr>
+<tr class="row-even"><td>Options</td>
+<td>This annotation marks a method as a route restricting the HTTP method to OPTIONS</td>
+<td><code class="code docutils literal"><span class="pre">&#64;Option(&quot;/api/products/info&quot;)</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>For annotations that add routes, the following parameters are supported:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="52%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Usage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>methods</td>
+<td>Define one or more HTTP method that route must meet with</td>
+<td><code class="code docutils literal"><span class="pre">&#64;Route(&quot;/api/products&quot;,</span> <span class="pre">methods={&quot;GET&quot;,</span> <span class="pre">&quot;POST&quot;})</span></code></td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>Define a name for the route</td>
+<td><code class="code docutils literal"><span class="pre">&#64;Route(&quot;/api/products&quot;,</span> <span class="pre">name=&quot;get-products&quot;)</span></code></td>
+</tr>
+<tr class="row-even"><td>paths</td>
+<td>An array of paths like the one passed to <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Router::add()</span></code></td>
+<td><code class="code docutils literal"><span class="pre">&#64;Route(&quot;/posts/{id}/{slug}&quot;,</span> <span class="pre">paths={module=&quot;backend&quot;})</span></code></td>
+</tr>
+<tr class="row-odd"><td>conversors</td>
+<td>A hash of conversors to be applied to the parameters</td>
+<td><code class="code docutils literal"><span class="pre">&#64;Route(&quot;/posts/{id}/{slug}&quot;,</span> <span class="pre">conversors={id=&quot;MyConversor::getId&quot;})</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>If you&#8217;re using modules in your application, it is better use the <code class="code docutils literal"><span class="pre">addModuleResource()</span></code> method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router\Annotations</span> <span class="k">as</span> <span class="nx">RouterAnnotations</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;router&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Use the annotations router</span>
+    <span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RouterAnnotations</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+
+    <span class="c1">// Read the annotations from Backend\Controllers\ProductsController if the URI starts with /api/products</span>
+    <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">addModuleResource</span><span class="p">(</span><span class="s2">&quot;backend&quot;</span><span class="p">,</span> <span class="s2">&quot;Products&quot;</span><span class="p">,</span> <span class="s2">&quot;/api/products&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$router</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="registering-router-instance">
+<h2>Registering Router instance<a class="headerlink" href="#registering-router-instance" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>You can register router during service registration with Phalcon dependency injector to make it available inside the controllers.</p>
+<p>You need to add code below in your bootstrap file (for example index.php or app/config/services.php if you use <a class="reference external" href="http://phalconphp.com/en/download/tools">Phalcon Developer Tools</a>)</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Add routing capabilities</span>
+<span class="sd"> */</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;router&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">require</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/../app/config/routes.php&quot;</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="nv">$router</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>You need to create app/config/routes.php and add router initialization code, for example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
+
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">();</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="s2">&quot;/products/:action&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;products&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="k">return</span> <span class="nv">$router</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementing-your-own-router">
+<h2>Implementing your own Router<a class="headerlink" href="#implementing-your-own-router" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>The <a class="reference internal" href="../api/Phalcon_Mvc_RouterInterface.html"><em>Phalcon\Mvc\RouterInterface</em></a> interface must be implemented to create your own router replacing
+the one provided by Phalcon.</p>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="dispatching.html" title="Dispatching Controllers"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="applications.html" title="MVC Applications"
+             >anterior</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+  </body>
+</html>

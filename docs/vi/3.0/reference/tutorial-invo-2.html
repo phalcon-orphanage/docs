@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial 3: Securing INVO &mdash; Phalcon 3.1.1 documentation (English)</title>
+    <meta name="keywords" content="php, phalcon, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="//static.phalconphp.com/www/css/phalcon.min.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!--
+    EUROPE <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin-ext' rel='stylesheet' type='text/css'>
+    GREEK <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=greek-ext' rel='stylesheet' type='text/css'>
+    RUSSIA <link href='//fonts.googleapis.com/css?family=Open+Sans:700,400&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '3.1.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/docs.js"></script>
+    <link rel="shortcut icon" href="https://static.phalconphp.com/www/images/favicon.ico"/>
+    <link rel="top" title="Phalcon 3.1.1 documentation" href="../index.html" />
+    <link rel="next" title="Tutorial 4: Working with the CRUD" href="tutorial-invo-3.html" />
+    <link rel="prev" title="Tutorial 2: Introducing INVO" href="tutorial-invo.html" /> 
+  </head>
+  <body>
+
+<header class="page-header">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+                <ul class="nav navbar-nav main-menu">
+                  <li class="first"><a href="//phalconphp.com/en/download" class="header-nav-link">Download</a></li>
+                  <li><a href="//docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                  <li><a href="//forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                  <li><a href="//blog.phalconphp.com/" class="header-nav-link" target="_blank">Blog</a></li>
+                  <li><a href="//phalconist.com/" class="header-nav-link" target="_blank">Resources</a></li>
+                  <li><a href="//phalconphp.com/en/about">About</a></li>
+                  <li><div align="right">
+                      <iframe src="https://ghbtns.com/github-btn.html?user=phalcon&amp;repo=cphalcon&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="152px" height="30px"></iframe>
+                    </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tutorial-invo-3.html" title="Tutorial 4: Working with the CRUD"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tutorial-invo.html" title="Tutorial 2: Introducing INVO"
+             accesskey="P">previous</a> |</li>
+        <li><a href="//phalconphp.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon 3.1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+      <table width="100%" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+      <td class="primary-box" width="25%" valign="top">
+            <div>
+            <div id="searchbox" style="">
+                <!--<form class="search" action="http://readthedocs.org/search/project/" method="get">
+                  <input type="search" name="q" size="25" placeholder="Search">
+                  <input type="submit" value="Go">
+                  <input type="hidden" name="selected_facets" value="project:">
+                </form>-->
+                <div style="width:200px;padding:10px">
+                  <gcse:searchbox-only></gcse:searchbox-only>
+                </div>
+            </div>
+            </div>
+            <div style="padding:5px;padding-left:10px">
+              <div id="carbonads-container">
+                <div class="carbonad"><div id="azcarbon"></div>
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=phalconphpcom" id="_carbonads_js"></script>
+                </div></div>
+            </div>
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Tutorial 3: Securing INVO</a><ul>
+<li><a class="reference internal" href="#log-into-the-application">Log into the Application</a></li>
+<li><a class="reference internal" href="#securing-the-backend">Securing the Backend</a><ul>
+<li><a class="reference internal" href="#events-management">Events Management</a></li>
+<li><a class="reference internal" href="#providing-an-acl-list">Providing an ACL list</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="tutorial-invo.html" title="previous chapter">&lt; Tutorial 2: Introducing INVO</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="tutorial-invo-3.html" title="next chapter">Tutorial 4: Working with the CRUD &gt;</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/reference/tutorial-invo-2.txt" rel="nofollow">Show Source</a></li>
+            </ul>
+        </td>
+          <td class="second-box" valign="top">
+            <div class="document">
+                <div class="documentwrapper">
+                  <div class="bodywrapper">
+                    <div class="body" >
+                      
+  <div class="section" id="tutorial-3-securing-invo">
+<h1>Tutorial 3: Securing INVO<a class="headerlink" href="#tutorial-3-securing-invo" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we continue explaining how INVO is structured, we&#8217;ll talk
+about the implementation of authentication, authorization using events and plugins and
+an access control list (ACL) managed by Phalcon.</p>
+<div class="section" id="log-into-the-application">
+<h2>Log into the Application<a class="headerlink" href="#log-into-the-application" title="Permalink to this headline">¶</a></h2>
+<p>A &#8220;log in&#8221; facility will allow us to work on backend controllers. The separation between backend controllers and
+frontend ones is only logical. All controllers are located in the same directory (app/controllers/).</p>
+<p>To enter the system, users must have a valid username and password. Users are stored in the table &#8220;users&#8221;
+in the database &#8220;invo&#8221;.</p>
+<p>Before we can start a session, we need to configure the connection to the database in the application. A service
+called &#8220;db&#8221; is set up in the service container with the connection information. As with the autoloader, we are
+again taking parameters from the configuration file in order to configure a service:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">DbAdapter</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="c1">// Database connection is created based on parameters defined in the configuration file</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;db&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$config</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DbAdapter</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">database</span><span class="o">-&gt;</span><span class="na">host</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">database</span><span class="o">-&gt;</span><span class="na">username</span><span class="p">,</span>
+                <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">database</span><span class="o">-&gt;</span><span class="na">password</span><span class="p">,</span>
+                <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">database</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Here, we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a
+logger, a profiler or change the adapter, setting it up as you want.</p>
+<p>The following simple form (app/views/session/index.volt) requests the login information. We&#8217;ve removed
+some HTML code to make the example more concise:</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="cp">{{</span> <span class="nv">form</span><span class="o">(</span><span class="s2">&quot;session/start&quot;</span><span class="o">)</span> <span class="cp">}}</span>
+    <span class="nt">&lt;fieldset&gt;</span>
+        <span class="nt">&lt;div&gt;</span>
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;email&quot;</span><span class="nt">&gt;</span>
+                Username/Email
+            <span class="nt">&lt;/label&gt;</span>
+
+            <span class="nt">&lt;div&gt;</span>
+                <span class="cp">{{</span> <span class="nv">text_field</span><span class="o">(</span><span class="s2">&quot;email&quot;</span><span class="o">)</span> <span class="cp">}}</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;div&gt;</span>
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;password&quot;</span><span class="nt">&gt;</span>
+                Password
+            <span class="nt">&lt;/label&gt;</span>
+
+            <span class="nt">&lt;div&gt;</span>
+                <span class="cp">{{</span> <span class="nv">password_field</span><span class="o">(</span><span class="s2">&quot;password&quot;</span><span class="o">)</span> <span class="cp">}}</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+
+
+
+        <span class="nt">&lt;div&gt;</span>
+            <span class="cp">{{</span> <span class="nv">submit_button</span><span class="o">(</span><span class="s2">&quot;Login&quot;</span><span class="o">)</span> <span class="cp">}}</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/fieldset&gt;</span>
+<span class="cp">{{</span> <span class="nv">endForm</span><span class="o">()</span> <span class="cp">}}</span>
+</pre></div>
+</div>
+<p>Instead of using raw PHP as the previous tutorial, we started to use <a class="reference internal" href="volt.html"><em>Volt</em></a>. This is a built-in
+template engine inspired by <a class="reference external" href="http://jinja.pocoo.org/">Jinja</a> providing a simpler and friendly syntax to create templates.
+It will not take too long before you become familiar with Volt.</p>
+<p>The <code class="code docutils literal"><span class="pre">SessionController::startAction</span></code> function (app/controllers/SessionController.php) has the task of validating the
+data entered in the form including checking for a valid user in the database:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">SessionController</span> <span class="k">extends</span> <span class="nx">ControllerBase</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">_registerSession</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+            <span class="s2">&quot;auth&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;id&quot;</span>   <span class="o">=&gt;</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * This action authenticate and logs a user into the application</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">startAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">isPost</span><span class="p">())</span> <span class="p">{</span>
+            <span class="c1">// Get the data from the user</span>
+            <span class="nv">$email</span>    <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">);</span>
+            <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;password&quot;</span><span class="p">);</span>
+
+            <span class="c1">// Find the user in the database</span>
+            <span class="nv">$user</span> <span class="o">=</span> <span class="nx">Users</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="s2">&quot;(email = :email: OR username = :email:) AND password = :password: AND active = &#39;Y&#39;&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                        <span class="s2">&quot;email&quot;</span>    <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">,</span>
+                        <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="nb">sha1</span><span class="p">(</span><span class="nv">$password</span><span class="p">),</span>
+                    <span class="p">]</span>
+                <span class="p">]</span>
+            <span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$user</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_registerSession</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span>
+                    <span class="s2">&quot;Welcome &quot;</span> <span class="o">.</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span>
+                <span class="p">);</span>
+
+                <span class="c1">// Forward to the &#39;invoices&#39; controller if the user is valid</span>
+                <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;invoices&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+                    <span class="p">]</span>
+                <span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span>
+                <span class="s2">&quot;Wrong email/password&quot;</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Forward to the login form again</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;session&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For the sake of simplicity, we have used &#8220;<a class="reference external" href="http://php.net/manual/en/function.sha1.php">sha1</a>&#8221; to store the password hashes in the database, however, this algorithm is
+not recommended in real applications, use &#8220;<a class="reference internal" href="security.html"><em>bcrypt</em></a>&#8221; instead.</p>
+<p>Note that multiple public attributes are accessed in the controller like: <code class="code docutils literal"><span class="pre">$this-&gt;flash</span></code>, <code class="code docutils literal"><span class="pre">$this-&gt;request</span></code> or <code class="code docutils literal"><span class="pre">$this-&gt;session</span></code>.
+These are services defined in the services container from earlier (app/config/services.php).
+When they&#8217;re accessed the first time, they are injected as part of the controller.</p>
+<p>These services are &#8220;shared&#8221;, which means that we are always accessing the same instance regardless of the place
+where we invoke them.</p>
+<p>For instance, here we invoke the &#8220;session&#8221; service and then we store the user identity in the variable &#8220;auth&#8221;:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;auth&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;id&quot;</span>   <span class="o">=&gt;</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Another important aspect of this section is how the user is validated as a valid one,
+first we validate whether the request has been made using method POST:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">isPost</span><span class="p">())</span> <span class="p">{</span>
+</pre></div>
+</div>
+<p>Then, we receive the parameters from the form:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$email</span>    <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">);</span>
+<span class="nv">$password</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;password&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now, we have to check if there is one user with the same username or email and password:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$user</span> <span class="o">=</span> <span class="nx">Users</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;(email = :email: OR username = :email:) AND password = :password: AND active = &#39;Y&#39;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">&quot;email&quot;</span>    <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="nb">sha1</span><span class="p">(</span><span class="nv">$password</span><span class="p">),</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Note, the use of &#8216;bound parameters&#8217;, placeholders :email: and :password: are placed where values should be,
+then the values are &#8216;bound&#8217; using the parameter &#8216;bind&#8217;. This safely replaces the values for those
+columns without having the risk of a SQL injection.</p>
+<p>If the user is valid we register it in session and forwards him/her to the dashboard:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$user</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_registerSession</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span>
+        <span class="s2">&quot;Welcome &quot;</span> <span class="o">.</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span>
+    <span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;invoices&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If the user does not exist we forward the user back again to action where the form is displayed:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;session&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="securing-the-backend">
+<h2>Securing the Backend<a class="headerlink" href="#securing-the-backend" title="Permalink to this headline">¶</a></h2>
+<p>The backend is a private area where only registered users have access. Therefore, it is necessary
+to check that only registered users have access to these controllers. If you aren&#8217;t logged
+into the application and you try to access, for example, the products controller (which is private)
+you will see a screen like this:</p>
+<div class="figure align-center">
+<img alt="../_images/invo-2.png" src="../_images/invo-2.png" />
+</div>
+<p>Every time someone attempts to access any controller/action, the application verifies that the
+current role (in session) has access to it, otherwise it displays a message like the above and
+forwards the flow to the home page.</p>
+<p>Now let&#8217;s find out how the application accomplishes this. The first thing to know is that
+there is a component called <a class="reference internal" href="dispatching.html"><em>Dispatcher</em></a>. It is informed about the route
+found by the <a class="reference internal" href="routing.html"><em>Routing</em></a> component. Then, it is responsible for loading the
+appropriate controller and execute the corresponding action method.</p>
+<p>Normally, the framework creates the Dispatcher automatically. In our case, we want to perform a verification
+before executing the required action, checking if the user has access to it or not. To achieve this, we have
+replaced the component by creating a function in the bootstrap:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * MVC dispatcher</span>
+<span class="sd"> */</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;dispatcher&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+
+        <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dispatcher</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>We now have total control over the Dispatcher used in the application. Many components in the framework trigger
+events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue
+for components, a new component called <a class="reference internal" href="events.html"><em>EventsManager</em></a> allows us to intercept the events produced
+by a component, routing the events to listeners.</p>
+<div class="section" id="events-management">
+<h3>Events Management<a class="headerlink" href="#events-management" title="Permalink to this headline">¶</a></h3>
+<p>An <a class="reference internal" href="events.html"><em>EventsManager</em></a> allows us to attach listeners to a particular type of event. The type that
+interests us now is &#8220;dispatch&#8221;. The following code filters all events produced by the Dispatcher:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s2">&quot;dispatcher&quot;</span><span class="p">,</span>
+    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Create an events manager</span>
+        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+        <span class="c1">// Listen for events produced in the dispatcher using the Security plugin</span>
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s2">&quot;dispatch:beforeExecuteRoute&quot;</span><span class="p">,</span>
+            <span class="k">new</span> <span class="nx">SecurityPlugin</span><span class="p">()</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Handle exceptions and not-found exceptions using NotFoundPlugin</span>
+        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+            <span class="s2">&quot;dispatch:beforeException&quot;</span><span class="p">,</span>
+            <span class="k">new</span> <span class="nx">NotFoundPlugin</span><span class="p">()</span>
+        <span class="p">);</span>
+
+        <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dispatcher</span><span class="p">();</span>
+
+        <span class="c1">// Assign the events manager to the dispatcher</span>
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>When an event called &#8220;beforeExecuteRoute&#8221; is triggered the following plugin will be notified:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Check if the user is allowed to access certain action using the SecurityPlugin</span>
+<span class="sd"> */</span>
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+    <span class="s2">&quot;dispatch:beforeExecuteRoute&quot;</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">SecurityPlugin</span><span class="p">()</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>When a &#8220;beforeException&#8221; is triggered then other plugin is notified:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Handle exceptions and not-found exceptions using NotFoundPlugin</span>
+<span class="sd"> */</span>
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
+    <span class="s2">&quot;dispatch:beforeException&quot;</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">NotFoundPlugin</span><span class="p">()</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>SecurityPlugin is a class located at (app/plugins/SecurityPlugin.php). This class implements the method
+&#8220;beforeExecuteRoute&#8221;. This is the same name as one of the events produced in the Dispatcher:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\User\Plugin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SecurityPlugin</span> <span class="k">extends</span> <span class="nx">Plugin</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeExecuteRoute</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The hook events always receive a first parameter that contains contextual information of the event produced (<code class="code docutils literal"><span class="pre">$event</span></code>)
+and a second one that is the object that produced the event itself (<code class="code docutils literal"><span class="pre">$dispatcher</span></code>). It is not mandatory that
+plugins extend the class <a class="reference internal" href="../api/Phalcon_Mvc_User_Plugin.html"><em>Phalcon\Mvc\User\Plugin</em></a>, but by doing this they gain easier access to the services
+available in the application.</p>
+<p>Now, we&#8217;re verifying the role in the current session, checking if the user has access using the ACL list.
+If the user does not have access we redirect to the home screen as explained before:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Acl</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\User\Plugin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SecurityPlugin</span> <span class="k">extends</span> <span class="nx">Plugin</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeExecuteRoute</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Check whether the &quot;auth&quot; variable exists in session to define the active role</span>
+        <span class="nv">$auth</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;auth&quot;</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$auth</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$role</span> <span class="o">=</span> <span class="s2">&quot;Guests&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nv">$role</span> <span class="o">=</span> <span class="s2">&quot;Users&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Take the active controller/action from the dispatcher</span>
+        <span class="nv">$controller</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getControllerName</span><span class="p">();</span>
+        <span class="nv">$action</span>     <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">();</span>
+
+        <span class="c1">// Obtain the ACL list</span>
+        <span class="nv">$acl</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getAcl</span><span class="p">();</span>
+
+        <span class="c1">// Check if the Role have access to the controller (resource)</span>
+        <span class="nv">$allowed</span> <span class="o">=</span> <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="nv">$role</span><span class="p">,</span> <span class="nv">$controller</span><span class="p">,</span> <span class="nv">$action</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$allowed</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// If he doesn&#39;t have access forward him to the index controller</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span>
+                <span class="s2">&quot;You don&#39;t have access to this module&quot;</span>
+            <span class="p">);</span>
+
+            <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+                <span class="p">]</span>
+            <span class="p">);</span>
+
+            <span class="c1">// Returning &quot;false&quot; we tell to the dispatcher to stop the current operation</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="providing-an-acl-list">
+<h3>Providing an ACL list<a class="headerlink" href="#providing-an-acl-list" title="Permalink to this headline">¶</a></h3>
+<p>In the above example we have obtained the ACL using the method <code class="code docutils literal"><span class="pre">$this-&gt;getAcl()</span></code>. This method is also
+implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Acl</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Acl\Role</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Acl\Adapter\Memory</span> <span class="k">as</span> <span class="nx">AclList</span><span class="p">;</span>
+
+<span class="c1">// Create the ACL</span>
+<span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AclList</span><span class="p">();</span>
+
+<span class="c1">// The default action is DENY access</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">setDefaultAction</span><span class="p">(</span>
+    <span class="nx">Acl</span><span class="o">::</span><span class="na">DENY</span>
+<span class="p">);</span>
+
+<span class="c1">// Register two roles, Users is registered users</span>
+<span class="c1">// and guests are users without a defined identity</span>
+<span class="nv">$roles</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;users&quot;</span>  <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Role</span><span class="p">(</span><span class="s2">&quot;Users&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;guests&quot;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Role</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">),</span>
+<span class="p">];</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$roles</span> <span class="k">as</span> <span class="nv">$role</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="nv">$role</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now, we define the resources for each area respectively. Controller names are resources and their actions are
+accesses for the resources:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Acl\Resource</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="c1">// Private area resources (backend)</span>
+<span class="nv">$privateResources</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;companies&quot;</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;edit&quot;</span><span class="p">,</span> <span class="s2">&quot;save&quot;</span><span class="p">,</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;products&quot;</span>     <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;edit&quot;</span><span class="p">,</span> <span class="s2">&quot;save&quot;</span><span class="p">,</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;producttypes&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;edit&quot;</span><span class="p">,</span> <span class="s2">&quot;save&quot;</span><span class="p">,</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;invoices&quot;</span>     <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;profile&quot;</span><span class="p">],</span>
+<span class="p">];</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$privateResources</span> <span class="k">as</span> <span class="nv">$resourceName</span> <span class="o">=&gt;</span> <span class="nv">$actions</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addResource</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nx">Resource</span><span class="p">(</span><span class="nv">$resourceName</span><span class="p">),</span>
+        <span class="nv">$actions</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+
+
+<span class="c1">// Public area resources (frontend)</span>
+<span class="nv">$publicResources</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;index&quot;</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;about&quot;</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;register&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;errors&quot;</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;show404&quot;</span><span class="p">,</span> <span class="s2">&quot;show500&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;session&quot;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;register&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;contact&quot;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;send&quot;</span><span class="p">],</span>
+<span class="p">];</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$publicResources</span> <span class="k">as</span> <span class="nv">$resourceName</span> <span class="o">=&gt;</span> <span class="nv">$actions</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addResource</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nx">Resource</span><span class="p">(</span><span class="nv">$resourceName</span><span class="p">),</span>
+        <span class="nv">$actions</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The ACL now have knowledge of the existing controllers and their related actions. Role &#8220;Users&#8221; has access to
+all the resources of both frontend and backend. The role &#8220;Guests&#8221; only has access to the public area:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Grant access to public areas to both users and guests</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$roles</span> <span class="k">as</span> <span class="nv">$role</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$publicResources</span> <span class="k">as</span> <span class="nv">$resource</span> <span class="o">=&gt;</span> <span class="nv">$actions</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span>
+            <span class="nv">$role</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span>
+            <span class="nv">$resource</span><span class="p">,</span>
+            <span class="s2">&quot;*&quot;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Grant access to private area only to role Users</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$privateResources</span> <span class="k">as</span> <span class="nv">$resource</span> <span class="o">=&gt;</span> <span class="nv">$actions</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$actions</span> <span class="k">as</span> <span class="nv">$action</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span>
+            <span class="s2">&quot;Users&quot;</span><span class="p">,</span>
+            <span class="nv">$resource</span><span class="p">,</span>
+            <span class="nv">$action</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Hooray!, the ACL is now complete. In next chapter, we will see how a CRUD is implemented in Phalcon and how you
+can customize it.</p>
+</div>
+</div>
+</div>
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tutorial-invo-3.html" title="Tutorial 4: Working with the CRUD"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial-invo.html" title="Tutorial 2: Introducing INVO"
+             >previous</a> |</li> 
+      </ul>
+    </div>
+
+      <div class="prefooter">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 text-right">
+              <span>Follow along:</span>
+          </div>
+          <div class="col-sm-6 text-center">
+              <a href="https://twitter.com/phalconphp" alt="Twitter" class="btn-social btn-social-twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/pages/Phalcon-Framework/134230726685897" alt="Facebook" class="btn-social btn-social-facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://plus.google.com/102376109340560896457" alt="Google+" class="btn-social btn-social-googleplus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+              <a href="https://github.com/phalcon/cphalcon" alt="Github" class="btn-social btn-social-github"><i class="fa fa-fw fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+  </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                <h4>Download</h4>
+                <ul>
+                    <li><a href="https://phalconphp.com/download">Installing Phalcon PHP</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/index.html" class="header-nav-link" target="_blank">Documentation</a></li>
+                    <li><a href="https://api.phalconphp.com">API</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html">Tutorial</a></li>
+                    <li><a href="https://docs.phalconphp.com/en/latest/reference/tutorial.html#sample-applications">Sample Applications</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://forum.phalconphp.com/" class="header-nav-link" target="_blank">Forum</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon">GitHub</a></li>
+                    <li><a href="https://github.com/phalcon/cphalcon/issues">Issue Tracker</a></li>
+                    <li><a href="https://stackoverflow.com/questions/tagged/phalcon">Stack Overflow</a></li>
+                    <li><a href="https://phalconphp.com/en/testimonials">Testimonials</a></li>
+                    <li><a href="https://builtwith.phalconphp.com/">Built with Phalcon</a></li>
+                    <li><a href="https://store.phalconphp.com/">Store</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <h4>About</h4>
+                <ul>
+                    <li><a class="link-black" href="http://blog.phalconphp.com/">Blog</a></li>
+                    <li><a href="https://phalconphp.com/en/about">About</a></li>
+                    <li><a href="https://phalconphp.com/en/team">Team</a></li>
+                    <li><a href="https://phalconphp.com/en/roadmap">Roadmap</a></li>
+                    <li><a href="https://phalconphp.com/en/donate">Donate</a></li>
+                    <li><a href="https://phalconphp.com/en/consulting">Consulting</a></li>
+                    <li><a href="https://phalconphp.com/en/hosting">Hosting</a></li>
+                </ul>
+            </div>
+            <div id="license-spaccer" class="visible-xs"></div>
+            <div id="license-wrapper" class="col-xs-12 col-sm-4">
+                <p class="license">
+                    Phalcon is an open-source PHP framework <br />
+                    built as a C-extension. It is available under the <br />
+                    <a href="http://opensource.org/licenses/BSD-3-Clause" target="_blank">new BSD License</a>.
+                </p>
+
+                <div class="design">
+                    <span>Website Designed by:</span>
+                </div>
+                <a class="license" href="http://loudertech.com/" target="_blank" title="">
+                    <span>LouderTech SAS</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    <script type="text/javascript">
+    $(window).on("load", function(){
+      var cx = '009733439235723428699:lh9ltjgvdz8';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.lazyload.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/highlight.pack.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/plugins/jquery.backstretch.min.js"></script>
+    <script src="https://static.phalconphp.com/www/js/custom.js"></script>
+
+  </body>
+</html>
