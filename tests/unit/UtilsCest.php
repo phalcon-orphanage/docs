@@ -32,17 +32,4 @@ class UtilsCest
             $this->utils->getAsset($this->config,'js/something.js')
         );
     }
-
-    public function checkTest(UnitTester $I)
-    {
-        $assets = new Phalcon\Assets\Manager();
-        $assets
-            ->collection('abc')
-            ->addCss('//netdna.bootstrap.com/font-awesome/4.1.0/css/font-awesome.css', false);
-
-        $I->assertEquals(
-            $expected,
-            $this->utils->getAsset($this->config,'js/something.js')
-        );
-    }
 }
