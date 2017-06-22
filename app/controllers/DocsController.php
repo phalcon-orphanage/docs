@@ -47,18 +47,16 @@ class DocsController extends PhController
         $language = $this->getLanguage($language);
 
         if (empty($version)) {
-            return $this->response->redirect(
-                $this->getVersion('/' . $language . '/')
-            );
+            return $this->response->redirect($this->getVersion('/' . $language . '/'));
         }
 
-        if (empty($version) || strtolower($version) === 'latest') {
+        if (strtolower($version) === 'latest') {
             $version  = $this->getVersion();
         }
 
-        $language = ($language) ?: 'en';
-
-        $page     = ($page)     ?: 'introduction';
+        if (empty($page)) {
+            $page = 'introduction';
+        }
 
         $contents = $this->viewSimple->render(
             'index/index',
