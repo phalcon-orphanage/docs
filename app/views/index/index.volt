@@ -19,8 +19,8 @@
 </head>
 
 <body class="with-top-navbar">
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid p-x-md">
         <div class="navbar-header">
             <button type="button"
                     class="navbar-toggle collapsed"
@@ -33,6 +33,7 @@
             </button>
             <a class="navbar-brand phalcon-logo" href="{{ url() }}">
                 <span itemprop="name" class="sr-only">Phalcon Framework</span>
+                <img src="//static.phalconphp.com/www/images/phalcon1.png" alt="Phalcon Logo">
             </a>
         </div>
         <div class="navbar-collapse collapse" id="navbar-collapse-main">
@@ -112,18 +113,19 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid">
+<div class="container-fluid article-page-wrap">
     <div class="row">
         <div class="col-md-2 sidebar">
             {{ sidebar }}
         </div>
-        <div class="col-md-10" id="articles">
-            {{ article }}
+        <div class="article-content m-t-md m-b-lg" id="articles">
+            <div class="container">
+                {{ article }}
+            </div>
         </div>
     </div>
+    {%- include "include/footer.volt" -%}
 </div>
-
-{%- include "include/footer.volt" -%}
 
 {{- assets.outputJs('footer_js') -}}
 
