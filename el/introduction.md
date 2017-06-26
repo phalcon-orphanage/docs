@@ -1,17 +1,17 @@
 # Welcome
 
-Καλώς ήρθατε στην τεκμηρίωση για το Phalcon framework.
+Welcome to the documentation for the Phalcon framework.
 
 ## Mission
 
 Our mission is to offer developers an advanced, feature rich tool, which they can use to develop powerful applications with low server consumption and high performance.
 
-## Τι είναι το Phalcon
+## What is Phalcon
 
-Το Phalcon είναι ένα πλαίσιο PHP πλήρης στοίβας και ανοικτού κώδικα, γραμμένο ως επέκταση C. Το Phalcon είναι βελτιστοποιημένο για υψηλή απόδοση. Η μοναδική αρχιτεκτονική του, του επιτρέπει να είναι πάντα φορτωμένο στη μνήμη, προσφέροντας τη λειτουργικότητά του, οπότε είναι αναγκαίο, δίχως στατιστικές και αναγνώσεις φακέλων που όπως σε παραδοσιακά πλαίσια PHP.
+Phalcon is an open source full stack framework for PHP, written as a C-extension. Phalcon is optimized for high performance. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever its needed, without expensive file stats and file reads that traditional PHP frameworks employ.
 
 ## Usage
 
 Developers do not need to know the C language to use Phalcon. Its interface is exposed as PHP classes under the `Phalcon` namespace, ready to be used.
 
-Το Phalcon είναι χαλαρά συνδεδεμένο, επιτρέποντας στους προγραμματιστές να χρησιμοποιούν μόνο τα αντικείμενα που χρειάζονται ως κόλλα στοιχείων που βασίζονται στις ανάγκες των εφαρμογών τους.
+Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based in the needs of their applications.
