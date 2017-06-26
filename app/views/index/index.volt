@@ -95,11 +95,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/en/about" class="header-nav-link">
-                        Contribute
-                    </a>
-                </li>
-                <li>
                     <a href="https://phalcon.link/sponsors" class="header-nav-link">
                         Sponsors
                     </a>
@@ -110,7 +105,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://phalcon.link/fund" class="btn btn-success">
+                    <a href="https://phalcon.link/fund" class="btn btn-xs btn-success">
                         DOWNLOAD
                     </a>
                 </li>
