@@ -37,7 +37,7 @@
             </a>
         </div>
         <div class="navbar-collapse collapse" id="navbar-collapse-main">
-            <ul class="nav navbar-nav navbar-right m-r-0 hidden-xs">
+            <ul class="nav navbar-nav navbar-right m-r-0">
                 <li class="dropdown">
                     <a href="javascript:;"
                        class="dropdown-toggle"
@@ -95,6 +95,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/en/about" class="header-nav-link">
+                        Contribute
+                    </a>
+                </li>
+                <li>
                     <a href="https://phalcon.link/sponsors" class="header-nav-link">
                         Sponsors
                     </a>
@@ -104,27 +109,33 @@
                         Support Us
                     </a>
                 </li>
+                <li>
+                    <a href="https://phalcon.link/fund" class="btn btn-success">
+                        DOWNLOAD
+                    </a>
+                </li>
             </ul>
             <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
-                <a href="https://phalcon.link/contribute" class="header-nav-link">
-                    Contribute
-                </a>
+                <div class="doc-menu">
+                    <h4>Doc menu</h4>
+                    {{ sidebar }}
+                </div>
             </ul>
         </div>
     </div>
 </nav>
 <div class="container-fluid article-page-wrap">
     <div class="row">
-        <div class="col-md-2 sidebar">
+        <div class="col-md-2 sidebar hidden-xs">
             {{ sidebar }}
         </div>
-        <div class="article-content m-t-md m-b-lg" id="articles">
-            <div class="container">
+        <div class="m-t-md m-b-lg" id="articles">
+            <div class="article-content">
                 {{ article }}
             </div>
         </div>
+        {%- include "include/footer.volt" -%}
     </div>
-    {%- include "include/footer.volt" -%}
 </div>
 
 {{- assets.outputJs('footer_js') -}}

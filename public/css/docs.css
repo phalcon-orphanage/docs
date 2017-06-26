@@ -37,21 +37,38 @@ body>*:last-child {
     margin-bottom: 0 !important;
 }
 
+
+/*hamburguer*/
+
+.navbar-toggle {
+    margin-top: 23px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
 .navbar-default .navbar-nav {
     padding: 15px;
 }
 
-.navbar-default .navbar-nav>li>a {
+.navbar-default .navbar-nav>li>a,
+.doc-menu>li,
+.doc-menu>li>a {
     text-decoration: none;
 
     color: #fff;
 }
 
-.navbar-default .navbar-nav>li>a:hover {
+.navbar-default .navbar-nav>li>a:hover,
+.sidebar>ul>li a:hover,
+.doc-menu>ul>li a:hover {
     text-decoration: underline;
 
     color: #65D38D;
 }
+
+
 
 a {
     text-decoration: underline;
@@ -575,6 +592,8 @@ td {
 }
 
 .footer #license-wrapper {
+    height: 85px;
+
     background: url(//static.phalconphp.com/www/images/phalcon3.png) 10px 0/74px 85px no-repeat;
 }
 
@@ -586,6 +605,7 @@ td {
 }
 
 .footer .license {
+    margin-top: 46px;
     padding-left: 90px;
 
     color: #f2f2f2;
@@ -644,27 +664,47 @@ td {
     font-size: 13px;
 }
 
-.sidebar>ul {
+.sidebar>ul,
+.doc-menu>ul
+ {
     margin: 0;
     padding: 0;
 
     list-style: none;
 }
 
-.sidebar>ul>li {
+.sidebar>ul>li,
+.doc-menu>ul>li  {
     margin: 1em 0 0;
     padding: 0 0 5px;
 }
 
-.sidebar>ul>li>ul {
+.sidebar>ul>li a {
+    text-decoration: none;
+
+    color: #000000;
+}
+
+.doc-menu h4, .doc-menu>ul>li, .doc-menu>ul>li a {
+    text-decoration: none;
+
+    color: #fff;
+}
+
+.sidebar>ul>li>ul,
+.doc-menu>ul>li>ul {
     display: block;
 
     margin: 5px 0 0;
-    padding: 5px 0 0;
+    padding: 5px 10px 0;
 
     list-style: none;
 
     border-top: 1px solid rgba(37, 82, 95, 0.9);
+}
+
+.doc-menu>ul>li>ul{
+    border-top: 1px solid rgba(234, 234, 234, 0.9);
 }
 
 
@@ -719,6 +759,56 @@ td {
     padding-left: 10px;
 
     list-style: none;
+}
+
+.article-content {
+    width: 500px;
+    margin: 20px auto;
+}
+
+footer .container {
+    width: 700px;
+    margin: 0 auto;
+}
+
+
+/*CONTAINERS RESPONSE*/
+
+
+/*SMALL SCREENS*/
+
+@media screen and (max-width: 1280px) and (min-width: 320px) {
+    body {
+        min-width: 300px;
+    }
+    .article-page-wrap {
+        min-height: auto;
+        padding-bottom: 0;
+    }
+    footer .container {
+        width: 550px;
+        margin: 0 auto;
+    }
+    .footer {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 992px) and (min-width: 320px) {
+    .article-content,
+    footer .container {
+        width: 420px;
+        margin-left: 270px;
+    }
+
+}
+
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    .article-content,
+    footer .container {
+        width: 80%;
+        margin: 20px auto 0 auto;
+    }
 }
 
 
