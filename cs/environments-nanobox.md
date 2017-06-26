@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Overview</a> <ul>
         <li>
-          <a href="#create-project">Vytvoření nového projektu</a>
+          <a href="#create-project">Create a New Project</a>
         </li>
         <li>
           <a href="#boxfile-yml">Add a <code>boxfile.yml</code></a>
