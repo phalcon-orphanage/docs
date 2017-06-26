@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Διαχείριση cookies</a> <ul>
+      <a href="#overview">Cookies Management</a> <ul>
         <li>
           <a href="#usage">Basic Usage</a>
         </li>
