@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Cookies Management</a> <ul>
         <li>
-          <a href="#usage">Základní použití</a>
+          <a href="#usage">Basic Usage</a>
         </li>
         <li>
           <a href="#encryption-decryption">Encryption/Decryption of Cookies</a>
