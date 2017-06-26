@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Σεμινάριο: INVO</a> <ul>
+      <a href="#overview">Tutorial: INVO</a> <ul>
         <li>
           <a href="#structure">Project Structure</a>
         </li>
