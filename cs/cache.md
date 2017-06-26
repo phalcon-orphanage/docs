@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Zlepšení výkonu pomocí cache</a> <ul>
+      <a href="#overview">Improving Performance with Cache</a> <ul>
         <li>
-          <a href="#implementation">Kdy implementovat cache?</a>
+          <a href="#implementation">When to implement cache?</a>
         </li>
         <li>
           <a href="#caching-behavior">Caching Behavior</a>
@@ -693,4 +693,4 @@ This backend will store cached content on a Redis server ([Redis](http://redis.i
 | `persistent` | Create a persistent connection to Redis.                       |
 | `index`      | The index of the Redis database to use.                        |
 
-Také jsou dostupné další adaptéry for tuto komponentu v repozitáři [Phalcon Incubator](https://github.com/phalcon/incubator)
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
