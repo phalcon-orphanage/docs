@@ -3,16 +3,16 @@
     <li>
       <a href="#overview">Overview</a> <ul>
         <li>
-          <a href="#integration">Интеграция PHPUnit с Phalcon</a>
+          <a href="#integration">Integrating PHPUnit with Phalcon</a>
         </li>
         <li>
-          <a href="#unit-helper">PHPUnit хелпер</a>
+          <a href="#unit-helper">The PHPUnit helper file</a>
         </li>
         <li>
-          <a href="#phpunit-config">Файл <code>phpunit.xml</code></a>
+          <a href="#phpunit-config">The <code>phpunit.xml</code> file</a>
         </li>
         <li>
-          <a href="#sample">Пример модульного теста</a>
+          <a href="#sample">Sample Unit Test</a>
         </li>
       </ul>
     </li>
@@ -23,19 +23,19 @@
 
 # Overview
 
-Написание правильного теста может помочь в создании создании более качественного програмного обеспечения. Покрытие тестами надлежащих случаев помогает устранить большинство функциональных ошибок и лучше поддерживать программное обеспечение.
+Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
 
 <a name='integration'></a>
 
-## Интеграция PHPUnit с Phalcon
+## Integrating PHPUnit with Phalcon
 
-Если вы еще не установили PHPUnit, вы можете сделать это с помощью следующей команды:
+If you don't already have phpunit installed, you can do it by using the following composer command:
 
 ```bash
 composer require phpunit/phpunit:^5.0
 ```
 
-или вручную добавить его в `composer.json`:
+or by manually adding it to `composer.json`:
 
 ```json
 <br />{
@@ -45,20 +45,20 @@ composer require phpunit/phpunit:^5.0
 }
 ```
 
-После установки PHPUnit ​​создайте директорию `tests` в корне проекта:
+Once PHPUnit is installed create a directory called `tests` in project root directory:
 
     app/
     public/
     tests/
     
 
-Далее, нам понадобится “хелпер” для подготовки приложения к модульному тестированию.
+Next, we need a 'helper' file to bootstrap the application for unit testing.
 
 <a name='unit-helper'></a>
 
 ## The PHPUnit helper file
 
-Хелпер необходим для подготовки приложения к запуску тестов. Мы подготовили образец файла. Поместите файл `TestHelper.php` в директорию `tests`.
+A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your `tests/` directory as `TestHelper.php`.
 
 ```php
 <?php
@@ -72,19 +72,20 @@ error_reporting(E_ALL);
 
 define("ROOT_PATH", __DIR__);
 
- set_include_path(
+set_include_path(
     ROOT_PATH . PATH_SEPARATOR . get_include_path()
 );
 
-// Необходим для phalcon/incubator
+// Required for phalcon/incubator
 include __DIR__ . "/../vendor/autoload.php";
 
-// Используем автозагрузчик приложений для автозагрузки классов.
+// Use the application autoloader to autoload the classes
+// Autoload the dependencies found in composer
 $loader = new Loader();
 
 $loader->registerDirs(
     [
-        ROOT_PATH, 
+        ROOT_PATH,
     ]
 );
 
@@ -94,38 +95,38 @@ $di = new FactoryDefault();
 
 Di::reset();
 
-// Здесь можно добавить любые необходимые сервисы в контейнер зависимостей
+// Add any needed services to the DI here
 
 Di::setDefault($di);
 ```
 
-Если вам необходимо протестировать какой-либо компонент из вашей библиотеки компонентов, добавьте его в автозагрузчик или используйте автозагрузчик вашего основного приложения.
+Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your main application.
 
-Для облегчения написания модульных тестов, мы создали несколько абстрактных классов, которые вы можете использовать для настройки самих тестов. Вы можете получить их из [Инкубатора](https://github.com/phalcon/incubator).
+To help you build the Unit Tests, we made a few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in the [Phalcon Incubator](https://github.com/phalcon/incubator).
 
-Вы можете использовать Инкубатор, добавив его в качестве зависимости:
+You can use the Incubator library by adding it as a dependency:
 
 ```bash
 composer require phalcon/incubator
 ```
 
-или вручную, добавить его в `composer.json`:
+or by manually adding it to `composer.json`:
 
 ```json
 {
     "require": {
-        "phalcon/incubator": "^3.2"
+        "phalcon/incubator": "^3.0"
     }
 }
 ```
 
-Вы также можете склонировать репозиторий, используя ссылку: https://github.com/phalcon/incubator.
+You can also clone the repository using the repo link above.
 
 <a name='phpunit-config'></a>
 
 ## The `phpunit.xml` file
 
-Теперь создайте файл `phpunit.xml` как показано ниже:
+Now, create a `phpunit.xml` file as follows:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -148,7 +149,7 @@ composer require phalcon/incubator
 </phpunit>
 ```
 
-Измените `phpunit.xml` в соответствии с вашими потребностями и сохраните его в `tests`. Это будет запускать любые тесты из из директории `tests`.
+Modify the `phpunit.xml` to fit your needs and save it in `tests`. This will run any tests under the `tests` directory.
 
 <a name='sample'></a>
 
