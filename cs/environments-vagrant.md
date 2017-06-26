@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Overview</a> <ul>
         <li>
-          <a href="#requirements">Požadavky</a>
+          <a href="#requirements">Requirements</a>
         </li>
         <li>
           <a href="#packages-included">Packages Included</a>
@@ -464,7 +464,7 @@ set box=
 
 You can SSH into your virtual machine by issuing the `vagrant ssh` terminal command from your Phalcon Box directory.
 
-But, since you will probably need to SSH into your Phalcon Box machine frequently, consider adding the "function" [described above](3.1/environments-vagrant.md#daily-usage-accessing-box-globally) to your host machine to quickly SSH into the Phalcon Box.
+But, since you will probably need to SSH into your Phalcon Box machine frequently, consider adding the "function" [described above](#daily-usage-accessing-box-globally) to your host machine to quickly SSH into the Phalcon Box.
 
 <a name='daily-usage-databases'></a>
 
