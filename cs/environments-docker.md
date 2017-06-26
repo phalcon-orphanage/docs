@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Overview</a> <ul>
         <li>
-          <a href="#dependencies">Závislosti</a>
+          <a href="#dependencies">Dependencies</a>
         </li>
         <li>
           <a href="#services">Services</a>
@@ -318,7 +318,7 @@ make reset
 
 The main tools used are Phalcon, Docker and Docker Compose.
 
-| Aplikace        | Version          |
+| Application     | Version          |
 | --------------- | ---------------- |
 | Aerospike       | 3.11.1.1         |
 | Apache          | 2.4.18           |
