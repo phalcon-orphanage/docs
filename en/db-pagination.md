@@ -1,11 +1,11 @@
 <div class='article-menu' markdown='1'>
 
-- [Pagination](3.1/db-pagination.md#overview)
-    - [Data Adapters](3.1/db-pagination.md#data-adapters)
-    - [Examples](3.1/db-pagination.md#examples)
-    - [Using Adapters](3.1/db-pagination.md#using-adapters)
-    - [Page Attributes](3.1/db-pagination.md#page-attributes)
-    - [Implementing your own adapters](3.1/db-pagination.md#custom)
+- [Pagination](#overview)
+    - [Data Adapters](#data-adapters)
+    - [Examples](#examples)
+    - [Using Adapters](#using-adapters)
+    - [Page Attributes](#page-attributes)
+    - [Implementing your own adapters](#custom)
 
 </div>
 

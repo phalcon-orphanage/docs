@@ -1,17 +1,17 @@
 <div class='article-menu' markdown='1'>
 
-- [Dispatching Controllers](3.1/dispatcher.md#overview)
-    - [The Dispatch Loop](3.1/dispatcher.md#dispatch-loop)
-        - [Dispatch Loop Events](3.1/dispatcher.md#dispatch-loop-events)
-    - [Forwarding to other actions](3.1/dispatcher.md#forwarding)
-    - [Preparing Parameters](3.1/dispatcher.md#preparing-parameters)
-    - [Getting Parameters](3.1/dispatcher.md#getting-parameters)
-    - [Preparing actions](3.1/dispatcher.md#preparing-actions)
-        - [Camelize action names](3.1/dispatcher.md#preparing-actions-camelizing-action-names)
-        - [Remove legacy extensions](3.1/dispatcher.md#preparing-actions-removing-legacy-extensions)
-        - [Inject model instances](3.1/dispatcher.md#preparing-actions-inject-model-instances)
-    - [Handling Not-Found Exceptions](3.1/dispatcher.md#handling-404)
-    - [Implementing your own Dispatcher](3.1/dispatcher.md#custom)
+- [Dispatching Controllers](#overview)
+    - [The Dispatch Loop](#dispatch-loop)
+        - [Dispatch Loop Events](#dispatch-loop-events)
+    - [Forwarding to other actions](#forwarding)
+    - [Preparing Parameters](#preparing-parameters)
+    - [Getting Parameters](#getting-parameters)
+    - [Preparing actions](#preparing-actions)
+        - [Camelize action names](#preparing-actions-camelizing-action-names)
+        - [Remove legacy extensions](#preparing-actions-removing-legacy-extensions)
+        - [Inject model instances](#preparing-actions-inject-model-instances)
+    - [Handling Not-Found Exceptions](#handling-404)
+    - [Implementing your own Dispatcher](#custom)
 
 </div>
 

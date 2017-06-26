@@ -1,19 +1,19 @@
 <div class='article-menu' markdown='1'>
 
-- [Tutorial - basic](3.1/tutorial-base.md#basic)
-    - [File structure](3.1/tutorial-base.md#file-structure)
-    - [Bootstrap](3.1/tutorial-base.md#bootstrap)
-        - [Autoloaders](3.1/tutorial-base.md#autoloaders)
-        - [Dependency Management](3.1/tutorial-base.md#dependency-management)
-        - [Handling the application request](3.1/tutorial-base.md#request)
-        - [Putting everything together](3.1/tutorial-base.md#full-example)
-    - [Creating a Controller](3.1/tutorial-base.md#controller)
-    - [Sending output to a view](3.1/tutorial-base.md#view)
-    - [Designing a sign up form](3.1/tutorial-base.md#signup-form)
-    - [Creating a Model](3.1/tutorial-base.md#model)
-    - [Setting a Database Connection](3.1/tutorial-base.md#database-connection)
-    - [Storing data using models](3.1/tutorial-base.md#storing-data)
-    - [Conclusion](3.1/tutorial-base.md#conclusion)
+- [Tutorial - basic](#basic)
+    - [File structure](#file-structure)
+    - [Bootstrap](#bootstrap)
+        - [Autoloaders](#autoloaders)
+        - [Dependency Management](#dependency-management)
+        - [Handling the application request](#request)
+        - [Putting everything together](#full-example)
+    - [Creating a Controller](#controller)
+    - [Sending output to a view](#view)
+    - [Designing a sign up form](#signup-form)
+    - [Creating a Model](#model)
+    - [Setting a Database Connection](#database-connection)
+    - [Storing data using models](#storing-data)
+    - [Conclusion](#conclusion)
 
 </div>
 

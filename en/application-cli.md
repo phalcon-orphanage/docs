@@ -1,11 +1,11 @@
 <div class='article-menu' markdown='1'>
 
-- [Creating a CLI Application](3.1/application-cli.md#creating-cli-application)
-    - [Structure](3.1/application-cli.md#structure)
-    - [Creating a Bootstrap](3.1/application-cli.md#creating-bootstrap)
-    - [Tasks](3.1/application-cli.md#tasks)
-    - [Processing action parameters](3.1/application-cli.md#processing-action-parameters)
-    - [Running tasks in a chain](3.1/application-cli.md#running-tasks-chain)
+- [Creating a CLI Application](#creating-cli-application)
+    - [Structure](#structure)
+    - [Creating a Bootstrap](#creating-bootstrap)
+    - [Tasks](#tasks)
+    - [Processing action parameters](#processing-action-parameters)
+    - [Running tasks in a chain](#running-tasks-chain)
 
 </div>
 

@@ -1,15 +1,15 @@
 <div class='article-menu' markdown='1'>
 
-- [Validation](3.1/validation.md#overview)
-    - [Initializing Validation](3.1/validation.md#initializing)
-    - [Validators](3.1/validation.md#validators)
-    - [Callback Validator](3.1/validation.md#callback)
-    - [Validation Messages](3.1/validation.md#messages)
-    - [Filtering of Data](3.1/validation.md#filtering)
-    - [Validation Events](3.1/validation.md#events)
-    - [Cancelling Validations](3.1/validation.md#cancelling)
-    - [Avoid validating empty values](3.1/validation.md#empty-values)
-    - [Recursive Validation](3.1/validation.md#recursive)
+- [Validation](#overview)
+    - [Initializing Validation](#initializing)
+    - [Validators](#validators)
+    - [Callback Validator](#callback)
+    - [Validation Messages](#messages)
+    - [Filtering of Data](#filtering)
+    - [Validation Events](#events)
+    - [Cancelling Validations](#cancelling)
+    - [Avoid validating empty values](#empty-values)
+    - [Recursive Validation](#recursive)
 
 </div>
 

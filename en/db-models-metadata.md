@@ -1,11 +1,11 @@
 <div class='article-menu' markdown='1'>
 
-- [Models Metadata](3.1/db-models-metadata.md#overview)
-    - [Caching Metadata](3.1/db-models-metadata.md#caching-metadata)
-    - [Metadata Strategies](3.1/db-models-metadata.md#metadata-strategies)
-        - [Database Introspection Strategy](3.1/db-models-metadata.md#strategies-database-introspection)
-        - [Annotations Strategy](3.1/db-models-metadata.md#strategies-annotations)
-    - [Manual Metadata](3.1/db-models-metadata.md#strategies-manual)
+- [Models Metadata](#overview)
+    - [Caching Metadata](#caching-metadata)
+    - [Metadata Strategies](#metadata-strategies)
+        - [Database Introspection Strategy](#strategies-database-introspection)
+        - [Annotations Strategy](#strategies-annotations)
+    - [Manual Metadata](#strategies-manual)
     
 </div>
 

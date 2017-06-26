@@ -1,18 +1,18 @@
 <div class='article-menu' markdown='1'>
 
-- [Web Server Setup](3.1/webserver-setup.md#setup)
-    - [Nginx](3.1/webserver-setup.md#nginx)
-        - [Phalcon configuration](3.1/webserver-setup.md#nginx-phalcon-configuration)
-            - [Basic configuration](3.1/webserver-setup.md#nginx-phalcon-configuration-basic)
-    - [Apache](3.1/webserver-setup.md#apache)
-        - [Phalcon configuration](3.1/webserver-setup.md#apache-phalcon-configuration)
-            - [Document root](3.1/webserver-setup.md#apache-document-root)
-            - [Apache configuration](3.1/webserver-setup.md#apache-apache-configuration)
-            - [Virtual Hosts](3.1/webserver-setup.md#apache-virtual-hosts)
-    - [Cherokee](3.1/webserver-setup.md#cherokee)
-        - [Phalcon configuration](3.1/webserver-setup.md#cherokee-phalcon-configuration)
-    - [Built in Webserver](3.1/webserver-setup.md#php-built-in)
-        - [Phalcon configuration](3.1/webserver-setup.md#php-built-in-phalcon-configuration)
+- [Web Server Setup](#setup)
+    - [Nginx](#nginx)
+        - [Phalcon configuration](#nginx-phalcon-configuration)
+            - [Basic configuration](#nginx-phalcon-configuration-basic)
+    - [Apache](#apache)
+        - [Phalcon configuration](#apache-phalcon-configuration)
+            - [Document root](#apache-document-root)
+            - [Apache configuration](#apache-apache-configuration)
+            - [Virtual Hosts](#apache-virtual-hosts)
+    - [Cherokee](#cherokee)
+        - [Phalcon configuration](#cherokee-phalcon-configuration)
+    - [Built in Webserver](#php-built-in)
+        - [Phalcon configuration](#php-built-in-phalcon-configuration)
 
 </div>
 

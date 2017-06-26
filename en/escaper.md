@@ -1,11 +1,11 @@
 <div class='article-menu' markdown='1'>
 
-- [Contextual Escaping](3.1/escaper.md#overview)
-    - [Escaping HTML](3.1/escaper.md#html)
-    - [Escaping HTML Attributes](3.1/escaper.md#html-attributes)
-    - [Escaping URLs](3.1/escaper.md#urls)
-    - [Escaping CSS](3.1/escaper.md#css)
-    - [Escaping JavaScript](3.1/escaper.md#javascript)
+- [Contextual Escaping](#overview)
+    - [Escaping HTML](#html)
+    - [Escaping HTML Attributes](#html-attributes)
+    - [Escaping URLs](#urls)
+    - [Escaping CSS](#css)
+    - [Escaping JavaScript](#javascript)
 
 </div>
 

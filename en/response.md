@@ -1,12 +1,12 @@
 <div class='article-menu' markdown='1'>
 
-- [Returning Responses](3.1/response.md#overview)
-    - [Working with Headers](3.1/response.md#working-with-headers)
-    - [Making Redirections](3.1/response.md#redirections)
-    - [HTTP Cache](3.1/response.md#http-cache)
-        - [Setting an Expiration Time](3.1/response.md#http-cache-expiration-time)
-        - [Cache-Control](3.1/response.md#http-cache-control)
-        - [E-Tag](3.1/response.md#http-cache-etag)
+- [Returning Responses](#overview)
+    - [Working with Headers](#working-with-headers)
+    - [Making Redirections](#redirections)
+    - [HTTP Cache](#http-cache)
+        - [Setting an Expiration Time](#http-cache-expiration-time)
+        - [Cache-Control](#http-cache-control)
+        - [E-Tag](#http-cache-etag)
 
 </div>
 

@@ -1,14 +1,14 @@
 <div class='article-menu' markdown='1'>
 
-- [Overview](3.1/controllers.md#overview)
-    - [Using Controllers](3.1/controllers.md#using)
-    - [Dispatch Loop](3.1/controllers.md#dispatch-loop)
-    - [Initializing Controllers](3.1/controllers.md#initializing)
-    - [Injecting Services](3.1/controllers.md#injecting-services)
-    - [Request and Response](3.1/controllers.md#request-response)
-    - [Session Data](3.1/controllers.md#session-data)
-    - [Using Services as Controllers](3.1/controllers.md#services)
-    - [Events in Controllers](3.1/controllers.md#events)
+- [Overview](#overview)
+    - [Using Controllers](#using)
+    - [Dispatch Loop](#dispatch-loop)
+    - [Initializing Controllers](#initializing)
+    - [Injecting Services](#injecting-services)
+    - [Request and Response](#request-response)
+    - [Session Data](#session-data)
+    - [Using Services as Controllers](#services)
+    - [Events in Controllers](#events)
 
 </div>
 

@@ -1,8 +1,8 @@
 <div class='article-menu' markdown='1'>
 
-- [Overview](3.1/webserver-wamp.md#overview)
-    - [Download the right version of Phalcon](3.1/webserver-wamp.md#phalcon)
-    - [Related](3.1/webserver-wamp.md#related)
+- [Overview](#overview)
+    - [Download the right version of Phalcon](#phalcon)
+    - [Related](#related)
     
 </div>
 

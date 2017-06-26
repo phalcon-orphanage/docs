@@ -1,11 +1,11 @@
 <div class='article-menu' markdown='1'>
 
-- [Model Events](3.1/db-models-events.md#overview)
-    - [Events and Events Manager](3.1/db-models-events.md#events)
-        - [Implementing Events in the Model's class](3.1/db-models-events.md#events-in-models)
-        - [Using a custom Events Manager](3.1/db-models-events.md#custom-events-manager)
-    - [Logging Low-Level SQL Statements](3.1/db-models-events.md#logging-sql-statements)
-    - [Profiling SQL Statements](3.1/db-models-events.md#profiling-sql-statements)
+- [Model Events](#overview)
+    - [Events and Events Manager](#events)
+        - [Implementing Events in the Model's class](#events-in-models)
+        - [Using a custom Events Manager](#custom-events-manager)
+    - [Logging Low-Level SQL Statements](#logging-sql-statements)
+    - [Profiling SQL Statements](#profiling-sql-statements)
 
 </div>
 

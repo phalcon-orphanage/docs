@@ -1,10 +1,10 @@
 <div class='article-menu' markdown='1'>
 
-- [Model Behaviors](3.1/db-models-behaviors.md#overview)
-    - [Timestampable](3.1/db-models-behaviors.md#timestampable)
-    - [SoftDelete](3.1/db-models-behaviors.md#softdelete)
-    - [Creating your own behaviors](3.1/db-models-behaviors.md#create-your-own-behaviors)
-    - [Using Traits as behaviors](3.1/db-models-behaviors.md#traits-as-behaviors)
+- [Model Behaviors](#overview)
+    - [Timestampable](#timestampable)
+    - [SoftDelete](#softdelete)
+    - [Creating your own behaviors](#create-your-own-behaviors)
+    - [Using Traits as behaviors](#traits-as-behaviors)
     
 </div>
 

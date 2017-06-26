@@ -1,10 +1,10 @@
 <div class='article-menu' markdown='1'>
 
-- [Flashing Messages](3.1/forms.md#overview)
-    - [Adapters](3.1/forms.md#adapters)
-    - [Usage](3.1/forms.md#usage)
-    - [Printing Messages](3.1/forms.md#printing)
-    - [Implicit Flush vs. Session](3.1/forms.md#implicit-flush-vs-session)
+- [Flashing Messages](#overview)
+    - [Adapters](#adapters)
+    - [Usage](#usage)
+    - [Printing Messages](#printing)
+    - [Implicit Flush vs. Session](#implicit-flush-vs-session)
 
 </div>
 

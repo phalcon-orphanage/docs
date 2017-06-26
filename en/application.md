@@ -1,12 +1,12 @@
 <div class='article-menu' markdown='1'>
 
-- [MVC Applications](3.1/application.md#overview)
-    - [Manual Bootstrapping](3.1/application.md#manual-bootstrapping)
-    - [Single or Multi Module Applications](3.1/application.md#single-vs-module)
-        - [Single Module](3.1/application.md#single)
-        - [Multi Module](3.1/application.md#module)
-    - [Application Events](3.1/application.md#events)
-    - [External Resources](3.1/application.md#resources)
+- [MVC Applications](#overview)
+    - [Manual Bootstrapping](#manual-bootstrapping)
+    - [Single or Multi Module Applications](#single-vs-module)
+        - [Single Module](#single)
+        - [Multi Module](#module)
+    - [Application Events](#events)
+    - [External Resources](#resources)
 
 </div>
 

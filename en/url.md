@@ -1,12 +1,12 @@
 <div class='article-menu' markdown='1'>
 
-- [Generating URLs and Paths](3.1/url.md#overview)
-    - [Setting a base URI](3.1/url.md#base-uri)
-    - [Generating URIs](3.1/url.md#generating-uri)
-    - [Producing URLs without mod_rewrite](3.1/url.md#urls-without-mod-rewrite)
-    - [Producing URLs from Volt](3.1/url.md#urls-from-volt)
-    - [Static vs. Dynamic URIs](3.1/url.md#static-vs-dynamic-uri)
-    - [Implementing your own URL Generator](3.1/url.md#custom-url)
+- [Generating URLs and Paths](#overview)
+    - [Setting a base URI](#base-uri)
+    - [Generating URIs](#generating-uri)
+    - [Producing URLs without mod_rewrite](#urls-without-mod-rewrite)
+    - [Producing URLs from Volt](#urls-from-volt)
+    - [Static vs. Dynamic URIs](#static-vs-dynamic-uri)
+    - [Implementing your own URL Generator](#custom-url)
 
 </div>
 

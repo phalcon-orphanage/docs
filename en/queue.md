@@ -1,8 +1,8 @@
 <div class='article-menu' markdown='1'>
 
-- [Queueing](3.1/queue.md#overview)
-    - [Putting Jobs into the Queue](3.1/queue.md#put-jobs-in-queue)
-    - [Retrieving Messages](3.1/queue.md#retrieving-messages)
+- [Queueing](#overview)
+    - [Putting Jobs into the Queue](#put-jobs-in-queue)
+    - [Retrieving Messages](#retrieving-messages)
 
 </div>
 

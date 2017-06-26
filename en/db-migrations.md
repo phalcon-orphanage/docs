@@ -1,11 +1,11 @@
 <div class='article-menu' markdown='1'>
 
-- [Pagination](3.1/db-migrations.md#overview)
-    - [Data Adapters](3.1/db-migrations.md#data-adapters)
-    - [Examples](3.1/db-migrations.md#examples)
-    - [Using Adapters](3.1/db-migrations.md#using-adapters)
-    - [Page Attributes](3.1/db-migrations.md#page-attributes)
-    - [Implementing your own adapters](3.1/db-migrations.md#custom)
+- [Pagination](#overview)
+    - [Data Adapters](#data-adapters)
+    - [Examples](#examples)
+    - [Using Adapters](#using-adapters)
+    - [Page Attributes](#page-attributes)
+    - [Implementing your own adapters](#custom)
 
 </div>
 

@@ -1,19 +1,19 @@
 <div class='article-menu' markdown='1'>
 
-- [Model Relationships](3.1/db-models-relationships.md#overview)
-    - [Relationships between Models](3.1/db-models-relationships.md#relationships)
-        - [Unidirectional relationships](3.1/db-models-relationships.md#unidirectional)
-        - [Bidirectional relations](3.1/db-models-relationships.md#bidirectional)
-        - [Defining relationships](3.1/db-models-relationships.md#defining)
-        - [Taking advantage of relationships](3.1/db-models-relationships.md#taking-advantage-of)
-        - [Aliasing Relationships](3.1/db-models-relationships.md#aliases)
-            - [Magic Getters vs. Explicit methods](3.1/db-models-relationships.md#getters-vs-methods)
-    - [Virtual Foreign Keys](3.1/db-models-relationships.md#virtual-foreign-keys)
-        - [Cascade/Restrict actions](3.1/db-models-relationships.md#cascade-restrict-actions)
-    - [Storing Related Records](3.1/db-models-relationships.md#storing-related-records)
-    - [Operations over Resultsets](3.1/db-models-relationships.md#operations-over-resultsets)
-        - [Updating related records](3.1/db-models-relationships.md#updating-related-records)
-        - [Deleting related records](3.1/db-models-relationships.md#deleting-related-records)
+- [Model Relationships](#overview)
+    - [Relationships between Models](#relationships)
+        - [Unidirectional relationships](#unidirectional)
+        - [Bidirectional relations](#bidirectional)
+        - [Defining relationships](#defining)
+        - [Taking advantage of relationships](#taking-advantage-of)
+        - [Aliasing Relationships](#aliases)
+            - [Magic Getters vs. Explicit methods](#getters-vs-methods)
+    - [Virtual Foreign Keys](#virtual-foreign-keys)
+        - [Cascade/Restrict actions](#cascade-restrict-actions)
+    - [Storing Related Records](#storing-related-records)
+    - [Operations over Resultsets](#operations-over-resultsets)
+        - [Updating related records](#updating-related-records)
+        - [Deleting related records](#deleting-related-records)
 
 </div>
 

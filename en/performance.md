@@ -1,17 +1,17 @@
 <div class='article-menu' markdown='1'>
 
-- [Increasing Performance](3.1/performance.md#overview)
-    - [Profile on the Server](3.1/performance.md#profiling-server)
-        - [Profiling with Xhprof](3.1/performance.md#profiling-server-xhprof)
-        - [Profiling SQL Statements](3.1/performance.md#profiling-server-sql-statements)
-    - [Profile on the Client](3.1/performance.md#profiling-client)
-        - [Profile with Chrome/Firefox](3.1/performance.md#profiling-client-chrome-firefox)
-        - [Yahoo! YSlow](3.1/performance.md#profiling-client-yslow)
-        - [Profile with Speed Tracer](3.1/performance.md#profiling-client-speed-tracer)
-    - [Use a recent PHP version](3.1/performance.md#php-version)
-    - [Use a PHP Bytecode Cache](3.1/performance.md#bytecode-cache)
-    - [Do blocking work in the background](3.1/performance.md#background-tasks)
-    - [Google Page Speed](3.1/performance.md#page-speed)
+- [Increasing Performance](#overview)
+    - [Profile on the Server](#profiling-server)
+        - [Profiling with Xhprof](#profiling-server-xhprof)
+        - [Profiling SQL Statements](#profiling-server-sql-statements)
+    - [Profile on the Client](#profiling-client)
+        - [Profile with Chrome/Firefox](#profiling-client-chrome-firefox)
+        - [Yahoo! YSlow](#profiling-client-yslow)
+        - [Profile with Speed Tracer](#profiling-client-speed-tracer)
+    - [Use a recent PHP version](#php-version)
+    - [Use a PHP Bytecode Cache](#bytecode-cache)
+    - [Do blocking work in the background](#background-tasks)
+    - [Google Page Speed](#page-speed)
 
 </div>
 

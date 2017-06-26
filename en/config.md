@@ -1,12 +1,12 @@
 <div class='article-menu' markdown='1'>
 
-- [Reading Configurations](3.1/config.md#overview)
-    - [Native Arrays](3.1/config.md#native-arrays)
-    - [File Adapters](3.1/config.md#file-adapter)
-    - [Reading INI Files](3.1/config.md#ini-files)
-    - [Merging Configurations](3.1/config.md#merging)
-    - [Nested Configuration](3.1/config.md#nested-configuration)
-    - [Injecting Configuration Dependency](3.1/config.md#injecting-into-di)
+- [Reading Configurations](#overview)
+    - [Native Arrays](#native-arrays)
+    - [File Adapters](#file-adapter)
+    - [Reading INI Files](#ini-files)
+    - [Merging Configurations](#merging)
+    - [Nested Configuration](#nested-configuration)
+    - [Injecting Configuration Dependency](#injecting-into-di)
 
 </div>
 

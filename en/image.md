@@ -1,6 +1,6 @@
 <div class='article-menu' markdown='1'>
 
-- [Improving Performance with Cache](3.1/image.md#overview)
+- [Improving Performance with Cache](#overview)
 
 
 </div>

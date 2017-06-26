@@ -1,13 +1,13 @@
 <div class='article-menu' markdown='1'>
 
-- [Storing data in the Session](3.1/session.md#overview)
-    - [Starting the Session](3.1/session.md#start)
-    - [Storing/Retrieving data in Session](3.1/session.md#store)
-    - [Removing/Destroying Sessions](3.1/session.md#remove-destroy)
-    - [Isolating Session Data between Applications](3.1/session.md#data-isolation)
-    - [Session Bags](3.1/session.md#bags)
-    - [Persistent Data in Components](3.1/session.md#data-persistency)
-    - [Implementing your own adapters](3.1/session.md#custom-adapters)
+- [Storing data in the Session](#overview)
+    - [Starting the Session](#start)
+    - [Storing/Retrieving data in Session](#store)
+    - [Removing/Destroying Sessions](#remove-destroy)
+    - [Isolating Session Data between Applications](#data-isolation)
+    - [Session Bags](#bags)
+    - [Persistent Data in Components](#data-persistency)
+    - [Implementing your own adapters](#custom-adapters)
 
 </div>
 

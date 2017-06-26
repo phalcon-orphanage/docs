@@ -1,8 +1,8 @@
 <div class='article-menu' markdown='1'>
 
-- [Cookies Management](3.1/cookies.md#overview)
-    - [Basic Usage](3.1/cookies.md#usage)
-    - [Encryption/Decryption of Cookies](3.1/cookies.md#encryption-decryption)
+- [Cookies Management](#overview)
+    - [Basic Usage](#usage)
+    - [Encryption/Decryption of Cookies](#encryption-decryption)
 
 </div>
 

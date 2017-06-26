@@ -1,9 +1,9 @@
 <div class='article-menu' markdown='1'>
 
-- [Tutorial: Vökuró](3.1/tutorial-vokuro.md#overview)
-    - [Project Structure](3.1/tutorial-vokuro.md#structure)
-    - [Load Classes and Dependencies](3.1/tutorial-vokuro.md#dependencies)
-    - [Sign Up](3.1/tutorial-vokuro.md#sign-up)
+- [Tutorial: Vökuró](#overview)
+    - [Project Structure](#structure)
+    - [Load Classes and Dependencies](#dependencies)
+    - [Sign Up](#sign-up)
     
 </div>
 

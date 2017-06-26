@@ -14,10 +14,10 @@ Writing proper tests can assist in writing better software. If you set up proper
 <a name='integration'></a>
 ## Integrating PHPUnit with Phalcon
 
-If you don't already have PHPUnit installed, you can do it by using the following command:
+If you don't already have phpunit installed, you can do it by using the following composer command:
 
 ```bash
-composer require phpunit/phpunit
+composer require phpunit/phpunit:^5.0
 ```
 
 or by manually adding it to `composer.json`:
@@ -26,7 +26,7 @@ or by manually adding it to `composer.json`:
 
 {
     "require-dev": {
-        "phpunit/phpunit": "5.*"
+        "phpunit/phpunit": "^5.0"
     }
 }
 ```
@@ -63,10 +63,10 @@ set_include_path(
 );
 
 // Required for phalcon/incubator
-// and autoload the dependencies found in composer
 include __DIR__ . "/../vendor/autoload.php";
 
 // Use the application autoloader to autoload the classes
+// Autoload the dependencies found in composer
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -102,12 +102,12 @@ or by manually adding it to `composer.json`:
 ```json
 {
     "require": {
-        "phalcon/incubator": "^3.2"
+        "phalcon/incubator": "^3.0"
     }
 }
 ```
 
-You can also clone the repository using this link: https://github.com/phalcon/incubator.
+You can also clone the repository using the repo link above.
 
 <a name='phpunit-config'></a>
 ## The `phpunit.xml` file

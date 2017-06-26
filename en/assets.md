@@ -1,15 +1,15 @@
 <div class='article-menu' markdown='1'>
 
-- [Assets Management](3.1/assets.md#overview)
-    - [Adding Resources](3.1/assets.md#add)
-    - [Local/Remote resources](3.1/assets.md#resources-local-remote)
-    - [Collections](3.1/assets.md#collections)
-    - [URL Prefixes](3.1/assets.md#url-prefixes)
-    - [Minification/Filtering](3.1/assets.md#minification-filtering)
-        - [Built-In Filters](3.1/assets.md#builtin-filters)
-        - [Custom Filters](3.1/assets.md#custom-filters)
-    - [Custom Output](3.1/assets.md#custom-output)
-    - [Improving performance](3.1/assets.md#improving-performance)
+- [Assets Management](#overview)
+    - [Adding Resources](#add)
+    - [Local/Remote resources](#resources-local-remote)
+    - [Collections](#collections)
+    - [URL Prefixes](#url-prefixes)
+    - [Minification/Filtering](#minification-filtering)
+        - [Built-In Filters](#builtin-filters)
+        - [Custom Filters](#custom-filters)
+    - [Custom Output](#custom-output)
+    - [Improving performance](#improving-performance)
 
 </div>
 

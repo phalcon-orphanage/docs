@@ -1,9 +1,9 @@
 <div class='article-menu' markdown='1'>
 
-- [The MVC Architecture](3.1/mvc.md#architecture)
-    - [Models](3.1/mvc.md#models)
-    - [Views](3.1/mvc.md#views)
-    - [Controllers](3.1/mvc.md#controllers)
+- [The MVC Architecture](#architecture)
+    - [Models](#models)
+    - [Views](#views)
+    - [Controllers](#controllers)
 
 </div>
 

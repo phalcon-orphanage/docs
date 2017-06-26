@@ -1,11 +1,11 @@
 <div class='article-menu' markdown='1'>
 
-- [Encryption/Decryption](3.1/crypt.md#overview)
-    - [Basic Usage](3.1/crypt.md#usage)
-    - [Encryption Options](3.1/crypt.md#options)
-    - [Base64 Support](3.1/crypt.md#base64)
-    - [Setting up an Encryption service](3.1/crypt.md#service)
-    - [Links](3.1/crypt.md#links)
+- [Encryption/Decryption](#overview)
+    - [Basic Usage](#usage)
+    - [Encryption Options](#options)
+    - [Base64 Support](#base64)
+    - [Setting up an Encryption service](#service)
+    - [Links](#links)
 
 </div>
 

@@ -1,9 +1,9 @@
 <div class='article-menu' markdown='1'>
 
-- [Multi-lingual Support](3.1/translate.md#overview)
-    - [Adapters](3.1/translate.md#adapters)
-    - [Component Usage](3.1/translate.md#usage)
-    - [Implementing your own adapters](3.1/translate.md#custom)
+- [Multi-lingual Support](#overview)
+    - [Adapters](#adapters)
+    - [Component Usage](#usage)
+    - [Implementing your own adapters](#custom)
 
 </div>
 

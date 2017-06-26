@@ -1,14 +1,14 @@
 <div class='article-menu' markdown='1'>
 
-- [ORM Caching](3.1/db-models-cache.md#overview)
-    - [Caching Resultsets](3.1/db-models-cache.md#caching-resultsets)
-    - [Forcing Cache](3.1/db-models-cache.md#forcing-cache)
-    - [Caching PHQL Queries](3.1/db-models-cache.md#caching-phql-queries)
-    - [Reusable Related Records](3.1/db-models-cache.md#reusable-related-records)
-    - [Caching Related Records](3.1/db-models-cache.md#caching-related-records)
-    - [Caching Related Records Recursively](3.1/db-models-cache.md#caching-related-records-recursively)
-    - [Caching based on Conditions](3.1/db-models-cache.md#caching-based-on-conditions)
-    - [Caching PHQL execution plan](3.1/db-models-cache.md#caching-phql-execution-plan)
+- [ORM Caching](#overview)
+    - [Caching Resultsets](#caching-resultsets)
+    - [Forcing Cache](#forcing-cache)
+    - [Caching PHQL Queries](#caching-phql-queries)
+    - [Reusable Related Records](#reusable-related-records)
+    - [Caching Related Records](#caching-related-records)
+    - [Caching Related Records Recursively](#caching-related-records-recursively)
+    - [Caching based on Conditions](#caching-based-on-conditions)
+    - [Caching PHQL execution plan](#caching-phql-execution-plan)
 
 </div>
 

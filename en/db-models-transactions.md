@@ -1,9 +1,9 @@
 <div class='article-menu' markdown='1'>
 
-- [Model Transactions](3.1/db-models-transactions.md#overview)
-    - [Manual Transactions](3.1/db-models-transactions.md#manual)
-    - [Implicit Transactions](3.1/db-models-transactions.md#implicit)
-    - [Isolated Transactions](3.1/db-models-transactions.md#isolated)
+- [Model Transactions](#overview)
+    - [Manual Transactions](#manual)
+    - [Implicit Transactions](#implicit)
+    - [Isolated Transactions](#isolated)
     
 </div>
 

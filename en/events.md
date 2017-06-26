@@ -1,15 +1,15 @@
 <div class='article-menu' markdown='1'>
 
-- [Events Manager](3.1/events.md#overview)
-    - [Naming Convention](3.1/events.md#naming-convention)
-    - [Usage Example](3.1/events.md#usage)
-    - [Creating components that trigger Events](3.1/events.md#components-that-trigger-events)
-    - [Using Services From The DI](3.1/events.md#using-services)
-    - [Event Propagation/Cancellation](3.1/events.md#propagation-cancellation)
-    - [Listener Priorities](3.1/events.md#listener-priorities)
-    - [Collecting Responses](3.1/events.md#collecting-responses)
-    - [Implementing your own EventsManager](3.1/events.md#custom)
-    - [List of events](3.1/events.md#list)
+- [Events Manager](#overview)
+    - [Naming Convention](#naming-convention)
+    - [Usage Example](#usage)
+    - [Creating components that trigger Events](#components-that-trigger-events)
+    - [Using Services From The DI](#using-services)
+    - [Event Propagation/Cancellation](#propagation-cancellation)
+    - [Listener Priorities](#listener-priorities)
+    - [Collecting Responses](#collecting-responses)
+    - [Implementing your own EventsManager](#custom)
+    - [List of events](#list)
 
 </div>
 

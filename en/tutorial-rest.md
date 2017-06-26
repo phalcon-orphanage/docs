@@ -1,15 +1,15 @@
 <div class='article-menu' markdown='1'>
 
-- [Tutorial: Creating a Simple REST API](3.1/tutorial-rest.md#overview)
-    - [Defining the API](3.1/tutorial-rest.md#definitions)
-    - [Creating the Application](3.1/tutorial-rest.md#implementation)
-    - [Creating a Model](3.1/tutorial-rest.md#models)
-    - [Retrieving Data](3.1/tutorial-rest.md#retrieving-data)
-    - [Inserting Data](3.1/tutorial-rest.md#inserting-data)
-    - [Updating Data](3.1/tutorial-rest.md#updating-data)
-    - [Deleting Data](3.1/tutorial-rest.md#deleting-data)
-    - [Testing our Application](3.1/tutorial-rest.md#testing)
-    - [Conclusion](3.1/tutorial-rest.md#conclusion)
+- [Tutorial: Creating a Simple REST API](#overview)
+    - [Defining the API](#definitions)
+    - [Creating the Application](#implementation)
+    - [Creating a Model](#models)
+    - [Retrieving Data](#retrieving-data)
+    - [Inserting Data](#inserting-data)
+    - [Updating Data](#updating-data)
+    - [Deleting Data](#deleting-data)
+    - [Testing our Application](#testing)
+    - [Conclusion](#conclusion)
    
 </div>
 

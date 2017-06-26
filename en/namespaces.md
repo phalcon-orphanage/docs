@@ -1,9 +1,9 @@
 <div class='article-menu' markdown='1'>
 
-- [Working with Namespaces](3.1/namespaces.md#overview)
-    - [Setting up the framework](3.1/namespaces.md#setting-up)
-    - [Controllers in Namespaces](3.1/namespaces.md#controllers)
-    - [Models in Namespaces](3.1/namespaces.md#models)
+- [Working with Namespaces](#overview)
+    - [Setting up the framework](#setting-up)
+    - [Controllers in Namespaces](#controllers)
+    - [Models in Namespaces](#models)
 
 </div>
 

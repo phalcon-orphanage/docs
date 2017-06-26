@@ -1,11 +1,11 @@
 <div class='article-menu' markdown='1'>
 
-- [Security](3.1/security.md#overview)
-    - [Password Hashing](3.1/security.md#hashing)
-    - [Cross-Site Request Forgery (CSRF) protection](3.1/security.md#csrf)
-    - [Setting up the component](3.1/security.md#setup)
-    - [Random](3.1/security.md#random)
-    - [External Resources](3.1/security.md#resources)
+- [Security](#overview)
+    - [Password Hashing](#hashing)
+    - [Cross-Site Request Forgery (CSRF) protection](#csrf)
+    - [Setting up the component](#setup)
+    - [Random](#random)
+    - [External Resources](#resources)
 
 </div>
 

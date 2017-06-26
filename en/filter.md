@@ -1,15 +1,15 @@
 <div class='article-menu' markdown='1'>
 
-- [Filtering and Sanitizing](3.1/filter.md#overview)
-    - [Types of Built-in Filters](3.1/filter.md#types)
-    - [Sanitizing data](3.1/filter.md#sanitizing)
-    - [Sanitizing from Controllers](3.1/filter.md#sanitizing-from-controllers)
-    - [Filtering Action Parameters](3.1/filter.md#filtering-action-parameters)
-    - [Filtering data](3.1/filter.md#filtering-data)
-    - [Combining Filters](3.1/filter.md#combining-filters)
-    - [Adding filters](3.1/filter.md#adding-filters)
-    - [Complex Sanitizing and Filtering](3.1/filter.md#complex-sanitization-filtering)
-    - [Implementing your own Filter](3.1/filter.md#custom)
+- [Filtering and Sanitizing](#overview)
+    - [Types of Built-in Filters](#types)
+    - [Sanitizing data](#sanitizing)
+    - [Sanitizing from Controllers](#sanitizing-from-controllers)
+    - [Filtering Action Parameters](#filtering-action-parameters)
+    - [Filtering data](#filtering-data)
+    - [Combining Filters](#combining-filters)
+    - [Adding filters](#adding-filters)
+    - [Complex Sanitizing and Filtering](#complex-sanitization-filtering)
+    - [Implementing your own Filter](#custom)
 
 </div>
 

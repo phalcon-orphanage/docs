@@ -1,15 +1,15 @@
 <div class='article-menu' markdown='1'>
 
-- [Annotations Parser](3.1/annotations.md#overview)
-    - [Factory](3.1/annotations.md#factory)
-    - [Reading Annotations](3.1/annotations.md#reading)
-    - [Types of Annotations](3.1/annotations.md#types)
-    - [Practical Usage](3.1/annotations.md#usage)
-        - [Cache Enabler with Annotations](3.1/annotations.md#usage-cache)
-        - [Private/Public areas with Annotations](3.1/annotations.md#usage-access-management)
-    - [Annotations Adapters](3.1/annotations.md#adapters)
-        - [Implementing your own adapters](3.1/annotations.md#adapters-custom)
-    - [External Resources](3.1/annotations.md#resources)
+- [Annotations Parser](#overview)
+    - [Factory](#factory)
+    - [Reading Annotations](#reading)
+    - [Types of Annotations](#types)
+    - [Practical Usage](#usage)
+        - [Cache Enabler with Annotations](#usage-cache)
+        - [Private/Public areas with Annotations](#usage-access-management)
+    - [Annotations Adapters](#adapters)
+        - [Implementing your own adapters](#adapters-custom)
+    - [External Resources](#resources)
 
 </div>
 
@@ -102,7 +102,7 @@ However, to make the code more maintainable and understandable it is recommended
 
 <a name='factory'></a>
 ## Factory
-There are many annotations adapters available (see [Adapters](3.1/annotations.md#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
 
 ```php
 <?php

@@ -1,12 +1,12 @@
 <div class='article-menu' markdown='1'>
 
-- [DevTools on Linux](3.1/devtools-installation.md#overview)
-    - [Prerequisites](3.1/devtools-installation.md#prerequisites)
-    - [Installation](3.1/devtools-installation.md#installation)
-        - [Linux](3.1/devtools-installation.md#installation-linux)
-        - [MacOS](3.1/devtools-installation.md#installation-mac)
-        - [Windows](3.1/devtools-installation.md#installation-windows)
-            - [Adding PHP and Tools to your system PATH](3.1/devtools-installation.md#installation-windows-system-path)
+- [DevTools on Linux](#overview)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+        - [Linux](#installation-linux)
+        - [MacOS](#installation-mac)
+        - [Windows](#installation-windows)
+            - [Adding PHP and Tools to your system PATH](#installation-windows-system-path)
 
 </div>
 

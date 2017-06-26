@@ -1,17 +1,17 @@
 <div class='article-menu' markdown='1'>
 
-- [Access Control Lists](3.1/acl.md#overview)
-    - [Creating an ACL](3.1/acl.md#setup)
-    - [Adding Roles to the ACL](3.1/acl.md#adding-roles)
-    - [Adding Resources](3.1/acl.md#adding-resources)
-    - [Defining Access Controls](3.1/acl.md#access-controls)
-    - [Querying an ACL](3.1/acl.md#querying)
-    - [Function based access](3.1/acl.md#function-based-access)
-    - [Objects as role name and resource name](3.1/acl.md#objects)
-    - [Roles Inheritance](3.1/acl.md#roles-inheritance)
-    - [Serializing ACL lists](3.1/acl.md#serialization)
-    - [Events](3.1/acl.md#events)
-    - [Implementing your own adapters](3.1/acl.md#custom-adapters)
+- [Access Control Lists](#overview)
+    - [Creating an ACL](#setup)
+    - [Adding Roles to the ACL](#adding-roles)
+    - [Adding Resources](#adding-resources)
+    - [Defining Access Controls](#access-controls)
+    - [Querying an ACL](#querying)
+    - [Function based access](#function-based-access)
+    - [Objects as role name and resource name](#objects)
+    - [Roles Inheritance](#roles-inheritance)
+    - [Serializing ACL lists](#serialization)
+    - [Events](#events)
+    - [Implementing your own adapters](#custom-adapters)
 
 </div>
 

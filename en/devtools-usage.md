@@ -1,17 +1,17 @@
 <div class='article-menu' markdown='1'>
 
-- [Phalcon Developer Tools](3.1/devtools-usage.md#overview)
-    - [Download](3.1/devtools-usage.md#download)
-    - [Installation](3.1/devtools-usage.md#installation)
-    - [Available Commands](3.1/devtools-usage.md#available-commands)
-    - [Generating a Project Skeleton](3.1/devtools-usage.md#project-skeleton)
-    - [Generating Controllers](3.1/devtools-usage.md#generating-controllers)
-    - [Preparing Database Settings](3.1/devtools-usage.md#database-settings)
-    - [Generating Models](3.1/devtools-usage.md#generating-models)
-    - [Scaffold a CRUD](3.1/devtools-usage.md#crud)
-    - [Web Interface to Tools](3.1/devtools-usage.md#web-interface)
-    - [Integrating Tools with PhpStorm IDE](3.1/devtools-usage.md#phpstorm-ide)
-    - [Conclusion](3.1/devtools-usage.md#conclusion)
+- [Phalcon Developer Tools](#overview)
+    - [Download](#download)
+    - [Installation](#installation)
+    - [Available Commands](#available-commands)
+    - [Generating a Project Skeleton](#project-skeleton)
+    - [Generating Controllers](#generating-controllers)
+    - [Preparing Database Settings](#database-settings)
+    - [Generating Models](#generating-models)
+    - [Scaffold a CRUD](#crud)
+    - [Web Interface to Tools](#web-interface)
+    - [Integrating Tools with PhpStorm IDE](#phpstorm-ide)
+    - [Conclusion](#conclusion)
 
 </div>
 

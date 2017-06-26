@@ -1,13 +1,13 @@
 <div class='article-menu' markdown='1'>
 
-- [Contributing to Phalcon](3.1/contributions.md#contributing)
-    - [Contributions](3.1/contributions.md#contributions)
-    - [Questions and Support](3.1/contributions.md#questions-and-support)
-    - [Bug Report Checklist](3.1/contributions.md#bug-report-checklist)
-        - [Generating a backtrace](3.1/contributions.md#bug-report-generating-backtrace)
-    - [Pull Request Checklist](3.1/contributions.md#pull-request-checklist)
-    - [Getting Support](3.1/contributions.md#getting-support)
-    - [Requesting Features](3.1/contributions.md#requesting-features)
+- [Contributing to Phalcon](#contributing)
+    - [Contributions](#contributions)
+    - [Questions and Support](#questions-and-support)
+    - [Bug Report Checklist](#bug-report-checklist)
+        - [Generating a backtrace](#bug-report-generating-backtrace)
+    - [Pull Request Checklist](#pull-request-checklist)
+    - [Getting Support](#getting-support)
+    - [Requesting Features](#requesting-features)
 
 </div>
 
@@ -35,7 +35,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 - Make sure you are using the latest released version of Phalcon before submitting a bug report. Bugs in versions older than the latest released one will not be addressed by the core team.
 - If you have found a bug, it is essential to add relevant information to reproduce it. Being able to reproduce a bug greatly reduces the time to investigate and fix it. This information should come in the form of a script, small application, or even a failing test. Please check [Submit Reproducible Test][srt] for more information.
 - As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
-- If you're submitting a [Segmentation Fault][segfault] error, we would require a backtrace. Please check [Generating a Backtrace](3.1/contributions.md#bug-report-generating-backtrace) for more information.
+- If you're submitting a [Segmentation Fault][segfault] error, we would require a backtrace. Please check [Generating a Backtrace](#bug-report-generating-backtrace) for more information.
 
 <a name='bug-report-generating-backtrace'></a>
 ### Generating a backtrace

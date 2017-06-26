@@ -1,13 +1,13 @@
 <div class='article-menu' markdown='1'>
 
-- [Overview](3.1/environments-nanobox.md#overview)
-    - [Create a New Project](3.1/environments-nanobox.md#create-project)
-    - [Add a `boxfile.yml`](3.1/environments-nanobox.md#boxfile-yml)
-    - [Add Phalcon Devtools to your `composer.json`](3.1/environments-nanobox.md#add-devtools)
-    - [Start Nanobox and Generate a New Phalcon App](3.1/environments-nanobox.md#new-phalcon-app)
-    - [Run the App Locally](3.1/environments-nanobox.md#run-app)
-    - [Check Out the Environment](3.1/environments-nanobox.md#environment)
-    - [Phalcon and Nanobox](3.1/environments-nanobox.md#conclusion)
+- [Overview](#overview)
+    - [Create a New Project](#create-project)
+    - [Add a `boxfile.yml`](#boxfile-yml)
+    - [Add Phalcon Devtools to your `composer.json`](#add-devtools)
+    - [Start Nanobox and Generate a New Phalcon App](#new-phalcon-app)
+    - [Run the App Locally](#run-app)
+    - [Check Out the Environment](#environment)
+    - [Phalcon and Nanobox](#conclusion)
 
 </div>
 

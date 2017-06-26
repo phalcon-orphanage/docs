@@ -1,10 +1,10 @@
 <div class='article-menu' markdown='1'>
 
-- [Encryption/Decryption](3.1/debug.md#overview)
-    - [Basic Usage](3.1/debug.md#usage)
-    - [Encryption Options](3.1/debug.md#options)
-    - [Base64 Support](3.1/debug.md#base64)
-    - [Setting up an Encryption service](3.1/debug.md#service)
+- [Encryption/Decryption](#overview)
+    - [Basic Usage](#usage)
+    - [Encryption Options](#options)
+    - [Base64 Support](#base64)
+    - [Setting up an Encryption service](#service)
     
 </div>
 

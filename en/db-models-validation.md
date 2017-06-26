@@ -1,9 +1,9 @@
 <div class='article-menu' markdown='1'>
 
-- [Validating Models](3.1/db-models-validation.md#overview)
-    - [Validating Data Integrity](3.1/db-models-validation.md#data-integrity)
-    - [Validation Messages](3.1/db-models-validation.md#messages)
-    - [Validation Failed Events](3.1/db-models-validation.md#failed-events)
+- [Validating Models](#overview)
+    - [Validating Data Integrity](#data-integrity)
+    - [Validation Messages](#messages)
+    - [Validation Failed Events](#failed-events)
 
 </div>
 

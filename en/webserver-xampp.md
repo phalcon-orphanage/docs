@@ -1,9 +1,9 @@
 <div class='article-menu' markdown='1'>
 
-- [Overview](3.1/webserver-xampp.md#overview)
-    - [Download the right version of Phalcon](3.1/webserver-xampp.md#phalcon)
-    - [Screencast](3.1/webserver-xampp.md#screencast)
-    - [Related](3.1/webserver-xampp.md#related)
+- [Overview](#overview)
+    - [Download the right version of Phalcon](#phalcon)
+    - [Screencast](#screencast)
+    - [Related](#related)
     
 </div>
 

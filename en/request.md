@@ -1,10 +1,10 @@
 <div class='article-menu' markdown='1'>
 
-- [Request Environment](3.1/request.md#overview)
-    - [Getting Values](3.1/request.md#getting-values)
-    - [Accessing the Request from Controllers](3.1/request.md#controller-access)
-    - [Uploading Files](3.1/request.md#uploading-files)
-    - [Working with Headers](3.1/request.md#working-with-headers)
+- [Request Environment](#overview)
+    - [Getting Values](#getting-values)
+    - [Accessing the Request from Controllers](#controller-access)
+    - [Uploading Files](#uploading-files)
+    - [Working with Headers](#working-with-headers)
 
 </div>
 

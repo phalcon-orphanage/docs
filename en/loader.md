@@ -1,15 +1,15 @@
 <div class='article-menu' markdown='1'>
 
-- [Class Autoloader](3.1/loader.md#overview)
-    - [Security Layer](3.1/loader.md#security)
-    - [Registering Namespaces](3.1/loader.md#registering-namespaces)
-    - [Registering Directories](3.1/loader.md#registering-directories)
-    - [Registering Classes](3.1/loader.md#registering-classes)
-    - [Registering Files](3.1/loader.md#registering-files)
-    - [Additional file extensions](3.1/loader.md#registering-file-extensions)
-    - [Modifying current strategies](3.1/loader.md#modifying-current-strategies)
-    - [Autoloading Events](3.1/loader.md#events)
-    - [Troubleshooting](3.1/loader.md#troubleshooting)
+- [Class Autoloader](#overview)
+    - [Security Layer](#security)
+    - [Registering Namespaces](#registering-namespaces)
+    - [Registering Directories](#registering-directories)
+    - [Registering Classes](#registering-classes)
+    - [Registering Files](#registering-files)
+    - [Additional file extensions](#registering-file-extensions)
+    - [Modifying current strategies](#modifying-current-strategies)
+    - [Autoloading Events](#events)
+    - [Troubleshooting](#troubleshooting)
 
 </div>
 
