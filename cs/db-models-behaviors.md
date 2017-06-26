@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Chování modelů (behaviors)</a> <ul>
+      <a href="#overview">Model Behaviors</a> <ul>
         <li>
           <a href="#timestampable">Timestampable</a>
         </li>
