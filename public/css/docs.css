@@ -26,7 +26,7 @@ body {
     position: relative;
 
     min-height: 100vh;
-    padding-bottom: 250px;
+    padding-bottom: 350px;
 }
 
 body>*:first-child {
@@ -710,7 +710,7 @@ td {
 
 /** article menu */
 
-.article-menu {
+/*.article-menu {
     float: right;
 
     width: 200px;
@@ -721,7 +721,20 @@ td {
     border-left: 1px solid #0a6278;
 
     font-size: 13px;
-    /*background: #eeeeee;*/
+    /*background: #eeeeee;
+}*/
+
+.article-menu {
+    position: absolute;
+    right: 125px;
+
+    width: 200px;
+    padding-top: 20px;
+    padding-left: 10px;
+
+    border-left: 1px solid #0a6278;
+
+    font-size: 13px;
 }
 
 .article-menu>ul {
@@ -762,18 +775,35 @@ td {
 }
 
 .article-content {
-    width: 500px;
+    width: 800px;
     margin: 35px auto;
 }
 
 footer .container {
-    width: 700px;
+    width: 800px;
     margin: 0 auto;
 }
 
 
 /*CONTAINERS RESPONSE*/
+@media screen and (max-width: 1600px) and (min-width: 320px) {
+    .article-menu {
+        right: 100px;
+    }
 
+}
+
+@media screen and (max-width: 1440px) and (min-width: 320px) {
+    .article-content {
+        width: 600px;
+        margin: 35px auto;
+    }
+    footer .container {
+        width: 650px;
+        margin: 0 auto;
+    }
+
+}
 
 /*SMALL SCREENS*/
 
@@ -785,20 +815,33 @@ footer .container {
         min-height: auto;
         padding-bottom: 0;
     }
+    .article-content {
+        width: 500px;
+    }
     footer .container {
         width: 550px;
-        margin: 0 auto;
     }
     .footer {
         position: relative;
     }
 }
 
+@media screen and (max-width: 1200px) and (min-width: 320px) {
+    .article-menu {
+        right: 0px;
+    }
+}
+
+
 @media screen and (max-width: 992px) and (min-width: 320px) {
     .article-content,
     footer .container {
-        width: 420px;
-        margin-left: 270px;
+        width: 520px;
+        margin-left: 233px;
+    }
+
+    .article-menu {
+        position: relative;
     }
 
 }
