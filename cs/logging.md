@@ -12,7 +12,7 @@
           <a href="#creating">Creating a Log</a>
         </li>
         <li>
-          <a href="#transactions">Transakce</a>
+          <a href="#transactions">Transactions</a>
         </li>
         <li>
           <a href="#multiple-handlers">Logging to Multiple Handlers</a>
