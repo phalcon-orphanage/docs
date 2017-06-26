@@ -1,12 +1,12 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">DevTools v Linuxu</a> <ul>
+      <a href="#overview">DevTools on Linux</a> <ul>
         <li>
-          <a href="#prerequisites">Požadavky</a>
+          <a href="#prerequisites">Prerequisites</a>
         </li>
         <li>
-          <a href="#installation">Instalace</a> <ul>
+          <a href="#installation">Installation</a> <ul>
             <li>
               <a href="#installation-linux">Linux</a>
             </li>
