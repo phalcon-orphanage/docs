@@ -1,21 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">CLI Uygulaması Oluşturma</a> <ul>
+      <a href="#creating-cli-application">Creating a CLI Application</a> <ul>
         <li>
-          <a href="#structure">Yapı</a>
+          <a href="#structure">Structure</a>
         </li>
         <li>
-          <a href="#creating-bootstrap">Bir Önyükleme Oluşturma</a>
+          <a href="#creating-bootstrap">Creating a Bootstrap</a>
         </li>
         <li>
-          <a href="#tasks">Görevler</a>
+          <a href="#tasks">Tasks</a>
         </li>
         <li>
-          <a href="#processing-action-parameters">Eylem parametrelerini işlemek</a>
+          <a href="#processing-action-parameters">Processing action parameters</a>
         </li>
         <li>
-          <a href="#running-tasks-chain">Bir zincirdeki görevleri çalıştırma</a>
+          <a href="#running-tasks-chain">Running tasks in a chain</a>
         </li>
       </ul>
     </li>
@@ -24,25 +24,25 @@
 
 <a name='creating-cli-application'></a>
 
-# Bir Komut Satırı (CLI) Uygulaması Oluşturma
+# Creating a Command Line (CLI) Application
 
-CLI uygulamaları komut satırından yürütülür. Bunlar, cron işleri, komut dosyaları, komut araçları ve daha fazlasını oluşturmak için yararlıdır.
+CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
 <a name='structure'></a>
 
 ## Structure
 
-CLI uygulamasının asgari bir yapısı şöyle görünecektir:
+A minimal structure of a CLI application will look like this:
 
 - `app/config/config.php`
 - `app/tasks/MainTask.php`
-- `app/cli.php` <-- ana önyükleme dosyası
+- `app/cli.php` <-- main bootstrap file
 
 <a name='creating-bootstrap'></a>
 
 ## Creating a Bootstrap
 
-Normal MVC uygulamalarında olduğu gibi, bir önyükleme dosyası, uygulamayı önyüklemek için kullanılır. Web uygulamalarında index.php önyükleme yerine, uygulamayı önyüklemek için bir cli.php dosyası kullanırız.
+As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
 
 Below is a sample bootstrap that is being used for this example.
 
@@ -53,11 +53,11 @@ use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Loader;
 
-// CLI uygulamamız için servis kapsayıcısı 
+// Using the CLI factory default services container
 $di = new CliDI();
 
 /**
- * Otomatik yükleyiciyi çağıralım ve görev dizinini kaydettirelim
+ * Register the autoloader and tell it to register the tasks directory
  */
 $loader = new Loader();
 
@@ -69,7 +69,7 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Ayar dosyasını yükleyelim (varsa)
+// Load the configuration file (if any)
 $configFile = __DIR__ . '/config/config.php';
 
 if (is_readable($configFile)) {
@@ -138,7 +138,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'Bu varsayılan görev ve varsayılan eylemdir' . PHP_EOL;
+        echo 'This is the default task and the default action' . PHP_EOL;
     }
 }
 ```
@@ -160,7 +160,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'Bu varsayılan görev ve varsayılan eylemdir' . PHP_EOL;
+        echo 'This is the default task and the default action' . PHP_EOL;
     }
 
     /**
@@ -168,24 +168,24 @@ class MainTask extends Task
      */
     public function testAction(array $params)
     {
-        echo sprintf('merhaba %s', $params[0]);
+        echo sprintf('hello %s', $params[0]);
 
         echo PHP_EOL;
 
-        echo sprintf('saygılarımla, %s', $params[1]);
+        echo sprintf('best regards, %s', $params[1]);
 
         echo PHP_EOL;
     }
 }
 ```
 
-Daha sonra aşağıdaki komutu çalıştırabiliriz:
+We can then run the following command:
 
 ```bash
-php app/cli.php main test dünya evren
+php app/cli.php main test world universe
 
-merhaba dünya
-saygılarımla, evren
+hello world
+best regards, universe
 ```
 
 <a name='running-tasks-chain'></a>
@@ -227,7 +227,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo "Bu varsayılan görev ve varsayılan eylemdir" . PHP_EOL;
+        echo "This is the default task and the default action" . PHP_EOL;
 
         $this->console->handle(
             [
@@ -239,7 +239,7 @@ class MainTask extends Task
 
     public function testAction()
     {
-        echo "Ben de ekrana basılmış olacağım!" . PHP_EOL;
+        echo "I will get printed too!" . PHP_EOL;
     }
 }
 ```

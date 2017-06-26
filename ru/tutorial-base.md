@@ -1,44 +1,44 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#basic">Урок: Основы</a> <ul>
+      <a href="#basic">Tutorial - basic</a> <ul>
         <li>
-          <a href="#file-structure">Структура файлов</a>
+          <a href="#file-structure">File structure</a>
         </li>
         <li>
-          <a href="#bootstrap">Начальная загрузка</a> <ul>
+          <a href="#bootstrap">Bootstrap</a> <ul>
             <li>
-              <a href="#autoloaders">Автозагрузка</a>
+              <a href="#autoloaders">Autoloaders</a>
             </li>
             <li>
-              <a href="#dependency-management">Управление зависимостями</a>
+              <a href="#dependency-management">Dependency Management</a>
             </li>
             <li>
-              <a href="#request">Обработка входящих запросов</a>
+              <a href="#request">Handling the application request</a>
             </li>
             <li>
-              <a href="#full-example">Соберём все компоненты вместе</a>
+              <a href="#full-example">Putting everything together</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#controller">Создание контроллера</a>
+          <a href="#controller">Creating a Controller</a>
         </li>
         <li>
-          <a href="#view">Отправка выходных данных в представление</a>
+          <a href="#view">Sending output to a view</a>
         </li>
         <li>
-          <a href="#signup-form">Проектирование формы регистрации</a>
+          <a href="#signup-form">Designing a sign up form</a>
         </li>
         <li>
-          <a href="#model">Создание модели</a>
+          <a href="#model">Creating a Model</a>
         </li>
         <li>
-          <a href="#database-connection">Настройка соединения с базой данных</a>
+          <a href="#database-connection">Setting a Database Connection</a>
         </li>
         <li>
-          <a href="#storing-data">Сохранение данных при работе с моделями</a>
+          <a href="#storing-data">Storing data using models</a>
         </li>
         <li>
           <a href="#conclusion">Conclusion</a>
@@ -52,17 +52,17 @@
 
 # Tutorial - basic
 
-В этом примере рассмотрим создание приложения с простой формой регистрации “с нуля”. Также рассмотрим основные аспекты поведения фреймворка. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/[[language]]/[[version]]/developer-tools).
+Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/[[language]]/[[version]]/developer-tools).
 
-Лучше всего следовать данному руководству шаг за шагом. Полный код можно посмотреть [здесь](https://github.com/phalcon/tutorial).
+The best way to use this guide is to follow each step in turn. You can get the complete code [here](https://github.com/phalcon/tutorial).
 
 <a name='file-structure'></a>
 
 ## File structure
 
-Phalcon не обязывает использовать определенную структуру каталогов. Ввиду слабой связанности фреймворка, вы можете использовать любую удобную структуру.
+Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
 
-В качестве отправной точки для данного урока мы предлагаем следующую структуру:
+For the purposes of this tutorial and as a starting point, we suggest this very simple structure:
 
 ```bash
 tutorial/
@@ -76,7 +76,7 @@ tutorial/
     js/
 ```
 
-Обратите внимание на то, что вам не нужны директории с библиотеками, относящимися к фреймворку. Он полностью находится в памяти и все время готов к использованию.
+Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
 
 Before continuing, please be sure you've successfully [installed Phalcon](/[[language]]/[[version]]/installation) and have setup either [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
 
@@ -290,7 +290,7 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
-        echo '<h1>Привет!</h1>';
+        echo '<h1>Hello!</h1>';
     }
 }
 ```
@@ -308,7 +308,7 @@ Congratulations, you're phlying with Phalcon!
 Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
 
 ```php
-<?php echo "<h1>Привет!</h1>";
+<?php echo "<h1>Hello!</h1>";
 ```
 
 Our controller (`app/controllers/IndexController.php`) now has an empty action definition:
@@ -575,4 +575,4 @@ Additional validation happens automatically on fields that are defined as not nu
 
 ## Conclusion
 
-На этом очень простом руководстве можно увидеть, как легко начать создавать приложения с помощью Phalcon. То, что Phalcon является расширением, никак не влияет на сложность разработки и доступные возможности. Мы приглашаем вас продолжить читать данное руководство для изучения дополнительных возможностей, которые предоставляет Phalcon!
+This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon. The fact that Phalcon is an extension on your web server has not interfered with the ease of development or features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!

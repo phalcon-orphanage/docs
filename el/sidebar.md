@@ -1,7 +1,7 @@
-- [Γενικά](/[[language]]/[[version]]/introduction) 
-    - [Σημειώσεις έκδοσης](/[[language]]/[[version]]/release-notes)
-    - Αναβάθμιση
-    - [Σπόνσορες](/[[language]]/[[version]]/sponsors)
+- [General](/[[language]]/[[version]]/introduction) 
+    - [Release Notes](/[[language]]/[[version]]/release-notes)
+    - Upgrade
+    - [Sponsors](/[[language]]/[[version]]/sponsors)
 - Contributions 
     - [Overview](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
@@ -9,27 +9,27 @@
     - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
     - [Reproducible Tests](/[[language]]/[[version]]/reproducible-tests)
     - Testing guide
-- Ξεκινώντας 
-    - [Εγκατάσταση](/[[language]]/[[version]]/installation)
+- Getting Started 
+    - [Installation](/[[language]]/[[version]]/installation)
     - [Webserver Setup](/[[language]]/[[version]]/webserver-setup) 
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
-- Περιβάλλοντα 
+- Environments 
     - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)
-- Εργαλεία ανάπτυξης 
-    - [Εγκατάσταση](/[[language]]/[[version]]/devtools-installation)
-    - [Χρήση](/[[language]]/[[version]]/devtools-usage)
-    - [Εντοπισμός σφαλμάτων](/[[language]]/[[version]]/debug)
-- Πυρήνας 
-    - Εφαρμογή 
-        - [Πλήρης](/[[language]]/[[version]]/application)
+- Development Tools 
+    - [Installation](/[[language]]/[[version]]/devtools-installation)
+    - [Usage](/[[language]]/[[version]]/devtools-usage)
+    - [Debug](/[[language]]/[[version]]/debug)
+- Core 
+    - Application 
+        - [Full](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
         - [Cli](/[[language]]/[[version]]/application-cli)
     - [DI Container](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
-- Υπηρεσίες 
+- Services 
     - [Cache](/[[language]]/[[version]]/cache)
     - [Config](/[[language]]/[[version]]/config)
     - [Escaper](/[[language]]/[[version]]/escaper)
@@ -38,19 +38,19 @@
     - [Logging](/[[language]]/[[version]]/logging) 
         - [Adapters](/[[language]]/[[version]]/logging#usage)
     - [Queue](/[[language]]/[[version]]/queue)
-- Βάση δεδομένων 
-    - [Στρώμα](/[[language]]/[[version]]/db-layer)
+- Database 
+    - [Layer](/[[language]]/[[version]]/db-layer)
     - [PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
-    - [Μοντέλα](/[[language]]/[[version]]/db-models) 
-        - [Για προχωρημένους](/[[language]]/[[version]]/db-models-advanced)
-        - [Συμπεριφορές](/[[language]]/[[version]]/db-models-behaviors)
+    - [Models](/[[language]]/[[version]]/db-models) 
+        - [Advanced](/[[language]]/[[version]]/db-models-advanced)
+        - [Behaviors](/[[language]]/[[version]]/db-models-behaviors)
         - [Cache](/[[language]]/[[version]]/db-models-cache)
         - [Events](/[[language]]/[[version]]/db-models-events)
-        - [Μεταδεδομένα](/[[language]]/[[version]]/db-models-metadata)
-        - [Σχέσεις](/[[language]]/[[version]]/db-models-relationships)
-        - [Συναλλαγές](/[[language]]/[[version]]/db-models-transactions)
-        - [Επικυρωτές](/[[language]]/[[version]]/db-models-validation)
+        - [Metadata](/[[language]]/[[version]]/db-models-metadata)
+        - [Relationships](/[[language]]/[[version]]/db-models-relationships)
+        - [Transactions](/[[language]]/[[version]]/db-models-transactions)
+        - [Validators](/[[language]]/[[version]]/db-models-validation)
     - [Migrations](/[[language]]/[[version]]/db-migrations)
     - [Pagination](/[[language]]/[[version]]/db-pagination)
 - Front End 
