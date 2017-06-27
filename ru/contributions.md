@@ -1,29 +1,29 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#contributing">Contributing to Phalcon</a> <ul>
+      <a href="#contributing">Вклад в Phalcon</a> <ul>
         <li>
-          <a href="#contributions">Contributions</a>
+          <a href="#contributions">Вклад</a>
         </li>
         <li>
-          <a href="#questions-and-support">Questions and Support</a>
+          <a href="#questions-and-support">Вопросы и ответы</a>
         </li>
         <li>
-          <a href="#bug-report-checklist">Bug Report Checklist</a> <ul>
+          <a href="#bug-report-checklist">Контрольный список отчета об ошибках</a> <ul>
             <li>
-              <a href="#bug-report-generating-backtrace">Generating a backtrace</a>
+              <a href="#bug-report-generating-backtrace">Генерация трассировки</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#pull-request-checklist">Pull Request Checklist</a>
+          <a href="#pull-request-checklist">Контрольный список пулл реквеста</a>
         </li>
         <li>
-          <a href="#getting-support">Getting Support</a>
+          <a href="#getting-support">Получение поддержки</a>
         </li>
         <li>
-          <a href="#requesting-features">Requesting Features</a>
+          <a href="#requesting-features">Предложение идей</a>
         </li>
       </ul>
     </li>
@@ -34,7 +34,7 @@
 
 # Contributing to Phalcon
 
-Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!.
+Phalcon является проектом с открытым кодом и сильно зависит от добровольных усилий. Мы приветствуем вклады от всех!.
 
 Please take a moment to review this document in order to make the contribution process easy and effective all.
 
