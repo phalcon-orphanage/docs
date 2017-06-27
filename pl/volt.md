@@ -499,13 +499,13 @@ Comments may also be added to a template using the `{# ... #}` delimiters. All t
 
 ## List of Control Structures
 
-Volt provides a set of basic but powerful control structures for use in templates:
+Volt zawiera zestaw prostych, ale bardzo użytecznych struktur do użycia w szablonach:
 
 <a name='control-structures-for'></a>
 
 ### For
 
-Loop over each item in a sequence. The following example shows how to traverse a set of 'robots' and print his/her name:
+Iteruje każdy element w sekwencji. Poniższy przykład pokazuje, jak przechodzi przez kolekcję z 'robotów' i wyświetla ich imię:
 
 ```twig
 <h1>Robots</h1>
@@ -518,7 +518,7 @@ Loop over each item in a sequence. The following example shows how to traverse a
 </ul>
 ```
 
-for-loops can also be nested:
+pętle for mogą być również zagnieżdżone:
 
 ```twig
 <h1>Robots</h1>
