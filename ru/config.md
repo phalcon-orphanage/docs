@@ -83,12 +83,12 @@ $config = new Config($settings);
 
 The adapters available are:
 
-| Class                            | Description                                                                                      |
-| -------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `Phalcon\Config\Adapter\Ini`  | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
-| `Phalcon\Config\Adapter\Json` | Uses JSON files to store settings.                                                               |
-| `Phalcon\Config\Adapter\Php`  | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
-| `Phalcon\Config\Adapter\Yaml` | Uses YAML files to store settings.                                                               |
+| Class                         | Description                                                                                         |
+| ----------------------------- | --------------------------------------------------------------------------------------------------- |
+| `Phalcon\Config\Adapter\Ini`  | Использует INI-файлы для хранения конфигурации. Использует PHP-функцию `parse_ini_file`.            |
+| `Phalcon\Config\Adapter\Json` | Использует JSON-файлы для хранения конфигурации.                                                    |
+| `Phalcon\Config\Adapter\Php`  | Использует многомерные PHP-массивы для хранения конфигурации. Этот адаптер наиболее производителен. |
+| `Phalcon\Config\Adapter\Yaml` | Использует YAML-файлы для хранения конфигурации.                                                    |
 
 <a name='ini-files'></a>
 

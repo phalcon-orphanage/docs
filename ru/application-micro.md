@@ -1291,11 +1291,11 @@ The presence of a `Phalcon\Events\Manager` is essential for middleware to operat
 
 Middleware can be attached to a micro application in 3 different events. Those are:
 
-| Event  | Description                                    |
-| ------ | ---------------------------------------------- |
-| before | Before the handler has been executed           |
-| after  | After the handler has been executed            |
-| final  | After the response has been sent to the caller |
+| Событие | Description                                    |
+| ------- | ---------------------------------------------- |
+| before  | Before the handler has been executed           |
+| after   | After the handler has been executed            |
+| final   | After the response has been sent to the caller |
 
 <h5 class='alert alert-warning'>You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.</h5>
 

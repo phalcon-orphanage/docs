@@ -544,7 +544,7 @@ class AssetsController extends ControllerBase
         $contentType = $type == 'js' ? 'application/javascript' : 'text/css';
         $response->setContentType($contentType, 'UTF-8');
 
-        // Check collection existence
+        // Проверяем коллекцию на существование
         if (!$this->assets->exists($collectionName)) {
             return $response->setStatusCode(404, 'Not Found');
         }
