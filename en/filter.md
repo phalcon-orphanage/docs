@@ -37,6 +37,7 @@ The following are the built-in filters provided by this component:
 | striptags | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function |
 | trim      | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function             |
 | lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function |
+| url       | Remove all characters except letters, digits and `|`$-_.+!*'(),{}[]<>#%";/?:@&=.^~\\`   |
 | upper     | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function |
 
 <a name='sanitizing'></a>

@@ -14,6 +14,7 @@
         - [Create/Update with Confidence](#create-update-with-confidence)
     - [Deleting Records](#delete-records)
     - [Hydration Modes](#hydration-modes)
+    - [Table prefixes](#table-prefixes)
     - [Auto-generated identity columns](#identity-columns)
     - [Skipping Columns](#skipping-columns)
     - [Dynamic Updates](#dynamic-updates)
@@ -1179,7 +1180,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-Hydration mode can also be passed as a parameter of 'find':
+Hydration mode can also be passed as a parameter of `find`:
 
 ```php
 <?php
@@ -1196,6 +1197,26 @@ $robots = Robots::find(
 foreach ($robots as $robot) {
     echo $robot['year'], PHP_EOL;
 }
+```
+<a name='table-prefixes'></a>
+## Table prefixes
+If you want all your tables to have certain prefix and without setting source in all models you can use the  `Phalcon\Mvc\Model\Manager` and the method `setModelPrefix()`:
+  
+```php
+<?php
+
+use Phalcon\Mvc\Model\Manager;
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+
+}
+
+$manager = new Manager();
+$manager->setModelPrefix('wp_');
+$robots = new Robots(null, null, $manager);
+echo $robots->getSource(); // will return wp_robots
 ```
 
 <a name='identity-columns'></a>
@@ -1657,14 +1678,27 @@ Model::setup(
 
 The available options are:
 
-| Option              | Description                                                                             | Default |
-| ------------------- | --------------------------------------------------------------------------------------- | :-----: |
-| events              | Enables/Disables callbacks, hooks and event notifications from all the models           | `true`  |
-| columnRenaming      | Enables/Disables the column renaming                                                    | `true`  |
-| notNullValidations  | The ORM automatically validate the not null columns present in the mapped table         | `true`  |
-| virtualForeignKeys  | Enables/Disables the virtual foreign keys                                               | `true`  |
-| phqlLiterals        | Enables/Disables literals in the PHQL parser                                            | `true`  |
-| lateStateBinding    | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method | `false` |
+| Option                | Description                                                                             | Default |
+| --------------------- | --------------------------------------------------------------------------------------- | :-----: |
+| astCache              | Enables/Disables callbacks, hooks and event notifications from all the models           | `null`  |
+| cacheLevel            | Sets the cache level for the ORM                                                        | `3`     |
+| castOnHydrate         |                                                                                         | `false` |
+| columnRenaming        | Enables/Disables the column renaming                                                    | `true`  |
+| disableAssignSetters  |                                                                                         | `false` |
+| enableImplicitJoins   |                                                                                         | `true`  |
+| enableLiterals        |                                                                                         | `true`  |
+| escapeIdentifiers     |                                                                                         | `true`  |
+| events                | Enables/Disables callbacks, hooks and event notifications from all the models           | `true`  |
+| exceptionOnFailedSave | Enables/Disables throwing an exception when there is a failed `save()`                  | `false` |
+| forceCasting          |                                                                                         | `false` |
+| ignoreUnknownColumns  |                                                                                         | `false` |
+| lateStateBinding      | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method | `false` |
+| notNullValidations    | The ORM automatically validate the not null columns present in the mapped table         | `true`  |
+| parserCache           |                                                                                         | `null`  |
+| phqlLiterals          | Enables/Disables literals in the PHQL parser                                            | `true`  |
+| uniqueCacheId         |                                                                                         | `3`     |
+| updateSnapshotOnSave  | Enables/Disables updating snapshots on `save()`                                         | `true`  |
+| virtualForeignKeys    | Enables/Disables the virtual foreign keys                                               | `true`  |
 
 <a name='stand-alone-component'></a>
 ## Stand-Alone component
