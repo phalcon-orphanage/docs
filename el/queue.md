@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Queueing</a> <ul>
+      <a href="#overview">Χρησημοποίηση Ουρών</a> <ul>
         <li>
           <a href="#put-jobs-in-queue">Putting Jobs into the Queue</a>
         </li>
