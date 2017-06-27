@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#working-with">Working with Models</a> <ul>
+      <a href="#working-with">Работа с моделями</a> <ul>
         <li>
-          <a href="#creating">Creating Models</a> <ul>
+          <a href="#creating">Создание моделей</a> <ul>
             <li>
               <a href="#properties-setters-getters">Public properties vs. Setters/Getters</a>
             </li>
@@ -96,7 +96,7 @@ A model represents the information (data) of the application and the rules to ma
 
 ## Creating Models
 
-A model is a class that extends from `Phalcon\Mvc\Model`. Its class name should be in camel case notation:
+Модель — это класс, который унаследован от `Phalcon\Mvc\Model`. Имя класса должно быть в camel case:
 
 ```php
 <?php
@@ -265,10 +265,10 @@ You could find a certain record by its primary key and then print its name:
 
 use Store\Toys\Robots;
 
-// Find record with id = 3
+// Поиск записи с id = 3
 $robot = Robots::findFirst(3);
 
-// Prints 'Terminator'
+// Вывод 'Terminator'
 echo $robot->name;
 ```
 
@@ -1753,14 +1753,14 @@ Model::setup(
 
 The available options are:
 
-| Option             | Description                                                                               | Default |
-| ------------------ | ----------------------------------------------------------------------------------------- |:-------:|
-| events             | Enables/Disables callbacks, hooks and event notifications from all the models             | `true`  |
-| columnRenaming     | Enables/Disables the column renaming                                                      | `true`  |
-| notNullValidations | The ORM automatically validate the not null columns present in the mapped table           | `true`  |
-| virtualForeignKeys | Enables/Disables the virtual foreign keys                                                 | `true`  |
-| phqlLiterals       | Enables/Disables literals in the PHQL parser                                              | `true`  |
-| lateStateBinding   | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method | `false` |
+| Option             | Description                                                                               | По умолчанию |
+| ------------------ | ----------------------------------------------------------------------------------------- |:------------:|
+| events             | Enables/Disables callbacks, hooks and event notifications from all the models             |    `true`    |
+| columnRenaming     | Enables/Disables the column renaming                                                      |    `true`    |
+| notNullValidations | The ORM automatically validate the not null columns present in the mapped table           |    `true`    |
+| virtualForeignKeys | Enables/Disables the virtual foreign keys                                                 |    `true`    |
+| phqlLiterals       | Enables/Disables literals in the PHQL parser                                              |    `true`    |
+| lateStateBinding   | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method |   `false`    |
 
 <a name='stand-alone-component'></a>
 
