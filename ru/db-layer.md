@@ -40,7 +40,7 @@
           <a href="#events">Database Events</a>
         </li>
         <li>
-          <a href="#profiling">Profiling SQL Statements</a>
+          <a href="#profiling">Профилирование SQL запросов</a>
         </li>
         <li>
           <a href="#logging-statements">Logging SQL Statements</a>
