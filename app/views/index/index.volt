@@ -19,8 +19,8 @@
 </head>
 
 <body class="with-top-navbar">
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid p-x-md">
         <div class="navbar-header">
             <button type="button"
                     class="navbar-toggle collapsed"
@@ -33,10 +33,11 @@
             </button>
             <a class="navbar-brand phalcon-logo" href="{{ url() }}">
                 <span itemprop="name" class="sr-only">Phalcon Framework</span>
+                <img src="//static.phalconphp.com/www/images/phalcon1.png" alt="Phalcon Logo">
             </a>
         </div>
         <div class="navbar-collapse collapse" id="navbar-collapse-main">
-            <ul class="nav navbar-nav navbar-right m-r-0 hidden-xs">
+            <ul class="nav navbar-nav navbar-right m-r-0">
                 <li class="dropdown">
                     <a href="javascript:;"
                        class="dropdown-toggle"
@@ -103,27 +104,34 @@
                         Support Us
                     </a>
                 </li>
+                <li>
+                    <a href="https://phalcon.link/fund" class="btn btn-xs btn-success">
+                        DOWNLOAD
+                    </a>
+                </li>
             </ul>
             <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
-                <a href="https://phalcon.link/contribute" class="header-nav-link">
-                    Contribute
-                </a>
+                <div class="doc-menu">
+                    <h4>Doc menu</h4>
+                    {{ sidebar }}
+                </div>
             </ul>
         </div>
     </div>
 </nav>
-<div class="container-fluid">
+<div class="container-fluid article-page-wrap">
     <div class="row">
-        <div class="col-md-2 sidebar">
+        <div class="col-md-2 sidebar hidden-xs">
             {{ sidebar }}
         </div>
-        <div class="col-md-10" id="articles">
-            {{ article }}
+        <div class="m-t-md m-b-lg" id="articles">
+            <div class="article-content">
+                {{ article }}
+            </div>
         </div>
+        {%- include "include/footer.volt" -%}
     </div>
 </div>
-
-{%- include "include/footer.volt" -%}
 
 {{- assets.outputJs('footer_js') -}}
 
