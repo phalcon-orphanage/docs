@@ -55,7 +55,7 @@
           <a href="#raw-sql">Using Raw SQL</a>
         </li>
         <li>
-          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#troubleshooting">Устранение неполадок</a>
         </li>
       </ul>
     </li>
