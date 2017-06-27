@@ -500,7 +500,7 @@ The events available in Phalcon are:
 | Loader             | `loader:beforeCheckClass`           |
 | Loader             | `loader:beforeCheckPath`            |
 | Loader             | `loader:pathFound`                  |
-| Micro              | `micro:afterHandleRoute`            |
+| Микро              | `micro:afterHandleRoute`            |
 | Micro              | `micro:afterExecuteRoute`           |
 | Micro              | `micro:beforeExecuteRoute`          |
 | Micro              | `micro:beforeHandleRoute`           |
