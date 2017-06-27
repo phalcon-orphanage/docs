@@ -1,62 +1,62 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-micro-application">Creating a Micro Application</a>
+      <a href="#creating-micro-application">Создание микроприложения</a>
     </li>
     <li>
-      <a href="#routing">Routing</a> <ul>
+      <a href="#routing">Маршрутизация</a> <ul>
         <li>
-          <a href="#routing-setup">Setup</a> <ul>
+          <a href="#routing-setup">Настройка</a> <ul>
             <li>
-              <a href="#routing-setup-application">Application object</a>
+              <a href="#routing-setup-application">Объект приложения</a>
             </li>
             <li>
-              <a href="#routing-setup-router">Router object</a>
+              <a href="#routing-setup-router">Объект Router</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#rewrite-rules">Rewrite Rules</a>
+          <a href="#rewrite-rules">Правила перезаписи</a>
         </li>
         <li>
-          <a href="#routing-handlers">Handlers</a> <ul>
+          <a href="#routing-handlers">Обработчики</a> <ul>
             <li>
-              <a href="#routing-handlers-definitions">Definitions</a> <ul>
+              <a href="#routing-handlers-definitions">Определения</a> <ul>
                 <li>
-                  <a href="#routing-handlers-anonymous-function">Anonymous Function</a>
+                  <a href="#routing-handlers-anonymous-function">Анонимная функция</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-function">Function</a>
+                  <a href="#routing-handlers-function">Функция</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-static-method">Static Method</a>
+                  <a href="#routing-handlers-static-method">Статический метод</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-object-method">Method in an Object</a>
+                  <a href="#routing-handlers-object-method">Метод объекта</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-controllers">Controllers</a>
+                  <a href="#routing-handlers-controllers">Контроллеры</a>
                 </li>
               </ul>
             </li>
             
             <li>
-              <a href="#routing-handlers-controllers-lazy-loading">Lazy Loading</a> <ul>
+              <a href="#routing-handlers-controllers-lazy-loading">Загрузка по требованию</a> <ul>
                 <li>
-                  <a href="#routing-handlers-controllers-lazy-loading-use-case">Use case</a>
+                  <a href="#routing-handlers-controllers-lazy-loading-use-case">Сценарий использования</a>
                 </li>
               </ul>
             </li>
             
             <li>
-              <a href="#routing-handlers-not-found">Not Found (404)</a>
+              <a href="#routing-handlers-not-found">Не найдено (404)</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#routing-verbs">Methods - Verbs</a> <ul>
+          <a href="#routing-verbs">Методы-глаголы</a> <ul>
             <li>
               <a href="#routing-verb-delete">delete</a>
             </li>
@@ -85,42 +85,42 @@
         </li>
         
         <li>
-          <a href="#routing-collections">Collections</a>
+          <a href="#routing-collections">Коллекции</a>
         </li>
         <li>
-          <a href="#routing-parameters">Parameters</a>
+          <a href="#routing-parameters">Параметры</a>
         </li>
         <li>
-          <a href="#routing-redirections">Redirections</a>
+          <a href="#routing-redirections">Перенаправления</a>
         </li>
         <li>
-          <a href="#routing-urls-for-routes">URLs for Routes</a>
+          <a href="#routing-urls-for-routes">Адреса для маршрутов</a>
         </li>
       </ul>
     </li>
     
     <li>
-      <a href="#dependency-injector">Dependency Injector</a>
+      <a href="#dependency-injector">Внедрение зависимостей</a>
     </li>
     <li>
-      <a href="#responses">Responses</a> <ul>
+      <a href="#responses">Ответы</a> <ul>
         <li>
-          <a href="#responses-direct-output">Direct output</a>
+          <a href="#responses-direct-output">Прямой вывод</a>
         </li>
         <li>
-          <a href="#responses-include">Including another file</a>
+          <a href="#responses-include">Подключение внешнего файла</a>
         </li>
         <li>
-          <a href="#responses-direct-output-json">Direct output JSON</a>
+          <a href="#responses-direct-output-json">Возврат JSON</a>
         </li>
         <li>
-          <a href="#responses-new-response-object">New Response object</a>
+          <a href="#responses-new-response-object">Новый объект Response</a>
         </li>
         <li>
-          <a href="#responses-application-response">Application Response</a>
+          <a href="#responses-application-response">Общий объект Response</a>
         </li>
         <li>
-          <a href="#responses-return-application-response">Return Application Response</a>
+          <a href="#responses-return-application-response">Объект Response как возвращаемое значение</a>
         </li>
         <li>
           <a href="#responses-json">JSON</a>
@@ -131,12 +131,12 @@
     <li>
       <a href="#events">Events</a> <ul>
         <li>
-          <a href="#events-available-events">Available events</a> <ul>
+          <a href="#events-available-events">Доступные события</a> <ul>
             <li>
-              <a href="#events-available-events-authentication">Authentication example</a>
+              <a href="#events-available-events-authentication">Пример: Аутентификация</a>
             </li>
             <li>
-              <a href="#events-available-events-not-found">Not found example</a>
+              <a href="#events-available-events-not-found">Пример: Страница не найдена</a>
             </li>
           </ul>
         </li>
@@ -146,7 +146,7 @@
     <li>
       <a href="#middleware">Middleware</a> <ul>
         <li>
-          <a href="#middleware-attached-events">Attached events</a> <ul>
+          <a href="#middleware-attached-events">Прикрепленные события</a> <ul>
             <li>
               <a href="#middleware-attached-events-before">before</a>
             </li>
@@ -160,32 +160,32 @@
         </li>
         
         <li>
-          <a href="#middleware-implementation">Implementation</a>
+          <a href="#middleware-implementation">Реализация</a>
         </li>
         <li>
           <a href="#middleware-setup">Setup</a>
         </li>
         <li>
-          <a href="#middleware-events">Events in Middleware</a> <ul>
+          <a href="#middleware-events">События в Middleware</a> <ul>
             <li>
-              <a href="#middleware-events-api">API example</a> <ul>
+              <a href="#middleware-events-api">Пример реализации</a> <ul>
                 <li>
-                  <a href="#middleware-events-api-firewall">Firewall Middleware</a>
+                  <a href="#middleware-events-api-firewall">Firewall</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-not-found">Not Found Middleware</a>
+                  <a href="#middleware-events-api-not-found">Не найдено</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-redirect">Redirect Middleware</a>
+                  <a href="#middleware-events-api-redirect">Перенаправление</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-cors">CORS Middleware</a>
+                  <a href="#middleware-events-api-cors">CORS</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-request">Request Middleware</a>
+                  <a href="#middleware-events-api-request">Запрос</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-response">Response Middleware</a>
+                  <a href="#middleware-events-api-response">Ответ</a>
                 </li>
               </ul>
             </li>
@@ -195,25 +195,25 @@
     </li>
     
     <li>
-      <a href="#models">Models</a>
+      <a href="#models">Модели</a>
     </li>
     <li>
-      <a href="#model-instances">Injecting Model Instances</a>
+      <a href="#model-instances">Внедрение моделей</a>
     </li>
     <li>
-      <a href="#views">Views</a>
+      <a href="#views">Представления</a>
     </li>
     <li>
-      <a href="#error-handling">Error Handling</a>
+      <a href="#error-handling">Обработка ошибок</a>
     </li>
   </ul>
 </div>
 
-# Micro Applications
+# Микроприложения
 
-Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code.
+Phalcon предлагает очень "тонкое" приложение, так что можно создавать "Микроприложения" минимальными усилиями.
 
-Micro applications are suitable for small applications that will have very low overhead. Such applications are for instance our [website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
+Микро приложения подходят для небольших приложений, которые будут иметь очень низкие накладные расходы. Например, наш [веб-сайт](https://github.com/phalcon/website), этот веб-сайт ([документация](https://github.com/phalcon/docs)), наш [магазин](https://github.com/phalcon/store), API, прототипы и т.д.
 
 ```php
 <?php
@@ -225,7 +225,7 @@ $app = new Micro();
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 );
 
@@ -250,10 +250,10 @@ $app = new Micro();
 
 ## Routing
 
-Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are defined as follows:
+Указание маршрутов в приложении `Phalcon\Mvc\Micro` очень простое. Маршруты, определяются следующим образом:
 
 ```text
-   Application -> (method/verb) -> (route url/regex, callable PHP function)
+   Приложение -> (метод/глагол) -> (url адрес/регулярное выражение, вызываемая функция PHP)
 ```
 
 <a name='routing-setup'></a>
@@ -264,12 +264,12 @@ Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[v
 
 <h5 class='alert alert-warning'>Routes must always start with <code>/</code></h5>
 
-Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
+Обычно, `/` является стартовым маршрутом приложения, и в большинстве случаев осуществляется через метод GET протокола HTTP:
 
 ```php
 <?php
 
-// This is the start route
+// Это стартовый маршрут
 $app->get(
     '/',
     function () {
@@ -282,14 +282,14 @@ $app->get(
 
 ### Application object
 
-Routes can be set using the `Phalcon\Mvc\Micro` application object as follows:
+Маршруты можно задать используя экземпляр объекта-приложения `Phalcon\Mvc\Micro` следующим образом:
 
 ```php
 use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Matches a GET request
+// Соответствия для GET запроса
 $app->get(
     '/orders/display/{name}',
     function ($name) {
@@ -302,7 +302,7 @@ $app->get(
 
 ### Router object
 
-You can also create a `Phalcon\Mvc\Router` object, setting the routes there and then injecting it in the dependency injection container.
+Вы также можете задать маршруты создав экземпляр объекта `Phalcon\Mvc\Router`, настроив с его помощью маршруты, а затем добавив его в контейнер зависимостей (инъекция).
 
 ```php
 use Phalcon\Mvc\Micro;
@@ -321,15 +321,15 @@ $app = new Micro();
 $app->setService('router', $router, true);
 ```
 
-Setting up your routes using the `Phalcon\Mvc\Micro` applications verb methods (`get`, `post`, etc.) is much easier than setting up a router object with relevant routes and then injecting it in the application.
+Настройка ваших маршрутов с помощью методов глаголов (`get`, `post` и т.д.) объекта-приложения `Phalcon\Mvc\Micro` гораздо проще, чем создание объекта маршрутизатора с соответствующими маршрутами и затем инъекцией в приложение.
 
-Each method has its advantages and disadvantages. It all depends on the design and needs of your application.
+Каждый из приведенных методов задания маршрутов имеет свои преимущества и недостатки. Все зависит от дизайна и потребностей вашего приложения.
 
 <a name='rewrite-rules'></a>
 
 ## Rewrite Rules
 
-In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
+Для того чтобы маршруты работали необходимо также внести изменения в конфигурацию, вашего, веб-сервера для, вашего, конкретного сайта.
 
 Those changes are outlined in the [rewrite rules](/[[language]]/[[version]]/rewrite-rules).
 
@@ -337,36 +337,36 @@ Those changes are outlined in the [rewrite rules](/[[language]]/[[version]]/rewr
 
 ## Handlers
 
-Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
+Обработчик — это вызываемая часть кода, которая "привязана" к маршруту. При совпадении с маршрутом, его обработчик выполняется с заданными параметрами. Обработчиком может быть любая вызываемая часть кода, которая существует в PHP.
 
 <a name='routing-handlers-definitions'></a>
 
 ### Definitions
 
-Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
+Phalcon предлагает несколько способов задания обработчика для маршрута. Потребности и дизайн вашего приложения, а также стиль кодирования будут влиять на ваш выбор способа.
 
 <a name='routing-handlers-anonymous-function'></a>
 
 #### Anonymous Function
 
-Finally we can use an anonymous function (as seen above) to handle the request
+Мы можем использовать анонимные функции (как показано ниже) для обработки запроса
 
 ```php
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 );
 ```
 
-Accessing the `$app` object inside the anonymous function can be achieved by injecting it as follows:
+Доступ к объекту `$app`, внутри анонимной функции может достигаться путем инъекций переменой следующим образом:
 
 ```php
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $context = "<h1>This is order: {$name}!</h1>";
+        $context = "<h1>Это заказ: {$name}!</h1>";
         $app->response->setContext($context);
         $app->response->send();
     }
@@ -377,12 +377,12 @@ $app->get(
 
 #### Function
 
-We can define a function as our handler and attach it to a specific route.
+Мы можем определить функцию как обработчик и прикрепить её к определенному маршруту.
 
 ```php
-// With a function
+// Определение функции
 function order_display($name) {
-    echo "<h1>This is order: {$name}!</h1>";
+    echo "<h1>Это заказа: {$name}!</h1>";
 }
 
 $app->get(
@@ -395,13 +395,13 @@ $app->get(
 
 #### Static Method
 
-We can also use a static method as our handler as follows:
+Также возможно использовать статический метод класса в качестве обработчика:
 
 ```php
 class OrdersClass
 {
     public static function display($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 }
 
@@ -415,13 +415,13 @@ $app->get(
 
 #### Method in an Object
 
-We can also use a method in an object:
+Мы также можем использовать метод экземпляра объекта:
 
 ```php
 class OrdersClass
 {
     public function display($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 }
 
@@ -439,9 +439,9 @@ $app->get(
 
 #### Controllers
 
-With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
+С `Phalcon\Mvc\Micro` вы можете создавать как микроприложения, так и средне-сложные приложения. Средне-сложные приложения используют микро-архитектуру, но расширяют её, таким образом являясь компромиссом между микро- и полноценными приложениями.
 
-In medium applications you can organize handlers in controllers.
+В средне-сложных приложениях вы можете организовывать обработчики в контроллеры.
 
 ```php
 <?php
@@ -450,22 +450,22 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $orders = new MicroCollection();
 
-// Set the main handler. ie. a controller instance
+// Установка главного обработчика, т.е. экземпляра контроллера
 $orders->setHandler(new OrdersController());
 
-// Set a common prefix for all routes
+// Установка основного префикса для всех маршрутов
 $orders->setPrefix('/orders');
 
-// Use the method 'index' in OrdersController
+// Использовать метод 'index' контроллера OrdersController
 $orders->get('/', 'index');
 
-// Use the method 'show' in OrdersController
+// Использовать метод 'show' контроллера OrdersController
 $orders->get('/display/{slug}', 'show');
 
 $app->mount($orders);
 ```
 
-The `OrdersController` might look like this:
+Контроллер `OrdersController` может выглядеть следующим образом:
 
 ```php
 <?php
@@ -514,9 +514,9 @@ class OrdersController extends Controller
 
 ### Lazy Loading
 
-In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
+Для повышения производительности, рассмотрите возможность реализации отложенной загрузки для ваших контроллеров (обработчиков). Контроллер будет загружен только для соответствующего маршрута.
 
-Lazy loading can be easily achieved when setting your handler in your `Phalcon\Mvc\Micro\Collection`:
+Отложенная загрузка может быть легко реализована если использовать `Phalcon\Mvc\Micro\Collection` для настройки обработчиков:
 
 ```php
 $orders->setHandler('OrdersController', true);
@@ -527,7 +527,7 @@ $orders->setHandler('Blog\Controllers\OrdersController', true);
 
 #### Use case
 
-We are developing an API for an online store. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
+Предположим мы занимаемся разработкой API для интернет-магазина. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
 
 The controllers that we use as handlers are as follows:
 
@@ -576,7 +576,7 @@ class ProductsController extends Controller
 }
 ```
 
-We register the handlers:
+Мы зарегистрировать обработчики:
 
 ```php
 <?php
@@ -648,7 +648,7 @@ Using this simple change in implementation, all handlers remain uninstantiated u
 
 <a name='routing-handlers-not-found'></a>
 
-### Not found (404)
+### Не найдено (404)
 
 Any route that has not been matched in our `Phalcon\Mvc\Micro` application will cause it to try and execute the handler defined with the `notFound` method. Similar to other methods/verbs (`get`, `post` etc.), you can register a handler in the `notFound` method which can be any callable PHP function.
 
@@ -673,13 +673,13 @@ You can also handle routes that have not been matched (404) with Middleware disc
 
 ## Methods - Verbs
 
-The `Phalcon\Mvc\Micro` application provides a set of methods to bind the HTTP method with the route it is intended to.
+Объект-приложение `Phalcon\Mvc\Micro` предоставляет следующий перечень методов для связки HTTP-метода с маршрутом.
 
 <a name='routing-verbs-delete'></a>
 
 ### delete
 
-Matches if the HTTP method is `DELETE` and the route is `/api/products/delete/{id}`
+Пример ниже сработает если HTTP-метод будет `DELETE` и маршрут соответствовать `/api/products/delete/{id}`
 
 ```php
     $app->delete(
@@ -692,7 +692,7 @@ Matches if the HTTP method is `DELETE` and the route is `/api/products/delete/{i
 
 ### get
 
-Matches if the HTTP method is `GET` and the route is `/api/products`
+Пример ниже сработает если HTTP-метод будет `GET`, а маршрут равен `/api/products`
 
 ```php
     $app->get(
@@ -1013,7 +1013,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
 
 $app = new Micro();
 
-// Setup the database service
+// Настройка сервиса базы данных
 $app['db'] = function () {
     return new MysqlAdapter(
         [
@@ -1869,7 +1869,7 @@ $app->handle();
 
 <a name='model-instances'></a>
 
-# Inject model instances
+# Внедрение моделей
 
 By using the `Phalcon\Mvc\Model\Binder` class you can inject model instances into your routes:
 
