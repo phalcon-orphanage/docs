@@ -68,7 +68,7 @@ If you can see the phalcon version in the `phpinfo()` output, congratulations!, 
 
 ## Screencast
 
-The following screencast is a step by step guide to install Phalcon on Windows:
+Το παρακάτω screencast είναι ένας βήμα προς βήμα οδηγός για να εγκαταστήσετε το Phalcon στα Windows:
 
 <div align="center">
   <iframe src="https://player.vimeo.com/video/40265988" 
