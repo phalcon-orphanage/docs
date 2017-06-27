@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Tutorial: Vökuró</a> <ul>
+      <a href="#overview">Σεμινάριο: Vökuró</a> <ul>
         <li>
           <a href="#structure">Project Structure</a>
         </li>
