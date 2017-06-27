@@ -1,30 +1,30 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Введение</a> <ul>
+      <a href="#overview">Overview</a> <ul>
         <li>
-          <a href="#using">Использование контроллеров</a>
+          <a href="#using">Using Controllers</a>
         </li>
         <li>
-          <a href="#dispatch-loop">Цикл работы</a>
+          <a href="#dispatch-loop">Dispatch Loop</a>
         </li>
         <li>
-          <a href="#initializing">Инициализация контроллеров</a>
+          <a href="#initializing">Initializing Controllers</a>
         </li>
         <li>
-          <a href="#injecting-services">Внедрение сервисов</a>
+          <a href="#injecting-services">Injecting Services</a>
         </li>
         <li>
-          <a href="#request-response">Запрос и ответ</a>
+          <a href="#request-response">Request and Response</a>
         </li>
         <li>
-          <a href="#session-data">Данные сессий</a>
+          <a href="#session-data">Session Data</a>
         </li>
         <li>
-          <a href="#services">Использование сервисов как контроллеров</a>
+          <a href="#services">Using Services as Controllers</a>
         </li>
         <li>
-          <a href="#events">События контроллеров</a>
+          <a href="#events">Events in Controllers</a>
         </li>
       </ul>
     </li>
@@ -39,21 +39,21 @@
 
 ## Using Controllers
 
-Контроллеры содержат в себе ряд методов, называемых действиями (в англоязычной литературе — actions). Действия контроллеров занимаются непосредственно обработкой запросов. По умолчанию все публичные методы контролеров доступны для доступа по URL. Действия отвечают за разбор запросов (request) и создание ответов (response). Как правило, результаты работы действий используются для представлений, но так же возможно их иное использование.
+Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
-Например, при обращении по ссылке: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon разберёт её и получит следующие части:
+For instance, when you access a URL like this: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon by default will decompose each part like this:
 
-| Description                  | Часть URL-адреса |
-| ---------------------------- | ---------------- |
-| **Директория с приложением** | blog             |
-| **Контроллер**               | posts            |
-| **Действие**                 | show             |
-| **Параметр**                 | 2015             |
-| **Parameter**                | the-post-title   |
+| Description           | Slug           |
+| --------------------- | -------------- |
+| **Phalcon Directory** | blog           |
+| **Controller**        | posts          |
+| **Action**            | show           |
+| **Parameter**         | 2015           |
+| **Parameter**         | the-post-title |
 
-Для этого случая запрос будет отправлен для обработки в контроллер `PostsController`. Для контроллеров нет какого-то специального места в приложении, они загружаются с помощью автозагрузки (например `Phalcon\Loader`), поэтому вы можете организовать их так, как вам необходимо.
+In this case, the `PostsController` will handle this request. There is no a special location to put controllers in an application, they could be loaded using `Phalcon\Loader`, so you're free to organize your controllers as you need.
 
-Контроллеры должны иметь суффикс `Controller`, а действия, соответственно, `Action`. Пример контроллера:
+Controllers must have the suffix `Controller` while actions the suffix `Action`. A sample of a controller is as follows:
 
 ```php
 <?php
@@ -74,9 +74,9 @@ class PostsController extends Controller
 }
 ```
 
-Дополнительные URI-параметры передаются в качестве параметров действия, таким образом, они легко могут быть получены как локальные переменные. Контроллер может наследоваться от `Phalcon\Mvc\Controller`, но это не обязательно. В таком случае он получает доступ к сервисам приложения.
+Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend `Phalcon\Mvc\Controller`. By doing this, the controller can have easy access to the application services.
 
-Параметры без значений по умолчанию являются обязательными. Установка значений по умолчанию производится обычным для PHP способом:
+Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
 
 ```php
 <?php
@@ -90,14 +90,14 @@ class PostsController extends Controller
 
     }
 
-    public function showAction($year = 2015, $postTitle = 'некоторое значение по умолчанию')
+    public function showAction($year = 2015, $postTitle = 'some default title')
     {
 
     }
 }
 ```
 
-Параметры присваиваются в том же порядке, в каком и были переданы. Получить доступ к произвольному параметру можно следующим образом:
+Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
 
 ```php
 <?php
@@ -123,7 +123,7 @@ class PostsController extends Controller
 
 ## Dispatch Loop
 
-Цикл работы диспетчера выполняется до тех пор, пока не останется действий для обработки. В примере выше выполняется лишь одно действие. Пример ниже показывает, как с использованием метода `forward()` можно обеспечить более сложный процесс диспетчеризации путём перенаправления потока выполнения на другой контроллер/действие.
+The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
 
 ```php
 <?php
@@ -140,10 +140,10 @@ class PostsController extends Controller
     public function showAction($year, $postTitle)
     {
         $this->flash->error(
-            "У вас недостаточно прав для выполнения этого действия"
+            "You don't have permission to access this area"
         );
 
-        // еренаправляем на другое действие
+        // Forward flow to another action
         $this->dispatcher->forward(
             [
                 'controller' => 'users',
@@ -154,7 +154,7 @@ class PostsController extends Controller
 }
 ```
 
-Если у пользователя недостаточно прав, он будет перенаправлен в контроллер `UsersController` для выполнения авторизации (действие `signin`).
+If users don't have permission to access a certain action then they will be forwarded to the `signin` action in the `UsersController`.
 
 ```php
 <?php
@@ -175,13 +175,13 @@ class UsersController extends Controller
 }
 ```
 
-Метод `forwards` может быть вызван неограниченное количество раз, приложение будет выполняться, пока не появится явный сигнал для завершения. Если действия, которые должны быть выполнены, в цикле диспетчера завершены, то диспетчер автоматически вызовет MVC слой отображения (View), управляемый компонентом `Phalcon\Mvc\View`.
+There is no limit on the `forwards` you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by `Phalcon\Mvc\View`.
 
 <a name='initializing'></a>
 
 ## Initializing Controllers
 
-`Phalcon\Mvc\Controller` предлагает метод `initialize()`, который автоматически выполняется первым, перед любым другим действием контроллера. Использование метода `__construct()` не рекомендуется.
+`Phalcon\Mvc\Controller` offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
 
 ```php
 <?php
@@ -208,9 +208,9 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Метод <code>initialize()</code> вызывается только в том случае, если событие <code>beforeExecuteRoute</code> выполнено успешно. Это позволяет избежать ситуации, когда логика приложения в инициализаторе не может быть выполнена без авторизации.</h5>
+<h5 class='alert alert-warning'>The <code>initialize()</code> method is only called if the <code>beforeExecuteRoute</code> event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
 
-Если вы все же хотите выполнить некоторую инициализацию после создания объекта контроллера, то можете реализовать метод `onConstruct()`:
+If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
 
 ```php
 <?php
@@ -226,13 +226,13 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Имейте в виду, что метод <code>onConstruct()</code> выполняется, даже если действие, которое должно быть выполнено, не существует в контроллере, или пользователь не имеет к нему доступа (контроль доступа обеспечивает разработчик).</h5>
+<h5 class='alert alert-warning'>Be aware that <code>onConstruct()</code> method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).</h5>
 
 <a name='injecting-services'></a>
 
 ## Injecting Services
 
-Если контроллер наследует `Phalcon\Mvc\Controller`, то он автоматически получает доступ к контейнеру сервисов приложения. Например, если мы зарегистрируем некий сервис следующим образом:
+If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
 
 ```php
 <?php
@@ -252,7 +252,7 @@ $di->set(
 );
 ```
 
-Доступ к этому сервису можно получить несколькими способами:
+Then, we can access that service in several ways:
 
 ```php
 <?php
@@ -263,31 +263,31 @@ class FilesController extends Controller
 {
     public function saveAction()
     {
-        // Внедрение сервиса по имени, используя его как свойство
+        // Injecting the service by just accessing the property with the same name
         $this->storage->save('/some/file');
 
-        // Доступ к сервису с использованием DI
+        // Accessing the service from the DI
         $this->di->get('storage')->save('/some/file');
 
-        // Ещё один способ — используя магический метод
+        // Another way to access the service using the magic getter
         $this->di->getStorage()->save('/some/file');
 
-        // Ещё больше магических методов для получения всей цепочки
+        // Another way to access the service using the magic getter
         $this->getDi()->getStorage()->save('/some/file');
 
-        // Используя синтаксис работы с массивами
+        // Using the array-syntax
         $this->di['storage']->save('/some/file');
     }
 }
 ```
 
-Если вы используете все возможности Phalcon, прочитайте о сервисах используемых [по умолчанию](/[[language]]/[[version]]/di).
+If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/[[language]]/[[version]]/di) in the framework.
 
 <a name='request-response'></a>
 
 ## Request and Response
 
-Давайте предположим, что фреймворк предоставляет набор предварительно зарегистрированных сервисов. В этом примере будет показано как работать с HTTP окружением. Сервис `request` содержит экземпляр `Phalcon\Http\Request`, а `response` — экземпляр `Phalcon\Http\Response`, являющийся тем, что должно быть отправлено клиенту.
+Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The `request` service contains an instance of `Phalcon\Http\Request` and the `response` contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
 
 ```php
 <?php
@@ -303,9 +303,9 @@ class PostsController extends Controller
 
     public function saveAction()
     {
-        // Проверяем, что данные пришли методом POST
+        // Check if request has made with POST
         if ($this->request->isPost()) {
-            // Получаем POST данные
+            // Access POST data
             $customerName = $this->request->getPost('name');
             $customerBorn = $this->request->getPost('born');
         }
@@ -313,7 +313,7 @@ class PostsController extends Controller
 }
 ```
 
-Объект ответа обычно не используется напрямую и создается до выполнения действия, но иногда, например, в событии `afterDispatch` может быть полезно работать с ответом напрямую:
+The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in an `afterDispatch` event - it can be useful to access the response directly:
 
 ```php
 <?php
@@ -329,19 +329,19 @@ class PostsController extends Controller
 
     public function notFoundAction()
     {
-        // Отправляем статус HTTP 404
+        // Send a HTTP 404 response header
         $this->response->setStatusCode(404, 'Not Found');
     }
 }
 ```
 
-Узнать больше о работе с HTTP окружением можно в соответствующих статьях [request](/[[language]]/[[version]]/request) и [response](/[[language]]/[[version]]/response).
+Learn more about the HTTP environment in their dedicated articles [request](/[[language]]/[[version]]/request) and [response](/[[language]]/[[version]]/response).
 
 <a name='session-data'></a>
 
 ## Session Data
 
-Сессии позволяют сохранять данные между запросами. Вы можете получить доступ к `Phalcon\Session\Bag` из любого контроллера, чтобы сохранить данные, которые должны быть постоянными:
+Sessions help us maintain persistent data between requests. You can access a `Phalcon\Session\Bag` from any controller to encapsulate data that needs to be persistent:
 
 ```php
 <?php
@@ -352,12 +352,12 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        $this->persistent->name = 'Михаил';
+        $this->persistent->name = 'Michael';
     }
 
     public function welcomeAction()
     {
-        echo 'Добро пожаловать, ', $this->persistent->name;
+        echo 'Welcome, ', $this->persistent->name;
     }
 }
 ```
@@ -366,12 +366,12 @@ class UserController extends Controller
 
 ## Using Services as Controllers
 
-Сервисы могут работать в качестве контроллеров, классы контроллеров первым делом запрашиваются у сервиса контейнеров. Соответственно любой класс, зарегистрированный под именем контроллера, легко может его заменить:
+Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
 
 ```php
 <?php
 
-// Регистрируем контроллер как сервис
+// Register a controller as a service
 $di->set(
     'IndexController',
     function () {
@@ -381,7 +381,7 @@ $di->set(
     }
 );
 
-// Регистрируем контроллер как сервис с использованием пространства имён
+// Register a namespaced controller as a service
 $di->set(
     'Backend\Controllers\IndexController',
     function () {
@@ -396,7 +396,7 @@ $di->set(
 
 ## Events in Controllers
 
-Контроллеры автоматически выступают в роли слушателей событий [диспетчера](/en/[[versopm]]/dispatcher), реализация методов с названиями событий позволяет выполнять какой-либо код до или после выполнения действия:
+Controllers automatically act as listeners for [dispatcher](/en/[[versopm]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
 ```php
 <?php
@@ -407,10 +407,10 @@ class PostsController extends Controller
 {
     public function beforeExecuteRoute($dispatcher)
     {
-        // Это выполняется перед каждым обнаруженным действием
+        // This is executed before every found action
         if ($dispatcher->getActionName() === 'save') {
             $this->flash->error(
-                "У вас нет разрешения на сохранение постов"
+                "You don't have permission to save posts"
             );
 
             $this->dispatcher->forward(
@@ -426,7 +426,7 @@ class PostsController extends Controller
 
     public function afterExecuteRoute($dispatcher)
     {
-        // Выполняется после каждого действия
+        // Executed after every found action
     }
 }
 ```

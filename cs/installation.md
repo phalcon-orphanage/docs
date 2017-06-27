@@ -18,7 +18,7 @@
             <li>
               <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a> <ul>
                 <li>
-                  <a href="#installation-linux-debian-repository">Instalace z repozitáře</a> <ul>
+                  <a href="#installation-linux-debian-repository">Repository installation</a> <ul>
                     <li>
                       <a href="#installation-linux-debian-repository-stable">Stable releases</a>
                     </li>
@@ -29,7 +29,7 @@
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-debian-phalcon">Instalace Phalcon frameworku</a> <ul>
+                  <a href="#installation-linux-debian-phalcon">Phalcon installation</a> <ul>
                     <li>
                       <a href="#installation-linux-debian-phalcon-php5">PHP 5.x</a>
                     </li>

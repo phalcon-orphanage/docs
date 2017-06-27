@@ -1,7 +1,7 @@
-- [Γενικά](/[[language]]/[[version]]/introduction) 
-    - [Σημειώσεις έκδοσης](/[[language]]/[[version]]/release-notes)
-    - Αναβάθμιση
-    - [Σπόνσορες](/[[language]]/[[version]]/sponsors)
+- [General](/[[language]]/[[version]]/introduction) 
+    - [Release Notes](/[[language]]/[[version]]/release-notes)
+    - Upgrade
+    - [Sponsors](/[[language]]/[[version]]/sponsors)
 - Contributions 
     - [Overview](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
@@ -14,7 +14,7 @@
     - [Webserver Setup](/[[language]]/[[version]]/webserver-setup) 
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
-- Περιβάλλοντα 
+- Environments 
     - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)

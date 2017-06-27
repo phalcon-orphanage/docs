@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#contributing">Συμβάλλοντας στο Phalcon</a> <ul>
+      <a href="#contributing">Contributing to Phalcon</a> <ul>
         <li>
-          <a href="#contributions">Συνεισφορές</a>
+          <a href="#contributions">Contributions</a>
         </li>
         <li>
           <a href="#questions-and-support">Questions and Support</a>

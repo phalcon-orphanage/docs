@@ -1,18 +1,18 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Безопасность</a> <ul>
+      <a href="#overview">Security</a> <ul>
         <li>
-          <a href="#hashing">Хэширование паролей</a>
+          <a href="#hashing">Password Hashing</a>
         </li>
         <li>
-          <a href="#csrf">Защита от Cross-Site Request Forgery (CSRF)</a>
+          <a href="#csrf">Cross-Site Request Forgery (CSRF) protection</a>
         </li>
         <li>
-          <a href="#setup">Настройка компонента</a>
+          <a href="#setup">Setting up the component</a>
         </li>
         <li>
-          <a href="#random">Компонент Random</a>
+          <a href="#random">Random</a>
         </li>
         <li>
           <a href="#resources">External Resources</a>
@@ -26,17 +26,17 @@
 
 # Security
 
-Этот компонент помогает разработчику в общих задачах обеспечения безопасности, таких как хеширование паролей и защите от атак вида Cross-Site Request Forgery ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
+This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 
 <a name='hashing'></a>
 
 ## Password Hashing
 
-Хранение паролей в открытом виде является плохой практикой. Любой, кто имеет доступ к базе данных, мгновенно получит доступ ко всем пользовательским аккаунтам и, таким образом, получает возможность производить неавторизованные действия. Для противостояния этому, многие приложения используют знакомые методы одностороннего хеширования вроде '[md5](http://php.net/manual/en/function.md5.php)' и '[sha1](http://php.net/manual/en/function.sha1.php)'. Однако аппаратное обеспечение развивается с каждым днем, становится быстрее, и эти алгоритмы становятся уязвимы к атакам методом перебора. Данные атаки также известны как [радужные таблицы](http://en.wikipedia.org/wiki/Rainbow_table).
+Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods '[md5](http://php.net/manual/en/function.md5.php)' and '[sha1](http://php.net/manual/en/function.sha1.php)'. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](http://en.wikipedia.org/wiki/Rainbow_table).
 
-Для решения этой проблемы, мы можем использовать такие алгоритмы хеширования, как [bcrypt](http://en.wikipedia.org/wiki/Bcrypt). Почему bcrypt? Благодаря алгоритму установки ключа '[Eksblowfish](http://en.wikipedia.org/wiki/Bcrypt#Algorithm)' мы можем сделать шифрование пароля настолько "медленным", насколько мы этого захотим. Медленные алгоритмы делают процесс вычисления настоящего пароля, скрытого за хешем, крайне сложным, если не невозможным. Это защитит вас на долгое время от возможных атак с использованием радужных таблиц.
+To solve this problem we can use hash algorithms as [bcrypt](http://en.wikipedia.org/wiki/Bcrypt). Why bcrypt? Thanks to its '[Eksblowfish](http://en.wikipedia.org/wiki/Bcrypt#Algorithm)' key setup algorithm we can make the password encryption as 'slow' as we want. Slow algorithms make the process to calculate the real password behind a hash extremely difficult if not impossible. This will protect your for a long time from a possible attack using rainbow tables.
 
-Этот компонент дает вам возможность простым способом использовать данный алгоритм:
+This component gives you the ability to use this algorithm in a simple way:
 
 ```php
 <?php
@@ -54,7 +54,7 @@ class UsersController extends Controller
 
         $user->login = $login;
 
-        // Сохраняем пароль хэшированным
+        // Store the password hashed
         $user->password = $this->security->hash($password);
 
         $user->save();
@@ -62,7 +62,7 @@ class UsersController extends Controller
 }
 ```
 
-Мы сохранили пароль хешированным с коэффициентом хеширования по-умолчанию. Более высокий коэффициент хеширования сделает пароль менее уязвимым, так как его шифрование будет медленным. Мы можем проверить правильность пароля следующим способом:
+We saved the password hashed with a default work factor. A higher work factor will make the password less vulnerable as its encryption will be slow. We can check if the password is correct as follows:
 
 ```php
 <?php
@@ -79,10 +79,10 @@ class SessionController extends Controller
         $user = Users::findFirstByLogin($login);
         if ($user) {
             if ($this->security->checkHash($password, $user->password)) {
-                // Пароль верный
+                // The password is valid
             }
         } else {
-            // Защита от атак по времени. Regardless of whether a user
+            // To protect against timing attacks. Regardless of whether a user
             // exists or not, the script will take roughly the same amount as
             // it will always be computing a hash.
             $this->security->hash(rand());
@@ -182,7 +182,7 @@ $di->set(
 
 ## Random
 
-Класс `Phalcon\Security\Random` позволяет очень легко генерировать много разных типов случайных данных.
+The `Phalcon\Security\Random` class makes it really easy to generate lots of types of random data.
 
 ```php
 <?php

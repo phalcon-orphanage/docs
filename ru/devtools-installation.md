@@ -6,12 +6,12 @@
           <a href="#prerequisites">Prerequisites</a>
         </li>
         <li>
-          <a href="#installation">Установка</a> <ul>
+          <a href="#installation">Installation</a> <ul>
             <li>
               <a href="#installation-linux">Linux</a>
             </li>
             <li>
-              <a href="#installation-mac">macOS</a>
+              <a href="#installation-mac">MacOS</a>
             </li>
             <li>
               <a href="#installation-windows">Windows</a> <ul>

@@ -1,25 +1,25 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Отношения модели</a> <ul>
+      <a href="#overview">Model Relationships</a> <ul>
         <li>
-          <a href="#relationships">Отношения между моделями</a> <ul>
+          <a href="#relationships">Relationships between Models</a> <ul>
             <li>
-              <a href="#unidirectional">Однонаправленные отношения</a>
+              <a href="#unidirectional">Unidirectional relationships</a>
             </li>
             <li>
-              <a href="#bidirectional">Двунаправленные отношения</a>
+              <a href="#bidirectional">Bidirectional relations</a>
             </li>
             <li>
-              <a href="#defining">Определение отношений</a>
+              <a href="#defining">Defining relationships</a>
             </li>
             <li>
-              <a href="#taking-advantage-of">Преимущества отношений</a>
+              <a href="#taking-advantage-of">Taking advantage of relationships</a>
             </li>
             <li>
-              <a href="#aliases">Синонимы отношений</a> <ul>
+              <a href="#aliases">Aliasing Relationships</a> <ul>
                 <li>
-                  <a href="#getters-vs-methods">Магические методы против явных</a>
+                  <a href="#getters-vs-methods">Magic Getters vs. Explicit methods</a>
                 </li>
               </ul>
             </li>
@@ -27,23 +27,23 @@
         </li>
         
         <li>
-          <a href="#virtual-foreign-keys">Виртуальные внешние ключи</a> <ul>
+          <a href="#virtual-foreign-keys">Virtual Foreign Keys</a> <ul>
             <li>
-              <a href="#cascade-restrict-actions">Cascade/Restrict действия </a>
+              <a href="#cascade-restrict-actions">Cascade/Restrict actions</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#storing-related-records">Связаное сохранение записей</a>
+          <a href="#storing-related-records">Storing Related Records</a>
         </li>
         <li>
-          <a href="#operations-over-resultsets">Операции над набором результатов</a> <ul>
+          <a href="#operations-over-resultsets">Operations over Resultsets</a> <ul>
             <li>
-              <a href="#updating-related-records">Обновление связанных записей</a>
+              <a href="#updating-related-records">Updating related records</a>
             </li>
             <li>
-              <a href="#deleting-related-records">Удаление связанных записей</a>
+              <a href="#deleting-related-records">Deleting related records</a>
             </li>
           </ul>
         </li>
@@ -80,7 +80,7 @@ The bidirectional relations build relationships in both models and each model de
 
 In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
-| Метод         | Description                |
+| Method        | Description                |
 | ------------- | -------------------------- |
 | hasMany       | Defines a 1-n relationship |
 | hasOne        | Defines a 1-1 relationship |
@@ -124,7 +124,7 @@ Check the EER diagram to understand better the relations:
 
 ![](/images/content/models-relationships-eer-1.png)
 
-Модели с их отношениями могут быть реализованы следующим образом:
+The models with their relations could be implemented as follows:
 
 ```php
 <?php
@@ -204,7 +204,7 @@ class RobotsParts extends Model
 
 The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
 
-Отношение “многие-ко-многим” требуют 3 модели и определение атрибутов, участвующих в отношениях:
+Many to many relationships require 3 models and define the attributes involved in the relationship:
 
 ```php
 <?php

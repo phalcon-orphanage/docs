@@ -1,20 +1,20 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">События модели</a> <ul>
+      <a href="#overview">Model Events</a> <ul>
         <li>
-          <a href="#events">События и управление событиями</a> <ul>
+          <a href="#events">Events and Events Manager</a> <ul>
             <li>
-              <a href="#events-in-models">Реализация событий в классе модели</a>
+              <a href="#events-in-models">Implementing Events in the Model's class</a>
             </li>
             <li>
-              <a href="#custom-events-manager">Использование пользовательского менеджера событий</a>
+              <a href="#custom-events-manager">Using a custom Events Manager</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#logging-sql-statements">Логирование низкоуровневых SQL запросов</a>
+          <a href="#logging-sql-statements">Logging Low-Level SQL Statements</a>
         </li>
         <li>
           <a href="#profiling-sql-statements">Profiling SQL Statements</a>
@@ -55,7 +55,7 @@
 
 ### Implementing Events in the Model's class
 
-Простой способ заставить модель реагировать на события — это реализовать метод с тем же именем события в классе модели:
+The easier way to make a model react to events is to implement a method with the same name of the event in the model's class:
 
 ```php
 <?php
@@ -73,7 +73,7 @@ class Robots extends Model
 }
 ```
 
-События могут быть полезны для присвоения значений перед выполнением операции, например:
+Events can be used to assign values before performing an operation, for example:
 
 ```php
 <?php
@@ -84,13 +84,13 @@ class Products extends Model
 {
     public function beforeCreate()
     {
-        // Установить дату создания
+        // Set the creation date
         $this->created_at = date('Y-m-d H:i:s');
     }
 
     public function beforeUpdate()
     {
-        // Установить дату модификации
+        // Set the modification date
         $this->modified_in = date('Y-m-d H:i:s');
     }
 }
@@ -100,7 +100,7 @@ class Products extends Model
 
 ### Using a custom Events Manager
 
-Кроме того, этот компонент интегрируется с `Phalcon\Events\Manager`, это означает, что мы можем создать слушателей, которые запускаются при срабатывании события.
+Additionally, this component is integrated with `Phalcon\Events\Manager`, this means we can create listeners that run when an event is triggered.
 
 ```php
 <?php
@@ -117,7 +117,7 @@ class Robots extends Model
     {
         $eventsManager = new EventsManager();
 
-        // Добавляем анонимную функцию в качестве слушателя для событий "model"
+        // Attach an anonymous function as a listener for 'model' events
         $eventsManager->attach(
             'model:beforeSave',
             function (Event $event, $robot) {
@@ -131,13 +131,13 @@ class Robots extends Model
             }
         );
 
-        // Устанавливаем менеджер событий для события
+        // Attach the events manager to the event
         $this->setEventsManager($eventsManager);
     }
 }
 ```
 
-В примере, приведенном выше, менеджер событий действует только в качестве моста между объектом и слушателем (анонимной функцией). События сработают сразу при сохренении `robots`:
+In the example given above, the Events Manager only acts as a bridge between an object and a listener (the anonymous function). Events will be fired to the listener when `robots` are saved:
 
 ```php
 <?php
@@ -152,7 +152,7 @@ $robot->year = 1969;
 $robot->save();
 ```
 
-Если мы хотим, чтобы все объекты, созданные в нашем приложении использовали один и тот же EventsManager, то мы должны назначить его менеджеру модели:
+If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager:
 
 ```php
 <?php
@@ -160,18 +160,17 @@ $robot->save();
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 
-// Регистрация сервиса modelsManager
+// Registering the modelsManager service
 $di->setShared(
     'modelsManager',
     function () {
         $eventsManager = new EventsManager();
 
-        // Добавляем анонимную функцию в качестве
-        // слушателя для событий "model"
+        // Attach an anonymous function as a listener for 'model' events
         $eventsManager->attach(
             'model:beforeSave',
             function (Event $event, $model) {
-                // Перехватываем события, производимые моделью Robots
+                // Catch events produced by the Robots model
                 if (get_class($model) === 'Store\Toys\Robots') {
                     if ($model->name === 'Scooby Doo') {
                         echo "Scooby Doo isn't a robot!";
@@ -184,7 +183,7 @@ $di->setShared(
             }
         );
 
-        // Устанавливаем EventsManager по умолчанию
+        // Setting a default EventsManager
         $modelsManager = new ModelsManager();
 
         $modelsManager->setEventsManager($eventsManager);
@@ -194,13 +193,13 @@ $di->setShared(
 );
 ```
 
-Если слушатель возвращает false, то это прерывает выполняемую операцию.
+If a listener returns false that will stop the operation that is executing currently.
 
 <a name='logging-sql-statements'></a>
 
 ## Logging Low-Level SQL Statements
 
-При использовании компонентов абстракции высокого уровня, таких как `Phalcon\Mvc\Model`, для доступа к базе данных, трудно понять, какие операции, в конечном итоге, посылаются базе данных. `Phalcon\Mvc\Model` поддерживается изнутри `Phalcon\Db`. `Phalcon\Logger` взаимодействует с `Phalcon\Db`, обеспечивая возможность ведения логов на уровне абстракции базы данных, таким образом, позволяя нам логировать SQL запросы.
+When using high-level abstraction components such as `Phalcon\Mvc\Model` to access a database, it is difficult to understand which statements are finally sent to the database system. `Phalcon\Mvc\Model` is supported internally by `Phalcon\Db`. `Phalcon\Logger` interacts with `Phalcon\Db`, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
 
 ```php
 <?php
@@ -217,7 +216,7 @@ $di->set(
 
         $logger = new FileLogger('app/logs/debug.log');
 
-        // Слушаем все события базы данных
+        // Listen all the database events
         $eventsManager->attach(
             'db:beforeQuery',
             function ($event, $connection) use ($logger) {
@@ -237,7 +236,7 @@ $di->set(
             ]
         );
 
-        // Назначаем EventsManager экземпляру адаптера базы данных
+        // Assign the eventsManager to the db adapter instance
         $connection->setEventsManager($eventsManager);
 
         return $connection;
@@ -245,7 +244,7 @@ $di->set(
 );
 ```
 
-Как только модель взаимодействует с соединением, все SQL запросы, которые передаются в базу данных, будут сохранены в файле:
+As models access the default database connection, all SQL statements that are sent to the database system will be logged in the file:
 
 ```php
 <?php
@@ -258,11 +257,11 @@ $robot->name       = 'Robby the Robot';
 $robot->created_at = '1956-07-21';
 
 if ($robot->save() === false) {
-    echo 'Не удалось сохранить робота';
+    echo 'Cannot save robot';
 }
 ```
 
-Упомянутый выше файл *app/logs/db.log* будет содержать что-то вроде этого:
+As above, the file *app/logs/db.log* will contain something like this:
 
 > `[Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots` `(name, created_at) VALUES ('Robby the Robot', '1956-07-21')`
 
@@ -270,7 +269,7 @@ if ($robot->save() === false) {
 
 ## Profiling SQL Statements
 
-Благодаря `Phalcon\Db`, основе компонента `Phalcon\Mvc\Model`, возможно профилировать SQL запросы, генерируемые ORM, в целях анализа производительности операций с базой данных. При этом вы можете диагностировать проблемы производительности и выявлять узкие места.
+Thanks to `Phalcon\Db`, the underlying component of `Phalcon\Mvc\Model`, it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks.
 
 ```php
 <?php
@@ -292,10 +291,10 @@ $di->set(
     function () use ($di) {
         $eventsManager = new EventsManager();
 
-        // Получаем общий экземпляр DbProfiler
+        // Get a shared instance of the DbProfiler
         $profiler = $di->getProfiler();
 
-        // Слушаем все события базы данных
+        // Listen all the database events
         $eventsManager->attach(
             'db',
             function ($event, $connection) use ($profiler) {
@@ -320,7 +319,7 @@ $di->set(
             ]
         );
 
-        // Назначаем EventsManager экземпляру адаптера базы данных
+        // Assign the eventsManager to the db adapter instance
         $connection->setEventsManager($eventsManager);
 
         return $connection;
@@ -328,14 +327,14 @@ $di->set(
 );
 ```
 
-Профилирование некоторых запросов:
+Profiling some queries:
 
 ```php
 <?php
 
 use Store\Toys\Robots;
 
-// Отправим несколько SQL запросов в базу данных
+// Send some SQL statements to the database
 Robots::find();
 
 Robots::find(
@@ -350,7 +349,7 @@ Robots::find(
     ]
 );
 
-// Получаем сгенерированные профили из профилировщика
+// Get the generated profiles from the profiler
 $profiles = $di->get('profiler')->getProfiles();
 
 foreach ($profiles as $profile) {
@@ -361,4 +360,4 @@ foreach ($profiles as $profile) {
 }
 ```
 
-Каждый генерируемый профиль содержит продолжительность выполнения каждого запроса в миллисекундах, а также сами сгенерированные SQL запросы.
+Each generated profile contains the duration in milliseconds that each instruction takes to complete as well as the generated SQL statement.

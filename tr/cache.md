@@ -693,4 +693,4 @@ This backend will store cached content on a Redis server ([Redis](http://redis.i
 | `persistent` | Create a persistent connection to Redis.                       |
 | `index`      | The index of the Redis database to use.                        |
 
-[Phalcon Incubator](https://github.com/phalcon/incubator) bileşeninde bunlar için daha fazla bağdaştırıcı bulunmaktadır
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)

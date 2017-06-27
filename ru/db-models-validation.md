@@ -1,15 +1,15 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Валидация моделей</a> <ul>
+      <a href="#overview">Validating Models</a> <ul>
         <li>
-          <a href="#data-integrity">Проверка целостности данных</a>
+          <a href="#data-integrity">Validating Data Integrity</a>
         </li>
         <li>
-          <a href="#messages">Собщения об ошибках</a>
+          <a href="#messages">Validation Messages</a>
         </li>
         <li>
-          <a href="#failed-events">События при ошибках валидации</a>
+          <a href="#failed-events">Validation Failed Events</a>
         </li>
       </ul>
     </li>
@@ -24,9 +24,9 @@
 
 ## Validating Data Integrity
 
-`Phalcon\Mvc\Model` предоставляет некоторые события для проверки данных и реализации бизнес-логики. Специальное событие `validation` позволяет нам вызывать встроенные валидаторы для проверки записи. Phalcon имеет несколько встроенных валидаторов, которые можно использовать на этой стадии.
+`Phalcon\Mvc\Model` provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
 
-Следующий пример показывает, как это можно использовать:
+The following example shows how to use it:
 
 ```php
 <?php
@@ -60,7 +60,7 @@ class Robots extends Model
             'name',
             new Uniqueness(
                 [
-                    'message' => 'Имя робота должно быть уникальным.',
+                    'message' => 'The robot name must be unique',
                 ]
             )
         );
@@ -129,13 +129,13 @@ if ($robot->save() === false) {
 
 `Phalcon\Mvc\Model` can generate the following types of validation messages:
 
-| Type                   | Description                                                                                                                                      |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `PresenceOf`           | Генерируется, когда поле с атрибутом non-null в базе данных пытается вставить/обновить null значение                                             |
-| `ConstraintViolation`  | Генерируется, когда поле, являющееся частью виртуального внешнего ключа, пытается вставить/обновить значение, не существующее в указанной модели |
-| `InvalidValue`         | Генерируется, когда валидация не удалась из-за недопустимого значения                                                                            |
-| `InvalidCreateAttempt` | Генерируется, когда была предпринята попытка создать запись, которая уже существует                                                              |
-| `InvalidUpdateAttempt` | Генерируется, когда была предпринята попытка обновить запись, которая еще не существует                                                          |
+| Type                   | Description                                                                                                                        |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `PresenceOf`           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
+| `ConstraintViolation`  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
+| `InvalidValue`         | Generated when a validator failed because of an invalid value                                                                      |
+| `InvalidCreateAttempt` | Produced when a record is attempted to be created but it already exists                                                            |
+| `InvalidUpdateAttempt` | Produced when a record is attempted to be updated but it doesn't exist                                                             |
 
 The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
@@ -177,9 +177,9 @@ class Robots extends Model
 
 ## Validation Failed Events
 
-Другой доступный тип событий - когда в процессе проверки данных выявляются какие-либо несоответствия:
+Another type of events are available when the data validation process finds any inconsistency:
 
-| Operation                        | Name                | Explanation                                                                            |
-| -------------------------------- | ------------------- | -------------------------------------------------------------------------------------- |
-| Вставка или обновление           | `notSaved`          | Срабатывает, когда операция `INSERT` или `UPDATE` не выполняется по какой-либо причине |
-| Вставка, удаление или обновление | `onValidationFails` | Срабатывает, когда не выполняется какая-либо операция обработки данных                 |
+| Operation                | Name                | Explanation                                                            |
+| ------------------------ | ------------------- | ---------------------------------------------------------------------- |
+| Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
+| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |

@@ -1,13 +1,13 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#setup">Nastavení webserveru</a> <ul>
+      <a href="#setup">Web Server Setup</a> <ul>
         <li>
           <a href="#nginx">Nginx</a> <ul>
             <li>
-              <a href="#nginx-phalcon-configuration">Konfigurace Phalcon frameworku</a> <ul>
+              <a href="#nginx-phalcon-configuration">Phalcon configuration</a> <ul>
                 <li>
-                  <a href="#nginx-phalcon-configuration-basic">Základní konfigurace</a>
+                  <a href="#nginx-phalcon-configuration-basic">Basic configuration</a>
                 </li>
               </ul>
             </li>
@@ -22,10 +22,10 @@
                   <a href="#apache-document-root">Document root</a>
                 </li>
                 <li>
-                  <a href="#apache-apache-configuration">Konfigurace Apache webserveru</a>
+                  <a href="#apache-apache-configuration">Apache configuration</a>
                 </li>
                 <li>
-                  <a href="#apache-virtual-hosts">Virtuální domény (VirtualHost)</a>
+                  <a href="#apache-virtual-hosts">Virtual Hosts</a>
                 </li>
               </ul>
             </li>
@@ -41,7 +41,7 @@
         </li>
         
         <li>
-          <a href="#php-built-in">Vestavěný webserver v PHP</a> <ul>
+          <a href="#php-built-in">Built in Webserver</a> <ul>
             <li>
               <a href="#php-built-in-phalcon-configuration">Phalcon configuration</a>
             </li>
@@ -56,34 +56,34 @@
 
 # Web Server Setup
 
-Aby routování v aplikaci postavené na Phalcon frameworku fungovalo správně, musíte nastavit Vaš webserver aby správně zpracovával přesměrování a požadavky. Instrukce pro oblíbené webservery jsou:
+In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
 
 <a name='nginx'></a>
 
 ## Nginx
 
-[Nginx](http://wiki.nginx.org/Main) je bezplatný, s otevřeným zdrojovým kódem, vysoce výkonný HTTP server a reverzní proxy a také IMAP/POP3 proxy server. Oproti tradičním serverům, Nginx nezávisí na vláknech pro zpracování požadavků. Místo toho používá mnohem více škálovatelnou event-driven (asynchroní) architekturu. Tato architektura používá malé, ale více důležíté, předvídatelné množství paměti.
+[Nginx](http://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
 
-Pro zpracování PHP souborů se Nginx obvykle používá v kombinaci s [PHP-FMP](http://php-fpm.org/) (FastCGI Process Manager). V dnešní době je PHP-FPM součástí všech distribucí PHP pro Linuxové systémy. Phalcon framework společně s Nginx a PHP-FPM nabízí mocnou sadu nástrojů, která nabízí maximální výkon pro Vaše PHP aplikace.
+The [PHP-FPM](http://php-fpm.org/) (FastCGI Process Manager) is usually used to allow Nginx to process PHP files. Nowadays, PHP-FPM is bundled with all Linux based PHP distributions. Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
 <a name='nginx-phalcon-configuration'></a>
 
 ### Phalcon configuration
 
-Níže jsou uvedeny potenciální konfigurace, které můžete použít pro nastavení Nginx a Phalcon frameworku:
+The following are potential configurations you can use to setup Nginx with Phalcon:
 
 <a name='nginx-phalcon-configuration-basic'></a>
 
 #### Basic configuration
 
-Použítí `$_GET['_url']` jako zdroj URI:
+Using `$_GET['_url']` as source of URIs:
 
 ```nginx
 server {
     listen      80;
     server_name localhost.dev;
 
-    # V této složce je umístěn soubor index.php
+    # This is the folder that index.php is in
     root /var/www/phalcon/public;
     index index.php index.html index.htm;
 
@@ -110,14 +110,14 @@ server {
 }
 ```
 
-Použítí `$_SERVER['REQUEST_URI']` jako zdroj URI:
+Using `$_SERVER['REQUEST_URI']` as source of URIs:
 
 ```nginx
 server {
     listen      80;
     server_name localhost.dev;
 
-    # V této složce je umístěn soubor index.php
+    # This is the folder that index.php is in
     root /var/www/phalcon/public;
     index index.php index.html index.htm;
 
@@ -150,13 +150,13 @@ server {
 
 ## Apache
 
-[Apache](http://httpd.apache.org/) je dobře známý a oblíbený web server dostupný pro velké množství platforem.
+[Apache](http://httpd.apache.org/) is a popular and well known web server available on many platforms.
 
 <a name='apache-phalcon-configuration'></a>
 
 ### Phalcon configuration
 
-Níže jsou uvedeny potenciální konfigurace, které můžete použít pro nastavení Apache a Phalcon frameworku. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/[[language]]/[[version]]/routing). Běžně má aplikace následující strukturu:
+The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/[[language]]/[[version]]/routing). Commonly an application has the following structure:
 
 ```bash
 test/
@@ -175,7 +175,7 @@ test/
 
 #### Document root
 
-Je běžné použití kdy aplikace je instalována v jakémkoliv adresáři který je v tzv.: Document Root složce. V tomto případě použijeme dva `.htaccess` soubory kde první schová aplikační kód a všechny požadavky přesmeruje do veřejné aplikační složky (v našem případě je to složka `public/`).
+This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`).
 
 <h5 class='alert alert-warning'>Note that using <code>.htaccess</code> files requires your apache installation to have the <code>AllowOverride All</code> option set. </h5>
 
@@ -189,7 +189,7 @@ Je běžné použití kdy aplikace je instalována v jakémkoliv adresáři kter
 </IfModule>
 ```
 
-Druhý `.htaccess` soubor je umístěn ve složce `public/`, kde přesměruje všechny URI na soubor `public/index.php`:
+A second `.htaccess` file is located in the `public/` directory, this re-writes all the URIs to the `public/index.php` file:
 
 ```apacheconfig
 # test/public/.htaccess
@@ -206,7 +206,7 @@ Druhý `.htaccess` soubor je umístěn ve složce `public/`, kde přesměruje v�
 
 #### Apache configuration
 
-V případě že nechcete či nemůžete použít soubory `.htaccess`, můžete vše nastavit v hlavním konfiguračním souboru webserveru Apache:
+If you do not want to use `.htaccess` files you can move these configurations to the apache's main configuration file:
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -231,7 +231,7 @@ V případě že nechcete či nemůžete použít soubory `.htaccess`, můžete 
 
 #### Virtual Hosts
 
-Tato druhá konfigurace Vám dovolí připravit Phalcon aplikaci jako virtuální doménu (virtuální doména nemusí ani existovat ani být registrována ale na serveru, kde takto nakonfigurujeme Apache bude fungovat):
+And this second configuration allows you to install a Phalcon application in a virtual host:
 
 ```apacheconfig
 <VirtualHost *:80>
@@ -255,55 +255,55 @@ Tato druhá konfigurace Vám dovolí připravit Phalcon aplikaci jako virtuáln�
 
 ## Cherokee
 
-[Cherokee](http://www.cherokee-project.com/) je vysoce výkonný webserver. Je velmi rychlý, flexibilní a jednoduchý na konfiguraci.
+[Cherokee](http://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
 <a name='cherokee-phalcon-configuration'></a>
 
 ### Phalcon configuration
 
-Cherokee nabízí přátelské grafické prostředí pro konfiguraci skoro všech nastavení webserveru přímo v internetovém prohlížeči.
+Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 
-Spusťte administraci Cherokee jako správce (root) přes `/cesta-k-cherokee/sbin/cherokee-admin`
+Start the cherokee administrator by executing as root `/path-to-cherokee/sbin/cherokee-admin`
 
 ![](/images/content/webserver-cherokee-1.jpg)
 
-Vytvořte novou virtuální doménu kliknutím na `vServers`, poté přidejte nový virtuální server:
+Create a new virtual host by clicking on `vServers`, then add a new virtual server:
 
 ![](/images/content/webserver-cherokee-2.jpg)
 
-Vámi přidaný virtuální server se zobrazí na levé straně obrazovky. Na záložce `Behaviors` uvidíte sadu výchozího chování pro vybraný virtuální server. Klikněte na tlačítko `Rule Management`. Odstraňte tyto pravidla: `Directory /cherokee_themes` a `Directory /icons`:
+The recently added virtual server must appear at the left bar of the screen. In the `Behaviors` tab you will see a set of default behaviors for this virtual server. Click the `Rule Management` button. Remove those labeled as `Directory /cherokee_themes` and `Directory /icons`:
 
 ![](/images/content/webserver-cherokee-3.jpg)
 
-Pomocí průvodce přidejte `PHP Langauge`. To Vám umožní spouštět PHP aplikace:
+Add the `PHP Language` behavior using the wizard. This behavior allows you to run PHP applications:
 
 ![](/images/content/webserver-cherokee-1.jpg)
 
-Normálně toto chování nepotřebuje žádné další nastavení. Přidejte další chování. Tentokrát v sekci `Manual Configuration`. V sekci `Rule Type` vyberte `File Exists`, poté se ujistěte že volba `Match any file` je povolena:
+Normally this behavior does not require additional settings. Add another behavior, this time in the `Manual Configuration` section. In `Rule Type` choose `File Exists`, then make sure the option `Match any file` is enabled:
 
 ![](/images/content/webserver-cherokee-5.jpg)
 
-V záložce 'Handler' vyberte `List & Send` jako handler:
+In the 'Handler' tab choose `List & Send` as handler:
 
 ![](/images/content/webserver-cherokee-7.jpg)
 
-Upravte chování `Default` abychom mohli povolit přepis URL adres (URL-rewrite engine). Změnte handler na `Redirection` a poté přidejte následujicí regulární výraz: `^(.*)$`:
+Edit the `Default` behavior in order to enable the URL-rewrite engine. Change the handler to `Redirection`, then add the following regular expression to the engine `^(.*)$`:
 
 ![](/images/content/webserver-cherokee-6.jpg)
 
-Nakonec se ujistěte že chování mají následující pořadí:
+Finally, make sure the behaviors have the following order:
 
 ![](/images/content/webserver-cherokee-8.jpg)
 
-Spusťe aplikaci v prohlížeči:
+Execute the application in a browser:
 
 ![](/images/content/webserver-cherokee-9.jpg)
 
 <a name='php-built-in'></a>
 
-## Vestavěný webserver v PHP
+## PHP Built In Webserver
 
-Můžete použít [vestavěný](http://php.net/manual/en/features.commandline.webserver.php) webserver pro svůj vývoj. Pro spuštění webserveru napište do konzole (Windows: Aplikace Příkazový řádek, Linux, Mac: aplikace Terminal):
+You can use PHP's [built in](http://php.net/manual/en/features.commandline.webserver.php) web server for your development. To start the server type:
 
 ```bash
 php -S localhost:8000 -t /public
@@ -313,7 +313,7 @@ php -S localhost:8000 -t /public
 
 ### Phalcon configuration
 
-Pro povolení přepisů URI, které Phalcon framework potřebuje, můžete použít soubor pro router (`.htrouter.php`):
+To enable URI rewrites that Phalcon needs, you can use the following router file (`.htrouter.php`):
 
 ```php
 <?php
@@ -325,10 +325,10 @@ if (!file_exists(__DIR__ . '/' . $_SERVER['REQUEST_URI'])) {
 return false;
 ```
 
-a poté spusťte webserver ze základního adresáře projektu pomocí:
+and then start the server from the base project directory with:
 
 ```bash
 php -S localhost:8000 -t /public .htrouter.php
 ```
 
-Otevřete internetový prohlížeč a do řádku adresy napište: http://localhost:8000/ pro kontrolu že vše funguje jak má.
+Then point your browser to http://localhost:8000/ to check if everything is working.

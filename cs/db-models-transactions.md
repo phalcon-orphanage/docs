@@ -1,15 +1,15 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Modelové transakce</a> <ul>
+      <a href="#overview">Model Transactions</a> <ul>
         <li>
-          <a href="#manual">Manualní transakce</a>
+          <a href="#manual">Manual Transactions</a>
         </li>
         <li>
-          <a href="#implicit">Implicitní transakce</a>
+          <a href="#implicit">Implicit Transactions</a>
         </li>
         <li>
-          <a href="#isolated">Izolované transakce</a>
+          <a href="#isolated">Isolated Transactions</a>
         </li>
       </ul>
     </li>
@@ -20,15 +20,15 @@
 
 # Model Transactions
 
-Pokud proces provádí více databázových operací, je důležité, aby každý krok byl úspěšně dokončen, a byla tak zachována integrita dat. Transakce nabízejí možnost zjistit, zda všechny databázové operace budou provedeny úspěšně předtím, než budou data uložena do databáze.
+When a process performs multiple database operations, it might be important that each step is completed successfully so that data integrity can be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data is committed to the database.
 
-Transakce ve Phalconu vám umožní potvrdit všechny operace, pokud byly provedeny úspěšně, nebo vrácení všech změn zpět, pokud se něco pokazilo.
+Transactions in Phalcon allow you to commit all operations if they were executed successfully or rollback all operations if something went wrong.
 
 <a name='manual'></a>
 
 ## Manual Transactions
 
-Pokud aplikace používá pouze jedno připojení a transakce nejsou příliš složité, může být transakce vytvořena pouze přesunutím aktuálního připojení do režimu transakce a následným provedením nebo zrušením operace podle úspěšnosti:
+If an application only uses one connection and the transactions are not very complex, a transaction can be created by just moving the current connection into transaction mode and then commit or rollback the operation whether it is successful or not:
 
 ```php
 <?php
@@ -75,7 +75,7 @@ class RobotsController extends Controller
 
 ## Implicit Transactions
 
-Pro uložení existující relace lze použít jejich instance, tento druh operace implicitně vytváří transakci, která zajistí správné uložení dat:
+Existing relationships can be used to store records and their related instances, this kind of operation implicitly creates a transaction to ensure that data is correctly stored:
 
 ```php
 <?php
@@ -100,7 +100,7 @@ $robot->save();
 
 ## Isolated Transactions
 
-Izolované transakce se provádějí v novém spojení, které zajišťuje, že všechny generované SQL, kontroly cizích klíčů a business rules (aplikační logika) jsou izolovány od hlavního připojení. Tento druh transakce vyžaduje správce transakcí, který globálně spravuje všechny vytvořené transakce a zajišťuje, že byly před ukončením požadavku správně vráceny zpět nebo uloženy:
+Isolated transactions are executed in a new connection ensuring that all the generated SQL, virtual foreign key checks and business rules are isolated from the main connection. This kind of transaction requires a transaction manager that globally manages each transaction created ensuring that they are correctly rolled back/committed before ending the request:
 
 ```php
 <?php
@@ -148,7 +148,7 @@ try {
 }
 ```
 
-Transakce lze použít k odstranění více záznamů konzistentním způsobem:
+Transactions can be used to delete many records in a consistent way:
 
 ```php
 <?php
@@ -192,7 +192,7 @@ try {
 }
 ```
 
-Transakce jsou znovu použity bez ohledu na to, kde je objekt transakce načten. Nová transakce se vygeneruje pouze v případě, že se provede příkaz `commit()` nebo :code:`rollback()`. Můžete také použít kontejner pro služby (Di) pro vytvoření globalního správce transakcí pro celou aplikaci:
+Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a `commit()` or :code:`rollback()` is performed. You can use the service container to create the global transaction manager for the entire application:
 
 ```php
 <?php
@@ -207,7 +207,7 @@ $di->setShared(
 );
 ```
 
-Pak k němu máme přístup v Controlleru nebo v šabloně:
+Then access it from a controller or view:
 
 ```php
 <?php
@@ -232,4 +232,4 @@ class ProductsController extends Controller
 }
 ```
 
-Dokud je transakce aktivní, správce transakcí vždy vrací tu stejnou transakci skrz celou aplikaci.
+While a transaction is active, the transaction manager will always return the same transaction across the application.

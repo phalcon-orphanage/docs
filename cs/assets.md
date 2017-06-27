@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Správa assetů</a> <ul>
+      <a href="#overview">Assets Management</a> <ul>
         <li>
           <a href="#add">Adding Resources</a>
         </li>

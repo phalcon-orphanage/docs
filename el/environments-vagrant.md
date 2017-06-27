@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Overview</a> <ul>
         <li>
-          <a href="#requirements">Προϋποθέσεις</a>
+          <a href="#requirements">Requirements</a>
         </li>
         <li>
           <a href="#packages-included">Packages Included</a>

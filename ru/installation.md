@@ -3,10 +3,10 @@
     <li>
       <a href="#requirements">Requirements</a> <ul>
         <li>
-          <a href="#requirements-hardware">Аппаратное обеспечение</a>
+          <a href="#requirements-hardware">Hardware</a>
         </li>
         <li>
-          <a href="#requirements-software">Программное обеспечение</a>
+          <a href="#requirements-software">Software</a>
         </li>
       </ul>
     </li>
@@ -16,20 +16,20 @@
         <li>
           <a href="#installation-linux">Linux</a> <ul>
             <li>
-              <a href="#installation-linux-debian">DEB дистрибутивы (Debian, Ubuntu, и т.д.)</a> <ul>
+              <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a> <ul>
                 <li>
-                  <a href="#installation-linux-debian-repository">Настройка репозитория</a> <ul>
+                  <a href="#installation-linux-debian-repository">Repository installation</a> <ul>
                     <li>
-                      <a href="#installation-linux-debian-repository-stable">Стабильные релизы</a>
+                      <a href="#installation-linux-debian-repository-stable">Stable releases</a>
                     </li>
                     <li>
-                      <a href="#installation-linux-debian-repository-nightly">Ночные релизы</a>
+                      <a href="#installation-linux-debian-repository-nightly">Nightly releases</a>
                     </li>
                   </ul>
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-debian-phalcon">Установка Phalcon</a> <ul>
+                  <a href="#installation-linux-debian-phalcon">Phalcon installation</a> <ul>
                     <li>
                       <a href="#installation-linux-debian-phalcon-php5">PHP 5.x</a>
                     </li>
@@ -40,13 +40,13 @@
                 </li>
                 
                 <li>
-                  <a href="#installation-linux-debian-other-ppa">Сторонние PPA-репозитории</a>
+                  <a href="#installation-linux-debian-other-ppa">Additional PPAs</a>
                 </li>
               </ul>
             </li>
             
             <li>
-              <a href="#installation-linux-rpm">RPM дистрибутивы (CentOS, Fedora, и т.д.)</a> <ul>
+              <a href="#installation-linux-rpm">RPM based distributions (CentOS, Fedora, etc.)</a> <ul>
                 <li>
                   <a href="#installation-linux-rpm-repository">Repository installation</a> <ul>
                     <li>
@@ -70,7 +70,7 @@
                 </li>
                 
                 <li>
-                  <a href="installation-linux-rpm-other-rpm">Сторонние RPM-репозитории</a>
+                  <a href="installation-linux-rpm-other-rpm">Additional RPMs</a>
                 </li>
               </ul>
             </li>
@@ -99,10 +99,10 @@
           <a href="#installation-windows">Windows</a>
         </li>
         <li>
-          <a href="#installation-sources">Компиляция из исходников</a>
+          <a href="#installation-sources">Compile from sources</a>
         </li>
         <li>
-          <a href="#installation-sources-advanced">Расширенная компиляция</a>
+          <a href="#installation-sources-advanced">Advanced Compilation</a>
         </li>
       </ul>
     </li>
@@ -113,23 +113,23 @@
 
 # Requirements
 
-Phalcon требует PHP для запуска. Его слабо связанный дизайн позволяет разработчикам один раз установив Phalcon, использовать его возможности везде, без дополнительных расширений. Однако некоторые его компоненты зависят от других расширений. Например, использование подключений к базам данных, требует расширения `php_pdo`. Если ваша СУБД MySql/MariaDb или Aurora, вам так же понадобится расширение `php_mysqlnd`. Аналогично, использование базы данных PostgreSql с Phalcon, требует расширения `php_pgsql`.
+Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
 <a name='requirements-hardware'></a>
 
 ## Hardware
 
-Phalcon разработан таким образом, чтобы потреблять как можно меньше ресурсов, взамен предлагая высокую производительность. Хотя мы и тестировали Phalcon на маломощных машинах (например с 256 MB RAM и процессором 500 MHz), оборудование, которое вы будете выбирать, будет зависеть от потребностей приложения.
+Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
-Наш веб-сайт и блог (а также другие сайты) работают на Amazon VM с 512 MB RAM и 1 vCPU.
+Our website and blog (as well as other sites) are hosted on an Amazon VM with 512MB RAM and 1 vCPU.
 
 <a name='requirements-software'></a>
 
 ## Software
 
-- PHP > = 5.5
+- PHP >= 5.5
 
-<h5 class='alert alert-danger'>Рекомендуется всегда использовать последние версии Phalcon и PHP из соображений стабильности, улучшения безопасности, а также производительности. Поддержка PHP 5.x будет прекращена в ближайшее время. Phalcon 4 будет поддерживать только PHP 7. </h5>
+<h5 class='alert alert-danger'>You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 </h5>
 
 Phalcon need the following extensions to run (minimal):
 
@@ -143,7 +143,7 @@ Phalcon need the following extensions to run (minimal):
 - `fileinfo`
 - `openssl`
 
-### Дополнительно, в зависимости от потребностей вашего приложения
+### Optional depending on the needs of your application
 
 - [PDO](http://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) etc.)
 - [OpenSSL](http://php.net/manual/en/book.openssl.php) Extension
@@ -190,7 +190,7 @@ or
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-<h5 class='alert alert-warning'>Это необходимо сделать один раз, при смене дистрибутива или переключении со стабильных сборок на ночные. </h5>
+<h5 class='alert alert-warning'>This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. </h5>
 
 <a name='installation-linux-debian-phalcon'></a>
 
@@ -321,7 +321,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon
 ```
 
-### Сборка из исходников
+### Source
 
 ```bash
 export CFLAGS="-O2 --fvisibility=hidden"
@@ -339,13 +339,13 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 <a name='installation-macos'></a>
 
-## macOS
+## Mac OS X
 
 On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
 
 ### Requirements
 
-- Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x.7.1.x (php-dev)
+- PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 - XCode
 
 <a name='installation-macos-brew'></a>
@@ -389,16 +389,16 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Архитектура | Version | Type                                 |
-|:-----------:|:-------:| ------------------------------------ |
-|     x64     |   7.x   | Потокобезопасный                     |
-|     x64     |   7.x   | Не являющийся потокобезопасным (NTS) |
-|     x86     |   7.x   | Thread safe                          |
-|     x86     |   7.x   | Non Thread safe (NTS)                |
-|     x64     |   5.6   | Thread safe                          |
-|     x64     |   5.6   | Non Thread safe (NTS)                |
-|     x86     |   5.6   | Thread safe                          |
-|     x86     |   5.6   | Non Thread safe (NTS)                |
+| Architecture | Version | Type                  |
+|:------------:|:-------:| --------------------- |
+|     x64      |   7.x   | Thread safe           |
+|     x64      |   7.x   | Non Thread safe (NTS) |
+|     x86      |   7.x   | Thread safe           |
+|     x86      |   7.x   | Non Thread safe (NTS) |
+|     x64      |   5.6   | Thread safe           |
+|     x64      |   5.6   | Non Thread safe (NTS) |
+|     x86      |   5.6   | Thread safe           |
+|     x86      |   5.6   | Non Thread safe (NTS) |
 
 Edit your php.ini file and then append at the end:
 
@@ -410,7 +410,7 @@ Restart your webserver.
 
 <a name='installation-sources'></a>
 
-## Компиляция из исходников
+## Compile from Sources
 
 Compiling from source is similar to most environments (Linux/Mac).
 
@@ -435,13 +435,13 @@ sudo apt-get install php5-dev libpcre3-dev gcc make
 sudo zypper install php5-devel gcc make
 ```
 
-#### CentOS / Fedora / RHEL
+#### CentOS/Fedora/RHEL
 
 ```bash
 sudo yum install php-devel pcre-devel gcc make
 ```
 
-### Компиляция Phalcon
+### Compile Phalcon
 
 We first need to clone Phalcon from the Github repository
 
@@ -459,19 +459,19 @@ sudo ./install
 You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
 
 ```ini
-# Suse: создайте файл phalcon.ini в /etc/php5/conf.d/ со следующим содержимым:
+# Suse: Add a file called phalcon.ini in /etc/php5/conf.d/ with this content:
 extension=phalcon.so
 
-# CentOS/RedHat/Fedora: создайте файл phalcon.ini в /etc/php.d/ со следующим содержимым:
+# CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
 extension=phalcon.so
 
-# Ubuntu/Debian с apache2: создайте файл 30-phalcon.ini в /etc/php5/apache2/conf.d/ со следующим содержимым:
+# Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php5/apache2/conf.d/ with this content:
 extension=phalcon.so
 
-# Ubuntu/Debian с php5-fpm: создайте файл 30-phalcon.ini в /etc/php5/fpm/conf.d/ со следующим содержимым:
+# Ubuntu/Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
 extension=phalcon.so
 
-# Ubuntu/Debian с php5-cli: создайте файл 30-phalcon.ini в /etc/php5/cli/conf.d/ со следующим содержимым:
+# Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
 extension=phalcon.so
 ```
 
@@ -484,7 +484,7 @@ Phalcon automatically detects your architecture, however, you can force the comp
 ```bash
 cd cphalcon/build
 
-# Одна из следующих команд установит Phalcon для нужной архитектуры:
+# One of the following:
 sudo ./install --arch 32bits
 sudo ./install --arch 64bits
 sudo ./install --arch safe
@@ -497,10 +497,9 @@ git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# Обратите внимание:
-# Для PHP 7 вам необходимо использовать
+# NOTE: for PHP 7 you have to use
 # cd cphalcon/build/php7/32bits
-# или
+# or
 # cd cphalcon/build/php7/64bits
 
 make clean
@@ -520,10 +519,9 @@ git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# Обратите внимание:
-# Для PHP 7 вам необходимо использовать
+# NOTE: for PHP 7 you have to use
 # cd cphalcon/build/php7/32bits
-# или
+# or
 # cd cphalcon/build/php7/64bits
 
 make clean

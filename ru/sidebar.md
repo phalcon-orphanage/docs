@@ -14,7 +14,7 @@
     - [Настройка веб-сервера](/[[language]]/[[version]]/webserver-setup) 
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
-- Окружение 
+- Environments 
     - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)

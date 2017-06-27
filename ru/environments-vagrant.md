@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Overview</a> <ul>
         <li>
-          <a href="#requirements">Требования</a>
+          <a href="#requirements">Requirements</a>
         </li>
         <li>
           <a href="#packages-included">Packages Included</a>
@@ -11,16 +11,16 @@
         <li>
           <a href="#installation">Installation</a> <ul>
             <li>
-              <a href="#installation-vagrant-box">Установка Vagrant Box</a>
+              <a href="#installation-vagrant-box">Installing the Vagrant Box</a>
             </li>
             <li>
-              <a href="#installation-phalcon-box">Установка Phalcon Box</a>
+              <a href="#installation-phalcon-box">Installing the Phalcon Box</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#installation-configuration">Настройка</a> <ul>
+          <a href="#installation-configuration">Configuring</a> <ul>
             <li>
               <a href="#installation-configuration-setting-provider">Setting your provider</a>
             </li>
@@ -155,7 +155,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 - MySQL
 - Nginx
 - Ngrok
-- Node.js (с Yarn, Bower, Grunt и Gulp)
+- Node.js (with Yarn, Bower, Grunt, and Gulp)
 - PHIVE
 - PHP 7.1
 - PHPMD
@@ -318,7 +318,7 @@ sites:
 
 The default type is `phalcon`. If the desired type is not allowed or not available `phalcon` will be used as fallback.
 
-Доступные типы:
+Available types:
 
 - `phalcon`
 - `slayer`

@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Σελιδοποίηση</a> <ul>
+      <a href="#overview">Pagination</a> <ul>
         <li>
           <a href="#data-adapters">Data Adapters</a>
         </li>
