@@ -33,7 +33,7 @@
           <a href="#phpstorm-ide">Integrating Tools with PhpStorm IDE</a>
         </li>
         <li>
-          <a href="#conclusion">Conclusion</a>
+          <a href="#conclusion">Заключение</a>
         </li>
       </ul>
     </li>
@@ -353,7 +353,7 @@ $ phalcon scaffold --table-name products
 
 The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
 
-| File                                     | Purpose                        |
+| Файл                                     | Purpose                        |
 | ---------------------------------------- | ------------------------------ |
 | `app/controllers/ProductsController.php` | The Products controller        |
 | `app/models/Products.php`                | The Products model             |
