@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#contributing">Contributing to Phalcon</a> <ul>
+      <a href="#contributing">Přispějte k vývoji Phalcon frameworku</a> <ul>
         <li>
           <a href="#contributions">Contributions</a>
         </li>
