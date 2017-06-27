@@ -1,7 +1,7 @@
-- [General](/[[language]]/[[version]]/introduction) 
-    - [Release Notes](/[[language]]/[[version]]/release-notes)
-    - Upgrade
-    - [Sponsors](/[[language]]/[[version]]/sponsors)
+- [Γενικά](/[[language]]/[[version]]/introduction) 
+    - [Σημειώσεις έκδοσης](/[[language]]/[[version]]/release-notes)
+    - Αναβάθμιση
+    - [Σπόνσορες](/[[language]]/[[version]]/sponsors)
 - Contributions 
     - [Overview](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
@@ -14,7 +14,7 @@
     - [Webserver Setup](/[[language]]/[[version]]/webserver-setup) 
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
-- Environments 
+- Περιβάλλοντα 
     - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)
@@ -43,14 +43,13 @@
     - [PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
     - [Models](/[[language]]/[[version]]/db-models) 
-        - [Για προχωρημένους](/[[language]]/[[version]]/db-models-advanced)
-        - [Συμπεριφορές](/[[language]]/[[version]]/db-models-behaviors)
+        - [Behaviors](/[[language]]/[[version]]/db-models-behaviors)
         - [Cache](/[[language]]/[[version]]/db-models-cache)
         - [Events](/[[language]]/[[version]]/db-models-events)
-        - [Μεταδεδομένα](/[[language]]/[[version]]/db-models-metadata)
-        - [Σχέσεις](/[[language]]/[[version]]/db-models-relationships)
+        - [Metadata](/[[language]]/[[version]]/db-models-metadata)
+        - [Relationships](/[[language]]/[[version]]/db-models-relationships)
         - [Transactions](/[[language]]/[[version]]/db-models-transactions)
-        - [Επικυρωτές](/[[language]]/[[version]]/db-models-validation)
+        - [Validators](/[[language]]/[[version]]/db-models-validation)
     - [Migrations](/[[language]]/[[version]]/db-migrations)
     - [Pagination](/[[language]]/[[version]]/db-pagination)
 - Front End 
