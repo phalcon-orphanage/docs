@@ -1,53 +1,53 @@
-# Class **Phalcon\\Http\\Request\\Exception**
+<h1>Class <strong>Phalcon\\Http\\Request\\Exception</strong></h1>
 
-*extends* class [Phalcon\Exception](/en/3.1.2/api/Phalcon_Exception)
+<p><em>extends</em> class <a href="/en/3.1.2/api/Phalcon_Exception">Phalcon\Exception</a></p>
 
-*implements* [Throwable](http://php.net/manual/en/class.throwable.php)
+<p><em>implements</em> <a href="http://php.net/manual/en/class.throwable.php">Throwable</a></p>
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/request/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<p><a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/request/exception.zep" class="btn btn-default btn-sm" mark="crwd-mark">Source on GitHub</a></p>
 
-## Methods
+<h2>Methods</h2>
 
-final private [Exception](http://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+<p>final private <a href="http://php.net/manual/en/class.exception.php">Exception</a> <strong>__clone</strong> () inherited from <a href="http://php.net/manual/en/class.exception.php">Exception</a></p>
 
-Clone the exception
+<p>Clone the exception</p>
 
-public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](http://php.net/manual/en/class.exception.php)
+<p>public  <strong>__construct</strong> ([<em>mixed</em> $message], [<em>mixed</em> $code], [<em>mixed</em> $previous]) inherited from <a href="http://php.net/manual/en/class.exception.php">Exception</a></p>
 
-Exception constructor
+<p>Exception constructor</p>
 
-public **__wakeup** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+<p>public  <strong>__wakeup</strong> () inherited from <a href="http://php.net/manual/en/class.exception.php">Exception</a></p>
 
-...
+<p>...</p>
 
-final public *string* **getMessage** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+<p>final public <em>string</em> <strong>getMessage</strong> () inherited from <a href="http://php.net/manual/en/class.exception.php">Exception</a></p>
 
-Gets the Exception message
+<p>Gets the Exception message</p>
 
-final public *int* **getCode** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+<p>final public <em>int</em> <strong>getCode</strong> () inherited from <a href="http://php.net/manual/en/class.exception.php">Exception</a></p>
 
-Gets the Exception code
+<p>Gets the Exception code</p>
 
-final public *string* **getFile** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+<p>final public <em>string</em> <strong>getFile</strong> () inherited from <a href="http://php.net/manual/en/class.exception.php">Exception</a></p>
 
-Gets the file in which the exception occurred
+<p>Gets the file in which the exception occurred</p>
 
-final public *int* **getLine** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+<p>final public <em>int</em> <strong>getLine</strong> () inherited from <a href="http://php.net/manual/en/class.exception.php">Exception</a></p>
 
-Gets the line in which the exception occurred
+<p>Gets the line in which the exception occurred</p>
 
-final public *array* **getTrace** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+<p>final public <em>array</em> <strong>getTrace</strong> () inherited from <a href="http://php.net/manual/en/class.exception.php">Exception</a></p>
 
-Gets the stack trace
+<p>Gets the stack trace</p>
 
-final public [Exception](http://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+<p>final public <a href="http://php.net/manual/en/class.exception.php">Exception</a> <strong>getPrevious</strong> () inherited from <a href="http://php.net/manual/en/class.exception.php">Exception</a></p>
 
-Returns previous Exception
+<p>Returns previous Exception</p>
 
-final public [Exception](http://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+<p>final public <a href="http://php.net/manual/en/class.exception.php">Exception</a> <strong>getTraceAsString</strong> () inherited from <a href="http://php.net/manual/en/class.exception.php">Exception</a></p>
 
-Gets the stack trace as a string
+<p>Gets the stack trace as a string</p>
 
-public *string* **__toString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+<p>public <em>string</em> <strong>__toString</strong> () inherited from <a href="http://php.net/manual/en/class.exception.php">Exception</a></p>
 
-String representation of the exception
+<p>String representation of the exception</p>
