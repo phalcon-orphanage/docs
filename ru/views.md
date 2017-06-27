@@ -1,58 +1,58 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Using Views</a> <ul>
+      <a href="#overview">Использование представлений</a> <ul>
         <li>
-          <a href="#integrating-views-with-controllers">Integrating Views with Controllers</a>
+          <a href="#integrating-views-with-controllers">Интеграция представлений с контроллерами</a>
         </li>
         <li>
-          <a href="#hierarchical-rendering">Hierarchical Rendering</a> <ul>
+          <a href="#hierarchical-rendering">Иерархическая отрисовка</a> <ul>
             <li>
-              <a href="#using-templates">Using Templates</a>
+              <a href="#using-templates">Использование шаблонов</a>
             </li>
             <li>
-              <a href="#control-rendering-levels">Control Rendering Levels</a>
+              <a href="#control-rendering-levels">Управление уровнями отрисовки</a>
             </li>
             <li>
-              <a href="#disabling-render-levels">Disabling render levels</a>
+              <a href="#disabling-render-levels">Отключение уровней отрисовки</a>
             </li>
             <li>
-              <a href="#picking-views">Picking Views</a>
+              <a href="#picking-views">Переопределение представлений</a>
             </li>
             <li>
-              <a href="#disabling-view">Disabling the view</a>
-            </li>
-          </ul>
-        </li>
-        
-        <li>
-          <a href="#simple-rendering">Simple Rendering</a>
-        </li>
-        <li>
-          <a href="#using-partials">Using Partials</a>
-        </li>
-        <li>
-          <a href="#value-transfer">Transfer values from the controller to views</a>
-        </li>
-        <li>
-          <a href="#caching-fragments">Caching View Fragments</a>
-        </li>
-        <li>
-          <a href="#template-engines">Template Engines</a> <ul>
-            <li>
-              <a href="#custom-template-engine">Creating your own Template Engine Adapter</a>
-            </li>
-            <li>
-              <a href="#changing-template-engine">Changing the Template Engine</a>
+              <a href="#disabling-view">Отключение представления</a>
             </li>
           </ul>
         </li>
         
         <li>
-          <a href="#injecting-services">Injecting services in View</a>
+          <a href="#simple-rendering">Простая отрисовка</a>
         </li>
         <li>
-          <a href="#stand-along">Stand-Alone Component</a> <ul>
+          <a href="#using-partials">Части шаблонов</a>
+        </li>
+        <li>
+          <a href="#value-transfer">Передача переменных контроллера</a>
+        </li>
+        <li>
+          <a href="#caching-fragments">Кэширование фрагментов представления</a>
+        </li>
+        <li>
+          <a href="#template-engines">Шаблонизаторы</a> <ul>
+            <li>
+              <a href="#custom-template-engine">Создание собственного адаптера для шаблонизатора</a>
+            </li>
+            <li>
+              <a href="#changing-template-engine">Изменение шаблонизатора</a>
+            </li>
+          </ul>
+        </li>
+        
+        <li>
+          <a href="#injecting-services">Внедрение сервисов в представление</a>
+        </li>
+        <li>
+          <a href="#stand-along">Отдельное использование компонента</a> <ul>
             <li>
               <a href="#stand-alone-hierarchical-rendering">Hierarchical Rendering</a>
             </li>
@@ -63,7 +63,7 @@
         </li>
         
         <li>
-          <a href="#eventes">View Events</a>
+          <a href="#eventes">События компонента представлений</a>
         </li>
       </ul>
     </li>
@@ -216,7 +216,7 @@ class PostsController extends Controller
     public function lastAction()
     {
         $this->flash->notice(
-            'These are the latest posts'
+            'Последние статьи'
         );
     }
 }
@@ -227,7 +227,7 @@ class PostsController extends Controller
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Blog's title</title>
+        <title>Мой блог</title>
     </head>
     <body>
         <?php echo $this->getContent(); ?>
@@ -239,9 +239,9 @@ class PostsController extends Controller
 <!-- app/views/layouts/common.phtml -->
 
 <ul class='menu'>
-    <li><a href='/'>Home</a></li>
-    <li><a href='/articles'>Articles</a></li>
-    <li><a href='/contact'>Contact us</a></li>
+    <li><a href='/'>Главная</a></li>
+    <li><a href='/articles'>Материалы</a></li>
+    <li><a href='/contact'>Контакты</a></li>
 </ul>
 
 <div class='content'><?php echo $this->getContent(); ?></div>
@@ -250,7 +250,7 @@ class PostsController extends Controller
 ```php
 <!-- app/views/layouts/posts.phtml -->
 
-<h1>Blog Title</h1>
+<h1>Мой блог</h1>
 
 <?php echo $this->getContent(); ?>
 ```
@@ -259,13 +259,13 @@ class PostsController extends Controller
 <!-- app/views/posts/last.phtml -->
 
 <article>
-    <h2>This is a title</h2>
-    <p>This is the post content</p>
+    <h2>Заголовок статьи</h2>
+    <p>Содержимое статьи</p>
 </article>
 
 <article>
-    <h2>This is another title</h2>
-    <p>This is another post content</p>
+    <h2>Ещё один заголовок</h2>
+    <p>Ещё одно содержимое статьи</p>
 </article>
 ```
 
@@ -398,14 +398,14 @@ class PostsController extends Controller
 
 The available render levels are:
 
-| Class Constant          | Description                                                              | Order |
-| ----------------------- | ------------------------------------------------------------------------ |:-----:|
-| `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |       |
-| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |   1   |
-| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         |   2   |
-| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |   3   |
-| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |   4   |
-| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |   5   |
+| Константа класса        | Description                                                              | Порядок |
+| ----------------------- | ------------------------------------------------------------------------ |:-------:|
+| `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |         |
+| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |    1    |
+| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         |    2    |
+| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |    3    |
+| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |    4    |
+| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |    5    |
 
 <a name='disabling-render-levels'></a>
 
@@ -567,7 +567,7 @@ class UsersController extends Controller
 
 This component allows the developer to have control of when a view is rendered and its location. In addition, this component can leverage of view inheritance available in template engines such as `Volt` and others.
 
-The default component must be replaced in the service container:
+Компонент представлений по-умолчанию должен быть заменён в сервис контейнере:
 
 ```php
 <?php
