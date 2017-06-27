@@ -1,24 +1,24 @@
-- [General](/[[language]]/[[version]]/introduction) 
-    - [Release Notes](/[[language]]/[[version]]/release-notes)
+- [Obecné](/[[language]]/[[version]]/introduction) 
+    - [Poznámky k vydání](/[[language]]/[[version]]/release-notes)
     - Upgrade
-    - [Sponsors](/[[language]]/[[version]]/sponsors)
+    - [Sponzoři](/[[language]]/[[version]]/sponsors)
 - Contributions 
     - [Overview](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
     - [Reproducible Tests](/[[language]]/[[version]]/reproducible-tests)
-    - Testing guide
-- Getting Started 
+    - Průvodce testováním
+- Začínáme 
     - [Installation](/[[language]]/[[version]]/installation)
-    - [Webserver Setup](/[[language]]/[[version]]/webserver-setup) 
+    - [Instalace webserveru](/[[language]]/[[version]]/webserver-setup) 
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
-- Environments 
+- Prostředí 
     - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)
-- Development Tools 
+- Vývojářské nástroje 
     - [Installation](/[[language]]/[[version]]/devtools-installation)
     - [Usage](/[[language]]/[[version]]/devtools-usage)
     - [Debug](/[[language]]/[[version]]/debug)
@@ -26,12 +26,12 @@
     - Application 
         - [Full](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
-        - [Cli](/[[language]]/[[version]]/application-cli)
-    - [DI Container](/[[language]]/[[version]]/di)
+        - [Command Line Interface (Cli)](/[[language]]/[[version]]/application-cli)
+    - [DI kontejner](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
 - Services 
     - [Cache](/[[language]]/[[version]]/cache)
-    - [Config](/[[language]]/[[version]]/config)
+    - [Konfigurace](/[[language]]/[[version]]/config)
     - [Escaper](/[[language]]/[[version]]/escaper)
     - [Loader](/[[language]]/[[version]]/loader) 
         - [Namespaces](/[[language]]/[[version]]/namespaces)
@@ -43,27 +43,27 @@
     - [PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
     - [Models](/[[language]]/[[version]]/db-models) 
-        - [Advanced](/[[language]]/[[version]]/db-models-advanced)
-        - [Behaviors](/[[language]]/[[version]]/db-models-behaviors)
+        - [Pokročilé](/[[language]]/[[version]]/db-models-advanced)
+        - [Chování (Behaviors)](/[[language]]/[[version]]/db-models-behaviors)
         - [Cache](/[[language]]/[[version]]/db-models-cache)
         - [Events](/[[language]]/[[version]]/db-models-events)
         - [Metadata](/[[language]]/[[version]]/db-models-metadata)
-        - [Relationships](/[[language]]/[[version]]/db-models-relationships)
+        - [Relace](/[[language]]/[[version]]/db-models-relationships)
         - [Transactions](/[[language]]/[[version]]/db-models-transactions)
-        - [Validators](/[[language]]/[[version]]/db-models-validation)
+        - [Validátory](/[[language]]/[[version]]/db-models-validation)
     - [Migrations](/[[language]]/[[version]]/db-migrations)
     - [Pagination](/[[language]]/[[version]]/db-pagination)
-- Front End 
-    - [Assets](/[[language]]/[[version]]/assets)
+- Frontend 
+    - [Assety](/[[language]]/[[version]]/assets)
     - [Flash Messenger](/[[language]]/[[version]]/flash)
     - [Forms](/[[language]]/[[version]]/forms)
     - [Image](/[[language]]/[[version]]/image)
     - [Tag](/[[language]]/[[version]]/tag)
     - [View](/[[language]]/[[version]]/views) 
         - [Volt](/[[language]]/[[version]]/volt)
-- Business Logic 
+- Aplikační logika 
     - [Access Control Lists](/[[language]]/[[version]]/acl)
-    - [Annotations](/[[language]]/[[version]]/annotations)
+    - [Anotace](/[[language]]/[[version]]/annotations)
     - [Controllers](/[[language]]/[[version]]/controllers)
     - [Dispatcher](/[[language]]/[[version]]/dispatcher)
     - [Event Manager](/[[language]]/[[version]]/events)
