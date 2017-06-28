@@ -21,6 +21,7 @@
         - [Libmemcached Backend Options](#adapters-backend-libmemcached)
         - [Memcache Backend Options](#adapters-backend-memcache)
         - [APC Backend Options](#adapters-backend-apc)
+        - [APCU Backend Options](#adapters-backend-apcu)
         - [Mongo Backend Options](#adapters-backend-mongo)
         - [XCache Backend Options](#adapters-backend-xcache)
         - [Redis Backend Options](#adapters-backend-redis)
@@ -470,6 +471,9 @@ The backend adapters available to store cache data are:
 | `Phalcon\Cache\Backend\Redis`        | Stores data in Redis.                                | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache.                               | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
+<h5 class='alert alert-warning' markdown='1'>*NOTE* In PHP 7 to use phalcon `apc` based adapter classes you needed to install `apcu` and `apcu_bc` package from pecl. Now in Phalcon 3.2.0 you can switch your `*\Apc` classes to `*\Apcu` and remove `apcu_bc`. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes.</h5>
+
+
 <a name='adapters-backend-custom'></a>
 ### Implementing your own Backend adapters
 The `Phalcon\Cache\BackendInterface` interface must be implemented in order to create your own backend adapters or extend the existing ones.
@@ -555,6 +559,14 @@ This backend will store cached content on a memcached server. The available opti
 <a name='adapters-backend-apc'></a>
 ### APC Backend Options
 This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
+
+| Option   | Description                                                 |
+|----------|-------------------------------------------------------------|
+| `prefix` | A prefix that is automatically prepended to the cache keys. |
+
+<a name='adapters-backend-apcu'></a>
+### APCU Backend Options
+This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
 
 | Option   | Description                                                 |
 |----------|-------------------------------------------------------------|

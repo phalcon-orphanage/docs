@@ -14,6 +14,29 @@
 # Reading Configurations
 `Phalcon\Config` is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
+Values can be obtained from `Phalcon\Config` as follows:
+
+```php
+<?php
+
+use Phalcon\Config;
+
+$config = new Config(
+    [
+        'test' => [
+            'parent' => [
+                'property'  => 1,
+                'property2' => 'yeah',
+            ],
+        ],  
+    ]
+);
+
+echo $config->get('test')->get('parent')->get('property');  // displays 1
+echo $config->test->parent->property;                       // displays 1
+echo $config->path('test.parent.property');                 // displays 1
+```
+
 <a name='native-arrays'></a>
 ## Native Arrays
 The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
