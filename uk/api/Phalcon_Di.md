@@ -1,6 +1,6 @@
 # Class **Phalcon\\Di**
 
-*implements* [Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
+*implements* [Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/di.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -41,7 +41,7 @@ public **__construct** ()
 
 Phalcon\\Di constructor
 
-public **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.1.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets the internal event manager
 
@@ -65,7 +65,7 @@ public **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
 Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
-public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/en/3.1.2/api/Phalcon_Di_ServiceInterface) $rawDefinition)
+public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/en/3.2/api/Phalcon_Di_ServiceInterface) $rawDefinition)
 
 Sets a service using a raw Phalcon\\Di\\Service definition
 
@@ -131,7 +131,29 @@ public **__call** (*mixed* $method, [*mixed* $arguments])
 
 Magic method to get or set services using setters/getters
 
-public static **setDefault** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
+public **register** ([Phalcon\Di\ServiceProviderInterface](/en/3.2/api/Phalcon_Di_ServiceProviderInterface) $provider)
+
+Registers a service provider.
+
+```php
+<?php
+
+use Phalcon\DiInterface;
+use Phalcon\Di\ServiceProviderInterface;
+
+class SomeServiceProvider implements ServiceProviderInterface
+{
+    public function register(DiInterface $di)
+    {
+        $di->setShared('service', function () {
+            // ...
+        });
+    }
+}
+
+```
+
+public static **setDefault** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 Set a default dependency injection container to be obtained into static methods
 
@@ -142,3 +164,82 @@ Return the latest DI created
 public static **reset** ()
 
 Resets the internal default DI
+
+public **loadFromYaml** (*mixed* $filePath, [*array* $callbacks])
+
+Loads services from a yaml file.
+
+```php
+<?php
+
+$di->loadFromYaml(
+    "path/services.yaml",
+    [
+        "!approot" => function ($value) {
+            return dirname(__DIR__) . $value;
+        }
+    ]
+);
+
+```
+
+And the services can be specified in the file as:
+
+```php
+<?php
+
+myComponent:
+    className: \Acme\Components\MyComponent
+    shared: true
+
+group:
+    className: \Acme\Group
+    arguments:
+        - type: service
+          name: myComponent
+
+user:
+   className: \Acme\User
+
+```
+
+public **loadFromPhp** (*mixed* $filePath)
+
+Loads services from a php config file.
+
+```php
+<?php
+
+$di->loadFromPhp("path/services.php");
+
+```
+
+And the services can be specified in the file as:
+
+```php
+<?php
+
+return [
+     'myComponent' => [
+         'className' => '\Acme\Components\MyComponent',
+         'shared' => true,
+     ],
+     'group' => [
+         'className' => '\Acme\Group',
+         'arguments' => [
+             [
+                 'type' => 'service',
+                 'service' => 'myComponent',
+             ],
+         ],
+     ],
+     'user' => [
+         'className' => '\Acme\User',
+     ],
+];
+
+```
+
+protected **loadFromConfig** ([Phalcon\Config](/en/3.2/api/Phalcon_Config) $config)
+
+Loads services from a Config object.
