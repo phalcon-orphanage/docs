@@ -48,6 +48,9 @@
           <a href="#hydration-modes">Hydration Modes</a>
         </li>
         <li>
+          <a href="#table-prefixes">Table prefixes</a>
+        </li>
+        <li>
           <a href="#identity-columns">Auto-generated identity columns</a>
         </li>
         <li>
@@ -1257,7 +1260,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-Hydration mode can also be passed as a parameter of 'find':
+Hydration mode can also be passed as a parameter of `find`:
 
 ```php
 <?php
@@ -1274,6 +1277,29 @@ $robots = Robots::find(
 foreach ($robots as $robot) {
     echo $robot['year'], PHP_EOL;
 }
+```
+
+<a name='table-prefixes'></a>
+
+## Table prefixes
+
+If you want all your tables to have certain prefix and without setting source in all models you can use the `Phalcon\Mvc\Model\Manager` and the method `setModelPrefix()`:
+
+```php
+<?php
+
+use Phalcon\Mvc\Model\Manager;
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+
+}
+
+$manager = new Manager();
+$manager->setModelPrefix('wp_');
+$robots = new Robots(null, null, $manager);
+echo $robots->getSource(); // will return wp_robots
 ```
 
 <a name='identity-columns'></a>
@@ -1543,6 +1569,64 @@ var_dump($robot->hasChanged('name')); // true
 var_dump($robot->hasChanged('type')); // false
 ```
 
+Snapshots are updated on model creation/update. Using `hasUpdated()` and `getUpdatedFields()` can be used to check if fields were updated after a create/save/update but it could potentially cause problems to your application if you execute `getChangedFields()` in `afterUpdate()`, `afterSave()` or `afterCreate()`.
+
+You can disable this functionality by using:
+
+```php
+Phalcon\Mvc\Model::setup(
+    [
+        'updateSnapshotOnSave' => false,
+    ]
+);
+```
+
+or if you prefer set this in your `php.ini`
+
+```ini
+phalcon.orm.update_snapshot_on_save = 0
+```
+
+Using this functionality will have the following effect:
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+class User extends Model
+{
+  public function initialize()
+  {
+      $this->keepSnapshots(true);
+  }
+}
+
+$user       = new User();
+$user->name = 'Test User';
+$user->create();
+var_dump($user->getChangedFields());
+$user->login = 'testuser';
+var_dump($user->getChangedFields());
+$user->update();
+var_dump($user->getChangedFields());
+```
+
+On Phalcon 3.1.0 and later it is:
+
+```php
+array(0) {
+}
+array(1) {
+[0]=> 
+    string(5) "login"
+}
+array(0) {
+}
+```
+
+`getUpdatedFields()` will properly return updated fields or as mentioned above you can go back to the previous behavior by setting the relevant ini value.
+
 <a name='different-schemas'></a>
 
 ## Pointing to a different schema
@@ -1753,14 +1837,29 @@ Model::setup(
 
 The available options are:
 
-| Option             | Description                                                                               | Default |
-| ------------------ | ----------------------------------------------------------------------------------------- |:-------:|
-| events             | Enables/Disables callbacks, hooks and event notifications from all the models             | `true`  |
-| columnRenaming     | Enables/Disables the column renaming                                                      | `true`  |
-| notNullValidations | The ORM automatically validate the not null columns present in the mapped table           | `true`  |
-| virtualForeignKeys | Enables/Disables the virtual foreign keys                                                 | `true`  |
-| phqlLiterals       | Enables/Disables literals in the PHQL parser                                              | `true`  |
-| lateStateBinding   | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method | `false` |
+| Option                | Description                                                                               | Default |
+| --------------------- | ----------------------------------------------------------------------------------------- |:-------:|
+| astCache              | Enables/Disables callbacks, hooks and event notifications from all the models             | `null`  |
+| cacheLevel            | Sets the cache level for the ORM                                                          |   `3`   |
+| castOnHydrate         |                                                                                           | `false` |
+| columnRenaming        | Enables/Disables the column renaming                                                      | `true`  |
+| disableAssignSetters  | Allow disabling setters in your model                                                     | `false` |
+| enableImplicitJoins   |                                                                                           | `true`  |
+| enableLiterals        |                                                                                           | `true`  |
+| escapeIdentifiers     |                                                                                           | `true`  |
+| events                | Enables/Disables callbacks, hooks and event notifications from all the models             | `true`  |
+| exceptionOnFailedSave | Enables/Disables throwing an exception when there is a failed `save()`                    | `false` |
+| forceCasting          |                                                                                           | `false` |
+| ignoreUnknownColumns  | Enables/Disables ignoring unknown columns on the model                                    | `false` |
+| lateStateBinding      | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method | `false` |
+| notNullValidations    | The ORM automatically validate the not null columns present in the mapped table           | `true`  |
+| parserCache           |                                                                                           | `null`  |
+| phqlLiterals          | Enables/Disables literals in the PHQL parser                                              | `true`  |
+| uniqueCacheId         |                                                                                           |   `3`   |
+| updateSnapshotOnSave  | Enables/Disables updating snapshots on `save()`                                           | `true`  |
+| virtualForeignKeys    | Enables/Disables the virtual foreign keys                                                 | `true`  |
+
+<h5 class='alert alert-warning'><em>NOTE</em> <code>Phalcon\\Mvc\\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding <code>phalcon.orm.disable_assign_setters = 1</code> to your ini file, it will just simply use <code>this-&gt;property = value</code>.</h5>
 
 <a name='stand-alone-component'></a>
 
