@@ -14,7 +14,7 @@
     - [Настройка веб-сервера](/[[language]]/[[version]]/webserver-setup) 
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
-- Environments 
+- Окружение 
     - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)
@@ -43,7 +43,6 @@
     - [PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
     - [Models](/[[language]]/[[version]]/db-models) 
-        - [Продвинутое использование](/[[language]]/[[version]]/db-models-advanced)
         - [Поведения](/[[language]]/[[version]]/db-models-behaviors)
         - [Cache](/[[language]]/[[version]]/db-models-cache)
         - [Events](/[[language]]/[[version]]/db-models-events)

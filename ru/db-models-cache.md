@@ -1,30 +1,30 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">ORM Caching</a> <ul>
+      <a href="#overview">Кэширование в ORM</a> <ul>
         <li>
-          <a href="#caching-resultsets">Caching Resultsets</a>
+          <a href="#caching-resultsets">Кэширование наборов данных</a>
         </li>
         <li>
-          <a href="#forcing-cache">Forcing Cache</a>
+          <a href="#forcing-cache">Форсирование кэша</a>
         </li>
         <li>
-          <a href="#caching-phql-queries">Caching PHQL Queries</a>
+          <a href="#caching-phql-queries">Кэширование PHQL запросов</a>
         </li>
         <li>
-          <a href="#reusable-related-records">Reusable Related Records</a>
+          <a href="#reusable-related-records">Многократное использование связанных записей</a>
         </li>
         <li>
-          <a href="#caching-related-records">Caching Related Records</a>
+          <a href="#caching-related-records">Кэширование связанных записей</a>
         </li>
         <li>
-          <a href="#caching-related-records-recursively">Caching Related Records Recursively</a>
+          <a href="#caching-related-records-recursively">Рекурсивное кэшировоние связанных записей</a>
         </li>
         <li>
-          <a href="#caching-based-on-conditions">Caching based on Conditions</a>
+          <a href="#caching-based-on-conditions">Кэширование на основе условий</a>
         </li>
         <li>
-          <a href="#caching-phql-execution-plan">Caching PHQL execution plan</a>
+          <a href="#caching-phql-execution-plan">Кэширования плана выполнения PHQL</a>
         </li>
       </ul>
     </li>
@@ -224,9 +224,9 @@ class Robots extends Model
 }
 ```
 
-Accessing the database is several times slower than calculating a cache key. You're free to implement any key generation strategy you find to better for your needs. Note that a good key avoids collisions as much as possible - meaning that different keys should return unrelated records.
+Доступ к базе данных в несколько раз медленнее, чем вычисление ключа кэша. Вы вольны в реализации стратегии генерации ключа, которая лучше подходит для ваших задач. Следует отметить, что хороший ключ позволяет избежать конфликтов, насколько это возможно, это означает, что разные ключи возвращают при поиске независимые наборы записей.
 
-This gives you full control on how the cache should be implemented for each model. If this strategy is common to several models you can create a base class for all of them:
+Это дает вам полный контроль над тем, как кэши должны быть реализованы для каждой модели, эта стратегия может быть общей для нескольких моделей, которую можно вынести в отдельный базовый класс для всех подобных классов:
 
 ```php
 <?php
@@ -237,22 +237,22 @@ class CacheableModel extends Model
 {
     protected static function _createKey($parameters)
     {
-        // ... Create a cache key based on the parameters
+        // ... Создание ключа кэша на основе параметров
     }
 
     public static function find($parameters = null)
     {
-        // ... Custom caching strategy
+        // ... Некоторая произвольная стратегия кэширования
     }
 
     public static function findFirst($parameters = null)
     {
-        // ... Custom caching strategy
+        // ... Некоторая произвольная стратегия кэширования
     }
 }
 ```
 
-Then use this class as base class for each `Cacheable` model:
+Затем используйте этот класс в качестве базового класса для каждой модели `Cacheable`:
 
 ```php
 <?php

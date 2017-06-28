@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">ORM Caching</a> <ul>
+      <a href="#overview">Cache ORM</a> <ul>
         <li>
-          <a href="#caching-resultsets">Caching Resultsets</a>
+          <a href="#caching-resultsets">Cache pro databázové výsledky (Resultset)</a>
         </li>
         <li>
           <a href="#forcing-cache">Forcing Cache</a>

@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#architecture">The MVC Architecture</a> <ul>
+      <a href="#architecture">Η αρχιτεκτονική MVC</a> <ul>
         <li>
           <a href="#models">Models</a>
         </li>
