@@ -66,13 +66,16 @@
               <a href="#adapters-backend-apc">Параметры APC бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Параметры Mongo бэкэнда</a>
+              <a href="#adapters-backend-apcu">APCU Backend Options</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">Параметры XCache бэкэнда</a>
+              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Параметры Redis бэкэнда</a>
+              <a href="#adapters-backend-xcache">XCache Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-redis">Redis Backend Options</a>
             </li>
           </ul>
         </li>
@@ -546,8 +549,8 @@ $cache->save('my-key', $data);
 
 Доступные бэкэнд адаптеры приведены в таблице:
 
-| Adapter                              | Description                                                                  | Информация                                | Необходимые расширения                             |
-| ------------------------------------ | ---------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
+| Adapter                                 | Description                                                                  | Информация                                | Необходимые расширения                             |
+| --------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
 | `Phalcon\Cache\Backend\Apc`          | Сохраняет данные в Alternative PHP Cache (APC).                              | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
 | `Phalcon\Cache\Backend\Apcu`         | Сохраняет данные в APCu (APC без кеширования опкода).                        | [APCu](http://php.net/apcu)               | [APCu](http://pecl.php.net/package/APCu)           |
 | `Phalcon\Cache\Backend\File`         | Сохраняет данные в локальный текстовый файл.                                 |                                           |                                                    |
@@ -556,6 +559,8 @@ $cache->save('my-key', $data);
 | `Phalcon\Cache\Backend\Mongo`        | Сохраняет данные в базе данных Mongo.                                        | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
 | `Phalcon\Cache\Backend\Redis`        | Сохраняет данные в Redis.                                                    | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Сохраняет данные в XCache.                                                   | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
+
+<h5 class='alert alert-warning'><em>NOTE</em> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.2.0 you can switch your <code>*\\Apc</code> classes to <code>*\\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all <code>*\\Apc</code> classes.</h5>
 
 <a name='adapters-backend-custom'></a>
 
@@ -657,24 +662,34 @@ $cache = new Libmemcached(
 | -------- | ----------------------------------------------------------- |
 | `prefix` | A prefix that is automatically prepended to the cache keys. |
 
+<a name='adapters-backend-apcu'></a>
+
+### APCU Backend Options
+
+This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
+
+| Option   | Description                                                 |
+| -------- | ----------------------------------------------------------- |
+| `prefix` | A prefix that is automatically prepended to the cache keys. |
+
 <a name='adapters-backend-mongo'></a>
 
 ### Mongo Backend Options
 
-Данные будут сохранены на MongoDB сервере. Доступные опции:
+This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
 
 | Option       | Description                                                 |
 | ------------ | ----------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `server`     | Строка подключения к MongoDB.                               |
-| `db`         | Название базы данных.                                       |
-| `collection` | Коллекция в базе данных.                                    |
+| `server`     | A MongoDB connection string.                                |
+| `db`         | Mongo database name.                                        |
+| `collection` | Mongo collection in the database.                           |
 
 <a name='adapters-backend-xcache'></a>
 
 ### XCache Backend Options
 
-Данные будут сохранены в [XCache](http://xcache.lighttpd.net/). Доступна лишь одна опция:
+This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
 
 | Option   | Description                                                 |
 | -------- | ----------------------------------------------------------- |
@@ -684,15 +699,15 @@ $cache = new Libmemcached(
 
 ### Redis Backend Options
 
-Данные будут сохранены на [Redis](http://redis.io/) сервере. Доступные опции:
+This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
 
 | Option       | Description                                                    |
 | ------------ | -------------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys.    |
-| `host`       | Хост Redis сервера.                                            |
-| `port`       | Порт Redis сервера.                                            |
-| `auth`       | Пароль для аутентификации на защищённом паролем Redis сервере. |
-| `persistent` | Использовать постоянное соединение к Redis серверу.            |
-| `index`      | Индекс базы данных.                                            |
+| `host`       | Redis host.                                                    |
+| `port`       | Redis port.                                                    |
+| `auth`       | Password to authenticate to a password-protected Redis server. |
+| `persistent` | Create a persistent connection to Redis.                       |
+| `index`      | The index of the Redis database to use.                        |
 
-Существует еще несколько типов адаптеров конфигурации, их можно получить в “Инкубаторе” — [Phalcon Incubator](https://github.com/phalcon/incubator).
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
