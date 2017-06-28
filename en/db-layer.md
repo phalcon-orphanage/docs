@@ -6,6 +6,7 @@
     - [Database Dialects](#dialects)
         - [Implementing your own dialects](#dialects-custom)
     - [Connecting to Databases](#connection)
+        - [Connecting using Factory](#connection-factory)
     - [Setting up additional PDO options](#options)
     - [Finding Rows](#finding-rows)
     - [Binding Parameters](#binding-parameters)
@@ -131,6 +132,43 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
 );
 ```
 
+<a name='connection-factory'></a>
+## Connecting using Factory
+You can also use a simple `ini` file to configure/connect your `db` service to your database. 
+  
+```ini
+[database]
+host = TEST_DB_MYSQL_HOST
+username = TEST_DB_MYSQL_USER
+password = TEST_DB_MYSQL_PASSWD
+dbname = TEST_DB_MYSQL_NAME
+port = TEST_DB_MYSQL_PORT
+charset = TEST_DB_MYSQL_CHARSET
+adapter = mysql
+```
+
+```php
+<?php
+
+use Phalcon\Config\Adapter\Ini;
+use Phalcon\Di;
+use Phalcon\Db\Adapter\Pdo\Factory;
+
+$di = new Di();
+$config = new Ini('config.ini');
+
+$di->set('config', $config);
+
+$di->set(
+    'db', 
+    function () {
+        return Factory::load($this->config->database);
+    }
+);
+```
+  
+The above will return the correct database instance and also has the advantage that you can change the connection credentials or even the database adapter without changing a single line of code in your application.
+  
 <a name='finding-rows'></a>
 ## Finding Rows
 `Phalcon\Db` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
