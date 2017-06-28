@@ -58,7 +58,7 @@ echo $config->path('test.parent.property');                 // displays 1
 
 ## Native Arrays
 
-Birinci örnek, doğal dizileri `Phalcon\Config` nesnelerine dönüştürmeyi gösterir. Bu seçenek, bu istek sırasında herhangi bir dosya okunmadığından en iyi performansı sunar.
+The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
 
 ```php
 <?php
@@ -88,7 +88,7 @@ echo $config->database->username, "\n";
 echo $config->mysetting, "\n";
 ```
 
-Projenizi daha iyi organize etmek istiyorsanız, diziyi başka bir dosyaya kaydedebilir ve sonra okuyabilirsiniz.
+If you want to better organize your project you can save the array in another file and then read it.
 
 ```php
 <?php
@@ -104,7 +104,7 @@ $config = new Config($settings);
 
 ## File Adapters
 
-Mevcut bağdaştırıcılar şunlardır:
+The adapters available are:
 
 | Class                            | Description                                                                                                             |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -117,7 +117,7 @@ Mevcut bağdaştırıcılar şunlardır:
 
 ## Reading INI Files
 
-Ini dosyaları ayarları depolamanın yaygın bir yoludur. `Phalcon\Config`, bu dosyaları okumak için optimize edilmiş PHP işlevi `parse_ini_file` kullanır. Dosya bölümleri, kolay erişim için alt ayarlara ayrıştırılır.
+Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
 
 ```ini
 [database]
@@ -136,7 +136,7 @@ viewsDir       = '../app/views/'
 metadata.adapter  = 'Memory'
 ```
 
-Dosyayı aşağıdaki gibi okuyabilirsiniz:
+You can read the file as follows:
 
 ```php
 <?php
@@ -154,7 +154,7 @@ echo $config->models->metadata->adapter, "\n";
 
 ## Merging Configurations
 
-`Phalcon\Config`, bir yapılandırma nesnesinin özelliklerini tekrar tekrar birleştirir. Yeni özellikler eklendi ve mevcut özellikler güncellendi.
+`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
 
 ```php
 <?php
@@ -187,7 +187,7 @@ $config->merge($config2);
 print_r($config);
 ```
 
-Yukarıdaki kod aşağıdakileri üretir:
+The above code produces the following:
 
 ```bash
 Phalcon\Config Object

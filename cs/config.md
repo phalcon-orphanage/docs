@@ -58,7 +58,7 @@ echo $config->path('test.parent.property');                 // displays 1
 
 ## Native Arrays
 
-Na prvnímpříkladu si ukážeme jak zkonvertovat klasické Php pole do `Phalcon\Config` objektů. Tato možnost nabízí nejlepší výkon protože nenačítá žádné soubory v průběhu požadavku.
+The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
 
 ```php
 <?php
@@ -88,7 +88,7 @@ echo $config->database->username, "\n";
 echo $config->mysetting, "\n";
 ```
 
-Pro lepší organizaci můžete konfigurační pole uložit do jiného souboru a poté ho načíst.
+If you want to better organize your project you can save the array in another file and then read it.
 
 ```php
 <?php
@@ -104,7 +104,7 @@ $config = new Config($settings);
 
 ## File Adapters
 
-Dostupné adaptéry jsou:
+The adapters available are:
 
 | Class                            | Description                                                                                             |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -117,7 +117,7 @@ Dostupné adaptéry jsou:
 
 ## Reading INI Files
 
-Ini soubory jsou běžný způsob pro ulkádání konfiguračních hodnot. `Phalcon\Config` používá optimalizovanou PHP funkci `parse_ini_file` pro čtení těchto souborů. Sekce v Ini souborech (uzavřené do hranatých závorek) jsou parsovány jako vnořený objekt pro snadný přístup.
+Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
 
 ```ini
 [database]
@@ -136,7 +136,7 @@ viewsDir       = '../app/views/'
 metadata.adapter  = 'Memory'
 ```
 
-Naní můžete tentou soubor přečíst takto:
+You can read the file as follows:
 
 ```php
 <?php
@@ -154,7 +154,7 @@ echo $config->models->metadata->adapter, "\n";
 
 ## Merging Configurations
 
-`Phalcon\Config` umožňuje rekurzivní slučování atributů a hodnot z jednoho konfiguračního objektu do jiného. Nové atributy jsou přidány a existující jsou aktualizovány.
+`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
 
 ```php
 <?php
@@ -187,7 +187,7 @@ $config->merge($config2);
 print_r($config);
 ```
 
-Výše uvedený kód vypíše toto:
+The above code produces the following:
 
 ```bash
 Phalcon\Config Object
@@ -210,7 +210,7 @@ There are more adapters available for this components in the [Phalcon Incubator]
 
 ## Nested Configuration
 
-Pro přístup k vnořeným nastavením můžete také použít metodu `Phalcon\Config::path`. Tato metoda dovoluje získat vnořené konfigurace bez očetřování zda li některé části cesty chybí. Podívejte se na příklad:
+Also to get nested configuration you can use the `Phalcon\Config::path` method. This method allows to obtain nested configurations, without caring about the fact that some parts of the path are absent. Let's look at an example:
 
 ```php
 <?php
@@ -241,13 +241,13 @@ $config = new Config(
    ]
 );
 
-// Použiji tečku jako oddělovač
+// Using dot as delimiter
 $config->path('test.parent.property2');    // yeah
 $config->path('database.host', null, '.'); // localhost
 
 $config->path('test.parent'); // Phalcon\Config
 
-// Použiji lomítko jako oddělovač
+// Using slash as delimiter
 $config->path('test/parent/property3', 'no', '/'); // no
 
 Config::setPathDelimiter('/');
@@ -258,7 +258,7 @@ $config->path('test/parent/property2'); // yeah
 
 ## Injecting Configuration Dependency
 
-V controllerech se může konfigurace použít jako služba. Aby tak mohlo být, přidejte následující kód k definici Di kontejneru.
+You can inject your configuration to the controllers by adding it as a service. To be able to do that, add following code inside your dependency injector script.
 
 ```php
 <?php
@@ -266,7 +266,7 @@ V controllerech se může konfigurace použít jako služba. Aby tak mohlo být,
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config;
 
-// Vytvoření DI kontejneru
+// Create a DI
 $di = new FactoryDefault();
 
 $di->set(
@@ -279,7 +279,7 @@ $di->set(
 );
 ```
 
-Nyní ve svém controlleru můžete přistoupit ke konfiguraci za použití Di funkcionality použitím názvu `config` jako následující kód:
+Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
 
 ```php
 <?php
