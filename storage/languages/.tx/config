@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+
+[phalcon.phalcon-website]
+source_file = en.json
+source_lang = en
+type = json
+file_filter = <lang>.json

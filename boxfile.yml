@@ -1,0 +1,41 @@
+run.config:
+  engine: php  
+  engine.config:    
+    runtime: php-7.1    
+    document_root: public
+    allow_url_fopen: 'Off'
+    disable_functions:
+      - exec
+      - shell_exec
+      - system
+    expose_php: 'Off'
+    max_execution_time: 30
+    max_input_time: 60
+    memory_limit: '128M'
+    error_reporting: E_ALL
+    display_errors: 'stderr'
+    register_globals: 'Off'
+    register_argc_argv: 'Off'
+    max_input_vars: 1000
+    default_mimetype: 'text/html'
+    default_locale: 'en_US'
+    session_save_handler: 'files'
+    session_save_path: '/tmp/nanobox/sessions'
+    session_length: 3600
+    session_autostart: 'false'
+    date_timezone: 'US/Eastern'
+    iconv_internal_encoding: 'UTF-8'
+    extensions:
+      - curl
+      - dom
+      - json
+      - mbstring
+      - opcache
+      - phalcon
+      - simplexml
+      - tokenizer
+      - xdebug
+      - xml
+      - xmlwriter
+  extra_steps:
+    - echo "alias phalcon=\'phalcon.php\'" >> /data/var/home/gonano/.bashrc

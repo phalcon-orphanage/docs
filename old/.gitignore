@@ -1,0 +1,14 @@
+.project
+build
+
+*/_build/
+
+_templates
+*.komodoproject
+*.sublime-*
+.pydevproject
+.idea/
+
+.DS_Store
+
+/nbproject/
