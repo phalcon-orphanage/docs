@@ -69,13 +69,13 @@
               <a href="#adapters-backend-apcu">APCU Backend Options</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
+              <a href="#adapters-backend-mongo">Параметры Mongo бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">XCache Backend Options</a>
+              <a href="#adapters-backend-xcache">Параметры XCache бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Redis Backend Options</a>
+              <a href="#adapters-backend-redis">Параметры Redis бэкэнда</a>
             </li>
           </ul>
         </li>
@@ -676,20 +676,20 @@ This backend will store cached content on Alternative PHP Cache ([APCU](http://p
 
 ### Mongo Backend Options
 
-This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
+Данные будут сохранены на MongoDB сервере. Доступные опции:
 
 | Option       | Description                                                 |
 | ------------ | ----------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `server`     | A MongoDB connection string.                                |
-| `db`         | Mongo database name.                                        |
-| `collection` | Mongo collection in the database.                           |
+| `server`     | Строка подключения к MongoDB.                               |
+| `db`         | Название базы данных.                                       |
+| `collection` | Коллекция в базе данных.                                    |
 
 <a name='adapters-backend-xcache'></a>
 
 ### XCache Backend Options
 
-This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
+Данные будут сохранены в [XCache](http://xcache.lighttpd.net/). Доступна лишь одна опция:
 
 | Option   | Description                                                 |
 | -------- | ----------------------------------------------------------- |
@@ -699,15 +699,15 @@ This backend will store cached content on XCache ([XCache](http://xcache.lighttp
 
 ### Redis Backend Options
 
-This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
+Данные будут сохранены на [Redis](http://redis.io/) сервере. Доступные опции:
 
 | Option       | Description                                                    |
 | ------------ | -------------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys.    |
-| `host`       | Redis host.                                                    |
-| `port`       | Redis port.                                                    |
-| `auth`       | Password to authenticate to a password-protected Redis server. |
-| `persistent` | Create a persistent connection to Redis.                       |
-| `index`      | The index of the Redis database to use.                        |
+| `host`       | Хост Redis сервера.                                            |
+| `port`       | Порт Redis сервера.                                            |
+| `auth`       | Пароль для аутентификации на защищённом паролем Redis сервере. |
+| `persistent` | Использовать постоянное соединение к Redis серверу.            |
+| `index`      | Индекс базы данных.                                            |
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+Существует еще несколько типов адаптеров конфигурации, их можно получить в “Инкубаторе” — [Phalcon Incubator](https://github.com/phalcon/incubator).
