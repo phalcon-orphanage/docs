@@ -495,6 +495,7 @@ The events available in Phalcon are:
 | Dispatcher         | `dispatch:beforeExecuteRoute`       |
 | Dispatcher         | `dispatch:beforeDispatch`           |
 | Dispatcher         | `dispatch:beforeDispatchLoop`       |
+| Dispatcher         | `dispatch:beforeForward`            |
 | Dispatcher         | `dispatch:beforeNotFoundAction`     |
 | Loader             | `loader:afterCheckClass`            |
 | Loader             | `loader:beforeCheckClass`           |

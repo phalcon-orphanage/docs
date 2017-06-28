@@ -31,6 +31,29 @@
 
 Komponenta `Phalcon\Config` se používá pro konvertování různých formátů konfiguračních souborů (s použitím adaptérů) do PHP objektů pro pouřití v aplikaci.
 
+Values can be obtained from `Phalcon\Config` as follows:
+
+```php
+<?php
+
+use Phalcon\Config;
+
+$config = new Config(
+    [
+        'test' => [
+            'parent' => [
+                'property'  => 1,
+                'property2' => 'yeah',
+            ],
+        ],  
+    ]
+);
+
+echo $config->get('test')->get('parent')->get('property');  // displays 1
+echo $config->test->parent->property;                       // displays 1
+echo $config->path('test.parent.property');                 // displays 1
+```
+
 <a name='native-arrays'></a>
 
 ## Native Arrays
@@ -83,8 +106,8 @@ $config = new Config($settings);
 
 Dostupné adaptéry jsou:
 
-| Class                         | Description                                                                                             |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------- |
+| Class                            | Description                                                                                             |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `Phalcon\Config\Adapter\Ini`  | Použivá INI soubory jako úložiště nastavení. Tento adaptér interně využívá PHP funkci `parse_ini_file`. |
 | `Phalcon\Config\Adapter\Json` | Používá JSON soubory jako úložiště nastavení.                                                           |
 | `Phalcon\Config\Adapter\Php`  | Používá vícerozměrné PHP pole jako úložiště nastavení. Tento adaptér nabízí nejlepší výkon.             |

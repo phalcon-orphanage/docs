@@ -66,6 +66,9 @@
               <a href="#adapters-backend-apc">Параметры APC бэкэнда</a>
             </li>
             <li>
+              <a href="#adapters-backend-apcu">APCU Backend Options</a>
+            </li>
+            <li>
               <a href="#adapters-backend-mongo">Параметры Mongo бэкэнда</a>
             </li>
             <li>
@@ -546,8 +549,8 @@ $cache->save('my-key', $data);
 
 Доступные бэкэнд адаптеры приведены в таблице:
 
-| Adapter                              | Description                                                                  | Информация                                | Необходимые расширения                             |
-| ------------------------------------ | ---------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
+| Adapter                                 | Description                                                                  | Информация                                | Необходимые расширения                             |
+| --------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
 | `Phalcon\Cache\Backend\Apc`          | Сохраняет данные в Alternative PHP Cache (APC).                              | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
 | `Phalcon\Cache\Backend\Apcu`         | Сохраняет данные в APCu (APC без кеширования опкода).                        | [APCu](http://php.net/apcu)               | [APCu](http://pecl.php.net/package/APCu)           |
 | `Phalcon\Cache\Backend\File`         | Сохраняет данные в локальный текстовый файл.                                 |                                           |                                                    |
@@ -556,6 +559,8 @@ $cache->save('my-key', $data);
 | `Phalcon\Cache\Backend\Mongo`        | Сохраняет данные в базе данных Mongo.                                        | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
 | `Phalcon\Cache\Backend\Redis`        | Сохраняет данные в Redis.                                                    | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Сохраняет данные в XCache.                                                   | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
+
+<h5 class='alert alert-warning'><em>NOTE</em> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.2.0 you can switch your <code>*\\Apc</code> classes to <code>*\\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all <code>*\\Apc</code> classes.</h5>
 
 <a name='adapters-backend-custom'></a>
 
@@ -652,6 +657,16 @@ $cache = new Libmemcached(
 ### APC Backend Options
 
 Данные будут сохранены в Alternative PHP Cache ([APC](http://php.net/apc)). Доступна лишь одна опция:
+
+| Option   | Description                                                 |
+| -------- | ----------------------------------------------------------- |
+| `prefix` | A prefix that is automatically prepended to the cache keys. |
+
+<a name='adapters-backend-apcu'></a>
+
+### APCU Backend Options
+
+This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
 
 | Option   | Description                                                 |
 | -------- | ----------------------------------------------------------- |

@@ -31,6 +31,29 @@
 
 `Phalcon\Config`, bir uygulamada kullanmak üzere çeşitli biçimlerdeki yapılandırma dosyalarını (bağdaştırıcıları kullanarak) PHP nesnelerine dönüştürmek için kullanılan bir bileşendir.
 
+Values can be obtained from `Phalcon\Config` as follows:
+
+```php
+<?php
+
+use Phalcon\Config;
+
+$config = new Config(
+    [
+        'test' => [
+            'parent' => [
+                'property'  => 1,
+                'property2' => 'yeah',
+            ],
+        ],  
+    ]
+);
+
+echo $config->get('test')->get('parent')->get('property');  // displays 1
+echo $config->test->parent->property;                       // displays 1
+echo $config->path('test.parent.property');                 // displays 1
+```
+
 <a name='native-arrays'></a>
 
 ## Native Arrays
@@ -83,8 +106,8 @@ $config = new Config($settings);
 
 Mevcut bağdaştırıcılar şunlardır:
 
-| Class                         | Description                                                                                                             |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Class                            | Description                                                                                                             |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `Phalcon\Config\Adapter\Ini`  | INI dosyalarını ayarları depolamak için kullanır. Dahili olarak, adaptör PHP işlevi `parse_ini_file`'yi kullanmaktadır. |
 | `Phalcon\Config\Adapter\Json` | Ayarları saklamak için JSON dosyalarını kullanır.                                                                       |
 | `Phalcon\Config\Adapter\Php`  | Ayarları depolamak için PHP çok boyutlu dizileri kullanır. Bu adaptör en iyi performansı sunar.                         |

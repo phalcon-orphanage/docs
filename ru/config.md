@@ -31,6 +31,29 @@
 
 `Phalcon\Config` — это компонент, используемый для преобразования файлов конфигурации различных форматов (с помощью адаптеров) в PHP объекты для использования в приложении.
 
+Values can be obtained from `Phalcon\Config` as follows:
+
+```php
+<?php
+
+use Phalcon\Config;
+
+$config = new Config(
+    [
+        'test' => [
+            'parent' => [
+                'property'  => 1,
+                'property2' => 'yeah',
+            ],
+        ],  
+    ]
+);
+
+echo $config->get('test')->get('parent')->get('property');  // displays 1
+echo $config->test->parent->property;                       // displays 1
+echo $config->path('test.parent.property');                 // displays 1
+```
+
 <a name='native-arrays'></a>
 
 ## Native Arrays
@@ -83,8 +106,8 @@ $config = new Config($settings);
 
 Доступные адаптеры:
 
-| Class                         | Description                                                                                         |
-| ----------------------------- | --------------------------------------------------------------------------------------------------- |
+| Class                            | Description                                                                                         |
+| -------------------------------- | --------------------------------------------------------------------------------------------------- |
 | `Phalcon\Config\Adapter\Ini`  | Использует INI-файлы для хранения конфигурации. Использует PHP-функцию `parse_ini_file`.            |
 | `Phalcon\Config\Adapter\Json` | Использует JSON-файлы для хранения конфигурации.                                                    |
 | `Phalcon\Config\Adapter\Php`  | Использует многомерные PHP-массивы для хранения конфигурации. Этот адаптер наиболее производителен. |

@@ -1,5 +1,7 @@
 # Class **Phalcon\\Assets\\Resource**
 
+*implements* [Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface)
+
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Represents an asset resource
@@ -86,3 +88,7 @@ Returns the complete location where the resource is located
 public **getRealTargetPath** ([*mixed* $basePath])
 
 Returns the complete location where the resource must be written
+
+public **getResourceKey** ()
+
+Gets the resource's key.

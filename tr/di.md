@@ -38,6 +38,9 @@
             <li>
               <a href="#array-syntax">Array Syntax</a>
             </li>
+            <li>
+              <a href="#loading-from-yaml">Loading from YAML</a>
+            </li>
           </ul>
         </li>
         
@@ -72,6 +75,9 @@
         </li>
         <li>
           <a href="#service-name-conventions">Service Name Conventions</a>
+        </li>
+        <li>
+          <a href="#service-provider">Service Providers</a>
         </li>
         <li>
           <a href="#implementing-your-own-di">Implementing your own DI</a>
@@ -973,6 +979,28 @@ Setting a service by a string is simple, but lacks flexibility. Setting services
 
 `Phalcon\Di` offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
 
+<a name='loading-from-yaml'></a>
+
+### Loading services from YAML files
+
+This feature will let you set your services in `yaml` files or just in plain php. For example you can load services using a `yaml` file like this:
+
+```yaml
+config:
+  className: \Phalcon\Config
+  shared: true
+```
+
+```php
+<?php
+
+use Phalcon\Di;
+
+$di = new Di();
+$di->loadFromYaml('services.yml');
+$di->get('config'); // will properly return config service
+```
+
 <a name='resolving-services'></a>
 
 ## Resolving Services
@@ -1232,6 +1260,38 @@ class SomeComponent
         $session = Di::getDefault()->getSession();
     }
 }
+```
+
+<a name='service-providers'></a>
+
+## Service Providers
+
+Using the `ServiceProviderInterface` you now register services by context. You can move all your `$di->set()` calls to classes like this:
+
+```php
+<?php
+
+use Phalcon\Di\ServiceProviderInterface;
+use Phalcon\DiInterface;
+use Phalcon\Di;
+use Phalcon\Config\Adapter\Ini;
+
+class SomeServiceProvider implements ServiceProviderInterface
+{
+    public function register(DiInterface $di)
+    {
+        $di->set(
+            'config', 
+            function () {
+                return new Ini('config.ini');
+            }
+        );
+    }
+}
+
+$di = new Di();
+$di->register(new SomeServiceProvider());
+var_dump($di->get('config')); // will return properly our config
 ```
 
 <a name='factory-default-di'></a>

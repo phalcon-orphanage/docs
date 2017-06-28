@@ -34,22 +34,22 @@
 
 Модели позволяют реализовать события, которые будут срабатывать при выполнении вставки/обновления/удаления. Другими словами, события помогают определить бизнес-логику для определенной модели. Ниже приведены события, поддерживаемые `Phalcon\Mvc\Model` и порядок их выполнения:
 
-| Операция           | Name                     |  Can stop operation?  | Пояснение                                                                                                                        |
-| ------------------ | ------------------------ |:---------------------:| -------------------------------------------------------------------------------------------------------------------------------- |
-| Вставка/Обновление | beforeValidation         |          ДА           | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи                                                    |
-| Вставка            | beforeValidationOnCreate |          YES          | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции вставки                    |
-| Обновление         | beforeValidationOnUpdate |          YES          | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления                 |
-| Inserting/Updating | validation               |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made |
-| Inserting/Updating | onValidationFails        | YES (already stopped) | Выполняется после обнаружения нарушения целостности                                                                              |
-| Inserting          | afterValidationOnCreate  |          YES          | Выполняется после проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции вставки                 |
-| Updating           | afterValidationOnUpdate  |          YES          | Выполняется после проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления              |
-| Inserting/Updating | afterValidation          |          YES          | Выполняется после проверки поля на не нулевую/пустую строку или на внешние ключи                                                 |
-| Inserting          | beforeCreate             |          YES          | Runs before the required operation over the database system only when an inserting operation is being made                       |
-| Inserting/Updating | beforeSave               |          YES          | Runs before the required operation over the database system                                                                      |
-| Updating           | beforeUpdate             |          YES          | Runs before the required operation over the database system only when an updating operation is being made                        |
-| Inserting          | afterCreate              |          НЕТ          | Выполняется после требуемой операции над системой базы данных для операции вставки                                               |
-| Updating           | afterUpdate              |          NO           | Runs after the required operation over the database system only when an updating operation is being made                         |
-| Inserting/Updating | afterSave                |          NO           | Runs after the required operation over the database system                                                                       |
+| Операция           | Name                     |  Can stop operation?  | Пояснение                                                                                                                         |
+| ------------------ | ------------------------ |:---------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
+| Inserting          | afterCreate              |          NO           | Runs after the required operation over the database system only when an inserting operation is being made                         |
+| Updating           | afterUpdate              |          NO           | Runs after the required operation over the database system only when an updating operation is being made                          |
+| Inserting/Updating | afterSave                |          NO           | Runs after the required operation over the database system                                                                        |
+| Inserting/Updating | afterValidation          |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
+| Inserting          | afterValidationOnCreate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
+| Updating           | afterValidationOnUpdate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
+| Inserting/Updating | beforeValidation         |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
+| Inserting          | beforeCreate             |          YES          | Runs before the required operation over the database system only when an inserting operation is being made                        |
+| Inserting/Updating | beforeSave               |          YES          | Runs before the required operation over the database system                                                                       |
+| Updating           | beforeUpdate             |          YES          | Runs before the required operation over the database system only when an updating operation is being made                         |
+| Inserting          | beforeValidationOnCreate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
+| Updating           | beforeValidationOnUpdate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
+| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
+| Inserting/Updating | validation               |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
 
 <a name='events-in-models'></a>
 
