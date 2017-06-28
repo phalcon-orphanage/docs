@@ -69,6 +69,9 @@
               <a href="#adapters-backend-apcu">APCU Backend Options</a>
             </li>
             <li>
+              <a href="#adapters-backend-mongo">Параметры Mongo бэкэнда</a>
+            </li>
+            <li>
               <a href="#adapters-backend-mongo">Mongo Backend Options</a>
             </li>
             <li>
