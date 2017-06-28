@@ -1,6 +1,6 @@
 # Class **Phalcon\\Mvc\\Model\\Criteria**
 
-*implements* [Phalcon\Mvc\Model\CriteriaInterface](/en/3.1.2/api/Phalcon_Mvc_Model_CriteriaInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.1.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Mvc\Model\CriteriaInterface](/en/3.2/api/Phalcon_Mvc_Model_CriteriaInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/criteria.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -21,7 +21,7 @@ $robots = Robots::query()
 
 ## Methods
 
-public **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -49,7 +49,7 @@ public **distinct** (*mixed* $distinct)
 
 Sets SELECT DISTINCT / SELECT ALL flag
 
-public [Phalcon\Mvc\Model\Criteria](/en/3.1.2/api/Phalcon_Mvc_Model_Criteria) **columns** (*string* | *array* $columns)
+public [Phalcon\Mvc\Model\Criteria](/en/3.2/api/Phalcon_Mvc_Model_Criteria) **columns** (*string* | *array* $columns)
 
 Sets the columns to be queried
 
@@ -251,9 +251,23 @@ public *array* **getParams** ()
 
 Returns all the parameters defined in the criteria
 
-public static **fromInput** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector, *mixed* $modelName, *array* $data, [*mixed* $operator])
+public static **fromInput** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector, *mixed* $modelName, *array* $data, [*mixed* $operator])
 
-Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like _POST
+Builds a Phalcon\\Mvc\\Model\\Criteria based on an input array like $_POST
+
+public **createBuilder** ()
+
+Creates a query builder from criteria.
+
+```php
+<?php
+
+$builder = Robots::query()
+    ->where("type = :type:")
+    ->bind(["type" => "mechanical"])
+    ->createBuilder();
+
+```
 
 public **execute** ()
 
