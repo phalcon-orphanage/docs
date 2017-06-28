@@ -568,7 +568,7 @@ $eventsManager->attach(
 
 <a name='profiling'></a>
 
-## Profiling SQL Statements
+## Профилирование SQL запросов
 
 `Phalcon\Db` includes a profiling component called `Phalcon\Db\Profiler`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
 

@@ -1291,7 +1291,7 @@ The presence of a `Phalcon\Events\Manager` is essential for middleware to operat
 
 Middleware can be attached to a micro application in 3 different events. Those are:
 
-| Событие | Описание                                       |
+| Событие | Description                                    |
 | ------- | ---------------------------------------------- |
 | before  | Before the handler has been executed           |
 | after   | After the handler has been executed            |

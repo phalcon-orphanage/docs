@@ -27,12 +27,12 @@
 
 <a name='integration'></a>
 
-## Интеграция PHPUnit с Phalcon
+## Integrating PHPUnit with Phalcon
 
-Если вы еще не установили PHPUnit, вы можете сделать это с помощью следующей команды:
+If you don't already have PHPUnit installed, you can do it by using the following command:
 
 ```bash
-composer require phpunit/phpunit:^5.0
+composer require phpunit/phpunit
 ```
 
 или вручную добавить его в `composer.json`:
@@ -40,7 +40,7 @@ composer require phpunit/phpunit:^5.0
 ```json
 <br />{
     "require-dev": {
-        "phpunit/phpunit": "^5.0"
+        "phpunit/phpunit": "5.*"
     }
 }
 ```
@@ -76,15 +76,16 @@ define("ROOT_PATH", __DIR__);
     ROOT_PATH . PATH_SEPARATOR . get_include_path()
 );
 
-// Необходим для phalcon/incubator
+// Required for phalcon/incubator
+// and autoload the dependencies found in composer
 include __DIR__ . "/../vendor/autoload.php";
 
-// Используем автозагрузчик приложений для автозагрузки классов.
+// Use the application autoloader to autoload the classes
 $loader = new Loader();
 
 $loader->registerDirs(
     [
-        ROOT_PATH, 
+        ROOT_PATH,
     ]
 );
 
@@ -94,7 +95,7 @@ $di = new FactoryDefault();
 
 Di::reset();
 
-// Здесь можно добавить любые необходимые сервисы в контейнер зависимостей
+// Add any needed services to the DI here
 
 Di::setDefault($di);
 ```
@@ -109,7 +110,7 @@ Di::setDefault($di);
 composer require phalcon/incubator
 ```
 
-или вручную, добавить его в `composer.json`:
+or by manually adding it to `composer.json`:
 
 ```json
 {
@@ -119,7 +120,7 @@ composer require phalcon/incubator
 }
 ```
 
-Вы также можете склонировать репозиторий, используя ссылку: https://github.com/phalcon/incubator.
+You can also clone the repository using this link: https://github.com/phalcon/incubator.
 
 <a name='phpunit-config'></a>
 

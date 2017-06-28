@@ -18,7 +18,7 @@
 
 <a name='overview'></a>
 
-# Modelové transakce
+# Model Transactions
 
 Pokud proces provádí více databázových operací, je důležité, aby každý krok byl úspěšně dokončen, a byla tak zachována integrita dat. Transakce nabízejí možnost zjistit, zda všechny databázové operace budou provedeny úspěšně předtím, než budou data uložena do databáze.
 
@@ -26,7 +26,7 @@ Transakce ve Phalconu vám umožní potvrdit všechny operace, pokud byly proved
 
 <a name='manual'></a>
 
-## Manualní transakce
+## Manual Transactions
 
 Pokud aplikace používá pouze jedno připojení a transakce nejsou příliš složité, může být transakce vytvořena pouze přesunutím aktuálního připojení do režimu transakce a následným provedením nebo zrušením operace podle úspěšnosti:
 
@@ -73,7 +73,7 @@ class RobotsController extends Controller
 
 <a name='implicit'></a>
 
-## Implicitní transakce
+## Implicit Transactions
 
 Pro uložení existující relace lze použít jejich instance, tento druh operace implicitně vytváří transakci, která zajistí správné uložení dat:
 
@@ -98,7 +98,7 @@ $robot->save();
 
 <a name='isolated'></a>
 
-## Izolované transakce
+## Isolated Transactions
 
 Izolované transakce se provádějí v novém spojení, které zajišťuje, že všechny generované SQL, kontroly cizích klíčů a business rules (aplikační logika) jsou izolovány od hlavního připojení. Tento druh transakce vyžaduje správce transakcí, který globálně spravuje všechny vytvořené transakce a zajišťuje, že byly před ukončením požadavku správně vráceny zpět nebo uloženy:
 
