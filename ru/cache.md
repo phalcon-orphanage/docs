@@ -66,13 +66,13 @@
               <a href="#adapters-backend-apc">Параметры APC бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Параметры Mongo бэкэнда</a>
+              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">Параметры XCache бэкэнда</a>
+              <a href="#adapters-backend-xcache">XCache Backend Options</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Параметры Redis бэкэнда</a>
+              <a href="#adapters-backend-redis">Redis Backend Options</a>
             </li>
           </ul>
         </li>
@@ -169,7 +169,7 @@ If the options
 
 <a name='output-fragments'></a>
 
-## Кэширование выходных фрагментов
+## Caching Output Fragments
 
 Выходные фрагменты — это части HTML или текста, которые кэшируются “как есть” и возвращаются “как есть”. Выходные данные автоматически захватываются из `ob_*` функции или из выходного потока PHP и сохраняются в кэш. Следующий пример демонстрирует такое использование. Он получает сгенерированные выходные данные и сохраняет их в файл. Кэш обновляется каждые 172800 секунд (двое суток).
 
@@ -230,7 +230,7 @@ if ($content === null) {
 
 <a name='arbitrary-data'></a>
 
-## Кэширование произвольных данных
+## Caching Arbitrary Data
 
 Кэширование различных данных, не менее важно для вашего приложения. Кэширование может уменьшить нагрузку базы данных за счет повторного использования сгенерированных данных (но не обновленных), что и увеличивает скорость выполнения вашего приложения.
 
@@ -349,7 +349,7 @@ foreach ($robots as $robot) {
 
 <a name='read'></a>
 
-## Запрос данных из кэша
+## Querying the cache
 
 Все элементы добавляемые в кэш идентифицируются по ключам. В случае с файловым бэкэндом, ключом является название файла. Для получения данных из кэша нам необходимо выполнить запрос к кэшу с указанием уникального ключа. Если ключа не существует, метод вернет значение NULL.
 
@@ -380,7 +380,7 @@ $keys = $cache->queryKeys('my-prefix');
 
 <a name='delete'></a>
 
-## Удаление данных из кэша
+## Deleting data from the cache
 
 Могут возникнуть ситуации, когда вам необходимо принудительно инвалидировать данные в кэше. Единственным требованием для этого является знание необходимого ключа по которому хранятся данные.
 
@@ -400,7 +400,7 @@ foreach ($keys as $key) {
 
 <a name='exists'></a>
 
-## Проверяем наличие кэша
+## Checking cache existence
 
 Существует возможность проверить наличие данных в кэше:
 
@@ -416,7 +416,7 @@ if ($cache->exists('someKey')) {
 
 <a name='lifetime'></a>
 
-## Время жизни
+## Lifetime
 
 `lifetime` — это время, исчисляемое в секундах, которое означает, сколько будут храниться данные в бэкэнде. По умолчанию все данные получают “время жизни”, которое было указано при создании фронтэнд компонента. Вы можете указать другое значение при сохранении или получении данных из кэша:
 
@@ -457,7 +457,7 @@ if ($robots === null) {
 
 <a name='multi-level'></a>
 
-## Многоуровневое кэширование
+## Multi-Level Cache
 
 Эта возможность компонента кэширования позволяет разработчику осуществлять кэш в несколько уровней. Возможность будет полезна при сохранении кэша в нескольких системах кэширования, с разным временем жизни и последующим поочерёдным чтением из них, начиная с самого быстрого (в порядке регистрации) и заканчивая самым медленным, пока срок жизни во всех них не истечет:
 
@@ -521,7 +521,7 @@ $cache->save('my-key', $data);
 
 <a name='adapters-frontend'></a>
 
-## Фронтэнд адаптеры
+## Frontend Adapters
 
 Доступные фронтэнд адаптеры приведены в таблице:
 
@@ -542,7 +542,7 @@ $cache->save('my-key', $data);
 
 <a name='adapters-backend'></a>
 
-## Бэкэнд адаптеры
+## Backend Adapters
 
 Доступные бэкэнд адаптеры приведены в таблице:
 
@@ -552,7 +552,7 @@ $cache->save('my-key', $data);
 | `Phalcon\Cache\Backend\Apcu`         | Сохраняет данные в APCu (APC без кеширования опкода).                        | [APCu](http://php.net/apcu)               | [APCu](http://pecl.php.net/package/APCu)           |
 | `Phalcon\Cache\Backend\File`         | Сохраняет данные в локальный текстовый файл.                                 |                                           |                                                    |
 | `Phalcon\Cache\Backend\Libmemcached` | Сохраняет данные на memcached сервере с использованием memcached расширения. | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
-| `Phalcon\Cache\Backend\Memcache`     | Сохраняет данные на memcached сервере с использованием memcache расширения.  | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| `Phalcon\Cache\Backend\Memcache`     | Stores data to a memcached server.                                           | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
 | `Phalcon\Cache\Backend\Mongo`        | Сохраняет данные в базе данных Mongo.                                        | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
 | `Phalcon\Cache\Backend\Redis`        | Сохраняет данные в Redis.                                                    | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Сохраняет данные в XCache.                                                   | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
@@ -661,20 +661,20 @@ $cache = new Libmemcached(
 
 ### Mongo Backend Options
 
-Данные будут сохранены на MongoDB сервере. Доступные опции:
+This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
 
 | Option       | Description                                                 |
 | ------------ | ----------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `server`     | Строка подключения к MongoDB.                               |
-| `db`         | Название базы данных.                                       |
-| `collection` | Коллекция в базе данных.                                    |
+| `server`     | A MongoDB connection string.                                |
+| `db`         | Mongo database name.                                        |
+| `collection` | Mongo collection in the database.                           |
 
 <a name='adapters-backend-xcache'></a>
 
 ### XCache Backend Options
 
-Данные будут сохранены в [XCache](http://xcache.lighttpd.net/). Доступна лишь одна опция:
+This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
 
 | Option   | Description                                                 |
 | -------- | ----------------------------------------------------------- |
@@ -684,15 +684,15 @@ $cache = new Libmemcached(
 
 ### Redis Backend Options
 
-Данные будут сохранены на [Redis](http://redis.io/) сервере. Доступные опции:
+This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
 
 | Option       | Description                                                    |
 | ------------ | -------------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys.    |
-| `host`       | Хост Redis сервера.                                            |
-| `port`       | Порт Redis сервера.                                            |
-| `auth`       | Пароль для аутентификации на защищённом паролем Redis сервере. |
-| `persistent` | Использовать постоянное соединение к Redis серверу.            |
-| `index`      | Индекс базы данных.                                            |
+| `host`       | Redis host.                                                    |
+| `port`       | Redis port.                                                    |
+| `auth`       | Password to authenticate to a password-protected Redis server. |
+| `persistent` | Create a persistent connection to Redis.                       |
+| `index`      | The index of the Redis database to use.                        |
 
-Существует еще несколько типов адаптеров конфигурации, их можно получить в “Инкубаторе” — [Phalcon Incubator](https://github.com/phalcon/incubator).
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
