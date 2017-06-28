@@ -11,8 +11,13 @@
         </li>
         
         <li>
-          <a href="#forwarding">Forwarding to other actions</a>
+          <a href="#forwarding">Forwarding to other actions</a> <ul>
+            <li>
+              <a href="#forwarding-events-manager">Using the Events Manager</a>
+            </li>
+          </ul>
         </li>
+        
         <li>
           <a href="#preparing-parameters">Preparing Parameters</a>
         </li>
@@ -228,6 +233,58 @@ A forward action accepts the following parameters:
 | action     | A valid action name to forward to.                     |
 | params     | An array of parameters for the action                  |
 | namespace  | A valid namespace name where the controller is part of |
+
+<a name='forwarding-events-manager'></a>
+
+### Using the Events Manager
+
+You can use the `dispatcher::beforeForward` event to change modules and redirect easier and "cleaner":
+
+```php
+<?php
+
+use Phalcon\Di;
+use Phalcon\Events\Manager;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Events\Event;
+
+$di = new Di();
+
+$modules = [
+  'backend' => [
+      'className' => 'App\Backend\Bootstrap',
+      'path'      => '/app/Modules/Backend/Bootstrap.php',
+      'metadata'  => [
+          'controllersNamespace' => 'App\Backend\Controllers',
+      ],
+  ],
+];
+
+$manager = new Manager();
+
+$manager->attach(
+  'dispatch:beforeForward',
+  function (Event $event, Dispatcher $dispatcher, array $forward) use ($modules) {
+      $metadata = $modules[$forward['module']]['metadata'];
+      $dispatcher->setModuleName($forward['module']);
+      $dispatcher->setNamespaceName($metadata['controllersNamespace']);
+  }
+);
+
+$dispatcher = new Dispatcher();
+$dispatcher->setDI($di);
+$dispatcher->setEventsManager($manager);
+$di->set('dispatcher', $dispatcher);
+$dispatcher->forward(
+  [
+      'module'     => 'backend',
+      'controller' => 'posts',
+      'action'     => 'index',
+  ]
+);
+
+echo $dispatcher->getModuleName(); // will display properly 'backend'
+```
 
 <a name='preparing-parameters'></a>
 
