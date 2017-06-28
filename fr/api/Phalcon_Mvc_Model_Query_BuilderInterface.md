@@ -30,7 +30,7 @@ abstract public **getFrom** ()
 
 ...
 
-abstract public **join** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
+abstract public **join** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias], [*mixed* $type])
 
 ...
 
