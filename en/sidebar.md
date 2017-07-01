@@ -23,6 +23,7 @@
     - [Usage](/[[language]]/[[version]]/devtools-usage)
     - [Debug](/[[language]]/[[version]]/debug)
 - Core
+    - [API Index](/[[language]]/[[version]]/api/index)
     - Application
         - [Full](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
@@ -87,4 +88,5 @@
     - [Invo](/[[language]]/[[version]]/tutorial-invo)
     - [REST](/[[language]]/[[version]]/tutorial-rest)
     - [Vokuro](/[[language]]/[[version]]/tutorial-vokuro)
+- [API Index](/language/version/api/index)
     
