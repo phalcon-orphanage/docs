@@ -23,6 +23,7 @@
     - [Usage](/[[language]]/[[version]]/devtools-usage)
     - [Εντοπισμός σφαλμάτων](/[[language]]/[[version]]/debug)
 - Πυρήνας 
+    - [API Index](/[[language]]/[[version]]/api/index)
     - Application 
         - [Πλήρης](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
@@ -87,3 +88,4 @@
     - [Invo](/[[language]]/[[version]]/tutorial-invo)
     - [REST](/[[language]]/[[version]]/tutorial-rest)
     - [Vokuro](/[[language]]/[[version]]/tutorial-vokuro)
+- [API Index](/language/version/api/index)
