@@ -54,7 +54,8 @@ The caching process is divided into 2 parts:
 ## Factory
 Instantiating frontend or backend adapters can be achieved by two ways:
 
-* Traditional way
+Traditional way
+
 ```php
 <?php
 
@@ -103,8 +104,6 @@ $options = [
 
 $backendCache = BFactory::load($options);
 ```
-
-If the options 
 
 <a name='output-fragments'></a>
 ## Caching Output Fragments
