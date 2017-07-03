@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Парсер аннотаций</a> <ul>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">Фабрика</a>
         </li>
         <li>
           <a href="#reading">Чтение аннотаций</a>
@@ -25,7 +25,7 @@
         <li>
           <a href="#adapters">Адаптеры аннотаций</a> <ul>
             <li>
-              <a href="#adapters-custom">Implementing your own adapters</a>
+              <a href="#adapters-custom">Реализация собственных адаптеров</a>
             </li>
           </ul>
         </li>
@@ -40,7 +40,7 @@
 
 <a name='overview'></a>
 
-# Annotations Parser
+# Парсер аннотаций
 
 Изначально компонент парсера аннотаций был написан на языке C для мира PHP. `Phalcon\Annotations` — это компонент общего назначения, который обеспечивает простоту синтаксического анализа и кеширования аннотаций в PHP-классах, для последующего их использования в приложениях.
 
@@ -129,9 +129,9 @@ someParameter='the value', false
 
 <a name='factory'></a>
 
-## Factory
+## Фабрика
 
-There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
+Доступно множество адаптеров аннотаций (смотрите [Адаптеры](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
 
 ```php
 <?php
@@ -265,7 +265,7 @@ foreach ($annotations as $annotation) {
 
 <a name='usage-cache'></a>
 
-### Cache Enabler with Annotations
+### Кэширование с помощью аннотаций
 
 Давайте представим, что у нас есть контроллер и разработчик хочет сделать плагин, который автоматически запускает кэширование если последнее запущенное действие было помечено как имеющее возможность кэширования. Прежде всего, мы зарегистрируем плагин в сервисе Dispatcher, чтобы получать уведомление при выполнении маршрута:
 
@@ -380,7 +380,7 @@ class NewsController extends Controller
 
 <a name='usage-access-management'></a>
 
-### Private/Public areas with Annotations
+### Контроль доступа и аннотации
 
 Вы можете использовать аннотации для того, чтобы сообщить ACL механизму какие контроллеры являются закрытыми для публичного доступа:
 
@@ -458,12 +458,12 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### Реализация собственных адаптеров
 
 Для создания своего адаптера необходимо реализовать интерфейс `Phalcon\Annotations\AdapterInterface`, или использовать наследование от существующего адаптера.
 
 <a name='resources'></a>
 
-## External Resources
+## Внешние ресурсы
 
 - [Урок: Создание собственного инициализатора моделей с использованием аннотаций](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
