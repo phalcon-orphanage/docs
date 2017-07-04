@@ -23,6 +23,7 @@
     - [Usage](/[[language]]/[[version]]/devtools-usage)
     - [Debug](/[[language]]/[[version]]/debug)
 - Core
+    - [API Index](/[[language]]/[[version]]/api/index)
     - Application
         - [Full](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)

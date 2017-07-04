@@ -234,14 +234,14 @@ Single MVC applications consist of one module only. Namespaces can be used but a
 
 ```php
 single/
-    app/
-        controllers/
-        models/
-        views/
-    public/
-        css/
-        img/
-        js/
+  app/
+    controllers/
+    models/
+    views/
+  public/
+    css/
+    img/
+    js/
 ```
 
 If namespaces are not used, the following bootstrap file could be used to orchestrate the MVC flow:
