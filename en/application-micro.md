@@ -520,7 +520,7 @@ Matches if the HTTP method is `GET` and the route is `/api/products`
 Matches if the HTTP method is `HEAD` and the route is `/api/products`
 
 ```php
-    $app->get(
+    $app->head(
         '/api/products',
         'get_products'
     );
