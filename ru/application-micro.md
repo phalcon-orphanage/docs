@@ -129,7 +129,7 @@
     </li>
     
     <li>
-      <a href="#events">Events</a> <ul>
+      <a href="#events">События</a> <ul>
         <li>
           <a href="#events-available-events">Доступные события</a> <ul>
             <li>
@@ -163,7 +163,7 @@
           <a href="#middleware-implementation">Реализация</a>
         </li>
         <li>
-          <a href="#middleware-setup">Setup</a>
+          <a href="#middleware-setup">Настройка</a>
         </li>
         <li>
           <a href="#middleware-events">События в Middleware</a> <ul>
@@ -234,9 +234,9 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 
-## Creating a Micro Application
+## Создание микро приложения
 
-The `Phalcon\Mvc\Micro` class is the one responsible for creating a Micro application.
+Класс `Phalcon\Mvc\Micro` является ответственным за создание микро приложения.
 
 ```php
 <?php
@@ -248,7 +248,7 @@ $app = new Micro();
 
 <a name='routing'></a>
 
-## Routing
+## Маршрутизация
 
 Указание маршрутов в приложении `Phalcon\Mvc\Micro` очень простое. Маршруты, определяются следующим образом:
 
@@ -258,11 +258,11 @@ $app = new Micro();
 
 <a name='routing-setup'></a>
 
-### Setup
+### Настройка
 
-Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[version]]/routing)]
+Маршрутизация обрабатывается объектом `Phalcon\Mvc\Router`. [[Информация](/[[language]]/[[version]]/routing)]
 
-<h5 class='alert alert-warning'>Routes must always start with <code>/</code></h5>
+<h5 class='alert alert-warning'>Маршруты всегда должны начинаться с <code>/</code></h5>
 
 Обычно, `/` является стартовым маршрутом приложения, и в большинстве случаев осуществляется через метод GET протокола HTTP:
 
@@ -280,7 +280,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-### Application object
+### Объект Application
 
 Маршруты можно задать используя экземпляр объекта-приложения `Phalcon\Mvc\Micro` следующим образом:
 
@@ -300,7 +300,7 @@ $app->get(
 
 <a name='routing-setup-router'></a>
 
-### Router object
+### Объект Router
 
 Вы также можете задать маршруты создав экземпляр объекта `Phalcon\Mvc\Router`, настроив с его помощью маршруты, а затем добавив его в контейнер зависимостей (инъекция).
 
@@ -327,27 +327,27 @@ $app->setService('router', $router, true);
 
 <a name='rewrite-rules'></a>
 
-## Rewrite Rules
+## Rewrite правила
 
 Для того чтобы маршруты работали необходимо также внести изменения в конфигурацию, вашего, веб-сервера для, вашего, конкретного сайта.
 
-Those changes are outlined in the [rewrite rules](/[[language]]/[[version]]/rewrite-rules).
+Эти изменения описаны в [rewrite правилах](/[[language]]/[[version]]/rewrite-rules).
 
 <a name='routing-handlers'></a>
 
-## Handlers
+## Обработчики
 
 Обработчик — это вызываемая часть кода, которая "привязана" к маршруту. При совпадении с маршрутом, его обработчик выполняется с заданными параметрами. Обработчиком может быть любая вызываемая часть кода, которая существует в PHP.
 
 <a name='routing-handlers-definitions'></a>
 
-### Definitions
+### Определения
 
 Phalcon предлагает несколько способов задания обработчика для маршрута. Потребности и дизайн вашего приложения, а также стиль кодирования будут влиять на ваш выбор способа.
 
 <a name='routing-handlers-anonymous-function'></a>
 
-#### Anonymous Function
+#### Анонимная Функция
 
 Мы можем использовать анонимные функции (как показано ниже) для обработки запроса
 
@@ -375,7 +375,7 @@ $app->get(
 
 <a name='routing-handlers-function'></a>
 
-#### Function
+#### Функция
 
 Мы можем определить функцию как обработчик и прикрепить её к определенному маршруту.
 
@@ -393,7 +393,7 @@ $app->get(
 
 <a name='routing-handlers-static-method'></a>
 
-#### Static Method
+#### Статический метод
 
 Также возможно использовать статический метод класса в качестве обработчика:
 
@@ -413,7 +413,7 @@ $app->get(
 
 <a name='routing-handlers-object-method'></a>
 
-#### Method in an Object
+#### Метод объекта
 
 Мы также можем использовать метод экземпляра объекта:
 
@@ -437,7 +437,7 @@ $app->get(
 
 <a name='routing-handlers-controllers'></a>
 
-#### Controllers
+#### Контроллеры
 
 С `Phalcon\Mvc\Micro` вы можете создавать как микроприложения, так и средне-сложные приложения. Средне-сложные приложения используют микро-архитектуру, но расширяют её, таким образом являясь компромиссом между микро- и полноценными приложениями.
 
@@ -486,7 +486,7 @@ class OrdersController extends Controller
 }
 ```
 
-Since our controllers extend the `Phalcon\Mvc\Controller`, all the dependency injection services are available with their respective registration names. For example:
+Поскольку наши контроллеры расширяют `Phalcon\Mvc\Controller`, все внедряемые сервисы уже доступны по соответствующим зарегистрированным именам. Например:
 
 ```php
 <?php
@@ -502,7 +502,7 @@ class OrdersController extends Controller
 
     public function show($name)
     {
-        $context = "<h1>This is order: {$name}!</h1>";
+        $context = "<h1>Это заказ: {$name}!</h1>";
         $this->response->setContext($context);
 
         return $this->response;
@@ -512,7 +512,7 @@ class OrdersController extends Controller
 
 <a name='routing-handlers-controllers-lazy-loading'></a>
 
-### Lazy Loading
+### Загрузка по требованию
 
 Для повышения производительности, рассмотрите возможность реализации отложенной загрузки для ваших контроллеров (обработчиков). Контроллер будет загружен только для соответствующего маршрута.
 
@@ -525,11 +525,11 @@ $orders->setHandler('Blog\Controllers\OrdersController', true);
 
 <a name='routing-handlers-controllers-lazy-loading-use-case'></a>
 
-#### Use case
+#### Пример использования
 
-Предположим мы занимаемся разработкой API для интернет-магазина. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
+Предположим мы занимаемся разработкой API для интернет-магазина. Конечные точки `/users`, `/orders` и `/products`. Каждая из этих конечных точек зарегистрирована с использованием обработчиков, каждый обработчик это контроллер с соответствующими действиями.
 
-The controllers that we use as handlers are as follows:
+Контроллеры, которые мы используем, как обработчики, выглядят следующим образом:
 
 ```php
 <?php
@@ -583,7 +583,7 @@ class ProductsController extends Controller
 
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
-// Users handler
+// Обработчик Users
 $users = new MicroCollection();
 $users->setHandler(new UsersController());
 $users->setPrefix('/users');
@@ -591,7 +591,7 @@ $users->get('/get/{id}', 'get');
 $users->get('/add/{payload}', 'add');
 $app->mount($users);
 
-// Orders handler
+// Обработчик Orders
 $orders = new MicroCollection();
 $orders->setHandler(new OrdersController());
 $orders->setPrefix('/users');
@@ -599,7 +599,7 @@ $orders->get('/get/{id}', 'get');
 $orders->get('/add/{payload}', 'add');
 $app->mount($orders);
 
-// Products handler
+// Обработчик Products
 $products = new MicroCollection();
 $products->setHandler(new ProductsController());
 $products->setPrefix('/products');
@@ -608,18 +608,18 @@ $products->get('/add/{payload}', 'add');
 $app->mount($products);
 ```
 
-This implementation loads each handler in turn and mounts it in our application object. The issue with this approach is that each request will result to only one endpoint and therefore one class method executed. The remaining methods/handlers will just remain in memory without being used.
+Эта реализация загружает каждый обработчик по очереди и монтирует их в наш объект приложения. Проблема этого подхода в том, что каждый запрос приведет только в одну конечную точку, и будет выполнен только один метод класса. Остальные методы/обработчики просто останутся в памяти и не будут использованы.
 
-Using lazy loading we reduce the number of objects loaded in memory and as a result our application uses less memory.
+Используя загрузку по запросу мы уменьшаем количество загруженных в память объектов, и в результате наше приложение использует меньше памяти.
 
-The above implementation changes if we want to use lazy loading as follows:
+Реализация выше изменяется, если мы желаем использовать загрузку по запросу, и будет выглядеть следующим образом:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
-// Users handler
+// Обработчик Users
 $users = new MicroCollection();
 $users->setHandler(new UsersController(), true);
 $users->setPrefix('/users');
@@ -627,7 +627,7 @@ $users->get('/get/{id}', 'get');
 $users->get('/add/{payload}', 'add');
 $app->mount($users);
 
-// Orders handler
+// Обработчик Orders
 $orders = new MicroCollection();
 $orders->setHandler(new OrdersController(), true);
 $orders->setPrefix('/users');
@@ -635,7 +635,7 @@ $orders->get('/get/{id}', 'get');
 $orders->get('/add/{payload}', 'add');
 $app->mount($orders);
 
-// Products handler
+// Обработчик Products
 $products = new MicroCollection();
 $products->setHandler(new ProductsController(), true);
 $products->setPrefix('/products');
@@ -644,34 +644,34 @@ $products->get('/add/{payload}', 'add');
 $app->mount($products);
 ```
 
-Using this simple change in implementation, all handlers remain uninstantiated until requested by a caller. Therefore whenever a caller requests `/orders/get/2`, our application will instantiate the `OrdersController` and call the `get` method in it. Our application now uses less resources than before.
+Используя это простое изменение в реализации, все обработчики остаются не созданными, пока не будут запрошены вызывающим. Поэтому когда вызывающий запрашивает `/orders/get/2`, наше приложение создаст экземпляр `OrdersController` и вызовет в нем метод `get`. Теперь наше приложение использует меньше ресурсов, чем прежде.
 
 <a name='routing-handlers-not-found'></a>
 
 ### Не найдено (404)
 
-Any route that has not been matched in our `Phalcon\Mvc\Micro` application will cause it to try and execute the handler defined with the `notFound` method. Similar to other methods/verbs (`get`, `post` etc.), you can register a handler in the `notFound` method which can be any callable PHP function.
+Любой маршрут, который не сопоставлен в нашем `Phalcon\Mvc\Micro` приложении, приведет к попытке выполнить обработчик определенный с помощью метода `notFound`. Аналогично для других методов/действий (`get`, `post` и т. д.), Вы можете зарегистрировать обработчик с помощью метода `notFound`, который может быть любой вызываемой PHP функцией.
 
 ```php
 <?php
 
 $app->notFound(
     function () use ($app) {
-        $app->response->setStatusCode(404, 'Not Found');
+        $app->response->setStatusCode(404, 'Не найдено');
         $app->response->sendHeaders();
 
-        $message = 'Nothing to see here. Move along....';
+        $message = 'Не на что здесь смотреть. Продолжаем....';
         $app->response->setContent($message);
         $app->response->send();
     }
 );
 ```
 
-You can also handle routes that have not been matched (404) with Middleware discussed below.
+Также Вы можете обрабатывать маршруты, которые не были сопоставлены (404) с помощью посредников Middleware, обсуждаемых ниже.
 
 <a name='routing-verbs'></a>
 
-## Methods - Verbs
+## Методы-глаголы
 
 Объект-приложение `Phalcon\Mvc\Micro` предоставляет следующий перечень методов для связки HTTP-метода с маршрутом.
 
@@ -705,7 +705,7 @@ You can also handle routes that have not been matched (404) with Middleware disc
 
 ### head
 
-Matches if the HTTP method is `HEAD` and the route is `/api/products`
+Сработает, если HTTP метод будет `HEAD`, а маршурт `/api/products`
 
 ```php
     $app->get(
@@ -718,7 +718,7 @@ Matches if the HTTP method is `HEAD` and the route is `/api/products`
 
 ### map
 
-Map allows you to attach the same endpoint to more than one HTTP method. The example below matches if the HTTP method is `GET` or `POST` and the route is `/repos/store/refs`
+Map позволяет назначить одну и ту же конечную точку для более чем одного HTTP метода. Пример ниже сработает, если HTTP метод будет `GET` или `POST`, а маршрут `/repos/store/refs`
 
 ```php
     $app
@@ -738,7 +738,7 @@ Map allows you to attach the same endpoint to more than one HTTP method. The exa
 
 ### options
 
-Matches if the HTTP method is `OPTIONS` and the route is `/api/products/options`
+Сработает, если HTTP метод будет `OPTIONS`, а маршрут `/api/products/options`
 
 ```php
     $app->options(
@@ -751,7 +751,7 @@ Matches if the HTTP method is `OPTIONS` and the route is `/api/products/options`
 
 ### patch
 
-Matches if the HTTP method is `PATCH` and the route is `/api/products/update/{id}`
+Сработает, если HTTP методбудет `PATCH`, а маршрут `/api/products/update/{id}`
 
 ```php
     $app->patch(
@@ -764,7 +764,7 @@ Matches if the HTTP method is `PATCH` and the route is `/api/products/update/{id
 
 ### post
 
-Matches if the HTTP method is `POST` and the route is `/api/products/add`
+Сработает, есди HTTP метод будет `POST`, а маршрут `/api/products/add`
 
 ```php
     $app->post(
@@ -777,7 +777,7 @@ Matches if the HTTP method is `POST` and the route is `/api/products/add`
 
 ### put
 
-Matches if the HTTP method is `PUT` and the route is `/api/products/update/{id}`
+Сработает, если HTTP метод будет `PUT`, а маршрут`/api/products/update/{id}`
 
 ```php
     $app->put(
@@ -788,9 +788,9 @@ Matches if the HTTP method is `PUT` and the route is `/api/products/update/{id}`
 
 <a name='routing-collections'></a>
 
-## Collections
+## Коллекции
 
-Collections are a handy way to group collections attached to a handler and a common prefix (if needed). For a hypothetical `/orders` endpoint we could have the following endpoints:
+Коллекции — удобный способ группировать коллекции прикрепленные к обработчику и общему префиксу (если необходимо). Для гипотетической конечной точки `/orders` мы могли бы иметь следующие конечные точки:
 
     /orders/get/{id}
     /orders/add/{payload}
@@ -798,7 +798,7 @@ Collections are a handy way to group collections attached to a handler and a com
     /orders/delete/{id}
     
 
-All of those routes are handled by our `OrdersController`. We set up our routes with a collection as follows:
+Все эти маршруты обрабатываются нашим `OrdersController`. Мы установим наши маршруты с помощью коллекции следующим образом:
 
 ```php
 <?php
@@ -818,27 +818,27 @@ $orders->get('/delete/{id}', 'deleteAction');
 $app->mount($orders);
 ```
 
-<h5 class='alert alert-warning'>The name that we bind each route has a suffix of <code>Action</code>. This is not necessary, your method can be called anything you like.</h5>
+<h5 class='alert alert-warning'>Имя с которым мы связываем каждый маршрут имеет суффикс <code>Action</code>. Это не обязательно, Ваш метод может называться как угодно.</h5>
 
 <a name='routing-parameters'></a>
 
-## Parameters
+## Параметры
 
-We have briefly seen above how parameters are defined in the routes. Parameters are set in a route string by enclosing the name of the parameter in brackets.
+Выше вкратце мы рассмотрели, как параметры определяются в маршрутах. Параметры задаются в строке маршрута с помощью заключения имени параметра в фигурных скобках.
 
 ```php
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 );
 ```
 
-We can also enforce certain rules for each parameter by using regular expressions. The regular expression is set after the name of the parameter, separating it with `:`.
+Также мы можем применить определенные правила для каждого параметра, используя регулярные выражения. Регулярное выражение задается после имени параметра, и отделяется от него с помощью `:`.
 
 ```php
-// Match the order id
+// Сопоставить order id
 $app->get(
     '/orders/display/{id:[0-9]+}',
     function ($id) {
@@ -846,23 +846,23 @@ $app->get(
     }
 );
 
-// Match a numeric (4) year and a title (alpha)
+// Сопоставить год (4 числа) и заголовок (буквы)
 $app->get(
     '/posts/{year:[0-9][4]}/{title:[a-zA-Z\-]+}',
     function ($year, $title) {
-        echo '<h1>Title: $title</h1>';
-        echo '<h2>Year: $year</h2>';
+        echo '<h1>Заголовок: $title</h1>';
+        echo '<h2>Год: $year</h2>';
     }
 );
 ```
 
-Additional information: `Phalcon\Mvc\Router` [Info](/[[language]]/[[version]]/routing)
+Дополнительно: `Phalcon\Mvc\Router`. [[Подробнее](/[[language]]/[[version]]/routing)]
 
 <a name='routing-redirections'></a>
 
-## Redirections
+## Перенаправления
 
-You can redirect one matched route to another using the `Phalcon\Http\Response` object, just like in a full application.
+Вы можете перенаправить один маршрут в другой с помощью объекта `Phalcon\Http\Response`, также, как в полном приложении.
 
 ```php
 $app->post('/old/url',
@@ -879,9 +879,9 @@ $app->post('/new/welcome',
 );
 ```
 
-**Note** we have to pass the `$app` object in our anonymous function to have access to the `request` object.
+**Примечание** мы должны передать объект `$app` в нашу анонимную функцию, чтобы иметь доступ к объекту `request`.
 
-When using controllers as handlers, you can perform the redirect just as easy:
+Когда контроллеры используются в качестве обработчиков, Вы можете выполнить перенаправление очень просто:
 
 ```php
 <?php
@@ -911,12 +911,12 @@ Finally, you can perform redirections in your middleware (if you are using it). 
 Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process. * First we need to name our route. This can be achieved with the `setName()` method that is exposed from the methods/verbs in our application (`get`, `post`, etc.);
 
 ```php
-// Set a route with the name 'show-order'
+// Задать маршрут с именем 'show-order'
 $app
     ->get(
         '/orders/display/{id}',
         function ($id) use ($app) {
-            // ... Find the order and show it
+            // ... Найти заказ и показать его
         }
     )
     ->setName('show-order');
@@ -925,7 +925,7 @@ $app
 - We need to use the `Phalcon\Mvc\Url` component to generate URLs for the named routes.
 
 ```php
-// Use the named route and produce a URL from it
+// Используем именованный маршрут и создаем URL от него
 $app->get(
     '/',
     function () use ($app) {
@@ -968,8 +968,6 @@ $app->get(
 You can also create a Di container yourself, and assign it to the micro application, therefore manipulating the services depending on the needs of your application.
 
 ```php
-<?php
-
 use Phalcon\Mvc\Micro;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config\Adapter\Ini as IniConfig;
@@ -990,7 +988,7 @@ $app->setDI($di);
 $app->get(
     '/',
     function () use ($app) {
-        // Read a setting from the config
+        // Читаем настройки из конфига
         echo $app->config->app_name;
     }
 );
@@ -998,7 +996,7 @@ $app->get(
 $app->post(
     '/contact',
     function () use ($app) {
-        $app->flash->success('What are you doing Dave?');
+        $app->flash->success('Что ты делаешь Дэйв?');
     }
 );
 ```
@@ -1047,20 +1045,20 @@ Handlers may return raw responses using plain text, `Phalcon\Http\Response` obje
 
 <a name='responses-direct-output'></a>
 
-## Direct output
+## Прямой вывод
 
 ```php
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Это заказ: {$name}!</h1>";
     }
 );
 ```
 
 <a name='responses-include'></a>
 
-## Including another file
+## Подключение внешнего файла
 
 ```php
 $app->get(
@@ -1073,7 +1071,7 @@ $app->get(
 
 <a name='responses-direct-output-json'></a>
 
-## Direct output JSON
+## Прямой вывод JSON
 
 ```php
 $app->get(
@@ -1091,7 +1089,7 @@ $app->get(
 
 <a name='responses-new-response-object'></a>
 
-## New Response object
+## Новый объект Response
 
 You can use the `setContent` method of the response object to return the response back:
 
@@ -1099,16 +1097,16 @@ You can use the `setContent` method of the response object to return the respons
 $app->get(
     '/show/data',
     function () {
-        // Create a response
+        // Создание ответа
         $response = new Phalcon\Http\Response();
 
-        // Set the Content-Type header
+        // Установка заголовка Content-Type
         $response->setContentType('text/plain');
 
-        // Pass the content of a file
+        // Передача контента из файла
         $response->setContent(file_get_contents('data.txt'));
 
-        // Return the response
+        // Возврат ответа
         return $response;
     }
 );
@@ -1116,7 +1114,7 @@ $app->get(
 
 <a name='responses-application-response'></a>
 
-## Application Response
+## Ответ приложения
 
 You can also use the `Phalcon\Http\Response` object to return responses to the caller. The response object has a lot of useful methods that make returning respones much easier.
 
@@ -1124,11 +1122,11 @@ You can also use the `Phalcon\Http\Response` object to return responses to the c
 $app->get(
     '/show/data',
     function () use ($app) {
-        // Set the Content-Type header
+        // Установка заголовка Content-Type
         $app->response->setContentType('text/plain');
         $app->response->sendHeaders();
 
-        // Print a file
+        // Вывод файла
         readfile('data.txt');
     }
 );
@@ -1136,7 +1134,7 @@ $app->get(
 
 <a name='responses-return-application-response'></a>
 
-## Return Application Response
+## Возврат ответа приложения
 
 A different approach returning data back to the caller is to return the response object directly from the application. When responses are returned by handlers they are automatically sent by the application.
 
@@ -1148,14 +1146,14 @@ use Phalcon\Http\Response;
 
 $app = new Micro();
 
-// Return a response
+// Возврат объекта response
 $app->get(
     '/welcome/index',
     function () {
         $response = new Response();
 
-        $response->setStatusCode(401, 'Unauthorized');
-        $response->setContent('Access is not authorized');
+        $response->setStatusCode(401, 'Не авторизован');
+        $response->setContent('Доступ не авторизован');
 
         return $response;
     }
@@ -1176,7 +1174,7 @@ $app->get(
         $data = [
             'code'    => 401,
             'status'  => 'error',
-            'message' => 'Unauthorized access',
+            'message' => 'Не авторизированный доступ',
             'payload' => [],
         ];
 
@@ -1189,24 +1187,24 @@ $app->get(
 
 <a name='events'></a>
 
-# Events
+# События
 
 A `Phalcon\Mvc\Micro` application works closely with a `Phalcon\Events\Manager` if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
 <a name='events-available-events'></a>
 
-## Available events
+## Доступные события
 
-The following events are supported:
+Поддерживаются следующие события:
 
-| Event Name         | Triggered                                                         | Can stop operation? |
-| ------------------ | ----------------------------------------------------------------- |:-------------------:|
-| beforeHandleRoute  | Main method called; Routes have not been checked yet              |         Yes         |
-| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |         Yes         |
-| afterExecuteRoute  | Handler just finished running                                     |         No          |
-| beforeNotFound     | Route has not been found                                          |         Yes         |
-| afterHandleRoute   | Route just finished executing                                     |         Yes         |
-| afterBinding       | Triggered after models are bound but before executing the handler |         Yes         |
+| Название события   | Срабатывает                                                       | Может остановить операцию? |
+| ------------------ | ----------------------------------------------------------------- |:--------------------------:|
+| beforeHandleRoute  | Основной метод вызван; Маршруты ее не проверены                   |             Да             |
+| beforeExecuteRoute | Маршрут сопоставлен, обработчик верный, но еще не выполнен        |             Да             |
+| afterExecuteRoute  | Обработчик только что закончил работать                           |            Нет             |
+| beforeNotFound     | Маршрут не найден                                                 |             Да             |
+| afterHandleRoute   | Route just finished executing                                     |            Yes             |
+| afterBinding       | Triggered after models are bound but before executing the handler |            Yes             |
 
 <a name='events-available-events-authentication'></a>
 
@@ -1221,7 +1219,7 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 
-// Create a events manager
+// Создаем менеджер событий
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
@@ -1233,7 +1231,7 @@ $eventsManager->attach(
             $app->response->redirect('/');
             $app->response->sendHeaders();
 
-            // Return (false) stop the operation
+            // Возврат (false) останавливает операцию
             return false;
         }
     }
@@ -1241,7 +1239,7 @@ $eventsManager->attach(
 
 $app = new Micro();
 
-// Bind the events manager to the app
+// Привязываем менеджер событий к приложению
 $app->setEventsManager($eventsManager);
 ```
 
@@ -1258,7 +1256,7 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 
-// Create a events manager
+// Создаем менеджер событий
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
@@ -1273,7 +1271,7 @@ $eventsManager->attach(
 
 $app = new Micro();
 
-// Bind the events manager to the app
+// Привязываем менеджер событий к приложению
 $app->setEventsManager($eventsManager);
 ```
 
@@ -1310,16 +1308,16 @@ This event is perfect for stopping execution of the application if certain crite
 
 $app = new Phalcon\Mvc\Micro();
 
-// Executed before every route is executed
-// Return false cancels the route execution
+// Вызывается перед выполнением каждого маршрута
+// Возврат false отменяет выполнение маршрута
 $app->before(
     function () use ($app) {
         if (false === $app['session']->get('auth')) {
-            $app['flashSession']->error("The user isn't authenticated");
+            $app['flashSession']->error("Пользователь не авторизован");
 
             $app['response']->redirect('/error');
 
-            // Return false stops the normal execution
+            // Возврат false останавливает нормальное выполнение
             return false;
         }
 
@@ -1346,7 +1344,7 @@ $app->map(
 
 $app->after(
     function () use ($app) {
-        // This is executed after the route is executed
+        // Выполняется после выполнения маршрута
         echo json_encode($app->getReturnedValue());
     }
 );
@@ -1378,11 +1376,11 @@ Attaching middleware to your application is very easy as shown above, with the `
 $app->before(
     function () use ($app) {
         if (false === $app['session']->get('auth')) {
-            $app['flashSession']->error("The user isn't authenticated");
+            $app['flashSession']->error("Пользователь не авторизован");
 
             $app['response']->redirect('/error');
 
-            // Return false stops the normal execution
+            // Возврат false останавливает нормальное выполнение
             return false;
         }
 
@@ -1392,7 +1390,7 @@ $app->before(
 
 $app->after(
     function () use ($app) {
-        // This is executed after the route is executed
+        // Выполняется после выполнения маршрута
         echo json_encode($app->getReturnedValue());
     }
 );
@@ -1417,8 +1415,8 @@ $eventsManager = new Manager();
 $application   = new Micro();
 
 /**
- * Attach the middleware both to the events manager and the application
- */
+ * Прикрепляем middleware к менеджеру событий и приложению 
+*/
 $eventsManager->attach('micro', new CacheMiddleware());
 $application->before(new CacheMiddleware());
 
@@ -1426,13 +1424,13 @@ $eventsManager->attach('micro', new NotFoundMiddleware());
 $application->before(new NotFoundMiddleware());
 
 /**
- * This one needs to listen on the `after` event
+ * Этот нужен, чтобы слушать событие `after`
  */
 $eventsManager->attach('micro', new ResponseMiddleware());
 $application->after(new ResponseMiddleware());
 
 /**
- * Make sure our events manager is in the DI container now
+ * Убедимся, что наш менеджер событий теперь находится в DI контейнере
  */
 $application->setEventsManager($eventsManager);
 
@@ -1459,12 +1457,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * CacheMiddleware
  *
- * Caches pages to reduce processing
+ * Кэширует страницы, чтобы сократить обработку
  */
 class CacheMiddleware implements MiddlewareInterface
 {
     /**
-     * Calls the middleware
+     * Вызывает middleware
      *
      * @param Micro $application
      *
@@ -1477,7 +1475,7 @@ class CacheMiddleware implements MiddlewareInterface
 
         $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
 
-        // Check if the request is cached
+        // Проверяет закэширован ли запрос
         if ($cache->exists($key)) {
             echo $cache->get($key);
 
@@ -1519,7 +1517,7 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * FirewallMiddleware
  *
- * Checks the whitelist and allows clients or not
+ * Проверяет белый список и допускает клиентов или нет
  */
 class FirewallMiddleware implements MiddlewareInterface
 {
@@ -1552,7 +1550,7 @@ class FirewallMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Вызывает middleware
      *
      * @param Micro $application
      *
@@ -1580,12 +1578,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * NotFoundMiddleware
  *
- * Processes the 404s
+ * Обрабатывает 404
  */
 class NotFoundMiddleware implements MiddlewareInterface
 {
     /**
-     * The route has not been found
+     * Маршрут не был найден
      *
      * @returns bool
      */
@@ -1598,7 +1596,7 @@ class NotFoundMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Вызывает middleware
      *
      * @param Micro $application
      *
@@ -1627,12 +1625,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * RedirectMiddleware
  *
- * Checks the request and redirects the user somewhere else if need be
+ * Проверяет запрос и перенаправляет пользователя куда-нибудь еще, если необходимо
  */
 class RedirectMiddleware implements MiddlewareInterface
 {
     /**
-     * Before anything happens
+     * Прежде чем что-то произойдет
      *
      * @param Event $event
      * @param Micro $application
@@ -1652,7 +1650,7 @@ class RedirectMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Вызывает middleware
      *
      * @param Micro $application
      *
@@ -1681,12 +1679,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * CORSMiddleware
  *
- * CORS checking
+ * Проверка CORS
  */
 class CORSMiddleware implements MiddlewareInterface
 {
     /**
-     * Before anything happens
+     * Прежде, чем что-нибудь случится
      *
      * @param Event $event
      * @param Micro $application
@@ -1717,7 +1715,7 @@ class CORSMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Вызывает middleware
      *
      * @param Micro $application
      *
@@ -1746,12 +1744,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * RequestMiddleware
  *
- * Check incoming payload
+ * Проверяет входящие данные
  */
 class RequestMiddleware implements MiddlewareInterface
 {
     /**
-     * Before the route is executed
+     * Перед выполнением маршрута
      *
      * @param Event $event
      * @param Micro $application
@@ -1773,7 +1771,7 @@ class RequestMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Вызывает middleware
      *
      * @param Micro $application
      *
@@ -1803,12 +1801,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
 * ResponseMiddleware
 *
-* Manipulates the response
+* Изменяет ответ
 */
 class ResponseMiddleware implements MiddlewareInterface
 {
      /**
-      * Before anything happens
+      * Прежде, чем что-нибудь случится
       *
       * @param Micro $application
       *
@@ -1890,7 +1888,7 @@ $app->setModelBinder(new \Phalcon\Mvc\Model\Binder());
 $app->get(
     "/products/{product:[0-9]+}",
     function (Products $product) {
-        // do anything with $product object
+        // делаем что-нибудь с объектом $product
     }
 );
 
@@ -1903,7 +1901,7 @@ Currently the binder will only use the models primary key to perform a `findFirs
 
 <a name='views'></a>
 
-# Views
+# Представления
 
 `Phalcon\Mvc\Micro` does not have inherently a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
 
@@ -1920,11 +1918,11 @@ $app['view'] = function () {
     return $view;
 };
 
-// Return a rendered view
+// Вернуть отображенный вид
 $app->get(
     '/products/show',
     function () use ($app) {
-        // Render app/views/products/show.phtml passing some variables
+        // Отобразить app/views/products/show.phtml с передачей некоторых переменных
         echo $app['view']->render(
             'products/show',
             [
@@ -1951,11 +1949,11 @@ $app['view'] = function () {
     return $view;
 };
 
-// Return a rendered view
+// Вернуть отображенный вид
 $app->get(
     '/products/show',
     function () use ($app) {
-        // Render app/views/products/show.phtml passing some variables
+        // Отображаем app/views/products/show.phtml с передачей некоторых переменных
         echo $app['view']->render(
             'products',
             'show',
@@ -1982,7 +1980,7 @@ $app = new Phalcon\Mvc\Micro();
 $app->get(
     '/',
     function () {
-        throw new \Exception('Some error happened', 401);
+        throw new \Exception('Произошла ошибка', 401);
     }
 );
 
