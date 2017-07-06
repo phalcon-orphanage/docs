@@ -36,17 +36,17 @@
 
 Phalcon является проектом с открытым кодом и сильно зависит от добровольных усилий. Мы приветствуем вклады от всех!.
 
-Пожалуйста, уделите время на этот документ, чтобы сделать процесс вашего "Вклада" легким и эффективным.
+Пожалуйста, уделите время на ознакомление с этим документом, чтобы сделать процесс вашего участия в развитии фреймворка легким и эффективным.
 
-Следование этим принципам, позволит лучше общаться, быстрее решать проблемы и двигать проект вперед.
+Следование этим принципам, позволит вам эффективней общаться с остальными участниками сообщества, быстрее решать проблемы и двигать проект вперед.
 
 <a name='contributions'></a>
 
 ## Вклад
 
-Вклад в Phalcon следует делать в виде [пулл запросов на GitHub](https://help.github.com/articles/using-pull-requests/). Каждый пулл запрос будет рассмотрен основным контрибьютером (кем-то с разрешениями на объединение пулл запросов). Основываясь на типе и содержании пулл запроса, он может быть объединён немедленно, отложен, если необходимы разъяснения, или отклонен.
+Вклад в Phalcon следует оформлять в виде [пулл запросов на GitHub](https://help.github.com/articles/using-pull-requests/). Каждый пулл запрос будет рассмотрен основным контрибьютером (кем-то с разрешениями на объединение пулл запросов). В зависимости от типа и содержания пулл запроса, он может быть принят сразу, отложен, если необходимы разъяснения, или отклонен.
 
-Please ensure that you are sending your pull request to the correct branch and that you already have rebased your code.
+Пожалуйста, убедитесь, что вы отправляете свой пулл запрос в корректную ветку, и что ваша ветка в актуальном состоянии.
 
 <a name='questions-and-support'></a>
 
@@ -56,7 +56,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 <a name='bug-report-checklist'></a>
 
-## Bug Report Checklist
+## Контрольный список отчета об ошибках
 
 - Make sure you are using the latest released version of Phalcon before submitting a bug report. Bugs in versions older than the latest released one will not be addressed by the core team.
 - If you have found a bug, it is essential to add relevant information to reproduce it. Being able to reproduce a bug greatly reduces the time to investigate and fix it. This information should come in the form of a script, small application, or even a failing test. Please check [Submit Reproducible Test](https://github.com/phalcon/cphalcon/wiki/Submit-Reproducible-Test) for more information.
@@ -65,7 +65,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 <a name='bug-report-generating-backtrace'></a>
 
-### Generating a backtrace
+### Генерация трассировки
 
 Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. Please help us to find out the problem by adding a crash backtrace to your bug report.
 
@@ -78,7 +78,7 @@ Please follow this guides to understand how to generate the backtrace:
 
 <a name='pull-request-checklist'></a>
 
-## Pull Request Checklist
+## Контрольный список пулл реквеста
 
 - Don't submit your pull requests to the `master` branch. Branch from the required branch and, if needed, rebase to the proper branch before submitting your pull request. If it doesn't merge cleanly with master you may be asked to rebase your changes
 - Don't put submodule updates, `composer.lock`, etc in your pull request unless they are to merged commits
@@ -95,13 +95,13 @@ Before submit **new functionality**, please open a [NFR](/[[language]]/[[version
 
 <a name='getting-support'></a>
 
-## Getting Support
+## Получение поддержки
 
 If you have a question about how to use Phalcon, please see the [support page](https://phalconphp.com/support).
 
 <a name='requesting-features'></a>
 
-## Requesting Features
+## Предложение идей
 
 If you have a change or new feature in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
 
