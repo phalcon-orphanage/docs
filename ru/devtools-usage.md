@@ -398,4 +398,4 @@ The screencast below shows how to integrate developer tools with the [PhpStorm I
 
 ## Conclusion
 
-Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.
+Инструменты разработчика Phalcon предоставляют простой способ генерации кода для ваших приложений, тем самым сокращая время разработки и количества потенциальных ошибок в коде.
