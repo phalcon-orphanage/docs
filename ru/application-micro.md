@@ -168,7 +168,7 @@
         <li>
           <a href="#middleware-events">События в Middleware</a> <ul>
             <li>
-              <a href="#middleware-events-api">Пример реализации</a> <ul>
+              <a href="#middleware-events-api">Пример API</a> <ul>
                 <li>
                   <a href="#middleware-events-api-firewall">Firewall</a>
                 </li>
@@ -211,9 +211,9 @@
 
 # Микроприложения
 
-Phalcon предлагает очень "тонкое" приложение, так что можно создавать "Микроприложения" минимальными усилиями.
+С помощью Phalcon можно создавать приложения по типу “Микрофреймворк”. Для этого, необходимо написать всего лишь несколько строк кода.
 
-Микро приложения подходят для небольших приложений, которые будут иметь очень низкие накладные расходы. Например, наш [веб-сайт](https://github.com/phalcon/website), этот веб-сайт ([документация](https://github.com/phalcon/docs)), наш [магазин](https://github.com/phalcon/store), API, прототипы и т.д.
+Микроприложения подходят для небольших приложений, которые будут иметь очень низкие накладные расходы. Например, [наш веб-сайт](https://github.com/phalcon/website), [документация по фреймворку](https://github.com/phalcon/docs), которую вы сейчас читаете, наш [магазин](https://github.com/phalcon/store), API, прототипы и т.д.
 
 ```php
 <?php
@@ -234,9 +234,9 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 
-## Создание микро приложения
+## Создание микроприложения
 
-Класс `Phalcon\Mvc\Micro` является ответственным за создание микро приложения.
+Класс `Phalcon\Mvc\Micro` является ответственным за создание микроприложения.
 
 ```php
 <?php
@@ -248,9 +248,9 @@ $app = new Micro();
 
 <a name='routing'></a>
 
-## Маршрутизация
+## Маршрутизация (роутинг)
 
-Указание маршрутов в приложении `Phalcon\Mvc\Micro` очень простое. Маршруты, определяются следующим образом:
+Указание маршрутов (роутов) в приложении `Phalcon\Mvc\Micro` очень простое. Маршруты, определяются следующим образом:
 
 ```text
    Приложение -> (метод/глагол) -> (url адрес/регулярное выражение, вызываемая функция PHP)
@@ -667,7 +667,7 @@ $app->notFound(
 );
 ```
 
-Также Вы можете обрабатывать маршруты, которые не были сопоставлены (404) с помощью посредников Middleware, обсуждаемых ниже.
+Также, вы можете обрабатывать маршруты, которые не были сопоставлены (404) с помощью middleware, обсуждаемых ниже.
 
 <a name='routing-verbs'></a>
 
@@ -902,7 +902,7 @@ class UsersController extends Controller
 }
 ```
 
-Finally, you can perform redirections in your middleware (if you are using it). An example is below in the relevant section.
+И наконец, вы можете выполнять перенаправления в ваших middleware (если вы их используете). Пример представлен ниже в соответствующем разделе.
 
 <a name='routing-urls-for-routes'></a>
 
@@ -1197,14 +1197,14 @@ A `Phalcon\Mvc\Micro` application works closely with a `Phalcon\Events\Manager` 
 
 Поддерживаются следующие события:
 
-| Название события   | Срабатывает                                                       | Может остановить операцию? |
-| ------------------ | ----------------------------------------------------------------- |:--------------------------:|
-| beforeHandleRoute  | Основной метод вызван; Маршруты ее не проверены                   |             Да             |
-| beforeExecuteRoute | Маршрут сопоставлен, обработчик верный, но еще не выполнен        |             Да             |
-| afterExecuteRoute  | Обработчик только что закончил работать                           |            Нет             |
-| beforeNotFound     | Маршрут не найден                                                 |             Да             |
-| afterHandleRoute   | Route just finished executing                                     |            Yes             |
-| afterBinding       | Triggered after models are bound but before executing the handler |            Yes             |
+| Название события   | Срабатывает                                                                  | Может остановить операцию? |
+| ------------------ | ---------------------------------------------------------------------------- |:--------------------------:|
+| beforeHandleRoute  | Основной метод вызван; Маршруты ее не проверены                              |             Да             |
+| beforeExecuteRoute | Маршрут сопоставлен, обработчик верный, но еще не выполнен                   |             Да             |
+| afterExecuteRoute  | Обработчик только что закончил работать                                      |            Нет             |
+| beforeNotFound     | Маршрут не найден                                                            |             Да             |
+| afterHandleRoute   | Route just finished executing                                                |             Да             |
+| afterBinding       | Срабатывает после того, как модели связаны, но перед выполнением обработчика |             Да             |
 
 <a name='events-available-events-authentication'></a>
 
@@ -1289,11 +1289,11 @@ The presence of a `Phalcon\Events\Manager` is essential for middleware to operat
 
 Middleware can be attached to a micro application in 3 different events. Those are:
 
-| Событие | Description                                    |
-| ------- | ---------------------------------------------- |
-| before  | Before the handler has been executed           |
-| after   | After the handler has been executed            |
-| final   | After the response has been sent to the caller |
+| Событие | Описание                                        |
+| ------- | ----------------------------------------------- |
+| before  | Перед выполнением обработчика                   |
+| after   | После выполнения обработчика                    |
+| final   | После того, как был отправлен ответ вызывающему |
 
 <h5 class='alert alert-warning'>You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.</h5>
 
@@ -1368,7 +1368,7 @@ $app->finish(
 
 <a name='middleware-setup'></a>
 
-## Setup
+## Настройка
 
 Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
 
@@ -1444,7 +1444,7 @@ We then attach the middleware class in our application on one of the three liste
 
 <a name='middleware-implementation'></a>
 
-## Implementation
+## Реализация
 
 Middleware can be any kind of PHP callable functions. You can organize your code whichever way you like it to implement middleware. If you choose to use classes for your middleware, you will need them to implement the `Phalcon\Mvc\Micro\MiddlewareInterface`
 
@@ -1489,13 +1489,13 @@ class CacheMiddleware implements MiddlewareInterface
 
 <a name='middleware-events'></a>
 
-## Events in Middleware
+## События в Middleware
 
 The [events](#events) that are triggered for our application also trigger inside a class that implements the `Phalcon\Mvc\Micro\MiddlewareInterface`. This offers great flexibility and power for developers since we can interact with the request process.
 
 <a name='middleware-events-api'></a>
 
-### API example
+### Пример API
 
 Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
 
@@ -1831,7 +1831,7 @@ class ResponseMiddleware implements MiddlewareInterface
 
 <a name='models'></a>
 
-# Models
+# Модели
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
@@ -1968,7 +1968,7 @@ $app->get(
 
 <a name='error-handling'></a>
 
-# Error Handling
+# Обработка ошибок
 
 The `Phalcon\Mvc\Micro` application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
 

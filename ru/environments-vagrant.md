@@ -663,13 +663,13 @@ networks:
 
 You can update Phalcon Box in two simple steps.
 
-  1. First, you will need to update the Vagrant box using the `vagrant box update` command:
+1. First, you will need to update the Vagrant box using the `vagrant box update` command:
 
 ```bash
 vagrant box update
 ```
 
-  1. Next, you need to update the Phalcon Box source code. If you cloned the repository you can simply
+1. Next, you need to update the Phalcon Box source code. If you cloned the repository you can simply
 
 ```bash
 git pull origin master
