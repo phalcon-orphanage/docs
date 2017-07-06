@@ -15,9 +15,9 @@
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
 - Окружение 
-    - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
+    - [Phalcon Compose](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
-    - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)
+    - [Phalcon Box](/[[language]]/[[version]]/environments-vagrant)
 - Инструменты разработчика 
     - [Установка](/[[language]]/[[version]]/devtools-installation)
     - [Использование](/[[language]]/[[version]]/devtools-usage)
