@@ -32,25 +32,25 @@
 
 <a name='contributing'></a>
 
-# Contributing to Phalcon
+# Вклад в Phalcon
 
 Phalcon является проектом с открытым кодом и сильно зависит от добровольных усилий. Мы приветствуем вклады от всех!.
 
-Please take a moment to review this document in order to make the contribution process easy and effective all.
+Пожалуйста, уделите время на этот документ, чтобы сделать процесс вашего "Вклада" легким и эффективным.
 
-Following these guidelines, allows better communication, faster resolution of issues and moves the project forward.
+Следование этим принципам, позволит лучше общаться, быстрее решать проблемы и двигать проект вперед.
 
 <a name='contributions'></a>
 
-## Contributions
+## Вклад
 
-Contributions to Phalcon should be made in the form of [GitHub pull requests](https://help.github.com/articles/using-pull-requests/). Each pull request will be reviewed by a core contributor (someone with permission to merge pull requests). Based on the type and content of the pull request, it can either be merged immediately, put on hold if clarifications are needed, or rejected.
+Вклад в Phalcon следует делать в виде [пулл запросов на GitHub](https://help.github.com/articles/using-pull-requests/). Каждый пулл запрос будет рассмотрен основным контрибьютером (кем-то с разрешениями на объединение пулл запросов). Основываясь на типе и содержании пулл запроса, он может быть объединён немедленно, отложен, если необходимы разъяснения, или отклонен.
 
 Please ensure that you are sending your pull request to the correct branch and that you already have rebased your code.
 
 <a name='questions-and-support'></a>
 
-## Questions and Support
+## Вопросы и поддержка
 
 <h5 class='alert alert-warning'>We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.</h5>
 
