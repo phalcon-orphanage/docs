@@ -18,7 +18,6 @@
         - [Startup or linking errors](#troubleshooting-startup)
         - [Full reset](#troubleshooting-full-reset)
         - [Updating dependencies](#troubleshooting-dependencies)
-    - [Versions](#versions)
 
 </div>
 
@@ -237,31 +236,3 @@ Linux/MacOS users can use `make` to perform the task:
 ```bash
 make reset
 ```
-
-<a name='versions'></a>
-## Versions
-The main tools used are Phalcon, Docker and Docker Compose.
-
-| Application     | Version          |
-|-----------------|------------------|
-| Aerospike       | 3.11.1.1         |
-| Apache          | 2.4.18           |
-| Beanstalk       | 1.10             |
-| Composer        | 1.4.1            |
-| Elasticsearch   | 5.2.2            |
-| Memcached       | 1.4.35           |
-| Mongo           | 3.4.2            |
-| MySQL           | 5.7.17           |
-| PHP             | 7.0.18 + PHP-FPM |
-| PHPMD           | 2.6.0            |
-| phpMyAdmin      | 4.6.5.2          |
-| PHP_CodeSniffer | 2.8.1            |
-| Phalcon         | 3.1.2            |
-| Phing           | 2.16.0           |
-| Phive           | 0.6.3            |
-| PostgreSQL      | 9.5.5            |
-| Redis           | 3.2.6            |
-| Weakref         | 0.3.3            |
-| Xdebug          | 2.4.0            |
-
-

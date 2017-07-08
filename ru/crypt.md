@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Шифрование и расшифровка</a> <ul>
+      <a href="#overview">Шифрование/дешифрование</a> <ul>
         <li>
-          <a href="#usage">Basic Usage</a>
+          <a href="#usage">Базовое использование</a>
         </li>
         <li>
           <a href="#options">Настройки шифрования</a>
@@ -24,7 +24,7 @@
 
 <a name='overview'></a>
 
-# Encryption/Decryption
+# Шифрование/дешифрование
 
 Phalcon предоставляет средства шифрования с помощью компонента `Phalcon\Crypt`. Этот класс предоставляет простые объектно-ориентированные обертки к PHP библиотеке [openssl](http://www.php.net/manual/en/book.openssl.php).
 
@@ -34,7 +34,7 @@ Phalcon предоставляет средства шифрования с по
 
 <a name='usage'></a>
 
-## Basic Usage
+## Базовое использование
 
 Данный компонент разработан так, чтобы быть максимально простым в использовании:
 
@@ -80,11 +80,11 @@ foreach ($texts as $key => $text) {
 
 <a name='options'></a>
 
-## Encryption Options
+## Настройки шифрования
 
 Для изменения поведения шифрования доступны следующие параметры:
 
-| Название | Description                                                                                                                                                      |
+| Название | Описание                                                                                                                                                         |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Шифр     | Один из алгоритмов шифрования, поддерживаемый openssl. Посмотреть список вы можете [здесь](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
@@ -109,7 +109,7 @@ echo $crypt->encrypt($text, $key);
 
 <a name='base64'></a>
 
-## Base64 Support
+## Поддержка base64
 
 Для того, чтобы зашифрованный текст должным образом передать (по электронной почте) или отобразить (в браузере) очень часто применяется кодирование [base64](http://www.php.net/manual/en/function.base64-encode.php):
 
@@ -131,7 +131,7 @@ echo $crypt->decryptBase64($encrypt, $key);
 
 <a name='service'></a>
 
-## Setting up an Encryption service
+## Настройка сервиса шифрования
 
 Чтобы использовать компонент шифрования из любой точки приложения, вы можете поместить его в контейнер сервисов:
 
@@ -184,7 +184,7 @@ class SecretsController extends Controller
 
 <a name='links'></a>
 
-## Links
+## Ссылки
 
 - [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 - [Что такое блочный шифр](https://en.wikipedia.org/wiki/Block_cipher)
