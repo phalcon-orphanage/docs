@@ -131,7 +131,7 @@ someParameter='the value', false
 
 ## Фабрика
 
-Доступно множество адаптеров аннотаций (смотрите [Адаптеры](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
+Существует множество адаптеров аннотаций (см. [Адаптеры](#adapters)). Используемый вами, будет зависеть от нужд вашего приложения. Традиционный способ инициализации экземпляра адаптера выглядит следующим образом:
 
 ```php
 <?php
@@ -143,7 +143,7 @@ $reader = new MemoryAdapter();
 // .....
 ```
 
-However you can also utilize the factory method to achieve the same thing:
+Однако, вы можете использовать фабричный метод, чтобы достигнуть того же самого:
 
 ```php
 <?php
@@ -154,17 +154,17 @@ use Phalcon\Annotations\Factory;
 $options = [
     'prefix'   => 'annotations',
     'lifetime' => '3600',
-    'adapter'  => 'memory',      // Load the Memory adapter
+    'adapter'  => 'memory',      // Загрузка Memory адаптера
 ];
 
 $annotations = Factory::load($options);
 ```
 
-The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
+Фабричный загрузчик обеспечивает большую гибкость, при создании экземпляров адаптеров аннотаций из конфигурационных файлов.
 
 <a name='reading'></a>
 
-## Reading Annotations
+## Чтение аннотаций
 
 Для простого получения аннотаций класса с использованием объектно-ориентированного интерфейса, реализован рефлектор:
 
@@ -200,7 +200,7 @@ foreach ($annotations as $annotation) {
 
 <a name='types'></a>
 
-## Types of Annotations
+## Типы аннотаций
 
 Аннотации могут иметь или не иметь параметров. Параметры могут быть простыми литералам (строкой, числом, булевым типом, null), массивом, хешированным списком или другими аннотациями:
 
@@ -259,7 +259,7 @@ foreach ($annotations as $annotation) {
 
 <a name='usage'></a>
 
-## Practical Usage
+## Практическое использование
 
 Далее мы разберем несколько примеров по использованию аннотаций в PHP приложениях:
 
@@ -445,7 +445,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## Annotations Adapters
+## Адаптеры аннотаций
 
 Компонент поддерживает адаптеры с возможностью кэширования проанализированных аннотаций. Это позволяет увеличивать производительность в боевом режиме и моментальное обновление данных при разработке и тестировании:
 
