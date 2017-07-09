@@ -2,6 +2,7 @@
 
 - [Multi-lingual Support](#overview)
     - [Adapters](#adapters)
+        - [Factory](#adapters-factory)
     - [Component Usage](#usage)
     - [Implementing your own adapters](#custom)
 
@@ -19,6 +20,26 @@ This component makes use of adapters to read translation messages from different
 |-----------------------------------------|-----------------------------------------------------------------------------------------|
 | `Phalcon\Translate\Adapter\NativeArray` | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 
+<a name='adapters-factory'></a>
+### Factory
+Loads Translate Adapter class using `adapter` option
+
+```php
+<?php
+
+use Phalcon\Translate\Factory;
+
+$options = [
+    'locale'        => 'de_DE.UTF-8',
+    'defaultDomain' => 'translations',
+    'directory'     => '/path/to/application/locales',
+    'category'      => LC_MESSAGES,
+    'adapter'       => 'gettext',
+];
+
+$translate = Factory::load($options);
+```
+ 
 <a name='usage'></a>
 ## Component Usage
 Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:
