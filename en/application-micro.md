@@ -878,7 +878,7 @@ $app->get(
 
 <a name='responses-new-response-object'></a>
 ## New Response object
-You can use the `setContent` method of the response object to return the response back:
+You can use the `setContent` method of the Response object to return the response back:
 
 ```php
 $app->get(
@@ -901,7 +901,7 @@ $app->get(
 
 <a name='responses-application-response'></a>
 ## Application Response
-You can also use the `Phalcon\Http\Response` object to return responses to the caller. The response object has a lot of useful methods that make returning respones much easier.
+You can also use the `Phalcon\Http\Response` object to return responses to the caller. The Response object has a lot of useful methods that make returning respones much easier.
 
 ```php
 $app->get(
@@ -919,7 +919,7 @@ $app->get(
 
 <a name='responses-return-application-response'></a>
 ## Return Application Response
-A different approach returning data back to the caller is to return the response object directly from the application. When responses are returned by handlers they are automatically sent by the application.
+A different approach returning data back to the caller is to return the Response object directly from the application. When respons are returned by handlers they are automatically sent by the application.
 
 ```php
 <?php
