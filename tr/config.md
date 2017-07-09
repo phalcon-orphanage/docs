@@ -3,6 +3,9 @@
     <li>
       <a href="#overview">Yapılandırmaları Okuma</a> <ul>
         <li>
+          <a href="#factory">Factory</a>
+        </li>
+        <li>
           <a href="#native-arrays">Doğal Diziler</a>
         </li>
         <li>
@@ -31,10 +34,27 @@
 
 `Phalcon\Config`, bir uygulamada kullanmak üzere çeşitli biçimlerdeki yapılandırma dosyalarını (bağdaştırıcıları kullanarak) PHP nesnelerine dönüştürmek için kullanılan bir bileşendir.
 
+<a name='factory'></a>
+
+## Factory
+
+Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
+
+```php
+<?php
+
+use Phalcon\Config\Factory;
+
+$options = [
+    'filePath' => 'path/config',
+    'adapter'  => 'php',
+ ];
+
+ $config = Factory::load($options);
+ ```
+
 <a name='native-arrays'></a>
-
 ## Native Arrays
-
 The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
 
 ```php

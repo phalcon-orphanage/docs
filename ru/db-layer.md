@@ -5,6 +5,9 @@
         <li>
           <a href="#adapters">Database Adapters</a> <ul>
             <li>
+              <a href="#adapters-factory">Factory</a>
+            </li>
+            <li>
               <a href="#adapters-custom">Implementing your own adapters</a>
             </li>
           </ul>
@@ -88,6 +91,31 @@ This component makes use of adapters to encapsulate specific database system det
 | `Phalcon\Db\Adapter\Pdo\Mysql`      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    |
 | `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
 | `Phalcon\Db\Adapter\Pdo\Sqlite`     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     |
+
+<a name='adapters-factory'></a>
+
+### Factory
+
+<a name='factory'></a>
+
+Loads PDO Adapter class using `adapter` option
+
+```php
+<?php
+
+use Phalcon\Db\Adapter\Pdo\Factory;
+
+$options = [
+    'host'     => 'localhost',
+    'dbname'   => 'blog',
+    'port'     => 3306,
+    'username' => 'sigma',
+    'password' => 'secret',
+    'adapter'  => 'mysql',
+];
+
+$db = Factory::load($options);
+```
 
 <a name='adapters-custom'></a>
 

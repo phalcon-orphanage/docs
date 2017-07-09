@@ -3,8 +3,13 @@
     <li>
       <a href="#overview">Storing data in the Session</a> <ul>
         <li>
-          <a href="#start">Starting the Session</a>
+          <a href="#start">Starting the Session</a> <ul>
+            <li>
+              <a href="#start-factory">Factory</a>
+            </li>
+          </ul>
         </li>
+        
         <li>
           <a href="#store">Storing/Retrieving data in Session</a>
         </li>
@@ -62,6 +67,30 @@ $di->setShared(
         return $session;
     }
 );
+```
+
+<a name='start-factory'></a>
+
+## Factory
+
+Loads Session Adapter class using `adapter` option
+
+```php
+<?php
+
+use Phalcon\Session\Factory;
+
+$options = [
+    'uniqueId'   => 'my-private-app',
+    'host'       => '127.0.0.1',
+    'port'       => 11211,
+    'persistent' => true,
+    'lifetime'   => 3600,
+    'prefix'     => 'my_',
+    'adapter'    => 'memcache',
+];
+
+$session = Factory::load($options);
 ```
 
 <a name='store'></a>

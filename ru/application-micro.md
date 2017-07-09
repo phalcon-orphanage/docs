@@ -908,7 +908,7 @@ class UsersController extends Controller
 
 ## URLs for Routes
 
-Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process. * First we need to name our route. This can be achieved with the `setName()` method that is exposed from the methods/verbs in our application (`get`, `post`, etc.);
+Другая возможность маршрутизации — настройка именованных маршрутов и генерация URL-адресов для этих маршрутов. Это двухшаговый процесс. * Сперва нам нужно назвать наш маршрут. Это может быть достигнуто с помощью метода `setName()`, который доступен из методов-глаголов в нашем приложении (`get`, `post`, и т. д.);
 
 ```php
 // Задать маршрут с именем 'show-order'
@@ -922,7 +922,7 @@ $app
     ->setName('show-order');
 ```
 
-- We need to use the `Phalcon\Mvc\Url` component to generate URLs for the named routes.
+- Нам нужно использовать компонент `Phalcon\Mvc\Url` для получения URL-адреса на основе определенных маршрутов.
 
 ```php
 // Используем именованный маршрут и создаем URL от него
@@ -946,9 +946,9 @@ $app->get(
 
 <a name='dependency-injector'></a>
 
-# Dependency Injector
+# Внедрение зависимостей
 
-When a micro application is created, a `Phalcon\Di\FactoryDefault` services container is create implicitly.
+Когда микро приложение создано, неявно создается контейнер сервисов `Phalcon\Di\FactoryDefault`.
 
 ```php
 <?php

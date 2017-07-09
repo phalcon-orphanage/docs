@@ -6,6 +6,9 @@
           <a href="#data-adapters">Data Adapters</a>
         </li>
         <li>
+          <a href="#factory">Factory</a>
+        </li>
+        <li>
           <a href="#examples">Examples</a>
         </li>
         <li>
@@ -39,6 +42,33 @@ This component makes use of adapters to encapsulate different sources of data:
 | `Phalcon\Paginator\Adapter\NativeArray`  | Use a PHP array as source data                                                                                                                                                  |
 | `Phalcon\Paginator\Adapter\Model`        | Use a `Phalcon\Mvc\Model\Resultset` object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
 | `Phalcon\Paginator\Adapter\QueryBuilder` | Use a `Phalcon\Mvc\Model\Query\Builder` object as source data                                                                                                               |
+
+<a name='factory'></a>
+
+## Factory
+
+Loads Paginator Adapter class using `adapter` option
+
+```php
+<?php
+
+use Phalcon\Paginator\Factory;
+
+$builder = $this->modelsManager->createBuilder()
+                ->columns('id, name')
+                ->from('Robots')
+                ->orderBy('name');
+
+$options = [
+    'builder' => $builder,
+    'limit'   => 20,
+    'page'    => 1,
+    'adapter' => 'queryBuilder',
+];
+
+$paginator = Factory::load($options);
+
+```
 
 <a name='examples'></a>
 
