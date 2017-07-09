@@ -16,6 +16,7 @@
     - [Frontend Adapters](#adapters-frontend)
         - [Implementing your own Frontend adapters](#adapters-frontend-custom)
     - [Backend Adapters](#adapters-backend)
+        - [Factory](#adapters-backend-factory)
         - [Implementing your own Backend adapters](#adapters-backend-custom)
         - [File Backend Options](#adapters-backend-file)
         - [Libmemcached Backend Options](#adapters-backend-libmemcached)
@@ -472,6 +473,23 @@ The backend adapters available to store cache data are:
 
 <h5 class='alert alert-warning' markdown='1'>*NOTE* In PHP 7 to use phalcon `apc` based adapter classes you needed to install `apcu` and `apcu_bc` package from pecl. Now in Phalcon 3.2.0 you can switch your `*\Apc` classes to `*\Apcu` and remove `apcu_bc`. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes.</h5>
 
+<a name='adapters-backend-factory'></a>
+### Factory
+There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+
+```php
+<?php
+
+use Phalcon\Cache\Backend\Factory;
+use Phalcon\Cache\Frontend\Data;
+
+$options = [
+    'prefix'   => 'app-data',
+    'frontend' => new Data(),
+    'adapter'  => 'apc',
+];
+$backendCache = Factory::load($options);
+```
 
 <a name='adapters-backend-custom'></a>
 ### Implementing your own Backend adapters

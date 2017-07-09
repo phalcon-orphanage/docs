@@ -1,6 +1,7 @@
 <div class='article-menu' markdown='1'>
 
 - [Reading Configurations](#overview)
+        - [Factory](#factory)
     - [Native Arrays](#native-arrays)
     - [File Adapters](#file-adapter)
     - [Reading INI Files](#ini-files)
@@ -14,8 +15,10 @@
 # Reading Configurations
 `Phalcon\Config` is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
-Values can be obtained from `Phalcon\Config` as follows:
-
+<a name='factory'></a>
+## Factory
+Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
+ 
 ```php
 <?php
 
@@ -36,6 +39,23 @@ echo $config->get('test')->get('parent')->get('property');  // displays 1
 echo $config->test->parent->property;                       // displays 1
 echo $config->path('test.parent.property');                 // displays 1
 ```
+
+<a name='factory'></a>
+## Factory
+Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
+ 
+```php
+<?php
+
+use Phalcon\Config\Factory;
+
+$options = [
+    'filePath' => 'path/config',
+    'adapter'  => 'php',
+ ];
+ 
+ $config = Factory::load($options);
+ ```
 
 <a name='native-arrays'></a>
 ## Native Arrays
