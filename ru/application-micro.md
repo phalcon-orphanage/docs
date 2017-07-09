@@ -1330,7 +1330,7 @@ $app->before(
 
 ### after
 
-This event can be used to manipulate data or perform actions that are needed after the handler has finished executing. In the example below, we manipulate our response to send JSON back to the caller.
+Это событие может быть использовано для манипуляций над данными или для выполнения действий, которые необходимы после того, как обработчик закончит выполнение. В примере ниже, мы изменяем наш ответ, чтобы послать JSON вызывающей стороне.
 
 ```php
 $app->map(
@@ -1354,7 +1354,7 @@ $app->after(
 
 ### finish
 
-This even will fire up when the whole request cycle has been completed. In the example below, we use it to clean up some cache files.
+Это событие вызывается, когда полный цикл запроса был завершен. В примере ниже, мы используем его, чтобы очистить некоторые файлы кэша.
 
 ```php
 $app->finish(
