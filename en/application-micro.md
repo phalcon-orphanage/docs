@@ -919,7 +919,7 @@ $app->get(
 
 <a name='responses-return-application-response'></a>
 ## Return Application Response
-A different approach returning data back to the caller is to return the Response object directly from the application. When respons are returned by handlers they are automatically sent by the application.
+A different approach returning data back to the caller is to return the Response object directly from the application. When responses are returned by handlers they are automatically sent by the application.
 
 ```php
 <?php
