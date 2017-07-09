@@ -51,6 +51,9 @@
         <li>
           <a href="#adapters-backend">Бэкэнд адаптеры</a> <ul>
             <li>
+              <a href="#adapters-backend-factory">Factory</a>
+            </li>
+            <li>
               <a href="#adapters-backend-custom">Реализация собственных бэкэнд адаптеров</a>
             </li>
             <li>
@@ -557,15 +560,35 @@ $cache->save('my-key', $data);
 | `Phalcon\Cache\Backend\Redis`        | Сохраняет данные в Redis.                                                    | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Сохраняет данные в XCache.                                                   | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
+<a name='adapters-backend-factory'></a>
+
+### Factory
+
+There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+
+```php
+<?php
+
+use Phalcon\Cache\Backend\Factory;
+use Phalcon\Cache\Frontend\Data;
+
+$options = [
+    'prefix'   => 'app-data',
+    'frontend' => new Data(),
+    'adapter'  => 'apc',
+];
+$backendCache = Factory::load($options);
+```
+
 <a name='adapters-backend-custom'></a>
 
-### Implementing your own Backend adapters
+### Реализация собственных бэкэнд адаптеров
 
 Для создания бэкэнд адаптера необходимо реализовать интерфейс `Phalcon\Cache\BackendInterface`.
 
 <a name='adapters-backend-file'></a>
 
-### File Backend Options
+### Параметры файлового бэкэнда
 
 Этот бэкэнд сохраняет данные в локальный текстовый файл. Доступные опции:
 
@@ -576,7 +599,7 @@ $cache->save('my-key', $data);
 
 <a name='adapters-backend-libmemcached'></a>
 
-### Libmemcached Backend Options
+### Параметры Libmemcached бэкэнда
 
 Данные будут сохранены на Memcached сервере. По умолчанию используется пулл постоянных соединений. Доступные опции:
 
@@ -636,7 +659,7 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-memcache'></a>
 
-### Memcache Backend Options
+### Параметры Memcache бэкэнда
 
 Данные будут сохранены на Memcached сервере. Доступные опции:
 
@@ -649,7 +672,7 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-apc'></a>
 
-### APC Backend Options
+### Параметры APC бэкэнда
 
 Данные будут сохранены в Alternative PHP Cache ([APC](http://php.net/apc)). Доступна лишь одна опция:
 
