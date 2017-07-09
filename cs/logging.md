@@ -6,8 +6,13 @@
     <li>
       <a href="#overview">Logging</a> <ul>
         <li>
-          <a href="#adapters">Adapters</a>
+          <a href="#adapters">Adapters</a> <ul>
+            <li>
+              <a href="#adapters-factory">Factory</a>
+            </li>
+          </ul>
         </li>
+        
         <li>
           <a href="#creating">Creating a Log</a>
         </li>
@@ -70,6 +75,25 @@ This component makes use of adapters to store the logged messages. The use of ad
 | `Phalcon\Logger\Adapter\Stream`  | Logs to a PHP Streams     |
 | `Phalcon\Logger\Adapter\Syslog`  | Logs to the system logger |
 | `Phalcon\Logger\Adapter\FirePHP` | Logs to the FirePHP       |
+
+<a name='adapters-factory'></a>
+
+### Factory
+
+Loads Logger Adapter class using `adapter` option
+
+```php
+<?php
+
+use Phalcon\Logger\Factory;
+
+$options = [
+    'name'    => 'log.txt',
+    'adapter' => 'file',
+];
+
+$logger = Factory::load($options);
+```
 
 <a name='creating'></a>
 
