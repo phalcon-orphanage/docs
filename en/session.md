@@ -2,6 +2,7 @@
 
 - [Storing data in the Session](#overview)
     - [Starting the Session](#start)
+        - [Factory](#start-factory)
     - [Storing/Retrieving data in Session](#store)
     - [Removing/Destroying Sessions](#remove-destroy)
     - [Isolating Session Data between Applications](#data-isolation)
@@ -41,6 +42,28 @@ $di->setShared(
         return $session;
     }
 );
+```
+
+<a name='start-factory'></a>
+## Factory
+Loads Session Adapter class using `adapter` option
+ 
+```php
+<?php
+
+use Phalcon\Session\Factory;
+
+$options = [
+    'uniqueId'   => 'my-private-app',
+    'host'       => '127.0.0.1',
+    'port'       => 11211,
+    'persistent' => true,
+    'lifetime'   => 3600,
+    'prefix'     => 'my_',
+    'adapter'    => 'memcache',
+];
+
+$session = Factory::load($options);
 ```
 
 <a name='store'></a>
