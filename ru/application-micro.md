@@ -146,7 +146,7 @@
     <li>
       <a href="#middleware">Middleware</a> <ul>
         <li>
-          <a href="#middleware-attached-events">Прикрепленные события</a> <ul>
+          <a href="#middleware-attached-events">Прикреплённые события</a> <ul>
             <li>
               <a href="#middleware-attached-events-before">before</a>
             </li>
@@ -168,7 +168,7 @@
         <li>
           <a href="#middleware-events">События в Middleware</a> <ul>
             <li>
-              <a href="#middleware-events-api">Пример реализации</a> <ul>
+              <a href="#middleware-events-api">Пример API</a> <ul>
                 <li>
                   <a href="#middleware-events-api-firewall">Firewall</a>
                 </li>
@@ -211,9 +211,9 @@
 
 # Микроприложения
 
-Phalcon предлагает очень "тонкое" приложение, так что можно создавать "Микроприложения" минимальными усилиями.
+С помощью Phalcon можно создавать приложения по типу “Микрофреймворк”. Для этого, необходимо написать всего лишь несколько строк кода.
 
-Микро приложения подходят для небольших приложений, которые будут иметь очень низкие накладные расходы. Например, наш [веб-сайт](https://github.com/phalcon/website), этот веб-сайт ([документация](https://github.com/phalcon/docs)), наш [магазин](https://github.com/phalcon/store), API, прототипы и т.д.
+Микроприложения подходят для небольших приложений, которые будут иметь очень низкие накладные расходы. Например, [наш веб-сайт](https://github.com/phalcon/website), [документация по фреймворку](https://github.com/phalcon/docs), которую вы сейчас читаете, наш [магазин](https://github.com/phalcon/store), API, прототипы и т.д.
 
 ```php
 <?php
@@ -234,9 +234,9 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 
-## Создание микро приложения
+## Создание микроприложения
 
-Класс `Phalcon\Mvc\Micro` является ответственным за создание микро приложения.
+Класс `Phalcon\Mvc\Micro` является ответственным за создание микроприложения.
 
 ```php
 <?php
@@ -248,9 +248,9 @@ $app = new Micro();
 
 <a name='routing'></a>
 
-## Маршрутизация
+## Маршрутизация (роутинг)
 
-Указание маршрутов в приложении `Phalcon\Mvc\Micro` очень простое. Маршруты, определяются следующим образом:
+Указание маршрутов (роутов) в приложении `Phalcon\Mvc\Micro` очень простое. Маршруты, определяются следующим образом:
 
 ```text
    Приложение -> (метод/глагол) -> (url адрес/регулярное выражение, вызываемая функция PHP)
@@ -667,7 +667,7 @@ $app->notFound(
 );
 ```
 
-Также Вы можете обрабатывать маршруты, которые не были сопоставлены (404) с помощью посредников Middleware, обсуждаемых ниже.
+Также, вы можете обрабатывать маршруты, которые не были сопоставлены (404) с помощью middleware, обсуждаемых ниже.
 
 <a name='routing-verbs'></a>
 
@@ -902,13 +902,15 @@ class UsersController extends Controller
 }
 ```
 
-Finally, you can perform redirections in your middleware (if you are using it). An example is below in the relevant section.
+И наконец, вы можете выполнять перенаправления в ваших middleware (если вы их используете). Пример представлен ниже в соответствующем разделе.
 
 <a name='routing-urls-for-routes'></a>
 
-## URLs for Routes
+## URL-адреса для маршрутов
 
-Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process. * First we need to name our route. This can be achieved with the `setName()` method that is exposed from the methods/verbs in our application (`get`, `post`, etc.);
+Другая возможность маршрутизации — настройка именованных маршрутов и генерация URL-адресов для этих маршрутов. Это двухшаговый процесс.
+
+- Сначала мы должны дать имя нашему маршруту. Это может быть достигнуто с помощью метода `setName()`, который доступен из методов-глаголов в нашем приложении (`get`, `post`, и т. д.);
 
 ```php
 // Задать маршрут с именем 'show-order'
@@ -922,7 +924,7 @@ $app
     ->setName('show-order');
 ```
 
-- We need to use the `Phalcon\Mvc\Url` component to generate URLs for the named routes.
+- Нам нужно использовать компонент `Phalcon\Mvc\Url` для получения URL-адреса на основе определенных маршрутов.
 
 ```php
 // Используем именованный маршрут и создаем URL от него
@@ -946,9 +948,9 @@ $app->get(
 
 <a name='dependency-injector'></a>
 
-# Dependency Injector
+# Внедрение зависимостей
 
-When a micro application is created, a `Phalcon\Di\FactoryDefault` services container is create implicitly.
+Когда микро приложение создано, неявно создается контейнер сервисов `Phalcon\Di\FactoryDefault`.
 
 ```php
 <?php
@@ -965,7 +967,7 @@ $app->get(
 );
 ```
 
-You can also create a Di container yourself, and assign it to the micro application, therefore manipulating the services depending on the needs of your application.
+Кроме того, вы можете создать Di контейнер самостоятельно, и назначить его микроприложению. Таким образом, манипуляция сервисами полностью будет зависеть от нужд вашего приложения.
 
 ```php
 use Phalcon\Mvc\Micro;
@@ -1001,7 +1003,7 @@ $app->post(
 );
 ```
 
-You can also use the array syntax to register services in the dependency injection container from the application object:
+Также вы можете использовать синтаксис массивов, чтобы зарегистрировать сервисы в контейнере зависимостей из объекта приложения:
 
 ```php
 <br /><?php
@@ -1037,11 +1039,11 @@ $app->get(
 
 <a name='responses'></a>
 
-# Responses
+# Ответы
 
-A micro application can return many different types of responses. Direct output, use a template engine, calculated data, view based data, JSON etc.
+Микроприложения могут возвращать множество различных типов ответов: прямой вывод, использовать шаблонизаторы или вычисляемые данные, представления, зависящие от передаваемых данных, JSON и т. д.
 
-Handlers may return raw responses using plain text, `Phalcon\Http\Response` object or a custom built component that implements the `Phalcon\Http\ResponseInterface`.
+Обработчики могут возвращать raw ответ используя plain text, объект `Phalcon\Http\Response` или пользовательский компонент реализующий интерфейс `Phalcon\Http\ResponseInterface`.
 
 <a name='responses-direct-output'></a>
 
@@ -1091,7 +1093,7 @@ $app->get(
 
 ## Новый объект Response
 
-You can use the `setContent` method of the response object to return the response back:
+Вы можете использовать метод `setContent` объекта Response, чтобы вернуть ответ:
 
 ```php
 $app->get(
@@ -1116,7 +1118,7 @@ $app->get(
 
 ## Ответ приложения
 
-You can also use the `Phalcon\Http\Response` object to return responses to the caller. The response object has a lot of useful methods that make returning respones much easier.
+Существует возможность использовать объект `Phalcon\Http\Response`, чтобы вернуть ответ вызывающей стороне. Объект Response имеет много полезных методов, которые делают работу с возвращаемым ответом более лёгкой.
 
 ```php
 $app->get(
@@ -1136,7 +1138,7 @@ $app->get(
 
 ## Возврат ответа приложения
 
-A different approach returning data back to the caller is to return the response object directly from the application. When responses are returned by handlers they are automatically sent by the application.
+Другим подходом возврата данных обратно вызывающей стороне является возвращения объекта Response напрямую из приложения. Когда ответы возвращаются обработчиками они автоматически отправляются приложением.
 
 ```php
 <?php
@@ -1146,7 +1148,7 @@ use Phalcon\Http\Response;
 
 $app = new Micro();
 
-// Возврат объекта response
+// Возврат объекта Response
 $app->get(
     '/welcome/index',
     function () {
@@ -1164,7 +1166,7 @@ $app->get(
 
 ## JSON
 
-JSON can be sent back just as easy using the `Phalcon\Http\Response` object:
+При использовании `Phalcon\Http\Response`, JSON-ответ может быть сформирован с такой же лёгкостью:
 
 ```php
 $app->get(
@@ -1189,7 +1191,7 @@ $app->get(
 
 # События
 
-A `Phalcon\Mvc\Micro` application works closely with a `Phalcon\Events\Manager` if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
+`Phalcon\Mvc\Micro` приложение тесно работает с `Phalcon\Events\Manager`, если он представлен, чтобы вызывать события, которые могут быть использованы на протяжении работы нашего приложения. Тип этих событий — `micro`. Эти события вызываются в нашем приложение и могут быть прикреплены к соответствующим обработчикам, которые будут выполнять действия необходимые нашему приложению.
 
 <a name='events-available-events'></a>
 
@@ -1203,14 +1205,14 @@ A `Phalcon\Mvc\Micro` application works closely with a `Phalcon\Events\Manager` 
 | beforeExecuteRoute | Маршрут сопоставлен, обработчик верный, но еще не выполнен                   |             Да             |
 | afterExecuteRoute  | Обработчик только что закончил работать                                      |            Нет             |
 | beforeNotFound     | Маршрут не найден                                                            |             Да             |
-| afterHandleRoute   | Route just finished executing                                                |             Да             |
+| afterHandleRoute   | Маршрут только что закончил выполнение                                       |             Да             |
 | afterBinding       | Срабатывает после того, как модели связаны, но перед выполнением обработчика |             Да             |
 
 <a name='events-available-events-authentication'></a>
 
-### Authentication example
+### Пример: Аутентификация
 
-You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
+Вы легко можете проверить был ли пользователь аутентифицирован или нет используя событие `beforeExecuteRoute`. В следующем примере, мы рассмотрим как контролировать безопасность приложения используя событийную модель:
 
 ```php
 <?php
@@ -1245,9 +1247,9 @@ $app->setEventsManager($eventsManager);
 
 <a name='events-available-events-not-found'></a>
 
-### Not found example
+### Пример: Страница не найдена
 
-You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
+Еще одним встроенным событием, на которое вы можете подписаться для реализации бизнес логики, является `beforeNotFound`. Следующий пример показывает один из способов обработки запросов на несуществующий адрес:
 
 ```php
 <?php
@@ -1279,15 +1281,15 @@ $app->setEventsManager($eventsManager);
 
 # Middleware
 
-Middleware are classes that can be attached to your application and introduce another layer where business logic can exist. They run sequentially, according to the order they are registered and not only improve mainainability, by encapsulating specific functionality, but also performance. A middleware class can stop execution when a particular business rule has not been satisfied, thus allowing the application to exit early without executing the full cycle of a request.
+Middleware — это классы, которые могут быть прикреплены к вашему приложению, с целью ввести ещё один слой, для обработки бизнес-логики. Они запускаются последовательно, в соответствии с порядком регистрации и не только улучшают гибкость, путем инкапсуляции специфичной функциональности, но также повышают производительность. Middleware может остановить выполнение, когда конкретное бизнес-правило не было удовлетворенно. Это дает возможность приложению завершить работу на ранней стадии, без выполнения полного цикла запроса.
 
-The presence of a `Phalcon\Events\Manager` is essential for middleware to operate, so it has to be registered in our Di container.
+Наличие `Phalcon\Events\Manager` необходимо для работы middleware, поэтому он должен быть зарегистрирован в нашем Di контейнере.
 
 <a name='middleware-attached-events'></a>
 
-## Attached events
+## Прикреплённые события
 
-Middleware can be attached to a micro application in 3 different events. Those are:
+Middleware может быть прикреплён к микроприложению при помощи одного из трёх событий:
 
 | Событие | Описание                                        |
 | ------- | ----------------------------------------------- |
@@ -1295,13 +1297,13 @@ Middleware can be attached to a micro application in 3 different events. Those a
 | after   | После выполнения обработчика                    |
 | final   | После того, как был отправлен ответ вызывающему |
 
-<h5 class='alert alert-warning'>You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.</h5>
+<h5 class='alert alert-warning'>Вы можете прикрепить так много middleware-классов, сколько пожелаете, к любому из событий перечисленных выше. Они будут выполнены последовательно, когда соответствующее событие сработает.</h5>
 
 <a name='middleware-attached-events-before'></a>
 
 ### before
 
-This event is perfect for stopping execution of the application if certain criteria is not met. In the below example we are checking if the user has been authenticated and stop execution with the necessary redirect.
+Это событие идеально для остановки выполнения приложения, когда определенный критерий не соблюден. В примере ниже, мы проверяем был ли пользователь авторизован и останавливаем выполнение с необходимым перенаправлением.
 
 ```php
 <?php
@@ -1330,7 +1332,7 @@ $app->before(
 
 ### after
 
-This event can be used to manipulate data or perform actions that are needed after the handler has finished executing. In the example below, we manipulate our response to send JSON back to the caller.
+Это событие может быть использовано для манипуляций над данными или для выполнения действий, которые необходимы после того, как обработчик закончит выполнение. В примере ниже, мы изменяем наш ответ, чтобы послать JSON вызывающей стороне.
 
 ```php
 $app->map(
@@ -1354,7 +1356,7 @@ $app->after(
 
 ### finish
 
-This even will fire up when the whole request cycle has been completed. In the example below, we use it to clean up some cache files.
+Это событие вызывается, когда полный цикл запроса был завершен. В примере ниже, мы используем его, чтобы очистить некоторые файлы кэша.
 
 ```php
 $app->finish(
