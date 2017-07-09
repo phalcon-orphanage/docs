@@ -3,6 +3,9 @@
     <li>
       <a href="#overview">Чтение конфигураций</a> <ul>
         <li>
+          <a href="#factory">Factory</a>
+        </li>
+        <li>
           <a href="#native-arrays">Нативные массивы</a>
         </li>
         <li>
@@ -31,10 +34,27 @@
 
 `Phalcon\Config` — это компонент, используемый для преобразования файлов конфигурации различных форматов (с помощью адаптеров) в PHP объекты для использования в приложении.
 
+<a name='factory'></a>
+
+## Factory
+
+Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
+
+```php
+<?php
+
+use Phalcon\Config\Factory;
+
+$options = [
+    'filePath' => 'path/config',
+    'adapter'  => 'php',
+ ];
+
+ $config = Factory::load($options);
+ ```
+
 <a name='native-arrays'></a>
-
 ## Native Arrays
-
 The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
 
 ```php
