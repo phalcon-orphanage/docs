@@ -1022,8 +1022,7 @@ $app->setEventsManager($eventsManager);
 
 <a name='events-available-events-not-found'></a>
 ### Not found example
-You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event.
-In the following example, we explain how to control the application security using events:
+Another built-in event that you can subscribe to implement business logic is `beforeNotFound`. The following example shows one of the ways to handle requests for a non-existent address:
 
 ```php
 <?php
