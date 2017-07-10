@@ -3,6 +3,7 @@
 - [Contextual Escaping](#overview)
 - [Logging](#overview)
     - [Adapters](#adapters)
+        - [Factory](#adapters-factory)
     - [Creating a Log](#creating)
     - [Transactions](#transactions)
     - [Logging to Multiple Handlers](#multiple-handlers)
@@ -32,6 +33,23 @@ This component makes use of adapters to store the logged messages. The use of ad
 | `Phalcon\Logger\Adapter\Stream`  | Logs to a PHP Streams     |
 | `Phalcon\Logger\Adapter\Syslog`  | Logs to the system logger |
 | `Phalcon\Logger\Adapter\FirePHP` | Logs to the FirePHP       |
+
+<a name='adapters-factory'></a>
+### Factory
+Loads Logger Adapter class using `adapter` option
+
+```php
+<?php
+
+use Phalcon\Logger\Factory;
+
+$options = [
+    'name'    => 'log.txt',
+    'adapter' => 'file',
+];
+
+$logger = Factory::load($options);
+```
 
 <a name='creating'></a>
 ## Creating a Log

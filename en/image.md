@@ -1,7 +1,22 @@
 <div class='article-menu' markdown='1'>
 
-- [Improving Performance with Cache](#overview)
-
+- [Images](#overview)
+    - [Adapters](#adapters)
+        - [Factory](#adapters-factory)
+        - [Implementing your own adapters](#adapters-custom)
+    - [Saving and rendering images](#saving-rendering)
+    - [Resizing images](#resizing)
+        - [`\Phalcon\Image::WIDTH`](#resizing-width)
+        - [`\Phalcon\Image::HEIGHT`](#resizing-height)
+        - [`\Phalcon\Image::NONE`](#resizing-none)
+        - [`\Phalcon\Image::TENSILE`](#resizing-tensile)
+    - [Cropping images](#cropping)
+    - [Rotating images](#rotating)
+    - [Flipping images](#flipping)
+    - [Sharpening images](#sharpening)
+    - [Adding watermarks to images](#watermarks)
+    - [Blurring images](#blurring)
+    - [Pixelating images](#pixelating)
 
 </div>
 
@@ -17,6 +32,25 @@ This component makes use of adapters to encapsulate specific image manipulator p
 |---------------------------------|-------------------------------------------------------------------------------------|
 | `Phalcon\Image\Adapter\Gd`      | Requires the [GD PHP extension](http://php.net/manual/en/book.image.php)            |
 | `Phalcon\Image\Adapter\Imagick` | Requires the [ImageMagick PHP extension](http://php.net/manual/en/book.imagick.php) |
+
+<a name='adapters-factory'></a>
+### Factory
+Loads an Image Adapter class using `adapter` option.
+ 
+```php
+<?php
+
+use Phalcon\Image\Factory;
+
+$options = [
+    'width'   => 200,
+    'height'  => 200,
+    'file'    => 'upload/test.jpg',
+    'adapter' => 'imagick',
+];
+
+$image = Factory::load($options);
+```
 
 <a name='adapters-custom'></a>
 ### Implementing your own adapters
