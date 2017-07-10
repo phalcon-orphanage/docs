@@ -16,6 +16,7 @@
     - [Frontend Adapters](#adapters-frontend)
         - [Implementing your own Frontend adapters](#adapters-frontend-custom)
     - [Backend Adapters](#adapters-backend)
+        - [Factory](#adapters-backend-factory)
         - [Implementing your own Backend adapters](#adapters-backend-custom)
         - [File Backend Options](#adapters-backend-file)
         - [Libmemcached Backend Options](#adapters-backend-libmemcached)
@@ -469,6 +470,24 @@ The backend adapters available to store cache data are:
 | `Phalcon\Cache\Backend\Mongo`        | Stores data to Mongo Database.                       | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
 | `Phalcon\Cache\Backend\Redis`        | Stores data in Redis.                                | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache.                               | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
+
+<a name='adapters-backend-factory'></a>
+### Factory
+There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+
+```php
+<?php
+
+use Phalcon\Cache\Backend\Factory;
+use Phalcon\Cache\Frontend\Data;
+
+$options = [
+    'prefix'   => 'app-data',
+    'frontend' => new Data(),
+    'adapter'  => 'apc',
+];
+$backendCache = Factory::load($options);
+```
 
 <a name='adapters-backend-custom'></a>
 ### Implementing your own Backend adapters
