@@ -800,7 +800,6 @@ $app->post(
 You can also use the array syntax to register services in the dependency injection container from the application object:
 
 ```php
-
 <?php
 
 use Phalcon\Mvc\Micro;
