@@ -215,9 +215,10 @@ $acl->isAllowed(
 Also if you don't provide any parameters in `isAllowed()` method then default behaviour will be `Acl::ALLOW`. You can change it by using method `setNoArgumentsDefaultAction()`.
 
 ```php
+<?php
+
 use Phalcon\Acl;
 
-<?php
 // Set access level for role into resources with custom function
 $acl->allow(
     'Guests',
