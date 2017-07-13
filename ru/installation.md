@@ -152,15 +152,15 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='installation'></a>
 
-# Installation
+# Установка
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+Поскольку Phalcon скомпилирован как расширение PHP, его установка несколько отличается от другого  фреймворка PHP. Phalcon необходимо установить и загрузить в качестве модуля на вашем веб-сервере.
 
 <a name='installation-linux'></a>
 
 ## Linux
 
-To install Phalcon on linux, you will need to add our repository in your distribution and then install it.
+Чтобы установить Phalcon на linux, вам нужно добавить наш репозиторий в свой дистрибутив, а затем установить его.
 
 <a name='installation-linux-debian'></a>
 
@@ -343,7 +343,7 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### Requirements
+### Требования
 
 - Набор инструментов для разработчика PHP 5.5.x/5.6.x/7.0.x.7.1.x (php-dev)
 - XCode
@@ -381,13 +381,13 @@ Restart your webserver.
 
 ## Windows
 
-To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalconphp.com/en/download/windows) page.
+Чтобы использовать Phalcon в Windows, вам необходимо установить файл phalcon.dll. Мы собрали несколько библиотек DLL в зависимости от целевой платформы. Библиотеки DLL можно найти на [download](https://phalconphp.com/en/download/windows) странице.
 
-Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
+Определите вашу установку PHP, а также архитектуру. Если вы загрузите неправильную DLL, Phalcon не будет работать. `Phpinfo ()` содержит эту информацию. В приведенном ниже примере нам понадобится версия NTS для DLL:
 
 ![phpinfo](/images/content/phpinfo-api.png)
 
-The available DLLs are:
+Доступные библиотеки DLL:
 
 | Архитектура | Version | Type                                 |
 |:-----------:|:-------:| ------------------------------------ |
@@ -400,28 +400,28 @@ The available DLLs are:
 |     x86     |   5.6   | Thread safe                          |
 |     x86     |   5.6   | Non Thread safe (NTS)                |
 
-Edit your php.ini file and then append at the end:
+Отредактируйте файл php.ini, а затем добавьте в конец:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-Restart your webserver.
+Перезагрузите свой веб-сервер.
 
 <a name='installation-sources'></a>
 
 ## Компиляция из исходников
 
-Compiling from source is similar to most environments (Linux/Mac).
+Компиляция из источника похожа на большинство сред (Linux / Mac).
 
-### Requirements
+### Требования
 
 - PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 - GCC compiler (Linux/Solaris/FreeBSD) or Xcode (MacOS)
 - re2c >= 0.13
 - libpcre-dev
 
-You can install these packages in your system with the relevant package manager. Instructions for popular linux distributions are below:
+Вы можете установить эти пакеты в своей системе с соответствующим менеджером пакетов. Ниже приведены инструкции для популярных дистрибутивов Linux:
 
 #### Ubuntu
 
@@ -443,13 +443,14 @@ sudo yum install php-devel pcre-devel gcc make
 
 ### Компиляция Phalcon
 
-We first need to clone Phalcon from the Github repository
+Для начала необходимо клонировать Phalcon из репозитория Github
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 ```
 
-and now build the extension
+и создать расширение
+
 
 ```bash
 cd cphalcon/build
