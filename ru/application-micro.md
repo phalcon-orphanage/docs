@@ -1436,7 +1436,7 @@ $application->setEventsManager($eventsManager);
 
 ```
 
-We need a `Phalcon\Events\Manager` object. This can be a newly instantiated object or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one).
+Нам нужен объект `Phalcon\Events\Manager`. This can be a newly instantiated object or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one).
 
 We attach every middleware class in the `micro` hook in the Events Manager. We could also be a bit more specific and attach it to say the `micro:beforeExecuteRoute` event.
 
@@ -1446,7 +1446,7 @@ We then attach the middleware class in our application on one of the three liste
 
 ## Реализация
 
-Middleware can be any kind of PHP callable functions. You can organize your code whichever way you like it to implement middleware. If you choose to use classes for your middleware, you will need them to implement the `Phalcon\Mvc\Micro\MiddlewareInterface`
+Middleware может быть любой вызываемой PHP функцией. Вы можете организовать код любым путем, который вам нравится, для реализации middleware. If you choose to use classes for your middleware, you will need them to implement the `Phalcon\Mvc\Micro\MiddlewareInterface`
 
 ```php
 <?php
@@ -1497,15 +1497,15 @@ The [events](#events) that are triggered for our application also trigger inside
 
 ### Пример API
 
-Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
+Предположим, у нас есть API, которое мы реализовали с помощью Micro приложения. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
 
-The middleware that we will use are: * Firewall * NotFound * Redirect * CORS * Request * Response
+Middleware, которые мы будем использовать: * Firewall * NotFound * Redirect * CORS * Request * Response
 
 <a name='middleware-events-api-firewall'></a>
 
 #### Firewall Middleware
 
-This middleware is attached to the `before` event of our Micro application. The purpose of this middleware is to check who is calling our API and based on a whitelist, allow them to proceed or not
+Этот middleware прикрепляется к событию `before` нашего микроприложения. Цель этого middleware проверить, кто вызывает наше API, и опираясь на белый список, разрешает ему продолжить или нет
 
 ```php
 <?php
@@ -1567,7 +1567,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 #### Not Found Middleware
 
-When this middleware is processed, this means that the requesting IP is allowed to access our application. The application will try and match the route and if not found the `beforeNotFound` event will fire. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
+Когда этот middleware обработан, это означает, что запрашивающему IP разрешен доступ к нашему приложению. Приложение попытается сопоставить маршрут, и если он не будет найден сработает событие `beforeNotFound`. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
 
 ```php
 <?php
