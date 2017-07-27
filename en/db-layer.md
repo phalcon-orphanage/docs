@@ -1,28 +1,82 @@
-<div class='article-menu' markdown='1'>
-
-- [Database Abstraction Layer](#overview)
-    - [Database Adapters](#adapters)
-        - [Factory](#adapters-factory)
-        - [Implementing your own adapters](#adapters-custom)
-    - [Database Dialects](#dialects)
-        - [Implementing your own dialects](#dialects-custom)
-    - [Connecting to Databases](#connection)
-        - [Connecting using Factory](#connection-factory)
-    - [Setting up additional PDO options](#options)
-    - [Finding Rows](#finding-rows)
-    - [Binding Parameters](#binding-parameters)
-    - [Inserting/Updating/Deleting Rows](#crud)
-    - [Transactions and Nested Transactions](#transactions)
-    - [Database Events](#events)
-    - [Profiling SQL Statements](#profiling)
-    - [Logging SQL Statements](#logging-statements)
-    - [Implementing your own Logger](#logger-custom)
-    - [Describing Tables/Views](#describing-tables)
-    - [Creating/Altering/Dropping Tables](#tables)
-        - [Creating Tables](#tables-create)
-        - [Altering Tables](#tables-altering)
-        - [Dropping Tables](#tables-dropping)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Database Abstraction Layer</a> 
+      <ul>
+        <li>
+          <a href="#adapters">Database Adapters</a> 
+          <ul>
+            <li>
+              <a href="#adapters-factory">Factory</a>
+            </li>
+            <li>
+              <a href="#adapters-custom">Implementing your own adapters</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#dialects">Database Dialects</a> 
+          <ul>
+            <li>
+              <a href="#dialects-custom">Implementing your own dialects</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#connection">Connecting to Databases</a> 
+          <ul>
+            <li>
+              <a href="#connection-factory">Connecting using Factory</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#options">Setting up additional PDO options</a>
+        </li>
+        <li>
+          <a href="#finding-rows">Finding Rows</a>
+        </li>
+        <li>
+          <a href="#binding-parameters">Binding Parameters</a>
+        </li>
+        <li>
+          <a href="#crud">Inserting/Updating/Deleting Rows</a>
+        </li>
+        <li>
+          <a href="#transactions">Transactions and Nested Transactions</a>
+        </li>
+        <li>
+          <a href="#events">Database Events</a>
+        </li>
+        <li>
+          <a href="#profiling">Profiling SQL Statements</a>
+        </li>
+        <li>
+          <a href="#logging-statements">Logging SQL Statements</a>
+        </li>
+        <li>
+          <a href="#logger-custom">Implementing your own Logger</a>
+        </li>
+        <li>
+          <a href="#describing-tables">Describing Tables/Views</a>
+        </li>
+        <li>
+          <a href="#tables">Creating/Altering/Dropping Tables</a> 
+          <ul>
+            <li>
+              <a href="#tables-create">Creating Tables</a>
+            </li>
+            <li>
+              <a href="#tables-altering">Altering Tables</a>
+            </li>
+            <li>
+              <a href="#tables-dropping">Dropping Tables</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

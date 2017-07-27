@@ -1,15 +1,35 @@
-<div class='article-menu' markdown='1'>
-
-- [Overview](#overview)
-    - [Using Controllers](#using)
-    - [Dispatch Loop](#dispatch-loop)
-    - [Initializing Controllers](#initializing)
-    - [Injecting Services](#injecting-services)
-    - [Request and Response](#request-response)
-    - [Session Data](#session-data)
-    - [Using Services as Controllers](#services)
-    - [Events in Controllers](#events)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Overview</a> 
+      <ul>
+        <li>
+          <a href="#using">Using Controllers</a>
+        </li>
+        <li>
+          <a href="#dispatch-loop">Dispatch Loop</a>
+        </li>
+        <li>
+          <a href="#initializing">Initializing Controllers</a>
+        </li>
+        <li>
+          <a href="#injecting-services">Injecting Services</a>
+        </li>
+        <li>
+          <a href="#request-response">Request and Response</a>
+        </li>
+        <li>
+          <a href="#session-data">Session Data</a>
+        </li>
+        <li>
+          <a href="#services">Using Services as Controllers</a>
+        </li>
+        <li>
+          <a href="#events">Events in Controllers</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -183,7 +203,11 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>The `initialize()` method is only called if the `beforeExecuteRoute` event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
+<h5 class="alert alert-warning">
+    <p>
+       The <code>initialize()</code> method is only called if the <code>beforeExecuteRoute</code> event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.
+    </p>
+</h5>
 
 If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
 

@@ -1,20 +1,52 @@
-<div class='article-menu' markdown='1'>
-
-- [Tutorial - basic](#basic)
-    - [File structure](#file-structure)
-    - [Bootstrap](#bootstrap)
-        - [Autoloaders](#autoloaders)
-        - [Dependency Management](#dependency-management)
-        - [Handling the application request](#request)
-        - [Putting everything together](#full-example)
-    - [Creating a Controller](#controller)
-    - [Sending output to a view](#view)
-    - [Designing a sign up form](#signup-form)
-    - [Creating a Model](#model)
-    - [Setting a Database Connection](#database-connection)
-    - [Storing data using models](#storing-data)
-    - [Conclusion](#conclusion)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#basic">Tutorial - basic</a> 
+      <ul>
+        <li>
+          <a href="#file-structure">File structure</a>
+        </li>
+        <li>
+          <a href="#bootstrap">Bootstrap</a> 
+          <ul>
+            <li>
+              <a href="#autoloaders">Autoloaders</a>
+            </li>
+            <li>
+              <a href="#dependency-management">Dependency Management</a>
+            </li>
+            <li>
+              <a href="#request">Handling the application request</a>
+            </li>
+            <li>
+              <a href="#full-example">Putting everything together</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#controller">Creating a Controller</a>
+        </li>
+        <li>
+          <a href="#view">Sending output to a view</a>
+        </li>
+        <li>
+          <a href="#signup-form">Designing a sign up form</a>
+        </li>
+        <li>
+          <a href="#model">Creating a Model</a>
+        </li>
+        <li>
+          <a href="#database-connection">Setting a Database Connection</a>
+        </li>
+        <li>
+          <a href="#storing-data">Storing data using models</a>
+        </li>
+        <li>
+          <a href="#conclusion">Conclusion</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='basic'></a>

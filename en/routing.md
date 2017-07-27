@@ -1,30 +1,82 @@
-<div class='article-menu' markdown='1'>
-
-- [Routing](#overview)
-    - [Defining Routes](#defining)
-        - [Parameters with Names](#defining-named-parameters)
-        - [Short Syntax](#defining-short-syntax)
-        - [Mixing Array and Short Syntax](#defining-mixed-parameters)
-        - [Routing to Modules](#defining-route-to-modules)
-        - [HTTP Method Restrictions](#defining-http-method-restrictions)
-        - [Using conversors](#defining-using-conversors)
-        - [Groups of Routes](#defining-groups-of-routes)
-    - [Matching Routes](#matching)
-    - [Naming Routes](#naming)
-    - [Usage Examples](#usage)
-    - [Default Behavior](#default-behavior)
-    - [Setting the default route](#default-route)
-    - [Not Found Paths](#not-found-paths)
-    - [Setting default paths](#default-paths)
-    - [Dealing with extra/trailing slashes](#extra-slashes)
-    - [Match Callbacks](#callbacks)
-    - [Hostname Constraints](#hostname-constraints)
-    - [URI Sources](#uri-sources)
-    - [Testing your routes](#testing)
-    - [Annotations Router](#annotations)
-    - [Registering Router instance](#registration)
-    - [Implementing your own Router](#custom)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="$overview">Routing</a> 
+      <ul>
+        <li>
+          <a href="$defining">Defining Routes</a> 
+          <ul>
+            <li>
+              <a href="$defining-named-parameters">Parameters with Names</a>
+            </li>
+            <li>
+              <a href="$defining-short-syntax">Short Syntax</a>
+            </li>
+            <li>
+              <a href="$defining-mixed-parameters">Mixing Array and Short Syntax</a>
+            </li>
+            <li>
+              <a href="$defining-route-to-modules">Routing to Modules</a>
+            </li>
+            <li>
+              <a href="$defining-http-method-restrictions">HTTP Method Restrictions</a>
+            </li>
+            <li>
+              <a href="$defining-using-conversors">Using conversors</a>
+            </li>
+            <li>
+              <a href="$defining-groups-of-routes">Groups of Routes</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="$matching">Matching Routes</a>
+        </li>
+        <li>
+          <a href="$naming">Naming Routes</a>
+        </li>
+        <li>
+          <a href="$usage">Usage Examples</a>
+        </li>
+        <li>
+          <a href="$default-behavior">Default Behavior</a>
+        </li>
+        <li>
+          <a href="$default-route">Setting the default route</a>
+        </li>
+        <li>
+          <a href="$not-found-paths">Not Found Paths</a>
+        </li>
+        <li>
+          <a href="$default-paths">Setting default paths</a>
+        </li>
+        <li>
+          <a href="$extra-slashes">Dealing with extra/trailing slashes</a>
+        </li>
+        <li>
+          <a href="$callbacks">Match Callbacks</a>
+        </li>
+        <li>
+          <a href="$hostname-constraints">Hostname Constraints</a>
+        </li>
+        <li>
+          <a href="$uri-sources">URI Sources</a>
+        </li>
+        <li>
+          <a href="$testing">Testing your routes</a>
+        </li>
+        <li>
+          <a href="$annotations">Annotations Router</a>
+        </li>
+        <li>
+          <a href="$registration">Registering Router instance</a>
+        </li>
+        <li>
+          <a href="$custom">Implementing your own Router</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -672,7 +724,11 @@ $router->add(
 );
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: `/([a-zA-Z0-9\_\-]+)` </h5>
+<h5 class="alert alert-warning">
+    <p>
+        Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: <code>/([a-zA-Z0-9\_\-]+)</code>
+    </p>
+</h5>
 
 <a name='default-behavior'></a>
 ## Default Behavior

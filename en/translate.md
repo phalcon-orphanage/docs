@@ -1,11 +1,20 @@
-<div class='article-menu' markdown='1'>
-
-- [Multi-lingual Support](#overview)
-    - [Adapters](#adapters)
-        - [Factory](#adapters-factory)
-    - [Component Usage](#usage)
-    - [Implementing your own adapters](#custom)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Multi-lingual Support</a> 
+      <ul>
+        <li>
+          <a href="#adapters">Adapters</a>
+        </li>
+        <li>
+          <a href="#usage">Component Usage</a>
+        </li>
+        <li>
+          <a href="#custom">Implementing your own adapters</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

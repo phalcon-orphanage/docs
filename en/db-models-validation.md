@@ -1,10 +1,20 @@
-<div class='article-menu' markdown='1'>
-
-- [Validating Models](#overview)
-    - [Validating Data Integrity](#data-integrity)
-    - [Validation Messages](#messages)
-    - [Validation Failed Events](#failed-events)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Validating Models</a> 
+      <ul>
+        <li>
+          <a href="#data-integrity">Validating Data Integrity</a>
+        </li>
+        <li>
+          <a href="#messages">Validation Messages</a>
+        </li>
+        <li>
+          <a href="#failed-events">Validation Failed Events</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

@@ -1,11 +1,23 @@
-<div class='article-menu' markdown='1'>
-
-- [Flashing Messages](#overview)
-    - [Adapters](#adapters)
-    - [Usage](#usage)
-    - [Printing Messages](#printing)
-    - [Implicit Flush vs. Session](#implicit-flush-vs-session)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Flashing Messages</a> 
+      <ul>
+        <li>
+          <a href="#adapters">Adapters</a>
+        </li>
+        <li>
+          <a href="#usage">Usage</a>
+        </li>
+        <li>
+          <a href="#printing">Printing Messages</a>
+        </li>
+        <li>
+          <a href="#implicit-flush-vs-session">Implicit Flush vs. Session</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -366,7 +378,11 @@ $email->setFilters(
 $form->add($email);
 ```
 
-<h5 class='alert alert-info' markdown='1'>Learn more about filtering in Phalcon by reading the [Filter documentation](/[[language]]/[[version]]/filter) </h5>
+<h5 class='alert alert-info'>
+    <p>
+        Learn more about filtering in Phalcon by reading the <a href="/[[language]]/[[version]]/filter">Filter documentation</a>.
+    </p>
+</h5>
 
 <a name='entities'></a>
 ## Forms + Entities

@@ -1,10 +1,20 @@
-<div class='article-menu' markdown='1'>
-
-- [Working with Namespaces](#overview)
-    - [Setting up the framework](#setting-up)
-    - [Controllers in Namespaces](#controllers)
-    - [Models in Namespaces](#models)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Working with Namespaces</a> 
+      <ul>
+        <li>
+          <a href="#setting-up">Setting up the framework</a>
+        </li>
+        <li>
+          <a href="#controllers">Controllers in Namespaces</a>
+        </li>
+        <li>
+          <a href="#models">Models in Namespaces</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
