@@ -94,11 +94,11 @@ A model represents the information (data) of the application and the rules to ma
 CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. `Phalcon\Mvc\Model` avoids the need of having to use SQL statements because it translates
 methods dynamically to the respective database engine operations.
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the <a href="/[[language]]/[[version]]/api/Phalcon_Db">Phalcon\Db</a> component documentation.
     </p>
-</h5>
+</div>
 
 <a name='creating'></a>
 ## Creating Models
@@ -117,11 +117,11 @@ class RobotParts extends Model
 }
 ```
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation.
     </p>
-</h5>
+</div>
 
 By default, the model `Store\Toys\RobotParts` will map to the table `robot_parts`. If you want to manually specify another name for the mapped table, you can use the `setSource()` method:
 
@@ -246,11 +246,11 @@ Public properties provide less complexity in development. However getters/setter
 extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
 application they are creating, depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         Underscores in property names can be problematic when using getters and setters.
     </p>
-</h5>
+</div>
 
 If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use
 with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName`
@@ -345,11 +345,11 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         If you want find record by external data (such as user input) or variable data you must use <a href="#binding-parameters">Binding Parameters</a>
     </p>
-</h5>
+</div>
 
 You could also use the `findFirst()` method to get only the first record matching the given criteria:
 
@@ -726,11 +726,11 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         Since the default bind-type is <code>Phalcon\Db\Column::BIND_PARAM_STR</code>, there is no need to specify the <code>bindTypes</code> parameter if all of the columns are of that type.
     </p>
-</h5>
+</div>
 
 If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
 
@@ -756,11 +756,11 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         Bound parameters are available for all query methods such as <code>find()</code> and <code>findFirst()</code> but also the calculation methods like <code>count()</code>, <code>sum()</code>, <code>average()</code> etc.
     </p>
-</h5>
+</div>
 
 If you're using `finders`, bound parameters are automatically used:
 
@@ -1071,11 +1071,11 @@ $robot = new Robots();
 $robot->save($_POST);
 ```
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form.
     </p>
-</h5>
+</div>
 
 You can set an additional parameter in `save` to set a whitelist of fields that only must taken into account when doing the mass assignment:
 
@@ -1416,11 +1416,11 @@ class Robots extends Model
 }
 ```
 
-<h5 class="alert alert-danger">
+<div class="alert alert-danger">
     <p>
         Never use a <a href="/[[language]]/[[version]]/api/Phalcon_Db_RawValue">Phalcon\Db\RawValue</a> to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL.
     </p>
-</h5>
+</div>
 
 <a name='dynamic-updates'></a>
 ## Dynamic Updates
@@ -1847,11 +1847,11 @@ The available options are:
 | updateSnapshotOnSave  | Enables/Disables updating snapshots on `save()`                                         | `true`  |
 | virtualForeignKeys    | Enables/Disables the virtual foreign keys                                               | `true`  |
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         <strong>NOTE</strong> <code>Phalcon\Mvc\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding <code>phalcon.orm.disable_assign_setters = 1</code> to your ini file, it will just simply use <code>this-&amp;gt;property = value</code>.
     </p>
-</h5>
+</div>
 
 <a name='stand-alone-component'></a>
 ## Stand-Alone component

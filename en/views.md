@@ -817,11 +817,11 @@ $di->set(
 );
 ```
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         The frontend must always be <a href="/[[language]]/[[version]]/api/Phalcon_Cache_Frontend_Output">Phalcon\Cache\Frontend\Output</a> and the service <code>viewCache</code> must be registered as always open (not shared) in the services container (DI).
     </p>
-</h5>
+</div>
 
 When using views, caching can be used to prevent controllers from needing to generate view data on each request.
 

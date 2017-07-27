@@ -161,11 +161,11 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         Methods on event listeners accept an <a href="/[[language]]/[[version]]/api/Phalcon_Events_Event">Phalcon\Events\Event</a> object as their first parameter - methods in controllers do not.
     </p>
-</h5>
+</div>
 
 <a name='forwarding'></a>
 ## Forwarding to other actions
@@ -596,11 +596,11 @@ $dispatcher->setModelBinder(new Binder());
 return $dispatcher;
 ```
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in <code>setModelBinder()</code> which can also accept service name or just by passing cache instance to <code>Binder</code> constructor.
     </p>
-</h5>
+</div>
 
 It also introduces a new interface `Phalcon\Mvc\Model\Binder\BindableInterface` which allows you to define the controllers associated models to allow models binding in base controllers.
 
@@ -661,11 +661,11 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         Currently the binder will only use the models primary key to perform a <code>findFirst()</code> on. An example route for the above would be <code>/posts/show/{1}</code>
     </p>
-</h5>
+</div>
 
 <a name='handling-404'></a>
 ## Handling Not-Found Exceptions
@@ -763,11 +763,11 @@ class ExceptionsPlugin
 }
 ```
 
-<h5 class="alert alert-danger">
+<div class="alert alert-danger">
     <p>
         Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the <code>beforeException</code> events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
     </p>
-</h5>
+</div>
 
 <a name='custom'></a>
 ## Implementing your own Dispatcher

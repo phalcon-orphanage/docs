@@ -45,11 +45,11 @@
 # Phalcon Developer Tools
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
-<h5 class="alert alert-danger">
+<div class="alert alert-danger">
     <p>
         If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information.
     </p>
-</h5>
+</div>
 
 <a name='download'></a>
 ## Download

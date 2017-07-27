@@ -724,11 +724,11 @@ $router->add(
 );
 ```
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: <code>/([a-zA-Z0-9\_\-]+)</code>
     </p>
-</h5>
+</div>
 
 <a name='default-behavior'></a>
 ## Default Behavior
@@ -1042,7 +1042,11 @@ Or you can manually pass a URI to the `handle()` method:
 $router->handle('/some/route/to/handle');
 ```
 
-<h5 class='alert alert-danger' markdown='1'>Please note that using `Router::URI_SOURCE_GET_URL` automatically decodes the Uri, because it is based on the `$_REQUEST` superglobal. However, for the time being, using `Router::URI_SOURCE_SERVER_REQUEST_URI` will not automatically decode the Uri for you. This will change in the next major release.</h5>
+<div class='alert alert-danger'>
+    <p>
+        Please note that using <code>Router::URI_SOURCE_GET_URL</code> automatically decodes the Uri, because it is based on the <code>$_REQUEST</code> superglobal. However, for the time being, using <code>Router::URI_SOURCE_SERVER_REQUEST_URI</code> will not automatically decode the Uri for you. This will change in the next major release.
+    </p>
+</div>
 
 <a name='testing'></a>
 ## Testing your routes
