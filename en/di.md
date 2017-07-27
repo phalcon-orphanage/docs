@@ -1,31 +1,91 @@
-<div class='article-menu' markdown='1'>
-
-- [Dependency Injection / Service Location](#di-service-location)
-    - [DI explained](#di-explained)
-    - [Registering services in the Container](#registering-services)
-        - [Simple Registration](#simple-registration)
-            - [String](#simple-registration-string)
-            - [Class instances](#class-instances)
-            - [Closures/Anonymous functions](#closures-anonymous-functions)
-        - [Complex Registration](#complex-registration)
-            - [Constructor Injection](#constructor-injection)
-            - [Setter Injection](#setter-injection)
-            - [Properties Injection](#properties-injection)
-        - [Array Syntax](#array-syntax)
-        - [Loading from YAML](#loading-from-yaml)
-    - [Resolving Services](#resolving-services)
-        - [Events](#events)
-    - [Shared services](#shared-services)
-    - [Manipulating services individually](#manipulating-services-individually)
-    - [Instantiating classes via the Service Container](#instantiating-classes-service-container)
-    - [Automatic Injecting of the DI itself](#automatic-injecting-di-itself)
-    - [Organizing services in files](#organizing-services-files)
-    - [Accessing the DI in a static way](#accessing-di-static-way)
-    - [Factory Default DI](#factory-default-di)
-    - [Service Name Conventions](#service-name-conventions)
-    - [Service Providers](#service-provider)
-    - [Implementing your own DI](#implementing-your-own-di)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#di-service-location">Dependency Injection / Service Location</a> 
+      <ul>
+        <li>
+          <a href="#di-explained">DI explained</a>
+        </li>
+        <li>
+          <a href="#registering-services">Registering services in the Container</a> 
+          <ul>
+            <li>
+              <a href="#simple-registration">Simple Registration</a> 
+              <ul>
+                <li>
+                  <a href="#simple-registration-string">String</a>
+                </li>
+                <li>
+                  <a href="#class-instances">Class instances</a>
+                </li>
+                <li>
+                  <a href="#closures-anonymous-functions">Closures/Anonymous functions</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#complex-registration">Complex Registration</a> 
+              <ul>
+                <li>
+                  <a href="#constructor-injection">Constructor Injection</a>
+                </li>
+                <li>
+                  <a href="#setter-injection">Setter Injection</a>
+                </li>
+                <li>
+                  <a href="#properties-injection">Properties Injection</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#array-syntax">Array Syntax</a>
+            </li>
+            <li>
+              <a href="#loading-from-yaml">Loading from YAML</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#resolving-services">Resolving Services</a> 
+          <ul>
+            <li>
+              <a href="#events">Events</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#shared-services">Shared services</a>
+        </li>
+        <li>
+          <a href="#manipulating-services-individually">Manipulating services individually</a>
+        </li>
+        <li>
+          <a href="#instantiating-classes-service-container">Instantiating classes via the Service Container</a>
+        </li>
+        <li>
+          <a href="#automatic-injecting-di-itself">Automatic Injecting of the DI itself</a>
+        </li>
+        <li>
+          <a href="#organizing-services-files">Organizing services in files</a>
+        </li>
+        <li>
+          <a href="#accessing-di-static-way">Accessing the DI in a static way</a>
+        </li>
+        <li>
+          <a href="#factory-default-di">Factory Default DI</a>
+        </li>
+        <li>
+          <a href="#service-name-conventions">Service Name Conventions</a>
+        </li>
+        <li>
+          <a href="#service-provider">Service Providers</a>
+        </li>
+        <li>
+          <a href="#implementing-your-own-di">Implementing your own DI</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='di-service-location'></a>

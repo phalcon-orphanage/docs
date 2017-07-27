@@ -1,20 +1,58 @@
-<div class='article-menu' markdown='1'>
-
-- [Model Relationships](#overview)
-    - [Relationships between Models](#relationships)
-        - [Unidirectional relationships](#unidirectional)
-        - [Bidirectional relations](#bidirectional)
-        - [Defining relationships](#defining)
-        - [Taking advantage of relationships](#taking-advantage-of)
-        - [Aliasing Relationships](#aliases)
-            - [Magic Getters vs. Explicit methods](#getters-vs-methods)
-    - [Virtual Foreign Keys](#virtual-foreign-keys)
-        - [Cascade/Restrict actions](#cascade-restrict-actions)
-    - [Storing Related Records](#storing-related-records)
-    - [Operations over Resultsets](#operations-over-resultsets)
-        - [Updating related records](#updating-related-records)
-        - [Deleting related records](#deleting-related-records)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Model Relationships</a> 
+      <ul>
+        <li>
+          <a href="#relationships">Relationships between Models</a> 
+          <ul>
+            <li>
+              <a href="#unidirectional">Unidirectional relationships</a>
+            </li>
+            <li>
+              <a href="#bidirectional">Bidirectional relations</a>
+            </li>
+            <li>
+              <a href="#defining">Defining relationships</a>
+            </li>
+            <li>
+              <a href="#taking-advantage-of">Taking advantage of relationships</a>
+            </li>
+            <li>
+              <a href="#aliases">Aliasing Relationships</a> 
+              <ul>
+                <li>
+                  <a href="#getters-vs-methods">Magic Getters vs. Explicit methods</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#virtual-foreign-keys">Virtual Foreign Keys</a> 
+          <ul>
+            <li>
+              <a href="#cascade-restrict-actions">Cascade/Restrict actions</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#storing-related-records">Storing Related Records</a>
+        </li>
+        <li>
+          <a href="#operations-over-resultsets">Operations over Resultsets</a> 
+          <ul>
+            <li>
+              <a href="#updating-related-records">Updating related records</a>
+            </li>
+            <li>
+              <a href="#deleting-related-records">Deleting related records</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

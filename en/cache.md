@@ -1,32 +1,92 @@
-<div class='article-menu' markdown='1'>
-
-- [Improving Performance with Cache](#overview)
-    - [When to implement cache?](#implementation)
-    - [Caching Behavior](#caching-behavior)
-    - [Factory](#factory)
-    - [Caching Output Fragments](#output-fragments)
-    - [Caching Arbitrary Data](#arbitrary-data)
-        - [File Backend Example](#backend-file-example)
-        - [Memcached Backend Example](#backend-memcached-example)
-    - [Querying the cache](#read)
-    - [Deleting data from the cache](#delete)
-    - [Checking cache existence](#exists)
-    - [Lifetime](#lifetime)
-    - [Multi-Level Cache](#multi-level)
-    - [Frontend Adapters](#adapters-frontend)
-        - [Implementing your own Frontend adapters](#adapters-frontend-custom)
-    - [Backend Adapters](#adapters-backend)
-        - [Factory](#adapters-backend-factory)
-        - [Implementing your own Backend adapters](#adapters-backend-custom)
-        - [File Backend Options](#adapters-backend-file)
-        - [Libmemcached Backend Options](#adapters-backend-libmemcached)
-        - [Memcache Backend Options](#adapters-backend-memcache)
-        - [APC Backend Options](#adapters-backend-apc)
-        - [APCU Backend Options](#adapters-backend-apcu)
-        - [Mongo Backend Options](#adapters-backend-mongo)
-        - [XCache Backend Options](#adapters-backend-xcache)
-        - [Redis Backend Options](#adapters-backend-redis)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Improving Performance with Cache</a> 
+      <ul>
+        <li>
+          <a href="#implementation">When to implement cache?</a>
+        </li>
+        <li>
+          <a href="#caching-behavior">Caching Behavior</a>
+        </li>
+        <li>
+          <a href="#factory">Factory</a>
+        </li>
+        <li>
+          <a href="#output-fragments">Caching Output Fragments</a>
+        </li>
+        <li>
+          <a href="#arbitrary-data">Caching Arbitrary Data</a> 
+          <ul>
+            <li>
+              <a href="#backend-file-example">File Backend Example</a>
+            </li>
+            <li>
+              <a href="#backend-memcached-example">Memcached Backend Example</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#read">Querying the cache</a>
+        </li>
+        <li>
+          <a href="#delete">Deleting data from the cache</a>
+        </li>
+        <li>
+          <a href="#exists">Checking cache existence</a>
+        </li>
+        <li>
+          <a href="#lifetime">Lifetime</a>
+        </li>
+        <li>
+          <a href="#multi-level">Multi-Level Cache</a>
+        </li>
+        <li>
+          <a href="#adapters-frontend">Frontend Adapters</a> 
+          <ul>
+            <li>
+              <a href="#adapters-frontend-custom">Implementing your own Frontend adapters</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#adapters-backend">Backend Adapters</a> 
+          <ul>
+            <li>
+              <a href="#adapters-backend-factory">Factory</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-custom">Implementing your own Backend adapters</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-file">File Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-libmemcached">Libmemcached Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-memcache">Memcache Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-apc">APC Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-apcu">APCU Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-xcache">XCache Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-redis">Redis Backend Options</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

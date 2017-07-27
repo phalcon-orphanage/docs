@@ -1,9 +1,17 @@
-<div class='article-menu' markdown='1'>
-
-- [Overview](#overview)
-    - [Download the right version of Phalcon](#phalcon)
-    - [Related](#related)
-    
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Overview</a> 
+      <ul>
+        <li>
+          <a href="#phalcon">Download the right version of Phalcon</a>
+        </li>
+        <li>
+          <a href="#related">Related</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

@@ -1,15 +1,35 @@
-<div class='article-menu' markdown='1'>
-
-- [ORM Caching](#overview)
-    - [Caching Resultsets](#caching-resultsets)
-    - [Forcing Cache](#forcing-cache)
-    - [Caching PHQL Queries](#caching-phql-queries)
-    - [Reusable Related Records](#reusable-related-records)
-    - [Caching Related Records](#caching-related-records)
-    - [Caching Related Records Recursively](#caching-related-records-recursively)
-    - [Caching based on Conditions](#caching-based-on-conditions)
-    - [Caching PHQL execution plan](#caching-phql-execution-plan)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">ORM Caching</a> 
+      <ul>
+        <li>
+          <a href="#caching-resultsets">Caching Resultsets</a>
+        </li>
+        <li>
+          <a href="#forcing-cache">Forcing Cache</a>
+        </li>
+        <li>
+          <a href="#caching-phql-queries">Caching PHQL Queries</a>
+        </li>
+        <li>
+          <a href="#reusable-related-records">Reusable Related Records</a>
+        </li>
+        <li>
+          <a href="#caching-related-records">Caching Related Records</a>
+        </li>
+        <li>
+          <a href="#caching-related-records-recursively">Caching Related Records Recursively</a>
+        </li>
+        <li>
+          <a href="#caching-based-on-conditions">Caching based on Conditions</a>
+        </li>
+        <li>
+          <a href="#caching-phql-execution-plan">Caching PHQL execution plan</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='orm-caching'></a>

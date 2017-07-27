@@ -1,36 +1,111 @@
-<div class='article-menu' markdown='1'>
-
-- [Requirements](#requirements)
-    - [Hardware](#requirements-hardware)
-    - [Software](#requirements-software)
-        - [Optional depending on the needs of your application](#requirements-software-optional)
-- [Installation](#installation)
-    - [Linux](#installation-linux)
-        - [DEB based distributions (Debian, Ubuntu, etc.)](#installation-linux-debian)
-            - [Repository installation](#installation-linux-debian-repository)
-                - [Stable releases](#installation-linux-debian-repository-stable)
-                - [Nightly releases](#installation-linux-debian-repository-nightly)
-            - [Phalcon installation](#installation-linux-debian-phalcon)
-                - [PHP 5.x](#installation-linux-debian-phalcon-php5)
-                - [PHP 7](#installation-linux-debian-phalcon-php7)
-            - [Additional PPAs](#installation-linux-debian-other-ppa)
-        - [RPM based distributions (CentOS, Fedora, etc.)](#installation-linux-rpm)
-            - [Repository installation](#installation-linux-rpm-repository)
-                - [Stable releases](#installation-linux-rpm-repository-stable)
-                - [Nightly releases](#installation-linux-rpm-repository-nightly)
-            - [Phalcon installation](#installation-linux-rpm-phalcon)
-                - [PHP 5.x](#installation-linux-rpm-phalcon-php5)
-                - [PHP 7](#installation-linux-rpm-phalcon-php7)
-            - [Additional RPMs](installation-linux-rpm-other-rpm)
-        - [FreeBSD](#installation-freebsd)
-        - [Gentoo](#installation-linux-gentoo)
-    - [macOS](#installation-macos)
-        - [Brew](#installation-macos-brew)
-        - [MacPorts](#installation-macos-macports)
-    - [Windows](#installation-windows)
-    - [Compile from sources](#installation-sources)
-    - [Advanced Compilation](#installation-sources-advanced)
-
+<div class="article-menu">
+    <ul>
+        <li><a href="#requirements">Requirements</a>
+            <ul>
+                <li><a href="#requirements-hardware">Hardware</a></li>
+                <li><a href="#requirements-software">Software</a>
+                    <ul>
+                        <li>
+                            <a href="#requirements-software-optional">Optional depending on the needs of your application</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#installation">Installation</a>
+            <ul>
+                <li><a href="#installation-linux">Linux</a>
+                    <ul>
+                        <li>
+                            <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a>
+                            <ul>
+                                <li>
+                                    <a href="#installation-linux-debian-repository">Repository installation</a>
+                                    <ul>
+                                        <li>
+                                            <a href="#installation-linux-debian-repository-stable">Stable releases</a>
+                                        </li>
+                                        <li>
+                                            <a href="#installation-linux-debian-repository-nightly">Nightly releases</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#installation-linux-debian-phalcon">Phalcon installation</a>
+                                    <ul>
+                                        <li>
+                                            <a href="#installation-linux-debian-phalcon-php5">PHP 5.x</a>
+                                        </li>
+                                        <li>
+                                            <a href="#installation-linux-debian-phalcon-php7">PHP 7</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#installation-linux-debian-other-ppa">Additional PPAs</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#installation-linux-rpm">RPM based distributions (CentOS, Fedora, etc.)</a>
+                            <ul>
+                                <li>
+                                    <a href="#installation-linux-rpm-repository">Repository installation</a>
+                                    <ul>
+                                        <li>
+                                            <a href="#installation-linux-rpm-repository-stable">Stable releases</a>
+                                        </li>
+                                        <li>
+                                            <a href="#installation-linux-rpm-repository-nightly">Nightly releases</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#installation-linux-rpm-phalcon">Phalcon installation</a>
+                                    <ul>
+                                        <li>
+                                            <a href="#installation-linux-rpm-phalcon-php5">PHP 5.x</a>
+                                        </li>
+                                        <li>
+                                            <a href="#installation-linux-rpm-phalcon-php7">PHP 7</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="installation-linux-rpm-other-rpm">Additional RPMs</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#installation-freebsd">FreeBSD</a>
+                        </li>
+                        <li>
+                            <a href="#installation-linux-gentoo">Gentoo</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#installation-macos">macOS</a>
+                    <ul>
+                        <li>
+                            <a href="#installation-macos-brew">Brew</a>
+                        </li>
+                        <li>
+                            <a href="#installation-macos-macports">MacPorts</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#installation-windows">Windows</a>
+                </li>
+                <li>
+                    <a href="#installation-sources">Compile from sources</a>
+                </li>
+                <li>
+                    <a href="#installation-sources-advanced">Advanced Compilation</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </div>
 
 <a name='requirements'></a>
@@ -47,7 +122,11 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 ## Software
 * PHP >= 5.5
 
-<h5 class='alert alert-danger' markdown='1'>You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 </h5>
+<h5 class="alert alert-danger">
+    <p>
+        You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7.
+    </p>
+</h5>
 
 Phalcon need the following extensions to run (minimal):
 
@@ -96,7 +175,11 @@ or
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-<h5 class='alert alert-warning' markdown='1'>This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. </h5>
+<h5 class="alert alert-warning">
+    <p>
+        This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+    </p>
+</h5>
 
 <a name='installation-linux-debian-phalcon'></a>
 #### Phalcon installation
@@ -153,7 +236,11 @@ or
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-<h5 class='alert alert-warning' markdown='1'>This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. </h5>
+<h5 class="alert alert-warning">
+    <p>
+        This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+    </p>
+</h5>
 
 <a name='installation-linux-rpm-phalcon'></a>
 #### Phalcon installation
@@ -428,4 +515,8 @@ You can also see the modules installed using the CLI:
 php -m
 ```
 
-<h5 class='alert alert-danger' markdown='1'>Note that in some Linux based systems, you might need to change two `php.ini` files, one for your web server (Apache/Nginx), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI `php.ini` and make the necessary additions for the module to be loaded. </h5>
+<h5 class="alert alert-danger">
+    <p>
+        Note that in some Linux based systems, you might need to change two <code>php.ini</code> files, one for your web server (Apache/Nginx), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI <code>php.ini</code> and make the necessary additions for the module to be loaded.
+    </p>
+</h5>

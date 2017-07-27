@@ -1,14 +1,33 @@
-<div class='article-menu' markdown='1'>
-
-- [Contributing to Phalcon](#contributing)
-    - [Contributions](#contributions)
-    - [Questions and Support](#questions-and-support)
-    - [Bug Report Checklist](#bug-report-checklist)
-        - [Generating a backtrace](#bug-report-generating-backtrace)
-    - [Pull Request Checklist](#pull-request-checklist)
-    - [Getting Support](#getting-support)
-    - [Requesting Features](#requesting-features)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#contributing">Contributing to Phalcon</a> <ul>
+        <li>
+          <a href="#contributions">Contributions</a>
+        </li>
+        <li>
+          <a href="#questions-and-support">Questions and Support</a>
+        </li>
+        <li>
+          <a href="#bug-report-checklist">Bug Report Checklist</a> 
+          <ul>
+            <li>
+              <a href="#bug-report-generating-backtrace">Generating a backtrace</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#pull-request-checklist">Pull Request Checklist</a>
+        </li>
+        <li>
+          <a href="#getting-support">Getting Support</a>
+        </li>
+        <li>
+          <a href="#requesting-features">Requesting Features</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='contributing'></a>
@@ -27,8 +46,11 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 <a name='questions-and-support'></a>
 ## Questions and Support
-
-<h5 class='alert alert-warning' markdown='1'>We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forums][forum].</h5>
+<h5 class="alert alert-warning">
+    <p>
+       We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.
+    </p>
+</h5>
 
 <a name='bug-report-checklist'></a>
 ## Bug Report Checklist

@@ -1,12 +1,26 @@
-<div class='article-menu' markdown='1'>
-
-- [Security](#overview)
-    - [Password Hashing](#hashing)
-    - [Cross-Site Request Forgery (CSRF) protection](#csrf)
-    - [Setting up the component](#setup)
-    - [Random](#random)
-    - [External Resources](#resources)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Security</a> 
+      <ul>
+        <li>
+          <a href="#hashing">Password Hashing</a>
+        </li>
+        <li>
+          <a href="#csrf">Cross-Site Request Forgery (CSRF) protection</a>
+        </li>
+        <li>
+          <a href="#setup">Setting up the component</a>
+        </li>
+        <li>
+          <a href="#random">Random</a>
+        </li>
+        <li>
+          <a href="#resources">External Resources</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

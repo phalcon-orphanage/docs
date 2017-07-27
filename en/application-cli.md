@@ -1,12 +1,25 @@
-<div class='article-menu' markdown='1'>
-
-- [Creating a CLI Application](#creating-cli-application)
-    - [Structure](#structure)
-    - [Creating a Bootstrap](#creating-bootstrap)
-    - [Tasks](#tasks)
-    - [Processing action parameters](#processing-action-parameters)
-    - [Running tasks in a chain](#running-tasks-chain)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#creating-cli-application">Creating a CLI Application</a> <ul>
+        <li>
+          <a href="#structure">Structure</a>
+        </li>
+        <li>
+          <a href="#creating-bootstrap">Creating a Bootstrap</a>
+        </li>
+        <li>
+          <a href="#tasks">Tasks</a>
+        </li>
+        <li>
+          <a href="#processing-action-parameters">Processing action parameters</a>
+        </li>
+        <li>
+          <a href="#running-tasks-chain">Running tasks in a chain</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='creating-cli-application'></a>

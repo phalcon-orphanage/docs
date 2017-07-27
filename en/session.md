@@ -1,15 +1,37 @@
-<div class='article-menu' markdown='1'>
-
-- [Storing data in the Session](#overview)
-    - [Starting the Session](#start)
-        - [Factory](#start-factory)
-    - [Storing/Retrieving data in Session](#store)
-    - [Removing/Destroying Sessions](#remove-destroy)
-    - [Isolating Session Data between Applications](#data-isolation)
-    - [Session Bags](#bags)
-    - [Persistent Data in Components](#data-persistency)
-    - [Implementing your own adapters](#custom-adapters)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Storing data in the Session</a> 
+      <ul>
+        <li>
+          <a href="#start">Starting the Session</a>
+          <ul>
+            <li>
+              <a href="#start-factory">Factory</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#store">Storing/Retrieving data in Session</a>
+        </li>
+        <li>
+          <a href="#remove-destroy">Removing/Destroying Sessions</a>
+        </li>
+        <li>
+          <a href="#data-isolation">Isolating Session Data between Applications</a>
+        </li>
+        <li>
+          <a href="#bags">Session Bags</a>
+        </li>
+        <li>
+          <a href="#data-persistency">Persistent Data in Components</a>
+        </li>
+        <li>
+          <a href="#custom-adapters">Implementing your own adapters</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

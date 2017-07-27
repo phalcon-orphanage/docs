@@ -1,19 +1,36 @@
-<div class='article-menu' markdown='1'>
-
-- [Pagination](#overview)
-    - [Data Adapters](#data-adapters)
-    - [Examples](#examples)
-    - [Using Adapters](#using-adapters)
-    - [Page Attributes](#page-attributes)
-    - [Implementing your own adapters](#custom)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Pagination</a> <ul>
+        <li>
+          <a href="#data-adapters">Data Adapters</a>
+        </li>
+        <li>
+          <a href="#examples">Examples</a>
+        </li>
+        <li>
+          <a href="#using-adapters">Using Adapters</a>
+        </li>
+        <li>
+          <a href="#page-attributes">Page Attributes</a>
+        </li>
+        <li>
+          <a href="#custom">Implementing your own adapters</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
 # Database Migrations
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
-<h5 class='alert alert-danger' markdown='1'>Migrations are available in [Phalcon Developer Tools](/[[language]]/[[version]]/devtools-usage) You need at least Phalcon Framework version 0.5.0 to use developer tools.</h5>
+<h5 class="alert alert-danger">
+    <p>
+        Migrations are available in <a href="/[[language]]/[[version]]/devtools-usage">Phalcon Developer Tools</a> You need at least Phalcon Framework version 0.5.0 to use developer tools.
+    </p>
+</h5>
 
 Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.
 

@@ -1,10 +1,20 @@
-<div class='article-menu' markdown='1'>
-
-- [The MVC Architecture](#architecture)
-    - [Models](#models)
-    - [Views](#views)
-    - [Controllers](#controllers)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#architecture">The MVC Architecture</a> 
+      <ul>
+        <li>
+          <a href="#models">Models</a>
+        </li>
+        <li>
+          <a href="#views">Views</a>
+        </li>
+        <li>
+          <a href="#controllers">Controllers</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='architecture'></a>
