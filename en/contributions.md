@@ -46,11 +46,11 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 <a name='questions-and-support'></a>
 ## Questions and Support
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
        We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.
     </p>
-</h5>
+</div>
 
 <a name='bug-report-checklist'></a>
 ## Bug Report Checklist

@@ -203,11 +203,11 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
        The <code>initialize()</code> method is only called if the <code>beforeExecuteRoute</code> event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.
     </p>
-</h5>
+</div>
 
 If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
 
@@ -225,7 +225,11 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Be aware that `onConstruct()` method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).</h5>
+<div class='alert alert-warning'>
+    <p>
+        Be aware that <code>onConstruct()</code> method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).
+    </p>
+</div>
 
 <a name='injecting-services'></a>
 ## Injecting Services

@@ -122,11 +122,11 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 ## Software
 * PHP >= 5.5
 
-<h5 class="alert alert-danger">
+<div class="alert alert-danger">
     <p>
         You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7.
     </p>
-</h5>
+</div>
 
 Phalcon need the following extensions to run (minimal):
 
@@ -175,11 +175,11 @@ or
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
     </p>
-</h5>
+</div>
 
 <a name='installation-linux-debian-phalcon'></a>
 #### Phalcon installation
@@ -236,11 +236,11 @@ or
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-<h5 class="alert alert-warning">
+<div class="alert alert-warning">
     <p>
         This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
     </p>
-</h5>
+</div>
 
 <a name='installation-linux-rpm-phalcon'></a>
 #### Phalcon installation
@@ -515,8 +515,8 @@ You can also see the modules installed using the CLI:
 php -m
 ```
 
-<h5 class="alert alert-danger">
+<div class="alert alert-danger">
     <p>
         Note that in some Linux based systems, you might need to change two <code>php.ini</code> files, one for your web server (Apache/Nginx), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI <code>php.ini</code> and make the necessary additions for the module to be loaded.
     </p>
-</h5>
+</div>
