@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Erişim Kontrol Listeleri</a> <ul>
         <li>
-          <a href="#setup">ACL Oluşturma</a>
+          <a href="#setup">Creating an ACL</a>
         </li>
         <li>
           <a href="#adding-roles">ACL'ye Rol Ekleme</a>
