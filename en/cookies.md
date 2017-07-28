@@ -1,9 +1,17 @@
-<div class='article-menu' markdown='1'>
-
-- [Cookies Management](#overview)
-    - [Basic Usage](#usage)
-    - [Encryption/Decryption of Cookies](#encryption-decryption)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Cookies Management</a>
+       <ul>
+        <li>
+          <a href="#usage">Basic Usage</a>
+        </li>
+        <li>
+          <a href="#encryption-decryption">Encryption/Decryption of Cookies</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -95,4 +103,8 @@ If you wish to use encryption, a global key must be set in the [crypt](/[[langua
     );
 ```
 
-<h5 class='alert alert-danger' markdown='1'>Sending cookies data without encryption to clients including complex objects structures, resultsets, service information, etc. could expose internal application details that could be used by an attacker to attack the application. If you do not want to use encryption, we highly recommend you only send very basic cookie data like numbers or small string literals.</h5>
+<div class="alert alert-danger">
+    <p>
+        Sending cookies data without encryption to clients including complex objects structures, resultsets, service information, etc. could expose internal application details that could be used by an attacker to attack the application. If you do not want to use encryption, we highly recommend you only send very basic cookie data like numbers or small string literals.
+    </p>
+</div>

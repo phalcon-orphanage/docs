@@ -1,16 +1,37 @@
-<div class='article-menu' markdown='1'>
-
-- [Class Autoloader](#overview)
-    - [Security Layer](#security)
-    - [Registering Namespaces](#registering-namespaces)
-    - [Registering Directories](#registering-directories)
-    - [Registering Classes](#registering-classes)
-    - [Registering Files](#registering-files)
-    - [Additional file extensions](#registering-file-extensions)
-    - [Modifying current strategies](#modifying-current-strategies)
-    - [Autoloading Events](#events)
-    - [Troubleshooting](#troubleshooting)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Class Autoloader</a> <ul>
+        <li>
+          <a href="#security">Security Layer</a>
+        </li>
+        <li>
+          <a href="#registering-namespaces">Registering Namespaces</a>
+        </li>
+        <li>
+          <a href="#registering-directories">Registering Directories</a>
+        </li>
+        <li>
+          <a href="#registering-classes">Registering Classes</a>
+        </li>
+        <li>
+          <a href="#registering-files">Registering Files</a>
+        </li>
+        <li>
+          <a href="#registering-file-extensions">Additional file extensions</a>
+        </li>
+        <li>
+          <a href="#modifying-current-strategies">Modifying current strategies</a>
+        </li>
+        <li>
+          <a href="#events">Autoloading Events</a>
+        </li>
+        <li>
+          <a href="#troubleshooting">Troubleshooting</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

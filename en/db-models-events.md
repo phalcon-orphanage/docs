@@ -1,12 +1,28 @@
-<div class='article-menu' markdown='1'>
-
-- [Model Events](#overview)
-    - [Events and Events Manager](#events)
-        - [Implementing Events in the Model's class](#events-in-models)
-        - [Using a custom Events Manager](#custom-events-manager)
-    - [Logging Low-Level SQL Statements](#logging-sql-statements)
-    - [Profiling SQL Statements](#profiling-sql-statements)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Model Events</a> 
+      <ul>
+        <li>
+          <a href="#events">Events and Events Manager</a> 
+          <ul>
+            <li>
+              <a href="#events-in-models">Implementing Events in the Model's class</a>
+            </li>
+            <li>
+              <a href="#custom-events-manager">Using a custom Events Manager</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#logging-sql-statements">Logging Low-Level SQL Statements</a>
+        </li>
+        <li>
+          <a href="#profiling-sql-statements">Profiling SQL Statements</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

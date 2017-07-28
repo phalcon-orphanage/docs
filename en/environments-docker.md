@@ -1,24 +1,70 @@
-<div class='article-menu' markdown='1'>
-
-- [Overview](#overview)
-    - [Dependencies](#dependencies)
-    - [Services](#services)
-    - [Installation](#installation)
-        - [With Composer (recommended)](#installation-composer)
-        - [With Git](#installation-git)
-    - [Configuration](#configuration)
-    - [Usage](#usage)
-    - [Set up](#setup)
-    - [Logs](#logs)
-    - [Environment variables](#environment-variables)
-        - [Web environment](#environment-variables-web)
-        - [phpMyAdmin variables](#environment-variables-phpmyadmin)
-    - [Xdebug Remote debugger (PhpStorm)](#xdebug)
-    - [Troubleshooting](#troubleshooting)
-        - [Startup or linking errors](#troubleshooting-startup)
-        - [Full reset](#troubleshooting-full-reset)
-        - [Updating dependencies](#troubleshooting-dependencies)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Overview</a> 
+      <ul>
+        <li>
+          <a href="#dependencies">Dependencies</a>
+        </li>
+        <li>
+          <a href="#services">Services</a>
+        </li>
+        <li>
+          <a href="#installation">Installation</a> 
+          <ul>
+            <li>
+              <a href="#installation-composer">With Composer (recommended)</a>
+            </li>
+            <li>
+              <a href="#installation-git">With Git</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#configuration">Configuration</a>
+        </li>
+        <li>
+          <a href="#usage">Usage</a>
+        </li>
+        <li>
+          <a href="#setup">Set up</a>
+        </li>
+        <li>
+          <a href="#logs">Logs</a>
+        </li>
+        <li>
+          <a href="#environment-variables">Environment variables</a> 
+          <ul>
+            <li>
+              <a href="#environment-variables-web">Web environment</a>
+            </li>
+            <li>
+              <a href="#environment-variables-phpmyadmin">phpMyAdmin variables</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#xdebug">Xdebug Remote debugger (PhpStorm)</a>
+        </li>
+        <li>
+          <a href="#troubleshooting">Troubleshooting</a> <ul>
+            <li>
+              <a href="#troubleshooting-startup">Startup or linking errors</a>
+            </li>
+            <li>
+              <a href="#troubleshooting-full-reset">Full reset</a>
+            </li>
+            <li>
+              <a href="#troubleshooting-dependencies">Updating dependencies</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#versions">Versions</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -83,7 +129,11 @@ Another way to initialize your project is with Git.
  git clone git@github.com:phalcon/phalcon-compose.git
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Make sure that you copy `variables.env.example` to `variables.env` and adjust the settings in that file </h5>
+<div class="alert alert-warning">
+    <p>
+        Make sure that you copy <code>variables.env.example</code> to <code>variables.env</code> and adjust the settings in that file.
+    </p>
+</div>
 
 Add your Phalcon Application into `application` folder.
 

@@ -1,14 +1,32 @@
-<div class='article-menu' markdown='1'>
-
-- [Overview](#overview)
-    - [Create a New Project](#create-project)
-    - [Add a `boxfile.yml`](#boxfile-yml)
-    - [Add Phalcon Devtools to your `composer.json`](#add-devtools)
-    - [Start Nanobox and Generate a New Phalcon App](#new-phalcon-app)
-    - [Run the App Locally](#run-app)
-    - [Check Out the Environment](#environment)
-    - [Phalcon and Nanobox](#conclusion)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Overview</a> 
+      <ul>
+        <li>
+          <a href="#create-project">Create a New Project</a>
+        </li>
+        <li>
+          <a href="#boxfile-yml">Add a <code>boxfile.yml</code></a>
+        </li>
+        <li>
+          <a href="#add-devtools">Add Phalcon Devtools to your <code>composer.json</code></a>
+        </li>
+        <li>
+          <a href="#new-phalcon-app">Start Nanobox and Generate a New Phalcon App</a>
+        </li>
+        <li>
+          <a href="#run-app">Run the App Locally</a>
+        </li>
+        <li>
+          <a href="#environment">Check Out the Environment</a>
+        </li>
+        <li>
+          <a href="#conclusion">Phalcon and Nanobox</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -61,7 +79,11 @@ Create a `composer.json` file in the root of your project and add the `phalcon/d
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>**NOTE**: The version of Phalcon Devtools depends on which PHP version you're using </h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> The version of Phalcon Devtools depends on which PHP version you're using.
+    </p>
+</div>
 
 <a name='new-phalcon-app'></a>
 ## Start Nanobox and Generate a New Phalcon App

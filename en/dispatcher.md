@@ -1,19 +1,53 @@
-<div class='article-menu' markdown='1'>
-
-- [Dispatching Controllers](#overview)
-    - [The Dispatch Loop](#dispatch-loop)
-        - [Dispatch Loop Events](#dispatch-loop-events)
-    - [Forwarding to other actions](#forwarding)
-        - [Using the Events Manager](#forwarding-events-manager)
-    - [Preparing Parameters](#preparing-parameters)
-    - [Getting Parameters](#getting-parameters)
-    - [Preparing actions](#preparing-actions)
-        - [Camelize action names](#preparing-actions-camelizing-action-names)
-        - [Remove legacy extensions](#preparing-actions-removing-legacy-extensions)
-        - [Inject model instances](#preparing-actions-inject-model-instances)
-    - [Handling Not-Found Exceptions](#handling-404)
-    - [Implementing your own Dispatcher](#custom)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Dispatching Controllers</a> 
+      <ul>
+        <li>
+          <a href="#dispatch-loop">The Dispatch Loop</a> 
+          <ul>
+            <li>
+              <a href="#dispatch-loop-events">Dispatch Loop Events</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#forwarding">Forwarding to other actions</a> 
+          <ul>
+            <li>
+              <a href="#forwarding-events-manager">Using the Events Manager</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#preparing-parameters">Preparing Parameters</a>
+        </li>
+        <li>
+          <a href="#getting-parameters">Getting Parameters</a>
+        </li>
+        <li>
+          <a href="#preparing-actions">Preparing actions</a> 
+          <ul>
+            <li>
+              <a href="#preparing-actions-camelizing-action-names">Camelize action names</a>
+            </li>
+            <li>
+              <a href="#preparing-actions-removing-legacy-extensions">Remove legacy extensions</a>
+            </li>
+            <li>
+              <a href="#preparing-actions-inject-model-instances">Inject model instances</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#handling-404">Handling Not-Found Exceptions</a>
+        </li>
+        <li>
+          <a href="#custom">Implementing your own Dispatcher</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -127,7 +161,11 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Methods on event listeners accept an `Phalcon\Events\Event` object as their first parameter - methods in controllers do not. </h5>
+<div class="alert alert-warning">
+    <p>
+        Methods on event listeners accept an <a href="/[[language]]/[[version]]/api/Phalcon_Events_Event">Phalcon\Events\Event</a> object as their first parameter - methods in controllers do not.
+    </p>
+</div>
 
 <a name='forwarding'></a>
 ## Forwarding to other actions
@@ -558,7 +596,11 @@ $dispatcher->setModelBinder(new Binder());
 return $dispatcher;
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in `setModelBinder()` which can also accept service name or just by passing cache instance to `Binder` constructor. </h5>
+<div class="alert alert-warning">
+    <p>
+        Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in <code>setModelBinder()</code> which can also accept service name or just by passing cache instance to <code>Binder</code> constructor.
+    </p>
+</div>
 
 It also introduces a new interface `Phalcon\Mvc\Model\Binder\BindableInterface` which allows you to define the controllers associated models to allow models binding in base controllers.
 
@@ -619,7 +661,11 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}` </h5>
+<div class="alert alert-warning">
+    <p>
+        Currently the binder will only use the models primary key to perform a <code>findFirst()</code> on. An example route for the above would be <code>/posts/show/{1}</code>
+    </p>
+</div>
 
 <a name='handling-404'></a>
 ## Handling Not-Found Exceptions
@@ -717,7 +763,11 @@ class ExceptionsPlugin
 }
 ```
 
-<h5 class='alert alert-danger' markdown='1'>Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch. </h5>
+<div class="alert alert-danger">
+    <p>
+        Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the <code>beforeException</code> events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
+    </p>
+</div>
 
 <a name='custom'></a>
 ## Implementing your own Dispatcher

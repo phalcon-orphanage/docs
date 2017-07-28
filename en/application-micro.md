@@ -1,67 +1,212 @@
-<div class='article-menu' markdown='1'>
-
-- [Creating a Micro Application](#creating-micro-application)
-- [Routing](#routing)
-    - [Setup](#routing-setup)
-        - [Application object](#routing-setup-application)
-        - [Router object](#routing-setup-router)
-    - [Rewrite Rules](#rewrite-rules)
-    - [Handlers](#routing-handlers)
-        - [Definitions](#routing-handlers-definitions)
-            - [Anonymous Function](#routing-handlers-anonymous-function)
-            - [Function](#routing-handlers-function)
-            - [Static Method](#routing-handlers-static-method)
-            - [Method in an Object](#routing-handlers-object-method)
-            - [Controllers](#routing-handlers-controllers)
-        - [Lazy Loading](#routing-handlers-controllers-lazy-loading)
-            - [Use case](#routing-handlers-controllers-lazy-loading-use-case)
-        - [Not Found (404)](#routing-handlers-not-found)
-    - [Methods - Verbs](#routing-verbs)
-        - [delete](#routing-verb-delete)
-        - [get](#routing-verb-get)
-        - [head](#routing-verb-head)
-        - [map](#routing-verb-map)
-        - [options](#routing-verb-options)
-        - [patch](#routing-verb-patch)
-        - [post](#routing-verb-post)
-        - [put](#routing-verb-put)
-    - [Collections](#routing-collections)
-    - [Parameters](#routing-parameters)
-    - [Redirections](#routing-redirections)
-    - [URLs for Routes](#routing-urls-for-routes)
-- [Dependency Injector](#dependency-injector)
-- [Responses](#responses)
-    - [Direct output](#responses-direct-output)
-    - [Including another file](#responses-include)
-    - [Direct output JSON](#responses-direct-output-json)
-    - [New Response object](#responses-new-response-object)
-    - [Application Response](#responses-application-response)
-    - [Return Application Response](#responses-return-application-response)
-    - [JSON](#responses-json)
-- [Events](#events)
-    - [Available events](#events-available-events)
-        - [Authentication example](#events-available-events-authentication)
-        - [Not found example](#events-available-events-not-found)
-- [Middleware](#middleware)
-    - [Attached events](#middleware-attached-events)
-        - [before](#middleware-attached-events-before)
-        - [after](#middleware-attached-events-after)
-        - [finish](#middleware-attached-events-finish)
-    - [Implementation](#middleware-implementation)
-    - [Setup](#middleware-setup)
-    - [Events in Middleware](#middleware-events)
-        - [API example](#middleware-events-api)
-            - [Firewall Middleware](#middleware-events-api-firewall)
-            - [Not Found Middleware](#middleware-events-api-not-found)
-            - [Redirect Middleware](#middleware-events-api-redirect)
-            - [CORS Middleware](#middleware-events-api-cors)
-            - [Request Middleware](#middleware-events-api-request)
-            - [Response Middleware](#middleware-events-api-response)
-- [Models](#models)
-- [Injecting Model Instances](#model-instances)
-- [Views](#views)
-- [Error Handling](#error-handling)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#creating-micro-application">Creating a Micro Application</a>
+    </li>
+    <li>
+      <a href="#routing">Routing</a> 
+      <ul>
+        <li>
+          <a href="#routing-setup">Setup</a> 
+          <ul>
+            <li>
+              <a href="#routing-setup-application">Application object</a>
+            </li>
+            <li>
+              <a href="#routing-setup-router">Router object</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#rewrite-rules">Rewrite Rules</a>
+        </li>
+        <li>
+          <a href="#routing-handlers">Handlers</a> <ul>
+            <li>
+              <a href="#routing-handlers-definitions">Definitions</a> 
+              <ul>
+                <li>
+                  <a href="#routing-handlers-anonymous-function">Anonymous Function</a>
+                </li>
+                <li>
+                  <a href="#routing-handlers-function">Function</a>
+                </li>
+                <li>
+                  <a href="#routing-handlers-static-method">Static Method</a>
+                </li>
+                <li>
+                  <a href="#routing-handlers-object-method">Method in an Object</a>
+                </li>
+                <li>
+                  <a href="#routing-handlers-controllers">Controllers</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#routing-handlers-controllers-lazy-loading">Lazy Loading</a> 
+              <ul>
+                <li>
+                  <a href="#routing-handlers-controllers-lazy-loading-use-case">Use case</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#routing-handlers-not-found">Not Found (404)</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#routing-verbs">Methods - Verbs</a> 
+          <ul>
+            <li>
+              <a href="#routing-verb-delete">delete</a>
+            </li>
+            <li>
+              <a href="#routing-verb-get">get</a>
+            </li>
+            <li>
+              <a href="#routing-verb-head">head</a>
+            </li>
+            <li>
+              <a href="#routing-verb-map">map</a>
+            </li>
+            <li>
+              <a href="#routing-verb-options">options</a>
+            </li>
+            <li>
+              <a href="#routing-verb-patch">patch</a>
+            </li>
+            <li>
+              <a href="#routing-verb-post">post</a>
+            </li>
+            <li>
+              <a href="#routing-verb-put">put</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#routing-collections">Collections</a>
+        </li>
+        <li>
+          <a href="#routing-parameters">Parameters</a>
+        </li>
+        <li>
+          <a href="#routing-redirections">Redirections</a>
+        </li>
+        <li>
+          <a href="#routing-urls-for-routes">URLs for Routes</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#dependency-injector">Dependency Injector</a>
+    </li>
+    <li>
+      <a href="#responses">Responses</a> 
+      <ul>
+        <li>
+          <a href="#responses-direct-output">Direct output</a>
+        </li>
+        <li>
+          <a href="#responses-include">Including another file</a>
+        </li>
+        <li>
+          <a href="#responses-direct-output-json">Direct output JSON</a>
+        </li>
+        <li>
+          <a href="#responses-new-response-object">New Response object</a>
+        </li>
+        <li>
+          <a href="#responses-application-response">Application Response</a>
+        </li>
+        <li>
+          <a href="#responses-return-application-response">Return Application Response</a>
+        </li>
+        <li>
+          <a href="#responses-json">JSON</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#events">Events</a> 
+      <ul>
+        <li>
+          <a href="#events-available-events">Available events</a> <ul>
+            <li>
+              <a href="#events-available-events-authentication">Authentication example</a>
+            </li>
+            <li>
+              <a href="#events-available-events-not-found">Not found example</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#middleware">Middleware</a> <ul>
+        <li>
+          <a href="#middleware-attached-events">Attached events</a> 
+          <ul>
+            <li>
+              <a href="#middleware-attached-events-before">before</a>
+            </li>
+            <li>
+              <a href="#middleware-attached-events-after">after</a>
+            </li>
+            <li>
+              <a href="#middleware-attached-events-finish">finish</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#middleware-implementation">Implementation</a>
+        </li>
+        <li>
+          <a href="#middleware-setup">Setup</a>
+        </li>
+        <li>
+          <a href="#middleware-events">Events in Middleware</a> 
+          <ul>
+            <li>
+              <a href="#middleware-events-api">API example</a> 
+              <ul>
+                <li>
+                  <a href="#middleware-events-api-firewall">Firewall Middleware</a>
+                </li>
+                <li>
+                  <a href="#middleware-events-api-not-found">Not Found Middleware</a>
+                </li>
+                <li>
+                  <a href="#middleware-events-api-redirect">Redirect Middleware</a>
+                </li>
+                <li>
+                  <a href="#middleware-events-api-cors">CORS Middleware</a>
+                </li>
+                <li>
+                  <a href="#middleware-events-api-request">Request Middleware</a>
+                </li>
+                <li>
+                  <a href="#middleware-events-api-response">Response Middleware</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#models">Models</a>
+    </li>
+    <li>
+      <a href="#model-instances">Injecting Model Instances</a>
+    </li>
+    <li>
+      <a href="#views">Views</a>
+    </li>
+    <li>
+      <a href="#error-handling">Error Handling</a>
+    </li>
+  </ul>
 </div>
 
 # Micro Applications
@@ -110,7 +255,11 @@ Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are de
 ### Setup
 Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[version]]/routing)]
 
-<h5 class='alert alert-warning' markdown='1'>Routes must always start with `/`</h5>
+<div class="alert alert-danger">
+    <p>
+        Routes must always start with <code>/</code>
+    </p>
+</h5>
 
 Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
 
@@ -618,7 +767,11 @@ $orders->get('/delete/{id}', 'deleteAction');
 
 $app->mount($orders);
 ```
-<h5 class='alert alert-warning' markdown='1'>The name that we bind each route has a suffix of `Action`. This is not necessary, your method can be called anything you like.</h5>
+<div class='alert alert-warning'>
+    <p>
+        The name that we bind each route has a suffix of <code>Action</code>. This is not necessary, your method can be called anything you like.
+    </p>
+</div>
 
 <a name='routing-parameters'></a>
 ## Parameters
@@ -800,7 +953,6 @@ $app->post(
 You can also use the array syntax to register services in the dependency injection container from the application object:
 
 ```php
-
 <?php
 
 use Phalcon\Mvc\Micro;
@@ -1066,7 +1218,11 @@ Middleware can be attached to a micro application in 3 different events. Those a
 | after  | After the handler has been executed            |
 | final  | After the response has been sent to the caller |
 
-<h5 class='alert alert-warning' markdown='1'>You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.</h5>
+<div class="alert alert-warning">
+    <p>
+        You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.
+    </p>
+</div>
 
 <a name='middleware-attached-events-before'></a>
 ### before
@@ -1541,7 +1697,11 @@ class RequestMiddleware implements MiddlewareInterface
 #### Response Middleware
 This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
 
-<h5 class='alert alert-warning' markdown='1'>We are going to be using the `call` method for this middleware, since we have nearly executed the whole request cycle.</h5>
+<div class='alert alert-warning'>
+    <p>
+        We are going to be using the <code>call</code> method for this middleware, since we have nearly executed the whole request cycle.
+    </p>
+</div>
 
 ```php
 <?php
@@ -1584,7 +1744,11 @@ class ResponseMiddleware implements MiddlewareInterface
 # Models
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
-<h5 class='alert alert-warning' markdown='1'>The relevant `db` service must be registered in your Di container.</h5>
+<div class="alert alert-warning">
+    <p>
+        The relevant <code>db</code> service must be registered in your Di container.
+    </p>
+</div>
 
 ```php
 <?php
@@ -1678,7 +1842,11 @@ $app->get(
 );
 ```
 
-<h5 class='alert alert-warning' markdown='1'>The above example uses the `Phalcon\Mvc\View\Simple` component, which uses relative paths instead of controllers and actions. You can use the `Phalcon\Mvc\View` component instead, but to do so you will need to change the parameters passed to `render()`</h5>
+<div class='alert alert-warning'>
+    <p>
+        The above example uses the <a href="/[[language]]/[[version]]/Phalcon_Mvc_View_Simple">Phalcon\Mvc\View\Simple</a> component, which uses relative paths instead of controllers and actions. You can use the <a href="/[[language]]/[[version]]/Phalcon_Mvc_View">Phalcon\Mvc\View</a> component instead, but to do so you will need to change the parameters passed to <code>render()</code>`
+    </p>
+</div>
 
 ```php
 <?php

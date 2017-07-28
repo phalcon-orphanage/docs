@@ -1,13 +1,33 @@
-<div class='article-menu' markdown='1'>
-
-- [DevTools on Linux](#overview)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-        - [Linux](#installation-linux)
-        - [MacOS](#installation-mac)
-        - [Windows](#installation-windows)
-            - [Adding PHP and Tools to your system PATH](#installation-windows-system-path)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">DevTools on Linux</a> 
+      <ul>
+        <li>
+          <a href="#prerequisites">Prerequisites</a>
+        </li>
+        <li>
+          <a href="#installation">Installation</a> 
+          <ul>
+            <li>
+              <a href="#installation-linux">Linux</a>
+            </li>
+            <li>
+              <a href="#installation-mac">MacOS</a>
+            </li>
+            <li>
+              <a href="#installation-windows">Windows</a> 
+              <ul>
+                <li>
+                  <a href="#installation-windows-system-path">Adding PHP and Tools to your system PATH</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

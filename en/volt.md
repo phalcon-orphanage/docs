@@ -1,42 +1,124 @@
-<div class='article-menu' markdown='1'>
-
-- [Overview](#overview)
-    - [Introduction](#introduction)
-    - [Activating Volt](#setup)
-    - [Basic Usage](#basic-usage)
-    - [Variables](#variables)
-    - [Filters](#filters)
-    - [Comments](#comments)
-    - [List of Control Structures](#control-structures)
-        - [For](#control-structures-for)
-        - [Loop Controls](#control-structures-loops)
-        - [Loop Context](#control-structures-loop)
-            - [Assignments](#assignments)
-            - [Expressions](#expressions)
-        - [Literals](#expressions-literals)
-        - [Arrays](#expressions-arrays)
-        - [Math](#expressions-math)
-        - [Comparisons](#expressions-comparisons)
-        - [Logic](#expressions-logic)
-        - [Other Operators](#expressions-other-operators)
-    - [Tests](#tests)
-    - [Macros](#macros)
-    - [Using Tag Helpers](#tag-helpers)
-    - [Functions](#functions)
-    - [View Integration](#view-integrations)
-        - [Include](#view-integration-include)
-        - [Partial vs Include](#view-integration-partial-vs-include)
-    - [Template Inheritance](#template-inheritance)
-        - [Multiple Inheritance](#template-inheritance-multiple)
-    - [Autoescape mode](#autoescape)
-    - [Extending Volt](#extending)
-        - [Functions](#extending-functions)
-        - [Filters](#extending-filters)
-        - [Extensions](#extending-extensions)
-    - [Caching view fragments](#caching-view-fragments)
-    - [Inject Services into a Template](#services-in-templates)
-    - [Stand-alone component](#stand-alone)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Overview</a> <ul>
+        <li>
+          <a href="#introduction">Introduction</a>
+        </li>
+        <li>
+          <a href="#setup">Activating Volt</a>
+        </li>
+        <li>
+          <a href="#basic-usage">Basic Usage</a>
+        </li>
+        <li>
+          <a href="#variables">Variables</a>
+        </li>
+        <li>
+          <a href="#filters">Filters</a>
+        </li>
+        <li>
+          <a href="#comments">Comments</a>
+        </li>
+        <li>
+          <a href="#control-structures">List of Control Structures</a> 
+          <ul>
+            <li>
+              <a href="#control-structures-for">For</a>
+            </li>
+            <li>
+              <a href="#control-structures-loops">Loop Controls</a>
+            </li>
+            <li>
+              <a href="#control-structures-loop">Loop Context</a> 
+              <ul>
+                <li>
+                  <a href="#assignments">Assignments</a>
+                </li>
+                <li>
+                  <a href="#expressions">Expressions</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#expressions-literals">Literals</a>
+            </li>
+            <li>
+              <a href="#expressions-arrays">Arrays</a>
+            </li>
+            <li>
+              <a href="#expressions-math">Math</a>
+            </li>
+            <li>
+              <a href="#expressions-comparisons">Comparisons</a>
+            </li>
+            <li>
+              <a href="#expressions-logic">Logic</a>
+            </li>
+            <li>
+              <a href="#expressions-other-operators">Other Operators</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#tests">Tests</a>
+        </li>
+        <li>
+          <a href="#macros">Macros</a>
+        </li>
+        <li>
+          <a href="#tag-helpers">Using Tag Helpers</a>
+        </li>
+        <li>
+          <a href="#functions">Functions</a>
+        </li>
+        <li>
+          <a href="#view-integrations">View Integration</a> 
+          <ul>
+            <li>
+              <a href="#view-integration-include">Include</a>
+            </li>
+            <li>
+              <a href="#view-integration-partial-vs-include">Partial vs Include</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#template-inheritance">Template Inheritance</a> <ul>
+            <li>
+              <a href="#template-inheritance-multiple">Multiple Inheritance</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#autoescape">Autoescape mode</a>
+        </li>
+        <li>
+          <a href="#extending">Extending Volt</a> 
+          <ul>
+            <li>
+              <a href="#extending-functions">Functions</a>
+            </li>
+            <li>
+              <a href="#extending-filters">Filters</a>
+            </li>
+            <li>
+              <a href="#extending-extensions">Extensions</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#caching-view-fragments">Caching view fragments</a>
+        </li>
+        <li>
+          <a href="#services-in-templates">Inject Services into a Template</a>
+        </li>
+        <li>
+          <a href="#stand-alone">Stand-alone component</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -203,7 +285,7 @@ $volt->setOptions(
             $dirName = dirname($templatePath);
 
             if (!is_dir('cache/' . $dirName)) {
-                mkdir('cache/' . $dirName);
+                mkdir('cache/' . $dirName , 0777 , true);
             }
 
             return 'cache/' . $dirName . '/'. $templatePath . '.php';
@@ -555,7 +637,7 @@ A special variable is available inside `for` loops providing you information abo
 | `loop.last`      | True if in the last iteration.                                |
 | `loop.length`    | The number of items to iterate                                |
 
-Example: 
+Example:
 
 ```twig
 {% for robot in robots %}
@@ -1142,7 +1224,11 @@ Rendering `index.volt` produces:
 
 Note the call to the function `super()`. With that function it's possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
 
-<h5 class='alert alert-warning' markdown='1'>By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option `'compileAlways' => true`. Thus, the templates are compiled always taking into account changes in the parent templates. </h5>
+<div class="alert alert-warning">
+    <p>
+        By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option <code>'compileAlways' => true</code>. Thus, the templates are compiled always taking into account changes in the parent templates.
+    </p>
+</div>
 
 <a name='autoescape'></a>
 ## Autoescape mode

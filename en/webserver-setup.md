@@ -1,19 +1,58 @@
-<div class='article-menu' markdown='1'>
-
-- [Web Server Setup](#setup)
-    - [Nginx](#nginx)
-        - [Phalcon configuration](#nginx-phalcon-configuration)
-            - [Basic configuration](#nginx-phalcon-configuration-basic)
-    - [Apache](#apache)
-        - [Phalcon configuration](#apache-phalcon-configuration)
-            - [Document root](#apache-document-root)
-            - [Apache configuration](#apache-apache-configuration)
-            - [Virtual Hosts](#apache-virtual-hosts)
-    - [Cherokee](#cherokee)
-        - [Phalcon configuration](#cherokee-phalcon-configuration)
-    - [Built in Webserver](#php-built-in)
-        - [Phalcon configuration](#php-built-in-phalcon-configuration)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#setup">Web Server Setup</a> 
+      <ul>
+        <li>
+          <a href="#nginx">Nginx</a> 
+          <ul>
+            <li>
+              <a href="#nginx-phalcon-configuration">Phalcon configuration</a> <ul>
+                <li>
+                  <a href="#nginx-phalcon-configuration-basic">Basic configuration</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#apache">Apache</a> 
+          <ul>
+            <li>
+              <a href="#apache-phalcon-configuration">Phalcon configuration</a> 
+              <ul>
+                <li>
+                  <a href="#apache-document-root">Document root</a>
+                </li>
+                <li>
+                  <a href="#apache-apache-configuration">Apache configuration</a>
+                </li>
+                <li>
+                  <a href="#apache-virtual-hosts">Virtual Hosts</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#cherokee">Cherokee</a> 
+          <ul>
+            <li>
+              <a href="#cherokee-phalcon-configuration">Phalcon configuration</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#php-built-in">Built in Webserver</a> 
+          <ul>
+            <li>
+              <a href="#php-built-in-phalcon-configuration">Phalcon configuration</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='setup'></a>
@@ -127,7 +166,11 @@ test/
 #### Document root
 This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`). 
 
-<h5 class='alert alert-warning' markdown='1'>Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set. </h5>
+<div class="alert alert-warning">
+    <p>
+        Note that using <code>.htaccess</code> files requires your apache installation to have the `AllowOverride All` option set.
+    </p>
+</div>
 
 ```apacheconfig
 # test/.htaccess

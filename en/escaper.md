@@ -1,12 +1,26 @@
-<div class='article-menu' markdown='1'>
-
-- [Contextual Escaping](#overview)
-    - [Escaping HTML](#html)
-    - [Escaping HTML Attributes](#html-attributes)
-    - [Escaping URLs](#urls)
-    - [Escaping CSS](#css)
-    - [Escaping JavaScript](#javascript)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Contextual Escaping</a> 
+      <ul>
+        <li>
+          <a href="#html">Escaping HTML</a>
+        </li>
+        <li>
+          <a href="#html-attributes">Escaping HTML Attributes</a>
+        </li>
+        <li>
+          <a href="#urls">Escaping URLs</a>
+        </li>
+        <li>
+          <a href="#css">Escaping CSS</a>
+        </li>
+        <li>
+          <a href="#javascript">Escaping JavaScript</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

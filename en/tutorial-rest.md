@@ -1,16 +1,38 @@
-<div class='article-menu' markdown='1'>
-
-- [Tutorial: Creating a Simple REST API](#overview)
-    - [Defining the API](#definitions)
-    - [Creating the Application](#implementation)
-    - [Creating a Model](#models)
-    - [Retrieving Data](#retrieving-data)
-    - [Inserting Data](#inserting-data)
-    - [Updating Data](#updating-data)
-    - [Deleting Data](#deleting-data)
-    - [Testing our Application](#testing)
-    - [Conclusion](#conclusion)
-   
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Tutorial: Creating a Simple REST API</a> 
+      <ul>
+        <li>
+          <a href="#definitions">Defining the API</a>
+        </li>
+        <li>
+          <a href="#implementation">Creating the Application</a>
+        </li>
+        <li>
+          <a href="#models">Creating a Model</a>
+        </li>
+        <li>
+          <a href="#retrieving-data">Retrieving Data</a>
+        </li>
+        <li>
+          <a href="#inserting-data">Inserting Data</a>
+        </li>
+        <li>
+          <a href="#updating-data">Updating Data</a>
+        </li>
+        <li>
+          <a href="#deleting-data">Deleting Data</a>
+        </li>
+        <li>
+          <a href="#testing">Testing our Application</a>
+        </li>
+        <li>
+          <a href="#conclusion">Conclusion</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='basic'></a>

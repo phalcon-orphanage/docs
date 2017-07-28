@@ -1,26 +1,68 @@
-<div class='article-menu' markdown='1'>
-
-- [ODM (Object-Document Mapper)](#overview)
-    - [Creating Models](#creating-models)
-    - [Understanding Documents To Objects](#documents-to-objects)
-    - [Models in Namespaces](#namespaces)
-    - [Setting a Connection](#connection-setup)
-    - [Finding Documents](#finding-documents)
-    - [Aggregations](#aggregations)
-    - [Creating Updating/Records](#creating-updating)
-        - [Validation Messages](#validation-messages)
-        - [Validation Events and Events Manager](#events)
-        - [Implementing a Business Rule](#business-rules)
-        - [Validating Data Integrity](#data-integrity)
-    - [Deleting Records](#deleting-records)
-    - [Validation Failed Events](#validation-failed-events)
-    - [Implicit Ids vs. User Primary Keys](#ids-vs-primary-keys)
-    - [Setting multiple databases](#multiple-databases)
-    - [Injecting services into Models](#services-in-models)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">ODM (Object-Document Mapper)</a> 
+      <ul>
+        <li>
+          <a href="#creating-models">Creating Models</a>
+        </li>
+        <li>
+          <a href="#documents-to-objects">Understanding Documents To Objects</a>
+        </li>
+        <li>
+          <a href="#namespaces">Models in Namespaces</a>
+        </li>
+        <li>
+          <a href="#connection-setup">Setting a Connection</a>
+        </li>
+        <li>
+          <a href="#finding-documents">Finding Documents</a>
+        </li>
+        <li>
+          <a href="#aggregations">Aggregations</a>
+        </li>
+        <li>
+          <a href="#creating-updating">Creating Updating/Records</a> 
+          <ul>
+            <li>
+              <a href="#validation-messages">Validation Messages</a>
+            </li>
+            <li>
+              <a href="#events">Validation Events and Events Manager</a>
+            </li>
+            <li>
+              <a href="#business-rules">Implementing a Business Rule</a>
+            </li>
+            <li>
+              <a href="#data-integrity">Validating Data Integrity</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#deleting-records">Deleting Records</a>
+        </li>
+        <li>
+          <a href="#validation-failed-events">Validation Failed Events</a>
+        </li>
+        <li>
+          <a href="#ids-vs-primary-keys">Implicit Ids vs. User Primary Keys</a>
+        </li>
+        <li>
+          <a href="#multiple-databases">Setting multiple databases</a>
+        </li>
+        <li>
+          <a href="#services-in-models">Injecting services into Models</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
-<h5 class='alert alert-info' markdown='1'>Please note that if you are using the Mongo driver provided by PHP 7, the ODM will not work for you. There is an incubator adapter but all the Mongo code must be rewritten (new Bson type instead of arrays, no MongoId, no MongoDate, etc...). Please ensure that you test your code before upgrading to PHP 7 and/or Phalcon 3+</h5>
+<div class="alert alert-info">
+    <p>
+        Please note that if you are using the Mongo driver provided by PHP 7, the ODM will not work for you. There is an incubator adapter but all the Mongo code must be rewritten (new Bson type instead of arrays, no MongoId, no MongoDate, etc.). Please ensure that you test your code before upgrading to PHP 7 and/or Phalcon 3+
+    </p>
+</div>
 
 <a name='overview'></a>
 # ODM (Object-Document Mapper)
@@ -602,7 +644,11 @@ class Robots extends Collection
 
 The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return false.
 
-<h5 class='alert alert-warning' markdown='1'>For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation) </h5>
+<div class='alert alert-warning'>
+    <p>
+        For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation).
+    </p>
+</div>
 
 <a name='deleting-records'></a>
 ## Deleting Records
