@@ -259,7 +259,7 @@ Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[v
     <p>
         Routes must always start with <code>/</code>
     </p>
-</h5>
+</div>
 
 Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
 
