@@ -593,7 +593,7 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 // Users handler
 $users = new MicroCollection();
-$users->setHandler(new UsersController(), true);
+$users->setHandler('UsersController', true);
 $users->setPrefix('/users');
 $users->get('/get/{id}', 'get');
 $users->get('/add/{payload}', 'add');
@@ -601,7 +601,7 @@ $app->mount($users);
 
 // Orders handler
 $orders = new MicroCollection();
-$orders->setHandler(new OrdersController(), true);
+$orders->setHandler('OrdersController', true);
 $orders->setPrefix('/users');
 $orders->get('/get/{id}', 'get');
 $orders->get('/add/{payload}', 'add');
@@ -609,7 +609,7 @@ $app->mount($orders);
 
 // Products handler
 $products = new MicroCollection();
-$products->setHandler(new ProductsController(), true);
+$products->setHandler('ProductsController', true);
 $products->setPrefix('/products');
 $products->get('/get/{id}', 'get');
 $products->get('/add/{payload}', 'add');
