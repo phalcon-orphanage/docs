@@ -1,9 +1,11 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#setup">Web Server Setup</a> <ul>
+      <a href="#setup">Web Server Setup</a> 
+      <ul>
         <li>
-          <a href="#nginx">Nginx</a> <ul>
+          <a href="#nginx">Nginx</a> 
+          <ul>
             <li>
               <a href="#nginx-phalcon-configuration">Phalcon configuration</a> <ul>
                 <li>
@@ -13,11 +15,12 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#apache">Apache</a> <ul>
+          <a href="#apache">Apache</a> 
+          <ul>
             <li>
-              <a href="#apache-phalcon-configuration">Phalcon configuration</a> <ul>
+              <a href="#apache-phalcon-configuration">Phalcon configuration</a> 
+              <ul>
                 <li>
                   <a href="#apache-document-root">Document root</a>
                 </li>
@@ -31,17 +34,17 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#cherokee">Cherokee</a> <ul>
+          <a href="#cherokee">Cherokee</a> 
+          <ul>
             <li>
               <a href="#cherokee-phalcon-configuration">Phalcon configuration</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#php-built-in">Built in Webserver</a> <ul>
+          <a href="#php-built-in">Built in Webserver</a> 
+          <ul>
             <li>
               <a href="#php-built-in-phalcon-configuration">Phalcon configuration</a>
             </li>
@@ -177,7 +180,11 @@ test/
 
 This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`).
 
-<h5 class='alert alert-warning'>Note that using <code>.htaccess</code> files requires your apache installation to have the <code>AllowOverride All</code> option set. </h5>
+<div class="alert alert-warning">
+    <p>
+        Note that using <code>.htaccess</code> files requires your apache installation to have the `AllowOverride All` option set.
+    </p>
+</div>
 
 ```apacheconfig
 # test/.htaccess
