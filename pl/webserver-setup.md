@@ -154,7 +154,7 @@ server {
 
 <a name='apache-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Konfiguracja Phalcona
 
 Poniżej prezentujemy proponowane konfiguracje jakich możesz użyć do konfiguracji Phalcona z Apache. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/[[language]]/[[version]]/routing). Zwykle aplikacja ma następującą strukturę:
 
@@ -311,7 +311,7 @@ php -S localhost:8000 -t /public
 
 <a name='php-built-in-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Konfiguracja Phalcona
 
 Aby włączyć przepisywanie adresów którego Phalcon potrzebuje, możesz użyć następującego pliku routera (`.htrouter.php`):
 
