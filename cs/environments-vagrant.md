@@ -456,7 +456,7 @@ set cwd=
 set box=
 ```
 
-<h5 class='alert alert-warning'>Make sure to tweak the example <code>C:\\workspace</code> path in the script to the actual location of your Phalcon Box installation. After creating the file, add the file location to your <code>PATH</code>. You may then run commands like <code>box up</code> or <code>box ssh</code> from anywhere on your system. </h5>
+<h5 class='alert alert-warning'>Make sure to tweak the example <code>C:\workspace</code> path in the script to the actual location of your Phalcon Box installation. After creating the file, add the file location to your <code>PATH</code>. You may then run commands like <code>box up</code> or <code>box ssh</code> from anywhere on your system. </h5>
 
 <a name='daily-usage-ssh'></a>
 
