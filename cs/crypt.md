@@ -30,7 +30,11 @@ Phalcon provides encryption facilities via the `Phalcon\Crypt` component. This c
 
 By default, this component provides secure encryption using AES-256-CFB.
 
-<h5 class='alert alert-warning'>You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
+<div class="alert alert-warning">
+    <p>
+        You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.
+    </p>
+</div>
 
 <a name='usage'></a>
 
@@ -186,6 +190,6 @@ class SecretsController extends Controller
 
 ## Links
 
-- [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
-- [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
-- [Introduction to Blowfish](http://www.splashdata.com/splashid/blowfish.htm)
+* [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+* [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
+* [Introduction to Blowfish](http://www.splashdata.com/splashid/blowfish.htm)
