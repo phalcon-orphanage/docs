@@ -34,9 +34,9 @@
 
 Минимальная структура консольного приложения будет выглядеть следующим образом:
 
-- `app/config/config.php`
-- `app/tasks/MainTask.php`
-- `app/cli.php` <-- основной загрузочный файл
+* `app/config/config.php`
+* `app/tasks/MainTask.php`
+* `app/cli.php` <-- основной загрузочный файл
 
 <a name='creating-bootstrap'></a>
 
