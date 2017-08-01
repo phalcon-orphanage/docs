@@ -30,7 +30,11 @@ Phalcon предоставляет средства шифрования с по
 
 По умолчанию данный компонент использует надежный алгоритм шифрования AES-256-CFB.
 
-<h5 class='alert alert-warning'>Вы должны использовать длину ключа, соответствующую текущему алгоритму. Для алгоритма по-умолчанию она составляет 32 байта.</h5>
+<div class="alert alert-warning">
+    <p>
+        Вы должны использовать длину ключа, соответствующую текущему алгоритму. Для алгоритма по-умолчанию она составляет 32 байта.
+    </p>
+</div>
 
 <a name='usage'></a>
 
@@ -186,6 +190,6 @@ class SecretsController extends Controller
 
 ## Ссылки
 
-- [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
-- [Что такое блочный шифр](https://en.wikipedia.org/wiki/Block_cipher)
-- [Введение в Blowfish](http://www.splashdata.com/splashid/blowfish.htm)
+* [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+* [Что такое блочный шифр](https://en.wikipedia.org/wiki/Block_cipher)
+* [Введение в Blowfish](http://www.splashdata.com/splashid/blowfish.htm)
