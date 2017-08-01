@@ -4,9 +4,11 @@
       <a href="#creating-micro-application">Создание микроприложения</a>
     </li>
     <li>
-      <a href="#routing">Маршрутизация</a> <ul>
+      <a href="#routing">Маршрутизация</a> 
+      <ul>
         <li>
-          <a href="#routing-setup">Настройка</a> <ul>
+          <a href="#routing-setup">Настройка</a> 
+          <ul>
             <li>
               <a href="#routing-setup-application">Объект приложения</a>
             </li>
@@ -15,14 +17,14 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#rewrite-rules">Правила перезаписи</a>
         </li>
         <li>
           <a href="#routing-handlers">Обработчики</a> <ul>
             <li>
-              <a href="#routing-handlers-definitions">Определения</a> <ul>
+              <a href="#routing-handlers-definitions">Определения</a> 
+              <ul>
                 <li>
                   <a href="#routing-handlers-anonymous-function">Анонимная функция</a>
                 </li>
@@ -40,23 +42,22 @@
                 </li>
               </ul>
             </li>
-            
             <li>
-              <a href="#routing-handlers-controllers-lazy-loading">Загрузка по требованию</a> <ul>
+              <a href="#routing-handlers-controllers-lazy-loading">Загрузка по требованию</a> 
+              <ul>
                 <li>
                   <a href="#routing-handlers-controllers-lazy-loading-use-case">Сценарий использования</a>
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#routing-handlers-not-found">Не найдено (404)</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#routing-verbs">Методы-глаголы</a> <ul>
+          <a href="#routing-verbs">Методы-глаголы</a> 
+          <ul>
             <li>
               <a href="#routing-verb-delete">delete</a>
             </li>
@@ -83,7 +84,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#routing-collections">Коллекции</a>
         </li>
@@ -98,12 +98,12 @@
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#dependency-injector">Внедрение зависимостей</a>
     </li>
     <li>
-      <a href="#responses">Ответы</a> <ul>
+      <a href="#responses">Ответы</a> 
+      <ul>
         <li>
           <a href="#responses-direct-output">Прямой вывод</a>
         </li>
@@ -127,9 +127,9 @@
         </li>
       </ul>
     </li>
-    
     <li>
-      <a href="#events">События</a> <ul>
+      <a href="#events">События</a> 
+      <ul>
         <li>
           <a href="#events-available-events">Доступные события</a> <ul>
             <li>
@@ -142,11 +142,11 @@
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#middleware">Middleware</a> <ul>
         <li>
-          <a href="#middleware-attached-events">Прикреплённые события</a> <ul>
+          <a href="#middleware-attached-events">Прикреплённые события</a> 
+          <ul>
             <li>
               <a href="#middleware-attached-events-before">before</a>
             </li>
@@ -158,7 +158,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#middleware-implementation">Реализация</a>
         </li>
@@ -166,9 +165,11 @@
           <a href="#middleware-setup">Настройка</a>
         </li>
         <li>
-          <a href="#middleware-events">События в Middleware</a> <ul>
+          <a href="#middleware-events">События в Middleware</a> 
+          <ul>
             <li>
-              <a href="#middleware-events-api">Пример API</a> <ul>
+              <a href="#middleware-events-api">Пример API</a> 
+              <ul>
                 <li>
                   <a href="#middleware-events-api-firewall">Firewall</a>
                 </li>
@@ -193,7 +194,6 @@
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#models">Модели</a>
     </li>
@@ -262,7 +262,11 @@ $app = new Micro();
 
 Маршрутизация обрабатывается объектом `Phalcon\Mvc\Router`. [[Информация](/[[language]]/[[version]]/routing)]
 
-<h5 class='alert alert-warning'>Маршруты всегда должны начинаться с <code>/</code></h5>
+<div class="alert alert-danger">
+    <p>
+        Маршруты всегда должны начинаться с <code>/</code>
+    </p>
+</div>
 
 Обычно, `/` является стартовым маршрутом приложения, и в большинстве случаев осуществляется через метод GET протокола HTTP:
 
@@ -619,25 +623,25 @@ $app->mount($products);
 
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
-// Обработчик Users
+// Users handler
 $users = new MicroCollection();
-$users->setHandler(new UsersController(), true);
+$users->setHandler('UsersController', true);
 $users->setPrefix('/users');
 $users->get('/get/{id}', 'get');
 $users->get('/add/{payload}', 'add');
 $app->mount($users);
 
-// Обработчик Orders
+// Orders handler
 $orders = new MicroCollection();
-$orders->setHandler(new OrdersController(), true);
+$orders->setHandler('OrdersController', true);
 $orders->setPrefix('/users');
 $orders->get('/get/{id}', 'get');
 $orders->get('/add/{payload}', 'add');
 $app->mount($orders);
 
-// Обработчик Products
+// Products handler
 $products = new MicroCollection();
-$products->setHandler(new ProductsController(), true);
+$products->setHandler('ProductsController', true);
 $products->setPrefix('/products');
 $products->get('/get/{id}', 'get');
 $products->get('/add/{payload}', 'add');
@@ -818,7 +822,11 @@ $orders->get('/delete/{id}', 'deleteAction');
 $app->mount($orders);
 ```
 
-<h5 class='alert alert-warning'>Имя с которым мы связываем каждый маршрут имеет суффикс <code>Action</code>. Это не обязательно, Ваш метод может называться как угодно.</h5>
+<div class='alert alert-warning'>
+    <p>
+        Имя с которым мы связываем каждый маршрут имеет суффикс <code>Action</code>. Это не обязательно, Ваш метод может называться как угодно.
+    </p>
+</div>
 
 <a name='routing-parameters'></a>
 
@@ -908,9 +916,9 @@ class UsersController extends Controller
 
 ## URL-адреса для маршрутов
 
-Другая возможность маршрутизации — настройка именованных маршрутов и генерация URL-адресов для этих маршрутов. Это двухшаговый процесс.
+Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process.
 
-- Сначала мы должны дать имя нашему маршруту. Это может быть достигнуто с помощью метода `setName()`, который доступен из методов-глаголов в нашем приложении (`get`, `post`, и т. д.);
+* Сначала мы должны дать имя нашему маршруту. Это может быть достигнуто с помощью метода `setName()`, который доступен из методов-глаголов в нашем приложении (`get`, `post`, и т. д.);
 
 ```php
 // Задать маршрут с именем 'show-order'
@@ -924,7 +932,7 @@ $app
     ->setName('show-order');
 ```
 
-- Нам нужно использовать компонент `Phalcon\Mvc\Url` для получения URL-адреса на основе определенных маршрутов.
+* Нам нужно использовать компонент `Phalcon\Mvc\Url` для получения URL-адреса на основе определенных маршрутов.
 
 ```php
 // Используем именованный маршрут и создаем URL от него
@@ -1006,7 +1014,7 @@ $app->post(
 Также вы можете использовать синтаксис массивов, чтобы зарегистрировать сервисы в контейнере зависимостей из объекта приложения:
 
 ```php
-<br /><?php
+<?php
 
 use Phalcon\Mvc\Micro;
 use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
@@ -1093,7 +1101,7 @@ $app->get(
 
 ## Новый объект Response
 
-Вы можете использовать метод `setContent` объекта Response, чтобы вернуть ответ:
+You can use the `setContent` method of the Response object to return the response back:
 
 ```php
 $app->get(
@@ -1118,7 +1126,7 @@ $app->get(
 
 ## Ответ приложения
 
-Существует возможность использовать объект `Phalcon\Http\Response`, чтобы вернуть ответ вызывающей стороне. Объект Response имеет много полезных методов, которые делают работу с возвращаемым ответом более лёгкой.
+You can also use the `Phalcon\Http\Response` object to return responses to the caller. The Response object has a lot of useful methods that make returning respones much easier.
 
 ```php
 $app->get(
@@ -1138,7 +1146,7 @@ $app->get(
 
 ## Возврат ответа приложения
 
-Другим подходом возврата данных обратно вызывающей стороне является возвращения объекта Response напрямую из приложения. Когда ответы возвращаются обработчиками они автоматически отправляются приложением.
+A different approach returning data back to the caller is to return the Response object directly from the application. Когда ответы возвращаются обработчиками они автоматически отправляются приложением.
 
 ```php
 <?php
@@ -1249,7 +1257,7 @@ $app->setEventsManager($eventsManager);
 
 ### Пример: Страница не найдена
 
-Еще одним встроенным событием, на которое вы можете подписаться для реализации бизнес логики, является `beforeNotFound`. Следующий пример показывает один из способов обработки запросов на несуществующий адрес:
+Another built-in event that you can subscribe to implement business logic is `beforeNotFound`. The following example shows one of the ways to handle requests for a non-existent address:
 
 ```php
 <?php
@@ -1297,7 +1305,11 @@ Middleware может быть прикреплён к микроприложе�
 | after   | После выполнения обработчика                    |
 | final   | После того, как был отправлен ответ вызывающему |
 
-<h5 class='alert alert-warning'>Вы можете прикрепить так много middleware-классов, сколько пожелаете, к любому из событий перечисленных выше. Они будут выполнены последовательно, когда соответствующее событие сработает.</h5>
+<div class="alert alert-warning">
+    <p>
+        Вы можете прикрепить так много middleware-классов, сколько пожелаете, к любому из событий перечисленных выше. Они будут выполнены последовательно, когда соответствующее событие сработает.
+    </p>
+</div>
 
 <a name='middleware-attached-events-before'></a>
 
@@ -1438,7 +1450,7 @@ $application->setEventsManager($eventsManager);
 
 ```
 
-We need a `Phalcon\Events\Manager` object. This can be a newly instantiated object or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one).
+Нам нужен объект `Phalcon\Events\Manager`. This can be a newly instantiated object or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one).
 
 We attach every middleware class in the `micro` hook in the Events Manager. We could also be a bit more specific and attach it to say the `micro:beforeExecuteRoute` event.
 
@@ -1448,7 +1460,7 @@ We then attach the middleware class in our application on one of the three liste
 
 ## Реализация
 
-Middleware can be any kind of PHP callable functions. You can organize your code whichever way you like it to implement middleware. If you choose to use classes for your middleware, you will need them to implement the `Phalcon\Mvc\Micro\MiddlewareInterface`
+Middleware может быть любой вызываемой PHP функцией. Вы можете организовать код любым путем, который вам нравится, для реализации middleware. If you choose to use classes for your middleware, you will need them to implement the `Phalcon\Mvc\Micro\MiddlewareInterface`
 
 ```php
 <?php
@@ -1499,15 +1511,15 @@ The [events](#events) that are triggered for our application also trigger inside
 
 ### Пример API
 
-Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
+Предположим, у нас есть API, которое мы реализовали с помощью Micro приложения. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
 
-The middleware that we will use are: * Firewall * NotFound * Redirect * CORS * Request * Response
+Middleware, которые мы будем использовать: * Firewall * NotFound * Redirect * CORS * Request * Response
 
 <a name='middleware-events-api-firewall'></a>
 
 #### Firewall Middleware
 
-This middleware is attached to the `before` event of our Micro application. The purpose of this middleware is to check who is calling our API and based on a whitelist, allow them to proceed or not
+Этот middleware прикрепляется к событию `before` нашего микроприложения. Цель этого middleware проверить, кто вызывает наше API, и опираясь на белый список, разрешает ему продолжить или нет
 
 ```php
 <?php
@@ -1569,7 +1581,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 #### Not Found Middleware
 
-When this middleware is processed, this means that the requesting IP is allowed to access our application. The application will try and match the route and if not found the `beforeNotFound` event will fire. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
+Когда этот middleware обработан, это означает, что запрашивающему IP разрешен доступ к нашему приложению. Приложение попытается сопоставить маршрут, и если он не будет найден сработает событие `beforeNotFound`. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
 
 ```php
 <?php
@@ -1792,7 +1804,11 @@ class RequestMiddleware implements MiddlewareInterface
 
 This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
 
-<h5 class='alert alert-warning'>We are going to be using the <code>call</code> method for this middleware, since we have nearly executed the whole request cycle.</h5>
+<div class='alert alert-warning'>
+    <p>
+        We are going to be using the <code>call</code> method for this middleware, since we have nearly executed the whole request cycle.
+    </p>
+</div>
 
 ```php
 <?php
@@ -1837,7 +1853,11 @@ class ResponseMiddleware implements MiddlewareInterface
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
-<h5 class='alert alert-warning'>The relevant <code>db</code> service must be registered in your Di container.</h5>
+<div class="alert alert-warning">
+    <p>
+        The relevant <code>db</code> service must be registered in your Di container.
+    </p>
+</div>
 
 ```php
 <?php
@@ -1936,7 +1956,11 @@ $app->get(
 );
 ```
 
-<h5 class='alert alert-warning'>The above example uses the <code>Phalcon\\Mvc\\View\\Simple</code> component, which uses relative paths instead of controllers and actions. You can use the <code>Phalcon\\Mvc\\View</code> component instead, but to do so you will need to change the parameters passed to <code>render()</code></h5>
+<div class='alert alert-warning'>
+    <p>
+        The above example uses the <a href="/[[language]]/[[version]]/Phalcon_Mvc_View_Simple">Phalcon\Mvc\View\Simple</a> component, which uses relative paths instead of controllers and actions. You can use the <a href="/[[language]]/[[version]]/Phalcon_Mvc_View">Phalcon\Mvc\View</a> component instead, but to do so you will need to change the parameters passed to <code>render()</code>`
+    </p>
+</div>
 
 ```php
 <?php
