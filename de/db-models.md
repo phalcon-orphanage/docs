@@ -90,7 +90,7 @@ A model represents the information (data) of the application and the rules to ma
 
 `Phalcon\Mvc\Model` is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. `Phalcon\Mvc\Model` avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
 
-<h5 class='alert alert-warning'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the <code>Phalcon\\Db</code> component documentation.</h5>
+<h5 class='alert alert-warning'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the <code>Phalcon\Db</code> component documentation.</h5>
 
 <a name='creating'></a>
 
@@ -717,7 +717,7 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class='alert alert-warning'>Since the default bind-type is <code>Phalcon\\Db\\Column::BIND_PARAM_STR</code>, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.</h5>
+<h5 class='alert alert-warning'>Since the default bind-type is <code>Phalcon\Db\Column::BIND_PARAM_STR</code>, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.</h5>
 
 If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
 
@@ -1391,7 +1391,7 @@ class Robots extends Model
 }
 ```
 
-<h5 class='alert alert-warning'>Never use a <code>Phalcon\\Db\\RawValue</code> to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. </h5>
+<h5 class='alert alert-warning'>Never use a <code>Phalcon\Db\RawValue</code> to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. </h5>
 
 <a name='dynamic-updates'></a>
 
