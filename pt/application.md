@@ -6,7 +6,8 @@
           <a href="#manual-bootstrapping">Manual Bootstrapping</a>
         </li>
         <li>
-          <a href="#single-vs-module">Single or Multi Module Applications</a> <ul>
+          <a href="#single-vs-module">Single or Multi Module Applications</a> 
+          <ul>
             <li>
               <a href="#single">Single Module</a>
             </li>
@@ -15,7 +16,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#events">Application Events</a>
         </li>
@@ -234,14 +234,14 @@ Single MVC applications consist of one module only. Namespaces can be used but a
 
 ```php
 single/
-    app/
-        controllers/
-        models/
-        views/
-    public/
-        css/
-        img/
-        js/
+  app/
+    controllers/
+    models/
+    views/
+  public/
+    css/
+    img/
+    js/
 ```
 
 If namespaces are not used, the following bootstrap file could be used to orchestrate the MVC flow:
@@ -595,4 +595,4 @@ $eventsManager->attach(
 
 ## External Resources
 
-- [MVC examples on Github](https://github.com/phalcon/mvc)
+* [MVC examples on Github](https://github.com/phalcon/mvc)
