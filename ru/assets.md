@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Управление ресурсами</a> <ul>
+      <a href="#overview">Управление ресурсами</a> 
+      <ul>
         <li>
           <a href="#add">Добавление ресурсов</a>
         </li>
@@ -15,7 +16,8 @@
           <a href="#url-prefixes">Префиксы</a>
         </li>
         <li>
-          <a href="#minification-filtering">Минификация/Фильтрация</a> <ul>
+          <a href="#minification-filtering">Минификация/Фильтрация</a> 
+          <ul>
             <li>
               <a href="#builtin-filters">Встроенные фильтры</a>
             </li>
@@ -24,7 +26,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#custom-output">Пользовательский вывод</a>
         </li>
