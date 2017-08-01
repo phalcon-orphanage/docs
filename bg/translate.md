@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Multi-lingual Support</a> <ul>
+      <a href="#overview">Multi-lingual Support</a> 
+      <ul>
         <li>
           <a href="#adapters">Adapters</a>
         </li>
@@ -31,6 +32,28 @@ This component makes use of adapters to read translation messages from different
 | Adapter                                    | Description                                                                             |
 | ------------------------------------------ | --------------------------------------------------------------------------------------- |
 | `Phalcon\Translate\Adapter\NativeArray` | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
+
+<a name='adapters-factory'></a>
+
+### Factory
+
+Loads Translate Adapter class using `adapter` option
+
+```php
+<?php
+
+use Phalcon\Translate\Factory;
+
+$options = [
+    'locale'        => 'de_DE.UTF-8',
+    'defaultDomain' => 'translations',
+    'directory'     => '/path/to/application/locales',
+    'category'      => LC_MESSAGES,
+    'adapter'       => 'gettext',
+];
+
+$translate = Factory::load($options);
+```
 
 <a name='usage'></a>
 
