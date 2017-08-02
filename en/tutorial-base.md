@@ -51,15 +51,15 @@
 
 <a name='basic'></a>
 # Tutorial - basic
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/[[language]]/[[version]]/devtools-usage).
+Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. The following guide is to provided to introduce you to Phalcon framework's design aspects. 
 
-The best way to use this guide is to follow each step in turn. You can get the complete code [here](https://github.com/phalcon/tutorial).
+If you just want to get started you can skip this and create a Phalcon project automatically with our [developer tools](/[[language]]/[[version]]/devtools-usage). (It is recommended that if you have not had experience with to come back here if you get stuck)
+
+The best way to use this guide is to follow along and try to have fun. You can get the complete code [here](https://github.com/phalcon/tutorial). If you get hung-up on something please visit us on [Discord](https://phalcon.link/discord) or in our [Forum](https://forum.phalconphp.com/)
 
 <a name='file-structure'></a>
 ## File structure
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
-
-For the purposes of this tutorial and as a starting point, we suggest this very simple structure:
+A key feature of Phalcon is it is *loosely coupled*, you can build a Phalcon project with a directory structure that is convenient for your specific application. That said some uniformity is helpful when collaborating with others, so this tutorial will has using a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.
 
 ```bash
 tutorial/
@@ -72,9 +72,15 @@ tutorial/
     img/
     js/
 ```
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+Note: You will not see a *vendor* directory as all of Phalcon's core dependencies are loaded into memory via the Phalcon extension you installed. If you have not installed the Phalcon extension yet [please go back](/[[language]]/[[version]]/installation) and finish installation before continuing.
 
-Before continuing, please be sure you've successfully [installed Phalcon](/[[language]]/[[version]]/installation) and have setup either [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
+If this is all brand new it is recommended that you install the [Phalcon Devtools](devtools-installation) since it leverages PHP's built-in server you get get your app running without having to configure a web-server by adding this [.htrouter](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php) to the root of your project.
+
+Otherwise if you want to use Nginx here are some additional setup [here](/[[language]]/[[version]]/setup#nginx)
+
+Apache can also be used with these additional setup [here](/[[language]]/[[version]]/setup#apache)
+
+Finally, if you flavor is Cherokee use the setup [here](/[[language]]/[[version]]/setup#cherokee)
 
 <a name='bootstrap'></a>
 ## Bootstrap
