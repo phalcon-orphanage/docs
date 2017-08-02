@@ -84,13 +84,12 @@ Finally, if you flavor is Cherokee use the setup [here](/[[language]]/[[version]
 
 <a name='bootstrap'></a>
 ## Bootstrap
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for you application. In this file you can implement initialization of components as well as application behavior.
 
-Ultimately, it is responsible for doing 3 things:
-
-* Setting up the autoloader.
-* Configuring the Dependency Injector.
-* Handling the application request.
+This file handles 3 things:
+* Registration of the autoloader.
+* Configuring *Services* and registering them with the *Dependency Injection* context.
+* Resolving the application's HTTP requests.
 
 <a name='autoloaders'></a>
 ### Autoloaders
