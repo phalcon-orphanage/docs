@@ -1,12 +1,14 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#basic">Tutorial - basic</a> <ul>
+      <a href="#basic">Tutorial - basic</a> 
+      <ul>
         <li>
           <a href="#file-structure">File structure</a>
         </li>
         <li>
-          <a href="#bootstrap">Bootstrap</a> <ul>
+          <a href="#bootstrap">Bootstrap</a> 
+          <ul>
             <li>
               <a href="#autoloaders">Autoloaders</a>
             </li>
@@ -21,7 +23,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#controller">Creating a Controller</a>
         </li>
@@ -88,9 +89,9 @@ The first file you need to create is the bootstrap file. This file is very impor
 
 Ultimately, it is responsible for doing 3 things:
 
-- Setting up the autoloader.
-- Configuring the Dependency Injector.
-- Handling the application request.
+* Setting up the autoloader.
+* Configuring the Dependency Injector.
+* Handling the application request.
 
 <a name='autoloaders'></a>
 

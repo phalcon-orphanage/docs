@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Parser anotací</a> <ul>
+      <a href="#overview">Parser anotací</a> 
+      <ul>
         <li>
           <a href="#factory">Factory</a>
         </li>
@@ -12,7 +13,8 @@
           <a href="#types">Typy anotací</a>
         </li>
         <li>
-          <a href="#usage">Praktické využití</a> <ul>
+          <a href="#usage">Praktické využití</a> 
+          <ul>
             <li>
               <a href="#usage-cache">Cache povolení pro anotace</a>
             </li>
@@ -21,15 +23,14 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#adapters">Anotační adaptéry</a> <ul>
+          <a href="#adapters">Anotační adaptéry</a> 
+          <ul>
             <li>
               <a href="#adapters-custom">Implementing your own adapters</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#resources">Externí zdroje</a>
         </li>
@@ -131,7 +132,7 @@ However, to make the code more maintainable and understandable it is recommended
 
 ## Factory
 
-There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
 
 ```php
 <?php
@@ -465,4 +466,4 @@ The `Phalcon\Annotations\AdapterInterface` interface must be implemented in orde
 
 ## External Resources
 
-- [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
+* [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)

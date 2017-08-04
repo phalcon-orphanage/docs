@@ -1,9 +1,11 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Отношения модели</a> <ul>
+      <a href="#overview">Отношения модели</a> 
+      <ul>
         <li>
-          <a href="#relationships">Отношения между моделями</a> <ul>
+          <a href="#relationships">Отношения между моделями</a> 
+          <ul>
             <li>
               <a href="#unidirectional">Однонаправленные отношения</a>
             </li>
@@ -17,7 +19,8 @@
               <a href="#taking-advantage-of">Преимущества отношений</a>
             </li>
             <li>
-              <a href="#aliases">Синонимы отношений</a> <ul>
+              <a href="#aliases">Синонимы отношений</a> 
+              <ul>
                 <li>
                   <a href="#getters-vs-methods">Магические методы против явных</a>
                 </li>
@@ -25,20 +28,20 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#virtual-foreign-keys">Виртуальные внешние ключи</a> <ul>
+          <a href="#virtual-foreign-keys">Виртуальные внешние ключи</a> 
+          <ul>
             <li>
               <a href="#cascade-restrict-actions">Cascade/Restrict действия </a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#storing-related-records">Связаное сохранение записей</a>
         </li>
         <li>
-          <a href="#operations-over-resultsets">Операции над набором результатов</a> <ul>
+          <a href="#operations-over-resultsets">Операции над набором результатов</a> 
+          <ul>
             <li>
               <a href="#updating-related-records">Обновление связанных записей</a>
             </li>
@@ -115,10 +118,10 @@ CREATE TABLE parts (
 );
 ```
 
-- The model `Robots` has many `RobotsParts`.
-- The model `Parts` has many `RobotsParts`.
-- The model `RobotsParts` belongs to both `Robots` and `Parts` models as a many-to-one relation.
-- The model `Robots` has a relation many-to-many to `Parts` through `RobotsParts`.
+* The model `Robots` has many `RobotsParts`.
+* The model `Parts` has many `RobotsParts`.
+* The model `RobotsParts` belongs to both `Robots` and `Parts` models as a many-to-one relation.
+* The model `Robots` has a relation many-to-many to `Parts` through `RobotsParts`.
 
 Check the EER diagram to understand better the relations:
 
@@ -735,9 +738,9 @@ Saving the album and the artist at the same time implicitly makes use of a trans
 
 Note: Adding related entities by overloading the following methods is not possible:
 
-- `Phalcon\Mvc\Model::beforeSave()`
-- `Phalcon\Mvc\Model::beforeCreate()`
-- `Phalcon\Mvc\Model::beforeUpdate()`
+* `Phalcon\Mvc\Model::beforeSave()`
+* `Phalcon\Mvc\Model::beforeCreate()`
+* `Phalcon\Mvc\Model::beforeUpdate()`
 
 You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 

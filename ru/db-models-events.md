@@ -1,9 +1,11 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">События модели</a> <ul>
+      <a href="#overview">События модели</a> 
+      <ul>
         <li>
-          <a href="#events">События и управление событиями</a> <ul>
+          <a href="#events">События и управление событиями</a> 
+          <ul>
             <li>
               <a href="#events-in-models">Реализация событий в классе модели</a>
             </li>
@@ -12,7 +14,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#logging-sql-statements">Логирование низкоуровневых SQL запросов</a>
         </li>

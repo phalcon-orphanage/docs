@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Zlepšení výkonu pomocí cache</a> <ul>
+      <a href="#overview">Zlepšení výkonu pomocí cache</a> 
+      <ul>
         <li>
           <a href="#implementation">Kdy implementovat cache?</a>
         </li>
@@ -15,7 +16,8 @@
           <a href="#output-fragments">Caching Output Fragments</a>
         </li>
         <li>
-          <a href="#arbitrary-data">Caching Arbitrary Data</a> <ul>
+          <a href="#arbitrary-data">Caching Arbitrary Data</a> 
+          <ul>
             <li>
               <a href="#backend-file-example">File Backend Example</a>
             </li>
@@ -24,7 +26,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#read">Querying the cache</a>
         </li>
@@ -41,15 +42,19 @@
           <a href="#multi-level">Multi-Level Cache</a>
         </li>
         <li>
-          <a href="#adapters-frontend">Frontend Adapters</a> <ul>
+          <a href="#adapters-frontend">Frontend Adapters</a> 
+          <ul>
             <li>
               <a href="#adapters-frontend-custom">Implementing your own Frontend adapters</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#adapters-backend">Backend Adapters</a> <ul>
+          <a href="#adapters-backend">Backend Adapters</a> 
+          <ul>
+            <li>
+              <a href="#adapters-backend-factory">Factory</a>
+            </li>
             <li>
               <a href="#adapters-backend-custom">Implementing your own Backend adapters</a>
             </li>
@@ -96,11 +101,15 @@ Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently 
 
 Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
 
-- You are making complex calculations that every time return the same result (changing infrequently)
-- You are using a lot of helpers and the output generated is almost always the same
-- You are accessing database data constantly and these data rarely change
+* You are making complex calculations that every time return the same result (changing infrequently)
+* You are using a lot of helpers and the output generated is almost always the same
+* You are accessing database data constantly and these data rarely change
 
-<h5 class='alert alert-warning'><em>NOTE</em> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.
+    </p>
+</div>
 
 <a name='caching-behavior'></a>
 
@@ -108,8 +117,8 @@ Although this component is very fast, implementing it in cases that are not need
 
 The caching process is divided into 2 parts:
 
-- **Frontend**: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-
-- **Backend**: This part is responsible for communicating, writing/reading the data required by the frontend.
+* **Frontend**: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-
+* **Backend**: This part is responsible for communicating, writing/reading the data required by the frontend.
 
 <a name='factory'></a>
 
@@ -117,7 +126,7 @@ The caching process is divided into 2 parts:
 
 Instantiating frontend or backend adapters can be achieved by two ways:
 
-- Traditional way
+Traditional way
 
 ```php
 <?php
@@ -167,8 +176,6 @@ $options = [
 
 $backendCache = BFactory::load($options);
 ```
-
-If the options
 
 <a name='output-fragments'></a>
 
@@ -227,7 +234,11 @@ if ($content === null) {
 }
 ```
 
-<h5 class='alert alert-warning'><em>NOTE</em> In the example above, our code remains the same, echoing output to the user as it has been doing before. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> In the example above, our code remains the same, echoing output to the user as it has been doing before. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations.
+    </p>
+</div>
 
 <a name='arbitrary-data'></a>
 
@@ -239,7 +250,7 @@ Caching just data is equally important for your application. Caching can reduce 
 
 ### File Backend Example
 
-One of the caching adapters is 'File'. The only key area for this adapter is the location of where the cache files will be stored. This is controlled by the `cacheDir` option which *must* have a backslash at the end of it.
+One of the caching adapters is `File`. The only key area for this adapter is the location of where the cache files will be stored. This is controlled by the `cacheDir` option which *must* have a backslash at the end of it.
 
 ```php
 <?php
@@ -346,7 +357,11 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning'><em>NOTE</em> Calling <code>save()</code> will return a boolean, indicating success (<code>true</code>) or failure (<code>false</code>). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> Calling <code>save()</code> will return a boolean, indicating success (<code>true</code>) or failure (<code>false</code>). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.
+    </p>
+</div>
 
 <a name='read'></a>
 
@@ -558,7 +573,31 @@ The backend adapters available to store cache data are:
 | `Phalcon\Cache\Backend\Redis`        | Stores data in Redis.                                | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache.                               | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
-<h5 class='alert alert-warning'><em>NOTE</em> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.2.0 you can switch your <code>*\\Apc</code> classes to <code>*\\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all <code>*\\Apc</code> classes.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.2.0 you can switch your <code>*\Apc</code> classes to <code>*\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes.
+    </p>
+</div>
+
+<a name='adapters-backend-factory'></a>
+
+### Factory
+
+There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+
+```php
+<?php
+
+use Phalcon\Cache\Backend\Factory;
+use Phalcon\Cache\Frontend\Data;
+
+$options = [
+    'prefix'   => 'app-data',
+    'frontend' => new Data(),
+    'adapter'  => 'apc',
+];
+$backendCache = Factory::load($options);
+```
 
 <a name='adapters-backend-custom'></a>
 

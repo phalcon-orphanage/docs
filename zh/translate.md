@@ -1,15 +1,11 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Multi-lingual Support</a> <ul>
+      <a href="#overview">Multi-lingual Support</a> 
+      <ul>
         <li>
-          <a href="#adapters">Adapters</a> <ul>
-            <li>
-              <a href="#adapters-factory">Factory</a>
-            </li>
-          </ul>
+          <a href="#adapters">Adapters</a>
         </li>
-        
         <li>
           <a href="#usage">Component Usage</a>
         </li>
