@@ -1936,7 +1936,7 @@ $app->get(
 );
 ```
 
-<h5 class='alert alert-warning'>The above example uses the <code>Phalcon\\Mvc\\View\\Simple</code> component, which uses relative paths instead of controllers and actions. You can use the <code>Phalcon\\Mvc\\View</code> component instead, but to do so you will need to change the parameters passed to <code>render()</code></h5>
+<h5 class='alert alert-warning'>The above example uses the <code>Phalcon\Mvc\View\\Simple</code> component, which uses relative paths instead of controllers and actions. You can use the <code>Phalcon\\Mvc\\View</code> component instead, but to do so you will need to change the parameters passed to <code>render()</code></h5>
 
 ```php
 <?php
