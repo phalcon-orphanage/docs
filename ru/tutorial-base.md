@@ -188,7 +188,7 @@ $di->set(
 
 <a name='request'></a>
 
-### Handling the application request
+### Обработка входящих запросов
 
 In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
 
@@ -208,7 +208,7 @@ $response->send();
 
 <a name='full-example'></a>
 
-### Putting everything together
+### Соберём все компоненты вместе
 
 The `tutorial/public/index.php` file should look like:
 
