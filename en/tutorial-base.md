@@ -55,11 +55,11 @@ Throughout this tutorial, we'll walk you through the creation of an application 
 
 If you just want to get started you can skip this and create a Phalcon project automatically with our [developer tools](/[[language]]/[[version]]/devtools-usage). (It is recommended that if you have not had experience with to come back here if you get stuck)
 
-The best way to use this guide is to follow along and try to have fun. You can get the complete code [here](https://github.com/phalcon/tutorial). If you get hung-up on something please visit us on [Discord](https://phalcon.link/discord) or in our [Forum](https://forum.phalconphp.com/)
+The best way to use this guide is to follow along and try to have fun. You can get the complete code [here](https://github.com/phalcon/tutorial). If you get hung-up on something please visit us on [Discord](https://phalcon.link/discord) or in our [Forum](https://phalcon.link/forum)
 
 <a name='file-structure'></a>
 ## File structure
-A key feature of Phalcon is it's **loosely coupled**, you can build a Phalcon project with a directory structure that is convenient for your specific application. That said some uniformity is helpful when collaborating with others, so this tutorial will has using a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.
+A key feature of Phalcon is it's **loosely coupled**, you can build a Phalcon project with a directory structure that is convenient for your specific application. That said some uniformity is helpful when collaborating with others, so this tutorial will use a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.
 <br/>
 ```bash
 tutorial/
@@ -72,9 +72,9 @@ tutorial/
     img/
     js/
 ```
-Note: You will not see a **vendor** directory as all of Phalcon's core dependencies are loaded into memory via the Phalcon extension you installed. If you have not installed the Phalcon extension yet [please go back](/[[language]]/[[version]]/installation) and finish installation before continuing.
+Note: You will not see a **vendor** directory as all of Phalcon's core dependencies are loaded into memory via the Phalcon extension you should have installed. If you missed that part have not installed the Phalcon extension [please go back](/[[language]]/[[version]]/installation) and finish the installation before continuing.
 
-If this is all brand new it is recommended that you install the [Phalcon Devtools](/[[language]]/[[version]]/devtools-installation) since it leverages PHP's built-in server you get get your app running without having to configure a web-server by adding this [.htrouter](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php) to the root of your project.
+If this is all brand new it is recommended that you install the [Phalcon Devtools](/[[language]]/[[version]]/devtools-installation) since it leverages PHP's built-in server you to get your app running without having to configure a web server by adding this [.htrouter](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php) to the root of your project.
 
 Otherwise if you want to use Nginx here are some additional setup [here](/[[language]]/[[version]]/setup#nginx)
 
@@ -84,7 +84,7 @@ Finally, if you flavor is Cherokee use the setup [here](/[[language]]/[[version]
 
 <a name='bootstrap'></a>
 ## Bootstrap
-The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for you application. In this file you can implement initialization of components as well as application behavior.
+The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well as application behavior.
 
 This file handles 3 things:
 - Registration of component autoloaders.
@@ -93,9 +93,9 @@ This file handles 3 things:
 
 <a name='autoloaders'></a>
 ### Autoloaders
-Autoloaders leverage a [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon C extension. Common things that should be added to the Autoloader are your **Controllers** and **Models**. You can register **directories** which will search for files within the application's namespace. (If you want to read about other ways that you can use Autoloaders head [here](https://olddocs.phalconphp.com/en/3.0.0/reference/loader.html#class-autoloader))
+Autoloaders leverage a [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon C extension. Common things that should be added to the Autoloader are your **Controllers** and **Models**. You can register **directories** which will search for files within the application's namespace. (If you want to read about other ways that you can use Autoloaders head [here](/[[language]]/[[version]]/loader#overview))
 
-To start lets register our apps controllers and models directories.
+To start, lets register our app's **controllers** and **models** directories.
 Don't forget to include the loader from `Phalcon\Loader`.
 
 <br/>
@@ -122,7 +122,7 @@ $loader->register();
 
 <a name='dependency-management'></a>
 ### Dependency Management
-Since Phalcon is **loosely coupled** services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the **IoC** container. Frequently you will encounter the term **DI** which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound like complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts:
+Since Phalcon is **loosely coupled** services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the **IoC** container. Frequently you will encounter the term **DI** which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound like a complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts:
 - Service Container: a "bag" where we globally store the services that our application needs to function.
 - Service or Component: Data processing object which will be injected into components
 
@@ -130,7 +130,7 @@ If you are still interested in the details please see this article by [Martin Fo
 
 Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. Don't forget to include `Phalcon\Di` with setting up the service container.
 
-Services can be registered in several ways, but for our tutorial we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
+Services can be registered in several ways, but for our tutorial, we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
 
 ### Factory Default
 `Phalcon\Di\FactoryDefault` is a variant of `Phalcon\Di`. To make things easier, it will automatically register most of the components that come with Phalcon. We recommend that you register your services manually but this has been included to help lower the barrier of entry when getting used to Dependency Management. Later, you can always specify once you become more comfortable with the concept.
@@ -174,7 +174,7 @@ $di->set(
 ```
 <br/>
 
-Next we register a base URI so that all URIs generated by Phalcon include the "tutorial" folder we setup earlier. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
+Next, we register a base URI so that all URIs generated by Phalcon include the "tutorial" folder we setup earlier. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
 
 <br/>
 **public/index.php**
@@ -291,7 +291,8 @@ As you can see, the bootstrap file is very short and we do not need to include a
 
 <a name='controller'></a>
 ## Creating a Controller
-By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (`app/controllers/IndexController.php`) looks like:
+By default Phalcon will look for a controller named **IndexController**. It is the starting point when no controller or action has been added in the request. (eg. http://localhost:8000/tutorial/)
+An **IndexController** and its **IndexAction** should resemble the following example:
 
 <br/>
 **app/controllers/IndexController.php**
@@ -350,7 +351,7 @@ class IndexController extends Controller
 The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about `views usage here <views>`.
 
 <a name='signup-form'></a>
-## Designing a sign up form
+## Designing a sign-up form
 Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
 
 <br/>
@@ -382,9 +383,9 @@ The generated HTML code displays an anchor ("a") HTML tag linking to a new contr
 ```
 <br/>
 
-To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is a also a service registered in the DI we use `$this->tag` to access it.
+To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is also a service registered in the DI we use `$this->tag` to access it.
 
-A more detailed article regarding HTML generation can be :doc:`found here <tags>`.
+A more detailed article regarding HTML generation can be found [here <tags>](/[[language]]/[[version]]/tag).
 
 <br/>
 ![](/images/content/tutorial-basic-2.png)
@@ -605,11 +606,11 @@ class SignupController extends Controller
 ```
 <br/>
 
-At the beginning of the **registerAction** we create an empty user object from the Users class, which manages a User's record. The class's public properties map to the fields of the users table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+At the beginning of the **registerAction** we create an empty user object from the Users class, which manages a User's record. The class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
 
 The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
+Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign-up form our screen will look like this:
 
 <br/>
 ![](/images/content/tutorial-basic-4.png)
@@ -617,6 +618,6 @@ Additional validation happens automatically on fields that are defined as not nu
 <br/>
 <a name='conclusion'></a>
 ## Conclusion
-As you can see, it's easy to start building an application using Phalcon. The fact that Phalcon runs from an extension has significantly reduced the footprint of our project as well as given it a significant performance boost. 
+As you can see, it's easy to start building an application using Phalcon. The fact that Phalcon runs from an extension significantly reduces the footprint of projects as well as giving it a considerable performance boost. 
 
 If you are ready to learn more check out the [Rest Tutorial](/[[language]]/[[version]]/tutorial-rest) next.
