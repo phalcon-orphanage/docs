@@ -1,5 +1,5 @@
 - [General](/[[language]]/[[version]]/introduction)
-    - [Release Notes](/[[language]]/[[version]]/release-notes)
+    - [Release Notes](https://github.com/phalcon/cphalcon/blob/master/CHANGELOG.md)
     - Upgrade
     - [Sponsors](/[[language]]/[[version]]/sponsors)
 - Contributions
