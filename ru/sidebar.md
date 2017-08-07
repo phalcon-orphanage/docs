@@ -1,5 +1,5 @@
 - [Главная](/[[language]]/[[version]]/introduction) 
-    - [Примечания к выпуску](/[[language]]/[[version]]/release-notes)
+    - [Примечания к выпуску](https://github.com/phalcon/cphalcon/blob/3.1.x/CHANGELOG.md)
     - Обновление
     - [Спонсоры](/[[language]]/[[version]]/sponsors)
 - Содействие 
