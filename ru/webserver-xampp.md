@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Overview</a> 
+      <ul>
         <li>
           <a href="#phalcon">Download the right version of Phalcon</a>
         </li>
@@ -66,7 +67,7 @@ If you can see the phalcon version in the `phpinfo()` output, congratulations!, 
 
 <a name='screencast'></a>
 
-## Screencast
+## Скринкаст
 
 The following screencast is a step by step guide to install Phalcon on Windows:
 
@@ -82,4 +83,4 @@ The following screencast is a step by step guide to install Phalcon on Windows:
 
 ## Related Guides
 
-- [Installation on WAMP](/[[language]]/[[version]]/webserver-wamp)
+* [Installation on WAMP](/[[language]]/[[version]]/webserver-wamp)

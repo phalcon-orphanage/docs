@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Overview</a> 
+      <ul>
         <li>
           <a href="#phalcon">Download the right version of Phalcon</a>
         </li>
@@ -67,4 +68,4 @@ Congratulations! You are now phlying with Phalcon.
 
 ## Related Guides
 
-- [Installation on XAMPP](/[[language]]/[[version]]/webserver-xampp)
+* [Installation on XAMPP](/[[language]]/[[version]]/webserver-xampp)

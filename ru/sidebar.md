@@ -1,5 +1,5 @@
 - [Главная](/[[language]]/[[version]]/introduction) 
-    - [Примечания к выпуску](/[[language]]/[[version]]/release-notes)
+    - [Примечания к выпуску](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
     - Обновление
     - [Спонсоры](/[[language]]/[[version]]/sponsors)
 - Содействие 
@@ -14,20 +14,26 @@
     - [Настройка веб-сервера](/[[language]]/[[version]]/webserver-setup) 
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
+- Уроки 
+    - [Основы](/[[language]]/[[version]]/tutorial-base)
+    - [REST](/[[language]]/[[version]]/tutorial-rest)
+    - [Vokuro](/[[language]]/[[version]]/tutorial-vokuro)
+    - [Производительность](/[[language]]/[[version]]/performance)
+    - [Invo](/[[language]]/[[version]]/tutorial-invo)
 - Окружение 
-    - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
+    - [Phalcon Compose](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
-    - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)
+    - [Phalcon Box](/[[language]]/[[version]]/environments-vagrant)
 - Инструменты разработчика 
-    - [Установка](/[[language]]/[[version]]/devtools-installation)
+    - [Installation](/[[language]]/[[version]]/devtools-installation)
     - [Использование](/[[language]]/[[version]]/devtools-usage)
     - [Отладка](/[[language]]/[[version]]/debug)
 - Ядро 
-    - [API](/[[language]]/[[version]]/api/index)
-    - Приложение
+    - [API Index](/[[language]]/[[version]]/api/index)
+    - Application 
         - [Полное](/[[language]]/[[version]]/application)
-        - [Микро](/[[language]]/[[version]]/application-micro)
-        - [Консольное](/[[language]]/[[version]]/application-cli)
+        - [Micro](/[[language]]/[[version]]/application-micro)
+        - [CLI](/[[language]]/[[version]]/application-cli)
     - [DI контейнер](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
 - Сервисы 
@@ -78,13 +84,7 @@
     - [Response](/[[language]]/[[version]]/response)
 - Безопасность 
     - [Шифрование](/[[language]]/[[version]]/crypt)
-    - [Защита](/[[language]]/[[version]]/security)
+    - [Безопасность](/[[language]]/[[version]]/security)
 - i18n 
     - [Интернационализация](/[[language]]/[[version]]/i18n)
     - [Перевод](/[[language]]/[[version]]/translate)
-- Уроки 
-    - [Производительность](/[[language]]/[[version]]/performance)
-    - [Основы](/[[language]]/[[version]]/tutorial-base)
-    - [Invo](/[[language]]/[[version]]/tutorial-invo)
-    - [REST](/[[language]]/[[version]]/tutorial-rest)
-    - [Vokuro](/[[language]]/[[version]]/tutorial-vokuro)

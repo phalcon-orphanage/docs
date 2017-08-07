@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Security</a> <ul>
+      <a href="#overview">Security</a> 
+      <ul>
         <li>
           <a href="#hashing">Password Hashing</a>
         </li>
@@ -215,4 +216,4 @@ $number     = $random->number($n);
 
 ## External Resources
 
-- [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [Github](https://github.com/phalcon/vokuro)
+* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [Github](https://github.com/phalcon/vokuro)
