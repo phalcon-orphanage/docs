@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Working with Namespaces</a> <ul>
+      <a href="#overview">Working with Namespaces</a> 
+      <ul>
         <li>
           <a href="#setting-up">Setting up the framework</a>
         </li>
