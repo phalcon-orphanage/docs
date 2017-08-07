@@ -1,12 +1,14 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">DevTools v Linuxu</a> <ul>
+      <a href="#overview">DevTools v Linuxu</a> 
+      <ul>
         <li>
           <a href="#prerequisites">Požadavky</a>
         </li>
         <li>
-          <a href="#installation">Instalace</a> <ul>
+          <a href="#installation">Instalace</a> 
+          <ul>
             <li>
               <a href="#installation-linux">Linux</a>
             </li>
@@ -14,7 +16,8 @@
               <a href="#installation-mac">MacOS</a>
             </li>
             <li>
-              <a href="#installation-windows">Windows</a> <ul>
+              <a href="#installation-windows">Windows</a> 
+              <ul>
                 <li>
                   <a href="#installation-windows-system-path">Adding PHP and Tools to your system PATH</a>
                 </li>
