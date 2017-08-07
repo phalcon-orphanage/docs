@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Overview</a> 
+      <ul>
         <li>
           <a href="#phalcon">Stažení správné verze Phalcon frameworku</a>
         </li>
@@ -66,4 +67,4 @@ Gratulujeme! Nyní je Phalcon framework připraven.
 
 ## Související průvodci
 
-- [Instalace: XAMPP](/[[language]]/[[version]]/webserver-xampp)
+* [Instalace: XAMPP](/[[language]]/[[version]]/webserver-xampp)
