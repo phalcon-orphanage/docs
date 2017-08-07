@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Flashing Messages</a> <ul>
+      <a href="#overview">Flashing Messages</a> 
+      <ul>
         <li>
           <a href="#adapters">Adapters</a>
         </li>
@@ -382,7 +383,11 @@ $email->setFilters(
 $form->add($email);
 ```
 
-<h5 class='alert alert-info'>Learn more about filtering in Phalcon by reading the <a href="/[[language]]/[[version]]/filter">Filter documentation</a> </h5>
+<div class='alert alert-info'>
+    <p>
+        Learn more about filtering in Phalcon by reading the <a href="/[[language]]/[[version]]/filter">Filter documentation</a>.
+    </p>
+</div>
 
 <a name='entities'></a>
 
@@ -698,4 +703,4 @@ echo $loginForm->render();
 
 ## External Resources
 
-- [Vökuró](http://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]
+* [Vökuró](http://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]
