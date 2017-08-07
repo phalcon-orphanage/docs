@@ -1,9 +1,11 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Database Abstraction Layer</a> <ul>
+      <a href="#overview">Database Abstraction Layer</a> 
+      <ul>
         <li>
-          <a href="#adapters">Database Adapters</a> <ul>
+          <a href="#adapters">Database Adapters</a> 
+          <ul>
             <li>
               <a href="#adapters-factory">Factory</a>
             </li>
@@ -12,23 +14,22 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#dialects">Database Dialects</a> <ul>
+          <a href="#dialects">Database Dialects</a> 
+          <ul>
             <li>
               <a href="#dialects-custom">Implementing your own dialects</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#connection">Connecting to Databases</a> <ul>
+          <a href="#connection">Connecting to Databases</a> 
+          <ul>
             <li>
               <a href="#connection-factory">Connecting using Factory</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#options">Setting up additional PDO options</a>
         </li>
@@ -60,7 +61,8 @@
           <a href="#describing-tables">Describing Tables/Views</a>
         </li>
         <li>
-          <a href="#tables">Creating/Altering/Dropping Tables</a> <ul>
+          <a href="#tables">Creating/Altering/Dropping Tables</a> 
+          <ul>
             <li>
               <a href="#tables-create">Creating Tables</a>
             </li>
@@ -917,13 +919,13 @@ $connection->createTable(
 
 `Phalcon\Db` supports the following database column types:
 
-- `Phalcon\Db\Column::TYPE_INTEGER`
-- `Phalcon\Db\Column::TYPE_DATE`
-- `Phalcon\Db\Column::TYPE_VARCHAR`
-- `Phalcon\Db\Column::TYPE_DECIMAL`
-- `Phalcon\Db\Column::TYPE_DATETIME`
-- `Phalcon\Db\Column::TYPE_CHAR`
-- `Phalcon\Db\Column::TYPE_TEXT`
+* `Phalcon\Db\Column::TYPE_INTEGER`
+* `Phalcon\Db\Column::TYPE_DATE`
+* `Phalcon\Db\Column::TYPE_VARCHAR`
+* `Phalcon\Db\Column::TYPE_DECIMAL`
+* `Phalcon\Db\Column::TYPE_DATETIME`
+* `Phalcon\Db\Column::TYPE_CHAR`
+* `Phalcon\Db\Column::TYPE_TEXT`
 
 The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
 

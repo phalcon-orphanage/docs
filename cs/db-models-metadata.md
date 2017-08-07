@@ -6,7 +6,8 @@
           <a href="#caching-metadata">Cache pro Metadata</a>
         </li>
         <li>
-          <a href="#metadata-strategies">Metadata Strategies</a> <ul>
+          <a href="#metadata-strategies">Metadata Strategies</a> 
+          <ul>
             <li>
               <a href="#strategies-database-introspection">Database Introspection Strategy</a>
             </li>
@@ -15,7 +16,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#strategies-manual">Manual Metadata</a>
         </li>

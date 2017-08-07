@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Улучшение производительности с помощью кэширования</a> <ul>
+      <a href="#overview">Улучшение производительности с помощью кэширования</a> 
+      <ul>
         <li>
           <a href="#implementation">Где применять кэширование?</a>
         </li>
@@ -15,7 +16,8 @@
           <a href="#output-fragments">Кэширование выходных фрагментов</a>
         </li>
         <li>
-          <a href="#arbitrary-data">Кэширование произвольных данных</a> <ul>
+          <a href="#arbitrary-data">Кэширование произвольных данных</a> 
+          <ul>
             <li>
               <a href="#backend-file-example">Пример файлового бэкэнда</a>
             </li>
@@ -24,7 +26,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#read">Запрос данных из кэша</a>
         </li>
@@ -41,15 +42,19 @@
           <a href="#multi-level">Многоуровневое кэширование</a>
         </li>
         <li>
-          <a href="#adapters-frontend">Фронтэнд адаптеры</a> <ul>
+          <a href="#adapters-frontend">Фронтэнд адаптеры</a> 
+          <ul>
             <li>
               <a href="#adapters-frontend-custom">Реализация собственных фронтэнд адаптеров</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#adapters-backend">Бэкэнд адаптеры</a> <ul>
+          <a href="#adapters-backend">Бэкэнд адаптеры</a> 
+          <ul>
+            <li>
+              <a href="#adapters-backend-factory">Factory</a>
+            </li>
             <li>
               <a href="#adapters-backend-custom">Реализация собственных бэкэнд адаптеров</a>
             </li>
@@ -96,11 +101,15 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 
 Несмотря на то, что этот компонент очень быстрый, его использование в случаях, где он не нужен, может привести к потери производительности. Мы рекомендуем проверить эти ситуации, прежде, чем использовать кэширование:
 
-- Вы делаете сложные расчеты, которые каждый раз возвращают один и тот же результат (или результат редко изменяется)
-- Вы используете много хелперов и результат генерации почти всегда одинаковый
-- Вы постоянно обращаетесь к базе данных и редко изменяете эти данные
+* Вы делаете сложные расчеты, которые каждый раз возвращают один и тот же результат (или результат редко изменяется)
+* Вы используете много хелперов и результат генерации почти всегда одинаковый
+* Вы постоянно обращаетесь к базе данных и редко изменяете эти данные
 
-<h5 class='alert alert-warning'><em>Примечание</em> Даже после реализации кэширования, вы должны проверить коэффициент попадания запросов в кэш (hit). Это можно легко проверить, особенно используя Memcache или Apc, с помощью соответствующих инструментов, предоставляемыми этими приложениями.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. Это можно легко проверить, особенно используя Memcache или Apc, с помощью соответствующих инструментов, предоставляемыми этими приложениями.
+    </p>
+</div>
 
 <a name='caching-behavior'></a>
 
@@ -108,8 +117,8 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 
 Процесс кэширования разделена в 2 части:
 
-- **Frontend**: Эта часть отвечает за проверку времени жизни ключа и выполняет дополнительные преобразования над данными, до операции сохранения или извлечения их из backend
-- **Backend**: Эта часть отвечает за коммуникацию, запись/чтение данных по запросу frontend.
+* **Frontend**: Эта часть отвечает за проверку времени жизни ключа и выполняет дополнительные преобразования над данными, до операции сохранения или извлечения их из backend
+* **Backend**: Эта часть отвечает за коммуникацию, запись/чтение данных по запросу frontend.
 
 <a name='factory'></a>
 
@@ -117,7 +126,7 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 
 Instantiating frontend or backend adapters can be achieved by two ways:
 
-- Traditional way
+Traditional way
 
 ```php
 <?php
@@ -167,8 +176,6 @@ $options = [
 
 $backendCache = BFactory::load($options);
 ```
-
-If the options
 
 <a name='output-fragments'></a>
 
@@ -229,7 +236,11 @@ if ($content === null) {
 }
 ```
 
-<h5 class='alert alert-warning'><em>Примечание</em> В этом примере наш код остается таким же и выводит те же данные пользователю. Наш компонент кэширования прозрачно перехватывает вывод и сохраняет его в кэшируемый файл (когда кэш сгенерирован) или он отправляет уже готовые данные обратно к пользователю, а это естественно позволяет экономить на выполнении операций.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> In the example above, our code remains the same, echoing output to the user as it has been doing before. Наш компонент кэширования прозрачно перехватывает вывод и сохраняет его в кэшируемый файл (когда кэш сгенерирован) или он отправляет уже готовые данные обратно к пользователю, а это естественно позволяет экономить на выполнении операций.
+    </p>
+</div>
 
 <a name='arbitrary-data'></a>
 
@@ -241,7 +252,7 @@ if ($content === null) {
 
 ### File Backend Example
 
-Существует файловый адаптер кэширования. Единственным параметром для него является место, где будут храниться закэшированные файлы. Это контролируется параметром `cacheDir`, который *должен* содержать завершающий слеш.
+One of the caching adapters is `File`. Единственным параметром для него является место, где будут храниться закэшированные файлы. Это контролируется параметром `cacheDir`, который *должен* содержать завершающий слеш.
 
 ```php
 <?php
@@ -348,7 +359,11 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning'><em>Примечание</em> Вызов <code>save()</code> возвращает логическое значение, указывающее, успех (<code>true</code>) или сбой (<code>false</code>). В зависимости от бэкэнда, который вы используете, вам понадобится обратится к соответствующим логам, для выявления сбоев.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> Calling <code>save()</code> will return a boolean, indicating success (<code>true</code>) or failure (<code>false</code>). В зависимости от бэкэнда, который вы используете, вам понадобится обратится к соответствующим логам, для выявления сбоев.
+    </p>
+</div>
 
 <a name='read'></a>
 
@@ -560,17 +575,41 @@ $cache->save('my-key', $data);
 | `Phalcon\Cache\Backend\Redis`        | Сохраняет данные в Redis.                                                    | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Сохраняет данные в XCache.                                                   | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
-<h5 class='alert alert-warning'><em>NOTE</em> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.2.0 you can switch your <code>*\\Apc</code> classes to <code>*\\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all <code>*\\Apc</code> classes.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.2.0 you can switch your <code>*\Apc</code> classes to <code>*\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes.
+    </p>
+</div>
+
+<a name='adapters-backend-factory'></a>
+
+### Factory
+
+There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+
+```php
+<?php
+
+use Phalcon\Cache\Backend\Factory;
+use Phalcon\Cache\Frontend\Data;
+
+$options = [
+    'prefix'   => 'app-data',
+    'frontend' => new Data(),
+    'adapter'  => 'apc',
+];
+$backendCache = Factory::load($options);
+```
 
 <a name='adapters-backend-custom'></a>
 
-### Implementing your own Backend adapters
+### Реализация собственных бэкэнд адаптеров
 
 Для создания бэкэнд адаптера необходимо реализовать интерфейс `Phalcon\Cache\BackendInterface`.
 
 <a name='adapters-backend-file'></a>
 
-### File Backend Options
+### Параметры файлового бэкэнда
 
 Этот бэкэнд сохраняет данные в локальный текстовый файл. Доступные опции:
 
@@ -581,7 +620,7 @@ $cache->save('my-key', $data);
 
 <a name='adapters-backend-libmemcached'></a>
 
-### Libmemcached Backend Options
+### Параметры Libmemcached бэкэнда
 
 Данные будут сохранены на Memcached сервере. По умолчанию используется пулл постоянных соединений. Доступные опции:
 
@@ -641,7 +680,7 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-memcache'></a>
 
-### Memcache Backend Options
+### Параметры Memcache бэкэнда
 
 Данные будут сохранены на Memcached сервере. Доступные опции:
 
@@ -654,7 +693,7 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-apc'></a>
 
-### APC Backend Options
+### Параметры APC бэкэнда
 
 Данные будут сохранены в Alternative PHP Cache ([APC](http://php.net/apc)). Доступна лишь одна опция:
 

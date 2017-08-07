@@ -28,7 +28,11 @@
 
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
-<h5 class='alert alert-danger'>Migrations are available in <a href="/[[language]]/[[version]]/devtools-usage">Phalcon Developer Tools</a> You need at least Phalcon Framework version 0.5.0 to use developer tools.</h5>
+<div class="alert alert-danger">
+    <p>
+        Migrations are available in <a href="/[[language]]/[[version]]/devtools-usage">Phalcon Developer Tools</a> You need at least Phalcon Framework version 0.5.0 to use developer tools.
+    </p>
+</div>
 
 Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.
 
@@ -184,24 +188,24 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 
 Database migrations support the following database column types:
 
-- `Phalcon\Db\Column::TYPE_INTEGER`
-- `Phalcon\Db\Column::TYPE_VARCHAR`
-- `Phalcon\Db\Column::TYPE_CHAR`
-- `Phalcon\Db\Column::TYPE_DATE`
-- `Phalcon\Db\Column::TYPE_DATETIME`
-- `Phalcon\Db\Column::TYPE_TIMESTAMP`
-- `Phalcon\Db\Column::TYPE_DECIMAL`
-- `Phalcon\Db\Column::TYPE_TEXT`
-- `Phalcon\Db\Column::TYPE_BOOLEAN`
-- `Phalcon\Db\Column::TYPE_FLOAT`
-- `Phalcon\Db\Column::TYPE_DOUBLE`
-- `Phalcon\Db\Column::TYPE_TINYBLOB`
-- `Phalcon\Db\Column::TYPE_BLOB`
-- `Phalcon\Db\Column::TYPE_MEDIUMBLOB`
-- `Phalcon\Db\Column::TYPE_LONGBLOB`
-- `Phalcon\Db\Column::TYPE_JSON`
-- `Phalcon\Db\Column::TYPE_JSONB`
-- `Phalcon\Db\Column::TYPE_BIGINTEGER`
+* `Phalcon\Db\Column::TYPE_INTEGER`
+* `Phalcon\Db\Column::TYPE_VARCHAR`
+* `Phalcon\Db\Column::TYPE_CHAR`
+* `Phalcon\Db\Column::TYPE_DATE`
+* `Phalcon\Db\Column::TYPE_DATETIME`
+* `Phalcon\Db\Column::TYPE_TIMESTAMP`
+* `Phalcon\Db\Column::TYPE_DECIMAL`
+* `Phalcon\Db\Column::TYPE_TEXT`
+* `Phalcon\Db\Column::TYPE_BOOLEAN`
+* `Phalcon\Db\Column::TYPE_FLOAT`
+* `Phalcon\Db\Column::TYPE_DOUBLE`
+* `Phalcon\Db\Column::TYPE_TINYBLOB`
+* `Phalcon\Db\Column::TYPE_BLOB`
+* `Phalcon\Db\Column::TYPE_MEDIUMBLOB`
+* `Phalcon\Db\Column::TYPE_LONGBLOB`
+* `Phalcon\Db\Column::TYPE_JSON`
+* `Phalcon\Db\Column::TYPE_JSONB`
+* `Phalcon\Db\Column::TYPE_BIGINTEGER`
 
 ### Defining Indexes
 

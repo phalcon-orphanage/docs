@@ -1,12 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Pagination</a> <ul>
+      <a href="#overview">Pagination</a> 
+      <ul>
         <li>
           <a href="#data-adapters">Data Adapters</a>
-        </li>
-        <li>
-          <a href="#factory">Factory</a>
         </li>
         <li>
           <a href="#examples">Examples</a>
