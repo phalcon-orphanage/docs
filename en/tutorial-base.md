@@ -76,11 +76,11 @@ Note: You will not see a **vendor** directory as all of Phalcon's core dependenc
 
 If this is all brand new it is recommended that you install the [Phalcon Devtools](/[[language]]/[[version]]/devtools-installation) since it leverages PHP's built-in server you to get your app running without having to configure a web server by adding this [.htrouter](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php) to the root of your project.
 
-Otherwise if you want to use Nginx here are some additional setup [here](/[[language]]/[[version]]/setup#nginx)
+Otherwise if you want to use Nginx here are some additional setup [here](/[[language]]/[[version]]/webserver-setup#nginx)
 
-Apache can also be used with these additional setup [here](/[[language]]/[[version]]/setup#apache)
+Apache can also be used with these additional setup [here](/[[language]]/[[version]]/webserver-setup#apache)
 
-Finally, if you flavor is Cherokee use the setup [here](/[[language]]/[[version]]/setup#cherokee)
+Finally, if you flavor is Cherokee use the setup [here](/[[language]]/[[version]]/webserver-setup#cherokee)
 
 <a name='bootstrap'></a>
 ## Bootstrap
