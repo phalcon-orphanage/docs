@@ -403,7 +403,6 @@ The following is the list of available built-in filters in Volt:
 | `lower`            | Change the case of a string to lowercase                                                                                          |
 | `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](http://php.net/manual/en/function.nl2br.php)      |
 | `right_trim`       | Applies the [rtrim](http://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                 |
-| `slashes`          | Applies the [slashes](http://php.net/manual/en/function.slashes.php) PHP function to the value. Escaping values                   |
 | `sort`             | Sorts an array using the PHP function [asort](http://php.net/manual/en/function.asort.php)                                        |
 | `stripslashes`     | Applies the [stripslashes](http://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes |
 | `striptags`        | Applies the [striptags](http://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags            |
