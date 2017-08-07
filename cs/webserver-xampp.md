@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Overview</a> 
+      <ul>
         <li>
           <a href="#phalcon">Download the right version of Phalcon</a>
         </li>
@@ -82,4 +83,4 @@ Následující video Vás provede krok za krokem instalací Phalcon frameworku p
 
 ## Related Guides
 
-- [Installation on WAMP](/[[language]]/[[version]]/webserver-wamp)
+* [Installation on WAMP](/[[language]]/[[version]]/webserver-wamp)
