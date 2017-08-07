@@ -30,7 +30,7 @@ If you decide to use MVC, every request to your application resources will be ma
 
 <a name='models'></a>
 ## Models
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. [Learn more](/[[language]]/[[version]]/models)
+A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. [Learn more](/[[language]]/[[version]]/db-models)
 
 <a name='views'></a>
 ## Views

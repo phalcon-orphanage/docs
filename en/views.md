@@ -192,7 +192,7 @@ The generated HTML by the request will be:
 ### Using Templates
 Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
 
-Templates can be rendered before the layout (using `$this->view->setTemplateBefore()`) or they can be rendered after the layout (using `this->view->setTemplateAfter()`). In the following example the template (`layouts/common.phtml`) is rendered after the main layout (`layouts/posts.phtml`):
+Templates can be rendered before the layout (using `$this->view->setTemplateBefore()`) or they can be rendered after the layout (using `this->view->setTemplateAfter()`). In the following example the template (`layouts/common.phtml`) is rendered after the contorller layout (`layouts/posts.phtml`):
 
 ```php
 <?php
