@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#architecture">The MVC Architecture</a> <ul>
+      <a href="#architecture">The MVC Architecture</a> 
+      <ul>
         <li>
           <a href="#models">Models</a>
         </li>
@@ -24,8 +25,8 @@ Phalcon offers the object-oriented classes, necessary to implement the Model, Vi
 
 MVC benefits include:
 
-- Isolation of business logic from the user interface and the database layer
-- Making it clear where different types of code belong for easier maintenance
+* Isolation of business logic from the user interface and the database layer
+* Making it clear where different types of code belong for easier maintenance
 
 If you decide to use MVC, every request to your application resources will be managed by the MVC architecture. Phalcon classes are written in C language, offering a high performance approach of this pattern in a PHP based application.
 
@@ -33,7 +34,7 @@ If you decide to use MVC, every request to your application resources will be ma
 
 ## Models
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. [Learn more](/[[language]]/[[version]]/models)
+A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. [Learn more](/[[language]]/[[version]]/db-models)
 
 <a name='views'></a>
 
