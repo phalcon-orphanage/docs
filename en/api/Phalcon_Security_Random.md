@@ -137,9 +137,14 @@ Generates a random base62 string
 If $len is not specified, 16 is assumed. It may be larger in future.
 It is similar to `Phalcon\\Security\\Random:base58` but has been modified to provide the largest value that can
 safely be used in URLs without needing to take extra characters into consideration because it is [A-Za-z0-9].
-< code>
-$random = new \\Phalcon\\Security\\Random();
+
+```php
+<?php
+
+$random = new \Phalcon\Security\Random();
+
 echo $random->base62(); // z0RkwHfh8ErDM1xw
+
 ```
 
 
