@@ -216,9 +216,7 @@ use Phalcon\Mvc\Application;
 // ...
 
 $application = new Application($di);
-
 $response = $application->handle();
-
 $response->send();
 ```
 <br/>
@@ -418,29 +416,19 @@ The empty index action gives the clean pass to a view with the form definition (
 <br/>
 **app/views/signup/index.phtml**
 ```php
-<h2>
-    Sign up using this form
-</h2>
+<h2>Sign up using this form</h2>
 
 <?php echo $this->tag->form("signup/register"); ?>
 
     <p>
-        <label for="name">
-            Name
-        </label>
-
+        <label for="name">Name</label>
         <?php echo $this->tag->textField("name"); ?>
     </p>
 
     <p>
-        <label for="email">
-            E-Mail
-        </label>
-
+        <label for="email">E-Mail</label>
         <?php echo $this->tag->textField("email"); ?>
     </p>
-
-
 
     <p>
         <?php echo $this->tag->submitButton("Register"); ?>
@@ -523,9 +511,7 @@ use Phalcon\Mvc\Model;
 class Users extends Model
 {
     public $id;
-
     public $name;
-
     public $email;
 }
 ```
