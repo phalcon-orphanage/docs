@@ -61,16 +61,20 @@ The best way to use this guide is to follow along and try to have fun. You can g
 ## File structure
 A key feature of Phalcon is it's **loosely coupled**, you can build a Phalcon project with a directory structure that is convenient for your specific application. That said some uniformity is helpful when collaborating with others, so this tutorial will use a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.
 <br/>
-```bash
-tutorial/
-  app/
-    controllers/
-    models/
-    views/
-  public/
-    css/
-    img/
-    js/
+```text
+┗ tutorial
+   ┣ app
+   ┇ ┣ controllers
+   ┇ ┇ ┣ IndexController.php
+   ┇ ┇ ┗ SignupController.php
+   ┇ ┣ models
+   ┇ ┇ ┗ Users.php
+   ┇ ┗ views
+   ┗ public
+      ┣ css
+      ┣ img
+      ┣ js
+      ┗ index.php
 ```
 Note: You will not see a **vendor** directory as all of Phalcon's core dependencies are loaded into memory via the Phalcon extension you should have installed. If you missed that part have not installed the Phalcon extension [please go back](/[[language]]/[[version]]/installation) and finish the installation before continuing.
 
