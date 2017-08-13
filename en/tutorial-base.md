@@ -534,10 +534,10 @@ $di->set(
     function () {
         return new DbAdapter(
             [
-                'host'     => 'localhost',
+                'host'     => '127.0.0.1',
                 'username' => 'root',
                 'password' => 'secret',
-                'dbname'   => 'test_db',
+                'dbname'   => 'tutorial1',
             ]
         );
     }
