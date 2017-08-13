@@ -109,14 +109,17 @@ Don't forget to include the loader from `Phalcon\Loader`.
 
 use Phalcon\Loader;
 
+// Define some absolute path constants to aid in locating resources
+define('BASE_PATH', dirname(__DIR__));
+define('APP_PATH', BASE_PATH . '/app');
 // ...
 
 $loader = new Loader();
 
 $loader->registerDirs(
     [
-        '../app/controllers/',
-        '../app/models/',
+        APP_PATH . '/controllers/',
+        APP_PATH . '/models/',
     ]
 );
 
@@ -169,9 +172,7 @@ $di->set(
     'view',
     function () {
         $view = new View();
-
-        $view->setViewsDir('../app/views/');
-
+        $view->setViewsDir(APP_PATH . '/views/');
         return $view;
     }
 );
@@ -240,13 +241,17 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Url as UrlProvider;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
+// Define some absolute path constants to aid in locating resources
+define('BASE_PATH', dirname(__DIR__));
+define('APP_PATH', BASE_PATH . '/app');
+
 // Register an autoloader
 $loader = new Loader();
 
 $loader->registerDirs(
     [
-        '../app/controllers/',
-        '../app/models/',
+        APP_PATH . '/controllers/',
+        APP_PATH . '/models/',
     ]
 );
 
@@ -260,9 +265,7 @@ $di->set(
     'view',
     function () {
         $view = new View();
-
-        $view->setViewsDir('../app/views/');
-
+        $view->setViewsDir(APP_PATH . '/views/');
         return $view;
     }
 );
