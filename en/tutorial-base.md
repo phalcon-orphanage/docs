@@ -195,9 +195,7 @@ $di->set(
     'url',
     function () {
         $url = new UrlProvider();
-
-        $url->setBaseUri('/tutorial/');
-
+        $url->setBaseUri('/');
         return $url;
     }
 );
@@ -275,9 +273,7 @@ $di->set(
     'url',
     function () {
         $url = new UrlProvider();
-
-        $url->setBaseUri('/tutorial/');
-
+        $url->setBaseUri('/');
         return $url;
     }
 );
@@ -298,7 +294,7 @@ As you can see, the bootstrap file is very short and we do not need to include a
 
 <a name='controller'></a>
 ## Creating a Controller
-By default Phalcon will look for a controller named **IndexController**. It is the starting point when no controller or action has been added in the request. (eg. http://localhost:8000/tutorial/)
+By default Phalcon will look for a controller named **IndexController**. It is the starting point when no controller or action has been added in the request. (eg. http://localhost:8000/)
 An **IndexController** and its **IndexAction** should resemble the following example:
 
 <br/>
@@ -386,7 +382,7 @@ The generated HTML code displays an anchor ("a") HTML tag linking to a new contr
 ```html
 <h1>Hello!</h1>
 
-<a href="/tutorial/signup">Sign Up Here!</a>
+<a href="/signup">Sign Up Here!</a>
 ```
 <br/>
 
