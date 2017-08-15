@@ -1,9 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Creating an ACL</a> <ul>
+      <a href="#overview">Access Control Lists (ACL)</a>
+      <ul>
         <li>
-          <a href="#setup">Adding Roles to the ACL</a>
+          <a href="#setup">Creating an ACL</a>
         </li>
         <li>
           <a href="#adding-roles">Добавление ролей к ACL</a>
