@@ -623,7 +623,7 @@ $app->mount($products);
 
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
-// Users handler
+// Обработчик Users
 $users = new MicroCollection();
 $users->setHandler('UsersController', true);
 $users->setPrefix('/users');
@@ -631,7 +631,7 @@ $users->get('/get/{id}', 'get');
 $users->get('/add/{payload}', 'add');
 $app->mount($users);
 
-// Orders handler
+// Обработчик Orders
 $orders = new MicroCollection();
 $orders->setHandler('OrdersController', true);
 $orders->setPrefix('/users');
@@ -639,7 +639,7 @@ $orders->get('/get/{id}', 'get');
 $orders->get('/add/{payload}', 'add');
 $app->mount($orders);
 
-// Products handler
+// Обработчик Products
 $products = new MicroCollection();
 $products->setHandler('ProductsController', true);
 $products->setPrefix('/products');
@@ -916,7 +916,7 @@ class UsersController extends Controller
 
 ## URL-адреса для маршрутов
 
-Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process.
+Другая возможность маршрутизации — настройка именованных маршрутов и генерация URL-адресов для этих маршрутов. Это двухшаговый процесс.
 
 * Сначала мы должны дать имя нашему маршруту. Это может быть достигнуто с помощью метода `setName()`, который доступен из методов-глаголов в нашем приложении (`get`, `post`, и т. д.);
 
@@ -1101,7 +1101,7 @@ $app->get(
 
 ## Новый объект Response
 
-You can use the `setContent` method of the Response object to return the response back:
+Вы можете использовать метод `setContent` объекта Response, чтобы вернуть ответ:
 
 ```php
 $app->get(
@@ -1126,7 +1126,7 @@ $app->get(
 
 ## Ответ приложения
 
-You can also use the `Phalcon\Http\Response` object to return responses to the caller. The Response object has a lot of useful methods that make returning respones much easier.
+Существует возможность использовать объект `Phalcon\Http\Response`, чтобы вернуть ответ вызывающей стороне. Объект Response имеет много полезных методов, которые делают работу с возвращаемым ответом более лёгкой.
 
 ```php
 $app->get(
@@ -1146,7 +1146,7 @@ $app->get(
 
 ## Возврат ответа приложения
 
-A different approach returning data back to the caller is to return the Response object directly from the application. Когда ответы возвращаются обработчиками они автоматически отправляются приложением.
+Другим подходом возврата данных обратно вызывающей стороне является возвращения объекта Response напрямую из приложения. Когда ответы возвращаются обработчиками они автоматически отправляются приложением.
 
 ```php
 <?php
@@ -1257,7 +1257,7 @@ $app->setEventsManager($eventsManager);
 
 ### Пример: Страница не найдена
 
-Another built-in event that you can subscribe to implement business logic is `beforeNotFound`. The following example shows one of the ways to handle requests for a non-existent address:
+Еще одним встроенным событием, на которое вы можете подписаться для реализации бизнес логики, является `beforeNotFound`. Следующий пример показывает один из способов обработки запросов на несуществующий адрес:
 
 ```php
 <?php
@@ -1958,7 +1958,7 @@ $app->get(
 
 <div class='alert alert-warning'>
     <p>
-        The above example uses the <a href="/[[language]]/[[version]]/Phalcon_Mvc_View_Simple">Phalcon\Mvc\View\Simple</a> component, which uses relative paths instead of controllers and actions. You can use the <a href="/[[language]]/[[version]]/Phalcon_Mvc_View">Phalcon\Mvc\View</a> component instead, but to do so you will need to change the parameters passed to <code>render()</code>`
+        Приведенный выше пример использует компонент <a href="/[[language]]/[[version]]/Phalcon_Mvc_View_Simple">Phalcon\Mvc\View\Simple</a>, который использует относительные пути вместо контроллеров и действий. Вместо этого Вы можете использовать компонент <code>Phalcon\Mvc\View</code>, но чтобы это сделать, необходимо изменить параметры передаваемые в <code>render()</code>
     </p>
 </div>
 
