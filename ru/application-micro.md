@@ -1958,7 +1958,7 @@ $app->get(
 
 <div class='alert alert-warning'>
     <p>
-        Приведенный выше пример использует компонент <a href="/[[language]]/[[version]]/Phalcon_Mvc_View_Simple">Phalcon\Mvc\View\Simple</a>, который использует относительные пути вместо контроллеров и действий. Вместо этого Вы можете использовать компонент <code>Phalcon\Mvc\View</code>, но чтобы это сделать, необходимо изменить параметры передаваемые в <code>render()</code>
+        Приведенный выше пример использует компонент <a href="/[[language]]/[[version]]/Phalcon_Mvc_View_Simple">Phalcon\Mvc\View\Simple</a>, который использует относительные пути вместо контроллеров и действий. You can use the <a href="/[[language]]/[[version]]/Phalcon_Mvc_View">Phalcon\Mvc\View</a> component instead, but to do so you will need to change the parameters passed to <code>render()</code>
     </p>
 </div>
 
