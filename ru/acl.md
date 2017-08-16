@@ -1,10 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Access Control Lists (ACL)</a>
+      <a href="#overview">Списки управления доступом (ACL)</a>
       <ul>
         <li>
-          <a href="#setup">Creating an ACL</a>
+          <a href="#setup">Создание списков контроля доступа</a>
         </li>
         <li>
           <a href="#adding-roles">Добавление ролей к ACL</a>
