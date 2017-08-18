@@ -1,5 +1,5 @@
 - [Obecné](/[[language]]/[[version]]/introduction) 
-    - [Poznámky k vydání](/[[language]]/[[version]]/release-notes)
+    - [Poznámky k vydání](https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md)
     - Upgrade
     - [Sponzoři](/[[language]]/[[version]]/sponsors)
 - Contributions 
