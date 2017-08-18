@@ -34,6 +34,9 @@ echo $random->hex(11); // f362ef96cb9ffef150c9cd
 echo $random->hex(12); // 95469d667475125208be45c4
 echo $random->hex(13); // 05475e8af4a34f8f743ab48761
 
+// Random base62 string
+echo $random->base62(); // z0RkwHfh8ErDM1xw
+
 // Random base64 string
 echo $random->base64(12); // XfIN81jGGuKkcE1E
 echo $random->base64(12); // 3rcq39QzGK9fUqh8
@@ -98,9 +101,9 @@ echo $random->hex(10); // a29f470508d5ccb8e289
 
 ```
 
-public **base58** ([*mixed* $n])
+public **base58** ([*mixed* $len])
 
-Generates a random base58 string If $len is not specified, 16 is assumed. It may be larger in future. The result may contain alphanumeric characters except 0, O, I and l. It is similar to Base64 but has been modified to avoid both non-alphanumeric characters and letters which might look ambiguous when printed.
+Generates a random base58 string If $len is not specified, 16 is assumed. It may be larger in future. The result may contain alphanumeric characters except 0, O, I and l. It is similar to `Phalcon\\Security\\Random:base64` but has been modified to avoid both non-alphanumeric characters and letters which might look ambiguous when printed.
 
 ```php
 <?php
@@ -111,18 +114,25 @@ echo $random->base58(); // 4kUgL2pdQMSCQtjE
 
 ```
 
-public **base64** ([*mixed* $len])
+public **base62** ([*mixed* $len])
 
-Generates a random base64 string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len. Size formula: 4 *( $len / 3) and this need to be rounded up to a multiple of 4.
+Generates a random base62 string If $len is not specified, 16 is assumed. It may be larger in future. It is similar to `Phalcon\\Security\\Random:base58` but has been modified to provide the largest value that can safely be used in URLs without needing to take extra characters into consideration because it is [A-Za-z0-9]. < code> $random = new \\Phalcon\\Security\\Random(); echo $random->base62(); // z0RkwHfh8ErDM1xw
 
-```php
-<?php
-
-$random = new \Phalcon\Security\Random();
-
-echo $random->base64(12); // 3rcq39QzGK9fUqh8
-
-```
+    <br /><br /><br />public  **base64** ([*mixed* $len])
+    
+    Generates a random base64 string
+    If $len is not specified, 16 is assumed. It may be larger in future.
+    The length of the result string is usually greater of $len.
+    Size formula: 4 * ($len / 3) and this need to be rounded up to a multiple of 4.
+    
+    ```php
+    <?php
+    
+    $random = new \Phalcon\Security\Random();
+    
+    echo $random->base64(12); // 3rcq39QzGK9fUqh8
+    
+    
 
 public **base64Safe** ([*mixed* $len], [*mixed* $padding])
 
@@ -162,3 +172,7 @@ $random = new \Phalcon\Security\Random();
 echo $random->number(16); // 8
 
 ```
+
+protected **base** (*mixed* $alphabet, *mixed* $base, [*mixed* $n])
+
+Generates a random string based on the number ($base) of characters ($alphabet). If $n is not specified, 16 is assumed. It may be larger in future.
