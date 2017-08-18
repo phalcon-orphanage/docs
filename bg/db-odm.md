@@ -36,7 +36,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#deleting-records">Deleting Records</a>
         </li>
