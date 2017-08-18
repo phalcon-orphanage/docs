@@ -66,16 +66,20 @@ The best way to use this guide is to follow along and try to have fun. You can g
 A key feature of Phalcon is it's **loosely coupled**, you can build a Phalcon project with a directory structure that is convenient for your specific application. That said some uniformity is helpful when collaborating with others, so this tutorial will use a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.   
 
 
-```bash
-tutorial/
-  app/
-    controllers/
-    models/
-    views/
-  public/
-    css/
-    img/
-    js/
+```text
+┗ tutorial
+   ┣ app
+   ┇ ┣ controllers
+   ┇ ┇ ┣ IndexController.php
+   ┇ ┇ ┗ SignupController.php
+   ┇ ┣ models
+   ┇ ┇ ┗ Users.php
+   ┇ ┗ views
+   ┗ public
+      ┣ css
+      ┣ img
+      ┣ js
+      ┗ index.php
 ```
 
 Note: You will not see a **vendor** directory as all of Phalcon's core dependencies are loaded into memory via the Phalcon extension you should have installed. If you missed that part have not installed the Phalcon extension [please go back](/[[language]]/[[version]]/installation) and finish the installation before continuing.
@@ -112,14 +116,17 @@ To start, lets register our app's **controllers** and **models** directories. Do
 
 use Phalcon\Loader;
 
+// Define some absolute path constants to aid in locating resources
+define('BASE_PATH', dirname(__DIR__));
+define('APP_PATH', BASE_PATH . '/app');
 // ...
 
 $loader = new Loader();
 
 $loader->registerDirs(
     [
-        '../app/controllers/',
-        '../app/models/',
+        APP_PATH . '/controllers/',
+        APP_PATH . '/models/',
     ]
 );
 
@@ -178,9 +185,7 @@ $di->set(
     'view',
     function () {
         $view = new View();
-
-        $view->setViewsDir('../app/views/');
-
+        $view->setViewsDir(APP_PATH . '/views/');
         return $view;
     }
 );
@@ -206,9 +211,7 @@ $di->set(
     'url',
     function () {
         $url = new UrlProvider();
-
-        $url->setBaseUri('/tutorial/');
-
+        $url->setBaseUri('/');
         return $url;
     }
 );
@@ -233,9 +236,7 @@ use Phalcon\Mvc\Application;
 // ...
 
 $application = new Application($di);
-
 $response = $application->handle();
-
 $response->send();
 ```
 
@@ -260,13 +261,17 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Url as UrlProvider;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
+// Define some absolute path constants to aid in locating resources
+define('BASE_PATH', dirname(__DIR__));
+define('APP_PATH', BASE_PATH . '/app');
+
 // Register an autoloader
 $loader = new Loader();
 
 $loader->registerDirs(
     [
-        '../app/controllers/',
-        '../app/models/',
+        APP_PATH . '/controllers/',
+        APP_PATH . '/models/',
     ]
 );
 
@@ -280,9 +285,7 @@ $di->set(
     'view',
     function () {
         $view = new View();
-
-        $view->setViewsDir('../app/views/');
-
+        $view->setViewsDir(APP_PATH . '/views/');
         return $view;
     }
 );
@@ -292,9 +295,7 @@ $di->set(
     'url',
     function () {
         $url = new UrlProvider();
-
-        $url->setBaseUri('/tutorial/');
-
+        $url->setBaseUri('/');
         return $url;
     }
 );
@@ -318,7 +319,7 @@ As you can see, the bootstrap file is very short and we do not need to include a
 
 ## Creating a Controller
 
-By default Phalcon will look for a controller named **IndexController**. It is the starting point when no controller or action has been added in the request. (eg. http://localhost:8000/tutorial/) An **IndexController** and its **IndexAction** should resemble the following example:
+By default Phalcon will look for a controller named **IndexController**. It is the starting point when no controller or action has been added in the request. (eg. http://localhost:8000/) An **IndexController** and its **IndexAction** should resemble the following example:
 
   
 **app/controllers/IndexController.php**
@@ -420,7 +421,7 @@ The generated HTML code displays an anchor ("a") HTML tag linking to a new contr
 ```html
 <h1>Hello!</h1>
 
-<a href="/tutorial/signup">Sign Up Here!</a>
+<a href="/signup">Sign Up Here!</a>
 ```
 
   
@@ -462,29 +463,19 @@ The empty index action gives the clean pass to a view with the form definition (
 **app/views/signup/index.phtml**
 
 ```php
-<h2>
-    Sign up using this form
-</h2>
+<h2>Sign up using this form</h2>
 
 <?php echo $this->tag->form("signup/register"); ?>
 
     <p>
-        <label for="name">
-            Name
-        </label>
-
+        <label for="name">Name</label>
         <?php echo $this->tag->textField("name"); ?>
     </p>
 
     <p>
-        <label for="email">
-            E-Mail
-        </label>
-
+        <label for="email">E-Mail</label>
         <?php echo $this->tag->textField("email"); ?>
     </p>
-
-
 
     <p>
         <?php echo $this->tag->submitButton("Register"); ?>
@@ -578,9 +569,7 @@ use Phalcon\Mvc\Model;
 class Users extends Model
 {
     public $id;
-
     public $name;
-
     public $email;
 }
 ```
@@ -607,10 +596,10 @@ $di->set(
     function () {
         return new DbAdapter(
             [
-                'host'     => 'localhost',
+                'host'     => '127.0.0.1',
                 'username' => 'root',
                 'password' => 'secret',
-                'dbname'   => 'test_db',
+                'dbname'   => 'tutorial1',
             ]
         );
     }
