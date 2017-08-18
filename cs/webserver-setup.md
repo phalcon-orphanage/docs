@@ -13,7 +13,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#apache">Apache</a> <ul>
             <li>
@@ -31,7 +30,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#cherokee">Cherokee</a> <ul>
             <li>
@@ -39,7 +37,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#php-built-in">Vestavěný webserver v PHP</a> <ul>
             <li>
@@ -154,7 +151,7 @@ server {
 
 <a name='apache-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Konfigurace Phalcon frameworku
 
 Níže jsou uvedeny potenciální konfigurace, které můžete použít pro nastavení Apache a Phalcon frameworku. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/[[language]]/[[version]]/routing). Běžně má aplikace následující strukturu:
 
@@ -311,7 +308,7 @@ php -S localhost:8000 -t /public
 
 <a name='php-built-in-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Konfigurace Phalcon frameworku
 
 Pro povolení přepisů URI, které Phalcon framework potřebuje, můžete použít soubor pro router (`.htrouter.php`):
 
