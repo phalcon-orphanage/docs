@@ -495,12 +495,13 @@ The events available in Phalcon are:
 | Dispatcher         | `dispatch:beforeExecuteRoute`       |
 | Dispatcher         | `dispatch:beforeDispatch`           |
 | Dispatcher         | `dispatch:beforeDispatchLoop`       |
+| Dispatcher         | `dispatch:beforeForward`            |
 | Dispatcher         | `dispatch:beforeNotFoundAction`     |
 | Loader             | `loader:afterCheckClass`            |
 | Loader             | `loader:beforeCheckClass`           |
 | Loader             | `loader:beforeCheckPath`            |
 | Loader             | `loader:pathFound`                  |
-| Микро              | `micro:afterHandleRoute`            |
+| Micro              | `micro:afterHandleRoute`            |
 | Micro              | `micro:afterExecuteRoute`           |
 | Micro              | `micro:beforeExecuteRoute`          |
 | Micro              | `micro:beforeHandleRoute`           |

@@ -13,7 +13,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#apache">Apache</a> <ul>
             <li>
@@ -31,7 +30,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#cherokee">Cherokee</a> <ul>
             <li>
@@ -39,7 +37,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#php-built-in">Встроенный веб-сервер</a> <ul>
             <li>
@@ -154,7 +151,7 @@ server {
 
 <a name='apache-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Настройка под Phalcon
 
 Следующие инструкции позволят настроить Apache для корректной работы с Phalcon. В основном они сводятся к настройке поведения модуля `mod_rewrite`, позволяющего использовать человеко-понятные URL (ЧПУ) и [компонента маршрутизации](/[[language]]/[[version]]/routing). Типичное приложение имеет следующую структуру:
 
@@ -311,7 +308,7 @@ php -S localhost:8000 -t /public
 
 <a name='php-built-in-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Настройка под Phalcon
 
 Если вы хотите перенаправлять запросы на файл index.php, добавьте файл `.htrouter.php` со следующим кодом:
 

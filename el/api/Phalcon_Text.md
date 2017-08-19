@@ -16,6 +16,8 @@ Provides utilities to work with texts
 
 *integer* **RANDOM_NOZERO**
 
+*integer* **RANDOM_DISTINCT**
+
 ## Methods
 
 public static **camelize** (*mixed* $str, [*mixed* $delimiter])
@@ -62,10 +64,10 @@ Generates a random string based on the given type. Type is one of the RANDOM_* c
 ```php
 <?php
 
+use Phalcon\Text;
+
 // "aloiwkqz"
-echo Phalcon\Text::random(
-    Phalcon\Text::RANDOM_ALNUM
-);
+echo Text::random(Text::RANDOM_ALNUM);
 
 ```
 

@@ -13,7 +13,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#apache">Apache</a> <ul>
             <li>
@@ -31,7 +30,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#cherokee">Cherokee</a> <ul>
             <li>
@@ -39,7 +37,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#php-built-in">Built in Webserver</a> <ul>
             <li>

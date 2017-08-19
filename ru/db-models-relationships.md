@@ -25,7 +25,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#virtual-foreign-keys">Виртуальные внешние ключи</a> <ul>
             <li>
@@ -33,7 +32,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#storing-related-records">Связаное сохранение записей</a>
         </li>

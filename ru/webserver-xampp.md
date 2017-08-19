@@ -66,7 +66,7 @@ If you can see the phalcon version in the `phpinfo()` output, congratulations!, 
 
 <a name='screencast'></a>
 
-## Screencast
+## Скринкаст
 
 The following screencast is a step by step guide to install Phalcon on Windows:
 

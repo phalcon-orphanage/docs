@@ -38,7 +38,6 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#expressions-literals">Literals</a>
             </li>
@@ -59,7 +58,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#tests">Tests</a>
         </li>
@@ -82,7 +80,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#template-inheritance">Template Inheritance</a> <ul>
             <li>
@@ -90,7 +87,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#autoescape">Autoescape mode</a>
         </li>
@@ -107,7 +103,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#caching-view-fragments">Caching view fragments</a>
         </li>

@@ -24,7 +24,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#simple-rendering">Simple Rendering</a>
         </li>
@@ -47,7 +46,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#injecting-services">Injecting services in View</a>
         </li>
@@ -61,7 +59,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#eventes">View Events</a>
         </li>
@@ -840,7 +837,7 @@ $di->set(
 );
 ```
 
-<h5 class='alert alert-warning'>The frontend must always be <code>Phalcon\\Cache\\Frontend\\Output</code> and the service <code>viewCache</code> must be registered as always open (not shared) in the services container (DI). </h5>
+<h5 class='alert alert-warning'>The frontend must always be <code>Phalcon\Cache\Frontend\Output</code> and the service <code>viewCache</code> must be registered as always open (not shared) in the services container (DI). </h5>
 
 When using views, caching can be used to prevent controllers from needing to generate view data on each request.
 

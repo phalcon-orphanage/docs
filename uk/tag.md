@@ -30,7 +30,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#changing-document-title-dynamically">Changing dynamically the Document Title</a>
         </li>
@@ -50,7 +49,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#tag-helpers">Tag Service</a>
         </li>
@@ -70,7 +68,7 @@ Writing and maintaining HTML markup can quickly become a tedious task because of
 
 This component can be used in a plain HTML+PHP view or in a [Volt](/[[language]]/[[version]]/volt) template.
 
-<h5 class='alert alert-warning'>This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the <code>Phalcon\\Tag</code> page in the API for a complete reference. </h5>
+<h5 class='alert alert-warning'>This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the <code>Phalcon\Tag</code> page in the API for a complete reference. </h5>
 
 <a name='document-type'></a>
 

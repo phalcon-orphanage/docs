@@ -1,6 +1,6 @@
 # Abstract class **Phalcon\\Session\\Adapter**
 
-*implements* [Phalcon\Session\AdapterInterface](/en/3.1.2/api/Phalcon_Session_AdapterInterface)
+*implements* [Phalcon\Session\AdapterInterface](/en/3.2/api/Phalcon_Session_AdapterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/session/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -184,6 +184,17 @@ public **__unset** (*mixed* $index)
 
 Alias: Removes a session variable from an application context
 
+```php
+<?php
+
+unset($session->auth);
+
+```
+
 public **__destruct** ()
+
+...
+
+protected **removeSessionData** ()
 
 ...
