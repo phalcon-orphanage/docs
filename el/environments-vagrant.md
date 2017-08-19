@@ -18,7 +18,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#installation-configuration">Configuring</a> <ul>
             <li>
@@ -40,7 +39,6 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#installation-aditional-packages">Install additional packages</a>
             </li>
@@ -49,7 +47,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#daily-usage">Daily usage</a> <ul>
             <li>
@@ -62,7 +59,6 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#daily-usage-ssh">Connecting via SSH</a>
             </li>
@@ -82,7 +78,6 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#daily-usage-ports">Ports</a> <ul>
                 <li>
@@ -90,7 +85,6 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#daily-usage-sharing-environment">Sharing your environment</a>
             </li>
@@ -107,13 +101,11 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#daily-usage-mail-catcher">Mail catcher</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#troubleshooting">Troubleshooting</a>
         </li>
@@ -456,7 +448,7 @@ set cwd=
 set box=
 ```
 
-<h5 class='alert alert-warning'>Make sure to tweak the example <code>C:\\workspace</code> path in the script to the actual location of your Phalcon Box installation. After creating the file, add the file location to your <code>PATH</code>. You may then run commands like <code>box up</code> or <code>box ssh</code> from anywhere on your system. </h5>
+<h5 class='alert alert-warning'>Make sure to tweak the example <code>C:\workspace</code> path in the script to the actual location of your Phalcon Box installation. After creating the file, add the file location to your <code>PATH</code>. You may then run commands like <code>box up</code> or <code>box ssh</code> from anywhere on your system. </h5>
 
 <a name='daily-usage-ssh'></a>
 
@@ -663,13 +655,13 @@ networks:
 
 You can update Phalcon Box in two simple steps.
 
-  1. First, you will need to update the Vagrant box using the `vagrant box update` command:
+1. First, you will need to update the Vagrant box using the `vagrant box update` command:
 
 ```bash
 vagrant box update
 ```
 
-  1. Next, you need to update the Phalcon Box source code. If you cloned the repository you can simply
+1. Next, you need to update the Phalcon Box source code. If you cloned the repository you can simply
 
 ```bash
 git pull origin master
