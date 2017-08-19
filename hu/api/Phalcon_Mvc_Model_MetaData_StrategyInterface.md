@@ -4,10 +4,10 @@
 
 ## Methods
 
-abstract public **getMetaData** ([Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
+abstract public **getMetaData** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 ...
 
-abstract public **getColumnMaps** ([Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
+abstract public **getColumnMaps** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 ...
