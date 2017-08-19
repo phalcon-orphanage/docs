@@ -9,7 +9,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#records-to-objects">Understanding Records To Objects</a>
         </li>
@@ -26,7 +25,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#preparing-records">Initializing/Preparing fetched records</a>
         </li>
@@ -40,7 +38,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#delete-records">Deleting Records</a>
         </li>
