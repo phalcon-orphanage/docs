@@ -18,7 +18,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#configuration">Конфигурация</a>
         </li>
@@ -41,7 +40,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#xdebug">Удаленный отладчик Xdebug (PhpStorm)</a>
         </li>
@@ -58,7 +56,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#versions">Версии</a>
         </li>
