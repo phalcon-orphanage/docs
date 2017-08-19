@@ -25,7 +25,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#virtual-foreign-keys">Virtual Foreign Keys</a> <ul>
             <li>
@@ -33,7 +32,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#storing-related-records">Storing Related Records</a>
         </li>
