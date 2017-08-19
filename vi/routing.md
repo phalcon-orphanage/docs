@@ -30,7 +30,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="$matching">Matching Routes</a>
         </li>
@@ -750,7 +749,7 @@ $router->add(
 );
 ```
 
-<h5 class='alert alert-warning'>Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: <code>/([a-zA-Z0-9\\\_\\-]+)</code> </h5>
+<h5 class='alert alert-warning'>Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: <code>/([a-zA-Z0-9\_\-]+)</code> </h5>
 
 <a name='default-behavior'></a>
 
