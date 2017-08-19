@@ -18,7 +18,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#configuration">Configuration</a>
         </li>
@@ -41,7 +40,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#xdebug">Xdebug Remote debugger (PhpStorm)</a>
         </li>
@@ -58,7 +56,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#versions">Versions</a>
         </li>

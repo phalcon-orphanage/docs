@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Access Controler Lists (ACL)</a> <ul>
         <li>
-          <a href="#setup">Vytvoření ACL</a>
+          <a href="#setup">Creating an ACL</a>
         </li>
         <li>
           <a href="#adding-roles">Přidání rolí do ACL</a>

@@ -1,6 +1,6 @@
 # Class **Phalcon\\Mvc\\Url**
 
-*implements* [Phalcon\Mvc\UrlInterface](/en/3.1.2/api/Phalcon_Mvc_UrlInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.1.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Mvc\UrlInterface](/en/3.2/api/Phalcon_Mvc_UrlInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/url.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -25,7 +25,7 @@ echo $url->get(
 
 ## Methods
 
-public **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the DependencyInjector container
 
