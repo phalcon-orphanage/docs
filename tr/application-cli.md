@@ -44,7 +44,7 @@ CLI uygulamasının asgari bir yapısı şöyle görünecektir:
 
 Normal MVC uygulamalarında olduğu gibi, bir önyükleme dosyası, uygulamayı önyüklemek için kullanılır. Web uygulamalarında index.php önyükleme yerine, uygulamayı önyüklemek için bir cli.php dosyası kullanırız.
 
-Below is a sample bootstrap that is being used for this example.
+Bu örnek için kullanacağımız önyükleyici şöyledir:
 
 ```php
 <?php
@@ -115,7 +115,7 @@ try {
 }
 ```
 
-This piece of code can be run using:
+Bu kod parçası şöyle çalıştırılabilir:
 
 ```bash
 php app/cli.php
@@ -125,7 +125,7 @@ php app/cli.php
 
 ## Tasks
 
-Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+Görevlerin çalışma şekli aynı kontrolcüler gibidir. Bir CLI uygulaması için en az bir Ana Görev (MainTask) ve Ana İşlem (MainAction) gereklidir ve her görev için (eğer özel bir işlem belirtilmediyse çalışacak) bir Ana İşlem (mainAction) olmalıdır.
 
 Below is an example of the `app/tasks/MainTask.php` file:
 
