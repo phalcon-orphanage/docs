@@ -12,7 +12,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#profiling-client">Profile on the Client</a> <ul>
             <li>
@@ -26,7 +25,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#php-version">Use a recent PHP version</a>
         </li>
