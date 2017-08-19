@@ -27,7 +27,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#usage">Adapters</a> <ul>
             <li>
