@@ -1,6 +1,6 @@
 # Abstract class **Phalcon\\Dispatcher**
 
-*implements* [Phalcon\DispatcherInterface](/en/3.1.2/api/Phalcon_DispatcherInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.1.2/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](/en/3.1.2/api/Phalcon_Events_EventsAwareInterface)
+*implements* [Phalcon\DispatcherInterface](/en/3.2/api/Phalcon_DispatcherInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/dispatcher.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -22,7 +22,7 @@ This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\Cli\\Dispatcher
 
 ## Methods
 
-public **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -30,7 +30,7 @@ public **getDI** ()
 
 Returns the internal dependency injector
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.1.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets the events manager
 
@@ -134,7 +134,7 @@ $di->set('dispatcher', function() {
 
 ```
 
-public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](/en/3.1.2/api/Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache])
+public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](/en/3.2/api/Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache])
 
 Enable model binding during dispatch
 
@@ -164,7 +164,7 @@ Dispatches a handle action taking into account the routing parameters
 
 public **forward** (*array* $forward)
 
-Forwards the execution flow to another controller/action Dispatchers are unique per module. Forwarding between modules is not allowed
+Forwards the execution flow to another controller/action.
 
 ```php
 <?php
