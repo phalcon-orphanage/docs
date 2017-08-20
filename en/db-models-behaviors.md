@@ -1,11 +1,22 @@
-<div class='article-menu' markdown='1'>
-
-- [Model Behaviors](#overview)
-    - [Timestampable](#timestampable)
-    - [SoftDelete](#softdelete)
-    - [Creating your own behaviors](#create-your-own-behaviors)
-    - [Using Traits as behaviors](#traits-as-behaviors)
-    
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Model Behaviors</a> <ul>
+        <li>
+          <a href="#timestampable">Timestampable</a>
+        </li>
+        <li>
+          <a href="#softdelete">SoftDelete</a>
+        </li>
+        <li>
+          <a href="#create-your-own-behaviors">Creating your own behaviors</a>
+        </li>
+        <li>
+          <a href="#traits-as-behaviors">Using Traits as behaviors</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

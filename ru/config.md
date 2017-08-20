@@ -3,6 +3,9 @@
     <li>
       <a href="#overview">Чтение конфигураций</a> <ul>
         <li>
+          <a href="#factory">Factory</a>
+        </li>
+        <li>
           <a href="#native-arrays">Нативные массивы</a>
         </li>
         <li>
@@ -31,7 +34,11 @@
 
 `Phalcon\Config` — это компонент, используемый для преобразования файлов конфигурации различных форматов (с помощью адаптеров) в PHP объекты для использования в приложении.
 
-Values can be obtained from `Phalcon\Config` as follows:
+<a name='factory'></a>
+
+## Factory
+
+Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
 
 ```php
 <?php
@@ -54,10 +61,27 @@ echo $config->test->parent->property;                       // displays 1
 echo $config->path('test.parent.property');                 // displays 1
 ```
 
+<a name='factory'></a>
+
+## Factory
+
+Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
+
+```php
+<?php
+
+use Phalcon\Config\Factory;
+
+$options = [
+    'filePath' => 'path/config',
+    'adapter'  => 'php',
+ ];
+
+ $config = Factory::load($options);
+ ```
+
 <a name='native-arrays'></a>
-
 ## Native Arrays
-
 The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
 
 ```php
@@ -102,7 +126,7 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## File Adapters
+## Адаптеры файлов
 
 The adapters available are:
 
@@ -115,7 +139,7 @@ The adapters available are:
 
 <a name='ini-files'></a>
 
-## Reading INI Files
+## Чтение INI-файлов
 
 Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
 
@@ -152,7 +176,7 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## Merging Configurations
+## Объединение конфигураций
 
 `Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
 
@@ -208,7 +232,7 @@ There are more adapters available for this components in the [Phalcon Incubator]
 
 <a name='nested-configuration'></a>
 
-## Nested Configuration
+## Вложенная конфигурация
 
 Also to get nested configuration you can use the `Phalcon\Config::path` method. This method allows to obtain nested configurations, without caring about the fact that some parts of the path are absent. Let's look at an example:
 
@@ -256,7 +280,7 @@ $config->path('test/parent/property2'); // yeah
 
 <a name='injecting-into-di'></a>
 
-## Injecting Configuration Dependency
+## Внедрение конфигурации
 
 You can inject your configuration to the controllers by adding it as a service. To be able to do that, add following code inside your dependency injector script.
 

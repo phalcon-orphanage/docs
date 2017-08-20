@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Парсер аннотаций</a> <ul>
+      <a href="#overview">Парсер аннотаций</a> 
+      <ul>
         <li>
           <a href="#factory">Фабрика</a>
         </li>
@@ -12,7 +13,8 @@
           <a href="#types">Типы аннотаций</a>
         </li>
         <li>
-          <a href="#usage">Практическое использование</a> <ul>
+          <a href="#usage">Практическое использование</a> 
+          <ul>
             <li>
               <a href="#usage-cache">Кэширование с помощью аннотаций</a>
             </li>
@@ -21,15 +23,14 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#adapters">Адаптеры аннотаций</a> <ul>
+          <a href="#adapters">Адаптеры аннотаций</a> 
+          <ul>
             <li>
               <a href="#adapters-custom">Реализация собственных адаптеров</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#resources">Дополнительная информация</a>
         </li>
@@ -466,4 +467,4 @@ class SecurityAnnotationsPlugin extends Plugin
 
 ## Внешние ресурсы
 
-- [Урок: Создание собственного инициализатора моделей с использованием аннотаций](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
+* [Урок: Создание собственного инициализатора моделей с использованием аннотаций](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)

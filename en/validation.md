@@ -1,16 +1,37 @@
-<div class='article-menu' markdown='1'>
-
-- [Validation](#overview)
-    - [Initializing Validation](#initializing)
-    - [Validators](#validators)
-    - [Callback Validator](#callback)
-    - [Validation Messages](#messages)
-    - [Filtering of Data](#filtering)
-    - [Validation Events](#events)
-    - [Cancelling Validations](#cancelling)
-    - [Avoid validating empty values](#empty-values)
-    - [Recursive Validation](#recursive)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Validation</a> <ul>
+        <li>
+          <a href="#initializing">Initializing Validation</a>
+        </li>
+        <li>
+          <a href="#validators">Validators</a>
+        </li>
+        <li>
+          <a href="#callback">Callback Validator</a>
+        </li>
+        <li>
+          <a href="#messages">Validation Messages</a>
+        </li>
+        <li>
+          <a href="#filtering">Filtering of Data</a>
+        </li>
+        <li>
+          <a href="#events">Validation Events</a>
+        </li>
+        <li>
+          <a href="#cancelling">Cancelling Validations</a>
+        </li>
+        <li>
+          <a href="#empty-values">Avoid validating empty values</a>
+        </li>
+        <li>
+          <a href="#recursive">Recursive Validation</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

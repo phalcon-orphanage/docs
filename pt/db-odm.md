@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">ODM (Object-Document Mapper)</a> <ul>
+      <a href="#overview">ODM (Object-Document Mapper)</a> 
+      <ul>
         <li>
           <a href="#creating-models">Creating Models</a>
         </li>
@@ -21,7 +22,8 @@
           <a href="#aggregations">Aggregations</a>
         </li>
         <li>
-          <a href="#creating-updating">Creating Updating/Records</a> <ul>
+          <a href="#creating-updating">Creating Updating/Records</a> 
+          <ul>
             <li>
               <a href="#validation-messages">Validation Messages</a>
             </li>
@@ -36,7 +38,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#deleting-records">Deleting Records</a>
         </li>
@@ -57,7 +58,11 @@
   </ul>
 </div>
 
-<h5 class='alert alert-info'>Please note that if you are using the Mongo driver provided by PHP 7, the ODM will not work for you. There is an incubator adapter but all the Mongo code must be rewritten (new Bson type instead of arrays, no MongoId, no MongoDate, etc...). Please ensure that you test your code before upgrading to PHP 7 and/or Phalcon 3+</h5>
+<div class="alert alert-info">
+    <p>
+        Please note that if you are using the Mongo driver provided by PHP 7, the ODM will not work for you. There is an incubator adapter but all the Mongo code must be rewritten (new Bson type instead of arrays, no MongoId, no MongoDate, etc.). Please ensure that you test your code before upgrading to PHP 7 and/or Phalcon 3+
+    </p>
+</div>
 
 <a name='overview'></a>
 
@@ -666,7 +671,11 @@ class Robots extends Collection
 
 The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return false.
 
-<h5 class='alert alert-warning'>For more information on validators, see the <a href="/[[language]]/[[version]]/validation">Validation documentation</a> </h5>
+<div class='alert alert-warning'>
+    <p>
+        For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation).
+    </p>
+</div>
 
 <a name='deleting-records'></a>
 

@@ -16,4 +16,8 @@ Phalcon є повностековий фреймворк для PHP з відк�
 
 Phalcon слабо зв'язаний, дозволяючи розробникам використовувати лише ті об'єкти, які використовуються як клей для компонентів, необхідних для додатків.
 
-<h5 class='alert alert-danger'>The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in <a href="https://github.com/phalcon/docs">Github</a> for English, and <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> for other languages</h5>
+<div class="alert alert-danger">
+    <p>
+        The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in <a href="https://github.com/phalcon/docs">Github</a> for English, and <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> for other languages
+    </p>
+</div>

@@ -1,10 +1,19 @@
-<div class='article-menu' markdown='1'>
-
-- [Model Transactions](#overview)
-    - [Manual Transactions](#manual)
-    - [Implicit Transactions](#implicit)
-    - [Isolated Transactions](#isolated)
-    
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Model Transactions</a> <ul>
+        <li>
+          <a href="#manual">Manual Transactions</a>
+        </li>
+        <li>
+          <a href="#implicit">Implicit Transactions</a>
+        </li>
+        <li>
+          <a href="#isolated">Isolated Transactions</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

@@ -1,12 +1,11 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Queueing</a>
-    </li>
-    <li>
-      <a href="$overview">Routing</a> <ul>
+      <a href="$overview">Routing</a> 
+      <ul>
         <li>
-          <a href="$defining">Defining Routes</a> <ul>
+          <a href="$defining">Defining Routes</a> 
+          <ul>
             <li>
               <a href="$defining-named-parameters">Parameters with Names</a>
             </li>
@@ -30,7 +29,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="$matching">Matching Routes</a>
         </li>
@@ -750,7 +748,11 @@ $router->add(
 );
 ```
 
-<h5 class='alert alert-warning'>Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: <code>/([a-zA-Z0-9\\\_\\-]+)</code> </h5>
+<div class="alert alert-warning">
+    <p>
+        Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: <code>/([a-zA-Z0-9\_\-]+)</code>
+    </p>
+</div>
 
 <a name='default-behavior'></a>
 
@@ -1080,7 +1082,11 @@ Or you can manually pass a URI to the `handle()` method:
 $router->handle('/some/route/to/handle');
 ```
 
-<h5 class='alert alert-danger'>Please note that using <code>Router::URI_SOURCE_GET_URL</code> automatically decodes the Uri, because it is based on the <code>$_REQUEST</code> superglobal. However, for the time being, using <code>Router::URI_SOURCE_SERVER_REQUEST_URI</code> will not automatically decode the Uri for you. This will change in the next major release.</h5>
+<div class='alert alert-danger'>
+    <p>
+        Please note that using <code>Router::URI_SOURCE_GET_URL</code> automatically decodes the Uri, because it is based on the <code>$_REQUEST</code> superglobal. However, for the time being, using <code>Router::URI_SOURCE_SERVER_REQUEST_URI</code> will not automatically decode the Uri for you. This will change in the next major release.
+    </p>
+</div>
 
 <a name='testing'></a>
 

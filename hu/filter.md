@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Filtering and Sanitizing</a> <ul>
+      <a href="#overview">Filtering and Sanitizing</a> 
+      <ul>
         <li>
           <a href="#types">Types of Built-in Filters</a>
         </li>

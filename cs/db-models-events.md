@@ -1,9 +1,11 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Události modelů</a> <ul>
+      <a href="#overview">Události modelů</a> 
+      <ul>
         <li>
-          <a href="#events">Události a Správce událostí</a> <ul>
+          <a href="#events">Události a Správce událostí</a> 
+          <ul>
             <li>
               <a href="#events-in-models">Implementing Events in the Model's class</a>
             </li>
@@ -12,7 +14,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#logging-sql-statements">Logging Low-Level SQL Statements</a>
         </li>

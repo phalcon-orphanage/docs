@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Assets Management</a> <ul>
+      <a href="#overview">Assets Management</a> 
+      <ul>
         <li>
           <a href="#add">Adding Resources</a>
         </li>
@@ -15,7 +16,8 @@
           <a href="#url-prefixes">URL Prefixes</a>
         </li>
         <li>
-          <a href="#minification-filtering">Minification/Filtering</a> <ul>
+          <a href="#minification-filtering">Minification/Filtering</a> 
+          <ul>
             <li>
               <a href="#builtin-filters">Built-In Filters</a>
             </li>
@@ -24,7 +26,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#custom-output">Custom Output</a>
         </li>

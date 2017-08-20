@@ -1,12 +1,25 @@
-<div class='article-menu' markdown='1'>
-
-- [Encryption/Decryption](#overview)
-    - [Basic Usage](#usage)
-    - [Encryption Options](#options)
-    - [Base64 Support](#base64)
-    - [Setting up an Encryption service](#service)
-    - [Links](#links)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Encryption/Decryption</a> <ul>
+        <li>
+          <a href="#usage">Basic Usage</a>
+        </li>
+        <li>
+          <a href="#options">Encryption Options</a>
+        </li>
+        <li>
+          <a href="#base64">Base64 Support</a>
+        </li>
+        <li>
+          <a href="#service">Setting up an Encryption service</a>
+        </li>
+        <li>
+          <a href="#links">Links</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -15,7 +28,11 @@ Phalcon provides encryption facilities via the `Phalcon\Crypt` component. This c
 
 By default, this component provides secure encryption using AES-256-CFB.
 
-<h5 class='alert alert-warning' markdown='1'>You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
+<div class="alert alert-warning">
+    <p>
+        You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.
+    </p>
+</div>
 
 <a name='usage'></a>
 ## Basic Usage

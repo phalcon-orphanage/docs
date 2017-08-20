@@ -1,13 +1,30 @@
-<div class='article-menu' markdown='1'>
-
-- [MVC Applications](#overview)
-    - [Manual Bootstrapping](#manual-bootstrapping)
-    - [Single or Multi Module Applications](#single-vs-module)
-        - [Single Module](#single)
-        - [Multi Module](#module)
-    - [Application Events](#events)
-    - [External Resources](#resources)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">MVC Applications</a> <ul>
+        <li>
+          <a href="#manual-bootstrapping">Manual Bootstrapping</a>
+        </li>
+        <li>
+          <a href="#single-vs-module">Single or Multi Module Applications</a> 
+          <ul>
+            <li>
+              <a href="#single">Single Module</a>
+            </li>
+            <li>
+              <a href="#module">Multi Module</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#events">Application Events</a>
+        </li>
+        <li>
+          <a href="#resources">External Resources</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

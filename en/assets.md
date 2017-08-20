@@ -1,16 +1,40 @@
-<div class='article-menu' markdown='1'>
-
-- [Assets Management](#overview)
-    - [Adding Resources](#add)
-    - [Local/Remote resources](#resources-local-remote)
-    - [Collections](#collections)
-    - [URL Prefixes](#url-prefixes)
-    - [Minification/Filtering](#minification-filtering)
-        - [Built-In Filters](#builtin-filters)
-        - [Custom Filters](#custom-filters)
-    - [Custom Output](#custom-output)
-    - [Improving performance](#improving-performance)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Assets Management</a> 
+      <ul>
+        <li>
+          <a href="#add">Adding Resources</a>
+        </li>
+        <li>
+          <a href="#resources-local-remote">Local/Remote resources</a>
+        </li>
+        <li>
+          <a href="#collections">Collections</a>
+        </li>
+        <li>
+          <a href="#url-prefixes">URL Prefixes</a>
+        </li>
+        <li>
+          <a href="#minification-filtering">Minification/Filtering</a> 
+          <ul>
+            <li>
+              <a href="#builtin-filters">Built-In Filters</a>
+            </li>
+            <li>
+              <a href="#custom-filters">Custom Filters</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#custom-output">Custom Output</a>
+        </li>
+        <li>
+          <a href="#improving-performance">Improving performance</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

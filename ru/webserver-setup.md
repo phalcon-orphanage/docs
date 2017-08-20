@@ -1,11 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#setup">Настройка веб-сервера</a> <ul>
+      <a href="#setup">Настройка веб-сервера</a> 
+      <ul>
         <li>
-          <a href="#nginx">Nginx</a> <ul>
+          <a href="#php-built-in">Встроенный веб-сервер</a> 
+          <ul>
             <li>
-              <a href="#nginx-phalcon-configuration">Настройка под Phalcon</a> <ul>
+              <a href="#php-built-in-phalcon-configuration">Настройка под Phalcon</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#nginx">Nginx</a> 
+          <ul>
+            <li>
+              <a href="#nginx-phalcon-configuration">Phalcon configuration</a> <ul>
                 <li>
                   <a href="#nginx-phalcon-configuration-basic">Базовая конфигурация</a>
                 </li>
@@ -13,11 +23,12 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#apache">Apache</a> <ul>
+          <a href="#apache">Apache</a> 
+          <ul>
             <li>
-              <a href="#apache-phalcon-configuration">Phalcon configuration</a> <ul>
+              <a href="#apache-phalcon-configuration">Phalcon configuration</a> 
+              <ul>
                 <li>
                   <a href="#apache-document-root">Корневой каталог</a>
                 </li>
@@ -31,19 +42,11 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#cherokee">Cherokee</a> <ul>
+          <a href="#cherokee">Cherokee</a> 
+          <ul>
             <li>
               <a href="#cherokee-phalcon-configuration">Phalcon configuration</a>
-            </li>
-          </ul>
-        </li>
-        
-        <li>
-          <a href="#php-built-in">Встроенный веб-сервер</a> <ul>
-            <li>
-              <a href="#php-built-in-phalcon-configuration">Phalcon configuration</a>
             </li>
           </ul>
         </li>
@@ -58,79 +61,120 @@
 
 Чтобы работала маршрутизация (анг. routing) в Phalcon, вам понадобится настроить должным образом веб-сервер, научив его правильно обрабатывать перенаправления. Ниже рассматриваются типичные конфигурации для популярных веб-серверов:
 
+<a name='php-fpm'></a>
+
+## PHP-FPM
+
+The [PHP-FPM](http://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. В настоящее время PHP-FPM идёт в комплекте с любым дистрибутивом PHP в Unix.
+
+On **Windows** PHP-FPM is in the PHP distribution archive through the file `php-cgi.exe` and you can start it with this script to help set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
+
+Create the file `php-fcgi.bat` with the following contents:
+
+```bat
+@ECHO OFF
+ECHO Starting PHP FastCGI...
+set PATH=C:\PHP;%PATH%
+c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
+```
+
+<a name='php-built-in'></a>
+
+## PHP Built-In Webserver (For Developers)
+
+To speed up getting your Phalcon application running in development the easiest way is to use this built-in PHP server. Do not use this server in a production environment. The following configurations for [Nginx](#nginx) and [Apache](#apache) are what you need.
+
+<a name='php-built-in-phalcon-configuration'></a>
+
+### Phalcon configuration
+
+To enable dynamic URI rewrites, without Apache or Nginx, that Phalcon needs, you can use the following router file:
+<a href="https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php" target="_blank">.htrouter.php</a>
+
+If you created your application with [Phalcon-Devtools](/[[language]]/[[version]]/devtools-installation) this file should already exist in the root directory of your project and you can start the server with the following command:
+
+```bash
+$(which php) -S localhost:8000 -t public .htrouter.php
+```
+
+The anatomy of the command above: - `$(which php)` - will insert the absolute path to your PHP binary - `-S localhost:8000` - invokes server mode with the provided `host:port` - `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory - `.htrouter.php` - the entry point that will be evaluated for each request
+
+Откройте свой браузер и перейдите по адресу http://localhost:8000/, чтобы убедиться, что всё работает.
+
 <a name='nginx'></a>
 
 ## Nginx
 
 [Nginx](http://wiki.nginx.org/Main) — это свободный, с открытым исходным кодом, высокопроизводительный HTTP-сервер и прокси-сервер, а также IMAP/POP3 прокси-сервер. В отличие от традиционных серверов Nginx не использует потоки для обработки запросов. Вместо этого он использует гораздо более масштабируемую, управляемую событиями (асинхронную) архитектуру. Эта архитектура под высокой нагрузкой использует небольшой, и главное, предсказуемый объем памяти.
 
-[PHP-FPM](http://php-fpm.org/) (менеджер процессов FastCGI) обычно используется для обработки PHP-файлов в Nginx. В настоящее время PHP-FPM идёт в комплекте с любым дистрибутивом PHP в Unix. Связка Phalcon + Nginx + PHP-FPM предоставляет мощный набор инструментов, который позволяет добиться максимальной производительности ваших PHP приложений.
+Связка Phalcon + Nginx + PHP-FPM предоставляет мощный набор инструментов, который позволяет добиться максимальной производительности ваших PHP приложений.
+
+### Install Nginx
+
+<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/" target="_blank">NginX Offical Site</a>
 
 <a name='nginx-phalcon-configuration'></a>
 
 ### Phalcon configuration
 
-Конфигурации ниже позволят настроить Nginx для работы с Phalcon:
-
-<a name='nginx-phalcon-configuration-basic'></a>
-
-#### Basic configuration
-
-Использование переменной `$_GET['_url']` для URI:
+You can use following potential configuration to setup Nginx with Phalcon:
 
 ```nginx
 server {
-    listen      80;
-    server_name localhost.dev;
+    # Port 80 will require Nginx to be started with root permissions
+    # Depending on how you install Nginx to use port 80 you will need
+    # to start the server with `sudo` ports about 1000 do not require
+    # root privileges
+    # listen      80;
+
+    listen        8000;
+    server_name   default;
+
+    ##########################
+    # In production require SSL
+    # listen 443 ssl default_server;
+
+    # ssl on;
+    # ssl_session_timeout  5m;
+    # ssl_protocols  SSLv2 SSLv3 TLSv1;
+    # ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+    # ssl_prefer_server_ciphers   on;
+
+    # These locations depend on where you store your certs
+    # ssl_certificate        /var/nginx/certs/default.cert;
+    # ssl_certificate_key    /var/nginx/certs/default.key;
+    ##########################
 
     # This is the folder that index.php is in
-    root /var/www/phalcon/public;
+    root /var/www/default/public;
     index index.php index.html index.htm;
 
     charset utf-8;
+    client_max_body_size 100M;
+    fastcgi_read_timeout 1800;
 
+    # Represents the root of the domain
+    # http://localhost:8000/[index.php]
     location / {
+        # Matches URLS `$_GET['_url']`
         try_files $uri $uri/ /index.php?_url=$uri&$args;
     }
 
-    location ~ \.php {
-        fastcgi_pass  unix:/run/php-fpm/php-fpm.sock;
-        fastcgi_index /index.php;
-
-        include fastcgi_params;
-        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
-        fastcgi_param PATH_INFO       $fastcgi_path_info;
-        fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    }
-
-    location ~ /\.ht {
-        deny all;
-    }
-}
-```
-
-Использование `$_SERVER['REQUEST_URI']` для URI:
-
-```nginx
-server {
-    listen      80;
-    server_name localhost.dev;
-
-    # This is the folder that index.php is in
-    root /var/www/phalcon/public;
-    index index.php index.html index.htm;
-
-    charset utf-8;
-
-    location / {
-        try_files $uri $uri/ /index.php;
-    }
-
+    # When the HTTP request does not match the above
+    # and the file ends in .php
     location ~ \.php$ {
         try_files $uri =404;
 
-        fastcgi_pass  127.0.0.1:9000;
+        # Ubuntu and PHP7.0-fpm in socket mode
+        # This path is dependent on the version of PHP install
+        fastcgi_pass  unix:/var/run/php/php7.0-fpm.sock;
+
+
+        # Alternatively you use PHP-FPM in TCP mode (Required on Windows)
+        # You will need to configure FPM to listen on a standard port
+        # https://www.nginx.com/resources/wiki/start/topics/examples/phpfastcgionwindows/
+        # fastcgi_pass  127.0.0.1:9000;
+
         fastcgi_index /index.php;
 
         include fastcgi_params;
@@ -143,8 +187,18 @@ server {
     location ~ /\.ht {
         deny all;
     }
+
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+        expires       max;
+        log_not_found off;
+        access_log    off;
+    }
 }
 ```
+
+### Start Nginx
+
+Usually `start nginx` from the command line but this depends on your installation method.
 
 <a name='apache'></a>
 
@@ -173,11 +227,15 @@ test/
 
 <a name='apache-document-root'></a>
 
-#### Document root
+#### Корневой каталог
 
 Самый распространённый случай - когда приложение устанавливается в любой подкаталог корневой директории. В таких случаях мы используем два `.htaccess` файла. Первый будет скрывать код приложения и перенаправлять запросы к корню приложения (`public/`).
 
-<h5 class='alert alert-warning'>Обратите внимание, для полного разрешения использования директив в <code>.htaccess</code> файле, в главном конфигурационном файле Apache необходимо установить параметр <code>AllowOverride All</code>. </h5>
+<div class="alert alert-warning">
+    <p>
+        Note that using <code>.htaccess</code> files requires your apache installation to have the `AllowOverride All` option set.
+    </p>
+</div>
 
 ```apacheconfig
 # test/.htaccess
@@ -204,7 +262,7 @@ test/
 
 <a name='apache-apache-configuration'></a>
 
-#### Apache configuration
+#### Конфигурация Apache
 
 Если нет желания или возможности использовать файлы `.htaccess`, то параметры также можно прописать в главном файле конфигурации Apache:
 
@@ -229,7 +287,7 @@ test/
 
 <a name='apache-virtual-hosts'></a>
 
-#### Virtual Hosts
+#### Виртуальные хосты
 
 В этом заключительном примере конфигурации, мы разрешаем установку Phalcon-приложения в виртуальный хост:
 
@@ -298,37 +356,3 @@ Cherokee имеет удобный графический интерфейс д�
 Запустите приложение в браузере:
 
 ![](/images/content/webserver-cherokee-9.jpg)
-
-<a name='php-built-in'></a>
-
-## Встроенный веб-сервер
-
-Вы можете использовать [встроенный веб-сервер](http://php.net/manual/en/features.commandline.webserver.php) для разработки. Для запуска сервера выполните команду:
-
-```bash
-php -S localhost:8000 -t /public
-```
-
-<a name='php-built-in-phalcon-configuration'></a>
-
-### Phalcon configuration
-
-Если вы хотите перенаправлять запросы на файл index.php, добавьте файл `.htrouter.php` со следующим кодом:
-
-```php
-<?php
-
-if (!file_exists(__DIR__ . '/' . $_SERVER['REQUEST_URI'])) {
-    $_GET['_url'] = $_SERVER['REQUEST_URI'];
-}
-
-return false;
-```
-
-и запустите сервер следующей командой:
-
-```bash
-php -S localhost:8000 -t /public .htrouter.php
-```
-
-Откройте свой браузер и перейдите по адресу http://localhost:8000/, чтобы убедиться, что всё работает.

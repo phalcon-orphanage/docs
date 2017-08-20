@@ -1,24 +1,64 @@
-<div class='article-menu' markdown='1'>
-
-- [Tutorial: INVO](#overview)
-    - [Project Structure](#structure)
-    - [Routing](#routing)
-    - [Configuration](#configuration)
-    - [Autoloaders](#autoloaders)
-    - [Registering services](#services)
-    - [Handling the Request](#handling-requests)
-    - [Dependency Injection](#dependency-injection)
-    - [Log into the Application](#log-in)
-    - [Securing the Backend](#securing-backend)
-        - [Events Management](#events-manager)
-        - [Getting the ACL list](#acl)
-    - [Working with the CRUD](#working-with-crud)
-    - [The Search Form](#search-form)
-    - [Performing a Search](#performing-searches)
-    - [Creating and Updating Records](#creating-updating-records)
-    - [User Components](#user-components)
-    - [Changing the Title Dynamically](#dynamic-titles)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Tutorial: INVO</a> 
+      <ul>
+        <li>
+          <a href="#structure">Project Structure</a>
+        </li>
+        <li>
+          <a href="#routing">Routing</a>
+        </li>
+        <li>
+          <a href="#configuration">Configuration</a>
+        </li>
+        <li>
+          <a href="#autoloaders">Autoloaders</a>
+        </li>
+        <li>
+          <a href="#services">Registering services</a>
+        </li>
+        <li>
+          <a href="#handling-requests">Handling the Request</a>
+        </li>
+        <li>
+          <a href="#dependency-injection">Dependency Injection</a>
+        </li>
+        <li>
+          <a href="#log-in">Log into the Application</a>
+        </li>
+        <li>
+          <a href="#securing-backend">Securing the Backend</a> 
+          <ul>
+            <li>
+              <a href="#events-manager">Events Management</a>
+            </li>
+            <li>
+              <a href="#acl">Getting the ACL list</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#working-with-crud">Working with the CRUD</a>
+        </li>
+        <li>
+          <a href="#search-form">The Search Form</a>
+        </li>
+        <li>
+          <a href="#performing-searches">Performing a Search</a>
+        </li>
+        <li>
+          <a href="#creating-updating-records">Creating and Updating Records</a>
+        </li>
+        <li>
+          <a href="#user-components">User Components</a>
+        </li>
+        <li>
+          <a href="#dynamic-titles">Changing the Title Dynamically</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

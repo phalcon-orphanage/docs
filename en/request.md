@@ -1,11 +1,23 @@
-<div class='article-menu' markdown='1'>
-
-- [Request Environment](#overview)
-    - [Getting Values](#getting-values)
-    - [Accessing the Request from Controllers](#controller-access)
-    - [Uploading Files](#uploading-files)
-    - [Working with Headers](#working-with-headers)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Request Environment</a> 
+      <ul>
+        <li>
+          <a href="#getting-values">Getting Values</a>
+        </li>
+        <li>
+          <a href="#controller-access">Accessing the Request from Controllers</a>
+        </li>
+        <li>
+          <a href="#uploading-files">Uploading Files</a>
+        </li>
+        <li>
+          <a href="#working-with-headers">Working with Headers</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

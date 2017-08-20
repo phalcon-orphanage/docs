@@ -34,9 +34,9 @@ CLI uygulamaları komut satırından yürütülür. Bunlar, cron işleri, komut 
 
 CLI uygulamasının asgari bir yapısı şöyle görünecektir:
 
-- `app/config/config.php`
-- `app/tasks/MainTask.php`
-- `app/cli.php` <-- ana önyükleme dosyası
+* `app/config/config.php`
+* `app/tasks/MainTask.php`
+* `app/cli.php` <-- ana önyükleme dosyası
 
 <a name='creating-bootstrap'></a>
 

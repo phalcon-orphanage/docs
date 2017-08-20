@@ -1,13 +1,26 @@
-<div class='article-menu' markdown='1'>
-
-- [Pagination](#overview)
-    - [Data Adapters](#data-adapters)
-    - [Factory](#factory)
-    - [Examples](#examples)
-    - [Using Adapters](#using-adapters)
-    - [Page Attributes](#page-attributes)
-    - [Implementing your own adapters](#custom)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Pagination</a> 
+      <ul>
+        <li>
+          <a href="#data-adapters">Data Adapters</a>
+        </li>
+        <li>
+          <a href="#examples">Examples</a>
+        </li>
+        <li>
+          <a href="#using-adapters">Using Adapters</a>
+        </li>
+        <li>
+          <a href="#page-attributes">Page Attributes</a>
+        </li>
+        <li>
+          <a href="#custom">Implementing your own adapters</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

@@ -1,11 +1,23 @@
-<div class='article-menu' markdown='1'>
-
-- [Encryption/Decryption](#overview)
-    - [Basic Usage](#usage)
-    - [Encryption Options](#options)
-    - [Base64 Support](#base64)
-    - [Setting up an Encryption service](#service)
-    
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Debugging Applications</a> 
+      <ul>
+        <li>
+          <a href="#catching-exceptions">Catching Exceptions</a>
+        </li>
+        <li>
+          <a href="#debug-component">Debug component</a>
+        </li>
+        <li>
+          <a href="#reflection-introspection">Reflection and Introspection</a>
+        </li>
+        <li>
+          <a href="#using-xdebug">Using Xdebug</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -17,6 +29,7 @@ PHP offers tools to debug applications with notices, warnings, errors and except
 
 Despite being written in C, Phalcon executes methods in the PHP userland, providing the debug capability that any other application or framework written in PHP has.
 
+<a name='catching-exceptions'></a>
 ## Catching Exceptions
 Throughout the tutorials and examples of the Phalcon documentation, there is a common element that is catching exceptions. This is a try/catch block:
 
@@ -108,6 +121,7 @@ PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
 
 As you can see from the above output the Phalcon's classes and methods are displayed just like any other component, and even showing the parameters that were invoked in every call. The method [Exception::getTrace](http://www.php.net/manual/en/exception.gettrace.php) provides additional information if needed.
 
+<a name='debug-component'></a>
 ## Debug component
 Phalcon provides a debug component that allows the developer to easily find errors produced in an application
 created with the framework.
@@ -129,6 +143,7 @@ $debug->listen();
 
 Any Try/Catch blocks must be removed or disabled to make this component work properly.
 
+<a name='reflection-introspection'></a>
 ## Reflection and Introspection
 Any instance of a Phalcon class offers exactly the same behavior than a PHP normal one. It's possible to use the [Reflection API](http://php.net/manual/en/book.reflection.php) or simply print any object to show how is its internal state:
 
@@ -194,6 +209,7 @@ Phalcon\Mvc\Router Object
 )
 ```
 
+<a name='using-xdebug'></a>
 ## Using XDebug
 [XDebug](http://xdebug.org) is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together with Phalcon without additional configuration or side effects.
 
@@ -205,7 +221,11 @@ The following screencast shows a Xdebug session with Phalcon:
 
 Once you have xdebug installed, you can use its API to get a more detailed information about exceptions and messages.
 
-<h5 class='alert alert-warning' markdown='1'>We highly recommend using the latest version of XDebug for a better compatibility with Phalcon </h5>
+<div class="alert alert-warning">
+    <p>
+        We highly recommend using the latest version of XDebug for a better compatibility with Phalcon.
+    </p>
+</div>
 
 The following example implements [xdebug_print_function_stack](http://xdebug.org/docs/stack_trace) to stop the execution and generate a backtrace:
 

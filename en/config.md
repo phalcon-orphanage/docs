@@ -1,14 +1,31 @@
-<div class='article-menu' markdown='1'>
-
-- [Reading Configurations](#overview)
-        - [Factory](#factory)
-    - [Native Arrays](#native-arrays)
-    - [File Adapters](#file-adapter)
-    - [Reading INI Files](#ini-files)
-    - [Merging Configurations](#merging)
-    - [Nested Configuration](#nested-configuration)
-    - [Injecting Configuration Dependency](#injecting-into-di)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Reading Configurations</a> <ul>
+        <li>
+          <a href="#factory">Factory</a>
+        </li>
+        <li>
+          <a href="#native-arrays">Native Arrays</a>
+        </li>
+        <li>
+          <a href="#file-adapter">File Adapters</a>
+        </li>
+        <li>
+          <a href="#ini-files">Reading INI Files</a>
+        </li>
+        <li>
+          <a href="#merging">Merging Configurations</a>
+        </li>
+        <li>
+          <a href="#nested-configuration">Nested Configuration</a>
+        </li>
+        <li>
+          <a href="#injecting-into-di">Injecting Configuration Dependency</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

@@ -1,13 +1,31 @@
-<div class='article-menu' markdown='1'>
-
-- [Returning Responses](#overview)
-    - [Working with Headers](#working-with-headers)
-    - [Making Redirections](#redirections)
-    - [HTTP Cache](#http-cache)
-        - [Setting an Expiration Time](#http-cache-expiration-time)
-        - [Cache-Control](#http-cache-control)
-        - [E-Tag](#http-cache-etag)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Returning Responses</a> 
+      <ul>
+        <li>
+          <a href="#working-with-headers">Working with Headers</a>
+        </li>
+        <li>
+          <a href="#redirections">Making Redirections</a>
+        </li>
+        <li>
+          <a href="#http-cache">HTTP Cache</a> 
+          <ul>
+            <li>
+              <a href="#http-cache-expiration-time">Setting an Expiration Time</a>
+            </li>
+            <li>
+              <a href="#http-cache-control">Cache-Control</a>
+            </li>
+            <li>
+              <a href="#http-cache-etag">E-Tag</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

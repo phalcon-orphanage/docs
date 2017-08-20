@@ -15,11 +15,7 @@ $service = new \Phalcon\Di\Service(
 );
 
 $request = service->resolve();
-
-```php
-<?php
-
-
+```
 
 ## Methods
 final public  **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
