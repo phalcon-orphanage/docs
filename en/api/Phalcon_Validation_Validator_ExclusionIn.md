@@ -38,7 +38,7 @@ $validator->add(
         [
             "message" => [
                 "status" => "The status must not be A or B",
-                "type"   => "The type must not be 1 or "'
+                "type"   => "The type must not be 1 or "
             ],
             "domain" => [
                 "status" => [
