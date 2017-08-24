@@ -11,7 +11,10 @@ Checks if a value has a url format
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Url as UrlValidator;
+
+$validator = new Validation();
 
 $validator->add(
     "url",
