@@ -24,7 +24,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#simple-rendering">Простая отрисовка</a>
         </li>
@@ -47,7 +46,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#injecting-services">Внедрение сервисов в представление</a>
         </li>
@@ -61,7 +59,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#eventes">События компонента представлений</a>
         </li>
