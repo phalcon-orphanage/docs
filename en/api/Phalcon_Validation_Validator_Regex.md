@@ -11,7 +11,10 @@ Allows validate if the value of a field matches a regular expression
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Regex as RegexValidator;
+
+$validator = new Validation();
 
 $validator->add(
     "created_at",

@@ -11,7 +11,10 @@ Checks if a value has a correct e-mail format
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Email as EmailValidator;
+
+$validator = new Validation();
 
 $validator->add(
     "email",
