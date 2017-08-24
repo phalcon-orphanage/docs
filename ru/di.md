@@ -20,7 +20,6 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#complex-registration">Complex Registration</a> <ul>
                 <li>
@@ -34,13 +33,11 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#array-syntax">Array Syntax</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#resolving-services">Resolving Services</a> <ul>
             <li>
@@ -48,7 +45,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#shared-services">Shared services</a>
         </li>
