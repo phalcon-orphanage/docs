@@ -11,7 +11,10 @@ Check for alphabetic character(s)
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Alpha as AlphaValidator;
+
+$validator = new Validation();
 
 $validator->add(
     "username",
