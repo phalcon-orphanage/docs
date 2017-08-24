@@ -10,7 +10,6 @@
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#installation">Installation</a> <ul>
         <li>
@@ -27,7 +26,6 @@
                     </li>
                   </ul>
                 </li>
-                
                 <li>
                   <a href="#installation-linux-debian-phalcon">Instalace Phalcon frameworku</a> <ul>
                     <li>
@@ -38,13 +36,11 @@
                     </li>
                   </ul>
                 </li>
-                
                 <li>
                   <a href="#installation-linux-debian-other-ppa">Additional PPAs</a>
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#installation-linux-rpm">RPM based distributions (CentOS, Fedora, etc.)</a> <ul>
                 <li>
@@ -57,7 +53,6 @@
                     </li>
                   </ul>
                 </li>
-                
                 <li>
                   <a href="#installation-linux-rpm-phalcon">Phalcon installation</a> <ul>
                     <li>
@@ -68,13 +63,11 @@
                     </li>
                   </ul>
                 </li>
-                
                 <li>
                   <a href="installation-linux-rpm-other-rpm">Additional RPMs</a>
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#installation-freebsd">FreeBSD</a>
             </li>
@@ -83,7 +76,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#installation-macos">MacOS</a> <ul>
             <li>
@@ -94,7 +86,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#installation-windows">Windows</a>
         </li>
