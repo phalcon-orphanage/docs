@@ -24,7 +24,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#custom-output">Пользовательский вывод</a>
         </li>
