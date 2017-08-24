@@ -24,7 +24,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#inserting-data">Inserting Data</a>
         </li>
@@ -41,7 +40,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#disallow-literals">Disallow literals in PHQL</a>
         </li>
