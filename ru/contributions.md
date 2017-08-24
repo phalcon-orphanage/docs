@@ -15,7 +15,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#pull-request-checklist">Контрольный список пулл реквеста</a>
         </li>
