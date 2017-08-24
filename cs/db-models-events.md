@@ -12,7 +12,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#logging-sql-statements">Logging Low-Level SQL Statements</a>
         </li>
