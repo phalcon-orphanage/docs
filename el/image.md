@@ -12,7 +12,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#saving-rendering">Saving and rendering images</a>
         </li>
@@ -32,7 +31,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#cropping">Cropping images</a>
         </li>
