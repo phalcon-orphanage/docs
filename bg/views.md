@@ -24,7 +24,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#simple-rendering">Simple Rendering</a>
         </li>
@@ -47,7 +46,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#injecting-services">Injecting services in View</a>
         </li>
@@ -61,7 +59,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#eventes">View Events</a>
         </li>

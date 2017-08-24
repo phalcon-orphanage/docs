@@ -21,7 +21,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#controller">Создание контроллера</a>
         </li>

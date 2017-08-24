@@ -12,7 +12,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#dialects">Database Dialects</a> <ul>
             <li>
@@ -20,7 +19,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#connection">Connecting to Databases</a>
         </li>

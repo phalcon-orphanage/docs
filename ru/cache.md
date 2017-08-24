@@ -24,7 +24,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#read">Запрос данных из кэша</a>
         </li>
@@ -47,7 +46,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#adapters-backend">Бэкэнд адаптеры</a> <ul>
             <li>

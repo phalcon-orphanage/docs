@@ -18,7 +18,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#installation-configuration">Настройка</a> <ul>
             <li>
@@ -40,7 +39,6 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#installation-aditional-packages">Install additional packages</a>
             </li>
@@ -49,7 +47,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#daily-usage">Daily usage</a> <ul>
             <li>
@@ -62,7 +59,6 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#daily-usage-ssh">Connecting via SSH</a>
             </li>
@@ -82,7 +78,6 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#daily-usage-ports">Ports</a> <ul>
                 <li>
@@ -90,7 +85,6 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#daily-usage-sharing-environment">Sharing your environment</a>
             </li>
@@ -107,13 +101,11 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#daily-usage-mail-catcher">Mail catcher</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#troubleshooting">Troubleshooting</a>
         </li>

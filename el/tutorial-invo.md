@@ -36,7 +36,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#working-with-crud">Working with the CRUD</a>
         </li>

@@ -30,7 +30,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#changing-document-title-dynamically">Changing dynamically the Document Title</a>
         </li>
@@ -50,7 +49,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#tag-helpers">Tag Service</a>
         </li>

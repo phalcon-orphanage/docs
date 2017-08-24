@@ -12,7 +12,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#logging-sql-statements">Логирование низкоуровневых SQL запросов</a>
         </li>

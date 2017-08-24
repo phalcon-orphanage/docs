@@ -9,7 +9,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#store">Storing/Retrieving data in Session</a>
         </li>

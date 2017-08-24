@@ -15,7 +15,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#strategies-manual">Manual Metadata</a>
         </li>

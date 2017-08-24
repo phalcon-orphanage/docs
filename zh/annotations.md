@@ -21,7 +21,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#adapters">Annotations Adapters</a> <ul>
             <li>
@@ -29,7 +28,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#resources">External Resources</a>
         </li>
