@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Contextual Escaping</a> <ul>
+      <a href="#overview">Contextual Escaping</a> 
+      <ul>
         <li>
           <a href="#html">Escaping HTML</a>
         </li>

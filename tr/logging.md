@@ -4,9 +4,15 @@
       <a href="#overview">Contextual Escaping</a>
     </li>
     <li>
-      <a href="#overview">Logging</a> <ul>
+      <a href="#overview">Logging</a>
+      <ul>
         <li>
           <a href="#adapters">Adapters</a>
+          <ul>
+            <li>
+              <a href="#adapters-factory">Factory</a>
+            </li>
+          </ul>
         </li>
         <li>
           <a href="#creating">Creating a Log</a>
@@ -18,7 +24,8 @@
           <a href="#multiple-handlers">Logging to Multiple Handlers</a>
         </li>
         <li>
-          <a href="#message-formatting">Message Formatting</a> <ul>
+          <a href="#message-formatting">Message Formatting</a> 
+          <ul>
             <li>
               <a href="#message-formatting-line">Line Formatter</a>
             </li>
@@ -27,9 +34,9 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#usage">Adapters</a> <ul>
+          <a href="#usage">Adapters</a> 
+          <ul>
             <li>
               <a href="#usage-stream">Stream Logger</a>
             </li>
@@ -70,6 +77,25 @@ This component makes use of adapters to store the logged messages. The use of ad
 | `Phalcon\Logger\Adapter\Stream`  | Logs to a PHP Streams     |
 | `Phalcon\Logger\Adapter\Syslog`  | Logs to the system logger |
 | `Phalcon\Logger\Adapter\FirePHP` | Logs to the FirePHP       |
+
+<a name='adapters-factory'></a>
+
+### Factory
+
+Loads Logger Adapter class using `adapter` option
+
+```php
+<?php
+
+use Phalcon\Logger\Factory;
+
+$options = [
+    'name'    => 'log.txt',
+    'adapter' => 'file',
+];
+
+$logger = Factory::load($options);
+```
 
 <a name='creating'></a>
 

@@ -4,15 +4,16 @@
       <a href="#overview">Contextual Escaping</a>
     </li>
     <li>
-      <a href="#overview">Logging</a> <ul>
+      <a href="#overview">Logging</a>
+      <ul>
         <li>
-          <a href="#adapters">Adapters</a> <ul>
+          <a href="#adapters">Adapters</a>
+          <ul>
             <li>
               <a href="#adapters-factory">Factory</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#creating">Creating a Log</a>
         </li>
@@ -23,7 +24,8 @@
           <a href="#multiple-handlers">Logging to Multiple Handlers</a>
         </li>
         <li>
-          <a href="#message-formatting">Message Formatting</a> <ul>
+          <a href="#message-formatting">Message Formatting</a> 
+          <ul>
             <li>
               <a href="#message-formatting-line">Line Formatter</a>
             </li>
@@ -32,9 +34,9 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#usage">Adapters</a> <ul>
+          <a href="#usage">Adapters</a> 
+          <ul>
             <li>
               <a href="#usage-stream">Stream Logger</a>
             </li>
