@@ -10,7 +10,6 @@
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#installation">Установка</a> <ul>
         <li>
@@ -27,7 +26,6 @@
                     </li>
                   </ul>
                 </li>
-                
                 <li>
                   <a href="#installation-linux-debian-phalcon">Установка Phalcon</a> <ul>
                     <li>
@@ -38,13 +36,11 @@
                     </li>
                   </ul>
                 </li>
-                
                 <li>
                   <a href="#installation-linux-debian-other-ppa">Сторонние PPA-репозитории</a>
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#installation-linux-rpm">RPM дистрибутивы (CentOS, Fedora, и т.д.)</a> <ul>
                 <li>
@@ -57,7 +53,6 @@
                     </li>
                   </ul>
                 </li>
-                
                 <li>
                   <a href="#installation-linux-rpm-phalcon">Установка Phalcon</a> <ul>
                     <li>
@@ -68,13 +63,11 @@
                     </li>
                   </ul>
                 </li>
-                
                 <li>
                   <a href="installation-linux-rpm-other-rpm">Сторонние RPM-репозитории</a>
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#installation-freebsd">FreeBSD</a>
             </li>
@@ -83,7 +76,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#installation-macos">macOS</a> <ul>
             <li>
@@ -94,7 +86,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#installation-windows">Windows</a>
         </li>
