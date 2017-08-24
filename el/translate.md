@@ -9,7 +9,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#usage">Component Usage</a>
         </li>
