@@ -15,7 +15,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#rewrite-rules">Правила перезаписи</a>
         </li>
@@ -40,7 +39,6 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#routing-handlers-controllers-lazy-loading">Загрузка по требованию</a> <ul>
                 <li>
@@ -48,13 +46,11 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#routing-handlers-not-found">Не найдено (404)</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#routing-verbs">Методы-глаголы</a> <ul>
             <li>
@@ -83,7 +79,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#routing-collections">Коллекции</a>
         </li>
@@ -98,7 +93,6 @@
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#dependency-injector">Внедрение зависимостей</a>
     </li>
@@ -127,7 +121,6 @@
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#events">События</a> <ul>
         <li>
@@ -142,7 +135,6 @@
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#middleware">Middleware</a> <ul>
         <li>
@@ -158,7 +150,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#middleware-implementation">Реализация</a>
         </li>
@@ -193,7 +184,6 @@
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#models">Модели</a>
     </li>
