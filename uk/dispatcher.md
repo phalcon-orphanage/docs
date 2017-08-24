@@ -9,7 +9,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#forwarding">Forwarding to other actions</a>
         </li>
@@ -32,7 +31,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#handling-404">Handling Not-Found Exceptions</a>
         </li>
