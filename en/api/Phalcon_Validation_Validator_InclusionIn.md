@@ -11,7 +11,10 @@ Check if a value is included into a list of values
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\InclusionIn;
+
+$validator = new Validation();
 
 $validator->add(
     "status",
