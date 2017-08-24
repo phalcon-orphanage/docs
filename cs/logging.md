@@ -12,7 +12,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#creating">Creating a Log</a>
         </li>
@@ -32,7 +31,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#usage">Adapters</a> <ul>
             <li>
