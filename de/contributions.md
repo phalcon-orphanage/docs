@@ -15,7 +15,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#pull-request-checklist">Pull Request Checklist</a>
         </li>
