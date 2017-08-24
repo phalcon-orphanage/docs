@@ -24,7 +24,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#read">Querying the cache</a>
         </li>
@@ -47,7 +46,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#adapters-backend">Backend Adapters</a> <ul>
             <li>
