@@ -15,7 +15,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#rewrite-rules">Rewrite Rules</a>
         </li>
@@ -40,7 +39,6 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#routing-handlers-controllers-lazy-loading">Lazy Loading</a> <ul>
                 <li>
@@ -48,13 +46,11 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#routing-handlers-not-found">Not Found (404)</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#routing-verbs">Methods - Verbs</a> <ul>
             <li>
@@ -83,7 +79,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#routing-collections">Collections</a>
         </li>
@@ -98,7 +93,6 @@
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#dependency-injector">Dependency Injector</a>
     </li>
@@ -127,7 +121,6 @@
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#events">Events</a> <ul>
         <li>
@@ -142,7 +135,6 @@
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#middleware">Middleware</a> <ul>
         <li>
@@ -158,7 +150,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#middleware-implementation">Implementation</a>
         </li>
@@ -193,7 +184,6 @@
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#models">Models</a>
     </li>
