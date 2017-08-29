@@ -10,7 +10,7 @@
           <a href="#caching-behavior">Поведение системы кэширования</a>
         </li>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">Фабрика</a>
         </li>
         <li>
           <a href="#output-fragments">Кэширование выходных фрагментов</a>
@@ -53,7 +53,7 @@
           <a href="#adapters-backend">Бэкэнд адаптеры</a> 
           <ul>
             <li>
-              <a href="#adapters-backend-factory">Factory</a>
+              <a href="#adapters-backend-factory">Фабрика</a>
             </li>
             <li>
               <a href="#adapters-backend-custom">Реализация собственных бэкэнд адаптеров</a>
@@ -71,16 +71,16 @@
               <a href="#adapters-backend-apc">Параметры APC бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-apcu">APCU Backend Options</a>
+              <a href="#adapters-backend-apcu">Параметры APCu бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
+              <a href="#adapters-backend-mongo">Параметры Mongo бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">XCache Backend Options</a>
+              <a href="#adapters-backend-xcache">Параметры XCache бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Redis Backend Options</a>
+              <a href="#adapters-backend-redis">Параметры Redis бэкэнда</a>
             </li>
           </ul>
         </li>
@@ -91,13 +91,13 @@
 
 <a name='overview'></a>
 
-# Improving Performance with Cache
+# Улучшение производительности с помощью кэширования
 
 Phalcon предоставляет класс `Phalcon\Cache`, дающий быстрый доступ к часто используемым или уже сгенерированным данным. `Phalcon\Cache` написан на языке C, поэтому он предоставляет высокую производительность и пониженный расход ресурсов. Этот класс использует два компонента: frontend и backend. Frontend компонент является входным источником или интерфейсом, в то время как backend предоставляет опции хранения данных.
 
 <a name='implementation'></a>
 
-## When to implement cache?
+## Где применять кэширование?
 
 Несмотря на то, что этот компонент очень быстрый, его использование в случаях, где он не нужен, может привести к потери производительности. Мы рекомендуем проверить эти ситуации, прежде, чем использовать кэширование:
 
@@ -107,13 +107,13 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 
 <div class='alert alert-warning'>
     <p>
-        <strong>NOTE</strong> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. Это можно легко проверить, особенно используя Memcache или Apc, с помощью соответствующих инструментов, предоставляемыми этими приложениями.
+        <strong>Примечание</strong> Даже после реализации кэширования, вы должны проверить коэффициент попадания запросов в кэш. Это можно легко проверить, особенно используя Memcache или Apc, с помощью соответствующих инструментов, предоставляемыми этими приложениями.
     </p>
 </div>
 
 <a name='caching-behavior'></a>
 
-## Caching Behavior
+## Поведение системы кэширования
 
 Процесс кэширования разделена в 2 части:
 
@@ -124,9 +124,9 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 
 ## Factory
 
-Instantiating frontend or backend adapters can be achieved by two ways:
+Создание фронтэнд и бэкэнд адаптеров может быть достигнуто двумя способами:
 
-Traditional way
+Традиционный путь
 
 ```php
 <?php
@@ -134,16 +134,15 @@ Traditional way
 use Phalcon\Cache\Backend\File as BackFile;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Create an Output frontend. Cache the files for 2 days
+// Создание frontend для выходных данных. Кэширование файлов на 2 дня
 $frontCache = new FrontData(
     [
         'lifetime' => 172800,
     ]
 );
 
-// Create the component that will cache from the 'Output' to a 'File' backend
-// Set the cache file directory - it's important to keep the '/' at the end of
-// the value for the folder
+// Создаем компонент, который будем кэшировать из "Выходных данных" в "Файл"
+// Устанавливаем папку для кэшируемых файлов - важно указать символ "/" в конце пути
 $cache = new BackFile(
     $frontCache,
     [
@@ -152,7 +151,7 @@ $cache = new BackFile(
 );
 ```
 
-or using the Factory object as follows:
+или используя объект Factory, следующим образом:
 
 ```php
 <?php
@@ -179,7 +178,7 @@ $backendCache = BFactory::load($options);
 
 <a name='output-fragments'></a>
 
-## Caching Output Fragments
+## Кэширование выходных фрагментов
 
 Выходные фрагменты — это части HTML или текста, которые кэшируются “как есть” и возвращаются “как есть”. Выходные данные автоматически захватываются из `ob_*` функции или из выходного потока PHP и сохраняются в кэш. Следующий пример демонстрирует такое использование. Он получает сгенерированные выходные данные и сохраняет их в файл. Кэш обновляется каждые 172800 секунд (двое суток).
 
@@ -238,21 +237,21 @@ if ($content === null) {
 
 <div class='alert alert-warning'>
     <p>
-        <strong>NOTE</strong> In the example above, our code remains the same, echoing output to the user as it has been doing before. Наш компонент кэширования прозрачно перехватывает вывод и сохраняет его в кэшируемый файл (когда кэш сгенерирован) или он отправляет уже готовые данные обратно к пользователю, а это естественно позволяет экономить на выполнении операций.
+        <strong>Примечание</strong> В этом примере наш код остается таким же и выводит те же данные пользователю. Наш компонент кэширования прозрачно перехватывает вывод и сохраняет его в кэшируемый файл (когда кэш сгенерирован) или он отправляет уже готовые данные обратно к пользователю, а это естественно позволяет экономить на выполнении операций.
     </p>
 </div>
 
 <a name='arbitrary-data'></a>
 
-## Caching Arbitrary Data
+## Кэширование произвольных данных
 
 Кэширование различных данных, не менее важно для вашего приложения. Кэширование может уменьшить нагрузку базы данных за счет повторного использования сгенерированных данных (но не обновленных), что и увеличивает скорость выполнения вашего приложения.
 
 <a name='backend-file-example'></a>
 
-### File Backend Example
+### Пример файлового бэкенда
 
-One of the caching adapters is `File`. Единственным параметром для него является место, где будут храниться закэшированные файлы. Это контролируется параметром `cacheDir`, который *должен* содержать завершающий слеш.
+Существует файловый адаптер кэширования (`File`). Единственным параметром для него является место, где будут храниться закэшированные файлы. Это контролируется параметром `cacheDir`, который *должен* содержать завершающий слеш.
 
 ```php
 <?php
@@ -303,7 +302,7 @@ foreach ($robots as $robot) {
 
 <a name='backend-memcached-example'></a>
 
-### Memcached Backend Example
+### Пример использования бэкэнда Memcache
 
 Для этого нам достаточно немного изменить вышестоящий пример. В частности изменится конфигурация.
 
@@ -361,13 +360,13 @@ foreach ($robots as $robot) {
 
 <div class='alert alert-warning'>
     <p>
-        <strong>NOTE</strong> Calling <code>save()</code> will return a boolean, indicating success (<code>true</code>) or failure (<code>false</code>). В зависимости от бэкэнда, который вы используете, вам понадобится обратится к соответствующим логам, для выявления сбоев.
+        <strong>ПРИМЕЧАНИЕ</strong> Вызов <code>save()</code> возвращает логическое значение, указывающее успех (<code>true</code>) или сбой (<code>false</code>). В зависимости от бэкэнда, который вы используете, вам понадобится обратится к соответствующим логам, для выявления сбоев.
     </p>
 </div>
 
 <a name='read'></a>
 
-## Querying the cache
+## Запрос данных из кэша
 
 Все элементы добавляемые в кэш идентифицируются по ключам. В случае с файловым бэкэндом, ключом является название файла. Для получения данных из кэша нам необходимо выполнить запрос к кэшу с указанием уникального ключа. Если ключа не существует, метод вернет значение NULL.
 
@@ -398,7 +397,7 @@ $keys = $cache->queryKeys('my-prefix');
 
 <a name='delete'></a>
 
-## Deleting data from the cache
+## Удаление данных из кэша
 
 Могут возникнуть ситуации, когда вам необходимо принудительно инвалидировать данные в кэше. Единственным требованием для этого является знание необходимого ключа по которому хранятся данные.
 
@@ -418,7 +417,7 @@ foreach ($keys as $key) {
 
 <a name='exists'></a>
 
-## Checking cache existence
+## Проверка существования кэша
 
 Существует возможность проверить наличие данных в кэше:
 
@@ -434,7 +433,7 @@ if ($cache->exists('someKey')) {
 
 <a name='lifetime'></a>
 
-## Lifetime
+## Время жизни
 
 `lifetime` — это время, исчисляемое в секундах, которое означает, сколько будут храниться данные в бэкэнде. По умолчанию все данные получают “время жизни”, которое было указано при создании фронтэнд компонента. Вы можете указать другое значение при сохранении или получении данных из кэша:
 
@@ -475,7 +474,7 @@ if ($robots === null) {
 
 <a name='multi-level'></a>
 
-## Multi-Level Cache
+## Многоуровневое кэширование
 
 Эта возможность компонента кэширования позволяет разработчику осуществлять кэш в несколько уровней. Возможность будет полезна при сохранении кэша в нескольких системах кэширования, с разным временем жизни и последующим поочерёдным чтением из них, начиная с самого быстрого (в порядке регистрации) и заканчивая самым медленным, пока срок жизни во всех них не истечет:
 
@@ -539,11 +538,11 @@ $cache->save('my-key', $data);
 
 <a name='adapters-frontend'></a>
 
-## Frontend Adapters
+## Фронтэнд адаптеры
 
 Доступные фронтэнд адаптеры приведены в таблице:
 
-| Адаптер                              | Description                                                                                                                                                       |
+| Адаптер                              | Описание                                                                                                                                                          |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Phalcon\Cache\Frontend\Output`   | Считывает данные из стандартного PHP вывода.                                                                                                                      |
 | `Phalcon\Cache\Frontend\Data`     | Используется для кэширования любых данных в PHP (большие массивы, объекты, тексты и т.д.). Прежде чем сохранить данные, адаптер сериализирует их.                 |
@@ -554,38 +553,38 @@ $cache->save('my-key', $data);
 
 <a name='adapters-frontend-custom'></a>
 
-### Implementing your own Frontend adapters
+### Реализация собственных фронтэнд адаптеров
 
 Для создания фронтэнд адаптера необходимо реализовать интерфейс `Phalcon\Cache\FrontendInterface`.
 
 <a name='adapters-backend'></a>
 
-## Backend Adapters
+## Бэкенд адаптеры
 
 Доступные бэкэнд адаптеры приведены в таблице:
 
-| Adapter                                 | Description                                                                  | Информация                                | Необходимые расширения                             |
+| Адаптер                                 | Описание                                                                     | Информация                                | Необходимые расширения                             |
 | --------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
 | `Phalcon\Cache\Backend\Apc`          | Сохраняет данные в Alternative PHP Cache (APC).                              | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
 | `Phalcon\Cache\Backend\Apcu`         | Сохраняет данные в APCu (APC без кеширования опкода).                        | [APCu](http://php.net/apcu)               | [APCu](http://pecl.php.net/package/APCu)           |
 | `Phalcon\Cache\Backend\File`         | Сохраняет данные в локальный текстовый файл.                                 |                                           |                                                    |
 | `Phalcon\Cache\Backend\Libmemcached` | Сохраняет данные на memcached сервере с использованием memcached расширения. | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
-| `Phalcon\Cache\Backend\Memcache`     | Stores data to a memcached server.                                           | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| `Phalcon\Cache\Backend\Memcache`     | Сохраняет данные на memcached сервере.                                       | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
 | `Phalcon\Cache\Backend\Mongo`        | Сохраняет данные в базе данных Mongo.                                        | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
 | `Phalcon\Cache\Backend\Redis`        | Сохраняет данные в Redis.                                                    | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Сохраняет данные в XCache.                                                   | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
 <div class='alert alert-warning'>
     <p>
-        <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.2.0 you can switch your <code>*\Apc</code> classes to <code>*\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes.
+        <strong>ПРИМЕЧАНИЕ</strong> В PHP 7 чтобы использовать классы адаптеров на базе phalcon <code>apc</code> вам нужно установить <code>apcu</code> и <code>apcu_bc</code> пакеты из pecl. Начиная с Phalcon 3.2.0 вы можете переключить классы <code>*\Apc</code> на <code>*\Apcu</code> и удалить <code>apcu_bc</code>. Имейте в виду, что в Phalcon 4, вероятнее всего, мы удалим все классы `*\Apc`.
     </p>
 </div>
 
 <a name='adapters-backend-factory'></a>
 
-### Factory
+### Фабрика
 
-There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+There are many backend adapters (see [Backend Adapters](#adapters-backend)). Используемый вами, будет зависеть от нужд вашего приложения. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
 
 ```php
 <?php
@@ -613,7 +612,7 @@ $backendCache = Factory::load($options);
 
 Этот бэкэнд сохраняет данные в локальный текстовый файл. Доступные опции:
 
-| Параметр   | Description                                                              |
+| Параметр   | Описание                                                                 |
 | ---------- | ------------------------------------------------------------------------ |
 | `prefix`   | Префикс, который будет автоматически добавляться к ключам кэша.          |
 | `cacheDir` | Папка с правами на запись, в которую будут сохраняться кэшируемые файлы. |
@@ -626,15 +625,15 @@ $backendCache = Factory::load($options);
 
 **Общие параметры**
 
-| Option          | Description                                                                                                                                                   |
+| Параметр        | Описание                                                                                                                                                      |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `statsKey`      | Используется для отслеживания ключей кэша.                                                                                                                    |
-| `prefix`        | A prefix that is automatically prepended to the cache keys.                                                                                                   |
+| `prefix`        | Префикс, который будет автоматически добавляться к ключам кэша.                                                                                               |
 | `persistent_id` | Для создания экземпляра, который сохраняется между запросами, необходимо использовать `persistent_id`, чтобы указать уникальный идентификатор для экземпляра. |
 
 **Параметры сервера**
 
-| Option   | Description                                                                                |
+| Параметр | Описание                                                                                   |
 | -------- | ------------------------------------------------------------------------------------------ |
 | `host`   | Хост memcached сервера.                                                                    |
 | `port`   | Порт memcached сервера.                                                                    |
@@ -644,7 +643,7 @@ $backendCache = Factory::load($options);
 
 Используется для настройки параметров Memcached. За подробной информацией обратитесь к документации по [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php).
 
-**Example**
+**Пример**
 
 ```php
 <?php
@@ -684,12 +683,12 @@ $cache = new Libmemcached(
 
 Данные будут сохранены на Memcached сервере. Доступные опции:
 
-| Option       | Description                                                 |
-| ------------ | ----------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `host`       | Хост memcached сервера.                                     |
-| `port`       | Порт memcached сервера.                                     |
-| `persistent` | Использовать постоянное соединение к серверу Memcached.     |
+| Параметр     | Описание                                                        |
+| ------------ | --------------------------------------------------------------- |
+| `prefix`     | Префикс, который будет автоматически добавляться к ключам кэша. |
+| `host`       | Хост memcached сервера.                                         |
+| `port`       | Порт memcached сервера.                                         |
+| `persistent` | Использовать постоянное соединение к серверу Memcached.         |
 
 <a name='adapters-backend-apc'></a>
 
@@ -697,56 +696,56 @@ $cache = new Libmemcached(
 
 Данные будут сохранены в Alternative PHP Cache ([APC](http://php.net/apc)). Доступна лишь одна опция:
 
-| Option   | Description                                                 |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| Параметр | Описание                                                        |
+| -------- | --------------------------------------------------------------- |
+| `prefix` | Префикс, который будет автоматически добавляться к ключам кэша. |
 
 <a name='adapters-backend-apcu'></a>
 
-### APCU Backend Options
+### Параметры APCu бэкэнда
 
 This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
 
-| Option   | Description                                                 |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| Параметр | Описание                                                        |
+| -------- | --------------------------------------------------------------- |
+| `prefix` | Префикс, который будет автоматически добавляться к ключам кэша. |
 
 <a name='adapters-backend-mongo'></a>
 
-### Mongo Backend Options
+### Параметры Mongo бэкэнда
 
-This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
+Этот бэкэнд будет хрнаить закэшированный контент на MongoDB сервере ([MongoDB](http://mongodb.org/)). Доступные опции:
 
-| Option       | Description                                                 |
-| ------------ | ----------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `server`     | A MongoDB connection string.                                |
-| `db`         | Mongo database name.                                        |
-| `collection` | Mongo collection in the database.                           |
+| Параметр     | Описание                                                        |
+| ------------ | --------------------------------------------------------------- |
+| `prefix`     | Префикс, который будет автоматически добавляться к ключам кэша. |
+| `server`     | Строка подключения к MongoDB.                                   |
+| `db`         | Название базы данных.                                           |
+| `collection` | Коллекция в базе данных.                                        |
 
 <a name='adapters-backend-xcache'></a>
 
-### XCache Backend Options
+### Параметры XCache бэкэнда
 
-This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
+Данные будут сохранены в [XCache](http://xcache.lighttpd.net/). Доступна лишь одна опция:
 
-| Option   | Description                                                 |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| Параметр | Описание                                                        |
+| -------- | --------------------------------------------------------------- |
+| `prefix` | Префикс, который будет автоматически добавляться к ключам кэша. |
 
 <a name='adapters-backend-redis'></a>
 
-### Redis Backend Options
+### Параметры Redis бэкэнда
 
-This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
+Этот бэкэнд будет хранить закэшированный контент на Redis сервере ([Redis](http://redis.io/)). Доступные опции:
 
-| Option       | Description                                                    |
-| ------------ | -------------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys.    |
-| `host`       | Redis host.                                                    |
-| `port`       | Redis port.                                                    |
-| `auth`       | Password to authenticate to a password-protected Redis server. |
-| `persistent` | Create a persistent connection to Redis.                       |
-| `index`      | The index of the Redis database to use.                        |
+| Параметр     | Описание                                                        |
+| ------------ | --------------------------------------------------------------- |
+| `prefix`     | Префикс, который будет автоматически добавляться к ключам кэша. |
+| `host`       | Хост Redis сервера.                                             |
+| `port`       | Порт Redis сервера.                                             |
+| `auth`       | Пароль для авторизации на защищенном паролем Redis сервере.     |
+| `persistent` | Создавать постоянное соединение к Redis серверу.                |
+| `index`      | Индекс для использования в базе данных Redis.                   |
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+Доступны и другие адаптеры для этих компонентов в репозитории [Phalcon Incubator](https://github.com/phalcon/incubator)
