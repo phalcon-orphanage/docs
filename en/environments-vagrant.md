@@ -133,7 +133,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 * Operating System: Windows, Linux, or macOS
 * [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
 * [VMware Fusion](http://www.vmware.com/products/fusion) (or Workstation - if you want to build the VMware box)
-* [Vagrant](https://www.vagrantup.com/downloads.html) >= 1.9
+* [Vagrant](https://www.vagrantup.com/downloads.html) >= 1.9.8
 
 <a name='packages-included'></a>
 ## Packages Included
