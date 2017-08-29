@@ -585,6 +585,8 @@ If you wish, you may forward additional ports to the Phalcon Box, as well as spe
 
 ```yaml
 ports:
+    - send: 63790
+      to: 6379
     - send: 50000
       to: 5000
     - send: 7777
