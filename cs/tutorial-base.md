@@ -57,7 +57,7 @@ Throughout this tutorial, we'll walk you through the creation of an application 
 
 <div class="alert alert-info">
     <p>
-        Video: <a href="https://youtu.be/75W-emM4wNQ">https://youtu.be/75W-emM4wNQ</a>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen></iframe>
     </p>
 </div>
 
