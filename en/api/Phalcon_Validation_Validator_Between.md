@@ -12,7 +12,10 @@ For a value x, the test is passed if minimum<=x<=maximum.
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Between;
+
+$validator = new Validation();
 
 $validator->add(
     "price",

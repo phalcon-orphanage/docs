@@ -1,78 +1,78 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="$overview">Routing</a> 
+      <a href="#overview">Routing</a>
       <ul>
         <li>
-          <a href="$defining">Defining Routes</a> 
+          <a href="#defining">Defining Routes</a>
           <ul>
             <li>
-              <a href="$defining-named-parameters">Parameters with Names</a>
+              <a href="#defining-named-parameters">Parameters with Names</a>
             </li>
             <li>
-              <a href="$defining-short-syntax">Short Syntax</a>
+              <a href="#defining-short-syntax">Short Syntax</a>
             </li>
             <li>
-              <a href="$defining-mixed-parameters">Mixing Array and Short Syntax</a>
+              <a href="#defining-mixed-parameters">Mixing Array and Short Syntax</a>
             </li>
             <li>
-              <a href="$defining-route-to-modules">Routing to Modules</a>
+              <a href="#defining-route-to-modules">Routing to Modules</a>
             </li>
             <li>
-              <a href="$defining-http-method-restrictions">HTTP Method Restrictions</a>
+              <a href="#defining-http-method-restrictions">HTTP Method Restrictions</a>
             </li>
             <li>
-              <a href="$defining-using-conversors">Using conversors</a>
+              <a href="#defining-using-conversors">Using conversors</a>
             </li>
             <li>
-              <a href="$defining-groups-of-routes">Groups of Routes</a>
+              <a href="#defining-groups-of-routes">Groups of Routes</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="$matching">Matching Routes</a>
+          <a href="#matching">Matching Routes</a>
         </li>
         <li>
-          <a href="$naming">Naming Routes</a>
+          <a href="#naming">Naming Routes</a>
         </li>
         <li>
-          <a href="$usage">Usage Examples</a>
+          <a href="#usage">Usage Examples</a>
         </li>
         <li>
-          <a href="$default-behavior">Default Behavior</a>
+          <a href="#default-behavior">Default Behavior</a>
         </li>
         <li>
-          <a href="$default-route">Setting the default route</a>
+          <a href="#default-route">Setting the default route</a>
         </li>
         <li>
-          <a href="$not-found-paths">Not Found Paths</a>
+          <a href="#not-found-paths">Not Found Paths</a>
         </li>
         <li>
-          <a href="$default-paths">Setting default paths</a>
+          <a href="#default-paths">Setting default paths</a>
         </li>
         <li>
-          <a href="$extra-slashes">Dealing with extra/trailing slashes</a>
+          <a href="#extra-slashes">Dealing with extra/trailing slashes</a>
         </li>
         <li>
-          <a href="$callbacks">Match Callbacks</a>
+          <a href="#callbacks">Match Callbacks</a>
         </li>
         <li>
-          <a href="$hostname-constraints">Hostname Constraints</a>
+          <a href="#hostname-constraints">Hostname Constraints</a>
         </li>
         <li>
-          <a href="$uri-sources">URI Sources</a>
+          <a href="#uri-sources">URI Sources</a>
         </li>
         <li>
-          <a href="$testing">Testing your routes</a>
+          <a href="#testing">Testing your routes</a>
         </li>
         <li>
-          <a href="$annotations">Annotations Router</a>
+          <a href="#annotations">Annotations Router</a>
         </li>
         <li>
-          <a href="$registration">Registering Router instance</a>
+          <a href="#registration">Registering Router instance</a>
         </li>
         <li>
-          <a href="$custom">Implementing your own Router</a>
+          <a href="#custom">Implementing your own Router</a>
         </li>
       </ul>
     </li>
