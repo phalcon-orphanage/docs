@@ -31,7 +31,7 @@ if ($robot->save() === false) {
     $messages = $robot->getMessages();
 
     foreach ($messages as $message) {
-        echo message;
+        echo $message;
     }
 } else {
     echo "Great, a new robot was saved successfully!";
@@ -916,8 +916,6 @@ generated INSERT/UPDATE statement
 ```php
 <?php
 
-<?php
-
 class Robots extends \Phalcon\Mvc\Model
 {
     public function initialize()
@@ -940,8 +938,6 @@ Sets a list of attributes that must be skipped from the
 generated INSERT statement
 
 ```php
-<?php
-
 <?php
 
 class Robots extends \Phalcon\Mvc\Model
@@ -968,8 +964,6 @@ generated UPDATE statement
 ```php
 <?php
 
-<?php
-
 class Robots extends \Phalcon\Mvc\Model
 {
     public function initialize()
@@ -992,8 +986,6 @@ Sets a list of attributes that must be skipped from the
 generated UPDATE statement
 
 ```php
-<?php
-
 <?php
 
 class Robots extends \Phalcon\Mvc\Model
@@ -1019,8 +1011,6 @@ Setup a 1-1 relation between two models
 ```php
 <?php
 
-<?php
-
 class Robots extends \Phalcon\Mvc\Model
 {
     public function initialize()
@@ -1038,8 +1028,6 @@ protected  **belongsTo** (*mixed* $fields, *mixed* $referenceModel, *mixed* $ref
 Setup a reverse 1-1 or n-1 relation between two models
 
 ```php
-<?php
-
 <?php
 
 class RobotsParts extends \Phalcon\Mvc\Model
@@ -1061,8 +1049,6 @@ Setup a 1-n relation between two models
 ```php
 <?php
 
-<?php
-
 class Robots extends \Phalcon\Mvc\Model
 {
     public function initialize()
@@ -1080,8 +1066,6 @@ protected [Phalcon\Mvc\Model\Relation](/en/3.2/api/Phalcon_Mvc_Model_Relation) *
 Setup an n-n relation between two models, through an intermediate relation
 
 ```php
-<?php
-
 <?php
 
 class Robots extends \Phalcon\Mvc\Model
@@ -1109,8 +1093,6 @@ public  **addBehavior** ([Phalcon\Mvc\Model\BehaviorInterface](/en/3.2/api/Phalc
 Setups a behavior in a model
 
 ```php
-<?php
-
 <?php
 
 use Phalcon\Mvc\Model;
@@ -1142,8 +1124,6 @@ protected  **keepSnapshots** (*mixed* $keepSnapshot)
 Sets if the model must keep the original record snapshot in memory
 
 ```php
-<?php
-
 <?php
 
 use Phalcon\Mvc\Model;
@@ -1262,8 +1242,6 @@ protected  **useDynamicUpdate** (*mixed* $dynamicUpdate)
 Sets if a model must use dynamic update instead of the all-field update
 
 ```php
-<?php
-
 <?php
 
 use Phalcon\Mvc\Model;
