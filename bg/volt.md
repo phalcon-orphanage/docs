@@ -1130,14 +1130,14 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
-* `partial` allows you to include templates made in Volt and in other template engines as well
-* `partial` allows you to pass an expression like a variable allowing to include the content of other view dynamically
-* `partial` is better if the content that you have to include changes frequently
-
-* `include` copies the compiled content into the view which improves the performance
-
-* `include` only allows to include templates made with Volt
-* `include` requires an existing template at compile time
+| Type       | Description                                                                                                |
+| ---------- | ---------------------------------------------------------------------------------------------------------- |
+| `partial`  | allows you to include templates made in Volt and in other template engines as well                         |
+|            | allows you to pass an expression like a variable allowing to include the content of other view dynamically |
+|            | is better if the content that you have to include changes frequently                                       |
+| `includes` | copies the compiled content into the view which improves the performance                                   |
+|            | only allows to include templates made with Volt                                                            |
+|            | requires an existing template at compile time                                                              |
 
 <a name='template-inheritance'></a>
 
