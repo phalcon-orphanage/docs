@@ -34,11 +34,7 @@
 
 `Phalcon\Config` is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
-<a name='factory'></a>
-
-## Factory
-
-Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
+Values can be obtained from `Phalcon\Config` as follows:
 
 ```php
 <?php
