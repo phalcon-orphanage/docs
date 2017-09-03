@@ -10,24 +10,24 @@ Phalcon is a framework that implements its functionality using the low-level C l
 
 #### Phalcon achieves this by:
 
-- Taking advantage of native compilation by producing a binary executable representation of the code that a processor can directly understand and execute without the overhead of running bytecode in a virtual machine (VM).
+- Taking advantage of native compilation by producing a [binary executable representation](http://en.wikipedia.org/wiki/Machine_code) of the code that a processor can directly understand and execute without the overhead of running bytecode in a virtual machine (VM).
 
 - Reducing the memory footprint by using optimised specific-purpose C structures and static types
-C compilers, like GCC/CLANG/VCC. These perform several optimisations over the code improving performance.
+C compilers, like GCC/CLANG/VCC. These perform [several optimisations](http://en.wikipedia.org/wiki/Category:Compiler_optimizations) over the code improving performance.
 
-- The ability to place variables and data in the stack. These would typically have a higher locality of access.
+- The ability to place variables and data in the stack. These would typically have a higher [locality](http://en.wikipedia.org/wiki/Locality_of_reference) of access.
 
-- Branch prediction is easier as it operates directly over the user code and not over the VM implementation.
+- [Branch prediction](http://en.wikipedia.org/wiki/Branch_predictor) is easier as it operates directly over the user code and not over the VM implementation.
 
-- Having direct access to internal structures and functions reducing the computation overhead.
+- Having direct access to internal structures and functions reducing the [computation overhead](http://en.wikipedia.org/wiki/CPU-bound).
 
-- Using Profile Guided Optimization (PGO) to improve performance based on existing execution profiles.
+- [Using Profile Guided Optimization (PGO)](http://en.wikipedia.org/wiki/Profile-guided_optimization) to improve performance based on existing execution profiles.
 
 <br>
 *Per [Wikipedia](https://en.wikipedia.org/wiki/Profile-guided_optimization). Profile-guided optimization (PGO, sometimes pronounced as pogo), is a compiler optimization technique in computer programming that uses profiling to improve program runtime performance.*
 <br><br>
 
-Phalcon relies on several internal design aspects of PHP such as memory management, garbage collection and its internal structures. The improvement of any of these aspects have a positive impact on Phalcon's performance as well in PHP.
+Phalcon relies on several internal design aspects of PHP such as memory management, [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) and its internal structures. The improvement of any of these aspects have a positive impact on Phalcon's performance as well in PHP.
 
 credit: [https://github.com/andresgutierrez](https://github.com/andresgutierrez)
 
