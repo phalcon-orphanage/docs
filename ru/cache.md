@@ -70,7 +70,7 @@
               <a href="#adapters-backend-mongo">Параметры Mongo бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">XCache Backend Options</a>
+              <a href="#adapters-backend-xcache">Параметры XCache бэкэнда</a>
             </li>
             <li>
               <a href="#adapters-backend-redis">Redis Backend Options</a>
@@ -675,9 +675,9 @@ This backend will store cached content on Alternative PHP Cache ([APCU](http://p
 
 This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
 
-| Option   | Description                                                 |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| Параметр | Описание                                                        |
+| -------- | --------------------------------------------------------------- |
+| `prefix` | Префикс, который будет автоматически добавляться к ключам кэша. |
 
 <a name='adapters-backend-mongo'></a>
 
