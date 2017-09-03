@@ -669,6 +669,16 @@ This backend will store cached content on Alternative PHP Cache ([APCU](http://p
 | -------- | --------------------------------------------------------------- |
 | `prefix` | Префикс, который будет автоматически добавляться к ключам кэша. |
 
+<a name='adapters-backend-apcu'></a>
+
+### APCU Backend Options
+
+This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
+
+| Параметр | Описание                                                        |
+| -------- | --------------------------------------------------------------- |
+| `prefix` | Префикс, который будет автоматически добавляться к ключам кэша. |
+
 <a name='adapters-backend-mongo'></a>
 
 ### Mongo Backend Options
