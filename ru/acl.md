@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Контроль доступа</a> <ul>
         <li>
-          <a href="#setup">Создание списков контроля доступа</a>
+          <a href="#setup">Creating an ACL</a>
         </li>
         <li>
           <a href="#adding-roles">Добавление ролей к ACL</a>

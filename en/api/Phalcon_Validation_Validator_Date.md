@@ -11,7 +11,10 @@ Checks if a value is a valid date
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Date as DateValidator;
+
+$validator = new Validation();
 
 $validator->add(
     "date",
