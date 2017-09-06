@@ -17,7 +17,7 @@ C compilers, like GCC/CLANG/VCC. These perform [several optimisations](https://e
 
 - The ability to place variables and data in the stack. These would typically have a higher [locality](https://en.wikipedia.org/wiki/Locality_of_reference) of access.
 
-- Branch prediction is easier as it operates directly over the user code and not over the VM implementation. *Mystical put together a great explanation on [stackoverflow](https://stackoverflow.com/a/11227902/1661465).*
+- Branch prediction is easier as it operates directly over the user code and not over the VM implementation. *Mystical put together a great explanation on [Stack Overflow](https://stackoverflow.com/a/11227902/1661465).*
 
 - Having direct access to internal structures and functions reducing the [computation overhead](https://en.wikipedia.org/wiki/CPU-bound).
 
