@@ -561,7 +561,7 @@ $cache->save('my-key', $data);
 
 ### Фабрика
 
-There are many backend adapters (see [Backend Adapters](#adapters-backend)). Используемый вами, будет зависеть от нужд вашего приложения. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+Существует множество бэкенд адаптеров (см. [Бэкенд адаптеры](#adapters-backend)). Используемый вами, будет зависеть от нужд вашего приложения. Следующий пример демонстрирует инициализацию бэкенд адаптера с использованием опции `adapter`. Если опция frontend будет представлена в виде массива, фронтэнд адаптер будет инициализирован при помощи соответствующей фабрики.
 
 ```php
 <?php
