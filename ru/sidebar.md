@@ -2,6 +2,7 @@
     - [Примечания к выпуску](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
     - Обновление
     - [Спонсоры](/[[language]]/[[version]]/sponsors)
+    - [FAQ](/[[language]]/[[version]]/faq)
 - Содействие 
     - [Введение](/[[language]]/[[version]]/contributions)
     - [Пулл реквесты](/[[language]]/[[version]]/new-pull-request)

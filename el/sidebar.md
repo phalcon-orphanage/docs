@@ -2,6 +2,7 @@
     - [Σημειώσεις έκδοσης](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
     - Αναβάθμιση
     - [Σπόνσορες](/[[language]]/[[version]]/sponsors)
+    - [FAQ](/[[language]]/[[version]]/faq)
 - Contributions 
     - [Overview](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
