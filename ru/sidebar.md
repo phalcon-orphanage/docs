@@ -9,7 +9,7 @@
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Генерация трассировки выполнения](/[[language]]/[[version]]/generating-backtrace)
     - [Воспроизводимые тесты](/[[language]]/[[version]]/reproducible-tests)
-    - Руководство по тестированию
+    - [Руководство по тестированию](/[[language]]/[[version]]/unit-testing)
 - Приступая к работе 
     - [Установка](/[[language]]/[[version]]/installation)
     - [Настройка веб-сервера](/[[language]]/[[version]]/webserver-setup) 
