@@ -9,7 +9,7 @@
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
     - [Reproducible Tests](/[[language]]/[[version]]/reproducible-tests)
-    - Průvodce testováním
+    - [Průvodce testováním](/[[language]]/[[version]]/unit-testing)
 - Začínáme 
     - [Installation](/[[language]]/[[version]]/installation)
     - [Instalace webserveru](/[[language]]/[[version]]/webserver-setup) 
