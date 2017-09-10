@@ -159,6 +159,11 @@ To start the application and run the containers in the background, use following
 # You can use here your prefered project name with "-p my-app" parameter
 $ docker-compose up -d
 ```
+Now setup your project in the app container using the Phalcon Developer Tools
+```bash
+# Replace project in project_app_1 with the name of your project/directory (shown in the output of docker-compose up -d
+$ docker exec -t project_app_1 phalcon project application simple
+```
 
 Now you can now launch your application in your browser visiting `http://phalcon.local` (or the host name you chose above).
 
