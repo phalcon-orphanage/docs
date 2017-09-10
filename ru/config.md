@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Чтение конфигураций</a> <ul>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">Фабрика</a>
         </li>
         <li>
           <a href="#native-arrays">Нативные массивы</a>
@@ -30,11 +30,11 @@
 
 <a name='overview'></a>
 
-# Reading Configurations
+# Чтение конфигураций
 
-`Phalcon\Config` — это компонент, используемый для преобразования файлов конфигурации различных форматов (с помощью адаптеров) в PHP объекты для использования в приложении.
+`Phalcon\Config` — это компонент для чтения конфигурации в разных форматах (используя адаптеры), и преобразования её в PHP-объекты для использования в приложении.
 
-Values can be obtained from `Phalcon\Config` as follows:
+Значения могут быть получены из `Phalcon\Config` следующим образом:
 
 ```php
 <?php
@@ -52,14 +52,14 @@ $config = new Config(
     ]
 );
 
-echo $config->get('test')->get('parent')->get('property');  // displays 1
-echo $config->test->parent->property;                       // displays 1
-echo $config->path('test.parent.property');                 // displays 1
+echo $config->get('test')->get('parent')->get('property');  // выведет 1
+echo $config->test->parent->property;                       // выведет 1
+echo $config->path('test.parent.property');                 // выведет 1
 ```
 
 <a name='factory'></a>
 
-## Factory
+## Фабрика
 
 Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
 
@@ -73,11 +73,13 @@ $options = [
     'adapter'  => 'php',
  ];
 
- $config = Factory::load($options);
- ```
+$config = Factory::load($options);
+```
 
 <a name='native-arrays'></a>
-## Native Arrays
+
+## Нативные массивы
+
 The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
 
 ```php
@@ -122,11 +124,11 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## File Adapters
+## Адаптеры файлов
 
-The adapters available are:
+Доступные адаптеры:
 
-| Class                            | Description                                                                                         |
+| Класс                            | Описание                                                                                            |
 | -------------------------------- | --------------------------------------------------------------------------------------------------- |
 | `Phalcon\Config\Adapter\Ini`  | Использует INI-файлы для хранения конфигурации. Использует PHP-функцию `parse_ini_file`.            |
 | `Phalcon\Config\Adapter\Json` | Использует JSON-файлы для хранения конфигурации.                                                    |
@@ -135,7 +137,7 @@ The adapters available are:
 
 <a name='ini-files'></a>
 
-## Reading INI Files
+## Чтение INI-файлов
 
 Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
 
@@ -172,7 +174,7 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## Merging Configurations
+## Объединение конфигураций
 
 `Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
 
@@ -228,7 +230,7 @@ There are more adapters available for this components in the [Phalcon Incubator]
 
 <a name='nested-configuration'></a>
 
-## Nested Configuration
+## Вложенная конфигурация
 
 Also to get nested configuration you can use the `Phalcon\Config::path` method. This method allows to obtain nested configurations, without caring about the fact that some parts of the path are absent. Let's look at an example:
 
@@ -276,7 +278,7 @@ $config->path('test/parent/property2'); // yeah
 
 <a name='injecting-into-di'></a>
 
-## Injecting Configuration Dependency
+## Внедрение конфигурации
 
 You can inject your configuration to the controllers by adding it as a service. To be able to do that, add following code inside your dependency injector script.
 
