@@ -69,8 +69,8 @@ $options = [
     'adapter'  => 'php',
  ];
  
- $config = Factory::load($options);
- ```
+$config = Factory::load($options);
+```
 
 <a name='native-arrays'></a>
 ## Native Arrays
