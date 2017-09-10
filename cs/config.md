@@ -73,11 +73,13 @@ $options = [
     'adapter'  => 'php',
  ];
 
- $config = Factory::load($options);
- ```
+$config = Factory::load($options);
+```
 
 <a name='native-arrays'></a>
-## Native Arrays
+
+## Nativní pole (Array)
+
 The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
 
 ```php
