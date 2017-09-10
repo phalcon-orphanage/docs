@@ -153,7 +153,7 @@ $ `docker-compose up -d`
 
 Now setup your project in the app container using the Phalcon Developer Tools
 
-Replace project in **<project_app_1>** with the name of your project/directory (shown in the output of docker-compose up -d
+Replace project in **<project_app_1>** with the name of your project/directory (shown in the output of `docker-compose up -d`)
 
 $ `docker exec -t <project_app_1> phalcon project application simple`
 
