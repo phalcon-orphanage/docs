@@ -73,11 +73,13 @@ $options = [
     'adapter'  => 'php',
  ];
 
- $config = Factory::load($options);
- ```
+$config = Factory::load($options);
+```
 
 <a name='native-arrays'></a>
-## Native Arrays
+
+## Nativní pole (Array)
+
 The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
 
 ```php
@@ -122,7 +124,7 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## File Adapters
+## Adaptéry pro soubory
 
 The adapters available are:
 
@@ -135,7 +137,7 @@ The adapters available are:
 
 <a name='ini-files'></a>
 
-## Reading INI Files
+## Čtení INI souborů
 
 Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
 
@@ -172,7 +174,7 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## Merging Configurations
+## Slučování konfigurace
 
 `Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
 
@@ -228,7 +230,7 @@ There are more adapters available for this components in the [Phalcon Incubator]
 
 <a name='nested-configuration'></a>
 
-## Nested Configuration
+## Vnořené konfigurace
 
 Also to get nested configuration you can use the `Phalcon\Config::path` method. This method allows to obtain nested configurations, without caring about the fact that some parts of the path are absent. Let's look at an example:
 
@@ -276,7 +278,7 @@ $config->path('test/parent/property2'); // yeah
 
 <a name='injecting-into-di'></a>
 
-## Injecting Configuration Dependency
+## Konfigurace jako služba
 
 You can inject your configuration to the controllers by adding it as a service. To be able to do that, add following code inside your dependency injector script.
 
