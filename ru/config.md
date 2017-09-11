@@ -61,7 +61,7 @@ echo $config->path('test.parent.property');                 // выведет 1
 
 ## Фабрика
 
-Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`.
+Загружает адаптер конфигурации используя параметр `adapter`. Если расширение файла не было предоставлено, параметр будет добавлен к `filePath`.
 
 ```php
 <?php
@@ -226,13 +226,13 @@ Phalcon\Config Object
 )
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator).
+Существует еще несколько типов адаптеров конфигурации, их можно получить в “Инкубаторе” - [Phalcon Incubator](https://github.com/phalcon/incubator).
 
 <a name='nested-configuration'></a>
 
 ## Вложенная конфигурация
 
-You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. Давайте рассмотрим пример:
+Также, чтобы получить вложенную конфигурацию, можно воспользоваться методом `Phalcon\Config::path`. Этот метод позволяет получить вложенную конфигурацию, не беспокоясь о том, что некоторые части пути отсутствуют. Давайте рассмотрим пример:
 
 ```php
 <?php
@@ -263,21 +263,21 @@ $config = new Config(
    ]
 );
 
-// Using dot as delimiter
+// Использование точки в качетсве разделителя
 $config->path('test.parent.property2');    // yeah
 $config->path('database.host', null, '.'); // localhost
 
 $config->path('test.parent'); // Phalcon\Config
 
-// Using slash as delimiter. A default value may also be specified and
-// will be returned if the configuration option does not exist.
+// Использование слэша в качестве разделителя. Также, может быть указано значение по умолчанию
+// которое будет возвращено если раздела конфигурации не существует.
 $config->path('test/parent/property3', 'no', '/'); // no
 
 Config::setPathDelimiter('/');
 $config->path('test/parent/property2'); // yeah
 ```
 
-The following example shows how to create usefull facade to access nested configuration values:
+Следующий пример показывает, один из способов создания фасада, для получения вложенной конфигурации:
 
 ```php
 <?php
@@ -304,7 +304,7 @@ function config() {
 
 ## Внедрение конфигурации
 
-You can inject your configuration to the controller allowing us to use `Phalcon\Config` inside `Phalcon\Mvc\Controller`. To be able to do that, you have to add it as a service in the Dependency Injector container. Add following code inside your bootstrap file:
+Существует возможность внедрять конфигурацию приложения в контроллеры, предоставляя тем самым возможность использования объекта `Phalcon\Config` в экземплярах `Phalcon\Mvc\Controller`. Для этого вам необходимо добавить конфигурацию как сервис в контейнер зависимостей приложения. Добавьте следующий код в ваш сервис-провайдер:
 
 ```php
 <?php
@@ -312,7 +312,7 @@ You can inject your configuration to the controller allowing us to use `Phalcon\
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config;
 
-// Создаем DI
+// Создаём DI
 $di = new FactoryDefault();
 
 $di->set(
@@ -325,7 +325,7 @@ $di->set(
 );
 ```
 
-Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
+Теперь в контроллере вы можете получить доступ к конфигурации, используя возможность внедрения зависимости, указав имя `config`, как показано ниже:
 
 ```php
 <?php
