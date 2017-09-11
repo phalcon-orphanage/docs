@@ -61,7 +61,7 @@ echo $config->path('test.parent.property');                 // выведет 1
 
 ## Фабрика
 
-Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
+Загружает адаптер конфигурации используя параметр `adapter`. Если расширение файла не было предоставлено, параметр будет добавлен к `filePath`.
 
 ```php
 <?php
@@ -80,7 +80,7 @@ $config = Factory::load($options);
 
 ## Нативные массивы
 
-Первый пример показывает, как конвертировать нативные массивы в объекты `Phalcon\Config`. Адаптер для нативных массивов более производителен, так как файлы не разбираются при обращении.
+Следущий пример показывает, как конвертировать нативные массивы в объекты `Phalcon\Config`. Адаптер для нативных массивов более производителен, так как файлы не разбираются при обращении.
 
 ```php
 <?php
@@ -139,7 +139,7 @@ $config = new Config($settings);
 
 ## Чтение INI-файлов
 
-Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
+Ini-файлы являются довольно распространённым способом хранения настроек. Для чтения таких файлов `Phalcon\Config` использует оптимизированную PHP-функцию `parse_ini_file`. Разделы файла разбиваются в подпункты конфигурации для более лёгкого доступа.
 
 ```ini
 [database]
@@ -158,7 +158,7 @@ viewsDir       = '../app/views/'
 metadata.adapter  = 'Memory'
 ```
 
-You can read the file as follows:
+Вы можете прочитать этот файл следующим образом:
 
 ```php
 <?php
@@ -176,7 +176,7 @@ echo $config->models->metadata->adapter, "\n";
 
 ## Объединение конфигураций
 
-`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
+`Phalcon\Config` позволяет объединить объекты конфигурации друг в друга рекурсивно. Новые свойства будут добавлены, а существующие обновлены.
 
 ```php
 <?php
@@ -209,7 +209,7 @@ $config->merge($config2);
 print_r($config);
 ```
 
-The above code produces the following:
+Результатом выполнения кода выше будет следующее:
 
 ```bash
 Phalcon\Config Object
@@ -226,7 +226,7 @@ Phalcon\Config Object
 )
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+Существует еще несколько типов адаптеров конфигурации, их можно получить в “Инкубаторе” — [Phalcon Incubator](https://github.com/phalcon/incubator).
 
 <a name='nested-configuration'></a>
 
