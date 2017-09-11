@@ -80,7 +80,7 @@ $config = Factory::load($options);
 
 ## Нативные массивы
 
-The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
+Первый пример показывает, как конвертировать нативные массивы в объекты `Phalcon\Config`. Адаптер для нативных массивов более производителен, так как файлы не разбираются при обращении.
 
 ```php
 <?php
@@ -110,7 +110,7 @@ echo $config->database->username, "\n";
 echo $config->mysetting, "\n";
 ```
 
-If you want to better organize your project you can save the array in another file and then read it.
+Если вы хотите лучшей организации для вашего проекта, можно сохранить массив в другой файл и затем прочитать его.
 
 ```php
 <?php
