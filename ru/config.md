@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Чтение конфигураций</a> <ul>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">Фабрика</a>
         </li>
         <li>
           <a href="#native-arrays">Нативные массивы</a>
@@ -30,13 +30,13 @@
 
 <a name='overview'></a>
 
-# Reading Configurations
+# Чтение конфигураций
 
-`Phalcon\Config` — это компонент, используемый для преобразования файлов конфигурации различных форматов (с помощью адаптеров) в PHP объекты для использования в приложении.
+`Phalcon\Config` — это компонент для чтения конфигурации в разных форматах (используя адаптеры), и преобразования её в PHP-объекты для использования в приложении.
 
 <a name='factory'></a>
 
-## Factory
+## Фабрика
 
 Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
 
@@ -99,11 +99,11 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## File Adapters
+## Файловые адаптеры
 
-The adapters available are:
+Доступные адаптеры:
 
-| Class                            | Description                                                                                         |
+| Класс                            | Описание                                                                                            |
 | -------------------------------- | --------------------------------------------------------------------------------------------------- |
 | `Phalcon\Config\Adapter\Ini`  | Использует INI-файлы для хранения конфигурации. Использует PHP-функцию `parse_ini_file`.            |
 | `Phalcon\Config\Adapter\Json` | Использует JSON-файлы для хранения конфигурации.                                                    |
