@@ -61,7 +61,7 @@ echo $config->path('test.parent.property');                 // выведет 1
 
 ## Фабрика
 
-Загружает адаптер конфигурации используя параметр `adapter`. Если расширение файла не было предоставлено, параметр будет добавлен к `filePath`.
+Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`.
 
 ```php
 <?php
@@ -226,13 +226,13 @@ Phalcon\Config Object
 )
 ```
 
-Существует еще несколько типов адаптеров конфигурации, их можно получить в “Инкубаторе” — [Phalcon Incubator](https://github.com/phalcon/incubator).
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator).
 
 <a name='nested-configuration'></a>
 
 ## Вложенная конфигурация
 
-Also to get nested configuration you can use the `Phalcon\Config::path` method. This method allows to obtain nested configurations, without caring about the fact that some parts of the path are absent. Let's look at an example:
+You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. Давайте рассмотрим пример:
 
 ```php
 <?php
@@ -269,18 +269,42 @@ $config->path('database.host', null, '.'); // localhost
 
 $config->path('test.parent'); // Phalcon\Config
 
-// Using slash as delimiter
+// Using slash as delimiter. A default value may also be specified and
+// will be returned if the configuration option does not exist.
 $config->path('test/parent/property3', 'no', '/'); // no
 
 Config::setPathDelimiter('/');
 $config->path('test/parent/property2'); // yeah
 ```
 
+The following example shows how to create usefull facade to access nested configuration values:
+
+```php
+<?php
+
+use Phalcon\Di;
+use Phalcon\Config;
+
+/**
+ * @return mixed|Config
+ */
+function config() {
+    $args = func_get_args();
+    $config = Di::getDefault()->getShared(__FUNCTION__);
+
+    if (empty($args)) {
+       return $config;
+    }
+
+    return call_user_func_array([$config, 'path'], $args);
+}
+```
+
 <a name='injecting-into-di'></a>
 
 ## Внедрение конфигурации
 
-You can inject your configuration to the controllers by adding it as a service. To be able to do that, add following code inside your dependency injector script.
+You can inject your configuration to the controller allowing us to use `Phalcon\Config` inside `Phalcon\Mvc\Controller`. To be able to do that, you have to add it as a service in the Dependency Injector container. Add following code inside your bootstrap file:
 
 ```php
 <?php
@@ -288,7 +312,7 @@ You can inject your configuration to the controllers by adding it as a service. 
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config;
 
-// Create a DI
+// Создаем DI
 $di = new FactoryDefault();
 
 $di->set(
