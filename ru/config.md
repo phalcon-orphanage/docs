@@ -232,7 +232,7 @@ Phalcon\Config Object
 
 ## Вложенная конфигурация
 
-Also to get nested configuration you can use the `Phalcon\Config::path` method. This method allows to obtain nested configurations, without caring about the fact that some parts of the path are absent. Let's look at an example:
+Также, чтобы получить вложенную конфигурацию, можно воспользоваться методом `Phalcon\Config::path`. Этот метод позволяет получить вложенную конфигурацию, не беспокоясь о том, что некоторые части пути отсутствуют. Давайте рассмотрим пример:
 
 ```php
 <?php
@@ -263,24 +263,48 @@ $config = new Config(
    ]
 );
 
-// Using dot as delimiter
+// Использование точки в качетсве разделителя
 $config->path('test.parent.property2');    // yeah
 $config->path('database.host', null, '.'); // localhost
 
 $config->path('test.parent'); // Phalcon\Config
 
-// Using slash as delimiter
+// Использование слэша в качестве разделителя. Также, может быть указано значение по умолчанию
+// которое будет возвращено если раздела конфигурации не существует.
 $config->path('test/parent/property3', 'no', '/'); // no
 
 Config::setPathDelimiter('/');
 $config->path('test/parent/property2'); // yeah
 ```
 
+Следующий пример показывает, один из способов создания фасада, для получения вложенной конфигурации:
+
+```php
+<?php
+
+use Phalcon\Di;
+use Phalcon\Config;
+
+/**
+ * @return mixed|Config
+ */
+function config() {
+    $args = func_get_args();
+    $config = Di::getDefault()->getShared(__FUNCTION__);
+
+    if (empty($args)) {
+       return $config;
+    }
+
+    return call_user_func_array([$config, 'path'], $args);
+}
+```
+
 <a name='injecting-into-di'></a>
 
 ## Внедрение конфигурации
 
-You can inject your configuration to the controllers by adding it as a service. To be able to do that, add following code inside your dependency injector script.
+Существует возможность внедрять конфигурацию приложения в контроллеры, предоставляя тем самым возможность использования объекта `Phalcon\Config` в экземплярах `Phalcon\Mvc\Controller`. Для этого вам необходимо добавить конфигурацию как сервис в контейнер зависимостей приложения. Добавьте следующий код в ваш сервис-провайдер:
 
 ```php
 <?php
@@ -288,7 +312,7 @@ You can inject your configuration to the controllers by adding it as a service. 
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config;
 
-// Create a DI
+// Создаём DI
 $di = new FactoryDefault();
 
 $di->set(
@@ -301,7 +325,7 @@ $di->set(
 );
 ```
 
-Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
+Теперь в контроллере вы можете получить доступ к конфигурации, используя возможность внедрения зависимости, указав имя `config`, как показано ниже:
 
 ```php
 <?php

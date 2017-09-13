@@ -54,7 +54,7 @@ Phalcon является проектом с открытым кодом и си
 
 <div class="alert alert-warning">
     <p>
-       We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.
+       Мы принимаем только сообщения об ошибках, новые запросы и пулл реквесты на GitHub. Для вопросов относительно использования фреймворка или поддержки, пожалуйста, используйте <a href="https://phalcon.link/forum">официальный форум</a>.
     </p>
 </div>
 
@@ -71,14 +71,14 @@ Phalcon является проектом с открытым кодом и си
 
 ### Генерация трассировки
 
-Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. Please help us to find out the problem by adding a crash backtrace to your bug report.
+Иногда, из-за ошибки [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault), Phalcon может аварийно завершить работу. Пожалуйста, помогите нам найти эту проблему, добавив трассировку аварийного завершения работы ваше сообщение об ошибке.
 
-Please follow this guides to understand how to generate the backtrace:
+Пожалуйста, ознакомьтесь со следующим руководствами, в случае любых вопросов связанных с созданием трассировки:
 
-- [Generating a gdb backtrace](https://bugs.php.net/bugs-generating-backtrace.php)
-- [Generating a backtrace, with a compiler, on Win32](http://bugs.php.net/bugs-generating-backtrace-win32.php)
-- [Debugging Symbols](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
-- [Building PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
+- [Генерация gdb трассировки](https://bugs.php.net/bugs-generating-backtrace.php)
+- [Генерация трассировки с использованием компилятора в Win32](http://bugs.php.net/bugs-generating-backtrace-win32.php)
+- [Отладочные символы](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
+- [Сборка PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
 
 <a name='pull-request-checklist'></a>
 
@@ -91,24 +91,24 @@ Please follow this guides to understand how to generate the backtrace:
 - Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards](http://www.php-fig.org/psr/)
 - Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
 
-Before submit **new functionality**, please open a [NFR](/[[language]]/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of include the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Перед отправкой **новой функциональности**, пожалуйста, откройте [NFR](/[[language]]/[[version]]/new-feature-request) в виде тикета на GitHub, чтобы обсудить последствия или изменения в ядре фреймворка. После утверждения, убедитесь, что ваш PR содержит следующее:
 
-- An update to the `CHANGELOG.md`
-- Unit Tests
-- Documentation or Usage Examples
+- Обновлённый файл `CHANGELOG.md`
+- Модульные тесты
+- Документацию и примеры использования
 
 <a name='getting-support'></a>
 
 ## Получение поддержки
 
-If you have a question about how to use Phalcon, please see the [support page](https://phalconphp.com/support).
+По вопросам использования Phalcon, пожалуйста, используйте [раздел поддержки](https://phalconphp.com/support) на нашем сайте.
 
 <a name='requesting-features'></a>
 
 ## Предложение идей
 
-If you have a change or new feature in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
+Если вы хотели бы предложить изменения или новый функционал, пожалуйста заполните [NFR](/[[language]]/[[version]]/new-feature-request).
 
-Thanks!
+Спасибо!
 
-<3 Phalcon Team
+<3 Команда Phalcon
