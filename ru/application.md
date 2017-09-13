@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">MVC Приложения</a> <ul>
+      <a href="#overview">Приложения MVC</a> <ul>
         <li>
           <a href="#manual-bootstrapping">Ручная загрузка</a>
         </li>
