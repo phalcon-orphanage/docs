@@ -2,13 +2,14 @@
     - [Release Notes](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
     - Upgrade
     - [Sponsors](/[[language]]/[[version]]/sponsors)
+    - [FAQ](/[[language]]/[[version]]/faq)
 - Contributions
     - [Overview](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
     - [Reproducible Tests](/[[language]]/[[version]]/reproducible-tests)
-    - Testing guide
+    - [Testing guide](/[[language]]/[[version]]/unit-testing)
 - Getting Started
     - [Installation](/[[language]]/[[version]]/installation)
     - [Webserver Setup](/[[language]]/[[version]]/webserver-setup)
