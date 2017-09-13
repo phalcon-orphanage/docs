@@ -133,7 +133,7 @@ viewsDir       = '../app/views/'
 metadata.adapter  = 'Memory'
 ```
 
-You can read the file as follows:
+Вы можете прочитать этот файл следующим образом:
 
 ```php
 <?php
@@ -184,7 +184,7 @@ $config->merge($config2);
 print_r($config);
 ```
 
-The above code produces the following:
+Результатом выполнения кода выше будет следующее:
 
 ```bash
 Phalcon\Config Object
@@ -207,7 +207,7 @@ There are more adapters available for this components in the [Phalcon Incubator]
 
 ## Nested Configuration
 
-Also to get nested configuration you can use the `Phalcon\Config::path` method. This method allows to obtain nested configurations, without caring about the fact that some parts of the path are absent. Let's look at an example:
+Также, чтобы получить вложенную конфигурацию, можно воспользоваться методом `Phalcon\Config::path`. Этот метод позволяет получить вложенную конфигурацию, не беспокоясь о том, что некоторые части пути отсутствуют. Давайте рассмотрим пример:
 
 ```php
 <?php
@@ -263,7 +263,7 @@ You can inject your configuration to the controllers by adding it as a service. 
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config;
 
-// Create a DI
+// Создаем DI
 $di = new FactoryDefault();
 
 $di->set(
