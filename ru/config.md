@@ -226,7 +226,7 @@ Phalcon\Config Object
 )
 ```
 
-Существует еще несколько типов адаптеров конфигурации, их можно получить в “Инкубаторе” — [Phalcon Incubator](https://github.com/phalcon/incubator).
+Существует еще несколько типов адаптеров конфигурации, их можно получить в “Инкубаторе” - [Phalcon Incubator](https://github.com/phalcon/incubator).
 
 <a name='nested-configuration'></a>
 
