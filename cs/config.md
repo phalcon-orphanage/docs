@@ -124,7 +124,7 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## File Adapters
+## Adaptéry pro soubory
 
 The adapters available are:
 
@@ -137,7 +137,7 @@ The adapters available are:
 
 <a name='ini-files'></a>
 
-## Reading INI Files
+## Čtení INI souborů
 
 Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
 
@@ -174,7 +174,7 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## Merging Configurations
+## Slučování konfigurace
 
 `Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
 
@@ -230,7 +230,7 @@ There are more adapters available for this components in the [Phalcon Incubator]
 
 <a name='nested-configuration'></a>
 
-## Nested Configuration
+## Vnořené konfigurace
 
 You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. Let's look at an example:
 
@@ -302,7 +302,7 @@ function config() {
 
 <a name='injecting-into-di'></a>
 
-## Injecting Configuration Dependency
+## Konfigurace jako služba
 
 You can inject your configuration to the controller allowing us to use `Phalcon\Config` inside `Phalcon\Mvc\Controller`. To be able to do that, you have to add it as a service in the Dependency Injector container. Add following code inside your bootstrap file:
 
