@@ -83,21 +83,21 @@
 
 # Уровень абстракции базы данных
 
-`Phalcon\Db` is the component behind `Phalcon\Mvc\Model` that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
+`Phalcon\Db` является компонентом, располагающимся под `Phalcon\Mvc\Model`, который управляет слоем моделей в фреймворке. Он состоит из независимых абстракций высокого уровня для баз данных, полностью написанных на C.
 
-This component allows for a lower level database manipulation than using traditional models.
+Этот компонент позволяет производить манипуляции с базой данных на более низком уровне, чем при использовании традиционных моделей.
 
 <a name='adapters'></a>
 
 ## Адаптеры баз данных
 
-This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO_ to connect to databases. The following database engines are supported:
+Данный компонент позволяет использовать адаптеры для инкапсуляции конкретных деталей системы баз данных. Phalcon использует PDO для подключения к базам данных. Поддерживаются следующие СУБД:
 
-| Класс                                   | Описание                                                                                                                                                                                                                                        |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Db\Adapter\Pdo\Mysql`      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                               |
-| `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL- мощная реляционная система баз данных с открытым исходным кодом. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
-| `Phalcon\Db\Adapter\Pdo\Sqlite`     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                                |
+| Класс                                   | Описание                                                                                                                                                                                                                          |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Db\Adapter\Pdo\Mysql`      | Наиболее часто используемая реляционная система управления базами данных (RDBMS), которая работает как сервер, обеспечивающий многопользовательский доступ к некоторому набору баз данных                                         |
+| `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL- мощная реляционная система баз данных с открытым исходным кодом. Это более чем 15 лет активного развития и проверенная архитектура, которая завоевала прочную репутацию за надежность, целостность данных и точность. |
+| `Phalcon\Db\Adapter\Pdo\Sqlite`     | Библиотека SQLite реализует автономную, бессерверную, не требующую конфигурации и при этом поддерживающую транзакции базу данных на основе языка SQL.                                                                             |
 
 <a name='adapters-factory'></a>
 
@@ -105,7 +105,7 @@ This component makes use of adapters to encapsulate specific database system det
 
 <a name='factory'></a>
 
-Loads PDO Adapter class using `adapter` option
+Загружает адаптер PDO используя параметр `adapter`.
 
 ```php
 <?php
@@ -128,13 +128,13 @@ $db = Factory::load($options);
 
 ### Реализация собственных адаптеров
 
-The `Phalcon\Db\AdapterInterface` interface must be implemented in order to create your own database adapters or extend the existing ones.
+Для создания собственного адаптера, должен быть реализован интерфейс `Phalcon\Db\AdapterInterface` или расширен через наследование любой существующий адаптер.
 
 <a name='dialects'></a>
 
 ## Диалекты баз данных
 
-Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
+Phalcon инкапсулирует специфические детали каждого компонента баз данных в диалектах. Которые в свою очередь предоставляют адаптером общие функции и генератор SQL.
 
 | Класс                              | Описание                                      |
 | ---------------------------------- | --------------------------------------------- |
@@ -146,18 +146,18 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 
 ### Реализация собственных диалектов
 
-The `Phalcon\Db\DialectInterface` interface must be implemented in order to create your own database dialects or extend the existing ones.
+Для создания собственного диалекта, должен быть реализован интерфейс `Phalcon\Db\DialectInterface` или расширен через наследование любой существующий диалект.
 
 <a name='connection'></a>
 
 ## Подключение к базе данных
 
-To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
+Чтобы создать подключение, необходимо создать экземпляр класса адаптера. Для этого требуется только массив с параметрами соединения. В приведенном примере ниже показано, как создать соединение с обязательными и необязательными параметрами:
 
 ```php
 <?php
 
-// Required
+// Обязательные
 $config = [
     'host'     => '127.0.0.1',
     'username' => 'mike',
@@ -165,17 +165,17 @@ $config = [
     'dbname'   => 'test_db',
 ];
 
-// Optional
+// Необязательные
 $config['persistent'] = false;
 
-// Create a connection
+// Создаём соединение
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
 
 ```php
 <?php
 
-// Required
+// Обязательные
 $config = [
     'host'     => 'localhost',
     'username' => 'postgres',
@@ -183,22 +183,22 @@ $config = [
     'dbname'   => 'template',
 ];
 
-// Optional
+// Необязательные
 $config['schema'] = 'public';
 
-// Create a connection
+// Создаём соединение
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
 
 ```php
 <?php
 
-// Required
+// Обязательные
 $config = [
     'dbname' => '/path/to/database.db',
 ];
 
-// Create a connection
+// Создаём соединение
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```
 
@@ -206,12 +206,12 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 ## Настройка дополнительных параметров PDO
 
-You can set PDO options at connection time by passing the parameters `options`:
+Вы можете установить опции PDO во время соединения, передавая параметры `options`:
 
 ```php
 <?php
 
-// Create a connection with PDO options
+// Создаём соединение с настройками PDO
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
     [
         'host'     => 'localhost',
@@ -230,7 +230,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
 
 ## Подключение с помощью фабрики
 
-You can also use a simple `ini` file to configure/connect your `db` service to your database.
+Также, существует возможность использовать простой `ini` файл, чтобы настроить/подключить сервис `db` к базе данных.
 
 ```ini
 [database]
@@ -263,13 +263,13 @@ $di->set(
 );
 ```
 
-The above will return the correct database instance and also has the advantage that you can change the connection credentials or even the database adapter without changing a single line of code in your application.
+Пример выше возвращает корректный экземпляр базы данных и имеет важное преимущество. Он позволяет изменять учётные данные подключения, или даже адаптер базы данных, не изменяя ни одной строки кода в приложении.
 
 <a name='finding-rows'></a>
 
 ## Поиск строк
 
-`Phalcon\Db` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
+`Phalcon\Db` предоставляет несколько методов для запроса строк из таблиц. В данном случае требуется конкретный SQL синтаксис целевой СУБД:
 
 ```php
 <?php
