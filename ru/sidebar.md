@@ -1,6 +1,6 @@
-- [Главная](/[[language]]/[[version]]/introduction) 
+- Главная 
+    - [Introduction](/[[language]]/[[version]]/introduction)
     - [Примечания к выпуску](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
-    - Обновление
     - [Спонсоры](/[[language]]/[[version]]/sponsors)
     - [FAQ](/[[language]]/[[version]]/faq)
 - Содействие 
