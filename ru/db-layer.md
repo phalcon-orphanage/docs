@@ -75,21 +75,21 @@
 
 # Уровень абстракции базы данных
 
-`Phalcon\Db` is the component behind `Phalcon\Mvc\Model` that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
+`Phalcon\Db` является компонентом, располагающимся под `Phalcon\Mvc\Model`, который управляет слоем моделей в фреймворке. Он состоит из независимых абстракций высокого уровня для баз данных, полностью написанных на C.
 
-This component allows for a lower level database manipulation than using traditional models.
+Этот компонент позволяет производить манипуляции с базой данных на более низком уровне, чем при использовании традиционных моделей.
 
 <a name='adapters'></a>
 
 ## Адаптеры баз данных
 
-This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO_ to connect to databases. The following database engines are supported:
+Данный компонент позволяет использовать адаптеры для инкапсуляции конкретных деталей системы баз данных. Phalcon использует PDO для подключения к базам данных. Поддерживаются следующие СУБД:
 
-| Класс                                   | Описание                                                                                                                                                                                                                                        |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Db\Adapter\Pdo\Mysql`      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                               |
-| `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL- мощная реляционная система баз данных с открытым исходным кодом. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
-| `Phalcon\Db\Adapter\Pdo\Sqlite`     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                                |
+| Класс                                   | Описание                                                                                                                                                                                                                          |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Db\Adapter\Pdo\Mysql`      | Наиболее часто используемая реляционная система управления базами данных (RDBMS), которая работает как сервер, обеспечивающий многопользовательский доступ к некоторому набору баз данных                                         |
+| `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL- мощная реляционная система баз данных с открытым исходным кодом. Это более чем 15 лет активного развития и проверенная архитектура, которая завоевала прочную репутацию за надежность, целостность данных и точность. |
+| `Phalcon\Db\Adapter\Pdo\Sqlite`     | Библиотека SQLite реализует автономную, бессерверную, не требующую конфигурации и при этом поддерживающую транзакции базу данных на основе языка SQL.                                                                             |
 
 <a name='adapters-custom'></a>
 
@@ -119,7 +119,7 @@ The `Phalcon\Db\DialectInterface` interface must be implemented in order to crea
 
 ## Подключение к базе данных
 
-To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
+Чтобы создать подключение, необходимо создать экземпляр класса адаптера. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
 
 ```php
 <?php
