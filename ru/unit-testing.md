@@ -9,7 +9,7 @@
           <a href="#unit-helper">PHPUnit хелпер</a>
         </li>
         <li>
-          <a href="#phpunit-config">Файл <code>phpunit.xml</code></a>
+          <a href="#phpunit-config">The <code>phpunit.xml</code> file</a>
         </li>
         <li>
           <a href="#sample">Пример модульного теста</a>
