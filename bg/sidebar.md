@@ -1,6 +1,6 @@
-- [General](/[[language]]/[[version]]/introduction) 
+- General 
+    - [Introduction](/[[language]]/[[version]]/introduction)
     - [Release Notes](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
-    - Upgrade
     - [Sponsors](/[[language]]/[[version]]/sponsors)
     - [FAQ](/[[language]]/[[version]]/faq)
 - Contributions 

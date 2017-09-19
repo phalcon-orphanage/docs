@@ -10,7 +10,7 @@
           <a href="#unit-helper">The PHPUnit helper file</a>
         </li>
         <li>
-          <a href="#phpunit-config">The <code>phpunit.xml</code> file</a>
+          <a href="#phpunit-config">The phpunit.xml file</a>
         </li>
         <li>
           <a href="#sample">Sample Unit Test</a>
