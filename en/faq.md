@@ -34,3 +34,7 @@ credit: [https://github.com/andresgutierrez](https://github.com/andresgutierrez)
 ## How do I help?
 
 Join our [Discord](https://phalcon.link/discord) channel, visit us at [GitHub](https://github.com/phalcon), or on the web at [https://phalconphp.com/](https://phalconphp.com/en/).
+
+<a href="#" class="" style="position: fixed; bottom: 16px; right: 24px; z-index: 100;">
+  <img src="/images/edit_button.svg" alt="edit" style="height: 48px;">
+</a>
