@@ -9,12 +9,16 @@ This helps you to identify bottlenecks in your applications.
 
 ```php
 <?php
+use Phalcon\Db\Profiler;
+use Phalcon\Events\Event;
+use Phalcon\Events\Manager;
 
-$profiler = new \Phalcon\Db\Profiler();
-$eventsManager = new Phalcon\Events\Manager;
+$profiler = new Profiler();
+$eventsManager = new Manager();
+
 $eventsManager->attach(
      "db",
-     function (Phalcon\Events\Event $event, $connection) use ($profiler) {
+     function (Event $event, $connection) use ($profiler) {
         if ($event->getType() === "beforeQuery") {
             $sql = $connection->getSQLStatement();
 
@@ -30,7 +34,6 @@ $eventsManager->attach(
 );
 // Set the event manager on the connection
 $connection->setEventsManager($eventsManager);
-
 
 $sql = "SELECT buyer_name, quantity, product_name
 FROM buyers LEFT JOIN products ON
