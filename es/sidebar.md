@@ -1,6 +1,6 @@
 - [General](/[[language]]/[[version]]/introduction) 
     - [Notas de la Versión](https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md)
-    - Upgrade
+    - Actualizar
     - [Patrocinadores](/[[language]]/[[version]]/sponsors)
 - Contribuciones 
     - [Resumen](/[[language]]/[[version]]/contributions)
@@ -37,14 +37,14 @@
         - [Namespaces](/[[language]]/[[version]]/namespaces)
     - [Logging](/[[language]]/[[version]]/logging) 
         - [Adaptadores](/[[language]]/[[version]]/logging#usage)
-    - [Queue](/[[language]]/[[version]]/queue)
+    - [Colas](/[[language]]/[[version]]/queue)
 - Base de Datos 
     - [Capa](/[[language]]/[[version]]/db-layer)
     - [PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
     - [Modelos](/[[language]]/[[version]]/db-models) 
         - [Comportamientos](/[[language]]/[[version]]/db-models-behaviors)
-        - [Cache](/[[language]]/[[version]]/db-models-cache)
+        - [Caché](/[[language]]/[[version]]/db-models-cache)
         - [Eventos](/[[language]]/[[version]]/db-models-events)
         - [Metadatos](/[[language]]/[[version]]/db-models-metadata)
         - [Relaciones](/[[language]]/[[version]]/db-models-relationships)
@@ -53,7 +53,7 @@
     - [Migraciones](/[[language]]/[[version]]/db-migrations)
     - [Paginación](/[[language]]/[[version]]/db-pagination)
 - Front End 
-    - [Assets](/[[language]]/[[version]]/assets)
+    - [Recursos](/[[language]]/[[version]]/assets)
     - [Mensajes Flash](/[[language]]/[[version]]/flash)
     - [Formularios](/[[language]]/[[version]]/forms)
     - [Imagen](/[[language]]/[[version]]/image)
@@ -77,7 +77,7 @@
     - [Respuesta](/[[language]]/[[version]]/response)
 - Seguridad 
     - [Crypto](/[[language]]/[[version]]/crypt)
-    - [Security](/[[language]]/[[version]]/security)
+    - [Seguridad](/[[language]]/[[version]]/security)
 - i18n 
     - [Internacionalización](/[[language]]/[[version]]/i18n)
     - [Traducciones](/[[language]]/[[version]]/translate)
