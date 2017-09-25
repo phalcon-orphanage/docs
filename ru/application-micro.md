@@ -333,9 +333,9 @@ $app->setService('router', $router, true);
 
 ## Rewrite правила
 
-Для того чтобы маршруты работали необходимо также внести изменения в конфигурацию, вашего, веб-сервера для, вашего, конкретного сайта.
+Для того, чтобы роутинг работал должным образом, необходимо внести изменения в конфигурацию вашего веб-сервера.
 
-Эти изменения описаны в [rewrite правилах](/[[language]]/[[version]]/rewrite-rules).
+Эти изменения описаны в [Apache Rewrite Rules](http://httpd.apache.org/docs/current/rewrite/) и [NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/).
 
 <a name='routing-handlers'></a>
 

@@ -1,14 +1,15 @@
-- [Главная](/[[language]]/[[version]]/introduction) 
+- Главная 
+    - [Introduction](/[[language]]/[[version]]/introduction)
     - [Примечания к выпуску](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
-    - Обновление
     - [Спонсоры](/[[language]]/[[version]]/sponsors)
+    - [FAQ](/[[language]]/[[version]]/faq)
 - Содействие 
     - [Введение](/[[language]]/[[version]]/contributions)
     - [Пулл реквесты](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Генерация трассировки выполнения](/[[language]]/[[version]]/generating-backtrace)
     - [Воспроизводимые тесты](/[[language]]/[[version]]/reproducible-tests)
-    - Руководство по тестированию
+    - [Руководство по тестированию](/[[language]]/[[version]]/unit-testing)
 - Приступая к работе 
     - [Установка](/[[language]]/[[version]]/installation)
     - [Настройка веб-сервера](/[[language]]/[[version]]/webserver-setup) 
