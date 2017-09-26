@@ -1623,6 +1623,8 @@ class CORSMiddleware implements MiddlewareInterface
                 'Content-Disposition, Content-Type, Authorization'
             )
             ->setHeader('Access-Control-Allow-Credentials', 'true');
+            
+        return true;
     }
 
     /**
