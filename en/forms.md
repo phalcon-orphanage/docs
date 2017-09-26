@@ -557,7 +557,6 @@ class ContactForm extends Form
 You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
 
 ```php
-<?php
 
 <form method='post'>
     <?php
