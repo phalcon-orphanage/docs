@@ -1,12 +1,12 @@
 # Abstract class **Phalcon\\Acl\\Adapter**
 
-*implements* [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface), [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
+*Implementa* [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface), [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Adapter for Phalcon\\Acl adapters
+Adaptador para Phalcon\\Acl
 
-## Methods
+## Métodos
 
 public **getActiveRole** ()
 
