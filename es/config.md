@@ -1,27 +1,27 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Reading Configurations</a> <ul>
+      <a href="#overview">Configuraciones de Lectura</a> <ul>
         <li>
           <a href="#factory">Factory</a>
         </li>
         <li>
-          <a href="#native-arrays">Native Arrays</a>
+          <a href="#native-arrays">Arreglos Nativos</a>
         </li>
         <li>
-          <a href="#file-adapter">File Adapters</a>
+          <a href="#file-adapter">Adaptadores de Archivo</a>
         </li>
         <li>
-          <a href="#ini-files">Reading INI Files</a>
+          <a href="#ini-files">Leer Archivos INI</a>
         </li>
         <li>
-          <a href="#merging">Merging Configurations</a>
+          <a href="#merging">Fusión de Configuraciones</a>
         </li>
         <li>
-          <a href="#nested-configuration">Nested Configuration</a>
+          <a href="#nested-configuration">Configuraciones Anidadas</a>
         </li>
         <li>
-          <a href="#injecting-into-di">Injecting Configuration Dependency</a>
+          <a href="#injecting-into-di">Inyección de Dependencias de Configuración</a>
         </li>
       </ul>
     </li>
@@ -30,11 +30,11 @@
 
 <a name='overview'></a>
 
-# Reading Configurations
+# Configuraciones de Lectura
 
-`Phalcon\Config` is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
+`Phalcon\Config` es un componente utilizado para convertir los archivos de configuración de varios formatos (usando adaptadores) a objetos PHP para usarlos en una aplicación.
 
-Values can be obtained from `Phalcon\Config` as follows:
+Los valores pueden obtenerse de `Phalcon\Config` como se muestra a continuación:
 
 ```php
 <?php
@@ -52,16 +52,16 @@ $config = new Config(
     ]
 );
 
-echo $config->get('test')->get('parent')->get('property');  // displays 1
-echo $config->test->parent->property;                       // displays 1
-echo $config->path('test.parent.property');                 // displays 1
+echo $config->get('test')->get('parent')->get('property');  // muestra 1
+echo $config->test->parent->property;                       // muestra 1
+echo $config->path('test.parent.property');                 // muestra 1
 ```
 
 <a name='factory'></a>
 
 ## Factory
 
-Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`.
+Carga la clase Adaptador Config usando la opción `adapter`, si no se provee una extensión, se agregará a `filePath`.
 
 ```php
 <?php
@@ -78,9 +78,9 @@ $config = Factory::load($options);
 
 <a name='native-arrays'></a>
 
-## Native Arrays
+## Arreglos Nativos
 
-The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
+El primer ejemplo muestra cómo convertir los arreglos nativos en objetos `Phalcon\Config`. Esta opción ofrece el mejor desempeño ya que no hay archivos que deban leerse durante esta solicitud.
 
 ```php
 <?php
@@ -110,7 +110,7 @@ echo $config->database->username, "\n";
 echo $config->mysetting, "\n";
 ```
 
-If you want to better organize your project you can save the array in another file and then read it.
+Si quiere organizar mejor su proyecto puede guardar el arreglo en otro archivo y luego leerlo.
 
 ```php
 <?php
@@ -124,22 +124,22 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## File Adapters
+## Adaptadores de Archivo
 
-The adapters available are:
+Los adaptadores disponibles son:
 
-| Class                            | Description                                                                                      |
-| -------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `Phalcon\Config\Adapter\Ini`  | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
-| `Phalcon\Config\Adapter\Json` | Uses JSON files to store settings.                                                               |
-| `Phalcon\Config\Adapter\Php`  | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
-| `Phalcon\Config\Adapter\Yaml` | Uses YAML files to store settings.                                                               |
+| Clase                            | Descripción                                                                                                              |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `Phalcon\Config\Adapter\Ini`  | Utiliza archivos INI para almacenar la configuración. Internamente el adaptador utiliza la función PHP `parse_ini_file`. |
+| `Phalcon\Config\Adapter\Json` | Utiliza archivos JSON para almacenar la configuración.                                                                   |
+| `Phalcon\Config\Adapter\Php`  | Utiliza arreglos multidimensionales en PHP para almacenar la configuración. Este adaptador ofrece el mejor rendimiento.  |
+| `Phalcon\Config\Adapter\Yaml` | Utiliza archivos YAML para almacenar la configuración.                                                                   |
 
 <a name='ini-files'></a>
 
-## Reading INI Files
+## Leer Archivos INI
 
-Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
+Los archivos ini son una forma común para almacenar la configuración. `Phalcon\Config` utiliza la función optimizada de PHP `parse_ini_file` para leer estos archivos. Las secciones de los archivos se analizan en sub-conjuntos para facilitar el acceso.
 
 ```ini
 [database]
@@ -158,7 +158,7 @@ viewsDir       = '../app/views/'
 metadata.adapter  = 'Memory'
 ```
 
-You can read the file as follows:
+Puede leer el archivo de la siguiente forma:
 
 ```php
 <?php
@@ -174,9 +174,9 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## Merging Configurations
+## Fusión de Configuraciones
 
-`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
+`Phalcon\Config` puede combinar recursivamente las propiedades de un objeto de configuración en otro. Las nuevas propiedades se agregan y las existentes se actualizan.
 
 ```php
 <?php
@@ -209,7 +209,7 @@ $config->merge($config2);
 print_r($config);
 ```
 
-The above code produces the following:
+El código anterior devuelve lo siguiente:
 
 ```bash
 Phalcon\Config Object
@@ -226,13 +226,13 @@ Phalcon\Config Object
 )
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator).
+Hay más adaptadores disponibles para estos componentes en la [Incubadora de Phalcon](https://github.com/phalcon/incubator).
 
 <a name='nested-configuration'></a>
 
-## Nested Configuration
+## Configuraciones Anidadas
 
-You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. Let's look at an example:
+Usted puede acceder fácilmente a los valores de configuración anidados, utilizando el método `Phalcon\Config::path`. Este método permite obtener valores sin preocuparse, por el hecho, de que algunas partes de la ruta estén ausentes. Veamos un ejemplo:
 
 ```php
 <?php
@@ -263,21 +263,21 @@ $config = new Config(
    ]
 );
 
-// Using dot as delimiter
+// Usando el punto cono delimitador
 $config->path('test.parent.property2');    // yeah
 $config->path('database.host', null, '.'); // localhost
 
 $config->path('test.parent'); // Phalcon\Config
 
-// Using slash as delimiter. A default value may also be specified and
-// will be returned if the configuration option does not exist.
+// Usando una diagonal como delimitador. Un valor por default puede ser especificado y
+// será devuelto si la opción de configuración no existe.
 $config->path('test/parent/property3', 'no', '/'); // no
 
 Config::setPathDelimiter('/');
 $config->path('test/parent/property2'); // yeah
 ```
 
-The following example shows how to create usefull facade to access nested configuration values:
+En el ejemplo siguiente se muestra cómo crear una fachada útil para acceder a los valores de configuración anidados:
 
 ```php
 <?php
@@ -302,9 +302,9 @@ function config() {
 
 <a name='injecting-into-di'></a>
 
-## Injecting Configuration Dependency
+## Inyección de Dependencias de Configuración
 
-You can inject your configuration to the controller allowing us to use `Phalcon\Config` inside `Phalcon\Mvc\Controller`. To be able to do that, you have to add it as a service in the Dependency Injector container. Add following code inside your bootstrap file:
+Puede inyectar su configuración en el controlador, lo que nos permite usar `Phalcon\Config` dentro de `Phalcon\Mvc\Controller`. Para poder hacerlo, tienes que añadirlo como un servicio en el contenedor del Inyector de Dependencias. Añade el siguiente código dentro de tu archivo bootstrap o de inicialización:
 
 ```php
 <?php
@@ -312,7 +312,7 @@ You can inject your configuration to the controller allowing us to use `Phalcon\
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config;
 
-// Create a DI
+// Crear un DI (Inyector de Dependencias)
 $di = new FactoryDefault();
 
 $di->set(
@@ -325,7 +325,7 @@ $di->set(
 );
 ```
 
-Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
+Ahora, en el controlador, puede acceder a su configuración usando la función de inyección de dependencia mediante el nombre `config` como se muestra en el siguiente código:
 
 ```php
 <?php

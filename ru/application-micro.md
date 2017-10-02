@@ -1681,7 +1681,7 @@ class RedirectMiddleware implements MiddlewareInterface
 
 #### CORS Middleware
 
-Again this middleware is attached to the `before` event of our Micro application. We need to ensure that it fires before anything happens with our application
+Этот middleware также прикрепляется к событию `before` нашего Micro приложения. Мы должны убедиться, что оно вызывается прежде чем что-либо происходит в нашем приложении
 
 ```php
 <?php
@@ -1741,7 +1741,6 @@ class CORSMiddleware implements MiddlewareInterface
     {
         return true;
     }
-}
 ```
 
 <a name='middleware-events-api-request'></a>

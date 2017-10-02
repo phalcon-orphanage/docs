@@ -1,4 +1,4 @@
-## API Index
+## Índice del API
 
 - [Phalcon\Acl](/en/3.2/api/Phalcon_Acl)
 - [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_Adapter)
