@@ -1,52 +1,52 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-micro-application">Creating a Micro Application</a>
+      <a href="#creating-micro-application">Creando una Micro Aplicación</a>
     </li>
     <li>
-      <a href="#routing">Routing</a> 
+      <a href="#routing">Ruteo</a> 
       <ul>
         <li>
-          <a href="#routing-setup">Setup</a> 
+          <a href="#routing-setup">Configuración</a> 
           <ul>
             <li>
-              <a href="#routing-setup-application">Application object</a>
+              <a href="#routing-setup-application">El Objeto de la Aplicación</a>
             </li>
             <li>
-              <a href="#routing-setup-router">Router object</a>
+              <a href="#routing-setup-router">El Objeto Ruoter</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#rewrite-rules">Rewrite Rules</a>
+          <a href="#rewrite-rules">Reglas de reescritura</a>
         </li>
         <li>
-          <a href="#routing-handlers">Handlers</a> <ul>
+          <a href="#routing-handlers">Manejadores</a> <ul>
             <li>
-              <a href="#routing-handlers-definitions">Definitions</a> 
+              <a href="#routing-handlers-definitions">Definiciones</a> 
               <ul>
                 <li>
-                  <a href="#routing-handlers-anonymous-function">Anonymous Function</a>
+                  <a href="#routing-handlers-anonymous-function">Funciones anónimas</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-function">Function</a>
+                  <a href="#routing-handlers-function">Funciones</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-static-method">Static Method</a>
+                  <a href="#routing-handlers-static-method">Método estático</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-object-method">Method in an Object</a>
+                  <a href="#routing-handlers-object-method">Método en un objeto</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-controllers">Controllers</a>
+                  <a href="#routing-handlers-controllers">Controladores</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#routing-handlers-controllers-lazy-loading">Lazy Loading</a> 
+              <a href="#routing-handlers-controllers-lazy-loading">Carga perezosa (Lazy Load)</a> 
               <ul>
                 <li>
-                  <a href="#routing-handlers-controllers-lazy-loading-use-case">Use case</a>
+                  <a href="#routing-handlers-controllers-lazy-loading-use-case">Casos de uso</a>
                 </li>
               </ul>
             </li>
@@ -56,7 +56,7 @@
           </ul>
         </li>
         <li>
-          <a href="#routing-verbs">Methods - Verbs</a> 
+          <a href="#routing-verbs">Métodos - verbos</a> 
           <ul>
             <li>
               <a href="#routing-verb-delete">delete</a>
@@ -85,42 +85,42 @@
           </ul>
         </li>
         <li>
-          <a href="#routing-collections">Collections</a>
+          <a href="#routing-collections">Colecciones</a>
         </li>
         <li>
-          <a href="#routing-parameters">Parameters</a>
+          <a href="#routing-parameters">Parámetros</a>
         </li>
         <li>
-          <a href="#routing-redirections">Redirections</a>
+          <a href="#routing-redirections">Redirecciones</a>
         </li>
         <li>
-          <a href="#routing-urls-for-routes">URLs for Routes</a>
+          <a href="#routing-urls-for-routes">URLs para Rutas</a>
         </li>
       </ul>
     </li>
     <li>
-      <a href="#dependency-injector">Dependency Injector</a>
+      <a href="#dependency-injector">Inyector de Dependencias</a>
     </li>
     <li>
-      <a href="#responses">Responses</a> 
+      <a href="#responses">Respuestas</a> 
       <ul>
         <li>
-          <a href="#responses-direct-output">Direct output</a>
+          <a href="#responses-direct-output">Salida Directa</a>
         </li>
         <li>
-          <a href="#responses-include">Including another file</a>
+          <a href="#responses-include">Incluir Otro Archivo</a>
         </li>
         <li>
-          <a href="#responses-direct-output-json">Direct output JSON</a>
+          <a href="#responses-direct-output-json">Salida Directa JSON</a>
         </li>
         <li>
-          <a href="#responses-new-response-object">New Response object</a>
+          <a href="#responses-new-response-object">Nuevo Objeto Response</a>
         </li>
         <li>
-          <a href="#responses-application-response">Application Response</a>
+          <a href="#responses-application-response">Respuesta de la Aplicación</a>
         </li>
         <li>
-          <a href="#responses-return-application-response">Return Application Response</a>
+          <a href="#responses-return-application-response">Devolver Respuestas de la Aplicación</a>
         </li>
         <li>
           <a href="#responses-json">JSON</a>
@@ -128,15 +128,15 @@
       </ul>
     </li>
     <li>
-      <a href="#events">Events</a> 
+      <a href="#events">Eventos</a> 
       <ul>
         <li>
-          <a href="#events-available-events">Available events</a> <ul>
+          <a href="#events-available-events">Eventos Disponibles</a> <ul>
             <li>
-              <a href="#events-available-events-authentication">Authentication example</a>
+              <a href="#events-available-events-authentication">Ejemplo de Autenticación</a>
             </li>
             <li>
-              <a href="#events-available-events-not-found">Not found example</a>
+              <a href="#events-available-events-not-found">Ejemplo de Not Found</a>
             </li>
           </ul>
         </li>
@@ -145,7 +145,7 @@
     <li>
       <a href="#middleware">Middleware</a> <ul>
         <li>
-          <a href="#middleware-attached-events">Attached events</a> 
+          <a href="#middleware-attached-events">Eventos adjuntos</a> 
           <ul>
             <li>
               <a href="#middleware-attached-events-before">before</a>
@@ -159,16 +159,16 @@
           </ul>
         </li>
         <li>
-          <a href="#middleware-implementation">Implementation</a>
+          <a href="#middleware-implementation">Implementación</a>
         </li>
         <li>
-          <a href="#middleware-setup">Setup</a>
+          <a href="#middleware-setup">Configuración</a>
         </li>
         <li>
-          <a href="#middleware-events">Events in Middleware</a> 
+          <a href="#middleware-events">Eventos en Middleware</a> 
           <ul>
             <li>
-              <a href="#middleware-events-api">API example</a> 
+              <a href="#middleware-events-api">Ejemplo de API</a> 
               <ul>
                 <li>
                   <a href="#middleware-events-api-firewall">Firewall Middleware</a>
@@ -177,16 +177,16 @@
                   <a href="#middleware-events-api-not-found">Not Found Middleware</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-redirect">Redirect Middleware</a>
+                  <a href="#middleware-events-api-redirect">Redirección en Middleware</a>
                 </li>
                 <li>
                   <a href="#middleware-events-api-cors">CORS Middleware</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-request">Request Middleware</a>
+                  <a href="#middleware-events-api-request">Solicitud Middleware</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-response">Response Middleware</a>
+                  <a href="#middleware-events-api-response">Respuesta Middleware</a>
                 </li>
               </ul>
             </li>
@@ -195,25 +195,25 @@
       </ul>
     </li>
     <li>
-      <a href="#models">Models</a>
+      <a href="#models">Modelos</a>
     </li>
     <li>
-      <a href="#model-instances">Injecting Model Instances</a>
+      <a href="#model-instances">Inyectando instancias de modelos</a>
     </li>
     <li>
-      <a href="#views">Views</a>
+      <a href="#views">Vistas</a>
     </li>
     <li>
-      <a href="#error-handling">Error Handling</a>
+      <a href="#error-handling">Manejo de Errores</a>
     </li>
   </ul>
 </div>
 
-# Micro Applications
+# Micro Aplicaciones
 
-Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code.
+Phalcon ofrece una aplicación muy 'fina', para que pueda crear 'Micro' aplicaciones con un mínimo de código PHP.
 
-Micro applications are suitable for small applications that will have very low overhead. Such applications are for instance our [website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
+Las Micro Aplicaciones son convenientes para aplicaciones pequeñas que van a tener un uso muy ligero. Este tipo de aplicaciones es, por ejemplo, nuestro [sitio web](https://github.com/phalcon/website), este sitio web ([docs](https://github.com/phalcon/docs)), nuestra [tienda](https://github.com/phalcon/store), APIs, prototipos etc.
 
 ```php
 <?php
@@ -234,9 +234,9 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 
-## Creating a Micro Application
+## Creando una Micro Aplicación
 
-The `Phalcon\Mvc\Micro` class is the one responsible for creating a Micro application.
+La clase `Phalcon\Mvc\Micro` es la responsable de crear una Micro Aplicación.
 
 ```php
 <?php
@@ -248,32 +248,32 @@ $app = new Micro();
 
 <a name='routing'></a>
 
-## Routing
+## Ruteo
 
-Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are defined as follows:
+Es muy fácil definir rutas en una aplicación `Phalcon\Mvc\Micro`. Las rutas se definen de la siguiente manera:
 
 ```text
-   Application -> (method/verb) -> (route url/regex, callable PHP function)
+   Aplicación -> (método/verbo) -> (url de la ruta/expresión regular, función PHP de llamada)
 ```
 
 <a name='routing-setup'></a>
 
-### Setup
+### Configuración
 
-Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[version]]/routing)]
+El enrutamiento se controla mediante el objeto `Phalcon\Mvc\Router`. [[más información](/[[language]]/[[version]]/routing)]
 
 <div class="alert alert-danger">
     <p>
-        Routes must always start with <code>/</code>
+        Las rutas deben empezar siempre con <code>/</code>
     </p>
 </div>
 
-Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
+Generalmente, la ruta de inicio en una aplicación, es la ruta `/` y en la mayoría de los casos se accede mediante el método HTTP GET:
 
 ```php
 <?php
 
-// This is the start route
+// Esta es la ruta inicial
 $app->get(
     '/',
     function () {
@@ -284,16 +284,16 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-### Application object
+### El Objeto de la Aplicación
 
-Routes can be set using the `Phalcon\Mvc\Micro` application object as follows:
+Las rutas se pueden definir mediante el objeto de aplicación `Phalcon\Mvc\Micro`, de la siguiente manera:
 
 ```php
 use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Matches a GET request
+// Captura consultas GET 
 $app->get(
     '/orders/display/{name}',
     function ($name) {
@@ -304,9 +304,9 @@ $app->get(
 
 <a name='routing-setup-router'></a>
 
-### Router object
+### El Objeto Ruoter
 
-You can also create a `Phalcon\Mvc\Router` object, setting the routes there and then injecting it in the dependency injection container.
+También puedes crear un objeto `Phalcon\Mvc\Router`, establece las rutas en el y luego debes inyectarlo en el contenedor del inyector de dependencias.
 
 ```php
 use Phalcon\Mvc\Micro;
@@ -325,35 +325,35 @@ $app = new Micro();
 $app->setService('router', $router, true);
 ```
 
-Setting up your routes using the `Phalcon\Mvc\Micro` applications verb methods (`get`, `post`, etc.) is much easier than setting up a router object with relevant routes and then injecting it in the application.
+Configurar las rutas usando los métodos (`get`, `post`, etc.) del objeto `Phalcon\Mvc\Micro` de micro aplicaciones es mucho más fácil que crear un objeto de enrutador con rutas pertinentes y luego inyectarla en la aplicación.
 
-Each method has its advantages and disadvantages. It all depends on the design and needs of your application.
+Cada método tiene sus ventajas y desventajas. Todo depende del diseño y necesidades de tu aplicación.
 
 <a name='rewrite-rules'></a>
 
-## Rewrite Rules
+## Reglas de Reescritura
 
-In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
+Para que las rutas funcionen, ciertos cambios de configuración deben hacerse en la configuración de tu servidor web para cada sitio web en particular.
 
-Those changes are outlined in the [Apache Rewrite Rules](http://httpd.apache.org/docs/current/rewrite/) and [NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/).
+Estos cambios están descritos en las reglas de reescritura de [Apache](http://httpd.apache.org/docs/current/rewrite/) o [NGINX](https://www.nginx.com/blog/creating-nginx-rewrite-rules/), dependiendo del servidor que este utilizado.
 
 <a name='routing-handlers'></a>
 
-## Handlers
+## Manejadores
 
-Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
+Los Manejadores (Handlers), son piezas de código accesibles que están vinculados a una ruta. Cuando una ruta es igualada, el manejador es ejecutado con todos los parámetros definidos. Un manejador es cualquier código accesible que existe en PHP.
 
 <a name='routing-handlers-definitions'></a>
 
-### Definitions
+### Definiciones
 
-Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
+Phalcon ofrece varias formas de conectar un manejador a una ruta. Las necesidades de tu aplicación y su diseño así como el estilo de codificación serán los factores que influyan en la manera que implementes esto.
 
 <a name='routing-handlers-anonymous-function'></a>
 
-#### Anonymous Function
+#### Funciones Anónimas
 
-Finally we can use an anonymous function (as seen above) to handle the request
+Finalmente podemos utilizar una función anónima (como se ve arriba) para atender la solicitud
 
 ```php
 $app->get(
@@ -364,7 +364,7 @@ $app->get(
 );
 ```
 
-Accessing the `$app` object inside the anonymous function can be achieved by injecting it as follows:
+Acceder al objeto `$app` dentro de la función anónima puede lograrse mediante la inyección de esta, de la siguiente manera:
 
 ```php
 $app->get(
@@ -379,12 +379,12 @@ $app->get(
 
 <a name='routing-handlers-function'></a>
 
-#### Function
+#### Función
 
-We can define a function as our handler and attach it to a specific route.
+Podemos definir una función como nuestro manejador y adjuntarlo a una ruta específica.
 
 ```php
-// With a function
+// Con una función
 function order_display($name) {
     echo "<h1>This is order: {$name}!</h1>";
 }
@@ -397,9 +397,9 @@ $app->get(
 
 <a name='routing-handlers-static-method'></a>
 
-#### Static Method
+#### Método Estático
 
-We can also use a static method as our handler as follows:
+También podemos usar un método estático como nuestro manejador, como se muestra a continuación:
 
 ```php
 class OrdersClass
@@ -417,9 +417,9 @@ $app->get(
 
 <a name='routing-handlers-object-method'></a>
 
-#### Method in an Object
+#### Método en un Objeto
 
-We can also use a method in an object:
+También podemos usar un método en un objeto:
 
 ```php
 class OrdersClass
@@ -441,11 +441,11 @@ $app->get(
 
 <a name='routing-handlers-controllers'></a>
 
-#### Controllers
+#### Controladores
 
-With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
+Con `Phalcon\Mvc\Micro` puedes crear micro o medianas aplicaciones. Estas últimas utilizan la arquitectura micro pero se amplían para utilizar más características que las aplicaciones Micro pero no tantas como lo hace una aplicación completa.
 
-In medium applications you can organize handlers in controllers.
+En aplicaciones medianas puedes organizar los manejadores en los controladores.
 
 ```php
 <?php
@@ -454,22 +454,22 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $orders = new MicroCollection();
 
-// Set the main handler. ie. a controller instance
+// Establece el manejador principal. Por ejemplo, la instancia de un controlador
 $orders->setHandler(new OrdersController());
 
-// Set a common prefix for all routes
+// Establece un prefijo común para todas la rutas
 $orders->setPrefix('/orders');
 
-// Use the method 'index' in OrdersController
+// Usa el método 'index' en OrdersController
 $orders->get('/', 'index');
 
-// Use the method 'show' in OrdersController
+// Usa el método 'show' en OrdersController
 $orders->get('/display/{slug}', 'show');
 
 $app->mount($orders);
 ```
 
-The `OrdersController` might look like this:
+El `OrdersController` podría tener este aspecto:
 
 ```php
 <?php
@@ -490,7 +490,7 @@ class OrdersController extends Controller
 }
 ```
 
-Since our controllers extend the `Phalcon\Mvc\Controller`, all the dependency injection services are available with their respective registration names. For example:
+Puesto que nuestros controladores extienden de la clase `Phalcon\Mvc\Controller`, todos los servicios de la inyección de dependencias están disponibles con sus nombres de registro respectivos. Por ejemplo:
 
 ```php
 <?php
