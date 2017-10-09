@@ -1291,25 +1291,25 @@ $app->setEventsManager($eventsManager);
 
 # Middleware
 
-Middleware are classes that can be attached to your application and introduce another layer where business logic can exist. They run sequentially, according to the order they are registered and not only improve mainainability, by encapsulating specific functionality, but also performance. A middleware class can stop execution when a particular business rule has not been satisfied, thus allowing the application to exit early without executing the full cycle of a request.
+Middleware son clases que pueden adjuntarse a su solicitud y presentar otra capa donde la lógica de negocio puede existir. Se ejecutan secuencialmente, según el orden que están registrados y no sólo mejoran el mantenimiento, mediante el encapsulamiento de funcionalidades específicas, sino también el rendimiento. Una clase de middleware puede detener la ejecución cuando una regla de negocio particular no haya sido satisfactoria, lo que permite a la aplicación salir antes de tiempo sin ejecutar el ciclo completo de una solicitud.
 
-The presence of a `Phalcon\Events\Manager` is essential for middleware to operate, so it has to be registered in our Di container.
+La presencia de un `Phalcon\Events\Manager` es esencial para el middleware al operar, por lo que tiene estar registrado en nuestro contenedor Di.
 
 <a name='middleware-attached-events'></a>
 
-## Attached events
+## Eventos adjuntos
 
-Middleware can be attached to a micro application in 3 different events. Those are:
+Middleware se puede adjuntar a una micro aplicación en 3 diferentes eventos. Estos son:
 
-| Event  | Description                                    |
-| ------ | ---------------------------------------------- |
-| before | Before the handler has been executed           |
-| after  | After the handler has been executed            |
-| final  | After the response has been sent to the caller |
+| Evento | Descripción                                                                   |
+| ------ | ----------------------------------------------------------------------------- |
+| before | Antes de que el manejador haya sido ejecutado                                 |
+| after  | Después de que el manejador haya sido ejecutado                               |
+| final  | Después de que la respuesta ha sido enviada al componente que hizo la llamada |
 
 <div class="alert alert-warning">
     <p>
-        You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.
+        Puede colocar tantas clases de middleware como quieras en cada uno de los eventos antes mencionados. Se ejecutarán secuencialmente cuando el evento es disparado.
     </p>
 </div>
 
@@ -1317,15 +1317,15 @@ Middleware can be attached to a micro application in 3 different events. Those a
 
 ### before
 
-This event is perfect for stopping execution of the application if certain criteria is not met. In the below example we are checking if the user has been authenticated and stop execution with the necessary redirect.
+Este evento es perfecto para detener la ejecución de la aplicación si no se cumplen ciertos criterios. En el siguiente ejemplo comprobaremos si el usuario ha sido autenticado y detenemos la ejecución con la redirección es necesaria.
 
 ```php
 <?php
 
 $app = new Phalcon\Mvc\Micro();
 
-// Executed before every route is executed
-// Return false cancels the route execution
+// Ejecutado antes que cada route se ejecute
+// Retornar false cancela la ejecución del route
 $app->before(
     function () use ($app) {
         if (false === $app['session']->get('auth')) {
@@ -1333,7 +1333,7 @@ $app->before(
 
             $app['response']->redirect('/error');
 
-            // Return false stops the normal execution
+            // Retornamos false para detener la ejecución 
             return false;
         }
 
@@ -1346,7 +1346,7 @@ $app->before(
 
 ### after
 
-This event can be used to manipulate data or perform actions that are needed after the handler has finished executing. In the example below, we manipulate our response to send JSON back to the caller.
+Este evento puede utilizarse para manipular los datos o realizar acciones que son necesarias después de que el manejador ha terminado de ejecutarse. En el siguiente ejemplo, manipulamos nuestra respuesta para enviar un JSON al llamador.
 
 ```php
 $app->map(
@@ -1360,7 +1360,7 @@ $app->map(
 
 $app->after(
     function () use ($app) {
-        // This is executed after the route is executed
+        // Esto es ejecutado después de ejecutarse el route
         echo json_encode($app->getReturnedValue());
     }
 );
@@ -1370,7 +1370,7 @@ $app->after(
 
 ### finish
 
-This even will fire up when the whole request cycle has been completed. In the example below, we use it to clean up some cache files.
+Esto se ejecuta cuando se ha completado el ciclo de toda petición. En el ejemplo siguiente, la utilizamos para limpiar algunos archivos de caché.
 
 ```php
 $app->finish(
@@ -1384,9 +1384,9 @@ $app->finish(
 
 <a name='middleware-setup'></a>
 
-## Setup
+## Configuración
 
-Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
+Agregar un middleware para tu aplicación es muy fácil como se muestra arriba, con las llamadas al método `before`, `after` y `finish`.
 
 ```php
 $app->before(
@@ -1396,7 +1396,7 @@ $app->before(
 
             $app['response']->redirect('/error');
 
-            // Return false stops the normal execution
+            // Devolver false detiene la ejecución normal
             return false;
         }
 
@@ -1406,13 +1406,13 @@ $app->before(
 
 $app->after(
     function () use ($app) {
-        // This is executed after the route is executed
+        // Esto se ejecuta después de que la ruta es ejecutada
         echo json_encode($app->getReturnedValue());
     }
 );
 ```
 
-Attaching middleware to your application as classes and having it listen to events from the events manager can be achieved as follows:
+Agregar middleware en tu aplicación como clases y para escuchar a los eventos desde el gestor de eventos, se logra de la siguiente manera:
 
 ```php
 <?php
@@ -1425,13 +1425,13 @@ use Website\Middleware\NotFoundMiddleware;
 use Website\Middleware\ResponseMiddleware;
 
 /**
- * Create a new Events Manager.
+ * Crear un nuevo Gestor de Eventos.
  */
 $eventsManager = new Manager();
 $application   = new Micro();
 
 /**
- * Attach the middleware both to the events manager and the application
+ * Agregar el middleware tanto para el gestor de eventos como para la aplicación
  */
 $eventsManager->attach('micro', new CacheMiddleware());
 $application->before(new CacheMiddleware());
@@ -1440,29 +1440,29 @@ $eventsManager->attach('micro', new NotFoundMiddleware());
 $application->before(new NotFoundMiddleware());
 
 /**
- * This one needs to listen on the `after` event
+ * Este se necesita para escuchar al eventos `after`
  */
 $eventsManager->attach('micro', new ResponseMiddleware());
 $application->after(new ResponseMiddleware());
 
 /**
- * Make sure our events manager is in the DI container now
+ * Asegurate que el gestor de eventos esté ahora en el contenedor DI
  */
 $application->setEventsManager($eventsManager);
 
 ```
 
-We need a `Phalcon\Events\Manager` object. This can be a newly instantiated object or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one).
+Necesitamos un objeto `Phalcon\Events\Manager`. Esto puede ser una nueva instancia del objeto o podemos conseguir uno que exista en nuestro contenedor de DI (si has usado el de `FactoryDefault`).
 
-We attach every middleware class in the `micro` hook in the Events Manager. We could also be a bit more specific and attach it to say the `micro:beforeExecuteRoute` event.
+Conectamos cada clase middleware en el conector `micro` del administrador de eventos. También podríamos ser un poco más específicos y conectarlo, por ejemplo, al evento `micro:beforeExecuteRoute`.
 
-We then attach the middleware class in our application on one of the three listening events discussed above (`before`, `after`, `finish`).
+Entonces conectamos la clase de middleware en nuestra aplicación en uno de los tres eventos comentados anteriormente (`before`, `after`, `finish`).
 
 <a name='middleware-implementation'></a>
 
-## Implementation
+## Implementación
 
-Middleware can be any kind of PHP callable functions. You can organize your code whichever way you like it to implement middleware. If you choose to use classes for your middleware, you will need them to implement the `Phalcon\Mvc\Micro\MiddlewareInterface`
+Un Middleware puede ser cualquier tipo de función PHP accesible. Puedes organizar el código de cualquier modo te guste para implementar un middleware. Si eliges utilizar las clases para el middleware, necesitarás que implementen la clase `Phalcon\Mvc\Micro\MiddlewareInterface`
 
 ```php
 <?php
@@ -1473,12 +1473,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * CacheMiddleware
  *
- * Caches pages to reduce processing
+ * Caches de página para reducir el procesamiento
  */
 class CacheMiddleware implements MiddlewareInterface
 {
     /**
-     * Calls the middleware
+     * Llama al middleware
      *
      * @param Micro $application
      *
@@ -1491,7 +1491,7 @@ class CacheMiddleware implements MiddlewareInterface
 
         $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
 
-        // Check if the request is cached
+        // Verificar si la solicitud se encuentra en cache
         if ($cache->exists($key)) {
             echo $cache->get($key);
 
@@ -1505,23 +1505,23 @@ class CacheMiddleware implements MiddlewareInterface
 
 <a name='middleware-events'></a>
 
-## Events in Middleware
+## Eventos en Middleware
 
-The [events](#events) that are triggered for our application also trigger inside a class that implements the `Phalcon\Mvc\Micro\MiddlewareInterface`. This offers great flexibility and power for developers since we can interact with the request process.
+Los [eventos](#events) que se activan para nuestra aplicación también accionan eventos internamente de una clase que implementa `Phalcon\Mvc\Micro\MiddlewareInterface`. Esto ofrece una gran flexibilidad y potencial para los desarrolladores, ya que podemos interactuar con el proceso de solicitud.
 
 <a name='middleware-events-api'></a>
 
-### API example
+### Ejemplo de API
 
-Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
+Supongamos que tenemos una API que hayamos implementado con una Micro aplicación. Tendríamos que colocar diferentes clases de Middleware en la aplicación y así podríamos controlar la ejecución de la aplicación.
 
-The middleware that we will use are: * Firewall * NotFound * Redirect * CORS * Request * Response
+El middleware que usaríamos sería el siguiente: * Firewall * NotFound * Redirect * CORS * Request * Response
 
 <a name='middleware-events-api-firewall'></a>
 
 #### Firewall Middleware
 
-This middleware is attached to the `before` event of our Micro application. The purpose of this middleware is to check who is calling our API and based on a whitelist, allow them to proceed or not
+Este middleware se conecta al evento `before` de nuestra Micro aplicación. El propósito de este middleware es verificar quién está llamando nuestra API y basado en una lista blanca, para permitir que se proceda o no
 
 ```php
 <?php
@@ -1533,12 +1533,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * FirewallMiddleware
  *
- * Checks the whitelist and allows clients or not
+ * Comprueba la lista blanca y permite el acceso a los clientes o no
  */
 class FirewallMiddleware implements MiddlewareInterface
 {
     /**
-     * Before anything happens
+     * Antes que se ejecute cualquier cosa
      *
      * @param Event $event
      * @param Micro $application
@@ -1566,7 +1566,7 @@ class FirewallMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Llamar al middleware
      *
      * @param Micro $application
      *
@@ -1583,7 +1583,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 #### Not Found Middleware
 
-When this middleware is processed, this means that the requesting IP is allowed to access our application. The application will try and match the route and if not found the `beforeNotFound` event will fire. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
+Cuando se procesa este middleware, significa que la IP solicitante está autorizada a acceder a nuestra aplicación. La aplicación probará y buscará una coincidencia con la ruta y si no encuentra alguna, el evento `beforeNotFound` se activará. Cuando esto ocurra se detendrá el proceso y se devolverá al usuario la respuesta 404 pertinente. Este middleware está conectado al evento `before` de la Micro aplicación
 
 ```php
 <?php
@@ -1594,12 +1594,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * NotFoundMiddleware
  *
- * Processes the 404s
+ * Procesa los 404s
  */
 class NotFoundMiddleware implements MiddlewareInterface
 {
     /**
-     * The route has not been found
+     * La ruta no ha sido encontrada
      *
      * @returns bool
      */
@@ -1612,7 +1612,7 @@ class NotFoundMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Llama al middleware
      *
      * @param Micro $application
      *
@@ -1629,7 +1629,7 @@ class NotFoundMiddleware implements MiddlewareInterface
 
 #### Redirect Middleware
 
-We attach this middleware again to the `before` event of our Micro application because we don't want the request to proceed if the requested endpoint needs to be redirected.
+Conectamos este middleware otra vez al evento `before` de nuestra Micro aplicación porque no queremos que se procese la solicitud si del destino requerido necesita ser redirigido.
 
 ```php
 <?php
@@ -1641,12 +1641,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * RedirectMiddleware
  *
- * Checks the request and redirects the user somewhere else if need be
+ * Verificar la solicitud y redireccionar al usuario a algún lugar si se necesario
  */
 class RedirectMiddleware implements MiddlewareInterface
 {
     /**
-     * Before anything happens
+     * Antes que nada ocurra
      *
      * @param Event $event
      * @param Micro $application
@@ -1666,7 +1666,7 @@ class RedirectMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Llama al middleware
      *
      * @param Micro $application
      *
@@ -1683,7 +1683,7 @@ class RedirectMiddleware implements MiddlewareInterface
 
 #### CORS Middleware
 
-Again this middleware is attached to the `before` event of our Micro application. We need to ensure that it fires before anything happens with our application
+De nuevo, este middleware se conecta al evento `before` de nuestra Micro aplicación. Tenemos que garantizar que esto se active antes de que algo suceda con nuestra aplicación
 
 ```php
 <?php
@@ -1695,12 +1695,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * CORSMiddleware
  *
- * CORS checking
+ * Verificación CORS
  */
 class CORSMiddleware implements MiddlewareInterface
 {
     /**
-     * Before anything happens
+     * Antes de que algo suceda
      *
      * @param Event $event
      * @param Micro $application
@@ -1733,7 +1733,7 @@ class CORSMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Llamar al middleware
      *
      * @param Micro $application
      *
@@ -1750,7 +1750,7 @@ class CORSMiddleware implements MiddlewareInterface
 
 #### Request Middleware
 
-This middleware is receiving a JSON payload and checks it. If the JSON payload is not valid it will stop execution.
+Este middleware está recibiendo una carga JSON y la revisa. Si la carga JSON no es válida detiene la ejecución.
 
 ```php
 <?php
@@ -1762,12 +1762,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * RequestMiddleware
  *
- * Check incoming payload
+ * Verifica la carga que se está recibiendo
  */
 class RequestMiddleware implements MiddlewareInterface
 {
     /**
-     * Before the route is executed
+     * Antes de que la ruta sea ejecutada
      *
      * @param Event $event
      * @param Micro $application
@@ -1789,7 +1789,7 @@ class RequestMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Realiza la llamada al Middleware
      *
      * @param Micro $application
      *
@@ -1806,11 +1806,11 @@ class RequestMiddleware implements MiddlewareInterface
 
 #### Response Middleware
 
-This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
+Este middleware es responsable de manipular nuestra respuesta y enviarla de vuelta a la entidad que lo llamó como una cadena JSON. Por lo tanto tenemos que conectar al evento `after` de nuestra Micro aplicación.
 
 <div class='alert alert-warning'>
     <p>
-        We are going to be using the <code>call</code> method for this middleware, since we have nearly executed the whole request cycle.
+        Usaremos el método <code>call</code> de este middleware, ya que casi hemos ejecutado el ciclo completo de la petición.
     </p>
 </div>
 
@@ -1823,12 +1823,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
 * ResponseMiddleware
 *
-* Manipulates the response
+* Se manipula la respuesta
 */
 class ResponseMiddleware implements MiddlewareInterface
 {
      /**
-      * Before anything happens
+      * Antes que cualquier cosa ocurra
       *
       * @param Micro $application
       *
@@ -1853,13 +1853,13 @@ class ResponseMiddleware implements MiddlewareInterface
 
 <a name='models'></a>
 
-# Models
+# Modelos
 
-Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
+Los Modelos pueden utilizarse en Micro aplicaciones, siempre y cuando podamos indicar a la aplicación como puede encontrar las clases relevantes con un cargador automático.
 
 <div class="alert alert-warning">
     <p>
-        The relevant <code>db</code> service must be registered in your Di container.
+        El servicio <code>db</code> debe estar registrado en el contenedor de Di.
     </p>
 </div>
 
@@ -1893,9 +1893,9 @@ $app->handle();
 
 <a name='model-instances'></a>
 
-# Inject model instances
+# Inyectando instancias de modelos
 
-By using the `Phalcon\Mvc\Model\Binder` class you can inject model instances into your routes:
+Mediante el uso de la clase `Phalcon\Mvc\Model\Binder` puedes inyectar instancias de modelos en tus rutas:
 
 ```php
 <?php
@@ -1914,22 +1914,22 @@ $app->setModelBinder(new \Phalcon\Mvc\Model\Binder());
 $app->get(
     "/products/{product:[0-9]+}",
     function (Products $product) {
-        // do anything with $product object
+        // haz lo que necesites con el objeto $product
     }
 );
 
 $app->handle();
 ```
 
-Since Binder object is using internally Reflection Api which can be heavy, there is ability to set a cache so as to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
+Objeto Binder internamente utiliza la Api Reflection lo cual puede ser muy pesado, pero se puede configurar un caché para acelerar el proceso. Esto puede hacerse mediante el segundo argumento de `setModelBinder()` que también puede aceptar un nombre de servicio o simplemente pasando una instancia de caché al constructor `Binder`.
 
-Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/products/1`.
+Actualmente Binder utiliza solamente de la clave primaria de los modelos para realizar un `findFirst()`. Una ruta de ejemplo para lo anterior podría ser `/products/1`.
 
 <a name='views'></a>
 
-# Views
+# Vistas
 
-`Phalcon\Mvc\Micro` does not have inherently a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
+`Phalcon\Mvc\Micro` no tiene inherentemente un servicio de vistas. Sin embargo podemos utilizar el componente `Phalcon\Mvc\View\Simple` para crear una vista.
 
 ```php
 <?php
@@ -1944,11 +1944,11 @@ $app['view'] = function () {
     return $view;
 };
 
-// Return a rendered view
+// Devolver una vista
 $app->get(
     '/products/show',
     function () use ($app) {
-        // Render app/views/products/show.phtml passing some variables
+        // Construir app/views/products/show.phtml pasando algunas variables
         echo $app['view']->render(
             'products/show',
             [
@@ -1962,7 +1962,7 @@ $app->get(
 
 <div class='alert alert-warning'>
     <p>
-        The above example uses the <a href="/[[language]]/[[version]]/Phalcon_Mvc_View_Simple">Phalcon\Mvc\View\Simple</a> component, which uses relative paths instead of controllers and actions. You can use the <a href="/[[language]]/[[version]]/Phalcon_Mvc_View">Phalcon\Mvc\View</a> component instead, but to do so you will need to change the parameters passed to <code>render()</code>
+        El ejemplo anterior utiliza el componente <a href="/[[language]]/[[version]]/Phalcon_Mvc_View_Simple">Phalcon\Mvc\View\Simple</a>, que utiliza rutas relativas en lugar de los controladores y acciones. Puedes utilizar el componente <a href="/[[language]]/[[version]]/Phalcon_Mvc_View">Phalcon\Mvc\View</a> en su lugar, pero para ello tendrás que cambiar los parámetros pasados a <code>render()</code>
     </p>
 </div>
 
@@ -1979,11 +1979,11 @@ $app['view'] = function () {
     return $view;
 };
 
-// Return a rendered view
+// Devuelve una vista
 $app->get(
     '/products/show',
     function () use ($app) {
-        // Render app/views/products/show.phtml passing some variables
+        // Construye app/views/products/show.phtml pasando algunas variables
         echo $app['view']->render(
             'products',
             'show',
@@ -1998,9 +1998,9 @@ $app->get(
 
 <a name='error-handling'></a>
 
-# Error Handling
+# Manejo de Errores
 
-The `Phalcon\Mvc\Micro` application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
+La aplicación `Phalcon\Mvc\Micro` también tiene un método `error`, que puede utilizarse para atrapar los errores que se originan de las excepciones. El siguiente fragmento de código muestra el uso básico de esta función:
 
 ```php
 <?php
