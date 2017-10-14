@@ -108,9 +108,7 @@ Phalcon Compose является средой разработки на обще
 
 С помощью Composer, можно создать новый проект следующим образом:
 
-```bash
-composer create-project phalcon/compose --prefer-dist путь-к-папке-с-проектом
-```
+$ `composer create-project phalcon/compose --prefer-dist <folder name>`
 
 Результат должен быть похож на:
 
@@ -134,9 +132,7 @@ Generating autoload files
 
 Другим способом инициализации проекта является Git.
 
-```bash
- git clone git@github.com:phalcon/phalcon-compose.git
-```
+$ `git clone git@github.com:phalcon/phalcon-compose.git`
 
 <div class="alert alert-warning">
     <p>
@@ -152,9 +148,7 @@ Generating autoload files
 
 Добавьте `phalcon.local` (или имя предпочтительной хоста) в файл `/etc/hosts` как показано ниже:
 
-```bash
-127.0.0.1 www.phalcon.local phalcon.local
-```
+$ `127.0.0.1 www.phalcon.local phalcon.local`
 
 <a name='usage'></a>
 
@@ -162,17 +156,19 @@ Generating autoload files
 
 Теперь можно создавать, собирать и присоединять контейнеры к окружению вашего приложения. Для того, чтобы собрать контейнеры, используйте следующую команду в корне проекта:
 
-```php
-docker-compose build
-```
+$ `docker-compose build`
 
 Чтобы запустить приложение и контейнеры в фоновом режиме, используйте следующую команду в корне проекта:
 
-```bash
-# Вы можете использовать здесь предпочтительное имя проекта,
-# используя опцию "-p", например "-p my-app"
-$ docker-compose up -d
-```
+You can use here your prefered project name with `-p <my-app>` parameter
+
+$ `docker-compose up -d`
+
+Now setup your project in the app container using the Phalcon Developer Tools
+
+Replace project in **<project_app_1>** with the name of your project/directory (shown in the output of `docker-compose up -d`)
+
+$ `docker exec -t <project_app_1> phalcon project application simple`
 
 Теперь вы можете открыть ваше приложение в браузере по адресу `http://phalcon.local` (или используя адрес, который вы выбрали ранее).
 
@@ -237,22 +233,22 @@ $ docker-compose up -d
 
 Из соображений отладки приложения, вы можете настроить Xdebug, передав необходимые параметры (см. variables.env).
 
-| Environment variable         | Description                                                   | Default |
-| ---------------------------- | ------------------------------------------------------------- | ------- |
-| `XDEBUG_REMOTE_HOST`         | Значение `xdebug.remote_host` для `php.ini` (IP хост ситемы). |         |
-| `XDEBUG_REMOTE_PORT`         | Значение `xdebug.remote_port` для `php.ini`.                  | 9000    |
-| `XDEBUG_REMOTE_AUTOSTART`    | Значение `xdebug.remote_autostart` для `php.ini`.             | Off     |
-| `XDEBUG_REMOTE_CONNECT_BACK` | Значение `xdebug.remote_connect_back` для `php.ini`.          | Off     |
+| Environment variable         | Description                                          | Default        |
+| ---------------------------- | ---------------------------------------------------- | -------------- |
+| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host`.            | (your host IP) |
+| `XDEBUG_REMOTE_PORT`         | Значение `xdebug.remote_port` для `php.ini`.         | 9000           |
+| `XDEBUG_REMOTE_AUTOSTART`    | Значение `xdebug.remote_autostart` для `php.ini`.    | Off            |
+| `XDEBUG_REMOTE_CONNECT_BACK` | Значение `xdebug.remote_connect_back` для `php.ini`. | Off            |
 
 *Обратите внимание* Вы можете получить ваш IP адрес используя команду, как показано ниже:
 
-```bash
-# Linux/MacOS
-ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .
+**Linux/macOS**
 
-# Windows
-ipconfig
-```
+$ `ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .`
+
+**Windows**
+
+> `ipconfig`
 
 <a name='troubleshooting'></a>
 
@@ -305,14 +301,10 @@ docker pull phalconphp/php-apache:ubuntu-16.04
 
 Linux/macOs пользователи, вместо этого, могут воспользоваться `make`:
 
-```bash
-make pull
-```
+$ `make pull`
 
 Затем вам необходимо удалить все контейнеры, очистить старые данные, пересобрать сервисы и перезапустить приложение.
 
-Linux/MacOS users can use `make` to perform the task:
+Linux/macOs пользователи, вместо этого, могут воспользоваться `make`:
 
-```bash
-make reset
-```
+$ `make reset`
