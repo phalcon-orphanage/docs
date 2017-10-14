@@ -99,7 +99,7 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## File Adapters
+## Adaptadores de Archivo
 
 Los adaptadores disponibles son:
 
@@ -112,7 +112,7 @@ Los adaptadores disponibles son:
 
 <a name='ini-files'></a>
 
-## Reading INI Files
+## Leer Archivos INI
 
 Los archivos ini son una forma común para almacenar la configuración. `Phalcon\Config` utiliza la función optimizada de PHP `parse_ini_file` para leer estos archivos. Las secciones de los archivos se analizan en sub-conjuntos para facilitar el acceso.
 
@@ -149,9 +149,9 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## Merging Configurations
+## Fusión de Configuraciones
 
-`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
+`Phalcon\Config` puede combinar recursivamente las propiedades de un objeto de configuración en otro. Las nuevas propiedades se agregan y las existentes se actualizan.
 
 ```php
 <?php
@@ -201,13 +201,13 @@ Phalcon\Config Object
 )
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+Hay más adaptadores disponibles para estos componentes en la [Incubadora de Phalcon](https://github.com/phalcon/incubator)
 
 <a name='nested-configuration'></a>
 
-## Nested Configuration
+## Configuraciones Anidadas
 
-Also to get nested configuration you can use the `Phalcon\Config::path` method. This method allows to obtain nested configurations, without caring about the fact that some parts of the path are absent. Veamos un ejemplo:
+También, para obtener una configuración anidada puede utilizar el método `Phalcon\Config::path`. Este método permite obtener configuraciones anidadas sin preocuparse por el hecho de que algunas partes de la ruta estén ausentes. Veamos un ejemplo:
 
 ```php
 <?php
@@ -238,13 +238,13 @@ $config = new Config(
    ]
 );
 
-// Using dot as delimiter
+// Se usan puntos como delimitadores
 $config->path('test.parent.property2');    // yeah
 $config->path('database.host', null, '.'); // localhost
 
 $config->path('test.parent'); // Phalcon\Config
 
-// Using slash as delimiter
+// Se una una diagonal como delimitador
 $config->path('test/parent/property3', 'no', '/'); // no
 
 Config::setPathDelimiter('/');
@@ -253,9 +253,9 @@ $config->path('test/parent/property2'); // yeah
 
 <a name='injecting-into-di'></a>
 
-## Injecting Configuration Dependency
+## Inyección de Dependencias de Configuración
 
-You can inject your configuration to the controllers by adding it as a service. To be able to do that, add following code inside your dependency injector script.
+Puede inyectar su configuración a los controladores agregándola como un servicio. Para poder hacerlo, agregue el siguiente código dentro de tu script inyector de dependencias.
 
 ```php
 <?php
