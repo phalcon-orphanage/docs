@@ -1,36 +1,36 @@
-# FAQ - Frequently Asked Questions
+# FAQ - Preguntas frecuentes
 
-## What is Phalcon
+## Qué es Phalcon
 
-Phalcon in an open source full stack PHP framework written as a C language extension.
+Phalcon es un framework open source full stack para PHP, escrito como una extensión en C.
 
-## How Phalcon Works
+## Cómo funciona Phalcon
 
-Phalcon is *not* an accelerator for PHP or projects written in PHP. *(For a PHP-like language to produce high-performance C extensions please see [Zephir](https://github.com/phalcon/zephir))*
+Phalcon *no* es un acelerador de PHP o un proyecto escrito en PHP. *(Para un lenguaje similar a PHP para producir extensiones C de alto rendimiento, consulte [Zephir](https://github.com/falcon/zephir))*
 
-Phalcon is a framework that implements its functionality using the low-level C language. C extensions are compiled together with your PHP code on load. Increasing the speed of you application and lowering your overhead.
+Phalcon es un framework que implementa su funcionalidad utilizando el lenguaje C de bajo nivel. Las extensiones de C se compilan junto con tu código PHP en la carga. Aumentando la velocidad de aplicación y bajando su sobrecarga.
 
-#### Phalcon achieves this by:
+#### Phalcon logra esto por:
 
-- Taking advantage of native compilation by producing a [binary executable representation](https://en.wikipedia.org/wiki/Machine_code) of the code that a processor can directly understand and execute without the overhead of running bytecode in a virtual machine (VM).
+- Tomando ventaja de la compilación nativa mediante la producción de una [representación ejecutable binaria](https://en.wikipedia.org/wiki/Machine_code) del código que un procesador puede entender directamente y ejecutar sin la sobrecarga de ejecutar bytecode en una máquina virtual (VM).
 
-- Reducing the memory footprint by using optimised specific-purpose C structures and static types C compilers, like GCC/CLANG/VCC. These perform [several optimisations](https://en.wikipedia.org/wiki/Category:Compiler_optimizations) over the code improving performance.
+- Reducir el impacto en memoria mediante el uso optimizado de estructuras de propósito específico C y tipos estáticos C compiladores, como GCC / CLANG / VCC. Estos realizan [varias optimizaciones](https://en.wikipedia.org/wiki/Category:Compiler_optimizations) sobre el código, mejorando el rendimiento.
 
-- The ability to place variables and data in the stack. These would typically have a higher [locality](https://en.wikipedia.org/wiki/Locality_of_reference) of access.
+- La capacidad de colocar las variables y datos en la pila. Por lo general hay un mayor [locality](https://en.wikipedia.org/wiki/Locality_of_reference) de acceso.
 
-- Branch prediction is easier as it operates directly over the user code and not over the VM implementation. *Mystical put together a great explanation on [Stack Overflow](https://stackoverflow.com/a/11227902/1661465).*
+- La predicción de bifurcaciones es más fácil ya que funciona directamente sobre el código del usuario y no sobre la aplicación VM. *Místicamente puestos juntos en una gran explicación en [StackOverflow](https://stackoverflow.com/a/11227902/1661465).*
 
-- Having direct access to internal structures and functions reducing the [computation overhead](https://en.wikipedia.org/wiki/CPU-bound).
+- Tener acceso directo a las estructuras internas y funciones reduce la [sobrecarga de cálculo](https://en.wikipedia.org/wiki/CPU-bound).
 
-- [Using Profile Guided Optimization (PGO)](https://en.wikipedia.org/wiki/Profile-guided_optimization) to improve performance based on existing execution profiles.
+- [Usando el perfil guiado optimización (PGO)](https://en.wikipedia.org/wiki/Profile-guided_optimization) para mejorar el rendimiento en base a perfiles de ejecución existentes.
 
-<br /> *Per [Wikipedia](https://en.wikipedia.org/wiki/Profile-guided_optimization). Profile-guided optimization (PGO, sometimes pronounced as pogo), is a compiler optimization technique in computer programming that uses profiling to improve program runtime performance.* <br />  
+<br /> *Por [Wikipedia](https://en.wikipedia.org/wiki/Profile-guided_optimization). Optimización guiada por perfiles (PGO, a veces pronunciado como pogo), es una técnica de optimización del compilador en la programación de computadoras que utiliza perfiles para mejorar el rendimiento de tiempo de ejecución del programa.* <br />  
 
 
-Phalcon relies on several internal design aspects of PHP such as memory management, [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) and its internal structures. The improvement of any of these aspects have a positive impact on Phalcon's performance as well in PHP.
+Phalcon depende de varios aspectos del diseño interno de PHP como la gestión de memoria, [recolección de basura](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) y sus estructuras internas. La mejora de cualquiera de estos aspectos tienen un impacto positivo sobre el rendimiento de Phalcon, así como en PHP.
 
-credit: <https://github.com/andresgutierrez>
+Crédito: <https://github.com/andresgutierrez>
 
-## How do I help?
+## ¿Cómo puedo ayudar?
 
-Join our [Discord](https://phalcon.link/discord) channel, visit us at [GitHub](https://github.com/phalcon), or on the web at [https://phalconphp.com/](https://phalconphp.com/en/).
+Únete a nuestro canal [Discord](https://phalcon.link/discord), visítenos en [GitHub](https://github.com/phalcon), o en la web en [ https://phalconphp.com/](https://phalconphp.com/en/).
