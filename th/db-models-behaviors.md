@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Comportamientos en modelos (Behaviors)</a> <ul>
+      <a href="#overview">Model Behaviors</a> <ul>
         <li>
           <a href="#timestampable">Timestampable</a>
         </li>
@@ -9,10 +9,10 @@
           <a href="#softdelete">SoftDelete</a>
         </li>
         <li>
-          <a href="#create-your-own-behaviors">Crea tus propios comportamientos</a>
+          <a href="#create-your-own-behaviors">Creating your own behaviors</a>
         </li>
         <li>
-          <a href="#traits-as-behaviors">Utilizando traits como comportamientos</a>
+          <a href="#traits-as-behaviors">Using Traits as behaviors</a>
         </li>
       </ul>
     </li>
@@ -21,11 +21,11 @@
 
 <a name='overview'></a>
 
-# Comportamientos en modelos (Behaviors)
+# Model Behaviors
 
-Los comportamientos son conductas compartidas que varios modelos pueden adoptar con el fin de reutilizar código, el ORM proporciona una API para implementar comportamientos en sus modelos. Además, puede utilizar los eventos y callbacks, como se ha visto antes, como una alternativa para implementar comportamientos con más libertad.
+Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 
-Un comportamiento debe agregarse en el inicializador del modelo, un modelo puede tener cero o más comportamientos:
+A behavior must be added in the model initializer, a model can have zero or more behaviors:
 
 ```php
 <?php
@@ -57,18 +57,18 @@ class Users extends Model
 }
 ```
 
-Phalcon proporciona los siguientes comportamientos listos para utilizarse:
+The following built-in behaviors are provided by the framework:
 
-| Nombre        | Descripción                                                                                                                     |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Timestampable | Permite actualizar automáticamente el atributo de un modelo guardando el datetime cuando es creado o actualizado un registro    |
-| SoftDelete    | En lugar de eliminar permanentemente un registro, se marca el registro como borrado, al cambiar el valor de una columna bandera |
+| Name          | Description                                                                                                |
+| ------------- | ---------------------------------------------------------------------------------------------------------- |
+| Timestampable | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
+| SoftDelete    | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
 
 <a name='timestampable'></a>
 
 ## Timestampable
 
-Este comportamiento recibe un array de opciones, la primera clave debe ser un nombre de evento que indica cuando la columna debe ser asignada:
+This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
 
 ```php
 <?php
@@ -90,7 +90,7 @@ public function initialize()
 }
 ```
 
-Cada evento puede tener sus propias opciones, `field` es el nombre de la columna que debe actualizarse, si `format` es un `string` que se utilizará como formato de PHP para la función [date](http://php.net/manual/en/function.date.php), también puede ser una función anónima que le proporciona la libertad de generar cualquier tipo timestamp:
+Each event can have its own options, `field` is the name of the column that must be updated, if `format` is a string it will be used as format of the PHP's function [date](http://php.net/manual/en/function.date.php), format can also be an anonymous function providing you the free to generate any kind timestamp:
 
 ```php
 <?php
@@ -120,13 +120,13 @@ public function initialize()
 }
 ```
 
-Si se omite la opción `format` se utilizará la función [time](http://php.net/manual/en/function.time.php) de PHP.
+If the option `format` is omitted a timestamp using the PHP's function [time](http://php.net/manual/en/function.time.php), will be used.
 
 <a name='softdelete'></a>
 
 ## SoftDelete
 
-Este comportamiento se puede utilizar de la sigue manera:
+This behavior can be used as follows:
 
 ```php
 <?php
@@ -157,7 +157,7 @@ class Users extends Model
 }
 ```
 
-Este comportamiento acepta dos opciones: `field` y `vale`, siendo `field` el campo debe ser actualizado y `vale` el valor de eliminado. Supongamos que la tabla `users` tiene los siguientes datos:
+This behavior accepts two options: `field` and `value`, `field` determines what field must be updated and `value` the value to be deleted. Let's pretend the table `users` has the following data:
 
 ```sql
 mysql> select * from users;
@@ -170,7 +170,7 @@ mysql> select * from users;
 2 rows in set (0.00 sec)
 ```
 
-Si borramos cualquiera de los dos usuarios se actualizará el estado (status) en vez borrarse el registro:
+If we delete any of the two records the status will be updated instead of delete the record:
 
 ```php
 <?php
@@ -178,7 +178,7 @@ Si borramos cualquiera de los dos usuarios se actualizará el estado (status) en
 Users::findFirst(2)->delete();
 ```
 
-La operación resultará en los siguientes datos en la tabla:
+The operation will result in the following data in the table:
 
 ```sql
 mysql> select * from users;
@@ -191,15 +191,15 @@ mysql> select * from users;
 2 rows in set (0.01 sec)
 ```
 
-Nota: Tenga en cuenta que usted necesitara especificar la condición de eliminado en sus consultas para ignorar registros marcados como eliminados, este comportamiento no tiene soporte para hacerlo automáticamente.
+Note that you need to specify the deleted condition in your queries to effectively ignore them as deleted records, this behavior doesn't support that.
 
 <a name='create-your-own-behaviors'></a>
 
-## Crea tus propios comportamientos
+## Creating your own behaviors
 
-El ORM proporciona una API para crear tus propios comportamientos. Un comportamiento debe ser una clase que implementa la interfaz `Phalcon\Mvc\Model\BehaviorInterface`. Además `Phalcon\Mvc\Model\Behavior` proporciona la mayor parte de los métodos necesarios para facilitar la aplicación de los comportamientos.
+The ORM provides an API to create your own behaviors. A behavior must be a class implementing the `Phalcon\Mvc\Model\BehaviorInterface`. Also, `Phalcon\Mvc\Model\Behavior` provides most of the methods needed to ease the implementation of behaviors.
 
-El siguiente comportamiento es un ejemplo, implementa el comportamiento Blameable que ayuda a identificar al usuario que realizo operaciones sobre un modelo:
+The following behavior is an example, it implements the Blameable behavior which helps identify the user that is performed operations over a model:
 
 ```php
 <?php
@@ -217,9 +217,9 @@ class Blameable extends Behavior implements BehaviorInterface
             case 'afterDelete':
             case 'afterUpdate':
 
-                $userName = // ... obtiene el usuario actual desde la sesión
+                $userName = // ... get the current user from session
 
-                // Almacena en un log el nombre de usuario, tipo de evento y clave primaria
+                // Store in a log the username, event type and primary key
                 file_put_contents(
                     'logs/blamable-log.txt',
                     $userName . ' ' . $eventType . ' ' . $model->id
@@ -228,13 +228,13 @@ class Blameable extends Behavior implements BehaviorInterface
                 break;
 
             default:
-                /* ignorar el resto de los eventos */
+                /* ignore the rest of events */
         }
     }
 }
 ```
 
-El primero es un comportamiento muy simple, pero ilustra cómo crear un comportamiento, ahora vamos a agregar este comportamiento a un modelo:
+The former is a very simple behavior, but it illustrates how to create a behavior, now let's add this behavior to a model:
 
 ```php
 <?php
@@ -252,7 +252,7 @@ class Profiles extends Model
 }
 ```
 
-Un comportamiento también es capaz de interceptar métodos faltantes en tus modelos:
+A behavior is also capable of intercepting missing methods on your models:
 
 ```php
 <?php
@@ -265,7 +265,7 @@ class Sluggable extends Behavior implements BehaviorInterface
 {
     public function missingMethod($model, $method, $arguments = [])
     {
-        // Si el método es 'getSlug', modificar el título
+        // If the method is 'getSlug' convert the title
         if ($method === 'getSlug') {
             return Tag::friendlyTitle($model->title);
         }
@@ -273,7 +273,7 @@ class Sluggable extends Behavior implements BehaviorInterface
 }
 ```
 
-Llame a ese método en un modelo que implementa Sluggable y devolverá un título amigable para el SEO:
+Call that method on a model that implements Sluggable returns a SEO friendly title:
 
 ```php
 <?php
@@ -283,9 +283,9 @@ $title = $post->getSlug();
 
 <a name='traits-as-behaviors'></a>
 
-## Utilizando traits como comportamientos
+## Using Traits as behaviors
 
-Usted puede utilizar [traits](http://php.net/manual/en/language.oop5.traits.php) para reutilizar código en tus clases, esta es otra manera se puede implementar comportamientos personalizados. El traits siguiente implementa una versión simple del comportamiento Timestampable:
+You can use [Traits](http://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the Timestampable behavior:
 
 ```php
 <?php
@@ -304,7 +304,7 @@ trait MyTimestampable
 }
 ```
 
-Entonces lo puedes utilizar en tu modelo de la siguiente manera:
+Then you can use it in your model as follows:
 
 ```php
 <?php
