@@ -71,7 +71,7 @@ my-rest-api/
     .htaccess
 ```
 
-First, we need a `.htaccess` file that contains all the rules to rewrite the URIs to the `index.php` file, that is our application:
+First, we need a `.htaccess` file that contains all the rules to rewrite the URIs to the `index.php` file, that is our . .htaccess file:
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
