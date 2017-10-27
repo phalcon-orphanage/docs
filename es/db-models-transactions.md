@@ -1,15 +1,15 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Transactions</a> <ul>
+      <a href="#overview">Transacciones en modelos</a> <ul>
         <li>
-          <a href="#manual">Manual Transactions</a>
+          <a href="#manual">Transacciones manuales</a>
         </li>
         <li>
-          <a href="#implicit">Implicit Transactions</a>
+          <a href="#implicit">Transacciones implícitas</a>
         </li>
         <li>
-          <a href="#isolated">Isolated Transactions</a>
+          <a href="#isolated">Transacciones aisladas</a>
         </li>
       </ul>
     </li>
@@ -18,17 +18,17 @@
 
 <a name='overview'></a>
 
-# Model Transactions
+# Transacciones en modelos
 
-When a process performs multiple database operations, it might be important that each step is completed successfully so that data integrity can be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data is committed to the database.
+Cuando un proceso realiza múltiples operaciones de base de datos, sería importante que cada paso se haya completado con éxito para que pueda mantenerse la integridad de los datos. Las transacciones ofrecen la capacidad para garantizar que todas las operaciones de base de datos han sido ejecutadas con éxito antes de que los datos se asienten en la base de datos.
 
-Transactions in Phalcon allow you to commit all operations if they were executed successfully or rollback all operations if something went wrong.
+Las transacciones en Phalcon permiten comprometer a todas las operaciones si se ejecutaron con éxito o deshacer todas las operaciones si algo salió mal.
 
 <a name='manual'></a>
 
-## Manual Transactions
+## Transacciones manuales
 
-If an application only uses one connection and the transactions are not very complex, a transaction can be created by just moving the current connection into transaction mode and then commit or rollback the operation whether it is successful or not:
+Si una aplicación utiliza sólo una conexión y las transacciones no son muy complejas, se puede crear una transacción moviendo sólo la conexión actual a modo de transacción y luego confirmar o deshacer la operación sea exitosa o no:
 
 ```php
 <?php
@@ -39,7 +39,7 @@ class RobotsController extends Controller
 {
     public function saveAction()
     {
-        // Start a transaction
+        // Iniciar una transacción
         $this->db->begin();
 
         $robot = new Robots();
@@ -47,7 +47,7 @@ class RobotsController extends Controller
         $robot->name       = 'WALL-E';
         $robot->created_at = date('Y-m-d');
 
-        // The model failed to save, so rollback the transaction
+        // Si el modelo falla al guardarse, entonces deshacemos la transacción
         if ($robot->save() === false) {
             $this->db->rollback();
             return;
@@ -56,16 +56,16 @@ class RobotsController extends Controller
         $robotPart = new RobotParts();
 
         $robotPart->robots_id = $robot->id;
-        $robotPart->type      = 'head';
+        $robotPart->type      = 'cabeza';
 
-        // The model failed to save, so rollback the transaction
+        // Si el modelo falla al guardar, deshacemos la transacción
         if ($robotPart->save() === false) {
             $this->db->rollback();
 
             return;
         }
 
-        // Commit the transaction
+        // Confirmamos la transacción
         $this->db->commit();
     }
 }
@@ -73,9 +73,9 @@ class RobotsController extends Controller
 
 <a name='implicit'></a>
 
-## Implicit Transactions
+## Transacciones implícitas
 
-Existing relationships can be used to store records and their related instances, this kind of operation implicitly creates a transaction to ensure that data is correctly stored:
+Las relaciones existentes se pueden utilizar para almacenar registros y sus instancias relacionadas, este tipo de operación implícitamente crea una transacción para asegurar que los datos se almacenan correctamente:
 
 ```php
 <?php
@@ -84,23 +84,21 @@ $robotPart = new RobotParts();
 
 $robotPart->type = 'head';
 
-
-
 $robot = new Robots();
 
 $robot->name       = 'WALL-E';
 $robot->created_at = date('Y-m-d');
 $robot->robotPart  = $robotPart;
 
-// Creates an implicit transaction to store both records
+// Crea una transacción implícita para almacenar ambos registros
 $robot->save();
 ```
 
 <a name='isolated'></a>
 
-## Isolated Transactions
+## Transacciones aisladas
 
-Isolated transactions are executed in a new connection ensuring that all the generated SQL, virtual foreign key checks and business rules are isolated from the main connection. This kind of transaction requires a transaction manager that globally manages each transaction created ensuring that they are correctly rolled back/committed before ending the request:
+Las transacciones aisladas se ejecutan en una nueva conexión, asegurando que todos los SQL generados, controles de claves extranjeras virtuales y reglas de negocio están aisladas de la conexión principal. Este tipo de transacción requiere de un administrador de transacciones que gestiona globalmente cada transacción creada, asegurando que ellas sean correctamente confirmadas/desechadas antes de terminar la solicitud:
 
 ```php
 <?php
@@ -109,10 +107,10 @@ use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
 try {
-    // Create a transaction manager
+    // Crear un gestor de transacciones
     $manager = new TxManager();
 
-    // Request a transaction
+    // Solicitar una transacción
     $transaction = $manager->get();
 
     $robot = new Robots();
@@ -133,7 +131,7 @@ try {
     $robotPart->setTransaction($transaction);
 
     $robotPart->robots_id = $robot->id;
-    $robotPart->type      = 'head';
+    $robotPart->type      = 'cabeza';
 
     if ($robotPart->save() === false) {
         $transaction->rollback(
@@ -141,14 +139,14 @@ try {
         );
     }
 
-    // Everything's gone fine, let's commit the transaction
+    // Todo resulto bien, entonces confirmamos la transacción
     $transaction->commit();
 } catch (TxFailed $e) {
     echo 'Failed, reason: ', $e->getMessage();
 }
 ```
 
-Transactions can be used to delete many records in a consistent way:
+Las transacciones pueden utilizarse para eliminar muchos registros de forma coherente:
 
 ```php
 <?php
@@ -157,13 +155,13 @@ use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
 try {
-    // Create a transaction manager
+    // Crear un gestor de transacciones
     $manager = new TxManager();
 
-    // Request a transaction
+    // Solicitar una transacción
     $transaction = $manager->get();
 
-    // Get the robots to be deleted
+    // Obtener los robots a borrar
     $robots = Robots::find(
         "type = 'mechanical'"
     );
@@ -171,7 +169,7 @@ try {
     foreach ($robots as $robot) {
         $robot->setTransaction($transaction);
 
-        // Something's gone wrong, we should rollback the transaction
+        // Algo resulto mal, debemos deshacer la transacción
         if ($robot->delete() === false) {
             $messages = $robot->getMessages();
 
@@ -183,16 +181,16 @@ try {
         }
     }
 
-    // Everything's gone fine, let's commit the transaction
+    // Todo salio bien, confirmamos la transacción
     $transaction->commit();
 
-    echo 'Robots were deleted successfully!';
+    echo 'Robots borrados exitosamente!';
 } catch (TxFailed $e) {
-    echo 'Failed, reason: ', $e->getMessage();
+    echo 'Error, detalle: ', $e->getMessage();
 }
 ```
 
-Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a `commit()` or :code:`rollback()` is performed. You can use the service container to create the global transaction manager for the entire application:
+Las transacciones se reutilizan, sin importar de donde es obtenido el objeto de la transacción. Una nueva transacción se genera sólo cuando se realiza un `commit()` o `rollback()`. Se puede utilizar el contenedor de servicio para crear un administrador global de transacciones para toda la aplicación:
 
 ```php
 <?php
@@ -207,7 +205,7 @@ $di->setShared(
 );
 ```
 
-Then access it from a controller or view:
+Para luego acceder a él desde un controlador o vista:
 
 ```php
 <?php
@@ -218,13 +216,13 @@ class ProductsController extends Controller
 {
     public function saveAction()
     {
-        // Obtain the TransactionsManager from the services container
+        // Obtener el gestor de transacciones desde el contenedor de servicios
         $manager = $this->di->getTransactions();
 
-        // Or
+        // O simplemente
         $manager = $this->transactions;
 
-        // Request a transaction
+        // Solicitar una transacción
         $transaction = $manager->get();
 
         // ...
@@ -232,4 +230,4 @@ class ProductsController extends Controller
 }
 ```
 
-While a transaction is active, the transaction manager will always return the same transaction across the application.
+Mientras una transacción está activa, el administrador de transacciones siempre devuelve la misma transacción a través de la aplicación.
