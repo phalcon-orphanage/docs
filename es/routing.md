@@ -118,7 +118,7 @@ $router->add(
 );
 
 $router->handle();
-```
+````
 
 El primer parámetro del método <code>add()</code> es el patrón que quieres coincidir, opcionalmente, el segundo parámetro es para definir los caminos.
 En este caso, si el URI es '/admin/users/my-profile', entonces se ejecutará del controlador 'users' la acción 'profile'. Es importante recordar que el router no ejecuta el controlador y la acción, sólo recoge esta información para informar la componente correcto (es decir, 'Phalcon\Mvc\Dispatcher') cual es el controlador y acción que debe ejecutar.
