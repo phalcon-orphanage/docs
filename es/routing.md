@@ -1,76 +1,76 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Routing</a> <ul>
+      <a href="#overview">Enrutamiento</a> <ul>
         <li>
-          <a href="#defining">Defining Routes</a> <ul>
+          <a href="#defining">Definición de rutas</a> <ul>
             <li>
-              <a href="#defining-named-parameters">Parameters with Names</a>
+              <a href="#defining-named-parameters">Parámetros con nombres</a>
             </li>
             <li>
-              <a href="#defining-short-syntax">Short Syntax</a>
+              <a href="#defining-short-syntax">Sintaxis corta</a>
             </li>
             <li>
-              <a href="#defining-mixed-parameters">Mixing Array and Short Syntax</a>
+              <a href="#defining-mixed-parameters">Mezcla de array y sintaxis corta</a>
             </li>
             <li>
-              <a href="#defining-route-to-modules">Routing to Modules</a>
+              <a href="#defining-route-to-modules">Enrutamiento a los módulos</a>
             </li>
             <li>
-              <a href="#defining-http-method-restrictions">HTTP Method Restrictions</a>
+              <a href="#defining-http-method-restrictions">Restricciones del método HTTP</a>
             </li>
             <li>
-              <a href="#defining-using-conversors">Using conversors</a>
+              <a href="#defining-using-conversors">Utilizando conversores</a>
             </li>
             <li>
-              <a href="#defining-groups-of-routes">Groups of Routes</a>
+              <a href="#defining-groups-of-routes">Grupos de rutas</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#matching">Matching Routes</a>
+          <a href="#matching">Rutas coincidentes</a>
         </li>
         <li>
-          <a href="#naming">Naming Routes</a>
+          <a href="#naming">Nombres de rutas</a>
         </li>
         <li>
-          <a href="#usage">Usage Examples</a>
+          <a href="#usage">Ejemplos de Uso</a>
         </li>
         <li>
-          <a href="#default-behavior">Default Behavior</a>
+          <a href="#default-behavior">Comprotamiento predeterminado</a>
         </li>
         <li>
-          <a href="#default-route">Setting the default route</a>
+          <a href="#default-route">Establecer la ruta por defecto</a>
         </li>
         <li>
-          <a href="#not-found-paths">Not Found Paths</a>
+          <a href="#not-found-paths">Rutas Not Found</a>
         </li>
         <li>
-          <a href="#default-paths">Setting default paths</a>
+          <a href="#default-paths">Configurar rutas por defecto</a>
         </li>
         <li>
-          <a href="#extra-slashes">Dealing with extra/trailing slashes</a>
+          <a href="#extra-slashes">Tratar con barras extra o finales</a>
         </li>
         <li>
-          <a href="#callbacks">Match Callbacks</a>
+          <a href="#callbacks">Coincidencias por llamada de retorno</a>
         </li>
         <li>
-          <a href="#hostname-constraints">Hostname Constraints</a>
+          <a href="#hostname-constraints">Restricciones de nombre de host</a>
         </li>
         <li>
-          <a href="#uri-sources">URI Sources</a>
+          <a href="#uri-sources">Fuentes URI</a>
         </li>
         <li>
-          <a href="#testing">Testing your routes</a>
+          <a href="#testing">Probando tus rutas</a>
         </li>
         <li>
-          <a href="#annotations">Annotations Router</a>
+          <a href="#annotations">Anotaciones de Router</a>
         </li>
         <li>
-          <a href="#registration">Registering Router instance</a>
+          <a href="#registration">Registro de instancia de Router</a>
         </li>
         <li>
-          <a href="#custom">Implementing your own Router</a>
+          <a href="#custom">Implementar tu propio Router</a>
         </li>
       </ul>
     </li>
@@ -79,25 +79,25 @@
 
 <a name='overview'></a>
 
-# Routing
+# Enrutamiento
 
-The router component allows you to define routes that are mapped to controllers or handlers that should receive the request. A router simply parses a URI to determine this information. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
+El componente router le permite definir las rutas que se asignan a los controladores o gestores que deben recibir la solicitud. Un router simplemente procesa un URI para determinar esta información. El router tiene dos modos: MVC y match mode. El primer modo es ideal para trabajar con aplicaciones de MVC.
 
 <a name='defining'></a>
 
-## Defining Routes
+## Definición de rutas
 
-`Phalcon\Mvc\Router` provides advanced routing capabilities. In MVC mode, you can define routes and map them to controllers/actions that you require. A route is defined as follows:
+`Phalcon\Mvc\Router` proporciona capacidades avanzadas de enrutamiento. En el modo de MVC, puede definir rutas y vincularlas a controladores/acciones que usted requiera. Una ruta es definida de la siguiente manera:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Router;
 
-// Create the router
+// Crear un Router
 $router = new Router();
 
-// Define a route
+// Definir una ruta
 $router->add(
     '/admin/users/my-profile',
     [
@@ -106,7 +106,7 @@ $router->add(
     ]
 );
 
-// Another route
+// Otra ruta
 $router->add(
     '/admin/users/change-password',
     [
@@ -118,20 +118,20 @@ $router->add(
 $router->handle();
 ````
 
-The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths.
-In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. `Phalcon\Mvc\Dispatcher`) that this is the controller/action it should execute.
+El primer parámetro del método <code>add()</code> es el patrón que quieres coincidir, opcionalmente, el segundo parámetro es para definir los caminos.
+En este caso, si el URI es '/admin/users/my-profile', entonces se ejecutará del controlador 'users' la acción 'profile'. Es importante recordar que el router no ejecuta el controlador y la acción, sólo recoge esta información para informar la componente correcto (es decir, 'Phalcon\Mvc\Dispatcher') cual es el controlador y acción que debe ejecutar.
 
-An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can create more flexible routes:
+Una aplicación puede tener muchos caminos y definir rutas una por una puede ser una tarea engorrosa. En estos casos podemos crear rutas más flexibles:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Router;
 
-// Create the router
+// Crear el router
 $router = new Router();
 
-// Define a route
+// Definir una ruta
 $router->add(
     '/admin/:controller/a/:action/:params',
     [
@@ -140,38 +140,60 @@ $router->add(
         'params'     => 3,
     ]
 );
-```
+``` es el patrón que quieres coincidir, opcionalmente, el segundo parámetro es para definir los caminos.
+En este caso, si el URI es '/admin/users/my-profile', entonces se ejecutará del controlador 'users' la acción 'profile'. Es importante recordar que el router no ejecuta el controlador y la acción, sólo recoge esta información para informar la componente correcto (es decir, 'Phalcon\Mvc\Dispatcher') cual es el controlador y acción que debe ejecutar.
 
-In the example above, we're using wildcards to make a route valid for many URIs. For example, by accessing the following URL (`/admin/users/a/delete/dave/301`) would produce:
+Una aplicación puede tener muchos caminos y definir rutas una por una puede ser una tarea engorrosa. En estos casos podemos crear rutas más flexibles:
 
-| Controller | Action | Parameter | Parameter |
-|:----------:|:------:|:---------:|:---------:|
-|   users    | delete |   dave    |    301    |
+```php
+<?php
 
-The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions](http://www.php.net/manual/en/book.pcre.php). Note that, it is not necessary to add regular expression delimiters. All route patterns are case-insensitive.
+use Phalcon\Mvc\Router;
 
-The second parameter defines how the matched parts should bind to the controller/action/parameters. Matching parts are placeholders or subpatterns delimited by parentheses (round brackets). In the example given above, the first subpattern matched (`:controller`) is the controller part of the route, the second the action and so on.
+// Crear el router
+$router = new Router();
 
-These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported:
+// Definir una ruta
+$router->add(
+    '/admin/:controller/a/:action/:params',
+    [
+        'controller' => 1,
+        'action'     => 2,
+        'params'     => 3,
+    ]
+);
+</code>
 
-| Placeholder    | Regular Expression       | Usage                                                                                                  |
-| -------------- | ------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
-| `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
-| `/:action`     | `/([a-zA-Z0-9_-]+)`      | Matches a valid action name with alpha-numeric characters only                                         |
-| `/:params`     | `(/.*)*`                 | Matches a list of optional words separated by slashes. Only use this placeholder at the end of a route |
-| `/:namespace`  | `/([a-zA-Z0-9\_\-]+)` | Matches a single level namespace name                                                                  |
-| `/:int`        | `/([0-9]+)`              | Matches an integer parameter                                                                           |
+En el ejemplo anterior, estamos usando comodines para hacer una ruta válida para muchos URIs. Por ejemplo, accediendo a la siguiente URL (`/admin/users/al/delete/dave/301`) produciría:
 
-Controller names are camelized, this means that characters (`-`) and (`_`) are removed and the next character is uppercased. For instance, some_controller is converted to SomeController.
+| Controlador | Acción | Parámetro | Parámetro |
+|:-----------:|:------:|:---------:|:---------:|
+|    users    | delete |   dave    |    301    |
 
-Since you can add many routes as you need using the `add()` method, the order in which routes are added indicate their relevance, latest routes added have more relevance than first added. Internally, all defined routes are traversed in reverse order until `Phalcon\Mvc\Router` finds the one that matches the given URI and processes it, while ignoring the rest.
+El método `add()` recibe un patrón que opcionalmente se han predefinido los marcadores de posición y los modificadores de la expresión regular. Todos los patrones de enrutamiento deben comenzar con un carácter de barra diagonal (`/`). La sintaxis de expresión regular utilizada es igual a las [expresiones regulares PCRE](http://www.php.net/manual/en/book.pcre.php). Tenga en cuenta que, no es necesario añadir los delimitadores de expresión regular. Todos los patrones de ruta no distinguen entre mayúsculas y minúsculas.
+
+El segundo parámetro define cómo las partes coincidentes deben enlazar al controlador/acción/parámetros. Las partes coincidentes son marcadores o subpatrones delimitados por paréntesis (corchetes redondeados). En el ejemplo anterior, el primer subpatrón de coincidencia (`:controller`) es la parte del controlador de la ruta, el segundo la acción y así sucesivamente.
+
+Estos marcadores ayudan a escribir expresiones regulares que son más legibles para los desarrolladores y más fácil de entender. Están disponibles los siguientes marcadores:
+
+| Marcador       | Expresión regular        | Uso                                                                                                                  |
+| -------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Coincide con un nombre de módulo válido con caracteres alfanuméricos únicamente                                      |
+| `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Coincide con un nombre de controlador válido con caracteres alfanuméricos únicamente                                 |
+| `/:action`     | `/([a-zA-Z0-9_-]+)`      | Coincide con un nombre de acción válido con caracteres alfanuméricos únicamente                                      |
+| `/:params`     | `(/.*)*`                 | Coincide con una lista de palabras opcionales, separadas por barras. Sólo utilice este marcador al final de una ruta |
+| `/:namespace`  | `/([a-zA-Z0-9\_\-]+)` | Coincide con un nombre de espacio de nombres de nivel único                                                          |
+| `/:int`        | `/([0-9]+)`              | Coincide con un parámetro entero                                                                                     |
+
+Los nombres de controlador son camelizados, esto significa que los caracteres (`-`) y (`_`) se quitan y el siguiente carácter se transformará en mayúscula. Por ejemplo, some_controller se convierte en SomeController.
+
+Puesto que puede agregar tantas rutas como necesite mediante el método `add()`, el orden en que se agregan rutas indican su relevancia, las últimas rutas añadidas tienen más importancia que las primeras. Internamente, todas las rutas definidas son recorridas en orden inverso hasta que `Phalcon\Mvc\Router` encuentra una que coincida con la URI dada y la procesará, mientras que el resto serán ignoradas.
 
 <a name='defining-named-parameters'></a>
 
-### Parameters with Names
+### Parámetros con nombres
 
-The example below demonstrates how to define names to route parameters:
+El ejemplo siguiente muestra cómo definir nombres a los parámetros de ruta:
 
 ```php
 <?php
@@ -746,7 +768,7 @@ $router->add(
 );
 ```
 
-<h5 class='alert alert-warning'>Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: <code>/([a-zA-Z0-9\_\-]+)</code> </h5>
+<h5 class='alert alert-warning'>Ten cuidado con los caracteres permitidos en una expresión regular para los controladores y los espacios de nombres. Éstos se convierten en nombres de clase y a su vez estos son pasados a través del sistema de archivos y podrían ser utilizados por atacantes para leer archivos no autorizados. Una expresión regular segura puede ser así: <code>/([a-zA-Z0-9\_\-]+)</code> </h5>
 
 <a name='default-behavior'></a>
 
@@ -1076,7 +1098,7 @@ Or you can manually pass a URI to the `handle()` method:
 $router->handle('/some/route/to/handle');
 ```
 
-<h5 class='alert alert-danger'>Please note that using <code>Router::URI_SOURCE_GET_URL</code> automatically decodes the Uri, because it is based on the <code>$_REQUEST</code> superglobal. However, for the time being, using <code>Router::URI_SOURCE_SERVER_REQUEST_URI</code> will not automatically decode the Uri for you. This will change in the next major release.</h5>
+<h5 class='alert alert-danger'>Please note that using <code>Router::URI_SOURCE_GET_URL</code> automatically decodes the Uri, because it is based on the <code>$_REQUEST</code> superglobal. Sin embargo, en este momento, si usas <code>Router::URI_SOURCE_SERVER_REQUEST_URI</code> la Uri no será decodificada automáticamente. Esto cambiará en la siguiente versión mayor.</h5>
 
 <a name='testing'></a>
 
