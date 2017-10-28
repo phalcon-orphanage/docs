@@ -140,6 +140,7 @@ $app->post(
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
+
         // Operation to update a robot with id $id
     }
 );
