@@ -71,7 +71,7 @@ my-rest-api/
     .htaccess
 ```
 
-First, we need a `.htaccess` file that contains all the rules to rewrite the URIs to the `index.php` file, that is our .htaccess file:
+First, we need a `.htaccess` file that contains all the rules to rewrite the request URIs to the `index.php` file (application entry-point):
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -108,7 +108,7 @@ $app = new Micro();
 $app->get(
     '/api/robots',
     function () {
-
+        // Operation to fetch all the robots
     }
 );
 
@@ -116,7 +116,7 @@ $app->get(
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
-
+        // Operation to fetch robot with name $name
     }
 );
 
@@ -124,7 +124,7 @@ $app->get(
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-
+        // Operation to fetch robot with id $id
     }
 );
 
@@ -132,7 +132,7 @@ $app->get(
 $app->post(
     '/api/robots',
     function () {
-
+        // Operation to create a fresh robot
     }
 );
 
@@ -141,6 +141,7 @@ $app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
 
+        // Operation to update a robot with id $id
     }
 );
 
@@ -148,7 +149,7 @@ $app->put(
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-
+        // Operation to delete the robot with id $id
     }
 );
 
