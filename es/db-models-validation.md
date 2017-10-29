@@ -1,16 +1,16 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Validating Models</a> 
+      <a href="#overview">Validación de modelos</a> 
       <ul>
         <li>
-          <a href="#data-integrity">Validating Data Integrity</a>
+          <a href="#data-integrity">Validar la integridad de los datos</a>
         </li>
         <li>
-          <a href="#messages">Validation Messages</a>
+          <a href="#messages">Mensajes de validación</a>
         </li>
         <li>
-          <a href="#failed-events">Validation Failed Events</a>
+          <a href="#failed-events">Eventos de validación fallidos</a>
         </li>
       </ul>
     </li>
@@ -19,15 +19,15 @@
 
 <a name='overview'></a>
 
-# Validating Models
+# Validación de modelos
 
 <a name='data-integrity'></a>
 
-## Validating Data Integrity
+## Validar la integridad de los datos
 
-`Phalcon\Mvc\Model` provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+`Phalcon\Mvc\Model` ofrece varios eventos para validar los datos e implementar reglas de negocio. El evento especial `validation` nos permite llamar a validadores incorporados en el registro. Phalcon expone algunos validadores incorporados que pueden utilizarse en esta etapa de validación.
 
-The following example shows how to use it:
+En el ejemplo siguiente se muestra cómo se utiliza:
 
 ```php
 <?php
@@ -61,7 +61,7 @@ class Robots extends Model
             'name',
             new Uniqueness(
                 [
-                    'message' => 'The robot name must be unique',
+                    'message' => 'El nombre del robot debe ser único',
                 ]
             )
         );
@@ -71,15 +71,15 @@ class Robots extends Model
 }
 ```
 
-The above example performs a validation using the built-in validator 'InclusionIn'. It checks the value of the field `type` in a domain list. If the value is not included in the method then the validator will fail and return false.
+En el ejemplo anterior se realiza una validación utilizando el validador integrado 'InclusionIn'. Comprueba el valor del campo `type` en una lista de dominios. Si el valor no está incluido en el método entonces el validador fallará y devolverá false.
 
 <div class='alert alert-warning'>
     <p>
-        For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation)
+        Para más información sobre validadores, consulte la [documentación de validación](/[[language]]/[[version]]/validation)
     </p>
 </div>
 
-The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
+La idea de crear validadores es hacerlos reutilizables entre varios modelos. Un validador puede también ser tan simple como:
 
 ```php
 <?php
@@ -95,7 +95,7 @@ class Robots extends Model
     {
         if ($this->type === 'Old') {
             $message = new Message(
-                'Sorry, old robots are not allowed anymore',
+                'Perdón, los robots viejos ya no son permitidos',
                 'type',
                 'MyType'
             );
@@ -112,11 +112,11 @@ class Robots extends Model
 
 <a name='messages'></a>
 
-## Validation Messages
+## Mensajes de validación
 
-`Phalcon\Mvc\Model` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
+`Phalcon\Mvc\Model` cuenta con un subsistema de mensajería que proporciona una forma flexible de salida o almacenamiento de mensajes de validación generados durante los procesos de insertar/actualizar.
 
-Each message is an instance of `Phalcon\Mvc\Model\Message` and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information like the field name that generated the message or the message type:
+Cada mensaje es una instancia de `Phalcon\Mvc\Model\Message` y el conjunto de mensajes generados puede ser obtenido con el método `getMessages()`. Each message provides extended information like the field name that generated the message or the message type:
 
 ```php
 <?php
