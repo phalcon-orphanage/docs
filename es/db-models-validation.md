@@ -116,7 +116,7 @@ class Robots extends Model
 
 `Phalcon\Mvc\Model` cuenta con un subsistema de mensajería que proporciona una forma flexible de salida o almacenamiento de mensajes de validación generados durante los procesos de insertar/actualizar.
 
-Cada mensaje es una instancia de `Phalcon\Mvc\Model\Message` y el conjunto de mensajes generados puede ser obtenido con el método `getMessages()`. Each message provides extended information like the field name that generated the message or the message type:
+Cada mensaje es una instancia de `Phalcon\Mvc\Model\Message` y el conjunto de mensajes generados puede ser obtenido con el método `getMessages()`. Cada mensaje proporciona información ampliada como el nombre del campo que genera el mensaje o el tipo de mensaje:
 
 ```php
 <?php
@@ -125,24 +125,24 @@ if ($robot->save() === false) {
     $messages = $robot->getMessages();
 
     foreach ($messages as $message) {
-        echo 'Message: ', $message->getMessage();
-        echo 'Field: ', $message->getField();
-        echo 'Type: ', $message->getType();
+        echo 'Mensaje: ', $message->getMessage();
+        echo 'Campo: ', $message->getField();
+        echo 'Tipo: ', $message->getType();
     }
 }
 ```
 
-`Phalcon\Mvc\Model` can generate the following types of validation messages:
+`Phalcon\Mvc\Model` puede generar los siguientes tipos de mensajes de validación:
 
-| Type                   | Description                                                                                                                        |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `PresenceOf`           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
-| `ConstraintViolation`  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
-| `InvalidValue`         | Generated when a validator failed because of an invalid value                                                                      |
-| `InvalidCreateAttempt` | Produced when a record is attempted to be created but it already exists                                                            |
-| `InvalidUpdateAttempt` | Produced when a record is attempted to be updated but it doesn't exist                                                             |
+| Tipo                   | Descripción                                                                                                                                 |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PresenceOf`           | Generado cuando se trata de un campo que no admite el valor null en la base de datos y se intenta insertar o actualizar a un valor nulo     |
+| `ConstraintViolation`  | Generado cuando una parte del campo de clave externa virtual intenta insertar o actualizar un valor que no existe en el modelo referenciado |
+| `InvalidValue`         | Generado cuando un validador falló debido a un valor no válido                                                                              |
+| `InvalidCreateAttempt` | Se produce cuando un registro que intenta crearse ya existe                                                                                 |
+| `InvalidUpdateAttempt` | Se produce cuando un registro que se intenta actualizar no existe                                                                           |
 
-The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+El método `getMessages()` puede ser reemplazado en un modelo para reemplazar/traducir los mensajes generados automáticamente por el ORM:
 
 ```php
 <?php
@@ -160,15 +160,15 @@ class Robots extends Model
         foreach (parent::getMessages() as $message) {
             switch ($message->getType()) {
                 case 'InvalidCreateAttempt':
-                    $messages[] = 'The record cannot be created because it already exists';
+                    $messages[] = 'El registro no puede ser creado porque ya existe';
                     break;
 
                 case 'InvalidUpdateAttempt':
-                    $messages[] = "The record cannot be updated because it doesn't exist";
+                    $messages[] = "El registro no puede ser actualizado porque no existe";
                     break;
 
                 case 'PresenceOf':
-                    $messages[] = 'The field ' . $message->getField() . ' is mandatory';
+                    $messages[] = 'El campo ' . $message->getField() . ' es obligatorio';
                     break;
             }
         }
@@ -180,11 +180,11 @@ class Robots extends Model
 
 <a name='failed-events'></a>
 
-## Validation Failed Events
+## Eventos de validación fallidos
 
-Another type of events are available when the data validation process finds any inconsistency:
+Otro tipo de eventos están disponibles cuando el proceso de validación de datos encuentra cualquier inconsistencia:
 
-| Operation                | Name                | Explanation                                                            |
-| ------------------------ | ------------------- | ---------------------------------------------------------------------- |
-| Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
-| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |
+| Operación                     | Nombre              | Explicación                                                                  |
+| ----------------------------- | ------------------- | ---------------------------------------------------------------------------- |
+| Insertar o actualizar         | `notSaved`          | Se dispara cuando la operación de `INSERT` o `UPDATE` falla por alguna razón |
+| Insertar, borrar o actualizar | `onValidationFails` | Se dispara cuando cualquier operación de manipulación de datos falla         |
