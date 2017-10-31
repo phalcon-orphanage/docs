@@ -208,7 +208,7 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>El método <code>initialize()</code> se llama sólo si el evento <code>beforeExecuteRoute</code> se ejecuta con éxito. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
+<h5 class='alert alert-warning'>El método <code>initialize()</code> se llama sólo si el evento <code>beforeExecuteRoute</code> se ejecuta con éxito. Esto evitará que la lógica de la aplicación en el inicializador no pueda ejecutar sin autorización.</h5>
 
 Si desea ejecutar cierta lógica de inicialización justo después de que se construye el objeto controlador puede implementar el método `onConstruct()`:
 
