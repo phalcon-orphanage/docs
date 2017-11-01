@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Queueing</a>
+      <a href="#overview">Formación de Colas</a>
     </li>
     <li>
       <a href="$overview">Enrutamiento</a> <ul>
@@ -11,69 +11,69 @@
               <a href="$defining-named-parameters">Parámetros con nombres</a>
             </li>
             <li>
-              <a href="$defining-short-syntax">Short Syntax</a>
+              <a href="$defining-short-syntax">Sintaxis corta</a>
             </li>
             <li>
-              <a href="$defining-mixed-parameters">Mixing Array and Short Syntax</a>
+              <a href="$defining-mixed-parameters">Mezcla de array y sintaxis corta</a>
             </li>
             <li>
-              <a href="$defining-route-to-modules">Routing to Modules</a>
+              <a href="$defining-route-to-modules">Enrutamiento a los módulos</a>
             </li>
             <li>
-              <a href="$defining-http-method-restrictions">HTTP Method Restrictions</a>
+              <a href="$defining-http-method-restrictions">Restricciones del método HTTP</a>
             </li>
             <li>
-              <a href="$defining-using-conversors">Using conversors</a>
+              <a href="$defining-using-conversors">Utilizando conversores</a>
             </li>
             <li>
-              <a href="$defining-groups-of-routes">Groups of Routes</a>
+              <a href="$defining-groups-of-routes">Grupos de rutas</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="$matching">Matching Routes</a>
+          <a href="$matching">Rutas coincidentes</a>
         </li>
         <li>
-          <a href="$naming">Naming Routes</a>
+          <a href="$naming">Nombres de rutas</a>
         </li>
         <li>
-          <a href="$usage">Usage Examples</a>
+          <a href="$usage">Ejemplos de Uso</a>
         </li>
         <li>
-          <a href="$default-behavior">Default Behavior</a>
+          <a href="$default-behavior">Comprotamiento predeterminado</a>
         </li>
         <li>
-          <a href="$default-route">Setting the default route</a>
+          <a href="$default-route">Establecer la ruta por defecto</a>
         </li>
         <li>
-          <a href="$not-found-paths">Not Found Paths</a>
+          <a href="$not-found-paths">Rutas Not Found</a>
         </li>
         <li>
-          <a href="$default-paths">Setting default paths</a>
+          <a href="$default-paths">Configurar rutas por defecto</a>
         </li>
         <li>
-          <a href="$extra-slashes">Dealing with extra/trailing slashes</a>
+          <a href="$extra-slashes">Tratar con barras extra o finales</a>
         </li>
         <li>
-          <a href="$callbacks">Match Callbacks</a>
+          <a href="$callbacks">Coincidencias por llamada de retorno</a>
         </li>
         <li>
-          <a href="$hostname-constraints">Hostname Constraints</a>
+          <a href="$hostname-constraints">Restricciones de nombre de host</a>
         </li>
         <li>
-          <a href="$uri-sources">URI Sources</a>
+          <a href="$uri-sources">Fuentes URI</a>
         </li>
         <li>
-          <a href="$testing">Testing your routes</a>
+          <a href="$testing">Probando tus rutas</a>
         </li>
         <li>
-          <a href="$annotations">Annotations Router</a>
+          <a href="$annotations">Anotaciones de Router</a>
         </li>
         <li>
-          <a href="$registration">Registering Router instance</a>
+          <a href="$registration">Registro de instancia de Router</a>
         </li>
         <li>
-          <a href="$custom">Implementing your own Router</a>
+          <a href="$custom">Implementar tu propio Router</a>
         </li>
       </ul>
     </li>
@@ -692,7 +692,7 @@ The following are examples of custom routes:
 ```php
 <?php
 
-// Matches '/system/admin/a/edit/7001'
+// Coincidencia '/system/admin/a/edit/7001'
 $router->add(
     '/system/:controller/a/:action/:params',
     [
@@ -702,7 +702,7 @@ $router->add(
     ]
 );
 
-// Matches '/es/news'
+// Coincidencia '/es/news'
 $router->add(
     '/([a-z]{2})/:controller',
     [
@@ -712,7 +712,7 @@ $router->add(
     ]
 );
 
-// Matches '/es/news'
+// Coincidencia '/es/news'
 $router->add(
     '/{language:[a-z]{2}}/:controller',
     [
@@ -721,7 +721,7 @@ $router->add(
     ]
 );
 
-// Matches '/admin/posts/edit/100'
+// Coincidencia '/admin/posts/edit/100'
 $router->add(
     '/admin/:controller/:action/:int',
     [
@@ -731,7 +731,7 @@ $router->add(
     ]
 );
 
-// Matches '/posts/2015/02/some-cool-content'
+// Coincidencia '/posts/2015/02/some-cool-content'
 $router->add(
     '/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)',
     [
@@ -743,7 +743,7 @@ $router->add(
     ]
 );
 
-// Matches '/manual/en/translate.adapter.html'
+// Coincidencia '/manual/en/translate.adapter.html'
 $router->add(
     '/manual/([a-z]{2})/([a-z\.]+)\.html',
     [
@@ -754,13 +754,13 @@ $router->add(
     ]
 );
 
-// Matches /feed/fr/le-robots-hot-news.atom
+// Coincidencia /feed/fr/le-robots-hot-news.atom
 $router->add(
     '/feed/{lang:[a-z]+}/{blog:[a-z\-]+}\.{type:[a-z\-]+}',
     'Feed::get'
 );
 
-// Matches /api/v1/users/peter.json
+// Coincidencia /api/v1/users/peter.json
 $router->add(
     '/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
     [
@@ -1328,6 +1328,6 @@ return $router;
 
 <a name='custom'></a>
 
-## Implementing your own Router
+## Implementar tu propio Router
 
-The `Phalcon\Mvc\RouterInterface` interface must be implemented to create your own router replacing the one provided by Phalcon.
+Debe implementar la interfaz `Phalcon\Mvc\RouterInterface` para crear su propio enrutador reemplazando uno proporcionado por Phalcon.
