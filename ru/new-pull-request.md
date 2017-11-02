@@ -1,9 +1,13 @@
-# New Pull Request
+# Новый Pull Request
 
-A pull request is alterations to the code that either fixes a current issue or introduces new functionality.
+Pull request — это изменения в коде, которые или исправляют определенную проблему или добавляют функциональность.
 
-Your Pull request must include: * Issued to the correct branch. **We do not accept Pull Requests to the `master` branch** * Update to the CHANGELOG * Unit tests * Documentation if necessary and usage examples
+Ваш pull request должен:
+* Вносить изменения в правильную ветку. **Мы не принимаем pull request'ы в ветку `master`**
+* Обновлять CHANGELOG
+* Содержать unit-тесты
+* При необходимости содержать документацию и примеры
 
-For fixing bugs, please ensure that you reference the issue in Github. If such issue does not exist, create one.
+Для исправления багов, пожалуйста, укажите ссылку на issue в Github. Если такого issue нет, то создайте его.
 
-For new functionality, again we will need to have an issue created and referenced. If the functionality you are introducing collides with the philosophy and implementation of Phalcon it will be rejected. Additionally any new functionality that introduces breaking changes will be rejected at least for the current version but could very well be implemented in the next major version. It is highly recommended to discuss your NFR and PR with the core team and most importantly with the community so as to get feedback.
+Для добавления функциональности, нам снова нужно сослаться на issue. Если ваша функциональность конфликтует с философией и имплементацией Phalcon, то она будет отклонена. В дополнение, любая новая функциональность, существенно изменяющая поведение, будет отклонена, по крайней мере для текущей версии, но вполне может быть реализована в следующих версиях. Для получения обратной связи настоятельно рекомендуется обсуждать ваши NFR и PR с командой и главное с сообществом.
