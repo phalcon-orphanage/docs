@@ -34,7 +34,7 @@ Phalcon поддерживает использование парадигмы �
 
 ## Models
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. [Learn more](/[[language]]/[[version]]/db-models)
+Модель представляет собой информацию (данные) приложения и правила работы с этими данными. В основном модель используется для задания правил взаимодействия с соответствующей таблицей в базе данных. В большинстве случаев каждая таблица в базе данных соответствует одной модели в приложении. Основная часть бизнес-логики вашего приложения будет сосредоточена в моделях. [Подробнее про модели](/[[language]]/[[version]]/db-models).
 
 <a name='views'></a>
 
