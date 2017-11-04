@@ -26,6 +26,9 @@
                 </li>
               </ul>
             </li>
+            <li>
+              <a href="#conditionals">Conditionals</a>
+            </li>
           </ul>
         </li>
         <li>
@@ -480,7 +483,7 @@ class RobotsSimilar extends Model
 }
 ```
 
-With the aliasing we can get the related records easily:
+With the aliasing we can get the related records easily. You can also use the `getRelated()` method to access the relationship using the alias name:
 
 ```php
 <?php
@@ -490,10 +493,12 @@ $robotsSimilar = RobotsSimilar::findFirst();
 // Returns the related record based on the column (robots_id)
 $robot = $robotsSimilar->getRobot();
 $robot = $robotsSimilar->robot;
+$robot = $robotsSimilar->getRelated('Robot');
 
 // Returns the related record based on the column (similar_robots_id)
 $similarRobot = $robotsSimilar->getSimilarRobot();
 $similarRobot = $robotsSimilar->similarRobot;
+$similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 ```
 
 <a name='getters-vs-methods'></a>
@@ -530,6 +535,98 @@ class Robots extends Model
         );
     }
 }
+```
+
+<a name='conditionals'></a>
+
+## Conditionals
+
+You can also create relationships based on conditionals. When querying based on the relationship the condition will be automatically appended to the query:
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+// Companies have invoices issued to them (paid/unpaid)
+// Invoices model
+class Invoices extends Model
+{
+
+}
+
+// Companies model
+class Companies extends Model
+{
+    public function initialize()
+    {
+        // All invoices relationship
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias' => 'Invoices'
+            ]
+        );
+
+        // Paid invoices relationship
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesPaid',
+                'params'   => [
+                    'conditions' => "inv_status = 'paid'"
+                ]
+            ]
+        );
+
+        // Unpaid invoices relationship + bound parameters
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesUnpaid',
+                'params'   => [
+                    'conditions' => "inv_status <> :status:",
+                    'bind' => ['status' => 'unpaid']
+                ]
+            ]
+        );
+    }
+}
+```
+
+Additionally, you can use the second parameter of `getRelated()` when accessing your relationship from your model object to further filter or order your relationship:
+
+```php
+<br />// Unpaid Invoices
+$company = Companies::findFirst(
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => ['id' => 1],
+    ]
+);
+
+$unpaidInvoices = $company->InvoicesUnpaid;
+$unpaidInvoices = $company->getInvoicesUnpaid();
+$unpaidInvoices = $company->getRelated('InvoicesUnpaid');
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    ['conditions' => "inv_status = 'paid'"]
+);
+
+// Also ordered
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    [
+        'conditions' => "inv_status = 'paid'",
+        'order'      => 'inv_created_date ASC',
+    ]
+);
 ```
 
 <a name='virtual-foreign-keys'></a>
