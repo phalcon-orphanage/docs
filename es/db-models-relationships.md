@@ -26,6 +26,9 @@
                 </li>
               </ul>
             </li>
+            <li>
+              <a href="#conditionals">Conditionals</a>
+            </li>
           </ul>
         </li>
         <li>
@@ -476,20 +479,22 @@ class RobotsSimilar extends Model
 }
 ```
 
-Con los alias podemos conseguir fácilmente los registros relacionados:
+With the aliasing we can get the related records easily. You can also use the `getRelated()` method to access the relationship using the alias name:
 
 ```php
 <?php
 
 $robotsSimilar = RobotsSimilar::findFirst();
 
-// Devuelve los registros relacionados con la columna (robots_id)
+// Returns the related record based on the column (robots_id)
 $robot = $robotsSimilar->getRobot();
 $robot = $robotsSimilar->robot;
+$robot = $robotsSimilar->getRelated('Robot');
 
-// Devuleve los registros relacionados con la columna (similar_robots_id)
+// Returns the related record based on the column (similar_robots_id)
 $similarRobot = $robotsSimilar->getSimilarRobot();
 $similarRobot = $robotsSimilar->similarRobot;
+$similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 ```
 
 <a name='getters-vs-methods'></a>
@@ -528,9 +533,101 @@ class Robots extends Model
 }
 ```
 
+<a name='conditionals'></a>
+
+## Conditionals
+
+You can also create relationships based on conditionals. When querying based on the relationship the condition will be automatically appended to the query:
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+// Companies have invoices issued to them (paid/unpaid)
+// Invoices model
+class Invoices extends Model
+{
+
+}
+
+// Companies model
+class Companies extends Model
+{
+    public function initialize()
+    {
+        // All invoices relationship
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias' => 'Invoices'
+            ]
+        );
+
+        // Paid invoices relationship
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesPaid',
+                'params'   => [
+                    'conditions' => "inv_status = 'paid'"
+                ]
+            ]
+        );
+
+        // Unpaid invoices relationship + bound parameters
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesUnpaid',
+                'params'   => [
+                    'conditions' => "inv_status <> :status:",
+                    'bind' => ['status' => 'unpaid']
+                ]
+            ]
+        );
+    }
+}
+```
+
+Additionally, you can use the second parameter of `getRelated()` when accessing your relationship from your model object to further filter or order your relationship:
+
+```php
+<br />// Unpaid Invoices
+$company = Companies::findFirst(
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => ['id' => 1],
+    ]
+);
+
+$unpaidInvoices = $company->InvoicesUnpaid;
+$unpaidInvoices = $company->getInvoicesUnpaid();
+$unpaidInvoices = $company->getRelated('InvoicesUnpaid');
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    ['conditions' => "inv_status = 'paid'"]
+);
+
+// Also ordered
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    [
+        'conditions' => "inv_status = 'paid'",
+        'order'      => 'inv_created_date ASC',
+    ]
+);
+```
+
 <a name='virtual-foreign-keys'></a>
 
-## Claves externas virtuales
+## Virtual Foreign Keys
 
 De forma predeterminada, las relaciones no actúan como claves foráneas de la base de datos, es decir, si se intenta insertar o actualizar un valor sin tener un valor válido en el modelo de referenciado, Phalcon no producirá un mensaje de validación. Se puede modificar este comportamiento agregando un cuarto parámetro en la definición de una relación.
 
@@ -671,7 +768,7 @@ Con el código anterior, se borrarán todos los registros de referenciados (part
 
 <a name='storing-related-records'></a>
 
-## Almacenamiento de registros relacionados
+## Storing Related Records
 
 Las propiedades mágicas se pueden utilizar para almacenar un registro y sus propiedades relacionadas:
 
@@ -742,7 +839,7 @@ Es necesario sobrecargar el método `Phalcon\Mvc\Model::save()` del modelo para 
 
 <a name='operations-over-resultsets'></a>
 
-## Operaciones sobre conjuntos de resultados
+## Operations over Resultsets
 
 Si un conjunto de resultados se compone de objetos completos, el conjunto de resultados está en la capacidad para realizar operaciones sobre los registros obtenidos de una manera simple:
 
