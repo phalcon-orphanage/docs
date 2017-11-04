@@ -335,7 +335,7 @@ Each method has its advantages and disadvantages. It all depends on the design a
 
 In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
 
-Those changes are outlined in the [rewrite rules](/[[language]]/[[version]]/rewrite-rules).
+Those changes are outlined in the [Apache Rewrite Rules](http://httpd.apache.org/docs/current/rewrite/) and [NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/).
 
 <a name='routing-handlers'></a>
 
@@ -1728,6 +1728,8 @@ class CORSMiddleware implements MiddlewareInterface
                 'Content-Disposition, Content-Type, Authorization'
             )
             ->setHeader('Access-Control-Allow-Credentials', 'true');
+
+        return true;
     }
 
     /**

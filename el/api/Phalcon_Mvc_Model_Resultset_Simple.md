@@ -60,7 +60,7 @@ Rewinds resultset to its beginning
 
 final public **seek** (*mixed* $position) inherited from [Phalcon\Mvc\Model\Resultset](/en/3.2/api/Phalcon_Mvc_Model_Resultset)
 
-Changes internal pointer to a specific position in the resultset Set new position if required and set this->_row
+Changes the internal pointer to a specific position in the resultset. Set the new position if required, and then set this->_row
 
 final public **count** () inherited from [Phalcon\Mvc\Model\Resultset](/en/3.2/api/Phalcon_Mvc_Model_Resultset)
 

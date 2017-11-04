@@ -1,14 +1,15 @@
-- [Obecné](/[[language]]/[[version]]/introduction) 
+- Obecné 
+    - [Introduction](/[[language]]/[[version]]/introduction)
     - [Poznámky k vydání](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
-    - Upgrade
     - [Sponzoři](/[[language]]/[[version]]/sponsors)
+    - [FAQ](/[[language]]/[[version]]/faq)
 - Contributions 
     - [Overview](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
     - [Reproducible Tests](/[[language]]/[[version]]/reproducible-tests)
-    - Průvodce testováním
+    - [Průvodce testováním](/[[language]]/[[version]]/unit-testing)
 - Začínáme 
     - [Installation](/[[language]]/[[version]]/installation)
     - [Instalace webserveru](/[[language]]/[[version]]/webserver-setup) 
