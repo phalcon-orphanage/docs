@@ -1,22 +1,22 @@
-# Abstract class **Phalcon\\Paginator\\Adapter**
+# Clase abstracta **Phalcon\\Paginator\\Adapter**
 
-*implements* [Phalcon\Paginator\AdapterInterface](/en/3.2/api/Phalcon_Paginator_AdapterInterface)
+*implementa* [Phalcon\Paginator\AdapterInterface](/en/3.2/api/Phalcon_Paginator_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/paginator/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/paginator/adapter.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
-## Methods
+## Métodos
 
 public **setCurrentPage** (*mixed* $page)
 
-Set the current page number
+Establecer el número de página actual
 
 public **setLimit** (*mixed* $limitRows)
 
-Set current rows limit
+Establecer límite de filas
 
 public **getLimit** ()
 
-Get current rows limit
+Obtener el límite actual de filas
 
 abstract public **getPaginate** () inherited from [Phalcon\Paginator\AdapterInterface](/en/3.2/api/Phalcon_Paginator_AdapterInterface)
 

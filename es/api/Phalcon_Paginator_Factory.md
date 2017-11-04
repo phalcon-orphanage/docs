@@ -1,12 +1,12 @@
 # Class **Phalcon\\Paginator\\Factory**
 
-*extends* abstract class [Phalcon\Factory](/en/3.2/api/Phalcon_Factory)
+*extiende* abstract class [Phalcon\Factory](/en/3.2/api/Phalcon_Factory)
 
-*implements* [Phalcon\FactoryInterface](/en/3.2/api/Phalcon_FactoryInterface)
+*implementa* [Phalcon\FactoryInterface](/en/3.2/api/Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/paginator/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/paginator/factory.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
-Loads Paginator Adapter class using 'adapter' option
+Carga un adaptador de Paginator utilizando la opción 'adapter'
 
 ```php
 <?php
@@ -27,10 +27,10 @@ $paginator = Factory::load($options);
 
 ```
 
-## Methods
+## Métodos
 
 public static **load** ([Phalcon\Config](/en/3.2/api/Phalcon_Config) | *array* $config)
 
-protected static **loadClass** (*mixed* $namespace, *mixed* $config) inherited from [Phalcon\Factory](/en/3.2/api/Phalcon_Factory)
+protected static **loadClass** (*mixed* $namespace, *mixed* $config) heredado desde [Phalcon\Factory](/en/3.2/api/Phalcon_Factory)
 
 ...
