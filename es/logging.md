@@ -1,9 +1,6 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Contextual Escaping</a>
-    </li>
-    <li>
       <a href="#overview">Logging</a>
       <ul>
         <li>
