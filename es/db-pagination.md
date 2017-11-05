@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Pagination</a> <ul>
+      <a href="#overview">Paginación</a> <ul>
         <li>
-          <a href="#data-adapters">Data Adapters</a>
+          <a href="#data-adapters">Adaptadores de datos</a>
         </li>
         <li>
           <a href="#examples">Examples</a>
@@ -24,21 +24,21 @@
 
 <a name='overview'></a>
 
-# Pagination
+# Paginación
 
-The process of pagination takes place when we need to present big groups of arbitrary data gradually. `Phalcon\Paginator` offers a fast and convenient way to split these sets of data into browsable pages.
+El proceso de paginación ocurre cuando tenemos que presentar gradualmente grandes grupos de datos. `Phalcon\Paginator` ofrece una manera rápida y conveniente para dividir estos conjuntos de datos en páginas navegables.
 
 <a name='data-adapters'></a>
 
-## Data Adapters
+## Adaptadores de datos
 
-This component makes use of adapters to encapsulate different sources of data:
+Este componente hace uso de adaptadores para encapsular diferentes fuentes de datos:
 
-| Adapter                                     | Description                                                                                                                                                                     |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Paginator\Adapter\NativeArray`  | Use a PHP array as source data                                                                                                                                                  |
-| `Phalcon\Paginator\Adapter\Model`        | Use a `Phalcon\Mvc\Model\Resultset` object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
-| `Phalcon\Paginator\Adapter\QueryBuilder` | Use a `Phalcon\Mvc\Model\Query\Builder` object as source data                                                                                                               |
+| Adaptador                                   | Descripción                                                                                                                                                                                     |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Paginator\Adapter\NativeArray`  | Usa un array PHP como origen de datos                                                                                                                                                           |
+| `Phalcon\Paginator\Adapter\Model`        | Utiliza un objeto `Phalcon\Mvc\Model\Resultset` como origen de datos. Ya que PDO no admite cursores desplazables este adaptador no se debe utilizar para paginar un gran número de registros |
+| `Phalcon\Paginator\Adapter\QueryBuilder` | Utiliza un objeto `Phalcon\Mvc\Model\Query\Builder` como origen de datos                                                                                                                    |
 
 <a name='examples'></a>
 
@@ -162,15 +162,15 @@ $paginator = new PaginatorQueryBuilder(
 
 The `$page` object has the following attributes:
 
-| Attribute     | Description                                            |
-| ------------- | ------------------------------------------------------ |
-| `items`       | The set of records to be displayed at the current page |
-| `current`     | The current page                                       |
-| `before`      | The previous page to the current one                   |
-| `next`        | The next page to the current one                       |
-| `last`        | The last page in the set of records                    |
-| `total_pages` | The number of pages                                    |
-| `total_items` | The number of items in the source data                 |
+| Atributos     | Descripción                                                        |
+| ------------- | ------------------------------------------------------------------ |
+| `items`       | El conjunto de registros o elementos a mostrar en la página actual |
+| `current`     | Número de página actual                                            |
+| `before`      | Número de página anterior a la actual                              |
+| `next`        | Número de página siguiente a la actual                             |
+| `last`        | Número de la última página                                         |
+| `total_pages` | Cantidad de páginas                                                |
+| `total_items` | El número total de elementos de los datos de origen                |
 
 <a name='custom'></a>
 
