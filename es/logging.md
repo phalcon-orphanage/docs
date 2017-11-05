@@ -1,34 +1,34 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Contextual Escaping</a>
+      <a href="#overview">Escapado contextual</a>
     </li>
     <li>
       <a href="#overview">Logging</a> <ul>
         <li>
-          <a href="#adapters">Adapters</a>
+          <a href="#adapters">Adaptadores</a>
         </li>
         <li>
-          <a href="#creating">Creating a Log</a>
+          <a href="#creating">Creación de un Log</a>
         </li>
         <li>
-          <a href="#transactions">Transactions</a>
+          <a href="#transactions">Transacciones</a>
         </li>
         <li>
-          <a href="#multiple-handlers">Logging to Multiple Handlers</a>
+          <a href="#multiple-handlers">Registro de múltiples gestores</a>
         </li>
         <li>
-          <a href="#message-formatting">Message Formatting</a> <ul>
+          <a href="#message-formatting">Formato de mensaje</a> <ul>
             <li>
-              <a href="#message-formatting-line">Line Formatter</a>
+              <a href="#message-formatting-line">Formateador de línea</a>
             </li>
             <li>
-              <a href="#message-formatting-custom">Implementing your own formatters</a>
+              <a href="#message-formatting-custom">Implementar tus propios formateadores</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#usage">Adapters</a> <ul>
+          <a href="#usage">Adaptadores</a> <ul>
             <li>
               <a href="#usage-stream">Stream Logger</a>
             </li>
@@ -42,7 +42,7 @@
               <a href="#usage-firephp">FirePHP Logger</a>
             </li>
             <li>
-              <a href="#usage-custom">Implementing your own adapters</a>
+              <a href="#usage-custom">Implementar tus propios adaptadores</a>
             </li>
           </ul>
         </li>
@@ -55,26 +55,26 @@
 
 # Logging
 
-`Phalcon\Logger` is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the `Phalcon\Logger` for every logging need your application has, from debugging processes to tracing application flow.
+`Phalcon\Logger` es un componente cuyo propósito es proporcionar servicios de registro (logging) para aplicaciones. Ofrece diferentes formas de almacenamiento con diversos adaptadores. También ofrece registro de transacciones, opciones de configuración, diferentes formatos y filtros. Puede utilizar el `Phalcon\Logger` para cada necesidad de registrar información que tenga su aplicación, desde depuración de procesos hasta el rastreo del flujo de una aplicación.
 
 <a name='adapters'></a>
 
-## Adapters
+## Adaptadores
 
-This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch backends if necessary. The adapters supported are:
+Este componente hace uso de adaptadores para almacenar los mensajes. El uso de adaptadores permite una interfaz común de registro de mensajes y proporciona la capacidad de cambiar fácilmente el método de almacenamiento (backend) si es necesario. Los adaptadores soportados son:
 
-| Adapter                             | Description               |
-| ----------------------------------- | ------------------------- |
-| `Phalcon\Logger\Adapter\File`    | Logs to a plain text file |
-| `Phalcon\Logger\Adapter\Stream`  | Logs to a PHP Streams     |
-| `Phalcon\Logger\Adapter\Syslog`  | Logs to the system logger |
-| `Phalcon\Logger\Adapter\FirePHP` | Logs to the FirePHP       |
+| Adaptador                           | Descripción                                             |
+| ----------------------------------- | ------------------------------------------------------- |
+| `Phalcon\Logger\Adapter\File`    | Registros son almacenados en un archivo de texto        |
+| `Phalcon\Logger\Adapter\Stream`  | Registros enviados al PHP Stream                        |
+| `Phalcon\Logger\Adapter\Syslog`  | Registros se almacenan en el sistema de log del sistema |
+| `Phalcon\Logger\Adapter\FirePHP` | Registros se envían a la extensión FirePHP              |
 
 <a name='creating'></a>
 
-## Creating a Log
+## Creación de un Log
 
-The example below shows how to create a log and add messages to it:
+El siguiente ejemplo muestra cómo crear un registro y añadir mensajes a él:
 
 ```php
 <?php
@@ -173,7 +173,7 @@ In the example above, only critical and emergency messages will get saved to the
 
 <a name='transactions'></a>
 
-## Transactions
+## Transacciones
 
 Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the relevant adapter (File in this case) in a single atomic operation.
 
@@ -204,7 +204,7 @@ $logger->commit();
 
 <a name='multiple-handlers'></a>
 
-## Logging to Multiple Handlers
+## Registro de múltiples gestores
 
 `Phalcon\Logger` can send messages to multiple handlers with a just single call:
 
@@ -246,20 +246,20 @@ The messages are sent to the handlers in the order they were registered.
 
 <a name='message-formatting'></a>
 
-## Message Formatting
+## Formato de mensaje
 
 This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:
 
-| Adapter                               | Description                                              |
-| ------------------------------------- | -------------------------------------------------------- |
-| `Phalcon\Logger\Formatter\Line`    | Formats the messages using a one-line string             |
-| `Phalcon\Logger\Formatter\Firephp` | Formats the messages so that they can be sent to FirePHP |
-| `Phalcon\Logger\Formatter\Json`    | Prepares a message to be encoded with JSON               |
-| `Phalcon\Logger\Formatter\Syslog`  | Prepares a message to be sent to syslog                  |
+| Adaptador                             | Descripción                                                     |
+| ------------------------------------- | --------------------------------------------------------------- |
+| `Phalcon\Logger\Formatter\Line`    | Formato de mensajes utilizando una cadena de texto de una línea |
+| `Phalcon\Logger\Formatter\Firephp` | Formato de mensajes que pueden ser enviados a FirePHP           |
+| `Phalcon\Logger\Formatter\Json`    | Prepara un mensaje para ser codificados con JSON                |
+| `Phalcon\Logger\Formatter\Syslog`  | Se prepara un mensaje para enviarse al syslog                   |
 
 <a name='message-formatting-line'></a>
 
-### Line Formatter
+### Formateador de línea
 
 Formats the messages using a one-line string. The default logging format is:
 
@@ -269,11 +269,11 @@ Formats the messages using a one-line string. The default logging format is:
 
 You can change the default format using `setFormat()`, this allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
 
-| Variable  | Description                              |
-| --------- | ---------------------------------------- |
-| %message% | The message itself expected to be logged |
-| %date%    | Date the message was added               |
-| %type%    | Uppercase string with message type       |
+| Variable  | Descripción                        |
+| --------- | ---------------------------------- |
+| %message% | El mensaje que se espera registrar |
+| %date%    | Fecha que del mensaje fue agregado |
+| %type%    | Tipo de mensaje en mayúsculas      |
 
 The example below shows how to change the log format:
 
@@ -290,13 +290,13 @@ $logger->setFormatter($formatter);
 
 <a name='message-formatting-custom'></a>
 
-### Implementing your own formatters
+### Implementar tus propios formateadores
 
 The `Phalcon\Logger\FormatterInterface` interface must be implemented in order to create your own logger formatter or extend the existing ones.
 
 <a name='usage'></a>
 
-## Adapters
+## Adaptadores
 
 The following examples show the basic use of each adapter:
 
@@ -392,6 +392,6 @@ $logger->error(
 
 <a name='usage-custom'></a>
 
-### Implementing your own adapters
+### Implementar tus propios adaptadores
 
 The `Phalcon\Logger\AdapterInterface` interface must be implemented in order to create your own logger adapters or extend the existing ones.
