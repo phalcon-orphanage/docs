@@ -548,13 +548,13 @@ try {
 
 | Название события      | Срабатывает                                          | Может остановить операцию? |
 | --------------------- | ---------------------------------------------------- |:--------------------------:|
-| `afterConnect`        | After a successfully connection to a database system |            Нет             |
-| `beforeQuery`         | Before send a SQL statement to the database system   |             Да             |
-| `afterQuery`          | After send a SQL statement to database system        |            Нет             |
-| `beforeDisconnect`    | Before close a temporal database connection          |            Нет             |
-| `beginTransaction`    | Before a transaction is going to be started          |            Нет             |
-| `rollbackTransaction` | Before a transaction is rollbacked                   |            Нет             |
-| `commitTransaction`   | Before a transaction is committed                    |            Нет             |
+| `afterConnect`        | After a successfully connection to a database system |             No             |
+| `beforeQuery`         | Before send a SQL statement to the database system   |            Yes             |
+| `afterQuery`          | After send a SQL statement to database system        |             No             |
+| `beforeDisconnect`    | Before close a temporal database connection          |             No             |
+| `beginTransaction`    | Before a transaction is going to be started          |             No             |
+| `rollbackTransaction` | Before a transaction is rollbacked                   |             No             |
+| `commitTransaction`   | Before a transaction is committed                    |             No             |
 
 Bind an EventsManager to a connection is simple, `Phalcon\Db` will trigger the events with the type `db`:
 
@@ -898,10 +898,10 @@ The associative array passed in `Phalcon\Db::createTable()` can have the possibl
 
 | Индекс       | Описание                                                                                                                               | Опционально |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:-----------:|
-| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |     Нет     |
-| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |     Да      |
-| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |     Да      |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |     Да      |
+| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |     No      |
+| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |     Yes     |
+| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |     Yes     |
+| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |     Yes     |
 
 <a name='tables-altering'></a>
 
