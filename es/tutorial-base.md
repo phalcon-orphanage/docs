@@ -1,46 +1,46 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#basic">Tutorial - basic</a> <ul>
+      <a href="#basic">Tutorial - básico</a> <ul>
         <li>
-          <a href="#file-structure">File structure</a>
+          <a href="#file-structure">Estructura de archivos</a>
         </li>
         <li>
-          <a href="#bootstrap">Bootstrap</a> <ul>
+          <a href="#bootstrap">Manos a la obra</a> <ul>
             <li>
-              <a href="#autoloaders">Autoloaders</a>
+              <a href="#autoloaders">Cargadores automáticos</a>
             </li>
             <li>
-              <a href="#dependency-management">Dependency Management</a>
+              <a href="#dependency-management">Gestión de dependencias</a>
             </li>
             <li>
-              <a href="#request">Handling the application request</a>
+              <a href="#request">Tratar las solicitudes de la aplicación</a>
             </li>
             <li>
-              <a href="#full-example">Putting everything together</a>
+              <a href="#full-example">Poniendo todo junto</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#controller">Creating a Controller</a>
+          <a href="#controller">Creando un controlador</a>
         </li>
         <li>
-          <a href="#view">Sending output to a view</a>
+          <a href="#view">Enviando la salida a una vista</a>
         </li>
         <li>
-          <a href="#signup-form">Designing a sign up form</a>
+          <a href="#signup-form">Diseñar un formulario de registro</a>
         </li>
         <li>
-          <a href="#model">Creating a Model</a>
+          <a href="#model">Creando un modelo</a>
         </li>
         <li>
-          <a href="#database-connection">Setting a Database Connection</a>
+          <a href="#database-connection">Establecer una conexión de base de datos</a>
         </li>
         <li>
-          <a href="#storing-data">Storing data using models</a>
+          <a href="#storing-data">Almacenando datos utilizando modelos</a>
         </li>
         <li>
-          <a href="#conclusion">Conclusion</a>
+          <a href="#conclusion">Conclusión</a>
         </li>
       </ul>
     </li>
@@ -49,7 +49,7 @@
 
 <a name='basic'></a>
 
-# Tutorial - basic
+# Tutorial - básico
 
 Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/[[language]]/[[version]]/developer-tools).
 
@@ -57,7 +57,7 @@ The best way to use this guide is to follow each step in turn. You can get the c
 
 <a name='file-structure'></a>
 
-## File structure
+## Estructura de archivos
 
 Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
 
@@ -81,7 +81,7 @@ Before continuing, please be sure you've successfully [installed Phalcon](/[[lan
 
 <a name='bootstrap'></a>
 
-## Bootstrap
+## Manos a la obra
 
 The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
 
@@ -187,7 +187,7 @@ $di->set(
 
 <a name='request'></a>
 
-### Handling the application request
+### Tratar las solicitudes de la aplicación
 
 In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
 
@@ -207,7 +207,7 @@ $response->send();
 
 <a name='full-example'></a>
 
-### Putting everything together
+### Poniendo todo junto
 
 The `tutorial/public/index.php` file should look like:
 
@@ -330,7 +330,7 @@ The browser output should remain the same. The `Phalcon\Mvc\View` static compone
 
 <a name='signup-form'></a>
 
-## Designing a sign up form
+## Diseñar un formulario de registro
 
 Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
 

@@ -529,7 +529,7 @@ class Robots extends Model
 
 <a name='virtual-foreign-keys'></a>
 
-## Virtual Foreign Keys
+## Виртуальные внешние ключи
 
 By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
 
@@ -670,7 +670,7 @@ The above code set up to delete all the referenced records (parts) if the master
 
 <a name='storing-related-records'></a>
 
-## Storing Related Records
+## Связаное сохранение записей
 
 Magic properties can be used to store a record and its related properties:
 
@@ -741,7 +741,7 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 <a name='operations-over-resultsets'></a>
 
-## Operations over Resultsets
+## Операции над набором результатов
 
 If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
 
