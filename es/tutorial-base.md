@@ -396,7 +396,7 @@ The generated HTML code displays an anchor ("a") HTML tag linking to a new contr
 
 To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is also a service registered in the DI we use `$this->tag` to access it.
 
-A more detailed article regarding HTML generation can be found [here <tags>](/[[language]]/[[version]]/tag).
+A more detailed article regarding HTML generation can be found [here](/[[language]]/[[version]]/tag).
 
 ![](/images/content/tutorial-basic-2.png)
 
