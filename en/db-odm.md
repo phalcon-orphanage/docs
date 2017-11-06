@@ -308,6 +308,15 @@ $robots = Robots::find(
         ],
     ]
 );
+
+// Find all robots that have more than 4 friends using the where condition
+$robots = Robots::find(
+    [
+        'conditions' => [
+            '$where' => 'this.friends.length > 4',
+        ]
+    ]
+);
 ```
 
 The available query options are:
