@@ -586,6 +586,7 @@ class Companies extends Model
 Additionally, you can use the second parameter of `getRelated()` when accessing your relationship from your model object to further filter or order your relationship:
 
 ```php
+<?php
 
 // Unpaid Invoices
 $company = Companies::findFirst(
