@@ -1,48 +1,48 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#basic">Tutorial - basic</a> 
+      <a href="#basic">Tutorial - básico</a> 
       <ul>
         <li>
-          <a href="#file-structure">File structure</a>
+          <a href="#file-structure">Estructura de archivos</a>
         </li>
         <li>
-          <a href="#bootstrap">Bootstrap</a> 
+          <a href="#bootstrap">Manos a la obra</a> 
           <ul>
             <li>
-              <a href="#autoloaders">Autoloaders</a>
+              <a href="#autoloaders">Cargadores automáticos</a>
             </li>
             <li>
-              <a href="#dependency-management">Dependency Management</a>
+              <a href="#dependency-management">Gestión de dependencias</a>
             </li>
             <li>
-              <a href="#request">Handling the application request</a>
+              <a href="#request">Tratar las solicitudes de la aplicación</a>
             </li>
             <li>
-              <a href="#full-example">Putting everything together</a>
+              <a href="#full-example">Poniendo todo junto</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#controller">Creating a Controller</a>
+          <a href="#controller">Creando un controlador</a>
         </li>
         <li>
-          <a href="#view">Sending output to a view</a>
+          <a href="#view">Enviando la salida a una vista</a>
         </li>
         <li>
-          <a href="#signup-form">Designing a sign up form</a>
+          <a href="#signup-form">Diseñar un formulario de registro</a>
         </li>
         <li>
-          <a href="#model">Creating a Model</a>
+          <a href="#model">Creando un modelo</a>
         </li>
         <li>
-          <a href="#database-connection">Setting a Database Connection</a>
+          <a href="#database-connection">Establecer una conexión de base de datos</a>
         </li>
         <li>
-          <a href="#storing-data">Storing data using models</a>
+          <a href="#storing-data">Almacenando datos utilizando modelos</a>
         </li>
         <li>
-          <a href="#conclusion">Conclusion</a>
+          <a href="#conclusion">Conclusión</a>
         </li>
       </ul>
     </li>
@@ -51,19 +51,19 @@
 
 <a name='basic'></a>
 
-# Tutorial - basic
+# Tutorial - básico
 
-Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. The following guide is to provided to introduce you to Phalcon framework's design aspects.
+A lo largo de este tutorial, lo guiaremos a través de la creación de una aplicación con un formulario simple de registro comenzando desde cero. La siguiente guía es proporcionada para presentarle aspectos de diseño del framework Phalcon.
 
-If you just want to get started you can skip this and create a Phalcon project automatically with our [developer tools](/[[language]]/[[version]]/devtools-usage). (It is recommended that if you have not had experience with to come back here if you get stuck)
+Si solo desea empezar puede saltarse esto y crear automáticamente un proyecto Phalcon con nuestras [herramientas de desarrollo](/[[language]]/[[version]]/devtools-usage). (Se recomienda que si no han tenido experiencia o te quedas atascado, vuelvas aquí)
 
-The best way to use this guide is to follow along and try to have fun. You can get the complete code [here](https://github.com/phalcon/tutorial). If you get hung-up on something please visit us on [Discord](https://phalcon.link/discord) or in our [Forum](https://phalcon.link/forum)
+La mejor manera de utilizar esta guía es seguirla y tratar de divertirse. Usted puede obtener el código completo [aquí](https://github.com/phalcon/tutorial). Si quedas atrapado en algún problema que no puedes resolver por favor visítenos en [Discord](https://phalcon.link/discord) o en nuestro [Foro](https://phalcon.link/forum)
 
 <a name='file-structure'></a>
 
-## File structure
+## Estructura de archivos
 
-A key feature of Phalcon is it's **loosely coupled**, you can build a Phalcon project with a directory structure that is convenient for your specific application. That said some uniformity is helpful when collaborating with others, so this tutorial will use a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.   
+Una característica clave de Phalcon es ser **débilmente acoplado**, usted puede construir un proyecto Phalcon con una estructura de directorios que sea conveniente para su aplicación. Dicho esto, cierta uniformidad es útil cuando colabora con otros, por lo que este tutorial utiliza una estructura "Estándar" donde debe sentirse como en casa si han trabajado con otros MVC en el pasado.   
 
 
 ```text
@@ -82,19 +82,19 @@ A key feature of Phalcon is it's **loosely coupled**, you can build a Phalcon pr
       ┗ index.php
 ```
 
-Note: You will not see a **vendor** directory as all of Phalcon's core dependencies are loaded into memory via the Phalcon extension you should have installed. If you missed that part have not installed the Phalcon extension [please go back](/[[language]]/[[version]]/installation) and finish the installation before continuing.
+Nota: Usted no verá un directorio **vendor** ya que todas las dependencias del núcleo de Phalcon se cargan en la memoria a través de la extensión de Phalcon, que usted debe tener instalada. Si te perdiste esa parte y no has instalado la extensión de Phalcon [por favor vuelve atras](/[[language]]/[[version]]/installation) y finaliza la instalación antes de continuar.
 
-If this is all brand new it is recommended that you install the [Phalcon Devtools](/[[language]]/[[version]]/devtools-installation) since it leverages PHP's built-in server you to get your app running without having to configure a web server by adding this [.htrouter](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php) to the root of your project.
+Si todo esto es nuevo, se recomienda que instale [Phalcon Devtools](/[[language]]/[[version]]/devtools-installation), ya que aprovecha el servidor incorporado de PHP. Para que su aplicación se ejecute sin tener que configurar un servidor web, agregue este [.htrouter](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php) a la raíz de su proyecto.
 
-Otherwise if you want to use Nginx here are some additional setup [here](/[[language]]/[[version]]/webserver-setup#nginx)
+De lo contrario si desea utilizar Nginx [aquí](/[[language]]/[[version]]/webserver-setup#nginx) hay alguna configuración adicional
 
-Apache can also be used with these additional setup [here](/[[language]]/[[version]]/webserver-setup#apache)
+En Apache también puede utilizarse con [esta configuración adicional](/[[language]]/[[version]]/webserver-setup#apache)
 
-Finally, if you flavor is Cherokee use the setup [here](/[[language]]/[[version]]/webserver-setup#cherokee)
+Por último, si usted desea usar Cherokee la configuración [esta aquí](/[[language]]/[[version]]/webserver-setup#cherokee)
 
 <a name='bootstrap'></a>
 
-## Bootstrap
+## Manos a la obra
 
 The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well as application behavior.
 
