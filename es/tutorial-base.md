@@ -276,7 +276,7 @@ As you can see, the bootstrap file is very short and we do not need to include a
 
 <a name='controller'></a>
 
-## Creating a Controller
+## Creando un controlador
 
 By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (`app/controllers/IndexController.php`) looks like:
 
@@ -289,12 +289,12 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
-        echo '<h1>Hello!</h1>';
+        echo '<h1>Hola!</h1>';
     }
 }
 ```
 
-The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this:
+Las clases del controlador tienen que tener el sufijo "Controller" y las acciones del controlador tienen que tener el sufijo "Action". Si accedes a la aplicación desde tu navegador, deberías ver algo como esto:
 
 ![](/images/content/tutorial-basic-1.png)
 
@@ -302,12 +302,12 @@ Congratulations, you're phlying with Phalcon!
 
 <a name='view'></a>
 
-## Sending output to a view
+## Enviando la salida a una vista
 
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
+Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Todo debe ser pasado a la vista, la cual es la responsable de la salida de datos en pantalla. Phalcon buscará una vista con el mismo nombre que la última acción ejecutada dentro de un directorio llamado como el último controlador ejecutado. In our case (`app/views/index/index.phtml`):
 
 ```php
-<?php echo "<h1>Hello!</h1>";
+<?php echo "<h1>Hola!</h1>";
 ```
 
 Our controller (`app/controllers/IndexController.php`) now has an empty action definition:
@@ -337,7 +337,7 @@ Now we will change the `index.phtml` view file, to add a link to a new controlle
 ```php
 <?php
 
-echo "<h1>Hello!</h1>";
+echo "<h1>Hola!</h1>";
 
 echo PHP_EOL;
 
@@ -345,7 +345,7 @@ echo PHP_EOL;
 
 echo $this->tag->linkTo(
     "signup",
-    "Sign Up Here!"
+    "Regístrese aquí!"
 );
 ```
 
@@ -452,7 +452,7 @@ If you click the "Send" button again, you will see a blank page. The name and em
 
 <a name='model'></a>
 
-## Creating a Model
+## Creando un modelo
 
 Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
@@ -463,7 +463,6 @@ CREATE TABLE `users` (
     `id`    int(10)     unsigned NOT NULL AUTO_INCREMENT,
     `name`  varchar(70)          NOT NULL,
     `email` varchar(70)          NOT NULL,
-
     PRIMARY KEY (`id`)
 );
 ```
@@ -487,7 +486,7 @@ class Users extends Model
 
 <a name='database-connection'></a>
 
-## Setting a Database Connection
+## Establecer una conexión de base de datos
 
 In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
 
@@ -516,7 +515,7 @@ With the correct database parameters, our models are ready to work and interact 
 
 <a name='storing-data'></a>
 
-## Storing data using models
+## Almacenando datos utilizando modelos
 
 Receiving data from the form and storing them in the table is the next step.
 
@@ -536,7 +535,7 @@ class SignupController extends Controller
     {
         $user = new Users();
 
-        // Store and check for errors
+        // Almacenar y comprobar errores
         $success = $user->save(
             $this->request->getPost(),
             [
@@ -546,9 +545,9 @@ class SignupController extends Controller
         );
 
         if ($success) {
-            echo "Thanks for registering!";
+            echo "¡Gracias por registrarte!";
         } else {
-            echo "Sorry, the following problems were generated: ";
+            echo "Lo sentimos, se generaron los siguiente problemas: ";
 
             $messages = $user->getMessages();
 
