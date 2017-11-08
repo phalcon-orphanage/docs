@@ -93,7 +93,7 @@ Ultimately, it is responsible for doing 3 things:
 
 <a name='autoloaders'></a>
 
-### Autoloaders
+### Cargadores automáticos
 
 The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component `Phalcon\Loader`.
 
@@ -120,7 +120,7 @@ $loader->register();
 
 <a name='dependency-management'></a>
 
-### Dependency Management
+### Gestión de dependencias
 
 A very important concept that must be understood when working with Phalcon is its `dependency injection container <di>`. It may sound complex but is actually very simple and practical.
 
@@ -137,7 +137,7 @@ use Phalcon\Di\FactoryDefault;
 $di = new FactoryDefault();
 ```
 
-`Phalcon\Di\FactoryDefault` is a variant of `Phalcon\Di`. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
+`Phalcon\Di\FactoryDefault` es una variante de `Phalcon\Di`. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
 
 In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
 
