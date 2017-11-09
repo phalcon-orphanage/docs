@@ -27,7 +27,7 @@
               </ul>
             </li>
             <li>
-              <a href="#conditionals">Conditionals</a>
+              <a href="#conditionals">Condicionales</a>
             </li>
           </ul>
         </li>
@@ -479,19 +479,19 @@ class RobotsSimilar extends Model
 }
 ```
 
-With the aliasing we can get the related records easily. You can also use the `getRelated()` method to access the relationship using the alias name:
+Con los alias podemos obtener fácilmente los registros relacionados. También puede utilizar el método `getRelated()` para acceder a la relación con el nombre del alias:
 
 ```php
 <?php
 
 $robotsSimilar = RobotsSimilar::findFirst();
 
-// Returns the related record based on the column (robots_id)
+// Retorna los registros relacionados basados en la columna 'robots_id'
 $robot = $robotsSimilar->getRobot();
 $robot = $robotsSimilar->robot;
 $robot = $robotsSimilar->getRelated('Robot');
 
-// Returns the related record based on the column (similar_robots_id)
+// Retorna los registros relacionados basados en la columna 'similar_robots_id'
 $similarRobot = $robotsSimilar->getSimilarRobot();
 $similarRobot = $robotsSimilar->similarRobot;
 $similarRobot = $robotsSimilar->getRelated('SimilarRobot');
@@ -535,28 +535,28 @@ class Robots extends Model
 
 <a name='conditionals'></a>
 
-## Conditionals
+## Condicionales
 
-You can also create relationships based on conditionals. When querying based on the relationship the condition will be automatically appended to the query:
+También puede crear relaciones basadas en condicionales. Al consultar la relación, la condición se agregará automáticamente a la consulta:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Model;
 
-// Companies have invoices issued to them (paid/unpaid)
-// Invoices model
+// Empresas que tienen facturas emitidas a ellos (pagas/impagas)
+// Model Facturas
 class Invoices extends Model
 {
 
 }
 
-// Companies model
+// Model Empresas
 class Companies extends Model
 {
     public function initialize()
     {
-        // All invoices relationship
+        // Relación: todas las facturas
         $this->hasMany(
             'id', 
             'Invoices', 
@@ -566,7 +566,7 @@ class Companies extends Model
             ]
         );
 
-        // Paid invoices relationship
+        // Relación: facturas pagadas
         $this->hasMany(
             'id', 
             'Invoices', 
@@ -579,7 +579,7 @@ class Companies extends Model
             ]
         );
 
-        // Unpaid invoices relationship + bound parameters
+        // Reglación: facturas impagas con parámetros enlazados
         $this->hasMany(
             'id', 
             'Invoices', 
@@ -596,10 +596,10 @@ class Companies extends Model
 }
 ```
 
-Additionally, you can use the second parameter of `getRelated()` when accessing your relationship from your model object to further filter or order your relationship:
+Además, puede utilizar el segundo parámetro de `getRelated()` al acceder a la relación desde el objeto modelo para filtrar u ordenar la relación:
 
 ```php
-<br />// Unpaid Invoices
+// Facturas impagas
 $company = Companies::findFirst(
     [
         'conditions' => 'id = :id:',
@@ -615,7 +615,7 @@ $unpaidInvoices = $company->getRelated(
     ['conditions' => "inv_status = 'paid'"]
 );
 
-// Also ordered
+// Ordenadas
 $unpaidInvoices = $company->getRelated(
     'Invoices', 
     [
