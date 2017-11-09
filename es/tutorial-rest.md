@@ -270,12 +270,12 @@ $app = new Micro($di);
 
 ## Recuperando Datos
 
-El primer `controlador` que vamos a implementar es por el método GET que devuelve los robots disponibles. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
+El primer `controlador` que vamos a implementar es por el método GET que devuelve los robots disponibles. Vamos a utilizar PHQL para realizar esta consulta simple y devolver los resultados en formato JSON. [Archivo: `index.php`]
 
 ```php
 <?php
 
-// Retrieves all robots
+// Recuperar todos los robots
 $app->get(
     '/api/robots',
     function () use ($app) {
@@ -297,14 +297,14 @@ $app->get(
 );
 ```
 
-[PHQL](/[[language]]/[[version]]/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
+[PHQL](/[[language]]/[[version]]/db-phql), nos permite escribir consultas utilizando un dialecto SQL de alto nivel, orientado a objetos que internamente se traduce en sentencias SQL correctas según el sistema de base de datos que estamos utilizando. La cláusula `use` en la función anónima nos permite pasar algunas variables del ámbito global al local fácilmente.
 
-The searching by name handler would look like [File: `index.php`]:
+El controlador de búsqueda por nombre se vería como [archivo: `index.php`]:
 
 ```php
 <?php
 
-// Searches for robots with $name in their name
+// Busqueda de robots con $name en su nombre
 $app->get(
     '/api/robots/search/{name}',
     function ($name) use ($app) {
@@ -331,14 +331,14 @@ $app->get(
 );
 ```
 
-Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not [File: `index.php`]:
+Buscando por el campo `id` es bastante similar, en este caso, también estamos notificando si el robot se encontró o no [archivo: `index.php`]:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Retrieves robots based on primary key
+// Recuperar robots basado en la clave primaria
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
@@ -353,7 +353,7 @@ $app->get(
 
 
 
-        // Create a response
+        // Crear una respuesta
         $response = new Response();
 
         if ($robot === false) {
@@ -381,16 +381,16 @@ $app->get(
 
 <a name='inserting-data'></a>
 
-## Inserting Data
+## Insertando datos
 
-Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion [File: `index.php`]:
+Tomando los datos como una cadena JSON insertada en el cuerpo de la solicitud, también utilizamos PHQL para la inserción [archivo: `index.php`]:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Adds a new robot
+// Agregar un nuevo robot
 $app->post(
     '/api/robots',
     function () use ($app) {
@@ -407,13 +407,13 @@ $app->post(
             ]
         );
 
-        // Create a response
+        // Crear una respuesta
         $response = new Response();
 
-        // Check if the insertion was successful
+        // Comprobar si la inserción fue exitosa
         if ($status->success() === true) {
-            // Change the HTTP status
-            $response->setStatusCode(201, 'Created');
+            // Cambiar el status de HTTP
+            $response->setStatusCode(201, 'Creado');
 
             $robot->id = $status->getModel()->id;
 
@@ -424,10 +424,10 @@ $app->post(
                 ]
             );
         } else {
-            // Change the HTTP status
-            $response->setStatusCode(409, 'Conflict');
+            // Cambiar el status de HTTP
+            $response->setStatusCode(409, 'Conflicto');
 
-            // Send errors to the client
+            // Enviar errores al cliente
             $errors = [];
 
             foreach ($status->getMessages() as $message) {
@@ -449,16 +449,16 @@ $app->post(
 
 <a name='updating-data'></a>
 
-## Updating Data
+## Actualizando datos
 
-The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
+La actualización de datos es similar a la inserción. El `id` como parámetro indica qué robot debe actualizarse [archivo: `index.php`]:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Updates robots based on primary key
+// Actualizar robots basados en la clave primaria
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
@@ -476,10 +476,10 @@ $app->put(
             ]
         );
 
-        // Create a response
+        // Crear una respuesta
         $response = new Response();
 
-        // Check if the insertion was successful
+        // Comprobar si la inserción fue exitosa
         if ($status->success() === true) {
             $response->setJsonContent(
                 [
@@ -487,8 +487,8 @@ $app->put(
                 ]
             );
         } else {
-            // Change the HTTP status
-            $response->setStatusCode(409, 'Conflict');
+            // Cambiar el status de HTTP
+            $response->setStatusCode(409, 'Conflicto');
 
             $errors = [];
 
@@ -511,16 +511,16 @@ $app->put(
 
 <a name='deleting-data'></a>
 
-## Deleting Data
+## Borrando datos
 
-The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
+La eliminación de datos es similar a actualizar. El `id` como parámetro indica qué robot debe ser eliminado [archivo: `index.php`]:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Deletes robots based on primary key
+// Borrando robots basados en la clave primaria
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
@@ -533,7 +533,7 @@ $app->delete(
             ]
         );
 
-        // Create a response
+        // Crear una respuesta
         $response = new Response();
 
         if ($status->success() === true) {
@@ -543,8 +543,8 @@ $app->delete(
                 ]
             );
         } else {
-            // Change the HTTP status
-            $response->setStatusCode(409, 'Conflict');
+            // Cambiar el status de HTTP
+            $response->setStatusCode(409, 'Conflicto');
 
             $errors = [];
 
@@ -567,11 +567,11 @@ $app->delete(
 
 <a name='testing'></a>
 
-## Testing our Application
+## Pruebando nuestra aplicación
 
-Using [curl](http://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
+Utilizando [curl](http://en.wikipedia.org/wiki/CURL) probaremos cada ruta en nuestra aplicación, verificando su correcto funcionamiento.
 
-Obtain all the robots:
+Obtener todos los robots:
 
 ```bash
 curl -i -X GET http://localhost/my-rest-api/api/robots
@@ -585,7 +585,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 ```
 
-Search a robot by its name:
+Buscar un robot por su nombre:
 
 ```bash
 curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
@@ -599,7 +599,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"2","name":"Astro Boy"}]
 ```
 
-Obtain a robot by its id:
+Obtener un robot por su id:
 
 ```bash
 curl -i -X GET http://localhost/my-rest-api/api/robots/3
@@ -613,7 +613,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
 ```
 
-Insert a new robot:
+Insertar un nuevo robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
@@ -628,7 +628,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 ```
 
-Try to insert a new robot with the name of an existing robot:
+Intentar insertar un nuevo robot con el nombre de un robot existente:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
@@ -640,10 +640,10 @@ Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 63
 Content-Type: text/html; charset=UTF-8
 
-{"status":"ERROR","messages":["The robot name must be unique"]}
+{"status":"ERROR","messages":["El nombre del robot debe ser único"]}
 ```
 
-Or update a robot with an unknown type:
+O actualizar un robot con un tipo desconocido:
 
 ```bash
 curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
@@ -655,11 +655,10 @@ Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 104
 Content-Type: text/html; charset=UTF-8
 
-{"status":"ERROR","messages":["Value of field 'type' must be part of
-    list: droid, mechanical, virtual"]}
+{"status":"ERROR","messages":["El valor del campo 'type' debe ser parte de la lista: droid, mechanical, virtual"]}
 ```
 
-Finally, delete a robot:
+Por último, eliminar un robot:
 
 ```bash
 curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
@@ -675,6 +674,6 @@ Content-Type: text/html; charset=UTF-8
 
 <a name='conclusion'></a>
 
-## Conclusion
+## Conclusión
 
-As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/[[language]]/[[version]]/application-micro) and [PHQL](/[[language]]/[[version]]/db-phql).
+Como vimos, el desarrollo de un API [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) con Phalcon es fácil utilizando [micro aplicaciones](/[[language]]/[[version]]/application-micro) y [PHQL](/[[language]]/[[version]]/db-phql).
