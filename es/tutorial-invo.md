@@ -1435,7 +1435,7 @@ class Products extends Model
     // ...
 
     /**
-     * Products initializer
+     * Inicializador de productos
      */
     public function initialize()
     {
@@ -1453,7 +1453,7 @@ class Products extends Model
 }
 ```
 
-A model can have a method called `initialize()`, this method is called once per request and it serves the ORM to initialize a model. In this case, 'Products' is initialized by defining that this model has a one-to-many relationship to another model called 'ProductTypes'.
+Un modelo puede tener un método llamado `initialize()`, se llama a este método una vez por petición y sirve al ORM para inicializar un modelo. En este caso, 'Products' se inicializa al definir que este modelo tiene una relación de uno a muchos con otro modelo llamado 'ProductTypes'.
 
 ```php
 <?php
@@ -1468,45 +1468,45 @@ $this->belongsTo(
 );
 ```
 
-Which means, the local attribute `product_types_id` in `Products` has an one-to-many relation to the `ProductTypes` model in its attribute `id`. By defining this relationship we can access the name of the product type by using:
+Esto significa que el atributo local `product_types_id` en `Products` tiene una relación uno a muchos con el modelo de `ProductTypes` en su atributo `id`. Definiendo esta relación podemos acceder el nombre del tipo de producto utilizando:
 
 ```twig
 <td>{{ product.productTypes.name }}</td>
 ```
 
-The field `price` is printed by its formatted using a Volt filter:
+El campo `price` es impreso mediante su formato utilizando un filtro de Volt:
 
 ```twig
 <td>{{ '%.2f'|format(product.price) }}</td>
 ```
 
-In plain PHP, this would be:
+En PHP plano, sería:
 
 ```php
 <?php echo sprintf('%.2f', $product->price) ?>
 ```
 
-Printing whether the product is active or not uses a helper implemented in the model:
+Al imprimir si el producto está activo o no, se utiliza un ayudante implementado en el modelo:
 
 ```php
 <td>{{ product.getActiveDetail() }}</td>
 ```
 
-This method is defined in the model.
+Este método se define en el modelo.
 
 <a name='creating-updating-records'></a>
 
-## Creating and Updating Records
+## Creación y actualización de registros
 
-Now let's see how the CRUD creates and updates records. From the `new` and `edit` views, the data entered by the user is sent to the `create` and `save` actions that perform actions of `creating` and `updating` products, respectively.
+Ahora vamos a ver cómo el CRUD crea y actualiza los registros. Desde las vistas `new` y `edit`, los datos introducidos por el usuario son enviados a las acciones `create` y `save` que realizan las acciones de `creación` y `actualización` de productos, respectivamente.
 
-In the creation case, we recover the data submitted and assign them to a new `Products` instance:
+En el caso de la creación, recuperamos los datos enviados y los asignarlos a una nueva instancia de `Products`:
 
 ```php
 <?php
 
 /**
- * Creates a product based on the data entered in the 'new' action
+ * Crear un producto basado en los datos ingresados en la acción 'new'
  */
 public function createAction()
 {
@@ -1533,7 +1533,7 @@ public function createAction()
 }
 ```
 
-Remember the filters we defined in the Products form? Data is filtered before being assigned to the object `$product`. This filtering is optional; the ORM also escapes the input data and performs additional casting according to the column types:
+¿Recuerda los filtros que definimos en el formulario de productos? Los datos se filtran antes de ser asignados al objeto `$product`. Este filtrado es opcional; el ORM también escapa los datos de entrada y realiza casting adicional según los tipos de columna:
 
 ```php
 <?php
@@ -1542,9 +1542,9 @@ Remember the filters we defined in the Products form? Data is filtered before be
 
 $name = new Text('name');
 
-$name->setLabel('Name');
+$name->setLabel('Nombre');
 
-// Filters for name
+// Filtros para el nombre
 $name->setFilters(
     [
         'striptags',
@@ -1552,12 +1552,12 @@ $name->setFilters(
     ]
 );
 
-// Validators for name
+// Validadores para el nombre
 $name->addValidators(
     [
         new PresenceOf(
             [
-                'message' => 'Name is required',
+                'message' => 'El nombre es requerido',
             ]
         )
     ]
@@ -1566,7 +1566,7 @@ $name->addValidators(
 $this->add($name);
 ```
 
-When saving, we'll know whether the data conforms to the business rules and validations implemented in the form `ProductsForm` form (`app/forms/ProductsForm.php`):
+Al guardar, sabremos si los datos se ajustan a las reglas de negocio y las validaciones del formulario `ProductsForm` (`app/forms/ProductsForm.php`):
 
 ```php
 <?php
@@ -1577,7 +1577,7 @@ $form = new ProductsForm();
 
 $product = new Products();
 
-// Validate the input
+// Validar los datos enviados
 $data = $this->request->getPost();
 
 if (!$form->isValid($data, $product)) {
@@ -1596,7 +1596,7 @@ if (!$form->isValid($data, $product)) {
 }
 ```
 
-Finally, if the form does not return any validation message we can save the product instance:
+Finalmente, si el formulario no devuelve ningún mensaje de validación podemos guardar la instancia de producto:
 
 ```php
 <?php
@@ -1621,7 +1621,7 @@ if ($product->save() === false) {
 $form->clear();
 
 $this->flash->success(
-    'Product was created successfully'
+    'El producto fue creado correctamente'
 );
 
 return $this->dispatcher->forward(
@@ -1632,13 +1632,13 @@ return $this->dispatcher->forward(
 );
 ```
 
-Now, in the case of updating a product, we must first present the user with the data that is currently in the edited record:
+Ahora, en el caso de actualización de un producto, primero debemos presentar al usuario los datos que se encuentran actualmente en el registro editado:
 
 ```php
 <?php
 
 /**
- * Edits a product based on its id
+ * Editar un producto basado en su ID
  */
 public function editAction($id)
 {
@@ -1647,7 +1647,7 @@ public function editAction($id)
 
         if (!$product) {
             $this->flash->error(
-                'Product was not found'
+                'Producto no encontrado'
             );
 
             return $this->dispatcher->forward(
@@ -1668,13 +1668,13 @@ public function editAction($id)
 }
 ```
 
-The data found is bound to the form by passing the model as first parameter. Thanks to this, the user can change any value and then sent it back to the database through to the `save` action:
+Los datos está ligados al formulario pasando el modelo como primer parámetro. Gracias a esto, el usuario puede cambiar cualquier valor y luego enviarlo a la base de datos a través de la acción de `save`:
 
 ```php
 <?php
 
 /**
- * Updates a product based on the data entered in the 'edit' action
+ * Actualizar un producto basado en los datos ingresados en la acción 'edit'
  */
 public function saveAction()
 {
@@ -1693,7 +1693,7 @@ public function saveAction()
 
     if (!$product) {
         $this->flash->error(
-            'Product does not exist'
+            'El producto no existe'
         );
 
         return $this->dispatcher->forward(
@@ -1741,7 +1741,7 @@ public function saveAction()
     $form->clear();
 
     $this->flash->success(
-        'Product was updated successfully'
+        'El producto fue actualizado correctamente'
     );
 
     return $this->dispatcher->forward(
@@ -1755,11 +1755,11 @@ public function saveAction()
 
 <a name='user-components'></a>
 
-## User Components
+## Componentes de usuario
 
-All the UI elements and visual style of the application has been achieved mostly through [Bootstrap](http://getbootstrap.com/). Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
+Todos los elementos de la interfaz y estilos visuales de la aplicación se han logrado principalmente a través de [Bootstrap](http://getbootstrap.com/). Algunos elementos, como barra de navegación, cambian según el estado de la aplicación. Por ejemplo, en la esquina superior derecha, el enlace `Iniciar sesión / Registrarse` cambia a `Cerrar sesión` si un usuario está logueado en la aplicación.
 
-This part of the application is implemented in the component `Elements` (`app/library/Elements.php`).
+Esta parte de la aplicación se implementa en el componente `Elements` (`app/library/Elements.php`).
 
 ```php
 <?php
@@ -1780,12 +1780,12 @@ class Elements extends Component
 }
 ```
 
-This class extends the `Phalcon\Mvc\User\Component`. It is not imposed to extend a component with this class, but it helps to get access more quickly to the application services. Now, we are going to register our first user component in the services container:
+Esta clase extiende de `Phalcon\Mvc\User\Component`. No esta impuesto extender un componente con esta clase, pero esto ayuda para acceder más rápidamente a los servicios de aplicación. Ahora, vamos a registrar nuestro primer componente de usuario en el contenedor de servicios:
 
 ```php
 <?php
 
-// Register a user component
+// Registrar un componente de usuario
 $di->set(
     'elements',
     function () {
@@ -1794,7 +1794,7 @@ $di->set(
 );
 ```
 
-As controllers, plugins or components within a view, this component also has access to the services registered in the container and by just accessing an attribute with the same name as a previously registered service:
+Al igual que los controladores, plugins o componentes de una vista, este componente también tiene acceso a los servicios registrados en el contenedor y al acceder a un atributo con el mismo nombre de un servicio previamente registrado:
 
 ```twig
 <div class='navbar navbar-fixed-top'>
@@ -1819,12 +1819,12 @@ As controllers, plugins or components within a view, this component also has acc
     <hr>
 
     <footer>
-        <p>&copy; Company 2017</p>
+        <p>&copy; Compañia 2017</p>
     </footer>
 </div>
 ```
 
-The important part is:
+La parte importante es:
 
 ```twig
 {{ elements.getMenu() }}
@@ -1832,9 +1832,9 @@ The important part is:
 
 <a name='dynamic-titles'></a>
 
-## Changing the Title Dynamically
+## Cambiando dinámicamente el título
 
-When you browse between one option and another will see that the title changes dynamically indicating where we are currently working. This is achieved in each controller initializer:
+Cuando se navega entre una opción y otra, veremos que el título cambia dinámicamente, lo que indica donde estamos trabajando. Esto se logra en cada inicializador de controlador:
 
 ```php
 <?php
@@ -1843,9 +1843,9 @@ class ProductsController extends ControllerBase
 {
     public function initialize()
     {
-        // Set the document title
+        // Configurar el título del documento
         $this->tag->setTitle(
-            'Manage your product types'
+            'Gestor de tipos de producto'
         );
 
         parent::initialize();
@@ -1855,7 +1855,7 @@ class ProductsController extends ControllerBase
 }
 ```
 
-Note, that the method `parent::initialize()` is also called, it adds more data to the title:
+Nota, que también se llama al método `parent::initialize()`, que agrega más datos en el título:
 
 ```php
 <?php
@@ -1866,7 +1866,7 @@ class ControllerBase extends Controller
 {
     protected function initialize()
     {
-        // Prepend the application name to the title
+        // Anteponer el nombre de la aplicación al título
         $this->tag->prependTitle('INVO | ');
     }
 
@@ -1874,7 +1874,7 @@ class ControllerBase extends Controller
 }
 ```
 
-Finally, the title is printed in the main view (app/views/index.volt):
+Finalmente, el título se imprime en la vista principal (app/views/index.volt):
 
 ```php
 <!DOCTYPE html>
