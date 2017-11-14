@@ -246,7 +246,7 @@ Este es el caso más común, la aplicación se instala en un directorio bajo la 
 </IfModule>
 ```
 
-A second `.htaccess` file is located in the `public/` directory, this re-writes all the URIs to the `public/index.php` file:
+Un segundo archivo `.htaccess` se encuentra en el directorio `public/`, este reescribe todas las URIs hacia el archivo `public/index.php`:
 
 ```apacheconfig
 # test/public/.htaccess
@@ -263,7 +263,7 @@ A second `.htaccess` file is located in the `public/` directory, this re-writes 
 
 #### Configuración de Apache
 
-If you do not want to use `.htaccess` files you can move these configurations to the apache's main configuration file:
+Si no desea utilizar los archivos `.htaccess` puede mover estas configuraciones al archivo de configuración principal de apache:
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -288,7 +288,7 @@ If you do not want to use `.htaccess` files you can move these configurations to
 
 #### Hosts virtuales
 
-And this second configuration allows you to install a Phalcon application in a virtual host:
+Y esta segunda configuración le permite instalar una aplicación de Phalcon en un virtual host:
 
 ```apacheconfig
 <VirtualHost *:80>
@@ -312,46 +312,46 @@ And this second configuration allows you to install a Phalcon application in a v
 
 ## Cherokee
 
-[Cherokee](http://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
+[Cherokee](http://www.cherokee-project.com/) es un servidor web de alto rendimiento. Es muy rápido, flexible y fácil de configurar.
 
 <a name='cherokee-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Configuración de Phalcon
 
-Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
+Cherokee ofrece una interfaz gráfica amigable para configurar cada opción disponible en el servidor web.
 
-Start the cherokee administrator by executing as root `/path-to-cherokee/sbin/cherokee-admin`
+Iniciar el administrador del cherokee ejecutando como root `/ruta-hacia-cherokee/sbin/cherokee-admin`
 
 ![](/images/content/webserver-cherokee-1.jpg)
 
-Create a new virtual host by clicking on `vServers`, then add a new virtual server:
+Crea un nuevo host virtual haciendo clic en `vServers`, y agrega un nuevo servidor virtual:
 
 ![](/images/content/webserver-cherokee-2.jpg)
 
-The recently added virtual server must appear at the left bar of the screen. In the `Behaviors` tab you will see a set of default behaviors for this virtual server. Click the `Rule Management` button. Remove those labeled as `Directory /cherokee_themes` and `Directory /icons`:
+El servidor virtual recientemente añadido debe aparecer en la barra izquierda de la pantalla. En la ficha `Behaviors o Comportamientos` verá un conjunto de comportamientos por defecto para este servidor virtual. Haz clic en el botón `Gestión de reglas`. Elimine las que estén marcadas como `Directorio /cherokee_themes` y `Directorio /icons`:
 
 ![](/images/content/webserver-cherokee-3.jpg)
 
-Add the `PHP Language` behavior using the wizard. This behavior allows you to run PHP applications:
+Añade el comportamiento de `Lenguaje PHP` utilizando el asistente. Este comportamiento permite ejecutar aplicaciones de PHP:
 
 ![](/images/content/webserver-cherokee-1.jpg)
 
-Normally this behavior does not require additional settings. Add another behavior, this time in the `Manual Configuration` section. In `Rule Type` choose `File Exists`, then make sure the option `Match any file` is enabled:
+Normalmente este comportamiento no requiere configuración adicional. Añade otro comportamiento, esta vez en la sección de `Configuración Manual`. En `Rule Type` elige `File Exists`, luego asegúrate que la opción `Match any file` esté habilitada:
 
 ![](/images/content/webserver-cherokee-5.jpg)
 
-In the 'Handler' tab choose `List & Send` as handler:
+En la ficha 'Controlador' elegir `Listar y enviar` como controlador:
 
 ![](/images/content/webserver-cherokee-7.jpg)
 
-Edit the `Default` behavior in order to enable the URL-rewrite engine. Change the handler to `Redirection`, then add the following regular expression to the engine `^(.*)$`:
+Edita el comportamiento `Default` para habilitar el motor de reescritura de URLs. Cambiar el controlador a `Redirection`, luego agrega la siguiente expresión regular para el motor `^(.*)$`:
 
 ![](/images/content/webserver-cherokee-6.jpg)
 
-Finally, make sure the behaviors have the following order:
+Por último, asegúrate que los comportamientos tienen el siguiente orden:
 
 ![](/images/content/webserver-cherokee-8.jpg)
 
-Execute the application in a browser:
+Ejecuta la aplicación en un navegador:
 
 ![](/images/content/webserver-cherokee-9.jpg)
