@@ -1,13 +1,13 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#setup">Web Server Setup</a> <ul>
+      <a href="#setup">Configuración de Servidor Web</a> <ul>
         <li>
           <a href="#nginx">Nginx</a> <ul>
             <li>
-              <a href="#nginx-phalcon-configuration">Phalcon configuration</a> <ul>
+              <a href="#nginx-phalcon-configuration">Configuración de Phalcon</a> <ul>
                 <li>
-                  <a href="#nginx-phalcon-configuration-basic">Basic configuration</a>
+                  <a href="#nginx-phalcon-configuration-basic">Configuración básica</a>
                 </li>
               </ul>
             </li>
@@ -16,15 +16,15 @@
         <li>
           <a href="#apache">Apache</a> <ul>
             <li>
-              <a href="#apache-phalcon-configuration">Phalcon configuration</a> <ul>
+              <a href="#apache-phalcon-configuration">Configuración de Phalcon</a> <ul>
                 <li>
-                  <a href="#apache-document-root">Document root</a>
+                  <a href="#apache-document-root">Raíz de documentos</a>
                 </li>
                 <li>
-                  <a href="#apache-apache-configuration">Apache configuration</a>
+                  <a href="#apache-apache-configuration">Configuración de Apache</a>
                 </li>
                 <li>
-                  <a href="#apache-virtual-hosts">Virtual Hosts</a>
+                  <a href="#apache-virtual-hosts">Hosts virtuales</a>
                 </li>
               </ul>
             </li>
@@ -33,14 +33,14 @@
         <li>
           <a href="#cherokee">Cherokee</a> <ul>
             <li>
-              <a href="#cherokee-phalcon-configuration">Phalcon configuration</a>
+              <a href="#cherokee-phalcon-configuration">Configuración de Phalcon</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#php-built-in">Built in Webserver</a> <ul>
+          <a href="#php-built-in">Servidor web incorporado</a> <ul>
             <li>
-              <a href="#php-built-in-phalcon-configuration">Phalcon configuration</a>
+              <a href="#php-built-in-phalcon-configuration">Configuración de Phalcon</a>
             </li>
           </ul>
         </li>
@@ -51,36 +51,36 @@
 
 <a name='setup'></a>
 
-# Web Server Setup
+# Configuración de Servidor Web
 
-In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
+Para que el esquema de rutas de una aplicación Phalcon funcione, será necesario que configures tu servidor web para procesar las redirecciones adecuadamente. Las instrucciones de configuración de servidores web populares son:
 
 <a name='nginx'></a>
 
 ## Nginx
 
-[Nginx](http://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+[Nginx](http://wiki.nginx.org/Main) es un servidor y proxy inverso gratuito y de código abierto de alto desempeño, así como un servidor proxy para IMAP/POP3. A diferencia de los tradicionales servidores, Nginx no se basa en hilos para procesar las solicitudes. En lugar de esto, utiliza una arquitectura basada en eventos (asíncrona) que es más escalable. Esta arquitectura utiliza pequeñas cantidades de memoria, pero más importante, predecibles bajo carga.
 
-The [PHP-FPM](http://php-fpm.org/) (FastCGI Process Manager) is usually used to allow Nginx to process PHP files. Nowadays, PHP-FPM is bundled with all Linux based PHP distributions. Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
+Generalmente se usa [PHP-FPM](http://php-fpm.org/) (FastCGI Process Manager) para permitir a Nginx procesar archivos PHP. Hoy en día PHP-FPM está incluído en todas las distribuciones Linux. Phalcon con Nginx y PHP-FPM proveen un set de herramientas poderoso para ofrecer el mejor desempeño para tus aplicaciones PHP.
 
 <a name='nginx-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Configuración de Phalcon
 
-The following are potential configurations you can use to setup Nginx with Phalcon:
+Las siguientes son posibles configuraciones que puedes usar para configurar Nginx con Phalcon:
 
 <a name='nginx-phalcon-configuration-basic'></a>
 
-#### Basic configuration
+#### Configuración básica
 
-Using `$_GET['_url']` as source of URIs:
+Usando `$_GET['_url']` como fuente para las URIs:
 
 ```nginx
 server {
     listen      80;
     server_name localhost.dev;
 
-    # This is the folder that index.php is in
+    # Este es el directorio donde se encuentra el archivo index.php
     root /var/www/phalcon/public;
     index index.php index.html index.htm;
 
@@ -107,14 +107,14 @@ server {
 }
 ```
 
-Using `$_SERVER['REQUEST_URI']` as source of URIs:
+Usando `$_SERVER['REQUEST_URI']` como fuente para las URIs:
 
 ```nginx
 server {
     listen      80;
     server_name localhost.dev;
 
-    # This is the folder that index.php is in
+    # Este es el directorio donde se encuentra el archivo index.php
     root /var/www/phalcon/public;
     index index.php index.html index.htm;
 
@@ -147,13 +147,13 @@ server {
 
 ## Apache
 
-[Apache](http://httpd.apache.org/) is a popular and well known web server available on many platforms.
+[Apache](http://httpd.apache.org/) es un servidor web popular y bien conocido disponible en muchas plataformas.
 
 <a name='apache-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Configuración de Phalcon
 
-The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/[[language]]/[[version]]/routing). Commonly an application has the following structure:
+Las siguientes son posibles configuraciones que puedes usar para configurar Apache con Phalcon. Estas notas están principalmente enfocadas a la configuración del módulo `mod_rewrite` permitiendo usar URLs amigables y el [componente router](/[[language]]/[[version]]/routing). Comúnmente una aplicación tiene la siguiente estructura:
 
 ```bash
 test/
@@ -170,11 +170,11 @@ test/
 
 <a name='apache-document-root'></a>
 
-#### Document root
+#### Raíz de documentos
 
-This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`).
+Este es el caso más común, la aplicación se instala en un directorio bajo la raíz del documento. En este caso, utilizamos dos archivos `.htaccess`, el primero de ellos para ocultar el código de la aplicación reenviando todas las solicitudes a la raíz de documentos (`public/`).
 
-<h5 class='alert alert-warning'>Note that using <code>.htaccess</code> files requires your apache installation to have the <code>AllowOverride All</code> option set. </h5>
+<h5 class='alert alert-warning'>Tenga en cuenta que la utilización de archivos <code>.htaccess</code> requiere que la instalación de apache tenga la opción <code>AllowOverride All</code>. </h5>
 
 ```apacheconfig
 # test/.htaccess
@@ -186,7 +186,7 @@ This being the most common case, the application is installed in any directory u
 </IfModule>
 ```
 
-A second `.htaccess` file is located in the `public/` directory, this re-writes all the URIs to the `public/index.php` file:
+Un segundo archivo `.htaccess` se encuentra en el directorio `public/`, este reescribe todas las URIs hacia el archivo `public/index.php`:
 
 ```apacheconfig
 # test/public/.htaccess
@@ -201,9 +201,9 @@ A second `.htaccess` file is located in the `public/` directory, this re-writes 
 
 <a name='apache-apache-configuration'></a>
 
-#### Apache configuration
+#### Configuración de Apache
 
-If you do not want to use `.htaccess` files you can move these configurations to the apache's main configuration file:
+Si no desea utilizar los archivos `.htaccess` puede mover estas configuraciones al archivo de configuración principal de apache:
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -226,9 +226,9 @@ If you do not want to use `.htaccess` files you can move these configurations to
 
 <a name='apache-virtual-hosts'></a>
 
-#### Virtual Hosts
+#### Hosts virtuales
 
-And this second configuration allows you to install a Phalcon application in a virtual host:
+Y esta segunda configuración le permite instalar una aplicación de Phalcon en un virtual host:
 
 ```apacheconfig
 <VirtualHost *:80>
@@ -252,55 +252,55 @@ And this second configuration allows you to install a Phalcon application in a v
 
 ## Cherokee
 
-[Cherokee](http://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
+[Cherokee](http://www.cherokee-project.com/) es un servidor web de alto rendimiento. Es muy rápido, flexible y fácil de configurar.
 
 <a name='cherokee-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Configuración de Phalcon
 
-Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
+Cherokee ofrece una interfaz gráfica amigable para configurar cada opción disponible en el servidor web.
 
-Start the cherokee administrator by executing as root `/path-to-cherokee/sbin/cherokee-admin`
+Iniciar el administrador del cherokee ejecutando como root `/ruta-hacia-cherokee/sbin/cherokee-admin`
 
 ![](/images/content/webserver-cherokee-1.jpg)
 
-Create a new virtual host by clicking on `vServers`, then add a new virtual server:
+Crea un nuevo host virtual haciendo clic en `vServers`, y agrega un nuevo servidor virtual:
 
 ![](/images/content/webserver-cherokee-2.jpg)
 
-The recently added virtual server must appear at the left bar of the screen. In the `Behaviors` tab you will see a set of default behaviors for this virtual server. Click the `Rule Management` button. Remove those labeled as `Directory /cherokee_themes` and `Directory /icons`:
+El servidor virtual recientemente añadido debe aparecer en la barra izquierda de la pantalla. En la ficha `Behaviors o Comportamientos` verá un conjunto de comportamientos por defecto para este servidor virtual. Haz clic en el botón `Gestión de reglas`. Elimine las que estén marcadas como `Directorio /cherokee_themes` y `Directorio /icons`:
 
 ![](/images/content/webserver-cherokee-3.jpg)
 
-Add the `PHP Language` behavior using the wizard. This behavior allows you to run PHP applications:
+Añade el comportamiento de `Lenguaje PHP` utilizando el asistente. Este comportamiento permite ejecutar aplicaciones de PHP:
 
 ![](/images/content/webserver-cherokee-1.jpg)
 
-Normally this behavior does not require additional settings. Add another behavior, this time in the `Manual Configuration` section. In `Rule Type` choose `File Exists`, then make sure the option `Match any file` is enabled:
+Normalmente este comportamiento no requiere configuración adicional. Añade otro comportamiento, esta vez en la sección de `Configuración Manual`. En `Rule Type` elige `File Exists`, luego asegúrate que la opción `Match any file` esté habilitada:
 
 ![](/images/content/webserver-cherokee-5.jpg)
 
-In the 'Handler' tab choose `List & Send` as handler:
+En la ficha 'Controlador' elegir `Listar y enviar` como controlador:
 
 ![](/images/content/webserver-cherokee-7.jpg)
 
-Edit the `Default` behavior in order to enable the URL-rewrite engine. Change the handler to `Redirection`, then add the following regular expression to the engine `^(.*)$`:
+Edita el comportamiento `Default` para habilitar el motor de reescritura de URLs. Cambiar el controlador a `Redirection`, luego agrega la siguiente expresión regular para el motor `^(.*)$`:
 
 ![](/images/content/webserver-cherokee-6.jpg)
 
-Finally, make sure the behaviors have the following order:
+Por último, asegúrate de que los comportamientos tienen el siguiente orden:
 
 ![](/images/content/webserver-cherokee-8.jpg)
 
-Execute the application in a browser:
+Ejecuta la aplicación en un navegador:
 
 ![](/images/content/webserver-cherokee-9.jpg)
 
 <a name='php-built-in'></a>
 
-## PHP Built In Webserver
+## Servidor web incorporado en PHP
 
-You can use PHP's [built in](http://php.net/manual/en/features.commandline.webserver.php) web server for your development. To start the server type:
+Puede utilizar servidor de web [incorporado](http://php.net/manual/en/features.commandline.webserver.php) en PHP para tu desarrollo. Para iniciar el servidor ejecuta:
 
 ```bash
 php -S localhost:8000 -t /public
@@ -308,9 +308,9 @@ php -S localhost:8000 -t /public
 
 <a name='php-built-in-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Configuración de Phalcon
 
-To enable URI rewrites that Phalcon needs, you can use the following router file (`.htrouter.php`):
+Para habilitar reescrituras de identificador URI que Phalcon requiere, puedes usar el siguiente archivo de ruteo (`.htrouter.php`):
 
 ```php
 <?php
@@ -322,10 +322,10 @@ if (!file_exists(__DIR__ . '/' . $_SERVER['REQUEST_URI'])) {
 return false;
 ```
 
-and then start the server from the base project directory with:
+y luego iniciar el servidor desde el directorio base del proyecto con:
 
 ```bash
 php -S localhost:8000 -t /public .htrouter.php
 ```
 
-Then point your browser to http://localhost:8000/ to check if everything is working.
+Luego dirija su navegador a http://localhost:8000/ para comprobar si todo está funcionando.
