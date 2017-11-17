@@ -1,22 +1,22 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Contextual Escaping</a> 
+      <a href="#overview">Escapado contextual</a> 
       <ul>
         <li>
-          <a href="#html">Escaping HTML</a>
+          <a href="#html">Escapando HTML</a>
         </li>
         <li>
-          <a href="#html-attributes">Escaping HTML Attributes</a>
+          <a href="#html-attributes">Escapando atributos HTML</a>
         </li>
         <li>
-          <a href="#urls">Escaping URLs</a>
+          <a href="#urls">Escapando URLs</a>
         </li>
         <li>
-          <a href="#css">Escaping CSS</a>
+          <a href="#css">Escapando CSS</a>
         </li>
         <li>
-          <a href="#javascript">Escaping JavaScript</a>
+          <a href="#javascript">Escapando JavaScript</a>
         </li>
       </ul>
     </li>
@@ -25,34 +25,34 @@
 
 <a name='overview'></a>
 
-# Contextual Escaping
+# Escapado contextual
 
-Websites and web applications are vulnerable to [XSS](https://www.owasp.org/index.php/XSS) attacks and although PHP provides escaping functionality, in some contexts it is not sufficient/appropriate. `Phalcon\Escaper` provides contextual escaping and is written in Zephir, providing the minimal overhead when escaping different kinds of texts.
+Sitios y aplicaciones web son vulnerables a ataques [XSS](https://www.owasp.org/index.php/XSS) y aunque PHP proporciona funcionalidad de escape, en algunos contextos no es suficiente o adecuada. `Phalcon\Escaper` proporciona escape contextual y está escrito en Zephir, proporcionando la mínima sobrecarga cuando se escapan los diferentes tipos de textos.
 
-We designed this component based on the [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) created by the [OWASP](https://www.owasp.org).
+Hemos diseñado este componente basado en el [XSS (Cross Site Scripting) hoja de trucos de prevención](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) creada por la [OWASP](https://www.owasp.org).
 
-Additionally, this component relies on [mbstring](http://php.net/manual/en/book.mbstring.php) to support almost any charset.
+Además, este componente se basa en la extensión [mbstring](http://php.net/manual/en/book.mbstring.php) para soportar casi cualquier conjunto de caracteres.
 
-To illustrate how this component works and why it is important, consider the following example:
+Para ilustrar cómo funciona este componente y por qué es importante, considere el siguiente ejemplo:
 
 ```php
 <?php
 
 use Phalcon\Escaper;
 
-// Document title with malicious extra HTML tags
+// Título del documento con etiquetas HTML maliciosas adicionales
 $maliciousTitle = "</title><script>alert(1)</script>";
 
-// Malicious CSS class name
+// Nombre de clase CSS maliciosa
 $className = ";`(";
 
-// Malicious CSS font name
+// Nombre de fuente CSS maliciosa
 $fontName = "Verdana\"</style>";
 
-// Malicious Javascript text
+// Texto Javascript malicioso
 $javascriptText = "';</script>Hello";
 
-// Create an escaper
+// Crear un escapador
 $e = new Escaper();
 
 ?>
@@ -77,7 +77,7 @@ $e = new Escaper();
     <body>
 
         <div class='<?php echo $e->escapeHtmlAttr($className); ?>'>
-            hello
+            hola
         </div>
 
         <script>
@@ -88,7 +88,7 @@ $e = new Escaper();
 </html>
 ```
 
-Which produces the following:
+El código anterior produce el siguiente código HTML:
 
 ```html
 <br /><html>
@@ -111,7 +111,7 @@ Which produces the following:
     <body>
 
         <div class='&#x3c &#x2f style&#x3e '>
-            hello
+            hola
         </div>
 
         <script>
@@ -122,11 +122,11 @@ Which produces the following:
 </html>
 ```
 
-Every text was escaped according to its context. Use the appropriate context is important to avoid XSS attacks.
+Cada texto se escapó según su contexto. El uso del contexto adecuado es importante para evitar ataques XSS.
 
 <a name='html'></a>
 
-## Escaping HTML
+## Escapando HTML
 
 The most common situation when inserting unsafe data is between HTML tags:
 
