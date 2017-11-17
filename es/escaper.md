@@ -204,7 +204,7 @@ Some HTML attributes like `href` or `url` need to be escaped differently:
 </a>
 ```
 
-You can escape a HTML attribute by using the :code:`escapeUrl` method:
+You can escape a HTML attribute by using the `escapeUrl` method:
 
 ```php
 <a href="<?php echo $e->escapeUrl('"><script>alert(1)</script><a href="#'); ?>">
@@ -232,7 +232,7 @@ CSS identifiers/values can be escaped too:
 </a>
 ```
 
-You can escape a CSS identifiers/value by using the :code:`escapeCss` method:
+You can escape a CSS identifiers/value by using the `escapeCss` method:
 
 ```php
 <a style="color: <?php echo $e->escapeCss('"><script>alert(1)</script><a href="#'); ?>">
@@ -267,6 +267,8 @@ You can escape JavaScript code by using the `escapeJs` method:
     document.title = '<?php echo $e->escapeJs("'; alert(100); var x='"); ?>';
 </script>
 ```
+
+Which produces:
 
 ```html
 <script>
