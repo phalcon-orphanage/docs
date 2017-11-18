@@ -1,19 +1,19 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Debugging Applications</a> 
+      <a href="#overview">Depuración de aplicaciones</a> 
       <ul>
         <li>
-          <a href="#catching-exceptions">Catching Exceptions</a>
+          <a href="#catching-exceptions">Capturando excepciones</a>
         </li>
         <li>
-          <a href="#debug-component">Debug component</a>
+          <a href="#debug-component">Componente de depuración</a>
         </li>
         <li>
-          <a href="#reflection-introspection">Reflection and Introspection</a>
+          <a href="#reflection-introspection">Reflexión e introspección</a>
         </li>
         <li>
-          <a href="#using-xdebug">Using Xdebug</a>
+          <a href="#using-xdebug">Usando Xdebug</a>
         </li>
       </ul>
     </li>
@@ -22,17 +22,17 @@
 
 <a name='overview'></a>
 
-# Debugging Applications
+# Depuración de aplicaciones
 
 ![](/images/content/xdebug-1.jpg)
 
-PHP offers tools to debug applications with notices, warnings, errors and exceptions. The [Exception class](http://www.php.net/manual/en/language.exceptions.php) offers information such as the file, line, message, numeric code, backtrace etc. on where an error occurred. OOP frameworks like Phalcon mainly use this class to encapsulate this functionality and provide information back to the developer or user.
+PHP ofrece herramientas para depurar aplicaciones con avisos, advertencias, errores y excepciones. La [clase de excepción](http://www.php.net/manual/en/language.exceptions.php) ofrece información como archivo, línea, mensaje, código numérico, backtrace etcétera en donde se produjo un error. Los frameworks orientados a objetos como Phalcon principalmente utilizan esta clase para encapsular esta funcionalidad y proporcionar información al desarrollador o el usuario.
 
-Despite being written in C, Phalcon executes methods in the PHP userland, providing the debug capability that any other application or framework written in PHP has.
+A pesar de estar escrito en C, que Phalcon ejecuta métodos en el espacio de usuario de PHP, proporcionando la capacidad de depuración al igual que cualquier otra aplicación o framework escrito en PHP.
 
 <a name='catching-exceptions'></a>
 
-## Catching Exceptions
+## Capturando excepciones
 
 Throughout the tutorials and examples of the Phalcon documentation, there is a common element that is catching exceptions. This is a try/catch block:
 
