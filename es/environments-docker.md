@@ -1,63 +1,63 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Phalcon Compose Docker</a> <ul>
         <li>
-          <a href="#dependencies">Dependencies</a>
+          <a href="#dependencies">Dependencias</a>
         </li>
         <li>
-          <a href="#services">Services</a>
+          <a href="#services">Servicios</a>
         </li>
         <li>
-          <a href="#installation">Installation</a> <ul>
+          <a href="#installation">Instalación</a> <ul>
             <li>
-              <a href="#installation-composer">With Composer (recommended)</a>
+              <a href="#installation-composer">Con Composer (recomendado)</a>
             </li>
             <li>
-              <a href="#installation-git">With Git</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#configuration">Configuration</a>
-        </li>
-        <li>
-          <a href="#usage">Usage</a>
-        </li>
-        <li>
-          <a href="#setup">Set up</a>
-        </li>
-        <li>
-          <a href="#logs">Logs</a>
-        </li>
-        <li>
-          <a href="#environment-variables">Environment variables</a> <ul>
-            <li>
-              <a href="#environment-variables-web">Web environment</a>
-            </li>
-            <li>
-              <a href="#environment-variables-phpmyadmin">phpMyAdmin variables</a>
+              <a href="#installation-git">Con Git</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#xdebug">Xdebug Remote debugger (PhpStorm)</a>
+          <a href="#configuration">Configuración</a>
         </li>
         <li>
-          <a href="#troubleshooting">Troubleshooting</a> <ul>
+          <a href="#usage">Uso</a>
+        </li>
+        <li>
+          <a href="#setup">Configurar</a>
+        </li>
+        <li>
+          <a href="#logs">Registro de logs</a>
+        </li>
+        <li>
+          <a href="#environment-variables">Variables de entorno</a> <ul>
             <li>
-              <a href="#troubleshooting-startup">Startup or linking errors</a>
+              <a href="#environment-variables-web">Entorno web</a>
             </li>
             <li>
-              <a href="#troubleshooting-full-reset">Full reset</a>
-            </li>
-            <li>
-              <a href="#troubleshooting-dependencies">Updating dependencies</a>
+              <a href="#environment-variables-phpmyadmin">Variables de phpMyAdmin</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#versions">Versions</a>
+          <a href="#xdebug">Depurador remoto Xdebug (PhpStorm)</a>
+        </li>
+        <li>
+          <a href="#troubleshooting">Resolución de problemas</a> <ul>
+            <li>
+              <a href="#troubleshooting-startup">Inicio o enlace de errores</a>
+            </li>
+            <li>
+              <a href="#troubleshooting-full-reset">Reinicio completo</a>
+            </li>
+            <li>
+              <a href="#troubleshooting-dependencies">Actualización de dependencias</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#versions">Versiones</a>
         </li>
       </ul>
     </li>
@@ -66,44 +66,44 @@
 
 <a name='overview'></a>
 
-# Overview
+# Resumen
 
-Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
+Phalcon Compose es un entorno de desarrollo impulsado por la comunidad para los proyectos de Phalcon que se ejecutan en Docker. Su propósito es facilitar el arranque de aplicaciones Phalcon y ejecutarse en entornos de desarrollo o producción.
 
 <a name='dependencies'></a>
 
-## Dependencies
+## Dependencias
 
-To run this stack on your machine, you need at least: * Operating System: Windows, Linux, or OS X * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
+Para ejecutar esta pila en su máquina, necesita por lo menos: * Sistema operativo: Windows, Linux o OS X * [Docker Engine](https://docs.docker.com/installation/) > = 1.10.0 * [ Docker Compose](https://docs.docker.com/compose/install/) > = 1.6.2
 
 <a name='services'></a>
 
-## Services
+## Servicios
 
-Services included are:
+Los servicios incluidos son:
 
-| Service name  | Description                                                                                         |
-| ------------- | --------------------------------------------------------------------------------------------------- |
-| mongo         | MongoDB server container.                                                                           |
-| postgres      | PostgreSQL server container.                                                                        |
-| mysql         | MySQL database container.                                                                           |
-| phpmyadmin    | A web interface for MySQL and MariaDB.                                                              |
-| memcached     | Memcached server container.                                                                         |
-| queue         | Beanstalk queue container.                                                                          |
-| aerospike     | Aerospike – the reliable, high performance, distributed database optimized for flash and RAM.       |
-| redis         | Redis database container.                                                                           |
-| app           | PHP 7, Apache 2 and Composer container.                                                             |
-| elasticsearch | Elasticsearch is a powerful open source search and analytics engine that makes data easy to search. |
+| Nombre del servicio | Descripción                                                                                                            |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| mongo               | Contenedor del servidor MongoDB.                                                                                       |
+| postgres            | Contenedor del servidor PostgreSQL.                                                                                    |
+| mysql               | Contenedor de base de datos MySQL.                                                                                     |
+| phpmyadmin          | Una interfaz web para MySQL y MariaDB.                                                                                 |
+| memcached           | Contenedor del servidor Memcached.                                                                                     |
+| queue               | Contenedor de cola de Beanstalk.                                                                                       |
+| aerospike           | Aerospike: base de datos distribuida fiable, de alto rendimiento optimizada para flash y RAM.                          |
+| redis               | Contenedor de base de datos Redis.                                                                                     |
+| app                 | Contenedor de PHP 7, Apache 2 y Composer.                                                                              |
+| elasticsearch       | Elasticsearch es un motor de búsqueda y análisis de código abierto de gran alcance, que facilita la búsqueda de datos. |
 
 <a name='installation'></a>
 
-## Installation
+## Instalación
 
 <a name='installation-composer'></a>
 
-### With Composer (recommended)
+### Con Composer (recomendado)
 
-Using Composer, you can create a new project as follows:
+Usando Composer, se puede crear un nuevo proyecto de la siguiente forma:
 
 ```bash
 composer create-project phalcon/compose --prefer-dist <folder name>
@@ -127,7 +127,7 @@ Generating autoload files
 
 <a name='installation-git'></a>
 
-### With Git
+### Con Git
 
 Another way to initialize your project is with Git.
 
@@ -141,7 +141,7 @@ Add your Phalcon Application into `application` folder.
 
 <a name='configuration'></a>
 
-## Configuration
+## Configuración
 
 Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as follows:
 
@@ -151,7 +151,7 @@ Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as f
 
 <a name='usage'></a>
 
-## Usage
+## Uso
 
 You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
 
@@ -170,71 +170,71 @@ Now you can now launch your application in your browser visiting `http://phalcon
 
 <a name='setup'></a>
 
-## Set up
+## Configurar
 
 If your application uses a file cache or writes logs to files, you can set up your cache and log folders as follows:
 
-| Directory | Path             |
-| --------- | ---------------- |
-| Cache     | `/project/cache` |
-| Logs      | `/project/log`   |
+| Directorio | Ruta             |
+| ---------- | ---------------- |
+| Cache      | `/project/cache` |
+| Logs       | `/project/log`   |
 
 <a name='logs'></a>
 
-## Logs
+## Registro de logs
 
 For most containers you can access the logs using the `docker logs <container_name>` command in your host machine.
 
 <a name='environment-variables'></a>
 
-## Environment variables
+## Variables de entorno
 
 You can pass multiple environment variables from an external file to a service's containers by editing the `variables.env` file.
 
 <a name='environment-variables-web'></a>
 
-### Web environment
+### Entorno web
 
-| Environment variable | Description                                         | Default         |
-| -------------------- | --------------------------------------------------- | --------------- |
-| `WEB_DOCUMENT_ROOT`  | Document root for webserver (inside the container). | /project/public |
-| `WEB_DOCUMENT_INDEX` | Index document.                                     | index.php       |
-| `WEB_ALIAS_DOMAIN`   | Domain aliases.                                     | *.vm            |
-| `WEB_PHP_SOCKET`     | PHP-FPM socket address.                             | 127.0.0.1:9000  |
-| `APPLICATION_ENV`    | Application environment.                            | development     |
-| `APPLICATION_CACHE`  | Application cache dir (inside the container).       | /project/cache  |
-| `APPLICATION_LOGS`   | Application logs dir (inside the container).        | /project/logs   |
+| Variable de entorno  | Descripción                                                              | Por defecto     |
+| -------------------- | ------------------------------------------------------------------------ | --------------- |
+| `WEB_DOCUMENT_ROOT`  | Raíz del documento para el servidor Web (dentro del contenedor).         | /project/public |
+| `WEB_DOCUMENT_INDEX` | Documento índice.                                                        | index.php       |
+| `WEB_ALIAS_DOMAIN`   | Alias de dominio.                                                        | *.vm            |
+| `WEB_PHP_SOCKET`     | Dirección del socket PHP-FPM.                                            | 127.0.0.1:9000  |
+| `APPLICATION_ENV`    | Entorno de la aplicación.                                                | development     |
+| `APPLICATION_CACHE`  | Directorio de cache de la aplicación (dentro del contenedor).            | /project/cache  |
+| `APPLICATION_LOGS`   | Directorio de registro de logs de la aplicación (dentro del contenedor). | /project/logs   |
 
 <a name='environment-variables-phpmyadmin'></a>
 
-### phpMyAdmin variables
+### Variables de phpMyAdmin
 
-| Environment variable | Description                                                                                                  | Default |
-| -------------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
-| `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed.                                                      | 1       |
-| `PMA_HOST`           | Define address/host name of the MySQL server.                                                                | mysql   |
-| `PMA_HOSTS`          | Define comma separated list of address/host names of the MySQL servers. Used only if `PMA_HOST` is empty.    |         |
-| `PMA_PORT`           | Define port of the MySQL server.                                                                             | 3306    |
-| `PMA_VERBOSE`        | Define verbose name of the MySQL server.                                                                     |         |
-| `PMA_VERBOSES`       | Define comma separated list of verbose names of the MySQL servers. Used only if `PMA_VERBOSE` is empty.      |         |
-| `PMA_USER`           | Define username to use for config authentication method.                                                     | phalcon |
-| `PMA_PASSWORD`       | Define password to use for config authentication method.                                                     | secret  |
-| `PMA_ABSOLUTE_URI`   | The fully-qualified path (e.g. https://pma.example.net/) where the reverse proxy makes phpMyAdmin available. |         |
+| Variable de entorno | Descripción                                                                                                                       | Por defecto |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `PMA_ARBITRARY`     | Cuándo se configura en 1 se permitirá la conexión con el servidor.                                                                | 1           |
+| `PMA_HOST`          | Definir dirección o nombre de host del servidor MySQL.                                                                            | mysql       |
+| `PMA_HOSTS`         | Definir una lista separada por comas de nombres de host/dirección de los servidores de MySQL. Usar sólo si `PMA_HOST` está vacía. |             |
+| `PMA_PORT`          | Definir el puerto del servidor MySQL.                                                                                             | 3306        |
+| `PMA_VERBOSE`       | Definir el nombre detallado del servidor MySQL.                                                                                   |             |
+| `PMA_VERBOSES`      | Definir una lista separada por comas de nombres detallados de los servidores de MySQL. Usar sólo si `PMA_VERBOSE` está vacía.     |             |
+| `PMA_USER`          | Definir el nombre de usuario para configuración el método de autenticación.                                                       | phalcon     |
+| `PMA_PASSWORD`      | Definir la contraseña a utilizar para configurar el método de autenticación.                                                      | secret      |
+| `PMA_ABSOLUTE_URI`  | Ruta completa de acceso (por ejemplo https://pma.example.net/) donde el proxy inverso hace que phpMyAdmin este disponible.        |             |
 
 *See also* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
 
 <a name='xdebug'></a>
 
-## Xdebug Remote debugger (PhpStorm)
+## Depurador remoto Xdebug (PhpStorm)
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
-| Environment variable         | Description                                              | Default |
-| ---------------------------- | -------------------------------------------------------- | ------- |
-| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host` (your host IP). |         |
-| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.                | 9000    |
-| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`.           | Off     |
-| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`.        | Off     |
+| Variable de entorno          | Descripción                                              | Por defecto |
+| ---------------------------- | -------------------------------------------------------- | ----------- |
+| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host` (your host IP). |             |
+| `XDEBUG_REMOTE_PORT`         | Valor de `php.ini` para `xdebug.remote_port`.            | 9000        |
+| `XDEBUG_REMOTE_AUTOSTART`    | Valor de `php.ini` para `xdebug.remote_autostart`.       | Off         |
+| `XDEBUG_REMOTE_CONNECT_BACK` | Valor de `php.ini` para `xdebug.remote_connect_back`.    | Off         |
 
 *NOTE* You can find your local IP address as follows:
 
@@ -248,11 +248,11 @@ ipconfig
 
 <a name='troubleshooting'></a>
 
-## Troubleshooting
+## Resolución de problemas
 
 <a name='troubleshooting-startup'></a>
 
-### Startup or linking errors
+### Inicio o enlace de errores
 
 If you got any startup issues you can try to rebuild app container. There will be no loss of data., it is a safe reset:
 
@@ -265,7 +265,7 @@ docker-compose up -d
 
 <a name='troubleshooting-full-reset'></a>
 
-### Full reset
+### Reinicio completo
 
 To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in `application` folder:
 
@@ -278,7 +278,7 @@ docker-compose up -d
 
 <a name='troubleshooting-dependencies'></a>
 
-### Updating dependencies
+### Actualización de dependencias
 
 Sometimes the base images (for example `phalconphp/php-apache:ubuntu-16.04`) are updated. Phalcon Compose depends on these images. You will therefore need to update them and it is always a good thing to do so to ensure that you have the latest functionality available. The dependent containers to these images will need to be updated and rebuilt:
 
