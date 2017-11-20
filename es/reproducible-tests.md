@@ -1,15 +1,15 @@
-If you have found a bug it is important to add relevant reproducibility information to your issue to allow us to reproduce the bug and fix it quicker. If you have the application publicly on Github please submit the repository address along with the issue description. You can also use [Gist](https://gist.github.com/) to post any code you want to share with us.
+Si has encontrado un error, es importante agregar información reproducible pertinente a su problema para poder reproducir el error y solucionarlo más rápido. Si tienes la aplicación públicamente en Github por favor enviar la dirección del repositorio junto con la descripción del problema. También puede utilizar [Gist](https://gist.github.com/) para publicar cualquier código que desea compartir con nosotros.
 
-## Creating a small script
+## Creando un pequeño script
 
-A small single-file script is usually the best way to reproduce a problem:
+Un archivo de código único y pequeño es generalmente la mejor manera de reproducir un problema:
 
 ```php
 <?php
 
 $di = new Phalcon\DI\FactoryDefault();
 
-//Register your custom services
+// Registrar un servicio personalizado
 $di['session'] = function() {
     $session = new \Phalcon\Session\Adapter\Files();
     $session->start();
@@ -41,11 +41,11 @@ var_dump($_SESSION);
 var_dump($_COOKIE);
 ```
 
-Depending on your application, you can use these skeletons in order to create your own script and reproduce the bug:
+Dependiendo de la aplicación, puede utilizar estos esqueletos para crear su propio código y reproducir el error:
 
-### Database
+### Base de Datos
 
-Remember to add to the script how you registered the database service:
+No olvide añadir al código cómo has registrado el servicio de base de datos:
 
 ```php
 <?php
@@ -66,34 +66,34 @@ $result = $di['db']->query('SELECT * FROM customers');
 
 ```
 
-### Single/Multi-Module applications
+### Aplicaciones simples o multi módulo
 
-Remember to add to the script how you are creating the Phalcon\Mvc\Application instance:
+No olvide añadir al script cómo has creado la instancia de Phalcon\Mvc\Application:
 
 ```php
 <?php
 
 $di  = new \Phalcon\DI\FactoryDefault();
 
-//other services
+// otros servicios
 
 $app = new \Phalcon\Mvc\Application();
 $app->setDi($di);
 
-//register modules if any
+// registrar módulos si los hay
 
 echo $app->handle->getContent()
 
 ```
 
-Include models and controllers as part of the test:
+Incluye modelos y controladores como parte de la prueba:
 
 ```php
 <?php
 
 $di  = new \Phalcon\DI\FactoryDefault();
 
-//other services
+// otros servicios
 
 $app = new \Phalcon\Mvc\Application();
 $app->setDi($di);
@@ -101,7 +101,7 @@ $app->setDi($di);
 class IndexController extends Phalcon\Mvc\Controller
 {
     public function indexAction() { 
-          /* your content here */
+          /* Tú contenido aquí */
     }
 }
 
@@ -113,9 +113,9 @@ echo $app->handle->getContent()
 
 ```
 
-### Micro application
+### Micro Aplicaciones
 
-Follow this structure to create the script:
+Sigue esta estructura para crear el script:
 
 ```php
 <?php
@@ -124,7 +124,7 @@ $di = new \Phalcon\DI\FactoryDefault();
 
 $app = new \Phalcon\Mvc\Micro($di);
 
-//define your routes here
+// define tus rutas aquí
 
 $app->handle();
 ```
@@ -133,7 +133,7 @@ $app->handle();
 
 ### ORM
 
-You can provide your own database schema or even better use any of the phalcon test [databases](https://github.com/phalcon/cphalcon/tree/master/unit-tests/schemas). Follow this structure to create the script:
+Puede proporcionar su propio esquema de base de datos o incluso mejor, usar cualquiera de las [bases de datos](https://github.com/phalcon/cphalcon/tree/master/unit-tests/schemas) de prueba de Phalcon. Sigue esta estructura para crear el script:
 
 ```php
 <?php
