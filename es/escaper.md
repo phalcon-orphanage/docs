@@ -268,8 +268,6 @@ Puede escapar código JavaScript mediante el método `escapeJs`:
 </script>
 ```
 
-Which produces:
-
 ```html
 <script>
     document.title = '\x27; alert(100); var x\x3d\x27';
