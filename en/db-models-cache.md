@@ -563,6 +563,18 @@ class CustomQueryBuilder extends QueryBuilder
         $query = new CustomQuery($this->getPhql());
 
         $query->setDI($this->getDI());
+        
+        if ( is_array($this->_bindParams) ) {
+            $query->setBindParams($this->_bindParams);
+        }
+
+        if ( is_array($this->_bindTypes) ) {
+            $query->setBindTypes($this->_bindTypes);
+        }
+
+        if ( is_array($this->_sharedLock) ) {
+            $query->setSharedLock($this->_sharedLock);
+        }
 
         return $query;
     }
@@ -586,6 +598,14 @@ class CustomQuery extends ModelQuery
         // Parse the intermediate representation for the SELECT
         $ir = $this->parse();
 
+        if ( is_array($this->_bindParams) ) {
+            $params = array_merge($this->_bindParams, (array)$params);
+        }
+
+        if ( is_array($this->_bindTypes) ) {
+            $types = array_merge($this->_bindTypes, (array)$types);
+        }
+
         // Check if the query has conditions
         if (isset($ir['where'])) {
             // The fields in the conditions can have any order
@@ -608,6 +628,7 @@ class CustomQuery extends ModelQuery
 
         // Execute the query
         $result = $this->_executeSelect($ir, $params, $types);
+        $result = $this->_uniqueRow ? $result->getFirst() : $result;
 
         // Cache the result
         // ...
