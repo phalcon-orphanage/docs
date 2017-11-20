@@ -1,16 +1,16 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Working with Namespaces</a> 
+      <a href="#overview">Trabajando con Espacios de Nombres</a> 
       <ul>
         <li>
-          <a href="#setting-up">Setting up the framework</a>
+          <a href="#setting-up">Configurando el framework</a>
         </li>
         <li>
-          <a href="#controllers">Controllers in Namespaces</a>
+          <a href="#controllers">Controladores en espacios de nombres</a>
         </li>
         <li>
-          <a href="#models">Models in Namespaces</a>
+          <a href="#models">Modelos en espacios de nombres</a>
         </li>
       </ul>
     </li>
@@ -19,17 +19,17 @@
 
 <a name='overview'></a>
 
-# Working with Namespaces
+# Trabajando con Espacios de Nombres
 
-[Namespaces](http://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
+Los [Espacios de Nombres](http://php.net/manual/en/language.namespaces.php) se pueden utilizar para evitar colisiones de nombres de clase; esto significa que si tienes dos controladores en una aplicación con el mismo nombre, se puede utilizar un espacio de nombres para diferenciarlos. Los espacios de nombres también son útiles para crear paquetes o módulos.
 
 <a name='setting-up'></a>
 
-## Setting up the framework
+## Configurando el framework
 
-Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:
+Utilizar espacios de nombres tiene algunas implicaciones cuando se carga el controlador adecuado. Para ajustar el comportamiento del framework a los espacios de nombres es necesario realizar una o todas de las siguientes tareas:
 
-Use an autoload strategy that takes into account the namespaces, for example with `Phalcon\Loader`:
+Usar una estrategia de autocarga que tome en cuenta los espacios de nombres, por ejemplo utilizando `Phalcon\Loader`:
 
 ```php
 <?php
@@ -42,7 +42,7 @@ $loader->registerNamespaces(
 );
 ```
 
-Specify it in the routes as a separate parameter in the route's paths:
+Especifíquelo en las rutas como un parámetro separado en las rutas de la ruta:
 
 ```php
 <?php
@@ -57,7 +57,7 @@ $router->add(
 );
 ```
 
-Passing it as part of the route:
+Pasandolo como parte de la ruta:
 
 ```php
 <?php
@@ -72,14 +72,14 @@ $router->add(
 );
 ```
 
-If you are only working with the same namespace for every controller in your application, then you can define a default namespace in the [Dispatcher](/[[language]]/[[version]]/dispatcher), by doing this, you don't need to specify a full class name in the router path:
+Si sólo está trabajando con el mismo espacio de nombres para cada controlador de la aplicación, entonces se puede definir un espacio de nombres predeterminado en el [despachador](/[[language]]/[[version]]/dispatcher), haciendo esto, no necesita especificar un nombre de clase completo en la ruta del router:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Dispatcher;
 
-// Registering a dispatcher
+// Registrando un despachador
 $di->set(
     'dispatcher',
     function () {
@@ -96,9 +96,9 @@ $di->set(
 
 <a name='controllers'></a>
 
-## Controllers in Namespaces
+## Controladores en espacios de nombres
 
-The following example shows how to implement a controller that use namespaces:
+En el ejemplo siguiente se muestra cómo implementar un controlador que utiliza espacios de nombres:
 
 ```php
 <?php
@@ -123,9 +123,9 @@ class UsersController extends Controller
 
 <a name='models'></a>
 
-## Models in Namespaces
+## Modelos en espacios de nombres
 
-Take the following into consideration when using models in namespaces:
+Tener en cuenta lo siguiente al utilizar modelos en los espacios de nombres:
 
 ```php
 <?php
@@ -140,7 +140,7 @@ class Robots extends Model
 }
 ```
 
-If models have relationships they must include the namespace too:
+Si los modelos tienen relaciones también debe incluir el espacio de nombres:
 
 ```php
 <?php
@@ -165,7 +165,7 @@ class Robots extends Model
 }
 ```
 
-In PHQL you must write the statements including namespaces:
+En PHQL también debe escribir las declaraciones incluyendo los espacios de nombres:
 
 ```php
 <?php

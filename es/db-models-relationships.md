@@ -599,7 +599,7 @@ class Companies extends Model
 Además, puede utilizar el segundo parámetro de `getRelated()` al acceder a la relación desde el objeto modelo para filtrar u ordenar la relación:
 
 ```php
-// Facturas impagas
+<br />// Facturas impagas
 $company = Companies::findFirst(
     [
         'conditions' => 'id = :id:',
@@ -627,7 +627,7 @@ $unpaidInvoices = $company->getRelated(
 
 <a name='virtual-foreign-keys'></a>
 
-## Virtual Foreign Keys
+## Claves externas virtuales
 
 De forma predeterminada, las relaciones no actúan como claves foráneas de la base de datos, es decir, si se intenta insertar o actualizar un valor sin tener un valor válido en el modelo de referenciado, Phalcon no producirá un mensaje de validación. Se puede modificar este comportamiento agregando un cuarto parámetro en la definición de una relación.
 
@@ -768,7 +768,7 @@ Con el código anterior, se borrarán todos los registros de referenciados (part
 
 <a name='storing-related-records'></a>
 
-## Storing Related Records
+## Almacenamiento de registros relacionados
 
 Las propiedades mágicas se pueden utilizar para almacenar un registro y sus propiedades relacionadas:
 
@@ -839,7 +839,7 @@ Es necesario sobrecargar el método `Phalcon\Mvc\Model::save()` del modelo para 
 
 <a name='operations-over-resultsets'></a>
 
-## Operations over Resultsets
+## Operaciones sobre conjuntos de resultados
 
 Si un conjunto de resultados se compone de objetos completos, el conjunto de resultados está en la capacidad para realizar operaciones sobre los registros obtenidos de una manera simple:
 
