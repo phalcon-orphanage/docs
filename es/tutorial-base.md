@@ -571,6 +571,6 @@ Additional validation happens automatically on fields that are defined as not nu
 
 <a name='conclusion'></a>
 
-## Conclusion
+## Conclusión
 
 This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon. The fact that Phalcon is an extension on your web server has not interfered with the ease of development or features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
