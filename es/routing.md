@@ -96,10 +96,10 @@ El componente router le permite definir las rutas que se asignan a los controlad
 
 use Phalcon\Mvc\Router;
 
-// Crear un Router
+// Create the router
 $router = new Router();
 
-// Definir una ruta
+// Define a route
 $router->add(
     '/admin/users/my-profile',
     [
@@ -108,7 +108,7 @@ $router->add(
     ]
 );
 
-// Otra ruta
+// Another route
 $router->add(
     '/admin/users/change-password',
     [
@@ -118,22 +118,21 @@ $router->add(
 );
 
 $router->handle();
-````
+```
 
-El primer parámetro del método <code>add()</code> es el patrón que quieres coincidir, opcionalmente, el segundo parámetro es para definir los caminos.
-En este caso, si el URI es '/admin/users/my-profile', entonces se ejecutará del controlador 'users' la acción 'profile'. Es importante recordar que el router no ejecuta el controlador y la acción, sólo recoge esta información para informar la componente correcto (es decir, 'Phalcon\Mvc\Dispatcher') cual es el controlador y acción que debe ejecutar.
+The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths. In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. `Phalcon\Mvc\Dispatcher`) that this is the controller/action it should execute.
 
-Una aplicación puede tener muchos caminos y definir rutas una por una puede ser una tarea engorrosa. En estos casos podemos crear rutas más flexibles:
+An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can create more flexible routes:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Router;
 
-// Crear el router
+// Create the router
 $router = new Router();
 
-// Definir una ruta
+// Define a route
 $router->add(
     '/admin/:controller/a/:action/:params',
     [
@@ -142,29 +141,7 @@ $router->add(
         'params'     => 3,
     ]
 );
-``` es el patrón que quieres coincidir, opcionalmente, el segundo parámetro es para definir los caminos.
-En este caso, si el URI es '/admin/users/my-profile', entonces se ejecutará del controlador 'users' la acción 'profile'. Es importante recordar que el router no ejecuta el controlador y la acción, sólo recoge esta información para informar la componente correcto (es decir, 'Phalcon\Mvc\Dispatcher') cual es el controlador y acción que debe ejecutar.
-
-Una aplicación puede tener muchos caminos y definir rutas una por una puede ser una tarea engorrosa. En estos casos podemos crear rutas más flexibles:
-
-```php
-<?php
-
-use Phalcon\Mvc\Router;
-
-// Crear el router
-$router = new Router();
-
-// Definir una ruta
-$router->add(
-    '/admin/:controller/a/:action/:params',
-    [
-        'controller' => 1,
-        'action'     => 2,
-        'params'     => 3,
-    ]
-);
-</code>
+```
 
 En el ejemplo anterior, estamos usando comodines para hacer una ruta válida para muchos URIs. Por ejemplo, accediendo a la siguiente URL (`/admin/users/al/delete/dave/301`) produciría:
 
@@ -691,7 +668,7 @@ The following are examples of custom routes:
 ```php
 <?php
 
-// Matches '/system/admin/a/edit/7001'
+// Coincidencia '/system/admin/a/edit/7001'
 $router->add(
     '/system/:controller/a/:action/:params',
     [
@@ -701,7 +678,7 @@ $router->add(
     ]
 );
 
-// Matches '/es/news'
+// Coincidencia '/es/news'
 $router->add(
     '/([a-z]{2})/:controller',
     [
@@ -711,7 +688,7 @@ $router->add(
     ]
 );
 
-// Matches '/es/news'
+// Coincidencia '/es/news'
 $router->add(
     '/{language:[a-z]{2}}/:controller',
     [
@@ -720,7 +697,7 @@ $router->add(
     ]
 );
 
-// Matches '/admin/posts/edit/100'
+// Coincidencia '/admin/posts/edit/100'
 $router->add(
     '/admin/:controller/:action/:int',
     [
@@ -730,7 +707,7 @@ $router->add(
     ]
 );
 
-// Matches '/posts/2015/02/some-cool-content'
+// Coincidencia '/posts/2015/02/some-cool-content'
 $router->add(
     '/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)',
     [
@@ -742,7 +719,7 @@ $router->add(
     ]
 );
 
-// Matches '/manual/en/translate.adapter.html'
+// Coincidencia '/manual/en/translate.adapter.html'
 $router->add(
     '/manual/([a-z]{2})/([a-z\.]+)\.html',
     [
@@ -753,13 +730,13 @@ $router->add(
     ]
 );
 
-// Matches /feed/fr/le-robots-hot-news.atom
+// Coincidencia /feed/fr/le-robots-hot-news.atom
 $router->add(
     '/feed/{lang:[a-z]+}/{blog:[a-z\-]+}\.{type:[a-z\-]+}',
     'Feed::get'
 );
 
-// Matches /api/v1/users/peter.json
+// Coincidencia /api/v1/users/peter.json
 $router->add(
     '/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
     [
@@ -1337,4 +1314,4 @@ return $router;
 
 ## Implementing your own Router
 
-The `Phalcon\Mvc\RouterInterface` interface must be implemented to create your own router replacing the one provided by Phalcon.
+Debe implementar la interfaz `Phalcon\Mvc\RouterInterface` para crear su propio enrutador reemplazando uno proporcionado por Phalcon.
