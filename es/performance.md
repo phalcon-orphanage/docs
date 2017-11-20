@@ -1,38 +1,38 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Increasing Performance</a> <ul>
+      <a href="#overview">Mejorar el Rendimiento</a> <ul>
         <li>
-          <a href="#profiling-server">Profile on the Server</a> <ul>
+          <a href="#profiling-server">Perfil en el servidor</a> <ul>
             <li>
-              <a href="#profiling-server-xhprof">Profiling with Xhprof</a>
+              <a href="#profiling-server-xhprof">Perfilando con Xhprof</a>
             </li>
             <li>
-              <a href="#profiling-server-sql-statements">Profiling SQL Statements</a>
+              <a href="#profiling-server-sql-statements">Perfilando sentencias SQL</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#profiling-client">Profile on the Client</a> <ul>
+          <a href="#profiling-client">Perfil en el cliente</a> <ul>
             <li>
-              <a href="#profiling-client-chrome-firefox">Profile with Chrome/Firefox</a>
+              <a href="#profiling-client-chrome-firefox">Perfilar con Chrome/Firefox</a>
             </li>
             <li>
               <a href="#profiling-client-yslow">Yahoo! YSlow</a>
             </li>
             <li>
-              <a href="#profiling-client-speed-tracer">Profile with Speed Tracer</a>
+              <a href="#profiling-client-speed-tracer">Perfilar con Speed Tracer</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#php-version">Use a recent PHP version</a>
+          <a href="#php-version">Utilizar una versión reciente de PHP</a>
         </li>
         <li>
-          <a href="#bytecode-cache">Use a PHP Bytecode Cache</a>
+          <a href="#bytecode-cache">Utilizar un caché Bytecode de PHP</a>
         </li>
         <li>
-          <a href="#background-tasks">Do blocking work in the background</a>
+          <a href="#background-tasks">Realizar labores de bloqueo en segundo plano</a>
         </li>
         <li>
           <a href="#page-speed">Google Page Speed</a>
@@ -44,33 +44,33 @@
 
 <a name='overview'></a>
 
-# Increasing Performance
+# Mejorar el Rendimiento
 
-Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc. In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in your application.
+Para conseguir aplicaciones más rápidas requiere perfeccionar muchos aspectos: servidor, cliente, red, base de datos, servidor web, fuentes estáticas, etcétera. En este capítulo destacamos escenarios donde se puede mejorar el rendimiento y cómo detectar lo que es realmente lento en su aplicación.
 
 <a name='profiling-server'></a>
 
-## Profile on the Server
+## Perfil en el servidor
 
-Each application is different, the permanent profiling is important to understand where performance can be increased. Profiling gives us a real picture on what is really slow and what does not. Profiles can vary between a request and another, so it is important to make enough measurements to make conclusions.
+Cada aplicación es diferente, el perfilado permanente es importante para conocer donde se puede aumentar el rendimiento. Los perfiles nos dan un panorama real de lo que es realmente lento y lo que no. Estos pueden variar entre una petición y otra, por lo que es importante tomar suficientes mediciones para tomar decisiones.
 
-Profiling with XDebug
+Perfiles con XDebug
 
-[XDebug](http://xdebug.org/docs) provides an easier way to profile PHP applications, just install the extension and enable profiling in the php.ini:
+[XDebug](http://xdebug.org/docs) proporciona una manera fácil de perfil en aplicaciones PHP, instalar la extensión y habilitar en el php.ini los perfiles:
 
 ```ini
 xdebug.profiler_enable = On
 ```
 
-Using a tool like [Webgrind](https://github.com/jokkedk/webgrind/) you can see which functions/methods are slower than others:
+Usando una herramienta como [Webgrind](https://github.com/jokkedk/webgrind/) puedes ver qué métodos y funciones son más lentas que otras:
 
 ![](/images/content/performance-webgrind.jpg)
 
 <a name='profiling-server-xhprof'></a>
 
-### Profiling with Xhprof
+### Perfiles con Xhprof
 
-[Xhprof](https://github.com/facebook/xhprof) is another interesting extension to profile PHP applications. Add the following line to the start of the bootstrap file:
+[XHProf](https://github.com/facebook/xhprof) es otra extensión interesante para perfilar aplicaciones en PHP. Agregue la siguiente línea al comienzo del archivo bootstrap:
 
 ```php
 <?php
@@ -78,7 +78,7 @@ Using a tool like [Webgrind](https://github.com/jokkedk/webgrind/) you can see w
 xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
 ```
 
-Then at the end of the file save the profiled data:
+Luego al final del archivo, guardar los datos perfilados:
 
 ```php
 <?php
@@ -95,7 +95,7 @@ $run_id = $xhprof_runs->save_run($xhprof_data, 'xhprof_testing');
 echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_testing\n";
 ```
 
-Xhprof provides a built-in HTML viewer to analyze the profiled data:
+XHProf proporciona un visor HTML incorporado para analizar los datos perfilados:
 
 ![](/images/content/performance-xhprof-2.jpg)
 
@@ -103,9 +103,9 @@ Xhprof provides a built-in HTML viewer to analyze the profiled data:
 
 <a name='profiling-server-sql-statements'></a>
 
-### Profiling SQL Statements
+### Perfilando sentencias SQL
 
-Most database systems provide tools to identify slow SQL statements. Detecting and fixing slow queries is very important in order to increase performance in the server side. In the Mysql case, you can use the slow query log to know what SQL queries are taking more time than expected:
+La mayoría sistemas de bases de datos proporcionan herramientas para identificar sentencias SQL lentas. La detección y corrección de consultas lentas es muy importante para aumentar el rendimiento en el lado del servidor. En el caso de Mysql, puede usar el log de consultas lentas para saber que consultas SQL están tomando más tiempo de lo esperado:
 
 ```ini
 log-slow-queries = /var/log/slow-queries.log
@@ -114,19 +114,19 @@ long_query_time = 1.5
 
 <a name='profiling-client'></a>
 
-## Profile on the Client
+## Perfil en el cliente
 
-Sometimes we may need to improve the loading of static elements such as images, javascript and css to improve performance. The following tools are useful to detect common bottlenecks in the client side:
+A veces podemos necesitar mejorar la carga de elementos estáticos como imágenes, javascript y css para mejorar el rendimiento. Las siguientes herramientas son útiles para detectar cuellos de botella comunes en el lado del cliente:
 
 <a name='profiling-client-chrome-firefox'></a>
 
-### Profile with Chrome/Firefox
+### Perfilar con Chrome/Firefox
 
-Most modern browsers have tools to profile the page loading time. In Chrome you can use the web inspector to know how much time is taking the loading of the different resources required by a single page:
+Los navegadores más modernos disponen de herramientas para perfilar el tiempo de carga de la página. En Chrome puede utilizar el inspector web para saber cuánto tiempo está tomando la carga de los diferentes recursos requeridos por una sola página:
 
 ![](/images/content/performance-chrome-1.jpg)
 
-[Firebug](http://getfirebug.com/) provides a similar functionality:
+[Firebug](http://getfirebug.com/) proporciona una funcionalidad similar:
 
 ![](/images/content/performance-firefox-1.jpg)
 
@@ -134,31 +134,31 @@ Most modern browsers have tools to profile the page loading time. In Chrome you 
 
 ### Yahoo! YSlow
 
-[YSlow](http://developer.yahoo.com/yslow/) analyzes web pages and suggests ways to improve their performance based on a set of [rules for high performance web pages](http://developer.yahoo.com/performance/rules.html)
+[YSlow](http://developer.yahoo.com/yslow/) analiza las páginas web y sugiere formas para mejorar su rendimiento basado en un conjunto de [reglas para páginas web de alto rendimiento](http://developer.yahoo.com/performance/rules.html)
 
 ![](/images/content/performance-yslow-1.jpg)
 
 <a name='profiling-client-speed-tracer'></a>
 
-### Profile with Speed Tracer
+### Perfilar con Speed Tracer
 
-[Speed Tracer](https://developers.google.com/web-toolkit/speedtracer/) is a tool to help you identify and fix performance problems in your web applications. It visualizes metrics that are taken from low level instrumentation points inside of the browser and analyzes them as your application runs. Speed Tracer is available as a Chrome extension and works on all platforms where extensions are currently supported (Windows and Linux).
+[Speed Tracer](https://developers.google.com/web-toolkit/speedtracer/) es una herramienta para ayudarle a identificar y solucionar problemas de rendimiento en las aplicaciones web. Visualiza las métricas que se toman desde puntos de instrumentación de bajo nivel dentro del navegador y los analiza a medida que se ejecuta su aplicación. Speed Tracer está disponible como una extensión de Chrome y funciona en todas las plataformas donde las extensiones son soportadas actualmente (Windows y Linux).
 
 ![](/images/content/performance-speed-tracer.jpg)
 
-This tool is very useful because it help you to get the real time used to render the whole page including HTML parsing, Javascript evaluation and CSS styling.
+Esta herramienta es muy útil porque le ayuda a obtener el tiempo real que se utiliza para representar toda la página, como el análisis del HTML, evaluación de Javascript y estilos CSS.
 
 <a name='php-version'></a>
 
-## Use a recent PHP version
+## Utilizar una versión reciente de PHP
 
-PHP is faster every day, using the latest version improves the performance of your applications and also of Phalcon.
+PHP es más rápido cada día, usando la última versión mejora el rendimiento de sus aplicaciones y también de Phalcon.
 
 <a name='bytecode-cache'></a>
 
-## Use a PHP Bytecode Cache
+## Utilizar un caché Bytecode de PHP
 
-[APC](http://php.net/manual/en/book.apc.php) as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files in each request. Once the extension is installed use the following setting to enable APC:
+[APC](http://php.net/manual/en/book.apc.php) como tantos otros caches de bytecode, ayuda a una aplicación para reducir la sobrecarga de lectura, muestreo y análisis de archivos PHP en cada solicitud. Una vez instalada la extensión utilice la siguiente configuración para activar APC:
 
 ```ini
 apc.enabled = On
@@ -166,9 +166,9 @@ apc.enabled = On
 
 <a name='background-tasks'></a>
 
-## Do blocking work in the background
+## Realizar labores de bloqueo en segundo plano
 
-Process a video, send e-mails, compress a file or an image, etc., are slow tasks that must be processed in background jobs. There are a variety of tools that provide queuing or messaging systems that work well with PHP:
+Procesar un video, enviar e-mails, comprimir un archivo o una imagen, etc., son tareas lentas que deben ser procesadas por trabajos en segundo plano. Hay una variedad de herramientas que proporcionan colas o sistemas de mensajería que funcionan bien con PHP:
 
 - [Beanstalkd](http://kr.github.io/beanstalkd/)
 - [Redis](http://redis.io/)
@@ -181,4 +181,4 @@ Process a video, send e-mails, compress a file or an image, etc., are slow tasks
 
 ## Google Page Speed
 
-[mod_pagespeed](https://developers.google.com/speed/pagespeed/mod) speeds up your site and reduces page load time. This open-source Apache HTTP server module (also available for nginx as [ngx_pagespeed](https://developers.google.com/speed/pagespeed/ngx)) automatically applies web performance best practices to pages, and associated assets (CSS, JavaScript, images) without requiring that you modify your existing content or workflow.
+El [mod_pagespeed](https://developers.google.com/speed/pagespeed/mod) acelera su sitio y reduce el tiempo de carga de página. Este módulo del servidor HTTP Apache de código abierto (también disponible para nginx como [ngx_pagespeed](https://developers.google.com/speed/pagespeed/ngx)) automáticamente aplica las mejores prácticas de performance web a las páginas y a los activos asociados (CSS, JavaScript, imágenes) sin necesidad de modificar su contenido o flujo de trabajo.
