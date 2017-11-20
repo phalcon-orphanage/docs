@@ -689,7 +689,7 @@ The following are examples of custom routes:
 ```php
 <?php
 
-// Matches '/system/admin/a/edit/7001'
+// Coincidencia '/system/admin/a/edit/7001'
 $router->add(
     '/system/:controller/a/:action/:params',
     [
@@ -699,7 +699,7 @@ $router->add(
     ]
 );
 
-// Matches '/es/news'
+// Coincidencia '/es/news'
 $router->add(
     '/([a-z]{2})/:controller',
     [
@@ -709,7 +709,7 @@ $router->add(
     ]
 );
 
-// Matches '/es/news'
+// Coincidencia '/es/news'
 $router->add(
     '/{language:[a-z]{2}}/:controller',
     [
@@ -718,7 +718,7 @@ $router->add(
     ]
 );
 
-// Matches '/admin/posts/edit/100'
+// Coincidencia '/admin/posts/edit/100'
 $router->add(
     '/admin/:controller/:action/:int',
     [
@@ -728,7 +728,7 @@ $router->add(
     ]
 );
 
-// Matches '/posts/2015/02/some-cool-content'
+// Coincidencia '/posts/2015/02/some-cool-content'
 $router->add(
     '/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)',
     [
@@ -740,7 +740,7 @@ $router->add(
     ]
 );
 
-// Matches '/manual/en/translate.adapter.html'
+// Coincidencia '/manual/en/translate.adapter.html'
 $router->add(
     '/manual/([a-z]{2})/([a-z\.]+)\.html',
     [
@@ -751,13 +751,13 @@ $router->add(
     ]
 );
 
-// Matches /feed/fr/le-robots-hot-news.atom
+// Coincidencia /feed/fr/le-robots-hot-news.atom
 $router->add(
     '/feed/{lang:[a-z]+}/{blog:[a-z\-]+}\.{type:[a-z\-]+}',
     'Feed::get'
 );
 
-// Matches /api/v1/users/peter.json
+// Coincidencia /api/v1/users/peter.json
 $router->add(
     '/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
     [
@@ -1327,4 +1327,4 @@ return $router;
 
 ## Implementing your own Router
 
-The `Phalcon\Mvc\RouterInterface` interface must be implemented to create your own router replacing the one provided by Phalcon.
+Debe implementar la interfaz `Phalcon\Mvc\RouterInterface` para crear su propio enrutador reemplazando uno proporcionado por Phalcon.
