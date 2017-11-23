@@ -45,7 +45,7 @@
 
 # Access Control Lists (ACL)
 
-`Phalcon\Acl` provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](http://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
+`Phalcon\Acl` fornisce una gestione facile e leggera di ACL, nonché le correlate autorizzazioni. [Access Control Lists](http://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
 
 In summary, ACLs have roles and resources. Resources are objects which abide by the permissions defined to them by the ACLs. Roles are objects that request access to resources and can be allowed or denied access by the ACL mechanism.
 
@@ -92,10 +92,10 @@ use Phalcon\Acl\Role;
 $roleAdmins = new Role('Administrators', 'Super-User role');
 $roleGuests = new Role('Guests');
 
-// Add 'Guests' role to ACL
+// Aggiunge il ruolo 'Visitatore' alla ACL
 $acl->addRole($roleGuests);
 
-// Add 'Designers' role to ACL without a Phalcon\Acl\Role
+// Aggiunge il ruolo 'Progettista' alla ACL senza Phalcon\Acl\Role
 $acl->addRole('Designers');
 ```
 
