@@ -1,37 +1,37 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Forms</a>
+      <a href="#overview">Formularios</a>
       <ul>
         <li>
-          <a href="#initializing">Initializing forms</a>
+          <a href="#initializing">Inicializando formularios</a>
         </li>
         <li>
-          <a href="#validation">Validation</a>
+          <a href="#validation">Validación</a>
         </li>      
         <li>
-          <a href="#filtering">Filtering</a>
+          <a href="#filtering">Filtros</a>
         </li>
         <li>
-          <a href="#entities">Forms + Entities</a>
+          <a href="#entities">Formularios y entidades</a>
         </li>
         <li>
-          <a href="#elements">Form Elements</a>
+          <a href="#elements">Elementos de formulario</a>
         </li>
         <li>
-          <a href="#event-callback">Event Callbacks</a>
+          <a href="#event-callback">Devoluciones de llamada de evento</a>
         </li>
         <li>
-          <a href="#rendering">Rendering Forms</a>
+          <a href="#rendering">Presentación de formularios</a>
         </li>
         <li>
-          <a href="#creating-elements">Creating Form Elements</a>
+          <a href="#creating-elements">Creando elementos de formulario</a>
         </li>
         <li>
-          <a href="#forms-manager">Forms Manager</a>
+          <a href="#forms-manager">Administrador de formularios</a>
         </li>
         <li>
-          <a href="#external-resources">External Resources</a>
+          <a href="#external-resources">Recursos externos</a>
         </li>
       </ul>
     </li>
@@ -40,11 +40,11 @@
 
 <a name='overview'></a>
 
-# Forms
+# Formularios
 
-`Phalcon\Forms\Form` is a component that helps with the creation and maintenance of forms in web applications.
+`Phalcon\Forms\Form` es un componente que ayuda a la creación y mantenimiento de formularios en aplicaciones web.
 
-The following example shows its basic usage:
+En el ejemplo siguiente se muestra su uso básico:
 
 ```php
 <?php
@@ -71,25 +71,25 @@ $form->add(
     new Select(
         'telephoneType',
         [
-            'H' => 'Home',
-            'C' => 'Cell',
+            'H' => 'Hogar',
+            'C' => 'Movil',
         ]
     )
 );
 ```
 
-Forms can be rendered based on the form definition:
+Los formularios se pueden representar en función de la definición del formulario:
 
 ```php
 <h1>
-    Contacts
+    Contactos
 </h1>
 
 <form method='post'>
 
     <p>
         <label>
-            Name
+            Nombre
         </label>
 
         <?php echo $form->render('name'); ?>
@@ -97,7 +97,7 @@ Forms can be rendered based on the form definition:
 
     <p>
         <label>
-            Telephone
+            Teléfono
         </label>
 
         <?php echo $form->render('telephone'); ?>
@@ -105,34 +105,32 @@ Forms can be rendered based on the form definition:
 
     <p>
         <label>
-            Type
+            Tipo
         </label>
 
         <?php echo $form->render('telephoneType'); ?>
     </p>
 
-
-
     <p>
-        <input type='submit' value='Save' />
+        <input type='submit' value='Guardar' />
     </p>
 
 </form>
 ```
 
-Each element in the form can be rendered as required by the developer. Internally, `Phalcon\Tag` is used to produce the correct HTML for each element and you can pass additional HTML attributes as the second parameter of `render()`:
+Cada elemento en el formulario se puede representar como sea requerido por el desarrollador. Internamente, se utiliza `Phalcon\Tag` para producir el código HTML correcto de cada elemento y los atributos HTML adicionales se pueden pasar como segundo parámetro del método `render()`:
 
 ```php
 <p>
     <label>
-        Name
+        Nombre
     </label>
 
-    <?php echo $form->render('name', ['maxlength' => 30, 'placeholder' => 'Type your name']); ?>
+    <?php echo $form->render('name', ['maxlength' => 30, 'placeholder' => 'Escribe tu nombre']); ?>
 </p>
 ```
 
-HTML attributes also can be set in the element's definition:
+Los atributos HTML también se pueden definir en la definición del elemento:
 
 ```php
 <?php
@@ -142,7 +140,7 @@ $form->add(
         'name',
         [
             'maxlength'   => 30,
-            'placeholder' => 'Type your name',
+            'placeholder' => 'Escribe tu nombre',
         ]
     )
 );
@@ -150,9 +148,9 @@ $form->add(
 
 <a name='initializing'></a>
 
-## Initializing forms
+## Inicializando formularios
 
-As seen before, forms can be initialized outside the form class by adding elements to it. You can re-use code or organize your form classes implementing the form in a separated file:
+Como hemos visto anteriormente, los formularios se pueden inicializar fuera de la clase formulario agregando elementos en él. Puede reutilizar código u organizar tus formularios en clases e implementar el formulario en un archivo separado:
 
 ```php
 <?php
