@@ -1,34 +1,34 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Filtering and Sanitizing</a> 
+      <a href="#overview">Filtrado y Limpieza</a> 
       <ul>
         <li>
-          <a href="#types">Types of Built-in Filters</a>
+          <a href="#types">Tipos de filtros incorporados</a>
         </li>
         <li>
-          <a href="#sanitizing">Sanitizing data</a>
+          <a href="#sanitizing">Limpieza de datos</a>
         </li>
         <li>
-          <a href="#sanitizing-from-controllers">Sanitizing from Controllers</a>
+          <a href="#sanitizing-from-controllers">Limpiando desde controladores</a>
         </li>
         <li>
-          <a href="#filtering-action-parameters">Filtering Action Parameters</a>
+          <a href="#filtering-action-parameters">Filtrando parámetros de acciones</a>
         </li>
         <li>
-          <a href="#filtering-data">Filtering data</a>
+          <a href="#filtering-data">Filtrando datos</a>
         </li>
         <li>
-          <a href="#combining-filters">Combining Filters</a>
+          <a href="#combining-filters">Combinando filtros</a>
         </li>
         <li>
-          <a href="#adding-filters">Adding filters</a>
+          <a href="#adding-filters">Agregando filtros</a>
         </li>
         <li>
-          <a href="#complex-sanitization-filtering">Complex Sanitizing and Filtering</a>
+          <a href="#complex-sanitization-filtering">Filtrado y limpieza complejas</a>
         </li>
         <li>
-          <a href="#custom">Implementing your own Filter</a>
+          <a href="#custom">Implementar tus propios filtros</a>
         </li>
       </ul>
     </li>
@@ -37,40 +37,40 @@
 
 <a name='overview'></a>
 
-# Filtering and Sanitizing
+# Filtrado y Limpieza
 
-Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
+Limpiar o desinfectar la entrada del usuario es una parte crítica del desarrollo de software. Confiar o dejar de desinfectar la entrada del usuario podría conducir a un acceso no autorizado al contenido de la aplicación, principalmente datos de los usuarios, o incluso al servidor de la aplicación donde está alojada.
 
 ![](/images/content/filter-sql.png)
 
-[Full image on XKCD](http://xkcd.com/327)
+[Imagen completa en XKCD](http://xkcd.com/327)
 
-The `Phalcon\Filter` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
+El componente `Phalcon\Filter` proporciona un conjunto de filtros y ayudantes de desinfección de datos de uso común. Proporciona contenedores orientados a objetos de la extensión de filtro de PHP.
 
 <a name='types'></a>
 
-## Types of Built-in Filters
+## Tipos de filtros incorporados
 
-The following are the built-in filters provided by this component:
+Los siguientes filtros están incorporados en este componente:
 
-| Name      | Description                                                                              |
-| --------- | ---------------------------------------------------------------------------------------- |
-| string    | Strip tags and encode HTML entities, including single and double quotes.                 |
-| email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.        |
-| int       | Remove all characters except digits, plus and minus sign.                                |
-| float     | Remove all characters except digits, dot, plus and minus sign.                           |
-| alphanum  | Remove all characters except [a-zA-Z0-9]                                                 |
-| striptags | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function  |
-| trim      | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function              |
-| lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function  |
-| url       | Remove all characters except letters, digits and `|`$-_.+!*'(),{}[]<>#%";/?:@&=.^~\\` |
-| upper     | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function  |
+| Nombre    | Descripción                                                                                     |
+| --------- | ----------------------------------------------------------------------------------------------- |
+| string    | Elimina etiquetas y codifica entidades HTML, incluyendo comillas simples y dobles.              |
+| email     | Quita todos los caracteres excepto letras, números y `` !#$%&*+-/=?^_{\|}~@.[]` ``.        |
+| int       | Quita todos los caracteres excepto dígitos y los signos más y menos.                            |
+| float     | Quita todos los caracteres excepto dígitos, puntos y los signos más y menos.                    |
+| alphanum  | Quita todos los caracteres excepto [a-zA-Z0-9]                                                  |
+| striptags | Se aplica la función [strip_tags](http://www.php.net/manual/en/function.strip-tags.php)         |
+| trim      | Se aplica la función [trim](http://www.php.net/manual/en/function.trim.php)                     |
+| lower     | Se aplica la función [strtolower](http://www.php.net/manual/en/function.strtolower.php)         |
+| url       | Quita todos los caracteres letras, dígitos y `` |$-_.+!*'(),{}[]<>#%";/?:@&=.^~\\` `` |
+| upper     | Se aplica la función [strtoupper](http://www.php.net/manual/en/function.strtoupper.php)         |
 
 <a name='sanitizing'></a>
 
-## Sanitizing data
+## Limpieza de datos
 
-Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input we ensure that application integrity will be intact.
+Es el proceso de desinfección que elimina caracteres específicos de un valor, los cuales no son necesarios o deseados por el usuario o aplicación. Al desinfectar la entrada nos aseguramos que la integridad de las aplicaciones estará intacta.
 
 ```php
 <?php
@@ -79,24 +79,24 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Returns 'someone@example.com'
+// Retorna 'someone@example.com'
 $filter->sanitize('some(one)@exa\mple.com', 'email');
 
-// Returns 'hello'
+// Retorna 'hello'
 $filter->sanitize('hello<<', 'string');
 
-// Returns '100019'
+// Retorna '100019'
 $filter->sanitize('!100a019', 'int');
 
-// Returns '100019.01'
+// Retorna '100019.01'
 $filter->sanitize('!100a019.01a', 'float');
 ```
 
 <a name='sanitizing-from-controllers'></a>
 
-## Sanitizing from Controllers
+## Limpiando desde controladores
 
-You can access a `Phalcon\Filter` object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
+Se puede acceder al objeto `Phalcon\Filter` desde los controladores cuando se accede a los datos de entrada `GET` o `POST` (a través del objeto request). El primer parámetro es el nombre de la variable que se desea obtener; el segundo es el filtro a aplicar sobre ella.
 
 ```php
 <?php
@@ -112,10 +112,10 @@ class ProductsController extends Controller
 
     public function saveAction()
     {
-        // Sanitizing price from input
+        // Limpiando el precio desde POST
         $price = $this->request->getPost('price', 'double');
 
-        // Sanitizing email from input
+        // Limpiando el email desde POST
         $email = $this->request->getPost('customerEmail', 'email');
     }
 }
@@ -123,9 +123,9 @@ class ProductsController extends Controller
 
 <a name='filtering-action-parameters'></a>
 
-## Filtering Action Parameters
+## Filtrando parámetros de acciones
 
-The next example shows you how to sanitize the action parameters within a controller action:
+En el ejemplo siguiente se muestra cómo desinfectar los parámetros de una acción dentro de un controlador:
 
 ```php
 <?php
@@ -148,9 +148,9 @@ class ProductsController extends Controller
 
 <a name='filtering-data'></a>
 
-## Filtering data
+## Filtrando datos
 
-In addition to sanitizing, `Phalcon\Filter` also provides filtering by removing or modifying input data to the format we expect.
+Además de desinfectar, `Phalcon\Filter` proporciona filtrado, mediante la eliminación o modificación de los datos de entrada llevandolos al formato que esperamos.
 
 ```php
 <?php
@@ -159,18 +159,18 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Returns 'Hello'
+// Retorna 'Hello'
 $filter->sanitize('<h1>Hello</h1>', 'striptags');
 
-// Returns 'Hello'
+// Retorna 'Hello'
 $filter->sanitize('  Hello   ', 'trim');
 ```
 
 <a name='combining-filters'></a>
 
-## Combining Filters
+## Combinando filtros
 
-You can also run multiple filters on a string at the same time by passing an array of filter identifiers as the second parameter:
+Es posible ejecutar varios filtros en una cadena al mismo tiempo, pasando una matriz de identificadores de filtro como segundo parámetro:
 
 ```php
 <?php
@@ -179,7 +179,7 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Returns 'Hello'
+// Retorna 'Hello'
 $filter->sanitize(
     '   <h1> Hello </h1>   ',
     [
@@ -191,9 +191,9 @@ $filter->sanitize(
 
 <a name='adding-filters'></a>
 
-## Adding filters
+## Agregando filtros
 
-You can add your own filters to `Phalcon\Filter`. The filter function could be an anonymous function:
+Usted puede agregar sus propios filtros a `Phalcon\Filter`. La función del filtro puede ser una función anónima:
 
 ```php
 <?php
@@ -202,7 +202,7 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Using an anonymous function
+// Usando una función anónima
 $filter->add(
     'md5',
     function ($value) {
@@ -210,11 +210,11 @@ $filter->add(
     }
 );
 
-// Sanitize with the 'md5' filter
+// Desinfectando con el filtro 'md5' recién creado
 $filtered = $filter->sanitize($possibleMd5, 'md5');
 ```
 
-Or, if you prefer, you can implement the filter in a class:
+O si lo prefiere, puede implementar el filtro en una clase:
 
 ```php
 <?php
@@ -231,24 +231,24 @@ class IPv4Filter
 
 $filter = new Filter();
 
-// Using an object
+// Usando un objeto
 $filter->add(
     'ipv4',
     new IPv4Filter()
 );
 
-// Sanitize with the 'ipv4' filter
+// Limpiando con el filtro 'ipv4'
 $filteredIp = $filter->sanitize('127.0.0.1', 'ipv4');
 ```
 
 <a name='complex-sanitization-filtering'></a>
 
-## Complex Sanitizing and Filtering
+## Filtrado y limpieza complejas
 
-PHP itself provides an excellent filter extension you can use. Check out its documentation: [Data Filtering at PHP Documentation](http://www.php.net/manual/en/book.filter.php)
+PHP proporciona una extensión excelente de filtro que puede utilizar. Revisa su documentación: [Filtrado de datos en la documentación oficial de PHP](http://www.php.net/manual/en/book.filter.php)
 
 <a name='custom'></a>
 
-## Implementing your own Filter
+## Implementar tus propios filtros
 
-The `Phalcon\FilterInterface` interface must be implemented to create your own filtering service replacing the one provided by Phalcon.
+Debe implementar la interfaz `Phalcon\FilterInterface` para crear su propio servicio de filtrado reemplazando el proporcionado por Phalcon.

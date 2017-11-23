@@ -1,15 +1,15 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Transactions</a> <ul>
+      <a href="#overview">Транзакции модели</a> <ul>
         <li>
-          <a href="#manual">Manual Transactions</a>
+          <a href="#manual">Ручные транзакции</a>
         </li>
         <li>
-          <a href="#implicit">Implicit Transactions</a>
+          <a href="#implicit">Неявные транзакции</a>
         </li>
         <li>
-          <a href="#isolated">Isolated Transactions</a>
+          <a href="#isolated">Изолированные транзакции</a>
         </li>
       </ul>
     </li>
@@ -18,17 +18,17 @@
 
 <a name='overview'></a>
 
-# Model Transactions
+# Транзакции модели
 
-When a process performs multiple database operations, it might be important that each step is completed successfully so that data integrity can be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data is committed to the database.
+Когда процесс выполняет несколько операций в базе данных, очень важно, чтобы каждый шаг в этой группе выполнился успешно, тем самым поддерживая целостность данных. Транзакции предоставляют возможность реализации такого подхода, когда группа операций с базой данных может быть выполнена либо целиком и успешно, соблюдая целостность данных, либо не выполнена вообще.
 
-Transactions in Phalcon allow you to commit all operations if they were executed successfully or rollback all operations if something went wrong.
+Транзакции в Phalcon позволяют зафиксировать результат всех операции, если они были успешно выполнены, или откатить все операции, если хоть что-то пошло не так.
 
 <a name='manual'></a>
 
-## Manual Transactions
+## Ручные транзакции
 
-If an application only uses one connection and the transactions are not very complex, a transaction can be created by just moving the current connection into transaction mode and then commit or rollback the operation whether it is successful or not:
+Если приложение использует только одно соединение с базой данных и транзакции не очень сложны, транзакция может быть создана просто переводом текущего соединения в режим транзакции, и система делает откат или фиксацию, в зависимости от того, операция успешна или нет:
 
 ```php
 <?php
@@ -39,7 +39,7 @@ class RobotsController extends Controller
 {
     public function saveAction()
     {
-        // Start a transaction
+        // Запуск транзакции
         $this->db->begin();
 
         $robot = new Robots();
@@ -47,7 +47,7 @@ class RobotsController extends Controller
         $robot->name       = 'WALL-E';
         $robot->created_at = date('Y-m-d');
 
-        // The model failed to save, so rollback the transaction
+        // Не удалось сохранить модель, поэтому откатываем транзакцию
         if ($robot->save() === false) {
             $this->db->rollback();
             return;
@@ -58,14 +58,14 @@ class RobotsController extends Controller
         $robotPart->robots_id = $robot->id;
         $robotPart->type      = 'head';
 
-        // The model failed to save, so rollback the transaction
+        // Не удалось сохранить модель, поэтому откатываем транзакцию
         if ($robotPart->save() === false) {
             $this->db->rollback();
 
             return;
         }
 
-        // Commit the transaction
+        // Фиксация транзакции
         $this->db->commit();
     }
 }
@@ -73,9 +73,9 @@ class RobotsController extends Controller
 
 <a name='implicit'></a>
 
-## Implicit Transactions
+## Неявные транзакции
 
-Existing relationships can be used to store records and their related instances, this kind of operation implicitly creates a transaction to ensure that data is correctly stored:
+Существующие отношения (связи) между таблицами могут быть использованы для хранения записей и связанных с ними моделей. Этот вид операций неявно создает транзакцию, чтобы удостовериться, что данные сохраняются правильно:
 
 ```php
 <?php
@@ -92,15 +92,15 @@ $robot->name       = 'WALL-E';
 $robot->created_at = date('Y-m-d');
 $robot->robotPart  = $robotPart;
 
-// Creates an implicit transaction to store both records
+// Создает неявную транзакцию, чтобы сохранить обе записи
 $robot->save();
 ```
 
 <a name='isolated'></a>
 
-## Isolated Transactions
+## Изолированные транзакции
 
-Isolated transactions are executed in a new connection ensuring that all the generated SQL, virtual foreign key checks and business rules are isolated from the main connection. This kind of transaction requires a transaction manager that globally manages each transaction created ensuring that they are correctly rolled back/committed before ending the request:
+Изолированные транзакции выполняются в новом соединении, гарантируя, что все сгенерированные SQL-запросы, проверки виртуальных внешних ключей и бизнес логика изолированы от основного соединения. Этот вид транзакции требует менеджера транзакций, который в свою очередь, глобально управляет каждой транзакции, гарантируя правильные откат/фиксацию операций перед окончанием запроса:
 
 ```php
 <?php
@@ -109,10 +109,10 @@ use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
 try {
-    // Create a transaction manager
+    // Создаём менеджера транзакций
     $manager = new TxManager();
 
-    // Request a transaction
+    // Запрос транзакции
     $transaction = $manager->get();
 
     $robot = new Robots();
@@ -124,7 +124,7 @@ try {
 
     if ($robot->save() === false) {
         $transaction->rollback(
-            'Cannot save robot'
+            'Невозможно сохранить робота'
         );
     }
 
@@ -137,18 +137,18 @@ try {
 
     if ($robotPart->save() === false) {
         $transaction->rollback(
-            'Cannot save robot part'
+            'Невозможно сохранить часть робота'
         );
     }
 
-    // Everything's gone fine, let's commit the transaction
+    // Всё прошло хорошо, фиксация
     $transaction->commit();
 } catch (TxFailed $e) {
-    echo 'Failed, reason: ', $e->getMessage();
+    echo 'Не удалось, причина: ', $e->getMessage();
 }
 ```
 
-Transactions can be used to delete many records in a consistent way:
+Транзакции могут быть использованы для удаления нескольких записей на постоянной основе:
 
 ```php
 <?php
@@ -157,13 +157,13 @@ use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
 try {
-    // Create a transaction manager
+    // Создаём менеджера транзакций
     $manager = new TxManager();
 
-    // Request a transaction
+    // Запрос транзакции
     $transaction = $manager->get();
 
-    // Get the robots to be deleted
+    // Получить роботов для удаления
     $robots = Robots::find(
         "type = 'mechanical'"
     );
@@ -171,7 +171,7 @@ try {
     foreach ($robots as $robot) {
         $robot->setTransaction($transaction);
 
-        // Something's gone wrong, we should rollback the transaction
+        // Что-то идёт не так, мы должны откатить транзакцию
         if ($robot->delete() === false) {
             $messages = $robot->getMessages();
 
@@ -183,16 +183,16 @@ try {
         }
     }
 
-    // Everything's gone fine, let's commit the transaction
+    // Всё прошло хорошо, давайте зафиксируем транзакцию
     $transaction->commit();
 
-    echo 'Robots were deleted successfully!';
+    echo 'Роботы успешно удалены!';
 } catch (TxFailed $e) {
-    echo 'Failed, reason: ', $e->getMessage();
+    echo 'Не удалось, причина: ', $e->getMessage();
 }
 ```
 
-Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a `commit()` or :code:`rollback()` is performed. You can use the service container to create the global transaction manager for the entire application:
+Транзакция продолжается, независимо от того, где получается объект транзакции. A new transaction is generated only when a `commit()` or `rollback()` is performed. Вы можете воспользоваться DI-контейнером, чтобы создать общий менеджер транзакций для всего приложения:
 
 ```php
 <?php
@@ -207,7 +207,7 @@ $di->setShared(
 );
 ```
 
-Then access it from a controller or view:
+Тогда доступ к нему из контроллера или представления может быть осуществлён следующим образом:
 
 ```php
 <?php
@@ -218,18 +218,18 @@ class ProductsController extends Controller
 {
     public function saveAction()
     {
-        // Obtain the TransactionsManager from the services container
+        // Получить TransactionsManager из DI-контейнера
         $manager = $this->di->getTransactions();
 
-        // Or
+        // Или
         $manager = $this->transactions;
 
-        // Request a transaction
+        // Запрос транзакции
         $transaction = $manager->get();
 
         // ...
-    }
+    } 
 }
 ```
 
-While a transaction is active, the transaction manager will always return the same transaction across the application.
+Пока транзакция активна, менеджер транзакций всегда будет возвращать одну и ту же транзакцию.
