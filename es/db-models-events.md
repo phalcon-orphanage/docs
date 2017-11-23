@@ -33,22 +33,22 @@
 
 Los modelos permiten implementar eventos que se disparan al realizar una inserción/actualización/eliminación, pueden usarse para definir reglas de negocio. Son soportados los siguientes eventos por `Phalcon\Mvc\Model` y su respectivo orden de ejecución:
 
-| Operación          | Nombre                   | ¿Puede detener la operación? | Explicación                                                                                                                                      |
-| ------------------ | ------------------------ |:----------------------------:| ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Inserting/Updating | beforeValidation         |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, para operaciones de inserción o actualización           |
-| Inserting          | beforeValidationOnCreate |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de inserción       |
-| Updating           | beforeValidationOnUpdate |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización   |
-| Inserting/Updating | validation               |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización   |
-| Inserting/Updating | onValidationFails        |        SI (detenido)         | Se ejecuta después de un validador de integridad falla                                                                                           |
-| Inserting          | afterValidationOnCreate  |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas solo cuando se realiza una operación de inserción      |
-| Updating           | afterValidationOnUpdate  |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización |
-| Inserting/Updating | afterValidation          |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas                                                        |
-| Inserting          | beforeCreate             |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, sólo cuando se realiza una operación de inserción                            |
-| Inserting/Updating | beforeSave               |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, para operaciones de inserción o actualización                                |
-| Updating           | beforeUpdate             |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, sólo cuando se realiza una operación de actualización                        |
-| Inserting          | afterCreate              |              NO              | Se ejecuta después de la operación sobre el sistema de base de datos pero sólo cuando se realiza una operación de inserción                      |
-| Updating           | afterUpdate              |              NO              | Se ejecuta después de la operación sobre el sistema de base de datos pero sólo cuando se realiza una operación de actualización                  |
-| Inserting/Updating | afterSave                |              NO              | Después que la operación se ejecuta sobre el sistema de base de datos solo para inserción o actualización                                        |
+| Operación             | Nombre                   | ¿Puede detener la operación? | Explicación                                                                                                                                      |
+| --------------------- | ------------------------ |:----------------------------:| ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Insertar o actualizar | beforeValidation         |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, para operaciones de inserción o actualización           |
+| Insertar              | beforeValidationOnCreate |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de inserción       |
+| Actualizar            | beforeValidationOnUpdate |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización   |
+| Insertar o actualizar | validation               |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización   |
+| Insertar o actualizar | onValidationFails        |        SI (detenido)         | Se ejecuta después de un validador de integridad falla                                                                                           |
+| Insertar              | afterValidationOnCreate  |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas solo cuando se realiza una operación de inserción      |
+| Actualizar            | afterValidationOnUpdate  |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización |
+| Insertar o actualizar | afterValidation          |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas                                                        |
+| Insertar              | beforeCreate             |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, sólo cuando se realiza una operación de inserción                            |
+| Insertar o actualizar | beforeSave               |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, para operaciones de inserción o actualización                                |
+| Actualizar            | beforeUpdate             |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, sólo cuando se realiza una operación de actualización                        |
+| Insertar              | afterCreate              |              NO              | Se ejecuta después de la operación sobre el sistema de base de datos pero sólo cuando se realiza una operación de inserción                      |
+| Actualizar            | afterUpdate              |              NO              | Se ejecuta después de la operación sobre el sistema de base de datos pero sólo cuando se realiza una operación de actualización                  |
+| Insertar o actualizar | afterSave                |              NO              | Después que la operación se ejecuta sobre el sistema de base de datos solo para inserción o actualización                                        |
 
 <a name='events-in-models'></a>
 
