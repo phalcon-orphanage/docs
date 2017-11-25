@@ -283,9 +283,9 @@ $title = $post->getSlug();
 
 <a name='traits-as-behaviors'></a>
 
-## Using Traits as behaviors
+## Использование трейтов, как поведений
 
-You can use [Traits](http://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the Timestampable behavior:
+Начиная с PHP 5.4 вы можете использовать [трейты](http://php.net/manual/en/language.oop5.traits.php), чтобы повторно использовать код в ваших классах. Это еще один способ для реализации пользовательского поведения. Следующий трейт реализует простой вариант поведения Timestampable:
 
 ```php
 <?php
@@ -304,7 +304,7 @@ trait MyTimestampable
 }
 ```
 
-Then you can use it in your model as follows:
+Затем вы можете использовать его в вашей модели следующим образом:
 
 ```php
 <?php
