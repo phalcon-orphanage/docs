@@ -114,7 +114,7 @@ $router->add(
 );
 
 $router->handle();
-````
+```
 
 The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths.
 In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. `Phalcon\Mvc\Dispatcher`) that this is the controller/action it should execute.
