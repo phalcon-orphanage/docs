@@ -1,24 +1,24 @@
-# Class **Phalcon\\Filter**
+# Clase **Phalcon\\Filter**
 
-*implements* [Phalcon\FilterInterface](/en/3.2/api/Phalcon_FilterInterface)
+*implementa* [Phalcon\FilterInterface](/en/3.2/api/Phalcon_FilterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/filter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/filter.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
-The Phalcon\\Filter component provides a set of commonly needed data filters. It provides object oriented wrappers to the php filter extension. Also allows the developer to define his/her own filters
+El componente de Phalcon\\Filter proporciona un conjunto de filtros de datos comúnmente necesarios. Proporciona contenedores de orientado a objetos para la extensión de filtro de php. También permite al desarrollador definir sus propios filtros
 
 ```php
 <?php
 
 $filter = new \Phalcon\Filter();
 
-$filter->sanitize("some(one)@exa\\mple.com", "email"); // returns "someone@example.com"
-$filter->sanitize("hello<<", "string"); // returns "hello"
-$filter->sanitize("!100a019", "int"); // returns "100019"
-$filter->sanitize("!100a019.01a", "float"); // returns "100019.01"
+$filter->sanitize("some(one)@exa\\mple.com", "email"); // returna "someone@example.com"
+$filter->sanitize("hello<<", "string"); // returna "hello"
+$filter->sanitize("!100a019", "int"); // returna "100019"
+$filter->sanitize("!100a019.01a", "float"); // returna "100019.01"
 
 ```
 
-## Constants
+## Constantes
 
 *string* **FILTER_EMAIL**
 
@@ -48,20 +48,20 @@ $filter->sanitize("!100a019.01a", "float"); // returns "100019.01"
 
 *string* **FILTER_SPECIAL_CHARS**
 
-## Methods
+## Métodos
 
 public **add** (*mixed* $name, *mixed* $handler)
 
-Adds a user-defined filter
+Añade un filtro definido por el usuario
 
 public **sanitize** (*mixed* $value, *mixed* $filters, [*mixed* $noRecursive])
 
-Sanitizes a value with a specified single or set of filters
+Limpia un valor con un único filtro o un conjunto de los mismos
 
 protected **_sanitize** (*mixed* $value, *mixed* $filter)
 
-Internal sanitize wrapper to filter_var
+Envoltorio interno de filter_var para limpieza
 
 public **getFilters** ()
 
-Return the user-defined filters in the instance
+Devuelve los filtros definidos por el usuario en la instancia

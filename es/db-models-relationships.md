@@ -26,6 +26,9 @@
                 </li>
               </ul>
             </li>
+            <li>
+              <a href="#conditionals">Condicionales</a>
+            </li>
           </ul>
         </li>
         <li>
@@ -476,20 +479,22 @@ class RobotsSimilar extends Model
 }
 ```
 
-Con los alias podemos conseguir fácilmente los registros relacionados:
+Con los alias podemos obtener fácilmente los registros relacionados. También puede utilizar el método `getRelated()` para acceder a la relación con el nombre del alias:
 
 ```php
 <?php
 
 $robotsSimilar = RobotsSimilar::findFirst();
 
-// Devuelve los registros relacionados con la columna (robots_id)
+// Retorna los registros relacionados basados en la columna 'robots_id'
 $robot = $robotsSimilar->getRobot();
 $robot = $robotsSimilar->robot;
+$robot = $robotsSimilar->getRelated('Robot');
 
-// Devuleve los registros relacionados con la columna (similar_robots_id)
+// Retorna los registros relacionados basados en la columna 'similar_robots_id'
 $similarRobot = $robotsSimilar->getSimilarRobot();
 $similarRobot = $robotsSimilar->similarRobot;
+$similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 ```
 
 <a name='getters-vs-methods'></a>
@@ -526,6 +531,98 @@ class Robots extends Model
         );
     }
 }
+```
+
+<a name='conditionals'></a>
+
+## Condicionales
+
+También puede crear relaciones basadas en condicionales. Al consultar la relación, la condición se agregará automáticamente a la consulta:
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+// Empresas que tienen facturas emitidas a ellos (pagas/impagas)
+// Model Facturas
+class Invoices extends Model
+{
+
+}
+
+// Model Empresas
+class Companies extends Model
+{
+    public function initialize()
+    {
+        // Relación: todas las facturas
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias' => 'Invoices'
+            ]
+        );
+
+        // Relación: facturas pagadas
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesPaid',
+                'params'   => [
+                    'conditions' => "inv_status = 'paid'"
+                ]
+            ]
+        );
+
+        // Reglación: facturas impagas con parámetros enlazados
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesUnpaid',
+                'params'   => [
+                    'conditions' => "inv_status <> :status:",
+                    'bind' => ['status' => 'unpaid']
+                ]
+            ]
+        );
+    }
+}
+```
+
+Además, puede utilizar el segundo parámetro de `getRelated()` al acceder a la relación desde el objeto modelo para filtrar u ordenar la relación:
+
+```php
+<br />// Facturas impagas
+$company = Companies::findFirst(
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => ['id' => 1],
+    ]
+);
+
+$unpaidInvoices = $company->InvoicesUnpaid;
+$unpaidInvoices = $company->getInvoicesUnpaid();
+$unpaidInvoices = $company->getRelated('InvoicesUnpaid');
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    ['conditions' => "inv_status = 'paid'"]
+);
+
+// Ordenadas
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    [
+        'conditions' => "inv_status = 'paid'",
+        'order'      => 'inv_created_date ASC',
+    ]
+);
 ```
 
 <a name='virtual-foreign-keys'></a>

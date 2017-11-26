@@ -40,6 +40,15 @@
           <a href="#binding-parameters">Enlazando parámetros</a>
         </li>
         <li>
+          <a href="#typed-placeholders">Marcadores con tipo de dato</a>
+        </li>
+        <li>
+          <a href="#cast-bound-parameter-values">Moldear valores de parámetros enlazados</a>
+        </li>
+        <li>
+          <a href="#cast-on-hydrate">Moldeado en Hidratación</a>
+        </li>
+        <li>
           <a href="#crud">Insertar/Actualizar/Borrar registros</a>
         </li>
         <li>
@@ -384,6 +393,171 @@ $result = $connection->query(
 );
 ```
 
+<a name='typed-placeholders'></a>
+
+## Marcadores con tipo de dato
+
+Los marcadores permiten enlazar parámetros para evitar inyecciones de SQL:
+
+```php
+<?php
+
+$phql = "SELECT * FROM Store\Robots WHERE id > :id:";
+
+$robots = $this->modelsManager->executeQuery($phql, ['id' => 100]);
+```
+
+Sin embargo, algunos sistemas de bases de datos requieren acciones adicionales al usar marcadores, como especificar el tipo de parámetro:
+
+```php
+<?php
+
+use Phalcon\Db\Column;
+
+// ...
+
+$phql = "SELECT * FROM Store\Robots LIMIT :number:";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['number' => 10],
+    Column::BIND_PARAM_INT
+);
+```
+
+Se puede utilizar marcadores con tipo de datos en sus parámetros, en lugar de especificar los tipos en el método `executeQuery()`:
+
+```php
+<?php
+
+$phql = "SELECT * FROM Store\Robots LIMIT {number:int}";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['number' => 10]
+);
+
+$phql = "SELECT * FROM Store\Robots WHERE name <> {name:str}";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['name' => $name]
+);
+```
+
+También puede omitir el tipo si usted no necesita especificarlo:
+
+```php
+<?php
+
+$phql = "SELECT * FROM Store\Robots WHERE name <> {name}";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['name' => $name]
+);
+```
+
+Los marcadores con tipo de datos son además más potentes, ya que ahora podemos enlazar un arreglo estático sin tener que pasar cada elemento independientemente como un marcador:
+
+```php
+<?php
+
+$phql = "SELECT * FROM Store\Robots WHERE id IN ({ids:array})";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['ids' => [1, 2, 3, 4]]
+);
+```
+
+Las siguientes tipos están disponibles:
+
+| Tipo de enlace | Constante de tipo de enlace       | Ejemplo          |
+| -------------- | --------------------------------- | ---------------- |
+| str            | `Column::BIND_PARAM_STR`          | `{name:str}`     |
+| int            | `Column::BIND_PARAM_INT`          | `{number:int}`   |
+| double         | `Column::BIND_PARAM_DECIMAL`      | `{price:double}` |
+| bool           | `Column::BIND_PARAM_BOOL`         | `{enabled:bool}` |
+| blob           | `Column::BIND_PARAM_BLOB`         | `{image:blob}`   |
+| null           | `Column::BIND_PARAM_NULL`         | `{exists:null}`  |
+| array          | Array of `Column::BIND_PARAM_STR` | `{codes:array}`  |
+| array-str      | Array of `Column::BIND_PARAM_STR` | `{names:array}`  |
+| array-int      | Array of `Column::BIND_PARAM_INT` | `{flags:array}`  |
+
+<a name='cast-bound-parameter-values'></a>
+
+## Moldear valores de parámetros enlazados
+
+De forma predeterminada, los parámetros enlazados no se moldean en el dominio de PHP a los tipos de enlace especificados; esta opción le permite a Phalcon moldear los valores antes de vincularlos con PDO. Una situación clásica de cuando surge este problema, es al pasar una cadena en un marcador de `LIMIT`/`OFFSET`:
+
+```php
+<?php
+
+$number = '100';
+$robots = $modelsManager->executeQuery(
+    'SELECT * FROM Some\Robots LIMIT {number:int}',
+    ['number' => $number]
+);
+```
+
+Esto provoca la siguiente excepción:
+
+    Fatal error: Uncaught exception 'PDOException' with message 'SQLSTATE[42000]:
+    Syntax error or access violation: 1064 You have an error in your SQL syntax;
+    check the manual that corresponds to your MySQL server version for the right
+    syntax to use near ''100'' at line 1' in /Users/scott/demo.php:78
+    
+
+Esto sucede porque 100 es una variable de tipo cadena. Es fácilmente corregible moldeando primero el valor a entero:
+
+```php
+<?php
+
+$number = '100';
+$robots = $modelsManager->executeQuery(
+    'SELECT * FROM Some\Robots LIMIT {number:int}',
+    ['number' => (int) $number]
+);
+```
+
+Sin embargo, esta solución requiere que el desarrollador preste especial atención acerca de los parámetros enlazados, en cómo son pasados y sus tipos. Para facilitar esta tarea y evitar excepciones inesperadas puede indicar a Phalcon que haga el moldeado por usted:
+
+```php
+<?php
+
+\Phalcon\Db::setup(['forceCasting' => true]);
+```
+
+Las siguientes acciones se llevan a cabo según el tipo de enlace especificado:
+
+| Tipo de enlace               | Acción                                               |
+| ---------------------------- | ---------------------------------------------------- |
+| Column::BIND_PARAM_STR     | Convertir el valor como una cadena PHP nativa        |
+| Column::BIND_PARAM_INT     | Convertir el valor como un número entero PHP nativo  |
+| Column::BIND_PARAM_BOOL    | Convertir el valor como un valor booleano PHP nativo |
+| Column::BIND_PARAM_DECIMAL | Convertir el valor como un número doble PHP nativo   |
+
+<a name='cast-on-hydrate'></a>
+
+## Moldeado en Hidratación
+
+Los valores devueltos por el sistema de base de datos siempre aparecen como valores de tipo cadena en PDO, sin importar, por ejemplo, si el valor corresponde a una columna de tipo numérico o booleano. Esto sucede porque algunos tipos de columna no se pueden representar con sus correspondientes tipos nativos en PHP debido a sus limitaciones de tamaño. Por ejemplo, un `BIGINT` de MySQL el cual puede almacenar números enteros grandes, no puede ser representado como un entero de 32 bits en PHP. Por eso, PDO y el ORM, por defecto, toman la decisión segura de dejar todos los valores como cadenas.
+
+Puede configurar el ORM a moldear automáticamente los tipos considerados seguros a sus correspondientes tipos nativos de PHP:
+
+```php
+<?php
+
+\Phalcon\Mvc\Model::setup(['castOnHydrate' => true]);
+```
+
+De esta manera puede utilizar operadores estrictas o hacer suposiciones sobre el tipo de variables:
+
+```php
+<?php
+
+$robot = Robots::findFirst();
+if (11 === $robot->id) {
+    echo $robot->name;
+}
+```
+
 <a name='crud'></a>
 
 ## Insertar/Actualizar/Borrar registros
@@ -577,7 +751,7 @@ try {
 
 ## Eventos de base de datos
 
-`Phalcon\Db` es capaz de enviar eventos al [EventsManager](/[[language]]/[[version]]/events) si está presente. Algunos eventos, cuando se devuelva `false`, podrían detener la operación activa. Son soportados los siguientes eventos:
+`Phalcon\Db` es capaz de enviar eventos al [EventsManager](/[[language]]/[[version]]/events) si está presente. Algunos eventos cuando se devuelva `false` podrían detener la operación activa. Son soportados los siguientes eventos:
 
 | Nombre de Evento      | Activador                                                          | ¿Puede detener la operación? |
 | --------------------- | ------------------------------------------------------------------ |:----------------------------:|

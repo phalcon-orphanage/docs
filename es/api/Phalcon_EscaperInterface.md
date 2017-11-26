@@ -1,8 +1,8 @@
-# Interface **Phalcon\\EscaperInterface**
+# Interfaz **Phalcon\\EscaperInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/escaperinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/escaperinterface.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
-## Methods
+## Métodos
 
 abstract public **setEncoding** (*mixed* $encoding)
 
