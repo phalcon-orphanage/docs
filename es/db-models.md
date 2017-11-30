@@ -1202,8 +1202,8 @@ Los siguientes eventos están disponibles para definir reglas de negocios person
 
 | Operación | Nombre       | ¿Puede detener la operación? | Explicación                                       |
 | --------- | ------------ |:----------------------------:| ------------------------------------------------- |
-| Deleting  | beforeDelete |              Sí              | Se ejecuta antes de la operación de eliminación   |
 | Deleting  | afterDelete  |              No              | Se ejecuta después de la operación de eliminación |
+| Deleting  | beforeDelete |              Sí              | Se ejecuta antes de la operación de eliminación   |
 
 Con los eventos antes mencionados también se pueden definir reglas de negocio en los modelos:
 

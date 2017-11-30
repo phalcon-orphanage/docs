@@ -1,120 +1,120 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Resumen</a> <ul>
         <li>
-          <a href="#introduction">Introduction</a>
+          <a href="#introduction">Introducción</a>
         </li>
         <li>
-          <a href="#setup">Activating Volt</a>
+          <a href="#setup">Activando Volt</a>
         </li>
         <li>
-          <a href="#basic-usage">Basic Usage</a>
+          <a href="#basic-usage">Uso básico</a>
         </li>
         <li>
           <a href="#variables">Variables</a>
         </li>
         <li>
-          <a href="#filters">Filters</a>
+          <a href="#filters">Filtros</a>
         </li>
         <li>
-          <a href="#comments">Comments</a>
+          <a href="#comments">Comentarios</a>
         </li>
         <li>
-          <a href="#control-structures">List of Control Structures</a> 
+          <a href="#control-structures">Lista de estructuras de Control</a> 
           <ul>
             <li>
               <a href="#control-structures-for">For</a>
             </li>
             <li>
-              <a href="#control-structures-loops">Loop Controls</a>
+              <a href="#control-structures-loops">Controles de bucle</a>
             </li>
             <li>
-              <a href="#control-structures-loop">Loop Context</a> 
+              <a href="#control-structures-loop">Contexto de bucle</a> 
               <ul>
                 <li>
-                  <a href="#assignments">Assignments</a>
+                  <a href="#assignments">Asignaciones</a>
                 </li>
                 <li>
-                  <a href="#expressions">Expressions</a>
+                  <a href="#expressions">Expresiones</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#expressions-literals">Literals</a>
+              <a href="#expressions-literals">Literales</a>
             </li>
             <li>
               <a href="#expressions-arrays">Arrays</a>
             </li>
             <li>
-              <a href="#expressions-math">Math</a>
+              <a href="#expressions-math">Matemáticas</a>
             </li>
             <li>
-              <a href="#expressions-comparisons">Comparisons</a>
+              <a href="#expressions-comparisons">Comparaciones</a>
             </li>
             <li>
-              <a href="#expressions-logic">Logic</a>
+              <a href="#expressions-logic">Lógica</a>
             </li>
             <li>
-              <a href="#expressions-other-operators">Other Operators</a>
+              <a href="#expressions-other-operators">Otros operadores</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#tests">Tests</a>
+          <a href="#tests">Pruebas</a>
         </li>
         <li>
           <a href="#macros">Macros</a>
         </li>
         <li>
-          <a href="#tag-helpers">Using Tag Helpers</a>
+          <a href="#tag-helpers">Usando los ayudantes de etiqueta</a>
         </li>
         <li>
-          <a href="#functions">Functions</a>
+          <a href="#functions">Funciones</a>
         </li>
         <li>
-          <a href="#view-integrations">View Integration</a> 
+          <a href="#view-integrations">Integración de la vista</a> 
           <ul>
             <li>
-              <a href="#view-integration-include">Include</a>
+              <a href="#view-integration-include">Incluir</a>
             </li>
             <li>
-              <a href="#view-integration-partial-vs-include">Partial vs Include</a>
+              <a href="#view-integration-partial-vs-include">Parciales vs inclusiones</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#template-inheritance">Template Inheritance</a> <ul>
+          <a href="#template-inheritance">Herencia de Plantillas</a> <ul>
             <li>
-              <a href="#template-inheritance-multiple">Multiple Inheritance</a>
+              <a href="#template-inheritance-multiple">Herencia múltiple</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#autoescape">Autoescape mode</a>
+          <a href="#autoescape">Modo de Autoescape</a>
         </li>
         <li>
-          <a href="#extending">Extending Volt</a> 
+          <a href="#extending">Extender Volt</a> 
           <ul>
             <li>
-              <a href="#extending-functions">Functions</a>
+              <a href="#extending-functions">Funciones</a>
             </li>
             <li>
-              <a href="#extending-filters">Filters</a>
+              <a href="#extending-filters">Filtros</a>
             </li>
             <li>
-              <a href="#extending-extensions">Extensions</a>
+              <a href="#extending-extensions">Extensiones</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#caching-view-fragments">Caching view fragments</a>
+          <a href="#caching-view-fragments">Almacenamiento en caché de fragmentos de la vista</a>
         </li>
         <li>
-          <a href="#services-in-templates">Inject Services into a Template</a>
+          <a href="#services-in-templates">Inyectar servicios en una plantilla</a>
         </li>
         <li>
-          <a href="#stand-alone">Stand-alone component</a>
+          <a href="#stand-alone">Componente independiente</a>
         </li>
       </ul>
     </li>
@@ -123,19 +123,19 @@
 
 <a name='overview'></a>
 
-# Volt: Template Engine
+# Volt: Motor de plantillas
 
-Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
+Volt es un lenguaje de plantillas ultrarrápido y de diseño amigable, escrito en C para PHP. Le proporciona un conjunto de ayudantes a escribir vistas de una manera fácil. Volt están altamente integrado con otros componentes de Phalcon, del mismo modo que puede utilizarlo como componente independiente en sus aplicaciones.
 
 ![](/images/content/volt.jpg)
 
-Volt is inspired by [Jinja](http://jinja.pocoo.org/), originally created by [Armin Ronacher](https://github.com/mitsuhiko). Therefore many developers will be in familiar territory using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to while working with Phalcon.
+Volt está inspirado en [Jinja](http://jinja.pocoo.org/), originalmente creado por [Armin Ronacher](https://github.com/mitsuhiko). Por lo tanto muchos desarrolladores estarán en territorio familiar al utilizar la misma sintaxis que han estado utilizando con motores de plantillas similares. La sintaxis y características de Volt se han mejorado con más elementos y, por supuesto, con el rendimiento que los desarrolladores están acostumbrados a trabajar en Phalcon.
 
 <a name='introduction'></a>
 
-## Introduction
+## Introducción
 
-Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
+Las vistas de Volt se compilan a código PHP puro, así que, básicamente ahorran el esfuerzo de escribir el código PHP manualmente:
 
 ```twig
 {# app/views/products/show.volt #}
@@ -143,9 +143,9 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 {% block last_products %}
 
 {% for product in products %}
-    * Name: {{ product.name|e }}
-    {% if product.status === 'Active' %}
-       Price: {{ product.price + product.taxes/100 }}
+    * Nombre: {{ product.name|e }}
+    {% if product.status === 'Activo' %}
+       Precio: {{ product.price + product.taxes/100 }}
     {% endif  %}
 {% endfor  %}
 
@@ -154,9 +154,9 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
 <a name='setup'></a>
 
-## Activating Volt
+## Activando Volt
 
-As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
+Como con otros motores de plantillas, se puede registrar Volt en el componente de la vista, usando una nueva extensión o reusar el estándar `phtml`:
 
 ```php
 <?php
@@ -164,7 +164,7 @@ As with other templating engines, you may register Volt in the view component, u
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Volt;
 
-// Register Volt as a service
+// Registrar Volt como un servicio
 $di->set(
     'voltService',
     function ($view, $di) {
@@ -181,7 +181,7 @@ $di->set(
     }
 );
 
-// Register Volt as template engine
+// Registrar Volt como motor de plantillas
 $di->set(
     'view',
     function () {
@@ -200,7 +200,7 @@ $di->set(
 );
 ```
 
-Use the standard `.phtml` extension:
+Utilice la extensión estándar `phtml`:
 
 ```php
 <?php
@@ -212,7 +212,7 @@ $view->registerEngines(
 );
 ```
 
-You don't have to specify the Volt Service in the DI; you can also use the Volt engine with the default settings:
+No tienes que especificar el servicio Volt en el DI; también puede utilizar el motor de Volt con la configuración predeterminada:
 
 ```php
 <?php
@@ -224,7 +224,7 @@ $view->registerEngines(
 );
 ```
 
-` If you do not want to reuse Volt as a service, you can pass an anonymous function to register the engine instead of a service name:
+Si no quieres reutilizar Volt como un servicio, puedes pasar una función anónima para registrar el motor en lugar de un nombre de servicio:
 
 ```php
 <?php
@@ -232,7 +232,7 @@ $view->registerEngines(
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Volt;
 
-// Register Volt as template engine with an anonymous function
+// Registrar Volt como motor de plantillas con una función anónima
 $di->set(
     'view',
     function () {
@@ -245,7 +245,7 @@ $di->set(
                 '.volt' => function ($view, $di) {
                     $volt = new Volt($view, $di);
 
-                    // Set some options here
+                    // Configurar otras opciones aquí
 
                     return $volt;
                 }
@@ -257,25 +257,25 @@ $di->set(
 );
 ```
 
-The following options are available in Volt:
+Las siguientes opciones están disponibles en Volt:
 
-| Option              | Description                                                                                                                  | Default |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
-| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
-| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
-| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
-| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
-| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
-| `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false` |
+| Opción              | Descripción                                                                                                                            | Predeterminado |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| `compiledPath`      | Un ruta con permisos de escritura donde se puede almacenar las plantillas PHP compiladas                                               | `./`           |
+| `compiledExtension` | Una extensión adicional anexada al archivo PHP compilado                                                                               | `.php`         |
+| `compiledSeparator` | Volt reemplaza los separadores de directorio / y \ por este separador con el fin de crear un único archivo en el directorio compilado | `%%`           |
+| `stat`              | Si Phalcon debe verificar si existen diferencias entre el archivo de plantilla y su ruta compilada                                     | `true`         |
+| `compileAlways`     | Volt de compilar las plantillas en cada solicitud o sólo cuando hubo un cambio en ellas                                                | `false`        |
+| `prefix`            | Permite anteponer un prefijo a las plantillas en la ruta de compilación                                                                | `null`         |
+| `autoescape`        | Habilita a nivel global el autoescape de HTML                                                                                          | `false`        |
 
-The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
+La ruta de compilación se genera según las opciones anteriores, si el desarrollador quiere libertad total para definir la ruta de compilación, una función anónima puede utilizarse para generarlas, esta función recibe la ruta relativa de acceso a la plantilla al directorio de las vistas. Los ejemplos siguientes muestran cómo cambiar dinámicamente la ruta de compilación:
 
 ```php
 <?php
 
-// Just append the .php extension to the template path
-// leaving the compiled templates in the same directory
+// Simplemente añadir la extensión .php a la ruta de la plantilla
+// Dejando las plantillas compiladas en el mismo directorio
 $volt->setOptions(
     [
         'compiledPath' => function ($templatePath) {
@@ -284,7 +284,7 @@ $volt->setOptions(
     ]
 );
 
-// Recursively create the same structure in another directory
+// Crear recursivamente la misma estructura en otro directorio
 $volt->setOptions(
     [
         'compiledPath' => function ($templatePath) {
@@ -302,18 +302,18 @@ $volt->setOptions(
 
 <a name='basic-usage'></a>
 
-## Basic Usage
+## Uso básico
 
-A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% ... %}` is used to execute statements such as for-loops or assign values and `{{ ... }}`, prints the result of an expression to the template.
+Una vista consiste en código Volt, PHP y HTML. Un conjunto de delimitadores especiales está disponible para entrar en modo de Volt. `{% ... %}` se utiliza para ejecutar sentencias como bucles o asignar valores y `{{... }}`, imprime el resultado de una expresión en la plantilla.
 
-Below is a minimal template that illustrates a few basics:
+Abajo se encuentra una plantilla mínima, que muestra algunos conceptos básicos:
 
 ```twig
 {# app/views/posts/show.phtml #}
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{ title }} - An example blog</title>
+        <title>{{ title }} - Un blog de ejemplo</title>
     </head>
     <body>
 
@@ -339,7 +339,7 @@ Below is a minimal template that illustrates a few basics:
 </html>
 ```
 
-Using `Phalcon\Mvc\View` you can pass variables from the controller to the views. In the above example, four variables were passed to the view: `show_navigation`, `menu`, `title` and `post`:
+Utilizando `Phalcon\Mvc\View` puede pasar variables del controlador a la vista. En el ejemplo anterior, se pasaron cuatro variables a la vista: `show_navigation`, `menu`, `title` y `post`:
 
 ```php
 <?php
@@ -358,7 +358,7 @@ class PostsController extends Controller
         $this->view->title           = $post->title;
         $this->view->post            = $post;
 
-        // Or...
+        // O...
 
         $this->view->setVar('show_navigation', true);
         $this->view->setVar('menu',            $menu);
@@ -372,18 +372,18 @@ class PostsController extends Controller
 
 ## Variables
 
-Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
+Las variables de objetos pueden tener atributos, que se pueden acceder utilizando la sintaxis: `foo.bar`. Si usted está pasando arreglos, tienes que usar la sintaxis de corchetes: `foo['bar']`
 
 ```twig
-{{ post.title }} {# for $post->title #}
-{{ post['title'] }} {# for $post['title'] #}
+{{ post.title }} {# para $post->title #}
+{{ post['title'] }} {# para $post['title'] #}
 ```
 
 <a name='filters'></a>
 
-## Filters
+## Filtros
 
-Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
+Las variables pueden ser formateadas o modificadas mediante filtros. El operador de la pipa o pleca `|` se utiliza para aplicar filtros a las variables:
 
 ```twig
 {{ post.title|e }}
@@ -391,119 +391,119 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 {{ name|capitalize|trim }}
 ```
 
-The following is the list of available built-in filters in Volt:
+La siguiente lista contiene los filtros disponibles incorporados en Volt:
 
-| Filter             | Description                                                                                                                        |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `abs`              | Applies the [abs](http://php.net/manual/en/function.abs.php) PHP function to a value.                                              |
-| `capitalize`       | Capitalizes a string by applying the [ucwords](http://php.net/manual/en/function.ucwords.php) PHP function to the value            |
-| `convert_encoding` | Converts a string from one charset to another                                                                                      |
-| `default`          | Sets a default value in case that the evaluated expression is empty (is not set or evaluates to a falsy value)                     |
-| `e`                | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                           |
-| `escape`           | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                           |
-| `escape_attr`      | Applies `Phalcon\Escaper->escapeHtmlAttr()` to the value                                                                       |
-| `escape_css`       | Applies `Phalcon\Escaper->escapeCss()` to the value                                                                            |
-| `escape_js`        | Applies `Phalcon\Escaper->escapeJs()` to the value                                                                             |
-| `format`           | Formats a string using [sprintf](http://php.net/manual/en/function.sprintf.php).                                                   |
-| `json_encode`      | Converts a value into its [JSON](http://php.net/manual/en/function.json-encode.php) representation                                 |
-| `json_decode`      | Converts a value from its [JSON](http://php.net/manual/en/function.json-encode.php) representation to a PHP representation         |
-| `join`             | Joins the array parts using a separator [join](http://php.net/manual/en/function.join.php)                                         |
-| `keys`             | Returns the array keys using [array_keys](http://php.net/manual/en/function.array-keys.php)                                        |
-| `left_trim`        | Applies the [ltrim](http://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                  |
-| `length`           | Counts the string length or how many items are in an array or object                                                               |
-| `lower`            | Change the case of a string to lowercase                                                                                           |
-| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](http://php.net/manual/en/function.nl2br.php) |
-| `right_trim`       | Applies the [rtrim](http://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                  |
-| `sort`             | Sorts an array using the PHP function [asort](http://php.net/manual/en/function.asort.php)                                         |
-| `stripslashes`     | Applies the [stripslashes](http://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes  |
-| `striptags`        | Applies the [striptags](http://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags             |
-| `trim`             | Applies the [trim](http://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                    |
-| `upper`            | Change the case of a string to uppercase                                                                                           |
-| `url_encode`       | Applies the [urlencode](http://php.net/manual/en/function.urlencode.php) PHP function to the value                                 |
+| Filtro             | Descripción                                                                                                                                       |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `abs`              | Se aplica la función [abs](http://php.net/manual/en/function.abs.php) de PHP a un valor.                                                          |
+| `capitalize`       | Capitaliza una cadena mediante la aplicación de la función PHP [ucwords](http://php.net/manual/en/function.ucwords.php) al valor                  |
+| `convert_encoding` | Convierte una cadena de un conjunto de caracteres a otro                                                                                          |
+| `default`          | Establece un valor predeterminado en caso de que la expresión evaluada este vacía (no se establece o se evalúa como un valor falso)               |
+| `e`                | Se aplica `Phalcon\Escaper->escapeHtml()` al valor                                                                                            |
+| `escape`           | Se aplica `Phalcon\Escaper->escapeHtml()` al valor                                                                                            |
+| `escape_attr`      | Se aplica `Phalcon\Escaper->escapeHtmlAttr()` al valor                                                                                        |
+| `escape_css`       | Se aplica `Phalcon\Escaper->escapeCss()` al valor                                                                                             |
+| `escape_js`        | Se aplica `Phalcon\Escaper->escapeJs()` al valor                                                                                              |
+| `format`           | Formatea una cadena utilizando [sprintf](http://php.net/manual/en/function.sprintf.php).                                                          |
+| `json_encode`      | Convierte un valor en su representación [JSON](http://php.net/manual/en/function.json-encode.php)                                                 |
+| `json_decode`      | Convierte un valor de su representación [JSON](http://php.net/manual/en/function.json-encode.php) en una representación de PHP                    |
+| `join`             | Se unen las partes de un array usando un separador [join](http://php.net/manual/en/function.join.php)                                             |
+| `keys`             | Devuelve las llaves de la matriz usando [array_keys](http://php.net/manual/en/function.array-keys.php)                                            |
+| `left_trim`        | Se aplica la función [ltrim](http://php.net/manual/en/function.ltrim.php) de PHP al valor. Quitar espacios extras a la izquierda                  |
+| `length`           | Cuenta la longitud de la cadena de texto o cuántos elementos hay en un array u objeto                                                             |
+| `lower`            | Cambiar una cadena a minúsculas                                                                                                                   |
+| `nl2br`            | Cambia los saltos de línea `\n` por saltos de línea (`<br/>`). Utiliza la función PHP [nl2br](http://php.net/manual/en/function.nl2br.php) |
+| `right_trim`       | Se aplica la función [rtrim](http://php.net/manual/en/function.rtrim.php) PHP al valor. Quitar espacios extras a la derecha                       |
+| `sort`             | Ordena una matriz mediante la función PHP [asort](http://php.net/manual/en/function.asort.php)                                                    |
+| `stripslashes`     | Se aplica la función [stripslashes](http://php.net/manual/en/function.stripslashes.php) PHP al valor. Eliminando las comillas escapadas           |
+| `striptags`        | Se aplica la función PHP [striptags](http://php.net/manual/en/function.striptags.php) al valor. Elimina etiquetas HTML                            |
+| `trim`             | Se aplica la función PHP [trim](http://php.net/manual/en/function.trim.php) el valor. Quitar espacios extras al principio y al final              |
+| `upper`            | Cambiar una cadena a mayúsculas                                                                                                                   |
+| `url_encode`       | Se aplica la función [urlencode](http://php.net/manual/en/function.urlencode.php) PHP al valor                                                    |
 
-Examples:
+Ejemplos:
 
 ```twig
-{# e or escape filter #}
-{{ '<h1>Hello<h1>'|e }}
-{{ '<h1>Hello<h1>'|escape }}
+{# filtro e o escape #}
+{{ '<h1>Hola<h1>'|e }}
+{{ '<h1>Hola<h1>'|escape }}
 
-{# trim filter #}
+{# filtro trim #}
 {{ '   hello   '|trim }}
 
-{# striptags filter #}
+{# filtro striptags #}
 {{ '<h1>Hello<h1>'|striptags }}
 
-{# slashes filter #}
-{{ ''this is a string''|slashes }}
+{# filtro slashes #}
+{{ '"esta es una cadena"'|slashes }}
 
-{# stripslashes filter #}
-{{ '\'this is a string\''|stripslashes }}
+{# filtro stripslashes #}
+{{ "\'esta es una cadena\'"|stripslashes }}
 
-{# capitalize filter #}
-{{ 'hello'|capitalize }}
+{# filtro capitalize #}
+{{ 'hola'|capitalize }}
 
-{# lower filter #}
-{{ 'HELLO'|lower }}
+{# filtro lower #}
+{{ 'HOLA'|lower }}
 
-{# upper filter #}
-{{ 'hello'|upper }}
+{# filtro upper #}
+{{ 'hola'|upper }}
 
-{# length filter #}
+{# filtro length #}
 {{ 'robots'|length }}
 {{ [1, 2, 3]|length }}
 
-{# nl2br filter #}
-{{ 'some\ntext'|nl2br }}
+{# filtro nl2br #}
+{{ 'algún\ntexto'|nl2br }}
 
-{# sort filter #}
+{# filtro sort #}
 {% set sorted = [3, 1, 2]|sort %}
 
-{# keys filter #}
-{% set keys = ['first': 1, 'second': 2, 'third': 3]|keys %}
+{# filtro keys #}
+{% set keys = ['primero': 1, 'segundo': 2, 'tercero': 3]|keys %}
 
-{# join filter #}
+{# filtro join #}
 {% set joined = 'a'..'z'|join(',') %}
 
-{# format filter #}
-{{ 'My real name is %s'|format(name) }}
+{# filtro format #}
+{{ 'Mi nombre real es %s'|format(name) }}
 
-{# json_encode filter #}
+{# filtro json_encode #}
 {% set encoded = robots|json_encode %}
 
-{# json_decode filter #}
-{% set decoded = '{'one':1,'two':2,'three':3}'|json_decode %}
+{# filtro json_decode #}
+{% set decoded = '{'uno':1,'dos':2,'tres':3}'|json_decode %}
 
-{# url_encode filter #}
+{# filtro url_encode #}
 {{ post.permanent_link|url_encode }}
 
-{# convert_encoding filter #}
+{# filtro convert_encoding #}
 {{ 'désolé'|convert_encoding('utf8', 'latin1') }}
 ```
 
 <a name='comments'></a>
 
-## Comments
+## Comentarios
 
-Comments may also be added to a template using the `{# ... #}` delimiters. All text inside them is just ignored in the final output:
+Los comentarios también se pueden agregar a una plantilla con los delimitadores `{# ... #}`. Todo el texto en su interior sólo se omite en el resultado final:
 
 ```twig
-{# note: this is a comment
+{# nota: este es un comentario
     {% set price = 100; %}
 #}
 ```
 
 <a name='control-structures'></a>
 
-## List of Control Structures
+## Lista de estructuras de Control
 
-Volt provides a set of basic but powerful control structures for use in templates:
+Volt proporciona un conjunto de estructuras de control básicas pero de gran alcance para el uso de plantillas:
 
 <a name='control-structures-for'></a>
 
 ### For
 
-Loop over each item in a sequence. The following example shows how to traverse a set of 'robots' and print his/her name:
+Un bucle sobre cada elemento en una secuencia. En el ejemplo siguiente se muestra cómo recorrer un conjunto de 'robots' e imprimir su nombre:
 
 ```twig
 <h1>Robots</h1>
@@ -516,71 +516,71 @@ Loop over each item in a sequence. The following example shows how to traverse a
 </ul>
 ```
 
-for-loops can also be nested:
+Los bucles `for` también se pueden anidar:
 
 ```twig
 <h1>Robots</h1>
 {% for robot in robots %}
     {% for part in robot.parts %}
-        Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br />
+        Robot: {{ robot.name|e }} Parte: {{ part.name|e }} <br />
     {% endfor %}
 {% endfor %}
 ```
 
-You can get the element `keys` as in the PHP counterpart using the following syntax:
+Usted puede conseguir las `claves` de los elementos, como la contraparte PHP, con la siguiente sintaxis:
 
 ```twig
-{% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
+{% set numbers = ['uno': 1, 'dos': 2, 'tres': 3] %}
 
 {% for name, value in numbers %}
-    Name: {{ name }} Value: {{ value }}
+    Nombre: {{ name }} Valor: {{ value }}
 {% endfor %}
 ```
 
-An `if` evaluation can be optionally set:
+Opcionalmente, se puede establecer una evaluación `if`:
 
 ```twig
-{% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
+{% set numbers = ['uno': 1, 'dos': 2, 'tres': 3] %}
 
 {% for value in numbers if value < 2 %}
-    Value: {{ value }}
+    Valor: {{ value }}
 {% endfor %}
 
-{% for name, value in numbers if name !== 'two' %}
-    Name: {{ name }} Value: {{ value }}
+{% for name, value in numbers if name !== 'dos' %}
+    Nombre: {{ name }} Valor: {{ value }}
 {% endfor %}
 ```
 
-If an `else` is defined inside the `for`, it will be executed if the expression in the iterator result in zero iterations:
+Si un `else` se define dentro del `for`, se ejecutará si la expresión en el iterador da como resultado cero iteraciones:
 
 ```twig
 <h1>Robots</h1>
 {% for robot in robots %}
-    Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br />
+    Robot: {{ robot.name|e }} Parte: {{ part.name|e }} <br />
 {% else %}
-    There are no robots to show
+    No hay robots para mostrar
 {% endfor %}
 ```
 
-Alternative syntax:
+Sintaxis alternativa:
 
 ```twig
 <h1>Robots</h1>
 {% for robot in robots %}
-    Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br />
+    Robot: {{ robot.name|e }} Parte: {{ part.name|e }} <br />
 {% elsefor %}
-    There are no robots to show
+    No hay robots para mostrar
 {% endfor %}
 ```
 
 <a name='control-structures-loops'></a>
 
-### Loop Controls
+### Controles de bucle
 
-The `break` and `continue` statements can be used to exit from a loop or force an iteration in the current block:
+Las declaraciones de `break` y `continue` pueden utilizarse para salir de un bucle o forzar una iteración en el bloque actual:
 
 ```twig
-{# skip the even robots #}
+{# omitir robots pares #}
 {% for index, robot in robots %}
     {% if index is even %}
         {% continue %}
@@ -590,7 +590,7 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 ```
 
 ```twig
-{# exit the foreach on the first even robot #}
+{# salir del bucle en el primero robot par #}
 {% for index, robot in robots %}
     {% if index is even %}
         {% break %}
@@ -603,10 +603,10 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 
 ### If
 
-As PHP, an `if` statement checks if an expression is evaluated as true or false:
+Como en PHP, una declaración `if` comprueba si una expresión se evalúa como verdadera o falsa:
 
 ```twig
-<h1>Cyborg Robots</h1>
+<h1>Robots Cyborg</h1>
 <ul>
     {% for robot in robots %}
         {% if robot.type === 'cyborg' %}
@@ -616,7 +616,7 @@ As PHP, an `if` statement checks if an expression is evaluated as true or false:
 </ul>
 ```
 
-The else clause is also supported:
+También se admite la cláusula `else`:
 
 ```twig
 <h1>Robots</h1>
@@ -625,41 +625,41 @@ The else clause is also supported:
         {% if robot.type === 'cyborg' %}
             <li>{{ robot.name|e }}</li>
         {% else %}
-            <li>{{ robot.name|e }} (not a cyborg)</li>
+            <li>{{ robot.name|e }} (no es un cyborg)</li>
         {% endif %}
     {% endfor %}
 </ul>
 ```
 
-The `elseif` control flow structure can be used together with if to emulate a `switch` block:
+También puede utilizar la estructura de flujo de control `elseif` para emular un bloque `switch`:
 
 ```twig
 {% if robot.type === 'cyborg' %}
-    Robot is a cyborg
+    El robot es un cyborg
 {% elseif robot.type === 'virtual' %}
-    Robot is virtual
+    El Robot es virtual
 {% elseif robot.type === 'mechanical' %}
-    Robot is mechanical
+    El Robot es mecánico
 {% endif %}
 ```
 
 <a name='control-structures-loop'></a>
 
-### Loop Context
+### Contexto de bucle
 
-A special variable is available inside `for` loops providing you information about
+Una variable especial está disponible dentro de los bucles `for`, proporcionando información sobre:
 
-| Variable         | Description                                                   |
-| ---------------- | ------------------------------------------------------------- |
-| `loop.index`     | The current iteration of the loop. (1 indexed)                |
-| `loop.index0`    | The current iteration of the loop. (0 indexed)                |
-| `loop.revindex`  | The number of iterations from the end of the loop (1 indexed) |
-| `loop.revindex0` | The number of iterations from the end of the loop (0 indexed) |
-| `loop.first`     | True if in the first iteration.                               |
-| `loop.last`      | True if in the last iteration.                                |
-| `loop.length`    | The number of items to iterate                                |
+| Variable         | Descripción                                                            |
+| ---------------- | ---------------------------------------------------------------------- |
+| `loop.index`     | Iteración actual del bucle. (comenzando desde 1)                       |
+| `loop.index0`    | Iteración actual del bucle. (comenzando desde 0)                       |
+| `loop.revindex`  | El número de iteraciones desde el final del bucle (comenzando desde 1) |
+| `loop.revindex0` | El número de iteraciones desde el final del bucle (comenzando desde 0) |
+| `loop.first`     | Si es la primera iteración, el valor será `true`.                      |
+| `loop.last`      | Si es la última iteración, el valor será `true`.                       |
+| `loop.length`    | El número de elementos iterar                                          |
 
-Example:
+Ejemplo:
 
 ```twig
 {% for robot in robots %}
@@ -668,7 +668,7 @@ Example:
             <tr>
                 <th>#</th>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Nombre</th>
             </tr>
     {% endif %}
             <tr>
@@ -684,23 +684,23 @@ Example:
 
 <a name='assignments'></a>
 
-## Assignments
+## Asignaciones
 
-Variables may be changed in a template using the instruction 'set':
+Las variables se pueden cambiar en una plantilla con la instrucción 'set':
 
 ```twig
-{% set fruits = ['Apple', 'Banana', 'Orange'] %}
+{% set fruits = ['Manzana', 'Banana', 'Naranja'] %}
 
 {% set name = robot.name %}
 ```
 
-Multiple assignments are allowed in the same instruction:
+Se permiten las asignaciones múltiples en la misma instrucción:
 
 ```twig
-{% set fruits = ['Apple', 'Banana', 'Orange'], name = robot.name, active = true %}
+{% set fruits = ['Manzana', 'Banana', 'Naranja'], name = robot.name, active = true %}
 ```
 
-Additionally, you can use compound assignment operators:
+Además, puede utilizar operadores de asignación compuestos:
 
 ```twig
 {% set price += 100.00 %}
@@ -708,27 +708,27 @@ Additionally, you can use compound assignment operators:
 {% set age *= 5 %}
 ```
 
-The following operators are available:
+Las siguientes operadores están disponibles:
 
-| Operator | Description               |
-| -------- | ------------------------- |
-| `=`      | Standard Assignment       |
-| `+=`     | Addition assignment       |
-| `-=`     | Subtraction assignment    |
-| `\*=`  | Multiplication assignment |
-| `/=`     | Division assignment       |
+| Operator | Descripción                  |
+| -------- | ---------------------------- |
+| `=`      | Asignación estándar          |
+| `+=`     | Asignación de adición        |
+| `-=`     | Asignación de resta          |
+| `\*=`  | Asignación de multiplicación |
+| `/=`     | Asignación de división       |
 
 <a name='expressions'></a>
 
-## Expressions
+## Expresiones
 
-Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `{{` and `}}` delimiters:
+Volt proporciona un conjunto básico de soporte de expresión, incluidos literales y operadores comunes. Una expresión puede evaluarse e imprimirse usando los delimitadores `{{` y `}}`:
 
 ```twig
 {{ (1 + 1) * 2 }}
 ```
 
-If an expression needs to be evaluated without be printed the `do` statement can be used:
+Si una expresión necesita ser evaluada pero no impresa, se puede utilizar la instrucción `do`:
 
 ```twig
 {% do (1 + 1) * 2 %}
@@ -736,126 +736,126 @@ If an expression needs to be evaluated without be printed the `do` statement can
 
 <a name='expressions-literals'></a>
 
-### Literals
+### Literales
 
-The following literals are supported:
+Son soportados los siguientes literales:
 
-| Filter               | Description                                                        |
-| -------------------- | ------------------------------------------------------------------ |
-| `'this is a string'` | Text between double quotes or single quotes are handled as strings |
-| `100.25`             | Numbers with a decimal part are handled as doubles/floats          |
-| `100`                | Numbers without a decimal part are handled as integers             |
-| `false`              | Constant 'false' is the boolean false value                        |
-| `true`               | Constant 'true' is the boolean true value                          |
-| `null`               | Constant 'null' is the Null value                                  |
+| Filtro                 | Descripción                                                                           |
+| ---------------------- | ------------------------------------------------------------------------------------- |
+| `'esto es una cadena'` | Los textos entre doble comillas simples o dobles se tratan como cadenas de caracteres |
+| `100.25`               | Los números con parte decimal se tratan como dobles/flotadores                        |
+| `100`                  | Los número sin parte decimal se tratan como enteros                                   |
+| `false`                | La constante 'false' es el valor booleano falso                                       |
+| `true`                 | La constante 'true' es el valor booleano verdadero                                    |
+| `null`                 | La constante 'null' es el valor Null                                                  |
 
 <a name='expressions-arrays'></a>
 
 ### Arrays
 
-Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list of values in square brackets:
+Si usas PHP 5.3 o >= 5.4 puedes crear matrices adjuntando una lista de valores entre corchetes:
 
 ```twig
-{# Simple array #}
-{{ ['Apple', 'Banana', 'Orange'] }}
+{# Array simple #}
+{{ ['Manzana', 'Banana', 'Naranja'] }}
 
-{# Other simple array #}
-{{ ['Apple', 1, 2.5, false, null] }}
+{# Otro array simple #}
+{{ ['Manzana', 1, 2.5, false, null] }}
 
-{# Multi-Dimensional array #}
+{# Array multi dimensional #}
 {{ [[1, 2], [3, 4], [5, 6]] }}
 
-{# Hash-style array #}
-{{ ['first': 1, 'second': 4/2, 'third': '3'] }}
+{# Array asociativo #}
+{{ ['primero': 1, 'segundo': 4/2, 'tercero': '3'] }}
 ```
 
-Curly braces also can be used to define arrays or hashes:
+Las llaves también pueden usarse para definir matrices o arrays asociativos:
 
 ```twig
-{% set myArray = {'Apple', 'Banana', 'Orange'} %}
-{% set myHash  = {'first': 1, 'second': 4/2, 'third': '3'} %}
+{% set myArray = {'Manzana', 'Banana', 'Naranja'} %}
+{% set myHash  = {'primero': 1, 'segundo': 4/2, 'tercero': '3'} %}
 ```
 
 <a name='expressions-math'></a>
 
-### Math
+### Matemáticas
 
-You may make calculations in templates using the following operators:
+Se pueden hacer cálculos en las plantillas mediante los siguientes operadores:
 
-| Operator | Description                                                             |
-|:--------:| ----------------------------------------------------------------------- |
-|   `+`    | Perform an adding operation. `{{ 2 + 3 }}` returns 5                    |
-|   `-`    | Perform a substraction operation `{{ 2 - 3 }}` returns -1               |
-|   `*`    | Perform a multiplication operation `{{ 2 * 3 }}` returns 6              |
-|   `/`    | Perform a division operation `{{ 10 / 2 }}` returns 5                   |
-|   `%`    | Calculate the remainder of an integer division `{{ 10 % 3 }}` returns 1 |
+| Operator | Descripción                                                           |
+|:--------:| --------------------------------------------------------------------- |
+|   `+`    | Realiza una operación de adición. `{{2 + 3}}` devuelve 5              |
+|   `-`    | Realiza una operación de resta. `{{ 2 - 3 }}` devuelve -1             |
+|   `*`    | Realiza una operación de multiplicación. `{{2 * 3}}` devuelve 6       |
+|   `/`    | Realizar una operación de división. `{{10 / 2}}` devuelve 5           |
+|   `%`    | Calcular el resto de una división de enteros. `{{10 % 3}}` devuelve 1 |
 
 <a name='expressions-comparisons'></a>
 
-### Comparisons
+### Comparaciones
 
-The following comparison operators are available:
+Los siguientes operadores de comparación están disponibles:
 
-|  Operator  | Description                                                       |
-|:----------:| ----------------------------------------------------------------- |
-|    `==`    | Check whether both operands are equal                             |
-|    `!=`    | Check whether both operands aren't equal                          |
-| `<>` | Check whether both operands aren't equal                          |
-|   `>`   | Check whether left operand is greater than right operand          |
-|   `<`   | Check whether left operand is less than right operand             |
-|  `<=`   | Check whether left operand is less or equal than right operand    |
-|  `>=`   | Check whether left operand is greater or equal than right operand |
-|   `===`    | Check whether both operands are identical                         |
-|   `!==`    | Check whether both operands aren't identical                      |
+|  Operator  | Descripción                                                                       |
+|:----------:| --------------------------------------------------------------------------------- |
+|    `==`    | Comprobar si ambos operandos son iguales                                          |
+|    `!=`    | Comprobar si ambos operandos no son iguales                                       |
+| `<>` | Comprobar si ambos operandos no son iguales                                       |
+|   `>`   | Compruebe si el operando izquierdo es mayor que el operando derecho               |
+|   `<`   | Compruebe si el operando izquierdo es menor que el operando derecho               |
+|  `<=`   | Compruebe si el operando de la izquierda es menor o igual que el operando derecho |
+|  `>=`   | Compruebe si el operando izquierdo es mayor o igual que el operando derecho       |
+|   `===`    | Compruebe si ambos operandos son idénticos                                        |
+|   `!==`    | Comprobar si ambos operandos no son identicos                                     |
 
 <a name='expressions-logic'></a>
 
-### Logic
+### Lógica
 
-Logic operators are useful in the `if` expression evaluation to combine multiple tests:
+Los operadores lógicos son útiles en la evaluación de expresiones `if` para combinar múltiples pruebas:
 
-|  Operator  | Description                                                       |
-|:----------:| ----------------------------------------------------------------- |
-|    `or`    | Return true if the left or right operand is evaluated as true     |
-|   `and`    | Return true if both left and right operands are evaluated as true |
-|   `not`    | Negates an expression                                             |
-| `( expr )` | Parenthesis groups expressions                                    |
+|  Operator  | Descripción                                                                   |
+|:----------:| ----------------------------------------------------------------------------- |
+|    `or`    | Devuelve true si el operando de la derecha o la izquierda se evalúa como true |
+|   `and`    | Devuelve true si los operandos izquierdo y derecho se evalúan como verdadero  |
+|   `not`    | Niega una expresión                                                           |
+| `( expr )` | Las expresiones se agrupan entre paréntesis                                   |
 
 <a name='expressions-other-operators'></a>
 
-### Other Operators
+### Otros operadores
 
-Additional operators seen the following operators are available:
+También están disponibles otros operadores:
 
-| Operator          | Description                                                                     |
-| ----------------- | ------------------------------------------------------------------------------- |
-| `~`               | Concatenates both operands `{{ 'hello ' ~ 'world' }}`                           |
-| `|`               | Applies a filter in the right operand to the left `{{ 'hello'|uppercase }}`     |
-| `..`              | Creates a range `{{ 'a'..'z' }}` `{{ 1..10 }}`                                  |
-| `is`              | Same as == (equals), also performs tests                                        |
-| `in`              | To check if an expression is contained into other expressions `if 'a' in 'abc'` |
-| `is not`          | Same as != (not equals)                                                         |
-| `'a' ? 'b' : 'c'` | Ternary operator. The same as the PHP ternary operator                          |
-| `++`              | Increments a value                                                              |
-| `--`              | Decrements a value                                                              |
+| Operator          | Descripción                                                                              |
+| ----------------- | ---------------------------------------------------------------------------------------- |
+| `~`               | Concatena dos operandos `{{'Hola' ~ 'mundo'}}`                                           |
+| `|`               | Se aplica un filtro en el operando de la derecha a la izquierda `{{ 'hola'|uppercase }}` |
+| `..`              | Crea un rango `{{ 'a'..'z' }}` `{{ 1..10 }}`                                             |
+| `is`              | Alias de == (igual), también realiza pruebas                                             |
+| `in`              | Para comprobar si una expresión está contenida en otras expresiones `if 'a' in 'abc'`    |
+| `is not`          | Alias de != (no iguales)                                                                 |
+| `'a' ? 'b' : 'c'` | Operador ternario. Igual al operador ternario de PHP                                     |
+| `++`              | Incrementa un valor                                                                      |
+| `--`              | Decrementa un valor                                                                      |
 
-The following example shows how to use operators:
+En el ejemplo siguiente se muestra cómo utilizar operadores:
 
 ```twig
 {% set robots = ['Voltron', 'Astro Boy', 'Terminator', 'C3PO'] %}
 
 {% for index in 0..robots|length %}
     {% if robots[index] is defined %}
-        {{ 'Name: ' ~ robots[index] }}
+        {{ 'Nombre: ' ~ robots[index] }}
     {% endif %}
 {% endfor %}
 ```
 
 <a name='tests'></a>
 
-## Tests
+## Pruebas
 
-Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
+Pueden utilizarse las pruebas para comprobar si una variable tiene un valor esperado válido. El operador `is` se utiliza para realizar las pruebas:
 
 ```twig
 {% set robots = ['1': 'Voltron', '2': 'Astro Boy', '3': 'Terminator', '4': 'C3PO'] %}
@@ -867,30 +867,30 @@ Tests can be used to test if a variable has a valid expected value. The operator
 {% endfor %}
 ```
 
-The following built-in tests are available in Volt:
+Las siguientes pruebas integradas están disponibles en Volt:
 
-| Test          | Description                                                          |
-| ------------- | -------------------------------------------------------------------- |
-| `defined`     | Checks if a variable is defined (`isset()`)                          |
-| `divisibleby` | Checks if a value is divisible by other value                        |
-| `empty`       | Checks if a variable is empty                                        |
-| `even`        | Checks if a numeric value is even                                    |
-| `iterable`    | Checks if a value is iterable. Can be traversed by a 'for' statement |
-| `numeric`     | Checks if value is numeric                                           |
-| `odd`         | Checks if a numeric value is odd                                     |
-| `sameas`      | Checks if a value is identical to other value                        |
-| `scalar`      | Checks if value is scalar (not an array or object)                   |
-| `type`        | Checks if a value is of the specified type                           |
+| Prueba        | Descripción                                                                                    |
+| ------------- | ---------------------------------------------------------------------------------------------- |
+| `defined`     | Comprueba si una variable esta definida (`isset()`)                                            |
+| `divisibleby` | Comprueba si un valor es divisible por otro valor                                              |
+| `empty`       | Comprueba si una variable está vacía                                                           |
+| `even`        | Comprueba si un valor numérico es par                                                          |
+| `iterable`    | Comprueba si un valor es iterable. Es decir, que puede ser recorrido por una instrucción 'for' |
+| `numeric`     | Comprueba si el valor es numérico                                                              |
+| `odd`         | Comprueba si un valor numérico es impar                                                        |
+| `sameas`      | Comprueba si un valor es idéntico a otro valor                                                 |
+| `scalar`      | Comprueba si el valor es escalar (no una matriz, objeto o recurso)                             |
+| `type`        | Comprueba si un valor es del tipo especificado                                                 |
 
-More examples:
+Más ejemplos:
 
 ```twig
 {% if robot is defined %}
-    The robot variable is defined
+    La variable robot está definida
 {% endif %}
 
 {% if robot is empty %}
-    The robot is null or isn't defined
+    El robot es nulo o no está definido
 {% endif %}
 
 {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
@@ -918,14 +918,14 @@ More examples:
     {% endfor %}
 {% endif %}
 
-{% set world = 'hello' %}
-{% if world is sameas('hello') %}
-    {{ 'it's hello' }}
+{% set world = 'hola' %}
+{% if world is sameas('hola') %}
+    {{ 'Es hola!' }}
 {% endif %}
 
 {% set external = false %}
 {% if external is type('boolean') %}
-    {{ 'external is false or true' }}
+    {{ 'External es verdadero o falso' }}
 {% endif %}
 ```
 
@@ -933,10 +933,10 @@ More examples:
 
 ## Macros
 
-Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
+Las macros pueden utilizarse para reutilizar la lógica de una plantilla, actúan como funciones PHP, pueden recibir parámetros y devolver valores:
 
 ```twig
-{# Macro 'display a list of links to related topics' #}
+{# Macro 'Mostrar una lista de enlaces a temas relacionados' #}
 {%- macro related_bar(related_links) %}
     <ul>
         {%- for link in related_links %}
@@ -949,16 +949,16 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
     </ul>
 {%- endmacro %}
 
-{# Print related links #}
+{# Imprimir enlaces relacionados #}
 {{ related_bar(links) }}
 
-<div>This is the content</div>
+<div>Este es el contenido</div>
 
-{# Print related links again #}
+{# Volver a imprimir los enlaces relacionados #}
 {{ related_bar(links) }}
 ```
 
-When calling macros, parameters can be passed by name:
+Al llamar a las macros, se pueden pasar parámetros por nombre:
 
 ```twig
 {%- macro error_messages(message, field, type) %}
@@ -969,76 +969,76 @@ When calling macros, parameters can be passed by name:
     </div>
 {%- endmacro %}
 
-{# Call the macro #}
-{{ error_messages('type': 'Invalid', 'message': 'The name is invalid', 'field': 'name') }}
+{# Llamar al macro #}
+{{ error_messages('type': 'Invalido', 'message': 'El nombre es invalido', 'field': 'name') }}
 ```
 
-Macros can return values:
+Las macros pueden devolver valores:
 
 ```twig
 {%- macro my_input(name, class) %}
     {% return text_field(name, 'class': class) %}
 {%- endmacro %}
 
-{# Call the macro #}
+{# Llamar al macro #}
 {{ '<p>' ~ my_input('name', 'input-text') ~ '</p>' }}
 ```
 
-And receive optional parameters:
+Y recibir parámetros opcionales:
 
 ```twig
 {%- macro my_input(name, class='input-text') %}
     {% return text_field(name, 'class': class) %}
 {%- endmacro %}
 
-{# Call the macro #}
+{# Llamar al macro #}
 {{ '<p>' ~ my_input('name') ~ '</p>' }}
 {{ '<p>' ~ my_input('name', 'input-text') ~ '</p>' }}
 ```
 
 <a name='tag-helpers'></a>
 
-## Using Tag Helpers
+## Usando los ayudantes de etiqueta
 
-Volt is highly integrated with `Phalcon\Tag`, so it's easy to use the helpers provided by that component in a Volt template:
+Volt está altamente integrado con `Phalcon\Tag`, por lo que es fácil utilizar los ayudantes proporcionados por el componente en una plantilla de Volt:
 
 ```twig
 {{ javascript_include('js/jquery.js') }}
 
 {{ form('products/save', 'method': 'post') }}
 
-    <label for='name'>Name</label>
+    <label for='name'>Nombre</label>
     {{ text_field('name', 'size': 32) }}
 
-    <label for='type'>Type</label>
+    <label for='type'>Tipo</label>
     {{ select('type', productTypes, 'using': ['id', 'name']) }}
 
-    {{ submit_button('Send') }}
+    {{ submit_button('Enviar') }}
 
 {{ end_form() }}
 ```
 
-The following PHP is generated:
+Se genera el siguiente código PHP:
 
 ```php
 <?php echo Phalcon\Tag::javascriptInclude('js/jquery.js') ?>
 
 <?php echo Phalcon\Tag::form(array('products/save', 'method' => 'post')); ?>
 
-    <label for='name'>Name</label>
+    <label for='name'>Nombre</label>
     <?php echo Phalcon\Tag::textField(array('name', 'size' => 32)); ?>
 
-    <label for='type'>Type</label>
+    <label for='type'>Tipo</label>
     <?php echo Phalcon\Tag::select(array('type', $productTypes, 'using' => array('id', 'name'))); ?>
 
-    <?php echo Phalcon\Tag::submitButton('Send'); ?>
+    <?php echo Phalcon\Tag::submitButton('Enviar'); ?>
 
 {{ end_form() }}
 ```
 
-To call a `Phalcon\Tag` helper, you only need to call an uncamelized version of the method:
+Para llamar a un ayudante de `Phalcon\Tag`, sólo necesita llamar una versión no camelizada del método:
 
-| Method                            | Volt function        |
+| Método                            | Función en Volt      |
 | --------------------------------- | -------------------- |
 | `Phalcon\Tag::checkField`        | `check_field`        |
 | `Phalcon\Tag::dateField`         | `date_field`         |
@@ -1064,48 +1064,48 @@ To call a `Phalcon\Tag` helper, you only need to call an uncamelized version of 
 
 <a name='functions'></a>
 
-## Functions
+## Funciones
 
-The following built-in functions are available in Volt:
+Las siguientes funciones integradas están disponibles en Volt:
 
-| Name          | Description                                                 |
-| ------------- | ----------------------------------------------------------- |
-| `content`     | Includes the content produced in a previous rendering stage |
-| `get_content` | Same as `content`                                           |
-| `partial`     | Dynamically loads a partial view in the current template    |
-| `super`       | Render the contents of the parent block                     |
-| `time`        | Calls the PHP function with the same name                   |
-| `date`        | Calls the PHP function with the same name                   |
-| `dump`        | Calls the PHP function `var_dump()`                         |
-| `version`     | Returns the current version of the framework                |
-| `constant`    | Reads a PHP constant                                        |
-| `url`         | Generate a URL using the 'url' service                      |
+| Nombre        | Descripción                                                         |
+| ------------- | ------------------------------------------------------------------- |
+| `content`     | Incluye el contenido producido en una etapa anterior de renderizado |
+| `get_content` | Alias de `content`                                                  |
+| `partial`     | Carga dinámicamente una vista parcial en la plantilla actual        |
+| `super`       | Presenta el contenido del bloque padre                              |
+| `time`        | Llama a la función `time()` de PHP                                  |
+| `date`        | Llama a la función `date()` de PHP                                  |
+| `dump`        | Llama la función `var_dump()` de PHP                                |
+| `version`     | Devuelve la versión actual del framework                            |
+| `constant`    | Lee una constante de PHP                                            |
+| `url`         | Genera una dirección URL utilizando el servicio 'url'               |
 
 <a name='view-integrations'></a>
 
-## View Integration
+## Integración de la vista
 
-Also, Volt is integrated with `Phalcon\Mvc\View`, you can play with the view hierarchy and include partials as well:
+Además, Volt está integrado con `Phalcon\Mvc\View`, puedes jugar con la jerarquía de la vista y también incluir parciales:
 
 ```twig
 {{ content() }}
 
-<!-- Simple include of a partial -->
+<!-- Inclusión simple de una vista parcial -->
 <div id='footer'>{{ partial('partials/footer') }}</div>
 
-<!-- Passing extra variables -->
+<!-- Pasando variables adicionales -->
 <div id='footer'>{{ partial('partials/footer', ['links': links]) }}</div>
 ```
 
-A partial is included in runtime, Volt also provides `include`, this compiles the content of a view and returns its contents as part of the view which was included:
+Una vista parcial es incluida en tiempo de ejecución, Volt proporciona también `include`, este compila el contenido de una vista y devuelve su contenido como parte de la vista que se incluye:
 
 ```twig
-{# Simple include of a partial #}
+{# Inclusión simple de una vista parcial #}
 <div id='footer'>
     {% include 'partials/footer' %}
 </div>
 
-{# Passing extra variables #}
+{# Pasando variables adicionales #}
 <div id='footer'>
     {% include 'partials/footer' with ['links': links] %}
 </div>
@@ -1113,12 +1113,12 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 <a name='view-integration-include'></a>
 
-### Include
+### Incluir
 
-`include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
+`include` tiene un comportamiento especial que nos ayudará a mejorar un poco el rendimiento cuando se usa Volt, si especifica la extensión al incluir el archivo y existe cuando se compila la plantilla, Volt puede incrustar el contenido de la plantilla incluida en la plantilla principal donde está definida la inclusión. Las plantillas no serán incrustadas si el `include` tiene variables pasadas con `with`:
 
 ```twig
-{# The contents of 'partials/footer.volt' is compiled and inlined #}
+{# El contenido de 'partials/footer.volt' es compilado e incrustado #}
 <div id='footer'>
     {% include 'partials/footer.volt' %}
 </div>
@@ -1126,24 +1126,24 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 <a name='view-integration-partial-vs-include'></a>
 
-### Partial vs Include
+### Parciales vs inclusiones
 
-Keep the following points in mind when choosing to use the `partial` function or `include`:
+Tenga los siguientes puntos en cuenta al elegir utilizar la función `partial` o `include`:
 
-| Type       | Description                                                                                                |
-| ---------- | ---------------------------------------------------------------------------------------------------------- |
-| `partial`  | allows you to include templates made in Volt and in other template engines as well                         |
-|            | allows you to pass an expression like a variable allowing to include the content of other view dynamically |
-|            | is better if the content that you have to include changes frequently                                       |
-| `includes` | copies the compiled content into the view which improves the performance                                   |
-|            | only allows to include templates made with Volt                                                            |
-|            | requires an existing template at compile time                                                              |
+| Tipo      | Descripción                                                                                                   |
+| --------- | ------------------------------------------------------------------------------------------------------------- |
+| `partial` | Permite incluir plantillas en Volt, igual que en otros motores de plantillas                                  |
+|           | Permite pasar de una expresión como una variable permitiendo incluir el contenido de otra vista dinámicamente |
+|           | Es mejor si el contenido que usted tiene que incluir cambia con frecuencia                                    |
+| `include` | Copia el contenido compilado en la vista, mejorando el rendimiento                                            |
+|           | Sólo permite incluir plantillas creadas con Volt                                                              |
+|           | Requiere de una plantilla existente en tiempo de compilación                                                  |
 
 <a name='template-inheritance'></a>
 
-## Template Inheritance
+## Herencia de Plantillas
 
-With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
+Con herencia de plantillas se pueden crear plantillas base que pueden ampliarse con otras plantillas permitiendo reutilizar código. En una plantilla base se definen bloques *blocks* que puede ser reemplazados por una plantilla hija. Supongamos que tenemos la siguiente plantilla de base:
 
 ```twig
 {# templates/base.volt #}
@@ -1154,20 +1154,20 @@ With template inheritance you can create base templates that can be extended by 
             <link rel='stylesheet' href='style.css' />
         {% endblock %}
 
-        <title>{% block title %}{% endblock %} - My Webpage</title>
+        <title>{% block title %}{% endblock %} - Mi Página Web</title>
     </head>
 
     <body>
         <div id='content'>{% block content %}{% endblock %}</div>
 
         <div id='footer'>
-            {% block footer %}&copy; Copyright 2015, All rights reserved.{% endblock %}
+            {% block footer %}&copy; Copyright 2015, Todos los derechos reservados.{% endblock %}
         </div>
     </body>
 </html>
 ```
 
-From other template we could extend the base template replacing the blocks:
+Desde otra plantilla podríamos ampliar la plantilla base, reemplazando los bloques:
 
 ```twig
 {% extends 'templates/base.volt' %}
@@ -1178,11 +1178,11 @@ From other template we could extend the base template replacing the blocks:
 
 {% block content %}
     <h1>Index</h1>
-    <p class='important'>Welcome on my awesome homepage.</p>
+    <p class='important'>´Bienvenido a mi increíble página principal.</p>
 {% endblock %}
 ```
 
-Not all blocks must be replaced at a child template, only those that are needed. The final output produced will be the following:
+No todos los bloques deben sustituirse en una plantilla hija, sólo aquellos que son necesarios. El resultado final será el siguiente:
 
 ```html
 <!DOCTYPE html>
@@ -1190,17 +1190,17 @@ Not all blocks must be replaced at a child template, only those that are needed.
     <head>
         <style type='text/css'>.important { color: #336699; }</style>
 
-        <title>Index - My Webpage</title>
+        <title>Index - Mi Página Web</title>
     </head>
 
     <body>
         <div id='content'>
             <h1>Index</h1>
-            <p class='important'>Welcome on my awesome homepage.</p>
+            <p class='important'>Bienvenido a mi increíble página principal.</p>
         </div>
 
         <div id='footer'>
-            &copy; Copyright 2015, All rights reserved.
+            &copy; Copyright 2015, Todos los derechos reservados.
         </div>
     </body>
 </html>
@@ -1208,16 +1208,16 @@ Not all blocks must be replaced at a child template, only those that are needed.
 
 <a name='template-inheritance-multiple'></a>
 
-### Multiple Inheritance
+### Herencia múltiple
 
-Extended templates can extend other templates. The following example illustrates this:
+Las plantillas extendidas pueden extender a otras plantillas. El siguiente ejemplo ilustra esto:
 
 ```twig
 {# main.volt #}
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Title</title>
+        <title>Título</title>
     </head>
 
     <body>
@@ -1226,7 +1226,7 @@ Extended templates can extend other templates. The following example illustrates
 </html>
 ```
 
-Template `layout.volt` extends `main.volt`
+La plantilla `layout.volt` extiende de `main.volt`
 
 ```twig
 {# layout.volt #}
@@ -1234,12 +1234,12 @@ Template `layout.volt` extends `main.volt`
 
 {% block content %}
 
-    <h1>Table of contents</h1>
+    <h1>Tabla de contenidos</h1>
 
 {% endblock %}
 ```
 
-Finally a view that extends `layout.volt`:
+Finalmente una vista que se extiende de `layout.volt`:
 
 ```twig
 {# index.volt #}
@@ -1250,73 +1250,73 @@ Finally a view that extends `layout.volt`:
     {{ super() }}
 
     <ul>
-        <li>Some option</li>
-        <li>Some other option</li>
+        <li>Una opción</li>
+        <li>Otra opción</li>
     </ul>
 
 {% endblock %}
 ```
 
-Rendering `index.volt` produces:
+El renderizado de `index.volt` producirá:
 
 ```html
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Title</title>
+        <title>Título</title>
     </head>
 
     <body>
 
-        <h1>Table of contents</h1>
+        <h1>Tabla de contenidos</h1>
 
         <ul>
-            <li>Some option</li>
-            <li>Some other option</li>
+            <li>Una opción</li>
+            <li>Otra opción</li>
         </ul>
 
     </body>
 </html>
 ```
 
-Note the call to the function `super()`. With that function it's possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
+Tenga en cuenta la llamada a la función `super()`. Con esa función es posible representar los contenidos del bloque padre. Al igual que en las vistas parciales, la ruta para definir una herencia con `extends` es una ruta de acceso relativa del directorio actual de las vistas (es decir, `app/views/`).
 
 <div class="alert alert-warning">
     <p>
-        By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option <code>'compileAlways' => true</code>. Thus, the templates are compiled always taking into account changes in the parent templates.
+        Por defecto y por motivos de rendimiento, Volt sólo comprueba cambios en las plantillas hijas para saber cuándo debe volver a compilar y generar PHP plano otra vez, por lo que es recomendable inicializar Volt con la opción de <code>'compileAlways' => true</code>. Por lo tanto, las plantillas se compilan siempre teniendo en cuenta los cambios en las plantillas padre.
     </p>
 </div>
 
 <a name='autoescape'></a>
 
-## Autoescape mode
+## Modo de Autoescape
 
-You can enable auto-escaping of all variables printed in a block using the autoescape mode:
+Es posible activar el auto-escape de todas las variables en un bloque usando el modo autoescape:
 
 ```twig
-Manually escaped: {{ robot.name|e }}
+Escapado manual: {{ robot.name|e }}
 
 {% autoescape true %}
-    Autoescaped: {{ robot.name }}
+    Auto-escapado: {{ robot.name }}
     {% autoescape false %}
-        No Autoescaped: {{ robot.name }}
+        Sin auto-escape: {{ robot.name }}
     {% endautoescape %}
 {% endautoescape %}
 ```
 
 <a name='extending'></a>
 
-## Extending Volt
+## Extender Volt
 
-Unlike other template engines, Volt itself is not required to run the compiled templates. Once the templates are compiled there is no dependence on Volt. With performance independence in mind, Volt only acts as a compiler for PHP templates.
+A diferencia de otros motores de plantillas, Volt en sí mismo no está obligado a ejecutar las plantillas compiladas. Una vez que se compilan las plantillas no hay ninguna dependencia con Volt. Con independencia del rendimiento en mente, Volt sólo actúa como un compilador de plantillas PHP.
 
-The Volt compiler allow you to extend it adding more functions, tests or filters to the existing ones.
+El compilador de Volt permite ser ampliado, añadiendole más funciones, tests o filtros a los ya existentes.
 
 <a name='extending-functions'></a>
 
-### Functions
+### Funciones
 
-Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using two strategies, returning a simple string or using an anonymous function. Always is required that the chosen strategy returns a valid PHP string expression:
+Las funciones actúan como funciones normales de PHP, un nombre de cadena válida se requiere como nombre de la función. Las funciones se pueden agregar mediante dos estrategias, retornando una cadena simple o utilizando una función anónima. Siempre es necesario que la estrategia elegida devuelva una expresión de PHP válida:
 
 ```php
 <?php
@@ -1327,11 +1327,11 @@ $volt = new Volt($view, $di);
 
 $compiler = $volt->getCompiler();
 
-// This binds the function name 'shuffle' in Volt to the PHP function 'str_shuffle'
+// Vincular la función con nombre 'shuffle' en Volt a la función 'str_shuffle' de PHP
 $compiler->addFunction('shuffle', 'str_shuffle');
 ```
 
-Register the function with an anonymous function. This case we use `$resolvedArgs` to pass the arguments exactly as were passed in the arguments:
+Para registrar la función con una función anónima. En este caso utilizaremos `$resolvedArgs` para pasar los argumentos tal como se lo pasaron en los argumentos:
 
 ```php
 <?php
@@ -1344,7 +1344,7 @@ $compiler->addFunction(
 );
 ```
 
-Treat the arguments independently and unresolved:
+Trate los argumentos de manera independiente y sin resolver:
 
 ```php
 <?php
@@ -1352,14 +1352,14 @@ Treat the arguments independently and unresolved:
 $compiler->addFunction(
     'repeat',
     function ($resolvedArgs, $exprArgs) use ($compiler) {
-        // Resolve the first argument
+        // Resolver el primer argumento
         $firstArgument = $compiler->expression($exprArgs[0]['expr']);
 
-        // Checks if the second argument was passed
+        // Comprobar si el segundo argumento fue pasado
         if (isset($exprArgs[1])) {
             $secondArgument = $compiler->expression($exprArgs[1]['expr']);
         } else {
-            // Use '10' as default
+            // Por defecto, usar '10'
             $secondArgument = '10';
         }
 
@@ -1368,7 +1368,7 @@ $compiler->addFunction(
 );
 ```
 
-Generate the code based on some function availability:
+Generar el código basado en la disponibilidad de alguna función:
 
 ```php
 <?php
@@ -1385,25 +1385,25 @@ $compiler->addFunction(
 );
 ```
 
-Built-in functions can be overridden adding a function with its name:
+Las funciones integradas se pueden reemplazar agregando una función con su nombre:
 
 ```php
 <?php
 
-// Replace built-in function dump
+// Reemplazar la función incorporada 'dump'
 $compiler->addFunction('dump', 'print_r');
 ```
 
 <a name='extending-filters'></a>
 
-### Filters
+### Filtros
 
-A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
+Un filtro tiene la siguiente forma en una plantilla: `expresionIzquierda|nombre(argumentos-opcionales)`. Para agregar nuevos filtros es similar a como hace con las funciones:
 
 ```php
 <?php
 
-// This creates a filter 'hash' that uses the PHP function 'md5'
+// Creamos el filtro 'hash' que usa la funcion 'md5' de PHP
 $compiler->addFilter('hash', 'md5');
 ```
 
@@ -1418,22 +1418,22 @@ $compiler->addFilter(
 );
 ```
 
-Built-in filters can be overridden adding a function with its name:
+Los filtros incorporados se pueden reemplazar agregando una función con su nombre:
 
 ```php
 <?php
 
-// Replace built-in filter 'capitalize'
+// Reemplazar el filtro incorporado 'capitalize'
 $compiler->addFilter('capitalize', 'lcfirst');
 ```
 
 <a name='extending-extensions'></a>
 
-### Extensions
+### Extensiones
 
-With extensions the developer has more flexibility to extend the template engine, and override the compilation of a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.
+Con las extensiones, el desarrollador tiene más flexibilidad para extender el motor de la plantilla y reemplazar la compilación de una instrucción específica, cambiar el comportamiento de una expresión o un operador, añadir funciones y filtros y mucho más.
 
-An extension is a class that implements the events triggered by Volt as a method of itself. For example, the class below allows to use any PHP function in Volt:
+Una extensión es una clase que implementa los eventos desencadenados por Volt como métodos de sí mismo. Por ejemplo, la siguiente clase permite utilizar cualquier función PHP en Volt:
 
 ```php
 <?php
@@ -1441,7 +1441,7 @@ An extension is a class that implements the events triggered by Volt as a method
 class PhpFunctionExtension
 {
     /**
-     * This method is called on any attempt to compile a function call
+     * Este metodo es llamado ante cualquier intento de compilar una función llamada
      */
     public function compileFunction($name, $arguments)
     {
@@ -1452,23 +1452,23 @@ class PhpFunctionExtension
 }
 ```
 
-The above class implements the method `compileFunction` which is invoked before any attempt to compile a function call in any template. The purpose of the extension is to verify if a function to be compiled is a PHP function allowing to call it from the template. Events in extensions must return valid PHP code, this will be used as result of the compilation instead of the one generated by Volt. If an event doesn't return an string the compilation is done using the default behavior provided by the engine.
+La clase anterior implementa el método `compileFunction` que se invoca antes de cualquier intento de compilar una llamada a la función en cualquier plantilla. El propósito de la extensión es verificar si una función tiene que ser compilada es una función PHP que permite ser llamar desde la plantilla. Los eventos en las extensiones deben devolver código PHP válido, este será usado como resultado de la compilación en vez del generado por Volt. Si un evento no devuelve una cadena, la compilación se realiza utilizando el comportamiento predeterminado proporcionado por el motor.
 
-The following compilation events are available to be implemented in extensions:
+Los siguientes eventos de compilación están disponibles para ser implementados en extensiones:
 
-| Event/Method        | Description                                                                                            |
-| ------------------- | ------------------------------------------------------------------------------------------------------ |
-| `compileFunction`   | Triggered before trying to compile any function call in a template                                     |
-| `compileFilter`     | Triggered before trying to compile any filter call in a template                                       |
-| `resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators     |
-| `compileStatement`  | Triggered before trying to compile any expression. This allows the developer to override any statement |
+| Método/Evento       | Descripción                                                                                                               |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `compileFunction`   | Es activado antes de intentar compilar cualquier llamada a una función en una plantilla                                   |
+| `compileFilter`     | Es activado antes de intentar compilar cualquier llamada a un filtro en una plantilla                                     |
+| `resolveExpression` | Es activado antes de intentar compilar cualquier expresión. Esto permite al desarrollador redefinir los operadores        |
+| `compileStatement`  | Es activado antes de intentar compilar cualquier expresión. Esto permite al desarrollador redefinir cualquier declaración |
 
-Volt extensions must be in registered in the compiler making them available in compile time:
+Las extensiones de Volt deben estar registradas en el compilador, estando a disposición en tiempo de compilación:
 
 ```php
 <?php
 
-// Register the extension in the compiler
+// Registrar la extensión en el compilador
 $compiler->addExtension(
     new PhpFunctionExtension()
 );
@@ -1476,26 +1476,26 @@ $compiler->addExtension(
 
 <a name='caching-view-fragments'></a>
 
-## Caching view fragments
+## Almacenamiento en caché de fragmentos de la vista
 
-With Volt it's easy cache view fragments. This caching improves performance preventing that the contents of a block from being executed by PHP each time the view is displayed:
+Con Volt es fácil cachear fragmentos. Este almacenamiento en caché mejora el rendimiento evitando que el contenido de un bloque sea ejecutado por PHP cada vez que se muestra la vista:
 
 ```twig
 {% cache 'sidebar' %}
-    <!-- generate this content is slow so we are going to cache it -->
+    <!-- Generar este contenido es lento, entonces lo vamos a cachear -->
 {% endcache %}
 ```
 
-Setting a specific number of seconds:
+Establecer un número específico de segundos:
 
 ```twig
-{# cache the sidebar by 1 hour #}
+{# Almacenar este cacheo por una hora #}
 {% cache 'sidebar' 3600 %}
-    <!-- generate this content is slow so we are going to cache it -->
+    <!-- Generar este contenido es lento, entonces vamos a cachearlo -->
 {% endcache %}
 ```
 
-Any valid expression can be used as cache key:
+Cualquier expresión válida puede utilizarse como clave del caché:
 
 ```twig
 {% cache ('article-' ~ post.id) 3600 %}
@@ -1507,67 +1507,67 @@ Any valid expression can be used as cache key:
 {% endcache %}
 ```
 
-The caching is done by the `Phalcon\Cache` component via the view component. Learn more about how this integration works in the section [Caching View Fragments](/[[language]]/[[version]]/views#caching-fragments).
+El almacenamiento en caché lo realiza el componente `Phalcon\Cache` mediante el componente de la vista. Para más información acerca de cómo funciona esta integración en la sección [almacenamiento de fragmentos de vista en cache](/[[language]]/[[version]]/views#caching-fragments).
 
 <a name='services-in-templates'></a>
 
-## Inject Services into a Template
+## Inyectar servicios en una plantilla
 
-If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:
+Si un contenedor de servicio (DI) está disponible para Volt, puede usar los servicios accediendo solamente el nombre del servicio en la plantilla:
 
 ```twig
-{# Inject the 'flash' service #}
+{# Inyectar el servicio 'flash' #}
 <div id='messages'>{{ flash.output() }}</div>
 
-{# Inject the 'security' service #}
+{# Inyectar el servicio 'security' #}
 <input type='hidden' name='token' value='{{ security.getToken() }}'>
 ```
 
 <a name='stand-alone'></a>
 
-## Stand-alone component
+## Componente independiente
 
-Using Volt in a stand-alone mode can be demonstrated below:
+A continuación demostramos como utilizar Volt en modo independiente:
 
 ```php
 <?php
 
 use Phalcon\Mvc\View\Engine\Volt\Compiler as VoltCompiler;
 
-// Create a compiler
+// Crear un compilador
 $compiler = new VoltCompiler();
 
-// Optionally add some options
+// Opcionalmente agregar algunas opciones
 $compiler->setOptions(
     [
         // ...
     ]
 );
 
-// Compile a template string returning PHP code
+// Compilar la cadena de la plantilla, retornando código PHP
 echo $compiler->compileString(
-    "{{ 'hello' }}"
+    "{{ 'hola' }}"
 );
 
-// Compile a template in a file specifying the destination file
+// Compilar una plantilla en un archivo, especificando su destino
 $compiler->compileFile(
     'layouts/main.volt',
     'cache/layouts/main.volt.php'
 );
 
-// Compile a template in a file based on the options passed to the compiler
+// Compilar una plantillas en un archivo, basando en las opciones pasadas en el compilador
 $compiler->compile(
     'layouts/main.volt'
 );
 
-// Require the compiled templated (optional)
+// Requerir la plantilla compilada (opcional)
 require $compiler->getCompiledTemplatePath();
 ```
 
-## External Resources
+## Recursos externos
 
-* A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
-* [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)
-* [Our website](https://phalconphp.com) is running using Volt as template engine, [Github](https://github.com/phalcon/website)
-* [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [Github](https://github.com/phalcon/forum)
-* [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [Github](https://github.com/phalcon/vokuro)
+* Un paquete para Sublime/Textmate está disponible [aquí](https://github.com/phalcon/volt-sublime-textmate)
+* [Álbum-O-Rama](https://album-o-rama.phalconphp.com) es una aplicación de ejemplo que usa Volt como motor de la plantilla, [código fuente en Github](https://github.com/phalcon/album-o-rama)
+* [Nuestro sitio web](https://phalconphp.com) se ejecuta usando Volt como motor de la plantilla, [código fuente en Github](https://github.com/phalcon/website)
+* [Phosphorum](https://forum.phalconphp.com), el foro de Phalcon, también utiliza Volt, [código fuente en Github](https://github.com/phalcon/forum)
+* [Vökuró](https://vokuro.phalconphp.com), es otra aplicación de ejemplo que utiliza Volt, [ódigo de ejemplo en Github](https://github.com/phalcon/vokuro)

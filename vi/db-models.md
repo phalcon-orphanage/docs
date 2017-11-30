@@ -1203,8 +1203,8 @@ The following events are available to define custom business rules that can be e
 
 | Operation | Name         | Can stop operation? | Explanation                              |
 | --------- | ------------ |:-------------------:| ---------------------------------------- |
-| Deleting  | beforeDelete |         Yes         | Runs before the delete operation is made |
 | Deleting  | afterDelete  |         No          | Runs after the delete operation was made |
+| Deleting  | beforeDelete |         Yes         | Runs before the delete operation is made |
 
 With the above events can also define business rules in the models:
 
