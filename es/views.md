@@ -1,69 +1,69 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Using Views</a> <ul>
+      <a href="#overview">Usando Vistas</a> <ul>
         <li>
-          <a href="#integrating-views-with-controllers">Integrating Views with Controllers</a>
+          <a href="#integrating-views-with-controllers">Integrando Vistas con Controladores</a>
         </li>
         <li>
-          <a href="#hierarchical-rendering">Hierarchical Rendering</a> 
+          <a href="#hierarchical-rendering">Renderizado Jerárquico</a> 
           <ul>
             <li>
-              <a href="#using-templates">Using Templates</a>
+              <a href="#using-templates">Usando Plantillas</a>
             </li>
             <li>
-              <a href="#control-rendering-levels">Control Rendering Levels</a>
+              <a href="#control-rendering-levels">Control de Niveles de Renderizado</a>
             </li>
             <li>
-              <a href="#disabling-render-levels">Disabling render levels</a>
+              <a href="#disabling-render-levels">Deshabilitar niveles de renderizado</a>
             </li>
             <li>
-              <a href="#picking-views">Picking Views</a>
+              <a href="#picking-views">Selección de Vistas</a>
             </li>
             <li>
-              <a href="#disabling-view">Disabling the view</a>
+              <a href="#disabling-view">Deshabilitar la vista</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#simple-rendering">Simple Rendering</a>
+          <a href="#simple-rendering">Renderizado Simple</a>
         </li>
         <li>
-          <a href="#using-partials">Using Partials</a>
+          <a href="#using-partials">Usando parciales</a>
         </li>
         <li>
-          <a href="#value-transfer">Transfer values from the controller to views</a>
+          <a href="#value-transfer">Transferencia de valores del controlador a la vista</a>
         </li>
         <li>
-          <a href="#caching-fragments">Caching View Fragments</a>
+          <a href="#caching-fragments">Almacenamiento en caché de fragmentos de la vista</a>
         </li>
         <li>
-          <a href="#template-engines">Template Engines</a> 
+          <a href="#template-engines">Motores de Plantillas</a> 
           <ul>
             <li>
-              <a href="#custom-template-engine">Creating your own Template Engine Adapter</a>
+              <a href="#custom-template-engine">Crea tu propio adaptador de motor de plantillas</a>
             </li>
             <li>
-              <a href="#changing-template-engine">Changing the Template Engine</a>
+              <a href="#changing-template-engine">Cambiar el motor de plantillas</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#injecting-services">Injecting services in View</a>
+          <a href="#injecting-services">Inyectando servicios en la vista</a>
         </li>
         <li>
-          <a href="#stand-along">Stand-Alone Component</a> 
+          <a href="#stand-along">Componente independiente</a> 
           <ul>
             <li>
-              <a href="#stand-alone-hierarchical-rendering">Hierarchical Rendering</a>
+              <a href="#stand-alone-hierarchical-rendering">Renderizado Jerárquico</a>
             </li>
             <li>
-              <a href="#stand-alone-simple-rendering">Simple Rendering</a>
+              <a href="#stand-alone-simple-rendering">Renderizado Simple</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#eventes">View Events</a>
+          <a href="#eventes">Eventos de la Vista</a>
         </li>
       </ul>
     </li>
@@ -72,17 +72,17 @@
 
 <a name='overview'></a>
 
-# Using Views
+# Usando Vistas
 
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application.
+Las vistas representan la interfaz de usuario de tu aplicación. Las vistas son frecuentemente archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente a la presentación de datos. Las vistas llevan a cabo el trabajo de proveer datos al navegador web u otra herramienta que sea utilizada para hacer solicitudes desde tu aplicación.
 
-`Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are responsible for the managing the view layer of your MVC application.
+`Phalcon\Mvc\View` y `Phalcon\Mvc\View\Simple` son responsables del manejo de la capa de vistas de tu aplicación MVC.
 
 <a name='integrating-views-with-controllers'></a>
 
-## Integrating Views with Controllers
+## Integrando Vistas con Controladores
 
-Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
+Phalcon pasa automáticamente la ejecución al componente de vista tan pronto como un controlador particular ha completado su ciclo. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
 | Server Address    | 127.0.0.1 |
 | ----------------- | --------- |
