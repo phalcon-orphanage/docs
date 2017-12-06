@@ -96,10 +96,10 @@ El componente router le permite definir las rutas que se asignan a los controlad
 
 use Phalcon\Mvc\Router;
 
-// Create the router
+// Crear un enrutador
 $router = new Router();
 
-// Define a route
+// Definir una ruta
 $router->add(
     '/admin/users/my-profile',
     [
@@ -108,7 +108,7 @@ $router->add(
     ]
 );
 
-// Another route
+// Otra ruta
 $router->add(
     '/admin/users/change-password',
     [
@@ -120,19 +120,19 @@ $router->add(
 $router->handle();
 ```
 
-The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths. In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. `Phalcon\Mvc\Dispatcher`) that this is the controller/action it should execute.
+El primer parámetro del método `add()` es el patrón que desea coincidir y, opcionalmente, el segundo parámetro es un conjunto de caminos. En este caso, si el URI es `/admin/users/my-profile`, entonces el controlador `users` con su acción `profile` se ejecutarán. Es importante recordar que el router no ejecuta el controlador y la acción, sólo recoge esta información para informar al componente correcto (es decir, `Phalcon\Mvc\Dispatcher`) cual es el controlador y acción que debe ejecutar.
 
-An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can create more flexible routes:
+Una aplicación puede tener muchos caminos y definir rutas una por una puede ser una tarea engorrosa. En estos casos podemos crear rutas más flexibles:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Router;
 
-// Create the router
+// Crear un enrutador
 $router = new Router();
 
-// Define a route
+// Definir una ruta
 $router->add(
     '/admin/:controller/a/:action/:params',
     [
@@ -190,7 +190,7 @@ $router->add(
 );
 ```
 
-In the above example, the route doesn't define a `controller` or `action` part. These parts are replaced with fixed values (`posts` and `show`). The user will not know the controller that is really dispatched by the request. Inside the controller, those named parameters can be accessed as follows:
+En el ejemplo anterior, la ruta no se define un `controller` o un `action`. Estas piezas se sustituyen por valores fijos (`posts` y `show`). El usuario no sabrá el controlador que es realmente enviado por la petición. Inside the controller, those named parameters can be accessed as follows:
 
 ```php
 <?php
@@ -1312,6 +1312,6 @@ return $router;
 
 <a name='custom'></a>
 
-## Implementing your own Router
+## Implementar tu propio Router
 
 Debe implementar la interfaz `Phalcon\Mvc\RouterInterface` para crear su propio enrutador reemplazando uno proporcionado por Phalcon.
