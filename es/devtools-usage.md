@@ -383,7 +383,7 @@ Después de realizar una búsqueda, el componente de paginado esta disponible pa
 
 ## Interfaz web para herramientas
 
-Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
+Además, si Ud. prefiere, es posible usar las Herramientas de Desarrollador de Phalcon desde una interfaz web. Revise el siguiente video tutorial para ver como funciona:
 
 <div align="center">
 <iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen mark="crwd-mark"></iframe>
@@ -391,9 +391,9 @@ Also, if you prefer, it's possible to use Phalcon Developer Tools from a web int
 
 <a name='phpstorm-ide'></a>
 
-## Integrating Tools with PhpStorm IDE
+## Integrando las herramientas en PhpStorm IDE
 
-The screencast below shows how to integrate developer tools with the [PhpStorm IDE](http://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
+El siguiente video tutorial muestra como integrar las herramientas de desarrollo con [PhpStorm IDE](http://www.jetbrains.com/phpstorm/). Los pasos para la configuración pueden ser fácilmente adaptados para cualquier otro IDE para PHP.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
@@ -401,6 +401,6 @@ The screencast below shows how to integrate developer tools with the [PhpStorm I
 
 <a name='conclusion'></a>
 
-## Conclusion
+## Conclusión
 
-Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.
+Las Herramientas del Desarrollador de Phalcon proveen una forma sencilla de generar código para su aplicación, reduciendo tiempo de desarrollo y potenciales errores de codificación.
