@@ -1,86 +1,86 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Improving Performance with Cache</a> 
+      <a href="#overview">Mejorar el Rendimiento Mediante Caché</a> 
       <ul>
         <li>
-          <a href="#implementation">When to implement cache?</a>
+          <a href="#implementation">¿Cuándo Implementar Caché?</a>
         </li>
         <li>
-          <a href="#caching-behavior">Caching Behavior</a>
+          <a href="#caching-behavior">Comportamiento de Almacenamiento en Caché</a>
         </li>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">Fábrica</a>
         </li>
         <li>
-          <a href="#output-fragments">Caching Output Fragments</a>
+          <a href="#output-fragments">Almacenamiento en Caché de Fragmentos de Salida</a>
         </li>
         <li>
-          <a href="#arbitrary-data">Caching Arbitrary Data</a> 
+          <a href="#arbitrary-data">Almacenamiento en Caché de Datos Arbitrarios</a> 
           <ul>
             <li>
-              <a href="#backend-file-example">File Backend Example</a>
+              <a href="#backend-file-example">Ejemplo de archivo de Backend</a>
             </li>
             <li>
-              <a href="#backend-memcached-example">Memcached Backend Example</a>
+              <a href="#backend-memcached-example">Ejemplo de Backend de Memcached</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#read">Querying the cache</a>
+          <a href="#read">Consultando el Caché</a>
         </li>
         <li>
-          <a href="#delete">Deleting data from the cache</a>
+          <a href="#delete">Eliminación de Datos del caché</a>
         </li>
         <li>
-          <a href="#exists">Checking cache existence</a>
+          <a href="#exists">Comprobación de Existencia de Caché</a>
         </li>
         <li>
-          <a href="#lifetime">Lifetime</a>
+          <a href="#lifetime">Tiempo de Vida</a>
         </li>
         <li>
-          <a href="#multi-level">Multi-Level Cache</a>
+          <a href="#multi-level">Memoria Caché de Niveles Múltiples</a>
         </li>
         <li>
-          <a href="#adapters-frontend">Frontend Adapters</a> 
+          <a href="#adapters-frontend">Adaptadores de Frontend</a> 
           <ul>
             <li>
-              <a href="#adapters-frontend-custom">Implementing your own Frontend adapters</a>
+              <a href="#adapters-frontend-custom">Implementar tus Propios Adaptadores de Frontend</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#adapters-backend">Backend Adapters</a> 
+          <a href="#adapters-backend">Adaptadores de Backend</a> 
           <ul>
             <li>
-              <a href="#adapters-backend-factory">Factory</a>
+              <a href="#adapters-backend-factory">Fábrica</a>
             </li>
             <li>
-              <a href="#adapters-backend-custom">Implementing your own Backend adapters</a>
+              <a href="#adapters-backend-custom">Implementar sus propios adaptadores de Backend</a>
             </li>
             <li>
-              <a href="#adapters-backend-file">File Backend Options</a>
+              <a href="#adapters-backend-file">Opciones de Archivos Backend</a>
             </li>
             <li>
-              <a href="#adapters-backend-libmemcached">Libmemcached Backend Options</a>
+              <a href="#adapters-backend-libmemcached">Opciones de Backend para Libmemcached</a>
             </li>
             <li>
-              <a href="#adapters-backend-memcache">Memcache Backend Options</a>
+              <a href="#adapters-backend-memcache">Opciones de Backend para Memcached</a>
             </li>
             <li>
-              <a href="#adapters-backend-apc">APC Backend Options</a>
+              <a href="#adapters-backend-apc">Opciones de Backend para APC</a>
             </li>
             <li>
-              <a href="#adapters-backend-apcu">APCU Backend Options</a>
+              <a href="#adapters-backend-apcu">Opciones de Backend para APCU</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
+              <a href="#adapters-backend-mongo">Opciones de Backend para Mongo</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">XCache Backend Options</a>
+              <a href="#adapters-backend-xcache">Opciones de Backend para XCache</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Redis Backend Options</a>
+              <a href="#adapters-backend-redis">Opciones de Backend para Redis</a>
             </li>
           </ul>
         </li>
@@ -91,42 +91,42 @@
 
 <a name='overview'></a>
 
-# Improving Performance with Cache
+# Mejorar el Rendimiento Mediante Caché
 
-Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently used or already processed data. `Phalcon\Cache` is written in C, achieving higher performance and reducing the overhead when getting items from the backends. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
+Phalcon proporciona la clase `Phalcon\Cache` que permite un acceso más rápido a datos usados frecuentemente o ya procesados. `Phalcon\Cache` está escrito en C, logrando un mayor rendimiento y reduciendo la sobrecarga cuando se obtienen items de los backends. Esta clase utiliza una estructura interna de los componentes frontend y backend. Los componentes del Frontend actúan como fuentes de entrada o interfaces, mientras que componentes del Backend ofrecen opciones de almacenamiento para la clase.
 
 <a name='implementation'></a>
 
-## When to implement cache?
+## ¿Cuándo Implementar Caché?
 
-Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
+Aunque este componente es muy rápido, su aplicación en los casos que no es necesario puede llevar a una pérdida de performance en lugar de ganancia. Le recomendamos que consulte que estos casos antes de usar un caché:
 
-* You are making complex calculations that every time return the same result (changing infrequently)
-* You are using a lot of helpers and the output generated is almost always the same
-* You are accessing database data constantly and these data rarely change
+* Usted está haciendo cálculos complejos que siempre devuelven el mismo resultado (cambian con poca frecuencia)
+* Utiliza un montón de ayudantes y la salida generada es casi siempre la misma
+* Se accede a datos de la base de datos constantemente y rara vez cambian de estos datos
 
 <div class='alert alert-warning'>
     <p>
-        <strong>NOTE</strong> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.
+        <strong>Nota</strong> Incluso después de implementar el caché, debe comprobar la proporción de aciertos de su caché durante un período de tiempo. Esto puede hacerse fácilmente, especialmente en el caso de Memcache o Apc, con las herramientas pertinentes que proporcionan los backends.
     </p>
 </div>
 
 <a name='caching-behavior'></a>
 
-## Caching Behavior
+## Comportamiento de Almacenamiento en Caché
 
-The caching process is divided into 2 parts:
+El proceso de almacenamiento en caché se divide en 2 partes:
 
-* **Frontend**: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-
-* **Backend**: This part is responsible for communicating, writing/reading the data required by the frontend.
+* **Frontend**: esta parte es responsable de comprobar si una clave ha expirado y realizar transformaciones adicionales a los datos antes de guardarlos y después recuperarlos desde el backend
+* **Backend**: esta parte es responsable de comunicar, escribir y leer los datos requeridos por la interfaz.
 
 <a name='factory'></a>
 
-## Factory
+## Fábrica
 
-Instantiating frontend or backend adapters can be achieved by two ways:
+Crear instancias de adaptadores del frontend o del backend, puede lograrse de dos maneras:
 
-Traditional way
+Forma tradicional
 
 ```php
 <?php
@@ -134,7 +134,7 @@ Traditional way
 use Phalcon\Cache\Backend\File as BackFile;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Create an Output frontend. Cache the files for 2 days
+// Crea una salida frontend. Cache the files for 2 days
 $frontCache = new FrontData(
     [
         'lifetime' => 172800,
