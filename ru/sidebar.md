@@ -1,5 +1,5 @@
 - Главная 
-    - [Introduction](/[[language]]/[[version]]/introduction)
+    - [Введение](/[[language]]/[[version]]/introduction)
     - [Примечания к выпуску](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
     - [Спонсоры](/[[language]]/[[version]]/sponsors)
     - [FAQ](/[[language]]/[[version]]/faq)
@@ -26,14 +26,14 @@
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box](/[[language]]/[[version]]/environments-vagrant)
 - Инструменты разработчика 
-    - [Installation](/[[language]]/[[version]]/devtools-installation)
+    - [Установка](/[[language]]/[[version]]/devtools-installation)
     - [Использование](/[[language]]/[[version]]/devtools-usage)
     - [Отладка](/[[language]]/[[version]]/debug)
 - Ядро 
-    - [API Index](/[[language]]/[[version]]/api/index)
-    - Application 
+    - [API](/[[language]]/[[version]]/api/index)
+    - Приложение 
         - [Полное](/[[language]]/[[version]]/application)
-        - [Micro](/[[language]]/[[version]]/application-micro)
+        - [Микро](/[[language]]/[[version]]/application-micro)
         - [CLI](/[[language]]/[[version]]/application-cli)
     - [DI контейнер](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
