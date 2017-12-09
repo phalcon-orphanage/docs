@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Введение</a> 
+      <a href="#overview">Введение</a>
       <ul>
         <li>
           <a href="#phalcon">Скачайте правильную версию Phalcon</a>
@@ -19,7 +19,7 @@
 
 <a name='overview'></a>
 
-# Установка на XAMPP
+# Введение
 
 [XAMPP](https://www.apachefriends.org/download.html) представляет собой лёгкий вариант установки Apache в комплекте с MySQL, PHP и Perl. Просто скачав XAMPP его сразу можно использовать. Ниже представлена детальная инструкция по установке Phalcon на XAMPP для Windows. Крайне рекомендуем использовать последнюю версию XAMPP.
 
@@ -37,11 +37,11 @@ XAMPP всегда выпускается с 32-битными версиями 
 
 ![](/images/content/webserver-xampp-2.png)
 
-Скопируйте файл `php_phalcon.dll` в каталог PHP-расширений. Если вы установили XAMPP в каталог `C:\xampp`, то расширения будут в `C:\xampp\php\ext`.
+Скопируйте файл `php_phalcon.dll` в каталог PHP-расширений. Если вы установили XAMPP в каталог `C:\xampp`, то расширения будут в `C:\xampp\php\ext`:
 
 ![](/images/content/webserver-xampp-3.png)
 
-Отредактируйте ваш файл php.ini, он располагается в `C:\xampp\php\php.ini`. Для редактирования можно использовать Блокнот или любую подобную программу. Мы рекомендуем использовать Notepad++ для избегания проблем с окончанием и переводом строк. Добавьте в конец файла:
+Отредактируйте ваш файл `php.ini`, он располагается в `C:\xampp\php\php.ini`. Для редактирования можно использовать Блокнот или любую подобную программу. Мы рекомендуем использовать [Notepad++](https://notepad-plus-plus.org/) для избегания проблем с окончанием и переводом строк. Добавьте в конец файла:
 
 ```ini
 extension=php_phalcon.dll
@@ -59,7 +59,7 @@ extension=php_phalcon.dll
 
 ![](/images/content/webserver-xampp-6.png)
 
-`phpinfo()` выводит обширную информацию о текущем состоянии PHP. Прокрутите страницу ниже и убедитесь, что расширение phalcon загружено корректно.
+[phpinfo](http://php.net/manual/en/function.phpinfo.php) выводит обширную информацию о текущем состоянии PHP. Прокрутите страницу ниже и убедитесь, что расширение phalcon загружено корректно.
 
 ![](/images/content/webserver-xampp-7.png)
 
@@ -72,9 +72,9 @@ extension=php_phalcon.dll
 Нижеприведённый скринкаст отображает пошаговую установку Phalcon на Windows:
 
 <div align="center">
-  <iframe src="https://player.vimeo.com/video/40265988" 
-          width="500" 
-          height="266" 
+  <iframe src="https://player.vimeo.com/video/40265988"
+          width="500"
+          height="266"
           frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
   </iframe>
 </div>
@@ -83,4 +83,5 @@ extension=php_phalcon.dll
 
 ## Дополнительные руководства
 
+* [Информация по установке](/[[language]]/[[version]]/installation)
 * [Установка на WAMP](/[[language]]/[[version]]/webserver-wamp)
