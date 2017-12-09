@@ -82,7 +82,7 @@ C:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 
 ## Встроенный в PHP веб-сервер (для разработки)
 
-To speed up getting your Phalcon application running in development the easiest way is to use this built-in PHP server. Do not use this server in a production environment. The following configurations for [Nginx](#nginx) and [Apache](#apache) are what you need.
+Чтобы ускорить разработку вашего Phalcon-приложения, самым простым способом его запуска является использование встроенного в PHP веб-сервера. Мы рекомендуем использовать встроенный в PHP веб-сервер исключительно на стадии разработки. Ниже рассмотрены типичные конфигурации для [Nginx](#nginx) и [Apache](#apache), которые вам вероятнее всего подойдут.
 
 <a name='php-built-in-phalcon-configuration'></a>
 
