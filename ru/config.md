@@ -114,7 +114,7 @@ $config = new Config($settings);
 
 ## Чтение INI-файлов
 
-Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
+Ini-файлы являются довольно распространённым способом хранения настроек. `Phalcon\Config` использует оптимизированную PHP функцию `parse_ini_file`, чтобы читать эти файлы. Разделы файла разбиваются в подпункты конфигурации для более лёгкого доступа.
 
 ```ini
 [database]
@@ -151,7 +151,7 @@ echo $config->models->metadata->adapter, "\n";
 
 ## Объединение конфигураций
 
-`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
+`Phalcon\Config` может рекурсивно объединить свойства одного объекта конфигурации с другим. Новые свойства будут добавлены, а существующие обновлены.
 
 ```php
 <?php
@@ -201,7 +201,7 @@ Phalcon\Config Object
 )
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+Существует еще несколько типов адаптеров конфигурации, их можно получить в “Инкубаторе” - [Phalcon Incubator](https://github.com/phalcon/incubator)
 
 <a name='nested-configuration'></a>
 
