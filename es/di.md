@@ -487,7 +487,7 @@ Como se ha visto antes, hay varias formas de registro de servicios. A estos los 
 
 <a name='simple-registration-string'></a>
 
-#### String
+#### Cadena de caracteres (string)
 
 Este tipo espera el nombre de una clase válida, retornando un objecto de la clase especificada, si la clase no esta cargada, será instanciada utilizando un cargador automático. Este tipo de definición no permite para especificar argumentos o parámetros para el constructor de la clase:
 
