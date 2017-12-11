@@ -1,40 +1,40 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Phalcon Developer Tools</a> 
+      <a href="#overview">Herramientas para desarrolladores de Phalcon</a> 
       <ul>
         <li>
-          <a href="#download">Download</a>
+          <a href="#download">Descargar</a>
         </li>
         <li>
-          <a href="#installation">Installation</a>
+          <a href="#installation">Instalación</a>
         </li>
         <li>
-          <a href="#available-commands">Available Commands</a>
+          <a href="#available-commands">Comandos disponibles</a>
         </li>
         <li>
-          <a href="#project-skeleton">Generating a Project Skeleton</a>
+          <a href="#project-skeleton">Generar un esqueleto de proyecto</a>
         </li>
         <li>
-          <a href="#generating-controllers">Generating Controllers</a>
+          <a href="#generating-controllers">Generando controladores</a>
         </li>
         <li>
-          <a href="#database-settings">Preparing Database Settings</a>
+          <a href="#database-settings">Preparando la configuración de la base de datos</a>
         </li>
         <li>
-          <a href="#generating-models">Generating Models</a>
+          <a href="#generating-models">Generando modelos</a>
         </li>
         <li>
-          <a href="#crud">Scaffold a CRUD</a>
+          <a href="#crud">Andamiaje CRUD</a>
         </li>
         <li>
-          <a href="#web-interface">Web Interface to Tools</a>
+          <a href="#web-interface">Interfaz web para herramientas</a>
         </li>
         <li>
-          <a href="#phpstorm-ide">Integrating Tools with PhpStorm IDE</a>
+          <a href="#phpstorm-ide">Integrando las herramientas en PhpStorm IDE</a>
         </li>
         <li>
-          <a href="#conclusion">Conclusion</a>
+          <a href="#conclusion">Conclusión</a>
         </li>
       </ul>
     </li>
@@ -43,58 +43,58 @@
 
 <a name='overview'></a>
 
-# Phalcon Developer Tools
+# Herramientas para desarrolladores de Phalcon
 
-These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
+Estas herramientas son una colección de útiles secuencias de comandos para generar el código del esqueleto. Los componentes básicos de su aplicación pueden ser generados con un simple comando, lo que le permite desarrollar fácilmente aplicaciones usando Phalcon.
 
 <div class="alert alert-danger">
     <p>
-        If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information.
+        Si prefiere utilizar la versión web en lugar de la consola, esta <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">publicación en el blog</a> le ofrecerá más información.
     </p>
 </div>
 
 <a name='download'></a>
 
-## Download
+## Descargar
 
-You can download or clone a cross platform package containing the developer tools from [Github](https://github.com/phalcon/phalcon-devtools).
+Usted puede descargar o clonar el paquete multi plataforma que contiene las Herramientas del Desarrollador desde [Github](https://github.com/phalcon/phalcon-devtools).
 
 <a name='installation'></a>
 
-## Installation
+## Instalación
 
-These are detailed instructions on how to install the developer tools on different platforms:
+Estas son las instrucciones detalladas sobre cómo instalar las herramientas de Desarrollador en diferentes plataformas:
 
 [Linux](/[[language]]/[[version]]/devtools-installation#installation-linux) : [MacOS](/[[language]]/[[version]]/devtools-installation#installation-macos) : [Windows](/[[language]]/[[version]]/devtools-installation#installation-windows)
 
 <a name='available-commands'></a>
 
-## Available Commands
+## Comandos disponibles
 
-You can get a list of available commands in Phalcon tools by typing: :code:`phalcon commands`
+Puede obtener una lista de comandos disponibles en herramientas de Phalcon escribiendo: `phalcon commands`
 
 ```bash
 $ phalcon commands
 
 Phalcon DevTools (3.0.0)
 
-Available commands:
-  commands         (alias of: list, enumerate)
-  controller       (alias of: create-controller)
-  module           (alias of: create-module)
-  model            (alias of: create-model)
-  all-models       (alias of: create-all-models)
-  project          (alias of: create-project)
-  scaffold         (alias of: create-scaffold)
-  migration        (alias of: create-migration)
-  webtools         (alias of: create-webtools)
+Comandos disponibles:
+  commands         (alias de: list, enumerate)
+  controller       (alias de: create-controller)
+  module           (alias de: create-module)
+  model            (alias de: create-model)
+  all-models       (alias de: create-all-models)
+  project          (alias de: create-project)
+  scaffold         (alias de: create-scaffold)
+  migration        (alias de: create-migration)
+  webtools         (alias de: create-webtools)
 ```
 
 <a name='project-skeleton'></a>
 
-## Generating a Project Skeleton
+## Generar un esqueleto de proyecto
 
-You can use Phalcon tools to generate pre-defined project skeletons for your applications with Phalcon framework. By default the project skeleton generator will use mod_rewrite for Apache. Type the following command on your web server document root:
+Puede utilizar herramientas de Phalcon para generar los esqueletos de proyecto previamente definidos para las aplicaciones con framework Phalcon. Por defecto el generador de esqueleto de proyecto utiliza mod_rewrite para Apache. Escriba el siguiente comando en la raíz del documento web server:
 
 ```bash
 $ pwd
@@ -104,62 +104,62 @@ $ pwd
 $ phalcon create-project store
 ```
 
-The above recommended project structure was generated:
+La estructura de proyecto recomendada anteriormente fue generada:
 
 ![](/images/content/devtools-usage-01.png)
 
-You could add the parameter `--help` to get help on the usage of a certain script:
+Puede añadir el parámetro `--help` para obtener ayuda sobre el uso de un determinado script:
 
 ```bash
 $ phalcon project --help
 
 Phalcon DevTools (3.0.0)
 
-Help:
-  Creates a project
+Ayuda:
+  Crear un proyecto
 
-Usage:
+Uso:
   project [name] [type] [directory] [enable-webtools]
 
-Arguments:
-  help    Shows this help text
+Argumentos:
+  help    Muestra este texto de ayuda
 
-Example
+Ejemplo
   phalcon project store simple
 
-Options:
- --name               Name of the new project
- --enable-webtools    Determines if webtools should be enabled [optional]
- --directory=s        Base path on which project will be created [optional]
- --type=s             Type of the application to be generated (cli, micro, simple, modules)
- --template-path=s    Specify a template path [optional]
- --use-config-ini     Use a ini file as configuration file [optional]
- --trace              Shows the trace of the framework in case of exception. [optional]
- --help               Shows this help
+Opciones:
+ --name               Nombre del nuevo proyecto
+ --enable-webtools    Determina si las webtools deben estar activas [opcional]
+ --directory=s        Directorio donde el proyecto debe ser creado [opcional]
+ --type=s             El tipo de aplicación a generar, opciones: cli, micro, simple, modules
+ --template-path=s    Especificar la ruta del template [opcional]
+ --use-config-ini     Usar un archivo ini como archivo de configuración [opcional]
+ --trace              Mostrar las trazas del framework en caso de alguna excepción. [opcional]
+ --help               Muestra esta ayuda[optional]
 ```
 
-Accessing the project from the web server will show you:
+Accediendo al proyecto desde el servidor web le mostrará lo siguiente:
 
 ![](/images/content/devtools-usage-02.png)
 
 <a name='generating-controllers'></a>
 
-## Generating Controllers
+## Generando controladores
 
-The command `create-controller` generates controller skeleton structures. It's important to invoke this command inside a directory that already has a Phalcon project.
+El comando `create-controller` genera estructuras de esqueleto de controlador. Es importante invocar este comando dentro de un directorio que cuenta ya con un proyecto Phalcon.
 
 ```bash
-$ phalcon create-controller --name test
+$ phalcon create-controller --name prueba
 ```
 
-The following code is generated by the script:
+El siguiente código es generado por la secuencia de comandos:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Controller;
 
-class TestController extends Controller
+class PruebaController extends Controller
 {
     public function indexAction()
     {
@@ -170,11 +170,11 @@ class TestController extends Controller
 
 <a name='database-settings'></a>
 
-## Preparing Database Settings
+## Preparando la configuración de la base de datos
 
-When a project is generated using developer tools. A configuration file can be found in `app/config/config.ini`. To generate models or scaffold, you will need to change the settings used to connect to your database.
+Cuando se genera un proyecto utilizando herramientas de desarrollador. Un archivo de configuración puede encontrarse en `app/config/config.ini`. Para generar modelos o andamios, usted necesitará cambiar la configuración utilizada para conectarse a la base de datos.
 
-Change the database section in your config.ini file:
+Cambiar la sección de base de datos en el archivo config.ini:
 
 ```ini
 [database]
@@ -193,37 +193,37 @@ baseUri        = "/store/"
 
 <a name='generating-models'></a>
 
-## Generating Models
+## Generando modelos
 
-There are several ways to create models. You can create all models from the default database connection or some selectively. Models can have public attributes for the field representations or setters/getters can be used.
+Hay varias formas de crear modelos. Puede crear todos los modelos de la conexión de base de datos predeterminada o algunos selectivamente. Los modelos pueden tener atributos públicos para las representaciones de los campos o puede ser utilizados setters y getters.
 
 ```bash
-Options:
- --name=s             Table name
- --schema=s           Name of the schema. [optional]
- --namespace=s        Model's namespace [optional]
- --get-set            Attributes will be protected and have setters/getters. [optional]
- --extends=s          Model extends the class name supplied [optional]
- --excludefields=l    Excludes fields defined in a comma separated list [optional]
- --doc                Helps to improve code completion on IDEs [optional]
- --directory=s        Base path on which project will be created [optional]
- --force              Rewrite the model. [optional]
- --trace              Shows the trace of the framework in case of exception. [optional]
- --mapcolumn          Get some code for map columns. [optional]
- --abstract           Abstract Model [optional]
+Opciones:
+ --name=s             Nombre de la tabla
+ --schema=s           Nombre del esquema. [opcional]
+ --namespace=s        Espacio de nombres de los modelos [opcional]
+ --get-set            Los atributos deben ser protegidos y tener setters y getters. [opcional]
+ --extends=s          Los modelos extienden del nombre de clase dado [opcional]
+ --excludefields=l    Excluir campos definidos en la lista separada por comas [opcional]
+ --doc                Ayuda a la mejorar el completado de código en IDEs [opcional]
+ --directory=s        Directorio base donde se creará el proyecto [opcional]
+ --force              Reescribir el modelo. [opcional]
+ --trace              Muestra la traza en caso de excepción del framework. [opcional]
+ --mapcolumn          Obtener un código para el mapa de columnas. [opcional]
+ --abstract           Modelo abstracto [opcional]
 ```
 
-The simplest way to generate a model is:
+La forma más sencilla de generar un modelo es:
 
 ```bash
 $ phalcon model products
 ```
 
 ```bash
-$ phalcon model --name tablename
+$ phalcon model --name nombreDeLaTabla
 ```
 
-All table fields are declared public for direct access.
+Todos los campos de tabla se declaran públicos para acceso directo.
 
 ```php
 <?php
@@ -264,7 +264,7 @@ class Products extends Model
 }
 ```
 
-By adding the `--get-set` you can generate the fields with protected variables and public setter/getter methods. Those methods can help in business logic implementation within the setter/getter methods.
+Mediante la adición del argumento `--get-set` puede generar los campos como variables protegidas y métodos setter/getter públicos. Estos métodos pueden ayudar en la implementación de lógica de negocio dentro de los métodos setter/getter.
 
 ```php
 <?php
@@ -305,7 +305,7 @@ class Products extends Model
 
 
     /**
-     * Method to set the value of field id
+     * Este método establece el valor del campo id
      *
      * @param integer $id
      */
@@ -315,7 +315,7 @@ class Products extends Model
     }
 
     /**
-     * Method to set the value of field typesId
+     * Este método establece el valor del campo typesId
      *
      * @param integer $typesId
      */
@@ -327,7 +327,7 @@ class Products extends Model
     // ...
 
     /**
-     * Returns the value of field status
+     * Returna el valor del campo status
      *
      * @return string
      */
@@ -338,7 +338,7 @@ class Products extends Model
 }
 ```
 
-A nice feature of the model generator is that it keeps changes made by the developer between code generations. This allows the addition or removal of fields and properties, without worrying about losing changes made to the model itself. The following screencast shows you how it works:
+Una buena característica del generador de modelos es que mantiene los cambios realizados por el desarrollador entre las generaciones de código. Esto permite agregar o quitar campos y propiedades, sin el temor de perder los cambios hechos en el modelo. El siguiente video tutorial muestra cómo funciona:
 
 <div align="center">
     <iframe src="https://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -346,44 +346,44 @@ A nice feature of the model generator is that it keeps changes made by the devel
 
 <a name='crud'></a>
 
-## Scaffold a CRUD
+## Andamiaje CRUD
 
-Scaffolding is a quick way to generate some of the major pieces of an application. If you want to create the models, views, and controllers for a new resource in a single operation, scaffolding is the tool for the job.
+El scaffolding o andamiaje es una manera simple de generar algunas de las grandes piezas de una aplicación. Si desea crear los modelos, visas y controladores para un nuevo recurso en una simple operación, el andamiaje es la herramienta para este trabajo.
 
-Once the code is generated, it will have to be customized to meet your needs. Many developers avoid scaffolding entirely, opting to write all or most of their source code from scratch. The generated code can serve as a guide to better understand of how the framework works or develop prototypes. The code below shows a scaffold based on the table `products`:
+Una vez que el código está generado, debe modificarse para cumplir con sus necesidades. Muchos desarrolladores evitan el andamiaje por completo, optando por escribir todo o la mayor parte del código fuente desde cero. El código generado puede servir como guía para un mejor entendimiento de como trabaja el framework o los prototipos de desarrollo. El siguiente código muestra el andamiaje basado en la tabla `products`:
 
 ```bash
 $ phalcon scaffold --table-name products
 ```
 
-The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
+El generador de andamios produce varias archivos en su aplicación, junto con algunas carpetas. Aquí un resumen rápido de lo que se generará:
 
-| File                                     | Purpose                        |
-| ---------------------------------------- | ------------------------------ |
-| `app/controllers/ProductsController.php` | The Products controller        |
-| `app/models/Products.php`                | The Products model             |
-| `app/views/layout/products.phtml`        | Controller layout for Products |
-| `app/views/products/new.phtml`           | View for the action `new`      |
-| `app/views/products/edit.phtml`          | View for the action `edit`     |
-| `app/views/products/search.phtml`        | View for the action `search`   |
+| Archivo                                  | Propósito                                 |
+| ---------------------------------------- | ----------------------------------------- |
+| `app/controllers/ProductsController.php` | El controlador de productos               |
+| `app/models/Products.php`                | El modelo de productos                    |
+| `app/views/layout/products.phtml`        | La plantilla del controlador de productos |
+| `app/views/products/new.phtml`           | La vista de la acción `new`               |
+| `app/views/products/edit.phtml`          | La vista de la acción `edit`              |
+| `app/views/products/search.phtml`        | La vista de la acción `search`            |
 
-When browsing the recently generated controller, you will see a search form and a link to create a new Product:
+Cuando navegamos al controlador recién generado, verá un formulario de búsqueda y un enlace a crear un nuevo producto:
 
 ![](/images/content/devtools-usage-03.png)
 
-The `create page` allows you to create products applying validations on the Products model. Phalcon will automatically validate not null fields producing warnings if any of them is required.
+La `página crear` permite crear productos aplicando los validadores en el modelo Products. Phalcon automáticamente validará los campos no nulos produciendo advertencias si alguno de ellos es obligatorio.
 
 ![](/images/content/devtools-usage-04.png)
 
-After performing a search, a pager component is available to show paged results. Use the "Edit" or "Delete" links in front of each result to perform such actions.
+Después de realizar una búsqueda, el componente de paginado esta disponible para mostrar los resultados en páginas. Utilice los enlaces "Editar" o "Borrar" de cada resultado para realizar dichas acciones.
 
 ![](/images/content/devtools-usage-05.png)
 
 <a name='web-interface'></a>
 
-## Web Interface to Tools
+## Interfaz web para herramientas
 
-Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
+Además, si Ud. prefiere, es posible usar las Herramientas de Desarrollador de Phalcon desde una interfaz web. Revise el siguiente video tutorial para ver como funciona:
 
 <div align="center">
 <iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen mark="crwd-mark"></iframe>
@@ -391,9 +391,9 @@ Also, if you prefer, it's possible to use Phalcon Developer Tools from a web int
 
 <a name='phpstorm-ide'></a>
 
-## Integrating Tools with PhpStorm IDE
+## Integrando las herramientas en PhpStorm IDE
 
-The screencast below shows how to integrate developer tools with the [PhpStorm IDE](http://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
+El siguiente video tutorial muestra como integrar las herramientas de desarrollo con [PhpStorm IDE](http://www.jetbrains.com/phpstorm/). Los pasos para la configuración pueden ser fácilmente adaptados para cualquier otro IDE para PHP.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
@@ -401,6 +401,6 @@ The screencast below shows how to integrate developer tools with the [PhpStorm I
 
 <a name='conclusion'></a>
 
-## Conclusion
+## Conclusión
 
-Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.
+Las Herramientas del Desarrollador de Phalcon proveen una forma sencilla de generar código para su aplicación, reduciendo tiempo de desarrollo y potenciales errores de codificación.

@@ -130,7 +130,7 @@ Phalcon разработан таким образом, чтобы потреб�
 
 <div class="alert alert-danger">
     <p>
-        Рекомендуется всегда использовать последние версии Phalcon и PHP из соображений стабильности, улучшения безопасности, а также производительности. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7.
+        Рекомендуется всегда использовать последние версии Phalcon и PHP из соображений стабильности, улучшения безопасности, а также производительности. Поддержка PHP 5.5 будет прекращена в ближайшее время. Phalcon 4 будет поддерживать только PHP 7.
     </p>
 </div>
 
@@ -179,7 +179,7 @@ Phalcon нуждается в следующем минимальном набо
 
 <a name='installation-linux-debian-repository-stable'></a>
 
-##### Stable releases
+##### Стабильные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
@@ -189,7 +189,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.s
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
-##### Nightly releases
+##### Ночные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -258,7 +258,7 @@ sudo apt-get install php-phalcon
 
 <a name='installation-linux-rpm-repository-stable'></a>
 
-##### Stable releases
+##### Стабильные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
@@ -268,7 +268,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.s
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
-##### Nightly releases
+##### Ночные релизы
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -310,7 +310,7 @@ sudo yum install php70u-phalcon
 
 ##### Remi
 
-[Remi Collet](https://github.com/remicollet) maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en).
+[Remi Collet](https://github.com/remicollet) поддерживает отличный репозиторий для операционных систем использующих RPM-пакеты. Вы можете найти инструкции о том, как включить его для вашего дистрибутива [здесь](https://blog.remirepo.net/pages/Config-en).
 
 Установка Phalcon, после того, проста:
 
