@@ -814,6 +814,8 @@ $router->notFound(
 
 Esta es normalmente una página de error 404.
 
+> Esto sólo funcionará si el router se creó sin rutas predeterminadas, osea: `$router = Phalcon\Mvc\Router(false);`
+
 <a name='default-paths'></a>
 
 ## Configurar rutas por defecto
