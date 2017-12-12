@@ -1384,7 +1384,7 @@ $app->finish(
 
 ## Настройка
 
-Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
+Прикрепление middleware к вашему приложению происходит очень легко, как показано выше, с помощью вызова методов `before`, `after` и `finish`.
 
 ```php
 $app->before(
@@ -1410,7 +1410,7 @@ $app->after(
 );
 ```
 
-Attaching middleware to your application as classes and having it listen to events from the events manager can be achieved as follows:
+Прикрепление middleware к вашему приложению, как классов прослушивающих события из менеджера событий, может быть достигнуто следующим образом:
 
 ```php
 <?php
@@ -1450,17 +1450,17 @@ $application->setEventsManager($eventsManager);
 
 ```
 
-Нам нужен объект `Phalcon\Events\Manager`. This can be a newly instantiated object or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one).
+Нам нужен объект `Phalcon\Events\Manager`. Это может быть вновь созданный экземпляр, или мы можем получить один из существующих в нашем DI контейнере (если вы использовали `FactoryDefault`).
 
-We attach every middleware class in the `micro` hook in the Events Manager. We could also be a bit more specific and attach it to say the `micro:beforeExecuteRoute` event.
+Мы прикрепляем каждый класс middleware к ловушке `micro` в менеджере событий. Также мы могли бы быть немного конкретнее и прикрепить каждый класс, скажем к событию `micro:beforeExecuteRoute`.
 
-We then attach the middleware class in our application on one of the three listening events discussed above (`before`, `after`, `finish`).
+Затем мы прикрепляем класс middleware в наше приложение на одно из трех прослушиваемых событий, описанных выше (`before`, `after`, `finish`).
 
 <a name='middleware-implementation'></a>
 
 ## Реализация
 
-Middleware может быть любой вызываемой PHP функцией. Вы можете организовать код любым путем, который вам нравится, для реализации middleware. If you choose to use classes for your middleware, you will need them to implement the `Phalcon\Mvc\Micro\MiddlewareInterface`
+Middleware может быть любой вызываемой PHP функцией. Вы можете организовать код любым путем, который вам нравится, для реализации middleware. Если вы решили использовать классы для middleware, Вам понадобится реализовать интерфейс `Phalcon\Mvc\Micro\MiddlewareInterface`
 
 ```php
 <?php
@@ -1505,13 +1505,13 @@ class CacheMiddleware implements MiddlewareInterface
 
 ## События в Middleware
 
-The [events](#events) that are triggered for our application also trigger inside a class that implements the `Phalcon\Mvc\Micro\MiddlewareInterface`. This offers great flexibility and power for developers since we can interact with the request process.
+[События](#events), вызываемые для нашего приложения, также вызываются внутри класса реализующего интерфейс `Phalcon\Mvc\Micro\MiddlewareInterface`. This offers great flexibility and power for developers since we can interact with the request process.
 
 <a name='middleware-events-api'></a>
 
 ### Пример API
 
-Предположим, у нас есть API, которое мы реализовали с помощью Micro приложения. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
+Предположим, у нас есть API, которое мы реализовали с помощью Micro приложения. Нам необходимо прикрепить различные Middleware классы к приложению, чтобы иметь возможность лучше контролировать его выполнение.
 
 Middleware, которые мы будем использовать: * Firewall * NotFound * Redirect * CORS * Request * Response
 
@@ -1581,7 +1581,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 #### Not Found Middleware
 
-Когда этот middleware обработан, это означает, что запрашивающему IP разрешен доступ к нашему приложению. Приложение попытается сопоставить маршрут, и если он не будет найден сработает событие `beforeNotFound`. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
+Когда этот middleware обработан, это означает, что запрашивающему IP разрешен доступ к нашему приложению. Приложение попытается сопоставить маршрут, и если он не будет найден сработает событие `beforeNotFound`. We will stop the processing then and send back to the user the relevant 404 response. Этот middleware прикреплен к событию `before` нашего Micro приложения
 
 ```php
 <?php
@@ -1627,7 +1627,7 @@ class NotFoundMiddleware implements MiddlewareInterface
 
 #### Redirect Middleware
 
-We attach this middleware again to the `before` event of our Micro application because we don't want the request to proceed if the requested endpoint needs to be redirected.
+Мы прикрепляем этот middleware снова к событию `before` нашего Micro приложения, потому что мы не хотим, чтобы запрос продолжал обрабатываться, если запрашиваемая конечная точка должна быть перенаправлена.
 
 ```php
 <?php
@@ -1747,7 +1747,7 @@ class CORSMiddleware implements MiddlewareInterface
 
 #### Request Middleware
 
-This middleware is receiving a JSON payload and checks it. If the JSON payload is not valid it will stop execution.
+Этот middleware получает JSON данные и проверяет их. Если JSON данные не допустимые, он остановит выполнение.
 
 ```php
 <?php
@@ -1803,11 +1803,11 @@ class RequestMiddleware implements MiddlewareInterface
 
 #### Response Middleware
 
-This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
+Этот middleware отвечает за изменение нашего ответа и его отправку вызывающему в виде JSON строки. Следовательно, мы должны прикрепить его к событию `after` нашего Micro приложения.
 
 <div class='alert alert-warning'>
     <p>
-        We are going to be using the <code>call</code> method for this middleware, since we have nearly executed the whole request cycle.
+        Мы будем использовать метод <code>call</code> для этого middleware, так как мы выполнили почти весь цикл запроса.
     </p>
 </div>
 
@@ -1852,11 +1852,11 @@ class ResponseMiddleware implements MiddlewareInterface
 
 # Модели
 
-Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
+Модели могут быть использованы в Micro приложениях, до тех пор, пока мы инструктируем приложение, как оно может найти соответствующие классы с помощью автозагрузчика.
 
 <div class="alert alert-warning">
     <p>
-        The relevant <code>db</code> service must be registered in your Di container.
+        Соответствующий<code>db</code> сервис должен быть зарегистрирован в Ваше DI контейнере.
     </p>
 </div>
 
@@ -1892,7 +1892,7 @@ $app->handle();
 
 # Внедрение моделей
 
-By using the `Phalcon\Mvc\Model\Binder` class you can inject model instances into your routes:
+Используя класс `Phalcon\Mvc\Model\Binder` Вы можете внедрять экземпляры моделей в Ваши маршруты:
 
 ```php
 <?php
@@ -1918,15 +1918,15 @@ $app->get(
 $app->handle();
 ```
 
-Since Binder object is using internally Reflection Api which can be heavy, there is ability to set a cache so as to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
+Так как объект Binder использует внутренний Reflection Api, который может быть тяжелым, есть возможность установить кэш, чтобы ускорить этот процесс. Это можно выполнить используя второй аргумент метода `setModelBinder()`, который также может принимать имя сервиса, или просто передав экземпляр кэша в конструктор класса `Binder`.
 
-Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/products/1`.
+В настоящее время binder будет использовать первичный ключ моделей, при выполнении `findFirst()`. Пример маршрута, для написанного выше, будет выглядеть следующим образом `/products/1`.
 
 <a name='views'></a>
 
 # Представления
 
-`Phalcon\Mvc\Micro` does not have inherently a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
+`Phalcon\Mvc\Micro` не имеет встроенного view сервиса. Однако мы можем использовать компонент `Phalcon\Mvc\View\Simple` для отображения видов.
 
 ```php
 <?php
