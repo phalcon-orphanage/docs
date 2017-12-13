@@ -10,7 +10,7 @@
           <a href="#screencast">Video tutorial</a>
         </li>
         <li>
-          <a href="#related">Related Guides</a>
+          <a href="#related">Guías Relacionadas</a>
         </li>
       </ul>
     </li>
@@ -19,7 +19,7 @@
 
 <a name='overview'></a>
 
-# Overview
+# Resumen
 
 [XAMPP](https://www.apachefriends.org/download.html) es una distribución fácil de instalar que contiene Apache, MySQL, PHP y Perl. Al descargar XAMPP, todo lo que tiene que hacer es descomprimirlo y empezar a usarlo. A continuación se muestran instrucciones detalladas para instalar Phalcon en XAMPP para Windows, utilizando la última versión XAMPP que es siempre lo más recomendable.
 
@@ -37,11 +37,11 @@ Extraiga la biblioteca del archivo para obtener la DLL de Phalcon:
 
 ![](/images/content/webserver-xampp-2.png)
 
-Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`:
+Copie el archivo `php_phalcon.dll` en el directorio de extensiones PHP. Si ha instalado XAMPP en la carpeta `C:\xampp`, la extensión debe estar en `C:\xampp\php\ext`:
 
 ![](/images/content/webserver-xampp-3.png)
 
-Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. Pueden editarse con el Bloc de notas o un programa similar. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Añada el siguiente texto al final del archivo:
+Edite el archivo `php.ini`, que se encuentra en `C:\xampp\php\php.ini`. Pueden editarse con el Bloc de notas o un programa similar. Le recomendamos [Notepad++](https://notepad-plus-plus.org/) para evitar problemas con finales de línea. Añada el siguiente texto al final del archivo:
 
 ```ini
 extension=php_phalcon.dll
@@ -59,7 +59,7 @@ Abra el navegador para ir a `http://localhost`. Aparecerá la página de bienven
 
 ![](/images/content/webserver-xampp-6.png)
 
-[phpinfo](http://php.net/manual/en/function.phpinfo.php) will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly.
+La función [phpinfo](http://php.net/manual/en/function.phpinfo.php) producirá una cantidad significativa de información en pantalla sobre el estado actual de PHP. Desplácese hacia abajo para comprobar si la extensión Phalcon ha sido cargada correctamente.
 
 ![](/images/content/webserver-xampp-7.png)
 
@@ -83,5 +83,5 @@ El siguiente video tutorial es una guía paso a paso para instalar Phalcon en Wi
 
 ## Guías Relacionadas
 
-* [General Installation](/[[language]]/[[version]]/installation)
+* [Instalación General](/[[language]]/[[version]]/installation)
 * [Instalación en WAMP](/[[language]]/[[version]]/webserver-wamp)

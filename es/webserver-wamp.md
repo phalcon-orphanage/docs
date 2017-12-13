@@ -7,7 +7,7 @@
           <a href="#phalcon">Descargar la versión correcta de Phalcon</a>
         </li>
         <li>
-          <a href="#related">Related Guides</a>
+          <a href="#related">Guías Relacionadas</a>
         </li>
       </ul>
     </li>
@@ -16,7 +16,7 @@
 
 <a name='overview'></a>
 
-# Overview
+# Resumen
 
 [WampServer](http://www.wampserver.com/en/) es un entorno de desarrollo web para Windows. Te permite crear aplicaciones web con Apache2, PHP y una base de datos MySQL. A continuación te mostramos las instrucciones detalladas para instalar Phalcon en un servidor Wamp para Windows. Utilizar la última versión de WAMP Server es lo mas recomendable.
 
@@ -34,7 +34,7 @@ Descomprime la biblioteca del archivo para obtener la DLL de Phalcon:
 
 ![](/images/content/webserver-xampp-2.png)
 
-Copia el archivo `php_phalcon.dll` en la carpeta de extensiones de PHP. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php5.5.12\ext` (assuming your WAMP installation installed PHP 5.5.12):
+Copia el archivo `php_phalcon.dll` en la carpeta de extensiones de PHP. Si WAMP está instalado en la carpeta `C:\wamp`, la extensión debe ser ubicada en `C:\wamp\bin\php\php5.5.12\ext` (suponiendo que tu instalación de WAMP tiene instalado PHP 5.5.12):
 
 ![](/images/content/webserver-wamp-1.png)
 
@@ -48,7 +48,7 @@ y guarda los cambios.
 
 ![](/images/content/webserver-wamp-2.png)
 
-Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file:
+También editar el archivo `php.ini`, que se encuentra en `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Agregar al final del archivo:
 
 ```ini
 extension=php_phalcon.dll
@@ -56,11 +56,11 @@ extension=php_phalcon.dll
 
 y guarda los cambios.
 
-Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose "Restart All Services" from the pop-up menu. Check out that tray icon will become green again.
+Reinicia el servidor Web Apache. Haz un clic en el icono de WampServer en la bandeja del sistema. Elije "Reiniciar todos los servicios" en el menú emergente. Espera a que ese icono vuelva a ser verde.
 
 ![](/images/content/webserver-wamp-3.png)
 
-Open your browser to navigate to `http://localhost`. The WAMP welcome page will appear. Check the section "extensions loaded" to ensure that phalcon was loaded.
+Abrir el navegador para navegar a `http://localhost`. Aparecerá la página de bienvenida de WAMP. Consulte la sección "extensiones cargadas" para asegurar que Phalcon fue cargado.
 
 ![](/images/content/webserver-wamp-4.png)
 
@@ -70,5 +70,5 @@ Open your browser to navigate to `http://localhost`. The WAMP welcome page will 
 
 ## Guías Relacionadas
 
-* [General Installation](/[[language]]/[[version]]/installation)
+* [Instalación General](/[[language]]/[[version]]/installation)
 * [Instalación en XAMPP](/[[language]]/[[version]]/webserver-xampp)
