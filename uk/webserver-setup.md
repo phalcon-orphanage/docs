@@ -162,8 +162,8 @@ server {
 
     # When the HTTP request does not match the above
     # and the file ends in .php
-    location ~ \.php$ {
-        try_files $uri =404;
+    location ~ [^/]\.php(/|$) {
+        # try_files $uri =404;
 
         # Ubuntu and PHP7.0-fpm in socket mode
         # This path is dependent on the version of PHP install
@@ -178,9 +178,15 @@ server {
         fastcgi_index /index.php;
 
         include fastcgi_params;
-        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+        if (!-f $document_root$fastcgi_script_name) {
+            return 404;
+        }
+
         fastcgi_param PATH_INFO       $fastcgi_path_info;
-        fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+        # fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+        # and set php.ini cgi.fix_pathinfo=0
+
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
 
