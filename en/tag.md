@@ -7,6 +7,9 @@
           <a href="#document-type">Document Type of Content</a>
         </li>
         <li>
+          <a href="#generating-links">Generating Links</a>
+        </li>        
+        <li>
           <a href="#creating-forms">Creating Forms</a>
         </li>
         <li>
