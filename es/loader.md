@@ -89,30 +89,29 @@ Para evitar este tipo de ataques o más sofisticados aún, `Phalcon\Loader` elim
 
 ## Registrando espacios de nombres
 
-Si estás organizando tu código usando espacios de nombres, o usando bibliotecas externas que los utilizan, el método `registerNamespaces()` proporciona el mecanismo de carga automática. Se necesita una matriz asociativa; las claves son los prefijos de los espacio de nombres y los valores son los directorios donde se encuentran las clases. El separador de espacio de nombres se sustituirá por el separador de directorio cuando el cargador intente encontrar las clases. Recuerda siempre añadir una barra al final de los caminos.
+Si estás organizando tu código usando espacios de nombres, o usando bibliotecas externas que los utilizan, el método `registerNamespaces()` proporciona el mecanismo de carga automática. Se necesita una matriz asociativa; las claves son los prefijos de los espacio de nombres y los valores son los directorios donde se encuentran las clases. El separador de espacio de nombres se sustituirá por el separador de directorio cuando el cargador intente encontrar las clases.
 
 ```php
 <?php
 
 use Phalcon\Loader;
 
-// Crear el autocargador
+// Crear el  auto cargador
 $loader = new Loader();
 
-// Registrar algunos espacios de nombres
+// Registrar algunos nobres de espacios
 $loader->registerNamespaces(
     [
-       'Example\Base'    => 'vendor/example/base/',
-       'Example\Adapter' => 'vendor/example/adapter/',
-       'Example'         => 'vendor/example/',
+        "Example\\Base"    => "vendor/example/base",
+        "Example\\Adapter" => "vendor/example/adapter",
+        "Example"          => "vendor/example",
     ]
 );
 
-// Registrar el autocargador
+// Registrear el auto cargador
 $loader->register();
 
-// La clase requerida incluirá automáticamente
-// el archivo vendor/example/adapter/Some.php
+// Al requerir esta clase incluirá automáticamente el archivo vendor/example/adapter/Some.php
 $some = new \Example\Adapter\Some();
 ```
 
@@ -120,7 +119,7 @@ $some = new \Example\Adapter\Some();
 
 ## Registrando directorios
 
-La tercera opción es registrar directorios, en los cuales pueden ser encontradas las clases. Esta opción no se recomienda en términos de rendimiento, ya que Phalcon tendrá que realizar un gran número de estadísticas de archivo en cada carpeta, buscando el archivo con el mismo nombre que la clase. Es importante registrar los directorios en orden de importancia. Recuerda siempre añadir una barra al final de los caminos.
+La tercera opción es registrar directorios, en los cuales pueden ser encontradas las clases. Esta opción no se recomienda en términos de rendimiento, ya que Phalcon tendrá que realizar un gran número de estadísticas de archivo en cada carpeta, buscando el archivo con el mismo nombre que la clase. Es importante registrar los directorios en orden de importancia.
 
 ```php
 <?php
@@ -133,10 +132,10 @@ $loader = new Loader();
 // Registrar algunos directorios
 $loader->registerDirs(
     [
-        'library/MyComponent/',
-        'library/OtherComponent/Other/',
-        'vendor/example/adapters/',
-        'vendor/example/',
+        'library/MyComponent',
+        'library/OtherComponent/Other',
+        'vendor/example/adapters',
+        'vendor/example',
     ]
 );
 
@@ -244,8 +243,8 @@ Se pueden agregar datos adicionales a la carga automática pueden añadirse a lo
 // Agregando más directorios
 $loader->registerDirs(
     [
-        '../app/library/',
-        '../app/plugins/',
+        '../app/library',
+        '../app/plugins',
     ],
     true
 );
@@ -270,9 +269,9 @@ $loader = new Loader();
 
 $loader->registerNamespaces(
     [
-        'Example\Base'    => 'vendor/example/base/',
-        'Example\Adapter' => 'vendor/example/adapter/',
-        'Example'         => 'vendor/example/',
+        'Example\Base'    => 'vendor/example/base',
+        'Example\Adapter' => 'vendor/example/adapter',
+        'Example'         => 'vendor/example',
     ]
 );
 
