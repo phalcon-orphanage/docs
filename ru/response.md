@@ -148,7 +148,7 @@ return $response->redirect(
 );
 ```
 
-Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it will be executed anyway. You can disable the view from a controller by executing `$this->view->disable()`;
+Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it will be executed anyway. You can disable the view from a controller by executing `$this->view->disable()`.
 
 <a name='http-cache'></a>
 
@@ -160,8 +160,8 @@ HTTP Cache can be altered in the following header values sent by the application
 
 * **`Expires:`** With this header the application can set a date in the future or the past telling the browser when the page must expire.
 * **`Cache-Control:`** This header allows to specify how much time a page should be considered fresh in the browser.
-* **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads
-* **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page
+* **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads.
+* **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page.
 
 <a name='http-cache-expiration-time'></a>
 
