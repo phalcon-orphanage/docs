@@ -1,19 +1,19 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Request Environment</a> 
+      <a href="#overview">Entorno de Consulta</a> 
       <ul>
         <li>
-          <a href="#getting-values">Getting Values</a>
+          <a href="#getting-values">Obteniendo Valores</a>
         </li>
         <li>
-          <a href="#controller-access">Accessing the Request from Controllers</a>
+          <a href="#controller-access">Accediendo a la Consulta desde los Controladores</a>
         </li>
         <li>
-          <a href="#uploading-files">Uploading Files</a>
+          <a href="#uploading-files">Subiendo Archivos</a>
         </li>
         <li>
-          <a href="#working-with-headers">Working with Headers</a>
+          <a href="#working-with-headers">Trabajando con Cabeceras</a>
         </li>
       </ul>
     </li>
@@ -22,34 +22,34 @@
 
 <a name='overview'></a>
 
-# Request Environment
+# Entorno de Consulta
 
-Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data, files, variables, etc. A web based application needs to parse that information so as to provide the correct response back to the requester. `Phalcon\Http\Request` encapsulates the information of the request, allowing you to access it in an object-oriented way.
+Cada petición HTTP (normalmente originada por un navegador) contiene información adicional sobre la petición, tal como datos de cabecera, archivos, variables, etcétera. Una aplicación basada en web necesita analizar esa información para proporcionar la respuesta correcta al solicitante. `Phalcon\Http\Request` encapsula la información de la solicitud, lo que le permite acceder de una manera orientada a objetos.
 
 ```php
 <?php
 
 use Phalcon\Http\Request;
 
-// Getting a request instance
+// Obteniendo una instancia de la consulta
 $request = new Request();
 
-// Check whether the request was made with method POST
+// Comprobar que la consulta este hecha por el método POST
 if ($request->isPost()) {
-    // Check whether the request was made with Ajax
+    // Comprobar si la consulta esta hecha con Ajax
     if ($request->isAjax()) {
-        echo 'Request was made using POST and AJAX';
+        echo 'La consulta fue hecha utilizando POST y AJAX';
     }
 }
 ```
 
 <a name='getting-values'></a>
 
-## Getting Values
+## Obteniendo Valores
 
-PHP automatically fills the superglobal arrays `$_GET` and `$_POST` depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection](http://en.wikipedia.org/wiki/SQL_injection) or [Cross Site Scripting (XSS)](http://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
+PHP automáticamente llena los arreglos superglobales `$_GET` y `$_POST` dependiendo del tipo de solicitud. Estos arrays contienen los valores presentes en los formularios o los parámetros enviados por la URL. Las variables en las matrices no son desinfectadas y puede contener caracteres ilegales o incluso códigos malintencionados, que pueden conducir a la [inyección de SQL](http://en.wikipedia.org/wiki/SQL_injection) o ataques de [Cross Site Scripting (XSS)](http://en.wikipedia.org/wiki/Cross-site_scripting).
 
-`Phalcon\Http\Request` allows you to access the values stored in the `$_REQUEST`, `$_GET` and `$_POST` arrays and sanitize or filter them with the [filter](/[[language]]/[[version]]/filter) service, (by default `Phalcon\Filter`). The following examples offer the same behavior:
+`Phalcon\Http\Request` le permite acceder a los valores almacenados en `$_REQUEST`, `$_GET` y `$_POST` y desinfectarlos o filtrarlos con el servicio [filter](/[[language]]/[[version]]/filter), (por defecto `Phalcon\Filter`). Los siguientes ejemplos ofrecen el mismo comportamiento:
 
 ```php
 <?php
@@ -58,27 +58,27 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Manually applying the filter
+// Filtros aplicados manualmente
 $email = $filter->sanitize($_POST['user_email'], 'email');
 
-// Manually applying the filter to the value
+// Aplicando manualmente el filtro a un valor
 $email = $filter->sanitize($request->getPost('user_email'), 'email');
 
-// Automatically applying the filter
+// Aplicar automáticamente el filtro
 $email = $request->getPost('user_email', 'email');
 
-// Setting a default value if the param is null
+// Establecer un valor por defecto si el parámetro es nulo
 $email = $request->getPost('user_email', 'email', 'some@example.com');
 
-// Setting a default value if the param is null without filtering
+// Estableciendo un valor por defeccto si el parámetro es nulo sin filtrado
 $email = $request->getPost('user_email', null, 'some@example.com');
 ```
 
 <a name='controller-access'></a>
 
-## Accessing the Request from Controllers
+## Accediendo a la Consulta desde los Controladores
 
-The most common place to access the request environment is in an action of a controller. To access the `Phalcon\Http\Request` object from a controller you will need to use the `$this->request` public property of the controller:
+El lugar más común para acceder el ambiente de la petición es en una acción de un controlador. Para tener acceso al objeto `Phalcon\Http\Request` desde un controlador necesita utilizar la propiedad pública `$this->request` del controlador:
 
 ```php
 <?php
@@ -94,9 +94,9 @@ class PostsController extends Controller
 
     public function saveAction()
     {
-        // Check if request has made with POST
+        // Comprobar si la consulta fue hecha con POST
         if ($this->request->isPost()) {
-            // Access POST data
+            // Acceder a los datos POST
             $customerName = $this->request->getPost('name');
             $customerBorn = $this->request->getPost('born');
         }
@@ -106,9 +106,9 @@ class PostsController extends Controller
 
 <a name='uploading-files'></a>
 
-## Uploading Files
+## Subiendo Archivos
 
-Another common task is file uploading. `Phalcon\Http\Request` offers an object-oriented way to achieve this task:
+Otra tarea común es la de subir archivos. `Phalcon\Http\Request` ofrece una forma orientada a objectos para realizar esta tarea:
 
 ```php
 <?php
@@ -119,16 +119,16 @@ class PostsController extends Controller
 {
     public function uploadAction()
     {
-        // Check if the user has uploaded files
+        // Comprobar si el usuario ha subido archivos
         if ($this->request->hasFiles()) {
             $files = $this->request->getUploadedFiles();
 
-            // Print the real file names and sizes
+            // Imprimir el nombre real y el tamaño del archivo
             foreach ($files as $file) {
-                // Print file details
+                // Imprimir detalles del archivo
                 echo $file->getName(), ' ', $file->getSize(), '\n';
 
-                // Move the file into the application
+                // Mover el archivo dentro de la aplicación
                 $file->moveTo(
                     'files/' . $file->getName()
                 );
@@ -138,47 +138,47 @@ class PostsController extends Controller
 }
 ```
 
-Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the `Phalcon\Http\Request\File` class. Using the `$_FILES` superglobal array offers the same behavior. `Phalcon\Http\Request\File>` encapsulates only the information related to each file uploaded with the request.
+Cada objeto retornado por `Phalcon\Http\Request::getUploadedFiles()` es una instancia de la clase `Phalcon\Http\Request\File`. Utilizar el arreglo superglobal `$_FILES` ofrece el mismo comportamiento. `Phalcon\Http\Request\File` encapsula solo la información relacionada con cada archivo subido en la consulta.
 
 <a name='working-with-headers'></a>
 
-## Working with Headers
+## Trabajando con Cabeceras
 
-As mentioned above, request headers contain useful information that allow us to send the proper response back to the user. The following examples show usages of that information:
+Como se mencionó anteriormente, los encabezados de las solicitudes contienen información útil que nos permite enviar la respuesta adecuada de nuevo al usuario. Los siguientes ejemplos muestran usos de esa información:
 
 ```php
 <?php
 
-// Get the Http-X-Requested-With header
+// Obtener la cabecera Http-X-Requested-With
 $requestedWith = $request->getHeader('HTTP_X_REQUESTED_WITH');
 
 if ($requestedWith === 'XMLHttpRequest') {
-    echo 'The request was made with Ajax';
+    echo 'La consulta fue hecha con Ajax';
 }
 
-// Same as above
+// Igual que lo anterior
 if ($request->isAjax()) {
-    echo 'The request was made with Ajax';
+    echo 'La consulta fue hecha con Ajax';
 }
 
-// Check the request layer
+// Comprobar la capa de la consulta
 if ($request->isSecure()) {
-    echo 'The request was made using a secure layer';
+    echo 'La consulta fue hecha utilizando una capa de seguridad';
 }
 
-// Get the servers's IP address. ie. 192.168.0.100
+// Obtener la dirección IP del servidor. Por ejemplo: 192.168.0.100
 $ipAddress = $request->getServerAddress();
 
-// Get the client's IP address ie. 201.245.53.51
+// Obtener la dirección IP del cliente. Por ejemplo: 201.245.53.51
 $ipAddress = $request->getClientAddress();
 
-// Get the User Agent (HTTP_USER_AGENT)
+// Obtener el agente del usuario (HTTP_USER_AGENT)
 $userAgent = $request->getUserAgent();
 
-// Get the best acceptable content by the browser. ie text/xml
+// Obtener el mejor contenido aceptable por el navegador. Por ejemplo: text/xml
 $contentType = $request->getAcceptableContent();
 
-// Get the best charset accepted by the browser. ie. utf-8
+// Obtener el mejor conjunto de caracteres aceptados por el navegador. ie. utf-8
 $charset = $request->getBestCharset();
 
 // Get the best language accepted configured in the browser. ie. en-us
