@@ -178,9 +178,9 @@ $userAgent = $request->getUserAgent();
 // Obtener el mejor contenido aceptable por el navegador. Por ejemplo: text/xml
 $contentType = $request->getAcceptableContent();
 
-// Obtener el mejor conjunto de caracteres aceptados por el navegador. ie. utf-8
+// Obtener el mejor conjunto de caracteres aceptados por el navegador. Por ejemplo: utf-8
 $charset = $request->getBestCharset();
 
-// Get the best language accepted configured in the browser. ie. en-us
+// Obtener el mejor idioma aceptado configurado por el navegador. Por ejemplo: en-us
 $language = $request->getBestLanguage();
 ```
