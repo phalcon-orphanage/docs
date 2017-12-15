@@ -23,7 +23,7 @@
 
 # Comportamientos en modelos (Behaviors)
 
-Behaviors are shared constructs that several models may adopt in order to re-use code. The ORM provides an API to implement behaviors in your models. Además, puede utilizar los eventos y callbacks, como se ha visto antes, como una alternativa para implementar comportamientos con más libertad.
+Los comportamientos son construcciones compartidas que varios modelos pueden adoptar para reutilizar el código. El ORM provee un API para implementar los comportamientos en tus modelos. Además, puede utilizar los eventos y callbacks, como se ha visto antes, como una alternativa para implementar comportamientos con más libertad.
 
 Un comportamiento debe agregarse en el inicializador del modelo, un modelo puede tener cero o más comportamientos:
 
