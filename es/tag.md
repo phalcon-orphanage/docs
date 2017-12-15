@@ -1,65 +1,65 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">View Helpers (Tags)</a> 
+      <a href="#overview">Ayudantes de vistas (etiquetas)</a> 
       <ul>
         <li>
-          <a href="#document-type">Document Type of Content</a>
+          <a href="#document-type">Tipo de Documento de Contenido</a>
         </li>
         <li>
-          <a href="#generating-links">Generating Links</a>
+          <a href="#generating-links">Generando enlaces</a>
         </li>        
         <li>
-          <a href="#creating-forms">Creating Forms</a>
+          <a href="#creating-forms">Creando Formularios</a>
         </li>
         <li>
-          <a href="#helpers-for-form-elements">Helpers to Generate Form Elements</a>
+          <a href="#helpers-for-form-elements">Ayudantes para Generar Elementos de Formulario</a>
         </li>
         <li>
-          <a href="#select-boxes">Making Select Boxes</a>
+          <a href="#select-boxes">Armando Cajas de Selección</a>
         </li>
         <li>
-          <a href="#html-attributes">Assigning HTML attributes</a>
+          <a href="#html-attributes">Asignando Atributos HTML</a>
         </li>
         <li>
-          <a href="#helper-values">Setting Helper Values</a> 
+          <a href="#helper-values">Estableciendo los Valores del Ayudante</a> 
           <ul>
             <li>
-              <a href="#helper-values-form-controllers">From Controllers</a>
+              <a href="#helper-values-form-controllers">Desde los controladores</a>
             </li>
             <li>
-              <a href="#helper-values-from-request">From the Request</a>
+              <a href="#helper-values-from-request">Desde la consulta</a>
             </li>
             <li>
-              <a href="#helper-values-directly">Specifying values directly</a>
+              <a href="#helper-values-directly">Especificando valores directamente</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#changing-document-title-dynamically">Changing dynamically the Document Title</a>
+          <a href="#changing-document-title-dynamically">Cambiando dinámicamente el título del documento</a>
         </li>
         <li>
-          <a href="#static-content-helpers">Static Content Helpers</a> 
+          <a href="#static-content-helpers">Ayudantes de contenidos estáticos</a> 
           <ul>
             <li>
-              <a href="#static-content-helpers-images">Images</a>
+              <a href="#static-content-helpers-images">Imágenes</a>
             </li>
             <li>
-              <a href="#static-content-helpers-stylesheets">Stylesheets</a>
+              <a href="#static-content-helpers-stylesheets">Hojas de estilo</a>
             </li>
             <li>
               <a href="#static-content-helpers-javascript">Javascript</a>
             </li>
             <li>
-              <a href="#static-content-helpers-html5">HTML5 elements - generic HTML helper</a>
+              <a href="#static-content-helpers-html5">Elementos HTML5 - Ayudante HTML genérico</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#tag-helpers">Tag Service</a>
+          <a href="#tag-helpers">Servicio Tag (Etiquetas)</a>
         </li>
         <li>
-          <a href="#custom-helpers">Creating your own helpers</a>
+          <a href="#custom-helpers">Creando tus propios ayudantes</a>
         </li>
       </ul>
     </li>
@@ -68,27 +68,27 @@
 
 <a name='overview'></a>
 
-# View Helpers (Tags)
+# Ayudantes de vistas (etiquetas)
 
-Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the `Phalcon\Tag` component which in turn offers view helpers to generate HTML markup.
+Escribir y mantener código HTML pueden convertirse rápidamente en una tarea tediosa debido a las convenciones de nomenclatura y numerosos atributos que han de tenerse en cuenta. Phalcon aborda esta complejidad ofreciendo el componente `Phalcon\Tag` que a su vez ofrece ayudantes de vistas para generar código HTML.
 
-This component can be used in a plain HTML+PHP view or in a [Volt](/[[language]]/[[version]]/volt) template.
+Este componente puede utilizarse en una vista HTML + PHP o en una plantilla de [Volt](/[[language]]/[[version]]/volt).
 
 <div class="alert alert-warning">
     <p>
-        This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the <a href="/[[language]]/[[version]]/api/Phalcon_Tag">Phalcon\Tag</a> page in the API for a complete reference.
+        Esta guía no pretende ser una documentación completa de ayudantes disponibles y sus argumentos. Por favor visite la página <a href="/[[language]]/[[version]]/api/Phalcon_Tag">Phalcon\Tag</a> en la API para una referencia completa.
     </p>
 </div>
 
 <a name='document-type'></a>
 
-## Document Type of Content
+## Tipo de Documento de Contenido
 
-Phalcon offers the `Phalcon\Tag::setDoctype()` helper to set document type of the content. The document type setting may affect HTML output produced by other tag helpers. For example, if you set XHTML document type family, helpers that return or output HTML tags will produce self-closing tags to follow valid XHTML standard.
+Phalcon ofrece el ayudante `Phalcon\Tag::setDoctype()` para establecer el tipo de documento de los contenidos. La configuración de tipo de documento puede afectar la salida HTML producida por otros ayudantes de etiquetas. Por ejemplo, si define la familia de tipo de documento XHTML, los ayudantes que retornen o generen salidas de etiquetas HTML producirán etiquetas de auto-cierre para seguir el estándar XHTML válido.
 
-Available document type constants in `Phalcon\Tag` namespace are:
+Las constantes de tipo de documento disponibles en el espacio de nombres de `Phalcon\Tag` son:
 
-| Constant             | Document type          |
+| Constante            | Tipo de documento      |
 | -------------------- | ---------------------- |
 | HTML32               | HTML 3.2               |
 | HTML401_STRICT       | HTML 4.01 Strict       |
@@ -102,7 +102,7 @@ Available document type constants in `Phalcon\Tag` namespace are:
 | XHTML20              | XHTML 2.0              |
 | XHTML5               | XHTML 5                |
 
-Setting document type.
+Estableciendo el tipo de documento.
 
 ```php
 <?php
@@ -112,122 +112,122 @@ use Phalcon\Tag;
 $this->tag->setDoctype(Tag::HTML401_STRICT);
 ```
 
-Getting document type.
+Obteniendo el tipo de documento.
 
 ```php
 <?= $this->tag->getDoctype() ?>
 <html>
-<!-- your HTML code -->
+<!-- tu código HTML -->
 </html>
 ```
 
-The following HTML will be produced.
+Se producirá el siguiente código HTML.
 
 ```html
 <!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01//EN'
         'http://www.w3.org/TR/html4/strict.dtd'>
 <html>
-<!-- your HTML code -->
+<!-- tu código HTML -->
 </html>
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```twig
 {{ get_doctype() }}
 <html>
-<!-- your HTML code -->
+<!-- tu código HTML -->
 </html>
 ```
 
 <a name='generating-links'></a>
 
-## Generating Links
+## Generando enlaces
 
-A real common task in any web application or website is to produce links that allow us to navigate from one page to another. When they are internal URLs we can create them in the following manner:
+Una tarea realmente común en cualquier aplicación web o sitio web es generar enlaces que nos permitan navegar de una página a otra. Cuando son direcciones URL internas los podemos crear de la siguiente manera:
 
 ```php
-<!-- for the default route -->
-<?= $this->tag->linkTo('products/search', 'Search') ?>
+<!-- para el router por defecto -->
+<?= $this->tag->linkTo('products/search', 'Buscar') ?>
 
-<!-- with CSS attributes -->
-<?= $this->tag->linkTo(['products/edit/10', 'Edit', 'class' => 'edit-btn']) ?>
+<!-- con atributos CSS -->
+<?= $this->tag->linkTo(['products/edit/10', 'Editar', 'class' => 'edit-btn']) ?>
 
-<!-- for a named route -->
-<?= $this->tag->linkTo([['for' => 'show-product', 'title' => 123, 'name' => 'carrots'], 'Show']) ?>
+<!-- para un router con nombre -->
+<?= $this->tag->linkTo([['for' => 'show-product', 'title' => 123, 'name' => 'carrots'], 'Ver']) ?>
 ```
 
-Actually, all produced URLs are generated by the component `Phalcon\Mvc\Url`. The same links can be generated with Volt:
+En realidad, todas las URLs producidas son generadas por el componente `Phalcon\Mvc\Url`. También pueden generarse los mismos enlaces con Volt:
 
 ```twig
-<!-- for the default route -->
-{{ link_to('products/search', 'Search') }}
+<!-- para el router por defecto -->
+{{ link_to('products/search', 'Buscar') }}
 
-<!-- for a named route -->
-{{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show') }}
+<!-- para un router con nombre -->
+{{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Ver') }}
 
-<!-- for a named route with a HTML class -->
-{{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Show', 'class': 'edit-btn') }}
+<!-- para un router con nombre y una clase HTML -->
+{{ link_to(['for': 'show-product', 'id': 123, 'name': 'carrots'], 'Ver', 'class': 'edit-btn') }}
 ```
 
 <a name='creating-forms'></a>
 
-## Creating Forms
+## Creando Formularios
 
-Forms in web applications play an essential part in retrieving user input. The following example shows how to implement a simple search form using view helpers:
+Los formularios en las aplicaciones web juegan un papel esencial en la recuperación de entradas del usuario. En el ejemplo siguiente se muestra cómo implementar un formulario de búsqueda simple usando ayudantes de vistas:
 
 ```php
-<!-- Sending the form by method POST -->
+<!-- Enviando el formulario por el método POST -->
 <?= $this->tag->form('products/search') ?>
-    <label for='q'>Search:</label>
+    <label for='q'>Buscar:</label>
 
     <?= $this->tag->textField('q') ?>
 
-    <?= $this->tag->submitButton('Search') ?>
+    <?= $this->tag->submitButton('Buscar') ?>
 <?= $this->tag->endForm() ?>
 
-<!-- Specifying another method or attributes for the FORM tag -->
+<!-- Especificando otro método o atributos para la etiqueta FORM -->
 <?= $this->tag->form(['products/search', 'method' => 'get']); ?>
-    <label for='q'>Search:</label>
+    <label for='q'>Buscar:</label>
 
     <?= $this->tag->textField('q'); ?>
 
-    <?= $this->tag->submitButton('Search'); ?>
+    <?= $this->tag->submitButton('Buscar'); ?>
 <?= $this->tag->endForm() ?>
 ```
 
-This last code will generate the following HTML:
+El código anterior generará el siguiente código HTML:
 
 ```html
 <form action='/store/products/search/' method='get'>
-    <label for='q'>Search:</label>
+    <label for='q'>Buscar:</label>
 
     <input type='text' id='q' value='' name='q' />
 
-    <input type='submit' value='Search' />
+    <input type='submit' value='Buscar' />
 </form>
 ```
 
-Same form generated in Volt:
+El mismo formulario generado en Volt:
 
 ```twig
-<!-- Specifying another method or attributes for the FORM tag -->
+<!-- Especificando otro método y atributos a la etiqueta FORM -->
 {{ form('products/search', 'method': 'get') }}
-    <label for='q'>Search:</label>
+    <label for='q'>Buscar:</label>
 
     {{ text_field('q') }}
 
-    {{ submit_button('Search') }}
+    {{ submit_button('Buscar') }}
 {{ endForm() }}
 ```
 
-Phalcon also provides a [form builder](/[[language]]/[[version]]/forms) to create forms in an object-oriented manner.
+Phalcon también ofrece un [constructor de formularios](/[[language]]/[[version]]/forms) para crear formularios de una manera orientada a objetos.
 
 <a name='helpers-for-form-elements'></a>
 
-## Helpers to Generate Form Elements
+## Ayudantes para Generar Elementos de Formulario
 
-Phalcon provides a series of helpers to generate form elements such as text fields, buttons and more. The first parameter of each helper is always the name of the element to be generated. When the form is submitted, the name will be passed along with the form data. In a controller you can get these values using the same name by using the `getPost()` and `getQuery()` methods on the request object (`$this->request`).
+Phalcon proporciona una serie de ayudantes para generar elementos de formulario como campos de texto, botones y más. El primer parámetro de cada ayudante es siempre el nombre del elemento a generar. Cuando el formulario es enviado, el nombre se pasará junto con los datos del formulario. En un controlador puede obtener estos valores utilizando el mismo nombre mediante los métodos `getPost()` y `getQuery()` en el objeto de la petición (`$this->request`).
 
 ```php
 <?php echo $this->tag->textField('username') ?>
@@ -235,7 +235,7 @@ Phalcon provides a series of helpers to generate form elements such as text fiel
 <?php echo $this->tag->textArea(
     [
         'comment',
-        'This is the content of the text-area',
+        'Este es el contenido del textarea',
         'cols' => '6',
         'rows' => 20,
     ]
@@ -256,12 +256,12 @@ Phalcon provides a series of helpers to generate form elements such as text fiel
 ) ?>
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```twig
 {{ text_field('username') }}
 
-{{ text_area('comment', 'This is the content', 'cols': '6', 'rows': 20) }}
+{{ text_area('comment', 'Este es el contenido del textarea', 'cols': '6', 'rows': 20) }}
 
 {{ password_field('password', 'size': 30) }}
 
@@ -270,16 +270,16 @@ Volt syntax:
 
 <a name='select-boxes'></a>
 
-## Making Select Boxes
+## Armando Cajas de Selección
 
-Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are `Phalcon\Tag::select()` and `Phalcon\Tag::selectStatic()`. `Phalcon\Tag::select()` has been was specifically designed to work with the Phalcon [Models](/[[language]]/[[version]]/models) (`Phalcon\Mvc\Model`), while `Phalcon\Tag::selectStatic()` can with PHP arrays.
+Generar cajas de selección, combos select, input select o como desee llamarlos, es fácil, especialmente si los datos relacionados está almacenados en arreglos asociativos de PHP. Los helpers para los elementos select son `Phalcon\Tag::select()` y `Phalcon\Tag::selectStatic()`. `Phalcon\Tag::select()` ha sido fue diseñado específicamente para trabajar con los [modelos](/[[language]]/[[version]]/models) (`Phalcon\Mvc\Model`), mientras que `Phalcon\Tag::selectStatic()` con los arreglos de PHP.
 
 ```php
 <?php
 
 $products = Products::find("type = 'vegetables'");
 
-// Using data from a resultset
+// Usando datos desde un Resultset
 echo $this->tag->select(
     [
         'productId',
@@ -291,7 +291,7 @@ echo $this->tag->select(
     ]
 );
 
-// Using data from an array
+// Usando datos desde un array
 echo $this->tag->selectStatic(
     [
         'status',
@@ -303,7 +303,7 @@ echo $this->tag->selectStatic(
 );
 ```
 
-The following HTML will generated:
+Se producirá el siguiente código HTML:
 
 ```html
     <select id='productId' name='productId'>
@@ -318,14 +318,14 @@ The following HTML will generated:
     </select>
 ```
 
-You can add an `empty` option to the generated HTML:
+Puede añadir una opción vacía con el valor `useEmpty` en el HTML generado:
 
 ```php
     <?php
 
     $products = Products::find("type = 'vegetables'");
 
-    // Creating a Select Tag with an empty option
+    // Creando una etiqueta select con una opción vacía
     echo $this->tag->select(
         [
             'productId',
@@ -339,7 +339,7 @@ You can add an `empty` option to the generated HTML:
     );
 ```
 
-Produces this HTML:
+Produce este HTML:
 
 ```html
 <select id='productId' name='productId'>
@@ -355,7 +355,7 @@ Produces this HTML:
 
 $products = Products::find("type = 'vegetables'");
 
-// Creating a Select Tag with an empty option with default text
+// Creando una etiqueta Select con una opción vacía y un texto por defecto
 echo $this->tag->select(
     [
         'productId',
@@ -365,7 +365,7 @@ echo $this->tag->select(
             'name',
         ],
         'useEmpty'   => true,
-        'emptyText'  => 'Please, choose one...',
+        'emptyText'  => 'Por favor, seleccionar una opción...',
         'emptyValue' => '@',
     ]
 );
@@ -373,26 +373,26 @@ echo $this->tag->select(
 
 ```html
 <select id='productId' name='productId'>
-    <option value='@'>Please, choose one..</option>
+    <option value='@'>Por favor, seleccione una opción..</option>
     <option value='101'>Tomato</option>
     <option value='102'>Lettuce</option>
     <option value='103'>Beans</option>
 </select>
 ```
 
-Volt syntax for above example:
+La sintaxis Volt del anterior ejemplo sería:
 
 ```twig
-    {# Creating a Select Tag with an empty option with default text #}
+    {# Creando una etiqueta Select con una opción vacía y un texto por defecto #}
     {{ select('productId', products, 'using': ['id', 'name'],
-        'useEmpty': true, 'emptyText': 'Please, choose one...', 'emptyValue': '@') }}
+        'useEmpty': true, 'emptyText': 'Por favor, seleccione una opción...', 'emptyValue': '@') }}
 ```
 
 <a name='html-attributes'></a>
 
-## Assigning HTML attributes
+## Asignando Atributos HTML
 
-All the helpers accept an array as their first parameter which can contain additional HTML attributes for the element generated.
+Todos los helpers aceptan un arreglo como su primer parámetro, el cual puede contener atributos HTML adicionales para el elemento generado.
 
 ```php
 <?php $this->tag->textField(
@@ -400,33 +400,33 @@ All the helpers accept an array as their first parameter which can contain addit
         'price',
         'size'        => 20,
         'maxlength'   => 30,
-        'placeholder' => 'Enter a price',
+        'placeholder' => 'Ingrese el precio',
     ]
 ) ?>
 ```
 
-or using Volt:
+o utilizando Volt:
 
 ```twig
-{{ text_field('price', 'size': 20, 'maxlength': 30, 'placeholder': 'Enter a price') }}
+{{ text_field('price', 'size': 20, 'maxlength': 30, 'placeholder': 'Ingrese el precio') }}
 ```
 
-The following HTML is generated:
+Se producirá el siguiente código HTML:
 
 ```html
 <input type='text' name='price' id='price' size='20' maxlength='30'
-       placeholder='Enter a price' />
+       placeholder='Ingrese el precio' />
 ```
 
 <a name='helper-values'></a>
 
-## Setting Helper Values
+## Estableciendo los valores del Ayudante
 
 <a name='helper-values-form-controllers'></a>
 
-### From Controllers
+### Desde los controladores
 
-It is a good programming principle for MVC frameworks to set specific values for form elements in the view. You can set those values directly from the controller using `Phalcon\Tag::setDefault()`. This helper preloads a value for any helpers present in the view. If any helper in the view has a name that matches the preloaded value, it will use it, unless a value is directly assigned on the helper in the view.
+Es un buen principio de programación para frameworks MVC especificar los valores para cada uno de los elementos del formulario en la vista. Se pueden establecer estos valores directamente en el controlador usando `Phalcon\Tag::setDefault()`. Este ayudante precarga un valor para cualquier ayudante presente en la vista. Si ningún ayudante en la vista tiene un nombre que coincide con el valor precargado, se utilizará este, a menos que directamente se asigne un valor en el ayudante de la vista.
 
 ```php
 <?php
@@ -437,12 +437,12 @@ class ProductsController extends Controller
 {
     public function indexAction()
     {
-        $this->tag->setDefault('color', 'Blue');
+        $this->tag->setDefault('color', 'Azul');
     }
 }
 ```
 
-At the view, a selectStatic helper matches the same index used to preset the value. In this case `color`:
+En la vista, un ayudante selectStatic coincide con el mismo índice que se utiliza para preestablecer el valor. En este caso `color`:
 
 ```php
 <?php
@@ -451,41 +451,41 @@ echo $this->tag->selectStatic(
     [
         'color',
         [
-            'Yellow' => 'Yellow',
-            'Blue'   => 'Blue',
-            'Red'    => 'Red',
+            'Amarillo' => 'Amarillo',
+            'Azul'     => 'Azul',
+            'Rojo'     => 'Rojo',
         ]
     ]
 );
 ```
 
-This will generate the following select tag with the value 'Blue' selected:
+Esto generará la siguiente etiqueta select con el valor 'Azul' seleccionado:
 
 ```html
 <select id='color' name='color'>
-    <option value='Yellow'>Yellow</option>
-    <option value='Blue' selected='selected'>Blue</option>
-    <option value='Red'>Red</option>
+    <option value='Amarillo'>Amarillo</option>
+    <option value='Azul' selected='selected'>Azul</option>
+    <option value='Rojo'>Rojo</option>
 </select>
 ```
 
 <a name='helper-values-from-request'></a>
 
-### From the Request
+### Desde la consulta
 
-A special feature that the `Phalcon\Tag` helpers have is that they keep the values of form helpers between requests. This way you can easily show validation messages without losing entered data.
+Una característica especial que los ayudantes de `Phalcon\Tag` es mantener los valores de los ayudantes del formulario entre las solicitudes. De esta manera puede fácilmente mostrar mensajes de validación sin perder los datos introducidos.
 
 <a name='helper-values-directly'></a>
 
-### Specifying values directly
+### Especificando valores directamente
 
-Every form helper supports the parameter 'value'. With it you can specify a value for the helper directly. When this parameter is present, any preset value using setDefault() or via request will be ignored.
+Cada ayudante de formulario soporta el parámetro 'value'. Con este es posible especificar directamente el valor al ayudante. Cuando este parámetro es presentado, cualquier valor utilizado en el método `setDefault()` o a través de la consulta, serán ignorados.
 
 <a name='changing-document-title-dynamically'></a>
 
-## Changing dynamically the Document Title
+## Cambiando dinámicamente el título del documento
 
-`Phalcon\Tag` offers helpers to change dynamically the document title from the controller. The following example demonstrates just that:
+`Phalcon\Tag` ofrece ayudantes para cambiar dinámicamente el título del documento desde el controlador. En el ejemplo siguiente se muestra justamente esto:
 
 ```php
 <?php
@@ -496,12 +496,12 @@ class PostsController extends Controller
 {
     public function initialize()
     {
-        $this->tag->setTitle('Your Website');
+        $this->tag->setTitle('Tu sitio Web');
     }
 
     public function indexAction()
     {
-        $this->tag->prependTitle('Index of Posts - ');
+        $this->tag->prependTitle('Indice de los Posts - ');
     }
 }
 ```
@@ -518,12 +518,12 @@ class PostsController extends Controller
 </html>
 ```
 
-The following HTML will generated:
+Se producirá el siguiente código HTML:
 
 ```php
 <html>
     <head>
-        <title>Index of Posts - Your Website</title>
+        <title>Indice de los Posts - Tu sitio Web</title>
     </head>
 
     <body>
@@ -534,60 +534,60 @@ The following HTML will generated:
 
 <a name='static-content-helpers'></a>
 
-## Static Content Helpers
+## Ayudantes de contenidos estáticos
 
-`Phalcon\Tag` also provide helpers to generate tags such as script, link or img. They aid in quick and easy generation of the static resources of your application
+`Phalcon\Tag` también provee ayudantes para generar etiquetas tales como script, link o img. Estos ayudan en la generación rápida y sencilla de los recursos estáticos de tu aplicación
 
 <a name='static-content-helpers-images'></a>
 
-### Images
+### Imágenes
 
 ```php
 <?php
 
-// Generate <img src='/your-app/img/hello.gif'>
+// Genera <img src='/your-app/img/hello.gif'>
 echo $this->tag->image('img/hello.gif');
 
-// Generate <img alt='alternative text' src='/your-app/img/hello.gif'>
+// Genera <img alt='texto alternativo' src='/your-app/img/hello.gif'>
 echo $this->tag->image(
     [
        'img/hello.gif',
-       'alt' => 'alternative text',
+       'alt' => 'texto alternativo',
     ]
 );
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```twig
-{# Generate <img src='/your-app/img/hello.gif'> #}
+{# Genera <img src='/your-app/img/hello.gif'> #}
 {{ image('img/hello.gif') }}
 
-{# Generate <img alt='alternative text' src='/your-app/img/hello.gif'> #}
-{{ image('img/hello.gif', 'alt': 'alternative text') }}
+{# Genera <img alt='texto alternativo' src='/your-app/img/hello.gif'> #}
+{{ image('img/hello.gif', 'alt': 'texto alternativo') }}
 ```
 
 <a name='static-content-helpers-stylesheets'></a>
 
-### Stylesheets
+### Hojas de estilo
 
 ```php
 <?php
 
-// Generate <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Rosario' type='text/css'>
+// Genera <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Rosario' type='text/css'>
 echo $this->tag->stylesheetLink('http://fonts.googleapis.com/css?family=Rosario', false);
 
-// Generate <link rel='stylesheet' href='/your-app/css/styles.css' type='text/css'>
+// Genera <link rel='stylesheet' href='/your-app/css/styles.css' type='text/css'>
 echo $this->tag->stylesheetLink('css/styles.css');
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```twig
-{# Generate <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Rosario' type='text/css'> #}
+{# Genera <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Rosario' type='text/css'> #}
 {{ stylesheet_link('http://fonts.googleapis.com/css?family=Rosario', false) }}
 
-{# Generate <link rel='stylesheet' href='/your-app/css/styles.css' type='text/css'> #}
+{# Genera <link rel='stylesheet' href='/your-app/css/styles.css' type='text/css'> #}
 {{ stylesheet_link('css/styles.css') }}
 ```
 
@@ -598,35 +598,35 @@ Volt syntax:
 ```php
 <?php
 
-// Generate <script src='http://localhost/javascript/jquery.min.js' type='text/javascript'></script>
+// Genera <script src='http://localhost/javascript/jquery.min.js' type='text/javascript'></script>
 echo $this->tag->javascriptInclude('http://localhost/javascript/jquery.min.js', false);
 
-// Generate <script src='/your-app/javascript/jquery.min.js' type='text/javascript'></script>
+// Genera <script src='/your-app/javascript/jquery.min.js' type='text/javascript'></script>
 echo $this->tag->javascriptInclude('javascript/jquery.min.js');
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```twig
-{# Generate <script src='http://localhost/javascript/jquery.min.js' type='text/javascript'></script> #}
+{# Genera <script src='http://localhost/javascript/jquery.min.js' type='text/javascript'></script> #}
 {{ javascript_include('http://localhost/javascript/jquery.min.js', false) }}
 
-{# Generate <script src='/your-app/javascript/jquery.min.js' type='text/javascript'></script> #}
+{# Genera <script src='/your-app/javascript/jquery.min.js' type='text/javascript'></script> #}
 {{ javascript_include('javascript/jquery.min.js') }}
 ```
 
 <a name='static-content-helpers-html5'></a>
 
-### HTML5 elements - generic HTML helper
+### Elementos HTML5 - Ayudante HTML genérico
 
-Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name to the helper.
+Phalcon ofrece un ayudante HTML genérico que permite la generación de cualquier tipo de elemento HTML. Depende del desarrollador producir un nombre de elemento HTML válido para el ayudante.
 
 ```php
 <?php
 
-// Generate
+// Genera
 // <canvas id='canvas1' width='300' class='cnvclass'>
-// This is my canvas
+// Este es mi lienzo
 // </canvas>
 echo $this->tag->tagHtml(
     'canvas', 
@@ -639,33 +639,33 @@ echo $this->tag->tagHtml(
     true, 
     true
 );
-echo 'This is my canvas';
+echo 'Este es mi lienzo';
 echo $this->tag->tagHtmlClose('canvas');
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```php
-{# Generate
+{# Genera
 <canvas id='canvas1' width='300' class='cnvclass'>
-This is my canvas
+Ese es mi lienzo
 </canvas> #}
 {{ tag_html('canvas', ['id': 'canvas1', width': '300', 'class': 'cnvclass'], false, true, true) }}
-    This is my canvas
+    Este es mi lienzo
 {{ tag_html_close('canvas') }}
 ```
 
 <a name='tag-helpers'></a>
 
-## Tag Service
+## Servicio Tag (Etiquetas)
 
-`Phalcon\Tag` is available via the [tag](/[[language]]/[[version]]/tag) service, this means you can access it from any part of the application where the services container is located:
+`Phalcon\Tag` está disponible mediante el servicio [tag](/[[language]]/[[version]]/tag), esto significa que se puede acceder desde cualquier parte de la aplicación donde se encuentre el contenedor de servicios:
 
 ```php
-<?php echo $this->tag->linkTo('pages/about', 'About') ?>
+<?php echo $this->tag->linkTo('pages/about', 'Acerca de') ?>
 ```
 
-You can easily add new helpers to a custom component replacing the service 'tag' in the services container:
+Puedes agregar fácilmente nuevos ayudantes a un componente personalizado reemplazando el servicio 'tag' en el contenedor de servicios:
 
 ```php
 <?php
@@ -676,13 +676,13 @@ class MyTags extends Tag
 {
     // ...
 
-    // Create a new helper
+    // Crear un nuevo ayudante
     public static function myAmazingHelper($parameters)
     {
         // ...
     }
 
-    // Override an existing method
+    // Sobrecargar un método existente
     public static function textField($parameters)
     {
         // ...
@@ -690,7 +690,7 @@ class MyTags extends Tag
 }
 ```
 
-Then change the definition of the service [tag](/[[language]]/[[version]]/tag):
+Luego puedes cambiar la definición del servicio [tag](/[[language]]/[[version]]/tag):
 
 ```php
 <?php
@@ -702,9 +702,9 @@ $di['tag'] = function () {
 
 <a name='custom-helpers'></a>
 
-## Creating your own helpers
+## Creando tus propios ayudantes
 
-You can easily create your own helpers. First, start by creating a new folder within the same directory as your controllers and models. Give it a title that is relative to what you are creating. For our example here, we can call it 'customhelpers'. Next we will create a new file titled `MyTags.php` within this new directory. At this point, we have a structure that looks similar to : `/app/customhelpers/MyTags.php`. In `MyTags.php`, we will extend the `Phalcon\Tag` and implement your own helper. Below is a simple example of a custom helper:
+Usted puede crear fácilmente sus propios ayudantes. En primer lugar, empiece por crear una nueva carpeta dentro del mismo directorio como para sus controladores y modelos. Darle un título que tenga relación con lo que se está creando. Para nuestro ejemplo podemos llamarlo 'customhelpers'. A continuación vamos a crear un nuevo archivo titulado `MyTags.php` dentro de este nuevo directorio. En este punto, tenemos una estructura similar a: `/app/customhelpers/MyTags.php`. `MyTags.php`, extenderá de `Phalcon\Tag` e implementaremos su propio ayudante. A continuación está un ejemplo simple de un ayudante personalizado:
 
 ```php
 <?php
@@ -714,19 +714,19 @@ use Phalcon\Tag;
 class MyTags extends Tag
 {
     /**
-     * Generates a widget to show a HTML5 audio tag
+     * Generamos un widget para mostrar la etiqueta audio de HTML5
      *
      * @param array
      * @return string
      */
     public static function audioField($parameters)
     {
-        // Converting parameters to array if it is not
+        // Convirtimos los parámetros en array si no lo son
         if (!is_array($parameters)) {
             $parameters = [$parameters];
         }
 
-        // Determining attributes 'id' and 'name'
+        // Determinamos el atributo 'id' y 'name'
         if (!isset($parameters[0])) {
             $parameters[0] = $parameters['id'];
         }
@@ -741,17 +741,16 @@ class MyTags extends Tag
             }
         }
 
-        // Determining widget value,
-        // \Phalcon\Tag::setDefault() allows to set the widget value
+        // Determinamos el valor de widget,
+        // \Phalcon\Tag::setDefault() permite establecer el valor del mismo
         if (isset($parameters['value'])) {
             $value = $parameters['value'];
-
             unset($parameters['value']);
         } else {
             $value = self::getValue($id);
         }
 
-        // Generate the tag code
+        // Generamos el código de la etiqueta
         $code = '<audio id="' . $id . '" value="' . $value . '" ';
 
         foreach ($parameters as $key => $attributeValue) {
@@ -767,7 +766,7 @@ class MyTags extends Tag
 }
 ```
 
-After creating our custom helper, we will autoload the new directory that contains our helper class from our `index.php` located in the public directory.
+Después de crear nuestro ayudante personalizado, vamos a cargar automáticamente el nuevo directorio que contiene nuestra clase auxiliar desde nuestro `index.php` que se encuentra en el directorio público.
 
 ```php
 <?php
@@ -784,7 +783,7 @@ try {
         [
             '../app/controllers',
             '../app/models',
-            '../app/customhelpers', // Add the new helpers folder
+            '../app/customhelpers', // Agregamos la nueva carpeta de ayudantes
         ]
     );
 
@@ -792,7 +791,7 @@ try {
 
     $di = new FactoryDefault();
 
-    // Assign our new tag a definition so we can call it
+    // Asignamos la nueva definición de etiquetas para que podamos llamarla
     $di->set(
         'MyTags',
         function () {
@@ -806,11 +805,11 @@ try {
 
     $response->send();
 } catch (PhalconException $e) {
-    echo 'PhalconException: ', $e->getMessage();
+    echo 'Excepción de Phalcon: ', $e->getMessage();
 }
 ```
 
-Now you are ready to use your new helper within your views:
+Ahora estás listo para usar tu nuevo ayudante en tus vistas:
 
 ```php
 <body>
@@ -830,4 +829,4 @@ Now you are ready to use your new helper within your views:
 </body>
 ```
 
-You can also check out [Volt](/[[language]]/[[version]]/volt) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by `Phalcon\Tag`.
+Puede también darle un vistazo a [Volt](/[[language]]/[[version]]/volt) un motor rápido de plantillas de PHP, donde se puede utilizar una sintaxis amigable con el desarrollador para usar con los ayudantes proporcionados por `Phalcon\Tag`.
