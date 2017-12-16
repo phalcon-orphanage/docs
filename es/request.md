@@ -138,13 +138,13 @@ class PostsController extends Controller
 }
 ```
 
-Cada objeto retornado por `Phalcon\Http\Request::getUploadedFiles()` es una instancia de la clase `Phalcon\Http\Request\File`. Utilizar el arreglo superglobal `$_FILES` ofrece el mismo comportamiento. `Phalcon\Http\Request\File` encapsulates only the information related to each file uploaded with the request.
+Cada objeto retornado por `Phalcon\Http\Request::getUploadedFiles()` es una instancia de la clase `Phalcon\Http\Request\File`. Utilizar el arreglo superglobal `$_FILES` ofrece el mismo comportamiento. `Phalcon\Http\Request\File` encapsula solo la información relacionada con cada archivo subido en la consulta.
 
 <a name='working-with-headers'></a>
 
 ## Trabajando con Cabeceras
 
-As mentioned above, request headers contain useful information that allow us to send the proper response back to the user. The following examples show usages of that information:
+Como se mencionó anteriormente, los encabezados de las solicitudes contienen información útil que nos permite enviar la respuesta adecuada de nuevo al usuario. Los siguientes ejemplos muestran usos de esa información:
 
 ```php
 <?php
