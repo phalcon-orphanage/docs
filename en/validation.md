@@ -299,7 +299,7 @@ if (count($messages)) {
 }
 ```
 
-You can pass a `message` parameter to change/translate the default message in each validator:
+You can pass a `message` parameter to change/translate the default message in each validator, even it's possible to use the wildcard `:field` in the message to be replaced by the label of the field:
 
 ```php
 <?php
