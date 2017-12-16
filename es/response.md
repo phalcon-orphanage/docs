@@ -160,8 +160,8 @@ La memoria caché HTTP se puede modificar en los siguientes valores de encabezad
 
 * **`Expires:`** con este encabezado, la aplicación puede establecer una fecha en el futuro o en el pasado que indique al navegador cuándo debe caducar la página.
 * **`Cache-Control:`** este encabezado permite especificar cuánto tiempo una página debe considerarse como fresca en el navegador.
-* **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads.
-* **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page.
+* **`Last-Modified:`** este encabezado le dice al navegador cuál fue la última vez que se actualizó el sitio, evitando que la página se vuelva a cargar.
+* **`ETag:`** un etag es un identificador único que se debe ser creado incluyendo el tiempo de modificación de la página actual.
 
 <a name='http-cache-expiration-time'></a>
 
