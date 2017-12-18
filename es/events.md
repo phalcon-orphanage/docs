@@ -1,34 +1,34 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Events Manager</a> 
+      <a href="#overview">Gestor de Eventos</a> 
       <ul>
         <li>
-          <a href="#naming-convention">Naming Convention</a>
+          <a href="#naming-convention">Convención de Nombres</a>
         </li>
         <li>
-          <a href="#usage">Usage Example</a>
+          <a href="#usage">Ejemplo de Uso</a>
         </li>
         <li>
-          <a href="#components-that-trigger-events">Creating components that trigger Events</a>
+          <a href="#components-that-trigger-events">Creando Componentes que Desencadenan Eventos</a>
         </li>
         <li>
-          <a href="#using-services">Using Services From The DI</a>
+          <a href="#using-services">Utilización Servicios del DI</a>
         </li>
         <li>
-          <a href="#propagation-cancellation">Event Propagation/Cancellation</a>
+          <a href="#propagation-cancellation">Propagación y Cancelación de Eventos</a>
         </li>
         <li>
-          <a href="#listener-priorities">Listener Priorities</a>
+          <a href="#listener-priorities">Prioridades del Oyente</a>
         </li>
         <li>
-          <a href="#collecting-responses">Collecting Responses</a>
+          <a href="#collecting-responses">Recogiendo Respuestas</a>
         </li>
         <li>
-          <a href="#custom">Implementing your own EventsManager</a>
+          <a href="#custom">Implementando tu propio EventsManager</a>
         </li>
         <li>
-          <a href="#list">List of events</a>
+          <a href="#list">Lista de Eventos</a>
         </li>
       </ul>
     </li>
@@ -37,23 +37,23 @@
 
 <a name='overview'></a>
 
-# Events Manager
+# Gestor de Eventos
 
-The purpose of this component is to intercept the execution of most of the other components of the framework by creating 'hook points'. These hook points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
+El propósito de este componente es interceptar la ejecución de la mayoría de los otros componentes del framework mediante la creación de 'puntos de anclaje'. Estos puntos de anclaje o gancho permiten al desarrollador obtener información del estado, manipular los datos o cambiar el flujo de ejecución durante el proceso de un componente.
 
 <a name='naming-convention'></a>
 
-## Naming Convention
+## Convención de Nombres
 
-Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as `Phalcon\Db` occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
+Los eventos de Phalcon utilizan espacios de nombres para evitar colisiones de nombres. Cada componente de Phalcon ocupa un espacio de nombres de evento diferente y eres libre crear el tuyo propio como mejor te parezca. Los nombres de evento tienen el formato `componente:evento`. Por ejemplo, como `Phalcon\Db` ocupa el espacio de nombres `db`, su nombre completo del evento `afterQuery` es `db:afterQuery`.
 
-When attaching event listeners to the events manager, you can use `component` to catch all events from that component (eg. `db` to catch all of the `Phalcon\Db` events) or `component:event` to target a specific event (eg. `db:afterQuery`).
+Al adjuntar oyentes de eventos en el administrador de eventos, puede utilizar el `componente` para atrapar a todos los eventos de dicho componente (por ejemplo. `db` para capturar todos los eventos de `Phalcon\Db`) o `componente:evento` para un evento específico (por ejemplo `db:afterQuery`).
 
 <a name='usage'></a>
 
-## Usage Example
+## Ejemplo de Uso
 
-In the following example, we will use the EventsManager to listen for the `afterQuery` event produced in a MySQL connection managed by `Phalcon\Db`:
+En el siguiente ejemplo, utilizaremos el EventsManager para escuchar el evento `afterQuery` en una conexión de MySQL administrada por `Phalcon\Db`:
 
 ```php
 <?php
@@ -80,24 +80,24 @@ $connection = new DbAdapter(
     ]
 );
 
-// Assign the eventsManager to the db adapter instance
+// Asignar el eventsManager a la instancia del adaptador db
 $connection->setEventsManager($eventsManager);
 
-// Send a SQL command to the database server
+// Enviar un comando SQL al servidor de base de datos
 $connection->query(
     'SELECT * FROM products p WHERE p.status = 1'
 );
 ```
 
-Now every time a query is executed, the SQL statement will be echoed out. The first parameter passed to the lambda function contains contextual information about the event that is running, the second is the source of the event (in this case the connection itself). A third parameter may also be specified which will contain arbitrary data specific to the event.
+Ahora, cada vez que se ejecuta una consulta, la instrucción SQL se repetirá. El primer parámetro a la función lambda contiene información contextual sobre el evento que se ejecuta, el segundo parámetro es la fuente del evento (en este caso la conexión sí misma). También se puede especificar un tercer parámetro que contiene datos arbitrarios específicos para el evento.
 
 <div class="alert alert-warning">
     <p>
-        You must explicitly set the Events Manager to a component using the <code>setEventsManager()</code> method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts.
+        Debe configurar explícitamente el administrador de eventos de un componente mediante el método <code>setEventsManager()</code> de tal forma que el componente dispare los eventos. Usted puede crear una nueva instancia del gestor de eventos para cada componente o puede establecer el mismo gestor de eventos para varios componentes, ya que la convención de nombres evitará conflictos.
     </p>
 </div>
 
-Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events. In this example, we will implement the `Phalcon\Db\Profiler` to detect the SQL statements that are taking longer to execute than expected:
+En lugar de utilizar funciones anónimas, se puede utilizar las clases oyentes de eventos. Los oyentes o detectores de eventos también permiten escuchar a varios eventos. En este ejemplo, vamos a implementar el `Phalcon\Db\Profiler` para detectar las declaraciones SQL que están tomando más tiempo de lo previsto para su ejecución:
 
 ```php
 <?php
@@ -114,7 +114,7 @@ class MyDbListener
     protected $logger;
 
     /**
-     * Creates the profiler and starts the logging
+     * Creamos el perfilador e iniciamos el registro
      */
     public function __construct()
     {
@@ -123,7 +123,7 @@ class MyDbListener
     }
 
     /**
-     * This is executed if the event triggered is 'beforeQuery'
+     * Este es ejecutado si el evento disparado es 'beforeQuery'
      */
     public function beforeQuery(Event $event, $connection)
     {
@@ -133,7 +133,7 @@ class MyDbListener
     }
 
     /**
-     * This is executed if the event triggered is 'afterQuery'
+     * Este es ejecutado si el evento disparado es 'afterQuery'
      */
     public function afterQuery(Event $event, $connection)
     {
