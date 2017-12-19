@@ -353,9 +353,9 @@ $router->add(
 
 In this case, the route always must have the module name as part of the URL. For example, the following URL: `/admin/users/edit/sonny`, will be processed as:
 
-| Module | Controller | Action | Parameter |
-|:------:|:----------:|:------:|:---------:|
-| admin  |   users    |  edit  |   sonny   |
+| Módulo | Controlador | Acción | Parámetro |
+|:------:|:-----------:|:------:|:---------:|
+| admin  |    users    |  edit  |   sonny   |
 
 Or you can bind specific routes to specific modules:
 
@@ -687,7 +687,7 @@ echo $url->get(
 
 ## Usage Examples
 
-The following are examples of custom routes:
+Los siguientes son ejemplos de rutas personalizadas:
 
 ```php
 <?php
@@ -775,13 +775,13 @@ $router->add(
 
 <a name='default-behavior'></a>
 
-## Default Behavior
+## Comportamiento predeterminado
 
 `Phalcon\Mvc\Router` has a default behavior that provides a very simple routing that always expects a URI that matches the following pattern: `/:controller/:action/:params`
 
 For example, for a URL like this `http://phalconphp.com/documentation/show/about.html`, this router will translate it as follows:
 
-|  Controller   | Action | Parameter  |
+|  Controlador  | Acción | Parámetro  |
 |:-------------:|:------:|:----------:|
 | documentation |  show  | about.html |
 
@@ -798,7 +798,7 @@ $router = new Router(false);
 
 <a name='default-route'></a>
 
-## Setting the default route
+## Establecer la ruta por defecto
 
 When your application is accessed without any route, the '/' route is used to determine what paths must be used to show the initial page in your website/application:
 
@@ -1105,7 +1105,7 @@ $router->handle('/some/route/to/handle');
 
 <a name='testing'></a>
 
-## Testing your routes
+## Probando tus rutas
 
 Since this component has no dependencies, you can create a file as shown below to test your routes:
 
@@ -1151,7 +1151,7 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='annotations'></a>
 
-## Annotations Router
+## Anotaciones de Router
 
 This component provides a variant that's integrated with the [annotations](/[[language]]/[[version]]/annotations) service. Using this strategy you can write the routes directly in the controllers instead of adding them in the service registration:
 
@@ -1237,24 +1237,24 @@ class ProductsController
 
 Only methods marked with valid annotations are used as routes. List of annotations supported:
 
-| Name        | Description                                                                                       | Usage                                  |
-| ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
-| Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
-| Get         | This annotation marks a method as a route restricting the HTTP method to `GET`                    | `@Get('/api/products/search')`         |
-| Post        | This annotation marks a method as a route restricting the HTTP method to `POST`                   | `@Post('/api/products/save')`          |
-| Put         | This annotation marks a method as a route restricting the HTTP method to `PUT`                    | `@Put('/api/products/save')`           |
-| Delete      | This annotation marks a method as a route restricting the HTTP method to `DELETE`                 | `@Delete('/api/products/delete/{id}')` |
-| Options     | This annotation marks a method as a route restricting the HTTP method to `OPTIONS`                | `@Option('/api/products/info')`        |
+| Nombre      | Descripción                                                                                                          | Uso                                    |
+| ----------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| RoutePrefix | Un prefijo que debe ser agregado al comienzo de cada URI. Esta anotación debe ser ubicada en el docblock de la clase | `@RoutePrefix('/api/products')`        |
+| Route       | Esta anotación marca al método como una ruta. Esta anotación debe ser ubicada en el docblock del método              | `@Route('/api/products/show')`         |
+| Get         | Esta anotación marca el método como una ruta restringida al método `GET` de HTTP                                     | `@Get('/api/products/search')`         |
+| Post        | Esta anotación marca el método como una ruta restringida al método `POST` de HTTP                                    | `@Post('/api/products/save')`          |
+| Put         | Esta anotación marca el método como una ruta restringida al método `PUT` de HTTP                                     | `@Put('/api/products/save')`           |
+| Delete      | Esta anotación marca el método como una ruta restringida al método `DELETE` de HTTP                                  | `@Delete('/api/products/delete/{id}')` |
+| Options     | Esta anotación marca el método como una ruta restringida al método `OPTIONS` de HTTP                                 | `@Option('/api/products/info')`        |
 
 For annotations that add routes, the following parameters are supported:
 
-| Name       | Description                                                            | Usage                                                                |
-| ---------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| methods    | Define one or more HTTP method that route must meet with               | `@Route('/api/products', methods={'GET', 'POST'})`                   |
-| name       | Define a name for the route                                            | `@Route('/api/products', name='get-products')`                       |
-| paths      | An array of paths like the one passed to `Phalcon\Mvc\Router::add()` | `@Route('/posts/{id}/{slug}', paths={module='backend'})`             |
-| conversors | A hash of conversors to be applied to the parameters                   | `@Route('/posts/{id}/{slug}', conversors={id='MyConversor::getId'})` |
+| Nombre     | Descripción                                                         | Uso                                                                  |
+| ---------- | ------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| methods    | Define uno o más métodos HTTP que la ruta debe cumplir              | `@Route('/api/products', methods={'GET', 'POST'})`                   |
+| name       | Define el nombre de la ruta                                         | `@Route('/api/products', name='get-products')`                       |
+| paths      | Un arreglo de rutas como el pasado en `Phalcon\Mvc\Router::add()` | `@Route('/posts/{id}/{slug}', paths={module='backend'})`             |
+| conversors | Un hash del conversor para aplicar a los parámetros                 | `@Route('/posts/{id}/{slug}', conversors={id='MyConversor::getId'})` |
 
 If you're using modules in your application, it is better use the `addModuleResource()` method:
 
@@ -1276,7 +1276,7 @@ $di['router'] = function () {
 
 <a name='registration'></a>
 
-## Registering Router instance
+## Registro de instancia de Router
 
 You can register router during service registration with Phalcon dependency injector to make it available inside the controllers.
 
