@@ -16,7 +16,7 @@
         <li>
           <a href="#apache">Apache</a> <ul>
             <li>
-              <a href="#apache-phalcon-configuration">Phalcon configuration</a> <ul>
+              <a href="#apache-phalcon-configuration">Настройка Phalcon</a> <ul>
                 <li>
                   <a href="#apache-document-root">Корневой каталог</a>
                 </li>
@@ -33,14 +33,14 @@
         <li>
           <a href="#cherokee">Cherokee</a> <ul>
             <li>
-              <a href="#cherokee-phalcon-configuration">Phalcon configuration</a>
+              <a href="#cherokee-phalcon-configuration">Настройка Phalcon</a>
             </li>
           </ul>
         </li>
         <li>
           <a href="#php-built-in">Встроенный веб-сервер</a> <ul>
             <li>
-              <a href="#php-built-in-phalcon-configuration">Phalcon configuration</a>
+              <a href="#php-built-in-phalcon-configuration">Настройка Phalcon</a>
             </li>
           </ul>
         </li>
@@ -51,7 +51,7 @@
 
 <a name='setup'></a>
 
-# Web Server Setup
+# Настройка веб-сервера
 
 Чтобы работала маршрутизация (анг. routing) в Phalcon, вам понадобится настроить должным образом веб-сервер, научив его правильно обрабатывать перенаправления. Ниже рассматриваются типичные конфигурации для популярных веб-серверов:
 
@@ -65,7 +65,7 @@
 
 <a name='nginx-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Настройка Phalcon
 
 Конфигурации ниже позволят настроить Nginx для работы с Phalcon:
 
@@ -256,7 +256,7 @@ test/
 
 <a name='cherokee-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Настройка Phalcon
 
 Cherokee имеет удобный графический интерфейс для настройки практически всех параметров, доступных в веб-сервере.
 
