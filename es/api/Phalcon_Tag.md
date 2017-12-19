@@ -1,10 +1,10 @@
-# Class **Phalcon\\Tag**
+# Clase **Phalcon\\Tag**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/tag.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/tag.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Phalcon\\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is an abstract class that you can extend to add more helpers.
+La clase Phalcon\\Tag está diseñada para simplificar la construcción de etiquetas HTML. Proporciona un conjunto de ayudantes para generar HTML de forma dinámica. Este componente es una clase abstracta que se puede ampliar para agregar más ayudantes.
 
-## Constants
+## Constantes
 
 *integer* **HTML32**
 
@@ -28,106 +28,106 @@ Phalcon\\Tag is designed to simplify building of HTML tags. It provides a set of
 
 *integer* **XHTML5**
 
-## Methods
+## Métodos
 
 public static *EscaperInterface* **getEscaper** (*array* $params)
 
-Obtains the 'escaper' service if required
+Obtiene el servicio 'escaper' si es necesario
 
 public static **renderAttributes** (*mixed* $code, *array* $attributes)
 
-Renders parameters keeping order in their HTML attributes
+Construye parámetros manteniendo el orden en sus atributos HTML
 
 public static **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector container.
+Define el contenedor del inyector de dependencias.
 
 public static **getDI** ()
 
-Internally gets the request dispatcher
+Internamente obtiene el despachador de solicitudes
 
 public static **getUrlService** ()
 
-Returns a URL service from the default DI
+Devuelve un servicio de URL del DI predeterminado
 
 public static **getEscaperService** ()
 
-Returns an Escaper service from the default DI
+Devuelve un servicio de Escaper del DI predeterminado
 
 public static **setAutoescape** (*mixed* $autoescape)
 
-Set autoescape mode in generated html
+Establece el modo autoescape en el HTML generado
 
 public static **setDefault** (*string* $id, *string* $value)
 
-Assigns default values to generated tags by helpers
+Asigna valores predeterminados a las etiquetas generadas por ayudantes
 
 ```php
 <?php
 
-// Assigning "peter" to "name" component
+// Asignando "peter" al componente "name"
 Phalcon\Tag::setDefault("name", "peter");
 
-// Later in the view
-echo Phalcon\Tag::textField("name"); // Will have the value "peter" by default
+// Después en la vista
+echo Phalcon\Tag::textField("name"); // tendrá el valor "peter" como valor predeterminado
 
 ```
 
 public static **setDefaults** (*array* $values, [*mixed* $merge])
 
-Assigns default values to generated tags by helpers
+Asigna valores predeterminados a las etiquetas generadas por los ayudantes
 
 ```php
 <?php
 
-// Assigning "peter" to "name" component
+// Asignando "peter" al componente "name"
 Phalcon\Tag::setDefaults(
     [
         "name" => "peter",
     ]
 );
 
-// Later in the view
-echo Phalcon\Tag::textField("name"); // Will have the value "peter" by default
+// Después en la vista
+echo Phalcon\Tag::textField("name"); // tendrá el valor "peter" como valor predeterminado
 
 ```
 
 public static **displayTo** (*string* $id, *string* $value)
 
-Alias of Phalcon\\Tag::setDefault
+Alias de Phalcon\\Tag::setDefault
 
 public static *boolean* **hasValue** (*string* $name)
 
-Check if a helper has a default value set using Phalcon\\Tag::setDefault or value from $_POST
+Comprueba si un ayudante tiene un valor predeterminado que se configuró utilizando Phalcon\\Tag::setDefault o el valor desde $_POST
 
 public static *mixed* **getValue** (*string* $name, [*array* $params])
 
-Every helper calls this function to check whether a component has a predefined value using Phalcon\\Tag::setDefault or value from $_POST
+Todos los ayudantes llaman a esta función para verificar si un componente tiene un valor predefinido mediante Phalcon\\Tag::setDefault o por un valor desde $_POST
 
 public static **resetInput** ()
 
-Resets the request and internal values to avoid those fields will have any default value.
+Restablece los valores solicitados y los valores internos para evitar que los campos tengan cualquier valor por defecto.
 
 public static **linkTo** (*array* | *string* $parameters, [*string* $text], [*boolean* $local])
 
-Builds a HTML A tag using framework conventions
+Construye un etiqueta HTML A usando convenciones del framework
 
 ```php
 <?php
 
-echo Phalcon\Tag::linkTo("signup/register", "Register Here!");
+echo Phalcon\Tag::linkTo("signup/register", "Registrarse aquí!");
 
 echo Phalcon\Tag::linkTo(
     [
         "signup/register",
-        "Register Here!"
+        "Registrarse aquí!"
     ]
 );
 
 echo Phalcon\Tag::linkTo(
     [
         "signup/register",
-        "Register Here!",
+        "Registrarse aquí!",
         "class" => "btn-primary",
     ]
 );
@@ -137,7 +137,7 @@ echo Phalcon\Tag::linkTo("http://phalconphp.com/", "Phalcon", false);
 echo Phalcon\Tag::linkTo(
     [
         "http://phalconphp.com/",
-        "Phalcon Home",
+        "Phalcon Página Principal",
         false,
     ]
 );
@@ -145,7 +145,7 @@ echo Phalcon\Tag::linkTo(
 echo Phalcon\Tag::linkTo(
     [
         "http://phalconphp.com/",
-        "Phalcon Home",
+        "Phalcon Página Principal",
         "local" => false,
     ]
 );
@@ -153,7 +153,7 @@ echo Phalcon\Tag::linkTo(
 echo Phalcon\Tag::linkTo(
     [
         "action" => "http://phalconphp.com/",
-        "text"   => "Phalcon Home",
+        "text"   => "Phalcon Página Principal",
         "local"  => false,
         "target" => "_new"
     ]
@@ -163,19 +163,19 @@ echo Phalcon\Tag::linkTo(
 
 final protected static *string* **_inputField** (*string* $type, *array* $parameters, [*boolean* $asValue])
 
-Builds generic INPUT tags
+Construye etiquetas INPUT genéricas
 
 final protected static *string* **_inputFieldChecked** (*string* $type, *array* $parameters)
 
-Builds INPUT tags that implements the checked attribute
+Construye etiquetas INPUT que implementan el atributo checked
 
 public static *string* **colorField** (*array* $parameters)
 
-Builds a HTML input[type="color"] tag
+Construye una etiqueta input[type="color"] de HTML
 
 public static *string* **textField** (*array* $parameters)
 
-Builds a HTML input[type="text"] tag
+Construye una etiqueta input[type="text"] de HTML
 
 ```php
 <?php
@@ -191,7 +191,7 @@ echo Phalcon\Tag::textField(
 
 public static *string* **numericField** (*array* $parameters)
 
-Builds a HTML input[type="number"] tag
+Construye una etiqueta input[type="number"] de HTML
 
 ```php
 <?php
@@ -208,11 +208,11 @@ echo Phalcon\Tag::numericField(
 
 public static *string* **rangeField** (*array* $parameters)
 
-Builds a HTML input[type="range"] tag
+Construye una etiqueta input[type="range"] de HTML
 
 public static *string* **emailField** (*array* $parameters)
 
-Builds a HTML input[type="email"] tag
+Construye una etiqueta input[type="email"] de HTML
 
 ```php
 <?php
@@ -223,7 +223,7 @@ echo Phalcon\Tag::emailField("email");
 
 public static *string* **dateField** (*array* $parameters)
 
-Builds a HTML input[type="date"] tag
+Construye una etiqueta input[type="date"] de HTML
 
 ```php
 <?php
@@ -239,27 +239,27 @@ echo Phalcon\Tag::dateField(
 
 public static *string* **dateTimeField** (*array* $parameters)
 
-Builds a HTML input[type="datetime"] tag
+Construye una etiqueta input[type="datetime"] de HTML
 
 public static *string* **dateTimeLocalField** (*array* $parameters)
 
-Builds a HTML input[type="datetime-local"] tag
+Construye una etiqueta input[type="datetime-local"] de HTML
 
 public static *string* **monthField** (*array* $parameters)
 
-Builds a HTML input[type="month"] tag
+Construye una etiqueta input[type="month"] de HTML
 
 public static *string* **timeField** (*array* $parameters)
 
-Builds a HTML input[type="time"] tag
+Construye una etiqueta Input[type="time"] de HTML
 
 public static *string* **weekField** (*array* $parameters)
 
-Builds a HTML input[type="week"] tag
+Construye una etiqueta input[type="week"] de HTML
 
 public static *string* **passwordField** (*array* $parameters)
 
-Builds a HTML input[type="password"] tag
+Construye una etiqueta Input[type="password"] de HTML
 
 ```php
 <?php
@@ -275,7 +275,7 @@ echo Phalcon\Tag::passwordField(
 
 public static *string* **hiddenField** (*array* $parameters)
 
-Builds a HTML input[type="hidden"] tag
+Construye una etiqueta Input[type="hidden"] de HTML
 
 ```php
 <?php
@@ -291,7 +291,7 @@ echo Phalcon\Tag::hiddenField(
 
 public static *string* **fileField** (*array* $parameters)
 
-Builds a HTML input[type="file"] tag
+Construye una etiqueta Input[type="file"] de HTML
 
 ```php
 <?php
@@ -302,19 +302,19 @@ echo Phalcon\Tag::fileField("file");
 
 public static *string* **searchField** (*array* $parameters)
 
-Builds a HTML input[type="search"] tag
+Construye una etiqueta Input[type="search"] de HTML
 
 public static *string* **telField** (*array* $parameters)
 
-Builds a HTML input[type="tel"] tag
+Construye una etiqueta input[type="tel"] de HTML
 
 public static *string* **urlField** (*array* $parameters)
 
-Builds a HTML input[type="url"] tag
+Construye una etiqueta input[type="url"] de HTML
 
 public static *string* **checkField** (*array* $parameters)
 
-Builds a HTML input[type="check"] tag
+Construye una etiqueta input[type="check"] de HTML
 
 ```php
 <?php
@@ -328,7 +328,7 @@ echo Phalcon\Tag::checkField(
 
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```php
 <?php
@@ -339,7 +339,7 @@ Volt syntax:
 
 public static *string* **radioField** (*array* $parameters)
 
-Builds a HTML input[type="radio"] tag
+Construye una etiqueta Input[type="radio"] de HTML
 
 ```php
 <?php
@@ -353,7 +353,7 @@ echo Phalcon\Tag::radioField(
 
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```php
 <?php
@@ -364,7 +364,7 @@ Volt syntax:
 
 public static *string* **imageInput** (*array* $parameters)
 
-Builds a HTML input[type="image"] tag
+Construye una etiqueta Input[type="image"] de HTML
 
 ```php
 <?php
@@ -377,7 +377,7 @@ echo Phalcon\Tag::imageInput(
 
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```php
 <?php
@@ -388,27 +388,27 @@ Volt syntax:
 
 public static *string* **submitButton** (*array* $parameters)
 
-Builds a HTML input[type="submit"] tag
+Construye una etiqueta input[type="submit"] de HTML
 
 ```php
 <?php
 
-echo Phalcon\Tag::submitButton("Save")
+echo Phalcon\Tag::submitButton("Guardar")
 
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```php
 <?php
 
-{{ submit_button("Save") }}
+{{ submit_button("Guardar") }}
 
 ```
 
 public static *string* **selectStatic** (*array* $parameters, [*array* $data])
 
-Builds a HTML SELECT tag using a PHP array for options
+Construye una etiqueta SELECT de HTML usando un array de PHP para las opciones
 
 ```php
 <?php
@@ -416,8 +416,8 @@ Builds a HTML SELECT tag using a PHP array for options
 echo Phalcon\Tag::selectStatic(
     "status",
     [
-        "A" => "Active",
-        "I" => "Inactive",
+        "A" => "Activo",
+        "I" => "Inactivo",
     ]
 );
 
@@ -425,7 +425,7 @@ echo Phalcon\Tag::selectStatic(
 
 public static *string* **select** (*array* $parameters, [*array* $data])
 
-Builds a HTML SELECT tag using a Phalcon\\Mvc\\Model resultset as options
+Construye una etiqueta SELECT de HTML usando un conjunto de resultados de Phalcon\\Mvc\\Model para las opciones
 
 ```php
 <?php
@@ -440,7 +440,7 @@ echo Phalcon\Tag::select(
 
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```php
 <?php
@@ -451,7 +451,7 @@ Volt syntax:
 
 public static *string* **textArea** (*array* $parameters)
 
-Builds a HTML TEXTAREA tag
+Construye una etiqueta TEXTAREA de HTML
 
 ```php
 <?php
@@ -466,7 +466,7 @@ echo Phalcon\Tag::textArea(
 
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```php
 <?php
@@ -477,7 +477,7 @@ Volt syntax:
 
 public static *string* **form** (*array* $parameters)
 
-Builds a HTML FORM tag
+Construye una etiqueta FORM de HTML
 
 ```php
 <?php
@@ -493,7 +493,7 @@ echo Phalcon\Tag::form(
 
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```php
 <?php
@@ -505,22 +505,22 @@ Volt syntax:
 
 public static **endForm** ()
 
-Builds a HTML close FORM tag
+Construye una etiqueta HTML para cerrar una etiqueta FORM
 
 public static **setTitle** (*mixed* $title)
 
-Set the title of view content
+Establece el título del contenido vizualizado
 
 ```php
 <?php
 
-Phalcon\Tag::setTitle("Welcome to my Page");
+Phalcon\Tag::setTitle("Bienvenido a mi Página");
 
 ```
 
 public static **setTitleSeparator** (*mixed* $titleSeparator)
 
-Set the title separator of view content
+Establece el separador de título del contenido vizualizado
 
 ```php
 <?php
@@ -531,15 +531,15 @@ Phalcon\Tag::setTitleSeparator("-");
 
 public static **appendTitle** (*mixed* $title)
 
-Appends a text to current document title
+Añade al final del título un texto para título del documento actual
 
 public static **prependTitle** (*mixed* $title)
 
-Prepends a text to current document title
+Antepone un texto al título del documento actual
 
 public static **getTitle** ([*mixed* $tags])
 
-Gets the current document title. The title will be automatically escaped.
+Obtiene el título del documento actual. El titulo será automáticamente limpiado (escaped)
 
 ```php
 <?php
@@ -557,7 +557,7 @@ echo Phalcon\Tag::getTitle();
 
 public static **getTitleSeparator** ()
 
-Gets the current document title separator
+Obtiene el separador de título del documento actual
 
 ```php
 <?php
@@ -575,7 +575,7 @@ echo Phalcon\Tag::getTitleSeparator();
 
 public static *string* **stylesheetLink** ([*array* $parameters], [*boolean* $local])
 
-Builds a LINK[rel="stylesheet"] tag
+Construye una etiqueta LINK[rel="stylesheet"]
 
 ```php
 <?php
@@ -585,7 +585,7 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
 
 ```
 
-Volt Syntax:
+Sintaxis Volt:
 
 ```php
 <?php
@@ -597,7 +597,7 @@ Volt Syntax:
 
 public static *string* **javascriptInclude** ([*array* $parameters], [*boolean* $local])
 
-Builds a SCRIPT[type="javascript"] tag
+Construye una etiqueta SCRIPT[ype = "javascript"]
 
 ```php
 <?php
@@ -607,7 +607,7 @@ echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
 
 ```
 
-Volt syntax:
+Sintaxis Volt:
 
 ```php
 <?php
@@ -619,7 +619,7 @@ Volt syntax:
 
 public static *string* **image** ([*array* $parameters], [*boolean* $local])
 
-Builds HTML IMG tags
+Construye etiquetas IMG de HTML
 
 ```php
 <?php
@@ -629,49 +629,49 @@ echo Phalcon\Tag::image("img/bg.png");
 echo Phalcon\Tag::image(
     [
         "img/photo.jpg",
-        "alt" => "Some Photo",
+        "alt" => "Alguna foto",
     ]
 );
 
 ```
 
-Volt Syntax:
+Sintaxis Volt:
 
 ```php
 <?php
 
 {{ image("img/bg.png") }}
-{{ image("img/photo.jpg", "alt": "Some Photo") }}
+{{ image("img/photo.jpg", "alt": "Alguna foto") }}
 {{ image("http://static.mywebsite.com/img/bg.png", false) }}
 
 ```
 
 public static **friendlyTitle** (*mixed* $text, [*mixed* $separator], [*mixed* $lowercase], [*mixed* $replace])
 
-Converts texts into URL-friendly titles
+Convierte textos en títulos URL-friendly
 
 ```php
 <?php
 
-echo Phalcon\Tag::friendlyTitle("These are big important news", "-")
+echo Phalcon\Tag::friendlyTitle("Estas son noticias importantes", "-")
 
 ```
 
 public static **setDocType** (*mixed* $doctype)
 
-Set the document type of content
+Establece el tipo del documento de contenido
 
 public static **getDocType** ()
 
-Get the document type declaration of content
+Obtener la declaración de tipo del documento de contenido
 
 public static **tagHtml** (*mixed* $tagName, [*mixed* $parameters], [*mixed* $selfClose], [*mixed* $onlyStart], [*mixed* $useEol])
 
-Builds a HTML tag
+Construye una etiqueta HTML
 
 public static **tagHtmlClose** (*mixed* $tagName, [*mixed* $useEol])
 
-Builds a HTML tag closing tag
+Construye una etiqueta HTML de cierre
 
 ```php
 <?php
