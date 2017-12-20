@@ -38,7 +38,7 @@
 
 ## Factory
 
-Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
+Carga la clase adaptador Config usando la opción `adapter`, si no se provee una extensión, se agregará al `filePath`
 
 ```php
 <?php
@@ -54,10 +54,9 @@ $options = [
  ```
 
 <a name='native-arrays'></a>
-## Native Arrays
-The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
+## Arrays Nativos
+El primer ejemplo muestra como convertir un arreglo en un objecto `Phalcon\Config`. Esta opción ofrece el mejor rendimiento ya que no se leen archivos durante esta solicitud.
 
-```php
 <?php
 
 use Phalcon\Config;
