@@ -8,7 +8,7 @@
               <a href="#adapters-factory">Factory</a>
             </li>
             <li>
-              <a href="#adapters-custom">Implementing your own adapters</a>
+              <a href="#adapters-custom">Implementar tus propios adaptadores</a>
             </li>
           </ul>
         </li>
@@ -82,13 +82,13 @@ Este componente permite una manipulación de base de datos a nivel inferior que 
 
 ## Adaptadores de base de datos
 
-This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO_ to connect to databases. The following database engines are supported:
+Este componente hace uso de adaptadores para encapsular los detalles del cada motor de base de datos. Phalcon utiliza PDO_ para conectar a bases de datos. Son soportados los siguientes motores de base de datos:
 
 | Clase                                   | Descripción                                                                                                                                                                                                                                                |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Db\Adapter\Pdo\Mysql`      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                                          |
+| `Phalcon\Db\Adapter\Pdo\Mysql`      | Es el sistema de gestión de bases de datos relacionales (RDBMS) más utilizado en el mundo. se ejecuta como un servidor que provee acceso a usuarios a un número de bases de datos                                                                          |
 | `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL es un sistema de base de datos relacional de código abierto muy potente. Tiene más de 15 años de desarrollo activo y una arquitectura probada que se ha ganado una sólida reputación por la fiabilidad, la integridad y exactitud de los datos. |
-| `Phalcon\Db\Adapter\Pdo\Sqlite`     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                                           |
+| `Phalcon\Db\Adapter\Pdo\Sqlite`     | SQLite es una biblioteca de software que implementa un motor de base de datos SQL transaccional independiente, sin servidor, sin configuración                                                                                                             |
 
 <a name='adapters-factory'></a>
 
@@ -96,7 +96,7 @@ This component makes use of adapters to encapsulate specific database system det
 
 <a name='factory'></a>
 
-Loads PDO Adapter class using `adapter` option
+Carga la clase adaptador PDO utilizando la opción `adapter`
 
 ```php
 <?php
