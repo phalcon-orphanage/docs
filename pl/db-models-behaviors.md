@@ -59,7 +59,7 @@ class Users extends Model
 
 The following built-in behaviors are provided by the framework:
 
-| Name          | Description                                                                                                |
+| Nazwa         | Description                                                                                                |
 | ------------- | ---------------------------------------------------------------------------------------------------------- |
 | Timestampable | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
 | SoftDelete    | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
