@@ -104,6 +104,6 @@ If you have a question about how to use Phalcon, please see the [support page](h
 
 If you have a change or new feature in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
 
-Thanks!
+Dziękujemy!
 
 <3 Phalcon Team

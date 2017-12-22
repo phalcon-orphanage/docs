@@ -15,7 +15,7 @@
           <a href="#variables">Variables</a>
         </li>
         <li>
-          <a href="#filters">Filters</a>
+          <a href="#filters">Filtry</a>
         </li>
         <li>
           <a href="#comments">Comments</a>
@@ -42,16 +42,16 @@
               <a href="#expressions-literals">Literals</a>
             </li>
             <li>
-              <a href="#expressions-arrays">Arrays</a>
+              <a href="#expressions-arrays">Tablice</a>
             </li>
             <li>
-              <a href="#expressions-math">Math</a>
+              <a href="#expressions-math">Matematyka</a>
             </li>
             <li>
               <a href="#expressions-comparisons">Comparisons</a>
             </li>
             <li>
-              <a href="#expressions-logic">Logic</a>
+              <a href="#expressions-logic">Logika</a>
             </li>
             <li>
               <a href="#expressions-other-operators">Other Operators</a>
@@ -59,10 +59,10 @@
           </ul>
         </li>
         <li>
-          <a href="#tests">Tests</a>
+          <a href="#tests">Testy</a>
         </li>
         <li>
-          <a href="#macros">Macros</a>
+          <a href="#macros">Makra</a>
         </li>
         <li>
           <a href="#tag-helpers">Using Tag Helpers</a>
@@ -73,7 +73,7 @@
         <li>
           <a href="#view-integrations">View Integration</a> <ul>
             <li>
-              <a href="#view-integration-include">Include</a>
+              <a href="#view-integration-include">Dołączanie</a>
             </li>
             <li>
               <a href="#view-integration-partial-vs-include">Partial vs Include</a>
@@ -96,7 +96,7 @@
               <a href="#extending-functions">Functions</a>
             </li>
             <li>
-              <a href="#extending-filters">Filters</a>
+              <a href="#extending-filters">Filtry</a>
             </li>
             <li>
               <a href="#extending-extensions">Extensions</a>
@@ -255,15 +255,15 @@ $di->set(
 
 The following options are available in Volt:
 
-| Option              | Description                                                                                                                  | Default |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
-| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
-| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
-| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
-| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
-| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
-| `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false` |
+| Opcja               | Description                                                                                                                  | Domyślne |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`     |
+| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`   |
+| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`     |
+| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`   |
+| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false`  |
+| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`   |
+| `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false`  |
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
 
@@ -377,7 +377,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 <a name='filters'></a>
 
-## Filters
+## Filtry
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -389,7 +389,7 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 
 The following is the list of available built-in filters in Volt:
 
-| Filter             | Description                                                                                                                        |
+| Filtr              | Description                                                                                                                        |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `abs`              | Applies the [abs](http://php.net/manual/en/function.abs.php) PHP function to a value.                                              |
 | `capitalize`       | Capitalizes a string by applying the [ucwords](http://php.net/manual/en/function.ucwords.php) PHP function to the value            |
@@ -737,7 +737,7 @@ If an expression needs to be evaluated without be printed the `do` statement can
 
 The following literals are supported:
 
-| Filter               | Description                                                        |
+| Filtr                | Description                                                        |
 | -------------------- | ------------------------------------------------------------------ |
 | `'this is a string'` | Text between double quotes or single quotes are handled as strings |
 | `100.25`             | Numbers with a decimal part are handled as doubles/floats          |
@@ -748,7 +748,7 @@ The following literals are supported:
 
 <a name='expressions-arrays'></a>
 
-### Arrays
+### Tablice
 
 Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list of values in square brackets:
 
@@ -775,7 +775,7 @@ Curly braces also can be used to define arrays or hashes:
 
 <a name='expressions-math'></a>
 
-### Math
+### Matematyka
 
 You may make calculations in templates using the following operators:
 
@@ -807,7 +807,7 @@ The following comparison operators are available:
 
 <a name='expressions-logic'></a>
 
-### Logic
+### Logika
 
 Logic operators are useful in the `if` expression evaluation to combine multiple tests:
 
@@ -850,7 +850,7 @@ The following example shows how to use operators:
 
 <a name='tests'></a>
 
-## Tests
+## Testy
 
 Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
 
@@ -928,7 +928,7 @@ More examples:
 
 <a name='macros'></a>
 
-## Macros
+## Makra
 
 Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
 
@@ -1035,7 +1035,7 @@ The following PHP is generated:
 
 To call a `Phalcon\Tag` helper, you only need to call an uncamelized version of the method:
 
-| Method                            | Volt function        |
+| Metoda                            | Volt function        |
 | --------------------------------- | -------------------- |
 | `Phalcon\Tag::checkField`        | `check_field`        |
 | `Phalcon\Tag::dateField`         | `date_field`         |
@@ -1065,7 +1065,7 @@ To call a `Phalcon\Tag` helper, you only need to call an uncamelized version of 
 
 The following built-in functions are available in Volt:
 
-| Name          | Description                                                 |
+| Nazwa         | Description                                                 |
 | ------------- | ----------------------------------------------------------- |
 | `content`     | Includes the content produced in a previous rendering stage |
 | `get_content` | Same as `content`                                           |
@@ -1110,7 +1110,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 <a name='view-integration-include'></a>
 
-### Include
+### Dołączanie
 
 `include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
 
@@ -1389,7 +1389,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='extending-filters'></a>
 
-### Filters
+### Filtry
 
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
 

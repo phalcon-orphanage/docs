@@ -103,7 +103,7 @@ $config = new Config($settings);
 
 The adapters available are:
 
-| Class                            | Description                                                                                      |
+| Klasa                            | Description                                                                                      |
 | -------------------------------- | ------------------------------------------------------------------------------------------------ |
 | `Phalcon\Config\Adapter\Ini`  | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
 | `Phalcon\Config\Adapter\Json` | Uses JSON files to store settings.                                                               |

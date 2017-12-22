@@ -43,7 +43,7 @@
     - [PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
     - [Modelos](/[[language]]/[[version]]/db-models) 
-        - [Advanced](/[[language]]/[[version]]/db-models-advanced)
+        - [Avanzado](/[[language]]/[[version]]/db-models-advanced)
         - [Comportamientos](/[[language]]/[[version]]/db-models-behaviors)
         - [Caché](/[[language]]/[[version]]/db-models-cache)
         - [Eventos](/[[language]]/[[version]]/db-models-events)

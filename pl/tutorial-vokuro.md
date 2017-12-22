@@ -9,7 +9,7 @@
           <a href="#dependencies">Load Classes and Dependencies</a>
         </li>
         <li>
-          <a href="#sign-up">Sign Up</a>
+          <a href="#sign-up">Zarejestruj się</a>
         </li>
       </ul>
     </li>
@@ -123,7 +123,7 @@ class AboutController extends ControllerBase
 
 <a name='sign-up'></a>
 
-## Sign Up
+## Zarejestruj się
 
 First, let's check how users are registered in Vökuró. When a user clicks the `Create an Account` button, the controller SessionController is invoked and the action `signup` is executed:
 
