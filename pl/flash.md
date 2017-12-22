@@ -6,7 +6,7 @@
           <a href="#adapters">Adapters</a>
         </li>
         <li>
-          <a href="#usage">Usage</a>
+          <a href="#usage">Sposób użycia</a>
         </li>
         <li>
           <a href="#printing">Printing Messages</a>
@@ -38,7 +38,7 @@ This component makes use of adapters to define the behavior of the messages afte
 
 <a name='usage'></a>
 
-## Usage
+## Sposób użycia
 
 Usually the Flash Messaging service is requested from the services container. If you're using `Phalcon\Di\FactoryDefault` then `Phalcon\Flash\Direct` is automatically registered as `flash` service and `Phalcon\Flash\Session` is automatically registered as `flashSession` service. You can also manually register it:
 
