@@ -6,7 +6,7 @@
 
 Parses docblocks returning an array with the found annotations
 
-## Methods
+## Metody
 
 public **parse** (*mixed* $className)
 
