@@ -654,7 +654,7 @@ class Robots extends Collection
 }
 ```
 
-The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return `false`.
+The example above performs a validation using the built-in validator `InclusionIn`. It checks that the value of the field `type` is in a `domain` list. If the value is not included in the list, then the validator will fail and return `false`.
 
 <div class='alert alert-warning'>
     <p>
@@ -752,7 +752,7 @@ class Robots extends Collection
 
 <a name='multiple-databases'></a>
 ## Setting multiple databases
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
+In Phalcon, all models can share the same database connection or specify a connection per model. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service by setting it in the `initialize()` method:
 
 ```php
 <?php
