@@ -8,7 +8,7 @@
 
 Formats messages so that they can be sent to FirePHP
 
-## Methods
+## Metody
 
 public **getTypeString** (*mixed* $type)
 
