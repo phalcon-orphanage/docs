@@ -42,7 +42,7 @@
           <a href="#static-content-helpers">Static Content Helpers</a> 
           <ul>
             <li>
-              <a href="#static-content-helpers-images">Images</a>
+              <a href="#static-content-helpers-images">Obrazki</a>
             </li>
             <li>
               <a href="#static-content-helpers-stylesheets">Stylesheets</a>
@@ -100,7 +100,7 @@ Available document type constants in `Phalcon\Tag` namespace are:
 | XHTML10_FRAMESET     | XHTML 1.0 Frameset     |
 | XHTML11              | XHTML 1.1              |
 | XHTML20              | XHTML 2.0              |
-| XHTML5               | XHTML 5                |
+| HTML5                | XHTML 5                |
 
 Setting document type.
 
@@ -540,7 +540,7 @@ The following HTML will generated:
 
 <a name='static-content-helpers-images'></a>
 
-### Images
+### Obrazki
 
 ```php
 <?php
