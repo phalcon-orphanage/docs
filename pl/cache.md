@@ -9,7 +9,7 @@
           <a href="#caching-behavior">Caching Behavior</a>
         </li>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">Fabryka</a>
         </li>
         <li>
           <a href="#output-fragments">Caching Output Fragments</a>
@@ -111,7 +111,7 @@ The caching process is divided into 2 parts:
 
 <a name='factory'></a>
 
-## Factory
+## Fabryka
 
 Instantiating frontend or backend adapters can be achieved by two ways:
 
@@ -588,7 +588,7 @@ The `Phalcon\Cache\BackendInterface` interface must be implemented in order to c
 
 This backend will store cached content into files in the local server. The available options for this backend are:
 
-| Option     | Description                                                 |
+| Opcja      | Description                                                 |
 | ---------- | ----------------------------------------------------------- |
 | `prefix`   | A prefix that is automatically prepended to the cache keys. |
 | `cacheDir` | A writable directory on which cached files will be placed.  |
@@ -601,7 +601,7 @@ This backend will store cached content on a memcached server. Per default persis
 
 **General options**
 
-| Option          | Description                                                                                                        |
+| Opcja           | Description                                                                                                        |
 | --------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `statsKey`      | Used to tracking of cached keys.                                                                                   |
 | `prefix`        | A prefix that is automatically prepended to the cache keys.                                                        |
@@ -609,7 +609,7 @@ This backend will store cached content on a memcached server. Per default persis
 
 **Servers options**
 
-| Option   | Description                                                                                                 |
+| Opcja    | Description                                                                                                 |
 | -------- | ----------------------------------------------------------------------------------------------------------- |
 | `host`   | The `memcached` host.                                                                                       |
 | `port`   | The `memcached` port.                                                                                       |
@@ -619,7 +619,7 @@ This backend will store cached content on a memcached server. Per default persis
 
 Used for setting Memcached options. See [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) for more.
 
-**Example**
+**Przykład**
 
 ```php
 <?php
@@ -659,7 +659,7 @@ $cache = new Libmemcached(
 
 This backend will store cached content on a memcached server. The available options for this backend are:
 
-| Option       | Description                                                 |
+| Opcja        | Description                                                 |
 | ------------ | ----------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys. |
 | `host`       | The memcached host.                                         |
@@ -672,7 +672,7 @@ This backend will store cached content on a memcached server. The available opti
 
 This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
 
-| Option   | Description                                                 |
+| Opcja    | Description                                                 |
 | -------- | ----------------------------------------------------------- |
 | `prefix` | A prefix that is automatically prepended to the cache keys. |
 
@@ -682,7 +682,7 @@ This backend will store cached content on Alternative PHP Cache ([APC](http://ph
 
 This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
 
-| Option       | Description                                                 |
+| Opcja        | Description                                                 |
 | ------------ | ----------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys. |
 | `server`     | A MongoDB connection string.                                |
@@ -695,7 +695,7 @@ This backend will store cached content on a MongoDB server ([MongoDB](http://mon
 
 This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
 
-| Option   | Description                                                 |
+| Opcja    | Description                                                 |
 | -------- | ----------------------------------------------------------- |
 | `prefix` | A prefix that is automatically prepended to the cache keys. |
 
@@ -705,7 +705,7 @@ This backend will store cached content on XCache ([XCache](http://xcache.lighttp
 
 This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
 
-| Option       | Description                                                    |
+| Opcja        | Description                                                    |
 | ------------ | -------------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys.    |
 | `host`       | Redis host.                                                    |
