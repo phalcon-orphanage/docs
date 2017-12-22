@@ -14,7 +14,7 @@ Base class for Phalcon\\Session adapters
 
 *integer* **SESSION_DISABLED**
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $options])
 
