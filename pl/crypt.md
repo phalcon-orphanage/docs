@@ -15,7 +15,7 @@
           <a href="#service">Setting up an Encryption service</a>
         </li>
         <li>
-          <a href="#links">Links</a>
+          <a href="#links">Linki</a>
         </li>
       </ul>
     </li>
@@ -88,9 +88,9 @@ foreach ($texts as $key => $text) {
 
 The following options are available to change the encryption behavior:
 
-| Name   | Description                                                                                                                                                          |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
+| Nazwa | Description                                                                                                                                                          |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Szyfr | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
 Example:
 
@@ -188,7 +188,7 @@ class SecretsController extends Controller
 
 <a name='links'></a>
 
-## Links
+## Linki
 
 * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 * [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)

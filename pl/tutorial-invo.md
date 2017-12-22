@@ -7,7 +7,7 @@
           <a href="#structure">Project Structure</a>
         </li>
         <li>
-          <a href="#routing">Routing</a>
+          <a href="#routing">Trasowanie (ang. routing)</a>
         </li>
         <li>
           <a href="#configuration">Configuration</a>
@@ -106,7 +106,7 @@ The application is divided into two parts: a frontend and a backend. The fronten
 
 <a name='routing'></a>
 
-## Routing
+## Trasowanie (ang. routing)
 
 INVO uses the standard route that is built-in with the [Router](/[[language]]/[[version]]/routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
 

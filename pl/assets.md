@@ -326,7 +326,7 @@ $jsFooterCollection->setTargetUri('production/final.js');
 
 Phalcon provides 2 built-in filters to minify both JavaScript and CSS, their C-backend provide the minimum overhead to perform this task:
 
-| Filter                             | Description                                                                                                  |
+| Filtr                              | Description                                                                                                  |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | `Phalcon\Assets\Filters\Jsmin`  | Minifies JavaScript by removing unnecessary characters that are ignored by Javascript interpreters/compilers |
 | `Phalcon\Assets\Filters\Cssmin` | Minifies CSS by removing unnecessary characters that are already ignored by browsers                         |
@@ -390,7 +390,7 @@ class CssYUICompressor implements FilterInterface
 }
 ```
 
-Usage:
+Wykorzystanie:
 
 ```php
 <?php

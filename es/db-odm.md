@@ -1,22 +1,25 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">ODM (Object-Document Mapper)</a> 
+      <a href="#overview">ODM (Mapeador Objecto-Documento)</a> 
       <ul>
         <li>
-          <a href="#creating-models">Creating Models</a>
+          <a href="#creating-models">Creación de Modelos</a>
         </li>
         <li>
-          <a href="#documents-to-objects">Understanding Documents To Objects</a>
+          <a href="#documents-to-objects">Entendiendo Documentos a Objetos</a>
         </li>
         <li>
-          <a href="#namespaces">Models in Namespaces</a>
+          <a href="#namespaces">Modelos en Espacios de Nombres</a>
         </li>
         <li>
-          <a href="#connection-setup">Setting a Connection</a>
+          <a href="#connection-setup">Establecer una Conexión</a>
         </li>
         <li>
-          <a href="#finding-documents">Finding Documents</a>
+          <a href="#finding-documents">Búsqueda de Documentos</a>
+        </li>
+        <li>
+          <a href="#finding-documents-field">Querying specific fields</a>
         </li>
         <li>
           <a href="#aggregations">Aggregations</a>
@@ -60,29 +63,29 @@
 
 <div class="alert alert-info">
     <p>
-        Please note that if you are using the Mongo driver provided by PHP 7, the ODM will not work for you. There is an incubator adapter but all the Mongo code must be rewritten (new Bson type instead of arrays, no MongoId, no MongoDate, etc.). Please ensure that you test your code before upgrading to PHP 7 and/or Phalcon 3+
+        Tenga en cuenta que si utiliza el controlador de Mongo proporcionado por PHP 7, el ODM no funcionará para usted. Hay un adaptador de incubadora pero debe ser reescrito todo el código de Mongo (el nuevo tipo Bson en vez de array, no MongoId, no MongoDate, etcétera...). Asegúrese de testear su código antes de actualizar a PHP 7 y/o Phalcon 3+
     </p>
 </div>
 
 <a name='overview'></a>
 
-# ODM (Object-Document Mapper)
+# ODM (Mapeador Objecto-Documento)
 
-In addition to its ability to [map tables](/[[language]]/[[version]]/models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
+Además de su capacidad para [asignar tablas](/[[language]]/[[version]]/models) en bases de datos relacionales, Phalcon puede asignar documentos de bases de datos NoSQL. El ODM ofrece una funcionalidad CRUD, eventos, validaciones entre otros servicios.
 
-Due to the absence of SQL queries and planners, NoSQL databases can see real improvements in performance using the Phalcon approach. Additionally, there are no SQL building reducing the possibility of SQL injections.
+Debido a la ausencia de consultas y planificadores SQL, con las bases de datos NoSQL se pueden ver mejoras reales en el rendimiento utilizando el enfoque de Phalcon. Además, no hay construcción de sentencias de SQL, lo que reduce la posibilidad de inyecciones SQL.
 
-The following NoSQL databases are supported:
+Son soportadas las siguientes bases de datos NoSQL:
 
-| Name                               | Description                                                          |
-| ---------------------------------- | -------------------------------------------------------------------- |
-| [MongoDB](http://www.mongodb.org/) | MongoDB is a scalable, high-performance, open source NoSQL database. |
+| Nombre                             | Descripción                                                                                 |
+| ---------------------------------- | ------------------------------------------------------------------------------------------- |
+| [MongoDB](http://www.mongodb.org/) | MongoDB es una base de datos NoSQL de código fuente abierto, escalable y de alto desempeño. |
 
 <a name='creating-models'></a>
 
-## Creating Models
+## Creación de Modelos
 
-A model is a class that extends from `Phalcon\Mvc\Collection`. It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
+Un modelo es una clase que extiende desde `Phalcon\Mvc\Collection`. Debe colocarse en el directorio de los modelos. Un archivo de modelo debe contener una sola clase; su nombre de clase debe estar en notación "camel case":
 
 ```php
 <?php
@@ -95,7 +98,7 @@ class Robots extends Collection
 }
 ```
 
-By default model `Robots` will refer to the collection `robots`. If you want to manually specify another name for the mapping collection, you can use the `setSource()` method:
+Por defecto, el modelo `Robots` se refiere a la colección `robots`. Si deseas especificar manualmente otro nombre para la colección de asignación, puedes utilizar el método `setSource()`:
 
 ```php
 <?php
@@ -113,9 +116,9 @@ class Robots extends Collection
 
 <a name='documents-to-objects'></a>
 
-## Understanding Documents To Objects
+## Entendiendo Documentos a Objetos
 
-Every instance of a model represents a document in the collection. You can easily access collection data by reading object properties. For example, for a collection `robots` with the documents:
+Cada instancia de un modelo representa un documento en la colección. Podrás acceder fácilmente a la colección de datos al leer las propiedades de los objetos. Por ejemplo, para una colección de `robots` con los documentos:
 
 ```bash
 $ mongo test
@@ -132,9 +135,9 @@ connecting to: test
 
 <a name='namespaces'></a>
 
-## Models in Namespaces
+## Modelos en Espacios de Nombres
 
-Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using the `setSource()` method:
+Los Espacios de Nombres se pueden utilizar para evitar la colisión de nombres de clases. En este caso es necesario indicar el nombre de la colección involucrada con el método `setSource()`:
 
 ```php
 <?php
@@ -152,19 +155,19 @@ class Robots extends Collection
 }
 ```
 
-You could find a certain document by its ID and then print its name:
+Podrías encontrar cierto documento por su ID primaria y luego imprimir su nombre:
 
 ```php
 <?php
 
-// Find record with _id = '5087358f2d42b8c3d15ec4e2'
+// Encontrar el registro con _id = '5087358f2d42b8c3d15ec4e2'
 $robot = Robots::findById('5087358f2d42b8c3d15ec4e2');
 
-// Prints 'Bender'
+// Imprime 'Bender'
 echo $robot->name;
 ```
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+Una vez que el registro está en la memoria, puede hacer modificaciones a sus datos y guardar los cambios:
 
 ```php
 <?php
@@ -184,14 +187,14 @@ $robot->save();
 
 <a name='connection-setup'></a>
 
-## Setting a Connection
+## Establecer una Conexión
 
-Connections are retrieved from the services container. By default, Phalcon tries to find the connection in a service called `mongo`:
+Las conexiones se realizan desde el contenedor de servicios. Por defecto, Phalcon trata de encontrar la conexión en un servicio llamado `mongo`:
 
 ```php
 <?php
 
-// Simple database connection to localhost
+// Conexión simple de base de datos a localhost
 $di->set(
     'mongo',
     function () {
@@ -202,7 +205,7 @@ $di->set(
     true
 );
 
-// Connecting to a domain socket, falling back to localhost connection
+// Conectando a un socket de dominio, volviendo a la conexión localhost
 $di->set(
     'mongo',
     function () {
@@ -218,18 +221,18 @@ $di->set(
 
 <a name='finding-documents'></a>
 
-## Finding Documents
+## Búsqueda de Documentos
 
-As `Phalcon\Mvc\Collection` relies on the Mongo PHP extension you have the same facilities to query documents and convert them transparently to model instances:
+Como `Phalcon\Mvc\Collection` se basa en la extensión Mongo de PHP, tu tienes las mismas facilidades para consultar documentos y convertirlos de forma transparente a instancias de modelos:
 
 ```php
 <?php
 
-// How many robots are there?
+// Cuantos robots hay?
 $robots = Robots::find();
-echo 'There are ', count($robots), "\n";
+echo 'Hay ', count($robots), "\n";
 
-// How many mechanical robots are there?
+// Cuantos robots mecánicos hay?
 $robots = Robots::find(
     [
         [
@@ -237,9 +240,9 @@ $robots = Robots::find(
         ]
     ]
 );
-echo 'There are ', count($robots), "\n";
+echo 'Hay ', count($robots), "\n";
 
-// Get and print mechanical robots ordered by name upward
+// Obtener e imprimir los robots mecánicos ordenados por nombre ascendentemente
 $robots = Robots::find(
     [
         [
@@ -255,7 +258,7 @@ foreach ($robots as $robot) {
     echo $robot->name, "\n";
 }
 
-// Get first 100 mechanical robots ordered by name
+// Obtener los primeros 100 robots mecánicos ordenados por nombre
 $robots = Robots::find(
     [
         [
@@ -273,16 +276,16 @@ foreach ($robots as $robot) {
 }
 ```
 
-You could also use the `findFirst()` method to get only the first record matching the given criteria:
+También puedes utilizar el método de `findFirst()` para obtener sólo el primer registro que coincida con el criterio dado:
 
 ```php
 <?php
 
-// What's the first robot in robots collection?
+// Cual es el primer robot en la colección robots?
 $robot = Robots::findFirst();
-echo 'The robot name is ', $robot->name, "\n";
+echo 'El nombre del robot es ', $robot->name, "\n";
 
-// What's the first mechanical robot in robots collection?
+// Cual es el primer robot mecánico en la colección robots?
 $robot = Robots::findFirst(
     [
         [
@@ -291,15 +294,15 @@ $robot = Robots::findFirst(
     ]
 );
 
-echo 'The first mechanical robot name is ', $robot->name, "\n";
+echo 'El nombre del primer robot mecánico es ', $robot->name, "\n";
 ```
 
-Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria:
+Ambos métodos `find()` y `findFirst()` aceptan un arreglo asociativo, especificando los criterios de búsqueda:
 
 ```php
 <?php
 
-// First robot where type = 'mechanical' and year = '1999'
+// Primer robot donde tipo 'mechanical' y año '1999'
 $robot = Robots::findFirst(
     [
         'conditions' => [
@@ -309,7 +312,7 @@ $robot = Robots::findFirst(
     ]
 );
 
-// All virtual robots ordered by name downward
+// Todos los robots virtuales ordenados por nombre descendentemente
 $robots = Robots::find(
     [
         'conditions' => [
@@ -321,7 +324,7 @@ $robots = Robots::find(
     ]
 );
 
-// Find all robots that have more than 4 friends using the where condition
+// Encontrar todos los robots que tengan más de 4 amigos usando la condición where
 $robots = Robots::find(
     [
         'conditions' => [
@@ -331,23 +334,23 @@ $robots = Robots::find(
 );
 ```
 
-The available query options are:
+Las opciones disponibles de consulta son:
 
-| Parameter    | Description                                                                                                                                                                                  | Example                                                 |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
-| `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`               |
-| `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | `'sort' => array('name' => -1, 'status' => 1)` |
-| `limit`      | Limit the results of the query to results to certain range                                                                                                                                   | `'limit' => 10`                                      |
-| `skip`       | Skips a number of results                                                                                                                                                                    | `'skip' => 50`                                       |
+| Parámetro    | Descripción                                                                                                                                                                                     | Ejemplo                                                 |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Model` assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
+| `fields`     | Devuelve columnas concretas en lugar de los campos completos de la colección. Cuando se utiliza esta opción que se devuelve un objeto incompleto                                                | `'fields' => array('name' => true)`               |
+| `sort`       | Se utiliza para ordenar el conjunto de resultados. Utiliza uno o más campos para cada elemento en el arreglo, 1 significa ordenar de forma ascendente, -1 descendente                           | `'sort' => array('name' => -1, 'status' => 1)` |
+| `limit`      | Limitar los resultados de la consulta a cierto rango                                                                                                                                            | `'limit' => 10`                                      |
+| `skip`       | Omite un número específico de resultados                                                                                                                                                        | `'skip' => 50`                                       |
 
-If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](http://www.php.net/manual/en/mongo.sqltomongo.php).
+Si tienes experiencia con las bases de datos SQL, tal vez quiere ver la [Tabla de mapeo de SQL a Mongo](http://www.php.net/manual/en/mongo.sqltomongo.php).
 
 <a name='finding-documents-fields'></a>
 
-## Querying specific fields
+## Consulta de Campos Específicos
 
-To query specific fields specific fields from a MongoDB database using the Phalcon ODM, all you need to do is:
+Para consultar campos específicos de los campos de una base de datos MongoDB con el ODM Phalcon, todo lo que necesitas hacer es:
 
 ```php
 $myRobots = Robots:find(
@@ -357,7 +360,7 @@ $myRobots = Robots:find(
 ];
 ```
 
-The `find()` above only returns a `name`. It can also be combined with a `condition`:
+El `find()` anterior devuelve sólo un `nombre`. También puede combinarse con una `condición`:
 
 ```php
 $myRobots = Robots:find(
@@ -368,13 +371,13 @@ $myRobots = Robots:find(
 ];
 ```
 
-The example above returns the `name` of the robot with the `type = 'maid'`.
+El ejemplo anterior devuelve el campo `name` que es el nombre del robot con con el campo `type = 'maid'`.
 
 <a name='aggregations'></a>
 
-## Aggregations
+## Agregaciones
 
-A model can return calculations using [aggregation framework](http://docs.mongodb.org/manual/applications/aggregation/) provided by Mongo. The aggregated values are calculate without having to use MapReduce. With this option is easy perform tasks such as totaling or averaging field values:
+Un modelo puede devolver cálculos utilizando el [framework de agregados](http://docs.mongodb.org/manual/applications/aggregation/) que provee Mongo. Los valores agregados se calculan sin tener que utilizar MapReduce. Con esta opción es fácil realizar tareas como calcular un total o un promedio de valores de los campos:
 
 ```php
 <?php
@@ -402,11 +405,11 @@ $data = Article::aggregate(
 
 <a name='creating-updating'></a>
 
-## Creating Updating/Records
+## Creación y Actualización de Registros
 
-The `Phalcon\Mvc\Collection::save()` method allows you to create/update documents according to whether they already exist in the collection associated with a model. The `save()` method is called internally by the create and update methods of `Phalcon\Mvc\Collection`.
+El método `Phalcon\Mvc\Collection::save()` te permite crear o actualizar documentos según si ya existen en la colección asociada a un modelo. El método `save()` es llamado internamente por los métodos create y update de `Phalcon\Mvc\Collection`.
 
-Also the method executes associated validators and events that are defined in the model:
+El método también ejecuta validadores y eventos asociados que están definidos en modelo:
 
 ```php
 <?php
@@ -418,7 +421,7 @@ $robot->name = 'Astro Boy';
 $robot->year = 1952;
 
 if ($robot->save() === false) {
-    echo "Umh, We can't store robots right now: \n";
+    echo "Ups, no podemos almacenar robots en este momento: \n";
 
     $messages = $robot->getMessages();
 
@@ -426,27 +429,27 @@ if ($robot->save() === false) {
         echo $message, "\n";
     }
 } else {
-    echo 'Great, a new robot was saved successfully!';
+    echo 'Grandioso, un nuevo robot ha sido agregado con éxito!';
 }
 ```
 
-The `_id` property is automatically updated with the [MongoId](http://www.php.net/manual/en/class.mongoid.php) object created by the driver:
+La propiedad `_id` se actualiza automáticamente con el objeto [MongoId](http://www.php.net/manual/en/class.mongoid.php) creado por el controlador:
 
 ```php
 <?php
 
 $robot->save();
 
-echo 'The generated id is: ', $robot->getId();
+echo 'La id generada es: ', $robot->getId();
 ```
 
 <a name='validation-messages'></a>
 
-### Validation Messages
+### Mensajes de Validación
 
-`Phalcon\Mvc\Collection` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
+`Phalcon\Mvc\Collection` cuenta con un subsistema de mensajería que proporciona una forma flexible de salida o almacenamiento de mensajes de validación generados durante los procesos de insertar/actualizar.
 
-Each message consists of an instance of the class `Phalcon\Mvc\Model\Message`. The set of messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that generated the message or the message type:
+Cada mensaje se compone de una instancia de la clase `Phalcon\Mvc\Model\Message`. The set of messages generated can be retrieved with the method `getMessages()`. Cada mensaje proporciona información ampliada como el nombre del campo que genera el mensaje o el tipo de mensaje:
 
 ```php
 <?php
@@ -455,36 +458,36 @@ if ($robot->save() === false) {
     $messages = $robot->getMessages();
 
     foreach ($messages as $message) {
-        echo 'Message: ', $message->getMessage();
-        echo 'Field: ', $message->getField();
-        echo 'Type: ', $message->getType();
+        echo 'Mensaje: ', $message->getMessage();
+        echo 'Campo: ', $message->getField();
+        echo 'Tipo: ', $message->getType();
     }
 }
 ```
 
 <a name='events'></a>
 
-### Validation Events and Events Manager
+### Eventos de Validación y Gestor de Eventos
 
-Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by `Phalcon\Mvc\Collection` and their order of execution:
+Los modelos permiten implementar eventos que serán ejecutados cuando se realice una inserción o actualización. Ellos ayudan a definir reglas de negocio para cierto modelo. Son soportados los siguientes eventos por `Phalcon\Mvc\Collection` y su respectivo orden de ejecución:
 
-| Operation          | Name                       | Can stop operation?   | Explanation                                                                                                        |
-| ------------------ | -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Inserting/Updating | `beforeValidation`         | YES                   | Is executed before the validation process and the final insert/update to the database                              |
-| Inserting          | `beforeValidationOnCreate` | YES                   | Is executed before the validation process only when an insertion operation is being made                           |
-| Updating           | `beforeValidationOnUpdate` | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
-| Inserting/Updating | `onValidationFails`        | YES (already stopped) | Is executed before the validation process only when an insertion operation is being made                           |
-| Inserting          | `afterValidationOnCreate`  | YES                   | Is executed after the validation process when an insertion operation is being made                                 |
-| Updating           | `afterValidationOnUpdate`  | YES                   | Is executed after the validation process when an updating operation is being made                                  |
-| Inserting/Updating | `afterValidation`          | YES                   | Is executed after the validation process                                                                           |
-| Inserting/Updating | `beforeSave`               | YES                   | Runs before the required operation over the database system                                                        |
-| Updating           | `beforeUpdate`             | YES                   | Runs before the required operation over the database system only when an updating operation is being made          |
-| Inserting          | `beforeCreate`             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made         |
-| Updating           | `afterUpdate`              | NO                    | Runs after the required operation over the database system only when an updating operation is being made           |
-| Inserting          | `afterCreate`              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made          |
-| Inserting/Updating | `afterSave`                | NO                    | Runs after the required operation over the database system                                                         |
+| Operación             | Nombre                     | ¿Puede detener la operación? | Explicación                                                                                                                     |
+| --------------------- | -------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Insertar o actualizar | `beforeValidation`         | SI                           | Es ejecutado antes del proceso de validación y la inserción o actualización final en la base de datos                           |
+| Insertar              | `beforeValidationOnCreate` | SI                           | Es ejecutado antes del proceso de validación solo cuando es una operación de inserción                                          |
+| Actualizar            | `beforeValidationOnUpdate` | SI                           | Es ejecutado antes de validar los campos no nulos o claves foraneas cuando es una operación de actualización                    |
+| Insertar o actualizar | `onValidationFails`        | SI (detenido)                | Es ejecutado antes del proceso de validación solo cuando es una operación de inserción                                          |
+| Insertar              | `afterValidationOnCreate`  | SI                           | Es ejecutado después del proceso de validación cuando es una operación de inserción                                             |
+| Actualizar            | `afterValidationOnUpdate`  | SI                           | Es ejecutado después del proceso de validación cuando es una operación de actualización                                         |
+| Insertar o actualizar | `afterValidation`          | SI                           | Se ejecuta tras el proceso de validación                                                                                        |
+| Insertar o actualizar | `beforeSave`               | SI                           | Se ejecuta antes de la operación sobre el sistema de base de datos, para operaciones de inserción o actualización               |
+| Actualizar            | `beforeUpdate`             | SI                           | Se ejecuta antes de la operación sobre el sistema de base de datos, sólo cuando se realiza una operación de actualización       |
+| Insertar              | `beforeCreate`             | SI                           | Se ejecuta antes de la operación sobre el sistema de base de datos, sólo cuando se realiza una operación de inserción           |
+| Actualizar            | `afterUpdate`              | NO                           | Se ejecuta después de la operación sobre el sistema de base de datos pero sólo cuando se realiza una operación de actualización |
+| Insertar              | `afterCreate`              | NO                           | Se ejecuta después de la operación sobre el sistema de base de datos pero sólo cuando se realiza una operación de inserción     |
+| Insertar o actualizar | `afterSave`                | NO                           | Después que la operación se ejecuta sobre el sistema de base de datos solo para inserción o actualización                       |
 
-To make a model to react to an event, we must to implement a method with the same name of the event:
+Para hacer a un modelo reaccionar a un evento, debemos implementar un método con el mismo nombre del evento:
 
 ```php
 <?php
@@ -495,12 +498,12 @@ class Robots extends Collection
 {
     public function beforeValidationOnCreate()
     {
-        echo 'This is executed before creating a Robot!';
+        echo 'Esto es ejecutado antes de crear un Robot!';
     }
 }
 ```
 
-Events can be useful to assign values before performing an operation, for example:
+Los eventos pueden utilizarse para asignar valores antes de realizar una operación, por ejemplo:
 
 ```php
 <?php
@@ -511,19 +514,19 @@ class Products extends Collection
 {
     public function beforeCreate()
     {
-        // Set the creation date
+        // Establecer la fecha de creación
         $this->created_at = date('Y-m-d H:i:s');
     }
 
     public function beforeUpdate()
     {
-        // Set the modification date
+        // Establecer la fecha de modificación
         $this->modified_in = date('Y-m-d H:i:s');
     }
 }
 ```
 
-Additionally, this component is integrated with the [Phalcon Events Manager](/[[language]]/[[version]]/events) (`Phalcon\Events\Manager`), this means we can create listeners that run when an event is triggered.
+Además, este componente está integrado con el [Gestor de Eventos](/[[language]]/[[version]]/events) (`Phalcon\Events\Manager`), esto significa que podemos crear oyentes que se ejecutan cuando se desencadena un evento.
 
 ```php
 <?php
@@ -533,12 +536,12 @@ use Phalcon\Events\Manager as EventsManager;
 
 $eventsManager = new EventsManager();
 
-// Attach an anonymous function as a listener for 'model' events
+// Ajuntar una función anónima como oyente de los eventos de 'model'
 $eventsManager->attach(
     'collection:beforeSave',
     function (Event $event, $robot) {
         if ($robot->name === 'Scooby Doo') {
-            echo "Scooby Doo isn't a robot!";
+            echo "Scooby Doo no es un robot!";
 
             return false;
         }
@@ -557,7 +560,7 @@ $robot->year = 1969;
 $robot->save();
 ```
 
-In the example given above the EventsManager only acted as a bridge between an object and a listener (the anonymous function). If we want all objects created in our application use the same EventsManager, then we need to assign this to the Models Manager:
+En el ejemplo anterior el EventsManager o Gestor de Eventos sólo actuó como un puente entre un objeto y un oyente que era una función anónima. Si queremos que todos los objetos creados en nuestra aplicación utilicen el mismo EventsManager, tenemos que asignarlo al administrador de modelos:
 
 ```php
 <?php
@@ -566,19 +569,19 @@ use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Mvc\Collection\Manager as CollectionManager;
 
-// Registering the collectionManager service
+// Registrando el servicio collectionManager
 $di->set(
     'collectionManager',
     function () {
         $eventsManager = new EventsManager();
 
-        // Attach an anonymous function as a listener for 'model' events
+        // Adjuntar una función anónima como oyente de los eventos del 'model'
         $eventsManager->attach(
             'collection:beforeSave',
             function (Event $event, $model) {
                 if (get_class($model) === 'Robots') {
                     if ($model->name === 'Scooby Doo') {
-                        echo "Scooby Doo isn't a robot!";
+                        echo "Scooby Doo no es un robot!";
 
                         return false;
                     }
@@ -588,7 +591,7 @@ $di->set(
             }
         );
 
-        // Setting a default EventsManager
+        // Establecer un EventsManager por defecto
         $modelsManager = new CollectionManager();
 
         $modelsManager->setEventsManager($eventsManager);
@@ -601,13 +604,13 @@ $di->set(
 
 <a name='business-rules'></a>
 
-### Implementing a Business Rule
+### Implementación de una Regla de Negocio
 
-When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above.
+Cuando se ejecuta una inserción, actualización o borrado, el modelo verifica si hay algunos métodos con nombres de eventos listados en la tabla anterior.
 
-We recommend that validation methods are declared protected to prevent that business logic implementation from being exposed publicly.
+We recommend that validation methods are declared `protected` to prevent that business logic implementation from being exposed publicly.
 
-The following example implements an event that validates the year cannot be smaller than 0 on update or insert:
+El siguiente ejemplo implementa un evento que valida que el año no sea menor a cero en la actualización o inserción:
 
 ```php
 <?php
@@ -616,7 +619,7 @@ use Phalcon\Mvc\Collection;
 
 class Robots extends Collection
 {
-    public function beforeSave()
+    protected function beforeSave()
     {
         if ($this->year < 0) {
             echo 'Year cannot be smaller than zero!';
@@ -627,15 +630,15 @@ class Robots extends Collection
 }
 ```
 
-Some events return false as an indication to stop the current operation. If an event doesn't return anything, `Phalcon\Mvc\Collection` will assume a true value.
+Some events return `false` as an indication to stop the current operation. If an event doesn't return anything, `Phalcon\Mvc\Collection` will assume a `true` value.
 
 <a name='data-integrity'></a>
 
-### Validating Data Integrity
+### Validar la Integridad de Datos
 
-`Phalcon\Mvc\Collection` provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+`Phalcon\Mvc\Collection` ofrece varios eventos para validar los datos e implementar reglas de negocio. El evento especial `validation` nos permite llamar a validadores incorporados en el registro. Phalcon expone algunos validadores incorporados que pueden utilizarse en esta etapa de validación.
 
-The following example shows how to use it:
+En el ejemplo siguiente se muestra cómo se utiliza:
 
 ```php
 <?php
@@ -655,7 +658,7 @@ class Robots extends Collection
             'type',
             new InclusionIn(
                 [
-                    'message' => 'Type must be: mechanical or virtual',
+                    'message' => 'El tipo debe ser: mechanical o virtual',
                     'domain' => [
                         'Mechanical',
                         'Virtual',
@@ -668,7 +671,7 @@ class Robots extends Collection
             'price',
             new Numericality(
                 [
-                    'message' => 'Price must be numeric'
+                    'message' => 'El precio debe ser numérico'
                 ]
             )
         );
@@ -678,19 +681,19 @@ class Robots extends Collection
 }
 ```
 
-The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return false.
+El ejemplo anterior realiza una validación con el validador integrado `InclusionIn`. Comprueba el valor del campo `type` en una lista de dominios. If the value is not included in the method, then the validator will fail and return `false`.
 
 <div class='alert alert-warning'>
     <p>
-        For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation).
+        Para más información sobre validadores, consulte la <a href="/[[language]]/[[version]]/validation">documentación de validación</a>.
     </p>
 </div>
 
 <a name='deleting-records'></a>
 
-## Deleting Records
+## Eliminar Registros
 
-The `Phalcon\Mvc\Collection::delete()` method allows you to delete a document. You can use it as follows:
+El método `Phalcon\Mvc\Collection::delete()` le permite borrar un documento. Se puede utilizar de la sigue manera:
 
 ```php
 <?php
@@ -699,7 +702,7 @@ $robot = Robots::findFirst();
 
 if ($robot !== false) {
     if ($robot->delete() === false) {
-        echo "Sorry, we can't delete the robot right now: \n";
+        echo "Lo sentimos, no pudimos borrar el robot: \n";
 
         $messages = $robot->getMessages();
 
@@ -707,12 +710,12 @@ if ($robot !== false) {
             echo $message, "\n";
         }
     } else {
-        echo 'The robot was deleted successfully!';
+        echo 'El robot fue borrado correctamente!';
     }
 }
 ```
 
-You can also delete many documents by traversing a resultset with a `foreach` loop:
+También puede eliminar muchos documentos recorriendo un conjunto de resultados con un bucle `foreach`:
 
 ```php
 <?php
@@ -727,7 +730,7 @@ $robots = Robots::find(
 
 foreach ($robots as $robot) {
     if ($robot->delete() === false) {
-        echo "Sorry, we can't delete the robot right now: \n";
+        echo "Lo sentimos, no pudimos borrar el robot: \n";
 
         $messages = $robot->getMessages();
 
@@ -735,36 +738,36 @@ foreach ($robots as $robot) {
             echo $message, "\n";
         }
     } else {
-        echo 'The robot was deleted successfully!';
+        echo 'El robot fue borrado correctamente!';
     }
 }
 ```
 
-The following events are available to define custom business rules that can be executed when a delete operation is performed:
+Los siguientes eventos están disponibles para definir reglas de negocios personalizadas que se pueden ejecutar cuando se realiza una operación de eliminación:
 
-| Operation | Name           | Can stop operation? | Explanation                              |
-| --------- | -------------- | ------------------- | ---------------------------------------- |
-| Deleting  | `beforeDelete` | YES                 | Runs before the delete operation is made |
-| Deleting  | `afterDelete`  | NO                  | Runs after the delete operation was made |
+| Operación | Nombre         | ¿Puede detener la operación? | Explicación                                       |
+| --------- | -------------- | ---------------------------- | ------------------------------------------------- |
+| Eliminar  | `beforeDelete` | SI                           | Se ejecuta antes de la operación de eliminación   |
+| Eliminar  | `afterDelete`  | NO                           | Se ejecuta después de la operación de eliminación |
 
 <a name='validation-failed-events'></a>
 
-## Validation Failed Events
+## Eventos de Fallas de Validación
 
-Another type of events is available when the data validation process finds any inconsistency:
+Otro tipo de eventos está disponible cuando el proceso de validación de datos encuentra cualquier inconsistencia:
 
-| Operation                | Name                | Explanation                                                     |
-| ------------------------ | ------------------- | --------------------------------------------------------------- |
-| Insert or Update         | `notSave`           | Triggered when the insert/update operation fails for any reason |
-| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails            |
+| Operación                     | Nombre              | Explicación                                                                        |
+| ----------------------------- | ------------------- | ---------------------------------------------------------------------------------- |
+| Insertar o actualizar         | `notSave`           | Se dispara cuando la operación de inserción o actualización falla por alguna razón |
+| Insertar, borrar o actualizar | `onValidationFails` | Se dispara cuando cualquier operación de manipulación de datos falla               |
 
 <a name='ids-vs-primary-keys'></a>
 
-## Implicit Ids vs. User Primary Keys
+## IDs Implícitos vs. Llaves Primarias de Usuario
 
-By default `Phalcon\Mvc\Collection` assumes that the `_id` attribute is automatically generated using [MongoIds](http://www.php.net/manual/en/class.mongoid.php).
+Por defecto `Phalcon\Mvc\Collection` asume que el atributo `_id` es generado automáticamente utilizando [MongoIds](http://www.php.net/manual/en/class.mongoid.php).
 
-If a model uses custom primary keys this behavior can be overridden:
+Si un modelo utiliza un claves primarias personalizadas este comportamiento puede ser redefinido:
 
 ```php
 <?php
@@ -782,14 +785,14 @@ class Robots extends Collection
 
 <a name='multiple-databases'></a>
 
-## Setting multiple databases
+## Configuración de Múltiples Bases de Datos
 
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service setting it in the initialize method:
+En Phalcon, todos los modelos pueden pertenecer a la misma conexión de base de datos o tener una individual. Actualmente, cuando `Phalcon\Mvc\Collection` necesita conectarse a la base de datos pide el servicio `mongo` al contenedor de servicios de la aplicación. You can overwrite this service setting it in the `initialize()` method:
 
 ```php
 <?php
 
-// This service returns a mongo database at 192.168.1.100
+// El servicio retorna una base de datos monto en 192.168.1.100
 $di->set(
     'mongo1',
     function () {
@@ -802,7 +805,7 @@ $di->set(
     true
 );
 
-// This service returns a mongo database at localhost
+// Este servicio retorna una base de datos mongo en localhost
 $di->set(
     'mongo2',
     function () {
@@ -816,7 +819,7 @@ $di->set(
 );
 ```
 
-Then, in the `initialize()` method, we define the connection service for the model:
+Luego, en el método `initialize()`, definimos el servicio de conexión para el modelo:
 
 ```php
 <?php
@@ -834,9 +837,9 @@ class Robots extends Collection
 
 <a name='services-in-models'></a>
 
-## Injecting services into Models
+## Servicios de Inyección en Modelos
 
-You may be required to access the application services within a model, the following example explains how to do that:
+Si requiere acceder a los servicios de la aplicación dentro de un modelo, en el siguiente ejemplo se explica cómo hacerlo:
 
 ```php
 <?php
@@ -847,12 +850,12 @@ class Robots extends Collection
 {
     public function notSave()
     {
-        // Obtain the flash service from the DI container
+        // Obtener el servicio flash desde el contenedor DI
         $flash = $this->getDI()->getShared('flash');
 
         $messages = $this->getMessages();
 
-        // Show validation messages
+        // Mostramos los mensajes de validación
         foreach ($messages as $message) {
             $flash->error(
                 (string) $message
@@ -862,4 +865,4 @@ class Robots extends Collection
 }
 ```
 
-The `notSave` event is triggered whenever a `creating` or `updating` action fails. We're flashing the validation messages obtaining the `flash` service from the DI container. By doing this, we don't have to print messages after each saving.
+El evento `notSaved` se desencadena cada vez que falla una acción de `creacion` o `actualización`. Estamos mostrando los mensajes de validación obteniendo el servicio `flash` del contenedor DI. Haciendo esto, no tenemos que imprimir los mensajes después de cada guardado.
