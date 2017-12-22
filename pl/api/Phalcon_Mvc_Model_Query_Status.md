@@ -28,7 +28,7 @@ if ($status->success() === true) {
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** (*mixed* $success, [[Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model])
 
