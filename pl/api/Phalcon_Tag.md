@@ -28,7 +28,7 @@ Phalcon\\Tag is designed to simplify building of HTML tags. It provides a set of
 
 *integer* **XHTML5**
 
-## Methods
+## Metody
 
 public static *EscaperInterface* **getEscaper** (*array* $params)
 
