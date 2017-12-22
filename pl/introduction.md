@@ -10,7 +10,7 @@ Naszą misją jest oferowanie deweloperom zaawansowanego, bogatego w funkcje nar
 
 Phalcon jest open source’owym, pełno wartościowym frameworkiem dla PHP, napisanym w C jako rozszerzenie. Phalcon jest zoptymalizowany pod kątem wysokiej wydajności. Jego wyjątkowa architektura pozwala frameworkowi na działanie w pamięci, oferując swoje funkcjonalności kiedykolwiek są potrzebne, bez wymagających operacji odczytu i uprawnień na plikach które posiadają tradycyjne frameworki PHP.
 
-## Usage
+## Sposób użycia
 
 Deweloperzy nie muszą znać języka C aby używać Phalcona. Jego funkcjonalności są udostępnione jako gotowe do użycia klasy PHP w przestrzeni nazw `Phalcon`.
 
