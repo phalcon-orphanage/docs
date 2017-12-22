@@ -293,9 +293,9 @@ Some events when returning boolean `false` could stop the active operation. The 
 
 | Event Name         | Triggered                                                                                                           | Can stop operation? |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Yes                 |
-| `pathFound`        | Triggered when the loader locate a class                                                                            | No                  |
-| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
+| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Tak                 |
+| `pathFound`        | Triggered when the loader locate a class                                                                            | Nie                 |
+| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | Nie                 |
 
 <a name='troubleshooting'></a>
 
