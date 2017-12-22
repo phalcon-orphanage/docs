@@ -8,7 +8,7 @@
 
 Component TEXTAREA for forms
 
-## Methods
+## Metody
 
 public **render** ([*array* $attributes])
 
