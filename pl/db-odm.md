@@ -19,6 +19,9 @@
           <a href="#finding-documents">Finding Documents</a>
         </li>
         <li>
+          <a href="#finding-documents-field">Querying specific fields</a>
+        </li>
+        <li>
           <a href="#aggregations">Aggregations</a>
         </li>
         <li>
@@ -74,7 +77,7 @@ Due to the absence of SQL queries and planners, NoSQL databases can see real imp
 
 The following NoSQL databases are supported:
 
-| Name                               | Description                                                          |
+| Nazwa                              | Description                                                          |
 | ---------------------------------- | -------------------------------------------------------------------- |
 | [MongoDB](http://www.mongodb.org/) | MongoDB is a scalable, high-performance, open source NoSQL database. |
 
@@ -333,13 +336,13 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parameter    | Description                                                                                                                                                                                  | Example                                                 |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
-| `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`               |
-| `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | `'sort' => array('name' => -1, 'status' => 1)` |
-| `limit`      | Limit the results of the query to results to certain range                                                                                                                                   | `'limit' => 10`                                      |
-| `skip`       | Skips a number of results                                                                                                                                                                    | `'skip' => 50`                                       |
+| Parameter    | Description                                                                                                                                                                                     | Przykład                                                |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Model` assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
+| `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                                  | `'fields' => array('name' => true)`               |
+| `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                     | `'sort' => array('name' => -1, 'status' => 1)` |
+| `limit`      | Limit the results of the query to results to certain range                                                                                                                                      | `'limit' => 10`                                      |
+| `skip`       | Skips a number of results                                                                                                                                                                       | `'skip' => 50`                                       |
 
 If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](http://www.php.net/manual/en/mongo.sqltomongo.php).
 
@@ -446,7 +449,7 @@ echo 'The generated id is: ', $robot->getId();
 
 `Phalcon\Mvc\Collection` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
-Each message consists of an instance of the class `Phalcon\Mvc\Model\Message`. The set of messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that generated the message or the message type:
+Each message consists of an instance of the class `Phalcon\Mvc\Model\Message`. The set of messages generated can be retrieved with the method `getMessages()`. Each message provides extended information like the field name that generated the message or the message type:
 
 ```php
 <?php
@@ -468,21 +471,21 @@ if ($robot->save() === false) {
 
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by `Phalcon\Mvc\Collection` and their order of execution:
 
-| Operation          | Name                       | Can stop operation?   | Explanation                                                                                                        |
+| Operation          | Nazwa                      | Can stop operation?   | Explanation                                                                                                        |
 | ------------------ | -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Inserting/Updating | `beforeValidation`         | YES                   | Is executed before the validation process and the final insert/update to the database                              |
-| Inserting          | `beforeValidationOnCreate` | YES                   | Is executed before the validation process only when an insertion operation is being made                           |
-| Updating           | `beforeValidationOnUpdate` | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
+| Inserting/Updating | `beforeValidation`         | TAK                   | Is executed before the validation process and the final insert/update to the database                              |
+| Inserting          | `beforeValidationOnCreate` | TAK                   | Is executed before the validation process only when an insertion operation is being made                           |
+| Updating           | `beforeValidationOnUpdate` | TAK                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
 | Inserting/Updating | `onValidationFails`        | YES (already stopped) | Is executed before the validation process only when an insertion operation is being made                           |
-| Inserting          | `afterValidationOnCreate`  | YES                   | Is executed after the validation process when an insertion operation is being made                                 |
-| Updating           | `afterValidationOnUpdate`  | YES                   | Is executed after the validation process when an updating operation is being made                                  |
-| Inserting/Updating | `afterValidation`          | YES                   | Is executed after the validation process                                                                           |
-| Inserting/Updating | `beforeSave`               | YES                   | Runs before the required operation over the database system                                                        |
-| Updating           | `beforeUpdate`             | YES                   | Runs before the required operation over the database system only when an updating operation is being made          |
-| Inserting          | `beforeCreate`             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made         |
-| Updating           | `afterUpdate`              | NO                    | Runs after the required operation over the database system only when an updating operation is being made           |
-| Inserting          | `afterCreate`              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made          |
-| Inserting/Updating | `afterSave`                | NO                    | Runs after the required operation over the database system                                                         |
+| Inserting          | `afterValidationOnCreate`  | TAK                   | Is executed after the validation process when an insertion operation is being made                                 |
+| Updating           | `afterValidationOnUpdate`  | TAK                   | Is executed after the validation process when an updating operation is being made                                  |
+| Inserting/Updating | `afterValidation`          | TAK                   | Is executed after the validation process                                                                           |
+| Inserting/Updating | `beforeSave`               | TAK                   | Runs before the required operation over the database system                                                        |
+| Updating           | `beforeUpdate`             | TAK                   | Runs before the required operation over the database system only when an updating operation is being made          |
+| Inserting          | `beforeCreate`             | TAK                   | Runs before the required operation over the database system only when an inserting operation is being made         |
+| Updating           | `afterUpdate`              | NIE                   | Runs after the required operation over the database system only when an updating operation is being made           |
+| Inserting          | `afterCreate`              | NIE                   | Runs after the required operation over the database system only when an inserting operation is being made          |
+| Inserting/Updating | `afterSave`                | NIE                   | Runs after the required operation over the database system                                                         |
 
 To make a model to react to an event, we must to implement a method with the same name of the event:
 
@@ -605,7 +608,7 @@ $di->set(
 
 When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above.
 
-We recommend that validation methods are declared protected to prevent that business logic implementation from being exposed publicly.
+We recommend that validation methods are declared `protected` to prevent that business logic implementation from being exposed publicly.
 
 The following example implements an event that validates the year cannot be smaller than 0 on update or insert:
 
@@ -616,7 +619,7 @@ use Phalcon\Mvc\Collection;
 
 class Robots extends Collection
 {
-    public function beforeSave()
+    protected function beforeSave()
     {
         if ($this->year < 0) {
             echo 'Year cannot be smaller than zero!';
@@ -627,7 +630,7 @@ class Robots extends Collection
 }
 ```
 
-Some events return false as an indication to stop the current operation. If an event doesn't return anything, `Phalcon\Mvc\Collection` will assume a true value.
+Some events return `false` as an indication to stop the current operation. If an event doesn't return anything, `Phalcon\Mvc\Collection` will assume a `true` value.
 
 <a name='data-integrity'></a>
 
@@ -678,7 +681,7 @@ class Robots extends Collection
 }
 ```
 
-The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return false.
+The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return `false`.
 
 <div class='alert alert-warning'>
     <p>
@@ -742,10 +745,10 @@ foreach ($robots as $robot) {
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-| Operation | Name           | Can stop operation? | Explanation                              |
+| Operation | Nazwa          | Can stop operation? | Explanation                              |
 | --------- | -------------- | ------------------- | ---------------------------------------- |
-| Deleting  | `beforeDelete` | YES                 | Runs before the delete operation is made |
-| Deleting  | `afterDelete`  | NO                  | Runs after the delete operation was made |
+| Deleting  | `beforeDelete` | TAK                 | Runs before the delete operation is made |
+| Deleting  | `afterDelete`  | NIE                 | Runs after the delete operation was made |
 
 <a name='validation-failed-events'></a>
 
@@ -753,7 +756,7 @@ The following events are available to define custom business rules that can be e
 
 Another type of events is available when the data validation process finds any inconsistency:
 
-| Operation                | Name                | Explanation                                                     |
+| Operation                | Nazwa               | Explanation                                                     |
 | ------------------------ | ------------------- | --------------------------------------------------------------- |
 | Insert or Update         | `notSave`           | Triggered when the insert/update operation fails for any reason |
 | Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails            |
@@ -784,7 +787,7 @@ class Robots extends Collection
 
 ## Setting multiple databases
 
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service setting it in the initialize method:
+In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
 
 ```php
 <?php
