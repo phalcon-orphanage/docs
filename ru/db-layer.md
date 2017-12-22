@@ -30,7 +30,7 @@
           <a href="#finding-rows">Поиск строк</a>
         </li>
         <li>
-          <a href="#binding-parameters">Связывание параметров</a>
+          <a href="#binding-parameters">Подготавливаемые запросы</a>
         </li>
         <li>
           <a href="#crud">Вставка, обновление и удаление строк</a>
@@ -243,25 +243,25 @@ The above will return the correct database instance and also has the advantage t
 
 $sql = 'SELECT id, name FROM robots ORDER BY name';
 
-// Send a SQL statement to the database system
+// Отправляем SQL выражение в базу данных
 $result = $connection->query($sql);
 
-// Print each robot name
+// Выводим имя каждого робота
 while ($robot = $result->fetch()) {
    echo $robot['name'];
 }
 
-// Get all rows in an array
+// Получаем все строки в массив
 $robots = $connection->fetchAll($sql);
 foreach ($robots as $robot) {
    echo $robot['name'];
 }
 
-// Get only the first row
+// Получаем только первую строку
 $robot = $connection->fetchOne($sql);
 ```
 
-By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using `Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
+По умолчанию эти вызовы создают массивы с ассоциативными и нумерованными индексами. Вы можете изменить это поведение используя `Phalcon\Db\Result::setFetchMode()`. Этот метод принимает константу, определяющую необходимый тип индексов.
 
 | Константа                  | Описание                                                   |
 | -------------------------- | ---------------------------------------------------------- |
@@ -282,7 +282,7 @@ while ($robot = $result->fetch()) {
 }
 ```
 
-The `Phalcon\Db::query()` returns an instance of `Phalcon\Db\Result\Pdo`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
+`Phalcon\Db::query()` возвращает экземпляр класса `Phalcon\Db\Result\Pdo`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
 
 ```php
 <?php
@@ -305,7 +305,7 @@ echo $result->numRows();
 
 <a name='binding-parameters'></a>
 
-## Связывание параметров
+## Подготавливаемые запросы
 
 Bound parameters is also supported in `Phalcon\Db`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
 
@@ -332,9 +332,9 @@ $success = $connection->query(
 );
 ```
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case '1' or '2' are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter data are automatically escaped using [PDO Quote](http://www.php.net/manual/en/pdo.quote.php).
+When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case '1' or '2' are considered strings and not numbers, so the placeholder could not be successfully replaced. С любым адаптером данные автоматически экранируются с помощью [PDO Quote](http://www.php.net/manual/en/pdo.quote.php).
 
-This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+Эта функция принимает во внимание кодировку подключения, поэтому рекомендуется определить корректную кодировку в параметрах подключения или в конфигурации сервера баз данных, так как ошибочная кодировка приведет к неожиданным эффектам при сохранении или извлечении данных.
 
 Also, you can pass your parameters directly to the execute/query methods. In this case bound parameters are directly passed to PDO:
 
@@ -480,7 +480,7 @@ $success = $connection->delete(
 
 ## Транзакции и вложенные транзакции
 
-Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
+Работа с транзакциями поддерживается также, как и в PDO. Выполнение изменения данных внутри транзакций, часто увеличивает производительность в большинстве систем баз данных:
 
 ```php
 <?php
@@ -502,7 +502,7 @@ try {
 }
 ```
 
-In addition to standard transactions, `Phalcon\Db` provides built-in support for [nested transactions](http://en.wikipedia.org/wiki/Nested_transaction) (if the database system used supports them). When you call begin() for a second time a nested transaction is created:
+В дополнение к стандартным транзакциям, `Phalcon\Db` предоставляет встроенную поддержку для [вложенных транзакций](http://en.wikipedia.org/wiki/Nested_transaction) (если используемая база данных поддерживает их). When you call begin() for a second time a nested transaction is created:
 
 ```php
 <?php
@@ -544,17 +544,17 @@ try {
 
 ## События базы данных
 
-`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. Поддерживаются следующие события:
 
 | Название события      | Срабатывает                                          | Может остановить операцию? |
 | --------------------- | ---------------------------------------------------- |:--------------------------:|
-| `afterConnect`        | After a successfully connection to a database system |             No             |
-| `beforeQuery`         | Before send a SQL statement to the database system   |            Yes             |
-| `afterQuery`          | After send a SQL statement to database system        |             No             |
-| `beforeDisconnect`    | Before close a temporal database connection          |             No             |
-| `beginTransaction`    | Before a transaction is going to be started          |             No             |
-| `rollbackTransaction` | Before a transaction is rollbacked                   |             No             |
-| `commitTransaction`   | Before a transaction is committed                    |             No             |
+| `afterConnect`        | После успешного подключения к базе данных            |            Нет             |
+| `beforeQuery`         | Перед отправкой SQL выражения в базу данных          |             Да             |
+| `afterQuery`          | После отправки SQL выражения в базу данных           |            Нет             |
+| `beforeDisconnect`    | Перед закрытием временного подключения к базе данных |            Нет             |
+| `beginTransaction`    | Перед тем, как транзакция будет запущена             |            Нет             |
+| `rollbackTransaction` | Перед тем, как транзакция откатится                  |            Нет             |
+| `commitTransaction`   | Перед фиксацией транзакции                           |            Нет             |
 
 Bind an EventsManager to a connection is simple, `Phalcon\Db` will trigger the events with the type `db`:
 
@@ -872,17 +872,17 @@ $connection->createTable(
 
 | Параметр        | Описание                                                                                                                                   | Опционально |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:-----------:|
-| `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below for a list)                                                               |     No      |
-| `primary`       | True if the column is part of the table's primary key                                                                                      |     Yes     |
-| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |     Yes     |
-| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |     Yes     |
-| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |     Yes     |
-| `notNull`       | Column can store null values?                                                                                                              |     Yes     |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |     Yes     |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |     Yes     |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |     Yes     |
-| `first`         | Column must be placed at first position in the column order                                                                                |     Yes     |
-| `after`         | Column must be placed after indicated column                                                                                               |     Yes     |
+| `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below for a list)                                                               |     Нет     |
+| `primary`       | True if the column is part of the table's primary key                                                                                      |     Да      |
+| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |     Да      |
+| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |     Да      |
+| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |     Да      |
+| `notNull`       | Column can store null values?                                                                                                              |     Да      |
+| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |     Да      |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |     Да      |
+| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |     Да      |
+| `first`         | Column must be placed at first position in the column order                                                                                |     Да      |
+| `after`         | Column must be placed after indicated column                                                                                               |     Да      |
 
 `Phalcon\Db` supports the following database column types:
 
@@ -898,10 +898,10 @@ The associative array passed in `Phalcon\Db::createTable()` can have the possibl
 
 | Индекс       | Описание                                                                                                                               | Опционально |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:-----------:|
-| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |     No      |
-| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |     Yes     |
-| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |     Yes     |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |     Yes     |
+| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |     Нет     |
+| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |     Да      |
+| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |     Да      |
+| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |     Да      |
 
 <a name='tables-altering'></a>
 

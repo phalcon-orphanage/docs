@@ -21,11 +21,11 @@
 
 <a name='overview'></a>
 
-# Forms
+# Formularios
 
-`Phalcon\Forms\Form` is a component that helps with the creation and maintenance of forms in web applications.
+`Phalcon\Forms\Form` es un componente que ayuda a la creación y mantenimiento de formularios en aplicaciones web.
 
-The following example shows its basic usage:
+En el ejemplo siguiente se muestra su uso básico:
 
 ```php
 <?php
@@ -52,25 +52,25 @@ $form->add(
     new Select(
         'telephoneType',
         [
-            'H' => 'Home',
-            'C' => 'Cell',
+            'H' => 'Hogar',
+            'C' => 'Movil',
         ]
     )
 );
 ```
 
-Forms can be rendered based on the form definition:
+Los formularios se pueden representar en función de la definición del formulario:
 
 ```php
 <h1>
-    Contacts
+    Contactos
 </h1>
 
 <form method='post'>
 
     <p>
         <label>
-            Name
+            Nombre
         </label>
 
         <?php echo $form->render('name'); ?>
@@ -78,7 +78,7 @@ Forms can be rendered based on the form definition:
 
     <p>
         <label>
-            Telephone
+            Teléfono
         </label>
 
         <?php echo $form->render('telephone'); ?>
@@ -86,34 +86,32 @@ Forms can be rendered based on the form definition:
 
     <p>
         <label>
-            Type
+            Tipo
         </label>
 
         <?php echo $form->render('telephoneType'); ?>
     </p>
 
-
-
     <p>
-        <input type='submit' value='Save' />
+        <input type='submit' value='Guardar' />
     </p>
 
 </form>
 ```
 
-Each element in the form can be rendered as required by the developer. Internally, `Phalcon\Tag` is used to produce the correct HTML for each element and you can pass additional HTML attributes as the second parameter of `render()`:
+Cada elemento en el formulario se puede representar como sea requerido por el desarrollador. Internamente, se utiliza `Phalcon\Tag` para producir el código HTML correcto de cada elemento y los atributos HTML adicionales se pueden pasar como segundo parámetro del método `render()`:
 
 ```php
 <p>
     <label>
-        Name
+        Nombre
     </label>
 
-    <?php echo $form->render('name', ['maxlength' => 30, 'placeholder' => 'Type your name']); ?>
+    <?php echo $form->render('name', ['maxlength' => 30, 'placeholder' => 'Escribe tu nombre']); ?>
 </p>
 ```
 
-HTML attributes also can be set in the element's definition:
+Los atributos HTML también se pueden definir en la definición del elemento:
 
 ```php
 <?php
@@ -123,7 +121,7 @@ $form->add(
         'name',
         [
             'maxlength'   => 30,
-            'placeholder' => 'Type your name',
+            'placeholder' => 'Escribe tu nombre',
         ]
     )
 );
@@ -131,9 +129,9 @@ $form->add(
 
 <a name='initializing'></a>
 
-## Initializing forms
+## Inicializando formularios
 
-As seen before, forms can be initialized outside the form class by adding elements to it. You can re-use code or organize your form classes implementing the form in a separated file:
+Como hemos visto anteriormente, los formularios se pueden inicializar fuera de la clase formulario agregando elementos en él. Puede reutilizar código u organizar tus formularios en clases e implementar el formulario en un archivo separado:
 
 ```php
 <?php
@@ -174,7 +172,7 @@ class ContactForm extends Form
 }
 ```
 
-`Phalcon\Forms\Form` extends `Phalcon\Di\Injectable` so you have access to the application services if needed:
+`Phalcon\Forms\Form` extiende de `Phalcon\Di\Injectable` para tener acceso a los servicios de aplicación si es necesario:
 
 ```php
 <?php
@@ -186,7 +184,7 @@ use Phalcon\Forms\Element\Hidden;
 class ContactForm extends Form
 {
     /**
-     * This method returns the default value for field 'csrf'
+     * Este método retorna el valor por defecto del campo 'csrf'
      */
     public function getCsrf()
     {
@@ -195,17 +193,17 @@ class ContactForm extends Form
 
     public function initialize()
     {
-        // Set the same form as entity
+        // Configurar el mismo formulario como entidad
         $this->setEntity($this);
 
-        // Add a text element to capture the 'email'
+        // Agregamos un elemento de texto para capturar el 'email'
         $this->add(
             new Text(
                 'email'
             )
         );
 
-        // Add a text element to put a hidden CSRF
+        // Agregamos un elemento oculto para poner el código CSRF
         $this->add(
             new Hidden(
                 'csrf'
@@ -215,7 +213,7 @@ class ContactForm extends Form
 }
 ```
 
-The associated entity added to the form in the initialization and custom user options are passed to the form constructor:
+La entidad asociada al formulario en la inicialización y las opciones de usuario se pasan al constructor del formulario:
 
 ```php
 <?php
@@ -227,7 +225,7 @@ use Phalcon\Forms\Element\Hidden;
 class UsersForm extends Form
 {
     /**
-     * Forms initializer
+     * Inicializador de formulario
      *
      * @param Users $user
      * @param array $options
@@ -257,7 +255,7 @@ class UsersForm extends Form
 }
 ```
 
-In the form's instantiation you must use:
+En la creación de instancias del formulario debe utilizar:
 
 ```php
 <?php
@@ -286,7 +284,7 @@ $name = new Text(
 $name->addValidator(
     new PresenceOf(
         [
-            'message' => 'The name is required',
+            'message' => 'El nombre es obligatorio',
         ]
     )
 );
@@ -295,7 +293,7 @@ $name->addValidator(
     new StringLength(
         [
             'min'            => 10,
-            'messageMinimum' => 'The name is too short',
+            'messageMinimum' => 'El nombre es demasiado corto',
         ]
     )
 );
@@ -325,7 +323,7 @@ By default messages generated by all the elements in the form are joined so they
 <?php
 
 foreach ($form->getMessages(false) as $attribute => $messages) {
-    echo 'Messages generated by ', $attribute, ':', "\n";
+    echo 'Mensajes generados para ', $attribute, ':', "\n";
 
     foreach ($messages as $message) {
         echo $message, '<br>';
@@ -360,7 +358,7 @@ $name = new Text(
     'name'
 );
 
-// Set multiple filters
+// Configurar múltiples filtros
 $name->setFilters(
     [
         'string',
@@ -374,7 +372,7 @@ $email = new Text(
     'email'
 );
 
-// Set one filter
+// Agregar solo un filtro
 $email->setFilters(
     'email'
 );
@@ -423,9 +421,9 @@ You can validate the form and assign the values from the user input in the follo
 
 $form->bind($_POST, $robot);
 
-// Check if the form is valid
+// Comprobar si el formulario es válido
 if ($form->isValid()) {
-    // Save the entity
+    // Guardar la entidad
     $robot->save();
 }
 ```
@@ -468,8 +466,8 @@ $form->add(
     new Select(
         'receiveEmails',
         [
-            'Yes' => 'Yes, please!',
-            'No'  => 'No, thanks',
+            'Yes' => 'Si, por favor!',
+            'No'  => 'No, gracias',
         ]
     )
 );
@@ -485,8 +483,6 @@ class Preferences
     public $timezone;
 
     public $receiveEmails;
-
-
 
     public function getTimezone()
     {
@@ -506,18 +502,18 @@ class Preferences
 
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the `Phalcon\Forms\Element` namespace:
 
-| Name                                | Description                                                   |
-| ----------------------------------- | ------------------------------------------------------------- |
-| `Phalcon\Forms\Element\Text`     | Generate `INPUT[type=text]` elements                          |
-| `Phalcon\Forms\Element\Password` | Generate `INPUT[type=password]` elements                      |
-| `Phalcon\Forms\Element\Select`   | Generate `SELECT` tag (combo lists) elements based on choices |
-| `Phalcon\Forms\Element\Check`    | Generate `INPUT[type=check]` elements                         |
-| `Phalcon\Forms\Element\TextArea` | Generate `TEXTAREA` elements                                  |
-| `Phalcon\Forms\Element\Hidden`   | Generate `INPUT[type=hidden]` elements                        |
-| `Phalcon\Forms\Element\File`     | Generate `INPUT[type=file]` elements                          |
-| `Phalcon\Forms\Element\Date`     | Generate `INPUT[type=date]` elements                          |
-| `Phalcon\Forms\Element\Numeric`  | Generate `INPUT[type=number]` elements                        |
-| `Phalcon\Forms\Element\Submit`   | Generate `INPUT[type=submit]` elements                        |
+| Nombre                              | Descripción                                  |
+| ----------------------------------- | -------------------------------------------- |
+| `Phalcon\Forms\Element\Text`     | Genera elementos `INPUT[type=text]`          |
+| `Phalcon\Forms\Element\Password` | Genera elementos `INPUT[type=password]`      |
+| `Phalcon\Forms\Element\Select`   | Genera elementos `SELECT` basado en opciones |
+| `Phalcon\Forms\Element\Check`    | Genera elementos `INPUT[type=check]`         |
+| `Phalcon\Forms\Element\TextArea` | Genera elementos `TEXTAREA`                  |
+| `Phalcon\Forms\Element\Hidden`   | Genera elementos `INPUT[type=hidden]`        |
+| `Phalcon\Forms\Element\File`     | Genera elementos `INPUT[type=file]`          |
+| `Phalcon\Forms\Element\Date`     | Genera elementos `INPUT[type=date]`          |
+| `Phalcon\Forms\Element\Numeric`  | Genera elementos `INPUT[type=number]`        |
+| `Phalcon\Forms\Element\Submit`   | Genera elementos `INPUT[type=submit]`        |
 
 <a name='event-callback'></a>
 
@@ -602,14 +598,14 @@ class ContactForm extends Form
     {
         $element  = $this->get($name);
 
-        // Get any generated messages for the current element
+        // Obtener cualquier mensaje generado por el elemento actual
         $messages = $this->getMessagesFor(
             $element->getName()
         );
 
         if (count($messages)) {
-            // Print each element
-            echo "<div class='messages'>";
+            // Imprimir cada elemento
+            echo "<div class="messages">";
 
             foreach ($messages as $message) {
                 echo $this->flash->error($message);
@@ -654,7 +650,7 @@ class MyElement extends Element
 {
     public function render($attributes = null)
     {
-        $html = // ... Produce some HTML
+        $html = // ... Producir algún HTML
 
         return $html;
     }
@@ -698,4 +694,4 @@ echo $loginForm->render();
 
 ## External Resources
 
-- [Vökuró](http://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]
+- [Vökuró](http://vokuro.phalconphp.com), es una aplicación de ejemplo que utiliza el generador de formularios para crear y administrar formularios, [Código fuente en Github](https://github.com/phalcon/vokuro)
