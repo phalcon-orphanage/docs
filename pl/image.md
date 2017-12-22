@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Images</a> <ul>
+      <a href="#overview">Obrazki</a> <ul>
         <li>
           <a href="#adapters">Adapters</a> <ul>
             <li>
@@ -59,7 +59,7 @@
 
 <a name='overview'></a>
 
-# Images
+# Obrazki
 
 `Phalcon\Image` is the component that allows you to manipulate image files. Multiple operations can be performed on the same image object.
 
@@ -69,7 +69,7 @@
 
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
-| Class                              | Description                                                                         |
+| Klasa                              | Description                                                                         |
 | ---------------------------------- | ----------------------------------------------------------------------------------- |
 | `Phalcon\Image\Adapter\Gd`      | Requires the [GD PHP extension](http://php.net/manual/en/book.image.php)            |
 | `Phalcon\Image\Adapter\Imagick` | Requires the [ImageMagick PHP extension](http://php.net/manual/en/book.imagick.php) |
