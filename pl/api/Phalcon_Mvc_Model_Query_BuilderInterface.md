@@ -8,7 +8,7 @@
 
 *string* **OPERATOR_AND**
 
-## Methods
+## Metody
 
 abstract public **columns** (*mixed* $columns)
 
