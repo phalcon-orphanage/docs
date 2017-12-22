@@ -4,7 +4,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/translate/interpolator/indexedarray.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## Methods
+## Metody
 
 public **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
 
