@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">Annotations Parser</a> <ul>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">Fabryka</a>
         </li>
         <li>
           <a href="#reading">Reading Annotations</a>
@@ -69,8 +69,7 @@ class Example
     public function someMethod()
     {
         // ...
-    }
-}
+    } }
 ```
 
 An annotation has the following syntax:
@@ -127,7 +126,7 @@ However, to make the code more maintainable and understandable it is recommended
 
 <a name='factory'></a>
 
-## Factory
+## Fabryka
 
 There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
 
@@ -446,7 +445,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
-| Class                                   | Description                                                                                                                                                                       |
+| Klasa                                   | Description                                                                                                                                                                       |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Phalcon\Annotations\Adapter\Memory` | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
 | `Phalcon\Annotations\Adapter\Files`  | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
