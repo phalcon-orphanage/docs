@@ -8,7 +8,7 @@
 
 This component allows to build forms using an object-oriented interface
 
-## Methods
+## Metody
 
 public **setValidation** (*mixed* $validation)
 
