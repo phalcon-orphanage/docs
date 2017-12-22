@@ -8,7 +8,7 @@
 
 This component allows to create CLI applications using Phalcon
 
-## Methods
+## Metody
 
 public **addModules** (*array* $modules)
 
