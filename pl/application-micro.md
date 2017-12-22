@@ -7,7 +7,7 @@
       <a href="#routing">Routing</a> 
       <ul>
         <li>
-          <a href="#routing-setup">Setup</a> 
+          <a href="#routing-setup">Konfiguracja</a> 
           <ul>
             <li>
               <a href="#routing-setup-application">Application object</a>
@@ -128,7 +128,7 @@
       </ul>
     </li>
     <li>
-      <a href="#events">Events</a> 
+      <a href="#events">Zdarzenia</a> 
       <ul>
         <li>
           <a href="#events-available-events">Available events</a> <ul>
@@ -162,7 +162,7 @@
           <a href="#middleware-implementation">Implementation</a>
         </li>
         <li>
-          <a href="#middleware-setup">Setup</a>
+          <a href="#middleware-setup">Konfiguracja</a>
         </li>
         <li>
           <a href="#middleware-events">Events in Middleware</a> 
@@ -195,13 +195,13 @@
       </ul>
     </li>
     <li>
-      <a href="#models">Models</a>
+      <a href="#models">Modele</a>
     </li>
     <li>
       <a href="#model-instances">Injecting Model Instances</a>
     </li>
     <li>
-      <a href="#views">Views</a>
+      <a href="#views">Widoki</a>
     </li>
     <li>
       <a href="#error-handling">Error Handling</a>
@@ -258,7 +258,7 @@ Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are de
 
 <a name='routing-setup'></a>
 
-### Setup
+### Konfiguracja
 
 Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[version]]/routing)]
 
@@ -454,7 +454,7 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $orders = new MicroCollection();
 
-// Set the main handler. ie. a controller instance
+// Set the main handler. tzn. a controller instance
 $orders->setHandler(new OrdersController());
 
 // Set a common prefix for all routes
@@ -1199,7 +1199,7 @@ $app->get(
 
 <a name='events'></a>
 
-# Events
+# Zdarzenia
 
 A `Phalcon\Mvc\Micro` application works closely with a `Phalcon\Events\Manager` if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
@@ -1211,12 +1211,12 @@ The following events are supported:
 
 | Event Name         | Triggered                                                         | Can stop operation? |
 | ------------------ | ----------------------------------------------------------------- |:-------------------:|
-| beforeHandleRoute  | Main method called; Routes have not been checked yet              |         Yes         |
-| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |         Yes         |
-| afterExecuteRoute  | Handler just finished running                                     |         No          |
-| beforeNotFound     | Route has not been found                                          |         Yes         |
-| afterHandleRoute   | Route just finished executing                                     |         Yes         |
-| afterBinding       | Triggered after models are bound but before executing the handler |         Yes         |
+| beforeHandleRoute  | Main method called; Routes have not been checked yet              |         Tak         |
+| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |         Tak         |
+| afterExecuteRoute  | Handler just finished running                                     |         Nie         |
+| beforeNotFound     | Route has not been found                                          |         Tak         |
+| afterHandleRoute   | Route just finished executing                                     |         Tak         |
+| afterBinding       | Triggered after models are bound but before executing the handler |         Tak         |
 
 <a name='events-available-events-authentication'></a>
 
@@ -1301,11 +1301,11 @@ The presence of a `Phalcon\Events\Manager` is essential for middleware to operat
 
 Middleware can be attached to a micro application in 3 different events. Those are:
 
-| Event  | Description                                    |
-| ------ | ---------------------------------------------- |
-| before | Before the handler has been executed           |
-| after  | After the handler has been executed            |
-| final  | After the response has been sent to the caller |
+| Zdarzenie | Description                                    |
+| --------- | ---------------------------------------------- |
+| before    | Before the handler has been executed           |
+| after     | After the handler has been executed            |
+| final     | After the response has been sent to the caller |
 
 <div class="alert alert-warning">
     <p>
@@ -1384,7 +1384,7 @@ $app->finish(
 
 <a name='middleware-setup'></a>
 
-## Setup
+## Konfiguracja
 
 Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
 
@@ -1853,7 +1853,7 @@ class ResponseMiddleware implements MiddlewareInterface
 
 <a name='models'></a>
 
-# Models
+# Modele
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
@@ -1927,7 +1927,7 @@ Currently the binder will only use the models primary key to perform a `findFirs
 
 <a name='views'></a>
 
-# Views
+# Widoki
 
 `Phalcon\Mvc\Micro` does not have inherently a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
 
