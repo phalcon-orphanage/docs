@@ -177,9 +177,9 @@ $userAgent = $request->getUserAgent();
 // Get the best acceptable content by the browser. ie text/xml
 $contentType = $request->getAcceptableContent();
 
-// Get the best charset accepted by the browser. ie. utf-8
+// Get the best charset accepted by the browser. tzn. utf-8
 $charset = $request->getBestCharset();
 
-// Get the best language accepted configured in the browser. ie. en-us
+// Get the best language accepted configured in the browser. tzn. en-us
 $language = $request->getBestLanguage();
 ```
