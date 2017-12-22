@@ -19,6 +19,9 @@
           <a href="#finding-documents">Finding Documents</a>
         </li>
         <li>
+          <a href="#finding-documents-field">Querying specific fields</a>
+        </li>
+        <li>
           <a href="#aggregations">Aggregations</a>
         </li>
         <li>
@@ -333,13 +336,13 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parameter    | Description                                                                                                                                                                                  | Example                                                 |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
-| `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`               |
-| `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | `'sort' => array('name' => -1, 'status' => 1)` |
-| `limit`      | Limit the results of the query to results to certain range                                                                                                                                   | `'limit' => 10`                                      |
-| `skip`       | Skips a number of results                                                                                                                                                                    | `'skip' => 50`                                       |
+| Parameter    | Description                                                                                                                                                                                     | Example                                                 |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Model` assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
+| `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                                  | `'fields' => array('name' => true)`               |
+| `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                     | `'sort' => array('name' => -1, 'status' => 1)` |
+| `limit`      | Limit the results of the query to results to certain range                                                                                                                                      | `'limit' => 10`                                      |
+| `skip`       | Skips a number of results                                                                                                                                                                       | `'skip' => 50`                                       |
 
 If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](http://www.php.net/manual/en/mongo.sqltomongo.php).
 
@@ -446,7 +449,7 @@ echo 'The generated id is: ', $robot->getId();
 
 `Phalcon\Mvc\Collection` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
-Each message consists of an instance of the class `Phalcon\Mvc\Model\Message`. The set of messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that generated the message or the message type:
+Each message consists of an instance of the class `Phalcon\Mvc\Model\Message`. The set of messages generated can be retrieved with the method `getMessages()`. Each message provides extended information like the field name that generated the message or the message type:
 
 ```php
 <?php
@@ -605,7 +608,7 @@ $di->set(
 
 When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above.
 
-We recommend that validation methods are declared protected to prevent that business logic implementation from being exposed publicly.
+We recommend that validation methods are declared `protected` to prevent that business logic implementation from being exposed publicly.
 
 The following example implements an event that validates the year cannot be smaller than 0 on update or insert:
 
@@ -616,7 +619,7 @@ use Phalcon\Mvc\Collection;
 
 class Robots extends Collection
 {
-    public function beforeSave()
+    protected function beforeSave()
     {
         if ($this->year < 0) {
             echo 'Year cannot be smaller than zero!';
@@ -627,7 +630,7 @@ class Robots extends Collection
 }
 ```
 
-Some events return false as an indication to stop the current operation. If an event doesn't return anything, `Phalcon\Mvc\Collection` will assume a true value.
+Some events return `false` as an indication to stop the current operation. If an event doesn't return anything, `Phalcon\Mvc\Collection` will assume a `true` value.
 
 <a name='data-integrity'></a>
 
@@ -678,7 +681,7 @@ class Robots extends Collection
 }
 ```
 
-The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return false.
+The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return `false`.
 
 <div class='alert alert-warning'>
     <p>
@@ -784,7 +787,7 @@ class Robots extends Collection
 
 ## Setting multiple databases
 
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service setting it in the initialize method:
+In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
 
 ```php
 <?php
