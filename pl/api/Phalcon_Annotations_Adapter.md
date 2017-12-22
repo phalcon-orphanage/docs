@@ -6,7 +6,7 @@
 
 This is the base class for Phalcon\\Annotations adapters
 
-## Methods
+## Metody
 
 public **setReader** ([Phalcon\Annotations\ReaderInterface](/en/3.2/api/Phalcon_Annotations_ReaderInterface) $reader)
 
