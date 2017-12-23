@@ -4,7 +4,7 @@
 
 Represents a single annotation in an annotations collection
 
-## Methods
+## Metody
 
 public **__construct** (*array* $reflectionData)
 
