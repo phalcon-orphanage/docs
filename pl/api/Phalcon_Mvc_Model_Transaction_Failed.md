@@ -8,7 +8,7 @@
 
 This class will be thrown to exit a try/catch block for isolated transactions
 
-## Methods
+## Metody
 
 public **__construct** (*mixed* $message, [[Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $record])
 
