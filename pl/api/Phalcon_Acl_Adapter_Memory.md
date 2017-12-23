@@ -71,7 +71,7 @@ foreach ($privateResources as $resource => $actions) {
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** ()
 
