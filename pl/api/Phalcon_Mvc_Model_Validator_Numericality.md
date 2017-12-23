@@ -35,7 +35,7 @@ class Products extends \Phalcon\Mvc\Collection
 
 ```
 
-## Methods
+## Metody
 
 public **validate** ([Phalcon\Mvc\EntityInterface](/en/3.2/api/Phalcon_Mvc_EntityInterface) $record)
 
