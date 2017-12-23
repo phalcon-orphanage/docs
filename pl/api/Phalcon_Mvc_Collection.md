@@ -22,7 +22,7 @@ This component implements a high level abstraction for NoSQL databases which wor
 
 *integer* **DIRTY_STATE_DETACHED**
 
-## Methods
+## Metody
 
 final public **__construct** ([[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector], [[Phalcon\Mvc\Collection\ManagerInterface](/en/3.2/api/Phalcon_Mvc_Collection_ManagerInterface) $modelsManager])
 
