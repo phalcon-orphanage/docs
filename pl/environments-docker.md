@@ -22,13 +22,13 @@
           <a href="#configuration">Configuration</a>
         </li>
         <li>
-          <a href="#usage">Usage</a>
+          <a href="#usage">Sposób użycia</a>
         </li>
         <li>
-          <a href="#setup">Set up</a>
+          <a href="#setup">Konfiguracja</a>
         </li>
         <li>
-          <a href="#logs">Logs</a>
+          <a href="#logs">Logi</a>
         </li>
         <li>
           <a href="#environment-variables">Environment variables</a> <ul>
@@ -151,7 +151,7 @@ Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as f
 
 <a name='usage'></a>
 
-## Usage
+## Sposób użycia
 
 You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
 
@@ -170,18 +170,18 @@ Now you can now launch your application in your browser visiting `http://phalcon
 
 <a name='setup'></a>
 
-## Set up
+## Konfiguracja
 
 If your application uses a file cache or writes logs to files, you can set up your cache and log folders as follows:
 
-| Directory | Path             |
+| Directory | Ścieżka          |
 | --------- | ---------------- |
 | Cache     | `/project/cache` |
 | Logs      | `/project/log`   |
 
 <a name='logs'></a>
 
-## Logs
+## Logi
 
 For most containers you can access the logs using the `docker logs <container_name>` command in your host machine.
 
@@ -195,7 +195,7 @@ You can pass multiple environment variables from an external file to a service's
 
 ### Web environment
 
-| Environment variable | Description                                         | Default         |
+| Environment variable | Description                                         | Domyślne        |
 | -------------------- | --------------------------------------------------- | --------------- |
 | `WEB_DOCUMENT_ROOT`  | Document root for webserver (inside the container). | /project/public |
 | `WEB_DOCUMENT_INDEX` | Index document.                                     | index.php       |
@@ -209,17 +209,17 @@ You can pass multiple environment variables from an external file to a service's
 
 ### phpMyAdmin variables
 
-| Environment variable | Description                                                                                                  | Default |
-| -------------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
-| `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed.                                                      | 1       |
-| `PMA_HOST`           | Define address/host name of the MySQL server.                                                                | mysql   |
-| `PMA_HOSTS`          | Define comma separated list of address/host names of the MySQL servers. Used only if `PMA_HOST` is empty.    |         |
-| `PMA_PORT`           | Define port of the MySQL server.                                                                             | 3306    |
-| `PMA_VERBOSE`        | Define verbose name of the MySQL server.                                                                     |         |
-| `PMA_VERBOSES`       | Define comma separated list of verbose names of the MySQL servers. Used only if `PMA_VERBOSE` is empty.      |         |
-| `PMA_USER`           | Define username to use for config authentication method.                                                     | phalcon |
-| `PMA_PASSWORD`       | Define password to use for config authentication method.                                                     | secret  |
-| `PMA_ABSOLUTE_URI`   | The fully-qualified path (e.g. https://pma.example.net/) where the reverse proxy makes phpMyAdmin available. |         |
+| Environment variable | Description                                                                                                  | Domyślne |
+| -------------------- | ------------------------------------------------------------------------------------------------------------ | -------- |
+| `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed.                                                      | 1        |
+| `PMA_HOST`           | Define address/host name of the MySQL server.                                                                | mysql    |
+| `PMA_HOSTS`          | Define comma separated list of address/host names of the MySQL servers. Used only if `PMA_HOST` is empty.    |          |
+| `PMA_PORT`           | Define port of the MySQL server.                                                                             | 3306     |
+| `PMA_VERBOSE`        | Define verbose name of the MySQL server.                                                                     |          |
+| `PMA_VERBOSES`       | Define comma separated list of verbose names of the MySQL servers. Used only if `PMA_VERBOSE` is empty.      |          |
+| `PMA_USER`           | Define username to use for config authentication method.                                                     | phalcon  |
+| `PMA_PASSWORD`       | Define password to use for config authentication method.                                                     | secret   |
+| `PMA_ABSOLUTE_URI`   | The fully-qualified path (e.g. https://pma.example.net/) where the reverse proxy makes phpMyAdmin available. |          |
 
 *See also* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
 
@@ -229,12 +229,12 @@ You can pass multiple environment variables from an external file to a service's
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
-| Environment variable         | Description                                              | Default |
-| ---------------------------- | -------------------------------------------------------- | ------- |
-| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host` (your host IP). |         |
-| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.                | 9000    |
-| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`.           | Off     |
-| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`.        | Off     |
+| Environment variable         | Description                                              | Domyślne |
+| ---------------------------- | -------------------------------------------------------- | -------- |
+| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host` (your host IP). |          |
+| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.                | 9000     |
+| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`.           | Off      |
+| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`.        | Off      |
 
 *NOTE* You can find your local IP address as follows:
 
@@ -315,7 +315,7 @@ make reset
 
 The main tools used are Phalcon, Docker and Docker Compose.
 
-| Application     | Version          |
+| Application     | Wersja           |
 | --------------- | ---------------- |
 | Aerospike       | 3.11.1.1         |
 | Apache          | 2.4.18           |
