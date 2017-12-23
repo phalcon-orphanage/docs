@@ -36,7 +36,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 *integer* **PADDING_SPACE**
 
-## Methods
+## Metody
 
 public **setPadding** (*mixed* $scheme)
 
