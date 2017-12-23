@@ -6,7 +6,7 @@
           <a href="#adapters">Adapters</a>
         </li>
         <li>
-          <a href="#usage">Usage</a>
+          <a href="#usage">Sposób użycia</a>
         </li>
         <li>
           <a href="#printing">Printing Messages</a>
@@ -21,7 +21,7 @@
 
 <a name='overview'></a>
 
-# Forms
+# Formularze
 
 `Phalcon\Forms\Form` is a component that helps with the creation and maintenance of forms in web applications.
 
@@ -506,7 +506,7 @@ class Preferences
 
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the `Phalcon\Forms\Element` namespace:
 
-| Name                                | Description                                                   |
+| Nazwa                               | Description                                                   |
 | ----------------------------------- | ------------------------------------------------------------- |
 | `Phalcon\Forms\Element\Text`     | Generate `INPUT[type=text]` elements                          |
 | `Phalcon\Forms\Element\Password` | Generate `INPUT[type=password]` elements                      |
