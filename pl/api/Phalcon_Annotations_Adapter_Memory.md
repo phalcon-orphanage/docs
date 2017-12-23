@@ -8,7 +8,7 @@
 
 Stores the parsed annotations in memory. This adapter is the suitable development/testing
 
-## Methods
+## Metody
 
 public **read** (*mixed* $key)
 
