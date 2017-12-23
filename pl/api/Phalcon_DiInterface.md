@@ -4,7 +4,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/diinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## Methods
+## Metody
 
 abstract public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
