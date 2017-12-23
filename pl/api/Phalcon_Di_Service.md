@@ -14,7 +14,7 @@ $request = service->resolve();
 
 ```php <?php
 
-## Methods
+## Metody
 
 final public **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
