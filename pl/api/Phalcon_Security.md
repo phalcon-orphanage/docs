@@ -44,7 +44,7 @@ if ($user) {
 
 *integer* **CRYPT_SHA512**
 
-## Methods
+## Metody
 
 public **setWorkFactor** (*mixed* $workFactor)
 
