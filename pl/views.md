@@ -6,61 +6,61 @@
           <a href="#integrating-views-with-controllers">Integracja widoków z kontrolerami</a>
         </li>
         <li>
-          <a href="#hierarchical-rendering">Hierarchical Rendering</a> <ul>
+          <a href="#hierarchical-rendering">Hierarchiczne renderowanie</a> <ul>
             <li>
-              <a href="#using-templates">Using Templates</a>
+              <a href="#using-templates">Używanie szablonów</a>
             </li>
             <li>
-              <a href="#control-rendering-levels">Control Rendering Levels</a>
+              <a href="#control-rendering-levels">Kontrola poziomów renderowania</a>
             </li>
             <li>
-              <a href="#disabling-render-levels">Disabling render levels</a>
+              <a href="#disabling-render-levels">Blokowanie poziomów renderowania</a>
             </li>
             <li>
-              <a href="#picking-views">Picking Views</a>
+              <a href="#picking-views">Wybieranie widoków</a>
             </li>
             <li>
-              <a href="#disabling-view">Disabling the view</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#simple-rendering">Simple Rendering</a>
-        </li>
-        <li>
-          <a href="#using-partials">Using Partials</a>
-        </li>
-        <li>
-          <a href="#value-transfer">Transfer values from the controller to views</a>
-        </li>
-        <li>
-          <a href="#caching-fragments">Caching View Fragments</a>
-        </li>
-        <li>
-          <a href="#template-engines">Template Engines</a> <ul>
-            <li>
-              <a href="#custom-template-engine">Creating your own Template Engine Adapter</a>
-            </li>
-            <li>
-              <a href="#changing-template-engine">Changing the Template Engine</a>
+              <a href="#disabling-view">Wyłączanie widoku</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#injecting-services">Injecting services in View</a>
+          <a href="#simple-rendering">Proste renderowanie</a>
         </li>
         <li>
-          <a href="#stand-along">Stand-Alone Component</a> <ul>
+          <a href="#using-partials">Używanie częściowych widoków(ang. Partials)</a>
+        </li>
+        <li>
+          <a href="#value-transfer">Przenoszenie wartości z kontrolera do widoków</a>
+        </li>
+        <li>
+          <a href="#caching-fragments">Zachowywanie fragmentów widoku w Cache</a>
+        </li>
+        <li>
+          <a href="#template-engines">Silniki szablonów</a> <ul>
             <li>
-              <a href="#stand-alone-hierarchical-rendering">Hierarchical Rendering</a>
+              <a href="#custom-template-engine">Tworzenie Twojego własnego adaptera silnika szablonów</a>
             </li>
             <li>
-              <a href="#stand-alone-simple-rendering">Simple Rendering</a>
+              <a href="#changing-template-engine">Zmiana silnika szablonów</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#eventes">View Events</a>
+          <a href="#injecting-services">Wstrzykiwanie serwisów do widoku</a>
+        </li>
+        <li>
+          <a href="#stand-along">Autonomiczny komponent</a> <ul>
+            <li>
+              <a href="#stand-alone-hierarchical-rendering">Hierarchiczne renderowanie</a>
+            </li>
+            <li>
+              <a href="#stand-alone-simple-rendering">Proste renderowanie</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#eventes">Zdarzenia widoku</a>
         </li>
       </ul>
     </li>
@@ -69,26 +69,26 @@
 
 <a name='overview'></a>
 
-# Using Views
+# Używanie widoków
 
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application.
+Widoki reprezentują interfejs użytkownika w Twojej aplikacji. Widoki są często plikami HTML z osadzonym kodem PHP, które wykonują zadania związane wyłącznie z prezentacją danych. Widoki obsługują proces dostarczania danych do przeglądarki lub innego narzędzia używanego do realizacji żądania w Twojej aplikacji.
 
-`Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are responsible for the managing the view layer of your MVC application.
+`Phalcon\Mvc\View` oraz `Phalcon\Mvc\View\Simple` są odpowiedzialne za zarządzanie warstwą widoku w Twojej aplikacji MVC.
 
 <a name='integrating-views-with-controllers'></a>
 
-## Integrating Views with Controllers
+## Integracja widoków z kontrolerami
 
-Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
+Phalcon automatycznie przekazuje wykonanie do komponentu widoku w momencie gdy wybrany kontroler zakończył swój cykl. Komponent widoku będzie szukał w folderze widoków folderu nazwanego tak samo, jak nazwa ostatniego wykonanego kontrolera i następnie pliku o nazwie ostatniej wykonanej akcji. Na przykład, jeżeli żądanie jest wywołane za pomocą URL *http://127.0.0.1/blog/posts/show/301*. Phalcon zanalizuje ten adres w następujący sposób:
 
-| Server Address    | 127.0.0.1 |
-| ----------------- | --------- |
-| Phalcon Directory | blog      |
-| Controller        | posts     |
-| Action            | show      |
-| Parameter         | 301       |
+| Adres serwera    | 127.0.0.1 |
+| ---------------- | --------- |
+| Katalog Phalcona | blog      |
+| Kontroler        | posts     |
+| Akcja            | show      |
+| Parametr         | 301       |
 
-The dispatcher will look for a `PostsController` and its action `showAction`. A simple controller file for this example:
+Dyspozytor (ang. dispatcher) będzie szukał `PostsController` oraz akcji `showAction`. Prosty plik kontrolera dla tego przykładu wygląda tak:
 
 ```php
 <?php
@@ -104,42 +104,42 @@ class PostsController extends Controller
 
     public function showAction($postId)
     {
-        // Pass the $postId parameter to the view
+        //Przekaż parametr $postId do widoku
         $this->view->postId = $postId;
     }
 }
 ```
 
-The `setVar()` method allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates how to pass the `$postId` parameter to the respective view template.
+Metoda `setVar()` pozwala nam stworzyć zmienne w widoku na żądanie, które mogą zostać użyte w szablonie widoku. Powyższy przykład demonstruje przesyłanie parametru `$postId` do odpowiedniego szablonu widoku.
 
 <a name='hierarchical-rendering'></a>
 
-## Hierarchical Rendering
+## Hierarchiczne renderowanie
 
-`Phalcon\Mvc\View` supports a hierarchy of files and is the default component for view rendering in Phalcon. This hierarchy allows for common layout points (commonly used views), as well as controller named folders defining respective view templates.
+`Phalcon\Mvc\View` obsługuje hierarchię plików i jest domyślnym komponentem dla renderowania widoków w Phalconie. Ta hierarchia pozwala na wspólne punkty layoutu (często używane widoki), jak również foldery o nazwach kontrolerów definiujące odpowiednie szablony widoków.
 
-This component uses by default PHP itself as the template engine, therefore views should have the `.phtml` extension. If the views directory is *app/views* then view component will find automatically for these 3 view files.
+Ten komponent używa domyślnie języka PHP jako silnika szablonów, więc widoki powinny mieć rozszerzenie `.phtml`. Jeżeli katalogiem widoków jest *app/views* to komponent widoku znajdzie automatycznie te 3 pliki widoków.
 
-| Name              | File                          | Description                                                                                                                                                                                                              |
-| ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                        |
-| Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
-| Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                     |
+| Nazwa             | Plik                          | Opis                                                                                                                                                                                                                          |
+| ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Widok akcji       | app/views/posts/show.phtml    | To jest widok związany z konkretną akcją. Będzie wyświetlony wtedy, gdy akcja `show` zostanie wykonana.                                                                                                                       |
+| Layout kontrolera | app/views/layouts/posts.phtml | Ten widok związany jest z kontrolerem. Będzie on wyświetlany tylko dla każdej akcji wykonanej w ramach kontrolera "posts". Cały kod zaimplementowany w layoucie będzie ponownie użyty dla wszystkich akcji w tym kontrolerze. |
+| Layout główny     | app/views/index.phtml         | To jest główna akcja, która będzie wyświetlona dla każdego kontrolera lub akcji wykonanej w aplikacji.                                                                                                                        |
 
-You are not required to implement all of the files mentioned above. `Phalcon\Mvc\View` will simply move to the next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
+Nie jesteś zobligowany do zaimplementowania wszystkich plików wspomnianych powyżej. `Phalcon\Mvc\View` będzie po prostu przechodził do następnego poziomu widoku w hierarchii plików. Jeżeli wszystkie trzy pliki są zaimplementowane, będą przetwarzane w następujący sposób:
 
 ```php
 <!-- app/views/posts/show.phtml -->
 
-<h3>This is show view!</h3>
+<h3>To jest widok "show"!</h3>
 
-<p>I have received the parameter <?php echo $postId; ?></p>
+<p>Otrzymałem parametr <?php echo $postId; ?></p>
 ```
 
 ```php
 <!-- app/views/layouts/posts.phtml -->
 
-<h2>This is the "posts" controller layout!</h2>
+<h2>To jest layout z kontrolera "posts"!</h2>
 
 <?php echo $this->getContent(); ?>
 ```
@@ -148,11 +148,11 @@ You are not required to implement all of the files mentioned above. `Phalcon\Mvc
 <!-- app/views/index.phtml -->
 <html>
     <head>
-        <title>Example</title>
+        <title>Przykład</title>
     </head>
     <body>
 
-        <h1>This is main layout!</h1>
+        <h1>To jest główny layout!</h1>
 
         <?php echo $this->getContent(); ?>
 
@@ -160,31 +160,31 @@ You are not required to implement all of the files mentioned above. `Phalcon\Mvc
 </html>
 ```
 
-Note the lines where the method `$this->getContent()` was called. This method instructs `Phalcon\Mvc\View` on where to inject the contents of the previous view executed in the hierarchy. For the example above, the output will be:
+Zauważ linie gdzie metoda `$this->getContent()` została wykonana. Ta metoda wskazuje `Phalcon\Mvc\View` gdzie ma wstrzykiwać zawartości poprzedniego widoku wykonanego w hierarchii. Na powyższym przykładzie danymi wyjściowymi będą:
 
 .. figure:: ../_static/img/views-1.png :align: center
 
-The generated HTML by the request will be:
+Wygenerowanym kodem HTML przez żądanie będzie:
 
 ```php
 <!-- app/views/index.phtml -->
 <html>
     <head>
-        <title>Example</title>
+        <title>Przykład</title>
     </head>
     <body>
 
-        <h1>This is main layout!</h1>
+        <h1>To jest główny layout!</h1>
 
         <!-- app/views/layouts/posts.phtml -->
 
-        <h2>This is the "posts" controller layout!</h2>
+        <h2>To jest layout kontrolera "posts"!</h2>
 
         <!-- app/views/posts/show.phtml -->
 
-        <h3>This is show view!</h3>
+        <h3>To jest widok "show"!</h3>
 
-        <p>I have received the parameter 101</p>
+        <p>Otrzymałem parametr 101</p>
 
     </body>
 </html>
@@ -395,14 +395,14 @@ class PostsController extends Controller
 
 The available render levels are:
 
-| Class Constant          | Description                                                              | Order |
-| ----------------------- | ------------------------------------------------------------------------ |:-----:|
-| `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |       |
-| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |   1   |
-| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         |   2   |
-| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |   3   |
-| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |   4   |
-| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |   5   |
+| Class Constant          | Description                                                              | Kolejność |
+| ----------------------- | ------------------------------------------------------------------------ |:---------:|
+| `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |           |
+| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |     1     |
+| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         |     2     |
+| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |     3     |
+| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |     4     |
+| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |     5     |
 
 <a name='disabling-render-levels'></a>
 
@@ -1109,11 +1109,11 @@ echo $view->render(
 
 | Event Name       | Triggered                                     | Can stop operation? |
 | ---------------- | --------------------------------------------- |:-------------------:|
-| beforeRender     | Triggered before starting the render process  |         Yes         |
-| beforeRenderView | Triggered before rendering an existing view   |         Yes         |
-| afterRenderView  | Triggered after rendering an existing view    |         No          |
-| afterRender      | Triggered after completing the render process |         No          |
-| notFoundView     | Triggered when a view was not found           |         No          |
+| beforeRender     | Triggered before starting the render process  |         Tak         |
+| beforeRenderView | Triggered before rendering an existing view   |         Tak         |
+| afterRenderView  | Triggered after rendering an existing view    |         Nie         |
+| afterRender      | Triggered after completing the render process |         Nie         |
+| notFoundView     | Triggered when a view was not found           |         Nie         |
 
 The following example demonstrates how to attach listeners to this component:
 
