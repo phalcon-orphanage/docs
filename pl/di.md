@@ -10,7 +10,7 @@
             <li>
               <a href="#simple-registration">Simple Registration</a> <ul>
                 <li>
-                  <a href="#simple-registration-string">String</a>
+                  <a href="#simple-registration-string">Ciąg tekstu</a>
                 </li>
                 <li>
                   <a href="#class-instances">Class instances</a>
@@ -44,7 +44,7 @@
         <li>
           <a href="#resolving-services">Resolving Services</a> <ul>
             <li>
-              <a href="#events">Events</a>
+              <a href="#events">Zdarzenia</a>
             </li>
           </ul>
         </li>
@@ -482,7 +482,7 @@ As seen before, there are several ways to register services. These we call simpl
 
 <a name='simple-registration-string'></a>
 
-#### String
+#### Ciąg tekstu
 
 This type expects the name of a valid class, returning an object of the specified class, if the class is not loaded it will be instantiated using an auto-loader. This type of definition does not allow to specify arguments for the class constructor or parameters:
 
@@ -876,7 +876,7 @@ Supported parameter types include the following:
 <table>
   <tr>
     <th>
-      Type
+      Typ
     </th>
     
     <th>
@@ -884,7 +884,7 @@ Supported parameter types include the following:
     </th>
     
     <th>
-      Example
+      Przykład
     </th>
   </tr>
   
@@ -1036,14 +1036,14 @@ $component = $di->get(
 
 <a name='envents'></a>
 
-### Events
+### Zdarzenia
 
 `Phalcon\Di` is able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type 'di'. Some events when returning boolean false could stop the active operation. The following events are supported:
 
 | Event Name           | Triggered                                                                                                       | Can stop operation? | Triggered on |
 | -------------------- | --------------------------------------------------------------------------------------------------------------- |:-------------------:|:------------:|
-| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |         No          |  Listeners   |
-| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |         No          |  Listeners   |
+| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |         Nie         |  Listeners   |
+| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |         Nie         |  Listeners   |
 
 <a name='shared-services'></a>
 
@@ -1310,32 +1310,32 @@ $di = new FactoryDefault();
 
 Although you can register services with the names you want, Phalcon has a several naming conventions that allow it to get the the correct (built-in) service when you need it.
 
-| Service Name       | Description                           | Default                                     | Shared |
-| ------------------ | ------------------------------------- | ------------------------------------------- |:------:|
-| assets             | Assets Manager                        | `Phalcon\Assets\Manager`                  |  Yes   |
-| annotations        | Annotations Parser                    | `Phalcon\Annotations\Adapter\Memory`     |  Yes   |
-| cookies            | HTTP Cookies Management Service       | `Phalcon\Http\Response\Cookies`          |  Yes   |
-| crypt              | Encrypt/Decrypt data                  | `Phalcon\Crypt`                            |  Yes   |
-| db                 | Low-Level Database Connection Service | `Phalcon\Db`                               |  Yes   |
-| dispatcher         | Controllers Dispatching Service       | `Phalcon\Mvc\Dispatcher`                  |  Yes   |
-| eventsManager      | Events Management Service             | `Phalcon\Events\Manager`                  |  Yes   |
-| escaper            | Contextual Escaping                   | `Phalcon\Escaper`                          |  Yes   |
-| flash              | Flash Messaging Service               | `Phalcon\Flash\Direct`                    |  Yes   |
-| flashSession       | Flash Session Messaging Service       | `Phalcon\Flash\Session`                   |  Yes   |
-| filter             | Input Filtering Service               | `Phalcon\Filter`                           |  Yes   |
-| modelsCache        | Cache backend for models cache        | None                                        |   No   |
-| modelsManager      | Models Management Service             | `Phalcon\Mvc\Model\Manager`              |  Yes   |
-| modelsMetadata     | Models Meta-Data Service              | `Phalcon\Mvc\Model\MetaData\Memory`     |  Yes   |
-| request            | HTTP Request Environment Service      | `Phalcon\Http\Request`                    |  Yes   |
-| response           | HTTP Response Environment Service     | `Phalcon\Http\Response`                   |  Yes   |
-| router             | Routing Service                       | `Phalcon\Mvc\Router`                      |  Yes   |
-| security           | Security helpers                      | `Phalcon\Security`                         |  Yes   |
-| session            | Session Service                       | `Phalcon\Session\Adapter\Files`          |  Yes   |
-| sessionBag         | Session Bag service                   | `Phalcon\Session\Bag`                     |  Yes   |
-| tag                | HTML generation helpers               | `Phalcon\Tag`                              |  Yes   |
-| transactionManager | Models Transaction Manager Service    | `Phalcon\Mvc\Model\Transaction\Manager` |  Yes   |
-| url                | URL Generator Service                 | `Phalcon\Mvc\Url`                         |  Yes   |
-| viewsCache         | Cache backend for views fragments     | None                                        |   No   |
+| Service Name       | Description                           | Domyślne                                    | Współdzielone |
+| ------------------ | ------------------------------------- | ------------------------------------------- |:-------------:|
+| assets             | Assets Manager                        | `Phalcon\Assets\Manager`                  |      Tak      |
+| annotations        | Annotations Parser                    | `Phalcon\Annotations\Adapter\Memory`     |      Tak      |
+| cookies            | HTTP Cookies Management Service       | `Phalcon\Http\Response\Cookies`          |      Tak      |
+| crypt              | Encrypt/Decrypt data                  | `Phalcon\Crypt`                            |      Tak      |
+| db                 | Low-Level Database Connection Service | `Phalcon\Db`                               |      Tak      |
+| dispatcher         | Controllers Dispatching Service       | `Phalcon\Mvc\Dispatcher`                  |      Tak      |
+| eventsManager      | Events Management Service             | `Phalcon\Events\Manager`                  |      Tak      |
+| escaper            | Contextual Escaping                   | `Phalcon\Escaper`                          |      Tak      |
+| flash              | Flash Messaging Service               | `Phalcon\Flash\Direct`                    |      Tak      |
+| flashSession       | Flash Session Messaging Service       | `Phalcon\Flash\Session`                   |      Tak      |
+| filter             | Input Filtering Service               | `Phalcon\Filter`                           |      Tak      |
+| modelsCache        | Cache backend for models cache        | Brak                                        |      Nie      |
+| modelsManager      | Models Management Service             | `Phalcon\Mvc\Model\Manager`              |      Tak      |
+| modelsMetadata     | Models Meta-Data Service              | `Phalcon\Mvc\Model\MetaData\Memory`     |      Tak      |
+| request            | HTTP Request Environment Service      | `Phalcon\Http\Request`                    |      Tak      |
+| response           | HTTP Response Environment Service     | `Phalcon\Http\Response`                   |      Tak      |
+| router             | Routing Service                       | `Phalcon\Mvc\Router`                      |      Tak      |
+| security           | Security helpers                      | `Phalcon\Security`                         |      Tak      |
+| session            | Session Service                       | `Phalcon\Session\Adapter\Files`          |      Tak      |
+| sessionBag         | Session Bag service                   | `Phalcon\Session\Bag`                     |      Tak      |
+| tag                | HTML generation helpers               | `Phalcon\Tag`                              |      Tak      |
+| transactionManager | Models Transaction Manager Service    | `Phalcon\Mvc\Model\Transaction\Manager` |      Tak      |
+| url                | URL Generator Service                 | `Phalcon\Mvc\Url`                         |      Tak      |
+| viewsCache         | Cache backend for views fragments     | Brak                                        |      Nie      |
 
 <a name='implementing-your-own-di'></a>
 
