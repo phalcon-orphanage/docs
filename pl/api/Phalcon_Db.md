@@ -77,7 +77,7 @@ try {
 
 *integer* **FETCH_PROPS_LATE**
 
-## Methods
+## Metody
 
 public static **setup** (*array* $options)
 
