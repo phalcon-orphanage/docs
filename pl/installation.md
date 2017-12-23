@@ -171,7 +171,7 @@ Add the repository to your distribution:
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-or
+lub
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
@@ -248,7 +248,7 @@ Add the repository to your distribution:
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-or
+lub
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
@@ -312,7 +312,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon
 ```
 
-### Source
+### Z kodu źródłowego
 
 ```bash
 export CFLAGS="-O2 --fvisibility=hidden"
@@ -380,16 +380,16 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Architecture | Version | Type                  |
-|:------------:|:-------:| --------------------- |
-|     x64      |   7.x   | Thread safe           |
-|     x64      |   7.x   | Non Thread safe (NTS) |
-|     x86      |   7.x   | Thread safe           |
-|     x86      |   7.x   | Non Thread safe (NTS) |
-|     x64      |   5.6   | Thread safe           |
-|     x64      |   5.6   | Non Thread safe (NTS) |
-|     x86      |   5.6   | Thread safe           |
-|     x86      |   5.6   | Non Thread safe (NTS) |
+| Architecture | Wersja | Typ                   |
+|:------------:|:------:| --------------------- |
+|     x64      |  7.x   | Thread safe           |
+|     x64      |  7.x   | Non Thread safe (NTS) |
+|     x86      |  7.x   | Thread safe           |
+|     x86      |  7.x   | Non Thread safe (NTS) |
+|     x64      |  5.6   | Thread safe           |
+|     x64      |  5.6   | Non Thread safe (NTS) |
+|     x86      |  5.6   | Thread safe           |
+|     x86      |  5.6   | Non Thread safe (NTS) |
 
 Edit your php.ini file and then append at the end:
 
