@@ -52,7 +52,7 @@ $router->mount($blog);
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** ([*mixed* $paths])
 
