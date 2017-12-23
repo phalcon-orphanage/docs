@@ -22,7 +22,7 @@ $classAnnotations = $reflection->getClassAnnotations();
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $reflectionData])
 
