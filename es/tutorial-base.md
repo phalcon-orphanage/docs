@@ -413,7 +413,7 @@ echo $this->tag->linkTo(
   
 
 
-The generated HTML code displays an anchor ("a") HTML tag linking to a new controller:
+El código HTML generado muestra una etiqueta de enlace HTML ("a") vinculando a un nuevo controlador:
 
   
 **app/views/index/index.phtml Rendered**
@@ -427,7 +427,7 @@ The generated HTML code displays an anchor ("a") HTML tag linking to a new contr
   
 
 
-To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is also a service registered in the DI we use `$this->tag` to access it.
+Para generar la etiqueta usamos la clase `Phalcon\Tag`. Esta es una clase utilitaria que nos permite crear etiquetas HTML con los convenios del framework en mente. As this class is also a service registered in the DI we use `$this->tag` to access it.
 
 A more detailed article regarding HTML generation can be found [here <tags>](/[[language]]/[[version]]/tag).
 
@@ -435,7 +435,7 @@ A more detailed article regarding HTML generation can be found [here <tags>](/[[
 ![](/images/content/tutorial-basic-2.png)
 
   
-Here is the Signup controller (`app/controllers/SignupController.php`):
+Aquí está el controlador de registro (`app/controllers/SignupController.php`):
 
   
 **app/controllers/SignupController.php**
