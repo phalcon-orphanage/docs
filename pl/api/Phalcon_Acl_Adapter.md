@@ -6,7 +6,7 @@
 
 Adapter for Phalcon\\Acl adapters
 
-## Methods
+## Metody
 
 public **getActiveRole** ()
 
