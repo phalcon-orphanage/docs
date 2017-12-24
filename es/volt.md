@@ -28,6 +28,14 @@
             </li>
             <li>
               <a href="#control-structures-loops">Controles de bucle</a>
+              <ul>
+                <li>
+                  <a href="#control-structures-if">If</a>
+                </li>
+                <li>
+                  <a href="#control-structures-switch">Switch</a>
+                </li>
+              </ul>
             </li>
             <li>
               <a href="#control-structures-loop">Contexto de bucle</a> 
@@ -261,13 +269,13 @@ Las siguientes opciones están disponibles en Volt:
 
 | Opción              | Descripción                                                                                                                            | Predeterminado |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
-| `compiledPath`      | Un ruta con permisos de escritura donde se puede almacenar las plantillas PHP compiladas                                               | `./`           |
-| `compiledExtension` | Una extensión adicional anexada al archivo PHP compilado                                                                               | `.php`         |
-| `compiledSeparator` | Volt reemplaza los separadores de directorio / y \ por este separador con el fin de crear un único archivo en el directorio compilado | `%%`           |
-| `stat`              | Si Phalcon debe verificar si existen diferencias entre el archivo de plantilla y su ruta compilada                                     | `true`         |
-| `compileAlways`     | Volt de compilar las plantillas en cada solicitud o sólo cuando hubo un cambio en ellas                                                | `false`        |
-| `prefix`            | Permite anteponer un prefijo a las plantillas en la ruta de compilación                                                                | `null`         |
 | `autoescape`        | Habilita a nivel global el autoescape de HTML                                                                                          | `false`        |
+| `compileAlways`     | Volt de compilar las plantillas en cada solicitud o sólo cuando hubo un cambio en ellas                                                | `false`        |
+| `compiledExtension` | Una extensión adicional anexada al archivo PHP compilado                                                                               | `.php`         |
+| `compiledPath`      | Un ruta con permisos de escritura donde se puede almacenar las plantillas PHP compiladas                                               | `./`           |
+| `compiledSeparator` | Volt reemplaza los separadores de directorio / y \ por este separador con el fin de crear un único archivo en el directorio compilado | `%%`           |
+| `prefix`            | Permite anteponer un prefijo a las plantillas en la ruta de compilación                                                                | `null`         |
+| `stat`              | Si Phalcon debe verificar si existen diferencias entre el archivo de plantilla y su ruta compilada                                     | `true`         |
 
 La ruta de compilación se genera según las opciones anteriores, si el desarrollador quiere libertad total para definir la ruta de compilación, una función anónima puede utilizarse para generarlas, esta función recibe la ruta relativa de acceso a la plantilla al directorio de las vistas. Los ejemplos siguientes muestran cómo cambiar dinámicamente la ruta de compilación:
 
@@ -599,7 +607,7 @@ Las declaraciones de `break` y `continue` pueden utilizarse para salir de un buc
 {% endfor %}
 ```
 
-<a name='control-structures-if'></a>
+<a name='loop-controls-if'></a>
 
 ### If
 
@@ -643,9 +651,77 @@ También puede utilizar la estructura de flujo de control `elseif` para emular u
 {% endif %}
 ```
 
+<a name='loop-controls-switch'></a>
+
+### Switch
+
+An alternative to the `if` statement is `switch`, allowing you to create logical execution paths in your application:
+
+```twig
+{% switch foo %}
+    {% case 0 %}
+    {% case 1 %}
+    {% case 2 %}
+        `foo` is less than 3 but not negative
+        {% break %}
+    {% case 3 %}
+        `foo` is 3
+        {% break %}
+    {% default %}
+        `foo` is {{ foo }}
+{% endswitch %}
+```
+
+The switch statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any output (including whitespace) between a switch statement and the first case will result in a syntax error. Empty lines and whitespaces can therefore be cleared to reduce the number of errors [see here](http://php.net/control-structures.alternative-syntax).
+
+#### `case` without `switch`
+
+```twig
+{% case EXPRESSION %}
+```
+
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
+
+#### `switch` without `endswitch`
+
+```twig
+{% switch EXPRESSION %}
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected EOF in ..., there is a 'switch' block without 'endswitch'`.
+```
+
+#### `default` without `switch`
+
+```twig
+{% default %}
+```
+
+Will not throw an error because `default` is a reserved word for filters like `{{ EXPRESSION | default(VALUE) }}` but in this case the expression will only output an empty char '' .
+
+#### nested `switch`
+
+```twig
+{% switch EXPRESSION %}
+  {% switch EXPRESSION %}
+  {% endswitch %}
+{% endswitch %}
+```
+
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ....`
+
+#### a `switch` without an expression
+
+```twig
+{% switch %}
+  {% case EXPRESSION %}
+      {% break %}
+{% endswitch %}
+```
+
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ....`
+
 <a name='control-structures-loop'></a>
 
-### Contexto de bucle
+### Loop Context
 
 Una variable especial está disponible dentro de los bucles `for`, proporcionando información sobre:
 
@@ -736,7 +812,7 @@ Si una expresión necesita ser evaluada pero no impresa, se puede utilizar la in
 
 <a name='expressions-literals'></a>
 
-### Literales
+### Literals
 
 Son soportados los siguientes literales:
 
@@ -778,7 +854,7 @@ Las llaves también pueden usarse para definir matrices o arrays asociativos:
 
 <a name='expressions-math'></a>
 
-### Matemáticas
+### Math
 
 Se pueden hacer cálculos en las plantillas mediante los siguientes operadores:
 
@@ -792,7 +868,7 @@ Se pueden hacer cálculos en las plantillas mediante los siguientes operadores:
 
 <a name='expressions-comparisons'></a>
 
-### Comparaciones
+### Comparisons
 
 Los siguientes operadores de comparación están disponibles:
 
@@ -810,7 +886,7 @@ Los siguientes operadores de comparación están disponibles:
 
 <a name='expressions-logic'></a>
 
-### Lógica
+### Logic
 
 Los operadores lógicos son útiles en la evaluación de expresiones `if` para combinar múltiples pruebas:
 
@@ -823,7 +899,7 @@ Los operadores lógicos son útiles en la evaluación de expresiones `if` para c
 
 <a name='expressions-other-operators'></a>
 
-### Otros operadores
+### Other Operators
 
 También están disponibles otros operadores:
 
@@ -1113,7 +1189,7 @@ Una vista parcial es incluida en tiempo de ejecución, Volt proporciona también
 
 <a name='view-integration-include'></a>
 
-### Incluir
+### Include
 
 `include` tiene un comportamiento especial que nos ayudará a mejorar un poco el rendimiento cuando se usa Volt, si especifica la extensión al incluir el archivo y existe cuando se compila la plantilla, Volt puede incrustar el contenido de la plantilla incluida en la plantilla principal donde está definida la inclusión. Las plantillas no serán incrustadas si el `include` tiene variables pasadas con `with`:
 
@@ -1126,7 +1202,7 @@ Una vista parcial es incluida en tiempo de ejecución, Volt proporciona también
 
 <a name='view-integration-partial-vs-include'></a>
 
-### Parciales vs inclusiones
+### Partial vs Include
 
 Tenga los siguientes puntos en cuenta al elegir utilizar la función `partial` o `include`:
 
@@ -1208,7 +1284,7 @@ No todos los bloques deben sustituirse en una plantilla hija, sólo aquellos que
 
 <a name='template-inheritance-multiple'></a>
 
-### Herencia múltiple
+### Multiple Inheritance
 
 Las plantillas extendidas pueden extender a otras plantillas. El siguiente ejemplo ilustra esto:
 
@@ -1314,7 +1390,7 @@ El compilador de Volt permite ser ampliado, añadiendole más funciones, tests o
 
 <a name='extending-functions'></a>
 
-### Funciones
+### Functions
 
 Las funciones actúan como funciones normales de PHP, un nombre de cadena válida se requiere como nombre de la función. Las funciones se pueden agregar mediante dos estrategias, retornando una cadena simple o utilizando una función anónima. Siempre es necesario que la estrategia elegida devuelva una expresión de PHP válida:
 
@@ -1396,7 +1472,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='extending-filters'></a>
 
-### Filtros
+### Filters
 
 Un filtro tiene la siguiente forma en una plantilla: `expresionIzquierda|nombre(argumentos-opcionales)`. Para agregar nuevos filtros es similar a como hace con las funciones:
 
@@ -1429,7 +1505,7 @@ $compiler->addFilter('capitalize', 'lcfirst');
 
 <a name='extending-extensions'></a>
 
-### Extensiones
+### Extensions
 
 Con las extensiones, el desarrollador tiene más flexibilidad para extender el motor de la plantilla y reemplazar la compilación de una instrucción específica, cambiar el comportamiento de una expresión o un operador, añadir funciones y filtros y mucho más.
 
