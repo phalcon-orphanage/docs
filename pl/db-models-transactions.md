@@ -228,7 +228,7 @@ class ProductsController extends Controller
         $transaction = $manager->get();
 
         // ...
-    }
+    } 
 }
 ```
 

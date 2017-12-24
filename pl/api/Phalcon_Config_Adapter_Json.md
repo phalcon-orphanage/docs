@@ -33,7 +33,7 @@ echo $config->models->metadata;
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## Metody
 
 public **__construct** (*mixed* $filePath)
 
@@ -154,7 +154,7 @@ print count($config);
 
 ```
 
-or
+lub
 
 ```php
 <?php

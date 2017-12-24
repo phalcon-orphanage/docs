@@ -78,7 +78,7 @@ The bidirectional relations build relationships in both models and each model de
 
 In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
-| Method        | Description                |
+| Metoda        | Description                |
 | ------------- | -------------------------- |
 | hasMany       | Defines a 1-n relationship |
 | hasOne        | Defines a 1-1 relationship |
@@ -360,7 +360,7 @@ $robot = Robots::findFirst(
 
 The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
 
-| Type             | Description                                                                                                                | Implicit Method |
+| Typ              | Description                                                                                                                | Implicit Method |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | Belongs-To       | Returns a model instance of the related record directly                                                                    | findFirst       |
 | Has-One          | Returns a model instance of the related record directly                                                                    | findFirst       |

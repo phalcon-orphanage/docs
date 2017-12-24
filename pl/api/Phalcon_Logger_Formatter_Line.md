@@ -8,7 +8,7 @@
 
 Formats messages using an one-line string
 
-## Methods
+## Metody
 
 public **getDateFormat** ()
 

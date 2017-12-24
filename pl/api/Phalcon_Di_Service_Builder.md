@@ -4,7 +4,7 @@
 
 This class builds instances based on complex definitions
 
-## Methods
+## Metody
 
 private *mixed* **_buildParameter** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector, *int* $position, *array* $argument)
 

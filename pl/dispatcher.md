@@ -94,16 +94,16 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 | Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Triggered on          |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | --------------------- |
-| beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Yes                 | Listeners             |
-| beforeDispatch       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | Yes                 | Listeners             |
-| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | Yes                 | Listeners/Controllers |
-| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | No                  | Controllers           |
-| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | No                  | Listeners/Controllers |
-| beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                      | Yes                 | Listeners             |
-| beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                           | Yes                 | Listeners             |
-| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Yes                 | Listeners             |
-| afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
-| afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | Yes                 | Listeners/Controllers |
+| beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Tak                 | Listeners             |
+| beforeDispatch       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | Tak                 | Listeners             |
+| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | Tak                 | Listeners/Controllers |
+| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | Nie                 | Controllers           |
+| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Nie                 | Listeners/Controllers |
+| beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                      | Tak                 | Listeners             |
+| beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                           | Tak                 | Listeners             |
+| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Tak                 | Listeners             |
+| afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | Nie                 | Listeners             |
+| afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | Tak                 | Listeners/Controllers |
 
 The [INVO](/[[language]]/[[version]]/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/[[language]]/[[version]]/acl)
 
@@ -409,7 +409,7 @@ class PostsController extends Controller
         $year = $this->dispatcher->getParam('year', 'int');
 
         // ...
-    }
+    } 
 }
 ```
 

@@ -386,7 +386,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parameter     | Description                                                                                                                                                                                          | Example                                                              |
+| Parameter     | Description                                                                                                                                                                                          | Przykład                                                             |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Mvc\Model` assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
 | `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                            | `'columns' => 'id, name'`                                         |
@@ -1169,10 +1169,10 @@ foreach ($robots as $robot) {
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-| Operation | Name         | Can stop operation? | Explanation                              |
+| Operation | Nazwa        | Can stop operation? | Explanation                              |
 | --------- | ------------ |:-------------------:| ---------------------------------------- |
-| Deleting  | beforeDelete |         Yes         | Runs before the delete operation is made |
-| Deleting  | afterDelete  |         No          | Runs after the delete operation was made |
+| Deleting  | beforeDelete |         Tak         | Runs before the delete operation is made |
+| Deleting  | afterDelete  |         Nie         | Runs after the delete operation was made |
 
 With the above events can also define business rules in the models:
 
@@ -1834,27 +1834,27 @@ Model::setup(
 
 The available options are:
 
-| Option                | Description                                                                               | Default |
-| --------------------- | ----------------------------------------------------------------------------------------- |:-------:|
-| astCache              | Enables/Disables callbacks, hooks and event notifications from all the models             | `null`  |
-| cacheLevel            | Sets the cache level for the ORM                                                          |   `3`   |
-| castOnHydrate         |                                                                                           | `false` |
-| columnRenaming        | Enables/Disables the column renaming                                                      | `true`  |
-| disableAssignSetters  | Allow disabling setters in your model                                                     | `false` |
-| enableImplicitJoins   |                                                                                           | `true`  |
-| enableLiterals        |                                                                                           | `true`  |
-| escapeIdentifiers     |                                                                                           | `true`  |
-| events                | Enables/Disables callbacks, hooks and event notifications from all the models             | `true`  |
-| exceptionOnFailedSave | Enables/Disables throwing an exception when there is a failed `save()`                    | `false` |
-| forceCasting          |                                                                                           | `false` |
-| ignoreUnknownColumns  | Enables/Disables ignoring unknown columns on the model                                    | `false` |
-| lateStateBinding      | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method | `false` |
-| notNullValidations    | The ORM automatically validate the not null columns present in the mapped table           | `true`  |
-| parserCache           |                                                                                           | `null`  |
-| phqlLiterals          | Enables/Disables literals in the PHQL parser                                              | `true`  |
-| uniqueCacheId         |                                                                                           |   `3`   |
-| updateSnapshotOnSave  | Enables/Disables updating snapshots on `save()`                                           | `true`  |
-| virtualForeignKeys    | Enables/Disables the virtual foreign keys                                                 | `true`  |
+| Opcja                 | Description                                                                               | Domyślne |
+| --------------------- | ----------------------------------------------------------------------------------------- |:--------:|
+| astCache              | Enables/Disables callbacks, hooks and event notifications from all the models             |  `null`  |
+| cacheLevel            | Sets the cache level for the ORM                                                          |   `3`    |
+| castOnHydrate         |                                                                                           | `false`  |
+| columnRenaming        | Enables/Disables the column renaming                                                      |  `true`  |
+| disableAssignSetters  | Allow disabling setters in your model                                                     | `false`  |
+| enableImplicitJoins   |                                                                                           |  `true`  |
+| enableLiterals        |                                                                                           |  `true`  |
+| escapeIdentifiers     |                                                                                           |  `true`  |
+| events                | Enables/Disables callbacks, hooks and event notifications from all the models             |  `true`  |
+| exceptionOnFailedSave | Enables/Disables throwing an exception when there is a failed `save()`                    | `false`  |
+| forceCasting          |                                                                                           | `false`  |
+| ignoreUnknownColumns  | Enables/Disables ignoring unknown columns on the model                                    | `false`  |
+| lateStateBinding      | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method | `false`  |
+| notNullValidations    | The ORM automatically validate the not null columns present in the mapped table           |  `true`  |
+| parserCache           |                                                                                           |  `null`  |
+| phqlLiterals          | Enables/Disables literals in the PHQL parser                                              |  `true`  |
+| uniqueCacheId         |                                                                                           |   `3`    |
+| updateSnapshotOnSave  | Enables/Disables updating snapshots on `save()`                                           |  `true`  |
+| virtualForeignKeys    | Enables/Disables the virtual foreign keys                                                 |  `true`  |
 
 <h5 class='alert alert-warning'><em>NOTE</em> <code>Phalcon\Mvc\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding <code>phalcon.orm.disable_assign_setters = 1</code> to your ini file, it will just simply use <code>this-&gt;property = value</code>.</h5>
 

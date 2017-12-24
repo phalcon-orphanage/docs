@@ -6,7 +6,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/image/adapter/gd.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## Methods
+## Metody
 
 public static **check** ()
 

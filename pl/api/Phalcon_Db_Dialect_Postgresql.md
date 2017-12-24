@@ -8,7 +8,7 @@
 
 Generates database specific SQL for the PostgreSQL RDBMS
 
-## Methods
+## Metody
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](/en/3.2/api/Phalcon_Db_ColumnInterface) $column)
 

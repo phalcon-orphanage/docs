@@ -6,7 +6,7 @@
 
 This class defines resource entity and its description
 
-## Methods
+## Metody
 
 public **getName** ()
 

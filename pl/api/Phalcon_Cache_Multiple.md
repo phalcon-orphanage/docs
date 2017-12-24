@@ -63,7 +63,7 @@ $cache->save("my-key", $data);
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** ([[Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface[]) $backends])
 

@@ -8,7 +8,7 @@
 
 Adapter to use PHP itself as templating engine
 
-## Methods
+## Metody
 
 public **render** (*mixed* $path, *mixed* $params, [*mixed* $mustClean])
 

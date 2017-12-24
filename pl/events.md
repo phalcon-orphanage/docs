@@ -445,7 +445,7 @@ The `Phalcon\Events\ManagerInterface` interface must be implemented to create yo
 
 The events available in Phalcon are:
 
-| Component          | Event                               |
+| Component          | Zdarzenie                           |
 | ------------------ | ----------------------------------- |
 | ACL                | `acl:afterCheckAccess`              |
 | ACL                | `acl:beforeCheckAccess`             |

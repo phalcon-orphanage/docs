@@ -6,7 +6,7 @@
 
 Encapsulates validation info generated in the validation process
 
-## Methods
+## Metody
 
 public **__construct** (*mixed* $message, [*mixed* $field], [*mixed* $type], [*mixed* $code])
 

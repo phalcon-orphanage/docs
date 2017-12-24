@@ -4,7 +4,7 @@
 
 This class identifies each profile in a Phalcon\\Db\\Profiler
 
-## Methods
+## Metody
 
 public **setSqlStatement** (*mixed* $sqlStatement)
 

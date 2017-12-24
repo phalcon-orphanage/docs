@@ -17,7 +17,7 @@ $annotations = new Apc();
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $options])
 

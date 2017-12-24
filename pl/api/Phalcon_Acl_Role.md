@@ -6,7 +6,7 @@
 
 This class defines role entity and its description
 
-## Methods
+## Metody
 
 public **getName** ()
 

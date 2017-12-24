@@ -21,7 +21,7 @@ while ($robot = $result->fetchArray()) {
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** ([Phalcon\Db\AdapterInterface](/en/3.2/api/Phalcon_Db_AdapterInterface) $connection, [PDOStatement](http://php.net/manual/en/class.pdostatement.php) $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
 

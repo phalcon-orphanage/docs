@@ -12,7 +12,7 @@
           <a href="#setup">Setting up the component</a>
         </li>
         <li>
-          <a href="#random">Random</a>
+          <a href="#random">Komponent Random</a>
         </li>
         <li>
           <a href="#resources">External Resources</a>
@@ -180,7 +180,7 @@ $di->set(
 
 <a name='random'></a>
 
-## Random
+## Komponent Random
 
 The `Phalcon\Security\Random` class makes it really easy to generate lots of types of random data.
 

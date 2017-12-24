@@ -8,7 +8,7 @@
 
 Prepares a message to be used in a Syslog backend
 
-## Methods
+## Metody
 
 public *array* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 

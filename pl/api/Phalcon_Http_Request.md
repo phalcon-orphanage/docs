@@ -25,7 +25,7 @@ $request->getLanguages();         // An array of languages the client accepts
 
 ```
 
-## Methods
+## Metody
 
 public **getHttpMethodParameterOverride** ()
 

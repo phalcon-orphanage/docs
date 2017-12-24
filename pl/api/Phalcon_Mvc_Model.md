@@ -49,7 +49,7 @@ if ($robot->save() === false) {
 
 *integer* **DIRTY_STATE_DETACHED**
 
-## Methods
+## Metody
 
 final public **__construct** ([*mixed* $data], [[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector], [[Phalcon\Mvc\Model\ManagerInterface](/en/3.2/api/Phalcon_Mvc_Model_ManagerInterface) $modelsManager])
 

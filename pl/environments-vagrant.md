@@ -79,7 +79,7 @@
               </ul>
             </li>
             <li>
-              <a href="#daily-usage-ports">Ports</a> <ul>
+              <a href="#daily-usage-ports">Porty</a> <ul>
                 <li>
                   <a href="#daily-usage-ports-forwarding">Forwarding additional ports</a>
                 </li>
@@ -572,7 +572,7 @@ sites:
 
 <a name='daily-usage-ports'></a>
 
-### Ports
+### Porty
 
 By default, the following ports are forwarded to your Phalcon Box environment:
 
@@ -583,7 +583,7 @@ By default, the following ports are forwarded to your Phalcon Box environment:
 | **HTTPS**      |    `443`    |   `44300`   |
 | **MySQL**      |   `3306`    |   `33060`   |
 | **Postgres**   |   `5432`    |   `54320`   |
-| **MailHog**    |   `8025`    |   `8025`    |
+| **Mailhog**    |   `8025`    |   `8025`    |
 
 <a name='daily-usage-ports-forwarding'></a>
 

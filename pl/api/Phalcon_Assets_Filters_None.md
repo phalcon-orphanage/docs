@@ -6,7 +6,7 @@
 
 Returns the content without make any modification to the original source
 
-## Methods
+## Metody
 
 public **filter** (*mixed* $content)
 

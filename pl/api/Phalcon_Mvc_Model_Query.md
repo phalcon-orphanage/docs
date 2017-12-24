@@ -37,7 +37,7 @@ foreach ($result as $row) {
 
 *integer* **TYPE_DELETE**
 
-## Methods
+## Metody
 
 public **__construct** ([*string* $phql], [[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector], [*mixed* $options])
 

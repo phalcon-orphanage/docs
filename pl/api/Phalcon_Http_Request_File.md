@@ -27,7 +27,7 @@ class PostsController extends Controller
 
 ```
 
-## Methods
+## Metody
 
 public **getError** ()
 
