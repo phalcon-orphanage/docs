@@ -8,7 +8,7 @@
 
 Designer friendly and fast template engine for PHP written in Zephir/C
 
-## Methods
+## Metody
 
 public **setOptions** (*array* $options)
 

@@ -2,7 +2,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/events/managerinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## Methods
+## Metody
 
 abstract public **attach** (*mixed* $eventType, *mixed* $handler)
 

@@ -8,7 +8,7 @@
 
 Component SELECT (choice) for forms
 
-## Methods
+## Metody
 
 public **__construct** (*string* $name, [*object* | *array* $options], [*array* $attributes])
 

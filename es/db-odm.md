@@ -19,42 +19,42 @@
           <a href="#finding-documents">Búsqueda de Documentos</a>
         </li>
         <li>
-          <a href="#finding-documents-field">Querying specific fields</a>
+          <a href="#finding-documents-field">Consulta de Campos Específicos</a>
         </li>
         <li>
-          <a href="#aggregations">Aggregations</a>
+          <a href="#aggregations">Agregaciones</a>
         </li>
         <li>
-          <a href="#creating-updating">Creating Updating/Records</a> 
+          <a href="#creating-updating">Creación y Actualización de Registros</a> 
           <ul>
             <li>
-              <a href="#validation-messages">Validation Messages</a>
+              <a href="#validation-messages">Mensajes de Validación</a>
             </li>
             <li>
-              <a href="#events">Validation Events and Events Manager</a>
+              <a href="#events">Eventos de Validación y Gestor de Eventos</a>
             </li>
             <li>
-              <a href="#business-rules">Implementing a Business Rule</a>
+              <a href="#business-rules">Implementación de una Regla de Negocio</a>
             </li>
             <li>
-              <a href="#data-integrity">Validating Data Integrity</a>
+              <a href="#data-integrity">Validar la Integridad de Datos</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#deleting-records">Deleting Records</a>
+          <a href="#deleting-records">Eliminar Registros</a>
         </li>
         <li>
-          <a href="#validation-failed-events">Validation Failed Events</a>
+          <a href="#validation-failed-events">Eventos de Fallas de Validación</a>
         </li>
         <li>
-          <a href="#ids-vs-primary-keys">Implicit Ids vs. User Primary Keys</a>
+          <a href="#ids-vs-primary-keys">IDs Implícitos vs. Llaves Primarias de Usuario</a>
         </li>
         <li>
-          <a href="#multiple-databases">Setting multiple databases</a>
+          <a href="#multiple-databases">Configuración de Múltiples Bases de Datos</a>
         </li>
         <li>
-          <a href="#services-in-models">Injecting services into Models</a>
+          <a href="#services-in-models">Servicios de Inyección en Modelos</a>
         </li>
       </ul>
     </li>
@@ -336,13 +336,13 @@ $robots = Robots::find(
 
 Las opciones disponibles de consulta son:
 
-| Parámetro    | Descripción                                                                                                                                                                                     | Ejemplo                                                 |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Model` assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
-| `fields`     | Devuelve columnas concretas en lugar de los campos completos de la colección. Cuando se utiliza esta opción que se devuelve un objeto incompleto                                                | `'fields' => array('name' => true)`               |
-| `sort`       | Se utiliza para ordenar el conjunto de resultados. Utiliza uno o más campos para cada elemento en el arreglo, 1 significa ordenar de forma ascendente, -1 descendente                           | `'sort' => array('name' => -1, 'status' => 1)` |
-| `limit`      | Limitar los resultados de la consulta a cierto rango                                                                                                                                            | `'limit' => 10`                                      |
-| `skip`       | Omite un número específico de resultados                                                                                                                                                        | `'skip' => 50`                                       |
+| Parámetro    | Descripción                                                                                                                                                                                                              | Ejemplo                                                 |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| `conditions` | Condiciones de búsqueda para la operación de búsqueda. Se utiliza para extraer sólo los registros que cumplan con un criterio especificado. Por defecto `Phalcon\Model` asume el primer parámetro como las condiciones. | `'conditions' => array('$gt' => 1990)`            |
+| `fields`     | Devuelve columnas concretas en lugar de los campos completos de la colección. Cuando se utiliza esta opción que se devuelve un objeto incompleto                                                                         | `'fields' => array('name' => true)`               |
+| `sort`       | Se utiliza para ordenar el conjunto de resultados. Utiliza uno o más campos para cada elemento en el arreglo, 1 significa ordenar de forma ascendente, -1 descendente                                                    | `'sort' => array('name' => -1, 'status' => 1)` |
+| `limit`      | Limitar los resultados de la consulta a cierto rango                                                                                                                                                                     | `'limit' => 10`                                      |
+| `skip`       | Omite un número específico de resultados                                                                                                                                                                                 | `'skip' => 50`                                       |
 
 Si tienes experiencia con las bases de datos SQL, tal vez quiere ver la [Tabla de mapeo de SQL a Mongo](http://www.php.net/manual/en/mongo.sqltomongo.php).
 
@@ -449,7 +449,7 @@ echo 'La id generada es: ', $robot->getId();
 
 `Phalcon\Mvc\Collection` cuenta con un subsistema de mensajería que proporciona una forma flexible de salida o almacenamiento de mensajes de validación generados durante los procesos de insertar/actualizar.
 
-Cada mensaje se compone de una instancia de la clase `Phalcon\Mvc\Model\Message`. The set of messages generated can be retrieved with the method `getMessages()`. Cada mensaje proporciona información ampliada como el nombre del campo que genera el mensaje o el tipo de mensaje:
+Cada mensaje se compone de una instancia de la clase `Phalcon\Mvc\Model\Message`. El conjunto de mensajes generados se puede recuperar con el método `getMessages()`. Cada mensaje proporciona información ampliada como el nombre del campo que genera el mensaje o el tipo de mensaje:
 
 ```php
 <?php
@@ -608,7 +608,7 @@ $di->set(
 
 Cuando se ejecuta una inserción, actualización o borrado, el modelo verifica si hay algunos métodos con nombres de eventos listados en la tabla anterior.
 
-We recommend that validation methods are declared `protected` to prevent that business logic implementation from being exposed publicly.
+Recomendamos que los métodos de validación sean declaramos como `protected` para prevenir que las reglas de negocio queden expuestas públicamente.
 
 El siguiente ejemplo implementa un evento que valida que el año no sea menor a cero en la actualización o inserción:
 
@@ -622,7 +622,7 @@ class Robots extends Collection
     protected function beforeSave()
     {
         if ($this->year < 0) {
-            echo 'Year cannot be smaller than zero!';
+            echo 'El año no puede ser menor a cero!';
 
             return false;
         }
@@ -630,7 +630,7 @@ class Robots extends Collection
 }
 ```
 
-Some events return `false` as an indication to stop the current operation. If an event doesn't return anything, `Phalcon\Mvc\Collection` will assume a `true` value.
+Algunos eventos retornar el valor `false` indicando que se debe detener la operación actual. Si un evento no retorna nada, `Phalcon\Mvc\Collection` asume un valor `true`.
 
 <a name='data-integrity'></a>
 
@@ -681,7 +681,7 @@ class Robots extends Collection
 }
 ```
 
-El ejemplo anterior realiza una validación con el validador integrado `InclusionIn`. Comprueba el valor del campo `type` en una lista de dominios. If the value is not included in the method, then the validator will fail and return `false`.
+El ejemplo anterior realiza una validación con el validador integrado `InclusionIn`. Comprueba el valor del campo `type` en una lista de dominios. Si el valor no está incluido en el método, entonces el validador fallará y devolverá `false`.
 
 <div class='alert alert-warning'>
     <p>
@@ -787,7 +787,7 @@ class Robots extends Collection
 
 ## Configuración de Múltiples Bases de Datos
 
-En Phalcon, todos los modelos pueden pertenecer a la misma conexión de base de datos o tener una individual. Actualmente, cuando `Phalcon\Mvc\Collection` necesita conectarse a la base de datos pide el servicio `mongo` al contenedor de servicios de la aplicación. You can overwrite this service setting it in the `initialize()` method:
+En Phalcon, todos los modelos pueden pertenecer a la misma conexión de base de datos o tener una individual. Actualmente, cuando `Phalcon\Mvc\Collection` necesita conectarse a la base de datos pide el servicio `mongo` al contenedor de servicios de la aplicación. Usted puede sobrescribir este servicio configurándolo en el método `initialize()`:
 
 ```php
 <?php

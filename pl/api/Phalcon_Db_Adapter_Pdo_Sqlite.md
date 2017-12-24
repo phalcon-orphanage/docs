@@ -21,7 +21,7 @@ $connection = new Sqlite(
 
 ```
 
-## Methods
+## Metody
 
 public **connect** ([*array* $descriptor])
 

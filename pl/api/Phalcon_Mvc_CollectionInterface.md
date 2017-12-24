@@ -2,7 +2,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/collectioninterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## Methods
+## Metody
 
 abstract public **setId** (*mixed* $id)
 

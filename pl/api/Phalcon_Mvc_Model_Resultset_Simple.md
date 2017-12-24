@@ -20,7 +20,7 @@ Simple resultsets only contains a complete objects This class builds every compl
 
 *integer* **HYDRATE_ARRAYS**
 
-## Methods
+## Metody
 
 public **__construct** (*array* $columnMap, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) | [Phalcon\Mvc\Model\Row](/en/3.2/api/Phalcon_Mvc_Model_Row) $model, [Phalcon\Db\Result\Pdo](/en/3.2/api/Phalcon_Db_Result_Pdo) | *null* $result, [[Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface) $cache], [*boolean* $keepSnapshots])
 

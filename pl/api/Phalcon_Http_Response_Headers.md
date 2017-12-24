@@ -6,7 +6,7 @@
 
 This class is a bag to manage the response headers
 
-## Methods
+## Metody
 
 public **set** (*mixed* $name, *mixed* $value)
 

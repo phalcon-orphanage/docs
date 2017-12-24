@@ -8,7 +8,7 @@
 
 Allows to define translation lists using PHP arrays
 
-## Methods
+## Metody
 
 public **__construct** (*array* $options)
 

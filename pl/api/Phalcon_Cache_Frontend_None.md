@@ -48,7 +48,7 @@ foreach ($robots as $robot) {
 
 ```
 
-## Methods
+## Metody
 
 public **getLifetime** ()
 

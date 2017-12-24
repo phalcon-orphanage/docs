@@ -49,7 +49,7 @@ echo $image;
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $frontendOptions])
 

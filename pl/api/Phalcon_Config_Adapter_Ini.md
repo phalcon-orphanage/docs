@@ -55,7 +55,7 @@ $config = new \Phalcon\Config\Adapter\Ini(
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## Metody
 
 public **__construct** (*mixed* $filePath, [*mixed* $mode])
 
@@ -200,7 +200,7 @@ print count($config);
 
 ```
 
-or
+lub
 
 ```php
 <?php

@@ -32,7 +32,7 @@ $config = new \Phalcon\Config(
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $arrayConfig])
 
@@ -153,7 +153,7 @@ print count($config);
 
 ```
 
-or
+lub
 
 ```php
 <?php

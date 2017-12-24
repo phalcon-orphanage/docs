@@ -6,7 +6,7 @@
 
 Base class for Phalcon\\Logger adapters
 
-## Methods
+## Metody
 
 public **setLogLevel** (*mixed* $level)
 

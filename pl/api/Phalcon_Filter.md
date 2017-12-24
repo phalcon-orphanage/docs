@@ -48,7 +48,7 @@ $filter->sanitize("!100a019.01a", "float"); // returns "100019.01"
 
 *string* **FILTER_SPECIAL_CHARS**
 
-## Methods
+## Metody
 
 public **add** (*mixed* $name, *mixed* $handler)
 

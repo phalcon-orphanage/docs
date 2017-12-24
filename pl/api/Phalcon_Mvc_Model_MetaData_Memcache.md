@@ -59,7 +59,7 @@ $metaData = new Phalcon\Mvc\Model\Metadata\Memcache(
 
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $options])
 
