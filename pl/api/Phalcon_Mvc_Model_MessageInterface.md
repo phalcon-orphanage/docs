@@ -2,7 +2,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/messageinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## Methods
+## Metody
 
 abstract public **setType** (*mixed* $type)
 

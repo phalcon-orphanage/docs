@@ -190,7 +190,7 @@ class Robots extends Model
 
         foreach ($parameters as $key => $value) {
             if (is_scalar($value)) {
-                $uniqueKey[] = $key . ':' . $value;
+                $uniqueKey[] = $key . ' :' . $value;
             } elseif (is_array($value)) {
                 $uniqueKey[] = $key . ':[' . self::_createKey($value) . ']';
             }
@@ -360,7 +360,7 @@ Note that this type of cache works in memory only, this means that cached data a
 
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
 
-| Type       | Description                                                     | Implicit Method |
+| Typ        | Description                                                     | Implicit Method |
 | ---------- | --------------------------------------------------------------- | --------------- |
 | Belongs-To | Returns a model instance of the related record directly         | `findFirst()`   |
 | Has-One    | Returns a model instance of the related record directly         | `findFirst()`   |
@@ -509,7 +509,7 @@ class Invoices extends Model
 
 In this scenario, the cache is implemented differently depending on the conditions received. We might decide that the cache backend should be determined by the primary key:
 
-| Type          | Cache Backend |
+| Typ           | Cache Backend |
 | ------------- | ------------- |
 | 1 - 10000     | mongo1        |
 | 10000 - 20000 | mongo2        |

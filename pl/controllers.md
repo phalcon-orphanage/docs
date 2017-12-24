@@ -22,7 +22,7 @@
           <a href="#session-data">Dane Sesji</a>
         </li>
         <li>
-          <a href="#services">Using Services as Controllers</a>
+          <a href="#services">Korzystanie z Serwisów jako Kontrolerów</a>
         </li>
         <li>
           <a href="#events">Zdarzenia w Kontrolerach</a>
@@ -34,27 +34,27 @@
 
 <a name='overview'></a>
 
-# Overview
+# Przegląd
 
 <a name='using'></a>
 
-## Using Controllers
+## Używanie kontrolerów
 
 Akcje to metody w kontrolerze, które obsługują żądania. Domyślnie wszystkie publiczne metody w kontrolerze mapują do akcji i są dostępne za pomocą adresu URL. Akcje są odpowiedzialne za interpretację żądania i utworzenie odpowiedzi. Zwykle odpowiedzi są w formie renderowanego widoku, chociaż są również inne sposoby ich tworzenia.
 
 Na przykład, kiedy wchodzisz na adres URL jak ten: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon domyślnie rozłoży każdą część adresu w następujący sposób:
 
-| Description          | Fragment URL   |
+| Opis                 | Fragment URL   |
 | -------------------- | -------------- |
 | **Katalog Phalcona** | blog           |
 | **Kontroler**        | posts          |
 | **Akcja**            | show           |
 | **Parametr**         | 2015           |
-| **Parameter**        | the-post-title |
+| **Parametr**         | the-post-title |
 
-In this case, the `PostsController` will handle this request. There is no a special location to put controllers in an application, they could be loaded using `Phalcon\Loader`, so you're free to organize your controllers as you need.
+W takim przypadku `PostsController` obsłuży to żądanie. Nie istnieje specjalna lokalizacja w której należy umieszczać kontrolery aplikacji, mogą być one załadowane za pomocą `Phalcon\Loader`, więc możesz organizować Twoje kontrolery tak, jak potrzebujesz.
 
-Controllers must have the suffix `Controller` while actions the suffix `Action`. A sample of a controller is as follows:
+Kontrolery muszą mieć sufiks `Controller`, podczas gdy akcje sufiks `Action`. Przykładowy kontroler wygląda następująco:
 
 ```php
 <?php
@@ -122,7 +122,7 @@ class PostsController extends Controller
 
 <a name='dispatch-loop'></a>
 
-## Dispatch Loop
+## Pętla Komunikacyjna (ang. Dispatch Loop)
 
 Pętla Komunikacyjna (ang. Dispatch Loop) będzie realizowana w ramach Dyspozytora, dopóki nie będzie już żadnych akcji do wykonania. W poprzednim przykładzie wykonano tylko jedną akcję. Teraz zobaczmy jak metoda `forward()`może dostarczyć bardziej złożony przepływ operacji w Pętli Komunikacyjnej, poprzez przekierowanie wykonania do innego kontrolera/akcji.
 
@@ -155,7 +155,7 @@ class PostsController extends Controller
 }
 ```
 
-If users don't have permission to access a certain action then they will be forwarded to the `signin` action in the `UsersController`.
+Jeżeli użytkownicy nie mają pozwolenia na dostęp do pewnej akcji, to zostaną przekierowani do akcji `signin` w `UsersController`.
 
 ```php
 <?php
@@ -176,11 +176,11 @@ class UsersController extends Controller
 }
 ```
 
-There is no limit on the `forwards` you can have in your application, so long as they do not result in circular references, at which point your application will halt. Jeżeli nie ma więcej akcji do wyekspediowania poprzez Pętle Komunikacyjną (ang. Dispatch Loop), Dyspozytor automatycznie wywoła warstwę widoku MVC, która jest zarządzana przez `Phalcon\Mvc\View`.
+W Twojej aplikacji nie ma limitu dla `przekazywań` tak długo, jak nie prowadzą do odwołań cyklicznych, co skutkuje zatrzymaniem programu. Jeżeli nie ma więcej akcji do wyekspediowania poprzez Pętle Komunikacyjną (ang. Dispatch Loop), Dyspozytor automatycznie wywoła warstwę widoku MVC, która jest zarządzana przez `Phalcon\Mvc\View`.
 
 <a name='initializing'></a>
 
-## Initializing Controllers
+## Inicjowanie kontrolerów
 
 `Phalcon\Mvc\Controller` oferuje metodę `initialize()`, która jest wykonywana jako pierwsza, przed realizowaniem każdej innej akcji kontrolera. Używanie metody `__construct()` nie jest zalecane.
 
@@ -239,7 +239,7 @@ class PostsController extends Controller
 
 <a name='injecting-services'></a>
 
-## Injecting Services
+## Wstrzykiwanie serwisów
 
 Jeżeli kontroler rozszerza `Phalcon\Mvc\Controller`, wtedy posiada łatwy dostęp do kontenera serwisów w aplikacji. Na przykład, jeśli zarejestrowaliśmy serwis wyglądający tak:
 
@@ -290,13 +290,13 @@ class FilesController extends Controller
 }
 ```
 
-If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/[[language]]/[[version]]/di) in the framework.
+Jeżeli używasz Phalcona jako pełnowartościowego frameworka, możesz odczytywać serwisy dostarczone [domyślnie](/[[language]]/[[version]]/di) w jego ramach.
 
 <a name='request-response'></a>
 
-## Request and Response
+## Żądanie i Odpowiedź
 
-Przy założeniu, że framework dostarcza zestaw wstępnie zarejestrowanych serwisów, wyjaśnimy jak przeprowadzać interakcję ze środowiskiem HTTP. The `request` service contains an instance of `Phalcon\Http\Request` and the `response` contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
+Przy założeniu, że framework dostarcza zestaw wstępnie zarejestrowanych serwisów, wyjaśnimy jak przeprowadzać interakcję ze środowiskiem HTTP. Usługa `request` zawiera instancję `Phalcon\Http\Request` oraz `response` zawiera `Phalcon\Http\Response` reprezentującą to, co jest do wysłania z powrotem do klienta.
 
 ```php
 <?php
@@ -344,13 +344,13 @@ class PostsController extends Controller
 }
 ```
 
-Learn more about the HTTP environment in their dedicated articles [request](/[[language]]/[[version]]/request) and [response](/[[language]]/[[version]]/response).
+Dowiedz się więcej na temat środowiska HTTP w ich dedykowanych artykułach [request](/[[language]]/[[version]]/request) i [response](/[[language]]/[[version]]/response).
 
 <a name='session-data'></a>
 
-## Session Data
+## Dane Sesji
 
-Sessions help us maintain persistent data between requests. You can access a `Phalcon\Session\Bag` from any controller to encapsulate data that needs to be persistent:
+Sesje pomagają nam zarządzać trwałymi danymi pomiędzy żądaniami. Możesz się dostać do `Phalcon\Session\Bag` z każdego kontrolera do hermetyzowania danych, które mają być trwałe:
 
 ```php
 <?php
@@ -373,14 +373,14 @@ class UserController extends Controller
 
 <a name='services'></a>
 
-## Using Services as Controllers
+## Korzystanie z Serwisów jako Kontrolerów
 
-Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
+Serwisy mogą zachowywać się jak kontrolery, klasy kontrolerów są zawsze pobierane z kontenera serwisów. Odpowiednio każda inna klasa zarejestrowana z jej nazwą, może łatwo zastąpić kontroler:
 
 ```php
 <?php
 
-// Register a controller as a service
+// Zarejestruj kontroler jako serwis
 $di->set(
     'IndexController',
     function () {
@@ -390,7 +390,7 @@ $di->set(
     }
 );
 
-// Register a namespaced controller as a service
+// Zarejestruj kontroler z przestrzenią nazw jako serwis
 $di->set(
     'Backend\Controllers\IndexController',
     function () {
@@ -403,9 +403,9 @@ $di->set(
 
 <a name='events'></a>
 
-## Events in Controllers
+## Zdarzenia w Kontrolerach
 
-Controllers automatically act as listeners for [dispatcher](/en/[[versopm]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
+Kontrolery automatycznie zachowują się jak słuchacze dla zdarzeń [dispatcher](/en/[[versopm]]/dispatcher), implementując metody z ich nazwami pozwalają Ci na implementowanie punktów zaczepowych przed/po wykonaniu akcji:
 
 ```php
 <?php
@@ -416,10 +416,10 @@ class PostsController extends Controller
 {
     public function beforeExecuteRoute($dispatcher)
     {
-        // This is executed before every found action
+        // Wykonywane przed każdą znalezioną akcją
         if ($dispatcher->getActionName() === 'save') {
             $this->flash->error(
-                "You don't have permission to save posts"
+                "Nie posiadasz uprawnień do zapisywania postów"
             );
 
             $this->dispatcher->forward(
@@ -435,7 +435,7 @@ class PostsController extends Controller
 
     public function afterExecuteRoute($dispatcher)
     {
-        // Executed after every found action
+        // Wykonywane po każdej znalezionej akcji
     }
 }
 ```

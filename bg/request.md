@@ -138,7 +138,7 @@ class PostsController extends Controller
 }
 ```
 
-Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the `Phalcon\Http\Request\File` class. Using the `$_FILES` superglobal array offers the same behavior. `Phalcon\Http\Request\File>` encapsulates only the information related to each file uploaded with the request.
+Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the `Phalcon\Http\Request\File` class. Using the `$_FILES` superglobal array offers the same behavior. `Phalcon\Http\Request\File` encapsulates only the information related to each file uploaded with the request.
 
 <a name='working-with-headers'></a>
 

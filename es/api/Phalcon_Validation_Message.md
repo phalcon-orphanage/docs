@@ -1,12 +1,12 @@
-# Class **Phalcon\\Validation\\Message**
+# Clase **Phalcon\\Validation\\Message**
 
-*implements* [Phalcon\Validation\MessageInterface](/en/3.2/api/Phalcon_Validation_MessageInterface)
+*implementa* [Phalcon\Validation\MessageInterface](/en/3.2/api/Phalcon_Validation_MessageInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/message.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/message.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Encapsulates validation info generated in the validation process
+Encapsula información de validación generado en el proceso de validación
 
-## Methods
+## Métodos
 
 public **__construct** (*mixed* $message, [*mixed* $field], [*mixed* $type], [*mixed* $code])
 
@@ -14,40 +14,40 @@ Phalcon\\Validation\\Message constructor
 
 public **setType** (*mixed* $type)
 
-Sets message type
+Establece el tipo de mensaje
 
 public **getType** ()
 
-Returns message type
+Devuelve el tipo de mensaje
 
 public **setMessage** (*mixed* $message)
 
-Sets verbose message
+Establece un mensaje detallado
 
 public **getMessage** ()
 
-Returns verbose message
+Devuelve un mensaje detallado
 
 public **setField** (*mixed* $field)
 
-Sets field name related to message
+Establece el nombre del campo relacionado al mensaje
 
 public *mixed* **getField** ()
 
-Returns field name related to message
+Devuelve el nombre del campo relacionado al mensaje
 
 public **setCode** (*mixed* $code)
 
-Sets code for the message
+Establece el código del mensaje
 
 public **getCode** ()
 
-Returns the message code
+Devuelve el código del mensaje
 
 public **__toString** ()
 
-Magic __toString method returns verbose message
+Método mágico __toString devuelve un mensaje detallado
 
 public static **__set_state** (*array* $message)
 
-Magic __set_state helps to recover messages from serialization
+Método mágico __set_state ayuda a recuperar los mensajes desde la serialización

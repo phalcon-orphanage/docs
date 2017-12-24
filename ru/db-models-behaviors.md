@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Behaviors</a> <ul>
+      <a href="#overview">Поведение модели</a> <ul>
         <li>
           <a href="#timestampable">Timestampable</a>
         </li>
@@ -9,10 +9,10 @@
           <a href="#softdelete">SoftDelete</a>
         </li>
         <li>
-          <a href="#create-your-own-behaviors">Creating your own behaviors</a>
+          <a href="#create-your-own-behaviors">Создание собственных поведений</a>
         </li>
         <li>
-          <a href="#traits-as-behaviors">Using Traits as behaviors</a>
+          <a href="#traits-as-behaviors">Использование трейтов, как поведений</a>
         </li>
       </ul>
     </li>
@@ -21,11 +21,11 @@
 
 <a name='overview'></a>
 
-# Model Behaviors
+# Поведение модели
 
-Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
+Behaviors are shared constructs that several models may adopt in order to re-use code. The ORM provides an API to implement behaviors in your models. Кроме того, вы можете использовать события и функции обратного вызова, как видели раньше, в качестве альтернативы для более свободной реализации поведения.
 
-A behavior must be added in the model initializer, a model can have zero or more behaviors:
+Поведение должно быть добавлено при инициализации модели, модель может иметь ноль или более поведений:
 
 ```php
 <?php
@@ -46,9 +46,9 @@ class Users extends Model
         $this->addBehavior(
             new Timestampable(
                 [
-                    'beforeCreate' => [
-                        'field'  => 'created_at',
-                        'format' => 'Y-m-d',
+                    "beforeCreate" => [
+                        "field"  => 'created_at',
+                        "format" => 'Y-m-d',
                     ]
                 ]
             )
@@ -57,18 +57,18 @@ class Users extends Model
 }
 ```
 
-The following built-in behaviors are provided by the framework:
+Фреймворком предоставлены следующие встроенные поведения:
 
-| Name          | Description                                                                                                |
-| ------------- | ---------------------------------------------------------------------------------------------------------- |
-| Timestampable | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
-| SoftDelete    | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
+| Название      | Описание                                                                                                        |
+| ------------- | --------------------------------------------------------------------------------------------------------------- |
+| Timestampable | Позволяет автоматически обновлять атрибут модели, сохраняя дату и время, когда запись создается или обновляется |
+| SoftDelete    | Вместо окончательного удаления записи, изменением значения флага столбца она помечается как удалённая           |
 
 <a name='timestampable'></a>
 
 ## Timestampable
 
-This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
+Это поведение в качестве аргумента принимает массив, ключи которого являются названиями событий, указывающих на то, когда должно происходить присваивание:
 
 ```php
 <?php
@@ -90,7 +90,7 @@ public function initialize()
 }
 ```
 
-Each event can have its own options, `field` is the name of the column that must be updated, if `format` is a string it will be used as format of the PHP's function [date](http://php.net/manual/en/function.date.php), format can also be an anonymous function providing you the free to generate any kind timestamp:
+Каждое событие может иметь свои собственные настройки, `field` — имя столбца, который необходимо обновить. Если `format` является строкой, то будет использоваться в качестве формата PHP функции [date](http://php.net/manual/en/function.date.php), format также может быть анонимной функцией, позволяющей вам свободно создавать любые виды временных меток:
 
 ```php
 <?php
@@ -120,13 +120,13 @@ public function initialize()
 }
 ```
 
-If the option `format` is omitted a timestamp using the PHP's function [time](http://php.net/manual/en/function.time.php), will be used.
+Если опция `format` опущена, то будет использована временная метка PHP функции [time](http://php.net/manual/en/function.time.php).
 
 <a name='softdelete'></a>
 
 ## SoftDelete
 
-This behavior can be used as follows:
+Это поведение может быть использовано следующим образом:
 
 ```php
 <?php
@@ -157,20 +157,20 @@ class Users extends Model
 }
 ```
 
-This behavior accepts two options: `field` and `value`, `field` determines what field must be updated and `value` the value to be deleted. Let's pretend the table `users` has the following data:
+Это поведение принимает две опции: `field` и `value`. Опция `field` указывает поле, которое должно быть обновлено, и `value` — значение, которым будут помечаться удаленные записи. Давайте представим, что таблица `users` имеет следующие данные:
 
 ```sql
 mysql> select * from users;
 +----+---------+--------+
 | id | name    | status |
 +----+---------+--------+
-|  1 | Lana    | N      |
-|  2 | Brandon | N      |
+|  1 | Яна     | N      |
+|  2 | Филипп  | N      |
 +----+---------+--------+
 2 rows in set (0.00 sec)
 ```
 
-If we delete any of the two records the status will be updated instead of delete the record:
+Если мы удалим любую из двух записей, изменится статус вместо удаления записи:
 
 ```php
 <?php
@@ -178,28 +178,28 @@ If we delete any of the two records the status will be updated instead of delete
 Users::findFirst(2)->delete();
 ```
 
-The operation will result in the following data in the table:
+Операция приводит к следующим данным в таблице:
 
 ```sql
 mysql> select * from users;
 +----+---------+--------+
 | id | name    | status |
 +----+---------+--------+
-|  1 | Lana    | N      |
-|  2 | Brandon | D      |
+|  1 | Яна     | N      |
+|  2 | Филипп  | D      |
 +----+---------+--------+
-2 rows in set (0.01 sec)
+2 rows in set (0.00 sec)
 ```
 
-Note that you need to specify the deleted condition in your queries to effectively ignore them as deleted records, this behavior doesn't support that.
+Обратите внимание, что вам необходимо самостоятельно указывать в запросах условие удаления записи для того, чтобы игнорировать их как удаленные. Подобная логика не поддерживается поведением.
 
 <a name='create-your-own-behaviors'></a>
 
-## Creating your own behaviors
+## Создание собственных поведений
 
-The ORM provides an API to create your own behaviors. A behavior must be a class implementing the `Phalcon\Mvc\Model\BehaviorInterface`. Also, `Phalcon\Mvc\Model\Behavior` provides most of the methods needed to ease the implementation of behaviors.
+ORM предоставляет API для создания собственного поведения. Поведение должно быть классом, реализующим `Phalcon\Mvc\Model\BehaviorInterface`. Кроме того, `Phalcon\Mvc\Model\Behavior` предоставляет большую часть методов, необходимых для простой реализации поведения.
 
-The following behavior is an example, it implements the Blameable behavior which helps identify the user that is performed operations over a model:
+В качестве примера приведем следующее поведение, оно реализует поведение Blameable, которое помогает идентифицировать пользователя, выполняющего операции с моделью:
 
 ```php
 <?php
@@ -217,9 +217,9 @@ class Blameable extends Behavior implements BehaviorInterface
             case 'afterDelete':
             case 'afterUpdate':
 
-                $userName = // ... get the current user from session
+                $userName = // ... получаем текущего пользователя из сессии
 
-                // Store in a log the username, event type and primary key
+                // Сохраняем в логах имя пользователя, тип события и идентификатор записи
                 file_put_contents(
                     'logs/blamable-log.txt',
                     $userName . ' ' . $eventType . ' ' . $model->id
@@ -228,13 +228,13 @@ class Blameable extends Behavior implements BehaviorInterface
                 break;
 
             default:
-                /* ignore the rest of events */
+                /* игнорируем остальные события */
         }
     }
 }
 ```
 
-The former is a very simple behavior, but it illustrates how to create a behavior, now let's add this behavior to a model:
+Пример выше довольно прост, но он показывает, как создать поведение. Теперь давайте добавим его в модель:
 
 ```php
 <?php
@@ -252,7 +252,7 @@ class Profiles extends Model
 }
 ```
 
-A behavior is also capable of intercepting missing methods on your models:
+Поведение также может перехватывать отсутствующие методы ваших моделей:
 
 ```php
 <?php
@@ -265,7 +265,7 @@ class Sluggable extends Behavior implements BehaviorInterface
 {
     public function missingMethod($model, $method, $arguments = [])
     {
-        // If the method is 'getSlug' convert the title
+        // Если метод — 'getSlug', то преобразуем заголовок
         if ($method === 'getSlug') {
             return Tag::friendlyTitle($model->title);
         }
@@ -273,7 +273,7 @@ class Sluggable extends Behavior implements BehaviorInterface
 }
 ```
 
-Call that method on a model that implements Sluggable returns a SEO friendly title:
+Вызов этого метода у модели, реализующей Sluggable, возвращает SEO-оптимизированный заголовок:
 
 ```php
 <?php
@@ -283,9 +283,9 @@ $title = $post->getSlug();
 
 <a name='traits-as-behaviors'></a>
 
-## Using Traits as behaviors
+## Использование трейтов, как поведений
 
-You can use [Traits](http://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the Timestampable behavior:
+Начиная с PHP 5.4 вы можете использовать [трейты](http://php.net/manual/en/language.oop5.traits.php), чтобы повторно использовать код в ваших классах. Это еще один способ для реализации пользовательского поведения. Следующий трейт реализует простой вариант поведения Timestampable:
 
 ```php
 <?php
@@ -304,7 +304,7 @@ trait MyTimestampable
 }
 ```
 
-Then you can use it in your model as follows:
+Затем вы можете использовать его в вашей модели следующим образом:
 
 ```php
 <?php

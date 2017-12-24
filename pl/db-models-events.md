@@ -35,22 +35,24 @@
 
 Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by `Phalcon\Mvc\Model` and their order of execution:
 
-| Operation          | Name                     |  Can stop operation?  | Explanation                                                                                                                       |
+| Operation          | Nazwa                    |  Can stop operation?  | Explanation                                                                                                                       |
 | ------------------ | ------------------------ |:---------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
-| Inserting          | afterCreate              |          NO           | Runs after the required operation over the database system only when an inserting operation is being made                         |
-| Updating           | afterUpdate              |          NO           | Runs after the required operation over the database system only when an updating operation is being made                          |
-| Inserting/Updating | afterSave                |          NO           | Runs after the required operation over the database system                                                                        |
-| Inserting/Updating | afterValidation          |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
-| Inserting          | afterValidationOnCreate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
-| Updating           | afterValidationOnUpdate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
-| Inserting/Updating | beforeValidation         |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
-| Inserting          | beforeCreate             |          YES          | Runs before the required operation over the database system only when an inserting operation is being made                        |
-| Inserting/Updating | beforeSave               |          YES          | Runs before the required operation over the database system                                                                       |
-| Updating           | beforeUpdate             |          YES          | Runs before the required operation over the database system only when an updating operation is being made                         |
-| Inserting          | beforeValidationOnCreate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
-| Updating           | beforeValidationOnUpdate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
+| Inserting          | afterCreate              |          NIE          | Runs after the required operation over the database system only when an inserting operation is being made                         |
+| Deleting           | afterDelete              |          NIE          | Runs after the delete operation was made                                                                                          |
+| Updating           | afterUpdate              |          NIE          | Runs after the required operation over the database system only when an updating operation is being made                          |
+| Inserting/Updating | afterSave                |          NIE          | Runs after the required operation over the database system                                                                        |
+| Inserting/Updating | afterValidation          |          TAK          | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
+| Inserting          | afterValidationOnCreate  |          TAK          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
+| Updating           | afterValidationOnUpdate  |          TAK          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
+| Inserting/Updating | beforeValidation         |          TAK          | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
+| Inserting          | beforeCreate             |          TAK          | Runs before the required operation over the database system only when an inserting operation is being made                        |
+| Deleting           | beforeDelete             |          TAK          | Runs before the delete operation is made                                                                                          |
+| Inserting/Updating | beforeSave               |          TAK          | Runs before the required operation over the database system                                                                       |
+| Updating           | beforeUpdate             |          TAK          | Runs before the required operation over the database system only when an updating operation is being made                         |
+| Inserting          | beforeValidationOnCreate |          TAK          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
+| Updating           | beforeValidationOnUpdate |          TAK          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
 | Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
-| Inserting/Updating | validation               |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
+| Inserting/Updating | validation               |          TAK          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
 
 <a name='events-in-models'></a>
 

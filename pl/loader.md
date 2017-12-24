@@ -89,7 +89,7 @@ To avoid these or most sophisticated attacks, `Phalcon\Loader` removes invalid c
 
 ## Registering Namespaces
 
-If you're organizing your code using namespaces, or using external libraries which do, the `registerNamespaces()` method provides the autoloading mechanism. It takes an associative array; the keys are namespace prefixes and their values are directories where the classes are located in. The namespace separator will be replaced by the directory separator when the loader tries to find the classes. Always remember to add a trailing slash at the end of the paths.
+If you're organizing your code using namespaces, or using external libraries which do, the `registerNamespaces()` method provides the autoloading mechanism. It takes an associative array; the keys are namespace prefixes and their values are directories where the classes are located in. The namespace separator will be replaced by the directory separator when the loader tries to find the classes.
 
 ```php
 <?php
@@ -102,9 +102,9 @@ $loader = new Loader();
 // Register some namespaces
 $loader->registerNamespaces(
     [
-       'Example\Base'    => 'vendor/example/base/',
-       'Example\Adapter' => 'vendor/example/adapter/',
-       'Example'         => 'vendor/example/',
+       'Example\Base'    => 'vendor/example/base',
+       'Example\Adapter' => 'vendor/example/adapter',
+       'Example'         => 'vendor/example',
     ]
 );
 
@@ -120,7 +120,7 @@ $some = new \Example\Adapter\Some();
 
 ## Registering Directories
 
-The third option is to register directories, in which classes could be found. This option is not recommended in terms of performance, since Phalcon will need to perform a significant number of file stats on each folder, looking for the file with the same name as the class. It's important to register the directories in relevance order. Remember always add a trailing slash at the end of the paths.
+The third option is to register directories, in which classes could be found. This option is not recommended in terms of performance, since Phalcon will need to perform a significant number of file stats on each folder, looking for the file with the same name as the class. It's important to register the directories in relevance order.
 
 ```php
 <?php
@@ -133,10 +133,10 @@ $loader = new Loader();
 // Register some directories
 $loader->registerDirs(
     [
-        'library/MyComponent/',
-        'library/OtherComponent/Other/',
-        'vendor/example/adapters/',
-        'vendor/example/',
+        'library/MyComponent',
+        'library/OtherComponent/Other',
+        'vendor/example/adapters',
+        'vendor/example',
     ]
 );
 
@@ -244,8 +244,8 @@ Additional auto-loading data can be added to existing values by passing `true` a
 // Adding more directories
 $loader->registerDirs(
     [
-        '../app/library/',
-        '../app/plugins/',
+        '../app/library',
+        '../app/plugins',
     ],
     true
 );
@@ -270,9 +270,9 @@ $loader = new Loader();
 
 $loader->registerNamespaces(
     [
-        'Example\Base'    => 'vendor/example/base/',
-        'Example\Adapter' => 'vendor/example/adapter/',
-        'Example'         => 'vendor/example/',
+        'Example\Base'    => 'vendor/example/base',
+        'Example\Adapter' => 'vendor/example/adapter',
+        'Example'         => 'vendor/example',
     ]
 );
 
@@ -293,9 +293,9 @@ Some events when returning boolean `false` could stop the active operation. The 
 
 | Event Name         | Triggered                                                                                                           | Can stop operation? |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Yes                 |
-| `pathFound`        | Triggered when the loader locate a class                                                                            | No                  |
-| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
+| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Tak                 |
+| `pathFound`        | Triggered when the loader locate a class                                                                            | Nie                 |
+| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | Nie                 |
 
 <a name='troubleshooting'></a>
 

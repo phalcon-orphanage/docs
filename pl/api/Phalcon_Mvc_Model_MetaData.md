@@ -55,7 +55,7 @@ print_r($attributes);
 
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
-## Methods
+## Metody
 
 final protected **_initialize** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $key, *mixed* $table, *mixed* $schema)
 

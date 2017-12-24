@@ -164,7 +164,7 @@ Annotations must be placed in properties that are mapped to columns in the mappe
 
 The following annotations are supported:
 
-| Name     | Description                                       |
+| Nazwa    | Description                                       |
 | -------- | ------------------------------------------------- |
 | Primary  | Mark the field as part of the table's primary key |
 | Identity | The field is an auto_increment/serial column      |
@@ -172,7 +172,7 @@ The following annotations are supported:
 
 The annotation @Column supports the following parameters:
 
-| Name     | Description                                           |
+| Nazwa    | Description                                           |
 | -------- | ----------------------------------------------------- |
 | type     | The column's type (string, integer, decimal, boolean) |
 | length   | The column's length if any                            |

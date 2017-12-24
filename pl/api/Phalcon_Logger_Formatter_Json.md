@@ -8,7 +8,7 @@
 
 Formats messages using JSON encoding
 
-## Methods
+## Metody
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 

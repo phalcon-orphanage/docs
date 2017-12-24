@@ -57,7 +57,7 @@ $validation->add(
 
 ```
 
-## Methods
+## Metody
 
 public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
 

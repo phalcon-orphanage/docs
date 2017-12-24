@@ -1,62 +1,62 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Phalcon Query Language (PHQL)</a> 
+      <a href="#overview">Lenguaje de consulta de Phalcon (PHQL)</a> 
       <ul>
         <li>
-          <a href="#usage">Usage Example</a>
+          <a href="#usage">Ejemplo de Uso</a>
         </li>
         <li>
-          <a href="#creating">Creating PHQL Queries</a>
+          <a href="#creating">Crear consultas PHQL</a>
         </li>
         <li>
-          <a href="#selecting-records">Selecting Records</a> 
+          <a href="#selecting-records">Seleccionando registros</a> 
           <ul>
             <li>
-              <a href="#result-types">Result Types</a>
+              <a href="#result-types">Tipo de resultado</a>
             </li>
             <li>
-              <a href="#joins">Joins</a>
+              <a href="#joins">Uniones (Joins)</a>
             </li>
             <li>
-              <a href="#aggregations">Aggregations</a>
+              <a href="#aggregations">Agregaciones</a>
             </li>
             <li>
-              <a href="#conditions">Conditions</a>
+              <a href="#conditions">Condiciones</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#inserting-data">Inserting Data</a>
+          <a href="#inserting-data">Insertando datos</a>
         </li>
         <li>
-          <a href="#updating-data">Updating Data</a>
+          <a href="#updating-data">Actualizando datos</a>
         </li>
         <li>
-          <a href="#deleting-data">Deleting Data</a>
+          <a href="#deleting-data">Borrando datos</a>
         </li>
         <li>
-          <a href="#query-builder">Creating queries using the Query Builder</a> 
+          <a href="#query-builder">Crear consultas utilizando el generador de consultas</a> 
           <ul>
             <li>
-              <a href="#query-builder-parameters">Bound Parameters</a>
+              <a href="#query-builder-parameters">Enlazando parámetros</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#disallow-literals">Disallow literals in PHQL</a>
+          <a href="#disallow-literals">No permitir literales en PHQL</a>
         </li>
         <li>
-          <a href="#escaping-reserved-words">Escaping Reserved Words</a>
+          <a href="#escaping-reserved-words">Escapando palabras reservadas</a>
         </li>
         <li>
-          <a href="#lifecycle">PHQL Lifecycle</a>
+          <a href="#lifecycle">Ciclo de vida de PHQL</a>
         </li>
         <li>
-          <a href="#raw-sql">Using Raw SQL</a>
+          <a href="#raw-sql">Usando SQL crudo</a>
         </li>
         <li>
-          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#troubleshooting">Resolución de problemas</a>
         </li>
       </ul>
     </li>
@@ -65,27 +65,27 @@
 
 <a name='overview'></a>
 
-# Phalcon Query Language (PHQL)
+# Lenguaje de consulta de Phalcon (PHQL)
 
-Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows to write queries using a standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
+El lenguaje de consulta de Phalcon, PhalconQL o simplemente PHQL es un dialecto de SQL de alto nivel, orientado a objetos que permite escribir consultas utilizando un lenguaje estándar SQL. PHQL se implementa como un analizador (escrito en C) que traduce la sintaxis en la del RDBMS de destino.
 
-To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as [SQLite](http://en.wikipedia.org/wiki/Lemon_Parser_Generator). This technology provides a small in-memory parser with a very low memory footprint that is also thread-safe.
+Para lograr el mayor rendimiento posible, Phalcon proporciona un analizador que utiliza la misma tecnología como [SQLite](http://en.wikipedia.org/wiki/Lemon_Parser_Generator). Esta tecnología proporciona un pequeño analizador en memoria con un impacto en memoria muy bajo que también es seguro para subprocesos.
 
-The parser first checks the syntax of the pass PHQL statement, then builds an intermediate representation of the statement and finally it converts it to the respective SQL dialect of the target RDBMS.
+El analizador comprueba la sintaxis de la declaración de PHQL, luego construye una representación intermedia de la declaración y finalmente convierte en el dialecto SQL correspondiente del RDBMS de destino.
 
-In PHQL, we've implemented a set of features to make your access to databases more secure:
+En PHQL, hemos implementado un conjunto de características para hacer más seguro el acceso a bases de datos:
 
-* Bound parameters are part of the PHQL language helping you to secure your code
-* PHQL only allows one SQL statement to be executed per call preventing injections
-* PHQL ignores all SQL comments which are often used in SQL injections
-* PHQL only allows data manipulation statements, avoiding altering or dropping tables/databases by mistake or externally without authorization
-* PHQL implements a high-level abstraction allowing you to handle tables as models and fields as class attributes
+* Los parámetros enlazados son parte del lenguaje PHQL que lo ayudara a proteger su código
+* PHQL solo permite una sentencia SQL para ser ejecutada por llamada, previniendo de inyecciones
+* PHQL ignora todos los comentarios SQL que generalmente se utilizan en las inyecciones SQL
+* PHQL sólo permite declaraciones de manipulación de datos, evitando alterar o borrar tablas y bases de datos por error o desde el exterior sin autorización
+* PHQL implementa una abstracción de alto nivel que permite manejar tablas como modelos y campos como atributos de clase
 
 <a name='usage'></a>
 
-## Usage Example
+## Ejemplo de Uso
 
-To better explain how PHQL works consider the following example. We have two models `Cars` and `Brands`:
+Para explicar mejor cómo funciona PHQL consideren el ejemplo siguiente. Tenemos dos modelos `Cars` y `Brands`, osea automóviles y marcas respectivamente:
 
 ```php
 <?php
@@ -107,7 +107,7 @@ class Cars extends Model
     public $style;
 
     /**
-     * This model is mapped to the table sample_cars
+     * Este modelo se completa desde la tabla sample_cars
      */
     public function getSource()
     {
@@ -115,7 +115,7 @@ class Cars extends Model
     }
 
     /**
-     * A car only has a Brand, but a Brand have many Cars
+     * Un automóvil tiene una sola marca, pero una marca tiene muchos automóviles
      */
     public function initialize()
     {
@@ -124,7 +124,7 @@ class Cars extends Model
 }
 ```
 
-And every Car has a Brand, so a Brand has many Cars:
+Y cada automóvil tiene una marca, por lo que una marca tiene muchos automóviles:
 
 ```php
 <?php
@@ -138,7 +138,7 @@ class Brands extends Model
     public $name;
 
     /**
-     * The model Brands is mapped to the 'sample_brands' table
+     * El modelo Brands se completa desde la tabla 'sample_brands'
      */
     public function getSource()
     {
@@ -146,7 +146,7 @@ class Brands extends Model
     }
 
     /**
-     * A Brand can have many Cars
+     * Una marca tiene muchos automóviles
      */
     public function initialize()
     {
@@ -157,35 +157,35 @@ class Brands extends Model
 
 <a name='creating'></a>
 
-## Creating PHQL Queries
+## Crear consultas PHQL
 
-PHQL queries can be created just by instantiating the class `Phalcon\Mvc\Model\Query`:
+Las consultas PHQL pueden crearse simplemente instanciando la clase `Phalcon\Mvc\Model\Query`:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Model\Query;
 
-// Instantiate the Query
+// Instanciar a Query
 $query = new Query(
     'SELECT * FROM Cars',
     $this->getDI()
 );
 
-// Execute the query returning a result if any
+// Ejecutar una consulta retornando un resultado si lo hay
 $cars = $query->execute();
 ```
 
-From a controller or a view, it's easy to create/execute them using an injected `models manager` (`Phalcon\Mvc\Model\Manager`):
+Desde una vista o un controlador, es muy fácil crear/ejecutar usando el servicio gestor de modelos o `modelManager` que esta inyectado (`Phalcon\Mvc\Model\Manager`):
 
 ```php
 <?php
 
-// Executing a simple query
+// Ejecutando una consulta simple
 $query = $this->modelsManager->createQuery('SELECT * FROM Cars');
 $cars  = $query->execute();
 
-// With bound parameters
+// Con parámetros enlazados
 $query = $this->modelsManager->createQuery('SELECT * FROM Cars WHERE name = :name:');
 $cars  = $query->execute(
     [
@@ -194,17 +194,17 @@ $cars  = $query->execute(
 );
 ```
 
-Or simply execute it:
+O simplemente ejecutar:
 
 ```php
 <?php
 
-// Executing a simple query
+// Ejecutando una simple consulta
 $cars = $this->modelsManager->executeQuery(
     'SELECT * FROM Cars'
 );
 
-// Executing with bound parameters
+// Ejecutando con parámetros enlazados
 $cars = $this->modelsManager->executeQuery(
     'SELECT * FROM Cars WHERE name = :name:',
     [
@@ -215,9 +215,9 @@ $cars = $this->modelsManager->executeQuery(
 
 <a name='selecting-records'></a>
 
-## Selecting Records
+## Seleccionando registros
 
-As the familiar SQL, PHQL allows querying of records using the SELECT statement we know, except that instead of specifying tables, we use the models classes:
+Tan familiar como en SQL, PHQL permite consultas de registros con la instrucción SELECT que ya conocemos, excepto que en vez de tablas, usamos las clases de los modelos:
 
 ```php
 <?php
@@ -231,7 +231,7 @@ $query = $manager->createQuery(
 );
 ```
 
-Classes in namespaces are also allowed:
+También se permiten clases en espacios de nombres:
 
 ```php
 <?php
@@ -246,7 +246,7 @@ $phql  = 'SELECT c.name FROM Formula\Cars c ORDER BY c.name';
 $query = $manager->createQuery($phql);
 ```
 
-Most of the SQL standard is supported by PHQL, even nonstandard directives such as LIMIT:
+La mayor parte del estándar SQL es soportado por PHQL, incluso directivas no estandarizadas como `LIMIT`:
 
 ```php
 <?php
@@ -258,9 +258,9 @@ $query = $manager->createQuery($phql);
 
 <a name='result-types'></a>
 
-### Result Types
+### Tipo de resultado
 
-Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is a `Phalcon\Mvc\Model\Resultset\Simple`. This kind of resultset is a set of complete model objects:
+Dependiendo del tipo de columnas que estemos consultando, varía el tipo de resultado. Si se recupera un objeto entero, el objeto devuelto es un `Phalcon\Mvc\Model\Resultset\Simple`. Este tipo de conjunto de resultados es un conjunto de objetos de modelo completo:
 
 ```php
 <?php
@@ -270,11 +270,11 @@ $phql = 'SELECT c.* FROM Cars AS c ORDER BY c.name';
 $cars = $manager->executeQuery($phql);
 
 foreach ($cars as $car) {
-    echo 'Name: ', $car->name, "\n";
+    echo 'Nombre: ', $car->name, "\n";
 }
 ```
 
-This is exactly the same as:
+Esto es exactamente lo mismo que:
 
 ```php
 <?php
@@ -286,11 +286,11 @@ $cars = Cars::find(
 );
 
 foreach ($cars as $car) {
-    echo 'Name: ', $car->name, "\n";
+    echo 'Nombre: ', $car->name, "\n";
 }
 ```
 
-Complete objects can be modified and re-saved in the database because they represent a complete record of the associated table. There are other types of queries that do not return complete objects, for example:
+Los objetos completos pueden ser modificados y volverse a guardar en la base de datos debido a que representan un registro completo de la tabla asociada. Hay otros tipos de consultas que no devuelven objetos completos, por ejemplo:
 
 ```php
 <?php
@@ -300,13 +300,13 @@ $phql = 'SELECT c.id, c.name FROM Cars AS c ORDER BY c.name';
 $cars = $manager->executeQuery($phql);
 
 foreach ($cars as $car) {
-    echo 'Name: ', $car->name, "\n";
+    echo 'Nombre: ', $car->name, "\n";
 }
 ```
 
-We are only requesting some fields in the table, therefore those cannot be considered an entire object, so the returned object is still a resultset of type `Phalcon\Mvc\Model\Resultset\Simple`. However, each element is a standard object that only contain the two columns that were requested.
+Sólo estamos solicitando algunos campos de la tabla, por lo tanto, aquellos no pueden considerarse un objeto completo, por lo que el objeto devuelto es todavía un resultset de tipo `Phalcon\Mvc\Model\Resultset\Simple`. Sin embargo, cada elemento es un objeto estándar que sólo contiene las dos columnas que fueron solicitadas.
 
-These values that don't represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
+Estos valores que no representan objetos completos son lo que llamamos escalares. PHQL le permite consultar todos los tipos de escalares: campos, funciones, literales, expresiones, etcétera..:
 
 ```php
 <?php
@@ -320,7 +320,7 @@ foreach ($cars as $car) {
 }
 ```
 
-As we can query complete objects or scalars, we can also query both at once:
+Como podemos consultar objetos completos o escalares, también podemos consultar ambos a la vez:
 
 ```php
 <?php
@@ -330,25 +330,25 @@ $phql = 'SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name';
 $result = $manager->executeQuery($phql);
 ```
 
-The result in this case is an object `Phalcon\Mvc\Model\Resultset\Complex`. This allows access to both complete objects and scalars at once:
+En este caso, el resultado es un objeto `Phalcon\Mvc\Model\Resultset\Complex`. Esto permite el acceso a objetos completos y escalares a la vez:
 
 ```php
 <?php
 
 foreach ($result as $row) {
-    echo 'Name: ', $row->cars->name, "\n";
-    echo 'Price: ', $row->cars->price, "\n";
-    echo 'Taxes: ', $row->taxes, "\n";
+    echo 'Nombre: ', $row->cars->name, "\n";
+    echo 'Precio: ', $row->cars->price, "\n";
+    echo 'Impuestos: ', $row->taxes, "\n";
 }
 ```
 
-` Scalars are mapped as properties of each 'row', while complete objects are mapped as properties with the name of its related model.
+Los escalares se asignan como propiedades de cada 'fila', mientras que objetos completos se asignan como propiedades con el nombre de su modelo relacionado.
 
 <a name='joins'></a>
 
-### Joins
+### Uniones (Joins)
 
-It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined relationships in the models, PHQL adds these conditions automatically:
+Es fácil consultar registros de múltiples modelos con PHQL. La mayoría de los tipos de uniones son compatibles. Como definimos las relaciones en los modelos, PHQL agrega automáticamente estas condiciones:
 
 ```php
 <?php
@@ -363,7 +363,7 @@ foreach ($rows as $row) {
 }
 ```
 
-By default, an INNER JOIN is assumed. You can specify the type of JOIN in the query:
+Por defecto, se asume un INNER JOIN. Usted puede especificar el tipo de JOIN en la consulta:
 
 ```php
 <?php
@@ -381,7 +381,7 @@ $phql = 'SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands';
 $rows = $manager->executeQuery($phql);
 ```
 
-It is also possible to manually set the conditions of the JOIN:
+También es posible ajustar manualmente las condiciones del JOIN:
 
 ```php
 <?php
@@ -391,7 +391,7 @@ $phql = 'SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands ON Brands.id = Cars
 $rows = $manager->executeQuery($phql);
 ```
 
-Also, the joins can be created using multiple tables in the FROM clause:
+También, las uniones pueden crearse utilizando varias tablas en la cláusula FROM:
 
 ```php
 <?php
@@ -401,12 +401,12 @@ $phql = 'SELECT Cars.*, Brands.* FROM Cars, Brands WHERE Brands.id = Cars.brands
 $rows = $manager->executeQuery($phql);
 
 foreach ($rows as $row) {
-    echo 'Car: ', $row->cars->name, "\n";
-    echo 'Brand: ', $row->brands->name, "\n";
+    echo 'Automóvil: ', $row->cars->name, "\n";
+    echo 'Marca: ', $row->brands->name, "\n";
 }
 ```
 
-If an alias is used to rename the models in the query, those will be used to name the attributes in the every row of the result:
+Si un alias se utiliza para cambiar el nombre de los modelos en la consulta, los utilizará para nombrar los atributos en cada fila del resultado:
 
 ```php
 <?php
@@ -416,12 +416,12 @@ $phql = 'SELECT c.*, b.* FROM Cars c, Brands b WHERE b.id = c.brands_id';
 $rows = $manager->executeQuery($phql);
 
 foreach ($rows as $row) {
-    echo 'Car: ', $row->c->name, "\n";
-    echo 'Brand: ', $row->b->name, "\n";
+    echo 'Automóvil: ', $row->c->name, "\n";
+    echo 'Marca: ', $row->b->name, "\n";
 }
 ```
 
-When the joined model has a many-to-many relation to the `from` model, the intermediate model is implicitly added to the generated query:
+Cuando el modelo unido tiene una relación muchos a muchos con el modelo `from`, el modelo intermedio se agrega implícitamente a la consulta generada:
 
 ```php
 <?php
@@ -432,7 +432,7 @@ $phql = 'SELECT Artists.name, Songs.name FROM Artists ' .
 $result = $this->modelsManager->executeQuery($phql);
 ```
 
-This code executes the following SQL in MySQL:
+Este código ejecuta el siguiente código SQL en MySQL:
 
 ```sql
 SELECT `artists`.`name`, `songs`.`name` FROM `artists`
@@ -443,26 +443,26 @@ WHERE `artists`.`genre` = 'Trip-Hop'
 
 <a name='aggregations'></a>
 
-### Aggregations
+### Agregaciones
 
-The following examples show how to use aggregations in PHQL:
+Los ejemplos siguientes muestran cómo utilizar agregaciones en PHQL:
 
 ```php
 <?php
 
-// How much are the prices of all the cars?
+// ¿Cuánto cuestan todos los automóviles?
 $phql = 'SELECT SUM(price) AS summatory FROM Cars';
 $row  = $manager->executeQuery($phql)->getFirst();
 echo $row['summatory'];
 
-// How many cars are by each brand?
+// ¿Cuántos automóviles tiene cada marca?
 $phql = 'SELECT Cars.brand_id, COUNT(*) FROM Cars GROUP BY Cars.brand_id';
 $rows = $manager->executeQuery($phql);
 foreach ($rows as $row) {
     echo $row->brand_id, ' ', $row['1'], "\n";
 }
 
-// How many cars are by each brand?
+// ¿Cuántos automóviles tiene cada marca?
 $phql = 'SELECT Brands.name, COUNT(*) FROM Cars JOIN Brands GROUP BY 1';
 $rows = $manager->executeQuery($phql);
 foreach ($rows as $row) {
@@ -475,7 +475,7 @@ foreach ($rows as $row) {
     echo $row['maximum'], ' ', $row['minimum'], "\n";
 }
 
-// Count distinct used brands
+// Contar marcas usadas distintas
 $phql = 'SELECT COUNT(DISTINCT brand_id) AS brandId FROM Cars';
 $rows = $manager->executeQuery($phql);
 foreach ($rows as $row) {
@@ -485,14 +485,14 @@ foreach ($rows as $row) {
 
 <a name='conditions'></a>
 
-### Conditions
+### Condiciones
 
-Conditions allow us to filter the set of records we want to query. The `WHERE` clause allows to do that:
+Las condiciones nos permiten filtrar el conjunto de registros que desea consultar. La cláusula `WHERE` permite hacerlo:
 
 ```php
 <?php
 
-// Simple conditions
+// Condiciones simples
 $phql = 'SELECT * FROM Cars WHERE Cars.name = "Lamborghini Espada"';
 $cars = $manager->executeQuery($phql);
 
@@ -521,7 +521,7 @@ $phql = 'SELECT * FROM Cars WHERE Cars.id BETWEEN 1 AND 100';
 $cars = $manager->executeQuery($phql);
 ```
 
-Also, as part of PHQL, prepared parameters automatically escape the input data, introducing more security:
+También, como parte de PHQL, en los parámetros preparados se escapan automáticamente los datos de entrada, introduciendo más seguridad:
 
 ```php
 <?php
@@ -545,24 +545,24 @@ $cars = $manager->executeQuery(
 
 <a name='inserting-data'></a>
 
-## Inserting Data
+## Insertando datos
 
-With PHQL it's possible to insert data using the familiar INSERT statement:
+Con PHQL es posible insertar datos mediante la instrucción familiar INSERT:
 
 ```php
 <?php
 
-// Inserting without columns
+// Insertando sin columnas
 $phql = 'INSERT INTO Cars VALUES (NULL, "Lamborghini Espada", '
       . '7, 10000.00, 1969, "Grand Tourer")';
 $manager->executeQuery($phql);
 
-// Specifying columns to insert
+// Especificando las columnas del insertado
 $phql = 'INSERT INTO Cars (name, brand_id, year, style) '
       . 'VALUES ("Lamborghini Espada", 7, 1969, "Grand Tourer")';
 $manager->executeQuery($phql);
 
-// Inserting using placeholders
+// Insertando utilizando marcadores
 $phql = 'INSERT INTO Cars (name, brand_id, year, style) '
       . 'VALUES (:name:, :brand_id:, :year:, :style)';
 $manager->executeQuery(
@@ -576,7 +576,7 @@ $manager->executeQuery(
 );
 ```
 
-Phalcon doesn't only transform the PHQL statements into SQL. All events and business rules defined in the model are executed as if we created individual objects manually. Let's add a business rule on the model cars. A car cannot cost less than $ 10,000:
+Phalcon no sólo transforma las declaraciones de PHQL a SQL. Todos los eventos y reglas de negocio definidas en el modelo se ejecutan como si creáramos objetos individuales manualmente. Vamos a añadir una regla de negocio en el modelo Cars. Un coche no puede costar menos de $ 10.000:
 
 ```php
 <?php
@@ -590,7 +590,7 @@ class Cars extends Model
     {
         if ($this->price < 10000) {
             $this->appendMessage(
-                new Message('A car cannot cost less than $ 10,000')
+                new Message('Un automóvil no puede costar menos de $ 10,000')
             );
 
             return false;
@@ -599,7 +599,7 @@ class Cars extends Model
 }
 ```
 
-If we made the following `INSERT` in the models Cars, the operation will not be successful because the price does not meet the business rule that we implemented. By checking the status of the insertion we can print any validation messages generated internally:
+Si hiciéramos el siguiente `INSERT` en los modelos de Cars, la operación no tendrá éxito porque el precio no cumple con la regla de negocio que hemos implementado. Comprobando el estado de la inserción podemos imprimir cualquier mensaje de validación generado internamente:
 
 ```php
 <?php
@@ -617,26 +617,26 @@ if ($result->success() === false) {
 
 <a name='updating-data'></a>
 
-## Updating Data
+## Actualizando datos
 
-Updating rows is very similar than inserting rows. As you may know, the instruction to update records is UPDATE. When a record is updated the events related to the update operation will be executed for each row.
+La actualización de filas es muy similar a insertar filas. Como usted sabe, la instrucción para actualizar registros es UPDATE. Cuando se actualiza un registro, los eventos relacionados con la operación de actualización se ejecutarán para cada fila.
 
 ```php
 <?php
 
-// Updating a single column
+// Actualizando una simple columna
 $phql = 'UPDATE Cars SET price = 15000.00 WHERE id = 101';
 $manager->executeQuery($phql);
 
-// Updating multiples columns
+// Actualizando múltiples columnas
 $phql = 'UPDATE Cars SET price = 15000.00, type = "Sedan" WHERE id = 101';
 $manager->executeQuery($phql);
 
-// Updating multiples rows
+// Actualizando múltiples filas
 $phql = 'UPDATE Cars SET price = 7000.00, type = "Sedan" WHERE brands_id > 5';
 $manager->executeQuery($phql);
 
-// Using placeholders
+// Usando marcadores
 $phql = 'UPDATE Cars SET price = ?0, type = ?1 WHERE brands_id > ?2';
 $manager->executeQuery(
     $phql,
@@ -648,12 +648,12 @@ $manager->executeQuery(
 );
 ```
 
-An `UPDATE` statement performs the update in two phases:
+Una instrucción `UPDATE` realiza la actualización en dos etapas:
 
-* First, if the `UPDATE` has a `WHERE` clause it retrieves all the objects that match these criteria,
-* Second, based on the queried objects it updates/changes the requested attributes storing them to the relational database
+* En primer lugar, si el `UPDATE` tiene una cláusula `WHERE` se recuperan todos los objetos que coincidan con estos criterios,
+* En segundo lugar, en función de los objetos consultados, actualiza/cambia los atributos solicitados y los almacena en la base de datos relacional
 
-This way of operation allows that events, virtual foreign keys and validations take part of the updating process. In summary, the following code:
+Este modo de operación permite que los eventos, claves externas virtuales y validaciones tomen parte del proceso de actualización. En resumen, el siguiente código:
 
 ```php
 <?php
@@ -671,7 +671,7 @@ if ($result->success() === false) {
 }
 ```
 
-is somewhat equivalent to:
+es algo equivalente a:
 
 ```php
 <?php
@@ -699,22 +699,22 @@ $success = $process();
 
 <a name='deleting-data'></a>
 
-## Deleting Data
+## Borrando datos
 
-When a record is deleted the events related to the delete operation will be executed for each row:
+Cuando se elimina un registro los eventos relacionados con la operación de eliminación se ejecutarán para cada fila:
 
 ```php
 <?php
 
-// Deleting a single row
+// Borrando una fila simple
 $phql = 'DELETE FROM Cars WHERE id = 101';
 $manager->executeQuery($phql);
 
-// Deleting multiple rows
+// Borrando múltiples filas
 $phql = 'DELETE FROM Cars WHERE id > 100';
 $manager->executeQuery($phql);
 
-// Using placeholders
+// Usando marcadores
 $phql = 'DELETE FROM Cars WHERE id BETWEEN :initial: AND :final:';
 $manager->executeQuery(
     $phql,
@@ -725,12 +725,12 @@ $manager->executeQuery(
 );
 ```
 
-`DELETE` operations are also executed in two phases like `UPDATEs`. To check if the deletion produces any validation messages you should check the status code returned:
+Las operaciones `DELETE` también se ejecutan en dos etapas como los `UPDATE`. Para verificar que si la supresión produce mensajes de validación, debe verificar el código de estado devuelto:
 
 ```php
 <?php
 
-// Deleting multiple rows
+// Borrando múltiples filas
 $phql = 'DELETE FROM Cars WHERE id > 100';
 
 $result = $manager->executeQuery($phql);
@@ -746,14 +746,14 @@ if ($result->success() === false) {
 
 <a name='query-builder'></a>
 
-## Creating queries using the Query Builder
+## Crear consultas utilizando el generador de consultas
 
-A builder is available to create PHQL queries without the need to write PHQL statements, also providing IDE facilities:
+Está disponible un constructor para crear consultas PHQL sin necesidad de escribir declaraciones de PHQL, también proporciona instalaciones IDE:
 
 ```php
 <?php
 
-// Getting a whole set
+// Obteniendo un conjunto completo
 $robots = $this->modelsManager->createBuilder()
     ->from('Robots')
     ->join('RobotsParts')
@@ -761,7 +761,7 @@ $robots = $this->modelsManager->createBuilder()
     ->getQuery()
     ->execute();
 
-// Getting the first row
+// Obteniendo la primer fila
 $robots = $this->modelsManager->createBuilder()
     ->from('Robots')
     ->join('RobotsParts')
@@ -770,7 +770,7 @@ $robots = $this->modelsManager->createBuilder()
     ->getSingleResult();
 ```
 
-That is the same as:
+Es lo mismo que:
 
 ```php
 <?php
@@ -780,7 +780,7 @@ $phql = 'SELECT Robots.* FROM Robots JOIN RobotsParts p ORDER BY Robots.name LIM
 $result = $manager->executeQuery($phql);
 ```
 
-More examples of the builder:
+Más ejemplos del constructor:
 
 ```php
 <?php
@@ -909,14 +909,14 @@ $builder->from(['r' => 'Store\Robots'])
 
 <a name='query-builder-parameters'></a>
 
-### Bound Parameters
+### Enlazando parámetros
 
-Bound parameters in the query builder can be set as the query is constructed or past all at once when executing:
+Los parámetros enlazados, en el generador de consultas, se pueden establecer cuando se construye la consulta o pasarlos todos juntos al ejecutar:
 
 ```php
 <?php
 
-// Passing parameters in the query construction
+// Pasando parámetros en la construcción de la consulta
 $robots = $this->modelsManager->createBuilder()
     ->from('Robots')
     ->where('name = :name:', ['name' => $name])
@@ -924,7 +924,7 @@ $robots = $this->modelsManager->createBuilder()
     ->getQuery()
     ->execute();
 
-// Passing parameters in query execution
+// Pasando parámetros en la ejecución de la consulta
 $robots = $this->modelsManager->createBuilder()
     ->from('Robots')
     ->where('name = :name:')
@@ -935,9 +935,9 @@ $robots = $this->modelsManager->createBuilder()
 
 <a name='disallow-literals'></a>
 
-## Disallow literals in PHQL
+## No permitir literales en PHQL
 
-Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings will be disallowed. If PHQL statements are created embedding external data on them, this could open the application to potential SQL injections:
+Los literales pueden desactivarse en PHQL, esto significa que el uso directo de cadenas, números y valores booleanos en las cadenas de PHQL serán rechazados. Si las sentencias PHQL se crean incrustando datos externos sobre ellas, esto podría abrir la aplicación a potenciales inyecciones SQL:
 
 ```php
 <?php
@@ -947,15 +947,15 @@ $phql   = "SELECT * FROM Models\Users WHERE login = '$login'";
 $result = $manager->executeQuery($phql);
 ```
 
-If `$login` is changed to `' OR '' = '`, the produced PHQL is:
+Si `$login` es cambiado por `' OR ' = '`, el PHQL producido sería:
 
 ```sql
 SELECT * FROM Models\Users WHERE login = '' OR '' = ''
 ```
 
-Which is always `true` no matter what the login stored in the database is.
+Que siempre es `true` no importa cuál sea el login almacenado en la base de datos.
 
-If literals are disallowed strings can be used as part of a PHQL statement, thus an exception will be thrown forcing the developer to use bound parameters. The same query can be written in a secure way like this:
+Si los literales no se permiten, las cadenas se pueden usar como parte de una declaración PHQL, por lo tanto, se lanzará una excepción que obligará al desarrollador a usar parámetros enlazados. La misma consulta se puede escribir de una forma segura como esta:
 
 ```php
 <?php
@@ -970,7 +970,7 @@ $result = $manager->executeQuery(
 );
 ```
 
-You can disallow literals in the following way:
+Se puede deshabilitar los literales de la siguiente manera:
 
 ```php
 <?php
@@ -984,13 +984,13 @@ Model::setup(
 );
 ```
 
-Bound parameters can be used even if literals are allowed or not. Disallowing them is just another security decision a developer could take in web applications.
+Los parámetros enlazados pueden utilizarse incluso si se permiten literales o no. Deshabilitarlos es solo una decisión de seguridad que podría tomar un desarrollador de aplicaciones web.
 
 <a name='escaping-reserved-words'></a>
 
-## Escaping Reserved Words
+## Escapando palabras reservadas
 
-PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those words using the cross-database escaping delimiters `[` and `]`:
+PHQL tiene algunas palabras reservadas, si desea utilizar cualquiera de ellas como atributos o nombres de modelos, necesita escapar esas palabras usando los delimitadores `[` y `]`:
 
 ```php
 <?php
@@ -1002,23 +1002,23 @@ $phql   = 'SELECT id, [Like] FROM Posts';
 $result = $manager->executeQuery($phql);
 ```
 
-The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
+Los delimitadores se convierten dinámicamente a delimitadores válidos según el sistema de base de datos donde la aplicación se está ejecutando.
 
 <a name='lifecycle'></a>
 
-## PHQL Lifecycle
+## Ciclo de vida de PHQL
 
-Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs. The following is the life cycle of each PHQL statement executed:
+Al ser un lenguaje de alto nivel, PHQL da a los desarrolladores la capacidad de personalizar y adaptar diferentes aspectos con el fin de satisfacer sus necesidades. El siguiente es el ciclo de vida de cada instrucción PHQL ejecutada:
 
-* The PHQL is parsed and converted into an Intermediate Representation (IR) which is independent of the SQL implemented by database system
-* The IR is converted to valid SQL according to the database system associated to the model
-* PHQL statements are parsed once and cached in memory. Further executions of the same statement result in a slightly faster execution
+* El PHQL es analizado y convertido en una Representación Intermedia (IR) que es independiente de la implementada por el sistema de base de datos de SQL
+* La IR se convierte en SQL válido según el sistema de base de datos asociado al modelo
+* Las declaraciones de PHQL se analizan una vez y almacenan en caché en la memoria. Las ejecuciones posteriores de la misma instrucción dan como resultado una ejecución ligeramente más rápida
 
 <a name='raw-sql'></a>
 
-## Using Raw SQL
+## Usando SQL crudo
 
-A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropriate:
+Un sistema de base de datos podría ofrecer extensiones específicas de SQL que no son compatibles con PHQL, en este caso, el uso de SQL crudo puede ser apropiado:
 
 ```php
 <?php
@@ -1030,13 +1030,13 @@ class Robots extends Model
 {
     public static function findByCreateInterval()
     {
-        // A raw SQL statement
+        // Una declaración de SQL cruda
         $sql = 'SELECT * FROM robots WHERE id > 0';
 
-        // Base model
+        // Modelo base
         $robot = new Robots();
 
-        // Execute the query
+        // Ejecutar la consulta
         return new Resultset(
             null,
             $robot,
@@ -1046,7 +1046,7 @@ class Robots extends Model
 }
 ```
 
-If raw SQL queries are common in your application a generic method could be added to your model:
+Si las consultas SQL crudas son comunes en la aplicación, un método genérico se podría añadir a su modelo:
 
 ```php
 <?php
@@ -1058,13 +1058,13 @@ class Robots extends Model
 {
     public static function findByRawSql($conditions, $params = null)
     {
-        // A raw SQL statement
+        // Declaración SQL cruda
         $sql = 'SELECT * FROM robots WHERE $conditions';
 
-        // Base model
+        // Modelo base
         $robot = new Robots();
 
-        // Execute the query
+        // Ejecutar la consulta
         return new Resultset(
             null,
             $robot,
@@ -1074,7 +1074,7 @@ class Robots extends Model
 }
 ```
 
-The above `findByRawSql` could be used as follows:
+El anterior `findByRawSql` podría utilizarse de sigue manera:
 
 ```php
 <?php
@@ -1089,11 +1089,11 @@ $robots = Robots::findByRawSql(
 
 <a name='troubleshooting'></a>
 
-## Troubleshooting
+## Resolución de problemas
 
-Some things to keep in mind when using PHQL:
+Algunas cosas a tener en cuenta cuando se utiliza PHQL:
 
-* Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
-* Correct charset must be defined in the connection to bind parameters with success.
-* Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings.
-* If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver.
+* Las clases son sensibles a mayúsculas y minúsculas, si una clase no se define con el mismo nombre que fue creada, podría conducir a un comportamiento inesperado en sistemas operativos con los sistemas de archivos que distinguen mayúsculas y minúsculas como Linux.
+* Un conjunto de caracteres correcto debe definirse en la conexión para enlazar parámetros con éxito.
+* Las clases con alias no se reemplazan por clases con espacios de nombres completos, ya que esto solo ocurre en el código PHP y no dentro de las cadenas.
+* Si el renombrado de columna está habilitado, evite el uso de alias de columna con el mismo nombre que las columnas a cambiar de nombre, esto puede confundir la resolución de la consulta.

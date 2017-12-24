@@ -6,7 +6,7 @@
 
 This class implements common functionality for backend adapters. A backend cache adapter may extend this class
 
-## Methods
+## Metody
 
 public **getFrontend** ()
 

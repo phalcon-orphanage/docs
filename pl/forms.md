@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Forms</a>
+      <a href="#overview">Formularze</a>
       <ul>
         <li>
           <a href="#initializing">Initializing forms</a>
@@ -40,7 +40,7 @@
 
 <a name='overview'></a>
 
-# Forms
+# Formularze
 
 `Phalcon\Forms\Form` is a component that helps with the creation and maintenance of forms in web applications.
 
@@ -533,7 +533,7 @@ class Preferences
 
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the `Phalcon\Forms\Element` namespace:
 
-| Name                                | Description                                                   |
+| Nazwa                               | Description                                                   |
 | ----------------------------------- | ------------------------------------------------------------- |
 | `Phalcon\Forms\Element\Text`     | Generate `INPUT[type=text]` elements                          |
 | `Phalcon\Forms\Element\Password` | Generate `INPUT[type=password]` elements                      |

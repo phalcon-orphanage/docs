@@ -25,7 +25,7 @@ $connection = new Postgresql($config);
 
 ```
 
-## Methods
+## Metody
 
 public **connect** ([*array* $descriptor])
 

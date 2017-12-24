@@ -190,7 +190,7 @@ try {
 }
 ```
 
-Las transacciones se reutilizan, sin importar de donde es obtenido el objeto de la transacción. A new transaction is generated only when a `commit()` or `rollback()` is performed. Se puede utilizar el contenedor de servicio para crear un administrador global de transacciones para toda la aplicación:
+Las transacciones se reutilizan, sin importar de donde es obtenido el objeto de la transacción. Una nueva transacción se genera sólo cuando se realiza un `commit()` o `rollback()`. Se puede utilizar el contenedor de servicio para crear un administrador global de transacciones para toda la aplicación:
 
 ```php
 <?php

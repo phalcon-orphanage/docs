@@ -8,7 +8,7 @@
 
 Allows to automatically update a model’s attribute saving the datetime when a record is created or updated
 
-## Methods
+## Metody
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
 

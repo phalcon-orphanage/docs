@@ -450,7 +450,7 @@ The `Phalcon\Events\ManagerInterface` interface must be implemented to create yo
 
 The events available in Phalcon are:
 
-| Component          | Event                               |
+| Component          | Zdarzenie                           |
 | ------------------ | ----------------------------------- |
 | ACL                | `acl:afterCheckAccess`              |
 | ACL                | `acl:beforeCheckAccess`             |
@@ -517,8 +517,8 @@ The events available in Phalcon are:
 | Middleware         | `beforeExecuteRoute`                |
 | Middleware         | `beforeHandleRoute`                 |
 | Middleware         | `beforeNotFound`                    |
-| Model              | `afterDelete`                       |
 | Model              | `afterCreate`                       |
+| Model              | `afterDelete`                       |
 | Model              | `afterSave`                         |
 | Model              | `afterUpdate`                       |
 | Model              | `afterValidation`                   |
@@ -527,6 +527,7 @@ The events available in Phalcon are:
 | Model              | `beforeDelete`                      |
 | Model              | `notDeleted`                        |
 | Model              | `beforeCreate`                      |
+| Model              | `beforeDelete`                      |
 | Model              | `beforeSave`                        |
 | Model              | `beforeUpdate`                      |
 | Model              | `beforeValidation`                  |

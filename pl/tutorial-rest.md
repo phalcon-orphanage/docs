@@ -52,7 +52,7 @@ In this tutorial, we will explain how to create a simple application that provid
 
 The API consists of the following methods:
 
-| Method   | URL                      | Action                                         |
+| Metoda   | URL                      | Akcja                                          |
 | -------- | ------------------------ | ---------------------------------------------- |
 | `GET`    | /api/robots              | Retrieves all robots                           |
 | `GET`    | /api/robots/search/Astro | Searches for robots with 'Astro' in their name |

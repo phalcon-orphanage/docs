@@ -28,7 +28,7 @@ $paginator = new QueryBuilder(
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** (*array* $config)
 

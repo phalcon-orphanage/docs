@@ -24,7 +24,7 @@ $robot = new Robots($di);
 
 ```
 
-## Methods
+## Metody
 
 public **getServiceName** ()
 
