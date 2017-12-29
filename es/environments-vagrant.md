@@ -1,63 +1,63 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> 
+      <a href="#overview">Resumen</a> 
       <ul>
         <li>
-          <a href="#requirements">Requirements</a>
+          <a href="#requirements">Requerimentos</a>
         </li>
         <li>
-          <a href="#packages-included">Packages Included</a>
+          <a href="#packages-included">Paquetes incluidos</a>
         </li>
         <li>
-          <a href="#installation">Installation</a> <ul>
+          <a href="#installation">Instalación</a> <ul>
             <li>
-              <a href="#installation-vagrant-box">Installing the Vagrant Box</a>
+              <a href="#installation-vagrant-box">Instalando una Caja Vagrant</a>
             </li>
             <li>
-              <a href="#installation-phalcon-box">Installing the Phalcon Box</a>
+              <a href="#installation-phalcon-box">Instalando la Caja Phalcon</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#installation-configuration">Configuring</a> 
+          <a href="#installation-configuration">Configuraciones</a> 
           <ul>
             <li>
-              <a href="#installation-configuration-setting-provider">Setting your provider</a>
+              <a href="#installation-configuration-setting-provider">Establecer el Proveedor</a>
             </li>
             <li>
-              <a href="#installation-configuration-memory-cpu">Memory and CPU</a>
+              <a href="#installation-configuration-memory-cpu">Memoria y CPU</a>
             </li>
             <li>
-              <a href="#installation-configuration-shared-folders">Shared folders</a>
+              <a href="#installation-configuration-shared-folders">Carpetas compartidas</a>
             </li>
             <li>
-              <a href="#installation-configuration-nginx">Nginx sites</a> 
+              <a href="#installation-configuration-nginx">Sitios Nginx</a> 
               <ul>
                 <li>
-                  <a href="#installation-configuration-custom-nginx">Custom Nginx configuration</a>
+                  <a href="#installation-configuration-custom-nginx">Configuración Personalizada de Nginx</a>
                 </li>
                 <li>
-                  <a href="#installation-configuration-hosts">Configuring the <code>hosts</code> file</a>
+                  <a href="#installation-configuration-hosts">Configurando el archivo <code>hosts</code></a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#installation-aditional-packages">Install additional packages</a>
+              <a href="#installation-aditional-packages">Instalación de paquetes adicionales</a>
             </li>
             <li>
-              <a href="#installation-launching-phalcon-box">Launching the Phalcon Box</a>
+              <a href="#installation-launching-phalcon-box">Lanzando la Caja Phalcon</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#daily-usage">Daily usage</a> 
+          <a href="#daily-usage">Uso diario</a> 
           <ul>
             <li>
-              <a href="#daily-usage-accessing-box-globally">Accessing Phalcon Box globally</a> 
+              <a href="#daily-usage-accessing-box-globally">Accediendo a la Caja Phalcon de forma Global</a> 
               <ul>
                 <li>
-                  <a href="#daily-usage-accessing-box-globally-mac-linux">Mac || Linux</a>
+                  <a href="#daily-usage-accessing-box-globally-mac-linux">Mac o Linux</a>
                 </li>
                 <li>
                   <a href="#daily-usage-accessing-box-globally-windows">Windows</a>
@@ -65,44 +65,44 @@
               </ul>
             </li>
             <li>
-              <a href="#daily-usage-ssh">Connecting via SSH</a>
+              <a href="#daily-usage-ssh">Conectar Vía SSH</a>
             </li>
             <li>
-              <a href="#daily-usage-databases">Connecting to databases</a>
+              <a href="#daily-usage-databases">Conexión a Bases de Datos</a>
             </li>
             <li>
-              <a href="#daily-usage-additional-sites">Adding additional sites</a>
+              <a href="#daily-usage-additional-sites">Agregando Sitios Adicionales</a>
             </li>
             <li>
-              <a href="#daily-usage-environment-variables">Environment variables</a> 
+              <a href="#daily-usage-environment-variables">Variables de Entorno</a> 
               <ul>
                 <li>
-                  <a href="#daily-usage-environment-global-variables">Global variables</a>
+                  <a href="#daily-usage-environment-global-variables">Variables Globales</a>
                 </li>
                 <li>
-                  <a href="#daily-usage-environment-site-variables">Site variables</a>
+                  <a href="#daily-usage-environment-site-variables">Variables de Sitio</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#daily-usage-ports">Ports</a> 
+              <a href="#daily-usage-ports">Puertos</a> 
               <ul>
                 <li>
-                  <a href="#daily-usage-ports-forwarding">Forwarding additional ports</a>
+                  <a href="#daily-usage-ports-forwarding">Redirigir Puertos Adicionales</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#daily-usage-sharing-environment">Sharing your environment</a>
+              <a href="#daily-usage-sharing-environment">Compartiendo tu Entorno</a>
             </li>
             <li>
-              <a href="#daily-usage-network-interfaces">Network interfaces</a>
+              <a href="#daily-usage-network-interfaces">Interfaces de Red</a>
             </li>
             <li>
-              <a href="#daily-usage-updating-box">Updating Phalcon Box</a>
+              <a href="#daily-usage-updating-box">Actualizando la Caja Phalcon</a>
             </li>
             <li>
-              <a href="#daily-usage-provider-settings">Provider specific settings</a> 
+              <a href="#daily-usage-provider-settings">Configuración Específica del Proveedor</a> 
               <ul>
                 <li>
                   <a href="#daily-usage-provider-settings-virtualbox">VirtualBox</a>
@@ -110,12 +110,12 @@
               </ul>
             </li>
             <li>
-              <a href="#daily-usage-mail-catcher">Mail catcher</a>
+              <a href="#daily-usage-mail-catcher">Mail Catcher</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#troubleshooting">Resolución de problemas</a>
         </li>
       </ul>
     </li>
@@ -124,24 +124,24 @@
 
 <a name='overview'></a>
 
-# Overview
+# Resumen
 
-Phalcon Box uses the default **phalcon/xenial64** box from [Vagrant Cloud](https://atlas.hashicorp.com/phalconphp/boxes/xenial64/) for compatibility. If you choose to use a 64-bit ISO you may need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `AMD-V`, `Intel VT-x` or `VIA VT`.
+La Caja de Phalcon o Phalcon Box utiliza por defecto la caja **phalcon/xenial64** de [Vagrant](https://atlas.hashicorp.com/phalconphp/boxes/xenial64/) por compatibilidad. Si usted decide usar un ISO de 64 bits puede que necesite actualizar el BIOS para habilitar la [ Virtualización](https://en.wikipedia.org/wiki/X86_virtualization) con `AMD-V`, `Intel VT-x` o `VIA VT`.
 
-The first time that you provision a new environment with `vagrant up`, the process will take a lot longer since the box (`phalconphp/xenial64`) will have to be downloaded to your local machine first. Any subsequent environment provisions will be much faster.
+La primera vez que usted aprovisiona un nuevo ambiente con `vagrant up`, el proceso tomará mucho más tiempo ya que tendrá que descargar la caja (`phalconphp/xenial64`) en su equipo en primer lugar. Las posteriores disposiciones del entorno serán mucho más rápidas.
 
 <a name='requirements'></a>
 
-## Requirements
+## Requerimentos
 
-* Operating System: Windows, Linux, or macOS
-* [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
-* [VMware Fusion](http://www.vmware.com/products/fusion) (or Workstation - if you want to build the VMware box)
+* Sistema Operativo: Windows, Linux, o macOS
+* [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (si deseas construir la Caja VirtualBox)
+* [VMware Fusion](http://www.vmware.com/products/fusion) (o Workstation - Si desea construir la Caja VMware)
 * [Vagrant](https://www.vagrantup.com/downloads.html) >= 1.9.8
 
 <a name='packages-included'></a>
 
-## Packages Included
+## Paquetes incluidos
 
 * Ansible
 * Beanstalkd
@@ -155,7 +155,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 * MySQL
 * Nginx
 * Ngrok
-* Node.js (with Yarn, Bower, Grunt, and Gulp)
+* Node.js (con Yarn, Bower, Grunt, y Gulp)
 * PHIVE
 * PHP 7.1
 * PHPMD
@@ -170,15 +170,15 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='installation'></a>
 
-## Installation
+## Instalación
 
 <a name='installation-vagrant-box'></a>
 
-### Installing the Vagrant Box
+### Instalando una Caja Vagrant
 
-Before launching your Phalcon Box environment, you must install VirtualBox, or VMWare as well as Vagrant. All of these software packages provide easy-to-use visual installers for all popular operating systems.
+Antes de iniciar su entorno, la caja de Phalcon, deberá instalar VirtualBox, o VMWare como Vagrant. Todos estos paquetes de software proporcionan unos instaladores visuales fáciles de usar para todos los sistemas operativos populares.
 
-Once VirtualBox/VMWare and Vagrant have been installed, you should add the `phalconphp/xenial64` box to your Vagrant installation using the following command in your terminal. It will take a few minutes to download the box, depending on your Internet connection speed:
+Una vez que VirtualBox/VMware y Vagrant han sido instalados, se debe agregar la caja `phalconphp/xenial64` a la instalación de Vagrant, para esto se usa el siguiente comando desde una consola. It will take a few minutes to download the box, depending on your Internet connection speed:
 
 ```bash
 vagrant box add phalconphp/xenial64
