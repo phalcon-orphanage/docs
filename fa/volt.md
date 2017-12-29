@@ -30,10 +30,10 @@
               <a href="#control-structures-loops">Loop Controls</a>
               <ul>
                 <li>
-                  <a href="#control-structures-if">If</a>
+                  <a href="#loop-controls-if">If</a>
                 </li>
                 <li>
-                  <a href="#control-structures-switch">Switch</a>
+                  <a href="#loop-controls-switch">Switch</a>
                 </li>
               </ul>
             </li>
@@ -662,17 +662,18 @@ An alternative to the `if` statement is `switch`, allowing you to create logical
     {% case 0 %}
     {% case 1 %}
     {% case 2 %}
-        `foo` is less than 3 but not negative
+        "foo" is less than 3 but not negative
         {% break %}
     {% case 3 %}
-        `foo` is 3
+        "foo" is 3
         {% break %}
     {% default %}
-        `foo` is {{ foo }}
+        "foo" is {{ foo }}
 {% endswitch %}
+
 ```
 
-The switch statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any output (including whitespace) between a switch statement and the first case will result in a syntax error. Empty lines and whitespaces can therefore be cleared to reduce the number of errors [see here](http://php.net/control-structures.alternative-syntax).
+The `switch` statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any output (including whitespace) between a switch statement and the first `case` will result in a syntax error. Empty lines and whitespaces can therefore be cleared to reduce the number of errors [see here](http://php.net/control-structures.alternative-syntax).
 
 #### `case` without `switch`
 
@@ -706,7 +707,7 @@ Will not throw an error because `default` is a reserved word for filters like `{
 {% endswitch %}
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ....`
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
 
 #### a `switch` without an expression
 
@@ -717,7 +718,7 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch de
 {% endswitch %}
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ....`
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ...`
 
 <a name='control-structures-loop'></a>
 
