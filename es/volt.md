@@ -30,10 +30,10 @@
               <a href="#control-structures-loops">Controles de bucle</a>
               <ul>
                 <li>
-                  <a href="#control-structures-if">If</a>
+                  <a href="#loop-controls-if">If</a>
                 </li>
                 <li>
-                  <a href="#control-structures-switch">Switch</a>
+                  <a href="#loop-controls-switch">Switch</a>
                 </li>
               </ul>
             </li>
@@ -655,49 +655,50 @@ También puede utilizar la estructura de flujo de control `elseif` para emular u
 
 ### Switch
 
-An alternative to the `if` statement is `switch`, allowing you to create logical execution paths in your application:
+Una alternativa a la instrucción `if` es `switch`, que le permite crear caminos de ejecución lógica en su aplicación:
 
 ```twig
 {% switch foo %}
     {% case 0 %}
     {% case 1 %}
     {% case 2 %}
-        `foo` is less than 3 but not negative
+        "foo" is less than 3 but not negative
         {% break %}
     {% case 3 %}
-        `foo` is 3
+        "foo" is 3
         {% break %}
     {% default %}
-        `foo` is {{ foo }}
+        "foo" is {{ foo }}
 {% endswitch %}
+
 ```
 
-The switch statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any output (including whitespace) between a switch statement and the first case will result in a syntax error. Empty lines and whitespaces can therefore be cleared to reduce the number of errors [see here](http://php.net/control-structures.alternative-syntax).
+The `switch` statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any output (including whitespace) between a switch statement and the first `case` will result in a syntax error. Por lo tanto pueden borrar los espacios en blanco y líneas vacías para reducir el número de errores. Para más información visite [sintaxis alternativa de estructuras de control](http://php.net/control-structures.alternative-syntax).
 
-#### `case` without `switch`
+#### `case` sin `switch`
 
 ```twig
 {% case EXPRESSION %}
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
+Lanzará un `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
 
-#### `switch` without `endswitch`
+#### `switch` sin `endswitch`
 
 ```twig
 {% switch EXPRESSION %}
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected EOF in ..., there is a 'switch' block without 'endswitch'`.
+Lanzará un `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected EOF in ..., there is a 'switch' block without 'endswitch'`.
 ```
 
-#### `default` without `switch`
+#### `default` sin `switch`
 
 ```twig
 {% default %}
 ```
 
-Will not throw an error because `default` is a reserved word for filters like `{{ EXPRESSION | default(VALUE) }}` but in this case the expression will only output an empty char '' .
+No devolverá un error ya que `default` es una palabra reservada para filtros como `{{expresión|default(VALUE)}}` pero en este caso la expresión sólo producirá un carácter vacío, osea un ''.
 
-#### nested `switch`
+#### `switch` anidados
 
 ```twig
 {% switch EXPRESSION %}
@@ -706,9 +707,9 @@ Will not throw an error because `default` is a reserved word for filters like `{
 {% endswitch %}
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ....`
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
 
-#### a `switch` without an expression
+#### un `switch` sin expresión
 
 ```twig
 {% switch %}
@@ -717,11 +718,11 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch de
 {% endswitch %}
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ....`
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ...`
 
 <a name='control-structures-loop'></a>
 
-### Loop Context
+### Contexto de bucle
 
 Una variable especial está disponible dentro de los bucles `for`, proporcionando información sobre:
 
@@ -812,7 +813,7 @@ Si una expresión necesita ser evaluada pero no impresa, se puede utilizar la in
 
 <a name='expressions-literals'></a>
 
-### Literals
+### Literales
 
 Son soportados los siguientes literales:
 
@@ -854,7 +855,7 @@ Las llaves también pueden usarse para definir matrices o arrays asociativos:
 
 <a name='expressions-math'></a>
 
-### Math
+### Matemáticas
 
 Se pueden hacer cálculos en las plantillas mediante los siguientes operadores:
 
@@ -868,7 +869,7 @@ Se pueden hacer cálculos en las plantillas mediante los siguientes operadores:
 
 <a name='expressions-comparisons'></a>
 
-### Comparisons
+### Comparaciones
 
 Los siguientes operadores de comparación están disponibles:
 
@@ -886,7 +887,7 @@ Los siguientes operadores de comparación están disponibles:
 
 <a name='expressions-logic'></a>
 
-### Logic
+### Lógica
 
 Los operadores lógicos son útiles en la evaluación de expresiones `if` para combinar múltiples pruebas:
 
@@ -899,7 +900,7 @@ Los operadores lógicos son útiles en la evaluación de expresiones `if` para c
 
 <a name='expressions-other-operators'></a>
 
-### Other Operators
+### Otros operadores
 
 También están disponibles otros operadores:
 
@@ -1189,7 +1190,7 @@ Una vista parcial es incluida en tiempo de ejecución, Volt proporciona también
 
 <a name='view-integration-include'></a>
 
-### Include
+### Incluir
 
 `include` tiene un comportamiento especial que nos ayudará a mejorar un poco el rendimiento cuando se usa Volt, si especifica la extensión al incluir el archivo y existe cuando se compila la plantilla, Volt puede incrustar el contenido de la plantilla incluida en la plantilla principal donde está definida la inclusión. Las plantillas no serán incrustadas si el `include` tiene variables pasadas con `with`:
 
@@ -1202,7 +1203,7 @@ Una vista parcial es incluida en tiempo de ejecución, Volt proporciona también
 
 <a name='view-integration-partial-vs-include'></a>
 
-### Partial vs Include
+### Parciales vs inclusiones
 
 Tenga los siguientes puntos en cuenta al elegir utilizar la función `partial` o `include`:
 
@@ -1284,7 +1285,7 @@ No todos los bloques deben sustituirse en una plantilla hija, sólo aquellos que
 
 <a name='template-inheritance-multiple'></a>
 
-### Multiple Inheritance
+### Herencia múltiple
 
 Las plantillas extendidas pueden extender a otras plantillas. El siguiente ejemplo ilustra esto:
 
@@ -1390,7 +1391,7 @@ El compilador de Volt permite ser ampliado, añadiendole más funciones, tests o
 
 <a name='extending-functions'></a>
 
-### Functions
+### Funciones
 
 Las funciones actúan como funciones normales de PHP, un nombre de cadena válida se requiere como nombre de la función. Las funciones se pueden agregar mediante dos estrategias, retornando una cadena simple o utilizando una función anónima. Siempre es necesario que la estrategia elegida devuelva una expresión de PHP válida:
 
@@ -1472,7 +1473,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='extending-filters'></a>
 
-### Filters
+### Filtros
 
 Un filtro tiene la siguiente forma en una plantilla: `expresionIzquierda|nombre(argumentos-opcionales)`. Para agregar nuevos filtros es similar a como hace con las funciones:
 
@@ -1505,7 +1506,7 @@ $compiler->addFilter('capitalize', 'lcfirst');
 
 <a name='extending-extensions'></a>
 
-### Extensions
+### Extensiones
 
 Con las extensiones, el desarrollador tiene más flexibilidad para extender el motor de la plantilla y reemplazar la compilación de una instrucción específica, cambiar el comportamiento de una expresión o un operador, añadir funciones y filtros y mucho más.
 
