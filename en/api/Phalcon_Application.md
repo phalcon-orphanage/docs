@@ -8,25 +8,16 @@
 
 Base class for Phalcon\\Cli\\Console and Phalcon\\Mvc\\Application.
 
-
 ## Methods
 public  **__construct** ([[Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector])
-
-
-
-
 
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.1.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets the events manager
 
-
-
 public  **getEventsManager** ()
 
 Returns the internal event manager
-
-
 
 public  **registerModules** (*array* $modules, [*mixed* $merge])
 
@@ -50,53 +41,35 @@ $this->registerModules(
 
 ```
 
-
-
 public  **getModules** ()
 
 Return the modules registered in the application
-
-
 
 public  **getModule** (*mixed* $name)
 
 Gets the module definition registered in the application via module name
 
-
-
 public  **setDefaultModule** (*mixed* $defaultModule)
 
 Sets the module name to be used if the router doesn't return a valid module
-
-
 
 public  **getDefaultModule** ()
 
 Returns the default module name
 
-
-
 abstract public  **handle** ()
 
 Handles a request
-
-
 
 public  **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/en/3.1.2/api/Phalcon_Di_Injectable)
 
 Sets the dependency injector
 
-
-
 public  **getDI** () inherited from [Phalcon\Di\Injectable](/en/3.1.2/api/Phalcon_Di_Injectable)
 
 Returns the internal dependency injector
 
-
-
 public  **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/en/3.1.2/api/Phalcon_Di_Injectable)
 
 Magic method __get
-
-
 

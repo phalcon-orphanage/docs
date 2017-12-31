@@ -4,7 +4,6 @@
 
 Provides utilities to work with texts
 
-
 ## Constants
 *integer* **RANDOM_ALNUM**
 
@@ -30,8 +29,6 @@ echo Phalcon\Text::camelize("co_co-bon_go", "_-"); // CoCoBonGo
 
 ```
 
-
-
 public static  **uncamelize** (*mixed* $str, [*mixed* $delimiter])
 
 Uncamelize strings which are camelized
@@ -44,8 +41,6 @@ echo Phalcon\Text::uncamelize("CocoBongo", "-"); // coco-bongo
 
 ```
 
-
-
 public static  **increment** (*mixed* $str, [*mixed* $separator])
 
 Adds a number to a string or increment that number if it already is defined
@@ -57,8 +52,6 @@ echo Phalcon\Text::increment("a"); // "a_1"
 echo Phalcon\Text::increment("a_1"); // "a_2"
 
 ```
-
-
 
 public static  **random** ([*mixed* $type], [*mixed* $length])
 
@@ -74,8 +67,6 @@ echo Phalcon\Text::random(
 
 ```
 
-
-
 public static  **startsWith** (*mixed* $str, *mixed* $start, [*mixed* $ignoreCase])
 
 Check if a string starts with a given string
@@ -88,8 +79,6 @@ echo Phalcon\Text::startsWith("Hello", "he", false); // false
 echo Phalcon\Text::startsWith("Hello", "he"); // true
 
 ```
-
-
 
 public static  **endsWith** (*mixed* $str, *mixed* $end, [*mixed* $ignoreCase])
 
@@ -104,8 +93,6 @@ echo Phalcon\Text::endsWith("Hello", "LLO"); // true
 
 ```
 
-
-
 public static  **lower** (*mixed* $str, [*mixed* $encoding])
 
 Lowercases a string, this function makes use of the mbstring extension if available
@@ -116,8 +103,6 @@ Lowercases a string, this function makes use of the mbstring extension if availa
 echo Phalcon\Text::lower("HELLO"); // hello
 
 ```
-
-
 
 public static  **upper** (*mixed* $str, [*mixed* $encoding])
 
@@ -130,8 +115,6 @@ echo Phalcon\Text::upper("hello"); // HELLO
 
 ```
 
-
-
 public static  **reduceSlashes** (*mixed* $str)
 
 Reduces multiple slashes in a string to single slashes
@@ -143,8 +126,6 @@ echo Phalcon\Text::reduceSlashes("foo//bar/baz"); // foo/bar/baz
 echo Phalcon\Text::reduceSlashes("http://foo.bar///baz/buz"); // http://foo.bar/baz/buz
 
 ```
-
-
 
 public static  **concat** ()
 
@@ -165,8 +146,6 @@ $str = Phalcon\Text::concat(
 echo $str;
 
 ```
-
-
 
 public static  **dynamic** (*mixed* $text, [*mixed* $leftDelimiter], [*mixed* $rightDelimiter], [*mixed* $separator])
 
@@ -189,8 +168,6 @@ echo Phalcon\Text::dynamic("[Hi/Hello], my name is a [Zyxep/Mark]!", "[", "]", "
 
 ```
 
-
-
 public static  **underscore** (*mixed* $text)
 
 Makes a phrase underscored instead of spaced
@@ -203,8 +180,6 @@ echo Phalcon\Text::underscore("Awesome Phalcon"); // "Awesome_Phalcon"
 
 ```
 
-
-
 public static  **humanize** (*mixed* $text)
 
 Makes an underscored or dashed phrase human-readable
@@ -216,6 +191,4 @@ echo Phalcon\Text::humanize("start-a-horse"); // "start a horse"
 echo Phalcon\Text::humanize("five_cats"); // "five cats"
 
 ```
-
-
 

@@ -7,34 +7,27 @@ abstract public  **setReader** ([Phalcon\Annotations\ReaderInterface](/en/3.1.2/
 
 ...
 
-
 abstract public  **getReader** ()
 
 ...
-
 
 abstract public  **get** (*mixed* $className)
 
 ...
 
-
 abstract public  **getMethods** (*mixed* $className)
 
 ...
-
 
 abstract public  **getMethod** (*mixed* $className, *mixed* $methodName)
 
 ...
 
-
 abstract public  **getProperties** (*mixed* $className)
 
 ...
 
-
 abstract public  **getProperty** (*mixed* $className, *mixed* $propertyName)
 
 ...
-
 

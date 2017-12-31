@@ -32,47 +32,32 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
 ```
 
-
 ## Methods
 public [Phalcon\Db\Profiler](/en/3.1.2/api/Phalcon_Db_Profiler) **startProfile** (*string* $sqlStatement, [*mixed* $sqlVariables], [*mixed* $sqlBindTypes])
 
 Starts the profile of a SQL sentence
 
-
-
 public  **stopProfile** ()
 
 Stops the active profile
-
-
 
 public  **getNumberTotalStatements** ()
 
 Returns the total number of SQL statements processed
 
-
-
 public  **getTotalElapsedSeconds** ()
 
 Returns the total time in seconds spent by the profiles
-
-
 
 public  **getProfiles** ()
 
 Returns all the processed profiles
 
-
-
 public  **reset** ()
 
 Resets the profiler, cleaning up all the profiles
 
-
-
 public  **getLastProfile** ()
 
 Returns the last profile executed in the profiler
-
-
 

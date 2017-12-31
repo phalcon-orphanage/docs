@@ -404,8 +404,6 @@ The empty index action gives the clean pass to a view with the form definition (
         <?php echo $this->tag->textField("email"); ?>
     </p>
 
-
-
     <p>
         <?php echo $this->tag->submitButton("Register"); ?>
     </p>

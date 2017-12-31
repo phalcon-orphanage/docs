@@ -6,43 +6,30 @@
 
 This class offers contextual information of a fired event in the EventsManager
 
-
 ## Methods
 public  **getType** ()
 
 Event type
 
-
-
 public  **getSource** ()
 
 Event source
-
-
 
 public  **getData** ()
 
 Event data
 
-
-
 public  **__construct** (*string* $type, *object* $source, [*mixed* $data], [*boolean* $cancelable])
 
 Phalcon\\Events\\Event constructor
-
-
 
 public  **setData** ([*mixed* $data])
 
 Sets event data.
 
-
-
 public  **setType** (*mixed* $type)
 
 Sets event type.
-
-
 
 public  **stop** ()
 
@@ -57,13 +44,9 @@ if ($event->isCancelable()) {
 
 ```
 
-
-
 public  **isStopped** ()
 
 Check whether the event is currently stopped.
-
-
 
 public  **isCancelable** ()
 
@@ -77,6 +60,4 @@ if ($event->isCancelable()) {
 }
 
 ```
-
-
 

@@ -49,7 +49,6 @@ Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. I
     
     ```ini
     extension=php_phalcon.dll 
-    
 
 and save it.
 

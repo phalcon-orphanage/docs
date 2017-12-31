@@ -6,17 +6,12 @@
 
 Parses docblocks returning an array with the found annotations
 
-
 ## Methods
 public  **parse** (*mixed* $className)
 
 Reads annotations from the class dockblocks, its methods and/or properties
 
-
-
 public static  **parseDocBlock** (*mixed* $docBlock, [*mixed* $file], [*mixed* $line])
 
 Parses a raw doc block returning the annotations found
-
-
 

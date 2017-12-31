@@ -50,7 +50,6 @@ Una vez instalado PHPUnit, cree un directorio llamado `tests` en el directorio r
     app/
     public/
     tests/
-    
 
 A continuación, necesitamos un archivo de 'helper' (ayudante) para arrancar la aplicación para pruebas unitarias.
 

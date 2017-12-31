@@ -92,8 +92,6 @@ Forms can be rendered based on the form definition:
         <?php echo $form->render('telephoneType'); ?>
     </p>
 
-
-
     <p>
         <input type='submit' value='Save' />
     </p>
@@ -485,8 +483,6 @@ class Preferences
     public $timezone;
 
     public $receiveEmails;
-
-
 
     public function getTimezone()
     {

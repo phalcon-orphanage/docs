@@ -7,4 +7,3 @@ abstract public  **replacePlaceholders** (*mixed* $translation, [*mixed* $placeh
 
 ...
 
-

@@ -306,7 +306,6 @@ $router->addGet(
     }
 );
 
-
 $app = new Micro();
 $app->setService('router', $router, true);
 ```
@@ -786,7 +785,6 @@ Collections are a handy way to group collections attached to a handler and a com
     /orders/add/{payload}
     /orders/update/{id}
     /orders/delete/{id}
-    
 
 All of those routes are handled by our `OrdersController`. We set up our routes with a collection as follows:
 

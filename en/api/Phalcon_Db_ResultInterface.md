@@ -7,39 +7,31 @@ abstract public  **execute** ()
 
 ...
 
-
 abstract public  **fetch** ()
 
 ...
-
 
 abstract public  **fetchArray** ()
 
 ...
 
-
 abstract public  **fetchAll** ()
 
 ...
-
 
 abstract public  **numRows** ()
 
 ...
 
-
 abstract public  **dataSeek** (*mixed* $number)
 
 ...
-
 
 abstract public  **setFetchMode** (*mixed* $fetchMode)
 
 ...
 
-
 abstract public  **getInternalResult** ()
 
 ...
-
 

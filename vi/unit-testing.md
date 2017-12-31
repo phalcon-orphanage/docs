@@ -50,7 +50,6 @@ Once PHPUnit is installed create a directory called `tests` in project root dire
     app/
     public/
     tests/
-    
 
 Next, we need a 'helper' file to bootstrap the application for unit testing.
 

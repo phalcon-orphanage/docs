@@ -7,29 +7,23 @@ abstract public  **parse** ()
 
 ...
 
-
 abstract public  **cache** (*mixed* $cacheOptions)
 
 ...
-
 
 abstract public  **getCacheOptions** ()
 
 ...
 
-
 abstract public  **setUniqueRow** (*mixed* $uniqueRow)
 
 ...
-
 
 abstract public  **getUniqueRow** ()
 
 ...
 
-
 abstract public  **execute** ([*mixed* $bindParams], [*mixed* $bindTypes])
 
 ...
-
 

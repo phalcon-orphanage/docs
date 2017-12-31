@@ -44,7 +44,6 @@ try {
 
 ```
 
-
 ## Constants
 *integer* **FETCH_LAZY**
 
@@ -84,6 +83,4 @@ try {
 public static  **setup** (*array* $options)
 
 Enables/disables options in the Database component
-
-
 

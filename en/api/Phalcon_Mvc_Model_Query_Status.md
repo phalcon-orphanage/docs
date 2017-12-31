@@ -31,29 +31,18 @@ if ($status->success() === true) {
 
 ```
 
-
 ## Methods
 public  **__construct** (*mixed* $success, [[Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface) $model])
-
-
-
-
 
 public  **getModel** ()
 
 Returns the model that executed the action
 
-
-
 public  **getMessages** ()
 
 Returns the messages produced because of a failed operation
 
-
-
 public  **success** ()
 
 Allows to check if the executed operation was successful
-
-
 

@@ -127,7 +127,6 @@ $app->handle();
 
 ### Dispatcher
 
-
 ### ORM
 You can provide your own database schema or even better use any of the phalcon test [databases](https://github.com/phalcon/cphalcon/tree/master/unit-tests/schemas). Follow this structure to create the script:
 

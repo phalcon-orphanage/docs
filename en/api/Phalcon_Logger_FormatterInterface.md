@@ -7,4 +7,3 @@ abstract public  **format** (*mixed* $message, *mixed* $type, *mixed* $timestamp
 
 ...
 
-

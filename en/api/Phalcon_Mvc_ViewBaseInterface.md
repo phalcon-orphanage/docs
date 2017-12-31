@@ -7,49 +7,39 @@ abstract public  **setViewsDir** (*mixed* $viewsDir)
 
 ...
 
-
 abstract public  **getViewsDir** ()
 
 ...
-
 
 abstract public  **setParamToView** (*mixed* $key, *mixed* $value)
 
 ...
 
-
 abstract public  **setVar** (*mixed* $key, *mixed* $value)
 
 ...
-
 
 abstract public  **getParamsToView** ()
 
 ...
 
-
 abstract public  **getCache** ()
 
 ...
-
 
 abstract public  **cache** ([*mixed* $options])
 
 ...
 
-
 abstract public  **setContent** (*mixed* $content)
 
 ...
-
 
 abstract public  **getContent** ()
 
 ...
 
-
 abstract public  **partial** (*mixed* $partialPath, [*mixed* $params])
 
 ...
-
 

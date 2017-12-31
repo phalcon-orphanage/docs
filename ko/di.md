@@ -687,8 +687,6 @@ class SomeComponent
 
     protected $someFlag;
 
-
-
     public function __construct(Response $response, $someFlag)
     {
         $this->response = $response;
@@ -750,8 +748,6 @@ class SomeComponent
     protected $response;
 
     protected $someFlag;
-
-
 
     public function setResponse(Response $response)
     {
@@ -1154,7 +1150,6 @@ class MyClass implements InjectionAwareInterface
      * @var DiInterface
      */
     protected $di;
-
 
     public function setDi(DiInterface $di)
     {

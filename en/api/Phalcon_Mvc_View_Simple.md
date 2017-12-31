@@ -33,31 +33,20 @@ echo $view->render(
 
 ```
 
-
 ## Methods
 public  **getRegisteredEngines** ()
-
-
-
-
 
 public  **__construct** ([*array* $options])
 
 Phalcon\\Mvc\\View\\Simple constructor
 
-
-
 public  **setViewsDir** (*mixed* $viewsDir)
 
 Sets views directory. Depending of your platform, always add a trailing slash or backslash
 
-
-
 public  **getViewsDir** ()
 
 Gets views directory
-
-
 
 public  **registerEngines** (*array* $engines)
 
@@ -76,25 +65,17 @@ $this->view->registerEngines(
 
 ```
 
-
-
 protected *array* **_loadTemplateEngines** ()
 
 Loads registered template engines, if none is registered it will use Phalcon\\Mvc\\View\\Engine\\Php
-
-
 
 final protected  **_internalRender** (*string* $path, *array* $params)
 
 Tries to render the view with every engine registered in the component
 
-
-
 public  **render** (*string* $path, [*array* $params])
 
 Renders a view
-
-
 
 public  **partial** (*mixed* $partialPath, [*mixed* $params])
 
@@ -121,31 +102,21 @@ $this->partial(
 
 ```
 
-
-
 public  **setCacheOptions** (*array* $options)
 
 Sets the cache options
-
-
 
 public *array* **getCacheOptions** ()
 
 Returns the cache options
 
-
-
 protected  **_createCache** ()
 
 Create a Phalcon\\Cache based on the internal cache options
 
-
-
 public  **getCache** ()
 
 Returns the cache instance used to cache
-
-
 
 public  **cache** ([*mixed* $options])
 
@@ -163,8 +134,6 @@ $this->view->cache(
 
 ```
 
-
-
 public  **setParamToView** (*mixed* $key, *mixed* $value)
 
 Adds parameters to views (alias of setVar)
@@ -175,8 +144,6 @@ Adds parameters to views (alias of setVar)
 $this->view->setParamToView("products", $products);
 
 ```
-
-
 
 public  **setVars** (*array* $params, [*mixed* $merge])
 
@@ -193,8 +160,6 @@ $this->view->setVars(
 
 ```
 
-
-
 public  **setVar** (*mixed* $key, *mixed* $value)
 
 Set a single view parameter
@@ -206,19 +171,13 @@ $this->view->setVar("products", $products);
 
 ```
 
-
-
 public  **getVar** (*mixed* $key)
 
 Returns a parameter previously set in the view
 
-
-
 public *array* **getParamsToView** ()
 
 Returns parameters to views
-
-
 
 public  **setContent** (*mixed* $content)
 
@@ -231,19 +190,13 @@ $this->view->setContent("<h1>hello</h1>");
 
 ```
 
-
-
 public  **getContent** ()
 
 Returns cached output from another view stage
 
-
-
 public *string* **getActiveRenderPath** ()
 
 Returns the path of the view that is currently rendered
-
-
 
 public  **__set** (*mixed* $key, *mixed* $value)
 
@@ -256,8 +209,6 @@ $this->view->products = $products;
 
 ```
 
-
-
 public  **__get** (*mixed* $key)
 
 Magic method to retrieve a variable passed to the view
@@ -269,29 +220,19 @@ echo $this->view->products;
 
 ```
 
-
-
 public  **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/en/3.1.2/api/Phalcon_Di_Injectable)
 
 Sets the dependency injector
-
-
 
 public  **getDI** () inherited from [Phalcon\Di\Injectable](/en/3.1.2/api/Phalcon_Di_Injectable)
 
 Returns the internal dependency injector
 
-
-
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.1.2/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](/en/3.1.2/api/Phalcon_Di_Injectable)
 
 Sets the event manager
 
-
-
 public  **getEventsManager** () inherited from [Phalcon\Di\Injectable](/en/3.1.2/api/Phalcon_Di_Injectable)
 
 Returns the internal event manager
-
-
 

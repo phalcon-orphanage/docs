@@ -67,4 +67,3 @@ The following screencast is a step by step guide to install Phalcon on Windows:
 ## Related Guides
 * [Installation on WAMP](/[[language]]/[[version]]/webserver-wamp)
 
-

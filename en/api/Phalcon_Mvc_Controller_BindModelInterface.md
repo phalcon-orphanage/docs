@@ -7,4 +7,3 @@ abstract public static  **getModelName** ()
 
 ...
 
-

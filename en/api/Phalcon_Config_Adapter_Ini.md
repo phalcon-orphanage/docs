@@ -54,13 +54,10 @@ $config = new \Phalcon\Config\Adapter\Ini(
 
 ```
 
-
 ## Methods
 public  **__construct** (*mixed* $filePath, [*mixed* $mode])
 
 Phalcon\\Config\\Adapter\\Ini constructor
-
-
 
 protected  **_parseIniString** (*mixed* $path, *mixed* $value)
 
@@ -82,13 +79,9 @@ $this->_parseIniString("path.hello.world", "value for last key");
 
 ```
 
-
-
 protected  **_cast** (*mixed* $ini)
 
 We have to cast values manually because parse_ini_file() has a poor implementation.
-
-
 
 public  **offsetExists** (*mixed* $index) inherited from [Phalcon\Config](/en/3.1.2/api/Phalcon_Config)
 
@@ -103,8 +96,6 @@ var_dump(
 
 ```
 
-
-
 public  **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from [Phalcon\Config](/en/3.1.2/api/Phalcon_Config)
 
 Gets an attribute from the configuration, if the attribute isn't defined returns null
@@ -116,8 +107,6 @@ If the value is exactly null or is not defined the default value will be used in
 echo $config->get("controllersDir", "../app/controllers/");
 
 ```
-
-
 
 public  **offsetGet** (*mixed* $index) inherited from [Phalcon\Config](/en/3.1.2/api/Phalcon_Config)
 
@@ -132,8 +121,6 @@ print_r(
 
 ```
 
-
-
 public  **offsetSet** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Config](/en/3.1.2/api/Phalcon_Config)
 
 Sets an attribute using the array-syntax
@@ -147,8 +134,6 @@ $config["database"] = [
 
 ```
 
-
-
 public  **offsetUnset** (*mixed* $index) inherited from [Phalcon\Config](/en/3.1.2/api/Phalcon_Config)
 
 Unsets an attribute using the array-syntax
@@ -159,8 +144,6 @@ Unsets an attribute using the array-syntax
 unset($config["database"]);
 
 ```
-
-
 
 public  **merge** ([Phalcon\Config](/en/3.1.2/api/Phalcon_Config) $config) inherited from [Phalcon\Config](/en/3.1.2/api/Phalcon_Config)
 
@@ -181,8 +164,6 @@ $globalConfig->merge($appConfig);
 
 ```
 
-
-
 public  **toArray** () inherited from [Phalcon\Config](/en/3.1.2/api/Phalcon_Config)
 
 Converts recursively the object to an array
@@ -195,8 +176,6 @@ print_r(
 );
 
 ```
-
-
 
 public  **count** () inherited from [Phalcon\Config](/en/3.1.2/api/Phalcon_Config)
 
@@ -217,17 +196,11 @@ print $config->count();
 
 ```
 
-
-
 public static  **__set_state** (*array* $data) inherited from [Phalcon\Config](/en/3.1.2/api/Phalcon_Config)
 
 Restores the state of a Phalcon\\Config object
 
-
-
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance]) inherited from [Phalcon\Config](/en/3.1.2/api/Phalcon_Config)
 
 Helper method for merge configs (forwarding nested config instance)
-
-
 

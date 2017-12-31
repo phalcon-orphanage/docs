@@ -7,7 +7,6 @@
 This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\Cli\\Dispatcher.
 This class can't be instantiated directly, you can use it to create your own dispatchers.
 
-
 ## Constants
 *integer* **EXCEPTION_NO_DI**
 
@@ -26,145 +25,97 @@ public  **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dep
 
 Sets the dependency injector
 
-
-
 public  **getDI** ()
 
 Returns the internal dependency injector
-
-
 
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.1.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets the events manager
 
-
-
 public  **getEventsManager** ()
 
 Returns the internal event manager
-
-
 
 public  **setActionSuffix** (*mixed* $actionSuffix)
 
 Sets the default action suffix
 
-
-
 public  **getActionSuffix** ()
 
 Gets the default action suffix
-
-
 
 public  **setModuleName** (*mixed* $moduleName)
 
 Sets the module where the controller is (only informative)
 
-
-
 public  **getModuleName** ()
 
 Gets the module where the controller class is
-
-
 
 public  **setNamespaceName** (*mixed* $namespaceName)
 
 Sets the namespace where the controller class is
 
-
-
 public  **getNamespaceName** ()
 
 Gets a namespace to be prepended to the current handler name
-
-
 
 public  **setDefaultNamespace** (*mixed* $namespaceName)
 
 Sets the default namespace
 
-
-
 public  **getDefaultNamespace** ()
 
 Returns the default namespace
-
-
 
 public  **setDefaultAction** (*mixed* $actionName)
 
 Sets the default action name
 
-
-
 public  **setActionName** (*mixed* $actionName)
 
 Sets the action name to be dispatched
-
-
 
 public  **getActionName** ()
 
 Gets the latest dispatched action name
 
-
-
 public  **setParams** (*array* $params)
 
 Sets action params to be dispatched
-
-
 
 public  **getParams** ()
 
 Gets action params
 
-
-
 public  **setParam** (*mixed* $param, *mixed* $value)
 
 Set a param by its name or numeric index
-
-
 
 public *mixed* **getParam** (*mixed* $param, [*string* | *array* $filters], [*mixed* $defaultValue])
 
 Gets a param by its name or numeric index
 
-
-
 public *boolean* **hasParam** (*mixed* $param)
 
 Check if a param exists
-
-
 
 public  **getActiveMethod** ()
 
 Returns the current method to be/executed in the dispatcher
 
-
-
 public  **isFinished** ()
 
 Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
-
-
 
 public  **setReturnedValue** (*mixed* $value)
 
 Sets the latest returned value by an action manually
 
-
-
 public *mixed* **getReturnedValue** ()
 
 Returns value returned by the latest dispatched action
-
-
 
 public  **setModelBinding** (*mixed* $value, [*mixed* $cache])
 
@@ -182,8 +133,6 @@ $di->set('dispatcher', function() {
 
 ```
 
-
-
 public  **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](/en/3.1.2/api/Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache])
 
 Enable model binding during dispatch
@@ -200,25 +149,17 @@ $di->set('dispatcher', function() {
 
 ```
 
-
-
 public  **getModelBinder** ()
 
 Gets model binder
-
-
 
 public *object* **dispatch** ()
 
 Dispatches a handle action taking into account the routing parameters
 
-
-
 protected *object* **_dispatch** ()
 
 Dispatches a handle action taking into account the routing parameters
-
-
 
 public  **forward** (*array* $forward)
 
@@ -237,24 +178,17 @@ $this->dispatcher->forward(
 
 ```
 
-
-
 public  **wasForwarded** ()
 
 Check if the current executed action was forwarded by another one
-
-
 
 public  **getHandlerClass** ()
 
 Possible class name that will be located to dispatch the request
 
-
-
 public  **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
 
 ...
-
 
 public  **getBoundModels** ()
 
@@ -273,11 +207,7 @@ class UserController extends Controller
 
 ```
 
-
-
 protected  **_resolveEmptyProperties** ()
 
 Set empty properties to their defaults (where defaults are available)
-
-
 

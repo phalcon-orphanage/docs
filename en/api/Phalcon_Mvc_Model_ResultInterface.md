@@ -7,4 +7,3 @@ abstract public  **setDirtyState** (*mixed* $dirtyState)
 
 ...
 
-

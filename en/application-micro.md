@@ -160,7 +160,6 @@ $router->addGet(
     }
 );
 
-
 $app = new Micro();
 $app->setService('router', $router, true);
 ```
@@ -336,7 +335,6 @@ class OrdersController extends Controller
     }
 }
 ```
-
 
 <a name='routing-handlers-controllers-lazy-loading'></a>
 ### Lazy Loading
@@ -981,7 +979,6 @@ The following events are supported:
 |beforeNotFound     | Route has not been found                                          | Yes                 |
 |afterHandleRoute   | Route just finished executing                                     | Yes                 |
 |afterBinding       | Triggered after models are bound but before executing the handler | Yes                 |
-
 
 <a name='events-available-events-authentication'></a>
 ### Authentication example
@@ -1738,5 +1735,4 @@ $app->error(
     }
 );
 ```
-
 

@@ -7,19 +7,15 @@ abstract public  **getName** ()
 
 ...
 
-
 abstract public  **getColumns** ()
 
 ...
-
 
 abstract public  **getType** ()
 
 ...
 
-
 abstract public static  **__set_state** (*array* $data)
 
 ...
-
 

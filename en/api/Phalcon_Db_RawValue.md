@@ -18,23 +18,16 @@ $subscriber->save();
 
 ```
 
-
 ## Methods
 public  **getValue** ()
 
 Raw value without quoting or formatting
 
-
-
 public  **__toString** ()
 
 Raw value without quoting or formatting
 
-
-
 public  **__construct** (*mixed* $value)
 
 Phalcon\\Db\\RawValue constructor
-
-
 

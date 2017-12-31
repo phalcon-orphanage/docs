@@ -7,9 +7,7 @@ abstract public  **parse** (*mixed* $className)
 
 ...
 
-
 abstract public static  **parseDocBlock** (*mixed* $docBlock, [*mixed* $file], [*mixed* $line])
 
 ...
-
 

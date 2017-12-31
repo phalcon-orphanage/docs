@@ -6,29 +6,20 @@
 
 This class defines role entity and its description
 
-
 ## Methods
 public  **getName** ()
 
 Role name
 
-
-
 public  **__toString** ()
 
 Role name
-
-
 
 public  **getDescription** ()
 
 Role description
 
-
-
 public  **__construct** (*mixed* $name, [*mixed* $description])
 
 Phalcon\\Acl\\Role constructor
-
-
 

@@ -7,9 +7,7 @@ abstract public  **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](/e
 
 ...
 
-
 abstract public  **missingMethod** ([Phalcon\Mvc\CollectionInterface](/en/3.1.2/api/Phalcon_Mvc_CollectionInterface) $collection, *mixed* $method, [*mixed* $arguments])
 
 ...
-
 

@@ -54,93 +54,64 @@ Internally all the magic methods (and interfaces except JsonSerializable)
 are implemented using object handlers or similar techniques: this allows
 to bypass relatively slow method calls.
 
-
 ## Methods
 final public  **__construct** ()
 
 Registry constructor
 
-
-
 final public  **offsetExists** (*mixed* $offset)
 
 Checks if the element is present in the registry
-
-
 
 final public  **offsetGet** (*mixed* $offset)
 
 Returns an index in the registry
 
-
-
 final public  **offsetSet** (*mixed* $offset, *mixed* $value)
 
 Sets an element in the registry
-
-
 
 final public  **offsetUnset** (*mixed* $offset)
 
 Unsets an element in the registry
 
-
-
 final public  **count** ()
 
 Checks how many elements are in the register
-
-
 
 final public  **next** ()
 
 Moves cursor to next row in the registry
 
-
-
 final public  **key** ()
 
 Gets pointer number of active row in the registry
-
-
 
 final public  **rewind** ()
 
 Rewinds the registry cursor to its beginning
 
-
-
 public  **valid** ()
 
 Checks if the iterator is valid
-
-
 
 public  **current** ()
 
 Obtains the current value in the internal iterator
 
-
-
 final public  **__set** (*mixed* $key, *mixed* $value)
 
 Sets an element in the registry
-
-
 
 final public  **__get** (*mixed* $key)
 
 Returns an index in the registry
 
-
-
 final public  **__isset** (*mixed* $key)
 
 ...
 
-
 final public  **__unset** (*mixed* $key)
 
 ...
-
 

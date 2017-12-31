@@ -71,7 +71,6 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 $image->save();
 ```
 
-
 ```php
 <?php
 

@@ -6,29 +6,20 @@
 
 This class defines resource entity and its description
 
-
 ## Methods
 public  **getName** ()
 
 Resource name
 
-
-
 public  **__toString** ()
 
 Resource name
-
-
 
 public  **getDescription** ()
 
 Resource description
 
-
-
 public  **__construct** (*mixed* $name, [*mixed* $description])
 
 Phalcon\\Acl\\Resource constructor
-
-
 

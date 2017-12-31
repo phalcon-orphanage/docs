@@ -7,34 +7,27 @@ abstract public  **getData** ()
 
 ...
 
-
 abstract public  **setData** ([*mixed* $data])
 
 ...
-
 
 abstract public  **getType** ()
 
 ...
 
-
 abstract public  **setType** (*mixed* $type)
 
 ...
-
 
 abstract public  **stop** ()
 
 ...
 
-
 abstract public  **isStopped** ()
 
 ...
 
-
 abstract public  **isCancelable** ()
 
 ...
-
 

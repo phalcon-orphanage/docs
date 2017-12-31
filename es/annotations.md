@@ -146,7 +146,6 @@ Además puede utilizar el método factory para conseguir el mismo resultado:
 ```php
 <?php
 
-
 use Phalcon\Annotations\Factory;
 
 $options = [

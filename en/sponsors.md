@@ -21,4 +21,3 @@ For those that wish to sponsor our work and further the development of Phalcon, 
     ![Abits](https://raw.githubusercontent.com/phalcon/cphalcon/master/backers/abits-240x60.png)
 </a>
 
-

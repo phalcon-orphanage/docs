@@ -7,69 +7,55 @@ abstract public  **setIntermediateRelation** (*mixed* $intermediateFields, *mixe
 
 ...
 
-
 abstract public  **isReusable** ()
 
 ...
-
 
 abstract public  **getType** ()
 
 ...
 
-
 abstract public  **getReferencedModel** ()
 
 ...
-
 
 abstract public  **getFields** ()
 
 ...
 
-
 abstract public  **getReferencedFields** ()
 
 ...
-
 
 abstract public  **getOptions** ()
 
 ...
 
-
 abstract public  **getOption** (*mixed* $name)
 
 ...
-
 
 abstract public  **isForeignKey** ()
 
 ...
 
-
 abstract public  **getForeignKey** ()
 
 ...
-
 
 abstract public  **isThrough** ()
 
 ...
 
-
 abstract public  **getIntermediateFields** ()
 
 ...
-
 
 abstract public  **getIntermediateModel** ()
 
 ...
 
-
 abstract public  **getIntermediateReferencedFields** ()
 
 ...
-
 

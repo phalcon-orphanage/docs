@@ -306,7 +306,6 @@ $router->addGet(
     }
 );
 
-
 $app = new Micro();
 $app->setService('router', $router, true);
 ```
@@ -786,7 +785,6 @@ Map позволяет назначить одну и ту же конечную
     /orders/add/{payload}
     /orders/update/{id}
     /orders/delete/{id}
-    
 
 Все эти маршруты обрабатываются нашим `OrdersController`. Мы установим наши маршруты с помощью коллекции следующим образом:
 

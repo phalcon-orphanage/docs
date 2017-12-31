@@ -146,7 +146,6 @@ $reader = new MemoryAdapter();
 ```php
 <?php
 
-
 use Phalcon\Annotations\Factory;
 
 $options = [

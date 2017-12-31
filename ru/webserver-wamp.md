@@ -48,7 +48,6 @@ extension=php_phalcon.dll
     Так же отредактируйте файл `php.ini`, располагающийся в `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Добавьте в самый конец файла:
     
     extension=php_phalcon.dll 
-    
 
 и сохраните его.
 

@@ -154,7 +154,6 @@ use Phalcon\Cache\Backend\Factory as BFactory;
  ];
  $frontendCache = FFactory::load($options);
 
-
 $options = [
     'cacheDir' => '../app/cache/',
     'prefix'   => 'app-data',

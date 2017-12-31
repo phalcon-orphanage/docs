@@ -20,7 +20,6 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 
 ```
 
-
 ## Methods
 public  **setEncoding** (*mixed* $encoding)
 
@@ -33,13 +32,9 @@ $escaper->setEncoding("utf-8");
 
 ```
 
-
-
 public  **getEncoding** ()
 
 Returns the internal encoding used by the escaper
-
-
 
 public  **setHtmlQuoteType** (*mixed* $quoteType)
 
@@ -52,8 +47,6 @@ $escaper->setHtmlQuoteType(ENT_XHTML);
 
 ```
 
-
-
 public  **setDoubleEncode** (*mixed* $doubleEncode)
 
 Sets the double_encode to be used by the escaper
@@ -65,48 +58,32 @@ $escaper->setDoubleEncode(false);
 
 ```
 
-
-
 final public  **detectEncoding** (*mixed* $str)
 
 Detect the character encoding of a string to be handled by an encoder
 Special-handling for chr(172) and chr(128) to chr(159) which fail to be detected by mb_detect_encoding()
 
-
-
 final public  **normalizeEncoding** (*mixed* $str)
 
 Utility to normalize a string's encoding to UTF-32.
-
-
 
 public  **escapeHtml** (*mixed* $text)
 
 Escapes a HTML string. Internally uses htmlspecialchars
 
-
-
 public  **escapeHtmlAttr** (*mixed* $attribute)
 
 Escapes a HTML attribute string
-
-
 
 public  **escapeCss** (*mixed* $css)
 
 Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
-
-
 public  **escapeJs** (*mixed* $js)
 
 Escape javascript strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
-
-
 public  **escapeUrl** (*mixed* $url)
 
 Escapes a URL. Internally uses rawurlencode
-
-
 

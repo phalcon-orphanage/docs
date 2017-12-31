@@ -27,72 +27,43 @@ class PostsController extends Controller
 
 ```
 
-
 ## Methods
 public  **getError** ()
 
-
-
-
-
 public  **getKey** ()
 
-
-
-
-
 public  **getExtension** ()
-
-
-
-
 
 public  **__construct** (*array* $file, [*mixed* $key])
 
 Phalcon\\Http\\Request\\File constructor
 
-
-
 public  **getSize** ()
 
 Returns the file size of the uploaded file
-
-
 
 public  **getName** ()
 
 Returns the real name of the uploaded file
 
-
-
 public  **getTempName** ()
 
 Returns the temporary name of the uploaded file
-
-
 
 public  **getType** ()
 
 Returns the mime type reported by the browser
 This mime type is not completely secure, use getRealType() instead
 
-
-
 public  **getRealType** ()
 
 Gets the real mime type of the upload file using finfo
-
-
 
 public  **isUploadedFile** ()
 
 Checks whether the file has been uploaded via Post.
 
-
-
 public  **moveTo** (*mixed* $destination)
 
 Moves the temporary file to a destination within the application
-
-
 

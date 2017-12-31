@@ -7,7 +7,6 @@
 This component implements a high level abstraction for NoSQL databases which
 works with documents
 
-
 ## Constants
 *integer* **OP_NONE**
 
@@ -28,91 +27,61 @@ final public  **__construct** ([[Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiIn
 
 Phalcon\\Mvc\\Collection constructor
 
-
-
 public  **setId** (*mixed* $id)
 
 Sets a value for the _id property, creates a MongoId object if needed
-
-
 
 public *MongoId* **getId** ()
 
 Returns the value of the _id property
 
-
-
 public  **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injection container
-
-
 
 public  **getDI** ()
 
 Returns the dependency injection container
 
-
-
 protected  **setEventsManager** ([Phalcon\Mvc\Collection\ManagerInterface](/en/3.1.2/api/Phalcon_Mvc_Collection_ManagerInterface) $eventsManager)
 
 Sets a custom events manager
-
-
 
 protected  **getEventsManager** ()
 
 Returns the custom events manager
 
-
-
 public  **getCollectionManager** ()
 
 Returns the models manager related to the entity instance
-
-
 
 public  **getReservedAttributes** ()
 
 Returns an array with reserved properties that cannot be part of the insert/update
 
-
-
 protected  **useImplicitObjectIds** (*mixed* $useImplicitObjectIds)
 
 Sets if a model must use implicit objects ids
-
-
 
 protected  **setSource** (*mixed* $source)
 
 Sets collection name which model should be mapped
 
-
-
 public  **getSource** ()
 
 Returns collection name mapped in the model
-
-
 
 public  **setConnectionService** (*mixed* $connectionService)
 
 Sets the DependencyInjection connection service name
 
-
-
 public  **getConnectionService** ()
 
 Returns DependencyInjection connection service
 
-
-
 public *MongoDb* **getConnection** ()
 
 Retrieves a database connection
-
-
 
 public *mixed* **readAttribute** (*string* $attribute)
 
@@ -125,8 +94,6 @@ echo $robot->readAttribute("name");
 
 ```
 
-
-
 public  **writeAttribute** (*string* $attribute, *mixed* $value)
 
 Writes an attribute value by its name
@@ -138,37 +105,25 @@ $robot->writeAttribute("name", "Rosey");
 
 ```
 
-
-
 public static  **cloneResult** ([Phalcon\Mvc\CollectionInterface](/en/3.1.2/api/Phalcon_Mvc_CollectionInterface) $collection, *array* $document)
 
 Returns a cloned collection
-
-
 
 protected static *array* **_getResultset** (*array* $params, [Phalcon\Mvc\Collection](/en/3.1.2/api/Phalcon_Mvc_Collection) $collection, *MongoDb* $connection, *boolean* $unique)
 
 Returns a collection resultset
 
-
-
 protected static *int* **_getGroupResultset** (*array* $params, [Phalcon\Mvc\Collection](/en/3.1.2/api/Phalcon_Mvc_Collection) $collection, *MongoDb* $connection)
 
 Perform a count over a resultset
-
-
 
 final protected *boolean* **_preSave** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
 
 Executes internal hooks before save a document
 
-
-
 final protected  **_postSave** (*mixed* $disableEvents, *mixed* $success, *mixed* $exists)
 
 Executes internal events after save a document
-
-
 
 protected  **validate** (*mixed* $validator)
 
@@ -226,8 +181,6 @@ class Subscriptors extends \Phalcon\Mvc\Collection
 
 ```
 
-
-
 public  **validationHasFailed** ()
 
 Check whether validation process has generated any messages
@@ -258,31 +211,21 @@ class Subscriptors extends \Phalcon\Mvc\Collection
 
 ```
 
-
-
 public  **fireEvent** (*mixed* $eventName)
 
 Fires an internal event
-
-
 
 public  **fireEventCancel** (*mixed* $eventName)
 
 Fires an internal event that cancels the operation
 
-
-
 protected  **_cancelOperation** (*mixed* $disableEvents)
 
 Cancel the current operation
 
-
-
 protected *boolean* **_exists** (*MongoCollection* $collection)
 
 Checks if the document exists in the collection
-
-
 
 public  **getMessages** ()
 
@@ -311,8 +254,6 @@ if ($robot->save() === false) {
 
 ```
 
-
-
 public  **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](/en/3.1.2/api/Phalcon_Mvc_Model_MessageInterface) $message)
 
 Appends a customized message on the validation process
@@ -338,26 +279,18 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-
-
 protected  **prepareCU** ()
 
 Shared Code for CU Operations
 Prepares Collection
 
-
-
 public  **save** ()
 
 Creates/Updates a collection based on the values in the attributes
 
-
-
 public  **create** ()
 
 Creates a collection based on the values in the attributes
-
-
 
 public  **createIfNotExist** (*array* $criteria)
 
@@ -382,13 +315,9 @@ $robot->createIfNotExist(
 
 ```
 
-
-
 public  **update** ()
 
 Creates/Updates a collection based on the values in the attributes
-
-
 
 public static  **findById** (*mixed* $id)
 
@@ -411,8 +340,6 @@ if ($user = Users::findById($_POST["id"])) {
 }
 
 ```
-
-
 
 public static  **findFirst** ([*array* $parameters])
 
@@ -463,8 +390,6 @@ $robot = Robots::findFirst(
 echo "The robot id is ", $robot->_id, "\n";
 
 ```
-
-
 
 public static  **find** ([*array* $parameters])
 
@@ -524,8 +449,6 @@ foreach ($robots as $robot) {
 
 ```
 
-
-
 public static  **count** ([*array* $parameters])
 
 Perform a count over a collection
@@ -537,19 +460,13 @@ echo "There are ", Robots::count(), " robots";
 
 ```
 
-
-
 public static  **aggregate** ([*array* $parameters])
 
 Perform an aggregation using the Mongo aggregation framework
 
-
-
 public static  **summatory** (*mixed* $field, [*mixed* $conditions], [*mixed* $finalize])
 
 Allows to perform a summatory group for a column in the collection
-
-
 
 public  **delete** ()
 
@@ -570,31 +487,21 @@ foreach ($robots as $robot) {
 
 ```
 
-
-
 public  **setDirtyState** (*mixed* $dirtyState)
 
 Sets the dirty state of the object using one of the DIRTY_STATE_* constants
-
-
 
 public  **getDirtyState** ()
 
 Returns one of the DIRTY_STATE_* constants telling if the document exists in the collection or not
 
-
-
 protected  **addBehavior** ([Phalcon\Mvc\Collection\BehaviorInterface](/en/3.1.2/api/Phalcon_Mvc_Collection_BehaviorInterface) $behavior)
 
 Sets up a behavior in a collection
 
-
-
 public  **skipOperation** (*mixed* $skip)
 
 Skips the current operation forcing a success state
-
-
 
 public  **toArray** ()
 
@@ -609,17 +516,11 @@ print_r(
 
 ```
 
-
-
 public  **serialize** ()
 
 Serializes the object ignoring connections or protected properties
 
-
-
 public  **unserialize** (*mixed* $data)
 
 Unserializes the object from a serialized string
-
-
 

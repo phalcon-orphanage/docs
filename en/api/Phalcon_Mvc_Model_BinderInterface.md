@@ -7,19 +7,15 @@ abstract public  **getBoundModels** ()
 
 ...
 
-
 abstract public  **getCache** ()
 
 ...
-
 
 abstract public  **setCache** ([Phalcon\Cache\BackendInterface](/en/3.1.2/api/Phalcon_Cache_BackendInterface) $cache)
 
 ...
 
-
 abstract public  **bindToHandler** (*mixed* $handler, *array* $params, *mixed* $cacheKey, [*mixed* $methodName])
 
 ...
-
 

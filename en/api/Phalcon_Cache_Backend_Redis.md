@@ -43,25 +43,18 @@ $data = $cache->get("my-data");
 
 ```
 
-
 ## Methods
 public  **__construct** ([Phalcon\Cache\FrontendInterface](/en/3.1.2/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
 Phalcon\\Cache\\Backend\\Redis constructor
 
-
-
 public  **_connect** ()
 
 Create internal connection to redis
 
-
-
 public  **get** (*mixed* $keyName, [*mixed* $lifetime])
 
 Returns a cached content
-
-
 
 public  **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
@@ -77,13 +70,9 @@ $cache->save("my-key", $data, -1);
 
 ```
 
-
-
 public  **delete** (*int* | *string* $keyName)
 
 Deletes a value from the cache by its key
-
-
 
 public  **queryKeys** ([*mixed* $prefix])
 
@@ -99,89 +88,63 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 ```
 
-
-
 public  **exists** ([*string* $keyName], [*int* $lifetime])
 
 Checks if cache exists and it isn't expired
-
-
 
 public  **increment** ([*string* $keyName], [*mixed* $value])
 
 Increment of given $keyName by $value
 
-
-
 public  **decrement** ([*string* $keyName], [*mixed* $value])
 
 Decrement of $keyName by given $value
-
-
 
 public  **flush** ()
 
 Immediately invalidates all existing items.
 
-
-
 public  **getFrontend** () inherited from [Phalcon\Cache\Backend](/en/3.1.2/api/Phalcon_Cache_Backend)
 
 ...
-
 
 public  **setFrontend** (*mixed* $frontend) inherited from [Phalcon\Cache\Backend](/en/3.1.2/api/Phalcon_Cache_Backend)
 
 ...
 
-
 public  **getOptions** () inherited from [Phalcon\Cache\Backend](/en/3.1.2/api/Phalcon_Cache_Backend)
 
 ...
-
 
 public  **setOptions** (*mixed* $options) inherited from [Phalcon\Cache\Backend](/en/3.1.2/api/Phalcon_Cache_Backend)
 
 ...
 
-
 public  **getLastKey** () inherited from [Phalcon\Cache\Backend](/en/3.1.2/api/Phalcon_Cache_Backend)
 
 ...
-
 
 public  **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](/en/3.1.2/api/Phalcon_Cache_Backend)
 
 ...
 
-
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](/en/3.1.2/api/Phalcon_Cache_Backend)
 
 Starts a cache. The keyname allows to identify the created fragment
-
-
 
 public  **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](/en/3.1.2/api/Phalcon_Cache_Backend)
 
 Stops the frontend without store any cached content
 
-
-
 public  **isFresh** () inherited from [Phalcon\Cache\Backend](/en/3.1.2/api/Phalcon_Cache_Backend)
 
 Checks whether the last cache is fresh or cached
-
-
 
 public  **isStarted** () inherited from [Phalcon\Cache\Backend](/en/3.1.2/api/Phalcon_Cache_Backend)
 
 Checks whether the cache has starting buffering or not
 
-
-
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](/en/3.1.2/api/Phalcon_Cache_Backend)
 
 Gets the last lifetime set
-
-
 

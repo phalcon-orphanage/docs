@@ -262,7 +262,6 @@ The available DLLs are:
 | x86          | 5.6     | Thread safe           |
 | x86          | 5.6     | Non Thread safe (NTS) |
 
-
 Edit your php.ini file and then append at the end:
 
 ```ini

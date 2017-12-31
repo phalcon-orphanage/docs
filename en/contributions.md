@@ -73,7 +73,6 @@ If you have a change or new feature in mind, please fill an [NFR](/[[language]]/
 
 Thanks!
 
-
 <3 Phalcon Team
 
 [ghpr]: https://help.github.com/articles/using-pull-requests/

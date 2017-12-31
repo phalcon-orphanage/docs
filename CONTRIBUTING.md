@@ -52,7 +52,6 @@ If you have a change or new feature in mind, please fill an [NFR][:nfr:].
 Thanks! <br />
 Phalcon Team
 
-
 [:forums:]: https://forum.phalconphp.com/
 [:bt:]: https://github.com/phalcon/cphalcon/wiki/Generating-a-backtrace
 [:psr:]: http://www.php-fig.org/psr/

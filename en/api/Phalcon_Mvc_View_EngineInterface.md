@@ -7,14 +7,11 @@ abstract public  **getContent** ()
 
 ...
 
-
 abstract public  **partial** (*mixed* $partialPath, [*mixed* $params])
 
 ...
 
-
 abstract public  **render** (*mixed* $path, *mixed* $params, [*mixed* $mustClean])
 
 ...
-
 

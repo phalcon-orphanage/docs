@@ -7,14 +7,11 @@ abstract public  **hasOption** (*mixed* $key)
 
 ...
 
-
 abstract public  **getOption** (*mixed* $key, [*mixed* $defaultValue])
 
 ...
 
-
 abstract public  **validate** ([Phalcon\Validation](/en/3.1.2/api/Phalcon_Validation) $validation, *mixed* $attribute)
 
 ...
-
 

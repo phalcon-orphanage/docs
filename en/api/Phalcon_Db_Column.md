@@ -29,7 +29,6 @@ $connection->addColumn("robots", null, $column);
 
 ```
 
-
 ## Constants
 *integer* **TYPE_INTEGER**
 
@@ -86,113 +85,75 @@ public  **getName** ()
 
 Column's name
 
-
-
 public  **getSchemaName** ()
 
 Schema which table related is
-
-
 
 public  **getType** ()
 
 Column data type
 
-
-
 public  **getTypeReference** ()
 
 Column data type reference
-
-
 
 public  **getTypeValues** ()
 
 Column data type values
 
-
-
 public  **getSize** ()
 
 Integer column size
-
-
 
 public  **getScale** ()
 
 Integer column number scale
 
-
-
 public  **getDefault** ()
 
 Default column value
-
-
 
 public  **__construct** (*mixed* $name, *array* $definition)
 
 Phalcon\\Db\\Column constructor
 
-
-
 public  **isUnsigned** ()
 
 Returns true if number column is unsigned
-
-
 
 public  **isNotNull** ()
 
 Not null
 
-
-
 public  **isPrimary** ()
 
 Column is part of the primary key?
-
-
 
 public  **isAutoIncrement** ()
 
 Auto-Increment
 
-
-
 public  **isNumeric** ()
 
 Check whether column have an numeric type
-
-
 
 public  **isFirst** ()
 
 Check whether column have first position in table
 
-
-
 public *string* **getAfterPosition** ()
 
 Check whether field absolute to position in table
-
-
 
 public  **getBindType** ()
 
 Returns the type of bind handling
 
-
-
 public static  **__set_state** (*array* $data)
 
 Restores the internal state of a Phalcon\\Db\\Column object
 
-
-
 public  **hasDefault** ()
 
 Check whether column has default value
-
-
 

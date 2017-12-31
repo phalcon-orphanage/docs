@@ -6,19 +6,14 @@
 
 This class represents every route added to the router
 
-
 ## Methods
 public  **__construct** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
 Phalcon\\Mvc\\Router\\Route constructor
 
-
-
 public  **compilePattern** (*mixed* $pattern)
 
 Replaces placeholders from pattern returning a valid PCRE regular expression
-
-
 
 public  **via** (*mixed* $httpMethods)
 
@@ -38,31 +33,21 @@ $route->via(
 
 ```
 
-
-
 public  **extractNamedParams** (*mixed* $pattern)
 
 Extracts parameters from a string
-
-
 
 public  **reConfigure** (*mixed* $pattern, [*mixed* $paths])
 
 Reconfigure the route adding a new pattern and a set of paths
 
-
-
 public static  **getRoutePaths** ([*mixed* $paths])
 
 Returns routePaths
 
-
-
 public  **getName** ()
 
 Returns the route's name
-
-
 
 public  **setName** (*mixed* $name)
 
@@ -79,8 +64,6 @@ $router->add(
 )->setName("about");
 
 ```
-
-
 
 public  **beforeMatch** (*mixed* $callback)
 
@@ -110,13 +93,9 @@ $router->add(
 
 ```
 
-
-
 public  **getBeforeMatch** ()
 
 Returns the 'before match' callback if any
-
-
 
 public  **match** (*mixed* $callback)
 
@@ -136,43 +115,29 @@ $router->add(
 
 ```
 
-
-
 public  **getMatch** ()
 
 Returns the 'match' callback if any
-
-
 
 public  **getRouteId** ()
 
 Returns the route's id
 
-
-
 public  **getPattern** ()
 
 Returns the route's pattern
-
-
 
 public  **getCompiledPattern** ()
 
 Returns the route's compiled pattern
 
-
-
 public  **getPaths** ()
 
 Returns the paths
 
-
-
 public  **getReversedPaths** ()
 
 Returns the paths using positions as keys and names as values
-
-
 
 public  **setHttpMethods** (*mixed* $httpMethods)
 
@@ -186,13 +151,9 @@ $route->setHttpMethods(["GET", "POST"]);
 
 ```
 
-
-
 public  **getHttpMethods** ()
 
 Returns the HTTP methods that constraint matching the route
-
-
 
 public  **setHostname** (*mixed* $hostname)
 
@@ -205,41 +166,27 @@ $route->setHostname("localhost");
 
 ```
 
-
-
 public  **getHostname** ()
 
 Returns the hostname restriction if any
-
-
 
 public  **setGroup** ([Phalcon\Mvc\Router\GroupInterface](/en/3.1.2/api/Phalcon_Mvc_Router_GroupInterface) $group)
 
 Sets the group associated with the route
 
-
-
 public  **getGroup** ()
 
 Returns the group associated with the route
-
-
 
 public  **convert** (*mixed* $name, *mixed* $converter)
 
 Adds a converter to perform an additional transformation for certain parameter
 
-
-
 public  **getConverters** ()
 
 Returns the router converter
 
-
-
 public static  **reset** ()
 
 Resets the internal route id generator
-
-
 

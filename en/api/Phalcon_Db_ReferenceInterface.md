@@ -7,44 +7,35 @@ abstract public  **getName** ()
 
 ...
 
-
 abstract public  **getSchemaName** ()
 
 ...
-
 
 abstract public  **getReferencedSchema** ()
 
 ...
 
-
 abstract public  **getColumns** ()
 
 ...
-
 
 abstract public  **getReferencedTable** ()
 
 ...
 
-
 abstract public  **getReferencedColumns** ()
 
 ...
-
 
 abstract public  **getOnDelete** ()
 
 ...
 
-
 abstract public  **getOnUpdate** ()
 
 ...
 
-
 abstract public static  **__set_state** (*array* $data)
 
 ...
-
 

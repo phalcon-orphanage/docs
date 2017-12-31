@@ -148,7 +148,6 @@ El método `_getTranslation()` está disponible para todas las acciones que requ
     <!-- welcome -->
     <!-- String: hi => 'Hello' -->
     <p><?php echo $t->_('hi'), ' ', $name; ?></p>
-    
 
 El método `_()` devuelve la cadena traducida basada en el índice pasado. Algunas cadenas necesitan incorporar marcadores de posición para datos calculados, por ejemplo: `Hola %name%`. Estos marcadores de posición pueden reemplazarse con parámetros pasados al método `_()`. Los parámetros pasados son en forma de un arreglo organizado mediante clave/valor, donde la clave coincide con el nombre de marcador de posición y el valor son los datos reales para ser sustituidos:
 

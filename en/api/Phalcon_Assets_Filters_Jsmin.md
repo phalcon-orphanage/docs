@@ -8,11 +8,8 @@ Deletes the characters which are insignificant to JavaScript. Comments will be r
 replaced with spaces. Carriage returns will be replaced with linefeeds.
 Most spaces and linefeeds will be removed.
 
-
 ## Methods
 public  **filter** (*mixed* $content)
 
 Filters the content using JSMIN
-
-
 

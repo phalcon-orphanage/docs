@@ -298,7 +298,6 @@ class Products extends Model
      */
     protected $status;
 
-
     /**
      * Method to set the value of field id
      *

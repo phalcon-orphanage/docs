@@ -241,8 +241,6 @@ use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
 $logger = new MultipleStream();
 
-
-
 $logger->push(
     new FileAdapter('test.log')
 );

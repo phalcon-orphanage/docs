@@ -7,4 +7,3 @@ public static  **preComputeHashKey** (*mixed* $key)
 
 ...
 
-

@@ -30,7 +30,6 @@ echo $router->getControllerName();
 
 ```
 
-
 ## Constants
 *integer* **URI_SOURCE_GET_URL**
 
@@ -45,37 +44,25 @@ public  **__construct** ([*mixed* $defaultRoutes])
 
 Phalcon\\Mvc\\Router constructor
 
-
-
 public  **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
-
-
 
 public  **getDI** ()
 
 Returns the internal dependency injector
 
-
-
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.1.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets the events manager
-
-
 
 public  **getEventsManager** ()
 
 Returns the internal event manager
 
-
-
 public  **getRewriteUri** ()
 
 Get rewrite info. This info is read from $_GET["_url"]. This returns '/' if the rewrite information cannot be read
-
-
 
 public  **setUriSource** (*mixed* $uriSource)
 
@@ -90,37 +77,25 @@ $router->setUriSource(
 
 ```
 
-
-
 public  **removeExtraSlashes** (*mixed* $remove)
 
 Set whether router must remove the extra slashes in the handled routes
-
-
 
 public  **setDefaultNamespace** (*mixed* $namespaceName)
 
 Sets the name of the default namespace
 
-
-
 public  **setDefaultModule** (*mixed* $moduleName)
 
 Sets the name of the default module
-
-
 
 public  **setDefaultController** (*mixed* $controllerName)
 
 Sets the default controller name
 
-
-
 public  **setDefaultAction** (*mixed* $actionName)
 
 Sets the default action name
-
-
 
 public  **setDefaults** (*array* $defaults)
 
@@ -139,13 +114,9 @@ $router->setDefaults(
 
 ```
 
-
-
 public  **getDefaults** ()
 
 Returns an array of default parameters
-
-
 
 public  **handle** ([*mixed* $uri])
 
@@ -162,8 +133,6 @@ $router->handle("/posts/edit/1");
 
 ```
 
-
-
 public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods], [*mixed* $position])
 
 Adds a route to the router without any HTTP constraint
@@ -179,155 +148,103 @@ $router->add("/about", "About::index", ["GET", "POST"], Router::POSITION_FIRST);
 
 ```
 
-
-
 public  **addGet** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is GET
-
-
 
 public  **addPost** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is POST
 
-
-
 public  **addPut** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is PUT
-
-
 
 public  **addPatch** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is PATCH
 
-
-
 public  **addDelete** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is DELETE
-
-
 
 public  **addOptions** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Add a route to the router that only match if the HTTP method is OPTIONS
 
-
-
 public  **addHead** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is HEAD
-
-
 
 public  **addPurge** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is PURGE (Squid and Varnish support)
 
-
-
 public  **addTrace** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is TRACE
-
-
 
 public  **addConnect** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is CONNECT
 
-
-
 public  **mount** ([Phalcon\Mvc\Router\GroupInterface](/en/3.1.2/api/Phalcon_Mvc_Router_GroupInterface) $group)
 
 Mounts a group of routes in the router
-
-
 
 public  **notFound** (*mixed* $paths)
 
 Set a group of paths to be returned when none of the defined routes are matched
 
-
-
 public  **clear** ()
 
 Removes all the pre-defined routes
-
-
 
 public  **getNamespaceName** ()
 
 Returns the processed namespace name
 
-
-
 public  **getModuleName** ()
 
 Returns the processed module name
-
-
 
 public  **getControllerName** ()
 
 Returns the processed controller name
 
-
-
 public  **getActionName** ()
 
 Returns the processed action name
-
-
 
 public  **getParams** ()
 
 Returns the processed parameters
 
-
-
 public  **getMatchedRoute** ()
 
 Returns the route that matches the handled URI
-
-
 
 public  **getMatches** ()
 
 Returns the sub expressions in the regular expression matched
 
-
-
 public  **wasMatched** ()
 
 Checks if the router matches any of the defined routes
-
-
 
 public  **getRoutes** ()
 
 Returns all the routes defined in the router
 
-
-
 public  **getRouteById** (*mixed* $id)
 
 Returns a route object by its id
-
-
 
 public  **getRouteByName** (*mixed* $name)
 
 Returns a route object by its name
 
-
-
 public  **isExactControllerName** ()
 
 Returns whether controller name should not be mangled
-
-
 

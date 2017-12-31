@@ -618,8 +618,6 @@ class SomeComponent
 
     protected $someFlag;
 
-
-
     public function __construct(Response $response, $someFlag)
     {
         $this->response = $response;
@@ -680,8 +678,6 @@ class SomeComponent
     protected $response;
 
     protected $someFlag;
-
-
 
     public function setResponse(Response $response)
     {
@@ -890,7 +886,6 @@ The following events are supported:
 | beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           | No                  | Listeners    |
 | afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. | No                  | Listeners    |
 
-
 <a name='shared-services'></a>
 ## Shared services
 Services can be registered as 'shared' services this means that they always will act as [singletons](http://en.wikipedia.org/wiki/Singleton_pattern). Once the service is resolved for the first time the same instance of it is returned every time a consumer retrieve the service from the container:
@@ -1020,7 +1015,6 @@ class MyClass implements InjectionAwareInterface
      * @var DiInterface
      */
     protected $di;
-
 
     public function setDi(DiInterface $di)
     {

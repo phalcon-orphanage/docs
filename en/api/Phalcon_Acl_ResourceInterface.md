@@ -7,14 +7,11 @@ abstract public  **getName** ()
 
 ...
 
-
 abstract public  **getDescription** ()
 
 ...
 
-
 abstract public  **__toString** ()
 
 ...
-
 

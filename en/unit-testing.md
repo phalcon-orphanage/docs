@@ -96,7 +96,6 @@ You can use the Incubator library by adding it as a dependency:
 composer require phalcon/incubator
 ```
 
-
 or by manually adding it to `composer.json`:
 
 ```json

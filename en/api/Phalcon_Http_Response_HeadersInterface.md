@@ -7,29 +7,23 @@ abstract public  **set** (*mixed* $name, *mixed* $value)
 
 ...
 
-
 abstract public  **get** (*mixed* $name)
 
 ...
-
 
 abstract public  **setRaw** (*mixed* $header)
 
 ...
 
-
 abstract public  **send** ()
 
 ...
-
 
 abstract public  **reset** ()
 
 ...
 
-
 abstract public static  **__set_state** (*array* $data)
 
 ...
-
 
