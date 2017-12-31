@@ -597,7 +597,7 @@ and finally in your code you will have something like this:
 <?php
 
 /**
- * Find the robots 
+ * Find the robots
  */
 $robots = Robots::find(
     [

@@ -1,48 +1,48 @@
-- [Главная](/[[language]]/[[version]]/introduction) 
+- [Главная](/[[language]]/[[version]]/introduction)
     - [Примечания к выпуску](https://github.com/phalcon/cphalcon/blob/3.1.x/CHANGELOG.md)
     - Обновление
     - [Спонсоры](/[[language]]/[[version]]/sponsors)
-- Содействие 
+- Содействие
     - [Введение](/[[language]]/[[version]]/contributions)
     - [Пулл реквесты](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Генерация трассировки выполнения](/[[language]]/[[version]]/generating-backtrace)
     - [Воспроизводимые тесты](/[[language]]/[[version]]/reproducible-tests)
     - Руководство по тестированию
-- Приступая к работе 
+- Приступая к работе
     - [Установка](/[[language]]/[[version]]/installation)
-    - [Настройка веб-сервера](/[[language]]/[[version]]/webserver-setup) 
+    - [Настройка веб-сервера](/[[language]]/[[version]]/webserver-setup)
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
-- Окружение 
+- Окружение
     - [Phalcon Compose](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box](/[[language]]/[[version]]/environments-vagrant)
-- Инструменты разработчика 
+- Инструменты разработчика
     - [Установка](/[[language]]/[[version]]/devtools-installation)
     - [Использование](/[[language]]/[[version]]/devtools-usage)
     - [Отладка](/[[language]]/[[version]]/debug)
-- Ядро 
-    - Application 
+- Ядро
+    - Application
         - [Полное](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
         - [CLI](/[[language]]/[[version]]/application-cli)
     - [DI контейнер](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
-- Сервисы 
+- Сервисы
     - [Кэш](/[[language]]/[[version]]/cache)
     - [Конфигурация](/[[language]]/[[version]]/config)
     - [Escaper](/[[language]]/[[version]]/escaper)
-    - [Автозагрузчик](/[[language]]/[[version]]/loader) 
+    - [Автозагрузчик](/[[language]]/[[version]]/loader)
         - [Пространства имён](/[[language]]/[[version]]/namespaces)
-    - [Журналирование](/[[language]]/[[version]]/logging) 
+    - [Журналирование](/[[language]]/[[version]]/logging)
         - [Адаптеры](/[[language]]/[[version]]/logging#usage)
     - [Очередь](/[[language]]/[[version]]/queue)
-- База данных 
+- База данных
     - [Слой](/[[language]]/[[version]]/db-layer)
     - [PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
-    - [Модели](/[[language]]/[[version]]/db-models) 
+    - [Модели](/[[language]]/[[version]]/db-models)
         - [Advanced](/[[language]]/[[version]]/db-models-advanced)
         - [Поведения](/[[language]]/[[version]]/db-models-behaviors)
         - [Кэш](/[[language]]/[[version]]/db-models-cache)
@@ -53,15 +53,15 @@
         - [Валидаторы](/[[language]]/[[version]]/db-models-validation)
     - [Миграции](/[[language]]/[[version]]/db-migrations)
     - [Разбивка на страницы](/[[language]]/[[version]]/db-pagination)
-- Фронтенд 
+- Фронтенд
     - [Медиа-ресурсы](/[[language]]/[[version]]/assets)
     - [Всплывающие сообщения](/[[language]]/[[version]]/flash)
     - [Формы](/[[language]]/[[version]]/forms)
     - [Изображения](/[[language]]/[[version]]/image)
     - [Теги](/[[language]]/[[version]]/tag)
-    - [Представления](/[[language]]/[[version]]/views) 
+    - [Представления](/[[language]]/[[version]]/views)
         - [Volt](/[[language]]/[[version]]/volt)
-- Бизнес-логика 
+- Бизнес-логика
     - [Контроль доступа](/[[language]]/[[version]]/acl)
     - [Аннотации](/[[language]]/[[version]]/annotations)
     - [Контроллеры](/[[language]]/[[version]]/controllers)
@@ -72,17 +72,17 @@
     - [Сессии](/[[language]]/[[version]]/session)
     - [URL](/[[language]]/[[version]]/url)
     - [Валидация](/[[language]]/[[version]]/validation)
-- HTTP 
+- HTTP
     - [Cookies](/[[language]]/[[version]]/cookies)
     - [Request](/[[language]]/[[version]]/request)
     - [Response](/[[language]]/[[version]]/response)
-- Безопасность 
+- Безопасность
     - [Шифрование](/[[language]]/[[version]]/crypt)
     - [Защита](/[[language]]/[[version]]/security)
-- i18n 
+- i18n
     - [Интернационализация](/[[language]]/[[version]]/i18n)
     - [Перевод](/[[language]]/[[version]]/translate)
-- Уроки 
+- Уроки
     - [Производительность](/[[language]]/[[version]]/performance)
     - [Основы](/[[language]]/[[version]]/tutorial-base)
     - [Invo](/[[language]]/[[version]]/tutorial-invo)

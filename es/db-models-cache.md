@@ -66,7 +66,7 @@ $di->set(
             ]
         );
 
-        // Configuración de conexión a Memcached 
+        // Configuración de conexión a Memcached
         $cache = new BackendMemcache(
             $frontCache,
             [

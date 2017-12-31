@@ -279,7 +279,7 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Captura consultas GET 
+// Captura consultas GET
 $app->get(
     '/orders/display/{name}',
     function ($name) {
@@ -1307,7 +1307,7 @@ $app->before(
 
             $app['response']->redirect('/error');
 
-            // Retornamos false para detener la ejecución 
+            // Retornamos false para detener la ejecución
             return false;
         }
 

@@ -110,9 +110,9 @@ $logger->log(
 
 // You can also pass context parameters like this
 $logger->log(
-    'This is a {message}', 
-    [ 
-        'message' => 'parameter' 
+    'This is a {message}',
+    [
+        'message' => 'parameter'
     ]
 );
 ```

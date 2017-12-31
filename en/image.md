@@ -36,7 +36,7 @@ This component makes use of adapters to encapsulate specific image manipulator p
 <a name='adapters-factory'></a>
 ### Factory
 Loads an Image Adapter class using `adapter` option.
- 
+
 ```php
 <?php
 

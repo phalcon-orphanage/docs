@@ -390,7 +390,7 @@ class SomeComponent
     public function someDbTask()
     {
         // Obtiene el servicio de conexión
-        // Siempre devuelve una conexión nueva 
+        // Siempre devuelve una conexión nueva
         $connection = $this->di->get('db');
     }
 
@@ -868,53 +868,53 @@ Los tipos de parámetros soportados son los siguientes:
     <th>
       Tipo
     </th>
-    
+
     <th>
       Descripción
     </th>
-    
+
     <th>
       Ejemplo
     </th>
   </tr>
-  
+
   <tr>
     <td>
       parameter
     </td>
-    
+
     <td>
       Representa un valor literal que se pasa como parámetro
     </td>
-    
+
     <td>
       <pre><code>php['type' =&gt; 'parameter', 'value' =&gt; 1234]</code></pre>
     </td>
   </tr>
-  
+
   <tr>
     <td>
       service
     </td>
-    
+
     <td>
       Representa otro servicio en el contenedor de servicio
     </td>
-    
+
     <td>
       <pre><code>php['type' =&gt; 'service', 'name' =&gt; 'request']</code></pre>
     </td>
   </tr>
-  
+
   <tr>
     <td>
       instance
     </td>
-    
+
     <td>
       Representa un objeto que debe ser construido de forma dinámica
     </td>
-    
+
     <td>
       <pre><code>php['type' =&gt; 'instance', 'className' =&gt; 'DateTime', 'arguments' =&gt; ['now']]</code></pre>
     </td>

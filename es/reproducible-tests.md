@@ -100,7 +100,7 @@ $app->setDi($di);
 
 class IndexController extends Phalcon\Mvc\Controller
 {
-    public function indexAction() { 
+    public function indexAction() {
           /* Tú contenido aquí */
     }
 }
@@ -188,7 +188,7 @@ class User extends \Phalcon\Mvc\Model
         if ($newUser->save() == false) {
             return false;
         }
-        return $newUser->id;        
+        return $newUser->id;
     }
 }
 

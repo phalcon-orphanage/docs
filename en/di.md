@@ -792,7 +792,7 @@ $di->set(
 Supported parameter types include the following:
 
 | Type      | Description                                          | Example                                                                            |
-| --------- | ---------------------------------------------------- |----------------------------------------------------------------------------------- | 
+| --------- | ---------------------------------------------------- |----------------------------------------------------------------------------------- |
 | parameter | Represents a literal value to be passed as parameter | ```php['type' => 'parameter', 'value' => 1234]```                                  |
 | service   | Represents another service in the service container  | ```php['type' => 'service', 'name' => 'request']```                                |
 | instance  | Represents an object that must be built dynamically  | ```php['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]``` |

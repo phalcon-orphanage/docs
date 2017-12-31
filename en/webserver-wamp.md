@@ -3,7 +3,7 @@
 - [Overview](#overview)
     - [Download the right version of Phalcon](#phalcon)
     - [Related](#related)
-    
+
 </div>
 
 <a name='overview'></a>
@@ -27,7 +27,7 @@ Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is install
 ![](/images/content/webserver-wamp-1.png)
 
 Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
- 
+
  ```ini
  extension=php_phalcon.dll
 ```
@@ -36,10 +36,10 @@ and save it.
 
 ![](/images/content/webserver-wamp-2.png)
 
-Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file: 
+Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file:
 
 ```ini
-extension=php_phalcon.dll 
+extension=php_phalcon.dll
 ```
 
 and save it.

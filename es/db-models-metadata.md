@@ -186,7 +186,7 @@ use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
 use Phalcon\Mvc\Model\MetaData\Strategy\Annotations as StrategyAnnotations;
 
 $di['modelsMetadata'] = function () {
-    // Instancia del adaptador de metadata 
+    // Instancia del adaptador de metadata
     $metadata = new ApcMetaData(
         [
             'lifetime' => 86400,

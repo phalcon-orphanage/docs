@@ -1403,7 +1403,7 @@ $eventsManager = new Manager();
 $application   = new Micro();
 
 /**
- * Прикрепляем middleware к менеджеру событий и приложению 
+ * Прикрепляем middleware к менеджеру событий и приложению
 */
 $eventsManager->attach('micro', new CacheMiddleware());
 $application->before(new CacheMiddleware());

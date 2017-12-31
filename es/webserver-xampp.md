@@ -71,9 +71,9 @@ Si ves la versión de phalcon en la pagina `phpinfo()`, ¡Felicidades!, ahora es
 El siguiente video tutorial es una guía paso a paso para instalar Phalcon en Windows:
 
 <div align="center">
-  <iframe src="https://player.vimeo.com/video/40265988" 
-          width="500" 
-          height="266" 
+  <iframe src="https://player.vimeo.com/video/40265988"
+          width="500"
+          height="266"
           frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
   </iframe>
 </div>

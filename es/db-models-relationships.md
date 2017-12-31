@@ -292,7 +292,7 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst(2);
 
-// El modelo Robots tiene una relación 1-n (hasMany) con RobotsParts 
+// El modelo Robots tiene una relación 1-n (hasMany) con RobotsParts
 $robotsParts = $robot->robotsParts;
 
 // Solo Parts que coinciden con las condiciones

@@ -143,7 +143,7 @@ $loader->registerDirs(
 // Registrar el autocargador
 $loader->register();
 
-// La clase requerida incluirá automáticamente el archivo 
+// La clase requerida incluirá automáticamente el archivo
 // desde el primer directorio donde sea encontrado
 // por ejemplo: library/OtherComponent/Other/Some.php
 $some = new \Some();

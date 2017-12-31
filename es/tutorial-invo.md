@@ -328,7 +328,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
 // ...
 
-// La conexión a la base de datos es creada basada en los 
+// La conexión a la base de datos es creada basada en los
 // parámetros de configuración del archivo de configuración
 $di->set(
     'db',

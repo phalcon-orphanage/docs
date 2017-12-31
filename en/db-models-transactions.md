@@ -4,7 +4,7 @@
     - [Manual Transactions](#manual)
     - [Implicit Transactions](#implicit)
     - [Isolated Transactions](#isolated)
-    
+
 </div>
 
 <a name='overview'></a>

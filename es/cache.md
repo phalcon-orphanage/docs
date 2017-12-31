@@ -131,7 +131,7 @@ $frontCache = new FrontData(
 );
 
 // Crear el componente que realiza el cache desde la salida 'Output' a un archivo 'File' de backend
-// Establece el directorio del archivo de cache - es importante mantener la '/' al final 
+// Establece el directorio del archivo de cache - es importante mantener la '/' al final
 // del valor 'cacheDir'
 $cache = new BackFile(
     $frontCache,
@@ -190,7 +190,7 @@ $frontCache = new FrontOutput(
 );
 
 // Crear el componenta que almacena la salida 'Output' en un archivo 'File' en el backend
-// Establecer el directorio de cacheo - es importante mantener la barra '/' al final 
+// Establecer el directorio de cacheo - es importante mantener la barra '/' al final
 // del valor cacheDir
 $cache = new BackFile(
     $frontCache,
