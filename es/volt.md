@@ -662,18 +662,18 @@ Una alternativa a la instrucción `if` es `switch`, que le permite crear caminos
     {% case 0 %}
     {% case 1 %}
     {% case 2 %}
-        "foo" is less than 3 but not negative
+        "foo" es menor que 3 pero no es negativo
         {% break %}
     {% case 3 %}
-        "foo" is 3
+        "foo" es 3
         {% break %}
     {% default %}
-        "foo" is {{ foo }}
+        "foo" es {{ foo }}
 {% endswitch %}
 
 ```
 
-The `switch` statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any output (including whitespace) between a switch statement and the first `case` will result in a syntax error. Por lo tanto pueden borrar los espacios en blanco y líneas vacías para reducir el número de errores. Para más información visite [sintaxis alternativa de estructuras de control](http://php.net/control-structures.alternative-syntax).
+La sentencia `switch` ejecuta instrucción por instrucción, por lo tanto es necesario en algunos casos la instrucción `break`. Cualquier salida (incluyendo espacios en blanco) entre una instrucción switch y el primer `case` dará lugar a un error de sintaxis. Por lo tanto pueden borrar los espacios en blanco y líneas vacías para reducir el número de errores. Para más información visite [sintaxis alternativa de estructuras de control](http://php.net/control-structures.alternative-syntax).
 
 #### `case` sin `switch`
 
@@ -707,7 +707,7 @@ No devolverá un error ya que `default` es una palabra reservada para filtros co
 {% endswitch %}
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
+Lanzará un `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
 
 #### un `switch` sin expresión
 
@@ -718,7 +718,7 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch de
 {% endswitch %}
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ...`
+Lanzará un `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ...`
 
 <a name='control-structures-loop'></a>
 
