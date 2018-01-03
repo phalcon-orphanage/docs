@@ -305,7 +305,7 @@ As you can see, the bootstrap file is very short and we do not need to include a
 
 ## Creating a Controller
 
-By default Phalcon will look for a controller named **IndexController**. It is the starting point when no controller or action has been added in the request. (eg. http://localhost:8000/) An **IndexController** and its **IndexAction** should resemble the following example:
+By default Phalcon will look for a controller named **IndexController**. It is the starting point when no controller or action has been added in the request. (np. http://localhost:8000/) An **IndexController** and its **IndexAction** should resemble the following example:
 
 **app/controllers/IndexController.php**
 

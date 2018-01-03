@@ -681,7 +681,7 @@ class Robots extends Collection
 }
 ```
 
-El ejemplo anterior realiza una validación con el validador integrado `InclusionIn`. Comprueba el valor del campo `type` en una lista de dominios. Si el valor no está incluido en el método, entonces el validador fallará y devolverá `false`.
+The example above performs a validation using the built-in validator `InclusionIn`. It checks that the value of the field `type` is in a `domain` list. If the value is not included in the list, then the validator will fail and return `false`.
 
 <div class='alert alert-warning'>
     <p>

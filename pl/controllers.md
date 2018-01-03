@@ -211,7 +211,7 @@ class PostsController extends Controller
 
 <div class="alert alert-warning">
     <p>
-       The <code>initialize()</code> method is only called if the <code>beforeExecuteRoute</code> event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.
+       Metoda <code>initialize()</code> jest wywołana tylko wtedy, gdy zdarzenie <code>beforeExecuteRoute</code> zostało wykonane z powodzeniem. To powoduje, że logika aplikacji podczas inicjowania nie może zostać wykonana bez autoryzacji.
     </p>
 </div>
 
@@ -233,7 +233,7 @@ class PostsController extends Controller
 
 <div class='alert alert-warning'>
     <p>
-        Be aware that <code>onConstruct()</code> method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).
+        Zwróć szczególną uwagę na to, że metoda <code>onConstruct()</code> jest wykonywana nawet wtedy, gdy akcja do realizacji nie istnieje w kontrolerze lub gdy użytkownik nie ma do niej dostępu (odnosząc się do niestandardowej kontroli dostępu dostarczonej przez Dewelopera).
     </p>
 </div>
 

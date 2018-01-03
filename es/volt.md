@@ -28,6 +28,14 @@
             </li>
             <li>
               <a href="#control-structures-loops">Controles de bucle</a>
+              <ul>
+                <li>
+                  <a href="#loop-controls-if">If</a>
+                </li>
+                <li>
+                  <a href="#loop-controls-switch">Switch</a>
+                </li>
+              </ul>
             </li>
             <li>
               <a href="#control-structures-loop">Contexto de bucle</a> 
@@ -261,13 +269,13 @@ Las siguientes opciones están disponibles en Volt:
 
 | Opción              | Descripción                                                                                                                            | Predeterminado |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
-| `compiledPath`      | Un ruta con permisos de escritura donde se puede almacenar las plantillas PHP compiladas                                               | `./`           |
-| `compiledExtension` | Una extensión adicional anexada al archivo PHP compilado                                                                               | `.php`         |
-| `compiledSeparator` | Volt reemplaza los separadores de directorio / y \ por este separador con el fin de crear un único archivo en el directorio compilado | `%%`           |
-| `stat`              | Si Phalcon debe verificar si existen diferencias entre el archivo de plantilla y su ruta compilada                                     | `true`         |
-| `compileAlways`     | Volt de compilar las plantillas en cada solicitud o sólo cuando hubo un cambio en ellas                                                | `false`        |
-| `prefix`            | Permite anteponer un prefijo a las plantillas en la ruta de compilación                                                                | `null`         |
 | `autoescape`        | Habilita a nivel global el autoescape de HTML                                                                                          | `false`        |
+| `compileAlways`     | Volt de compilar las plantillas en cada solicitud o sólo cuando hubo un cambio en ellas                                                | `false`        |
+| `compiledExtension` | Una extensión adicional anexada al archivo PHP compilado                                                                               | `.php`         |
+| `compiledPath`      | Un ruta con permisos de escritura donde se puede almacenar las plantillas PHP compiladas                                               | `./`           |
+| `compiledSeparator` | Volt reemplaza los separadores de directorio / y \ por este separador con el fin de crear un único archivo en el directorio compilado | `%%`           |
+| `prefix`            | Permite anteponer un prefijo a las plantillas en la ruta de compilación                                                                | `null`         |
+| `stat`              | Si Phalcon debe verificar si existen diferencias entre el archivo de plantilla y su ruta compilada                                     | `true`         |
 
 La ruta de compilación se genera según las opciones anteriores, si el desarrollador quiere libertad total para definir la ruta de compilación, una función anónima puede utilizarse para generarlas, esta función recibe la ruta relativa de acceso a la plantilla al directorio de las vistas. Los ejemplos siguientes muestran cómo cambiar dinámicamente la ruta de compilación:
 
@@ -599,7 +607,7 @@ Las declaraciones de `break` y `continue` pueden utilizarse para salir de un buc
 {% endfor %}
 ```
 
-<a name='control-structures-if'></a>
+<a name='loop-controls-if'></a>
 
 ### If
 
@@ -642,6 +650,75 @@ También puede utilizar la estructura de flujo de control `elseif` para emular u
     El Robot es mecánico
 {% endif %}
 ```
+
+<a name='loop-controls-switch'></a>
+
+### Switch
+
+Una alternativa a la instrucción `if` es `switch`, que le permite crear caminos de ejecución lógica en su aplicación:
+
+```twig
+{% switch foo %}
+    {% case 0 %}
+    {% case 1 %}
+    {% case 2 %}
+        "foo" es menor que 3 pero no es negativo
+        {% break %}
+    {% case 3 %}
+        "foo" es 3
+        {% break %}
+    {% default %}
+        "foo" es {{ foo }}
+{% endswitch %}
+
+```
+
+La sentencia `switch` ejecuta instrucción por instrucción, por lo tanto es necesario en algunos casos la instrucción `break`. Cualquier salida (incluyendo espacios en blanco) entre una instrucción switch y el primer `case` dará lugar a un error de sintaxis. Por lo tanto pueden borrar los espacios en blanco y líneas vacías para reducir el número de errores. Para más información visite [sintaxis alternativa de estructuras de control](http://php.net/control-structures.alternative-syntax).
+
+#### `case` sin `switch`
+
+```twig
+{% case EXPRESSION %}
+```
+
+Lanzará un `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
+
+#### `switch` sin `endswitch`
+
+```twig
+{% switch EXPRESSION %}
+Lanzará un `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected EOF in ..., there is a 'switch' block without 'endswitch'`.
+```
+
+#### `default` sin `switch`
+
+```twig
+{% default %}
+```
+
+No devolverá un error ya que `default` es una palabra reservada para filtros como `{{expresión|default(VALUE)}}` pero en este caso la expresión sólo producirá un carácter vacío, osea un ''.
+
+#### `switch` anidados
+
+```twig
+{% switch EXPRESSION %}
+  {% switch EXPRESSION %}
+  {% endswitch %}
+{% endswitch %}
+```
+
+Lanzará un `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
+
+#### un `switch` sin expresión
+
+```twig
+{% switch %}
+  {% case EXPRESSION %}
+      {% break %}
+{% endswitch %}
+```
+
+Lanzará un `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ...`
 
 <a name='control-structures-loop'></a>
 

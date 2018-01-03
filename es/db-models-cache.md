@@ -581,6 +581,18 @@ class CustomQueryBuilder extends QueryBuilder
 
         $query->setDI($this->getDI());
 
+        if ( is_array($this->_bindParams) ) {
+            $query->setBindParams($this->_bindParams);
+        }
+
+        if ( is_array($this->_bindTypes) ) {
+            $query->setBindTypes($this->_bindTypes);
+        }
+
+        if ( is_array($this->_sharedLock) ) {
+            $query->setSharedLock($this->_sharedLock);
+        }
+
         return $query;
     }
 }
@@ -596,37 +608,46 @@ use Phalcon\Mvc\Model\Query as ModelQuery;
 class CustomQuery extends ModelQuery
 {
     /**
-     * El método execute es sobrecargado
+     * The execute method is overridden
      */
     public function execute($params = null, $types = null)
     {
-        // Analizamos el intermediate representation del SELECT
+        // Parse the intermediate representation for the SELECT
         $ir = $this->parse();
 
-        // Chequeamos si la consulta tiene condiciones
+        if ( is_array($this->_bindParams) ) {
+            $params = array_merge($this->_bindParams, (array)$params);
+        }
+
+        if ( is_array($this->_bindTypes) ) {
+            $types = array_merge($this->_bindTypes, (array)$types);
+        }
+
+        // Check if the query has conditions
         if (isset($ir['where'])) {
-            // Las condiciones pueden tener un orden
-            // Necesitamos chequear el árbol de condiciones
-            // para encontrar la información que estamos buscando
+            // The fields in the conditions can have any order
+            // We need to recursively check the conditions tree
+            // to find the info we're looking for
             $visitor = new CustomNodeVisitor();
 
-            // Visitamos los nodos recursivamente
+            // Recursively visits the nodes
             $visitor->visit($ir['where']);
 
             $initial = $visitor->getInitial();
             $final   = $visitor->getFinal();
 
-            // Seleccionamos el cache acorde al rango
+            // Select the cache according to the range
             // ...
 
             // Chequeamos si el cache tiene datos
             // ...
         }
 
-        // Ejecutamos la consulta
+        // Execute the query
         $result = $this->_executeSelect($ir, $params, $types);
+        $result = $this->_uniqueRow ? $result->getFirst() : $result;
 
-        // Cache el resultado
+        // Cache the result
         // ...
 
         return $result;
