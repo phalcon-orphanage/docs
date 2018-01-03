@@ -5,6 +5,4 @@
 ## Methods
 abstract public  **getResourceName** ()
 
-...
-
-
+Returns resource name
