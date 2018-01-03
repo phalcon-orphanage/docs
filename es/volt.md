@@ -410,13 +410,13 @@ La siguiente lista contiene los filtros disponibles incorporados en Volt:
 | `lower`            | Cambiar una cadena a minúsculas                                                                                                                   |
 | `nl2br`            | Cambia los saltos de línea `\n` por saltos de línea (`<br/>`). Utiliza la función PHP [nl2br](http://php.net/manual/en/function.nl2br.php) |
 | `right_trim`       | Se aplica la función [rtrim](http://php.net/manual/en/function.rtrim.php) PHP al valor. Quitar espacios extras a la derecha                       |
-| `slashes`          | Applies the [slashes](http://php.net/manual/en/function.slashes.php) PHP function to the value. Escaping values                                   |
-| `sort`             | Sorts an array using the PHP function [asort](http://php.net/manual/en/function.asort.php)                                                        |
-| `stripslashes`     | Applies the [stripslashes](http://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes                 |
-| `striptags`        | Applies the [striptags](http://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags                            |
-| `trim`             | Applies the [trim](http://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                                   |
-| `upper`            | Change the case of a string to uppercase                                                                                                          |
-| `url_encode`       | Applies the [urlencode](http://php.net/manual/en/function.urlencode.php) PHP function to the value                                                |
+| `slashes`          | Se aplica la función [slashes](http://php.net/manual/en/function.slashes.php) PHP al valor. Escapando los valores                                 |
+| `sort`             | Ordena una matriz mediante la función PHP [asort](http://php.net/manual/en/function.asort.php)                                                    |
+| `stripslashes`     | Se aplica la función [stripslashes](http://php.net/manual/en/function.stripslashes.php) PHP al valor. Eliminando las comillas escapadas           |
+| `striptags`        | Se aplica la función PHP [striptags](http://php.net/manual/en/function.striptags.php) al valor. Elimina etiquetas HTML                            |
+| `trim`             | Se aplica la función PHP [trim](http://php.net/manual/en/function.trim.php) el valor. Quitar espacios extras al principio y al final              |
+| `upper`            | Cambiar una cadena a mayúsculas                                                                                                                   |
+| `url_encode`       | Se aplica la función [urlencode](http://php.net/manual/en/function.urlencode.php) PHP al valor                                                    |
 
 Ejemplos:
 
@@ -1127,14 +1127,14 @@ Una vista parcial es incluida en tiempo de ejecución, Volt proporciona también
 
 Tenga los siguientes puntos en cuenta al elegir utilizar la función `partial` o `include`:
 
-- `partial` allows you to include templates made in Volt and in other template engines as well
-- `partial` allows you to pass an expression like a variable allowing to include the content of other view dynamically
-- `partial` is better if the content that you have to include changes frequently
+- `partial` permite incluir plantillas en Volt, igual que en otros motores de plantillas
+- `partial` permite pasar de una expresión como una variable permitiendo incluir el contenido de otra vista dinámicamente
+- `partial` es mejor si el contenido que usted tiene que incluir cambia con frecuencia
 
-- `include` copies the compiled content into the view which improves the performance
+- `include` copia el contenido compilado en la vista, mejorando el rendimiento
 
-- `include` only allows to include templates made with Volt
-- `include` requires an existing template at compile time
+- `include` solo permite incluir plantillas hechas en Volt
+- `include` requiere una plantilla existente en tiempo de ejecución
 
 <a name='template-inheritance'></a>
 
@@ -1278,7 +1278,7 @@ El renderizado de `index.volt` producirá:
 
 Tenga en cuenta la llamada a la función `super()`. Con esa función es posible representar los contenidos del bloque padre. Al igual que en las vistas parciales, la ruta para definir una herencia con `extends` es una ruta de acceso relativa del directorio actual de las vistas (es decir, `app/views/`).
 
-<h5 class='alert alert-warning'>By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option <code>'compileAlways' =&gt; true</code>. Por lo tanto, las plantillas se compilan siempre teniendo en cuenta los cambios en las plantillas padre. </h5>
+<h5 class='alert alert-warning'>Por defecto y por motivos de rendimiento, Volt sólo comprueba cambios en las plantillas hijas para saber cuándo debe volver a compilar y generar PHP plano otra vez, por lo que es recomendable inicializar Volt con la opción de <code>'compileAlways' =&gt; true</code>. Por lo tanto, las plantillas se compilan siempre teniendo en cuenta los cambios en las plantillas padre. </h5>
 
 <a name='autoescape'></a>
 
@@ -1449,12 +1449,12 @@ La clase anterior implementa el método `compileFunction` que se invoca antes de
 
 Los siguientes eventos de compilación están disponibles para ser implementados en extensiones:
 
-| Event/Method        | Descripción                                                                                            |
-| ------------------- | ------------------------------------------------------------------------------------------------------ |
-| `compileFunction`   | Triggered before trying to compile any function call in a template                                     |
-| `compileFilter`     | Triggered before trying to compile any filter call in a template                                       |
-| `resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators     |
-| `compileStatement`  | Triggered before trying to compile any expression. This allows the developer to override any statement |
+| Método/Evento       | Descripción                                                                                                               |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `compileFunction`   | Es activado antes de intentar compilar cualquier llamada a una función en una plantilla                                   |
+| `compileFilter`     | Es activado antes de intentar compilar cualquier llamada a un filtro en una plantilla                                     |
+| `resolveExpression` | Es activado antes de intentar compilar cualquier expresión. Esto permite al desarrollador redefinir los operadores        |
+| `compileStatement`  | Es activado antes de intentar compilar cualquier expresión. Esto permite al desarrollador redefinir cualquier declaración |
 
 Las extensiones de Volt deben estar registradas en el compilador, estando a disposición en tiempo de compilación:
 
@@ -1559,8 +1559,8 @@ require $compiler->getCompiledTemplatePath();
 
 ## Recursos externos
 
-- A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
-- [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)
-- [Our website](https://phalconphp.com) is running using Volt as template engine, [Github](https://github.com/phalcon/website)
-- [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [Github](https://github.com/phalcon/forum)
-- [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [Github](https://github.com/phalcon/vokuro)
+- Un paquete para Sublime/Textmate está disponible [aquí](https://github.com/phalcon/volt-sublime-textmate)
+- [Álbum-O-Rama](https://album-o-rama.phalconphp.com) es una aplicación de ejemplo que usa Volt como motor de la plantilla, [código fuente en Github](https://github.com/phalcon/album-o-rama)
+- [Nuestro sitio web](https://phalconphp.com) se ejecuta usando Volt como motor de la plantilla, [código fuente en Github](https://github.com/phalcon/website)
+- [Phosphorum](https://forum.phalconphp.com), el foro de Phalcon, también utiliza Volt, [código fuente en Github](https://github.com/phalcon/forum)
+- [Vökuró](https://vokuro.phalconphp.com), es otra aplicación de ejemplo que utiliza Volt, [ódigo de ejemplo en Github](https://github.com/phalcon/vokuro)
