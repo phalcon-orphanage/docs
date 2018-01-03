@@ -787,7 +787,7 @@ class Robots extends Collection
 
 ## Configuración de Múltiples Bases de Datos
 
-In Phalcon, all models can share the same database connection or specify a connection per model. Actualmente, cuando `Phalcon\Mvc\Collection` necesita conectarse a la base de datos pide el servicio `mongo` al contenedor de servicios de la aplicación. You can overwrite this service by setting it in the `initialize()` method:
+En Phalcon, todos los modelos pueden pertenecer a la misma conexión de base de datos o tener una individual. Actualmente, cuando `Phalcon\Mvc\Collection` necesita conectarse a la base de datos pide el servicio `mongo` al contenedor de servicios de la aplicación. Usted puede sobrescribir este servicio configurándolo en el método `initialize()`:
 
 ```php
 <?php
