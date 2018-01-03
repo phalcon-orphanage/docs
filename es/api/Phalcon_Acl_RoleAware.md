@@ -1,8 +1,8 @@
-# Interface **Phalcon\\Acl\\RoleAware**
+# Interfaz **Phalcon\\Acl\\RoleAware**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/roleaware.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/roleaware.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-## Methods
+## Métodos
 
 abstract public **getRoleName** ()
 
