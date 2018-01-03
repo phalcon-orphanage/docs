@@ -599,7 +599,9 @@ class Companies extends Model
 Además, puede utilizar el segundo parámetro de `getRelated()` al acceder a la relación desde el objeto modelo para filtrar u ordenar la relación:
 
 ```php
-<br />// Facturas impagas
+<?php
+
+// Unpaid Invoices
 $company = Companies::findFirst(
     [
         'conditions' => 'id = :id:',
@@ -615,7 +617,7 @@ $unpaidInvoices = $company->getRelated(
     ['conditions' => "inv_status = 'paid'"]
 );
 
-// Ordenadas
+// Also ordered
 $unpaidInvoices = $company->getRelated(
     'Invoices', 
     [
