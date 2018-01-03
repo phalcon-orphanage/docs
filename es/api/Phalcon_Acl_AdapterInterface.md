@@ -1,8 +1,8 @@
-# Interface **Phalcon\\Acl\\AdapterInterface**
+# Interfaz **Phalcon\\Acl\\AdapterInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapterinterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-## Methods
+## Métodos
 
 abstract public **setDefaultAction** (*mixed* $defaultAccess)
 
