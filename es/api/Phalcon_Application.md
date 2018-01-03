@@ -12,6 +12,8 @@ Clase base para Phalcon\\Cli\\Console y Phalcon\\Mvc\\Application.
 
 public **__construct** ([[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector])
 
+Phalcon\\Application Constructor
+
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Establece el gestor de eventos
@@ -70,6 +72,6 @@ public **getDI** () heredado de [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_I
 
 Devuelve el inyector de dependencias interno
 
-public **__get** (*mixed* $propertyName) heredado de [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public **__get** (*string* $propertyName) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
 
 Método mágico __get
