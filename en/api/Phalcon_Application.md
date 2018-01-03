@@ -12,7 +12,7 @@ Base class for Phalcon\\Cli\\Console and Phalcon\\Mvc\\Application.
 ## Methods
 public  **__construct** ([[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector])
 
-
+Phalcon\\Application Constructor
 
 
 
@@ -94,7 +94,7 @@ Returns the internal dependency injector
 
 
 
-public  **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public  **__get** (*string* $propertyName) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
 
 Magic method __get
 
