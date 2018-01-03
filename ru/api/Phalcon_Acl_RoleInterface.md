@@ -6,12 +6,12 @@
 
 abstract public **getName** ()
 
-...
+Returns the role name
 
 abstract public **getDescription** ()
 
-...
+Returns role description
 
 abstract public **__toString** ()
 
-...
+Magic method __toString
