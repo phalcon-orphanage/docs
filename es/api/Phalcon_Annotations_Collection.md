@@ -56,14 +56,14 @@ public **getAnnotations** ()
 
 Devuelve las anotaciones internas como un arreglo
 
-public **get** (*mixed* $name)
+public **get** (*string* $name)
 
 Devuelve la primera anotación que coincide con un nombre
 
-public **getAll** (*mixed* $name)
+public **getAll** (*string* $name)
 
 Devuelve todas las anotaciones que coinciden con un nombre
 
-public **has** (*mixed* $name)
+public **has** (*string* $name)
 
 Comprobar si existe una anotación en una colección
