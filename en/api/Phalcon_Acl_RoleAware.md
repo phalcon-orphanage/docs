@@ -5,6 +5,4 @@
 ## Methods
 abstract public  **getRoleName** ()
 
-...
-
-
+Returns role name
