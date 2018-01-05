@@ -1000,6 +1000,12 @@ $di->loadFromYaml('services.yml');
 $di->get('config'); // Se obtendrá el servicio config
 ```
 
+<div class="alert alert-danger">
+    <p>
+        Este enfoque requiere que sea instalado el módulo Yaml. Para obtener más información <a href="http://php.net/manual/book.yaml.php">documentación oficial</a>.
+    </p>
+</div>
+
 <a name='resolving-services'></a>
 
 ## Resolviendo Servicios
