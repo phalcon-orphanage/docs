@@ -60,7 +60,7 @@ print_r(
 
 
 
-public [Phalcon\Db\ReferenceInterface](/en/3.2/api/Phalcon_Db_ReferenceInterface[]) **describeReferences** (*string* $table, [*string* $schema])
+public [Phalcon\Db\ReferenceInterface](/en/3.2/api/Phalcon_Db_ReferenceInterface) **describeReferences** (*string* $table, [*string* $schema])
 
 Lists table references
 
