@@ -68,7 +68,7 @@ Escribir y mantener código HTML pueden convertirse rápidamente en una tarea te
 
 Este componente puede utilizarse en una vista HTML + PHP o en una plantilla de [Volt](/[[language]]/[[version]]/volt).
 
-<h5 class='alert alert-warning'>This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the <code>Phalcon\Tag</code> page in the API for a complete reference. </h5>
+<h5 class='alert alert-warning'>Esta guía no pretende ser una documentación completa de los ayudantes disponibles y sus argumentos. Por favor visita la página <code>Phalcon\Tag</code> en la API para una referencia completa. </h5>
 
 <a name='document-type'></a>
 
