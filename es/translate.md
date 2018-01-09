@@ -96,7 +96,7 @@ $messages = [
 
 Implementar el mecanismo de traducción en tu aplicación es trivial pero depende de cómo desees aplicarlo. Puedes utilizar la detección automática de idioma desde el navegador del usuario o puede proporcionar una página de configuración donde el usuario puede seleccionar su idioma.
 
-Una forma sencilla de detectar el idioma del usuario es analizando el contenido de `$_SERVER['HTTP_ACCEPT_LANGUAGE']`, o si lo deseas, acceder a él directamente llamando al método `$this->request->getBestLanguage()` desde un controlador/acción:
+Una forma sencilla de detectar el idioma del usuario es analizando el contenido de `$_SERVER['HTTP_ACCEPT_LANGUAGE']`, o si lo deseas, acceder a él directamente llamando al método `$this->request->getBestLanguage()` de una accion/controlador:
 
 ```php
 <?php
@@ -118,7 +118,7 @@ class UserController extends Controller
         if (file_exists($translationFile)) {
             require $translationFile;
         } else {
-            // Regresar valores predeterminados
+            // Regresar valores por defecto
             require 'app/messages/en.php';
         }
 
@@ -155,7 +155,7 @@ El método `_()` devuelve la cadena traducida basada en el índice pasado. Algun
 <p><?php echo $t->_('hi-name', ['name' => $name]); ?></p>
 ```
 
-Algunas aplicaciones implementan el soporte multilingüe en la URL como `http://www.mozilla.org/**es-ES**/firefox/`. Phalcon puede implementar esto mediante un [Router](/[[language]]/[[version]]/routing).
+Algunas aplicaciones aplicación el soporte multilingüe en la URL como `http://www.mozilla.org/**es-ES**/firefox/`. Phalcon puede implementar esto mediante un [Router](/[[language]]/[[version]]/routing).
 
 La implementación anterior es útil pero requiere un controlador base para implementar `_getTranslation()` y devolver el componente `Phalcon\Translate\Adapter\NativeArray`. Además el componente necesita ser agregado a la vista como se ve arriba, en la variable `$t`.
 
@@ -273,4 +273,4 @@ class MyTranslateAdapter implements AdapterInterface
 }
 ```
 
-Hay disponibles más adaptadores para estos componentes en la [Incubadora de Phalcon](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter)
+Hay disponibles mas adaptadores para estos componentes en la [Incubadora de Phalcon](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter)
