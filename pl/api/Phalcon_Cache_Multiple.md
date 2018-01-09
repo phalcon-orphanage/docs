@@ -65,7 +65,7 @@ $cache->save("my-key", $data);
 
 ## Metody
 
-public **__construct** ([[Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface[]) $backends])
+public **__construct** ([[Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface) $backends])
 
 Phalcon\\Cache\\Multiple constructor
 
