@@ -54,7 +54,7 @@ Phalcon является проектом с открытым кодом и си
 
 <div class="alert alert-warning">
     <p>
-       На GitHub, мы принимаем только сообщения об ошибках, предложения и запросы на принятие изменений. Для вопросов относительно использования фреймворка или поддержки, пожалуйста, используйте <a href="https://phalcon.link/forum">официальный форум</a>.
+       We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.
     </p>
 </div>
 
@@ -111,4 +111,4 @@ Phalcon является проектом с открытым кодом и си
 
 Спасибо!
 
-<3 Команда Phalcon
+<3 Phalcon Team
