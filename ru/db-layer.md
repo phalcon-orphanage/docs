@@ -137,13 +137,13 @@ $db = Factory::load($options);
 
 ### Реализация собственных адаптеров
 
-Для создания собственного адаптера, должен быть реализован интерфейс `Phalcon\Db\AdapterInterface` или расширен через наследование любой существующий адаптер.
+The `Phalcon\Db\AdapterInterface` interface must be implemented in order to create your own database adapters or extend the existing ones.
 
 <a name='dialects'></a>
 
 ## Диалекты баз данных
 
-Phalcon инкапсулирует специфические детали каждого компонента баз данных в диалектах. Которые в свою очередь предоставляют адаптером общие функции и генератор SQL.
+Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
 
 | Класс                              | Описание                                      |
 | ---------------------------------- | --------------------------------------------- |
@@ -155,18 +155,18 @@ Phalcon инкапсулирует специфические детали ка�
 
 ### Реализация собственных диалектов
 
-Для создания собственного диалекта, должен быть реализован интерфейс `Phalcon\Db\DialectInterface` или расширен через наследование любой существующий диалект.
+The `Phalcon\Db\DialectInterface` interface must be implemented in order to create your own database dialects or extend the existing ones.
 
 <a name='connection'></a>
 
 ## Подключение к базе данных
 
-Чтобы создать подключение, необходимо создать экземпляр класса адаптера. Для этого требуется только массив с параметрами соединения. В приведенном примере ниже показано, как создать соединение с обязательными и необязательными параметрами:
+Чтобы создать подключение, необходимо создать экземпляр класса адаптера. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
 
 ```php
 <?php
 
-// Обязательные
+// Required
 $config = [
     'host'     => '127.0.0.1',
     'username' => 'mike',
@@ -174,17 +174,17 @@ $config = [
     'dbname'   => 'test_db',
 ];
 
-// Необязательные
+// Optional
 $config['persistent'] = false;
 
-// Создаём соединение
+// Create a connection
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
 
 ```php
 <?php
 
-// Обязательные
+// Required
 $config = [
     'host'     => 'localhost',
     'username' => 'postgres',
@@ -192,22 +192,22 @@ $config = [
     'dbname'   => 'template',
 ];
 
-// Необязательные
+// Optional
 $config['schema'] = 'public';
 
-// Создаём соединение
+// Create a connection
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
 
 ```php
 <?php
 
-// Обязательные
+// Required
 $config = [
     'dbname' => '/path/to/database.db',
 ];
 
-// Создаём соединение
+// Create a connection
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```
 
@@ -215,12 +215,12 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 ## Настройка дополнительных параметров PDO
 
-Вы можете установить опции PDO во время соединения, передавая параметры `options`:
+You can set PDO options at connection time by passing the parameters `options`:
 
 ```php
 <?php
 
-// Создаём соединение с настройками PDO
+// Create a connection with PDO options
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
     [
         'host'     => 'localhost',
@@ -239,7 +239,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
 
 ## Подключение с помощью фабрики
 
-Также, существует возможность использовать простой `ini` файл, чтобы настроить/подключить сервис `db` к базе данных.
+You can also use a simple `ini` file to configure/connect your `db` service to your database.
 
 ```ini
 [database]
@@ -272,13 +272,13 @@ $di->set(
 );
 ```
 
-Пример выше возвращает корректный экземпляр базы данных и имеет важное преимущество. Он позволяет изменять учётные данные подключения, или даже адаптер базы данных, не изменяя ни одной строки кода в приложении.
+The above will return the correct database instance and also has the advantage that you can change the connection credentials or even the database adapter without changing a single line of code in your application.
 
 <a name='finding-rows'></a>
 
 ## Поиск строк
 
-`Phalcon\Db` предоставляет несколько методов для запроса строк из таблиц. В данном случае требуется конкретный SQL синтаксис целевой СУБД:
+`Phalcon\Db` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
 
 ```php
 <?php
@@ -324,7 +324,7 @@ while ($robot = $result->fetch()) {
 }
 ```
 
-`Phalcon\Db::query()` возвращает экземпляр класса `Phalcon\Db\Result\Pdo`. Эти объекты инкапсулируют все методы, которые связаны с возвращаемым набором данных, т.е. перебор набора данных, поиск конкретной записи, получение количества строк в наборе данных и т.д.
+`Phalcon\Db::query()` возвращает экземпляр класса `Phalcon\Db\Result\Pdo`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
 
 ```php
 <?php
@@ -332,16 +332,16 @@ while ($robot = $result->fetch()) {
 $sql = 'SELECT id, name FROM robots';
 $result = $connection->query($sql);
 
-// Перебор набора данных
+// Traverse the resultset
 while ($robot = $result->fetch()) {
    echo $robot['name'];
 }
 
-// Получение третьей строки
+// Seek to the third row
 $result->seek(2);
 $robot = $result->fetch();
 
-// Получение количества строк в наборе данных
+// Count the resultset
 echo $result->numRows();
 ```
 
@@ -349,12 +349,12 @@ echo $result->numRows();
 
 ## Подготавливаемые запросы
 
-Подготавливаемые запросы также поддерживается в `Phalcon\Db`. Хотя при её использовании есть минимальное влияние на производительность, рекомендуется использовать эту методику, чтобы исключить возможность SQL инъекций в вашем коде. Поддерживаются как именованные, так и неименованные псевдопеременные. Связывание параметров может просто быть достигнуто следующим образом:
+Bound parameters is also supported in `Phalcon\Db`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
 
 ```php
 <?php
 
-// Подготовленный запрос с не именованными псевдопеременными
+// Binding with numeric placeholders
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -363,7 +363,7 @@ $result = $connection->query(
     ]
 );
 
-// Подготовленный запрос с именованными псевдопеременными
+// Binding with named placeholders
 $sql     = 'INSERT INTO `robots`(name`, year) VALUES (:name, :year)';
 $success = $connection->query(
     $sql,
@@ -374,16 +374,16 @@ $success = $connection->query(
 );
 ```
 
-При использовании числовых не именованных псевдопеременных, вам понадобится определить их как целочисленные индексы, например 1 или 2. В случае использования индексов в виде строк, например '1' или '2', не именованные псевдопеременные не смогут быть успешно заменены. С любым адаптером данные автоматически экранируются с помощью [PDO Quote](http://www.php.net/manual/en/pdo.quote.php).
+When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case '1' or '2' are considered strings and not numbers, so the placeholder could not be successfully replaced. С любым адаптером данные автоматически экранируются с помощью [PDO Quote](http://www.php.net/manual/en/pdo.quote.php).
 
 Эта функция принимает во внимание кодировку подключения, поэтому рекомендуется определить корректную кодировку в параметрах подключения или в конфигурации сервера баз данных, так как ошибочная кодировка приведет к неожиданным эффектам при сохранении или извлечении данных.
 
-Также, вы можете послать параметры напрямую в методы execute/query. В этом случае связанные параметры передаются напрямую в PDO:
+Also, you can pass your parameters directly to the execute/query methods. In this case bound parameters are directly passed to PDO:
 
 ```php
 <?php
 
-// Связывание при помощи не именованных псевдопеременных в PDO
+// Binding with PDO placeholders
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -562,16 +562,16 @@ if (11 === $robot->id) {
 
 ## Вставка, обновление и удаление строк
 
-Вставлять, обновлять и удалять строки вы можете с помощью стандартного SQL запроса или использовать методы, предоставляемые классом:
+To insert, update or delete rows, you can use raw SQL or use the preset functions provided by the class:
 
 ```php
 <?php
 
-// Вставка с помощью стандартного SQL запроса
+// Inserting data with a raw SQL statement
 $sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)';
 $success = $connection->execute($sql);
 
-// с помощью подготовленного запроса
+// With placeholders
 $sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)';
 $success = $connection->execute(
     $sql,
@@ -581,7 +581,7 @@ $success = $connection->execute(
     ]
 );
 
-// Динамическое создание запроса с помощью метода класса
+// Generating dynamically the necessary SQL
 $success = $connection->insert(
     'robots',
     [
@@ -594,7 +594,7 @@ $success = $connection->insert(
     ],
 );
 
-// Динамическое создание запроса с помощью метода класса (альтернативный синтаксис)
+// Generating dynamically the necessary SQL (another syntax)
 $success = $connection->insertAsDict(
     'robots',
     [
@@ -603,11 +603,11 @@ $success = $connection->insertAsDict(
     ]
 );
 
-// Обновление с помощью стандартного SQL запроса
+// Updating data with a raw SQL statement
 $sql     = 'UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101';
 $success = $connection->execute($sql);
 
-// с помощью подготовленного запроса
+// With placeholders
 $sql     = 'UPDATE `robots` SET `name` = ? WHERE `id` = ?';
 $success = $connection->execute(
     $sql,
@@ -617,7 +617,7 @@ $success = $connection->execute(
     ]
 );
 
-// Динамическое создание запроса с помощью метода класса
+// Generating dynamically the necessary SQL
 $success = $connection->update(
     'robots',
     [
@@ -626,19 +626,19 @@ $success = $connection->update(
     [
         'New Astro Boy',
     ],
-    'id = 101' // Внимание! Значения не экранируются
+    'id = 101' // Warning! In this case values are not escaped
 );
 
-// Динамическое создание запроса с помощью метода класса (альтернативный синтаксис)
+// Generating dynamically the necessary SQL (another syntax)
 $success = $connection->updateAsDict(
     'robots',
     [
         'name' => 'New Astro Boy',
     ],
-    'id = 101' // Внимание! Значения не экранируются
+    'id = 101' // Warning! In this case values are not escaped
 );
 
-// С экранированием условий
+// With escaping conditions
 $success = $connection->update(
     'robots',
     [
@@ -650,7 +650,7 @@ $success = $connection->update(
     [
         'conditions' => 'id = ?',
         'bind'       => [101],
-        'bindTypes'  => [PDO::PARAM_INT], // Необязательный параметр
+        'bindTypes'  => [PDO::PARAM_INT], // Optional parameter
     ]
 );
 $success = $connection->updateAsDict(
@@ -661,19 +661,19 @@ $success = $connection->updateAsDict(
     [
         'conditions' => 'id = ?',
         'bind'       => [101],
-        'bindTypes'  => [PDO::PARAM_INT], // Необязательный параметр
+        'bindTypes'  => [PDO::PARAM_INT], // Optional parameter
     ]
 );
 
-// Удаление с помощью стандартного SQL запроса
+// Deleting data with a raw SQL statement
 $sql     = 'DELETE `robots` WHERE `id` = 101';
 $success = $connection->execute($sql);
 
-// с помощью подготовленного запроса
+// With placeholders
 $sql     = 'DELETE `robots` WHERE `id` = ?';
 $success = $connection->execute($sql, [101]);
 
-// Динамическое создание запроса с помощью метода класса
+// Generating dynamically the necessary SQL
 $success = $connection->delete(
     'robots',
     'id = ?',
@@ -693,56 +693,56 @@ $success = $connection->delete(
 <?php
 
 try {
-    // Начало новой транзакции
+    // Start a transaction
     $connection->begin();
 
-    // Выполнение нескольких команд SQL
+    // Execute some SQL statements
     $connection->execute('DELETE `robots` WHERE `id` = 101');
     $connection->execute('DELETE `robots` WHERE `id` = 102');
     $connection->execute('DELETE `robots` WHERE `id` = 103');
 
-    // Фиксируем изменения в транзакции, если все хорошо
+    // Commit if everything goes well
     $connection->commit();
 } catch (Exception $e) {
-    //  В случае исключения откатываем все изменения
+    // An exception has occurred rollback the transaction
     $connection->rollback();
 }
 ```
 
-В дополнение к стандартным транзакциям, `Phalcon\Db` предоставляет встроенную поддержку для [вложенных транзакций](http://en.wikipedia.org/wiki/Nested_transaction) (если используемая база данных поддерживает их). Когда Вы вызываете begin() второй раз — создаётся вложенная транзакция:
+В дополнение к стандартным транзакциям, `Phalcon\Db` предоставляет встроенную поддержку для [вложенных транзакций](http://en.wikipedia.org/wiki/Nested_transaction) (если используемая база данных поддерживает их). When you call begin() for a second time a nested transaction is created:
 
 ```php
 <?php
 
 try {
-    // Начало транзакции
+    // Start a transaction
     $connection->begin();
 
-    // Выполняем некоторое SQL выражение
+    // Execute some SQL statements
     $connection->execute('DELETE `robots` WHERE `id` = 101');
 
     try {
-        // Начинаем вложенную транзакцию
+        // Start a nested transaction
         $connection->begin();
 
-        // Выполняем эти SQL выражения во вложенной транзакции
+        // Execute these SQL statements into the nested transaction
         $connection->execute('DELETE `robots` WHERE `id` = 102');
         $connection->execute('DELETE `robots` WHERE `id` = 103');
 
-        // Создаем точку сохранения
+        // Create a save point
         $connection->commit();
     } catch (Exception $e) {
-        // Произошла ошибка, откатываем все изменения
+        // An error has occurred, release the nested transaction
         $connection->rollback();
     }
 
-    // Продолжаем, выполнение других SQL выражений
+    // Continue, executing more SQL statements
     $connection->execute('DELETE `robots` WHERE `id` = 104');
 
-    // Фиксируем изменения в транзакции, если все хорошо
+    // Commit if everything goes well
     $connection->commit();
 } catch (Exception $e) {
-    // В случае исключения откатываем все изменения
+    // An exception has occurred rollback the transaction
     $connection->rollback();
 }
 ```
@@ -751,7 +751,7 @@ try {
 
 ## События базы данных
 
-Компонент `Phalcon\Db` способен оповещать [EventsManager](/[[language]]/[[version]]/events) о событиях, если менеджер событий присутствует. Некоторые события при возвращении булева значения false могут остановить выполняемую операцию. Поддерживаются следующие события:
+`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. Поддерживаются следующие события:
 
 | Название события      | Срабатывает                                          | Может остановить операцию? |
 | --------------------- | ---------------------------------------------------- |:--------------------------:|
@@ -763,7 +763,7 @@ try {
 | `rollbackTransaction` | Перед тем, как транзакция откатится                  |            Нет             |
 | `commitTransaction`   | Перед фиксацией транзакции                           |            Нет             |
 
-Привязать менеджер событий к соединению просто, `Phalcon\Db` будет оповещать о всех событиях с типом `db`:
+Bind an EventsManager to a connection is simple, `Phalcon\Db` will trigger the events with the type `db`:
 
 ```php
 <?php
@@ -773,7 +773,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
 
 $eventsManager = new EventsManager();
 
-// Слушать все события базы данных
+// Listen all the database events
 $eventsManager->attach('db', $dbListener);
 
 $connection = new Connection(
@@ -785,11 +785,11 @@ $connection = new Connection(
     ]
 );
 
-// Назначаем менеджер событий экземпляру адаптера БД
+// Assign the eventsManager to the db adapter instance
 $connection->setEventsManager($eventsManager);
 ```
 
-Иметь возможность остановить выполнение SQL очень полезно, если вы хотите осуществить последнюю проверку SQL на наличие SQL инъекций:
+Stop SQL operations are very useful if for example you want to implement some last-resource SQL injector checker:
 
 ```php
 <?php
@@ -801,14 +801,14 @@ $eventsManager->attach(
     function (Event $event, $connection) {
         $sql = $connection->getSQLStatement();
 
-        // Проверка на наличие деструктивных ключевых слов в SQL
+        // Check for malicious words in SQL statements
         if (preg_match('/DROP|ALTER/i', $sql)) {
-            // Операции DROP или ALTER не разрешено использовать в нашем приложении,
-            // это должно быть SQL инъекция (ну или чья то оплошность)!
+            // DROP/ALTER operations aren't allowed in the application,
+            // this must be a SQL injection!
             return false;
         }
 
-        // Всё хорошо
+        // It's OK
         return true;
     }
 );
