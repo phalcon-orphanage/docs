@@ -625,7 +625,7 @@ print_r(
 
 ```
 
-public [Phalcon\Db\Index](/en/3.2/api/Phalcon_Db_Index[]) **describeIndexes** (*string* $table, [*string* $schema]) inherited from [Phalcon\Db\Adapter](/en/3.2/api/Phalcon_Db_Adapter)
+public [Phalcon\Db\Index](/en/3.2/api/Phalcon_Db_Index) **describeIndexes** (*string* $table, [*string* $schema]) inherited from [Phalcon\Db\Adapter](/en/3.2/api/Phalcon_Db_Adapter)
 
 Lists table indexes
 
