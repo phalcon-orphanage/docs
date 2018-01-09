@@ -56,31 +56,31 @@
               <a href="#adapters-backend-factory">Fábrica</a>
             </li>
             <li>
-              <a href="#adapters-backend-custom">Implementar sus propios adaptadores de Backend</a>
+              <a href="#adapters-backend-custom">Implementar sus propios adaptadores de back-end</a>
             </li>
             <li>
-              <a href="#adapters-backend-file">Opciones de Archivos Backend</a>
+              <a href="#adapters-backend-file">Opciones de archivos backend</a>
             </li>
             <li>
-              <a href="#adapters-backend-libmemcached">Opciones de Backend para Libmemcached</a>
+              <a href="#adapters-backend-libmemcached">Libmemcached Backend Options</a>
             </li>
             <li>
-              <a href="#adapters-backend-memcache">Opciones de Backend para Memcached</a>
+              <a href="#adapters-backend-memcache">Memcache Backend Options</a>
             </li>
             <li>
-              <a href="#adapters-backend-apc">Opciones de Backend para APC</a>
+              <a href="#adapters-backend-apc">APC Backend Options</a>
             </li>
             <li>
-              <a href="#adapters-backend-apcu">Opciones de Backend para APCU</a>
+              <a href="#adapters-backend-apcu">APCU Backend Options</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Opciones de Backend para Mongo</a>
+              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">Opciones de Backend para XCache</a>
+              <a href="#adapters-backend-xcache">XCache Backend Options</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Opciones de Backend para Redis</a>
+              <a href="#adapters-backend-redis">Redis Backend Options</a>
             </li>
           </ul>
         </li>
@@ -126,7 +126,7 @@ El proceso de almacenamiento en caché se divide en 2 partes:
 
 Crear instancias de adaptadores del frontend o del backend, puede lograrse de dos maneras:
 
-Forma tradicional
+Tradicional
 
 ```php
 <?php
@@ -152,7 +152,7 @@ $cache = new BackFile(
 );
 ```
 
-o usando el objeto Factory de la siguiente manera:
+or using the Factory object as follows:
 
 ```php
 <?php
@@ -236,7 +236,7 @@ if ($content === null) {
 
 <div class='alert alert-warning'>
     <p>
-        <strong>Nota</strong> En el ejemplo anterior, nuestro código sigue siendo el mismo, haciéndose eco de salida para el usuario como lo ha venido haciendo antes. Nuestro componente de caché captura transparentemente esa salida y almacena en el archivo de caché (cuando se genera la caché) o envía hacia el usuario previamente compilado de una llamada anterior, evitando así operaciones costosas.
+        <strong>Nota</strong> En el ejemplo anterior, nuestro código sigue siendo el mismo, haciéndose eco de salida para el usuario como lo ha venido haciendo antes. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations.
     </p>
 </div>
 
@@ -359,7 +359,7 @@ foreach ($robots as $robot) {
 
 <div class='alert alert-warning'>
     <p>
-        <strong>Nota</strong> Llamar a <code>save()</code> regresará un booleano, indicando éxito (<code>true</code>) o fracaso (<code>false</code>). Dependiendo del servidor backend que utilices, necesitaras buscar en los registros pertinentes para identificar fallas.
+        <strong>Nota</strong> Llamar a <code>save()</code> regresará un booleano, indicando éxito (<code>true</code>) o fracaso (<code>false</code>). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.
     </p>
 </div>
 
@@ -607,7 +607,7 @@ Debe implementar la interfaz `Phalcon\Cache\BackendInterface` para crear sus pro
 
 <a name='adapters-backend-file'></a>
 
-### Opciones de Archivos Backend
+### Opciones de archivos backend
 
 Este backend almacena contenido cacheado en archivos en el servidor local. Las opciones disponibles para este componente son:
 
@@ -618,7 +618,7 @@ Este backend almacena contenido cacheado en archivos en el servidor local. Las o
 
 <a name='adapters-backend-libmemcached'></a>
 
-### Opciones de Backend para Libmemcached
+### Libmemcached Backend Options
 
 Este backend almacena contenido cacheado en un servidor memcached. Por defecto se utilizan los pools de conexión persistente de memcached. Las opciones disponibles para este backend son:
 
@@ -678,7 +678,7 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-memcache'></a>
 
-### Opciones de Backend para Memcached
+### Memcache Backend Options
 
 Este backend almacena contenido cacheado en un servidor memcached. Las opciones disponibles son:
 
@@ -691,7 +691,7 @@ Este backend almacena contenido cacheado en un servidor memcached. Las opciones 
 
 <a name='adapters-backend-apc'></a>
 
-### Opciones de Backend para APC
+### APC Backend Options
 
 Este backend almacenará contenido cacheado en la memoria caché alternativa de PHP ([APC](http://php.net/apc)). Las opciones disponibles son:
 
@@ -701,7 +701,7 @@ Este backend almacenará contenido cacheado en la memoria caché alternativa de 
 
 <a name='adapters-backend-apcu'></a>
 
-### Opciones de Backend para APCU
+### APCU Backend Options
 
 Este backend almacenará contenido cacheado en la memoria caché alternativa de PHP ([APCU](http://php.net/apcu)). Las opciones disponibles son:
 
@@ -711,7 +711,7 @@ Este backend almacenará contenido cacheado en la memoria caché alternativa de 
 
 <a name='adapters-backend-mongo'></a>
 
-### Opciones de Backend para Mongo
+### Mongo Backend Options
 
 Este backend almacena contenido cacheado en un servidor de MongoDB ([MongoDB](http://mongodb.org/)). Las opciones disponibles son:
 
@@ -724,7 +724,7 @@ Este backend almacena contenido cacheado en un servidor de MongoDB ([MongoDB](ht
 
 <a name='adapters-backend-xcache'></a>
 
-### Opciones de Backend para XCache
+### XCache Backend Options
 
 Este backend almacena contenido cacheado en XCache ([XCache](http://xcache.lighttpd.net/)). Las opciones disponibles son:
 
@@ -734,7 +734,7 @@ Este backend almacena contenido cacheado en XCache ([XCache](http://xcache.light
 
 <a name='adapters-backend-redis'></a>
 
-### Opciones de Backend para Redis
+### Redis Backend Options
 
 Este backend almacena contenido cacheado en un servidor Redis ([Redis](http://redis.io/)). Las opciones disponibles son:
 
