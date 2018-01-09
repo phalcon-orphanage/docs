@@ -1,8 +1,8 @@
-# Interface **Phalcon\\Assets\\FilterInterface**
+# Interfaz **Phalcon\\Assets\\FilterInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/filterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/filterinterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-## Methods
+## Métodos
 
 abstract public **filter** (*mixed* $content)
 
