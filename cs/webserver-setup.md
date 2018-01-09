@@ -97,7 +97,12 @@ If you created your application with [Phalcon-Devtools](/[[language]]/[[version]
 $(which php) -S localhost:8000 -t public .htrouter.php
 ```
 
-The anatomy of the command above: - `$(which php)` - will insert the absolute path to your PHP binary - `-S localhost:8000` - invokes server mode with the provided `host:port` - `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory - `.htrouter.php` - the entry point that will be evaluated for each request
+The anatomy of the command above:
+
+- `$(which php)` - will insert the absolute path to your PHP binary
+- `-S localhost:8000` - invokes server mode with the provided `host:port`
+- `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory
+- `.htrouter.php` - the entry point that will be evaluated for each request
 
 Otevřete internetový prohlížeč a do řádku adresy napište: http://localhost:8000/ pro kontrolu že vše funguje jak má.
 
