@@ -359,7 +359,7 @@ class IndexController extends Controller
 }
 ```
 
-The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about views usage [here](/[[language]]/[[version]]]/views).
+The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about views usage [here](/[[language]]/[[version]]/views).
 
 <a name='signup-form'></a>
 
