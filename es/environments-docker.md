@@ -77,7 +77,11 @@ Phalcon Compose es un entorno de desarrollo impulsado por la comunidad para los 
 
 ## Dependencias
 
-Para ejecutar esta pila en su máquina, necesita por lo menos: * Sistema operativo: Windows, Linux o OS X * [Docker Engine](https://docs.docker.com/installation/) > = 1.10.0 * [ Docker Compose](https://docs.docker.com/compose/install/) > = 1.6.2
+To run this stack on your machine, you need at least:
+
+* Operating System: Windows, Linux, or OS X
+* [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0
+* [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
 <a name='services'></a>
 
@@ -110,15 +114,16 @@ Usando Composer, se puede crear un nuevo proyecto de la siguiente forma:
 
 $ `composer create-project phalcon/compose --prefer-dist <nombre de la carpeta>`
 
-La salida debería ser similar a:
+Your output should be similar to this:
 
 ```php
 Example
  Installing phalcon/compose (version)
+
   - Installing phalcon/compose (version)
     Loading from cache
 
-Created project in nombreDeLaCarpeta
+Created project in folderName
 > php -r "copy('variables.env.example', 'variables.env');"
 Loading composer repositories with package information
 Updating dependencies (including require-dev)
@@ -130,7 +135,7 @@ Generating autoload files
 
 ### Con Git
 
-Otra forma de inicializar su proyecto es con Git.
+Another way to initialize your project is with Git.
 
 $ `git clone git@github.com:phalcon/phalcon-compose.git`
 
@@ -140,13 +145,13 @@ $ `git clone git@github.com:phalcon/phalcon-compose.git`
     </p>
 </div>
 
-Añadir la aplicación Phalcon en la carpeta `application`.
+Add your Phalcon Application into `application` folder.
 
 <a name='configuration'></a>
 
 ## Configuración
 
-Añadir `phalcon.local` (o su nombre de host preferido) en el archivo `/etc/hosts` como se muestra a continuación:
+Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as follows:
 
 $ `127.0.0.1 www.phalcon.local phalcon.local`
 
@@ -154,11 +159,11 @@ $ `127.0.0.1 www.phalcon.local phalcon.local`
 
 ## Uso
 
-Ahora puede construir, crear, iniciar y colocar contenedores para el entorno de su aplicación. Para construir los contenedores utilice los siguientes comandos dentro de la raíz del proyecto:
+You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
 
 $ `docker-compose build`
 
-Para iniciar la aplicación y ejecutar los contenedores en segundo plano, utilice el siguiente comando dentro de la raíz del proyecto:
+To start the application and run the containers in the background, use following command inside project root:
 
 También puede usar aquí, el nombre del proyecto preferido, con el parámetro `-p <mi-aplicación>`
 
@@ -170,13 +175,13 @@ Reemplazar el proyecto en **<project_app_1>** con el nombre de su directorio/pro
 
 $ `docker exec -t <project_app_1> phalcon project application simple`
 
-Ahora puede lanzar la aplicación en su navegador ingresando a `http://phalcon.local` (o el nombre de host que elegiste anteriormente).
+Now you can now launch your application in your browser visiting `http://phalcon.local` (or the host name you chose above).
 
 <a name='setup'></a>
 
 ## Configurar
 
-Si su aplicación utiliza un caché de archivos o escribe registros de logs en archivos, puede configurar la memoria de caché y carpetas para los registros de la siguiente manera:
+If your application uses a file cache or writes logs to files, you can set up your cache and log folders as follows:
 
 | Directorio | Ruta             |
 | ---------- | ---------------- |
@@ -187,13 +192,13 @@ Si su aplicación utiliza un caché de archivos o escribe registros de logs en a
 
 ## Registro de logs
 
-Para la mayoría de los recipientes puede acceder a los registros utilizando el comando `docker logs <nombre_del_contenedor>` en tu ordenador.
+For most containers you can access the logs using the `docker logs <container_name>` command in your host machine.
 
 <a name='environment-variables'></a>
 
 ## Variables de entorno
 
-Usted puede pasar varias variables de entorno desde un archivo externo a los contenedores del servicio, editando el archivo `variables.env`.
+You can pass multiple environment variables from an external file to a service's containers by editing the `variables.env` file.
 
 <a name='environment-variables-web'></a>
 
@@ -225,13 +230,17 @@ Usted puede pasar varias variables de entorno desde un archivo externo a los con
 | `PMA_PASSWORD`      | Definir la contraseña a utilizar para configurar el método de autenticación.                                                      | secret      |
 | `PMA_ABSOLUTE_URI`  | Ruta completa de acceso (por ejemplo https://pma.example.net/) donde el proxy inverso hace que phpMyAdmin este disponible.        |             |
 
-*Vea también* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
+*See also*
+
+* https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker
+* https://docs.phpmyadmin.net/en/latest/config.html#config
+* https://docs.phpmyadmin.net/en/latest/setup.html
 
 <a name='xdebug'></a>
 
 ## Depurador remoto Xdebug (PhpStorm)
 
-Para propósitos de depuración puede configurar Xdebug pasando los parámetros requeridos (ver variables.env).
+For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
 | Variable de entorno          | Descripción                                           | Por defecto    |
 | ---------------------------- | ----------------------------------------------------- | -------------- |
@@ -240,7 +249,7 @@ Para propósitos de depuración puede configurar Xdebug pasando los parámetros 
 | `XDEBUG_REMOTE_AUTOSTART`    | Valor de `php.ini` para `xdebug.remote_autostart`.    | Off            |
 | `XDEBUG_REMOTE_CONNECT_BACK` | Valor de `php.ini` para `xdebug.remote_connect_back`. | Off            |
 
-*Nota* Puede encontrar su dirección IP local como se muestra a continuación:
+*NOTE* You can find your local IP address as follows:
 
 **Linux/macOS**
 
@@ -248,7 +257,7 @@ $ `ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .`
 
 **Windows**
 
-> `ipconfig`
+&gt; `ipconfig`
 
 <a name='troubleshooting'></a>
 
@@ -258,7 +267,7 @@ $ `ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .`
 
 ### Inicio o enlace de errores
 
-Si tienes cualquier problema de inicio, puede intentar reconstruir el contenedor de la aplicación. No habrá ninguna pérdida de datos., es un reinicio seguro:
+If you got any startup issues you can try to rebuild app container. There will be no loss of data., it is a safe reset:
 
 ```bash
 docker-compose stop
@@ -271,7 +280,7 @@ docker-compose up -d
 
 ### Reinicio completo
 
-Para restablecer todos los contenedores, eliminar todos los datos (mysql, elasticsearch, etcétera) pero no los archivos de proyectos en carpeta `aplicación`:
+To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in `application` folder:
 
 ```bash
 docker-compose stop
@@ -284,7 +293,7 @@ docker-compose up -d
 
 ### Actualización de dependencias
 
-A veces las imágenes de base (por ejemplo `phalconphp/php-apache: ubuntu-16.04`) se actualizan. Phalcon Compose depende de estas imágenes. Por lo tanto usted tendrá que actualizarlas y siempre es bueno hacerlo para asegurar que tenga la funcionalidad más reciente disponible. Los contenedores dependientes de estas imágenes tendrán que ser actualizados y reconstruidos:
+Sometimes the base images (for example `phalconphp/php-apache:ubuntu-16.04`) are updated. Phalcon Compose depends on these images. You will therefore need to update them and it is always a good thing to do so to ensure that you have the latest functionality available. The dependent containers to these images will need to be updated and rebuilt:
 
 ```bash
 docker pull mongo:3.4
@@ -299,12 +308,12 @@ docker pull elasticsearch:5.2-alpine
 docker pull phalconphp/php-apache:ubuntu-16.04
 ```
 
-Los usuarios de Linux/MacOS pueden utilizar `make` para realizar la tarea:
+Linux/MacOS users can use `make` to perform the task:
 
 $ `make pull`
 
-Luego tienes que reiniciar todos los contenedores, eliminar todos los datos, reconstruir los servicios y reiniciar la aplicación.
+Then you have to reset all containers, delete all data, rebuild services and restart application.
 
-Los usuarios de Linux/MacOS pueden utilizar `make` para realizar la tarea:
+Linux/MacOS users can use `make` to perform the task:
 
 $ `make reset`
