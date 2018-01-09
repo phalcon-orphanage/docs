@@ -91,35 +91,35 @@ $e = new Escaper();
 Which produces the following:
 
 ```html
-<br /><html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<br />&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
 
-        <title>
+        &lt;title&gt;
             &lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt;
-        </title>
+        &lt;/title&gt;
 
-        <style type="text/css">
+        &lt;style type="text/css"&gt;
             .\3c \2f style\3e {
                 font-family: "Verdana\22 \3c \2f style\3e";
                 color: red;
             }
-        </style>
+        &lt;/style&gt;
 
-    </head>
+    &lt;/head&gt;
 
-    <body>
+    &lt;body&gt;
 
-        <div class='&#x3c &#x2f style&#x3e '>
+        &lt;div class='&#x3c &#x2f style&#x3e '&gt;
             hello
-        </div>
+        &lt;/div&gt;
 
-        <script>
+        &lt;script&gt;
             var some = '\x27\x3b\x3c\2fscript\x3eHello';
-        </script>
+        &lt;/script&gt;
 
-    </body>
-</html>
+    &lt;/body&gt;
+&lt;/html&gt;
 ```
 
 Every text was escaped according to its context. Use the appropriate context is important to avoid XSS attacks.
