@@ -86,7 +86,7 @@ Cree un archivo `composer.json` en la raíz de su proyecto y agregue el paquete 
 }
 ```
 
-<h5 class='alert alert-warning'><strong>NOTE</strong>: The version of Phalcon Devtools depends on which PHP version you're using </h5>
+<h5 class='alert alert-warning'><strong>Nota</strong>: la versión de Phalcon Devtools depende de qué versión PHP estés utilizando </h5>
 
 <a name='new-phalcon-app'></a>
 
