@@ -218,35 +218,35 @@ Además si usted no proporciona ningún parámetro en el método de `isAllowed()
 use Phalcon\Acl;
 
 <?php
-// Set access level for role into resources with custom function
+// Establecer el nivel de acceso a un rol en un recurso con una función personalizada
 $acl->allow(
-    'Guests',
-    'Customers',
-    'search',
+    'Invitado',
+    'Clientes',
+    'buscar',
     function ($a) {
         return $a % 2 === 0;
     }
 );
 
-// Check whether role has access to the operation with custom function
+// Verificar que el rol tenga acceso a la operación con la función personalizada
 
-// Returns true
+// Devuelve true
 $acl->isAllowed(
-    'Guests',
-    'Customers',
-    'search'
+    'Invitado',
+    'Clientes',
+    'buscar'
 );
 
-// Change no arguments default action
+// Cambiamos el funcionamiento cuando no hay parámetros a acción predeterminada
 $acl->setNoArgumentsDefaultAction(
     Acl::DENY
 );
 
-// Returns false
+// Devuelve false
 $acl->isAllowed(
-    'Guests',
-    'Customers',
-    'search'
+    'Invitado',
+    'Clientes',
+    'buscar'
 );
 ```
 
