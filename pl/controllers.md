@@ -405,7 +405,7 @@ $di->set(
 
 ## Zdarzenia w Kontrolerach
 
-Kontrolery automatycznie zachowują się jak słuchacze dla zdarzeń [dispatcher](/en/[[versopm]]/dispatcher), implementując metody z ich nazwami pozwalają Ci na implementowanie punktów zaczepowych przed/po wykonaniu akcji:
+Controllers automatically act as listeners for [dispatcher](/[[language]]/[[version]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
 ```php
 <?php
