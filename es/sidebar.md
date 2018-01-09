@@ -45,7 +45,7 @@
         - [Namespaces](/[[language]]/[[version]]/namespaces)
     - [Logging](/[[language]]/[[version]]/logging) 
         - [Adaptadores](/[[language]]/[[version]]/logging#usage)
-    - [Queue](/[[language]]/[[version]]/queue)
+    - [Colas](/[[language]]/[[version]]/queue)
 - Base de Datos 
     - [Capa](/[[language]]/[[version]]/db-layer)
     - [PHQL](/[[language]]/[[version]]/db-phql)
@@ -61,12 +61,12 @@
     - [Migraciones](/[[language]]/[[version]]/db-migrations)
     - [Paginación](/[[language]]/[[version]]/db-pagination)
 - Front End 
-    - [Assets](/[[language]]/[[version]]/assets)
+    - [Recursos](/[[language]]/[[version]]/assets)
     - [Mensajes Flash](/[[language]]/[[version]]/flash)
     - [Formularios](/[[language]]/[[version]]/forms)
     - [Imagen](/[[language]]/[[version]]/image)
     - [Tag](/[[language]]/[[version]]/tag)
-    - [View](/[[language]]/[[version]]/views) 
+    - [Vistas](/[[language]]/[[version]]/views) 
         - [Volt](/[[language]]/[[version]]/volt)
 - Lógica de Negocio 
     - [Listas de Control de Acceso](/[[language]]/[[version]]/acl)
