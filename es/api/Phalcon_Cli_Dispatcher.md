@@ -1,12 +1,12 @@
-# Class **Phalcon\\Cli\\Dispatcher**
+# Clase **Phalcon\\Cli\\Dispatcher**
 
-*extends* abstract class [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+*extiende* de la clase abstracta [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](/en/3.2/api/Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherInterface](/en/3.2/api/Phalcon_Cli_DispatcherInterface)
+*implementa* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](/en/3.2/api/Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherInterface](/en/3.2/api/Phalcon_Cli_DispatcherInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/dispatcher.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/dispatcher.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
-Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.
+El despachado es el proceso de tomar los argumentos de las linea de comandos, extrayendo el nombre de módulo, nombre de la tarea, nombre de la acción, y los parámetros opcionales contenidos en ella, y luego instanciando una tarea y llamando una acción en ella.
 
 ```php
 <?php
@@ -26,7 +26,7 @@ $handle = $dispatcher->dispatch();
 
 ```
 
-## Constants
+## Constantes
 
 *integer* **EXCEPTION_NO_DI**
 
@@ -40,7 +40,7 @@ $handle = $dispatcher->dispatch();
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Methods
+## Métodos
 
 public **setTaskSuffix** (*mixed* $taskSuffix)
 
