@@ -111,4 +111,4 @@ Si usted tiene un cambio o una nueva funcionalidad en mente, por favor llene una
 
 ¡Gracias!
 
-<3 El equipo de Phalcon
+<3 Phalcon Team
