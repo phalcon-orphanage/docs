@@ -6,12 +6,12 @@
 
 abstract public **getName** ()
 
-Returns the resource name
+Retorna el nombre del recurso
 
 abstract public **getDescription** ()
 
-Returns resource description
+Retorna la descripción del recurso
 
 abstract public **__toString** ()
 
-Magic method __toString
+Método mágico __toString
