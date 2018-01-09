@@ -370,8 +370,8 @@ Accessing the `$app` object inside the anonymous function can be achieved by inj
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $context = "<h1>This is order: {$name}!</h1>";
-        $app->response->setContext($context);
+        $content = "<h1>This is order: {$name}!</h1>";
+        $app->response->setContent($content);
         $app->response->send();
     }
 );
@@ -506,8 +506,8 @@ class OrdersController extends Controller
 
     public function show($name)
     {
-        $context = "<h1>This is order: {$name}!</h1>";
-        $this->response->setContext($context);
+        $content = "<h1>This is order: {$name}!</h1>";
+        $this->response->setContent($content);
 
         return $this->response;
     }
