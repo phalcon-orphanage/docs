@@ -405,7 +405,7 @@ $di->set(
 
 ## Events in Controllers
 
-Denetleyiciler, [görevlendirici](/en/[[versopm]]/dispatcher) olayları için dinleyiciler olarak otomatik olarak davranır; bu olay adlarıyla yöntemleri uygulamak, eylemler yürütülmeden önce / sonra kanca noktaları uygulamaya izin verir:
+Controllers automatically act as listeners for [dispatcher](/[[language]]/[[version]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
 ```php
 <?php
