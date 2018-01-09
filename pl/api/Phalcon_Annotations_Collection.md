@@ -56,14 +56,14 @@ public **getAnnotations** ()
 
 Returns the internal annotations as an array
 
-public **get** (*mixed* $name)
+public **get** (*string* $name)
 
 Returns the first annotation that match a name
 
-public **getAll** (*mixed* $name)
+public **getAll** (*string* $name)
 
 Returns all the annotations that match a name
 
-public **has** (*mixed* $name)
+public **has** (*string* $name)
 
 Check if an annotation exists in a collection

@@ -1,17 +1,17 @@
-# Class **Phalcon\\Annotations\\Reader**
+# Clase **Phalcon\\Annotations\\Reader**
 
-*implements* [Phalcon\Annotations\ReaderInterface](/en/3.2/api/Phalcon_Annotations_ReaderInterface)
+*implementa* [Phalcon\Annotations\ReaderInterface](/en/3.2/api/Phalcon_Annotations_ReaderInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/reader.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/reader.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Parses docblocks returning an array with the found annotations
+Analiza los docblocks para devolver un arreglo con las anotaciones encontradas
 
-## Methods
+## Métodos
 
 public **parse** (*mixed* $className)
 
-Reads annotations from the class dockblocks, its methods and/or properties
+Lee las anotaciones de la clase dockblocks, sus métodos y/o propiedades
 
 public static **parseDocBlock** (*mixed* $docBlock, [*mixed* $file], [*mixed* $line])
 
-Parses a raw doc block returning the annotations found
+Procesa un bloque doc en crudo regresando las anotaciones encontradas

@@ -1,28 +1,30 @@
-# Abstract class **Phalcon\\Application**
+# Clase Abstracta **Phalcon\\Application**
 
-*extends* abstract class [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+*extiende* abstract class [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
+*implementa* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/application.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/application.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Base class for Phalcon\\Cli\\Console and Phalcon\\Mvc\\Application.
+Clase base para Phalcon\\Cli\\Console y Phalcon\\Mvc\\Application.
 
-## Methods
+## Métodos
 
 public **__construct** ([[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector])
 
+Phalcon\\Application Constructor
+
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+Establece el gestor de eventos
 
 public **getEventsManager** ()
 
-Returns the internal event manager
+Devuelve el gestor de eventos interno
 
 public **registerModules** (*array* $modules, [*mixed* $merge])
 
-Register an array of modules present in the application
+Registra un arreglo de módulos presentes en la aplicación
 
 ```php
 <?php
@@ -44,32 +46,32 @@ $this->registerModules(
 
 public **getModules** ()
 
-Return the modules registered in the application
+Devuelve los módulos registrados en la aplicación
 
 public **getModule** (*mixed* $name)
 
-Gets the module definition registered in the application via module name
+Obtiene la definición de módulo registrada en la aplicación a través de nombre del módulo
 
 public **setDefaultModule** (*mixed* $defaultModule)
 
-Sets the module name to be used if the router doesn't return a valid module
+Establece el nombre del módulo que se utilizará si el router no vuelve un módulo válido
 
 public **getDefaultModule** ()
 
-Returns the default module name
+Devuelve el nombre del módulo predeterminado
 
 abstract public **handle** ()
 
-Handles a request
+Maneja una solucitud
 
-public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector) heredado de [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
 
-Sets the dependency injector
+Establece el inyector de dependencias
 
-public **getDI** () inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public **getDI** () heredado de [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+Devuelve el inyector de dependencias interno
 
-public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public **__get** (*string* $propertyName) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
 
-Magic method __get
+Método mágico __get

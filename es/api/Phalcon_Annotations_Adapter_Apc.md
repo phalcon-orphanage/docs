@@ -1,12 +1,12 @@
-# Class **Phalcon\\Annotations\\Adapter\\Apc**
+# Clase **Phalcon\\Annotations\\Adapter\\Apc**
 
-*extends* abstract class [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+*extiende* abstract class [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-*implements* [Phalcon\Annotations\AdapterInterface](/en/3.2/api/Phalcon_Annotations_AdapterInterface)
+*implementa* [Phalcon\Annotations\AdapterInterface](/en/3.2/api/Phalcon_Annotations_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter/apc.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter/apc.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Stores the parsed annotations in APC. This adapter is suitable for production
+Guarda las anotaciones analizadas en APC. Este adaptador es adecuado para producción
 
 ```php
 <?php
@@ -17,44 +17,44 @@ $annotations = new Apc();
 
 ```
 
-## Methods
+## Métodos
 
 public **__construct** ([*array* $options])
 
-Phalcon\\Annotations\\Adapter\\Apc constructor
+Constructor de Phalcon\\Annotations\\Adapter\\Apc
 
 public **read** (*mixed* $key)
 
-Reads parsed annotations from APC
+Lee anotaciones analizadas desde APC
 
 public **write** (*mixed* $key, [Phalcon\Annotations\Reflection](/en/3.2/api/Phalcon_Annotations_Reflection) $data)
 
-Writes parsed annotations to APC
+Escribe anotaciones analizadas en APC
 
 public **setReader** ([Phalcon\Annotations\ReaderInterface](/en/3.2/api/Phalcon_Annotations_ReaderInterface) $reader) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Sets the annotations parser
+Establece el analizador de anotaciones
 
-public **getReader** () inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+public **getReader** () heredado de [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Returns the annotation reader
+Devuelve el lector de anotaciones
 
-public **get** (*string* | *object* $className) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+public **get** (*string* | *object* $className) heredado de [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Parses or retrieves all the annotations found in a class
+Analiza o recupera todas las anotaciones encontradas una clase
 
-public **getMethods** (*mixed* $className) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+public **getMethods** (*mixed* $className) heredado de [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Returns the annotations found in all the class' methods
+Devuelve las anotaciones encontradas en todos los métodos de la clase
 
-public **getMethod** (*mixed* $className, *mixed* $methodName) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+public **getMethod** (*mixed* $className, *mixed* $methodName) heredado de [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Returns the annotations found in a specific method
+Devuelve las anotaciones encontradas un método específico
 
-public **getProperties** (*mixed* $className) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+public **getProperties** (*mixed* $className) heredado de [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Returns the annotations found in all the class' methods
+Devuelve las anotaciones encontradas en todos los métodos de la clase
 
-public **getProperty** (*mixed* $className, *mixed* $propertyName) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+public **getProperty** (*mixed* $className, *mixed* $propertyName) heredado de [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Returns the annotations found in a specific property
+Devuelve las anotaciones que se encuentran en una propiedad específica

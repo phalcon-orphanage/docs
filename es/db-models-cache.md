@@ -608,11 +608,11 @@ use Phalcon\Mvc\Model\Query as ModelQuery;
 class CustomQuery extends ModelQuery
 {
     /**
-     * The execute method is overridden
+     * El método execute es sobre cargado
      */
     public function execute($params = null, $types = null)
     {
-        // Parse the intermediate representation for the SELECT
+        // Analizar la representación intermedia para el SELECT
         $ir = $this->parse();
 
         if ( is_array($this->_bindParams) ) {
@@ -623,20 +623,20 @@ class CustomQuery extends ModelQuery
             $types = array_merge($this->_bindTypes, (array)$types);
         }
 
-        // Check if the query has conditions
+        // Comprobar si la consulta tiene condiciones
         if (isset($ir['where'])) {
-            // The fields in the conditions can have any order
-            // We need to recursively check the conditions tree
-            // to find the info we're looking for
+            // Los campos en las condiciones pueden tener cualquier orden
+            // Necesitamos comprobar recursivamente el árbol de condiciones
+            // para encontrar la información que buscamos
             $visitor = new CustomNodeVisitor();
 
-            // Recursively visits the nodes
+            // Visitar los nodos recursivamente
             $visitor->visit($ir['where']);
 
             $initial = $visitor->getInitial();
             $final   = $visitor->getFinal();
 
-            // Select the cache according to the range
+            // Seleccionar el cache de acuerdo al rango
             // ...
 
             // Chequeamos si el cache tiene datos
@@ -647,7 +647,7 @@ class CustomQuery extends ModelQuery
         $result = $this->_executeSelect($ir, $params, $types);
         $result = $this->_uniqueRow ? $result->getFirst() : $result;
 
-        // Cache the result
+        // Cachear el resultado
         // ...
 
         return $result;
