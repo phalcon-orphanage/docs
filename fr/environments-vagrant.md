@@ -268,6 +268,7 @@ The `folders` property of the `settings.yml` file lists all of the folders you w
 
 ```yaml
 folders:
+
     - map: ~/workspace
       to: /home/vagrant/workspace
 ```
@@ -276,6 +277,7 @@ To enable [NFS](https://www.vagrantup.com/docs/synced-folders/nfs.html), just ad
 
 ```yaml
 folders:
+
     - map: ~/workspace
       to: /home/vagrant/workspace
       type: "nfs"
@@ -285,6 +287,7 @@ You may also pass any options supported by Vagrant's [Synced Folders](https://ww
 
 ```yaml
 folders:
+
     - map: ~/workspace
       to: /home/vagrant/workspace
       type: "nfs"
@@ -311,6 +314,7 @@ The `sites` property allows you to easily map a "domain" to a folder on your Pha
 
 ```yaml
 sites:
+
     - map: phalcon.local
       to:  /home/vagrant/workspace/phalcon/public
 ```
@@ -319,6 +323,7 @@ You can use the `type` parameter to specify the type of Nginx configuration for 
 
 ```yaml
 sites:
+
     - map:  landing.local
       to:   /home/vagrant/workspace/landing/public
       type: spa
@@ -355,6 +360,7 @@ You can also create your own type. To do this take any template from the `provis
 
 ```yaml
 sites:
+
     - map:  my-site.local
       to:   /home/vagrant/workspace/my-site/public
       # provisioning/templates/nginx/phalcon-advanced.conf.j2
@@ -374,6 +380,7 @@ Add the desired settings to your file and then add it to the `copy` section:
 
 ```yaml
 copy:
+
     - from: /home/user/nginx.d/00-autoindex.conf
       to: /etc/nginx/conf.d/
 ```
@@ -418,6 +425,7 @@ provision:
 
     # Install wkhtmltopdf and libffi-dev packages
     apt:
+
         - wkhtmltopdf
         - libffi-dev
 ```
@@ -516,6 +524,7 @@ Once your Phalcon Box environment is provisioned and running, you may want to ad
 
 ```yaml
 sites:
+
     - map: phalcon.local
       to:  /home/vagrant/workspace/phalcon/public
     - map: pdffiller.local
@@ -555,6 +564,7 @@ You can easily register global environment variables. Just add variable and its 
 
 ```yaml
 variables:
+
     - key: TEST_DB_MYSQL_USER
       value: phalcon
 
@@ -571,6 +581,7 @@ This way you will be able to use these variables in your applications or scripts
 # File codeception.yml
 params:
     # Get params from environment
+
     - env
 ```
 
@@ -581,6 +592,7 @@ you will able to configure Unit suite as follows:
 class_name: UnitTester
 modules:
     enabled:
+
         - Db
     config
         Db:
@@ -600,6 +612,7 @@ Site variables are how you can easily add `fastcgi_param` values to your site ho
 
 ```yaml
 sites:
+
     - map: phalconbox.local
       to: /var/www/phalconbox/public
       variables:
@@ -633,6 +646,7 @@ If you wish, you may forward additional ports to the Phalcon Box, as well as spe
 
 ```yaml
 ports:
+
     - send: 63790
       to: 6379
     - send: 50000
@@ -674,6 +688,7 @@ The `networks` property of the `settings.yml` configures network interfaces for 
 
 ```yaml
 networks:
+
     - type: "private_network"
       ip: "192.168.50.99"
 ```
@@ -682,6 +697,7 @@ To enable a [bridged](https://www.vagrantup.com/docs/networking/public_network.h
 
 ```yaml
 networks:
+
     - type: "private_network"
       ip: "192.168.50.99"
       bridge: "en1: Wi-Fi (AirPort)"
@@ -691,6 +707,7 @@ To enable [DHCP](https://www.vagrantup.com/docs/networking/public_network.html),
 
 ```yaml
 networks:
+
     - type: "private_network"
       bridge: "en1: Wi-Fi (AirPort)"
 ```
@@ -715,7 +732,11 @@ git pull origin master
 
 at the location you originally cloned the repository.
 
-The new version of Phalcon Box will contain updated or amended configuration files: * `settings.yml` * `.bash_aliases` * `after_provision.sh`
+The new version of Phalcon Box will contain updated or amended configuration files:
+
+* `settings.yml`
+* `.bash_aliases`
+* `after_provision.sh`
 
 When you run the command `./install` (or `install.bat`) the Phalcon Box creates these files in the root directory. However, if the files already exist, they will not be overwritten.
 
