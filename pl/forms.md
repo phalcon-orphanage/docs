@@ -573,40 +573,40 @@ class ContactForm extends Form
 You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
 
 ```php
-<br /><form method='post'>
-    <?php
+<br />&lt;form method='post'&gt;
+    &lt;?php
 
         // Traverse the form
         foreach ($form as $element) {
             // Get any generated messages for the current element
-            $messages = $form->getMessagesFor(
-                $element->getName()
+            $messages = $form-&gt;getMessagesFor(
+                $element-&gt;getName()
             );
 
             if (count($messages)) {
                 // Print each element
-                echo '<div class='messages'>';
+                echo '&lt;div class='messages'&gt;';
 
                 foreach ($messages as $message) {
                     echo $message;
                 }
 
-                echo '</div>';
+                echo '&lt;/div&gt;';
             }
 
-            echo '<p>';
+            echo '&lt;p&gt;';
 
-            echo '<label for='', $element->getName(), ''>', $element->getLabel(), '</label>';
+            echo '&lt;label for='', $element-&gt;getName(), ''&gt;', $element-&gt;getLabel(), '&lt;/label&gt;';
 
             echo $element;
 
-            echo '</p>';
+            echo '&lt;/p&gt;';
         }
 
-    ?>
+    ?&gt;
 
-    <input type='submit' value='Send' />
-</form>
+    &lt;input type='submit' value='Send' /&gt;
+&lt;/form&gt;
 ```
 
 Or reuse the logic in your form class:
