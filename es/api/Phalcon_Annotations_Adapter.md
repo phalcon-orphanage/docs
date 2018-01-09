@@ -1,37 +1,37 @@
-# Abstract class **Phalcon\\Annotations\\Adapter**
+# Clase abstracta **Phalcon\\Annotations\\Adapter**
 
-*implements* [Phalcon\Annotations\AdapterInterface](/en/3.2/api/Phalcon_Annotations_AdapterInterface)
+*implementa* [Phalcon\Annotations\AdapterInterface](/en/3.2/api/Phalcon_Annotations_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-This is the base class for Phalcon\\Annotations adapters
+Esta es la clase base para los adaptadores Phalcon\\Annotations
 
-## Methods
+## Métodos
 
 public **setReader** ([Phalcon\Annotations\ReaderInterface](/en/3.2/api/Phalcon_Annotations_ReaderInterface) $reader)
 
-Sets the annotations parser
+Establece el analizador de anotaciones
 
 public **getReader** ()
 
-Returns the annotation reader
+Devuelve el lector de anotaciones
 
 public **get** (*string* | *object* $className)
 
-Parses or retrieves all the annotations found in a class
+Analiza o recupera todas las anotaciones encontradas una clase
 
 public **getMethods** (*mixed* $className)
 
-Returns the annotations found in all the class' methods
+Devuelve las anotaciones encontradas en los métodos de la clase
 
 public **getMethod** (*mixed* $className, *mixed* $methodName)
 
-Returns the annotations found in a specific method
+Devuelve las anotaciones encontradas un método específico
 
 public **getProperties** (*mixed* $className)
 
-Returns the annotations found in all the class' methods
+Devuelve las anotaciones encontradas en todos los métodos de la clase
 
 public **getProperty** (*mixed* $className, *mixed* $propertyName)
 
-Returns the annotations found in a specific property
+Devuelve las anotaciones que se encuentran en una propiedad específica

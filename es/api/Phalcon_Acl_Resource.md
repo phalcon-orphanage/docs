@@ -1,25 +1,25 @@
-# Class **Phalcon\\Acl\\Resource**
+# Clase **Phalcon\\Acl\\Resource**
 
-*implements* [Phalcon\Acl\ResourceInterface](/en/3.2/api/Phalcon_Acl_ResourceInterface)
+*implementa* [Phalcon\Acl\ResourceInterface](/en/3.2/api/Phalcon_Acl_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/resource.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-This class defines resource entity and its description
+Esta clase define la entidad de recursos y su descripción
 
-## Methods
+## Métodos
 
 public **getName** ()
 
-Resource name
+Nombre del recurso
 
 public **__toString** ()
 
-Resource name
+Nombre del recurso
 
 public **getDescription** ()
 
-Resource description
+Descripción del recurso
 
 public **__construct** (*mixed* $name, [*mixed* $description])
 
-Phalcon\\Acl\\Resource constructor
+Constructor de Phalcon\\Acl\\Resource

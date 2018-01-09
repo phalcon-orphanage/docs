@@ -1,8 +1,8 @@
-# Interface **Phalcon\\Annotations\\ReaderInterface**
+# Interfaz **Phalcon\\Annotations\\ReaderInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/readerinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/readerinterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-## Methods
+## Métodos
 
 abstract public **parse** (*mixed* $className)
 

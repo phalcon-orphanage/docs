@@ -1,8 +1,8 @@
-# Interface **Phalcon\\Acl\\ResourceAware**
+# Interfaz **Phalcon\\Acl\\ResourceAware**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/resourceaware.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/resourceaware.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-## Methods
+## Métodos
 
 abstract public **getResourceName** ()
 
