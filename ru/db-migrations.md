@@ -36,7 +36,7 @@
 
 <div class="alert alert-danger">
     <p>
-        Миграции доступны через <a href="/[[language]]/[[version]]/devtools-usage">Phalcon Developer Tools</a>. Вам потребуется Phalcon версии не ниже 0.5.0 для использования инструментов разработчика.
+        Migrations are available in <a href="/[[language]]/[[version]]/devtools-usage">Phalcon Developer Tools</a> You need at least Phalcon Framework version 0.5.0 to use developer tools.
     </p>
 </div>
 
@@ -74,9 +74,9 @@
 
 ## Структура класса Migration
 
-Каждый файл содержит уникальный класс, который расширяет `Phalcon\Mvc\Model\Migration`. Эти классы обычно имеют два метода: `up()` и `down()`. Метод `up()` выполняет миграцию, в то время как `down()` откатывает её.
+Each file contains a unique class that extends the `Phalcon\Mvc\Model\Migration` class. These classes normally have two methods: `up()` and `down()`. `up()` performs the migration, while `down()` rolls it back.
 
-Метод `up()` также содержит `магический` метод `morphTable()`. Магия начинается тогда, когда он распознает изменения, требующие синхронизации фактической таблицы в базе данных, к приведённому описанию.
+`up()` also contains the `magic` method `morphTable()`. The magic comes when it recognizes the changes needed to synchronize the actual table in the database to the description given.
 
 ```php
 <?php
@@ -171,7 +171,7 @@ class ProductsMigration_100 extends Migration
 }
 ```
 
-Приведённый класс назван `ProductsMigration_100`. Суффикс 100 указывает на версию 1.0.0. Метод `morphTable()` принимает ассоциативный массив с 4 возможными параметрами:
+The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.0.0. `morphTable()` receives an associative array with 4 possible sections:
 
 | Параметр     | Описание                                                                                                                               | Опционально |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:-----------:|
@@ -184,7 +184,7 @@ class ProductsMigration_100 extends Migration
 
 ### Определение столбцов
 
-`Phalcon\Db\Column` используется для определения столбцов таблицы. Этот класс инкапсулирует возможности связанные с конкретным столбцом. Его конструктор принимает в качестве первого параметра имя столбца и массив, описывающий колонки. Доступны следующие опции при описании столбцов:
+`Phalcon\Db\Column` is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
 | Свойство        | Описание                                                                                                                   | Опционально |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------- |:-----------:|
@@ -223,13 +223,13 @@ class ProductsMigration_100 extends Migration
 
 ### Определение Индексов
 
-`Phalcon\Db\Index` определяет индексы таблицы. Для создания индекса требуется определить его имя и список столбцов. Заметим, что если любой индекс имеет название `PRIMARY`, то Phalcon создаст индекс первичного ключа в этой таблице.
+`Phalcon\Db\Index` определяет индексы таблицы. An index only requires that you define a name for it and a list of its columns. Заметим, что если любой индекс имеет название `PRIMARY`, то Phalcon создаст индекс первичного ключа в этой таблице.
 
 <a name='defining-references'></a>
 
 ### Определение Связей
 
-`Phalcon\Db\Reference` определяет связи таблицы (также называемые внешними ключами). Следующие параметры могут быть использованы для определения связей:
+`Phalcon\Db\Reference` defines table references (also called foreign keys). The following options can be used to define a reference:
 
 | Параметр            | Описание                                                                                                    | Опционально | Реализовано в    |
 | ------------------- | ----------------------------------------------------------------------------------------------------------- |:-----------:| ---------------- |
@@ -244,7 +244,7 @@ class ProductsMigration_100 extends Migration
 
 ## Запись миграций
 
-Миграции предназначены не только для изменения структуры таблицы. Миграция является обычным классом PHP, так что вы не ограничены этими функциями. Например, после добавления столбца можно написать код для установки значений этого столбца для существующих записей. Для более подробной информации и примеров отдельных методов, обратитесь к разделу [Уровень абстракции базы данных](/[[language]]/[[version]]/db).
+Migrations aren't only designed to 'morph' table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the [database component](/[[language]]/[[version]]/db-layer).
 
 ```php
 <?php
@@ -276,10 +276,10 @@ class ProductsMigration_100 extends Migration
 
 ## Запуск миграций
 
-Как только сгенерированные миграции загружены на целевой сервер, вы можете легко запустить их, как показано в следующем примере:
+Once the generated migrations are uploaded on the target server, you can easily run them as shown in the following example:
 
 ![](/images/content/migrations-4.png)
 
 ![](/images/content/migrations-5.png)
 
-В зависимости от того, насколько сильно устаревшей является текущая версия базы данных, Phalcon может запускать несколько версий миграции в одном процессе миграции. Если указать целевую версию, Phalcon будет запускать нужные миграций пока не достигнет указанной версии.
+Depending on how outdated is the database with respect to migrations, Phalcon may run multiple migration versions in the same migration process. If you specify a target version, Phalcon will run the required migrations until it reaches the specified version.
