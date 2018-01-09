@@ -6,4 +6,4 @@
 
 abstract public **getResourceName** ()
 
-Returns resource name
+Retorna el nombre del recurso
