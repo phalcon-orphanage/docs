@@ -2,7 +2,12 @@
 
 Пулл реквест (Pull Request) — это изменения в коде, которые или исправляют определенную проблему или добавляют функциональность.
 
-Ваш пулл реквест должен: * Вносить изменения в правильную ветку. **Мы не принимаем пулл реквесты в ветку `master`** * Содержать обновлённый CHANGELOG-файл * Содержать unit-тесты покрывающие ваши изменения * При необходимости содержать документацию и примеры
+Your Pull request must include:
+
+* Issued to the correct branch. **We do not accept Pull Requests to the `master` branch**
+* Update to the CHANGELOG
+* Unit tests
+* Documentation if necessary and usage examples
 
 Пожалуйста, укажите ссылку на тикет в GitHub, если ваш пулл реквест, исправляет какую либо ошибку. Если такого тикета нет, то создайте его.
 
