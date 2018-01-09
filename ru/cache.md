@@ -71,7 +71,7 @@
               <a href="#adapters-backend-apc">Параметры APC бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-apcu">Параметры APCu бэкэнда</a>
+              <a href="#adapters-backend-apcu">APCU Backend Options</a>
             </li>
             <li>
               <a href="#adapters-backend-mongo">Параметры Mongo бэкэнда</a>
@@ -80,7 +80,7 @@
               <a href="#adapters-backend-xcache">Параметры XCache бэкэнда</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Параметры Redis бэкэнда</a>
+              <a href="#adapters-backend-redis">Redis Backend Options</a>
             </li>
           </ul>
         </li>
@@ -576,7 +576,7 @@ $cache->save('my-key', $data);
 
 <div class='alert alert-warning'>
     <p>
-        <strong>ПРИМЕЧАНИЕ</strong> В PHP 7 чтобы использовать классы адаптеров на базе phalcon <code>apc</code> вам нужно установить <code>apcu</code> и <code>apcu_bc</code> пакеты из pecl. Начиная с Phalcon 3.2.0 вы можете переключить классы <code>*\Apc</code> на <code>*\Apcu</code> и удалить <code>apcu_bc</code>. Имейте в виду, что в Phalcon 4, вероятнее всего, мы удалим все классы `*\Apc`.
+        <strong>ПРИМЕЧАНИЕ</strong> В PHP 7 чтобы использовать классы адаптеров на базе phalcon <code>apc</code> вам нужно установить <code>apcu</code> и <code>apcu_bc</code> пакеты из pecl. Now in Phalcon 3.2.0 you can switch your <code>*\Apc</code> classes to <code>*\Apcu</code> and remove <code>apcu_bc</code>. Имейте в виду, что в Phalcon 4, вероятнее всего, мы удалим все классы `*\Apc`.
     </p>
 </div>
 
@@ -702,7 +702,7 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-apcu'></a>
 
-### Параметры APCu бэкэнда
+### APCU Backend Options
 
 This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
 
@@ -727,7 +727,7 @@ This backend will store cached content on Alternative PHP Cache ([APCU](http://p
 
 ### Параметры XCache бэкэнда
 
-Данные будут сохранены в [XCache](http://xcache.lighttpd.net/). Доступна лишь одна опция:
+This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
 
 | Параметр | Описание                                                        |
 | -------- | --------------------------------------------------------------- |
@@ -735,9 +735,9 @@ This backend will store cached content on Alternative PHP Cache ([APCU](http://p
 
 <a name='adapters-backend-redis'></a>
 
-### Параметры Redis бэкэнда
+### Redis Backend Options
 
-Этот бэкэнд будет хранить закэшированный контент на Redis сервере ([Redis](http://redis.io/)). Доступные опции:
+This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
 
 | Параметр     | Описание                                                        |
 | ------------ | --------------------------------------------------------------- |
@@ -748,4 +748,4 @@ This backend will store cached content on Alternative PHP Cache ([APCU](http://p
 | `persistent` | Создавать постоянное соединение к Redis серверу.                |
 | `index`      | Индекс для использования в базе данных Redis.                   |
 
-Доступны и другие адаптеры для этих компонентов в репозитории [Phalcon Incubator](https://github.com/phalcon/incubator)
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
