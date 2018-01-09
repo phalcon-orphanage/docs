@@ -272,7 +272,7 @@ Volt syntax:
 
 ## Making Select Boxes
 
-Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are `Phalcon\Tag::select()` and `Phalcon\Tag::selectStatic()`. `Phalcon\Tag::select()` has been was specifically designed to work with the Phalcon [Models](/[[language]]/[[version]]/models) (`Phalcon\Mvc\Model`), while `Phalcon\Tag::selectStatic()` can with PHP arrays.
+Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are `Phalcon\Tag::select()` and `Phalcon\Tag::selectStatic()`. `Phalcon\Tag::select()` has been was specifically designed to work with the Phalcon [Models](/[[language]]/[[version]]/db-models) (`Phalcon\Mvc\Model`), while `Phalcon\Tag::selectStatic()` can with PHP arrays.
 
 ```php
 <?php
