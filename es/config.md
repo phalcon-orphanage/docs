@@ -34,7 +34,7 @@
 
 `Phalcon\Config` es un componente utilizado para convertir los archivos de configuración de varios formatos (usando adaptadores) a objetos PHP para usarlos en una aplicación.
 
-Los valores pueden obtenerse de `Phalcon\Config` como se muestra a continuación:
+Loa valores pueden obtenerse de `Phalcon\Config` como se muestra a continuación:
 
 ```php
 <?php
