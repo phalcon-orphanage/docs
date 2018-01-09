@@ -1,6 +1,6 @@
 # Abstract class **Phalcon\\Logger\\Formatter**
 
-*implements* [Phalcon\Logger\FormatterInterface](/en/3.2/api/Phalcon_Logger_FormatterInterface)
+*implements* [Phalcon\Logger\FormatterInterface](/[[language]]/[[version]]/api/Phalcon_Logger_FormatterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/logger/formatter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -20,7 +20,7 @@ Interpolates context values into the message placeholders
 
 
 
-abstract public  **format** (*mixed* $message, *mixed* $type, *mixed* $timestamp, [*mixed* $context]) inherited from [Phalcon\Logger\FormatterInterface](/en/3.2/api/Phalcon_Logger_FormatterInterface)
+abstract public  **format** (*mixed* $message, *mixed* $type, *mixed* $timestamp, [*mixed* $context]) inherited from [Phalcon\Logger\FormatterInterface](/[[language]]/[[version]]/api/Phalcon_Logger_FormatterInterface)
 
 ...
 

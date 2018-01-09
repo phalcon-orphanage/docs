@@ -1,6 +1,6 @@
 # Abstract class **Phalcon\\Mvc\\Model\\Validator**
 
-*implements* [Phalcon\Mvc\Model\ValidatorInterface](/en/3.2/api/Phalcon_Mvc_Model_ValidatorInterface)
+*implements* [Phalcon\Mvc\Model\ValidatorInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_ValidatorInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/validator.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -47,7 +47,7 @@ Check whether an option has been defined in the validator options
 
 
 
-abstract public  **validate** ([Phalcon\Mvc\EntityInterface](/en/3.2/api/Phalcon_Mvc_EntityInterface) $record) inherited from [Phalcon\Mvc\Model\ValidatorInterface](/en/3.2/api/Phalcon_Mvc_Model_ValidatorInterface)
+abstract public  **validate** ([Phalcon\Mvc\EntityInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_EntityInterface) $record) inherited from [Phalcon\Mvc\Model\ValidatorInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_ValidatorInterface)
 
 ...
 

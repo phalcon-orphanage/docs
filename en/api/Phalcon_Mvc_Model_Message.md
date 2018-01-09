@@ -1,6 +1,6 @@
 # Class **Phalcon\\Mvc\\Model\\Message**
 
-*implements* [Phalcon\Mvc\Model\MessageInterface](/en/3.2/api/Phalcon_Mvc_Model_MessageInterface)
+*implements* [Phalcon\Mvc\Model\MessageInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_MessageInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/message.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -31,7 +31,7 @@ class Robots extends \Phalcon\Mvc\Model
 
 
 ## Methods
-public  **__construct** (*string* $message, [*string* | *array* $field], [*string* $type], [[Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model], [*int* | *null* $code])
+public  **__construct** (*string* $message, [*string* | *array* $field], [*string* $type], [[Phalcon\Mvc\ModelInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_ModelInterface) $model], [*int* | *null* $code])
 
 Phalcon\\Mvc\\Model\\Message constructor
 
@@ -73,7 +73,7 @@ Returns field name related to message
 
 
 
-public  **setModel** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
+public  **setModel** ([Phalcon\Mvc\ModelInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_ModelInterface) $model)
 
 Set the model who generates the message
 
