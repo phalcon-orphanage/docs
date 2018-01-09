@@ -601,7 +601,7 @@ Además, puede utilizar el segundo parámetro de `getRelated()` al acceder a la 
 ```php
 <?php
 
-// Unpaid Invoices
+// Facturas impagas
 $company = Companies::findFirst(
     [
         'conditions' => 'id = :id:',
@@ -617,7 +617,7 @@ $unpaidInvoices = $company->getRelated(
     ['conditions' => "inv_status = 'paid'"]
 );
 
-// Also ordered
+// Ordenadas
 $unpaidInvoices = $company->getRelated(
     'Invoices', 
     [
