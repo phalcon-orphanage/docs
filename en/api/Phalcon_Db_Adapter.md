@@ -453,7 +453,7 @@ print_r(
 
 
 
-public [Phalcon\Db\Index](/en/3.2/api/Phalcon_Db_Index[]) **describeIndexes** (*string* $table, [*string* $schema])
+public [Phalcon\Db\Index](/en/3.2/api/Phalcon_Db_Index) **describeIndexes** (*string* $table, [*string* $schema])
 
 Lists table indexes
 
