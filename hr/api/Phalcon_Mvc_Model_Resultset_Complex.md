@@ -126,7 +126,7 @@ public **delete** ([[Closure](http://php.net/manual/en/class.closure.php) $condi
 
 Deletes every record in the resultset
 
-public [Phalcon\Mvc\Model](/en/3.2/api/Phalcon_Mvc_Model[]) **filter** (*callback* $filter) inherited from [Phalcon\Mvc\Model\Resultset](/en/3.2/api/Phalcon_Mvc_Model_Resultset)
+public [Phalcon\Mvc\Model](/en/3.2/api/Phalcon_Mvc_Model) **filter** (*callback* $filter) inherited from [Phalcon\Mvc\Model\Resultset](/en/3.2/api/Phalcon_Mvc_Model_Resultset)
 
 Filters a resultset returning only those the developer requires
 

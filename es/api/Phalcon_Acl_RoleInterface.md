@@ -6,12 +6,12 @@
 
 abstract public **getName** ()
 
-Returns the role name
+Retorna el nombre del rol
 
 abstract public **getDescription** ()
 
-Returns role description
+Retorna la descripción del rol
 
 abstract public **__toString** ()
 
-Magic method __toString
+Método mágico __toString

@@ -1,20 +1,20 @@
-# Class **Phalcon\\Loader**
+# Clase **Phalcon\\Loader**
 
-*implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
+*implementa* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/loader.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/loader.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-This component helps to load your project classes automatically based on some conventions
+Este componente ayuda a cargar automáticamente las clases de tu proyecto basándose en algunas convenciones
 
 ```php
 <?php
 
 use Phalcon\Loader;
 
-// Creates the autoloader
+// Crear el  auto cargador
 $loader = new Loader();
 
-// Register some namespaces
+// Registrar algunos espacios de nombres
 $loader->registerNamespaces(
     [
         "Example\\Base"    => "vendor/example/base/",
@@ -23,35 +23,35 @@ $loader->registerNamespaces(
     ]
 );
 
-// Register autoloader
+// Registrear el auto cargador
 $loader->register();
 
-// Requiring this class will automatically include file vendor/example/adapter/Some.php
+// Al requerir esta clase incluirá automáticamente el archivo vendor/example/adapter/Some.php
 $adapter = new \Example\Adapter\Some();
 
 ```
 
-## Methods
+## Métodos
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+Establece el gestor de eventos
 
 public **getEventsManager** ()
 
-Returns the internal event manager
+Devuelve el gestor de eventos internos
 
 public **setExtensions** (*array* $extensions)
 
-Sets an array of file extensions that the loader must try in each attempt to locate the file
+Establece un conjunto de extensiones de archivo que el cargador debe probar en cada intento de localizar el archivo
 
 public **getExtensions** ()
 
-Returns the file extensions registered in the loader
+Devuelve las extensiones de archivo registradas en el cargador
 
 public **registerNamespaces** (*array* $namespaces, [*mixed* $merge])
 
-Register namespaces and their related directories
+Registra los nombres de espacios y sus directorios relacionados
 
 protected **prepareNamespace** (*array* $namespace)
 
@@ -59,52 +59,52 @@ protected **prepareNamespace** (*array* $namespace)
 
 public **getNamespaces** ()
 
-Returns the namespaces currently registered in the autoloader
+Devuelve los espacios de nombres registrados actualmente en el auto cargador
 
 public **registerDirs** (*array* $directories, [*mixed* $merge])
 
-Register directories in which "not found" classes could be found
+Registra los directorios en los que se pueden localizar las clases "no encontradas"
 
 public **getDirs** ()
 
-Returns the directories currently registered in the autoloader
+Devuelve los directorios registrados actualmente en el auto cargador
 
 public **registerFiles** (*array* $files, [*mixed* $merge])
 
-Registers files that are "non-classes" hence need a "require". This is very useful for including files that only have functions
+Registra archivos que son "no clases" y por lo tanto necesitan un "require". Esto es muy útil para incluir archivos que sólo tienen funciones
 
 public **getFiles** ()
 
-Returns the files currently registered in the autoloader
+Devuelve los archivos registrados actualmente en el auto cargador
 
 public **registerClasses** (*array* $classes, [*mixed* $merge])
 
-Register classes and their locations
+Registra las clases y sus ubicaciones
 
 public **getClasses** ()
 
-Returns the class-map currently registered in the autoloader
+Devuelve el mapa de clases que actualmente tiene registrado el auto cargador
 
 public **register** ([*mixed* $prepend])
 
-Register the autoload method
+Registrar el método de auto carga
 
 public **unregister** ()
 
-Unregister the autoload method
+Anula el registro el método de auto carga
 
 public **loadFiles** ()
 
-Checks if a file exists and then adds the file by doing virtual require
+Comprueba si un archivo existe y a continuación agrega el archivo haciendo un require virtual
 
 public **autoLoad** (*mixed* $className)
 
-Autoloads the registered classes
+Carga automáticamente las clases registradas
 
 public **getFoundPath** ()
 
-Get the path when a class was found
+Obtener la ruta cuando una clase fue encontrada
 
 public **getCheckedPath** ()
 
-Get the path the loader is checking for a path
+Obtener la ruta que está revisando el cargador para un ruta específica

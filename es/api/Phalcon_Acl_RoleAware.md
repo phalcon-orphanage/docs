@@ -6,4 +6,4 @@
 
 abstract public **getRoleName** ()
 
-Returns role name
+Retorna el nombre del rol

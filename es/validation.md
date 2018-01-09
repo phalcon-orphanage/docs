@@ -158,27 +158,27 @@ if (count($messages)) {
 
 Phalcon cuenta con un conjunto de validadores incorporados para este componente:
 
-| Clase                                          | Explicación                                                          |
-| ---------------------------------------------- | -------------------------------------------------------------------- |
-| `Phalcon\Validation\Validator\Alnum`        | Valida que el valor de un campo tenga solo caracteres alfanuméricos. |
-| `Phalcon\Validation\Validator\Alpha`        | Valida que el valor de un campo tenga solo caracteres alfabéticos.   |
-| `Phalcon\Validation\Validator\Date`         | Valida que el valor de un campo sea una fecha válida.                |
-| `Phalcon\Validation\Validator\Digit`        | Valida que el valor de un campo tenga solo caracteres numéricos.     |
-| `Phalcon\Validation\Validator\File`         | Valida que el valor de un campo sea un archivo correcto.             |
-| `Phalcon\Validation\Validator\Uniqueness`   | Valida que el valor de un campo sea único en el modelo relacionado.  |
-| `Phalcon\Validation\Validator\Numericality` | Valida que el valor de un campo sea un valor numérico.               |
-| `Phalcon\Validation\Validator\PresenceOf`   | Valida que el valor de un campo no sea nulo o una cadena vacía.      |
-| `Phalcon\Validation\Validator\Identical`    | Validates that a field's value is the same as a specified value.     |
-| `Phalcon\Validation\Validator\Email`        | Validates that field contains a valid email format.                  |
-| `Phalcon\Validation\Validator\ExclusionIn`  | Validates that a value is not within a list of possible values.      |
-| `Phalcon\Validation\Validator\InclusionIn`  | Validates that a value is within a list of possible values.          |
-| `Phalcon\Validation\Validator\Regex`        | Validates that the value of a field matches a regular expression.    |
-| `Phalcon\Validation\Validator\StringLength` | Validates the length of a string.                                    |
-| `Phalcon\Validation\Validator\Between`      | Validates that a value is between two values.                        |
-| `Phalcon\Validation\Validator\Confirmation` | Validates that a value is the same as another present in the data.   |
-| `Phalcon\Validation\Validator\Url`          | Validates that field contains a valid URL.                           |
-| `Phalcon\Validation\Validator\CreditCard`   | Validates a credit card number.                                      |
-| `Phalcon\Validation\Validator\Callback`     | Validates using callback function.                                   |
+| Clase                                          | Explicación                                                             |
+| ---------------------------------------------- | ----------------------------------------------------------------------- |
+| `Phalcon\Validation\Validator\Alnum`        | Valida que el valor de un campo tenga solo caracteres alfanuméricos.    |
+| `Phalcon\Validation\Validator\Alpha`        | Valida que el valor de un campo tenga solo caracteres alfabéticos.      |
+| `Phalcon\Validation\Validator\Date`         | Valida que el valor de un campo sea una fecha válida.                   |
+| `Phalcon\Validation\Validator\Digit`        | Valida que el valor de un campo tenga solo caracteres numéricos.        |
+| `Phalcon\Validation\Validator\File`         | Valida que el valor de un campo sea un archivo correcto.                |
+| `Phalcon\Validation\Validator\Uniqueness`   | Valida que el valor de un campo sea único en el modelo relacionado.     |
+| `Phalcon\Validation\Validator\Numericality` | Valida que el valor de un campo sea un valor numérico.                  |
+| `Phalcon\Validation\Validator\PresenceOf`   | Valida que el valor de un campo no sea nulo o una cadena vacía.         |
+| `Phalcon\Validation\Validator\Identical`    | Valida que el valor de un campo sea el mismo que el valor especificado. |
+| `Phalcon\Validation\Validator\Email`        | Valida que un campo contenga un email con formato válido.               |
+| `Phalcon\Validation\Validator\ExclusionIn`  | Valida que un valor no este incluido en una lista de posibles valores.  |
+| `Phalcon\Validation\Validator\InclusionIn`  | Valida que un valor este incluido en una lista de posibles valores.     |
+| `Phalcon\Validation\Validator\Regex`        | Valida que el valor del campo coincida con una expresión regular.       |
+| `Phalcon\Validation\Validator\StringLength` | Valida el largo de una cadena.                                          |
+| `Phalcon\Validation\Validator\Between`      | Valida que un valor este entre dos valores.                             |
+| `Phalcon\Validation\Validator\Confirmation` | Valida que un valor sea igual a otro presente en los datos.             |
+| `Phalcon\Validation\Validator\Url`          | Valida que el campo contenga una URL válida.                            |
+| `Phalcon\Validation\Validator\CreditCard`   | Valida un número de tarjeta de crédito.                                 |
+| `Phalcon\Validation\Validator\Callback`     | Valida utilizando una función de retorno de llamada.                    |
 
 El siguiente ejemplo explica como crear validadores adicionales para este componente:
 
@@ -309,7 +309,7 @@ if (count($messages)) {
 }
 ```
 
-You can pass a `message` parameter to change/translate the default message in each validator, even it's possible to use the wildcard `:field` in the message to be replaced by the label of the field:
+Es posible pasar un parámetro `message` para cambiar o traducir el mensaje por defecto en cada validador, incluso es posible utilizar en el mensaje el comodín `:field` para ser reemplazado por el nombre del campo:
 
 ```php
 <?php
@@ -385,7 +385,7 @@ El filtrado y desinfección se realizan mediante el componente [filter](/[[langu
 
 ## Eventos de Validación
 
-Los validaciones se organizan en clases, es posible implementar los métodos `beforeValidation()` y `afterValidation()` para llevar a cabo más controles, filtros, limpieza, etcétera. If the `beforeValidation()` method returns `false` the validation is automatically cancelled:
+Los validaciones se organizan en clases, es posible implementar los métodos `beforeValidation()` y `afterValidation()` para llevar a cabo más controles, filtros, limpieza, etcétera. Si el método `beforeValidation()` devuelve `false` se cancelará automáticamente la validación:
 
 ```php
 <?php
@@ -480,7 +480,7 @@ $validation->add(
 );
 ```
 
-The first validator has the option `cancelOnFail` with a value of `true`, therefore if that validator fails the remaining validators in the chain are not executed.
+El primero validador tiene la opción `cancelOnFail` con el valor `true`, por lo tanto, si el validador falla los validadores restantes no se ejecutarán.
 
 Si esta creando validadores personalizados, es posible detener la validación en cadena estableciendo la opción `cancelOnFail` como vemos a continuación:
 

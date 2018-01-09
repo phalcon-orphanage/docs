@@ -12,7 +12,7 @@ Clase base para Phalcon\\Cli\\Console y Phalcon\\Mvc\\Application.
 
 public **__construct** ([[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector])
 
-Phalcon\\Application Constructor
+Constructor de la clase Phalcon\\Application
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
