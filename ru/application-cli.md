@@ -36,7 +36,7 @@
 
 * `app/config/config.php`
 * `app/tasks/MainTask.php`
-* `app/cli.php` <-- основной загрузочный файл
+* `app/cli.php` <-- main bootstrap file
 
 <a name='creating-bootstrap'></a>
 
