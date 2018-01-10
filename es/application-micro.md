@@ -370,7 +370,7 @@ Acceder al objeto `$app` dentro de la función anónima puede lograrse mediante 
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $content = "<h1>This is order: {$name}!</h1>";
+        $content = "<h1>Esta es la orden: {$name}!</h1>";
         $app->response->setContent($content);
         $app->response->send();
     }
@@ -506,7 +506,7 @@ class OrdersController extends Controller
 
     public function show($name)
     {
-        $content = "<h1>This is order: {$name}!</h1>";
+        $content = "<h1>Esta es la orden: {$name}!</h1>";
         $this->response->setContent($content);
 
         return $this->response;
