@@ -71,7 +71,7 @@
 
 # ODM (Mapeador Objecto-Documento)
 
-In addition to its ability to [map tables](/[[language]]/[[version]]/db-models) in relational databases, Phalcon can map documents from NoSQL databases. El ODM ofrece una funcionalidad CRUD, eventos, validaciones entre otros servicios.
+Además de su capacidad para [asignar tablas](/[[language]]/[[version]]/db-models) en bases de datos relacionales, Phalcon puede asignar documentos de bases de datos NoSQL. El ODM ofrece una funcionalidad CRUD, eventos, validaciones entre otros servicios.
 
 Debido a la ausencia de consultas y planificadores SQL, con las bases de datos NoSQL se pueden ver mejoras reales en el rendimiento utilizando el enfoque de Phalcon. Además, no hay construcción de sentencias de SQL, lo que reduce la posibilidad de inyecciones SQL.
 
