@@ -188,7 +188,7 @@ Si este comando falla, asegúrese de que su instalación de Vagrant esté actual
 
 <div class="alert alert-warning">
     <p>
-        To use the VMware provider, you will need to purchase both VMware Fusion / Workstation and the <a href="https://www.vagrantup.com/vmware">VMware Vagrant plug-in</a>. Though it is not free, VMware can provide faster shared folder performance out of the box.  
+        Para usar VMWare como proveedor, necesitará adquirir VMWare Fusion o Workstation y el complemento <a href="https://www.vagrantup.com/vmware">VMware Vagrant</a>. Aunque no es gratuito, VMWare puede proporcionar un mejor rendimiento en carpetas compartidas.  
     </p>
 </div>
 
@@ -298,7 +298,7 @@ folders:
 
 <div class="alert alert-danger">
     <p>
-        macOS users probably will need to install <code>vagrant-bindfs</code> plugin to fix shared folder (NFS) permission issue:    
+        Los usuarios de macOS probablemente necesiten instalar el componente <code>vagrant-bindfs</code> para corregir los errores de permisos en las carpetas compartidas (NFS):    
     </p>
 </div>
 
@@ -348,7 +348,7 @@ Siéntase libre se sugerir un nuevo tipo de configuración de Nginx abriendo una
 
 <div class="alert alert-warning">
     <p>
-        If you change the <code>sites</code> property after provisioning the Phalcon Box, you must re-run <code>vagrant reload --provision</code> to update the Nginx configuration on the virtual machine.
+        Si cambia la propiedad <code>sites</code> después de provisionar la Caja de Phalcon, debería volver a ejecutar <code>vagrant reload --provision</code> para actualizar la configuración de Nginx en la máquina virtual.
     </p>
 </div>
 
@@ -401,7 +401,7 @@ Asegúrese de que la dirección IP listada es la misma que esta en el archivo `s
 
 <div class="alert alert-danger">
     <p>
-        To enable adding new sites to the <code>hosts</code> file automatically use <code>vagrant-hostsupdater</code> plugin: 
+        Para permitir agregar nuevos sitios para el archivo <code>hosts</code> automáticamente utilice el plugin <code>vagrant-hostsupdater</code>: 
     </p>
 </div>
 
@@ -418,14 +418,13 @@ Hicimos nuestro mejor esfuerzo para proporcionar una Caja Phalcon con todos los 
 Debido a estas consideraciones, permitimos a los usuarios especificar qué paquetes personalizados necesitan por cada disposición. Para instalar los paquetes necesarios añadir sus nombres en la sección de `apt`:
 
 ```yaml
-# Provisioning features
+# Características de prestación
 provision:
-    # do full system update for each full provisoning
+    # Hacer una actualización completa del sistema para prestación
     update: true
 
-    # Install wkhtmltopdf and libffi-dev packages
+    # Instalar los paquetes wkhtmltopdf y libffi-dev
     apt:
-
         - wkhtmltopdf
         - libffi-dev
 ```
@@ -461,7 +460,7 @@ function box()
 
 <div class="alert alert-warning">
     <p>
-        Make sure to tweak the <code>$HOME/workspace</code> path in the function to the location of your actual Phalcon Box installation. Once the function is installed, you may run commands like <code>box up</code> or <code>box ssh</code> from anywhere on your system. 
+        Asegúrese de alterar el path <code>$HOME/workspace</code> en la función con la localización de su instalación actual de la Caja de Phalcon. Una vez instalada la función, puede ejecutar comandos como <code>box up</code> o <code>box ssh</code> desde cualquier lugar del sistema. 
     </p>
 </div>
 
@@ -486,7 +485,7 @@ set box=
 
 <div class="alert alert-warning">
     <p>
-        Make sure to tweak the example <code>C:\workspace</code> path in the script to the actual location of your Phalcon Box installation. After creating the file, add the file location to your <code>PATH</code>. You may then run commands like <code>box up</code> or <code>box ssh</code> from anywhere on your system.
+        Asegúrese de alterar el path del ejemplo <code>C:\workspace</code> en el código con la localización de su instalación actual de la Caja de Phalcon. Después de crear el fichero, agregue la localización del fichero a su <code>PATH</code>. Entonces usted podrá ejecutar comandos como <code>box up</code> o <code>box ssh</code> desde cualquier punto en su sistema.
     </p>
 </div>
 
@@ -506,7 +505,7 @@ Para conectar con su base de datos MySQL, PostgreSQL o MongoDB desde su cliente 
 
 <div class="alert alert-danger">
     <p>
-        You should only use these non-standard ports when connecting to the databases from your host machine. Se utilizará el puerto predeterminado <code>330</code> y '' en su archivo de configuración de base de datos de Phalcon si Phalcon está funcionando dentro de la máquina Virtual.
+        Debería solo usar estos puertos no estándar cuando conecte con bases de datos desde su máquina anfitrión. Se utilizará el puerto predeterminado <code>330</code> y '' en su archivo de configuración de base de datos de Phalcon si Phalcon está funcionando dentro de la máquina Virtual.
     </p>
 </div>
 
@@ -524,7 +523,6 @@ Una vez que tu entorno de la Caja de Phalcon está aprovisionado y funcionando, 
 
 ```yaml
 sites:
-
     - map: phalcon.local
       to:  /home/vagrant/workspace/phalcon/public
     - map: pdffiller.local
@@ -542,7 +540,7 @@ Si Vagrant no está gestionando su fichero "hosts" automáticamente, además deb
 
 <div class="alert alert-danger">
     <p>
-        To enable adding new sites to the <code>hosts</code> file automatically use <code>vagrant-hostsupdater</code> plugin:
+        Para permitir agregar nuevos sitios para el archivo <code>hosts</code> automáticamente utilice el plugin <code>vagrant-hostsupdater</code>:
     </p>
 </div>
 
@@ -578,9 +576,9 @@ variables:
 De esta manera es posible habilitar el uso de variables en sus aplicaciones o códigos. Por ejemplo, al configurar [Codeception](http://codeception.com) de esta manera:
 
 ```yaml
-# File codeception.yml
+# Archivo codeception.yml
 params:
-    # Get params from environment
+    # Obtener parámetros del entorno
 
     - env
 ```
@@ -588,7 +586,7 @@ params:
 Usted podrá configurar el conjunto de unidades de la siguiente manera:
 
 ```yaml
-# File tests/unit.suite.yml
+# Archivo tests/unit.suite.yml
 class_name: UnitTester
 modules:
     enabled:
@@ -618,7 +616,7 @@ sites:
       variables:
           - key: APP_ENV
             value: development
-          # Yet another example
+          # Otro ejemplo
           - key: AMQP_DEBUG
             value: true
 ```
@@ -676,7 +674,7 @@ share blog.local -region=eu -subdomain=phalcongelist
 
 <div class="alert alert-danger">
     <p>
-        Vagrant is inherently insecure and you are exposing your virtual machine to the Internet when running the <code>share</code> command.
+        Recuerde que Vagrant es inherentemente inseguro y está exponiendo su máquina virtual a Internet cuando ejecuta el comando <code>share</code>.
     </p>
 </div>
 
@@ -732,7 +730,7 @@ git pull origin master
 
 en el lugar que originalmente clonado el repositorio.
 
-The new version of Phalcon Box will contain updated or amended configuration files:
+La nueva verisón de la Caja de Phalcon contendrá archivos de configuración actualizados y modificados:
 
 * `settings.yml`
 * `.bash_aliases`
