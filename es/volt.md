@@ -151,10 +151,9 @@ Las vistas de Volt se compilan a código PHP puro, así que, básicamente ahorra
 {% block last_products %}
 
 {% for product in products %}
-
-    * Name: {{ product.name|e }}
-    {% if product.status === 'Active' %}
-       Price: {{ product.price + product.taxes/100 }}
+    * Nombre: {{ product.name|e }}
+    {% if product.status === 'Activo' %}
+       Precio: {{ product.price + product.taxes/100 }}
     {% endif  %}
 {% endfor  %}
 
