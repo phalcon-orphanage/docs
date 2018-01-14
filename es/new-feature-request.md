@@ -24,4 +24,4 @@ En los siguientes casos se rechazará una solicitud de nueva característica:
 
 Para enviar una NFR no necesita proporcionar el código C, Zephir o desarrollar la función. Las solicitudes de nuevas características explican el objetivo de la aplicación prevista y abren la discusión sobre la mejor manera de implementarla.
 
-Todas las NFR deben ser publicadas como un tema nuevo en [Github](https://github.com/phalcon/cphalcon/issues).
+Todas las solicitudes deben ser publicadas como un tema nuevo en [Github](https://github.com/phalcon/cphalcon/issues).
