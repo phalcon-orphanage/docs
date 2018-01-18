@@ -98,7 +98,7 @@ $session = Factory::load($options);
 
 ## Almacenamiento/recuperación de datos en sesión
 
-Desde un controlador, una vista o cualquier otro componente que se extienda de `Phalcon\Di\Injectable` se puede acceder al servicio de sesión y almacenar elementos y recuperarlos, como vemos en el siguiente ejemplo:
+From a controller, a view or any other component that extends `Phalcon\Di\Injectable` you can access the session service and store items and retrieve them in the following way:
 
 ```php
 <?php
@@ -109,15 +109,15 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        // Definir una variable en sesión
+        // Set a session variable
         $this->session->set('user-name', 'Michael');
     }
 
     public function welcomeAction()
     {
-        // Comprobar si una variable esta definida
+        // Check if the variable is defined
         if ($this->session->has('user-name')) {
-            // Obtener dicho valor
+            // Retrieve its value
             $name = $this->session->get('user-name');
         }
     }
@@ -129,7 +129,7 @@ class UserController extends Controller
 
 ## Destrucción/eliminación de sesiones
 
-También es posible quitar variables específicas o destruir toda la sesión:
+It's also possible remove specific variables or destroy the whole session:
 
 ```php
 <?php
@@ -140,13 +140,13 @@ class UserController extends Controller
 {
     public function removeAction()
     {
-        // Eliminar una variable
+        // Remove a session variable
         $this->session->remove('user-name');
     }
 
     public function logoutAction()
     {
-        // Destruir toda la sesión
+        // Destroy the whole session
         $this->session->destroy();
     }
 }
@@ -156,18 +156,18 @@ class UserController extends Controller
 
 ## Aislamiento de datos de la sesión entre aplicaciones
 
-A veces un usuario puede utilizar la misma aplicación dos veces en el mismo servidor, en la misma sesión. Seguramente, si utilizamos variables de sesión, queremos que cada aplicación tenga sus datos de sesión separados (aunque el mismo código y mismos nombres de variable). Para solucionar esto, puede añadir un prefijo para cada variable de sesión creada en una aplicación determinada:
+Sometimes a user can use the same application twice, on the same server, in the same session. Surely, if we use variables in session, we want that every application have separate session data (even though the same code and same variable names). To solve this, you can add a prefix for every session variable created in a certain application:
 
 ```php
 <?php
 
 use Phalcon\Session\Adapter\Files as Session;
 
-// Aislamos los datos de la sesión
+// Isolating the session data
 $di->set(
     'session',
     function () {
-        // Todas las variables de la sesión tendrán el prefijo 'my-app-1'
+        // All variables created will prefixed with 'my-app-1'
         $session = new Session(
             [
                 'uniqueId' => 'my-app-1',
@@ -181,13 +181,13 @@ $di->set(
 );
 ```
 
-No es necesario agregar un ID único.
+Adding a unique ID is not necessary.
 
 <a name='bags'></a>
 
 ## Bolsas de sesión
 
-`Phalcon\Session\Bag` es un componente que ayuda a separar datos de una sesión en `namespaces`. Trabajando de esta forma que usted puede crear fácilmente grupos de variables de sesión en la aplicación. Sólo estableciendo las variables en la `bag`, se almacena automáticamente en sesión:
+`Phalcon\Session\Bag` is a component that helps separating session data into `namespaces`. Working by this way you can easily create groups of session variables into the application. By only setting the variables in the `bag`, it's automatically stored in session:
 
 ```php
 <?php
@@ -206,7 +206,7 @@ $user->age  = 22;
 
 ## Datos persistentes en componentes
 
-Los controladores, componentes y clases que se extienden de `Phalcon\Di\Injectable` pueden inyectar un `Phalcon\Session\Bag`. Esta clase aísla variables para cada clase. Gracias a esto pueden persistir datos entre peticiones en cada clase de forma independiente.
+Controller, components and classes that extends `Phalcon\Di\Injectable` may inject a `Phalcon\Session\Bag`. This class isolates variables for every class. Thanks to this you can persist data between requests in every class in an independent way.
 
 ```php
 <?php
@@ -217,20 +217,20 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        // Crear una variable persistente 'name'
+        // Create a persistent variable 'name'
         $this->persistent->name = 'Laura';
     }
 
     public function welcomeAction()
     {
         if (isset($this->persistent->name)) {
-            echo 'Bienvenido, ', $this->persistent->name;
+            echo 'Welcome, ', $this->persistent->name;
         }
     }
 }
 ```
 
-En un componente:
+In a component:
 
 ```php
 <?php
@@ -241,7 +241,7 @@ class Security extends Component
 {
     public function auth()
     {
-        // Crear una variabl persistente 'name'
+        // Create a persistent variable 'name'
         $this->persistent->name = 'Laura';
     }
 
@@ -252,12 +252,12 @@ class Security extends Component
 }
 ```
 
-Los datos agregados en la sesión (`$this->session`) están disponibles a través de la aplicación, mientras que el componente persistente (`$this->persistent`) sólo se puede acceder en el ámbito de la clase actual.
+The data added to the session (`$this->session`) are available throughout the application, while persistent (`$this->persistent`) can only be accessed in the scope of the current class.
 
 <a name='custom-adapters'></a>
 
 ## Implementar tus propios adaptadores
 
-Debe implementar la interfaz `Phalcon\Session\AdapterInterface` para crear sus propios adaptadores de sesión o extender los ya existentes.
+The `Phalcon\Session\AdapterInterface` interface must be implemented in order to create your own session adapters or extend the existing ones.
 
-Hay disponibles más adaptadores para estos componentes en la [Incubadora de Phalcon](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter)
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter)

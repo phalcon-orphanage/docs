@@ -643,7 +643,7 @@ class CustomQuery extends ModelQuery
             // ...
         }
 
-        // Execute the query
+        // Ejecutamos la consulta
         $result = $this->_executeSelect($ir, $params, $types);
         $result = $this->_uniqueRow ? $result->getFirst() : $result;
 

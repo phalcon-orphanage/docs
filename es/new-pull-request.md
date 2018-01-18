@@ -1,8 +1,13 @@
-# Nuevo Pull Request
+# Nueva Solicitud de Pull
 
-Una pull request es una o varias alteraciones en el código que soluciona un problema actual o introduce nuevas funcionalidades.
+Una Solucitud de Pull o también conocidas como Pull Request, es una o varias alteraciones en el código que soluciona un problema actual o introduce nuevas funcionalidades.
 
-Tu Pull request debe incluir: * Referencia a la rama correcta. **No aceptarmos Pull Requests hacia la rama `master`** * Actualiza el CHANGELOG * Pruebas unitarias * Documentación si es necesaria y ejemplos de uso
+Su nueva solicitud debe incluir:
+
+* Emitido a la rama correcta. **No aceptamos solicitudes en la rama `master`**
+* Actualización en el CHANGELOG
+* Pruebas unitarias
+* Documentación si fuera necesaria y ejemplos de uso
 
 Para corrección de errores, por favor asegúrate de hacer referencia al número de tema en Github. Si tal número no existe, debes crearlo.
 

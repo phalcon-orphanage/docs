@@ -102,9 +102,13 @@ Por último, si usted desea usar Cherokee la configuración [esta aquí](/[[lang
 
 ## Manos a la obra
 
-El primer archivo que necesitas crear es el archivo bootstrap o de arranque. Este archivo actúa como el punto de entrada y configuración de la aplicación. En este archivo puedes implementar la inicialización de componentes, así como el comportamiento de la aplicación.
+El primer archivo que necesitas crear es el archivo bootstrap. Este archivo actúa como el punto de entrada y configuración de la aplicación. En este archivo puedes implementar la inicialización de componentes, así como el comportamiento de la aplicación.
 
-Este archivo se encarga de 3 cosas: - El registro de auto cargadores de componentes. -Configuración de **servicios** y registrarlos en el contenedor de **Inyección de dependencias**. -Resolución de las solicitudes HTTP de la aplicación.
+Este archivo gestiona 3 cosas:
+
+- Registro de componente cargadores automáticos.
+- Configuración de **servicios** y registrarlos en el contenedor de **Inyección de dependencias**.
+- Resolución de las solicitudes HTTP de la aplicación.
 
 <a name='autoloaders'></a>
 
@@ -142,7 +146,10 @@ $loader->register();
 
 ### Gestión de dependencias
 
-Debido a que Phalcon esta **débilmente acoplado** los servicios se registran con el Gestor de Dependencias del framework, por lo que puede ser inyectados automáticamente a componentes y servicios envueltos en el contenedor de **IoC**. Con frecuencia se encontrará el término **DI** que hace referencia al Inyección de Dependencias. La Inyección de dependencias y la Inversión de Control (IoC) pueden sonar como una característica compleja, pero en Phalcon su uso es muy sencillo y práctico. El contenedor de IoC de Phalcon consta de los siguientes conceptos: -Servicio de Contenedores: es una "bolsa" donde almacenamos globalmente los servicios que nuestra aplicación necesita para funcionar. -Servicio o Componente: objeto de procesamiento de datos que será inyectado en los componentes
+Debido a que Phalcon esta **débilmente acoplado** los servicios se registran con el Gestor de Dependencias del framework, por lo que puede ser inyectados automáticamente a componentes y servicios envueltos en el contenedor de **IoC**. Con frecuencia se encontrará el término **DI** que hace referencia al Inyección de Dependencias. La Inyección de dependencias y la Inversión de Control (IoC) pueden sonar como una característica compleja, pero en Phalcon su uso es muy sencillo y práctico. Contenedor IoC de Phalcon consta de los siguientes conceptos:
+
+- Contenedor de servicio: una bolsa donde almacenamos globalmente los servicios que nuestra aplicación usará para funcionar.
+- Servicio o Componente: objeto de procesamiento de datos que será inyectado en los componentes
 
 Si siguen interesados en más detalles. por favor, consulte este artículo de [Martin Fowler](https://martinfowler.com/articles/injection.html) sobre el patrón de diseño DI e IoC
 
@@ -167,7 +174,7 @@ use Phalcon\Di\FactoryDefault;
 $di = new FactoryDefault();
 ```
 
-En el próximo paso, registraremos el servicio "vista" indicando el directorio donde el entorno de trabajo encontrará los archivos de las vistas. Como las vistas no se corresponden con las clases, no se pueden cargar con un autoloader.
+En la siguiente parte, registraremos el servicio "vista" indicando el directorio donde el entorno de trabajo encontrará los archivos de las vistas. Como las vistas no corresponden a las clases, no se pueden cargar con un autoloader.
 
 **public/index.php**
 
@@ -215,7 +222,7 @@ $di->set(
 
 ### Tratar las solicitudes de la aplicación
 
-En la última parte de este archivo, encontramos `Phalcon\Mvc\Application`. Su propósito es inicializar el entorno de la solicitud, rutear la solicitud entrante y luego despachar cualquier acción descubierta; agrega las respuestas y las devuelve cuando el proceso se completa.
+En la última parte de este archivo, encontramos `Phalcon\Mvc\Application`. Su propósito es inicializar el entorno de la solicitud, rutear la solicitud entrante y luego despachar cualquier acción descubierta; agrega todas las respuestas y las devuelve cuando el proceso se completa.
 
 **public/index.php**
 
@@ -327,13 +334,13 @@ Las clases del controlador tienen que tener el sufijo "Controller" y las accione
 
 ![](/images/content/tutorial-basic-1.png)
 
-¡Felicitaciones, estás volando con Phalcon!
+¡Felicitaciones! Ahora estás volando con Phalcon.
 
 <a name='view'></a>
 
 ## Enviando la salida a una vista
 
-Enviar la salida a la pantalla desde el controlador es a veces necesario, pero no es deseable ya que la mayoría puristas en la comunidad MVC dan fe. Todo debe ser pasado a la vista, la cual es la responsable de la salida de datos en pantalla. Phalcon buscará una vista con el mismo nombre que la última acción ejecutada dentro de un directorio llamado como el último controlador ejecutado. En nuestro caso (`app/views/index/index.phtml`):
+Enviar la salida por pantalla es a veces necesario pero no es aceptado como purista asi como la comunidad MVC puede atestiguar. Todo debe ser pasado a la vista, la cual es la responsable de la salida de datos en pantalla. Phalcon buscará una vista con el mismo nombre que la última acción ejecutada dentro de un directorio llamado como el último controlador ejecutado. En nuestro caso (`app/views/index/index.phtml`):
 
 **app/views/index/index.phtml**
 
@@ -359,13 +366,13 @@ class IndexController extends Controller
 }
 ```
 
-La salida del navegador debe seguir siendo la misma. El componente estático `Phalcon\Mvc\View` se crea automáticamente cuando haya terminado la ejecución de la acción. Más información sobre el uso de las vistas [aquí](/[[language]]/[[version]]]/views).
+La salida del navegador debe seguir siendo la misma. El componente estático `Phalcon\Mvc\View` se crea automáticamente cuando haya terminado la ejecución de la acción. Más información sobre el uso de las vistas [aquí](/[[language]]/[[version]]/views).
 
 <a name='signup-form'></a>
 
 ## Diseñar un formulario de registro
 
-Ahora vamos a cambiar el archivo de vista `index.phtml`, para añadir un enlace a un nuevo controlador denominado "signup". El objetivo es permitir a los usuarios registrarse dentro de nuestra aplicación.
+Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
 
 **app/views/index/index.phtml**
 
@@ -384,7 +391,7 @@ echo $this->tag->linkTo(
 );
 ```
 
-El código HTML generado muestra una etiqueta de ancla HTML ("a") vinculando a un nuevo controlador:
+El código HTML generado muestra una etiqueta de enlace HTML ("a") vinculando a un nuevo controlador:
 
 **app/views/index/index.phtml Procesado**
 
@@ -394,7 +401,7 @@ El código HTML generado muestra una etiqueta de ancla HTML ("a") vinculando a u
 <a href="/signup">Regístrese aquí!</a>
 ```
 
-Para generar la etiqueta usamos la clase `Phalcon\Tag`. Esta es una clase de utilidad que nos permite crear etiquetas HTML con convenios del framework en mente. Como esta clase es también un servicio registrado en el DI, utilizamos `$this->tag` para acceder a él.
+Para generar la etiqueta usamos la clase `Phalcon\Tag`. Esta es una clase utilitaria que nos permite crear etiquetas HTML con los convenios del framework en mente. Como esta clase es también un servicio registrado en el DI, utilizamos `$this->tag` para acceder a él.
 
 Un artículo más detallado en cuanto a generación de HTML se puede encontrar [aquí](/[[language]]/[[version]]/tag).
 
@@ -481,7 +488,7 @@ class SignupController extends Controller
 }
 ```
 
-Si usted hace clic en el botón "Registrar" otra vez, usted verá una página en blanco. El nombre y correo electrónico proporcionados por el usuario deben guardarse en una base de datos. Según las pautas MVC, las interacciones de la base de datos deben hacerse a través de modelos con el fin de garantizar la limpieza de código orientado a objetos.
+If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
 
 <a name='model'></a>
 

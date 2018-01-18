@@ -31,9 +31,9 @@
     - [Отладка](/[[language]]/[[version]]/debug)
 - Ядро 
     - [API](/[[language]]/[[version]]/api/index)
-    - Приложение 
+    - Application 
         - [Полное](/[[language]]/[[version]]/application)
-        - [Микро](/[[language]]/[[version]]/application-micro)
+        - [Micro](/[[language]]/[[version]]/application-micro)
         - [CLI](/[[language]]/[[version]]/application-cli)
     - [DI контейнер](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)

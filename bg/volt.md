@@ -151,6 +151,7 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 {% block last_products %}
 
 {% for product in products %}
+
     * Name: {{ product.name|e }}
     {% if product.status === 'Active' %}
        Price: {{ product.price + product.taxes/100 }}

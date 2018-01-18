@@ -333,7 +333,7 @@ $app->setService('router', $router, true);
 
 ## Rewrite правила
 
-Для того, чтобы роутинг работал должным образом, необходимо внести изменения в конфигурацию вашего веб-сервера.
+Для того чтобы маршруты работали необходимо также внести изменения в конфигурацию, вашего, веб-сервера для, вашего, конкретного сайта.
 
 Эти изменения описаны в [Apache Rewrite Rules](http://httpd.apache.org/docs/current/rewrite/) и [NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/).
 
@@ -370,8 +370,8 @@ $app->get(
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $context = "<h1>Это заказ: {$name}!</h1>";
-        $app->response->setContext($context);
+        $content = "<h1>This is order: {$name}!</h1>";
+        $app->response->setContent($content);
         $app->response->send();
     }
 );
@@ -506,8 +506,8 @@ class OrdersController extends Controller
 
     public function show($name)
     {
-        $context = "<h1>Это заказ: {$name}!</h1>";
-        $this->response->setContext($context);
+        $content = "<h1>This is order: {$name}!</h1>";
+        $this->response->setContent($content);
 
         return $this->response;
     }
@@ -1513,7 +1513,14 @@ class CacheMiddleware implements MiddlewareInterface
 
 Предположим, у нас есть API, которое мы реализовали с помощью Micro приложения. Нам необходимо прикрепить различные Middleware классы к приложению, чтобы иметь возможность лучше контролировать его выполнение.
 
-Middleware, которые мы будем использовать: * Firewall * NotFound * Redirect * CORS * Request * Response
+The middleware that we will use are:
+
+* Firewall
+* NotFound
+* Redirect
+* CORS
+* Request
+* Response
 
 <a name='middleware-events-api-firewall'></a>
 
@@ -1681,7 +1688,7 @@ class RedirectMiddleware implements MiddlewareInterface
 
 #### CORS Middleware
 
-Этот middleware также прикрепляется к событию `before` нашего Micro приложения. Мы должны убедиться, что оно вызывается прежде чем что-либо происходит в нашем приложении
+Этот middleware также прикрепляется к событию `before` нашего Micro приложения. Мы должны гарантировать, что оно вызывается прежде чем что-нибудь случается в нашем приложении
 
 ```php
 <?php

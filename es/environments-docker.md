@@ -77,7 +77,11 @@ Phalcon Compose es un entorno de desarrollo impulsado por la comunidad para los 
 
 ## Dependencias
 
-Para ejecutar esta pila en su máquina, necesita por lo menos: * Sistema operativo: Windows, Linux o OS X * [Docker Engine](https://docs.docker.com/installation/) > = 1.10.0 * [ Docker Compose](https://docs.docker.com/compose/install/) > = 1.6.2
+Para ejecutar esta pila en su maquina, al menos, necesitará lo siguiente:
+
+* Sistema Operativo: Windows, Linux, o OS X
+* [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0
+* [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
 <a name='services'></a>
 
@@ -115,10 +119,11 @@ La salida debería ser similar a:
 ```php
 Example
  Installing phalcon/compose (version)
+
   - Installing phalcon/compose (version)
     Loading from cache
 
-Created project in nombreDeLaCarpeta
+Created project in folderName
 > php -r "copy('variables.env.example', 'variables.env');"
 Loading composer repositories with package information
 Updating dependencies (including require-dev)
@@ -225,7 +230,11 @@ Usted puede pasar varias variables de entorno desde un archivo externo a los con
 | `PMA_PASSWORD`      | Definir la contraseña a utilizar para configurar el método de autenticación.                                                      | secret      |
 | `PMA_ABSOLUTE_URI`  | Ruta completa de acceso (por ejemplo https://pma.example.net/) donde el proxy inverso hace que phpMyAdmin este disponible.        |             |
 
-*Vea también* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
+*Ver también*
+
+* https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker
+* https://docs.phpmyadmin.net/en/latest/config.html#config
+* https://docs.phpmyadmin.net/en/latest/setup.html
 
 <a name='xdebug'></a>
 
@@ -248,7 +257,7 @@ $ `ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .`
 
 **Windows**
 
-> `ipconfig`
+&gt; `ipconfig`
 
 <a name='troubleshooting'></a>
 

@@ -405,7 +405,7 @@ $di->set(
 
 ## Events in Controllers
 
-Controllery automaticky působí jako listenery pro události z [dispečeru](/en/[[versopm]]/dispatcher), implementační metody s těmito názvy eventů umožňují implementovat hooky před nebo po provedení akcí:
+Controllers automatically act as listeners for [dispatcher](/[[language]]/[[version]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
 ```php
 <?php

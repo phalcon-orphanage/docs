@@ -405,7 +405,7 @@ $di->set(
 
 ## События контроллеров
 
-Контроллеры автоматически выступают в роли слушателей событий [диспетчера](/en/[[versopm]]/dispatcher), реализация методов с названиями событий позволяет выполнять какой-либо код до или после выполнения действия:
+Controllers automatically act as listeners for [dispatcher](/[[language]]/[[version]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
 ```php
 <?php

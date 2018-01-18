@@ -370,8 +370,8 @@ Accessing the `$app` object inside the anonymous function can be achieved by inj
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $context = "<h1>This is order: {$name}!</h1>";
-        $app->response->setContext($context);
+        $content = "<h1>This is order: {$name}!</h1>";
+        $app->response->setContent($content);
         $app->response->send();
     }
 );
@@ -506,8 +506,8 @@ class OrdersController extends Controller
 
     public function show($name)
     {
-        $context = "<h1>This is order: {$name}!</h1>";
-        $this->response->setContext($context);
+        $content = "<h1>This is order: {$name}!</h1>";
+        $this->response->setContent($content);
 
         return $this->response;
     }
@@ -1515,7 +1515,14 @@ The [events](#events) that are triggered for our application also trigger inside
 
 Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
 
-The middleware that we will use are: * Firewall * NotFound * Redirect * CORS * Request * Response
+The middleware that we will use are:
+
+* Firewall
+* NotFound
+* Redirect
+* CORS
+* Request
+* Response
 
 <a name='middleware-events-api-firewall'></a>
 

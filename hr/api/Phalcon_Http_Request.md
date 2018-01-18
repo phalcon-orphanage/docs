@@ -180,7 +180,11 @@ Gets active server name
 
 public **getHttpHost** ()
 
-Gets host name used by the request. `Request::getHttpHost` trying to find host name in following order: - `$_SERVER["HTTP_HOST"]` - `$_SERVER["SERVER_NAME"]` - `$_SERVER["SERVER_ADDR"]` Optionally `Request::getHttpHost` validates and clean host name. The `Request::$_strictHostCheck` can be used to validate host name. Note: validation and cleaning have a negative performance impact because they use regular expressions.
+Gets host name used by the request. `Request::getHttpHost` trying to find host name in following order:
+
+- `$_SERVER["HTTP_HOST"]`
+- `$_SERVER["SERVER_NAME"]`
+- `$_SERVER["SERVER_ADDR"]` Optionally `Request::getHttpHost` validates and clean host name. The `Request::$_strictHostCheck` can be used to validate host name. Note: validation and cleaning have a negative performance impact because they use regular expressions.
 
 ```php
 <?php

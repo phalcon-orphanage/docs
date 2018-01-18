@@ -71,7 +71,7 @@
 
 # ODM (Mapeador Objecto-Documento)
 
-Además de su capacidad para [asignar tablas](/[[language]]/[[version]]/models) en bases de datos relacionales, Phalcon puede asignar documentos de bases de datos NoSQL. El ODM ofrece una funcionalidad CRUD, eventos, validaciones entre otros servicios.
+In addition to its ability to [map tables](/[[language]]/[[version]]/db-models) in relational databases, Phalcon can map documents from NoSQL databases. El ODM ofrece una funcionalidad CRUD, eventos, validaciones entre otros servicios.
 
 Debido a la ausencia de consultas y planificadores SQL, con las bases de datos NoSQL se pueden ver mejoras reales en el rendimiento utilizando el enfoque de Phalcon. Además, no hay construcción de sentencias de SQL, lo que reduce la posibilidad de inyecciones SQL.
 
@@ -681,7 +681,7 @@ class Robots extends Collection
 }
 ```
 
-The example above performs a validation using the built-in validator `InclusionIn`. It checks that the value of the field `type` is in a `domain` list. If the value is not included in the list, then the validator will fail and return `false`.
+El ejemplo anterior realiza una validación con el validador integrado `InclusionIn`. Comprueba que el valor del campo `type` este en la lista `domain`. Si el valor no está incluido en el dominio, entonces el validador fallará y devolverá `false`.
 
 <div class='alert alert-warning'>
     <p>
@@ -787,7 +787,7 @@ class Robots extends Collection
 
 ## Configuración de Múltiples Bases de Datos
 
-En Phalcon, todos los modelos pueden pertenecer a la misma conexión de base de datos o tener una individual. Actualmente, cuando `Phalcon\Mvc\Collection` necesita conectarse a la base de datos pide el servicio `mongo` al contenedor de servicios de la aplicación. Usted puede sobrescribir este servicio configurándolo en el método `initialize()`:
+En Phalcon, todos los modelos pueden compartir la misma conexión a la base de datos o especificar una conexión por modelo. Actualmente, cuando `Phalcon\Mvc\Collection` necesita conectarse a la base de datos pide el servicio `mongo` al contenedor de servicios de la aplicación. Usted puede sobrescribir este servicio configurándolo en el método `initialize()`:
 
 ```php
 <?php

@@ -77,7 +77,11 @@ Phalcon Compose is a community driven boilerplate development environment for Ph
 
 ## Dependencies
 
-To run this stack on your machine, you need at least: * Operating System: Windows, Linux, or OS X * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
+To run this stack on your machine, you need at least:
+
+* Operating System: Windows, Linux, or OS X
+* [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0
+* [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
 <a name='services'></a>
 
@@ -115,6 +119,7 @@ Your output should be similar to this:
 ```php
 Example
  Installing phalcon/compose (version)
+
   - Installing phalcon/compose (version)
     Loading from cache
 
@@ -225,7 +230,11 @@ You can pass multiple environment variables from an external file to a service's
 | `PMA_PASSWORD`       | Define password to use for config authentication method.                                                     | secret   |
 | `PMA_ABSOLUTE_URI`   | The fully-qualified path (e.g. https://pma.example.net/) where the reverse proxy makes phpMyAdmin available. |          |
 
-*See also* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
+*See also*
+
+* https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker
+* https://docs.phpmyadmin.net/en/latest/config.html#config
+* https://docs.phpmyadmin.net/en/latest/setup.html
 
 <a name='xdebug'></a>
 
@@ -248,7 +257,7 @@ $ `ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .`
 
 **Windows**
 
-> `ipconfig`
+&gt; `ipconfig`
 
 <a name='troubleshooting'></a>
 

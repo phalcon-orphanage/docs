@@ -49,7 +49,7 @@ Estas herramientas son una colección de útiles secuencias de comandos para gen
 
 <div class="alert alert-danger">
     <p>
-        Si prefiere utilizar la versión web en lugar de la consola, esta <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">publicación en el blog</a> le ofrecerá más información.
+        If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information.
     </p>
 </div>
 

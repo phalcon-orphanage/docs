@@ -286,7 +286,7 @@ $app->get(
 
 ### El Objeto de la Aplicación
 
-Las rutas se pueden definir mediante el objeto de aplicación `Phalcon\Mvc\Micro`, de la siguiente manera:
+Las rutas se pueden definir mediante el objeto de aplicación `Phalcon\Mvc\Micro`, de la siguiente forma:
 
 ```php
 use Phalcon\Mvc\Micro;
@@ -306,7 +306,7 @@ $app->get(
 
 ### El Objeto Ruoter
 
-También puedes crear un objeto `Phalcon\Mvc\Router`, establece las rutas en el y luego debes inyectarlo en el contenedor del inyector de dependencias.
+También puedes crear un objeto `Phalcon\Mvc\Router`, establecer las rutas en el y luego debes inyectarlo en el contenedor del inyector de dependencias.
 
 ```php
 use Phalcon\Mvc\Micro;
@@ -364,14 +364,14 @@ $app->get(
 );
 ```
 
-Acceder al objeto `$app` dentro de la función anónima puede lograrse mediante la inyección de esta, de la siguiente manera:
+Accessing the `$app` object inside the anonymous function can be achieved by injecting it as follows:
 
 ```php
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $context = "<h1>This is order: {$name}!</h1>";
-        $app->response->setContext($context);
+        $content = "<h1>Esta es la orden: {$name}!</h1>";
+        $app->response->setContent($content);
         $app->response->send();
     }
 );
@@ -399,7 +399,7 @@ $app->get(
 
 #### Método Estático
 
-También podemos usar un método estático como nuestro manejador, como se muestra a continuación:
+También podemos usar un método estático como nuestro gestor, como se muestra a continuación:
 
 ```php
 class OrdersClass
@@ -443,7 +443,7 @@ $app->get(
 
 #### Controladores
 
-Con `Phalcon\Mvc\Micro` puedes crear micro o medianas aplicaciones. Estas últimas utilizan la arquitectura micro pero se amplían para utilizar más características que las aplicaciones Micro pero no tantas como lo hace una aplicación completa.
+Con `Phalcon\Mvc\Micro` puedes crear micro o medianas aplicaciones. Estas últimas utilizan la arquitectura de micro pero se amplían para que utilicen más características que las aplicaciones Micro pero no tantas como lo hace una aplicación completa.
 
 En aplicaciones medianas puedes organizar los manejadores en los controladores.
 
@@ -506,8 +506,8 @@ class OrdersController extends Controller
 
     public function show($name)
     {
-        $context = "<h1>This is order: {$name}!</h1>";
-        $this->response->setContext($context);
+        $content = "<h1>Esta es la orden: {$name}!</h1>";
+        $this->response->setContent($content);
 
         return $this->response;
     }
@@ -768,7 +768,7 @@ Coincide si el método HTTP es `PATCH` y la ruta es `/api/products/update/{id}`
 
 ### post
 
-Coincide si el método HTTP es `POST` y la ruta es `/api/products`
+Coincide si el método HTTP es `POST` y la ruta es `/api/products/add`
 
 ```php
     $app->post(
@@ -975,7 +975,7 @@ $app->get(
 );
 ```
 
-También puede crear tu propio contenedor Di y asignarlo a la micro aplicación, por lo tanto, puedes manipular los servicios según las necesidades de tu aplicación.
+También puede crear su propio contenedor Di y asignarlo a la micro aplicación, por lo tanto, puedes manipular los servicios según las necesidades de tu aplicación.
 
 ```php
 <?php
@@ -1013,7 +1013,7 @@ $app->post(
 );
 ```
 
-También puedes utilizar la sintaxis de arreglos para registrar servicios en el contenedor de inyección de dependencias desde el objeto de la aplicación:
+You can also use the array syntax to register services in the dependency injection container from the application object:
 
 ```php
 <?php
@@ -1291,7 +1291,7 @@ $app->setEventsManager($eventsManager);
 
 # Middleware
 
-Middleware son clases que pueden adjuntarse a su solicitud y presentar otra capa donde la lógica de negocio puede existir. Se ejecutan secuencialmente, según el orden que están registrados y no sólo mejoran el mantenimiento, mediante el encapsulamiento de funcionalidades específicas, sino también el rendimiento. Una clase de middleware puede detener la ejecución cuando una regla de negocio particular no haya sido satisfactoria, lo que permite a la aplicación salir antes de tiempo sin ejecutar el ciclo completo de una solicitud.
+Middleware son clases que pueden adjuntarse a su solicitud y presentar otra capa donde la lógica de negocio puede existir. Se ejecutan secuencialmente, según el orden que están registrados y no sólo mejoran el mantenimiento, mediante el encapsulamiento de funcionalidades específicas, sino también el rendimiento. Una clase middleware puede detener la ejecución cuando una regla de negocio particular no haya sido satisfactoria, lo que permite a la aplicación salir antes de tiempo sin ejecutar el ciclo completo de una solicitud.
 
 La presencia de un `Phalcon\Events\Manager` es esencial para el middleware al operar, por lo que tiene estar registrado en nuestro contenedor Di.
 
@@ -1412,7 +1412,7 @@ $app->after(
 );
 ```
 
-Agregar middleware en tu aplicación como clases y para escuchar a los eventos desde el gestor de eventos, se logra de la siguiente manera:
+Agregar middleware en tu aplicación como clases, para escuchar a los eventos desde el gestor de eventos, se logra de la siguiente manera:
 
 ```php
 <?php
@@ -1462,7 +1462,7 @@ Entonces conectamos la clase de middleware en nuestra aplicación en uno de los 
 
 ## Implementación
 
-Un Middleware puede ser cualquier tipo de función PHP accesible. Puedes organizar el código de cualquier modo te guste para implementar un middleware. Si eliges utilizar las clases para el middleware, necesitarás que implementen la clase `Phalcon\Mvc\Micro\MiddlewareInterface`
+Un Middleware puede ser cualquier tipo de función PHP accesible. Puedes organizar el código del modo te guste para implementar un middleware. Si eliges utilizar las clases para el middleware, necesitarás que implementen la clase `Phalcon\Mvc\Micro\MiddlewareInterface`
 
 ```php
 <?php
@@ -1515,7 +1515,14 @@ Los [eventos](#events) que se activan para nuestra aplicación también accionan
 
 Supongamos que tenemos una API que hayamos implementado con una Micro aplicación. Tendríamos que colocar diferentes clases de Middleware en la aplicación y así podríamos controlar la ejecución de la aplicación.
 
-El middleware que usaríamos sería el siguiente: * Firewall * NotFound * Redirect * CORS * Request * Response
+Los middleware que utilizamos son:
+
+* Firewall
+* NotFound
+* Redirect
+* CORS
+* Request
+* Response
 
 <a name='middleware-events-api-firewall'></a>
 
@@ -1921,7 +1928,7 @@ $app->get(
 $app->handle();
 ```
 
-Objeto Binder internamente utiliza la Api Reflection lo cual puede ser muy pesado, pero se puede configurar un caché para acelerar el proceso. Esto puede hacerse mediante el segundo argumento de `setModelBinder()` que también puede aceptar un nombre de servicio o simplemente pasando una instancia de caché al constructor `Binder`.
+El objeto Binder internamente utiliza la Api Reflection lo cual puede ser muy pesado, pero se puede configurar un caché para acelerar el proceso. Esto puede hacerse mediante el segundo argumento de `setModelBinder()` que también puede aceptar un nombre de servicio o simplemente pasando una instancia de caché al constructor `Binder`.
 
 Actualmente Binder utiliza solamente de la clave primaria de los modelos para realizar un `findFirst()`. Una ruta de ejemplo para lo anterior podría ser `/products/1`.
 

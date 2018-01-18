@@ -591,6 +591,6 @@ php -m
 
 <div class="alert alert-danger">
     <p>
-        Tenga en cuenta que en algunos sistemas basado en Linux, puede que necesite cambiar dos archivos <code>php.ini</code>, uno para el servidor web (Apache/Nginx) y otro para el CLI. Si Phalcon es cargado solamente para el servidor web, necesita localizar el <code>php.ini</code> del CLI y hacer las adiciones necesarias para que el módulo se cargue.
+        Tenga en cuenta que en algunos sistemas basado en Linux, puede que necesite cambiar dos archivos <code>php.ini</code>, uno para el servidor web (Apache/Nginx) y otro para el CLI. Si Phalcon es cargado solamente para el servidor web, necesita localizar el <code>php.ini</code> del CLI y hacer las adiciones necesarias para que el módulo que se cargue.
     </p>
 </div>

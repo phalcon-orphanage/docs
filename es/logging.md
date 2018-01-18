@@ -111,77 +111,77 @@ use Phalcon\Logger\Adapter\File as FileAdapter;
 
 $logger = new FileAdapter('app/logs/test.log');
 
-// Hay diferentes niveles de registo disponibles:
+// These are the different log levels available:
 
 $logger->critical(
-    'Este es un mensaje critico'
+    'This is a critical message'
 );
 
 $logger->emergency(
-    'Este es un mensaje de emergencia'
+    'This is an emergency message'
 );
 
 $logger->debug(
-    'Este es un mensaje de depuración'
+    'This is a debug message'
 );
 
 $logger->error(
-    'Este es un mensaje de error'
+    'This is an error message'
 );
 
 $logger->info(
-    'Este es un mensaje informativo'
+    'This is an info message'
 );
 
 $logger->notice(
-    'Este es un mensaje de noticia'
+    'This is a notice message'
 );
 
 $logger->warning(
-    'Este es un mensaje de advertencia'
+    'This is a warning message'
 );
 
 $logger->alert(
-    'Este es un mensaje de alerta'
+    'This is an alert message'
 );
 
-// Puedes usar el método log() con una constante Logger:
+// You can also use the log() method with a Logger constant:
 $logger->log(
-    'ESte es otro mensaje de error',
+    'This is another error message',
     Logger::ERROR
 );
 
-// Si no se proporciona una constante, por defecto, se asume el valor DEBUG.
+// If no constant is given, DEBUG is assumed.
 $logger->log(
-    'Este es un mensaje'
+    'This is a message'
 );
 
-// Puedes pasar parámetros de contexto, por ejemplo
+// You can also pass context parameters like this
 $logger->log(
-    'Este es un {mensaje}', 
+    'This is a {message}', 
     [ 
-        'mensaje' => 'parámetro' 
+        'message' => 'parameter' 
     ]
 );
 ```
 
-A continuación se muestra el registro generado por el código anterior:
+The log generated is below:
 
 ```bash
-[Tue, 28 Jul 15 22:09:02 -0500][CRITICAL] Este es un mensaje critico
-[Tue, 28 Jul 15 22:09:02 -0500][EMERGENCY] Este es un mensaje de emergencia
-[Tue, 28 Jul 15 22:09:02 -0500][DEBUG] Este es un mensaje de depuración
-[Tue, 28 Jul 15 22:09:02 -0500][ERROR] Este es un mensaje de error
-[Tue, 28 Jul 15 22:09:02 -0500][INFO] Este es un mensaje informativo
-[Tue, 28 Jul 15 22:09:02 -0500][NOTICE] Este es un mensaje de noticia
-[Tue, 28 Jul 15 22:09:02 -0500][WARNING] Este es un mensaje de advertencia
-[Tue, 28 Jul 15 22:09:02 -0500][ALERT] Este es un mensaje de alerta
-[Tue, 28 Jul 15 22:09:02 -0500][ERROR] Este es otro mensaje
-[Tue, 28 Jul 15 22:09:02 -0500][DEBUG] Este es un mensaje
-[Tue, 28 Jul 15 22:09:02 -0500][DEBUG] Este es un parámetro
+[Tue, 28 Jul 15 22:09:02 -0500][CRITICAL] This is a critical message
+[Tue, 28 Jul 15 22:09:02 -0500][EMERGENCY] This is an emergency message
+[Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a debug message
+[Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is an error message
+[Tue, 28 Jul 15 22:09:02 -0500][INFO] This is an info message
+[Tue, 28 Jul 15 22:09:02 -0500][NOTICE] This is a notice message
+[Tue, 28 Jul 15 22:09:02 -0500][WARNING] This is a warning message
+[Tue, 28 Jul 15 22:09:02 -0500][ALERT] This is an alert message
+[Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is another error message
+[Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a message
+[Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a parameter
 ```
 
-También puede establecer un nivel de registro utilizando el método `setLogLevel()`. Este método toma una constante Logger y solo guardará los mensajes de registro que son tan importantes o más que la constante:
+You can also set a log level using the `setLogLevel()` method. This method takes a Logger constant and will only save log messages that are as important or more important than the constant:
 
 ```php
 <?php
@@ -196,35 +196,36 @@ $logger->setLogLevel(
 );
 ```
 
-En el ejemplo anterior, solo los mensajes críticos y de emergencia se guardarán en el registro. Por defecto, se guardan todos los mensajes.
+In the example above, only critical and emergency messages will get saved to the log. By default, everything is saved.
 
 <a name='transactions'></a>
 
 ## Transacciones
 
-Registrando datos en un adaptador, por ejemplo, de archivo (sistema de archivos) es siempre una operación costosa en términos de rendimiento. Para combatir eso, puede tomar ventaja del registro de transacciones. Las transacciones almacenan temporalmente los datos de registro en la memoria y luego escriben los datos en el adaptador correspondiente (archivo en este caso) en una única operación atómica.
+Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the relevant adapter (File in this case) in a single atomic operation.
 
 ```php
 <?php
 
 use Phalcon\Logger\Adapter\File as FileAdapter;
 
-// Crear el logger
+// Create the logger
 $logger = new FileAdapter('app/logs/test.log');
 
-// Comenzar una transacción
+// Start a transaction
 $logger->begin();
 
-// Agregar mensajes
+// Add messages
+
 $logger->alert(
-    'Esta es una alerta'
+    'This is an alert'
 );
 
 $logger->error(
-    'Este es otro error'
+    'This is another error'
 );
 
-// Confirmar los mensajes en el archivo
+// Commit messages to file
 $logger->commit();
 ```
 
@@ -232,7 +233,7 @@ $logger->commit();
 
 ## Registro de múltiples gestores
 
-`Phalcon\Logger` puede enviar mensajes a múltiples gestores con sólo una llamada:
+`Phalcon\Logger` can send messages to multiple handlers with a just single call:
 
 ```php
 <?php
@@ -244,6 +245,8 @@ use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
 $logger = new MultipleStream();
 
+
+
 $logger->push(
     new FileAdapter('test.log')
 );
@@ -253,26 +256,26 @@ $logger->push(
 );
 
 $logger->log(
-    'Este es un mensaje'
+    'This is a message'
 );
 
 $logger->log(
-    'Este es un error',
+    'This is an error',
     Logger::ERROR
 );
 
 $logger->error(
-    'Este es otro error'
+    'This is another error'
 );
 ```
 
-Los mensajes son enviados a los gestores en el orden que se registraron.
+The messages are sent to the handlers in the order they were registered.
 
 <a name='message-formatting'></a>
 
 ## Formato de mensaje
 
-Este componente utiliza `formatters` para formatear mensajes antes de enviarlos al backend. Los formateadores disponibles son:
+This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:
 
 | Adaptador                             | Descripción                                                     |
 | ------------------------------------- | --------------------------------------------------------------- |
@@ -285,13 +288,13 @@ Este componente utiliza `formatters` para formatear mensajes antes de enviarlos 
 
 ### Formateador de línea
 
-Formatea los mensajes utilizando una cadena de una línea. El formato predeterminado de registro es:
+Formats the messages using a one-line string. The default logging format is:
 
 ```bash
 [%date%][%type%] %message%
 ```
 
-Puede cambiar el formato predeterminado utilizando `setFormat()`, esto le permite cambiar el formato de los mensajes registrados mediante la definición de uno propio. Las variables de formato de registro permitidas son:
+You can change the default format using `setFormat()`, this allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
 
 | Variable  | Descripción                        |
 | --------- | ---------------------------------- |
@@ -299,7 +302,7 @@ Puede cambiar el formato predeterminado utilizando `setFormat()`, esto le permit
 | %date%    | Fecha que del mensaje fue agregado |
 | %type%    | Tipo de mensaje en mayúsculas      |
 
-El ejemplo siguiente muestra cómo cambiar el formato de registro:
+The example below shows how to change the log format:
 
 ```php
 <?php
@@ -308,7 +311,7 @@ use Phalcon\Logger\Formatter\Line as LineFormatter;
 
 $formatter = new LineFormatter('%date% - %message%');
 
-// Cambiando el formato de registro
+// Changing the logger format
 $logger->setFormatter($formatter);
 ```
 
@@ -316,29 +319,29 @@ $logger->setFormatter($formatter);
 
 ### Implementar tus propios formateadores
 
-Debe implementar la interfaz `Phalcon\Logger\FormatterInterface` para crear a su propio formateador de registrados o extender los ya existentes.
+The `Phalcon\Logger\FormatterInterface` interface must be implemented in order to create your own logger formatter or extend the existing ones.
 
 <a name='usage'></a>
 
 ## Adaptadores
 
-Los siguientes ejemplos muestran el uso básico de cada adaptador:
+The following examples show the basic use of each adapter:
 
 <a name='usage-stream'></a>
 
 ### Stream Logger
 
-El Stream Logger escribe mensajes en una secuencia registrada válida en PHP. Una lista de streams [aquí](http://php.net/manual/en/wrappers.php>):
+The stream logger writes messages to a valid registered stream in PHP. A list of streams is available [here](http://php.net/manual/en/wrappers.php>):
 
 ```php
 <?php
 
 use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
-// Abrir el stream utilizando compresión zlib
+// Opens a stream using zlib compression
 $logger = new StreamAdapter('compress.zlib://week.log.gz');
 
-// Escribir registros en stderr
+// Writes the logs to stderr
 $logger = new StreamAdapter('php://stderr');
 ```
 
@@ -346,14 +349,14 @@ $logger = new StreamAdapter('php://stderr');
 
 ### File Logger
 
-Este registrador utiliza archivos planos para registrar cualquier tipo de datos. Por defecto, que todos los archivos de registro se abren usando el modo 'append', que abre los archivos para escribir colocando el puntero del archivo al final del mismo. Si el archivo no existe, se hará un intento por crearlo. Ud. puede cambiar este modo pasando opciones adicionales al constructor:
+This logger uses plain files to log any kind of data. By default all logger files are opened using append mode which opens the files for writing only; placing the file pointer at the end of the file. If the file does not exist, an attempt will be made to create it. You can change this mode by passing additional options to the constructor:
 
 ```php
 <?php
 
 use Phalcon\Logger\Adapter\File as FileAdapter;
 
-// Crear un archivo de registro en modo 'w'
+// Create the file logger in 'w' mode
 $logger = new FileAdapter(
     'app/logs/test.log',
     [
@@ -366,17 +369,17 @@ $logger = new FileAdapter(
 
 ### Syslog Logger
 
-Este registrador envía mensajes al sistema de registro del sistema. El comportamiento de registro del sistema puede variar de un sistema operativo a otro.
+This logger sends messages to the system logger. The syslog behavior may vary from one operating system to another.
 
 ```php
 <?php
 
 use Phalcon\Logger\Adapter\Syslog as SyslogAdapter;
 
-// Uso básico
+// Basic Usage
 $logger = new SyslogAdapter(null);
 
-// Configurando ident/mode/facility
+// Setting ident/mode/facility
 $logger = new SyslogAdapter(
     'ident-name',
     [
@@ -390,7 +393,7 @@ $logger = new SyslogAdapter(
 
 ### FirePHP Logger
 
-Este registrador envía mensajes en encabezados de respuesta HTTP que se muestran por [FirePHP](http://www.firephp.org/), una extensión de [Firebug](http://getfirebug.com/) para Firefox.
+This logger sends messages in HTTP response headers that are displayed by [FirePHP](http://www.firephp.org/), a [Firebug](http://getfirebug.com/) extension for Firefox.
 
 ```php
 <?php
@@ -401,16 +404,16 @@ use Phalcon\Logger\Adapter\Firephp as Firephp;
 $logger = new Firephp('');
 
 $logger->log(
-    'Este es un mensaje'
+    'This is a message'
 );
 
 $logger->log(
-    'Este es un error',
+    'This is an error',
     Logger::ERROR
 );
 
 $logger->error(
-    'Este es otro error'
+    'This is another error'
 );
 ```
 
@@ -418,4 +421,4 @@ $logger->error(
 
 ### Implementar tus propios adaptadores
 
-Debe implementar la interfaz `Phalcon\Logger\AdapterInterface` para crear sus propios adaptadores de registro o extender los ya existentes.
+The `Phalcon\Logger\AdapterInterface` interface must be implemented in order to create your own logger adapters or extend the existing ones.

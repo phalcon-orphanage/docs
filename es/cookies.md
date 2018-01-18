@@ -110,6 +110,6 @@ Si desea utilizar el encriptado, debe establecer una clave global al servicio [c
 
 <div class="alert alert-danger">
     <p>
-        Enviar cookies sin encriptación al cliente, incluyendo estructuras de objetos complejos, conjuntos de resultados (resultsets), información de servicio, etc. podría exponer los datos de uso interno para que puedan ser utilizados por un atacante para atacar la aplicación. Si no desea utilizar el cifrado, recomendamos sólo envíar datos muy básicos como números o pequeñas cadenas de texto.
+        Enviar cookies sin encriptación al clientes, incluyendo estructuras de objetos complejos, conjuntos de resultados (resultsets), información de servicio, etc. podría exponer los datos de uso interno para que puedan ser utilizados por un atacante y atacar la aplicación. Si no desea utilizar el cifrado, recomendamos que sólo enviar datos muy básicos como números o pequeñas cadenas de texto.
     </p>
 </div>

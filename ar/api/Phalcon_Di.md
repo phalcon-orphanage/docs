@@ -195,6 +195,7 @@ myComponent:
 group:
     className: \Acme\Group
     arguments:
+
         - type: service
           name: myComponent
 

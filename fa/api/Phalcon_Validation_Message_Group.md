@@ -73,7 +73,7 @@ $messages->appendMessage(
 
 ```
 
-public **appendMessages** ([Phalcon\Validation\MessageInterface](/en/3.2/api/Phalcon_Validation_MessageInterface[]) $messages)
+public **appendMessages** ([Phalcon\Validation\MessageInterface](/en/3.2/api/Phalcon_Validation_MessageInterface) $messages)
 
 Appends an array of messages to the group
 

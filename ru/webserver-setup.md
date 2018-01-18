@@ -65,7 +65,7 @@
 
 ## PHP-FPM
 
-PHP-FPM (FastCGI Process Manager) обычно используется для управления процессом обработки PHP файлов. В настоящее время PHP-FPM идёт в комплекте с любым дистрибутивом PHP в Linux.
+PHP-FPM (FastCGI Process Manager) обычно используется для управления процессом обработки PHP файлов. В настоящее время PHP-FPM идёт в комплекте с любым дистрибутивом PHP в Unix.
 
 На **Windows** PHP-FPM поставляется вместе с пакетом PHP, как файл `php-cgi.exe`. Вы можете запустить его с этом скриптом. Windows не поддерживает Unix сокеты, скрипт запускает fast-cgi в TCP режиме на порте `9000`.
 
@@ -97,7 +97,12 @@ C:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 $(which php) -S localhost:8000 -t public .htrouter.php
 ```
 
-Работа команды выше: - `$(which php)` — выводит абсолютный путь до интерпретатора PHP на вашей машине - `-S localhost:8000` — "говорит" серверу слушать `host:port` - `-t public` — указывает директорию ресурсов - `.htrouter.php` — отправляет все запросы на роутер (выступает в роли файла .htaccess)
+The anatomy of the command above:
+
+- `$(which php)` - will insert the absolute path to your PHP binary
+- `-S localhost:8000` - invokes server mode with the provided `host:port`
+- `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory
+- `.htrouter.php` - the entry point that will be evaluated for each request
 
 Откройте свой браузер и перейдите по адресу http://localhost:8000/, чтобы убедиться, что всё работает.
 

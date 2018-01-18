@@ -104,7 +104,11 @@ Finally, if you flavor is Cherokee use the setup [here](/[[language]]/[[version]
 
 The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well as application behavior.
 
-This file handles 3 things: - Registration of component autoloaders. - Configuring **Services** and registering them with the **Dependency Injection** context. - Resolving the application's HTTP requests.
+This file handles 3 things:
+
+- Registration of component autoloaders.
+- Configuring **Services** and registering them with the **Dependency Injection** context.
+- Resolving the application's HTTP requests.
 
 <a name='autoloaders'></a>
 
@@ -142,7 +146,10 @@ $loader->register();
 
 ### Dependency Management
 
-Since Phalcon is **loosely coupled** services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the **IoC** container. Frequently you will encounter the term **DI** which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound like a complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts: - Service Container: a "bag" where we globally store the services that our application needs to function. - Service or Component: Data processing object which will be injected into components
+Since Phalcon is **loosely coupled** services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the **IoC** container. Frequently you will encounter the term **DI** which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound like a complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts:
+
+- Service Container: a "bag" where we globally store the services that our application needs to function.
+- Service or Component: Data processing object which will be injected into components
 
 If you are still interested in the details please see this article by [Martin Fowler](https://martinfowler.com/articles/injection.html)
 
@@ -359,7 +366,7 @@ class IndexController extends Controller
 }
 ```
 
-The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about views usage [here](/[[language]]/[[version]]]/views).
+The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about views usage [here](/[[language]]/[[version]]/views).
 
 <a name='signup-form'></a>
 

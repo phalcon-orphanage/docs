@@ -36,7 +36,7 @@ La estructura mínima de una aplicación CLI se verá así:
 
 * `app/config/config.php`
 * `app/tasks/MainTask.php`
-* `app/cli.php` <-- archivo principal de ejecución
+* `app/cli.php` archivo principal de ejecucióntrap file
 
 <a name='creating-bootstrap'></a>
 

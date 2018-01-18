@@ -77,7 +77,11 @@ Phalcon Compose является средой разработки на обще
 
 ## Dependencies
 
-Чтобы запустить этот стек на вашей машине, вам нужно по крайней мере: * Операционная система: Windows, Linux или macOs * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
+To run this stack on your machine, you need at least:
+
+* Operating System: Windows, Linux, or OS X
+* [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0
+* [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
 <a name='services'></a>
 
@@ -115,6 +119,7 @@ $ `composer create-project phalcon/compose --prefer-dist <folder name>`
 ```php
 Example
  Installing phalcon/compose (version)
+
   - Installing phalcon/compose (version)
     Loading from cache
 
@@ -225,7 +230,11 @@ $ `docker exec -t <project_app_1> phalcon project application simple`
 | `PMA_PASSWORD`       | Определяет пароль пользователя для конфигурирования аутентификации.                             | secret  |
 | `PMA_ABSOLUTE_URI`   | Определяет полный адрес к phpMyAdmin (например, https://pma.example.net/).                      |         |
 
-*Смотрите также* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
+*See also*
+
+* https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker
+* https://docs.phpmyadmin.net/en/latest/config.html#config
+* https://docs.phpmyadmin.net/en/latest/setup.html
 
 <a name='xdebug'></a>
 
@@ -248,7 +257,7 @@ $ `ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .`
 
 **Windows**
 
-> `ipconfig`
+&gt; `ipconfig`
 
 <a name='troubleshooting'></a>
 

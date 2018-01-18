@@ -96,7 +96,12 @@ Si ha creado su aplicación con [Phalcon Devtools](/[[language]]/[[version]]/dev
 $(which php) -S localhost:8000 -t public .htrouter.php
 ```
 
-La anatomía de este comando: - `$(which php)` - insertara la ruta absoluta a su binario PHP - `-S localhost:8000` - abre el modo de servidor con el `host:puerto` proporcionado - `-t public`-define el directorio raíz del servidor, necesario para que php enture las solicitudes de ruta a activos como JS, CSS e imágenes en el directorio público - `.htrouter.php`- el punto de entrada que será evaluado para cada solicitud
+La anatomía de este comando:
+
+- `$(which php)` insertará la ruta absoluta a su PHP binario
+- `-S localhost:8000` invoca el modo de servidor con `host:puerto` proporcionado
+- `-t public` define el directorio raíz de los servidores, es necesario para php para las solicitudes de ruta a activos como JS, CSS e imágenes en el directorio público
+- `.htrouter.php` el punto de entrada que será evaluado para cada solicitud
 
 Luego dirija su navegador a http://localhost:8000/ para comprobar si todo está funcionando.
 
@@ -354,7 +359,7 @@ Edita el comportamiento `Default` para habilitar el motor de reescritura de URLs
 
 ![](/images/content/webserver-cherokee-6.jpg)
 
-Por último, asegúrate que los comportamientos tienen el siguiente orden:
+Por último, asegúrate de que los comportamientos tienen el siguiente orden:
 
 ![](/images/content/webserver-cherokee-8.jpg)
 

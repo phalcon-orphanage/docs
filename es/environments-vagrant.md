@@ -268,6 +268,7 @@ La propiedad `folders` del archivo `settings.yml` lista todas las carpetas que d
 
 ```yaml
 folders:
+
     - map: ~/workspace
       to: /home/vagrant/workspace
 ```
@@ -276,6 +277,7 @@ Para habilitar [NFS](https://www.vagrantup.com/docs/synced-folders/nfs.html), si
 
 ```yaml
 folders:
+
     - map: ~/workspace
       to: /home/vagrant/workspace
       type: "nfs"
@@ -285,6 +287,7 @@ Puede pasar cualquiera de las opciones soportadas por las [carpetas sincronizada
 
 ```yaml
 folders:
+
     - map: ~/workspace
       to: /home/vagrant/workspace
       type: "nfs"
@@ -311,6 +314,7 @@ La propiedad `sites` permite de una manera sencilla mapear un "dominio" a una ca
 
 ```yaml
 sites:
+
     - map: phalcon.local
       to:  /home/vagrant/workspace/phalcon/public
 ```
@@ -319,6 +323,7 @@ Puede utilizar el parámetro `type` para especificar el tipo de configuración d
 
 ```yaml
 sites:
+
     - map:  landing.local
       to:   /home/vagrant/workspace/landing/public
       type: spa
@@ -355,6 +360,7 @@ También puede crear sus propios tipos. Para hacer esto, tome como base cualquie
 
 ```yaml
 sites:
+
     - map:  my-site.local
       to:   /home/vagrant/workspace/my-site/public
       # provisioning/templates/nginx/phalcon-advanced.conf.j2
@@ -374,6 +380,7 @@ Añadir los ajustes deseados al archivo y luego añadirlo a la sección `copy`:
 
 ```yaml
 copy:
+
     - from: /home/user/nginx.d/00-autoindex.conf
       to: /etc/nginx/conf.d/
 ```
@@ -555,6 +562,7 @@ Fácilmente puede registrar variables de entorno globales. Simplemente agregue l
 
 ```yaml
 variables:
+
     - key: TEST_DB_MYSQL_USER
       value: phalcon
 
@@ -570,7 +578,8 @@ De esta manera es posible habilitar el uso de variables en sus aplicaciones o c�
 ```yaml
 # Archivo codeception.yml
 params:
-    # Obtener parámetros desde el entorno
+    # Obtener parámetros del entorno
+
     - env
 ```
 
@@ -581,6 +590,7 @@ Usted podrá configurar el conjunto de unidades de la siguiente manera:
 class_name: UnitTester
 modules:
     enabled:
+
         - Db
     config
         Db:
@@ -600,6 +610,7 @@ Las variables del sitio se pueden agregar fácilmente con los valores de `fastcg
 
 ```yaml
 sites:
+
     - map: phalconbox.local
       to: /var/www/phalconbox/public
       variables:
@@ -633,6 +644,7 @@ Si quieres, puedes redirigir puertos adicionales a la Caja Phalcon, así como es
 
 ```yaml
 ports:
+
     - send: 63790
       to: 6379
     - send: 50000
@@ -674,6 +686,7 @@ La propiedad `networks` del `settings.yml` configura los interfaces de red para 
 
 ```yaml
 networks:
+
     - type: "private_network"
       ip: "192.168.50.99"
 ```
@@ -682,6 +695,7 @@ Para activar una interfaz [enlazada](https://www.vagrantup.com/docs/networking/p
 
 ```yaml
 networks:
+
     - type: "private_network"
       ip: "192.168.50.99"
       bridge: "en1: Wi-Fi (AirPort)"
@@ -691,6 +705,7 @@ Para activar [DHCP](https://www.vagrantup.com/docs/networking/public_network.htm
 
 ```yaml
 networks:
+
     - type: "private_network"
       bridge: "en1: Wi-Fi (AirPort)"
 ```
@@ -715,7 +730,11 @@ git pull origin master
 
 en el lugar que originalmente clonado el repositorio.
 
-La nueva versión de la Caja de Phalcon contendrá los archivos de configuración actualizados o modificados: * `settings.yml` * `.bash_aliases` * `after_provision.sh`
+La nueva verisón de la Caja de Phalcon contendrá archivos de configuración actualizados y modificados:
+
+* `settings.yml`
+* `.bash_aliases`
+* `after_provision.sh`
 
 Al ejecutar el comando `./install` (o `install.bat`) la Caja de Phalcon crea estos archivos en el directorio raíz. Sin embargo, si los archivos ya existen, ellos no se sobrescribirán.
 

@@ -211,7 +211,7 @@ class PostsController extends Controller
 
 <div class="alert alert-warning">
     <p>
-       El método <code>initialize()</code> se llama sólo si el evento <code>beforeExecuteRoute</code> se ejecuta con éxito. Esto evitará que la lógica de la aplicación en el inicializador no se pueda ejecutar sin autorización.
+       El método <code>initialize()</code> se llama sólo si el evento <code>beforeExecuteRoute</code> se ejecuta con éxito. Esto evitará que la lógica de la aplicación en el inicializador no pueda ejecutar sin autorización.
     </p>
 </div>
 
@@ -405,7 +405,7 @@ $di->set(
 
 ## Eventos en Controladores
 
-Los controladores automáticamente actúan como detectores de eventos del [dispatcher](/en/[[versopm]]/dispatcher), implementando métodos con los nombres de evento adecuados, permiten implementar puntos de anclaje para antes/después de ejecutar las acciones:
+Controllers automatically act as listeners for [dispatcher](/[[language]]/[[version]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
 ```php
 <?php
