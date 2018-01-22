@@ -158,9 +158,9 @@ class TestController extends Controller
 
 <a name='database-settings'></a>
 ## Preparing Database Settings
-When a project is generated using developer tools. A configuration file can be found in `app/config/config.ini`. To generate models or scaffold, you will need to change the settings used to connect to your database.
+When a project is generated using developer tools. A configuration file can be found in `app/config/config.php`. To generate models or scaffold, you will need to change the settings used to connect to your database.
 
-Change the database section in your config.ini file:
+Change the database section in your config.php file:
 
 ```ini
 [database]
