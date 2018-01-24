@@ -107,4 +107,4 @@ Si desea utilizar el encriptado, debe establecer una clave global al servicio [c
     );
 ```
 
-<h5 class='alert alert-danger'>Sending cookies data without encryption to clients including complex objects structures, resultsets, service information, etc. could expose internal application details that could be used by an attacker to attack the application. If you do not want to use encryption, we highly recommend you only send very basic cookie data like numbers or small string literals.</h5>
+<h5 class='alert alert-danger'>Enviar cookies sin encriptación al clientes, incluyendo estructuras de objetos complejos, conjuntos de resultados (resultsets), información de servicio, etc. podría exponer los datos de uso interno para que puedan ser utilizados por un atacante y atacar la aplicación. Si no desea utilizar el cifrado, recomendamos que sólo enviar datos muy básicos como números o pequeñas cadenas de texto.</h5>

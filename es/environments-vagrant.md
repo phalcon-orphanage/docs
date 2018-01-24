@@ -1,58 +1,58 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Resumen</a> <ul>
         <li>
-          <a href="#requirements">Requirements</a>
+          <a href="#requirements">Requerimentos</a>
         </li>
         <li>
-          <a href="#packages-included">Packages Included</a>
+          <a href="#packages-included">Paquetes incluidos</a>
         </li>
         <li>
-          <a href="#installation">Installation</a> <ul>
+          <a href="#installation">Instalación</a> <ul>
             <li>
-              <a href="#installation-vagrant-box">Installing the Vagrant Box</a>
+              <a href="#installation-vagrant-box">Instalando una Caja Vagrant</a>
             </li>
             <li>
-              <a href="#installation-phalcon-box">Installing the Phalcon Box</a>
+              <a href="#installation-phalcon-box">Instalando la Caja Phalcon</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#installation-configuration">Configuring</a> <ul>
+          <a href="#installation-configuration">Configuraciones</a> <ul>
             <li>
-              <a href="#installation-configuration-setting-provider">Setting your provider</a>
+              <a href="#installation-configuration-setting-provider">Establecer el Proveedor</a>
             </li>
             <li>
-              <a href="#installation-configuration-memory-cpu">Memory and CPU</a>
+              <a href="#installation-configuration-memory-cpu">Memoria y CPU</a>
             </li>
             <li>
-              <a href="#installation-configuration-shared-folders">Shared folders</a>
+              <a href="#installation-configuration-shared-folders">Carpetas compartidas</a>
             </li>
             <li>
-              <a href="#installation-configuration-nginx">Nginx sites</a> <ul>
+              <a href="#installation-configuration-nginx">Sitios Nginx</a> <ul>
                 <li>
-                  <a href="#installation-configuration-custom-nginx">Custom Nginx configuration</a>
+                  <a href="#installation-configuration-custom-nginx">Configuración Personalizada de Nginx</a>
                 </li>
                 <li>
-                  <a href="#installation-configuration-hosts">Configuring the <code>hosts</code> file</a>
+                  <a href="#installation-configuration-hosts">Configurando el archivo <code>hosts</code></a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#installation-aditional-packages">Install additional packages</a>
+              <a href="#installation-aditional-packages">Instalación de paquetes adicionales</a>
             </li>
             <li>
-              <a href="#installation-launching-phalcon-box">Launching the Phalcon Box</a>
+              <a href="#installation-launching-phalcon-box">Lanzando la Caja Phalcon</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#daily-usage">Daily usage</a> <ul>
+          <a href="#daily-usage">Uso diario</a> <ul>
             <li>
-              <a href="#daily-usage-accessing-box-globally">Accessing Phalcon Box globally</a> <ul>
+              <a href="#daily-usage-accessing-box-globally">Accediendo a la Caja Phalcon de forma Global</a> <ul>
                 <li>
-                  <a href="#daily-usage-accessing-box-globally-mac-linux">Mac || Linux</a>
+                  <a href="#daily-usage-accessing-box-globally-mac-linux">Mac o Linux</a>
                 </li>
                 <li>
                   <a href="#daily-usage-accessing-box-globally-windows">Windows</a>
@@ -60,54 +60,54 @@
               </ul>
             </li>
             <li>
-              <a href="#daily-usage-ssh">Connecting via SSH</a>
+              <a href="#daily-usage-ssh">Conectar Vía SSH</a>
             </li>
             <li>
-              <a href="#daily-usage-databases">Connecting to databases</a>
+              <a href="#daily-usage-databases">Conexión a Bases de Datos</a>
             </li>
             <li>
-              <a href="#daily-usage-additional-sites">Adding additional sites</a>
+              <a href="#daily-usage-additional-sites">Agregando Sitios Adicionales</a>
             </li>
             <li>
-              <a href="#daily-usage-environment-variables">Environment variables</a> <ul>
+              <a href="#daily-usage-environment-variables">Variables de Entorno</a> <ul>
                 <li>
-                  <a href="#daily-usage-environment-global-variables">Global variables</a>
+                  <a href="#daily-usage-environment-global-variables">Variables Globales</a>
                 </li>
                 <li>
-                  <a href="#daily-usage-environment-site-variables">Site variables</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#daily-usage-ports">Ports</a> <ul>
-                <li>
-                  <a href="#daily-usage-ports-forwarding">Forwarding additional ports</a>
+                  <a href="#daily-usage-environment-site-variables">Variables de Sitio</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#daily-usage-sharing-environment">Sharing your environment</a>
+              <a href="#daily-usage-ports">Puertos</a> <ul>
+                <li>
+                  <a href="#daily-usage-ports-forwarding">Redirigir Puertos Adicionales</a>
+                </li>
+              </ul>
             </li>
             <li>
-              <a href="#daily-usage-network-interfaces">Network interfaces</a>
+              <a href="#daily-usage-sharing-environment">Compartiendo tu Entorno</a>
             </li>
             <li>
-              <a href="#daily-usage-updating-box">Updating Phalcon Box</a>
+              <a href="#daily-usage-network-interfaces">Interfaces de Red</a>
             </li>
             <li>
-              <a href="#daily-usage-provider-settings">Provider specific settings</a> <ul>
+              <a href="#daily-usage-updating-box">Actualizando la Caja Phalcon</a>
+            </li>
+            <li>
+              <a href="#daily-usage-provider-settings">Configuración Específica del Proveedor</a> <ul>
                 <li>
                   <a href="#daily-usage-provider-settings-virtualbox">VirtualBox</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#daily-usage-mail-catcher">Mail catcher</a>
+              <a href="#daily-usage-mail-catcher">Mail Catcher</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#troubleshooting">Resolución de problemas</a>
         </li>
       </ul>
     </li>
@@ -116,24 +116,24 @@
 
 <a name='overview'></a>
 
-# Overview
+# Resumen
 
-Phalcon Box uses the default **phalcon/xenial64** box from [Vagrant Cloud](https://atlas.hashicorp.com/phalconphp/boxes/xenial64/) for compatibility. If you choose to use a 64-bit ISO you may need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `AMD-V`, `Intel VT-x` or `VIA VT`.
+La Caja de Phalcon o Phalcon Box utiliza por defecto la caja **phalcon/xenial64** de [Vagrant](https://atlas.hashicorp.com/phalconphp/boxes/xenial64/) por compatibilidad. Si usted decide usar un ISO de 64 bits puede que necesite actualizar el BIOS para habilitar la [ Virtualización](https://en.wikipedia.org/wiki/X86_virtualization) con `AMD-V`, `Intel VT-x` o `VIA VT`.
 
-The first time that you provision a new environment with `vagrant up`, the process will take a lot longer since the box (`phalconphp/xenial64`) will have to be downloaded to your local machine first. Any subsequent environment provisions will be much faster.
+La primera vez que usted aprovisiona un nuevo ambiente con `vagrant up`, el proceso tomará mucho más tiempo ya que tendrá que descargar la caja (`phalconphp/xenial64`) en su equipo en primer lugar. Las posteriores disposiciones del entorno serán mucho más rápidas.
 
 <a name='requirements'></a>
 
-## Requirements
+## Requerimentos
 
-- Operating System: Windows, Linux, or macOS
-- [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
-- [VMware Fusion](http://www.vmware.com/products/fusion) (or Workstation - if you want to build the VMware box)
+- Sistema Operativo: Windows, Linux, o macOS
+- [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (si deseas construir la Caja VirtualBox)
+- [VMware Fusion](http://www.vmware.com/products/fusion) (o Workstation - Si desea construir la Caja VMware)
 - [Vagrant](https://www.vagrantup.com/downloads.html) >= 1.9
 
 <a name='packages-included'></a>
 
-## Packages Included
+## Paquetes incluidos
 
 - Ansible
 - Beanstalkd
@@ -147,7 +147,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 - MySQL
 - Nginx
 - Ngrok
-- Node.js (with Yarn, Bower, Grunt, and Gulp)
+- Node.js (con Yarn, Bower, Grunt, y Gulp)
 - PHIVE
 - PHP 7.1
 - PHPMD
@@ -162,48 +162,48 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='installation'></a>
 
-## Installation
+## Instalación
 
 <a name='installation-vagrant-box'></a>
 
-### Installing the Vagrant Box
+### Instalando una Caja Vagrant
 
-Before launching your Phalcon Box environment, you must install VirtualBox, or VMWare as well as Vagrant. All of these software packages provide easy-to-use visual installers for all popular operating systems.
+Antes de iniciar su entorno, la caja de Phalcon, deberá instalar VirtualBox, o VMWare como Vagrant. Todos estos paquetes de software proporcionan unos instaladores visuales fáciles de usar para todos los sistemas operativos populares.
 
-Once VirtualBox/VMWare and Vagrant have been installed, you should add the `phalconphp/xenial64` box to your Vagrant installation using the following command in your terminal. It will take a few minutes to download the box, depending on your Internet connection speed:
+Una vez que VirtualBox/VMware y Vagrant han sido instalados, se debe agregar la caja `phalconphp/xenial64` a la instalación de Vagrant, para esto se usa el siguiente comando desde una consola. Tomará algunos minutos para que la caja se descargue, esto dependerá de la velocidad de conexión a internet:
 
 ```bash
 vagrant box add phalconphp/xenial64
 ```
 
-If this command fails, make sure your Vagrant installation is up to date.
+Si este comando falla, asegúrese de que su instalación de Vagrant esté actualizada.
 
 <h5 class='alert alert-warning'>To use the VMware provider, you will need to purchase both VMware Fusion / Workstation and the <a href="https://www.vagrantup.com/vmware">VMware Vagrant plug-in</a>. Though it is not free, VMware can provide faster shared folder performance out of the box.  </h5>
 
 <a name='installation-phalcon-box'></a>
 
-### Installing the Phalcon Box
+### Instalando la Caja Phalcon
 
-You can install Phalcon Box by simply cloning the repository. Consider cloning the repository into a `workspace` folder within your `home` directory, as the Phalcon Box box will serve as the host to all of your Phalcon projects:
+Es posibles instalar directamente la Caja de Phalcon o simplemente clonar el repositorio. Considere clonar el repositorio en una carpeta del `workspace` o espacio de trabajo, dentro del directorio `home`, así la Caja de Phalcon servirá de host para todos sus proyectos de Phalcon:
 
 ```bash
 cd ~
 git clone https://github.com/phalcon/box.git workspace
 ```
 
-The `master` branch will always contain the latest stable version of Phalcon Box. If you wish to check older versions or newer ones currently under development, please switch to the relevant branch/tag.
+La rama `master` siempre contiene la última versión estable de Phalcon. Si usted desea consultar versiones anteriores o nuevas, actualmente en desarrollo, pase a la rama/etiqueta pertinente.
 
-You can find the latest stable version on the [Github Release Page](https://github.com/phalcon/box/releases):
+Puede encontrar la última versión estable en la [Página de Lanzamientos de Github](https://github.com/phalcon/box/releases):
 
 ```bash
-# Clone the desired release...
+# Clonar el lanzamiento deseado...
 git checkout v2.4.0
 ```
 
-Once you have cloned the Phalcon Box repository, run the install command from the Phalcon Box root directory to create the `settings.yml` configuration file. The `settings.yml` file will be placed in the Phalcon Box directory:
+Una vez que ha clonado el repositorio de la Caja de Phalcon, ejecute el comando de instalación desde el directorio raíz de Phalcon para crear el archivo de configuración `settings.yml`. En el directorio de la Caja de Phalcon, se colocará el archivo `settings.yml`:
 
 ```bash
-# macOS || Linux
+# macOS o Linux
 ./install
 ```
 
@@ -212,7 +212,7 @@ rem Windows
 install.bat
 ```
 
-Now you are ready to provision your Virtual Machine, run:
+Ahora que está listo para aprovisionar su Máquina Virtual, ejecute el siguiente comando:
 
 ```bash
 vagrant up
@@ -220,13 +220,13 @@ vagrant up
 
 <a name='installation-configuration'></a>
 
-## Configuring
+## Configuraciones
 
 <a name='installation-configuration-setting-provider'></a>
 
-### Setting your provider
+### Establecer el Proveedor
 
-The provider key in your `settings.yml` file indicates which Vagrant provider should be used: `virtualbox`, `vmware_fusion` or `vmware_workstation`. You may set this to the provider you prefer:
+La clave del proveedor en su archivo `settings.yml` indica qué proveedor Vagrant debe usarse: `virtualbox`, `vmware_fusion` o `vmware_workstation`. Puede configurar el proveedor que prefiera:
 
 ```yaml
 provider: virtualbox
@@ -234,15 +234,15 @@ provider: virtualbox
 
 <a name='installation-configuration-memory-cpu'></a>
 
-### Memory and CPU
+### Memoria y CPU
 
-By default this setup uses 2GB RAM. You can change this in `settings.yml` and simply run `vagrant reload`:
+Por defecto se establece el uso de 2GB de memoria RAM. Es posible modificarlo en el archivo `settings.yml` y simplemente ejecutar `vagrant reload`:
 
 ```yaml
 memory: 4096
 ```
 
-You can also use more than one core if you like, simply change this line in the same file:
+Si lo desea, también puede utilizar más de un núcleo, simplemente cambie esta linea en el mismo archivo:
 
 ```yaml
 cpus: 4
@@ -250,9 +250,9 @@ cpus: 4
 
 <a name='installation-configuration-shared-folders'></a>
 
-### Shared folders
+### Carpetas compartidas
 
-The `folders` property of the `settings.yml` file lists all of the folders you wish to share with your Phalcon Box environment. As files within these folders are changed, they will be kept in sync between your local machine and the Phalcon Box environment. You may configure as many shared folders as necessary:
+La propiedad `folders` del archivo `settings.yml` lista todas las carpetas que desea compartir con en ambiente de la Caja Phalcon. Tan pronto como se produzcan cambios en archivos en estos directorios, se sincronizarán entre tu máquina local y el entorno de la Caja Phalcon. Se pueden configurar tantas carpetas como sean necesarias:
 
 ```yaml
 folders:
@@ -260,7 +260,7 @@ folders:
       to: /home/vagrant/workspace
 ```
 
-To enable [NFS](https://www.vagrantup.com/docs/synced-folders/nfs.html), just add a simple flag to your synced folder configuration:
+Para habilitar [NFS](https://www.vagrantup.com/docs/synced-folders/nfs.html), simplemente debe indicarse en la configuración de la carpeta a sincronizar:
 
 ```yaml
 folders:
@@ -269,7 +269,7 @@ folders:
       type: "nfs"
 ```
 
-You may also pass any options supported by Vagrant's [Synced Folders](https://www.vagrantup.com/docs/synced-folders/basic_usage.html) by listing them under the `options` key:
+Puede pasar cualquiera de las opciones soportadas por las [carpetas sincronizadas](https://www.vagrantup.com/docs/synced-folders/basic_usage.html) de Vagrant enumerándolas en la clave `options`:
 
 ```yaml
 folders:
@@ -289,9 +289,9 @@ vagrant plugin install vagrant-bindfs
 
 <a name='installation-configuration-nginx'></a>
 
-### Nginx sites
+### Sitios Nginx
 
-The `sites` property allows you to easily map a "domain" to a folder on your Phalcon Box environment. A sample site configuration is included in the `settings.yml` file. You may add as many sites to your Phalcon Box environment as necessary. Phalcon Box can serve as a convenient, virtualized environment for every Phalcon project you are working on:
+La propiedad `sites` permite de una manera sencilla mapear un "dominio" a una carpeta del entorno de desarrollo de la Caja de Phalcon. El archivo `settings.yml` incluye una configuración de ejemplo de un sitio. Puedes agregar cuantos sitios al entorno de la Caja de Phalcon como sean necesarios. La Caja de Phalcon puede servir como un entorno práctico y virtualizado para cada proyecto Phalcon en el que esté trabajando:
 
 ```yaml
 sites:
@@ -299,7 +299,7 @@ sites:
       to:  /home/vagrant/workspace/phalcon/public
 ```
 
-You can use the `type` parameter to specify the type of Nginx configuration for the site. For example:
+Puede utilizar el parámetro `type` para especificar el tipo de configuración de Nginx para el sitio. Por ejemplo:
 
 ```yaml
 sites:
@@ -308,9 +308,9 @@ sites:
       type: spa
 ```
 
-The default type is `phalcon`. If the desired type is not allowed or not available `phalcon` will be used as fallback.
+Por efecto el tipo es `phalcon`. Si el tipo deseado no esta permitido o disponible se utilizará `phalcon` como alternativa.
 
-Available types:
+Tipos disponibles:
 
 - `phalcon`
 - `slayer`
@@ -323,15 +323,15 @@ Available types:
 - `laravel`
 - `zend`
 
-Feel free to suggest a new type of Nginx configuration [through opening a New Feature Request](https://github.com/phalcon/box/issues/new).
+Siéntase libre se sugerir un nuevo tipo de configuración de Nginx abriendo una [Solicitud de Nueva Característica](https://github.com/phalcon/box/issues/new).
 
 <h5 class='alert alert-warning'>If you change the <code>sites</code> property after provisioning the Phalcon Box, you must re-run <code>vagrant reload --provision</code> to update the Nginx configuration on the virtual machine. </h5>
 
 <a name='installation-configuration-custom-nginx'></a>
 
-#### Custom Nginx configuration
+#### Configuración Personalizada de Nginx
 
-You can also create your own type. To do this take any template from the `provisioning/templates/nginx` folder as a basis and make the necessary changes. You need to place this file into the same folder. After that, you will be able to use your own custom type:
+También puede crear sus propios tipos. Para hacer esto, tome como base cualquier plantilla de la carpeta `provisioning/templates/nginx` y haga los cambios necesarios. Es necesario colocar este archivo en la misma carpeta. Después de eso, usted puede utilizar su propio tipo personalizado:
 
 ```yaml
 sites:
@@ -341,16 +341,16 @@ sites:
       type: phalcon-advanced
 ```
 
-Do you need a custom *global* Nginx configuration? Yes, this is possible. Fox example, let's create the autoindex configuration.
+¿Necesita una configuración personalizada de tipo *global* para Nginx? Sí, esto es posible. Por ejemplo, vamos a crear la configuración de auto-índice.
 
-File `/home/user/nginx.d/00-autoindex.conf`:
+Archivo `/home/user/nginx.d/00-autoindex.conf`:
 
 ```nginx
-# Processes requests ending with the slash character (‘/’) and produces a directory listing
+# Procesa solicitudes terminadas con una barra (‘/’) y produce un listado del directorio
 autoindex on;
 ```
 
-Add the desired settings to your file and then add it to the `copy` section:
+Añadir los ajustes deseados al archivo y luego añadirlo a la sección `copy`:
 
 ```yaml
 copy:
@@ -360,13 +360,13 @@ copy:
 
 <a name='installation-configuration-hosts'></a>
 
-#### Configuring the `hosts` file
+#### Configurando el archivo `hosts`
 
-You must add the "domains" for your Nginx sites to the hosts file on your machine. The hosts file will redirect requests for your Phalcon sites into your Phalcon Box machine. On Mac and Linux, this file is located at `/etc/hosts`. On Windows, it is located at `C:\Windows\System32\drivers\etc\hosts`. The lines you add to this file will look like the following:
+Debe agregar los "dominios" para sus sitios web en Nginx en el fichero `hosts` en su máquina. El archivo hosts redirige las peticiones a sus sitios de Phalcon en su máquina en la Caja de Phalcon. En Mac y Linux, este archivo esta ubicado en `/etc/hosts`. En Windows, se encuentra en `C:\Windows\System32\drivers\etc\hosts`. Las lineas que debes añadir a este archivo deben ser algo similar a esto:
 
     192.168.50.4  phalcon.local
 
-Make sure the IP address listed is the one set in your `settings.yml` file. Once you have added the domain to your `hosts` file and launched the Vagrant box you will be able to access the site via your web browser:
+Asegúrese de que la dirección IP listada es la misma que esta en el archivo `settings.yml`. Una vez haya agregado el domino a su fichero `hosts` y lanzado la Caja de Vagrant será capaz de acceder al sitio web a través de su navegador web:
 
     http://phalcon.local
 
@@ -378,19 +378,19 @@ vagrant plugin install vagrant-hostsupdater
 
 <a name='installation-aditional-packages'></a>
 
-### Install additional packages
+### Instalación de paquetes adicionales
 
-We did our best to provide Phalcon Box with all necessary programs and libraries. However, it should be understood that the typical user does not need all possible packages which can be installed. Phalcon Box must be of reasonable size so that it could be used by even those people who are experiencing difficulties with bandwidth of the Internet channel.
+Hicimos nuestro mejor esfuerzo para proporcionar una Caja Phalcon con todos los programas necesarios y bibliotecas. Sin embargo, debe entenderse que el usuario normal no necesita todos los paquetes posibles que se pueden instalar. La Caja de Phalcon debe ser de un tamaño razonable para que pueda ser utilizado incluso por aquellas personas que están experimentando dificultades con el ancho de banda del canal de Internet.
 
-Because of these considerations, we allow users to specify which custom packages they need by every provision. To install the necessary packages add their names in the `apt` section:
+Debido a estas consideraciones, permitimos a los usuarios especificar qué paquetes personalizados necesitan por cada disposición. Para instalar los paquetes necesarios añadir sus nombres en la sección de `apt`:
 
 ```yaml
-# Provisioning features
+# Características de prestación
 provision:
-    # do full system update for each full provisoning
+    # Hacer una actualización completa del sistema para prestación
     update: true
 
-    # Install wkhtmltopdf and libffi-dev packages
+    # Instalar los paquetes wkhtmltopdf y libffi-dev
     apt:
         - wkhtmltopdf
         - libffi-dev
@@ -398,25 +398,25 @@ provision:
 
 <a name='installation-launching-phalcon-box'></a>
 
-### Launching the Phalcon Box
+### Lanzando la Caja Phalcon
 
-Once you have edited the `settings.yml` to your liking, run the `vagrant up` command from your Phalcon Box directory (for example `$HOME/workspace`). Vagrant will boot the virtual machine and automatically configure your shared folders and Nginx sites.
+Una vez han editado el archivo `settings.yml` a tu gusto, ejecuta el comando `vagrant up` desde el directorio de la caja de Phalcon (por ejemplo `$HOME/workspace`). Vagrant iniciará la máquina virtual y automáticamente configurará los directorios compartidos y los sitios Nginx.
 
-To destroy the machine, you may use the `vagrant destroy --force` command.
+Para destruir la máquina, utilizar el comando `vagrant destroy --force`.
 
 <a name='daily-usage'></a>
 
-## Daily usage
+## Uso diario
 
 <a name='daily-usage-accessing-box-globally'></a>
 
-### Accessing Phalcon Box globally
+### Accediendo a la Caja Phalcon de forma Global
 
-Sometimes you may want to `vagrant up` your Phalcon Box machine from anywhere on your filesystem. You can do this on Mac or Linux systems by adding a [Bash function](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-8.html) to your Bash profile. On Windows, you may accomplish this by adding a "batch" file to your `PATH`. These scripts will allow you to run any Vagrant command from anywhere on your system and will automatically point that command to your Phalcon Box installation:
+A veces puede querer ejecutar `vagrant up` en su Caja de Phalcon desde cualquier punto de su sistema de ficheros. Usted puede hacer esto en sistemas Mac o Linux añadiendo una [función Bash](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-8.html) a tu perfil de Bash. En Windows, puede realizar esto agregando un fichero "batch" a su `PATH`. Estos scripts le permitirán ejecutar cualquier comando Vagrant desde cualquier punto de su sistema y ese comando apuntará automáticamente a su instalación de la Caja de Phalcon:
 
 <a name='daily-usage-accessing-box-globally-mac-linux'></a>
 
-#### Mac || Linux
+#### Mac o Linux
 
 ```bash
 function box()
@@ -431,7 +431,7 @@ function box()
 
 #### Windows
 
-Create a `box.bat` batch file anywhere on your machine with the following contents:
+Cree un fichero batch `box.bat`, en cualquier parte de su máquina, con el siguiente contenido:
 
 ```cmd
 @echo off
@@ -450,31 +450,31 @@ set box=
 
 <a name='daily-usage-ssh'></a>
 
-### Connecting via SSH
+### Conectar Vía SSH
 
-You can SSH into your virtual machine by issuing the `vagrant ssh` terminal command from your Phalcon Box directory.
+Se puede acceder a la máquina virtual utilizando SSH introduciendo el comando `vagrant ssh` desde su directorio de la Caja de Phalcon.
 
-But, since you will probably need to SSH into your Phalcon Box machine frequently, consider adding the "function" [described above](#daily-usage-accessing-box-globally) to your host machine to quickly SSH into the Phalcon Box.
+Pero, puesto que probablemente necesitará SSH en la máquina de la Caja de Phalcon con frecuencia, considere agregar la "función" [descrita anteriormente](#daily-usage-accessing-box-globally) a su máquina host para acceder rápidamente por SSH en la Caja de Phalcon.
 
 <a name='daily-usage-databases'></a>
 
-### Connecting to databases
+### Conexión a Bases de Datos
 
-To connect to your MySQL, Postgres or MongoDB database from your host machine's database client, you should connect to `127.0.0.1` and port `33060` (MySQL), `54320` (Postgres) or `27017` (MongoDB). The username and password for databases is `phalcon` / `secret`.
+Para conectar con su base de datos MySQL, PostgreSQL o MongoDB desde su cliente de base de datos en su sistema anfitrión, debería conectar a `127.0.0.1` por el puerto `33060` para MySQL, `54320` para PostgreSQL o `27017` para MongoDB. El nombre de usuario y la contraseña para las bases de datos es `phalcon` y `secret` respectivamente.
 
 <h5 class='alert alert-danger'>You should only use these non-standard ports when connecting to the databases from your host machine. You will use the default <code>3306</code> and <code>5432</code> ports in your Phalcon database configuration file since Phalcon is running within the Virtual Machine. </h5>
 
-To access to the interactive db console from Phalcon Box type:
+Para acceder a la consola interactiva dependiendo del tipo de la base de datos desde la Caja de Phalcon:
 
-- **Postgres:** `psql -U phalcon -h localhost` (password `secret`)
-- **MySQL:** `mysql` (password not needed for CLI tool)
-- **MongoDB:** `mongo` (password not needed for CLI tool)
+- **Postgres:** `psql -U phalcon -h localhost` (contraseña `secret`)
+- **MySQL:** `mysql` (La contraseña no es necesaria para la herramienta CLI)
+- **MondoDB:** `mongo` (La contraseña no es necesaria para la herramienta CLI)
 
 <a name='daily-usage-additional-sites'></a>
 
-### Adding additional sites
+### Agregando Sitios Adicionales
 
-Once your Phalcon Box environment is provisioned and running, you may want to add additional Nginx sites for your applications. You can run as many Phalcon projects as you wish on a single Phalcon Box environment. To add an additional site, simply add the site to your `settings.yml` file:
+Una vez que tu entorno de la Caja de Phalcon está aprovisionado y funcionando, quizá quieras añadir sitios Nginx adicionales para tus aplicaciones. Puedes correr tantos projectos Phalcon como desees en un entorno simple de Caja de Phalcon. Para agregar un sitio adicional, simplemente agregue el sitio a su fichero `settings.yaml`:
 
 ```yaml
 sites:
@@ -486,7 +486,7 @@ sites:
       to:  /home/vagrant/workspace/blog/public
 ```
 
-If Vagrant is not managing your "hosts" file automatically, you may need to add the new site to that file as well:
+Si Vagrant no está gestionando su fichero "hosts" automáticamente, además deberá añadir el nuevo sitio a ese fichero:
 
     192.168.50.4  phalcon.local
     192.168.50.4  pdffiller.local
@@ -498,17 +498,17 @@ If Vagrant is not managing your "hosts" file automatically, you may need to add 
 vagrant plugin install vagrant-hostsupdater
 ```
 
-Once the site has been added, run the `vagrant reload --provision` command from your Phalcon Box directory.
+Una vez que el sitio ha sido agregado, ejecute el comando `vagrant reload --provision` desde su directorio de la Caja de Phalcon.
 
 <a name='daily-usage-environment-variables'></a>
 
-### Environment variables
+### Variables de entorno
 
 <a name='daily-usage-environment-global-variables'></a>
 
-#### Global variables
+#### Variables Globales
 
-You can easily register global environment variables. Just add variable and its value to the `variables` section:
+Fácilmente puede registrar variables de entorno globales. Simplemente agregue la variable y el valor en la sección `variables`:
 
 ```yaml
 variables:
@@ -522,19 +522,19 @@ variables:
       value: "mysql:host=127.0.0.1;dbname=phalcon_test"
 ```
 
-This way you will be able to use these variables in your applications or scripts. For example when configuring [Codeception](http://codeception.com) in such way:
+De esta manera es posible habilitar el uso de variables en sus aplicaciones o códigos. Por ejemplo, al configurar [Codeception](http://codeception.com) de esta manera:
 
 ```yaml
-# File codeception.yml
+# Archivo codeception.yml
 params:
-    # Get params from environment
+    # Obtener parámetros desde el entorno
     - env
 ```
 
-you will able to configure Unit suite as follows:
+Usted podrá configurar el conjunto de unidades de la siguiente manera:
 
 ```yaml
-# File tests/unit.suite.yml
+# Archivo tests/unit.suite.yml
 class_name: UnitTester
 modules:
     enabled:
@@ -551,9 +551,9 @@ modules:
 
 <a name='daily-usage-environment-site-variables'></a>
 
-#### Site variables
+#### Variables de Sitio
 
-Site variables are how you can easily add `fastcgi_param` values to your site host configuration within Phalcon Box. For example, we may add a `APP_ENV` variable with the value `development`:
+Las variables del sitio se pueden agregar fácilmente con los valores de `fastcgi_param` en la configuración del host de su sitio dentro de la Caja de Phalcon. Por ejemplo, podemos agregar una variable `APP_ENV` con el valor `development`:
 
 ```yaml
 sites:
@@ -562,31 +562,31 @@ sites:
       variables:
           - key: APP_ENV
             value: development
-          # Yet another example
+          # Otro ejemplo
           - key: AMQP_DEBUG
             value: true
 ```
 
 <a name='daily-usage-ports'></a>
 
-### Ports
+### Puertos
 
-By default, the following ports are forwarded to your Phalcon Box environment:
+Por defecto, los siguientes puertos se redirigen al entorno de tu Caja Phalcon:
 
-| Forwarded port | Phalcon Box | Host system |
-| -------------- |:-----------:|:-----------:|
-| **SSH**        |    `22`     |   `2222`    |
-| **HTTP**       |    `80`     |   `8000`    |
-| **HTTPS**      |    `443`    |   `44300`   |
-| **MySQL**      |   `3306`    |   `33060`   |
-| **Postgres**   |   `5432`    |   `54320`   |
-| **MailHog**    |   `8025`    |   `8025`    |
+| Puerto redireccinado | Caja Phalcon | Sistema de Host |
+| -------------------- |:------------:|:---------------:|
+| **SSH**              |     `22`     |     `2222`      |
+| **HTTP**             |     `80`     |     `8000`      |
+| **HTTPS**            |    `443`     |     `44300`     |
+| **MySQL**            |    `3306`    |     `33060`     |
+| **Postgres**         |    `5432`    |     `54320`     |
+| **MailHog**          |    `8025`    |     `8025`      |
 
 <a name='daily-usage-ports-forwarding'></a>
 
-#### Forwarding additional ports
+#### Redirigir Puertos Adicionales
 
-If you wish, you may forward additional ports to the Phalcon Box, as well as specify their protocol:
+Si quieres, puedes redirigir puertos adicionales a la Caja Phalcon, así como especificar su protocolo:
 
 ```yaml
 ports:
@@ -599,17 +599,17 @@ ports:
 
 <a name='daily-usage-sharing-environment'></a>
 
-### Sharing your environment
+### Compartiendo tu Entorno
 
-Sometimes you may wish to share what you're currently working on with coworkers or a client. Vagrant has a built-in way to support this via `vagrant share`; however, this will not work if you have multiple sites configured in your `settings.yml` file.
+A veces usted puede desear compartir lo que está trabajando con otros compañeros o con un cliente. Vagrant incorpora un sistema a través de `vagrant share` que soporta esto, no obstante, esto no funcionará si tiene multiples sitios configurados en el fichero `settings.yml`.
 
-To solve this problem, Phalcon Box includes its own `share` command. To get started, SSH into your Phalcon Box machine via `vagrant ssh` and run `share <your-site-here>`, for example: `share blog.local`. This will share your site from your `settings.yml` configuration file. Of course, you may substitute any of your other configured sites for `blog.local`:
+Para resolver este problema, la Caja de Phalcon incluye su propio comando `share`. Para empezar, ingresar por SSH al sistema de la Caja de Phalcon via `vagrant ssh` y `share <su-sitio-aqui>`, por ejemplo: `share blog.local`. Esto compartirá su sitio desde el archivo de configuración `settings.yml`. Por supuesto, puede sustituir cualquiera de sus otros sitios configurados por `blog.local`:
 
 ```bash
 share blog.local
 ```
 
-After running the command, you will see an [Ngrok](https://ngrok.com) screen appear which contains the activity log and the publicly accessible URLs for the shared site. If you would like to specify a custom region, subdomain, or other Ngrok runtime option, you may add them to your `share` command:
+Después de ejecutar el comando, usted verá una pantalla de [Ngrok](https://ngrok.com) que contiene el registro de actividades y las URL de acceso público del sitio compartido. Si quisiera especificar una region especifica, subdominio o cualquier otra opción Ngrok en tiempo de ejecución, puede agregarlas a su comando `share`:
 
 ```bash
 share blog.local -region=eu -subdomain=phalcongelist
@@ -619,9 +619,9 @@ share blog.local -region=eu -subdomain=phalcongelist
 
 <a name='daily-usage-network-interfaces'></a>
 
-### Network interfaces
+### Interfaces de Red
 
-The `networks` property of the `settings.yml` configures network interfaces for your Phalcon Box environment. You may configure as many interfaces as necessary:
+La propiedad `networks` del `settings.yml` configura los interfaces de red para su entorno de Caja Phalcon. Usted puede configurar tantas interfaces como sean necesarias:
 
 ```yaml
 networks:
@@ -629,7 +629,7 @@ networks:
       ip: "192.168.50.99"
 ```
 
-To enable a [bridged](https://www.vagrantup.com/docs/networking/public_network.html) interface, configure a `bridge` setting and change the network type to `public_network`:
+Para activar una interfaz [enlazada](https://www.vagrantup.com/docs/networking/public_network.html), configure una configuración de `bridge` y cambie el tipo red a `public_network`:
 
 ```yaml
 networks:
@@ -638,7 +638,7 @@ networks:
       bridge: "en1: Wi-Fi (AirPort)"
 ```
 
-To enable [DHCP](https://www.vagrantup.com/docs/networking/public_network.html), just remove the `ip` option from this configuration:
+Para activar [DHCP](https://www.vagrantup.com/docs/networking/public_network.html), sólo elimine la opción `ip` de su configuración:
 
 ```yaml
 networks:
@@ -648,39 +648,39 @@ networks:
 
 <a name='daily-usage-updating-box'></a>
 
-### Updating Phalcon Box
+### Actualizando la Caja Phalcon
 
-You can update Phalcon Box in two simple steps.
+Puede actualizar la Caja de Phalcon en dos sencillos pasos.
 
-1. First, you will need to update the Vagrant box using the `vagrant box update` command:
+1. En primer lugar, usted tendrá que actualizar la Caja de Vagrant utilizando el comando `vagrant box update`:
 
 ```bash
 vagrant box update
 ```
 
-1. Next, you need to update the Phalcon Box source code. If you cloned the repository you can simply
+1. A continuación, necesitará actualizar el código de fuente de la Caja de Phalcon. Si clonaron el repositorio puede simplemente
 
 ```bash
 git pull origin master
 ```
 
-at the location you originally cloned the repository.
+en el lugar que originalmente clonado el repositorio.
 
-The new version of Phalcon Box will contain updated or amended configuration files: * `settings.yml` * `.bash_aliases` * `after_provision.sh`
+La nueva versión de la Caja de Phalcon contendrá los archivos de configuración actualizados o modificados: * `settings.yml` * `.bash_aliases` * `after_provision.sh`
 
-When you run the command `./install` (or `install.bat`) the Phalcon Box creates these files in the root directory. However, if the files already exist, they will not be overwritten.
+Al ejecutar el comando `./install` (o `install.bat`) la Caja de Phalcon crea estos archivos en el directorio raíz. Sin embargo, si los archivos ya existen, ellos no se sobrescribirán.
 
-We recommend that you always take backups of those files, and remove them from the project so that the new updated ones can be copied over. You can then compare your own files with the phalcon box ones to apply your personalized changes and take advantage of the new features offered by the update.
+Le recomendamos que siempre realice backups de esos archivos y eliminarlos del proyecto para que se puedan copiar los nuevos. Entonces puede comparar sus propios archivos con los de la Caja de Phalcon para aplicar los cambios personalizados y aprovechar las nuevas características ofrecidas por la actualización.
 
 <a name='daily-usage-provider-settings'></a>
 
-### Provider specific settings
+### Configuración Específica del Proveedor
 
 <a name='daily-usage-provider-settings-virtualbox'></a>
 
 #### VirtualBox
 
-By default, Phalcon Box configures the `natdnshostresolver` setting to `on`. This allows Phalcon Box to use your host operating system's DNS settings. If you would like to override this behavior, add the following lines to your `settings.yml` file:
+Por defecto, la Caja de Phalcon establece la configuración `natdnshostresolver` en `on`. Esto permite a la Caja de Phalcon utilizar las configuración del DNS de su sistema operativo anfitrión. Si usted quisiera sobreeescribir este comportamiento, agregue las siguientes líneas a su fichero `settings.yml`:
 
 ```yaml
 natdnshostresolver: off
@@ -688,44 +688,44 @@ natdnshostresolver: off
 
 <a name='daily-usage-mail-catcher'></a>
 
-### Mail catcher
+### Mail Catcher
 
-By default, Phalcon Box redirects all PHP emails to [MailHog](https://github.com/mailhog/MailHog) (instead of sending them to the outside world). You can access the MailHog UI at `http://localhost:8025/` (or whatever domain you have configured in `settings.yml`).
+Por defecto, la Caja de Phalcon redirecciona todos los emails de PHP a [MailHog](https://github.com/mailhog/MailHog) (en lugar de enviarlos al mundo exterior). Puede acceder a la UI de MailHog en `http://localhost:8025/` (o el dominio que haya configurado en `settings.yml`).
 
 <a name='troubleshooting'></a>
 
-## Troubleshooting
+## Resolución de problemas
 
-**Problem:**
+**Problema:**
 
-> An error occurred in the underlying SSH library that Vagrant uses. The error message is shown below. In many cases, errors from this library are caused by ssh-agent issues. Try disabling your SSH agent or removing some keys and try again. If the problem persists, please report a bug to the net-ssh project. timeout during server version negotiating
+> Se produjo un error en la biblioteca subyacente de SSH que usa Vagrant. A continuación se muestra el mensaje de error. En muchos casos, los errores de esta biblioteca son causados por problemas del ssh-agent. Intente desactivar su agente SSH o eliminar de algunas claves y vuelva a intentarlo. Si el problema persiste, por favor notificar un error al proyecto net-ssh. El tiempo de espera durante la negociación de versión de servidor
 
-**Solution:**
+**Solución:**
 
 ```bash
 vagrant plugin install vagrant-vbguest
 ```
 
-**Problem:**
+**Problema:**
 
-> Vagrant was unable to mount VirtualBox shared folders. This is usually because the filesystem "vboxsf" is not available. This filesystem is made available via the VirtualBox Guest Additions and kernel module. Please verify that these guest additions are properly installed in the guest. This is not a bug in Vagrant and is usually caused by a faulty Vagrant box. For context, the command attempted was:
->
+> Vagrant era incapaz de montar las carpetas compartidas de VirtualBox. Esto sucede generalmente porque el sistema de archivos "vboxsf" no está disponible. Este sistema de archivos está a su disposición mediante el VirtualBox Guest Additions y el módulo de núcleo. Por favor verifique que estas adiciones de invitado adecuadamente estén instaladas en el huésped. Esto no es un error en Vagrant y generalmente es causado por una caja defectuosa de Vagrant. En contexto, el comando intentado fue:
+
 > mount -t vboxsf -o uid=900,gid=900 vagrant /vagrant
 
-**Solution:**
+**Solución:**
 
 ```bash
 vagrant plugin install vagrant-vbguest
 ```
 
-**Problem:**
+**Problema:**
 
-> There was an error while executing `VBoxManage`, a CLI used by Vagrant for controlling VirtualBox. The command and stderr is shown below.
->
-> Command: `["startvm", "9d2b95e1-0fdd-40f4-ad65-4b56eb4315f8", "--type", "headless"]`
->
+> Se produjo un error mientras se ejecuta el `VBoxManage`, un CLI utilizado por Vagrant para el control de VirtualBox. A continuación se muestra el comando y el stderr.
+ 
+> Comando: `["startvm", "9d2b95e1-0fdd-40f4-ad65-4b56eb4315f8", "--type", "headless"]`
+ 
 > Stderr: VBoxManage.exe: error: VT-x is not available (VERR_VMX_NO_VMX) VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component ConsoleWrap, interface IConsole
 
-**Solution:**
+**Solución:**
 
-You need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `Intel VT-x`.
+Necesita actualizar su BIOS para habilitar la [Virtualización](https://en.wikipedia.org/wiki/X86_virtualization) con `Intel VT-x`.

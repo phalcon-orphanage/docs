@@ -196,7 +196,7 @@ El código HTML generado por la solicitud será:
 
 Las plantillas son vistas que se pueden utilizar para compartir el código común de las vistas. Actúan como plantillas de controladores, por lo que necesitará colocarlas en el directorio de plantillas.
 
-Las plantillas se pueden procesar antes del diseño (usando `$this->view->setTemplateBefore()`) o puede hacerse después (usando `$this->view->setTemplateAfter()`). In the following example the template (`layouts/common.phtml`) is rendered after the main layout (`layouts/posts.phtml`):
+Las plantillas se pueden procesar antes del diseño (usando `$this->view->setTemplateBefore()`) o puede hacerse después (usando `$this->view->setTemplateAfter()`). En el ejemplo siguiente se representa la plantilla (`layouts/common.phtml`) después de la plantilla principal (`layouts/posts.phtml`):
 
 ```php
 <?php
@@ -837,7 +837,7 @@ $di->set(
 );
 ```
 
-<h5 class='alert alert-warning'>The frontend must always be <code>Phalcon\Cache\Frontend\Output</code> and the service <code>viewCache</code> must be registered as always open (not shared) in the services container (DI). </h5>
+<h5 class='alert alert-warning'>El frontend debe ser siempre <code>Phalcon\Cache\Frontend\Output</code> y el servicio <code>viewCache</code> debe estar registrado siempre como abierto (no compartido) en el contenedor de servicios (DI). </h5>
 
 Al usar vistas, el almacenamiento en caché se puede usar para evitar que los controladores tengan que generar los datos de la vista en cada solicitud.
 

@@ -83,7 +83,7 @@ Before continuing, please be sure you've successfully [installed Phalcon](/[[lan
 
 ## Manos a la obra
 
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+El primer archivo que necesitas crear es el archivo bootstrap. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
 
 Ultimately, it is responsible for doing 3 things:
 
@@ -139,7 +139,7 @@ $di = new FactoryDefault();
 
 `Phalcon\Di\FactoryDefault` es una variante de `Phalcon\Di`. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
 
-In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
+En la siguiente parte, registraremos el servicio "vista" indicando el directorio donde el entorno de trabajo encontrará los archivos de las vistas. Como las vistas no corresponden a las clases, no se pueden cargar con un autoloader.
 
 Services can be registered in several ways, but for our tutorial we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
 
@@ -189,7 +189,7 @@ $di->set(
 
 ### Tratar las solicitudes de la aplicación
 
-In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+En la última parte de este archivo, encontramos `Phalcon\Mvc\Application`. Su propósito es inicializar el entorno de la solicitud, rutear la solicitud entrante y luego despachar cualquier acción descubierta; agrega todas las respuestas y las devuelve cuando el proceso se completa.
 
 ```php
 <?php
@@ -298,19 +298,19 @@ Las clases del controlador tienen que tener el sufijo "Controller" y las accione
 
 ![](/images/content/tutorial-basic-1.png)
 
-Congratulations, you're phlying with Phalcon!
+¡Felicitaciones! Ahora estás volando con Phalcon.
 
 <a name='view'></a>
 
 ## Enviando la salida a una vista
 
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Todo debe ser pasado a la vista, la cual es la responsable de la salida de datos en pantalla. Phalcon buscará una vista con el mismo nombre que la última acción ejecutada dentro de un directorio llamado como el último controlador ejecutado. In our case (`app/views/index/index.phtml`):
+Enviar la salida por pantalla es a veces necesario pero no es aceptado como purista asi como la comunidad MVC puede atestiguar. Todo debe ser pasado a la vista, la cual es la responsable de la salida de datos en pantalla. Phalcon buscará una vista con el mismo nombre que la última acción ejecutada dentro de un directorio llamado como el último controlador ejecutado. En nuestro caso (`app/views/index/index.phtml`):
 
 ```php
 <?php echo "<h1>Hola!</h1>";
 ```
 
-Our controller (`app/controllers/IndexController.php`) now has an empty action definition:
+Nuestro controlador (`app/controllers/IndexController.php`) ahora tiene una definición de acción vacía:
 
 ```php
 <?php
@@ -326,7 +326,7 @@ class IndexController extends Controller
 }
 ```
 
-The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about `views usage here <views>`.
+La salida del navegador debe seguir siendo la misma. El componente estático `Phalcon\Mvc\View` se crea automáticamente cuando haya terminado la ejecución de la acción. Learn more about `views usage here <views>`.
 
 <a name='signup-form'></a>
 
@@ -379,7 +379,7 @@ class SignupController extends Controller
 }
 ```
 
-The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
+La ausencia de la acción en el index da el pase directo a una vista con la definición de formulario (`app/views/signup/index.phtml`):
 
 ```php
 <h2>
@@ -411,7 +411,7 @@ The empty index action gives the clean pass to a view with the form definition (
 </form>
 ```
 
-Viewing the form in your browser will show something like this:
+En tu navegador, el formulario debería verse algo como así:
 
 ![](/images/content/tutorial-basic-3.png)
 
