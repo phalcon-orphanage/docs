@@ -23,7 +23,7 @@ Aquí la mejor solución es implementar trabajos de fondo o en paralelo. La apli
 
 Mientras que usted puede encontrar extensiones PHP más sofisticadas para atender la formación de colas en sus aplicaciones como [RabbitMQ](http://pecl.php.net/package/amqp); Phalcon provee a un cliente para [Beanstalk](http://www.igvita.com/2010/05/20/scalable-work-queues-with-beanstalk/), un backend de colas de trabajo inspirado en [Memcached](http://memcached.org/). Es simple, ligero y totalmente especializado para la formación de colas de trabajo.
 
-<h5 class='alert alert-danger'>Some of the data returned from queue methods require that the module Yaml be installed. Please refer to <a href="http://php.net/manual/book.yaml.php">this</a> for more information. You will need to use Yaml >= 2.0.0 </h5>
+<h5 class='alert alert-danger'>Algunos de los datos devueltos de métodos de cola requieren tener instalado el módulo Yaml. Please refer to <a href="http://php.net/manual/book.yaml.php">this</a> for more information. You will need to use Yaml >= 2.0.0 </h5>
 
 <a name='put-jobs-in-queue'></a>
 
