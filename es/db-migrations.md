@@ -244,7 +244,7 @@ Las migraciones de bases de datos admiten los siguientes tipos de columna:
 
 ## Escribiendo migraciones
 
-Las migraciones no son sólo diseñadas para 'modificar' tablas. Una migración es sólo una clase regular de PHP por lo que no está limitado simplemente a estas funciones. Por ejemplo, después de agregar una columna, puedes escribir un código para establecer el valor de la columna en los registros existentes. For more details and examples of individual methods, check the [database component](/[[language]]/[[version]]/db-layer).
+Las migraciones no son sólo diseñadas para 'modificar' tablas. Una migración es sólo una clase regular de PHP por lo que no está limitado simplemente a estas funciones. Por ejemplo, después de agregar una columna, puedes escribir un código para establecer el valor de la columna en los registros existentes. Para más detalles y ejemplos de cada método, revise el [componente de base de datos](/[[language]]/[[version]]/db-layer).
 
 ```php
 <?php

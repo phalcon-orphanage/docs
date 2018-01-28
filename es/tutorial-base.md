@@ -359,7 +359,7 @@ class IndexController extends Controller
 }
 ```
 
-La salida del navegador debe seguir siendo la misma. El componente estático `Phalcon\Mvc\View` se crea automáticamente cuando haya terminado la ejecución de la acción. Learn more about views usage [here](/[[language]]/[[version]]/views).
+La salida del navegador debe seguir siendo la misma. El componente estático `Phalcon\Mvc\View` se crea automáticamente cuando haya terminado la ejecución de la acción. Más información sobre el uso de las vistas [aquí](/[[language]]/[[version]]/views).
 
 <a name='signup-form'></a>
 
