@@ -337,7 +337,7 @@ Perfilando de algunas consultas:
 
 use Store\Toys\Robots;
 
-// Send some SQL statements to the database
+// Enviamos algunas sentencias SQL a la base de datos
 Robots::find();
 
 Robots::find(
@@ -352,7 +352,7 @@ Robots::find(
     ]
 );
 
-// Get the generated profiles from the profiler
+// Obtenemos los perfiles generador por el profiler
 $profiles = $di->get('profiler')->getProfiles();
 
 foreach ($profiles as $profile) {
