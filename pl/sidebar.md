@@ -31,7 +31,7 @@
     - [Debugowanie](/[[language]]/[[version]]/debug)
 - Rdzeń 
     - [API Index](/[[language]]/[[version]]/api/index)
-    - Application 
+    - [Application] 
         - [Kompletna](/[[language]]/[[version]]/application)
         - [Mikro](/[[language]]/[[version]]/application-micro)
         - [Konsolowa (ang. Cli)](/[[language]]/[[version]]/application-cli)
