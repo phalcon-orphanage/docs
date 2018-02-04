@@ -338,7 +338,7 @@ $di->set(
 
 use Store\Toys\Robots;
 
-// Отправим несколько SQL запросов в базу данных
+// Send some SQL statements to the database
 Robots::find();
 
 Robots::find(
@@ -353,14 +353,14 @@ Robots::find(
     ]
 );
 
-// Получаем сгенерированные профили из профилировщика
+// Get the generated profiles from the profiler
 $profiles = $di->get('profiler')->getProfiles();
 
 foreach ($profiles as $profile) {
-   echo 'SQL Statement: ', $profile->getSQLStatement(), '\n';
-   echo 'Start Time: ', $profile->getInitialTime(), '\n';
-   echo 'Final Time: ', $profile->getFinalTime(), '\n';
-   echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), '\n';
+   echo 'SQL Statement: ', $profile->getSQLStatement(), "\n";
+   echo 'Start Time: ', $profile->getInitialTime(), "\n";
+   echo 'Final Time: ', $profile->getFinalTime(), "\n";
+   echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), "\n";
 }
 ```
 
