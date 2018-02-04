@@ -31,7 +31,7 @@
     - [Εντοπισμός σφαλμάτων](/[[language]]/[[version]]/debug)
 - Πυρήνας 
     - [API Index](/[[language]]/[[version]]/api/index)
-    - Application 
+    - [Application] 
         - [Πλήρης](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
         - [Cli](/[[language]]/[[version]]/application-cli)
