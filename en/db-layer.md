@@ -444,17 +444,17 @@ $robots = $this->modelsManager->executeQuery(
 
 The following types are available:
 
-| Bind Type | Bind Type Constant                | Example          |
-|-----------|-----------------------------------|------------------|
-| str       | `Column::BIND_PARAM_STR`          | `{name:str}`     |
-| int       | `Column::BIND_PARAM_INT`          | `{number:int}`   |
-| double    | `Column::BIND_PARAM_DECIMAL`      | `{price:double}` |
-| bool      | `Column::BIND_PARAM_BOOL`         | `{enabled:bool}` |
-| blob      | `Column::BIND_PARAM_BLOB`         | `{image:blob}`   |
-| null      | `Column::BIND_PARAM_NULL`         | `{exists:null}`  |
-| array     | Array of `Column::BIND_PARAM_STR` | `{codes:array}`  |
-| array-str | Array of `Column::BIND_PARAM_STR` | `{names:array}`  |
-| array-int | Array of `Column::BIND_PARAM_INT` | `{flags:array}`  |
+| Bind Type | Bind Type Constant                | Example            |
+|-----------|-----------------------------------|--------------------|
+| str       | `Column::BIND_PARAM_STR`          | `{name:str}`       |
+| int       | `Column::BIND_PARAM_INT`          | `{number:int}`     |
+| double    | `Column::BIND_PARAM_DECIMAL`      | `{price:double}`   |
+| bool      | `Column::BIND_PARAM_BOOL`         | `{enabled:bool}`   |
+| blob      | `Column::BIND_PARAM_BLOB`         | `{image:blob}`     |
+| null      | `Column::BIND_PARAM_NULL`         | `{exists:null}`    |
+| array     | Array of `Column::BIND_PARAM_STR` | `{codes:array}`    |
+| array-str | Array of `Column::BIND_PARAM_STR` | `{names:array-str}`|
+| array-int | Array of `Column::BIND_PARAM_INT` | `{flags:array-int}`|
 
 <a name='cast-bound-parameter-values'></a>
 ## Cast bound parameters values
