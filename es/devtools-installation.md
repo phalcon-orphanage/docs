@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Phalcon Developer Tools Installation</a> 
+      <a href="#overview">Instalación de las Herramientas de Desarrollador de Phalcon</a> 
       <ul>
         <li>
           <a href="#prerequisites">Prerequisitos</a>
@@ -19,7 +19,7 @@
               <a href="#installation-windows">Windows</a> 
               <ul>
                 <li>
-                  <a href="#installation-windows-system-path">Adding PHP and DevTools to your system PATH</a>
+                  <a href="#installation-windows-system-path">Agregar PHP y DevTools al PATH del sistema</a>
                 </li>
               </ul>
             </li>
@@ -32,21 +32,21 @@
 
 <a name='overview'></a>
 
-# Phalcon Developer Tools Installation
+# Instalación de las Herramientas de Desarrollador de Phalcon
 
-These steps will guide you through the process of installing Phalcon Developer Tools for Linux, macOS and Windows.
+Estos pasos le guiarán por el proceso de instalación de las Herramientas del Desarrollador de Phalcon para Linux, macOS y Windows.
 
 <a name='prerequisites'></a>
 
 ## Prerequisitos
 
-La extensión de PHP, Phalcon, es necesaria para ejecutar las Herramientas del Desarrollador de Phalcon. Si no la ha instalado aún, por favor consulte la sección [instalación](/[[language]]/[[version]]//installation) para obtener las instrucciones.
+La extensión de Phalcon PHP, es necesaria para ejecutar las Herramientas del Desarrollador de Phalcon. Si no la ha instalado aún, por favor consulte la sección [instalación](/[[language]]/[[version]]//installation) para obtener las instrucciones.
 
 <a name='installation'></a>
 
 ## Instalación
 
-You can download a cross platform package containing the developer tools from from [Github](https://github.com/phalcon/phalcon-devtools).
+Usted puede descargar un paquete multi plataforma que contiene las Herramientas del Desarrollador de desde [Github](https://github.com/phalcon/phalcon-devtools).
 
 <a name='installation-linux'></a>
 
@@ -112,7 +112,7 @@ En la plataforma de Windows, debe configurar el `PATH` del sistema para que incl
 
 ![](/images/content/devtools-windows-1.png)
 
-Change the path to the one you installed the Phalcon tools (`set PTOOLSPATH=C:\phalcon-tools`):
+Cambie la ruta de acceso a donde se instalo las herramientas de Phalcon (`set PTOOLSPATH = C:\phalcon-tools`):
 
 ![](/images/content/devtools-windows-2.png)
 
@@ -122,7 +122,7 @@ Guarde los cambios.
 
 #### Agregar PHP y DevTools al PATH del sistema
 
-Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file `php.exe` and copy its path. For instance, using WAMPP you will locate the PHP executable in a location like this: `C:\wamp\bin\php\<php version>\php.exe` (where `<php version>` is the version of PHP that WAMPP comes bundled with).
+Debido a que los scripts están escritos en PHP, necesita tenerlo instalarlo en su equipo. Dependiendo de su instalación de PHP, el archivo ejecutable puede ubicarse en varios lugares. Busque el archivo `php.exe` y copie su dirección o camino. Por ejemplo, usando WAMPP localizaremos el ejecutable PHP en un lugar como este: `C:\wamp\bin\php\<php version>\php.exe` (donde `<php version>` es la versión de PHP que viene incluida con WAMPP).
 
 Desde el menú Inicio de Windows, haga derecho con el ratón y haga clic en el icono `Computer` y seleccione `Propiedades`:
 
