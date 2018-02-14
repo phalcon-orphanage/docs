@@ -83,7 +83,7 @@
         <li>
           <a href="#template-inheritance">Template Inheritance</a> <ul>
             <li>
-              <a href="#template-inheritance-multiple">Multiple Inheritance</a>
+              <a href="#template-inheritance-multiple">Çoklu Katılım</a>
             </li>
           </ul>
         </li>
@@ -1205,7 +1205,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
 
 <a name='template-inheritance-multiple'></a>
 
-### Multiple Inheritance
+### Çoklu Katılım
 
 Extended templates can extend other templates. The following example illustrates this:
 
