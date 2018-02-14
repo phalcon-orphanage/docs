@@ -31,7 +31,7 @@
     - [Depuración](/[[language]]/[[version]]/debug)
 - Núcleo 
     - [Índice del API](/[[language]]/[[version]]/api/index)
-    - [Application] 
+    - Aplicación 
         - [Completa](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
         - [CLI](/[[language]]/[[version]]/application-cli)
@@ -45,7 +45,7 @@
         - [Namespaces](/[[language]]/[[version]]/namespaces)
     - [Logging](/[[language]]/[[version]]/logging) 
         - [Adaptadores](/[[language]]/[[version]]/logging#usage)
-    - [Queue](/[[language]]/[[version]]/queue)
+    - [Colas](/[[language]]/[[version]]/queue)
 - Base de Datos 
     - [Capa](/[[language]]/[[version]]/db-layer)
     - [PHQL](/[[language]]/[[version]]/db-phql)
@@ -66,7 +66,7 @@
     - [Formularios](/[[language]]/[[version]]/forms)
     - [Imagen](/[[language]]/[[version]]/image)
     - [Tag](/[[language]]/[[version]]/tag)
-    - [View](/[[language]]/[[version]]/views) 
+    - [Vista](/[[language]]/[[version]]/views) 
         - [Volt](/[[language]]/[[version]]/volt)
 - Lógica de Negocio 
     - [Listas de Control de Acceso](/[[language]]/[[version]]/acl)
