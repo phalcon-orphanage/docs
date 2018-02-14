@@ -1,6 +1,6 @@
 # Class **Phalcon\\Events\\Event**
 
-*implements* [Phalcon\Events\EventInterface](/en/3.2/api/Phalcon_Events_EventInterface)
+*implements* [Phalcon\Events\EventInterface](/[[language]]/[[version]]/api/Phalcon_Events_EventInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/events/event.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 

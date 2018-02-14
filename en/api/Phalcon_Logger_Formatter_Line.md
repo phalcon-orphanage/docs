@@ -1,8 +1,8 @@
 # Class **Phalcon\\Logger\\Formatter\\Line**
 
-*extends* abstract class [Phalcon\Logger\Formatter](/en/3.2/api/Phalcon_Logger_Formatter)
+*extends* abstract class [Phalcon\Logger\Formatter](/[[language]]/[[version]]/api/Phalcon_Logger_Formatter)
 
-*implements* [Phalcon\Logger\FormatterInterface](/en/3.2/api/Phalcon_Logger_FormatterInterface)
+*implements* [Phalcon\Logger\FormatterInterface](/[[language]]/[[version]]/api/Phalcon_Logger_FormatterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/logger/formatter/line.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -46,13 +46,13 @@ Applies a format to a message before sent it to the internal log
 
 
 
-public  **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](/en/3.2/api/Phalcon_Logger_Formatter)
+public  **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](/[[language]]/[[version]]/api/Phalcon_Logger_Formatter)
 
 Returns the string meaning of a logger constant
 
 
 
-public  **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](/en/3.2/api/Phalcon_Logger_Formatter)
+public  **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](/[[language]]/[[version]]/api/Phalcon_Logger_Formatter)
 
 Interpolates context values into the message placeholders
 

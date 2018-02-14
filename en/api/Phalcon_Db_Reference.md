@@ -1,6 +1,6 @@
 # Class **Phalcon\\Db\\Reference**
 
-*implements* [Phalcon\Db\ReferenceInterface](/en/3.2/api/Phalcon_Db_ReferenceInterface)
+*implements* [Phalcon\Db\ReferenceInterface](/[[language]]/[[version]]/api/Phalcon_Db_ReferenceInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/reference.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 

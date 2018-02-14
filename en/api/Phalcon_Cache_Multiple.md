@@ -65,13 +65,13 @@ $cache->save("my-key", $data);
 
 
 ## Methods
-public  **__construct** ([[Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface) $backends])
+public  **__construct** ([[Phalcon\Cache\BackendInterface](/[[language]]/[[version]]/api/Phalcon_Cache_BackendInterface) $backends])
 
 Phalcon\\Cache\\Multiple constructor
 
 
 
-public  **push** ([Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface) $backend)
+public  **push** ([Phalcon\Cache\BackendInterface](/[[language]]/[[version]]/api/Phalcon_Cache_BackendInterface) $backend)
 
 Adds a backend
 

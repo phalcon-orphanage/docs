@@ -1,6 +1,6 @@
 # Class **Phalcon\\Mvc\\Router\\Route**
 
-*implements* [Phalcon\Mvc\Router\RouteInterface](/en/3.2/api/Phalcon_Mvc_Router_RouteInterface)
+*implements* [Phalcon\Mvc\Router\RouteInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Router_RouteInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/router/route.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -213,7 +213,7 @@ Returns the hostname restriction if any
 
 
 
-public  **setGroup** ([Phalcon\Mvc\Router\GroupInterface](/en/3.2/api/Phalcon_Mvc_Router_GroupInterface) $group)
+public  **setGroup** ([Phalcon\Mvc\Router\GroupInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Router_GroupInterface) $group)
 
 Sets the group associated with the route
 

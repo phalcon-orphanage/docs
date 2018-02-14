@@ -1,6 +1,6 @@
 # Class **Phalcon\\Db\\Result\\Pdo**
 
-*implements* [Phalcon\Db\ResultInterface](/en/3.2/api/Phalcon_Db_ResultInterface)
+*implements* [Phalcon\Db\ResultInterface](/[[language]]/[[version]]/api/Phalcon_Db_ResultInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/result/pdo.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -23,7 +23,7 @@ while ($robot = $result->fetchArray()) {
 
 
 ## Methods
-public  **__construct** ([Phalcon\Db\AdapterInterface](/en/3.2/api/Phalcon_Db_AdapterInterface) $connection, [PDOStatement](http://php.net/manual/en/class.pdostatement.php) $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
+public  **__construct** ([Phalcon\Db\AdapterInterface](/[[language]]/[[version]]/api/Phalcon_Db_AdapterInterface) $connection, [PDOStatement](http://php.net/manual/en/class.pdostatement.php) $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
 
 Phalcon\\Db\\Result\\Pdo constructor
 

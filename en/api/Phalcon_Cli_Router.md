@@ -1,6 +1,6 @@
 # Class **Phalcon\\Cli\\Router**
 
-*implements* [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Di\InjectionAwareInterface](/[[language]]/[[version]]/api/Phalcon_Di_InjectionAwareInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/router.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -34,7 +34,7 @@ Phalcon\\Cli\\Router constructor
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -89,7 +89,7 @@ Handles routing information received from command-line arguments
 
 
 
-public [Phalcon\Cli\Router\Route](/en/3.2/api/Phalcon_Cli_Router_Route) **add** (*string* $pattern, [*string/array* $paths])
+public [Phalcon\Cli\Router\Route](/[[language]]/[[version]]/api/Phalcon_Cli_Router_Route) **add** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router
 
@@ -150,7 +150,7 @@ Returns all the routes defined in the router
 
 
 
-public [Phalcon\Cli\Router\Route](/en/3.2/api/Phalcon_Cli_Router_Route) **getRouteById** (*int* $id)
+public [Phalcon\Cli\Router\Route](/[[language]]/[[version]]/api/Phalcon_Cli_Router_Route) **getRouteById** (*int* $id)
 
 Returns a route object by its id
 

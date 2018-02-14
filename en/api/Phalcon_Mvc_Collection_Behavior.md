@@ -1,6 +1,6 @@
 # Abstract class **Phalcon\\Mvc\\Collection\\Behavior**
 
-*implements* [Phalcon\Mvc\Collection\BehaviorInterface](/en/3.2/api/Phalcon_Mvc_Collection_BehaviorInterface)
+*implements* [Phalcon\Mvc\Collection\BehaviorInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Collection_BehaviorInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/collection/behavior.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -26,13 +26,13 @@ Returns the behavior options related to an event
 
 
 
-public  **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface) $model)
+public  **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model)
 
 This method receives the notifications from the EventsManager
 
 
 
-public  **missingMethod** ([Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface) $model, *mixed* $method, [*mixed* $arguments])
+public  **missingMethod** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model, *mixed* $method, [*mixed* $arguments])
 
 Acts as fallbacks when a missing method is called on the collection
 

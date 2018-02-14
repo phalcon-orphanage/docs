@@ -1,6 +1,6 @@
 # Class **Phalcon\\Mvc\\Model\\Relation**
 
-*implements* [Phalcon\Mvc\Model\RelationInterface](/en/3.2/api/Phalcon_Mvc_Model_RelationInterface)
+*implements* [Phalcon\Mvc\Model\RelationInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_RelationInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/relation.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 

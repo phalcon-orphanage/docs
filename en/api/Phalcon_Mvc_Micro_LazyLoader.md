@@ -23,7 +23,7 @@ Initializes the internal handler, calling functions on it
 
 
 
-public *mixed* **callMethod** (*string* $method, *array* $arguments, [[Phalcon\Mvc\Model\BinderInterface](/en/3.2/api/Phalcon_Mvc_Model_BinderInterface) $modelBinder])
+public *mixed* **callMethod** (*string* $method, *array* $arguments, [[Phalcon\Mvc\Model\BinderInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_BinderInterface) $modelBinder])
 
 Calling __call method
 

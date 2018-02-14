@@ -42,7 +42,7 @@ Rewinds the internal iterator
 
 
 
-public [Phalcon\Annotations\Annotation](/en/3.2/api/Phalcon_Annotations_Annotation) **current** ()
+public [Phalcon\Annotations\Annotation](/[[language]]/[[version]]/api/Phalcon_Annotations_Annotation) **current** ()
 
 Returns the current annotation in the iterator
 

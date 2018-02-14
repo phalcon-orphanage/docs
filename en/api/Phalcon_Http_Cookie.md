@@ -1,6 +1,6 @@
 # Class **Phalcon\\Http\\Cookie**
 
-*implements* [Phalcon\Http\CookieInterface](/en/3.2/api/Phalcon_Http_CookieInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Http\CookieInterface](/[[language]]/[[version]]/api/Phalcon_Http_CookieInterface), [Phalcon\Di\InjectionAwareInterface](/[[language]]/[[version]]/api/Phalcon_Di_InjectionAwareInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/cookie.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -14,7 +14,7 @@ Phalcon\\Http\\Cookie constructor
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -26,7 +26,7 @@ Returns the internal dependency injector
 
 
 
-public [Phalcon\Http\Cookie](/en/3.2/api/Phalcon_Http_Cookie) **setValue** (*string* $value)
+public [Phalcon\Http\Cookie](/[[language]]/[[version]]/api/Phalcon_Http_Cookie) **setValue** (*string* $value)
 
 Sets the cookie's value
 
