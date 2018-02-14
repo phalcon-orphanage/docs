@@ -30,13 +30,10 @@ $config = new \Phalcon\Config(
 
 ```
 
-
 ## Methods
 public  **__construct** ([*array* $arrayConfig])
 
 Phalcon\\Config constructor
-
-
 
 public  **offsetExists** (*mixed* $index)
 
@@ -51,8 +48,6 @@ var_dump(
 
 ```
 
-
-
 public  **get** (*mixed* $index, [*mixed* $defaultValue])
 
 Gets an attribute from the configuration, if the attribute isn't defined returns null
@@ -64,8 +59,6 @@ If the value is exactly null or is not defined the default value will be used in
 echo $config->get("controllersDir", "../app/controllers/");
 
 ```
-
-
 
 public  **offsetGet** (*mixed* $index)
 
@@ -80,8 +73,6 @@ print_r(
 
 ```
 
-
-
 public  **offsetSet** (*mixed* $index, *mixed* $value)
 
 Sets an attribute using the array-syntax
@@ -95,8 +86,6 @@ $config["database"] = [
 
 ```
 
-
-
 public  **offsetUnset** (*mixed* $index)
 
 Unsets an attribute using the array-syntax
@@ -107,8 +96,6 @@ Unsets an attribute using the array-syntax
 unset($config["database"]);
 
 ```
-
-
 
 public  **merge** ([Phalcon\Config](/en/3.1.2/api/Phalcon_Config) $config)
 
@@ -129,8 +116,6 @@ $globalConfig->merge($appConfig);
 
 ```
 
-
-
 public  **toArray** ()
 
 Converts recursively the object to an array
@@ -143,8 +128,6 @@ print_r(
 );
 
 ```
-
-
 
 public  **count** ()
 
@@ -165,17 +148,11 @@ print $config->count();
 
 ```
 
-
-
 public static  **__set_state** (*array* $data)
 
 Restores the state of a Phalcon\\Config object
 
-
-
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance])
 
 Helper method for merge configs (forwarding nested config instance)
-
-
 

@@ -7,9 +7,7 @@ abstract public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.1
 
 ...
 
-
 abstract public  **getEventsManager** ()
 
 ...
-
 

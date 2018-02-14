@@ -7,14 +7,11 @@ abstract public  **getModel** ()
 
 ...
 
-
 abstract public  **getMessages** ()
 
 ...
 
-
 abstract public  **success** ()
 
 ...
-
 

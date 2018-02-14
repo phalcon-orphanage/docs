@@ -7,74 +7,59 @@ abstract public  **setHostname** (*mixed* $hostname)
 
 ...
 
-
 abstract public  **getHostname** ()
 
 ...
-
 
 abstract public  **compilePattern** (*mixed* $pattern)
 
 ...
 
-
 abstract public  **via** (*mixed* $httpMethods)
 
 ...
-
 
 abstract public  **reConfigure** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
-
 abstract public  **getName** ()
 
 ...
-
 
 abstract public  **setName** (*mixed* $name)
 
 ...
 
-
 abstract public  **setHttpMethods** (*mixed* $httpMethods)
 
 ...
-
 
 abstract public  **getRouteId** ()
 
 ...
 
-
 abstract public  **getPattern** ()
 
 ...
-
 
 abstract public  **getCompiledPattern** ()
 
 ...
 
-
 abstract public  **getPaths** ()
 
 ...
-
 
 abstract public  **getReversedPaths** ()
 
 ...
 
-
 abstract public  **getHttpMethods** ()
 
 ...
 
-
 abstract public static  **reset** ()
 
 ...
-
 

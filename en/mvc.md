@@ -30,5 +30,4 @@ Views represent the user interface of your application. Views are often HTML fil
 ## Controllers
 The controllers provide the 'flow' between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [Learn more](/[[language]]/[[version]]/controllers)
 
-
 [wiki-mvc]: https://en.wikipedia.org/wiki/Model–view–controller

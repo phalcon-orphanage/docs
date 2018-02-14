@@ -161,7 +161,6 @@ You can pass multiple environment variables from an external file to a service's
 * https://docs.phpmyadmin.net/en/latest/config.html#config
 * https://docs.phpmyadmin.net/en/latest/setup.html
 
-
 <a name='xdebug'></a>
 ## Xdebug Remote debugger (PhpStorm)
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
@@ -263,5 +262,4 @@ The main tools used are Phalcon, Docker and Docker Compose.
 | Redis           | 3.2.6            |
 | Weakref         | 0.3.3            |
 | Xdebug          | 2.4.0            |
-
 

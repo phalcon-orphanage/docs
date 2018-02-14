@@ -350,8 +350,6 @@ $app->get(
             ]
         )->getFirst();
 
-
-
         // Create a response
         $response = new Response();
 

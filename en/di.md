@@ -618,8 +618,6 @@ class SomeComponent
 
     protected $someFlag;
 
-
-
     public function __construct(Response $response, $someFlag)
     {
         $this->response = $response;
@@ -680,8 +678,6 @@ class SomeComponent
     protected $response;
 
     protected $someFlag;
-
-
 
     public function setResponse(Response $response)
     {
@@ -796,7 +792,7 @@ $di->set(
 Supported parameter types include the following:
 
 | Type      | Description                                          | Example                                                                            |
-| --------- | ---------------------------------------------------- |----------------------------------------------------------------------------------- | 
+| --------- | ---------------------------------------------------- |----------------------------------------------------------------------------------- |
 | parameter | Represents a literal value to be passed as parameter | ```php['type' => 'parameter', 'value' => 1234]```                                  |
 | service   | Represents another service in the service container  | ```php['type' => 'service', 'name' => 'request']```                                |
 | instance  | Represents an object that must be built dynamically  | ```php['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]``` |
@@ -889,7 +885,6 @@ The following events are supported:
 | -------------------- | --------------------------------------------------------------------------------------------------------------- | :-----------------: | :----------: |
 | beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           | No                  | Listeners    |
 | afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. | No                  | Listeners    |
-
 
 <a name='shared-services'></a>
 ## Shared services
@@ -1020,7 +1015,6 @@ class MyClass implements InjectionAwareInterface
      * @var DiInterface
      */
     protected $di;
-
 
     public function setDi(DiInterface $di)
     {

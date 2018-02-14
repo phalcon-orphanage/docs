@@ -21,20 +21,15 @@ while ($robot = $result->fetchArray()) {
 
 ```
 
-
 ## Methods
 public  **__construct** ([Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface) $connection, [PDOStatement](http://php.net/manual/en/class.pdostatement.php) $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
 
 Phalcon\\Db\\Result\\Pdo constructor
 
-
-
 public  **execute** ()
 
 Allows to execute the statement again. Some database systems don't support scrollable cursors,
 So, as cursors are forward only, we need to execute the cursor again to fetch rows from the begining
-
-
 
 public  **fetch** ([*mixed* $fetchStyle], [*mixed* $cursorOrientation], [*mixed* $cursorOffset])
 
@@ -56,8 +51,6 @@ while ($robot = $result->fetch()) {
 
 ```
 
-
-
 public  **fetchArray** ()
 
 Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows.
@@ -78,8 +71,6 @@ while ($robot = result->fetchArray()) {
 
 ```
 
-
-
 public  **fetchAll** ([*mixed* $fetchStyle], [*mixed* $fetchArgument], [*mixed* $ctorArgs])
 
 Returns an array of arrays containing all the records in the result
@@ -96,8 +87,6 @@ $robots = $result->fetchAll();
 
 ```
 
-
-
 public  **numRows** ()
 
 Gets number of rows returned by a resultset
@@ -112,8 +101,6 @@ $result = $connection->query(
 echo "There are ", $result->numRows(), " rows in the resultset";
 
 ```
-
-
 
 public  **dataSeek** (*mixed* $number)
 
@@ -133,8 +120,6 @@ $result->dataSeek(2);
 $row = $result->fetch();
 
 ```
-
-
 
 public  **setFetchMode** (*mixed* $fetchMode, [*mixed* $colNoOrClassNameOrObject], [*mixed* $ctorargs])
 
@@ -165,11 +150,7 @@ $result->setFetchMode(
 
 ```
 
-
-
 public  **getInternalResult** ()
 
 Gets the internal PDO result object
-
-
 

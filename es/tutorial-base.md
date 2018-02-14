@@ -404,8 +404,6 @@ La ausencia de la acción en el index da el pase directo a una vista con la defi
         <?php echo $this->tag->textField("email"); ?>
     </p>
 
-
-
     <p>
         <?php echo $this->tag->submitButton("Register"); ?>
     </p>

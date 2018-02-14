@@ -365,12 +365,10 @@ copy:
 You must add the "domains" for your Nginx sites to the hosts file on your machine. The hosts file will redirect requests for your Phalcon sites into your Phalcon Box machine. On Mac and Linux, this file is located at `/etc/hosts`. On Windows, it is located at `C:\Windows\System32\drivers\etc\hosts`. The lines you add to this file will look like the following:
 
     192.168.50.4  phalcon.local
-    
 
 Make sure the IP address listed is the one set in your `settings.yml` file. Once you have added the domain to your `hosts` file and launched the Vagrant box you will be able to access the site via your web browser:
 
     http://phalcon.local
-    
 
 <h5 class='alert alert-danger'>To enable adding new sites to the <code>hosts</code> file automatically use <code>vagrant-hostsupdater</code> plugin: </h5>
 
@@ -493,7 +491,6 @@ If Vagrant is not managing your "hosts" file automatically, you may need to add 
     192.168.50.4  phalcon.local
     192.168.50.4  pdffiller.local
     192.168.50.4  blog.local
-    
 
 <h5 class='alert alert-danger'>To enable adding new sites to the <code>hosts</code> file automatically use <code>vagrant-hostsupdater</code> plugin: </h5>
 
@@ -712,7 +709,7 @@ vagrant plugin install vagrant-vbguest
 **Problem:**
 
 > Vagrant was unable to mount VirtualBox shared folders. This is usually because the filesystem "vboxsf" is not available. This filesystem is made available via the VirtualBox Guest Additions and kernel module. Please verify that these guest additions are properly installed in the guest. This is not a bug in Vagrant and is usually caused by a faulty Vagrant box. For context, the command attempted was:
-> 
+>
 > mount -t vboxsf -o uid=900,gid=900 vagrant /vagrant
 
 **Solution:**
@@ -724,9 +721,9 @@ vagrant plugin install vagrant-vbguest
 **Problem:**
 
 > There was an error while executing `VBoxManage`, a CLI used by Vagrant for controlling VirtualBox. The command and stderr is shown below.
-> 
+>
 > Command: `["startvm", "9d2b95e1-0fdd-40f4-ad65-4b56eb4315f8", "--type", "headless"]`
-> 
+>
 > Stderr: VBoxManage.exe: error: VT-x is not available (VERR_VMX_NO_VMX) VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component ConsoleWrap, interface IConsole
 
 **Solution:**

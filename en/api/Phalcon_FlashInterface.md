@@ -7,24 +7,19 @@ abstract public  **error** (*mixed* $message)
 
 ...
 
-
 abstract public  **notice** (*mixed* $message)
 
 ...
-
 
 abstract public  **success** (*mixed* $message)
 
 ...
 
-
 abstract public  **warning** (*mixed* $message)
 
 ...
 
-
 abstract public  **message** (*mixed* $type, *mixed* $message)
 
 ...
-
 

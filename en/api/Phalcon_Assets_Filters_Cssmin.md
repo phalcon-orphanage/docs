@@ -8,11 +8,8 @@ Minify the css - removes comments
 removes newlines and line feeds keeping
 removes last semicolon from last property
 
-
 ## Methods
 public  **filter** (*mixed* $content)
 
 Filters the content using CSSMIN
-
-
 

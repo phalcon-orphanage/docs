@@ -47,7 +47,7 @@ $di->setShared(
 <a name='start-factory'></a>
 ## Factory
 Loads Session Adapter class using `adapter` option
- 
+
 ```php
 <?php
 

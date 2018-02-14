@@ -7,9 +7,7 @@ abstract public  **registerAutoloaders** ([[Phalcon\DiInterface](/en/3.1.2/api/P
 
 ...
 
-
 abstract public  **registerServices** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 ...
-
 

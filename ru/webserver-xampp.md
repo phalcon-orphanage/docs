@@ -71,9 +71,9 @@ extension=php_phalcon.dll
 Нижеприведённый скринкаст отображает пошаговую установку Phalcon на Windows:
 
 <div align="center">
-  <iframe src="https://player.vimeo.com/video/40265988" 
-          width="500" 
-          height="266" 
+  <iframe src="https://player.vimeo.com/video/40265988"
+          width="500"
+          height="266"
           frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
   </iframe>
 </div>

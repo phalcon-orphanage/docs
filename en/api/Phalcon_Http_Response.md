@@ -20,25 +20,18 @@ $response->send();
 
 ```
 
-
 ## Methods
 public  **__construct** ([*mixed* $content], [*mixed* $code], [*mixed* $status])
 
 Phalcon\\Http\\Response constructor
 
-
-
 public  **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
-
-
 public  **getDI** ()
 
 Returns the internal dependency injector
-
-
 
 public  **setStatusCode** (*mixed* $code, [*mixed* $message])
 
@@ -50,8 +43,6 @@ Sets the HTTP response code
 $response->setStatusCode(404, "Not Found");
 
 ```
-
-
 
 public  **getStatusCode** ()
 
@@ -66,31 +57,21 @@ print_r(
 
 ```
 
-
-
 public  **setHeaders** ([Phalcon\Http\Response\HeadersInterface](/en/3.1.2/api/Phalcon_Http_Response_HeadersInterface) $headers)
 
 Sets a headers bag for the response externally
-
-
 
 public  **getHeaders** ()
 
 Returns headers set by the user
 
-
-
 public  **setCookies** ([Phalcon\Http\Response\CookiesInterface](/en/3.1.2/api/Phalcon_Http_Response_CookiesInterface) $cookies)
 
 Sets a cookies bag for the response externally
 
-
-
 public [Phalcon\Http\Response\CookiesInterface](/en/3.1.2/api/Phalcon_Http_Response_CookiesInterface) **getCookies** ()
 
 Returns cookies set by the user
-
-
 
 public  **setHeader** (*mixed* $name, *mixed* $value)
 
@@ -103,8 +84,6 @@ $response->setHeader("Content-Type", "text/plain");
 
 ```
 
-
-
 public  **setRawHeader** (*mixed* $header)
 
 Send a raw header to the response
@@ -116,13 +95,9 @@ $response->setRawHeader("HTTP/1.1 404 Not Found");
 
 ```
 
-
-
 public  **resetHeaders** ()
 
 Resets all the established headers
-
-
 
 public  **setExpires** ([DateTime](http://php.net/manual/en/class.datetime.php) $datetime)
 
@@ -137,8 +112,6 @@ $this->response->setExpires(
 
 ```
 
-
-
 public  **setLastModified** ([DateTime](http://php.net/manual/en/class.datetime.php) $datetime)
 
 Sets Last-Modified header
@@ -152,8 +125,6 @@ $this->response->setLastModified(
 
 ```
 
-
-
 public  **setCache** (*mixed* $minutes)
 
 Sets Cache headers to use HTTP cache
@@ -165,13 +136,9 @@ $this->response->setCache(60);
 
 ```
 
-
-
 public  **setNotModified** ()
 
 Sends a Not-Modified response
-
-
 
 public  **setContentType** (*mixed* $contentType, [*mixed* $charset])
 
@@ -185,8 +152,6 @@ $response->setContentType("text/plain", "UTF-8");
 
 ```
 
-
-
 public  **setContentLength** (*mixed* $contentLength)
 
 Sets the response content-length
@@ -198,8 +163,6 @@ $response->setContentLength(2048);
 
 ```
 
-
-
 public  **setEtag** (*mixed* $etag)
 
 Set a custom ETag
@@ -210,8 +173,6 @@ Set a custom ETag
 $response->setEtag(md5(time()));
 
 ```
-
-
 
 public  **redirect** ([*mixed* $location], [*mixed* $externalRedirect], [*mixed* $statusCode])
 
@@ -236,8 +197,6 @@ $response->redirect(
 
 ```
 
-
-
 public  **setContent** (*mixed* $content)
 
 Sets HTTP response body
@@ -248,8 +207,6 @@ Sets HTTP response body
 $response->setContent("<h1>Hello!</h1>");
 
 ```
-
-
 
 public  **setJsonContent** (*mixed* $content, [*mixed* $jsonOptions], [*mixed* $depth])
 
@@ -267,47 +224,31 @@ $response->setJsonContent(
 
 ```
 
-
-
 public  **appendContent** (*mixed* $content)
 
 Appends a string to the HTTP response body
-
-
 
 public  **getContent** ()
 
 Gets the HTTP response body
 
-
-
 public  **isSent** ()
 
 Check if the response is already sent
-
-
 
 public  **sendHeaders** ()
 
 Sends headers to the client
 
-
-
 public  **sendCookies** ()
 
 Sends cookies to the client
-
-
 
 public  **send** ()
 
 Prints out HTTP response to the client
 
-
-
 public  **setFileToSend** (*mixed* $filePath, [*mixed* $attachmentName], [*mixed* $attachment])
 
 Sets an attached file to be sent at the end of the request
-
-
 

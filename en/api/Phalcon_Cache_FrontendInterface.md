@@ -7,34 +7,27 @@ abstract public  **getLifetime** ()
 
 ...
 
-
 abstract public  **isBuffering** ()
 
 ...
-
 
 abstract public  **start** ()
 
 ...
 
-
 abstract public  **getContent** ()
 
 ...
-
 
 abstract public  **stop** ()
 
 ...
 
-
 abstract public  **beforeStore** (*mixed* $data)
 
 ...
 
-
 abstract public  **afterRetrieve** (*mixed* $data)
 
 ...
-
 

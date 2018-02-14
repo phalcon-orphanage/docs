@@ -97,7 +97,7 @@ $app->setDi($di);
 
 class IndexController extends Phalcon\Mvc\Controller
 {
-    public function indexAction() { 
+    public function indexAction() {
           /* your content here */
     }
 }
@@ -126,7 +126,6 @@ $app->handle();
 ```
 
 ### Dispatcher
-
 
 ### ORM
 You can provide your own database schema or even better use any of the phalcon test [databases](https://github.com/phalcon/cphalcon/tree/master/unit-tests/schemas). Follow this structure to create the script:
@@ -184,7 +183,7 @@ class User extends \Phalcon\Mvc\Model
         if ($newUser->save() == false) {
             return false;
         }
-        return $newUser->id;        
+        return $newUser->id;
     }
 }
 

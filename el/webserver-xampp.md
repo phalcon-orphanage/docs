@@ -71,9 +71,9 @@ If you can see the phalcon version in the `phpinfo()` output, congratulations!, 
 Το παρακάτω screencast είναι ένας βήμα προς βήμα οδηγός για να εγκαταστήσετε το Phalcon στα Windows:
 
 <div align="center">
-  <iframe src="https://player.vimeo.com/video/40265988" 
-          width="500" 
-          height="266" 
+  <iframe src="https://player.vimeo.com/video/40265988"
+          width="500"
+          height="266"
           frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
   </iframe>
 </div>

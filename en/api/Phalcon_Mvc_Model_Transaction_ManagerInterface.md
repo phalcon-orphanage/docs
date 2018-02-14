@@ -7,39 +7,31 @@ abstract public  **has** ()
 
 ...
 
-
 abstract public  **get** ([*mixed* $autoBegin])
 
 ...
-
 
 abstract public  **rollbackPendent** ()
 
 ...
 
-
 abstract public  **commit** ()
 
 ...
-
 
 abstract public  **rollback** ([*mixed* $collect])
 
 ...
 
-
 abstract public  **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](/en/3.1.2/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
 ...
-
 
 abstract public  **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](/en/3.1.2/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
 ...
 
-
 abstract public  **collectTransactions** ()
 
 ...
-
 

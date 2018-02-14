@@ -7,29 +7,23 @@ abstract public  **setBaseUri** (*mixed* $baseUri)
 
 ...
 
-
 abstract public  **getBaseUri** ()
 
 ...
-
 
 abstract public  **setBasePath** (*mixed* $basePath)
 
 ...
 
-
 abstract public  **getBasePath** ()
 
 ...
-
 
 abstract public  **get** ([*mixed* $uri], [*mixed* $args], [*mixed* $local])
 
 ...
 
-
 abstract public  **path** ([*mixed* $path])
 
 ...
-
 

@@ -1243,7 +1243,7 @@ foreach ($robots as $robot) {
     echo $robot->year, PHP_EOL;
 }
 
-// Retornar cada robot como una instancia de Robots 
+// Retornar cada robot como una instancia de Robots
 $robots->setHydrateMode(
     Resultset::HYDRATE_RECORDS
 );
@@ -1438,7 +1438,7 @@ class Robots extends Model
 
     public function columnMap()
     {
-        // Las claves son los nombres reales en la tabla y 
+        // Las claves son los nombres reales en la tabla y
         // sus valores en la aplicación
         return [
             'id'       => 'code',
@@ -1713,7 +1713,7 @@ class Robots extends Model
 {
     public function notSaved()
     {
-        // Obtener el servicio flash desde el contenedor DI 
+        // Obtener el servicio flash desde el contenedor DI
         $flash = $this->getDI()->getFlash();
 
         $messages = $this->getMessages();

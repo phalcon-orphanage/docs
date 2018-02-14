@@ -7,29 +7,23 @@ abstract public  **getSize** ()
 
 ...
 
-
 abstract public  **getName** ()
 
 ...
-
 
 abstract public  **getTempName** ()
 
 ...
 
-
 abstract public  **getType** ()
 
 ...
-
 
 abstract public  **getRealType** ()
 
 ...
 
-
 abstract public  **moveTo** (*mixed* $destination)
 
 ...
-
 

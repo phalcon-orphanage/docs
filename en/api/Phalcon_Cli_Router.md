@@ -26,43 +26,30 @@ echo $router->getTaskName();
 
 ```
 
-
 ## Methods
 public  **__construct** ([*mixed* $defaultRoutes])
 
 Phalcon\\Cli\\Router constructor
 
-
-
 public  **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
-
-
 
 public  **getDI** ()
 
 Returns the internal dependency injector
 
-
-
 public  **setDefaultModule** (*mixed* $moduleName)
 
 Sets the name of the default module
-
-
 
 public  **setDefaultTask** (*mixed* $taskName)
 
 Sets the default controller name
 
-
-
 public  **setDefaultAction** (*mixed* $actionName)
 
 Sets the default action name
-
-
 
 public  **setDefaults** (*array* $defaults)
 
@@ -81,13 +68,9 @@ $router->setDefaults(
 
 ```
 
-
-
 public  **handle** ([*array* $arguments])
 
 Handles routing information received from command-line arguments
-
-
 
 public [Phalcon\Cli\Router\Route](/en/3.1.2/api/Phalcon_Cli_Router_Route) **add** (*string* $pattern, [*string/array* $paths])
 
@@ -100,65 +83,43 @@ $router->add("/about", "About::main");
 
 ```
 
-
-
 public  **getModuleName** ()
 
 Returns processed module name
-
-
 
 public  **getTaskName** ()
 
 Returns processed task name
 
-
-
 public  **getActionName** ()
 
 Returns processed action name
-
-
 
 public *array* **getParams** ()
 
 Returns processed extra params
 
-
-
 public  **getMatchedRoute** ()
 
 Returns the route that matches the handled URI
-
-
 
 public *array* **getMatches** ()
 
 Returns the sub expressions in the regular expression matched
 
-
-
 public  **wasMatched** ()
 
 Checks if the router matches any of the defined routes
-
-
 
 public  **getRoutes** ()
 
 Returns all the routes defined in the router
 
-
-
 public [Phalcon\Cli\Router\Route](/en/3.1.2/api/Phalcon_Cli_Router_Route) **getRouteById** (*int* $id)
 
 Returns a route object by its id
 
-
-
 public  **getRouteByName** (*mixed* $name)
 
 Returns a route object by its name
-
-
 

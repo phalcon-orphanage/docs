@@ -27,63 +27,44 @@ $reference = new \Phalcon\Db\Reference(
 
 ```
 
-
 ## Methods
 public  **getName** ()
 
 Constraint name
 
-
-
 public  **getSchemaName** ()
 
 ...
-
 
 public  **getReferencedSchema** ()
 
 ...
 
-
 public  **getReferencedTable** ()
 
 Referenced Table
-
-
 
 public  **getColumns** ()
 
 Local reference columns
 
-
-
 public  **getReferencedColumns** ()
 
 Referenced Columns
-
-
 
 public  **getOnDelete** ()
 
 ON DELETE
 
-
-
 public  **getOnUpdate** ()
 
 ON UPDATE
-
-
 
 public  **__construct** (*mixed* $name, *array* $definition)
 
 Phalcon\\Db\\Reference constructor
 
-
-
 public static  **__set_state** (*array* $data)
 
 Restore a Phalcon\\Db\\Reference object from export
-
-
 

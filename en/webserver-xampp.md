@@ -4,7 +4,7 @@
     - [Download the right version of Phalcon](#phalcon)
     - [Screencast](#screencast)
     - [Related](#related)
-    
+
 </div>
 
 <a name='overview'></a>
@@ -27,7 +27,7 @@ Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have ins
 
 ![](/images/content/webserver-xampp-3.png)
 
-Edit the php.ini file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file: 
+Edit the php.ini file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
 
 ```ini
 extension=php_phalcon.dll
@@ -56,9 +56,9 @@ If you can see the phalcon version in the `phpinfo()` output, congratulations!, 
 The following screencast is a step by step guide to install Phalcon on Windows:
 
 <div align="center">
-  <iframe src="https://player.vimeo.com/video/40265988" 
-          width="500" 
-          height="266" 
+  <iframe src="https://player.vimeo.com/video/40265988"
+          width="500"
+          height="266"
           frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
   </iframe>
 </div>
@@ -66,5 +66,4 @@ The following screencast is a step by step guide to install Phalcon on Windows:
 <a name='related'></a>
 ## Related Guides
 * [Installation on WAMP](/[[language]]/[[version]]/webserver-wamp)
-
 

@@ -780,8 +780,6 @@ foreach ($privateResources as $resourceName => $actions) {
     );
 }
 
-
-
 // Public area resources (frontend)
 $publicResources = [
     'index'    => ['index'],
@@ -1113,8 +1111,6 @@ Note that `ProductTypes::find()` contains the data necessary to fill the SELECT 
                 </div>
             </div>
         {% endfor %}
-
-
 
         <div class='control-group'>
             {{ submit_button('Search', 'class': 'btn btn-primary') }}

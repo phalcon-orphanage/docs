@@ -53,7 +53,7 @@ use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Loader;
 
-// CLI uygulamamız için servis kapsayıcısı 
+// CLI uygulamamız için servis kapsayıcısı
 $di = new CliDI();
 
 /**

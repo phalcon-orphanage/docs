@@ -6,55 +6,38 @@
 
 Base class for Phalcon\\Db adapters
 
-
 ## Methods
 public  **getDialectType** ()
 
 Name of the dialect used
 
-
-
 public  **getType** ()
 
 Type of database system the adapter is used for
-
-
 
 public  **getSqlVariables** ()
 
 Active SQL bound parameter variables
 
-
-
 public  **__construct** (*array* $descriptor)
 
 Phalcon\\Db\\Adapter constructor
-
-
 
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.1.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets the event manager
 
-
-
 public  **getEventsManager** ()
 
 Returns the internal event manager
-
-
 
 public  **setDialect** ([Phalcon\Db\DialectInterface](/en/3.1.2/api/Phalcon_Db_DialectInterface) $dialect)
 
 Sets the dialect used to produce the SQL
 
-
-
 public  **getDialect** ()
 
 Returns internal dialect instance
-
-
 
 public  **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $bindParams], [*mixed* $bindTypes])
 
@@ -72,8 +55,6 @@ $robot = $connection->fetchOne("SELECT * FROM robots", \Phalcon\Db::FETCH_ASSOC)
 print_r($robot);
 
 ```
-
-
 
 public *array* **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
@@ -106,8 +87,6 @@ foreach($robots as $robot) {
 
 ```
 
-
-
 public *string* | ** **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int* | *string* $column])
 
 Returns the n'th field of first row in a SQL query result
@@ -128,8 +107,6 @@ print_r($robot);
 
 ```
 
-
-
 public *boolean* **insert** (*string* | *array* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
 
 Inserts data into a table using custom RDBMS SQL syntax
@@ -148,8 +125,6 @@ $success = $connection->insert(
 INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 ```
-
-
 
 public *boolean* **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes])
 
@@ -171,8 +146,6 @@ $success = $connection->insertAsDict(
 INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 ```
-
-
 
 public *boolean* **update** (*string* | *array* $table, *array* $fields, *array* $values, [*string* | *array* $whereCondition], [*array* $dataTypes])
 
@@ -210,8 +183,6 @@ $success = $connection->update(
 ```
 Warning! If $whereCondition is string it not escaped.
 
-
-
 public *boolean* **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes])
 
 Updates data on a table using custom RBDM SQL syntax
@@ -234,8 +205,6 @@ UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
 ```
 
-
-
 public *boolean* **delete** (*string* | *array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
 
 Deletes data from a table using custom RBDM SQL syntax
@@ -253,8 +222,6 @@ $success = $connection->delete(
 DELETE FROM `robots` WHERE `id` = 101
 
 ```
-
-
 
 public  **escapeIdentifier** (*array* | *string* $identifier)
 
@@ -276,13 +243,9 @@ $escapedTable = $connection->escapeIdentifier(
 
 ```
 
-
-
 public *string* **getColumnList** (*array* $columnList)
 
 Gets a list of columns
-
-
 
 public  **limit** (*mixed* $sqlQuery, *mixed* $number)
 
@@ -294,8 +257,6 @@ Appends a LIMIT clause to $sqlQuery argument
 echo $connection->limit("SELECT * FROM robots", 5);
 
 ```
-
-
 
 public  **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
@@ -310,8 +271,6 @@ var_dump(
 
 ```
 
-
-
 public  **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
 Generates SQL checking for the existence of a schema.view
@@ -325,103 +284,69 @@ var_dump(
 
 ```
 
-
-
 public  **forUpdate** (*mixed* $sqlQuery)
 
 Returns a SQL modified with a FOR UPDATE clause
-
-
 
 public  **sharedLock** (*mixed* $sqlQuery)
 
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
-
-
 public  **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
 Creates a table
-
-
 
 public  **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
 Drops a table from a schema/database
 
-
-
 public  **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
 Creates a view
-
-
 
 public  **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
 
 Drops a view
 
-
-
 public  **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](/en/3.1.2/api/Phalcon_Db_ColumnInterface) $column)
 
 Adds a column to a table
-
-
 
 public  **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](/en/3.1.2/api/Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](/en/3.1.2/api/Phalcon_Db_ColumnInterface) $currentColumn])
 
 Modifies a table column based on a definition
 
-
-
 public  **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName)
 
 Drops a column from a table
-
-
 
 public  **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](/en/3.1.2/api/Phalcon_Db_IndexInterface) $index)
 
 Adds an index to a table
 
-
-
 public  **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
 
 Drop an index from a table
-
-
 
 public  **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](/en/3.1.2/api/Phalcon_Db_IndexInterface) $index)
 
 Adds a primary key to a table
 
-
-
 public  **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
 
 Drops a table's primary key
-
-
 
 public  **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](/en/3.1.2/api/Phalcon_Db_ReferenceInterface) $reference)
 
 Adds a foreign key to a table
 
-
-
 public  **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
 
 Drops a foreign key from a table
 
-
-
 public  **getColumnDefinition** ([Phalcon\Db\ColumnInterface](/en/3.1.2/api/Phalcon_Db_ColumnInterface) $column)
 
 Returns the SQL column definition from a column
-
-
 
 public  **listTables** ([*mixed* $schemaName])
 
@@ -436,8 +361,6 @@ print_r(
 
 ```
 
-
-
 public  **listViews** ([*mixed* $schemaName])
 
 List all views on a database
@@ -450,8 +373,6 @@ print_r(
 );
 
 ```
-
-
 
 public [Phalcon\Db\Index](/en/3.1.2/api/Phalcon_Db_Index[]) **describeIndexes** (*string* $table, [*string* $schema])
 
@@ -466,8 +387,6 @@ print_r(
 
 ```
 
-
-
 public  **describeReferences** (*mixed* $table, [*mixed* $schema])
 
 Lists table references
@@ -480,8 +399,6 @@ print_r(
 );
 
 ```
-
-
 
 public  **tableOptions** (*mixed* $tableName, [*mixed* $schemaName])
 
@@ -496,43 +413,29 @@ print_r(
 
 ```
 
-
-
 public  **createSavepoint** (*mixed* $name)
 
 Creates a new savepoint
-
-
 
 public  **releaseSavepoint** (*mixed* $name)
 
 Releases given savepoint
 
-
-
 public  **rollbackSavepoint** (*mixed* $name)
 
 Rollbacks given savepoint
-
-
 
 public  **setNestedTransactionsWithSavepoints** (*mixed* $nestedTransactionsWithSavepoints)
 
 Set if nested transactions should use savepoints
 
-
-
 public  **isNestedTransactionsWithSavepoints** ()
 
 Returns if nested transactions should use savepoints
 
-
-
 public  **getNestedTransactionSavepointName** ()
 
 Returns the savepoint name to use for nested transactions
-
-
 
 public  **getDefaultIdValue** ()
 
@@ -558,8 +461,6 @@ $success = $connection->insert(
 
 ```
 
-
-
 public  **getDefaultValue** ()
 
 Returns the default value to make the RBDM use the default value declared in the table definition
@@ -582,112 +483,83 @@ $success = $connection->insert(
 
 ```
 
-
-
 public  **supportSequences** ()
 
 Check whether the database system requires a sequence to produce auto-numeric values
-
-
 
 public  **useExplicitIdValue** ()
 
 Check whether the database system requires an explicit value for identity columns
 
-
-
 public  **getDescriptor** ()
 
 Return descriptor used to connect to the active database
-
-
 
 public *string* **getConnectionId** ()
 
 Gets the active connection unique identifier
 
-
-
 public  **getSQLStatement** ()
 
 Active SQL statement in the object
-
-
 
 public  **getRealSQLStatement** ()
 
 Active SQL statement in the object without replace bound parameters
 
-
-
 public *array* **getSQLBindTypes** ()
 
 Active SQL statement in the object
-
-
 
 abstract public  **connect** ([*array* $descriptor]) inherited from [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface)
 
 ...
 
-
 abstract public  **query** (*mixed* $sqlStatement, [*mixed* $placeholders], [*mixed* $dataTypes]) inherited from [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface)
 
 ...
-
 
 abstract public  **execute** (*mixed* $sqlStatement, [*mixed* $placeholders], [*mixed* $dataTypes]) inherited from [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface)
 
 ...
 
-
 abstract public  **affectedRows** () inherited from [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface)
 
 ...
-
 
 abstract public  **close** () inherited from [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface)
 
 ...
 
-
 abstract public  **escapeString** (*mixed* $str) inherited from [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface)
 
 ...
-
 
 abstract public  **lastInsertId** ([*mixed* $sequenceName]) inherited from [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface)
 
 ...
 
-
 abstract public  **begin** ([*mixed* $nesting]) inherited from [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface)
 
 ...
-
 
 abstract public  **rollback** ([*mixed* $nesting]) inherited from [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface)
 
 ...
 
-
 abstract public  **commit** ([*mixed* $nesting]) inherited from [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface)
 
 ...
-
 
 abstract public  **isUnderTransaction** () inherited from [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface)
 
 ...
 
-
 abstract public  **getInternalHandler** () inherited from [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface)
 
 ...
 
-
 abstract public  **describeColumns** (*mixed* $table, [*mixed* $schema]) inherited from [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface)
 
 ...
-
 

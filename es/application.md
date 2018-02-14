@@ -131,7 +131,7 @@ El reemplazo de `Phalcon\Mvc\Application` carece del componente vista, lo que es
 
 use Phalcon\Http\ResponseInterface;
 
-// Obtenemos el servicio 'router' 
+// Obtenemos el servicio 'router'
 $router = $di['router'];
 
 $router->handle();
@@ -172,7 +172,7 @@ Otra alternativa es capturar excepciones producidas en el dispatcher y reenviarl
 
 use Phalcon\Http\ResponseInterface;
 
-// Obtenemos el servicio 'router' 
+// Obtenemos el servicio 'router'
 $router = $di['router'];
 
 $router->handle();
@@ -197,7 +197,7 @@ try {
     // Despachamos la consulta
     $dispatcher->dispatch();
 } catch (Exception $e) {
-    // Ocurrió una excepción, despachar un controller/action 
+    // Ocurrió una excepción, despachar un controller/action
 
     // Seteamos el controller y action para mostrar errores
     $dispatcher->setControllerName('errors');

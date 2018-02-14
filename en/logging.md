@@ -110,9 +110,9 @@ $logger->log(
 
 // You can also pass context parameters like this
 $logger->log(
-    'This is a {message}', 
-    [ 
-        'message' => 'parameter' 
+    'This is a {message}',
+    [
+        'message' => 'parameter'
     ]
 );
 ```
@@ -192,8 +192,6 @@ use Phalcon\Logger\Adapter\File as FileAdapter;
 use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
 $logger = new MultipleStream();
-
-
 
 $logger->push(
     new FileAdapter('test.log')

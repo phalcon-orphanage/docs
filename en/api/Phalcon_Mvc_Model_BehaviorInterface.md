@@ -7,9 +7,7 @@ abstract public  **notify** (*mixed* $type, [Phalcon\Mvc\ModelInterface](/en/3.1
 
 ...
 
-
 abstract public  **missingMethod** ([Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $method, [*mixed* $arguments])
 
 ...
-
 

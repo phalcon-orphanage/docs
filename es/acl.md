@@ -179,7 +179,7 @@ También se puede añadir como cuarto parámetro, una función anónima, que deb
 
 ```php
 <?php
-// Damos acceso a un rol en un recurso con una función anónima 
+// Damos acceso a un rol en un recurso con una función anónima
 $acl->allow(
     'Invitado',
     'Clientes',
@@ -338,7 +338,7 @@ Luego puede utilizarlos en el método `isAllowed()`.
 use UserRole;
 use ModelResource;
 
-// Confirguramos la lista de acceso 
+// Confirguramos la lista de acceso
 $acl->allow('Invitado', 'Clientes', 'buscar');
 $acl->allow('Invitado', 'Clientes', 'crear');
 $acl->deny('Invitado', 'Clientes', 'actualizar');
@@ -578,7 +578,7 @@ $acl = new AclList();
 // Configuramos el $acl
 // ...
 
-// Unimos el eventsManager con el ACL 
+// Unimos el eventsManager con el ACL
 $acl->setEventsManager($eventsManager);
 ```
 

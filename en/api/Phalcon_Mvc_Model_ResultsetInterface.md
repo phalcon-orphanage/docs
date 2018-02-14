@@ -7,34 +7,27 @@ abstract public  **getType** ()
 
 ...
 
-
 abstract public  **getFirst** ()
 
 ...
-
 
 abstract public  **getLast** ()
 
 ...
 
-
 abstract public  **setIsFresh** (*mixed* $isFresh)
 
 ...
-
 
 abstract public  **isFresh** ()
 
 ...
 
-
 abstract public  **getCache** ()
 
 ...
 
-
 abstract public  **toArray** ()
 
 ...
-
 

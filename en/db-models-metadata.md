@@ -6,7 +6,7 @@
         - [Database Introspection Strategy](#strategies-database-introspection)
         - [Annotations Strategy](#strategies-annotations)
     - [Manual Metadata](#strategies-manual)
-    
+
 </div>
 
 <a name='models-metadata'></a>

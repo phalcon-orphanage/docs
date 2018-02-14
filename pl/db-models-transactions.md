@@ -84,8 +84,6 @@ $robotPart = new RobotParts();
 
 $robotPart->type = 'head';
 
-
-
 $robot = new Robots();
 
 $robot->name       = 'WALL-E';
@@ -228,7 +226,7 @@ class ProductsController extends Controller
         $transaction = $manager->get();
 
         // ...
-    } 
+    }
 }
 ```
 

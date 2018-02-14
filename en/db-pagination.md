@@ -32,7 +32,7 @@ Loads Paginator Adapter class using `adapter` option
 <?php
 
 use Phalcon\Paginator\Factory;
- 
+
 $builder = $this->modelsManager->createBuilder()
                 ->columns('id, name')
                 ->from('Robots')

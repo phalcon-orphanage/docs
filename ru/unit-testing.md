@@ -50,7 +50,6 @@ composer require phpunit/phpunit
     app/
     public/
     tests/
-    
 
 Далее, нам понадобится “хелпер” для подготовки приложения к модульному тестированию.
 

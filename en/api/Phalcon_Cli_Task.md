@@ -30,41 +30,28 @@ class HelloTask extends \Phalcon\Cli\Task
 
 ```
 
-
 ## Methods
 final public  **__construct** ()
 
 Phalcon\\Cli\\Task constructor
 
-
-
 public  **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/en/3.1.2/api/Phalcon_Di_Injectable)
 
 Sets the dependency injector
-
-
 
 public  **getDI** () inherited from [Phalcon\Di\Injectable](/en/3.1.2/api/Phalcon_Di_Injectable)
 
 Returns the internal dependency injector
 
-
-
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.1.2/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](/en/3.1.2/api/Phalcon_Di_Injectable)
 
 Sets the event manager
-
-
 
 public  **getEventsManager** () inherited from [Phalcon\Di\Injectable](/en/3.1.2/api/Phalcon_Di_Injectable)
 
 Returns the internal event manager
 
-
-
 public  **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/en/3.1.2/api/Phalcon_Di_Injectable)
 
 Magic method __get
-
-
 

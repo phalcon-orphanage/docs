@@ -7,54 +7,43 @@ abstract public  **setTransactionManager** ([Phalcon\Mvc\Model\Transaction\Manag
 
 ...
 
-
 abstract public  **begin** ()
 
 ...
-
 
 abstract public  **commit** ()
 
 ...
 
-
 abstract public  **rollback** ([*mixed* $rollbackMessage], [*mixed* $rollbackRecord])
 
 ...
-
 
 abstract public  **getConnection** ()
 
 ...
 
-
 abstract public  **setIsNewTransaction** (*mixed* $isNew)
 
 ...
-
 
 abstract public  **setRollbackOnAbort** (*mixed* $rollbackOnAbort)
 
 ...
 
-
 abstract public  **isManaged** ()
 
 ...
-
 
 abstract public  **getMessages** ()
 
 ...
 
-
 abstract public  **isValid** ()
 
 ...
 
-
 abstract public  **setRollbackedRecord** ([Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface) $record)
 
 ...
-
 

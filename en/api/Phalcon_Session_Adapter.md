@@ -6,7 +6,6 @@
 
 Base class for Phalcon\\Session adapters
 
-
 ## Constants
 *integer* **SESSION_ACTIVE**
 
@@ -19,13 +18,9 @@ public  **__construct** ([*array* $options])
 
 Phalcon\\Session\\Adapter constructor
 
-
-
 public  **start** ()
 
 Starts the session (if headers are already sent the session will not be started)
-
-
 
 public  **setOptions** (*array* $options)
 
@@ -42,31 +37,19 @@ $session->setOptions(
 
 ```
 
-
-
 public  **getOptions** ()
 
 Get internal options
-
-
 
 public  **setName** (*mixed* $name)
 
 Set session name
 
-
-
 public  **getName** ()
 
 Get session name
 
-
-
 public  **regenerateId** ([*mixed* $deleteOldSession])
-
-
-
-
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue], [*mixed* $remove])
 
@@ -79,8 +62,6 @@ $session->get("auth", "yes");
 
 ```
 
-
-
 public  **set** (*mixed* $index, *mixed* $value)
 
 Sets a session variable in an application context
@@ -91,8 +72,6 @@ Sets a session variable in an application context
 $session->set("auth", "yes");
 
 ```
-
-
 
 public  **has** (*mixed* $index)
 
@@ -107,8 +86,6 @@ var_dump(
 
 ```
 
-
-
 public  **remove** (*mixed* $index)
 
 Removes a session variable from an application context
@@ -119,8 +96,6 @@ Removes a session variable from an application context
 $session->remove("auth");
 
 ```
-
-
 
 public  **getId** ()
 
@@ -133,8 +108,6 @@ echo $session->getId();
 
 ```
 
-
-
 public  **setId** (*mixed* $id)
 
 Set the current session id
@@ -145,8 +118,6 @@ Set the current session id
 $session->setId($id);
 
 ```
-
-
 
 public  **isStarted** ()
 
@@ -160,8 +131,6 @@ var_dump(
 );
 
 ```
-
-
 
 public  **destroy** ([*mixed* $removeData])
 
@@ -180,8 +149,6 @@ var_dump(
 
 ```
 
-
-
 public  **status** ()
 
 Returns the status of the current session.
@@ -199,34 +166,23 @@ if ($session->status() !== $session::SESSION_ACTIVE) {
 
 ```
 
-
-
 public  **__get** (*mixed* $index)
 
 Alias: Gets a session variable from an application context
-
-
 
 public  **__set** (*mixed* $index, *mixed* $value)
 
 Alias: Sets a session variable in an application context
 
-
-
 public  **__isset** (*mixed* $index)
 
 Alias: Check whether a session variable is set in an application context
-
-
 
 public  **__unset** (*mixed* $index)
 
 Alias: Removes a session variable from an application context
 
-
-
 public  **__destruct** ()
 
 ...
-
 

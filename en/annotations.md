@@ -119,7 +119,6 @@ However you can also utilize the factory method to achieve the same thing:
 ```php
 <?php
 
-
 use Phalcon\Annotations\Factory;
 
 $options = [
@@ -131,7 +130,7 @@ $options = [
 $annotations = Factory::load($options);
 ```
 
-The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files. 
+The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
 
 <a name='reading'></a>
 ## Reading Annotations

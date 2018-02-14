@@ -687,8 +687,6 @@ class SomeComponent
 
     protected $someFlag;
 
-
-
     public function __construct(Response $response, $someFlag)
     {
         $this->response = $response;
@@ -750,8 +748,6 @@ class SomeComponent
     protected $response;
 
     protected $someFlag;
-
-
 
     public function setResponse(Response $response)
     {
@@ -872,53 +868,53 @@ Supported parameter types include the following:
     <th>
       Typ
     </th>
-    
+
     <th>
       Description
     </th>
-    
+
     <th>
       Przykład
     </th>
   </tr>
-  
+
   <tr>
     <td>
       parameter
     </td>
-    
+
     <td>
       Represents a literal value to be passed as parameter
     </td>
-    
+
     <td>
       <pre><code>php['type' =&gt; 'parameter', 'value' =&gt; 1234]</code></pre>
     </td>
   </tr>
-  
+
   <tr>
     <td>
       service
     </td>
-    
+
     <td>
       Represents another service in the service container
     </td>
-    
+
     <td>
       <pre><code>php['type' =&gt; 'service', 'name' =&gt; 'request']</code></pre>
     </td>
   </tr>
-  
+
   <tr>
     <td>
       instance
     </td>
-    
+
     <td>
       Represents an object that must be built dynamically
     </td>
-    
+
     <td>
       <pre><code>php['type' =&gt; 'instance', 'className' =&gt; 'DateTime', 'arguments' =&gt; ['now']]</code></pre>
     </td>
@@ -1154,7 +1150,6 @@ class MyClass implements InjectionAwareInterface
      * @var DiInterface
      */
     protected $di;
-
 
     public function setDi(DiInterface $di)
     {

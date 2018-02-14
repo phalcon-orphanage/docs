@@ -7,14 +7,11 @@ abstract public  **add** (*mixed* $name, *mixed* $handler)
 
 ...
 
-
 abstract public  **sanitize** (*mixed* $value, *mixed* $filters)
 
 ...
 
-
 abstract public  **getFilters** ()
 
 ...
-
 

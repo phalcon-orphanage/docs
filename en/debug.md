@@ -5,7 +5,7 @@
     - [Encryption Options](#options)
     - [Base64 Support](#base64)
     - [Setting up an Encryption service](#service)
-    
+
 </div>
 
 <a name='overview'></a>

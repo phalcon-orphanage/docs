@@ -24,7 +24,7 @@
     - [Injecting services into Models](#injecting-services-into-models)
     - [Disabling/Enabling Features](#disabling-enabling-features)
     - [Stand-Alone component](#stand-alone-component)
-    
+
 </div>
 
 <a name='working-with'></a>
@@ -488,10 +488,9 @@ foreach ($parts as $part) {
 ```
 <a name='custom-resultsets'></a>
 ### Custom Resultsets
-There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning back to the caller usually an array of transformed data. 
+There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning back to the caller usually an array of transformed data.
 
 With custom resultsets, you no longer need to do that. The custom resultset will encapsulate the functionality that otherwise would be in the model and can be reused by other models, thus keeping the code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). This way, the `find()` method will no longer return the default `Phalcon\Mvc\Model\Resultset`, but instead the custom one. Phalcon allows you to do this by using the `getResultsetClass()` in your model.
-
 
 First we need to define the resultset class:
 ```php
@@ -524,7 +523,7 @@ class Robots extends Model
     {
         return 'robots';
     }
-    
+
     public function getResultsetClass()
     {
     return 'Application\Mvc\Model\Resultset\Custom';
@@ -538,7 +537,7 @@ and finally in your code you will have something like this:
 <?php
 
 /**
- * Find the robots 
+ * Find the robots
  */
 $robots = Robots::find(
     [
@@ -730,7 +729,7 @@ class Robots extends Model
         // Convert the string to an array
         $this->status = explode(',', $this->status);
     }
-    
+
     public function afterSave()
     {
         // Convert the string to an array

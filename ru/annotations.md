@@ -146,7 +146,6 @@ $reader = new MemoryAdapter();
 ```php
 <?php
 
-
 use Phalcon\Annotations\Factory;
 
 $options = [
@@ -400,7 +399,7 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 class SecurityAnnotationsPlugin extends Plugin
 {
     /**
-     * Этот метод будет вызван перед выполнением любого действия контроллера 
+     * Этот метод будет вызван перед выполнением любого действия контроллера
      *
      * @param Event $event
      * @param Dispatcher $dispatcher

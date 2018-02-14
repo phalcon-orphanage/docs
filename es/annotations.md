@@ -146,7 +146,6 @@ Además puede utilizar el método factory para conseguir el mismo resultado:
 ```php
 <?php
 
-
 use Phalcon\Annotations\Factory;
 
 $options = [
@@ -276,7 +275,7 @@ use Phalcon\Events\Manager as EventsManager;
 $di['dispatcher'] = function () {
     $eventsManager = new EventsManager();
 
-    // Adjuntamos el plugin al evento 'dispatch' 
+    // Adjuntamos el plugin al evento 'dispatch'
     $eventsManager->attach(
         'dispatch',
         new CacheEnablerPlugin()

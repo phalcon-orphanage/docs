@@ -57,7 +57,7 @@ Esto es un proceso importante que tiene mucho que ver con el flujo MVC, especial
 ```php
 <?php
 
-// Bucle dispatch 
+// Bucle dispatch
 while (!$finished) {
     $finished = true;
 
@@ -642,7 +642,7 @@ $di->setShared(
         $eventsManager->attach(
             'dispatch:beforeException',
             function (Event $event, $dispatcher, Exception $exception) {
-                // Gestor de excepciones 404 
+                // Gestor de excepciones 404
                 if ($exception instanceof DispatchException) {
                     $dispatcher->forward(
                         [
@@ -697,7 +697,7 @@ class ExceptionsPlugin
         // Acción por defecto
         $action = 'show503';
 
-        // Gestor de excepciones 404 
+        // Gestor de excepciones 404
         if ($exception instanceof DispatchException) {
             $action = 'show404';
         }

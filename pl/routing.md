@@ -251,7 +251,7 @@ class DocumentationController extends Controller
         $type = $this->dispatcher->getParam('type');
 
         // ...
-    } 
+    }
 }
 ```
 

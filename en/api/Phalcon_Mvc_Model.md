@@ -39,7 +39,6 @@ if ($robot->save() === false) {
 
 ```
 
-
 ## Constants
 *integer* **OP_NONE**
 
@@ -60,43 +59,29 @@ final public  **__construct** ([*mixed* $data], [[Phalcon\DiInterface](/en/3.1.2
 
 Phalcon\\Mvc\\Model constructor
 
-
-
 public  **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injection container
-
-
 
 public  **getDI** ()
 
 Returns the dependency injection container
 
-
-
 protected  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.1.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets a custom events manager
-
-
 
 protected  **getEventsManager** ()
 
 Returns the custom events manager
 
-
-
 public  **getModelsMetaData** ()
 
 Returns the models meta-data service related to the entity instance
 
-
-
 public  **getModelsManager** ()
 
 Returns the models manager related to the entity instance
-
-
 
 public  **setTransaction** ([Phalcon\Mvc\Model\TransactionInterface](/en/3.1.2/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
@@ -141,85 +126,57 @@ try {
 
 ```
 
-
-
 protected  **setSource** (*mixed* $source)
 
 Sets the table name to which model should be mapped
-
-
 
 public  **getSource** ()
 
 Returns the table name mapped in the model
 
-
-
 protected  **setSchema** (*mixed* $schema)
 
 Sets schema name where the mapped table is located
-
-
 
 public  **getSchema** ()
 
 Returns schema name where the mapped table is located
 
-
-
 public  **setConnectionService** (*mixed* $connectionService)
 
 Sets the DependencyInjection connection service name
-
-
 
 public  **setReadConnectionService** (*mixed* $connectionService)
 
 Sets the DependencyInjection connection service name used to read data
 
-
-
 public  **setWriteConnectionService** (*mixed* $connectionService)
 
 Sets the DependencyInjection connection service name used to write data
-
-
 
 public  **getReadConnectionService** ()
 
 Returns the DependencyInjection connection service name used to read data related the model
 
-
-
 public  **getWriteConnectionService** ()
 
 Returns the DependencyInjection connection service name used to write data related to the model
-
-
 
 public  **setDirtyState** (*mixed* $dirtyState)
 
 Sets the dirty state of the object using one of the DIRTY_STATE_* constants
 
-
-
 public  **getDirtyState** ()
 
 Returns one of the DIRTY_STATE_* constants telling if the record exists in the database or not
-
-
 
 public  **getReadConnection** ()
 
 Gets the connection used to read data for the model
 
-
-
 public  **getWriteConnection** ()
 
 Gets the connection used to write data to the model
-
-
 
 public [Phalcon\Mvc\Model](/en/3.1.2/api/Phalcon_Mvc_Model) **assign** (*array* $data, [*mixed* $dataColumnMap], [*array* $whiteList])
 
@@ -258,8 +215,6 @@ $robot->assign(
 
 ```
 
-
-
 public static  **cloneResultMap** ([Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface) | [Phalcon\Mvc\Model\Row](/en/3.1.2/api/Phalcon_Mvc_Model_Row) $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
 
 Assigns values to a model from an array, returning a new model.
@@ -278,13 +233,9 @@ $robot = \Phalcon\Mvc\Model::cloneResultMap(
 
 ```
 
-
-
 public static *mixed* **cloneResultMapHydrate** (*array* $data, *array* $columnMap, *int* $hydrationMode)
 
 Returns an hydrated result based on the data and the column map
-
-
 
 public static [Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface) **cloneResult** ([Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface) $base, *array* $data, [*int* $dirtyState])
 
@@ -303,8 +254,6 @@ $robot = Phalcon\Mvc\Model::cloneResult(
 );
 
 ```
-
-
 
 public static  **find** ([*mixed* $parameters])
 
@@ -352,8 +301,6 @@ foreach ($robots as $robot) {
 
 ```
 
-
-
 public static *static* **findFirst** ([*string* | *array* $parameters])
 
 Query the first record that matches the specified conditions
@@ -385,25 +332,17 @@ echo "The first virtual robot name is ", $robot->name;
 
 ```
 
-
-
 public static  **query** ([[Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector])
 
 Create a criteria for a specific model
-
-
 
 protected *boolean* **_exists** ([Phalcon\Mvc\Model\MetaDataInterface](/en/3.1.2/api/Phalcon_Mvc_Model_MetaDataInterface) $metaData, [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface) $connection, [*string* | *array* $table])
 
 Checks whether the current record already exists
 
-
-
 protected static [Phalcon\Mvc\Model\ResultsetInterface](/en/3.1.2/api/Phalcon_Mvc_Model_ResultsetInterface) **_groupResult** (*mixed* $functionName, *string* $alias, *array* $parameters)
 
 Generate a PHQL SELECT statement for an aggregate
-
-
 
 public static *mixed* **count** ([*array* $parameters])
 
@@ -423,8 +362,6 @@ $number = Robots::count("type = 'mechanical'");
 echo "There are ", $number, " mechanical robots\n";
 
 ```
-
-
 
 public static *mixed* **sum** ([*array* $parameters])
 
@@ -454,8 +391,6 @@ echo "The total price of mechanical robots is  ", $sum, "\n";
 
 ```
 
-
-
 public static *mixed* **maximum** ([*array* $parameters])
 
 Returns the maximum value of a column for a result-set of rows that match the specified conditions
@@ -483,8 +418,6 @@ $sum = Robots::maximum(
 echo "The maximum robot id of mechanical robots is ", $id, "\n";
 
 ```
-
-
 
 public static *mixed* **minimum** ([*array* $parameters])
 
@@ -514,8 +447,6 @@ echo "The minimum robot id of mechanical robots is ", $id;
 
 ```
 
-
-
 public static *double* **average** ([*array* $parameters])
 
 Returns the average value on a column for a result-set of rows matching the specified conditions
@@ -544,26 +475,18 @@ echo "The average price of mechanical robots is ", $average, "\n";
 
 ```
 
-
-
 public  **fireEvent** (*mixed* $eventName)
 
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified
-
-
 
 public  **fireEventCancel** (*mixed* $eventName)
 
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified
 This method stops if one of the callbacks/listeners returns boolean false
 
-
-
 protected  **_cancelOperation** ()
 
 Cancel the current operation
-
-
 
 public  **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](/en/3.1.2/api/Phalcon_Mvc_Model_MessageInterface) $message)
 
@@ -590,8 +513,6 @@ class Robots extends Model
 }
 
 ```
-
-
 
 protected  **validate** ([Phalcon\ValidationInterface](/en/3.1.2/api/Phalcon_ValidationInterface) $validator)
 
@@ -628,8 +549,6 @@ class Subscriptors extends Model
 
 ```
 
-
-
 public  **validationHasFailed** ()
 
 Check whether validation process has generated any messages
@@ -665,8 +584,6 @@ class Subscriptors extends Model
 
 ```
 
-
-
 public  **getMessages** ([*mixed* $filter])
 
 Returns array of validation messages
@@ -694,62 +611,42 @@ if ($robot->save() === false) {
 
 ```
 
-
-
 final protected  **_checkForeignKeysRestrict** ()
 
 Reads "belongs to" relations and check the virtual foreign keys when inserting or updating records
 to verify that inserted/updated values are present in the related entity
 
-
-
 final protected  **_checkForeignKeysReverseCascade** ()
 
 Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (cascade) when deleting records
-
-
 
 final protected  **_checkForeignKeysReverseRestrict** ()
 
 Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (restrict) when deleting records
 
-
-
 protected  **_preSave** ([Phalcon\Mvc\Model\MetaDataInterface](/en/3.1.2/api/Phalcon_Mvc_Model_MetaDataInterface) $metaData, *mixed* $exists, *mixed* $identityField)
 
 Executes internal hooks before save a record
-
-
 
 protected  **_postSave** (*mixed* $success, *mixed* $exists)
 
 Executes internal events after save a record
 
-
-
 protected *boolean* **_doLowInsert** ([Phalcon\Mvc\Model\MetaDataInterface](/en/3.1.2/api/Phalcon_Mvc_Model_MetaDataInterface) $metaData, [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface) $connection, *string* | *array* $table, *boolean* | *string* $identityField)
 
 Sends a pre-build INSERT SQL statement to the relational database system
-
-
 
 protected *boolean* **_doLowUpdate** ([Phalcon\Mvc\Model\MetaDataInterface](/en/3.1.2/api/Phalcon_Mvc_Model_MetaDataInterface) $metaData, [Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface) $connection, *string* | *array* $table)
 
 Sends a pre-build UPDATE SQL statement to the relational database system
 
-
-
 protected *boolean* **_preSaveRelatedRecords** ([Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface) $connection, [Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface[]) $related)
 
 Saves related records that must be stored prior to save the master record
 
-
-
 protected *boolean* **_postSaveRelatedRecords** ([Phalcon\Db\AdapterInterface](/en/3.1.2/api/Phalcon_Db_AdapterInterface) $connection, [Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface[]) $related)
 
 Save the related records assigned in the has-one/has-many relations
-
-
 
 public *boolean* **save** ([*array* $data], [*array* $whiteList])
 
@@ -775,8 +672,6 @@ $robot->name = "Biomass";
 $robot->save();
 
 ```
-
-
 
 public  **create** ([*mixed* $data], [*mixed* $whiteList])
 
@@ -808,8 +703,6 @@ $robot->create(
 
 ```
 
-
-
 public  **update** ([*mixed* $data], [*mixed* $whiteList])
 
 Updates a model instance. If the instance doesn't exist in the persistence it will throw an exception
@@ -826,8 +719,6 @@ $robot->name = "Biomass";
 $robot->update();
 
 ```
-
-
 
 public  **delete** ()
 
@@ -848,26 +739,18 @@ foreach ($robots as $robot) {
 
 ```
 
-
-
 public  **getOperationMade** ()
 
 Returns the type of the latest operation performed by the ORM
 Returns one of the OP_* class constants
 
-
-
 public  **refresh** ()
 
 Refreshes the model attributes re-querying the record from the database
 
-
-
 public  **skipOperation** (*mixed* $skip)
 
 Skips the current operation forcing a success state
-
-
 
 public  **readAttribute** (*mixed* $attribute)
 
@@ -880,8 +763,6 @@ echo $robot->readAttribute("name");
 
 ```
 
-
-
 public  **writeAttribute** (*mixed* $attribute, *mixed* $value)
 
 Writes an attribute value by its name
@@ -892,8 +773,6 @@ Writes an attribute value by its name
 $robot->writeAttribute("name", "Rosey");
 
 ```
-
-
 
 protected  **skipAttributes** (*array* $attributes)
 
@@ -917,8 +796,6 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-
-
 protected  **skipAttributesOnCreate** (*array* $attributes)
 
 Sets a list of attributes that must be skipped from the
@@ -940,8 +817,6 @@ class Robots extends \Phalcon\Mvc\Model
 }
 
 ```
-
-
 
 protected  **skipAttributesOnUpdate** (*array* $attributes)
 
@@ -965,8 +840,6 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-
-
 protected  **allowEmptyStringValues** (*array* $attributes)
 
 Sets a list of attributes that must be skipped from the
@@ -989,8 +862,6 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-
-
 protected  **hasOne** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
 
 Setup a 1-1 relation between two models
@@ -1007,8 +878,6 @@ class Robots extends \Phalcon\Mvc\Model
 }
 
 ```
-
-
 
 protected  **belongsTo** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
 
@@ -1027,8 +896,6 @@ class RobotsParts extends \Phalcon\Mvc\Model
 
 ```
 
-
-
 protected  **hasMany** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
 
 Setup a 1-n relation between two models
@@ -1045,8 +912,6 @@ class Robots extends \Phalcon\Mvc\Model
 }
 
 ```
-
-
 
 protected [Phalcon\Mvc\Model\Relation](/en/3.1.2/api/Phalcon_Mvc_Model_Relation) **hasManyToMany** (*string* | *array* $fields, *string* $intermediateModel, *string* | *array* $intermediateFields, *string* | *array* $intermediateReferencedFields, *mixed* $referenceModel, *string* | *array* $referencedFields, [*array* $options])
 
@@ -1072,8 +937,6 @@ class Robots extends \Phalcon\Mvc\Model
 }
 
 ```
-
-
 
 public  **addBehavior** ([Phalcon\Mvc\Model\BehaviorInterface](/en/3.1.2/api/Phalcon_Mvc_Model_BehaviorInterface) $behavior)
 
@@ -1104,8 +967,6 @@ class Robots extends Model
 
 ```
 
-
-
 protected  **keepSnapshots** (*mixed* $keepSnapshot)
 
 Sets if the model must keep the original record snapshot in memory
@@ -1125,33 +986,23 @@ class Robots extends Model
 
 ```
 
-
-
 public  **setSnapshotData** (*array* $data, [*array* $columnMap])
 
 Sets the record's snapshot data.
 This method is used internally to set snapshot data when the model was set up to keep snapshot data
 
-
-
 public  **hasSnapshotData** ()
 
 Checks if the object has internal snapshot data
-
-
 
 public  **getSnapshotData** ()
 
 Returns the internal snapshot data
 
-
-
 public  **hasChanged** ([*string* | *array* $fieldName])
 
 Check if a specific attribute has changed
 This only works if the model is keeping data snapshots
-
-
 
 public  **getChangedFields** ()
 
@@ -1169,8 +1020,6 @@ $robots->getChangedFields();
 print_r($robots->getChangedFields()); // ["deleted"]
 
 ```
-
-
 
 protected  **useDynamicUpdate** (*mixed* $dynamicUpdate)
 
@@ -1191,73 +1040,49 @@ class Robots extends Model
 
 ```
 
-
-
 public [Phalcon\Mvc\Model\ResultsetInterface](/en/3.1.2/api/Phalcon_Mvc_Model_ResultsetInterface) **getRelated** (*string* $alias, [*array* $arguments])
 
 Returns related records based on defined relations
-
-
 
 protected *mixed* **_getRelatedRecords** (*string* $modelName, *string* $method, *array* $arguments)
 
 Returns related records defined relations depending on the method name
 
-
-
 final protected static [Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface[]) | [Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface) | *boolean* **_invokeFinder** (*string* $method, *array* $arguments)
 
 Try to check if the query must invoke a finder
-
-
 
 public *mixed* **__call** (*string* $method, *array* $arguments)
 
 Handles method calls when a method is not implemented
 
-
-
 public static *mixed* **__callStatic** (*string* $method, *array* $arguments)
 
 Handles method calls when a static method is not implemented
-
-
 
 public  **__set** (*string* $property, *mixed* $value)
 
 Magic method to assign values to the the model
 
-
-
 final protected *string* **_possibleSetter** (*string* $property, *mixed* $value)
 
 Check for, and attempt to use, possible setter.
-
-
 
 public [Phalcon\Mvc\Model\Resultset](/en/3.1.2/api/Phalcon_Mvc_Model_Resultset) | [Phalcon\Mvc\Model](/en/3.1.2/api/Phalcon_Mvc_Model) **__get** (*string* $property)
 
 Magic method to get related records using the relation alias as a property
 
-
-
 public  **__isset** (*mixed* $property)
 
 Magic method to check if a property is a valid relation
-
-
 
 public  **serialize** ()
 
 Serializes the object ignoring connections, services, related objects or static properties
 
-
-
 public  **unserialize** (*mixed* $data)
 
 Unserializes the object from a serialized string
-
-
 
 public  **dump** ()
 
@@ -1272,8 +1097,6 @@ var_dump(
 
 ```
 
-
-
 public *array* **toArray** ([*array* $columns])
 
 Returns the instance as an array representation
@@ -1287,8 +1110,6 @@ print_r(
 
 ```
 
-
-
 public *array* **jsonSerialize** ()
 
 Serializes the object for json_encode
@@ -1300,17 +1121,11 @@ echo json_encode($robot);
 
 ```
 
-
-
 public static  **setup** (*array* $options)
 
 Enables/disables options in the ORM
 
-
-
 public  **reset** ()
 
 Reset a model instance data
-
-
 

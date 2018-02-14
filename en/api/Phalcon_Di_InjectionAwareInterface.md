@@ -7,9 +7,7 @@ abstract public  **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterf
 
 ...
 
-
 abstract public  **getDI** ()
 
 ...
-
 

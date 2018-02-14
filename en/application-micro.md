@@ -160,7 +160,6 @@ $router->addGet(
     }
 );
 
-
 $app = new Micro();
 $app->setService('router', $router, true);
 ```
@@ -337,7 +336,6 @@ class OrdersController extends Controller
 }
 ```
 
-
 <a name='routing-handlers-controllers-lazy-loading'></a>
 ### Lazy Loading
 In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
@@ -487,7 +485,7 @@ $app->notFound(
 );
 ```
 
-You can also handle routes that have not been matched (404) with Middleware discussed below.  
+You can also handle routes that have not been matched (404) with Middleware discussed below.
 
 <a name='routing-verbs'></a>
 ## Methods - Verbs
@@ -702,7 +700,7 @@ Finally, you can perform redirections in your middleware (if you are using it). 
 
 <a name='routing-urls-for-routes'></a>
 ## URLs for Routes
-Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process. 
+Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process.
 * First we need to name our route. This can be achieved with the `setName()` method that is exposed from the methods/verbs in our application (`get`, `post`, etc.);
 
 ```php
@@ -741,7 +739,7 @@ $app->get(
 
 <a name='dependency-injector'></a>
 # Dependency Injector
-When a micro application is created, a `Phalcon\Di\FactoryDefault` services container is create implicitly. 
+When a micro application is created, a `Phalcon\Di\FactoryDefault` services container is create implicitly.
 
 ```php
 <?php
@@ -981,7 +979,6 @@ The following events are supported:
 |beforeNotFound     | Route has not been found                                          | Yes                 |
 |afterHandleRoute   | Route just finished executing                                     | Yes                 |
 |afterBinding       | Triggered after models are bound but before executing the handler | Yes                 |
-
 
 <a name='events-available-events-authentication'></a>
 ### Authentication example
@@ -1738,5 +1735,4 @@ $app->error(
     }
 );
 ```
-
 

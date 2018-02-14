@@ -24,53 +24,38 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 ```
 
-
 ## Methods
 public  **getDetailed** ()
 
 ...
 
-
 public  **setDetailed** (*mixed* $detailed)
 
 ...
-
 
 public  **__construct** ([*array* $styles], [*mixed* $detailed])
 
 Phalcon\\Debug\\Dump constructor
 
-
-
 public  **all** ()
 
 Alias of variables() method
-
-
 
 protected  **getStyle** (*mixed* $type)
 
 Get style for type
 
-
-
 public  **setStyles** ([*array* $styles])
 
 Set styles for vars type
-
-
 
 public  **one** (*mixed* $variable, [*mixed* $name])
 
 Alias of variable() method
 
-
-
 protected  **output** (*mixed* $variable, [*mixed* $name], [*mixed* $tab])
 
 Prepare an HTML string of information about a single variable.
-
-
 
 public  **variable** (*mixed* $variable, [*mixed* $name])
 
@@ -82,8 +67,6 @@ Returns an HTML string of information about a single variable.
 echo (new \Phalcon\Debug\Dump())->variable($foo, "foo");
 
 ```
-
-
 
 public  **variables** ()
 
@@ -100,8 +83,6 @@ $baz = new stdClass();
 echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 ```
-
-
 
 public  **toJson** (*mixed* $variable)
 
@@ -122,6 +103,4 @@ $foo->bar = "buz";
 echo (new \Phalcon\Debug\Dump())->toJson($foo);
 
 ```
-
-
 

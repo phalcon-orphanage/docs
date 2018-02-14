@@ -39,7 +39,7 @@ $options = [
 
 $translate = Factory::load($options);
 ```
- 
+
 <a name='usage'></a>
 ## Component Usage
 Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:

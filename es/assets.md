@@ -393,7 +393,7 @@ Uso:
 ```php
 <?php
 
-// Obtiene alguna colección CSS 
+// Obtiene alguna colección CSS
 $css = $this->assets->get('head');
 
 // Agrega/Habilita el filtro reductor YUI en la colección
@@ -576,7 +576,7 @@ location ~ ^/assets/ {
     add_header Cache-Control public;
     add_header ETag "";
 
-    # Si existe el archivo como un archivo estático, entregar directamente sin 
+    # Si existe el archivo como un archivo estático, entregar directamente sin
     # ejecutar todas las otras pruebas de reescritura en el
     try_files $uri $uri/ @phalcon;
 }

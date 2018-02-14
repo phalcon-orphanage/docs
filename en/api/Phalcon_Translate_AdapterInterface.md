@@ -7,14 +7,11 @@ abstract public  **t** (*mixed* $translateKey, [*mixed* $placeholders])
 
 ...
 
-
 abstract public  **query** (*mixed* $index, [*mixed* $placeholders])
 
 ...
 
-
 abstract public  **exists** (*mixed* $index)
 
 ...
-
 

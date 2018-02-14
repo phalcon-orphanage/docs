@@ -148,7 +148,6 @@ The `_getTranslation()` method is available for all actions that require transla
     <!-- welcome -->
     <!-- String: hi => 'Hello' -->
     <p><?php echo $t->_('hi'), ' ', $name; ?></p>
-    
 
 The `_()` method is returning the translated string based on the index passed. Some strings need to incorporate placeholders for calculated data i.e. `Hello %name%`. These placeholders can be replaced with passed parameters in the `_()` method. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
 

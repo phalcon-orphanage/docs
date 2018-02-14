@@ -86,14 +86,13 @@ or using the Factory object as follows:
 
 use Phalcon\Cache\Frontend\Factory as FFactory;
 use Phalcon\Cache\Backend\Factory as BFactory;
- 
+
  $options = [
      'lifetime' => 172800,
      'adapter'  => 'data',
  ];
  $frontendCache = FFactory::load($options);
- 
- 
+
 $options = [
     'cacheDir' => '../app/cache/',
     'prefix'   => 'app-data',
@@ -104,7 +103,7 @@ $options = [
 $backendCache = BFactory::load($options);
 ```
 
-If the options 
+If the options
 
 <a name='output-fragments'></a>
 ## Caching Output Fragments

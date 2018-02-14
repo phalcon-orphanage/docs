@@ -63,53 +63,36 @@ $cache->save("my-key", $data);
 
 ```
 
-
 ## Methods
 public  **__construct** ([[Phalcon\Cache\BackendInterface](/en/3.1.2/api/Phalcon_Cache_BackendInterface[]) $backends])
 
 Phalcon\\Cache\\Multiple constructor
 
-
-
 public  **push** ([Phalcon\Cache\BackendInterface](/en/3.1.2/api/Phalcon_Cache_BackendInterface) $backend)
 
 Adds a backend
-
-
 
 public *mixed* **get** (*string* | *int* $keyName, [*int* $lifetime])
 
 Returns a cached content reading the internal backends
 
-
-
 public  **start** (*string* | *int* $keyName, [*int* $lifetime])
 
 Starts every backend
-
-
 
 public  **save** ([*string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into all backends and stops the frontend
 
-
-
 public *boolean* **delete** (*string* | *int* $keyName)
 
 Deletes a value from each backend
-
-
 
 public  **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
 Checks if cache exists in at least one backend
 
-
-
 public  **flush** ()
 
 Flush all backend(s)
-
-
 

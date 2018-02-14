@@ -4,7 +4,7 @@
     - [Manual Transactions](#manual)
     - [Implicit Transactions](#implicit)
     - [Isolated Transactions](#isolated)
-    
+
 </div>
 
 <a name='overview'></a>
@@ -69,8 +69,6 @@ Existing relationships can be used to store records and their related instances,
 $robotPart = new RobotParts();
 
 $robotPart->type = 'head';
-
-
 
 $robot = new Robots();
 

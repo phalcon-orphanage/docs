@@ -44,7 +44,6 @@ while ($robots->valid()) {
 
 ```
 
-
 ## Constants
 *integer* **TYPE_RESULT_FULL**
 
@@ -61,134 +60,90 @@ public  **__construct** ([Phalcon\Db\ResultInterface](/en/3.1.2/api/Phalcon_Db_R
 
 Phalcon\\Mvc\\Model\\Resultset constructor
 
-
-
 public  **next** ()
 
 Moves cursor to next row in the resultset
-
-
 
 public  **valid** ()
 
 Check whether internal resource has rows to fetch
 
-
-
 public  **key** ()
 
 Gets pointer number of active row in the resultset
 
-
-
 final public  **rewind** ()
 
 Rewinds resultset to its beginning
-
-
 
 final public  **seek** (*mixed* $position)
 
 Changes internal pointer to a specific position in the resultset
 Set new position if required and set this->_row
 
-
-
 final public  **count** ()
 
 Counts how many rows are in the resultset
-
-
 
 public  **offsetExists** (*mixed* $index)
 
 Checks whether offset exists in the resultset
 
-
-
 public  **offsetGet** (*mixed* $index)
 
 Gets row in a specific position of the resultset
-
-
 
 public  **offsetSet** (*int* $index, [Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface) $value)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
-
-
 public  **offsetUnset** (*mixed* $offset)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
-
-
 
 public  **getType** ()
 
 Returns the internal type of data retrieval that the resultset is using
 
-
-
 public  **getFirst** ()
 
 Get first row in the resultset
-
-
 
 public  **getLast** ()
 
 Get last row in the resultset
 
-
-
 public  **setIsFresh** (*mixed* $isFresh)
 
 Set if the resultset is fresh or an old one cached
-
-
 
 public  **isFresh** ()
 
 Tell if the resultset if fresh or an old one cached
 
-
-
 public  **setHydrateMode** (*mixed* $hydrateMode)
 
 Sets the hydration mode in the resultset
-
-
 
 public  **getHydrateMode** ()
 
 Returns the current hydration mode
 
-
-
 public  **getCache** ()
 
 Returns the associated cache for the resultset
-
-
 
 public  **getMessages** ()
 
 Returns the error messages produced by a batch operation
 
-
-
 public *boolean* **update** (*array* $data, [[Closure](http://php.net/manual/en/class.closure.php) $conditionCallback])
 
 Updates every record in the resultset
 
-
-
 public  **delete** ([[Closure](http://php.net/manual/en/class.closure.php) $conditionCallback])
 
 Deletes every record in the resultset
-
-
 
 public [Phalcon\Mvc\Model](/en/3.1.2/api/Phalcon_Mvc_Model[]) **filter** (*callback* $filter)
 
@@ -207,8 +162,6 @@ $filtered = $robots->filter(
 
 ```
 
-
-
 public *array* **jsonSerialize** ()
 
 Returns serialised model objects as array for json_encode.
@@ -222,25 +175,19 @@ echo json_encode($robots);
 
 ```
 
-
-
 abstract public  **toArray** () inherited from [Phalcon\Mvc\Model\ResultsetInterface](/en/3.1.2/api/Phalcon_Mvc_Model_ResultsetInterface)
 
 ...
-
 
 abstract public  **current** () inherited from [Iterator](http://php.net/manual/en/class.iterator.php)
 
 ...
 
-
 abstract public  **serialize** () inherited from [Serializable](http://php.net/manual/en/class.serializable.php)
 
 ...
 
-
 abstract public  **unserialize** (*mixed* $serialized) inherited from [Serializable](http://php.net/manual/en/class.serializable.php)
 
 ...
-
 

@@ -7,39 +7,31 @@ abstract public  **setType** (*mixed* $type)
 
 ...
 
-
 abstract public  **getType** ()
 
 ...
-
 
 abstract public  **setMessage** (*mixed* $message)
 
 ...
 
-
 abstract public  **getMessage** ()
 
 ...
-
 
 abstract public  **setField** (*mixed* $field)
 
 ...
 
-
 abstract public  **getField** ()
 
 ...
-
 
 abstract public  **__toString** ()
 
 ...
 
-
 abstract public static  **__set_state** (*array* $message)
 
 ...
-
 

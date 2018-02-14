@@ -365,12 +365,10 @@ copy:
 Debe agregar los "dominios" para sus sitios web en Nginx en el fichero `hosts` en su máquina. El archivo hosts redirige las peticiones a sus sitios de Phalcon en su máquina en la Caja de Phalcon. En Mac y Linux, este archivo esta ubicado en `/etc/hosts`. En Windows, se encuentra en `C:\Windows\System32\drivers\etc\hosts`. Las lineas que debes añadir a este archivo deben ser algo similar a esto:
 
     192.168.50.4  phalcon.local
-    
 
 Asegúrese de que la dirección IP listada es la misma que esta en el archivo `settings.yml`. Una vez haya agregado el domino a su fichero `hosts` y lanzado la Caja de Vagrant será capaz de acceder al sitio web a través de su navegador web:
 
     http://phalcon.local
-    
 
 <h5 class='alert alert-danger'>To enable adding new sites to the <code>hosts</code> file automatically use <code>vagrant-hostsupdater</code> plugin: </h5>
 
@@ -493,7 +491,6 @@ Si Vagrant no está gestionando su fichero "hosts" automáticamente, además deb
     192.168.50.4  phalcon.local
     192.168.50.4  pdffiller.local
     192.168.50.4  blog.local
-    
 
 <h5 class='alert alert-danger'>To enable adding new sites to the <code>hosts</code> file automatically use <code>vagrant-hostsupdater</code> plugin: </h5>
 
@@ -712,7 +709,7 @@ vagrant plugin install vagrant-vbguest
 **Problema:**
 
 > Vagrant era incapaz de montar las carpetas compartidas de VirtualBox. Esto sucede generalmente porque el sistema de archivos "vboxsf" no está disponible. Este sistema de archivos está a su disposición mediante el VirtualBox Guest Additions y el módulo de núcleo. Por favor verifique que estas adiciones de invitado adecuadamente estén instaladas en el huésped. Esto no es un error en Vagrant y generalmente es causado por una caja defectuosa de Vagrant. En contexto, el comando intentado fue:
-> 
+
 > mount -t vboxsf -o uid=900,gid=900 vagrant /vagrant
 
 **Solución:**
@@ -724,9 +721,9 @@ vagrant plugin install vagrant-vbguest
 **Problema:**
 
 > Se produjo un error mientras se ejecuta el `VBoxManage`, un CLI utilizado por Vagrant para el control de VirtualBox. A continuación se muestra el comando y el stderr.
-> 
+ 
 > Comando: `["startvm", "9d2b95e1-0fdd-40f4-ad65-4b56eb4315f8", "--type", "headless"]`
-> 
+ 
 > Stderr: VBoxManage.exe: error: VT-x is not available (VERR_VMX_NO_VMX) VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component ConsoleWrap, interface IConsole
 
 **Solución:**

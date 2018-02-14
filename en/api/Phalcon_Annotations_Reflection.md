@@ -22,41 +22,28 @@ $classAnnotations = $reflection->getClassAnnotations();
 
 ```
 
-
 ## Methods
 public  **__construct** ([*array* $reflectionData])
 
 Phalcon\\Annotations\\Reflection constructor
 
-
-
 public  **getClassAnnotations** ()
 
 Returns the annotations found in the class docblock
-
-
 
 public  **getMethodsAnnotations** ()
 
 Returns the annotations found in the methods' docblocks
 
-
-
 public  **getPropertiesAnnotations** ()
 
 Returns the annotations found in the properties' docblocks
-
-
 
 public *array* **getReflectionData** ()
 
 Returns the raw parsing intermediate definitions used to construct the reflection
 
-
-
 public static *array data* **__set_state** (*mixed* $data)
 
 Restores the state of a Phalcon\\Annotations\\Reflection variable export
-
-
 

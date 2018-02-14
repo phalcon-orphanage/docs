@@ -4,7 +4,7 @@
     - [Project Structure](#structure)
     - [Load Classes and Dependencies](#dependencies)
     - [Sign Up](#sign-up)
-    
+
 </div>
 
 <a name='overview'></a>

@@ -9,5 +9,3 @@ public  **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
 
 Replaces placeholders by the values passed
 
-
-

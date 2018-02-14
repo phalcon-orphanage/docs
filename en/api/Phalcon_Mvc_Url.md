@@ -23,19 +23,14 @@ echo $url->get(
 
 ```
 
-
 ## Methods
 public  **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the DependencyInjector container
 
-
-
 public  **getDI** ()
 
 Returns the DependencyInjector container
-
-
 
 public  **setBaseUri** (*mixed* $baseUri)
 
@@ -50,8 +45,6 @@ $url->setBaseUri("/invo/index.php/");
 
 ```
 
-
-
 public  **setStaticBaseUri** (*mixed* $staticBaseUri)
 
 Sets a prefix for all static URLs generated
@@ -63,19 +56,13 @@ $url->setStaticBaseUri("/invo/");
 
 ```
 
-
-
 public  **getBaseUri** ()
 
 Returns the prefix for all the generated urls. By default /
 
-
-
 public  **getStaticBaseUri** ()
 
 Returns the prefix for all the generated static urls. By default /
-
-
 
 public  **setBasePath** (*mixed* $basePath)
 
@@ -88,13 +75,9 @@ $url->setBasePath("/var/www/htdocs/");
 
 ```
 
-
-
 public  **getBasePath** ()
 
 Returns the base path
-
-
 
 public  **get** ([*mixed* $uri], [*mixed* $args], [*mixed* $local], [*mixed* $baseUri])
 
@@ -133,8 +116,6 @@ echo $url->get(
 
 ```
 
-
-
 public  **getStatic** ([*mixed* $uri])
 
 Generates a URL for a static resource
@@ -154,11 +135,7 @@ echo $url->getStatic(
 
 ```
 
-
-
 public  **path** ([*mixed* $path])
 
 Generates a local path
-
-
 

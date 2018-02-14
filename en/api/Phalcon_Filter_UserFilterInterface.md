@@ -7,4 +7,3 @@ abstract public  **filter** (*mixed* $value)
 
 ...
 
-

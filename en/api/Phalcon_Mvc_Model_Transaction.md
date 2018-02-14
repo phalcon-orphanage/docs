@@ -44,77 +44,52 @@ try {
 
 ```
 
-
 ## Methods
 public  **__construct** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
 
 Phalcon\\Mvc\\Model\\Transaction constructor
 
-
-
 public  **setTransactionManager** ([Phalcon\Mvc\Model\Transaction\ManagerInterface](/en/3.1.2/api/Phalcon_Mvc_Model_Transaction_ManagerInterface) $manager)
 
 Sets transaction manager related to the transaction
-
-
 
 public  **begin** ()
 
 Starts the transaction
 
-
-
 public  **commit** ()
 
 Commits the transaction
-
-
 
 public *boolean* **rollback** ([*string* $rollbackMessage], [[Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface) $rollbackRecord])
 
 Rollbacks the transaction
 
-
-
 public  **getConnection** ()
 
 Returns the connection related to transaction
-
-
 
 public  **setIsNewTransaction** (*mixed* $isNew)
 
 Sets if is a reused transaction or new once
 
-
-
 public  **setRollbackOnAbort** (*mixed* $rollbackOnAbort)
 
 Sets flag to rollback on abort the HTTP connection
-
-
 
 public  **isManaged** ()
 
 Checks whether transaction is managed by a transaction manager
 
-
-
 public  **getMessages** ()
 
 Returns validations messages from last save try
-
-
 
 public  **isValid** ()
 
 Checks whether internal connection is under an active transaction
 
-
-
 public  **setRollbackedRecord** ([Phalcon\Mvc\ModelInterface](/en/3.1.2/api/Phalcon_Mvc_ModelInterface) $record)
 
 Sets object which generates rollback action
-
-
 

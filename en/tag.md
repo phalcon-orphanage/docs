@@ -545,14 +545,14 @@ Phalcon offers a generic HTML helper that allows the generation of any kind of H
 // This is my canvas
 // </canvas>
 echo $this->tag->tagHtml(
-    'canvas', 
+    'canvas',
     [
-        'id'    => 'canvas1', 
-        'width' => '300', 
+        'id'    => 'canvas1',
+        'width' => '300',
         'class' => 'cnvclass',
-    ], 
-    false, 
-    true, 
+    ],
+    false,
+    true,
     true
 );
 echo 'This is my canvas';

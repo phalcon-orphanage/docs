@@ -36,7 +36,7 @@ This component makes use of adapters to encapsulate specific image manipulator p
 <a name='adapters-factory'></a>
 ### Factory
 Loads an Image Adapter class using `adapter` option.
- 
+
 ```php
 <?php
 
@@ -70,7 +70,6 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 // Overwrite the original image
 $image->save();
 ```
-
 
 ```php
 <?php

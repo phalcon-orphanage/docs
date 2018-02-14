@@ -20,7 +20,6 @@ $filter->sanitize("!100a019.01a", "float"); // returns "100019.01"
 
 ```
 
-
 ## Constants
 *string* **FILTER_EMAIL**
 
@@ -51,23 +50,15 @@ public  **add** (*mixed* $name, *mixed* $handler)
 
 Adds a user-defined filter
 
-
-
 public  **sanitize** (*mixed* $value, *mixed* $filters, [*mixed* $noRecursive])
 
 Sanitizes a value with a specified single or set of filters
-
-
 
 protected  **_sanitize** (*mixed* $value, *mixed* $filter)
 
 Internal sanitize wrapper to filter_var
 
-
-
 public  **getFilters** ()
 
 Return the user-defined filters in the instance
-
-
 

@@ -7,4 +7,3 @@ abstract public  **call** ([Phalcon\Mvc\Micro](/en/3.1.2/api/Phalcon_Mvc_Micro) 
 
 ...
 
-

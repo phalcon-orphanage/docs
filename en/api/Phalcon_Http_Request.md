@@ -26,29 +26,22 @@ $request->getLanguages();         // An array of languages the client accepts
 
 ```
 
-
 ## Methods
 public  **getHttpMethodParameterOverride** ()
 
 ...
 
-
 public  **setHttpMethodParameterOverride** (*mixed* $httpMethodParameterOverride)
 
 ...
-
 
 public  **setDI** ([Phalcon\DiInterface](/en/3.1.2/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
-
-
 public  **getDI** ()
 
 Returns the internal dependency injector
-
-
 
 public  **get** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
@@ -66,8 +59,6 @@ $userEmail = $request->get("user_email", "email");
 
 ```
 
-
-
 public  **getPost** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
 Gets a variable from the $_POST superglobal applying filters if needed
@@ -84,8 +75,6 @@ $userEmail = $request->getPost("user_email", "email");
 
 ```
 
-
-
 public  **getPut** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
 Gets a variable from put request
@@ -100,8 +89,6 @@ $userEmail = $request->getPut("user_email");
 $userEmail = $request->getPut("user_email", "email");
 
 ```
-
-
 
 public  **getQuery** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
@@ -122,116 +109,78 @@ $id = $request->getQuery("id", null, 150);
 
 ```
 
-
-
 final protected  **getHelper** (*array* $source, [*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
 Helper to get data from superglobals, applying filters if needed.
 If no parameters are given the superglobal is returned.
 
-
-
 public  **getServer** (*mixed* $name)
 
 Gets variable from $_SERVER superglobal
-
-
 
 public  **has** (*mixed* $name)
 
 Checks whether $_REQUEST superglobal has certain index
 
-
-
 public  **hasPost** (*mixed* $name)
 
 Checks whether $_POST superglobal has certain index
-
-
 
 public  **hasPut** (*mixed* $name)
 
 Checks whether the PUT data has certain index
 
-
-
 public  **hasQuery** (*mixed* $name)
 
 Checks whether $_GET superglobal has certain index
-
-
 
 final public  **hasServer** (*mixed* $name)
 
 Checks whether $_SERVER superglobal has certain index
 
-
-
 final public  **getHeader** (*mixed* $header)
 
 Gets HTTP header from request data
-
-
 
 public  **getScheme** ()
 
 Gets HTTP schema (http/https)
 
-
-
 public  **isAjax** ()
 
 Checks whether request has been made using ajax
-
-
 
 public  **isSoap** ()
 
 Checks whether request has been made using SOAP
 
-
-
 public  **isSoapRequested** ()
 
 Alias of isSoap(). It will be deprecated in future versions
-
-
 
 public  **isSecure** ()
 
 Checks whether request has been made using any secure layer
 
-
-
 public  **isSecureRequest** ()
 
 Alias of isSecure(). It will be deprecated in future versions
-
-
 
 public  **getRawBody** ()
 
 Gets HTTP raw request body
 
-
-
 public  **getJsonRawBody** ([*mixed* $associative])
 
 Gets decoded JSON HTTP raw request body
-
-
 
 public  **getServerAddress** ()
 
 Gets active server address IP
 
-
-
 public  **getServerName** ()
 
 Gets active server name
-
-
 
 public  **getHttpHost** ()
 
@@ -267,38 +216,26 @@ $request->getHttpHost(); // example.com
 
 ```
 
-
-
 public  **setStrictHostCheck** ([*mixed* $flag])
 
 Sets if the `Request::getHttpHost` method must be use strict validation of host name or not
-
-
 
 public  **isStrictHostCheck** ()
 
 Checks if the `Request::getHttpHost` method will be use strict validation of host name or not
 
-
-
 public  **getPort** ()
 
 Gets information about the port on which the request is made.
-
-
 
 final public  **getURI** ()
 
 Gets HTTP URI which request has been made
 
-
-
 public  **getClientAddress** ([*mixed* $trustForwardedHeader])
 
 Gets most possible client IPv4 Address. This method searches in
 $_SERVER["REMOTE_ADDR"] and optionally in $_SERVER["HTTP_X_FORWARDED_FOR"]
-
-
 
 final public  **getMethod** ()
 
@@ -309,110 +246,74 @@ The _method request parameter can also be used to determine the HTTP method,
 but only if setHttpMethodParameterOverride(true) has been called.
 The method is always an uppercased string.
 
-
-
 public  **getUserAgent** ()
 
 Gets HTTP user agent used to made the request
 
-
-
 public  **isValidHttpMethod** (*mixed* $method)
 
 Checks if a method is a valid HTTP method
-
-
 
 public  **isMethod** (*mixed* $methods, [*mixed* $strict])
 
 Check if HTTP method match any of the passed methods
 When strict is true it checks if validated methods are real HTTP methods
 
-
-
 public  **isPost** ()
 
 Checks whether HTTP method is POST. if _SERVER["REQUEST_METHOD"]==="POST"
-
-
 
 public  **isGet** ()
 
 Checks whether HTTP method is GET. if _SERVER["REQUEST_METHOD"]==="GET"
 
-
-
 public  **isPut** ()
 
 Checks whether HTTP method is PUT. if _SERVER["REQUEST_METHOD"]==="PUT"
-
-
 
 public  **isPatch** ()
 
 Checks whether HTTP method is PATCH. if _SERVER["REQUEST_METHOD"]==="PATCH"
 
-
-
 public  **isHead** ()
 
 Checks whether HTTP method is HEAD. if _SERVER["REQUEST_METHOD"]==="HEAD"
-
-
 
 public  **isDelete** ()
 
 Checks whether HTTP method is DELETE. if _SERVER["REQUEST_METHOD"]==="DELETE"
 
-
-
 public  **isOptions** ()
 
 Checks whether HTTP method is OPTIONS. if _SERVER["REQUEST_METHOD"]==="OPTIONS"
-
-
 
 public  **isPurge** ()
 
 Checks whether HTTP method is PURGE (Squid and Varnish support). if _SERVER["REQUEST_METHOD"]==="PURGE"
 
-
-
 public  **isTrace** ()
 
 Checks whether HTTP method is TRACE. if _SERVER["REQUEST_METHOD"]==="TRACE"
-
-
 
 public  **isConnect** ()
 
 Checks whether HTTP method is CONNECT. if _SERVER["REQUEST_METHOD"]==="CONNECT"
 
-
-
 public  **hasFiles** ([*mixed* $onlySuccessful])
 
 Checks whether request include attached files
-
-
 
 final protected  **hasFileHelper** (*mixed* $data, *mixed* $onlySuccessful)
 
 Recursively counts file in an array of files
 
-
-
 public  **getUploadedFiles** ([*mixed* $onlySuccessful])
 
 Gets attached files as Phalcon\\Http\\Request\\File instances
 
-
-
 final protected  **smoothFiles** (*array* $names, *array* $types, *array* $tmp_names, *array* $sizes, *array* $errors, *mixed* $prefix)
 
 Smooth out $_FILES to have plain array with all files uploaded
-
-
 
 public  **getHeaders** ()
 
@@ -432,77 +333,51 @@ echo $headers["Authorization"]; // Basic cGhhbGNvbjpzZWNyZXQ=
 
 ```
 
-
-
 public  **getHTTPReferer** ()
 
 Gets web page that refers active request. ie: http://www.google.com
-
-
 
 final protected  **_getBestQuality** (*array* $qualityParts, *mixed* $name)
 
 Process a request header and return the one with best quality
 
-
-
 public  **getContentType** ()
 
 Gets content type which request has been made
-
-
 
 public  **getAcceptableContent** ()
 
 Gets an array with mime/types and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
 
-
-
 public  **getBestAccept** ()
 
 Gets best mime/type accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
-
-
 
 public  **getClientCharsets** ()
 
 Gets a charsets array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
 
-
-
 public  **getBestCharset** ()
 
 Gets best charset accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
-
-
 
 public  **getLanguages** ()
 
 Gets languages array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
 
-
-
 public  **getBestLanguage** ()
 
 Gets best language accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
-
-
 
 public  **getBasicAuth** ()
 
 Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_USER"]
 
-
-
 public  **getDigestAuth** ()
 
 Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_DIGEST"]
 
-
-
 final protected  **_getQualityHeader** (*mixed* $serverIndex, *mixed* $name)
 
 Process a request header and return an array of values with their qualities
-
-
 

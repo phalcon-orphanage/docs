@@ -7,19 +7,15 @@ abstract public  **setCurrentPage** (*mixed* $page)
 
 ...
 
-
 abstract public  **getPaginate** ()
 
 ...
-
 
 abstract public  **setLimit** (*mixed* $limit)
 
 ...
 
-
 abstract public  **getLimit** ()
 
 ...
-
 

@@ -69,7 +69,6 @@ echo $random->base58(7);  // 774SJD3vgP
 
 This class partially borrows SecureRandom library from Ruby
 
-
 ## Methods
 public  **bytes** ([*mixed* $len])
 
@@ -90,8 +89,6 @@ var_dump(bin2hex($bytes));
 
 ```
 
-
-
 public  **hex** ([*mixed* $len])
 
 Generates a random hex string
@@ -106,8 +103,6 @@ $random = new \Phalcon\Security\Random();
 echo $random->hex(10); // a29f470508d5ccb8e289
 
 ```
-
-
 
 public  **base58** ([*mixed* $n])
 
@@ -126,8 +121,6 @@ echo $random->base58(); // 4kUgL2pdQMSCQtjE
 
 ```
 
-
-
 public  **base64** ([*mixed* $len])
 
 Generates a random base64 string
@@ -143,8 +136,6 @@ $random = new \Phalcon\Security\Random();
 echo $random->base64(12); // 3rcq39QzGK9fUqh8
 
 ```
-
-
 
 public  **base64Safe** ([*mixed* $len], [*mixed* $padding])
 
@@ -163,8 +154,6 @@ $random = new \Phalcon\Security\Random();
 echo $random->base64Safe(); // GD8JojhzSTrqX7Q8J6uug
 
 ```
-
-
 
 public  **uuid** ()
 
@@ -185,8 +174,6 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 
 ```
 
-
-
 public  **number** (*mixed* $len)
 
 Generates a random number between 0 and $len
@@ -200,6 +187,4 @@ $random = new \Phalcon\Security\Random();
 echo $random->number(16); // 8
 
 ```
-
-
 

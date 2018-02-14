@@ -555,7 +555,7 @@ A special variable is available inside `for` loops providing you information abo
 | `loop.last`      | True if in the last iteration.                                |
 | `loop.length`    | The number of items to iterate                                |
 
-Example: 
+Example:
 
 ```twig
 {% for robot in robots %}

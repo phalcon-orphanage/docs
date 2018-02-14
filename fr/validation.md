@@ -556,14 +556,10 @@ class CompanyValidation extends Validation
      */
     protected $phoneValidation;
 
-
-
     public function initialize()
     {
         $this->phoneValidation = new PhoneValidation();
     }
-
-
 
     public function afterValidation($data, $entity, $messages)
     {

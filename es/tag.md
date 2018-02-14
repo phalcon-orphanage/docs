@@ -619,14 +619,14 @@ Phalcon ofrece un ayudante HTML genérico que permite la generación de cualquie
 // Este es mi lienzo
 // </canvas>
 echo $this->tag->tagHtml(
-    'canvas', 
+    'canvas',
     [
-        'id'    => 'canvas1', 
-        'width' => '300', 
+        'id'    => 'canvas1',
+        'width' => '300',
         'class' => 'cnvclass',
-    ], 
-    false, 
-    true, 
+    ],
+    false,
+    true,
     true
 );
 echo 'Este es mi lienzo';

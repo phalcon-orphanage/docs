@@ -7,9 +7,7 @@ abstract public  **getMessages** ()
 
 ...
 
-
 abstract public  **validate** ([Phalcon\Mvc\EntityInterface](/en/3.1.2/api/Phalcon_Mvc_EntityInterface) $record)
 
 ...
-
 

@@ -42,14 +42,13 @@ Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. I
 ```ini extension=php_phalcon.dll
 
     <br />and save it.
-    
+
     ![](/images/content/webserver-wamp-2.png)
-    
-    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file: 
-    
+
+    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file:
+
     ```ini
-    extension=php_phalcon.dll 
-    
+    extension=php_phalcon.dll
 
 and save it.
 

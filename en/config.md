@@ -18,7 +18,7 @@
 <a name='factory'></a>
 ## Factory
 Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
- 
+
 ```php
 <?php
 
@@ -28,7 +28,7 @@ $options = [
     'filePath' => 'path/config',
     'adapter'  => 'php',
  ];
- 
+
  $config = Factory::load($options);
  ```
 

@@ -353,7 +353,7 @@ class PostsController extends Controller
         $year = $this->dispatcher->getParam('year', 'int');
 
         // ...
-    } 
+    }
 }
 ```
 
