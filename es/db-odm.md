@@ -56,7 +56,7 @@
   </ul>
 </div>
 
-<h5 class='alert alert-info'>Tenga en cuenta que si utiliza el controlador de Mongo proporcionado por PHP 7, el ODM no funcionará para usted. There is an incubator adapter but all the Mongo code must be rewritten (new Bson type instead of arrays, no MongoId, no MongoDate, etc...). Asegúrese de testear su código antes de actualizar a PHP 7 y/o Phalcon 3+</h5>
+<h5 class='alert alert-info'>Tenga en cuenta que si utiliza el controlador de Mongo proporcionado por PHP 7, el ODM no funcionará para usted. Hay un adaptador en la incubadora pero debe ser reescrito totalmente el código de Mongo (utilizando el nuevo tipo Bson en vez de array, no MongoId, no MongoDate, etcétera...). Asegúrese de testear su código antes de actualizar a PHP 7 y/o Phalcon 3+</h5>
 
 <a name='overview'></a>
 
@@ -293,7 +293,7 @@ Ambos métodos `find()` y `findFirst()` aceptan un arreglo asociativo, especific
 ```php
 <?php
 
-// First robot where type = 'mechanical' and year = '1999'
+// Primer robot donde el tipo es igual a 'mechanical' y año a '1999'
 $robot = Robots::findFirst(
     [
         'conditions' => [
@@ -303,7 +303,7 @@ $robot = Robots::findFirst(
     ]
 );
 
-// All virtual robots ordered by name downward
+// Todos los robots virtuales ordenados por descendentemente nombre
 $robots = Robots::find(
     [
         'conditions' => [
@@ -665,7 +665,7 @@ class Robots extends Collection
 
 El ejemplo anterior realiza una validación con el validador integrado `InclusionIn`. Comprueba el valor del campo `type` en una lista de dominios. Si el valor no está incluido en el método, entonces el validador fallará y devolverá false.
 
-<h5 class='alert alert-warning'>For more information on validators, see the <a href="/[[language]]/[[version]]/validation">Validation documentation</a> </h5>
+<h5 class='alert alert-warning'>Para obtener más información sobre validadores, consulte la <a href="/[[language]]/[[version]]/validation">documentación de validación</a> </h5>
 
 <a name='deleting-records'></a>
 
