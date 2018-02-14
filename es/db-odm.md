@@ -63,7 +63,7 @@
 
 <div class="alert alert-info">
     <p>
-        Tenga en cuenta que si utiliza el controlador de Mongo proporcionado por PHP 7, el ODM no funcionará para usted. Hay un adaptador de incubadora pero debe ser reescrito todo el código de Mongo (el nuevo tipo Bson en vez de array, no MongoId, no MongoDate, etcétera...). Asegúrese de testear su código antes de actualizar a PHP 7 y/o Phalcon 3+
+        Tenga en cuenta que si utiliza el controlador de Mongo proporcionado por PHP 7, el ODM no funcionará para usted. Hay un adaptador en la incubadora pero debe ser reescrito totalmente el código de Mongo (utilizando el nuevo tipo Bson en vez de array, no MongoId, no MongoDate, etcétera...). Asegúrese de testear su código antes de actualizar a PHP 7 y/o Phalcon 3+
     </p>
 </div>
 
