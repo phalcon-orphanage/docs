@@ -55,25 +55,25 @@
               <a href="#adapters-backend-file">Opciones de archivos backend</a>
             </li>
             <li>
-              <a href="#adapters-backend-libmemcached">Libmemcached Backend Options</a>
+              <a href="#adapters-backend-libmemcached">Opciones de back-end para Libmemcached</a>
             </li>
             <li>
-              <a href="#adapters-backend-memcache">Memcache Backend Options</a>
+              <a href="#adapters-backend-memcache">Opciones de back-end para Memcached</a>
             </li>
             <li>
-              <a href="#adapters-backend-apc">APC Backend Options</a>
+              <a href="#adapters-backend-apc">Opciones de back-end para APC</a>
             </li>
             <li>
-              <a href="#adapters-backend-apcu">APCU Backend Options</a>
+              <a href="#adapters-backend-apcu">Opciones de back-end para APCU</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
+              <a href="#adapters-backend-mongo">Opciones de back-end para Mongo</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">XCache Backend Options</a>
+              <a href="#adapters-backend-xcache">Opciones de back-end para XCache</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Redis Backend Options</a>
+              <a href="#adapters-backend-redis">Opciones de back-end para Redis</a>
             </li>
           </ul>
         </li>
@@ -98,7 +98,7 @@ Aunque este componente es muy rápido, su aplicación en los casos que no es nec
 - Utiliza un montón de ayudantes y la salida generada es casi siempre la misma
 - Se accede a datos de la base de datos constantemente y rara vez cambian de estos datos
 
-<h5 class='alert alert-warning'><em>NOTE</em> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. Esto puede hacerse fácilmente, especialmente en el caso de Memcache o Apc, con las herramientas pertinentes que proporcionan los backends.</h5>
+<h5 class='alert alert-warning'><em>Nota</em> Incluso después de implementar el caché, debe comprobar la proporción de aciertos de su caché durante un período de tiempo. Esto puede hacerse fácilmente, especialmente en el caso de Memcache o Apc, con las herramientas pertinentes que proporcionan los backends.</h5>
 
 <a name='caching-behavior'></a>
 
@@ -141,7 +141,7 @@ $cache = new BackFile(
 );
 ```
 
-or using the Factory object as follows:
+o usando el objeto Factory de la siguiente manera:
 
 ```php
 <?php
@@ -166,7 +166,7 @@ $options = [
 $backendCache = BFactory::load($options);
 ```
 
-If the options
+Si las opciones
 
 <a name='output-fragments'></a>
 
@@ -225,7 +225,7 @@ if ($content === null) {
 }
 ```
 
-<h5 class='alert alert-warning'><em>NOTE</em> In the example above, our code remains the same, echoing output to the user as it has been doing before. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations.</h5>
+<h5 class='alert alert-warning'><em>Nota</em> En el ejemplo anterior, nuestro código sigue siendo el mismo, haciéndose eco de salida para el usuario como lo ha venido haciendo antes. Nuestro componente de caché captura transparentemente esa salida y almacena en el archivo de caché (cuando se genera la caché) o envía hacia el usuario previamente compilado de una llamada anterior, evitando así operaciones costosas.</h5>
 
 <a name='arbitrary-data'></a>
 
@@ -237,7 +237,7 @@ Almacenar sólo datos es igualmente importante para su aplicación. El almacenam
 
 ### Ejemplo de archivo de Backend
 
-One of the caching adapters is 'File'. La única área clave para este adaptador es el lugar de donde se almacenarán los archivos de caché. Esto se controla mediante la opción `cacheDir` que *debe* tener una barra invertida al final de la misma.
+Uno de los adaptadores de almacenamiento en caché es 'File'. La única área clave para este adaptador es el lugar de donde se almacenarán los archivos de caché. Esto se controla mediante la opción `cacheDir` que *debe* tener una barra invertida al final de la misma.
 
 ```php
 <?php
@@ -344,7 +344,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning'><em>NOTE</em> Calling <code>save()</code> will return a boolean, indicating success (<code>true</code>) or failure (<code>false</code>). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.</h5>
+<h5 class='alert alert-warning'><em>Nota</em> Llamar a <code>save()</code> regresará un booleano, indicando éxito (<code>true</code>) o fracaso (<code>false</code>). Dependiendo el servidor backend que utilices, necesitaras buscar en los registros pertinentes para identificar fallas.</h5>
 
 <a name='read'></a>
 
@@ -556,17 +556,17 @@ Los adaptadores de backend disponibles para almacenar datos en cache son:
 | `Phalcon\Cache\Backend\Redis`        | Almacena datos en Redis.                                                  | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Almacena datos en XCache.                                                 | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
-<h5 class='alert alert-warning'><em>NOTE</em> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Ahora en Phalcon 3.2.0 puede cambiar su clases <code>*\Apc</code> a <code>*\Apcu</code> y eliminar <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all <code>*\Apc</code> classes.</h5>
+<h5 class='alert alert-warning'><em>Nota</em> En PHP 7 para utilizar las clases de adaptadores base phalcon <code>apc</code> necesitastas instalar los paquetes <code>apcu</code> y <code>apcu_bc</code> desde pecl. Ahora en Phalcon 3.2.0 puede cambiar su clases <code>*\Apc</code> a <code>*\Apcu</code> y eliminar <code>apcu_bc</code>. Tenga en cuenta que en Phalcon 4 seguramente eliminaremos todas las clases <code>*\Apc</code>.</h5>
 
 <a name='adapters-backend-custom'></a>
 
-### Implementing your own Backend adapters
+### Implementar sus propios adaptadores de back-end
 
 Debe implementar la interfaz `Phalcon\Cache\BackendInterface` para crear sus propios adaptadores backend o extender los ya existentes.
 
 <a name='adapters-backend-file'></a>
 
-### File Backend Options
+### Opciones de archivos backend
 
 Este backend almacena contenido cacheado en archivos en el servidor local. Las opciones disponibles para este componente son:
 
@@ -577,7 +577,7 @@ Este backend almacena contenido cacheado en archivos en el servidor local. Las o
 
 <a name='adapters-backend-libmemcached'></a>
 
-### Libmemcached Backend Options
+### Opciones de back-end para Libmemcached
 
 Este backend almacena contenido cacheado en un servidor memcached. Por defecto se utilizan los pools de conexión persistente de memcached. Las opciones disponibles para este backend son:
 
@@ -637,7 +637,7 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-memcache'></a>
 
-### Memcache Backend Options
+### Opciones de back-end para Memcached
 
 Este backend almacena contenido cacheado en un servidor memcached. Las opciones disponibles son:
 
@@ -650,7 +650,7 @@ Este backend almacena contenido cacheado en un servidor memcached. Las opciones 
 
 <a name='adapters-backend-apc'></a>
 
-### APC Backend Options
+### Opciones de back-end para APC
 
 Este backend almacenará contenido cacheado en la memoria caché alternativa de PHP ([APC](http://php.net/apc)). Las opciones disponibles son:
 
@@ -660,7 +660,7 @@ Este backend almacenará contenido cacheado en la memoria caché alternativa de 
 
 <a name='adapters-backend-apcu'></a>
 
-### APCU Backend Options
+### Opciones de back-end para APCU
 
 Este backend almacenará contenido cacheado en la memoria caché alternativa de PHP ([APCU](http://php.net/apcu)). Las opciones disponibles son:
 
@@ -670,7 +670,7 @@ Este backend almacenará contenido cacheado en la memoria caché alternativa de 
 
 <a name='adapters-backend-mongo'></a>
 
-### Mongo Backend Options
+### Opciones de back-end para Mongo
 
 Este backend almacena contenido cacheado en un servidor de MongoDB ([MongoDB](http://mongodb.org/)). Las opciones disponibles son:
 
@@ -683,7 +683,7 @@ Este backend almacena contenido cacheado en un servidor de MongoDB ([MongoDB](ht
 
 <a name='adapters-backend-xcache'></a>
 
-### XCache Backend Options
+### Opciones de back-end para XCache
 
 Este backend almacena contenido cacheado en XCache ([XCache](http://xcache.lighttpd.net/)). Las opciones disponibles son:
 
@@ -693,7 +693,7 @@ Este backend almacena contenido cacheado en XCache ([XCache](http://xcache.light
 
 <a name='adapters-backend-redis'></a>
 
-### Redis Backend Options
+### Opciones de back-end para Redis
 
 Este backend almacena contenido cacheado en un servidor Redis ([Redis](http://redis.io/)). Las opciones disponibles son:
 
