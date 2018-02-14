@@ -31,7 +31,7 @@
     - [Отладка](/[[language]]/[[version]]/debug)
 - Ядро 
     - [API](/[[language]]/[[version]]/api/index)
-    - Application 
+    - [Application] 
         - [Полное](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
         - [CLI](/[[language]]/[[version]]/application-cli)

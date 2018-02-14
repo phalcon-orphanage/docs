@@ -352,14 +352,14 @@ Robots::find(
     ]
 );
 
-// Obtenemos los perfiles generados por el profiler
+// Obtenemos los perfiles generador por el profiler
 $profiles = $di->get('profiler')->getProfiles();
 
 foreach ($profiles as $profile) {
-   echo 'SQL Statement: ', $profile->getSQLStatement(), '\n';
-   echo 'Start Time: ', $profile->getInitialTime(), '\n';
-   echo 'Final Time: ', $profile->getFinalTime(), '\n';
-   echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), '\n';
+   echo 'SQL Statement: ', $profile->getSQLStatement(), "\n";
+   echo 'Start Time: ', $profile->getInitialTime(), "\n";
+   echo 'Final Time: ', $profile->getFinalTime(), "\n";
+   echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), "\n";
 }
 ```
 
