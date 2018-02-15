@@ -1,12 +1,12 @@
-# Abstract class **Phalcon\\Cache\\Backend**
+# Clase Abstracta **Phalcon\\Cache\\Backend**
 
-*implements* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
+*implementa* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-This class implements common functionality for backend adapters. A backend cache adapter may extend this class
+Esta clase implementa las funcionalidades comunes para los adaptadores de cache en back-end. Un adaptador de memoria caché de back-end puede extender esta clase
 
-## Methods
+## Métodos
 
 public **getFrontend** ()
 

@@ -25,7 +25,7 @@ $metaData = new Phalcon\Mvc\Model\Metadata\Memcache(
 
 ```
 
-## Constants
+## Değişmezler
 
 *integer* **MODELS_ATTRIBUTES**
 
@@ -408,7 +408,7 @@ print_r(
 
 public **getColumnMap** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns the column map if any
+Eğer varsa, sütun haritasını döndürür
 
 ```php
 <?php

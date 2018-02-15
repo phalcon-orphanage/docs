@@ -354,7 +354,7 @@ $metaData->setAutomaticUpdateAttributes(
 
 public **setEmptyStringAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *array* $attributes) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Set the attributes that allow empty string values
+Boş dize değerlerine imkan sağlayan öznitelikleri ayarlayın
 
 ```php
 <?php
@@ -370,7 +370,7 @@ $metaData->setEmptyStringAttributes(
 
 public **getEmptyStringAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns attributes allow empty strings
+Boş dizelere imkan veren nitelikleri döndürür
 
 ```php
 <?php
@@ -385,7 +385,7 @@ print_r(
 
 public **getDefaultValues** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns attributes (which have default values) and their default values
+(Varsayılan değerlere sahip olan) öz nitelikler ve bunların varsayılan değerlerini döndürür
 
 ```php
 <?php
@@ -400,7 +400,7 @@ print_r(
 
 public **getColumnMap** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns the column map if any
+Eğer varsa, sütun haritasını döndürür
 
 ```php
 <?php
