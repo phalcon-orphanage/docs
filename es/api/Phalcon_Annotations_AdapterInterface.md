@@ -2,34 +2,34 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapterinterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-This interface must be implemented by adapters in Phalcon\Annotations
+Adaptadores de Phalcon\Annotations debe implementar esta interfaz
 
 ## Métodos
 
 abstract public **setReader** ([Phalcon\Annotations\ReaderInterface](/en/3.2/api/Phalcon_Annotations_ReaderInterface) $reader)
 
-Sets the annotations parser
+Establece el analizador de anotaciones
 
 abstract public **getReader** ()
 
-Returns the annotation reader
+Devuelve el lector de anotaciones
 
 abstract public **get** (*string|object* $className)
 
-Parses or retrieves all the annotations found in a class
+Analiza o recupera todas las anotaciones encontradas en una clase
 
 abstract public **getMethods** (*string* $className)
 
-Returns the annotations found in all the class methods
+Devuelve las anotaciones encontradas en todos los métodos de la clase
 
 abstract public **getMethod** (*string* $className, *string* $methodName)
 
-Returns the annotations found in a specific method
+Devuelve las anotaciones encontradas en un método específico
 
 abstract public **getProperties** (*string* $className)
 
-Returns the annotations found in all the class methods
+Recupera las anotaciones encontradas en todos los métodos de la clase
 
 abstract public **getProperty** (*string* $className, *string* $propertyName)
 
-Returns the annotations found in a specific property
+Devuelve las anotaciones encontradas en un propiedad específica
