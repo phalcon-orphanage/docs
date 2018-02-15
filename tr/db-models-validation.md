@@ -134,13 +134,13 @@ if ($robot->save() === false) {
 
 `Phalcon\Mvc\Model` can generate the following types of validation messages:
 
-| Type                   | Description                                                                                                                        |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `PresenceOf`           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
-| `ConstraintViolation`  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
-| `InvalidValue`         | Generated when a validator failed because of an invalid value                                                                      |
-| `InvalidCreateAttempt` | Produced when a record is attempted to be created but it already exists                                                            |
-| `InvalidUpdateAttempt` | Produced when a record is attempted to be updated but it doesn't exist                                                             |
+| Type                           | Description                                                                                                                        |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `PresenceOf`                   | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
+| `Kısıtlama İhlali`             | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
+| `InvalidValue`                 | Generated when a validator failed because of an invalid value                                                                      |
+| `Geçersiz Oluşturma Girişimi`  | Produced when a record is attempted to be created but it already exists                                                            |
+| `Geçersiz Güncelleme Girişimi` | Produced when a record is attempted to be updated but it doesn't exist                                                             |
 
 The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
