@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Phalcon Developer Tools Installation</a> 
+      <a href="#overview">Установка Phalcon Developer Tools</a> 
       <ul>
         <li>
           <a href="#prerequisites">Требования</a>
@@ -32,7 +32,7 @@
 
 <a name='overview'></a>
 
-# Phalcon Developer Tools Installation
+# Установка Phalcon Developer Tools
 
 These steps will guide you through the process of installing Phalcon Developer Tools for Linux, macOS and Windows.
 
