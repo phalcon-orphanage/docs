@@ -1,12 +1,12 @@
-# Class **Phalcon\\Acl\\Adapter\\Memory**
+# Klase ng **Phalcon\\Acl\\Adaptor\\Memorya**
 
-*extends* abstract class [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+*mga palugitan*klase ng abstract [Phalcon\Acl\Adaptor](/en/3.2/api/Phalcon_Acl_Adapter)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface)
+*mga ipapagawa* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface),[Phalcon\Acl\AdaptorNgInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Pinanggalingan sa Github</a>
 
-Manages ACL lists in memory
+Mga Pangangasiwa sa ACL na mga listahan ng memorya
 
 ```php
 <?php
