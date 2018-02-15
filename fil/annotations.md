@@ -194,45 +194,45 @@ foreach ($annotations as $annotation) {
 
 The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter. Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
 
-`Phalcon\Annotations\Adapter\Memory` was used in the above example. This adapter only caches the annotations while the request is running and for this reason the adapter is more suitable for development. There are other adapters to swap out when the application is in production stage.
+`Phalcon\Annotations\Adapter\Memory` was used in the above example. This adapter only caches the annotations while the request is running and for this reason the adapter is more suitable for development. May mga iba pang mga adapter na maaaring ipalit kapag ang aplikasyon ay nasa production stage na.
 
 <a name='types'></a>
 
-## Types of Annotations
+## Mga Uri ng Anotasyon
 
-Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
+Ang mga anotasyon ay maaaring mayroong mga parameter o wala. Ang parameter ay maaaring isang simpleng literal (mga string, numero, boolean, null), isang array, o naka-hash na lista o ibang anotasyon:
 
 ```php
 <?php
 
 /**
- * Simple Annotation
+ * Simpleng Anotasyon
  *
  * @SomeAnnotation
  */
 
 /**
- * Annotation with parameters
+ * Anotasyon na may mga parameter
  *
  * @SomeAnnotation('hello', 'world', 1, 2, 3, false, true)
  */
 
 /**
- * Annotation with named parameters
+ * Anotasyon na may pinangalanang mga parameter
  *
  * @SomeAnnotation(first='hello', second='world', third=1)
  * @SomeAnnotation(first: 'hello', second: 'world', third: 1)
  */
 
 /**
- * Passing an array
+ * Pagpasa ng array
  *
  * @SomeAnnotation([1, 2, 3, 4])
  * @SomeAnnotation({1, 2, 3, 4})
  */
 
 /**
- * Passing a hash as parameter
+ * Pagpasa ng hash bilang parameter
  *
  * @SomeAnnotation({first=1, second=2, third=3})
  * @SomeAnnotation({'first'=1, 'second'=2, 'third'=3})
@@ -241,7 +241,7 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
  */
 
 /**
- * Nested arrays/hashes
+ * Naka-nest na mga arrays/hashes
  *
  * @SomeAnnotation({'name'='SomeName', 'other'={
  *     'foo1': 'bar1', 'foo2': 'bar2', {1, 2, 3},
@@ -249,7 +249,7 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
  */
 
 /**
- * Nested Annotations
+ * Naka-nest na mga Anotasyon
  *
  * @SomeAnnotation(first=@AnotherAnnotation(1, 2, 3))
  */
@@ -257,15 +257,15 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 <a name='usage'></a>
 
-## Practical Usage
+## Praktikal na Paggamit
 
-Next we will explain some practical examples of annotations in PHP applications:
+Sa sunod ay aming ipapaliwanag ang ilan sa pratikal na mga halimbawa ng mga anotasyon sa PHP na mga aplikasyon:
 
 <a name='usage-cache'></a>
 
-### Cache Enabler with Annotations
+### Cache Enabler na may mga Anotasyon
 
-Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
+Tayo ay magkunwari na nalikha natin ang sumusunod na controller at gusto mong maglikha ng plugin na awtomatikong nagpapatakbo sa cache kung ang huling aksyon na pinatakbo ay nakamarka na maaaring i-cache. Una sa lahat, ating i-rehistro ang plugin sa Dispatcher na serbisyo para maabisuhan kung ang route at napatakbo na:
 
 ```php
 <?php
@@ -276,7 +276,7 @@ use Phalcon\Events\Manager as EventsManager;
 $di['dispatcher'] = function () {
     $eventsManager = new EventsManager();
 
-    // Attach the plugin to 'dispatch' events
+    // I-attach ang plugin sa 'dispatch' na mga events
     $eventsManager->attach(
         'dispatch',
         new CacheEnablerPlugin()
@@ -290,7 +290,7 @@ $di['dispatcher'] = function () {
 };
 ```
 
-`CacheEnablerPlugin` is a plugin that intercepts every action executed in the dispatcher enabling the cache if needed:
+Ang `CacheEnablerPlugin` ay isang plugin na nagsusundo sa bawat aksyon na pinatakbo ng dispatcher na nagpapagana ng cache kung kinakailangan:
 
 ```php
 <?php
@@ -300,13 +300,13 @@ use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\User\Plugin;
 
 /**
- * Enables the cache for a view if the latest
- * executed action has the annotation @Cache
+ * Nagpapagana sa cache para sa isang view kung ang pinakabagong
+ * pinatakbog aksyon ay mayroong anotasyon na @Cache
  */
 class CacheEnablerPlugin extends Plugin
 {
     /**
-     * This event is executed before every route is executed in the dispatcher
+     * Ang event na ito ay pinapatakbo bago pinapatakbo ng dispatcher ang bawat route
      */
     public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
     {
@@ -316,31 +316,31 @@ class CacheEnablerPlugin extends Plugin
             $dispatcher->getActiveMethod()
         );
 
-        // Check if the method has an annotation 'Cache'
+        // Suriin kung ang method ay mayroong anotasyon na 'Cache'
         if ($annotations->has('Cache')) {
             // The method has the annotation 'Cache'
             $annotation = $annotations->get('Cache');
 
-            // Get the lifetime
+            // Kunin ang lifetime
             $lifetime = $annotation->getNamedParameter('lifetime');
 
             $options = [
                 'lifetime' => $lifetime,
             ];
 
-            // Check if there is a user defined cache key
+            // Suriin kung mayroong inilarawan ang gumagamit na cache key
             if ($annotation->hasNamedParameter('key')) {
                 $options['key'] = $annotation->getNamedParameter('key');
             }
 
-            // Enable the cache for the current method
+            // Paganahin ang cache para sa kasalukuyang method
             $this->view->cache($options);
         }
     }
 }
 ```
 
-Now, we can use the annotation in a controller:
+Ngayon, maaari na nating gamitin ang anotasyon sa isang controller:
 
 ```php
 <?php
@@ -355,7 +355,7 @@ class NewsController extends Controller
     }
 
     /**
-     * This is a comment
+     * Ito ay isang komento
      *
      * @Cache(lifetime=86400)
      */
@@ -365,7 +365,7 @@ class NewsController extends Controller
     }
 
     /**
-     * This is a comment
+     * Ito ay isang komento
      *
      * @Cache(key='my-key', lifetime=86400)
      */
@@ -378,9 +378,9 @@ class NewsController extends Controller
 
 <a name='usage-access-management'></a>
 
-### Private/Public areas with Annotations
+### Pribado/Publikong mga bahagi na may mga Anotasyon
 
-You can use annotations to tell the ACL which controllers belong to the administrative areas:
+Maaari kang gumamit ng mga anotasyon para sabihan ang ACL kung aling mga controller ang kabilang sa tagapangasiwang mga bahagi:
 
 ```php
 <?php
@@ -394,12 +394,12 @@ use Phalcon\Mvc\Dispatcher;
 use Phalcon\Acl\Adapter\Memory as AclList;
 
 /**
- * This is the security plugin which controls that users only have access to the modules they're assigned to
+ * Ito ang security plugin na nagkokontrol sa mgg gumamagit na ma-access lang nila ang mga module na naka-assign sa kanila
  */
 class SecurityAnnotationsPlugin extends Plugin
 {
     /**
-     * This action is executed before execute any action in the application
+     * Ang aksyon ay pinapatakbo bago ipatakbo ang kahit anong aksyon sa loob ng aplikasyon
      *
      * @param Event $event
      * @param Dispatcher $dispatcher
@@ -408,21 +408,21 @@ class SecurityAnnotationsPlugin extends Plugin
      */
     public function beforeDispatch(Event $event, Dispatcher $dispatcher)
     {
-        // Possible controller class name
+        // Posibleng pangalan ng controller na class
         $controllerName = $dispatcher->getControllerClass();
 
-        // Possible method name
+        // Posibleng pangalan ng method
         $actionName = $dispatcher->getActiveMethod();
 
-        // Get annotations in the controller class
+        // Kumuha ng mga anotasyon sa controller na class
         $annotations = $this->annotations->get($controllerName);
 
-        // The controller is private?
+        // Ang controller ay pribado?
         if ($annotations->getClassAnnotations()->has('Private')) {
-            // Check if the session variable is active?
+            // Suriin kung ang sesyon na variable ay aktibo?
             if (!$this->session->get('auth')) {
 
-                // The user is no logged redirect to login
+                // Ang gumagamit ay hindi naka-logged redirect para maka-login
                 $dispatcher->forward(
                     [
                         'controller' => 'session',
@@ -434,7 +434,7 @@ class SecurityAnnotationsPlugin extends Plugin
             }
         }
 
-        // Continue normally
+        // Normal na magpatuloy
         return true;
     }
 }
@@ -442,12 +442,12 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## Annotations Adapters
+## Mga Adpator ng mga Anotasyon
 
-This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
+Ang komponent na ito ay gumagamit sa mga adaptor para mag-cache o hindi mag-cache sa mga naka-parse at naprosesong mga anotasyon na nagpapahusay sa performance at nagbibigay ng mga pasilidad para sa development/testing:
 
-| Class                                   | Description                                                                                                                                                                       |
-| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Klase                                | Paglalarawan                                                                                                                                                                      |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Phalcon\Annotations\Adapter\Memory` | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
 | `Phalcon\Annotations\Adapter\Files`  | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
 | `Phalcon\Annotations\Adapter\Apc`    | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                        |

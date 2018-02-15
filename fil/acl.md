@@ -252,18 +252,18 @@ $acl->isAllowed(
 
 <a name='objects'></a>
 
-## Objects as role name and resource name
+## Ang mga objects bilang pangalan ng role at resource
 
-You can pass objects as `roleName` and `resourceName`. Your classes must implement `Phalcon\Acl\RoleAware` for `roleName` and `Phalcon\Acl\ResourceAware` for `resourceName`.
+Maari kang magpasa ng mga objects bilang `roleName` at `resourceName`. Ang iyong mga class ay dapat magpapatupad sa `Phalcon\Acl\RoleAware` para sa `roleName` at ang `Phalcon\Acl\ResourceAware` para sa `resourceName`.
 
-Our `UserRole` class
+Ang ating `UserRole` na class
 
 ```php
 <?php
 
 use Phalcon\Acl\RoleAware;
 
-// Create our class which will be used as roleName
+// Ilikha ang ating class na gagamitin bilang role roleName
 class UserRole implements RoleAware
 {
     protected $id;
@@ -281,7 +281,7 @@ class UserRole implements RoleAware
         return $this->id;
     }
 
-    // Implemented function from RoleAware Interface
+    // Nagawang function mula sa RoleAware na Interface
     public function getRoleName()
     {
         return $this->roleName;
@@ -289,14 +289,14 @@ class UserRole implements RoleAware
 }
 ```
 
-And our `ModelResource` class
+At ang ating `ModelResource` na class
 
 ```php
 <?php
 
 use Phalcon\Acl\ResourceAware;
 
-// Create our class which will be used as resourceName
+// Ilikha ang ating class na gagamitin bilang resourceName
 class ModelResource implements ResourceAware
 {
     protected $id;
@@ -322,7 +322,7 @@ class ModelResource implements ResourceAware
         return $this->userId;
     }
 
-    // Implemented function from ResourceAware Interface
+    // Nagawang function mula sa ResourceAware na Interface
     public function getResourceName()
     {
         return $this->resourceName;
@@ -330,7 +330,7 @@ class ModelResource implements ResourceAware
 }
 ```
 
-Then you can use them in `isAllowed()` method.
+Pagkatapos ay maaari mo nang gamitin ang mga ito sa `isAllowed()` na method.
 
 ```php
 <?php
@@ -338,12 +338,12 @@ Then you can use them in `isAllowed()` method.
 use UserRole;
 use ModelResource;
 
-// Set access level for role into resources
+// Itakda ang access level para sa mga papel ng mga resources
 $acl->allow('Guests', 'Customers', 'search');
 $acl->allow('Guests', 'Customers', 'create');
 $acl->deny('Guests', 'Customers', 'update');
 
-// Create our objects providing roleName and resourceName
+// Ilikha ang ating mga object na nagbibigay ng roleName at resourceName
 
 $customer = new ModelResource(
     1,
@@ -366,7 +366,7 @@ $anotherGuest = new UserRole(
     'Guests'
 );
 
-// Check whether our user objects have access to the operation on model object
+// Nagsusuri kung ang mga user na object ay mayroong access sa operasyon na nasa model object
 
 // Returns false
 $acl->isAllowed(
@@ -375,14 +375,14 @@ $acl->isAllowed(
     'search'
 );
 
-// Returns true
+// Nagbabalik ng true
 $acl->isAllowed(
     $guest,
     $customer,
     'search'
 );
 
-// Returns true
+// Nagbabalik ng true
 $acl->isAllowed(
     $anotherGuest,
     $customer,
@@ -390,7 +390,7 @@ $acl->isAllowed(
 );
 ```
 
-Also you can access those objects in your custom function in `allow()` or `deny()`. They are automatically bind to parameters by type in function.
+Maaari mo ding i-access ang mga object na iyon sa loob ng iyong custom na function sa `allow()` o `deny()`. Sila ay awtomatikong na-bind sa mga parameter sa pamamagitan ng tipo sa function.
 
 ```php
 <?php
@@ -398,7 +398,7 @@ Also you can access those objects in your custom function in `allow()` or `deny(
 use UserRole;
 use ModelResource;
 
-// Set access level for role into resources with custom function
+// Itakda ang access level para sa papel sa mga resources na may mga custom na function
 $acl->allow(
     'Guests',
     'Customers',
@@ -420,7 +420,7 @@ $acl->deny(
     'update'
 );
 
-// Create our objects providing roleName and resourceName
+// Illikha ang ating mga objects na nagbibigay ng roleName at resourceName
 
 $customer = new ModelResource(
     1,
@@ -443,23 +443,23 @@ $anotherGuest = new UserRole(
     'Guests'
 );
 
-// Check whether our user objects have access to the operation on model object
+// Nagsusuri kung ang ating mga user na object ay mayroong access sa mga operasyon na nasa model na object
 
-// Returns false
+// Nagsasauli ng false
 $acl->isAllowed(
     $designer,
     $customer,
     'search'
 );
 
-// Returns true
+// Nagsasauli ng true
 $acl->isAllowed(
     $guest,
     $customer,
     'search'
 );
 
-// Returns false
+// Nagsasauli ng false
 $acl->isAllowed(
     $anotherGuest,
     $customer,
@@ -467,13 +467,13 @@ $acl->isAllowed(
 );
 ```
 
-You can still add any custom parameters to function and pass associative array in `isAllowed()` method. Also order doesn't matter.
+Maaari ka pa ring magdagdag ng kahit anong mga custom na mga parameter sa function at magpasa ng associative na array sa `isAllowed()` na method. Ang pagkasunod-sunod din ay hindi mahalaga.
 
 <a name='roles-inheritance'></a>
 
-## Roles Inheritance
+## Inheritance ng mga Role
 
-You can build complex role structures using the inheritance that `Phalcon\Acl\Role` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the method call, when adding that role in the list.
+Maaari kang bumuo ng komplikadong role na mga istraktura gamit ang inheritance na binibigay ng `Phalcon\Acl\Role`. Ang mga roles ay maaaring magmana mula sa ibang mga role, kaya naman ay nagbibigay ng access sa mga superset o mga subset ng mga resources. Para magamit ang role inheritance, kailangan mong magpasa ng namanang role bilang pangalawang parameter ng pagtawag ng method, habang nagdadagdag sa role na ito sa listahan.
 
 ```php
 <?php
@@ -482,24 +482,24 @@ use Phalcon\Acl\Role;
 
 // ...
 
-// Create some roles
+// Maglikha ng ilang mga role
 
 $roleAdmins = new Role('Administrators', 'Super-User role');
 
 $roleGuests = new Role('Guests');
 
-// Add 'Guests' role to ACL
+// Magdagdag ng 'Guests' na role sa ACL
 $acl->addRole($roleGuests);
 
-// Add 'Administrators' role inheriting from 'Guests' its accesses
+// Magdagdag ng 'Administrators' na role na nagmamana mula sa 'Guests' na ina-access nito
 $acl->addRole($roleAdmins, $roleGuests);
 ```
 
 <a name='serialization'></a>
 
-## Serializing ACL lists
+## Pag-serialize ng ACL na mga listahan
 
-To improve performance `Phalcon\Acl` instances can be serialized and stored in APC, session, text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
+Para mapabuti ang performance ng `Phalcon\Acl`, ang mga instances ay maaaring i-serialize at i-store sa APC na sesyon, mga text file o isang database na table para sila ay maaaring i-load kung gusto mo nang hindi nangangailangan na ilarawan ulit ang buong listahan. Maaari mo itong gawin gaya ng sumusunod:
 
 ```php
 <?php
@@ -508,25 +508,25 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 
 // ...
 
-// Check whether ACL data already exist
+// Suriin kung ang ACL na mga datos ay umiiral na
 if (!is_file('app/security/acl.data')) {
     $acl = new AclList();
 
-    // ... Define roles, resources, access, etc
+    // ... Paglalarawan sa mga role, mga resources, sa access, atbp.
 
-    // Store serialized list into plain file
+    // Pag-store ng mga naka-serialize na listahan sa isang simpleng file
     file_put_contents(
         'app/security/acl.data',
         serialize($acl)
     );
 } else {
-    // Restore ACL object from serialized file
+    // Pag-restore ng ACL na object mula sa isang naka-serialize na file
     $acl = unserialize(
         file_get_contents('app/security/acl.data')
     );
 }
 
-// Use ACL list as needed
+// Gamitin ang ACL na listahan kung kinakailangan
 if ($acl->isAllowed('Guests', 'Customers', 'edit')) {
     echo 'Access granted!';
 } else {
@@ -534,20 +534,20 @@ if ($acl->isAllowed('Guests', 'Customers', 'edit')) {
 }
 ```
 
-It's recommended to use the Memory adapter during development and use one of the other adapters in production.
+Ito ay inirerekomenda na gumamit ng Memory adapter habang nagde-develop at gumagamit ng isa sa ibang mga adaptor sa produksyon.
 
 <a name='events'></a>
 
-## Events
+## Mga Pangyayari
 
-`Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
+Ang `Phalcon\Acl` ay makakapadala ng mga event papunta sa `EventsManager` kung ito ay nandito. Ang mga events ay mai-trigger gamit ang tipo na 'acl'. Ang ilang mga pangyayari na nagsasauli ng boolean na false ay maaaring makapigil sa aktibong operasyon. Ang sumusunod na mga pangyayari ay sinusuportahan:
 
-| Event Name        | Triggered                                               | Can stop operation? |
-| ----------------- | ------------------------------------------------------- |:-------------------:|
-| beforeCheckAccess | Triggered before checking if a role/resource has access |         Yes         |
-| afterCheckAccess  | Triggered after checking if a role/resource has access  |         No          |
+| Pangalan ng Pangyayari | Nai-trigger                                                                 | Maaaring magtigil ng operasyon? |
+| ---------------------- | --------------------------------------------------------------------------- |:-------------------------------:|
+| beforeCheckAccess      | Na-trigger bago magsusuri kung ang isang role/resource ay mayroong access   |               Oo                |
+| afterCheckAccess       | Na-trigger pagkatapos magsusuri kung ang isang role/resource ay may acccess |              Hindi              |
 
-The following example demonstrates how to attach listeners to this component:
+Ang sumusunod na mga halimbawa ay nagpapakita kung paano maglakip ng mga listener sa komponent na ito:
 
 ```php
 <?php
@@ -558,10 +558,10 @@ use Phalcon\Events\Manager as EventsManager;
 
 // ...
 
-// Create an event manager
+// Maglikha ng event manager
 $eventsManager = new EventsManager();
 
-// Attach a listener for type 'acl'
+// Paglakip ng listener para sa tipong 'acl'
 $eventsManager->attach(
     'acl:beforeCheckAccess',
     function (Event $event, $acl) {
@@ -575,15 +575,15 @@ $eventsManager->attach(
 
 $acl = new AclList();
 
-// Setup the $acl
+// I-setup ang $acl
 // ...
 
-// Bind the eventsManager to the ACL component
+// Nag-bind sa eventsManager sa ACL komponent
 $acl->setEventsManager($eventsManager);
 ```
 
 <a name='custom-adapters'></a>
 
-## Implementing your own adapters
+## Pagsasagawa ng iyong sariling mga adaptor
 
-The `Phalcon\Acl\AdapterInterface` interface must be implemented in order to create your own ACL adapters or extend the existing ones.
+Ang `Phalcon\Acl\AdapterInterface` na interface ay dapat maisagawa para malikha ang iyong sariling ACL na mga adaptor o mag-extend sa mga umiiral na.
