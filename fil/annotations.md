@@ -446,8 +446,8 @@ class SecurityAnnotationsPlugin extends Plugin
 
 Ang komponent na ito ay gumagamit sa mga adaptor para mag-cache o hindi mag-cache sa mga naka-parse at naprosesong mga anotasyon na nagpapahusay sa performance at nagbibigay ng mga pasilidad para sa development/testing:
 
-| Klase                                   | Paglalarawan                                                                                                                                                                      |
-| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Klase                                | Paglalarawan                                                                                                                                                                      |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Phalcon\Annotations\Adapter\Memory` | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
 | `Phalcon\Annotations\Adapter\Files`  | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
 | `Phalcon\Annotations\Adapter\Apc`    | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                        |
