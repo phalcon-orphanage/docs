@@ -55,7 +55,7 @@ $options = [
 
 <a name='native-arrays'></a>
 ## Native na mga Array
-Ang unang halimbawa ay nagpapakita kung paano papalitan ang native na mga array sa `Phalcon\Config` na mga object. This option offers the best performance since no files are read during this request.
+Ang unang halimbawa ay nagpapakita kung paano papalitan ang native na mga array sa `Phalcon\Config` na mga object. Ang opsyon na ito ay nag-aalay ng pinakamaayos na pagsasagawa dahil walang mga file na nabasa sa panahon ng kahilingang ito.
 
 ```php
 <?php
