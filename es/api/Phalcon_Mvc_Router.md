@@ -4,7 +4,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/router.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Phalcon\\Mvc\\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request
+Phalcon\\Mvc\\Router es el router de marco estándar. Enrutamiento es el proceso de tomar un punto final URI (la parte del URI que viene después de la URL base) y descomponiéndolo en parámetros para determinar qué módulo, controlador y la acción de ese controlador debería recibir la solicitud
 
 ```php
 <?php
@@ -61,7 +61,7 @@ Returns the internal event manager
 
 public **getRewriteUri** ()
 
-Get rewrite info. This info is read from $_GET["_url"]. This returns '/' if the rewrite information cannot be read
+Obtener información de reescritura Esta información se lee de $_GET["_url"]. Esto devuelve '/' si la información de reescritura no se puede leer
 
 public **setUriSource** (*mixed* $uriSource)
 
@@ -98,7 +98,7 @@ Sets the default action name
 
 public **setDefaults** (*array* $defaults)
 
-Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route
+Establece una matriz de rutas predeterminadas. Si a una ruta le falta un camino, el router usará lo definido aquí Este método no debe usarse para establecer una ruta 404
 
 ```php
 <?php
@@ -192,7 +192,7 @@ Mounts a group of routes in the router
 
 public **notFound** (*mixed* $paths)
 
-Set a group of paths to be returned when none of the defined routes are matched
+Establezca un grupo de rutas que se devolverán cuando ninguna de las rutas definidas coincidan
 
 public **clear** ()
 
@@ -224,7 +224,7 @@ Returns the route that matches the handled URI
 
 public **getMatches** ()
 
-Returns the sub expressions in the regular expression matched
+Devuelve las expresiones secundarias en la expresión regular combinada
 
 public **wasMatched** ()
 
@@ -244,4 +244,4 @@ Returns a route object by its name
 
 public **isExactControllerName** ()
 
-Returns whether controller name should not be mangled
+Devuelve si el nombre del controlador no debe ser roto
