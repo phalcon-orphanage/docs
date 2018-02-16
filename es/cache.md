@@ -62,25 +62,25 @@
               <a href="#adapters-backend-file">Opciones de archivos backend</a>
             </li>
             <li>
-              <a href="#adapters-backend-libmemcached">Libmemcached Backend Options</a>
+              <a href="#adapters-backend-libmemcached">Opciones de back-end para Libmemcached</a>
             </li>
             <li>
-              <a href="#adapters-backend-memcache">Memcache Backend Options</a>
+              <a href="#adapters-backend-memcache">Opciones de back-end para Memcached</a>
             </li>
             <li>
-              <a href="#adapters-backend-apc">APC Backend Options</a>
+              <a href="#adapters-backend-apc">Opciones de back-end para APC</a>
             </li>
             <li>
-              <a href="#adapters-backend-apcu">APCU Backend Options</a>
+              <a href="#adapters-backend-apcu">Opciones de back-end para APCU</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
+              <a href="#adapters-backend-mongo">Opciones de back-end para Mongo</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">XCache Backend Options</a>
+              <a href="#adapters-backend-xcache">Opciones de back-end para XCache</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Redis Backend Options</a>
+              <a href="#adapters-backend-redis">Opciones de back-end para Redis</a>
             </li>
           </ul>
         </li>
@@ -152,7 +152,7 @@ $cache = new BackFile(
 );
 ```
 
-or using the Factory object as follows:
+o usando el objeto Factory de la siguiente manera:
 
 ```php
 <?php
@@ -236,7 +236,7 @@ if ($content === null) {
 
 <div class='alert alert-warning'>
     <p>
-        <strong>Nota</strong> En el ejemplo anterior, nuestro código sigue siendo el mismo, haciéndose eco de salida para el usuario como lo ha venido haciendo antes. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations.
+        <strong>Nota</strong> En el ejemplo anterior, nuestro código sigue siendo el mismo, haciéndose eco de salida para el usuario como lo ha venido haciendo antes. Nuestro componente de caché captura transparentemente esa salida y almacena en el archivo de caché (cuando se genera la caché) o envía hacia el usuario previamente compilado de una llamada anterior, evitando así operaciones costosas.
     </p>
 </div>
 
@@ -359,7 +359,7 @@ foreach ($robots as $robot) {
 
 <div class='alert alert-warning'>
     <p>
-        <strong>Nota</strong> Llamar a <code>save()</code> regresará un booleano, indicando éxito (<code>true</code>) o fracaso (<code>false</code>). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.
+        <strong>Nota</strong> Llamar a <code>save()</code> regresará un booleano, indicando éxito (<code>true</code>) o fracaso (<code>false</code>). Dependiendo el servidor backend que utilices, necesitaras buscar en los registros pertinentes para identificar fallas.
     </p>
 </div>
 
@@ -618,7 +618,7 @@ Este backend almacena contenido cacheado en archivos en el servidor local. Las o
 
 <a name='adapters-backend-libmemcached'></a>
 
-### Libmemcached Backend Options
+### Opciones de back-end para Libmemcached
 
 Este backend almacena contenido cacheado en un servidor memcached. Por defecto se utilizan los pools de conexión persistente de memcached. Las opciones disponibles para este backend son:
 
@@ -678,7 +678,7 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-memcache'></a>
 
-### Memcache Backend Options
+### Opciones de back-end para Memcached
 
 Este backend almacena contenido cacheado en un servidor memcached. Las opciones disponibles son:
 
@@ -691,7 +691,7 @@ Este backend almacena contenido cacheado en un servidor memcached. Las opciones 
 
 <a name='adapters-backend-apc'></a>
 
-### APC Backend Options
+### Opciones de back-end para APC
 
 Este backend almacenará contenido cacheado en la memoria caché alternativa de PHP ([APC](http://php.net/apc)). Las opciones disponibles son:
 
@@ -701,7 +701,7 @@ Este backend almacenará contenido cacheado en la memoria caché alternativa de 
 
 <a name='adapters-backend-apcu'></a>
 
-### APCU Backend Options
+### Opciones de back-end para APCU
 
 Este backend almacenará contenido cacheado en la memoria caché alternativa de PHP ([APCU](http://php.net/apcu)). Las opciones disponibles son:
 
@@ -711,7 +711,7 @@ Este backend almacenará contenido cacheado en la memoria caché alternativa de 
 
 <a name='adapters-backend-mongo'></a>
 
-### Mongo Backend Options
+### Opciones de back-end para Mongo
 
 Este backend almacena contenido cacheado en un servidor de MongoDB ([MongoDB](http://mongodb.org/)). Las opciones disponibles son:
 
@@ -724,7 +724,7 @@ Este backend almacena contenido cacheado en un servidor de MongoDB ([MongoDB](ht
 
 <a name='adapters-backend-xcache'></a>
 
-### XCache Backend Options
+### Opciones de back-end para XCache
 
 Este backend almacena contenido cacheado en XCache ([XCache](http://xcache.lighttpd.net/)). Las opciones disponibles son:
 
@@ -734,7 +734,7 @@ Este backend almacena contenido cacheado en XCache ([XCache](http://xcache.light
 
 <a name='adapters-backend-redis'></a>
 
-### Redis Backend Options
+### Opciones de back-end para Redis
 
 Este backend almacena contenido cacheado en un servidor Redis ([Redis](http://redis.io/)). Las opciones disponibles son:
 
