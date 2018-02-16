@@ -177,7 +177,7 @@ Sets the type of PHQL statement to be executed
 
 public **getType** ()
 
-Gets the type of PHQL statement executed
+Gerçekleştirilmiş olan PHQL ifadesinin türünü alır
 
 public **setBindParams** (*array* $bindParams, [*mixed* $merge])
 
@@ -189,7 +189,7 @@ Returns default bind params
 
 public **setBindTypes** (*array* $bindTypes, [*mixed* $merge])
 
-Set default bind parameters
+Varsayılan bağlama parametrelerini ayarla
 
 public **setSharedLock** ([*mixed* $sharedLock])
 
