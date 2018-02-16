@@ -1,15 +1,15 @@
-# Klase ng **Phalcon\\Acl\\Adaptor\\Memorya**
+# Class **Phalcon\\Acl\\Adapter\\Memory**
 
-*mga palugitan*klase ng abstract [Phalcon\Acl\Adaptor](/en/3.2/api/Phalcon_Acl_Adapter)
+*extends* abstract class [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
 *mga ipapagawa* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface),[Phalcon\Acl\AdaptorNgInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Pinanggalingan sa Github</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Pinagkukunan sa Github</a>
 
 Mga Pangangasiwa sa ACL na mga listahan ng memorya
 
 ```php
-<?php
+<<?php
 
 $acl = new \Phalcon\Acl\Adapter\Memory();
 
@@ -71,15 +71,15 @@ foreach ($privateResources as $resource => $actions) {
 
 ```
 
-## Methods
+## Mga Paraan
 
-public **__construct** ()
+pampublikong **__construct** ()
 
-Phalcon\\Acl\\Adapter\\Memory constructor
+Phalcon\\Acl\\Adaptor\\Memorya
 
-public **addRole** (*RoleInterface* | *string* $role, [*array* | *string* $accessInherits])
+pampublikong **addRole** (*RoleInterface* | *string*$role, [*array* | * string* $accessInherits])
 
-Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example:
+Magdagdag ng isang tungkulin sa listahan ng ACL. Ang pangalawang parametro ay pinapayagan na mag-inherit ng pag-access sa datos mula sa ibang mayroong tungkulin Halimbawa:
 
 ```php
 <?php
@@ -93,21 +93,21 @@ $acl->addRole("administrator", "consultant");
 
 ```
 
-public **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
+pampublikong **addInherit** (*mixed*$roleName, *mixed* $roleToInherit)
 
-Do a role inherit from another existing role
+Gawin ang isang tungkulin na mag-inherit mula sa ibang mayroong tungkulin
 
-public **isRole** (*mixed* $roleName)
+pampublikong **isRole** (*mixed*$roleName)
 
-Check whether role exist in the roles list
+Siyasatin kung ang tungkulin ay mayroon sa listahan ng mga tungkulin
 
-public **isResource** (*mixed* $resourceName)
+pampublikong **isResource** (*mixed*$resourceName)
 
-Check whether resource exist in the resources list
+Siyasatin kung ang pinagkukunan ay mayroon sa listahan ng mga pinagkukunan
 
-public **addResource** ([Phalcon\Acl\Resource](/en/3.2/api/Phalcon_Acl_Resource) | *string* $resourceValue, *array* | *string* $accessList)
+pampublikong **addResource** ([Phalcon\Acl\Resource](/en/3.2/api/Phalcon_Acl_Resource) | *string* $resourceValue, *array* | *string* $accessList)
 
-Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example:
+Magdagdag ng isang pinagkukunan sa listahan ACL Ang pag-access ng mga pangalan ay maaaring maging isang partikular na aksyon, sa pamamagitan ng halimbawa hanapin, pagbabago, pagbubura, at iba pa o isang listahan ng mga ito Halimbawa:
 
 ```php
 <?php
@@ -139,21 +139,21 @@ $acl->addResource(
 
 ```
 
-public **addResourceAccess** (*mixed* $resourceName, *array* | *string* $accessList)
+pampublikong **addResourceAccess** (*mixed*$resourceName, *array* | *string* $accessList)
 
-Adds access to resources
+Magdagdag ng pag-access sa mga pinagkukunan
 
-public **dropResourceAccess** (*mixed* $resourceName, *array* | *string* $accessList)
+pampublikong **dropresourceAccess** (*mixed* $resourceName, *array* | *string*$accessList)
 
-Removes an access from a resource
+Mga nag-aalis ng isang pa-access mula sa isang pinagkukunan
 
-protected **_allowOrDeny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, *mixed* $action, [*mixed* $func])
+protektado ng **_allowOrDeny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, *mixed* $action, [*mixed* $func])
 
-Checks if a role has access to a resource
+Siyasatin kung ang isang tungkulin ay mayroong access sa isang pinagkukunan
 
-public **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
+pampublikong **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-Allow access to a role on a resource You can use '*' as wildcard Example:
+Payagan na ma-access ang isang tungkulin sa isang pinagkukunan Maaari mong gamitin ang '*' bilang wildcard Halimbawa:
 
 ```php
 <?php
@@ -172,9 +172,9 @@ $acl->allow("*", "*", "browse");
 
 ```
 
-public **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
+pampublikong **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-Deny access to a role on a resource You can use '*' as wildcard Example:
+Tanggihan ang pag-access sa isang tungkulin ng isang pinagkukunan maaari mong gamitin ang '*' bilang wildcard Halimbawa:
 
 ```php
 <?php
@@ -193,61 +193,61 @@ $acl->deny("*", "*", "browse");
 
 ```
 
-public **isAllowed** (*RoleInterface* | *RoleAware* | *string* $roleName, *ResourceInterface* | *ResourceAware* | *string* $resourceName, *mixed* $access, [*array* $parameters])
+pampublikong **isAllowed** (*RoleInterface* | *RoleAware* | *string* $roleName, *ResouceInterface* | *ResourcesAware* | *string*$resourceName, *mixed* $access, [*array*$parameters])
 
-Check whether a role is allowed to access an action from a resource
+Siyasatin kung ang isang role ay pinayagan na i-access ang isang aksyon mula sa isang pinagkukunan
 
 ```php
 <?php
 
-//Does andres have access to the customers resource to create?
+//May access ba Si Andress sa mga mamimili sa pinagkukunan upang makagawa?
 $acl->isAllowed("andres", "Products", "create");
 
-//Do guests have access to any resource to edit?
+// Ang mga panauhin ba ay may acces sa kahit anung pinagkukunan upang mag-edit?
 $acl->isAllowed("guests", "*", "edit");
 
 ```
 
-public **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
+pampublikong **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
 
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY) for no arguments provided in isAllowed action if there exists func for accessKey
+Itakda ang pag-access sa libel ng default (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY) para sa paglaan ng walang mga argumento sa isAllowed na aksyon kung mayroong func para sa accessKey
 
-public **getNoArgumentsDefaultAction** ()
+pampublikong **getNoArgumentsDefaultAction** ()
 
-Returns the default ACL access level for no arguments provided in isAllowed action if there exists func for accessKey
+Bumabalik sa default ang ACL access na libel para sa mga walang argumento na nilaan sa isAllowed na aksyon kung mayroong func para sa accessKey
 
-public **getRoles** ()
+pampublikong **getRoles** ()
 
-Return an array with every role registered in the list
+Ibalik ang isang array sa bawat tungkulin ng rehistrado sa listahan
 
-public **getResources** ()
+pampublikong **getResources** ()
 
-Return an array with every resource registered in the list
+Ibalik ang isang array sa bawat pinagkukunan na rehistrado sa listhan
 
-public **getActiveRole** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+pampublikong **getActiveRole** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Role which the list is checking if it's allowed to certain resource/access
+Ang tungkulin kung saan ang listahan ay nagsisiyasat kung ito ay pinayagan sa tiyak na pinagkukunan/access
 
-public **getActiveResource** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+pampublikong **getActiveResource** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Resource which the list is checking if some role can access it
+Ang pinagkukunan kung saan ang listahan ay sinisiyasat kung may tungkulin na maaaring mag-access dito
 
-public **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+pampublikong **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Active access which the list is checking if some role can access it
+Ang aktibong pag-access kung saan ang listahan ay sinisiyasat kung may tungkulin na maaring mag-access dito
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+pampublikong **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface)$eventsManager) inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Sets the events manager
+Mga pag-takda ng mga pangyayari ng tagapangasiwa
 
-public **getEventsManager** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+pampublikong **getEventsManager** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Returns the internal event manager
+Ibabalik ang panloob na tagapangasiwa sa pangyayari
 
-public **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+pampublikong **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
+Itakda ang default access na libel (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
 
-public **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+pampublikong **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Returns the default ACL access level
+Ibabalik ang default sa ACL access na libel
