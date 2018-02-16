@@ -93,7 +93,7 @@ Ahora, cada vez que se ejecuta una consulta, la instrucción SQL se repetirá. E
 
 <div class="alert alert-warning">
     <p>
-        You must explicitly set the Events Manager to a component using the <code>setEventsManager()</code> method in order for that component to trigger events. Usted puede crear una nueva instancia del gestor de eventos para cada componente o puede establecer el mismo gestor de eventos para varios componentes, ya que la convención de nombres evitará conflictos.
+        Debe configurar explícitamente el administrador de eventos de un componente mediante el método <code>setEventsManager()</code> de tal forma que el componente disparare los eventos. Usted puede crear una nueva instancia del gestor de eventos para cada componente o puede establecer el mismo gestor de eventos para varios componentes, ya que la convención de nombres evitará conflictos.
     </p>
 </div>
 
