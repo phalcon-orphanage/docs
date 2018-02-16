@@ -1,19 +1,19 @@
-# Class **Phalcon\\Config\\Adapter\\Grouped**
+# Klase ng **Phalcon\\Konfig\\Adapter\\Nakapangkat**
 
-*extends* class [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+*ipinagpatuloy ang* klase ng [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-*implements* [Countable](http://php.net/manual/en/class.countable.php), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
+*nagpapatupad ng* [Nabibilang](http://php.net/manual/en/class.countable.php), [ArrayAkses](http://php.net/manual/en/class.arrayaccess.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/config/adapter/grouped.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/config/adapter/grouped.zep" class="btn btn-default btn-sm">Pinagkukunan sa GitHub</a>
 
-Reads multiple files (or arrays) and merges them all together.
+Nakakabasa ng maramihang mga file (o mga array) at pinagsama ang mga ito nang sama-sama.
 
 ```php
 <?php
 
-use Phalcon\Config\Adapter\Grouped;
+gamitin ang Phalcon\Konfig\Adapter\Nakapangkat;
 
-$config = new Grouped(
+$config = bagong Nakapangkat(
     [
         "path/to/config.php",
         "path/to/config.dist.php",
@@ -25,9 +25,9 @@ $config = new Grouped(
 ```php
 <?php
 
-use Phalcon\Config\Adapter\Grouped;
+gamitin ang Phalcon\Konfig\Adapter\Nakapangkat;
 
-$config = new Grouped(
+$config = bagong Nakapangkat(
     [
         "path/to/config.json",
         "path/to/config.dist.json",
@@ -40,9 +40,9 @@ $config = new Grouped(
 ```php
 <?php
 
-use Phalcon\Config\Adapter\Grouped;
+gamitin ang Phalcon\Konfig\Adapter\Nakapangkat;
 
-$config = new Grouped(
+$config = bagong Nakapangkat(
     [
         [
             "filePath" => "path/to/config.php",
@@ -55,26 +55,26 @@ $config = new Grouped(
         [
             "adapter"  => "array",
             "config"   => [
-                "property" => "value",
+                "property" => "halaga",
         ],
     ],
 );
 
 ```
 
-## Constants
+## Mga konstant
 
-*string* **DEFAULT_PATH_DELIMITER**
+*string* **DEFAULT_DAANAN_DELIMITER**
 
-## Methods
+## Mga Paraan
 
-public **__construct** (*array* $arrayConfig, [*mixed* $defaultAdapter])
+pampublikong **__konstrak** (*array* $arrayConfig, [*mixed* $defaultAdapter])
 
-Phalcon\\Config\\Adapter\\Grouped constructor
+Phalcon\\Konfig\\Adapter\\Nakapangkat na konstruktor
 
-public **offsetExists** (*mixed* $index) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+pampublikong **offsetExists** (*mixed* $index) na nakuha mula sa [Phalcon\Konfig](/en/3.2/api/Phalcon_Config)
 
-Allows to check whether an attribute is defined using the array-syntax
+Pinapayagan para suriin kung ang isang katangian ay tinukoy gamit ang array-sintaks
 
 ```php
 <?php
@@ -85,31 +85,31 @@ var_dump(
 
 ```
 
-public **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter]) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+pampublikong **daanan** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter]) na nakuha mula sa [Phalcon\Konfig](/en/3.2/api/Phalcon_Config)
 
-Returns a value from current config using a dot separated path.
-
-```php
-<?php
-
-echo $config->path("unknown.path", "default", ".");
-
-```
-
-public **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
-
-Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead
+Ibinabalik ang isang halaga mula sa kasalukuyang konfig gamit ang isang daanan na pinaghiwalay na tuldok.
 
 ```php
 <?php
 
-echo $config->get("controllersDir", "../app/controllers/");
+eko $config->path("unknown.path", "default", ".");
 
 ```
 
-public **offsetGet** (*mixed* $index) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+pampublikong **get** (*mixed* $index, [*mixed* $defaultValue]) na nakuha mula sa [Phalcon\Konfig](/en/3.2/api/Phalcon_Config)
 
-Gets an attribute using the array-syntax
+Nakakakuha ng isang katangian mula sa kompigurasyon, kung ang attribute ay hindi tinukoy na ibinabalik na null Kung ang halaga ay eksaktong null o hindi natukoy ang default na halaga ay gagamitin sa halip
+
+```php
+<?php
+
+eko $config->get("controllersDir", "../app/controllers/");
+
+```
+
+pampublikong **offsetGet** (*mixed* $index) na nakuha mula sa [Phalcon\Konfig](/en/3.2/api/Phalcon_Config)
+
+Kumukuha ng isang katangian na gumagamit ng array-sintaks
 
 ```php
 <?php
@@ -120,22 +120,22 @@ print_r(
 
 ```
 
-public **offsetSet** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+pampublikong **offsetSet** (*mixed* $index, *mixed* $value) na nakuha mula sa [Phalcon\Konfig](/en/3.2/api/Phalcon_Config)
 
-Sets an attribute using the array-syntax
+Nagtatakda ng isang katangian na gumagamit ng array-sintaks
 
 ```php
 <?php
 
 $config["database"] = [
-    "type" => "Sqlite",
+    "uri" => "Sqlite",
 ];
 
 ```
 
-public **offsetUnset** (*mixed* $index) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+pampublikong **offsetUnset** (*mixed* $index) na nakuha mula sa [Phalcon\Konfig](/en/3.2/api/Phalcon_Config)
 
-Unsets an attribute using the array-syntax
+Hindi tinatakda ang isang katangian na gumagamit ng array-sintaks
 
 ```php
 <?php
@@ -144,17 +144,17 @@ unset($config["database"]);
 
 ```
 
-public **merge** ([Phalcon\Config](/en/3.2/api/Phalcon_Config) $config) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+pampublikong **pinagsama** ([Phalcon\Config](/en/3.2/api/Phalcon_Config) $config) na nakuha mula sa [Phalcon\Konfig](/en/3.2/api/Phalcon_Config)
 
-Merges a configuration into the current one
+Pinagsama ang pagsasaayos sa kasalukuyan
 
 ```php
 <?php
 
-$appConfig = new \Phalcon\Config(
+$appConfig = bagong \Phalcon\Konfig(
     [
         "database" => [
-            "host" => "localhost",
+            "host" => "lokalhost",
         ],
     ]
 );
@@ -163,9 +163,9 @@ $globalConfig->merge($appConfig);
 
 ```
 
-public **toArray** () inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+pampublikong **toArray** () na nakuha mula sa [Phalcon\Konfig](/en/3.2/api/Phalcon_Config)
 
-Converts recursively the object to an array
+Kino-konvert ng paulit-ulit ang object sa isang array
 
 ```php
 <?php
@@ -176,38 +176,38 @@ print_r(
 
 ```
 
-public **count** () inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+pampublikong **bilang** () na nakuha mula sa [Phalcon\Konfig](/en/3.2/api/Phalcon_Config)
 
-Returns the count of properties set in the config
-
-```php
-<?php
-
-print count($config);
-
-```
-
-or
+Ibinabalik ang bilang ng mga katangian na itinakda sa konfig
 
 ```php
 <?php
 
-print $config->count();
+i-print ang bilang($config);
 
 ```
 
-public static **__set_state** (*array* $data) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+o
 
-Restores the state of a Phalcon\\Config object
+```php
+<?php
 
-public static **setPathDelimiter** ([*mixed* $delimiter]) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+i-print ang $config->count();
 
-Sets the default path delimiter
+```
 
-public static **getPathDelimiter** () inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+pampublikong statik **__set_state** (*array* $data) na nakuha mula sa [Phalcon\Konfig](/en/3.2/api/Phalcon_Config)
 
-Gets the default path delimiter
+Ibinabalik ang estado ng isang Phalcon\\Konfig na bagay
 
-final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance]) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+pampublikong statik **setPathDelimiter** ([*mixed* $delimiter]) na nakuha mula sa [Phalcon\Konfig](/en/3.2/api/Phalcon_Config)
 
-Helper method for merge configs (forwarding nested config instance)
+Itinatakda ang default na delimiter ng pagdaraanan
+
+pampublikong statik **getPathDelimiter** () na nakuha mula sa [Phalcon\Konfig](/en/3.2/api/Phalcon_Config)
+
+Nagkukuha ng default na delimiter ng pagdaraanan
+
+huling protektado *na pinagsamang Konfig konfig* **_merge** (*Config* $config, [*mixed* $instance]) na nakuha mula sa [Phalcon\Konfig](/en/3.2/api/Phalcon_Config)
+
+Pamamaraan ng Helper para sa mga konfig na pagsasamahin (pagpapasa ng nested konfig na instansiya)
