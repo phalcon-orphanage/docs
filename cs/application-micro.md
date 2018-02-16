@@ -1128,7 +1128,7 @@ $app->get(
 
 ## Application Response
 
-You can also use the `Phalcon\Http\Response` object to return responses to the caller. The Response object has a lot of useful methods that make returning respones much easier.
+You can also use the `Phalcon\Http\Response` object to return responses to the caller. The Response object has a lot of useful methods that make returning responses much easier.
 
 ```php
 $app->get(

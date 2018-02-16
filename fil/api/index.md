@@ -11,7 +11,7 @@
 - [Phalcon\Acl\Role](/en/3.2/api/Phalcon_Acl_Role)
 - [Phalcon\Acl\RoleAware](/en/3.2/api/Phalcon_Acl_RoleAware)
 - [Phalcon\Acl\RoleInterface](/en/3.2/api/Phalcon_Acl_RoleInterface)
-- [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+- [Phalcon\Anotasyon\Adaptor](/en/3.2/api/Phalcon_Annotations_Adapter)
 - [Phalcon\Annotations\AdapterInterface](/en/3.2/api/Phalcon_Annotations_AdapterInterface)
 - [Phalcon\Annotations\Adapter\Apc](/en/3.2/api/Phalcon_Annotations_Adapter_Apc)
 - [Phalcon\Annotations\Adapter\Apcu](/en/3.2/api/Phalcon_Annotations_Adapter_Apcu)
