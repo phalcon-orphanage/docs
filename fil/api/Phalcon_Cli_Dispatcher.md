@@ -1,21 +1,21 @@
-# Class **Phalcon\\Cli\\Dispatcher**
+# Klase ng **Phalcon\\Cli\\Dispatcher**
 
-*extends* abstract class [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+*pinapalawak ang* klase ng abstrak [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](/en/3.2/api/Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherInterface](/en/3.2/api/Phalcon_Cli_DispatcherInterface)
+*nagpapatupad ng* [Phalcon\MgaEvent\MgaEventNgAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionNgAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherNgInterface](/en/3.2/api/Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherNgInterface](/en/3.2/api/Phalcon_Cli_DispatcherInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/dispatcher.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/dispatcher.zep" class="btn btn-default btn-sm">Mula sa GitHub</a>
 
-Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.
+Ang Dispatching ay ang proseso ng pagkuha ng mga argumentong command-line, nagkukuha ng pangalan ng modyul, pangalan ng gawain, pangalan ng aksyon, at ang opsyonal na mga parameter nakapaloob nito, at pagkatapos magbibigay ng halimbawa ng gawain at pagtawag ng isang aksyon nito.
 
 ```php
 <?php
 
-use Phalcon\Di;
-use Phalcon\Cli\Dispatcher;
+gamitin ang Phalcon\Di;
+gamitin ang Phalcon\Cli\Dispatcher;
 
-$di = new Di();
-$dispatcher = new Dispatcher();
+$di = bagong Di();
+$dispatcher = bagong Dispatcher();
 $dispatcher->setDi($di);
 
 $dispatcher->setTaskName("posts");
@@ -26,179 +26,179 @@ $handle = $dispatcher->dispatch();
 
 ```
 
-## Constants
+## Mga Konstant
 
-*integer* **EXCEPTION_NO_DI**
+*kabuuan* **EKSEPSYON_WALANG_DI**
 
-*integer* **EXCEPTION_CYCLIC_ROUTING**
+*kabuuan* **EKSEPSYON_CYCLIC_ROUTING**
 
-*integer* **EXCEPTION_HANDLER_NOT_FOUND**
+*kabuuan* **EKSEPSYON_ANG_HANDLER_AY_HINDI_NAKITA**
 
-*integer* **EXCEPTION_INVALID_HANDLER**
+*kabuuan* **EKSEPSYON_HINDI_BALIDO_ANG_HANDLER**
 
-*integer* **EXCEPTION_INVALID_PARAMS**
+*kabuuan* **EKSEPSYON_HINDI_BALIDO_ANG_MGA_PARAM**
 
-*integer* **EXCEPTION_ACTION_NOT_FOUND**
+*kabuuan* **EKSEPSYON_ANG_AKSYON_AY_HINDI_NAKITA**
 
-## Methods
+## Mga Paraan
 
-public **setTaskSuffix** (*mixed* $taskSuffix)
+pampublikong **setTaskSuffix** (*mixed* $taskSuffix)
 
-Sets the default task suffix
+Itinatakda ang default na gawain ng suffix
 
-public **setDefaultTask** (*mixed* $taskName)
+pampublikong **setDefaultTask** (*mixed* $taskName)
 
-Sets the default task name
+Itinatakda ang pangalan ng default na gawain
 
-public **setTaskName** (*mixed* $taskName)
+pampublikong **setTaskName** (*mixed* $taskName)
 
-Sets the task name to be dispatched
+Itinatakda ang pangalan ng gawain para ma-dispatch
 
-public **getTaskName** ()
+pampublikong **getTaskName** ()
 
-Gets last dispatched task name
+Kinukuha ang huling pangalan ng na-dispatch na gawain
 
-protected **_throwDispatchException** (*mixed* $message, [*mixed* $exceptionCode])
+protektadong **_throwDispatchException** (*mixed* $message, [*mixed* $exceptionCode])
 
-Throws an internal exception
+Magtapon ng isang panloob na eksepsyon
 
-protected **_handleException** ([Exception](http://php.net/manual/en/class.exception.php) $exception)
+protektadong **_handleException** ([Exception](http://php.net/manual/en/class.exception.php) $exception)
 
-Handles a user exception
+Pinapamahalaan ang isang user na eksepsyon
 
-public **getLastTask** ()
+pampublikong **getLastTask** ()
 
-Returns the latest dispatched controller
+Ibinabalik ang pinakabagong na-dispatch na kontroler
 
-public **getActiveTask** ()
+pampublikong **getActiveTask** ()
 
-Returns the active task in the dispatcher
+Ibinabalik ang aktibo na gawain para sa dispatcher
 
-public **setOptions** (*array* $options)
+pampublikong **setOptions** (*array* $options)
 
-Set the options to be dispatched
+Nagtatakda ng mga opsyon para ma-dispatch
 
-public **getOptions** ()
+pampublikong **getOptions** ()
 
-Get dispatched options
+Kunin ang mga opsyon na na-dispatch
 
-public **getOption** (*mixed* $option, [*string* | *array* $filters], [*mixed* $defaultValue])
+pampublikong **getOption** (*mixed* $option, [*string* | *array* $filters], [*mixed* $defaultValue])
 
-Gets an option by its name or numeric index
+Makakakuha ng isang opsyon sa pamamagitan ng pangalan at numeric na indeks nito
 
-public **hasOption** (*mixed* $option)
+pampublikong **hasOption** (*mixed* $option)
 
-Check if an option exists
+I-tsek kung mayroong pagpipilian
 
-public **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
+pampublikong **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
 
-Calls the action method.
+Tinatawag ang paraan ng aksyon.
 
-public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Sets the dependency injector
+Itinatakda ang injector ng dependensya
 
-public **getDI** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **getDI** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Returns the internal dependency injector
+Ibinabalik ang injector ng panloob na dependency
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager) na na-inherit mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Sets the events manager
+Itinatakda ang pagpapamahala ng mga pangyayari
 
-public **getEventsManager** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **getEventsManager** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Returns the internal event manager
+Ibinabalik ang pagpapamahala ng panloob na pangyayari
 
-public **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **setActionSuffix** (*mixed* $actionSuffix) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Sets the default action suffix
+Itinatakda ang suffix ng default na aksyon
 
-public **getActionSuffix** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **getActionSuffix** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Gets the default action suffix
+Kinukuha ang suffix ng default na aksyon
 
-public **setModuleName** (*mixed* $moduleName) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **setModuleName** (*mixed* $moduleName) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Sets the module where the controller is (only informative)
+Itinatakda ang modyul kung saan ang kontroler ay (impormatibo lamang)
 
-public **getModuleName** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **getModuleName** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Gets the module where the controller class is
+Kinukuha ang modyul kung saan ang klase ng kontroler ay
 
-public **setNamespaceName** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **setNamespaceName** (*mixed* $namespaceName) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Sets the namespace where the controller class is
+Nagtatakda ng mga namespace kung saan ang klase ng kontroler ay
 
-public **getNamespaceName** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **getNamespaceName** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Gets a namespace to be prepended to the current handler name
+Nagkukuha ng isang namespace para ma-prepend sa kasalukuyang pangalan ng handler
 
-public **setDefaultNamespace** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **setDefaultNamespace** (*mixed* $namespaceName) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Sets the default namespace
+Nagtatakda ng default na namespace
 
-public **getDefaultNamespace** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **getDefaultNamespace** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Returns the default namespace
+Ibinabalik ang namespace ng default
 
-public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **setDefaultAction** (*mixed* $actionName) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Sets the default action name
+Itinatakda ang pangalan ng default na aksyon
 
-public **setActionName** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **setActionName** (*mixed* $actionName) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Sets the action name to be dispatched
+Itinatakda ang pangalan ng aksyon para ma-dispatch
 
-public **getActionName** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **getActionName** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Gets the latest dispatched action name
+Nagkukuha ng pinakabagong na-dispatch na pangalan ng aksyon
 
-public **setParams** (*array* $params) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **setParams** (*array* $params) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Sets action params to be dispatched
+Nagtatakda ng mga param ng aksyon para ma-dispatch
 
-public **getParams** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **getParams** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Gets action params
+Nagkukuha ng mga param ng aksyon
 
-public **setParam** (*mixed* $param, *mixed* $value) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **setParam** (*mixed* $param, *mixed* $value) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Set a param by its name or numeric index
+Nagtatakda ng isang param sa pamamagitan ng pangalan at numeric na indeks nito
 
-public *mixed* **getParam** (*mixed* $param, [*string* | *array* $filters], [*mixed* $defaultValue]) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong *mixed* **getParam** (*mixed* $param, [*string* | *array* $filters], [*mixed* $defaultValue]) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Gets a param by its name or numeric index
+Nagkukuha ng isang param sa pamamagitan ng pangalan at numeric na indeks nito
 
-public *boolean* **hasParam** (*mixed* $param) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong *boolean* **hasParam** (*mixed* $param) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Check if a param exists
+I-tsek kung mayroong isang param
 
-public **getActiveMethod** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **getActiveMethod** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Returns the current method to be/executed in the dispatcher
+Ibinabalik ang kasalukuyang pamamaraan para maisagawa sa dispatcher
 
-public **isFinished** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **isFinished** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
+Nagsusuri kung ang loop ng dispatch ay tapos na o ay mas maraming na kontroler/gawain para i-dispatch
 
-public **setReturnedValue** (*mixed* $value) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **setReturnedValue** (*mixed* $value) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Sets the latest returned value by an action manually
+Nagtatakda ng pinakabagong halagang naisuli sa pamamagitan ng manu-manong aksyon
 
-public *mixed* **getReturnedValue** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong *mixed* **getReturnedValue** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Returns value returned by the latest dispatched action
+Ibinabalik ang halaga ng na-return sa pamamagitan ng pinakabagong na-disptach na aksyon
 
-public **setModelBinding** (*mixed* $value, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **setModelBinding** (*mixed* $value, [*mixed* $cache]) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Enable/Disable model binding during dispatch
+Paganahin/Huwag paganhin ang binding ng modelo habang nagdi-disptach
 
 ```php
 <?php
 
 $di->set('dispatcher', function() {
-    $dispatcher = new Dispatcher();
+    $dispatcher = bagong Dispatcher();
 
     $dispatcher->setModelBinding(true, 'cache');
     return $dispatcher;
@@ -206,15 +206,15 @@ $di->set('dispatcher', function() {
 
 ```
 
-public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](/en/3.2/api/Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](/en/3.2/api/Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache]) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Enable model binding during dispatch
+Paganahin ang umiiral na modelo habang nagdi-dispatch
 
 ```php
 <?php
 
 $di->set('dispatcher', function() {
-    $dispatcher = new Dispatcher();
+    $dispatcher = bagong Dispatcher();
 
     $dispatcher->setModelBinder(new Binder(), 'cache');
     return $dispatcher;
@@ -222,21 +222,21 @@ $di->set('dispatcher', function() {
 
 ```
 
-public **getModelBinder** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **getModelBinder** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Gets model binder
+Nagkukuha ng modelo ng binder
 
-public *object* **dispatch** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
-
-Dispatches a handle action taking into account the routing parameters
-
-protected *object* **_dispatch** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong *bagay na* **dispatch** () na minana mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
 Dispatches a handle action taking into account the routing parameters
 
-public **forward** (*array* $forward) inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+protektadong *bagay na* **_dispatch** () na minana mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Forwards the execution flow to another controller/action.
+Nagpapadala ng isang handle na aksyon na isinasaalang-alang sa account ang mga parameter ng pagra-rout
+
+pampublikong **forward** (*array* $forward) na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+
+Pagpapadala ng daloy ng eksekusyon sa iabng kontroler/aksyon.
 
 ```php
 <?php
@@ -250,17 +250,17 @@ $this->dispatcher->forward(
 
 ```
 
-public **wasForwarded** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **wasForwarded** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Check if the current executed action was forwarded by another one
+Suriin kung ang kasalukuyang nagawang aksyon ay ipinadala sa pamamagitan ng isa
 
-public **getHandlerClass** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **getHandlerClass** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Possible class name that will be located to dispatch the request
+Posibleng pangalan ng klase na ilalagay para ipadala ang kahilingan
 
-public **getBoundModels** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+pampublikong **getBoundModels** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Returns bound models from binder instance
+Ibinabalik ang mga takdang modelo mula sa instansiya ng binder
 
 ```php
 <?php
@@ -275,6 +275,6 @@ class UserController extends Controller
 
 ```
 
-protected **_resolveEmptyProperties** () inherited from [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
+protektadong **_resolveEmptyProperties** () na nakuha mula sa [Phalcon\Dispatcher](/en/3.2/api/Phalcon_Dispatcher)
 
-Set empty properties to their defaults (where defaults are available)
+Nagtatakda ng mga walang laman na katangian para sa kanilang mga default (kung saan ang mga default ay magagamit)
