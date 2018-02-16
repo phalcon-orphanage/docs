@@ -1,87 +1,87 @@
-# Class **Phalcon\\Assets\\Resource\\Css**
+# Klase ng **Phalcon\\MgaAsset\\Pinagkukunan\\Css**
 
-*extends* class [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+*pinapalawak ang* klase ng [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-*implements* [Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface)
+*nagpapatupad ng* [Phalcon\MgaAsset\PinagkukunangInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resource/css.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resource/css.zep" class="btn btn-default btn-sm">Mula sa GitHub</a>
 
-Represents CSS resources
+Kumakatawan sa mga pinagkukunan ng CSS
 
-## Methods
+## Mga Paraan
 
-public **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+pampublikong **__construct** (*string*$path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
-public **getType** () inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **getType** () na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-public **getPath** () inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **getPath** () na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-public **getLocal** () inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **getLocal** () na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-public **getFilter** () inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **getFilter** () na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-public **getAttributes** () inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **getAttributes** () na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-public **getSourcePath** () inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
-
-...
-
-public **getTargetPath** () inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **getSourcePath** () na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
 ...
 
-public **getTargetUri** () inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **getTargetPath** () na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
 ...
 
-public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **getTargetUri** () na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets the resource's type
+...
 
-public **setPath** (*mixed* $path) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **setType** (*mixed* $type) na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets the resource's path
+Nagse-set ng mga uri ng pinagkukunan
 
-public **setLocal** (*mixed* $local) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **setPath** (*mixed* $path) na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets if the resource is local or external
+Nagse-set ng kalalagyan ng pinagkukunan
 
-public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **setLocal** (*mixed* $local) na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets if the resource must be filtered or not
+Nagtatakda kung ang pinagkukunan ay lokal o eksternal
 
-public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **setFilter** (*mixed* $filter) na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets extra HTML attributes
+Nagtatakda kung dapat na ang pinagkukunan ay ma-filter o hindi
 
-public **setTargetUri** (*mixed* $targetUri) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **setAttributes** (*array* $attributes) na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets a target uri for the generated HTML
+Nagtatakda ng ekstrang mga attribute ng HTML
 
-public **setSourcePath** (*mixed* $sourcePath) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **setTargetUri** (*mixed* $targetUri) na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets the resource's source path
+Nagtatakda ng isang uri ng target para sa nagawang HTML
 
-public **setTargetPath** (*mixed* $targetPath) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **setSourcePath** (*mixed* $sourcePath) na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets the resource's target path
+Nagtatakda ng kalalagyan ng pinanggaiingang resource
 
-public **getContent** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **setTargetPath** (*mixed* $targetPath) na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+Nagtatakda ng kalalagyan ng target ng resource
 
-public **getRealTargetUri** () inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **getContent** ([*mixed* $basePath]) na nakuha mula sa [ Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-Returns the real target uri for the generated HTML
+Ibinabalik ang kontent ng resource bilang isang string Opsyonal na isang kalalagyan ng base na kung saan ang resource ay nakalagay ay maaaring ma-set
 
-public **getRealSourcePath** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **getRealTargetUri** () na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-Returns the complete location where the resource is located
+Ibinabalik ang tunay na traget uri para sa nalikhang HTML
 
-public **getRealTargetPath** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **getRealSourcePath** ([*mixed* $basePath]) na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-Returns the complete location where the resource must be written
+Ibinabalik ang kompletong lokasyon kung saan ang resource nakalagay
 
-public **getResourceKey** () inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
+pampublikong **getRealTargetPath** ([*mixed* $basePath]) na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
 
-Gets the resource's key.
+Ibinabalik ang kompletong lokasyon kung saan ang dapat nakasulat ang resource
+
+pampublikong **getResourceKey** () na nakuha mula sa [Phalcon\MgaAsset\Pinagkukunan](/en/3.2/api/Phalcon_Assets_Resource)
+
+Kinukuha ang key ng resource.
