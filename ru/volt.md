@@ -267,15 +267,15 @@ $di->set(
 
 The following options are available in Volt:
 
-| Option              | Description                                                                                                                  | Default |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false` |
-| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
-| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
-| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
-| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
-| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
-| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
+| Option              | Description                                                                                                                       | Default |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `autoescape`        | Позволяет autoescape во всем мире в HTML                                                                                          | `false` |
+| `compileAlways`     | Сообщите Volt, если шаблоны должны быть скомпилированы в каждом запросе или только при их изменении                               | `false` |
+| `compiledExtension` | Дополнительное расширение добавляется к скомпилированному файлу PHP                                                               | `.php`  |
+| `compiledPath`      | Доступный для записи путь, по которому будут размещены скомпилированные шаблоны PHP                                               | `./`    |
+| `compiledSeparator` | Volt заменяет разделители каталогов / и \ by этот разделитель предназначен для создания одного файла в скомпилированном каталоге | `%%`    |
+| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                               | `null`  |
+| `stat`              | Должен ли Phalcon проверять, существуют ли различия между файлом шаблона и его скомпилированным путем                             | `true`  |
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
 
@@ -422,12 +422,12 @@ The following is the list of available built-in filters in Volt:
 | `lower`            | Change the case of a string to lowercase                                                                                           |
 | `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](http://php.net/manual/en/function.nl2br.php) |
 | `right_trim`       | Applies the [rtrim](http://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                  |
-| `sort`             | Sorts an array using the PHP function [asort](http://php.net/manual/en/function.asort.php)                                         |
-| `stripslashes`     | Applies the [stripslashes](http://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes  |
-| `striptags`        | Applies the [striptags](http://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags             |
-| `trim`             | Applies the [trim](http://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                    |
-| `upper`            | Change the case of a string to uppercase                                                                                           |
-| `url_encode`       | Applies the [urlencode](http://php.net/manual/en/function.urlencode.php) PHP function to the value                                 |
+| `род`              | Сортировка массива с помощью функции PHP [asort](http://php.net/manual/en/function.asort.php)                                      |
+| `stripslashes`     | Применяет [stripslashes](http://php.net/manual/en/function.stripslashes.php) функция PHP значение. Удаление экранированных кавычек |
+| `striptags`        | Применяет [striptags](http://php.net/manual/en/function.striptags.php) функция PHP значение. Удаление тегов HTML                   |
+| `отделка`          | Применяет функцию [trim](http://php.net/manual/en/function.trim.php) PHP к значению. Удаление лишних пробелов                      |
+| `верхний`          | Измените регистр строки на верхний регистр                                                                                         |
+| `url_encode`       | Применяет [функция urlencode](http://php.net/manual/en/function.urlencode.php) функция PHP значение                                |
 
 Examples:
 
@@ -724,7 +724,7 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unex
 
 ### Loop Context
 
-A special variable is available inside `for` loops providing you information about
+Специальная переменная доступна внутри `для` петли предоставления информации о
 
 | Variable         | Description                                                   |
 | ---------------- | ------------------------------------------------------------- |
@@ -736,7 +736,7 @@ A special variable is available inside `for` loops providing you information abo
 | `loop.last`      | True if in the last iteration.                                |
 | `loop.length`    | The number of items to iterate                                |
 
-Example:
+Образец:
 
 ```twig
 {% for robot in robots %}
@@ -763,7 +763,7 @@ Example:
 
 ## Assignments
 
-Variables may be changed in a template using the instruction 'set':
+Переменные могут быть изменены в шаблоне с помощью инструкции 'set':
 
 ```twig
 {% set fruits = ['Apple', 'Banana', 'Orange'] %}
@@ -771,13 +771,13 @@ Variables may be changed in a template using the instruction 'set':
 {% set name = robot.name %}
 ```
 
-Multiple assignments are allowed in the same instruction:
+Несколько назначений разрешены в одной инструкции:
 
 ```twig
 {% set fruits = ['Apple', 'Banana', 'Orange'], name = robot.name, active = true %}
 ```
 
-Additionally, you can use compound assignment operators:
+Кроме того, можно использовать составные операторы присваивания:
 
 ```twig
 {% set price += 100.00 %}
@@ -785,7 +785,7 @@ Additionally, you can use compound assignment operators:
 {% set age *= 5 %}
 ```
 
-The following operators are available:
+Доступны следующие операторы:
 
 | Operator | Description               |
 | -------- | ------------------------- |
@@ -799,13 +799,13 @@ The following operators are available:
 
 ## Expressions
 
-Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `{{` and `}}` delimiters:
+Вольт обеспечивает основной набор поддержки выражения, включая литералы и общие операторы. Выражение можно вычислить и распечатать с помощью ` {</0 > и <code>}}` разделители:
 
 ```twig
 {{ (1 + 1) * 2 }}
 ```
 
-If an expression needs to be evaluated without be printed the `do` statement can be used:
+Если выражение должно оцениваться не будут напечатаны в `а` инструкция может быть использована:
 
 ```twig
 {% do (1 + 1) * 2 %}
@@ -815,7 +815,7 @@ If an expression needs to be evaluated without be printed the `do` statement can
 
 ### Literals
 
-The following literals are supported:
+Поддерживаются следующие литералы:
 
 | Filter               | Description                                                        |
 | -------------------- | ------------------------------------------------------------------ |
@@ -830,7 +830,7 @@ The following literals are supported:
 
 ### Arrays
 
-Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list of values in square brackets:
+Если вы используете PHP 5.3 или >= 5.4, вы можете создать массивы, заключив список значений в квадратные скобки:
 
 ```twig
 {# Simple array #}
@@ -846,7 +846,7 @@ Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list
 {{ ['first': 1, 'second': 4/2, 'third': '3'] }}
 ```
 
-Curly braces also can be used to define arrays or hashes:
+Фигурные скобки также можно использовать для определения массивов или хэшей:
 
 ```twig
 {% set myArray = {'Apple', 'Banana', 'Orange'} %}
@@ -857,7 +857,7 @@ Curly braces also can be used to define arrays or hashes:
 
 ### Math
 
-You may make calculations in templates using the following operators:
+Вычисления в шаблонах можно выполнять с помощью следующих операторов:
 
 | Operator | Description                                                             |
 |:--------:| ----------------------------------------------------------------------- |
@@ -871,7 +871,7 @@ You may make calculations in templates using the following operators:
 
 ### Comparisons
 
-The following comparison operators are available:
+Доступны следующие операторы сравнения:
 
 |  Operator  | Description                                                       |
 |:----------:| ----------------------------------------------------------------- |
@@ -889,7 +889,7 @@ The following comparison operators are available:
 
 ### Logic
 
-Logic operators are useful in the `if` expression evaluation to combine multiple tests:
+Логические операторы являются полезными в `if` оценка выражений для объединения нескольких тестов:
 
 |  Operator  | Description                                                       |
 |:----------:| ----------------------------------------------------------------- |
@@ -902,7 +902,7 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 
 ### Other Operators
 
-Additional operators seen the following operators are available:
+Дополнительные операторы доступны следующие операторы:
 
 | Operator          | Description                                                                     |
 | ----------------- | ------------------------------------------------------------------------------- |
@@ -916,7 +916,7 @@ Additional operators seen the following operators are available:
 | `++`              | Increments a value                                                              |
 | `--`              | Decrements a value                                                              |
 
-The following example shows how to use operators:
+В следующем примере показано использование операторов:
 
 ```twig
 {% set robots = ['Voltron', 'Astro Boy', 'Terminator', 'C3PO'] %}
@@ -932,7 +932,7 @@ The following example shows how to use operators:
 
 ## Tests
 
-Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
+Тесты можно использовать для проверки, если переменная имеет допустимое ожидаемое значение. Оператор `is`. используется для выполнения тестов:
 
 ```twig
 {% set robots = ['1': 'Voltron', '2': 'Astro Boy', '3': 'Terminator', '4': 'C3PO'] %}
@@ -944,7 +944,7 @@ Tests can be used to test if a variable has a valid expected value. The operator
 {% endfor %}
 ```
 
-The following built-in tests are available in Volt:
+Следующие встроенные тесты доступны в Вольте:
 
 | Test          | Description                                                          |
 | ------------- | -------------------------------------------------------------------- |
@@ -959,7 +959,7 @@ The following built-in tests are available in Volt:
 | `scalar`      | Checks if value is scalar (not an array or object)                   |
 | `type`        | Checks if a value is of the specified type                           |
 
-More examples:
+Еще много примеров:
 
 ```twig
 {% if robot is defined %}
@@ -1010,7 +1010,7 @@ More examples:
 
 ## Macros
 
-Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
+Макросы могут использоваться для повторного использования логики в шаблоне, они действуют как функции PHP, могут получать параметры и возвращать значения:
 
 ```twig
 {# Macro 'display a list of links to related topics' #}
@@ -1035,7 +1035,7 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
 {{ related_bar(links) }}
 ```
 
-When calling macros, parameters can be passed by name:
+При вызове макросов параметры могут передаваться по имени:
 
 ```twig
 {%- macro error_messages(message, field, type) %}
@@ -1050,7 +1050,7 @@ When calling macros, parameters can be passed by name:
 {{ error_messages('type': 'Invalid', 'message': 'The name is invalid', 'field': 'name') }}
 ```
 
-Macros can return values:
+Макросы могут возвращать значения:
 
 ```twig
 {%- macro my_input(name, class) %}
@@ -1061,7 +1061,7 @@ Macros can return values:
 {{ '<p>' ~ my_input('name', 'input-text') ~ '</p>' }}
 ```
 
-And receive optional parameters:
+И получите опционные параметры:
 
 ```twig
 {%- macro my_input(name, class='input-text') %}
@@ -1095,7 +1095,7 @@ Volt is highly integrated with `Phalcon\Tag`, so it's easy to use the helpers pr
 {{ end_form() }}
 ```
 
-The following PHP is generated:
+Генерируется следующий PHP:
 
 ```php
 <?php echo Phalcon\Tag::javascriptInclude('js/jquery.js') ?>
@@ -1113,7 +1113,7 @@ The following PHP is generated:
 {{ end_form() }}
 ```
 
-To call a `Phalcon\Tag` helper, you only need to call an uncamelized version of the method:
+Для вызова `Phalcon\Tag` помощника, вам нужно только позвонить версии uncamelized метода:
 
 | Method                            | Volt function        |
 | --------------------------------- | -------------------- |
@@ -1143,7 +1143,7 @@ To call a `Phalcon\Tag` helper, you only need to call an uncamelized version of 
 
 ## Functions
 
-The following built-in functions are available in Volt:
+Следующие встроенные функции доступны в Вольте:
 
 | Name          | Description                                                 |
 | ------------- | ----------------------------------------------------------- |
@@ -1162,7 +1162,7 @@ The following built-in functions are available in Volt:
 
 ## View Integration
 
-Also, Volt is integrated with `Phalcon\Mvc\View`, you can play with the view hierarchy and include partials as well:
+Также, Вольт интегрирован с `Phalcon\Mvc\View`, Вы также можете играть с иерархией представлений и включать частичные элементы:
 
 ```twig
 {{ content() }}
@@ -1174,7 +1174,7 @@ Also, Volt is integrated with `Phalcon\Mvc\View`, you can play with the view hie
 <div id='footer'>{{ partial('partials/footer', ['links': links]) }}</div>
 ```
 
-A partial is included in runtime, Volt also provides `include`, this compiles the content of a view and returns its contents as part of the view which was included:
+Частичное включается во время выполнения, Вольт также обеспечивает `include`, это компилирует содержимое представления и возвращает его содержимое как часть представления, которое было включено:
 
 ```twig
 {# Simple include of a partial #}
@@ -1192,7 +1192,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 ### Include
 
-`include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
+`include` имеет особое поведение, которое поможет нам улучшить производительность немного при использовании Вольт, если вы укажите расширение файла, когда в том числе и он существует, когда шаблон компилируется, Вольт может встроить содержимое шаблона в родительском шаблоне, где он включен. Шаблоны не встроены, если`include` переменные, переданные с `with`:
 
 ```twig
 {# The contents of 'partials/footer.volt' is compiled and inlined #}
@@ -1205,7 +1205,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 ### Partial vs Include
 
-Keep the following points in mind when choosing to use the `partial` function or `include`:
+Держите следующие моменты в виду при выборе, чтобы использовать `partial` функция или `include`:
 
 | Type       | Description                                                                                                |
 | ---------- | ---------------------------------------------------------------------------------------------------------- |
@@ -1220,7 +1220,7 @@ Keep the following points in mind when choosing to use the `partial` function or
 
 ## Template Inheritance
 
-With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
+С помощью наследования шаблонов вы можете создавать базовые шаблоны, которые могут быть расширены другими шаблонами, позволяющими повторно использовать код. Базовый шаблон определить *blocks* чем может быть переопределено дочерним шаблоном. Давайте представим, что у нас есть следующий базовый шаблон:
 
 ```twig
 {# templates/base.volt #}
@@ -1244,7 +1244,7 @@ With template inheritance you can create base templates that can be extended by 
 </html>
 ```
 
-From other template we could extend the base template replacing the blocks:
+От другого шаблона мы смогли расширить низкопробный шаблон заменяя блоки:
 
 ```twig
 {% extends 'templates/base.volt' %}
@@ -1287,7 +1287,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
 
 ### Multiple Inheritance
 
-Extended templates can extend other templates. The following example illustrates this:
+Расширенные шаблоны могут расширять другие шаблоны. Следующий пример иллюстрирует это:
 
 ```twig
 {# main.volt #}
@@ -1356,11 +1356,11 @@ Rendering `index.volt` produces:
 </html>
 ```
 
-Note the call to the function `super()`. With that function it's possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
+Note the call to the function `super()`. С помощью этой функции можно отобразить содержимое родительского блока. Как частичными, путь значение `extends` является относительным путем под видом текущего каталога (т. е. `app/views/`).
 
 <div class="alert alert-warning">
     <p>
-        By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option <code>'compileAlways' => true</code>. Thus, the templates are compiled always taking into account changes in the parent templates.
+        By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option <code>'compileAlways' => true</code>. Таким образом, шаблоны компилируются всегда с учетом изменений в родительских шаблонах.
     </p>
 </div>
 
@@ -1368,7 +1368,7 @@ Note the call to the function `super()`. With that function it's possible to ren
 
 ## Autoescape mode
 
-You can enable auto-escaping of all variables printed in a block using the autoescape mode:
+Можно включить автоматическое экранирование всех переменных, напечатанных в блоке, в режиме автоэскейпа:
 
 ```twig
 Manually escaped: {{ robot.name|e }}
@@ -1385,15 +1385,15 @@ Manually escaped: {{ robot.name|e }}
 
 ## Extending Volt
 
-Unlike other template engines, Volt itself is not required to run the compiled templates. Once the templates are compiled there is no dependence on Volt. With performance independence in mind, Volt only acts as a compiler for PHP templates.
+В отличие от других шаблонов двигателей, сам Volt не требуется для запуска скомпилированных шаблонов. После того, как шаблоны составляются нет зависимости от Вольта. Имея в виду независимость от производительности, Volt действует только как компилятор для шаблонов PHP.
 
-The Volt compiler allow you to extend it adding more functions, tests or filters to the existing ones.
+Компилятор Volt позволяет расширить его, добавляя больше функций, тестов или фильтров к существующим.
 
 <a name='extending-functions'></a>
 
 ### Functions
 
-Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using two strategies, returning a simple string or using an anonymous function. Always is required that the chosen strategy returns a valid PHP string expression:
+Функции действуют как обычные функции PHP, в качестве имени функции требуется допустимое имя строки. Функции можно добавлять с помощью двух стратегий, возвращая простую строку или используя анонимную функцию. Всегда требуется, чтобы выбранная стратегия возвращала допустимое строковое выражение PHP:
 
 ```php
 <?php
@@ -1408,7 +1408,7 @@ $compiler = $volt->getCompiler();
 $compiler->addFunction('shuffle', 'str_shuffle');
 ```
 
-Register the function with an anonymous function. This case we use `$resolvedArgs` to pass the arguments exactly as were passed in the arguments:
+Зарегистрируйте функцию с анонимной функцией. Этот случай мы используем `$resolvedArgs` передавать аргументы точно так, как они были переданы в аргументах:
 
 ```php
 <?php
@@ -1421,7 +1421,7 @@ $compiler->addFunction(
 );
 ```
 
-Treat the arguments independently and unresolved:
+Рассматривайте аргументы независимо и неразрешенно:
 
 ```php
 <?php
@@ -1445,7 +1445,7 @@ $compiler->addFunction(
 );
 ```
 
-Generate the code based on some function availability:
+Создание кода на основе доступности некоторых функций:
 
 ```php
 <?php
@@ -1462,7 +1462,7 @@ $compiler->addFunction(
 );
 ```
 
-Built-in functions can be overridden adding a function with its name:
+Встроенные функции можно переопределить, добавив функцию с именем:
 
 ```php
 <?php
@@ -1475,7 +1475,7 @@ $compiler->addFunction('dump', 'print_r');
 
 ### Filters
 
-A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
+Фильтр имеет следующий вид шаблон: leftExpr|название(по желанию-аргументы). Добавление новых фильтров аналогично тому, как показано в функциях:
 
 ```php
 <?php
@@ -1495,7 +1495,7 @@ $compiler->addFilter(
 );
 ```
 
-Built-in filters can be overridden adding a function with its name:
+Встроенные фильтры можно переопределить, добавив функцию с ее именем:
 
 ```php
 <?php
@@ -1508,9 +1508,9 @@ $compiler->addFilter('capitalize', 'lcfirst');
 
 ### Extensions
 
-With extensions the developer has more flexibility to extend the template engine, and override the compilation of a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.
+С расширениями Разработчик имеет больше гибкости, чтобы расширить механизм шаблонов и переопределить компиляцию конкретной инструкции, изменить поведение выражения или оператора, добавить функции/фильтры с лишним.
 
-An extension is a class that implements the events triggered by Volt as a method of itself. For example, the class below allows to use any PHP function in Volt:
+Расширение-это класс, реализующий события, вызванные Volt, как метод сам по себе. Например, класс ниже позволяет использовать любую функцию PHP в Volt:
 
 ```php
 <?php
@@ -1529,7 +1529,7 @@ class PhpFunctionExtension
 }
 ```
 
-The above class implements the method `compileFunction` which is invoked before any attempt to compile a function call in any template. The purpose of the extension is to verify if a function to be compiled is a PHP function allowing to call it from the template. Events in extensions must return valid PHP code, this will be used as result of the compilation instead of the one generated by Volt. If an event doesn't return an string the compilation is done using the default behavior provided by the engine.
+Приведенный выше класс реализует метод `compileFunction` который вызывается перед любой попыткой компиляции вызова функции в любом шаблоне. The purpose of the extension is to verify if a function to be compiled is a PHP function allowing to call it from the template. Events in extensions must return valid PHP code, this will be used as result of the compilation instead of the one generated by Volt. If an event doesn't return an string the compilation is done using the default behavior provided by the engine.
 
 The following compilation events are available to be implemented in extensions:
 
@@ -1590,7 +1590,7 @@ The caching is done by the `Phalcon\Cache` component via the view component. Lea
 
 ## Inject Services into a Template
 
-If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:
+Если для Volt доступен сервисный контейнер (DI), вы можете использовать службы, только обратившись к имени службы в шаблоне:
 
 ```twig
 {# Inject the 'flash' service #}
@@ -1604,7 +1604,7 @@ If a service container (DI) is available for Volt, you can use the services by o
 
 ## Stand-alone component
 
-Using Volt in a stand-alone mode can be demonstrated below:
+Использование Вольта в автономном режиме может быть продемонстрировано ниже:
 
 ```php
 <?php
@@ -1643,8 +1643,8 @@ require $compiler->getCompiledTemplatePath();
 
 ## External Resources
 
-* A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
-* [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)
-* [Our website](https://phalconphp.com) is running using Volt as template engine, [Github](https://github.com/phalcon/website)
-* [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [Github](https://github.com/phalcon/forum)
-* [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [Github](https://github.com/phalcon/vokuro)
+* Пакет для sublime/текст. Сообщ доступен [здесь](https://github.com/phalcon/volt-sublime-textmate)
+* [Album-O-Rama](https://album-o-rama.phalconphp.com) представляет собой образец приложения с использованием Вольт в качестве шаблона двигателя, [Github](https://github.com/phalcon/album-o-rama)
+* [наш сайт](https://phalconphp.com) работает с использованием Вольт в качестве шаблона двигателя, [Github](https://github.com/phalcon/website)
+* [Phosphorum](https://forum.phalconphp.com), форум Phalcon, также использует Volt, [Github](https://github.com/phalcon/forum)
+* [Vökuró](https://vokuro.phalconphp.com), еще один пример приложения, которые используют Вольт, [Github](https://github.com/phalcon/vokuro)
