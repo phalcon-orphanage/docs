@@ -1,37 +1,37 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Pangkalahatang tanaw</a> <ul>
+      <a href="#pangkalahatang tanaw">Pangkalahatang tanaw</a> <ul>
         <li>
-          <a href="#introduction">Pagpapakilala</a>
+          <a href="#pagpapakilala">Pagpapakilala</a>
         </li>
         <li>
-          <a href="#setup">Pagpapagana ng Volt</a>
+          <a href="#pagkakalagay">Pagpapagana ng Volt</a>
         </li>
         <li>
-          <a href="#basic-usage">Pangkaraniwang Paggamit</a>
+          <a href="#pangkaraniwang-paggamit">Pangkaraniwang Paggamit</a>
         </li>
         <li>
-          <a href="#variables">Mga Variable</a>
+          <a href="#mga variable">Mga Variable</a>
         </li>
         <li>
-          <a href="#filters">Mga Sumasala</a>
+          <a href="#mga sumasala">Mga Sumasala</a>
         </li>
         <li>
-          <a href="#comments">Mga Komento</a>
+          <a href="#mga komento">Mga Komento</a>
         </li>
         <li>
-          <a href="#control-structures">Lisatahan ng mga Istrakturang Kinokontrol</a> <ul>
+          <a href="#control-mga istraktura">Lisatahan ng mga Istrakturang Kinokontrol</a> <ul>
             <li>
-              <a href="#control-structures-for">Para</a>
+              <a href="#control-mga istraktura para">Para</a>
             </li>
             <li>
-              <a href="#control-structures-loops">Kontrol ng Loop</a>
+              <a href="#control-mga istraktura-mga loop">Kontrol ng Loop</a>
             </li>
             <li>
-              <a href="#control-structures-loop">Laman ng Loop</a> <ul>
+              <a href="#control-mga istraktura-loop">Laman ng Loop</a> <ul>
                 <li>
-                  <a href="#assignments">Mga Takdang Aralin</a>
+                  <a href="#mga takdang aralin">Mga Takdang Aralin</a>
                 </li>
                 <li>
                   <a href="#expressions">Mga Ekspresyon</a>
@@ -65,52 +65,52 @@
           <a href="#macros">Macros</a>
         </li>
         <li>
-          <a href="#tag-helpers">Using Tag Helpers</a>
+          <a href="#tag-helpers">Paggamit ng mga Tumutulong na Tag</a>
         </li>
         <li>
-          <a href="#functions">Functions</a>
+          <a href="#functions">Mga Gamit</a>
         </li>
         <li>
-          <a href="#view-integrations">View Integration</a> <ul>
+          <a href="#view-integrations">Tingnan ang Pagsasama</a> <ul>
             <li>
-              <a href="#view-integration-include">Include</a>
+              <a href="#view-integration-include">Isama</a>
             </li>
             <li>
-              <a href="#view-integration-partial-vs-include">Partial vs Include</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#template-inheritance">Template Inheritance</a> <ul>
-            <li>
-              <a href="#template-inheritance-multiple">Multiple Inheritance</a>
+              <a href="#view-integration-partial-vs-include">Kalahati kumpara sa Isama</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#autoescape">Autoescape mode</a>
-        </li>
-        <li>
-          <a href="#extending">Extending Volt</a> <ul>
+          <a href="#template-inheritance">Pagmana ng Template</a> <ul>
             <li>
-              <a href="#extending-functions">Functions</a>
-            </li>
-            <li>
-              <a href="#extending-filters">Filters</a>
-            </li>
-            <li>
-              <a href="#extending-extensions">Extensions</a>
+              <a href="#template-inheritance-multiple">Maramihang Pagmana</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#caching-view-fragments">Caching view fragments</a>
+          <a href="#autoescape">Awtomatikong Pagalabas na mode</a>
         </li>
         <li>
-          <a href="#services-in-templates">Inject Services into a Template</a>
+          <a href="#extending">Pagpapalawig ng Volt</a> <ul>
+            <li>
+              <a href="#extending-functions">Mga Gamit</a>
+            </li>
+            <li>
+              <a href="#extending-filters">Mga Sumasala</a>
+            </li>
+            <li>
+              <a href="#extending-extensions">Mga extensyon</a>
+            </li>
+          </ul>
         </li>
         <li>
-          <a href="#stand-alone">Stand-alone component</a>
+          <a href="#caching-view-fragments">Pag-cache ng tinignan na mga fragment</a>
+        </li>
+        <li>
+          <a href="#services-in-templates">Pagturok ng mga Serbisyo sa isang Template</a>
+        </li>
+        <li>
+          <a href="#stand-alone">Mag-isang bahagi</a>
         </li>
       </ul>
     </li>
@@ -119,7 +119,7 @@
 
 <a name='overview'></a>
 
-# Volt: Template Engine
+# Volt: Makina ng Template
 
 Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
 
@@ -1274,18 +1274,18 @@ Pagrender `index.volt` na gumagawa:
 </html>
 ```
 
-Tandaan ang pagtawag ng gamit `super()`. Kasama ang gamit pwedeng ma render ang mga laman ng magulang na bloke. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
+Tandaan ang pagtawag ng gamit `super()`. Kasama ang gamit pwedeng ma render ang mga laman ng magulang na bloke. Bilang mga bahagyan, ang landas ay nakaset sa `extends`na isang kamag-anak sa ilalim ng kasalukuyang direktorya (i.e. `app/views/`).
 
-<h5 class='alert alert-warning'>By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option <code>'compileAlways' =&gt; true</code>. Thus, the templates are compiled always taking into account changes in the parent templates. </h5>
+<h5 class='alert alert-warning'>Sa default, at sa rason ng pagganap, ang volt ay sumusuri lang sa mga pagbabago sa mga batang mga template upang malaman kung kailan muling iponin upang mapantay muli ang PHP, kaya nirerekomenda na simulan ang Volt na may opsyon <code>'compileAlways' = &gt; true</code>. Kaya naman, ang mga template ay palaging naiipon na isinalang-alang sa pagbabago sa magulang na mga template. </h5>
 
 <a name='autoescape'></a>
 
 ## Autoescape mode
 
-You can enable auto-escaping of all variables printed in a block using the autoescape mode:
+Pwede mong paganahin ang awtomatikong-paglabas ng lahat ng mga variable na naprint na sa isang bloke gamit ang awtomatikong paglabad na mode:
 
 ```twig
-Manually escaped: {{ robot.name|e }}
+Manu-manong nakatakas:  {{ robot.name|e }}
 
 {% autoescape true %}
     Autoescaped: {{ robot.name }}
@@ -1299,15 +1299,15 @@ Manually escaped: {{ robot.name|e }}
 
 ## Extending Volt
 
-Unlike other template engines, Volt itself is not required to run the compiled templates. Once the templates are compiled there is no dependence on Volt. With performance independence in mind, Volt only acts as a compiler for PHP templates.
+Hindi kagaya ng ibang mga makina ng template, ang Volt ay hindi kinakailangan na patakbuhin ang mga naipong mga template. Kapag ang isang template ay naipon na hindi dumedepende sa Volt. Sa malayang pagganap sa isip. Ang Volt ay kumikilos bilang isang tagaipon para sa mga template ng PHP.
 
-The Volt compiler allow you to extend it adding more functions, tests or filters to the existing ones.
+Ang Volt na tagaipon ay nagpaphintulot sa iyo na palawigin ito sa pagdagdag na mas maraming mga gamit, mga pagsusuri, o mga sumasala sa mga umiiral na.
 
 <a name='extending-functions'></a>
 
 ### Functions
 
-Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using two strategies, returning a simple string or using an anonymous function. Always is required that the chosen strategy returns a valid PHP string expression:
+Ang mga gamit ay kumikilos bilang mga karaniwang mga gamit ng PHP, ang isang balidong pangalan ng string ay kinakailangan bilang isang pangalan ng gamit. Ang mga gamit ay pwedeng maidagdag gamit ang dalawang mga stratehiya, bumabalik sa isang simpleng string o gamit ang isang hindi kilalang mga gamit. Palagi ay kianakailangan sa piniling stratehiya na bumabalik sa isang balidong ekspresyon ng string ng PHP:
 
 ```php
 <?php
@@ -1322,7 +1322,7 @@ $compiler = $volt->getCompiler();
 $compiler->addFunction('shuffle', 'str_shuffle');
 ```
 
-Register the function with an anonymous function. This case we use `$resolvedArgs` to pass the arguments exactly as were passed in the arguments:
+Pagrehistro sa gamit sa isang hindi kilalang gamit. Ang kasong ito ay magagamit `$resolvedArgs` para magpasa ng mga argumento na eksakto sa napasang mga argumento:
 
 ```php
 <?php
@@ -1335,7 +1335,7 @@ $compiler->addFunction(
 );
 ```
 
-Treat the arguments independently and unresolved:
+Tratohin ang mga argumento na malaya at hindi maresolba:
 
 ```php
 <?php
@@ -1359,7 +1359,7 @@ $compiler->addFunction(
 );
 ```
 
-Generate the code based on some function availability:
+Gumawa ng code base sa ilang mga gamit na mayroon:
 
 ```php
 <?php
@@ -1376,7 +1376,7 @@ $compiler->addFunction(
 );
 ```
 
-Built-in functions can be overridden adding a function with its name:
+Mga gamit na nakalakip na pwedeng ma-override na nagdadagdag ng isang gamit na kasama ang pangalan nito:
 
 ```php
 <?php
@@ -1389,7 +1389,7 @@ $compiler->addFunction('dump', 'print_r');
 
 ### Filters
 
-A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
+Ang sumasala ay may mga sumusunod na porma sa isang template: leftExpr|name(optional-args). Magdagdag ng bagong mga sumasala ay makikita kasama ang mga gamit:
 
 ```php
 <?php
@@ -1409,7 +1409,7 @@ $compiler->addFilter(
 );
 ```
 
-Built-in filters can be overridden adding a function with its name:
+Ang mga nakalakip na mga sumsala ay pwedeng ma -override ang mga naidagdag na gamit kasama ang pangalan nito:
 
 ```php
 <?php
@@ -1422,9 +1422,9 @@ $compiler->addFilter('capitalize', 'lcfirst');
 
 ### Extensions
 
-With extensions the developer has more flexibility to extend the template engine, and override the compilation of a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.
+Kasama ang mga extensyon ang nagdedevelop ay magkakaroon ng kakayahang makaangkop upnag pahabain ang makina ng template, at ma-override ang mga naipon sa tiyak na instruksyon, baguhin ang pag-uugali ng isang ekspresyon o operator, magdagdag ng mga gamit/mga sumasala, at marami pa.
 
-An extension is a class that implements the events triggered by Volt as a method of itself. For example, the class below allows to use any PHP function in Volt:
+Ang isang extensyon ay isang klase na nagppatupad ng mga nangyayari na pinapagana ng Volt bilang isang paraan. Halimbawa, ang klase sa ibaba ay nagpapahintulot na gumamit ng kahit anong gamit ng PHP sa Volt:
 
 ```php
 <?php
@@ -1437,31 +1437,31 @@ class PhpFunctionExtension
     public function compileFunction($name, $arguments)
     {
         if (function_exists($name)) {
-            return $name . '('. $arguments . ')';
+            return $name . '('. $arguments. ')';
         }
     }
 }
 ```
 
-The above class implements the method `compileFunction` which is invoked before any attempt to compile a function call in any template. The purpose of the extension is to verify if a function to be compiled is a PHP function allowing to call it from the template. Events in extensions must return valid PHP code, this will be used as result of the compilation instead of the one generated by Volt. If an event doesn't return an string the compilation is done using the default behavior provided by the engine.
+Ang nasa itaas na klase na nagpapatupad ng paraan `compileFunction` na tumatawag bago ang isang pagsubok na umipon ng pagtawag na gamit sa kahit anong template. Ang layunin ng extensyon upang maverify kung ang isang gamit na maiipon ay isang gamit ng PHP na nagpapahintulot na tawagin ito galing sa template. Ang mga nangyayari ay kailangang bumalik sa balidong code ng PHP, ito ay ginagamit bilang resulta na naipon sa halip na sa isang ginawa ng Volt. Kung ang isang pangyayari ay hindi bumalik saisang string na naipon ay natapos na gamit ang default na pag-uugali na binigay ng makina.
 
 Ang mga sumusunod na naipong mga pangyayari na magagamit upang maipatupad sa mga extensyon:
 
-| Event/Method        | Description                                                                                            |
-| ------------------- | ------------------------------------------------------------------------------------------------------ |
-| `compileFunction`   | Triggered before trying to compile any function call in a template                                     |
-| `compileFilter`     | Triggered before trying to compile any filter call in a template                                       |
-| `resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators     |
-| `compileStatement`  | Triggered before trying to compile any expression. This allows the developer to override any statement |
+| Pangyayari/Paraan   | Description                                                                                                                                         |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `naipongGamit`      | Na-trigger na bago muling sumubok na iponin ang kahit anong gamit ng pagtawag sa isang template                                                     |
+| `naipongSumasala`   | Na-trigger bago muling sumubok na iponin ang kahit anong pagsala ng pagtawag sa isang template                                                      |
+| `resolbaEkspresyon` | Na-trigger bago sumubok muli na iponin ang kahit anong ekspresyon. Ito ay nagpapahintulot sa nagdedevelop na ma-override ang mga operator           |
+| `naipongPahayag`    | Na-trigger na bago sumubok muli na iponin ang kahit anong ekspresyon. Ito ay nagpapahintulot sa nagdedevelop na ma-override ang kahit anong pahayag |
 
-Volt extensions must be in registered in the compiler making them available in compile time:
+Ang mga extensyon ng Volt ay kailangang nakarehistro sa taga-ipon na sila ay ginagawang magagamit sa naipong oras:
 
 ```php
 <?php
 
 // Register the extension in the compiler
 $compiler->addExtension(
-    new PhpFunctionExtension()
+    new PhpFunctionExtension();
 );
 ```
 
@@ -1469,7 +1469,7 @@ $compiler->addExtension(
 
 ## Caching view fragments
 
-With Volt it's easy cache view fragments. This caching improves performance preventing that the contents of a block from being executed by PHP each time the view is displayed:
+Sa Volt madali lamang ang cache ng tinignan na mga fragment. Ang pagcache nito ay mas nagpapabuti sa pagganap na pumipigil sa laman ng isang bloke para magawa ng PHP na kapag may tanawing pinakita:
 
 ```twig
 {% cache 'sidebar' %}
@@ -1477,7 +1477,7 @@ With Volt it's easy cache view fragments. This caching improves performance prev
 {% endcache %}
 ```
 
-Setting a specific number of seconds:
+Ang pagset ng tiyak na bilang ng mga segundo:
 
 ```twig
 {# cache the sidebar by 1 hour #}
@@ -1486,7 +1486,7 @@ Setting a specific number of seconds:
 {% endcache %}
 ```
 
-Any valid expression can be used as cache key:
+Kahit anong balidong ekspresyon ay pwedeng magamit bilang isang susi ng cache:
 
 ```twig
 {% cache ('article-' ~ post.id) 3600 %}
@@ -1498,13 +1498,13 @@ Any valid expression can be used as cache key:
 {% endcache %}
 ```
 
-The caching is done by the `Phalcon\Cache` component via the view component. Learn more about how this integration works in the section [Caching View Fragments](/[[language]]/[[version]]/views#caching-fragments).
+Ang pagcache ay natatapos sa pamamagitan ng `Phalcon\Cache` na bahagi sa pamamagitan ng pagtingin ng bahagi. Matuto nang higit pa tungkol sa kung papaano ang pagsasamang ito ay gumagana sa seksyong ito [Caching View Fragments](/[[language]]/[[version]]/views#caching-fragments).
 
 <a name='services-in-templates'></a>
 
 ## Inject Services into a Template
 
-If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:
+Kung ang isang lalagyan ng serbisyo (DI) ay magagamit para sa Volt, ikaw ay pwedeng gumamit ng mga serbisyo sa pamamagitan lang ng pag-access sa pangalan ng serbisyo sa template:
 
 ```twig
 {# Inject the 'flash' service #}
@@ -1518,7 +1518,7 @@ If a service container (DI) is available for Volt, you can use the services by o
 
 ## Stand-alone component
 
-Using Volt in a stand-alone mode can be demonstrated below:
+Ang paggamit sa Volt sa isang mag-isang mode ay ipapakita sa ibaba:
 
 ```php
 <?php
@@ -1557,8 +1557,8 @@ require $compiler->getCompiledTemplatePath();
 
 ## External Resources
 
-- A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
-- [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)
-- [Our website](https://phalconphp.com) is running using Volt as template engine, [Github](https://github.com/phalcon/website)
-- [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [Github](https://github.com/phalcon/forum)
-- [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [Github](https://github.com/phalcon/vokuro)
+- Isang bunble para sa Sublime/Textmate ay magagamit na [dito](https://github.com/phalcon/volt-sublime-textmate)
+- [Album-O-Rama](https://album-o-rama.phalconphp.com) ay isang halimbawang aplikasyon gamit ang Volt bilang isang makina ng template, [Github](https://github.com/phalcon/album-o-rama)
+- [Ang aming website](https://phalconphp.com) ay tumatakbo gamit ang Volt biang isang makina ng template, [Github](https://github.com/phalcon/website)
+- [Phosphorum](https://forum.phalconphp.com), ang forum ng Phalcon, gumagamit din ng Volt, [Github](https://github.com/phalcon/forum)
+- [Vökuró](https://vokuro.phalconphp.com), ay isang halimbawa din ng gumagamit ng Volt, [Github](https://github.com/phalcon/vokuro)
