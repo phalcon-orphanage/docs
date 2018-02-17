@@ -122,33 +122,33 @@ chmod ugo+x /usr/bin/phalcon
 
 #### Добавление PHP и Devtools в системную переменную PATH
 
-Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file `php.exe` and copy its path. For instance, using WAMPP you will locate the PHP executable in a location like this: `C:\wamp\bin\php\<php version>\php.exe` (where `<php version>` is the version of PHP that WAMPP comes bundled with).
+Поскольку инструменты разработчика написаны на PHP, его необходимо установить на ваш компьютер. В зависимости от того, как был установлен PHP, его исполняемый файл может быть в разных местах. Найдите файл `php.exe` и запомните (скопируйте) путь к нему. Например, при использовании WAMPP, путь к PHP может быть похож на: `C:\wamp\bin\php\<php version>\php.exe` (где `<php version>` — версия PHP используемая в WAMPP).
 
-From the Windows start menu, right mouse click on the `Computer` icon and select `Properties`:
+В меню Пуск правой кнопкой кликните на значок `Computer` и выберите `Properties`:
 
 ![](/images/content/devtools-windows-3.png)
 
-Click the `Advanced` tab and then the button `Environment Variables`:
+Выберите вкладку `Advanced` и нажмите кнопку `Environment Variables`:
 
 ![](/images/content/devtools-windows-4.png)
 
-At the bottom, look for the section `System variables` and edit the variable `Path`:
+В нижней части диалога обратите внимание на раздел `System variables` и отредактируйте переменную `Path`:
 
 ![](/images/content/devtools-windows-5.png)
 
-Be very careful on this step! You need to append at the end of the long string the path where your `php.exe` was located and the path where Phalcon tools are installed. Use the `;` character to separate the different paths in the variable:
+Будьте осторожны на этом шаге! В конце этой длинной строки вам надо будет добавить путь к установленному файлу `php.exe` и путь к установленным инструментам разработчика Phalcon. Используйте символ `;` для разделения путей в этой строке:
 
 ![](/images/content/devtools-windows-6.png)
 
-Accept the changes made by clicking `OK` and close the dialogs opened. From the start menu click on the option `Run`. If you can't find this option, press `Windows Key` + `R`.
+Примените изменения, нажав кнопку `OK` и закройте диалог. В меню Пуск выберите поле `Run`. Если не можете найти эту опцию, нажмите сочетание `Windows` + `R`.
 
 ![](/images/content/devtools-windows-7.png)
 
-Type `cmd` and press enter to open the windows command line utility:
+Выберите `cmd` и нажмите “Enter” для запуска окна консоли:
 
 ![](/images/content/devtools-windows-8.png)
 
-Type the commands `php -v` and `phalcon` and you will see something like this:
+Введите команды `php -v` и `phalcon`. Вы должны увидеть что-то вроде этого: 
 
 ![](/images/content/devtools-windows-9.png)
 
