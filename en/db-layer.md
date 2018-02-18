@@ -1113,14 +1113,14 @@ $connection->dropColumn(
 
 <a name='tables-dropping'></a>
 ### Dropping Tables
-Examples on dropping tables:
+To drop an existing table from the current database, use the `dropTable` method. To drop an table from custom database, use second parameter describes database name. Examples on dropping tables:
 
 ```php
 <?php
 
-// Drop table robot from active database
+// Drop table 'robots' from active database
 $connection->dropTable('robots');
 
-// Drop table robot from database 'machines'
+// Drop table 'robots' from database 'machines'
 $connection->dropTable('robots', 'machines');
 ```
