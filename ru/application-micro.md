@@ -370,8 +370,8 @@ $app->get(
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $content = "<h1>This is order: {$name}!</h1>";
-        $app->response->setContent($content);
+        $content = "<h1>Это заказ: {$name}!</h1>";
+        $app->response->setContext($content);
         $app->response->send();
     }
 );
@@ -506,8 +506,8 @@ class OrdersController extends Controller
 
     public function show($name)
     {
-        $content = "<h1>This is order: {$name}!</h1>";
-        $this->response->setContent($content);
+        $content = "<h1>Это заказ: {$name}!</h1>";
+        $this->response->setContext($content);
 
         return $this->response;
     }
@@ -1126,7 +1126,7 @@ $app->get(
 
 ## Ответ приложения
 
-You can also use the `Phalcon\Http\Response` object to return responses to the caller. The Response object has a lot of useful methods that make returning responses much easier.
+Существует возможность использовать объект `Phalcon\Http\Response`, чтобы вернуть ответ вызывающей стороне. Объект Response имеет много полезных методов, которые делают работу с возвращаемым ответом более лёгкой.
 
 ```php
 $app->get(
@@ -1997,7 +1997,7 @@ $app->get(
 
 # Обработка ошибок
 
-The `Phalcon\Mvc\Micro` application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
+Также, `Phalcon\Mvc\Micro` приложение имеет метод `error`, который может быть использован для перхвата ошибок порождённых исключениями. Следующий пример показывает основную идею:
 
 ```php
 <?php
