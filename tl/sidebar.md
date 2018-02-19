@@ -57,7 +57,7 @@
     - [Assets](/[[language]]/[[version]]/assets)
     - [Flash Messenger](/[[language]]/[[version]]/flash)
     - [Forms](/[[language]]/[[version]]/forms)
-    - [Image](/[[language]]/[[version]]/image)
+    - [Larawan](/[[language]]/[[version]]/image)
     - [Tag](/[[language]]/[[version]]/tag)
     - [View](/[[language]]/[[version]]/views) 
         - [Volt](/[[language]]/[[version]]/volt)
@@ -70,20 +70,20 @@
     - [Filters](/[[language]]/[[version]]/filter)
     - [Routing](/[[language]]/[[version]]/routing)
     - [Sessions](/[[language]]/[[version]]/session)
-    - [Url](/[[language]]/[[version]]/url)
-    - [Validation](/[[language]]/[[version]]/validation)
+    - [URL](/[[language]]/[[version]]/url)
+    - [Pagpapatunay](/[[language]]/[[version]]/validation)
 - HTTP 
     - [Cookies](/[[language]]/[[version]]/cookies)
-    - [Request](/[[language]]/[[version]]/request)
-    - [Response](/[[language]]/[[version]]/response)
-- Security 
+    - [Mungkahi](/[[language]]/[[version]]/request)
+    - [Tugon](/[[language]]/[[version]]/response)
+- Seguridad 
     - [Crypto](/[[language]]/[[version]]/crypt)
-    - [Security](/[[language]]/[[version]]/security)
+    - [Seguridad](/[[language]]/[[version]]/security)
 - i18n 
     - [Internationalization](/[[language]]/[[version]]/i18n)
-    - [Translate](/[[language]]/[[version]]/translate)
-- Tutorials 
-    - [Performance](/[[language]]/[[version]]/performance)
+    - [Pagsalin](/[[language]]/[[version]]/translate)
+- Pagtuturo 
+    - [Kakayanan](/[[language]]/[[version]]/performance)
     - [Basic](/[[language]]/[[version]]/tutorial-base)
     - [Invo](/[[language]]/[[version]]/tutorial-invo)
     - [REST](/[[language]]/[[version]]/tutorial-rest)
