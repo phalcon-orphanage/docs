@@ -139,7 +139,7 @@ $di = new FactoryDefault();
 
 `Phalcon\Di\FactoryDefault` is a variant of `Phalcon\Di`. Чтобы сделать вещи проще, он зарегистрировал большинство компонентов, которые поставляются с Phalcon. Поэтому мы не должны регистрировать их по одному. Позже не будет никаких проблем в замене заводской службы.
 
-В следующей части мы регистрируем сервис "просмотр", указывающий каталог, в котором Платформа найдет файлы представлений. Поскольку представления не соответствуют классам, их нельзя заряжать с помощью автозаполнителя.
+In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
 
 Услуги могут быть зарегистрированы несколькими способами, но для нашего урока мы будем использовать функцию [anonymous](http://php.net/manual/en/functions.anonymous.php):
 
@@ -163,7 +163,7 @@ $di->set(
 );
 ```
 
-Далее мы регистрируем базовый URI, так что все URI генерируется "Фэлкон" включить папку "учебник" мы настроили ранее. Это станет важным позже в этом руководстве, когда мы используем класс `Phalcon\Tag` для создания гиперссылки.
+Далее мы регистрируем базовый URI, так что все URI генерируется "Фэлкон" включить папку "учебник" мы настроили ранее. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
 
 ```php
 <?php
@@ -189,7 +189,7 @@ $di->set(
 
 ### Обработка входящих запросов
 
-В последней части этого файла, мы находим `в phalcon\Mvc в\приложения`. Его целью является инициализация среды запроса, маршрутизация входящего запроса, а затем отправка любых обнаруженных действий; он агрегирует любые ответы и возвращает их, когда процесс будет завершен.
+In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
 
 ```php
 <?php
@@ -298,7 +298,7 @@ The controller classes must have the suffix "Controller" and controller actions 
 
 ![](/images/content/tutorial-basic-1.png)
 
-Поздравляю, ты phlying с помощью phalcon!
+Congratulations, you're phlying with Phalcon!
 
 <a name='view'></a>
 
