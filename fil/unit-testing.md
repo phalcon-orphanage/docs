@@ -1,18 +1,18 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Pangkalahatang-ideya</a> <ul>
         <li>
-          <a href="#integration">Integrating PHPUnit with Phalcon</a>
+          <a href="#integration">Pagsasama ang PHPUnit sa Phalcon</a>
         </li>
         <li>
-          <a href="#unit-helper">The PHPUnit helper file</a>
+          <a href="#unit-helper">Ang PHPunit helper file</a>
         </li>
         <li>
-          <a href="#phpunit-config">The <code>phpunit.xml</code> file</a>
+          <a href="#phpunit-config">Ang kikil na <code>phpunit.xml</code>file</a>
         </li>
         <li>
-          <a href="#sample">Sample Unit Test</a>
+          <a href="#sample">Halimbawa ng Yunit Test</a>
         </li>
       </ul>
     </li>
@@ -21,9 +21,9 @@
 
 <a name='overview'></a>
 
-# Overview
+# Pangkalahatang-ideya
 
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
+Ang pagsulat ng tamang pagsusuri ay makatutulong sa pagsusulat ng mabutinhgsoftware. Kung ikaw ay bubuo ng angkop na mga test cases maaring mong tanggalin ang pinakagumagana na bugs at mapanatili ng mabuti ang iyong software.
 
 <a name='integration'></a>
 
