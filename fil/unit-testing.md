@@ -120,16 +120,16 @@ o mano-manong i-dagdag ito sa `conposer.json`:
 }
 ```
 
-You can also clone the repository using this link: https://github.com/phalcon/incubator.
+Maari mo ring kopyahin ang bodiga gamit ang link na ito: https://github.com/phalcon/incubator.
 
 <a name='phpunit-config'></a>
 
-## The `phpunit.xml` file
+## Ang`phpunit.xml`file
 
-Now, create a `phpunit.xml` file as follows:
+Ngayon, lumikha ng `phpunit.xml` file katulad nito:
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding=UTF-8"?>
 
 <phpunit bootstrap="./TestHelper.php"
          backupGlobals="false"
@@ -143,45 +143,45 @@ Now, create a `phpunit.xml` file as follows:
          stopOnFailure="false"
          syntaxCheck="true">
 
-    <testsuite name="Phalcon - Testsuite">
+<testsuite name="Phalcon - Testsuite">
         <directory>./</directory>
     </testsuite>
 </phpunit>
 ```
 
-Modify the `phpunit.xml` to fit your needs and save it in `tests`. This will run any tests under the `tests` directory.
+Baguhin ang `phpunit.xml` para maangkop sa iyong kailangan at i-save ito sa `tests`. Ito ay magtatakbo ng mga pasulit ibaba sa `tests` na direktoryo.
 
 <a name='sample'></a>
 
-## Sample Unit Test
+## Halimbawa Ng Yunit Test
 
-To run any Unit Tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
+Para magpatakbo ng anumang Yunit Tests kailangan mo silang bigyan ng kahulugan. Ang autoloader ay titiyakin na ang wastong mga files ay nailagay kaya ang kailangan mo lang gawin ay gawin ang mga files at ang phpunit ang magpapatakbo ng mga pagsusuri para sayo.
 
-This example does not contain a config file, most test cases however, do need one. You can add it to the `DI` to get the `UnitTestCase` file.
+Ang halimbawa na ito ay hindi naglalaman ng config file, karamihan sa mga pagsusuri na kaso, kailangan ng isam Maari mo itong i-dagdag sa `DI` para makuha ang `UnitTestCase` file.
 
-First create a base Unit Test called `UnitTestCase.php` in your `tests` directory:
+Lumikha muna ng takad na Yunit Test na tinatawag na `UnitTestCase.php` sa iyong `tests` direktoryo:
 
 ```php
 <?php
 
-use Phalcon\Di;
-use Phalcon\Test\UnitTestCase as PhalconTestCase;
+gumamit ng Phalcon\Di;
+gumamit ng Phalcon\Test\UnitTestCase bilang PhalconTestCase;
 
-abstract class UnitTestCase extends PhalconTestCase
+klase ng abstrak UnitTestCase ay pinapahaba ang PhalconTestCase
 {
     /**
      * @var bool
      */
-    private $_loaded = false;
+        private $_loaded=false;
 
     public function setUp()
     {
         parent::setUp();
 
-        // Load any additional services that might be required during testing
+        //mag load ng anumang mga serbisyo na kailngan habang nagsusuri
         $di = Di::getDefault();
 
-        // Get any DI components here. If you have a config, be sure to pass it to the parent
+        // Kumuha ng anumang DI na mga bahagi dito. Kung ikaw ay mayroong config, dapat siguraduhin na ipasa ito sa magulang
 
         $this->setDi($di);
 
@@ -189,22 +189,22 @@ abstract class UnitTestCase extends PhalconTestCase
     }
 
     /**
-     * Check if the test case is setup properly
+     * Suriin kung ang kaso ng pagsusuri ay na set-up ng maayos
      *
-     * @throws \PHPUnit_Framework_IncompleteTestError;
+     * @throws \PHPUNIT_Framework_IncompleteTestError;
      */
-    public function __destruct()
+    public function__destruct()
     {
-        if (!$this->_loaded) {
-            throw new \PHPUnit_Framework_IncompleteTestError(
-                "Please run parent::setUp()."
+        kung (!$this->_loaded) {
+                        itapon ang bagong \PHPUnit_ Framework_IncompleteTestError(
+                "Please run  parent::setUp()."
             );
         }
     }
 }
 ```
 
-It's always a good idea to separate your Unit Tests in namespaces. For this test we will create the namespace 'Test'. So create a file called `tests\Test\UnitTest.php`:
+Isang palaging magandang idea na ihiwalay ang iyong Yunit Tests sa puwang ng pampangalan. Para sa pagsusuri na ito tayo ay lilikha ng puwang ng pampangalan na 'Test'. Kaya lumikha ng file na tinatawag na `tests\Test\UnitTest.php`:
 
 ```php
 <?php
