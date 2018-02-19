@@ -78,24 +78,24 @@ set_include_path(
 
 // Kailangan para sa phalcon/incubator
 // at i-autoload ang mga dependencies na makikita sa kompositor
-isama ang __DIR__. "/../vendor/autoload.php";
+isama ang __DIR__. "/ ../vendor/autoload.php";
 
-// Use the application autoloader to autoload the classes
-$loader = new Loader();
+// Gamitin ang aplikasyon na autoloader para i-autoload ang mga klase
+$loader = bagong Loader();
 
 $loader->registerDirs(
-    [
+     [
         ROOT_PATH,
     ]
 );
 
 $loader->register();
 
-$di = new FactoryDefault();
+$di = bagong FactoryDefault();
 
 Di::reset();
 
-// Add any needed services to the DI here
+// Maglagay ng nga kailangan na serbisyo para sa DI dito
 
 Di::setDefault($di);
 ```
