@@ -51,17 +51,17 @@
 
 # Tutorial - basic
 
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/[[language]]/[[version]]/developer-tools).
+Sa buong unang bahagi ng pagtuturo na ito, ilalahad namin sa iyo ang paggawa ng isang aplikasyon na mayroong simpleng porma sa pagpaparehistro. Ipapaliwag din namin sa iyo ang pangunahing aspeto ng kaugalian ng framework na ito. Kung ikaw ay interesado sa awtomatikong paglikha ng mga tool para sa Phalcon, pwede mong tingnang ang aming [mga tool para sa mga developer](/[[language]]/[[version]]/developer-tools).
 
-The best way to use this guide is to follow each step in turn. You can get the complete code [here](https://github.com/phalcon/tutorial).
+Ang pinakamaigi na paraan sa paggamit ng giyang ito ay ang pagsunod isa-isa sa lahat ng mga hakbang. Pwede mong kunin ang kompletong code [dito](https://github.com/phalcon/tutorial).
 
 <a name='file-structure'></a>
 
 ## File structure
 
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Ang Phalcon ay hindi ngpapatupad ng partikular na struktura para sa pagdevelop ng aplikasyon. Sa kadahilanan na bawat elemento dito ay konektado, pwede mong gawin ang isang Phalcon na aplikasyon sa struktura kung saan ka komportableng gamitin.
 
-For the purposes of this tutorial and as a starting point, we suggest this very simple structure:
+Para sa layunin ng pagtuturo na ito at para panimula, ito ang suhestiyon naming simpleng struktura:
 
 ```bash
 tutorial/
@@ -75,29 +75,29 @@ tutorial/
     js/
 ```
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+Tandaan na hindi mo kailangan ng kahit na anong "library" na direktoryo na may kaugnayan sa Phalcon. Ang balangkas ay nasa memorya na mismo ng kompyuter, at pwede nang gamitin.
 
-Before continuing, please be sure you've successfully [installed Phalcon](/[[language]]/[[version]]/installation) and have setup either [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
+Bago magpatuloy, siguraduhin na matagumpay mong [na-install ang Phalcon](/[[language]]/[[version]]/installation) and na-setup na rin and alin man dito [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
 
 <a name='bootstrap'></a>
 
 ## Bootstrap
 
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+Ang unang file na kailangan mong gawin ay ang bootstrap file. Ang file a ito ay napakahalaga; dahil ito ay nagsilbing basehan ng iyong aplikasyon, ito ay nagbibigay sayo ng kontrol sa lahat ng aspeto. Sa file na ito, maari mong e-implement ang pag-initialize ng mga bahagi pati na rin ang gawi ng aplikasyon.
 
-Ultimately, it is responsible for doing 3 things:
+Sa huli, ito ay responsable sa paggawa ng 3 mga bagay:
 
-- Setting up the autoloader.
-- Configuring the Dependency Injector.
-- Handling the application request.
+- Pagtatakda ng autoloader.
+- Pagsasaayos ng Dependency Injector.
+- Paghawak ng mga kahilingan ng aplikasyon.
 
 <a name='autoloaders'></a>
 
 ### Autoloaders
 
-The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component `Phalcon\Loader`.
+Ang unang makikita natin sa bootstrap ay ang pag-rehistro ng autoloder. Ito ay gagamitin para i-load ang mga classes bilang controllers at models ng aplikasyon. Halimbawa, pwede tayong magrehistro ng isa o maraming mga direktoryo ng controllers para pataasin ang kakayahang umangkop ng aplikasyon. Sa ating halimbawa, ginagamit natin ang component `Phalcon\Loader`.
 
-With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
+Dito, pwede nating i-load and classes gamit ang mga ibat-ibang stratehiya, pero para sa halimbawang ito, pinili natin na hanapin ang classes base sa paunang natukoy na mga direktoryo:
 
 ```php
 <?php
@@ -116,15 +116,17 @@ $loader->registerDirs(
 );
 
 $loader->register();
+ 
+Context | Request Context;
 ```
 
 <a name='dependency-management'></a>
 
 ### Dependency Management
 
-A very important concept that must be understood when working with Phalcon is its `dependency injection container <di>`. It may sound complex but is actually very simple and practical.
+Ang pinaka-importanteng konsepto na kailangang maintindihan kung magtatrabaho gamit ang Phalcon as ang `dependency injection container<di>`. Ito ay maaaring tunog komplekado pero ang totoo napakasimple lamang nitu at praktikal.
 
-A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, `Phalcon\Di` acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
+A service container ay isang bag kung saan iniimbak natin globally and mga serbisyo na gagamitin para gumana ang ating aplikasyon. Sa bawas oras na ang framework ay nangangailangan ng bahagi, tatanungin nitu ang container gamit ang napagkasunduang pangalan para sa serbisyo. Sa kadahilangan ang Phalcon ay siyang may mataas na antas bilang decoupled framework, `Phalcon\Di` ay nagsilbing pandikit na nangangasiwa sa pagsasama ng ibat-ibang bahagi para mapagtagumpayan ang kani-kanilang mga trabaho sa transparent na paraaan.
 
 ```php
 <?php
@@ -137,11 +139,11 @@ use Phalcon\Di\FactoryDefault;
 $di = new FactoryDefault();
 ```
 
-`Phalcon\Di\FactoryDefault` is a variant of `Phalcon\Di`. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
+`Phalcon\Di\FactoryDefault` ay isang variant ng `Phalcon\Di`. Upang mapadali ang ang mga bagay, ito ay awtomatikong mgrerehistro ng karamihan sa mga bahagi na may kinalaman sa Phalcon. Kaya hindi na natin kailangang i-rehistro pa sila isa-isa. Mamaya wala nang maaring maging problema sa pagpapaling ng factory service.
 
-In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
+Sa susunod na bahagi, irehistro namin ang serbisyo ng "pagpakita" na nagpapahiwatig ng direktoryo kung saan makikita ng framework ang mga view na file. Tulad ng mga pagpakita ay hindi tumutugma sa mga klase, hindi sila maaaring singilin sa isang autoloader.
 
-Services can be registered in several ways, but for our tutorial we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
+Ang mga serbisyo ay maaaring nakarehistro sa maraming paraan, ngunit para sa aming pagtuturo gagamitin namin ang isang [anonymous na punsyon](http://php.net/manual/en/functions.anonymous.php):
 
 ```php
 <?php
@@ -163,7 +165,7 @@ $di->set(
 );
 ```
 
-Next we register a base URI so that all URIs generated by Phalcon include the "tutorial" folder we setup earlier. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
+Ang susunod ay magparehistro kami ng base URI upang ang lahat ng mga URI na nabuo ni Phalcon ay kasama ang folder na "pagtuturo" na aming na-setup kanina. Ito ay magiging importanti mamaya sa pagtuturo na ito kapag ginagamit namin ang klase `Phalcon\Tag` upang bumuo ng isang hyperlink.
 
 ```php
 <?php
@@ -189,13 +191,9 @@ $di->set(
 
 ### Handling the application request
 
-In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+Sa huling bahagi ng file na ito, nahanap namin ang `Phalcon\ Mvc\Application`. Ang layunin nito ay upang simulan ang kahilingan sa kapaligiran, ruta ang parating na kahilingan, at pagkatapos ay magpadala ng anumang natuklasang mga aksyon; pinagsasama nito ang anumang mga tugon at ibinabalik ang mga ito kapag kumpleto na ang proseso.
 
 ```php
-<?php
-
-use Phalcon\Mvc\Application;
-
 // ...
 
 $application = new Application($di);
@@ -203,13 +201,15 @@ $application = new Application($di);
 $response = $application->handle();
 
 $response->send();
+ 
+Context | Edit Context;
 ```
 
 <a name='full-example'></a>
 
 ### Putting everything together
 
-The `tutorial/public/index.php` file should look like:
+Ang `tutorial/public/index.php` na file ay dapat magmumukhang:
 
 ```php
 <?php
@@ -272,13 +272,13 @@ try {
 }
 ```
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less than 30 lines of code.
+Tulad ng iyong nakikita, ang bootstrap file ay masyadong maikli at hindi namin kailangang isama ang anumang karagdagang mga file. Naitakda namin ang aming sarili ng malumanay na aplikasyon ng MVC sa mas mababa sa 30 linya ng code.
 
 <a name='controller'></a>
 
 ## Creating a Controller
 
-By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (`app/controllers/IndexController.php`) looks like:
+Bilang default ang Phalcon ay maghanap ng isang controller na may pangalang "Index". Ito ang panimulang punto kung wala nang controller o aksyon ang naipasa sa kahilingan. Ang index controller (`app/controllers/IndexController.php`) ay parang ganito:
 
 ```php
 <?php
@@ -294,11 +294,11 @@ class IndexController extends Controller
 }
 ```
 
-The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this:
+Ang mga klase ng controller ay dapat magkaroon ng hulapi na "Controller" at mga aksyon ng controller ay dapat may hulapi na "Action". Kung na-access mo ang aplikasyon mula sa iyong browser, dapat mong makita ang isang bagay tulad nito:
 
 ![](/images/content/tutorial-basic-1.png)
 
-Congratulations, you're phlying with Phalcon!
+Binabati kita! Ikaw ngayon ay naka-phlying gamit ang Phalcon!
 
 <a name='view'></a>
 
