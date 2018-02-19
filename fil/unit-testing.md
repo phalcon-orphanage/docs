@@ -27,58 +27,58 @@ Ang pagsulat ng tamang pagsusuri ay makatutulong sa pagsusulat ng mabutinhgsoftw
 
 <a name='integration'></a>
 
-## Integrating PHPUnit with Phalcon
+## Pagsamama ng PHPunit sa Phalcon
 
-If you don't already have PHPUnit installed, you can do it by using the following command:
+Kung ikaw ay wala pang PHPUnit na naka-install, maaring mong gamitin ang mga utos na ito:
 
 ```bash
-composer require phpunit/phpunit
+kompositor ay kailangan ng phpunit/phpunit
 ```
 
-or by manually adding it to `composer.json`:
+o mano-manong idagdag ito sa `composer.json`:
 
 ```json
 <br />{
-    "require-dev": {
-        "phpunit/phpunit": "5.*"
+    "require-dev":{
+        "phpunit/phpunit":"5.*"
     }
 }
 ```
 
-Once PHPUnit is installed create a directory called `tests` in project root directory:
+Kapag ang PHPUnit ay na-install gumawa ng direktoryo na tinatawag na `tests` sa direktoryo ng ugat ng proyekto:
 
     app/
     public/
     tests/
     
 
-Next, we need a 'helper' file to bootstrap the application for unit testing.
+Kasunod, kailangan natin ang 'katulong' na kikil para magsimula muli ang aplikasyon para sa yunit na pagsusuri.
 
 <a name='unit-helper'></a>
 
-## The PHPUnit helper file
+## Ang PHPUnit helper file
 
-A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your `tests/` directory as `TestHelper.php`.
+Ang helper file ay kailangan para gumana muli ang aplikasyon para maipatakbo ang mga pagsusulit. Kami ay naghanda ng isang halimbawa. Ilagay ang file sa iyong `tests` direktoryo bilang `TestHelper.php`.
 
 ```php
 <?php
 
-use Phalcon\Di;
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Loader;
+gamitin ang Phalcon\Di;
+gamitin ang Phalcon\Di\FactoryDefault;
+gamitin ang Phalcon\Loader;
 
-ini_set("display_errors", 1);
+ini_set("display_errors",1);
 error_reporting(E_ALL);
 
-define("ROOT_PATH", __DIR__);
+define("ROOT_PATH",__DIR__);
 
 set_include_path(
-    ROOT_PATH . PATH_SEPARATOR . get_include_path()
+    ROOT_PATH. PATH_SEPARATOR. get_include_path()
 );
 
-// Required for phalcon/incubator
-// and autoload the dependencies found in composer
-include __DIR__ . "/../vendor/autoload.php";
+// Kailangan para sa phalcon/incubator
+// at i-autoload ang mga dependencies na makikita sa kompositor
+isama ang __DIR__. "/../vendor/autoload.php";
 
 // Use the application autoloader to autoload the classes
 $loader = new Loader();
