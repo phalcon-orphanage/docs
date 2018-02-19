@@ -100,21 +100,21 @@ Di::reset();
 Di::setDefault($di);
 ```
 
-Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your main application.
+Kung kailangan mong subukan ang anumang bahagi mula sa iyong sariling aklatan, idagdag ito sa autoloader o gamitin ang autoloader mula sa iyong pangunahing aplikasyon.
 
-To help you build the Unit Tests, we made a few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in the [Phalcon Incubator](https://github.com/phalcon/incubator).
+Para matulungan kang bumuo ng Yunit Tests, gumawa kami ng mga abstrak na klase na maari mong gamitin upang ma bootstrap ang mga Yunit Tests. Ang mga kikil na ito ay makikita sa [Phalcon Incubator](https://github.com/phalcon/incubator).
 
-You can use the Incubator library by adding it as a dependency:
+Maari mong gamitin ang aklatan ng limliman sa pagdagdag nito bilang dependency:
 
 ```bash
-composer require phalcon/incubator
+ang kompositor ay nangangailangan ng phalcon/incubator
 ```
 
-or by manually adding it to `composer.json`:
+o mano-manong i-dagdag ito sa `conposer.json`:
 
 ```json
 {
-    "require": {
+    "require":{
         "phalcon/incubator": "^3.2"
     }
 }
