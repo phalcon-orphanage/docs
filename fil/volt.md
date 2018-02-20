@@ -255,15 +255,15 @@ $di->set(
 
 The following options are available in Volt:
 
-| Option              | Description                                                                                                                  | Default |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
-| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
-| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
-| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
-| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
-| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
-| `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false` |
+| Option              | Description                                                                                                                                              | Default |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `compiledPath`      | Isang nasusulatang landas kung saan inilalagay ang mga itinipong mga template ng PHP                                                                     | `./`    |
+| `compiledExtension` | Isang karagdagang ekstensyon na idinugtong sa tinipong file ng PHP                                                                                       | `.php`  |
+| `compiledSeparator` | Pinapalitan ng Bolta ang mga tagapaghiwalay ng directory / at \ dahil sa tagapaghiwalay na ito upang makalikha ng nag-iisang file sa tinipong directory | `%%`    |
+| `stat`              | Kahit nararapat suriin ng Phalcon kung ang umiiral na pagkakaiba sa pagitan ng template file at ang naitipon nitong landas                               | `true`  |
+| `compileAlways`     | Nagsasabi sa Bolta kung ang mga template ay nararapat na itipon sa bawat kahilingan o di kaya'y kung meron lamang magbago sa kanila                      | `false` |
+| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                                                      | `null`  |
+| `autoescape`        | Nagpapagana sa global na autoescape ng HTML                                                                                                              | `false` |
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
 
@@ -389,34 +389,34 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 
 The following is the list of available built-in filters in Volt:
 
-| Filter             | Description                                                                                                                        |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `abs`              | Applies the [abs](http://php.net/manual/en/function.abs.php) PHP function to a value.                                              |
-| `capitalize`       | Capitalizes a string by applying the [ucwords](http://php.net/manual/en/function.ucwords.php) PHP function to the value            |
-| `convert_encoding` | Converts a string from one charset to another                                                                                      |
-| `default`          | Sets a default value in case that the evaluated expression is empty (is not set or evaluates to a falsy value)                     |
-| `e`                | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                           |
-| `escape`           | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                           |
-| `escape_attr`      | Applies `Phalcon\Escaper->escapeHtmlAttr()` to the value                                                                       |
-| `escape_css`       | Applies `Phalcon\Escaper->escapeCss()` to the value                                                                            |
-| `escape_js`        | Applies `Phalcon\Escaper->escapeJs()` to the value                                                                             |
-| `format`           | Formats a string using [sprintf](http://php.net/manual/en/function.sprintf.php).                                                   |
-| `json_encode`      | Converts a value into its [JSON](http://php.net/manual/en/function.json-encode.php) representation                                 |
-| `json_decode`      | Converts a value from its [JSON](http://php.net/manual/en/function.json-encode.php) representation to a PHP representation         |
-| `join`             | Joins the array parts using a separator [join](http://php.net/manual/en/function.join.php)                                         |
-| `keys`             | Returns the array keys using [array_keys](http://php.net/manual/en/function.array-keys.php)                                        |
-| `left_trim`        | Applies the [ltrim](http://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                  |
-| `length`           | Counts the string length or how many items are in an array or object                                                               |
-| `lower`            | Change the case of a string to lowercase                                                                                           |
-| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](http://php.net/manual/en/function.nl2br.php) |
-| `right_trim`       | Applies the [rtrim](http://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                  |
-| `slashes`          | Applies the [slashes](http://php.net/manual/en/function.slashes.php) PHP function to the value. Escaping values                    |
-| `sort`             | Sorts an array using the PHP function [asort](http://php.net/manual/en/function.asort.php)                                         |
-| `stripslashes`     | Applies the [stripslashes](http://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes  |
-| `striptags`        | Applies the [striptags](http://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags             |
-| `trim`             | Applies the [trim](http://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                    |
-| `upper`            | Change the case of a string to uppercase                                                                                           |
-| `url_encode`       | Applies the [urlencode](http://php.net/manual/en/function.urlencode.php) PHP function to the value                                 |
+| Filter             | Description                                                                                                                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `abs`              | Applies the [abs](http://php.net/manual/en/function.abs.php) PHP function to a value.                                                                        |
+| `capitalize`       | Capitalizes a string by applying the [ucwords](http://php.net/manual/en/function.ucwords.php) PHP function to the value                                      |
+| `convert_encoding` | Converts a string from one charset to another                                                                                                                |
+| `default`          | Sets a default value in case that the evaluated expression is empty (is not set or evaluates to a falsy value)                                               |
+| `e`                | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                                                     |
+| `escape`           | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                                                     |
+| `escape_attr`      | Applies `Phalcon\Escaper->escapeHtmlAttr()` to the value                                                                                                 |
+| `escape_css`       | Applies `Phalcon\Escaper->escapeCss()` to the value                                                                                                      |
+| `escape_js`        | Applies `Phalcon\Escaper->escapeJs()` to the value                                                                                                       |
+| `format`           | Formats a string using [sprintf](http://php.net/manual/en/function.sprintf.php).                                                                             |
+| `json_encode`      | Converts a value into its [JSON](http://php.net/manual/en/function.json-encode.php) representation                                                           |
+| `json_decode`      | Converts a value from its [JSON](http://php.net/manual/en/function.json-encode.php) representation to a PHP representation                                   |
+| `join`             | Joins the array parts using a separator [join](http://php.net/manual/en/function.join.php)                                                                   |
+| `keys`             | Returns the array keys using [array_keys](http://php.net/manual/en/function.array-keys.php)                                                                  |
+| `left_trim`        | Applies the [ltrim](http://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                                            |
+| `length`           | Counts the string length or how many items are in an array or object                                                                                         |
+| `lower`            | Change the case of a string to lowercase                                                                                                                     |
+| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](http://php.net/manual/en/function.nl2br.php)                           |
+| `right_trim`       | Applies the [rtrim](http://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                                            |
+| `slashes`          | Nag-aaplay ng [slashes](http://php.net/manual/en/function.slashes.php) na function ng PHP papunta sa halaga. Tinatakasan ang mga halaga                      |
+| `sort`             | Isinasaayos ang isang array gamit ang function ng PHP [asort](http://php.net/manual/en/function.asort.php)                                                   |
+| `striplashes`      | Nag-aaplay ng [striplashes](http://php.net/manual/en/function.stripslashes.php) na function ng PHP papunta sa halaga. Inaalis ang mga nakatakas na mga quote |
+| `striptags`        | Nag-aaplay ng [striptags](http://php.net/manual/en/function.striptags.php) na function ng PHP papunta sa halaga. Inaalis ang mga tag ng HTML                 |
+| `trim`             | Nag-aaplay ng [trim](http://php.net/manual/en/function.trim.php) na function ng PHP papunta sa halaga. Inaalis ang mga sobrang puwang                        |
+| `itaas`            | Pinapalitan ang laki ng titik ng isang string sa malaking titik                                                                                              |
+| `url_encode`       | Nag-aaplay ng [urlencode](http://php.net/manual/en/function.urlencode.php) na function ng PHP papunta sa halaga                                              |
 
 Examples:
 
