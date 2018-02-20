@@ -24,7 +24,7 @@
 
 # Multi-lingual Support
 
-The component `Phalcon\\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
+Ang bahagi na `Phalcon\\Translate` ay nakakatulong sa paggawa ng mga multilingual na aplikasyon. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
 <a name='adapters'></a>
 
@@ -62,7 +62,7 @@ $translate = Factory::load($options);
 
 ## Component Usage
 
-Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:
+Ang mga strings sa pagsasalin ay naka-imbak sa mga file. Ang istraktura ng mga file na ito ay maaring mag-iba depende sa uri ng adaptor na ginamit. Ang Phalcon ay nagbibigay sayo ng kalayaan para isaayos ang iyong mga strings sa pagsasalin. Ang isang simple na istraktura ay maaring:
 
 ```bash
 app/messages/en.php
@@ -71,17 +71,17 @@ app/messages/fr.php
 app/messages/zh.php
 ```
 
-Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in different files, where keys remain the same and values contain the translated strings depending on each language.
+Ang bawat file ay naglalaman ng iba't-ibang pagsasalin sa isang susi/halaga na paraan,. Sa bawat pagsasalin na file, ang mga susi ay kakaiba. Ang parehong ayos ay ginagamit sa iba't-ibang mga file, kung saan ang mga susi ay nananatiling magkapareho at ang mga value ay naglalaman ng mga naisalin na mga strings depende sa bawat wika.
 
 ```php
 <?php
 
 // app/messages/en.php
 $messages = [
-    'hi'      => 'Hello',
-    'bye'     => 'Good Bye',
-    'hi-name' => 'Hello %name%',
-    'song'    => 'This song is %song%',
+    'hi'      =>'Hello',
+    'bye'    =>"Paalam',
+    'hi-pangalan' =>'Hello %name%',
+    'kanta'      =>'Ang kanta na ito ay %song%',
 ];
 ```
 
@@ -90,122 +90,122 @@ $messages = [
 
 // app/messages/fr.php
 $messages = [
-    'hi'      => 'Bonjour',
-    'bye'     => 'Au revoir',
-    'hi-name' => 'Bonjour %name%',
-    'song'    => 'La chanson est %song%',
+    'hi'     =>'Bonjour',
+    'bye'   =>'Au revoir',
+    'hi-pangalan' =>'Bonjour %name%',
+    'kanta'    =>La chanson est %song%',
 ];
 ```
 
-Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
+Pagpapatupad ng mekanismo ng pagsasalin sa iyong aplikasyon ay pangkaraniwan ngunit ito ay naka depende kung paano mo gusto ipatupad ito. Maari kang gumamit ng awtomatikong nagtutukoy ng wika mula sa browser ng tagagamit o maari kang magbigay ng pahina ng settings kung saan ang tagagamit ay makakapili ng kanilang wika.
 
-A simple way of detecting the user's language is to parse the `$_SERVER['HTTP_ACCEPT_LANGUAGE']` contents, or if you wish, access it directly by calling `$this->request->getBestLanguage()` from an action/controller:
+Ang simpleng paraan ng pagtutukoy ng wika ng tagagamit ay ihiwalay ang `$_SERVER['HTTP_ACCEPT_LANGUAGE']` na nilalaman, o kung gusto mo na ipasok ito ng direkta sa pamamagitan ng pagtawag ng `$this->request->getBestLanguage()` galing sa aksyon/kontroler:
 
 ```php
 <?php
 
-use Phalcon\Mvc\Controller;
-use Phalcon\Translate\Adapter\NativeArray;
+gamiting ang Phalcon\Mvc\Kontroler;
+gamitin ang Phalcon\Translate\Adapter\NativeArray;
 
-class UserController extends Controller
+klase UserController nagpapahaba ng Kontroler
 {
-    protected function getTranslation()
+    nakaprotekta na paraan getTranslation()
     {
-        // Ask browser what is the best language
+        //Tanungin ang browser kung ano ang pinakamabuting wika
         $language = $this->request->getBestLanguage();
 
         $translationFile = 'app/messages/' . $language . '.php';
 
-        // Check if we have a translation file for that lang
-        if (file_exists($translationFile)) {
-            require $translationFile;
-        } else {
-            // Fallback to some default
-            require 'app/messages/en.php';
+        // Suriin kung mayroon tayong file ng pagsasalin para sa wika na yan
+         kung (file_exists($translationFile)) {
+            kailangan $translationFile;
+        } iba {
+            // Bumalik sa ibang default
+            kailangan 'app/messages/en.php';
         }
 
-        // Return a translation object $messages comes from the require
-        // statement above
-        return new NativeArray(
+        // Ibalik ang bagay ng pagsasalin $messages galing sa kinakailangan
+        // pahayag sa taas
+        ibalik ang bagong NativeArray(
             [
-                'content' => $messages,
+                'content' =>$messages,
             ]
         );
     }
 
-    public function indexAction()
+    publiko na paraan indexAction()
     {
-        $this->view->name = 'Mike';
-        $this->view->t    = $this->getTranslation();
+        $this->view->pangalan = 'Mike';
+        $this->view->   = $this->getTranslation();
     }
 }
 ```
 
-The `_getTranslation()` method is available for all actions that require translations. The `$t` variable is passed to the views, and with it, we can translate strings in that layer:
+Ang `_getTranslation()` na paraan ay magagamit sa lahat ng aksyon na nangangailangan ng pagsasalin. Ang `$t` na aligin ay ipinapasa sa mga views, at kasama nito, makakapagsalin tayo ng strings sa ganyan na patong:
 
 .. code-block:: html+php
 
     <!-- welcome -->
-    <!-- String: hi => 'Hello' -->
-    <p><?php echo $t->_('hi'), ' ', $name; ?></p>
+    <-- String: hi => 'Hello' -->
+    <p><?php echo $t->_('hi'),'', $name; ?></p>
     
 
-The `_()` method is returning the translated string based on the index passed. Some strings need to incorporate placeholders for calculated data i.e. `Hello %name%`. These placeholders can be replaced with passed parameters in the `_()` method. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
+Ang `_()` na paraan ay ibinabalik ang nasalin na string base sa index na naipasa. Ang ibang strings ay kailangan ilakip ang placeholders para kuwentahin ang data i.e. `Hello %name%`. Ang mga placeholders na ito ay maaring palitan sa naipasa na talaan sa `_()` na paraan. Ang naipasa na mga talaan ay nasa porma ng susi/halaga na array, kung saan ang susi ay katulad sa placeholder na pangalangan at ang halaga ay ang aktwal na data na papalitan:
 
 ```php
 <!-- welcome -->
 <!-- String: hi-name => 'Hello %name%' -->
-<p><?php echo $t->_('hi-name', ['name' => $name]); ?></p>
+<p><?php echo $t->_(hi-name', ['pangalan' => $name]); ?></p>
 ```
 
-Some applications implement multilingual on the URL such as `http://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](/[[language]]/[[version]]/routing).
+Ang ibang aplikasyon ay nagpapatupad ng multilingual sa URL katulad ng `http://www.mozilla.org/**es-ES**/firefox/`. Ang Phalcon ay maaring magpatupad nito sa pamamagitan ng paggamit ng isang [Tagaruta](/[[language]]/[[version]]/routing).
 
 <a name='custom'></a>
 
 ## Implementing your own adapters
 
-The `Phalcon\Translate\AdapterInterface` interface must be implemented in order to create your own translate adapters or extend the existing ones:
+Ang `Phalcon\Translate\AdapterInterface` interface ay dapat maipatupad para makalikha ng sarili mong mga adaptor sa pagsasalin o palawigin ang mga kasulukuyang nakasali:
 
 ```php
 <?php
 
-use Phalcon\Translate\AdapterInterface;
+gamitin ang Phalcon\Translate|AdapterInterface;
 
-class MyTranslateAdapter implements AdapterInterface
+klase MyTranslateAdapter nagsasagawa ng AdapterInterface
 {
     /**
-     * Adapter constructor
+     * Tagagawa ng adaptor
      *
      * @param array $options
      */
-    public function __construct(array $options);
+    publiko function _construct(array $options);
 
     /**
-     * Returns the translation string of the given key
+     * Ibabalik ang string ng nasalin sa naibigay na susi
      *
      * @param   string $translateKey
-     * @param   array $placeholders
-     * @return  string
+     * @param    array $placeholders
+     * @return    string
      */
-    public function _(string $translateKey, $placeholders = null): string;
+    publiko function _(string $translateKey, $placeholders = null); string:
 
     /**
-     * Returns the translation related to the given key
+     * Ibabalik ang naisalin ayun sa naibigay na susi
      *
-     * @param   string $index
-     * @param   array $placeholders
-     * @return  string
+     * @param    string $index
+     * @param    array $placeholders
+     * @return    string
      */
-    public function query(string $index, $placeholders = null): string;
+    publiko function query(string $index, $placeholders = null): string:
 
     /**
-     * Check whether is defined a translation key in the internal array
+     * Suriin kung ang naisalin na susi ay nasa loob ng array
      *
      * @param   string $index
-     * @return  bool
+     *@return   bool
      */
-    public function exists(string $index): bool;
+     publiko na tungkulin ay umiiral(string $index): bool;
 }
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter)
+Mayroong marami na mga adaptor na magagamit para sa bahagi na ito sa [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter)
