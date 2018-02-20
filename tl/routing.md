@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Routing</a> <ul>
+      <a href="#pangkalahatang tanaw">Routing</a> <ul>
         <li>
           <a href="#defining">Defining Routes</a> <ul>
             <li>
@@ -106,7 +106,7 @@ $router->add(
     ]
 );
 
-// Another route
+// Ibang Ruta
 $router->add(
     '/admin/users/change-password',
     [
@@ -118,10 +118,10 @@ $router->add(
 $router->handle();
 ````
 
-The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths.
-In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. `Phalcon\Mvc\Dispatcher`) that this is the controller/action it should execute.
+Ang unang parametro  ng `add()` na paraan ay ang palatandaan na gusto mong pagtugmain at, opsyonal na i-set ang parametro sa isang grupo ng mga daanan.
+Sa kasong ito, kung ang URI ay `/admin/users/my-profile`, at ang `users` tagakontrol ng kanyang galaw `profile`ay magagawa na. Mahalagang tandaan na ang tagaruta ay hindi gumagawa ng tagakontrol at galaw, ito ay kumukuha lamang ng impormasyon upang ihatid sa wastong bahagi (i.e. `Phalcon\Mvc\Dispatcher`) na ito ay sang tagakontrol/galaw na dapat magawa.
 
-An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can create more flexible routes:
+Ang isang aplikasyon ay pwedeng magkaroon ng mga daanan at ang pagbibigay ng kahulugan isa-isa ay maaaring maging isang mapait na gawain. Sa kasong ito pwede tayong gumawa ng mas flexible na mga ruta:
 
 ```php
 <?php
@@ -142,17 +142,17 @@ $router->add(
 );
 ```
 
-In the example above, we're using wildcards to make a route valid for many URIs. For example, by accessing the following URL (`/admin/users/a/delete/dave/301`) would produce:
+Sa halimbawa sa itaas, tayo ay gumagamit ng mga wilcards upang makagawa ng isang balidong ruta para sa maraming URIs, sa pagbukas ng mga sumusunod na URL (`/admin/users/a/delete/dave/301`) na makakagawa ng:
 
 | Controller | Action | Parameter | Parameter |
 |:----------:|:------:|:---------:|:---------:|
 |   users    | delete |   dave    |    301    |
 
-The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions](http://www.php.net/manual/en/book.pcre.php). Note that, it is not necessary to add regular expression delimiters. All route patterns are case-insensitive.
+Ang `lahat()` na paraan na tumanggap ng mga palatandaan na pwedeng opsyonal na magkaroon ng hindi pa nabibigyan ng kahulugan ng mga humahawak sa lugar at mga bumabago sa regular na ekspresyon. Lahat ng mga palatandaan ay dapt magsimula ng karakter na nasa unahang slash (`/`). Ang regular na ekspresyon syntax used sa parehong [PCRE regular expressions](http://www.php.net/manual/en/book.pcre.php). Tandaan, hindi kailangan na magdagdag ng regular na ekspresyon na tagalimit. Lahat ng ruta na palatandaan ay sensitibo sa kaso.
 
-The second parameter defines how the matched parts should bind to the controller/action/parameters. Matching parts are placeholders or subpatterns delimited by parentheses (round brackets). In the example given above, the first subpattern matched (`:controller`) is the controller part of the route, the second the action and so on.
+Ang pangalawang parametro na nagbibigay kahulugan sa magkatugmang bahagi ay dapat na nakatali sa tagakontrol/galaw/mga parametro. Ang magkatugmang mga bahagi ay tagahawak ng lugar o sangang palatandaan na nililimitahan ng panaklong(bilog na mga bracket). Sa halimbawang binigay sa itaas, ang unang sangang palatandaan na magkatugma (`:controller`) ay ang tagakontrol sa bahagi ng ruta. ang pangalawa na aksyon at marami pa.
 
-These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported:
+Itong mga tagahawak ng lugar na tumutulong na sumulat ng regular na ekspresyon na mas mababasa para sa mga nagdedevelop at mas madaling maintindihan. Ang mga sumusunod na tagahawak ng lugar ay suportado:
 
 | Placeholder    | Regular Expression       | Usage                                                                                                  |
 | -------------- | ------------------------ | ------------------------------------------------------------------------------------------------------ |
@@ -163,15 +163,15 @@ These placeholders help writing regular expressions that are more readable for d
 | `/:namespace`  | `/([a-zA-Z0-9\_\-]+)` | Matches a single level namespace name                                                                  |
 | `/:int`        | `/([0-9]+)`              | Matches an integer parameter                                                                           |
 
-Controller names are camelized, this means that characters (`-`) and (`_`) are removed and the next character is uppercased. For instance, some_controller is converted to SomeController.
+Ang mga pangalan ng tagakontrol ay nakamelized na, na ang ibig sabihin na ang mga karakter (`-`) at (`_`) ay alisin ang ang susunod na karakter ay malaki ang mga titik. Halimbawa, some_controller ay nakonbert na saSomeController.
 
-Since you can add many routes as you need using the `add()` method, the order in which routes are added indicate their relevance, latest routes added have more relevance than first added. Internally, all defined routes are traversed in reverse order until `Phalcon\Mvc\Router` finds the one that matches the given URI and processes it, while ignoring the rest.
+Dahil pwede kang magdagdag ng maraming mga ruta na kailangan gamit ang `add()` na paraan, ang pagkakasunod-sunod sa mga ruta na madadagdag na nagsasabi sa kanilang pagkakapareha, ang mga bagong ruta ay mas mara maraming pagkakapareha kaysa sa naunang nadagdag. Sa kalooban, sa lahat na nabigyan nga kahulugan ay nakatraverse sa baliktad na pagkakasunod hanggang`Phalcon\Mvc\Router` nakitang isang na magkatugma sa binigay na URI at mga proseso nito, habang binabaliwala ang natira.
 
 <a name='defining-named-parameters'></a>
 
 ### Parameters with Names
 
-The example below demonstrates how to define names to route parameters:
+Ang halimbawa sa ibaba na nagpapakita kung paano bibigyan ng kahulugan ang pangalan upang maruta ang mga parametro:
 
 ```php
 <?php
@@ -189,7 +189,7 @@ $router->add(
 );
 ```
 
-In the above example, the route doesn't define a `controller` or `action` part. These parts are replaced with fixed values (`posts` and `show`). The user will not know the controller that is really dispatched by the request. Inside the controller, those named parameters can be accessed as follows:
+Sa itaas na halimbawa, ang ruta ay hindi nagbibigay ng isang `controller` o `action` na bahagi. Ang mga parteng ito ay napalitan na mga hindi nababagong mga halaga (`posts` at `show`). Ang gumagamit na hindi malalaman na ang tagakontrol ay talagang hindi na patch ng hiling. Sa loob ng tagakontrol, Iyong mga napangalanan na mga parametro ay pwedeng mabuksan sa mga sumusunod:
 
 ```php
 <?php
@@ -211,7 +211,7 @@ class PostsController extends Controller
         // Get 'month' parameter
         $month = $this->dispatcher->getParam('month');
 
-        // Get 'day' parameter
+       // Get 'day' parameter
         $day = $this->dispatcher->getParam('day');
 
         // ...
@@ -219,7 +219,7 @@ class PostsController extends Controller
 }
 ```
 
-Note that the values of the parameters are obtained from the dispatcher. This happens because it is the component that finally interacts with the drivers of your application. Moreover, there is also another way to create named parameters as part of the pattern:
+Tandaan na ang mga halaga na mga parametro ay nakuha galing sa mga tagadispatch. Nangyayari ito dahil ito ay bahagi na sa wakas na makipag-ugnay sa mga driver ng iyong aplikasyon. Sa karagdagan, walang ibang daan upang gumawa ng napangalang mga parametro bilang bahagi ng parte:
 
 ```php
 <?php
@@ -233,7 +233,7 @@ $router->add(
 );
 ```
 
-You can access their values in the same way as before:
+Pwede mong buksan ang mga halaga nila sa parehong paraan gaya ng dati:
 
 ```php
 <?php
@@ -259,7 +259,7 @@ class DocumentationController extends Controller
 
 ### Short Syntax
 
-If you don't like using an array to define the route paths, an alternative syntax is also available. The following examples produce the same result:
+Kung hindi mo gustong gumamit ng isang array upang bigyan ng kahulugan ang mga landas ng ruta, isang alternatibong syntax ay magagamit na din. Ang mga sumusunod na mga halimbawa ginagamit na nagawa sa parehong resulta:
 
 ```php
 <?php
@@ -286,7 +286,7 @@ $router->add(
 
 ### Mixing Array and Short Syntax
 
-Array and short syntax can be mixed to define a route, in this case note that named parameters automatically are added to the route paths according to the position on which they were defined:
+Ang array at maikling syntax ay pwedeng bigyan ng kahulugan ng isang ruta, sa kasong ito tandaan na ang napanglang parametro na awtomatikong madagdag sa mga rutang landas ayon sa mga posisyon kung saan sila ay nabigyan ng kahulugan:
 
 ```php
 <?php
@@ -306,7 +306,7 @@ $router->add(
 
 ### Routing to Modules
 
-You can define routes whose paths include modules. This is specially suitable to multi-module applications. It's possible define a default route that includes a module wildcard:
+Pwede mong bigyan ng kahulugan iyong mga landas na isinama sa mga modyul. Ang mga ito ay espesyal na naangkop sa maramihang modyul na aplikasyon. Posible itong bigyan ng kahulugan amg mga default na ruta na nagsasabi na nagsasama ng isang modyul na wildcard:
 
 ```php
 <?php
@@ -326,13 +326,13 @@ $router->add(
 );
 ```
 
-In this case, the route always must have the module name as part of the URL. For example, the following URL: `/admin/users/edit/sonny`, will be processed as:
+Sa kasong ito, amg ruta ay dapat palaging magkaroon ng pangalan ng modyul bilang bahagi ng URL. Halimbawa, ang mga sumusunod na URL: `/admin/users/edit/sonny`, ay maproproseso bilang:
 
 | Module | Controller | Action | Parameter |
 |:------:|:----------:|:------:|:---------:|
 | admin  |   users    |  edit  |   sonny   |
 
-Or you can bind specific routes to specific modules:
+O pwede mong ibigkis ang tiyak na mga ruta sa tiyak na mga modyul:
 
 ```php
 <?php
@@ -356,7 +356,7 @@ $router->add(
 );
 ```
 
-Or bind them to specific namespaces:
+O ibigkis sila sa tiyak na mga pangalan ng espasyo:
 
 ```php
 <?php
@@ -371,7 +371,7 @@ $router->add(
 );
 ```
 
-Namespaces/class names must be passed separated:
+Pangalan ng espasyo/klase na mga pangalan ay kailangan hiwalay na mapasa:
 
 ```php
 <?php
@@ -390,7 +390,7 @@ $router->add(
 
 ### HTTP Method Restrictions
 
-When you add a route using simply `add()`, the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method, this is especially useful when creating RESTful applications:
+Kapag ikaw ay nagdagdag ng isang ruta gamit ang `add()`, ang ruta ay papaganahin sa kahit anong paraan ng HTTP. Minsan pwede nating higpitan ang isang ruta sa isang tiyak na paraan, ito ay espesyal na magagamit kapag gumagawa ng restful na mga aplikasyon:
 
 ```php
 <?php
@@ -423,7 +423,7 @@ $router->add(
 
 ### Using conversors
 
-Conversors allow you to freely transform the route's parameters before passing them to the dispatcher. The following examples show how to use them:
+Ang mga Conversor ang nagpapahintulot sa iyo na malayang mag-iba ng anyo nga mga parametro ng ruta bago magpasa sa kanila sa mga tagadispatch. Ang mga sumusunod na mga halimbawa na ipapakita kung paano gamitin ito:
 
 ```php
 <?php
@@ -446,7 +446,7 @@ $route->convert(
 );
 ```
 
-Another use case for conversors is binding a model into a route. This allows the model to be passed into the defined action directly:
+Ibang gamit para sa mga conversor na nagtatali sa isang modelo sa isang ruta. Ito ay nagpapahintulot sa modelo na direktang mapasa sa aksyo na binigyang kahulugan:
 
 ```php
 <?php
@@ -473,7 +473,7 @@ $route->convert(
 
 ### Groups of Routes
 
-If a set of routes have common paths they can be grouped to easily maintain them:
+Kung ang isang grupo ng mga ruta ay mayroong landas na pwedeng mapabilang sa grupo upang madali silang mapanatili:
 
 ```php
 <?php
@@ -523,7 +523,7 @@ $blog->add(
 $router->mount($blog);
 ```
 
-You can move groups of routes to separate files in order to improve the organization and code reusing in the application:
+Pwede mong galawin ang mga grupo upang hiwalayin ang mga file upang maayos ang pag-unlad ng organisasyon at code na ginamit muli sa aplikasyon:
 
 ```php
 <?php
@@ -542,7 +542,7 @@ class BlogRoutes extends RouterGroup
             ]
         );
 
-        // All the routes start with /blog
+// All the routes start with /blog
         $this->setPrefix('/blog');
 
         // Add a route to the group
@@ -561,7 +561,7 @@ class BlogRoutes extends RouterGroup
             ]
         );
 
-        // This route maps to a controller different than the default
+// This route maps to a controller different than the default
         $this->add(
             '/blog',
             [
@@ -573,7 +573,7 @@ class BlogRoutes extends RouterGroup
 }
 ```
 
-Then mount the group in the router:
+Pagkatapos i-mount sa grupo sa tagaruta:
 
 ```php
 <?php
@@ -588,7 +588,7 @@ $router->mount(
 
 ## Matching Routes
 
-A valid URI must be passed to the Router so that it can process it and find a matching route. By default, the routing URI is taken from the `$_GET['_url']` variable that is created by the rewrite engine module. A couple of rewrite rules that work very well with Phalcon are:
+Isang balidong URI ang dapat na ipasa sa Tagaruta para ito ay ma proseso at makahanap ng tugmang ruta. Sa default, ang pagruruta ng URI ay nakuha galing sa `$_GET['_url']` na varyabol na nagawa sa pagsulat muli ng makina ng modyul. Isang pares ng nasulat muli na mga alituntunin na gagana ng maayos kasama ang Phalcon ay:
 
 ```apacheconfig
 RewriteEngine On
@@ -597,7 +597,7 @@ RewriteCond   %{REQUEST_FILENAME} !-f
 RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 ```
 
-In this configuration, any requests to files or folders that don't exist will be sent to `index.php`. The following example shows how to use this component in stand-alone mode:
+Sa pagaayos na ito, kahit anong mga hiling sa mga file o mga folder na hindi umiiral ay mapapdala sa `index.php`. Ang mga sumusunod na halimbawa ay nagpapakita kung paano gamitin ang bahging ito sa isang mag-isang mode:
 
 ```php
 <?php
@@ -624,13 +624,15 @@ echo $router->getActionName();
 
 // Get the matched route
 $route = $router->getMatchedRoute();
+ 
+Context | Edit Context;
 ```
 
 <a name='naming'></a>
 
 ## Naming Routes
 
-Each route that is added to the router is stored internally as a `Phalcon\Mvc\Router\Route` object. That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application. This is especially useful if you want to create URLs from it.
+Sa isang ruta na madadagdag sa tagruta ay nanatili sa loob bilang `Phalcon\Mvc\Router\Route` na bagay. Ang klaseng ito nagpapakita ng kabuuan nga lahat ng detalye ng bawat isang ruta. Halimbawa, pwede tayong magbigay ng pangalan sa isang landas upng malaman natin naito ay nag-iisa at walang katulad na aplikasyon. Ito ay espesyal na magagamit kung gustu mong gumawa ng mga URLs galing dito.
 
 ```php
 <?php
@@ -643,7 +645,7 @@ $route = $router->add(
 $route->setName('show-posts');
 ```
 
-Then, using for example the component `Phalcon\Mvc\Url` we can build routes from its name:
+Pagkatapos, gamit ang halimbawa ng bahagi ng `Phalcon\Mvc\Url` pwede tayong gumawa ng mga ruta galing sa kanyang pangalan:
 
 ```php
 <?php
@@ -662,7 +664,7 @@ echo $url->get(
 
 ## Usage Examples
 
-The following are examples of custom routes:
+Ang mga sumusunod na mga halimbawa ay pinasadyang mga ruta:
 
 ```php
 <?php
@@ -746,21 +748,21 @@ $router->add(
 );
 ```
 
-<h5 class='alert alert-warning'>Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: <code>/([a-zA-Z0-9\_\-]+)</code> </h5>
+<h5 class='alert alert-warning'>Mag-ingat sa mga karakter na pinahintulutan sa regular na ekspresyon para sa mga tagakontrol at mga espasyong pangpangalan. Na sila ay nagiging pangalan ng mga klase at sa pabalik sila ay napasa sa pamamagitan ng sistema ng file na magagamit nga mga aatake na babasa sa mga hindi pinapayagang bumukas sa mga file. Isang ligtas na ekspresyon ay <code>/([a-zA-Z0-9\_\-]+)</code> </h5>
 
 <a name='default-behavior'></a>
 
 ## Default Behavior
 
-`Phalcon\Mvc\Router` has a default behavior that provides a very simple routing that always expects a URI that matches the following pattern: `/:controller/:action/:params`
+`Phalcon\Mvc\Router` ay mayroong default na pag-uugali na nagbibigay na napakasimpleng pagruruta na palaging umaasa sa isang URI na tugma sa mga sumusunod na patter: `/:controller/:action/:params`
 
-For example, for a URL like this `http://phalconphp.com/documentation/show/about.html`, this router will translate it as follows:
+Para sa Halimbawa, para sa gamitong URL `http://phalconphp.com/documentation/show/about.html`, ang tagarutang ito ay magsasalin nito sa sumusunod:
 
 |  Controller   | Action | Parameter  |
 |:-------------:|:------:|:----------:|
 | documentation |  show  | about.html |
 
-If you don't want the router to have this behavior, you must create the router passing `false` as the first parameter:
+Kung hindi mo gustong aang tagaruta na magkaroon ng ganitong pag-uugali kailangan mong gumawa pagpasa ng tagaruta `false` bilang unang parametro:
 
 ```php
 <?php
@@ -775,7 +777,7 @@ $router = new Router(false);
 
 ## Setting the default route
 
-When your application is accessed without any route, the '/' route is used to determine what paths must be used to show the initial page in your website/application:
+Kapag ang iyong aplikasyon ay binuksanna wlang ruta, ang '/' na ruta ay ginamit upang malaman ang landas na gagamitin upang maipakita ang mga simulang pahina sa iyong website/aplikasyon:
 
 ```php
 <?php
@@ -793,7 +795,7 @@ $router->add(
 
 ## Not Found Paths
 
-If none of the routes specified in the router are matched, you can define a group of paths to be used in this scenario:
+Kung wala sa mga rutang natiyak sa tagaruta na tugma, pwede mong bigyan ng kahulugan ang isang grupo ng mga landas na ginamit sa pangyayaring ito:
 
 ```php
 <?php
@@ -807,13 +809,13 @@ $router->notFound(
 );
 ```
 
-This is typically for an Error 404 page.
+Ito ay kadalasa para sa Pagkakamaling 404 ng pahina.
 
 <a name='default-paths'></a>
 
 ## Setting default paths
 
-It's possible to define default values for the module, controller or action. When a route is missing any of those paths they can be automatically filled by the router:
+Posibleng itong magbigay ng kahulugan sa mga default na mga halaga para sa modyul, tagkontrol, o aksyon. Kapag ang isang ruta ay nawawala na kahit anong mga landas nito sila ay awtomatikong pinupunan na tagruta:
 
 ```php
 <?php
@@ -837,7 +839,7 @@ $router->setDefaults(
 
 ## Dealing with extra/trailing slashes
 
-Sometimes a route could be accessed with extra/trailing slashes. Those extra slashes would lead to produce a not-found status in the dispatcher. You can set up the router to automatically remove the slashes from the end of handled route:
+Minsan ang isang ruta ay pwedeng mabuksan ng sobra/nagtrail na mga slash. Iyong mga sobrang mga slash ay mangunguna na gumawa ng isang hindi makitang estado sa tagadispatch. Pwede mong i-set ang tagruta sa awtomatikong tumatanggal ng mga slash galing sa katapusang ng hinawakan na ruta:
 
 ```php
 <?php
@@ -850,7 +852,7 @@ $router = new Router();
 $router->removeExtraSlashes(true);
 ```
 
-Or, you can modify specific routes to optionally accept trailing slashes:
+O, pwede mong baguhin ang tiyak na mga ruta upang opsyonal na tanggapin ang mga nagtrail na mga slash:
 
 ```php
 <?php
@@ -869,7 +871,7 @@ $router->add(
 
 ## Match Callbacks
 
-Sometimes, routes should only be matched if they meet specific conditions. You can add arbitrary conditions to routes using the `beforeMatch()` callback. If this function return `false`, the route will be treated as non-matched:
+Minsan, ang mga ruta ay kailangan lamang na tugma kung sila nakatugon sa mga tiyak na mga kondisyon. Pwede kang magdagdag na mga arbitaryong mga kondisyon upang ang mga ruta gamit ang `beforeMatch()` pagtawag muli. Sa gamit na ito na bumalik `false`, ang ruta ay tratatuhin bilang isang hindi tugma:
 
 ```php
 <?php
@@ -893,7 +895,7 @@ $route->beforeMatch(
 );
 ```
 
-You can re-use these extra conditions in classes:
+Pwede mong gamitin muli ang mga sobrang kondisyon sa mga klase:
 
 ```php
 <?php
@@ -907,7 +909,7 @@ class AjaxFilter
 }
 ```
 
-And use this class instead of the anonymous function:
+At gamit ang klaseng ito sa halip ng isang hindi kilalang gamit:
 
 ```php
 <?php
@@ -928,7 +930,7 @@ $route->beforeMatch(
 );
 ```
 
-As of Phalcon 3, there is another way to check this:
+Sa Phalcon 3, wala ng ibang daan para masuri ito:
 
 ```php
 <?php
@@ -961,7 +963,7 @@ $route->beforeMatch(
 
 ## Hostname Constraints
 
-The router allows you to set hostname constraints, this means that specific routes or a group of routes can be restricted to only match if the route also meets the hostname constraint:
+Ang tagaruta na iyong na-set ns mgs psnglsn ng host na humahadlang, ang ibig sabihin nito na ang tiyak na mga ruta o isang grupo na psedeng mapigilan upang matugma lamang kung ang isang ruta ay naktugon sa pangalan ng host na humahadlang:
 
 ```php
 <?php
@@ -976,9 +978,11 @@ $route = $router->add(
 );
 
 $route->setHostName('admin.company.com');
+ 
+Context | Edit Context;
 ```
 
-The hostname can also be passed as a regular expressions:
+Ang pangalan ng host ay pwede mapasa bilang isang regular na ekspresyon:
 
 ```php
 <?php
@@ -995,7 +999,7 @@ $route = $router->add(
     $route->setHostName('([a-z]+).company.com');
 ```
 
-In groups of routes you can set up a hostname constraint that apply for every route in the group:
+Sa mga grupo na mga ruta pwede kang mag-set ng isang pangalan ng host na pwedeng maglagay para sa bawat isang ruta sa isang grupo:
 
 ```php
 <?php
@@ -1048,7 +1052,7 @@ $router->mount($blog);
 
 ## URI Sources
 
-By default the URI information is obtained from the `$_GET['_url']` variable, this is passed by the Rewrite-Engine to Phalcon, you can also use `$_SERVER['REQUEST_URI']` if required:
+Sa pamamagitan ng default ng URI na impormasyon na nakuha galing sa `$_GET['_url']` na varyabol, na napasa ng Pagsulat muli-Makina patungon sa Phalcon, pwede mo ring gamitin ang `$_SERVER['REQUEST_URI']` kung kinakailangan:
 
 ```php
 <?php
@@ -1068,7 +1072,7 @@ $router->setUriSource(
 );
 ```
 
-Or you can manually pass a URI to the `handle()` method:
+O pwede mong manu-manung ipasa ang isang URI sa `handle()` na paraan:
 
 ```php
 <?php
@@ -1076,13 +1080,13 @@ Or you can manually pass a URI to the `handle()` method:
 $router->handle('/some/route/to/handle');
 ```
 
-<h5 class='alert alert-danger'>Please note that using <code>Router::URI_SOURCE_GET_URL</code> automatically decodes the Uri, because it is based on the <code>$_REQUEST</code> superglobal. However, for the time being, using <code>Router::URI_SOURCE_SERVER_REQUEST_URI</code> will not automatically decode the Uri for you. This will change in the next major release.</h5>
+<h5 class='alert alert-danger'>Pakitandaan na ang paggamit sa <code>Router::URI_SOURCE_GET_URL</code> na awtomatikong nagdedecode ang Uri, dahil ito ay nakabase sa <code>$_REQUEST</code> pinakaglobal. Gayunpaman, pa sa ngayon, gamitin ang <code>Router::URI_SOURCE_SERVER_REQUEST_URI</code> ay hindi magdedecode ng awtomatiko sa Uri para sa iyo. Ito ay magbabago sa susunod na malaking pagbitaw.</h5>
 
 <a name='testing'></a>
 
 ## Testing your routes
 
-Since this component has no dependencies, you can create a file as shown below to test your routes:
+Dahil ang bahagi ay walang dinedependihan, pwede kang gumawa ng isang file na ipinakita upang masuri ang iyong mga ruta:
 
 ```php
 <?php
@@ -1128,7 +1132,7 @@ foreach ($testRoutes as $testRoute) {
 
 ## Annotations Router
 
-This component provides a variant that's integrated with the [annotations](/[[language]]/[[version]]/annotations) service. Using this strategy you can write the routes directly in the controllers instead of adding them in the service registration:
+Ang bahaging ito ay nagbibigay ng isang magkaiba-iba na naisama sa [annotations](/[[language]]/[[version]]/annotations) na serbisyo. Gamit ang stratehiyang ito pwede kang sumulat nga mga ruta direkta sa mga tagakontrol sa halip na idagdagdag sila sa rehistrasyon ng serbisyo:
 
 ```php
 <?php
@@ -1146,7 +1150,7 @@ $di['router'] = function () {
 };
 ```
 
-The annotations can be defined in the following way:
+Ang mga anotasyon ay pwedeng mabigyan ng kahulugan sa sumusunod na paraan:
 
 ```php
 <?php
@@ -1210,7 +1214,7 @@ class ProductsController
 }
 ```
 
-Only methods marked with valid annotations are used as routes. List of annotations supported:
+Iyong mga paraan na namarkahan lamanmna may balidong anotasyon na ginamit bilng mga ruta, Listahan ng mga anotasyon na suportado:
 
 | Name        | Description                                                                                       | Usage                                  |
 | ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
@@ -1222,7 +1226,7 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 | Delete      | This annotation marks a method as a route restricting the HTTP method to `DELETE`                 | `@Delete('/api/products/delete/{id}')` |
 | Options     | This annotation marks a method as a route restricting the HTTP method to `OPTIONS`                | `@Option('/api/products/info')`        |
 
-For annotations that add routes, the following parameters are supported:
+Para sa mga anotasyon na magdadagdag ng mga ruta, ang mga sumusunod na parametro ay suportado:
 
 | Name       | Description                                                            | Usage                                                                |
 | ---------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -1231,7 +1235,7 @@ For annotations that add routes, the following parameters are supported:
 | paths      | An array of paths like the one passed to `Phalcon\Mvc\Router::add()` | `@Route('/posts/{id}/{slug}', paths={module='backend'})`             |
 | conversors | A hash of conversors to be applied to the parameters                   | `@Route('/posts/{id}/{slug}', conversors={id='MyConversor::getId'})` |
 
-If you're using modules in your application, it is better use the `addModuleResource()` method:
+Kung ikaw ay gumagamit ng mga modyul sa iyong aplikasyon, mas mabuti na gamitin ang `addModuleResource()` na paraan:
 
 ```php
 <?php
@@ -1253,9 +1257,9 @@ $di['router'] = function () {
 
 ## Registering Router instance
 
-You can register router during service registration with Phalcon dependency injector to make it available inside the controllers.
+Pwede kang magrehistro ng tagaruta sa panahon ng pagrehistro ng serbisyo sa Phalcon ng malayang pagturok upang magamit sa loob ng tagakontrol.
 
-You need to add code below in your bootstrap file (for example `index.php` or `app/config/services.php` if you use [Phalcon Developer Tools](http://phalconphp.com/en/download/tools).
+Kailangan mong magdagdag ng code sa ibaba sa iyong bootstrap na file (para sa halimbawa `index.php` or `app/config/services.php`kung iyong gagamitin [Phalcon Developer Tools](http://phalconphp.com/en/download/tools).
 
 ```php
 <?php
@@ -1273,7 +1277,7 @@ $di->set(
 );
 ```
 
-You need to create `app/config/routes.php` and add router initialization code, for example:
+Kailangan mong gumawa ng `app/config/routes.php` at magdagdag ng tagaruta na nagsisimulang code, para sa halimbawa:
 
 ```php
 <?php
@@ -1305,4 +1309,4 @@ return $router;
 
 ## Implementing your own Router
 
-The `Phalcon\Mvc\RouterInterface` interface must be implemented to create your own router replacing the one provided by Phalcon.
+Ang `Phalcon\Mvc\RouterInterface` ng interface ay dapat na maipatupad upang gumawa ng iyong sariling tagaruta na pumupalit sa isang binigay ng Phalcon.
