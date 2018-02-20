@@ -18,6 +18,6 @@ Phalcon это проект с открытым исходным кодом, п�
 
 <div class="alert alert-danger">
     <p>
-        The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in <a href="https://github.com/phalcon/docs">Github</a> for English, and <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> for other languages
+        The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. Создание и правки документации на английском осуществляются на <a href="https://github.com/phalcon/docs">Github</a>, для всех остальных языков используется <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a>
     </p>
 </div>
