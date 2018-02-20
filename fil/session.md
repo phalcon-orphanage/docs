@@ -96,26 +96,26 @@ $session = Factory::load($options);
 
 ## Storing/Retrieving data in Session
 
-From a controller, a view or any other component that extends `Phalcon\Di\Injectable` you can access the session service and store items and retrieve them in the following way:
+Mula sa isang kontroler, isang pananaw o anumang iba pang komponent na pinapaliwig sa `Phalcon\Di\Injectable` maaari mong ma-akses ang serbisyo ng sesyon at mag-imbak ng mga aytem at mabawi ang mga ito sa sumusunod na paraan:
 
 ```php
 <?php
 
-use Phalcon\Mvc\Controller;
+gamitin ang Phalcon\Mvc\Controller;
 
-class UserController extends Controller
+ang klaseng UserController ay pinapalawak ng Controller
 {
     public function indexAction()
     {
-        // Set a session variable
+        // Magtakda ng isang sesyon na variable
         $this->session->set('user-name', 'Michael');
     }
 
     public function welcomeAction()
     {
-        // Check if the variable is defined
+        // Suriin kung ang variable ay naka-define
         if ($this->session->has('user-name')) {
-            // Retrieve its value
+            // I-retrieve ang halaga nito
             $name = $this->session->get('user-name');
         }
     }
@@ -127,24 +127,24 @@ class UserController extends Controller
 
 ## Removing/Destroying Sessions
 
-It's also possible remove specific variables or destroy the whole session:
+Ito ay posible rin na tanggalin ang mga tukoy na variable o sirain ang buong sesyon:
 
 ```php
 <?php
 
-use Phalcon\Mvc\Controller;
+gamitin ang Phalcon\Mvc\Controller;
 
-class UserController extends Controller
+ang klaseng UserController ay pinapalawak ng Controller
 {
     public function removeAction()
     {
-        // Remove a session variable
+        // Tanggalin ang isang sesyon na variable
         $this->session->remove('user-name');
     }
 
     public function logoutAction()
     {
-        // Destroy the whole session
+        // Sirain ang buong sesyon
         $this->session->destroy();
     }
 }
@@ -154,18 +154,18 @@ class UserController extends Controller
 
 ## Isolating Session Data between Applications
 
-Sometimes a user can use the same application twice, on the same server, in the same session. Surely, if we use variables in session, we want that every application have separate session data (even though the same code and same variable names). To solve this, you can add a prefix for every session variable created in a certain application:
+Paminsan-minsan ang user ay maaaring gumamit ng dalawang beses ng parehong aplikasyon, sa parehong serber, sa parehong sesyon. Sigurado, kung gagamit tayo ng mga variable sa sesyon, gusto namin na ang bawat aplikasyon ay may hiwalay na datos ng sesyon (kahit na pareho ang code at parehong mga pangalan ng variable). Para masagot ito, maaari mong dagdagan ng prefix para sa bawat variable ng sesyon na nilikha sa isang tiyak na aplikasyon:
 
 ```php
 <?php
 
-use Phalcon\Session\Adapter\Files as Session;
+gamitin ang Phalcon\Session\Adapter\Files bilang Session;
 
-// Isolating the session data
+// Paghihiwalay ng datos ng sesyon
 $di->set(
     'session',
     function () {
-        // All variables created will prefixed with 'my-app-1'
+        // Lahat ng mga variable na ginawa ay magiging prefix sa 'my-app-1'
         $session = new Session(
             [
                 'uniqueId' => 'my-app-1',
@@ -179,18 +179,18 @@ $di->set(
 );
 ```
 
-Adding a unique ID is not necessary.
+Ang pagdagdag ng isang kakaibang ID ay hindi kinakailangan.
 
 <a name='bags'></a>
 
 ## Session Bags
 
-`Phalcon\Session\Bag` is a component that helps separating session data into `namespaces`. Working by this way you can easily create groups of session variables into the application. By only setting the variables in the `bag`, it's automatically stored in session:
+`Phalcon\Sesyon\Bag` ay isang komponent na tumutulong sa paghihiwalay ng datos ng sesyon sa `namespaces`. Pagtatrabaho sa pamamagitan ng ganitong paraan maaaring madaling mong malikha ang mga grupo ng mga variable ng sesyon sa aplikasyon. Sa pamamagitan ng pagtatakda lamang ng mga variable sa `bag`, ito'y awtomatikong naka-imbak sa sesyon:
 
 ```php
 <?php
 
-use Phalcon\Session\Bag as SessionBag;
+gamitin ang Phalcon\Session\Bag bilang SessionBag;
 
 $user = new SessionBag('user');
 
@@ -204,18 +204,18 @@ $user->age  = 22;
 
 ## Persistent Data in Components
 
-Controller, components and classes that extends `Phalcon\Di\Injectable` may inject a `Phalcon\Session\Bag`. This class isolates variables for every class. Thanks to this you can persist data between requests in every class in an independent way.
+Kontroler, mga komponent at mga klase na pinapalawig sa `Phalcon\Di\Injectable` ay maaaring mag-injek ng `Phalcon\Sesyon\Bag`. Ang klase na ito ay pinaghihiwalay ang mga variable para sa bawat klase. Salamat dito maaari mong ipagpumilit ang datos sa pagitan ng mga kahilingan sa bawat klase sa isang malayang paraan.
 
 ```php
 <?php
 
-use Phalcon\Mvc\Controller;
+gamitin ang Phalcon\Mvc\Controller;
 
-class UserController extends Controller
+ang klaseng UserController ay pinapalawak ng Controller
 {
     public function indexAction()
     {
-        // Create a persistent variable 'name'
+        // Gumawa ng isang patuloy na variable na 'pangalan'
         $this->persistent->name = 'Laura';
     }
 
@@ -228,18 +228,18 @@ class UserController extends Controller
 }
 ```
 
-In a component:
+Sa isang komponent:
 
 ```php
 <?php
 
-use Phalcon\Mvc\User\Component;
+gamitin ang Phalcon\Mvc\User\Component;
 
-class Security extends Component
+ang klaseng Security ay pinapalawak ng Component
 {
     public function auth()
     {
-        // Create a persistent variable 'name'
+        // Gumawa ng isang patuloy na variable na 'pangalan'
         $this->persistent->name = 'Laura';
     }
 
@@ -250,12 +250,12 @@ class Security extends Component
 }
 ```
 
-The data added to the session (`$this->session`) are available throughout the application, while persistent (`$this->persistent`) can only be accessed in the scope of the current class.
+Ang idinagdag na datos sa sesyon (`$this->sesyon`) ay magagamit sa buong aplikasyon, habang ang paulit-ulit (`$this->persistent`) ay maaari lamang ma-akses sa saklaw ng kasalukuyang klase.
 
 <a name='custom-adapters'></a>
 
 ## Implementing your own adapters
 
-The `Phalcon\Session\AdapterInterface` interface must be implemented in order to create your own session adapters or extend the existing ones.
+Ang `Phalcon\Sesyon\AdapterInterface` na interface ay dapat na ipatupad para makalikha ng iyong sariling mga adapter na sesyon o palawigin pa ang mga umiiral na.
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter)
+May mas marami pang mga adapter na magagamit para sa mga komponent na ito sa [Phalcon Inkubador](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter)
