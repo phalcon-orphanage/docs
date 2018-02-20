@@ -1,33 +1,33 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Tutoryal: Paggawa ng isang Simpleng REST API</a> <ul>
+      <a href="#pangkalahatang-ideya">Tutoryal: Paggawa ng isang Simpleng REST API</a> <ul>
         <li>
-          <a href="#definitions">Defining the API</a>
+          <a href="#kahulugan">Pagtukoy sa API</a>
         </li>
         <li>
-          <a href="#implementation">Creating the Application</a>
+          <a href="#pagpapatupad">Paggawa ng Aplikasyon</a>
         </li>
         <li>
-          <a href="#models">Creating a Model</a>
+          <a href="#modelo">Paggawa ng Modelo</a>
         </li>
         <li>
-          <a href="#retrieving-data">Retrieving Data</a>
+          <a href="#pagkuha ng datos">Pagkahuha ng Datos</a>
         </li>
         <li>
-          <a href="#inserting-data">Inserting Data</a>
+          <a href="#pagpasok ng datos">Pagpasok ng Datos</a>
         </li>
         <li>
-          <a href="#updating-data">Updating Data</a>
+          <a href="#pagupdate ng datos">Pag-update ng Datos</a>
         </li>
         <li>
-          <a href="#deleting-data">Deleting Data</a>
+          <a href="#pagbura ng datos">Pagbura ng Datos</a>
         </li>
         <li>
-          <a href="#testing">Testing our Application</a>
+          <a href="#pagsuri">Pagsusuri sa ating Aplikasyon</a>
         </li>
         <li>
-          <a href="#conclusion">Conclusion</a>
+          <a href="#konklusyon">Konklusyon</a>
         </li>
       </ul>
     </li>
@@ -36,47 +36,47 @@
 
 <a name='basic'></a>
 
-# Tutorial: Creating a Simple REST API
+# Tyutoryal: Paggawa ng Simpleng REST API
 
-In this tutorial, we will explain how to create a simple application that provides a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
+Sa tyutoryal na ito, aming ipapaliwanag kung paano gumawa ng simpleng aplikasyon na magbibigay ng [REStful](http://en.wikipedia.org/wiki/Representational_state_transfer) API gamit ang mga iba't-ibang HTTP na paraan:
 
-- `GET` to retrieve and search data
-- `POST` to add data
-- `PUT` to update data
-- `DELETE` to delete data
+- `KUHA` upang makuha at mahanap ang datos
+- `POST` para magdagdag ng datos
+- `ILAGAY` para ma-update ang datos
+- `BURAHIN` para matanggal ang datos
 
 <a name='definitions'></a>
 
-## Defining the API
+## Pagbigay ng kahulugan ng API
 
-The API consists of the following methods:
+Ang API ay binubuo ng mga sumusunod na paraan:
 
-| Method   | URL                      | Action                                         |
-| -------- | ------------------------ | ---------------------------------------------- |
-| `GET`    | /api/robots              | Retrieves all robots                           |
-| `GET`    | /api/robots/search/Astro | Searches for robots with 'Astro' in their name |
-| `GET`    | /api/robots/2            | Retrieves robots based on primary key          |
-| `POST`   | /api/robots              | Adds a new robot                               |
-| `PUT`    | /api/robots/2            | Updates robots based on primary key            |
-| `DELETE` | /api/robots/2            | Deletes robots based on primary key            |
+| Paraan    | URL                      | Aksyon                                                           |
+| --------- | ------------------------ | ---------------------------------------------------------------- |
+| `KUMUHA`  | /api//robots             | Kumukuha ng lahat ng mga robot                                   |
+| `KUMUHA`  | /api/robots/search/Astro | Naghahanap ng mga robots na may 'Astro" sa kanilang mga pangalan |
+| `KUMUHA`  | /api/robots/2            | Kinukuha ang mga robots base sa pangunahin na susi               |
+| `I-POST`  | /api/robots              | Magdadagdag ng bagong robot                                      |
+| `ILAGAY`  | /api/robots/2            | Mag-uupdate ng mga robot base sa pangunahin na susi              |
+| `BURAHIN` | /api/robots/2            | Buburahin ang mga robot basin sa pangunahin na susi              |
 
 <a name='implementation'></a>
 
-## Creating the Application
+## Paggawa ng Aplikasyon
 
-As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/[[language]]/[[version]]/application-micro) to meet our goal.
+Dahil ang aplikasyon ay napakasimple, hindi namin ipapatupad ang anumang buong paligid ng MVC para mapaunlad ito. Sa kasong ito, gagamitin natin ang [micro aplikasyon](/[[language]]/[[version]]/application-micro) para makamtan ang ating hangarin.
 
-The following file structure is more than enough:
+Ang sumusunod na file na istraktura ay sapat na:
 
 ```php
 my-rest-api/
-    models/
+    mgamodelo/
         Robots.php
     index.php
     .htaccess
 ```
 
-First, we need a `.htaccess` file that contains all the rules to rewrite the URIs to the `index.php` file, that is our application:
+Una, kailangan nating ang `.htaccess` na file na naglalaman ng lahat ng mga utos kung paano isulat muli ang mga URl sa `index.php` na file, yan ang ating aplikasyon:
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -86,30 +86,30 @@ First, we need a `.htaccess` file that contains all the rules to rewrite the URI
 </IfModule>
 ```
 
-The bulk of our code will be placed in `index.php`. The file is created as follows:
+Ang bulto ng aming kodigo ay ilalagay sa `index.php`. Ang file ay ginawa katulad nito:
 
 ```php
 <?php
 
-use Phalcon\Mvc\Micro;
+gamitin ang Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Define the routes here
+// Bigyang kahulugan ang mga daan dito
 
 $app->handle();
 ```
 
-Now we will create the routes as we defined above:
+Ngayon tayo ay gagawa ng mga daanan sa pagbibigay ng kahulugan ng nasa taas:
 
 ```php
 <?php
 
-use Phalcon\Mvc\Micro;
+gamitin ang Phalcon\Mvc\Micro;
 
-$app = new Micro();
+$app = bagong Micro();
 
-// Retrieves all robots
+// Kukuha ng lahat ng mga robot
 $app->get(
     '/api/robots',
     function () {
@@ -117,7 +117,7 @@ $app->get(
     }
 );
 
-// Searches for robots with $name in their name
+// Maghahanap ng mga robot na may $name sa kanilang pangalan
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
@@ -125,7 +125,7 @@ $app->get(
     }
 );
 
-// Retrieves robots based on primary key
+// Kinukuha ang mga robot base sa pangunahin na susi
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
@@ -133,7 +133,7 @@ $app->get(
     }
 );
 
-// Adds a new robot
+// Magdadagdag ng bagong robot
 $app->post(
     '/api/robots',
     function () {
@@ -141,7 +141,7 @@ $app->post(
     }
 );
 
-// Updates robots based on primary key
+// Mag-update ng mga robot base sa pangunahin na susi
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function () {
@@ -149,7 +149,7 @@ $app->put(
     }
 );
 
-// Deletes robots based on primary key
+// Buburahin ang mga robot base sa pangunahin na susi
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function () {
@@ -160,35 +160,36 @@ $app->delete(
 $app->handle();
 ```
 
-Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern, followed by a handler. In this case, the handler is an anonymous function. The following route: `/api/robots/{id:[0-9]+}`, by example, explicitly sets that the `id` parameter must have a numeric format.
+Ang bawat daanan ay may kahulugan na paraan na may kaparehang pangalan bilang HTTP na paraan, bilang unang parameter malalampasan nating ang anyo ng ruta, sinusundan ng tagahawak. Sa kasong ito, ang tagahawak ay paraan na hindi nakikilala. Ang sumusunod na ruta: `/api/robots/{id:[0-9]+}`, halimbawa, nagtatakda ito na ang `id` na parameter ay kailangan mayroong numerik na format.
 
-When a defined route matches the requested URI then the application executes the corresponding handler.
+Kung ang nabigyang kahulugan na ruta ay nagkatugma sa hiniling na URl ang aplikasyon ay magpapatupad ng kaukulang tagahawak.
 
 <a name='models'></a>
 
-## Creating a Model
+## Paggawa ng Modelo
 
-Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
+Ang aming API ay nagbibigay ng mga impormasyon tungkol sa `robots`, ang mga datos na ito ay nakaimbak sa isang database. Ang sumusuno na modelo ay nagbibigay-daan para makuha ang talaan sa pamamagitan ng object-oriented na paraan. Naisagawa namin ang mga panuntunan sa negosyo gamit ang naka built-in na mga nagpapatunay at mga simple na mga pagpapatunay. Ang paggawa nito ay magbibigay sa amin ng kapayapaan sa isipan na ang naka impok na datos ay maitagpo ang mga pangangailangan para sa aming aplikasyon. Ang file ng modelo na ito ay dapat ilagay sa iyong `Models` na folder.
 
 ```php
 <?php
 
 namespace Store\Toys;
 
-use Phalcon\Mvc\Model;
-use Phalcon\Mvc\Model\Message;
-use Phalcon\Mvc\Model\Validator\Uniqueness;
-use Phalcon\Mvc\Model\Validator\InclusionIn;
+gamitin ang Phalcon\Mvc\Model;
+gamitin ang Phalcon\Mvc\Model\Message;
+gamitin ang Phalcon\Mvc\Model\Validator\Uniqueness;
+gamitin ang Phalcon\Mvc\Model\Validator\InclusionIn;
 
-class Robots extends Model
+ang klase ng mga robots ay nagpapahaba ng Modelo
+
 {
-    public function validation()
+    public function validation ()
     {
-        // Type must be: droid, mechanical or virtual
+        // Ang tipo ay dapat na: droid, mekanikal o birtuwal
         $this->validate(
             new InclusionIn(
                 [
-                    'field'  => 'type',
+                    'field' => 'type'.
                     'domain' => [
                         'droid',
                         'mechanical',
@@ -198,87 +199,87 @@ class Robots extends Model
             )
         );
 
-        // Robot name must be unique
+        // Ang pangalan ng robot ay dapat kakaiba
         $this->validate(
             new Uniqueness(
                 [
-                    'field'   => 'name',
-                    'message' => 'The robot name must be unique',
+                    'field'   =>'name'
+                    'mensahe' => 'Ang pangalan ng robot ay dapat kakaiba',
                 ]
             )
         );
 
-        // Year cannot be less than zero
-        if ($this->year < 0) {
+        // Ang taon ay dapat hindi bababa sa zero
+        kung ($this->taon < 0) {
             $this->appendMessage(
-                new Message('The year cannot be less than zero')
+                bagong Mensahe('Ang taon ay hindi dapat bababa sa zero')
             );
         }
 
-        // Check if any messages have been produced
-        if ($this->validationHasFailed() === true) {
-            return false;
+        // Suriin kung ang mga mensahe ay naibigay
+        kung ($this->validasyonayNabigo() ===totoo) {
+            balik sa hindi totoo;
         }
     }
 }
 ```
 
-Now, we must set up a connection to be used by this model and load it within our app [File: `index.php`]:
+Ngayon, kailangan nating mag set-up ng koneksiyon na gagamitin ng model na ito at i-load ito sa loob ng ating app [File: `index.php`]:
 
 ```php
 <?php
 
-use Phalcon\Loader;
-use Phalcon\Mvc\Micro;
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
+gamitin ang Phalcon\Loader;
+gamitin ang Phalcon\Mvc\Micro;
+gamitin ang Phalcon\Di\FactoryDefault;
+gamitin ang Phalcon\Db\Adapter\Pdo\Mysql bilang PdoMysql;
 
-// Use Loader() to autoload our model
-$loader = new Loader();
+// Gamiting ang Loader() para ma autoload ang modelo
+$loader = bagong Loader();
 
 $loader->registerNamespaces(
     [
-        'Store\Toys' => __DIR__ . '/models/',
+        'Store\Toys' => __DIR__. '/mgamodelo/',
     ]
 );
 
-$loader->register();
+$loader->rehistro();
 
-$di = new FactoryDefault();
+$di = bagong FactoryDefault();
 
-// Set up the database service
+// I-set up ang serbisyo ng database
 $di->set(
     'db',
     function () {
-        return new PdoMysql(
+        ibalik ang bagong PdoMysql(
             [
-                'host'     => 'localhost',
-                'username' => 'asimov',
-                'password' => 'zeroth',
-                'dbname'   => 'robotics',
+                'host'     =>; 'localhost',
+                'username' =>; 'asimov',
+                'password' =>; 'zeroth',
+                'dbname'   =>; 'robotics',
             ]
         );
     }
 );
 
-// Create and bind the DI to the application
-$app = new Micro($di);
+// Gumawa at isama ang DI sa aplikasyon
+$app = bagong MIcro($di);
 ```
 
 <a name='retrieving-data'></a>
 
-## Retrieving Data
+## Pagkuha ng Datos
 
-The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
+Ang unang `tagahawak` na aming ipapatupad ay sa pamamagitan ng GET na magbabalik sa lahat ng mapapakinabangan na mga robot. Ating gamitin ang PHQL para maisagawa ang simpleng query pabalik sa resulta bilang jSON. [File: `index.php`]
 
 ```php
 <?php
 
-// Retrieves all robots
+// Magkukuha ng lahat ng mga robot
 $app->get(
     '/api/robots',
     function () use ($app) {
-        $phql = 'SELECT * FROM Store\Toys\Robots ORDER BY name';
+        $phql = 'SELECT * FROM Store\Toys\Robots isunod bilang pangalan';
 
         $robots = $app->modelsManager->executeQuery($phql);
 
@@ -296,18 +297,18 @@ $app->get(
 );
 ```
 
-[PHQL](/[[language]]/[[version]]/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
+Ang [PHQL](/[[language]]/[[version]]/db-phql), ay nahihintulot sa atin na magsulat ng queries gamit ang isang matas na klase, object-oriented na SQL na wika na nagsasalin sa tamang SQL nga mga estamento depende sa sistema ng database na ating ginagamit. Ang sugnay na `gamitin` sa hindi nakikilalang paraan ay nagtutulot sa atin na ipasa ang ibang mga aligin galing sa global na saklaw papunta sa lokal sa madaling paraan.
 
-The searching by name handler would look like [File: `index.php`]:
+Ang paghahanap ng pangalan na tagahawal ay magmukukhang `index.php`]:
 
 ```php
 <?php
 
-// Searches for robots with $name in their name
+// Maghanap ng mga robot na may $name sa kanilang pangalan
 $app->get(
     '/api/robots/search/{name}',
     function ($name) use ($app) {
-        $phql = 'SELECT * FROM Store\Toys\Robots WHERE name LIKE :name: ORDER BY name';
+        $phql = 'PILIIN * FROM Store\Toys\Robots WHERE name LIKE :name: ORDER BY name';
 
         $robots = $app->modelsManager->executeQuery(
             $phql,
@@ -330,14 +331,14 @@ $app->get(
 );
 ```
 
-Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not [File: `index.php`]:
+Sa paghahanap sa paligid ng `id` ay magkapareha lamang, sa kaso na ito, tayo ay nagpapahayag kung ang robot ay nahanap o hindi [File: `index.php`]:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Retrieves robots based on primary key
+// Nagkukuha ng mga robot base sa pangunahin na susi
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
@@ -352,19 +353,20 @@ $app->get(
 
 
 
-        // Create a response
-        $response = new Response();
+
+        // Lumikha ng sagot
+        $response = bagong sagot();
 
         if ($robot === false) {
             $response->setJsonContent(
                 [
-                    'status' => 'NOT-FOUND'
+                    'status' => 'HINDI_NAHANAP'
                 ]
             );
         } else {
             $response->setJsonContent(
                 [
-                    'status' => 'FOUND',
+                    'status' => 'NAHANAP',
                     'data'   => [
                         'id'   => $robot->id,
                         'name' => $robot->name
@@ -380,22 +382,22 @@ $app->get(
 
 <a name='inserting-data'></a>
 
-## Inserting Data
+## Pagpasok ng Datos
 
-Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion [File: `index.php`]:
+Pagkuha ng datos bilang JSON na string ay ipapasok sa katawan ng hiling, tayo ay gagamit din ng PHQL para sa pagpasok ng [File: `index.php`]:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Adds a new robot
+// Magdagdag ng bagong robot
 $app->post(
     '/api/robots',
     function () use ($app) {
         $robot = $app->request->getJsonRawBody();
 
-        $phql = 'INSERT INTO Store\Toys\Robots (name, type, year) VALUES (:name:, :type:, :year:)';
+        $phql = 'IPASOK SA Store\Toys\Robots (name, type, year) VALUES (:name:, :type:, :year:)';
 
         $status = $app->modelsManager->executeQuery(
             $phql,
@@ -406,12 +408,12 @@ $app->post(
             ]
         );
 
-        // Create a response
-        $response = new Response();
+        // Lumikha ng sagot
+        $response = bagong sagot();
 
-        // Check if the insertion was successful
+        // Suriin kung matagumapy na naipasok
         if ($status->success() === true) {
-            // Change the HTTP status
+            // Ibahin ang HTTP status
             $response->setStatusCode(201, 'Created');
 
             $robot->id = $status->getModel()->id;
@@ -423,10 +425,10 @@ $app->post(
                 ]
             );
         } else {
-            // Change the HTTP status
+            // Ibahin ang HTTP status
             $response->setStatusCode(409, 'Conflict');
 
-            // Send errors to the client
+            // Ipasa ang mga mali sa kliyente
             $errors = [];
 
             foreach ($status->getMessages() as $message) {
@@ -448,16 +450,16 @@ $app->post(
 
 <a name='updating-data'></a>
 
-## Updating Data
+## Pag-update ng Datos
 
-The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
+Ang pag-update ng datos ay katulad sa pagpasok. Ang `id` na naipasa bilang parameter ay naghuhugyat kung anong robot ang dapat na ma update [File: `index.php`]:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Updates robots based on primary key
+// I-update ang mga robot base sa pangunahing susi
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
@@ -475,10 +477,10 @@ $app->put(
             ]
         );
 
-        // Create a response
-        $response = new Response();
+        // Lumikha ng sagot
+        $response = bagong sagot();
 
-        // Check if the insertion was successful
+        // suriin kung matagumpay na naipasok
         if ($status->success() === true) {
             $response->setJsonContent(
                 [
@@ -486,7 +488,7 @@ $app->put(
                 ]
             );
         } else {
-            // Change the HTTP status
+            // Ibahin ang HTTP status
             $response->setStatusCode(409, 'Conflict');
 
             $errors = [];
@@ -503,23 +505,23 @@ $app->put(
             );
         }
 
-        return $response;
+        bumalik $response;
     }
 );
 ```
 
 <a name='deleting-data'></a>
 
-## Deleting Data
+## Pagbura ng Datos
 
-The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
+Ang pagbura ng datos ay katulad ng sa pag-update. Ang `id` naipasa bilang parameter ay nagtutukoy kung anong robot ang dapat na burahin [File: `index.php`]:
 
 ```php
 <?php
 
-use Phalcon\Http\Response;
+gamitin ang Phalcon\Http\Response;
 
-// Deletes robots based on primary key
+// Buburahin ang mga robot base sa pangunahin na susi
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
@@ -532,8 +534,8 @@ $app->delete(
             ]
         );
 
-        // Create a response
-        $response = new Response();
+        // Lumikha ng sagot
+        $response = bagong sagot();
 
         if ($status->success() === true) {
             $response->setJsonContent(
@@ -542,7 +544,7 @@ $app->delete(
                 ]
             );
         } else {
-            // Change the HTTP status
+            // Ibahin ang HTTP status
             $response->setStatusCode(409, 'Conflict');
 
             $errors = [];
@@ -559,24 +561,24 @@ $app->delete(
             );
         }
 
-        return $response;
+        bumalik $response;
     }
 );
 ```
 
 <a name='testing'></a>
 
-## Testing our Application
+## Pagsusuri sa ating Aplikasyon
 
-Using [curl](http://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
+Gamiting ang [curl](http://en.wikipedia.org/wiki/CURL) ating susubukin ang bawat ruta sa ating aplikasyon para malaman ang tamang operasyon.
 
-Obtain all the robots:
+Kunin ang lahat ng mga robot:
 
 ```bash
 curl -i -X GET http://localhost/my-rest-api/api/robots
 
 HTTP/1.1 200 OK
-Date: Tue, 21 Jul 2015 07:05:13 GMT
+Petsa: Tue, 21 Jul 2015 07:05:13 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 117
 Content-Type: text/html; charset=UTF-8
@@ -584,13 +586,13 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 ```
 
-Search a robot by its name:
+Hanapin ang robot sa pangalan nito:
 
 ```bash
 curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
 
 HTTP/1.1 200 OK
-Date: Tue, 21 Jul 2015 07:09:23 GMT
+Petsa: Tue, 21 Jul 2015 07:09:23 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 31
 Content-Type: text/html; charset=UTF-8
@@ -598,28 +600,28 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"2","name":"Astro Boy"}]
 ```
 
-Obtain a robot by its id:
+Hanapin ang robot sa id nito:
 
 ```bash
 curl -i -X GET http://localhost/my-rest-api/api/robots/3
 
 HTTP/1.1 200 OK
-Date: Tue, 21 Jul 2015 07:12:18 GMT
+Petsa: Tue, 21 Jul 2015 07:12:18 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 56
 Content-Type: text/html; charset=UTF-8
 
-{"status":"FOUND","data":{"id":"3","name":"Terminator"}}
+{"status":"FOUND","data":{"id":"3","name":"Termin
 ```
 
-Insert a new robot:
+Ipasok ang bagong robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
     http://localhost/my-rest-api/api/robots
 
 HTTP/1.1 201 Created
-Date: Tue, 21 Jul 2015 07:15:09 GMT
+Petsa: Tue, 21 Jul 2015 07:15:09 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 75
 Content-Type: text/html; charset=UTF-8
@@ -627,29 +629,29 @@ Content-Type: text/html; charset=UTF-8
 {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 ```
 
-Try to insert a new robot with the name of an existing robot:
+Subukan magpasok ng bagong robot gamit ang pangalan ng robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
     http://localhost/my-rest-api/api/robots
 
 HTTP/1.1 409 Conflict
-Date: Tue, 21 Jul 2015 07:18:28 GMT
+Petsa: Tue, 21 Jul 2015 07:18:28 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 63
 Content-Type: text/html; charset=UTF-8
 
-{"status":"ERROR","messages":["The robot name must be unique"]}
+{"status":"ERROR","messages":["Ang pangalan ng robot ay dapat kakaiba"]}
 ```
 
-Or update a robot with an unknown type:
+O i-update ang robot sa hindi alam na klase:
 
 ```bash
 curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
     http://localhost/my-rest-api/api/robots/4
 
 HTTP/1.1 409 Conflict
-Date: Tue, 21 Jul 2015 08:48:01 GMT
+Petsa: Tue, 21 Jul 2015 08:48:01 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 104
 Content-Type: text/html; charset=UTF-8
@@ -658,13 +660,13 @@ Content-Type: text/html; charset=UTF-8
     list: droid, mechanical, virtual"]}
 ```
 
-Finally, delete a robot:
+Sa katapusan, magbura ng robot:
 
 ```bash
-curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
+curl -i -X BURAHIN http://localhost/my-rest-api/api/robots/4
 
 HTTP/1.1 200 OK
-Date: Tue, 21 Jul 2015 08:49:29 GMT
+PETSA: Tue, 21 Jul 2015 08:49:29 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 15
 Content-Type: text/html; charset=UTF-8
@@ -674,6 +676,6 @@ Content-Type: text/html; charset=UTF-8
 
 <a name='conclusion'></a>
 
-## Conclusion
+## Konklusyon
 
-As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/[[language]]/[[version]]/application-micro) and [PHQL](/[[language]]/[[version]]/db-phql).
+Sa nakita natin, ang pagsagawa ng [Restful](http://en.wikipedia.org/wiki/Representational_state_transfer) na API gamit ang Phalcon ay madali gamit ang [micro na mga aplikasyon](/[[language]]/[[version]]/application-micro) at [PHQL](/[[language]]/[[version]]/db-phql).
