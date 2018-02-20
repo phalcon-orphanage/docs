@@ -1,8 +1,8 @@
-# Class **Phalcon\\Cache\\Backend\\Factory**
+# Sınıf **Phalcon\\Önbellek\\Arkayüz\\Bellek**
 
 *extends* abstract class [Phalcon\Factory](/en/3.2/api/Phalcon_Factory)
 
-*implements* [Phalcon\FactoryInterface](/en/3.2/api/Phalcon_FactoryInterface)
+*Uygulamalar* [Phalcon\Fabrika Arayüzü](/en/3.2/api/Phalcon_FactoryInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
