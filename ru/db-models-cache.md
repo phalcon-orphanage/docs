@@ -33,21 +33,21 @@
 
 <a name='orm-caching'></a>
 
-# ORM Caching
+# Кэширование в ORM
 
-Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
+Каждое приложение уникально. В большинстве приложений, однако, есть данные, которые меняются редко. Одним из наиболее распространенных узких мест в плане производительности является доступ к базе данных. Это связано со сложными процессами подключения/коммуникации, которые PHP должен выполнять при каждом запросе к базе данных для получения требуемых данных. Поэтому, если мы хотим добиться хорошей производительности, нам нужно добавить несколько уровней кэширования, где это требуется приложению.
 
-This chapter explains the potential areas where it is possible to implement caching to improve performance. Phalcon gives developers the tools they need to implement cashing where their application needs it.
+В этой главе описываются потенциальные области, в которых можно реализовать кэширование для повышения производительности. Phalcon предоставляет разработчикам инструменты, необходимые для реализации кэширования там, где это необходимо их приложению.
 
 <a name='caching-resultsets'></a>
 
-## Caching Resultsets
+## Кэширование наборов данных
 
-A well established technique to avoid continuously accessing the database, is to cache resultsets that don't change frequently, using a system with faster access (usually memory).
+Хорошо устоявшийся метод, чтобы избежать постоянного доступа к базе данных, заключается в кэшировании результирующих наборов, которые не меняются часто, используя систему с более быстрым доступом (обычно память).
 
-When `Phalcon\Mvc\Model` requires a service to cache resultsets, it will request it from the Dependency Injection Container. The service name is called `modelsCache`. Phalcon offers a [cache](/[[language]]/[[version]]/cache) component that can store any kind of data. We will now see how we can integrate it with our Models.
+Когда для `Phalcon\Mvc\Model` потребуется сервис для кэширования результирующих наборов, будет запрошена соответствующая служба из контейнера внедрения зависимостей. Название запрашиваемого сервиса — `modelsCache`. Фреймворк предоставлет компонент [cache](/[[language]]/[[version]]/cache), который можно использовать для хранения данных любого типа. Теперь мы посмотрим, как мы можем интегрировать его с нашими моделями.
 
-First, we will need to register the cache component as a service in the DI container.
+Во-первых, нам нужно будет зарегистрировать компонент кэша как сервис в контейнере DI.
 
 ```php
 <?php
@@ -55,18 +55,18 @@ First, we will need to register the cache component as a service in the DI conta
 use Phalcon\Cache\Frontend\Data as FrontendData;
 use Phalcon\Cache\Backend\Memcache as BackendMemcache;
 
-// Set the models cache service
+// Регистрация сервиса кэша моделей
 $di->set(
     'modelsCache',
     function () {
-        // Cache data for one day (default setting)
+        // По умолчанию данные кэша хранятся один день
         $frontCache = new FrontendData(
             [
                 'lifetime' => 86400,
             ]
         );
 
-        // Memcached connection settings
+        // Настройки соединения с memcached
         $cache = new BackendMemcache(
             $frontCache,
             [
@@ -80,15 +80,15 @@ $di->set(
 );
 ```
 
-Phalcon offers complete control in creating and customizing the cache component before registering it as a service in the DI container. Once the cache component is properly set up, resultsets can be cached as follows:
+Вы имеете полный контроль в создании и настройке компонента кэша перед его регистрацией в качестве службы в контейнере DI. После того, как компонент кэш настроен правильно, результирующие наборы могут быть кэшированы следующим образом:
 
 ```php
 <?php
 
-// Get products without caching
+// Получение продукта без использования кэша
 $products = Products::find();
 
-// Just cache the resultset. The cache will expire in 1 hour (3600 seconds)
+// Используем кэширование наборов данных. Кэш остается в памяти в течении 1 часа (3600 секунд).
 $products = Products::find(
     [
         'cache' => [
@@ -97,7 +97,7 @@ $products = Products::find(
     ]
 );
 
-// Cache the resultset for only for 5 minutes
+// Кэш набора данных хранится всего 5 минут
 $products = Products::find(
     [
         'cache' => [
@@ -107,7 +107,7 @@ $products = Products::find(
     ]
 );
 
-// Use the 'cache' service from the DI instead of 'modelsCache'
+// Мы используем сервис 'cache' из DI вместо 'modelsCache'
 $products = Products::find(
     [
         'cache' => [
@@ -118,15 +118,15 @@ $products = Products::find(
 );
 ```
 
-Caching could also be applied to resultsets generated using relationships:
+Кэширование также может быть применено к результирующим наборам, созданным с использованием связей:
 
 ```php
 <?php
 
-// Query some post
+// Запрос некоторого сообщения
 $post = Post::findFirst();
 
-// Get comments related to a post, also cache it
+// Получаем комментарии, относящиеся к сообщению, и кэшируем их
 $comments = $post->getComments(
     [
         'cache' => [
@@ -135,7 +135,7 @@ $comments = $post->getComments(
     ]
 );
 
-// Get comments related to a post, setting lifetime
+// Получаем комментарии, относящиеся к сообщению и устанавливаем срок их хранения
 $comments = $post->getComments(
     [
         'cache' => [
@@ -146,20 +146,20 @@ $comments = $post->getComments(
 );
 ```
 
-When a cached resultset needs to be invalidated, you can simply delete it from the cache using the key specified as seen above.
+Когда кэшированный результирующий набор должен быть признан недействительным, его можно просто удалить из кэша с помощью ключа, указанного выше.
 
-Which resultset to cache and for how long is up to the developer, after having evaluated the needs of the application. Resultsets that change frequently should not be cached, since the cache results will be invalidated quickly. Additionally caching resultsets consumes processing cycles, therefore the cache that was intended to speed up the application actually slows it down. Resultsets that do not change frequently should be cached to minimize the database interactions. The decision on where to use caching and for how long is dictated by the application needs.
+Какие наборы данных кэшировать и на какое время, решает разработчик, после оценки потребностей приложения. Данные, которые меняют свои значения очень часто, не следует кэшировать, так как они становятся не действительными очень быстро, и кэширование в этом случаи отрицательно влияет на производительность приложения. Кроме того, большие наборы данных, которые не часто меняют свои значения, могут располагаться в кэше, но для реализации этой идеи необходимо оценить имеющиеся механизмы кэширования и влияния на производительность, так как это не всегда будет способствовать увеличению производительности приложения. Для минимизации взаимодействия с базой данных необходимо кэшировать нечасто изменяющиеся результирующие наборы. Решение о том, где использовать кэширование и как долго продиктовано потребностями приложения.
 
 <a name='forcing-cache'></a>
 
-## Forcing Cache
+## Форсирование кэша
 
-Earlier we saw how `Phalcon\Mvc\Model` integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
+Ранее мы видели, как `Phalcon\Mvc\Model` имеет встроенную интеграцию с компонентом кэширования, предоставленного фреймворком. Чтобы сделать запись/результирующий набор кэшируемым, мы передаем ключ `cache` в массиве параметров:
 
 ```php
 <?php
 
-// Cache the resultset for only for 5 minutes
+// Кэшируем результирующий набор всего на 5 минут
 $products = Products::find(
     [
         'cache' => [
@@ -170,7 +170,7 @@ $products = Products::find(
 );
 ```
 
-This gives us the freedom to cache specific queries, however if we want to cache globally every query performed over the model, we can override the `find()`/`findFirst()` methods to force every query to be cached:
+Это дает нам свободу для кэширования конкретных запросов. Однако если мы хотим кэшировать глобально все запросы, выполняемые моделью, мы можем переопределить метод `find()`/`findFirst()`, чтобы заставить кэшировать каждый запрос:
 
 ```php
 <?php
@@ -180,8 +180,8 @@ use Phalcon\Mvc\Model;
 class Robots extends Model
 {
     /**
-     * Implement a method that returns a string key based
-     * on the query parameters
+     * Реализация метода, который возвращает
+     * строковый ключ на основе параметров запроса
      */
     protected static function _createKey($parameters)
     {
@@ -200,13 +200,13 @@ class Robots extends Model
 
     public static function find($parameters = null)
     {
-        // Convert the parameters to an array
+        // Преобразование параметров в массив
         if (!is_array($parameters)) {
             $parameters = [$parameters];
         }
 
-        // Check if a cache key wasn't passed
-        // and create the cache parameters
+        // Проверяем, что ключ кэша не был передан
+        // и создаем параметры кэша
         if (!isset($parameters['cache'])) {
             $parameters['cache'] = [
                 'key'      => self::_createKey($parameters),
@@ -265,7 +265,7 @@ class Robots extends CacheableModel
 
 <a name='caching-phql-queries'></a>
 
-## Caching PHQL Queries
+## Кэширование PHQL запросов
 
 Regardless of the syntax we used to create them, all queries in the ORM are handled internally using PHQL. This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
 
@@ -292,7 +292,7 @@ $cars = $query->execute(
 
 <a name='reusable-related-records'></a>
 
-## Reusable Related Records
+## Многократное использование связанных записей
 
 Some models may have relationships with other models. This allows us to easily check the records that relate to instances in memory:
 
@@ -355,7 +355,7 @@ Note that this type of cache works in memory only, this means that cached data a
 
 <a name='caching-related-records'></a>
 
-## Caching Related Records
+## Кэширование связанных записей
 
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
 
@@ -398,7 +398,7 @@ class Invoices extends Model
 
 <a name='caching-related-records-recursively'></a>
 
-## Caching Related Records Recursively
+## Рекурсивное кэшировоние связанных записей
 
 In this scenario, we assume that every time we query a result we also retrieve their associated records. If we store the records found together with their related entities perhaps we could reduce a bit the overhead required to obtain all entities:
 
@@ -504,7 +504,7 @@ class Invoices extends Model
 
 <a name='caching-based-on-conditions'></a>
 
-## Caching based on Conditions
+## Кэширование на основе условий
 
 In this scenario, the cache is implemented differently depending on the conditions received. We might decide that the cache backend should be determined by the primary key:
 
@@ -738,7 +738,7 @@ class Robots extends Model
 
 <a name='caching-phql-execution-plan'></a>
 
-## Caching PHQL execution plan
+## Кэширования плана выполнения PHQL
 
 As well as most moderns database systems PHQL internally caches the execution plan, if the same statement is executed several times PHQL reuses the previously generated plan improving performance, for a developer to take better advantage of this is highly recommended build all your SQL statements passing variable parameters as bound parameters:
 
