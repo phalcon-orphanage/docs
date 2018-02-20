@@ -1103,12 +1103,12 @@ $connection->createTable(
 
 The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
 
-| Индекс       | Description                                                                                                                            | Опционально |
+| Индекс       | Описание                                                                                                                               | Опционально |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:-----------:|
-| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |     No      |
-| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |     Yes     |
-| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |     Yes     |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |     Yes     |
+| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |     Нет     |
+| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |     Да      |
+| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |     Да      |
+| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |     Да      |
 
 <a name='tables-altering'></a>
 
@@ -1162,14 +1162,14 @@ $connection->dropColumn(
 
 ### Удаление таблиц
 
-Examples on dropping tables:
+Пример удаления таблиц:
 
 ```php
 <?php
 
-// Drop table robot from active database
+// Удаление таблицы "robots" из активной базы данных
 $connection->dropTable('robots');
 
-// Drop table robot from database 'machines'
+// Удаление таблицы "robots" из базы данных "machines"
 $connection->dropTable('robots', 'machines');
 ```
