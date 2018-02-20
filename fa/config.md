@@ -151,7 +151,7 @@ echo $config->models->metadata->adapter, "\n";
 
 ## ادغام تنظیمات
 
-`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
+`Phalcon\Config` می تواند تنظیمات یک شئ را با شئ دیگر ادغام کند. به صورتی که تنظیمات جدید اضافه و تنظیمات موجود بروزرسانی می شوند.
 
 ```php
 <?php
