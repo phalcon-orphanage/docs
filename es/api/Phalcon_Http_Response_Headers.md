@@ -18,7 +18,7 @@ Gets a header value from the internal bag
 
 public **setRaw** (*mixed* $header)
 
-Sets a raw header to be sent at the end of the request
+Configura una cabecera sin procesar que será enviada al final de la solicitud
 
 public **remove** (*mixed* $header)
 
