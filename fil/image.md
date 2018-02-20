@@ -220,8 +220,8 @@ $image->save('resized-image.jpg');
 
 ### `\Phalcon\Image::TENSILE`
 
-* Similar to the `NONE` constant, the `TENSILE` constant ignores the original image's ratio.
-* Both width and height are required.
+* Katulad ng `NONE` na constant, ang `TENSILE` na constant ay hindi papansinin ang orihinal na ratio ng imahe.
+* Parehong kinakailangan ang width at height.
 * If the new proportions differ from the original proportions, the image may be distorted and stretched.
 
 ```php
