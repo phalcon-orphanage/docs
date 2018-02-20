@@ -1,53 +1,53 @@
-# Class **Phalcon\\Config\\Exception**
+# Klase ng **Phalcon\\Config\\Exception**
 
-*extends* class [Phalcon\Exception](/en/3.2/api/Phalcon_Exception)
+*extends* klase [Phalcon\Exception](/en/3.2/api/Phalcon_Exception)
 
 *implements* [Throwable](http://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/config/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/config/exception.zep" class="btn btn-default btn-sm">Pinagkukunan sa GitHub</a>
 
-## Methods
+## Mga Paraan
 
-final private [Exception](http://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+huling pribadong [Exception](http://php.net/manual/en/class.exception.php) **__clone** () na nakuha mula sa [Exception](http://php.net/manual/en/class.exception.php)
 
-Clone the exception
+I-clone ang exception
 
-public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](http://php.net/manual/en/class.exception.php)
+pampublikong **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) na nakuha mula sa [Exception](http://php.net/manual/en/class.exception.php)
 
-Exception constructor
+Exception na konstruktor
 
-public **__wakeup** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+pampublikong **__wakeup** () na nakuha mula sa [Exception](http://php.net/manual/en/class.exception.php)
 
 ...
 
-final public *string* **getMessage** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+huling pampublikong *string* **getMessage** () na nakuha mula sa [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the Exception message
+Nagkukuha ng mensahe ng Exception
 
-final public *int* **getCode** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+huling pampublikong *int* **getCode** () na nakuha mula sa [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the Exception code
+Nagkukuha ng code ng Exception
 
-final public *string* **getFile** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+huling pampublikong *string* **getFile** () na nakuha mula sa [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the file in which the exception occurred
+Nagkukuha ng file kung saan ang exception ay naganap
 
-final public *int* **getLine** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+huling pampublikong *int* **getLine** () na nakuha mula sa [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the line in which the exception occurred
+Nagkukuha ng linya kung saan ang eksepsiyon ay naganap
 
-final public *array* **getTrace** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+huling pampublikong *array* **getTrace** () na nakuha mula sa [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the stack trace
+Nagkukuha ng pag-trace ng stack
 
-final public [Exception](http://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+huling pampublikong [Exception](http://php.net/manual/en/class.exception.php) **getPrevious** () na nakuha mula sa [Exception](http://php.net/manual/en/class.exception.php)
 
-Returns previous Exception
+Ibinabalik ang nakaraang Exception
 
-final public [Exception](http://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+huling pampublikong [Exception](http://php.net/manual/en/class.exception.php) **getTraceAsString** () na nakuha mula sa [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the stack trace as a string
+Nagkukuha ng pag-trace ng stack bilang isang string
 
-public *string* **__toString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+pampublikong *string* **__toString** () na nakuha mula sa [Exception](http://php.net/manual/en/class.exception.php)
 
-String representation of the exception
+Ang representasyon ng string ng exception
