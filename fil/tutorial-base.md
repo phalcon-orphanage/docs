@@ -1,10 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#basic">Tyutoryal - pangunahin</a> 
+      <a href="#pangunahin">Tyutoryal - pangunahin</a> 
       <ul>
         <li>
-          <a href="#file-structure">Balangkas ng mga Talaan</a>
+          <a href="#balangaks ng mga talaan">Balangkas ng mga Talaan</a>
         </li>
         <li>
           <a href="#bootstrap">Bootstrap</a> 
@@ -13,18 +13,18 @@
               <a href="#autoloaders">Autoloaders</a>
             </li>
             <li>
-              <a href="#dependency-management">Pamamahala ng Umaasa</a>
+              <a href="#pamamahala ng Umaasa">Pamamahala ng Umaasa</a>
             </li>
             <li>
-              <a href="#request">Pangangasiwa ng kahilingan na aplikasyon</a>
+              <a href="#kahilingan">Pangangasiwa ng kahilingan na aplikasyon</a>
             </li>
             <li>
-              <a href="#full-example">Pagsama-samahin ang lahat</a>
+              <a href="#buong-halimbawa">Pagsama-samahin ang lahat</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#controller">Paggawa ng Kontroler</a>
+          <a href="#kontroler">Paggawa ng Kontroler</a>
         </li>
         <li>
           <a href="#view">Pagpapadala ng output sa pananaw</a>
@@ -33,16 +33,16 @@
           <a href="#signup-form">Pagdisenyo ng sign-up na uri</a>
         </li>
         <li>
-          <a href="#model">Paggawa ng Modelo</a>
+          <a href="#modelo">Paggawa ng Modelo</a>
         </li>
         <li>
-          <a href="#database-connection">Paglalagay ng Koneksyon sa Database</a>
+          <a href="#database-koneksiyon">Paglalagay ng Koneksyon sa Database</a>
         </li>
         <li>
-          <a href="#storing-data">Pag-iimbak ng datos gamit ang mga modelo</a>
+          <a href="#pagiimpok-data">Pag-iimbak ng datos gamit ang mga modelo</a>
         </li>
         <li>
-          <a href="#conclusion">Konklusyon</a>
+          <a href="#konklusyon">Konklusyon</a>
         </li>
       </ul>
     </li>
@@ -463,13 +463,13 @@ Ang walang laman na index aksyon ay nagbibigay ng malinis na daan sa pananaw kas
 **app/views/signup/index.phtml**
 
 ```php
-<h2>Sign up using this form</h2>
+<h2>Mag sign-up gamit ang porma na ito</h2>
 
 <?php echo $this->tag->form("signup/register"); ?>
 
     <p>
-        <label for="name">Name</label>
-        <?php echo $this->tag->textField("name"); ?>
+        <label for="name">Pangalan</label>
+        <?php echo $this->tag->textField("pangalan"); ?>
     </p>
 
     <p>
@@ -478,7 +478,7 @@ Ang walang laman na index aksyon ay nagbibigay ng malinis na daan sa pananaw kas
     </p>
 
     <p>
-        <?php echo $this->tag->submitButton("Register"); ?>
+        <?php echo $this->tag->submitButton("Rehistro"); ?>
     </p>
 
 </form>
@@ -487,23 +487,23 @@ Ang walang laman na index aksyon ay nagbibigay ng malinis na daan sa pananaw kas
   
 
 
-Viewing the form in your browser will show something like this:
+Kapag titingnan ang porma sa inyong browser makikita ang isang bagay na katulad nito:
 
   
 ![](/images/content/tutorial-basic-3.png)
 
   
-`Phalcon\Tag` also provides useful methods to build form elements.
+`Phalcon\Tag` ay nagbibigay din nga mga nakakatulong na mga paraan upang bumuo ng elemento ng anyo.
 
-The :code:`Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application.
+Ang :code:`Phalcon\Tag::form()` na paraan ay tumatanggap lamang ng isang sadyansukat halimbawa, ang kapareha na URl ng kontroler/action sa aplikasyon.
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our `public/index.php` file throws this exception:
+Sa pamamagitan ng pag pindot ng "Send" button, mapapansin mo ang isang taliwas na tinapon galing sa balangkas, nag nagpapahiwatig na nawawala ang "register" na aksyon sa kontroller ng "signup". Ang ating `public/index.php` na file ay magtatapon ng nabubukod na ito:
 
 ```bash
-Exception: Action "register" was not found on handler "signup"
+Nabubukod: Aksyon "register" ay hindi natagpuan sa tagahawak ng "signup"
 ```
 
-Implementing that method will remove the exception:
+Ang pagpapatupad ng paraan na yan ay magtatanggal sa nabubukod:
 
   
 **app/controllers/SignupController.php**
@@ -511,16 +511,16 @@ Implementing that method will remove the exception:
 ```php
 <?php
 
-use Phalcon\Mvc\Controller;
+gamitin ang Phalcon\Mvc\Controller
 
-class SignupController extends Controller
+klase na SignupController nagpapahaba ng Kontroler
 {
-    public function indexAction()
+    publiko na aksyon IndexAction()
     {
 
     }
 
-    public function registerAction()
+    publiko na tungkulin registerAction()
     {
 
     }
@@ -530,33 +530,33 @@ class SignupController extends Controller
   
 
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+Kung iyong i-klik and "send" na butones ulit, makakakita ka ng isang blangko na pahina. Ang pangalan at email input na ibinigay ng gumagamit ay dapat naka impok sa isang database. Ayon sa MVC na mga tuntunin, ang interaksyon ng mga database ay dapat gawin sa mga modelo para matiyak ang malinis na object-oriented code.
 
 <a name='model'></a>
 
-## Creating a Model
+## Paggawa ng Modelo
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Ang Phalcon ay magdadala ng kauna-unahang ORM para sa PHP na kabuoang nakasulat sa C-wika. Sa halip na pataasin ang pagiging komplikado ng pagsulong, pinapasimple nito ito.
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be created like this:
+Bago nilikha ang ating unang modelo, kailangan nating lumikha ng database na talaan sa labas ng Phalcon para ma-mapa ito. Ang simple na talaan kung saan i-impok ang mga nakarehistro na tagagamit ay puweding gawin katulad nito:
 
   
 **create_users_table.sql**
 
 ```sql
-CREATE TABLE `users` (
-    `id`    int(10)     unsigned NOT NULL AUTO_INCREMENT,
-    `name`  varchar(70)          NOT NULL,
-    `email` varchar(70)          NOT NULL,
+GUMAWA NG TALAAN `tagagamit` (
+    `id`   int(110)    unsigned      WALANG HALAGA AUTO_INCREMENT,
+    `pangalan`  varchar(70)     WALANG HALAGA,
+    `email` varchar(70)             WALANG HALAGA,
 
-    PRIMARY KEY (`id`)
+    PANGUNAHING SUSI (`id`)
 );
 ```
 
   
 
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
+Ang isang modelo ay dapat makikita sa `app/models` na direktoryo (`app/models/Users.php`). Ang modelo na mapa para sa "tagagamit" na talaan:
 
   
 **app/models/Users.php**
@@ -564,13 +564,13 @@ A model should be located in the `app/models` directory (`app/models/Users.php`)
 ```php
 <?php
 
-use Phalcon\Mvc\Model;
+gamiting ang Phalcon\Mvc\Modelo;
 
-class Users extends Model
+klase ng Tagagamit ay pinapahaba ang Modelo
 {
-    public $id;
-    public $name;
-    public $email;
+    publiko $id;
+    publiko $name;
+    publiko $email;
 }
 ```
 
@@ -578,9 +578,9 @@ class Users extends Model
 
 <a name='database-connection'></a>
 
-## Setting a Database Connection
+## Paglalagay ng Koneksyon ng Database
 
-In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+Upang magamit ang isang koneksyon ng database at sunod-sunod na pag-abot ng mga data gamit ang mga modelo, kailangan nating i-uriin ito sa ating bootstrap na proseso. Ang database na koneksyon ay isang uri ng serbisyo na mayroon ang ating aplikasyon na puwedeng gamitin sa maraming bahagi:
 
   
 **public/index.php**
@@ -588,18 +588,18 @@ In order to use a database connection and subsequently access data through our m
 ```php
 <?php
 
-use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+gamitin ang Phalcon\Db\Adapter|Pdo|Mysql bilang DbAdapter;
 
-// Setup the database service
+// I-setup ang serbisyo ng database
 $di->set(
-    'db',
+    `db'
     function () {
-        return new DbAdapter(
+        ibalik ang bagong DbAdapter(
             [
-                'host'     => '127.0.0.1',
-                'username' => 'root',
-                'password' => 'secret',
-                'dbname'   => 'tutorial1',
+                'host'   =>'127.0.0.1',
+                'username' +>'root'',
+                'password' =>'secret'
+                'dbname'  =>'tutorial1',
             ]
         );
     }
@@ -609,11 +609,11 @@ $di->set(
   
 
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+Kasama ang mga tamang database na sadyansukat, ang ating mga modelo ay handa ng gumana at makisalamuha sa iba pang mga aplikasyon.
 
 <a name='storing-data'></a>
 
-## Storing data using models
+## Pag-iimbak ng mga data gaming ang mga modelo
 
   
 **app/controllers/SignupController.php**
@@ -621,36 +621,38 @@ With the correct database parameters, our models are ready to work and interact 
 ```php
 <?php
 
-use Phalcon\Mvc\Controller;
+gamiting ang Phalcon\Mvc\Controller;
 
-class SignupController extends Controller
+klase SignupController nagpapahaba ng Kontroler
 {
-    public function indexAction()
+    publiko na function IndexAction()
     {
 
     }
 
-    public function registerAction()
-    {
-        $user = new Users();
+    }
 
-        // Store and check for errors
+    publiko na function registerAction()
+    {
+        $user = bagong Users();
+
+        // Imbak at suriin ang mga mali
         $success = $user->save(
             $this->request->getPost(),
             [
-                "name",
+                "pangalan",
                 "email",
             ]
         );
 
-        if ($success) {
-            echo "Thanks for registering!";
-        } else {
-            echo "Sorry, the following problems were generated: ";
+        kung ($success) {
+            echo "Salamat sa pagrehistro!";
+        } iba {
+            echo 'Patawad, ang mga sumusunod na mga problema ay nalikha: "; 
 
-            $messages = $user->getMessages();
+            $messages = $user->getMessage (); 
 
-            foreach ($messages as $message) {
+            foreach ($messages bilang $message) {
                 echo $message->getMessage(), "<br/>";
             }
         }
@@ -663,20 +665,20 @@ class SignupController extends Controller
   
 
 
-At the beginning of the **registerAction** we create an empty user object from the Users class, which manages a User's record. The class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+Sa simula ng **registerAction** tayo ay gagawa ng isang walang laman na bagay ng tagagamit galing sa klase ng Tagagamit, kung saan ito ay namamahal ng mga talaan ng Tagagamit. Ang klase ng publiko na mga katangian ng mapa sa paligid ng `users` na talaan ay nasa ating database. Pagtatakda ng mga importante na mga mahalang bagay sa bagong talaan at tinatawag na `save()` ay mag-iimbak ng data sa database para sa talaan,. Ang `save()` na paraan ay magbabalik ng boolean na halaga na nagpapahiwatig kung ang pag-iimbak ng data ay matagumpay o hindi.
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
+Ang ORM ay awtomatikong nag-aalis ng input na pumipigil sa SQL injections kaya kailangan lang natin ipasa ang hiling sa `save()` na paraan.
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign-up form our screen will look like this:
+Mga karagdagang pagpapatunay ay awtomatikong mangyayari sa paligid na nangangahulugang ito ay hindi null (kinakailangan). Kung hindi nating ipapasok ang mga kailangan na paligid sa sign-up na form ang ating eskrin ay magaging ganito:
 
   
-![](/images/content/tutorial-basic-4.png)
+![](/images/content/tutorial-basic4.png)
 
   
 <a name='conclusion'></a>
 
-## Conclusion
+## Konklusyon
 
-As you can see, it's easy to start building an application using Phalcon. The fact that Phalcon runs from an extension significantly reduces the footprint of projects as well as giving it a considerable performance boost.
+Tulad ng nakikita mo, madaling mag umpisang gumawa ng aplikasyon gamit ang Phalcon. Ang katunayan na ang Phalcon ay nagpapatakbo galing sa isang ekstinsyon ay makabuluhang nagbabawas ng mga bakas ng proyekto pati na rin ang pagbibigay ng mahalagang tulong sa pagganap nito.
 
-If you are ready to learn more check out the [Rest Tutorial](/[[language]]/[[version]]/tutorial-rest) next.
+Kung ikaw ay handa nang matuto ng marami pa siyasatin ang [Natitirang Tutorial](/[[language]]/[[version]]/tutorial-rest) sa susunod.
