@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Pangkalahatang-ideya</a> <ul>
+      <a href="#pangkalahatang-ideya">Pangkalahatang-ideya</a> <ul>
         <li>
-          <a href="#integration">Pagsasama ang PHPUnit sa Phalcon</a>
+          <a href="#integrasyon">Pagsasama ang PHPUnit sa Phalcon</a>
         </li>
         <li>
           <a href="#unit-helper">Ang PHPunit helper file</a>
@@ -212,17 +212,17 @@ Isang palaging magandang idea na ihiwalay ang iyong Yunit Tests sa puwang ng pam
 namespace Test;
 
 /**
- * Class UnitTest
+ * ClassUnitTest
  */
-class UnitTest extends \UnitTestCase
+ang klase na UnitTest ay pinapahaba ang  \UnitTestCase
 {
     public function testTestCase()
     {
         $this->assertEquals(
             "works",
-            "works",
+            "works1",
             "This is OK"
-        );
+      );
 
         $this->assertEquals(
             "works",
@@ -233,31 +233,32 @@ class UnitTest extends \UnitTestCase
 }
 ```
 
-Now when you execute `phpunit` in your command-line from the `tests` directory you will get the following output:
+Ngayon kung iyong isasagawa ang `phpunit` sa iyong linya ng utos galing sa `tests` na direktoryo makukuha mo ang mga output na ito:
 
 ```bash
 $ phpunit
-PHPUnit 3.7.23 by Sebastian Bergmann.
+PHPUnit 3.7.23. by Sebastian Bergmann.
 
-Configuration read from /var/www/tests/phpunit.xml
+Basa ng kompigurasyon galing sa /var/www/tests/phpunit.xml
 
-Time: 3 ms, Memory: 3.25Mb
+Oras:3 ms, Memorya: 3.25Mb
 
-There was 1 failure:
+Mayroong 1 pagkakamali:
+
 
 1) Test\UnitTest::testTestCase
-This will fail
-Failed asserting that two strings are equal.
---- Expected
-+++ Actual
-@@ @@
+Ito ay mabibigo
+Nabigo sa pagpapahayag na ang dalawang tali ay pantay-pantay.
+--- Inaasahan
++++ Aktwal
+@@@@
 -'works'
 +'works1'
 
 /var/www/tests/Test/UnitTest.php:25
 
-FAILURES!
-Tests: 1, Assertions: 2, Failures: 1.
+NABIGO!
+Pagsusulit: 1, Ginigiit: 2, Pagkabigo: 1.
 ```
 
-Now you can start building your Unit Tests. You can view a [good guide here](http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/). We also recommend reading the PHPUnit documentation if you're not familiar with PHPUnit.
+Ngayon maari ka nang magsimulang magtayo ng iyong mga Yunit Tests. Maari mong tingnan ang [mabuting gabay dito](http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/). Inirerekumenda din namin na basahin ang PHPUnit na dokumento kung ikaw ay hindi pamilyar sa PHPUnit.
