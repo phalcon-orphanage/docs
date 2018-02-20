@@ -77,27 +77,27 @@ tutorial/
 
 Обратите внимание на то, что вам не нужны директории с библиотеками, относящимися к фреймворку. Он полностью находится в памяти и все время готов к использованию.
 
-Прежде чем продолжить, пожалуйста, убедитесь, что вы успешно [installed Phalcon](/[[language]]/[[version]]/installation) и установка [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
+Before continuing, please be sure you've successfully [installed Phalcon](/[[language]]/[[version]]/installation) and have setup either [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
 
 <a name='bootstrap'></a>
 
 ## Начальная загрузка
 
-The first file you need to create is the bootstrap file. Этот файл очень важен, так как он служит основой вашего приложения, давая вам контроль над всеми его аспектами. В этом файле можно реализовать инициализацию компонентов, а также поведение приложения.
+The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
 
-В конечном счете, он отвечает за выполнение 3 вещей:
+Ultimately, it is responsible for doing 3 things:
 
-- Настройка автозаполнителя.
-- Настройка инжектора зависимостей.
-- Обработка запроса приложения.
+- Setting up the autoloader.
+- Configuring the Dependency Injector.
+- Handling the application request.
 
 <a name='autoloaders'></a>
 
 ### Автозагрузка
 
-Первая часть, которую мы находим в bootstrap-это Регистрация автозагрузчика. Это будет использоваться для загрузки классов в качестве контроллеров и моделей в приложении. Например, мы можем зарегистрировать один или несколько каталогов контроллеров, повышающих гибкость приложения. В нашем примере мы использовали компонент`Phalcon\Loader`.
+The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component `Phalcon\Loader`.
 
-С его помощью мы можем загружать классы, используя различные стратегии, но для этого примера мы выбрали, чтобы найти классы на основе предопределенных каталогов:
+With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
 
 ```php
 <?php
@@ -122,9 +122,9 @@ $loader->register();
 
 ### Управление зависимостями
 
-Очень важным понятием, которое необходимо понимать при работе с Phalcon, является его `контейнер для инъекций зависимостей <di>`. Это может показаться сложным, но на самом деле очень простой и практичный.
+A very important concept that must be understood when working with Phalcon is its `dependency injection container <di>`. It may sound complex but is actually very simple and practical.
 
-Контейнер службы-это мешок, в котором мы глобально храним службы, которые наше приложение будет использовать для работы. Каждый раз, когда Платформа требует компонент, он будет запрашивать контейнер с использованием согласованного имени для службы. Так как Phalcon является высоко развязанные рамки, `Phalcon\Di` действует как клей облегчая интеграцию различных компонентов достигая их работы совместно в прозрачном образе.
+A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, `Phalcon\Di` acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
 
 ```php
 <?php
@@ -137,11 +137,11 @@ use Phalcon\Di\FactoryDefault;
 $di = new FactoryDefault();
 ```
 
-`Phalcon\Di\FactoryDefault` is a variant of `Phalcon\Di`. Чтобы сделать вещи проще, он зарегистрировал большинство компонентов, которые поставляются с Phalcon. Поэтому мы не должны регистрировать их по одному. Позже не будет никаких проблем в замене заводской службы.
+`Phalcon\Di\FactoryDefault` is a variant of `Phalcon\Di`. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
 
 In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
 
-Услуги могут быть зарегистрированы несколькими способами, но для нашего урока мы будем использовать функцию [anonymous](http://php.net/manual/en/functions.anonymous.php):
+Services can be registered in several ways, but for our tutorial we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
 
 ```php
 <?php
@@ -163,7 +163,7 @@ $di->set(
 );
 ```
 
-Далее мы регистрируем базовый URI, так что все URI генерируется "Фэлкон" включить папку "учебник" мы настроили ранее. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
+Next we register a base URI so that all URIs generated by Phalcon include the "tutorial" folder we setup earlier. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
 
 ```php
 <?php
@@ -272,13 +272,13 @@ try {
 }
 ```
 
-Как видите, загрузочный файл занимает очень короткий и нам не нужно включать какие-либо дополнительные файлы. Мы установили себе гибкое приложение MVC в менее чем 30 строк кода.
+As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less than 30 lines of code.
 
 <a name='controller'></a>
 
 ## Создание контроллера
 
-По умолчанию Phalcon будет искать контроллер с именем "Index". Это-начальная точка, когда никакой контроллер или действие не были переданы в запросе. Контроллер индекса (`App/controllers/IndexController.php`) выглядит так:
+By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (`app/controllers/IndexController.php`) looks like:
 
 ```php
 <?php
@@ -302,7 +302,7 @@ Congratulations, you're phlying with Phalcon!
 
 <a name='view'></a>
 
-## Отправка результатов в представление
+## Sending output to a view
 
 Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
 
@@ -326,7 +326,7 @@ class IndexController extends Controller
 }
 ```
 
-The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Подробнее об использовании представлений `здесь <views>`.
+The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about `views usage here <views>`.
 
 <a name='signup-form'></a>
 
@@ -357,9 +357,9 @@ The generated HTML code displays an anchor ("a") HTML tag linking to a new contr
 <a href="/tutorial/signup">Sign Up Here!</a>
 ```
 
-To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. Поскольку этот класс также является сервисом, зарегистрированным в DI, мы используем `$this>tag` обращаться к нему.
+To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is a also a service registered in the DI we use `$this->tag` to access it.
 
-Более подробная статья о генерации HTML может быть :doc:`found here <tags>`.
+A more detailed article regarding HTML generation can be :doc:`found here <tags>`.
 
 ![](/images/content/tutorial-basic-2.png)
 
@@ -456,7 +456,7 @@ If you click the "Send" button again, you will see a blank page. The name and em
 
 Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
-Прежде чем создавать нашу первую модель, нам нужно создать таблицу базы данных за пределами Phalcon, чтобы сопоставить ее. Простая Таблица для хранения зарегистрированных пользователей может быть определена следующим образом:
+Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:
 
 ```sql
 CREATE TABLE `users` (
@@ -487,9 +487,9 @@ class Users extends Model
 
 <a name='database-connection'></a>
 
-## Setting a Database Connection
+## Настройка соединения с базой данных
 
-Для того, чтобы иметь возможность использовать подключение к базе данных и затем получить доступ к данным через наши модели, мы должны уточнить его в процессе начальной загрузки. A database connection is just another service that our application has that can be used for several components:
+In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
 
 ```php
 <?php
@@ -516,9 +516,9 @@ With the correct database parameters, our models are ready to work and interact 
 
 <a name='storing-data'></a>
 
-## Storing data using models
+## Сохранение данных при работе с моделями
 
-Следующим шагом является получение данных из формы и их хранение в таблице.
+Receiving data from the form and storing them in the table is the next step.
 
 ```php
 <?php
@@ -562,11 +562,11 @@ class SignupController extends Controller
 }
 ```
 
-Затем мы создаем экземпляр класса Users, который соответствует записи Пользователя. Открытые свойства класса сопоставляются с полями записи в таблице пользователи. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
 
 The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
 
-Дополнительная проверка выполняется автоматически для полей, которые определены как not null (обязательно). Если мы не введем ни одно из обязательных полей в форме регистрации, наш экран будет выглядеть так:
+Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
 
 ![](/images/content/tutorial-basic-4.png)
 
