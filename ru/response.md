@@ -133,7 +133,7 @@ $response->redirect('http://en.wikipedia.org', true);
 $response->redirect('http://www.example.com/new-location', true, 301);
 ```
 
-All internal URIs are generated using the [url](/[[language]]/[[version]]/url) service (by default `Phalcon\Mvc\Url`). This example demonstrates how you can redirect using a route you have defined in your application:
+Все внутренние URI генерируются с помощью сервиса [url](/[[language]]/[[version]]/url) (по умолчанию `Phalcon\Mvc\Url`). This example demonstrates how you can redirect using a route you have defined in your application:
 
 ```php
 <?php
