@@ -40,7 +40,7 @@
 
 ## Требования
 
-Для запуска инструментов разработчика необходимо установленное расширение Phalcon. Если оно ещё не установлено, прочитайте инструкции в разделе [Установка](/[[language]]/[[version]]//installation).
+The Phalcon extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](/[[language]]/[[version]]//installation) section for instructions.
 
 <a name='installation'></a>
 
@@ -97,7 +97,7 @@ cd phalcon-devtools/
 
 ![](/images/content/devtools-mac-2.png)
 
-Создайте ссылку на файл phalcon.php:
+Create a symbolic link to the phalcon.php script:
 
 ```bash
 ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
@@ -140,11 +140,11 @@ chmod ugo+x /usr/bin/phalcon
 
 ![](/images/content/devtools-windows-6.png)
 
-Примените изменения, нажав кнопку `OK` и закройте диалог. В меню Пуск выберите поле `Run`. Если не можете найти эту опцию, нажмите сочетание `Windows` + `R`.
+Примените изменения, нажав кнопку `OK` и закройте диалог. В меню Пуск выберите поле `Run`. If you can't find this option, press <kbd>Windows</kbd> + <kbd>R</kbd>.
 
 ![](/images/content/devtools-windows-7.png)
 
-Выберите `cmd` и нажмите “Enter” для запуска окна консоли:
+Type `cmd` and press <kbd>Enter</kbd> to open the Windows command line utility:
 
 ![](/images/content/devtools-windows-8.png)
 
