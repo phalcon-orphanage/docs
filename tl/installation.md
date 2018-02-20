@@ -130,7 +130,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <div class="alert alert-danger">
     <p>
-        You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7.
+        Dapat palaging subukan at gamitin ang pinakabagong bersyon ng Phalcon at Php bilang parehong mga address ng bug, pagpapa-unlad ng seguridad lalo na sa pagganap. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7.
     </p>
 </div>
 
