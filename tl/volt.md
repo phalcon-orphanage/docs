@@ -267,15 +267,15 @@ $di->set(
 
 The following options are available in Volt:
 
-| Option              | Description                                                                                                                  | Default |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false` |
-| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
-| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
-| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
-| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
-| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
-| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
+| Option                 | Description                                                                                                                               | Default |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `awtomatikongpaglabas` | Paganahin ang panmundong awtomatikongpgalabas ng HTML                                                                                     | `false` |
+| `naipongPalagi`        | Sabihan ang Volt kung ang mga template ay dapat na naipon sa isang hiling o kung may babagohin sila                                       | `false` |
+| `naipongmgaKaugnay`    | Isang nadagdag na extension ang idadagdag sa naipong file ng PHP                                                                          | `.php`  |
+| `naipongLangdas`       | Isang masusulatang muli na landas kung saan ang naipong mga template ng PHP ay malalagyan                                                 | `./`    |
+| `naipongHumihiwalay`   | Ang Volt ay pumapalit sa direktorya ng humihiwalay \ at / sa humihiwalay na ito upang ito ay makagwa ng isang file sa naipong direktorya | `%%`    |
+| `prefix`               | Allows to prepend a prefix to the templates in the compilation path                                                                       | `null`  |
+| `istat`                | Kung ang Phalcon ay dapat na sumuri kung may umiiral na pagkakaiba sa pagitan ng file ng template at sa naipong landas                    | `true`  |
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
 
@@ -401,33 +401,33 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 
 The following is the list of available built-in filters in Volt:
 
-| Filter             | Description                                                                                                                        |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `abs`              | Applies the [abs](http://php.net/manual/en/function.abs.php) PHP function to a value.                                              |
-| `capitalize`       | Capitalizes a string by applying the [ucwords](http://php.net/manual/en/function.ucwords.php) PHP function to the value            |
-| `convert_encoding` | Converts a string from one charset to another                                                                                      |
-| `default`          | Sets a default value in case that the evaluated expression is empty (is not set or evaluates to a falsy value)                     |
-| `e`                | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                           |
-| `escape`           | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                           |
-| `escape_attr`      | Applies `Phalcon\Escaper->escapeHtmlAttr()` to the value                                                                       |
-| `escape_css`       | Applies `Phalcon\Escaper->escapeCss()` to the value                                                                            |
-| `escape_js`        | Applies `Phalcon\Escaper->escapeJs()` to the value                                                                             |
-| `format`           | Formats a string using [sprintf](http://php.net/manual/en/function.sprintf.php).                                                   |
-| `json_encode`      | Converts a value into its [JSON](http://php.net/manual/en/function.json-encode.php) representation                                 |
-| `json_decode`      | Converts a value from its [JSON](http://php.net/manual/en/function.json-encode.php) representation to a PHP representation         |
-| `join`             | Joins the array parts using a separator [join](http://php.net/manual/en/function.join.php)                                         |
-| `keys`             | Returns the array keys using [array_keys](http://php.net/manual/en/function.array-keys.php)                                        |
-| `left_trim`        | Applies the [ltrim](http://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                  |
-| `length`           | Counts the string length or how many items are in an array or object                                                               |
-| `lower`            | Change the case of a string to lowercase                                                                                           |
-| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](http://php.net/manual/en/function.nl2br.php) |
-| `right_trim`       | Applies the [rtrim](http://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                  |
-| `sort`             | Sorts an array using the PHP function [asort](http://php.net/manual/en/function.asort.php)                                         |
-| `stripslashes`     | Applies the [stripslashes](http://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes  |
-| `striptags`        | Applies the [striptags](http://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags             |
-| `trim`             | Applies the [trim](http://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                    |
-| `upper`            | Change the case of a string to uppercase                                                                                           |
-| `url_encode`       | Applies the [urlencode](http://php.net/manual/en/function.urlencode.php) PHP function to the value                                 |
+| Filter             | Description                                                                                                                                            |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `abs`              | Applies the [abs](http://php.net/manual/en/function.abs.php) PHP function to a value.                                                                  |
+| `capitalize`       | Capitalizes a string by applying the [ucwords](http://php.net/manual/en/function.ucwords.php) PHP function to the value                                |
+| `convert_encoding` | Converts a string from one charset to another                                                                                                          |
+| `default`          | Sets a default value in case that the evaluated expression is empty (is not set or evaluates to a falsy value)                                         |
+| `e`                | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                                               |
+| `escape`           | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                                               |
+| `escape_attr`      | Applies `Phalcon\Escaper->escapeHtmlAttr()` to the value                                                                                           |
+| `escape_css`       | Applies `Phalcon\Escaper->escapeCss()` to the value                                                                                                |
+| `escape_js`        | Applies `Phalcon\Escaper->escapeJs()` to the value                                                                                                 |
+| `format`           | Formats a string using [sprintf](http://php.net/manual/en/function.sprintf.php).                                                                       |
+| `json_encode`      | Converts a value into its [JSON](http://php.net/manual/en/function.json-encode.php) representation                                                     |
+| `json_decode`      | Converts a value from its [JSON](http://php.net/manual/en/function.json-encode.php) representation to a PHP representation                             |
+| `join`             | Joins the array parts using a separator [join](http://php.net/manual/en/function.join.php)                                                             |
+| `keys`             | Returns the array keys using [array_keys](http://php.net/manual/en/function.array-keys.php)                                                            |
+| `left_trim`        | Applies the [ltrim](http://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                                      |
+| `length`           | Counts the string length or how many items are in an array or object                                                                                   |
+| `lower`            | Change the case of a string to lowercase                                                                                                               |
+| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](http://php.net/manual/en/function.nl2br.php)                     |
+| `right_trim`       | Applies the [rtrim](http://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                                      |
+| `uriin`            | Uriin ang array gamit ang katangian ng PHP [asort](http://php.net/manual/en/function.asort.php)                                                        |
+| `stripslashes`     | Magagamit ang [stripslashes](http://php.net/manual/en/function.stripslashes.php) na katangian ng PHP sa halaga. Tanggalin ang mga nakawalang mga quote |
+| `striptags`        | Magagamit ang [striptags](http://php.net/manual/en/function.striptags.php) na katangian ng PHP sa halaga. Tanggalin ang mga tag ng HTML                |
+| `pantay`           | Magagamit ang [pantay](http://php.net/manual/en/function.trim.php) na katangian ng PHP sa halaga. Tanggalin ang mga sobrang mga puwang                 |
+| `taas`             | Baguhin ang kaso ng isang string sa malaking letra                                                                                                     |
+| `url_encode`       | Magagamit ang [urlencode](http://php.net/manual/en/function.urlencode.php) sa katangian ng PHP sa halaga                                               |
 
 Examples:
 
@@ -724,7 +724,7 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unex
 
 ### Loop Context
 
-A special variable is available inside `for` loops providing you information about
+Isang espesyal na variable ang magagamit sa loob ng `for` na mga loop na nagbibigay sa iyo nga mga impormasyon tungkol sa
 
 | Variable         | Description                                                   |
 | ---------------- | ------------------------------------------------------------- |
@@ -736,7 +736,7 @@ A special variable is available inside `for` loops providing you information abo
 | `loop.last`      | True if in the last iteration.                                |
 | `loop.length`    | The number of items to iterate                                |
 
-Example:
+Halimbawa:
 
 ```twig
 {% for robot in robots %}
@@ -763,7 +763,7 @@ Example:
 
 ## Assignments
 
-Variables may be changed in a template using the instruction 'set':
+Ang mga variable ay maaring baguhin sa isang template gamit ang isang 'itinakdang' pagtuturo:
 
 ```twig
 {% set fruits = ['Apple', 'Banana', 'Orange'] %}
@@ -771,13 +771,13 @@ Variables may be changed in a template using the instruction 'set':
 {% set name = robot.name %}
 ```
 
-Multiple assignments are allowed in the same instruction:
+Ang maraming mga takdang aralin ay hindi pinapayagansa parehong pagtuturo:
 
 ```twig
 {% set fruits = ['Apple', 'Banana', 'Orange'], name = robot.name, active = true %}
 ```
 
-Additionally, you can use compound assignment operators:
+Sa karagdagan, pwede kang gumamit ng magakatambal na tagatalaga ng mga tagagawa:
 
 ```twig
 {% set price += 100.00 %}
@@ -785,7 +785,7 @@ Additionally, you can use compound assignment operators:
 {% set age *= 5 %}
 ```
 
-The following operators are available:
+Ang mga sumusunod na mga tagagawa ay pwedeng magamit:
 
 | Operator | Description               |
 | -------- | ------------------------- |
@@ -799,13 +799,13 @@ The following operators are available:
 
 ## Expressions
 
-Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `{{` and `}}` delimiters:
+Ang Volt ay nagbibigay ng pangunahing set ng ekspresyon na susuporta, kabilang ang mga literal at karaniwang mga operator. Ang isang ekspresyon ay maaaring masuri at mai-print gamit ang `{{` and `}}` na mga delimiter:
 
 ```twig
 {{ (1 + 1) * 2 }}
 ```
 
-If an expression needs to be evaluated without be printed the `do` statement can be used:
+Kung ang isang ekspresyon ay kailanagang suriin ng hindi na print `do` na pahayag ang pwedeng gamitin:
 
 ```twig
 {% do (1 + 1) * 2 %}
@@ -815,7 +815,7 @@ If an expression needs to be evaluated without be printed the `do` statement can
 
 ### Literals
 
-The following literals are supported:
+Ang mga sumusunod na mga literal ay suportado:
 
 | Filter               | Description                                                        |
 | -------------------- | ------------------------------------------------------------------ |
@@ -830,7 +830,7 @@ The following literals are supported:
 
 ### Arrays
 
-Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list of values in square brackets:
+Kung ang iyong ginagamit na PHP ay 5.3 o mas mataas pa sa 5.4. Ikaw ay pwedeng gumawa ng mga array sa pagitan ng pagsarado sa isang listahan ng mga halaga sa isang kwadradong mga bracket:
 
 ```twig
 {# Simple array #}
@@ -846,7 +846,7 @@ Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list
 {{ ['first': 1, 'second': 4/2, 'third': '3'] }}
 ```
 
-Curly braces also can be used to define arrays or hashes:
+Ang mga liko-liko na mga brace ay pwedeng gamitin para bigyang kahulugan ang mga array o mga hash:
 
 ```twig
 {% set myArray = {'Apple', 'Banana', 'Orange'} %}
@@ -857,7 +857,7 @@ Curly braces also can be used to define arrays or hashes:
 
 ### Math
 
-You may make calculations in templates using the following operators:
+Ikaw ay pwedeng gumawa ng mga kalkulasyon sa mga template gamit ang mga sumusunod na tagagawa:
 
 | Operator | Description                                                             |
 |:--------:| ----------------------------------------------------------------------- |
@@ -871,7 +871,7 @@ You may make calculations in templates using the following operators:
 
 ### Comparisons
 
-The following comparison operators are available:
+Ang mg sumusunod na pagkokompara na tagagawa ay pwede na magamit:
 
 |  Operator  | Description                                                       |
 |:----------:| ----------------------------------------------------------------- |
@@ -889,7 +889,7 @@ The following comparison operators are available:
 
 ### Logic
 
-Logic operators are useful in the `if` expression evaluation to combine multiple tests:
+Ang mga logic na mga taga-operate ay mapapakinabangan sa `if` na ekspresyon ng pagsuri ng pagsamahin ang mga maraming pagsusuri:
 
 |  Operator  | Description                                                       |
 |:----------:| ----------------------------------------------------------------- |
@@ -902,7 +902,7 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 
 ### Other Operators
 
-Additional operators seen the following operators are available:
+Ang mga karagdagang mga operator ay makikita sa mga sumusunod ay magagamit na:
 
 | Operator          | Description                                                                     |
 | ----------------- | ------------------------------------------------------------------------------- |
@@ -916,7 +916,7 @@ Additional operators seen the following operators are available:
 | `++`              | Increments a value                                                              |
 | `--`              | Decrements a value                                                              |
 
-The following example shows how to use operators:
+Ang mga sumusunod na halimbawa ay nagpapakita ng kung paano gamitin ang mga operator:
 
 ```twig
 {% set robots = ['Voltron', 'Astro Boy', 'Terminator', 'C3PO'] %}
@@ -932,7 +932,7 @@ The following example shows how to use operators:
 
 ## Tests
 
-Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
+Ang mga pagsusuri ay pwedeng gamitin kung ang isang variable ay mayroong balidong halaga. Ang operator `is` ay ginagamit upang magsawa ng mga pagsusuri:
 
 ```twig
 {% set robots = ['1': 'Voltron', '2': 'Astro Boy', '3': 'Terminator', '4': 'C3PO'] %}
@@ -944,7 +944,7 @@ Tests can be used to test if a variable has a valid expected value. The operator
 {% endfor %}
 ```
 
-The following built-in tests are available in Volt:
+Ang mga sumusunod na nakasamang mga pagsusuri ay pwede ng magagamit sa Volt:
 
 | Test          | Description                                                          |
 | ------------- | -------------------------------------------------------------------- |
@@ -959,7 +959,7 @@ The following built-in tests are available in Volt:
 | `scalar`      | Checks if value is scalar (not an array or object)                   |
 | `type`        | Checks if a value is of the specified type                           |
 
-More examples:
+Mas marami pang mga halimbawa:
 
 ```twig
 {% if robot is defined %}
@@ -1010,7 +1010,7 @@ More examples:
 
 ## Macros
 
-Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
+Ang mga macros ay pwedeng magamit muli sa lohika sa isang template, sila ay gumaganap na katangian ng PHP, sila ay tumatanggap ng mga parameter at bumabalik na mga halaga:
 
 ```twig
 {# Macro 'display a list of links to related topics' #}
@@ -1029,13 +1029,13 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
 {# Print related links #}
 {{ related_bar(links) }}
 
-<div>This is the content</div>
+<div>Ito ay ang laman</div>
 
 {# Print related links again #}
 {{ related_bar(links) }}
 ```
 
-When calling macros, parameters can be passed by name:
+Kapag tumatawg ng mga macro, ang mga parameter ay pwedeng ipasa sa pamamgitan ng pangalan:
 
 ```twig
 {%- macro error_messages(message, field, type) %}
@@ -1050,7 +1050,7 @@ When calling macros, parameters can be passed by name:
 {{ error_messages('type': 'Invalid', 'message': 'The name is invalid', 'field': 'name') }}
 ```
 
-Macros can return values:
+Ang mga macro ay pwedeng magbalik ng mga halaga:
 
 ```twig
 {%- macro my_input(name, class) %}
@@ -1061,10 +1061,10 @@ Macros can return values:
 {{ '<p>' ~ my_input('name', 'input-text') ~ '</p>' }}
 ```
 
-And receive optional parameters:
+At tumanggap ng mga pagpipiliang mga parameter:
 
 ```twig
-{%- macro my_input(name, class='input-text') %}
+%- macro my_input(name, class='input-text') %}
     {% return text_field(name, 'class': class) %}
 {%- endmacro %}
 
@@ -1077,7 +1077,7 @@ And receive optional parameters:
 
 ## Using Tag Helpers
 
-Volt is highly integrated with `Phalcon\Tag`, so it's easy to use the helpers provided by that component in a Volt template:
+Ang Volt ay may mataas na integridad kasama ang `Phalcon\Tag`, kaya madaling gamitin ang mga katulong na binigay ng bahagi sa isang template ng Volt:
 
 ```twig
 {{ javascript_include('js/jquery.js') }}
@@ -1095,14 +1095,10 @@ Volt is highly integrated with `Phalcon\Tag`, so it's easy to use the helpers pr
 {{ end_form() }}
 ```
 
-The following PHP is generated:
+Ang mga sumusunod na mga PHP ang nagawa:
 
 ```php
-<?php echo Phalcon\Tag::javascriptInclude('js/jquery.js') ?>
-
-<?php echo Phalcon\Tag::form(array('products/save', 'method' => 'post')); ?>
-
-    <label for='name'>Name</label>
+<label for='name'>Name</label>
     <?php echo Phalcon\Tag::textField(array('name', 'size' => 32)); ?>
 
     <label for='type'>Type</label>
@@ -1113,7 +1109,7 @@ The following PHP is generated:
 {{ end_form() }}
 ```
 
-To call a `Phalcon\Tag` helper, you only need to call an uncamelized version of the method:
+Upang tumuwag ng isang `Phalcon\Tag` na katulong, pwede kang tumawag lang na isang hindi pa camilized na bersyon ng paraan ng pagtawag:
 
 | Method                            | Volt function        |
 | --------------------------------- | -------------------- |
@@ -1143,7 +1139,7 @@ To call a `Phalcon\Tag` helper, you only need to call an uncamelized version of 
 
 ## Functions
 
-The following built-in functions are available in Volt:
+Ang mga sumusunod na mga kasamang katangian ay pwede na magamit sa Volt:
 
 | Name          | Description                                                 |
 | ------------- | ----------------------------------------------------------- |
@@ -1162,7 +1158,7 @@ The following built-in functions are available in Volt:
 
 ## View Integration
 
-Also, Volt is integrated with `Phalcon\Mvc\View`, you can play with the view hierarchy and include partials as well:
+Ang Volt din ay isinama sa `Phalcon\Mvc\View`, ikaw ay pwedeng maglaro kasama ang pinamanag tanawin at isama din ang mga partial:
 
 ```twig
 {{ content() }}
@@ -1172,9 +1168,11 @@ Also, Volt is integrated with `Phalcon\Mvc\View`, you can play with the view hie
 
 <!-- Passing extra variables -->
 <div id='footer'>{{ partial('partials/footer', ['links': links]) }}</div>
+ 
+Context | Request Context
 ```
 
-A partial is included in runtime, Volt also provides `include`, this compiles the content of a view and returns its contents as part of the view which was included:
+Isang partial ay kasama sa pagtakbo ng oras, ang Volt ay nagbibigay din `include`, ito ay nagiipon sa mga laman ng isang tanawin at bumabalik sa laman bilang isang parte ng isang tanawin na nakasama:
 
 ```twig
 {# Simple include of a partial #}
@@ -1192,7 +1190,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 ### Include
 
-`include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
+Ang `include` ay may espesyal na pag-uugali na tutulong sa para mapabuti ang pagganap na maliit kapag gumagamit ng Volt, kung gusto mong tukuyin ang extensyon kapag isinasama ang file at ito ay umiiral kapag ang template ay naipon, ang Volt ay pwedeng magsalinya nga mga laman nga template sa isang magulang na template kung saan ito ay masasama. Ang mga template ay hindi nakalinya kung ang `include` ay mayroong mga variable na napasa kasama ang `with`:
 
 ```twig
 {# The contents of 'partials/footer.volt' is compiled and inlined #}
@@ -1205,7 +1203,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 ### Partial vs Include
 
-Keep the following points in mind when choosing to use the `partial` function or `include`:
+Panatilihin ang mga sumusunod na mga punto sa isip kapag pumipili ng gagamiting `partial` gamit o `include`:
 
 | Type       | Description                                                                                                |
 | ---------- | ---------------------------------------------------------------------------------------------------------- |
@@ -1220,7 +1218,7 @@ Keep the following points in mind when choosing to use the `partial` function or
 
 ## Template Inheritance
 
-With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
+Sa pagmana ng template ikaw ay pwedeng gumawa ng basihan na template na pwedeng pahabain na ibang mga template na nagpapahintulot na gamiting muli ang code. Ang basihan na template na tutukuyin *blocks* na pwedeng ma-override ng isang batang template. Tayo ay magpanggap na tayo ay mayroong mga sumusunod na basihan na template:
 
 ```twig
 {# templates/base.volt #}
@@ -1244,7 +1242,7 @@ With template inheritance you can create base templates that can be extended by 
 </html>
 ```
 
-From other template we could extend the base template replacing the blocks:
+Galing sa ibang template pwede tayong magextend na basihan na template na nagpapalit sa mga bloke:
 
 ```twig
 {% extends 'templates/base.volt' %}
@@ -1259,7 +1257,7 @@ From other template we could extend the base template replacing the blocks:
 {% endblock %}
 ```
 
-Not all blocks must be replaced at a child template, only those that are needed. The final output produced will be the following:
+Hindi lahat ng mga bloke ay kailangang palitan ng isang batang template, iyong lamang mga kailangan. Ang huling mga output na ginawa ang mga sumusunod:
 
 ```html
 <!DOCTYPE html>
@@ -1287,7 +1285,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
 
 ### Multiple Inheritance
 
-Extended templates can extend other templates. The following example illustrates this:
+Ang mga pinahabang template ay pwedeng pahabain ng ibang mga template. Ang mga sumusunod na halimbawa na nagpapakita nito:
 
 ```twig
 {# main.volt #}
@@ -1316,7 +1314,7 @@ Template `layout.volt` extends `main.volt`
 {% endblock %}
 ```
 
-Finally a view that extends `layout.volt`:
+Sa wakas may tanawin na nag-eextend `layout.volt`:
 
 ```twig
 {# index.volt #}
@@ -1334,7 +1332,7 @@ Finally a view that extends `layout.volt`:
 {% endblock %}
 ```
 
-Rendering `index.volt` produces:
+Pagrender `index.volt` na gumagawa:
 
 ```html
 <!DOCTYPE html>
@@ -1356,11 +1354,11 @@ Rendering `index.volt` produces:
 </html>
 ```
 
-Note the call to the function `super()`. With that function it's possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
+Tandaan ang pagtawag ng gamit `super()`. Kasama ang gamit pwedeng ma render ang mga laman ng magulang na bloke. Bilang mga bahagyan, ang landas ay nakaset sa `extends`na isang kamag-anak sa ilalim ng kasalukuyang direktorya (i.e. `app/views/`).
 
 <div class="alert alert-warning">
     <p>
-        By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option <code>'compileAlways' => true</code>. Thus, the templates are compiled always taking into account changes in the parent templates.
+        By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option <code>'compileAlways' => true</code>. Kaya naman, ang mga template ay palaging naiipon na isinalang-alang sa pagbabago sa magulang na mga template.
     </p>
 </div>
 
@@ -1368,10 +1366,10 @@ Note the call to the function `super()`. With that function it's possible to ren
 
 ## Autoescape mode
 
-You can enable auto-escaping of all variables printed in a block using the autoescape mode:
+Pwede mong paganahin ang awtomatikong-paglabas ng lahat ng mga variable na naprint na sa isang bloke gamit ang awtomatikong paglabad na mode:
 
 ```twig
-Manually escaped: {{ robot.name|e }}
+Manu-manong nakatakas:  {{ robot.name|e }}
 
 {% autoescape true %}
     Autoescaped: {{ robot.name }}
@@ -1385,15 +1383,15 @@ Manually escaped: {{ robot.name|e }}
 
 ## Extending Volt
 
-Unlike other template engines, Volt itself is not required to run the compiled templates. Once the templates are compiled there is no dependence on Volt. With performance independence in mind, Volt only acts as a compiler for PHP templates.
+Hindi kagaya ng ibang mga makina ng template, ang Volt ay hindi kinakailangan na patakbuhin ang mga naipong mga template. Kapag ang isang template ay naipon na hindi dumedepende sa Volt. Sa malayang pagganap sa isip. Ang Volt ay kumikilos bilang isang tagaipon para sa mga template ng PHP.
 
-The Volt compiler allow you to extend it adding more functions, tests or filters to the existing ones.
+Ang Volt na tagaipon ay nagpaphintulot sa iyo na palawigin ito sa pagdagdag na mas maraming mga gamit, mga pagsusuri, o mga sumasala sa mga umiiral na.
 
 <a name='extending-functions'></a>
 
 ### Functions
 
-Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using two strategies, returning a simple string or using an anonymous function. Always is required that the chosen strategy returns a valid PHP string expression:
+Ang mga gamit ay kumikilos bilang mga karaniwang mga gamit ng PHP, ang isang balidong pangalan ng string ay kinakailangan bilang isang pangalan ng gamit. Ang mga gamit ay pwedeng maidagdag gamit ang dalawang mga stratehiya, bumabalik sa isang simpleng string o gamit ang isang hindi kilalang mga gamit. Palagi ay kianakailangan sa piniling stratehiya na bumabalik sa isang balidong ekspresyon ng string ng PHP:
 
 ```php
 <?php
@@ -1408,7 +1406,7 @@ $compiler = $volt->getCompiler();
 $compiler->addFunction('shuffle', 'str_shuffle');
 ```
 
-Register the function with an anonymous function. This case we use `$resolvedArgs` to pass the arguments exactly as were passed in the arguments:
+Pagrehistro sa gamit sa isang hindi kilalang gamit. Ang kasong ito ay magagamit `$resolvedArgs` para magpasa ng mga argumento na eksakto sa napasang mga argumento:
 
 ```php
 <?php
@@ -1421,7 +1419,7 @@ $compiler->addFunction(
 );
 ```
 
-Treat the arguments independently and unresolved:
+Tratohin ang mga argumento na malaya at hindi maresolba:
 
 ```php
 <?php
@@ -1445,7 +1443,7 @@ $compiler->addFunction(
 );
 ```
 
-Generate the code based on some function availability:
+Gumawa ng code base sa ilang mga gamit na mayroon:
 
 ```php
 <?php
@@ -1462,7 +1460,7 @@ $compiler->addFunction(
 );
 ```
 
-Built-in functions can be overridden adding a function with its name:
+Mga gamit na nakalakip na pwedeng ma-override na nagdadagdag ng isang gamit na kasama ang pangalan nito:
 
 ```php
 <?php
@@ -1475,7 +1473,7 @@ $compiler->addFunction('dump', 'print_r');
 
 ### Filters
 
-A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
+Ang sumasala ay may mga sumusunod na porma sa isang template: leftExpr|name(optional-args). Magdagdag ng bagong mga sumasala ay makikita kasama ang mga gamit:
 
 ```php
 <?php
@@ -1495,7 +1493,7 @@ $compiler->addFilter(
 );
 ```
 
-Built-in filters can be overridden adding a function with its name:
+Ang mga nakalakip na mga sumsala ay pwedeng ma -override ang mga naidagdag na gamit kasama ang pangalan nito:
 
 ```php
 <?php
@@ -1508,9 +1506,9 @@ $compiler->addFilter('capitalize', 'lcfirst');
 
 ### Extensions
 
-With extensions the developer has more flexibility to extend the template engine, and override the compilation of a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.
+Kasama ang mga extensyon ang nagdedevelop ay magkakaroon ng kakayahang makaangkop upnag pahabain ang makina ng template, at ma-override ang mga naipon sa tiyak na instruksyon, baguhin ang pag-uugali ng isang ekspresyon o operator, magdagdag ng mga gamit/mga sumasala, at marami pa.
 
-An extension is a class that implements the events triggered by Volt as a method of itself. For example, the class below allows to use any PHP function in Volt:
+Ang isang extensyon ay isang klase na nagppatupad ng mga nangyayari na pinapagana ng Volt bilang isang paraan. Halimbawa, ang klase sa ibaba ay nagpapahintulot na gumamit ng kahit anong gamit ng PHP sa Volt:
 
 ```php
 <?php
@@ -1523,31 +1521,31 @@ class PhpFunctionExtension
     public function compileFunction($name, $arguments)
     {
         if (function_exists($name)) {
-            return $name . '('. $arguments . ')';
+            return $name . '('. $arguments. ')';
         }
     }
 }
 ```
 
-The above class implements the method `compileFunction` which is invoked before any attempt to compile a function call in any template. The purpose of the extension is to verify if a function to be compiled is a PHP function allowing to call it from the template. Events in extensions must return valid PHP code, this will be used as result of the compilation instead of the one generated by Volt. If an event doesn't return an string the compilation is done using the default behavior provided by the engine.
+Ang nasa itaas na klase na nagpapatupad ng paraan `compileFunction` na tumatawag bago ang isang pagsubok na umipon ng pagtawag na gamit sa kahit anong template. Ang layunin ng extensyon upang maverify kung ang isang gamit na maiipon ay isang gamit ng PHP na nagpapahintulot na tawagin ito galing sa template. Ang mga nangyayari ay kailangang bumalik sa balidong code ng PHP, ito ay ginagamit bilang resulta na naipon sa halip na sa isang ginawa ng Volt. Kung ang isang pangyayari ay hindi bumalik saisang string na naipon ay natapos na gamit ang default na pag-uugali na binigay ng makina.
 
-The following compilation events are available to be implemented in extensions:
+Ang mga sumusunod na naipong mga pangyayari na magagamit upang maipatupad sa mga extensyon:
 
-| Event/Method        | Description                                                                                            |
-| ------------------- | ------------------------------------------------------------------------------------------------------ |
-| `compileFunction`   | Triggered before trying to compile any function call in a template                                     |
-| `compileFilter`     | Triggered before trying to compile any filter call in a template                                       |
-| `resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators     |
-| `compileStatement`  | Triggered before trying to compile any expression. This allows the developer to override any statement |
+| Pangyayari/Paraan   | Description                                                                                                                                         |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `naipongGamit`      | Na-trigger na bago muling sumubok na iponin ang kahit anong gamit ng pagtawag sa isang template                                                     |
+| `naipongSumasala`   | Na-trigger bago muling sumubok na iponin ang kahit anong pagsala ng pagtawag sa isang template                                                      |
+| `resolbaEkspresyon` | Na-trigger bago sumubok muli na iponin ang kahit anong ekspresyon. Ito ay nagpapahintulot sa nagdedevelop na ma-override ang mga operator           |
+| `naipongPahayag`    | Na-trigger na bago sumubok muli na iponin ang kahit anong ekspresyon. Ito ay nagpapahintulot sa nagdedevelop na ma-override ang kahit anong pahayag |
 
-Volt extensions must be in registered in the compiler making them available in compile time:
+Ang mga extensyon ng Volt ay kailangang nakarehistro sa taga-ipon na sila ay ginagawang magagamit sa naipong oras:
 
 ```php
 <?php
 
 // Register the extension in the compiler
 $compiler->addExtension(
-    new PhpFunctionExtension()
+    new PhpFunctionExtension();
 );
 ```
 
@@ -1555,7 +1553,7 @@ $compiler->addExtension(
 
 ## Caching view fragments
 
-With Volt it's easy cache view fragments. This caching improves performance preventing that the contents of a block from being executed by PHP each time the view is displayed:
+Sa Volt madali lamang ang cache ng tinignan na mga fragment. Ang pagcache nito ay mas nagpapabuti sa pagganap na pumipigil sa laman ng isang bloke para magawa ng PHP na kapag may tanawing pinakita:
 
 ```twig
 {% cache 'sidebar' %}
@@ -1563,7 +1561,7 @@ With Volt it's easy cache view fragments. This caching improves performance prev
 {% endcache %}
 ```
 
-Setting a specific number of seconds:
+Ang pagset ng tiyak na bilang ng mga segundo:
 
 ```twig
 {# cache the sidebar by 1 hour #}
@@ -1572,7 +1570,7 @@ Setting a specific number of seconds:
 {% endcache %}
 ```
 
-Any valid expression can be used as cache key:
+Kahit anong balidong ekspresyon ay pwedeng magamit bilang isang susi ng cache:
 
 ```twig
 {% cache ('article-' ~ post.id) 3600 %}
@@ -1584,13 +1582,13 @@ Any valid expression can be used as cache key:
 {% endcache %}
 ```
 
-The caching is done by the `Phalcon\Cache` component via the view component. Learn more about how this integration works in the section [Caching View Fragments](/[[language]]/[[version]]/views#caching-fragments).
+Ang pagcache ay natatapos sa pamamagitan ng `Phalcon\Cache` na bahagi sa pamamagitan ng pagtingin ng bahagi. Matuto nang higit pa tungkol sa kung papaano ang pagsasamang ito ay gumagana sa seksyong ito [Caching View Fragments](/[[language]]/[[version]]/views#caching-fragments).
 
 <a name='services-in-templates'></a>
 
 ## Inject Services into a Template
 
-If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:
+Kung ang isang lalagyan ng serbisyo (DI) ay magagamit para sa Volt, ikaw ay pwedeng gumamit ng mga serbisyo sa pamamagitan lang ng pag-access sa pangalan ng serbisyo sa template:
 
 ```twig
 {# Inject the 'flash' service #}
@@ -1604,7 +1602,7 @@ If a service container (DI) is available for Volt, you can use the services by o
 
 ## Stand-alone component
 
-Using Volt in a stand-alone mode can be demonstrated below:
+Ang paggamit sa Volt sa isang mag-isang mode ay ipapakita sa ibaba:
 
 ```php
 <?php
@@ -1643,8 +1641,8 @@ require $compiler->getCompiledTemplatePath();
 
 ## External Resources
 
-* A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
-* [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)
-* [Our website](https://phalconphp.com) is running using Volt as template engine, [Github](https://github.com/phalcon/website)
-* [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [Github](https://github.com/phalcon/forum)
-* [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [Github](https://github.com/phalcon/vokuro)
+* Isang bunble para sa Sublime/Textmate ay magagamit na [dito](https://github.com/phalcon/volt-sublime-textmate)
+* [Album-O-Rama](https://album-o-rama.phalconphp.com) ay isang halimbawang aplikasyon gamit ang Volt bilang isang makina ng template, [Github](https://github.com/phalcon/album-o-rama)
+* [Ang aming website](https://phalconphp.com) ay tumatakbo gamit ang Volt biang isang makina ng template, [Github](https://github.com/phalcon/website)
+* [Phosphorum](https://forum.phalconphp.com), ang forum ng Phalcon, gumagamit din ng Volt, [Github](https://github.com/phalcon/forum)
+* [Vökuró](https://vokuro.phalconphp.com), ay isang halimbawa din ng gumagamit ng Volt, [Github](https://github.com/phalcon/vokuro)
