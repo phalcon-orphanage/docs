@@ -1,12 +1,12 @@
-# Class **Phalcon\\Db\\Adapter\\Pdo\\Mysql**
+# Klase ng **Phalcon\\Db\\Aadapter\\Pdo\\Mysql**
 
-*extends* abstract class [Phalcon\Db\Adapter\Pdo](/en/3.2/api/Phalcon_Db_Adapter_Pdo)
+*mga extend* klase ng abstrak [Phalcon\Db\Adapter\Pdo](/en/3.2/api/Phalcon_Db_Adapter_Pdo)
 
-*implements* [Phalcon\Db\AdapterInterface](/en/3.2/api/Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
+*isasakatuparan* [Phalcon\Db\AdapterInterface](/en/3.2/api/Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/adapter/pdo/mysql.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/adapter/pdo/mysql.zep" class="btn btn-default btn-sm">Mula sa Github</a>
 
-Specific functions for the Mysql database system
+Tinukoy na mga tungkulin para sa Mysql na sistema ng database
 
 ```php
 <?php
@@ -25,11 +25,11 @@ $connection = new Mysql($config);
 
 ```
 
-## Methods
+## Ang mga paraan
 
-public **describeColumns** (*mixed* $table, [*mixed* $schema])
+pampublikong **describeColumns** (*mixed* $table, [*mixed* $schema])
 
-Returns an array of Phalcon\\Db\\Column objects describing a table
+Bumabalik ang isang array ng Phalcon\\Db\\Column na mga gamit na naglalarawan ng isang talahanayan
 
 ```php
 <?php
@@ -40,7 +40,7 @@ print_r(
 
 ```
 
-public [Phalcon\Db\IndexInterface](/en/3.2/api/Phalcon_Db_IndexInterface) **describeIndexes** (*string* $table, [*string* $schema])
+pampublikong [Phalcon\Db\IndexInterface](/en/3.2/api/Phalcon_Db_IndexInterface) **describeIndexes** (*string* $table, [*string* $schema])
 
 Lists table indexes
 
