@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Pagtatago ng data sa Sesyon</a> <ul>
+      <a href="#pangkalahatang tanaw">Pagtatago ng data sa Sesyon</a> <ul>
         <li>
           <a href="#start">Pagsisimula ng Sesyon</a>
         </li>
@@ -155,9 +155,9 @@ Magdadagdag ng isang walang kaparehong ID ay hindi kailangan.
 
 <a name='bags'></a>
 
-## Session Bags
+## Mga Bag ng Sesyon
 
-`Phalcon\Session\Bag` is a component that helps separating session data into `namespaces`. Working by this way you can easily create groups of session variables into the application. By only setting the variables in the `bag`, it's automatically stored in session:
+`Phalcon\Session\Bag` ay isang bahagi na tumutulong na pahiwalayin ang mga sesyon ng data patungo `namespaces`. Sa pagtratrabaho sa ganitong paran madali kang makakagawa ng mga grupo ng mga sesyon na mga varyabol patungo sa aplikason. Sa pamamagitan ng pagset sa mga varyabol sa `bag`, ito ay awtomatikong natatago sa sesyon:
 
 ```php
 <?php
@@ -174,9 +174,9 @@ $user->age  = 22;
 
 <a name='data-persistency'></a>
 
-## Persistent Data in Components
+## Paulit-ulit na Data sa mga Bahagi
 
-Controller, components and classes that extends `Phalcon\Di\Injectable` may inject a `Phalcon\Session\Bag`. This class isolates variables for every class. Thanks to this you can persist data between requests in every class in an independent way.
+Tagakontrol, mga bahagi at mga klase na lumalawig `Phalcon\Di\Injectable` na pwedng magturok ng isang `Phalcon\Session\Bag`. Ang klaseng ito na ngahihiwalay sa mga varyabol sa bawat klase. Salamat dito na pwede mong ulit-ulitin ang data sa pagitan ng mga hiling sa bawat klase sa malayang paraan.
 
 ```php
 <?php
@@ -200,7 +200,7 @@ class UserController extends Controller
 }
 ```
 
-In a component:
+Sa isang bahagi:
 
 ```php
 <?php
@@ -222,12 +222,12 @@ class Security extends Component
 }
 ```
 
-The data added to the session (`$this->session`) are available throughout the application, while persistent (`$this->persistent`) can only be accessed in the scope of the current class.
+Ang data na nadagdag sa sesyon (`$this->session`) ay magagamit na sa boung aplikasyon, habang ulit-ulitin ang (`$this->persistent`) na pwede lang mabuksan sa hangganan ng kasalukuyang klase.
 
 <a name='custom-adapters'></a>
 
-## Implementing your own adapters
+## Pagpapatupad ng iyong mga adaptor
 
-The `Phalcon\Session\AdapterInterface` interface must be implemented in order to create your own session adapters or extend the existing ones.
+Ang `Phalcon\Session\AdapterInterface` interface na dapat na maipatupad upang makagawa ng sariling mga adaptor ng sesyon o palawigin ang mga umiiral na.
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter)
+Mayroong higit pa na mga adaptor na magagamit para sa bahaging ito sa[Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter)
