@@ -1,18 +1,18 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Pangkalahatang-ideya</a> <ul>
         <li>
-          <a href="#integration">Integrating PHPUnit with Phalcon</a>
+          <a href="#integration">Pagsasama ang PHPUnit sa Phalcon</a>
         </li>
         <li>
-          <a href="#unit-helper">The PHPUnit helper file</a>
+          <a href="#unit-helper">Ang PHPunit helper file</a>
         </li>
         <li>
-          <a href="#phpunit-config">The <code>phpunit.xml</code> file</a>
+          <a href="#phpunit-config">Ang kikil na <code>phpunit.xml</code>file</a>
         </li>
         <li>
-          <a href="#sample">Sample Unit Test</a>
+          <a href="#sample">Halimbawa ng Yunit Test</a>
         </li>
       </ul>
     </li>
@@ -21,115 +21,115 @@
 
 <a name='overview'></a>
 
-# Overview
+# Pangkalahatang-ideya
 
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
+Ang pagsulat ng tamang pagsusuri ay makatutulong sa pagsusulat ng mabutinhgsoftware. Kung ikaw ay bubuo ng angkop na mga test cases maaring mong tanggalin ang pinakagumagana na bugs at mapanatili ng mabuti ang iyong software.
 
 <a name='integration'></a>
 
-## Integrating PHPUnit with Phalcon
+## Pagsamama ng PHPunit sa Phalcon
 
-If you don't already have PHPUnit installed, you can do it by using the following command:
+Kung ikaw ay wala pang PHPUnit na naka-install, maaring mong gamitin ang mga utos na ito:
 
 ```bash
-composer require phpunit/phpunit
+kompositor ay kailangan ng phpunit/phpunit
 ```
 
-or by manually adding it to `composer.json`:
+o mano-manong idagdag ito sa `composer.json`:
 
 ```json
 <br />{
-    "require-dev": {
-        "phpunit/phpunit": "5.*"
+    "require-dev":{
+        "phpunit/phpunit":"5.*"
     }
 }
 ```
 
-Once PHPUnit is installed create a directory called `tests` in project root directory:
+Kapag ang PHPUnit ay na-install gumawa ng direktoryo na tinatawag na `tests` sa direktoryo ng ugat ng proyekto:
 
     app/
     public/
     tests/
     
 
-Next, we need a 'helper' file to bootstrap the application for unit testing.
+Kasunod, kailangan natin ang 'katulong' na kikil para magsimula muli ang aplikasyon para sa yunit na pagsusuri.
 
 <a name='unit-helper'></a>
 
-## The PHPUnit helper file
+## Ang PHPUnit helper file
 
-A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your `tests/` directory as `TestHelper.php`.
+Ang helper file ay kailangan para gumana muli ang aplikasyon para maipatakbo ang mga pagsusulit. Kami ay naghanda ng isang halimbawa. Ilagay ang file sa iyong `tests` direktoryo bilang `TestHelper.php`.
 
 ```php
 <?php
 
-use Phalcon\Di;
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Loader;
+gamitin ang Phalcon\Di;
+gamitin ang Phalcon\Di\FactoryDefault;
+gamitin ang Phalcon\Loader;
 
-ini_set("display_errors", 1);
+ini_set("display_errors",1);
 error_reporting(E_ALL);
 
-define("ROOT_PATH", __DIR__);
+define("ROOT_PATH",__DIR__);
 
 set_include_path(
-    ROOT_PATH . PATH_SEPARATOR . get_include_path()
+    ROOT_PATH. PATH_SEPARATOR. get_include_path()
 );
 
-// Required for phalcon/incubator
-// and autoload the dependencies found in composer
-include __DIR__ . "/../vendor/autoload.php";
+// Kailangan para sa phalcon/incubator
+// at i-autoload ang mga dependencies na makikita sa kompositor
+isama ang __DIR__. "/ ../vendor/autoload.php";
 
-// Use the application autoloader to autoload the classes
-$loader = new Loader();
+// Gamitin ang aplikasyon na autoloader para i-autoload ang mga klase
+$loader = bagong Loader();
 
 $loader->registerDirs(
-    [
+     [
         ROOT_PATH,
     ]
 );
 
 $loader->register();
 
-$di = new FactoryDefault();
+$di = bagong FactoryDefault();
 
 Di::reset();
 
-// Add any needed services to the DI here
+// Maglagay ng nga kailangan na serbisyo para sa DI dito
 
 Di::setDefault($di);
 ```
 
-Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your main application.
+Kung kailangan mong subukan ang anumang bahagi mula sa iyong sariling aklatan, idagdag ito sa autoloader o gamitin ang autoloader mula sa iyong pangunahing aplikasyon.
 
-To help you build the Unit Tests, we made a few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in the [Phalcon Incubator](https://github.com/phalcon/incubator).
+Para matulungan kang bumuo ng Yunit Tests, gumawa kami ng mga abstrak na klase na maari mong gamitin upang ma bootstrap ang mga Yunit Tests. Ang mga kikil na ito ay makikita sa [Phalcon Incubator](https://github.com/phalcon/incubator).
 
-You can use the Incubator library by adding it as a dependency:
+Maari mong gamitin ang aklatan ng limliman sa pagdagdag nito bilang dependency:
 
 ```bash
-composer require phalcon/incubator
+ang kompositor ay nangangailangan ng phalcon/incubator
 ```
 
-or by manually adding it to `composer.json`:
+o mano-manong i-dagdag ito sa `conposer.json`:
 
 ```json
 {
-    "require": {
+    "require":{
         "phalcon/incubator": "^3.2"
     }
 }
 ```
 
-You can also clone the repository using this link: https://github.com/phalcon/incubator.
+Maari mo ring kopyahin ang bodiga gamit ang link na ito: https://github.com/phalcon/incubator.
 
 <a name='phpunit-config'></a>
 
-## The `phpunit.xml` file
+## Ang`phpunit.xml`file
 
-Now, create a `phpunit.xml` file as follows:
+Ngayon, lumikha ng `phpunit.xml` file katulad nito:
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding=UTF-8"?>
 
 <phpunit bootstrap="./TestHelper.php"
          backupGlobals="false"
@@ -143,45 +143,45 @@ Now, create a `phpunit.xml` file as follows:
          stopOnFailure="false"
          syntaxCheck="true">
 
-    <testsuite name="Phalcon - Testsuite">
+<testsuite name="Phalcon - Testsuite">
         <directory>./</directory>
     </testsuite>
 </phpunit>
 ```
 
-Modify the `phpunit.xml` to fit your needs and save it in `tests`. This will run any tests under the `tests` directory.
+Baguhin ang `phpunit.xml` para maangkop sa iyong kailangan at i-save ito sa `tests`. Ito ay magtatakbo ng mga pasulit ibaba sa `tests` na direktoryo.
 
 <a name='sample'></a>
 
-## Sample Unit Test
+## Halimbawa Ng Yunit Test
 
-To run any Unit Tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
+Para magpatakbo ng anumang Yunit Tests kailangan mo silang bigyan ng kahulugan. Ang autoloader ay titiyakin na ang wastong mga files ay nailagay kaya ang kailangan mo lang gawin ay gawin ang mga files at ang phpunit ang magpapatakbo ng mga pagsusuri para sayo.
 
-This example does not contain a config file, most test cases however, do need one. You can add it to the `DI` to get the `UnitTestCase` file.
+Ang halimbawa na ito ay hindi naglalaman ng config file, karamihan sa mga pagsusuri na kaso, kailangan ng isam Maari mo itong i-dagdag sa `DI` para makuha ang `UnitTestCase` file.
 
-First create a base Unit Test called `UnitTestCase.php` in your `tests` directory:
+Lumikha muna ng takad na Yunit Test na tinatawag na `UnitTestCase.php` sa iyong `tests` direktoryo:
 
 ```php
 <?php
 
-use Phalcon\Di;
-use Phalcon\Test\UnitTestCase as PhalconTestCase;
+gumamit ng Phalcon\Di;
+gumamit ng Phalcon\Test\UnitTestCase bilang PhalconTestCase;
 
-abstract class UnitTestCase extends PhalconTestCase
+klase ng abstrak UnitTestCase ay pinapahaba ang PhalconTestCase
 {
     /**
      * @var bool
      */
-    private $_loaded = false;
+        private $_loaded=false;
 
     public function setUp()
     {
         parent::setUp();
 
-        // Load any additional services that might be required during testing
+        //mag load ng anumang mga serbisyo na kailngan habang nagsusuri
         $di = Di::getDefault();
 
-        // Get any DI components here. If you have a config, be sure to pass it to the parent
+        // Kumuha ng anumang DI na mga bahagi dito. Kung ikaw ay mayroong config, dapat siguraduhin na ipasa ito sa magulang
 
         $this->setDi($di);
 
@@ -189,22 +189,22 @@ abstract class UnitTestCase extends PhalconTestCase
     }
 
     /**
-     * Check if the test case is setup properly
+     * Suriin kung ang kaso ng pagsusuri ay na set-up ng maayos
      *
-     * @throws \PHPUnit_Framework_IncompleteTestError;
+     * @throws \PHPUNIT_Framework_IncompleteTestError;
      */
-    public function __destruct()
+    public function__destruct()
     {
-        if (!$this->_loaded) {
-            throw new \PHPUnit_Framework_IncompleteTestError(
-                "Please run parent::setUp()."
+        kung (!$this->_loaded) {
+                        itapon ang bagong \PHPUnit_ Framework_IncompleteTestError(
+                "Please run  parent::setUp()."
             );
         }
     }
 }
 ```
 
-It's always a good idea to separate your Unit Tests in namespaces. For this test we will create the namespace 'Test'. So create a file called `tests\Test\UnitTest.php`:
+Isang palaging magandang idea na ihiwalay ang iyong Yunit Tests sa puwang ng pampangalan. Para sa pagsusuri na ito tayo ay lilikha ng puwang ng pampangalan na 'Test'. Kaya lumikha ng file na tinatawag na `tests\Test\UnitTest.php`:
 
 ```php
 <?php

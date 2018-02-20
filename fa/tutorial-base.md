@@ -51,68 +51,68 @@
 
 # Tutorial - basic
 
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/[[language]]/[[version]]/developer-tools).
+در طول این اولین آموزش، ما شما را از طریق ایجاد یک برنامه با یک فرم ثبت نام ساده از ابتدا راه می اندازیم. ما همچنین جنبه های اصلی عملکرد چهارچوب را توضیح خواهیم داد. اگر شما علاقه مند به ابزار تولید خودکار کد برای فالکون هستید، می توانید را بررسی کنید[ابزار های توسعه دهنده](/[[language]]/[[version]]/developer-tools).
 
-The best way to use this guide is to follow each step in turn. You can get the complete code [here](https://github.com/phalcon/tutorial).
+بهترین راه برای استفاده از این راهنما، دنبال کردن هر مرحله است. شما می توانید کد کامل را دریافت کنید [در اینجا](https://github.com/phalcon/tutorial).
 
 <a name='file-structure'></a>
 
 ## File structure
 
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+فالکون یک ساختار فایل خاص را برای توسعه برنامه تحمیل نمی کند. با این اوصاف به آسانی می توانید برنامه های کاربردی فالکون را با ساختاری که راحت تر از آن استفاده می کنید را اجرا کنید.
 
-For the purposes of this tutorial and as a starting point, we suggest this very simple structure:
+برای اهداف این آموزش و به عنوان یک نقطه شروع، ما این ساختار بسیار ساده را پیشنهاد می کنیم:
 
 ```bash
-tutorial/
-  app/
-    controllers/
-    models/
-    views/
-  public/
-    css/
-    img/
-    js/
+آموزش /
+   برنامه /
+     کنترل کننده ها /
+     مدل ها/
+     نمایش ها /
+   عمومی/
+     سی اس اس/
+     آی ام جی/
+     جی اس/
 ```
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+توجه داشته باشید که شما به هیچ دایرکتوری "کتابخانه" مربوط به فالکون نیاز ندارید. چهارچوب موجود در حافظه، آماده است که شما از آن استفاده کنید.
 
-Before continuing, please be sure you've successfully [installed Phalcon](/[[language]]/[[version]]/installation) and have setup either [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
+قبل از ادامه دادن، لطفا از اینکه با [موفقیت فالکون را نصب کرده اید](/[[language]]/[[version]]/installation) و راه اندازی کرده اید مطمئن شوید [نگین ایکس](/[[language]]/[[version]]/setup#nginx)،[آپاچه](/[[language]]/[[version]]/setup#apache) یا [چروکی](/[[language]]/[[version]]/setup#cherokee).
 
 <a name='bootstrap'></a>
 
 ## Bootstrap
 
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+فایل اولی که شما باید ایجاد کنید، فایل خودراه انداز است. این فایل بسیار مهم است؛ از آنجا که آن به عنوان اساس برنامه شما عمل می کند، به شما اجازه کنترل تمام بخش های آن را می دهد. در این فایل شما می توانید مقداردهی اولیه اجزا و همچنین تعیین عملکرد برنامه را انجام دهید.
 
-Ultimately, it is responsible for doing 3 things:
+در نهایت، 3 وظیفه مهم وجود دارد:
 
-- Setting up the autoloader.
-- Configuring the Dependency Injector.
-- Handling the application request.
+- راه اندازی بارگیری خودکار.
+- پیکربندی ایجاد تزریق وابستگی.
+- رسیدگی به درخواست برنامه.
 
 <a name='autoloaders'></a>
 
 ### Autoloaders
 
-The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component `Phalcon\Loader`.
+بخش اول که ما در خودراه انداز می یابیم، ثبت کردن بارگیری خودکار است. بارگیری خودکار برای بارگذاری دسته ها به عنوان کنترلر و مدل در برنامه مورد استفاده قرار خواهد گرفت. برای مثال ما می توانیم جهت افزایش انعطاف پذیری یک یا چند دایرکتوری از کنترلرها را برنامه ثبت کنیم. در این مثال ما از مولفه استفاده می کنیم`فالکون/راه انداز`.
 
-With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
+با استفاده از این، می توانیم دسته ها را با استفاده از استراتژی های مختلف بارگذاری کنیم اما برای این مثال ما تصمیم گرفتیم که قرارگیری دسته ها براساس دایرکتوری های پیش تعریف شده باشند:
 
 ```php
 <?php
 
-use Phalcon\Loader;
+استفاده از فالکون/ راه انداز;
 
 // ...
 
 $loader = new Loader();
 
 $loader->registerDirs(
-    [
-        '../app/controllers/',
-        '../app/models/',
-    ]
+[
+'../app/controllers/',
+'../app/models/',
+]
 );
 
 $loader->register();
@@ -122,9 +122,9 @@ $loader->register();
 
 ### Dependency Management
 
-A very important concept that must be understood when working with Phalcon is its `dependency injection container <di>`. It may sound complex but is actually very simple and practical.
+یک مفهوم بسیار مهم که باید در هنگام کار با فالکون شناخته شود `ظرفیت ایجاد وابستگی است <di>`. این ممکن است پیچیده باشد اما در واقع بسیار ساده و عملی است.
 
-A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, `Phalcon\Di` acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
+ظرف سرویس یک فضای انعطاف پذیر است که در آن ما سرویسهایی را که برنامه جهت عملیات استفاده خواهد کرد را در سطح جهانی ذخیره می کنیم. هر بار که چارچوب نیاز به یک مولفه داشته باشد، از ظرف استفاده یک نام توافقی برای سرویس درخواست خواهد کرد. از آنجا که فالکون یک چارچوب بسیار شفاف سازی شده است،`فالکون/دی`مانند چسب عمل می کند و به یک پارچگی مولفه های مختلف جهت انجام عملیات ترکیبی بصورت شفاف، کمک می کند.
 
 ```php
 <?php
@@ -137,11 +137,11 @@ use Phalcon\Di\FactoryDefault;
 $di = new FactoryDefault();
 ```
 
-`Phalcon\Di\FactoryDefault` is a variant of `Phalcon\Di`. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
+`فالکون/دی/پیشفرض کارخانه`از یک نوع `فالکون/دی`. برای تسهیل در کار، بسیار از مولفه های کاربردی فالکون از قبل ثبت شده اند. بنابراین لازم نیست ما آنها را یک به یک ثبت کنیم. بعدها مشکلی در جایگزینی سرویس کارخانه وجود نخواهد داشت.
 
-In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
+در بخش بعدی، ما سروی "نمایه" را ثبت می کنیم که نشان دهنده دایرکتوری است که در آن چارچوب فایل های قابل نمایش را پیدا می کند. همانطور که فایل های قابل نمایش با دسته ها مطابقت ندارند، با بارگیری خودکار قابل بارگذاری نیستند.
 
-Services can be registered in several ways, but for our tutorial we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
+سرویس ها را می توان از چند راه ثبت کرد، اما برای آموزش، ما استفاده می کنیم از یک [تابع با نام مستعار](http://php.net/manual/en/functions.anonymous.php):
 
 ```php
 <?php
@@ -150,7 +150,7 @@ use Phalcon\Mvc\View;
 
 // ...
 
-// Setup the view component
+// تنظیم مولفه نمایش
 $di->set(
     'view',
     function () {
@@ -163,7 +163,7 @@ $di->set(
 );
 ```
 
-Next we register a base URI so that all URIs generated by Phalcon include the "tutorial" folder we setup earlier. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
+ما یک URI اولیه را ثبت می کنیم و همه URI های ایجاد شده توسط فالکون در پوشه "آموزش" که قبل تر ایجاد کردیم قرار می گیرند. از این پس در این تمرین، زمانی که ما از دسته`فالکون/برچسب` برای ایجاد یک ابر پیوند استفاده کنیم مهم خواهد بود.
 
 ```php
 <?php
@@ -172,7 +172,7 @@ use Phalcon\Mvc\Url as UrlProvider;
 
 // ...
 
-// Setup a base URI so that all generated URIs include the "tutorial" folder
+// راه اندازی یک URI پایه به طوری که تمام URI های ایجاد شده شامل پوشه "آموزش" است
 $di->set(
     'url',
     function () {
@@ -189,7 +189,7 @@ $di->set(
 
 ### Handling the application request
 
-In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+در قسمت آخر این فایل، ما را پیدا می کنیم`فالکون/ام وی سی/برنامه`. هدف آن این است که محیط درخواستی را مقدار دهی اولیه کرده، مسیر درخواست ورودی راه را تعیین و سپس هر گونه فعالیت شناسایی شده را مخابره نماید؛ هر پاسخی را جمع آوری می کند و زمانی که فرآیند کامل می شود، آنها را بازمی گرداند.
 
 ```php
 <?php
@@ -209,7 +209,7 @@ $response->send();
 
 ### Putting everything together
 
-The `tutorial/public/index.php` file should look like:
+فایل `آموزش/عمومی/فهرست`باید به این شکل باشد:
 
 ```php
 <?php
@@ -225,10 +225,10 @@ use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 $loader = new Loader();
 
 $loader->registerDirs(
-    [
-        '../app/controllers/',
-        '../app/models/',
-    ]
+[
+'../app/controllers/',
+'../app/models/',
+]
 );
 
 $loader->register();
@@ -238,47 +238,47 @@ $di = new FactoryDefault();
 
 // Setup the view component
 $di->set(
-    'view',
-    function () {
-        $view = new View();
+'view',
+function () {
+$view = new View();
 
-        $view->setViewsDir('../app/views/');
+$view->setViewsDir('../app/views/');
 
-        return $view;
-    }
+return $view;
+}
 );
 
 // Setup a base URI so that all generated URIs include the "tutorial" folder
 $di->set(
-    'url',
-    function () {
-        $url = new UrlProvider();
+'url',
+function () {
+$url = new UrlProvider();
 
-        $url->setBaseUri('/tutorial/');
+$url->setBaseUri('/tutorial/');
 
-        return $url;
-    }
+return $url;
+}
 );
 
 $application = new Application($di);
 
 try {
-    // Handle the request
-    $response = $application->handle();
+// Handle the request
+$response = $application->handle();
 
-    $response->send();
+$response->send();
 } catch (\Exception $e) {
-    echo 'Exception: ', $e->getMessage();
+echo 'Exception: ', $e->getMessage();
 }
 ```
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less than 30 lines of code.
+همانطور که می بینید، فایل خد راه انداز بسیار کوتاه است و ما نیازی به اضافه کردن هیچ فایل دیگری نداریم. ما یک برنامه ام وی سی انعطاف پذیر در کمتر از 30 خط کد برای خود تنظیم کرده ایم.
 
 <a name='controller'></a>
 
 ## Creating a Controller
 
-By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (`app/controllers/IndexController.php`) looks like:
+به طور پیش فرض فالکون یک کنترلربا نام شاخص را جستجو می کند. این نقطه آغاز است که هیچ کنترلریا عملی درخواست نشده است. کنترلرشاخص(`برنامه/کنترل کننده/کنترل کننده شاخص`)به این شکل است:
 
 ```php
 <?php
@@ -294,23 +294,23 @@ class IndexController extends Controller
 }
 ```
 
-The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this:
+دسته کنترلرباید پسوند "کنترل کننده" داشته باشد و دسته اقدامات کنترلر باید پسوند "عمل" داشته باشد. اگر از مرورگر خود به برنامه دسترسی داشته باشید، باید چیزی شبیه به این را ببینید:
 
 ![](/images/content/tutorial-basic-1.png)
 
-Congratulations, you're phlying with Phalcon!
+تبریک می گوییم، شما با فالکون همکاری می کنید!
 
 <a name='view'></a>
 
 ## Sending output to a view
 
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
+در مواقع ضروری خروجی از کنترلر به صفحه نمایش ارسال می شود، اما این مطلوب نیست، زیرا بیشتر متخصصان در انجمن ام وی سی این را تایید می کنند. داده نمایه های ورودی باعث ایجاد داده های خروجی که در صفحه نمایش هستند می شوند. فالکون یک نمایه با همان نام با عنوان آخرین عمل انجام شده در داخل یک پوشه به نام آخرین کنترل انجام شده، را جستجو می کند. در مورد ما (`app/views/index/index.phtml`):
 
 ```php
 <?php echo "<h1>Hello!</h1>";
 ```
 
-Our controller (`app/controllers/IndexController.php`) now has an empty action definition:
+کنترلر ما (`app/controllers/IndexController.php`) در حال حاضر یک تعریف عمل تهی دارد:
 
 ```php
 <?php
@@ -326,13 +326,13 @@ class IndexController extends Controller
 }
 ```
 
-The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about `views usage here <views>`.
+خروجی مرورگر باید همانطور باقی بماند. `فالکون/ام وی سی/نمایش`مولفه های ثابت هنگامی که اجرای عملیات به پایان رسید، به طور خودکار ایجاد می شوند. درباره استفاده از `نمایه ها در اینجا بیشتر بدانید<views>`.
 
 <a name='signup-form'></a>
 
 ## Designing a sign up form
 
-Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
+حالا ما فایل نمایه `شاخص.پی اچ تی ام ال` را تغییر خواهیم داد تا یک پیوند به یک کنترلر جدید با نام "ثبت نام" اضافه کنیم. هدف این است که کاربران اجازه ثبت نام در برنامه خود را داشته باشند.
 
 ```php
 <?php
@@ -349,21 +349,21 @@ echo $this->tag->linkTo(
 );
 ```
 
-The generated HTML code displays an anchor ("a") HTML tag linking to a new controller:
+کد اچ تی ام التولید شده نشان دهنده تگ اچ تی ام ال "a" است که به یک کنترلر جدید مرتبط است:
 
 ```html
-<h1>Hello!</h1>
+<h1>سلام</h1>
 
-<a href="/tutorial/signup">Sign Up Here!</a>
+<a href="/tutorial/signup">اینجا ثبت نام کنید</a>
 ```
 
-To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is a also a service registered in the DI we use `$this->tag` to access it.
+برای تولید تگ، ما از دسته استفاده می کنیم`فالکون/تگ`. این یک دسته ابزار است که ما را قادر به ساخت تگ های اچ تی ام ال با قوانین چارچوب می کند. زیرا این دسته نیز یک سرویس ثبت شده در دی ای است، که ما از `$this->tag`برای دسترسی به آن استفاده می کنیم.
 
-A more detailed article regarding HTML generation can be :doc:`found here <tags>`.
+یک مقاله مفصل در مورد نسل اچ تی ام ال می تواند باشد :doc: `یافت شد <tags>`.
 
 ![](/images/content/tutorial-basic-2.png)
 
-Here is the Signup controller (`app/controllers/SignupController.php`):
+اینجا کنترل کننده ثبت نام است (`app/controllers/SignupController.php`):
 
 ```php
 <?php
@@ -379,55 +379,55 @@ class SignupController extends Controller
 }
 ```
 
-The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
+عملکردهای بی نتیجه، گذرگاه پاکسازی شده خالی را برای یک نمایه ی تعیین فرم شده می دهد (`app/views/signup/index.phtml`):
 
 ```php
 <h2>
-    Sign up using this form
+   با استفاده از این فرم ثبت نام کنید
 </h2>
 
 <?php echo $this->tag->form("signup/register"); ?>
 
-    <p>
-        <label for="name">
-            Name
-        </label>
+<p>
+<label for="name">
+Name
+</label>
 
-        <?php echo $this->tag->textField("name"); ?>
-    </p>
+<?php echo $this->tag->textField("name"); ?>
+</p>
 
-    <p>
-        <label for="email">
-            E-Mail
-        </label>
+<p>
+<label for="email">
+E-Mail
+</label>
 
-        <?php echo $this->tag->textField("email"); ?>
-    </p>
+<?php echo $this->tag->textField("email"); ?>
+</p>
 
 
 
-    <p>
-        <?php echo $this->tag->submitButton("Register"); ?>
-    </p>
+<p>
+<?php echo $this->tag->submitButton("Register"); ?>
+</p>
 
 </form>
 ```
 
-Viewing the form in your browser will show something like this:
+مشاهده فرم در مرورگر شما چیزی شبیه به این را نشان می دهد:
 
 ![](/images/content/tutorial-basic-3.png)
 
-`Phalcon\Tag` also provides useful methods to build form elements.
+`فالکون/تگ`همچنین روش های مفید برای ساخت عناصر فرم را فراهم می کند.
 
-The :code:`Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application.
+روش :code: `فالکون/تگ::فرم()`تنها یک پارامتر به عنوان مثال، نسبی یو ار ای به کنترل کننده/اقدام در برنامه را دریافت می کند.
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our `public/index.php` file throws this exception:
+با کلیک کردن بر روی دکمه "ارسال"، شما یک استثنا را در چارچوب متوجه خواهید شد، و آن اینست که ما عملیات "ثبت نام" را در کنترلر "ثبت نام" نداریم. فایل `عمومی/شاخص` ما این استثنا را سبب می شود:
 
 ```bash
 Exception: Action "register" was not found on handler "signup"
 ```
 
-Implementing that method will remove the exception:
+پیاده سازی این روش، استثنا را حذف خواهد کرد:
 
 ```php
 <?php
@@ -448,15 +448,15 @@ class SignupController extends Controller
 }
 ```
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+اگر دوباره روی "ارسال" کلیک کنید، یک صفحه خالی خواهید دید. نام و ایمیل ورودی ارائه شده توسط کاربر باید در پایگاه داده ها ذخیره شود. با توجه به دستورالعمل ام وی سی، تعاملات پایگاه داده باید از طریق مدل ها انجام شود تا از پاک شدن کد شی گرا اطمینان حاصل شود.
 
 <a name='model'></a>
 
 ## Creating a Model
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+فالکون نخستین ارم برای پی اچ پی را به طور کامل در زبان سی به ارمغان می آورد. به جای افزایش پیچیدگی سیر تکاملی، آن را ساده می کند.
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:
+قبل از ایجاد اولین مدل ما، ما نیاز به ایجاد جدول پایگاه داده خارج از فالکون برای نقشه برداری آن. یک جدول ساده برای ذخیره کاربران ثبت شده می تواند به این صورت تعریف شود:
 
 ```sql
 CREATE TABLE `users` (
@@ -468,20 +468,20 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
+یک مدل باید در دایرکتوری `برنامه/مدلها`دایرکتوری (`برنامه/مدلها/کاربران`) قرار گیرد. این مدل به جدول "کاربران" می پردازد:
 
 ```php
-<?php
+<?پی اچ پی
 
-use Phalcon\Mvc\Model;
+استفاده از فالکون/ام وی سی/مدل;
 
-class Users extends Model
+کاربران کلاس، مدل را گسترش می دهند
 {
-    public $id;
+    عمومی$id;
 
-    public $name;
+    عمومی$name;
 
-    public $email;
+    عمومی$email;
 }
 ```
 
@@ -489,36 +489,36 @@ class Users extends Model
 
 ## Setting a Database Connection
 
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+برای اینکه قادر به استفاده از یک اتصال به پایگاه داده و سپس دسترسی به داده ها از طریق مدل های ما باشیم، باید آن را در فرایند راه انداز مان مشخص کنیم. یک اتصال پایگاه داده فقط سرویس دیگری است که برنامه ما می تواند آن را برای چندین قسمت استفاده کند:
 
 ```php
-<?php
+<?پی اچ پی
 
-use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+استفاده از فالکون/دی بی/ آداپتور/پی دی ا/مای اسکیو ال به عنوان دیبی اداپتور;
 
-// Setup the database service
-$di->set(
+// راه اندازی سرویس پایگاه داده
+$di->قراردادن(
     'db',
-    function () {
-        return new DbAdapter(
+    تابع() {
+      بازگشت دی بی جدید(
             [
-                'host'     => 'localhost',
-                'username' => 'root',
-                'password' => 'secret',
-                'dbname'   => 'test_db',
+                'میزبان'     => 'میزبان محلی',
+                'نام کاریری' => 'ریشه',
+                'گذرواژه' => 'مخفی',
+                'دی بی نام'   => 'تست_دی بی',
             ]
         );
     }
 );
 ```
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+با پارامترهای پایگاه داده صحیح، مدل ما آماده کار و تعامل با بقیه برنامه است.
 
 <a name='storing-data'></a>
 
 ## Storing data using models
 
-Receiving data from the form and storing them in the table is the next step.
+دریافت اطلاعات از فرم و ذخیره آنها در جدول مرحله بعدی است.
 
 ```php
 <?php
@@ -562,11 +562,11 @@ class SignupController extends Controller
 }
 ```
 
-We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+سپس ما دسته کاربران را که مربوط به سابقه یک کاربر است را ایجاد می کنیم. خواص عمومی دسته به فیلدهای سابقه در جدول کاربران می پردازد. تنظیمات مقادیر مربوط به سابقه جدید و تماس های `ذخیره شده()` بعنوان داده در پایگاه داده ها برای آن سابقه ذخیره خواهد شد. روش `ذخیره()` یک مقدار بولین درست یا غلط را نشان می دهد که نشان دهنده اینست که آیا ذخیره سازی داده موفق بوده یا خیر.
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
+ارم به طور خودکار ورودی را بعلت پیشگیری از تزریق اسکیوال خارج میکند بنابراین ما فقط باید درخواست را به روش`ذخیره() `منتقل کنیم.
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
+اطلاعاتی که باید وارد شوند به طور خودکار در فیلدهایی که به عنوان (مورد نیاز) تعریف شده است قرار می گیرد. اگر ما به هر کدام از فیلدهای مورد نیاز در فرم ثبت نام وارد نشویم، صفحه نمایش ما اینگونه خواهد بود:
 
 ![](/images/content/tutorial-basic-4.png)
 
@@ -574,4 +574,4 @@ Additional validation happens automatically on fields that are defined as not nu
 
 ## Conclusion
 
-This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon. The fact that Phalcon is an extension on your web server has not interfered with the ease of development or features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
+این یک آموزش بسیار ساده است و همانطور که می بینید، ساختن یک برنامه با استفاده از فالکون آسان است. واقعیت این است که فالکون یک افزونه در وب سرور شماست که با سهولت توسعه یا ویژگی های موجود تداخل ندارد. از شما دعوت می کنیم که به خواندن این کتاب ادامه دهید تا بتوانید ویژگی های اضافی ارائه شده توسط فالکون را بیابید!

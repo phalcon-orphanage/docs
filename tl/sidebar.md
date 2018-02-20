@@ -1,55 +1,55 @@
-- [General](/[[language]]/[[version]]/introduction) 
-    - [Release Notes](https://github.com/phalcon/cphalcon/blob/3.1.x/CHANGELOG.md)
-    - Upgrade
-    - [Sponsors](/[[language]]/[[version]]/sponsors)
-- Contributions 
-    - [Overview](/[[language]]/[[version]]/contributions)
+- [Pangkalahatan](/[[language]]/[[version]]/introduction) 
+    - [Mga Talaan](https://github.com/phalcon/cphalcon/blob/3.1.x/CHANGELOG.md)
+    - Mag-upgrade
+    - [Mga Nagtaguyod](/[[language]]/[[version]]/sponsors)
+- Mga Ambag 
+    - [Pangkalahatang tanaw](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
-    - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
-    - [Reproducible Tests](/[[language]]/[[version]]/reproducible-tests)
-    - Testing guide
-- Getting Started 
-    - [Installation](/[[language]]/[[version]]/installation)
-    - [Webserver Setup](/[[language]]/[[version]]/webserver-setup) 
+    - [Henerasyon ng Backtrace](/[[language]]/[[version]]/generating-backtrace)
+    - [Pagpaparami ng mga Pagsusuri](/[[language]]/[[version]]/reproducible-tests)
+    - Gabay sa Pagsusuri
+- Panimula 
+    - [Instalasyon](/[[language]]/[[version]]/installation)
+    - [Pagsetup sa Web Server](/[[language]]/[[version]]/webserver-setup) 
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
-        - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
+        - [XAMMP](/[[language]]/[[version]]/webserver-xampp)
 - Environments 
     - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)
-- Development Tools 
-    - [Installation](/[[language]]/[[version]]/devtools-installation)
-    - [Usage](/[[language]]/[[version]]/devtools-usage)
+- Mga Kagamitan sa Paggawa 
+    - [Instalasyon](/[[language]]/[[version]]/devtools-installation)
+    - [Ang Gamit](/[[language]]/[[version]]/devtools-usage)
     - [Debug](/[[language]]/[[version]]/debug)
-- Core 
-    - Application 
-        - [Full](/[[language]]/[[version]]/application)
-        - [Micro](/[[language]]/[[version]]/application-micro)
+- Ang Pinaka-importanteng Parte 
+    - Mga aplikasyon 
+        - [Puno](/[[language]]/[[version]]/application)
+        - [Maliit](/[[language]]/[[version]]/application-micro)
         - [Cli](/[[language]]/[[version]]/application-cli)
     - [DI Container](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
-- Services 
-    - [Cache](/[[language]]/[[version]]/cache)
+- Mga Serbisyo 
+    - [Ang Cache](/[[language]]/[[version]]/cache)
     - [Config](/[[language]]/[[version]]/config)
     - [Escaper](/[[language]]/[[version]]/escaper)
     - [Loader](/[[language]]/[[version]]/loader) 
         - [Namespaces](/[[language]]/[[version]]/namespaces)
     - [Logging](/[[language]]/[[version]]/logging) 
         - [Adapters](/[[language]]/[[version]]/logging#usage)
-    - [Queue](/[[language]]/[[version]]/queue)
+    - [Pila](/[[language]]/[[version]]/queue)
 - Database 
     - [Layer](/[[language]]/[[version]]/db-layer)
-    - [PHQL](/[[language]]/[[version]]/db-phql)
+    - [Ang PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
-    - [Models](/[[language]]/[[version]]/db-models) 
+    - [Mga modelo](/[[language]]/[[version]]/db-models) 
         - [Advanced](/[[language]]/[[version]]/db-models-advanced)
         - [Behaviors](/[[language]]/[[version]]/db-models-behaviors)
         - [Cache](/[[language]]/[[version]]/db-models-cache)
         - [Events](/[[language]]/[[version]]/db-models-events)
         - [Metadata](/[[language]]/[[version]]/db-models-metadata)
-        - [Relationships](/[[language]]/[[version]]/db-models-relationships)
-        - [Transactions](/[[language]]/[[version]]/db-models-transactions)
+        - [Kaugnayan](/[[language]]/[[version]]/db-models-relationships)
+        - [Mga Transaksyon](/[[language]]/[[version]]/db-models-transactions)
         - [Validators](/[[language]]/[[version]]/db-models-validation)
     - [Migrations](/[[language]]/[[version]]/db-migrations)
     - [Pagination](/[[language]]/[[version]]/db-pagination)
@@ -57,7 +57,7 @@
     - [Assets](/[[language]]/[[version]]/assets)
     - [Flash Messenger](/[[language]]/[[version]]/flash)
     - [Forms](/[[language]]/[[version]]/forms)
-    - [Image](/[[language]]/[[version]]/image)
+    - [Larawan](/[[language]]/[[version]]/image)
     - [Tag](/[[language]]/[[version]]/tag)
     - [View](/[[language]]/[[version]]/views) 
         - [Volt](/[[language]]/[[version]]/volt)
@@ -70,20 +70,20 @@
     - [Filters](/[[language]]/[[version]]/filter)
     - [Routing](/[[language]]/[[version]]/routing)
     - [Sessions](/[[language]]/[[version]]/session)
-    - [Url](/[[language]]/[[version]]/url)
-    - [Validation](/[[language]]/[[version]]/validation)
+    - [URL](/[[language]]/[[version]]/url)
+    - [Pagpapatunay](/[[language]]/[[version]]/validation)
 - HTTP 
     - [Cookies](/[[language]]/[[version]]/cookies)
-    - [Request](/[[language]]/[[version]]/request)
-    - [Response](/[[language]]/[[version]]/response)
-- Security 
+    - [Mungkahi](/[[language]]/[[version]]/request)
+    - [Tugon](/[[language]]/[[version]]/response)
+- Seguridad 
     - [Crypto](/[[language]]/[[version]]/crypt)
-    - [Security](/[[language]]/[[version]]/security)
+    - [Seguridad](/[[language]]/[[version]]/security)
 - i18n 
     - [Internationalization](/[[language]]/[[version]]/i18n)
-    - [Translate](/[[language]]/[[version]]/translate)
-- Tutorials 
-    - [Performance](/[[language]]/[[version]]/performance)
+    - [Pagsalin](/[[language]]/[[version]]/translate)
+- Pagtuturo 
+    - [Kakayanan](/[[language]]/[[version]]/performance)
     - [Basic](/[[language]]/[[version]]/tutorial-base)
     - [Invo](/[[language]]/[[version]]/tutorial-invo)
     - [REST](/[[language]]/[[version]]/tutorial-rest)
