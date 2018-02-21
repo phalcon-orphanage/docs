@@ -1,14 +1,14 @@
-# Class **Phalcon\\Cli\\Task**
+# Phalcon sınıfı**\\Cli\\Görev**
 
-*extends* abstract class [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+*uzanır* soyut sınıf [Phalcon\Di\Enjekt et](/en/3.2/api/Phalcon_Di_Injectable)
 
 *implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Cli\TaskInterface](/en/3.2/api/Phalcon_Cli_TaskInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/task.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/task.zep" class="btn btn-default btn-sm">Github Kaynağı</a>
 
 Every command-line task should extend this class that encapsulates all the task functionality
 
-A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or anything that you want. The Task class should at least have a "mainAction" method
+Bir görev, geçişler, cron işleri, birim testler veya istediğiniz herhangi bir şey gibi "görevler" i çalıştırmak için kullanılabilir. Görev sınıfının en azından bir "ana eylem" yöntemine sahip olması gerekir
 
 ```php
 <?php
@@ -33,7 +33,7 @@ class HelloTask extends \Phalcon\Cli\Task
 
 final public **__construct** ()
 
-Phalcon\\Cli\\Task constructor
+Phalcon\\Cli\\Görev yapıcı
 
 public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
 
@@ -41,13 +41,13 @@ Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+İç bağımlılık enjektörünü döndürür
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
 
 Sets the event manager
 
-public **getEventsManager** () inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+herkese açık **Etkinlik Yöneticisi'ni al** () [Phalcon\Di\Enjekte et](/en/3.2/api/Phalcon_Di_Injectable)'den alındı
 
 Returns the internal event manager
 
