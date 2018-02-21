@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Access Control Lists</a> <ul>
+      <a href="#overview">لیست کنترل دسترسی</a> <ul>
         <li>
           <a href="#setup">ایجاد یک ACL</a>
         </li>
