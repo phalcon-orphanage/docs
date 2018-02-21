@@ -61,15 +61,15 @@
     </p>
 </div>
 
-Если вы хотели бы сразу начать писать код, не останавливаясь на создании структуры приложения, обратитесь к разделу [Инструменты разработчика Phalcon](/[[language]]/[[version]]/devtools-usage) для автоматической генерации этой струтуры. Однако, если вы взялись за инструменты разработчика и застряли, не имяя опыта работы с ними, рекомендуется вернуться назад, к этим строкам.
+Если вы хотели бы сразу начать писать код, не останавливаясь на создании структуры приложения, обратитесь к разделу "[Инструменты разработчика Phalcon](/[[language]]/[[version]]/devtools-usage)" для автоматической генерации этой структуры. Однако, если вы взялись за инструменты разработчика и застряли, не имяя опыта работы с ними, рекомендуется вернуться назад, к этим строкам.
 
-Лучше всего следовать данному руководству шаг за шагом. Полный код можно посмотреть [здесь](https://github.com/phalcon/tutorial). При испытывании затруднений, вы можете обратиться за помощью в [Discord чат](https://phalcon.link/discord) или [задать вопрос на форуме](https://phalcon.link/forum).
+Лучше всего следовать данному руководству шаг за шагом. Финальный пример можно посмотреть [здесь](https://github.com/phalcon/tutorial). Тем не менее, если вы запутаетесь, вы всегда можете обратиться за помощью в [Discord чат](https://phalcon.link/discord) или [задать вопрос на форуме](https://phalcon.link/forum).
 
 <a name='file-structure'></a>
 
 ## Структура файлов
 
-Ключевой особенностью фреймворка является слабая связанность. Он не обязывает использовать определенную структуру каталогов. Вы можете использовать любую удобную структуру. That said some uniformity is helpful when collaborating with others, so this tutorial will use a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.   
+Ключевой особенностью фреймворка является слабая связанность. Он не обязывает использовать определенную структуру каталогов. Вы можете использовать любую удобную структуру проекта. Тем не менее, некоторая "узнаваемость" полезна когда вы работаете в команде По этой причине в этом руководстве будет использоваться некая "стандартная" структура, с которой вы должны себя чувствовать комфортно, если вы работали с другими MVC-приложениями в прошлом.   
 
 
 ```text
@@ -88,15 +88,15 @@
       ┗ index.php
 ```
 
-Note: You will not see a **vendor** directory as all of Phalcon's core dependencies are loaded into memory via the Phalcon extension you should have installed. If you missed that part have not installed the Phalcon extension [please go back](/[[language]]/[[version]]/installation) and finish the installation before continuing.
+Примечание: Вы не видите директорию **vendor**, поскольку все основные зависимости фреймворка загружаются в память расширением Phalcon, которое вы должны были установить к этому моменту. Если вы пропустили этап установки и расширение Phalcon у вас отсутствует, [вернитесь назад и завершите установку](/[[language]]/[[version]]/installation) перед продолжением работы с этим руководством.
 
-If this is all brand new it is recommended that you install the [Phalcon Devtools](/[[language]]/[[version]]/devtools-installation) since it leverages PHP's built-in server you to get your app running without having to configure a web server by adding this [.htrouter](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php) to the root of your project.
+Если всё это совершенно в новинку для вас и вы испытываете затруднения с некоторыми базовыми аспектами, рекомендуется установить [Phalcon Devtools](/[[language]]/[[version]]/devtools-installation), поскольку этот инструмент использует встроенный в PHP веб-вервер и помогает сделать вам быстрый старт, без необходимости установки дополнительного программного обеспечения.
 
-Otherwise if you want to use Nginx here are some additional setup [here](/[[language]]/[[version]]/webserver-setup#nginx)
+В противном случае, если вы хотите использовать Nginx, у нас есть [руководство по настройке Nginx для Phalcon проектов](/[[language]]/[[version]]/webserver-setup#nginx).
 
-Apache can also be used with these additional setup [here](/[[language]]/[[version]]/webserver-setup#apache)
+Вы также можете использовать Apache. Советуем обратится к [соответствующему разделу по его настройке](/[[language]]/[[version]]/webserver-setup#apache).
 
-Finally, if you flavor is Cherokee use the setup [here](/[[language]]/[[version]]/webserver-setup#cherokee)
+Наконец, если вы предпочитаете Cherokee, обратитесь к нашему [руководству по его настройке](/[[language]]/[[version]]/webserver-setup#cherokee).
 
 <a name='bootstrap'></a>
 
@@ -110,9 +110,9 @@ Finally, if you flavor is Cherokee use the setup [here](/[[language]]/[[version]
 
 ### Автозагрузка
 
-Autoloaders leverage a [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon C extension. Common things that should be added to the Autoloader are your **Controllers** and **Models**. You can register **directories** which will search for files within the application's namespace. (If you want to read about other ways that you can use Autoloaders head [here](/[[language]]/[[version]]/loader#overview))
+Phalcon предоставляет [PSR-4](http://www.php-fig.org/psr/psr-4/)-совместимый автозагручик. Основными вещами, которые должны быть в него добавлены являются ваши директории с контроллерами и моделями. Вы зарегистрировать директории, которые будут использоваться для поиска классов использующих пространство имён приложения. Если вы хотите ознакомится с другими стратегиями, которые вы можете использовать с автозагрузчиком, обратитесь к руководству по [Phalcon Autoloader](/[[language]]/[[version]]/loader#overview).
 
-To start, lets register our app's **controllers** and **models** directories. Don't forget to include the loader from `Phalcon\Loader`.
+Для начала, давайте зарегистрируем директории **controllers** и **models** нашего приложения. Для этого нам понадобится воспользоваться компонентом `Phalcon\Loader`.
 
 **public/index.php**
 
@@ -611,6 +611,6 @@ ORM автоматически экранирует ввод для предот
 
 ## Заключение
 
-На этом очень простом руководстве можно увидеть, как легко начать создавать приложения с помощью Phalcon. То, что Phalcon является расширением, никак не влияет на сложность разработки и доступные возможности.
+Как вы смогли увидеть, начать создавать приложения с помощью Phalcon очень легко. То, что Phalcon является расширением, никак не влияет на сложность разработки и доступные возможности.
 
 [Продолжайте читать](/[[language]]/[[version]]/tutorial-rest) данное руководство для изучения новых возможностей, которые предоставляет Phalcon!
