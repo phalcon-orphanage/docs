@@ -1,8 +1,8 @@
-# Interface **Phalcon\\Http\\Response\\HeadersInterface**
+# Interfaz **Phalcon\\Http\\Response\\HeadersInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/response/headersinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/response/headersinterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-## Methods
+## Métodos
 
 abstract public **set** (*mixed* $name, *mixed* $value)
 
