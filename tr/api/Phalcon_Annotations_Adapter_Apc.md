@@ -2,7 +2,7 @@
 
 *extends* abstract class [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-*implements* [Phalcon\Annotations\AdapterInterface](/en/3.2/api/Phalcon_Annotations_AdapterInterface)
+*uygulamalar* [Phalcon\Açıklamalar\Ara birim adaptörü](/en/3.2/api/Phalcon_Annotations_AdapterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter/apc.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -19,11 +19,11 @@ $annotations = new Apc();
 
 ## Methods
 
-public **__construct** ([*array* $options])
+herkese açık **__düzenle**([* sıra* $seçenekler])
 
-Phalcon\\Annotations\\Adapter\\Apc constructor
+Phalcon\\Açıklamalar\\uyarlama\\Apc kurucusu
 
-public **read** (*mixed* $key)
+herkese açık **oku** (*karışık*$anahtar)
 
 Reads parsed annotations from APC
 
@@ -31,19 +31,19 @@ public **write** (*mixed* $key, [Phalcon\Annotations\Reflection](/en/3.2/api/Pha
 
 Writes parsed annotations to APC
 
-public **setReader** ([Phalcon\Annotations\ReaderInterface](/en/3.2/api/Phalcon_Annotations_ReaderInterface) $reader) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+herkese açık **okuyucu ayarla** ([Phalcon\Açıklamalar\Okuyucu arayüzü](/en/3.2/api/Phalcon_Annotations_ReaderInterface) $okuyucu) miras alınan [Phalcon\Açıklamalar\uyarlanan](/en/3.2/api/Phalcon_Annotations_Adapter)
 
 Sets the annotations parser
 
-public **getReader** () inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+herkese açık ** okuyucu ekle** () miras alınan [Phalcon\Açıklamalar\uyarlanan](/en/3.2/api/Phalcon_Annotations_Adapter)
 
 Returns the annotation reader
 
-public **get** (*string* | *object* $className) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+herkese açık **al** (*dizi* | *nesne* $sınıf adı) [Phalcon\Açıklamalar\uyarlayıcı](/en/3.2/api/Phalcon_Annotations_Adapter)'dan alındı
 
 Parses or retrieves all the annotations found in a class
 
-public **getMethods** (*mixed* $className) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+herkese açık **Yöntemleri al** (*karışık* $sınıf adı) [Phalcon\Açıklamalar\uyarlayıcı](/en/3.2/api/Phalcon_Annotations_Adapter)'dan alındı
 
 Returns the annotations found in all the class' methods
 
@@ -51,10 +51,10 @@ public **getMethod** (*mixed* $className, *mixed* $methodName) inherited from [P
 
 Returns the annotations found in a specific method
 
-public **getProperties** (*mixed* $className) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+herkese açık **Özellikleri al** (*karışık* $sınıf adı)[Phalcon\Açıklamalar\uyarlayıcı](/en/3.2/api/Phalcon_Annotations_Adapter)'dan alındı
 
 Returns the annotations found in all the class' methods
 
-public **getProperty** (*mixed* $className, *mixed* $propertyName) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
+herkese açık **Özellik al** (*karışık* $sınıf adı, *karışık* $Özellik adı) [Phalcon\Açıklamalar\Uyarlayıcı](/en/3.2/api/Phalcon_Annotations_Adapter)'dan alındı
 
 Returns the annotations found in a specific property
