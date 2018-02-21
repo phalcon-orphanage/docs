@@ -1,8 +1,8 @@
-# Class **Phalcon\\Assets\\Exception**
+# Sınıf **Phalcon\\Varlıklar\\Kuraldışı**
 
-*extends* class [Phalcon\Exception](/en/3.2/api/Phalcon_Exception)
+*uzanır* sınıf[Phalcon\Kuraldışı](/en/3.2/api/Phalcon_Exception)
 
-*implements* [Throwable](http://php.net/manual/en/class.throwable.php)
+*Uygulamalar* [Atılabilir](http://php.net/manual/en/class.throwable.php)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -12,7 +12,7 @@ final private [Exception](http://php.net/manual/en/class.exception.php) **__clon
 
 Clone the exception
 
-public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](http://php.net/manual/en/class.exception.php)
+herkese açık **__düzenle** ([*karışık* $mesaj], [*karışık* $şifre], [*karışık* $geçmiş]) [Kuraldışı](http://php.net/manual/en/class.exception.php)'dan alındı
 
 Exception constructor
 
@@ -28,7 +28,7 @@ final public *int* **getCode** () inherited from [Exception](http://php.net/manu
 
 Gets the Exception code
 
-final public *string* **getFile** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+son herkese açık *dizi* **Dosya al** () [Kuraldışı](http://php.net/manual/en/class.exception.php)'dan alındı
 
 Gets the file in which the exception occurred
 
