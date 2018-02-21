@@ -1,14 +1,36 @@
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">FAQ - Frequently Asked Questions</a>
+      <ul>
+        <li>
+          <a href="#what-is-phalcon">What is Phalcon</a>
+        </li>
+        <li>
+          <a href="#how-phalcon-works">How Phalcon Works</a>
+        </li>
+        <li>
+          <a href="#how-can-i-help">How do I help</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<a name='overview'></a>
 # FAQ - Frequently Asked Questions
 
+<a name='what-is-phalcon'></a>
 ## What is Phalcon
 Phalcon in an open source full stack PHP framework written as a C language extension.
 
+<a name='how-phalcon-works'></a>
 ## How Phalcon Works
 Phalcon is *not* an accelerator for PHP or projects written in PHP. _(For a PHP-like language to produce high-performance C extensions please see [Zephir](https://github.com/phalcon/zephir))_
 
 Phalcon is a framework that implements its functionality using the low-level C language. C extensions are compiled together with your PHP code on load. Increasing the speed of you application and lowering your overhead.
 
-#### Phalcon achieves this by:
+Phalcon achieves this by:
 
 - Taking advantage of native compilation by producing a [binary executable representation](https://en.wikipedia.org/wiki/Machine_code) of the code that a processor can directly understand and execute without the overhead of running bytecode in a virtual machine (VM).
 
@@ -29,8 +51,7 @@ C compilers, like GCC/CLANG/VCC. These perform [several optimisations](https://e
 
 Phalcon relies on several internal design aspects of PHP such as memory management, [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) and its internal structures. The improvement of any of these aspects have a positive impact on Phalcon's performance as well in PHP.
 
-credit: [https://github.com/andresgutierrez](https://github.com/andresgutierrez)
-
-## How do I help?
+<a name='how-can-i-help'></a>
+## How can I help
 
 Join our [Discord](https://phalcon.link/discord) channel, visit us at [GitHub](https://github.com/phalcon), or on the web at [https://phalconphp.com/](https://phalconphp.com/en/).
