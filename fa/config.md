@@ -108,6 +108,9 @@ $config = new Config($settings);
 echo $config->app->controllersDir, "\n";
 echo $config->database->username, "\n";
 echo $config->mysetting, "\n";
+ 
+Text
+Xpath: /pre[2]/code;
 ```
 
 برای سازماندهی بهتر پروژه تان میتوانید آرایه را در فایل دیگری ذخیره کنید و سپس آن را فراخوانی کنید.
@@ -142,29 +145,18 @@ $config = new Config($settings);
 یک از روش های رایج ذخیره سازی تنظیمات استفاده از فایل های با پسوند ini است. `Phalcon\Config` از تابع بهینه سازی شده `parse_ini_file` در php استفاده می کند برای خواندن فایل های ini. برای دسترسی آسان تر هر قسمت از تنظیمات، تنظیمات را به یک زیر تنظیمات از همان قسمت در می آورد.
 
 ```ini
-[database]
-adapter  = Mysql
-host     = localhost
-username = scott
-password = cheetah
-dbname   = test_db
-
 [phalcon]
 controllersDir = '../app/controllers/'
-modelsDir      = '../app/models/'
-viewsDir       = '../app/views/'
+modelsDir = '../app/models/'
+viewsDir = '../app/views/'
 
 [models]
-metadata.adapter  = 'Memory'
+metadata.adapter = 'Memory'
 ```
 
 میتوانید به روش زیر فایل ini خود را بخوانید:
 
 ```php
-<?php
-
-use Phalcon\Config\Adapter\Ini as ConfigIni;
-
 $config = new ConfigIni('path/config.ini');
 
 echo $config->phalcon->controllersDir, "\n";
@@ -186,7 +178,7 @@ use Phalcon\Config;
 $config = new Config(
     [
         'database' => [
-            'host'   => 'localhost',
+            'host' => 'localhost',
             'dbname' => 'test_db',
         ],
         'debug' => 1,
@@ -196,16 +188,14 @@ $config = new Config(
 $config2 = new Config(
     [
         'database' => [
-            'dbname'   => 'production_db',
+            'dbname' => 'production_db',
             'username' => 'scott',
             'password' => 'secret',
         ],
         'logging' => 1,
-    ]
+    ] 
 );
-
 $config->merge($config2);
-
 print_r($config);
 ```
 
