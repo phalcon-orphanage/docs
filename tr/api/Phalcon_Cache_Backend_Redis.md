@@ -1,8 +1,8 @@
-# Class **Phalcon\\Cache\\Backend\\Redis**
+# Phalcon sınıfı**\\Önbellek\\Arkayüz\\Redis**
 
-*extends* abstract class [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+*uzanır* soyut sınıf [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)
 
-*implements* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
+*uygulamalar* [Phalcon\Önbellek\Arkayüz Ara birimi](/en/3.2/api/Phalcon_Cache_BackendInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/redis.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -45,11 +45,11 @@ $data = $cache->get("my-data");
 
 ## Methods
 
-public **__construct** ([Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
+herkese açık **__düzenle** ([Phalcon\Önbellek\Önyüz Ara birimi](/en/3.2/api/Phalcon_Cache_FrontendInterface) $başlangıç aşaması, [*dizi* $seçenekler])
 
-Phalcon\\Cache\\Backend\\Redis constructor
+Phalcon\\Önbellek\\Arkayüz\\Redis yapıcı
 
-public **_connect** ()
+herkese açık **_bağla** ()
 
 Create internal connection to redis
 
@@ -59,7 +59,7 @@ Returns a cached content
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the file backend and stops the frontend
+Önbellek içeriğini dosya arka yüzüne depolar ve önyükü durdurur
 
 ```php
 <?php
@@ -91,7 +91,7 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it isn't expired
+Önbellek var olup olmadığını ve süresi dolmadığını denetler
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
@@ -105,11 +105,11 @@ public **flush** ()
 
 Immediately invalidates all existing items.
 
-public **getFrontend** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+herkese açık **Önyüz al** () [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
 
 ...
 
-public **setFrontend** (*mixed* $frontend) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+herkese açık **Önyüz ayarla** (*karışık* $başlangıç aşaması) [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
 
 ...
 
@@ -117,15 +117,15 @@ public **getOptions** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phal
 
 ...
 
-public **setOptions** (*mixed* $options) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+herkese açık **Seçenekler ayarla** (*karışık* $Seçenekler) [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
 
 ...
 
-public **getLastKey** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+herkese açık **son anahtarı al** () [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
 
 ...
 
-public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+herkese açık **son anahtar ayarla** (*karışık* $Son Anahtar) [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
 
 ...
 
