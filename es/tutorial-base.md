@@ -96,7 +96,7 @@ Por último, si usted desea usar Cherokee la configuración [esta aquí](/[[lang
 
 ## Manos a la obra
 
-The first file you need to create is the bootstrap file. Este archivo actúa como el punto de entrada y configuración de la aplicación. En este archivo puedes implementar la inicialización de componentes, así como el comportamiento de la aplicación.
+El primer archivo que necesitas crear es el archivo bootstrap. Este archivo actúa como el punto de entrada y configuración de la aplicación. En este archivo puedes implementar la inicialización de componentes, así como el comportamiento de la aplicación.
 
 Este archivo se encarga de 3 cosas: - El registro de auto cargadores de componentes. -Configuración de **servicios** y registrarlos en el contenedor de **Inyección de dependencias**. -Resolución de las solicitudes HTTP de la aplicación.
 
@@ -168,7 +168,7 @@ $di = new FactoryDefault();
   
 
 
-In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
+En la siguiente parte, registraremos el servicio "vista" indicando el directorio donde el entorno de trabajo encontrará los archivos de las vistas. Como las vistas no corresponden a las clases, no se pueden cargar con un autoloader.
 
   
 **public/index.php**
@@ -223,7 +223,7 @@ $di->set(
 
 ### Tratar las solicitudes de la aplicación
 
-In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+En la última parte de este archivo, encontramos `Phalcon\Mvc\Application`. Su propósito es inicializar el entorno de la solicitud, rutear la solicitud entrante y luego despachar cualquier acción descubierta; agrega todas las respuestas y las devuelve cuando el proceso se completa.
 
   
 **public/index.php**
@@ -344,13 +344,13 @@ Las clases del controlador tienen que tener el sufijo "Controller" y las accione
 ![](/images/content/tutorial-basic-1.png)
 
   
-Congratulations, you're phlying with Phalcon!
+¡Felicitaciones! Ahora estás volando con Phalcon.
 
 <a name='view'></a>
 
 ## Enviando la salida a una vista
 
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Todo debe ser pasado a la vista, la cual es la responsable de la salida de datos en pantalla. Phalcon buscará una vista con el mismo nombre que la última acción ejecutada dentro de un directorio llamado como el último controlador ejecutado. In our case (`app/views/index/index.phtml`):
+Enviar la salida por pantalla es a veces necesario pero no es aceptado como purista asi como la comunidad MVC puede atestiguar. Todo debe ser pasado a la vista, la cual es la responsable de la salida de datos en pantalla. Phalcon buscará una vista con el mismo nombre que la última acción ejecutada dentro de un directorio llamado como el último controlador ejecutado. En nuestro caso (`app/views/index/index.phtml`):
 
   
 **app/views/index/index.phtml**
@@ -362,7 +362,7 @@ Sending output to the screen from the controller is at times necessary but not d
   
 
 
-Our controller (`app/controllers/IndexController.php`) now has an empty action definition:
+Nuestro controlador (`app/controllers/IndexController.php`) ahora tiene una definición de acción vacía:
 
   
 **app/controllers/IndexController.php**
@@ -384,13 +384,13 @@ class IndexController extends Controller
   
 
 
-The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about `views usage here <views>`.
+La salida del navegador debe seguir siendo la misma. El componente estático `Phalcon\Mvc\View` se crea automáticamente cuando haya terminado la ejecución de la acción. Learn more about `views usage here <views>`.
 
 <a name='signup-form'></a>
 
 ## Diseñar un formulario de registro
 
-Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
+Ahora vamos a cambiar el archivo de la vista `index.phtml`, para añadir un enlace a un nuevo controlador denominado "signup". El objetivo es permitir a los usuarios registrarse dentro de nuestra aplicación.
 
   
 **app/views/index/index.phtml**
@@ -457,7 +457,7 @@ class SignupController extends Controller
   
 
 
-The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
+La ausencia de la acción en el index da el pase directo a una vista con la definición de formulario (`app/views/signup/index.phtml`):
 
   
 **app/views/signup/index.phtml**
@@ -487,7 +487,7 @@ The empty index action gives the clean pass to a view with the form definition (
   
 
 
-Viewing the form in your browser will show something like this:
+En tu navegador, el formulario debería verse algo como así:
 
   
 ![](/images/content/tutorial-basic-3.png)
@@ -530,7 +530,7 @@ class SignupController extends Controller
   
 
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+Si haces clic en el botón "Registrar" otra vez, verás una página en blanco. The name and email input provided by the user should be stored in a database. Según las pautas MVC, las interacciones de la base de datos deben hacerse a través de modelos con el fin de garantizar la limpieza de código orientado a objetos.
 
 <a name='model'></a>
 
