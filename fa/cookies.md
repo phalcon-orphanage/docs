@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Cookies Management</a> <ul>
+      <a href="#overview">مدیریت کوکی ها</a> <ul>
         <li>
           <a href="#usage">Basic Usage</a>
         </li>
@@ -15,9 +15,9 @@
 
 <a name='overview'></a>
 
-# Cookies Management
+# مدیریت کوکی ها
 
-[Cookies](http://en.wikipedia.org/wiki/HTTP_cookie) are a very useful way to store small pieces of data on the client's machine that can be retrieved even if the user closes his/her browser. `Phalcon\Http\Response\Cookies` acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent automatically at the end of the request.
+[کوکی ها](http://en.wikipedia.org/wiki/HTTP_cookie) روشی مفید برای ذخیره کردن بخش های کوچکی از داده در سمت کلاینت می باشد و این داده ها را می توان بازیابی کرد حتی اگر کاربر مرورگر خود را ببندد. `Phalcon\Http\Response\Cookies` acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent automatically at the end of the request.
 
 <a name='usage'></a>
 
@@ -67,9 +67,9 @@ class SessionController extends Controller
 
 ## Encryption/Decryption of Cookies
 
-By default, cookies are automatically encrypted before being sent to the client and are decrypted when retrieved from the user. This protection prevents unauthorized users to see the cookies' contents in the client (browser). Despite this protection, sensitive data should not be stored in cookies.
+به صورت پیشفرض کوکی ها به صورت خودکار قبل از ارسال به کلاینت رمزگزاری می شوند و هنگام دریافت از کاربر رمزگشایی می شوند. This protection prevents unauthorized users to see the cookies' contents in the client (browser). Despite this protection, sensitive data should not be stored in cookies.
 
-You can disable encryption as follows:
+شما میتوانید به صورت زیر رمزگذاری را غیر فعال کنید:
 
 ```php
 <?php
