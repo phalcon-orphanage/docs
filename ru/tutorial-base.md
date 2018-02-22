@@ -452,9 +452,9 @@ If you click the "Send" button again, you will see a blank page. The name and em
 
 <a name='model'></a>
 
-## Creating a Model
+## Создание модели
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalcon предоставляет первый ORM для PHP полностью написанный на языке C. Вместо увеличения сложности разработки, он ее упрощает.
 
 Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:
 
@@ -489,7 +489,7 @@ class Users extends Model
 
 ## Настройка соединения с базой данных
 
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. Соединение с базой данных — это всего лишь ещё один сервис нашего приложения, который может быть использован для различных компонентов:
 
 ```php
 <?php
