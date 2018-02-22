@@ -546,9 +546,9 @@ class SignupController extends Controller
         );
 
         if ($success) {
-            echo "Thanks for registering!";
+            echo "Спасибо за регистрацию!";
         } else {
-            echo "Sorry, the following problems were generated: ";
+            echo "К сожалению, возникли следующие проблемы: ";
 
             $messages = $user->getMessages();
 
@@ -562,9 +562,9 @@ class SignupController extends Controller
 }
 ```
 
-We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Установка соответствующих значений в новой записи и вызов метода `save()` сохранит данные в базе данных. Метод `save()` возвращает булево значение, указывающее, успешно ли были сохранены данные в таблице или нет (true и false, соответственно).
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
+ORM автоматически экранирует ввод для предотвращения SQL-инъекций, так что мы можем передавать тело HTTP-запроса напрямую методу `save()`.
 
 Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
 
