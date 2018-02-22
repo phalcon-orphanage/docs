@@ -83,7 +83,7 @@ Before continuing, please be sure you've successfully [installed Phalcon](/[[lan
 
 ## Начальная загрузка
 
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+Первый файл, который необходимо создать - bootstrap-файл. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
 
 Ultimately, it is responsible for doing 3 things:
 
