@@ -77,19 +77,19 @@ tutorial/
 
 Обратите внимание на то, что вам не нужны директории с библиотеками, относящимися к фреймворку. Он полностью находится в памяти и все время готов к использованию.
 
-Before continuing, please be sure you've successfully [installed Phalcon](/[[language]]/[[version]]/installation) and have setup either [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
+Перед тем как продолжить, пожалуйста убедитесь, что вы успешно [установили Phalcon](/[[language]]/[[version]]/installation) и у вас установлен [Nginx](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) или [Cherokee](/[[language]]/[[version]]/setup#cherokee).
 
 <a name='bootstrap'></a>
 
 ## Начальная загрузка
 
-Первый файл, который необходимо создать - bootstrap-файл. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+Первый файл, который необходимо создать - bootstrap-файл. Этот файл является очень важным, поскольку он служит основой вашего приложения давая вам контроль над всеми его аспектами. В данном файле вы можете реализовать как инициализацию компонентов, так и поведение приложения.
 
-Ultimately, it is responsible for doing 3 things:
+В целом, он отвечает за 3 вещи:
 
-- Setting up the autoloader.
-- Configuring the Dependency Injector.
-- Handling the application request.
+- Настройка автозагрузчика.
+- Настройка внедрений зависимостей (dependency injector).
+- Обработка входящих запросов приложения.
 
 <a name='autoloaders'></a>
 
@@ -133,7 +133,7 @@ use Phalcon\Di\FactoryDefault;
 
 // ...
 
-// Create a DI
+// Создаём контейнер DI
 $di = new FactoryDefault();
 ```
 
