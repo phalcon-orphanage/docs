@@ -417,7 +417,7 @@ En tu navegador, el formulario debería verse algo como así:
 
 ![](/images/content/tutorial-basic-3.png)
 
-`Phalcon\Tag` also provides useful methods to build form elements.
+`Phalcon\Tag` también proporciona métodos útiles para construir elementos de formularios.
 
 The :code:`Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application.
 
@@ -427,7 +427,7 @@ By clicking the "Send" button, you will notice an exception thrown from the fram
 Exception: Action "register" was not found on handler "signup"
 ```
 
-Implementing that method will remove the exception:
+Implementando este método se eliminará la excepción:
 
 ```php
 <?php
