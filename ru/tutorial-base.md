@@ -121,7 +121,6 @@ $loader->register();
 <a name='dependency-management'></a>
 
 ### Управление зависимостями
-
 Важная концепция, которую стоит понять при использовании Phalcon — это `контейнер внедрения зависимостей <di>`. Это может показаться сложным, но на самом деле это очень простой и практичный шаблон проектирования.
 
 DI представляет из себя глобальный контейнер для сервисов, необходимых нашему приложению. Каждый раз, когда фреймворку необходим какой-то компонент, он будет обращаться за ним к контейнеру, используя определенное имя компонента. Так как Phalcon является слабосвязанным фреймворком, `Phalcon\Di` выступает в роли клея, помогающего разным компонентам прозрачно взаимодействовать друг с другом.
@@ -189,7 +188,6 @@ $di->set(
 <a name='request'></a>
 
 ### Обработка входящих запросов
-
 На последнем этапе мы используем `Phalcon\Mvc\Application`. Данный компонент служит для инициализации окружения входящих запросов, их перенаправления и обслуживания относящихся к ним действий. После отработки всех доступных действий, компонент возвращает полученные ответы.
 
 ```php
@@ -328,18 +326,18 @@ class IndexController extends Controller
 }
 ```
 
-Вывод браузера останется прежним. Когда метод контроллера завершит свою работу, будет автоматически создан статический компонент `Phalcon\Mvc\View`. Узнать больше о представлениях Узнать больше о представлениях `можно обратившись к соответствующему разделу <views>`.
+Вывод браузера должен оставаться тем же. В `в phalcon\Mvc, о\вид` статический компонент создается автоматически при выполнении действия закончился. Подробнее об использовании представлений `здесь <views>`.
 
 <a name='signup-form'></a>
 
 ## Проектирование формы регистрации
 
-Давайте теперь изменим файл представления `index.phtml`, добавив ссылку на новый контроллер “signup”. Идея проста — позволить пользователям регистрироваться в нашем приложении.
+Теперь мы изменим индекс `index.phtml`, чтобы добавить ссылку на новый контроллер с именем "Регистрация". Цель состоит в том, чтобы позволить пользователям зарегистрироваться в нашем приложении.
 
 ```php
 <?php
 
-echo "<h1>Привет!</h1>";
+echo "<h1>Hello!</h1>";
 
 echo PHP_EOL;
 
@@ -347,25 +345,25 @@ echo PHP_EOL;
 
 echo $this->tag->linkTo(
     "signup",
-    "Регистрируйся!"
+    "Sign Up Here!"
 );
 ```
 
-Сгенерированный HTML-код будет выводить ссылку ("a"), указывающую на наш новый контроллер:
+Созданный HTML-код отображает привязку ("a") HTML-тег, связывающий с новым контроллером:
 
 ```html
-<h1>Привет!</h1>
+<h1>Hello!</h1>
 
-<a href="/tutorial/signup">Регистрируйся!</a>
+<a href="/tutorial/signup">Sign Up Here!</a>
 ```
 
-Для генерации тэга мы воспользовались встроенным классом `Phalcon\Tag`. Это служебный класс, позволяющий конструировать HTML-разметку в Phalcon-подобном стиле. Этот класс также является сервисом, зарегистрированным в DI, таким образом, мы используем `$this->tag` для доступа к нему.
+Для генерации тега используется класс `Phalcon\Tag`. Это служебный класс, который позволяет нам создавать HTML-теги с учетом рамочных соглашений. Поскольку этот класс также является сервисом, зарегистрированным в DI, мы используем `$this>tag` обращаться к нему.
 
-Более подробно о генерации HTML можно узнать `здесь`.
+Более подробная статья о генерации HTML может быть :doc:`found here <tags>`.
 
 ![](/images/content/tutorial-basic-2.png)
 
-Контроллер Signup (`app/controllers/SignupController.php`):
+Вот контроллер регистрации (`App/controllers/SignupController.php`):
 
 ```php
 <?php
@@ -381,7 +379,7 @@ class SignupController extends Controller
 }
 ```
 
-Пустое действие index говорит нам о том, что будет использоваться одноименный файл представления с нашей формой для регистрации (`app/views/signup/index.phtml`):
+Пустое действие индекса дает чистый проход к представлению с определением формы (`app/views/signup/index.phtml`):
 
 ```php
 <h2>
@@ -415,21 +413,21 @@ class SignupController extends Controller
 </form>
 ```
 
-Viewing the form in your browser will show something like this:
+Просмотр формы в вашем браузере покажет что-то подобное:
 
 ![](/images/content/tutorial-basic-3.png)
 
-`Phalcon\Tag` also provides useful methods to build form elements.
+`Phalcon\Tag` также предоставляет полезные методы для построения элементов формы.
 
 The :code:`Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application.
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our `public/index.php` file throws this exception:
+Нажав кнопку "Отправить", Вы заметите исключение, выбрасываемое из фреймворка, указывающее, что в контроллере отсутствует действие" Регистрация". Наши `общественные/индекс.php` файл выдает это исключение:
 
 ```bash
 Exception: Action "register" was not found on handler "signup"
 ```
 
-Implementing that method will remove the exception:
+Реализация этого метода удалит исключение:
 
 ```php
 <?php
@@ -450,7 +448,7 @@ class SignupController extends Controller
 }
 ```
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+Если нажать кнопку "Отправить" еще раз, вы увидите пустую страницу. Имя и email, введенные пользователей должны храниться в базе данных. В соответствии с руководящими принципами MVC, взаимодействие с базой данных должно осуществляться с помощью моделей, чтобы обеспечить чистый объектно-ориентированный код.
 
 <a name='model'></a>
 
@@ -458,7 +456,7 @@ If you click the "Send" button again, you will see a blank page. The name and em
 
 Phalcon предоставляет первый ORM для PHP полностью написанный на языке C. Вместо увеличения сложности разработки, он ее упрощает.
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:
+Прежде чем создавать нашу первую модель, нам нужно создать таблицу базы данных за пределами Phalcon, чтобы сопоставить ее. Простая Таблица для хранения зарегистрированных пользователей может быть определена следующим образом:
 
 ```sql
 CREATE TABLE `users` (
@@ -470,7 +468,7 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
+Модель должна быть расположена в `приложение/модели` каталог (`модели приложение//пользователей.php`). Модель сопоставляется с таблицей " пользователи:
 
 ```php
 <?php
@@ -514,13 +512,13 @@ $di->set(
 );
 ```
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+С правильными параметрами базы данных, наши модели готовы работать и взаимодействовать с остальной частью приложения.
 
 <a name='storing-data'></a>
 
 ## Сохранение данных при работе с моделями
 
-Receiving data from the form and storing them in the table is the next step.
+Следующим шагом является получение данных из формы и их хранение в таблице.
 
 ```php
 <?php
@@ -568,7 +566,7 @@ We then instantiate the Users class, which corresponds to a User record. The cla
 
 ORM автоматически экранирует ввод для предотвращения SQL-инъекций, так что мы можем передавать тело HTTP-запроса напрямую методу `save()`.
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
+Дополнительная проверка выполняется автоматически для полей, которые определены как not null (обязательно). Если мы не введем ни одно из обязательных полей в форме регистрации, наш экран будет выглядеть так:
 
 ![](/images/content/tutorial-basic-4.png)
 

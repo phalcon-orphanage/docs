@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#pangkalahatang-ideya">Pangkalahatang-ideya</a> <ul>
+      <a href="#overview">Pangkalahatang-ideya</a> <ul>
         <li>
-          <a href="#integrasyon">Pagsasama ang PHPUnit sa Phalcon</a>
+          <a href="#integration">Pagsasama ang PHPUnit sa Phalcon</a>
         </li>
         <li>
           <a href="#unit-helper">Ang PHPunit helper file</a>
