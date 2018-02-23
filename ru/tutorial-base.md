@@ -328,18 +328,18 @@ class IndexController extends Controller
 }
 ```
 
-The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about `views usage here <views>`.
+Вывод браузера останется прежним. Когда метод контроллера завершит свою работу, будет автоматически создан статический компонент `Phalcon\Mvc\View`. Узнать больше о представлениях Узнать больше о представлениях `можно обратившись к соответствующему разделу <views>`.
 
 <a name='signup-form'></a>
 
 ## Проектирование формы регистрации
 
-Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
+Давайте теперь изменим файл представления `index.phtml`, добавив ссылку на новый контроллер “signup”. Идея проста — позволить пользователям регистрироваться в нашем приложении.
 
 ```php
 <?php
 
-echo "<h1>Hello!</h1>";
+echo "<h1>Привет!</h1>";
 
 echo PHP_EOL;
 
@@ -347,25 +347,25 @@ echo PHP_EOL;
 
 echo $this->tag->linkTo(
     "signup",
-    "Sign Up Here!"
+    "Регистрируйся!"
 );
 ```
 
-The generated HTML code displays an anchor ("a") HTML tag linking to a new controller:
+Сгенерированный HTML-код будет выводить ссылку ("a"), указывающую на наш новый контроллер:
 
 ```html
-<h1>Hello!</h1>
+<h1>Привет!</h1>
 
-<a href="/tutorial/signup">Sign Up Here!</a>
+<a href="/tutorial/signup">Регистрируйся!</a>
 ```
 
-To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is a also a service registered in the DI we use `$this->tag` to access it.
+Для генерации тэга мы воспользовались встроенным классом `Phalcon\Tag`. Это служебный класс, позволяющий конструировать HTML-разметку в Phalcon-подобном стиле. Этот класс также является сервисом, зарегистрированным в DI, таким образом, мы используем `$this->tag` для доступа к нему.
 
-A more detailed article regarding HTML generation can be :doc:`found here <tags>`.
+Более подробно о генерации HTML можно узнать `здесь`.
 
 ![](/images/content/tutorial-basic-2.png)
 
-Here is the Signup controller (`app/controllers/SignupController.php`):
+Контроллер Signup (`app/controllers/SignupController.php`):
 
 ```php
 <?php
@@ -381,7 +381,7 @@ class SignupController extends Controller
 }
 ```
 
-The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
+Пустое действие index говорит нам о том, что будет использоваться одноименный файл представления с нашей формой для регистрации (`app/views/signup/index.phtml`):
 
 ```php
 <h2>
