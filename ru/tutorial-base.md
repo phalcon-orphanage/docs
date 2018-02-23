@@ -210,7 +210,7 @@ $response->send();
 
 ### Соберём все компоненты вместе
 
-The `tutorial/public/index.php` file should look like:
+Файл `tutorial/public/index.php` имеет следующее содержимое:
 
 ```php
 <?php
@@ -222,7 +222,7 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Url as UrlProvider;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-// Register an autoloader
+// Регистрируем автозагрузчик
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -234,10 +234,10 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Create a DI
+// Создаём DI
 $di = new FactoryDefault();
 
-// Setup the view component
+// Настраиваем компонент представлений
 $di->set(
     'view',
     function () {
@@ -249,7 +249,8 @@ $di->set(
     }
 );
 
-// Setup a base URI so that all generated URIs include the "tutorial" folder
+// Настраиваем базовый URI так, чтобы все генерируемые URI
+// содержали директорию "tutorial"
 $di->set(
     'url',
     function () {
@@ -264,7 +265,7 @@ $di->set(
 $application = new Application($di);
 
 try {
-    // Handle the request
+    // Обрабатываем запрос
     $response = $application->handle();
 
     $response->send();
@@ -273,13 +274,13 @@ try {
 }
 ```
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less than 30 lines of code.
+Как можно увидеть, bootstrap-файл очень короткий, нам нет необходимости подключать какие-либо дополнительные файлы. Таким образом, мы настроили гибкую структуру MVC-приложения менее чем за 30 строк кода.
 
 <a name='controller'></a>
 
 ## Создание контроллера
 
-By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (`app/controllers/IndexController.php`) looks like:
+По умолчанию Phalcon будет искать контроллер с именем “Index”. Как и во многих других фреймворках он является исходной точкой, когда ни один другой контроллер или действие не были запрошены. Наш index-контроллер (`app/controllers/IndexController.php`) выглядит так:
 
 ```php
 <?php
@@ -295,23 +296,23 @@ class IndexController extends Controller
 }
 ```
 
-The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this:
+Классы контроллеров должны заканчиваться суффиксом “Controller”, чтобы автозагрузчик смог загрузить их, а их методы должны заканчиваться суффиксом “Action”. Теперь можно открыть браузер и увидеть результат:
 
 ![](/images/content/tutorial-basic-1.png)
 
-Congratulations, you're phlying with Phalcon!
+Поздравляем! Вы готовы к полёту с Phalcon!
 
 <a name='view'></a>
 
-## Sending output to a view
+## Отправка результатов в представление
 
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
+Отображение вывода напрямую из контроллера иногда бывает необходимым решением, но нежелательно, и сторонники шаблона MVC это подтвердят. Данные должны передаваться представлению, ответственному за отображение данных. Phalcon ищет файл представления с именем, совпадающим с именем действия внутри папки, носящей имя последнего запущенного контроллера. В нашем случае это будет выглядеть так (`app/views/index/index.phtml`):
 
 ```php
 <?php echo "<h1>Привет!</h1>";
 ```
 
-Our controller (`app/controllers/IndexController.php`) now has an empty action definition:
+В нашем контроллере (`app/controllers/IndexController.php`) сейчас существует пустое действие:
 
 ```php
 <?php
