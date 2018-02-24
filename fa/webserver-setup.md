@@ -7,7 +7,7 @@
             <li>
               <a href="#nginx-phalcon-configuration">Phalcon configuration</a> <ul>
                 <li>
-                  <a href="#nginx-phalcon-configuration-basic">تنظیمات اولیه</a>
+                  <a href="#nginx-phalcon-configuration-basic">Basic configuration</a>
                 </li>
               </ul>
             </li>
@@ -21,10 +21,10 @@
                   <a href="#apache-document-root">Document root</a>
                 </li>
                 <li>
-                  <a href="#apache-apache-configuration">پیکربندی آپاچی</a>
+                  <a href="#apache-apache-configuration">Apache configuration</a>
                 </li>
                 <li>
-                  <a href="#apache-virtual-hosts">میزبان مجازی</a>
+                  <a href="#apache-virtual-hosts">Virtual Hosts</a>
                 </li>
               </ul>
             </li>
