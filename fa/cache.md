@@ -115,7 +115,7 @@ The caching process is divided into 2 parts:
 
 Instantiating frontend or backend adapters can be achieved by two ways:
 
-- حالت سنتی
+- Traditional way
 
 ```php
 <?php
