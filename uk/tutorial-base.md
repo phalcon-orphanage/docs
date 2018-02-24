@@ -83,7 +83,7 @@ tutorial/
 
 ## Bootstrap
 
-Перший файл потрібно створити файл bootstrap. Цей файл є дуже важливим, оскільки він служить в якості базової програми, даючи вам контроль над усіма аспектами. У цьому файлі можна реалізувати ініціалізацію компонентів, а також поведінку програми.
+The first file you need to create is the bootstrap file. Цей файл є дуже важливим, оскільки він служить в якості базової програми, даючи вам контроль над усіма аспектами. У цьому файлі можна реалізувати ініціалізацію компонентів, а також поведінку програми.
 
 У кінцевому рахунку, він відповідає за робить 3 речі:
 
@@ -139,7 +139,7 @@ $di = new FactoryDefault();
 
 `Phalcon\Di\FactoryDefault` is a variant of `Phalcon\Di`. Щоб зробити речі простіше, зареєстровано більшість компонентів, які приходять за допомогою phalcon. Таким чином, ми не повинні реєструвати їх один за одним. Потім не буде жодних проблем в заміні службі заводу.
 
-У наступній частині ми реєструємо "вид" послуг із зазначенням каталогу, в якому Платформа буде знайти файли. Як погляди не відповідають класам, вони не можуть бути звинувачений у автозавантажувач.
+In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
 
 Сервіси можуть бути зареєстровані в кількох напрямках, але для нашого уроку ми будемо використовувати [анонімні функції](http://php.net/manual/en/functions.anonymous.php):
 
@@ -163,7 +163,7 @@ $di->set(
 );
 ```
 
-Далі ми реєструємо базовий URI, так що всі URI генерується "Фелкон" додати папку "підручник" ми налаштували раніше. Це стане важливим пізніше, коли ми використовуємо клас `phalcon\тег`, щоб створити гіперпосилання.
+Далі ми реєструємо базовий URI, так що всі URI генерується "Фелкон" додати папку "підручник" ми налаштували раніше. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
 
 ```php
 <?php
@@ -189,7 +189,7 @@ $di->set(
 
 ### Handling the application request
 
-In the last part of this file, we find `Phalcon\Mvc\Application`. Його метою є, щоб ініціалізувати змінні запиту, маршрут на вхідний запит, а потім відправити будь виявлений дій; воно підсумовує всі відповіді і повертає їх по завершенні процесу.
+In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
 
 ```php
 <?php
@@ -294,17 +294,17 @@ class IndexController extends Controller
 }
 ```
 
-Класи контролерів повинні мати розширення "контролер" і дії регулятора повинні мати розширення "дія". Якщо ви отримати доступ до додатка з браузера, ви повинні побачити щось подібне:
+The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this:
 
 ![](/images/content/tutorial-basic-1.png)
 
-Вітаю, ви граєте в phalcon!
+Congratulations, you're phlying with Phalcon!
 
 <a name='view'></a>
 
 ## Sending output to a view
 
-Відправка виведення на екран від контролера іноді необхідно, але не бажано, так як більшість пуристів шаблону MVC це підтвердити. Все повинно бути передані до думки, що відповідає за відображення даних на екрані. Phalcon шукає вид з таким же ім'ям, як останнього виконаного дії всередині каталогу з ім'ям як останній виконаний контролер. In our case (`app/views/index/index.phtml`):
+Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
 
 ```php
 <?php echo "<h1>Hello!</h1>";
@@ -326,13 +326,13 @@ class IndexController extends Controller
 }
 ```
 
-Вихід браузера повинно залишатися незмінним. У `phalcon\Mvc, про\вигляд` статичний компонент створюється автоматично при виконанні дії закінчився. Дізнайтеся більше про `тут використання подання <views>`.
+The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Дізнайтеся більше про `тут використання подання <views>`.
 
 <a name='signup-form'></a>
 
 ## Designing a sign up form
 
-Тепер ми змінимо індекс `.phtml` Переглянути файл, додати посилання на новий контролер "signup". Мета полягає в тому, щоб дозволити користувачам реєструватися в нашому додатку.
+Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
 
 ```php
 <?php
@@ -349,7 +349,7 @@ echo $this->tag->linkTo(
 );
 ```
 
-Згенерований HTML код відображає якір ("а") HTML-тег посилань на новий контролер:
+The generated HTML code displays an anchor ("a") HTML tag linking to a new controller:
 
 ```html
 <h1>Hello!</h1>
@@ -357,7 +357,7 @@ echo $this->tag->linkTo(
 <a href="/tutorial/signup">Sign Up Here!</a>
 ```
 
-Для створення тегів, які ми використовуємо клас `phalcon\тег`. Це службовий клас, який дозволяє створювати HTML-теги з рамковим конвенцій на увазі. Цей клас є також зареєстровано ді ми використовуємо `$цьому-і GT;тег`, щоб відкрити його.
+To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. Цей клас є також зареєстровано ді ми використовуємо `$цьому-і GT;тег`, щоб відкрити його.
 
 A more detailed article regarding HTML generation can be :doc:`found here <tags>`.
 
@@ -379,7 +379,7 @@ class SignupController extends Controller
 }
 ```
 
-Пусте дію показник дає точне уявлення з визначення форми (`програми/вид індексу/Реєстрація/.phtml`):
+The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
 
 ```php
 <h2>
@@ -413,21 +413,21 @@ class SignupController extends Controller
 </form>
 ```
 
-Перегляд у вашому браузері буде виглядати приблизно так:
+Viewing the form in your browser will show something like this:
 
 ![](/images/content/tutorial-basic-3.png)
 
-`phalcon\тег` також містить корисні методи для створення елементів форми.
+`Phalcon\Tag` also provides useful methods to build form elements.
 
 The :code:`Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application.
 
-Натиснувши кнопку "Надіслати", ви побачите виключення з рамки, вказуючи, що нам не вистачає "Реєстрація" дія в контролері "зареєструватися". Our `public/index.php` file throws this exception:
+By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our `public/index.php` file throws this exception:
 
 ```bash
 Exception: Action "register" was not found on handler "signup"
 ```
 
-Реалізація цього методу буде видалити за винятком:
+Implementing that method will remove the exception:
 
 ```php
 <?php
@@ -448,13 +448,13 @@ class SignupController extends Controller
 }
 ```
 
-Якщо ви знову натиснете кнопку "Надіслати", ви побачите порожню сторінку. Ім'я та email, введені користувачів повинні зберігатися в базі даних. За даними керівництва МВС, взаємодія з базою даних повинна здійснюватися на основі моделі, з тим щоб забезпечити чистий об'єктно-орієнтований код.
+If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
 
 <a name='model'></a>
 
 ## Creating a Model
 
-Фелкон приносить перші orm для PHP і повністю написана на мові Сі. Замість того, щоб збільшувати складність освоєння, це спрощує його.
+Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
 Перед створенням нашої першої моделі нам потрібно створити таблиці бази даних за межами "Фелкон", щоб зіставити його. Проста Таблиця для реєстрації користувачів можуть бути визначені так:
 
@@ -489,7 +489,7 @@ class Users extends Model
 
 ## Setting a Database Connection
 
-Для того, щоб мати можливість використовувати підключення до бази даних і потім отримати доступ до даних через наші моделі, ми повинні уточнити його в процесі початкового завантаження. Підключення до бази даних-це просто ще одна послуга, яку наш додаток, яке може використовуватися для декількох компонентів:
+Для того, щоб мати можливість використовувати підключення до бази даних і потім отримати доступ до даних через наші моделі, ми повинні уточнити його в процесі початкового завантаження. A database connection is just another service that our application has that can be used for several components:
 
 ```php
 <?php
@@ -512,7 +512,7 @@ $di->set(
 );
 ```
 
-З правильними параметрами базі наші моделі готові працювати і взаємодіяти з іншої частини програми.
+With the correct database parameters, our models are ready to work and interact with the rest of the application.
 
 <a name='storing-data'></a>
 
@@ -562,9 +562,9 @@ class SignupController extends Controller
 }
 ```
 
-Потім ми створюємо екземпляр класу користувачів, що відповідає запису Користувача. Публічні властивості класу на карті поля запису в таблиці користувачів. Встановлення необхідних значень поля нового запису і виклику `зберегти()` буде зберігати дані в базі даних. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+Потім ми створюємо екземпляр класу користувачів, що відповідає запису Користувача. Публічні властивості класу на карті поля запису в таблиці користувачів. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
 
-ОРМ автоматично екранує enter для запобігання SQL-ін'єкції, так що нам потрібно лише передати прохання `зберегти()` метод.
+The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
 
 Додаткова перевірка відбувається автоматично на поля, які визначені як не Null (обов'язково). Якщо ми не Вводимо будь-якого з необхідних полів у формі реєстрації, буде виглядати наступним чином:
 
