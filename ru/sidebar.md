@@ -23,10 +23,10 @@
     - [Использование](/[[language]]/[[version]]/devtools-usage)
     - [Отладка](/[[language]]/[[version]]/debug)
 - Ядро 
-    - Application 
+    - Приложение 
         - [Полное](/[[language]]/[[version]]/application)
-        - [Micro](/[[language]]/[[version]]/application-micro)
-        - [CLI](/[[language]]/[[version]]/application-cli)
+        - [Микро](/[[language]]/[[version]]/application-micro)
+        - [Консольное](/[[language]]/[[version]]/application-cli)
     - [DI контейнер](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
 - Сервисы 
