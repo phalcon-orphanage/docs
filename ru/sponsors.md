@@ -1,6 +1,6 @@
 # Стать спонсором
 
-For those that wish to sponsor our work and further the development of Phalcon, we offer various sponsorship options that will fit any budget. Sponsoring our work allows us to devote more time to the project, offer faster responses to bugs and features and ensure the projects's stability.
+Для тех, кто хочет спонсировать нашу работу и дальнейшую разработку Phalcon, мы предлагаем варианты спосорства, которые подойдут при любом бюджете. Спонсорство позволяет нам уделять больше времени проекту, быстрее исправлять ошибки и реализовывать новый функционал, а также обеспечивать стабильность проекта.
 
 <a href="https://phalcon.link/fund">
 <button class="btn button-small btn-danger">
@@ -8,10 +8,10 @@ For those that wish to sponsor our work and further the development of Phalcon, 
 </button>
 </a>
 
-# Sponsors and Supporters
+# Спонсоры и помощники
 
 <a href="https://pdffiller.com/" target="_blank">
-    <img src="https://raw.githubusercontent.com/phalcon/cphalcon/master/backers/pdffiller-240x60.png" alt="PDFfiller" />
+    <img src="https://raw.githubusercontent.com/phalcon/cphalcon/master/backers/pdffiller-240x60.png" alt="PDFFiller" />
 </a>
 
 <a href="https://mctekk.com/" target="_blank">
