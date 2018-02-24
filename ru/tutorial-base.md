@@ -537,7 +537,7 @@ class SignupController extends Controller
     {
         $user = new Users();
 
-        // Store and check for errors
+        // Сохраняем и проверяем на наличие ошибок
         $success = $user->save(
             $this->request->getPost(),
             [
@@ -547,9 +547,9 @@ class SignupController extends Controller
         );
 
         if ($success) {
-            echo "Thanks for registering!";
+            echo "Спасибо за регистрацию!";
         } else {
-            echo "Sorry, the following problems were generated: ";
+            echo "К сожалению, возникли следующие проблемы: ";
 
             $messages = $user->getMessages();
 
@@ -567,7 +567,7 @@ class SignupController extends Controller
 
 ORM автоматически экранирует ввод для предотвращения SQL-инъекций, так что мы можем передавать тело HTTP-запроса напрямую методу `save()`.
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
+Для полей, у которых установлен параметр not null (обязательные), вызывается дополнительная проверка. Если мы не введем ни одно из обязательных полей в форме регистрации, то получим что-то вроде этого:
 
 ![](/images/content/tutorial-basic-4.png)
 
