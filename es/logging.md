@@ -331,7 +331,7 @@ Los siguientes ejemplos muestran el uso básico de cada adaptador:
 
 ### Stream Logger
 
-El Stream Logger escribe mensajes en una secuencia registrada válida en PHP. Una lista de streams [aquí](http://php.net/manual/en/wrappers.php):
+The stream logger writes messages to a valid registered stream in PHP. A list of streams is available [here](http://php.net/manual/en/wrappers.php):
 
 ```php
 <?php
