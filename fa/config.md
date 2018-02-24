@@ -6,22 +6,22 @@
           <a href="#factory">Factory</a>
         </li>
         <li>
-          <a href="#native-arrays">آرایه های محلی</a>
+          <a href="#native-arrays">Native Arrays</a>
         </li>
         <li>
-          <a href="#file-adapter">فایل آداپتور</a>
+          <a href="#file-adapter">File Adapters</a>
         </li>
         <li>
-          <a href="#ini-files">خواندن فایل INI</a>
+          <a href="#ini-files">Reading INI Files</a>
         </li>
         <li>
-          <a href="#merging">ادغام تنظیمات</a>
+          <a href="#merging">Merging Configurations</a>
         </li>
         <li>
-          <a href="#nested-configuration">پیکربندی های تو در تو</a>
+          <a href="#nested-configuration">Nested Configuration</a>
         </li>
         <li>
-          <a href="#injecting-into-di">اعمال پیگربندی ها</a>
+          <a href="#injecting-into-di">Injecting Configuration Dependency</a>
         </li>
       </ul>
     </li>
@@ -38,7 +38,7 @@
 
 ## Factory
 
-کلاس پیکربندی آداپتور را با استفاده از گزینه `آداپتور` بارگزاری کنید، اگر هیچ افزونه ای ارائه نشود باید به `filePath` اضافه گردد
+Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
 
 ```php
 <?php
@@ -85,7 +85,7 @@ echo $config->database->username, "\n";
 echo $config->mysetting, "\n";
 ```
 
-برای سازماندهی بهتر پروژه تان میتوانید آرایه را در فایل دیگری ذخیره کنید و سپس آن را فراخوانی کنید.
+If you want to better organize your project you can save the array in another file and then read it.
 
 ```php
 <?php
@@ -99,9 +99,9 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## فایل آداپتور
+## File Adapters
 
-آداپتورهای موجود عبارتند از:
+The adapters available are:
 
 | Class                            | Description                                                                                      |
 | -------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -112,23 +112,34 @@ $config = new Config($settings);
 
 <a name='ini-files'></a>
 
-## خواندن فایل INI
+## Reading INI Files
 
-یک از روش های رایج ذخیره سازی تنظیمات استفاده از فایل های با پسوند ini است. `Phalcon\Config` از تابع بهینه سازی شده `parse_ini_file` در php استفاده می کند برای خواندن فایل های ini. برای دسترسی آسان تر هر قسمت از تنظیمات، تنظیمات را به یک زیر تنظیمات از همان قسمت در می آورد.
+Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
 
 ```ini
+[database]
+adapter  = Mysql
+host     = localhost
+username = scott
+password = cheetah
+dbname   = test_db
+
 [phalcon]
 controllersDir = '../app/controllers/'
-modelsDir = '../app/models/'
-viewsDir = '../app/views/'
+modelsDir      = '../app/models/'
+viewsDir       = '../app/views/'
 
 [models]
-metadata.adapter = 'Memory'
+metadata.adapter  = 'Memory'
 ```
 
-میتوانید به روش زیر فایل ini خود را بخوانید:
+You can read the file as follows:
 
 ```php
+<?php
+
+use Phalcon\Config\Adapter\Ini as ConfigIni;
+
 $config = new ConfigIni('path/config.ini');
 
 echo $config->phalcon->controllersDir, "\n";
@@ -138,9 +149,9 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## ادغام تنظیمات
+## Merging Configurations
 
-`Phalcon\Config` می تواند تنظیمات یک شئ را با شئ دیگر ادغام کند. به صورتی که تنظیمات جدید اضافه و تنظیمات موجود بروزرسانی می شوند.
+`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
 
 ```php
 <?php
@@ -150,7 +161,7 @@ use Phalcon\Config;
 $config = new Config(
     [
         'database' => [
-            'host' => 'localhost',
+            'host'   => 'localhost',
             'dbname' => 'test_db',
         ],
         'debug' => 1,
@@ -160,18 +171,20 @@ $config = new Config(
 $config2 = new Config(
     [
         'database' => [
-            'dbname' => 'production_db',
+            'dbname'   => 'production_db',
             'username' => 'scott',
             'password' => 'secret',
         ],
         'logging' => 1,
-    ] 
+    ]
 );
+
 $config->merge($config2);
+
 print_r($config);
 ```
 
-نتیجه کد بالا به صورت زیر است:
+The above code produces the following:
 
 ```bash
 Phalcon\Config Object
@@ -188,13 +201,13 @@ Phalcon\Config Object
 )
 ```
 
-آداپتورهای بیشتر وجود دارد برای این کامپوننت در [Phalcon Incubator](https://github.com/phalcon/incubator)
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
 
 <a name='nested-configuration'></a>
 
-## پیکربندی های تو در تو
+## Nested Configuration
 
-برای دسترسی به پیکربندی های تو در تو میتوانید از متد `Phalcon\Config::path` استفاده کنید. یکی از ویژگی های این متد آن است که در صورت وجود نداشتن مسیر پیکربندی میتوان مقدار پیش فرض برای آن قرار داد. به مثال زیر توجه کنید:
+Also to get nested configuration you can use the `Phalcon\Config::path` method. This method allows to obtain nested configurations, without caring about the fact that some parts of the path are absent. Let's look at an example:
 
 ```php
 <?php
@@ -225,13 +238,13 @@ $config = new Config(
    ]
 );
 
-// استفاده از نقطه به عنوان جدا کننده
+// Using dot as delimiter
 $config->path('test.parent.property2');    // yeah
 $config->path('database.host', null, '.'); // localhost
 
 $config->path('test.parent'); // Phalcon\Config
 
-// استفاده از اسلش به عنوان جدا کننده
+// Using slash as delimiter
 $config->path('test/parent/property3', 'no', '/'); // no
 
 Config::setPathDelimiter('/');
@@ -240,9 +253,9 @@ $config->path('test/parent/property2'); // yeah
 
 <a name='injecting-into-di'></a>
 
-## اعمال پیگربندی ها
+## Injecting Configuration Dependency
 
-میتوانید پیکربندی های سفارشی خود به عنوان یک سرویس به کنترلر ها اضاف کنید. برای این کار از کد زیر میتوانید استفاده کنید.
+You can inject your configuration to the controllers by adding it as a service. To be able to do that, add following code inside your dependency injector script.
 
 ```php
 <?php
@@ -263,7 +276,7 @@ $di->set(
 );
 ```
 
-بعد از اجرای کد بالا شما میتواند درکنترلر ها به پیکربندی خود از طریق `config` دسترسی داشته باشید. مانند کد زیر:
+Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
 
 ```php
 <?php
