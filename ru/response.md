@@ -7,16 +7,16 @@
           <a href="#working-with-headers">Работа с заголовками</a>
         </li>
         <li>
-          <a href="#redirections">Создание переадресаций</a>
+          <a href="#redirections">Создание перенаправлений</a>
         </li>
         <li>
           <a href="#http-cache">HTTP-кэш</a> 
           <ul>
             <li>
-              <a href="#http-cache-expiration-time">Установка времени актуальности</a>
+              <a href="#http-cache-expiration-time">Expires</a>
             </li>
             <li>
-              <a href="#http-cache-control">Управление кэшем</a>
+              <a href="#http-cache-control">Cache-Control</a>
             </li>
             <li>
               <a href="#http-cache-etag">E-Tag</a>
@@ -32,27 +32,27 @@
 
 # Возврат ответов
 
-Part of the HTTP cycle is returning responses to clients. `Phalcon\Http\Response` is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
+Одной из частей работы HTTP-протокола является возвращение ответа клиенту. В Phalcon существует компонент `Phalcon\Http\Response` для реализации этой задачи. Чаще всего HTTP-ответ состоит из заголовков и тела ответа. Далее приведен пример базового использования:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Getting a response instance
+// Получение экземпляра Response
 $response = new Response();
 
-// Set status code
+// Установка кода статуса
 $response->setStatusCode(404, 'Not Found');
 
-// Set the content of the response
-$response->setContent("Sorry, the page doesn't exist");
+// Установка содержимого ответа
+$response->setContent("Сожалеем, но страница не существует");
 
-// Send response to the client
+// Отправка ответа клиенту
 $response->send();
 ```
 
-If you are using the full MVC stack there is no need to create responses manually. However, if you need to return a response directly from a controller's action follow this example:
+Имейте в виду, что при использовании полного стека MVC нет необходимости отправлять результаты Response вручную. Однако, если есть необходимость указать ответ самостоятельно в действии контроллера, то можно использовать такой пример:
 
 ```php
 <?php
@@ -64,17 +64,17 @@ class FeedController extends Controller
 {
     public function getAction()
     {
-        // Getting a response instance
+        // Получение экземпляра Response
         $response = new Response();
 
-        $feed = // ... Load here the feed
+        $feed = // ... тут данные
 
-        // Set the content of the response
+        // Установка содержимого ответа
         $response->setContent(
             $feed->asString()
         );
 
-        // Return the response
+        // Возврат Response ответа
         return $response;
     }
 }
@@ -84,61 +84,61 @@ class FeedController extends Controller
 
 ## Работа с заголовками
 
-Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status, type of response and much more.
+Заголовки являются важной частью для HTTP-ответов. Они содержат полезную информацию о статусе ответа, его типе и еще многое другое.
 
-You can set headers in the following way:
+Указывать заголовки можно следующим образом:
 
 ```php
 <?php
 
-// Setting a header by its name
+// Установка по имени
 $response->setHeader('Content-Type', 'application/pdf');
 $response->setHeader('Content-Disposition', "attachment; filename='downloaded.pdf'");
 
-// Setting a raw header
+// Установка напрямую
 $response->setRawHeader('HTTP/1.1 200 OK');
 ```
 
-A `Phalcon\Http\Response\Headers` bag internally manages headers. This class retrieves the headers before sending it to client:
+Объект `Phalcon\Http\Response\Headers` содержит в себе все заголовки и средства для их управления. Этот класс позволяет управлять заголовками до их отправки клиенту:
 
 ```php
 <?php
 
-// Get the headers bag
+// Получение всех заголовков
 $headers = $response->getHeaders();
 
-// Get a header by its name
+// Получение заголовка по имени
 $contentType = $headers->get('Content-Type');
 ```
 
 <a name='redirections'></a>
 
-## Создание переадресаций
+## Создание перенаправлений
 
-With `Phalcon\Http\Response` you can also execute HTTP redirections:
+С помощью `Phalcon\Http\Response` вы можете выполнять перенаправления HTTP:
 
 ```php
 <?php
 
-// Redirect to the default URI
+// Перенаправление на URL по умолчанию
 $response->redirect();
 
-// Redirect to the local base URI
+// Перенаправление на внутренний URI
 $response->redirect('posts/index');
 
-// Redirect to an external URL
+// Перенаправление на внешний URL
 $response->redirect('http://en.wikipedia.org', true);
 
-// Redirect specifying the HTTP status code
+// Перенаправление со специальным HTTP-кодом 
 $response->redirect('http://www.example.com/new-location', true, 301);
 ```
 
-Все внутренние URI генерируются с помощью сервиса [url](/[[language]]/[[version]]/url) (по умолчанию `Phalcon\Mvc\Url`). This example demonstrates how you can redirect using a route you have defined in your application:
+Все внутренние URI генерируются с помощью сервиса [url](/[[language]]/[[version]]/url) (по умолчанию `Phalcon\Mvc\Url`). Этот пример демонстрирует возможность перенаправления с использованием маршрута (роута), который вы задали в своем приложении:
 
 ```php
 <?php
 
-// Redirect based on a named route
+// Перенаправление основаное на имени маршрута
 return $response->redirect(
     [
         'for'        => 'index-lang',
@@ -148,26 +148,26 @@ return $response->redirect(
 );
 ```
 
-Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it will be executed anyway. You can disable the view from a controller by executing `$this->view->disable()`.
+Обратите внимание, что перенаправление не отключает компонент представления, таким образом, если имеется представление, связанное с текущим действием, оно в любом случае будет выполняться. Вы можете отключить представление из контроллера, выполнив `$this->view->disable()`.
 
 <a name='http-cache'></a>
 
 ## HTTP-кэш
 
-One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
+Одним из самых простых способов повышения производительности приложения является снижение трафика с помощью HTTP-кэширования. Большинство современных браузеров поддерживают HTTP-кэширование и это является одной из причин, почему многие веб-сайты в настоящее время работают достаточно быстро.
 
-HTTP Cache can be altered in the following header values sent by the application when serving a page for the first time:
+Поведение HTTP-кэша может быть изменено с помощью заголовков, отправляемых при первой передаче страницы:
 
-* **`Expires:`** With this header the application can set a date in the future or the past telling the browser when the page must expire.
-* **`Cache-Control:`** This header allows to specify how much time a page should be considered fresh in the browser.
-* **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads.
-* **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page.
+* **`Expires:`** Устанавливая этот заголовок в прошлое или будущее можно указывать браузеру срок жизни страницы.
+* **`Cache-Control:`** Позволяет указать сколько времени страница должна считаться для браузера актуальной.
+* **`Last-Modified:`** Указывает браузеру когда было последнее изменение страницы, что позволяет избежать повторной загрузки страницы.
+* **`ETag:`** Представляет собой уникальный идентификатор, который должен быть сформирован с учетом времени изменения текущей страницы.
 
 <a name='http-cache-expiration-time'></a>
 
-### Установка времени актуальности
+### Expires
 
-The expiration date is one of the easiest and most effective ways to cache a page in the client (browser). Starting from the current date we add the amount of time the page will be stored in the browser cache. Until this date expires no new content will be requested from the server:
+Указание срока жизни является одним из наиболее удобных и эффективных способов кэширования страниц на стороне клиента (браузера). Начиная с текущей даты мы добавляем некоторое количество времени, в течение которого страница будет храниться в кэше браузера. Это укажет браузеру сохранять страницу в кэше пока этот срок не истечет и не обращаться за ней к серверу:
 
 ```php
 <?php
@@ -178,9 +178,9 @@ $expiryDate->modify('+2 months');
 $response->setExpires($expiryDate);
 ```
 
-The Response component automatically shows the date in GMT timezone as expected in an Expires header.
+Ответ в компоненте Response автоматически преобразует дату для временной зоны GMT, именно так как ожидается в заголовке Expires.
 
-If we set this value to a date in the past the browser will always refresh the requested page:
+Более того, если мы укажем прошедшую дату, то это указывает браузеру всегда обновлять запрошенную страницу:
 
 ```php
 <?php
@@ -191,22 +191,22 @@ $expiryDate->modify('-10 minutes');
 $response->setExpires($expiryDate);
 ```
 
-Browsers rely on the client's clock to assess if this date has passed or not. The client clock can be modified to make pages expire and this may represent a limitation for this cache mechanism.
+Браузеры основываются на системных часах клиента для определения наступления этой даты. Так как часы на клиенте могут быть изменены, то срок жизни будет некорректен. Это ограничение такого механизма кэширования.
 
 <a name='http-cache-control'></a>
 
-### Управление кэшем
+### Cache-Control
 
-This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser how long it must keep the page in its cache:
+Этот заголовок осуществляет более безопасный способ кэширования. Мы просто указываем браузеру время в секундах которое необходимо хранить страницы в кэше:
 
 ```php
 <?php
 
-// Starting from now, cache the page for one day
+// Кэшировать страницу один день, начиная с текущего момента
 $response->setHeader('Cache-Control', 'max-age=86400');
 ```
 
-The opposite effect (avoid page caching) is achieved in this way:
+Противоположный эффект (для запрета кэширования страницы) организуется следующим образом:
 
 ```php
 <?php
