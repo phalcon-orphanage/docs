@@ -211,7 +211,7 @@ $response->setHeader('Cache-Control', 'max-age=86400');
 ```php
 <?php
 
-// Never cache the served page
+// Никогда не кэшировать обслуживаемую страницу
 $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
 ```
 
@@ -219,12 +219,12 @@ $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
 
 ### E-Tag
 
-An `entity-tag` or `E-tag` is a unique identifier that helps the browser realize if the page has changed or not between two requests. The identifier must be calculated taking into account that this must change if the previously served content has changed:
+Заголовок `entity-tag` или кратко `E-tag` позволяет браузеру понять, была ли изменена страница между двумя запросами. Идентификатор должен рассчитываться таким образом, что бы измениться если изменено содержимое страницы:
 
 ```php
 <?php
 
-// Calculate the E-Tag based on the modification time of the latest news
+// Формирование значения E-Tag основанное на последнем времени изменения новости
 $mostRecentDate = News::maximum(
     [
         'column' => 'created_at'
@@ -233,6 +233,6 @@ $mostRecentDate = News::maximum(
 
 $eTag = md5($mostRecentDate);
 
-// Send an E-Tag header
+// Отправка E-Tag
 $response->setHeader('E-Tag', $eTag);
 ```
