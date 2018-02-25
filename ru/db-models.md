@@ -42,34 +42,34 @@
           <a href="#delete-records">Удаление записей</a>
         </li>
         <li>
-          <a href="#hydration-modes">Hydration Modes</a>
+          <a href="#hydration-modes">Режимы гидрации</a>
         </li>
         <li>
-          <a href="#identity-columns">Auto-generated identity columns</a>
+          <a href="#identity-columns">Автоматически генерируемый столбец</a>
         </li>
         <li>
-          <a href="#skipping-columns">Skipping Columns</a>
+          <a href="#skipping-columns">Пропуск столбцов</a>
         </li>
         <li>
           <a href="#dynamic-updates">Динамические обновления</a>
         </li>
         <li>
-          <a href="#column-mapping">Independent Column Mapping</a>
+          <a href="#column-mapping">Независимое сопоставление столбцов</a>
         </li>
         <li>
-          <a href="#record-snapshots">Record Snapshots</a>
+          <a href="#record-snapshots">Запись снимков</a>
         </li>
         <li>
-          <a href="#different-schemas">Pointing to a different schema</a>
+          <a href="#different-schemas">Ссылка на другую схему</a>
         </li>
         <li>
           <a href="#multiple-databases">Настройка нескольких баз данных</a>
         </li>
         <li>
-          <a href="#injecting-services-into-models">Injecting services into Models</a>
+          <a href="#injecting-services-into-models">Внедрение сервисов в модели</a>
         </li>
         <li>
-          <a href="#disabling-enabling-features">Disabling/Enabling Features</a>
+          <a href="#disabling-enabling-features">Отключение/включение возможностей</a>
         </li>
         <li>
           <a href="#stand-alone-component">Самостоятельный компонент</a>
@@ -1275,7 +1275,7 @@ foreach ($robots as $robot) {
 
 <a name='identity-columns'></a>
 
-## Auto-generated identity columns
+## Автоматически генерируемый столбец
 
 Some models may have identity columns. These columns usually are the primary key of the mapped table. `Phalcon\Mvc\Model` can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
 
@@ -1309,7 +1309,7 @@ class Robots extends Model
 
 <a name='skipping-columns'></a>
 
-## Skipping Columns
+## Пропуск столбцов
 
 To tell `Phalcon\Mvc\Model` that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
 
@@ -1416,7 +1416,7 @@ class Robots extends Model
 
 <a name='column-mapping'></a>
 
-## Independent Column Mapping
+## Независимое сопоставление столбцов
 
 The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
 
@@ -1500,7 +1500,7 @@ The independent column map allows you to:
 
 <a name='record-snapshots'></a>
 
-## Record Snapshots
+## Запись снимков
 
 Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what fields are changed according to the data queried from the persistence:
 
@@ -1542,7 +1542,7 @@ var_dump($robot->hasChanged('type')); // false
 
 <a name='different-schemas'></a>
 
-## Pointing to a different schema
+## Ссылка на другую схему
 
 If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
 
@@ -1699,7 +1699,7 @@ $robot = Robots::findFirst('id = 101');
 
 <a name='injecting-services-into-models'></a>
 
-## Injecting services into Models
+## Внедрение сервисов в модели
 
 You may be required to access the application services within a model, the following example explains how to do that:
 
@@ -1731,7 +1731,7 @@ The `notSaved` event is triggered every time that a `create` or `update` action 
 
 <a name='disabling-enabling-features'></a>
 
-## Disabling/Enabling Features
+## Отключение/включение возможностей
 
 In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly. According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
 
