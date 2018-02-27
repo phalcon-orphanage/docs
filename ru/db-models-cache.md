@@ -762,7 +762,7 @@ class Robots extends Model
 
 ## Кэширования плана выполнения PHQL
 
-As well as most moderns database systems PHQL internally caches the execution plan, if the same statement is executed several times PHQL reuses the previously generated plan improving performance, for a developer to take better advantage of this is highly recommended build all your SQL statements passing variable parameters as bound parameters:
+Как и большинство современных систем баз данных, PHQL внутренне кэширует план выполнения. Если один и тот же оператор выполняется несколько раз, PHQL повторно использует ранее созданный план, улучшая производительность. В целях достежения лучшей производительности настоятельно рекомендуется создавать все ваши SQL-запросы таким образом, чтобы передавать переменные параметры как связанные параметры:
 
 ```php
 <?php
@@ -776,7 +776,7 @@ for ($i = 1; $i <= 10; $i++) {
 }
 ```
 
-In the above example, ten plans were generated increasing the memory usage and processing in the application. Rewriting the code to take advantage of bound parameters reduces the processing by both ORM and database system:
+В приведенном выше примере было создано десять планов, увеличивающих время выполнения приложения и потребление памяти. Перепишем этот код, воспользовавшись преимуществом связанных параметров для соращения обработки запроса ORM и базой данных:
 
 ```php
 <?php
@@ -816,4 +816,4 @@ for ($i = 1; $i <= 10; $i++) {
 }
 ```
 
-Execution plans for queries involving [prepared statements](http://en.wikipedia.org/wiki/Prepared_statement) are also cached by most database systems reducing the overall execution time, also protecting your application against [SQL Injections](http://en.wikipedia.org/wiki/SQL_injection).
+Кроме всего прочего, планы выполнения, включающие [подготавливаемые запросы](http://en.wikipedia.org/wiki/Prepared_statement), кешируются большинством СУБД, сокращая общее время выполнения, а также защищают приложение от [SQL-инъекций](http://en.wikipedia.org/wiki/SQL_injection).
