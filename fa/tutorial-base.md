@@ -55,6 +55,8 @@
 
 Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. The following guide is to provided to introduce you to Phalcon framework's design aspects.
 
+This tutorial covers the implementation of a simple MVC application, showing how fast and easy it can be done with Phalcon. This tutorial will get you started and help create an application that you can extend to address many needs. The code in this tutorial can also be used as a playground to learn other Phalcon specific concepts and ideas.
+
 <div class="alert alert-info">
     <p>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen></iframe>
@@ -107,7 +109,7 @@ Finally, if you flavor is Cherokee use the setup [here](/[[language]]/[[version]
 
 ## Bootstrap
 
-فایل اولی که شما باید ایجاد کنید، فایل خودراه انداز است. This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well as application behavior.
+The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well as application behavior.
 
 This file handles 3 things: - Registration of component autoloaders - Configuring Services and registering them with the Dependency Injection context - Resolving the application's HTTP requests
 
@@ -115,7 +117,7 @@ This file handles 3 things: - Registration of component autoloaders - Configurin
 
 ### Autoloaders
 
-Autoloaders leverage a [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon. Common things that should be added to the autoloader are your controllers and models. You can register directories which will search for files within the application's namespace. If you want to read about other ways that you can use Autoloaders head [here](/[[language]]/[[version]]/loader#overview).
+Autoloaders leverage a [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon. Common things that should be added to the autoloader are your controllers and models. You can register directories which will search for files within the application's namespace. If you want to read about other ways that you can use autoloaders head [here](/[[language]]/[[version]]/loader#overview).
 
 To start, lets register our app's `controllers` and `models` directories. Don't forget to include the loader from `Phalcon\Loader`.
 
@@ -149,15 +151,19 @@ $loader->register();
 
 Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound like a complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts: - Service Container: a "bag" where we globally store the services that our application needs to function. - Service or Component: Data processing object which will be injected into components
 
-If you are still interested in the details please see this article by [Martin Fowler](https://martinfowler.com/articles/injection.html)
-
 Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. Don't forget to include `Phalcon\Di` with setting up the service container.
 
-Services can be registered in several ways, but for our tutorial, we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
+<div class='alert alert-warning'>
+    <p>
+        If you are still interested in the details please see this article by [Martin Fowler](https://martinfowler.com/articles/injection.html). Also we have [a great tutorial](/[[language]]/[[version]]/di) covering many use cases.
+    </p>
+</div>
 
 ### Factory Default
 
 The `Phalcon\Di\FactoryDefault` is a variant of `Phalcon\Di`. To make things easier, it will automatically register most of the components that come with Phalcon. We recommend that you register your services manually but this has been included to help lower the barrier of entry when getting used to Dependency Management. Later, you can always specify once you become more comfortable with the concept.
+
+Services can be registered in several ways, but for our tutorial, we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
 
 `public/index.php`
 
@@ -172,7 +178,7 @@ use Phalcon\Di\FactoryDefault;
 $di = new FactoryDefault();
 ```
 
-در بخش بعدی، ما سروی "نمایه" را ثبت می کنیم که نشان دهنده دایرکتوری است که در آن چارچوب فایل های قابل نمایش را پیدا می کند. همانطور که فایل های قابل نمایش با دسته ها مطابقت ندارند، با بارگیری خودکار قابل بارگذاری نیستند.
+In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
 
 `public/index.php`
 
@@ -194,7 +200,7 @@ $di->set(
 );
 ```
 
-Next, we register a base URI so that all URIs generated by Phalcon match the application's base path of "/". از این پس در این تمرین، زمانی که ما از دسته`فالکون/برچسب` برای ایجاد یک ابر پیوند استفاده کنیم مهم خواهد بود.
+Next, we register a base URI so that all URIs generated by Phalcon match the application's base path of "/". This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
 
 `public/index.php`
 
@@ -220,7 +226,7 @@ $di->set(
 
 ### Handling the application request
 
-در قسمت آخر این فایل، ما را پیدا می کنیم`فالکون/ام وی سی/برنامه`. هدف آن این است که محیط درخواستی را مقدار دهی اولیه کرده، مسیر درخواست ورودی راه را تعیین و سپس هر گونه فعالیت شناسایی شده را مخابره نماید؛ هر پاسخی را جمع آوری می کند و زمانی که فرآیند کامل می شود، آنها را بازمی گرداند.
+In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
 
 `public/index.php`
 
@@ -240,7 +246,7 @@ $response->send();
 
 ### Putting everything together
 
-فایل `آموزش/عمومی/فهرست`باید به این شکل باشد:
+The `tutorial/public/index.php` file should look like:
 
 `public/index.php`
 
@@ -332,13 +338,13 @@ The controller classes must have the suffix `Controller` and controller actions 
 
 ![](/images/content/tutorial-basic-1.png)
 
-تبریک می گوییم، شما با فالکون همکاری می کنید!
+Congratulations, you're phlying with Phalcon!
 
 <a name='view'></a>
 
 ## Sending output to a view
 
-در مواقع ضروری خروجی از کنترلر به صفحه نمایش ارسال می شود، اما این مطلوب نیست، زیرا بیشتر متخصصان در انجمن ام وی سی این را تایید می کنند. داده نمایه های ورودی باعث ایجاد داده های خروجی که در صفحه نمایش هستند می شوند. فالکون یک نمایه با همان نام با عنوان آخرین عمل انجام شده در داخل یک پوشه به نام آخرین کنترل انجام شده، را جستجو می کند. در مورد ما (`app/views/index/index.phtml`):
+Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
 
 `app/views/index/index.phtml`
 
@@ -346,7 +352,7 @@ The controller classes must have the suffix `Controller` and controller actions 
 <?php echo "<h1>Hello!</h1>";
 ```
 
-کنترلر ما (`app/controllers/IndexController.php`) در حال حاضر یک تعریف عمل تهی دارد:
+Our controller (`app/controllers/IndexController.php`) now has an empty action definition:
 
 `app/controllers/IndexController.php`
 
@@ -364,13 +370,13 @@ class IndexController extends Controller
 }
 ```
 
-خروجی مرورگر باید همانطور باقی بماند. `فالکون/ام وی سی/نمایش`مولفه های ثابت هنگامی که اجرای عملیات به پایان رسید، به طور خودکار ایجاد می شوند. Learn more about views usage [here](/[[language]]/[[version]]/views).
+The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about views usage [here](/[[language]]/[[version]]/views).
 
 <a name='signup-form'></a>
 
 ## Designing a sign-up form
 
-حالا ما فایل نمایه `شاخص.پی اچ تی ام ال` را تغییر خواهیم داد تا یک پیوند به یک کنترلر جدید با نام "ثبت نام" اضافه کنیم. هدف این است که کاربران اجازه ثبت نام در برنامه خود را داشته باشند.
+Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
 
 `app/views/index/index.phtml`
 
@@ -399,13 +405,13 @@ The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new con
 <a href="/signup">Sign Up Here!</a>
 ```
 
-برای تولید تگ، ما از دسته استفاده می کنیم`فالکون/تگ`. این یک دسته ابزار است که ما را قادر به ساخت تگ های اچ تی ام ال با قوانین چارچوب می کند. As this class is also a service registered in the DI we use `$this->tag` to access it.
+To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is also a service registered in the DI we use `$this->tag` to access it.
 
 A more detailed article regarding HTML generation [can be found here](/[[language]]/[[version]]/tag).
 
 ![](/images/content/tutorial-basic-2.png)
 
-اینجا کنترل کننده ثبت نام است (`app/controllers/SignupController.php`):
+Here is the Signup controller (`app/controllers/SignupController.php`):
 
 `app/controllers/SignupController.php`
 
@@ -423,7 +429,7 @@ class SignupController extends Controller
 }
 ```
 
-عملکردهای بی نتیجه، گذرگاه پاکسازی شده خالی را برای یک نمایه ی تعیین فرم شده می دهد (`app/views/signup/index.phtml`):
+The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
 
 `app/views/signup/index.phtml`
 
@@ -449,20 +455,20 @@ class SignupController extends Controller
 </form>
 ```
 
-مشاهده فرم در مرورگر شما چیزی شبیه به این را نشان می دهد:
+Viewing the form in your browser will show something like this:
 
 ![](/images/content/tutorial-basic-3.png)
 
-`فالکون/تگ`همچنین روش های مفید برای ساخت عناصر فرم را فراهم می کند.
+`Phalcon\Tag` also provides useful methods to build form elements.
 
 The `Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application.
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the `register` action in the controller `signup`. فایل `عمومی/شاخص` ما این استثنا را سبب می شود:
+By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the `register` action in the controller `signup`. Our `public/index.php` file throws this exception:
 
     Exception: Action "register" was not found on handler "signup"
     
 
-پیاده سازی این روش، استثنا را حذف خواهد کرد:
+Implementing that method will remove the exception:
 
 `app/controllers/SignupController.php`
 
@@ -485,13 +491,13 @@ class SignupController extends Controller
 }
 ```
 
-اگر دوباره روی "ارسال" کلیک کنید، یک صفحه خالی خواهید دید. نام و ایمیل ورودی ارائه شده توسط کاربر باید در پایگاه داده ها ذخیره شود. با توجه به دستورالعمل ام وی سی، تعاملات پایگاه داده باید از طریق مدل ها انجام شود تا از پاک شدن کد شی گرا اطمینان حاصل شود.
+If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
 
 <a name='model'></a>
 
 ## Creating a Model
 
-فالکون نخستین ارم برای پی اچ پی را به طور کامل در زبان سی به ارمغان می آورد. به جای افزایش پیچیدگی سیر تکاملی، آن را ساده می کند.
+Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
 Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be created like this:
 
@@ -507,7 +513,7 @@ CREATE TABLE `users` (
 );
 ```
 
-یک مدل باید در دایرکتوری `برنامه/مدلها`دایرکتوری (`برنامه/مدلها/کاربران`) قرار گیرد. این مدل به جدول "کاربران" می پردازد:
+A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
 
 `app/models/Users.php`
 
@@ -528,7 +534,7 @@ class Users extends Model
 
 ## Setting a Database Connection
 
-In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. یک اتصال پایگاه داده فقط سرویس دیگری است که برنامه ما می تواند آن را برای چندین قسمت استفاده کند:
+In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
 
 `public/index.php`
 
@@ -553,7 +559,7 @@ $di->set(
 );
 ```
 
-با پارامترهای پایگاه داده صحیح، مدل ما آماده کار و تعامل با بقیه برنامه است.
+With the correct database parameters, our models are ready to work and interact with the rest of the application.
 
 <a name='storing-data'></a>
 
@@ -603,9 +609,9 @@ class SignupController extends Controller
 }
 ```
 
-At the beginning of the `registerAction` we create an empty user object from the Users class, which manages a User's record. The class's public properties map to the fields of the `users` table in our database. تنظیمات مقادیر مربوط به سابقه جدید و تماس های `ذخیره شده()` بعنوان داده در پایگاه داده ها برای آن سابقه ذخیره خواهد شد. روش `ذخیره()` یک مقدار بولین درست یا غلط را نشان می دهد که نشان دهنده اینست که آیا ذخیره سازی داده موفق بوده یا خیر.
+At the beginning of the `registerAction` we create an empty user object from the Users class, which manages a User's record. The class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
 
-ارم به طور خودکار ورودی را بعلت پیشگیری از تزریق اسکیوال خارج میکند بنابراین ما فقط باید درخواست را به روش`ذخیره() `منتقل کنیم.
+The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
 
 Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign-up form our screen will look like this:
 
