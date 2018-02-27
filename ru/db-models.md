@@ -1197,7 +1197,7 @@ class Robots extends Model
 
 <a name='hydration-modes'></a>
 
-## Hydration Modes
+## Режимы гидрации
 
 As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object representing a row in the database. These objects can be modified and saved again to persistence:
 
@@ -1748,22 +1748,22 @@ Model::setup(
 );
 ```
 
-The available options are:
+Доступные опции:
 
-| Option             | Description                                                                               | По умолчанию |
-| ------------------ | ----------------------------------------------------------------------------------------- |:------------:|
-| events             | Enables/Disables callbacks, hooks and event notifications from all the models             |    `true`    |
-| columnRenaming     | Enables/Disables the column renaming                                                      |    `true`    |
-| notNullValidations | The ORM automatically validate the not null columns present in the mapped table           |    `true`    |
-| virtualForeignKeys | Enables/Disables the virtual foreign keys                                                 |    `true`    |
-| phqlLiterals       | Enables/Disables literals in the PHQL parser                                              |    `true`    |
-| lateStateBinding   | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method |   `false`    |
+| Опция              | Описание                                                                                         | По умолчанию |
+| ------------------ | ------------------------------------------------------------------------------------------------ |:------------:|
+| events             | Enables/Disables callbacks, hooks and event notifications from all the models                    |    `true`    |
+| columnRenaming     | Включает/выключает переименование столбцов                                                       |    `true`    |
+| notNullValidations | ORM автоматически проверяет NOT NULL столбцы, присутствующие в таблице                           |    `true`    |
+| virtualForeignKeys | Включает/выключает виртуальные внешние ключи                                                     |    `true`    |
+| phqlLiterals       | Включает/выключает литералы в PHQL парсере                                                       |    `true`    |
+| lateStateBinding   | Включает/выключает позднее статическое связывание метода `Phalcon\Mvc\Model::cloneResultMap()` |   `false`    |
 
 <a name='stand-alone-component'></a>
 
 ## Самостоятельный компонент
 
-Using `Phalcon\Mvc\Model` in a stand-alone mode can be demonstrated below:
+Ниже показано, как можно использовать `Phalcon\Mvc\Model` в автономном режиме:
 
 ```php
 <?php
@@ -1776,7 +1776,7 @@ use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
 
 $di = new Di();
 
-// Setup a connection
+// Настраиваем соединение
 $di->set(
     'db',
     new Connection(
@@ -1786,24 +1786,24 @@ $di->set(
     )
 );
 
-// Set a models manager
+// Устанавливаем менеджер модели
 $di->set(
     'modelsManager',
     new ModelsManager()
 );
 
-// Use the memory meta-data adapter or other
+// Используем адаптер памяти мета-данных или любой другой
 $di->set(
     'modelsMetadata',
     new MetaData()
 );
 
-// Create a model
+// Создаем модель
 class Robots extends Model
 {
 
 }
 
-// Use the model
+// Используем модель
 echo Robots::count();
 ```
