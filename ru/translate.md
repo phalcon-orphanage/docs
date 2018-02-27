@@ -1,19 +1,19 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Multi-lingual Support</a> <ul>
+      <a href="#overview">Поддержка многоязычности</a> <ul>
         <li>
-          <a href="#adapters">Adapters</a> <ul>
+          <a href="#adapters">Адаптеры</a> <ul>
             <li>
-              <a href="#adapters-factory">Factory</a>
+              <a href="#adapters-factory">Фабрика</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#usage">Component Usage</a>
+          <a href="#usage">Использование компонента</a>
         </li>
         <li>
-          <a href="#custom">Implementing your own adapters</a>
+          <a href="#custom">Реализация собственных адаптеров</a>
         </li>
       </ul>
     </li>
@@ -22,25 +22,25 @@
 
 <a name='overview'></a>
 
-# Multi-lingual Support
+# Поддержка многоязычности
 
-The component `Phalcon\\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
+The component `Phalcon\\Translate` aids in creating multilingual applications. Приложения, использующие этот компонент, отображают содержимое на разных языках, основываясь на выборе пользователя из поддерживаемых приложением.
 
 <a name='adapters'></a>
 
-## Adapters
+## Адаптеры
 
-This component makes use of adapters to read translation messages from different sources in a unified way.
+Этот компонент позволяет использовать адаптеры для чтения, перевода сообщений из различных источников в едином виде.
 
-| Adapter                                    | Description                                                                             |
-| ------------------------------------------ | --------------------------------------------------------------------------------------- |
-| `Phalcon\Translate\Adapter\NativeArray` | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
+| Адаптер                                    | Описание                                                                                             |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| `Phalcon\Translate\Adapter\NativeArray` | Использует PHP массивы для хранения сообщений. Это лучший вариант с точки зрения производительности. |
 
 <a name='adapters-factory'></a>
 
-### Factory
+### Фабрика
 
-Loads Translate Adapter class using `adapter` option
+Загружает адаптер используя параметр `adapter`:
 
 ```php
 <?php
@@ -60,7 +60,7 @@ $translate = Factory::load($options);
 
 <a name='usage'></a>
 
-## Component Usage
+## Использование компонента
 
 Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:
 
@@ -71,7 +71,7 @@ app/messages/fr.php
 app/messages/zh.php
 ```
 
-Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in different files, where keys remain the same and values contain the translated strings depending on each language.
+Каждый файл содержит массив переводов в виде ключ/значение. Для каждого файла перевода ключи уникальны. The same array is used in different files, where keys remain the same and values contain the translated strings depending on each language.
 
 ```php
 <?php
@@ -93,8 +93,7 @@ $messages = [
     'hi'      => 'Bonjour',
     'bye'     => 'Au revoir',
     'hi-name' => 'Bonjour %name%',
-    'song'    => 'La chanson est %song%',
-];
+    'song'    => 'La chanson est %song%',;
 ```
 
 Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
@@ -114,7 +113,7 @@ class UserController extends Controller
         // Ask browser what is the best language
         $language = $this->request->getBestLanguage();
 
-        $translationFile = 'app/messages/' . $language . '.php';
+        $translationFile = 'app/messages/' . $language. '.php';
 
         // Check if we have a translation file for that lang
         if (file_exists($translationFile)) {
@@ -150,7 +149,7 @@ The `_getTranslation()` method is available for all actions that require transla
     <p><?php echo $t->_('hi'), ' ', $name; ?></p>
     
 
-The `_()` method is returning the translated string based on the index passed. Some strings need to incorporate placeholders for calculated data i.e. `Hello %name%`. These placeholders can be replaced with passed parameters in the `_()` method. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
+Метод `_ ()` возвращает переведенные строки на основе индекса, переданного функции. Some strings need to incorporate placeholders for calculated data i.e. `Hello %name%`. These placeholders can be replaced with passed parameters in the `_()` method. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
 
 ```php
 <!-- welcome -->
@@ -162,7 +161,7 @@ Some applications implement multilingual on the URL such as `http://www.mozilla.
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Реализация собственных адаптеров
 
 The `Phalcon\Translate\AdapterInterface` interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
