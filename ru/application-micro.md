@@ -1481,7 +1481,7 @@ class CacheMiddleware implements MiddlewareInterface
 
 ## События в Middleware
 
-[События](#events), вызываемые для нашего приложения, также вызываются внутри класса реализующего интерфейс `Phalcon\Mvc\Micro\MiddlewareInterface`. This offers great flexibility and power for developers since we can interact with the request process.
+[События](#events), вызываемые для нашего приложения, также вызываются внутри класса реализующего интерфейс `Phalcon\Mvc\Micro\MiddlewareInterface`. Это обеспечивает большую гибкость и более широкие возможности для разработчиков, поскольку можем взаимодействовать с обработкой запроса.
 
 <a name='middleware-events-api'></a>
 
@@ -1960,7 +1960,7 @@ $app->get(
 
 # Обработка ошибок
 
-The `Phalcon\Mvc\Micro` application also has an `error` method, which can be used to trap any errors that originate from exceptions. Следующий фрагмент кода показывает основное использование этой возможности:
+Также, `Phalcon\Mvc\Micro` приложение имеет метод `error`, который может быть использован для перехвата ошибок порождённых исключениями. Следующий фрагмент кода показывает основное использование этой возможности:
 
 ```php
 <?php
