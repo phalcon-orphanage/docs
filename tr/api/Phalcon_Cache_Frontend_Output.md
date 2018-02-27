@@ -1,4 +1,4 @@
-# Phalcon sınıfı\\Önbellek\\Başlangıç aşaması\\çıktı</strong>
+# Class **Phalcon\\Cache\\Frontend\\Output**
 
 *implements* [Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface)
 
@@ -16,11 +16,11 @@ Allows to cache output fragments captured with ob_* functions
 
 public **__construct** ([*array* $frontendOptions])
 
-Phalcon\\Önbellek\\Başlangıç aşaması\\çıktı üreticisi
+Phalcon\\Cache\\Frontend\\Output constructor
 
 public **getLifetime** ()
 
-Önbellek ömrünü çevirir
+Returns the cache lifetime
 
 public **isBuffering** ()
 
@@ -40,8 +40,8 @@ Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Verileri saklamadan önce seri hale getirir
+Serializes data before storing them
 
 public **afterRetrieve** (*mixed* $data)
 
-Alınan verileri sonradan sırayı bozar
+Unserializes data after retrieval
