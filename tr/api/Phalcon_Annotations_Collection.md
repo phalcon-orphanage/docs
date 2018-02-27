@@ -1,6 +1,6 @@
 # Class **Phalcon\\Annotations\\Collection**
 
-*uygulamalar* [yineleyici](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php), [sayılabilir](http://php.net/manual/en/class.countable.php)
+*implements* [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php), [Countable](http://php.net/manual/en/class.countable.php)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -32,38 +32,38 @@ public **count** ()
 
 Returns the number of annotations in the collection
 
-herkese açık **geri sarma** ()
+public **rewind** ()
 
 Rewinds the internal iterator
 
-herkese açık [Phalcon\Açıklamalar\açıklama](/en/3.2/api/Phalcon_Annotations_Annotation) **geçerli** ()
+public [Phalcon\Annotations\Annotation](/en/3.2/api/Phalcon_Annotations_Annotation) **current** ()
 
 Returns the current annotation in the iterator
 
-herkese açık **anahtar** ()
+public **key** ()
 
 Returns the current position/key in the iterator
 
-herkese açık **sonraki** ()
+public **next** ()
 
 Moves the internal iteration pointer to the next position
 
-herkese açık **geçerli** ()
+public **valid** ()
 
 Check if the current annotation in the iterator is valid
 
-herkese açık ** Açıklamaları al** ()
+public **getAnnotations** ()
 
 Returns the internal annotations as an array
 
-herkese açık **al** (*dizi* $isim)
+public **get** (*string* $name)
 
 Returns the first annotation that match a name
 
-herkese açık **Hepsini al** (*dizi* $isim)
+public **getAll** (*string* $name)
 
 Returns all the annotations that match a name
 
-herkese açık **var** (*dizi* $isim)
+public **has** (*string* $name)
 
 Check if an annotation exists in a collection
