@@ -8,7 +8,7 @@
               <a href="#adapters-factory">Factory</a>
             </li>
             <li>
-              <a href="#adapters-custom">Implementing your own adapters</a>
+              <a href="#adapters-custom">Pagpapatupad ng iyong sariling mga adapter</a>
             </li>
           </ul>
         </li>
@@ -97,61 +97,61 @@ $image = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### Pagpapatupad ng iyong sariling mga adapter
 
-The `Phalcon\Image\AdapterInterface` interface must be implemented in order to create your own image adapters or extend the existing ones.
+Ang `Phalcon\Imahe\AdapterInterface` na interface ay dapat na ipatupad para makalikha ng iyong sariling mga adapter na sesyon o palawigin pa ang mga umiiral na.
 
 <a name='saving-rendering'></a>
 
 ## Saving and rendering images
 
-Before we begin with the various features of the image component, it's worth understanding how to save and render these images.
+Bago tayo magsimula sa iba-iba na mga tampok ng komponent ng imahe, ito ay nararapat maunawaan kung paano i-save at i-render ang mga imaheng ito.
 
 ```php
 <?php
 
-$image = new \Phalcon\Image\Adapter\Gd('image.jpg');
+$image = bago \Phalcon\Imahe\Adapter\Gd('image.jpg');
 
 // ...
 
-// Overwrite the original image
+// I-overwrite ang orihinal na imahe
 $image->save();
 ```
 
 ```php
 <?php
 
-$image = new \Phalcon\Image\Adapter\Gd('image.jpg');
+$image = bago \Phalcon\Imahe\Adapter\Gd('image.jpg');
 
 // ...
 
-// Save to 'new-image.jpg'
+// I-save sa 'new-image.jpg'
 $image->save('new-image.jpg');
 ```
 
-You can also change the format of the image:
+Maaari mo ring baguhin ang pormat ng imahe:
 
 ```php
 <?php
 
-$image = new \Phalcon\Image\Adapter\Gd('image.jpg');
+$image = bago \Phalcon\Imahe\Adapter\Gd('image.jpg');
 
 // ...
 
-// Save as a PNG file
+// I-save bilang isang PNG na file
 $image->save('image.png');
 ```
 
-When saving as a JPEG, you can also specify the quality as the second parameter:
+Kapag magse-save bilang isang JPEG, maaari mo ring banggitin ang kalidad bilang pangalawang parameter:
 
 ```php
 <?php
 
-$image = new \Phalcon\Image\Adapter\Gd('image.jpg');
+$image = bago \Phalcon\Imahe\Adapter\Gd('image.jpg');
 
 // ...
 
-// Save as a JPEG with 80% quality
+// I-save bilang isang JPEG na may 80% na kalidad
 $image->save('image.jpg', 80);
 ```
 
@@ -159,7 +159,7 @@ $image->save('image.jpg', 80);
 
 ## Resizing images
 
-There are several modes of resizing:
+Mayroong ilang mga mode ng resizing:
 
 - `\Phalcon\Image::WIDTH`
 - `\Phalcon\Image::HEIGHT`
@@ -173,12 +173,12 @@ There are several modes of resizing:
 
 ### `\Phalcon\Image::WIDTH`
 
-The height will automatically be generated to keep the proportions the same; if you specify a height, it will be ignored.
+Ang taas ay awtomatikong mabubuo para panatilihin na proporsyon ay magkatulad; kung tinukoy mo ang isang taas, ito ay babaliwalain.
 
 ```php
 <?php
 
-$image = new \Phalcon\Image\Adapter\Gd('image.jpg');
+$image = bago \Phalcon\Imahe\Adapter\Gd('image.jpg');
 
 $image->resize(
     300,
@@ -193,17 +193,17 @@ $image->save('resized-image.jpg');
 
 ### `\Phalcon\Image::HEIGHT`
 
-The width will automatically be generated to keep the proportions the same; if you specify a width, it will be ignored.
+Ang lapad ay awtomatikong mabubuo para panatilihin na magkapareho ang proporsyon; kung tinukoy mo ang isang lapad, ito ay babaliwalain.
 
 ```php
 <?php
 
-$image = new \Phalcon\Image\Adapter\Gd('image.jpg');
+$image = bago \Phalcon\Imahe\Adapter\Gd('image.jpg');
 
 $image->resize(
     null,
     300,
-    \Phalcon\Image::HEIGHT
+    \Phalcon\Imahe::TAAS
 );
 
 $image->save('resized-image.jpg');
@@ -221,12 +221,12 @@ $image->save('resized-image.jpg');
 ```php
 <?php
 
-$image = new \Phalcon\Image\Adapter\Gd('image.jpg');
+$image = bago \Phalcon\Imahe\Adapter\Gd('image.jpg');
 
 $image->resize(
     400,
     200,
-    \Phalcon\Image::NONE
+    \Phalcon\Imahe::WALA
 );
 
 $image->save('resized-image.jpg');
@@ -236,14 +236,14 @@ $image->save('resized-image.jpg');
 
 ### `\Phalcon\Image::TENSILE`
 
-- Similar to the `NONE` constant, the `TENSILE` constant ignores the original image's ratio.
-- Both width and height are required.
+- Katulad ng `NONE` na constant, ang `TENSILE` na constant ay hindi papansinin ang orihinal na ratio ng imahe.
+- Parehong kinakailangan ang width at height.
 - If the new proportions differ from the original proportions, the image may be distorted and stretched.
 
 ```php
 <?php
 
-$image = new \Phalcon\Image\Adapter\Gd('image.jpg');
+$image = bago \Phalcon\Imahe\Adapter\Gd('image.jpg');
 
 $image->resize(
     400,
@@ -258,12 +258,12 @@ $image->save('resized-image.jpg');
 
 ## Cropping images
 
-For example, to get a 100px by 100px square from the centre of the image:
+Halimbawa, para makakuha ng 100px by 100px na square mula sa sentro ng imahe:
 
 ```php
 <?php
 
-$image = new \Phalcon\Image\Adapter\Gd('image.jpg');
+$image = new \Phalcon\Imahe\Adapter\Gd('image.jpg');
 
 $width   = 100;
 $height  = 100;
@@ -284,7 +284,7 @@ $image->save('cropped-image.jpg');
 
 $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
-// Rotate an image by 90 degrees clockwise
+// Paikutin ang isang imahe sa pamamagitan ng 90 degrees na clockwise
 $image->rotate(90);
 
 $image->save('rotated-image.jpg');
@@ -294,16 +294,16 @@ $image->save('rotated-image.jpg');
 
 ## Flipping images
 
-You can flip an image horizontally (using the `\Phalcon\Image::HORIZONTAL` constant) and vertically (using the `\Phalcon\Image::VERTICAL` constant):
+Maaari mong ibaligtad ang isang imahe nang pahalang (gamit ang `\Phalcon\Imahe::PAHALNG` konstant) at patayo (using the `\Phalcon\Imahe::PATAYO` konstant):
 
 ```php
 <?php
 
 $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
-// Flip an image horizontally
+// Baligtarin ang isang imahe ng pahalang
 $image->flip(
-    \Phalcon\Image::HORIZONTAL
+    \Phalcon\Image::HORIZONTALLY
 );
 
 $image->save('flipped-image.jpg');
@@ -313,7 +313,7 @@ $image->save('flipped-image.jpg');
 
 ## Sharpening images
 
-The `sharpen()` method takes a single parameter - an integer between 0 (no effect) and 100 (very sharp):
+Ang `sharpen()` na pamamaraan ay kumukuha ng nag-iisang parameter - isang integer sa pagitan ng 0 (walang epekto) at 100 (napaka matalim):
 
 ```php
 <?php
@@ -336,7 +336,7 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 $watermark = new \Phalcon\Image\Adapter\Gd('me.jpg');
 
-// Put the watermark in the top left corner
+// Lagyan ng watermark sa kaliwang sulok sa itaas
 $offsetX = 10;
 $offsetY = 10;
 
@@ -352,7 +352,7 @@ $image->watermark(
 $image->save('watermarked-image.jpg');
 ```
 
-Of course, you can also manipulate the watermarked image before applying it to the main image:
+Siyempre, maaari ka ring magmanipula ng na-watermark na imahe bago i-apply ito sa pangunahing imahe:
 
 ```php
 <?php
@@ -365,7 +365,7 @@ $watermark->resize(100, 100);
 $watermark->rotate(90);
 $watermark->sharpen(5);
 
-// Put the watermark in the bottom right corner with a 10px margin
+// Ilagay ang watermark sa ibabang kanang sulok na may margin na 10px
 $offsetX = ($image->getWidth() - $watermark->getWidth() - 10);
 $offsetY = ($image->getHeight() - $watermark->getHeight() - 10);
 
@@ -385,7 +385,7 @@ $image->save('watermarked-image.jpg');
 
 ## Blurring images
 
-The `blur()` method takes a single parameter - an integer between 0 (no effect) and 100 (very blurry):
+Ang `blur()` na paraan ay kumukuha ng nag-iisang parameter - isang integer sa pagitan ng 0 (walang epekto) at 100 (napaka malabo):
 
 ```php
 <?php
@@ -401,7 +401,7 @@ $image->save('blurred-image.jpg');
 
 ## Pixelating images
 
-The `pixelate()` method takes a single parameter - the higher the integer, the more pixelated the image becomes:
+Ang `pixelate()` na paraan ay kumukuha ng nag-iisang parameter - mas mataas ang integer, mas magiging pixelated ang imahe:
 
 ```php
 <?php

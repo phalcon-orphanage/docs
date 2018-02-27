@@ -120,13 +120,13 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 - PHP >= 5.5
 
-<h5 class='alert alert-danger'>You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 </h5>
+<h5 class='alert alert-danger'>Dapat palaging subukan at gamitin ang pinakabagong bersyon ng Phalcon at Php bilang parehong mga address ng bug, pagpapa-unlad ng seguridad lalo na sa pagganap. Ang PHP 5.5 ay bababa sa malapit na hinaharap, at ang Phalcon 4 ay susuporta lamang sa PHP 7 </h5>
 
 Phalcon need the following extensions to run (minimal):
 
 - `curl`
 - `gettext`
-- `gd2` (for the Image class)
+- `gd2` (para sa klase ng imahe)
 - `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (Mac OS)
 - `json`
 - `mbstring`
@@ -139,7 +139,7 @@ Phalcon need the following extensions to run (minimal):
 - [PDO](http://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) etc.)
 - [OpenSSL](http://php.net/manual/en/book.openssl.php) Extension
 - [Mbstring](http://php.net/manual/en/book.mbstring.php) Extension
-- [Memcache](http://php.net/manual/en/book.memcache.php), [Memcached](http://php.net/manual/en/book.memcached.php) or other relevant cache adapters depending on your usage of cache.
+- [Memcache](http://php.net/manual/en/book.memcache.php), [Memcached](http://php.net/manual/en/book.memcached.php) o mga kaugnay na mga adaptor ng cache depende sa iyong paggamit na cache.
 
 <a name='installation'></a>
 

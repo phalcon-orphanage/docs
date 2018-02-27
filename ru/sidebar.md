@@ -23,10 +23,10 @@
     - [Использование](/[[language]]/[[version]]/devtools-usage)
     - [Отладка](/[[language]]/[[version]]/debug)
 - Ядро 
-    - Application 
+    - Приложение 
         - [Полное](/[[language]]/[[version]]/application)
-        - [Micro](/[[language]]/[[version]]/application-micro)
-        - [CLI](/[[language]]/[[version]]/application-cli)
+        - [Микро](/[[language]]/[[version]]/application-micro)
+        - [Консольное](/[[language]]/[[version]]/application-cli)
     - [DI контейнер](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
 - Сервисы 
@@ -43,7 +43,7 @@
     - [PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
     - [Модели](/[[language]]/[[version]]/db-models) 
-        - [Advanced](/[[language]]/[[version]]/db-models-advanced)
+        - [Дополнительно](/[[language]]/[[version]]/db-models-advanced)
         - [Поведения](/[[language]]/[[version]]/db-models-behaviors)
         - [Кэш](/[[language]]/[[version]]/db-models-cache)
         - [События](/[[language]]/[[version]]/db-models-events)

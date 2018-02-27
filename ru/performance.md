@@ -54,7 +54,7 @@ Get faster applications requires refine many aspects: server, client, network, d
 
 Each application is different, the permanent profiling is important to understand where performance can be increased. Profiling gives us a real picture on what is really slow and what does not. Profiles can vary between a request and another, so it is important to make enough measurements to make conclusions.
 
-Profiling with XDebug
+Профилирование с XDebug
 
 [XDebug](http://xdebug.org/docs) provides an easier way to profile PHP applications, just install the extension and enable profiling in the php.ini:
 
@@ -68,7 +68,7 @@ Using a tool like [Webgrind](https://github.com/jokkedk/webgrind/) you can see w
 
 <a name='profiling-server-xhprof'></a>
 
-### Profiling with Xhprof
+### Профилирование с Xhprof
 
 [Xhprof](https://github.com/facebook/xhprof) is another interesting extension to profile PHP applications. Add the following line to the start of the bootstrap file:
 

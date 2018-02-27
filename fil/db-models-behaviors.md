@@ -23,7 +23,7 @@
 
 # Model Behaviors
 
-Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
+Ang mga pag-uugaling ibinabahagi ay naglilitis na iilan sa mga modelo ay maaaring mag-adopt upang magamit muli ang mga code, ang ORM ay nagbibigay ng isang API upang ipatupad ang mga ugali ng iyong mga modelo. At saka, maari mo ring gamitin ang mga kaganapan at ang mga callback na siya ring nakita nung una bilang isang alternatibo upang ipatupad ang mga Pag-uugali nang may higit pang kalayaan.
 
 A behavior must be added in the model initializer, a model can have zero or more behaviors:
 

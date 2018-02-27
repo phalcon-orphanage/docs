@@ -76,7 +76,7 @@ my-rest-api/
     .htaccess
 ```
 
-First, we need a `.htaccess` file that contains all the rules to rewrite the URIs to the `index.php` file, that is our application:
+Una, kailangan nating ang `.htaccess` na file na naglalaman ng lahat ng mga utos kung paano isulat muli ang mga URl sa `index.php` na file, yan ang ating aplikasyon:
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -105,11 +105,11 @@ Now we will create the routes as we defined above:
 ```php
 <?php
 
-use Phalcon\Mvc\Micro;
+gamitin ang Phalcon\Mvc\Micro;
 
-$app = new Micro();
+$app = bagong Micro();
 
-// Retrieves all robots
+// Kukuha ng lahat ng mga robot
 $app->get(
     '/api/robots',
     function () {
@@ -117,7 +117,7 @@ $app->get(
     }
 );
 
-// Searches for robots with $name in their name
+// Maghahanap ng mga robot na may $name sa kanilang pangalan
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
@@ -125,7 +125,7 @@ $app->get(
     }
 );
 
-// Retrieves robots based on primary key
+// Kinukuha ang mga robot base sa pangunahin na susi
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
@@ -133,7 +133,7 @@ $app->get(
     }
 );
 
-// Adds a new robot
+// Magdadagdag ng bagong robot
 $app->post(
     '/api/robots',
     function () {
@@ -141,7 +141,7 @@ $app->post(
     }
 );
 
-// Updates robots based on primary key
+// Mag-update ng mga robot base sa pangunahin na susi
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function () {
@@ -149,7 +149,7 @@ $app->put(
     }
 );
 
-// Deletes robots based on primary key
+// Buburahin ang mga robot base sa pangunahin na susi
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function () {

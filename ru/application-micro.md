@@ -1557,7 +1557,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 #### Not Found Middleware
 
-Когда этот middleware обработан, это означает, что запрашивающему IP разрешен доступ к нашему приложению. Приложение попытается сопоставить маршрут, и если он не будет найден сработает событие `beforeNotFound`. We will stop the processing then and send back to the user the relevant 404 response. Этот middleware прикреплен к событию `before` нашего Micro приложения
+Когда этот middleware обработан, это означает, что запрашивающему IP разрешен доступ к нашему приложению. Приложение попытается сопоставить маршрут, и если он не будет найден сработает событие `beforeNotFound`. Тогда мы прекратим обработку и вернем пользователю соответствующий ответ 404. Этот middleware прикреплен к событию `before` нашего Micro приложения
 
 ```php
 <?php
@@ -1960,7 +1960,7 @@ $app->get(
 
 # Обработка ошибок
 
-The `Phalcon\Mvc\Micro` application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
+The `Phalcon\Mvc\Micro` application also has an `error` method, which can be used to trap any errors that originate from exceptions. Следующий фрагмент кода показывает основное использование этой возможности:
 
 ```php
 <?php
