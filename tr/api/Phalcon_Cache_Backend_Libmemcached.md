@@ -1,6 +1,6 @@
 # Class **Phalcon\\Cache\\Backend\\Libmemcached**
 
-*uzanır* soyut sınıf [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)
+*extends* abstract class [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 *implements* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
 
@@ -51,11 +51,11 @@ $data = $cache->get("my-data");
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
-Phalcon\\Önbellek\\Arkayüz\\Memcache yapıcısı
+Phalcon\\Cache\\Backend\\Memcache constructor
 
 public **_connect** ()
 
-Memcached'a iç bağlantı oluştur
+Create internal connection to memcached
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
@@ -63,11 +63,11 @@ Returns a cached content
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Önbellek içeriğini dosya arkayüze depolar ve önyüzü durdurur
+Stores cached content into the file backend and stops the frontend
 
 public *boolean* **delete** (*int* | *string* $keyName)
 
-Önbellekten bir değeri anahtar ile siler
+Deletes a value from the cache by its key
 
 public **queryKeys** ([*mixed* $prefix])
 
@@ -83,15 +83,15 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 ```
 
-herkese açık **var** ([dizi</em> $anahtar adı], [*int* $ömür])
+public **exists** ([*string* $keyName], [*int* $lifetime])
 
 Checks if cache exists and it isn't expired
 
-herkese açık **artış** ([*dizi* $anahtar adı], [*karışık* $değer])
+public **increment** ([*string* $keyName], [*mixed* $value])
 
 Increment of given $keyName by $value
 
-herkese açık **azalma** ([*dizi* $anahtar adı], [*karışık* $değer])
+public **decrement** ([*string* $keyName], [*mixed* $value])
 
 Decrement of $keyName by given $value
 
@@ -120,15 +120,15 @@ public **getFrontend** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Pha
 
 ...
 
-herkese açık **Önyüz ayarla** (*karışık* $başlangıç aşaması) [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public **setFrontend** (*mixed* $frontend) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
-herkese açık **Seçenekleri al** () [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public **getOptions** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
-herkese açık **Seçenekler ayarla** (*karışık* $Seçenekler) [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public **setOptions** (*mixed* $options) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
