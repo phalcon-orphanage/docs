@@ -1,10 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Pagination</a> 
+      <a href="#overview">Ang Pagination</a> 
       <ul>
         <li>
-          <a href="#data-adapters">Data Adapters</a>
+          <a href="#data-adapters">Mga Adapter ng datos</a>
         </li>
         <li>
           <a href="#examples">Examples</a>
@@ -25,27 +25,27 @@
 
 <a name='overview'></a>
 
-# Pagination
+# Ang Pagination
 
-The process of pagination takes place when we need to present big groups of arbitrary data gradually. `Phalcon\Paginator` offers a fast and convenient way to split these sets of data into browsable pages.
+Ang proseso ng pagination ay mangyayari kapag kailangan naming magpakita ng mga malalaking grupo ng arbitrary na datos nang paunti-unti. `Phalcon\Paginator` nag-aalok ng mabilis at madaling paraan para hatiin ang mga hanay ng datos na ito sa mga na-browse na pahina.
 
 <a name='data-adapters'></a>
 
-## Data Adapters
+## Mga Adapter ng datos
 
-This component makes use of adapters to encapsulate different sources of data:
+Gumagamit ang komponent na ito ng mga adapter para i-encapsulate ang iba't ibang pinagkukunan ng datos:
 
-| Adapter                                     | Description                                                                                                                                                                     |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Paginator\Adapter\NativeArray`  | Use a PHP array as source data                                                                                                                                                  |
-| `Phalcon\Paginator\Adapter\Model`        | Use a `Phalcon\Mvc\Model\Resultset` object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
-| `Phalcon\Paginator\Adapter\QueryBuilder` | Use a `Phalcon\Mvc\Model\Query\Builder` object as source data                                                                                                               |
+| Adapter                                     | Description                                                                                                                                                                                                                                       |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Paginator\Adapter\NativeArray`  | Gamitin ang PHP na array bilang batayan ng datos                                                                                                                                                                                                  |
+| `Phalcon\Paginator\Adapter\Model`        | Gumamit ng `Phalcon\Mvc\Model\Resultset` bagay bilang pinagmulan ng datos. Sapagka't hindi sinusuportahan ng PDO ang mga scrollable na cursor ang adapter na ito ay hindi dapat gamitin para i-paginate ng isang malaking bilang ng mga rekord |
+| `Phalcon\Paginator\Adapter\QueryBuilder` | Gumamit ng isang `Phalcon\Mvc\Model\Query\Builder` bagay bilang pinagmulan ng datos                                                                                                                                                           |
 
 <a name='factory'></a>
 
-## Factory
+## Pabrika
 
-Loads Paginator Adapter class using `adapter` option
+Naglo-load ng klase ng Paginator Adapter gamit ang `adapter` na opsyon
 
 ```php
 <?php
@@ -70,25 +70,25 @@ $paginator = Factory::load($options);
 
 <a name='examples'></a>
 
-## Examples
+## Mga halimbawa
 
-In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
+Sa halimbawa sa ibaba, gagamitin ng paginator ang resulta ng isang query mula sa isang modelo bilang pinagmulan ng datos nito, at nililimitahan ang ipinapakitang datos sa sampung mga rekord sa bawat pahina:
 
 ```php
 <?php
 
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
-// Current page to show
-// In a controller/component this can be:
+// Kasalukuyang pahina na ipapakita
+// Sa isang controller/component ito ay maaaring:
 // $this->request->getQuery('page', 'int'); // GET
 // $this->request->getPost('page', 'int'); // POST
 $currentPage = (int) $_GET['page'];
 
-// The data set to paginate
+// Ang set ng datos para i-paginate
 $robots = Robots::find();
 
-// Create a Model paginator, show 10 rows by page starting from $currentPage
+// Gumawa ng isang Modelo na paginator, magpakita ng sampung hanay sa pamamagitan ng pahina na nagsisimula mula sa $currentPage
 $paginator = new PaginatorModel(
     [
         'data'  => $robots,
@@ -97,11 +97,11 @@ $paginator = new PaginatorModel(
     ]
 );
 
-// Get the paginated results
+// Kunin ang mga resulta ng na-paginate
 $page = $paginator->getPaginate();
 ```
 
-The `$currentPage` variable controls the page to be displayed. The `$paginator->getPaginate()` returns a `$page` object that contains the paginated data. It can be used for generating the pagination:
+Ang `$currentPage` na variable ay kinokontrol ang pahina na idi-display. Ang `$paginator->getPaginate()` ibinabalik ang isang `$page` na bagay na naglalaman ng na-paginate na datos. Maaari itong magamit para sa paglikha ng pagination:
 
 ```php
 <table>
@@ -120,7 +120,7 @@ The `$currentPage` variable controls the page to be displayed. The `$paginator->
 </table>
 ```
 
-The `$page` object also contains navigation data:
+Ang `$page` bagay ay naglalaman din ng datos ng nabigasyon:
 
 ```php
 <a href='/robots/search'>First</a>
@@ -133,9 +133,9 @@ The `$page` object also contains navigation data:
 
 <a name='using-adapters'></a>
 
-## Using Adapters
+## Gamit ang mga Adapter
 
-An example of the source data that must be used for each adapter:
+Isang halimbawa ng pinagmulan ng datos na dapat gamitin para sa bawat adapter:
 
 ```php
 <?php
@@ -144,7 +144,7 @@ use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
 use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
 
-// Passing a resultset as data
+// Pagpasa ng isang resultet bilang datos
 $paginator = new PaginatorModel(
     [
         'data'  => Products::find(),
@@ -153,7 +153,7 @@ $paginator = new PaginatorModel(
     ]
 );
 
-// Passing an array as data
+// Pagpasa ng isang array bilang datos
 $paginator = new PaginatorArray(
     [
         'data'  => [
@@ -168,7 +168,7 @@ $paginator = new PaginatorArray(
     ]
 );
 
-// Passing a QueryBuilder as data
+// Pagpasa ng isang QueryBuilder bilang datos
 
 $builder = $this->modelsManager->createBuilder()
     ->columns('id, name')
@@ -186,25 +186,25 @@ $paginator = new PaginatorQueryBuilder(
 
 <a name='page-attributes'></a>
 
-## Page Attributes
+## Mga Attribute ng Pahina
 
-The `$page` object has the following attributes:
+Ang `$page` bagay ay may sumusunod na mga attribute:
 
-| Attribute     | Description                                            |
-| ------------- | ------------------------------------------------------ |
-| `items`       | The set of records to be displayed at the current page |
-| `current`     | The current page                                       |
-| `before`      | The previous page to the current one                   |
-| `next`        | The next page to the current one                       |
-| `last`        | The last page in the set of records                    |
-| `total_pages` | The number of pages                                    |
-| `total_items` | The number of items in the source data                 |
+| Katangian     | Deskripsyon                                                 |
+| ------------- | ----------------------------------------------------------- |
+| `items`       | Ang hanay ng mga rekord na ipapakita sa kasalukuyang pahina |
+| `current`     | Ang kasalukuyang pahina                                     |
+| `before`      | Ang nakaraang pahina para sa kasalukuyan                    |
+| `next`        | Ang susunod na pahina sa kasalukuyan                        |
+| `last`        | Ang huling pahina sa hanay ng mga rekord                    |
+| `total_pages` | Ang bilang ng mga pahina                                    |
+| `total_items` | Ang bilang ng mga aytem sa pinagmulan ng datos              |
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Pagpapatupad ng iyong sariling mga adapter
 
-The `Phalcon\Paginator\AdapterInterface` interface must be implemented in order to create your own paginator adapters or extend the existing ones:
+Ang `Phalcon\Paginator\AdapterInterface` na interface ay dapat na ipatupad para makalikha ng iyong sariling adapter ng paginator o palawigin ang mga umiiral na:
 
 ```php
 <?php
@@ -221,14 +221,14 @@ class MyPaginator implements PaginatorInterface
     public function __construct($config);
 
     /**
-     * Set the current page number
+     * Itakda ang kasalukuyang numero ng pahina
      *
      * @param int $page
      */
     public function setCurrentPage($page);
 
     /**
-     * Returns a slice of the resultset to show in the pagination
+     * Binabalik ang isang slice ng resultet para maipakita sa pagbilang ng pahina
      *
      * @return stdClass
      */

@@ -31,7 +31,7 @@
     - [Depuración](/[[language]]/[[version]]/debug)
 - Núcleo 
     - [Índice del API](/[[language]]/[[version]]/api/index)
-    - [Application] 
+    - Aplicación 
         - [Completa](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
         - [CLI](/[[language]]/[[version]]/application-cli)

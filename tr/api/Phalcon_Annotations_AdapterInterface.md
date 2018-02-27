@@ -1,4 +1,4 @@
-# Interface **Phalcon\\Annotations\\AdapterInterface**
+# Arayüz **Phalcon\\Açıklamalar\\Uyarıcı Arayüzü<0></h1> 
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -6,7 +6,7 @@ This interface must be implemented by adapters in Phalcon\Annotations
 
 ## Methods
 
-abstract public **setReader** ([Phalcon\Annotations\ReaderInterface](/en/3.2/api/Phalcon_Annotations_ReaderInterface) $reader)
+soyut herkese açık **okuyucu ayarla** ([Phalcon\Açıklamalar\Okuyucu ara yüzü](/en/3.2/api/Phalcon_Annotations_ReaderInterface) $okuyucu)
 
 Sets the annotations parser
 

@@ -19,7 +19,7 @@
               <a href="#installation-windows">Windows</a> 
               <ul>
                 <li>
-                  <a href="#installation-windows-system-path">Adding PHP and DevTools to your system PATH</a>
+                  <a href="#installation-windows-system-path">Добавление PHP и DevTools в системную переменную PATH</a>
                 </li>
               </ul>
             </li>
@@ -34,25 +34,25 @@
 
 # Установка Phalcon Developer Tools
 
-These steps will guide you through the process of installing Phalcon Developer Tools for Linux, macOS and Windows.
+Эти шаги помогут вам установить Phalcon Developer Tools в Linux, macOS и Windows.
 
 <a name='prerequisites'></a>
 
 ## Требования
 
-The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](/[[language]]/[[version]]//installation) section for instructions.
+The Phalcon extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](/[[language]]/[[version]]//installation) section for instructions.
 
 <a name='installation'></a>
 
 ## Установка
 
-You can download a cross platform package containing the developer tools from from [Github](https://github.com/phalcon/phalcon-devtools).
+Вы можете скачать кроссплатформенный пакет инструментов разработчиков используя [публичный репозиторий на Github](https://github.com/phalcon/phalcon-devtools).
 
 <a name='installation-linux'></a>
 
 ### Linux
 
-Open a terminal and type the command below:
+Откройте терминал и введите следующую команду:
 
 ```bash
 git clone git://github.com/phalcon/phalcon-devtools.git
@@ -60,7 +60,7 @@ git clone git://github.com/phalcon/phalcon-devtools.git
 
 ![](/images/content/devtools-linux-1.png)
 
-Then enter the folder where the tools were cloned and execute `. ./phalcon.sh`, (don't forget the dot at beginning of the command):
+Затем откройте папку, в которую были скопированы инструменты, и выполните команду `. ./phalcon.sh`, (не забудьте точку в начале команды):
 
 ```bash
 cd phalcon-devtools/
@@ -69,7 +69,7 @@ cd phalcon-devtools/
 
 ![](/images/content/devtools-linux-2.png)
 
-Create a symbolic link to the phalcon.php script:
+Создайте ссылку на файл phalcon.php:
 
 ```bash
 ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
@@ -80,7 +80,7 @@ chmod ugo+x /usr/bin/phalcon
 
 ### macOS
 
-Open a terminal and type the command below:
+Откройте терминал и введите следующую команду:
 
 ```bash
 git clone git://github.com/phalcon/phalcon-devtools.git
@@ -88,7 +88,7 @@ git clone git://github.com/phalcon/phalcon-devtools.git
 
 ![](/images/content/devtools-mac-1.png)
 
-Then enter the folder where the tools were cloned and execute `. ./phalcon.sh`, (don't forget the dot at beginning of the command):
+Затем откройте папку, в которую были скопированы инструменты, и выполните команду `. ./phalcon.sh`, (не забудьте точку в начале команды):
 
 ```bash
 cd phalcon-devtools/
@@ -97,7 +97,7 @@ cd phalcon-devtools/
 
 ![](/images/content/devtools-mac-2.png)
 
-Create a symbolink link to the phalcon.php script:
+Create a symbolic link to the phalcon.php script:
 
 ```bash
 ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
@@ -108,48 +108,48 @@ chmod ugo+x /usr/bin/phalcon
 
 ### Windows
 
-On the Windows platform, you need to configure the system `PATH` to include Phalcon tools as well as the PHP executable. If you download the Phalcon tools as a zip archive, extract it on any path of your local drive i.e. `c:\phalcon-tools`. You will need this path in the steps below. Edit the file `phalcon.bat` by right clicking on the file and selecting `Edit`:
+На платформе Windows вам необходимо настроить системную переменную `PATH` для запуска инструментов разработчика и выполнения PHP. Если вы скачали инструменты разработчика в виде ZIP-архива, то его необходимо распаковать, например в `c:\phalcon-tools`. Запомните этот каталог, путь к нему понадобится ниже. Отредактируйте файл `phalcon.bat`, для этого кликните правой кнопкой мыши и выберите `Изменить`:
 
 ![](/images/content/devtools-windows-1.png)
 
-Change the path to the one you installed the Phalcon tools (`set PTOOLSPATH=C:\phalcon-tools`):
+Измените путь на тот, по которому были установлены инструменты разработчика Phalcon (`set PTOOLSPATH=C:\phalcon-tools`):
 
 ![](/images/content/devtools-windows-2.png)
 
-Save the changes.
+Сохраните изменения.
 
 <a name='installation-windows-system-path'></a>
 
 #### Добавление PHP и Devtools в системную переменную PATH
 
-Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file `php.exe` and copy its path. For instance, using WAMPP you will locate the PHP executable in a location like this: `C:\wamp\bin\php\<php version>\php.exe` (where `<php version>` is the version of PHP that WAMPP comes bundled with).
+Поскольку инструменты разработчика написаны на PHP, его необходимо установить на ваш компьютер. В зависимости от того, как был установлен PHP, его исполняемый файл может быть в разных местах. Найдите файл `php.exe` и запомните (скопируйте) путь к нему. Например, при использовании WAMPP, путь к PHP может быть похож на: `C:\wamp\bin\php\<php version>\php.exe` (где `<php version>` — версия PHP используемая в WAMPP).
 
-From the Windows start menu, right mouse click on the `Computer` icon and select `Properties`:
+В меню Пуск правой кнопкой кликните на значок `Computer` и выберите `Properties`:
 
 ![](/images/content/devtools-windows-3.png)
 
-Click the `Advanced` tab and then the button `Environment Variables`:
+Выберите вкладку `Advanced` и нажмите кнопку `Environment Variables`:
 
 ![](/images/content/devtools-windows-4.png)
 
-At the bottom, look for the section `System variables` and edit the variable `Path`:
+В нижней части диалога обратите внимание на раздел `System variables` и отредактируйте переменную `Path`:
 
 ![](/images/content/devtools-windows-5.png)
 
-Be very careful on this step! You need to append at the end of the long string the path where your `php.exe` was located and the path where Phalcon tools are installed. Use the `;` character to separate the different paths in the variable:
+Будьте осторожны на этом шаге! В конце этой длинной строки вам надо будет добавить путь к установленному файлу `php.exe` и путь к установленным инструментам разработчика Phalcon. Используйте символ `;` для разделения путей в этой строке:
 
 ![](/images/content/devtools-windows-6.png)
 
-Accept the changes made by clicking `OK` and close the dialogs opened. From the start menu click on the option `Run`. If you can't find this option, press `Windows Key` + `R`.
+Примените изменения, нажав кнопку `OK` и закройте диалог. В меню Пуск выберите поле `Run`. If you can't find this option, press <kbd>Windows</kbd> + <kbd>R</kbd>.
 
 ![](/images/content/devtools-windows-7.png)
 
-Type `cmd` and press enter to open the windows command line utility:
+Type `cmd` and press <kbd>Enter</kbd> to open the Windows command line utility:
 
 ![](/images/content/devtools-windows-8.png)
 
-Type the commands `php -v` and `phalcon` and you will see something like this:
+Введите команды `php -v` и `phalcon`. Вы должны увидеть что-то вроде этого: 
 
 ![](/images/content/devtools-windows-9.png)
 
-Congratulations you now have Phalcon tools installed!
+Поздравляем, инструменты разработчика Phalcon установлены!

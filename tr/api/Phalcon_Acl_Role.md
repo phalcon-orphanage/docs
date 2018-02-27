@@ -1,6 +1,6 @@
-# Class **Phalcon\\Acl\\Role**
+# Phalcon sınıfı **\\Acl\\rol**
 
-*implements* [Phalcon\Acl\RoleInterface](/en/3.2/api/Phalcon_Acl_RoleInterface)
+*uygulamalar* [Phalcon\Acl\Rol ara yüzü](/en/3.2/api/Phalcon_Acl_RoleInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/role.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -8,18 +8,18 @@ This class defines role entity and its description
 
 ## Methods
 
-public **getName** ()
+herkese açık **isim al** ()
 
 Role name
 
-public **__toString** ()
+herkese açık **__sırala** ()
 
 Role name
 
-public **getDescription** ()
+herkese açık **Açıklama al** ()
 
 Role description
 
-public **__construct** (*mixed* $name, [*mixed* $description])
+herkese açık **__düzenle** (*karışık* $isim, [*karışık* $açıklama])
 
-Phalcon\\Acl\\Role constructor
+Phalcon\\Acl\\Rol oluşturucusu

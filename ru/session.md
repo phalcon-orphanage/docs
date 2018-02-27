@@ -1,33 +1,33 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Storing data in the Session</a> 
+      <a href="#overview">Хранение данных в сессии</a> 
       <ul>
         <li>
-          <a href="#start">Starting the Session</a>
+          <a href="#start">Запуск сессии</a>
           <ul>
             <li>
-              <a href="#start-factory">Factory</a>
+              <a href="#start-factory">Фабрика</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#store">Storing/Retrieving data in Session</a>
+          <a href="#store">Получение и хранение данных в сессии</a>
         </li>
         <li>
-          <a href="#remove-destroy">Removing/Destroying Sessions</a>
+          <a href="#remove-destroy">Удаление/очистка сессий</a>
         </li>
         <li>
-          <a href="#data-isolation">Isolating Session Data between Applications</a>
+          <a href="#data-isolation">Изоляция данных сеанса между приложениями</a>
         </li>
         <li>
-          <a href="#bags">Session Bags</a>
+          <a href="#bags">Наборы сессий</a>
         </li>
         <li>
-          <a href="#data-persistency">Persistent Data in Components</a>
+          <a href="#data-persistency">Сохранение данных в компонентах</a>
         </li>
         <li>
-          <a href="#custom-adapters">Implementing your own adapters</a>
+          <a href="#custom-adapters">Реализация собственных адаптеров</a>
         </li>
       </ul>
     </li>
@@ -36,28 +36,28 @@
 
 <a name='overview'></a>
 
-# Storing data in the Session
+# Хранение данных в сессии
 
-The session component provides object-oriented wrappers to access session data.
+Компонент сессии предоставляет объектно-ориентированный интерфейс для работы с сессиями.
 
-Reasons to use this component instead of raw-sessions:
+Причины использования этого компонента, а не обычных сессий:
 
-* You can easily isolate session data across applications on the same domain
-* Intercept where session data is set/get in your application
-* Change the session adapter according to the application needs
+* Вы можете легко изолировать сессии данных в различных приложениях на одном домене
+* Можно перехватить места установки/получения данных в приложении
+* Использование адаптера сессий, оптимального для текущего приложения
 
 <a name='start'></a>
 
-## Starting the Session
+## Запуск сессии
 
-Some applications are session-intensive, almost any action that performs requires access to session data. There are others who access session data casually. Thanks to the service container, we can ensure that the session is accessed only when it's clearly needed:
+Некоторые приложения активно используют в своей работе сессии, используя их в каждом действии. Другие наоборот, используют сессии мало и не часто. Благодаря использованию контейнера сервисов, мы можем гарантировать, что запуск сессий будет произведён только по необходимости:
 
 ```php
 <?php
 
 use Phalcon\Session\Adapter\Files as Session;
 
-// Start the session the first time when some component request the session service
+// Сессии запустятся один раз, при первом обращении к объекту
 $di->setShared(
     'session',
     function () {
@@ -72,9 +72,9 @@ $di->setShared(
 
 <a name='start-factory'></a>
 
-## Factory
+## Фабрика
 
-Loads Session Adapter class using `adapter` option
+Загружает адаптер используя параметр `adapter`.
 
 ```php
 <?php
@@ -96,9 +96,9 @@ $session = Factory::load($options);
 
 <a name='store'></a>
 
-## Storing/Retrieving data in Session
+## Получение и хранение данных в сессии
 
-From a controller, a view or any other component that extends `Phalcon\Di\Injectable` you can access the session service and store items and retrieve them in the following way:
+Из контроллера, представления или другого компонента расширяющего `Phalcon\Di\Injectable` можно получить доступ к сессиям и работать с ними следующим образом:
 
 ```php
 <?php
@@ -109,15 +109,15 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        // Set a session variable
+        // Установка значения сессии
         $this->session->set('user-name', 'Michael');
     }
 
     public function welcomeAction()
     {
-        // Check if the variable is defined
+        // Проверка наличия переменной сессии
         if ($this->session->has('user-name')) {
-            // Retrieve its value
+            // Получение значения
             $name = $this->session->get('user-name');
         }
     }
@@ -127,9 +127,9 @@ class UserController extends Controller
 
 <a name='remove-destroy'></a>
 
-## Removing/Destroying Sessions
+## Удаление/очистка сессий
 
-It's also possible remove specific variables or destroy the whole session:
+Таким же способом можно удалить переменную сессии, или целиком очистить сессию:
 
 ```php
 <?php
@@ -140,13 +140,13 @@ class UserController extends Controller
 {
     public function removeAction()
     {
-        // Remove a session variable
+        // Удаление переменной сессии
         $this->session->remove('user-name');
     }
 
     public function logoutAction()
     {
-        // Destroy the whole session
+        // Полная очистка сессии
         $this->session->destroy();
     }
 }
@@ -154,20 +154,20 @@ class UserController extends Controller
 
 <a name='data-isolation'></a>
 
-## Isolating Session Data between Applications
+## Изоляция данных сеанса между приложениями
 
-Sometimes a user can use the same application twice, on the same server, in the same session. Surely, if we use variables in session, we want that every application have separate session data (even though the same code and same variable names). To solve this, you can add a prefix for every session variable created in a certain application:
+Иногда пользователь может запускать одно и тоже приложение несколько раз, на одном и том же сервере, в одно время. Естественно, используя переменные сессий нам бы хотелось, чтобы все приложения получали доступ к разным сессиям (хотя в одинаковых приложениях и код одинаковый и названия переменных). Для решения этой проблемы можно использовать префикс для переменных сессий, разный для разных приложений:
 
 ```php
 <?php
 
 use Phalcon\Session\Adapter\Files as Session;
 
-// Isolating the session data
+// Изоляция данных сессий
 $di->set(
     'session',
     function () {
-        // All variables created will prefixed with 'my-app-1'
+        // Все переменные этого приложения будет иметь префикс "my-app-1"
         $session = new Session(
             [
                 'uniqueId' => 'my-app-1',
@@ -181,13 +181,13 @@ $di->set(
 );
 ```
 
-Adding a unique ID is not necessary.
+Добавлять префикс вручную во время установки или чтения сессий не обязательно.
 
 <a name='bags'></a>
 
-## Session Bags
+## Наборы сессий
 
-`Phalcon\Session\Bag` is a component that helps separating session data into `namespaces`. Working by this way you can easily create groups of session variables into the application. By only setting the variables in the `bag`, it's automatically stored in session:
+Компонент `Phalcon\Session\Bag` (Sessions Bags, дословно "Мешки с сессиями") позволяет работать с сессиями разделяя их по пространствам имён. Работая таким образом, вы можете легко создавать группы переменных сессии в приложении. Установив значение переменной в сессионном объекте, это значение автоматически сохранится в сессии:
 
 ```php
 <?php
@@ -204,9 +204,9 @@ $user->age  = 22;
 
 <a name='data-persistency'></a>
 
-## Persistent Data in Components
+## Сохранение данных в компонентах
 
-Controller, components and classes that extends `Phalcon\Di\Injectable` may inject a `Phalcon\Session\Bag`. This class isolates variables for every class. Thanks to this you can persist data between requests in every class in an independent way.
+Контроллеры, компоненты и классы расширяющие `Phalcon\Di\Injectable` могут работать с `Phalcon\Session\Bag` напрямую. Компонент в таком случае изолирует данные для каждого класса. Благодаря этому вы можете сохранять данные между запросами, используя их как обычные переменные.
 
 ```php
 <?php
@@ -217,20 +217,20 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        // Create a persistent variable 'name'
+        // Создаётся постоянная (persistent) переменная "name"
         $this->persistent->name = 'Laura';
     }
 
     public function welcomeAction()
     {
         if (isset($this->persistent->name)) {
-            echo 'Welcome, ', $this->persistent->name;
+            echo 'Привет, ', $this->persistent->name;
         }
     }
 }
 ```
 
-In a component:
+И в компоненте:
 
 ```php
 <?php
@@ -241,7 +241,7 @@ class Security extends Component
 {
     public function auth()
     {
-        // Create a persistent variable 'name'
+        // Создаётся постоянная (persistent) переменная "name"
         $this->persistent->name = 'Laura';
     }
 
@@ -252,12 +252,12 @@ class Security extends Component
 }
 ```
 
-The data added to the session (`$this->session`) are available throughout the application, while persistent (`$this->persistent`) can only be accessed in the scope of the current class.
+Данные, добавленные непосредственно в сессию (`$this->session`) доступны во всём приложении, в то время как persistent (`$this->persistent`) переменные доступны только внутри своего текущего класса.
 
 <a name='custom-adapters'></a>
 
-## Implementing your own adapters
+## Реализация собственных адаптеров
 
-The `Phalcon\Session\AdapterInterface` interface must be implemented in order to create your own session adapters or extend the existing ones.
+Для создания адаптера необходимо реализовать интерфейс `Phalcon\Session\AdapterInterface`, или использовать наследование от готового с доработкой необходимой логики.
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter)
+Существует еще несколько типов адаптеров для работы с сессиями. Их можно получить в "Инкубаторе" — [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter).

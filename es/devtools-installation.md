@@ -40,7 +40,7 @@ Estos pasos le guiarán por el proceso de instalación de las Herramientas del D
 
 ## Prerequisitos
 
-La extensión de Phalcon PHP, es necesaria para ejecutar las Herramientas del Desarrollador de Phalcon. Si no la ha instalado aún, por favor consulte la sección [instalación](/[[language]]/[[version]]//installation) para obtener las instrucciones.
+La extensión de Phalcon, es necesaria para ejecutar las Herramientas del Desarrollador de Phalcon. Si no la ha instalado aún, por favor consulte la sección [instalación](/[[language]]/[[version]]//installation) para obtener las instrucciones.
 
 <a name='installation'></a>
 
@@ -140,11 +140,11 @@ En la parte inferior, busque la sección `Variables del Sistema` y edite la vari
 
 ![](/images/content/devtools-windows-6.png)
 
-Acepte los cambios haciendo clic en `Aceptar` y cierre los cuadros de diálogo abiertos. Desde el inicio menú haga clic en la opción `Ejecutar`. Si no puede encontrar esta opción, presione la `Tecla de Windows` + `R`.
+Acepte los cambios haciendo clic en `Aceptar` y cierre los cuadros de diálogo abiertos. Desde el inicio menú haga clic en la opción `Ejecutar`. Si no puede encontrar esta opción, presione la <kbd>Tecla de Windows</kbd> + <kbd>R</kbd>.
 
 ![](/images/content/devtools-windows-7.png)
 
-Debe teclear `cmd` y luego presione enter para abrir la utilidad de línea de comandos de windows:
+Debe teclear `cmd` y luego presione <kbd>Enter</kbd> para abrir la utilidad de línea de comandos de Windows:
 
 ![](/images/content/devtools-windows-8.png)
 

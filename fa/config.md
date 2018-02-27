@@ -6,22 +6,22 @@
           <a href="#factory">Factory</a>
         </li>
         <li>
-          <a href="#native-arrays">Native Arrays</a>
+          <a href="#native-arrays">آرایه های محلی</a>
         </li>
         <li>
-          <a href="#file-adapter">File Adapters</a>
+          <a href="#file-adapter">فایل آداپتور</a>
         </li>
         <li>
-          <a href="#ini-files">Reading INI Files</a>
+          <a href="#ini-files">خواندن فایل INI</a>
         </li>
         <li>
-          <a href="#merging">Merging Configurations</a>
+          <a href="#merging">ادغام تنظیمات</a>
         </li>
         <li>
-          <a href="#nested-configuration">Nested Configuration</a>
+          <a href="#nested-configuration">پیکربندی های تو در تو</a>
         </li>
         <li>
-          <a href="#injecting-into-di">Injecting Configuration Dependency</a>
+          <a href="#injecting-into-di">اعمال پیگربندی ها</a>
         </li>
       </ul>
     </li>
@@ -34,7 +34,7 @@
 
 `Phalcon\Config` is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
-Values can be obtained from `Phalcon\Config` as follows:
+مقادیر پیگربندی شده را میتوان از `Phalcon\Config` به روش زیر دریافت کرد:
 
 ```php
 <?php
@@ -78,9 +78,9 @@ $config = Factory::load($options);
 
 <a name='native-arrays'></a>
 
-## Native Arrays
+## آرایه های محلی
 
-The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
+در این مثال نحوه تبدیل آرایه های بومی به اشیاء `Phalcon\Config` را نشان میدهد. از آنجا که در این روش هیچ فایلی خوانده نشده است به همین علت میتواند بهترین عملکرد را داشته باشد.
 
 ```php
 <?php
@@ -108,9 +108,12 @@ $config = new Config($settings);
 echo $config->app->controllersDir, "\n";
 echo $config->database->username, "\n";
 echo $config->mysetting, "\n";
+ 
+Text
+Xpath: /pre[2]/code;
 ```
 
-If you want to better organize your project you can save the array in another file and then read it.
+برای سازماندهی بهتر پروژه تان میتوانید آرایه را در فایل دیگری ذخیره کنید و سپس آن را فراخوانی کنید.
 
 ```php
 <?php
@@ -124,9 +127,9 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## File Adapters
+## فایل آداپتور
 
-The adapters available are:
+آداپتورهای موجود عبارتند از:
 
 | Class                            | Description                                                                                      |
 | -------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -137,34 +140,23 @@ The adapters available are:
 
 <a name='ini-files'></a>
 
-## Reading INI Files
+## خواندن فایل INI
 
-Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
+یک از روش های رایج ذخیره سازی تنظیمات استفاده از فایل های با پسوند ini است. `Phalcon\Config` از تابع بهینه سازی شده `parse_ini_file` در php استفاده می کند برای خواندن فایل های ini. برای دسترسی آسان تر هر قسمت از تنظیمات، تنظیمات را به یک زیر تنظیمات از همان قسمت در می آورد.
 
 ```ini
-[database]
-adapter  = Mysql
-host     = localhost
-username = scott
-password = cheetah
-dbname   = test_db
-
 [phalcon]
 controllersDir = '../app/controllers/'
-modelsDir      = '../app/models/'
-viewsDir       = '../app/views/'
+modelsDir = '../app/models/'
+viewsDir = '../app/views/'
 
 [models]
-metadata.adapter  = 'Memory'
+metadata.adapter = 'Memory'
 ```
 
-You can read the file as follows:
+میتوانید به روش زیر فایل ini خود را بخوانید:
 
 ```php
-<?php
-
-use Phalcon\Config\Adapter\Ini as ConfigIni;
-
 $config = new ConfigIni('path/config.ini');
 
 echo $config->phalcon->controllersDir, "\n";
@@ -174,9 +166,9 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## Merging Configurations
+## ادغام تنظیمات
 
-`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
+`Phalcon\Config` می تواند تنظیمات یک شئ را با شئ دیگر ادغام کند. به صورتی که تنظیمات جدید اضافه و تنظیمات موجود بروزرسانی می شوند.
 
 ```php
 <?php
@@ -186,7 +178,7 @@ use Phalcon\Config;
 $config = new Config(
     [
         'database' => [
-            'host'   => 'localhost',
+            'host' => 'localhost',
             'dbname' => 'test_db',
         ],
         'debug' => 1,
@@ -196,20 +188,18 @@ $config = new Config(
 $config2 = new Config(
     [
         'database' => [
-            'dbname'   => 'production_db',
+            'dbname' => 'production_db',
             'username' => 'scott',
             'password' => 'secret',
         ],
         'logging' => 1,
-    ]
+    ] 
 );
-
 $config->merge($config2);
-
 print_r($config);
 ```
 
-The above code produces the following:
+نتیجه کد بالا به صورت زیر است:
 
 ```bash
 Phalcon\Config Object
@@ -230,9 +220,9 @@ There are more adapters available for this components in the [Phalcon Incubator]
 
 <a name='nested-configuration'></a>
 
-## Nested Configuration
+## پیکربندی های تو در تو
 
-You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. Let's look at an example:
+You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. به مثال زیر توجه کنید:
 
 ```php
 <?php
@@ -302,7 +292,7 @@ function config() {
 
 <a name='injecting-into-di'></a>
 
-## Injecting Configuration Dependency
+## اعمال پیگربندی ها
 
 You can inject your configuration to the controller allowing us to use `Phalcon\Config` inside `Phalcon\Mvc\Controller`. To be able to do that, you have to add it as a service in the Dependency Injector container. Add following code inside your bootstrap file:
 
@@ -325,7 +315,7 @@ $di->set(
 );
 ```
 
-Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
+بعد از اجرای کد بالا شما میتواند درکنترلر ها به پیکربندی خود از طریق `config` دسترسی داشته باشید. مانند کد زیر:
 
 ```php
 <?php

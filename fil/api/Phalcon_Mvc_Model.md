@@ -488,17 +488,17 @@ pampublikong **fireEvent** (*mixed* $eventName)
 
 Isisante ang isang pangyayari, implicitly ay tinatawag na pag-uugali at mga tagapakinig sa tagapamahala ng mga pangyayari ay maabisuhan
 
-public **fireEventCancel** (*mixed* $eventName)
+pampublikong **fireEventCancel** (*mixed* $eventName)
 
-Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
+Isisante ang isang pangyayari, implicitly ay tinatawag na pag-uugali at mga tagapakinig sa tagapamahala ng mga pangyayari ay ipinabatid Ang pamamaraang ito ay hindi humihinto kung ang isa sa callback/mga tagapakinig ay bumabalik sa boolean na hindi tama
 
-protected **_cancelOperation** ()
+protektadong **_cancelOperation** ()
 
-Cancel the current operation
+Kanselahin ang opersayon ng kasalukuyan
 
-public **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](/en/3.2/api/Phalcon_Mvc_Model_MessageInterface) $message)
+pampublikong **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](/en/3.2/api/Phalcon_Mvc_Model_MessageInterface) $message)
 
-Appends a customized message on the validation process
+Ilakip ang isang nai-customize na mensahe sa proseso ng pagpapatunay
 
 ```php
 <?php
@@ -522,9 +522,9 @@ class Robots extends Model
 
 ```
 
-protected **validate** ([Phalcon\ValidationInterface](/en/3.2/api/Phalcon_ValidationInterface) $validator)
+protektadong **validate** ([Phalcon\ValidationInterface](/en/3.2/api/Phalcon_ValidationInterface) $validator)
 
-Executes validators on every validation call
+Nagpapatupad sa mga validator sa bawat tawag ng pagpapatunay
 
 ```php
 <?php
@@ -557,9 +557,9 @@ class Subscriptors extends Model
 
 ```
 
-public **validationHasFailed** ()
+pampublikong **validationHasFailed** ()
 
-Check whether validation process has generated any messages
+Siyasatin kung ang proseso ng pagpapatunay ay mayroong nabuo sa kahit anong mga menshahe
 
 ```php
 <?php
@@ -592,9 +592,9 @@ class Subscriptors extends Model
 
 ```
 
-public **getMessages** ([*mixed* $filter])
+pampublikong **getMessages** ([*mixed* $filter])
 
-Returns array of validation messages
+Ibinabalik ng array ang pagpapatunay ng mga mensahe
 
 ```php
 <?php
@@ -619,45 +619,45 @@ if ($robot->save() === false) {
 
 ```
 
-final protected **_checkForeignKeysRestrict** ()
+kahuli-hulihang protektado **_checkForeignKeysRestrict** ()
 
-Reads "belongs to" relations and check the virtual foreign keys when inserting or updating records to verify that inserted/updated values are present in the related entity
+Bumabasa ng "nabibilang sa" ng mga relasyon at sinisiyasat ang virtual na dayuhan ng mga key kapag magpapasok o mag-a-update ng mga rekord upang maberipika na ang ipinasok/na-update na mga mahahalaga ay naroroon sa may kaugnayang entidad
 
-final protected **_checkForeignKeysReverseCascade** ()
+kahuli-hulihang protektado **_checkForeignKeysReverseCascade** ()
 
-Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (cascade) when deleting records
+Binabasa parehas ang "hasMany" at "hasOne" na mga relasyon at sinisiyasat ang virtual na dayuhang mga key (kaskad) kapa nagtatanggal ng mga rekord
 
-final protected **_checkForeignKeysReverseRestrict** ()
+kahuli-hulihang protektado **_checkForeignKeysReverseRestrict** ()
 
-Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (restrict) when deleting records
+Binabasa parehas ang "hasMany" at "hasOne" na mga relasyon at sinisiyasat ang virtual ba dayuhang mga key (takdaan) tuwing nagtatanggal ng mga rekord
 
-protected **_preSave** ([Phalcon\Mvc\Model\MetaDataInterface](/en/3.2/api/Phalcon_Mvc_Model_MetaDataInterface) $metaData, *mixed* $exists, *mixed* $identityField)
+protektadong **_preSave** ([Phalcon\Mvc\Model\MetaDataInterface](/en/3.2/api/Phalcon_Mvc_Model_MetaDataInterface) $metaData, *mixed* $exists, *mixed* $identityField)
 
-Executes internal hooks before save a record
+Ipatutupad ang mga hook na panloob bago i-seyb ang isang rekord
 
-protected **_postSave** (*mixed* $success, *mixed* $exists)
+protektadong **_postSave** (*mixed* $success, *mixed* $exists)
 
-Executes internal events after save a record
+Ipatutupad ang panloob na mga pangyayari matapos i-seyb ang isang rekord
 
-protected *boolean* **_doLowInsert** ([Phalcon\Mvc\Model\MetaDataInterface](/en/3.2/api/Phalcon_Mvc_Model_MetaDataInterface) $metaData, [Phalcon\Db\AdapterInterface](/en/3.2/api/Phalcon_Db_AdapterInterface) $connection, *string* | *array* $table, *boolean* | *string* $identityField)
+protektadong *boolean* **_doLowInsert** ([Phalcon\Mvc\Model\MetaDataInterface](/en/3.2/api/Phalcon_Mvc_Model_MetaDataInterface) $metaData, [Phalcon\Db\AdapterInterface](/en/3.2/api/Phalcon_Db_AdapterInterface) $connection, *string* | *array* $table, *boolean* | *string* $identityField)
 
-Sends a pre-build INSERT SQL statement to the relational database system
+Magpapadala ng isang pre-build na INSERT SQL na paglalahad sa pamanggit na sistema ng database
 
-protected *boolean* **_doLowUpdate** ([Phalcon\Mvc\Model\MetaDataInterface](/en/3.2/api/Phalcon_Mvc_Model_MetaDataInterface) $metaData, [Phalcon\Db\AdapterInterface](/en/3.2/api/Phalcon_Db_AdapterInterface) $connection, *string* | *array* $table)
+protektadong *boolean* **_doLowUpdate** ([Phalcon\Mvc\Model\MetaDataInterface](/en/3.2/api/Phalcon_Mvc_Model_MetaDataInterface) $metaData, [Phalcon\Db\AdapterInterface](/en/3.2/api/Phalcon_Db_AdapterInterface) $connection, *string* | *array* $table)
 
-Sends a pre-build UPDATE SQL statement to the relational database system
+Magpapadala ng isang pre-build na UPDATE SQL na paglalahad sa pamanggit na sistema ng database
 
-protected *boolean* **_preSaveRelatedRecords** ([Phalcon\Db\AdapterInterface](/en/3.2/api/Phalcon_Db_AdapterInterface) $connection, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $related)
+protektadong *boolean* **_preSaveRelatedRecords** ([Phalcon\Db\AdapterInterface](/en/3.2/api/Phalcon_Db_AdapterInterface) $connection, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $related)
 
-Saves related records that must be stored prior to save the master record
+Magsi-seyb ng may kaugnayan sa mga rekord na dapat nakatagong priyor para ma-seyb ang master ng rekord
 
-protected *boolean* **_postSaveRelatedRecords** ([Phalcon\Db\AdapterInterface](/en/3.2/api/Phalcon_Db_AdapterInterface) $connection, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $related)
+protektadong *boolean* **_postSaveRelatedRecords** ([Phalcon\Db\AdapterInterface](/en/3.2/api/Phalcon_Db_AdapterInterface) $connection, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $related)
 
-Save the related records assigned in the has-one/has-many relations
+I-seyb ang may kaugnayang mga rekord na itinalaga sa has-one/has-many na mga relasyon
 
-public *boolean* **save** ([*array* $data], [*array* $whiteList])
+pampublikong *boolean* **save** ([*array* $data], [*array* $whiteList])
 
-Inserts or updates a model instance. Returning true on success or false otherwise.
+Magpapasok o magpapabago ang isang modelo ng halimbawa. Ibabalik sa totoong pagtatagumpay o mali sa ibang paraan.
 
 ```php
 <?php
@@ -680,9 +680,9 @@ $robot->save();
 
 ```
 
-public **create** ([*mixed* $data], [*mixed* $whiteList])
+pampublikong **create** ([*mixed* $data], [*mixed* $whiteList])
 
-Inserts a model instance. If the instance already exists in the persistence it will throw an exception Returning true on success or false otherwise.
+Magpapasok ng isang modelo ng halimbawa. Kung ang halimbawa ay umiiiral na sa pagtitiyaga ay ito-throw ito sa isang eksepsyon Ibabalik sa totoong pagtatagumpay o mali sa ibang paraan.
 
 ```php
 <?php
@@ -709,9 +709,9 @@ $robot->create(
 
 ```
 
-public **update** ([*mixed* $data], [*mixed* $whiteList])
+pampublikong **update** ([*mixed* $data], [*mixed* $whiteList])
 
-Updates a model instance. If the instance doesn't exist in the persistence it will throw an exception Returning true on success or false otherwise.
+Ma-a-update ang isang modelo ng halimbawa. Kung ang halimbawa ay hindi umiiral sa pagtitiyaga ay ito-throw nito ang isang eksepsyon Ibabalik sa totoong pagtatagumpay o mali sa ibang paraan.
 
 ```php
 <?php
@@ -725,9 +725,9 @@ $robot->update();
 
 ```
 
-public **delete** ()
+pampublikong **delete** ()
 
-Deletes a model instance. Returning true on success or false otherwise.
+Tatanggalin ang isang modelo. Babalik sa totoong pagtatagumpay o mali sa ibang paraan.
 
 ```php
 <?php
@@ -744,21 +744,21 @@ foreach ($robots as $robot) {
 
 ```
 
-public **getOperationMade** ()
+pampublikong **getOperationMade** ()
 
-Returns the type of the latest operation performed by the ORM Returns one of the OP_* class constants
+Ibabalik ang tipo ng pinakabagong operasyon na isinagawa sa pamamagitan ng ORM Ibabalik ang isa sa OP_* na klase ng mga constant
 
-public **refresh** ()
+pampublikong **refresh** ()
 
-Refreshes the model attributes re-querying the record from the database
+Papanariwain ang modelo ng mga katangian na muling magtanong ang rekord mula sa database
 
-public **skipOperation** (*mixed* $skip)
+pampublikong **skipOperation** (*mixed* $skip)
 
-Skips the current operation forcing a success state
+Laktawan ang kasalukuyang operasyong pinipilit sa isang matagumpay na estado
 
-public **readAttribute** (*mixed* $attribute)
+pampublikong **readAttribute** (*mixed* $attribute)
 
-Reads an attribute value by its name
+Binabasa ang halaga ng isang katangian sa pamamagitan ng pangalan nito
 
 ```php
 <?php
@@ -767,9 +767,9 @@ echo $robot->readAttribute("name");
 
 ```
 
-public **writeAttribute** (*mixed* $attribute, *mixed* $value)
+pampublikong **writeAttribute** (*mixed* $attribute, *mixed* $value)
 
-Writes an attribute value by its name
+Nagsusulat ang halaga ng isang katangian sa pamamagitan ng pangalan nito
 
 ```php
 <?php
@@ -778,9 +778,9 @@ $robot->writeAttribute("name", "Rosey");
 
 ```
 
-protected **skipAttributes** (*array* $attributes)
+protektadong **skipAttributes** (*array* $attributes)
 
-Sets a list of attributes that must be skipped from the generated INSERT/UPDATE statement
+Magtatakda ng isang listahan ng mga katangian na dapat na nalaktwan mula sa nabuong INSERT/UPDATE ng pahayag
 
 ```php
 <?php
@@ -799,9 +799,9 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-protected **skipAttributesOnCreate** (*array* $attributes)
+protektadong **skipAttributesOnCreate** (*array* $attributes)
 
-Sets a list of attributes that must be skipped from the generated INSERT statement
+Magtatakda ng isang listahan ng mga katangian na dapat ay nalaktawan mula sa nabuong INSERT ng pahayag
 
 ```php
 <?php
@@ -820,9 +820,9 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-protected **skipAttributesOnUpdate** (*array* $attributes)
+protektadong **skipAttributesOnUpdate** (*array* $attributes)
 
-Sets a list of attributes that must be skipped from the generated UPDATE statement
+Magtatakda ng isang listahan ng mga katangian na dapat ay nalaktwan mula sa nabuong UPDATE ng pahayag
 
 ```php
 <?php
@@ -841,9 +841,9 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-protected **allowEmptyStringValues** (*array* $attributes)
+protektadong **allowEmptyStringValues** (*array* $attributes)
 
-Sets a list of attributes that must be skipped from the generated UPDATE statement
+Magtatakda ng isang listahan ng mga katangian na dapat ay nalaktawan mula sa nabuong UPDATE ng pahayag
 
 ```php
 <?php
@@ -862,9 +862,9 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-protected **hasOne** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
+protektadong **hasOne** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
 
-Setup a 1-1 relation between two models
+I-setup ang isang 1-1 na relasyon sa pagitan ng dalawang mga modelo
 
 ```php
 <?php
@@ -879,9 +879,9 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-protected **belongsTo** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
+protektadong **belongsTo** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
 
-Setup a reverse 1-1 or n-1 relation between two models
+I-setup ang isang pagbaliktad ng 1-1 o n- 1 na relasyon sa pagitan ng dalawang mga modelo
 
 ```php
 <?php
@@ -896,9 +896,9 @@ class RobotsParts extends \Phalcon\Mvc\Model
 
 ```
 
-protected **hasMany** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
+protektadong **hasMany** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
 
-Setup a 1-n relation between two models
+I-setup ang isang 1-n na relasyon sa pagitan sa dalawang mga modelo
 
 ```php
 <?php
@@ -913,9 +913,9 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-protected [Phalcon\Mvc\Model\Relation](/en/3.2/api/Phalcon_Mvc_Model_Relation) **hasManyToMany** (*string* | *array* $fields, *string* $intermediateModel, *string* | *array* $intermediateFields, *string* | *array* $intermediateReferencedFields, *mixed* $referenceModel, *string* | *array* $referencedFields, [*array* $options])
+protektadong [Phalcon\Mvc\Model\Relation](/en/3.2/api/Phalcon_Mvc_Model_Relation) **hasManyToMany** (*string* | *array* $fields, *string* $intermediateModel, *string* | *array* $intermediateFields, *string* | *array* $intermediateReferencedFields, *mixed* $referenceModel, *string* | *array* $referencedFields, [*array* $options])
 
-Setup an n-n relation between two models, through an intermediate relation
+I-setup ang isang n-n na relasyon sa pagitan ng dalawang mga modelo, sa pamamagitan ng isang intermediya na relasyon
 
 ```php
 <?php
@@ -938,9 +938,9 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-public **addBehavior** ([Phalcon\Mvc\Model\BehaviorInterface](/en/3.2/api/Phalcon_Mvc_Model_BehaviorInterface) $behavior)
+pampublikong **addBehavior** ([Phalcon\Mvc\Model\BehaviorInterface](/en/3.2/api/Phalcon_Mvc_Model_BehaviorInterface) $behavior)
 
-Setups a behavior in a model
+Ise-setup ang isang kilos sa isang modelo
 
 ```php
 <?php
@@ -967,9 +967,9 @@ class Robots extends Model
 
 ```
 
-protected **keepSnapshots** (*mixed* $keepSnapshot)
+protektadong **keepSnapshots** (*mixed* $keepSnapshot)
 
-Sets if the model must keep the original record snapshot in memory
+Magtatakda kung ang modelo ay dapat panatilihin ang orihinal na rekord ng snapshot sa memorya
 
 ```php
 <?php
@@ -986,25 +986,25 @@ class Robots extends Model
 
 ```
 
-public **setSnapshotData** (*array* $data, [*array* $columnMap])
+pampublikong **setSnapshotData** (*array* $data, [*array* $columnMap])
 
-Sets the record's snapshot data. This method is used internally to set snapshot data when the model was set up to keep snapshot data
+Magtatakda ang rekord ng snapshot sa datos
 
-public **hasSnapshotData** ()
+pampublikong **hasSnapshotData** ()
 
-Checks if the object has internal snapshot data
+Sinisisayat kung ang layon ay amyroon nakapaloob na datos ng snapshot
 
-public **getSnapshotData** ()
+pampublikong **getSnapshotData** ()
 
-Returns the internal snapshot data
+Ibabalik ang nakapaloob na datos ng snapshot
 
-public **getOldSnapshotData** ()
+pampublikong **getOldSnapshotData** ()
 
-Returns the internal old snapshot data
+Ibabalik ang nakapaloob na lumang datos ng snapshot
 
-public **hasChanged** ([*string* | *array* $fieldName], [*boolean* $allFields])
+pampublikong **hasChanged** ([*string* | *array* $fieldName], [*boolean* $allFields])
 
-Check if a specific attribute has changed This only works if the model is keeping data snapshots
+Siyasatin kung ang isang tinukoy na katangian ay nabago Ito ay magagawa lamang kung ang modelo ay iniingatan ang datos ng mga snapshot
 
 ```php
 <?php
@@ -1023,13 +1023,13 @@ $hasChanged = $robot->hasChanged(["type", "name", true]); // returns false
 
 ```
 
-public **hasUpdated** ([*string* | *array* $fieldName], [*mixed* $allFields])
+pampublikong **hasUpdated** ([*string* | *array* $fieldName], [*mixed* $allFields])
 
-Check if a specific attribute was updated This only works if the model is keeping data snapshots
+Siyasatin kung ang isang partikular na katangian ay na-update Ito ay magagawa lamang kung ang modelo ay iniingatan ang datos ng mga snapshot
 
-public **getChangedFields** ()
+pampublikong **getChangedFields** ()
 
-Returns a list of changed values.
+Ibabalik ang isang listahan ng binagong mga kahalagahan.
 
 ```php
 <?php
@@ -1044,9 +1044,9 @@ print_r($robots->getChangedFields()); // ["deleted"]
 
 ```
 
-public **getUpdatedFields** ()
+pampublikong **getUpdatedFields** ()
 
-Returns a list of updated values.
+Ibabalik ang isang listahan ng binagong mga kahalagahan.
 
 ```php
 <?php
@@ -1064,9 +1064,9 @@ print_r($robots->getUpdatedFields()); // ["deleted"]
 
 ```
 
-protected **useDynamicUpdate** (*mixed* $dynamicUpdate)
+protektadong **useDynamicUpdate** (*mixed* $dynamicUpdate)
 
-Sets if a model must use dynamic update instead of the all-field update
+Itatakda kung ang isang modelo ay dapat gamitin ang dinamika na pagbabago sa halip ang lahat ng ia-update na field
 
 ```php
 <?php
@@ -1083,53 +1083,53 @@ class Robots extends Model
 
 ```
 
-public [Phalcon\Mvc\Model\ResultsetInterface](/en/3.2/api/Phalcon_Mvc_Model_ResultsetInterface) **getRelated** (*string* $alias, [*array* $arguments])
+pampublikong [Phalcon\Mvc\Model\ResultsetInterface](/en/3.2/api/Phalcon_Mvc_Model_ResultsetInterface) **getRelated** (*string* $alias, [*array* $arguments])
 
-Returns related records based on defined relations
+Ibabalik ang may kaugnayan sa mga rekord base sa tinukoy na mga relasyon
 
-protected *mixed* **_getRelatedRecords** (*string* $modelName, *string* $method, *array* $arguments)
+protektadong *mixed* **_getRelatedRecords** (*string* $modelName, *string* $method, *array* $arguments)
 
-Returns related records defined relations depending on the method name
+Ibabalik ang may kaugnayan na mga rekord na tinukoy na mga relasyon depende sa pamamaraan ng pangalan
 
-final protected static [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) | [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) | *boolean* **_invokeFinder** (*string* $method, *array* $arguments)
+kahuli-hulihang protektadong istatik [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) | [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) | *boolean* **_invokeFinder** (*string* $method, *array* $arguments)
 
-Try to check if the query must invoke a finder
+Subukang siyasatin kung ang katanungan ay dapat manawagan sa isang tagahanap
 
-public *mixed* **__call** (*string* $method, *array* $arguments)
+pampublikong *mixed* **__call** (*string* $method, *array* $arguments)
 
-Handles method calls when a method is not implemented
+Hinahawakan ang mga tawag ng pamamaraan kung kailan ang isang pamamaraan ay hindi ipinatupad
 
-public static *mixed* **__callStatic** (*string* $method, *array* $arguments)
+pampublikong istatik *mixed* **__callStatic** (*string* $method, *array* $arguments)
 
-Handles method calls when a static method is not implemented
+Hinahawakan ang mga tawag ng pamamaraan kung kailan ang isang pamamaraan ng isang istatik ay hindi ipinatupad
 
-public **__set** (*string* $property, *mixed* $value)
+pampublikong **__set** (*string* $property, *mixed* $value)
 
-Magic method to assign values to the the model
+Ang Pamamaraan na mahika ay upang magtalaga ng mahahalaga sa modelo
 
-final protected *string* **_possibleSetter** (*string* $property, *mixed* $value)
+kahuli-hulihang protektadong *string* **_possibleSetter** (*string* $property, *mixed* $value)
 
-Check for, and attempt to use, possible setter.
+Siyasatin para sa, at subukan gumamit, posibleng setter.
 
-public [Phalcon\Mvc\Model\Resultset](/en/3.2/api/Phalcon_Mvc_Model_Resultset) | [Phalcon\Mvc\Model](/en/3.2/api/Phalcon_Mvc_Model) **__get** (*string* $property)
+pampublikong [Phalcon\Mvc\Model\Resultset](/en/3.2/api/Phalcon_Mvc_Model_Resultset) | [Phalcon\Mvc\Model](/en/3.2/api/Phalcon_Mvc_Model) **__get** (*string* $property)
 
-Magic method to get related records using the relation alias as a property
+Ang pamamaraang mahika ay kumukuha ng may kaugnayang mga rekord gamit ang relasyon ng alyas bilang isang katangian
 
-public **__isset** (*mixed* $property)
+pampublikong **__isset** (*mixed* $property)
 
-Magic method to check if a property is a valid relation
+Ang pamamaraan ng mahika ay upang masiyasat kung ang isang katangian ay isang tunay na relasyon
 
-public **serialize** ()
+pampublikong **serialize** ()
 
-Serializes the object ignoring connections, services, related objects or static properties
+Inilalalathala nang baha-bahagi ang layon upang hindi pansinin ang mga koneksyon, mga serbisyo, may kauganayang mga layon o istatik na mga katangian
 
-public **unserialize** (*mixed* $data)
+pampublikong **unserialize** (*mixed* $data)
 
-Unserializes the object from a serialized string
+Hindi inilalathala nang baha-bahagi ang layon mula sa isang inilathalang baha-bahaging string
 
-public **dump** ()
+pampublikong **dump** ()
 
-Returns a simple representation of the object that can be used with var_dump
+Ibabalik ang isang simpleng representasyon ng layon na maaaring gamitin kasama ng var-dump
 
 ```php
 <?php
@@ -1140,9 +1140,9 @@ var_dump(
 
 ```
 
-public *array* **toArray** ([*array* $columns])
+pampublikong *array* **toArray** ([*array* $columns])
 
-Returns the instance as an array representation
+Ibabalik ang instansiya bilang presentasyon ng isang array
 
 ```php
 <?php
@@ -1153,9 +1153,9 @@ print_r(
 
 ```
 
-public *array* **jsonSerialize** ()
+pampublikong *array* **jsonSerialize** ()
 
-Serializes the object for json_encode
+Inilalathala nang baha-bahagi ang layon para sa json-encode
 
 ```php
 <?php
@@ -1164,10 +1164,10 @@ echo json_encode($robot);
 
 ```
 
-public static **setup** (*array* $options)
+pampublikong istatik **setup** (*array* $options)
 
-Enables/disables options in the ORM
+Ang mga Enables/disables ay mga pagpipilian sa ORM
 
-public **reset** ()
+pampublikong **reset** ()
 
-Reset a model instance data
+I-reset ang isang modelo ng instansiya na datos
