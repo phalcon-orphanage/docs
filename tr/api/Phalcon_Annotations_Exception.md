@@ -1,6 +1,6 @@
 # Class **Phalcon\\Annotations\\Exception**
 
-*uzanır* sınıf [kuraldışı](http://php.net/manual/en/class.exception.php)
+*extends* class [Exception](http://php.net/manual/en/class.exception.php)
 
 *implements* [Throwable](http://php.net/manual/en/class.throwable.php)
 
@@ -12,7 +12,7 @@ final private [Exception](http://php.net/manual/en/class.exception.php) **__clon
 
 Clone the exception
 
-herkese açık **__düzenle** ([*karışık* $mesaj], [*karışık* $şifre], [*karışık* $geçmiş]) [Kuraldışı](http://php.net/manual/en/class.exception.php)'dan alındı
+public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
 Exception constructor
 
