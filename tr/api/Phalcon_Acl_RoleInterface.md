@@ -4,14 +4,14 @@
 
 ## Methods
 
-herkese açık **isim al** ()
+abstract public **getName** ()
 
 Returns the role name
 
-herkese açık ** Açıklama al** ()
+abstract public **getDescription** ()
 
 Returns role description
 
-herkese açık **__sırala** ()
+abstract public **__toString** ()
 
 Magic method __toString
