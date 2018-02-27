@@ -1,21 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">لایه انتزاعی پایگاه داده</a> 
+      <a href="#overview">Database Abstraction Layer</a> 
       <ul>
         <li>
-          <a href="#adapters">وقفه دهنده های پایگاه داده</a> 
+          <a href="#adapters">Database Adapters</a> 
           <ul>
             <li>
-              <a href="#adapters-factory">کارخانه</a>
+              <a href="#adapters-factory">Factory</a>
             </li>
             <li>
-              <a href="#adapters-custom">پیاده سازی آداپتورهای خود</a>
+              <a href="#adapters-custom">Implementing your own adapters</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#dialects">گفتگوهای بانک اطلاعاتی</a> 
+          <a href="#dialects">Database Dialects</a> 
           <ul>
             <li>
               <a href="#dialects-custom">Implementing your own dialects</a>
@@ -49,37 +49,37 @@
           <a href="#cast-on-hydrate">Cast on Hydrate</a>
         </li>
         <li>
-          <a href="#crud">درج، به روز رسانی و حذف ردیف ها</a>
+          <a href="#crud">Inserting/Updating/Deleting Rows</a>
         </li>
         <li>
-          <a href="#transactions">معاملات و معاملات نشتی</a>
+          <a href="#transactions">Transactions and Nested Transactions</a>
         </li>
         <li>
-          <a href="#events">رویدادهای بانک اطلاعاتی</a>
+          <a href="#events">Database Events</a>
         </li>
         <li>
-          <a href="#profiling">تدوین بیانیه های اس کیو ال</a>
+          <a href="#profiling">Profiling SQL Statements</a>
         </li>
         <li>
-          <a href="#logging-statements">ثبت گزارشات اس کیو ال</a>
+          <a href="#logging-statements">Logging SQL Statements</a>
         </li>
         <li>
-          <a href="#logger-custom">پیاده سازی لاگر خودتان</a>
+          <a href="#logger-custom">Implementing your own Logger</a>
         </li>
         <li>
-          <a href="#describing-tables">توصیف جداول/ نمایش ها</a>
+          <a href="#describing-tables">Describing Tables/Views</a>
         </li>
         <li>
-          <a href="#tables">ایجاد/تغییر/حذف جداول</a> 
+          <a href="#tables">Creating/Altering/Dropping Tables</a> 
           <ul>
             <li>
-              <a href="#tables-create">ایجاد جداول</a>
+              <a href="#tables-create">Creating Tables</a>
             </li>
             <li>
-              <a href="#tables-altering">تغییر جداول</a>
+              <a href="#tables-altering">Altering Tables</a>
             </li>
             <li>
-              <a href="#tables-dropping">سقوط جداول</a>
+              <a href="#tables-dropping">Dropping Tables</a>
             </li>
           </ul>
         </li>
@@ -94,15 +94,15 @@
 
 `Phalcon\Db` is the component behind `Phalcon\Mvc\Model` that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
-این اجزا به شما اجازه می دهد تا دستکاری پایگاه داده سطح پایین تر از استفاده از مدل های سنتی.
+This component allows for a lower level database manipulation than using traditional models.
 
 <a name='adapters'></a>
 
-## وقفه دهنده های پایگاه داده
+## Database Adapters
 
-این اجزا از آداپتورها برای انعکاس جزییات سیستم پایگاه داده خاص استفاده می کند. فالکون از PDO برای اتصال به پایگاه داده استفاده می کند. موتورهای پایگاه داده زیر پشتیبانی می شوند:
+This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
 
-| کلاس                                    | توضیحات                                                                                                                                                                                                                              |
+| Class                                   | Description                                                                                                                                                                                                                          |
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `Phalcon\Db\Adapter\Pdo\Mysql`      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases.                                                                                   |
 | `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
@@ -135,15 +135,15 @@ $db = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### پیاده سازی آداپتورهای خود
+### Implementing your own adapters
 
-رابطه `Phalcon\Db\AdapterInterface` باید به منظور ایجاد آداپتورهای پایگاه خود یا گسترش آنهایی که وجود دارند، عمل کند.
+The `Phalcon\Db\AdapterInterface` interface must be implemented in order to create your own database adapters or extend the existing ones.
 
 <a name='dialects'></a>
 
 ## Database Dialects
 
-فالکون جزئیات خاص موتور هر پایگاه اطلاعاتی را در نسخه ها ذخیره می کند. همان هایی که توابع مشترک و ژنراتور اس کیو ال را به آداپتورها ارائه می دهند.
+Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
 
 | Class                              | Description                                         |
 | ---------------------------------- | --------------------------------------------------- |
@@ -155,59 +155,59 @@ $db = Factory::load($options);
 
 ### Implementing your own dialects
 
-رابطه 0>Phalcon\Db\DialectInterface</code> باید به منظور ایجاد نسخ پایگاه های اطلاعاتی یا گسترش آنهایی که وجود دارند، عمل کند.
+The `Phalcon\Db\DialectInterface` interface must be implemented in order to create your own database dialects or extend the existing ones.
 
 <a name='connection'></a>
 
 ## Connecting to Databases
 
-برای ایجاد یک پیوند، نمونه سازی از کلاس آداپتور الزامی است. این فقط یک آرایه با پارامترهای اتصال نیاز دارد. مثال زیر چگونگی ایجاد یک پیوند که از پارامتر های اختیاری و مورد نظر بگذرد را نشان می دهد:
+To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
 
 ```php
 <?php
 
-// ضروری
+// Required
 $config = [
-    'میزبان'     => '127.0.0.1',
-    'نام کاربری' => 'mike',
-    'کلمه عبور' => 'sigma',
-    'نام پایگاه داده'   => 'test_db',
+    'host'     => '127.0.0.1',
+    'username' => 'mike',
+    'password' => 'sigma',
+    'dbname'   => 'test_db',
 ];
 
-// اختیاری
+// Optional
 $config['persistent'] = false;
 
-// ایجاد یک اتصال
+// Create a connection
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
 
 ```php
 <?php
 
-// ضروری
+// Required
 $config = [
-    'میزبان'     => 'localhost',
-    'نام کاربری' => 'postgres',
-    'کلمه عبور' => 'secret1',
-    'نام پایگاه داده'   => 'template',
+    'host'     => 'localhost',
+    'username' => 'postgres',
+    'password' => 'secret1',
+    'dbname'   => 'template',
 ];
 
-// اختیاری
-$config['schema'] = 'عمومی';
+// Optional
+$config['schema'] = 'public';
 
-// ایجاد یک اتصال
+// Create a connection
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
 
 ```php
 <?php
 
-// ضروری
+// Required
 $config = [
     'dbname' => '/path/to/database.db',
 ];
 
-// ایجاد یک اتصال
+// Create a connection
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```
 
@@ -215,7 +215,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 ## Setting up additional PDO options
 
-شما می توانید گزینه های پی دی او را هنگام اتصال با استفاده از عبور از گزینه های پارامترها، `تنظیم ها` کنید:
+You can set PDO options at connection time by passing the parameters `options`:
 
 ```php
 <?php
@@ -239,17 +239,17 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
 
 ## Connecting using Factory
 
-شما همچنین می توانید از یک فایل `آی ان آی` ساده برای پیکربندی/اتصال سرویس `دی بی` خود به پایگاه داده خود استفاده کنید.
+You can also use a simple `ini` file to configure/connect your `db` service to your database.
 
 ```ini
 [database]
-میزبان = TEST_DB_MYSQL_HOST
-نام کاربری = TEST_DB_MYSQL_USER
-کلمه عبور = TEST_DB_MYSQL_PASSWD
-نام پایگاه داده = TEST_DB_MYSQL_NAME
-پورت = TEST_DB_MYSQL_PORT
-مجموعه چارت = TEST_DB_MYSQL_CHARSET
-آداپتور = مای اس گیوال
+host = TEST_DB_MYSQL_HOST
+username = TEST_DB_MYSQL_USER
+password = TEST_DB_MYSQL_PASSWD
+dbname = TEST_DB_MYSQL_NAME
+port = TEST_DB_MYSQL_PORT
+charset = TEST_DB_MYSQL_CHARSET
+adapter = mysql
 ```
 
 ```php
@@ -272,13 +272,13 @@ $di->set(
 );
 ```
 
-در بالا، نمونه ای از پایگاه اطلاعات درست باز خواهد گشت که همچنین دارای مزیتی است که شما می توانید اعتبار اتصالات و یا حتی آداپتور پایگاه داده بدون تغییر در یک خط کد در برنامه خود تغییر دهید.
+The above will return the correct database instance and also has the advantage that you can change the connection credentials or even the database adapter without changing a single line of code in your application.
 
 <a name='finding-rows'></a>
 
 ## Finding Rows
 
-`Phalcon\Db` چندین روش را برای پرس و جو از سطرهای جداول آماده می کند. ترکیب خاصی از اس کیو ال در موتور پایگاه داده هدف، در این مورد، نیاز است:
+`Phalcon\Db` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
 
 ```php
 <?php
@@ -303,7 +303,7 @@ foreach ($robots as $robot) {
 $robot = $connection->fetchOne($sql);
 ```
 
-به طور پیش فرض، این تماس ها، آرایه ها را با هر دو شاخص وابسته و عددی ایجاد می کنند. شما می توانید این رفتار را با استفاده از `Phalcon\Db\Result::setFetchMode()` تغییر دهید. این روش یک تعریف پایدار که نوعی از شاخص های مورد نیاز است را دریافت می کند.
+By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using `Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
 
 | Constant                   | Description                                               |
 | -------------------------- | --------------------------------------------------------- |
@@ -324,7 +324,7 @@ while ($robot = $result->fetch()) {
 }
 ```
 
-`Phalcon\Db::query()` نمونه ای از `Phalcon\Db\Result\Pdo` را باز می گرداند. این اشیا تمام قابلیت های مرتبط با نتایج بازگشتی را محاسبه می کنند؛ برای مثال: تراورس، جستجوی پرونده های خاص، شمارش و غیره.
+The `Phalcon\Db::query()` returns an instance of `Phalcon\Db\Result\Pdo`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
 
 ```php
 <?php
@@ -349,7 +349,7 @@ echo $result->numRows();
 
 ## Binding Parameters
 
-پارامتر های متصل نیز در `Phalcon\Db` پشتیبانی می شوند. اگرچه با استفاده از پارامتر های محدود، اثر کمتری بر عملکرد شما تاثیر می گذارد، شما را تشویق می کند که از این روش استفاده کنید تا بتوانید کد خود را در معرض حمله ی انتقال اس کیو ال قرار دهید. هم متغیرهای رشته ای و هم متغیرهای موقعیتی پشتیبانی می شوند. به سادگی می توان پارامتر های مرتبط را به صورت زیر بدست آورد:
+Bound parameters is also supported in `Phalcon\Db`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
 
 ```php
 <?php
@@ -374,11 +374,11 @@ $success = $connection->query(
 );
 ```
 
-هنگام استفاده از متغیرهای عددی، شما باید آنها را به صورت صحیح و به عنوان مثال ۱ یا ۲ تعریف کنید. در این مورد "۱" یا "۲" به عنوان رشته درنظر گرفته می شوند نه به عنوان اعداد؛ بنابراین، محل نگهداری را نمی توان به صورت موفقیت آمیز جایگزین کرد. با هر آداپتور داده ها، به طور خودکار، با استفاده از [نقل قول پی دی او](http://www.php.net/manual/en/pdo.quote.php) می پرد.
+When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case '1' or '2' are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter data are automatically escaped using [PDO Quote](http://www.php.net/manual/en/pdo.quote.php).
 
-این عمل، ارتباط چارست را به حساب می آورد. بنابراین توصیه می شود که پارامترهای صحیح را در پارامترهای اتصال یا پیکربندی سرور پایگاه داده تعریف کنید. زیرا به عنوان یک چارست اشتباه، هنگام ذخیره یا بازیابی داده ها، اثرات نامطلوب ایجاد می کند.
+This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
 
-همچنین شما می توانید پارامترهای خود را به طور مستقیم به روش اجرا/پرس و جو منتقل کنید. در این حالت پارامترهای محدود به طور مستقیم به PDO منتقل می شوند:
+Also, you can pass your parameters directly to the execute/query methods. In this case bound parameters are directly passed to PDO:
 
 ```php
 <?php
@@ -560,9 +560,9 @@ if (11 === $robot->id) {
 
 <a name='crud'></a>
 
-## درج، به روز رسانی و حذف ردیف ها
+## Inserting/Updating/Deleting Rows
 
-برای وارد کردن، به روزرسانی یا حذف ردیفها، میتوانید از اس کیوال خام استفاده کنید یا از توابع پیش تعیین شده ارائه شده توسط کلاس استفاده کنید:
+To insert, update or delete rows, you can use raw SQL or use the preset functions provided by the class:
 
 ```php
 <?php
@@ -685,9 +685,9 @@ $success = $connection->delete(
 
 <a name='transactions'></a>
 
-## معاملات و معاملات نشتی
+## Transactions and Nested Transactions
 
-کار با معاملات، همانطور که با پی دی او است پشتیبانی می شود. دستکاری داده ها در میان معامله، اغلب، عملکرد در اکثر سیستم های پایگاه داده را افزایش می دهد:
+Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
 
 ```php
 <?php
@@ -709,7 +709,7 @@ try {
 }
 ```
 
-علاوه بر معاملات استاندارد، `فالکون/پایگاه داده` نیز پشتیبانی فراهم می کند برای [معاملات نشتی](http://en.wikipedia.org/wiki/Nested_transaction)و(اگر سیستم پایگاه داده مورد استفاده آنها را پشتیبانی کند). هنگامی که شما شروع)) را فرا می خوانید، یک معامله ی نشتی برای بار دوم ایجاد می شود:
+In addition to standard transactions, `Phalcon\Db` provides built-in support for [nested transactions](http://en.wikipedia.org/wiki/Nested_transaction) (if the database system used supports them). When you call begin() for a second time a nested transaction is created:
 
 ```php
 <?php
@@ -749,21 +749,21 @@ try {
 
 <a name='events'></a>
 
-## رویدادهای بانک اطلاعاتی
+## Database Events
 
-`فالکون/پایگاه داده` رویدادها را به آن می فرستد اگر [مدیریت رویدادها](/[[language]]/[[version]]/events) وجود داشته باشد. برخی از رویدادها هنگام باز گشت بولین اشتباه، می توانند عملیات فعال را متوقف کنند. رویدادهای زیر پشتیبانی شده اند:
+`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
 
-| نام رویداد          | باعث شد                                              | می توانید عملیات را متوقف کنید؟ |
-| ------------------- | ---------------------------------------------------- |:-------------------------------:|
-| `پس از اتصال`       | بعد از اتصال موفقیت آمیز به یک پایگاه داده           |               No                |
-| `قبل از جستجو`      | قبل از فرستادن بیانیه اس کیو ال به سیستم پایگاه داده |               Yes               |
-| `بعد از جستجو`      | بعد از فرستادن بیانیه اس کیو ال به سیستم پایگاه داده |               No                |
-| `قبل از قطع اتصال`  | قبل از اتمام اتصال پایگاه اطلاعاتی در حال اجرا       |               No                |
-| `شروع معامله`       | قبل از اینکه یک معامله شروع شود                      |               No                |
-| `عقب گرد به معامله` | قبل از اینکه معامله عقب گرد کند                      |               No                |
-| `انجام معامله`      | قبل از اینکه معامله صورت گیرد                        |               No                |
+| Event Name            | Triggered                                            | Can stop operation? |
+| --------------------- | ---------------------------------------------------- |:-------------------:|
+| `afterConnect`        | After a successfully connection to a database system |         No          |
+| `beforeQuery`         | Before send a SQL statement to the database system   |         Yes         |
+| `afterQuery`          | After send a SQL statement to database system        |         No          |
+| `beforeDisconnect`    | Before close a temporal database connection          |         No          |
+| `beginTransaction`    | Before a transaction is going to be started          |         No          |
+| `rollbackTransaction` | Before a transaction is rollbacked                   |         No          |
+| `commitTransaction`   | Before a transaction is committed                    |         No          |
 
-ارتباط میریت رویدادها به اتصال ساده است، `فالکون/پایگاه داده` رویدادها را با نوع `پابگاه داده` راه می اندازد:
+Bind an EventsManager to a connection is simple, `Phalcon\Db` will trigger the events with the type `db`:
 
 ```php
 <?php
@@ -789,7 +789,7 @@ $connection = new Connection(
 $connection->setEventsManager($eventsManager);
 ```
 
-عملیات متوقف کردن اس کیو ال بسیار مفید است. برای مثال شما می خواهید برخی از آخرین منابع چاک دهنده انژکتور اسکیوال را اجرا کنید:
+Stop SQL operations are very useful if for example you want to implement some last-resource SQL injector checker:
 
 ```php
 <?php
@@ -816,11 +816,11 @@ $eventsManager->attach(
 
 <a name='profiling'></a>
 
-## تدوین بیانیه های اس کیو ال
+## Profiling SQL Statements
 
-`Phalcon\Db` شامل یک جز پروفایل نامیده می شود `Phalcon\Db\Profiler`، این است که برای تجزیه و تحلیل عملکرد عملیات پایگاه داده به منظور تشخیص مشکلات عملکرد و کشف تنگناها مورد استفاده قرار گیرد.
+`Phalcon\Db` includes a profiling component called `Phalcon\Db\Profiler`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
 
-پروفیل پایگاه داده با استفاده از آن بسیار آسان است `Phalcon\Db\Profiler`:
+Database profiling is really easy With `Phalcon\Db\Profiler`:
 
 ```php
 <?php
@@ -855,7 +855,7 @@ $eventsManager->attach(
 $connection->setEventsManager($eventsManager);
 
 $sql = 'SELECT buyer_name, quantity, product_name '
-     . "از خریداران"
+     . 'FROM buyers '
      . 'LEFT JOIN products ON buyers.pid = products.id';
 
 // Execute a SQL statement
@@ -870,7 +870,7 @@ echo 'Final Time: ', $profile->getFinalTime(), "\n";
 echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), "\n";
 ```
 
-شما همچنین می توانید طبق مشخصات خود را بر اساس `Phalcon\Db\Profiler` برای ثبت آمار زمان واقعی اظهارات ارسال شده به سیستم پایگاه داده:
+You can also create your own profile class based on `Phalcon\Db\Profiler` to record real time statistics of the statements sent to the database system:
 
 ```php
 <?php
@@ -910,9 +910,9 @@ $eventsManager->attach('db', $dbProfiler);
 
 <a name='logging-statements'></a>
 
-## ثبت گزارشات اس کیو ال
+## Logging SQL Statements
 
-با استفاده از اجزای انتزاعی سطح بالا از قبیل `Phalcon\Db` برای دسترسی به یک پایگاه داده، دشوار است که بدانیم کدام عبارت به سیستم پایگاه داده ارسال می شود. `فالکون/لوگر` تعامل با `فالکون/پایگاه داده` برای ارائه قابلیت های ورود به سیستم در لایه انتزاعی پایگاه داده ارتباط برقرار می کند.
+Using high-level abstraction components such as `Phalcon\Db` to access a database, it is difficult to understand which statements are sent to the database system. `Phalcon\Logger` interacts with `Phalcon\Db`, providing logging capabilities on the database abstraction layer.
 
 ```php
 <?php
@@ -952,7 +952,7 @@ $connection->insert(
 );
 ```
 
-همانطور که در بالا، فایل `app/logs/db.log` چیزی شبیه به این خواهد بود:
+As above, the file `app/logs/db.log` will contain something like this:
 
 ```bash
 [Sun, 29 Apr 12 22:35:26 -0500][DEBUG][Resource Id #77] INSERT INTO products
@@ -961,23 +961,23 @@ $connection->insert(
 
 <a name='logger-custom'></a>
 
-## پیاده سازی لاگر خودتان
+## Implementing your own Logger
 
-شما می توانید کلاس لاگر خود را برای جستجوی پایگاه داده، با ایجاد کلاسی که از روش ساده به نام `لوگ` استفاده می کند، پیاده سازی کنید. روش باید یک رشته را به عنوان اولین شناسه قبول کند. پس از آن شما می توانید شیء ثبت نام خود را به `Phalcon\Db::setLogger()` منتقل کنید و از آن پس، هر بیانیه اس کیو ال این روش را برای ورود به نتیجه های جستجو، فراخوانی می کند.
+You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a string as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
 
 <a name='describing-tables'></a>
 
-## توصیف جداول/ نمایش ها
+## Describing Tables/Views
 
-همچنین `Phalcon\Db` روش هایی را برای بازیابی جزئیات اطلاعات درباره ی جداول و نمایش ها فراهم می کند:
+`Phalcon\Db` also provides methods to retrieve detailed information about tables and views:
 
 ```php
 <?php
 
-// دریافت جداول در پایگاه داده _db آزمون
+// Get tables on the test_db database
 $tables = $connection->listTables('test_db');
 
-// آیا یک روبات جدول در پایگاه داده وجود دارد؟
+// Is there a table 'robots' in the database?
 $exists = $connection->tableExists('robots');
 
 // Get name, data types and special features of 'robots' fields
@@ -1004,13 +1004,13 @@ foreach ($references as $reference) {
 }
 ```
 
-توضیحات یک جدول بسیار شبیه به دستور مای اس کیو ال است که شامل اطلاعات زیر می شود:
+A table description is very similar to the MySQL describe command, it contains the following information:
 
-| فیلد       | نوع      | کلید                               | خالی                                 |
-| ---------- | -------- | ---------------------------------- | ------------------------------------ |
-| نام فیلدها | نوع ستون | آیا ستون یک بخش اولیه یا شاخص است؟ | آیا ستون به مقادیر تهی اجازه می دهد؟ |
+| Field        | Type        | Key                                                | Null                               |
+| ------------ | ----------- | -------------------------------------------------- | ---------------------------------- |
+| Field's name | Column Type | Is the column part of the primary key or an index? | Does the column allow null values? |
 
-روش های دریافت اطلاعات درمورد دیدگاه ها نیز برای هر پایگاه داده پشتیبانی می شود:
+Methods to get information about views are also implemented for every supported database system:
 
 ```php
 <?php
@@ -1024,15 +1024,15 @@ $exists = $connection->viewExists('robots');
 
 <a name='tables'></a>
 
-## ایجاد/تغییر/حذف جداول
+## Creating/Altering/Dropping Tables
 
-سیستم های مختلف پایگاه داده(مای اسکیوال،پست گرسکیوال و غیره) توانایی ایجاد، تغییر یا حذف جداول را با استفاده از دستوراتی مانندایجاد، تغییر یا رها کردن ارائه می دهند. آرایه اس کیو ال بر اساس اینکه کدام سیستم پایگاه داده استفاده شده است، متفاوت می باشد. `فالکون/پایگاه داده` رابط کاربری یکپارچه برای تغییر جداول را بدون نیاز به تفاوت قائل شدن به آرایه ی اس کیو ال بر اساس سیستم ذخیره ای هدف، فراهم می کند.
+Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
 
 <a name='tables-create'></a>
 
-### ایجاد جداول
+### Creating Tables
 
-مثال زیر نشان می دهد که چگونه یک جدول بسازید:
+The following example shows how to create a table:
 
 ```php
 <?php
@@ -1075,21 +1075,21 @@ $connection->createTable(
 );
 ```
 
-`Phalcon\Db::createTable()` آرایه وابسته که جدول را می پذیرد را می پذیرد. ستون ها با کلاس تعریف می شوند `فالکون/پایگاه داده/ستون`. جدول زیر گزینه های موجود برای تعریف یک ستون را نشان می دهد:
+`Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class `Phalcon\Db\Column`. The table below shows the options available to define a column:
 
-| گزینه           | Description                                                                                                                                | اختیاری |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:-------:|
-| `نوع`           | نوع ستون. باید براساس `فالکون/پایگاه داده/ستون` پایدار باشد ( در پایین یک لیست آمده است)                                                   |   No    |
-| `اصلی`          | صحیح بودن اولیه اگر ستون جز اولیه ی کلید باشد                                                                                              |   Yes   |
-| `اندازه`        | برخی از ستون ها مانند `VARCHAR` یا `INTEGER` ممکن است اندازه مخصوصی داشته باشند                                                            |   Yes   |
-| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |   Yes   |
-| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |   Yes   |
-| `notNull`       | Column can store null values?                                                                                                              |   Yes   |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |   Yes   |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Yes   |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |   Yes   |
-| `first`         | Column must be placed at first position in the column order                                                                                |   Yes   |
-| `after`         | Column must be placed after indicated column                                                                                               |   Yes   |
+| Option          | Description                                                                                                                                | Optional |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
+| `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below for a list)                                                               |    No    |
+| `primary`       | True if the column is part of the table's primary key                                                                                      |   Yes    |
+| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |   Yes    |
+| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |   Yes    |
+| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |   Yes    |
+| `notNull`       | Column can store null values?                                                                                                              |   Yes    |
+| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |   Yes    |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Yes    |
+| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |   Yes    |
+| `first`         | Column must be placed at first position in the column order                                                                                |   Yes    |
+| `after`         | Column must be placed after indicated column                                                                                               |   Yes    |
 
 `Phalcon\Db` supports the following database column types:
 
@@ -1103,16 +1103,16 @@ $connection->createTable(
 
 The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
 
-| Index        | Description                                                                                                                            | اختیاری |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:-------:|
-| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |   No    |
-| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |   Yes   |
-| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |   Yes   |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |   Yes   |
+| Index        | Description                                                                                                                            | Optional |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
+| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |    No    |
+| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |   Yes    |
+| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |   Yes    |
+| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |   Yes    |
 
 <a name='tables-altering'></a>
 
-### تغییر جداول
+### Altering Tables
 
 As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. `Phalcon\Db` is limited by these constraints.
 
@@ -1160,7 +1160,7 @@ $connection->dropColumn(
 
 <a name='tables-dropping'></a>
 
-### سقوط جداول
+### Dropping Tables
 
 Examples on dropping tables:
 
