@@ -1,16 +1,16 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">FAQ - Frequently Asked Questions</a>
+      <a href="#overview">FAQ - Preguntas frecuentes</a>
       <ul>
         <li>
-          <a href="#what-is-phalcon">What is Phalcon</a>
+          <a href="#what-is-phalcon">Qué es Phalcon</a>
         </li>
         <li>
-          <a href="#how-phalcon-works">How Phalcon Works</a>
+          <a href="#how-phalcon-works">Cómo funciona Phalcon</a>
         </li>
         <li>
-          <a href="#how-can-i-help">How do I help</a>
+          <a href="#how-can-i-help">¿Cómo puedo ayudar?</a>
         </li>
       </ul>
     </li>
@@ -56,6 +56,6 @@ Phalcon depende de varios aspectos del diseño interno de PHP como la gestión d
 
 <a name='how-can-i-help'></a>
 
-## How can I help
+## ¿Cómo puedo ayudar?
 
 Únete a nuestro canal [Discord](https://phalcon.link/discord), visítenos en [GitHub](https://github.com/phalcon), o en la web en [ https://phalconphp.com/](https://phalconphp.com/en/).
