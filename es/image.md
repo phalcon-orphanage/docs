@@ -8,13 +8,13 @@
 
 <a name='overview'></a>
 
-# Imágenes
+# Images
 
 `Phalcon\Image` es el componente que permite manipular archivos de imagen. Pueden realizar múltiples operaciones sobre el mismo objeto de la imagen.
 
 <a name='adapters'></a>
 
-## Adaptadores
+## Adapters
 
 Este componente hace uso de adaptadores para encapsular programas específicos de manipulación de imagen. Son compatibles los siguientes programas de manipulación de imágenes:
 
