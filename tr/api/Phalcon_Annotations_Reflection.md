@@ -26,11 +26,11 @@ $classAnnotations = $reflection->getClassAnnotations();
 
 public **__construct** ([*array* $reflectionData])
 
-Phalcon\\Açıklamalar\\Yansıma oluşturucu
+Phalcon\\Annotations\\Reflection constructor
 
 public **getClassAnnotations** ()
 
-Docblock sınıfında bulunan açıklamalar döndürür
+Returns the annotations found in the class docblock
 
 public **getMethodsAnnotations** ()
 
