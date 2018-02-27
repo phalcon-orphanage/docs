@@ -364,7 +364,7 @@ $app->get(
 );
 ```
 
-Accessing the `$app` object inside the anonymous function can be achieved by injecting it as follows:
+Acceder al objeto `$app` dentro de la función anónima puede lograrse mediante la inyección de esta, de la siguiente manera:
 
 ```php
 $app->get(
@@ -1013,7 +1013,7 @@ $app->post(
 );
 ```
 
-You can also use the array syntax to register services in the dependency injection container from the application object:
+También puedes utilizar la sintaxis de arreglos para registrar servicios en el contenedor de inyección de dependencias desde el objeto de la aplicación:
 
 ```php
 <?php
