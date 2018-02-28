@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#setup">Настройка веб-сервера</a> <ul>
+      <a href="#setup">Web Server Setup</a> <ul>
         <li>
           <a href="#nginx">Nginx</a> <ul>
             <li>
