@@ -821,7 +821,7 @@ Si ninguna de las rutas especificadas en el router coincide, puede definir un gr
 ```php
 <?php
 
-// Set 404 paths
+// Establecer camino 404
 $router->notFound(
     [
         'controller' => 'index',
@@ -878,7 +878,7 @@ O bien, puede modificar rutas específicas para aceptar opcionalmente barras inc
 ```php
 <?php
 
-// The [/]{0,1} allows this route to have optionally have a trailing slash
+// El patrón [/]{0,1} permite a esta ruta tener opcionalmente una barra al final
 $router->add(
     '/{language:[a-z]{2}}/:controller[/]{0,1}',
     [
@@ -906,7 +906,7 @@ $route = $router->add('/login',
 
 $route->beforeMatch(
     function ($uri, $route) {
-        // Check if the request was made with Ajax
+        // Comprobar si la consulta fue hecha con Ajax
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
             return false;
         }
@@ -974,7 +974,7 @@ $route->beforeMatch(
          */
         $request = $this->getShared('request');
 
-        // Check if the request was made with Ajax
+        // Verifica si la solicitud fue hecha con Ajax
         return $request->isAjax();
     }
 );
@@ -1015,7 +1015,7 @@ $route = $router->add(
     ]
 );
 
-    $route->setHostName('([a-z]+).company.com');
+$route->setHostName('([a-z]+).company.com');
 ```
 
 En grupos de rutas, puede configurar una restricción de nombre de host que se aplique a todas las rutas del grupo:
@@ -1025,7 +1025,7 @@ En grupos de rutas, puede configurar una restricción de nombre de host que se a
 
 use Phalcon\Mvc\Router\Group as RouterGroup;
 
-// Create a group with a common module and controller
+// Crear un grupo con un módulo y un controlador en común
 $blog = new RouterGroup(
     [
         'module'     => 'blog',
@@ -1033,13 +1033,13 @@ $blog = new RouterGroup(
     ]
 );
 
-// Hostname restriction
+// Restricción de nombre de host
 $blog->setHostName('blog.mycompany.com');
 
-// All the routes start with /blog
+// Todas las rutas comienzan con /blog
 $blog->setPrefix('/blog');
 
-// Default route
+// Ruta por defecto
 $blog->add(
     '/',
     [
@@ -1047,7 +1047,7 @@ $blog->add(
     ]
 );
 
-// Add a route to the group
+// Agregar una ruta por defecto
 $blog->add(
     '/save',
     [
@@ -1055,7 +1055,7 @@ $blog->add(
     ]
 );
 
-// Add another route to the group
+// Agregar otra ruta al grupo
 $blog->add(
     '/edit/{id}',
     [
@@ -1063,7 +1063,7 @@ $blog->add(
     ]
 );
 
-// Add the group to the router
+// Agregar el grupo al router
 $router->mount($blog);
 ```
 
@@ -1080,18 +1080,18 @@ use Phalcon\Mvc\Router;
 
 // ...
 
-// Use $_GET['_url'] (default)
+// Usar $_GET['_url'] (por defecto)
 $router->setUriSource(
     Router::URI_SOURCE_GET_URL
 );
 
-// Use $_SERVER['REQUEST_URI']
+// Usar $_SERVER['REQUEST_URI']
 $router->setUriSource(
     Router::URI_SOURCE_SERVER_REQUEST_URI
 );
 ```
 
-Or you can manually pass a URI to the `handle()` method:
+O puede pasar manualmente el URI al método `handle()`:
 
 ```php
 <?php
@@ -1112,7 +1112,7 @@ Como este componente no tiene dependencias, puede crear un archivo como se muest
 
 use Phalcon\Mvc\Router;
 
-// These routes simulate real URIs
+// Estas rutas simulan URIs reales
 $testRoutes = [
     '/',
     '/index',
@@ -1125,22 +1125,22 @@ $testRoutes = [
 
 $router = new Router();
 
-// Add here your custom routes
+// Agregar aquí las rutas personalizadas
 // ...
 
-// Testing each route
+// Probar cada ruta
 foreach ($testRoutes as $testRoute) {
-    // Handle the route
+    // Gestionar la ruta
     $router->handle($testRoute);
 
-    echo 'Testing ', $testRoute, '<br>';
+    echo 'Probando ', $testRoute, '<br>';
 
-    // Check if some route was matched
+    // Comprobar si alguna ruta coincidio
     if ($router->wasMatched()) {
-        echo 'Controller: ', $router->getControllerName(), '<br>';
-        echo 'Action: ', $router->getActionName(), '<br>';
+        echo 'Controlador: ', $router->getControllerName(), '<br>';
+        echo 'Acción: ', $router->getActionName(), '<br>';
     } else {
-        echo "The route wasn't matched by any route<br>";
+        echo "La ruta no coincidió con ninguna ruta<br>";
     }
 
     echo '<br>';
@@ -1159,10 +1159,10 @@ Este componente proporciona una variante que se integra con el servicio [annotat
 use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
 $di['router'] = function () {
-    // Use the annotations router. We're passing false as we don't want the router to add its default patterns
+    // Usar las anotaciones del router. Pasamos el valor false ya que no queremos que el router agregue los patrones por defecto
     $router = new RouterAnnotations(false);
 
-    // Read the annotations from ProductsController if the URI starts with /api/products
+    // Leer las anotaciones desde ProductsController si las URI comienzan con /api/products
     $router->addResource('Products', '/api/products');
 
     return $router;
@@ -1262,10 +1262,10 @@ Si está utilizando módulos en su aplicación, es mejor utilizar el método `ad
 use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
 $di['router'] = function () {
-    // Use the annotations router
+    // Usar las anotaciones del router
     $router = new RouterAnnotations(false);
 
-    // Read the annotations from Backend\Controllers\ProductsController if the URI starts with /api/products
+    // Leer las anotaciones desde Backend\Controllers\ProductsController si la URI comienza con /api/products
     $router->addModuleResource('backend', 'Products', '/api/products');
 
     return $router;
@@ -1284,7 +1284,7 @@ Necesita agregar el código a continuación en su archivo bootstrap (por ejemplo
 <?php
 
 /**
- * Add routing capabilities
+ * Agregar capacidades de ruteo
  */
 $di->set(
     'router',
