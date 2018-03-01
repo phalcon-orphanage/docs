@@ -1,12 +1,12 @@
-# Class **Phalcon\\Acl\\Adapter\\Memory**
+# Classe **Phalcon\\Acl\\Carte\\Memory**
 
-*extends* abstract class [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+*extends* classe abstraite [Phalcon\Acl\Carte](/en/3.2/api/Phalcon_Acl_Adapter)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface)
+*implémente* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Source sur GitHub</a>
 
-Manages ACL lists in memory
+Gère les listes ACL dans la mémoire
 
 ```php
 <?php
@@ -71,15 +71,15 @@ foreach ($privateResources as $resource => $actions) {
 
 ```
 
-## Methods
+## Méthodes
 
 public **__construct** ()
 
-Phalcon\\Acl\\Adapter\\Memory constructor
+Phalcon\\Acl\\Carte\\Memory constructeur
 
 public **addRole** (*RoleInterface* | *string* $role, [*array* | *string* $accessInherits])
 
-Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example:
+Ajoute un rôle à la liste de contrôle d'accès. Le deuxième paramètre permet d'hériter d'accéder aux données à partir d'autres rôles existants Exemple:
 
 ```php
 <?php
@@ -93,21 +93,21 @@ $acl->addRole("administrator", "consultant");
 
 ```
 
-public **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
+public **addInherit** (*mixte* $roleName, *mixte* $roleToInherit)
 
-Do a role inherit from another existing role
+Faire un rôle hériter d'un autre rôle existant
 
 public **isRole** (*mixed* $roleName)
 
-Check whether role exist in the roles list
+Vérifier si le rôle existe dans la liste des rôles
 
 public **isResource** (*mixed* $resourceName)
 
-Check whether resource exist in the resources list
+Vérifier si la ressource existe dans la liste des ressources
 
 public **addResource** ([Phalcon\Acl\Resource](/en/3.2/api/Phalcon_Acl_Resource) | *string* $resourceValue, *array* | *string* $accessList)
 
-Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example:
+Ajoute une ressource à la liste des listes de contrôle d'accès Les noms d'accès peuvent être une action particulière, par exemple rechercher, mettre à jour, supprimer, etc ou une liste d'entre eux Exemple:
 
 ```php
 <?php
@@ -174,7 +174,7 @@ $acl->allow("*", "*", "browse");
 
 public **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-Deny access to a role on a resource You can use '*' as wildcard Example:
+Refuser l'accès à un rôle sur une ressource Vous pouvez utiliser '*' comme caractère générique Exemple:
 
 ```php
 <?php
@@ -195,7 +195,7 @@ $acl->deny("*", "*", "browse");
 
 public **isAllowed** (*RoleInterface* | *RoleAware* | *string* $roleName, *ResourceInterface* | *ResourceAware* | *string* $resourceName, *mixed* $access, [*array* $parameters])
 
-Check whether a role is allowed to access an action from a resource
+Vérifier si un rôle est autorisé à accéder à une action à partir d'une ressource
 
 ```php
 <?php
