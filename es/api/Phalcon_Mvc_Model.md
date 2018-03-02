@@ -4,11 +4,11 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).
+Phalcon\\Mvc\\Model conecta objetos comerciales y tablas de bases de datos para crear un modelo de dominio persistente donde la lógica y los datos se presentan en una envoltura. Es una implementación del mapeo-relacional de objetos (ORM).
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
+Un modelo representa la información (datos) de la aplicación y las reglas para manipular esos datos. Los modelos se utilizan principalmente para gestionar las reglas de interacción con una tabla de base de datos correspondiente. En la mayoría de los casos, cada tabla en su base de datos corresponderá a un modelo en su aplicación. La mayor parte de la lógica de negocios de su aplicación se concentrará en los modelos.
 
-Phalcon\\Mvc\\Model is the first ORM written in Zephir/C languages for PHP, giving to developers high performance when interacting with databases while is also easy to use.
+Phalcon\\Mvc\\Model es el primer ORM escrito en lenguaje Zephir/C para PHP, lo que otorga a los desarrolladores un alto rendimiento cuando se interactúa con bases de datos mientras que también es fácil de usar.
 
 ```php
 <?php
