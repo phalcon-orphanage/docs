@@ -370,8 +370,8 @@ $app->get(
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $content = "<h1>This is order: {$name}!</h1>";
-        $app->response->setContent($content);
+        $content = "<h1>Это заказ: {$name}!</h1>";
+        $app->response->setContext($content);
         $app->response->send();
     }
 );
@@ -506,8 +506,8 @@ class OrdersController extends Controller
 
     public function show($name)
     {
-        $content = "<h1>This is order: {$name}!</h1>";
-        $this->response->setContent($content);
+        $content = "<h1>Это заказ: {$name}!</h1>";
+        $this->response->setContext($content);
 
         return $this->response;
     }
@@ -1126,7 +1126,7 @@ $app->get(
 
 ## Ответ приложения
 
-You can also use the `Phalcon\Http\Response` object to return responses to the caller. The Response object has a lot of useful methods that make returning responses much easier.
+Существует возможность использовать объект `Phalcon\Http\Response`, чтобы вернуть ответ вызывающей стороне. Объект Response имеет много полезных методов, которые делают работу с возвращаемым ответом более лёгкой.
 
 ```php
 $app->get(
@@ -1505,7 +1505,7 @@ class CacheMiddleware implements MiddlewareInterface
 
 ## События в Middleware
 
-[События](#events), вызываемые для нашего приложения, также вызываются внутри класса реализующего интерфейс `Phalcon\Mvc\Micro\MiddlewareInterface`. This offers great flexibility and power for developers since we can interact with the request process.
+[События](#events), вызываемые для нашего приложения, также вызываются внутри класса реализующего интерфейс `Phalcon\Mvc\Micro\MiddlewareInterface`. Это обеспечивает большую гибкость и более широкие возможности для разработчиков, поскольку можем взаимодействовать с обработкой запроса.
 
 <a name='middleware-events-api'></a>
 
@@ -1588,7 +1588,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 #### Not Found Middleware
 
-Когда этот middleware обработан, это означает, что запрашивающему IP разрешен доступ к нашему приложению. Приложение попытается сопоставить маршрут, и если он не будет найден сработает событие `beforeNotFound`. We will stop the processing then and send back to the user the relevant 404 response. Этот middleware прикреплен к событию `before` нашего Micro приложения
+Когда этот middleware обработан, это означает, что запрашивающему IP разрешен доступ к нашему приложению. Приложение попытается сопоставить маршрут, и если он не будет найден сработает событие `beforeNotFound`. Тогда мы прекратим обработку и вернем пользователю соответствующий ответ 404. Этот middleware прикреплен к событию `before` нашего Micro приложения
 
 ```php
 <?php
@@ -2004,7 +2004,7 @@ $app->get(
 
 # Обработка ошибок
 
-The `Phalcon\Mvc\Micro` application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
+Также, `Phalcon\Mvc\Micro` приложение имеет метод `error`, который может быть использован для перехвата ошибок порождённых исключениями. Следующий фрагмент кода показывает основное использование этой возможности:
 
 ```php
 <?php

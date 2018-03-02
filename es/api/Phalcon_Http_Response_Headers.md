@@ -1,41 +1,41 @@
-# Class **Phalcon\\Http\\Response\\Headers**
+# Clase **Phalcon\\Http\\Response\\Headers**
 
-*implements* [Phalcon\Http\Response\HeadersInterface](/en/3.2/api/Phalcon_Http_Response_HeadersInterface)
+*implementa* [Phalcon\Http\Response\HeadersInterface](/en/3.2/api/Phalcon_Http_Response_HeadersInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/response/headers.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/response/headers.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-This class is a bag to manage the response headers
+Esta clase es una bolsa o contenedor para administrar las cabeceras de la respuesta
 
-## Methods
+## Métodos
 
 public **set** (*mixed* $name, *mixed* $value)
 
-Sets a header to be sent at the end of the request
+Configura una cabecera que será enviada al final de una solicitud
 
 public **get** (*mixed* $name)
 
-Gets a header value from the internal bag
+Obtiene el valor de una cabecera desde la bolsa interna
 
 public **setRaw** (*mixed* $header)
 
-Sets a raw header to be sent at the end of the request
+Establece una cabecera sin procesar que será enviada al final de la solicitud
 
 public **remove** (*mixed* $header)
 
-Removes a header to be sent at the end of the request
+Elimina una cabecera que será enviada al final de la solicitud
 
 public **send** ()
 
-Sends the headers to the client
+Envía las cabeceras al cliente
 
 public **reset** ()
 
-Reset set headers
+Restablece las cabeceras configuradas
 
 public **toArray** ()
 
-Returns the current headers as an array
+Devuelve las cabeceras actuales como un arreglo
 
 public static **__set_state** (*array* $data)
 
-Restore a \\Phalcon\\Http\\Response\\Headers object
+Restaura un objeto \\Phalcon\\Http\\Response\\Headers
