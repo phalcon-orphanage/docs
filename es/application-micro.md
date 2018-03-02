@@ -429,7 +429,7 @@ $app->get(
 
 #### Controladores
 
-With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
+With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Estas últimas utilizan la arquitectura de micro pero se amplían para que utilicen más características que las aplicaciones Micro pero no tantas como lo hace una aplicación completa.
 
 In medium applications you can organize handlers in controllers.
 
