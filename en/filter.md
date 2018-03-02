@@ -49,18 +49,22 @@ The `Phalcon\Filter` component provides a set of commonly used filters and data 
 ## Types of Built-in Filters
 The following are the built-in filters provided by this component:
 
-| Name      | Description                                                                             |
-|-----------|-----------------------------------------------------------------------------------------|
-| string    | Strip tags and encode HTML entities, including single and double quotes.                |
-| email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.             |
-| int       | Remove all characters except digits, plus and minus sign.                               |
-| float     | Remove all characters except digits, dot, plus and minus sign.                          |
-| alphanum  | Remove all characters except [a-zA-Z0-9]                                                |
-| striptags | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function |
-| trim      | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function             |
-| lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function |
-| url       | Remove all characters except letters, digits and `|`$-_.+!*'(),{}[]<>#%";/?:@&=.^~\\`   |
-| upper     | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function |
+| Name          | Description                                                                                                   |
+|---------------|---------------------------------------------------------------------------------------------------------------|
+| string        | Strip tags and encode HTML entities, including single and double quotes                                       |
+| email         | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`                                    |
+| int           | Remove all characters except digits, plus and minus sign                                                      |
+| int!          | Convert the value to an integer value using [intval](http://php.net/manual/en/function.intval.php) function   |
+| absint        | Gets the absolute value of a value that was converted to integer                                              |
+| float         | Remove all characters except digits, dot, plus and minus sign                                                 |
+| float!        | Convert the value to an float value using [floatval](http://php.net/manual/en/function.floatval.php) function |
+| alphanum      | Remove all characters except [a-zA-Z0-9]                                                                      |
+| striptags     | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function                       |
+| special_chars | Escape '"<>& and characters with ASCII value less than 32                                                     |
+| trim          | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function                                   |
+| lower         | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function                       |
+| url           | Remove all characters except letters, digits and `|`$-_.+!*'(),{}[]<>#%";/?:@&=.^~\\`                         |
+| upper         | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function                       |
 
 <a name='sanitizing'></a>
 ## Sanitizing data

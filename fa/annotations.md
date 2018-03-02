@@ -1,38 +1,38 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Annotations Parser</a> 
+      <a href="#overview">حاشیه نویسی پارسر</a> 
       <ul>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">کارخانه</a>
         </li>
         <li>
-          <a href="#reading">Reading Annotations</a>
+          <a href="#reading">خواندن حاشیه نویسی ها</a>
         </li>
         <li>
-          <a href="#types">Types of Annotations</a>
+          <a href="#types">انواع حاشیه نویسی</a>
         </li>
         <li>
-          <a href="#usage">Practical Usage</a> 
+          <a href="#usage">کاربرد عملی</a> 
           <ul>
             <li>
-              <a href="#usage-cache">Cache Enabler with Annotations</a>
+              <a href="#usage-cache">مخزن توانمندساز با حاشیه نویسی</a>
             </li>
             <li>
-              <a href="#usage-access-management">Private/Public areas with Annotations</a>
+              <a href="#usage-access-management">مناطق خصوصی/عمومی در حاشیه نویسی</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#adapters">Annotations Adapters</a> 
+          <a href="#adapters">آداپتورهای حاشیه نویسی</a> 
           <ul>
             <li>
-              <a href="#adapters-custom">Implementing your own adapters</a>
+              <a href="#adapters-custom">پیاده سازی آداپتورهای خود را</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#resources">External Resources</a>
+          <a href="#resources">منابع خارجی</a>
         </li>
       </ul>
     </li>
@@ -41,67 +41,66 @@
 
 <a name='overview'></a>
 
-# Annotations Parser
+# حاشیه نویسی پارسر
 
-It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
+این اولین بار است که حاشیه نویسی پارسر در C در دنیای PHP نوشته می شود. `فالکون/حاشیه نویسی`یک مولفه هدف کلی است که سهولت تجزیه و ذخیره کردن در کلاس های PHP را برای استفاده شدن در نرم افزارها، مهیا می کند.
 
-Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
+حاشیه نویسی از داک بلاک ها در کلاس ها، روش ها و مشخصات خوانده می شود. حاشیه نویسی می تواند در هر موقعیتی در داک بلاک قرار گیرد:
 
 ```php
 <?php
 
 /**
- * This is the class description
+ * این توصیف کلاس است 
  *
- * @AmazingClass(true)
- */
-class Example
+ * کلاس شگفت انگیز (درست)
+ */
+مثال کلاس
 {
     /**
-     * This a property with a special feature
-     *
-     * @SpecialFeature
-     */
-    protected $someProperty;
+      * این ملک با یک ویژگی خاص است
+      *
+     * @ویژگی خاص
+      */
+     $someProperty محافظت شده است
 
-    /**
-     * This is a method
-     *
-     * @SpecialFeature
-     */
-    public function someMethod()
-    {
-        // ...
+     /**
+      * این یک روش است
+      *
+      *@ویژگی خاص
+      */
+     تابع عمومی someMethod()
+     {
+         // ...
     }
 }
 ```
 
-An annotation has the following syntax:
+حاشیه نویسی دارای نحو زیر است:
 
 ```php
 /**
- * @Annotation-Name
- * @Annotation-Name(param1, param2, ...)
+ * @حاشیه-نویسی نام
+ * @حاشیه نویسی نام (پارامتر 1، پارامتر 2، ...)
  */
 ```
 
-Also, an annotation can be placed at any part of a docblock:
+موقعیتی در داک بلاک قرار گیرد:
 
 ```php
 <?php
 
 /**
- * This a property with a special feature
  *
- * @SpecialFeature
+ * ویژگی خاص@
  *
- * More comments
+ * نظرات بیشتر
  *
- * @AnotherSpecialFeature(true)
+ * ویژگی ویژه دیگر@ (درست)
  */
 ```
 
-The parser is highly flexible, the following docblock is valid:
+تجزیه کننده بسیار انعطاف پذیر است، مستند بلوک زیر معتبر است:
 
 ```php
 <?php
@@ -114,25 +113,25 @@ someParameter='the value', false
  **/
 ```
 
-However, to make the code more maintainable and understandable it is recommended to place annotations at the end of the docblock:
+با این حال، برای ایجاد یک کد قابل اطمینان تر و قابل درک تر توصیه می شود که حاشیه نویسی را در انتهای مستند بلاک قرار دهید:
 
 ```php
 <?php
 
 /**
- * This a property with a special feature
- * More comments
- *
- * @SpecialFeature({someParameter='the value', false})
- * @AnotherSpecialFeature(true)
- */
+  * این ملک با یک ویژگی خاص است
+  * نظرات بیشتر
+  *
+  * ویژگی ویژه@({برخی پارامتر = 'مقدار'، اشتباه})
+  * ویژگی ویژه دیگر@(واقعی)
+  */
 ```
 
 <a name='factory'></a>
 
-## Factory
+## کارخانه
 
-There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
+آداپتورهای حاشیه نویسی زیادی در دسترس هستند (به [آداپتورها](#adapters)مراجعه کنید). چیزی که شما استفاده می کنید بستگی به نیازهای نرم افزارتان دارد. روش سنتی نمونه سازی چنین آداپتوری به شرح زیر است:
 
 ```php
 <?php
@@ -144,7 +143,7 @@ $reader = new MemoryAdapter();
 // .....
 ```
 
-However you can also utilize the factory method to achieve the same thing:
+با این وجود شما می توانید از روش کارخانه برای دستیابی به همان کار استفاده کنید:
 
 ```php
 <?php
@@ -161,13 +160,13 @@ $options = [
 $annotations = Factory::load($options);
 ```
 
-The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
+لودر کارخانه انعطاف پذیری بیشتری هنگام نمونه سازی آداپتورهای حاشیه نویسی از فایل های پیکربندی فراهم می کند.
 
 <a name='reading'></a>
 
-## Reading Annotations
+## خواندن حاشیه نویسی ها
 
-A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
+بازتاب به منظور دریافت حاشیه نویسی های تعریف شده در یک کلاسی که از واسط شیء محور استفاده می کند به کار گرفته می شود:
 
 ```php
 <?php
@@ -195,15 +194,15 @@ foreach ($annotations as $annotation) {
 }
 ```
 
-The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter. Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
+پروسه خواندن حاشیه نویسی بسیار سریع است، با این حال، به دلایل عملکردی توصیه می شود که حاشیه نویسی های تجزیه شده را با استفاده از یک آداپتور ذخیره کنید. آداپتورها حاشیه نویسی فرآوری شده را با اجتناب از نیاز تجزیه حاشیه نویسی دوباره و دوباره ذخیره می کنند.
 
-`Phalcon\Annotations\Adapter\Memory` was used in the above example. This adapter only caches the annotations while the request is running and for this reason the adapter is more suitable for development. There are other adapters to swap out when the application is in production stage.
+`فالکن/حاشیه نویسی/آداپتور/حافظه`در مثال بالا استفاده شده بود. این آداپتور تنها زمانیکه درخواست، در حال اجرا است، حاشیه نویسی را ذخیره می کند و به همین دلیل، این آداپتور برای توسعه مناسب تر است. برای مبادله کردن به خارج، هنگامیکه نرم افزار در مرحله ی تولید است، آداپتورهای دیگری وجود دارد.
 
 <a name='types'></a>
 
-## Types of Annotations
+## انواع حاشیه نویسی
 
-Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
+حاشیه نویسی ها ممکن است پارامتر داشته باشند و یا نداشته باشند. پارامتر می تواند یک معنی اصلی ساده (رشته ها، اعداد، بولین، تهی) ، یک آرایه، یک لیست درهم و یا حاشیه نویسی دیگر باشد:
 
 ```php
 <?php
@@ -260,15 +259,15 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 <a name='usage'></a>
 
-## Practical Usage
+## کاربرد عملی
 
-Next we will explain some practical examples of annotations in PHP applications:
+بعدا، مثال های کاربردی از حاشیه نویسی در نرم افزارهای PHP را توضیح خواهیم داد:
 
 <a name='usage-cache'></a>
 
-### Cache Enabler with Annotations
+### مخزن توانمندساز با حاشیه نویسی
 
-Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
+بیایید وانمود کنیم که واپای زیر را ایجاد کرده ایم و شما می خواهید یک پلاگین ایجاد کنید که اگر آخرین اقدام انجام شده قابل ذخیره باشد، ذخیره سازی را به صورت خودکار شروع کند. اول از همه، ما یک پلاگین را در خدمات نمایندگی ثبت می کنیم تا وقتی یک مسیر اجرا می شود، مطلع شود:
 
 ```php
 <?php
@@ -293,7 +292,7 @@ $di['dispatcher'] = function () {
 };
 ```
 
-`CacheEnablerPlugin` is a plugin that intercepts every action executed in the dispatcher enabling the cache if needed:
+`مخزن پلاگین فعال` یک پلاگین است که هر عملی را که در توزیع کننده امکاناتی، که اگر نیاز باشد عمل ذخیره سازی را فعال می کند، متوقف می سازد:
 
 ```php
 <?php
@@ -343,7 +342,7 @@ class CacheEnablerPlugin extends Plugin
 }
 ```
 
-Now, we can use the annotation in a controller:
+حالا می توانیم حاشیه نویسی را در یک واپا استفاده کنیم:
 
 ```php
 <?php
@@ -381,9 +380,9 @@ class NewsController extends Controller
 
 <a name='usage-access-management'></a>
 
-### Private/Public areas with Annotations
+### مناطق خصوصی/عمومی در حاشیه نویسی
 
-You can use annotations to tell the ACL which controllers belong to the administrative areas:
+شما می توانید از حاشیه نویسی برای اینکه به ACL اطلاع دهید کدام واپاها به مناطق اجرایی تعلق دارند، استفاده کنید:
 
 ```php
 <?php
@@ -421,8 +420,8 @@ class SecurityAnnotationsPlugin extends Plugin
         $annotations = $this->annotations->get($controllerName);
 
         // The controller is private?
-        if ($annotations->getClassAnnotations()->has('Private')) {
-            // Check if the session variable is active?
+        اگر ($annotations->getClassAnnotations()->has('Private')) {
+            // بررسی کنید آیا متغیر جلسه فعال است?
             if (!$this->session->get('auth')) {
 
                 // The user is no logged redirect to login
@@ -445,25 +444,25 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## Annotations Adapters
+## آداپتورهای حاشیه نویسی
 
-This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
+این مولفه از آداپتورها برای ذخیره کردن یا ذخیره نکردن حاشیه نویسی تجزیه و پردازش شده استفاده می کند؛ بنابراین، توسعه عملکرد یا فراهم کردن امکانات برای توسعه/آزمایش:
 
-| Class                                   | Description                                                                                                                                                                       |
-| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Annotations\Adapter\Memory` | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
-| `Phalcon\Annotations\Adapter\Files`  | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
-| `Phalcon\Annotations\Adapter\Apc`    | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                        |
-| `Phalcon\Annotations\Adapter\Xcache` | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                     |
+| کلاس                                   | توضیحات                                                                                                                                                                                     |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `فالکون/حاشیه نویسی/آداپتور/حافظه`     | این حاشیه نویسی ها فقط در حافظه ذخیره می شوند. هنگامیکه درخواست پایان می یابد، نهانگاه با بارگذاری دوباره حاشیه نویسی در هر درخواست، پاکسازی می شود. این آداپتور برای مرحله توسعه مناسب است |
+| `فالکون/حاشیه نویسی/آداپتور/فایل`      | حاشیه نویسی های تجزیه و پردازش شده به طور دائمی در فایل های PHP که عملکرد را توسعه می دهد، ذخیره می شوند. این آداپتور باید همراه با نهانگاه بایت کد استفاده شود.                            |
+| `فالکون/حاشیه نویسی/آداپتور/ای پی سی`  | حاشیه نویسی های تجزیه و پردازش شده بطور دائمی در حافظه APC که عملکرد را توسعه می دهد، ذخیره می شوند. این یک آداپتور سریع است                                                                |
+| `فالکون/حاشیه نویسی/آداپتور/مخزن ایکس` | حاشیه نویسی های پردازش شده بطور دائمی در مخزن ایکس که عملکرد را توسعه می دهد، ذخیره می شوند. این نیز یک آداپتور سریع می باشد                                                                |
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### پیاده سازی آداپتورهای خود را
 
-The `Phalcon\Annotations\AdapterInterface` interface must be implemented in order to create your own annotations adapters or extend the existing ones.
+واسط `فالکون/حاشیه نویسی/آداپتور رابط` باید به منظور ایجاد آداپتورهای حاشیه نویسی خود یا گسترش آنهایی که وجود دارند، اجرا شود.
 
 <a name='resources'></a>
 
-## External Resources
+## منابع خارجی
 
-* [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
+* [آموزش: ایجاد یک مدل سفارشی آغازگر با استفاده از حاشیه نویسی](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
