@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">MVC Приложения</a> <ul>
+      <a href="#overview">MVC приложения</a> <ul>
         <li>
-          <a href="#manual-bootstrapping">Ручная загрузка</a>
+          <a href="#manual-bootstrapping">Ручная обработка</a>
         </li>
         <li>
           <a href="#single-vs-module">Одномодульные и многомодульные приложения</a> <ul>
@@ -19,7 +19,7 @@
           <a href="#events">События приложения</a>
         </li>
         <li>
-          <a href="#resources">Внешние источники</a>
+          <a href="#resources">Дополнительная литература</a>
         </li>
       </ul>
     </li>
@@ -28,7 +28,7 @@
 
 <a name='overview'></a>
 
-# MVC Приложения
+# MVC приложения
 
 Вся сложная работа по дирижированию работой MVC в Phalcon обычно выполняется с помощью `Phalcon\Mvc\Application`. Этот компонент инкапсулирует все сложные операции, требуемые в фоновом режиме, отвечает за создание каждого необходимого компонента и интеграцию его с проектом, позволяя паттерну MVC работать как положено.
 
@@ -67,7 +67,7 @@ $response = $application->handle();
 
 <a name='manual-bootstrapping'></a>
 
-## Ручная загрузка
+## Ручная обработка
 
 Если вы не желаете использовать `Phalcon\Mvc\Application`, код выше должен быть изменен следующим образом:
 
@@ -592,6 +592,6 @@ $eventsManager->attach(
 
 <a name='resources'></a>
 
-## Внешние источники
+## Дополнительная литература
 
 - [Примеры MVC приложений на GitHub](https://github.com/phalcon/mvc)
