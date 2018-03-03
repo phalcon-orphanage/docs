@@ -448,7 +448,7 @@ class SignupController extends Controller
 }
 ```
 
-Si haces clic en el botón "Registrar" otra vez, verás una página en blanco. The name and email input provided by the user should be stored in a database. Según las pautas MVC, las interacciones de la base de datos deben hacerse a través de modelos con el fin de garantizar la limpieza de código orientado a objetos.
+Si haces clic en el botón "Registrar" otra vez, verás una página en blanco. El nombre y correo electrónico proporcionados por el usuario deben estar guardados en una base de datos. Según las pautas MVC, las interacciones de la base de datos deben hacerse a través de modelos con el fin de garantizar la limpieza de código orientado a objetos.
 
 <a name='model'></a>
 
@@ -467,7 +467,7 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
+Un modelo debe ubicarse en el directorio `app/models` (en este caso `app/models/Users.php`). El modelo se asigna a la tabla "users":
 
 ```php
 <?php
@@ -488,7 +488,7 @@ class Users extends Model
 
 ## Establecer una conexión de base de datos
 
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. Una conexión de base de datos es justo un servicio mas que tiene nuestra aplicación y que puede ser utilizado para varios componentes:
 
 ```php
 <?php
