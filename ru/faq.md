@@ -1,16 +1,16 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">FAQ - Frequently Asked Questions</a>
+      <a href="#overview">FAQ - Часто задаваемые вопросы</a>
       <ul>
         <li>
-          <a href="#what-is-phalcon">What is Phalcon</a>
+          <a href="#what-is-phalcon">Что такое Phalcon</a>
         </li>
         <li>
-          <a href="#how-phalcon-works">How Phalcon Works</a>
+          <a href="#how-phalcon-works">Как работает Phalcon</a>
         </li>
         <li>
-          <a href="#how-can-i-help">How do I help</a>
+          <a href="#how-can-i-help">Чем я могу помочь</a>
         </li>
       </ul>
     </li>
@@ -56,6 +56,6 @@ Phalcon опирается на некоторые внутренние аспе
 
 <a name='how-can-i-help'></a>
 
-## How can I help
+## Чем я могу помочь
 
 Присоединяйтесь к нашему [Discord](https://phalcon.link/discord) каналу, посетите нас на [GitHub](https://github.com/phalcon), или на сайте [https://phalconphp.com/](https://phalconphp.com/en/).

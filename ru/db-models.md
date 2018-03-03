@@ -46,37 +46,37 @@
           <a href="#delete-records">Удаление записей</a>
         </li>
         <li>
-          <a href="#hydration-modes">Hydration Modes</a>
+          <a href="#hydration-modes">Режимы гидрации</a>
         </li>
         <li>
           <a href="#table-prefixes">Префиксы таблицы</a>
         </li>
         <li>
-          <a href="#identity-columns">Auto-generated identity columns</a>
+          <a href="#identity-columns">Автоматически генерируемый столбец</a>
         </li>
         <li>
-          <a href="#skipping-columns">Skipping Columns</a>
+          <a href="#skipping-columns">Пропуск столбцов</a>
         </li>
         <li>
           <a href="#dynamic-updates">Динамические обновления</a>
         </li>
         <li>
-          <a href="#column-mapping">Independent Column Mapping</a>
+          <a href="#column-mapping">Независимое сопоставление столбцов</a>
         </li>
         <li>
-          <a href="#record-snapshots">Record Snapshots</a>
+          <a href="#record-snapshots">Запись снимков</a>
         </li>
         <li>
-          <a href="#different-schemas">Pointing to a different schema</a>
+          <a href="#different-schemas">Ссылка на другую схему</a>
         </li>
         <li>
           <a href="#multiple-databases">Настройка нескольких баз данных</a>
         </li>
         <li>
-          <a href="#injecting-services-into-models">Injecting services into Models</a>
+          <a href="#injecting-services-into-models">Внедрение сервисов в модели</a>
         </li>
         <li>
-          <a href="#disabling-enabling-features">Disabling/Enabling Features</a>
+          <a href="#disabling-enabling-features">Отключение/включение возможностей</a>
         </li>
         <li>
           <a href="#stand-alone-component">Самостоятельный компонент</a>
@@ -1232,7 +1232,7 @@ class Robots extends Model
 
 <a name='hydration-modes'></a>
 
-## Hydration Modes
+## Режимы гидрации
 
 As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object representing a row in the database. These objects can be modified and saved again to persistence:
 
@@ -1310,7 +1310,7 @@ foreach ($robots as $robot) {
 
 <a name='table-prefixes'></a>
 
-## Table prefixes
+## Префиксы таблицы
 
 If you want all your tables to have certain prefix and without setting source in all models you can use the `Phalcon\Mvc\Model\Manager` and the method `setModelPrefix()`:
 
@@ -1333,7 +1333,7 @@ echo $robots->getSource(); // will return wp_robots
 
 <a name='identity-columns'></a>
 
-## Auto-generated identity columns
+## Автоматически генерируемый столбец
 
 Some models may have identity columns. These columns usually are the primary key of the mapped table. `Phalcon\Mvc\Model` can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
 
@@ -1367,7 +1367,7 @@ class Robots extends Model
 
 <a name='skipping-columns'></a>
 
-## Skipping Columns
+## Пропуск столбцов
 
 To tell `Phalcon\Mvc\Model` that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
 
@@ -1454,7 +1454,7 @@ class Robots extends Model
 
 <a name='dynamic-updates'></a>
 
-## Dynamic Updates
+## Динамические обновления
 
 SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
 
@@ -1478,7 +1478,7 @@ class Robots extends Model
 
 <a name='column-mapping'></a>
 
-## Independent Column Mapping
+## Независимое сопоставление столбцов
 
 The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
 
@@ -1562,7 +1562,7 @@ The independent column map allows you to:
 
 <a name='record-snapshots'></a>
 
-## Record Snapshots
+## Запись снимков
 
 Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what fields are changed according to the data queried from the persistence:
 
@@ -1662,7 +1662,7 @@ array(0) {
 
 <a name='different-schemas'></a>
 
-## Pointing to a different schema
+## Ссылка на другую схему
 
 If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
 
@@ -1684,7 +1684,7 @@ class Robots extends Model
 
 <a name='multiple-databases'></a>
 
-## Setting multiple databases
+## Настройка нескольких баз данных
 
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Model` needs to connect to the database it requests the `db` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
 
@@ -1819,7 +1819,7 @@ $robot = Robots::findFirst('id = 101');
 
 <a name='injecting-services-into-models'></a>
 
-## Injecting services into Models
+## Внедрение сервисов в модели
 
 You may be required to access the application services within a model, the following example explains how to do that:
 
@@ -1851,7 +1851,7 @@ The `notSaved` event is triggered every time that a `create` or `update` action 
 
 <a name='disabling-enabling-features'></a>
 
-## Disabling/Enabling Features
+## Отключение/включение возможностей
 
 In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly. According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
 
@@ -1868,29 +1868,29 @@ Model::setup(
 );
 ```
 
-The available options are:
+Доступные опции:
 
-| Option                | Description                                                                               | По умолчанию |
-| --------------------- | ----------------------------------------------------------------------------------------- |:------------:|
-| astCache              | Enables/Disables callbacks, hooks and event notifications from all the models             |    `null`    |
-| cacheLevel            | Sets the cache level for the ORM                                                          |     `3`      |
-| castOnHydrate         |                                                                                           |   `false`    |
-| columnRenaming        | Enables/Disables the column renaming                                                      |    `true`    |
-| disableAssignSetters  | Allow disabling setters in your model                                                     |   `false`    |
-| enableImplicitJoins   |                                                                                           |    `true`    |
-| enableLiterals        |                                                                                           |    `true`    |
-| escapeIdentifiers     |                                                                                           |    `true`    |
-| events                | Enables/Disables callbacks, hooks and event notifications from all the models             |    `true`    |
-| exceptionOnFailedSave | Enables/Disables throwing an exception when there is a failed `save()`                    |   `false`    |
-| forceCasting          |                                                                                           |   `false`    |
-| ignoreUnknownColumns  | Enables/Disables ignoring unknown columns on the model                                    |   `false`    |
-| lateStateBinding      | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method |   `false`    |
-| notNullValidations    | The ORM automatically validate the not null columns present in the mapped table           |    `true`    |
-| parserCache           |                                                                                           |    `null`    |
-| phqlLiterals          | Enables/Disables literals in the PHQL parser                                              |    `true`    |
-| uniqueCacheId         |                                                                                           |     `3`      |
-| updateSnapshotOnSave  | Enables/Disables updating snapshots on `save()`                                           |    `true`    |
-| virtualForeignKeys    | Enables/Disables the virtual foreign keys                                                 |    `true`    |
+| Опция                 | Описание                                                                                         | По умолчанию |
+| --------------------- | ------------------------------------------------------------------------------------------------ |:------------:|
+| astCache              | Enables/Disables callbacks, hooks and event notifications from all the models                    |    `null`    |
+| cacheLevel            | Устанавливает уровень кэширования в ORM                                                          |     `3`      |
+| castOnHydrate         |                                                                                                  |   `false`    |
+| columnRenaming        | Включает/выключает переименование столбцов                                                       |    `true`    |
+| disableAssignSetters  | Позволяет выключение сеттеров в вашей модели                                                     |   `false`    |
+| enableImplicitJoins   |                                                                                                  |    `true`    |
+| enableLiterals        |                                                                                                  |    `true`    |
+| escapeIdentifiers     |                                                                                                  |    `true`    |
+| events                | Включает/выключает функции обратного вызова, хуки и уведомления о событиях из всех моделей       |    `true`    |
+| exceptionOnFailedSave | Включает/выключает выброс исключения если вызов `save()` завершился неудачей                     |   `false`    |
+| forceCasting          |                                                                                                  |   `false`    |
+| ignoreUnknownColumns  | Включает/выключает игнорирование нераспознанных колонок модели                                   |   `false`    |
+| lateStateBinding      | Включает/выключает позднее статическое связывание метода `Phalcon\Mvc\Model::cloneResultMap()` |   `false`    |
+| notNullValidations    | ORM автоматически проверяет NOT NULL столбцы, присутствующие в таблице                           |    `true`    |
+| parserCache           |                                                                                                  |    `null`    |
+| phqlLiterals          | Включает/выключает литералы в PHQL парсере                                                       |    `true`    |
+| uniqueCacheId         |                                                                                                  |     `3`      |
+| updateSnapshotOnSave  | Включает/выключает обновление снимка при вызове метода `save()`                                  |    `true`    |
+| virtualForeignKeys    | Включает/выключает виртуальные внешние ключи                                                     |    `true`    |
 
 <div class="alert alert-warning">
     <p>
@@ -1900,9 +1900,9 @@ The available options are:
 
 <a name='stand-alone-component'></a>
 
-## Stand-Alone component
+## Самостоятельный компонент
 
-Using `Phalcon\Mvc\Model` in a stand-alone mode can be demonstrated below:
+Ниже показано, как можно использовать `Phalcon\Mvc\Model` в автономном режиме:
 
 ```php
 <?php
@@ -1915,7 +1915,7 @@ use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
 
 $di = new Di();
 
-// Setup a connection
+// Настраиваем соединение
 $di->set(
     'db',
     new Connection(
@@ -1925,24 +1925,24 @@ $di->set(
     )
 );
 
-// Set a models manager
+// Устанавливаем менеджер модели
 $di->set(
     'modelsManager',
     new ModelsManager()
 );
 
-// Use the memory meta-data adapter or other
+// Используем адаптер памяти мета-данных или любой другой
 $di->set(
     'modelsMetadata',
     new MetaData()
 );
 
-// Create a model
+// Создаем модель
 class Robots extends Model
 {
 
 }
 
-// Use the model
+// Используем модель
 echo Robots::count();
 ```

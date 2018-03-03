@@ -1505,7 +1505,7 @@ class CacheMiddleware implements MiddlewareInterface
 
 ## События в Middleware
 
-[События](#events), вызываемые для нашего приложения, также вызываются внутри класса реализующего интерфейс `Phalcon\Mvc\Micro\MiddlewareInterface`. This offers great flexibility and power for developers since we can interact with the request process.
+[События](#events), вызываемые для нашего приложения, также вызываются внутри класса реализующего интерфейс `Phalcon\Mvc\Micro\MiddlewareInterface`. Это обеспечивает большую гибкость и более широкие возможности для разработчиков, поскольку можем взаимодействовать с обработкой запроса.
 
 <a name='middleware-events-api'></a>
 
@@ -1581,7 +1581,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 #### Not Found Middleware
 
-Когда этот middleware обработан, это означает, что запрашивающему IP разрешен доступ к нашему приложению. Приложение попытается сопоставить маршрут, и если он не будет найден сработает событие `beforeNotFound`. We will stop the processing then and send back to the user the relevant 404 response. Этот middleware прикреплен к событию `before` нашего Micro приложения
+Когда этот middleware обработан, это означает, что запрашивающему IP разрешен доступ к нашему приложению. Приложение попытается сопоставить маршрут, и если он не будет найден сработает событие `beforeNotFound`. Тогда мы прекратим обработку и вернем пользователю соответствующий ответ 404. Этот middleware прикреплен к событию `before` нашего Micro приложения
 
 ```php
 <?php
