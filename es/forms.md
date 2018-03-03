@@ -345,7 +345,7 @@ foreach ($messages as $message) {
 
 <a name='filtering'></a>
 
-## Filtering
+## Filtrado
 
 A form is also able to filter data before it is validated. You can set filters in each element:
 
@@ -414,7 +414,7 @@ Once the form is rendered if there is no default values assigned to the elements
 <?php echo $form->render('name'); ?>
 ```
 
-You can validate the form and assign the values from the user input in the following way:
+Puede validar el formulario y asignar los valores de la entrada del usuario de la siguiente manera:
 
 ```php
 <?php
@@ -517,7 +517,7 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 
 <a name='event-callback'></a>
 
-## Event Callbacks
+## Evento Callbacks
 
 Whenever forms are implemented as classes, the callbacks: `beforeValidation()` and `afterValidation()` can be implemented in the form's class to perform pre-validations and post-validations:
 
@@ -657,7 +657,7 @@ class MyElement extends Element
 }
 ```
 
-## Forms Manager
+## Administrador de formularios
 
 This component provides a forms manager that can be used by the developer to register forms and access them via the service locator:
 
