@@ -1,6 +1,6 @@
 # Class **Phalcon\\Assets\\Resource**
 
-*implements* [Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface)
+*uygulamalar* [Phalcon\Varlıklar\Kaynak Arayüz](/en/3.2/api/Phalcon_Assets_ResourceInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -17,19 +17,19 @@ $resource = new \Phalcon\Assets\Resource("js", "javascripts/jquery.js");
 
 public **getType** ()
 
-public **getPath** ()
+herkese açık **Yol bul** ()
 
-public **getLocal** ()
+herkese açık **Yerel ol** ()
 
-public **getFilter** ()
+herkese açık **Filtreyi al** ()
 
-public **getAttributes** ()
+herkese açık **Özellikleri al** ()
 
-public **getSourcePath** ()
+herkese açık **Kaynak Yolu al** ()
 
 ...
 
-public **getTargetPath** ()
+herkese açık **Hedef Yolu al** ()
 
 ...
 
@@ -39,7 +39,7 @@ public **getTargetUri** ()
 
 public **__construct** (*string* $type, *string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
-Phalcon\\Assets\\Resource constructor
+Phalcon\\varlıklar\\Kaynak Okuyucu
 
 public **setType** (*mixed* $type)
 

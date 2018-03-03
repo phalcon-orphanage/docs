@@ -17,7 +17,7 @@
             <li>
               <a href="#nginx-phalcon-configuration">Phalcon configuration</a> <ul>
                 <li>
-                  <a href="#nginx-phalcon-configuration-basic">Basic configuration</a>
+                  <a href="#nginx-phalcon-configuration-basic">تنظیمات اولیه</a>
                 </li>
               </ul>
             </li>
@@ -33,10 +33,10 @@
                   <a href="#apache-document-root">Document root</a>
                 </li>
                 <li>
-                  <a href="#apache-apache-configuration">Apache configuration</a>
+                  <a href="#apache-apache-configuration">پیکربندی آپاچی</a>
                 </li>
                 <li>
-                  <a href="#apache-virtual-hosts">Virtual Hosts</a>
+                  <a href="#apache-virtual-hosts">میزبان مجازی</a>
                 </li>
               </ul>
             </li>
@@ -268,7 +268,7 @@ A second `.htaccess` file is located in the `public/` directory, this re-writes 
 
 <a name='apache-apache-configuration'></a>
 
-#### Apache configuration
+#### پیکربندی آپاچی
 
 If you do not want to use `.htaccess` files you can move these configurations to the apache's main configuration file:
 
@@ -293,7 +293,7 @@ If you do not want to use `.htaccess` files you can move these configurations to
 
 <a name='apache-virtual-hosts'></a>
 
-#### Virtual Hosts
+#### میزبان مجازی
 
 And this second configuration allows you to install a Phalcon application in a virtual host:
 

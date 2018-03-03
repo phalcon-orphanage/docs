@@ -1,6 +1,6 @@
 # Abstract class **Phalcon\\Cache\\Backend**
 
-*implements* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
+*uygulamalar* [Phalcon\Önbellek\Arkayüz Ara birimi](/en/3.2/api/Phalcon_Cache_BackendInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -8,51 +8,51 @@ This class implements common functionality for backend adapters. A backend cache
 
 ## Methods
 
-public **getFrontend** ()
+herkese açık **Önyüz al** ()
 
 ...
 
-public **setFrontend** (*mixed* $frontend)
+herkese açık **Önyüz ayarla** (*karışık* $başlangıç aşaması)
 
 ...
 
-public **getOptions** ()
+herkese açık **Seçenekleri al** ()
 
 ...
 
-public **setOptions** (*mixed* $options)
+herkese açık **Seçenekleri ayarla** (*karışık* $seçenekler)
 
 ...
 
-public **getLastKey** ()
+herkese açık **Son Anahtarı al** ()
 
 ...
 
-public **setLastKey** (*mixed* $lastKey)
+herkese açık **Son Anahtarı ayarla** (*karışık* $Son Anahtar)
 
 ...
 
-public **__construct** ([Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
+herkese açık **__düzenle** ([Phalcon\Önbellek\Önyüz Ara birimi](/en/3.2/api/Phalcon_Cache_FrontendInterface) $başlangıç aşaması, [*dizi* $seçenekler])
 
-Phalcon\\Cache\\Backend constructor
+Phalcon\\Önbellek\\Arkayüz oluşturucu
 
-public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime])
+herkese açık *karışık* **başlat** (*int* | *dizi* $anahtar Adı, [*int* $ömür])
 
 Starts a cache. The keyname allows to identify the created fragment
 
-public **stop** ([*mixed* $stopBuffer])
+herkese açık **durdur** ([*karışık* $Ara belleği durdur])
 
 Stops the frontend without store any cached content
 
-public **isFresh** ()
+herkese açık **Taze** ()
 
 Checks whether the last cache is fresh or cached
 
-public **isStarted** ()
+herkese açık **Başladı** ()
 
 Checks whether the cache has starting buffering or not
 
-public *int* **getLifetime** ()
+herkese açık *int* **ömür süresi** ()
 
 Gets the last lifetime set
 

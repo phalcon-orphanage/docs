@@ -1,6 +1,6 @@
 # Interface **Phalcon\\Cli\\DispatcherInterface**
 
-*implements* [Phalcon\DispatcherInterface](/en/3.2/api/Phalcon_DispatcherInterface)
+*uygulamalar* [Phalcon\Gönderici arayüzü](/en/3.2/api/Phalcon_DispatcherInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/dispatcherinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
