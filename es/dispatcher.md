@@ -109,7 +109,7 @@ El código anterior carece de validaciones, filtros y controles adicionales, per
 | afterDispatchLoop    | Activa después de salir del bucle de despacho                                                                                                                                                                   | No                           | Listeners             |
 | afterBinding         | Se dispara después de que los modelos están enlazados pero antes de ejecutar la ruta                                                                                                                            | Sí                           | Listeners/Controllers |
 
-The [INVO](/[[language]]/[[version]]/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/[[language]]/[[version]]/acl).
+El [tutorial INVO](/[[language]]/[[version]]/tutorial-invo) muestra cómo tomar ventaja de la implementación de eventos implementando un filtro de seguridad con [ACL](/[[language]]/[[version]]/acl).
 
 En el ejemplo siguiente se muestra cómo adjuntar oyentes (listeners) a este componente:
 
@@ -229,14 +229,14 @@ $this->dispatcher->forward(
 );
 ```
 
-A `forward` action accepts the following parameters:
+Un `forward` acepta los siguientes parámetros:
 
-| Parámetro    | Description                                             |
-| ------------ | ------------------------------------------------------- |
-| `controller` | Un nombre de controlador válido donde reenviar.         |
-| `action`     | Un nombre válido de acción donde reenviar.              |
-| `params`     | An array of parameters for the action.                  |
-| `namespace`  | A valid namespace name where the controller is part of. |
+| Parámetro    | Descripción                                                 |
+| ------------ | ----------------------------------------------------------- |
+| `controller` | Un nombre de controlador válido donde reenviar.             |
+| `action`     | Un nombre válido de acción donde reenviar.                  |
+| `params`     | Un array de parámetros para la acción.                      |
+| `namespace`  | Un espacio de nombres valido donde es parte el controlador. |
 
 <a name='forwarding-events-manager'></a>
 
