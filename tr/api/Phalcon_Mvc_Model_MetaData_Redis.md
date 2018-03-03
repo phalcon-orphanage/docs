@@ -6,7 +6,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/metadata/redis.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Stores model meta-data in the Redis.
+Redis içerisindeki meta veri modellerini depolar.
 
 By default meta-data is stored for 48 hours (172800 seconds)
 
@@ -70,7 +70,7 @@ Phalcon\\Mvc\\Model\\MetaData\\Redis constructor
 
 public **read** (*mixed* $key)
 
-Reads metadata from Redis
+Redis'deki meta bilgilerini okur
 
 public **write** (*mixed* $key, *mixed* $data)
 
@@ -78,15 +78,15 @@ Writes the metadata to Redis
 
 public **reset** ()
 
-Flush Redis data and resets internal meta-data in order to regenerate it
+Tekrar canlandırabilmek için Redis verilerini temizleyin ve dahili meta verilerini sıfırlayın
 
 final protected **_initialize** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $key, *mixed* $table, *mixed* $schema) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Initialize the metadata for certain table
+Belirli bir tabloya yönelik meta verileri başlatın
 
 public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Sets the DependencyInjector container
+DependencyInjector kutusunu ayarlar
 
 public **getDI** () inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
@@ -243,7 +243,7 @@ print_r(
 
 public **getDataTypes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns attributes and their data types
+Nitelikleri ve onlara ait veri türlerini döndürür
 
 ```php
 <?php
@@ -258,7 +258,7 @@ print_r(
 
 public **getDataTypesNumeric** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns attributes which types are numerical
+Türleri sayısal olan nitelikleri döndürür
 
 ```php
 <?php
@@ -273,7 +273,7 @@ print_r(
 
 public *string* **getIdentityField** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns the name of identity field (if one is present)
+(Eğer varsa) kimlik alanının ismini döndürür
 
 ```php
 <?php
@@ -288,7 +288,7 @@ print_r(
 
 public **getBindTypes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns attributes and their bind data types
+Öz nitelikleri ve bunlara ait bağlı veri çeşitlerini döndürür
 
 ```php
 <?php
@@ -303,7 +303,7 @@ print_r(
 
 public **getAutomaticCreateAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns attributes that must be ignored from the INSERT SQL generation
+INSERT SQL nesnesinde görmezden gelinmesi gereken nitelikleri döndürür
 
 ```php
 <?php
@@ -318,7 +318,7 @@ print_r(
 
 public **getAutomaticUpdateAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns attributes that must be ignored from the UPDATE SQL generation
+UPDATE SQL nesnesinde görmezden gelinmesi gereken nitelikleri döndürür
 
 ```php
 <?php
@@ -333,7 +333,7 @@ print_r(
 
 public **setAutomaticCreateAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *array* $attributes) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Set the attributes that must be ignored from the INSERT SQL generation
+INSERT SQL nesnesinde dikkate alınmaması gereken nitelikleri ayarlayın
 
 ```php
 <?php
@@ -349,7 +349,7 @@ $metaData->setAutomaticCreateAttributes(
 
 public **setAutomaticUpdateAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *array* $attributes) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Set the attributes that must be ignored from the UPDATE SQL generation
+UPDATE SQL nesnesinde dikkate alınmaması gereken nitelikleri ayarlayın
 
 ```php
 <?php
@@ -365,7 +365,7 @@ $metaData->setAutomaticUpdateAttributes(
 
 public **setEmptyStringAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *array* $attributes) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Set the attributes that allow empty string values
+Boş dize değerlerine imkan sağlayan öznitelikleri ayarlayın
 
 ```php
 <?php
@@ -381,7 +381,7 @@ $metaData->setEmptyStringAttributes(
 
 public **getEmptyStringAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns attributes allow empty strings
+Boş dizelere imkan veren nitelikleri döndürür
 
 ```php
 <?php
@@ -396,7 +396,7 @@ print_r(
 
 public **getDefaultValues** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns attributes (which have default values) and their default values
+(Varsayılan değerlere sahip olan) öz nitelikler ve bunların varsayılan değerlerini döndürür
 
 ```php
 <?php

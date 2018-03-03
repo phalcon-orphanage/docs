@@ -1,8 +1,8 @@
-# Class **Phalcon\\Image**
+# Clase **Phalcon\\Image**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/image.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/image.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-## Constants
+## Constantes
 
 *integer* **NONE**
 

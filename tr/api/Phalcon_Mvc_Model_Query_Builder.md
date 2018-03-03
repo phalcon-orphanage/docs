@@ -38,7 +38,7 @@ $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 
 ```
 
-## Constants
+## Değişmezler
 
 *string* **OPERATOR_OR**
 
@@ -52,7 +52,7 @@ Phalcon\\Mvc\\Model\\Query\\Builder constructor
 
 public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+DependencyInjector kutusunu ayarlar
 
 public **getDI** ()
 
@@ -439,7 +439,7 @@ $builder->inHaving("SUM(Robots.price)", [100, 200]);
 
 public **notInHaving** (*mixed* $expr, *array* $values, [*mixed* $operator])
 
-Appends a NOT IN condition to the current HAVING conditions clause
+Geçerli haldeki HAVING koşulları cümleciğine yeni bir NOT IN koşulu ekler
 
 ```php
 <?php
@@ -450,7 +450,7 @@ $builder->notInHaving("SUM(Robots.price)", [100, 200]);
 
 public *string* **getHaving** ()
 
-Return the current having clause
+Geçerli bir sahiplik cümleciği döndürün
 
 public **forUpdate** (*mixed* $forUpdate)
 
@@ -520,7 +520,7 @@ Returns a PHQL statement built based on the builder parameters
 
 public **getQuery** ()
 
-Returns the query built
+Kurulmuş bir sorguyu döndürür
 
 final public **autoescape** (*mixed* $identifier)
 

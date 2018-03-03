@@ -1,12 +1,12 @@
-# Class **Phalcon\\Assets\\Collection**
+# Clase **Phalcon\\Assets\\Collection**
 
-*implements* [Countable](http://php.net/manual/en/class.countable.php), [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php)
+*implementa* [Countable](http://php.net/manual/en/class.countable.php), [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/collection.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Represents a collection of resources
+Representa una colección de recursos
 
-## Methods
+## Métodos
 
 public **getPrefix** ()
 
@@ -58,19 +58,19 @@ public **getSourcePath** ()
 
 public **__construct** ()
 
-Phalcon\\Assets\\Collection constructor
+Contructor de Phalcon\\Assets\\Collection
 
 public **add** ([Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource) $resource)
 
-Adds a resource to the collection
+Agrega un recurso a la colección
 
 public **addInline** ([Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline) $code)
 
-Adds an inline code to the collection
+Añade un código en línea a la colección
 
 public **has** ([Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface) $resource)
 
-Checks this the resource is added to the collection.
+Esto comprueba que el recurso se haya agregado a la colección.
 
 ```php
 <?php

@@ -1,8 +1,8 @@
-# Class **Phalcon\\Kernel**
+# Clase **Phalcon\\Kernel**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/kernel.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/kernel.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-## Methods
+## Métodos
 
 public static **preComputeHashKey** (*mixed* $key)
 

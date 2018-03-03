@@ -1,8 +1,8 @@
 # Class **Phalcon\\Version**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/version.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/version.zep" class="btn btn-default btn-sm">GitHub üzerindeki kaynak</a>
 
-This class allows to get the installed version of the framework
+Bu sınıf, çerçevenin yüklü sürümünün elde edilmesine olanak sunar.
 
 ## Constants
 
@@ -16,7 +16,7 @@ This class allows to get the installed version of the framework
 
 *integer* **VERSION_SPECIAL_NUMBER**
 
-## Methods
+## Yöntemler
 
 protected static **_getVersion** ()
 
@@ -39,7 +39,7 @@ echo Phalcon\Version::get();
 
 public static **getId** ()
 
-Returns the numeric active version
+Aktif haldeki sayısal bir sürümü döndürür
 
 ```php
 <?php

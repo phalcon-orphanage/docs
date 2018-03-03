@@ -43,7 +43,7 @@
           <a href="#validation-failed-events">Validation Failed Events</a>
         </li>
         <li>
-          <a href="#ids-vs-primary-keys">Implicit Ids vs. User Primary Keys</a>
+          <a href="#ids-vs-primary-keys">Örtülü Kimliklere karşılık Öncelikli Kullanıcı Anahtarları</a>
         </li>
         <li>
           <a href="#multiple-databases">Setting multiple databases</a>
@@ -741,7 +741,7 @@ Another type of events is available when the data validation process finds any i
 
 <a name='ids-vs-primary-keys'></a>
 
-## Implicit Ids vs. User Primary Keys
+## Örtülü Kimliklere karşılık Öncelikli Kullanıcı Anahtarları
 
 By default `Phalcon\Mvc\Collection` assumes that the `_id` attribute is automatically generated using [MongoIds](http://www.php.net/manual/en/class.mongoid.php).
 

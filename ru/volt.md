@@ -1,27 +1,27 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Обзор</a> <ul>
         <li>
-          <a href="#introduction">Introduction</a>
+          <a href="#introduction">Введение</a>
         </li>
         <li>
-          <a href="#setup">Activating Volt</a>
+          <a href="#setup">Подключение Volt</a>
         </li>
         <li>
-          <a href="#basic-usage">Basic Usage</a>
+          <a href="#basic-usage">Основное использование</a>
         </li>
         <li>
-          <a href="#variables">Variables</a>
+          <a href="#variables">Переменные</a>
         </li>
         <li>
-          <a href="#filters">Filters</a>
+          <a href="#filters">Фильтры</a>
         </li>
         <li>
-          <a href="#comments">Comments</a>
+          <a href="#comments">Комментарии</a>
         </li>
         <li>
-          <a href="#control-structures">List of Control Structures</a> <ul>
+          <a href="#control-structures">Список управляющих конструкций</a> <ul>
             <li>
               <a href="#control-structures-for">For</a>
             </li>
@@ -1389,7 +1389,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='extending-filters'></a>
 
-### Filters
+### Фильтры
 
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
 

@@ -12,4 +12,4 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 final public **getColumnMaps** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
 
-Read the model's column map, this can't be inferred
+Çıkarılamayacak olan modelin sütun haritasını okuyun.
