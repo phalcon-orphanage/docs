@@ -55,7 +55,7 @@
 
 A lo largo de este tutorial, lo guiaremos a través de la creación de una aplicación con un formulario simple de registro comenzando desde cero. La siguiente guía es proporcionada para presentarle aspectos de diseño del framework Phalcon.
 
-This tutorial covers the implementation of a simple MVC application, showing how fast and easy it can be done with Phalcon. This tutorial will get you started and help create an application that you can extend to address many needs. The code in this tutorial can also be used as a playground to learn other Phalcon specific concepts and ideas.
+Este tutorial cubre la implementación de una aplicación MVC simple, que muestra qué tan rápido y fácil se puede hacerla con Phalcon. Este tutorial lo ayudará a comenzar y a crear una aplicación que puede ampliar para satisfacer muchas necesidades. El código en este tutorial también se puede utilizar como área de juegos para aprender otros conceptos e ideas específicas de Phalcon.
 
 <div class="alert alert-info">
     <p>
@@ -65,13 +65,13 @@ This tutorial covers the implementation of a simple MVC application, showing how
 
 Si solo desea empezar puede saltarse esto y crear automáticamente un proyecto Phalcon con nuestras [herramientas de desarrollo](/[[language]]/[[version]]/devtools-usage). (Se recomienda que si no han tenido experiencia o te quedas atascado, vuelvas aquí)
 
-La mejor manera de utilizar esta guía es seguirla y tratar de divertirse. Usted puede obtener el código completo [aquí](https://github.com/phalcon/tutorial). If you get hung-up on something please visit us on [Discord](https://phalcon.link/discord) or in our [Forum](https://phalcon.link/forum).
+La mejor manera de utilizar esta guía es seguirla y tratar de divertirse. Usted puede obtener el código completo [aquí](https://github.com/phalcon/tutorial). Si quedas atrapado en algún problema que no puedes resolver, por favor, visítenos en [Discord](https://phalcon.link/discord) o en nuestro [Foro](https://phalcon.link/forum).
 
 <a name='file-structure'></a>
 
 ## Estructura de archivos
 
-A key feature of Phalcon is it's loosely coupled, you can build a Phalcon project with a directory structure that is convenient for your specific application. Dicho esto, cierta uniformidad es útil cuando colabora con otros, por lo que este tutorial utiliza una estructura "Estándar" donde debe sentirse como en casa si han trabajado con otros MVC en el pasado.   
+Una característica clave de Phalcon es ser débilmente acoplado, usted puede construir un proyecto Phalcon con una estructura de directorios que sea conveniente para su aplicación. Dicho esto, cierta uniformidad es útil cuando colabora con otros, por lo que este tutorial utiliza una estructura "Estándar" donde debe sentirse como en casa si han trabajado con otros MVC en el pasado.   
 
 
 ```text
@@ -99,11 +99,11 @@ A key feature of Phalcon is it's loosely coupled, you can build a Phalcon projec
 
 Si todo esto es nuevo, se recomienda que instale [Phalcon Devtools](/[[language]]/[[version]]/devtools-installation), ya que aprovecha el servidor incorporado de PHP. Para que su aplicación se ejecute sin tener que configurar un servidor web, agregue este [.htrouter](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php) a la raíz de su proyecto.
 
-Otherwise if you want to use Nginx here are some additional setup [here](/[[language]]/[[version]]/webserver-setup#nginx).
+De lo contrario si desea utilizar Nginx [aquí](/[[language]]/[[version]]/webserver-setup#nginx) hay alguna configuración adicional.
 
-Apache can also be used with these additional setup [here](/[[language]]/[[version]]/webserver-setup#apache).
+Apache también puede utilizarse con [esta configuración adicional](/[[language]]/[[version]]/webserver-setup#apache).
 
-Finally, if you flavor is Cherokee use the setup [here](/[[language]]/[[version]]/webserver-setup#cherokee).
+Por último, si usted desea usar Cherokee la configuración [esta aquí](/[[language]]/[[version]]/webserver-setup#cherokee).
 
 <a name='bootstrap'></a>
 
@@ -111,15 +111,15 @@ Finally, if you flavor is Cherokee use the setup [here](/[[language]]/[[version]
 
 El primer archivo que necesitas crear es el archivo bootstrap. Este archivo actúa como el punto de entrada y configuración de la aplicación. En este archivo puedes implementar la inicialización de componentes, así como el comportamiento de la aplicación.
 
-This file handles 3 things: - Registration of component autoloaders - Configuring Services and registering them with the Dependency Injection context - Resolving the application's HTTP requests
+Este archivo se encarga de 3 cosas: - Registro de cargadores automáticos (autoloaders) de componentes - Configuración de Servicios y de registrarlos en el contexto de la inyección de dependencias - Resolver las solicitudes HTTP de la aplicación
 
 <a name='autoloaders'></a>
 
 ### Cargadores automáticos
 
-Autoloaders leverage a [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon. Common things that should be added to the autoloader are your controllers and models. You can register directories which will search for files within the application's namespace. If you want to read about other ways that you can use autoloaders head [here](/[[language]]/[[version]]/loader#overview).
+Los Cargadores Automáticos utilizan un cargador de archivos compatible con [PSR-4](http://www.php-fig.org/psr/psr-4/) a través de Phalcon. Otras cosas que se deben agregar al autocargador son sus controladores y modelos. Puede registrar directorios donde se buscarán archivos del namespace de la aplicación. Si quiere leer sobre otras maneras en que usted puede utilizar el Autocargador (Autoloader) puede dar un vistazo [aquí](/[[language]]/[[version]]/loader#overview).
 
-To start, lets register our app's `controllers` and `models` directories. Don't forget to include the loader from `Phalcon\Loader`.
+Para empezar, permite registrar los directorios de `Modelos` y `Controladores` de nuestra aplicación. No olvide incluir el cargador de `Phalcon\Loader`.
 
 `public/index.php`
 
@@ -149,21 +149,21 @@ $loader->register();
 
 ### Gestión de dependencias
 
-Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound like a complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts: - Service Container: a "bag" where we globally store the services that our application needs to function. - Service or Component: Data processing object which will be injected into components
+Debido a que Phalcon esta débilmente acoplado los servicios se registran con el Gestor de Dependencias del framework, por lo que puede ser inyectados automáticamente a componentes y servicios que estén integrados en el contenedor de [IoC](https://en.wikipedia.org/wiki/Inversion_of_control). Con frecuencia se encontrará el término DI que hace referencia a Inyección de Dependencias. La Inyección de dependencias y la Inversión de Control (IoC) pueden sonar como una característica compleja, pero en Phalcon su uso es muy sencillo y práctico. El contenedor de IoC de Phalcon consta de los siguientes conceptos: -Servicio de Contenedores: es una "bolsa" donde almacenamos globalmente los servicios que nuestra aplicación necesita para funcionar. -Servicio o Componente: objeto de procesamiento de datos que será inyectado en los componentes
 
-Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. Don't forget to include `Phalcon\Di` with setting up the service container.
+Cada vez que el marco requiera un componente o servicio, solicitará el contenedor utilizando un nombre acordado para el servicio. No se olvide de incluir `Phalcon\Di` con la configuración del contenedor de servicio.
 
 <div class='alert alert-warning'>
     <p>
-        If you are still interested in the details please see this article by [Martin Fowler](https://martinfowler.com/articles/injection.html). Also we have [a great tutorial](/[[language]]/[[version]]/di) covering many use cases.
+        Si sigue interesado en más detalles. por favor, consulte este artículo de [Martin Fowler](https://martinfowler.com/articles/injection.html). También tenemos [un gran tutorial](/[[language]]/[[version]]/di) que aborda muchos casos y situaciones.
     </p>
 </div>
 
 ### Factory por defecto
 
-The `Phalcon\Di\FactoryDefault` is a variant of `Phalcon\Di`. To make things easier, it will automatically register most of the components that come with Phalcon. We recommend that you register your services manually but this has been included to help lower the barrier of entry when getting used to Dependency Management. Later, you can always specify once you become more comfortable with the concept.
+El inyector `Phalcon\Di\FactoryDefault` es una variante de `Phalcon\Di`. Para facilitar las cosas, registrará automáticamente la mayoría de los componentes que vienen con Phalcon. Le recomendamos que usted registre sus servicios manualmente pero esto se ha incluido para ayudar a reducir la barrera de entrada al acostumbrarse a la gestión de la dependencia. Más tarde, usted puede especificar una vez que se sienta más cómodo con el concepto.
 
-Services can be registered in several ways, but for our tutorial, we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
+Los servicios se pueden registrar de varias formas, pero para nuestro tutorial usaremos una [función anónima](http://php.net/manual/en/functions.anonymous.php):
 
 `public/index.php`
 
@@ -310,13 +310,13 @@ try {
 }
 ```
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. Congratulations you are well on your to having created a flexible MVC application in less than 30 lines of code.
+Como se puede ver, el archivo de arranque es muy corto y no necesitamos incluir los archivos adicionales. Felicidades has creado una aplicación MVC flexible en menos de 30 líneas de código.
 
 <a name='controller'></a>
 
 ## Creando un controlador
 
-By default Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (eg. `http://localhost:8000/`). An `IndexController` and its `IndexAction` should resemble the following example:
+De forma predeterminada, Phalcon buscará un controlador llamado `IndexController`. Es el punto de partida cuando no se ha añadido ningún controlador o acción en la solicitud. Por ejemplo: `http://localhost:8000/`. Un `IndexController` y su `IndexAction` deben parecerse al siguiente ejemplo:
 
 `app/controllers/IndexController.php`
 
@@ -334,7 +334,7 @@ class IndexController extends Controller
 }
 ```
 
-The controller classes must have the suffix `Controller` and controller actions must have the suffix `Action`. If you access the application from your browser, you should see something like this:
+Las clases de controlador deben tener el sufijo `Controller` y las acciones del controlador deben tener el sufijo `Action`. Si accede a la aplicación desde su navegador, debería ver algo como esto:
 
 ![](/images/content/tutorial-basic-1.png)
 
@@ -491,7 +491,7 @@ class SignupController extends Controller
 }
 ```
 
-Si haces clic en el botón "Registrar" otra vez, verás una página en blanco. The name and email input provided by the user should be stored in a database. Según las pautas MVC, las interacciones de la base de datos deben hacerse a través de modelos con el fin de garantizar la limpieza de código orientado a objetos.
+Si haces clic en el botón "Registrar" otra vez, verás una página en blanco. El nombre y correo electrónico proporcionados por el usuario deben estar guardados en una base de datos. Según las pautas MVC, las interacciones de la base de datos deben hacerse a través de modelos con el fin de garantizar la limpieza de código orientado a objetos.
 
 <a name='model'></a>
 
@@ -499,7 +499,7 @@ Si haces clic en el botón "Registrar" otra vez, verás una página en blanco. T
 
 Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be created like this:
+Antes de crear nuestro primer modelo, necesitamos crear una tabla de base de datos fuera de Phalcon para mapearlo. Se puede crear una tabla simple para almacenar usuarios registrados así:
 
 `create_users_table.sql`
 
@@ -512,7 +512,7 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
+Un modelo debe ubicarse en el directorio `app/models` (en este caso `app/models/Users.php`). El modelo se asigna a la tabla "users":
 
 `app/models/Users.php`
 
@@ -533,7 +533,7 @@ class Users extends Model
 
 ## Establecer una conexión de base de datos
 
-In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+Para utilizar una conexión de base de datos y, posteriormente, acceder a los datos a través de nuestros modelos, debemos especificarlo en nuestro proceso de arranque. Una conexión de base de datos es justo un servicio mas que tiene nuestra aplicación y que puede ser utilizado para varios componentes:
 
 `public/index.php`
 
@@ -558,7 +558,7 @@ $di->set(
 );
 ```
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+Con los parámetros correctos de base de datos, nuestros modelos están listos para trabajar e interactuar con el resto de la aplicación.
 
 <a name='storing-data'></a>
 
@@ -608,11 +608,11 @@ class SignupController extends Controller
 }
 ```
 
-At the beginning of the `registerAction` we create an empty user object from the Users class, which manages a User's record. The class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+Al principio del `registerAction` creamos un objeto de usuario vacío de la clase de Users, que gestiona el registro de un usuario. La clase mapea de propiedades públicas a los campos de la tabla de `users` en nuestra base de datos. Al establecer los valores correspondientes del nuevo registro y llamar a `save()`, almacenará los datos en la base de datos para ese registro. El método de `save()` devuelve un valor booleano que indica si el almacenamiento de los datos fue exitoso o no.
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
+El ORM filtra automáticamente la entrada (auto-escape) para evitar inyecciones de SQL así que sólo tenemos que pasar la solicitud al método `save()`.
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign-up form our screen will look like this:
+Una validación adicional se produce automáticamente en los campos que se definen como no nulos (obligatorio). Si no entramos ninguno de los campos requeridos en el formulario de inscripción, nuestra pantalla se verá así:
 
 ![](/images/content/tutorial-basic-4.png)
 
@@ -620,6 +620,6 @@ Additional validation happens automatically on fields that are defined as not nu
 
 ## Conclusión
 
-As you can see, it's easy to start building an application using Phalcon. The fact that Phalcon runs from an extension significantly reduces the footprint of projects as well as giving it a considerable performance boost.
+Como se puede ver, es fácil empezar a construir una aplicación usando Phalcon. El hecho de que Phalcon se ejecute desde una extensión reduce significativamente la huella de los proyectos y le da un aumento considerable en el rendimiento.
 
-If you are ready to learn more check out the [Rest Tutorial](/[[language]]/[[version]]/tutorial-rest) next.
+Si está listo para obtener más información, consulte el [Rest Tutorial](/[[language]]/[[version]]/tutorial-rest) siguiente.
