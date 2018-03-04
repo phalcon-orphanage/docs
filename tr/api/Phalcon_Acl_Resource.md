@@ -1,6 +1,6 @@
-# Phalcon sınıfı**\\Acl\\Kaynak**
+# Class **Phalcon\\Acl\\Resource**
 
-*uygulamalar* [Phalcon\Acl\Kaynak ara birimi](/en/3.2/api/Phalcon_Acl_ResourceInterface)
+*implements* [Phalcon\Acl\ResourceInterface](/en/3.2/api/Phalcon_Acl_ResourceInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -8,18 +8,18 @@ This class defines resource entity and its description
 
 ## Methods
 
-herkese açık ** isim al** ()
+public **getName** ()
 
 Resource name
 
-herkese açık **__ sırala** ()
+public **__toString** ()
 
 Resource name
 
-herkese açık ** Açıklama al** ()
+public **getDescription** ()
 
 Resource description
 
-herkese açık **__düzenle** (* karışık* $isim, [<1>karışık* $açıklama])</p> 
+public **__construct** (*mixed* $name, [*mixed* $description])
 
 Phalcon\\Acl\\Resource constructor
