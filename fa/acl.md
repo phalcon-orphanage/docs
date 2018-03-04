@@ -1,22 +1,22 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">لیست های کنترل دسترسی (ACL)</a>
+      <a href="#overview">Access Control Lists (ACL)</a>
       <ul>
         <li>
-          <a href="#setup">ایجاد یک ACL</a>
+          <a href="#setup">Creating an ACL</a>
         </li>
         <li>
-          <a href="#adding-roles">اضافه کردن Role ها به ACL</a>
+          <a href="#adding-roles">Adding Roles to the ACL</a>
         </li>
         <li>
-          <a href="#adding-resources">افزودن Resource ها</a>
+          <a href="#adding-resources">Adding Resources</a>
         </li>
         <li>
           <a href="#access-controls">Defining Access Controls</a>
         </li>
         <li>
-          <a href="#querying">پرس و جو در ACL</a>
+          <a href="#querying">Querying an ACL</a>
         </li>
         <li>
           <a href="#function-based-access">Function based access</a>
@@ -31,7 +31,7 @@
           <a href="#serialization">Serializing ACL lists</a>
         </li>
         <li>
-          <a href="#events">رویداد ها</a>
+          <a href="#events">Events</a>
         </li>
         <li>
           <a href="#custom-adapters">Implementing your own adapters</a>
@@ -43,7 +43,7 @@
 
 <a name='overview'></a>
 
-# لیست های کنترل دسترسی (ACL)
+# Access Control Lists (ACL)
 
 `Phalcon\Acl` provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](http://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
 
