@@ -1,8 +1,8 @@
-# Sınıf **Phalcon\\Önbellek\\Başlangıç Aşaması\\Msg paketi**
+# Class **Phalcon\\Cache\\Frontend\\Msgpack**
 
-*uzanır* sınıf [Phalcon\Önbellek\Başlangıç aşaması\Veri](/en/3.2/api/Phalcon_Cache_Frontend_Data)
+*extends* class [Phalcon\Cache\Frontend\Data](/en/3.2/api/Phalcon_Cache_Frontend_Data)
 
-*Uygulamalar* [Phalcon\Önbellek\Ön uç ara yüz](/en/3.2/api/Phalcon_Cache_FrontendInterface)
+*implements* [Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/msgpack.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -58,34 +58,34 @@ foreach ($robots as $robot) {
 
 ## Methods
 
-herkese açık **__düzenle** ([*dizi* $Ön uç Seçenekleri])
+public **__construct** ([*array* $frontendOptions])
 
 Phalcon\\Cache\\Frontend\\Msgpack constructor
 
-herkese açık **Ömürboyu al** ()
+public **getLifetime** ()
 
 Returns the cache lifetime
 
-Herkese açık **korumak** ()
+public **isBuffering** ()
 
-Önyüzün arabelleğe çıktı alınmış olup olmadığını kontrol edin
+Check whether if frontend is buffering output
 
-herkese açık **başlat** ()
+public **start** ()
 
-Başlangıç aşaması çıktıyı başlatır. Aslında, hiçbir şey yapmıyor
+Starts output frontend. Actually, does nothing
 
-herkese açık **İçeriğe Eriş** ()
+public **getContent** ()
 
-Çıktı önbelleğe alınan içeriği çevirir
+Returns output cached content
 
-herkese açık **Durdur** ()
+public **stop** ()
 
 Stops output frontend
 
-herkese açık **Eski mağaza** (*karışık* $veri)
+public **beforeStore** (*mixed* $data)
 
-Verileri saklamadan önce dizili hale getirir
+Serializes data before storing them
 
-herkese açık **alındıktan sonra** (*karışık* $veri)
+public **afterRetrieve** (*mixed* $data)
 
 Unserializes data after retrieval
