@@ -1,8 +1,8 @@
 # Class **Phalcon\\Cache\\Backend\\File**
 
-*uzanır* soyut sınıf [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)
+*extends* abstract class [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-*uygulamalar* [Phalcon\Önbellek\Arkayüz Ara birimi](/en/3.2/api/Phalcon_Cache_BackendInterface)
+*implements* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -44,7 +44,7 @@ if ($content === null) {
 
 ## Methods
 
-herkese açık **__düzenle** ([Phalcon\Önbellek\Önyüz Ara birimi](/en/3.2/api/Phalcon_Cache_FrontendInterface) $başlangıç aşaması, [*dizi* $seçenekler)
+public **__construct** ([Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface) $frontend, *array* $options)
 
 Phalcon\\Cache\\Backend\\File constructor
 
@@ -98,46 +98,46 @@ public **useSafeKey** (*mixed* $useSafeKey)
 
 Set whether to use the safekey or not
 
-herkese açık **Önyüz al** () [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public **getFrontend** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
-herkese açık **Önyüz ayarla** (*karışık* $başlangıç aşaması) [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public **setFrontend** (*mixed* $frontend) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
-herkese açık **Seçenekleri al** () [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public **getOptions** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
-herkese açık **Seçenekleri ayarla** (*karışık* $Seçenekler) [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public **setOptions** (*mixed* $options) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
-herkese açık **son anahtarı al** () [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public **getLastKey** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
-herkese açık **son anahtar ayarla** (*karışık* $Son Anahtar) [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
-herkese açık *karışık* **başlat** (*int* | *dizi* $anahtar Adı, [*int* $ömür]) [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 Starts a cache. The keyname allows to identify the created fragment
 
-herkese açık **durdur** (*karışık* $Arabelleği durdur) [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 Stops the frontend without store any cached content
 
-herkese açık **Taze** () [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public **isFresh** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 Checks whether the last cache is fresh or cached
 
-herkese açık **Başladı** () [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public **isStarted** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 Checks whether the cache has starting buffering or not
 
-herkese açık *int* **ömür süresi** () [Phalcon\Önbellek\Arkayüz](/en/3.2/api/Phalcon_Cache_Backend)'den alındı
+public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 Gets the last lifetime set
