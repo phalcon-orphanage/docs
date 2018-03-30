@@ -317,7 +317,7 @@ try {
 }
 ```
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. Felicidades has creado una aplicación MVC flexible en menos de 30 líneas de código.
+Como puede ver, el archivo de arranque es muy corto y no necesitamos incluir ningún archivo adicional. Felicidades has creado una aplicación MVC flexible en menos de 30 líneas de código.
 
 <a name='controller'></a>
 
@@ -412,7 +412,7 @@ El código HTML generado muestra una etiqueta HTML de ancla (`<a>`) vinculando a
 <a href="/signup">Regístrese aquí!</a>
 ```
 
-Para generar la etiqueta usamos la clase `Phalcon\Tag`. Esta es una clase utilitaria que nos permite crear etiquetas HTML con los convenios del framework en mente. As this class is also a service registered in the DI we use `$this->tag` to access it.
+Para generar la etiqueta usamos la clase `Phalcon\Tag`. Esta es una clase utilitaria que nos permite crear etiquetas HTML con los convenios del framework en mente. Como esta clase también es un servicio registrado en el DI, usamos `$this->tag` para acceder a ella.
 
 Un artículo más detallado en cuanto a generación de HTML puede ser [encontrado aquí](/[[language]]/[[version]]/tag).
 
@@ -470,7 +470,7 @@ En tu navegador, el formulario debería verse algo como así:
 
 El método `Phalcon\Tag::form()` recibe sólo un parámetro, por ejemplo, un URI relativo a un controlador/acción en la aplicación.
 
-Al hacer clic en el botón "Registrar", usted recibirá una excepción del framework, lo que indica que nos falta la acción `register` en el controlador `signup`. Our `public/index.php` file throws this exception:
+Al hacer clic en el botón "Registrar", usted recibirá una excepción del framework, lo que indica que nos falta la acción `register` en el controlador `signup`. Nuestro archivo `public/index.php` lanza esta excepción:
 
     Exception: Action "register" was not found on handler "signup"
     
@@ -504,7 +504,7 @@ Si haces clic en el botón "Registrar" otra vez, verás una página en blanco. E
 
 ## Creando un modelo
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalcon provee el primer ORM PHP escrito enteramente en lenguaje C. En lugar de aumentar la complejidad del desarrollo, lo simplifica.
 
 Antes de crear nuestro primer modelo, necesitamos crear una tabla de base de datos fuera de Phalcon para mapearlo. Se puede crear una tabla simple para almacenar usuarios registrados así:
 
@@ -565,7 +565,7 @@ $di->set(
 );
 ```
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+Con los parámetros correctos de base de datos, nuestros modelos están listos para trabajar e interactuar con el resto de la aplicación.
 
 <a name='storing-data'></a>
 
@@ -615,11 +615,11 @@ class SignupController extends Controller
 }
 ```
 
-Al principio del `registerAction` creamos un objeto de usuario vacío de la clase de Users, que gestiona el registro de un usuario. The class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. El método de `save()` devuelve un valor booleano que indica si el almacenamiento de los datos fue exitoso o no.
+Al principio del `registerAction` creamos un objeto de usuario vacío de la clase de Users, que gestiona el registro de un usuario. La clase asigna las propiedades públicas a los campos de la tabla `users` en nuestra base de datos. Al establecer los valores correspondientes del nuevo registro y llamar a `save()`, almacenará los datos en la base de datos para ese registro. El método de `save()` devuelve un valor booleano que indica si el almacenamiento de los datos fue exitoso o no.
 
 El ORM filtra automáticamente la entrada (auto-escape) para evitar inyecciones de SQL así que sólo tenemos que pasar la solicitud al método `save()`.
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign-up form our screen will look like this:
+Una validación adicional se produce automáticamente en los campos que se definen como no nulos (obligatorio). Si no ingresamos ninguno de los campos requeridos en el formulario de inscripción, nuestra pantalla se verá así:
 
 ![](/images/content/tutorial-basic-4.png)
 
@@ -627,6 +627,6 @@ Additional validation happens automatically on fields that are defined as not nu
 
 ## Conclusión
 
-As you can see, it's easy to start building an application using Phalcon. El hecho de que Phalcon se ejecute desde una extensión reduce significativamente la huella de los proyectos y le da un aumento considerable en el rendimiento.
+Como se puede ver, es fácil empezar a construir una aplicación usando Phalcon. El hecho de que Phalcon se ejecute desde una extensión reduce significativamente la huella de los proyectos y le da un aumento considerable en el rendimiento.
 
 Si está listo para obtener más información, consulte el [Rest Tutorial](/[[language]]/[[version]]/tutorial-rest) siguiente.
