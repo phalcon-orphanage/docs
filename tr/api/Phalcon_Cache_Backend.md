@@ -1,6 +1,6 @@
 # Abstract class **Phalcon\\Cache\\Backend**
 
-*uygulamalar* [Phalcon\Önbellek\Arkayüz Ara birimi](/en/3.2/api/Phalcon_Cache_BackendInterface)
+*implements* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -8,51 +8,51 @@ This class implements common functionality for backend adapters. A backend cache
 
 ## Methods
 
-herkese açık **Önyüz al** ()
+public **getFrontend** ()
 
 ...
 
-herkese açık **Önyüz ayarla** (*karışık* $başlangıç aşaması)
+public **setFrontend** (*mixed* $frontend)
 
 ...
 
-herkese açık **Seçenekleri al** ()
+public **getOptions** ()
 
 ...
 
-herkese açık **Seçenekleri ayarla** (*karışık* $seçenekler)
+public **setOptions** (*mixed* $options)
 
 ...
 
-herkese açık **Son Anahtarı al** ()
+public **getLastKey** ()
 
 ...
 
-herkese açık **Son Anahtarı ayarla** (*karışık* $Son Anahtar)
+public **setLastKey** (*mixed* $lastKey)
 
 ...
 
-herkese açık **__düzenle** ([Phalcon\Önbellek\Önyüz Ara birimi](/en/3.2/api/Phalcon_Cache_FrontendInterface) $başlangıç aşaması, [*dizi* $seçenekler])
+public **__construct** ([Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
-Phalcon\\Önbellek\\Arkayüz oluşturucu
+Phalcon\\Cache\\Backend constructor
 
-herkese açık *karışık* **başlat** (*int* | *dizi* $anahtar Adı, [*int* $ömür])
+public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime])
 
 Starts a cache. The keyname allows to identify the created fragment
 
-herkese açık **durdur** ([*karışık* $Ara belleği durdur])
+public **stop** ([*mixed* $stopBuffer])
 
 Stops the frontend without store any cached content
 
-herkese açık **Taze** ()
+public **isFresh** ()
 
 Checks whether the last cache is fresh or cached
 
-herkese açık **Başladı** ()
+public **isStarted** ()
 
 Checks whether the cache has starting buffering or not
 
-herkese açık *int* **ömür süresi** ()
+public *int* **getLifetime** ()
 
 Gets the last lifetime set
 

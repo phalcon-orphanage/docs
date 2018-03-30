@@ -264,11 +264,11 @@ Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[v
 
 <div class="alert alert-danger">
     <p>
-        مسیرها همیشه باید با شروع شوند<code>/</code>
+        Routes must always start with <code>/</code>
     </p>
 </div>
 
-معمولا، مسیر شروع در یک نرم افزار، نشانه ی `/`می باشد، و در بیشتر موارد، با روش گت اچ تی تی پی قابل دسترسی است:
+Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
 
 ```php
 <?php
@@ -286,7 +286,7 @@ $app->get(
 
 ### Application object
 
-مسیرها را میتوان با استفاده از `phalcon/Mvc/Micro`در برنامه مورد نظر تنظیم کرد همانند زیر:
+Routes can be set using the `Phalcon\Mvc\Micro` application object as follows:
 
 ```php
 use Phalcon\Mvc\Micro;
@@ -306,7 +306,7 @@ $app->get(
 
 ### Router object
 
-شما همچنین میتوانید یک هدف `Phalcon\Mvc\Router`ایجاد کنید، مسیرها را در آن مشخص کنید و سپس آن را به مخزن اماله وابستگی انتقال دهید.
+You can also create a `Phalcon\Mvc\Router` object, setting the routes there and then injecting it in the dependency injection container.
 
 ```php
 use Phalcon\Mvc\Micro;
@@ -325,15 +325,15 @@ $app = new Micro();
 $app->setService('router', $router, true);
 ```
 
-تنظیم کردن مسیرها با استفاده از `Phalcon\Mvc\Micro` و روش های فعلی برنامه ها (`دریافت<code> ،`پست</code> و غیره) بسیار آسان تر است از آنکه یک جسم مسیریاب با مسیر های مربوطه تنظیم کنیم و سپس آن را به برنامه انتقال دهیم.
+Setting up your routes using the `Phalcon\Mvc\Micro` applications verb methods (`get`, `post`, etc.) is much easier than setting up a router object with relevant routes and then injecting it in the application.
 
-هر روشی مزایا و معایب خود را دارد. این بستگی به طراحی و نیازهای نرم افزار شما دارد.
+Each method has its advantages and disadvantages. It all depends on the design and needs of your application.
 
 <a name='rewrite-rules'></a>
 
 ## Rewrite Rules
 
-برای کارآیی مسیرها، باید تغییرات پیکر بندی مشخصی در پیکر بندی وب سرور برای سایت مخصوص خود ایجاد کنید.
+In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
 
 Those changes are outlined in the [Apache Rewrite Rules](http://httpd.apache.org/docs/current/rewrite/) and [NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/).
 
@@ -341,19 +341,19 @@ Those changes are outlined in the [Apache Rewrite Rules](http://httpd.apache.org
 
 ## Handlers
 
-هندلرها، قطعات قابل خواندن از کدی هستند که به مسیر ضمیمه شده است. هنگامیکه مسیر مطابقت میکند، هندلر با همه ی پارامتر های تعریف شده، عمل میکند. هندلر هر قطعه قابل خواندن است که در پی اچ پی وجود دارد.
+Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
 
 <a name='routing-handlers-definitions'></a>
 
 ### Definitions
 
-فالکون چندین راه را برای ضمیمه کردن هندلر به یک مسیر پیشنهاد می دهد. نیاز ها و طراحی نرم افزار شما همچنین سبک برنامه نویسی که دارید فاکتور هایی هستند که بر انتخاب اجرایی شما تاثیر گذارند.
+Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
 
 <a name='routing-handlers-anonymous-function'></a>
 
 #### Anonymous Function
 
-نهایتا ما میتوانیم از یک عملکرد مبهم (همانطور که در بالا دیدید) برای رسیدگی به درخواست استفاده کنیم
+Finally we can use an anonymous function (as seen above) to handle the request
 
 ```php
 $app->get(
@@ -364,7 +364,7 @@ $app->get(
 );
 ```
 
-دسترسی به `$app` در درون یک عملکرد مبهم می تواند با انتقال آن به ترتیبی که در زیر گفته میشود، به دست آید:
+Accessing the `$app` object inside the anonymous function can be achieved by injecting it as follows:
 
 ```php
 $app->get(
@@ -381,7 +381,7 @@ $app->get(
 
 #### Function
 
-ما می توانیم عملکردی را به عنوان هندلر تعریف کنیم و آن را به مسیر خاص ضمیمه کنیم.
+We can define a function as our handler and attach it to a specific route.
 
 ```php
 // With a function
@@ -399,7 +399,7 @@ $app->get(
 
 #### Static Method
 
-همچنین می توانیم از متد ایستایی به عنوان هندلر خود به صورت زیر استفاده کنیم:
+We can also use a static method as our handler as follows:
 
 ```php
 class OrdersClass
@@ -419,7 +419,7 @@ $app->get(
 
 #### Method in an Object
 
-همچنین می توانیم برای رسیدن به هدف از یک روش استفاده کنیم:
+We can also use a method in an object:
 
 ```php
 class OrdersClass
@@ -443,9 +443,9 @@ $app->get(
 
 #### Controllers
 
-با `Phalcon\Mvc\Micro` می توانید نرم افزار های کوچک یا متوسط بوجود آورید. برنامه های متوسط از معماری میکرو استفاده می کنند اما آن را گسترش می دهند تا از آن بیشتر از میکرو و کمتر از نرم افزار کامل استفاده کنند.
+With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
 
-در نرم افزار های متوسط شما میتوانید هندلر ها را در کنترل کننده ها سازمان دهی کنید.
+In medium applications you can organize handlers in controllers.
 
 ```php
 <?php
@@ -469,7 +469,7 @@ $orders->get('/display/{slug}', 'show');
 $app->mount($orders);
 ```
 
-در`کنترل کننده سفارشات`ممکن است شبیه این باشند:
+The `OrdersController` might look like this:
 
 ```php
 <?php
@@ -490,7 +490,7 @@ class OrdersController extends Controller
 }
 ```
 
-از آنجا که کنترل کننده ها `Phalcon\Mvc\Controller` را گسترش می دهند همه ی سرویس های انتقال وابستگی با نام های مربوطه برای ثبت نام در دسترس هستند. برای مثال:
+Since our controllers extend the `Phalcon\Mvc\Controller`, all the dependency injection services are available with their respective registration names. For example:
 
 ```php
 <?php
@@ -518,9 +518,9 @@ class OrdersController extends Controller
 
 ### Lazy Loading
 
-به منظور افزایش کارایی ممکن است شما از بارگذاری کم سرعت برای کنترل کننده ها (هندلرها) استفاده کنید. کنترل کننده تنها زمانی بارگذاری میشود که مسیر مربوطه همسان سازی شود.
+In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
 
-بارگذاری آهسته، هنگامی که هندلر خود را در `Phalcon\Mvc\Micro\Collection`تنظیم میکنید، به راحتی بدست می آید:
+Lazy loading can be easily achieved when setting your handler in your `Phalcon\Mvc\Micro\Collection`:
 
 ```php
 $orders->setHandler('OrdersController', true);
@@ -531,9 +531,9 @@ $orders->setHandler('Blog\Controllers\OrdersController', true);
 
 #### Use case
 
-ما یک API برای فروشگاه آنلاین داریم. نقاط انتهایی `/کاربران<0/> و <code>/سفارشات` و `/محصولات` هستند. هر کدام از این نقطه های پایانی با استفاده از کنترل کننده ها ثبت می شوند، و هر کنترل کننده یک کنترل کننده با اقدامات مربوطه است.
+We are developing an API for an online store. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
 
-کنترل کننده هایی که ما به عنوان دستگیر کننده ها استفاده می کنیم به شرح زیر است:
+The controllers that we use as handlers are as follows:
 
 ```php
 <?php
@@ -580,7 +580,7 @@ class ProductsController extends Controller
 }
 ```
 
-ما هندلر ها را ثبت نام می کنیم:
+We register the handlers:
 
 ```php
 <?php
@@ -612,11 +612,11 @@ $products->get('/add/{payload}', 'add');
 $app->mount($products);
 ```
 
-این پیاده سازی هر هندلر را به نوبت بارگذاری می کند و در اشیا نرم افزار ما ثبت میکند. مسئله ی این رویکرد این است که هر درخواست تنها به یک نقطه پایانی منجر میشود و به این ترتیب تنها یک روش کلاسی اجرا می شود. روش ها/هندلرها باقی مانده بدون استفاده در حافظه می مانند.
+This implementation loads each handler in turn and mounts it in our application object. The issue with this approach is that each request will result to only one endpoint and therefore one class method executed. The remaining methods/handlers will just remain in memory without being used.
 
-با استفاده از بارگذاری کم سرعت ما تعداد اشیا بارگذاری شده در حافظه را کاهش می دهیم در نتیجه، نرم افزار ها از حجم کمتری از حافظه استفاده می کند.
+Using lazy loading we reduce the number of objects loaded in memory and as a result our application uses less memory.
 
-اجرای فوق اگر بخواهیم از بارگذاری کم سرعت استفاده کنیم به صورت زیر تغییر می کند:
+The above implementation changes if we want to use lazy loading as follows:
 
 ```php
 <?php
@@ -648,13 +648,13 @@ $products->get('/add/{payload}', 'add');
 $app->mount($products);
 ```
 
-با استفاده از این تغییر ساده در اجرا تا زمانی که درخواستی از گوینده نباشد همه ی هندلر ها نمونه سازی نشده باقی می مانند. به این ترتیب، هرگاه گوینده ای درخواست کند `/orders/get/2` نرم افزار ما از `کنترل کننده های سفارش`نمونه سازی می کند و روش `گرفتن`را در آن فرا می خواند. حال نرم افزار ما از منابع کمتری نسبت به قبل استفاده می کند.
+Using this simple change in implementation, all handlers remain uninstantiated until requested by a caller. Therefore whenever a caller requests `/orders/get/2`, our application will instantiate the `OrdersController` and call the `get` method in it. Our application now uses less resources than before.
 
 <a name='routing-handlers-not-found'></a>
 
 ### Not found (404)
 
-هر مسیری که در `Phalcon\Mvc\Micro` نرم افزار ما همسان سازی نشده باشد، باعث می شود که آن روش `یافت نشد` را که تعریف شده است را امتحان کند و انجام دهد. مشابه سایر روش ها/فعل ها (و`گرفتن<0/>و <code>پست`وغیره)، شما می توانید یک هندلر را در روش `یافت نشد`قرار دهید که بتواند به هر عملکرد پی اچ پی قابل خواندن تبدیل شود.
+Any route that has not been matched in our `Phalcon\Mvc\Micro` application will cause it to try and execute the handler defined with the `notFound` method. Similar to other methods/verbs (`get`, `post` etc.), you can register a handler in the `notFound` method which can be any callable PHP function.
 
 ```php
 <?php
@@ -671,19 +671,19 @@ $app->notFound(
 );
 ```
 
-شما همچنین میتوانید مسیر هایی را که همسان سازی نشده اند 404)) را با میان افزاری که در ذیل توضیح داده شده است، با دست انجام دهید.
+You can also handle routes that have not been matched (404) with Middleware discussed below.
 
 <a name='routing-verbs'></a>
 
 ## Methods - Verbs
 
-در `Phalcon\Mvc\Micro` نرم افزار، مجموعه ای از روش ها را برای چسباندن روش اچ تی تی پی با مسیری که برای آن در نظر گرفته شده است، مهیا می کند.
+The `Phalcon\Mvc\Micro` application provides a set of methods to bind the HTTP method with the route it is intended to.
 
 <a name='routing-verbs-delete'></a>
 
 ### delete
 
-مسابقات اگر روش اچ تی تی پی `حذف` باشد و مسیر است `/api/products/delete/{id}`
+Matches if the HTTP method is `DELETE` and the route is `/api/products/delete/{id}`
 
 ```php
     $app->delete(
@@ -696,7 +696,7 @@ $app->notFound(
 
 ### get
 
-مسابقات اگر روش اچ تی تی پی `دریافت` باشد و مسیر است `/api/products`
+Matches if the HTTP method is `GET` and the route is `/api/products`
 
 ```php
     $app->get(
@@ -709,7 +709,7 @@ $app->notFound(
 
 ### head
 
-مسابقات اگر روش اچ تی تی پی `عنوان` باشد و مسیر است `/api/products`
+Matches if the HTTP method is `HEAD` and the route is `/api/products`
 
 ```php
     $app->head(
@@ -722,7 +722,7 @@ $app->notFound(
 
 ### map
 
-طراح به شما اجازه می دهد که همان نقطه پایانی را به بیشتر از یک روش اچ تی تی پی ضمیمه کنید. مثال زیر منطبق است اگر روش اچ تی تی پی`دریافت ` یا `پست` باشد و مسیر `/repos/store/refs`
+Map allows you to attach the same endpoint to more than one HTTP method. The example below matches if the HTTP method is `GET` or `POST` and the route is `/repos/store/refs`
 
 ```php
     $app
@@ -742,7 +742,7 @@ $app->notFound(
 
 ### options
 
-مسابقات اگر روش اچ تی تی پی`گزینه ها` باشد و مسیر است `/api/products/options`
+Matches if the HTTP method is `OPTIONS` and the route is `/api/products/options`
 
 ```php
     $app->options(
@@ -755,7 +755,7 @@ $app->notFound(
 
 ### patch
 
-مسابقات اگر روش اچ تی تی پی`وصله` باشد و مسیر است `/api/products/update/{id}`
+Matches if the HTTP method is `PATCH` and the route is `/api/products/update/{id}`
 
 ```php
     $app->patch(
@@ -768,7 +768,7 @@ $app->notFound(
 
 ### post
 
-مسابقات اگر روش اچ تی تی پی`پست` باشد و مسیر است `/api/products/options`
+Matches if the HTTP method is `POST` and the route is `/api/products/add`
 
 ```php
     $app->post(
@@ -864,7 +864,7 @@ $app->get(
 );
 ```
 
-اطلاعات اضافی `Phalcon\Mvc\Router` [اطلاعات](/[[language]]/[[version]]/routing)
+Additional information: `Phalcon\Mvc\Router` [Info](/[[language]]/[[version]]/routing)
 
 <a name='routing-redirections'></a>
 
@@ -1452,17 +1452,17 @@ $application->setEventsManager($eventsManager);
 
 ```
 
-ما نیاز به شی `Phalcon\Events\Manager`. این می تواند شیئی باشد که تازه نمونه گیری شده یا ما می توانیم آن یکی که در ذخیره گاه دی آی Diوجود دارد را دریافت کنیم. (اگر شما از `پیش فرض کارخانه` استفاده کرده باشید).
+We need a `Phalcon\Events\Manager` object. This can be a newly instantiated object or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one).
 
-ما هر کلاس میان افزار را در `کوچک` هوک در مدیریت رویداد ضمیمه می کنیم. ما می توانیم بیشتر مشخص باشیم و آن را ضمیمه کنیم تا رویداد `میکرو: قبل از اجرای مسیر` را بیان کنیم.
+We attach every middleware class in the `micro` hook in the Events Manager. We could also be a bit more specific and attach it to say the `micro:beforeExecuteRoute` event.
 
-پس میان افزار را به نرم افزار خود طبق سر رویداد شنیداری که در بالا مورد بحث قرار گرفت، پیوست کنیم (`قبل`،`بعد`،`پایان`).
+We then attach the middleware class in our application on one of the three listening events discussed above (`before`, `after`, `finish`).
 
 <a name='middleware-implementation'></a>
 
 ## Implementation
 
-میان افزار می تواند هر نوع عملکرد پی اچ پی قابل خواندن باشد. شما می توانید که خود را به هر گونه ای که دوست دارید میان افزار عمل کند، سازمان دهی کنید. اگر شما بخواهید از کلاس ها برای میان افزار خود استفاده کنید، احتیاج دارید که آنها را طبق اجرا کنید `Phalcon\Mvc\Micro\MiddlewareInterface`
+Middleware can be any kind of PHP callable functions. You can organize your code whichever way you like it to implement middleware. If you choose to use classes for your middleware, you will need them to implement the `Phalcon\Mvc\Micro\MiddlewareInterface`
 
 ```php
 <?php
@@ -1507,21 +1507,21 @@ class CacheMiddleware implements MiddlewareInterface
 
 ## Events in Middleware
 
-[رویداد هایی](#events) که برای نرم افزار ما استفاده می شوند،در درون کلاسی که `Phalcon\Mvc\Micro\MiddlewareInterface` را اجرا میکند نیز استفاده می شود. از آنجایی که می توانیم با پروسه ی درخواست فعل و انفعال داخلی داشته باشیم، این انعطاف پذیری و قدرت بسیاری را برای توسعه دهندگان پیشنهاد می کند.
+The [events](#events) that are triggered for our application also trigger inside a class that implements the `Phalcon\Mvc\Micro\MiddlewareInterface`. This offers great flexibility and power for developers since we can interact with the request process.
 
 <a name='middleware-events-api'></a>
 
 ### API example
 
-فرض کنید که ما یک ای پی آی داریم که آن را با نرم افزار میکرو ایجاد کرده ایم. ما نیاز داریم برای کنترل بهتر اجرای نرم افزار، کلاس های میان افزار بسیاری را به نرم افزار خود ضمیمه کنیم.
+Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
 
-میان افزار که ما استفاده خواهیم کرد: * دیواره آتش * پیدا نشد * تغییر مسیر * کورس * درخواست * واکنش
+The middleware that we will use are: * Firewall * NotFound * Redirect * CORS * Request * Response
 
 <a name='middleware-events-api-firewall'></a>
 
 #### Firewall Middleware
 
-این میان افزار به رویداد `قبل از`در نرم افزار میکرو ما، ضمیمه شده است. هدف این میان افزار این است که بررسی کنیم چه کسی ای پی ای ما را میخواند و بر اساس یک لیست سفید، به آنها اجازه میدهد که ادامه دهند یا خیر
+This middleware is attached to the `before` event of our Micro application. The purpose of this middleware is to check who is calling our API and based on a whitelist, allow them to proceed or not
 
 ```php
 <?php
@@ -1583,7 +1583,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 #### Not Found Middleware
 
-هنگامی که این میان افزار پردازش می شود، این بدان معنا است که درخواست ای پی برای برنامه ما مجاز شده است. نرم افزار مسیر را امتحان و همسان سازی می کند و اگر موفق نشد، رویداد `قبل از این پیدا نشد` فعال می شود. سپس ما پردازش را متوقف خواهیم کرد و پاسخ 404 مربوط به کاربر را به آن باز بفرستیم. میان افزار به رویداد `قبل از` در نرم افزار میکرو ما ضمیمه شده است
+When this middleware is processed, this means that the requesting IP is allowed to access our application. The application will try and match the route and if not found the `beforeNotFound` event will fire. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
 
 ```php
 <?php
@@ -1629,7 +1629,7 @@ class NotFoundMiddleware implements MiddlewareInterface
 
 #### Redirect Middleware
 
-ما دوباره میان افزار را به رویداد `قبل از`نرم افزار خود پیوست می کنیم زیرا اگر نقطه پایانی درخواست نیاز به تغییر جهت داشته باشد، نمی خواهیم که درخواست ادامه پیدا کند.
+We attach this middleware again to the `before` event of our Micro application because we don't want the request to proceed if the requested endpoint needs to be redirected.
 
 ```php
 <?php
@@ -1683,7 +1683,7 @@ class RedirectMiddleware implements MiddlewareInterface
 
 #### CORS Middleware
 
-دوباره این میان افزار باید به رویداد `قبل از` نرم افزار میکرو ما ضمیمه شود. ما باید اطمینان حاصل کنیم که قبل از اینکه هر چیزی در نرم افزار ما اتفاق افتد آن کار می کند
+Again this middleware is attached to the `before` event of our Micro application. We need to ensure that it fires before anything happens with our application
 
 ```php
 <?php
@@ -1750,7 +1750,7 @@ class CORSMiddleware implements MiddlewareInterface
 
 #### Request Middleware
 
-این میان افزار، حداکثر بار جی سون را دریافت می کند و به بررسی آن می پردازد. اگر حداکثر بار جی سون معتبر نباشد آن عملیات اجرا را متوقف می کند.
+This middleware is receiving a JSON payload and checks it. If the JSON payload is not valid it will stop execution.
 
 ```php
 <?php
@@ -1806,11 +1806,11 @@ class RequestMiddleware implements MiddlewareInterface
 
 #### Response Middleware
 
-این میان افزار برای دستکاری پاسخ آن و باز فرستادن آن به خواننده به عنوان یک رشته جی سون مسئول است. به این ترتیب، ما باید آن را به رویداد `بعد از` در نرم افزار خود ضمیمه کنیم.
+This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
 
 <div class='alert alert-warning'>
     <p>
-        ما قصد استفاده از روش <code>فرا خوانی</code> را برای این میان افزار داریم؛ زیرا تقریبا تمام چرخه ی درخواست را اجرا کرده ایم.
+        We are going to be using the <code>call</code> method for this middleware, since we have nearly executed the whole request cycle.
     </p>
 </div>
 
@@ -1855,11 +1855,11 @@ class ResponseMiddleware implements MiddlewareInterface
 
 # Models
 
-تا زمانی که ما برنامه را آموزش می دهیم که چگونه می تواند کلاس های مربوطه را با ابزار نیمه خودکار پیدا کند. مدل ها می توانند در نرم افزار های میکرو مورد استفاده قرار گیرند.
+Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
 <div class="alert alert-warning">
     <p>
-        خدمات <code>پایگاه داده</code> مربوطه، باید در ذخیره گاه Di شما ثبت شوند.
+        The relevant <code>db</code> service must be registered in your Di container.
     </p>
 </div>
 
@@ -1895,7 +1895,7 @@ $app->handle();
 
 # Inject model instances
 
-با استفاده از کلاس `Phalcon\Mvc\Model\Binder` شما می توانید مدل های مثالی را به مسیرهای خود انتقال دهید:
+By using the `Phalcon\Mvc\Model\Binder` class you can inject model instances into your routes:
 
 ```php
 <?php
@@ -1921,15 +1921,15 @@ $app->get(
 $app->handle();
 ```
 
-از آنجا که شیئ بایندر در حال استفاده داخلی از رفلکشن آپی ای است که می تواند بسیار سنگین باشد، توانایی تنظیم ذخیره گاهی که این روند را سرعت بخشد وجود دارد. این می تواند با استفاده از شناسه دوم`مجموعه مدل بایندر() ` انجام شود. همچنین میتواند نام یک سرویس را قبول کند یا فقط با عبور یک نمونه کش به سازنده `بایندر` انجام شود.
+Since Binder object is using internally Reflection Api which can be heavy, there is ability to set a cache so as to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
 
-در حال حاضر، اتصال دهنده تنها از کلید اصلی مدل برای انجام`پیدا کردن اول()` استفاده می کند. یک مثال از مسیر برای توضیح بالا `/محصولات/1` می باشد.
+Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/products/1`.
 
 <a name='views'></a>
 
 # Views
 
-`Phalcon\Mvc\Micro` به صورت ذاتی سرویس مشاهده ندارد؛ با این حال، ما می توانیم از `Phalcon\Mvc\View\Simple` برای استرداد مشاهدات استفاده کنیم.
+`Phalcon\Mvc\Micro` does not have inherently a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
 
 ```php
 <?php
@@ -2000,7 +2000,7 @@ $app->get(
 
 # Error Handling
 
-نرم افزار 0>Phalcon\Mvc\Micro</code> روش `خطا` را نیز دارد که می تواند مورد استفاده قرار گیرد تا هرگونه اشتباهی را که از استثنائات حاصل می شود تضمین کند. قطعه کد زیر، استفاده اساسی از این ویژگی را نشان می دهد:
+The `Phalcon\Mvc\Micro` application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
 
 ```php
 <?php
