@@ -158,27 +158,27 @@ if (count($messages)) {
 
 Phalcon exposes a set of built-in validators for this component:
 
-| Class                                          | Explanation                                                       |
-| ---------------------------------------------- | ----------------------------------------------------------------- |
-| `Phalcon\Validation\Validator\Alnum`        | Validates that a field's value is only alphanumeric character(s). |
-| `Phalcon\Validation\Validator\Alpha`        | Validates that a field's value is only alphabetic character(s).   |
-| `Phalcon\Validation\Validator\Date`         | Validates that a field's value is a valid date.                   |
-| `Phalcon\Validation\Validator\Digit`        | Validates that a field's value is only numeric character(s).      |
-| `Phalcon\Validation\Validator\File`         | Validates that a field's value is a correct file.                 |
-| `Phalcon\Validation\Validator\Uniqueness`   | Validates that a field's value is unique in the related model.    |
-| `Phalcon\Validation\Validator\Numericality` | Validates that a field's value is a valid numeric value.          |
-| `Phalcon\Validation\Validator\PresenceOf`   | Validates that a field's value is not null or empty string.       |
-| `Phalcon\Validation\Validator\Identical`    | Validates that a field's value is the same as a specified value   |
-| `Phalcon\Validation\Validator\Email`        | Validates that field contains a valid email format                |
-| `Phalcon\Validation\Validator\ExclusionIn`  | Validates that a value is not within a list of possible values    |
-| `Phalcon\Validation\Validator\InclusionIn`  | Validates that a value is within a list of possible values        |
-| `Phalcon\Validation\Validator\Regex`        | Validates that the value of a field matches a regular expression  |
-| `Phalcon\Validation\Validator\StringLength` | Validates the length of a string                                  |
-| `Phalcon\Validation\Validator\Between`      | Validates that a value is between two values                      |
-| `Phalcon\Validation\Validator\Confirmation` | Validates that a value is the same as another present in the data |
-| `Phalcon\Validation\Validator\Url`          | Validates that field contains a valid URL                         |
-| `Phalcon\Validation\Validator\CreditCard`   | Validates a credit card number                                    |
-| `Phalcon\Validation\Validator\Callback`     | Validates using callback function                                 |
+| Class                                          | Explanation                                                           |
+| ---------------------------------------------- | --------------------------------------------------------------------- |
+| `Phalcon\Validation\Validator\Alnum`        | Validates that a field's value is only alphanumeric character(s).     |
+| `Phalcon\Validation\Validator\Alpha`        | Validates that a field's value is only alphabetic character(s).       |
+| `Phalcon\Validation\Validator\Date`         | Validates that a field's value is a valid date.                       |
+| `Phalcon\Validation\Validator\Digit`        | Validates that a field's value is only numeric character(s).          |
+| `Phalcon\Validation\Validator\File`         | Validates that a field's value is a correct file.                     |
+| `Phalcon\Validation\Validator\Uniqueness`   | Validates that a field's value is unique in the related model.        |
+| `Phalcon\Validation\Validator\Numericality` | Validates that a field's value is a valid numeric value.              |
+| `Phalcon\Validation\Validator\PresenceOf`   | Validates that a field's value is not null or empty string.           |
+| `Phalcon\Validation\Validator\Identical`    | Перевіряє, що значення поля дорівнює вказаному значенню               |
+| `Phalcon\Validation\Validator\Email`        | Перевіряє, що поле містить допустимий формат адреси електронної пошти |
+| `Phalcon\Validation\Validator\ExclusionIn`  | Перевіряє, що значення не входить до списку можливих значень          |
+| `Phalcon\Validation\Validator\InclusionIn`  | Перевіряє, що значення входить до списку можливих значень             |
+| `Phalcon\Validation\Validator\Regex`        | Перевіряє, що значення поля відповідає регулярному виразу             |
+| `Phalcon\Validation\Validator\StringLength` | Перевіряє довжину рядка                                               |
+| `Phalcon\Validation\Validator\Between`      | Перевіряє, чи значення перебуває поміж двома іншими значеннями        |
+| `Phalcon\Validation\Validator\Confirmation` | Validates that a value is the same as another present in the data     |
+| `Phalcon\Validation\Validator\Url`          | Перевіряє, що поле містить допустиму URL-адресу                       |
+| `Phalcon\Validation\Validator\CreditCard`   | Перевіряє номер кредитної картки                                      |
+| `Phalcon\Validation\Validator\Callback`     | Перевіряє, за допомогою callback функції                              |
 
 The following example explains how to create additional validators for this component:
 
