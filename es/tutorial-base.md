@@ -113,9 +113,9 @@ El primer archivo que necesitas crear es el archivo bootstrap. Este archivo act�
 
 Este archivo gestiona 3 cosas:
 
-- Registration of component autoloaders
-- Configuring Services and registering them with the Dependency Injection context
-- Resolving the application's HTTP requests
+- Registro de componente cargadores automáticos
+- Configuración de servicios y luego registrarlos en el contenedor de Inyección de dependencias
+- Resolución de las solicitudes HTTP de la aplicación
 
 <a name='autoloaders'></a>
 
@@ -158,7 +158,7 @@ Debido a que Phalcon esta débilmente acoplado los servicios se registran con el
 - Contenedor de servicio: una bolsa donde almacenamos globalmente los servicios que nuestra aplicación usará para funcionar.
 - Servicio o Componente: objeto de procesamiento de datos que será inyectado en los componentes
 
-Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. Don't forget to include `Phalcon\Di` with setting up the service container.
+Cada vez que el marco requiera un componente o servicio, solicitará el contenedor utilizando un nombre acordado para el servicio. No se olvide de incluir `Phalcon\Di` con la configuración del contenedor de servicio.
 
 <div class='alert alert-warning'>
     <p>
@@ -168,7 +168,7 @@ Each time the framework requires a component or service, it will ask the contain
 
 ### Factory por defecto
 
-El inyector `Phalcon\Di\FactoryDefault` es una variante de `Phalcon\Di`. Para facilitar las cosas, registrará automáticamente la mayoría de los componentes que vienen con Phalcon. We recommend that you register your services manually but this has been included to help lower the barrier of entry when getting used to Dependency Management. Later, you can always specify once you become more comfortable with the concept.
+El inyector `Phalcon\Di\FactoryDefault` es una variante de `Phalcon\Di`. Para facilitar las cosas, registrará automáticamente la mayoría de los componentes que vienen con Phalcon. Le recomendamos que usted registre sus servicios manualmente pero esto se ha incluido para ayudar a reducir la barrera de entrada al acostumbrarse a la gestión de la dependencia. Más tarde, usted puede especificar una vez que se sienta más cómodo con el concepto.
 
 Los servicios se pueden registrar de varias formas, pero para nuestro tutorial usaremos una [función anónima](http://php.net/manual/en/functions.anonymous.php):
 
