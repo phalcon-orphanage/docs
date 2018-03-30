@@ -139,7 +139,7 @@ $loader->register();
 
 ### Gestión de dependencias
 
-Since Phalcon is **loosely coupled** services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the **IoC** container. Frequently you will encounter the term **DI** which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound like a complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts: - Service Container: a "bag" where we globally store the services that our application needs to function. - Service or Component: Data processing object which will be injected into components
+Since Phalcon is **loosely coupled** services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the **IoC** container. Frequently you will encounter the term **DI** which stands for Dependency Injection. La Inyección de Dependencia y la Inversión de Control (IoC) pueden parecer una característica compleja, pero en Phalcon su uso es muy simple y práctico. El contenedor IoC de Phalcon consta de los siguientes conceptos: - Contenedor de Servicio: una "bolsa" donde almacenamos globalmente los servicios que nuestra aplicación necesita para funcionar. - Service or Component: Data processing object which will be injected into components
 
 If you are still interested in the details please see this article by [Martin Fowler](https://martinfowler.com/articles/injection.html)
 
@@ -149,7 +149,7 @@ Services can be registered in several ways, but for our tutorial, we'll use an [
 
 ### Factory por defecto
 
-`Phalcon\Di\FactoryDefault` es una variante de `Phalcon\Di`. To make things easier, it will automatically register most of the components that come with Phalcon. We recommend that you register your services manually but this has been included to help lower the barrier of entry when getting used to Dependency Management. Later, you can always specify once you become more comfortable with the concept.
+`Phalcon\Di\FactoryDefault` es una variante de `Phalcon\Di`. Para facilitar las cosas, registrará automáticamente la mayoría de los componentes que vienen con Phalcon. We recommend that you register your services manually but this has been included to help lower the barrier of entry when getting used to Dependency Management. Later, you can always specify once you become more comfortable with the concept.
 
   
 **public/index.php**
@@ -530,7 +530,7 @@ class SignupController extends Controller
   
 
 
-Si haces clic en el botón "Registrar" otra vez, verás una página en blanco. The name and email input provided by the user should be stored in a database. Según las pautas MVC, las interacciones de la base de datos deben hacerse a través de modelos con el fin de garantizar la limpieza de código orientado a objetos.
+Si haces clic en el botón "Registrar" otra vez, verás una página en blanco. El nombre y correo electrónico proporcionados por el usuario deben estar guardados en una base de datos. Según las pautas MVC, las interacciones de la base de datos deben hacerse a través de modelos con el fin de garantizar la limpieza de código orientado a objetos.
 
 <a name='model'></a>
 
@@ -538,7 +538,7 @@ Si haces clic en el botón "Registrar" otra vez, verás una página en blanco. T
 
 Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be created like this:
+Antes de crear nuestro primer modelo, necesitamos crear una tabla de base de datos fuera de Phalcon para mapearlo. Se puede crear una tabla simple para almacenar usuarios registrados así:
 
   
 **create_users_table.sql**
@@ -555,7 +555,7 @@ CREATE TABLE `users` (
   
 
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
+Un modelo debe ubicarse en el directorio `app/models` (en este caso `app/models/Users.php`). El modelo se asigna a la tabla "users":
 
   
 **app/models/Users.php**
@@ -579,7 +579,7 @@ class Users extends Model
 
 ## Establecer una conexión de base de datos
 
-In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+Para utilizar una conexión de base de datos y, posteriormente, acceder a los datos a través de nuestros modelos, debemos especificarlo en nuestro proceso de arranque. Una conexión de base de datos es justo un servicio mas que tiene nuestra aplicación y que puede ser utilizado para varios componentes:
 
   
 **public/index.php**
@@ -662,9 +662,9 @@ class SignupController extends Controller
   
 
 
-At the beginning of the **registerAction** we create an empty user object from the Users class, which manages a User's record. The class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+At the beginning of the **registerAction** we create an empty user object from the Users class, which manages a User's record. The class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. El método de `save()` devuelve un valor booleano que indica si el almacenamiento de los datos fue exitoso o no.
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
+El ORM filtra automáticamente la entrada (auto-escape) para evitar inyecciones de SQL así que sólo tenemos que pasar la solicitud al método `save()`.
 
 Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign-up form our screen will look like this:
 
@@ -676,6 +676,6 @@ Additional validation happens automatically on fields that are defined as not nu
 
 ## Conclusión
 
-As you can see, it's easy to start building an application using Phalcon. The fact that Phalcon runs from an extension significantly reduces the footprint of projects as well as giving it a considerable performance boost.
+As you can see, it's easy to start building an application using Phalcon. El hecho de que Phalcon se ejecute desde una extensión reduce significativamente la huella de los proyectos y le da un aumento considerable en el rendimiento.
 
-If you are ready to learn more check out the [Rest Tutorial](/[[language]]/[[version]]/tutorial-rest) next.
+Si está listo para obtener más información, consulte el [Rest Tutorial](/[[language]]/[[version]]/tutorial-rest) siguiente.
