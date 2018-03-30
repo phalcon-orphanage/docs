@@ -56,7 +56,7 @@ Los siguientes filtros están incorporados en este componente:
 | Nombre        | Descripción                                                                                                             |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | string        | Elimina etiquetas y codifica entidades HTML, incluyendo comillas simples y dobles                                       |
-| email         | Quita todos los caracteres excepto letras, números y `` !#$%&*+-/=?^_{\|}~@.[]` ``                                 |
+| email         | Quita todos los caracteres excepto letras, números y ``!#$%&*+-/=?^_`{\|}~@.[]``                                   |
 | int           | Quita todos los caracteres excepto dígitos y los signos más y menos                                                     |
 | int!          | Convertir el valor en un valor entero utilizando la función [intval](http://php.net/manual/en/function.intval.php)      |
 | absint        | Obtiene el valor absoluto de un valor que fue convertido a entero                                                       |
@@ -64,10 +64,10 @@ Los siguientes filtros están incorporados en este componente:
 | float!        | Convertir el valor en un valor `float` utilizando la función [floatval](http://php.net/manual/en/function.floatval.php) |
 | alphanum      | Quita todos los caracteres excepto [a-zA-Z0-9]                                                                          |
 | striptags     | Se aplica la función [strip_tags](http://www.php.net/manual/en/function.strip-tags.php)                                 |
-| special_chars | Escapar los caracteres `'"<>&` y caracteres con valor ASCII menor a 32                                           |
+| special_chars | Escapar los caracteres `'"<>&` y caracteres con valor ASCII menor a 32                                        |
 | trim          | Se aplica la función [trim](http://www.php.net/manual/en/function.trim.php)                                             |
 | lower         | Se aplica la función [strtolower](http://www.php.net/manual/en/function.strtolower.php)                                 |
-| url           | Quita todos los caracteres letras, dígitos y `` `|$-_.+!*'(),{}[]<>#%";/?:@&=.^~\\ ``                          |
+| url           | Quita todos los caracteres letras, dígitos y ``&#124;$`-_.+!*'(),{}[]<>#%";/?:@&=.^\\~``                       |
 | upper         | Se aplica la función [strtoupper](http://www.php.net/manual/en/function.strtoupper.php)                                 |
 
 <a name='sanitizing'></a>

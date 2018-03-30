@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#basic">Урок: Основы</a> 
+      <a href="#basic">Tutorial - basic</a> 
       <ul>
         <li>
           <a href="#file-structure">Структура файлов</a>
