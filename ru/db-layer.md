@@ -818,9 +818,9 @@ $eventsManager->attach(
 
 ## Профилирование SQL запросов
 
-`Phalcon\Db` includes a profiling component called `Phalcon\Db\Profiler`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
+`Phalcon\Db` включает в себя компонент профилирования SQL запросов под названием `Phalcon\Db\Profiler`, который используется для анализа производительности запросов к базе данных для того, чтобы диагностировать проблему с производительностью и обнаружить узкие места.
 
-Database profiling is really easy With `Phalcon\Db\Profiler`:
+Профилировать базу данных легко с помощью `Phalcon\Db\Profiler`:
 
 ```php
 <?php
