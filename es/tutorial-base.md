@@ -454,7 +454,7 @@ Si haces clic en el botón "Registrar" otra vez, verás una página en blanco. E
 
 ## Creando un modelo
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalcon provee el primer ORM PHP escrito enteramente en lenguaje C. En lugar de aumentar la complejidad del desarrollo, lo simplifica.
 
 Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:
 
