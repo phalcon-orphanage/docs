@@ -1,21 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Creating a CLI Application</a> <ul>
+      <a href="#ایجاد یک برنامه کوچک">ایجاد یک برنامه کوچک</a> <ul>
         <li>
-          <a href="#structure">Structure</a>
+          <a href="#ساختار">ساختار</a>
         </li>
         <li>
-          <a href="#creating-bootstrap">Creating a Bootstrap</a>
+          <a href="#ایجاد خود راه انداز">ایجاد خود راه انداز</a>
         </li>
         <li>
-          <a href="#tasks">Tasks</a>
+          <a href="#وظایف">وظایف</a>
         </li>
         <li>
-          <a href="#processing-action-parameters">Processing action parameters</a>
+          <a href="#پارامترهای عمل پردازش">پارامترهای عمل پردازش</a>
         </li>
         <li>
-          <a href="#running-tasks-chain">Running tasks in a chain</a>
+          <a href="#کارهای در حال اجرا در زنجیره">کارهای در حال اجرا در زنجیره</a>
         </li>
       </ul>
     </li>
@@ -24,27 +24,27 @@
 
 <a name='creating-cli-application'></a>
 
-# Creating a Command Line (CLI) Application
+# ایجاد یک خط فرمان (CLI)
 
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+برنامه های CLI از خط فرمان اجرا می شوند. آنها برای ایجاد مشاغل کرون، اسکریپت ها، ابزارهای فرمان و موارد دیگر مفید هستند.
 
 <a name='structure'></a>
 
-## Structure
+## ساختار
 
-A minimal structure of a CLI application will look like this:
+ساختار حداقل یک برنامه CLI مانند این خواهد بود:
 
 - `app/config/config.php`
 - `app/tasks/MainTask.php`
-- `app/cli.php` <-- main bootstrap file
+- `app/cli.php` <-- فایل های خود راه انداز اصلی
 
 <a name='creating-bootstrap'></a>
 
-## Creating a Bootstrap
+## ایجاد خود راه انداز
 
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+همانطور که در برنامه های MVC به طور منظم، یک فایل بوت استرپ برای راه اندازی برنامه کاربردی استفاده می شود. به جای استفاده از index.php خود راه اندازدر برنامه های وب، از فایل cli.php برای بوت استرپ کردن برنامه استفاده می کنیم.
 
-Below is a sample bootstrap that is being used for this example.
+در زیر یک بوت استرپ نمونه است که برای این مثال استفاده می شود.
 
 ```php
 <?php
@@ -115,7 +115,7 @@ try {
 }
 ```
 
-This piece of code can be run using:
+این قطعه کد را می توان با استفاده از:
 
 ```bash
 php app/cli.php
@@ -123,44 +123,42 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Tasks
+## وظایف
 
-Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+وظایف شبیه به کنترل کننده ها است. هر برنامه کاربردی CLI نیاز به حداقل یک کارهای اصلی و یک عمل اصلی دارد و هر کار باید یک عمل اصلی انجام دهد که اگر هیچ اقدام صریحا داده نشود اجرا خواهد شد.
 
-Below is an example of the `app/tasks/MainTask.php` file:
+در زیر یک نمونه از آن است `app/tasks/MainTask.php` فایل:
 
 ```php
 <?php
 
 use Phalcon\Cli\Task;
-
-class MainTask extends Task
 {
-    public function mainAction()
+    تابع عمومی عمل اصلی ()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'این کار پیش فرض و عمل پیش فرض است'. PHP _EOL;
     }
 }
 ```
 
 <a name='processing-action-parameters'></a>
 
-## Processing action parameters
+## پارامترهای عمل پردازش
 
-It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
+امکان انتقال پارامترها به اعمال وجود دارد، کد برای این در حال حاضر در نمونه اولیه بوت استرپ وجود دارد.
 
-If you run the application with the following parameters and action:
+اگر برنامه را با پارامترها و عمل زیر اجرا کنید:
 
 ```php
 <?php
 
-use Phalcon\Cli\Task;
+استفاده Phalcon\Cli\Task;
 
-class MainTask extends Task
+کلاس وظیفه اصلی و توسعه وظیفه
 {
-    public function mainAction()
+    تابع عمومی عمل اصلی()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+       echo 'این کار پیش فرض و عمل پیش فرض است' . PHP_EOL;
     }
 
     /**
@@ -179,20 +177,20 @@ class MainTask extends Task
 }
 ```
 
-We can then run the following command:
+سپس می توانیم دستور زیر را اجرا کنیم:
 
 ```bash
-php app/cli.php main test world universe
+برنامه php/cli.php جهان اصلی جهان تست
 
-hello world
-best regards, universe
+سلام دنیا
+با احترام، جهان
 ```
 
 <a name='running-tasks-chain'></a>
 
-## Running tasks in a chain
+## کارهای در حال اجرا در زنجیره
 
-It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
+اگر لازم باشد، وظایف را در یک زنجیره نیز ممکن است انجام شود. برای انجام این کار باید خود کنسول را به DI اضافه کنید:
 
 ```php
 <?php
@@ -216,18 +214,18 @@ try {
 }
 ```
 
-Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
+سپس میتوانید از کنسول داخل هر کار استفاده کنید. در زیر یک نمونه از کار اصلی اصلی اصلاح شده php است:
 
 ```php
 <?php
 
-use Phalcon\Cli\Task;
+استفاده Phalcon\Cli\Task;
 
-class MainTask extends Task
+کلاس وظیفه اصلی و توسعه وظیفه
 {
-    public function mainAction()
+    تابع عمومی عمل اصلی()
     {
-        echo "This is the default task and the default action" . PHP_EOL;
+       echo;این کار پیش فرض و عمل پیش فرض است" . PHP_EOL;
 
         $this->console->handle(
             [
@@ -244,4 +242,4 @@ class MainTask extends Task
 }
 ```
 
-However, it's a better idea to extend `Phalcon\Cli\Task` and implement this kind of logic there.
+با این حال، این ایده بهتر است برای گسترش `Phalcon\Cli\Task` و پیاده سازی این نوع منطق وجود داشته باشد.
