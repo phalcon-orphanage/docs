@@ -363,12 +363,16 @@ En sistemas macOS puede compilar e instalar la extensión con `brew`, `macports`
 
 ### Brew
 
+As the [homebrew/php tap has been deprecated](https://brew.sh/2018/01/19/homebrew-1.5.0/) and is in the process of being removed, A custom repository for Phalcon has been created.
+
+PHP 5.5 has not been ported to homebrew/core and as such no longer exists. PHP 7.2 on the other hand has been added.
+
 ```bash
-brew tap homebrew/homebrew-php
-brew install php55-phalcon
+brew tap tigerstrikemedia/homebrew-phalconphp
 brew install php56-phalcon
 brew install php70-phalcon
 brew install php71-phalcon
+brew install php72-phalcon
 ```
 
 <a name='installation-macos-macports'></a>
@@ -421,7 +425,7 @@ Editar el archivo php.ini y luego añadir al final:
 extension=php_phalcon.dll
 ```
 
-Reiniciar el servidor web.
+Reinicie su servidor Web.
 
 <a name='installation-sources'></a>
 
@@ -549,7 +553,7 @@ make
 make install
 ```
 
-Ahora usted tendrá que añadir `extension=phalcon.so` a su archivo PHP ini y reiniciar su servidor web, para que la extensión sea cargada.
+Ahora usted tendrá que añadir `extension=phalcon.so` a su PHP ini y reiniciar su servidor web, para que la extensión sea cargada.
 
 <a name='installation-testing'></a>
 Puede crear un pequeño script en la raíz del servidor web que tenga lo siguiente:
