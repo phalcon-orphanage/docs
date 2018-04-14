@@ -363,9 +363,9 @@ En sistemas macOS puede compilar e instalar la extensión con `brew`, `macports`
 
 ### Brew
 
-As the [homebrew/php tap has been deprecated](https://brew.sh/2018/01/19/homebrew-1.5.0/) and is in the process of being removed, A custom repository for Phalcon has been created.
+Como el [homebrew/php ha quedado obsoleto](https://brew.sh/2018/01/19/homebrew-1.5.0/) y está en proceso de ser eliminado, se ha creado un repositorio personalizado para Phalcon.
 
-PHP 5.5 has not been ported to homebrew/core and as such no longer exists. PHP 7.2 on the other hand has been added.
+PHP 5.5 no ha sido portado a homebrew/core y como tal ya no existe. Por otro lado se ha añadido PHP 7.2.
 
 ```bash
 brew tap tigerstrikemedia/homebrew-phalconphp
