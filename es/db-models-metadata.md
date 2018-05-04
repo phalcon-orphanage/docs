@@ -172,11 +172,16 @@ Son soportadas las siguientes anotaciones:
 
 La anotación @Column admite los siguientes parámetros:
 
-| Nombre   | Descripción                                            |
-| -------- | ------------------------------------------------------ |
-| type     | Tipo de la columna (string, integer, decimal, boolean) |
-| length   | Longitud de la columna si lo hubiere                   |
-| nullable | Si la columna acepta valores null o no                 |
+| Nombre               | Descripción                                                                                                                                                                   |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| column               | Real column name                                                                                                                                                              |
+| type                 | The column's types: varchar/string (default), text, chr, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean) |
+| length               | Longitud de la columna si lo hubiere                                                                                                                                          |
+| nullable             | Si la columna acepta valores null o no                                                                                                                                        |
+| skip_on_insert     | Skip this column on insert                                                                                                                                                    |
+| skip_on_update     | Skip this column on updates                                                                                                                                                   |
+| allow_empty_string | Column allow empty strings                                                                                                                                                    |
+| default              | Default value                                                                                                                                                                 |
 
 La estrategia de anotaciones podría ser configurada de esta manera:
 
