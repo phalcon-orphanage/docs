@@ -215,8 +215,8 @@ class MyComponent implements EventsAwareInterface
     {
         $this->eventsManager->fire('my-component:beforeSomeTask', $this);
 
-        // Do some task
-        echo 'Here, someTask\n';
+        // Hacer alguna tarea
+        echo 'Aquí, someTask\n';
 
         $this->eventsManager->fire('my-component:afterSomeTask', $this);
     }
