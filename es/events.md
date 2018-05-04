@@ -195,13 +195,13 @@ Es posible crear componentes en su aplicación que activen eventos de un EventsM
 <?php
 
 use Phalcon\Events\EventsAwareInterface;
-use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Events\ManagerInterface;
 
 class MyComponent implements EventsAwareInterface
 {
     protected $eventsManager;
 
-    public function setEventsManager(EventsManager $eventsManager)
+    public function setEventsManager(ManagerInterface $eventsManager)
     {
         $this->eventsManager = $eventsManager;
     }
@@ -215,8 +215,8 @@ class MyComponent implements EventsAwareInterface
     {
         $this->eventsManager->fire('my-component:beforeSomeTask', $this);
 
-        // Hacer algunas tareas
-        echo 'Aquí, someTask\n';
+        // Do some task
+        echo 'Here, someTask\n';
 
         $this->eventsManager->fire('my-component:afterSomeTask', $this);
     }

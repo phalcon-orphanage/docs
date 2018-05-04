@@ -195,13 +195,13 @@ You can create components in your application that trigger events to an EventsMa
 <?php
 
 use Phalcon\Events\EventsAwareInterface;
-use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Events\ManagerInterface;
 
 class MyComponent implements EventsAwareInterface
 {
     protected $eventsManager;
 
-    public function setEventsManager(EventsManager $eventsManager)
+    public function setEventsManager(ManagerInterface $eventsManager)
     {
         $this->eventsManager = $eventsManager;
     }
