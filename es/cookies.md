@@ -101,7 +101,36 @@ Si desea utilizar el encriptado, debe establecer una clave global al servicio [c
         function () {
             $crypt = new Crypt();
 
-            $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Utilice la clave de seguridad que desee
+            /**
+             * Set the cipher algorithm.
+             *
+             * The `aes-256-gcm' is preferable cipher, but not usable until
+             * the openssl library is enhanced, which is due in PHP 7.1.
+             *
+             * The `aes-256-ctr' is arguably the best choice for cipher
+             * algorithm for current openssl library version.
+             */
+            $crypt->setCipher('aes-256-ctr');
+
+            /**
+             * Setting the encryption key.
+             *
+             * The key should have been previously generated in a cryptographically safe way.
+             *
+             * Bad key:
+             * "le password"
+             *
+             * Better (but still unsafe):
+             * "#1dj8$=dp?.ak//j1V$~%*0X"
+             *
+             * Good key:
+             * "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c"
+             *
+             * Use your own key. Do not copy and paste this example key.
+             */
+            $key = "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c";
+
+            $crypt->setKey($key);
 
             return $crypt;
         }
