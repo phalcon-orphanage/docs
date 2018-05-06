@@ -1,35 +1,30 @@
-<div class='article-menu'>
-  <ul>
-    <li>
-      <a href="#overview">Validating Models</a> <ul>
-        <li>
-          <a href="#data-integrity">Validating Data Integrity</a>
-        </li>
-        <li>
-          <a href="#messages">Validation Messages</a>
-        </li>
-        <li>
-          <a href="#failed-events">Validation Failed Events</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
+<div class='article-menu' mark="crwd-mark">
+
+<ul>
+<li><a href="#overview">Validating Models</a>
+
+<ul>
+<li><a href="#data-integrity">Validating Data Integrity</a></li>
+<li><a href="#messages">Validation Messages</a></li>
+<li><a href="#failed-events">Validation Failed Events</a></li>
+</ul></li>
+</ul>
+
 </div>
 
-<a name='overview'></a>
+<p><a name='overview' mark="crwd-mark"></a></p>
 
-# Validating Models
+<h1>Validating Models</h1>
 
-<a name='data-integrity'></a>
+<p><a name='data-integrity' mark="crwd-mark"></a></p>
 
-## Validating Data Integrity
+<h2>Validating Data Integrity</h2>
 
-`Phalcon\Mvc\Model` provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+<p><code>Phalcon\Mvc\Model</code> provides several events to validate data and implement business rules. The special <code>validation</code> event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.</p>
 
-The following example shows how to use it:
+<p>The following example shows how to use it:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 namespace Store\Toys;
 
@@ -44,11 +39,11 @@ class Robots extends Model
     {
         $validator = new Validation();
 
-        $validator->add(
+        $validator-&gt;add(
             'type',
             new InclusionIn(
                 [
-                    'domain' => [
+                    'domain' =&gt; [
                         'Mechanical',
                         'Virtual',
                     ]
@@ -56,28 +51,27 @@ class Robots extends Model
             )
         );
 
-        $validator->add(
+        $validator-&gt;add(
             'name',
             new Uniqueness(
                 [
-                    'message' => 'The robot name must be unique',
+                    'message' =&gt; 'The robot name must be unique',
                 ]
             )
         );
 
-        return $this->validate($validator);
+        return $this-&gt;validate($validator);
     }
 }
-```
+</code></pre>
 
-The above example performs a validation using the built-in validator 'InclusionIn'. It checks the value of the field `type` in a domain list. If the value is not included in the method then the validator will fail and return false.
+<p>The above example performs a validation using the built-in validator 'InclusionIn'. It checks the value of the field <code>type</code> in a domain list. If the value is not included in the method then the validator will fail and return false.</p>
 
-<h5 class='alert alert-warning'>For more information on validators, see the <a href="/[[language]]/[[version]]/validation">Validation documentation</a></h5>
+<h5 class='alert alert-warning' mark="crwd-mark">For more information on validators, see the <a href="/[[language]]/[[version]]/validation">Validation documentation</a></h5>
 
-The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
+<p>The idea of creating validators is make them reusable between several models. A validator can also be as simple as:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 namespace Store\Toys;
 
@@ -88,14 +82,14 @@ class Robots extends Model
 {
     public function validation()
     {
-        if ($this->type === 'Old') {
+        if ($this-&gt;type === 'Old') {
             $message = new Message(
                 'Sorry, old robots are not allowed anymore',
                 'type',
                 'MyType'
             );
 
-            $this->appendMessage($message);
+            $this-&gt;appendMessage($message);
 
             return false;
         }
@@ -103,44 +97,65 @@ class Robots extends Model
         return true;
     }
 }
-```
+</code></pre>
 
-<a name='messages'></a>
+<p><a name='messages' mark="crwd-mark"></a></p>
 
-## Validation Messages
+<h2>Validation Messages</h2>
 
-`Phalcon\Mvc\Model` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
+<p><code>Phalcon\Mvc\Model</code> has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.</p>
 
-Each message is an instance of `Phalcon\Mvc\Model\Message` and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information like the field name that generated the message or the message type:
+<p>Each message is an instance of <code>Phalcon\Mvc\Model\Message</code> and the set of messages generated can be retrieved with the <code>getMessages()</code> method. Each message provides extended information like the field name that generated the message or the message type:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
-if ($robot->save() === false) {
-    $messages = $robot->getMessages();
+if ($robot-&gt;save() === false) {
+    $messages = $robot-&gt;getMessages();
 
     foreach ($messages as $message) {
-        echo 'Message: ', $message->getMessage();
-        echo 'Field: ', $message->getField();
-        echo 'Type: ', $message->getType();
+        echo 'Message: ', $message-&gt;getMessage();
+        echo 'Field: ', $message-&gt;getField();
+        echo 'Type: ', $message-&gt;getType();
     }
 }
-```
+</code></pre>
 
-`Phalcon\Mvc\Model` can generate the following types of validation messages:
+<p><code>Phalcon\Mvc\Model</code> can generate the following types of validation messages:</p>
 
-| Type                   | Description                                                                                                                        |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `PresenceOf`           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
-| `ConstraintViolation`  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
-| `InvalidValue`         | Generated when a validator failed because of an invalid value                                                                      |
-| `InvalidCreateAttempt` | Produced when a record is attempted to be created but it already exists                                                            |
-| `InvalidUpdateAttempt` | Produced when a record is attempted to be updated but it doesn't exist                                                             |
+<table>
+<thead>
+<tr>
+  <th>Type</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>PresenceOf</code></td>
+  <td>Generated when a field with a non-null attribute on the database is trying to insert/update a null value</td>
+</tr>
+<tr>
+  <td><code>ConstraintViolation</code></td>
+  <td>Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model</td>
+</tr>
+<tr>
+  <td><code>InvalidValue</code></td>
+  <td>Generated when a validator failed because of an invalid value</td>
+</tr>
+<tr>
+  <td><code>InvalidCreateAttempt</code></td>
+  <td>Produced when a record is attempted to be created but it already exists</td>
+</tr>
+<tr>
+  <td><code>InvalidUpdateAttempt</code></td>
+  <td>Produced when a record is attempted to be updated but it doesn't exist</td>
+</tr>
+</tbody>
+</table>
 
-The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+<p>The <code>getMessages()</code> method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 namespace Store\Toys;
 
@@ -153,7 +168,7 @@ class Robots extends Model
         $messages = [];
 
         foreach (parent::getMessages() as $message) {
-            switch ($message->getType()) {
+            switch ($message-&gt;getType()) {
                 case 'InvalidCreateAttempt':
                     $messages[] = 'The record cannot be created because it already exists';
                     break;
@@ -163,7 +178,7 @@ class Robots extends Model
                     break;
 
                 case 'PresenceOf':
-                    $messages[] = 'The field ' . $message->getField() . ' is mandatory';
+                    $messages[] = 'The field ' . $message-&gt;getField() . ' is mandatory';
                     break;
             }
         }
@@ -171,15 +186,32 @@ class Robots extends Model
         return $messages;
     }
 }
-```
+</code></pre>
 
-<a name='failed-events'></a>
+<p><a name='failed-events' mark="crwd-mark"></a></p>
 
-## Validation Failed Events
+<h2>Validation Failed Events</h2>
 
-Another type of events are available when the data validation process finds any inconsistency:
+<p>Another type of events are available when the data validation process finds any inconsistency:</p>
 
-| Operation                | Name                | Explanation                                                            |
-| ------------------------ | ------------------- | ---------------------------------------------------------------------- |
-| Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
-| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |
+<table>
+<thead>
+<tr>
+  <th>Operation</th>
+  <th>Name</th>
+  <th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Insert or Update</td>
+  <td><code>notSaved</code></td>
+  <td>Triggered when the <code>INSERT</code> or <code>UPDATE</code> operation fails for any reason</td>
+</tr>
+<tr>
+  <td>Insert, Delete or Update</td>
+  <td><code>onValidationFails</code></td>
+  <td>Triggered when any data manipulation operation fails</td>
+</tr>
+</tbody>
+</table>
