@@ -51,11 +51,11 @@ $crypt = new Crypt();
 /**
  * Set the cipher algorithm.
  *
- * The `aes-256-gcm' is preferable cipher, but not usable until
- * the openssl library is enhanced, which is due in PHP 7.1.
+ * The `aes-256-gcm' is the preferable cipher, but it is not usable until the
+ * openssl library is upgraded, which is available in PHP 7.1.
  *
  * The `aes-256-ctr' is arguably the best choice for cipher
- * algorithm for current openssl library version.
+ * algorithm in these days.
  */
 $crypt->setCipher('aes-256-ctr');
 
