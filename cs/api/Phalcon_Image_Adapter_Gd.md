@@ -1,165 +1,166 @@
-# Class **Phalcon\\Image\\Adapter\\Gd**
+<h1>Class <strong>Phalcon\\Image\\Adapter\\Gd</strong></h1>
 
-*extends* abstract class [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p><em>extends</em> abstract class <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-*implements* [Phalcon\Image\AdapterInterface](/en/3.2/api/Phalcon_Image_AdapterInterface)
+<p><em>implements</em> <a href="/en/3.2/api/Phalcon_Image_AdapterInterface">Phalcon\Image\AdapterInterface</a></p>
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/image/adapter/gd.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<p><a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/image/adapter/gd.zep" class="btn btn-default btn-sm" mark="crwd-mark">Source on GitHub</a></p>
 
-## Methods
+<h2>Methods</h2>
 
-public static **check** ()
+<p>public static  <strong>check</strong> ()</p>
 
-...
+<p>...</p>
 
-public **__construct** (*mixed* $file, [*mixed* $width], [*mixed* $height])
+<p>public  <strong>__construct</strong> (<em>mixed</em> $file, [<em>mixed</em> $width], [<em>mixed</em> $height])</p>
 
-...
+<p>...</p>
 
-protected **_resize** (*mixed* $width, *mixed* $height)
+<p>protected  <strong>_resize</strong> (*mixed* $width, *mixed* $height)</p>
 
-...
+<p>...</p>
 
-protected **_crop** (*mixed* $width, *mixed* $height, *mixed* $offsetX, *mixed* $offsetY)
+<p>protected  <strong>_crop</strong> (*mixed* $width, *mixed* $height, *mixed* $offsetX, *mixed* $offsetY)</p>
 
-...
+<p>...</p>
 
-protected **_rotate** (*mixed* $degrees)
+<p>protected  <strong>_rotate</strong> (*mixed* $degrees)</p>
 
-...
+<p>...</p>
 
-protected **_flip** (*mixed* $direction)
+<p>protected  <strong>_flip</strong> (*mixed* $direction)</p>
 
-...
+<p>...</p>
 
-protected **_sharpen** (*mixed* $amount)
+<p>protected  <strong>_sharpen</strong> (*mixed* $amount)</p>
 
-...
+<p>...</p>
 
-protected **_reflection** (*mixed* $height, *mixed* $opacity, *mixed* $fadeIn)
+<p>protected  <strong>_reflection</strong> (*mixed* $height, *mixed* $opacity, *mixed* $fadeIn)</p>
 
-...
+<p>...</p>
 
-protected **_watermark** ([Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter) $watermark, *mixed* $offsetX, *mixed* $offsetY, *mixed* $opacity)
+<p>protected  <strong>_watermark</strong> (<a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a> $watermark, *mixed* $offsetX, *mixed* $offsetY, *mixed* $opacity)</p>
 
-...
+<p>...</p>
 
-protected **_text** (*mixed* $text, *mixed* $offsetX, *mixed* $offsetY, *mixed* $opacity, *mixed* $r, *mixed* $g, *mixed* $b, *mixed* $size, *mixed* $fontfile)
+<p>protected  <strong>_text</strong> (*mixed* $text, *mixed* $offsetX, *mixed* $offsetY, *mixed* $opacity, *mixed* $r, *mixed* $g, *mixed* $b, *mixed* $size, *mixed* $fontfile)</p>
 
-...
+<p>...</p>
 
-protected **_mask** ([Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter) $mask)
+<p>protected  <strong>_mask</strong> (<a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a> $mask)</p>
 
-...
+<p>...</p>
 
-protected **_background** (*mixed* $r, *mixed* $g, *mixed* $b, *mixed* $opacity)
+<p>protected  <strong>_background</strong> (*mixed* $r, *mixed* $g, *mixed* $b, *mixed* $opacity)</p>
 
-...
+<p>...</p>
 
-protected **_blur** (*mixed* $radius)
+<p>protected  <strong>_blur</strong> (*mixed* $radius)</p>
 
-...
+<p>...</p>
 
-protected **_pixelate** (*mixed* $amount)
+<p>protected  <strong>_pixelate</strong> (*mixed* $amount)</p>
 
-...
+<p>...</p>
 
-protected **_save** (*mixed* $file, *mixed* $quality)
+<p>protected  <strong>_save</strong> (*mixed* $file, *mixed* $quality)</p>
 
-...
+<p>...</p>
 
-protected **_render** (*mixed* $ext, *mixed* $quality)
+<p>protected  <strong>_render</strong> (*mixed* $ext, *mixed* $quality)</p>
 
-...
+<p>...</p>
 
-protected **_create** (*mixed* $width, *mixed* $height)
+<p>protected  <strong>_create</strong> (*mixed* $width, *mixed* $height)</p>
 
-...
+<p>...</p>
 
-public **__destruct** ()
+<p>public  <strong>__destruct</strong> ()</p>
 
-...
+<p>...</p>
 
-public **getImage** () inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>getImage</strong> () inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-...
+<p>...</p>
 
-public **getRealpath** () inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>getRealpath</strong> () inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-...
+<p>...</p>
 
-public **getWidth** () inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>getWidth</strong> () inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Image width
+<p>Image width</p>
 
-public **getHeight** () inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>getHeight</strong> () inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Image height
+<p>Image height</p>
 
-public **getType** () inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>getType</strong> () inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Image type Driver dependent
+<p>Image type
+Driver dependent</p>
 
-public **getMime** () inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>getMime</strong> () inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Image mime type
+<p>Image mime type</p>
 
-public **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master]) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>resize</strong> ([<em>mixed</em> $width], [<em>mixed</em> $height], [<em>mixed</em> $master]) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Resize the image to the given size
+<p>Resize the image to the given size</p>
 
-public **liquidRescale** (*mixed* $width, *mixed* $height, [*mixed* $deltaX], [*mixed* $rigidity]) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>liquidRescale</strong> (<em>mixed</em> $width, <em>mixed</em> $height, [<em>mixed</em> $deltaX], [<em>mixed</em> $rigidity]) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-This method scales the images using liquid rescaling method. Only support Imagick
+<p>This method scales the images using liquid rescaling method. Only support Imagick</p>
 
-public **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY]) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>crop</strong> (<em>mixed</em> $width, <em>mixed</em> $height, [<em>mixed</em> $offsetX], [<em>mixed</em> $offsetY]) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Crop an image to the given size
+<p>Crop an image to the given size</p>
 
-public **rotate** (*mixed* $degrees) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>rotate</strong> (<em>mixed</em> $degrees) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Rotate the image by a given amount
+<p>Rotate the image by a given amount</p>
 
-public **flip** (*mixed* $direction) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>flip</strong> (<em>mixed</em> $direction) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Flip the image along the horizontal or vertical axis
+<p>Flip the image along the horizontal or vertical axis</p>
 
-public **sharpen** (*mixed* $amount) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>sharpen</strong> (<em>mixed</em> $amount) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Sharpen the image by a given amount
+<p>Sharpen the image by a given amount</p>
 
-public **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $fadeIn]) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>reflection</strong> (<em>mixed</em> $height, [<em>mixed</em> $opacity], [<em>mixed</em> $fadeIn]) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Add a reflection to an image
+<p>Add a reflection to an image</p>
 
-public **watermark** ([Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity]) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>watermark</strong> (<a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a> $watermark, [<em>mixed</em> $offsetX], [<em>mixed</em> $offsetY], [<em>mixed</em> $opacity]) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Add a watermark to an image with the specified opacity
+<p>Add a watermark to an image with the specified opacity</p>
 
-public **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity], [*mixed* $color], [*mixed* $size], [*mixed* $fontfile]) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>text</strong> (<em>mixed</em> $text, [<em>mixed</em> $offsetX], [<em>mixed</em> $offsetY], [<em>mixed</em> $opacity], [<em>mixed</em> $color], [<em>mixed</em> $size], [<em>mixed</em> $fontfile]) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Add a text to an image with a specified opacity
+<p>Add a text to an image with a specified opacity</p>
 
-public **mask** ([Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter) $watermark) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>mask</strong> (<a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a> $watermark) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Composite one image onto another
+<p>Composite one image onto another</p>
 
-public **background** (*mixed* $color, [*mixed* $opacity]) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>background</strong> (<em>mixed</em> $color, [<em>mixed</em> $opacity]) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Set the background color of an image
+<p>Set the background color of an image</p>
 
-public **blur** (*mixed* $radius) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>blur</strong> (<em>mixed</em> $radius) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Blur image
+<p>Blur image</p>
 
-public **pixelate** (*mixed* $amount) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>pixelate</strong> (<em>mixed</em> $amount) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Pixelate image
+<p>Pixelate image</p>
 
-public **save** ([*mixed* $file], [*mixed* $quality]) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>save</strong> ([<em>mixed</em> $file], [<em>mixed</em> $quality]) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Save the image
+<p>Save the image</p>
 
-public **render** ([*mixed* $ext], [*mixed* $quality]) inherited from [Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter)
+<p>public  <strong>render</strong> ([<em>mixed</em> $ext], [<em>mixed</em> $quality]) inherited from <a href="/en/3.2/api/Phalcon_Image_Adapter">Phalcon\Image\Adapter</a></p>
 
-Render the image and return the binary string
+<p>Render the image and return the binary string</p>

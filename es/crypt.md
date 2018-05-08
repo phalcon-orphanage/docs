@@ -30,6 +30,8 @@ Phalcon proporciona un servicio de cifrado mediante el componente `Phalcon\Crypt
 
 De forma predeterminada, este componente proporciona cifrado seguro utilizando AES-256-CFB.
 
+The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography), they have also recommended using higher than 128-bit keys for encryption.
+
 <div class="alert alert-warning">
     <p>
         Se debe utilizar una longitud de clave que corresponda con el algoritmo actual. El algoritmo usado por defecto es 32 bytes.
@@ -47,11 +49,39 @@ Este componente está diseñado para proporcionar un uso muy sencillo:
 
 use Phalcon\Crypt;
 
-// Crear instancia
+// Create an instance
 $crypt = new Crypt();
 
-$key  = 'Esta es mi clave secreta (32 bytes).';
-$text = 'Este es el texto que deseamos encriptar.';
+/**
+ * Set the cipher algorithm.
+ *
+ * The `aes-256-gcm' is the preferable cipher, but it is not usable until the
+ * openssl library is upgraded, which is available in PHP 7.1.
+ *
+ * The `aes-256-ctr' is arguably the best choice for cipher
+ * algorithm in these days.
+ */
+$crypt->setCipher('aes-256-ctr');
+
+/**
+ * Set the encryption key.
+ *
+ * The `$key' should have been previously generated in a cryptographically safe way.
+ *
+ * Bad key:
+ * "le password"
+ *
+ * Better (but still unsafe):
+ * "#1dj8$=dp?.ak//j1V$~%*0X"
+ *
+ * Good key:
+ * "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+ *
+ * Use your own key. Do not copy and paste this example key.
+ */
+$key = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
+
+$text = 'This is the text that you want to encrypt.';
 
 $encrypted = $crypt->encrypt($text, $key);
 
@@ -65,19 +95,22 @@ Puede utilizar la misma instancia para encriptar/desencriptar varias veces:
 
 use Phalcon\Crypt;
 
-// Creamos la instancia
+$crypt->setCipher('aes-256-ctr');
+
+// Create an instance
 $crypt = new Crypt();
 
+// Use your own keys!
 $texts = [
-    'mi-llave'    => 'Este es un texto secreto',
-    'otra-llave' => 'Esta es muy secreta',
+    "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c" => 'This is a secret text',
+    "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3" => 'This is a very secret',
 ];
 
 foreach ($texts as $key => $text) {
-    // Realizar el cifrado
+    // Perform the encryption
     $encrypted = $crypt->encrypt($text, $key);
 
-    // Ahora desencriptar
+    // Now decrypt
     echo $crypt->decrypt($encrypted, $key);
 }
 ```
@@ -99,14 +132,15 @@ Ejemplo:
 
 use Phalcon\Crypt;
 
-// Creamos la instancia
+// Create an instance
 $crypt = new Crypt();
 
-// Usamos blowfish
+// Use blowfish
 $crypt->setCipher('bf-cbc');
 
-$key  = 'La llave secreta';
-$text = 'Este es el texto secreto';
+// Use your own key!
+$key  = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
+$text = 'This is a secret text';
 
 echo $crypt->encrypt($text, $key);
 ```
@@ -122,11 +156,12 @@ Para que el cifrado se transmita correctamente (correos electrónicos) o se mues
 
 use Phalcon\Crypt;
 
-// Creamos la instancia
+// Create an instance
 $crypt = new Crypt();
 
-$key  = 'La llave secreta';
-$text = 'El texto secreto que queremos ocultar';
+// Use your own key!
+$key  = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
+$text = 'This is a secret text';
 
 $encrypt = $crypt->encryptBase64($text, $key);
 
@@ -149,9 +184,9 @@ $di->set(
     function () {
         $crypt = new Crypt();
 
-        // Clave de seguridad global
+        // Set a global encryption key
         $crypt->setKey(
-            '%31.1e$i86e$f!8jz'
+            "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
         );
 
         return $crypt;
@@ -193,3 +228,6 @@ class SecretsController extends Controller
 * [Estándar de cifrado avanzado (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 * [Qué es el bloque Cipher](https://en.wikipedia.org/wiki/Block_cipher)
 * [Introducción a Blowfish](http://www.splashdata.com/splashid/blowfish.htm)
+* [CTR-Mode Encryption](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.79.1353&rep=rep1&type=pdf)
+* [Recommendation for Block Cipher Modes of Operation: Methods and Techniques](https://csrc.nist.gov/publications/detail/sp/800-38a/final)
+* [Counter (CTR) mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29)
