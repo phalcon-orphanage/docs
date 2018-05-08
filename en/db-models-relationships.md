@@ -822,7 +822,7 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 <a name='operations-over-resultsets'></a>
 ## Operations over Resultsets
-If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
+If a resultset is composed of complete objects, it can perform operations on the records:
 
 <a name='updating-related-records'></a>
 ### Updating related records
