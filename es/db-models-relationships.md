@@ -843,7 +843,7 @@ Es necesario sobrecargar el método `Phalcon\Mvc\Model::save()` del modelo para 
 
 ## Operaciones sobre conjuntos de resultados
 
-Si un conjunto de resultados se compone de objetos completos, el conjunto de resultados está en la capacidad para realizar operaciones sobre los registros obtenidos de una manera simple:
+If a resultset is composed of complete objects, it can perform operations on the records:
 
 <a name='updating-related-records'></a>
 
