@@ -15,10 +15,10 @@
           <a href="#ini-files">Reading INI Files</a>
         </li>
         <li>
-          <a href="#merging">Merging Configurations</a>
+          <a href="#merging">Fusionner des configurations</a>
         </li>
         <li>
-          <a href="#nested-configuration">Nested Configuration</a>
+          <a href="#nested-configuration">Configurations imbriqués</a>
         </li>
         <li>
           <a href="#injecting-into-di">Injecting Configuration Dependency</a>
