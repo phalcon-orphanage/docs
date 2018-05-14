@@ -165,8 +165,8 @@ The annotation @Column supports the following parameters:
 
 | Name               | Description                                           |
 | ------------------ | ----------------------------------------------------- |
-| column             | Real column name                                           |
-| type               | The column's types: varchar/string (default), text, chr, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean) |
+| column             | Real column name                                      |
+| type               | The column's types: varchar/string (default), text, chr, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
 | length             | The column's length if any                            |
 | nullable           | Set whether the column accepts null values or not     |
 | skip_on_insert     | Skip this column on insert                            |
