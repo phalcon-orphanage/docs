@@ -138,13 +138,13 @@ while (($job = $queue->reserve()) !== false) {
 
 Nuestro cliente implementa un conjunto básico de características provistas por Beanstalkd pero suficientes para permitir construir aplicaciones que implementen colas.
 
-## Advanced Topics
+## Temas avanzados
 
-### Multiple Queues
+### Colas múltiples
 
-Beanstalkd supports multiple queues (called 'tubes') to allow for a single queue server to act as a hub for a variety of workers. Phalcon supports this readily.
+Beanstalkd soporta múltiples colas (llamadas 'tubos') para permitir a un servidor de colas simple actuar como un hub para una variedad de trabajadores. Phalcon permite hacer esto fácilmente.
 
-Viewing the tubes available on the server, and choosing a tube for the queue object to use:
+Ver los tubos disponibles en el servidor y elegir un tubo para que el objeto de la cola lo use, ver el siguiente ejemplo:
 
 ```php
 <?php
@@ -154,9 +154,9 @@ $tube_array = $queue->listTubes();
 $queue->choose('myOtherTube');
 ```
 
-All subsequent work with `$queue` now manipulates `myOtherTube` instead of `default`.
+Todo el trabajo posterior con `$queue` ahora se manipula en `myOtherTube` en lugar de `default`.
 
-You can view which tube the queue is using as well.
+Puede ver qué tubo está usando la cola, a continuación un ejemplo.
 
 ```php
 <?php
@@ -164,9 +164,9 @@ You can view which tube the queue is using as well.
 $current_tube = $queue->listTubeUsed();
 ```
 
-### Tube Manipulation
+### Manipulación de tubos
 
-Tubes can be paused and resumed if needed. The example below pauses `myOtherTube` for 3 minutes.
+Los tubos pueden ser pausados o reanudados si lo necesita. Por ejemplo, pausaremos por 3 minutos el tubo `myOtherTube`.
 
 ```php
 <?php
@@ -174,7 +174,7 @@ Tubes can be paused and resumed if needed. The example below pauses `myOtherTube
 $queue->pauseTube('myOtherTube', 180);
 ```
 
-Setting the delay to 0 will resume normal operation.
+Estableciendo el retraso en 0, se reanudará el funcionamiento normal.
 
 ```php
 <?php
@@ -182,9 +182,9 @@ Setting the delay to 0 will resume normal operation.
 $queue->pauseTube('myOtherTube', 0);
 ```
 
-### Server Status
+### Estado del servidor
 
-You can get information about the entire server or specific tubes.
+Puede obtener información sobre el servidor entero o de un tubo especifico.
 
 ```php
 <?php
@@ -197,11 +197,11 @@ $server_status = $queue->readStatus();
 
 ```
 
-### Job Management
+### Gestión de trabajos
 
-Beanstalkd supports the ability to manage jobs with both the idea of delaying a job and removing a job from the queue for later processing.
+Beanstalkd admite la gestión de trabajos con la idea de retrasar un trabajo y eliminar un trabajo de la cola para su posterior procesamiento.
 
-Burying a job is typically used to deal with potential problems outside of the worker that can be resolved. This takes the job and puts it into the buried queue.
+Enterrar un trabajo, generalmente, se usa para tratar problemas potenciales que pueden resolverse fuera del trabajador. Esto toma el trabajo y lo pone en la cola enterrada.
 
 ```php
 <?php
@@ -210,7 +210,7 @@ $job = $queue->reserve();
 $job->bury();
 ```
 
-A list of buried jobs is stored on the server. You can inspect the first buried job in the queue.
+Una lista de trabajos enterrados es almacenada en el servidor. Es posible inspeccionar el primer trabajo enterrado en la cola, de la siguiente manera.
 
 ```php
 <?php
@@ -218,9 +218,9 @@ A list of buried jobs is stored on the server. You can inspect the first buried 
 $job_data = $queue->peekBuried();
 ```
 
-If the buried queue is empty, this will return `false`, else it returns a Job object.
+Si la cola de trabajos enterrados esta vacía, esto retornará `false`, en el caso contrario, retorna el objecto de trabajo.
 
-You can kick the first [N] buried jobs in the buried queue to put it/them back in the ready queue. Below is an example of kicking the first three buried jobs.
+Puede tomar los primeros [N] trabajos enterrados en la cola para ponerlos nuevamente en la cola de espera. A continuación hay un ejemplo de patear los primeros 3 trabajos enterrados.
 
 ```php
 <?php
@@ -228,7 +228,7 @@ You can kick the first [N] buried jobs in the buried queue to put it/them back i
 $queue->kick(3);
 ```
 
-Releasing jobs back to the ready queue can be done, along with an optional delay. This is handy for transient errors while processing a job. Below is an example of putting a low (100) priority and a 3 minute delay on a job.
+Se puede realizar trabajos de liberación a la lista de espera, junto con un retraso opcional. Esto es útil para errores transitorios al procesar un trabajo. A continuación se muestra un ejemplo de poner una prioridad baja (100) y una demora de 3 minutos en un trabajo.
 
 ```php
 <?php
@@ -238,9 +238,9 @@ $job = $queue->reserve();
 $job->release(100, 180);
 ```
 
-Priority and delay are the same as when `put`ing a job on the queue.
+La prioridad y el retraso son las mismas cuando pone un trabajo en la cola.
 
-Inspecting a job in the queue can be accomplished with `jobPeek($job_id)`. The example below attempts to peek at job id 5.
+La inspección de un trabajo en la cola se puede lograr con `jobPeek($job_id)`. El siguiente ejemplo intenta echar un vistazo a la identificación de trabajo 5.
 
 ```php
 <?php
@@ -248,8 +248,8 @@ Inspecting a job in the queue can be accomplished with `jobPeek($job_id)`. The e
 $queue->jobPeek(5)
 ```
 
-Jobs that have been `delete`ed cannot be inspected and will return `false`. Ready, buried, and delayed jobs will return a Job object.
+Los trabajos que han sido eliminados no se pueden inspeccionar y devolverán `false`. Los trabajos listos, enterrados y retrasados devolverán un objeto de trabajo.
 
-### Further Reading
+### Lecturas adicionales
 
-[The protocol text](https://github.com/kr/beanstalkd/blob/master/doc/protocol.txt) contains all of the internal operational details of BeanstalkD and is often considered the defacto documentation for BeanstalkD.
+[El texto del protocolo](https://github.com/kr/beanstalkd/blob/master/doc/protocol.txt) contiene todos los detalles operacionales internos de BeanstalkD, a menudo se considera la documentación de facto para BeanstalkD.
