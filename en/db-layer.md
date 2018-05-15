@@ -924,7 +924,7 @@ As above, the file `app/logs/db.log` will contain something like this:
 
 <a name='logger-custom'></a>
 ## Implementing your own Logger
-You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a string as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
+You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a `string` as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
 
 <a name='describing-tables'></a>
 ## Describing Tables/Views
