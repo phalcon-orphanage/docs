@@ -963,7 +963,7 @@ foreach ($references as $reference) {
 }
 ```
 
-A table description is very similar to the MySQL describe command, it contains the following information:
+A table description is very similar to the MySQL `DESCRIBE` command, it contains the following information:
 
 | Field        | Type        | Key                                                | Null                               |
 |--------------|-------------|----------------------------------------------------|------------------------------------|
