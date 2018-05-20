@@ -22,7 +22,7 @@
 
 <a name='what-is-phalcon'></a>
 ## What is Phalcon
-Phalcon in an open source full stack PHP framework written as a C language extension.
+Phalcon is an open source full stack PHP framework written as a C language extension.
 
 <a name='how-phalcon-works'></a>
 ## How Phalcon Works
