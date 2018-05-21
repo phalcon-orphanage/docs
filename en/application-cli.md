@@ -34,7 +34,7 @@ A minimal structure of a CLI application will look like this:
 
 * `app/config/config.php`
 * `app/tasks/MainTask.php`
-* `app/cli.php` <-- main bootstrap file
+* `app/cli.php` main bootstrap file
 
 <a name='creating-bootstrap'></a>
 ## Creating a Bootstrap
