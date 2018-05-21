@@ -103,7 +103,7 @@ $paginator = new PaginatorModel(
 $page = $paginator->getPaginate();
 ```
 
-The `$currentPage` variable controls the page to be displayed. The `$paginator->getPaginate()` returns a `$page` object that contains the paginated data. It can be used for generating the pagination:
+La variable `$currentPage` controla la página que se mostrará. El `$paginator->getPaginate()` devuelve un objeto `$page` que contiene los datos paginados. It can be used for generating the pagination:
 
 ```php
 <table>
@@ -122,7 +122,7 @@ The `$currentPage` variable controls the page to be displayed. The `$paginator->
 </table>
 ```
 
-The `$page` object also contains navigation data:
+El objeto `$page` también contiene datos de navegación:
 
 ```php
 <a href='/robots/search'>First</a>
@@ -190,7 +190,7 @@ $paginator = new PaginatorQueryBuilder(
 
 ## Page Attributes
 
-The `$page` object has the following attributes:
+El objeto `$page` tiene los siguientes atributos:
 
 | Atributos     | Descripción                                                        |
 | ------------- | ------------------------------------------------------------------ |
