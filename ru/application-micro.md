@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-micro-application">Создание микроприложения</a>
+      <a href="#creating-micro-applications">Создание микроприложения</a>
     </li>
     <li>
       <a href="#routing">Маршрутизация</a> 
@@ -1933,7 +1933,7 @@ $app->handle();
 
 # Представления
 
-`Phalcon\Mvc\Micro` не имеет встроенного view сервиса. Однако мы можем использовать компонент `Phalcon\Mvc\View\Simple` для отображения видов.
+`Phalcon\Mvc\Micro` does not inherently have a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
 
 ```php
 <?php
