@@ -25,7 +25,7 @@
 
 ## Qué es Phalcon
 
-Phalcon is an open source full stack PHP framework written as a C language extension.
+Phalcon es un framework open source full stack para PHP, escrito como una extensión en C.
 
 <a name='how-phalcon-works'></a>
 
