@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-micro-application">Vytvoření mikro-aplikace</a>
+      <a href="#creating-micro-applications">Vytvoření mikro-aplikace</a>
     </li>
     <li>
       <a href="#routing">Routování</a> 
@@ -1936,7 +1936,7 @@ Currently the binder will only use the models primary key to perform a `findFirs
 
 # Views
 
-`Phalcon\Mvc\Micro` does not have inherently a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
+`Phalcon\Mvc\Micro` does not inherently have a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
 
 ```php
 <?php

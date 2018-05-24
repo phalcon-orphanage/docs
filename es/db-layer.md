@@ -378,7 +378,7 @@ Cuando se utilizan marcadores numéricos, necesita definirlos como enteros, es d
 
 Esta función tiene en cuenta el conjunto de caracteres de conexión, por lo que se recomienda definir el conjunto de caracteres correcto en los parámetros de conexión o en la configuración de servidor de base de datos, como un conjunto de caracteres incorrecto producirá efectos no deseados al almacenar o recuperar datos.
 
-Also, you can pass your parameters directly to the `execute` or `query` methods. In this case bound parameters are directly passed to PDO:
+También, se puede pasar sus parámetros directamente a los métodos `execute` o `query`. En este caso los parámetros enlazados se pasan directamente al PDO:
 
 ```php
 <?php
@@ -709,7 +709,7 @@ try {
 }
 ```
 
-Además de las transacciones estándar, `Phalcon\Db` ofrece soporte incorporado para [transacciones anidadas](http://en.wikipedia.org/wiki/Nested_transaction) (si el sistema de base de datos las admite). When you call `begin()` for a second time a nested transaction is created:
+Además de las transacciones estándar, `Phalcon\Db` ofrece soporte incorporado para [transacciones anidadas](http://en.wikipedia.org/wiki/Nested_transaction) (si el sistema de base de datos las admite). Cuando se llama `begin()` por segunda vez, se crea una transacción anidada:
 
 ```php
 <?php
@@ -751,7 +751,7 @@ try {
 
 ## Eventos de base de datos
 
-`Phalcon\Db` es capaz de enviar eventos al [EventsManager](/[[language]]/[[version]]/events) si está presente. Some events when returning boolean `false` could stop the active operation. Son soportados los siguientes eventos:
+`Phalcon\Db` es capaz de enviar eventos al [EventsManager](/[[language]]/[[version]]/events) si está presente. Si algún evento devuelve `false` podría detener la operación activa. Son soportados los siguientes eventos:
 
 | Nombre de Evento      | Activador                                                          | ¿Puede detener la operación? |
 | --------------------- | ------------------------------------------------------------------ |:----------------------------:|
@@ -963,7 +963,7 @@ Como en el anterior ejemplo, el archivo `app/logs/db.log` contendrá algo como e
 
 ## Implementar tu propio Logger
 
-Usted puede implementar su propia clase logger para consultas de bases de datos, mediante la creación de una clase que implementa un único método llamado `log`. The method needs to accept a `string` as the first argument. Luego usted puede pasar su objeto de registro a `Phalcon\Db::setLogger()`, y de ahí en adelante cualquier instrucción SQL ejecutada llamará ese método para registrar los resultados.
+Usted puede implementar su propia clase logger para consultas de bases de datos, mediante la creación de una clase que implementa un único método llamado `log`. El método debe aceptar un `string` como primer argumento. Luego usted puede pasar su objeto de registro a `Phalcon\Db::setLogger()`, y de ahí en adelante cualquier instrucción SQL ejecutada llamará ese método para registrar los resultados.
 
 <a name='describing-tables'></a>
 
@@ -1004,7 +1004,7 @@ foreach ($references as $reference) {
 }
 ```
 
-A table description is very similar to the MySQL `DESCRIBE` command, it contains the following information:
+Una descripción de la tabla es muy similar al comando `DESCRIBE` de MySQL, contiene la siguiente información:
 
 | Campo            | Tipo            | Clave                                                      | Nulo                              |
 | ---------------- | --------------- | ---------------------------------------------------------- | --------------------------------- |
@@ -1026,7 +1026,7 @@ $exists = $connection->viewExists('robots');
 
 ## Crear/Modificar/Eliminar tablas
 
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as `CREATE`, `ALTER` or `DROP`. La sintaxis SQL difiere según el sistema de base de datos utilizado. `Phalcon\Db` ofrece una interfaz unificada para modificar las tablas, sin la necesidad de diferenciar la sintaxis SQL basándose en el sistema de almacenamiento de destino.
+Diferentes sistemas de base de datos (MySQL, Postgresql, etc.) ofrecen la capacidad para crear, modificar o eliminar tablas con el uso de comandos como `CREATE`, `ALTER` o `DROP`. La sintaxis SQL difiere según el sistema de base de datos utilizado. `Phalcon\Db` ofrece una interfaz unificada para modificar las tablas, sin la necesidad de diferenciar la sintaxis SQL basándose en el sistema de almacenamiento de destino.
 
 <a name='tables-create'></a>
 
@@ -1162,14 +1162,14 @@ $connection->dropColumn(
 
 ### Eliminar tablas
 
-To drop an existing table from the current database, use the `dropTable` method. To drop an table from custom database, use second parameter describes database name. Examples on dropping tables:
+Para eliminar una tabla existente de la base de datos actual, use el método `dropTable`. Para eliminar una tabla de una base de datos personalizada, use el segundo parámetro para describir el nombre de la base de datos. Ejemplos de eliminación de tablas:
 
 ```php
 <?php
 
-// Drop table 'robots' from active database
+// Borrar la tabla 'robot' desde la base de datos activa
 $connection->dropTable('robots');
 
-// Drop table 'robots' from database 'machines'
+// Borrar la tabla 'robot' desde la base de datos 'machines'
 $connection->dropTable('robots', 'machines');
 ```
