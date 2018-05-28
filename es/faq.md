@@ -29,6 +29,8 @@ Phalcon is an open source full stack PHP framework written as a C language exten
 
 <a name='how-phalcon-works'></a>
 
+<a name='how-phalcon-works'></a>
+
 ## Cómo funciona Phalcon
 
 Phalcon *no* es un acelerador de PHP o un proyecto escrito en PHP. *(Para un lenguaje similar a PHP para producir extensiones C de alto rendimiento, consulte [Zephir](https://github.com/falcon/zephir))*
