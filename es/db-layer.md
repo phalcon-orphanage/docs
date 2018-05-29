@@ -1162,7 +1162,7 @@ $connection->dropColumn(
 
 ### Eliminar tablas
 
-Ejemplos de borrado de tablas:
+Para eliminar una tabla existente de la base de datos actual, use el método `dropTable`. Para eliminar una tabla de una base de datos personalizada, use el segundo parámetro para describir el nombre de la base de datos. Ejemplos de eliminación de tablas:
 
 ```php
 <?php
