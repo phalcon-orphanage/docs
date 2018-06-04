@@ -21,10 +21,13 @@
               <a href="#resultsets">Возвращение результатов моделью</a>
             </li>
             <li>
-              <a href="#filters">Фильтрация результатов</a>
+              <a href="#custom-resultsets">Custom Resultsets</a>
             </li>
             <li>
-              <a href="#binding-parameters">Привязка параметров</a>
+              <a href="#filters">Filtering Resultsets</a>
+            </li>
+            <li>
+              <a href="#binding-parameters">Binding Parameters</a>
             </li>
           </ul>
         </li>
@@ -409,17 +412,17 @@ $robots = Robots::find(
 | Параметр      | Описание                                                                                                                                                                                                      | Пример                                                               |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Условие поиска. Используется для выделения только тех записей, которые полностью удовлетворяют условиям поиска. По умолчанию `Phalcon\Mvc\Model` предполагает что первый параметр является условием поиска. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Используется для указания списка столбцов возвращаемого в модели. Объект будет не полным при использовании этого параметра.                                                                                   | `'columns' => 'id, name'`                                         |
-| `bind`        | Используется вместе с условием поиска для подстановки значений вместо соответствующих псевдопеременных и экранирования значений для увеличения безопасности.                                                  | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
-| `bindTypes`   | При использовании подстановки значений вместо псевдопеременных, вы можете использовать этот параметр, для указания типа данных, что еще больше увеличит безопасность.                                         | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
+| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned.                                                                                    | `'columns' => 'id, name'`                                         |
+| `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security.                                                                                                   | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
+| `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security.                                                                   | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
 | `order`       | Используется для сортировки результатов. Можно использовать несколько полей через запятую.                                                                                                                    | `'order' => 'name DESC, status'`                                  |
-| `limit`       | Ограничивает результаты запроса.                                                                                                                                                                              | `'limit' => 10`                                                   |
-| `offset`      | Смещает результаты запроса на определенное значение.                                                                                                                                                          | `'offset' => 5`                                                   |
-| `group`       | Позволяет выбирать данные используя несколько записей и группировать результат по одному или нескольким столбцам.                                                                                             | `'group' => 'name, status'`                                       |
-| `for_update`  | С этой опцией, `Phalcon\Mvc\Model` читает последние доступные данные и устанавливает исключительные блокировки (Exclusive Lock) на каждую прочтенную запись.                                                | `'for_update' => true`                                            |
-| `shared_lock` | С этой опцией, `Phalcon\Mvc\Model` читает последние доступные данные и устанавливает общие блокировки (Shared Lock) на каждую прочтенную запись.                                                            | `'shared_lock' => true`                                           |
-| `cache`       | Кэширует результаты, уменьшая нагрузку на реляционную систему.                                                                                                                                                | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
-| `hydration`   | Устанавливает режим гидратации для представления каждой записи в результате.                                                                                                                                  | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
+| `limit`       | Limit the results of the query to results to certain range.                                                                                                                                                   | `'limit' => 10`                                                   |
+| `offset`      | Offset the results of the query by a certain amount.                                                                                                                                                          | `'offset' => 5`                                                   |
+| `group`       | Allows to collect data across multiple records and group the results by one or more columns.                                                                                                                  | `'group' => 'name, status'`                                       |
+| `for_update`  | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting exclusive locks on each row it reads.                                                                                        | `'for_update' => true`                                            |
+| `shared_lock` | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting shared locks on each row it reads.                                                                                           | `'shared_lock' => true`                                           |
+| `cache`       | Cache the resultset, reducing the continuous access to the relational system.                                                                                                                                 | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
+| `hydration`   | Sets the hydration strategy to represent each returned record in the result.                                                                                                                                  | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
 Существует еще один вариант записи запросов поиска, в объектно-ориентированном стиле:
 
@@ -485,7 +488,7 @@ if ($robot) {
 
 В то время как `findFirst()` возвращает непосредственно экземпляр вызванного класса (когда это возвращаемые данные), метод `find()` возвращает `Phalcon\Mvc\Model\Resultset\Simple`. Этот объект инкапсулирует в себя весь функционал такой как, итерирование, поиск определенных записей, подсчёт и прочее.
 
-Эти объекты являются более мощными, чем стандартные массивы. Одной из важнейших особенностей `Phalcon\Mvc\Model\Resultset` является то, что в любой момент времени в памяти содержится только одна запись. Это очень помогает в управлении памятью, особенно при работе с большими объемами данных.
+Эти объекты являются более мощными, чем стандартные массивы. One of the greatest features of the `Phalcon\Mvc\Model\Resultset` is that at any time there is only one record in memory. Это очень помогает в управлении памятью, особенно при работе с большими объемами данных.
 
 ```php
 <?php
@@ -773,7 +776,7 @@ $robots = Robots::find(
     </p>
 </div>
 
-Если вы используете `find` методы, то привязка параметров происходит автоматически:
+If you're using "finders" e.g. `find()`, `findFirst()`, etc., bound parameters are automatically used:
 
 ```php
 <?php
@@ -1030,7 +1033,7 @@ $salary = Employees::minimum(
 
 ## Создание/обновление записей
 
-Метод `Phalcon\Mvc\Model::save()` позволяет создавать/обновлять записи в зависимости от того, существуют ли они уже в таблице, связанной с моделью. Метод save вызывается методами create и update класса `Phalcon\Mvc\Model`. Для этого необходимо иметь в таблице должным образом установленный первичный ключ, чтобы можно было определить, должна ли запись быть обновлена или создана.
+Метод `Phalcon\Mvc\Model::save()` позволяет создавать/обновлять записи в зависимости от того, существуют ли они уже в таблице, связанной с моделью. The `save()` method is called internally by the `create` and `update` methods of `Phalcon\Mvc\Model`. Для этого необходимо иметь в таблице должным образом установленный первичный ключ, чтобы можно было определить, должна ли запись быть обновлена или создана.
 
 Также метод выполняет связанные валидаторы, виртуальные внешние ключи и события, которые определены в модели:
 
@@ -1143,7 +1146,7 @@ if ($robot->create() === false) {
 }
 ```
 
-Методы `create` и 'update' также принимают массив значений в качестве параметра.
+The methods `create` and `update` also accept an array of values as parameter.
 
 <a name='delete-records'></a>
 
@@ -1173,7 +1176,7 @@ if ($robot !== false) {
 }
 ```
 
-Вы также можете удалить несколько записей путем обхода набора результатов в цикле foreach:
+You can also delete many records by traversing a resultset with a `foreach`:
 
 ```php
 <?php
