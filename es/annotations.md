@@ -45,7 +45,7 @@
 
 Es la primera vez que un analizador de anotaciones está escrito en C para el mundo PHP. `Phalcon\Annotations` es un componente de propósito general que proporciona facilidad de análisis y cacheo con anotaciones en las clases de PHP para ser utilizado en aplicaciones.
 
-Las anotaciones se pueden leer desde docblocks en clases, métodos y propiedades. Una anotación puede colocarse en cualquier ubicación del docblock:
+Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
 ```php
 <?php
@@ -203,7 +203,7 @@ El proceso de lectura de anotaciones es muy rápido, sin embargo, por razones de
 
 ## Tipos de anotaciones
 
-Las anotaciones pueden tener parámetros o no. Un parámetro podría ser un simple literal (string, number, boolean, null), un array, una lista hash u otra anotación:
+Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
 ```php
 <?php
@@ -449,12 +449,12 @@ class SecurityAnnotationsPlugin extends Plugin
 
 Este componente hace uso de los adaptadores para cachear las anotaciones analizadas y procesadas, y así mejorar el rendimiento o proveer facilidades para desarrollo y pruebas:
 
-| Clase                                   | Descripción                                                                                                                                                                                      |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Phalcon\Annotations\Adapter\Memory` | Las anotaciones son cacheadas en memoria. Cuando la petición finaliza la caché se limpia. Las anotaciones se recargan en cada solicitud. Este adaptador es adecuado para una etapa de desarrollo |
-| `Phalcon\Annotations\Adapter\Files`  | Las anotaciones analizadas y procesadas se almacenan permanentemente en archivos para mejorar el rendimiento. Este adaptador se debe utilizar junto con un caché bytecode.                       |
-| `Phalcon\Annotations\Adapter\Apc`    | Las anotaciones analizadas y procesadas se almacenan permanentemente en la caché de APC. Este es el adaptador más rápido                                                                         |
-| `Phalcon\Annotations\Adapter\Xcache` | Las anotaciones analizadas y procesadas se almacenan permanentemente en el cache XCache para mejorar el rendimiento. Este también es un adaptador rápido                                         |
+| Clase                                   | Descripción                                                                                                                                                                       |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Annotations\Adapter\Memory` | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
+| `Phalcon\Annotations\Adapter\Files`  | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
+| `Phalcon\Annotations\Adapter\Apc`    | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                        |
+| `Phalcon\Annotations\Adapter\Xcache` | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                     |
 
 <a name='adapters-custom'></a>
 
