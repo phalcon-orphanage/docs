@@ -22,7 +22,7 @@ Devuelve el nivel de acceso de ACL por defecto sin argumentos en la acción isAl
 
 abstract public **addRole** (*mixed* $role, [*mixed* $accessInherits])
 
-Agrega un rol a la lista ACL. Segundo parámetro permite heredar el acceso a los datos de otro rol existente
+Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role
 
 abstract public **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
 
