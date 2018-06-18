@@ -22,7 +22,7 @@
               <a href="#aliases">Синонимы отношений</a> 
               <ul>
                 <li>
-                  <a href="#getters-vs-methods">Магические методы против явных</a>
+                  <a href="#getters-vs-methods">Magic Getters vs. Explicit methods</a>
                 </li>
               </ul>
             </li>
