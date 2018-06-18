@@ -102,31 +102,31 @@ Si desea utilizar el encriptado, debe establecer una clave global al servicio [c
             $crypt = new Crypt();
 
             /**
-             * Set the cipher algorithm.
+             * Establecer el algoritmo cipher.
              *
-             * The `aes-256-gcm' is the preferable cipher, but it is not usable until the
-             * openssl library is upgraded, which is available in PHP 7.1.
+             * El cifrado `aes-256-gcm' es el preferido, pero no se puede utilizar
+             * hasta que la librería openssl este actualizada. Disponible desde PHP 7.1.
              *
-             * The `aes-256-ctr' is arguably the best choice for cipher
-             * algorithm in these days.
+             * El `aes-256-ctr' es posiblemente la mejor opción de algoritmo de cifrado
+             * en estos días.
              */
             $crypt->setCipher('aes-256-ctr');
 
             /**
-             * Setting the encryption key.
+             * Estableciendo la clave de encriptado.
              *
-             * The key should have been previously generated in a cryptographically safe way.
+             * La clave debe ser generado previamente de una manera criptográficamente segura.
              *
-             * Bad key:
-             * "le password"
+             * Clave mala:
+             * "la contraseña"
              *
-             * Better (but still unsafe):
+             * Mejor (Pero aún insegura):
              * "#1dj8$=dp?.ak//j1V$~%*0X"
              *
-             * Good key:
+             * Clave correcta:
              * "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c"
              *
-             * Use your own key. Do not copy and paste this example key.
+             * Utilice su propia clave. No copiar y pegar esta clave de ejemplo.
              */
             $key = "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c";
 
