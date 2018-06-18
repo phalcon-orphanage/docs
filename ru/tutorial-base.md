@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#basic">Tutorial - basic</a> 
+      <a href="#basic">Урок: Основы</a> 
       <ul>
         <li>
           <a href="#file-structure">Структура файлов</a>
@@ -123,7 +123,7 @@ This file handles 3 things:
 
 Phalcon предоставляет [PSR-4](http://www.php-fig.org/psr/psr-4/)-совместимый автозагрузчик. Основными вещами, которые должны быть добавлены в автозагрузчик являются ваши контроллеры и модели. Вы можете зарегистрировать директории, которые будут использоваться для поиска классов использующих пространство имён приложения. Если вы хотите ознакомится с другими стратегиями, которые вы можете использовать с автозагрузчиком, обратитесь к [соответствующему руководству](/[[language]]/[[version]]/loader#overview).
 
-Для начала, давайте зарегистрируем директории `controllers` и `models` нашего приложения. Для этого нам понадобится воспользоваться компонентом `Phalcon\Loader`.
+To start, lets register our app's `controllers` and `models` directories. Don't forget to include the loader from `Phalcon\Loader`.
 
 `public/index.php`
 
@@ -154,7 +154,7 @@ $loader->register();
 
 ### Управление зависимостями
 
-Так как Phalcon является слабосвязанным фреймворком, сервисы регистриуются в контейнере внедрения зависимостей. Таким образом сервисы могут быть автоматически внедрены в компоненты и другие сервисы использующие [IoC](https://en.wikipedia.org/wiki/Inversion_of_control). Вы часто будете сталкиваться с термином DI, который и выступает в качестве контейнера внедрения зависимостей. Внедрение зависимостей (DI) и Инверсия управления (IoC) могут звучать сложно, но на самом деле в Phalcon их использование является очень простым и практичным. Phalcon's IoC container consists of the following concepts:
+Так как Phalcon является слабосвязанным фреймворком, сервисы регистриуются в контейнере внедрения зависимостей. Таким образом сервисы могут быть автоматически внедрены в компоненты и другие сервисы использующие [IoC](https://en.wikipedia.org/wiki/Inversion_of_control). Вы часто будете сталкиваться с термином DI, который и выступает в качестве контейнера внедрения зависимостей. Dependency Injection and Inversion of Control(IoC) may sound like a complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts:
 
 - Service Container: a "bag" where we globally store the services that our application needs to function.
 - Service or Component: Data processing object which will be injected into components
@@ -182,7 +182,7 @@ use Phalcon\Di\FactoryDefault;
 
 // ...
 
-// Создаём контейнер DI
+// Create a DI
 $di = new FactoryDefault();
 ```
 
@@ -385,7 +385,7 @@ class IndexController extends Controller
 
 ## Проектирование формы регистрации
 
-Давайте теперь изменим файл представления `index.phtml`, добавив ссылку на новый контроллер “signup”. Идея проста — позволить пользователям регистрироваться в нашем приложении.
+Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
 
 `app/views/index/index.phtml`
 
@@ -506,7 +506,7 @@ class SignupController extends Controller
 
 ## Создание модели
 
-Phalcon предоставляет первый ORM для PHP полностью написанный на языке C. Вместо увеличения сложности разработки, он её упрощает.
+Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
 Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be created like this:
 
@@ -522,7 +522,7 @@ CREATE TABLE `users` (
 );
 ```
 
-Модель должна быть размещена в папке `app/models` (`app/models/Users.php`). Модель относится к таблице "users":
+A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
 
 `app/models/Users.php`
 
