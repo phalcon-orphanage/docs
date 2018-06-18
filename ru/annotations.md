@@ -45,7 +45,7 @@
 
 Изначально компонент парсера аннотаций был написан на языке C для мира PHP. `Phalcon\Annotations` — это компонент общего назначения, который обеспечивает простоту синтаксического анализа и кеширования аннотаций в PHP-классах, для последующего их использования в приложениях.
 
-Аннотации читаются из блоков комментариев docblock в классах, его методах и свойствах. Аннотации могут быть помещены в любое место блока документации docblock:
+Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
 ```php
 <?php
@@ -203,7 +203,7 @@ foreach ($annotations as $annotation) {
 
 ## Типы аннотаций
 
-Аннотации могут иметь или не иметь параметров. Параметры могут быть простыми литералам (строкой, числом, булевым типом, null), массивом, хешированным списком или другими аннотациями:
+Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
 ```php
 <?php
@@ -450,12 +450,12 @@ class SecurityAnnotationsPlugin extends Plugin
 
 Компонент поддерживает адаптеры с возможностью кэширования проанализированных аннотаций. Это позволяет увеличивать производительность в боевом режиме и моментальное обновление данных при разработке и тестировании:
 
-| Класс                                   | Описание                                                                                                                                                                         |
-| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Annotations\Adapter\Memory` | Аннотации в этом случае хранятся в памяти до завершения запроса. При перезагрузке страницы разбор будет осуществлён заново. Идеально для стадии разработки.                      |
-| `Phalcon\Annotations\Adapter\Files`  | Разобранные аннотации хранятся в PHP-файлах, увеличивая производительность без необходимости постоянно анализа. Рекомендуется совместное использование с кэшированием байт-кода. |
-| `Phalcon\Annotations\Adapter\Apc`    | Разобранные аннотации хранятся в APC-кэше, самый быстрый адаптер.                                                                                                                |
-| `Phalcon\Annotations\Adapter\Xcache` | Разобранные аннотации хранятся в XCache-кэше. Также является быстрым адаптером.                                                                                                  |
+| Класс                                   | Описание                                                                                                                                                                          |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Annotations\Adapter\Memory` | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
+| `Phalcon\Annotations\Adapter\Files`  | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
+| `Phalcon\Annotations\Adapter\Apc`    | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                        |
+| `Phalcon\Annotations\Adapter\Xcache` | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                     |
 
 <a name='adapters-custom'></a>
 
