@@ -1,6 +1,6 @@
 # Clase **Phalcon\\Acl\\Role**
 
-*implementa* [Phalcon\Acl\RoleInterface](/en/3.2/api/Phalcon_Acl_RoleInterface)
+*implements* [Phalcon\Acl\RoleInterface](/[[language]]/[[version]]/api/Phalcon_Acl_RoleInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/role.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
