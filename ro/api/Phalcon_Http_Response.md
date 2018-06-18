@@ -1,6 +1,6 @@
 # Class **Phalcon\\Http\\Response**
 
-*implements* [Phalcon\Http\ResponseInterface](/en/3.2/api/Phalcon_Http_ResponseInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Http\ResponseInterface](/[[language]]/[[version]]/api/Phalcon_Http_ResponseInterface), [Phalcon\Di\InjectionAwareInterface](/[[language]]/[[version]]/api/Phalcon_Di_InjectionAwareInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/response.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -24,7 +24,7 @@ public **__construct** ([*mixed* $content], [*mixed* $code], [*mixed* $status])
 
 Phalcon\\Http\\Response constructor
 
-public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -56,7 +56,7 @@ print_r(
 
 ```
 
-public **setHeaders** ([Phalcon\Http\Response\HeadersInterface](/en/3.2/api/Phalcon_Http_Response_HeadersInterface) $headers)
+public **setHeaders** ([Phalcon\Http\Response\HeadersInterface](/[[language]]/[[version]]/api/Phalcon_Http_Response_HeadersInterface) $headers)
 
 Sets a headers bag for the response externally
 
@@ -64,11 +64,11 @@ public **getHeaders** ()
 
 Returns headers set by the user
 
-public **setCookies** ([Phalcon\Http\Response\CookiesInterface](/en/3.2/api/Phalcon_Http_Response_CookiesInterface) $cookies)
+public **setCookies** ([Phalcon\Http\Response\CookiesInterface](/[[language]]/[[version]]/api/Phalcon_Http_Response_CookiesInterface) $cookies)
 
 Sets a cookies bag for the response externally
 
-public [Phalcon\Http\Response\CookiesInterface](/en/3.2/api/Phalcon_Http_Response_CookiesInterface) **getCookies** ()
+public [Phalcon\Http\Response\CookiesInterface](/[[language]]/[[version]]/api/Phalcon_Http_Response_CookiesInterface) **getCookies** ()
 
 Returns cookies set by the user
 
