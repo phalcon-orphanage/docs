@@ -51,17 +51,17 @@
 
 # Tutorial - básico
 
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/[[language]]/[[version]]/developer-tools).
+A lo largo de este primer tutorial, lo guiaremos a través de la creación de una aplicación con un formulario simple de registro comenzando desde cero. También explicaremos los aspectos básicos del comportamiento del entorno de trabajo. Si estás interesado en las herramientas de generación automática de código para Phalcon, puedes revisar nuestras [herramientas de desarrollo](/[[language]]/[[version]]/developer-tools).
 
-The best way to use this guide is to follow each step in turn. You can get the complete code [here](https://github.com/phalcon/tutorial).
+La mejor manera de utilizar esta guía es seguir cada paso a la vez. Puedes obtener el código completo [aquí](https://github.com/phalcon/tutorial).
 
 <a name='file-structure'></a>
 
 ## Estructura de archivos
 
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Phalcon no impone una estructura específica de archivos para el desarrollo de aplicaciones. Debido a que está ligeramente acoplado, tu puedes implementar aplicaciones Phalcon con la estructura de archivos que te sea más cómoda de usar.
 
-For the purposes of this tutorial and as a starting point, we suggest this very simple structure:
+Para el objetivo de este tutorial y como punto de partida, sugerimos esta estructura, que es realmente simple:
 
 ```bash
 tutorial/
@@ -75,45 +75,43 @@ tutorial/
     js/
 ```
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+Ten presente que no necesitas ningún directorio de librerías relacionado con Phalcon. El entorno de trabajo está disponible en memoria, listo para que lo uses.
 
-Before continuing, please be sure you've successfully [installed Phalcon](/[[language]]/[[version]]/installation) and have setup either [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
+Antes de continuar, asegúrate de tener correctamente [instalado Phalcon](/[[language]]/[[version]]/installation) y que tienes configurados [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) o [Cherokee](/[[language]]/[[version]]/setup#cherokee).
 
 <a name='bootstrap'></a>
 
 ## Manos a la obra
 
-El primer archivo que necesitas crear es el archivo bootstrap. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+El primer archivo que necesitas crear es el archivo bootstrap. Este archivo es muy importante dado que sirve como base para tu aplicación, dándote el control para todos los aspectos de la misma. En este archivo puedes implementar la inicialización de componentes, así como el comportamiento de la aplicación.
 
-Ultimately, it is responsible for doing 3 things:
+Por último, es responsable de hacer 3 cosas:
 
-- Setting up the autoloader.
-- Configuring the Dependency Injector.
-- Handling the application request.
+- Establecer el autoloader.
+- Configurar el Inyector de dependencias.
+- Tratar las solicitudes de la aplicación.
 
 <a name='autoloaders'></a>
 
 ### Cargadores automáticos
 
-The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component `Phalcon\Loader`.
+La primera parte que encontramos en el bootstrap es registrar un autoloader. Esto se usará para cargar las clases, como los controladores y modelos en la aplicación. Por ejemplo, podemos registrar uno o más directorios de controladores, incrementando la flexibilidad de la aplicación. En nuestro ejemplo, hemos usado el componente `Phalcon\Loader`.
 
-With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
+Con esto, podemos cargar clases usando varias estrategias, pero para este ejemplo hemos elegido ubicar las clases basadas en directorios predefinidos:
 
 ```php
-<?php
+use Phalcon\Loader; 
 
-use Phalcon\Loader;
+// ... 
 
-// ...
-
-$loader = new Loader();
+$loader = new Loader(); 
 
 $loader->registerDirs(
-    [
-        '../app/controllers/',
-        '../app/models/',
-    ]
-);
+     [
+         '../app/controllers/',
+         '../app/models/',
+     ]
+); 
 
 $loader->register();
 ```
@@ -573,4 +571,4 @@ Additional validation happens automatically on fields that are defined as not nu
 
 ## Conclusión
 
-This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon. The fact that Phalcon is an extension on your web server has not interfered with the ease of development or features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
+Este es un tutorial muy simple y como se puede ver, es fácil empezar a construir una aplicación usando Phalcon. El hecho de que Phalcon es una extensión de tu servidor web no interfiere con la facilidad de desarrollo o con las características disponibles. Te invitamos a seguir leyendo el manual para que puedas descubrir algunas funciones adicionales que ofrece Phalcon!
