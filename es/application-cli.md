@@ -26,7 +26,7 @@
 
 # Crear una Aplicación de Línea de Comandos (CLI)
 
-Las aplicaciones CLI se ejecutan desde la linea de comandos. Estas son útiles para crear tareas programadas por crons, scripts, herramientas de comandos y más.
+CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
 <a name='structure'></a>
 
@@ -125,7 +125,7 @@ php app/cli.php
 
 ## Tasks (Tareas)
 
-Los Task o tareas funcionan de forma similar a los controladores. Cualquier aplicación CLI necesita al menos un MainTask y un mainAction y cada Task debe tener un mainAction que se ejecutará si no se indica alguna acción explícitamente.
+Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
 A continuación un ejemplo del archivo `app/tasks/MainTask.php`:
 
@@ -192,7 +192,7 @@ saludos cordiales, universo
 
 ## Ejecutando Tasks en cadena
 
-También es posible ejecutar tareas en cadena si es necesario. Para lograr esto se debe agregar la consola al DI:
+It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
 ```php
 <?php
@@ -216,7 +216,7 @@ try {
 }
 ```
 
-Luego puede utilizar la consola dentro de cualquier tarea. A continuación un ejemplo de un MainTask.php modificado:
+Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
 
 ```php
 <?php
