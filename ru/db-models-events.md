@@ -140,7 +140,7 @@ class Robots extends Model
 }
 ```
 
-В примере, приведенном выше, менеджер событий действует только в качестве моста между объектом и слушателем (анонимной функцией). События сработают сразу при сохренении `robots`:
+In the example given above, the Events Manager only acts as a bridge between an object and a listener (the anonymous function). Events will be fired to the listener when `robots` are saved:
 
 ```php
 <?php
