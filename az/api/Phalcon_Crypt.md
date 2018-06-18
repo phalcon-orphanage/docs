@@ -1,6 +1,6 @@
 # Class **Phalcon\\Crypt**
 
-*implements* [Phalcon\CryptInterface](/en/3.2/api/Phalcon_CryptInterface)
+*implements* [Phalcon\CryptInterface](/[[language]]/[[version]]/api/Phalcon_CryptInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/crypt.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
