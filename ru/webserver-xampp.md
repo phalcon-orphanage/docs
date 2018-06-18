@@ -27,7 +27,7 @@
 
 ## Скачайте правильную версию Phalcon
 
-XAMPP всегда выпускается с 32-битными версиями Apache и PHP. Вам также необходимо скачать x86 версию Phalcon для Windows в разделе скачиваний.
+XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
 После скачивания библиотеки Phalcon у вас будет zip-файл, примерно такой, как показано ниже:
 
@@ -37,7 +37,7 @@ XAMPP всегда выпускается с 32-битными версиями 
 
 ![](/images/content/webserver-xampp-2.png)
 
-Скопируйте файл `php_phalcon.dll` в каталог PHP-расширений. Если вы установили XAMPP в каталог `C:\xampp`, то расширения будут в `C:\xampp\php\ext`:
+Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`:
 
 ![](/images/content/webserver-xampp-3.png)
 
@@ -51,11 +51,11 @@ extension=php_phalcon.dll
 
 ![](/images/content/webserver-xampp-4.png)
 
-Перезапустите сервер Apache из контрольной панели XAMPP. PHP должен загрузиться с новой конфигурацией.
+Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration.
 
 ![](/images/content/webserver-xampp-5.png)
 
-Откройте ваш браузер и перейдите на `http://localhost`. Должна появиться страница приветствия XAMPP. Нажмите на ссылку `phpinfo()`.
+Open your browser to navigate to `http://localhost`. The XAMPP welcome page will appear. Click on the link `phpinfo()`.
 
 ![](/images/content/webserver-xampp-6.png)
 
