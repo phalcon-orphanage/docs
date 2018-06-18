@@ -26,7 +26,7 @@
 
 # Bir Komut Satırı (CLI) Uygulaması Oluşturma
 
-CLI uygulamaları komut satırından yürütülür. Bunlar, cron işleri, komut dosyaları, komut araçları ve daha fazlasını oluşturmak için yararlıdır.
+CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
 <a name='structure'></a>
 
@@ -125,7 +125,7 @@ php app/cli.php
 
 ## Tasks
 
-Görevlerin çalışma şekli aynı kontrolcüler gibidir. Bir CLI uygulaması için en az bir Ana Görev (MainTask) ve Ana İşlem (MainAction) gereklidir ve her görev için (eğer özel bir işlem belirtilmediyse çalışacak) bir Ana İşlem (mainAction) olmalıdır.
+Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
 Below is an example of the `app/tasks/MainTask.php` file:
 
