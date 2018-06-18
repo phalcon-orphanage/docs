@@ -21,13 +21,13 @@
               <a href="#resultsets">Conjuntos de resultados</a>
             </li>
             <li>
-              <a href="#custom-resultsets">Custom Resultsets</a>
+              <a href="#custom-resultsets">Conjuntos de resultados personalizados</a>
             </li>
             <li>
-              <a href="#filters">Filtering Resultsets</a>
+              <a href="#filters">Filtrar Conjuntos de Resultados</a>
             </li>
             <li>
-              <a href="#binding-parameters">Binding Parameters</a>
+              <a href="#binding-parameters">Enlazando parámetros</a>
             </li>
           </ul>
         </li>
@@ -412,17 +412,17 @@ Las opciones disponibles de consulta son:
 | Parámetro     | Descripción                                                                                                                                                                                                                   | Ejemplo                                                              |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Condiciones de búsqueda para la operación de búsqueda. Se utiliza para extraer sólo los registros que cumplan con un criterio especificado. Por defecto `Phalcon\Mvc\Model` asume el primer parámetro como las condiciones. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned.                                                                                                    | `'columns' => 'id, name'`                                         |
-| `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security.                                                                                                                   | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
-| `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security.                                                                                   | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
+| `columns`     | Devolverá las columnas especificadas aquí en lugar de las todas columnas del modelo. Cuando se utiliza esta opción se devuelve un objeto incompleto.                                                                          | `'columns' => 'id, name'`                                         |
+| `bind`        | Se utiliza junto a las opciones, mediante la sustitución de marcadores y escapando los valores para aumentar la seguridad.                                                                                                    | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
+| `bindTypes`   | Al enlazar parámetros, puede utilizar este parámetro para definir el tipo de datos de los parámetros y aumentar aún más la seguridad.                                                                                         | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
 | `order`       | Se utiliza para ordenar el conjunto de resultados. Utilice uno o más campos separados por comas.                                                                                                                              | `'order' => 'name DESC, status'`                                  |
-| `limit`       | Limit the results of the query to results to certain range.                                                                                                                                                                   | `'limit' => 10`                                                   |
-| `offset`      | Offset the results of the query by a certain amount.                                                                                                                                                                          | `'offset' => 5`                                                   |
-| `group`       | Allows to collect data across multiple records and group the results by one or more columns.                                                                                                                                  | `'group' => 'name, status'`                                       |
-| `for_update`  | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting exclusive locks on each row it reads.                                                                                                        | `'for_update' => true`                                            |
-| `shared_lock` | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting shared locks on each row it reads.                                                                                                           | `'shared_lock' => true`                                           |
-| `cache`       | Cache the resultset, reducing the continuous access to the relational system.                                                                                                                                                 | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
-| `hydration`   | Sets the hydration strategy to represent each returned record in the result.                                                                                                                                                  | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
+| `limit`       | Limitar los resultados de la consulta a cierto rango.                                                                                                                                                                         | `'limit' => 10`                                                   |
+| `offset`      | Desplazar los resultados de la consulta por una cierta cantidad.                                                                                                                                                              | `'offset' => 5`                                                   |
+| `group`       | Permite recopilar datos a través de múltiples registros y agrupar los resultados de una o más columnas.                                                                                                                       | `'group' => 'name, status'`                                       |
+| `for_update`  | Con esta opción, `Phalcon\Mvc\Model` lee los últimos datos disponibles, estableciendo bloqueos exclusivos en cada fila que lea.                                                                                             | `'for_update' => true`                                            |
+| `shared_lock` | Con esta opción, `Phalcon\Mvc\Model` lee los últimos datos disponibles, estableciendo bloqueos compartidos en cada fila que lea.                                                                                            | `'shared_lock' => true`                                           |
+| `cache`       | Almacenar en caché el conjunto de resultados, reduciendo el acceso continuo al sistema relacional.                                                                                                                            | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
+| `hydration`   | Establece la estrategia de hidratación para representar cada registro devuelto en el resultado.                                                                                                                               | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
 Si lo prefiere, también hay disponible una manera de crear consultas de una manera orientada a objetos, en lugar de utilizar un array de parámetros:
 
@@ -488,7 +488,7 @@ Tenga en cuenta que se utilizó 'Name' en el método y se paso la variable `$nam
 
 Mientras `findFirst()` directamente devuelve una instancia de la clase llamada (cuando hay datos para devolver), el método `find()` devuelve un `Phalcon\Mvc\Model\Resultset\Simple`. Se trata de un objeto que encapsula toda la funcionalidad que un conjunto de resultados, como recorrer los registros, buscar registros específicos, contar, etcétera.
 
-Estos objetos son más poderosos que los array regulares. One of the greatest features of the `Phalcon\Mvc\Model\Resultset` is that at any time there is only one record in memory. Esto ayuda enormemente en la gestión de memoria especialmente cuando se trabaja con grandes cantidades de datos.
+Estos objetos son más poderosos que los array regulares. Una de las mejores características del `Phalcon\Mvc\Model\Resultset` es que en cualquier momento hay sólo un registro en memoria. Esto ayuda enormemente en la gestión de memoria especialmente cuando se trabaja con grandes cantidades de datos.
 
 ```php
 <?php
@@ -776,7 +776,7 @@ $robots = Robots::find(
     </p>
 </div>
 
-If you're using "finders" e.g. `find()`, `findFirst()`, etc., bound parameters are automatically used:
+Si está utilizando los "buscadores", por ejemplo `find()`, `findFirst()`, etc., los parámetros enlazados se usan automáticamente:
 
 ```php
 <?php
@@ -1032,7 +1032,7 @@ $salary = Employees::minimum(
 
 ## Crear/Actualizar Registros
 
-El método `Phalcon\Mvc\Model::save()` le permite crear o actualizar registros, según sea si ya existen en la tabla asociada al modelo o no. The `save()` method is called internally by the `create` and `update` methods of `Phalcon\Mvc\Model`. Para que funcione como se espera, es necesario haber definido correctamente una clave primaria en la entidad para determinar si un registro debe ser actualizado o creado.
+El método `Phalcon\Mvc\Model::save()` le permite crear o actualizar registros, según sea si ya existen en la tabla asociada al modelo o no. El método `save()` es llamado internamente por los métodos `create` y `update` de `Phalcon\Mvc\Collection`. Para que funcione como se espera, es necesario haber definido correctamente una clave primaria en la entidad para determinar si un registro debe ser actualizado o creado.
 
 El método también ejecutará los validadores asociados, claves externas virtuales y eventos que se definen en el modelo:
 
@@ -1145,7 +1145,7 @@ if ($robot->create() === false) {
 }
 ```
 
-The methods `create` and `update` also accept an array of values as parameter.
+Los métodos de `create` y `update` también aceptan un array de valores como parámetro.
 
 <a name='delete-records'></a>
 
@@ -1175,7 +1175,7 @@ if ($robot !== false) {
 }
 ```
 
-You can also delete many records by traversing a resultset with a `foreach`:
+También puede eliminar muchos registro recorriendo un conjunto de resultados con un `foreach`:
 
 ```php
 <?php
