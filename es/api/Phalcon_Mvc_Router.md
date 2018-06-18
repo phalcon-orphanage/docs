@@ -1,6 +1,6 @@
 # Class **Phalcon\\Mvc\\Router**
 
-*implements* [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\RouterInterface](/en/3.2/api/Phalcon_Mvc_RouterInterface), [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
+*implements* [Phalcon\Di\InjectionAwareInterface](/[[language]]/[[version]]/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\RouterInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_RouterInterface), [Phalcon\Events\EventsAwareInterface](/[[language]]/[[version]]/api/Phalcon_Events_EventsAwareInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/router.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -43,7 +43,7 @@ public **__construct** ([*mixed* $defaultRoutes])
 
 Phalcon\\Mvc\\Router constructor
 
-public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -51,7 +51,7 @@ public **getDI** ()
 
 Returns the internal dependency injector
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets the events manager
 
@@ -61,7 +61,7 @@ Returns the internal event manager
 
 public **getRewriteUri** ()
 
-Obtener información de reescritura Esta información se lee de $_GET["_url"]. Esto devuelve '/' si la información de reescritura no se puede leer
+Get rewrite info. This info is read from $_GET["_url"]. This returns '/' if the rewrite information cannot be read
 
 public **setUriSource** (*mixed* $uriSource)
 
@@ -98,7 +98,7 @@ Sets the default action name
 
 public **setDefaults** (*array* $defaults)
 
-Establece una matriz de rutas predeterminadas. Si a una ruta le falta un camino, el router usará lo definido aquí Este método no debe usarse para establecer una ruta 404
+Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route
 
 ```php
 <?php
@@ -186,7 +186,7 @@ public **addConnect** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is CONNECT
 
-public **mount** ([Phalcon\Mvc\Router\GroupInterface](/en/3.2/api/Phalcon_Mvc_Router_GroupInterface) $group)
+public **mount** ([Phalcon\Mvc\Router\GroupInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Router_GroupInterface) $group)
 
 Mounts a group of routes in the router
 
