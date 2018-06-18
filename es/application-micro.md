@@ -1986,19 +1986,19 @@ $app['view'] = function () {
     return $view;
 };
 
-// Devuelve una vista
+// Return a rendered view
 $app->get(
     '/products/show',
     function () use ($app) {
-        // Construye app/views/products/show.phtml pasando algunas variables
-        echo $app['view']->render(
+        // Render app/views/products/show.phtml passing some variables
+        echo $app['view']->start()->render(
             'products',
             'show',
             [
                 'id'   => 100,
                 'name' => 'Artichoke',
             ]
-        );
+        )->finish()->getContent();
     }
 );
 ```
