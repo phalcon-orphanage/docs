@@ -1,6 +1,6 @@
 # Clase **Phalcon\\Loader**
 
-*implementa* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](/[[language]]/[[version]]/api/Phalcon_Events_EventsAwareInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/loader.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
@@ -33,7 +33,7 @@ $adapter = new \Example\Adapter\Some();
 
 ## Métodos
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Establece el gestor de eventos
 
@@ -71,7 +71,7 @@ Devuelve los directorios registrados actualmente en el auto cargador
 
 public **registerFiles** (*array* $files, [*mixed* $merge])
 
-Registra archivos que son "no clases" y por lo tanto necesitan un "require". Esto es muy útil para incluir archivos que sólo tienen funciones
+Registers files that are "non-classes" hence need a "require". This is very useful for including files that only have functions
 
 public **getFiles** ()
 
