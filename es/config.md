@@ -80,7 +80,7 @@ $config = Factory::load($options);
 
 ## Arreglos Nativos
 
-El primer ejemplo muestra cómo convertir los arreglos nativos en objetos `Phalcon\Config`. Esta opción ofrece el mejor desempeño ya que no hay archivos que deban leerse durante esta solicitud.
+The first example shows how to convert native arrays into `Phalcon\Config` objects. Esta opción ofrece el mejor rendimiento ya que no se leen archivos durante esta solicitud.
 
 ```php
 <?php
@@ -128,12 +128,12 @@ $config = new Config($settings);
 
 Los adaptadores disponibles son:
 
-| Clase                            | Descripción                                                                                                              |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `Phalcon\Config\Adapter\Ini`  | Utiliza archivos INI para almacenar la configuración. Internamente el adaptador utiliza la función PHP `parse_ini_file`. |
-| `Phalcon\Config\Adapter\Json` | Utiliza archivos JSON para almacenar la configuración.                                                                   |
-| `Phalcon\Config\Adapter\Php`  | Utiliza arreglos multidimensionales en PHP para almacenar la configuración. Este adaptador ofrece el mejor rendimiento.  |
-| `Phalcon\Config\Adapter\Yaml` | Utiliza archivos YAML para almacenar la configuración.                                                                   |
+| Clase                            | Descripción                                                                                      |
+| -------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `Phalcon\Config\Adapter\Ini`  | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
+| `Phalcon\Config\Adapter\Json` | Utiliza archivos JSON para almacenar la configuración.                                           |
+| `Phalcon\Config\Adapter\Php`  | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
+| `Phalcon\Config\Adapter\Yaml` | Utiliza archivos YAML para almacenar la configuración.                                           |
 
 <a name='ini-files'></a>
 
@@ -176,7 +176,7 @@ echo $config->models->metadata->adapter, "\n";
 
 ## Fusión de Configuraciones
 
-`Phalcon\Config` puede combinar recursivamente las propiedades de un objeto de configuración en otro. Las nuevas propiedades se agregan y las existentes se actualizan.
+`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
 
 ```php
 <?php
