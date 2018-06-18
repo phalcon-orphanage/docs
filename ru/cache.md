@@ -99,7 +99,7 @@ Phalcon предоставляет класс `Phalcon\Cache`, дающий бы
 
 ## Где применять кэширование?
 
-Несмотря на то, что этот компонент очень быстрый, его использование в случаях, где он не нужен, может привести к потери производительности. Мы рекомендуем проверить эти ситуации, прежде, чем использовать кэширование:
+Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
 
 * Вы делаете сложные расчеты, которые каждый раз возвращают один и тот же результат (или результат редко изменяется)
 * Вы используете много хелперов и результат генерации почти всегда одинаковый
@@ -245,7 +245,7 @@ if ($content === null) {
 
 ## Кэширование произвольных данных
 
-Кэширование различных данных, не менее важно для вашего приложения. Кэширование может уменьшить нагрузку базы данных за счет повторного использования сгенерированных данных (но не обновленных), что и увеличивает скорость выполнения вашего приложения.
+Caching just data is equally important for your application. Caching can reduce database load by reusing commonly used (but not updated) data, thus speeding up your application.
 
 <a name='backend-file-example'></a>
 
@@ -399,7 +399,7 @@ $keys = $cache->queryKeys('my-prefix');
 
 ## Удаление данных из кэша
 
-Могут возникнуть ситуации, когда вам необходимо принудительно инвалидировать данные в кэше. Единственным требованием для этого является знание необходимого ключа по которому хранятся данные.
+There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data). The only requirement is to know the key that the data have been stored with.
 
 ```php
 <?php
@@ -542,14 +542,14 @@ $cache->save('my-key', $data);
 
 Доступные фронтэнд адаптеры приведены в таблице:
 
-| Адаптер                              | Описание                                                                                                                                                          |
-| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Cache\Frontend\Output`   | Считывает данные из стандартного PHP вывода.                                                                                                                      |
-| `Phalcon\Cache\Frontend\Data`     | Используется для кэширования любых данных в PHP (большие массивы, объекты, тексты и т.д.). Прежде чем сохранить данные, адаптер сериализирует их.                 |
-| `Phalcon\Cache\Frontend\Base64`   | Используется для кэширования бинарных данных. Данные сериализируется с использованием `base64_encode`.                                                            |
-| `Phalcon\Cache\Frontend\Json`     | Данные перед кэширование сериализуются в JSON. Можно использовать для обмена данными с другими фреймворками.                                                      |
-| `Phalcon\Cache\Frontend\Igbinary` | Он используется для кэширования любых данных PHP (большие массивы, объекты, тексты и т.д.). Данные сериализуются c помощью `Igbinary` перед сохранением в бэкэнд. |
-| `Phalcon\Cache\Frontend\None`     | Используется для кэширования любых типов данных без сериализации.                                                                                                 |
+| Адаптер                              | Описание                                                                                                                                                       |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Cache\Frontend\Output`   | Считывает данные из стандартного PHP вывода.                                                                                                                   |
+| `Phalcon\Cache\Frontend\Data`     | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                     |
+| `Phalcon\Cache\Frontend\Base64`   | It's used to cache binary data. The data is serialized using `base64_encode` before be stored in the backend.                                                  |
+| `Phalcon\Cache\Frontend\Json`     | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks. |
+| `Phalcon\Cache\Frontend\Igbinary` | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using `Igbinary` before be stored in the backend.                 |
+| `Phalcon\Cache\Frontend\None`     | Используется для кэширования любых типов данных без сериализации.                                                                                              |
 
 <a name='adapters-frontend-custom'></a>
 
@@ -610,7 +610,7 @@ $backendCache = Factory::load($options);
 
 ### Параметры файлового бэкэнда
 
-Этот бэкэнд сохраняет данные в локальный текстовый файл. Доступные опции:
+This backend will store cached content into files in the local server. The available options for this backend are:
 
 | Параметр   | Описание                                                                 |
 | ---------- | ------------------------------------------------------------------------ |
@@ -621,7 +621,7 @@ $backendCache = Factory::load($options);
 
 ### Параметры Libmemcached бэкэнда
 
-Данные будут сохранены на Memcached сервере. По умолчанию используется пулл постоянных соединений. Доступные опции:
+This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
 
 **Общие параметры**
 
@@ -641,7 +641,7 @@ $backendCache = Factory::load($options);
 
 **Параметры клиента**
 
-Используется для настройки параметров Memcached. За подробной информацией обратитесь к документации по [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php).
+Used for setting Memcached options. See [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) for more.
 
 **Пример**
 
@@ -681,7 +681,7 @@ $cache = new Libmemcached(
 
 ### Параметры Memcache бэкэнда
 
-Данные будут сохранены на Memcached сервере. Доступные опции:
+This backend will store cached content on a memcached server. The available options for this backend are:
 
 | Параметр     | Описание                                                        |
 | ------------ | --------------------------------------------------------------- |
@@ -694,7 +694,7 @@ $cache = new Libmemcached(
 
 ### Параметры APC бэкэнда
 
-Данные будут сохранены в Alternative PHP Cache ([APC](http://php.net/apc)). Доступна лишь одна опция:
+This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
 
 | Параметр | Описание                                                        |
 | -------- | --------------------------------------------------------------- |
@@ -714,7 +714,7 @@ This backend will store cached content on Alternative PHP Cache ([APCU](http://p
 
 ### Параметры Mongo бэкэнда
 
-Этот бэкэнд будет хрнаить закэшированный контент на MongoDB сервере ([MongoDB](http://mongodb.org/)). Доступные опции:
+This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
 
 | Параметр     | Описание                                                        |
 | ------------ | --------------------------------------------------------------- |
