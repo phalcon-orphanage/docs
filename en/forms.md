@@ -109,8 +109,6 @@ Forms can be rendered based on the form definition:
         <?php echo $form->render('telephoneType'); ?>
     </p>
 
-
-
     <p>
         <input type='submit' value='Save' />
     </p>
@@ -178,16 +176,21 @@ class ContactForm extends Form
                 'telephoneType',
                 TelephoneTypes::find(),
                 [
-                    'using' => [
+                    'using'      => [
                         'id',
                         'name',
-                    ]
+                    ],
+                    'useEmpty'   => true,
+                    'emptyText'  => 'Select one...',
+                    'emptyValue' => '',
                 ]
             )
         );
     }
 }
 ```
+Additionally, the Select elements support the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and` emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
+
 
 `Phalcon\Forms\Form` extends `Phalcon\Di\Injectable` so you have access to the application services if needed:
 
@@ -503,8 +506,6 @@ class Preferences
 
     public $receiveEmails;
 
-
-
     public function getTimezone()
     {
         return 'Europe/Amsterdam';
@@ -523,16 +524,18 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 
 | Name                             | Description                                                   |
 |----------------------------------|---------------------------------------------------------------|
-| `Phalcon\Forms\Element\Text`     | Generate `INPUT[type=text]` elements                          |
-| `Phalcon\Forms\Element\Password` | Generate `INPUT[type=password]` elements                      |
-| `Phalcon\Forms\Element\Select`   | Generate `SELECT` tag (combo lists) elements based on choices |
 | `Phalcon\Forms\Element\Check`    | Generate `INPUT[type=check]` elements                         |
-| `Phalcon\Forms\Element\TextArea` | Generate `TEXTAREA` elements                                  |
-| `Phalcon\Forms\Element\Hidden`   | Generate `INPUT[type=hidden]` elements                        |
-| `Phalcon\Forms\Element\File`     | Generate `INPUT[type=file]` elements                          |
 | `Phalcon\Forms\Element\Date`     | Generate `INPUT[type=date]` elements                          |
+| `Phalcon\Forms\Element\Email`    | Generate `INPUT[type=email]` elements                         |
+| `Phalcon\Forms\Element\File`     | Generate `INPUT[type=file]` elements                          |
+| `Phalcon\Forms\Element\Hidden`   | Generate `INPUT[type=hidden]` elements                        |
 | `Phalcon\Forms\Element\Numeric`  | Generate `INPUT[type=number]` elements                        |
+| `Phalcon\Forms\Element\Password` | Generate `INPUT[type=password]` elements                      |
+| `Phalcon\Forms\Element\Radio`    | Generate `IMPUT[type=radio]` elements                         |
+| `Phalcon\Forms\Element\Select`   | Generate `SELECT` tag (combo lists) elements based on choices |
 | `Phalcon\Forms\Element\Submit`   | Generate `INPUT[type=submit]` elements                        |
+| `Phalcon\Forms\Element\Text`     | Generate `INPUT[type=text]` elements                          |
+| `Phalcon\Forms\Element\TextArea` | Generate `TEXTAREA` elements                                  |
 
 <a name='event-callback'></a>
 ## Event Callbacks
