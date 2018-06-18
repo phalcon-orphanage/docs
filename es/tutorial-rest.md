@@ -25,7 +25,7 @@
           <a href="#deleting-data">Borrando datos</a>
         </li>
         <li>
-          <a href="#testing">Pruebando nuestra aplicación</a>
+          <a href="#testing">Probando nuestra aplicación</a>
         </li>
         <li>
           <a href="#conclusion">Conclusión</a>
@@ -567,7 +567,7 @@ $app->delete(
 
 <a name='testing'></a>
 
-## Pruebando nuestra aplicación
+## Probando nuestra aplicación
 
 Utilizando [curl](http://en.wikipedia.org/wiki/CURL) probaremos cada ruta en nuestra aplicación, verificando su correcto funcionamiento.
 
