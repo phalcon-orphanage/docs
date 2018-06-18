@@ -512,7 +512,7 @@ Volt zawiera zestaw prostych, ale bardzo użytecznych struktur do użycia w szab
 
 ### For
 
-Iteruje każdy element w sekwencji. Poniższy przykład pokazuje, jak przechodzi przez kolekcję z 'robotów' i wyświetla ich imię:
+Loop over each item in a sequence. The following example shows how to traverse a set of 'robots' and print his/her name:
 
 ```twig
 <h1>Robots</h1>
