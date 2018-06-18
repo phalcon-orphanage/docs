@@ -26,7 +26,7 @@
 
 # Создание консольного приложения
 
-Консольные приложения выполняются из командной строки.Они часто используются для работы cron, скриптов с долгим временем выполнения, командных утилит и т.п.
+CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
 <a name='structure'></a>
 
@@ -126,7 +126,7 @@ php app/cli.php
 
 ## Задачи
 
-Принцип работы задач похож на работу контролеров. Любое консольное приложение нуждается по крайней мере в одной задаче, именуемой MainTask. Каждая задача должна иметь по крайней мере одной действие, именуемое mainAction, которое будет запущено, если не указано другое, явно. Эти соглашения являются умолчанием.
+Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
 Ниже приведен пример файла `app/tasks/MainTask.php`:
 
@@ -193,7 +193,7 @@ best regards, universe
 
 ## Запуск цепочки команд
 
-Также, возможно запускать задачи "цепочкой", если это необходимо. Для этого необходимо добавить само консольное приложение в DI:
+It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
 ```php
 <?php
@@ -217,7 +217,7 @@ try {
 }
 ```
 
-После этого, вы сможете использовать консольное приложение внутри любой задачи. Ниже приведен пример измененной задачи MainTask.php:
+Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
 
 ```php
 <?php
