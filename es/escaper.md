@@ -122,7 +122,7 @@ El código anterior produce el siguiente código HTML:
 &lt;/html&gt;
 ```
 
-Cada texto se escapó según su contexto. El uso del contexto adecuado es importante para evitar ataques XSS.
+Every text was escaped according to its context. Use the appropriate context is important to avoid XSS attacks.
 
 <a name='html'></a>
 
@@ -132,7 +132,7 @@ La situación más común es cuando se insertan datos inseguros entre etiquetas 
 
 ```html
 <div class="comments">
-    <!-- ¡Escapar datos no confiables aquí! -->
+    <!-- Escape untrusted data here! -->
 </div>
 ```
 
