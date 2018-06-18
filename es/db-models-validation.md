@@ -79,7 +79,7 @@ En el ejemplo anterior se realiza una validación utilizando el validador integr
     </p>
 </div>
 
-La idea de crear validadores es hacerlos reutilizables entre varios modelos. Un validador puede también ser tan simple como:
+The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
 
 ```php
 <?php
