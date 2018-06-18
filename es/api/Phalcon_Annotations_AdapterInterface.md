@@ -6,7 +6,7 @@ Adaptadores de Phalcon\Annotations debe implementar esta interfaz
 
 ## Métodos
 
-abstract public **setReader** ([Phalcon\Annotations\ReaderInterface](/en/3.2/api/Phalcon_Annotations_ReaderInterface) $reader)
+abstract public **setReader** ([Phalcon\Annotations\ReaderInterface](/[[language]]/[[version]]/api/Phalcon_Annotations_ReaderInterface) $reader)
 
 Establece el analizador de anotaciones
 
