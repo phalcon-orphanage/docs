@@ -1,12 +1,12 @@
 # Clase **Phalcon\\Escaper**
 
-*implementa* [Phalcon\EscaperInterface](/en/3.2/api/Phalcon_EscaperInterface)
+*implements* [Phalcon\EscaperInterface](/[[language]]/[[version]]/api/Phalcon_EscaperInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/escaper.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
-Escapa diferentes tipos de textos haciéndolos seguros. Mediante el uso de este componente puede prevenir ataques XSS.
+Escapes different kinds of text securing them. By using this component you may prevent XSS attacks.
 
-Este componente sólo funciona con UTF-8. La extensión PREG debe compilarse con soporte UTF-8.
+This component only works with UTF-8. The PREG extension needs to be compiled with UTF-8 support.
 
 ```php
 <?php
@@ -68,7 +68,7 @@ Utilidad para normalizar una cadena de codificación a UTF-32.
 
 public **escapeHtml** (*mixed* $text)
 
-Escapa una cadena HTML. Internamente utiliza htmlspecialchars
+Escapes a HTML string. Internally uses htmlspecialchars
 
 public **escapeHtmlAttr** (*mixed* $attribute)
 
@@ -84,4 +84,4 @@ Escapa cadenas de javascript mediante la sustitución de caracteres no alfanumé
 
 public **escapeUrl** (*mixed* $url)
 
-Escapa a una dirección URL. Internamente utiliza rawurlencode
+Escapes a URL. Internally uses rawurlencode
