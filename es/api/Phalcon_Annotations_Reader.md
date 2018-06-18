@@ -1,6 +1,6 @@
 # Clase **Phalcon\\Annotations\\Reader**
 
-*implementa* [Phalcon\Annotations\ReaderInterface](/en/3.2/api/Phalcon_Annotations_ReaderInterface)
+*implements* [Phalcon\Annotations\ReaderInterface](/[[language]]/[[version]]/api/Phalcon_Annotations_ReaderInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/reader.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
