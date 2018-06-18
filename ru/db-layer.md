@@ -100,7 +100,7 @@
 
 ## Адаптеры баз данных
 
-Данный компонент позволяет использовать адаптеры для инкапсуляции конкретных деталей системы баз данных. Phalcon использует PDO для подключения к базам данных. Поддерживаются следующие СУБД:
+This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
 
 | Класс                                   | Описание                                                                                                                                                                                                                          |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -114,7 +114,7 @@
 
 <a name='factory'></a>
 
-Загружает адаптер PDO используя параметр `adapter`. Например:
+Loads PDO Adapter class using `adapter` option. For example:
 
 ```php
 <?php
@@ -687,7 +687,7 @@ $success = $connection->delete(
 
 ## Транзакции и вложенные транзакции
 
-Работа с транзакциями поддерживается также, как и в PDO. Выполнение изменения данных внутри транзакций, часто увеличивает производительность в большинстве систем баз данных:
+Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
 
 ```php
 <?php
