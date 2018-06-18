@@ -465,9 +465,9 @@ foreach ($jsCollection as $resource) {
 
 ## Повышение производительности
 
-Существует множество способов оптимизации работы со статическими ресурсами. Ниже мы опишем простой метод, который позволит отдавать ресурсы непосредственно через веб-сервер, сокращая тем самым время ответа в целом.
+There are many ways to optimize the processing resources. We'll describe a simple method below which allows to handle resourses directly through web server to optimize the response time.
 
-Для начала нам понадобится настроить менеджер ресурсов. В этом примере будет использоваться некий базовый контроллер, однако вы можете использовать для этого сервис провайдер или любой другой подход:
+First we need to set up the Assets Manager. We'll use base controller, but you can use the service provider or any other place:
 
 ```php
 <?php
@@ -592,10 +592,10 @@ location @phalcon {
 }
 ```
 
-Нам понадобится создать директории `assets/js` и `assets/css` в корне приложения (например в `public`).
+We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).
 
 Каждый раз, когда пользователь запрашивает статический ресурс вида `/assets/js/global.js`, запрос будет послан на обработку контроллером `AssetsController`, если файла ещё нет в файловой системе. В противном случае, ресурс будет возвращён веб-сервером.
 
-Мы рассмотрели не самый лучший пример. Однако, он отражает суть: грамотная конфигурация веб-сервера и приложения может повысить производительность вашего приложения многократно.
+It isn't the best example. However, it reflects the main idea: the reasonable configuration of a web server with an application can help optimize response time multifold.
 
 Узнать больше о конфигурировании веб-сервера и маршрутизации можно в соответствующих статьях [Настройка веб-сервера](/[[language]]/[[version]]/webserver-setup) и [Маршрутизация](/[[language]]/[[version]]/routing).
