@@ -172,16 +172,16 @@ class Robots extends Model
 
 Аннотация @Column поддерживает следующие параметры:
 
-| Название             | Описание                                                                                                                                                                     |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| column               | Real column name                                                                                                                                                             |
-| type                 | The column's types: varchar/string (default), text, chr, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
-| length               | Длина столбца, если есть                                                                                                                                                     |
-| nullable             | Принимает ли столбец нулевые значения или нет                                                                                                                                |
-| skip_on_insert     | Skip this column on insert                                                                                                                                                   |
-| skip_on_update     | Skip this column on updates                                                                                                                                                  |
-| allow_empty_string | Column allow empty strings                                                                                                                                                   |
-| default              | Default value                                                                                                                                                                |
+| Название             | Описание                                                                                                                                                                      |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| column               | Real column name                                                                                                                                                              |
+| type                 | The column's types: varchar/string (default), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
+| length               | Длина столбца, если есть                                                                                                                                                      |
+| nullable             | Принимает ли столбец нулевые значения или нет                                                                                                                                 |
+| skip_on_insert     | Skip this column on insert                                                                                                                                                    |
+| skip_on_update     | Skip this column on updates                                                                                                                                                   |
+| allow_empty_string | Column allow empty strings                                                                                                                                                    |
+| default              | Default value                                                                                                                                                                 |
 
 Стратегия аннотаций может быть задана таким образом:
 
