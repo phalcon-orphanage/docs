@@ -6,7 +6,7 @@ This interface must be implemented by adapters in Phalcon\Annotations
 
 ## Metody
 
-abstract public **setReader** ([Phalcon\Annotations\ReaderInterface](/en/3.2/api/Phalcon_Annotations_ReaderInterface) $reader)
+abstract public **setReader** ([Phalcon\Annotations\ReaderInterface](/[[language]]/[[version]]/api/Phalcon_Annotations_ReaderInterface) $reader)
 
 Sets the annotations parser
 
