@@ -7,16 +7,16 @@
           <a href="#data-adapters">Adaptadores de datos</a>
         </li>
         <li>
-          <a href="#examples">Ejemplos</a>
+          <a href="#examples">Examples</a>
         </li>
         <li>
-          <a href="#using-adapters">Usando Adaptadores</a>
+          <a href="#using-adapters">Using Adapters</a>
         </li>
         <li>
-          <a href="#page-attributes">Atributos de Página</a>
+          <a href="#page-attributes">Page Attributes</a>
         </li>
         <li>
-          <a href="#custom">Implementando sus propios adaptadores</a>
+          <a href="#custom">Implementing your own adapters</a>
         </li>
       </ul>
     </li>
@@ -35,11 +35,11 @@ El proceso de paginación ocurre cuando tenemos que presentar gradualmente grand
 
 Este componente hace uso de adaptadores para encapsular diferentes fuentes de datos:
 
-| Adaptador                                   | Descripción                                                                                                                                                                                     |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Paginator\Adapter\NativeArray`  | Usa un array PHP como origen de datos                                                                                                                                                           |
-| `Phalcon\Paginator\Adapter\Model`        | Utiliza un objeto `Phalcon\Mvc\Model\Resultset` como origen de datos. Ya que PDO no admite cursores desplazables este adaptador no se debe utilizar para paginar un gran número de registros |
-| `Phalcon\Paginator\Adapter\QueryBuilder` | Utiliza un objeto `Phalcon\Mvc\Model\Query\Builder` como origen de datos                                                                                                                    |
+| Adaptador                                   | Descripción                                                                                                                                                                     |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Paginator\Adapter\NativeArray`  | Usa un array PHP como origen de datos                                                                                                                                           |
+| `Phalcon\Paginator\Adapter\Model`        | Use a `Phalcon\Mvc\Model\Resultset` object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
+| `Phalcon\Paginator\Adapter\QueryBuilder` | Utiliza un objeto `Phalcon\Mvc\Model\Query\Builder` como origen de datos                                                                                                    |
 
 <a name='factory'></a>
 
@@ -70,25 +70,25 @@ $paginator = Factory::load($options);
 
 <a name='examples'></a>
 
-## Ejemplos
+## Examples
 
-En el ejemplo siguiente, el paginator utilizará el resultado de una consulta de un modelo como su origen de datos y limita los datos mostrados, 10 registros por página:
+In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
 
 ```php
 <?php
 
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
-// Página actual para mostrar
-// En un controlador/componente este puede ser
+// Current page to show
+// In a controller/component this can be:
 // $this->request->getQuery('page', 'int'); // GET
 // $this->request->getPost('page', 'int'); // POST
 $currentPage = (int) $_GET['page'];
 
-// El conjunto de datos a paginar
+// The data set to paginate
 $robots = Robots::find();
 
-// Crear un paginador del modelo, mostrando 10 registros por página empezando desde $currentPage
+// Create a Model paginator, show 10 rows by page starting from $currentPage
 $paginator = new PaginatorModel(
     [
         'data'  => $robots,
@@ -97,18 +97,18 @@ $paginator = new PaginatorModel(
     ]
 );
 
-// Obtener los resultados paginados
+// Get the paginated results
 $page = $paginator->getPaginate();
 ```
 
-La variable `$currentPage` controla la página que se mostrará. El `$paginator->getPaginate()` devuelve un objeto `$page` que contiene los datos paginados. Puede ser utilizado para la generación de la paginación:
+La variable `$currentPage` controla la página que se mostrará. El `$paginator->getPaginate()` devuelve un objeto `$page` que contiene los datos paginados. It can be used for generating the pagination:
 
 ```php
 <table>
     <tr>
         <th>Id</th>
-        <th>Nombre</th>
-        <th>Tipo</th>
+        <th>Name</th>
+        <th>Type</th>
     </tr>
     <?php foreach ($page->items as $item) { ?>
     <tr>
@@ -123,19 +123,19 @@ La variable `$currentPage` controla la página que se mostrará. El `$paginator-
 El objeto `$page` también contiene datos de navegación:
 
 ```php
-<a href='/robots/search'>Primera</a>
-<a href='/robots/search?page=<?= $page->before; ?>'>Anterior</a>
-<a href='/robots/search?page=<?= $page->next; ?>'>Siguiente</a>
-<a href='/robots/search?page=<?= $page->last; ?>'>Última</a>
+<a href='/robots/search'>First</a>
+<a href='/robots/search?page=<?= $page->before; ?>'>Previous</a>
+<a href='/robots/search?page=<?= $page->next; ?>'>Next</a>
+<a href='/robots/search?page=<?= $page->last; ?>'>Last</a>
 
-<?php echo 'Estas en la página ', $page->current, ' de ', $page->total_pages; ?>
+<?php echo 'You are in page ', $page->current, ' of ', $page->total_pages; ?>
 ```
 
 <a name='using-adapters'></a>
 
-## Uso de adaptadores
+## Using Adapters
 
-Un ejemplo de los datos de origen que deben utilizarse para cada adaptador:
+An example of the source data that must be used for each adapter:
 
 ```php
 <?php
@@ -144,7 +144,7 @@ use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
 use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
 
-// Pasando un conjunto de resultados como datos
+// Passing a resultset as data
 $paginator = new PaginatorModel(
     [
         'data'  => Products::find(),
@@ -153,7 +153,7 @@ $paginator = new PaginatorModel(
     ]
 );
 
-// Pasando un array como datos
+// Passing an array as data
 $paginator = new PaginatorArray(
     [
         'data'  => [
@@ -168,7 +168,8 @@ $paginator = new PaginatorArray(
     ]
 );
 
-// Pasando un QueryBuilder como datos
+// Passing a QueryBuilder as data
+
 $builder = $this->modelsManager->createBuilder()
     ->columns('id, name')
     ->from('Robots')
@@ -185,7 +186,7 @@ $paginator = new PaginatorQueryBuilder(
 
 <a name='page-attributes'></a>
 
-## Atributos de página
+## Page Attributes
 
 El objeto `$page` tiene los siguientes atributos:
 
@@ -201,9 +202,9 @@ El objeto `$page` tiene los siguientes atributos:
 
 <a name='custom'></a>
 
-## Implementar tus propios adaptadores
+## Implementing your own adapters
 
-Debe implementar la interfaz `Phalcon\Paginator\AdapterInterface` para crear sus propios adaptadores o extender los ya existentes:
+The `Phalcon\Paginator\AdapterInterface` interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 
 ```php
 <?php
@@ -213,21 +214,21 @@ use Phalcon\Paginator\AdapterInterface as PaginatorInterface;
 class MyPaginator implements PaginatorInterface
 {
     /**
-     * Constructor del adaptador
+     * Adapter constructor
      *
      * @param array $config
      */
     public function __construct($config);
 
     /**
-     * Establece la página actual
+     * Set the current page number
      *
      * @param int $page
      */
     public function setCurrentPage($page);
 
     /**
-     * Devuelve una parte del conjunto de resultados para mostrar en la paginación
+     * Returns a slice of the resultset to show in the pagination
      *
      * @return stdClass
      */
