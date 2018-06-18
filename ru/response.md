@@ -52,7 +52,7 @@ $response->setContent("Сожалеем, но страница не сущест
 $response->send();
 ```
 
-Имейте в виду, что при использовании полного стека MVC нет необходимости отправлять результаты Response вручную. Однако, если есть необходимость указать ответ самостоятельно в действии контроллера, то можно использовать такой пример:
+If you are using the full MVC stack there is no need to create responses manually. However, if you need to return a response directly from a controller's action follow this example:
 
 ```php
 <?php
@@ -84,7 +84,7 @@ class FeedController extends Controller
 
 ## Работа с заголовками
 
-Заголовки являются важной частью для HTTP-ответов. Они содержат полезную информацию о статусе ответа, его типе и еще многое другое.
+Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status, type of response and much more.
 
 Указывать заголовки можно следующим образом:
 
@@ -99,7 +99,7 @@ $response->setHeader('Content-Disposition', "attachment; filename='downloaded.pd
 $response->setRawHeader('HTTP/1.1 200 OK');
 ```
 
-Объект `Phalcon\Http\Response\Headers` содержит в себе все заголовки и средства для их управления. Этот класс позволяет управлять заголовками до их отправки клиенту:
+A `Phalcon\Http\Response\Headers` bag internally manages headers. This class retrieves the headers before sending it to client:
 
 ```php
 <?php
@@ -191,13 +191,13 @@ $expiryDate->modify('-10 minutes');
 $response->setExpires($expiryDate);
 ```
 
-Браузеры основываются на системных часах клиента для определения наступления этой даты. Так как часы на клиенте могут быть изменены, то срок жизни будет некорректен. Это ограничение такого механизма кэширования.
+Browsers rely on the client's clock to assess if this date has passed or not. The client clock can be modified to make pages expire and this may represent a limitation for this cache mechanism.
 
 <a name='http-cache-control'></a>
 
 ### Cache-Control
 
-Этот заголовок осуществляет более безопасный способ кэширования. Мы просто указываем браузеру время в секундах которое необходимо хранить страницы в кэше:
+This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser how long it must keep the page in its cache:
 
 ```php
 <?php
