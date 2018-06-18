@@ -1,10 +1,10 @@
 # Clase **Phalcon\\Filter**
 
-*implementa* [Phalcon\FilterInterface](/en/3.2/api/Phalcon_FilterInterface)
+*implements* [Phalcon\FilterInterface](/[[language]]/[[version]]/api/Phalcon_FilterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/filter.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
-El componente de Phalcon\\Filter proporciona un conjunto de filtros de datos comúnmente necesarios. Proporciona contenedores de orientado a objetos para la extensión de filtro de php. También permite al desarrollador definir sus propios filtros
+The Phalcon\\Filter component provides a set of commonly needed data filters. It provides object oriented wrappers to the php filter extension. Also allows the developer to define his/her own filters
 
 ```php
 <?php
