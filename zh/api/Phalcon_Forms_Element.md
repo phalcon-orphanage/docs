@@ -1,6 +1,6 @@
 # Abstract class **Phalcon\\Forms\\Element**
 
-*implements* [Phalcon\Forms\ElementInterface](/en/3.2/api/Phalcon_Forms_ElementInterface)
+*implements* [Phalcon\Forms\ElementInterface](/[[language]]/[[version]]/api/Phalcon_Forms_ElementInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/forms/element.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -12,7 +12,7 @@ public **__construct** (*string* $name, [*array* $attributes])
 
 Phalcon\\Forms\\Element constructor
 
-public **setForm** ([Phalcon\Forms\Form](/en/3.2/api/Phalcon_Forms_Form) $form)
+public **setForm** ([Phalcon\Forms\Form](/[[language]]/[[version]]/api/Phalcon_Forms_Form) $form)
 
 Sets the parent form to the element
 
@@ -28,7 +28,7 @@ public **getName** ()
 
 Returns the element name
 
-public [Phalcon\Forms\ElementInterface](/en/3.2/api/Phalcon_Forms_ElementInterface) **setFilters** (*array* | *string* $filters)
+public [Phalcon\Forms\ElementInterface](/[[language]]/[[version]]/api/Phalcon_Forms_ElementInterface) **setFilters** (*array* | *string* $filters)
 
 Sets the element filters
 
@@ -40,11 +40,11 @@ public *mixed* **getFilters** ()
 
 Returns the element filters
 
-public [Phalcon\Forms\ElementInterface](/en/3.2/api/Phalcon_Forms_ElementInterface) **addValidators** (*array* $validators, [*mixed* $merge])
+public [Phalcon\Forms\ElementInterface](/[[language]]/[[version]]/api/Phalcon_Forms_ElementInterface) **addValidators** (*array* $validators, [*mixed* $merge])
 
 Adds a group of validators
 
-public **addValidator** ([Phalcon\Validation\ValidatorInterface](/en/3.2/api/Phalcon_Validation_ValidatorInterface) $validator)
+public **addValidator** ([Phalcon\Validation\ValidatorInterface](/[[language]]/[[version]]/api/Phalcon_Validation_ValidatorInterface) $validator)
 
 Adds a validator to the element
 
@@ -56,7 +56,7 @@ public **prepareAttributes** ([*array* $attributes], [*mixed* $useChecked])
 
 Returns an array of prepared attributes for Phalcon\\Tag helpers according to the element parameters
 
-public [Phalcon\Forms\ElementInterface](/en/3.2/api/Phalcon_Forms_ElementInterface) **setAttribute** (*string* $attribute, *mixed* $value)
+public [Phalcon\Forms\ElementInterface](/[[language]]/[[version]]/api/Phalcon_Forms_ElementInterface) **setAttribute** (*string* $attribute, *mixed* $value)
 
 Sets a default attribute for the element
 
@@ -72,7 +72,7 @@ public **getAttributes** ()
 
 Returns the default attributes for the element
 
-public [Phalcon\Forms\ElementInterface](/en/3.2/api/Phalcon_Forms_ElementInterface) **setUserOption** (*string* $option, *mixed* $value)
+public [Phalcon\Forms\ElementInterface](/[[language]]/[[version]]/api/Phalcon_Forms_ElementInterface) **setUserOption** (*string* $option, *mixed* $value)
 
 Sets an option for the element
 
@@ -100,7 +100,7 @@ public **label** ([*array* $attributes])
 
 Generate the HTML to label the element
 
-public [Phalcon\Forms\ElementInterface](/en/3.2/api/Phalcon_Forms_ElementInterface) **setDefault** (*mixed* $value)
+public [Phalcon\Forms\ElementInterface](/[[language]]/[[version]]/api/Phalcon_Forms_ElementInterface) **setDefault** (*mixed* $value)
 
 Sets a default value in case the form does not use an entity or there is no value available for the element in _POST
 
@@ -120,11 +120,11 @@ public **hasMessages** ()
 
 Checks whether there are messages attached to the element
 
-public **setMessages** ([Phalcon\Validation\Message\Group](/en/3.2/api/Phalcon_Validation_Message_Group) $group)
+public **setMessages** ([Phalcon\Validation\Message\Group](/[[language]]/[[version]]/api/Phalcon_Validation_Message_Group) $group)
 
 Sets the validation messages related to the element
 
-public **appendMessage** ([Phalcon\Validation\MessageInterface](/en/3.2/api/Phalcon_Validation_MessageInterface) $message)
+public **appendMessage** ([Phalcon\Validation\MessageInterface](/[[language]]/[[version]]/api/Phalcon_Validation_MessageInterface) $message)
 
 Appends a message to the internal message list
 
@@ -136,6 +136,6 @@ public **__toString** ()
 
 Magic method __toString renders the widget without attributes
 
-abstract public **render** ([*mixed* $attributes]) inherited from [Phalcon\Forms\ElementInterface](/en/3.2/api/Phalcon_Forms_ElementInterface)
+abstract public **render** ([*mixed* $attributes]) inherited from [Phalcon\Forms\ElementInterface](/[[language]]/[[version]]/api/Phalcon_Forms_ElementInterface)
 
 ...
