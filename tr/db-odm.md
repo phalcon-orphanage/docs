@@ -763,7 +763,7 @@ Another type of events is available when the data validation process finds any i
 
 <a name='ids-vs-primary-keys'></a>
 
-## Örtülü Kimliklere karşılık Öncelikli Kullanıcı Anahtarları
+## Implicit Ids vs. User Primary Keys
 
 By default `Phalcon\Mvc\Collection` assumes that the `_id` attribute is automatically generated using [MongoIds](http://www.php.net/manual/en/class.mongoid.php).
 
