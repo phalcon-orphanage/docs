@@ -1,6 +1,6 @@
 # Class **Phalcon\\Db\\Column**
 
-*implements* [Phalcon\Db\ColumnInterface](/en/3.2/api/Phalcon_Db_ColumnInterface)
+*implements* [Phalcon\Db\ColumnInterface](/[[language]]/[[version]]/api/Phalcon_Db_ColumnInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/column.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
