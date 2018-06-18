@@ -1,6 +1,6 @@
 - General 
     - [Introducción](/[[language]]/[[version]]/introduction)
-    - [Notas de la Versión](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
+    - [Notas de la Versión](https://github.com/phalcon/cphalcon/blob/master/CHANGELOG.md)
     - [Patrocinadores](/[[language]]/[[version]]/sponsors)
     - [FAQ](/[[language]]/[[version]]/faq)
 - Contribuciones 
