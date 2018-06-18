@@ -1,6 +1,6 @@
 # Clase Abstracta **Phalcon\\Image\\Adapter**
 
-*implementa* [Phalcon\Image\AdapterInterface](/en/3.2/api/Phalcon_Image_AdapterInterface)
+*implements* [Phalcon\Image\AdapterInterface](/[[language]]/[[version]]/api/Phalcon_Image_AdapterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/image/adapter.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
@@ -38,7 +38,7 @@ Redimensiona el tamaño de la imagen al tamaño indicado
 
 public **liquidRescale** (*mixed* $width, *mixed* $height, [*mixed* $deltaX], [*mixed* $rigidity])
 
-Este método modifica la escala de las imágenes utilizando un método de cambio de escala líquido. Sólo es compatible con Imagick
+This method scales the images using liquid rescaling method. Only support Imagick
 
 public **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY])
 
@@ -60,7 +60,7 @@ public **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $fadeIn])
 
 Agrega un reflejo a una imagen
 
-public **watermark** ([Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity])
+public **watermark** ([Phalcon\Image\Adapter](/[[language]]/[[version]]/api/Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity])
 
 Agrega una marca de agua a una imagen con la opacidad especificada
 
@@ -68,7 +68,7 @@ public **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed*
 
 Agrega un texto a una imagen con la opacidad especificada
 
-public **mask** ([Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter) $watermark)
+public **mask** ([Phalcon\Image\Adapter](/[[language]]/[[version]]/api/Phalcon_Image_Adapter) $watermark)
 
 Combina una imagen con otra
 
