@@ -1,6 +1,6 @@
 # Class **Phalcon\\Acl\\Resource**
 
-*implements* [Phalcon\Acl\ResourceInterface](/en/3.2/api/Phalcon_Acl_ResourceInterface)
+*implements* [Phalcon\Acl\ResourceInterface](/[[language]]/[[version]]/api/Phalcon_Acl_ResourceInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
