@@ -1,6 +1,6 @@
 # Class **Phalcon\\Mvc\\View\\Engine\\Volt\\Exception**
 
-*extends* class [Phalcon\Mvc\View\Exception](/en/3.2/api/Phalcon_Mvc_View_Exception)
+*extends* class [Phalcon\Mvc\View\Exception](/[[language]]/[[version]]/api/Phalcon_Mvc_View_Exception)
 
 *implements* [Throwable](http://php.net/manual/en/class.throwable.php)
 
