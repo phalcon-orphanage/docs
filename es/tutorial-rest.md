@@ -24,7 +24,7 @@
           <a href="#deleting-data">Borrando datos</a>
         </li>
         <li>
-          <a href="#testing">Pruebando nuestra aplicación</a>
+          <a href="#testing">Probando nuestra aplicación</a>
         </li>
         <li>
           <a href="#conclusion">Conclusión</a>
@@ -76,7 +76,7 @@ my-rest-api/
     .htaccess
 ```
 
-First, we need a `.htaccess` file that contains all the rules to rewrite the URIs to the `index.php` file, that is our application:
+Primero, necesitamos un archivo `.htaccess` que contenga todas las reglas para reescribir los URI en el archivo `index.php`, esa es nuestra aplicación:
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -109,7 +109,7 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Retrieves all robots
+// Recupera todos los robots
 $app->get(
     '/api/robots',
     function () {
@@ -117,7 +117,7 @@ $app->get(
     }
 );
 
-// Searches for robots with $name in their name
+// Busca robots con $name en su nombre
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
@@ -125,7 +125,7 @@ $app->get(
     }
 );
 
-// Retrieves robots based on primary key
+// Recupera robots basados en claves primarias
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
@@ -133,7 +133,7 @@ $app->get(
     }
 );
 
-// Adds a new robot
+// Agrega un nuevo robot
 $app->post(
     '/api/robots',
     function () {
@@ -141,7 +141,7 @@ $app->post(
     }
 );
 
-// Updates robots based on primary key
+// Actualiza robots basados en clave primaria
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function () {
@@ -149,7 +149,7 @@ $app->put(
     }
 );
 
-// Deletes robots based on primary key
+// Elimina robots en función de la clave principal
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function () {
@@ -566,7 +566,7 @@ $app->delete(
 
 <a name='testing'></a>
 
-## Pruebando nuestra aplicación
+## Probando nuestra aplicación
 
 Utilizando [curl](http://en.wikipedia.org/wiki/CURL) probaremos cada ruta en nuestra aplicación, verificando su correcto funcionamiento.
 
