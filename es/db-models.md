@@ -27,10 +27,7 @@
               <a href="#filters">Filtrar Conjuntos de Resultados</a>
             </li>
             <li>
-              <a href="#filters">Filtering Resultsets</a>
-            </li>
-            <li>
-              <a href="#binding-parameters">Binding Parameters</a>
+              <a href="#binding-parameters">Enlazando parámetros</a>
             </li>
           </ul>
         </li>
@@ -491,7 +488,7 @@ Tenga en cuenta que se utilizó 'Name' en el método y se paso la variable `$nam
 
 Mientras `findFirst()` directamente devuelve una instancia de la clase llamada (cuando hay datos para devolver), el método `find()` devuelve un `Phalcon\Mvc\Model\Resultset\Simple`. Se trata de un objeto que encapsula toda la funcionalidad que un conjunto de resultados, como recorrer los registros, buscar registros específicos, contar, etcétera.
 
-Estos objetos son más poderosos que los array regulares. One of the greatest features of the `Phalcon\Mvc\Model\Resultset` is that at any time there is only one record in memory. Esto ayuda enormemente en la gestión de memoria especialmente cuando se trabaja con grandes cantidades de datos.
+Estos objetos son más poderosos que los array regulares. Una de las mejores características del `Phalcon\Mvc\Model\Resultset` es que en cualquier momento hay sólo un registro en memoria. Esto ayuda enormemente en la gestión de memoria especialmente cuando se trabaja con grandes cantidades de datos.
 
 ```php
 <?php
@@ -1148,7 +1145,7 @@ if ($robot->create() === false) {
 }
 ```
 
-The methods `create` and `update` also accept an array of values as parameter.
+Los métodos de `create` y `update` también aceptan un array de valores como parámetro.
 
 <a name='delete-records'></a>
 
