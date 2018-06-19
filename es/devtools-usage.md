@@ -46,7 +46,7 @@
 
 Estas herramientas son una colección de útiles secuencias de comandos para generar el código del esqueleto. Los componentes básicos de su aplicación pueden ser generados con un simple comando, lo que le permite desarrollar fácilmente aplicaciones usando Phalcon.
 
-<h5 class='alert alert-danger'>If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information. </h5>
+<h5 class='alert alert-danger'>Si prefiere utilizar la versión web en lugar de la consola, esta <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">publicación en el blog</a> le ofrecerá más información. </h5>
 
 <a name='download'></a>
 
