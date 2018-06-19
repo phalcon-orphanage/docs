@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Улучшение производительности с помощью кэширования</a> <ul>
+      <a href="#overview">Improving Performance with Cache</a> <ul>
         <li>
           <a href="#implementation">Где применять кэширование?</a>
         </li>

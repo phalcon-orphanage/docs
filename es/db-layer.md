@@ -124,7 +124,7 @@ To create a connection it's necessary instantiate the adapter class. It only req
 ```php
 <?php
 
-// Required
+//Requerido
 $config = [
     'host'     => '127.0.0.1',
     'username' => 'mike',
@@ -132,17 +132,17 @@ $config = [
     'dbname'   => 'test_db',
 ];
 
-// Optional
+//Opcional
 $config['persistent'] = false;
 
-// Create a connection
+// Crear una conexión
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
 
 ```php
 <?php
 
-// Required
+// Requerido
 $config = [
     'host'     => 'localhost',
     'username' => 'postgres',
@@ -150,22 +150,22 @@ $config = [
     'dbname'   => 'template',
 ];
 
-// Optional
+// Opcional
 $config['schema'] = 'public';
 
-// Create a connection
+// Crea una conección
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
 
 ```php
 <?php
 
-// Required
+// Requerido
 $config = [
     'dbname' => '/path/to/database.db',
 ];
 
-// Create a connection
+// Crea una conección
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```
 
@@ -178,7 +178,7 @@ You can set PDO options at connection time by passing the parameters `options`:
 ```php
 <?php
 
-// Create a connection with PDO options
+// Crea una conección con opciones PDO
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
     [
         'host'     => 'localhost',
@@ -197,7 +197,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
 
 ## Conexión usando Factory
 
-You can also use a simple `ini` file to configure/connect your `db` service to your database.
+También se puede utilizar un simple archivo `ini` para configurar o conectar el servicio `db` a la base de datos.
 
 ```ini
 [database]
@@ -243,21 +243,21 @@ The above will return the correct database instance and also has the advantage t
 
 $sql = 'SELECT id, name FROM robots ORDER BY name';
 
-// Send a SQL statement to the database system
+// Envia una declaración SQL al sistema de Base de Datos
 $result = $connection->query($sql);
 
-// Print each robot name
+// Imprime el nombre de cada robot
 while ($robot = $result->fetch()) {
    echo $robot['name'];
 }
 
-// Get all rows in an array
+// Obtiene todos los registros en un array
 $robots = $connection->fetchAll($sql);
 foreach ($robots as $robot) {
    echo $robot['name'];
 }
 
-// Get only the first row
+// Obtiene solo el primer registro
 $robot = $connection->fetchOne($sql);
 ```
 
@@ -282,7 +282,7 @@ while ($robot = $result->fetch()) {
 }
 ```
 
-The `Phalcon\Db::query()` returns an instance of `Phalcon\Db\Result\Pdo`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
+`Phalcon\Db::query()` devuelve una instancia de `Phalcon\Db\Result\Pdo`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
 
 ```php
 <?php
@@ -290,16 +290,16 @@ The `Phalcon\Db::query()` returns an instance of `Phalcon\Db\Result\Pdo`. These 
 $sql = 'SELECT id, name FROM robots';
 $result = $connection->query($sql);
 
-// Traverse the resultset
+// Recorre el conjunto de resultados
 while ($robot = $result->fetch()) {
    echo $robot['name'];
 }
 
-// Seek to the third row
+// Busca en el tercer registro
 $result->seek(2);
 $robot = $result->fetch();
 
-// Count the resultset
+// Cuenta el conjunto de resutlados
 echo $result->numRows();
 ```
 
@@ -307,12 +307,12 @@ echo $result->numRows();
 
 ## Enlazando parámetros
 
-Bound parameters is also supported in `Phalcon\Db`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
+Los parámetros enlazados también son compatibles con `Phalcon\Db`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
 
 ```php
 <?php
 
-// Binding with numeric placeholders
+// Enlazar con marcadores numéricos
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -321,7 +321,7 @@ $result = $connection->query(
     ]
 );
 
-// Binding with named placeholders
+// Enlazar marcadores por nombre
 $sql     = 'INSERT INTO `robots`(name`, year) VALUES (:name, :year)';
 $success = $connection->query(
     $sql,
@@ -341,7 +341,7 @@ Also, you can pass your parameters directly to the execute/query methods. In thi
 ```php
 <?php
 
-// Binding with PDO placeholders
+// Enlazando con marcadores PDO
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -486,18 +486,18 @@ Working with transactions is supported as it is with PDO. Perform data manipulat
 <?php
 
 try {
-    // Start a transaction
+    // Iniciar una transacción
     $connection->begin();
 
-    // Execute some SQL statements
+    // Ejecutar algunas sentencias SQL
     $connection->execute('DELETE `robots` WHERE `id` = 101');
     $connection->execute('DELETE `robots` WHERE `id` = 102');
     $connection->execute('DELETE `robots` WHERE `id` = 103');
 
-    // Commit if everything goes well
+    // Confirmar transacción si todo ha ido bien
     $connection->commit();
 } catch (Exception $e) {
-    // An exception has occurred rollback the transaction
+    // Una excepción ha ocurrido hacer rollback a la transaccion
     $connection->rollback();
 }
 ```
@@ -544,7 +544,7 @@ try {
 
 ## Eventos de base de datos
 
-`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Db` es capaz de enviar eventos al [EventsManager](/[[language]]/[[version]]/events) si está presente. Some events when returning boolean false could stop the active operation. Son soportados los siguientes eventos:
 
 | Nombre de Evento      | Activador                                                          | ¿Puede detener la operación? |
 | --------------------- | ------------------------------------------------------------------ |:----------------------------:|
@@ -582,7 +582,7 @@ $connection = new Connection(
 $connection->setEventsManager($eventsManager);
 ```
 
-Stop SQL operations are very useful if for example you want to implement some last-resource SQL injector checker:
+Detener las operaciones SQL es muy útil si se desea, por ejemplo, implementar algún verificador de inyectores SQL de último recurso:
 
 ```php
 <?php
@@ -728,10 +728,10 @@ $eventsManager->attach(
     }
 );
 
-// Assign the eventsManager to the db adapter instance
+// Asignar el eventsManager a la instancia del adaptador de base de datos
 $connection->setEventsManager($eventsManager);
 
-// Execute some SQL statement
+// Ejecutar alguna sentencia SQL
 $connection->insert(
     'products',
     [
@@ -762,24 +762,24 @@ You can implement your own logger class for database queries, by creating a clas
 
 ## Descripción de tablas o vistas
 
-`Phalcon\Db` also provides methods to retrieve detailed information about tables and views:
+`Phalcon\Db` también proporciona métodos para recuperar información detallada sobre tablas y vistas:
 
 ```php
 <?php
 
-// Get tables on the test_db database
+// Obtiene las tablas de la base de datos test_db
 $tables = $connection->listTables('test_db');
 
-// Is there a table 'robots' in the database?
+// ¿Hay una tabla "robots" en la base de datos?
 $exists = $connection->tableExists('robots');
 
-// Get name, data types and special features of 'robots' fields
+// Obtener nombre, tipos de datos y características especiales de los campos 'robots'
 $fields = $connection->describeColumns('robots');
 foreach ($fields as $field) {
     echo 'Column Type: ', $field['Type'];
 }
 
-// Get indexes on the 'robots' table
+// Obtener los indices de la tabla 'robots' 
 $indexes = $connection->describeIndexes('robots');
 foreach ($indexes as $index) {
     print_r(
@@ -787,10 +787,10 @@ foreach ($indexes as $index) {
     );
 }
 
-// Get foreign keys on the 'robots' table
+// Obtener las llaves foraneas en la tabla 'robots'
 $references = $connection->describeReferences('robots');
 foreach ($references as $reference) {
-    // Print referenced columns
+    // Imprimir columnas referenciadas
     print_r(
         $reference->getReferencedColumns()
     );
@@ -808,10 +808,10 @@ Methods to get information about views are also implemented for every supported 
 ```php
 <?php
 
-// Get views on the test_db database
+// Obtener las vistas en la base de datos 'test_db'
 $tables = $connection->listViews('test_db');
 
-// Is there a view 'robots' in the database?
+// ¿Hay una vista llamada "robots" en la base de datos?
 $exists = $connection->viewExists('robots');
 ```
 
@@ -819,7 +819,7 @@ $exists = $connection->viewExists('robots');
 
 ## Crear/Modificar/Eliminar tablas
 
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
+Diferentes sistemas de base de datos (MySQL, Postgresql etc.) ofrecen la capacidad para crear, modificar o eliminar tablas con el uso de comandos como CREATE, ALTER o DROP. La sintaxis SQL difiere según el sistema de base de datos utilizado. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
 
 <a name='tables-create'></a>
 
@@ -868,7 +868,7 @@ $connection->createTable(
 );
 ```
 
-`Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class `Phalcon\Db\Column`. The table below shows the options available to define a column:
+`Phalcon\Db::createTable()` accepts an associative array describing the table. Las columnas se definen con la clase `Phalcon\Db\Column`. The table below shows the options available to define a column:
 
 | Opción          | Descripción                                                                                                                         | Opcional |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |:--------:|
@@ -907,14 +907,14 @@ The associative array passed in `Phalcon\Db::createTable()` can have the possibl
 
 ### Modificar tablas
 
-As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. `Phalcon\Db` is limited by these constraints.
+As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. `Phalcon\Db` está limitado por estas restricciones.
 
 ```php
 <?php
 
 use Phalcon\Db\Column as Column;
 
-// Adding a new column
+// Agregar una nueva columna
 $connection->addColumn(
     'robots',
     null,
@@ -929,7 +929,7 @@ $connection->addColumn(
     )
 );
 
-// Modifying an existing column
+// Modificar una columna existente
 $connection->modifyColumn(
     'robots',
     null,
@@ -943,7 +943,7 @@ $connection->modifyColumn(
     )
 );
 
-// Deleting the column 'name'
+// Borrar la columna 'name'
 $connection->dropColumn(
     'robots',
     null,
@@ -955,14 +955,14 @@ $connection->dropColumn(
 
 ### Eliminar tablas
 
-Examples on dropping tables:
+Ejemplos de eliminación de tablas:
 
 ```php
 <?php
 
-// Drop table robot from active database
+// Elimina la tabla robot desde la base de datos activa
 $connection->dropTable('robots');
 
-// Drop table robot from database 'machines'
+// Elimina la tabla robot desde la base de datos "machines"
 $connection->dropTable('robots', 'machines');
 ```
