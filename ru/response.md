@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Возврат ответов</a> <ul>
+      <a href="#overview">Returning Responses</a> <ul>
         <li>
           <a href="#working-with-headers">Работа с заголовками</a>
         </li>
