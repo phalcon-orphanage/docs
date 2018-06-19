@@ -182,23 +182,22 @@ Registrar datos en un adaptador, es decir, el archivo (sistema de archivos) es s
 
 use Phalcon\Logger\Adapter\File as FileAdapter;
 
-// Create the logger
+// Crear el logger
 $logger = new FileAdapter('app/logs/test.log');
 
-// Start a transaction
+// Comenzar una transacción
 $logger->begin();
 
-// Add messages
-
+// Agregar mensajes
 $logger->alert(
-    'This is an alert'
+    'Esta es una alerta'
 );
 
 $logger->error(
-    'This is another error'
+    'Este es otro error'
 );
 
-// Commit messages to file
+// Confirmar los mensajes en el archivo
 $logger->commit();
 ```
 
@@ -218,8 +217,6 @@ use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
 $logger = new MultipleStream();
 
-
-
 $logger->push(
     new FileAdapter('test.log')
 );
@@ -229,16 +226,16 @@ $logger->push(
 );
 
 $logger->log(
-    'This is a message'
+    'Este es un mensaje'
 );
 
 $logger->log(
-    'This is an error',
+    'Este es un error',
     Logger::ERROR
 );
 
 $logger->error(
-    'This is another error'
+    'Este es otro error'
 );
 ```
 
@@ -284,7 +281,7 @@ use Phalcon\Logger\Formatter\Line as LineFormatter;
 
 $formatter = new LineFormatter('%date% - %message%');
 
-// Changing the logger format
+// Cambiando el formato de registro
 $logger->setFormatter($formatter);
 ```
 
@@ -311,10 +308,10 @@ El registrador de flujo escribe mensajes en una secuencia registrada válida en 
 
 use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
-// Opens a stream using zlib compression
+// Abrir el stream utilizando compresión zlib
 $logger = new StreamAdapter('compress.zlib://week.log.gz');
 
-// Writes the logs to stderr
+// Escribir registros en stderr
 $logger = new StreamAdapter('php://stderr');
 ```
 
@@ -329,7 +326,7 @@ Este registrador usa archivos simples para registrar cualquier tipo de dato. Por
 
 use Phalcon\Logger\Adapter\File as FileAdapter;
 
-// Create the file logger in 'w' mode
+// Crear un archivo de registro en modo 'w'
 $logger = new FileAdapter(
     'app/logs/test.log',
     [
@@ -349,10 +346,10 @@ Este registrador envía mensajes al registrador del sistema. El comportamiento d
 
 use Phalcon\Logger\Adapter\Syslog as SyslogAdapter;
 
-// Basic Usage
+// Uso básico
 $logger = new SyslogAdapter(null);
 
-// Setting ident/mode/facility
+// Configurando ident/mode/facility
 $logger = new SyslogAdapter(
     'ident-name',
     [
@@ -377,16 +374,16 @@ use Phalcon\Logger\Adapter\Firephp as Firephp;
 $logger = new Firephp('');
 
 $logger->log(
-    'This is a message'
+    'Este es un mensaje'
 );
 
 $logger->log(
-    'This is an error',
+    'Este es un error',
     Logger::ERROR
 );
 
 $logger->error(
-    'This is another error'
+    'Este es otro error'
 );
 ```
 
