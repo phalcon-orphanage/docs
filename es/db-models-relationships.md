@@ -22,7 +22,7 @@
               <a href="#aliases">Relaciones con alias</a> 
               <ul>
                 <li>
-                  <a href="#getters-vs-methods">Getters mágicos vs métodos explícitos</a>
+                  <a href="#getters-vs-methods">Magic Getters vs. Explicit methods</a>
                 </li>
               </ul>
             </li>
@@ -362,7 +362,7 @@ $robot = Robots::findFirst(
 );
 ```
 
-El prefijo `get` se utiliza para `find()`/`findFirst()` registros relacionados. Dependiendo del tipo de relación utilizará `find()` o `findFirst()`:
+The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
 
 | Tipo             | Descripción                                                                                                                             | Método implícito    |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
@@ -479,7 +479,7 @@ class RobotsSimilar extends Model
 }
 ```
 
-Con los alias podemos obtener fácilmente los registros relacionados. También puede utilizar el método `getRelated()` para acceder a la relación con el nombre del alias:
+With the aliasing we can get the related records easily. You can also use the `getRelated()` method to access the relationship using the alias name:
 
 ```php
 <?php
@@ -499,7 +499,7 @@ $similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 
 <a name='getters-vs-methods'></a>
 
-#### Getters mágicos vs métodos explícitos
+#### Magic Getters vs. Explicit methods
 
 La mayoría de los IDEs y editores con capacidades de auto-completado no pueden deducir los tipos correctos al utilizar getters mágicos (métodos y propiedades). Para superar eso, puede utilizar un docblock en la clase que especifica qué acciones mágicas están disponibles, ayudando al IDE para producir un mejor autocompletado:
 
@@ -537,7 +537,7 @@ class Robots extends Model
 
 ## Condicionales
 
-También puede crear relaciones basadas en condicionales. Al consultar la relación, la condición se agregará automáticamente a la consulta:
+You can also create relationships based on conditionals. When querying based on the relationship the condition will be automatically appended to the query:
 
 ```php
 <?php
@@ -843,7 +843,7 @@ Es necesario sobrecargar el método `Phalcon\Mvc\Model::save()` del modelo para 
 
 ## Operaciones sobre conjuntos de resultados
 
-If a resultset is composed of complete objects, it can perform operations on the records:
+Si un conjunto de resultados está compuesto de objetos completos, puede realizar operaciones en los registros:
 
 <a name='updating-related-records'></a>
 

@@ -54,7 +54,7 @@ Por ejemplo, cuando usted accede a una URL como esta: `http://localhost/blog/pos
 
 En este caso, el controlador `PostsController` se encargará de esta solicitud. Hay no hay un lugar especial para poner los controladores en una aplicación, ellos son cargados con `Phalcon\Loader`, así que eres libre de organizar los controladores como desees.
 
-Los controladores deben tener el sufijo `Controller` mientras que las acciones tienen el sufijo `Action`. Un ejemplo de un controlador es el siguiente:
+Controllers must have the suffix `Controller` while actions the suffix `Action`. A sample of a controller is as follows:
 
 ```php
 <?php
@@ -77,7 +77,7 @@ class PostsController extends Controller
 
 Los parámetros adicionales del URI se definen como parámetros de acción, por lo que se puede acceder fácilmente usando variables locales. Un controlador puede, opcionalmente, extender de `Phalcon\Mvc\Controller`. Haciendo esto, el controlador puede tener fácil acceso a los servicios de la aplicación.
 
-Los parámetros sin un valor predeterminado son manejados como obligatorios. Ajuste los valores opcionales en los parámetros como se hace en PHP:
+Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
 
 ```php
 <?php
@@ -98,7 +98,7 @@ class PostsController extends Controller
 }
 ```
 
-Los parámetros se asignan en el mismo orden como fueron pasados en la ruta. Puede obtener un parámetro arbitrario por su nombre de la siguiente manera:
+Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
 
 ```php
 <?php
@@ -241,7 +241,7 @@ class PostsController extends Controller
 
 ## Inyección de servicios
 
-Si un controlador extiende de `Phalcon\Mvc\Controller` tiene fácil acceso al contenedor de servicios de la aplicación. Por ejemplo, si hemos registrado un servicio como éste:
+If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
 
 ```php
 <?php
@@ -350,7 +350,7 @@ Más información sobre el entorno de HTTP en los artículos dedicados para [req
 
 ## Datos de Sesión
 
-Las sesiones nos ayudan a mantener los datos persistentes entre peticiones. Puedes acceder a `Phalcon\Session\Bag` desde cualquier controlador para encapsular los datos que necesita ser almacenados:
+Sessions help us maintain persistent data between requests. You can access a `Phalcon\Session\Bag` from any controller to encapsulate data that needs to be persistent:
 
 ```php
 <?php
@@ -375,7 +375,7 @@ class UserController extends Controller
 
 ## Utilizando Servicios como Controladores
 
-Los servicios pueden actuar como controladores, las clases de controladores son siempre solicitadas desde el contenedor de servicios. Por consiguiente, cualquier otra clase registrada con su nombre puede substituir fácilmente a un controlador:
+Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
 
 ```php
 <?php

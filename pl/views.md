@@ -91,7 +91,7 @@ Phalcon automatycznie przekazuje wykonanie do komponentu widoku w momencie gdy w
 | Akcja            | show      |
 | Parametr         | 301       |
 
-Dyspozytor (ang. dispatcher) będzie szukał `PostsController` oraz akcji `showAction`. Prosty plik kontrolera dla tego przykładu wygląda tak:
+The dispatcher will look for a `PostsController` and its action `showAction`. A simple controller file for this example:
 
 ```php
 <?php
@@ -125,7 +125,7 @@ Ten komponent używa domyślnie języka PHP jako silnika szablonów, więc widok
 
 | Nazwa             | Plik                          | Opis                                                                                                                                                                                                                          |
 | ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Widok akcji       | app/views/posts/show.phtml    | To jest widok związany z konkretną akcją. Będzie wyświetlony wtedy, gdy akcja `show` zostanie wykonana.                                                                                                                       |
+| Widok akcji       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                             |
 | Layout kontrolera | app/views/layouts/posts.phtml | Ten widok związany jest z kontrolerem. Będzie on wyświetlany tylko dla każdej akcji wykonanej w ramach kontrolera "posts". Cały kod zaimplementowany w layoucie będzie ponownie użyty dla wszystkich akcji w tym kontrolerze. |
 | Layout główny     | app/views/index.phtml         | To jest główna akcja, która będzie wyświetlona dla każdego kontrolera lub akcji wykonanej w aplikacji.                                                                                                                        |
 

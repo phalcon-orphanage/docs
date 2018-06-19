@@ -60,7 +60,6 @@ run.config:
     runtime: php-7.1
     document_root: public
     extensions:
-
       - phalcon
   extra_steps:
     - echo "alias phalcon=\'phalcon.php\'" >> /data/var/home/gonano/.bashrc

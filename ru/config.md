@@ -128,12 +128,12 @@ $config = new Config($settings);
 
 Доступные адаптеры:
 
-| Класс                            | Описание                                                                                            |
-| -------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `Phalcon\Config\Adapter\Ini`  | Использует INI-файлы для хранения конфигурации. Использует PHP-функцию `parse_ini_file`.            |
-| `Phalcon\Config\Adapter\Json` | Использует JSON-файлы для хранения конфигурации.                                                    |
-| `Phalcon\Config\Adapter\Php`  | Использует многомерные PHP-массивы для хранения конфигурации. Этот адаптер наиболее производителен. |
-| `Phalcon\Config\Adapter\Yaml` | Использует YAML-файлы для хранения конфигурации.                                                    |
+| Класс                            | Описание                                                                                         |
+| -------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `Phalcon\Config\Adapter\Ini`  | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
+| `Phalcon\Config\Adapter\Json` | Использует JSON-файлы для хранения конфигурации.                                                 |
+| `Phalcon\Config\Adapter\Php`  | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
+| `Phalcon\Config\Adapter\Yaml` | Использует YAML-файлы для хранения конфигурации.                                                 |
 
 <a name='ini-files'></a>
 
@@ -176,7 +176,7 @@ echo $config->models->metadata->adapter, "\n";
 
 ## Объединение конфигураций
 
-`Phalcon\Config` может рекурсивно объединить свойства одного объекта конфигурации с другим. Новые свойства будут добавлены, а существующие обновлены.
+`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
 
 ```php
 <?php

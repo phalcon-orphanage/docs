@@ -7,7 +7,7 @@
           <a href="#creating">Creación de Modelos</a> 
           <ul>
             <li>
-              <a href="#properties-setters-getters">Propiedades públicas vs Setters / Getters</a>
+              <a href="#properties-setters-getters">Public properties vs. Setters/Getters</a>
             </li>
           </ul>
         </li>
@@ -19,6 +19,9 @@
           <ul>
             <li>
               <a href="#resultsets">Conjuntos de resultados</a>
+            </li>
+            <li>
+              <a href="#custom-resultsets">Conjuntos de resultados personalizados</a>
             </li>
             <li>
               <a href="#filters">Filtrar Conjuntos de Resultados</a>
@@ -104,7 +107,7 @@ Un modelo representa la información (datos) de la aplicación y las reglas para
 
 ## Creación de Modelos
 
-Un modelo es una clase que se extiende desde `Phalcon\Mvc\Model`. El nombre de la clase debe estar en notación camel case:
+A model is a class that extends from `Phalcon\Mvc\Model`. Its class name should be in camel case notation:
 
 ```php
 <?php
@@ -143,7 +146,7 @@ class RobotParts extends Model
 }
 ```
 
-El modelo `RobotParts` ahora se mapea de la tabla `toys_robot_parts`. El método `initialize()` ayuda a configurar este modelo con un comportamiento personalizado, por ejemplo una tabla diferente.
+The model `RobotParts` now maps to `toys_robot_parts` table. The `initialize()` method helps with setting up this model with a custom behavior i.e. a different table.
 
 El método `initialize()` se llama sólo una vez durante la solicitud. Este método pretende realizar inicializaciones que se aplican para todas las instancias del modelo creado dentro de la aplicación. Si desea realizar tareas de inicialización para cada instancia creada del modelo puede usar el método `onConstruct()`:
 
@@ -165,7 +168,7 @@ class RobotParts extends Model
 
 <a name='properties-setters-getters'></a>
 
-### Propiedades públicas vs Setters / Getters
+### Public properties vs. Setters/Getters
 
 Los modelos pueden ser implementados con propiedades públicas, lo que significa que cada propiedad puede ser leída y actualizada desde cualquier parte del código que ha instanciado esa clase de modelo:
 
@@ -260,7 +263,7 @@ Si utilizas guiones bajos en los nombres de sus propiedades, deberá utilizar ca
 
 ## Comprensión de Registros a Objetos
 
-Cada instancia de un modelo representa una fila en la tabla. Usted puede fácilmente acceder a datos del registro leyendo las propiedades del objeto. Por ejemplo, para una tabla de 'robots' con los siguientes registros:
+Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
 
 ```sql
 mysql> select * from robots;
@@ -302,13 +305,13 @@ $robot->name = 'RoboCop';
 $robot->save();
 ```
 
-Como se puede ver, no es necesario utilizar sentencias SQL crudas. `Phalcon\Mvc\Model` ofrece una abstracción de base de datos de alto nivel para aplicaciones web.
+As you can see, there is no need to use raw SQL statements. `Phalcon\Mvc\Model` provides high database abstraction for web applications.
 
 <a name='finding-records'></a>
 
 ## Búsqueda de registros
 
-`Phalcon\Mvc\Model` también ofrece varios métodos para consultar registros. Los siguientes ejemplos le muestran cómo consultar uno o varios registros de un modelo:
+`Phalcon\Mvc\Model` also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
 
 ```php
 <?php
@@ -409,17 +412,17 @@ Las opciones disponibles de consulta son:
 | Parámetro     | Descripción                                                                                                                                                                                                                   | Ejemplo                                                              |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Condiciones de búsqueda para la operación de búsqueda. Se utiliza para extraer sólo los registros que cumplan con un criterio especificado. Por defecto `Phalcon\Mvc\Model` asume el primer parámetro como las condiciones. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Devolverá las columnas especificadas aquí en lugar de las todas columnas del modelo. Cuando se utiliza esta opción se devuelve un objeto incompleto                                                                           | `'columns' => 'id, name'`                                         |
-| `bind`        | Se utiliza junto a las opciones, mediante la sustitución de marcadores y escapando los valores para aumentar la seguridad                                                                                                     | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
-| `bindTypes`   | Al enlazar parámetros, puede utilizar este parámetro para definir el tipo de datos de los parámetros y aumentar aún más la seguridad                                                                                          | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
-| `order`       | Se utiliza para ordenar el conjunto de resultados. Utilice uno o más campos separados por comas.                                                                                                                              | `'order' => 'name DESC, status'`                                  |
-| `limit`       | Limitar los resultados de la consulta a cierto rango                                                                                                                                                                          | `'limit' => 10`                                                   |
-| `offset`      | Desplazar los resultados de la consulta por una cierta cantidad                                                                                                                                                               | `'offset' => 5`                                                   |
-| `group`       | Permite recopilar datos a través de múltiples registros y agrupar los resultados de una o más columnas                                                                                                                        | `'group' => 'name, status'`                                       |
-| `for_update`  | Con esta opción, `Phalcon\Mvc\Model` lee los últimos datos disponibles, estableciendo bloqueos exclusivos en cada fila que lea                                                                                              | `'for_update' => true`                                            |
-| `shared_lock` | Con esta opción, `Phalcon\Mvc\Model` lee los últimos datos disponibles, estableciendo bloqueos compartidos en cada fila que lea                                                                                             | `'shared_lock' => true`                                           |
-| `cache`       | Almacenar en caché el conjunto de resultados, reduciendo el acceso continuo al sistema relacional                                                                                                                             | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
-| `hydration`   | Establece la estrategia de hidratación para representar cada registro devuelto en el resultado                                                                                                                                | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
+| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned.                                                                                                    | `'columns' => 'id, name'`                                         |
+| `bind`        | Se utiliza junto a las opciones, mediante la sustitución de marcadores y escapando los valores para aumentar la seguridad.                                                                                                    | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
+| `bindTypes`   | Al enlazar parámetros, puede utilizar este parámetro para definir el tipo de datos de los parámetros y aumentar aún más la seguridad.                                                                                         | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
+| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                                                    | `'order' => 'name DESC, status'`                                  |
+| `limit`       | Limitar los resultados de la consulta a cierto rango.                                                                                                                                                                         | `'limit' => 10`                                                   |
+| `offset`      | Desplazar los resultados de la consulta por una cierta cantidad.                                                                                                                                                              | `'offset' => 5`                                                   |
+| `group`       | Permite recopilar datos a través de múltiples registros y agrupar los resultados de una o más columnas.                                                                                                                       | `'group' => 'name, status'`                                       |
+| `for_update`  | Con esta opción, `Phalcon\Mvc\Model` lee los últimos datos disponibles, estableciendo bloqueos exclusivos en cada fila que lea.                                                                                             | `'for_update' => true`                                            |
+| `shared_lock` | Con esta opción, `Phalcon\Mvc\Model` lee los últimos datos disponibles, estableciendo bloqueos compartidos en cada fila que lea.                                                                                            | `'shared_lock' => true`                                           |
+| `cache`       | Almacenar en caché el conjunto de resultados, reduciendo el acceso continuo al sistema relacional.                                                                                                                            | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
+| `hydration`   | Establece la estrategia de hidratación para representar cada registro devuelto en el resultado.                                                                                                                               | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
 Si lo prefiere, también hay disponible una manera de crear consultas de una manera orientada a objetos, en lugar de utilizar un array de parámetros:
 
@@ -773,7 +776,7 @@ $robots = Robots::find(
     </p>
 </div>
 
-Si utiliza `finders`, automáticamente se utilizan parámetros enlazados:
+Si está utilizando los "buscadores", por ejemplo `find()`, `findFirst()`, etc., los parámetros enlazados se usan automáticamente:
 
 ```php
 <?php
@@ -1029,7 +1032,7 @@ $salary = Employees::minimum(
 
 ## Crear/Actualizar Registros
 
-El método `Phalcon\Mvc\Model::save()` le permite crear o actualizar registros, según sea si ya existen en la tabla asociada al modelo o no. El método `save` llama internamente a los métodos `create` y `update` de `Phalcon\Mvc\Model`. Para que funcione como se espera, es necesario haber definido correctamente una clave primaria en la entidad para determinar si un registro debe ser actualizado o creado.
+El método `Phalcon\Mvc\Model::save()` le permite crear o actualizar registros, según sea si ya existen en la tabla asociada al modelo o no. El método `save()` es llamado internamente por los métodos `create` y `update` de `Phalcon\Mvc\Collection`. Para que funcione como se espera, es necesario haber definido correctamente una clave primaria en la entidad para determinar si un registro debe ser actualizado o creado.
 
 El método también ejecutará los validadores asociados, claves externas virtuales y eventos que se definen en el modelo:
 
@@ -1148,7 +1151,7 @@ Los métodos de `create` y `update` también aceptan un array de valores como pa
 
 ## Eliminar Registros
 
-El método `Phalcon\Mvc\Model::delete()` permite eliminar un registro. Se puede utilizar de la siguiente manera:
+The `Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
 
 ```php
 <?php
@@ -1172,7 +1175,7 @@ if ($robot !== false) {
 }
 ```
 
-También puede eliminar muchos registros al recorrer un resultset con un foreach:
+También puede eliminar muchos registro recorriendo un conjunto de resultados con un `foreach`:
 
 ```php
 <?php
@@ -1663,7 +1666,7 @@ array(0) {
 
 ## Apuntando a un esquema diferente
 
-Si un modelo se asigna a una tabla en un esquema/bases de datos distintas a la predeterminada. Puede utilizar el método `setSchema()` para redefinirlo:
+If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
 
 ```php
 <?php

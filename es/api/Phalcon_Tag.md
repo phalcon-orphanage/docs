@@ -2,7 +2,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/tag.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-La clase Phalcon\\Tag está diseñada para simplificar la construcción de etiquetas HTML. Proporciona un conjunto de ayudantes para generar HTML de forma dinámica. Este componente es una clase abstracta que se puede ampliar para agregar más ayudantes.
+Phalcon\\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is an abstract class that you can extend to add more helpers.
 
 ## Constantes
 
@@ -38,7 +38,7 @@ public static **renderAttributes** (*mixed* $code, *array* $attributes)
 
 Construye parámetros manteniendo el orden en sus atributos HTML
 
-public static **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public static **setDI** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector)
 
 Define el contenedor del inyector de dependencias.
 
@@ -539,7 +539,7 @@ Antepone un texto al título del documento actual
 
 public static **getTitle** ([*mixed* $tags])
 
-Obtiene el título del documento actual. El titulo será automáticamente limpiado (escaped)
+Gets the current document title. The title will be automatically escaped.
 
 ```php
 <?php

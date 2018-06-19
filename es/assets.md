@@ -465,9 +465,9 @@ foreach ($jsCollection as $resource) {
 
 ## Mejorar el Rendimiento
 
-Hay muchas maneras de optimizar el procesamiento de los recursos. Describiremos un método sencillo a continuación que te permite manejar recursos directamente a través de un servidor web para optimizar el tiempo de respuesta.
+There are many ways to optimize the processing resources. We'll describe a simple method below which allows to handle resourses directly through web server to optimize the response time.
 
-Primero tenemos que configurar el gestor de activos (Assets Manager). Vamos a utilizar el controlador base, pero puedes utilizar el proveedor de servicios o desde cualquier otro lugar:
+First we need to set up the Assets Manager. We'll use base controller, but you can use the service provider or any other place:
 
 ```php
 <?php
@@ -594,10 +594,10 @@ location @phalcon {
 # Otras configuraciones
 ```
 
-Necesitamos crear los directorios `assets/js` y `assets/css` en la raíz de la aplicación (por ejemplo: `public`).
+We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).
 
 Cada vez que el usuario solicita recursos con una dirección del tipo `/assets/js/global.js`, el pedido será redirigido a `AssetsController` en el caso que este fichero esté ausente en el sistema de archivos. De lo contrario el recurso será manejado por el servidor web.
 
-No es el mejor ejemplo. Sin embargo, refleja la idea principal: la configuración adecuada de un servidor web con una aplicación puede ayudar a optimizar el tiempo de respuesta múltiple.
+It isn't the best example. However, it reflects the main idea: the reasonable configuration of a web server with an application can help optimize response time multifold.
 
 Puedes encontrar más información sobre la configuración del servidor Web y Enrutamiento en los artículos siguientes: [Configuración del Servidor Web](/[[language]]/[[version]]/webserver-setup) y [Enrutamiento](/[[language]]/[[version]]/routing).

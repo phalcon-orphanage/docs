@@ -1,6 +1,6 @@
 - Γενικά 
     - [Introduction](/[[language]]/[[version]]/introduction)
-    - [Σημειώσεις έκδοσης](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
+    - [Σημειώσεις έκδοσης](https://github.com/phalcon/cphalcon/blob/master/CHANGELOG.md)
     - [Σπόνσορες](/[[language]]/[[version]]/sponsors)
     - [FAQ](/[[language]]/[[version]]/faq)
 - Contributions 

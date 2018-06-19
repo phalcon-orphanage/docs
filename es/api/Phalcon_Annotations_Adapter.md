@@ -1,6 +1,6 @@
 # Clase abstracta **Phalcon\\Annotations\\Adapter**
 
-*implementa* [Phalcon\Annotations\AdapterInterface](/en/3.2/api/Phalcon_Annotations_AdapterInterface)
+*implements* [Phalcon\Annotations\AdapterInterface](/[[language]]/[[version]]/api/Phalcon_Annotations_AdapterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
@@ -8,7 +8,7 @@ Esta es la clase base para los adaptadores Phalcon\\Annotations
 
 ## Métodos
 
-public **setReader** ([Phalcon\Annotations\ReaderInterface](/en/3.2/api/Phalcon_Annotations_ReaderInterface) $reader)
+public **setReader** ([Phalcon\Annotations\ReaderInterface](/[[language]]/[[version]]/api/Phalcon_Annotations_ReaderInterface) $reader)
 
 Establece el analizador de anotaciones
 

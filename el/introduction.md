@@ -12,7 +12,7 @@ Our mission is to offer developers an advanced, feature rich tool, which they ca
 
 ## Usage
 
-Οι προγραμματιστές δεν χρειάζεται να γνωρίζουν τη γλώσσα C για να χρησιμοποιήσουν το Phalcon. Το interface είναι εκτεθειμένo ως classes PHP κάτω από το namespace `Phalcon`, έτοιμο για χρήση.
+Developers do not need to know the C language to use Phalcon. Its interface is exposed as PHP classes under the `Phalcon` namespace, ready to be used.
 
 Το Phalcon είναι χαλαρά συνδεδεμένο, επιτρέποντας στους προγραμματιστές να χρησιμοποιούν μόνο τα αντικείμενα που χρειάζονται ως κόλλα στοιχείων που βασίζονται στις ανάγκες των εφαρμογών τους.
 

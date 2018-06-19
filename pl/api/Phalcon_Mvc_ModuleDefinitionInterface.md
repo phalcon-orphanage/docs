@@ -4,10 +4,10 @@
 
 ## Metody
 
-abstract public **registerAutoloaders** ([[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector])
+abstract public **registerAutoloaders** ([[Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector])
 
 ...
 
-abstract public **registerServices** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+abstract public **registerServices** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector)
 
 ...

@@ -31,7 +31,7 @@
           <a href="#forms-manager">Administrador de formularios</a>
         </li>
         <li>
-          <a href="#external-resources">Recursos externos</a>
+          <a href="#external-resources">Recursos Externos</a>
         </li>
       </ul>
     </li>
@@ -82,14 +82,14 @@ Los formularios se pueden representar en función de la definición del formular
 
 ```php
 <h1>
-    Contactos
+    Contacts
 </h1>
 
 <form method='post'>
 
     <p>
         <label>
-            Nombre
+            Name
         </label>
 
         <?php echo $form->render('name'); ?>
@@ -97,7 +97,7 @@ Los formularios se pueden representar en función de la definición del formular
 
     <p>
         <label>
-            Teléfono
+            Telephone
         </label>
 
         <?php echo $form->render('telephone'); ?>
@@ -105,14 +105,14 @@ Los formularios se pueden representar en función de la definición del formular
 
     <p>
         <label>
-            Tipo
+            Type
         </label>
 
         <?php echo $form->render('telephoneType'); ?>
     </p>
 
     <p>
-        <input type='submit' value='Guardar' />
+        <input type='submit' value='Save' />
     </p>
 
 </form>
@@ -150,7 +150,7 @@ $form->add(
 
 ## Inicializando formularios
 
-Como hemos visto anteriormente, los formularios se pueden inicializar fuera de la clase formulario agregando elementos en él. Puede reutilizar código u organizar tus formularios en clases e implementar el formulario en un archivo separado:
+As seen before, forms can be initialized outside the form class by adding elements to it. You can re-use code or organize your form classes implementing the form in a separated file:
 
 ```php
 <?php
@@ -180,16 +180,21 @@ class ContactForm extends Form
                 'telephoneType',
                 TelephoneTypes::find(),
                 [
-                    'using' => [
+                    'using'      => [
                         'id',
                         'name',
-                    ]
+                    ],
+                    'useEmpty'   => true,
+                    'emptyText'  => 'Select one...',
+                    'emptyValue' => '',
                 ]
             )
         );
     }
 }
 ```
+
+Additionally, the Select elements support the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and`emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
 
 `Phalcon\Forms\Form` extiende de `Phalcon\Di\Injectable` para tener acceso a los servicios de aplicación si es necesario:
 
@@ -291,7 +296,7 @@ $form = new UsersForm(
 
 ## Validación
 
-Los formularios en Phalcon se integran con el componente de [validación](/[[language]]/[[version]]/validation) para ofrecer una validación instantánea. Los validadores integrados o personalizados se pueden asignar a cada elemento:
+Phalcon forms are integrated with the [validation](/[[language]]/[[version]]/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
 
 ```php
 <?php
@@ -370,7 +375,7 @@ foreach ($messages as $message) {
 
 ## Filtrado
 
-Un formulario también es capaz de filtrar los datos antes de validarlos. Puede definir los filtros en cada elemento:
+A form is also able to filter data before it is validated. You can set filters in each element:
 
 ```php
 <?php
@@ -500,7 +505,7 @@ $form->add(
 );
 ```
 
-Las entidades pueden implementar getters, que tienen una precedencia mayor que propiedades públicas. Estos métodos dan más libertad para producir valores:
+Entities can implement getters, which have a higher precedence than public properties. These methods give you more freedom to produce values:
 
 ```php
 <?php
@@ -531,16 +536,18 @@ Phalcon proporciona un conjunto de elementos incorporados para utilizar en sus f
 
 | Nombre                              | Descripción                                  |
 | ----------------------------------- | -------------------------------------------- |
-| `Phalcon\Forms\Element\Text`     | Genera elementos `INPUT[type=text]`          |
-| `Phalcon\Forms\Element\Password` | Genera elementos `INPUT[type=password]`      |
-| `Phalcon\Forms\Element\Select`   | Genera elementos `SELECT` basado en opciones |
 | `Phalcon\Forms\Element\Check`    | Genera elementos `INPUT[type=check]`         |
-| `Phalcon\Forms\Element\TextArea` | Genera elementos `TEXTAREA`                  |
-| `Phalcon\Forms\Element\Hidden`   | Genera elementos `INPUT[type=hidden]`        |
-| `Phalcon\Forms\Element\File`     | Genera elementos `INPUT[type=file]`          |
 | `Phalcon\Forms\Element\Date`     | Genera elementos `INPUT[type=date]`          |
+| `Phalcon\Forms\Element\Email`    | Generate `INPUT[type=email]` elements        |
+| `Phalcon\Forms\Element\File`     | Genera elementos `INPUT[type=file]`          |
+| `Phalcon\Forms\Element\Hidden`   | Genera elementos `INPUT[type=hidden]`        |
 | `Phalcon\Forms\Element\Numeric`  | Genera elementos `INPUT[type=number]`        |
+| `Phalcon\Forms\Element\Password` | Genera elementos `INPUT[type=password]`      |
+| `Phalcon\Forms\Element\Radio`    | Generate `IMPUT[type=radio]` elements        |
+| `Phalcon\Forms\Element\Select`   | Genera elementos `SELECT` basado en opciones |
 | `Phalcon\Forms\Element\Submit`   | Genera elementos `INPUT[type=submit]`        |
+| `Phalcon\Forms\Element\Text`     | Genera elementos `INPUT[type=text]`          |
+| `Phalcon\Forms\Element\TextArea` | Genera elementos `TEXTAREA`                  |
 
 <a name='event-callback'></a>
 
@@ -566,7 +573,7 @@ class ContactForm extends Form
 
 ## Presentación de formularios
 
-Puede representar formularios con total flexibilidad, en el ejemplo siguiente se muestra cómo representar cada elemento mediante un procedimiento estándar:
+You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
 
 ```php
 <br />&lt;form method='post'&gt;
@@ -675,7 +682,7 @@ class MyElement extends Element
 {
     public function render($attributes = null)
     {
-        $html = // ... Producir algún HTML
+        $html = // ... Produce some HTML
 
         return $html;
     }
@@ -721,6 +728,6 @@ echo $loginForm->render();
 
 <a name='external-resources'></a>
 
-## Recursos externos
+## Recursos Externos
 
 * [Vökuró](http://vokuro.phalconphp.com), es una aplicación de ejemplo que utiliza el generador de formularios para crear y administrar formularios, [Código fuente en Github](https://github.com/phalcon/vokuro)

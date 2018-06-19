@@ -60,15 +60,15 @@ public **__construct** ()
 
 Contructor de Phalcon\\Assets\\Collection
 
-public **add** ([Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource) $resource)
+public **add** ([Phalcon\Assets\Resource](/[[language]]/[[version]]/api/Phalcon_Assets_Resource) $resource)
 
 Agrega un recurso a la colección
 
-public **addInline** ([Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline) $code)
+public **addInline** ([Phalcon\Assets\Inline](/[[language]]/[[version]]/api/Phalcon_Assets_Inline) $code)
 
 Añade un código en línea a la colección
 
-public **has** ([Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface) $resource)
+public **has** ([Phalcon\Assets\ResourceInterface](/[[language]]/[[version]]/api/Phalcon_Assets_ResourceInterface) $resource)
 
 Esto comprueba que el recurso se haya agregado a la colección.
 
@@ -93,7 +93,7 @@ public **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attribut
 
 Adds an inline CSS to the collection
 
-public [Phalcon\Assets\Collection](/en/3.2/api/Phalcon_Assets_Collection) **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+public [Phalcon\Assets\Collection](/[[language]]/[[version]]/api/Phalcon_Assets_Collection) **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 Adds a javascript resource to the collection
 
@@ -165,10 +165,10 @@ public **getRealTargetPath** (*mixed* $basePath)
 
 Returns the complete location where the joined/filtered collection must be written
 
-public **addFilter** ([Phalcon\Assets\FilterInterface](/en/3.2/api/Phalcon_Assets_FilterInterface) $filter)
+public **addFilter** ([Phalcon\Assets\FilterInterface](/[[language]]/[[version]]/api/Phalcon_Assets_FilterInterface) $filter)
 
 Adds a filter to the collection
 
-final protected **addResource** ([Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface) $resource)
+final protected **addResource** ([Phalcon\Assets\ResourceInterface](/[[language]]/[[version]]/api/Phalcon_Assets_ResourceInterface) $resource)
 
 Adds a resource or inline-code to the collection

@@ -59,7 +59,7 @@
 
 # Web Server Setup
 
-W celu działania routingu w phalconowej aplikacji najpierw musimy skonfigurować nasz web serwer aby przetwarzał przekierowywania prawidłowo. Konfiguracja popularnych web serwerów wygląda następująco:
+In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
 
 <a name='php-fpm'></a>
 
@@ -324,7 +324,7 @@ Następująca konfiguracja umożliwia Ci zainstalowanie aplikacji Phalcona w wir
 
 ## Cherokee
 
-[Cherokee](http://www.cherokee-project.com/) jest serwerem sieci web o wysokiej wydajności. Jest bardzo szybki, elastyczny i łatwy w konfiguracji.
+[Cherokee](http://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
 <a name='cherokee-phalcon-configuration'></a>
 
@@ -344,7 +344,7 @@ Ostatnio dodany serwer wirtualny powinien pojawić się na pasku po lewej stroni
 
 ![](/images/content/webserver-cherokee-3.jpg)
 
-Dodaj zachowanie `PHP Language` przy użyciu kreatora. To zachowanie umożliwia uruchamianie aplikacji PHP:
+Add the `PHP Language` behavior using the wizard. This behavior allows you to run PHP applications:
 
 ![](/images/content/webserver-cherokee-1.jpg)
 

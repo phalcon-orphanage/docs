@@ -13,7 +13,7 @@
           <a href="#printing">Imprimiendo Mensajes</a>
         </li>
         <li>
-          <a href="#implicit-flush-vs-session">Flush Implícito vs Sesión</a>
+          <a href="#implicit-flush-vs-session">Implicit Flush vs. Session</a>
         </li>
       </ul>
     </li>
@@ -24,7 +24,7 @@
 
 # Mensajes Flash
 
-Los mensajes flash se utilizan para notificar al usuario sobre el estado de las acciones que hacen o simplemente mostrar información a los usuarios. Estos tipos de mensajes se pueden generar utilizando este componente.
+Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.
 
 <a name='adapters'></a>
 
@@ -164,7 +164,7 @@ Entonces los mensajes será impresos de la siguiente manera:
 
 <a name='implicit-flush-vs-session'></a>
 
-## Flush Implícito vs Sesión
+## Implicit Flush vs. Session
 
 Dependiendo del adaptador utilizado para enviar mensajes, es posible producir salidas directas o temporales, para este último, almacenando los mensajes en la sesión para ser mostrados luego. ¿Cuándo debo utilizar cada uno? Esto dependerá del tipo de redirección que utilices antes de enviar los mensajes. Por ejemplo, si haces un `forward` no es necesario almacenar los mensajes en sesión, pero si utiliza una redirección HTTP entonces, necesitan ser almacenados en sesión:
 

@@ -25,9 +25,7 @@
 
 ## Qué es Phalcon
 
-Phalcon is an open source full stack PHP framework written as a C language extension.
-
-<a name='how-phalcon-works'></a>
+Phalcon es un framework open source full stack para PHP, escrito como una extensión en C.
 
 <a name='how-phalcon-works'></a>
 
@@ -43,7 +41,7 @@ Phalcon logra esto por:
 
 - Reducir el impacto en memoria mediante el uso optimizado de estructuras de propósito específico C y tipos estáticos C compiladores, como GCC / CLANG / VCC. Estos realizan [varias optimizaciones](https://en.wikipedia.org/wiki/Category:Compiler_optimizations) sobre el código, mejorando el rendimiento.
 
-- La capacidad de colocar las variables y datos en la pila. Por lo general hay un mayor [locality](https://en.wikipedia.org/wiki/Locality_of_reference) de acceso.
+- The ability to place variables and data in the stack. These would typically have a higher [locality](https://en.wikipedia.org/wiki/Locality_of_reference) of access.
 
 - La predicción de bifurcaciones es más fácil ya que funciona directamente sobre el código del usuario y no sobre la aplicación VM. *Místicamente puestos juntos en una gran explicación en [StackOverflow](https://stackoverflow.com/a/11227902/1661465).*
 

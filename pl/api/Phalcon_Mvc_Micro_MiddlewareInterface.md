@@ -4,6 +4,6 @@
 
 ## Metody
 
-abstract public **call** ([Phalcon\Mvc\Micro](/en/3.2/api/Phalcon_Mvc_Micro) $application)
+abstract public **call** ([Phalcon\Mvc\Micro](/[[language]]/[[version]]/api/Phalcon_Mvc_Micro) $application)
 
 ...

@@ -1,6 +1,6 @@
 # Abstract class **Phalcon\\Mvc\\Collection**
 
-*implements* [Phalcon\Mvc\EntityInterface](/en/3.2/api/Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [Serializable](http://php.net/manual/en/class.serializable.php)
+*implements* [Phalcon\Mvc\EntityInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface), [Phalcon\Di\InjectionAwareInterface](/[[language]]/[[version]]/api/Phalcon_Di_InjectionAwareInterface), [Serializable](http://php.net/manual/en/class.serializable.php)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -24,7 +24,7 @@ This component implements a high level abstraction for NoSQL databases which wor
 
 ## Methods
 
-final public **__construct** ([[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector], [[Phalcon\Mvc\Collection\ManagerInterface](/en/3.2/api/Phalcon_Mvc_Collection_ManagerInterface) $modelsManager])
+final public **__construct** ([[Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector], [[Phalcon\Mvc\Collection\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Collection_ManagerInterface) $modelsManager])
 
 Phalcon\\Mvc\\Collection constructor
 
@@ -36,7 +36,7 @@ public *MongoId* **getId** ()
 
 Returns the value of the _id property
 
-public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -44,7 +44,7 @@ public **getDI** ()
 
 Returns the dependency injection container
 
-protected **setEventsManager** ([Phalcon\Mvc\Collection\ManagerInterface](/en/3.2/api/Phalcon_Mvc_Collection_ManagerInterface) $eventsManager)
+protected **setEventsManager** ([Phalcon\Mvc\Collection\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Collection_ManagerInterface) $eventsManager)
 
 Sets a custom events manager
 
@@ -106,19 +106,19 @@ $robot->writeAttribute("name", "Rosey");
 
 ```
 
-public static **cloneResult** ([Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface) $collection, *array* $document)
+public static **cloneResult** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $collection, *array* $document)
 
 Returns a cloned collection
 
-protected static *array* **_getResultset** (*array* $params, [Phalcon\Mvc\Collection](/en/3.2/api/Phalcon_Mvc_Collection) $collection, *MongoDb* $connection, *boolean* $unique)
+protected static *array* **_getResultset** (*array* $params, [Phalcon\Mvc\Collection](/[[language]]/[[version]]/api/Phalcon_Mvc_Collection) $collection, *MongoDb* $connection, *boolean* $unique)
 
 Returns a collection resultset
 
-protected static *int* **_getGroupResultset** (*array* $params, [Phalcon\Mvc\Collection](/en/3.2/api/Phalcon_Mvc_Collection) $collection, *MongoDb* $connection)
+protected static *int* **_getGroupResultset** (*array* $params, [Phalcon\Mvc\Collection](/[[language]]/[[version]]/api/Phalcon_Mvc_Collection) $collection, *MongoDb* $connection)
 
 Perform a count over a resultset
 
-final protected *boolean* **_preSave** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
+final protected *boolean* **_preSave** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
 
 Executes internal hooks before save a document
 
@@ -255,7 +255,7 @@ if ($robot->save() === false) {
 
 ```
 
-public **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](/en/3.2/api/Phalcon_Mvc_Model_MessageInterface) $message)
+public **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_MessageInterface) $message)
 
 Appends a customized message on the validation process
 
@@ -494,7 +494,7 @@ public **getDirtyState** ()
 
 Returns one of the DIRTY_STATE_* constants telling if the document exists in the collection or not
 
-protected **addBehavior** ([Phalcon\Mvc\Collection\BehaviorInterface](/en/3.2/api/Phalcon_Mvc_Collection_BehaviorInterface) $behavior)
+protected **addBehavior** ([Phalcon\Mvc\Collection\BehaviorInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Collection_BehaviorInterface) $behavior)
 
 Sets up a behavior in a collection
 

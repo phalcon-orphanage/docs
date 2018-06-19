@@ -1,10 +1,10 @@
-# Clase **Phalcon\\Validation\\Validator\\StringLength**
+# Class **Phalcon\\Validation\\Validator\\StringLength**
 
-*extendiende* de la clase abstracta [Phalcon\Validation\Validator](/en/3.2/api/Phalcon_Validation_Validator)
+*extends* abstract class [Phalcon\Validation\Validator](/[[language]]/[[version]]/api/Phalcon_Validation_Validator)
 
-*implementa* [Phalcon\Validation\ValidatorInterface](/en/3.2/api/Phalcon_Validation_ValidatorInterface)
+*implements* [Phalcon\Validation\ValidatorInterface](/[[language]]/[[version]]/api/Phalcon_Validation_ValidatorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/stringlength.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/stringlength.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Valida que una cadena de texto tenga las limitaciones mínimas y máximas especificadas. Si pasa la prueba para la longitud de la cadena L, min <= L <= max, es decir, la longitud L tiene que ser mayor al valor min y menor al valor max.
 
@@ -22,8 +22,8 @@ $validation->add(
         [
             "max"            => 50,
             "min"            => 2,
-            "messageMaximum" => "No nos gustan los nombres realmente largos",
-            "messageMinimum" => "Queremos algo más que tus iniciales",
+            "messageMaximum" => "We don't like really long names",
+            "messageMinimum" => "We want more than just their initials",
         ]
     )
 );
@@ -44,12 +44,12 @@ $validation->add(
                 "name_first" => 4,
             ],
             "messageMaximum" => [
-                "name_last"  => "No nos gustan los apellidos largos",
-                "name_first" => "No nos gustan los nombres largos",
+                "name_last"  => "We don't like really long last names",
+                "name_first" => "We don't like really long first names",
             ],
             "messageMinimum" => [
-                "name_last"  => "No nos gustan los apellidos demasiado cortos",
-                "name_first" => "No nos gustan los nombres demasiado cortos",
+                "name_last"  => "We don't like too short last names",
+                "name_first" => "We don't like too short first names",
             ]
         ]
     )
@@ -57,40 +57,40 @@ $validation->add(
 
 ```
 
-## Métodos
+## Methods
 
-public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
+public **validate** ([Phalcon\Validation](/[[language]]/[[version]]/api/Phalcon_Validation) $validation, *mixed* $field)
 
 Executes the validation
 
-public **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/en/3.2/api/Phalcon_Validation_Validator)
+public **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/[[language]]/[[version]]/api/Phalcon_Validation_Validator)
 
 Phalcon\\Validation\\Validator constructor
 
-public **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/en/3.2/api/Phalcon_Validation_Validator)
+public **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/[[language]]/[[version]]/api/Phalcon_Validation_Validator)
 
 Checks if an option has been defined
 
-public **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/en/3.2/api/Phalcon_Validation_Validator)
+public **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/[[language]]/[[version]]/api/Phalcon_Validation_Validator)
 
 Checks if an option is defined
 
-public **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/en/3.2/api/Phalcon_Validation_Validator)
+public **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/[[language]]/[[version]]/api/Phalcon_Validation_Validator)
 
 Returns an option in the validator's options Returns null if the option hasn't set
 
-public **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/en/3.2/api/Phalcon_Validation_Validator)
+public **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/[[language]]/[[version]]/api/Phalcon_Validation_Validator)
 
 Sets an option in the validator
 
-protected **prepareLabel** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/en/3.2/api/Phalcon_Validation_Validator)
+protected **prepareLabel** ([Phalcon\Validation](/[[language]]/[[version]]/api/Phalcon_Validation) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/[[language]]/[[version]]/api/Phalcon_Validation_Validator)
 
 Prepares a label for the field.
 
-protected **prepareMessage** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/en/3.2/api/Phalcon_Validation_Validator)
+protected **prepareMessage** ([Phalcon\Validation](/[[language]]/[[version]]/api/Phalcon_Validation) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/[[language]]/[[version]]/api/Phalcon_Validation_Validator)
 
 Prepares a validation message.
 
-protected **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/en/3.2/api/Phalcon_Validation_Validator)
+protected **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/[[language]]/[[version]]/api/Phalcon_Validation_Validator)
 
 Prepares a validation code.

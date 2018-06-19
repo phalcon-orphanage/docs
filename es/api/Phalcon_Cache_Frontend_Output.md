@@ -1,10 +1,10 @@
-# Clase **Phalcon\\Cache\\Frontend\\Output**
+# Class **Phalcon\\Cache\\Frontend\\Output**
 
-*implementa* [Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface)
+*implements* [Phalcon\Cache\FrontendInterface](/[[language]]/[[version]]/api/Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/output.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/output.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Permite almacenar fragmentos en cache capturados con funciones ob_*
+Allows to cache output fragments captured with ob_* functions
 
 ```php <?php</p> 
 
@@ -14,7 +14,7 @@ Permite almacenar fragmentos en cache capturados con funciones ob_*
 - use Phalcon\Cache\Backend\File;
 - use Phalcon\Cache\Frontend\Output;
 - 
-- // Crea una salida del frontend. Almacenar los archivos por 2 días
+- // Create an Output frontend. Cache the files for 2 days
 - $frontCache = new Output(
 - [
 - "lifetime" => 172800,
@@ -57,36 +57,36 @@ Permite almacenar fragmentos en cache capturados con funciones ob_*
 
 *```
 
-## Metodos
+## Methods
 
 public **__construct** ([*array* $frontendOptions])
 
-Constructor de Phalcon\\Cache\\Frontend\\Output
+Phalcon\\Cache\\Frontend\\Output constructor
 
 public **getLifetime** ()
 
-Retorna el tiempo de vida del cache
+Returns the cache lifetime
 
 public **isBuffering** ()
 
-Comprueba si el frontend esta almacenando la salida
+Check whether if frontend is buffering output
 
 public **start** ()
 
-Iniciar la salida del frontend. Actualmente no hace nada
+Starts output frontend. Currently, does nothing
 
 public *string* **getContent** ()
 
-Retorna el contenido cacheado de salida
+Returns output cached content
 
 public **stop** ()
 
-Detiene la salida del frontend
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Serializa los datos antes de almacenarlos
+Serializes data before storing them
 
 public **afterRetrieve** (*mixed* $data)
 
-Deserializa los datos después de ser recuperados
+Unserializes data after retrieval
