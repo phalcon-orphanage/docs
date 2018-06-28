@@ -356,7 +356,7 @@ When using numeric placeholders, you will need to define them as integers i.e. 1
 
 This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
 
-Also, you can pass your parameters directly to the execute/query methods. In this case bound parameters are directly passed to PDO:
+Also, you can pass your parameters directly to the `execute` or `query` methods. In this case bound parameters are directly passed to PDO:
 
 ```php
 <?php
@@ -444,17 +444,17 @@ $robots = $this->modelsManager->executeQuery(
 
 The following types are available:
 
-| Bind Type | Bind Type Constant                | Example          |
-|-----------|-----------------------------------|------------------|
-| str       | `Column::BIND_PARAM_STR`          | `{name:str}`     |
-| int       | `Column::BIND_PARAM_INT`          | `{number:int}`   |
-| double    | `Column::BIND_PARAM_DECIMAL`      | `{price:double}` |
-| bool      | `Column::BIND_PARAM_BOOL`         | `{enabled:bool}` |
-| blob      | `Column::BIND_PARAM_BLOB`         | `{image:blob}`   |
-| null      | `Column::BIND_PARAM_NULL`         | `{exists:null}`  |
-| array     | Array of `Column::BIND_PARAM_STR` | `{codes:array}`  |
-| array-str | Array of `Column::BIND_PARAM_STR` | `{names:array}`  |
-| array-int | Array of `Column::BIND_PARAM_INT` | `{flags:array}`  |
+| Bind Type | Bind Type Constant                | Example            |
+|-----------|-----------------------------------|--------------------|
+| str       | `Column::BIND_PARAM_STR`          | `{name:str}`       |
+| int       | `Column::BIND_PARAM_INT`          | `{number:int}`     |
+| double    | `Column::BIND_PARAM_DECIMAL`      | `{price:double}`   |
+| bool      | `Column::BIND_PARAM_BOOL`         | `{enabled:bool}`   |
+| blob      | `Column::BIND_PARAM_BLOB`         | `{image:blob}`     |
+| null      | `Column::BIND_PARAM_NULL`         | `{exists:null}`    |
+| array     | Array of `Column::BIND_PARAM_STR` | `{codes:array}`    |
+| array-str | Array of `Column::BIND_PARAM_STR` | `{names:array-str}`|
+| array-int | Array of `Column::BIND_PARAM_INT` | `{flags:array-int}`|
 
 <a name='cast-bound-parameter-values'></a>
 ## Cast bound parameters values
@@ -678,7 +678,7 @@ try {
 }
 ```
 
-In addition to standard transactions, `Phalcon\Db` provides built-in support for [nested transactions](http://en.wikipedia.org/wiki/Nested_transaction) (if the database system used supports them). When you call begin() for a second time a nested transaction is created:
+In addition to standard transactions, `Phalcon\Db` provides built-in support for [nested transactions](http://en.wikipedia.org/wiki/Nested_transaction) (if the database system used supports them). When you call `begin()` for a second time a nested transaction is created:
 
 ```php
 <?php
@@ -718,7 +718,7 @@ try {
 
 <a name='events'></a>
 ## Database Events
-`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
 | Event Name            | Triggered                                            | Can stop operation? |
 |-----------------------|------------------------------------------------------|:-------------------:|
@@ -924,7 +924,7 @@ As above, the file `app/logs/db.log` will contain something like this:
 
 <a name='logger-custom'></a>
 ## Implementing your own Logger
-You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a string as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
+You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a `string` as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
 
 <a name='describing-tables'></a>
 ## Describing Tables/Views
@@ -963,7 +963,7 @@ foreach ($references as $reference) {
 }
 ```
 
-A table description is very similar to the MySQL describe command, it contains the following information:
+A table description is very similar to the MySQL `DESCRIBE` command, it contains the following information:
 
 | Field        | Type        | Key                                                | Null                               |
 |--------------|-------------|----------------------------------------------------|------------------------------------|
@@ -983,7 +983,7 @@ $exists = $connection->viewExists('robots');
 
 <a name='tables'></a>
 ## Creating/Altering/Dropping Tables
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
+Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as `CREATE`, `ALTER` or `DROP`. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
 
 <a name='tables-create'></a>
 ### Creating Tables
@@ -1113,14 +1113,14 @@ $connection->dropColumn(
 
 <a name='tables-dropping'></a>
 ### Dropping Tables
-Examples on dropping tables:
+To drop an existing table from the current database, use the `dropTable` method. To drop an table from custom database, use second parameter describes database name. Examples on dropping tables:
 
 ```php
 <?php
 
-// Drop table robot from active database
+// Drop table 'robots' from active database
 $connection->dropTable('robots');
 
-// Drop table robot from database 'machines'
+// Drop table 'robots' from database 'machines'
 $connection->dropTable('robots', 'machines');
 ```

@@ -378,7 +378,7 @@ When using numeric placeholders, you will need to define them as integers i.e. 1
 
 Эта функция принимает во внимание кодировку подключения, поэтому рекомендуется определить корректную кодировку в параметрах подключения или в конфигурации сервера баз данных, так как ошибочная кодировка приведет к неожиданным эффектам при сохранении или извлечении данных.
 
-Also, you can pass your parameters directly to the execute/query methods. In this case bound parameters are directly passed to PDO:
+Also, you can pass your parameters directly to the `execute` or `query` methods. In this case bound parameters are directly passed to PDO:
 
 ```php
 <?php
@@ -468,17 +468,17 @@ $robots = $this->modelsManager->executeQuery(
 
 The following types are available:
 
-| Bind Type | Bind Type Constant                | Example          |
-| --------- | --------------------------------- | ---------------- |
-| str       | `Column::BIND_PARAM_STR`          | `{name:str}`     |
-| int       | `Column::BIND_PARAM_INT`          | `{number:int}`   |
-| double    | `Column::BIND_PARAM_DECIMAL`      | `{price:double}` |
-| bool      | `Column::BIND_PARAM_BOOL`         | `{enabled:bool}` |
-| blob      | `Column::BIND_PARAM_BLOB`         | `{image:blob}`   |
-| null      | `Column::BIND_PARAM_NULL`         | `{exists:null}`  |
-| array     | Array of `Column::BIND_PARAM_STR` | `{codes:array}`  |
-| array-str | Array of `Column::BIND_PARAM_STR` | `{names:array}`  |
-| array-int | Array of `Column::BIND_PARAM_INT` | `{flags:array}`  |
+| Bind Type | Bind Type Constant                | Example             |
+| --------- | --------------------------------- | ------------------- |
+| str       | `Column::BIND_PARAM_STR`          | `{name:str}`        |
+| int       | `Column::BIND_PARAM_INT`          | `{number:int}`      |
+| double    | `Column::BIND_PARAM_DECIMAL`      | `{price:double}`    |
+| bool      | `Column::BIND_PARAM_BOOL`         | `{enabled:bool}`    |
+| blob      | `Column::BIND_PARAM_BLOB`         | `{image:blob}`      |
+| null      | `Column::BIND_PARAM_NULL`         | `{exists:null}`     |
+| array     | Array of `Column::BIND_PARAM_STR` | `{codes:array}`     |
+| array-str | Array of `Column::BIND_PARAM_STR` | `{names:array-str}` |
+| array-int | Array of `Column::BIND_PARAM_INT` | `{flags:array-int}` |
 
 <a name='cast-bound-parameter-values'></a>
 
@@ -709,7 +709,7 @@ try {
 }
 ```
 
-В дополнение к стандартным транзакциям, `Phalcon\Db` предоставляет встроенную поддержку для [вложенных транзакций](http://en.wikipedia.org/wiki/Nested_transaction) (если используемая база данных поддерживает их). When you call begin() for a second time a nested transaction is created:
+В дополнение к стандартным транзакциям, `Phalcon\Db` предоставляет встроенную поддержку для [вложенных транзакций](http://en.wikipedia.org/wiki/Nested_transaction) (если используемая база данных поддерживает их). When you call `begin()` for a second time a nested transaction is created:
 
 ```php
 <?php
@@ -751,7 +751,7 @@ try {
 
 ## События базы данных
 
-`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. Поддерживаются следующие события:
+`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean `false` could stop the active operation. Поддерживаются следующие события:
 
 | Название события      | Срабатывает                                          | Может остановить операцию? |
 | --------------------- | ---------------------------------------------------- |:--------------------------:|
@@ -963,7 +963,7 @@ As above, the file `app/logs/db.log` will contain something like this:
 
 ## Реализация собственного логера
 
-You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a string as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
+You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a `string` as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
 
 <a name='describing-tables'></a>
 
@@ -1004,7 +1004,7 @@ foreach ($references as $reference) {
 }
 ```
 
-A table description is very similar to the MySQL describe command, it contains the following information:
+A table description is very similar to the MySQL `DESCRIBE` command, it contains the following information:
 
 | Поле         | Тип         | Ключ                                               | Null                               |
 | ------------ | ----------- | -------------------------------------------------- | ---------------------------------- |
@@ -1026,7 +1026,7 @@ $exists = $connection->viewExists('robots');
 
 ## Создание, изменение и удаление таблиц
 
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
+Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as `CREATE`, `ALTER` or `DROP`. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
 
 <a name='tables-create'></a>
 
@@ -1077,7 +1077,7 @@ $connection->createTable(
 
 `Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class `Phalcon\Db\Column`. The table below shows the options available to define a column:
 
-| Параметр        | Description                                                                                                                                | Опционально |
+| Параметр        | Описание                                                                                                                                   | Опционально |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:-----------:|
 | `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below for a list)                                                               |     No      |
 | `primary`       | True if the column is part of the table's primary key                                                                                      |     Yes     |
@@ -1103,12 +1103,12 @@ $connection->createTable(
 
 The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
 
-| Индекс       | Description                                                                                                                            | Опционально |
+| Индекс       | Описание                                                                                                                               | Опционально |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:-----------:|
-| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |     No      |
-| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |     Yes     |
-| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |     Yes     |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |     Yes     |
+| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |     Нет     |
+| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |     Да      |
+| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |     Да      |
+| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |     Да      |
 
 <a name='tables-altering'></a>
 
@@ -1162,14 +1162,14 @@ $connection->dropColumn(
 
 ### Удаление таблиц
 
-Examples on dropping tables:
+To drop an existing table from the current database, use the `dropTable` method. To drop an table from custom database, use second parameter describes database name. Examples on dropping tables:
 
 ```php
 <?php
 
-// Drop table robot from active database
+// Drop table 'robots' from active database
 $connection->dropTable('robots');
 
-// Drop table robot from database 'machines'
+// Drop table 'robots' from database 'machines'
 $connection->dropTable('robots', 'machines');
 ```

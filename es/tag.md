@@ -272,7 +272,7 @@ Sintaxis Volt:
 
 ## Armando Cajas de Selección
 
-Generar cajas de selección, combos select, input select o como desee llamarlos, es fácil, especialmente si los datos relacionados está almacenados en arreglos asociativos de PHP. Los helpers para los elementos select son `Phalcon\Tag::select()` y `Phalcon\Tag::selectStatic()`. `Phalcon\Tag::select()` has been was specifically designed to work with the Phalcon [Models](/[[language]]/[[version]]/db-models) (`Phalcon\Mvc\Model`), while `Phalcon\Tag::selectStatic()` can with PHP arrays.
+Generar cajas de selección, combos select, input select o como desee llamarlos, es fácil, especialmente si los datos relacionados está almacenados en arreglos asociativos de PHP. Los helpers para los elementos select son `Phalcon\Tag::select()` y `Phalcon\Tag::selectStatic()`. `Phalcon\Tag::select()` ha sido fue diseñado específicamente para trabajar con los [modelos](/[[language]]/[[version]]/db-models) (`Phalcon\Mvc\Model`), mientras que `Phalcon\Tag::selectStatic()` con los arreglos de PHP.
 
 ```php
 <?php

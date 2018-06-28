@@ -1,12 +1,12 @@
-# Abstract class **Phalcon\\Image\\Adapter**
+# Clase Abstracta **Phalcon\\Image\\Adapter**
 
-*implements* [Phalcon\Image\AdapterInterface](/en/3.2/api/Phalcon_Image_AdapterInterface)
+*implementa* [Phalcon\Image\AdapterInterface](/en/3.2/api/Phalcon_Image_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/image/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/image/adapter.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-All image adapters must use this class
+Todo adaptador de imagen debe utilizar esta clase
 
-## Methods
+## Métodos
 
 public **getImage** ()
 
@@ -18,76 +18,76 @@ public **getRealpath** ()
 
 public **getWidth** ()
 
-Image width
+Obtiene el ancho de la imagen
 
 public **getHeight** ()
 
-Image height
+Obtiene la altura de la imagen
 
 public **getType** ()
 
-Image type Driver dependent
+Tipo de imagen. Dependiente del controlador
 
 public **getMime** ()
 
-Image mime type
+Obtiene el tipo MIME de la imagen
 
 public **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master])
 
-Resize the image to the given size
+Redimensiona el tamaño de la imagen al tamaño indicado
 
 public **liquidRescale** (*mixed* $width, *mixed* $height, [*mixed* $deltaX], [*mixed* $rigidity])
 
-This method scales the images using liquid rescaling method. Only support Imagick
+Este método modifica la escala de las imágenes utilizando un método de cambio de escala líquido. Sólo es compatible con Imagick
 
 public **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY])
 
-Crop an image to the given size
+Recorta una imagen al tamaño indicado
 
 public **rotate** (*mixed* $degrees)
 
-Rotate the image by a given amount
+Rota la imagen en la cantidad indicada en grados
 
 public **flip** (*mixed* $direction)
 
-Flip the image along the horizontal or vertical axis
+Voltea la imagen a los largo del eje vertical u horizontal
 
 public **sharpen** (*mixed* $amount)
 
-Sharpen the image by a given amount
+Ajusta la nitidez de la imagen en la cantidad indicada
 
 public **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $fadeIn])
 
-Add a reflection to an image
+Agrega un reflejo a una imagen
 
 public **watermark** ([Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity])
 
-Add a watermark to an image with the specified opacity
+Agrega una marca de agua a una imagen con la opacidad especificada
 
 public **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity], [*mixed* $color], [*mixed* $size], [*mixed* $fontfile])
 
-Add a text to an image with a specified opacity
+Agrega un texto a una imagen con la opacidad especificada
 
 public **mask** ([Phalcon\Image\Adapter](/en/3.2/api/Phalcon_Image_Adapter) $watermark)
 
-Composite one image onto another
+Combina una imagen con otra
 
 public **background** (*mixed* $color, [*mixed* $opacity])
 
-Set the background color of an image
+Establece el color de fondo de una imagen
 
 public **blur** (*mixed* $radius)
 
-Blur image
+Desenfoca la imagen
 
 public **pixelate** (*mixed* $amount)
 
-Pixelate image
+Pixelar una imagen
 
 public **save** ([*mixed* $file], [*mixed* $quality])
 
-Save the image
+Guarda la imagen
 
 public **render** ([*mixed* $ext], [*mixed* $quality])
 
-Render the image and return the binary string
+Renderiza la imagen y devuelve la cadena binaria

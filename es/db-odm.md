@@ -63,7 +63,7 @@
 
 <div class="alert alert-info">
     <p>
-        Tenga en cuenta que si utiliza el controlador de Mongo proporcionado por PHP 7, el ODM no funcionará para usted. Hay un adaptador de incubadora pero debe ser reescrito todo el código de Mongo (el nuevo tipo Bson en vez de array, no MongoId, no MongoDate, etcétera...). Asegúrese de testear su código antes de actualizar a PHP 7 y/o Phalcon 3+
+        Tenga en cuenta que si utiliza el controlador de Mongo proporcionado por PHP 7, el ODM no funcionará para usted. Hay un adaptador en la incubadora pero debe ser reescrito totalmente el código de Mongo (utilizando el nuevo tipo Bson en vez de array, no MongoId, no MongoDate, etcétera...). Asegúrese de testear su código antes de actualizar a PHP 7 y/o Phalcon 3+
     </p>
 </div>
 
@@ -71,7 +71,7 @@
 
 # ODM (Mapeador Objecto-Documento)
 
-In addition to its ability to [map tables](/[[language]]/[[version]]/db-models) in relational databases, Phalcon can map documents from NoSQL databases. El ODM ofrece una funcionalidad CRUD, eventos, validaciones entre otros servicios.
+Además de su capacidad para [asignar tablas](/[[language]]/[[version]]/db-models) en bases de datos relacionales, Phalcon puede asignar documentos de bases de datos NoSQL. El ODM ofrece una funcionalidad CRUD, eventos, validaciones entre otros servicios.
 
 Debido a la ausencia de consultas y planificadores SQL, con las bases de datos NoSQL se pueden ver mejoras reales en el rendimiento utilizando el enfoque de Phalcon. Además, no hay construcción de sentencias de SQL, lo que reduce la posibilidad de inyecciones SQL.
 

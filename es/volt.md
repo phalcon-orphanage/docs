@@ -734,7 +734,7 @@ Una variable especial está disponible dentro de los bucles `for`, proporcionand
 | `loop.revindex0` | El número de iteraciones desde el final del bucle (comenzando desde 0) |
 | `loop.first`     | Si es la primera iteración, el valor será `true`.                      |
 | `loop.last`      | Si es la última iteración, el valor será `true`.                       |
-| `loop.length`    | El número de elementos iterar                                          |
+| `loop.length`    | El número de elementos a iterar                                        |
 
 Ejemplo:
 

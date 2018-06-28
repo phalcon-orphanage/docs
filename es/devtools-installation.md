@@ -40,7 +40,7 @@ Estos pasos le guiarán por el proceso de instalación de las Herramientas del D
 
 ## Prerequisitos
 
-La extensión de PHP, Phalcon, es necesaria para ejecutar las Herramientas del Desarrollador de Phalcon. Si no la ha instalado aún, por favor consulte la sección [instalación](/[[language]]/[[version]]//installation) para obtener las instrucciones.
+La extensión de Phalcon PHP, es necesaria para ejecutar las Herramientas del Desarrollador de Phalcon. Si no la ha instalado aún, por favor consulte la sección [instalación](/[[language]]/[[version]]//installation) para obtener las instrucciones.
 
 <a name='installation'></a>
 

@@ -94,7 +94,7 @@
         <li>
           <a href="#template-inheritance">Template Inheritance</a> <ul>
             <li>
-              <a href="#template-inheritance-multiple">Multiple Inheritance</a>
+              <a href="#template-inheritance-multiple">Çoklu Katılım</a>
             </li>
           </ul>
         </li>

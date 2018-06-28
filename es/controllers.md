@@ -405,7 +405,7 @@ $di->set(
 
 ## Eventos en Controladores
 
-Controllers automatically act as listeners for [dispatcher](/[[language]]/[[version]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
+Los controladores automáticamente actúan como detectores de eventos del [dispatcher](/[[language]]/[[version]]/dispatcher), implementando métodos con los nombres de evento adecuados, permiten implementar puntos de anclaje para antes/después de ejecutar las acciones:
 
 ```php
 <?php

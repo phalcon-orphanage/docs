@@ -111,4 +111,4 @@ If you have a change or new feature in mind, please fill an [NFR](/[[language]]/
 
 Dziękujemy!
 
-<3 Phalcon Team
+&lt;3 Phalcon Team

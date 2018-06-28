@@ -1,12 +1,12 @@
-# Class **Phalcon\\Cache\\Backend\\File**
+# Clase **Phalcon\\Cache\\Backend\\File**
 
-*extends* abstract class [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+*extendiende* de la clase abstracta [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-*implements* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
+*implementa* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/file.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
-Allows to cache output fragments using a file backend
+Permite almacenar en caché los fragmentos de salida usando un backend de archivo
 
 ```php
 <?php
@@ -14,20 +14,20 @@ Allows to cache output fragments using a file backend
 use Phalcon\Cache\Backend\File;
 use Phalcon\Cache\Frontend\Output as FrontOutput;
 
-// Cache the file for 2 days
+// Almacena el archivo por dos días
 $frontendOptions = [
     "lifetime" => 172800,
 ];
 
-// Create an output cache
+// Crea un cache de salida
 $frontCache = FrontOutput($frontOptions);
 
-// Set the cache directory
+// Establece el directorio de cacheo
 $backendOptions = [
     "cacheDir" => "../app/cache/",
 ];
 
-// Create the File backend
+// Crea el archivo en el backend
 $cache = new File($frontCache, $backendOptions);
 
 $content = $cache->start("my-cache");
@@ -42,27 +42,27 @@ if ($content === null) {
 
 ```
 
-## Methods
+## Métodos
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface) $frontend, *array* $options)
 
-Phalcon\\Cache\\Backend\\File constructor
+Constructor de Phalcon\\Cache\\Backend\\File
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+Devuelve un contenido cacheado
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the file backend and stops the frontend
+Almacena el contenido en caché en el backend del archivo y detiene el Frontend
 
 public **delete** (*int* | *string* $keyName)
 
-Deletes a value from the cache by its key
+Borra un valor de la memoria caché por su clave
 
 public **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys.
+Consulta las claves existentes almacenadas en caché.
 
 ```php
 <?php
@@ -76,68 +76,68 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it isn't expired
+Verifica si existe el caché y que no está expirado
 
 public **increment** ([*string* | *int* $keyName], [*mixed* $value])
 
-Increment of a given key, by number $value
+Incremento de una clave dada, por número $value
 
 public **decrement** ([*string* | *int* $keyName], [*mixed* $value])
 
-Decrement of a given key, by number $value
+Decremento de una clave dada, por número $value
 
 public **flush** ()
 
-Immediately invalidates all existing items.
+Invalida inmediatamente todos los elementos existentes.
 
 public **getKey** (*mixed* $key)
 
-Return a file-system safe identifier for a given key
+Devolver un identificador de sistema de archivos seguros para una clave determinada
 
 public **useSafeKey** (*mixed* $useSafeKey)
 
-Set whether to use the safekey or not
+Establece si se usa safekey o no
 
-public **getFrontend** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
-
-...
-
-public **setFrontend** (*mixed* $frontend) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+public **getFrontend** () heredado de [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
-public **getOptions** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+public **setFrontend** (*mixed* $frontend) heredado de [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
-public **setOptions** (*mixed* $options) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+public **getOptions** () heredado de [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
-public **getLastKey** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+public **setOptions** (*mixed* $options) heredado de [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
-public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+public **getLastKey** () heredado de [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
 ...
 
-public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+public **setLastKey** (*mixed* $lastKey) heredado de [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Starts a cache. The keyname allows to identify the created fragment
+...
 
-public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) heredado de [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+Inicia un caché. El nombre clave permite identificar el fragmento creado
 
-public **isFresh** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+public **stop** ([*mixed* $stopBuffer]) heredado de [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+Detiene el frontend sin grabar ningún contenido en caché
 
-public **isStarted** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+public **isFresh** () heredado de [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+Comprueba si el último caché está actualizado o almacenado en cache
 
-public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+public **isStarted** () heredado de [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+Verifica si el caché tiene un buffering inicial o no
+
+public *int* **getLifetime** () heredado de [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+
+Obtiene el último lifetime establecido

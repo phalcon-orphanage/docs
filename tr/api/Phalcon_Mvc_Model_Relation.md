@@ -6,7 +6,7 @@
 
 This class represents a relationship between two models
 
-## Constants
+## Değişmezler
 
 *integer* **BELONGS_TO**
 
@@ -72,7 +72,7 @@ Returns parameters that must be always used when the related records are obtaine
 
 public **isThrough** ()
 
-Check whether the relation is a 'many-to-many' relation or not
+İlişkinin "çoktan çoklu" bir ilişki halinde olup olmadığını kontrol edin
 
 public **isReusable** ()
 

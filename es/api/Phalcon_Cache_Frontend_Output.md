@@ -1,10 +1,10 @@
-# Class **Phalcon\\Cache\\Frontend\\Output**
+# Clase **Phalcon\\Cache\\Frontend\\Output**
 
-*implements* [Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface)
+*implementa* [Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/output.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/output.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Allows to cache output fragments captured with ob_* functions
+Permite almacenar fragmentos en cache capturados con funciones ob_*
 
 ```php <?php</p> 
 
@@ -14,16 +14,16 @@ Allows to cache output fragments captured with ob_* functions
 - use Phalcon\Cache\Backend\File;
 - use Phalcon\Cache\Frontend\Output;
 - 
-- // Create an Output frontend. Cache the files for 2 days
+- // Crea una salida del frontend. Almacenar los archivos por 2 días
 - $frontCache = new Output(
 - [
 - "lifetime" => 172800,
 - ]
 - );
 - 
-- // Create the component that will cache from the "Output" to a "File" backend
-- // Set the cache file directory - it's important to keep the "/" at the end of
-- // the value for the folder
+- // Crea el componente para cachear desde la salida a un archivo en el backend
+- // Establece el directorio del archivo. Es importante mantener la "/" barra al final
+- // del valor del directorio
 - $cache = new File(
 - $frontCache,
 - [
@@ -31,62 +31,62 @@ Allows to cache output fragments captured with ob_* functions
 - ]
 - );
 - 
-- // Get/Set the cache file to ../app/cache/my-cache.html
+- // Obtiene o establece el archivo de cache en ../app/cache/my-cache.html
 - $content = $cache->start("my-cache.html");
 - 
-- // If $content is null then the content will be generated for the cache
+- // Si $content es nulo entonces el contenido de be ser generado para el cache
 - if (null === $content) {
-- // Print date and time
+- // Imprime fecha y hora
 - echo date("r");
 - 
-- // Generate a link to the sign-up action
+- // Genera un enlace a la acción de registro
 - echo Tag::linkTo(
 - [
 - "user/signup",
-- "Sign Up",
+- "Registrar"
 - "class" => "signup-button",
 - ]
 - );
 - 
-- // Store the output into the cache file
+- // Almacena la salida en un archivo de cache
 - $cache->save();
 - } else {
-- // Echo the cached output
+- // Imprime la salida cacheada
 - echo $content;
 - }
 
 *```
 
-## Methods
+## Metodos
 
 public **__construct** ([*array* $frontendOptions])
 
-Phalcon\\Cache\\Frontend\\Output constructor
+Constructor de Phalcon\\Cache\\Frontend\\Output
 
 public **getLifetime** ()
 
-Returns the cache lifetime
+Retorna el tiempo de vida del cache
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output
+Comprueba si el frontend esta almacenando la salida
 
 public **start** ()
 
-Starts output frontend. Currently, does nothing
+Iniciar la salida del frontend. Actualmente no hace nada
 
 public *string* **getContent** ()
 
-Returns output cached content
+Retorna el contenido cacheado de salida
 
 public **stop** ()
 
-Stops output frontend
+Detiene la salida del frontend
 
 public **beforeStore** (*mixed* $data)
 
-Serializes data before storing them
+Serializa los datos antes de almacenarlos
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrieval
+Deserializa los datos después de ser recuperados

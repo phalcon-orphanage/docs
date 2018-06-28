@@ -109,7 +109,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 | afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
 | afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | Yes                 | Listeners/Controllers |
 
-The [INVO](/[[language]]/[[version]]/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/[[language]]/[[version]]/acl)
+The [INVO](/[[language]]/[[version]]/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/[[language]]/[[version]]/acl).
 
 The following example demonstrates how to attach listeners to this component:
 
@@ -230,14 +230,14 @@ $this->dispatcher->forward(
 );
 ```
 
-A forward action accepts the following parameters:
+A `forward` action accepts the following parameters:
 
-| Parameter  | Triggered                                              |
-| ---------- | ------------------------------------------------------ |
-| controller | A valid controller name to forward to.                 |
-| action     | A valid action name to forward to.                     |
-| params     | An array of parameters for the action                  |
-| namespace  | A valid namespace name where the controller is part of |
+| Parameter    | Description                                             |
+| ------------ | ------------------------------------------------------- |
+| `controller` | A valid controller name to forward to.                  |
+| `action`     | A valid action name to forward to.                      |
+| `params`     | An array of parameters for the action.                  |
+| `namespace`  | A valid namespace name where the controller is part of. |
 
 <a name='forwarding-events-manager'></a>
 

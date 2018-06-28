@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">ORM Caching</a> 
+      <a href="#overview">ORM Ön Belleğe Alma İşlemi</a> 
       <ul>
         <li>
           <a href="#caching-resultsets">Caching Resultsets</a>
@@ -34,7 +34,7 @@
 
 <a name='orm-caching'></a>
 
-# ORM Caching
+# ORM Ön Belleğe Alma İşlemi
 
 Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
 

@@ -6,8 +6,8 @@
 
 abstract public **parse** (*mixed* $className)
 
-Reads annotations from the class dockblocks, its methods and/or properties
+Lee las anotaciones de la clase dockblocks, sus métodos y/o propiedades
 
 abstract public static **parseDocBlock** (*mixed* $docBlock, [*mixed* $file], [*mixed* $line])
 
-Parses a raw doc block returning the annotations found
+Procesa un bloque doc en bruto regresando las anotaciones encontradas

@@ -10,7 +10,7 @@ Stores model meta-data in the APC cache. Data will erased if the web server is r
 
 By default meta-data is stored for 48 hours (172800 seconds)
 
-You can query the meta-data by printing apc_fetch('$PMM$') or apc_fetch('$PMM$my-app-id')
+apc_fetch('$PMM$') yada apc_fetch('$PMM$my-app-id') ı yazdırarak meta verilerini sorgulayabilirsiniz.
 
 ```php
 <?php
@@ -433,7 +433,7 @@ print_r(
 
 public **hasAttribute** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $attribute) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Check if a model has certain attribute
+Bir modelin belirli bir özelliğe sahip olup olmadığını test edin
 
 ```php
 <?php
@@ -449,7 +449,7 @@ var_dump(
 
 public **isEmpty** () inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Checks if the internal meta-data container is empty
+Dahili meta veri konteynerinin boş olup olmadığını kontrol eder
 
 ```php
 <?php
@@ -462,7 +462,7 @@ var_dump(
 
 public **reset** () inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Resets internal meta-data in order to regenerate it
+Yeniden üretebilmek amacıyla dahili meta veriyi sıfırlar
 
 ```php
 <?php

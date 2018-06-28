@@ -129,7 +129,7 @@ Returns the current hydration mode
 
 public **getCache** ()
 
-Returns the associated cache for the resultset
+Sonuçlar için onlarla ilişki içerisinde olan bir önbellek döndürür
 
 public **getMessages** ()
 

@@ -30,10 +30,10 @@
                   <a href="#constructor-injection">Constructor Injection</a>
                 </li>
                 <li>
-                  <a href="#setter-injection">Setter Injection</a>
+                  <a href="#setter-injection">Kurucu Enjeksiyonu</a>
                 </li>
                 <li>
-                  <a href="#properties-injection">Properties Injection</a>
+                  <a href="#properties-injection">Enjeksiyon Özellikleri</a>
                 </li>
               </ul>
             </li>

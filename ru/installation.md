@@ -118,7 +118,7 @@ Phalcon требует PHP для запуска. Его слабо связан
 
 ## Аппаратное обеспечение
 
-Phalcon разработан таким образом, чтобы потреблять как можно меньше ресурсов, взамен предлагая высокую производительность. Хотя мы и тестировали Phalcon на маломощных машинах (например с 256 MB RAM и процессором 500 MHz), оборудование, которое вы будете выбирать, будет зависеть от потребностей приложения.
+Phalcon разработан таким образом, чтобы потреблять как можно меньше ресурсов, взамен предлагая высокую производительность. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on your application needs.
 
 Наш веб-сайт и блог (а также другие сайты) работают на Amazon VM с 512 MB RAM и 1 vCPU.
 
@@ -363,12 +363,16 @@ make install clean
 
 ### Brew
 
+As the [homebrew/php tap has been deprecated](https://brew.sh/2018/01/19/homebrew-1.5.0/) and is in the process of being removed, A custom repository for Phalcon has been created.
+
+PHP 5.5 has not been ported to homebrew/core and as such no longer exists. PHP 7.2 on the other hand has been added.
+
 ```bash
-brew tap homebrew/homebrew-php
-brew install php55-phalcon
+brew tap tigerstrikemedia/homebrew-phalconphp
 brew install php56-phalcon
 brew install php70-phalcon
 brew install php71-phalcon
+brew install php72-phalcon
 ```
 
 <a name='installation-macos-macports'></a>

@@ -10,31 +10,31 @@ Adapter for Phalcon\\Acl adapters
 
 public **getActiveRole** ()
 
-Role which the list is checking if it's allowed to certain resource/access
+Роль списку перевіривши, якщо це дозволено певний ресурс/доступ
 
 public **getActiveResource** ()
 
-Resource which the list is checking if some role can access it
+Ресурс списку перевіривши, якщо деякі ролі можуть отримати до нього доступ
 
 public **getActiveAccess** ()
 
-Active access which the list is checking if some role can access it
+Активний доступ до списку перевіривши, якщо деякі ролі можуть отримати до нього доступ
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+Набори менеджера з організації заходів
 
 public **getEventsManager** ()
 
-Returns the internal event manager
+Повертає внутрішній диспетчер подій
 
 public **setDefaultAction** (*mixed* $defaultAccess)
 
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
+Встановлює рівень доступу за замовчуванням (в phalcon\\Вбк::дозволити або phalcon\\Вбк::заборонити)
 
 public **getDefaultAction** ()
 
-Returns the default ACL access level
+Повертає рівень доступу ACL за замовчуванням
 
 abstract public **setNoArgumentsDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface)
 

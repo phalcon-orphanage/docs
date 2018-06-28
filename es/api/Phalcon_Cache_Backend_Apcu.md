@@ -1,12 +1,12 @@
-# Class **Phalcon\\Cache\\Backend\\Apcu**
+# Clase **Phalcon\\Cache\\Backend\\Apcu**
 
-*extends* abstract class [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
+*extendiende* de la clase abstracta [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-*implements* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
+*implementa* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/apcu.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/apcu.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Allows to cache output fragments, PHP data and raw data using an APCu backend
+Permite almacenar en caché fragmentos de salida, datos PHP y datos sin procesar utilizando un backend APCu
 
 ```php
 <?php
@@ -14,29 +14,29 @@ Allows to cache output fragments, PHP data and raw data using an APCu backend
 use Phalcon\Cache\Backend\Apcu;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache data for 2 days
+// Cachear datos por 2 días
 $frontCache = new FrontData(
     [
         "lifetime" => 172800,
     ]
 );
 
-$cache = new Apcu(
+$cache = new Apc(
     $frontCache,
     [
         "prefix" => "app-data",
     ]
 );
 
-// Cache arbitrary data
+// Cachear datos arbitrários
 $cache->save("my-data", [1, 2, 3, 4, 5]);
 
-// Get data
+// Obtener datos
 $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Métodos
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 

@@ -1,37 +1,37 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Phalcon Developer Tools</a> 
+      <a href="#overview">Инструменты разработчика Phalcon</a> 
       <ul>
         <li>
-          <a href="#download">Download</a>
+          <a href="#download">Скачать</a>
         </li>
         <li>
-          <a href="#installation">Installation</a>
+          <a href="#installation">Установка</a>
         </li>
         <li>
-          <a href="#available-commands">Available Commands</a>
+          <a href="#available-commands">Доступные команды</a>
         </li>
         <li>
-          <a href="#project-skeleton">Generating a Project Skeleton</a>
+          <a href="#project-skeleton">Создание скелета проекта</a>
         </li>
         <li>
-          <a href="#generating-controllers">Generating Controllers</a>
+          <a href="#generating-controllers">Создание контроллеров</a>
         </li>
         <li>
-          <a href="#database-settings">Preparing Database Settings</a>
+          <a href="#database-settings">Настройка базы данных</a>
         </li>
         <li>
-          <a href="#generating-models">Generating Models</a>
+          <a href="#generating-models">Создание моделей</a>
         </li>
         <li>
-          <a href="#crud">Scaffold a CRUD</a>
+          <a href="#crud">Автоматическая генерация CRUD</a>
         </li>
         <li>
-          <a href="#web-interface">Web Interface to Tools</a>
+          <a href="#web-interface">Веб интерфейс инструментов</a>
         </li>
         <li>
-          <a href="#phpstorm-ide">Integrating Tools with PhpStorm IDE</a>
+          <a href="#phpstorm-ide">Интеграция в PhpStorm IDE</a>
         </li>
         <li>
           <a href="#conclusion">Заключение</a>
@@ -43,9 +43,9 @@
 
 <a name='overview'></a>
 
-# Phalcon Developer Tools
+# Инструменты разработчика Phalcon
 
-These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
+Эти инструменты представляют собой набор полезных скриптов для генерации основы приложения. Основные компоненты приложения могут быть созданы простыми командами, позволяющими легко разрабатывать приложения с использованием Phalcon.
 
 <div class="alert alert-danger">
     <p>
@@ -55,23 +55,23 @@ These tools are a collection of useful scripts to generate skeleton code. Core c
 
 <a name='download'></a>
 
-## Download
+## Скачать
 
-You can download or clone a cross platform package containing the developer tools from [Github](https://github.com/phalcon/phalcon-devtools).
+Вы можете скачать кроссплатформенный пакет инструментов разработчиков используя [публичный репозиторий на GitHub](https://github.com/phalcon/phalcon-devtools).
 
 <a name='installation'></a>
 
-## Installation
+## Установка
 
-These are detailed instructions on how to install the developer tools on different platforms:
+Существуют подробные инструкции о том, как установить средства разработки на различные платформы:
 
-[Linux](/[[language]]/[[version]]/devtools-installation#installation-linux) : [MacOS](/[[language]]/[[version]]/devtools-installation#installation-macos) : [Windows](/[[language]]/[[version]]/devtools-installation#installation-windows)
+[Linux](/[[language]]/[[version]]/devtools-installation#installation-linux) : [macOS](/[[language]]/[[version]]/devtools-installation#installation-macos) : [Windows](/[[language]]/[[version]]/devtools-installation#installation-windows)
 
 <a name='available-commands'></a>
 
-## Available Commands
+## Доступные команды
 
-You can get a list of available commands in Phalcon tools by typing: :code:`phalcon commands`
+Для получения списка имеющихся команд введите: `phalcon commands`
 
 ```bash
 $ phalcon commands
@@ -92,9 +92,9 @@ Available commands:
 
 <a name='project-skeleton'></a>
 
-## Generating a Project Skeleton
+## Создание скелета проекта
 
-You can use Phalcon tools to generate pre-defined project skeletons for your applications with Phalcon framework. By default the project skeleton generator will use mod_rewrite for Apache. Type the following command on your web server document root:
+Вы можете использовать инструменты для создания скелета проекта на Phalcon. По умолчанию созданный проект будет использовать mod_rewrite для Apache. Введите следующие команды в корне сайта вашего веб-сервера:
 
 ```bash
 $ pwd
@@ -104,11 +104,11 @@ $ pwd
 $ phalcon create-project store
 ```
 
-The above recommended project structure was generated:
+Проект создастся с полной рекомендованной структурой:
 
 ![](/images/content/devtools-usage-01.png)
 
-You could add the parameter `--help` to get help on the usage of a certain script:
+Для получения подробной информации по командам стоит использовать параметр `--help`:
 
 ```bash
 $ phalcon project --help
@@ -138,21 +138,21 @@ Options:
  --help               Shows this help
 ```
 
-Accessing the project from the web server will show you:
+Созданный проект можно сразу запустить в браузере:
 
 ![](/images/content/devtools-usage-02.png)
 
 <a name='generating-controllers'></a>
 
-## Generating Controllers
+## Создание контроллеров
 
-The command `create-controller` generates controller skeleton structures. It's important to invoke this command inside a directory that already has a Phalcon project.
+Команда `create-controller` генерирует заготовку контроллера. Её необходимо выполнять в корне существующего проекта Phalcon.
 
 ```bash
 $ phalcon create-controller --name test
 ```
 
-The following code is generated by the script:
+Команда выше сформирует следующий код:
 
 ```php
 <?php
@@ -170,11 +170,11 @@ class TestController extends Controller
 
 <a name='database-settings'></a>
 
-## Preparing Database Settings
+## Настройка базы данных
 
-When a project is generated using developer tools. A configuration file can be found in `app/config/config.ini`. To generate models or scaffold, you will need to change the settings used to connect to your database.
+В проектах, созданных с использованием инструментов разработчика файл конфигурации будет искаться в `app/config/config.ini`. Для генерации моделей, вам потребуется изменить настройки, используемые для подключения к вашей базе данных.
 
-Change the database section in your config.ini file:
+При использовании конфигурации в файле config.ini:
 
 ```ini
 [database]
@@ -193,9 +193,9 @@ baseUri        = "/store/"
 
 <a name='generating-models'></a>
 
-## Generating Models
+## Создание моделей
 
-There are several ways to create models. You can create all models from the default database connection or some selectively. Models can have public attributes for the field representations or setters/getters can be used.
+Существует несколько способов генерации моделей. Вы можете создать все модели по таблицам текущей базы данных или для любой таблицы выборочно. Модели может содержать публичные атрибуты или работу через сеттеры и геттеры.
 
 ```bash
 Options:
@@ -213,7 +213,7 @@ Options:
  --abstract           Abstract Model [optional]
 ```
 
-The simplest way to generate a model is:
+Самый простой способ для создания модели:
 
 ```bash
 $ phalcon model products
@@ -223,7 +223,7 @@ $ phalcon model products
 $ phalcon model --name tablename
 ```
 
-All table fields are declared public for direct access.
+Созданная модель содержит публичные атрибуты для прямого доступа.
 
 ```php
 <?php
@@ -264,7 +264,7 @@ class Products extends Model
 }
 ```
 
-By adding the `--get-set` you can generate the fields with protected variables and public setter/getter methods. Those methods can help in business logic implementation within the setter/getter methods.
+При использовании `--get-set` атрибуты модели будут закрыты для прямого изменения, работа с ними будет только через соответствующие сеттеры и геттеры. Такое поведение позволит изменить бизнес-логику работы модели внутри соответствующих методов.
 
 ```php
 <?php
@@ -305,7 +305,7 @@ class Products extends Model
 
 
     /**
-     * Method to set the value of field id
+     * Метод установки значения для поля id
      *
      * @param integer $id
      */
@@ -315,7 +315,7 @@ class Products extends Model
     }
 
     /**
-     * Method to set the value of field typesId
+     * Метод установки значения для поля typesId
      *
      * @param integer $typesId
      */
@@ -327,7 +327,7 @@ class Products extends Model
     // ...
 
     /**
-     * Returns the value of field status
+     * Возвращает значение статуса поля
      *
      * @return string
      */
@@ -338,7 +338,7 @@ class Products extends Model
 }
 ```
 
-A nice feature of the model generator is that it keeps changes made by the developer between code generations. This allows the addition or removal of fields and properties, without worrying about losing changes made to the model itself. The following screencast shows you how it works:
+Приятной особенностью генератора моделей является то, что он сохраняет изменения, сделанные разработчиком. Это позволяет добавлять или удалять поля и свойства, не беспокоясь о потере изменений, внесенных в модель вручную. Следующий демо-ролик показывает как это работает:
 
 <div align="center">
     <iframe src="https://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -346,44 +346,44 @@ A nice feature of the model generator is that it keeps changes made by the devel
 
 <a name='crud'></a>
 
-## Scaffold a CRUD
+## Автоматическая генерация CRUD
 
-Scaffolding is a quick way to generate some of the major pieces of an application. If you want to create the models, views, and controllers for a new resource in a single operation, scaffolding is the tool for the job.
+Скаффолдинг (scaffolding; в переводе с англ. "строительные леса") — метод метапрограммирования для создания веб-приложений, взаимодействующих с БД. Это достаточны быстрый способ для получения основных элементов приложения. Если вы хотите быстро создать модели, представления, и контроллеры для нового ресурса приложения — использование автоматической генерации кода является отличным инструментом для этих задач.
 
-Once the code is generated, it will have to be customized to meet your needs. Many developers avoid scaffolding entirely, opting to write all or most of their source code from scratch. The generated code can serve as a guide to better understand of how the framework works or develop prototypes. The code below shows a scaffold based on the table `products`:
+После того, как код сгенерирован, его можно настроить под себя. Многие разработчики не используют scaffolding, предпочитая писать весь код самостоятельно. Сгенерированный код может служить в качестве руководства, чтобы лучше понять основы работы или разработки прототипов. Пример ниже показывает генерацию интерфейса для таблицы `products`:
 
 ```bash
 $ phalcon scaffold --table-name products
 ```
 
-The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
+Генератор создаст несколько файлов в вашем приложении, и каталоги для них. Вот краткий обзор того, что будет сгенерировано:
 
-| Файл                                     | Purpose                        |
-| ---------------------------------------- | ------------------------------ |
-| `app/controllers/ProductsController.php` | The Products controller        |
-| `app/models/Products.php`                | The Products model             |
-| `app/views/layout/products.phtml`        | Controller layout for Products |
-| `app/views/products/new.phtml`           | View for the action `new`      |
-| `app/views/products/edit.phtml`          | View for the action `edit`     |
-| `app/views/products/search.phtml`        | View for the action `search`   |
+| Файл                                     | Предназначение                      |
+| ---------------------------------------- | ----------------------------------- |
+| `app/controllers/ProductsController.php` | Контроллер продуктов                |
+| `app/models/Products.php`                | Модель продуктов                    |
+| `app/views/layout/products.phtml`        | Макет для контроллера продуктов     |
+| `app/views/products/new.phtml`           | Представление для действия `new`    |
+| `app/views/products/edit.phtml`          | Представление для действия `edit`   |
+| `app/views/products/search.phtml`        | Представление для действия `search` |
 
-When browsing the recently generated controller, you will see a search form and a link to create a new Product:
+На главной странице созданного таким образом контроллер вы увидите форму поиска, и ссылку на создание нового продукта:
 
 ![](/images/content/devtools-usage-03.png)
 
-The `create page` allows you to create products applying validations on the Products model. Phalcon will automatically validate not null fields producing warnings if any of them is required.
+Страница создания продукта позволяет добавить в таблицу `products` новую запись, при этом будут использованы проверки по правилам модели Products. Phalcon будет автоматически проверять not null поля и выдавать требования о их заполнении.
 
 ![](/images/content/devtools-usage-04.png)
 
-After performing a search, a pager component is available to show paged results. Use the "Edit" or "Delete" links in front of each result to perform such actions.
+После выполнения поиска будут выведены результаты с постраничной навигацией. Используйте ссылки меню "Edit" или "Delete" возле каждого результата поиска, для выполнения требуемых действий.
 
 ![](/images/content/devtools-usage-05.png)
 
 <a name='web-interface'></a>
 
-## Web Interface to Tools
+## Веб интерфейс инструментов
 
-Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
+Кроме того, можно использовать инструменты разработчика Phalcon используя веб-интерфейс. Подробности его работы показаны на следующем скринкасте:
 
 <div align="center">
 <iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen mark="crwd-mark"></iframe>
@@ -391,9 +391,9 @@ Also, if you prefer, it's possible to use Phalcon Developer Tools from a web int
 
 <a name='phpstorm-ide'></a>
 
-## Integrating Tools with PhpStorm IDE
+## Интеграция в PhpStorm IDE
 
-The screencast below shows how to integrate developer tools with the [PhpStorm IDE](http://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
+Скринкаст показывает, как интегрировать инструменты для разработчиков с [PhpStorm IDE](http://www.jetbrains.com/phpstorm/). Аналогично можно интегрировать дополнения в любой другой PHP редактор или IDE.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
@@ -401,6 +401,6 @@ The screencast below shows how to integrate developer tools with the [PhpStorm I
 
 <a name='conclusion'></a>
 
-## Conclusion
+## Заключение
 
 Инструменты разработчика Phalcon предоставляют простой способ генерации кода для ваших приложений, тем самым сокращая время разработки и количества потенциальных ошибок в коде.

@@ -1,6 +1,6 @@
 - General
     - [Introduction](/[[language]]/[[version]]/introduction)
-    - [Release Notes](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
+    - [Release Notes](https://github.com/phalcon/cphalcon/blob/master/CHANGELOG.md)
     - [Sponsors](/[[language]]/[[version]]/sponsors)
     - [FAQ](/[[language]]/[[version]]/faq)
 - Contributions
@@ -31,7 +31,7 @@
     - [Debug](/[[language]]/[[version]]/debug)
 - Core
     - [API Index](/[[language]]/[[version]]/api/index)
-    - Application
+    - [Application]
         - [Full](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
         - [Cli](/[[language]]/[[version]]/application-cli)

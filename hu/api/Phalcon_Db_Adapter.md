@@ -14,11 +14,11 @@ Name of the dialect used
 
 public **getType** ()
 
-Type of database system the adapter is used for
+Típus adatbázis-rendszer az adapter használt
 
 public **getSqlVariables** ()
 
-Active SQL bound parameter variables
+Aktív SQL kötött paraméter változók
 
 public **__construct** (*array* $descriptor)
 
@@ -30,19 +30,19 @@ Sets the event manager
 
 public **getEventsManager** ()
 
-Returns the internal event manager
+Visszatér a belső esemény menedzser
 
 public **setDialect** ([Phalcon\Db\DialectInterface](/en/3.2/api/Phalcon_Db_DialectInterface) $dialect)
 
-Sets the dialect used to produce the SQL
+Beállítja a nyelvjárás előállítására használt SQL
 
 public **getDialect** ()
 
-Returns internal dialect instance
+Visszatér belső nyelvjárás például
 
 public **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Returns the first row in a SQL query result
+Visszatér az első sorban egy SQL lekérdezés eredménye
 
 ```php
 <?php
@@ -59,7 +59,7 @@ print_r($robot);
 
 public *array* **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
-Dumps the complete result of a query into an array
+Guba a teljes eredmény egy lekérdezést egy tömb,
 
 ```php
 <?php
@@ -90,7 +90,7 @@ foreach($robots as $robot) {
 
 public *string* | ** **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int* | *string* $column])
 
-Returns the n'th field of first row in a SQL query result
+Visszatér a n ér mező első sora egy SQL lekérdezés eredménye
 
 ```php
 <?php
@@ -110,7 +110,7 @@ print_r($robot);
 
 public *boolean* **insert** (*string* | *array* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
 
-Inserts data into a table using custom RDBMS SQL syntax
+Beszúr adatok a táblázat segítségével egyéni relációs adatbázis kezelővel SQL szintaxis
 
 ```php
 <?php
@@ -129,7 +129,7 @@ INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 public *boolean* **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes])
 
-Inserts data into a table using custom RBDM SQL syntax
+Beszúr adatok a táblázat segítségével egyéni RBDM SQL szintaxis
 
 ```php
 <?php
@@ -150,7 +150,7 @@ INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 public *boolean* **update** (*string* | *array* $table, *array* $fields, *array* $values, [*string* | *array* $whereCondition], [*array* $dataTypes])
 
-Updates data on a table using custom RBDM SQL syntax
+Frissítések az adatokat egy táblázat segítségével egyéni RBDM SQL szintaxis
 
 ```php
 <?php
@@ -187,7 +187,7 @@ Warning! If $whereCondition is string it not escaped.
 
 public *boolean* **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes])
 
-Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax
+Frissítések az adatokat egy táblázat segítségével egyéni RBDM SQL szintaxis Egy másik, kényelmesebb szintaxis
 
 ```php
 <?php
@@ -208,7 +208,7 @@ UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
 public *boolean* **delete** (*string* | *array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
 
-Deletes data from a table using custom RBDM SQL syntax
+Törli az adatokat a táblázat segítségével egyéni RBDM SQL szintaxis
 
 ```php
 <?php
@@ -226,7 +226,7 @@ DELETE FROM `robots` WHERE `id` = 101
 
 public **escapeIdentifier** (*array* | *string* $identifier)
 
-Escapes a column/table/schema name
+Menekül egy oszlop/asztal/séma neve
 
 ```php
 <?php
@@ -299,7 +299,7 @@ Creates a table
 
 public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Drops a table from a schema/database
+Csepp, egy asztal, egy séma/adatbázis
 
 public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
@@ -311,11 +311,11 @@ Drops a view
 
 public **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](/en/3.2/api/Phalcon_Db_ColumnInterface) $column)
 
-Adds a column to a table
+Hozzáteszi, egy oszlop, hogy egy táblázat
 
 public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](/en/3.2/api/Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](/en/3.2/api/Phalcon_Db_ColumnInterface) $currentColumn])
 
-Modifies a table column based on a definition
+Módosítja a táblázat oszlop alapján meghatározás
 
 public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName)
 
@@ -347,7 +347,7 @@ Drops a foreign key from a table
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](/en/3.2/api/Phalcon_Db_ColumnInterface) $column)
 
-Returns the SQL column definition from a column
+Visszatér az SQL oszlop meghatározása egy oszlop
 
 public **listTables** ([*mixed* $schemaName])
 
@@ -440,7 +440,7 @@ Returns the savepoint name to use for nested transactions
 
 public **getDefaultIdValue** ()
 
-Returns the default identity value to be inserted in an identity column
+Visszatér az alapértelmezett identity értéket kell illeszteni, egy identitás oszlop
 
 ```php
 <?php
@@ -464,7 +464,7 @@ $success = $connection->insert(
 
 public **getDefaultValue** ()
 
-Returns the default value to make the RBDM use the default value declared in the table definition
+Visszatér az alapértelmezett értéket hogy a RBDM használja az alapértelmezett érték kijelentette, hogy a táblázat definíciója
 
 ```php
 <?php
@@ -486,11 +486,11 @@ $success = $connection->insert(
 
 public **supportSequences** ()
 
-Check whether the database system requires a sequence to produce auto-numeric values
+Ellenőrizze, hogy az adatbázis rendszer megköveteli, egy sorrend, hogy készítsen auto-numerikus értékek
 
 public **useExplicitIdValue** ()
 
-Check whether the database system requires an explicit value for identity columns
+Ellenőrizze, hogy az adatbázis rendszer megköveteli, kifejezett értéke az identitás oszlopok
 
 public **getDescriptor** ()
 

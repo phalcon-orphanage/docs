@@ -2,7 +2,7 @@
 
 *implements* [Phalcon\Mvc\Model\ManagerInterface](/en/3.2/api/Phalcon_Mvc_Model_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/manager.zep" class="btn btn-default btn-sm">GitHub üzerindeki kaynak</a>
 
 This components controls the initialization of models, keeping record of relations between the different models of the application.
 
@@ -27,15 +27,15 @@ $robot = new Robots($di);
 
 ```
 
-## Methods
+## Yöntemler
 
 public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+DependencyInjector kutusunu ayarlar
 
 public **getDI** ()
 
-Returns the DependencyInjector container
+DependencyInjector kutusunu döndürür
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
@@ -63,7 +63,7 @@ Check whether a model is already initialized
 
 public **getLastInitialized** ()
 
-Get last initialized model
+En son başlatılmış olan modeli getirin
 
 public **load** (*mixed* $modelName, [*mixed* $newInstance])
 
@@ -215,11 +215,11 @@ Setup a relation reverse many to one between two models
 
 public **addHasMany** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
 
-Setup a relation 1-n between two models
+İki model arasında bir 1-n ilişkisi kurun
 
 public [Phalcon\Mvc\Model\Relation](/en/3.2/api/Phalcon_Mvc_Model_Relation) **addHasManyToMany** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *string* $fields, *string* $intermediateModel, *string* $intermediateFields, *string* $intermediateReferencedFields, *string* $referencedModel, *string* $referencedFields, [*array* $options])
 
-Setups a relation n-m between two models
+İki model arasında bir n-m ilişkisi kurun
 
 public **existsBelongsTo** (*mixed* $modelName, *mixed* $modelRelation)
 
@@ -243,7 +243,7 @@ Returns a relation by its alias
 
 final protected **_mergeFindParameters** (*mixed* $findParamsOne, *mixed* $findParamsTwo)
 
-Merge two arrays of find parameters
+İki parametre bulma dizisini bir araya getirme
 
 public [Phalcon\Mvc\Model\Resultset\Simple](/en/3.2/api/Phalcon_Mvc_Model_Resultset_Simple) | [Phalcon\Mvc\Model\Resultset\Simple](/en/3.2/api/Phalcon_Mvc_Model_Resultset_Simple) | *int* | *false* **getRelationRecords** ([Phalcon\Mvc\Model\RelationInterface](/en/3.2/api/Phalcon_Mvc_Model_RelationInterface) $relation, *mixed* $method, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
 
@@ -271,7 +271,7 @@ Gets hasMany related records from a model
 
 public **getHasOneRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
 
-Gets belongsTo related records from a model
+Bir modelin belongsTo ile ilgili olduğu kayıtları getirir
 
 public **getBelongsTo** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
 
@@ -292,15 +292,15 @@ Gets hasMany relations defined on a model
 
 public **getHasOne** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
 
-Gets hasOne relations defined on a model
+Bir model üzerinde tanımlanmış olan hasOne ilişkilerini getirir
 
 public **getHasManyToMany** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
 
-Gets hasManyToMany relations defined on a model
+Bir model üzerinde tanımlanmış hasManytoMany ilişkilerini getirir
 
 public **getHasOneAndHasMany** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
 
-Gets hasOne relations defined on a model
+Bir model üzerinde tanımlanmış olan hasOne ilişkilerini getirir
 
 public **getRelations** (*mixed* $modelName)
 
@@ -312,15 +312,15 @@ Query the first relationship defined between two models
 
 public **createQuery** (*mixed* $phql)
 
-Creates a Phalcon\\Mvc\\Model\\Query without execute it
+Onu çalıştırmadan bir Phalcon\\Mvc\\Model\\Query yaratır.
 
 public **executeQuery** (*mixed* $phql, [*mixed* $placeholders], [*mixed* $types])
 
-Creates a Phalcon\\Mvc\\Model\\Query and execute it
+Bir Phalcon\\Mvc\\Model\\Query yaratır ve onu çalıştırır.
 
 public **createBuilder** ([*mixed* $params])
 
-Creates a Phalcon\\Mvc\\Model\\Query\\Builder
+Phalcon\\Mvc\\Model\\Query\\Builder yaratır.
 
 public **getLastQuery** ()
 
@@ -340,4 +340,4 @@ Returns all the registered namespace aliases
 
 public **__destruct** ()
 
-Destroys the current PHQL cache
+Mevcut olan PHQL önbelleklerini yok eder.

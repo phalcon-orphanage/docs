@@ -192,7 +192,6 @@ return new \Phalcon\Config([
         'baseUri'        => preg_replace('/public([\/\\\\])index.php$/', '', $_SERVER["PHP_SELF"]),
     ]
 ]);
-
 ```
 
 <a name='generating-models'></a>

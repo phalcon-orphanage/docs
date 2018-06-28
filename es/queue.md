@@ -137,3 +137,119 @@ while (($job = $queue->reserve()) !== false) {
 ```
 
 Nuestro cliente implementa un conjunto básico de características provistas por Beanstalkd pero suficientes para permitir construir aplicaciones que implementen colas.
+
+## Temas avanzados
+
+### Colas múltiples
+
+Beanstalkd soporta múltiples colas (llamadas 'tubos') para permitir a un servidor de colas simple actuar como un hub para una variedad de trabajadores. Phalcon permite hacer esto fácilmente.
+
+Ver los tubos disponibles en el servidor y elegir un tubo para que el objeto de la cola lo use, ver el siguiente ejemplo:
+
+```php
+<?php
+
+$tube_array = $queue->listTubes();
+
+$queue->choose('myOtherTube');
+```
+
+Todo el trabajo posterior con `$queue` ahora se manipula en `myOtherTube` en lugar de `default`.
+
+Puede ver qué tubo está usando la cola, a continuación un ejemplo.
+
+```php
+<?php
+
+$current_tube = $queue->listTubeUsed();
+```
+
+### Manipulación de tubos
+
+Los tubos pueden ser pausados o reanudados si lo necesita. Por ejemplo, pausaremos por 3 minutos el tubo `myOtherTube`.
+
+```php
+<?php
+
+$queue->pauseTube('myOtherTube', 180);
+```
+
+Estableciendo el retraso en 0, se reanudará el funcionamiento normal.
+
+```php
+<?php
+
+$queue->pauseTube('myOtherTube', 0);
+```
+
+### Estado del servidor
+
+Puede obtener información sobre el servidor entero o de un tubo especifico.
+
+```php
+<?php
+
+$server_stats = $queue->stats();
+
+$tube_stats = $queue->statsTube('myOtherTube');
+
+$server_status = $queue->readStatus();
+
+```
+
+### Gestión de trabajos
+
+Beanstalkd admite la gestión de trabajos con la idea de retrasar un trabajo y eliminar un trabajo de la cola para su posterior procesamiento.
+
+Enterrar un trabajo, generalmente, se usa para tratar problemas potenciales que pueden resolverse fuera del trabajador. Esto toma el trabajo y lo pone en la cola enterrada.
+
+```php
+<?php
+
+$job = $queue->reserve();
+$job->bury();
+```
+
+Una lista de trabajos enterrados es almacenada en el servidor. Es posible inspeccionar el primer trabajo enterrado en la cola, de la siguiente manera.
+
+```php
+<?php
+
+$job_data = $queue->peekBuried();
+```
+
+Si la cola de trabajos enterrados esta vacía, esto retornará `false`, en el caso contrario, retorna el objecto de trabajo.
+
+Puede tomar los primeros [N] trabajos enterrados en la cola para ponerlos nuevamente en la cola de espera. A continuación hay un ejemplo de patear los primeros 3 trabajos enterrados.
+
+```php
+<?php
+
+$queue->kick(3);
+```
+
+Se puede realizar trabajos de liberación a la lista de espera, junto con un retraso opcional. Esto es útil para errores transitorios al procesar un trabajo. A continuación se muestra un ejemplo de poner una prioridad baja (100) y una demora de 3 minutos en un trabajo.
+
+```php
+<?php
+
+$job = $queue->reserve();
+
+$job->release(100, 180);
+```
+
+La prioridad y el retraso son las mismas cuando pone un trabajo en la cola.
+
+La inspección de un trabajo en la cola se puede lograr con `jobPeek($job_id)`. El siguiente ejemplo intenta echar un vistazo a la identificación de trabajo 5.
+
+```php
+<?php
+
+$queue->jobPeek(5)
+```
+
+Los trabajos que han sido eliminados no se pueden inspeccionar y devolverán `false`. Los trabajos listos, enterrados y retrasados devolverán un objeto de trabajo.
+
+### Lecturas adicionales
+
+[El texto del protocolo](https://github.com/kr/beanstalkd/blob/master/doc/protocol.txt) contiene todos los detalles operacionales internos de BeanstalkD, a menudo se considera la documentación de facto para BeanstalkD.

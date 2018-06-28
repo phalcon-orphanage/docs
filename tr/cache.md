@@ -62,25 +62,25 @@
               <a href="#adapters-backend-file">File Backend Options</a>
             </li>
             <li>
-              <a href="#adapters-backend-libmemcached">Libmemcached Backend Options</a>
+              <a href="#adapters-backend-libmemcached">Libmemcached Arka Plan Seçenekleri</a>
             </li>
             <li>
               <a href="#adapters-backend-memcache">Memcache Backend Options</a>
             </li>
             <li>
-              <a href="#adapters-backend-apc">APC Backend Options</a>
+              <a href="#adapters-backend-apc">APC Arka Plan Seçenekleri</a>
             </li>
             <li>
-              <a href="#adapters-backend-apcu">APCU Backend Options</a>
+              <a href="#adapters-backend-apcu">APCU Arka Plan Seçenekleri</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
+              <a href="#adapters-backend-mongo">Mongo Arka Plan Seçenekleri</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">XCache Backend Options</a>
+              <a href="#adapters-backend-xcache">XCache Arka Plan Seçenekleri</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Redis Backend Options</a>
+              <a href="#adapters-backend-redis">Redis Arka Plan Seçenekleri</a>
             </li>
           </ul>
         </li>
@@ -618,7 +618,7 @@ This backend will store cached content into files in the local server. The avail
 
 <a name='adapters-backend-libmemcached'></a>
 
-### Libmemcached Backend Options
+### Libmemcached Arka Plan Seçenekleri
 
 This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
 
@@ -691,7 +691,7 @@ This backend will store cached content on a memcached server. The available opti
 
 <a name='adapters-backend-apc'></a>
 
-### APC Backend Options
+### APC Arka Plan Seçenekleri
 
 This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
 
@@ -701,7 +701,7 @@ This backend will store cached content on Alternative PHP Cache ([APC](http://ph
 
 <a name='adapters-backend-apcu'></a>
 
-### APCU Backend Options
+### APCU Arka Plan Seçenekleri
 
 This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
 
@@ -711,7 +711,7 @@ This backend will store cached content on Alternative PHP Cache ([APCU](http://p
 
 <a name='adapters-backend-mongo'></a>
 
-### Mongo Backend Options
+### Mongo Arka Plan Seçenekleri
 
 This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
 
@@ -724,7 +724,7 @@ This backend will store cached content on a MongoDB server ([MongoDB](http://mon
 
 <a name='adapters-backend-xcache'></a>
 
-### XCache Backend Options
+### XCache Arka Plan Seçenekleri
 
 This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
 
@@ -734,7 +734,7 @@ This backend will store cached content on XCache ([XCache](http://xcache.lighttp
 
 <a name='adapters-backend-redis'></a>
 
-### Redis Backend Options
+### Redis Arka Plan Seçenekleri
 
 This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
 

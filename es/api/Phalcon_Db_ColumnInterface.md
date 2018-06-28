@@ -1,8 +1,8 @@
-# Interface **Phalcon\\Db\\ColumnInterface**
+# Interfaz **Phalcon\\Db\\ColumnInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/columninterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/columninterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-## Methods
+## Métodos
 
 abstract public **getSchemaName** ()
 

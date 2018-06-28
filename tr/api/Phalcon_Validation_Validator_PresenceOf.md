@@ -4,7 +4,7 @@
 
 *implements* [Phalcon\Validation\ValidatorInterface](/en/3.2/api/Phalcon_Validation_ValidatorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/presenceof.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator/presenceof.zep" class="btn btn-default btn-sm">GitHub üzerindeki kaynak</a>
 
 Validates that a value is not null or empty string
 
@@ -42,7 +42,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Yöntemler
 
 public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
 

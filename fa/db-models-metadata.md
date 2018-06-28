@@ -60,7 +60,7 @@ Once the application is in a production stage, it is not necessary to query the 
 | Apc          | This adapter uses the [Alternative PHP Cache (APC)](http://www.php.net/manual/en/book.apc.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production).                                                                                                     | `Phalcon\Mvc\Model\MetaData\Apc`          |
 | Files        | This adapter uses plain files to store metadata. This adapter reduces database queries but has an increased I/O with the file system.                                                                                                                                                                                    | `Phalcon\Mvc\Model\MetaData\Files`        |
 | Libmemcached | This adapter uses the [Memcached Server](https://www.memcached.org/) to store the table metadata. The server parameters as well as the cache lifetime are specified in the options. (Recommended for Production)                                                                                                         | `Phalcon\Mvc\Model\MetaData\Libmemcached` |
-| Memcache     | This adapter uses [Memcache](http://php.net/manual/en/book.memcache.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production)                                                                                                                            | `Phalcon\Mvc\Model\MetaData\MEmcache`     |
+| Memcache     | This adapter uses [Memcache](http://php.net/manual/en/book.memcache.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production)                                                                                                                            | `Phalcon\Mvc\Model\MetaData\Memcache`     |
 | Memory       | This adapter is the default. The metadata is cached only during the request. When the request is completed, the metadata are released as part of the normal memory of the request. (Recommended for Development)                                                                                                         | `Phalcon\Mvc\Model\MetaData\Memory`       |
 | Redis        | This adapter uses [Redis](https://redis.io/) to store the table metadata. The server parameters as well as the cache lifetime are specified in the options. (Recommended for Production).                                                                                                                                | `Phalcon\Mvc\Model\MetaData\Redis`        |
 | Session      | This adapter stores metadata in the `$_SESSION` superglobal. This adapter is recommended only when the application is actually using a small number of models. The metadata are refreshed every time a new session starts. This also requires the use of `session_start()` to start the session before using any models. | `Phalcon\Mvc\Model\MetaData\Session`      |
@@ -172,11 +172,16 @@ The following annotations are supported:
 
 The annotation @Column supports the following parameters:
 
-| Name     | Description                                           |
-| -------- | ----------------------------------------------------- |
-| type     | The column's type (string, integer, decimal, boolean) |
-| length   | The column's length if any                            |
-| nullable | Set whether the column accepts null values or not     |
+| Name                 | Description                                                                                                                                                                  |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| column               | Real column name                                                                                                                                                             |
+| type                 | The column's types: varchar/string (default), text, chr, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
+| length               | The column's length if any                                                                                                                                                   |
+| nullable             | Set whether the column accepts null values or not                                                                                                                            |
+| skip_on_insert     | Skip this column on insert                                                                                                                                                   |
+| skip_on_update     | Skip this column on updates                                                                                                                                                  |
+| allow_empty_string | Column allow empty strings                                                                                                                                                   |
+| default              | Default value                                                                                                                                                                |
 
 The annotations strategy could be set up this way:
 

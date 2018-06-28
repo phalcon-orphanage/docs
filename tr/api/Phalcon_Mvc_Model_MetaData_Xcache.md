@@ -10,7 +10,7 @@ Stores model meta-data in the XCache cache. Data will erased if the web server i
 
 By default meta-data is stored for 48 hours (172800 seconds)
 
-You can query the meta-data by printing xcache_get('$PMM$') or xcache_get('$PMM$my-app-id')
+xcache_get('$PMM$') yada xcache_get('$PMM$my-app-id') 'ı yazdırarak meta verilerini sorgulayabilirsiniz
 
 ```php
 <?php
@@ -125,7 +125,7 @@ print_r(
 
 final public **writeMetaDataIndex** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $index, *mixed* $data) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Writes meta-data for certain model using a MODEL_* constant
+MODEL_* sabitini kullanarak belirli bir model için meta-verisi yazar
 
 ```php
 <?php

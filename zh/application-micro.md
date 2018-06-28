@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-micro-application">Creating a Micro Application</a>
+      <a href="#creating-micro-applications">Creating a Micro Application</a>
     </li>
     <li>
       <a href="#routing">Routing</a> 
@@ -253,7 +253,7 @@ $app = new Micro();
 Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are defined as follows:
 
 ```text
-   Application -> (method/verb) -> (route url/regex, callable PHP function)
+Application -> (method/verb) -> (route url/regex, callable PHP function)
 ```
 
 <a name='routing-setup'></a>
@@ -1128,7 +1128,7 @@ $app->get(
 
 ## Application Response
 
-You can also use the `Phalcon\Http\Response` object to return responses to the caller. The Response object has a lot of useful methods that make returning respones much easier.
+You can also use the `Phalcon\Http\Response` object to return responses to the caller. The Response object has a lot of useful methods that make returning responses much easier.
 
 ```php
 $app->get(
@@ -1936,7 +1936,7 @@ Currently the binder will only use the models primary key to perform a `findFirs
 
 # Views
 
-`Phalcon\Mvc\Micro` does not have inherently a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
+`Phalcon\Mvc\Micro` does not inherently have a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
 
 ```php
 <?php

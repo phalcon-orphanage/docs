@@ -52,7 +52,7 @@
           <a href="#injecting-services">Внедрение сервисов в представление</a>
         </li>
         <li>
-          <a href="#stand-along">Отдельное использование компонента</a> 
+          <a href="#stand-alone">Отдельное использование компонента</a> 
           <ul>
             <li>
               <a href="#stand-alone-hierarchical-rendering">Hierarchical Rendering</a>
@@ -63,7 +63,7 @@
           </ul>
         </li>
         <li>
-          <a href="#eventes">События компонента представлений</a>
+          <a href="#events">События компонента представлений</a>
         </li>
       </ul>
     </li>
@@ -1013,7 +1013,7 @@ $.ajax({
 </script>
 ```
 
-<a name='stand-along'></a>
+<a name='stand-alone'></a>
 
 ## Stand-Alone Component
 
@@ -1108,7 +1108,7 @@ echo $view->render(
 );
 ```
 
-<a name='eventes'></a>
+<a name='events'></a>
 
 ## View Events
 
