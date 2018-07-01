@@ -34,7 +34,7 @@ El algoritmo de cifrado AES-256 es utilizado entre otros en SSL/TLS a través de
 
 <div class="alert alert-warning">
     <p>
-        You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.
+        Debe utilizar una clave del largo correspondiente al algoritmo actual. Por defecto, para el algoritmo utilizado es 32 bytes.
     </p>
 </div>
 
@@ -121,9 +121,9 @@ foreach ($texts as $key => $text) {
 
 Las siguientes opciones están disponibles para cambiar el comportamiento de cifrado:
 
-| Nombre | Descripción                                                                                                                                                          |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
+| Nombre | Descripción                                                                                                                                                        |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Cipher | Cipher es uno de los algoritmos de encriptación soportados por openssl. Ver una lista [aquí](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
 Ejemplo:
 
