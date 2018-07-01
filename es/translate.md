@@ -29,9 +29,9 @@ El componente `Phalcon\Translate` ayuda en la creación de aplicaciones multilin
 
 Este componente hace uso de adaptadores para leer los mensajes de traducción de diferentes fuentes en forma unificada.
 
-| Adaptador                                  | Descripción                                                                                         |
-| ------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| `Phalcon\Translate\Adapter\NativeArray` | Utiliza arrays PHP para almacenar los mensajes. Esta es la mejor opción en términos de rendimiento. |
+| Adaptador                                  | Descripción                                                                             |
+| ------------------------------------------ | --------------------------------------------------------------------------------------- |
+| `Phalcon\Translate\Adapter\NativeArray` | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 
 <a name='adapters-factory'></a>
 
