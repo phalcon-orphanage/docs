@@ -27,7 +27,7 @@ Los [Espacios de Nombres](http://php.net/manual/en/language.namespaces.php) se p
 
 ## Configurando el framework
 
-Utilizar espacios de nombres tiene algunas implicaciones cuando se carga el controlador adecuado. Para ajustar el comportamiento del framework a los espacios de nombres es necesario realizar una o todas de las siguientes tareas:
+Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:
 
 Usar una estrategia de autocarga que tome en cuenta los espacios de nombres, por ejemplo utilizando `Phalcon\Loader`:
 
