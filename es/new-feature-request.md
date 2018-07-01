@@ -1,6 +1,6 @@
-# Solicitud de Nueva Característica
+# Solicita una nueva funcionalidad
 
-Una NFR (New Feature Request) o solicitud de nueva característica es un pequeño documento explicando cómo debe presentarse, cómo se puede implementar y cómo puede ayudar a los desarrolladores del núcleo y otros a entender como implementarla.
+Una NFR (New Feature Request) es un pequeño documento explicando cómo debe presentarse una nueva solicitud de función, cómo se puede implementar y cómo puede ayudar a los desarrolladores del núcleo y otros entender como implementarla.
 
 Una solicitud de nueva funcionalidad contiene:
 
@@ -22,6 +22,6 @@ En los siguientes casos se rechazará una solicitud de nueva característica:
 * Si las clases o componentes presentados y propuestos no siguen el <a href="[">Principio de Responsabilidad Individual](https://es.wikipedia.org/wiki/Principio_de_responsabilidad_%C3%BAnica)
 * Los métodos estáticos no están permitidos
 
-Para enviar una NFR no necesita proporcionar el código C, Zephir o desarrollar la función. Las solicitudes de nuevas características explican el objetivo de la aplicación prevista y abren la discusión sobre la mejor manera de implementarla.
+To send a NFR you don't need to provide Zephir or C code or develop the feature. New Feture requests explain the goal of the intended implementation and open discussion on how best to implement it.
 
-Todas las solicitudes deben ser publicadas como un tema nuevo en [Github](https://github.com/phalcon/cphalcon/issues).
+Todas las NFR deben ser publicadas como un tema nuevo en [Github](https://github.com/phalcon/cphalcon/issues).
