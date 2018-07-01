@@ -140,7 +140,7 @@ class Robots extends Model
 }
 ```
 
-In the example given above, the Events Manager only acts as a bridge between an object and a listener (the anonymous function). Events will be fired to the listener when `robots` are saved:
+En el ejemplo anterior, el EventsManager o Gestor de Eventos sólo actuó como un puente entre un objeto y un oyente (la función anónima). Los eventos serán disparados al oyente cuando `robots` sera guardado:
 
 ```php
 <?php
