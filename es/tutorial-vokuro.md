@@ -44,7 +44,7 @@ vokuro/
     schemas/
 ```
 
-Este proyecto sigue una estructura muy similar al INVO. Una vez que usted abra la aplicación en su navegador `http://localhost/vokuro` verás algo como esto:
+This project follows a quite similar structure to INVO. Once you open the application in your browser `http://localhost/vokuro` you'll see something like this:
 
 ![](/images/content/tutorial-vokuro-1.png)
 
@@ -81,7 +81,7 @@ Ahora, hay un archivo llamado `app/config/loader.php` donde se configura toda la
 
 // ...
 
-// Utilice el autocargador de composer para cargar todas las dependencias
+// Use composer autoloader to load vendor classes
 require_once BASE_PATH . '/vendor/autoload.php';
 ```
 
