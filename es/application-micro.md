@@ -1986,11 +1986,11 @@ $app['view'] = function () {
     return $view;
 };
 
-// Return a rendered view
+// Retornar una vista renderizada
 $app->get(
     '/products/show',
     function () use ($app) {
-        // Render app/views/products/show.phtml passing some variables
+        // Renderizar app/views/products/show.phtml pasando algunas variables
         echo $app['view']->start()->render(
             'products',
             'show',
