@@ -181,7 +181,7 @@ El registro generado está abajo:
 [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a parameter
 ```
 
-También puede establecer un nivel de registro utilizando el método `setLogLevel()`. Este método toma una constante Logger y solo guardará los mensajes de registro que son tan importantes o más importantes que la constante:
+You can also set a log level using the `setLogLevel()` method. This method takes a Logger constant and will only save log messages that are as important or more important than the constant:
 
 ```php
 <?php
@@ -196,7 +196,7 @@ $logger->setLogLevel(
 );
 ```
 
-En el ejemplo anterior, solo los mensajes críticos y de emergencia se guardarán en el registro. Por defecto, todo está guardado.
+In the example above, only critical and emergency messages will get saved to the log. By default, everything is saved.
 
 <a name='transactions'></a>
 
@@ -209,23 +209,22 @@ Registrar datos en un adaptador, es decir, el archivo (sistema de archivos) es s
 
 use Phalcon\Logger\Adapter\File as FileAdapter;
 
-// Create the logger
+// Crear el logger
 $logger = new FileAdapter('app/logs/test.log');
 
-// Start a transaction
+// Comenzar una transacción
 $logger->begin();
 
-// Add messages
-
+// Agregar mensajes
 $logger->alert(
-    'This is an alert'
+    'Esta es una alerta'
 );
 
 $logger->error(
-    'This is another error'
+    'Este es otro error'
 );
 
-// Commit messages to file
+// Confirmar los mensajes en el archivo
 $logger->commit();
 ```
 
@@ -245,8 +244,6 @@ use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
 $logger = new MultipleStream();
 
-
-
 $logger->push(
     new FileAdapter('test.log')
 );
@@ -256,16 +253,16 @@ $logger->push(
 );
 
 $logger->log(
-    'This is a message'
+    'Este es un mensaje'
 );
 
 $logger->log(
-    'This is an error',
+    'Este es un error',
     Logger::ERROR
 );
 
 $logger->error(
-    'This is another error'
+    'Este es otro error'
 );
 ```
 
@@ -275,7 +272,7 @@ Los mensajes se envían a los controladores en el orden en que se registraron.
 
 ## Formato de mensaje
 
-Este componente utiliza `formatters` para formatear los mensajes antes de enviarlos al back-end. Los formatters disponibles son:
+This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:
 
 | Adaptador                             | Descripción                                                     |
 | ------------------------------------- | --------------------------------------------------------------- |
@@ -288,13 +285,13 @@ Este componente utiliza `formatters` para formatear los mensajes antes de enviar
 
 ### Formateador de línea
 
-Formatea los mensajes usando una cadena de una línea. El formato de registro predeterminado es:
+Formats the messages using a one-line string. The default logging format is:
 
 ```bash
 [%date%][%type%] %message%
 ```
 
-Puede cambiar el formato predeterminado usando `setFormat()`, esto le permite cambiar el formato de los mensajes registrados definiendo el suyo. Las variables de formato de registro permitidas son:
+You can change the default format using `setFormat()`, this allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
 
 | Variable  | Descripción                        |
 | --------- | ---------------------------------- |
@@ -311,7 +308,7 @@ use Phalcon\Logger\Formatter\Line as LineFormatter;
 
 $formatter = new LineFormatter('%date% - %message%');
 
-// Changing the logger format
+// Cambiando el formato de registro
 $logger->setFormatter($formatter);
 ```
 
@@ -331,17 +328,17 @@ Los siguientes ejemplos muestran el uso básico de cada adaptador:
 
 ### Stream Logger
 
-El Stream Logger escribe mensajes en una secuencia registrada válida en PHP. Una lista de streams [aquí](http://php.net/manual/en/wrappers.php):
+The stream logger writes messages to a valid registered stream in PHP. A list of streams is available [here](http://php.net/manual/en/wrappers.php):
 
 ```php
 <?php
 
 use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
-// Opens a stream using zlib compression
+// Abrir el stream utilizando compresión zlib
 $logger = new StreamAdapter('compress.zlib://week.log.gz');
 
-// Writes the logs to stderr
+// Escribir registros en stderr
 $logger = new StreamAdapter('php://stderr');
 ```
 
@@ -356,7 +353,7 @@ Este registrador usa archivos simples para registrar cualquier tipo de dato. Por
 
 use Phalcon\Logger\Adapter\File as FileAdapter;
 
-// Create the file logger in 'w' mode
+// Crear un archivo de registro en modo 'w'
 $logger = new FileAdapter(
     'app/logs/test.log',
     [
@@ -369,17 +366,17 @@ $logger = new FileAdapter(
 
 ### Syslog Logger
 
-Este registrador envía mensajes al registrador del sistema. El comportamiento de syslog puede variar de un sistema operativo a otro.
+This logger sends messages to the system logger. The syslog behavior may vary from one operating system to another.
 
 ```php
 <?php
 
 use Phalcon\Logger\Adapter\Syslog as SyslogAdapter;
 
-// Basic Usage
+// Uso básico
 $logger = new SyslogAdapter(null);
 
-// Setting ident/mode/facility
+// Configurando ident/mode/facility
 $logger = new SyslogAdapter(
     'ident-name',
     [
@@ -404,16 +401,16 @@ use Phalcon\Logger\Adapter\Firephp as Firephp;
 $logger = new Firephp('');
 
 $logger->log(
-    'This is a message'
+    'Este es un mensaje'
 );
 
 $logger->log(
-    'This is an error',
+    'Este es un error',
     Logger::ERROR
 );
 
 $logger->error(
-    'This is another error'
+    'Este es otro error'
 );
 ```
 
