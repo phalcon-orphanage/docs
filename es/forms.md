@@ -268,7 +268,7 @@ $form = new UsersForm(
 );
 ```
 
-Validation Phalcon forms are integrated with the [validation](/[[language]]/[[version]]/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
+Validation Phalcon forms are integrated with the [validation](/[[language]]/[[version]]/validation) component to offer instant validation. Los validadores incorporados o personalizados se pueden configurar para cada elemento:
 
 ```php
 <?php
@@ -539,7 +539,7 @@ class ContactForm extends Form
 
 ## Presentación de formularios
 
-You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
+Puede representar el formulario con total flexibilidad, el siguiente ejemplo muestra cómo representar cada elemento mediante un procedimiento estándar:
 
 ```php
 <form method='post'>
