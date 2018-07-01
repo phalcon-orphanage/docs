@@ -34,14 +34,14 @@ A pesar de estar escrito en C, que Phalcon ejecuta métodos en el espacio de usu
 
 ## Capturando excepciones
 
-Throughout the tutorials and examples of the Phalcon documentation, there is a common element that is catching exceptions. This is a try/catch block:
+A lo largo de los tutoriales y ejemplos de la documentación de Phalcon, hay un elemento común que es la captura de excepciones. Se trata de un bloque try/catch:
 
 ```php
 <?php
 
 try {
 
-    // ... Some Phalcon/PHP code
+    // ... Algún código Phalcon/PHP
 
 } catch (\Exception $e) {
 
@@ -159,7 +159,7 @@ $router = new Phalcon\Mvc\Router();
 print_r($router);
 ```
 
-It's easy to know the internal state of any object. The above example prints the following:
+Es fácil conocer el estado interno de un objeto. El ejemplo anterior imprime lo siguiente:
 
 ```html
 Phalcon\Mvc\Router Object
