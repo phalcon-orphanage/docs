@@ -25,7 +25,7 @@
           <a href="#deleting-data">Borrando datos</a>
         </li>
         <li>
-          <a href="#testing">Pruebando nuestra aplicación</a>
+          <a href="#testing">Probando nuestra aplicación</a>
         </li>
         <li>
           <a href="#conclusion">Conclusión</a>
@@ -87,7 +87,7 @@ En primer lugar, necesitamos un archivo `.htaccess` que contiene todas las regla
 </IfModule>
 ```
 
-La mayor parte de nuestro código se colocará en `index.php`. El archivo se crea de la sigue manera:
+The bulk of our code will be placed in `index.php`. The file is created as follows:
 
 ```php
 <?php
@@ -451,7 +451,7 @@ $app->post(
 
 ## Actualizando datos
 
-La actualización de datos es similar a la inserción. El `id` como parámetro indica qué robot debe actualizarse [archivo: `index.php`]:
+The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
 
 ```php
 <?php
@@ -513,7 +513,7 @@ $app->put(
 
 ## Borrando datos
 
-La eliminación de datos es similar a actualizar. El `id` como parámetro indica qué robot debe ser eliminado [archivo: `index.php`]:
+The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
 
 ```php
 <?php
@@ -567,7 +567,7 @@ $app->delete(
 
 <a name='testing'></a>
 
-## Pruebando nuestra aplicación
+## Probando nuestra aplicación
 
 Utilizando [curl](http://en.wikipedia.org/wiki/CURL) probaremos cada ruta en nuestra aplicación, verificando su correcto funcionamiento.
 
