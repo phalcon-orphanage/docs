@@ -49,7 +49,7 @@ Estas herramientas son una colección de útiles secuencias de comandos para gen
 
 <div class="alert alert-danger">
     <p>
-        If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information.
+        Si prefiere utilizar la versión web en lugar de la consola, esta <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">publicación en el blog</a> le ofrecerá más información.
     </p>
 </div>
 
@@ -172,9 +172,9 @@ class PruebaController extends Controller
 
 ## Preparando la configuración de la base de datos
 
-Cuando se genera un proyecto utilizando herramientas de desarrollador. Un archivo de configuración puede encontrarse en `app/config/config.ini`. Para generar modelos o andamios, usted necesitará cambiar la configuración utilizada para conectarse a la base de datos.
+Cuando se genera un proyecto utilizando herramientas de desarrollador. Un archivo de configuración puede encontrarse en `app/config/config.php`. Para generar modelos o andamios, usted necesitará cambiar la configuración utilizada para conectarse a la base de datos.
 
-Cambiar la sección de base de datos en el archivo config.ini:
+Cambiar la sección de base de datos en el archivo config.php:
 
 ```ini
 [database]

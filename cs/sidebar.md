@@ -1,6 +1,6 @@
 - Obecné 
     - [Introduction](/[[language]]/[[version]]/introduction)
-    - [Poznámky k vydání](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
+    - [Poznámky k vydání](https://github.com/phalcon/cphalcon/blob/master/CHANGELOG.md)
     - [Sponzoři](/[[language]]/[[version]]/sponsors)
     - [FAQ](/[[language]]/[[version]]/faq)
 - Contributions 

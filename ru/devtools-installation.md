@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Phalcon Developer в Linux</a> 
+      <a href="#overview">Установка Phalcon Developer Tools</a> 
       <ul>
         <li>
           <a href="#prerequisites">Требования</a>
@@ -19,7 +19,7 @@
               <a href="#installation-windows">Windows</a> 
               <ul>
                 <li>
-                  <a href="#installation-windows-system-path">Добавление PHP и Devtools в системную переменную PATH</a>
+                  <a href="#installation-windows-system-path">Добавление PHP и DevTools в системную переменную PATH</a>
                 </li>
               </ul>
             </li>
@@ -32,21 +32,21 @@
 
 <a name='overview'></a>
 
-# Phalcon Developer в Linux
+# Установка Phalcon Developer Tools
 
-These steps will guide you through the process of installing Phalcon Developer Tools for Linux.
+Эти шаги помогут вам установить Phalcon Developer Tools в Linux, macOS и Windows.
 
 <a name='prerequisites'></a>
 
 ## Требования
 
-Для запуска инструментов разработчика необходимо установленное расширение Phalcon. Если оно ещё не установлено, прочитайте инструкции в разделе [Установка](/[[language]]/[[version]]//installation).
+The Phalcon extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](/[[language]]/[[version]]//installation) section for instructions.
 
 <a name='installation'></a>
 
 ## Установка
 
-You can download a cross platform package containing the developer tools from from [Github](https://github.com/phalcon/phalcon-devtools)
+Вы можете скачать кроссплатформенный пакет инструментов разработчиков используя [публичный репозиторий на Github](https://github.com/phalcon/phalcon-devtools).
 
 <a name='installation-linux'></a>
 
@@ -97,7 +97,7 @@ cd phalcon-devtools/
 
 ![](/images/content/devtools-mac-2.png)
 
-Создайте ссылку на файл phalcon.php:
+Create a symbolic link to the phalcon.php script:
 
 ```bash
 ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
@@ -112,7 +112,7 @@ chmod ugo+x /usr/bin/phalcon
 
 ![](/images/content/devtools-windows-1.png)
 
-Change the path to the one you installed the Phalcon tools (set PTOOLSPATH=C:\phalcon-tools\):
+Измените путь на тот, по которому были установлены инструменты разработчика Phalcon (`set PTOOLSPATH=C:\phalcon-tools`):
 
 ![](/images/content/devtools-windows-2.png)
 
@@ -122,7 +122,7 @@ Change the path to the one you installed the Phalcon tools (set PTOOLSPATH=C:\ph
 
 #### Добавление PHP и Devtools в системную переменную PATH
 
-Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file `php.exe` and copy its path. For instance, using WAMPP you will locate the PHP executable in a location like this: `C:\wamp\bin\php\<php version>\php.exe* (where <php version> is the version of PHP that WAMPP comes bundled with).
+Поскольку инструменты разработчика написаны на PHP, его необходимо установить на ваш компьютер. В зависимости от того, как был установлен PHP, его исполняемый файл может быть в разных местах. Найдите файл `php.exe` и запомните (скопируйте) путь к нему. Например, при использовании WAMPP, путь к PHP может быть похож на: `C:\wamp\bin\php\<php version>\php.exe` (где `<php version>` — версия PHP используемая в WAMPP).
 
 From the Windows start menu, right mouse click on the `Computer` icon and select `Properties`:
 
@@ -140,11 +140,11 @@ Be very careful on this step! You need to append at the end of the long string t
 
 ![](/images/content/devtools-windows-6.png)
 
-Accept the changes made by clicking `OK` and close the dialogs opened. From the start menu click on the option `Run`. If you can't find this option, press `Windows Key` + `R`.
+Accept the changes made by clicking `OK` and close the dialogs opened. From the start menu click on the option `Run`. If you can't find this option, press <kbd>Windows</kbd> + <kbd>R</kbd>.
 
 ![](/images/content/devtools-windows-7.png)
 
-Type `cmd` and press enter to open the windows command line utility:
+Type `cmd` and press <kbd>Enter</kbd> to open the Windows command line utility:
 
 ![](/images/content/devtools-windows-8.png)
 
