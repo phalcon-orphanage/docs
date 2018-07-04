@@ -51,7 +51,7 @@
 
 <a name='basic'></a>
 # Tutorial - basic
-Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. The following guide is to provided to introduce you to Phalcon framework's design aspects. 
+Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. The following guide is to introduce you to Phalcon framework's design aspects. 
 
 This tutorial covers the implementation of a simple MVC application, showing how fast and easy it can be done with Phalcon. This tutorial will get you started and help create an application that you can extend to address many needs. The code in this tutorial can also be used as a playground to learn other Phalcon specific concepts and ideas.
 
