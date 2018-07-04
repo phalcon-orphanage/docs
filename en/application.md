@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">MVC Applications</a> <ul>
+      <a href="#overview">MVC Applications</a>
+      <ul>
         <li>
           <a href="#manual-bootstrapping">Manual Bootstrapping</a>
         </li>
@@ -364,7 +365,7 @@ multiple/
     img/
     js/
 ```
-Each directory in apps/ have its own MVC structure. A Module.php is present to configure specific settings of each module like autoloaders or custom services:
+Each directory in `apps/` have its own MVC structure. A `Module.php` is present to configure specific settings of each module like autoloaders or custom services:
 
 ```php
 <?php
