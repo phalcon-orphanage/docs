@@ -898,7 +898,7 @@ Por último, puedes realizar redirecciones en el middleware (si lo usas). Un eje
 
 ## URLs para Rutas
 
-Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process. * First we need to name our route. This can be achieved with the `setName()` method that is exposed from the methods/verbs in our application (`get`, `post`, etc.);
+Otra característica de las rutas es la posibilidad de crear rutas nombradas y generar URLs para estas rutas. Se trata de un proceso de dos pasos. * First we need to name our route. Esto puede lograrse con el método `setName()` que es presentado por los métodos/verbos (`get`, `post`, etc.) en nuestra aplicación;
 
 ```php
 // Establecer una ruta con el nombre 'show-order'
@@ -1497,7 +1497,7 @@ El middleware que usaríamos sería el siguiente: * Firewall * NotFound * Redire
 
 #### Firewall Middleware
 
-Este middleware se conecta al evento `before` de nuestra Micro aplicación. The purpose of this middleware is to check who is calling our API and based on a whitelist, allow them to proceed or not
+Este middleware se conecta al evento `before` de nuestra Micro aplicación. El propósito de este middleware es verificar quién está llamando nuestra API y basado en una lista blanca, permitir que se proceda o no
 
 ```php
 <?php
