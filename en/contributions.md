@@ -34,7 +34,7 @@
 # Contributing to Phalcon
 Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!
 
-Please take a moment to review this document in order to make the contribution process easy and effective all.
+Please take a moment to review this document in order to make the contribution process easy and effective for all.
 
 Following these guidelines, allows better communication, faster resolution of issues and moves the project forward.
 
@@ -56,8 +56,8 @@ Please ensure that you are sending your pull request to the correct branch and t
 ## Bug Report Checklist
 - Make sure you are using the latest released version of Phalcon before submitting a bug report. Bugs in versions older than the latest released one will not be addressed by the core team.
 - If you have found a bug, it is essential to add relevant information to reproduce it. Being able to reproduce a bug greatly reduces the time to investigate and fix it. This information should come in the form of a script, small application, or even a failing test. Please check [Submit Reproducible Test][srt] for more information.
-- As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
-- If you're submitting a [Segmentation Fault][segfault] error, we would require a backtrace. Please check [Generating a Backtrace](#bug-report-generating-backtrace) for more information.
+- As part of your report, please include additional informations such as the OS, PHP version, Phalcon version, web server, memory etc.
+- If you're submitting a [Segmentation Fault][segfault] error, we would require a backtrace. Please check [Generating a Backtrace](#bug-report-generating-backtrace) for more informations.
 
 <a name='bug-report-generating-backtrace'></a>
 ### Generating a backtrace
@@ -79,7 +79,7 @@ Please follow this guides to understand how to generate the backtrace:
 - Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards][psr]
 - Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
 
-Before submit **new functionality**, please open a [NFR](/[[language]]/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of include the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Before submit **new functionality**, please open a [NFR](/[[language]]/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
 - An update to the `CHANGELOG.md`
 - Unit Tests
@@ -87,11 +87,11 @@ Before submit **new functionality**, please open a [NFR](/[[language]]/[[version
 
 <a name='getting-support'></a>
 ## Getting Support
-If you have a question about how to use Phalcon, please see the [support page][support].
+If you have any question about how to use Phalcon, please see the [support page][support].
 
 <a name='requesting-features'></a>
 ## Requesting Features
-If you have a change or new feature in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
+If you have any changes or new features in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
 
 Thanks!
 
