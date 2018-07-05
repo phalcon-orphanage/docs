@@ -1936,7 +1936,7 @@ Actualmente Binder utiliza solamente de la clave primaria de los modelos para re
 
 # Vistas
 
-`Phalcon\Mvc\Micro` does not inherently have a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
+`Phalcon\Mvc\Micro` no tiene inherentemente un servicio de vistas. Sin embargo podemos utilizar el componente `Phalcon\Mvc\View\Simple` para crear una vista.
 
 ```php
 <?php
