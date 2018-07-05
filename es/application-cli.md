@@ -43,7 +43,7 @@ La estructura mínima de una aplicación CLI se verá así:
 
 ## Creando un Archivo Principal de Ejecución
 
-Como en aplicaciones MVC normales, un archivo principal se utiliza para arrancar la ejecución de la aplicación. Instead of the `index.php` bootstrapper in web applications, we use a `cli.php` file for bootstrapping the application.
+Como en aplicaciones MVC normales, un archivo principal se utiliza para arrancar la ejecución de la aplicación. En lugar del archivo `index.php` que inicia las aplicaciones web, se utiliza un archivo llamado `cli.php` para que la aplicación arranque.
 
 A continuación el Archivo Principal de Arranque que se utiliza en este ejemplo.
 
@@ -126,7 +126,7 @@ php app/cli.php
 
 ## Tasks (Tareas)
 
-Las tareas funcionan de manera similar a los controladores. Any CLI application needs at least a `MainTask` and a `mainAction` and every task needs to have a `mainAction` which will run if no action is given explicitly.
+Las tareas funcionan de manera similar a los controladores. Cualquier aplicación CLI necesita al menos un `MainTask` y un `mainAction` y cada Task debe tener un `mainAction` que se ejecutará si no se indica alguna acción explícitamente.
 
 A continuación un ejemplo del archivo `app/tasks/MainTask.php`:
 
