@@ -160,7 +160,7 @@ class Robots extends Model
 }
 ```
 
-Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the `@Column` annotation are handled as simple class attributes.
+Las anotaciones deben colocarse en las propiedades que se asignan a columnas en la fuente asignada. Las propiedades sin la anotación `@Column` se trataran como simples atributos de la clase.
 
 Son soportadas las siguientes anotaciones:
 
@@ -170,7 +170,7 @@ Son soportadas las siguientes anotaciones:
 | Identity | El campo es una columna auto_increment/serial               |
 | Column   | Esto marca un atributo como una columna mapeada             |
 
-The annotation `@Column` supports the following parameters:
+La anotación `@Column` admite los siguientes parámetros:
 
 | Nombre               | Descripción                                                                                                                                                                      |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -178,9 +178,9 @@ The annotation `@Column` supports the following parameters:
 | type                 | Tipos de columnas: varchar/string (por defecto), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
 | length               | Longitud de la columna, si lo hubiere                                                                                                                                            |
 | nullable             | Si la columna acepta valores null o no                                                                                                                                           |
-| skip_on_insert       | Omitir esta columna al insertar                                                                                                                                                  |
-| skip_on_update       | Omitir esta columna al actualizar                                                                                                                                                |
-| allow_empty_string   | Esta columna permite cadenas vacías                                                                                                                                              |
+| skip_on_insert     | Omitir esta columna al insertar                                                                                                                                                  |
+| skip_on_update     | Omitir esta columna al actualizar                                                                                                                                                |
+| allow_empty_string | Esta columna permite cadenas vacías                                                                                                                                              |
 | default              | Valor por defecto                                                                                                                                                                |
 
 La estrategia de anotaciones podría ser configurada de esta manera:
