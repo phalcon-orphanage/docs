@@ -1868,14 +1868,14 @@ $app->get(
     '/products/show',
     function () use ($app) {
         // Render app/views/products/show.phtml passing some variables
-        echo $app['view']->render(
+        echo $app['view']->start()->render(
             'products',
             'show',
             [
                 'id'   => 100,
                 'name' => 'Artichoke',
             ]
-        );
+        )->finish()->getContent();
     }
 );
 ```

@@ -178,9 +178,9 @@ The annotation `@Column` supports the following parameters:
 | type                 | Tipos de columnas: varchar/string (por defecto), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
 | length               | Longitud de la columna, si lo hubiere                                                                                                                                            |
 | nullable             | Si la columna acepta valores null o no                                                                                                                                           |
-| skip_on_insert     | Omitir esta columna al insertar                                                                                                                                                  |
-| skip_on_update     | Omitir esta columna al actualizar                                                                                                                                                |
-| allow_empty_string | Esta columna permite cadenas vacías                                                                                                                                              |
+| skip_on_insert       | Omitir esta columna al insertar                                                                                                                                                  |
+| skip_on_update       | Omitir esta columna al actualizar                                                                                                                                                |
+| allow_empty_string   | Esta columna permite cadenas vacías                                                                                                                                              |
 | default              | Valor por defecto                                                                                                                                                                |
 
 La estrategia de anotaciones podría ser configurada de esta manera:
