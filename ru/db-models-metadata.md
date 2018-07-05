@@ -160,7 +160,7 @@ class Robots extends Model
 }
 ```
 
-Аннотации должны быть расположены в свойствах, которые отображаются на столбцы таблицы. Свойства без аннотации @Column обрабатываются как простые атрибуты класса.
+Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the `@Column` annotation are handled as simple class attributes.
 
 Поддерживаются следующие аннотации:
 
@@ -170,7 +170,7 @@ class Robots extends Model
 | Identity | Поле является автоинкрементным и/или идентифицирующим |
 | Column   | Отмечает атрибут в качестве отображаемого столбца     |
 
-Аннотация @Column поддерживает следующие параметры:
+The annotation `@Column` supports the following parameters:
 
 | Название             | Описание                                                                                                                                                                     |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

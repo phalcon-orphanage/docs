@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Vytvoření CLI aplikace</a> <ul>
+      <a href="#creating-cli-application">Vytvoření CLI aplikace</a> 
+      <ul>
         <li>
           <a href="#structure">Structure</a>
         </li>
@@ -42,7 +43,7 @@ A minimal structure of a CLI application will look like this:
 
 ## Creating a Bootstrap
 
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the `index.php` bootstrapper in web applications, we use a `cli.php` file for bootstrapping the application.
 
 Below is a sample bootstrap that is being used for this example.
 
@@ -125,7 +126,7 @@ php app/cli.php
 
 ## Tasks
 
-Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+Tasks work similar to controllers. Any CLI application needs at least a `MainTask` and a `mainAction` and every task needs to have a `mainAction` which will run if no action is given explicitly.
 
 Below is an example of the `app/tasks/MainTask.php` file:
 
