@@ -1,8 +1,8 @@
 # Clase **Phalcon\\Acl\\Adapter\\Memory**
 
-*extiende* abstract class [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+*extends* abstract class [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
-*implementa* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](/[[language]]/[[version]]/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/[[language]]/[[version]]/api/Phalcon_Acl_AdapterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
@@ -105,7 +105,7 @@ public **isResource** (*mixed* $resourceName)
 
 Comprueba si el recurso existe en la lista de recursos
 
-public **addResource** ([Phalcon\Acl\Resource](/en/3.2/api/Phalcon_Acl_Resource) | *string* $resourceValue, *array* | *string* $accessList)
+public **addResource** ([Phalcon\Acl\Resource](/[[language]]/[[version]]/api/Phalcon_Acl_Resource) | *string* $resourceValue, *array* | *string* $accessList)
 
 Agrega un recurso la lista de acceso ACL. Los nombres de acceso pueden ser una acción específica, por ejemplo: buscar, actualizar, borrar, etc. o una lista de ellos, por ejemplo:
 
@@ -222,30 +222,30 @@ public **getResources** ()
 
 Devuelve un array con cada recurso registrado en la lista
 
-public **getActiveRole** () heredado de [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public **getActiveRole** () inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
 Rol que la lista está verificando si está permitido a cierto recurso/acceso
 
-public **getActiveResource** () heredado de [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public **getActiveResource** () inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
 Recurso que la lista está verificando si algún rol puede acceder a él
 
-public **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
 Acceso activo al cuál la lista esta verificando si algun rol puede accederla
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager) heredado de [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
 Establece el administrador de eventos
 
-public **getEventsManager** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public **getEventsManager** () inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
 Devuelve el administrador de eventos interno
 
-public **setDefaultAction** (*mixed* $defaultAccess) heredado de [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
 Establece el nivel de acceso por defecto (Phalcon\\Acl::ALLOW o Phalcon\\Acl::DENY)
 
-public **getDefaultAction** () heredado de [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
 Devuelve el nivel de acceso ACL por defecto
