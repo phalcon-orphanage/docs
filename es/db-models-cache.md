@@ -227,7 +227,7 @@ class Robots extends Model
 
 El acceso a la base de datos es varias veces más lento que el cálculo de una clave de caché. Eres libre de implementar cualquier estrategia de generación de claves que encuentres mejor para tus necesidades. Tenga en cuenta que una buena clave evita colisiones tanto como sea posibles - lo que significa que diferentes claves deben devolver registros no relacionados.
 
-This gives you full control on how the cache should be implemented for each model. If this strategy is common to several models you can create a base class for all of them:
+Esto le da control total sobre cómo debería implementarse la caché para cada modelo. Si esta estrategia es común a varios modelos, puede crear una clase base para todos ellos:
 
 ```php
 <?php
@@ -295,7 +295,7 @@ $cars = $query->execute(
 
 ## Registros relacionados reutilizables
 
-Some models may have relationships with other models. This allows us to easily check the records that relate to instances in memory:
+Algunos modelos pueden tener relaciones con otros modelos. Esto nos permite comprobar fácilmente los registros que se relacionan en memoria:
 
 ```php
 <?php
@@ -507,7 +507,7 @@ class Invoices extends Model
 
 ## Cache basado en condiciones
 
-In this scenario, the cache is implemented differently depending on the conditions received. We might decide that the cache backend should be determined by the primary key:
+En este escenario, el cache es implementado de modo diferente dependiendo de las condiciones recibidas. Podríamos decidir que el backend de la caché debería determinarse mediante la clave principal:
 
 | Tipo          | Cache Backend |
 | ------------- | ------------- |
