@@ -36,7 +36,7 @@ public **rewind** ()
 
 Rebobina el iterador interno
 
-public [Phalcon\Annotations\Annotation](/en/3.2/api/Phalcon_Annotations_Annotation) **current** ()
+public [Phalcon\Annotations\Annotation](/[[language]]/[[version]]/api/Phalcon_Annotations_Annotation) **current** ()
 
 Devuelve la anotación actual en el iterador
 
