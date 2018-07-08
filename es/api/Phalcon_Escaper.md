@@ -1,6 +1,6 @@
 # Clase **Phalcon\\Escaper**
 
-*implementa* [Phalcon\EscaperInterface](/en/3.2/api/Phalcon_EscaperInterface)
+*implements* [Phalcon\EscaperInterface](/[[language]]/[[version]]/api/Phalcon_EscaperInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/escaper.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
