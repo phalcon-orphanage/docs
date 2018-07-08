@@ -36,7 +36,7 @@
 
 Phalcon является проектом с открытым кодом и сильно зависит от добровольных усилий. Мы приветствуем посильную помощь от всех!
 
-Пожалуйста, уделите время на ознакомление с этим документом для того, чтобы сделать процесс вашего участия в развитии фреймворка легким и эффективным.
+Please take a moment to review this document in order to make the contribution process easy and effective for all.
 
 Следование этим принципам, позволит вам эффективней общаться с остальными участниками сообщества, быстрее решать проблемы и двигать проект вперед.
 
@@ -91,7 +91,7 @@ Phalcon является проектом с открытым кодом и си
 - Убедитесь, что PHP-код, который вы написали, соответствует общему стилю и стандартам кодирования [PSR](http://www.php-fig.org/psr/).
 - Удалите любые изменения `ext/kernel`, `*.zep.c` и `*.zep.h` файлов перед отправкой запроса на изменение.
 
-Перед отправкой **запроса на внесение новой функциональности**, пожалуйста, [предложите свою идею](/[[language]]/[[version]]/new-feature-request) в форме тикета GitHub, чтобы обсудить последствия или изменения в ядре фреймворка. После утверждения, убедитесь, что ваш запрос на принятие изменений содержит следующее:
+Before submit **new functionality**, please open a [NFR](/[[language]]/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. После утверждения, убедитесь, что ваш запрос на принятие изменений содержит следующее:
 
 - Обновлённый файл `CHANGELOG.md`
 - Модульные тесты
@@ -101,13 +101,13 @@ Phalcon является проектом с открытым кодом и си
 
 ## Получение поддержки
 
-По вопросам использования Phalcon, пожалуйста, используйте [раздел поддержки](https://phalconphp.com/support) на нашем сайте.
+If you have any questions about how to use Phalcon, please see the [support page](https://phalconphp.com/support).
 
 <a name='requesting-features'></a>
 
 ## Предложение идей
 
-Если вы хотели бы предложить изменения или новый функционал, пожалуйста, [оформите](/[[language]]/[[version]]/new-feature-request) соответствующим образом ваше предложение.
+If you have any changes or new features in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
 
 Спасибо!
 
