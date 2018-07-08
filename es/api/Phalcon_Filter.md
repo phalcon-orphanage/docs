@@ -1,6 +1,6 @@
 # Clase **Phalcon\\Filter**
 
-*implementa* [Phalcon\FilterInterface](/en/3.2/api/Phalcon_FilterInterface)
+*implements* [Phalcon\FilterInterface](/[[language]]/[[version]]/api/Phalcon_FilterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/filter.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
