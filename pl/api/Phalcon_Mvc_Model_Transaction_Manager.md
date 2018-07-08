@@ -1,6 +1,6 @@
 # Class **Phalcon\\Mvc\\Model\\Transaction\\Manager**
 
-*implements* [Phalcon\Mvc\Model\Transaction\ManagerInterface](/en/3.2/api/Phalcon_Mvc_Model_Transaction_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Mvc\Model\Transaction\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_Transaction_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](/[[language]]/[[version]]/api/Phalcon_Di_InjectionAwareInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/transaction/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -48,11 +48,11 @@ try {
 
 ## Metody
 
-public **__construct** ([[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector])
+public **__construct** ([[Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector])
 
 Phalcon\\Mvc\\Model\\Transaction\\Manager constructor
 
-public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -100,15 +100,15 @@ public **rollback** ([*boolean* $collect])
 
 Rollbacks active transactions within the manager Collect will remove the transaction from the manager
 
-public **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](/en/3.2/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
+public **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
 Notifies the manager about a rollbacked transaction
 
-public **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](/en/3.2/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
+public **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
 Notifies the manager about a committed transaction
 
-protected **_collectTransaction** ([Phalcon\Mvc\Model\TransactionInterface](/en/3.2/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
+protected **_collectTransaction** ([Phalcon\Mvc\Model\TransactionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
 Removes transactions from the TransactionManager
 
