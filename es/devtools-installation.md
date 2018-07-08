@@ -40,7 +40,7 @@ Estos pasos le guiarán por el proceso de instalación de las Herramientas del D
 
 ## Prerequisitos
 
-The Phalcon extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](/[[language]]/[[version]]//installation) section for instructions.
+La extensión de Phalcon, es necesaria para ejecutar las Herramientas del Desarrollador de Phalcon. Si no la ha instalado aún, por favor consulte la sección [instalación](/[[language]]/[[version]]//installation) para obtener las instrucciones.
 
 <a name='installation'></a>
 
@@ -60,7 +60,7 @@ git clone git://github.com/phalcon/phalcon-devtools.git
 
 ![](/images/content/devtools-linux-1.png)
 
-Then enter the folder where the tools were cloned and execute `. ./phalcon.sh`, (don't forget the dot at beginning of the command):
+Luego ingrese a la carpeta donde las herramientas fueron clonadas y ejecutar `. ./phalcon.sh`, (no olvides el punto al principio del comando):
 
 ```bash
 cd phalcon-devtools/
@@ -88,7 +88,7 @@ git clone git://github.com/phalcon/phalcon-devtools.git
 
 ![](/images/content/devtools-mac-1.png)
 
-Then enter the folder where the tools were cloned and execute `. ./phalcon.sh`, (don't forget the dot at beginning of the command):
+Luego ingrese a la carpeta donde las herramientas fueron clonadas y ejecutar `. ./phalcon.sh`, (no olvides el punto al principio del comando):
 
 ```bash
 cd phalcon-devtools/
