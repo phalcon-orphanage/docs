@@ -4,15 +4,15 @@
 
 ## Metody
 
-abstract public **setCustomEventsManager** ([Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface) $model, [Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
+abstract public **setCustomEventsManager** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model, [Phalcon\Events\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 ...
 
-abstract public **getCustomEventsManager** ([Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface) $model)
+abstract public **getCustomEventsManager** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model)
 
 ...
 
-abstract public **initialize** ([Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface) $model)
+abstract public **initialize** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model)
 
 ...
 
@@ -24,26 +24,26 @@ abstract public **getLastInitialized** ()
 
 ...
 
-abstract public **setConnectionService** ([Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface) $model, *mixed* $connectionService)
+abstract public **setConnectionService** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model, *mixed* $connectionService)
 
 ...
 
-abstract public **useImplicitObjectIds** ([Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface) $model, *mixed* $useImplicitObjectIds)
+abstract public **useImplicitObjectIds** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model, *mixed* $useImplicitObjectIds)
 
 ...
 
-abstract public **isUsingImplicitObjectIds** ([Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface) $model)
+abstract public **isUsingImplicitObjectIds** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model)
 
 ...
 
-abstract public **getConnection** ([Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface) $model)
+abstract public **getConnection** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model)
 
 ...
 
-abstract public **notifyEvent** (*mixed* $eventName, [Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface) $model)
+abstract public **notifyEvent** (*mixed* $eventName, [Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model)
 
 ...
 
-abstract public **addBehavior** ([Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface) $model, [Phalcon\Mvc\Collection\BehaviorInterface](/en/3.2/api/Phalcon_Mvc_Collection_BehaviorInterface) $behavior)
+abstract public **addBehavior** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model, [Phalcon\Mvc\Collection\BehaviorInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Collection_BehaviorInterface) $behavior)
 
 ...
