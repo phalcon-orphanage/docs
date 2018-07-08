@@ -1,8 +1,8 @@
 # Clase **Phalcon\\Mvc\\View\\Engine\\Volt**
 
-*extiende* de la clase abstracta [ Phalcon\Mvc\View\Engine](/en/3.2/api/Phalcon_Mvc_View_Engine)
+*extends* abstract class [Phalcon\Mvc\View\Engine](/[[language]]/[[version]]/api/Phalcon_Mvc_View_Engine)
 
-*implementa* [ Phalcon\Mvc\View\EngineInterface](/en/3.2/api/Phalcon_Mvc_View_EngineInterface), [ Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [ Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
+*implements* [Phalcon\Mvc\View\EngineInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_View_EngineInterface), [Phalcon\Di\InjectionAwareInterface](/[[language]]/[[version]]/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](/[[language]]/[[version]]/api/Phalcon_Events_EventsAwareInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/view/engine/volt.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
@@ -50,38 +50,38 @@ public **callMacro** (*mixed* $name, [*array* $arguments])
 
 Comprueba si una macro está definida y la llama
 
-public **__construct** ([Phalcon\Mvc\ViewBaseInterface](/en/3.2/api/Phalcon_Mvc_ViewBaseInterface) $view, [[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector]) inherited from [Phalcon\Mvc\View\Engine](/en/3.2/api/Phalcon_Mvc_View_Engine)
+public **__construct** ([Phalcon\Mvc\ViewBaseInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_ViewBaseInterface) $view, [[Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector]) inherited from [Phalcon\Mvc\View\Engine](/[[language]]/[[version]]/api/Phalcon_Mvc_View_Engine)
 
 Phalcon\\Mvc\\View\\Engine constructor
 
-public **getContent** () inherited from [Phalcon\Mvc\View\Engine](/en/3.2/api/Phalcon_Mvc_View_Engine)
+public **getContent** () inherited from [Phalcon\Mvc\View\Engine](/[[language]]/[[version]]/api/Phalcon_Mvc_View_Engine)
 
 Devuelve la salida almacenada en caché en otra etapa de visualización
 
-public *string* **partial** (*string* $partialPath, [*array* $params]) inherited from [Phalcon\Mvc\View\Engine](/en/3.2/api/Phalcon_Mvc_View_Engine)
+public *string* **partial** (*string* $partialPath, [*array* $params]) inherited from [Phalcon\Mvc\View\Engine](/[[language]]/[[version]]/api/Phalcon_Mvc_View_Engine)
 
 Representa una vista parcial dentro de otro punto de vista
 
-public **getView** () inherited from [Phalcon\Mvc\View\Engine](/en/3.2/api/Phalcon_Mvc_View_Engine)
+public **getView** () inherited from [Phalcon\Mvc\View\Engine](/[[language]]/[[version]]/api/Phalcon_Mvc_View_Engine)
 
 Devuelve el componente de vista relacionados con el adaptador
 
-public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public **setDI** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/[[language]]/[[version]]/api/Phalcon_Di_Injectable)
 
 Establece el inyector de dependencias
 
-public **getDI** () inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public **getDI** () inherited from [Phalcon\Di\Injectable](/[[language]]/[[version]]/api/Phalcon_Di_Injectable)
 
 Devuelve el inyector de dependencias interno
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](/[[language]]/[[version]]/api/Phalcon_Di_Injectable)
 
 Establece el gestor de eventos
 
-public **getEventsManager** () inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public **getEventsManager** () inherited from [Phalcon\Di\Injectable](/[[language]]/[[version]]/api/Phalcon_Di_Injectable)
 
 Devuelve el gestor de eventos interno
 
-public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/[[language]]/[[version]]/api/Phalcon_Di_Injectable)
 
 Método mágico __get
