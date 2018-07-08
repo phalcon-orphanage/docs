@@ -16,6 +16,6 @@ public **has** (*mixed* $name)
 
 Checks if a form is registered in the forms manager
 
-public **set** (*mixed* $name, [Phalcon\Forms\Form](/en/3.2/api/Phalcon_Forms_Form) $form)
+public **set** (*mixed* $name, [Phalcon\Forms\Form](/[[language]]/[[version]]/api/Phalcon_Forms_Form) $form)
 
 Registers a form in the Forms Manager
