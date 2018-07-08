@@ -30,7 +30,7 @@
 
 Para acelerar el desarrollo, `Phalcon\Mvc\Model` ayuda a consultar campos y restricciones de las tablas relacionadas con los modelos. Para lograr esto, está disponible `Phalcon\Mvc\Model\MetaData` para administrar y almacenar en caché los metadatos de las tablas.
 
-Sometimes it is necessary to get those attributes when working with models. You can get a metadata instance as follows:
+Muchas veces es necesario obtener estos atributos cuando trabajamos con modelos. Puede obtener una instancia de metadatos, de la siguiente forma:
 
 ```php
 <?php
@@ -58,11 +58,11 @@ Una vez que la aplicación está en una etapa de producción, no es necesario co
 | Adaptador    | Descripción                                                                                                                                                                                                                                                                                                                                                                 | API                                           |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
 | Apc          | Este adaptador utiliza [Alternative PHP Cache (APC)](http://www.php.net/manual/en/book.apc.php) para almacenar los metadatos de tabla. Puede especificar la duración de los metadatos con opciones. (Recomendado para producción).                                                                                                                                          | `Phalcon\Mvc\Model\MetaData\Apc`          |
-| Files        | This adapter uses plain files to store metadata. This adapter reduces database queries but has an increased I/O with the file system.                                                                                                                                                                                                                                       | `Phalcon\Mvc\Model\MetaData\Files`        |
+| Files        | Este adaptador utiliza archivos planos para almacenar los metadatos. Este adaptador reduce las consultas a la base de datos, pero puede incrementar el acceso al sistema de archivos.                                                                                                                                                                                       | `Phalcon\Mvc\Model\MetaData\Files`        |
 | Libmemcached | Este adaptador utiliza el [Servidor Memcached](https://www.memcached.org/) para almacenar los metadatos de la tabla. Los parámetros de servidor así como la duración de la caché se especifica en las opciones. (Recomendado para producción)                                                                                                                               | `Phalcon\Mvc\Model\MetaData\Libmemcached` |
-| Memcache     | This adapter uses [Memcache](http://php.net/manual/en/book.memcache.php) to store the table metadata. Puede especificar la duración de los metadatos con opciones. (Recomendado para producción)                                                                                                                                                                            | `Phalcon\Mvc\Model\MetaData\Memcache`     |
+| Memcache     | Este adaptador utiliza [Memcache](http://php.net/manual/en/book.memcache.php) para almacenar los metadatos de la tabla. Puede especificar la duración de los metadatos con opciones. (Recomendado para producción)                                                                                                                                                          | `Phalcon\Mvc\Model\MetaData\Memcache`     |
 | Memory       | Este adaptador es el predeterminado. Se almacena en caché los metadatos sólo durante la solicitud. Cuando se haya completado la solicitud, los metadatos son liberados como parte de la memoria normal de la solicitud. (Recomendado para el desarrollo)                                                                                                                    | `Phalcon\Mvc\Model\MetaData\Memory`       |
-| Redis        | This adapter uses [Redis](https://redis.io/) to store the table metadata. Los parámetros de servidor así como la duración de la caché se especifica en las opciones. (Recomendado para producción).                                                                                                                                                                         | `Phalcon\Mvc\Model\MetaData\Redis`        |
+| Redis        | Este adaptador utiliza [Redis](https://redis.io/) para almacenar los metadatos de la tabla. Los parámetros de servidor así como la duración de la caché se especifica en las opciones. (Recomendado para producción).                                                                                                                                                       | `Phalcon\Mvc\Model\MetaData\Redis`        |
 | Session      | Este adaptador almacena metadatos en la variable global `$_SESSION`. Este adaptador sólo se recomienda cuando la aplicación está utilizando realmente un pequeño número de modelos. Los metadatos se actualizan cada vez que inicie una nueva sesión. Esto también requiere el uso de `session_start()` para iniciar la sesión antes de utilizar cualquiera de los modelos. | `Phalcon\Mvc\Model\MetaData\Session`      |
 | XCache       | Este adaptador utiliza [XCache](http://xcache.lighttpd.net/) para almacenar los metadatos de la tabla. Puede especificar la duración de los metadatos con opciones. Esta es una de las maneras recomendadas para almacenar metadatos cuando la aplicación está en producción.                                                                                               | `Phalcon\Mvc\Model\MetaData\Xcache`       |
 
@@ -160,7 +160,7 @@ class Robots extends Model
 }
 ```
 
-Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the @Column annotation are handled as simple class attributes.
+Las anotaciones deben colocarse en las propiedades que se asignan a columnas en la fuente asignada. Las propiedades sin la anotación @Column se tratan como atributos simples de la clase.
 
 Son soportadas las siguientes anotaciones:
 
@@ -172,16 +172,16 @@ Son soportadas las siguientes anotaciones:
 
 La anotación @Column admite los siguientes parámetros:
 
-| Nombre               | Descripción                                                                                                                                                                  |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| column               | Nombre real de la columna                                                                                                                                                    |
-| type                 | The column's types: varchar/string (default), text, chr, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
-| length               | Longitud de la columna si lo hubiere                                                                                                                                         |
-| nullable             | Si la columna acepta valores null o no                                                                                                                                       |
-| skip_on_insert     | Omitir esta columna al insertar                                                                                                                                              |
-| skip_on_update     | Omitir esta columna al actualizar                                                                                                                                            |
-| allow_empty_string | Esta columna permite cadenas vacías                                                                                                                                          |
-| default              | Valor por defecto                                                                                                                                                            |
+| Nombre               | Descripción                                                                                                                                                                      |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| column               | Nombre real de la columna                                                                                                                                                        |
+| type                 | Tipos de columnas: varchar/string (por defecto), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
+| length               | Longitud de la columna si lo hubiere                                                                                                                                             |
+| nullable             | Si la columna acepta valores null o no                                                                                                                                           |
+| skip_on_insert     | Omitir esta columna al insertar                                                                                                                                                  |
+| skip_on_update     | Omitir esta columna al actualizar                                                                                                                                                |
+| allow_empty_string | Esta columna permite cadenas vacías                                                                                                                                              |
+| default              | Valor por defecto                                                                                                                                                                |
 
 La estrategia de anotaciones podría ser configurada de esta manera:
 
