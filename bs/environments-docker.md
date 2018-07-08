@@ -119,7 +119,6 @@ Your output should be similar to this:
 ```php
 Example
  Installing phalcon/compose (version)
-
   - Installing phalcon/compose (version)
     Loading from cache
 

@@ -1,6 +1,6 @@
 # Generación de un Backtrace
 
-Sometimes due to segmentation faults, Phalcon could crash some of your web server processes. Please help us to identify the problem by adding a crash backtrace to your bug report.
+A veces, debido a fallas de segmentación, Phalcon podría bloquear algunos de los procesos de su servidor web. Por favor ayúdenos a identificar el problema añadiendo un backtrace del bloqueo de procesos a su informe de fallo.
 
 Por favor sigue estas indicaciones para entender cómo generar el backtrace.
 

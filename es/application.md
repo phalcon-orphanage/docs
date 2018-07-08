@@ -230,7 +230,7 @@ Con este componente se pueden ejecutar varios tipos de estructuras MVC:
 
 ### Módulo simple
 
-Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
+Estas aplicaciones MVC simples cuentan con un solo módulo. Los espacios de nombres pueden ser utilizados pero no son necesarios. Una aplicación como esta puede tener la siguiente estructura de archivos:
 
 ```php
 single/
@@ -354,7 +354,7 @@ try {
 
 ### Multi módulos
 
-A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
+Una aplicación multi-módulos utiliza la misma raíz de documentos para más de un módulo. En este caso, la siguiente estructura de archivo debe ser utilizada:
 
 ```php
 multiple/
@@ -375,7 +375,7 @@ multiple/
     js/
 ```
 
-Each directory in apps/ have its own MVC structure. A Module.php is present to configure specific settings of each module like autoloaders or custom services:
+Cada directorio en `apps/` tiene su propia estructura MVC. El archivo `Module.php` esta presente para configurar cuestiones especificas de cada módulo como autocargadores o servicios personalizados:
 
 ```php
 <?php

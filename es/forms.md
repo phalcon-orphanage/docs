@@ -82,14 +82,14 @@ Los formularios se pueden representar en función de la definición del formular
 
 ```php
 <h1>
-    Contacts
+    Contactos
 </h1>
 
 <form method='post'>
 
     <p>
         <label>
-            Name
+            Nombre
         </label>
 
         <?php echo $form->render('name'); ?>
@@ -97,7 +97,7 @@ Los formularios se pueden representar en función de la definición del formular
 
     <p>
         <label>
-            Telephone
+            Teléfono
         </label>
 
         <?php echo $form->render('telephone'); ?>
@@ -105,14 +105,14 @@ Los formularios se pueden representar en función de la definición del formular
 
     <p>
         <label>
-            Type
+            Tipo
         </label>
 
         <?php echo $form->render('telephoneType'); ?>
     </p>
 
     <p>
-        <input type='submit' value='Save' />
+        <input type='submit' value='Guardar' />
     </p>
 
 </form>
@@ -150,7 +150,7 @@ $form->add(
 
 ## Inicializando formularios
 
-As seen before, forms can be initialized outside the form class by adding elements to it. You can re-use code or organize your form classes implementing the form in a separated file:
+Como vimos anteriormente, los formularios pueden inicializarse fuera de la clase del formulario agregando elementos en el. Es posible reutilizar código u organizar sus clases de formularios implementando el formulario en archivos separados:
 
 ```php
 <?php
@@ -185,7 +185,7 @@ class ContactForm extends Form
                         'name',
                     ],
                     'useEmpty'   => true,
-                    'emptyText'  => 'Select one...',
+                    'emptyText'  => 'Seleccione uno...',
                     'emptyValue' => '',
                 ]
             )
@@ -194,7 +194,7 @@ class ContactForm extends Form
 }
 ```
 
-Additionally, the Select elements support the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and`emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
+Ademas, los elementos Select soportan la opción `useEmpty` para habilitar el uso de un elemento en blanco en la lista de opciones disponibles. Las opciones `emptyText` y `emptyValue` son opcionales, pero le permiten personalizar el texto y el valor del elemento en blanco, respectivamente.
 
 `Phalcon\Forms\Form` extiende de `Phalcon\Di\Injectable` para tener acceso a los servicios de aplicación si es necesario:
 
@@ -296,7 +296,7 @@ $form = new UsersForm(
 
 ## Validación
 
-Phalcon forms are integrated with the [validation](/[[language]]/[[version]]/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
+Los formularios en Phalcon están integrados con el componente [validación](/[[language]]/[[version]]/validation) para ofrecer una validación instantánea. Los validadores incorporados o personalizados se pueden configurar para cada elemento:
 
 ```php
 <?php
@@ -375,7 +375,7 @@ foreach ($messages as $message) {
 
 ## Filtrado
 
-A form is also able to filter data before it is validated. You can set filters in each element:
+Un formulario también puede filtrar los datos antes validarlos. Es posible asignar filtros en cada elemento:
 
 ```php
 <?php
@@ -505,7 +505,7 @@ $form->add(
 );
 ```
 
-Entities can implement getters, which have a higher precedence than public properties. These methods give you more freedom to produce values:
+Las entidades pueden implementar getters, las cuales tienen mayor precedencia en frente de las propiedades públicas. Estos métodos le darán más libertad para producir valores:
 
 ```php
 <?php
@@ -538,12 +538,12 @@ Phalcon proporciona un conjunto de elementos incorporados para utilizar en sus f
 | ----------------------------------- | -------------------------------------------- |
 | `Phalcon\Forms\Element\Check`    | Genera elementos `INPUT[type=check]`         |
 | `Phalcon\Forms\Element\Date`     | Genera elementos `INPUT[type=date]`          |
-| `Phalcon\Forms\Element\Email`    | Generate `INPUT[type=email]` elements        |
+| `Phalcon\Forms\Element\Email`    | Genera elementos `INPUT[type=email]`         |
 | `Phalcon\Forms\Element\File`     | Genera elementos `INPUT[type=file]`          |
 | `Phalcon\Forms\Element\Hidden`   | Genera elementos `INPUT[type=hidden]`        |
 | `Phalcon\Forms\Element\Numeric`  | Genera elementos `INPUT[type=number]`        |
 | `Phalcon\Forms\Element\Password` | Genera elementos `INPUT[type=password]`      |
-| `Phalcon\Forms\Element\Radio`    | Generate `IMPUT[type=radio]` elements        |
+| `Phalcon\Forms\Element\Radio`    | Genera elementos `INPUT[type=radio]`         |
 | `Phalcon\Forms\Element\Select`   | Genera elementos `SELECT` basado en opciones |
 | `Phalcon\Forms\Element\Submit`   | Genera elementos `INPUT[type=submit]`        |
 | `Phalcon\Forms\Element\Text`     | Genera elementos `INPUT[type=text]`          |
@@ -573,7 +573,7 @@ class ContactForm extends Form
 
 ## Presentación de formularios
 
-You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
+Puede representar el formulario con total flexibilidad, el siguiente ejemplo muestra cómo representar cada elemento mediante un procedimiento estándar:
 
 ```php
 <br />&lt;form method='post'&gt;
@@ -682,7 +682,7 @@ class MyElement extends Element
 {
     public function render($attributes = null)
     {
-        $html = // ... Produce some HTML
+        $html = // ... Producir HTML
 
         return $html;
     }

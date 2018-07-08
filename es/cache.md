@@ -99,7 +99,7 @@ Phalcon proporciona la clase `Phalcon\Cache` que permite un acceso más rápido 
 
 ## ¿Cuándo Implementar Caché?
 
-Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
+Aunque este componente es muy rápido, su aplicación en los casos que no es necesario puede llevar a una pérdida de desempeño en lugar de ganancia. Le recomendamos que consulte que estos casos antes de usar un caché:
 
 * Usted está haciendo cálculos complejos que siempre devuelven el mismo resultado (cambian con poca frecuencia)
 * Utiliza un montón de ayudantes y la salida generada es casi siempre la misma
@@ -244,7 +244,7 @@ if ($content === null) {
 
 ## Almacenamiento en Caché de Datos Arbitrarios
 
-Caching just data is equally important for your application. Caching can reduce database load by reusing commonly used (but not updated) data, thus speeding up your application.
+Almacenar sólo datos es igualmente importante para su aplicación. El almacenamiento en caché puede reducir la carga de la base de datos mediante la reutilización de datos comúnmente utilizados (pero no actualizados), acelerando así su aplicación.
 
 <a name='backend-file-example'></a>
 
@@ -398,7 +398,7 @@ $keys = $cache->queryKeys('my-prefix');
 
 ## Eliminación de datos de la caché
 
-There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data). The only requirement is to know the key that the data have been stored with.
+Hay ocasiones en las que se deberá invalidar por la fuerza una entrada de caché (debido a una actualización en los datos en caché). El único requisito es conocer la clave con la que se almacenaron los datos.
 
 ```php
 <?php
@@ -541,14 +541,14 @@ $cache->save('my-key', $data);
 
 Los adaptadores de frontend disponibles que se usan como interfaces o fuentes de entrada para el cache son:
 
-| Adaptador                            | Descripción                                                                                                                                                    |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Cache\Frontend\Output`   | Lee los datos de entrada desde la salida estándar de PHP.                                                                                                      |
-| `Phalcon\Cache\Frontend\Data`     | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                     |
-| `Phalcon\Cache\Frontend\Base64`   | It's used to cache binary data. The data is serialized using `base64_encode` before be stored in the backend.                                                  |
-| `Phalcon\Cache\Frontend\Json`     | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks. |
-| `Phalcon\Cache\Frontend\Igbinary` | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using `Igbinary` before be stored in the backend.                 |
-| `Phalcon\Cache\Frontend\None`     | Se usa para almacenar en caché cualquier tipo de datos PHP sin serializarlos.                                                                                  |
+| Adaptador                            | Descripción                                                                                                                                                                                     |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Cache\Frontend\Output`      | Lee los datos de entrada desde la salida estándar de PHP.                                                                                                                                       |
+| `Phalcon\Cache\Frontend\Data`        | Es utilizado para almacenar cualquier tipo de datos de PHP (arreglos grandes, objectos, texto, etc.). Los datos son serializados antes de ser almacenados en el backend.                        |
+| `Phalcon\Cache\Frontend\Base64`      | Es utilizado para cachear datos binarios. Los datos se serializan utilizando `base64_encode()` antes de almacenarse en el backend.                                                              |
+| `Phalcon\Cache\Frontend\Json`        | Los datos son transformados a JSON antes de ser almacenados en el backend. Decodificados después de ser recuperados. Este método es útil para compartir datos con otros lenguajes o frameworks. |
+| `Phalcon\Cache\Frontend\Igbinary`    | Es utilizado para almacenar cualquier tipo de datos de PHP (arreglos grandes, objectos, texto, etc.). Los datos se serializan utilizando `Igbinary` antes de almacenarse en el backend.         |
+| `Phalcon\Cache\Frontend\None`        | Se usa para almacenar en caché cualquier tipo de datos PHP sin serializarlos.                                                                                                                   |
 
 <a name='adapters-frontend-custom'></a>
 
@@ -609,7 +609,7 @@ Debe implementar la interfaz `Phalcon\Cache\BackendInterface` para crear sus pro
 
 ### Opciones de archivos backend
 
-This backend will store cached content into files in the local server. The available options for this backend are:
+Este backend almacena contenido almacenado en caché en archivos en el servidor local. Las opciones disponibles para este backend son:
 
 | Opción     | Descripción                                                                             |
 | ---------- | --------------------------------------------------------------------------------------- |
@@ -620,7 +620,7 @@ This backend will store cached content into files in the local server. The avail
 
 ### Opciones de back-end para Libmemcached
 
-This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
+Este backend almacena contenido almacenado en caché en un servidor memcached. Por defecto se usan grupos de conexiones de memcached persistentes. Las opciones disponibles para este backend son:
 
 **Opciones Generales**
 
@@ -640,7 +640,7 @@ This backend will store cached content on a memcached server. Per default persis
 
 **Opciones de cliente**
 
-Used for setting Memcached options. See [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) for more.
+Usado para configurar las opciones de Memcached. Vea [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) para más información.
 
 **Ejemplo**
 
@@ -680,7 +680,7 @@ $cache = new Libmemcached(
 
 ### Opciones de back-end para Memcached
 
-This backend will store cached content on a memcached server. The available options for this backend are:
+Este backend almacena contenido almacenado en caché en un servidor memcached. Las opciones disponibles para este backend son:
 
 | Opción       | Descripción                                                    |
 | ------------ | -------------------------------------------------------------- |
@@ -693,7 +693,7 @@ This backend will store cached content on a memcached server. The available opti
 
 ### Opciones de back-end para APC
 
-This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
+Este backend almacenará contenido cacheado en la memoria caché alternativa de PHP ([APC](http://php.net/apc)). Las opciones disponibles son:
 
 | Opción   | Descripción                                                    |
 | -------- | -------------------------------------------------------------- |
@@ -703,7 +703,7 @@ This backend will store cached content on Alternative PHP Cache ([APC](http://ph
 
 ### Opciones de back-end para APCU
 
-This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
+Este backend almacenará contenido cacheado en la memoria caché alternativa de PHP ([APCU](http://php.net/apcu)). Las opciones disponibles son:
 
 | Opción   | Descripción                                                    |
 | -------- | -------------------------------------------------------------- |
@@ -713,7 +713,7 @@ This backend will store cached content on Alternative PHP Cache ([APCU](http://p
 
 ### Opciones de back-end para Mongo
 
-This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
+Este backend almacena contenido cacheado en un servidor de MongoDB ([MongoDB](http://mongodb.org/)). Las opciones disponibles son:
 
 | Opción       | Descripción                                                    |
 | ------------ | -------------------------------------------------------------- |
@@ -726,7 +726,7 @@ This backend will store cached content on a MongoDB server ([MongoDB](http://mon
 
 ### Opciones de back-end para XCache
 
-This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
+Este backend almacenará contenido cacheado en XCache ([XCache](http://xcache.lighttpd.net/)). Las opciones disponibles son:
 
 | Opción   | Descripción                                                    |
 | -------- | -------------------------------------------------------------- |
@@ -736,7 +736,7 @@ This backend will store cached content on XCache ([XCache](http://xcache.lighttp
 
 ### Opciones de back-end para Redis
 
-This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
+Este backend almacena contenido cacheado en un servidor Redis ([Redis](http://redis.io/)). Las opciones disponibles son:
 
 | Opción       | Descripción                                                       |
 | ------------ | ----------------------------------------------------------------- |

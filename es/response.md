@@ -52,7 +52,7 @@ $response->setContent("Lo sentimos, la página no existe");
 $response->send();
 ```
 
-Si usted está usando el MVC de forma completa, no necesita crear las respuestas manualmente. Sin embargo, si usted necesita devolver una respuesta directamente desde la acción de un controlador siga este ejemplo:
+If you are using the full MVC stack there is no need to create responses manually. However, if you need to return a response directly from a controller's action follow this example:
 
 ```php
 <?php
@@ -84,7 +84,7 @@ class FeedController extends Controller
 
 ## Trabajando con Cabeceras
 
-Las cabeceras son una parte importante de la respuesta HTTP. Contiene información útil sobre el estado de respuesta como el estado HTTP, el tipo de respuesta y mucho más.
+Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status, type of response and much more.
 
 Se puede configurar los encabezados de la siguiente manera:
 
@@ -99,7 +99,7 @@ $response->setHeader('Content-Disposition', "attachment; filename='downloaded.pd
 $response->setRawHeader('HTTP/1.1 200 OK');
 ```
 
-Una bolsa de `Phalcon\Http\Response\Headers` internamente gestiona los encabezados. Esta clase recupera las cabeceras antes de enviarlas al cliente:
+A `Phalcon\Http\Response\Headers` bag internally manages headers. This class retrieves the headers before sending it to client:
 
 ```php
 <?php
@@ -191,13 +191,13 @@ $expiryDate->modify('-10 minutes');
 $response->setExpires($expiryDate);
 ```
 
-Los navegadores confían en el reloj del cliente para evaluar si esta fecha ha pasado o no. El reloj del cliente se puede modificar para hacer que las páginas caduquen y esto puede representar una limitación para este mecanismo de caché.
+Browsers rely on the client's clock to assess if this date has passed or not. The client clock can be modified to make pages expire and this may represent a limitation for this cache mechanism.
 
 <a name='http-cache-control'></a>
 
 ### Cache-Control
 
-Este encabezado proporciona una forma más segura de almacenar en caché las páginas servidas. Simplemente debemos especificar un tiempo en segundos que indique al navegador cuánto tiempo debe mantener la página en su caché:
+This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser how long it must keep the page in its cache:
 
 ```php
 <?php

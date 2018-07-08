@@ -59,7 +59,7 @@
 
 # Web Server Setup
 
-Aby routování v aplikaci postavené na Phalcon frameworku fungovalo správně, musíte nastavit Vaš webserver aby správně zpracovával přesměrování a požadavky. Instrukce pro oblíbené webservery jsou:
+In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
 
 <a name='php-fpm'></a>
 
@@ -324,7 +324,7 @@ Tato druhá konfigurace Vám dovolí připravit Phalcon aplikaci jako virtuáln�
 
 ## Cherokee
 
-[Cherokee](http://www.cherokee-project.com/) je vysoce výkonný webserver. Je velmi rychlý, flexibilní a jednoduchý na konfiguraci.
+[Cherokee](http://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
 <a name='cherokee-phalcon-configuration'></a>
 
@@ -344,7 +344,7 @@ Vámi přidaný virtuální server se zobrazí na levé straně obrazovky. Na z�
 
 ![](/images/content/webserver-cherokee-3.jpg)
 
-Pomocí průvodce přidejte `PHP Langauge`. To Vám umožní spouštět PHP aplikace:
+Add the `PHP Language` behavior using the wizard. This behavior allows you to run PHP applications:
 
 ![](/images/content/webserver-cherokee-1.jpg)
 

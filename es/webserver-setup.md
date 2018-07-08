@@ -73,7 +73,7 @@ Crear el archivo `php-fcgi.bat` con el siguiente contenido:
 
 ```bat
 @ECHO OFF
-ECHO Iniciando PHP FastCGI...
+ECHO Starting PHP FastCGI...
 set PATH=C:\PHP;%PATH%
 c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 ```
@@ -323,7 +323,7 @@ Y esta segunda configuración le permite instalar una aplicación de Phalcon en 
 
 ## Cherokee
 
-[Cherokee](http://www.cherokee-project.com/) es un servidor web de alto rendimiento. Es muy rápido, flexible y fácil de configurar.
+[Cherokee](http://www.cherokee-project.com/) es un servidor web de alto desempeño. Es muy rápido, flexible y fácil de configurar.
 
 <a name='cherokee-phalcon-configuration'></a>
 
@@ -343,7 +343,7 @@ El servidor virtual recientemente añadido debe aparecer en la barra izquierda d
 
 ![](/images/content/webserver-cherokee-3.jpg)
 
-Añade el comportamiento de `Lenguaje PHP` utilizando el asistente. Este comportamiento permite ejecutar aplicaciones de PHP:
+Agregar el comportamiento `PHP Language` utilizando el asistente. Este comportamiento le permite correr aplicaciones PHP:
 
 ![](/images/content/webserver-cherokee-1.jpg)
 
