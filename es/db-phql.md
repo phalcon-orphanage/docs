@@ -85,7 +85,7 @@ En PHQL, hemos implementado un conjunto de características para hacer más segu
 
 ## Ejemplo de Uso
 
-To better explain how PHQL works consider the following example. We have two models `Cars` and `Brands`:
+Para explicar mejor cómo trabaja PHQL, considere el siguiente ejemplo. Tenemos dos modelos `Cars` y `Brands`:
 
 ```php
 <?php
@@ -306,7 +306,7 @@ foreach ($cars as $car) {
 
 Sólo estamos solicitando algunos campos de la tabla, por lo tanto, aquellos no pueden considerarse un objeto completo, por lo que el objeto devuelto es todavía un resultset de tipo `Phalcon\Mvc\Model\Resultset\Simple`. Sin embargo, cada elemento es un objeto estándar que sólo contiene las dos columnas que fueron solicitadas.
 
-These values that don't represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
+Estos valores no representan objectos completos, son los que llamamos escalares. PHQL acepta que consultes todos los tipos de escalares: campos, funciones, literales, expresiones, etc..:
 
 ```php
 <?php
@@ -330,7 +330,7 @@ $phql = 'SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name';
 $result = $manager->executeQuery($phql);
 ```
 
-The result in this case is an object `Phalcon\Mvc\Model\Resultset\Complex`. This allows access to both complete objects and scalars at once:
+El resultado en este caso se un objeto `Phalcon\Mvc\Model\Resultset\Complex`. Este permite el acceso a objectos completos y escalares a la vez:
 
 ```php
 <?php
@@ -348,7 +348,7 @@ Los escalares se asignan como propiedades de cada 'fila', mientras que objetos c
 
 ### Uniones (Joins)
 
-It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined relationships in the models, PHQL adds these conditions automatically:
+Es fácil solicitar registros de múltiples modelos usando PHQL. Son soportadas la mayoría de los tipos de uniones. Como definimos las relaciones en los modelos, PHQL agrega automáticamente estas condiciones:
 
 ```php
 <?php
@@ -363,7 +363,7 @@ foreach ($rows as $row) {
 }
 ```
 
-By default, an INNER JOIN is assumed. You can specify the type of JOIN in the query:
+Por defecto, se asume un INNER JOIN. Siempre puedes especificar el tipo de JOIN en la consulta:
 
 ```php
 <?php
@@ -487,7 +487,7 @@ foreach ($rows as $row) {
 
 ### Condiciones
 
-Conditions allow us to filter the set of records we want to query. The `WHERE` clause allows to do that:
+Las condiciones nos permiten filtrar el conjunto de resultados que queremos consultar. La clausula `WHERE` nos permite hacer esto:
 
 ```php
 <?php
@@ -653,7 +653,7 @@ Una instrucción `UPDATE` realiza la actualización en dos etapas:
 * En primer lugar, si el `UPDATE` tiene una cláusula `WHERE` se recuperan todos los objetos que coincidan con estos criterios,
 * En segundo lugar, en función de los objetos consultados, actualiza/cambia los atributos solicitados y los almacena en la base de datos relacional
 
-This way of operation allows that events, virtual foreign keys and validations take part of the updating process. In summary, the following code:
+Este modo de operación permite que los eventos, claves externas virtuales y validaciones tomen parte del proceso de actualización. En resumen, el siguiente código:
 
 ```php
 <?php
@@ -725,7 +725,7 @@ $manager->executeQuery(
 );
 ```
 
-`DELETE` operations are also executed in two phases like `UPDATEs`. To check if the deletion produces any validation messages you should check the status code returned:
+Las operaciones de `DELETE` son ejecutadas en dos fases, como en `UPDATE`. Para comprobar si la eliminación produce algún mensaje de validación, debemos comprobar el código de estado retornado:
 
 ```php
 <?php
@@ -984,7 +984,7 @@ Model::setup(
 );
 ```
 
-Bound parameters can be used even if literals are allowed or not. Disallowing them is just another security decision a developer could take in web applications.
+Los parámetros enlazados pueden ser utilizados, incluso, si los literales están o no permitidos. No aceptarlos es solo otra decisión de seguridad que un desarrollador podría tomar en las aplicaciones web.
 
 <a name='escaping-reserved-words'></a>
 
@@ -1012,7 +1012,7 @@ Al ser un lenguaje de alto nivel, PHQL da a los desarrolladores la capacidad de 
 
 * El PHQL es analizado y convertido en una Representación Intermedia (IR) que es independiente de la implementada por el sistema de base de datos de SQL
 * La IR se convierte en SQL válido según el sistema de base de datos asociado al modelo
-* PHQL statements are parsed once and cached in memory. Further executions of the same statement result in a slightly faster execution
+* Las declaraciones PHQL son analizadas una vez y cacheadas en memoria. Las ejecuciones posteriores de la misma instrucción dan como resultado una ejecución ligeramente más rápida
 
 <a name='raw-sql'></a>
 
