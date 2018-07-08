@@ -146,7 +146,7 @@ Accediendo al proyecto desde el servidor web le mostrará lo siguiente:
 
 ## Generando controladores
 
-The command `create-controller` generates controller skeleton structures. It's important to invoke this command inside a directory that already has a Phalcon project.
+El comando `create-controller` genera la estructura esquelética del controlador. Es importante para invocar este comando dentro de un directorio que ya tiene un proyecto Phalcon.
 
 ```bash
 $ phalcon create-controller --name prueba
@@ -200,9 +200,9 @@ return new \Phalcon\Config([
         'libraryDir'     => APP_PATH . '/library/',
         'cacheDir'       => BASE_PATH . '/cache/',
 
-        // This allows the baseUri to be understand project paths that are not in the root directory
-        // of the webpspace.  This will break if the public/index.php entry point is moved or
-        // possibly if the web server rewrite rules are changed. This can also be set to a static path.
+        // Esto permite que la baseUri entienda las rutas del proyecto que no están en el 
+        // directorio raíz del espacio web.  Esto se romperá si se mueve el punto de entrada public/index.php o 
+        // posiblemente si se cambian las reglas de reescritura del servidor web. Esto también se puede establecer en una ruta estática.
         'baseUri'        => preg_replace('/public([\/\\\\])index.php$/', '', $_SERVER["PHP_SELF"]),
     ]
 ]);
@@ -373,7 +373,7 @@ Una vez que el código está generado, debe modificarse para cumplir con sus nec
 $ phalcon scaffold --table-name products
 ```
 
-The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
+El generador del CRUD generará varios archivos en la aplicación, justo con algunas carpetas. Aquí hay una descripción general rápida de lo que se generará:
 
 | Archivo                                  | Propósito                                 |
 | ---------------------------------------- | ----------------------------------------- |
@@ -392,7 +392,7 @@ La `página crear` permite crear productos aplicando los validadores en el model
 
 ![](/images/content/devtools-usage-04.png)
 
-After performing a search, a pager component is available to show paged results. Use the "Edit" or "Delete" links in front of each result to perform such actions.
+Después de realizar una búsqueda, hay disponible un componente de paginado para mostrar los resultados paginados. Use los enlaces "Editar" o "Eliminar" delante de cada resultado para realizar tales acciones.
 
 ![](/images/content/devtools-usage-05.png)
 
@@ -400,7 +400,7 @@ After performing a search, a pager component is available to show paged results.
 
 ## Interfaz web para herramientas
 
-Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
+Además, si lo prefiere, es posible usar las Herramientas de Desarrollador de Phalcon desde una interfaz web. Echa un vistazo al siguiente video tutorial para descubrir cómo funciona:
 
 <div align="center">
 <iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen mark="crwd-mark"></iframe>
