@@ -1,6 +1,6 @@
 # Abstract class **Phalcon\\Session\\Adapter**
 
-*implements* [Phalcon\Session\AdapterInterface](/en/3.2/api/Phalcon_Session_AdapterInterface)
+*implements* [Phalcon\Session\AdapterInterface](/[[language]]/[[version]]/api/Phalcon_Session_AdapterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/session/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
