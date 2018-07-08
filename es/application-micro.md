@@ -225,7 +225,7 @@ $app = new Micro();
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Esta es la orden: {$name}!</h1>";
     }
 );
 
@@ -277,7 +277,7 @@ Generalmente, la ruta de inicio en una aplicación, es la ruta `/` y en la mayor
 $app->get(
     '/',
     function () {
-        echo '<h1>Welcome!</h1>';
+        echo '<h1>¡Bienvenido!</h1>';
     }
 );
 ```
@@ -297,7 +297,7 @@ $app = new Micro();
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Esta es la orden: {$name}!</h1>";
     }
 );
 ```
@@ -359,7 +359,7 @@ Finalmente podemos utilizar una función anónima (como se ve arriba) para atend
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Esta es la orden: {$name}!</h1>";
     }
 );
 ```
@@ -386,7 +386,7 @@ Podemos definir una función como nuestro manejador y adjuntarlo a una ruta espe
 ```php
 // Con una función
 function order_display($name) {
-    echo "<h1>This is order: {$name}!</h1>";
+    echo "<h1>Esta es la orden: {$name}!</h1>";
 }
 
 $app->get(
@@ -405,7 +405,7 @@ También podemos usar un método estático como nuestro gestor, como se muestra 
 class OrdersClass
 {
     public static function display($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Esta es la orden: {$name}!</h1>";
     }
 }
 
@@ -425,7 +425,7 @@ También podemos usar un método en un objeto:
 class OrdersClass
 {
     public function display($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Esta es la orden: {$name}!</h1>";
     }
 }
 
@@ -664,7 +664,7 @@ $app->notFound(
         $app->response->setStatusCode(404, 'Not Found');
         $app->response->sendHeaders();
 
-        $message = 'Nothing to see here. Move along....';
+        $message = 'Nada que ver aqui. Sigue adelante...';
         $app->response->setContent($message);
         $app->response->send();
     }
@@ -838,7 +838,7 @@ Brevemente, hemos visto anteriormente cómo los parámetros están definidos en 
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Esta es la orden: {$name}!</h1>";
     }
 );
 ```
@@ -850,7 +850,7 @@ También podemos aplicar ciertas reglas para cada parámetro, utilizando expresi
 $app->get(
     '/orders/display/{id:[0-9]+}',
     function ($id) {
-        echo "<h1>This is order: #{$id}!</h1>";
+        echo "<h1>Esta es la orden: #{$id}!</h1>";
     }
 );
 
@@ -858,8 +858,8 @@ $app->get(
 $app->get(
     '/posts/{year:[0-9][4]}/{title:[a-zA-Z\-]+}',
     function ($year, $title) {
-        echo '<h1>Title: $title</h1>';
-        echo '<h2>Year: $year</h2>';
+        echo '<h1>Título: $title</h1>';
+        echo '<h2>Año: $year</h2>';
     }
 );
 ```
@@ -882,7 +882,7 @@ $app->post('/old/url',
 
 $app->post('/new/welcome',
     function () use ($app) {
-        echo 'This is the new Welcome';
+        echo 'Esta es la nueva Bienvenida';
     }
 );
 ```
@@ -940,7 +940,7 @@ $app->get(
     '/',
     function () use ($app) {
         $url = sprintf(
-            '<a href="%s">Show the order</a>',
+            '<a href="%s">Mostrar la orden</a>',
             $app->url->get(
                 [
                     'for' => 'show-order',
@@ -969,7 +969,7 @@ $app = new Micro();
 $app->get(
     '/',
     function () use ($app) {
-        $app->response->setContent('Hello!!');
+        $app->response->setContent('¡Hola!');
         $app->response->send();
     }
 );
@@ -1008,7 +1008,7 @@ $app->get(
 $app->post(
     '/contact',
     function () use ($app) {
-        $app->flash->success('What are you doing Dave?');
+        $app->flash->success('¿Qué estás haciendo Dave?');
     }
 );
 ```
@@ -1063,7 +1063,7 @@ Los Manejadores pueden devolver respuestas simples utilizando texto sin formato,
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>This is order: {$name}!</h1>";
+        echo "<h1>Esta es la orden: {$name}!</h1>";
     }
 );
 ```
@@ -1165,7 +1165,7 @@ $app->get(
         $response = new Response();
 
         $response->setStatusCode(401, 'Unauthorized');
-        $response->setContent('Access is not authorized');
+        $response->setContent('Acceso no autorizado');
 
         return $response;
     }
@@ -1186,7 +1186,7 @@ $app->get(
         $data = [
             'code'    => 401,
             'status'  => 'error',
-            'message' => 'Unauthorized access',
+            'message' => 'Acceso no autorizado',
             'payload' => [],
         ];
 
@@ -1238,7 +1238,7 @@ $eventsManager->attach(
     'micro:beforeExecuteRoute',
     function (Event $event, $app) {
         if ($app->session->get('auth') === false) {
-            $app->flashSession->error("The user isn't authenticated");
+            $app->flashSession->error("El usuario no esta autorizado");
 
             $app->response->redirect('/');
             $app->response->sendHeaders();
@@ -1329,7 +1329,7 @@ $app = new Phalcon\Mvc\Micro();
 $app->before(
     function () use ($app) {
         if (false === $app['session']->get('auth')) {
-            $app['flashSession']->error("The user isn't authenticated");
+            $app['flashSession']->error("El usuario no esta autorizado");
 
             $app['response']->redirect('/error');
 
@@ -1392,7 +1392,7 @@ Agregar un middleware para tu aplicación es muy fácil como se muestra arriba, 
 $app->before(
     function () use ($app) {
         if (false === $app['session']->get('auth')) {
-            $app['flashSession']->error("The user isn't authenticated");
+            $app['flashSession']->error("El usuario no esta autorizado");
 
             $app['response']->redirect('/error');
 

@@ -36,10 +36,10 @@ El proceso de paginación ocurre cuando tenemos que presentar gradualmente grand
 Este componente hace uso de adaptadores para encapsular diferentes fuentes de datos:
 
 | Adaptador                                   | Descripción                                                                                                                                                                                   |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Paginator\Adapter\NativeArray`  | Usa un array PHP como origen de datos                                                                                                                                                         |
-| `Phalcon\Paginator\Adapter\Model`        | Utiliza un objeto `Phalcon\Mvc\Model\Resultset` como origen de datos. Como PDO no admite cursores desplazables, este adaptador no se debe usar para paginar una gran cantidad de registros |
-| `Phalcon\Paginator\Adapter\QueryBuilder` | Utiliza un objeto `Phalcon\Mvc\Model\Query\Builder` como origen de datos                                                                                                                  |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Phalcon\Paginator\Adapter\NativeArray`     | Usa un array PHP como origen de datos                                                                                                                                                      |
+| `Phalcon\Paginator\Adapter\Model`           | Utiliza un objeto `Phalcon\Mvc\Model\Resultset` como origen de datos. Como PDO no admite cursores desplazables, este adaptador no se debe usar para paginar una gran cantidad de registros |
+| `Phalcon\Paginator\Adapter\QueryBuilder`    | Utiliza un objeto `Phalcon\Mvc\Model\Query\Builder` como origen de datos                                                                                                                   | 
 
 <a name='factory'></a>
 

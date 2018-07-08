@@ -130,10 +130,10 @@ Los adaptadores disponibles son:
 
 | Clase                            | Descripción                                                                                                                 |
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Config\Adapter\Ini`  | Utiliza archivos INI para almacenar la configuración. Internamente el adaptador utiliza la función `parse_ini_file` de PHP. |
-| `Phalcon\Config\Adapter\Json` | Utiliza archivos JSON para almacenar la configuración.                                                                      |
-| `Phalcon\Config\Adapter\Php`  | Utiliza arrays multidimensionales de PHP para almacenar la configuración. Este adaptador ofrece el mejor desempeño.         |
-| `Phalcon\Config\Adapter\Yaml` | Utiliza archivos YAML para almacenar la configuración.                                                                      |
+| `Phalcon\Config\Adapter\Ini`     | Utiliza archivos INI para almacenar la configuración. Internamente el adaptador utiliza la función `parse_ini_file` de PHP. |
+| `Phalcon\Config\Adapter\Json`    | Utiliza archivos JSON para almacenar la configuración.                                                                      |
+| `Phalcon\Config\Adapter\Php`     | Utiliza arrays multidimensionales de PHP para almacenar la configuración. Este adaptador ofrece el mejor desempeño.         |
+| `Phalcon\Config\Adapter\Yaml`    | Utiliza archivos YAML para almacenar la configuración.                                                                      |
 
 <a name='ini-files'></a>
 
