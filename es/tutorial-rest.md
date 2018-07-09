@@ -87,7 +87,7 @@ En primer lugar, necesitamos un archivo `.htaccess` que contiene todas las regla
 </IfModule>
 ```
 
-The bulk of our code will be placed in `index.php`. The file is created as follows:
+La mayor parte de nuestro código se colocará en `index.php`. Es creado un archivo como el sigue:
 
 ```php
 <?php
@@ -451,7 +451,7 @@ $app->post(
 
 ## Actualizando datos
 
-The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
+La actualización de datos es similar a la inserción. El `id` como parámetro indica qué robot debe actualizarse [archivo: `index.php`]:
 
 ```php
 <?php
@@ -513,7 +513,7 @@ $app->put(
 
 ## Borrando datos
 
-The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
+El borrado de datos es similar a la actualización. El `id` como parámetro indica qué robot debe borrarse [archivo: `index.php`]:
 
 ```php
 <?php

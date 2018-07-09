@@ -223,7 +223,7 @@ class MyComponent implements EventsAwareInterface
 }
 ```
 
-Notice that in this example, we're using the `my-component` event namespace. Now we need to create an event listener for this component:
+Tenga en cuenta que en este ejemplo, estamos utilizando para el evento el espacio de nombres `my-component`. Ahora necesitamos crear un oyente para este componente:
 
 ```php
 <?php
@@ -381,7 +381,7 @@ $eventsManager->fire('my-component:afterSomeTask', $this, $extraData, false);
 
 ## Prioridades del Oyente
 
-When attaching listeners you can set a specific priority. With this feature you can attach listeners indicating the order in which they must be called:
+Cuando adjuntamos oyentes, puede especificar la prioridad. Con esta característica puede adjuntar oyentes indicando el orden en el que deben ser llamados:
 
 ```php
 <?php
@@ -397,7 +397,7 @@ $eventsManager->attach('db', new DbListener(), 50);  // Menos prioridad
 
 ## Recogiendo Respuestas
 
-The events manager can collect every response returned by every notified listener. This example explains how it works:
+El administrador de eventos puede recoger cada respuesta devuelta por cada oyente notificado. Este ejemplo explica como funciona:
 
 ```php
 <?php

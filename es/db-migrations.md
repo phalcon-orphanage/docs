@@ -36,11 +36,11 @@ Las migraciones son una manera conveniente para modificar su base de datos en un
 
 <div class="alert alert-danger">
     <p>
-        Migrations are available in <a href="/[[language]]/[[version]]/devtools-usage">Phalcon Developer Tools</a> You need at least Phalcon Framework version 0.5.0 to use developer tools.
+        Las migraciones están disponibles en las <a href="/[[language]]/[[version]]/devtools-usage">Herramientas de desarrollador de Phalcon</a> usted necesita por lo menos Phalcon versión 0.5.0 para utilizar herramientas de desarrollo.
     </p>
 </div>
 
-Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.
+A menudo, en desarrollo, necesitamos actualizar los cambios en los entornos de producción. Algunos de estos cambios podrían ser modificaciones en la base de datos, como nuevos campos, nuevas tablas, eliminación de índices, etc.
 
 Cuando se genera una migración se crea un conjunto de clases para describir cómo está estructurada la base de datos en ese preciso momento. Estas clases pueden utilizarse para sincronizar la estructura del esquema en bases de datos remotas configurando su base de datos para trabajar con los nuevos cambios que implementa la aplicación. Las migraciones describen estas transformaciones usando simple PHP.
 
@@ -52,21 +52,21 @@ Cuando se genera una migración se crea un conjunto de clases para describir có
 
 ## Volcado de esquema
 
-The [Phalcon Developer Tools](/[[language]]/[[version]]/devtools-usage) provides scripts to manage migrations (generation, running and rollback).
+Las [Herramientas de desarrollador de Phalcon](/[[language]]/[[version]]/devtools-usage) proporcionan secuencias de comandos para administrar las migraciones (generación, ejecución y cancelación).
 
-The available options for generating migrations are:
+Las opciones disponibles para la generación de migraciones son:
 
 ![](/images/content/migrations-1.png)
 
-Running this script without any parameters will simply dump every object (tables and views) from your database into migration classes.
+Ejecutando este script sin ningún parámetro simplemente descargará todos los objetos (tablas y vistas) de la base de datos en clases de migración.
 
-Each migration has a version identifier associated with it. The version number allows us to identify if the migration is newer or older than the current 'version' of our database. Versions will also inform Phalcon of the running order when executing a migration.
+Cada migración tiene un identificador de versión asociado. El número de versión nos permite identificar si la migración es más reciente o no, de la actual 'versión' de nuestra base de datos. Las versiones también informarán a Phalcon del orden de ejecución, cuando se ejecuta una migración.
 
 ![](/images/content/migrations-2.png)
 
-When a migration is generated, instructions are displayed on the console to describe the different steps of the migration and the execution time of those statements. At the end, a migration version is generated.
+Cuando se genera una migración, las instrucciones se muestran en la consola para describir los diferentes pasos de la migración y el tiempo de ejecución de esas declaraciones. Al final, se genera la versión de la migración.
 
-By default [Phalcon Developer Tools](/[[language]]/[[version]]/devtools-usage) uses the `app/migrations` directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version:
+Por defecto la [Herramienta para desarrolladores de Phalcon](/[[language]]/[[version]]/devtools-usage) utiliza el directorio `app/migrations` para volcar los archivos de migración. Usted puede cambiar la ubicación ajustando uno de los parámetros en el script de generación. Cada tabla de la base de datos tiene su respectiva clase generada en un archivo separado en un directorio que referencia su versión:
 
 ![](/images/content/migrations-2.png)
 
@@ -74,9 +74,9 @@ By default [Phalcon Developer Tools](/[[language]]/[[version]]/devtools-usage) u
 
 ## Anatomía de la clase de migración
 
-Each file contains a unique class that extends the `Phalcon\Mvc\Model\Migration` class. These classes normally have two methods: `up()` and `down()`. `up()` performs the migration, while `down()` rolls it back.
+Cada archivo contiene una clase única que extiende la clase `Phalcon\Mvc\Model\Migration`. Estas clases normalmente tienen dos métodos: `up()` y `down()`. `up()` realiza la migración, mientras que `down()` la deshace.
 
-`up()` also contains the `magic` method `morphTable()`. The magic comes when it recognizes the changes needed to synchronize the actual table in the database to the description given.
+`up()` también contiene los métodos `magic` y `morphTable()`. La magia viene cuando reconoce los cambios necesarios para sincronizar la tabla real en la base de datos a la descripción dada.
 
 ```php
 <?php
@@ -171,34 +171,34 @@ class ProductsMigration_100 extends Migration
 }
 ```
 
-The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.0.0. `morphTable()` receives an associative array with 4 possible sections:
+La clase es llamada `ProductsMigration_100`. El sufijo 100 se refiere a la versión 1.0.0. `morphTable()` recibe un arreglo asociativo con 4 posibles secciones:
 
-| Índice       | Descripción                                                                                                                                 | Opcional |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | Una matriz con el conjunto de columnas de la tabla                                                                                          |    No    |
-| `indexes`    | Una matriz con el conjunto de índices de la tabla.                                                                                          |    Sí    |
-| `references` | Una matriz con el conjunto de referencias de la tabla (claves foráneas).                                                                    |    Sí    |
-| `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |    Sí    |
+| Índice       | Descripción                                                                                                                                                       | Opcional |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
+| `columns`    | Una matriz con el conjunto de columnas de la tabla                                                                                                                |    No    |
+| `indexes`    | Una matriz con el conjunto de índices de la tabla.                                                                                                                |    Sí    |
+| `references` | Una matriz con el conjunto de referencias de la tabla (claves foráneas).                                                                                          |    Sí    |
+| `options`    | Un array con un conjunto de opciones para crear la tabla. Estas opciones a menudo se relacionan con el sistema de base de datos en el que se generó la migración. |    Sí    |
 
 <a name='defining-columns'></a>
 
 ### Definición de columnas
 
-`Phalcon\Db\Column` is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
+`Phalcon\Db\Column` se utiliza para definir las columnas de la tabla. Encapsula una gran variedad de características relacionadas con la columna. Su constructor recibe como primer parámetro el nombre de columna y como segundo, una matriz que describe la misma. Las siguientes opciones están disponibles cuando se describen las columnas:
 
-| Opción          | Descripción                                                                                                                                | Opcional |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
-| `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below)                                                                          |    No    |
-| `size`          | Algunos tipos de columnas como `VARCHAR` o `INTEGER` puede tener un tamaño específico                                                      |    Sí    |
-| `scale`         | Las columnas `DECIMAL` o `NUMBER` pueden tener una escala para especificar cuántos decimales deben almacenarse                             |    Sí    |
-| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |    Sí    |
-| `notNull`       | ¿La columna puede almacenar valores nulos?                                                                                                 |    Sí    |
-| `default`       | Define un valor predeterminado para una columna (sólo puede ser un valor real, no una función como `NOW()`)                                |    Sí    |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |    Sí    |
-| `first`         | La columna debe colocarse en primera posición en el orden de columnas                                                                      |    Sí    |
-| `after`         | La columna debe colocarse después de la columna indicada                                                                                   |    Sí    |
+| Opción          | Descripción                                                                                                                                                | Opcional |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
+| `type`          | Tipo de columna. Debe ser una constante de `Phalcon\Db\Column` (ver lista de abajo)                                                                      |    No    |
+| `size`          | Algunos tipos de columnas como `VARCHAR` o `INTEGER` puede tener un tamaño específico                                                                      |    Sí    |
+| `scale`         | Las columnas `DECIMAL` o `NUMBER` pueden tener una escala para especificar cuántos decimales deben almacenarse                                             |    Sí    |
+| `unsigned`      | Las columnas `INTEGER` puede tener o no signo. Esta opción no se aplica a otros tipos de columnas                                                          |    Sí    |
+| `notNull`       | ¿La columna puede almacenar valores nulos?                                                                                                                 |    Sí    |
+| `default`       | Define un valor predeterminado para una columna (sólo puede ser un valor real, no una función como `NOW()`)                                                |    Sí    |
+| `autoIncrement` | Con este atributo, la columna se completará automáticamente con un número entero auto-incremental. Solo una columna en la tabla puede tener este atributo. |    Sí    |
+| `first`         | La columna debe colocarse en primera posición en el orden de columnas                                                                                      |    Sí    |
+| `after`         | La columna debe colocarse después de la columna indicada                                                                                                   |    Sí    |
 
-Database migrations support the following database column types:
+Las migraciones de bases de datos admiten los siguientes tipos de columna:
 
 * `Phalcon\Db\Column::TYPE_INTEGER`
 * `Phalcon\Db\Column::TYPE_VARCHAR`
@@ -223,28 +223,28 @@ Database migrations support the following database column types:
 
 ### Definición de índices
 
-`Phalcon\Db\Index` defines table indexes. An index only requires that you define a name for it and a list of its columns. Tenga en cuenta que si cualquier índice tiene el nombre `PRIMARY`, Phalcon creará un índice de clave principal para esa tabla.
+`Phalcon\Db\Index` define los índices de la tabla. Un índice solo requiere que definas un nombre y una lista de sus columnas. Tenga en cuenta que si cualquier índice tiene el nombre `PRIMARY`, Phalcon creará un índice de clave principal para esa tabla.
 
 <a name='defining-references'></a>
 
 ### Definición de referencias
 
-`Phalcon\Db\Reference` defines table references (also called foreign keys). The following options can be used to define a reference:
+`Phalcon\Db\Reference` define las referencias de la tabla (también llamadas llaves o claves foraneas). Las siguientes opciones pueden ser utilizadas para definir referencias:
 
-| Índice              | Descripción                                                                                         | Opcional | Implementado en  |
-| ------------------- | --------------------------------------------------------------------------------------------------- |:--------:| ---------------- |
-| `referencedTable`   | It's auto-descriptive. It refers to the name of the referenced table.                               |    No    | Todos            |
-| `columns`           | Una matriz con el nombre de las columnas en la tabla que tiene la referencia                        |    No    | Todos            |
-| `referencedColumns` | Una matriz con el nombre de las columnas de la tabla de referencia                                  |    No    | Todos            |
-| `referencedSchema`  | The referenced table maybe is on another schema or database. This option allows you to define that. |    Sí    | Todos            |
-| `onDelete`          | Si se elimina el registro foráneo, realizar esta acción en el o los registros locales.              |    Sí    | MySQL PostgreSQL |
-| `onUpdate`          | Si se actualiza el registro foráneo, realizar esta acción en el o los registros locales.            |    Sí    | MySQL PostgreSQL |
+| Índice              | Descripción                                                                                                           | Opcional | Implementado en  |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------- |:--------:| ---------------- |
+| `referencedTable`   | Es auto descriptiva. Se refiere al nombre de la tabla a la que se hace referencia.                                    |    No    | Todos            |
+| `columns`           | Una matriz con el nombre de las columnas en la tabla que tiene la referencia                                          |    No    | Todos            |
+| `referencedColumns` | Una matriz con el nombre de las columnas de la tabla de referencia                                                    |    No    | Todos            |
+| `referencedSchema`  | La tabla a la que se hace referencia puede estar en otro esquema o base de datos. Esta opción te permite definir eso. |    Sí    | Todos            |
+| `onDelete`          | Si se elimina el registro foráneo, realizar esta acción en el o los registros locales.                                |    Sí    | MySQL PostgreSQL |
+| `onUpdate`          | Si se actualiza el registro foráneo, realizar esta acción en el o los registros locales.                              |    Sí    | MySQL PostgreSQL |
 
 <a name='writing-migrations'></a>
 
 ## Escribiendo migraciones
 
-Migrations aren't only designed to 'morph' table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. Para más detalles y ejemplos de cada método, revise el [componente de base de datos](/[[language]]/[[version]]/db-layer).
+Las migraciones no son sólo diseñadas para 'modificar' tablas. Una migración es sólo una clase regular de PHP por lo que no está limitado simplemente a estas funciones. Por ejemplo, después de agregar una columna, puedes escribir un código para establecer el valor de la columna en los registros existentes. Para más detalles y ejemplos de cada método, revise el [componente de base de datos](/[[language]]/[[version]]/db-layer).
 
 ```php
 <?php
@@ -276,10 +276,10 @@ class ProductsMigration_100 extends Migration
 
 ## Ejecutando migraciones
 
-Once the generated migrations are uploaded on the target server, you can easily run them as shown in the following example:
+Una vez que las migraciones generadas se cargan en el servidor de destino, usted puede fácilmente ejecutarlas como se muestra en el ejemplo siguiente:
 
 ![](/images/content/migrations-4.png)
 
 ![](/images/content/migrations-5.png)
 
-Depending on how outdated is the database with respect to migrations, Phalcon may run multiple migration versions in the same migration process. If you specify a target version, Phalcon will run the required migrations until it reaches the specified version.
+Dependiendo de cuan desactualizada este la base de datos con respecto a las migraciones, Phalcon puede ejecutar varias versiones de la migración en el mismo proceso de migración. Si especifica una versión de destino, Phalcon ejecutará las migraciones necesarias hasta llegar a la versión especificada.

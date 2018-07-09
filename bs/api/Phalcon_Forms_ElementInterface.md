@@ -4,7 +4,7 @@
 
 ## Methods
 
-abstract public **setForm** ([Phalcon\Forms\Form](/en/3.2/api/Phalcon_Forms_Form) $form)
+abstract public **setForm** ([Phalcon\Forms\Form](/[[language]]/[[version]]/api/Phalcon_Forms_Form) $form)
 
 ...
 
@@ -36,7 +36,7 @@ abstract public **addValidators** (*array* $validators, [*mixed* $merge])
 
 ...
 
-abstract public **addValidator** ([Phalcon\Validation\ValidatorInterface](/en/3.2/api/Phalcon_Validation_ValidatorInterface) $validator)
+abstract public **addValidator** ([Phalcon\Validation\ValidatorInterface](/[[language]]/[[version]]/api/Phalcon_Validation_ValidatorInterface) $validator)
 
 ...
 
@@ -112,11 +112,11 @@ abstract public **hasMessages** ()
 
 ...
 
-abstract public **setMessages** ([Phalcon\Validation\Message\Group](/en/3.2/api/Phalcon_Validation_Message_Group) $group)
+abstract public **setMessages** ([Phalcon\Validation\Message\Group](/[[language]]/[[version]]/api/Phalcon_Validation_Message_Group) $group)
 
 ...
 
-abstract public **appendMessage** ([Phalcon\Validation\MessageInterface](/en/3.2/api/Phalcon_Validation_MessageInterface) $message)
+abstract public **appendMessage** ([Phalcon\Validation\MessageInterface](/[[language]]/[[version]]/api/Phalcon_Validation_MessageInterface) $message)
 
 ...
 

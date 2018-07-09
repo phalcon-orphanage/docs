@@ -1,6 +1,6 @@
 # Class **Phalcon\\Http\\Request\\File**
 
-*implements* [Phalcon\Http\Request\FileInterface](/en/3.2/api/Phalcon_Http_Request_FileInterface)
+*implements* [Phalcon\Http\Request\FileInterface](/[[language]]/[[version]]/api/Phalcon_Http_Request_FileInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/request/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 

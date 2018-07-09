@@ -114,7 +114,7 @@ Usando Composer, se puede crear un nuevo proyecto de la siguiente forma:
 
 $ `composer create-project phalcon/compose --prefer-dist <nombre de la carpeta>`
 
-Your output should be similar to this:
+Su salida debería ser similar a esto:
 
 ```php
 Example
@@ -134,7 +134,7 @@ Generating autoload files
 
 ### Con Git
 
-Another way to initialize your project is with Git.
+Otra forma de inicializar su proyecto es con Git.
 
 $ `git clone git@github.com:phalcon/phalcon-compose.git`
 
@@ -144,13 +144,13 @@ $ `git clone git@github.com:phalcon/phalcon-compose.git`
     </p>
 </div>
 
-Add your Phalcon Application into `application` folder.
+Añadir la aplicación Phalcon en la carpeta `application`.
 
 <a name='configuration'></a>
 
 ## Configuración
 
-Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as follows:
+Añadir `phalcon.local` (o su nombre de host preferido) en el archivo `/etc/hosts` como se muestra a continuación:
 
 $ `127.0.0.1 www.phalcon.local phalcon.local`
 
@@ -158,11 +158,11 @@ $ `127.0.0.1 www.phalcon.local phalcon.local`
 
 ## Uso
 
-You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
+Ahora puede construir, crear, iniciar y adjuntar a contenedores al entorno para su aplicación. Para construir los contenedores use el siguiente comando dentro de la raíz del proyecto:
 
 $ `docker-compose build`
 
-To start the application and run the containers in the background, use following command inside project root:
+Para iniciar la aplicación y ejecutar los contenedores en segundo plano, utilice el siguiente comando dentro de la raíz del proyecto:
 
 También puede usar aquí, el nombre del proyecto preferido, con el parámetro `-p <mi-aplicación>`
 
@@ -174,13 +174,13 @@ Reemplazar el proyecto en **<project_app_1>** con el nombre de su directorio/pro
 
 $ `docker exec -t <project_app_1> phalcon project application simple`
 
-Now you can now launch your application in your browser visiting `http://phalcon.local` (or the host name you chose above).
+Ahora puede lanzar la aplicación en su navegador ingresando a `http://phalcon.local` (o el nombre de host que elegiste anteriormente).
 
 <a name='setup'></a>
 
 ## Configurar
 
-If your application uses a file cache or writes logs to files, you can set up your cache and log folders as follows:
+Si su aplicación utiliza un caché de archivos o escribe registros de logs en archivos, puede configurar la memoria de caché y carpetas para los registros de la siguiente manera:
 
 | Directorio | Ruta             |
 | ---------- | ---------------- |
@@ -191,13 +191,13 @@ If your application uses a file cache or writes logs to files, you can set up yo
 
 ## Registro de logs
 
-For most containers you can access the logs using the `docker logs <container_name>` command in your host machine.
+Para la mayoría de los recipientes puede acceder a los registros utilizando el comando `docker logs <nombre_del_contenedor>` en tu ordenador.
 
 <a name='environment-variables'></a>
 
 ## Variables de entorno
 
-You can pass multiple environment variables from an external file to a service's containers by editing the `variables.env` file.
+Usted puede pasar varias variables de entorno desde un archivo externo a los contenedores del servicio, editando el archivo `variables.env`.
 
 <a name='environment-variables-web'></a>
 
@@ -217,17 +217,17 @@ You can pass multiple environment variables from an external file to a service's
 
 ### Variables de phpMyAdmin
 
-| Variable de entorno | Descripción                                                                                                                | Por defecto |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `PMA_ARBITRARY`     | Cuándo se configura en 1 se permitirá la conexión con el servidor.                                                         | 1           |
-| `PMA_HOST`          | Definir dirección o nombre de host del servidor MySQL.                                                                     | mysql       |
-| `PMA_HOSTS`         | Define comma separated list of address/host names of the MySQL servers. Used only if `PMA_HOST` is empty.                  |             |
-| `PMA_PORT`          | Definir el puerto del servidor MySQL.                                                                                      | 3306        |
-| `PMA_VERBOSE`       | Definir el nombre detallado del servidor MySQL.                                                                            |             |
-| `PMA_VERBOSES`      | Define comma separated list of verbose names of the MySQL servers. Used only if `PMA_VERBOSE` is empty.                    |             |
-| `PMA_USER`          | Definir el nombre de usuario para configuración el método de autenticación.                                                | phalcon     |
-| `PMA_PASSWORD`      | Definir la contraseña a utilizar para configurar el método de autenticación.                                               | secret      |
-| `PMA_ABSOLUTE_URI`  | Ruta completa de acceso (por ejemplo https://pma.example.net/) donde el proxy inverso hace que phpMyAdmin este disponible. |             |
+| Variable de entorno | Descripción                                                                                                                   | Por defecto |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `PMA_ARBITRARY`     | Cuándo se configura en 1 se permitirá la conexión con el servidor.                                                            | 1           |
+| `PMA_HOST`          | Definir dirección o nombre de host del servidor MySQL.                                                                        | mysql       |
+| `PMA_HOSTS`         | Definir lista separada por comas de nombres de host/dirección de los servidores de MySQL. Usar sólo si `PMA_HOST` está vacía. |             |
+| `PMA_PORT`          | Definir el puerto del servidor MySQL.                                                                                         | 3306        |
+| `PMA_VERBOSE`       | Definir el nombre detallado del servidor MySQL.                                                                               |             |
+| `PMA_VERBOSES`      | Definir lista separada por comas de nombres detallados de los servidores de MySQL. Usar sólo si `PMA_VERBOSE` está vacía.     |             |
+| `PMA_USER`          | Definir el nombre de usuario para configuración el método de autenticación.                                                   | phalcon     |
+| `PMA_PASSWORD`      | Definir la contraseña a utilizar para configurar el método de autenticación.                                                  | secret      |
+| `PMA_ABSOLUTE_URI`  | Ruta completa de acceso (por ejemplo https://pma.example.net/) donde el proxy inverso hace que phpMyAdmin este disponible.    |             |
 
 *Ver también*
 
@@ -239,7 +239,7 @@ You can pass multiple environment variables from an external file to a service's
 
 ## Depurador remoto Xdebug (PhpStorm)
 
-For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
+Para propósitos de depuración puede configurar Xdebug pasando los parámetros requeridos (ver variables.env).
 
 | Variable de entorno          | Descripción                                           | Por defecto    |
 | ---------------------------- | ----------------------------------------------------- | -------------- |
@@ -248,7 +248,7 @@ For debugging purposes you can setup Xdebug by passing required parameters (see 
 | `XDEBUG_REMOTE_AUTOSTART`    | Valor de `php.ini` para `xdebug.remote_autostart`.    | Off            |
 | `XDEBUG_REMOTE_CONNECT_BACK` | Valor de `php.ini` para `xdebug.remote_connect_back`. | Off            |
 
-*NOTE* You can find your local IP address as follows:
+*Nota* Puede encontrar su dirección IP local como se muestra a continuación:
 
 **Linux/macOS**
 
@@ -266,7 +266,7 @@ $ `ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .`
 
 ### Inicio o enlace de errores
 
-If you got any startup issues you can try to rebuild app container. There will be no loss of data., it is a safe reset:
+Si tiene algún problema de inicio, puede intentar reconstruir el contenedor de la aplicación. No habrá pérdida de datos. Es un reinicio seguro:
 
 ```bash
 docker-compose stop
@@ -279,7 +279,7 @@ docker-compose up -d
 
 ### Reinicio completo
 
-To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in `application` folder:
+Para restablecer todos los contenedores, eliminar todos los datos (mysql, elasticsearch, etcétera) pero no los archivos de proyectos en carpeta `aplicación`:
 
 ```bash
 docker-compose stop
@@ -292,7 +292,7 @@ docker-compose up -d
 
 ### Actualización de dependencias
 
-Sometimes the base images (for example `phalconphp/php-apache:ubuntu-16.04`) are updated. Phalcon Compose depends on these images. You will therefore need to update them and it is always a good thing to do so to ensure that you have the latest functionality available. The dependent containers to these images will need to be updated and rebuilt:
+A veces las imágenes de base (por ejemplo `phalconphp/php-apache: ubuntu-16.04`) se actualizan. Phalcon Compose depende de estas imágenes. Por lo tanto usted tendrá que actualizarlas y siempre es bueno hacerlo para asegurar que tenga la funcionalidad más reciente disponible. Los contenedores dependientes de estas imágenes tendrán que ser actualizados y reconstruidos:
 
 ```bash
 docker pull mongo:3.4
@@ -307,12 +307,12 @@ docker pull elasticsearch:5.2-alpine
 docker pull phalconphp/php-apache:ubuntu-16.04
 ```
 
-Linux/MacOS users can use `make` to perform the task:
+Los usuarios de Linux/MacOS pueden utilizar `make` para realizar la tarea:
 
 $ `make pull`
 
-Then you have to reset all containers, delete all data, rebuild services and restart application.
+Luego tienes que reiniciar todos los contenedores, eliminar todos los datos, reconstruir los servicios y reiniciar la aplicación.
 
-Linux/MacOS users can use `make` to perform the task:
+Los usuarios de Linux/MacOS pueden usar `make` para realizar la tarea:
 
 $ `make reset`
