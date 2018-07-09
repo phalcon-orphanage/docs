@@ -1,6 +1,6 @@
 # Class **Phalcon\\Mvc\\Collection\\Document**
 
-*implements* [Phalcon\Mvc\EntityInterface](/en/3.2/api/Phalcon_Mvc_EntityInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
+*implements* [Phalcon\Mvc\EntityInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_EntityInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/collection/document.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 

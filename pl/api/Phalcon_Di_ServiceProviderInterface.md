@@ -4,6 +4,6 @@
 
 ## Methods
 
-abstract public **register** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $di)
+abstract public **register** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $di)
 
 ...

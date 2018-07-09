@@ -4,7 +4,7 @@
 
 ## Metody
 
-abstract public **setFormatter** ([Phalcon\Logger\FormatterInterface](/en/3.2/api/Phalcon_Logger_FormatterInterface) $formatter)
+abstract public **setFormatter** ([Phalcon\Logger\FormatterInterface](/[[language]]/[[version]]/api/Phalcon_Logger_FormatterInterface) $formatter)
 
 ...
 

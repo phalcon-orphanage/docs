@@ -1,6 +1,6 @@
 # Clase **Phalcon\\Acl\\Exception**
 
-*extiende* de la clase [Phalcon\Exception](/en/3.2/api/Phalcon_Exception)
+*extends* class [Phalcon\Exception](/[[language]]/[[version]]/api/Phalcon_Exception)
 
 *implementa* [Throwable](http://php.net/manual/en/class.throwable.php)
 
