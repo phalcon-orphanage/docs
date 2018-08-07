@@ -24,7 +24,7 @@
 
 ## Descargar la versión correcta de Phalcon
 
-WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMPP installation.
+WAMP tiene dos versiones 32 y 64 bits. De la sección de descargas, puedes descargar la DLL de Phalcon que se adapte a tu instalación WAMPP.
 
 Después de descargar la biblioteca Phalcon tendrás un archivo zip como se muestra a continuación:
 
@@ -48,7 +48,7 @@ y guarda los cambios.
 
 ![](/images/content/webserver-wamp-2.png)
 
-Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Agrega esto al final del archivo:
+Edite el archivo `php.ini`, que esta en `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Agrega esto al final del archivo:
 
 ```ini
 extension=php_phalcon.dll
@@ -56,15 +56,15 @@ extension=php_phalcon.dll
 
 y guarda los cambios.
 
-Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose "Restart All Services" from the pop-up menu. Check out that tray icon will become green again.
+Reinicie el servidor web Apache. Haga clic en el icono WampServer de la barra tray. Seleccione "Reiniciar todos los servicios" desde el menú pop. Compruebe que el icono vuelva a estar en verde nuevamente.
 
 ![](/images/content/webserver-wamp-3.png)
 
-Open your browser to navigate to `http://localhost`. The WAMP welcome page will appear. Check the section "extensions loaded" to ensure that phalcon was loaded.
+Abra su navegador web y navegué a `http://localhost`. Aparecerá la página de bienvenida de WAMP. Comprueba la sección "extensiones cargadas" para asegurarse que este cargado Phalcon.
 
 ![](/images/content/webserver-wamp-4.png)
 
-Congratulations! You are now phlying with Phalcon.
+¡Felicitaciones! Estas volando con Phalcon.
 
 <a name='related'></a>
 
