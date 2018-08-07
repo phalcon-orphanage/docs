@@ -24,7 +24,7 @@
 
 # Guía de Pruebas
 
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
+Escribir pruebas adecuadas puede ayudar a escribir mejor software. Si ha configurado correctamente los casos de prueba puede eliminar errores funcionales y mantener mejor su software.
 
 <a name='integration'></a>
 
@@ -59,7 +59,7 @@ A continuación, necesitamos un archivo de 'helper' (ayudante) para arrancar la 
 
 ## El archivo de ayuda de PHPUnit
 
-A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your `tests/` directory as `TestHelper.php`.
+Un archivo de ayuda es necesario para arrancar la aplicación y ejecutar las pruebas. Hemos preparado un archivo de ejemplo. Coloque el archivo `TestHelper.php` en su directorio de pruebas `tests/`.
 
 ```php
 <?php
@@ -150,15 +150,15 @@ Ahora, cree un archivo `phpunit.xml` como el siguiente:
 </phpunit>
 ```
 
-Modify the `phpunit.xml` to fit your needs and save it in `tests`. This will run any tests under the `tests` directory.
+Modificar el archivo `phpunit.xml` a sus necesidades y guardarlo en `tests`. Esto hará correr cualquier prueba del directorio `tests`.
 
 <a name='sample'></a>
 
 ## Ejemplo de Test Unitario
 
-To run any Unit Tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
+Para ejecutar pruebas unitarias será necesario definirlas. El autocargador se asegurará que se carguen los archivos correctos, todo lo que necesitas hacer es crear los archivos y phpunit ejecutará las pruebas para usted.
 
-This example does not contain a config file, most test cases however, do need one. You can add it to the `DI` to get the `UnitTestCase` file.
+Este ejemplo no contiene un archivo de configuración, pero la mayoría de los casos de prueba sí lo necesitan. Puede agregarlo al `DI` para obtener el archivo `UnitTestCase`.
 
 En primer lugar crear una prueba unitaria base llamada `UnitTestCase.php` en el directorio de `tests`:
 
@@ -205,7 +205,7 @@ abstract class UnitTestCase extends PhalconTestCase
 }
 ```
 
-It's always a good idea to separate your Unit Tests in namespaces. For this test we will create the namespace 'Test'. So create a file called `tests\Test\UnitTest.php`:
+Siempre es una buena idea separar sus pruebas unitarias en espacios de nombres. Para esta prueba crearemos el espacio de nombres 'Test'. Entonces creamos un archivo llamado `tests\Test\UnitTest.php`:
 
 ```php
 <?php
