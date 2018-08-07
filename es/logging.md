@@ -181,7 +181,7 @@ El registro generado está abajo:
 [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a parameter
 ```
 
-You can also set a log level using the `setLogLevel()` method. This method takes a Logger constant and will only save log messages that are as important or more important than the constant:
+También puede establecer un nivel de registro usando el método `setLogLevel()`. Este método toma una constante del Logger y sólo almacenará mensajes que son tan importantes o más importantes que la constante:
 
 ```php
 <?php
@@ -196,7 +196,7 @@ $logger->setLogLevel(
 );
 ```
 
-In the example above, only critical and emergency messages will get saved to the log. By default, everything is saved.
+En el ejemplo anterior, solo los mensajes críticos y de emergencia se guardarán en el registro. Por defecto, todo está guardado.
 
 <a name='transactions'></a>
 
@@ -272,7 +272,7 @@ Los mensajes se envían a los controladores en el orden en que se registraron.
 
 ## Formato de mensaje
 
-This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:
+Este componente utiliza `formatters` para formatear mensajes antes de enviarlos al backend. Los formateadores disponibles son:
 
 | Adaptador                             | Descripción                                                     |
 | ------------------------------------- | --------------------------------------------------------------- |
@@ -285,13 +285,13 @@ This component makes use of `formatters` to format messages before sending them 
 
 ### Formateador de línea
 
-Formats the messages using a one-line string. The default logging format is:
+Formato de mensajes utilizando una cadena de texto de una línea. El formato por defecto de los mensajes es:
 
 ```bash
 [%date%][%type%] %message%
 ```
 
-You can change the default format using `setFormat()`, this allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
+Puede cambiar el formato predeterminado utilizando `setFormat()`, esto le permite cambiar el formato de los mensajes registrados mediante la definición de uno propio. Las variables de formato de registro permitidas son:
 
 | Variable  | Descripción                        |
 | --------- | ---------------------------------- |
@@ -328,7 +328,7 @@ Los siguientes ejemplos muestran el uso básico de cada adaptador:
 
 ### Stream Logger
 
-The stream logger writes messages to a valid registered stream in PHP. A list of streams is available [here](http://php.net/manual/en/wrappers.php):
+El registro en stream escrime mensajes en una secuencia registrada valida para PHP. Lista disponible de [streams](http://php.net/manual/en/wrappers.php):
 
 ```php
 <?php
@@ -366,7 +366,7 @@ $logger = new FileAdapter(
 
 ### Syslog Logger
 
-This logger sends messages to the system logger. The syslog behavior may vary from one operating system to another.
+Este logger envía mensajes al sistema de registro del sistema. El comportamiento del syslog puede variar entre distintos sistemas operativos.
 
 ```php
 <?php
