@@ -20,7 +20,7 @@
 
 Actividades como el procesamiento de vídeos, redimensionamiento de imágenes o enviar correos electrónicos no son adecuados para ser ejecutados en línea o en tiempo real porque puede disminuir el tiempo de carga de páginas y afectan seriamente la experiencia de usuario.
 
-The best solution here is to implement background jobs. The web application puts jobs into a queue and which will be processed separately.
+Aquí la mejor solución es implementar trabajos en segundo plano. La aplicación web pone trabajos en una cola y que se procesarán por separado.
 
 Mientras que usted puede encontrar extensiones PHP más sofisticadas para atender la formación de colas en sus aplicaciones como [RabbitMQ](http://pecl.php.net/package/amqp); Phalcon provee a un cliente para [Beanstalk](http://www.igvita.com/2010/05/20/scalable-work-queues-with-beanstalk/), un backend de colas de trabajo inspirado en [Memcached](http://memcached.org/). Es simple, ligero y totalmente especializado para la formación de colas de trabajo.
 
@@ -34,7 +34,7 @@ Mientras que usted puede encontrar extensiones PHP más sofisticadas para atende
 
 ## Poner Trabajos en la Cola
 
-After connecting to Beanstalk you can insert as many jobs as required. You can define the message structure according to the needs of the application:
+Después de conectar a Beanstalk puede insertar tantos trabajos como sea necesario. Puede definir la estructura del mensaje según las necesidades de la aplicación:
 
 ```php
 <?php
@@ -64,7 +64,7 @@ Opciones de conexión disponibles:
 | host   | IP donde se encuentra el servidor Beanstalk | 127.0.0.1      |
 | port   | Puerto de conexión                          | 11300          |
 
-In the above example we stored a message which will allow a background job to process a video. The message is stored in the queue immediately and does not have a certain time to live.
+En el ejemplo anterior almacenamos un mensaje que permite al trabajo en segundo plato procesar un video. Este mensaje es almacenado inmediatamente en una cola y no tiene un tiempo de vida definido.
 
 Las opciones adicionales como: tiempo de funcionamiento, prioridad y el retardo pueden ser pasadas como segundo parámetro:
 
@@ -86,11 +86,11 @@ $queue->put(
 
 Las siguientes opciones están disponibles:
 
-| Opción   | Descripción                                                                                                                                                                                 |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| priority | It's an integer < 2**32. Jobs with smaller priority values will be scheduled before jobs with larger priorities. The most urgent priority is 0; the least urgent priority is 4,294,967,295. |
-| delay    | It's an integer number of seconds to wait before putting the job in the ready queue. The job will be in the 'delayed' state during this time.                                               |
-| ttr      | Time to run -- is an integer number of seconds to allow a worker to run this job. This time is counted from the moment a worker reserves this job.                                          |
+| Opción   | Descripción                                                                                                                                                                                                |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| priority | Es un entero < 2 ** 32. Trabajos con valores menores de prioridad se programará antes de trabajos con prioridades más grandes. La prioridad más urgente es 0; la menos urgente prioridad es 4.294.967.295. |
+| delay    | Es un número entero de segundos a esperar antes de poner el trabajo en la cola de lista. El trabajo estará en estado 'retrasado' durante este tiempo.                                                      |
+| ttr      | Time To Run (tiempo para ejecutar), es un número entero de segundos que se permite al trabajador realizar este trabajo. Este tiempo es contado desde el momento en que el trabajador reserva este trabajo. |
 
 Cada trabajo puesto en la cola retornará un `job id` con el cual es posible hacer un seguimiento del trabajo:
 
@@ -142,7 +142,7 @@ Nuestro cliente implementa un conjunto básico de características provistas por
 
 ### Colas múltiples
 
-Beanstalkd supports multiple queues (called 'tubes') to allow for a single queue server to act as a hub for a variety of workers. Phalcon supports this readily.
+Beanstalkd soporta múltiples colas (llamadas 'tubos') para permitir a un servidor de colas simple actuar como un hub para una variedad de trabajadores. Phalcon permite hacer esto fácilmente.
 
 Ver los tubos disponibles en el servidor y elegir un tubo para que el objeto de la cola lo use, ver el siguiente ejemplo:
 
@@ -166,7 +166,7 @@ $current_tube = $queue->listTubeUsed();
 
 ### Manipulación de tubos
 
-Tubes can be paused and resumed if needed. The example below pauses `myOtherTube` for 3 minutes.
+Los tubos pueden ser pausados y reanudados si es necesario. En el siguiente ejemplo pausamos el tubo `myOtherTube` por 3 minutos.
 
 ```php
 <?php
@@ -201,7 +201,7 @@ $server_status = $queue->readStatus();
 
 Beanstalkd admite la gestión de trabajos con la idea de retrasar un trabajo y eliminar un trabajo de la cola para su posterior procesamiento.
 
-Burying a job is typically used to deal with potential problems outside of the worker that can be resolved. This takes the job and puts it into the buried queue.
+Enterrar un trabajo generalmente se usa para tratar problemas potenciales fuera del trabajador que pueden resolverse. Este toma el trabajo y lo pone en una cola enterrada.
 
 ```php
 <?php
@@ -210,7 +210,7 @@ $job = $queue->reserve();
 $job->bury();
 ```
 
-A list of buried jobs is stored on the server. You can inspect the first buried job in the queue.
+Una lista enterrada de trabajos es almacenada en el servidor. Puede inspeccionar el primer trabajo enterrado en la cola.
 
 ```php
 <?php
@@ -220,7 +220,7 @@ $job_data = $queue->peekBuried();
 
 Si la cola de trabajos enterrados esta vacía, esto retornará `false`, en el caso contrario, retorna el objecto de trabajo.
 
-You can kick the first [N] buried jobs in the buried queue to put it/them back in the ready queue. Below is an example of kicking the first three buried jobs.
+Puede patear los primeros trabajos enterrados [N] en la cola enterrada para ponerlos de nuevo en la lista de espera. A continuación un ejemplo de patear los primeros tres trabajos enterrados.
 
 ```php
 <?php
@@ -240,7 +240,7 @@ $job->release(100, 180);
 
 La prioridad y el retraso son las mismas cuando pone un trabajo en la cola.
 
-Inspecting a job in the queue can be accomplished with `jobPeek($job_id)`. The example below attempts to peek at job id 5.
+Inspeccionar un trabajo en la cola puede ser realizado con `jobPeek($job_id)`. El ejemplo siguiente intentamos ver el trabajo con id 5.
 
 ```php
 <?php
@@ -248,7 +248,7 @@ Inspecting a job in the queue can be accomplished with `jobPeek($job_id)`. The e
 $queue->jobPeek(5)
 ```
 
-Jobs that have been `delete`ed cannot be inspected and will return `false`. Ready, buried, and delayed jobs will return a Job object.
+Los trabajos que han sido borrados `delete` no pueden ser inspeccionados y retornarán `false`. Los trabajos listos, enterrados y retrasados retornarán un objecto Job.
 
 ### Lecturas adicionales
 
