@@ -96,7 +96,7 @@ invo/
     schemas/
 ```
 
-As you know, Phalcon does not impose a particular file structure for application development. This project has a simple MVC structure and a public document root.
+Como ya sabes, Phalcon no impone una estructura específica de archivos para el desarrollo de aplicaciones. Este proyecto tiene una estructura MVC simple y un directorio público raíz.
 
 Una vez que usted abra la aplicación en su navegador `http://localhost/invo` verás algo como esto:
 
@@ -125,7 +125,7 @@ use Phalcon\Config\Adapter\Ini as ConfigIni;
 
 // ...
 
-// Read the configuration
+// Leer la configuración
 $config = new ConfigIni(
     APP_PATH . 'app/config/config.ini'
 );
@@ -163,7 +163,7 @@ La segunda parte que aparece en el archivo bootstrap (`public/index.php`) es el 
 <?php
 
 /**
- * Auto-loader configuration
+ * Configuración del auto cargador
  */
 require APP_PATH . 'app/config/loader.php';
 ```
@@ -206,13 +206,13 @@ define(
 
 ## Registro de servicios
 
-Another file that is required in the bootstrap is (`app/config/services.php`). This file allows us to organize the services that INVO uses.
+Otro archivo es requerido en el arranque es `app/config/services.php`. Este archivo nos permite organizar los servicios que utiliza INVO.
 
 ```php
 <?php
 
 /**
- * Load application services
+ * Cargar los servicios de la aplicación
  */
 require APP_PATH . 'app/config/services.php';
 ```
@@ -273,7 +273,7 @@ En la primera línea del bloque de código anterior, el constructor de la clase 
 
 Hay muchas maneras de registrar servicios en el contenedor. En INVO, la mayoría de los servicios se han registrado mediante funciones anónimas. Gracias a esto, se crean instancias de los objetos de una manera perezosa, reduciendo los recursos necesarios para la aplicación.
 
-For instance, in the following excerpt the session service is registered. The anonymous function will only be called when the application requires access to the session data:
+Por ejemplo, en el siguiente extracto, se registra el servicio de sesión. La función anónima solo se ejecutará cuando la aplicación requiera acceso a los datos de la sesión:
 
 ```php
 <?php
@@ -306,8 +306,8 @@ use Phalcon\Di\FactoryDefault;
 
 // ...
 
-// The FactoryDefault Dependency Injector automatically registers the
-// right services providing a full-stack framework
+// El inyector de dependencias FactoryDefault automáticamente registra
+// todos los servicios provistos por el framework
 $di = new FactoryDefault();
 ```
 
@@ -319,7 +319,7 @@ Registra la mayoría de los servicios con componentes proporcionados por defecto
 
 Un `inicio de sesión` nos permitirá trabajar en los controladores del backend. La separación entre controladores de backend y frontend es solo por lógica. Todos los controladores se encuentran en el mismo directorio (`app/controladores/`).
 
-To enter the system, users must have a valid username and password. Users are stored in the table `users` in the database `invo`.
+Para ingresar al sistema, los usuarios deben tener un usuario y contraseña validos. Los usuarios sojn almacenados en la tabla `users` en la base de datos `invo`.
 
 Antes de que podamos iniciar una sesión, tenemos que configurar la conexión a la base de datos en la aplicación. Un servicio llamado `db` está configurado en el contenedor de servicios con la información de conexión. Con el autocargador, estamos otra vez tomando parámetros del archivo de configuración para configurar un servicio:
 
@@ -347,9 +347,9 @@ $di->set(
 );
 ```
 
-Here, we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a logger, a profiler or change the adapter, setting it up as you want.
+Aquí, retornamos una instancia del adaptador de conexión MySQL. Si es necesario, puede realizar acciones adicionales, como agregar un registrador, un generador de perfiles o cambiar el adaptador, configurándolo como desee.
 
-The following simple form (`app/views/session/index.volt`) requests the login information. We've removed some HTML code to make the example more concise:
+El siguiente formulario simple (`app/views/session/index.volt`) solicita la información de inicio de sesión. Hemos eliminado algunos códigos HTML para que el ejemplo sea más conciso:
 
 ```twig
 {{ form('session/start') }}
@@ -671,7 +671,7 @@ class SecurityPlugin extends Plugin
 
 Los eventos enganchados siempre reciben un primer parámetro que contiene información contextual del evento producido (`$event`) y un segundo que es el objeto que produjo el evento en sí (`$dispatcher`). No es obligatorio que los plugins extiendan de la clase `Phalcon\Mvc\User\Plugin`, pero al hacerlo, obtienen un acceso más fácil a los servicios disponibles en la aplicación.
 
-Now, we're verifying the role in the current session, checking if the user has access using the ACL list. If the user does not have access we redirect to the home screen as explained before:
+Ahora, estamos verificando el rol en la sesión actual, verificando si el usuario tiene acceso usando la lista de ACL. Si el usuario no tiene acceso, lo redirigiremos a la pantalla de inicio como se explicó anteriormente:
 
 ```php
 <?php
@@ -759,7 +759,7 @@ foreach ($roles as $role) {
 }
 ```
 
-Now, we define the resources for each area respectively. Controller names are resources and their actions are accesses for the resources:
+Ahora, definimos los recursos para cada área respectivamente. Los nombres de los controladores son recursos y sus acciones son accesos a los recursos:
 
 ```php
 <?php
@@ -940,7 +940,7 @@ public function indexAction()
 }
 ```
 
-An instance of the `ProductsForm` form (`app/forms/ProductsForm.php`) is passed to the view. This form defines the fields that are visible to the user:
+Una instancia del formulario `ProductsForm` (`app/forms/ProductsForm.php`) es pasada a la vista. Este formulario define los campos que son visibles para el usuario:
 
 ```php
 <?php
@@ -1224,7 +1224,7 @@ Este método comprueba que los valores son diferentes de `''` (cadena vacía) y 
 * Si el tipo de datos de campo es texto o similar (char, varchar, text, etcetera). Utiliza un operador `like` de SQL para filtrar los resultados.
 * Si el tipo de datos no es texto o similar, usara el operador `=`.
 
-Additionally, `Criteria` ignores all the `$_POST` variables that do not match any field in the table. Values are automatically escaped using `bound parameters`.
+Adicionalmente, `Criteria` ingnora todas las variables `$_POST` si no coinciden con ningún campo de la tabla. Los valores son automáticamente escapados utilizando `parámetros enlazados`.
 
 Ahora, guardamos los parámetros producidos en la bolsa de sesión del controlador:
 
@@ -1257,7 +1257,7 @@ if (count($products) === 0) {
 }
 ```
 
-If the search doesn't return any product, we forward the user to the index action again. Let's pretend the search returned results, then we create a paginator to navigate easily through them:
+Si la búsqueda no devuelve ningún producto, reenviamos al usuario a la acción índice nuevamente. Supongamos que la búsqueda devuelve resultados, entonces creamos un paginator para navegar fácilmente a través de ellos:
 
 ```php
 <?php
@@ -1386,7 +1386,7 @@ El bloque entero `for` proporciona lo siguiente:
 {% endfor %}
 ```
 
-Now you can go back to the view and find out what every block is doing. Every field in `product` is printed accordingly:
+Ahora puede volver a la vista y descubrir qué está haciendo cada bloque. Cada campo en `product` es impreso respectivamente:
 
 ```twig
 <tr>
@@ -1834,7 +1834,7 @@ La parte importante es:
 
 ## Cambiando dinámicamente el título
 
-When you browse between one option and another will see that the title changes dynamically indicating where we are currently working. This is achieved in each controller initializer:
+Cuando se navega entre una opción y otra, veremos que el título cambia dinámicamente, lo que indica donde estamos trabajando. Esto se logra en cada inicializador de controlador:
 
 ```php
 <?php
