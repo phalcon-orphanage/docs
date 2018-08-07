@@ -113,7 +113,7 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 $image->save('new-image.jpg');
 ```
 
-You can also change the format of the image:
+También puede cambiar el formato de la imagen:
 
 ```php
 <?php
@@ -320,7 +320,7 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 $watermark = new \Phalcon\Image\Adapter\Gd('me.jpg');
 
-// Put the watermark in the top left corner
+// Poner la marca de agua en la esquina superior izquierda
 $offsetX = 10;
 $offsetY = 10;
 
