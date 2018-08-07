@@ -27,7 +27,7 @@
 
 ## Descargar la versión correcta de Phalcon
 
-XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
+XAMPP es siempre liberado en versiones de 32 bits de Apache y PHP. Es necesario que descargue la versión x86 de Phalcon para Windows de la sección de descargas.
 
 Después de descargar la biblioteca Phalcon, tendrá un archivo zip como se muestra a continuación:
 
@@ -37,7 +37,7 @@ Extraiga la biblioteca del archivo para obtener la DLL de Phalcon:
 
 ![](/images/content/webserver-xampp-2.png)
 
-Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`:
+Copia el archivo `php_phalcon.dll` en la carpeta de extensiones de PHP. Si tiene instalado XAMPP en la carpeta `C:\xampp`, la extensión debe ir en el directorio `C:\xampp\php\ext`:
 
 ![](/images/content/webserver-xampp-3.png)
 
@@ -51,11 +51,11 @@ y guarde los cambios.
 
 ![](/images/content/webserver-xampp-4.png)
 
-Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration.
+Reiniciar el servidor web Apache desde el control de control de XAMPP. Esto cargará la nueva configuración de PHP.
 
 ![](/images/content/webserver-xampp-5.png)
 
-Open your browser to navigate to `http://localhost`. The XAMPP welcome page will appear. Click on the link `phpinfo()`.
+Abra su navegador web y navegué a `http://localhost`. Aparecerá la página de bienvenida de XAMPP. Haga clic en el link `phpinfo()`.
 
 ![](/images/content/webserver-xampp-6.png)
 
