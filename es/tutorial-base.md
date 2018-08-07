@@ -123,7 +123,7 @@ Este archivo gestiona 3 cosas:
 
 Los Cargadores Automáticos utilizan un cargador de archivos compatible con [PSR-4](http://www.php-fig.org/psr/psr-4/) a través de Phalcon. Otras cosas que se deben agregar al autocargador son sus controladores y modelos. Puede registrar directorios donde se buscarán archivos del namespace de la aplicación. Si quiere leer sobre otras maneras en que usted puede utilizar el Autocargador (Autoloader) puede dar un vistazo [aquí](/[[language]]/[[version]]/loader#overview).
 
-To start, lets register our app's `controllers` and `models` directories. Don't forget to include the loader from `Phalcon\Loader`.
+Para comenzar, registramos los directorios `controllers` y `models` de nuestra aplicación. No se olvide de incluir el cargador `Phalcon\Loader`.
 
 `public/index.php`
 
@@ -158,7 +158,7 @@ Debido a que Phalcon esta débilmente acoplado los servicios se registran con el
 - Contenedor de servicio: una bolsa donde almacenamos globalmente los servicios que nuestra aplicación usará para funcionar.
 - Servicio o Componente: objeto de procesamiento de datos que será inyectado en los componentes
 
-Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. Don't forget to include `Phalcon\Di` with setting up the service container.
+Cada vez que el marco requiera un componente o servicio, solicitará el contenedor utilizando un nombre acordado para el servicio. No se olvide de incluir `Phalcon\Di` con la configuración del contenedor de servicio.
 
 <div class='alert alert-warning'>
     <p>
@@ -168,9 +168,9 @@ Each time the framework requires a component or service, it will ask the contain
 
 ### Factory por defecto
 
-El inyector `Phalcon\Di\FactoryDefault` es una variante de `Phalcon\Di`. Para facilitar las cosas, registrará automáticamente la mayoría de los componentes que vienen con Phalcon. We recommend that you register your services manually but this has been included to help lower the barrier of entry when getting used to Dependency Management. Later, you can always specify once you become more comfortable with the concept.
+El inyector `Phalcon\Di\FactoryDefault` es una variante de `Phalcon\Di`. Para facilitar las cosas, registrará automáticamente la mayoría de los componentes que vienen con Phalcon. Le recomendamos que usted registre sus servicios manualmente pero esto se ha incluido para ayudar a reducir la barrera de entrada al acostumbrarse a la gestión de la dependencia. Más tarde, usted puede especificar una vez que se sienta más cómodo con el concepto.
 
-Services can be registered in several ways, but for our tutorial, we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
+Los servicios se pueden registrar de varias formas, pero para nuestro tutorial usaremos una [función anónima](http://php.net/manual/en/functions.anonymous.php):
 
 `public/index.php`
 
@@ -181,7 +181,7 @@ use Phalcon\Di\FactoryDefault;
 
 // ...
 
-// Create a DI
+// Crear un DI
 $di = new FactoryDefault();
 ```
 
@@ -317,7 +317,7 @@ try {
 }
 ```
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. Felicidades has creado una aplicación MVC flexible en menos de 30 líneas de código.
+Como puede ver, el archivo de arranque es muy corto y no necesitamos incluir ningún archivo adicional. Felicidades has creado una aplicación MVC flexible en menos de 30 líneas de código.
 
 <a name='controller'></a>
 
@@ -383,7 +383,7 @@ La salida del navegador debe seguir siendo la misma. El componente estático `Ph
 
 ## Diseñar un formulario de registro
 
-Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
+Ahora cambiaremos el archivo de vista `index.phtml`, para agregar un enlace a un nuevo controlador llamado "signup". El objetivo es permitir a los usuarios registrarse dentro de nuestra aplicación.
 
 `app/views/index/index.phtml`
 
@@ -412,7 +412,7 @@ El código HTML generado muestra una etiqueta HTML de ancla (`<a>`) vinculando a
 <a href="/signup">Regístrese aquí!</a>
 ```
 
-Para generar la etiqueta usamos la clase `Phalcon\Tag`. Esta es una clase utilitaria que nos permite crear etiquetas HTML con los convenios del framework en mente. As this class is also a service registered in the DI we use `$this->tag` to access it.
+Para generar la etiqueta usamos la clase `Phalcon\Tag`. Esta es una clase utilitaria que nos permite crear etiquetas HTML con los convenios del framework en mente. Como esta clase también es un servicio registrado en el DI, usamos `$this->tag` para acceder a ella.
 
 Un artículo más detallado en cuanto a generación de HTML puede ser [encontrado aquí](/[[language]]/[[version]]/tag).
 
@@ -470,7 +470,7 @@ En tu navegador, el formulario debería verse algo como así:
 
 El método `Phalcon\Tag::form()` recibe sólo un parámetro, por ejemplo, un URI relativo a un controlador/acción en la aplicación.
 
-Al hacer clic en el botón "Registrar", usted recibirá una excepción del framework, lo que indica que nos falta la acción `register` en el controlador `signup`. Our `public/index.php` file throws this exception:
+Al hacer clic en el botón "Registrar", usted recibirá una excepción del framework, lo que indica que nos falta la acción `register` en el controlador `signup`. Nuestro archivo `public/index.php` lanza esta excepción:
 
     Exception: Action "register" was not found on handler "signup"
     
@@ -504,9 +504,9 @@ Si haces clic en el botón "Registrar" otra vez, verás una página en blanco. E
 
 ## Creando un modelo
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalcon ofrece el primer ORM para PHP escrito enteramente en el lenguaje C. En lugar de aumentar la complejidad del desarrollo, lo simplifica.
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be created like this:
+Antes de crear nuestro primero modelo, necesitamos crear una tabla en la base de datos, desde donde Phalcon se mapea. Una tabla simple para almacenar usuarios registrado, puede ser creada de la siguiente manera:
 
 `create_users_table.sql`
 
@@ -519,7 +519,7 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
+Un modelo debe ubicarse en el directorio `app/models` (en este caso `app/models/Users.php`). El modelo se asigna a la tabla "users":
 
 `app/models/Users.php`
 
@@ -565,7 +565,7 @@ $di->set(
 );
 ```
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+Con los parámetros correctos de base de datos, nuestros modelos están listos para trabajar e interactuar con el resto de la aplicación.
 
 <a name='storing-data'></a>
 
@@ -615,11 +615,11 @@ class SignupController extends Controller
 }
 ```
 
-Al principio del `registerAction` creamos un objeto de usuario vacío de la clase de Users, que gestiona el registro de un usuario. The class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. El método de `save()` devuelve un valor booleano que indica si el almacenamiento de los datos fue exitoso o no.
+Al principio del `registerAction` creamos un objeto de usuario vacío de la clase de Users, que gestiona el registro de un usuario. La clase asigna las propiedades públicas a los campos de la tabla `users` en nuestra base de datos. Al establecer los valores correspondientes del nuevo registro y llamar a `save()`, almacenará los datos en la base de datos para ese registro. El método de `save()` devuelve un valor booleano que indica si el almacenamiento de los datos fue exitoso o no.
 
 El ORM filtra automáticamente la entrada (auto-escape) para evitar inyecciones de SQL así que sólo tenemos que pasar la solicitud al método `save()`.
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign-up form our screen will look like this:
+La validación adicional ocurre automáticamente en los campos que se definen como no nulos (obligatorios). Si no ingresamos ninguno de los campos obligatorios en el formulario de registro, nuestra pantalla se verá así:
 
 ![](/images/content/tutorial-basic-4.png)
 
@@ -627,6 +627,6 @@ Additional validation happens automatically on fields that are defined as not nu
 
 ## Conclusión
 
-As you can see, it's easy to start building an application using Phalcon. El hecho de que Phalcon se ejecute desde una extensión reduce significativamente la huella de los proyectos y le da un aumento considerable en el rendimiento.
+Como se puede ver, es fácil empezar a construir una aplicación usando Phalcon. El hecho de que Phalcon se ejecute desde una extensión reduce significativamente la huella de los proyectos y le da un aumento considerable en el rendimiento.
 
 Si está listo para obtener más información, consulte el [Rest Tutorial](/[[language]]/[[version]]/tutorial-rest) siguiente.
