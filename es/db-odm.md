@@ -48,7 +48,7 @@
           <a href="#validation-failed-events">Eventos de Fallas de Validación</a>
         </li>
         <li>
-          <a href="#ids-vs-primary-keys">Implicit Ids vs. User Primary Keys</a>
+          <a href="#ids-vs-primary-keys">Ids implícitas vs. Claves primarias del usuario</a>
         </li>
         <li>
           <a href="#multiple-databases">Configuración de Múltiples Bases de Datos</a>
@@ -137,7 +137,7 @@ connecting to: test
 
 ## Modelos en Espacios de Nombres
 
-Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using the `setSource()` method:
+Los espacios de nombre pueden ser usados para evitar la colisión de nombres de clase. En este caso es necesario indicar el nombre de la colección relacionadas utilizando el método `setSource()`:
 
 ```php
 <?php
@@ -189,7 +189,7 @@ $robot->save();
 
 ## Establecer una Conexión
 
-Connections are retrieved from the services container. By default, Phalcon tries to find the connection in a service called `mongo`:
+Las conexiones son devueltas desde el contenedor de servicios. Por defecto, Phalcon intentará buscar una conexión en el servicio llamada `mongo`:
 
 ```php
 <?php
@@ -339,8 +339,8 @@ Las opciones disponibles de consulta son:
 | Parámetro    | Descripción                                                                                                                                                                                                              | Ejemplo                                                 |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
 | `conditions` | Condiciones de búsqueda para la operación de búsqueda. Se utiliza para extraer sólo los registros que cumplan con un criterio especificado. Por defecto `Phalcon\Model` asume el primer parámetro como las condiciones. | `'conditions' => array('$gt' => 1990)`            |
-| `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                                                           | `'fields' => array('name' => true)`               |
-| `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                                              | `'sort' => array('name' => -1, 'status' => 1)` |
+| `fields`     | Retorna las columnas especificadas en vez de todos campos del modelo. Cuando utilizamos esta opción, un objecto incompleto es retornado                                                                                  | `'fields' => array('name' => true)`               |
+| `sort`       | Es utilizado para ordenar el conjunto de resultados. Utiliza uno o más campos para cada elemento en el arreglo, 1 significa ordenar de forma ascendente, -1 descendente                                                  | `'sort' => array('name' => -1, 'status' => 1)` |
 | `limit`      | Limitar los resultados de la consulta a cierto rango                                                                                                                                                                     | `'limit' => 10`                                      |
 | `skip`       | Omite un número específico de resultados                                                                                                                                                                                 | `'skip' => 50`                                       |
 
@@ -360,7 +360,7 @@ $myRobots = Robots:find(
 ];
 ```
 
-The `find()` above only returns a `name`. It can also be combined with a `condition`:
+El método `find()` anterior solo retorna un `name`. También se puede convinar con una `condition`:
 
 ```php
 $myRobots = Robots:find(
@@ -630,13 +630,17 @@ class Robots extends Collection
 }
 ```
 
-Some events return `false` as an indication to stop the current operation. If an event doesn't return anything, `Phalcon\Mvc\Collection` will assume a `true` value.
+Algunos eventos devuelven `false` como una indicación para detener la operación actual. Si un evento no vuelve nada, `Phalcon\Mvc\Collection` asumirá un valor </code>true`.</p>
+
+<p>
 
 <a name='data-integrity'></a>
 
-### Validar la Integridad de Datos
+</p>
 
-`Phalcon\Mvc\Collection` ofrece varios eventos para validar los datos e implementar reglas de negocio. El evento especial `validation` nos permite llamar a validadores incorporados en el registro. Phalcon expone algunos validadores incorporados que pueden utilizarse en esta etapa de validación.
+<h3>Validar la Integridad de Datos</h3>
+
+<p><code>Phalcon\Mvc\Collection` ofrece varios eventos para validar los datos e implementar reglas de negocio. El evento especial `validation` nos permite llamar a validadores incorporados en el registro. Phalcon expone algunos validadores incorporados que pueden utilizarse en esta etapa de validación.
 
 En el ejemplo siguiente se muestra cómo se utiliza:
 
@@ -693,7 +697,7 @@ El ejemplo anterior realiza una validación con el validador integrado `Inclusio
 
 ## Eliminar Registros
 
-The `Phalcon\Mvc\Collection::delete()` method allows you to delete a document. You can use it as follows:
+El método `Phalcon\Mvc\Collection::delete()` le permite borrar un documento. Se puede utilizar de la sigue manera:
 
 ```php
 <?php
@@ -763,7 +767,7 @@ Otro tipo de eventos está disponible cuando el proceso de validación de datos 
 
 <a name='ids-vs-primary-keys'></a>
 
-## Implicit Ids vs. User Primary Keys
+## Ids implícitas vs. Claves primarias del usuario
 
 Por defecto `Phalcon\Mvc\Collection` asume que el atributo `_id` es generado automáticamente utilizando [MongoIds](http://www.php.net/manual/en/class.mongoid.php).
 
