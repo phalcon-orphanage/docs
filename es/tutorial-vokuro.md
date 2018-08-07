@@ -9,7 +9,7 @@
           <a href="#dependencies">Carga de clases y dependencias</a>
         </li>
         <li>
-          <a href="#sign-up">Regístrarse</a>
+          <a href="#sign-up">Registrarse</a>
         </li>
       </ul>
     </li>
@@ -44,7 +44,7 @@ vokuro/
     schemas/
 ```
 
-This project follows a quite similar structure to INVO. Once you open the application in your browser `http://localhost/vokuro` you'll see something like this:
+Este proyecto sigue una estructura similar al utilizado en INVO. Una vez que usted abra la aplicación en su navegador `http://localhost/vokuro` verás algo como esto:
 
 ![](/images/content/tutorial-vokuro-1.png)
 
@@ -81,7 +81,7 @@ Ahora, hay un archivo llamado `app/config/loader.php` donde se configura toda la
 
 // ...
 
-// Use composer autoloader to load vendor classes
+// Utilice el autocargador de composer para cargar todas las dependencias
 require_once BASE_PATH . '/vendor/autoload.php';
 ```
 
@@ -123,7 +123,7 @@ class AboutController extends ControllerBase
 
 <a name='sign-up'></a>
 
-## Regístrarse
+## Registrarse
 
 En primer lugar, vamos a ver cómo los usuarios están registrados en Vökuró. Cuando un usuario hace clic en el botón `crear una cuenta`, el controlador `SessionController` se invoca y la acción `signup` se ejecuta:
 
