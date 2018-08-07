@@ -44,13 +44,13 @@ El comportamiento de este componente se basa en la capacidad de PHP de [carga au
 
 Con este componente se pueden cargar archivos de otros proyectos o proveedores, este cargador automático es compatible con [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) y [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md).
 
-`Phalcon\Loader` offers four options to autoload classes. You can use them one at a time or combine them.
+`Phalcon\Loader` ofrece cuatro opciones para auto cargar clases. Puede utilizarlas de forma individual o combinadas.
 
 <a name='security'></a>
 
 ## Capa de seguridad
 
-`Phalcon\Loader` offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files. Consider the following example:
+`Phalcon\Loader` ofrece una capa de seguridad que desinfecta por nombres de clase predeterminados, evitando la posible inclusión de archivos no autorizados. Considere el siguiente ejemplo:
 
 ```php
 <?php
@@ -183,7 +183,7 @@ $some = new \Some();
 
 ## Registrando archivos
 
-You can also registers files that are `non-classes` hence needing a `require`. This is very useful for including files that only have functions:
+También puede registrar archivos que `no son classes` necesitando un `require`. Esto es muy útil para incluir archivos que solo tienen funciones:
 
 ```php
 <?php
@@ -288,13 +288,13 @@ $loader->setEventsManager($eventsManager);
 $loader->register();
 ```
 
-Some events when returning boolean `false` could stop the active operation. The following events are supported:
+Si algún evento devuelve `false` podría detener la operación activa. Son soportados los siguientes eventos:
 
-| Nombre del evento  | Activador                                                                                                           | ¿Puede detener la operación? |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `beforeCheckClass` | Activado antes de iniciar el proceso de auto carga                                                                  | Sí                           |
-| `pathFound`        | Se activa cuando el cargador localiza una clase                                                                     | No                           |
-| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                           |
+| Nombre del evento  | Activador                                                                                                                              | ¿Puede detener la operación? |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `beforeCheckClass` | Activado antes de iniciar el proceso de auto carga                                                                                     | Sí                           |
+| `pathFound`        | Se activa cuando el cargador localiza una clase                                                                                        | No                           |
+| `afterCheckClass`  | Activado después de finalizar el proceso de auto carga. Si este evento es lanzado, el auto cargador no encontró el archivo de la clase | No                           |
 
 <a name='troubleshooting'></a>
 
