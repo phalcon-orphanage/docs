@@ -91,7 +91,7 @@ Phalcon pasa automáticamente la ejecución al componente de vista tan pronto co
 | Acción                 | show      |
 | Parámetro              | 301       |
 
-The dispatcher will look for a `PostsController` and its action `showAction`. A simple controller file for this example:
+El dispatcher buscará un `PostsController` y su acción `showAction`. Un archivo simple de controlador para este ejemplo:
 
 ```php
 <?php
@@ -125,7 +125,7 @@ Este componente utiliza por defecto PHP en sí mismo como el motor de la plantil
 
 | Nombre                    | Archivo                       | Descripción                                                                                                                                                                                                                       |
 | ------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Vista de la acción        | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                                 |
+| Vista de la acción        | app/views/posts/show.phtml    | Esta es la vista relacionada con la acción. Será mostrada cuando la acción `show` sea ejecutada.                                                                                                                                  |
 | Plantilla del controlador | app/views/layouts/posts.phtml | Esta es la vista relacionada con el controlador. Sólo se mostrará para cada acción ejecutada en el controlador "posts". Se reutilizará todo el código puesto en ejecución en el diseño de todas las acciones en este controlador. |
 | Plantilla principal       | app/views/index.phtml         | Se trata de la acción principal que se mostrará para cada controlador o acción ejecutada dentro de la aplicación.                                                                                                                 |
 
@@ -197,7 +197,7 @@ El código HTML generado por la solicitud será:
 
 ### Usando Plantillas
 
-Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
+Las plantillas son vistas que pueden ser utilizadas para compartir código común de las vistas. Actúan como diseños de controladores, entonces necesitan ser ubicados en el directorios de plantillas.
 
 Las plantillas se pueden procesar antes del diseño (usando `$this->view->setTemplateBefore()`) o puede hacerse después (usando `$this->view->setTemplateAfter()`). En el ejemplo siguiente se renderiza la plantilla (`layouts/common.phtml`) después del controlador principal (`layouts/posts.phtml`):
 
@@ -405,13 +405,13 @@ Los niveles de renderizado disponibles son:
 | `LEVEL_BEFORE_TEMPLATE` | Genera plantillas de presentación previas al diseño del controlador.        |   2   |
 | `LEVEL_LAYOUT`          | Genera la presentación en el diseño del controlador.                        |   3   |
 | `LEVEL_AFTER_TEMPLATE`  | Genera la presentación a las plantillas después del diseño del controlador. |   4   |
-| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml       |   5   |
+| `LEVEL_MAIN_LAYOUT`     | Genera la presentación del diseño principal. Archivo views/index.phtml      |   5   |
 
 <a name='disabling-render-levels'></a>
 
 ### Deshabilitar niveles de renderizado
 
-You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
+Puede desactivar permanente o temporariamente niveles de presentación. Un nivel puede ser desactivado temporariamente si no es utilizado en toda la aplicación:
 
 ```php
 <?php
@@ -755,7 +755,7 @@ Se creará una variable con el nombre del primer parámetro de `setVar()` en la 
 
 A veces cuando desarrollas sitios web dinámicos y algunas áreas de ellos no se actualizan muy a menudo, la salida es exactamente el misma entre las solicitudes. `Phalcon\Mvc\View` ofrece el almacenamiento en caché de una parte o la salida renderizada entera para aumentar el rendimiento.
 
-`Phalcon\Mvc\View` integrates with `Phalcon\Cache` to provide an easier way to cache output fragments. You could manually set the cache handler or set a global handler:
+`Phalcon\Mvc\View` integrado con `Phalcon\Cache` provee una forma sencilla para almacenar fragmentos de salida. Puede establecer manualmente un gestor de cacheo o establecerlo a nivel global:
 
 ```php
 <?php
@@ -807,7 +807,7 @@ class PostsController extends Controller
 
 Cuando no definimos una clave a la caché, el componente crea automáticamente una usando un hash [MD5](http://php.net/manual/en/function.md5.php) del nombre del controlador y de la vista que actualmente se están renderizando, en el formato `controlador/vista`. Es una buena práctica definir una clave para cada acción, así usted puede identificar fácilmente la caché asociada a cada vista.
 
-When the View component needs to cache something it will request a cache service from the services container. The service name convention for this service is `viewCache`:
+Cuando el componente vista necesita almacenar algo en cache, este solicitará el servicio de cache, desde el contenedor de servicios. El nombre del servicio, por convención, para este servicio es `viewCache`:
 
 ```php
 <?php
@@ -848,7 +848,7 @@ $di->set(
 
 Al usar vistas, el almacenamiento en caché se puede usar para evitar que los controladores tengan que generar los datos de la vista en cada solicitud.
 
-To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has expired to make the calculations/queries to display data in the view:
+Para lograr esto, debemos identificar únicamente cada caché con una clave. Primero, verificamos que la memoria caché no existe o ha expirado para hacer los cálculos/consultas para mostrar los datos en la vista:
 
 ```php
 <?php
@@ -899,11 +899,11 @@ Este componente utiliza adaptadores, estos ayudan a Phalcon a hablar con los mot
 
 ### Crea tu propio adaptador de motor de plantillas
 
-There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine is create an adapter for it.
+Hay muchos motores de plantillas, que es posible que desee integrar o crear uno propio. El primer paso para comenzar a usar un motor de plantillas externo es crear un adaptador para él.
 
 Un adaptador de motor de la plantilla es una clase que actúa como puente entre el `Phalcon\Mvc\View` y el motor mismo. Generalmente sólo hay dos métodos implementados: `__construct ()` y `render()`. El primero de ellos recibe la instancia de `Phalcon\Mvc\View` que crea el adaptador del motor y el contenedor DI utilizado por la aplicación.
 
-The method `render()` accepts an absolute path to the view file and the view parameters set using `$this->view->setVar()`. You could read or require it when it's necessary.
+El método `render()` acepta una ruta de acceso absoluta del archivo de la vista y los parámetros de la vista usando `$this->view->setVar()`. Puedes leerlo o requerirlo cuando sea necesario.
 
 ```php
 <?php
@@ -953,7 +953,7 @@ Es posible reemplazar el motor de plantillas completamente o utilizar más de un
 
 La orden en que los motores se definen con `Phalcon\Mvc\View::registerEngines()` define la relevancia en la ejecución. Si `Phalcon\Mvc\View` encuentra a dos vistas con el mismo nombre pero distintas extensiones, sólo renderizará la primera de ellas.
 
-If you want to register a template engine or a set of them for each request in the application. You could register it when the view service is created:
+Si desea registrar un motor de plantillas o un conjunto de ellas para cada solicitud en la aplicación. Puede registrarlo cuando se crea el servicio vista:
 
 ```php
 <?php

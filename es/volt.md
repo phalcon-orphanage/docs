@@ -380,7 +380,7 @@ class PostsController extends Controller
 
 ## Variables
 
-Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
+Las variables de objetos pueden tener atributos, que se pueden acceder utilizando la sintaxis: `foo.bar`. Si usted está pasando un array, tiene que usar la sintaxis de corchete: `foo ['bar']`
 
 ```twig
 {{ post.title }} {# para $post->title #}
@@ -391,7 +391,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 ## Filtros
 
-Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
+Las variables pueden ser formateadas o modificación mediante filtros. El operador de tubería o pleca `|` se utiliza para aplicar filtros a las variables:
 
 ```twig
 {{ post.title|e }}
@@ -401,33 +401,33 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 
 La siguiente lista contiene los filtros disponibles incorporados en Volt:
 
-| Filtro             | Descripción                                                                                                                         |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `abs`              | Se aplica la función [abs](http://php.net/manual/en/function.abs.php) de PHP a un valor.                                            |
-| `capitalize`       | Capitaliza una cadena mediante la aplicación de la función PHP [ucwords](http://php.net/manual/en/function.ucwords.php) al valor    |
-| `convert_encoding` | Convierte una cadena de un conjunto de caracteres a otro                                                                            |
-| `default`          | Establece un valor predeterminado en caso de que la expresión evaluada este vacía (no se establece o se evalúa como un valor falso) |
-| `e`                | Se aplica `Phalcon\Escaper->escapeHtml()` al valor                                                                              |
-| `escape`           | Se aplica `Phalcon\Escaper->escapeHtml()` al valor                                                                              |
-| `escape_attr`      | Se aplica `Phalcon\Escaper->escapeHtmlAttr()` al valor                                                                          |
-| `escape_css`       | Se aplica `Phalcon\Escaper->escapeCss()` al valor                                                                               |
-| `escape_js`        | Se aplica `Phalcon\Escaper->escapeJs()` al valor                                                                                |
-| `format`           | Formatea una cadena utilizando [sprintf](http://php.net/manual/en/function.sprintf.php).                                            |
-| `json_encode`      | Convierte un valor en su representación [JSON](http://php.net/manual/en/function.json-encode.php)                                   |
-| `json_decode`      | Convierte un valor de su representación [JSON](http://php.net/manual/en/function.json-encode.php) en una representación de PHP      |
-| `join`             | Se unen las partes de un array usando un separador [join](http://php.net/manual/en/function.join.php)                               |
-| `keys`             | Devuelve las llaves de la matriz usando [array_keys](http://php.net/manual/en/function.array-keys.php)                              |
-| `left_trim`        | Applies the [ltrim](http://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                   |
-| `length`           | Cuenta la longitud de la cadena de texto o cuántos elementos hay en un array u objeto                                               |
-| `lower`            | Cambiar una cadena a minúsculas                                                                                                     |
-| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](http://php.net/manual/en/function.nl2br.php)  |
-| `right_trim`       | Applies the [rtrim](http://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                   |
-| `sort`             | Ordena una matriz mediante la función PHP [asort](http://php.net/manual/en/function.asort.php)                                      |
-| `stripslashes`     | Applies the [stripslashes](http://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes   |
-| `striptags`        | Applies the [striptags](http://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags              |
-| `trim`             | Applies the [trim](http://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                     |
-| `upper`            | Cambiar una cadena a mayúsculas                                                                                                     |
-| `url_encode`       | Se aplica la función [urlencode](http://php.net/manual/en/function.urlencode.php) PHP al valor                                      |
+| Filtro             | Descripción                                                                                                                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `abs`              | Se aplica la función [abs](http://php.net/manual/en/function.abs.php) de PHP a un valor.                                                              |
+| `capitalize`       | Capitaliza una cadena mediante la aplicación de la función PHP [ucwords](http://php.net/manual/en/function.ucwords.php) al valor                      |
+| `convert_encoding` | Convierte una cadena de un conjunto de caracteres a otro                                                                                              |
+| `default`          | Establece un valor predeterminado en caso de que la expresión evaluada este vacía (no se establece o se evalúa como un valor falso)                   |
+| `e`                | Se aplica `Phalcon\Escaper->escapeHtml()` al valor                                                                                                |
+| `escape`           | Se aplica `Phalcon\Escaper->escapeHtml()` al valor                                                                                                |
+| `escape_attr`      | Se aplica `Phalcon\Escaper->escapeHtmlAttr()` al valor                                                                                            |
+| `escape_css`       | Se aplica `Phalcon\Escaper->escapeCss()` al valor                                                                                                 |
+| `escape_js`        | Se aplica `Phalcon\Escaper->escapeJs()` al valor                                                                                                  |
+| `format`           | Formatea una cadena utilizando [sprintf](http://php.net/manual/en/function.sprintf.php).                                                              |
+| `json_encode`      | Convierte un valor en su representación [JSON](http://php.net/manual/en/function.json-encode.php)                                                     |
+| `json_decode`      | Convierte un valor de su representación [JSON](http://php.net/manual/en/function.json-encode.php) en una representación de PHP                        |
+| `join`             | Se unen las partes de un array usando un separador [join](http://php.net/manual/en/function.join.php)                                                 |
+| `keys`             | Devuelve las llaves de la matriz usando [array_keys](http://php.net/manual/en/function.array-keys.php)                                                |
+| `left_trim`        | Se aplica la función [ltrim](http://php.net/manual/en/function.ltrim.php) PHP al valor. Quita espacios extra a la izquierda                           |
+| `length`           | Cuenta la longitud de la cadena de texto o cuántos elementos hay en un array u objeto                                                                 |
+| `lower`            | Cambiar una cadena a minúsculas                                                                                                                       |
+| `nl2br`            | Cambia los saltos de línea `\n` por saltos de línea (`<br />`). Utiliza la función de PHP [nl2br](http://php.net/manual/en/function.nl2br.php) |
+| `right_trim`       | Se aplica la función [rtrim](http://php.net/manual/en/function.rtrim.php) PHP al valor. Quita espacios extra a la derecha                             |
+| `sort`             | Ordena una matriz mediante la función PHP [asort](http://php.net/manual/en/function.asort.php)                                                        |
+| `stripslashes`     | Se aplica la función [stripslashes](http://php.net/manual/en/function.stripslashes.php) de PHP al valor. Quita las comillas escapadas                 |
+| `striptags`        | Se aplica la función [striptags](http://php.net/manual/en/function.striptags.php) de PHP al valor. Remueve las etiquetas HTML                         |
+| `trim`             | Se aplica la función [trim](http://php.net/manual/en/function.trim.php) de PHP al valor. Quita espacios extra a la izquierda y derecha                |
+| `upper`            | Cambiar una cadena a mayúsculas                                                                                                                       |
+| `url_encode`       | Se aplica la función [urlencode](http://php.net/manual/en/function.urlencode.php) PHP al valor                                                        |
 
 Ejemplos:
 
@@ -493,7 +493,7 @@ Ejemplos:
 
 ## Comentarios
 
-Comments may also be added to a template using the `{# ... #}` delimiters. All text inside them is just ignored in the final output:
+Los comentarios también se puede agregar a la plantilla utilizando los delimitadores `{# ... #}`. Todo el texto dentro de ellos es ignorado en la salida final:
 
 ```twig
 {# nota: este es un comentario
@@ -511,7 +511,7 @@ Volt proporciona un conjunto de estructuras de control básicas pero de gran alc
 
 ### For
 
-Loop over each item in a sequence. The following example shows how to traverse a set of 'robots' and print his/her name:
+Un bucle sobre cada elemento en una secuencia. En el ejemplo siguiente se muestra cómo recorrer un conjunto de 'robots' e imprimir su nombre:
 
 ```twig
 <h1>Robots</h1>
@@ -588,7 +588,7 @@ Sintaxis alternativa:
 Las declaraciones de `break` y `continue` pueden utilizarse para salir de un bucle o forzar una iteración en el bloque actual:
 
 ```twig
-{# skip the even robots #}
+{# omitir robots impares #}
 {% for index, robot in robots %}
     {% if index is even %}
         {% continue %}
@@ -598,7 +598,7 @@ Las declaraciones de `break` y `continue` pueden utilizarse para salir de un buc
 ```
 
 ```twig
-{# exit the foreach on the first even robot #}
+{# salir del bucle en el primer robot par #}
 {% for index, robot in robots %}
     {% if index is even %}
         {% break %}
@@ -707,7 +707,7 @@ No devolverá un error ya que `default` es una palabra reservada para filtros co
 {% endswitch %}
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
+Lanzará `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
 
 #### un `switch` sin expresión
 
@@ -718,7 +718,7 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch de
 {% endswitch %}
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ...`
+Lanzará `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ...`
 
 <a name='control-structures-loop'></a>
 
@@ -728,8 +728,8 @@ Una variable especial está disponible dentro de los bucles `for`, proporcionand
 
 | Variable         | Descripción                                                            |
 | ---------------- | ---------------------------------------------------------------------- |
-| `loop.index`     | The current iteration of the loop. (1 indexed)                         |
-| `loop.index0`    | The current iteration of the loop. (0 indexed)                         |
+| `loop.index`     | Iteración actual del bucle. (comenzando desde 1)                       |
+| `loop.index0`    | Iteración actual del bucle. (comenzando desde 0)                       |
 | `loop.revindex`  | El número de iteraciones desde el final del bucle (comenzando desde 1) |
 | `loop.revindex0` | El número de iteraciones desde el final del bucle (comenzando desde 0) |
 | `loop.first`     | Si es la primera iteración, el valor será `true`.                      |
@@ -799,7 +799,7 @@ Las siguientes operadores están disponibles:
 
 ## Expresiones
 
-Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `{{` and `}}` delimiters:
+Volt proporciona un conjunto básico de expresiones, incluyendo literales y operadores comunes. Una expresión puede ser evaluada e impresa utilizando los delimitadores `{{` and `}}`:
 
 ```twig
 {{ (1 + 1) * 2 }}
@@ -861,7 +861,7 @@ Se pueden hacer cálculos en las plantillas mediante los siguientes operadores:
 
 | Operator | Descripción                                                           |
 |:--------:| --------------------------------------------------------------------- |
-|   `+`    | Perform an adding operation. `{{ 2 + 3 }}` returns 5                  |
+|   `+`    | Realizar una operación de adición. `{{2 + 3}}` devuelve 5             |
 |   `-`    | Realiza una operación de resta. `{{ 2 - 3 }}` devuelve -1             |
 |   `*`    | Realiza una operación de multiplicación. `{{2 * 3}}` devuelve 6       |
 |   `/`    | Realizar una operación de división. `{{10 / 2}}` devuelve 5           |
@@ -912,7 +912,7 @@ También están disponibles otros operadores:
 | `is`              | Alias de == (igual), también realiza pruebas                                             |
 | `in`              | Para comprobar si una expresión está contenida en otras expresiones `if 'a' in 'abc'`    |
 | `is not`          | Alias de != (no iguales)                                                                 |
-| `'a' ? 'b' : 'c'` | Ternary operator. The same as the PHP ternary operator                                   |
+| `'a' ? 'b' : 'c'` | Operador ternario. Igual al operador ternario de PHP                                     |
 | `++`              | Incrementa un valor                                                                      |
 | `--`              | Decrementa un valor                                                                      |
 
@@ -932,7 +932,7 @@ En el ejemplo siguiente se muestra cómo utilizar operadores:
 
 ## Pruebas
 
-Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
+Pueden utilizarse pruebas para comprobar si una variable tiene un valor esperado válido. El operador `is` es utilizado para realizar pruebas:
 
 ```twig
 {% set robots = ['1': 'Voltron', '2': 'Astro Boy', '3': 'Terminator', '4': 'C3PO'] %}
@@ -946,18 +946,18 @@ Tests can be used to test if a variable has a valid expected value. The operator
 
 Las siguientes pruebas integradas están disponibles en Volt:
 
-| Prueba        | Descripción                                                          |
-| ------------- | -------------------------------------------------------------------- |
-| `defined`     | Comprueba si una variable esta definida (`isset()`)                  |
-| `divisibleby` | Comprueba si un valor es divisible por otro valor                    |
-| `empty`       | Comprueba si una variable está vacía                                 |
-| `even`        | Comprueba si un valor numérico es par                                |
-| `iterable`    | Checks if a value is iterable. Can be traversed by a 'for' statement |
-| `numeric`     | Comprueba si el valor es numérico                                    |
-| `odd`         | Comprueba si un valor numérico es impar                              |
-| `sameas`      | Comprueba si un valor es idéntico a otro valor                       |
-| `scalar`      | Comprueba si el valor es escalar (no una matriz, objeto o recurso)   |
-| `type`        | Comprueba si un valor es del tipo especificado                       |
+| Prueba        | Descripción                                                                |
+| ------------- | -------------------------------------------------------------------------- |
+| `defined`     | Comprueba si una variable esta definida (`isset()`)                        |
+| `divisibleby` | Comprueba si un valor es divisible por otro valor                          |
+| `empty`       | Comprueba si una variable está vacía                                       |
+| `even`        | Comprueba si un valor numérico es par                                      |
+| `iterable`    | Comprueba si un valor es iterable. Que puede ser utilizado en un bucle for |
+| `numeric`     | Comprueba si el valor es numérico                                          |
+| `odd`         | Comprueba si un valor numérico es impar                                    |
+| `sameas`      | Comprueba si un valor es idéntico a otro valor                             |
+| `scalar`      | Comprueba si el valor es escalar (no una matriz, objeto o recurso)         |
+| `type`        | Comprueba si un valor es del tipo especificado                             |
 
 Más ejemplos:
 
@@ -1259,7 +1259,7 @@ Desde otra plantilla podríamos ampliar la plantilla base, reemplazando los bloq
 {% endblock %}
 ```
 
-Not all blocks must be replaced at a child template, only those that are needed. The final output produced will be the following:
+No todos los bloques deben reemplazarse en una plantilla hija, solo aquellos que son necesarios. El resultado final será el siguiente:
 
 ```html
 <!DOCTYPE html>
@@ -1287,7 +1287,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
 
 ### Herencia múltiple
 
-Extended templates can extend other templates. The following example illustrates this:
+Plantillas extendidas pueden extender de otras plantillas. El siguiente ejemplo lo ilustra:
 
 ```twig
 {# main.volt #}
@@ -1408,7 +1408,7 @@ $compiler = $volt->getCompiler();
 $compiler->addFunction('shuffle', 'str_shuffle');
 ```
 
-Register the function with an anonymous function. This case we use `$resolvedArgs` to pass the arguments exactly as were passed in the arguments:
+Registrar la función con una función anónima. En este caso utilizamos `$resolvedArgs` para pasar argumento exactamente como son pasados en los arguementos:
 
 ```php
 <?php
@@ -1475,7 +1475,7 @@ $compiler->addFunction('dump', 'print_r');
 
 ### Filtros
 
-A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
+A filter has the following form in a template: `leftExpr|name(optional-args)`. Agregar nuevos filtros es similar a lo visto en las funciones:
 
 ```php
 <?php
@@ -1510,7 +1510,7 @@ $compiler->addFilter('capitalize', 'lcfirst');
 
 Con las extensiones, el desarrollador tiene más flexibilidad para extender el motor de la plantilla y reemplazar la compilación de una instrucción específica, cambiar el comportamiento de una expresión o un operador, añadir funciones y filtros y mucho más.
 
-An extension is a class that implements the events triggered by Volt as a method of itself. For example, the class below allows to use any PHP function in Volt:
+Una extensión es una clase que implementa los eventos activados por Volt como un método en sí mismo. Por ejemplo, la clase siguiente permite utilizar cualquier función de PHP en Volt:
 
 ```php
 <?php
@@ -1533,12 +1533,12 @@ La clase anterior implementa el método `compileFunction` que se invoca antes de
 
 Los siguientes eventos de compilación están disponibles para ser implementados en extensiones:
 
-| Método/Evento       | Descripción                                                                                            |
-| ------------------- | ------------------------------------------------------------------------------------------------------ |
-| `compileFunction`   | Es activado antes de intentar compilar cualquier llamada a una función en una plantilla                |
-| `compileFilter`     | Es activado antes de intentar compilar cualquier llamada a un filtro en una plantilla                  |
-| `resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators     |
-| `compileStatement`  | Triggered before trying to compile any expression. This allows the developer to override any statement |
+| Método/Evento       | Descripción                                                                                                                     |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `compileFunction`   | Es activado antes de intentar compilar cualquier llamada a una función en una plantilla                                         |
+| `compileFilter`     | Es activado antes de intentar compilar cualquier llamada a un filtro en una plantilla                                           |
+| `resolveExpression` | Activado antes de intentar compilar cualquier expresión. Esto permite a los desarrolladores sobreescribir operadores            |
+| `compileStatement`  | Activado antes de intentar compilar cualquier expresión. Esto permite a los desarrolladores sobreescribir cualquier declaración |
 
 Las extensiones de Volt deben estar registradas en el compilador, estando a disposición en tiempo de compilación:
 
@@ -1555,7 +1555,7 @@ $compiler->addExtension(
 
 ## Almacenamiento en caché de fragmentos de la vista
 
-With Volt it's easy cache view fragments. This caching improves performance preventing that the contents of a block from being executed by PHP each time the view is displayed:
+Con Volt es fácil cachear fragmentos de vistas. Este almacenamiento en caché mejora el rendimiento evitando que el contenido de un bloque sea ejecutado por PHP cada vez que se muestra la vista:
 
 ```twig
 {% cache 'sidebar' %}

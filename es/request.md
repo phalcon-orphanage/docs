@@ -108,7 +108,7 @@ class PostsController extends Controller
 
 ## Subiendo Archivos
 
-Another common task is file uploading. `Phalcon\Http\Request` offers an object-oriented way to achieve this task:
+Otra tarea común es la subida de archivos. `Phalcon\Http\Request` ofrece una forma orientada a objetos para realizar esta tarea:
 
 ```php
 <?php
@@ -144,7 +144,7 @@ Cada objeto retornado por `Phalcon\Http\Request::getUploadedFiles()` es una inst
 
 ## Trabajando con Cabeceras
 
-As mentioned above, request headers contain useful information that allow us to send the proper response back to the user. The following examples show usages of that information:
+Como se mencionó anteriormente, los encabezados de la solicitud contienen información útil que nos permite dar la respuesta adecuada al usuario. Los siguientes ejemplos muestran los usos de esa información:
 
 ```php
 <?php

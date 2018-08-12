@@ -89,7 +89,7 @@ El componente router le permite definir las rutas que se asignan a los controlad
 
 ## Definición de rutas
 
-`Phalcon\Mvc\Router` provides advanced routing capabilities. In MVC mode, you can define routes and map them to controllers/actions that you require. A route is defined as follows:
+`Phalcon\Mvc\Router` proporciona capacidades avanzadas de enrutamiento. En el modo MVC, se puede definir rutas y asignarlas a controladores/acciones. Una ruta se define de la siguiente manera:
 
 ```php
 <?php
@@ -122,7 +122,7 @@ $router->handle();
 
 El primer parámetro del método `add()` es el patrón que desea coincidir y, opcionalmente, el segundo parámetro es un conjunto de caminos. En este caso, si el URI es `/admin/users/my-profile`, entonces el controlador `users` con su acción `profile` se ejecutarán. Es importante recordar que el router no ejecuta el controlador y la acción, sólo recoge esta información para informar al componente correcto (es decir, `Phalcon\Mvc\Dispatcher`) cual es el controlador y acción que debe ejecutar.
 
-Una aplicación puede tener muchos caminos y definir rutas una por una puede ser una tarea engorrosa. In these cases we can create more flexible routes:
+Una aplicación puede tener muchos caminos y definir rutas una por una puede ser una tarea engorrosa. En estos casos podemos crear rutas más flexibles:
 
 ```php
 <?php
@@ -143,7 +143,7 @@ $router->add(
 );
 ```
 
-In the example above, we're using wildcards to make a route valid for many URIs. For example, by accessing the following URL (`/admin/users/a/delete/dave/301`) would produce:
+En el ejemplo anterior, utilizamos comodines para hacer a la ruta, valida para distintas URIs. Por ejemplo, accediendo a la siguiente URL (`/admin/users/a/delete/dave/301`) produciría:
 
 | Controlador | Acción | Parámetro | Parámetro |
 |:-----------:|:------:|:---------:|:---------:|
@@ -153,16 +153,16 @@ El método `add()` recibe un patrón que opcionalmente se han predefinido los ma
 
 El segundo parámetro define cómo las partes coincidentes deben enlazar al controlador/acción/parámetros. Las partes coincidentes son marcadores o subpatrones delimitados por paréntesis (corchetes redondeados). En el ejemplo anterior, el primer subpatrón de coincidencia (`:controller`) es la parte del controlador de la ruta, el segundo la acción y así sucesivamente.
 
-These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported:
+Estos marcadores ayudan a escribir expresiones regulares que son más legibles para los desarrolladores y más fácil de entender. Están disponibles los siguientes marcadores:
 
-| Marcador       | Expresión regular        | Uso                                                                                                    |
-| -------------- | ------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Coincide con un nombre de módulo válido con caracteres alfanuméricos únicamente                        |
-| `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Coincide con un nombre de controlador válido con caracteres alfanuméricos únicamente                   |
-| `/:action`     | `/([a-zA-Z0-9_-]+)`      | Coincide con un nombre de acción válido con caracteres alfanuméricos únicamente                        |
-| `/:params`     | `(/.*)*`                 | Matches a list of optional words separated by slashes. Only use this placeholder at the end of a route |
-| `/:namespace`  | `/([a-zA-Z0-9\_\-]+)` | Coincide con un nombre de espacio de nombres de nivel único                                            |
-| `/:int`        | `/([0-9]+)`              | Coincide con un parámetro entero                                                                       |
+| Marcador       | Expresión regular        | Uso                                                                                                                  |
+| -------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Coincide con un nombre de módulo válido con caracteres alfanuméricos únicamente                                      |
+| `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Coincide con un nombre de controlador válido con caracteres alfanuméricos únicamente                                 |
+| `/:action`     | `/([a-zA-Z0-9_-]+)`      | Coincide con un nombre de acción válido con caracteres alfanuméricos únicamente                                      |
+| `/:params`     | `(/.*)*`                 | Coincide con una lista de palabras opcionales, separadas por barras. Sólo utilice este marcador al final de una ruta |
+| `/:namespace`  | `/([a-zA-Z0-9\_\-]+)` | Coincide con un nombre de espacio de nombres de nivel único                                                          |
+| `/:int`        | `/([0-9]+)`              | Coincide con un parámetro entero                                                                                     |
 
 Los nombres de controlador son camelizados, esto significa que los caracteres (`-`) y (`_`) se quitan y el siguiente carácter se transformará en mayúscula. Por ejemplo, some_controller se convierte en SomeController.
 
@@ -260,7 +260,7 @@ class DocumentationController extends Controller
 
 ### Sintaxis corta
 
-If you don't like using an array to define the route paths, an alternative syntax is also available. The following examples produce the same result:
+Si no te gusta usar una matriz para definir los caminos de la ruta, también está disponible una sintaxis alternativa. En los siguientes ejemplos producen el mismo resultado:
 
 ```php
 <?php
@@ -307,7 +307,7 @@ $router->add(
 
 ### Enrutamiento a los módulos
 
-You can define routes whose paths include modules. This is specially suitable to multi-module applications. It's possible define a default route that includes a module wildcard:
+Puede definir rutas cuyos caminos incluyen módulos. Esta son especialmente utilices para aplicaciones multi-módulo. Es posible definir una ruta predeterminada que incluya un comodín de módulo:
 
 ```php
 <?php
@@ -327,7 +327,7 @@ $router->add(
 );
 ```
 
-In this case, the route always must have the module name as part of the URL. For example, the following URL: `/admin/users/edit/sonny`, will be processed as:
+En este caso, la ruta siempre debe tener el nombre del módulo como parte de la URL. Por ejemplo, la siguiente URL: `/admin/users/edit/sonny`, será procesada como:
 
 | Módulo | Controlador | Acción | Parámetro |
 |:------:|:-----------:|:------:|:---------:|
@@ -424,7 +424,7 @@ $router->add(
 
 ### Utilizando conversores
 
-Conversors allow you to freely transform the route's parameters before passing them to the dispatcher. The following examples show how to use them:
+Los conversores le permiten transformar libremente los parámetros de la ruta antes de pasarlos al despachador. Los siguientes ejemplos muestran cómo utilizarlos:
 
 ```php
 <?php
@@ -447,7 +447,7 @@ $route->convert(
 );
 ```
 
-Another use case for conversors is binding a model into a route. This allows the model to be passed into the defined action directly:
+Otro caso de uso de los conversores es enlazando un modelo con una ruta. Esto permite al modelo ser pasado directamente en la definición de la acción:
 
 ```php
 <?php
@@ -599,7 +599,7 @@ RewriteCond   %{REQUEST_FILENAME} !-f
 RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 ```
 
-In this configuration, any requests to files or folders that don't exist will be sent to `index.php`. The following example shows how to use this component in stand-alone mode:
+En esta configuración, cualquier solicitud a archivos o carpetas que no existen se enviará a `index.php`. En el siguiente ejemplo se muestra cómo utilizar este componente en modo independiente:
 
 ```php
 <?php
@@ -821,7 +821,7 @@ Esto es tipicamente para una página Error 404.
 
 ## Configurar rutas por defecto
 
-It's possible to define default values for the module, controller or action. When a route is missing any of those paths they can be automatically filled by the router:
+Es posible definir valores predeterminados para el módulo, controlador o acción. Cuando a una ruta le falta alguna de esas rutas, el enrutador puede completarla automáticamente:
 
 ```php
 <?php
@@ -1222,17 +1222,17 @@ class ProductsController
 }
 ```
 
-Only methods marked with valid annotations are used as routes. List of annotations supported:
+Solo los métodos marcados con anotaciones validas serán utilizados como rutas. A continuación una lista de anotaciones compatibles:
 
-| Nombre      | Descripción                                                                                       | Uso                                    |
-| ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
-| Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
-| Get         | Esta anotación marca el método como una ruta restringida al método `GET` de HTTP                  | `@Get('/api/products/search')`         |
-| Post        | Esta anotación marca el método como una ruta restringida al método `POST` de HTTP                 | `@Post('/api/products/save')`          |
-| Put         | Esta anotación marca el método como una ruta restringida al método `PUT` de HTTP                  | `@Put('/api/products/save')`           |
-| Delete      | Esta anotación marca el método como una ruta restringida al método `DELETE` de HTTP               | `@Delete('/api/products/delete/{id}')` |
-| Options     | Esta anotación marca el método como una ruta restringida al método `OPTIONS` de HTTP              | `@Option('/api/products/info')`        |
+| Nombre      | Descripción                                                                                          | Uso                                    |
+| ----------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| RoutePrefix | Un prefijo que se antepone a cada ruta URI. Esta anotación debe colocarse en el docblock de la clase | `@RoutePrefix('/api/products')`        |
+| Route       | Esta anotación marca un método como una ruta. Esta anotación debe colocarse en un docblock método    | `@Route('/api/products/show')`         |
+| Get         | Esta anotación marca el método como una ruta restringida al método `GET` de HTTP                     | `@Get('/api/products/search')`         |
+| Post        | Esta anotación marca el método como una ruta restringida al método `POST` de HTTP                    | `@Post('/api/products/save')`          |
+| Put         | Esta anotación marca el método como una ruta restringida al método `PUT` de HTTP                     | `@Put('/api/products/save')`           |
+| Delete      | Esta anotación marca el método como una ruta restringida al método `DELETE` de HTTP                  | `@Delete('/api/products/delete/{id}')` |
+| Options     | Esta anotación marca el método como una ruta restringida al método `OPTIONS` de HTTP                 | `@Option('/api/products/info')`        |
 
 Para las anotaciones que agregan rutas, se admiten los siguientes parámetros:
 
@@ -1273,7 +1273,7 @@ Necesita agregar el código a continuación en su archivo bootstrap (por ejemplo
 <?php
 
 /**
- * Add routing capabilities
+ * Añadir capacidades de enrutamiento
  */
 $di->set(
     'router',

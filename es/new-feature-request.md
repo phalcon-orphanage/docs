@@ -22,6 +22,6 @@ En los siguientes casos se rechazará una solicitud de nueva característica:
 * Si las clases o componentes presentados y propuestos no siguen el <a href="[">Principio de Responsabilidad Individual](https://es.wikipedia.org/wiki/Principio_de_responsabilidad_%C3%BAnica)
 * Los métodos estáticos no están permitidos
 
-To send a NFR you don't need to provide Zephir or C code or develop the feature. New Feture requests explain the goal of the intended implementation and open discussion on how best to implement it.
+Para enviar una NFR no necesitas proveer el código Zephir o C o desarrollar la funcionalidad. Nuevas solicitudes de funcionalidad explican el objetivo de la implementación prevista y abren la discusión sobre la mejor manera de implementarlo.
 
 Todas las NFR deben ser publicadas como un tema nuevo en [Github](https://github.com/phalcon/cphalcon/issues).

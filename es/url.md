@@ -16,7 +16,7 @@
           <a href="#urls-from-volt">Produciendo URLs desde Volt</a>
         </li>
         <li>
-          <a href="#static-vs-dynamic-uri">Static vs. Dynamic URIs</a>
+          <a href="#static-vs-dynamic-uri">URIs Estáticas vs. Dinámicas</a>
         </li>
         <li>
           <a href="#custom-url">Implementando tu Propio Generador de URLs</a>
@@ -30,7 +30,7 @@
 
 # Generar Direcciones URL y Rutas
 
-`Phalcon\Mvc\Url` is the component responsible of generate URLs in a Phalcon application. It's capable of produce independent URLs based on routes.
+`Phalcon\Mvc\Url` es el componente responsable de generar URLs en una aplicación Phalcon. Es capaz de producir URLs independientes basadas en rutas.
 
 <a name='base-uri'></a>
 
@@ -106,7 +106,7 @@ Por consiguiente es muy fácil crear rutas que satisfacen ese patrón (o cualqui
 <?php echo $url->get('products/save'); ?>
 ```
 
-Note that isn't necessary to prepend the base URI. If you have named routes you can easily change it creating it dynamically. For Example if you have the following route:
+Note que no es necesario incluir al inicio la URL base. Si tiene rutas nombradas, puede cambiarlo fácilmente creándolo dinámicamente. Por ejemplo si usted tiene la siguiente ruta:
 
 ```php
 <?php
@@ -183,7 +183,7 @@ use Phalcon\Mvc\Router;
 
 $router = new Router();
 
-// ... Define routes
+// ... Definir rutas
 
 $uri = str_replace($_SERVER['SCRIPT_NAME'], '', $_SERVER['REQUEST_URI']);
 
@@ -217,7 +217,7 @@ Generar rutas estáticas:
 
 <a name='static-vs-dynamic-uri'></a>
 
-## Static vs. Dynamic URIs
+## URIs Estáticas vs. Dinámicas
 
 Este componente permite establecer una URI base diferente para los recursos estáticos en la aplicación:
 

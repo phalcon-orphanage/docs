@@ -63,7 +63,7 @@ class UsersController extends Controller
 }
 ```
 
-We saved the password hashed with a default work factor. A higher work factor will make the password less vulnerable as its encryption will be slow. We can check if the password is correct as follows:
+Hemos guardado la contraseña hasheada con un factor de trabajo por defecto. Un factor de trabajo más alto, hará a la contraseña más segura pero la encriptación más lenta. Podemos chequear si la contraseña es correcta, de la siguiente manera:
 
 ```php
 <?php
@@ -100,7 +100,7 @@ La sal es generada usando bytes pseudo-aleatorios con la función [ openssl_rand
 
 ## Protección de Falsificación de Petición en Sitios Cruzados (CSRF)
 
-This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
+Es otro atraque común contra sitios web y aplicaciones. Los formularios para realizar tareas como registro o agregar comentarios, son vulnerables a estos ataques.
 
 La idea es evitar que los valores del formulario puedan enviarse desde fuera de nuestra aplicación. Para solucionar este problema, se puede generar un [Random Nonce](http://en.wikipedia.org/wiki/Cryptographic_nonce) o token en cada formulario, agregar el token en la sesión y luego validar el token una vez que el formulario envía los datos de regreso a nuestra aplicación, comparando el token almacenado en la sesión con el enviado por el formulario:
 
