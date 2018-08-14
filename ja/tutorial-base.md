@@ -17,30 +17,30 @@
               <a href="#request">アプリケーションのリクエストを処理する</a>
             </li>
             <li>
-              <a href="#full-example">Putting everything together</a>
+              <a href="#full-example">全てを配置</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#controller">Creating a Controller</a>
+          <a href="#controller">Controllerの作成</a>
         </li>
         <li>
-          <a href="#view">Sending output to a view</a>
+          <a href="#view">Viewに出力を送る</a>
         </li>
         <li>
-          <a href="#signup-form">Designing a sign up form</a>
+          <a href="#signup-form">サインアップフォームのデザイン</a>
         </li>
         <li>
-          <a href="#model">Creating a Model</a>
+          <a href="#model">Modelの作成</a>
         </li>
         <li>
-          <a href="#database-connection">Setting a Database Connection</a>
+          <a href="#database-connection">データベース接続の設定</a>
         </li>
         <li>
-          <a href="#storing-data">Storing data using models</a>
+          <a href="#storing-data">Modelを使ったデータの保存</a>
         </li>
         <li>
-          <a href="#conclusion">Conclusion</a>
+          <a href="#conclusion">まとめ</a>
         </li>
       </ul>
     </li>
@@ -49,7 +49,7 @@
 
 <a name='basic'></a>
 
-# Tutorial - basic
+# チュートリアル - 基本
 
 この最初のチュートリアルでは、簡単な登録フォームのアプリケーションの作成を、基礎から一歩づつ進めます。 また、フレームワークの動作の基本的な側面を説明します。 Phalconの自動コード生成ツールに興味がある場合は、[developer tools](/[[language]]/[[version]]/developer-tools)を確認してください。
 
@@ -207,7 +207,7 @@ $response->send();
 
 <a name='full-example'></a>
 
-### Putting everything together
+### 全てを配置
 
 `tutorial/public/index.php` ファイルは、次のようになります。
 
@@ -330,7 +330,7 @@ class IndexController extends Controller
 
 <a name='signup-form'></a>
 
-## Designing a sign up form
+## サインアップフォームのデザイン
 
 今度は`index.phtml`ビューファイルを変更して、 "signup"という名前の新しいコントローラへのリンクを追加します。 目標は、ユーザーがアプリケーション内でサインアップできるようにすることです。
 
@@ -574,4 +574,4 @@ not null (required) として定義されているフィールドに対しては
 
 ## Conclusion
 
-これはとてもシンプルなチュートリアルです。ご覧のとおり、Phalconを使用してアプリケーションを構築するのは簡単です。 PhalconがWebサーバーのextentionであるという事実は、開発の容易さや機能の使いやすさを妨げていません。 We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
+これはとてもシンプルなチュートリアルです。ご覧のとおり、Phalconを使用してアプリケーションを構築するのは簡単です。 PhalconがWebサーバーのextentionであるという事実は、開発の容易さや機能の使いやすさを妨げていません。 Phalconが提供する追加機能を発見できるように、このマニュアルを読み進めてください！
