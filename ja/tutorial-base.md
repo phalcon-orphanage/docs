@@ -1,20 +1,20 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#basic">Tutorial - basic</a> <ul>
+      <a href="#basic">チュートリアル - 基本</a> <ul>
         <li>
-          <a href="#file-structure">File structure</a>
+          <a href="#file-structure">ファイル構造</a>
         </li>
         <li>
           <a href="#bootstrap">Bootstrap</a> <ul>
             <li>
-              <a href="#autoloaders">Autoloaders</a>
+              <a href="#autoloaders">オートローダ</a>
             </li>
             <li>
-              <a href="#dependency-management">Dependency Management</a>
+              <a href="#dependency-management">依存関係の管理</a>
             </li>
             <li>
-              <a href="#request">Handling the application request</a>
+              <a href="#request">アプリケーションのリクエストを処理する</a>
             </li>
             <li>
               <a href="#full-example">Putting everything together</a>
@@ -88,16 +88,16 @@ Phalconに関連した “library” ディレクトリが必要ないことに�
 結局のところ、下記の３つを行う事になります:
 
 - オートローダの設定
-- Configuring the Dependency Injector.
-- Handling the application request.
+- 依存関係の注入 (Dependency Injector) の設定を行う。
+- アプリケーションのリクエストを処理する。
 
 <a name='autoloaders'></a>
 
 ### Autoloaders
 
-The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component `Phalcon\Loader`.
+ブートストラップで最初に見つける部分は、オートローダを登録していることです。 これはコントローラやモデルなどのクラスをロードするために使われます。 例えば、コントローラのディレクトリを一つ以上登録して、アプリケーションの柔軟性を高めることができます。 次の例では、`Phalcon\Loader` コンポーネントを使用しています。
 
-With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
+様々な方法を使用してクラスを読み込むことができますが、この例ではあらかじめ定義されたディレクトリに基づいてクラスを配置する方法を選択しました。
 
 ```php
 <?php
@@ -187,7 +187,7 @@ $di->set(
 
 <a name='request'></a>
 
-### Handling the application request
+### アプリケーションのリクエストを処理する
 
 In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
 
