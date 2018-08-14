@@ -413,15 +413,15 @@ class SignupController extends Controller
 </form>
 ```
 
-Viewing the form in your browser will show something like this:
+ブラウザでフォームを確認すると、次のように表示されます:
 
 ![](/images/content/tutorial-basic-3.png)
 
-`Phalcon\Tag` also provides useful methods to build form elements.
+`Phalcon\Tag`は、フォーム要素を構築するための便利なメソッドも提供します。
 
-The :code:`Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application.
+:code:`Phalcon\Tag::form()`メソッドは、例えばアプリケーション内の controller/action に対する相対URIを唯一のパラメータとして受け取ります。
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our `public/index.php` file throws this exception:
+「送信」ボタンをクリックすると、フレームワークから例外がスローされ、"signup" コントローラーの "register" アクションが無いことがわかります。 Our `public/index.php` file throws this exception:
 
 ```bash
 Exception: Action "register" was not found on handler "signup"
