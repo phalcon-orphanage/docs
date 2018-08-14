@@ -122,7 +122,7 @@ $loader->register();
 
 ### Dependency Management
 
-A very important concept that must be understood when working with Phalcon is its `dependency injection container <di>`. It may sound complex but is actually very simple and practical.
+Phalconを動作させる上で、必ず理解する必要のある非常に重要な概念は、`dependency injection container <di>` です。 これは一見複雑な仕組みに見えますが、実際には非常に単純で実用的な機能です。
 
 A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, `Phalcon\Di` acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
 
