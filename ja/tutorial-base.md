@@ -421,13 +421,13 @@ class SignupController extends Controller
 
 :code:`Phalcon\Tag::form()`メソッドは、例えばアプリケーション内の controller/action に対する相対URIを唯一のパラメータとして受け取ります。
 
-「送信」ボタンをクリックすると、フレームワークから例外がスローされ、"signup" コントローラーの "register" アクションが無いことがわかります。 Our `public/index.php` file throws this exception:
+「送信」ボタンをクリックすると、フレームワークから例外がスローされ、"signup" コントローラーの "register" アクションが無いことがわかります。 `public/index.php`ファイルは以下の例外を投げます:
 
 ```bash
 Exception: Action "register" was not found on handler "signup"
 ```
 
-Implementing that method will remove the exception:
+このメソッドを実装すると、例外が無くなります:
 
 ```php
 <?php
@@ -448,15 +448,15 @@ class SignupController extends Controller
 }
 ```
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+もう一度 "Send" ボタンをクリックすると、空白のページが表示されます。 ユーザーが入力したnameとemailはデータベースに保存する必要があります。 MVCのガイドラインによれば、オブジェクト指向のきれいなコードを確保するために、データベースのやりとりをモデルを通じて行う必要があります。
 
 <a name='model'></a>
 
 ## Creating a Model
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalconは、C言語で書かれた初めてのPHP用ORMを提供します。これは、開発の複雑さを増す事なく単純化します。
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:
+最初のモデルを作る前に、Phalconがマッピングできるようデータベースのテーブルを作る必要があります。登録ユーザーを格納するための単純なテーブルは、次のように定義できます:
 
 ```sql
 CREATE TABLE `users` (
@@ -468,7 +468,7 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
+モデルは、`app/models`ディレクトリに配置する必要があります (`app/models/Users.php`)。このモデルは "users" テーブルにマッピングされます。
 
 ```php
 <?php
@@ -489,14 +489,14 @@ class Users extends Model
 
 ## Setting a Database Connection
 
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+モデルからデータベース接続を使用してデータにアクセスできるようにするには、ブートストラップの処理中にデータベースの接続を設定する必要があります。 データベース接続は、アプリケーションの他のコンポーネントから利用できるサービスです:
 
 ```php
 <?php
 
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-// Setup the database service
+// データベースのサービスをセットアップ
 $di->set(
     'db',
     function () {
