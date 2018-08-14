@@ -51,17 +51,17 @@
 
 # Tutorial - basic
 
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/[[language]]/[[version]]/developer-tools).
+この最初のチュートリアルでは、簡単な登録フォームのアプリケーションの作成を、基礎から一歩づつ進めます。 また、フレームワークの動作の基本的な側面を説明します。 Phalconの自動コード生成ツールに興味がある場合は、[developer tools](/[[language]]/[[version]]/developer-tools)を確認してください。
 
-The best way to use this guide is to follow each step in turn. You can get the complete code [here](https://github.com/phalcon/tutorial).
+このガイドを使用する最善の方法は、順番に各ステップを実行することです。完全なコードは[ここ](https://github.com/phalcon/tutorial)で取得できます。
 
 <a name='file-structure'></a>
 
 ## File structure
 
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Phalconはアプリケーション開発において特定のファイル構造を強制しません。 Phalconは疎結合になっているため、あなたのやりやすいファイル構造でアプリケーションを実装することができます。
 
-For the purposes of this tutorial and as a starting point, we suggest this very simple structure:
+このチュートリアルの目的と出発点として、次のようなシンプルな構造を提案します。
 
 ```bash
 tutorial/
@@ -75,9 +75,9 @@ tutorial/
     js/
 ```
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+Phalconに関連した “library” ディレクトリが必要ないことに注意してください。フレームワークはメモリ上で有効になっており、すでに使う準備ができています。
 
-Before continuing, please be sure you've successfully [installed Phalcon](/[[language]]/[[version]]/installation) and have setup either [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
+このチュートリアルを続ける前に、[Phalcon のインストール](/[[language]]/[[version]]/installation)を完了させ、[Nginx](/[[language]]/[[version]]/setup#nginx)、[Apache](/[[language]]/[[version]]/setup#apache)または[Cherokee](/[[language]]/[[version]]/setup#cherokee)の設定を完了させてください。
 
 <a name='bootstrap'></a>
 
