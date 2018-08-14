@@ -1,46 +1,46 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#basic">Tutorial - basic</a> <ul>
+      <a href="#basic">チュートリアル - 基本</a> <ul>
         <li>
-          <a href="#file-structure">File structure</a>
+          <a href="#file-structure">ファイル構造</a>
         </li>
         <li>
           <a href="#bootstrap">Bootstrap</a> <ul>
             <li>
-              <a href="#autoloaders">Autoloaders</a>
+              <a href="#autoloaders">オートローダ</a>
             </li>
             <li>
-              <a href="#dependency-management">Dependency Management</a>
+              <a href="#dependency-management">依存関係の管理</a>
             </li>
             <li>
-              <a href="#request">Handling the application request</a>
+              <a href="#request">アプリケーションのリクエストを処理する</a>
             </li>
             <li>
-              <a href="#full-example">Putting everything together</a>
+              <a href="#full-example">全てを配置</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#controller">Creating a Controller</a>
+          <a href="#controller">Controllerの作成</a>
         </li>
         <li>
-          <a href="#view">Sending output to a view</a>
+          <a href="#view">Viewに出力を送る</a>
         </li>
         <li>
-          <a href="#signup-form">Designing a sign up form</a>
+          <a href="#signup-form">サインアップフォームのデザイン</a>
         </li>
         <li>
-          <a href="#model">Creating a Model</a>
+          <a href="#model">Modelの作成</a>
         </li>
         <li>
-          <a href="#database-connection">Setting a Database Connection</a>
+          <a href="#database-connection">データベース接続の設定</a>
         </li>
         <li>
-          <a href="#storing-data">Storing data using models</a>
+          <a href="#storing-data">Modelを使ったデータの保存</a>
         </li>
         <li>
-          <a href="#conclusion">Conclusion</a>
+          <a href="#conclusion">まとめ</a>
         </li>
       </ul>
     </li>
@@ -49,19 +49,19 @@
 
 <a name='basic'></a>
 
-# Tutorial - basic
+# チュートリアル - 基本
 
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/[[language]]/[[version]]/developer-tools).
+この最初のチュートリアルでは、簡単な登録フォームのアプリケーションの作成を、基礎から一歩づつ進めます。 また、フレームワークの動作の基本的な側面を説明します。 Phalconの自動コード生成ツールに興味がある場合は、[developer tools](/[[language]]/[[version]]/developer-tools)を確認してください。
 
-The best way to use this guide is to follow each step in turn. You can get the complete code [here](https://github.com/phalcon/tutorial).
+このガイドを使用する最善の方法は、順番に各ステップを実行することです。完全なコードは[ここ](https://github.com/phalcon/tutorial)で取得できます。
 
 <a name='file-structure'></a>
 
 ## File structure
 
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Phalconはアプリケーション開発において特定のファイル構造を強制しません。 Phalconは疎結合になっているため、あなたのやりやすいファイル構造でアプリケーションを実装することができます。
 
-For the purposes of this tutorial and as a starting point, we suggest this very simple structure:
+このチュートリアルの目的と出発点として、次のようなシンプルな構造を提案します。
 
 ```bash
 tutorial/
@@ -75,29 +75,29 @@ tutorial/
     js/
 ```
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+Phalconに関連した “library” ディレクトリが必要ないことに注意してください。フレームワークはメモリ上で有効になっており、すでに使う準備ができています。
 
-Before continuing, please be sure you've successfully [installed Phalcon](/[[language]]/[[version]]/installation) and have setup either [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
+このチュートリアルを続ける前に、[Phalcon のインストール](/[[language]]/[[version]]/installation)を完了させ、[Nginx](/[[language]]/[[version]]/setup#nginx)、[Apache](/[[language]]/[[version]]/setup#apache)または[Cherokee](/[[language]]/[[version]]/setup#cherokee)の設定を完了させてください。
 
 <a name='bootstrap'></a>
 
 ## Bootstrap
 
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+はじめに作成する必要があるファイルは bootstrap ファイルです。 このファイルは非常に重要です。これはアプリケーションの全てをコントロールする基盤として機能します。 このファイルでは、アプリケーションの動作と同様に、コンポーネントの初期化を実装できます。
 
-Ultimately, it is responsible for doing 3 things:
+結局のところ、下記の３つを行う事になります:
 
-- Setting up the autoloader.
-- Configuring the Dependency Injector.
-- Handling the application request.
+- オートローダの設定
+- 依存関係の注入 (Dependency Injector) の設定を行う。
+- アプリケーションのリクエストを処理する。
 
 <a name='autoloaders'></a>
 
 ### Autoloaders
 
-The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component `Phalcon\Loader`.
+ブートストラップで最初に見つける部分は、オートローダを登録していることです。 これはコントローラやモデルなどのクラスをロードするために使われます。 例えば、コントローラのディレクトリを一つ以上登録して、アプリケーションの柔軟性を高めることができます。 次の例では、`Phalcon\Loader` コンポーネントを使用しています。
 
-With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
+様々な方法を使用してクラスを読み込むことができますが、この例ではあらかじめ定義されたディレクトリに基づいてクラスを配置する方法を選択しました。
 
 ```php
 <?php
@@ -122,9 +122,9 @@ $loader->register();
 
 ### Dependency Management
 
-A very important concept that must be understood when working with Phalcon is its `dependency injection container <di>`. It may sound complex but is actually very simple and practical.
+Phalconを動作させる上で、必ず理解する必要のある非常に重要な概念は、`dependency injection container <di>` です。 これは一見複雑な仕組みに見えますが、実際には非常に単純で実用的な機能です。
 
-A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, `Phalcon\Di` acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
+サービスコンテナは、アプリケーションから使用する関数を実装したサービスを、グローバルに格納するための大きなバッグです。 フレームワークがコンポーネントを必要とするたびに、サービスに紐づけられた名前を使用してコンテナに問い合わせます。 Phalcon は非常に疎結合なフレームワークです。このため、`Phalcon\Di` は接着剤として機能し、透過的にさまざまなコンポーネントを統合し、協調して動作できるように機能します。
 
 ```php
 <?php
@@ -137,11 +137,11 @@ use Phalcon\Di\FactoryDefault;
 $di = new FactoryDefault();
 ```
 
-`Phalcon\Di\FactoryDefault` is a variant of `Phalcon\Di`. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
+`Phalcon\Di\FactoryDefault` は `Phalcon\Di` の一種です。 実装を簡単にするため、Phalcon に付属するほとんどのコンポーネントを登録しています。 このため、それらをひとつひとつ登録する必要はありません。 後からファクトリサービスを置き換えることは問題ないです。
 
-In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
+次のパートでは、フレームワークがビューファイルを見つけるディレクトリを指し示した "view" サービスを登録します。 ビューはクラスに対応していないため、オートローダを利用することができません。
 
-Services can be registered in several ways, but for our tutorial we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
+サービスはいくつかの方法で登録することができますが、このチュートリアルでは[無名関数](http://php.net/manual/en/functions.anonymous.php)を使用します。
 
 ```php
 <?php
@@ -150,7 +150,7 @@ use Phalcon\Mvc\View;
 
 // ...
 
-// Setup the view component
+// ビューコンポーネントを設定します
 $di->set(
     'view',
     function () {
@@ -163,7 +163,7 @@ $di->set(
 );
 ```
 
-Next we register a base URI so that all URIs generated by Phalcon include the "tutorial" folder we setup earlier. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
+次に、Phalcon によって生成された全ての URI が、以前設定した "tutorial" フォルダを含めるように、ベース URI を登録します。 `Phalcon\Tag` クラスを使用してハイパーリンクを生成する場合、この設定はチュートリアルの後半で重要になります。
 
 ```php
 <?php
@@ -172,7 +172,7 @@ use Phalcon\Mvc\Url as UrlProvider;
 
 // ...
 
-// Setup a base URI so that all generated URIs include the "tutorial" folder
+// 生成されるすべての URI が「tutorial」フォルダを含めるように、ベース URI を設定します
 $di->set(
     'url',
     function () {
@@ -187,9 +187,9 @@ $di->set(
 
 <a name='request'></a>
 
-### Handling the application request
+### アプリケーションのリクエストを処理する
 
-In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+このファイルの最後の部分には、`Phalcon\Mvc\Application` があります。 その目的は、リクエスト環境変数を初期化し、受け取ったリクエストをルーティング、検出されたアクションにディスパッチすることです。レスポンスを集約し、処理が完了したときにそれを返却します。
 
 ```php
 <?php
@@ -207,9 +207,9 @@ $response->send();
 
 <a name='full-example'></a>
 
-### Putting everything together
+### 全てを配置
 
-The `tutorial/public/index.php` file should look like:
+`tutorial/public/index.php` ファイルは、次のようになります。
 
 ```php
 <?php
@@ -221,7 +221,7 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Url as UrlProvider;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-// Register an autoloader
+// オートローダを登録
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -233,10 +233,10 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Create a DI
+// DI を生成
 $di = new FactoryDefault();
 
-// Setup the view component
+// ビューコンポーネントを設定
 $di->set(
     'view',
     function () {
@@ -248,7 +248,7 @@ $di->set(
     }
 );
 
-// Setup a base URI so that all generated URIs include the "tutorial" folder
+// 生成されるすべての URI が「tutorial」フォルダを含めるようにベース URI を設定
 $di->set(
     'url',
     function () {
@@ -263,7 +263,7 @@ $di->set(
 $application = new Application($di);
 
 try {
-    // Handle the request
+    // リクエストを処理
     $response = $application->handle();
 
     $response->send();
@@ -272,13 +272,13 @@ try {
 }
 ```
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less than 30 lines of code.
+見ての通り、ブートストラップファイルは非常に短く、追加のファイルを含める必要はありません。 私たちは、30行未満のコードで柔軟な MVC アプリケーションを用意しました。
 
 <a name='controller'></a>
 
 ## Creating a Controller
 
-By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (`app/controllers/IndexController.php`) looks like:
+デフォルトで Phalcon は "Index" という名前のコントローラを探します。 これは、リクエストでコントローラまたはアクションが渡されていないときの開始点です。 indexコントローラ (`app/controllers/IndexController.php`) はこのようになります。
 
 ```php
 <?php
@@ -294,23 +294,23 @@ class IndexController extends Controller
 }
 ```
 
-The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this:
+コントローラクラスの名前は必ず "Controller" で終わる必要があり、コントローラのアクションの名前は必ず "Action" で終わる必要があります。ブラウザからアプリケーションにアクセスすると、次のように表示されます。
 
 ![](/images/content/tutorial-basic-1.png)
 
-Congratulations, you're phlying with Phalcon!
+おめでとう、あなたはPhalconで飛び立つことができました！
 
 <a name='view'></a>
 
 ## Sending output to a view
 
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
+コントローラーから画面に出力を送信することは時に必要ですが、MVCコミュニティの多くの純粋主義者が証明する様に、望ましくはありません。 すべてを画面上の出力データとしてビューに渡す必要があります。 Phalconは、最後に実行されたコントローラーと同じ名前のディレクトリー配下にある、最後に実行されたアクションと同じ名前のビューを探します。 今回の場合は (`app/views/index/index.phtml`) です。
 
 ```php
 <?php echo "<h1>Hello!</h1>";
 ```
 
-Our controller (`app/controllers/IndexController.php`) now has an empty action definition:
+私たちのコントローラー (`app/controllers/IndexController.php`) は空のアクションが定義されています:
 
 ```php
 <?php
@@ -326,13 +326,13 @@ class IndexController extends Controller
 }
 ```
 
-The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about `views usage here <views>`.
+ブラウザの出力は変わらないはずです。 静的コンポーネントの `Phalcon\Mvc\View` は、アクションの実行が終了すると自動的に作成されます。 詳しくは `ビューの使い方<views>` を参照してください。
 
 <a name='signup-form'></a>
 
-## Designing a sign up form
+## サインアップフォームのデザイン
 
-Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
+今度は`index.phtml`ビューファイルを変更して、 "signup"という名前の新しいコントローラへのリンクを追加します。 目標は、ユーザーがアプリケーション内でサインアップできるようにすることです。
 
 ```php
 <?php
@@ -349,7 +349,7 @@ echo $this->tag->linkTo(
 );
 ```
 
-The generated HTML code displays an anchor ("a") HTML tag linking to a new controller:
+生成されたHTMLコードは、新しいコントローラにリンクするアンカー ("a") HTMLタグを表示します:
 
 ```html
 <h1>Hello!</h1>
@@ -357,13 +357,13 @@ The generated HTML code displays an anchor ("a") HTML tag linking to a new contr
 <a href="/tutorial/signup">Sign Up Here!</a>
 ```
 
-To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is a also a service registered in the DI we use `$this->tag` to access it.
+タグを生成するには`Phalcon\Tag`クラスを使用します。 これは、フレームワークの規約に従ったHTMLタグを生成することを可能にするユーティリティクラスです。 このクラスはDIに登録されたサービスでもあるため、`$this->tag`を使用してアクセスします。
 
-A more detailed article regarding HTML generation can be :doc:`found here <tags>`.
+HTML生成に関するより詳細な記事は、次のとおりです。 :doc: `ここで見つかります<tags>`
 
 ![](/images/content/tutorial-basic-2.png)
 
-Here is the Signup controller (`app/controllers/SignupController.php`):
+Signupコントローラは次のとおりです (`app/controllers/SignupController.php`):
 
 ```php
 <?php
@@ -379,7 +379,7 @@ class SignupController extends Controller
 }
 ```
 
-The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
+空のindexアクションは、フォーム定義を持つビューに対して何も渡しません (`app/views/signup/index.phtml`):
 
 ```php
 <h2>
@@ -413,21 +413,21 @@ The empty index action gives the clean pass to a view with the form definition (
 </form>
 ```
 
-Viewing the form in your browser will show something like this:
+ブラウザでフォームを確認すると、次のように表示されます:
 
 ![](/images/content/tutorial-basic-3.png)
 
-`Phalcon\Tag` also provides useful methods to build form elements.
+`Phalcon\Tag`は、フォーム要素を構築するための便利なメソッドも提供します。
 
-The :code:`Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application.
+:code:`Phalcon\Tag::form()`メソッドは、例えばアプリケーション内の controller/action に対する相対URIを唯一のパラメータとして受け取ります。
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our `public/index.php` file throws this exception:
+「送信」ボタンをクリックすると、フレームワークから例外がスローされ、"signup" コントローラーの "register" アクションが無いことがわかります。 `public/index.php`ファイルは以下の例外を投げます:
 
 ```bash
 Exception: Action "register" was not found on handler "signup"
 ```
 
-Implementing that method will remove the exception:
+このメソッドを実装すると、例外が無くなります:
 
 ```php
 <?php
@@ -448,15 +448,15 @@ class SignupController extends Controller
 }
 ```
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+もう一度 "Send" ボタンをクリックすると、空白のページが表示されます。 ユーザーが入力したnameとemailはデータベースに保存する必要があります。 MVCのガイドラインによれば、オブジェクト指向のきれいなコードを確保するために、データベースのやりとりをモデルを通じて行う必要があります。
 
 <a name='model'></a>
 
 ## Creating a Model
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalconは、C言語で書かれた初めてのPHP用ORMを提供します。これは、開発の複雑さを増す事なく単純化します。
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:
+最初のモデルを作る前に、Phalconがマッピングできるようデータベースのテーブルを作る必要があります。登録ユーザーを格納するための単純なテーブルは、次のように定義できます:
 
 ```sql
 CREATE TABLE `users` (
@@ -468,7 +468,7 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
+モデルは、`app/models`ディレクトリに配置する必要があります (`app/models/Users.php`)。このモデルは "users" テーブルにマッピングされます。
 
 ```php
 <?php
@@ -489,14 +489,14 @@ class Users extends Model
 
 ## Setting a Database Connection
 
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+モデルからデータベース接続を使用してデータにアクセスできるようにするには、ブートストラップの処理中にデータベースの接続を設定する必要があります。 データベース接続は、アプリケーションの他のコンポーネントから利用できるサービスです:
 
 ```php
 <?php
 
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-// Setup the database service
+// データベースのサービスをセットアップ
 $di->set(
     'db',
     function () {
@@ -512,13 +512,13 @@ $di->set(
 );
 ```
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+適切なデータベースのパラメータを設定することでモデルは利用可能になり、アプリケーションの他の部分とやりとりできるようになります。
 
 <a name='storing-data'></a>
 
 ## Storing data using models
 
-Receiving data from the form and storing them in the table is the next step.
+次のステップでは、フォームからデータを受け取り、それらをテーブルに保存します。
 
 ```php
 <?php
@@ -562,11 +562,11 @@ class SignupController extends Controller
 }
 ```
 
-We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+まず、ユーザー情報に対応するUsersクラスをインスタンス化します。 このクラスのpublicプロパティはusersテーブルのレコードのフィールドにマッピングされます。 新しいレコードに関連する値を設定し`save()`を呼び出すと、そのレコードのデータがデータベースに保存されます。 `save()`メソッドは、データの格納が成功したかどうかを示すブール値を返します。
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
+ORMは自動的に入力をエスケープしてSQLインジェクションを防ぐので、私たちはリクエストを`save()`メソッドに渡すだけ良いです。
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
+not null (required) として定義されているフィールドに対しては、追加のバリデーションが自動的に実行されます。サインアップフォームに必要なフィールドを入力しないと、画面は次のようになります:
 
 ![](/images/content/tutorial-basic-4.png)
 
@@ -574,4 +574,4 @@ Additional validation happens automatically on fields that are defined as not nu
 
 ## Conclusion
 
-This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon. The fact that Phalcon is an extension on your web server has not interfered with the ease of development or features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
+これはとてもシンプルなチュートリアルです。ご覧のとおり、Phalconを使用してアプリケーションを構築するのは簡単です。 PhalconがWebサーバーのextentionであるという事実は、開発の容易さや機能の使いやすさを妨げていません。 Phalconが提供する追加機能を発見できるように、このマニュアルを読み進めてください！
