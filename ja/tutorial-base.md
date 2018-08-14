@@ -189,7 +189,7 @@ $di->set(
 
 ### アプリケーションのリクエストを処理する
 
-このファイルの最後の部分には、`Phalcon\Mvc\Application` があります。 Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+このファイルの最後の部分には、`Phalcon\Mvc\Application` があります。 その目的は、リクエスト環境変数を初期化し、受け取ったリクエストをルーティング、検出されたアクションにディスパッチすることです。レスポンスを集約し、処理が完了したときにそれを返却します。
 
 ```php
 <?php
@@ -209,7 +209,7 @@ $response->send();
 
 ### Putting everything together
 
-The `tutorial/public/index.php` file should look like:
+`tutorial/public/index.php` ファイルは、次のようになります。
 
 ```php
 <?php
@@ -221,7 +221,7 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Url as UrlProvider;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-// Register an autoloader
+// オートローダを登録
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -233,10 +233,10 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Create a DI
+// DI を生成
 $di = new FactoryDefault();
 
-// Setup the view component
+// ビューコンポーネントを設定
 $di->set(
     'view',
     function () {
@@ -248,7 +248,7 @@ $di->set(
     }
 );
 
-// Setup a base URI so that all generated URIs include the "tutorial" folder
+// 生成されるすべての URI が「tutorial」フォルダを含めるようにベース URI を設定
 $di->set(
     'url',
     function () {
@@ -263,7 +263,7 @@ $di->set(
 $application = new Application($di);
 
 try {
-    // Handle the request
+    // リクエストを処理
     $response = $application->handle();
 
     $response->send();
@@ -272,13 +272,13 @@ try {
 }
 ```
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less than 30 lines of code.
+見ての通り、ブートストラップファイルは非常に短く、追加のファイルを含める必要はありません。 私たちは、30行未満のコードで柔軟な MVC アプリケーションを用意しました。
 
 <a name='controller'></a>
 
 ## Creating a Controller
 
-By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (`app/controllers/IndexController.php`) looks like:
+デフォルトで Phalcon は "Index" という名前のコントローラを探します。 これは、リクエストでコントローラまたはアクションが渡されていないときの開始点です。 indexコントローラ (`app/controllers/IndexController.php`) はこのようになります。
 
 ```php
 <?php
@@ -294,11 +294,11 @@ class IndexController extends Controller
 }
 ```
 
-The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this:
+コントローラクラスの名前は必ず "Controller" で終わる必要があり、コントローラのアクションの名前は必ず "Action" で終わる必要があります。ブラウザからアプリケーションにアクセスすると、次のように表示されます。
 
 ![](/images/content/tutorial-basic-1.png)
 
-Congratulations, you're phlying with Phalcon!
+おめでとう、あなたはPhalconで飛び立つことができました！
 
 <a name='view'></a>
 
