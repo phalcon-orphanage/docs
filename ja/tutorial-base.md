@@ -83,11 +83,11 @@ Phalconに関連した “library” ディレクトリが必要ないことに�
 
 ## Bootstrap
 
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+はじめに作成する必要があるファイルは bootstrap ファイルです。 このファイルは非常に重要です。これはアプリケーションの全てをコントロールする基盤として機能します。 このファイルでは、アプリケーションの動作と同様に、コンポーネントの初期化を実装できます。
 
-Ultimately, it is responsible for doing 3 things:
+結局のところ、下記の３つを行う事になります:
 
-- Setting up the autoloader.
+- オートローダの設定
 - Configuring the Dependency Injector.
 - Handling the application request.
 
