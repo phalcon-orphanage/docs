@@ -124,7 +124,7 @@ $loader->register();
 
 Phalconを動作させる上で、必ず理解する必要のある非常に重要な概念は、`dependency injection container <di>` です。 これは一見複雑な仕組みに見えますが、実際には非常に単純で実用的な機能です。
 
-A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, `Phalcon\Di` acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
+サービスコンテナは、アプリケーションから使用する関数を実装したサービスを、グローバルに格納するための大きなバッグです。 フレームワークがコンポーネントを必要とするたびに、サービスに紐づけられた名前を使用してコンテナに問い合わせます。 Phalcon は非常に疎結合なフレームワークです。このため、`Phalcon\Di` は接着剤として機能し、透過的にさまざまなコンポーネントを統合し、協調して動作できるように機能します。
 
 ```php
 <?php
@@ -137,11 +137,11 @@ use Phalcon\Di\FactoryDefault;
 $di = new FactoryDefault();
 ```
 
-`Phalcon\Di\FactoryDefault` is a variant of `Phalcon\Di`. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
+`Phalcon\Di\FactoryDefault` は `Phalcon\Di` の一種です。 実装を簡単にするため、Phalcon に付属するほとんどのコンポーネントを登録しています。 このため、それらをひとつひとつ登録する必要はありません。 後からファクトリサービスを置き換えることは問題ないです。
 
-In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
+次のパートでは、フレームワークがビューファイルを見つけるディレクトリを指し示した "view" サービスを登録します。 ビューはクラスに対応していないため、オートローダを利用することができません。
 
-Services can be registered in several ways, but for our tutorial we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
+サービスはいくつかの方法で登録することができますが、このチュートリアルでは[無名関数](http://php.net/manual/en/functions.anonymous.php)を使用します。
 
 ```php
 <?php
