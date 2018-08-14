@@ -357,13 +357,13 @@ echo $this->tag->linkTo(
 <a href="/tutorial/signup">Sign Up Here!</a>
 ```
 
-タグを生成するには`Phalcon\Tag`クラスを使用します。 This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is a also a service registered in the DI we use `$this->tag` to access it.
+タグを生成するには`Phalcon\Tag`クラスを使用します。 これは、フレームワークの規約に従ったHTMLタグを生成することを可能にするユーティリティクラスです。 このクラスはDIに登録されたサービスでもあるため、`$this->tag`を使用してアクセスします。
 
-A more detailed article regarding HTML generation can be :doc:`found here <tags>`.
+HTML生成に関するより詳細な記事は、次のとおりです。 :doc: `ここで見つかります<tags>`
 
 ![](/images/content/tutorial-basic-2.png)
 
-Here is the Signup controller (`app/controllers/SignupController.php`):
+Signupコントローラは次のとおりです (`app/controllers/SignupController.php`):
 
 ```php
 <?php
@@ -379,7 +379,7 @@ class SignupController extends Controller
 }
 ```
 
-The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
+空のindexアクションは、フォーム定義を持つビューに対して何も渡しません (`app/views/signup/index.phtml`):
 
 ```php
 <h2>
