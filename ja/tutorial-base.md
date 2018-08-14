@@ -512,13 +512,13 @@ $di->set(
 );
 ```
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+適切なデータベースのパラメータを設定することでモデルは利用可能になり、アプリケーションの他の部分とやりとりできるようになります。
 
 <a name='storing-data'></a>
 
 ## Storing data using models
 
-Receiving data from the form and storing them in the table is the next step.
+次のステップでは、フォームからデータを受け取り、それらをテーブルに保存します。
 
 ```php
 <?php
@@ -562,11 +562,11 @@ class SignupController extends Controller
 }
 ```
 
-We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+まず、ユーザー情報に対応するUsersクラスをインスタンス化します。 このクラスのpublicプロパティはusersテーブルのレコードのフィールドにマッピングされます。 新しいレコードに関連する値を設定し`save()`を呼び出すと、そのレコードのデータがデータベースに保存されます。 `save()`メソッドは、データの格納が成功したかどうかを示すブール値を返します。
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
+ORMは自動的に入力をエスケープしてSQLインジェクションを防ぐので、私たちはリクエストを`save()`メソッドに渡すだけ良いです。
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
+not null (required) として定義されているフィールドに対しては、追加のバリデーションが自動的に実行されます。サインアップフォームに必要なフィールドを入力しないと、画面は次のようになります:
 
 ![](/images/content/tutorial-basic-4.png)
 
@@ -574,4 +574,4 @@ Additional validation happens automatically on fields that are defined as not nu
 
 ## Conclusion
 
-This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon. The fact that Phalcon is an extension on your web server has not interfered with the ease of development or features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
+これはとてもシンプルなチュートリアルです。ご覧のとおり、Phalconを使用してアプリケーションを構築するのは簡単です。 PhalconがWebサーバーのextentionであるという事実は、開発の容易さや機能の使いやすさを妨げていません。 We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
