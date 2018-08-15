@@ -1254,7 +1254,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-Hydration mode can also be passed as a parameter of 'find':
+ハイドレーションモードは、'find' のパラメーターとして渡すこともできます:
 
 ```php
 <?php
