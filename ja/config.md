@@ -38,7 +38,7 @@
 
 ## Factory
 
-Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
+Config Adapterクラスを読み込む際に`adapter` のオプションを使用すると、拡張子を指定していなくても`filePath` に追加されます。
 
 ```php
 <?php
@@ -54,8 +54,8 @@ $options = [
  ```
 
 <a name='native-arrays'></a>
-## Native Arrays
-The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
+## PHPの配列
+最初の例はPHPの配列を 'Phalcon\Config' のオブジェクトに変換する方法を示しています。 このオプションはリクエストされるまでファイルが読み込まれないので最高のパフォーマンスを提供します。
 
 ```php
 <?php
