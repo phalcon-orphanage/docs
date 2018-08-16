@@ -35,12 +35,12 @@ class SessionController extends Controller
 {
     public function loginAction()
     {
-        // Check if the cookie has previously set
+        // Chequeamos si la cookie esta previamente seteada
         if ($this->cookies->has('remember-me')) {
-            // Get the cookie
+            // Obtenemos la cookie
             $rememberMeCookie = $this->cookies->get('remember-me');
 
-            // Get the cookie's value
+            // Obtenemos el valor de la cookie
             $value = $rememberMeCookie->getValue();
         }
     }
@@ -52,6 +52,7 @@ class SessionController extends Controller
             'some value',
             time() + 15 * 86400
         );
+
         $this->cookies->send();
     }
 
@@ -59,7 +60,7 @@ class SessionController extends Controller
     {
         $rememberMeCookie = $this->cookies->get('remember-me');
 
-        // Delete the cookie
+        // Borramos la cookie
         $rememberMeCookie->delete();
     }
 }
