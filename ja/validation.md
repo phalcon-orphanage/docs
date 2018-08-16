@@ -1,33 +1,33 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Validation</a> <ul>
+      <a href="#概要">バリデーション</a> <ul>
         <li>
-          <a href="#initializing">Initializing Validation</a>
+          <a href="#初期化">バリデーションの初期化</a>
         </li>
         <li>
-          <a href="#validators">Validators</a>
+          <a href="#バリデーター">バリデーター</a>
         </li>
         <li>
-          <a href="#callback">Callback Validator</a>
+          <a href="#コールバック">Callbackバリデーター</a>
         </li>
         <li>
-          <a href="#messages">Validation Messages</a>
+          <a href="#メッセージ">バリデーションメッセージ</a>
         </li>
         <li>
-          <a href="#filtering">Filtering of Data</a>
+          <a href="#フィルタリング">データのフィルタリング</a>
         </li>
         <li>
-          <a href="#events">Validation Events</a>
+          <a href="#イベント">バリデーションイベント</a>
         </li>
         <li>
-          <a href="#cancelling">Cancelling Validations</a>
+          <a href="#キャンセル">バリデーションのキャンセル</a>
         </li>
         <li>
-          <a href="#empty-values">Avoid validating empty values</a>
+          <a href="#空の値">空の値のバリデーションを避ける</a>
         </li>
         <li>
-          <a href="#recursive">Recursive Validation</a>
+          <a href="#再帰">再起的バリデーション</a>
         </li>
       </ul>
     </li>
@@ -36,11 +36,11 @@
 
 <a name='overview'></a>
 
-# Validation
+# バリデーション
 
-`Phalcon\Validation` is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
+`Phalcon\Validation`は、任意のデータセットをバリデーションする独立したバリデーションコンポーネントです。 このコンポーネントを使用して、モデルまたはコレクションに属していないデータオブジェクトに対するバリデーションルールを実装できます。
 
-The following example shows its basic usage:
+次の例は、その基本的な使い方を示しています:
 
 ```php
 <?php
@@ -87,13 +87,13 @@ if (count($messages)) {
 }
 ```
 
-The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
+このコンポーネントは疎結合に設計されているため、フレームワークが提供するバリデータとともに独自のバリデータを作成することができます。
 
 <a name='initializing'></a>
 
-## Initializing Validation
+## バリデーションの初期化
 
-Validation chains can be initialized in a direct manner by just adding validators to the `Phalcon\Validation` object. You can put your validations in a separate file for better re-use code and organization:
+バリデーションチェインは、`Phalcon\Validation`オブジェクトにバリデータを追加するだけで、直接的に初期化できます。 コードと構成を再利用しやすくするために、バリデーションを別々のファイルに入れることができます:
 
 ```php
 <?php
@@ -136,7 +136,7 @@ class MyValidation extends Validation
 }
 ```
 
-Then initialize and use your own validator:
+次に、独自のバリデータを初期化して使用します:
 
 ```php
 <?php
@@ -154,20 +154,20 @@ if (count($messages)) {
 
 <a name='validators'></a>
 
-## Validators
+## バリデーター
 
-Phalcon exposes a set of built-in validators for this component:
+Phalconは下記のような組み込みバリデーター一式をコンポーネントとして公開しています:
 
-| Class                                          | Explanation                                                       |
+| クラス                                            | 説明                                                                |
 | ---------------------------------------------- | ----------------------------------------------------------------- |
-| `Phalcon\Validation\Validator\Alnum`        | Validates that a field's value is only alphanumeric character(s). |
-| `Phalcon\Validation\Validator\Alpha`        | Validates that a field's value is only alphabetic character(s).   |
-| `Phalcon\Validation\Validator\Date`         | Validates that a field's value is a valid date.                   |
-| `Phalcon\Validation\Validator\Digit`        | Validates that a field's value is only numeric character(s).      |
-| `Phalcon\Validation\Validator\File`         | Validates that a field's value is a correct file.                 |
-| `Phalcon\Validation\Validator\Uniqueness`   | Validates that a field's value is unique in the related model.    |
-| `Phalcon\Validation\Validator\Numericality` | Validates that a field's value is a valid numeric value.          |
-| `Phalcon\Validation\Validator\PresenceOf`   | Validates that a field's value is not null or empty string.       |
+| `Phalcon\Validation\Validator\Alnum`        | フィールドの値が英数字のみであることを検証します。                                         |
+| `Phalcon\Validation\Validator\Alpha`        | フィールドの値がアルファベットのみであることを検証します。                                     |
+| `Phalcon\Validation\Validator\Date`         | フィールドの値が有効な日付であることを検証します。                                         |
+| `Phalcon\Validation\Validator\Digit`        | フィールドの値が数値のみであることを検証します。                                          |
+| `Phalcon\Validation\Validator\File`         | フィールドの値が正しいファイルであることを検証します。                                       |
+| `Phalcon\Validation\Validator\Uniqueness`   | フィールドの値が関連するモデルでユニークであることを検証します。                                  |
+| `Phalcon\Validation\Validator\Numericality` | フィールドの値が有効な数値であることを検証します。                                         |
+| `Phalcon\Validation\Validator\PresenceOf`   | フィールドの値が null または空の文字列ではないことを検証します。                               |
 | `Phalcon\Validation\Validator\Identical`    | Validates that a field's value is the same as a specified value   |
 | `Phalcon\Validation\Validator\Email`        | Validates that field contains a valid email format                |
 | `Phalcon\Validation\Validator\ExclusionIn`  | Validates that a value is not within a list of possible values    |
@@ -180,7 +180,7 @@ Phalcon exposes a set of built-in validators for this component:
 | `Phalcon\Validation\Validator\CreditCard`   | Validates a credit card number                                    |
 | `Phalcon\Validation\Validator\Callback`     | Validates using callback function                                 |
 
-The following example explains how to create additional validators for this component:
+次の例では、コンポーネントにどうやってバリデーターを作成するかを説明します。
 
 ```php
 <?php
@@ -192,7 +192,7 @@ use Phalcon\Validation\Validator;
 class IpValidator extends Validator
 {
     /**
-     * Executes the validation
+     * バリデーションの実行
      *
      * @param Validation $validator
      * @param string     $attribute
@@ -221,11 +221,11 @@ class IpValidator extends Validator
 }
 ```
 
-It is important that validators return a valid boolean value indicating if the validation was successful or not.
+バリデーターは、検証が成功したかどうかを示す有効なブール値を返すことが重要です。
 
 <a name='callback'></a>
 
-## Callback Validator
+## Callbackバリデーター
 
 By using `Phalcon\Validation\Validator\Callback` you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity then entity will be passed, otherwise data. There is example:
 
@@ -289,7 +289,7 @@ $messages = $validation->validate(['amount' => 10]); // will return message from
 
 <a name='messages'></a>
 
-## Validation Messages
+## バリデーションメッセージ
 
 `Phalcon\Validation` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
 
@@ -334,7 +334,7 @@ By default, the `getMessages()` method returns all the messages generated during
 $messages = $validation->validate();
 
 if (count($messages)) {
-    // Filter only the messages generated for the field 'name'
+    // フィールド 'name'に対して生成されたメッセージだけに絞ります
     $filteredMessages = $messages->filter('name');
 
     foreach ($filteredMessages as $message) {
@@ -345,7 +345,7 @@ if (count($messages)) {
 
 <a name='filtering'></a>
 
-## Filtering of Data
+## データのフィルタリング
 
 Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
 
@@ -374,7 +374,7 @@ $validation->add(
     )
 );
 
-// Filter any extra space
+// 余分なスペースを除去
 $validation->setFilters('name', 'trim');
 $validation->setFilters('email', 'trim');
 ```
@@ -383,7 +383,7 @@ Filtering and sanitizing is performed using the [filter](/[[language]]/[[version
 
 <a name='events'></a>
 
-## Validation Events
+## バリデーションイベント
 
 When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
 
@@ -400,7 +400,7 @@ class LoginValidation extends Validation
     }
 
     /**
-     * Executed before validation
+     * バリデーションの前に実行
      *
      * @param array $data
      * @param object $entity
@@ -421,7 +421,7 @@ class LoginValidation extends Validation
     }
 
     /**
-     * Executed after validation
+     * バリデーションの後に実行
      *
      * @param array $data
      * @param object $entity
@@ -429,14 +429,14 @@ class LoginValidation extends Validation
      */
     public function afterValidation($data, $entity, $messages)
     {
-        // ... Add additional messages or perform more validations
+        // ... メッセージを追加したり、もっとバリデーションを追加したり
     }
 }
 ```
 
 <a name='cancelling'></a>
 
-## Cancelling Validations
+## バリデーションのキャンセル
 
 By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
 
@@ -507,14 +507,14 @@ class MyValidator extends Validator
             $validator->setOption('cancelOnFail', true);
         }
 
-        // ...
+        // ...バリデーションの実行
     }
 }
 ```
 
 <a name='empty-values'></a>
 
-## Avoid validating empty values
+## 空の値のバリデーションを避ける
 
 You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
 
@@ -540,7 +540,7 @@ $validation->add(
 
 <a name='recursive'></a>
 
-## Recursive Validation
+## 再起的バリデーション
 
 You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
 
