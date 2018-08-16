@@ -96,7 +96,7 @@ This component makes use of adapters to encapsulate specific database system det
 
 <a name='factory'></a>
 
-Loads PDO Adapter class using `adapter` option
+`adaper`オプションを使用してPDO Adapterクラスをロードします
 
 ```php
 <?php

@@ -29,7 +29,7 @@ Writing proper tests can assist in writing better software. If you set up proper
 
 ## Integrating PHPUnit with Phalcon
 
-If you don't already have PHPUnit installed, you can do it by using the following command:
+PHPUnit をインストールしていない場合、次のコマンドを実行してインストールすることができます。
 
 ```bash
 composer require phpunit/phpunit
@@ -76,11 +76,11 @@ set_include_path(
     ROOT_PATH . PATH_SEPARATOR . get_include_path()
 );
 
-// Required for phalcon/incubator
-// and autoload the dependencies found in composer
+// phalcon/incubator を利用する場合
+// または composer で見つけた依存ライブラリをオートロードします
 include __DIR__ . "/../vendor/autoload.php";
 
-// Use the application autoloader to autoload the classes
+// クラスをオートロードするために、Phalcon のオートローダを利用します
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -95,7 +95,7 @@ $di = new FactoryDefault();
 
 Di::reset();
 
-// Add any needed services to the DI here
+// ここで必要なサービスを DI に追加します
 
 Di::setDefault($di);
 ```
@@ -120,7 +120,7 @@ or by manually adding it to `composer.json`:
 }
 ```
 
-You can also clone the repository using this link: https://github.com/phalcon/incubator.
+このリンク先のリポジトリからクローンすることもできます: https://github.com/phalcon/incubator
 
 <a name='phpunit-config'></a>
 
