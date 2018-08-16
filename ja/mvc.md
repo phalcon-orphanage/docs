@@ -1,16 +1,16 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#architecture">The MVC Architecture</a> 
+      <a href="#architecture">MVC アーキテクチャ</a> 
       <ul>
         <li>
-          <a href="#models">Models</a>
+          <a href="#models">モデル</a>
         </li>
         <li>
-          <a href="#views">Views</a>
+          <a href="#views">ビュー</a>
         </li>
         <li>
-          <a href="#controllers">Controllers</a>
+          <a href="#controllers">コントローラー</a>
         </li>
       </ul>
     </li>
@@ -19,31 +19,31 @@
 
 <a name='architecture'></a>
 
-# The MVC Architecture
+# MVC アーキテクチャ
 
-Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) in your application. This design pattern is widely used by other web frameworks and desktop applications.
+Phalcon は、モデル、ビュー、コントローラのアーキテクチャ (これは [MVC](https://en.wikipedia.org/wiki/Model–view–controller) と呼ばれます) でアプリケーションを実装するためのオブジェクト指向のクラスを提供しています。 このデザインパターンは、他のウェブフレームワークやデスクトップアプリケーションでも広く使用されています。
 
-MVC benefits include:
+MVC の利点は以下の通りです:
 
-* Isolation of business logic from the user interface and the database layer
-* Making it clear where different types of code belong for easier maintenance
+* ビジネスロジックをユーザインタフェースとデータベース層から分離
+* 異なる種類のコードがどこに属するかを明確にし、メンテナンスを容易にする
 
-If you decide to use MVC, every request to your application resources will be managed by the MVC architecture. Phalcon classes are written in C language, offering a high performance approach of this pattern in a PHP based application.
+MVC を使用する場合、アプリケーションへの全てのリクエストは MVC アーキテクチャによって管理されます。 C 言語で記述された Phalcon のクラスは、PHP アプリケーションで、このパターンをハイパフォーマンスなアプローチで提供します。
 
 <a name='models'></a>
 
-## Models
+## モデル
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. [Learn more](/[[language]]/[[version]]/db-models)
+モデルは、アプリケーションの情報 (データ) と、そのデータを操作するためのルールを表します。 モデルは主に、それに対応するテーブルとの対話のルールを管理するために使用されます。 ほとんどの場合、データベース内の各テーブルは、アプリケーション内の 1 つのモデルと対応します。 アプリケーションのビジネスロジックの大半は、モデルに集中します。 [詳細はこちら](/[[language]]/[[version]]/db-models)
 
 <a name='views'></a>
 
-## Views
+## ビュー
 
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. [Learn more](/[[language]]/[[version]]/views)
+ビューはアプリケーションのユーザインタフェースを表します。 ビューは、多くの場合にデータの表示のみに関連するタスクを実行する、埋め込みの PHP コードを含む HTML ファイルです。 ビューは、ウェブブラウザやその他のツールにデータを提供するための、アプリケーションからの要求を処理します。 [詳細はこちら](/[[language]]/[[version]]/views)
 
 <a name='controllers'></a>
 
-## Controllers
+## コントローラ
 
-The controllers provide the 'flow' between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [Learn more](/[[language]]/[[version]]/controllers)
+コントローラは、モデルとビューの間の '流れ' を提供します。 コントローラは、ウェブブラウザからの要求を受け取り、モデルのデータを問い合わせ、そのデータをビューに渡して表示する役割を果たします。 [詳細はこちら](/[[language]]/[[version]]/controllers)
