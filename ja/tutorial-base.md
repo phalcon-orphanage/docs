@@ -57,7 +57,7 @@
 
 <a name='file-structure'></a>
 
-## File structure
+## ファイル構成
 
 Phalconはアプリケーション開発において特定のファイル構造を強制しません。 Phalconは疎結合になっているため、あなたのやりやすいファイル構造でアプリケーションを実装することができます。
 
@@ -93,7 +93,7 @@ Phalconに関連した “library” ディレクトリが必要ないことに�
 
 <a name='autoloaders'></a>
 
-### Autoloaders
+### オートローダー
 
 ブートストラップで最初に見つける部分は、オートローダを登録していることです。 これはコントローラやモデルなどのクラスをロードするために使われます。 例えば、コントローラのディレクトリを一つ以上登録して、アプリケーションの柔軟性を高めることができます。 次の例では、`Phalcon\Loader` コンポーネントを使用しています。
 
@@ -120,7 +120,7 @@ $loader->register();
 
 <a name='dependency-management'></a>
 
-### Dependency Management
+### 依存関係の管理
 
 Phalconを動作させる上で、必ず理解する必要のある非常に重要な概念は、`dependency injection container <di>` です。 これは一見複雑な仕組みに見えますが、実際には非常に単純で実用的な機能です。
 
@@ -133,7 +133,7 @@ use Phalcon\Di\FactoryDefault;
 
 // ...
 
-// Create a DI
+// DIの生成
 $di = new FactoryDefault();
 ```
 
@@ -276,7 +276,7 @@ try {
 
 <a name='controller'></a>
 
-## Creating a Controller
+## Controllerの作成
 
 デフォルトで Phalcon は "Index" という名前のコントローラを探します。 これは、リクエストでコントローラまたはアクションが渡されていないときの開始点です。 indexコントローラ (`app/controllers/IndexController.php`) はこのようになります。
 
@@ -302,7 +302,7 @@ class IndexController extends Controller
 
 <a name='view'></a>
 
-## Sending output to a view
+## View に出力を送る
 
 コントローラーから画面に出力を送信することは時に必要ですが、MVCコミュニティの多くの純粋主義者が証明する様に、望ましくはありません。 すべてを画面上の出力データとしてビューに渡す必要があります。 Phalconは、最後に実行されたコントローラーと同じ名前のディレクトリー配下にある、最後に実行されたアクションと同じ名前のビューを探します。 今回の場合は (`app/views/index/index.phtml`) です。
 
@@ -452,7 +452,7 @@ class SignupController extends Controller
 
 <a name='model'></a>
 
-## Creating a Model
+## Modelの作成
 
 Phalconは、C言語で書かれた初めてのPHP用ORMを提供します。これは、開発の複雑さを増す事なく単純化します。
 
@@ -487,7 +487,7 @@ class Users extends Model
 
 <a name='database-connection'></a>
 
-## Setting a Database Connection
+## データベース接続の設定
 
 モデルからデータベース接続を使用してデータにアクセスできるようにするには、ブートストラップの処理中にデータベースの接続を設定する必要があります。 データベース接続は、アプリケーションの他のコンポーネントから利用できるサービスです:
 
@@ -516,7 +516,7 @@ $di->set(
 
 <a name='storing-data'></a>
 
-## Storing data using models
+## モデルを使ったデータの保存
 
 次のステップでは、フォームからデータを受け取り、それらをテーブルに保存します。
 
@@ -536,7 +536,7 @@ class SignupController extends Controller
     {
         $user = new Users();
 
-        // Store and check for errors
+        // 保存とエラーのチェック
         $success = $user->save(
             $this->request->getPost(),
             [
@@ -572,6 +572,6 @@ not null (required) として定義されているフィールドに対しては
 
 <a name='conclusion'></a>
 
-## Conclusion
+## まとめ
 
 これはとてもシンプルなチュートリアルです。ご覧のとおり、Phalconを使用してアプリケーションを構築するのは簡単です。 PhalconがWebサーバーのextentionであるという事実は、開発の容易さや機能の使いやすさを妨げていません。 Phalconが提供する追加機能を発見できるように、このマニュアルを読み進めてください！
