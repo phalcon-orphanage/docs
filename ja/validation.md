@@ -1,33 +1,33 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">バリデーション</a> <ul>
+      <a href="#概要">バリデーション</a> <ul>
         <li>
-          <a href="#initializing">バリデーションの初期化</a>
+          <a href="#初期化">バリデーションの初期化</a>
         </li>
         <li>
-          <a href="#validators">バリデーター</a>
+          <a href="#バリデーター">バリデーター</a>
         </li>
         <li>
-          <a href="#callback">Callbackバリデーター</a>
+          <a href="#コールバック">Callbackバリデーター</a>
         </li>
         <li>
-          <a href="#messages">バリデーションメッセージ</a>
+          <a href="#メッセージ">バリデーションメッセージ</a>
         </li>
         <li>
-          <a href="#filtering">データのフィルタリング</a>
+          <a href="#フィルタリング">データのフィルタリング</a>
         </li>
         <li>
-          <a href="#events">バリデーションイベント</a>
+          <a href="#イベント">バリデーションイベント</a>
         </li>
         <li>
-          <a href="#cancelling">バリデーションのキャンセル</a>
+          <a href="#キャンセル">バリデーションのキャンセル</a>
         </li>
         <li>
-          <a href="#empty-values">空の値のバリデーションを避ける</a>
+          <a href="#空の値">空の値のバリデーションを避ける</a>
         </li>
         <li>
-          <a href="#recursive">再起的バリデーション</a>
+          <a href="#再帰">再起的バリデーション</a>
         </li>
       </ul>
     </li>
@@ -227,7 +227,7 @@ class IpValidator extends Validator
 
 ## Callbackバリデーター
 
-By using `Phalcon\Validation\Validator\Callback` you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity then entity will be passed, otherwise data. There is example:
+`Phalcon\Validation\Validator\Callback`を使う事で、ブール値を必ず返すようなカスタム関数や、同じ値かどうかを検証するのに使える新しいバリデータークラスを実行する事ができます。 `true`を返すことでバリデーションが成功し、`false`を返すとバリデーションが失敗したことを意味します。 このバリデーターを実行するとき、Phalconはそれが何に関係しているかによてデータを渡します。実体の場合は実体が、それ以外の場合はデータが渡されます。 例を示します:
 
 ```php
 <?php
