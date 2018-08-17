@@ -69,6 +69,9 @@
           <a href="#annotations">Annotations Router</a>
         </li>
         <li>
+          <a href="#events">Events</a>
+        </li>
+        <li>
           <a href="#registration">Registering Router instance</a>
         </li>
         <li>
@@ -1093,6 +1096,19 @@ foreach ($testRoutes as $testRoute) {
     echo '<br>';
 }
 ```
+
+<a name='events'></a>
+## Events
+Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
+
+| Event                      | Description                          |
+|----------------------------|--------------------------------------|
+| `router:beforeCheckRoutes` | Fired before check all loaded routes |
+| `router:beforeCheckRoute`  | Fired before check a route           |
+| `router:matchedRoute`      | Fired when a route is matched        |
+| `router:notMatchedRoute`   | Fired is any route is matched        |
+| `router:afterCheckRoutes`  | Fired after check all routes         |
+| `router:beforeMount`       | Fired before mount a new route       |
 
 <a name='annotations'></a>
 ## Annotations Router
