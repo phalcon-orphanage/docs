@@ -1,23 +1,23 @@
-# Welcome
+# ようこそ
 
-Welcome to the documentation for the Phalcon framework.
+Phalcon framework のドキュメントへようこそ。
 
-## Mission
+## ミッション
 
-Our mission is to offer developers an advanced, feature rich tool, which they can use to develop powerful applications with low server consumption and high performance.
+私たちのミッションは、低いサーバーリソースの消費で、高性能で強力なアプリケーションの開発を行える、豊富な機能を備えた新たなツールを開発者に提供することです。
 
-## What is Phalcon
+## Phalconとは
 
-Phalcon is an open source full stack framework for PHP, written as a C-extension. Phalcon is optimized for high performance. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever its needed, without expensive file stats and file reads that traditional PHP frameworks employ.
+Phalconは、C拡張として書かれたPHP用オープンソースフルスタックフレームワークです。 Phalconは、ハイパフォーマンス向けに最適化されています。 独自のアーキテクチャによって、このフレームワークは常にメモリ上に常駐することができ、従来のPHPフレームワークで採用されているようなコストの高いファイル情報取得やファイル読み込みをすることなく、必要なときにいつでもその機能が提供できます。
 
-## Usage
+## 使い方
 
-Developers do not need to know the C language to use Phalcon. Its interface is exposed as PHP classes under the `Phalcon` namespace, ready to be used.
+開発者はPhalconを使用する上で C 言語を知っている必要はありません。そのインターフェイスは、`Phalcon` の名前空間の下で PHP のクラスとしてすぐに利用する事ができます。
 
-Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based in the needs of their applications.
+Phalconは疎結合であり、開発者はアプリケーションのニーズに基づいて、グルーコンポーネントとして必要なオブジェクトのみを使用できます。
 
 <div class="alert alert-danger">
     <p>
-        The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in <a href="https://github.com/phalcon/docs">Github</a> for English, and <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> for other languages
+        このドキュメントの翻訳は、愛好家や寄稿者によって行われています。 新たな翻訳や修正への参加を私たちは歓迎します。 翻訳は<a href="https://github.com/phalcon/docs">Github</a> で英語を、 <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> で他の言語を扱っています。
     </p>
 </div>
