@@ -1,60 +1,60 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Tutorial: INVO</a> 
+      <a href="#overview">チュートリアル: INVO</a> 
       <ul>
         <li>
-          <a href="#structure">Project Structure</a>
+          <a href="#structure">プロジェクトの構成</a>
         </li>
         <li>
-          <a href="#routing">Routing</a>
+          <a href="#routing">ルーティング</a>
         </li>
         <li>
-          <a href="#configuration">Configuration</a>
+          <a href="#configuration">設定</a>
         </li>
         <li>
           <a href="#autoloaders">Autoloaders</a>
         </li>
         <li>
-          <a href="#services">Registering services</a>
+          <a href="#services">サービスの登録</a>
         </li>
         <li>
-          <a href="#handling-requests">Handling the Request</a>
+          <a href="#handling-requests">リクエストの処理</a>
         </li>
         <li>
-          <a href="#dependency-injection">Dependency Injection</a>
+          <a href="#dependency-injection">依存性の注入</a>
         </li>
         <li>
-          <a href="#log-in">Log into the Application</a>
+          <a href="#log-in">アプリケーションへのログイン</a>
         </li>
         <li>
-          <a href="#securing-backend">Securing the Backend</a> 
+          <a href="#securing-backend">バックエンドのセキュリティ保護</a> 
           <ul>
             <li>
-              <a href="#events-manager">Events Management</a>
+              <a href="#events-manager">イベント管理</a>
             </li>
             <li>
-              <a href="#acl">Getting the ACL list</a>
+              <a href="#acl">ACLリストの提供</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#working-with-crud">Working with the CRUD</a>
+          <a href="#working-with-crud">CRUDを使用した作業</a>
         </li>
         <li>
-          <a href="#search-form">The Search Form</a>
+          <a href="#search-form">検索フォーム</a>
         </li>
         <li>
-          <a href="#performing-searches">Performing a Search</a>
+          <a href="#performing-searches">検索の実行</a>
         </li>
         <li>
-          <a href="#creating-updating-records">Creating and Updating Records</a>
+          <a href="#creating-updating-records">レコードの登録の更新</a>
         </li>
         <li>
-          <a href="#user-components">User Components</a>
+          <a href="#user-components">ユーザーコンポーネント</a>
         </li>
         <li>
-          <a href="#dynamic-titles">Changing the Title Dynamically</a>
+          <a href="#dynamic-titles">タイトルの動的な変更</a>
         </li>
       </ul>
     </li>
@@ -63,17 +63,17 @@
 
 <a name='overview'></a>
 
-# Tutorial: INVO
+# チュートリアル: INVO
 
-In this second tutorial, we'll explain a more complete application in order to gain a deeper understanding of developing with Phalcon. INVO is one of the sample applications we have created. INVO is a small website that allows users to generate invoices and do other tasks such as manage customers and products. You can clone its code from [Github](https://github.com/phalcon/invo).
+この第2のチュートリアルでは、より完全なアプリケーションを例にして説明し、Phalconを使用した開発について理解を深めます。 INVOは、私達が制作したサンプルアプリケーションの1つです。 INVOは小さなWebサイトで、ユーザーは請求書を作成したり、顧客や製品を管理したりといったタスクを行うことができます。 コードは [Github](https://github.com/phalcon/invo) からcloneすることができます。
 
-INVO was made with the client-side framework [Bootstrap](http://getbootstrap.com/). Although the application does not generate actual invoices, it still serves as an example showing how the framework works.
+INVOはクライアントサイドフレームワークである [Bootstrap](http://getbootstrap.com/) を使用して作られています。 アプリケーションは実際の請求書を生成しませんが、フレームワークの働きを理解するサンプルにはなります。
 
 <a name='structure'></a>
 
-## Project Structure
+## プロジェクトの構成
 
-Once you clone the project in your document root you'll see the following structure:
+ドキュメントルートでプロジェクトをcloneすると、次のような構造が表示されます:
 
 ```bash
 invo/
@@ -96,27 +96,27 @@ invo/
     schemas/
 ```
 
-As you know, Phalcon does not impose a particular file structure for application development. This project has a simple MVC structure and a public document root.
+ご存知のように、Phalconはアプリケーション開発に際して特定の構造を強制しません。このプロジェクトはシンプルなMVC構造を持ち、publicディレクトリをドキュメントルートとします。
 
-Once you open the application in your browser `http://localhost/invo` you'll see something like this:
+ブラウザで `http://localhost/invo` にアクセスしてアプリケーションを開くと、以下のように表示されるでしょう:
 
 ![](/images/content/tutorial-invo-1.png)
 
-The application is divided into two parts: a frontend and a backend. The frontend is a public area where visitors can receive information about INVO and request contact information. The backend is an administrative area where registered users can manage their products and customers.
+アプリケーションは2つの部分に分かれています: フロント／バックエンド。 フロントエンドは公開されている部分で、訪問者はINVOの概要を知ったり、連絡先情報をリクエストする事ができます。 バックエンドは管理用の領域で、登録ユーザーが製品や顧客情報の管理ができます。
 
 <a name='routing'></a>
 
-## Routing
+## ルーティング
 
-INVO uses the standard route that is built-in with the [Router](/[[language]]/[[version]]/routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
+INVOは[Router](/[[language]]/[[version]]/routing)コンポーネントに組み込みの標準的なルートを使用します。 これらのルートは、 `/:controller/:action/:params` というパターンにマッチします。 これは、URIの最初の部分がコントローラー、2番めの部分がアクション、残りがパラメーターになる、ということを意味しています。
 
-The following route `/session/register` executes the controller `SessionController` and its action `registerAction`.
+`/session/register` というルートでは、`SessionController` コントローラの `registerAction` アクションが実行されます。
 
 <a name='configuration'></a>
 
-## Configuration
+## 設定
 
-INVO has a configuration file that sets general parameters in the application. This file is located at `app/config/config.ini` and is loaded in the very first lines of the application bootstrap (`public/index.php`):
+INVOにはアプリケーション内で、一般的なパラメーターをセットする設定ファイルがあります。 このファイルは `app/config/config.ini` にあり、アプリケーションのブートストラップ (`public/index.php`) の最初の数行で読み込まれています:
 
 ```php
 <?php
@@ -125,14 +125,14 @@ use Phalcon\Config\Adapter\Ini as ConfigIni;
 
 // ...
 
-// Read the configuration
+// 設定の読み込み
 $config = new ConfigIni(
     APP_PATH . 'app/config/config.ini'
 );
 
 ```
 
-[Phalcon Config](/[[language]]/[[version]]/config) (`Phalcon\Config`) allows us to manipulate the file in an object-oriented way. In this example, we're using an ini file for configuration but Phalcon has [adapters](/[[language]]/[[version]]/config) for other file types as well. The configuration file contains the following settings:
+[Phalcon Config](/[[language]]/[[version]]/config) (`Phalcon\Config`) を使うと、オブジェクト指向のやり方でファイルの操作を可能にします。 In this example, we're using an ini file for configuration but Phalcon has [adapters](/[[language]]/[[version]]/config) for other file types as well. The configuration file contains the following settings:
 
 ```ini
 [database]
