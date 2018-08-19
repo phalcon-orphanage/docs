@@ -107,9 +107,6 @@ try {
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
     exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-    exit(1);
 }
 ```
 
@@ -204,9 +201,6 @@ try {
     exit(1);
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-    exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
     exit(1);
 }
 ```
