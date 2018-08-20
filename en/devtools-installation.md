@@ -90,8 +90,8 @@ cd phalcon-devtools/
 Create a symbolic link to the phalcon.php script:
 
 ```bash
-ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
-chmod ugo+x /usr/bin/phalcon
+ln -s ~/phalcon-devtools/phalcon.php /usr/local/bin/phalcon
+chmod ugo+x /usr/local/bin/phalcon
 ```
 
 <a name='installation-windows'></a>
