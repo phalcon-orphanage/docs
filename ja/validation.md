@@ -1,33 +1,33 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#概要">バリデーション</a> <ul>
+      <a href="#overview">バリデーション</a> <ul>
         <li>
-          <a href="#初期化">バリデーションの初期化</a>
+          <a href="#initializing">バリデーションの初期化</a>
         </li>
         <li>
-          <a href="#バリデーター">バリデーター</a>
+          <a href="#validators">バリデーター</a>
         </li>
         <li>
-          <a href="#コールバック">Callbackバリデーター</a>
+          <a href="#callback">Callbackバリデーター</a>
         </li>
         <li>
-          <a href="#メッセージ">バリデーションメッセージ</a>
+          <a href="#messages">バリデーションメッセージ</a>
         </li>
         <li>
-          <a href="#フィルタリング">データのフィルタリング</a>
+          <a href="#filtering">データのフィルタリング</a>
         </li>
         <li>
-          <a href="#イベント">バリデーションイベント</a>
+          <a href="#events">バリデーションイベント</a>
         </li>
         <li>
-          <a href="#キャンセル">バリデーションのキャンセル</a>
+          <a href="#cancelling">バリデーションのキャンセル</a>
         </li>
         <li>
-          <a href="#空の値">空の値のバリデーションを避ける</a>
+          <a href="#empty-values">空の値のバリデーションを避ける</a>
         </li>
         <li>
-          <a href="#再帰">再起的バリデーション</a>
+          <a href="#recursive">再起的バリデーション</a>
         </li>
       </ul>
     </li>
