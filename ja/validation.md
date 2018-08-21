@@ -227,7 +227,7 @@ class IpValidator extends Validator
 
 ## Callbackバリデーター
 
-By using `Phalcon\Validation\Validator\Callback` you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity then entity will be passed, otherwise data. There is example:
+`Phalcon\Validation\Validator\Callback`を使う事で、ブール値を必ず返すようなカスタム関数や、同じ値かどうかを検証するのに使える新しいバリデータークラスを実行する事ができます。 `true`を返すことでバリデーションが成功し、`false`を返すとバリデーションが失敗したことを意味します。 このバリデーターを実行するとき、Phalconはそれが何に関係しているかによてデータを渡します。実体の場合は実体が、それ以外の場合はデータが渡されます。 例を示します:
 
 ```php
 <?php
