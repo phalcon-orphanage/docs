@@ -1,33 +1,33 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#requirements">Requirements</a> <ul>
+      <a href="#requirements">必要条件</a> <ul>
         <li>
-          <a href="#requirements-hardware">Hardware</a>
+          <a href="#requirements-hardware">ハードウェア</a>
         </li>
         <li>
-          <a href="#requirements-software">Software</a>
+          <a href="#requirements-software">ソフトウェア</a>
         </li>
       </ul>
     </li>
     <li>
-      <a href="#installation">Installation</a> <ul>
+      <a href="#installation">インストール</a> <ul>
         <li>
           <a href="#installation-linux">Linux</a> <ul>
             <li>
               <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a> <ul>
                 <li>
-                  <a href="#installation-linux-debian-repository">Repository installation</a> <ul>
+                  <a href="#installation-linux-debian-repository">リポジトリのインストール</a> <ul>
                     <li>
-                      <a href="#installation-linux-debian-repository-stable">Stable releases</a>
+                      <a href="#installation-linux-debian-repository-stable">安定版</a>
                     </li>
                     <li>
-                      <a href="#installation-linux-debian-repository-nightly">Nightly releases</a>
+                      <a href="#installation-linux-debian-repository-nightly">Nightly リリース</a>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#installation-linux-debian-phalcon">Phalcon installation</a> <ul>
+                  <a href="#installation-linux-debian-phalcon">Phalcon のインストール</a> <ul>
                     <li>
                       <a href="#installation-linux-debian-phalcon-php5">PHP 5.x</a>
                     </li>
@@ -42,19 +42,19 @@
               </ul>
             </li>
             <li>
-              <a href="#installation-linux-rpm">RPM based distributions (CentOS, Fedora, etc.)</a> <ul>
+              <a href="#installation-linux-rpm">RPM ベースのディストリビューション (CentOS、Fedora 等)</a> <ul>
                 <li>
-                  <a href="#installation-linux-rpm-repository">Repository installation</a> <ul>
+                  <a href="#installation-linux-rpm-repository">リポジトリのインストール</a> <ul>
                     <li>
-                      <a href="#installation-linux-rpm-repository-stable">Stable releases</a>
+                      <a href="#installation-linux-rpm-repository-stable">安定版</a>
                     </li>
                     <li>
-                      <a href="#installation-linux-rpm-repository-nightly">Nightly releases</a>
+                      <a href="#installation-linux-rpm-repository-nightly">Nightly リリース</a>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#installation-linux-rpm-phalcon">Phalcon installation</a> <ul>
+                  <a href="#installation-linux-rpm-phalcon">Phalcon のインストール</a> <ul>
                     <li>
                       <a href="#installation-linux-rpm-phalcon-php5">PHP 5.x</a>
                     </li>
@@ -90,7 +90,7 @@
           <a href="#installation-windows">Windows</a>
         </li>
         <li>
-          <a href="#installation-sources">Compile from sources</a>
+          <a href="#installation-sources">ソースコードからコンパイル</a>
         </li>
         <li>
           <a href="#installation-sources-advanced">Advanced Compilation</a>
@@ -102,7 +102,7 @@
 
 <a name='requirements'></a>
 
-# Requirements
+# 必要条件
 
 Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
@@ -165,7 +165,7 @@ Add the repository to your distribution:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
-##### Stable releases
+##### 安定版
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
@@ -175,7 +175,7 @@ or
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
-##### Nightly releases
+##### Nightly リリース
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -242,7 +242,7 @@ Add the repository to your distribution:
 
 <a name='installation-linux-rpm-repository-stable'></a>
 
-##### Stable releases
+##### 安定版
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
@@ -252,7 +252,7 @@ or
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
-##### Nightly releases
+##### Nightly リリース
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -334,9 +334,9 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### Requirements
+### 必要条件
 
-- PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
+- PHP 5.5.x/5.6.x/7.0.x/7.1.x
 - XCode
 
 <a name='installation-macos-brew'></a>
