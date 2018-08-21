@@ -13,7 +13,7 @@
           <a href="#configuration">設定</a>
         </li>
         <li>
-          <a href="#autoloaders">Autoloaders</a>
+          <a href="#autoloaders">オートローダー</a>
         </li>
         <li>
           <a href="#services">サービスの登録</a>
@@ -155,7 +155,7 @@ Phalcon doesn't have any pre-defined settings convention. Sections help us to or
 
 <a name='autoloaders'></a>
 
-## Autoloaders
+## オートローダー
 
 The second part that appears in the bootstrap file (`public/index.php`) is the autoloader:
 
@@ -204,7 +204,7 @@ define(
 
 <a name='services'></a>
 
-## Registering services
+## サービスの登録
 
 Another file that is required in the bootstrap is (`app/config/services.php`). This file allows us to organize the services that INVO uses.
 
@@ -247,7 +247,7 @@ We will discuss this file in depth later.
 
 <a name='handling-requests'></a>
 
-## Handling the Request
+## リクエストの処理
 
 If we skip to the end of the file (`public/index.php`), the request is finally handled by `Phalcon\Mvc\Application` which initializes and executes all that is necessary to make the application run:
 
@@ -267,7 +267,7 @@ $response->send();
 
 <a name='dependency-injection'></a>
 
-## Dependency Injection
+## 依存性の注入
 
 In the first line of the code block above, the Application class constructor is receiving the variable `$di` as an argument. What is the purpose of that variable? Phalcon is a highly decoupled framework so we need a component that acts as glue to make everything work together. That component is `Phalcon\Di`. It's a service container that also performs dependency injection and service location, instantiating all components as they are needed by the application.
 
@@ -315,7 +315,7 @@ It registers the majority of services with components provided by the framework 
 
 <a name='log-in'></a>
 
-## Log into the Application
+## アプリケーションへのログイン
 
 A `log in` facility will allow us to work on backend controllers. The separation between backend controllers and frontend ones is only logical. All controllers are located in the same directory (`app/controllers/`).
 
@@ -544,7 +544,7 @@ return $this->dispatcher->forward(
 
 <a name='securing-backend'></a>
 
-## Securing the Backend
+## バックエンドのセキュリティ保護
 
 The backend is a private area where only registered users have access. Therefore, it is necessary to check that only registered users have access to these controllers. If you aren't logged into the application and you try to access, for example, the products controller (which is private) you will see a screen like this:
 
@@ -582,7 +582,7 @@ We now have total control over the Dispatcher used in the application. Many comp
 
 <a name='events-manager'></a>
 
-### Events Management
+### イベント管理
 
 The [EventsManager](/[[language]]/[[version]]/events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
 
@@ -727,7 +727,7 @@ class SecurityPlugin extends Plugin
 
 <a name='acl'></a>
 
-### Getting the ACL list
+### ACLリストの提供
 
 In the above example we have obtained the ACL using the method `$this->getAcl()`. This method is also implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
 
@@ -832,7 +832,7 @@ foreach ($privateResources as $resource => $actions) {
 
 <a name='working-with-crud'></a>
 
-## Working with the CRUD
+## CRUDを使用した作業
 
 Backends usually provide forms to allow users to manipulate data. Continuing the explanation of INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you using forms, validations, paginators and more.
 
