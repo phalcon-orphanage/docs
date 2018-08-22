@@ -158,27 +158,27 @@ if (count($messages)) {
 
 Phalconは下記のような組み込みバリデーター一式をコンポーネントとして公開しています:
 
-| クラス                                            | 説明                                                                |
-| ---------------------------------------------- | ----------------------------------------------------------------- |
-| `Phalcon\Validation\Validator\Alnum`        | フィールドの値が英数字のみであることを検証します。                                         |
-| `Phalcon\Validation\Validator\Alpha`        | フィールドの値がアルファベットのみであることを検証します。                                     |
-| `Phalcon\Validation\Validator\Date`         | フィールドの値が有効な日付であることを検証します。                                         |
-| `Phalcon\Validation\Validator\Digit`        | フィールドの値が数値のみであることを検証します。                                          |
-| `Phalcon\Validation\Validator\File`         | フィールドの値が正しいファイルであることを検証します。                                       |
-| `Phalcon\Validation\Validator\Uniqueness`   | フィールドの値が関連するモデルでユニークであることを検証します。                                  |
-| `Phalcon\Validation\Validator\Numericality` | フィールドの値が有効な数値であることを検証します。                                         |
-| `Phalcon\Validation\Validator\PresenceOf`   | フィールドの値が null または空の文字列ではないことを検証します。                               |
-| `Phalcon\Validation\Validator\Identical`    | Validates that a field's value is the same as a specified value   |
-| `Phalcon\Validation\Validator\Email`        | Validates that field contains a valid email format                |
-| `Phalcon\Validation\Validator\ExclusionIn`  | Validates that a value is not within a list of possible values    |
-| `Phalcon\Validation\Validator\InclusionIn`  | Validates that a value is within a list of possible values        |
-| `Phalcon\Validation\Validator\Regex`        | Validates that the value of a field matches a regular expression  |
-| `Phalcon\Validation\Validator\StringLength` | Validates the length of a string                                  |
-| `Phalcon\Validation\Validator\Between`      | Validates that a value is between two values                      |
-| `Phalcon\Validation\Validator\Confirmation` | Validates that a value is the same as another present in the data |
-| `Phalcon\Validation\Validator\Url`          | Validates that field contains a valid URL                         |
-| `Phalcon\Validation\Validator\CreditCard`   | Validates a credit card number                                    |
-| `Phalcon\Validation\Validator\Callback`     | Validates using callback function                                 |
+| クラス                                            | 説明                                  |
+| ---------------------------------------------- | ----------------------------------- |
+| `Phalcon\Validation\Validator\Alnum`        | フィールドの値が英数字のみであることを検証します。           |
+| `Phalcon\Validation\Validator\Alpha`        | フィールドの値がアルファベットのみであることを検証します。       |
+| `Phalcon\Validation\Validator\Date`         | フィールドの値が有効な日付であることを検証します。           |
+| `Phalcon\Validation\Validator\Digit`        | フィールドの値が数値のみであることを検証します。            |
+| `Phalcon\Validation\Validator\File`         | フィールドの値が正しいファイルであることを検証します。         |
+| `Phalcon\Validation\Validator\Uniqueness`   | フィールドの値が関連するモデルでユニークであることを検証します。    |
+| `Phalcon\Validation\Validator\Numericality` | フィールドの値が有効な数値であることを検証します。           |
+| `Phalcon\Validation\Validator\PresenceOf`   | フィールドの値が null または空の文字列ではないことを検証します。 |
+| `Phalcon\Validation\Validator\Identical`    | フィールドの値が指定された値と同じであることを検証します。       |
+| `Phalcon\Validation\Validator\Email`        | そのフィールドに有効な電子メール形式が含まれていることを検証します。  |
+| `Phalcon\Validation\Validator\ExclusionIn`  | 値が可能な値のリスト内にないことを検証します。             |
+| `Phalcon\Validation\Validator\InclusionIn`  | 値が可能な値のリスト内にあることを検証します。             |
+| `Phalcon\Validation\Validator\Regex`        | フィールドの値が正規表現に一致することを検証します。          |
+| `Phalcon\Validation\Validator\StringLength` | 文字列の長さを検証します。                       |
+| `Phalcon\Validation\Validator\Between`      | 値が2つの値の間にあることを検証します。                |
+| `Phalcon\Validation\Validator\Confirmation` | 値がもう片方のデータと同じであることを検証します。           |
+| `Phalcon\Validation\Validator\Url`          | そのフィールドに有効なURLが含まれていることを検証します。      |
+| `Phalcon\Validation\Validator\CreditCard`   | クレジットカード番号を検証します。                   |
+| `Phalcon\Validation\Validator\Callback`     | コールバック関数を使用して検証します。                 |
 
 次の例では、コンポーネントにどうやってバリデーターを作成するかを説明します。
 
@@ -227,7 +227,7 @@ class IpValidator extends Validator
 
 ## Callbackバリデーター
 
-By using `Phalcon\Validation\Validator\Callback` you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity then entity will be passed, otherwise data. There is example:
+`Phalcon\Validation\Validator\Callback`を使う事で、ブール値を必ず返すようなカスタム関数や、同じ値かどうかを検証するのに使える新しいバリデータークラスを実行する事ができます。 `true`を返すことでバリデーションが成功し、`false`を返すとバリデーションが失敗したことを意味します。 このバリデーターを実行するとき、Phalconはそれが何に関係しているかによてデータを渡します。実体の場合は実体が、それ以外の場合はデータが渡されます。 例を示します:
 
 ```php
 <?php
@@ -309,7 +309,7 @@ if (count($messages)) {
 }
 ```
 
-You can pass a 'message' parameter to change/translate the default message in each validator:
+'message' パラメータを渡すと、各バリデーターのデフォルトのメッセージを変更/変換できます。
 
 ```php
 <?php
@@ -385,7 +385,7 @@ Filtering and sanitizing is performed using the [filter](/[[language]]/[[version
 
 ## バリデーションイベント
 
-When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
+When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. `beforeValidation()`メソッドがfalseを返す場合、バリデーションは自動的にキャンセルされます。
 
 ```php
 <?php
@@ -480,7 +480,7 @@ $validation->add(
 );
 ```
 
-The first validator has the option `cancelOnFail` with a value of true, therefore if that validator fails the remaining validators in the chain are not executed.
+最初のバリデータにはtrueの値を持つ`cancelOnFail`オプションがあります。したがって、バリデータが失敗した場合、チェーン内の残りのバリデータは実行されません。
 
 If you are creating custom validators you can dynamically stop the validation chain by setting the `cancelOnFail` option:
 
