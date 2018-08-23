@@ -41,7 +41,7 @@ Phalcon logra esto por:
 
 - Reducir el impacto en memoria mediante el uso optimizado de estructuras de propósito específico C y tipos estáticos C compiladores, como GCC / CLANG / VCC. Estos realizan [varias optimizaciones](https://en.wikipedia.org/wiki/Category:Compiler_optimizations) sobre el código, mejorando el rendimiento.
 
-- The ability to place variables and data in the stack. These would typically have a higher [locality](https://en.wikipedia.org/wiki/Locality_of_reference) of access.
+- La capacidad de colocar variables y datos en la pila. Normalmente estos tienen un acceso [local](https://en.wikipedia.org/wiki/Locality_of_reference) más alto.
 
 - La predicción de bifurcaciones es más fácil ya que funciona directamente sobre el código del usuario y no sobre la aplicación VM. *Místicamente puestos juntos en una gran explicación en [StackOverflow](https://stackoverflow.com/a/11227902/1661465).*
 
