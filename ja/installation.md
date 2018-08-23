@@ -1,9 +1,9 @@
 <div class="article-menu">
     <ul>
-        <li><a href="#requirements">Requirements</a>
+        <li><a href="#requirements">必要条件</a>
             <ul>
-                <li><a href="#requirements-hardware">Hardware</a></li>
-                <li><a href="#requirements-software">Software</a>
+                <li><a href="#requirements-hardware">ハードウェア</a></li>
+                <li><a href="#requirements-software">ソフトウェア</a>
                     <ul>
                         <li>
                             <a href="#requirements-software-optional">Optional depending on the needs of your application</a>
@@ -12,7 +12,7 @@
                 </li>
             </ul>
         </li>
-        <li><a href="#installation">Installation</a>
+        <li><a href="#installation">インストール</a>
             <ul>
                 <li><a href="#installation-linux">Linux</a>
                     <ul>
@@ -20,18 +20,18 @@
                             <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a>
                             <ul>
                                 <li>
-                                    <a href="#installation-linux-debian-repository">Repository installation</a>
+                                    <a href="#installation-linux-debian-repository">リポジトリのインストール</a>
                                     <ul>
                                         <li>
-                                            <a href="#installation-linux-debian-repository-stable">Stable releases</a>
+                                            <a href="#installation-linux-debian-repository-stable">安定版</a>
                                         </li>
                                         <li>
-                                            <a href="#installation-linux-debian-repository-nightly">Nightly releases</a>
+                                            <a href="#installation-linux-debian-repository-nightly">Nightly リリース</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#installation-linux-debian-phalcon">Phalcon installation</a>
+                                    <a href="#installation-linux-debian-phalcon">Phalcon のインストール</a>
                                     <ul>
                                         <li>
                                             <a href="#installation-linux-debian-phalcon-php5">PHP 5.x</a>
@@ -47,21 +47,21 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#installation-linux-rpm">RPM based distributions (CentOS, Fedora, etc.)</a>
+                            <a href="#installation-linux-rpm">RPM ベースのディストリビューション (CentOS、Fedora 等)</a>
                             <ul>
                                 <li>
-                                    <a href="#installation-linux-rpm-repository">Repository installation</a>
+                                    <a href="#installation-linux-rpm-repository">リポジトリのインストール</a>
                                     <ul>
                                         <li>
-                                            <a href="#installation-linux-rpm-repository-stable">Stable releases</a>
+                                            <a href="#installation-linux-rpm-repository-stable">安定版</a>
                                         </li>
                                         <li>
-                                            <a href="#installation-linux-rpm-repository-nightly">Nightly releases</a>
+                                            <a href="#installation-linux-rpm-repository-nightly">Nightly リリース</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#installation-linux-rpm-phalcon">Phalcon installation</a>
+                                    <a href="#installation-linux-rpm-phalcon">Phalcon のインストール</a>
                                     <ul>
                                         <li>
                                             <a href="#installation-linux-rpm-phalcon-php5">PHP 5.x</a>
@@ -98,7 +98,7 @@
                     <a href="#installation-windows">Windows</a>
                 </li>
                 <li>
-                    <a href="#installation-sources">Compile from sources</a>
+                    <a href="#installation-sources">ソースコードからコンパイル</a>
                 </li>
                 <li>
                     <a href="#installation-sources-advanced">Advanced Compilation</a>
@@ -110,13 +110,13 @@
 
 <a name='requirements'></a>
 
-# Requirements
+# 必要条件
 
 Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
 <a name='requirements-hardware'></a>
 
-## Hardware
+## ハードウェア
 
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on your application needs.
 
@@ -124,17 +124,17 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <a name='requirements-software'></a>
 
-## Software
+## ソフトウェア
 
 * PHP >= 5.5
 
 <div class="alert alert-danger">
     <p>
-        You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7.
+        You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 は近い将来にサポートされなくなり、Phalcon 4 では PHP 7 のみがサポートされるようになります。
     </p>
 </div>
 
-Phalcon need the following extensions to run (minimal):
+Phalcon を実行するためには、最低限以下の拡張機能が必要です。
 
 * `curl`
 * `gettext`
@@ -150,14 +150,14 @@ Phalcon need the following extensions to run (minimal):
 
 ### Optional depending on the needs of your application
 
-* [PDO](http://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) etc.)
-* [OpenSSL](http://php.net/manual/en/book.openssl.php) Extension
-* [Mbstring](http://php.net/manual/en/book.mbstring.php) Extension
-* [Memcache](http://php.net/manual/en/book.memcache.php), [Memcached](http://php.net/manual/en/book.memcached.php) or other relevant cache adapters depending on your usage of cache
+* [PDO](http://php.net/manual/en/book.pdo.php) 拡張や、関連するRDBMSの拡張 ([MySQL](http://php.net/manual/en/ref.pdo-mysql.php)や[PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php)など)
+* [OpenSSL](http://php.net/manual/en/book.openssl.php) 拡張
+* [Mbstring](http://php.net/manual/en/book.mbstring.php) 拡張
+* [Memcache](http://php.net/manual/en/book.memcache.php), [Memcached](http://php.net/manual/en/book.memcached.php) または使用するキャッシュに応じたキャッシュアダプタ
 
 <a name='installation'></a>
 
-# Installation
+# インストール
 
 Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
@@ -352,11 +352,11 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 ## macOS
 
-On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
+macOS では、`brew`、`macports` またはソースコードから拡張機能をコンパイルしたりインストールしたりすることが可能です。
 
-### Requirements
+### 必要条件
 
-* PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
+* PHP 5.5.x/5.6.x/7.0.x/7.1.x
 * XCode
 
 <a name='installation-macos-brew'></a>
