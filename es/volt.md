@@ -1475,7 +1475,7 @@ $compiler->addFunction('dump', 'print_r');
 
 ### Filtros
 
-A filter has the following form in a template: `leftExpr|name(optional-args)`. Agregar nuevos filtros es similar a lo visto en las funciones:
+Un filtro tiene la siguiente forma en una plantilla: `leftExpr|name(optional-args)`. Agregar nuevos filtros es similar a lo visto en las funciones:
 
 ```php
 <?php
