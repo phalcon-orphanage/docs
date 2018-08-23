@@ -87,11 +87,18 @@ cd phalcon-devtools/
 
 ![](/images/content/devtools-mac-2.png)
 
-Create a symbolic link to the phalcon.php script:
+Next, we'll create a symbolic link to the `phalcon.php` script. On El Capitan and newer versions of macOS:
 
 ```bash
 ln -s ~/phalcon-devtools/phalcon.php /usr/local/bin/phalcon
 chmod ugo+x /usr/local/bin/phalcon
+```
+
+if you are running an older version:
+
+```bash
+ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
+chmod ugo+x /usr/bin/phalcon
 ```
 
 <a name='installation-windows'></a>
