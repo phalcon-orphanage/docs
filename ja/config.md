@@ -80,7 +80,7 @@ $config = Factory::load($options);
 
 ## Native Arrays
 
-The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
+The first example shows how to convert native arrays into `Phalcon\Config` objects. このオプションはリクエストされるまでファイルが読み込まれないので最高のパフォーマンスを提供します。
 
 ```php
 <?php
