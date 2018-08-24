@@ -17,7 +17,7 @@
                 <li><a href="#installation-linux">Linux</a>
                     <ul>
                         <li>
-                            <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a>
+                            <a href="#installation-linux-debian">debベースのディストリビューション (Debian、Ubuntu など)</a>
                             <ul>
                                 <li>
                                     <a href="#installation-linux-debian-repository">リポジトリのインストール</a>
@@ -42,7 +42,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#installation-linux-debian-other-ppa">Additional PPAs</a>
+                                    <a href="#installation-linux-debian-other-ppa">追加のPPA</a>
                                 </li>
                             </ul>
                         </li>
@@ -72,7 +72,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="installation-linux-rpm-other-rpm">Additional RPMs</a>
+                                    <a href="installation-linux-rpm-other-rpm">追加のRPM</a>
                                 </li>
                             </ul>
                         </li>
@@ -101,7 +101,7 @@
                     <a href="#installation-sources">ソースコードからコンパイル</a>
                 </li>
                 <li>
-                    <a href="#installation-sources-advanced">Advanced Compilation</a>
+                    <a href="#installation-sources-advanced">高度なコンパイル</a>
                 </li>
             </ul>
         </li>
@@ -173,7 +173,7 @@ To install Phalcon on Linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Repository installation
+#### リポジトリのインストール
 
 Add the repository to your distribution:
 
@@ -203,7 +203,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Phalcon installation
+#### Phalcon のインストール
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -227,7 +227,7 @@ sudo apt-get install php7.0-phalcon
 
 <a name='installation-linux-debian-other-ppa'></a>
 
-#### Additional PPAs
+#### 追加のPPA
 
 #### Ondřej Surý
 
@@ -252,19 +252,19 @@ sudo apt-get install php-phalcon
 
 <a name='installation-linux-rpm-repository'></a>
 
-#### Repository installation
+#### リポジトリのインストール
 
-Add the repository to your distribution:
+ディストリビューションにリポジトリを追加します。
 
 <a name='installation-linux-rpm-repository-stable'></a>
 
 ##### Stable releases
 
 ```bash
-curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
+curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-or
+または
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
@@ -282,9 +282,9 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <a name='installation-linux-rpm-phalcon'></a>
 
-#### Phalcon installation
+#### Phalcon のインストール
 
-To install Phalcon you need to issue the following commands in your terminal:
+次のコマンドを実行して、Phalcon をインストールします。
 
 <a name='installation-linux-rpm-phalcon-php5'></a>
 
@@ -306,7 +306,7 @@ sudo yum install php70u-phalcon
 
 <a name='installation-linux-rpm-other-rpm'></a>
 
-#### Additional RPMs
+#### 追加のRPM
 
 ##### Remi
 
@@ -332,7 +332,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon
 ```
 
-### Source
+### ソースコード
 
 ```bash
 export CFLAGS="-O2 --fvisibility=hidden"
@@ -380,40 +380,40 @@ sudo port install php55-phalcon
 sudo port install php56-phalcon
 ```
 
-Edit your php.ini file and then append at the end:
+php.ini ファイルを編集し、末尾に下記を追記します:
 
 ```ini
 extension=php_phalcon.so
 ```
 
-Restart your webserver.
+Webサーバを再起動します。
 
 <a name='installation-windows'></a>
 
 ## Windows
 
-To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalconphp.com/en/download/windows) page.
+Windows で Phalcon を使用するためには、phalcon.dll をインストールする必要があります。 プラットフォームに応じて、複数の DLL ファイルをコンパイルしています。 Dll は、[ダウンロード](https://phalconphp.com/en/download/windows) のページで見つけることができます。
 
-Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
+アーキテクチャと同様に、PHP がインストールされているかを識別します。 間違った DLL をダウンロードした場合、Phalcon は動作しません。 この情報は `phpinfo()` に含まれています。 In the example below, we will need the NTS version of the DLL:
 
 ![phpinfo](/images/content/phpinfo-api.png)
 
-The available DLLs are:
+利用可能な DLL は次のとおりです。
 
-| Architecture | Version | Type                  |
-|:------------:|:-------:| --------------------- |
-|     x64      |   7.x   | Thread safe           |
-|     x64      |   7.x   | Non Thread safe (NTS) |
-|     x86      |   7.x   | Thread safe           |
-|     x86      |   7.x   | Non Thread safe (NTS) |
-|     x64      |   5.6   | Thread safe           |
-|     x64      |   5.6   | Non Thread safe (NTS) |
-|     x86      |   5.6   | Thread safe           |
-|     x86      |   5.6   | Non Thread safe (NTS) |
-|     x64      |   5.5   | Thread safe           |
-|     x64      |   5.5   | Non Thread safe (NTS) |
-|     x86      |   5.5   | Thread safe           |
-|     x86      |   5.5   | Non Thread safe (NTS) |
+| Architecture | バージョン | Type                  |
+|:------------:|:-----:| --------------------- |
+|     x64      |  7.x  | スレッドセーフ               |
+|     x64      |  7.x  | Non Thread safe (NTS) |
+|     x86      |  7.x  | Thread safe           |
+|     x86      |  7.x  | Non Thread safe (NTS) |
+|     x64      |  5.6  | Thread safe           |
+|     x64      |  5.6  | Non Thread safe (NTS) |
+|     x86      |  5.6  | Thread safe           |
+|     x86      |  5.6  | Non Thread safe (NTS) |
+|     x64      |  5.5  | Thread safe           |
+|     x64      |  5.5  | Non Thread safe (NTS) |
+|     x86      |  5.5  | Thread safe           |
+|     x86      |  5.5  | Non Thread safe (NTS) |
 
 Edit your php.ini file and then append at the end:
 
@@ -425,18 +425,18 @@ Restart your webserver.
 
 <a name='installation-sources'></a>
 
-## Compile from Sources
+## ソースコードからコンパイル
 
 Compiling from source is similar to most environments (Linux/macOS).
 
-### Requirements
+### 必要条件
 
-* PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
+* PHP 5.5.x/5.6.x/7.0.x/7.1.x
 * GCC compiler (Linux/Solaris/FreeBSD) or Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev
 
-You can install these packages in your system with the relevant package manager. Instructions for popular linux distributions are below:
+これらのパッケージは、システムに応じたパッケージマネージャでインストールすることができます。多く使用されている Linux ディストリビューションでの手順は以下の通りです。
 
 #### Ubuntu
 
