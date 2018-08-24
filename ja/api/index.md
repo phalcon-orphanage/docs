@@ -1,4 +1,4 @@
-## API Index
+## API 索引
 
 - [Phalcon\Acl](/[[language]]/[[version]]/api/Phalcon_Acl)
 - [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
