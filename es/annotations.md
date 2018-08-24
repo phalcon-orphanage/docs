@@ -451,10 +451,10 @@ Este componente hace uso de los adaptadores para cachear las anotaciones analiza
 
 | Clase                                   | Descripción                                                                                                                                                                                            |
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Phalcon\Annotations\Adapter\Memory` | Las anotaciones son cacheadas solo en memoria. Cuando una consulta termina el cache es limpiado, recargando las anotaciones en cada consulta. Este adaptador es adecuado para las etapas de desarrollo |
-| `Phalcon\Annotations\Adapter\Files`  | Analizadas y procesadas las anotaciones son almacenadas permanentemente en archivos PHP, mejorando el desempeño. Este adaptador debe ser utilizado en conjunto con un cache bytecode.                  |
-| `Phalcon\Annotations\Adapter\Apc`    | Analizadas y procesadas las anotaciones son almacenadas permanentemente en el cache APC, mejorando el desempeño. Es el adaptador más rápido                                                            |
-| `Phalcon\Annotations\Adapter\Xcache` | Analizadas y procesadas las anotaciones son almacenadas permanentemente en el cache XCache, mejorando el desempeño. Es también un adaptador muy rápido                                                 |
+| `Phalcon\Annotations\Adapter\Memory`    | Las anotaciones son cacheadas solo en memoria. Cuando una consulta termina el cache es limpiado, recargando las anotaciones en cada consulta. Este adaptador es adecuado para las etapas de desarrollo |
+| `Phalcon\Annotations\Adapter\Files`     | Analizadas y procesadas las anotaciones son almacenadas permanentemente en archivos PHP, mejorando el desempeño. Este adaptador debe ser utilizado en conjunto con un cache bytecode.                  |
+| `Phalcon\Annotations\Adapter\Apc`       | Analizadas y procesadas las anotaciones son almacenadas permanentemente en el cache APC, mejorando el desempeño. Es el adaptador más rápido                                                            |
+| `Phalcon\Annotations\Adapter\Xcache`    | Analizadas y procesadas las anotaciones son almacenadas permanentemente en el cache XCache, mejorando el desempeño. Es también un adaptador muy rápido                                                 |
 
 <a name='adapters-custom'></a>
 

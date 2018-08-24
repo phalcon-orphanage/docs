@@ -543,12 +543,12 @@ Los adaptadores de frontend disponibles que se usan como interfaces o fuentes de
 
 | Adaptador                            | Descripción                                                                                                                                                                                     |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Cache\Frontend\Output`   | Lee los datos de entrada desde la salida estándar de PHP.                                                                                                                                       |
-| `Phalcon\Cache\Frontend\Data`     | Es utilizado para almacenar cualquier tipo de datos de PHP (arreglos grandes, objectos, texto, etc.). Los datos son serializados antes de ser almacenados en el backend.                        |
-| `Phalcon\Cache\Frontend\Base64`   | Es utilizado para cachear datos binarios. Los datos se serializan utilizando `base64_encode()` antes de almacenarse en el backend.                                                              |
-| `Phalcon\Cache\Frontend\Json`     | Los datos son transformados a JSON antes de ser almacenados en el backend. Decodificados después de ser recuperados. Este método es útil para compartir datos con otros lenguajes o frameworks. |
-| `Phalcon\Cache\Frontend\Igbinary` | Es utilizado para almacenar cualquier tipo de datos de PHP (arreglos grandes, objectos, texto, etc.). Los datos se serializan utilizando `Igbinary` antes de almacenarse en el backend.         |
-| `Phalcon\Cache\Frontend\None`     | Se usa para almacenar en caché cualquier tipo de datos PHP sin serializarlos.                                                                                                                   |
+| `Phalcon\Cache\Frontend\Output`      | Lee los datos de entrada desde la salida estándar de PHP.                                                                                                                                       |
+| `Phalcon\Cache\Frontend\Data`        | Es utilizado para almacenar cualquier tipo de datos de PHP (arreglos grandes, objectos, texto, etc.). Los datos son serializados antes de ser almacenados en el backend.                        |
+| `Phalcon\Cache\Frontend\Base64`      | Es utilizado para cachear datos binarios. Los datos se serializan utilizando `base64_encode()` antes de almacenarse en el backend.                                                              |
+| `Phalcon\Cache\Frontend\Json`        | Los datos son transformados a JSON antes de ser almacenados en el backend. Decodificados después de ser recuperados. Este método es útil para compartir datos con otros lenguajes o frameworks. |
+| `Phalcon\Cache\Frontend\Igbinary`    | Es utilizado para almacenar cualquier tipo de datos de PHP (arreglos grandes, objectos, texto, etc.). Los datos se serializan utilizando `Igbinary` antes de almacenarse en el backend.         |
+| `Phalcon\Cache\Frontend\None`        | Se usa para almacenar en caché cualquier tipo de datos PHP sin serializarlos.                                                                                                                   |
 
 <a name='adapters-frontend-custom'></a>
 
