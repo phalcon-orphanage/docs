@@ -1,128 +1,128 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">概要</a> <ul>
         <li>
-          <a href="#introduction">Introduction</a>
+          <a href="#introduction">はじめに</a>
         </li>
         <li>
-          <a href="#setup">Activating Volt</a>
+          <a href="#setup">Voltを使うために</a>
         </li>
         <li>
-          <a href="#basic-usage">Basic Usage</a>
+          <a href="#basic-usage">基本的な使い方</a>
         </li>
         <li>
-          <a href="#variables">Variables</a>
+          <a href="#variables">変数</a>
         </li>
         <li>
-          <a href="#filters">Filters</a>
+          <a href="#filters">フィルター</a>
         </li>
         <li>
-          <a href="#comments">Comments</a>
+          <a href="#comments">コメント</a>
         </li>
         <li>
-          <a href="#control-structures">List of Control Structures</a> 
+          <a href="#control-structures">制御構文の一覧</a> 
           <ul>
             <li>
-              <a href="#control-structures-for">For</a>
+              <a href="#control-structures-for">for文</a>
             </li>
             <li>
-              <a href="#control-structures-loops">Loop Controls</a>
+              <a href="#control-structures-loops">ループ制御</a>
               <ul>
                 <li>
-                  <a href="#loop-controls-if">If</a>
+                  <a href="#loop-controls-if">If文</a>
                 </li>
                 <li>
-                  <a href="#loop-controls-switch">Switch</a>
+                  <a href="#loop-controls-switch">switch文</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#control-structures-loop">Loop Context</a> 
+              <a href="#control-structures-loop">ループ変数</a> 
               <ul>
                 <li>
-                  <a href="#assignments">Assignments</a>
+                  <a href="#assignments">変数割り当て</a>
                 </li>
                 <li>
-                  <a href="#expressions">Expressions</a>
+                  <a href="#expressions">条件式</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#expressions-literals">Literals</a>
+              <a href="#expressions-literals">定数</a>
             </li>
             <li>
-              <a href="#expressions-arrays">Arrays</a>
+              <a href="#expressions-arrays">配列</a>
             </li>
             <li>
-              <a href="#expressions-math">Math</a>
+              <a href="#expressions-math">計算</a>
             </li>
             <li>
-              <a href="#expressions-comparisons">Comparisons</a>
+              <a href="#expressions-comparisons">比較</a>
             </li>
             <li>
-              <a href="#expressions-logic">Logic</a>
+              <a href="#expressions-logic">演算子</a>
             </li>
             <li>
-              <a href="#expressions-other-operators">Other Operators</a>
+              <a href="#expressions-other-operators">その他演算子</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#tests">Tests</a>
+          <a href="#tests">テスト</a>
         </li>
         <li>
-          <a href="#macros">Macros</a>
+          <a href="#macros">マクロ</a>
         </li>
         <li>
-          <a href="#tag-helpers">Using Tag Helpers</a>
+          <a href="#tag-helpers">タグヘルパーを使用する</a>
         </li>
         <li>
-          <a href="#functions">Functions</a>
+          <a href="#functions">関数</a>
         </li>
         <li>
-          <a href="#view-integrations">View Integration</a> 
+          <a href="#view-integrations">Viewとの連携</a> 
           <ul>
             <li>
-              <a href="#view-integration-include">Include</a>
+              <a href="#view-integration-include">include文</a>
             </li>
             <li>
-              <a href="#view-integration-partial-vs-include">Partial vs Include</a>
+              <a href="#view-integration-partial-vs-include">partial文 vs include文</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#template-inheritance">Template Inheritance</a> <ul>
+          <a href="#template-inheritance">テンプレートの継承</a> <ul>
             <li>
-              <a href="#template-inheritance-multiple">Multiple Inheritance</a>
+              <a href="#template-inheritance-multiple">多重継承</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#autoescape">Autoescape mode</a>
+          <a href="#autoescape">自動エスケープ モード</a>
         </li>
         <li>
-          <a href="#extending">Extending Volt</a> 
+          <a href="#extending">Volt の拡張</a> 
           <ul>
             <li>
-              <a href="#extending-functions">Functions</a>
+              <a href="#extending-functions">関数</a>
             </li>
             <li>
-              <a href="#extending-filters">Filters</a>
+              <a href="#extending-filters">フィルター</a>
             </li>
             <li>
-              <a href="#extending-extensions">Extensions</a>
+              <a href="#extending-extensions">エクステンション</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#caching-view-fragments">Caching view fragments</a>
+          <a href="#caching-view-fragments">Viewの断片のキャッシュ</a>
         </li>
         <li>
-          <a href="#services-in-templates">Inject Services into a Template</a>
+          <a href="#services-in-templates">テンプレートへのサービス注入</a>
         </li>
         <li>
-          <a href="#stand-alone">Stand-alone component</a>
+          <a href="#stand-alone">独立コンポーネント</a>
         </li>
       </ul>
     </li>
@@ -131,7 +131,7 @@
 
 <a name='overview'></a>
 
-# Volt: Template Engine
+# Volt: テンプレートエンジン
 
 Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
 
@@ -272,7 +272,7 @@ The following options are available in Volt:
 | `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false` |
 | `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
 | `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
-| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
+| `compiledPath`      | コンパイルされたPHPテンプレートが保存される書き込み可能なパス                                                                                             | `./`    |
 | `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
 | `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
 | `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
