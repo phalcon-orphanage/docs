@@ -6,7 +6,7 @@
                 <li><a href="#requirements-software">ソフトウェア</a>
                     <ul>
                         <li>
-                            <a href="#requirements-software-optional">Optional depending on the needs of your application</a>
+                            <a href="#requirements-software-optional">アプリケーションのニーズに応じた追加依存</a>
                         </li>
                     </ul>
                 </li>
@@ -130,7 +130,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <div class="alert alert-danger">
     <p>
-        You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 は近い将来にサポートされなくなり、Phalcon 4 では PHP 7 のみがサポートされるようになります。
+        バグ、セキュリティ強化、パフォーマンスの為に常に最新のPhalconとPHPのバージョンを使う様にしてください。 PHP 5.5 は近い将来にサポートされなくなり、Phalcon 4 では PHP 7 のみがサポートされるようになります。
     </p>
 </div>
 
@@ -159,13 +159,13 @@ Phalcon を実行するためには、最低限以下の拡張機能が必要で
 
 # インストール
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+PhalconはPHP拡張モジュールとしてコンパイルされているため、インストールは他の従来のPHPフレームワークとは多少異なります。 Phalconは、Webサーバー上にモジュールとしてインストールしてロードする必要があります。
 
 <a name='installation-linux'></a>
 
 ## Linux
 
-To install Phalcon on Linux, you will need to add our repository in your distribution and then install it.
+Linux で Phalcon をインストールするためには、使用しているディストリビューションにリポジトリを追加する必要があります。
 
 <a name='installation-linux-debian'></a>
 
@@ -179,17 +179,17 @@ Add the repository to your distribution:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
-##### Stable releases
+##### 安定版
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-or
+または
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
-##### Nightly releases
+##### Nightly リリース
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -205,7 +205,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 #### Phalcon のインストール
 
-To install Phalcon you need to issue the following commands in your terminal:
+次のコマンドを実行して、Phalcon をインストールします。
 
 <a name='installation-linux-debian-phalcon-php5'></a>
 
@@ -231,7 +231,7 @@ sudo apt-get install php7.0-phalcon
 
 #### Ondřej Surý
 
-If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
+[packagecloud.io](https://packagecloud.io/phalcon)でリポジトリを使用したくない場合は、[OndřejSurý](https://launchpad.net/~ondrej/+archive/ubuntu/php/)が提供するリポジトリをいつでも使用できます。
 
 Installation of the repo:
 
@@ -248,7 +248,7 @@ sudo apt-get install php-phalcon
 
 <a name='installation-linux-rpm'></a>
 
-### RPM based distributions (CentOS, Fedora, etc.)
+### RPM ベースのディストリビューション (CentOS、Fedora 等)
 
 <a name='installation-linux-rpm-repository'></a>
 
@@ -258,7 +258,7 @@ sudo apt-get install php-phalcon
 
 <a name='installation-linux-rpm-repository-stable'></a>
 
-##### Stable releases
+##### 安定版
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
@@ -268,7 +268,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.s
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
-##### Nightly releases
+##### Nightly リリース
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -310,7 +310,7 @@ sudo yum install php70u-phalcon
 
 ##### Remi
 
-[Remi Collet](https://github.com/remicollet) maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en).
+[Remi Collet](https://github.com/remicollet)は、RPMベースのインストールのための優れたリポジトリをメンテナンスしています。 You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en).
 
 Installing Phalcon after that is as easy as:
 
@@ -427,7 +427,7 @@ Restart your webserver.
 
 ## ソースコードからコンパイル
 
-Compiling from source is similar to most environments (Linux/macOS).
+ソースコードからのコンパイルは、ほとんどの環境 (Linux/macOS) で同様に行えます。
 
 ### 必要条件
 
@@ -474,38 +474,38 @@ sudo ./install
 You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
 
 ```ini
-# Suse: Add a file called phalcon.ini in /etc/php5/conf.d/ with this content:
+# Suse の場合: /etc/php5/conf.d/ に下記内容が書いてある phalcon.ini を追加します:
 extension=phalcon.so
 
-# CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+# CentOS/RedHat/Fedora の場合: /etc/php.d/ に下記内容が書いてある phalcon.ini を追加します:
 extension=phalcon.so
 
-# Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php5/apache2/conf.d/ with this content:
+# Ubuntu/Debian、Apache2 で構成している場合: /etc/php5/apache2/conf.d/ に、下記内容の 30-phalcon.ini を追加します:
 extension=phalcon.so
 
-# Ubuntu/Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
+# Ubuntu/Debian、php5-fpm で構成している場合: /etc/php5/fpm/conf.d/ に、下記内容の 30-phalcon.ini を追加します:
 extension=phalcon.so
 
-# Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
+# Ubuntu/Debian、php5-cli で構成している場合: /etc/php5/cli/conf.d/ に、下記内容の 30-phalcon.ini を追加します:
 extension=phalcon.so
 ```
 
 <a name='installation-sources-advanced'></a>
 
-## Advanced Compilation
+## 高度なコンパイル
 
-Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
+Phalcon は自動的にシステムのアーキテクチャを判定しますが、指定したアーキテクチャ向けにコンパイルすることを強制することができます:
 
 ```bash
 cd cphalcon/build
 
-# One of the following:
+# 次のどれか一つ:
 sudo ./install --arch 32bits
 sudo ./install --arch 64bits
 sudo ./install --arch safe
 ```
 
-If the automatic installer fails you can build the extension manually:
+自動判別インストーラが失敗する場合は手動でビルドしてみます:
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -591,6 +591,6 @@ php -m
 
 <div class="alert alert-danger">
     <p>
-        Note that in some Linux based systems, you might need to change two <code>php.ini</code> files, one for your web server (Apache/Nginx), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI <code>php.ini</code> and make the necessary additions for the module to be loaded.
+        一部のLinuxベースのシステムでは、Webサーバー(Apache/Nginx)用とCLI用の2つの<code>php.ini</code>ファイルを変更する必要があります。 PhalconがWebサーバーだけにロードされている場合は、CLI <code>php.ini</code>を探して、ロードするモジュールに必要な追加を行う必要があります。
     </p>
 </div>
