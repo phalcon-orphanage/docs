@@ -923,7 +923,7 @@ class ProductsController extends ControllerBase
 
 <a name='search-form'></a>
 
-## The Search Form
+## 検索フォーム
 
 Every CRUD starts with a search form. This form shows each field that the table has (products), allowing the user to create a search criteria for any field. The `products` table has a relationship with the table `products_types`. In this case, we previously queried the records in this table in order to facilitate the search by that field:
 
@@ -1187,7 +1187,7 @@ When the form is submitted, the `search` action is executed in the controller pe
 
 <a name='performing-searches'></a>
 
-## Performing a Search
+## 検索の実行
 
 The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/[[language]]/[[version]]/request) component:
 
@@ -1499,7 +1499,7 @@ This method is defined in the model.
 
 <a name='creating-updating-records'></a>
 
-## Creating and Updating Records
+## レコードの登録の更新
 
 Now let's see how the CRUD creates and updates records. From the `new` and `edit` views, the data entered by the user is sent to the `create` and `save` actions that perform actions of `creating` and `updating` products, respectively.
 
@@ -1758,7 +1758,7 @@ public function saveAction()
 
 <a name='user-components'></a>
 
-## User Components
+## ユーザーコンポーネント
 
 All the UI elements and visual style of the application has been achieved mostly through [Bootstrap](http://getbootstrap.com/). Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
 
