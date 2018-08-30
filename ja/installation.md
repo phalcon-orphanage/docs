@@ -6,7 +6,7 @@
                 <li><a href="#requirements-software">ソフトウェア</a>
                     <ul>
                         <li>
-                            <a href="#requirements-software-optional">Optional depending on the needs of your application</a>
+                            <a href="#requirements-software-optional">アプリケーションのニーズに応じた追加の依存</a>
                         </li>
                     </ul>
                 </li>
@@ -17,7 +17,7 @@
                 <li><a href="#installation-linux">Linux</a>
                     <ul>
                         <li>
-                            <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a>
+                            <a href="#installation-linux-debian">debベースのディストリビューション (Debian、Ubuntu など)</a>
                             <ul>
                                 <li>
                                     <a href="#installation-linux-debian-repository">リポジトリのインストール</a>
@@ -42,7 +42,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#installation-linux-debian-other-ppa">Additional PPAs</a>
+                                    <a href="#installation-linux-debian-other-ppa">追加のPPA</a>
                                 </li>
                             </ul>
                         </li>
@@ -72,7 +72,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="installation-linux-rpm-other-rpm">Additional RPMs</a>
+                                    <a href="installation-linux-rpm-other-rpm">追加のRPM</a>
                                 </li>
                             </ul>
                         </li>
@@ -101,7 +101,7 @@
                     <a href="#installation-sources">ソースコードからコンパイル</a>
                 </li>
                 <li>
-                    <a href="#installation-sources-advanced">Advanced Compilation</a>
+                    <a href="#installation-sources-advanced">高度なコンパイル</a>
                 </li>
             </ul>
         </li>
@@ -112,15 +112,15 @@
 
 # 必要条件
 
-Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
+Phalconを利用するにはPHPが実行できる必要があります。 疎結合に設計されている為、開発者はPhalconをインストールし、追加の拡張モジュールなしに利用することができます。 特定のコンポーネントは他の拡張モジュールに依存します。 たとえば、データベース接続を使用するには、`php_pdo`拡張モジュールが必要です。 RDBMSがMySQL/MariaDBまたはAuroraデータベースの場合は、`php_mysqlnd`拡張モジュールも必要です。 同様に、PhalconでPostgreSQLデータベースを使用するには、`php_pgsql`拡張モジュールが必要です。
 
 <a name='requirements-hardware'></a>
 
 ## ハードウェア
 
-Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on your application needs.
+Phalconは、高いパフォーマンスを提供しながら、可能な限り少ないリソースを使用するように設計されています。 さまざまなローエンド環境 (0.25GB RAM、0.5 CPUなど) でPhalconをテストしましたが、選択するハードウェアはアプリケーションのニーズによって異なります。
 
-Our website and blog (as well as other sites) are hosted on an Amazon VM with 512MB RAM and 1 vCPU.
+当社のウェブサイトとブログ（および他のサイト）は、512MBのRAMと1つのvCPUを備えたAmazon VM上でホストされています。
 
 <a name='requirements-software'></a>
 
@@ -130,7 +130,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <div class="alert alert-danger">
     <p>
-        You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 は近い将来にサポートされなくなり、Phalcon 4 では PHP 7 のみがサポートされるようになります。
+        バグ、セキュリティ強化、パフォーマンスの為に常に最新のPhalconとPHPのバージョンを使う様にしてください。 PHP 5.5 は近い将来にサポートされなくなり、Phalcon 4 では PHP 7 のみがサポートされるようになります。
     </p>
 </div>
 
@@ -138,7 +138,7 @@ Phalcon を実行するためには、最低限以下の拡張機能が必要で
 
 * `curl`
 * `gettext`
-* `gd2` (to use the `Phalcon\Image\Adapter\Gd` class)
+* `gd2` (`Phalcon\Image\Adapter\Gd`クラスを使う場合)
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
 * `json`
 * `mbstring`
@@ -148,7 +148,7 @@ Phalcon を実行するためには、最低限以下の拡張機能が必要で
 
 <a name='requirements-software-optional'></a>
 
-### Optional depending on the needs of your application
+### アプリケーションのニーズに応じた追加の依存
 
 * [PDO](http://php.net/manual/en/book.pdo.php) 拡張や、関連するRDBMSの拡張 ([MySQL](http://php.net/manual/en/ref.pdo-mysql.php)や[PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php)など)
 * [OpenSSL](http://php.net/manual/en/book.openssl.php) 拡張
@@ -159,37 +159,37 @@ Phalcon を実行するためには、最低限以下の拡張機能が必要で
 
 # インストール
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+PhalconはPHP拡張モジュールとしてコンパイルされているため、インストールは他の従来のPHPフレームワークとは多少異なります。 Phalconは、Webサーバーのモジュールとしてインストールしてロードする必要があります。
 
 <a name='installation-linux'></a>
 
 ## Linux
 
-To install Phalcon on Linux, you will need to add our repository in your distribution and then install it.
+Linux で Phalcon をインストールするためには、使用しているディストリビューションにリポジトリを追加する必要があります。
 
 <a name='installation-linux-debian'></a>
 
-### DEB based distributions (Debian, Ubuntu, etc.)
+### debベースのディストリビューション (Debian、Ubuntu など)
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Repository installation
+#### リポジトリのインストール
 
-Add the repository to your distribution:
+ディストリビューションにリポジトリを追加します:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
-##### Stable releases
+##### 安定版
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-or
+または
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
-##### Nightly releases
+##### Nightly リリース
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -197,15 +197,15 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <div class="alert alert-warning">
     <p>
-        This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+        この作業は、あなたがディストリビューションを変更したり安定板とナイトリーを切り替えるといった事情がなければ、実施は一度だけしか必要ありません。
     </p>
 </div>
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Phalcon installation
+#### Phalcon のインストール
 
-To install Phalcon you need to issue the following commands in your terminal:
+次のコマンドを実行して、Phalcon をインストールします。
 
 <a name='installation-linux-debian-phalcon-php5'></a>
 
@@ -227,20 +227,20 @@ sudo apt-get install php7.0-phalcon
 
 <a name='installation-linux-debian-other-ppa'></a>
 
-#### Additional PPAs
+#### 追加のPPA
 
 #### Ondřej Surý
 
-If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
+[packagecloud.io](https://packagecloud.io/phalcon)でリポジトリを使用したくない場合は、[OndřejSurý](https://launchpad.net/~ondrej/+archive/ubuntu/php/)が提供するリポジトリをいつでも使用できます。
 
-Installation of the repo:
+リポジトリのインストール:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-and Phalcon:
+Phalconのインストール:
 
 ```php
 sudo apt-get install php-phalcon
@@ -248,27 +248,27 @@ sudo apt-get install php-phalcon
 
 <a name='installation-linux-rpm'></a>
 
-### RPM based distributions (CentOS, Fedora, etc.)
+### RPM ベースのディストリビューション (CentOS、Fedora 等)
 
 <a name='installation-linux-rpm-repository'></a>
 
-#### Repository installation
+#### リポジトリのインストール
 
-Add the repository to your distribution:
+ディストリビューションにリポジトリを追加します。
 
 <a name='installation-linux-rpm-repository-stable'></a>
 
-##### Stable releases
+##### 安定版
 
 ```bash
-curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
+curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-or
+または
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
-##### Nightly releases
+##### Nightly リリース
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -276,15 +276,15 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <div class="alert alert-warning">
     <p>
-        This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+        この作業は、あなたがディストリビューションを変更したり安定板とナイトリーを切り替えるといった事情がなければ、実施は一度だけしか必要ありません。
     </p>
 </div>
 
 <a name='installation-linux-rpm-phalcon'></a>
 
-#### Phalcon installation
+#### Phalcon のインストール
 
-To install Phalcon you need to issue the following commands in your terminal:
+次のコマンドを実行して、Phalcon をインストールします。
 
 <a name='installation-linux-rpm-phalcon-php5'></a>
 
@@ -306,25 +306,25 @@ sudo yum install php70u-phalcon
 
 <a name='installation-linux-rpm-other-rpm'></a>
 
-#### Additional RPMs
+#### 追加のRPM
 
 ##### Remi
 
-[Remi Collet](https://github.com/remicollet) maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en).
+[Remi Collet](https://github.com/remicollet)は、RPMベースのインストールのための優れたリポジトリをメンテナンスしています。 こちらのディストリビューションを有効にする方法については[こちら](https://blog.remirepo.net/pages/Config-en)をご覧ください。
 
-Installing Phalcon after that is as easy as:
+それ以降、Phalconをインストールするのは簡単です:
 
 ```bash
 yum install php56-php-phalcon3
 ```
 
-Additional versions are available both architecture specific (x86/x64) as well as PHP specific (5.5, 5.6, 7.x)
+追加のバージョンには、アーキテクチャー固有のもの (x86/x64) とPHP固有のもの (5.5,5.6,7.x) があります
 
 <a name='installation-freebsd'></a>
 
 ## FreeBSD
 
-A port is available for FreeBSD. To install it you will need to issue the following commands:
+FreeBSDではportsが利用できます。 インストールするには、次のコマンドを発行する必要があります:
 
 ### `pkg_add`
 
@@ -332,7 +332,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon
 ```
 
-### Source
+### ソースコード
 
 ```bash
 export CFLAGS="-O2 --fvisibility=hidden"
@@ -346,7 +346,7 @@ make install clean
 
 ## Gentoo
 
-An overlay for installing Phalcon can be found here <https://github.com/smoke/phalcon-gentoo-overlay>
+Phalconをインストールするためのオーバーレイは、<https://github.com/smoke/phalcon-gentoo-overlay>にあります。
 
 <a name='installation-macos'></a>
 
@@ -363,9 +363,9 @@ macOS では、`brew`、`macports` またはソースコードから拡張機能
 
 ### Brew
 
-As the [homebrew/php tap has been deprecated](https://brew.sh/2018/01/19/homebrew-1.5.0/) and is in the process of being removed, A custom repository for Phalcon has been created.
+[homebrew/phpタップが廃止され](https://brew.sh/2018/01/19/homebrew-1.5.0/)、削除されているので、Phalconのカスタムリポジトリが作成されました。
 
-PHP 5.5 has not been ported to homebrew/core and as such no longer exists. PHP 7.2 on the other hand has been added.
+PHP 5.5はhomebrew/coreに移植されていないため、存在しなくなりました。 一方、PHP 7.2が追加されました。
 
 ```bash
 brew tap tigerstrikemedia/homebrew-phalconphp
@@ -384,63 +384,63 @@ sudo port install php55-phalcon
 sudo port install php56-phalcon
 ```
 
-Edit your php.ini file and then append at the end:
+php.ini ファイルを編集し、末尾に下記を追記します:
 
 ```ini
 extension=php_phalcon.so
 ```
 
-Restart your webserver.
+Webサーバを再起動します。
 
 <a name='installation-windows'></a>
 
 ## Windows
 
-To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalconphp.com/en/download/windows) page.
+Windows で Phalcon を使用するためには、phalcon.dll をインストールする必要があります。 プラットフォームに応じて、複数の DLL ファイルをコンパイルしています。 Dll は、[ダウンロード](https://phalconphp.com/en/download/windows) のページで見つけることができます。
 
-Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
+アーキテクチャと同様に、PHP がインストールされているかを識別します。 間違った DLL をダウンロードした場合、Phalcon は動作しません。 この情報は `phpinfo()` に含まれています。 次の例では、DLLのNTS バージョンを必要としています:
 
 ![phpinfo](/images/content/phpinfo-api.png)
 
-The available DLLs are:
+利用可能な DLL は次のとおりです。
 
-| Architecture | Version | Type                  |
-|:------------:|:-------:| --------------------- |
-|     x64      |   7.x   | Thread safe           |
-|     x64      |   7.x   | Non Thread safe (NTS) |
-|     x86      |   7.x   | Thread safe           |
-|     x86      |   7.x   | Non Thread safe (NTS) |
-|     x64      |   5.6   | Thread safe           |
-|     x64      |   5.6   | Non Thread safe (NTS) |
-|     x86      |   5.6   | Thread safe           |
-|     x86      |   5.6   | Non Thread safe (NTS) |
-|     x64      |   5.5   | Thread safe           |
-|     x64      |   5.5   | Non Thread safe (NTS) |
-|     x86      |   5.5   | Thread safe           |
-|     x86      |   5.5   | Non Thread safe (NTS) |
+| アーキテクチャー | バージョン | タイプ            |
+|:--------:|:-----:| -------------- |
+|   x64    |  7.x  | スレッドセーフ        |
+|   x64    |  7.x  | 非スレッドセーフ (NTS) |
+|   x86    |  7.x  | スレッドセーフ        |
+|   x86    |  7.x  | 非スレッドセーフ (NTS) |
+|   x64    |  5.6  | スレッドセーフ        |
+|   x64    |  5.6  | 非スレッドセーフ (NTS) |
+|   x86    |  5.6  | スレッドセーフ        |
+|   x86    |  5.6  | 非スレッドセーフ (NTS) |
+|   x64    |  5.5  | スレッドセーフ        |
+|   x64    |  5.5  | 非スレッドセーフ (NTS) |
+|   x86    |  5.5  | スレッドセーフ        |
+|   x86    |  5.5  | 非スレッドセーフ (NTS) |
 
-Edit your php.ini file and then append at the end:
+php.ini ファイルを編集し、末尾に下記を追記します:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-Restart your webserver.
+Webサーバを再起動します。
 
 <a name='installation-sources'></a>
 
-## Compile from Sources
+## ソースコードからコンパイル
 
-Compiling from source is similar to most environments (Linux/macOS).
+ソースコードからのコンパイルは、ほとんどの環境 (Linux/macOS) で同様に行えます。
 
-### Requirements
+### 必要条件
 
-* PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
-* GCC compiler (Linux/Solaris/FreeBSD) or Xcode (macOS)
+* PHP 5.5.x/5.6.x/7.0.x/7.1.x
+* GCCコンパイラ (Linux/Solaris/FreeBSD) または Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev
 
-You can install these packages in your system with the relevant package manager. Instructions for popular linux distributions are below:
+これらのパッケージは、関連するパッケージマネージャーを使用してシステムにインストールできます。 一般的なLinuxディストリビューションの手順は次のとおりです:
 
 #### Ubuntu
 
@@ -460,56 +460,56 @@ sudo zypper install php5-devel gcc make
 sudo yum install php-devel pcre-devel gcc make
 ```
 
-### Compile Phalcon
+### Phalconのコンパイル
 
-We first need to clone Phalcon from the Github repository
+まず、GitHubのリポジトリからPhalconのソースコードをcloneする必要があります。
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 ```
 
-and now build the extension
+その後、拡張モジュールをビルドします。
 
 ```bash
 cd cphalcon/build
 sudo ./install
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+次に、PHP ini ファイルに`extension=phalcon.so` と追記し、拡張モジュールが読み込まれるように、Webサーバを再起動する必要があります。
 
 ```ini
-# Suse: Add a file called phalcon.ini in /etc/php5/conf.d/ with this content:
+# Suse の場合: /etc/php5/conf.d/ に下記内容が書いてある phalcon.ini を追加します:
 extension=phalcon.so
 
-# CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+# CentOS/RedHat/Fedora の場合: /etc/php.d/ に下記内容が書いてある phalcon.ini を追加します:
 extension=phalcon.so
 
-# Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php5/apache2/conf.d/ with this content:
+# Ubuntu/Debian、Apache2 で構成している場合: /etc/php5/apache2/conf.d/ に、下記内容の 30-phalcon.ini を追加します:
 extension=phalcon.so
 
-# Ubuntu/Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
+# Ubuntu/Debian、php5-fpm で構成している場合: /etc/php5/fpm/conf.d/ に、下記内容の 30-phalcon.ini を追加します:
 extension=phalcon.so
 
-# Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
+# Ubuntu/Debian、php5-cli で構成している場合: /etc/php5/cli/conf.d/ に、下記内容の 30-phalcon.ini を追加します:
 extension=phalcon.so
 ```
 
 <a name='installation-sources-advanced'></a>
 
-## Advanced Compilation
+## 高度なコンパイル
 
-Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
+Phalcon は自動的にシステムのアーキテクチャを判定しますが、指定したアーキテクチャ向けにコンパイルすることを強制することができます:
 
 ```bash
 cd cphalcon/build
 
-# One of the following:
+# 次のどれか一つ:
 sudo ./install --arch 32bits
 sudo ./install --arch 64bits
 sudo ./install --arch safe
 ```
 
-If the automatic installer fails you can build the extension manually:
+自動判別インストーラが失敗する場合は手動でビルドしてみます:
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -531,32 +531,32 @@ make
 make install
 ```
 
-If you have specific php versions running:
+特定のPHPバージョンを実行している場合:
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# NOTE: for PHP 7 you have to use
+# 注: PHP7の場合
 # cd cphalcon/build/php7/32bits
 # or
 # cd cphalcon/build/php7/64bits
 
 make clean
-/opt/php-5.6.15/bin/phpize --clean
+phpize --clean
 
 export CFLAGS="-O2 --fvisibility=hidden"
-./configure --with-php-config=/opt/php-5.6.15/bin/php-config --enable-phalcon
+./configure --enable-phalcon
 
 make
 make install
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+次に、PHP ini ファイルに`extension=phalcon.so` と追記し、拡張モジュールが読み込まれるように、Webサーバを再起動する必要があります。
 
 <a name='installation-testing'></a>
-You can create a small script in your web server root that has the following in it:
+Webサーバのルートに次のような小さなスクリプトを作成します:
 
 ```php
 <?php
@@ -564,15 +564,15 @@ You can create a small script in your web server root that has the following in 
 phpinfo();
 ```
 
-and load it on your web browser. There should be a section for Phalcon. If there is not, make sure that your extension has been compiled properly, that you made the necessary changes to your `php.ini` and also that you have restarted your web server.
+そしてウェブブラウザで読み込みます。 Phalconのセクションがあるはずです。 存在しない場合は、拡張モジュールが正しくコンパイルされていること、`php.ini`に必要な変更を加えたこと、そしてWebサーバーが再起動されていることを確認してください。
 
-You can also check your installation from the command line:
+コマンドラインからインストール内容を確認することもできます:
 
 ```bash
 php -r 'print_r(get_loaded_extensions());'
 ```
 
-This will output something similar to this:
+これは次のような内容を出力します:
 
 ```php
 Array
@@ -587,7 +587,7 @@ Array
 )
 ```
 
-You can also see the modules installed using the CLI:
+CLIを使用してモジュールをインストールすることもできます:
 
 ```bash
 php -m
@@ -595,6 +595,6 @@ php -m
 
 <div class="alert alert-danger">
     <p>
-        Note that in some Linux based systems, you might need to change two <code>php.ini</code> files, one for your web server (Apache/Nginx), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI <code>php.ini</code> and make the necessary additions for the module to be loaded.
+        一部のLinuxベースのシステムでは、Webサーバー(Apache/Nginx)用とCLI用の2つの<code>php.ini</code>ファイルを変更する必要があります。 PhalconがWebサーバーだけにロードされている場合は、CLI <code>php.ini</code>を探して、ロードするモジュールに必要な追加を行う必要があります。
     </p>
 </div>
