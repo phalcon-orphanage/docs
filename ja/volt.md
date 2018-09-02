@@ -141,7 +141,7 @@ Volt is inspired by [Jinja](http://jinja.pocoo.org/), originally created by [Arm
 
 <a name='introduction'></a>
 
-## Introduction
+## はじめに
 
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
@@ -162,7 +162,7 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
 <a name='setup'></a>
 
-## Activating Volt
+## Voltを使うために
 
 As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
@@ -378,7 +378,7 @@ class PostsController extends Controller
 
 <a name='variables'></a>
 
-## Variables
+## 変数
 
 Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
 
@@ -389,7 +389,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 <a name='filters'></a>
 
-## Filters
+## フィルター
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
