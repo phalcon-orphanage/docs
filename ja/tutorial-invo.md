@@ -48,7 +48,7 @@
           <a href="#performing-searches">検索の実行</a>
         </li>
         <li>
-          <a href="#creating-updating-records">レコードの登録の更新</a>
+          <a href="#creating-updating-records">レコードの登録と更新</a>
         </li>
         <li>
           <a href="#user-components">ユーザーコンポーネント</a>
@@ -346,9 +346,9 @@ $di->set(
 );
 ```
 
-Here, we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a logger, a profiler or change the adapter, setting it up as you want.
+ここでは、MySQLアダプタのインスタンスを返します。 必要に応じて、ロガーやプロファイラの追加、アダプタの変更などの追加の設定を行うことができます。
 
-The following simple form (`app/views/session/index.volt`) requests the login information. We've removed some HTML code to make the example more concise:
+次の簡単なフォーム (`app/views/session/index.volt`) はログイン情報を要求します。 サンプルをより簡潔にするために、いくつかのHTMLコードを削除しました。
 
 ```twig
 {{ form('session/start') }}
@@ -670,7 +670,7 @@ class SecurityPlugin extends Plugin
 
 フックイベントは常に2つの引数を取ります。第1引数はイベントが生成されたコンテキストの情報(`$event`) で、第2引数はイベントを生成したオブジェクト自身 (`$dispatcher`) です。 プラグインが`Phalcon\Mvc\User\Plugin`を継承することは必須ではありませんが、継承することでアプリケーションのサービスに簡単にアクセスできるようになります。
 
-Now, we're verifying the role in the current session, checking if the user has access using the ACL list. If the user does not have access we redirect to the home screen as explained before:
+では、ACLリストを使ってユーザーのアクセス権限を確認し、現在のセッションでのロールを検証しましょう。 ユーザーがアクセスできない場合は、前述のようにホーム画面にリダイレクトされます。
 
 ```php
 <?php
@@ -758,7 +758,7 @@ foreach ($roles as $role) {
 }
 ```
 
-Now, we define the resources for each area respectively. Controller names are resources and their actions are accesses for the resources:
+ここで、各領域のリソースをそれぞれ定義します。 コントローラ名はリソース名で、アクション名はリソースに対する操作です。
 
 ```php
 <?php
@@ -834,9 +834,9 @@ foreach ($privateResources as $resource => $actions) {
 
 ## CRUDを使用した作業
 
-Backends usually provide forms to allow users to manipulate data. Continuing the explanation of INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you using forms, validations, paginators and more.
+バックエンドは一般的に、ユーザーがデータを操作できるようにフォームを提供します。 INVOの説明を続けます。私たちは今、CRUDの作成に取り組んでいます。これはPhalconにとって、フォーム、バリデーション、ページネーターなどを利用する事で、簡単に実装できるとても一般的な事柄です。
 
-Most options that manipulate data in INVO (companies, products and types of products) were developed using a basic and common [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (Create, Read, Update and Delete). Each CRUD contains the following files:
+INVO (企業、製品、製品の種類) のデータを操作するほとんどのオプションは、基本的で一般的な[CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (Create, Read, Update, Delete) を使用して構築されます。 各CRUDには、次のファイルが含まれています:
 
 ```bash
 invo/
@@ -855,7 +855,7 @@ invo/
                 search.volt
 ```
 
-Each controller has the following actions:
+各コントローラーは、次のようなアクションを持っています:
 
 ```php
 <?php
@@ -863,7 +863,7 @@ Each controller has the following actions:
 class ProductsController extends ControllerBase
 {
     /**
-     * The start action, it shows the 'search' view
+     * 開始アクション。'search' ビューを表示
      */
     public function indexAction()
     {
@@ -871,8 +871,8 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Execute the 'search' based on the criteria sent from the 'index'
-     * Returning a paginator for the results
+     * 'index'から送信された検索条件に基づいて'search'を実行
+     * 結果のページネーターを返す
      */
     public function searchAction()
     {
@@ -880,7 +880,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Shows the view to create a 'new' product
+     * 'new' productを作成するビューを表示
      */
     public function newAction()
     {
@@ -888,7 +888,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Shows the view to 'edit' an existing product
+     * 既存のproductを 'edit' するビューを表示
      */
     public function editAction()
     {
@@ -896,7 +896,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Creates a product based on the data entered in the 'new' action
+     * 'new' アクションで入力されたデータに基づいてproductを作成
      */
     public function createAction()
     {
@@ -904,7 +904,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Updates a product based on the data entered in the 'edit' action
+     * 'edit' アクションで入力されたデータに基づいてproductを更新
      */
     public function saveAction()
     {
@@ -912,7 +912,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Deletes an existing product
+     * 既存のproductを削除
      */
     public function deleteAction($id)
     {
@@ -925,13 +925,13 @@ class ProductsController extends ControllerBase
 
 ## 検索フォーム
 
-Every CRUD starts with a search form. This form shows each field that the table has (products), allowing the user to create a search criteria for any field. The `products` table has a relationship with the table `products_types`. In this case, we previously queried the records in this table in order to facilitate the search by that field:
+すべてのCRUDは検索フォームから始まります。 このフォームは、テーブル (products) にある各フィールドを表示し、任意のフィールドの検索条件をユーザーが作成できるようにします。 `products`テーブルは`products_types`テーブルとのリレーションを持っています。 今回はフィールドでの検索を簡単に実装するために、テーブルのレコードを事前に取得しておきます:
 
 ```php
 <?php
 
 /**
- * The start action, it shows the 'search' view
+ * 開始アクション。'search' ビューを表示
  */
 public function indexAction()
 {
@@ -941,7 +941,7 @@ public function indexAction()
 }
 ```
 
-An instance of the `ProductsForm` form (`app/forms/ProductsForm.php`) is passed to the view. This form defines the fields that are visible to the user:
+`ProductsForm`フォーム (`app/forms/ProductsForm.php`) のインスタンスがビューに渡されます。 このフォームは、ユーザーに表示されるフィールドを定義します:
 
 ```php
 <?php
@@ -957,7 +957,7 @@ use Phalcon\Validation\Validator\Numericality;
 class ProductsForm extends Form
 {
     /**
-     * Initialize the products form
+     * productsフォームの初期化
      */
     public function initialize($entity = null, $options = [])
     {
@@ -1030,18 +1030,18 @@ class ProductsForm extends Form
 }
 ```
 
-The form is declared using an object-oriented scheme based on the elements provided by the [forms](/[[language]]/[[version]]/forms) component. Every element follows almost the same structure:
+フォームはオブジェクト指向で設計されており、[forms](/[[language]]/[[version]]/forms)コンポーネントを基底としたエレメント提供します。 すべてのエレメントは、ほぼ同じ構造をしています:
 
 ```php
 <?php
 
-// Create the element
+// 要素を作成
 $name = new Text('name');
 
-// Set its label
+// ラベルを設定
 $name->setLabel('Name');
 
-// Before validating the element apply these filters
+// 要素を検証する前にフィルタを適用
 $name->setFilters(
     [
         'striptags',
@@ -1049,7 +1049,7 @@ $name->setFilters(
     ]
 );
 
-// Apply this validators
+// バリデーションを適用
 $name->addValidators(
     [
         new PresenceOf(
@@ -1060,16 +1060,16 @@ $name->addValidators(
     ]
 );
 
-// Add the element to the form
+// フォームに要素を追加
 $this->add($name);
 ```
 
-Other elements are also used in this form:
+他の要素もフォームで使用されます:
 
 ```php
 <?php
 
-// Add a hidden input to the form
+// 非表示項目をフォームに追加
 $this->add(
     new Hidden('id')
 );
@@ -1078,8 +1078,8 @@ $this->add(
 
 $productTypes = ProductTypes::find();
 
-// Add a HTML Select (list) to the form
-// and fill it with data from 'product_types'
+// フォームにHTMLのSELECT （リスト）を追加
+// 'product_types' のデータで埋める
 $type = new Select(
     'profilesId',
     $productTypes,
@@ -1095,7 +1095,7 @@ $type = new Select(
 );
 ```
 
-Note that `ProductTypes::find()` contains the data necessary to fill the SELECT tag using `Phalcon\Tag::select()`. Once the form is passed to the view, it can be rendered and presented to the user:
+`ProductTypes::find()`には、`Phalcon\Tag::select()`を使用してSELECTタグを埋めるために必要なデータが含まれています。 フォームがビューに渡されると、レンダリングしてユーザーに表示することができます:
 
 ```twig
 {{ form('products/search') }}
@@ -1127,7 +1127,7 @@ Note that `ProductTypes::find()` contains the data necessary to fill the SELECT 
 {{ endForm() }}
 ```
 
-This produces the following HTML:
+次の HTML が生成されます:
 
 ```html
 <form action='/invo/products/search' method='post'>
@@ -1183,34 +1183,34 @@ This produces the following HTML:
 </form>
 ```
 
-When the form is submitted, the `search` action is executed in the controller performing the search based on the data entered by the user.
+フォームが送信されると、`search`アクションは、ユーザーが入力したデータに基づいて検索を実行するコントローラーの中で実行されます。
 
 <a name='performing-searches'></a>
 
 ## 検索の実行
 
-The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/[[language]]/[[version]]/request) component:
+`search`アクションには2つの動作があります。 POSTでアクセスすると、フォームから送信されたデータに基づいて検索が実行されますが、GETでアクセスするとページネーション内のページに移動します。 HTTPメソッドを区別するために、[Request](/[[language]]/[[version]]/request)コンポーネントを使ってチェックします:
 
 ```php
 <?php
 
 /**
- * Execute the 'search' based on the criteria sent from the 'index'
- * Returning a paginator for the results
+ * 'index' から送信された検索条件に基づいて 'search' を実行
+ * 結果のページネーターを返す
  */
 public function searchAction()
 {
     if ($this->request->isPost()) {
-        // Create the query conditions
+        // クエリ条件を作成する
     } else {
-        // Paginate using the existing conditions
+        // 既存の条件を使用してページ切り替え
     }
 
     // ...
 }
 ```
 
-With the help of `Phalcon\Mvc\Model\Criteria`, we can create the search conditions intelligently based on the data types and values sent from the form:
+`Phalcon\Mvc\Model\Criteria`によって、フォームから送信されたデータ型と値に基づいてインテリジェントに検索条件を作成することができます:
 
 ```php
 <?php
@@ -1222,14 +1222,14 @@ $query = Criteria::fromInput(
 );
 ```
 
-This method verifies which values are different from '' (empty string) and null and takes them into account to create the search criteria:
+このメソッドは、どの値が ''（空の文字列）およびnullであるかを検証し、それらを考慮して検索条件を作成します。
 
-* If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL `like` operator to filter the results.
-* If the data type is not text or similar, it'll use the operator `=`.
+* フィールドのデータ型がテキストまたは同様のもの（char、varchar、textなど）の場合、SQLの`like`演算子を使用して結果をフィルタリングします。
+* データ型がテキストでない場合、演算子`=`が使用されます。
 
-Additionally, `Criteria` ignores all the `$_POST` variables that do not match any field in the table. Values are automatically escaped using `bound parameters`.
+さらに、`Criteria`は、テーブルのどのフィールドとも一致しないすべての`$POST`変数を無視します。 値は、`パラメーターのバインド` を使用して自動的にエスケープされます。
 
-Now, we store the produced parameters in the controller's session bag:
+ここでは、生成されたパラメータをコントローラのセッションバッグに格納します:
 
 ```php
 <?php
@@ -1237,9 +1237,9 @@ Now, we store the produced parameters in the controller's session bag:
 $this->persistent->searchParams = $query->getParams();
 ```
 
-A session bag, is a special attribute in a controller that persists between requests using the session service. When accessed, this attribute injects a `Phalcon\Session\Bag` instance that is independent in each controller.
+セッションバッグはリクエスト間で値を維持する、セッションサービスを利用したコントローラの特殊な変数です。 アクセスがあると、この変数は各コントローラで独立した`Phalcon\Session\Bag`インスタンスをインジェクションします。
 
-Then, based on the built params we perform the query:
+次に、生成されたパラメータに基づいてクエリを実行します:
 
 ```php
 <?php
@@ -1260,7 +1260,7 @@ if (count($products) === 0) {
 }
 ```
 
-If the search doesn't return any product, we forward the user to the index action again. Let's pretend the search returned results, then we create a paginator to navigate easily through them:
+検索でproductが返されない場合は、ユーザーをindexアクションにもう一度転送します。 検索結果が返ってきたことにして、ページネーションを作成して簡単にナビゲートしましょう:
 
 ```php
 <?php
@@ -1271,17 +1271,17 @@ use Phalcon\Paginator\Adapter\Model as Paginator;
 
 $paginator = new Paginator(
     [
-        'data'  => $products,   // Data to paginate
-        'limit' => 5,           // Rows per page
-        'page'  => $numberPage, // Active page
+        'data'  => $products,   // ページネーション用データ
+        'limit' => 5,           // ページ内行数
+        'page'  => $numberPage, // 現在のページ
     ]
 );
 
-// Get active page in the paginator
+// paginatorの現在のページを取得
 $page = $paginator->getPaginate();
 ```
 
-Finally we pass the returned page to view:
+最後に、返されたページを渡して表示します:
 
 ```php
 <?php
@@ -1289,7 +1289,7 @@ Finally we pass the returned page to view:
 $this->view->page = $page;
 ```
 
-In the view (`app/views/products/search.volt`), we traverse the results corresponding to the current page, showing every row in the current page to the user:
+ビュー (`app/views/products/search.volt`) では、現在のページに対応する結果を取得し、取得した全ての行が表示されます。
 
 ```twig
 {% for product in page.items %}
@@ -1359,19 +1359,19 @@ In the view (`app/views/products/search.volt`), we traverse the results correspo
 {% endfor %}
 ```
 
-There are many things in the above example that worth detailing. First of all, active items in the current page are traversed using a Volt's `for`. Volt provides a simpler syntax for a PHP `foreach`.
+上記の例には、細かい部分で価値あることがたくさんあります。 まず第一に、現在のページ内のアクティブなアイテムは、Voltの`for`を使用して取得されます。 VoltはPHPの`foreach`を使うための、より簡単な構文を提供します。
 
 ```twig
 {% for product in page.items %}
 ```
 
-Which in PHP is the same as:
+PHPで同じ事は:
 
 ```php
 <?php foreach ($page->items as $product) { ?>
 ```
 
-The whole `for` block provides the following:
+`for`ブロック全体は以下を提供します:
 
 ```twig
 {% for product in page.items %}
@@ -1389,7 +1389,7 @@ The whole `for` block provides the following:
 {% endfor %}
 ```
 
-Now you can go back to the view and find out what every block is doing. Every field in `product` is printed accordingly:
+今すぐビューに戻り、すべてのブロックが何をしているのかを調べることができます。 `product`のすべてのフィールドがそれに応じて表示されます:
 
 ```twig
 <tr>
@@ -1423,7 +1423,7 @@ Now you can go back to the view and find out what every block is doing. Every fi
 </tr>
 ```
 
-As we seen before using `product.id` is the same as in PHP as doing: `$product->id`, we made the same with `product.name` and so on. Other fields are rendered differently, for instance, let's focus in `product.productTypes.name`. To understand this part, we have to check the Products model (`app/models/Products.php`):
+`product.id`を使用する前に見たように、PHPの場合ではこうなります: `$product->id`。`product.name`の場合も同様です。 他のフィールドは異なる方法でレンダリングされます。たとえば、`product.productTypes.name`に注目しましょう。 この部分を理解するには、Productsモデル (`app/models/Products.php`) を確認する必要があります。
 
 ```php
 <?php
@@ -1438,7 +1438,7 @@ class Products extends Model
     // ...
 
     /**
-     * Products initializer
+     * Products初期処理
      */
     public function initialize()
     {
@@ -1456,7 +1456,7 @@ class Products extends Model
 }
 ```
 
-A model can have a method called `initialize()`, this method is called once per request and it serves the ORM to initialize a model. In this case, 'Products' is initialized by defining that this model has a one-to-many relationship to another model called 'ProductTypes'.
+モデルは`initialize()`というメソッドを持つことができます。このメソッドはリクエストごとに1回呼び出され、ORMを使用してモデルを初期化します。 この場合、 'Products'は、このモデルが 'ProductTypes'と呼ばれる別のモデルと1対多の関係を持つことを定義することによって初期化されます。
 
 ```php
 <?php
@@ -1471,45 +1471,45 @@ $this->belongsTo(
 );
 ```
 
-Which means, the local attribute `product_types_id` in `Products` has an one-to-many relation to the `ProductTypes` model in its attribute `id`. By defining this relationship we can access the name of the product type by using:
+つまり、`Products`の属性`product_types_id`は、`ProductTypes`モデルの`id`属性と、1対多の関係をもっています。 この関係を定義することによって、以下を使用してproductのタイプ名にアクセスできます:
 
 ```twig
 <td>{{ product.productTypes.name }}</td>
 ```
 
-The field `price` is printed by its formatted using a Volt filter:
+フィールド`price`は、Voltのフィルタを使用してフォーマットされて出力されています。
 
 ```twig
 <td>{{ '%.2f'|format(product.price) }}</td>
 ```
 
-In plain PHP, this would be:
+素のPHPでは、次のようになります:
 
 ```php
 <?php echo sprintf('%.2f', $product->price) ?>
 ```
 
-Printing whether the product is active or not uses a helper implemented in the model:
+productがアクティブかどうかを表示するには、モデルに実装されているヘルパーを使用します。
 
 ```php
 <td>{{ product.getActiveDetail() }}</td>
 ```
 
-This method is defined in the model.
+このメソッドはモデルに定義されています。
 
 <a name='creating-updating-records'></a>
 
-## レコードの登録の更新
+## レコードの登録と更新
 
-Now let's see how the CRUD creates and updates records. From the `new` and `edit` views, the data entered by the user is sent to the `create` and `save` actions that perform actions of `creating` and `updating` products, respectively.
+CRUDがレコードを作成し更新する方法を見てみましょう。 `new`および`edit`ビューからユーザーが入力したデータは`create`および`save`アクションに送られ、それぞれproductsの`作成`および`更新`の処理を実行します。
 
-In the creation case, we recover the data submitted and assign them to a new `Products` instance:
+作成の場合、送信されたデータを取得し、新しい`Products`インスタンスに割り当てます:
 
 ```php
 <?php
 
 /**
- * Creates a product based on the data entered in the 'new' action
+ * 'new' アクションで入力されたデータに基づいてproductを作成
  */
 public function createAction()
 {
@@ -1536,7 +1536,7 @@ public function createAction()
 }
 ```
 
-Remember the filters we defined in the Products form? Data is filtered before being assigned to the object `$product`. This filtering is optional; the ORM also escapes the input data and performs additional casting according to the column types:
+Productsフォームで定義したフィルタを覚えていますか？ データは、オブジェクト`$product`に割り当てられる前にフィルタリングされます。 このフィルタリングはオプションです。 ORMはまた、入力データをエスケープし、列の種類に応じて追加の変換を実行します:
 
 ```php
 <?php
@@ -1547,7 +1547,7 @@ $name = new Text('name');
 
 $name->setLabel('Name');
 
-// Filters for name
+// nameをフィルタ
 $name->setFilters(
     [
         'striptags',
@@ -1555,7 +1555,7 @@ $name->setFilters(
     ]
 );
 
-// Validators for name
+// nameのバリデーション
 $name->addValidators(
     [
         new PresenceOf(
@@ -1569,7 +1569,7 @@ $name->addValidators(
 $this->add($name);
 ```
 
-When saving, we'll know whether the data conforms to the business rules and validations implemented in the form `ProductsForm` form (`app/forms/ProductsForm.php`):
+保存すると、データが`ProductsForm`フォーム (`app/forms/ProductsForm.php`)の形式で実装されたビジネスルールとバリデーションに沿っているかどうかがわかります。
 
 ```php
 <?php
@@ -1580,7 +1580,7 @@ $form = new ProductsForm();
 
 $product = new Products();
 
-// Validate the input
+// 入力内容をバリデーション
 $data = $this->request->getPost();
 
 if (!$form->isValid($data, $product)) {
@@ -1599,7 +1599,7 @@ if (!$form->isValid($data, $product)) {
 }
 ```
 
-Finally, if the form does not return any validation message we can save the product instance:
+最後に、フォームからバリデーションメッセージが返されない場合は、productインスタンスを保存できます:
 
 ```php
 <?php
@@ -1635,13 +1635,13 @@ return $this->dispatcher->forward(
 );
 ```
 
-Now, in the case of updating a product, we must first present the user with the data that is currently in the edited record:
+さて、productを更新する場合は、まず編集されたレコードに現在あるデータをユーザーに表示する必要があります:
 
 ```php
 <?php
 
 /**
- * Edits a product based on its id
+ * IDに紐づいたproductを編集
  */
 public function editAction($id)
 {
@@ -1671,13 +1671,13 @@ public function editAction($id)
 }
 ```
 
-The data found is bound to the form by passing the model as first parameter. Thanks to this, the user can change any value and then sent it back to the database through to the `save` action:
+見つかったデータは、最初のパラメータとしてモデルを渡すことによってフォームにバインドされます。 これにより、ユーザーは任意の値を変更し、`save`アクションを使用してデータベースを更新することができます:
 
 ```php
 <?php
 
 /**
- * Updates a product based on the data entered in the 'edit' action
+ * 'edit' アクションで入力されたデータに基づいてproductを更新
  */
 public function saveAction()
 {
@@ -1760,9 +1760,9 @@ public function saveAction()
 
 ## ユーザーコンポーネント
 
-All the UI elements and visual style of the application has been achieved mostly through [Bootstrap](http://getbootstrap.com/). Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
+アプリケーションのすべてのUI要素とビジュアルスタイルは、主に[Bootstrap](http://getbootstrap.com/)を使って実装されています。 アプリケーションの状態に応じてナビゲーションバーなどの一部の要素が変更されます。 たとえば、ユーザーがアプリケーションにログインしている場合、右上隅にある`Log in / Sign Up`リンクは`Log out`に変わります。
 
-This part of the application is implemented in the component `Elements` (`app/library/Elements.php`).
+アプリケーションのこの部分は、コンポーネント`Elements` (`app/library/Elements.php`) で実装されています。
 
 ```php
 <?php
@@ -1783,12 +1783,12 @@ class Elements extends Component
 }
 ```
 
-This class extends the `Phalcon\Mvc\User\Component`. It is not imposed to extend a component with this class, but it helps to get access more quickly to the application services. Now, we are going to register our first user component in the services container:
+このクラスは`Phalcon\Mvc\User\Component`を拡張しています。 このクラスを使ってコンポーネントを拡張することは必須ではありませんが、アプリケーションのサービスへのアクセスをスムーズにするのに役立ちます。 ここでは、最初のユーザーコンポーネントをサービスコンテナに登録します:
 
 ```php
 <?php
 
-// Register a user component
+// ユーザーコンポーネントを登録
 $di->set(
     'elements',
     function () {
@@ -1797,7 +1797,7 @@ $di->set(
 );
 ```
 
-As controllers, plugins or components within a view, this component also has access to the services registered in the container and by just accessing an attribute with the same name as a previously registered service:
+ビュー内のコントローラ、プラグイン、コンポーネントとして、このコンポーネントは、コンテナに登録されているサービスにアクセスし、登録したサービスと同じ名前の属性にアクセスするだけでアクセスできます。
 
 ```twig
 <div class='navbar navbar-fixed-top'>
@@ -1827,7 +1827,7 @@ As controllers, plugins or components within a view, this component also has acc
 </div>
 ```
 
-The important part is:
+重要な部分は次の箇所です:
 
 ```twig
 {{ elements.getMenu() }}
@@ -1835,9 +1835,9 @@ The important part is:
 
 <a name='dynamic-titles'></a>
 
-## Changing the Title Dynamically
+## タイトルの動的な変更
 
-When you browse between one option and another will see that the title changes dynamically indicating where we are currently working. This is achieved in each controller initializer:
+あるオプションと別のオプションを参照すると、現在作業している場所を示すタイトルが動的に変更されます。 これは、各コントローラーの初期化処理で実現されます:
 
 ```php
 <?php
@@ -1846,7 +1846,7 @@ class ProductsController extends ControllerBase
 {
     public function initialize()
     {
-        // Set the document title
+        // ページタイトルを指定
         $this->tag->setTitle(
             'Manage your product types'
         );
@@ -1858,7 +1858,7 @@ class ProductsController extends ControllerBase
 }
 ```
 
-Note, that the method `parent::initialize()` is also called, it adds more data to the title:
+`parent::initialize()`メソッドも呼び出され、タイトルにデータを追加します:
 
 ```php
 <?php
@@ -1869,7 +1869,7 @@ class ControllerBase extends Controller
 {
     protected function initialize()
     {
-        // Prepend the application name to the title
+        // タイトルの前にアプリケーション名を追加
         $this->tag->prependTitle('INVO | ');
     }
 
@@ -1877,7 +1877,7 @@ class ControllerBase extends Controller
 }
 ```
 
-Finally, the title is printed in the main view (app/views/index.volt):
+最後に、メインビュー (app/views/index.volt) でタイトルを出力:
 
 ```php
 <!DOCTYPE html>
