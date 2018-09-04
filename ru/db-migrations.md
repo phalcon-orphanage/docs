@@ -195,6 +195,7 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 | `notNull`       | Может ли столбец содержать значения Null?                                                                                                  |     Да      |
 | `default`       | Значение по умолчанию для столбца (Должно быть конкретизировано. Использование функций, таких как `NOW()`, не допускается)                 |     Да      |
 | `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |     Да      |
+| `primary`       | Sets this column as a primary key index using `columnName_pkey` as identifier. Type - `BOOLEAN`                                            |     Да      |
 | `first`         | Столбец будет размещен первым в структуре таблицы                                                                                          |     Да      |
 | `after`         | Название столбца, после которого будет размещен текущий столбец                                                                            |     Да      |
 
