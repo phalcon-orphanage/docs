@@ -195,6 +195,7 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 | `notNull`       | Column can store null values?                                                                                                              |   Tak    |
 | `default`       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         |   Tak    |
 | `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Tak    |
+| `primary`       | Sets this column as a primary key index using `columnName_pkey` as identifier. Type - `BOOLEAN`                                            |   Tak    |
 | `first`         | Column must be placed at first position in the column order                                                                                |   Tak    |
 | `after`         | Column must be placed after indicated column                                                                                               |   Tak    |
 
