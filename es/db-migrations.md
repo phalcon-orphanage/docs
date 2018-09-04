@@ -195,6 +195,7 @@ La clase es llamada `ProductsMigration_100`. El sufijo 100 se refiere a la versi
 | `notNull`       | ¿La columna puede almacenar valores nulos?                                                                                                                 |    Sí    |
 | `default`       | Define un valor predeterminado para una columna (sólo puede ser un valor real, no una función como `NOW()`)                                                |    Sí    |
 | `autoIncrement` | Con este atributo, la columna se completará automáticamente con un número entero auto-incremental. Solo una columna en la tabla puede tener este atributo. |    Sí    |
+| `primary`       | Sets this column as a primary key index using `columnName_pkey` as identifier. Type - `BOOLEAN`                                                            |    Sí    |
 | `first`         | La columna debe colocarse en primera posición en el orden de columnas                                                                                      |    Sí    |
 | `after`         | La columna debe colocarse después de la columna indicada                                                                                                   |    Sí    |
 
