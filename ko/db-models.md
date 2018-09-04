@@ -1463,6 +1463,8 @@ SQL `UPDATE` statements are by default created with every column defined in the 
 
 In some cases this could improve the performance by reducing the traffic between the application and the database server, this specially helps when the table has blob/text fields:
 
+**NOTE:** Enabling Dynamic updates implicitly enables record snapshots. See [Record Snapshots](#record-snapshots) for more information.
+
 ```php
 <?php
 
