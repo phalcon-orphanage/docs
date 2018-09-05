@@ -376,7 +376,7 @@ multiple/
     js/
 ```
 
-Each directory in `apps/` have its own MVC structure. A `Module.php` is present to configure specific settings of each module like autoloaders or custom services:
+Cada directorio en `apps/` tiene su propia estructura MVC. El archivo `Module.php` esta presente para configurar cuestiones especificas de cada módulo como autocargadores o servicios personalizados:
 
 ```php
 <?php
