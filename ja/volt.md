@@ -1,116 +1,116 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">概要</a> <ul>
         <li>
-          <a href="#introduction">Introduction</a>
+          <a href="#introduction">はじめに</a>
         </li>
         <li>
-          <a href="#setup">Activating Volt</a>
+          <a href="#setup">Voltを使うために</a>
         </li>
         <li>
-          <a href="#basic-usage">Basic Usage</a>
+          <a href="#basic-usage">基本的な使い方</a>
         </li>
         <li>
-          <a href="#variables">Variables</a>
+          <a href="#variables">変数</a>
         </li>
         <li>
-          <a href="#filters">Filters</a>
+          <a href="#filters">フィルター</a>
         </li>
         <li>
-          <a href="#comments">Comments</a>
+          <a href="#comments">コメント</a>
         </li>
         <li>
-          <a href="#control-structures">List of Control Structures</a> <ul>
+          <a href="#control-structures">制御構文の一覧</a> <ul>
             <li>
-              <a href="#control-structures-for">For</a>
+              <a href="#control-structures-for">for文</a>
             </li>
             <li>
-              <a href="#control-structures-loops">Loop Controls</a>
+              <a href="#control-structures-loops">ループ制御</a>
             </li>
             <li>
-              <a href="#control-structures-loop">Loop Context</a> <ul>
+              <a href="#control-structures-loop">ループ変数</a> <ul>
                 <li>
-                  <a href="#assignments">Assignments</a>
+                  <a href="#assignments">変数割り当て</a>
                 </li>
                 <li>
-                  <a href="#expressions">Expressions</a>
+                  <a href="#expressions">条件式</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#expressions-literals">Literals</a>
+              <a href="#expressions-literals">定数</a>
             </li>
             <li>
-              <a href="#expressions-arrays">Arrays</a>
+              <a href="#expressions-arrays">配列</a>
             </li>
             <li>
-              <a href="#expressions-math">Math</a>
+              <a href="#expressions-math">計算</a>
             </li>
             <li>
-              <a href="#expressions-comparisons">Comparisons</a>
+              <a href="#expressions-comparisons">比較</a>
             </li>
             <li>
-              <a href="#expressions-logic">Logic</a>
+              <a href="#expressions-logic">演算子</a>
             </li>
             <li>
-              <a href="#expressions-other-operators">Other Operators</a>
+              <a href="#expressions-other-operators">その他演算子</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#tests">Tests</a>
+          <a href="#tests">テスト</a>
         </li>
         <li>
-          <a href="#macros">Macros</a>
+          <a href="#macros">マクロ</a>
         </li>
         <li>
-          <a href="#tag-helpers">Using Tag Helpers</a>
+          <a href="#tag-helpers">タグヘルパーを使用する</a>
         </li>
         <li>
-          <a href="#functions">Functions</a>
+          <a href="#functions">関数</a>
         </li>
         <li>
-          <a href="#view-integrations">View Integration</a> <ul>
+          <a href="#view-integrations">Viewとの連携</a> <ul>
             <li>
-              <a href="#view-integration-include">Include</a>
+              <a href="#view-integration-include">include文</a>
             </li>
             <li>
-              <a href="#view-integration-partial-vs-include">Partial vs Include</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#template-inheritance">Template Inheritance</a> <ul>
-            <li>
-              <a href="#template-inheritance-multiple">Multiple Inheritance</a>
+              <a href="#view-integration-partial-vs-include">partial文 vs include文</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#autoescape">Autoescape mode</a>
-        </li>
-        <li>
-          <a href="#extending">Extending Volt</a> <ul>
+          <a href="#template-inheritance">テンプレートの継承</a> <ul>
             <li>
-              <a href="#extending-functions">Functions</a>
-            </li>
-            <li>
-              <a href="#extending-filters">Filters</a>
-            </li>
-            <li>
-              <a href="#extending-extensions">Extensions</a>
+              <a href="#template-inheritance-multiple">多重継承</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#caching-view-fragments">Caching view fragments</a>
+          <a href="#autoescape">自動エスケープ モード</a>
         </li>
         <li>
-          <a href="#services-in-templates">Inject Services into a Template</a>
+          <a href="#extending">Volt の拡張</a> <ul>
+            <li>
+              <a href="#extending-functions">関数</a>
+            </li>
+            <li>
+              <a href="#extending-filters">フィルター</a>
+            </li>
+            <li>
+              <a href="#extending-extensions">エクステンション</a>
+            </li>
+          </ul>
         </li>
         <li>
-          <a href="#stand-alone">Stand-alone component</a>
+          <a href="#caching-view-fragments">Viewの断片のキャッシュ</a>
+        </li>
+        <li>
+          <a href="#services-in-templates">テンプレートへのサービス注入</a>
+        </li>
+        <li>
+          <a href="#stand-alone">独立コンポーネント</a>
         </li>
       </ul>
     </li>
@@ -119,7 +119,7 @@
 
 <a name='overview'></a>
 
-# Volt: Template Engine
+# Volt: テンプレートエンジン
 
 Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
 
@@ -129,7 +129,7 @@ Volt is inspired by [Jinja](http://jinja.pocoo.org/), originally created by [Arm
 
 <a name='introduction'></a>
 
-## Introduction
+## はじめに
 
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
@@ -150,7 +150,7 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
 <a name='setup'></a>
 
-## Activating Volt
+## Voltを使うために
 
 As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
@@ -257,7 +257,7 @@ The following options are available in Volt:
 
 | Option              | Description                                                                                                                  | Default |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
+| `compiledPath`      | コンパイルされたPHPテンプレートが保存される書き込み可能なパス                                                                                             | `./`    |
 | `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
 | `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
 | `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
@@ -366,7 +366,7 @@ class PostsController extends Controller
 
 <a name='variables'></a>
 
-## Variables
+## 変数
 
 Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
 
@@ -377,7 +377,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 <a name='filters'></a>
 
-## Filters
+## フィルター
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -642,7 +642,7 @@ The `elseif` control flow structure can be used together with if to emulate a `s
 
 <a name='control-structures-loop'></a>
 
-### Loop Context
+### ループ変数
 
 A special variable is available inside `for` loops providing you information about
 
@@ -733,7 +733,7 @@ If an expression needs to be evaluated without be printed the `do` statement can
 
 <a name='expressions-literals'></a>
 
-### Literals
+### 定数
 
 The following literals are supported:
 
@@ -748,7 +748,7 @@ The following literals are supported:
 
 <a name='expressions-arrays'></a>
 
-### Arrays
+### 配列
 
 Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list of values in square brackets:
 
@@ -775,7 +775,7 @@ Curly braces also can be used to define arrays or hashes:
 
 <a name='expressions-math'></a>
 
-### Math
+### 計算
 
 You may make calculations in templates using the following operators:
 
@@ -789,7 +789,7 @@ You may make calculations in templates using the following operators:
 
 <a name='expressions-comparisons'></a>
 
-### Comparisons
+### 比較
 
 The following comparison operators are available:
 
@@ -807,7 +807,7 @@ The following comparison operators are available:
 
 <a name='expressions-logic'></a>
 
-### Logic
+### 演算子
 
 Logic operators are useful in the `if` expression evaluation to combine multiple tests:
 
@@ -820,7 +820,7 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 
 <a name='expressions-other-operators'></a>
 
-### Other Operators
+### その他演算子
 
 Additional operators seen the following operators are available:
 
@@ -1110,7 +1110,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 <a name='view-integration-include'></a>
 
-### Include
+### include文
 
 `include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
 
@@ -1123,7 +1123,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 <a name='view-integration-partial-vs-include'></a>
 
-### Partial vs Include
+### partial文 vs include文
 
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
@@ -1205,7 +1205,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
 
 <a name='template-inheritance-multiple'></a>
 
-### Multiple Inheritance
+### 多重継承
 
 Extended templates can extend other templates. The following example illustrates this:
 
@@ -1307,7 +1307,7 @@ The Volt compiler allow you to extend it adding more functions, tests or filters
 
 <a name='extending-functions'></a>
 
-### Functions
+### 関数
 
 Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using two strategies, returning a simple string or using an anonymous function. Always is required that the chosen strategy returns a valid PHP string expression:
 
@@ -1389,7 +1389,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='extending-filters'></a>
 
-### Filters
+### フィルター
 
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
 
@@ -1422,7 +1422,7 @@ $compiler->addFilter('capitalize', 'lcfirst');
 
 <a name='extending-extensions'></a>
 
-### Extensions
+### エクステンション
 
 With extensions the developer has more flexibility to extend the template engine, and override the compilation of a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.
 

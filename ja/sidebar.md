@@ -1,51 +1,51 @@
-- [General](/[[language]]/[[version]]/introduction) 
-    - [Release Notes](https://github.com/phalcon/cphalcon/blob/3.1.x/CHANGELOG.md)
-    - Upgrade
-    - [Sponsors](/[[language]]/[[version]]/sponsors)
-- Contributions 
-    - [Overview](/[[language]]/[[version]]/contributions)
-    - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
+- [概要](/[[language]]/[[version]]/introduction) 
+    - [リリースノート](https://github.com/phalcon/cphalcon/blob/3.1.x/CHANGELOG.md)
+    - アップグレード
+    - [スポンサー](/[[language]]/[[version]]/sponsors)
+- 貢献 
+    - [概要](/[[language]]/[[version]]/contributions)
+    - [プルリクエスト](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
-    - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
-    - [Reproducible Tests](/[[language]]/[[version]]/reproducible-tests)
+    - [バグ報告](/[[language]]/[[version]]/generating-backtrace)
+    - [再現テスト](/[[language]]/[[version]]/reproducible-tests)
     - Testing guide
-- Getting Started 
-    - [Installation](/[[language]]/[[version]]/installation)
-    - [Webserver Setup](/[[language]]/[[version]]/webserver-setup) 
+- はじめに 
+    - [インストール](/[[language]]/[[version]]/installation)
+    - [Webサーバのセットアップ](/[[language]]/[[version]]/webserver-setup) 
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
-- Environments 
+- 環境 
     - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)
 - Development Tools 
-    - [Installation](/[[language]]/[[version]]/devtools-installation)
-    - [Usage](/[[language]]/[[version]]/devtools-usage)
-    - [Debug](/[[language]]/[[version]]/debug)
+    - [インストール](/[[language]]/[[version]]/devtools-installation)
+    - [使い方](/[[language]]/[[version]]/devtools-usage)
+    - [デバッグ](/[[language]]/[[version]]/debug)
 - Core 
-    - Application 
+    - アプリケーション 
         - [Full](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
         - [Cli](/[[language]]/[[version]]/application-cli)
-    - [DI Container](/[[language]]/[[version]]/di)
+    - [DI コンテナ](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
-- Services 
-    - [Cache](/[[language]]/[[version]]/cache)
-    - [Config](/[[language]]/[[version]]/config)
+- サービス 
+    - [キャッシュ](/[[language]]/[[version]]/cache)
+    - [設定](/[[language]]/[[version]]/config)
     - [Escaper](/[[language]]/[[version]]/escaper)
     - [Loader](/[[language]]/[[version]]/loader) 
-        - [Namespaces](/[[language]]/[[version]]/namespaces)
+        - [名前空間](/[[language]]/[[version]]/namespaces)
     - [Logging](/[[language]]/[[version]]/logging) 
         - [Adapters](/[[language]]/[[version]]/logging#usage)
     - [Queue](/[[language]]/[[version]]/queue)
-- Database 
+- データベース 
     - [Layer](/[[language]]/[[version]]/db-layer)
     - [PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
     - [Models](/[[language]]/[[version]]/db-models) 
         - [詳細設定](/[[language]]/[[version]]/db-models-advanced)
         - [Behaviors](/[[language]]/[[version]]/db-models-behaviors)
-        - [Cache](/[[language]]/[[version]]/db-models-cache)
+        - [キャッシュ](/[[language]]/[[version]]/db-models-cache)
         - [Events](/[[language]]/[[version]]/db-models-events)
         - [Metadata](/[[language]]/[[version]]/db-models-metadata)
         - [Relationships](/[[language]]/[[version]]/db-models-relationships)
@@ -53,7 +53,7 @@
         - [Validators](/[[language]]/[[version]]/db-models-validation)
     - [Migrations](/[[language]]/[[version]]/db-migrations)
     - [Pagination](/[[language]]/[[version]]/db-pagination)
-- Front End 
+- フロントエンド 
     - [Assets](/[[language]]/[[version]]/assets)
     - [Flash Messenger](/[[language]]/[[version]]/flash)
     - [Forms](/[[language]]/[[version]]/forms)
@@ -61,28 +61,28 @@
     - [Tag](/[[language]]/[[version]]/tag)
     - [View](/[[language]]/[[version]]/views) 
         - [Volt](/[[language]]/[[version]]/volt)
-- Business Logic 
+- ビジネスロジック 
     - [Access Control Lists](/[[language]]/[[version]]/acl)
     - [Annotations](/[[language]]/[[version]]/annotations)
     - [Controllers](/[[language]]/[[version]]/controllers)
     - [Dispatcher](/[[language]]/[[version]]/dispatcher)
     - [Event Manager](/[[language]]/[[version]]/events)
-    - [Filters](/[[language]]/[[version]]/filter)
+    - [フィルター](/[[language]]/[[version]]/filter)
     - [Routing](/[[language]]/[[version]]/routing)
     - [Sessions](/[[language]]/[[version]]/session)
     - [Url](/[[language]]/[[version]]/url)
-    - [Validation](/[[language]]/[[version]]/validation)
+    - [バリデーション](/[[language]]/[[version]]/validation)
 - HTTP 
-    - [Cookies](/[[language]]/[[version]]/cookies)
-    - [Request](/[[language]]/[[version]]/request)
-    - [Response](/[[language]]/[[version]]/response)
-- Security 
-    - [Crypto](/[[language]]/[[version]]/crypt)
+    - [Cookie](/[[language]]/[[version]]/cookies)
+    - [リクエスト](/[[language]]/[[version]]/request)
+    - [レスポンス](/[[language]]/[[version]]/response)
+- セキュリティ 
+    - [暗号化](/[[language]]/[[version]]/crypt)
     - [Security](/[[language]]/[[version]]/security)
 - i18n 
-    - [Internationalization](/[[language]]/[[version]]/i18n)
-    - [Translate](/[[language]]/[[version]]/translate)
-- Tutorials 
+    - [国際化](/[[language]]/[[version]]/i18n)
+    - [翻訳](/[[language]]/[[version]]/translate)
+- チュートリアル 
     - [Performance](/[[language]]/[[version]]/performance)
     - [Basic](/[[language]]/[[version]]/tutorial-base)
     - [Invo](/[[language]]/[[version]]/tutorial-invo)
