@@ -14,6 +14,11 @@
             </li>
             <li>
               <a href="#defining">Defining relationships</a>
+              <ul>
+                <li>
+                  <a href="#multiple-fields">Multiple field relationships</a>
+                </li>
+              </ul>
             </li>
             <li>
               <a href="#taking-advantage-of">Taking advantage of relationships</a>
@@ -227,6 +232,84 @@ class Robots extends Model
     }
 }
 ```
+
+<a name='multiple-fields'></a>
+#### Multiple field relationships
+There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public $id;
+
+    public $name;
+
+    public $type;
+}
+```
+
+and
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Parts extends Model
+{
+    public $id;
+    
+    public $robotId;
+    
+    public $robotType;
+    
+    public $name;
+}
+```
+
+In the above we have a `Robots` model which has three properties. A unique `id`, a `name` and a `type` which defines what this robot is (mechnical, etc.); In the `Parts` model we also have a `name` for the part but also fields that tie the robot and its type with a specific part. 
+
+Using the relationships options discussed earlier, binding one field between the two models will not return the results we need. For that we can use an array in our relationship:
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public $id;
+
+    public $name;
+
+    public $type;
+    
+    public function initialize()
+    {
+        $this->hasOne(
+            ['id', 'type'],
+            Parts::class,
+            ['robotId', 'robotType'],
+            [
+                'reusable' => true, // cache related data
+                'alias'    => 'parts',
+            ]
+        );
+    }
+}
+```
+
+**NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
 
 <a name='taking-advantage-of'></a>
 ### Taking advantage of relationships
@@ -822,7 +905,7 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 <a name='operations-over-resultsets'></a>
 ## Operations over Resultsets
-If a resultset is composed of complete objects, it can perform operations on the records:
+If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
 
 <a name='updating-related-records'></a>
 ### Updating related records
