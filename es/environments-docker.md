@@ -109,7 +109,7 @@ Usando Composer, se puede crear un nuevo proyecto de la siguiente forma:
 composer create-project phalcon/compose --prefer-dist <folder name>
 ```
 
-Your output should be similar to this:
+Su salida debería ser similar a esto:
 
 ```php
 Example
@@ -129,7 +129,7 @@ Generating autoload files
 
 ### Con Git
 
-Another way to initialize your project is with Git.
+Otra forma de inicializar su proyecto es con Git.
 
 ```bash
  git clone git@github.com:phalcon/phalcon-compose.git
@@ -295,7 +295,7 @@ docker pull elasticsearch:5.2-alpine
 docker pull phalconphp/php-apache:ubuntu-16.04
 ```
 
-Linux/MacOS users can use `make` to perform the task:
+Los usuarios de Linux/MacOS pueden usar `make` para realizar la tarea:
 
 ```bash
 make pull
