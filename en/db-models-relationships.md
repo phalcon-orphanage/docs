@@ -905,7 +905,27 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 <a name='operations-over-resultsets'></a>
 ## Operations over Resultsets
-If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
+If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
+
+```php
+<?php
+
+/** @var RobotType $type */
+$type = $robots->getRelated('type');
+
+$type->name = 'Some other type';
+$result = $type->save();
+
+
+// Get the related robot type but only the `name` column
+$type = $robots->getRelated('type', ['columns' => 'name']);
+
+$type->name = 'Some other type';
+
+// This will fail because `$type` is not a complete object
+$result = $type->save();
+
+```
 
 <a name='updating-related-records'></a>
 ### Updating related records
