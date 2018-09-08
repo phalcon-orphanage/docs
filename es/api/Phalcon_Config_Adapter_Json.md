@@ -1,14 +1,14 @@
-# Class **Phalcon\\Config\\Adapter\\Json**
+# Clase **Phalcon\\Config\\Adapter\\Json**
 
-*extends* class [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+*extiende* de clase [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-*implements* [Countable](http://php.net/manual/en/class.countable.php), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
+*implementa* [Countable](http://php.net/manual/en/class.countable.php), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/config/adapter/json.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/config/adapter/json.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Reads JSON files and converts them to Phalcon\\Config objects.
+Lee archivos JSON y los convierte en objetos de configuración Phalcon\\Config.
 
-Given the following configuration file:
+Dado el siguiente archivo de configuración:
 
 ```php
 <?php
@@ -17,7 +17,7 @@ Given the following configuration file:
 
 ```
 
-You can read it as follows:
+Usted puede leerlo de la sigue manera:
 
 ```php
 <?php
@@ -29,19 +29,19 @@ echo $config->models->metadata;
 
 ```
 
-## Constants
+## Constantes
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## Métodos
 
 public **__construct** (*mixed* $filePath)
 
-Phalcon\\Config\\Adapter\\Json constructor
+Constructor de Phalcon\\Config\\Adapter\\Json
 
-public **offsetExists** (*mixed* $index) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+public **offsetExists** (*mixed* $index) heredado de [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-Allows to check whether an attribute is defined using the array-syntax
+Permite verificar si un atributo es definido usando la sintaxis de matriz
 
 ```php
 <?php
@@ -52,9 +52,9 @@ var_dump(
 
 ```
 
-public **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter]) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+public **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter]) heredado desde [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-Returns a value from current config using a dot separated path.
+Devuelve un valor de la configuración actual utilizando una ruta separada por puntos.
 
 ```php
 <?php
@@ -63,9 +63,9 @@ echo $config->path("unknown.path", "default", ".");
 
 ```
 
-public **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+public **get** (*mixed* $index, [*mixed* $defaultValue]) hereado desde [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead
+Obtiene un atributo de la configuración, si el atributo no está definido, devuelve un valor nulo. Si el valor es exactamente nulo o no está definido, se usará el valor predeterminado en su lugar
 
 ```php
 <?php
@@ -74,9 +74,9 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 ```
 
-public **offsetGet** (*mixed* $index) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+public **offsetGet** (*mixed* $index) heredado desde [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-Gets an attribute using the array-syntax
+Obtiene un atributo usando la sintaxis de matriz
 
 ```php
 <?php
@@ -87,9 +87,9 @@ print_r(
 
 ```
 
-public **offsetSet** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+public **offsetSet** (*mixed* $index, *mixed* $value) heredado desde [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-Sets an attribute using the array-syntax
+Establece un atributo usando la sintaxis de matriz
 
 ```php
 <?php
@@ -100,9 +100,9 @@ $config["database"] = [
 
 ```
 
-public **offsetUnset** (*mixed* $index) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+public **offsetUnset** (*mixed* $index) heredado desde [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-Unsets an attribute using the array-syntax
+Remueve un atributo usando la sintaxis de matriz
 
 ```php
 <?php
@@ -111,9 +111,9 @@ unset($config["database"]);
 
 ```
 
-public **merge** ([Phalcon\Config](/en/3.2/api/Phalcon_Config) $config) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+public **merge** ([Phalcon\Config](/en/3.2/api/Phalcon_Config) $config) heredado desde [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-Merges a configuration into the current one
+Fusiona una configuración en la actual
 
 ```php
 <?php
@@ -130,9 +130,9 @@ $globalConfig->merge($appConfig);
 
 ```
 
-public **toArray** () inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+public **toArray** () heredado desde [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-Converts recursively the object to an array
+Convierte recursivamente el objeto a una matriz
 
 ```php
 <?php
@@ -143,9 +143,9 @@ print_r(
 
 ```
 
-public **count** () inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+public **count** () heredado desde [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-Returns the count of properties set in the config
+Devuelve el recuento de propiedades establecidas en la configuración
 
 ```php
 <?php
@@ -154,7 +154,7 @@ print count($config);
 
 ```
 
-or
+o
 
 ```php
 <?php
@@ -163,18 +163,18 @@ print $config->count();
 
 ```
 
-public static **__set_state** (*array* $data) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+public static **__set_state** (*array* $data) heredado desde [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-Restores the state of a Phalcon\\Config object
+Restaura el estado de un objeto configurado por Phalcon
 
-public static **setPathDelimiter** ([*mixed* $delimiter]) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+public static **setPathDelimiter** ([*mixed* $delimiter]) heredado desde [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-Sets the default path delimiter
+Establece el delimitador de ruta predeterminado
 
-public static **getPathDelimiter** () inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+public static **getPathDelimiter** () heredado desde [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-Gets the default path delimiter
+Obtiene el delimitador de ruta predeterminado
 
-final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance]) inherited from [Phalcon\Config](/en/3.2/api/Phalcon_Config)
+final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance]) heredado desde [Phalcon\Config](/en/3.2/api/Phalcon_Config)
 
-Helper method for merge configs (forwarding nested config instance)
+Método de ayuda para las configuraciones de combinación (reenvío de la instancia de configuración anidada)

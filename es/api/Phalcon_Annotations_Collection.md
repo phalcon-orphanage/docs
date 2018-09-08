@@ -1,69 +1,69 @@
-# Class **Phalcon\\Annotations\\Collection**
+# Clase **Phalcon\\Annotations\\Collection**
 
-*implements* [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php), [Countable](http://php.net/manual/en/class.countable.php)
+*implementa* [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php), [Countable](http://php.net/manual/en/class.countable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Represents a collection of annotations. This class allows to traverse a group of annotations easily
+Representa una colección de anotaciones. Esta clase permite recorrer fácilmente un grupo de anotaciones
 
 ```php
 <?php
 
-//Traverse annotations
+// Recorrer anotaciones
 foreach ($classAnnotations as $annotation) {
-    echo "Name=", $annotation->getName(), PHP_EOL;
+    echo "Nombre = ", $annotation->getName(), PHP_EOL;
 }
 
-//Check if the annotations has a specific
+// Verificar si las anotaciones tienen algo específico
 var_dump($classAnnotations->has("Cacheable"));
 
-//Get an specific annotation in the collection
+// Obtener una anotación específica de la colección
 $annotation = $classAnnotations->get("Cacheable");
 
 ```
 
-## Methods
+## Métodos
 
 public **__construct** ([*array* $reflectionData])
 
-Phalcon\\Annotations\\Collection constructor
+Constructor de Phalcon\\Annotations\\Collection
 
 public **count** ()
 
-Returns the number of annotations in the collection
+Devuelve el número de anotaciones en la colección
 
 public **rewind** ()
 
-Rewinds the internal iterator
+Rebobina el iterador interno
 
 public [Phalcon\Annotations\Annotation](/en/3.2/api/Phalcon_Annotations_Annotation) **current** ()
 
-Returns the current annotation in the iterator
+Devuelve la anotación actual en el iterador
 
 public **key** ()
 
-Returns the current position/key in the iterator
+Devuelve la llave/posición actual del iterador
 
 public **next** ()
 
-Moves the internal iteration pointer to the next position
+Mueve el puntero interno de iteración a la siguiente posición
 
 public **valid** ()
 
-Check if the current annotation in the iterator is valid
+Verifica si la anotación actual del iterador es válida
 
 public **getAnnotations** ()
 
-Returns the internal annotations as an array
+Devuelve las anotaciones internas como un arreglo
 
-public **get** (*mixed* $name)
+public **get** (*string* $name)
 
-Returns the first annotation that match a name
+Devuelve la primera anotación que coincide con un nombre
 
-public **getAll** (*mixed* $name)
+public **getAll** (*string* $name)
 
-Returns all the annotations that match a name
+Devuelve todas las anotaciones que coinciden con un nombre
 
-public **has** (*mixed* $name)
+public **has** (*string* $name)
 
-Check if an annotation exists in a collection
+Comprobar si existe una anotación en una colección

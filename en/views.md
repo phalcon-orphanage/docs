@@ -52,7 +52,7 @@
           <a href="#injecting-services">Injecting services in View</a>
         </li>
         <li>
-          <a href="#stand-along">Stand-Alone Component</a> 
+          <a href="#stand-alone">Stand-Alone Component</a> 
           <ul>
             <li>
               <a href="#stand-alone-hierarchical-rendering">Hierarchical Rendering</a>
@@ -63,7 +63,7 @@
           </ul>
         </li>
         <li>
-          <a href="#eventes">View Events</a>
+          <a href="#events">View Events</a>
         </li>
       </ul>
     </li>
@@ -982,7 +982,7 @@ $.ajax({
 </script>
 ```
 
-<a name='stand-along'></a>
+<a name='stand-alone'></a>
 ## Stand-Alone Component
 All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
 
@@ -1071,7 +1071,7 @@ echo $view->render(
 );
 ```
 
-<a name='eventes'></a>
+<a name='events'></a>
 ## View Events
 `Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
 

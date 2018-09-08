@@ -5,16 +5,14 @@
 ## Methods
 abstract public  **getName** ()
 
-...
+Returns the resource name
 
 
 abstract public  **getDescription** ()
 
-...
+Returns resource description
 
 
 abstract public  **__toString** ()
 
-...
-
-
+Magic method __toString

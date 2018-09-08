@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">DevTools v Linuxu</a> 
+      <a href="#overview">Phalcon Developer Tools Installation</a> 
       <ul>
         <li>
           <a href="#prerequisites">Požadavky</a>
@@ -13,13 +13,13 @@
               <a href="#installation-linux">Linux</a>
             </li>
             <li>
-              <a href="#installation-mac">MacOS</a>
+              <a href="#installation-mac">macOS</a>
             </li>
             <li>
               <a href="#installation-windows">Windows</a> 
               <ul>
                 <li>
-                  <a href="#installation-windows-system-path">Adding PHP and Tools to your system PATH</a>
+                  <a href="#installation-windows-system-path">Adding PHP and DevTools to your system PATH</a>
                 </li>
               </ul>
             </li>
@@ -32,21 +32,21 @@
 
 <a name='overview'></a>
 
-# Phalcon Developer Tools on Linux
+# Phalcon Developer Tools Installation
 
-These steps will guide you through the process of installing Phalcon Developer Tools for Linux.
+These steps will guide you through the process of installing Phalcon Developer Tools for Linux, macOS and Windows.
 
 <a name='prerequisites'></a>
 
 ## Prerequisites
 
-The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](/[[language]]/[[version]]//installation) section for instructions.
+The Phalcon extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](/[[language]]/[[version]]//installation) section for instructions.
 
 <a name='installation'></a>
 
 ## Installation
 
-You can download a cross platform package containing the developer tools from from [Github](https://github.com/phalcon/phalcon-devtools)
+You can download a cross platform package containing the developer tools from from [Github](https://github.com/phalcon/phalcon-devtools).
 
 <a name='installation-linux'></a>
 
@@ -78,7 +78,7 @@ chmod ugo+x /usr/bin/phalcon
 
 <a name='installation-mac'></a>
 
-### MacOS
+### macOS
 
 Open a terminal and type the command below:
 
@@ -97,7 +97,7 @@ cd phalcon-devtools/
 
 ![](/images/content/devtools-mac-2.png)
 
-Create a symbolink link to the phalcon.php script:
+Create a symbolic link to the phalcon.php script:
 
 ```bash
 ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
@@ -112,7 +112,7 @@ On the Windows platform, you need to configure the system `PATH` to include Phal
 
 ![](/images/content/devtools-windows-1.png)
 
-Change the path to the one you installed the Phalcon tools (set PTOOLSPATH=C:\phalcon-tools\):
+Change the path to the one you installed the Phalcon tools (`set PTOOLSPATH=C:\phalcon-tools`):
 
 ![](/images/content/devtools-windows-2.png)
 
@@ -122,7 +122,7 @@ Save the changes.
 
 #### Adding PHP and Tools to your system PATH
 
-Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file `php.exe` and copy its path. For instance, using WAMPP you will locate the PHP executable in a location like this: `C:\wamp\bin\php\<php version>\php.exe* (where <php version> is the version of PHP that WAMPP comes bundled with).
+Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file `php.exe` and copy its path. For instance, using WAMPP you will locate the PHP executable in a location like this: `C:\wamp\bin\php\<php version>\php.exe` (where `<php version>` is the version of PHP that WAMPP comes bundled with).
 
 From the Windows start menu, right mouse click on the `Computer` icon and select `Properties`:
 
@@ -140,11 +140,11 @@ Be very careful on this step! You need to append at the end of the long string t
 
 ![](/images/content/devtools-windows-6.png)
 
-Accept the changes made by clicking `OK` and close the dialogs opened. From the start menu click on the option `Run`. If you can't find this option, press `Windows Key` + `R`.
+Accept the changes made by clicking `OK` and close the dialogs opened. From the start menu click on the option `Run`. If you can't find this option, press <kbd>Windows</kbd> + <kbd>R</kbd>.
 
 ![](/images/content/devtools-windows-7.png)
 
-Type `cmd` and press enter to open the windows command line utility:
+Type `cmd` and press <kbd>Enter</kbd> to open the Windows command line utility:
 
 ![](/images/content/devtools-windows-8.png)
 

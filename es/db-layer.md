@@ -468,17 +468,17 @@ $robots = $this->modelsManager->executeQuery(
 
 Las siguientes tipos están disponibles:
 
-| Tipo de enlace | Constante de tipo de enlace       | Ejemplo          |
-| -------------- | --------------------------------- | ---------------- |
-| str            | `Column::BIND_PARAM_STR`          | `{name:str}`     |
-| int            | `Column::BIND_PARAM_INT`          | `{number:int}`   |
-| double         | `Column::BIND_PARAM_DECIMAL`      | `{price:double}` |
-| bool           | `Column::BIND_PARAM_BOOL`         | `{enabled:bool}` |
-| blob           | `Column::BIND_PARAM_BLOB`         | `{image:blob}`   |
-| null           | `Column::BIND_PARAM_NULL`         | `{exists:null}`  |
-| array          | Array of `Column::BIND_PARAM_STR` | `{codes:array}`  |
-| array-str      | Array of `Column::BIND_PARAM_STR` | `{names:array}`  |
-| array-int      | Array of `Column::BIND_PARAM_INT` | `{flags:array}`  |
+| Tipo de enlace | Constante de tipo de enlace       | Ejemplo             |
+| -------------- | --------------------------------- | ------------------- |
+| str            | `Column::BIND_PARAM_STR`          | `{name:str}`        |
+| int            | `Column::BIND_PARAM_INT`          | `{number:int}`      |
+| double         | `Column::BIND_PARAM_DECIMAL`      | `{price:double}`    |
+| bool           | `Column::BIND_PARAM_BOOL`         | `{enabled:bool}`    |
+| blob           | `Column::BIND_PARAM_BLOB`         | `{image:blob}`      |
+| null           | `Column::BIND_PARAM_NULL`         | `{exists:null}`     |
+| array          | Array de `Column::BIND_PARAM_STR` | `{codes:array}`     |
+| array-str      | Array de `Column::BIND_PARAM_STR` | `{names:array-str}` |
+| array-int      | Array de `Column::BIND_PARAM_INT` | `{flags:array-int}` |
 
 <a name='cast-bound-parameter-values'></a>
 
@@ -1162,7 +1162,7 @@ $connection->dropColumn(
 
 ### Eliminar tablas
 
-Ejemplos de borrado de tablas:
+Para eliminar una tabla existente de la base de datos actual, use el método `dropTable`. Para eliminar una tabla de una base de datos personalizada, use el segundo parámetro para describir el nombre de la base de datos. Ejemplos de eliminación de tablas:
 
 ```php
 <?php

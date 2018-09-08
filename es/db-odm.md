@@ -63,7 +63,7 @@
 
 <div class="alert alert-info">
     <p>
-        Tenga en cuenta que si utiliza el controlador de Mongo proporcionado por PHP 7, el ODM no funcionará para usted. Hay un adaptador de incubadora pero debe ser reescrito todo el código de Mongo (el nuevo tipo Bson en vez de array, no MongoId, no MongoDate, etcétera...). Asegúrese de testear su código antes de actualizar a PHP 7 y/o Phalcon 3+
+        Tenga en cuenta que si utiliza el controlador de Mongo proporcionado por PHP 7, el ODM no funcionará para usted. Hay un adaptador en la incubadora pero debe ser reescrito totalmente el código de Mongo (utilizando el nuevo tipo Bson en vez de array, no MongoId, no MongoDate, etcétera...). Asegúrese de testear su código antes de actualizar a PHP 7 y/o Phalcon 3+
     </p>
 </div>
 
@@ -71,7 +71,7 @@
 
 # ODM (Mapeador Objecto-Documento)
 
-Además de su capacidad para [asignar tablas](/[[language]]/[[version]]/models) en bases de datos relacionales, Phalcon puede asignar documentos de bases de datos NoSQL. El ODM ofrece una funcionalidad CRUD, eventos, validaciones entre otros servicios.
+Además de su capacidad para [asignar tablas](/[[language]]/[[version]]/db-models) en bases de datos relacionales, Phalcon puede asignar documentos de bases de datos NoSQL. El ODM ofrece una funcionalidad CRUD, eventos, validaciones entre otros servicios.
 
 Debido a la ausencia de consultas y planificadores SQL, con las bases de datos NoSQL se pueden ver mejoras reales en el rendimiento utilizando el enfoque de Phalcon. Además, no hay construcción de sentencias de SQL, lo que reduce la posibilidad de inyecciones SQL.
 
@@ -681,7 +681,7 @@ class Robots extends Collection
 }
 ```
 
-El ejemplo anterior realiza una validación con el validador integrado `InclusionIn`. Comprueba el valor del campo `type` en una lista de dominios. Si el valor no está incluido en el método, entonces el validador fallará y devolverá `false`.
+El ejemplo anterior realiza una validación con el validador integrado `InclusionIn`. Comprueba que el valor del campo `type` este en la lista `domain`. Si el valor no está incluido en el dominio, entonces el validador fallará y devolverá `false`.
 
 <div class='alert alert-warning'>
     <p>
@@ -787,7 +787,7 @@ class Robots extends Collection
 
 ## Configuración de Múltiples Bases de Datos
 
-En Phalcon, todos los modelos pueden pertenecer a la misma conexión de base de datos o tener una individual. Actualmente, cuando `Phalcon\Mvc\Collection` necesita conectarse a la base de datos pide el servicio `mongo` al contenedor de servicios de la aplicación. Usted puede sobrescribir este servicio configurándolo en el método `initialize()`:
+En Phalcon, todos los modelos pueden compartir la misma conexión a la base de datos o especificar una conexión por modelo. Actualmente, cuando `Phalcon\Mvc\Collection` necesita conectarse a la base de datos pide el servicio `mongo` al contenedor de servicios de la aplicación. Usted puede sobrescribir este servicio configurándolo en el método `initialize()`:
 
 ```php
 <?php

@@ -36,7 +36,7 @@
 # ORM Caching
 Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
 
-This chapter explains the potential areas where it is possible to implement caching to improve performance. Phalcon gives developers the tools they need to implement cashing where their application needs it.
+This chapter explains the potential areas where it is possible to implement caching to improve performance. Phalcon gives developers the tools they need to implement caching where their application needs it.
 
 <a name='caching-resultsets'></a>
 ## Caching Resultsets

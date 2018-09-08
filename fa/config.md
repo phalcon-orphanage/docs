@@ -108,6 +108,7 @@ $config = new Config($settings);
 echo $config->app->controllersDir, "\n";
 echo $config->database->username, "\n";
 echo $config->mysetting, "\n";
+
 ```
 
 If you want to better organize your project you can save the array in another file and then read it.

@@ -183,4 +183,9 @@ $charset = $request->getBestCharset();
 
 // Get the best language accepted configured in the browser. tzn. en-us
 $language = $request->getBestLanguage();
+
+// Check if a header exists
+if ($request->hasHeader('my-header')) {
+    echo "Mary had a little lamb";
+}
 ```

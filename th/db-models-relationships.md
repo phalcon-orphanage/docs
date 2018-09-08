@@ -603,7 +603,9 @@ class Companies extends Model
 Additionally, you can use the second parameter of `getRelated()` when accessing your relationship from your model object to further filter or order your relationship:
 
 ```php
-<br />// Unpaid Invoices
+<?php
+
+// Unpaid Invoices
 $company = Companies::findFirst(
     [
         'conditions' => 'id = :id:',
@@ -845,7 +847,7 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 ## Operations over Resultsets
 
-If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
+If a resultset is composed of complete objects, it can perform operations on the records:
 
 <a name='updating-related-records'></a>
 

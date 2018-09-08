@@ -1,45 +1,45 @@
-# Class **Phalcon\\Assets\\Inline\\Css**
+# Clase **Phalcon\\Assets\\Inline\\Css**
 
-*extends* class [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
+*extiende* de la clase [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
 
-*implements* [Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface)
+*implementa* [Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/inline/css.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/inline/css.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Represents an inlined CSS
+Representa un CSS en línea
 
-## Methods
+## Métodos
 
 public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 
-public **getType** () inherited from [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
+public **getType** () heredado de [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
 
 ...
 
-public **getContent** () inherited from [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
+public **getContent** () heredado de [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
 
 ...
 
-public **getFilter** () inherited from [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
+public **getFilter** () heredado de [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
 
 ...
 
-public **getAttributes** () inherited from [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
+public **getAttributes** () heredado de [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
 
 ...
 
-public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
+public **setType** (*mixed* $type) heredado de [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
 
-Sets the inline's type
+Establece el tipo "en línea"
 
-public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
+public **setFilter** (*mixed* $filter) heredado de [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
 
-Sets if the resource must be filtered or not
+Establece si el recurso debe ser filtrado o no
 
-public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
+public **setAttributes** (*array* $attributes) heredado de [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
 
-Sets extra HTML attributes
+Establece los atributos HTML extras
 
-public **getResourceKey** () inherited from [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
+public **getResourceKey** () heredado de [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
 
-Gets the resource's key.
+Obtiene la llave del recurso.

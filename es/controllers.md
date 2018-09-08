@@ -405,7 +405,7 @@ $di->set(
 
 ## Eventos en Controladores
 
-Los controladores automáticamente actúan como detectores de eventos del [dispatcher](/en/[[versopm]]/dispatcher), implementando métodos con los nombres de evento adecuados, permiten implementar puntos de anclaje para antes/después de ejecutar las acciones:
+Los controladores automáticamente actúan como detectores de eventos del [dispatcher](/[[language]]/[[version]]/dispatcher), implementando métodos con los nombres de evento adecuados, permiten implementar puntos de anclaje para antes/después de ejecutar las acciones:
 
 ```php
 <?php

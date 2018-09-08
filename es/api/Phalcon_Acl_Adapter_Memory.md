@@ -1,12 +1,12 @@
-# Class **Phalcon\\Acl\\Adapter\\Memory**
+# Clase **Phalcon\\Acl\\Adapter\\Memory**
 
-*extends* abstract class [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+*extiende* abstract class [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface)
+*implementa* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Manages ACL lists in memory
+Gestiona listas ACL en la memoria
 
 ```php
 <?php
@@ -17,7 +17,7 @@ $acl->setDefaultAction(
     \Phalcon\Acl::DENY
 );
 
-// Register roles
+// Registrar roles
 $roles = [
     "users"  => new \Phalcon\Acl\Role("Users"),
     "guests" => new \Phalcon\Acl\Role("Guests"),
@@ -26,7 +26,7 @@ foreach ($roles as $role) {
     $acl->addRole($role);
 }
 
-// Private area resources
+// Recursos del área privada
 $privateResources = [
     "companies" => ["index", "search", "new", "edit", "save", "create", "delete"],
     "products"  => ["index", "search", "new", "edit", "save", "create", "delete"],
@@ -40,7 +40,7 @@ foreach ($privateResources as $resourceName => $actions) {
     );
 }
 
-// Public area resources
+// Recursos del área pública
 $publicResources = [
     "index"   => ["index"],
     "about"   => ["index"],
@@ -55,14 +55,14 @@ foreach ($publicResources as $resourceName => $actions) {
     );
 }
 
-// Grant access to public areas to both users and guests
+// Otorgar acceso a las áreas publicar a users y guests
 foreach ($roles as $role){
     foreach ($publicResources as $resource => $actions) {
         $acl->allow($role->getName(), $resource, "*");
     }
 }
 
-// Grant access to private area to role Users
+// Otorgar acceso al area privada al rol Users
 foreach ($privateResources as $resource => $actions) {
     foreach ($actions as $action) {
         $acl->allow("Users", $resource, $action);
@@ -71,15 +71,15 @@ foreach ($privateResources as $resource => $actions) {
 
 ```
 
-## Methods
+## Métodos
 
 public **__construct** ()
 
-Phalcon\\Acl\\Adapter\\Memory constructor
+Constructor de Phalcon\\Acl\\Adapter\\Memory
 
 public **addRole** (*RoleInterface* | *string* $role, [*array* | *string* $accessInherits])
 
-Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example:
+Agrega un rol a la lista ACL. El segundo parámetro permite heredar el acceso a los datos de otro rol existente. Ejemplo:
 
 ```php
 <?php
@@ -95,24 +95,24 @@ $acl->addRole("administrator", "consultant");
 
 public **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
 
-Do a role inherit from another existing role
+Hacer un rol, heredando sus características de otro rol existente
 
 public **isRole** (*mixed* $roleName)
 
-Check whether role exist in the roles list
+Comprueba si existe el rol en la lista de roles
 
 public **isResource** (*mixed* $resourceName)
 
-Check whether resource exist in the resources list
+Comprueba si el recurso existe en la lista de recursos
 
 public **addResource** ([Phalcon\Acl\Resource](/en/3.2/api/Phalcon_Acl_Resource) | *string* $resourceValue, *array* | *string* $accessList)
 
-Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example:
+Agrega un recurso la lista de acceso ACL. Los nombres de acceso pueden ser una acción específica, por ejemplo: buscar, actualizar, borrar, etc. o una lista de ellos, por ejemplo:
 
 ```php
 <?php
 
-// Add a resource to the the list allowing access to an action
+// Agregar un recurso a lista permitiendo acceso a una acción
 $acl->addResource(
     new Phalcon\Acl\Resource("customers"),
     "search"
@@ -120,7 +120,7 @@ $acl->addResource(
 
 $acl->addResource("customers", "search");
 
-// Add a resource  with an access list
+// Agregar un recurso con una lista de acceso
 $acl->addResource(
     new Phalcon\Acl\Resource("customers"),
     [
@@ -141,113 +141,111 @@ $acl->addResource(
 
 public **addResourceAccess** (*mixed* $resourceName, *array* | *string* $accessList)
 
-Adds access to resources
+Agrega el acceso a recursos
 
 public **dropResourceAccess** (*mixed* $resourceName, *array* | *string* $accessList)
 
-Removes an access from a resource
+Elimina un acceso de un recurso
 
 protected **_allowOrDeny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, *mixed* $action, [*mixed* $func])
 
-Checks if a role has access to a resource
+Comprueba si un rol tiene acceso a un recurso
 
 public **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-Allow access to a role on a resource You can use '*' as wildcard Example:
+Permitir el acceso a un rol en un recurso. Se puede utilizar el asterisco '*' como comodín, por ejemplo:
 
 ```php
 <?php
 
-//Allow access to guests to search on customers
+// Permitir acceso a guests para buscar en customers
 $acl->allow("guests", "customers", "search");
 
-//Allow access to guests to search or create on customers
+// Permitir acceso a guests para buscar o crear en customers
 $acl->allow("guests", "customers", ["search", "create"]);
 
-//Allow access to any role to browse on products
+// Permitir acceso a cualquier rol para visualizar todo en products
 $acl->allow("*", "products", "browse");
 
-//Allow access to any role to browse on any resource
+// Permitir acceso a cualquier rol para visualizar cualquier recurso
 $acl->allow("*", "*", "browse");
 
 ```
 
 public **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-Deny access to a role on a resource You can use '*' as wildcard Example:
+Negar el acceso a un rol en un recurso. Se puede utilizar el asterisco '*' como comodín, por ejemplo:
 
 ```php
 <?php
 
-//Deny access to guests to search on customers
+// Negar acceso a guests para buscar en customers
 $acl->deny("guests", "customers", "search");
 
-//Deny access to guests to search or create on customers
+// Negar acceso a guests para buscar o crear en customers
 $acl->deny("guests", "customers", ["search", "create"]);
 
-//Deny access to any role to browse on products
+// Negar acceso a cualquier rol para visualizar todo en products
 $acl->deny("*", "products", "browse");
 
-//Deny access to any role to browse on any resource
+// Permitir acceso a cualquier rol para visualizar cualquier recurso
 $acl->deny("*", "*", "browse");
 
 ```
 
 public **isAllowed** (*RoleInterface* | *RoleAware* | *string* $roleName, *ResourceInterface* | *ResourceAware* | *string* $resourceName, *mixed* $access, [*array* $parameters])
 
-Check whether a role is allowed to access an action from a resource
+Comprobar si un rol tiene permitido el acceso a una acción de un recurso
 
 ```php
-<?php
-
-//Does andres have access to the customers resource to create?
-$acl->isAllowed("andres", "Products", "create");
-
-//Do guests have access to any resource to edit?
+<?php 
+//¿Andres tiene acceso a los recursos de los clientes para crear?
+$acl -> isAllowed ("andres", "Products", "create"); 
+//¿Los huéspedes tienen acceso a cualquier recurso para editar?
 $acl->isAllowed("guests", "*", "edit");
 
 ```
 
 public **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
 
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY) for no arguments provided in isAllowed action if there exists func for accessKey
+Establece el nivel de acceso por defecto (Phalcon\\Acl::ALLOW o Phalcon\\Acl::DENY) cuando no se reciben argumentos en la acción isAllowed si existe la función para accessKey
 
 public **getNoArgumentsDefaultAction** ()
 
-Returns the default ACL access level for no arguments provided in isAllowed action if there exists func for accessKey
+Devuelve el nivel de acceso de ACL por defecto sin argumentos en la acción isAllowed si existe la función para accessKey
 
 public **getRoles** ()
 
-Return an array with every role registered in the list
+Devuelve un array con cada rol registrado en la lista
 
 public **getResources** ()
 
-Return an array with every resource registered in the list
+Devuelve un array con cada recurso registrado en la lista
 
-public **getActiveRole** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public **getActiveRole** () heredado de [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Role which the list is checking if it's allowed to certain resource/access
+Rol que la lista está verificando si está permitido a cierto recurso/acceso
 
-public **getActiveResource** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public **getActiveResource** () heredado de [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Resource which the list is checking if some role can access it
+Recurso que la lista está verificando si algún rol puede acceder a él
 
 public **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Active access which the list is checking if some role can access it
+Acceso activo al cuál la lista esta verificando si algun rol puede accederla
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager) heredado de [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Sets the events manager
+Establece el administrador de eventos
 
 public **getEventsManager** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Returns the internal event manager
+Devuelve el administrador de eventos interno
 
-public **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public **setDefaultAction** (*mixed* $defaultAccess) heredado de [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
+Establece el nivel de acceso por defecto (Phalcon\\Acl::ALLOW o Phalcon\\Acl::DENY)
 
-public **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public **getDefaultAction** () heredado de [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Returns the default ACL access level
+Devuelve el nivel de acceso ACL por defecto

@@ -92,6 +92,7 @@ $options = [
 ];
 
 $session = Factory::load($options);
+$session->start();
 ```
 
 <a name='store'></a>

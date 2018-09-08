@@ -642,7 +642,7 @@ This backend will store cached content on a memcached server. Per default persis
 
 Used for setting Memcached options. See [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) for more.
 
-**Example**
+**Przykład**
 
 ```php
 <?php

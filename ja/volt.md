@@ -1,120 +1,128 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">概要</a> <ul>
         <li>
-          <a href="#introduction">Introduction</a>
+          <a href="#introduction">はじめに</a>
         </li>
         <li>
-          <a href="#setup">Activating Volt</a>
+          <a href="#setup">Voltを使うために</a>
         </li>
         <li>
-          <a href="#basic-usage">Basic Usage</a>
+          <a href="#basic-usage">基本的な使い方</a>
         </li>
         <li>
-          <a href="#variables">Variables</a>
+          <a href="#variables">変数</a>
         </li>
         <li>
-          <a href="#filters">Filters</a>
+          <a href="#filters">フィルター</a>
         </li>
         <li>
-          <a href="#comments">Comments</a>
+          <a href="#comments">コメント</a>
         </li>
         <li>
-          <a href="#control-structures">List of Control Structures</a> 
+          <a href="#control-structures">制御構文の一覧</a> 
           <ul>
             <li>
-              <a href="#control-structures-for">For</a>
+              <a href="#control-structures-for">for文</a>
             </li>
             <li>
-              <a href="#control-structures-loops">Loop Controls</a>
-            </li>
-            <li>
-              <a href="#control-structures-loop">Loop Context</a> 
+              <a href="#control-structures-loops">ループ制御</a>
               <ul>
                 <li>
-                  <a href="#assignments">Assignments</a>
+                  <a href="#loop-controls-if">If文</a>
                 </li>
                 <li>
-                  <a href="#expressions">Expressions</a>
+                  <a href="#loop-controls-switch">switch文</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#expressions-literals">Literals</a>
+              <a href="#control-structures-loop">ループ変数</a> 
+              <ul>
+                <li>
+                  <a href="#assignments">変数割り当て</a>
+                </li>
+                <li>
+                  <a href="#expressions">条件式</a>
+                </li>
+              </ul>
             </li>
             <li>
-              <a href="#expressions-arrays">Arrays</a>
+              <a href="#expressions-literals">定数</a>
             </li>
             <li>
-              <a href="#expressions-math">Math</a>
+              <a href="#expressions-arrays">配列</a>
             </li>
             <li>
-              <a href="#expressions-comparisons">Comparisons</a>
+              <a href="#expressions-math">計算</a>
             </li>
             <li>
-              <a href="#expressions-logic">Logic</a>
+              <a href="#expressions-comparisons">比較</a>
             </li>
             <li>
-              <a href="#expressions-other-operators">Other Operators</a>
+              <a href="#expressions-logic">演算子</a>
+            </li>
+            <li>
+              <a href="#expressions-other-operators">その他演算子</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#tests">Tests</a>
+          <a href="#tests">テスト</a>
         </li>
         <li>
-          <a href="#macros">Macros</a>
+          <a href="#macros">マクロ</a>
         </li>
         <li>
-          <a href="#tag-helpers">Using Tag Helpers</a>
+          <a href="#tag-helpers">タグヘルパーを使用する</a>
         </li>
         <li>
-          <a href="#functions">Functions</a>
+          <a href="#functions">関数</a>
         </li>
         <li>
-          <a href="#view-integrations">View Integration</a> 
+          <a href="#view-integrations">Viewとの連携</a> 
           <ul>
             <li>
-              <a href="#view-integration-include">Include</a>
+              <a href="#view-integration-include">include文</a>
             </li>
             <li>
-              <a href="#view-integration-partial-vs-include">Partial vs Include</a>
+              <a href="#view-integration-partial-vs-include">partial文 vs include文</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#template-inheritance">Template Inheritance</a> <ul>
+          <a href="#template-inheritance">テンプレートの継承</a> <ul>
             <li>
-              <a href="#template-inheritance-multiple">Multiple Inheritance</a>
+              <a href="#template-inheritance-multiple">多重継承</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#autoescape">Autoescape mode</a>
+          <a href="#autoescape">自動エスケープ モード</a>
         </li>
         <li>
-          <a href="#extending">Extending Volt</a> 
+          <a href="#extending">Volt の拡張</a> 
           <ul>
             <li>
-              <a href="#extending-functions">Functions</a>
+              <a href="#extending-functions">関数</a>
             </li>
             <li>
-              <a href="#extending-filters">Filters</a>
+              <a href="#extending-filters">フィルター</a>
             </li>
             <li>
-              <a href="#extending-extensions">Extensions</a>
+              <a href="#extending-extensions">エクステンション</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#caching-view-fragments">Caching view fragments</a>
+          <a href="#caching-view-fragments">Viewの断片のキャッシュ</a>
         </li>
         <li>
-          <a href="#services-in-templates">Inject Services into a Template</a>
+          <a href="#services-in-templates">テンプレートへのサービス注入</a>
         </li>
         <li>
-          <a href="#stand-alone">Stand-alone component</a>
+          <a href="#stand-alone">独立コンポーネント</a>
         </li>
       </ul>
     </li>
@@ -123,7 +131,7 @@
 
 <a name='overview'></a>
 
-# Volt: Template Engine
+# Volt: テンプレートエンジン
 
 Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
 
@@ -133,7 +141,7 @@ Volt is inspired by [Jinja](http://jinja.pocoo.org/), originally created by [Arm
 
 <a name='introduction'></a>
 
-## Introduction
+## はじめに
 
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
@@ -154,7 +162,7 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
 <a name='setup'></a>
 
-## Activating Volt
+## Voltを使うために
 
 As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
@@ -261,13 +269,13 @@ The following options are available in Volt:
 
 | Option              | Description                                                                                                                  | Default |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
-| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
-| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
-| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
-| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
-| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
 | `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false` |
+| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
+| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
+| `compiledPath`      | コンパイルされたPHPテンプレートが保存される書き込み可能なパス                                                                                             | `./`    |
+| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
+| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
+| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
 
@@ -370,7 +378,7 @@ class PostsController extends Controller
 
 <a name='variables'></a>
 
-## Variables
+## 変数
 
 Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
 
@@ -381,7 +389,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 <a name='filters'></a>
 
-## Filters
+## フィルター
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -599,7 +607,7 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 {% endfor %}
 ```
 
-<a name='control-structures-if'></a>
+<a name='loop-controls-if'></a>
 
 ### If
 
@@ -642,6 +650,75 @@ The `elseif` control flow structure can be used together with if to emulate a `s
     Robot is mechanical
 {% endif %}
 ```
+
+<a name='loop-controls-switch'></a>
+
+### Switch
+
+An alternative to the `if` statement is `switch`, allowing you to create logical execution paths in your application:
+
+```twig
+{% switch foo %}
+    {% case 0 %}
+    {% case 1 %}
+    {% case 2 %}
+        "foo" is less than 3 but not negative
+        {% break %}
+    {% case 3 %}
+        "foo" is 3
+        {% break %}
+    {% default %}
+        "foo" is {{ foo }}
+{% endswitch %}
+
+```
+
+The `switch` statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any output (including whitespace) between a switch statement and the first `case` will result in a syntax error. Empty lines and whitespaces can therefore be cleared to reduce the number of errors [see here](http://php.net/control-structures.alternative-syntax).
+
+#### `case` without `switch`
+
+```twig
+{% case EXPRESSION %}
+```
+
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
+
+#### `switch` without `endswitch`
+
+```twig
+{% switch EXPRESSION %}
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected EOF in ..., there is a 'switch' block without 'endswitch'`.
+```
+
+#### `default` without `switch`
+
+```twig
+{% default %}
+```
+
+Will not throw an error because `default` is a reserved word for filters like `{{ EXPRESSION | default(VALUE) }}` but in this case the expression will only output an empty char '' .
+
+#### nested `switch`
+
+```twig
+{% switch EXPRESSION %}
+  {% switch EXPRESSION %}
+  {% endswitch %}
+{% endswitch %}
+```
+
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
+
+#### a `switch` without an expression
+
+```twig
+{% switch %}
+  {% case EXPRESSION %}
+      {% break %}
+{% endswitch %}
+```
+
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ...`
 
 <a name='control-structures-loop'></a>
 

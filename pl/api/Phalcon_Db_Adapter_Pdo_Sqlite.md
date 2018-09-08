@@ -40,7 +40,7 @@ print_r(
 
 ```
 
-public [Phalcon\Db\IndexInterface](/en/3.2/api/Phalcon_Db_IndexInterface[]) **describeIndexes** (*string* $table, [*string* $schema])
+public [Phalcon\Db\IndexInterface](/en/3.2/api/Phalcon_Db_IndexInterface) **describeIndexes** (*string* $table, [*string* $schema])
 
 Lists table indexes
 
@@ -53,7 +53,7 @@ print_r(
 
 ```
 
-public [Phalcon\Db\ReferenceInterface](/en/3.2/api/Phalcon_Db_ReferenceInterface[]) **describeReferences** (*string* $table, [*string* $schema])
+public [Phalcon\Db\ReferenceInterface](/en/3.2/api/Phalcon_Db_ReferenceInterface) **describeReferences** (*string* $table, [*string* $schema])
 
 Lists table references
 

@@ -818,9 +818,9 @@ $eventsManager->attach(
 
 ## Профилирование SQL запросов
 
-`Phalcon\Db` includes a profiling component called `Phalcon\Db\Profiler`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
+`Phalcon\Db` включает в себя компонент профилирования SQL запросов под названием `Phalcon\Db\Profiler`, который используется для анализа производительности запросов к базе данных для того, чтобы диагностировать проблему с производительностью и обнаружить узкие места.
 
-Database profiling is really easy With `Phalcon\Db\Profiler`:
+Профилировать базу данных легко с помощью `Phalcon\Db\Profiler`:
 
 ```php
 <?php
@@ -1077,7 +1077,7 @@ $connection->createTable(
 
 `Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class `Phalcon\Db\Column`. The table below shows the options available to define a column:
 
-| Параметр        | Description                                                                                                                                | Опционально |
+| Параметр        | Описание                                                                                                                                   | Опционально |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:-----------:|
 | `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below for a list)                                                               |     No      |
 | `primary`       | True if the column is part of the table's primary key                                                                                      |     Yes     |
@@ -1103,12 +1103,12 @@ $connection->createTable(
 
 The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
 
-| Индекс       | Description                                                                                                                            | Опционально |
+| Индекс       | Описание                                                                                                                               | Опционально |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:-----------:|
-| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |     No      |
-| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |     Yes     |
-| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |     Yes     |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |     Yes     |
+| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |     Нет     |
+| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |     Да      |
+| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |     Да      |
+| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |     Да      |
 
 <a name='tables-altering'></a>
 
@@ -1162,14 +1162,14 @@ $connection->dropColumn(
 
 ### Удаление таблиц
 
-Examples on dropping tables:
+To drop an existing table from the current database, use the `dropTable` method. To drop an table from custom database, use second parameter describes database name. Examples on dropping tables:
 
 ```php
 <?php
 
-// Drop table robot from active database
+// Drop table 'robots' from active database
 $connection->dropTable('robots');
 
-// Drop table robot from database 'machines'
+// Drop table 'robots' from database 'machines'
 $connection->dropTable('robots', 'machines');
 ```

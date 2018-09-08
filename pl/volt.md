@@ -28,6 +28,14 @@
             </li>
             <li>
               <a href="#control-structures-loops">Loop Controls</a>
+              <ul>
+                <li>
+                  <a href="#loop-controls-if">If</a>
+                </li>
+                <li>
+                  <a href="#loop-controls-switch">Switch</a>
+                </li>
+              </ul>
             </li>
             <li>
               <a href="#control-structures-loop">Loop Context</a> 
@@ -261,13 +269,13 @@ The following options are available in Volt:
 
 | Opcja               | Description                                                                                                                  | Domyślne |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`     |
-| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`   |
-| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`     |
-| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`   |
-| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false`  |
-| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`   |
 | `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false`  |
+| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false`  |
+| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`   |
+| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`     |
+| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`     |
+| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`   |
+| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`   |
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
 
@@ -599,7 +607,7 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 {% endfor %}
 ```
 
-<a name='control-structures-if'></a>
+<a name='loop-controls-if'></a>
 
 ### If
 
@@ -642,6 +650,75 @@ The `elseif` control flow structure can be used together with if to emulate a `s
     Robot is mechanical
 {% endif %}
 ```
+
+<a name='loop-controls-switch'></a>
+
+### Switch
+
+An alternative to the `if` statement is `switch`, allowing you to create logical execution paths in your application:
+
+```twig
+{% switch foo %}
+    {% case 0 %}
+    {% case 1 %}
+    {% case 2 %}
+        "foo" is less than 3 but not negative
+        {% break %}
+    {% case 3 %}
+        "foo" is 3
+        {% break %}
+    {% default %}
+        "foo" is {{ foo }}
+{% endswitch %}
+
+```
+
+The `switch` statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any output (including whitespace) between a switch statement and the first `case` will result in a syntax error. Empty lines and whitespaces can therefore be cleared to reduce the number of errors [see here](http://php.net/control-structures.alternative-syntax).
+
+#### `case` without `switch`
+
+```twig
+{% case EXPRESSION %}
+```
+
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
+
+#### `switch` without `endswitch`
+
+```twig
+{% switch EXPRESSION %}
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected EOF in ..., there is a 'switch' block without 'endswitch'`.
+```
+
+#### `default` without `switch`
+
+```twig
+{% default %}
+```
+
+Will not throw an error because `default` is a reserved word for filters like `{{ EXPRESSION | default(VALUE) }}` but in this case the expression will only output an empty char '' .
+
+#### nested `switch`
+
+```twig
+{% switch EXPRESSION %}
+  {% switch EXPRESSION %}
+  {% endswitch %}
+{% endswitch %}
+```
+
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
+
+#### a `switch` without an expression
+
+```twig
+{% switch %}
+  {% case EXPRESSION %}
+      {% break %}
+{% endswitch %}
+```
+
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ...`
 
 <a name='control-structures-loop'></a>
 
@@ -751,7 +828,7 @@ The following literals are supported:
 
 <a name='expressions-arrays'></a>
 
-### Tablice
+### Arrays
 
 Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list of values in square brackets:
 
@@ -778,7 +855,7 @@ Curly braces also can be used to define arrays or hashes:
 
 <a name='expressions-math'></a>
 
-### Matematyka
+### Math
 
 You may make calculations in templates using the following operators:
 
@@ -810,7 +887,7 @@ The following comparison operators are available:
 
 <a name='expressions-logic'></a>
 
-### Logika
+### Logic
 
 Logic operators are useful in the `if` expression evaluation to combine multiple tests:
 
@@ -1113,7 +1190,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 <a name='view-integration-include'></a>
 
-### Dołączanie
+### Include
 
 `include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
 
@@ -1396,7 +1473,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='extending-filters'></a>
 
-### Filtry
+### Filters
 
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
 

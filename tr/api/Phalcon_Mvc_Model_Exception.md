@@ -30,24 +30,24 @@ Gets the Exception code
 
 final public *string* **getFile** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the file in which the exception occurred
+Harici durumun oluştuğu dosyayı alır
 
 final public *int* **getLine** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the line in which the exception occurred
+Harici durumun oluştuğu satırı alır
 
 final public *array* **getTrace** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the stack trace
+Yığının izini getirir
 
 final public [Exception](http://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Returns previous Exception
+Önceki harici durumu geri döndürür
 
 final public [Exception](http://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the stack trace as a string
+Yığın izini bir dizi şeklinde alır
 
 public *string* **__toString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-String representation of the exception
+Olağan dışı durumun dizi şeklinde gösterilişi

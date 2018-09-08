@@ -33,9 +33,8 @@ Returns the internal event manager
 
 
 
-public  **__get** (*mixed* $propertyName)
+public  **__get** (*string* $propertyName)
 
-Magic method __get
-
+Magic method __get to easily get access to services through the name of them
 
 

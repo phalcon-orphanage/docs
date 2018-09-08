@@ -599,7 +599,9 @@ class Companies extends Model
 Además, puede utilizar el segundo parámetro de `getRelated()` al acceder a la relación desde el objeto modelo para filtrar u ordenar la relación:
 
 ```php
-<br />// Facturas impagas
+<?php
+
+// Facturas impagas
 $company = Companies::findFirst(
     [
         'conditions' => 'id = :id:',
@@ -841,7 +843,7 @@ Es necesario sobrecargar el método `Phalcon\Mvc\Model::save()` del modelo para 
 
 ## Operaciones sobre conjuntos de resultados
 
-Si un conjunto de resultados se compone de objetos completos, el conjunto de resultados está en la capacidad para realizar operaciones sobre los registros obtenidos de una manera simple:
+Si un conjunto de resultados está compuesto de objetos completos, puede realizar operaciones en los registros:
 
 <a name='updating-related-records'></a>
 

@@ -4,9 +4,9 @@
 
 *implements* [Phalcon\Mvc\Model\MetaDataInterface](/en/3.2/api/Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/metadata/files.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/metadata/files.zep" class="btn btn-default btn-sm">GitHub üzerindeki kaynak</a>
 
-Stores model meta-data in PHP files.
+PHP dosyaları içerisinde meta verilerini depolar.
 
 ```php
 <?php
@@ -398,7 +398,7 @@ print_r(
 
 public **getColumnMap** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns the column map if any
+Eğer varsa, sütun haritasını döndürür
 
 ```php
 <?php
@@ -413,7 +413,7 @@ print_r(
 
 public **getReverseColumnMap** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Returns the reverse column map if any
+Eğer varsa ters sütun haritasını döndürür
 
 ```php
 <?php
@@ -428,7 +428,7 @@ print_r(
 
 public **hasAttribute** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $attribute) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Check if a model has certain attribute
+Bir modelin belirli bir özelliğe sahip olup olmadığını test edin
 
 ```php
 <?php
@@ -444,7 +444,7 @@ var_dump(
 
 public **isEmpty** () inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Checks if the internal meta-data container is empty
+Dahili meta-veri kutusunun boş olup olmadığını kontrol eder
 
 ```php
 <?php
@@ -457,7 +457,7 @@ var_dump(
 
 public **reset** () inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
 
-Resets internal meta-data in order to regenerate it
+Yeniden üretebilmek amacıyla dahili meta veriyi sıfırlar
 
 ```php
 <?php

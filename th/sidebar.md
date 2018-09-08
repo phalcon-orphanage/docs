@@ -31,7 +31,7 @@
     - [Debug](/[[language]]/[[version]]/debug)
 - Core 
     - [API Index](/[[language]]/[[version]]/api/index)
-    - Application 
+    - [Application] 
         - [Full](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
         - [Cli](/[[language]]/[[version]]/application-cli)

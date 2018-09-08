@@ -71,7 +71,7 @@
 
 # ODM (Object-Document Mapper)
 
-In addition to its ability to [map tables](/[[language]]/[[version]]/models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
+In addition to its ability to [map tables](/[[language]]/[[version]]/db-models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
 
 Due to the absence of SQL queries and planners, NoSQL databases can see real improvements in performance using the Phalcon approach. Additionally, there are no SQL building reducing the possibility of SQL injections.
 
@@ -681,7 +681,7 @@ class Robots extends Collection
 }
 ```
 
-The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return `false`.
+The example above performs a validation using the built-in validator `InclusionIn`. It checks that the value of the field `type` is in a `domain` list. If the value is not included in the list, then the validator will fail and return `false`.
 
 <div class='alert alert-warning'>
     <p>
@@ -763,7 +763,7 @@ Another type of events is available when the data validation process finds any i
 
 <a name='ids-vs-primary-keys'></a>
 
-## Implicit Ids vs. User Primary Keys
+## Örtülü Kimliklere karşılık Öncelikli Kullanıcı Anahtarları
 
 By default `Phalcon\Mvc\Collection` assumes that the `_id` attribute is automatically generated using [MongoIds](http://www.php.net/manual/en/class.mongoid.php).
 
@@ -787,7 +787,7 @@ class Robots extends Collection
 
 ## Setting multiple databases
 
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
+In Phalcon, all models can share the same database connection or specify a connection per model. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service by setting it in the `initialize()` method:
 
 ```php
 <?php

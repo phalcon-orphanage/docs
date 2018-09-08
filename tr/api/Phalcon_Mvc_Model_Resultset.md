@@ -129,7 +129,7 @@ Returns the current hydration mode
 
 public **getCache** ()
 
-Returns the associated cache for the resultset
+Sonuçlar için onlarla ilişki içerisinde olan bir önbellek döndürür
 
 public **getMessages** ()
 
@@ -143,7 +143,7 @@ public **delete** ([[Closure](http://php.net/manual/en/class.closure.php) $condi
 
 Deletes every record in the resultset
 
-public [Phalcon\Mvc\Model](/en/3.2/api/Phalcon_Mvc_Model[]) **filter** (*callback* $filter)
+public [Phalcon\Mvc\Model](/en/3.2/api/Phalcon_Mvc_Model) **filter** (*callback* $filter)
 
 Filters a resultset returning only those the developer requires
 

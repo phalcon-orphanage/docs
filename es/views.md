@@ -52,7 +52,7 @@
           <a href="#injecting-services">Inyectando servicios en la vista</a>
         </li>
         <li>
-          <a href="#stand-along">Componente independiente</a> 
+          <a href="#stand-alone">Componente independiente</a> 
           <ul>
             <li>
               <a href="#stand-alone-hierarchical-rendering">Renderizado Jerárquico</a>
@@ -63,7 +63,7 @@
           </ul>
         </li>
         <li>
-          <a href="#eventes">Eventos de la Vista</a>
+          <a href="#events">Eventos de la Vista</a>
         </li>
       </ul>
     </li>
@@ -1013,7 +1013,7 @@ $.ajax({
 </script>
 ```
 
-<a name='stand-along'></a>
+<a name='stand-alone'></a>
 
 ## Componente independiente
 
@@ -1108,7 +1108,7 @@ echo $view->render(
 );
 ```
 
-<a name='eventes'></a>
+<a name='events'></a>
 
 ## Eventos de la Vista
 

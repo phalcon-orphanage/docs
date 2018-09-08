@@ -21,6 +21,9 @@
               <a href="#resultsets">Model Resultsets</a>
             </li>
             <li>
+              <a href="#custom-resultsets">Custom Resultsets</a>
+            </li>
+            <li>
               <a href="#filters">Filtering Resultsets</a>
             </li>
             <li>
@@ -407,17 +410,17 @@ The available query options are:
 | Parameter     | Description                                                                                                                                                                                        | Example                                                           |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Mvc\Model` assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                          | `'columns' => 'id, name'`                                         |
-| `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                         | `'bind' => ['status' => 'A', 'type' => 'some-time']`              |
-| `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                         | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
+| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned.                                                                         | `'columns' => 'id, name'`                                         |
+| `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security.                                                                                        | `'bind' => ['status' => 'A', 'type' => 'some-time']`              |
+| `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security.                                                        | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
 | `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                         | `'order' => 'name DESC, status'`                                  |
-| `limit`       | Limit the results of the query to results to certain range                                                                                                                                         | `'limit' => 10`                                                   |
-| `offset`      | Offset the results of the query by a certain amount                                                                                                                                                | `'offset' => 5`                                                   |
-| `group`       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                        | `'group' => 'name, status'`                                       |
-| `for_update`  | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting exclusive locks on each row it reads                                                                                | `'for_update' => true`                                            |
-| `shared_lock` | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting shared locks on each row it reads                                                                                   | `'shared_lock' => true`                                           |
-| `cache`       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                       | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`         |
-| `hydration`   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
+| `limit`       | Limit the results of the query to results to certain range.                                                                                                                                        | `'limit' => 10`                                                   |
+| `offset`      | Offset the results of the query by a certain amount.                                                                                                                                               | `'offset' => 5`                                                   |
+| `group`       | Allows to collect data across multiple records and group the results by one or more columns.                                                                                                       | `'group' => 'name, status'`                                       |
+| `for_update`  | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting exclusive locks on each row it reads.                                                                               | `'for_update' => true`                                            |
+| `shared_lock` | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting shared locks on each row it reads.                                                                                  | `'shared_lock' => true`                                           |
+| `cache`       | Cache the resultset, reducing the continuous access to the relational system.                                                                                                                      | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`         |
+| `hydration`   | Sets the hydration strategy to represent each returned record in the result.                                                                                                                       | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
 If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
 
@@ -481,7 +484,7 @@ Notice that we used 'Name' in the method call and passed the variable `$name` to
 ### Model Resultsets
 While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a `Phalcon\Mvc\Model\Resultset\Simple`. This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
 
-These objects are more powerful than standard arrays. One of the greatest features of the :doc:`Phalcon\Mvc\Model\Resultset` is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
+These objects are more powerful than standard arrays. One of the greatest features of the `Phalcon\Mvc\Model\Resultset` is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
 
 ```php
 <?php
@@ -762,7 +765,7 @@ $robots = Robots::find(
     </p>
 </div>
 
-If you're using `finders`, bound parameters are automatically used:
+If you're using "finders" e.g. <code>find()</code>, <code>findFirst()</code>, etc., bound parameters are automatically used:
 
 ```php
 <?php
@@ -1013,7 +1016,7 @@ $salary = Employees::minimum(
 
 <a name='create-update-records'></a>
 ## Creating/Updating Records
-The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of `Phalcon\Mvc\Model`. For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
+The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The `save()` method is called internally by the `create` and `update` methods of `Phalcon\Mvc\Model`. For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
 
 Also the method executes associated validators, virtual foreign keys and events that are defined in the model:
 
@@ -1124,7 +1127,7 @@ if ($robot->create() === false) {
 }
 ```
 
-The methods `create` and 'update' also accept an array of values as parameter.
+The methods `create` and `update` also accept an array of values as parameter.
 
 <a name='delete-records'></a>
 ## Deleting Records
@@ -1152,7 +1155,7 @@ if ($robot !== false) {
 }
 ```
 
-You can also delete many records by traversing a resultset with a foreach:
+You can also delete many records by traversing a resultset with a `foreach`:
 
 ```php
 <?php

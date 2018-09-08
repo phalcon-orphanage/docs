@@ -1006,7 +1006,7 @@ foreach ($references as $reference) {
 
 A table description is very similar to the MySQL describe command, it contains the following information:
 
-| Field        | Type        | Key                                                | Null                               |
+| Pole         | Typ         | Klucz                                              | Null                               |
 | ------------ | ----------- | -------------------------------------------------- | ---------------------------------- |
 | Field's name | Column Type | Is the column part of the primary key or an index? | Does the column allow null values? |
 
@@ -1077,7 +1077,7 @@ $connection->createTable(
 
 `Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class `Phalcon\Db\Column`. The table below shows the options available to define a column:
 
-| Option          | Description                                                                                                                                | Optional |
+| Opcja           | Description                                                                                                                                | Optional |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
 | `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below for a list)                                                               |   Nie    |
 | `primary`       | True if the column is part of the table's primary key                                                                                      |   Tak    |
@@ -1103,7 +1103,7 @@ $connection->createTable(
 
 The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
 
-| Index        | Description                                                                                                                            | Optional |
+| Indeks       | Description                                                                                                                            | Optional |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
 | `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |   Nie    |
 | `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |   Tak    |
@@ -1162,14 +1162,14 @@ $connection->dropColumn(
 
 ### Dropping Tables
 
-Examples on dropping tables:
+To drop an existing table from the current database, use the `dropTable` method. To drop an table from custom database, use second parameter describes database name. Examples on dropping tables:
 
 ```php
 <?php
 
-// Drop table robot from active database
+// Drop table 'robots' from active database
 $connection->dropTable('robots');
 
-// Drop table robot from database 'machines'
+// Drop table 'robots' from database 'machines'
 $connection->dropTable('robots', 'machines');
 ```

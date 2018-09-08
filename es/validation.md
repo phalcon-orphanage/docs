@@ -158,27 +158,27 @@ if (count($messages)) {
 
 Phalcon cuenta con un conjunto de validadores incorporados para este componente:
 
-| Clase                                          | Explicación                                                            |
-| ---------------------------------------------- | ---------------------------------------------------------------------- |
-| `Phalcon\Validation\Validator\Alnum`        | Valida que el valor de un campo tenga solo caracteres alfanuméricos.   |
-| `Phalcon\Validation\Validator\Alpha`        | Valida que el valor de un campo tenga solo caracteres alfabéticos.     |
-| `Phalcon\Validation\Validator\Date`         | Valida que el valor de un campo sea una fecha válida.                  |
-| `Phalcon\Validation\Validator\Digit`        | Valida que el valor de un campo tenga solo caracteres numéricos.       |
-| `Phalcon\Validation\Validator\File`         | Valida que el valor de un campo sea un archivo correcto.               |
-| `Phalcon\Validation\Validator\Uniqueness`   | Valida que el valor de un campo sea único en el modelo relacionado.    |
-| `Phalcon\Validation\Validator\Numericality` | Valida que el valor de un campo sea un valor numérico.                 |
-| `Phalcon\Validation\Validator\PresenceOf`   | Valida que el valor de un campo no sea nulo o una cadena vacía.        |
-| `Phalcon\Validation\Validator\Identical`    | Valida que el valor de un campo sea el mismo que el valor especificado |
-| `Phalcon\Validation\Validator\Email`        | Valida que un campo contenga un email con formato válido               |
-| `Phalcon\Validation\Validator\ExclusionIn`  | Valida que un valor no este incluido en una lista de posibles valores  |
-| `Phalcon\Validation\Validator\InclusionIn`  | Valida que un valor este incluido en una lista de posibles valores     |
-| `Phalcon\Validation\Validator\Regex`        | Valida que el valor del campo coincida con una expresión regular       |
-| `Phalcon\Validation\Validator\StringLength` | Valida el largo de una cadena                                          |
-| `Phalcon\Validation\Validator\Between`      | Valida que un valor este entre dos valores                             |
-| `Phalcon\Validation\Validator\Confirmation` | Valida que un valor sea igual a otro presente en los datos             |
-| `Phalcon\Validation\Validator\Url`          | Valida que el campo contenga una URL válida                            |
-| `Phalcon\Validation\Validator\CreditCard`   | Valida un número de tarjeta de crédito                                 |
-| `Phalcon\Validation\Validator\Callback`     | Valida utilizando una función de retorno de llamada                    |
+| Clase                                          | Explicación                                                             |
+| ---------------------------------------------- | ----------------------------------------------------------------------- |
+| `Phalcon\Validation\Validator\Alnum`        | Valida que el valor de un campo tenga solo caracteres alfanuméricos.    |
+| `Phalcon\Validation\Validator\Alpha`        | Valida que el valor de un campo tenga solo caracteres alfabéticos.      |
+| `Phalcon\Validation\Validator\Date`         | Valida que el valor de un campo sea una fecha válida.                   |
+| `Phalcon\Validation\Validator\Digit`        | Valida que el valor de un campo tenga solo caracteres numéricos.        |
+| `Phalcon\Validation\Validator\File`         | Valida que el valor de un campo sea un archivo correcto.                |
+| `Phalcon\Validation\Validator\Uniqueness`   | Valida que el valor de un campo sea único en el modelo relacionado.     |
+| `Phalcon\Validation\Validator\Numericality` | Valida que el valor de un campo sea un valor numérico.                  |
+| `Phalcon\Validation\Validator\PresenceOf`   | Valida que el valor de un campo no sea nulo o una cadena vacía.         |
+| `Phalcon\Validation\Validator\Identical`    | Valida que el valor de un campo sea el mismo que el valor especificado. |
+| `Phalcon\Validation\Validator\Email`        | Valida que un campo contenga un email con formato válido.               |
+| `Phalcon\Validation\Validator\ExclusionIn`  | Valida que un valor no este incluido en una lista de posibles valores.  |
+| `Phalcon\Validation\Validator\InclusionIn`  | Valida que un valor este incluido en una lista de posibles valores.     |
+| `Phalcon\Validation\Validator\Regex`        | Valida que el valor del campo coincida con una expresión regular.       |
+| `Phalcon\Validation\Validator\StringLength` | Valida el largo de una cadena.                                          |
+| `Phalcon\Validation\Validator\Between`      | Valida que un valor este entre dos valores.                             |
+| `Phalcon\Validation\Validator\Confirmation` | Valida que un valor sea igual a otro presente en los datos.             |
+| `Phalcon\Validation\Validator\Url`          | Valida que el campo contenga una URL válida.                            |
+| `Phalcon\Validation\Validator\CreditCard`   | Valida un número de tarjeta de crédito.                                 |
+| `Phalcon\Validation\Validator\Callback`     | Valida utilizando una función de retorno de llamada.                    |
 
 El siguiente ejemplo explica como crear validadores adicionales para este componente:
 
@@ -309,7 +309,7 @@ if (count($messages)) {
 }
 ```
 
-Puede pasar el parámetro 'message' para cambiar o traducir el mensaje predeterminado en cada validador:
+Es posible pasar un parámetro `message` para cambiar o traducir el mensaje por defecto en cada validador, incluso es posible utilizar en el mensaje el comodín `:field` para ser reemplazado por el nombre del campo:
 
 ```php
 <?php
