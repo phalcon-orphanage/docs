@@ -14,6 +14,11 @@
             </li>
             <li>
               <a href="#defining">Defining relationships</a>
+              <ul>
+                <li>
+                  <a href="#multiple-fields">Multiple field relationships</a>
+                </li>
+              </ul>
             </li>
             <li>
               <a href="#taking-advantage-of">Taking advantage of relationships</a>
@@ -227,48 +232,6 @@ class Robots extends Model
     }
 }
 ```
-
-<a name='parameters'></a>
-#### Relationships with parameters
-Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance you might want to only have a table called `parts` which has a field `type` describing the type of the part. 
-
-Using relationships, we can get only those parts that relate to our Robot that are of certain type. Defining that constraint in our relationship allows us to let the model do all the work.
-
-```php
-<?php
- 
- namespace Store\Toys;
- 
- use Phalcon\Mvc\Model;
- 
- class Robots extends Model
- {
-     public $id;
- 
-     public $name;
- 
-     public $type;
-     
-     public function initialize()
-     {
-         $this->hasMany(
-             'id',
-             Parts::class,
-             'robotId',
-             [
-                 'reusable' => true, // cache related data
-                 'alias'    => 'mechanicalParts',
-                 'params'   => [
-                     'conditions' => 'robotTypeId = :type:',
-                     'bind'       => [
-                         'type' => 4,
-                     ]
-                 ]
-             ]
-         );
-     }
- }
- ```
 
 <a name='multiple-fields'></a>
 #### Multiple field relationships
