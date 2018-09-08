@@ -228,6 +228,126 @@ class Robots extends Model
 }
 ```
 
+<a name='parameters'></a>
+#### Relationships with parameters
+Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance you might want to only have a table called `parts` which has a field `type` describing the type of the part. 
+
+Using relationships, we can get only those parts that relate to our Robot that are of certain type. Defining that constraint in our relationship allows us to let the model do all the work.
+
+```php
+<?php
+ 
+ namespace Store\Toys;
+ 
+ use Phalcon\Mvc\Model;
+ 
+ class Robots extends Model
+ {
+     public $id;
+ 
+     public $name;
+ 
+     public $type;
+     
+     public function initialize()
+     {
+         $this->hasMany(
+             'id',
+             Parts::class,
+             'robotId',
+             [
+                 'reusable' => true, // cache related data
+                 'alias'    => 'mechanicalParts',
+                 'params'   => [
+                     'conditions' => 'robotTypeId = :type:',
+                     'bind'       => [
+                         'type' => 4,
+                     ]
+                 ]
+             ]
+         );
+     }
+ }
+ ```
+
+<a name='multiple-fields'></a>
+#### Multiple field relationships
+There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public $id;
+
+    public $name;
+
+    public $type;
+}
+```
+
+and
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Parts extends Model
+{
+    public $id;
+    
+    public $robotId;
+    
+    public $robotType;
+    
+    public $name;
+}
+```
+
+In the above we have a `Robots` model which has three properties. A unique `id`, a `name` and a `type` which defines what this robot is (mechnical, etc.); In the `Parts` model we also have a `name` for the part but also fields that tie the robot and its type with a specific part. 
+
+Using the relationships options discussed earlier, binding one field between the two models will not return the results we need. For that we can use an array in our relationship:
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public $id;
+
+    public $name;
+
+    public $type;
+    
+    public function initialize()
+    {
+        $this->hasOne(
+            ['id', 'type'],
+            Parts::class,
+            ['robotId', 'robotType'],
+            [
+                'reusable' => true, // cache related data
+                'alias'    => 'parts',
+            ]
+        );
+    }
+}
+```
+
+**NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
+
 <a name='taking-advantage-of'></a>
 ### Taking advantage of relationships
 When explicitly defining the relationships between models, it is easy to find related records for a particular record.
