@@ -49,6 +49,7 @@ class SessionController extends Controller
             'some value',
             time() + 15 * 86400
         );
+        $this->cookies->send();
     }
 
     public function logoutAction()

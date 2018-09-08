@@ -69,6 +69,9 @@
           <a href="#annotations">Anotaciones de Router</a>
         </li>
         <li>
+          <a href="#events">Eventos</a>
+        </li>
+        <li>
           <a href="#registration">Registro de instancia de Router</a>
         </li>
         <li>
@@ -1135,6 +1138,21 @@ foreach ($testRoutes as $testRoute) {
     echo '<br>';
 }
 ```
+
+<a name='events'></a>
+
+## Eventos
+
+Como muchos otros componentes, los enrutadores tambien tienen eventos. Nunguno de ellos puede detener la operación en curso. A continuación una lista de los eventos disponibles
+
+| Evento                     | Descripción                                            |
+| -------------------------- | ------------------------------------------------------ |
+| `router:beforeCheckRoutes` | Activado antes de comprobar todas las rutas cargadas   |
+| `router:beforeCheckRoute`  | Activado antes de comprobar una ruta                   |
+| `router:matchedRoute`      | Se activa cuando una ruta coincidente es encontrada    |
+| `router:notMatchedRoute`   | Activado cuando ninguna ruta coincidente es encontrada |
+| `router:afterCheckRoutes`  | Activado después de comprobar todas las rutas          |
+| `router:beforeMount`       | Se activa cuando se monta una nueva ruta               |
 
 <a name='annotations'></a>
 

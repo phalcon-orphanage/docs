@@ -36,7 +36,7 @@
 
 Phalcon es un proyecto open source y depende en gran medida del esfuerzo de sus colaboradores voluntarios. ¡Son bienvenidas las contribuciones de todos!
 
-Por favor tome un momento para revisar este documento con el fin de hacer el proceso de contribución más fácil y eficaz.
+Por favor, tómese un momento, para revisar este documento con el fin de hacer el proceso de contribución más fácil y eficaz para todos.
 
 Seguir estas directrices, permite una mejor comunicación, más rápida resolución de problemas y permite que el proyecto avance.
 

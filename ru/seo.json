@@ -1,6 +1,6 @@
 {
-  "introduction": "Главная",
-  "sponsors": "Спонсоры",
+  "introduction": "General",
+  "sponsors": "Sponsors",
   "contributions": "Contributions : Overview",
   "new-pull-request": "Contributions : Pull Requests",
   "new-feature-request": "Contributions : NFR",
