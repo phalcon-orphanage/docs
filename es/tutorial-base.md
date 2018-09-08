@@ -143,7 +143,7 @@ Since Phalcon is **loosely coupled** services are registered with the frameworks
 
 If you are still interested in the details please see this article by [Martin Fowler](https://martinfowler.com/articles/injection.html)
 
-Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. Don't forget to include `Phalcon\Di` with setting up the service container.
+Cada vez que el marco requiera un componente o servicio, solicitará el contenedor utilizando un nombre acordado para el servicio. Don't forget to include `Phalcon\Di` with setting up the service container.
 
 Services can be registered in several ways, but for our tutorial, we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
 
