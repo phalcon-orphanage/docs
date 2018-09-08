@@ -1462,7 +1462,7 @@ Las instrucciones de `UPDATE` en SQL son creadas, por defecto, con todas las col
 
 En algunos casos esto podría mejorar el rendimiento al reducir el tráfico entre la aplicación y el servidor de base de datos, esto ayuda especialmente cuando la tabla tiene campos blob o text:
 
-**NOTE:** Enabling Dynamic updates implicitly enables record snapshots. See [Record Snapshots](#record-snapshots) for more information.
+**Nota:** Habilitar las actualizaciones dinámicas habilita implícitamente instantáneas de registro. Ver [instantáneas de registros](#record-snapshots) para obtener más información.
 
 ```php
 <?php
