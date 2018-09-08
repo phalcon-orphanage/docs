@@ -1143,7 +1143,7 @@ foreach ($testRoutes as $testRoute) {
 
 ## Eventos
 
-Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
+Como muchos otros componentes, los enrutadores tambien tienen eventos. Nunguno de ellos puede detener la operación en curso. A continuación una lista de los eventos disponibles
 
 | Evento                     | Descripción                                            |
 | -------------------------- | ------------------------------------------------------ |

@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Creating a CLI Application</a> <ul>
+      <a href="#creating-cli-application">Creating a CLI Application</a> 
+      <ul>
         <li>
           <a href="#structure">Structure</a>
         </li>
@@ -39,7 +40,7 @@ A minimal structure of a CLI application will look like this:
 <a name='creating-bootstrap'></a>
 ## Creating a Bootstrap
 
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the `index.php` bootstrapper in web applications, we use a `cli.php` file for bootstrapping the application.
 
 Below is a sample bootstrap that is being used for this example.
 
@@ -106,9 +107,6 @@ try {
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
     exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-    exit(1);
 }
 ```
 
@@ -121,7 +119,7 @@ php app/cli.php
 <a name='tasks'></a>
 ## Tasks
 
-Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+Tasks work similar to controllers. Any CLI application needs at least a `MainTask` and a `mainAction` and every task needs to have a `mainAction` which will run if no action is given explicitly.
 
 Below is an example of the `app/tasks/MainTask.php` file:
 
@@ -203,9 +201,6 @@ try {
     exit(1);
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-    exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
     exit(1);
 }
 ```
