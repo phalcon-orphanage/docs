@@ -1,20 +1,66 @@
-<div class='article-menu' markdown='1'>
-
-- [Model Relationships](#overview)
-    - [Relationships between Models](#relationships)
-        - [Unidirectional relationships](#unidirectional)
-        - [Bidirectional relations](#bidirectional)
-        - [Defining relationships](#defining)
-        - [Taking advantage of relationships](#taking-advantage-of)
-        - [Aliasing Relationships](#aliases)
-            - [Magic Getters vs. Explicit methods](#getters-vs-methods)
-    - [Virtual Foreign Keys](#virtual-foreign-keys)
-        - [Cascade/Restrict actions](#cascade-restrict-actions)
-    - [Storing Related Records](#storing-related-records)
-    - [Operations over Resultsets](#operations-over-resultsets)
-        - [Updating related records](#updating-related-records)
-        - [Deleting related records](#deleting-related-records)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Model Relationships</a> 
+      <ul>
+        <li>
+          <a href="#relationships">Relationships between Models</a> 
+          <ul>
+            <li>
+              <a href="#unidirectional">Unidirectional relationships</a>
+            </li>
+            <li>
+              <a href="#bidirectional">Bidirectional relations</a>
+            </li>
+            <li>
+              <a href="#defining">Defining relationships</a>
+              <ul>
+                <li>
+                  <a href="#multiple-fields">Multiple field relationships</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#taking-advantage-of">Taking advantage of relationships</a>
+            </li>
+            <li>
+              <a href="#aliases">Aliasing Relationships</a> 
+              <ul>
+                <li>
+                  <a href="#getters-vs-methods">Magic Getters vs. Explicit methods</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#conditionals">Conditionals</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#virtual-foreign-keys">Virtual Foreign Keys</a> 
+          <ul>
+            <li>
+              <a href="#cascade-restrict-actions">Cascade/Restrict actions</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#storing-related-records">Storing Related Records</a>
+        </li>
+        <li>
+          <a href="#operations-over-resultsets">Operations over Resultsets</a> 
+          <ul>
+            <li>
+              <a href="#updating-related-records">Updating related records</a>
+            </li>
+            <li>
+              <a href="#deleting-related-records">Deleting related records</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -186,6 +232,84 @@ class Robots extends Model
     }
 }
 ```
+
+<a name='multiple-fields'></a>
+#### Multiple field relationships
+There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public $id;
+
+    public $name;
+
+    public $type;
+}
+```
+
+and
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Parts extends Model
+{
+    public $id;
+    
+    public $robotId;
+    
+    public $robotType;
+    
+    public $name;
+}
+```
+
+In the above we have a `Robots` model which has three properties. A unique `id`, a `name` and a `type` which defines what this robot is (mechnical, etc.); In the `Parts` model we also have a `name` for the part but also fields that tie the robot and its type with a specific part. 
+
+Using the relationships options discussed earlier, binding one field between the two models will not return the results we need. For that we can use an array in our relationship:
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public $id;
+
+    public $name;
+
+    public $type;
+    
+    public function initialize()
+    {
+        $this->hasOne(
+            ['id', 'type'],
+            Parts::class,
+            ['robotId', 'robotType'],
+            [
+                'reusable' => true, // cache related data
+                'alias'    => 'parts',
+            ]
+        );
+    }
+}
+```
+
+**NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
 
 <a name='taking-advantage-of'></a>
 ### Taking advantage of relationships
@@ -429,7 +553,7 @@ class RobotsSimilar extends Model
 }
 ```
 
-With the aliasing we can get the related records easily:
+With the aliasing we can get the related records easily. You can also use the `getRelated()` method to access the relationship using the alias name:
 
 ```php
 <?php
@@ -439,10 +563,12 @@ $robotsSimilar = RobotsSimilar::findFirst();
 // Returns the related record based on the column (robots_id)
 $robot = $robotsSimilar->getRobot();
 $robot = $robotsSimilar->robot;
+$robot = $robotsSimilar->getRelated('Robot');
 
 // Returns the related record based on the column (similar_robots_id)
 $similarRobot = $robotsSimilar->getSimilarRobot();
 $similarRobot = $robotsSimilar->similarRobot;
+$similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 ```
 
 <a name='getters-vs-methods'></a>
@@ -477,6 +603,98 @@ class Robots extends Model
         );
     }
 }
+```
+
+<a name='conditionals'></a>
+## Conditionals
+You can also create relationships based on conditionals. When querying based on the relationship the condition will be automatically appended to the query:
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+// Companies have invoices issued to them (paid/unpaid)
+// Invoices model
+class Invoices extends Model
+{
+
+}
+
+// Companies model
+class Companies extends Model
+{
+    public function initialize()
+    {
+        // All invoices relationship
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias' => 'Invoices'
+            ]
+        );
+
+        // Paid invoices relationship
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesPaid',
+                'params'   => [
+                    'conditions' => "inv_status = 'paid'"
+                ]
+            ]
+        );
+
+        // Unpaid invoices relationship + bound parameters
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesUnpaid',
+                'params'   => [
+                    'conditions' => "inv_status <> :status:",
+                    'bind' => ['status' => 'unpaid']
+                ]
+            ]
+        );
+    }
+}
+```
+
+Additionally, you can use the second parameter of `getRelated()` when accessing your relationship from your model object to further filter or order your relationship:
+
+```php
+<?php
+
+// Unpaid Invoices
+$company = Companies::findFirst(
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => ['id' => 1],
+    ]
+);
+
+$unpaidInvoices = $company->InvoicesUnpaid;
+$unpaidInvoices = $company->getInvoicesUnpaid();
+$unpaidInvoices = $company->getRelated('InvoicesUnpaid');
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    ['conditions' => "inv_status = 'paid'"]
+);
+
+// Also ordered
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    [
+        'conditions' => "inv_status = 'paid'",
+        'order'      => 'inv_created_date ASC',
+    ]
+);
 ```
 
 <a name='virtual-foreign-keys'></a>
@@ -687,7 +905,27 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 <a name='operations-over-resultsets'></a>
 ## Operations over Resultsets
-If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
+If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
+
+```php
+<?php
+
+/** @var RobotType $type */
+$type = $robots->getRelated('type');
+
+$type->name = 'Some other type';
+$result = $type->save();
+
+
+// Get the related robot type but only the `name` column
+$type = $robots->getRelated('type', ['columns' => 'name']);
+
+$type->name = 'Some other type';
+
+// This will fail because `$type` is not a complete object
+$result = $type->save();
+
+```
 
 <a name='updating-related-records'></a>
 ### Updating related records
