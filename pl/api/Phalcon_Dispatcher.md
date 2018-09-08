@@ -20,7 +20,7 @@ This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\Cli\\Dispatcher
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Methods
+## Metody
 
 public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
 

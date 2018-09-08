@@ -11,7 +11,10 @@ Checks that two values have the same value
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Confirmation;
+
+$validator = new Validation();
 
 $validator->add(
     "password",
@@ -44,7 +47,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Metody
 
 public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
 

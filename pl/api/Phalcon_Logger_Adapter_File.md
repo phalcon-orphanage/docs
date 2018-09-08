@@ -21,7 +21,7 @@ $logger->close();
 
 ```
 
-## Methods
+## Metody
 
 public **getPath** ()
 

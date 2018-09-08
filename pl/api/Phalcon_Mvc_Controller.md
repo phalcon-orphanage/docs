@@ -42,7 +42,7 @@ class PeopleController extends \Phalcon\Mvc\Controller
 
 ```
 
-## Methods
+## Metody
 
 final public **__construct** ()
 

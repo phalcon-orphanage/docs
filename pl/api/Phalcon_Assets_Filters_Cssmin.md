@@ -6,7 +6,7 @@
 
 Minify the css - removes comments removes newlines and line feeds keeping removes last semicolon from last property
 
-## Methods
+## Metody
 
 public **filter** (*mixed* $content)
 

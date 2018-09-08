@@ -6,7 +6,7 @@
 
 Represents a collection of resources
 
-## Methods
+## Metody
 
 public **getPrefix** ()
 

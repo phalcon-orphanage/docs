@@ -1,62 +1,63 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-micro-application">Creating a Micro Application</a>
+      <a href="#creating-micro-application">Creando una Micro Aplicación</a>
     </li>
     <li>
-      <a href="#routing">Routing</a> <ul>
+      <a href="#routing">Ruteo</a> 
+      <ul>
         <li>
-          <a href="#routing-setup">Setup</a> <ul>
+          <a href="#routing-setup">Configuración</a> 
+          <ul>
             <li>
-              <a href="#routing-setup-application">Application object</a>
+              <a href="#routing-setup-application">El Objeto de la Aplicación</a>
             </li>
             <li>
-              <a href="#routing-setup-router">Router object</a>
+              <a href="#routing-setup-router">El Objeto Ruoter</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#rewrite-rules">Rewrite Rules</a>
+          <a href="#rewrite-rules">Reglas de reescritura</a>
         </li>
         <li>
-          <a href="#routing-handlers">Handlers</a> <ul>
+          <a href="#routing-handlers">Manejadores</a> <ul>
             <li>
-              <a href="#routing-handlers-definitions">Definitions</a> <ul>
+              <a href="#routing-handlers-definitions">Definiciones</a> 
+              <ul>
                 <li>
-                  <a href="#routing-handlers-anonymous-function">Anonymous Function</a>
+                  <a href="#routing-handlers-anonymous-function">Funciones anónimas</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-function">Function</a>
+                  <a href="#routing-handlers-function">Funciones</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-static-method">Static Method</a>
+                  <a href="#routing-handlers-static-method">Método estático</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-object-method">Method in an Object</a>
+                  <a href="#routing-handlers-object-method">Método en un objeto</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-controllers">Controllers</a>
+                  <a href="#routing-handlers-controllers">Controladores</a>
                 </li>
               </ul>
             </li>
-            
             <li>
-              <a href="#routing-handlers-controllers-lazy-loading">Lazy Loading</a> <ul>
+              <a href="#routing-handlers-controllers-lazy-loading">Carga perezosa (Lazy Load)</a> 
+              <ul>
                 <li>
-                  <a href="#routing-handlers-controllers-lazy-loading-use-case">Use case</a>
+                  <a href="#routing-handlers-controllers-lazy-loading-use-case">Casos de uso</a>
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#routing-handlers-not-found">Not Found (404)</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#routing-verbs">Methods - Verbs</a> <ul>
+          <a href="#routing-verbs">Métodos - verbos</a> 
+          <ul>
             <li>
               <a href="#routing-verb-delete">delete</a>
             </li>
@@ -83,70 +84,69 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#routing-collections">Collections</a>
+          <a href="#routing-collections">Colecciones</a>
         </li>
         <li>
-          <a href="#routing-parameters">Parameters</a>
+          <a href="#routing-parameters">Parámetros</a>
         </li>
         <li>
-          <a href="#routing-redirections">Redirections</a>
+          <a href="#routing-redirections">Redirecciones</a>
         </li>
         <li>
-          <a href="#routing-urls-for-routes">URLs for Routes</a>
+          <a href="#routing-urls-for-routes">URLs para Rutas</a>
         </li>
       </ul>
     </li>
-    
     <li>
-      <a href="#dependency-injector">Dependency Injector</a>
+      <a href="#dependency-injector">Inyector de Dependencias</a>
     </li>
     <li>
-      <a href="#responses">Responses</a> <ul>
+      <a href="#responses">Respuestas</a> 
+      <ul>
         <li>
-          <a href="#responses-direct-output">Direct output</a>
+          <a href="#responses-direct-output">Salida Directa</a>
         </li>
         <li>
-          <a href="#responses-include">Including another file</a>
+          <a href="#responses-include">Incluir Otro Archivo</a>
         </li>
         <li>
-          <a href="#responses-direct-output-json">Direct output JSON</a>
+          <a href="#responses-direct-output-json">Salida Directa JSON</a>
         </li>
         <li>
-          <a href="#responses-new-response-object">New Response object</a>
+          <a href="#responses-new-response-object">Nuevo Objeto Response</a>
         </li>
         <li>
-          <a href="#responses-application-response">Application Response</a>
+          <a href="#responses-application-response">Respuesta de la Aplicación</a>
         </li>
         <li>
-          <a href="#responses-return-application-response">Return Application Response</a>
+          <a href="#responses-return-application-response">Devolver Respuestas de la Aplicación</a>
         </li>
         <li>
           <a href="#responses-json">JSON</a>
         </li>
       </ul>
     </li>
-    
     <li>
-      <a href="#events">Events</a> <ul>
+      <a href="#events">Eventos</a> 
+      <ul>
         <li>
-          <a href="#events-available-events">Available events</a> <ul>
+          <a href="#events-available-events">Eventos Disponibles</a> <ul>
             <li>
-              <a href="#events-available-events-authentication">Authentication example</a>
+              <a href="#events-available-events-authentication">Ejemplo de Autenticación</a>
             </li>
             <li>
-              <a href="#events-available-events-not-found">Not found example</a>
+              <a href="#events-available-events-not-found">Ejemplo de Not Found</a>
             </li>
           </ul>
         </li>
       </ul>
     </li>
-    
     <li>
       <a href="#middleware">Middleware</a> <ul>
         <li>
-          <a href="#middleware-attached-events">Attached events</a> <ul>
+          <a href="#middleware-attached-events">Eventos adjuntos</a> 
+          <ul>
             <li>
               <a href="#middleware-attached-events-before">before</a>
             </li>
@@ -158,17 +158,18 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#middleware-implementation">Implementation</a>
+          <a href="#middleware-implementation">Implementación</a>
         </li>
         <li>
-          <a href="#middleware-setup">Setup</a>
+          <a href="#middleware-setup">Configuración</a>
         </li>
         <li>
-          <a href="#middleware-events">Events in Middleware</a> <ul>
+          <a href="#middleware-events">Eventos en Middleware</a> 
+          <ul>
             <li>
-              <a href="#middleware-events-api">API example</a> <ul>
+              <a href="#middleware-events-api">Ejemplo de API</a> 
+              <ul>
                 <li>
                   <a href="#middleware-events-api-firewall">Firewall Middleware</a>
                 </li>
@@ -176,16 +177,16 @@
                   <a href="#middleware-events-api-not-found">Not Found Middleware</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-redirect">Redirect Middleware</a>
+                  <a href="#middleware-events-api-redirect">Redirección en Middleware</a>
                 </li>
                 <li>
                   <a href="#middleware-events-api-cors">CORS Middleware</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-request">Request Middleware</a>
+                  <a href="#middleware-events-api-request">Solicitud Middleware</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-response">Response Middleware</a>
+                  <a href="#middleware-events-api-response">Respuesta Middleware</a>
                 </li>
               </ul>
             </li>
@@ -193,27 +194,26 @@
         </li>
       </ul>
     </li>
-    
     <li>
-      <a href="#models">Models</a>
+      <a href="#models">Modelos</a>
     </li>
     <li>
-      <a href="#model-instances">Injecting Model Instances</a>
+      <a href="#model-instances">Inyectando instancias de modelos</a>
     </li>
     <li>
-      <a href="#views">Views</a>
+      <a href="#views">Vistas</a>
     </li>
     <li>
-      <a href="#error-handling">Error Handling</a>
+      <a href="#error-handling">Manejo de Errores</a>
     </li>
   </ul>
 </div>
 
-# Micro Applications
+# Micro Aplicaciones
 
-Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code.
+Phalcon ofrece una aplicación muy 'fina', para que pueda crear 'Micro' aplicaciones con un mínimo de código PHP.
 
-Micro applications are suitable for small applications that will have very low overhead. Such applications are for instance our [website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
+Las Micro Aplicaciones son convenientes para aplicaciones pequeñas que van a tener un uso muy ligero. Este tipo de aplicaciones es, por ejemplo, nuestro [sitio web](https://github.com/phalcon/website), este sitio web ([docs](https://github.com/phalcon/docs)), nuestra [tienda](https://github.com/phalcon/store), APIs, prototipos etc.
 
 ```php
 <?php
@@ -234,9 +234,9 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 
-## Creating a Micro Application
+## Creando una Micro Aplicación
 
-The `Phalcon\Mvc\Micro` class is the one responsible for creating a Micro application.
+La clase `Phalcon\Mvc\Micro` es la responsable de crear una Micro Aplicación.
 
 ```php
 <?php
@@ -248,28 +248,32 @@ $app = new Micro();
 
 <a name='routing'></a>
 
-## Routing
+## Ruteo
 
-Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are defined as follows:
+Es muy fácil definir rutas en una aplicación `Phalcon\Mvc\Micro`. Las rutas se definen de la siguiente manera:
 
 ```text
-   Application -> (method/verb) -> (route url/regex, callable PHP function)
+   Aplicación -> (método/verbo) -> (url de la ruta/expresión regular, función PHP de llamada)
 ```
 
 <a name='routing-setup'></a>
 
-### Setup
+### Configuración
 
-Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[version]]/routing)]
+El enrutamiento se controla mediante el objeto `Phalcon\Mvc\Router`. [[más información](/[[language]]/[[version]]/routing)]
 
-<h5 class='alert alert-warning'>Routes must always start with <code>/</code></h5>
+<div class="alert alert-danger">
+    <p>
+        Las rutas deben empezar siempre con <code>/</code>
+    </p>
+</div>
 
-Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
+Generalmente, la ruta de inicio en una aplicación, es la ruta `/` y en la mayoría de los casos se accede mediante el método HTTP GET:
 
 ```php
 <?php
 
-// This is the start route
+// Esta es la ruta inicial
 $app->get(
     '/',
     function () {
@@ -280,16 +284,16 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-### Application object
+### El Objeto de la Aplicación
 
-Routes can be set using the `Phalcon\Mvc\Micro` application object as follows:
+Las rutas se pueden definir mediante el objeto de aplicación `Phalcon\Mvc\Micro`, de la siguiente manera:
 
 ```php
 use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Matches a GET request
+// Captura consultas GET 
 $app->get(
     '/orders/display/{name}',
     function ($name) {
@@ -300,9 +304,9 @@ $app->get(
 
 <a name='routing-setup-router'></a>
 
-### Router object
+### El Objeto Ruoter
 
-You can also create a `Phalcon\Mvc\Router` object, setting the routes there and then injecting it in the dependency injection container.
+También puedes crear un objeto `Phalcon\Mvc\Router`, establece las rutas en el y luego debes inyectarlo en el contenedor del inyector de dependencias.
 
 ```php
 use Phalcon\Mvc\Micro;
@@ -321,35 +325,35 @@ $app = new Micro();
 $app->setService('router', $router, true);
 ```
 
-Setting up your routes using the `Phalcon\Mvc\Micro` applications verb methods (`get`, `post`, etc.) is much easier than setting up a router object with relevant routes and then injecting it in the application.
+Configurar las rutas usando los métodos (`get`, `post`, etc.) del objeto `Phalcon\Mvc\Micro` de micro aplicaciones es mucho más fácil que crear un objeto de enrutador con rutas pertinentes y luego inyectarla en la aplicación.
 
-Each method has its advantages and disadvantages. It all depends on the design and needs of your application.
+Cada método tiene sus ventajas y desventajas. Todo depende del diseño y necesidades de tu aplicación.
 
 <a name='rewrite-rules'></a>
 
-## Rewrite Rules
+## Reglas de Reescritura
 
-In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
+Para que las rutas funcionen, ciertos cambios de configuración deben hacerse en la configuración de tu servidor web para cada sitio web en particular.
 
-Those changes are outlined in the [rewrite rules](/[[language]]/[[version]]/rewrite-rules).
+Estos cambios están descritos en las reglas de reescritura de [Apache](http://httpd.apache.org/docs/current/rewrite/) o [NGINX](https://www.nginx.com/blog/creating-nginx-rewrite-rules/), dependiendo del servidor que este utilizado.
 
 <a name='routing-handlers'></a>
 
-## Handlers
+## Manejadores
 
-Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
+Los Manejadores (Handlers), son piezas de código accesibles que están vinculados a una ruta. Cuando una ruta es igualada, el manejador es ejecutado con todos los parámetros definidos. Un manejador es cualquier código accesible que existe en PHP.
 
 <a name='routing-handlers-definitions'></a>
 
-### Definitions
+### Definiciones
 
-Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
+Phalcon ofrece varias formas de conectar un manejador a una ruta. Las necesidades de tu aplicación y su diseño así como el estilo de codificación serán los factores que influyan en la manera que implementes esto.
 
 <a name='routing-handlers-anonymous-function'></a>
 
-#### Anonymous Function
+#### Funciones Anónimas
 
-Finally we can use an anonymous function (as seen above) to handle the request
+Finalmente podemos utilizar una función anónima (como se ve arriba) para atender la solicitud
 
 ```php
 $app->get(
@@ -360,7 +364,7 @@ $app->get(
 );
 ```
 
-Accessing the `$app` object inside the anonymous function can be achieved by injecting it as follows:
+Acceder al objeto `$app` dentro de la función anónima puede lograrse mediante la inyección de esta, de la siguiente manera:
 
 ```php
 $app->get(
@@ -375,12 +379,12 @@ $app->get(
 
 <a name='routing-handlers-function'></a>
 
-#### Function
+#### Función
 
-We can define a function as our handler and attach it to a specific route.
+Podemos definir una función como nuestro manejador y adjuntarlo a una ruta específica.
 
 ```php
-// With a function
+// Con una función
 function order_display($name) {
     echo "<h1>This is order: {$name}!</h1>";
 }
@@ -393,9 +397,9 @@ $app->get(
 
 <a name='routing-handlers-static-method'></a>
 
-#### Static Method
+#### Método Estático
 
-We can also use a static method as our handler as follows:
+También podemos usar un método estático como nuestro manejador, como se muestra a continuación:
 
 ```php
 class OrdersClass
@@ -413,9 +417,9 @@ $app->get(
 
 <a name='routing-handlers-object-method'></a>
 
-#### Method in an Object
+#### Método en un Objeto
 
-We can also use a method in an object:
+También podemos usar un método en un objeto:
 
 ```php
 class OrdersClass
@@ -437,11 +441,11 @@ $app->get(
 
 <a name='routing-handlers-controllers'></a>
 
-#### Controllers
+#### Controladores
 
-With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
+Con `Phalcon\Mvc\Micro` puedes crear micro o medianas aplicaciones. Estas últimas utilizan la arquitectura micro pero se amplían para utilizar más características que las aplicaciones Micro pero no tantas como lo hace una aplicación completa.
 
-In medium applications you can organize handlers in controllers.
+En aplicaciones medianas puedes organizar los manejadores en los controladores.
 
 ```php
 <?php
@@ -450,22 +454,22 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $orders = new MicroCollection();
 
-// Set the main handler. ie. a controller instance
+// Establece el manejador principal. Por ejemplo, la instancia de un controlador
 $orders->setHandler(new OrdersController());
 
-// Set a common prefix for all routes
+// Establece un prefijo común para todas la rutas
 $orders->setPrefix('/orders');
 
-// Use the method 'index' in OrdersController
+// Usa el método 'index' en OrdersController
 $orders->get('/', 'index');
 
-// Use the method 'show' in OrdersController
+// Usa el método 'show' en OrdersController
 $orders->get('/display/{slug}', 'show');
 
 $app->mount($orders);
 ```
 
-The `OrdersController` might look like this:
+El `OrdersController` podría tener este aspecto:
 
 ```php
 <?php
@@ -486,7 +490,7 @@ class OrdersController extends Controller
 }
 ```
 
-Since our controllers extend the `Phalcon\Mvc\Controller`, all the dependency injection services are available with their respective registration names. For example:
+Puesto que nuestros controladores extienden de la clase `Phalcon\Mvc\Controller`, todos los servicios de la inyección de dependencias están disponibles con sus nombres de registro respectivos. Por ejemplo:
 
 ```php
 <?php
@@ -512,11 +516,11 @@ class OrdersController extends Controller
 
 <a name='routing-handlers-controllers-lazy-loading'></a>
 
-### Lazy Loading
+### Carga Perezosa (Lazy Load)
 
-In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
+Con el fin de aumentar el rendimiento, podrías considerar aplicar la Carga Perezosa (Lazy Load) para tus controladores (handlers). El controlador será cargado solamente si la ruta pertinente es vinculada.
 
-Lazy loading can be easily achieved when setting your handler in your `Phalcon\Mvc\Micro\Collection`:
+La carga perezosa puede lograrse fácilmente cuando el manejador es establecido en una `Phalcon\Mvc\Micro\Collection`:
 
 ```php
 $orders->setHandler('OrdersController', true);
@@ -525,11 +529,11 @@ $orders->setHandler('Blog\Controllers\OrdersController', true);
 
 <a name='routing-handlers-controllers-lazy-loading-use-case'></a>
 
-#### Use case
+#### Casos de uso
 
-We are developing an API for an online store. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
+Desarrollaremos una API para una tienda en línea. Los puntos de acceso son `/users`, `/orders` y `/products`. Cada uno de los puntos de acceso se registran usando los manejadores, y cada manejador es un controlador con las acciones pertinentes.
 
-The controllers that we use as handlers are as follows:
+Los controladores que usaremos como manejadores son los siguientes:
 
 ```php
 <?php
@@ -576,14 +580,14 @@ class ProductsController extends Controller
 }
 ```
 
-We register the handlers:
+Registraremos los manejadores:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
-// Users handler
+// Manejador Users
 $users = new MicroCollection();
 $users->setHandler(new UsersController());
 $users->setPrefix('/users');
@@ -591,7 +595,7 @@ $users->get('/get/{id}', 'get');
 $users->get('/add/{payload}', 'add');
 $app->mount($users);
 
-// Orders handler
+// Manejador Orders
 $orders = new MicroCollection();
 $orders->setHandler(new OrdersController());
 $orders->setPrefix('/users');
@@ -599,7 +603,7 @@ $orders->get('/get/{id}', 'get');
 $orders->get('/add/{payload}', 'add');
 $app->mount($orders);
 
-// Products handler
+// Manejador Products
 $products = new MicroCollection();
 $products->setHandler(new ProductsController());
 $products->setPrefix('/products');
@@ -608,49 +612,49 @@ $products->get('/add/{payload}', 'add');
 $app->mount($products);
 ```
 
-This implementation loads each handler in turn and mounts it in our application object. The issue with this approach is that each request will result to only one endpoint and therefore one class method executed. The remaining methods/handlers will just remain in memory without being used.
+Esta implementación carga cada controlador a su vez y lo monta en nuestro objeto de aplicación. El problema con este enfoque es que cada petición dará lugar a sólo un punto final y por lo tanto de la ejecución de un método de la clase. Los métodos/manejadores restantes sólo permanecerán en la memoria sin ser utilizados.
 
-Using lazy loading we reduce the number of objects loaded in memory and as a result our application uses less memory.
+Utilizando Carga Perezosa, podemos reducir el número de objetos cargados en memoria y como resultado nuestra aplicación utiliza menos memoria.
 
-The above implementation changes if we want to use lazy loading as follows:
+La implementación anterior cambia si queremos usar la carga perezosa de la siguiente manera:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
-// Users handler
+// Manejador Users
 $users = new MicroCollection();
-$users->setHandler(new UsersController(), true);
+$users->setHandler('UsersController', true);
 $users->setPrefix('/users');
 $users->get('/get/{id}', 'get');
 $users->get('/add/{payload}', 'add');
 $app->mount($users);
 
-// Orders handler
+// Manejador Orders
 $orders = new MicroCollection();
-$orders->setHandler(new OrdersController(), true);
+$orders->setHandler('OrdersController', true);
 $orders->setPrefix('/users');
 $orders->get('/get/{id}', 'get');
 $orders->get('/add/{payload}', 'add');
 $app->mount($orders);
 
-// Products handler
+// Manejador Products
 $products = new MicroCollection();
-$products->setHandler(new ProductsController(), true);
+$products->setHandler('ProductsController', true);
 $products->setPrefix('/products');
 $products->get('/get/{id}', 'get');
 $products->get('/add/{payload}', 'add');
 $app->mount($products);
 ```
 
-Using this simple change in implementation, all handlers remain uninstantiated until requested by a caller. Therefore whenever a caller requests `/orders/get/2`, our application will instantiate the `OrdersController` and call the `get` method in it. Our application now uses less resources than before.
+Con este simple cambio en la aplicación, todos los manejadores permanecen sin ser instanciados hasta que son solicitados. Por lo tanto cuando alguien hace una petición a `/orders/get/2`, nuestra aplicación crea una instancia de `OrdersController` y llama al método `get`. Nuestra aplicación ahora consume menos recursos que antes.
 
 <a name='routing-handlers-not-found'></a>
 
-### Not found (404)
+### No encontrado (404)
 
-Any route that has not been matched in our `Phalcon\Mvc\Micro` application will cause it to try and execute the handler defined with the `notFound` method. Similar to other methods/verbs (`get`, `post` etc.), you can register a handler in the `notFound` method which can be any callable PHP function.
+Cualquier ruta que no haya sido vinculada en nuestra aplicación `Phalcon\Mvc\Micro` hará que se intente ejecutar el manejador definido con el método `notFound`. Similar a otros métodos/verbos (`get`, `post` etc.), puedes registrar un manejador en el método `notFound` que puede ser cualquier función PHP accesible.
 
 ```php
 <?php
@@ -667,19 +671,19 @@ $app->notFound(
 );
 ```
 
-You can also handle routes that have not been matched (404) with Middleware discussed below.
+También puede manejar las rutas que no han sido vinculadas (404) con Middleware, este se discute a continuación.
 
 <a name='routing-verbs'></a>
 
-## Methods - Verbs
+## Métodos - Verbos
 
-The `Phalcon\Mvc\Micro` application provides a set of methods to bind the HTTP method with the route it is intended to.
+La aplicación `Phalcon\Mvc\Micro` proporciona un conjunto de métodos para enlazar el método HTTP con la ruta que se pretende.
 
 <a name='routing-verbs-delete'></a>
 
 ### delete
 
-Matches if the HTTP method is `DELETE` and the route is `/api/products/delete/{id}`
+Coincide si el método HTTP es `DELETE` y la ruta es `/api/products/delete/{id}`
 
 ```php
     $app->delete(
@@ -692,7 +696,7 @@ Matches if the HTTP method is `DELETE` and the route is `/api/products/delete/{i
 
 ### get
 
-Matches if the HTTP method is `GET` and the route is `/api/products`
+Coincide si el método HTTP es `GET` y la ruta es `/api/products/`
 
 ```php
     $app->get(
@@ -705,10 +709,10 @@ Matches if the HTTP method is `GET` and the route is `/api/products`
 
 ### head
 
-Matches if the HTTP method is `HEAD` and the route is `/api/products`
+Coincide si el método HTTP es `HEAD` y la ruta es `/api/products/`
 
 ```php
-    $app->get(
+    $app->head(
         '/api/products',
         'get_products'
     );
@@ -718,7 +722,7 @@ Matches if the HTTP method is `HEAD` and the route is `/api/products`
 
 ### map
 
-Map allows you to attach the same endpoint to more than one HTTP method. The example below matches if the HTTP method is `GET` or `POST` and the route is `/repos/store/refs`
+Map permite adjuntar el mismo punto de acceso a más de un método HTTP. El ejemplo a continuación funciona si el método HTTP es `GET` o `POST` y la ruta es `/repos/store/refs`
 
 ```php
     $app
@@ -738,7 +742,7 @@ Map allows you to attach the same endpoint to more than one HTTP method. The exa
 
 ### options
 
-Matches if the HTTP method is `OPTIONS` and the route is `/api/products/options`
+Coincide si el método HTTP es `OPTIONS` y la ruta es `/api/products/options`
 
 ```php
     $app->options(
@@ -751,7 +755,7 @@ Matches if the HTTP method is `OPTIONS` and the route is `/api/products/options`
 
 ### patch
 
-Matches if the HTTP method is `PATCH` and the route is `/api/products/update/{id}`
+Coincide si el método HTTP es `PATCH` y la ruta es `/api/products/update/{id}`
 
 ```php
     $app->patch(
@@ -764,7 +768,7 @@ Matches if the HTTP method is `PATCH` and the route is `/api/products/update/{id
 
 ### post
 
-Matches if the HTTP method is `POST` and the route is `/api/products/add`
+Coincide si el método HTTP es `POST` y la ruta es `/api/products`
 
 ```php
     $app->post(
@@ -777,7 +781,7 @@ Matches if the HTTP method is `POST` and the route is `/api/products/add`
 
 ### put
 
-Matches if the HTTP method is `PUT` and the route is `/api/products/update/{id}`
+Coincide si el método HTTP es `PUT` y la ruta es `/api/products/update/{id}`
 
 ```php
     $app->put(
@@ -788,9 +792,9 @@ Matches if the HTTP method is `PUT` and the route is `/api/products/update/{id}`
 
 <a name='routing-collections'></a>
 
-## Collections
+## Colecciones
 
-Collections are a handy way to group collections attached to a handler and a common prefix (if needed). For a hypothetical `/orders` endpoint we could have the following endpoints:
+Las colecciones son una forma útil de agrupar colecciones vinculadas un manejador y un prefijo común (si es necesario). Para un hipotético punto de acceso `/orders` podríamos tener los siguientes puntos de acceso:
 
     /orders/get/{id}
     /orders/add/{payload}
@@ -798,7 +802,7 @@ Collections are a handy way to group collections attached to a handler and a com
     /orders/delete/{id}
     
 
-All of those routes are handled by our `OrdersController`. We set up our routes with a collection as follows:
+Todas estas rutas son manejadas por nuestro `OrdersController`. Hemos establecido nuestras rutas con una colección de la siguiente manera:
 
 ```php
 <?php
@@ -818,13 +822,17 @@ $orders->get('/delete/{id}', 'deleteAction');
 $app->mount($orders);
 ```
 
-<h5 class='alert alert-warning'>The name that we bind each route has a suffix of <code>Action</code>. This is not necessary, your method can be called anything you like.</h5>
+<div class='alert alert-warning'>
+    <p>
+        El nombre que con el que unimos cada ruta tiene un sufijo de <code>Action</code>. Esto no es necesario, el método puede ser llamado de cualquier forma que te guste.
+    </p>
+</div>
 
 <a name='routing-parameters'></a>
 
-## Parameters
+## Parámetros
 
-We have briefly seen above how parameters are defined in the routes. Parameters are set in a route string by enclosing the name of the parameter in brackets.
+Hemos visto brevemente cómo están definidos los parámetros en las rutas. Los parámetros se establecen en una cadena de ruta incluyendo el nombre del parámetro entre llaves.
 
 ```php
 $app->get(
@@ -835,10 +843,10 @@ $app->get(
 );
 ```
 
-We can also enforce certain rules for each parameter by using regular expressions. The regular expression is set after the name of the parameter, separating it with `:`.
+También podemos aplicar ciertas reglas para cada parámetro utilizando expresiones regulares. La expresión regular se encuentra después del nombre del parámetro, separados por un `:`.
 
 ```php
-// Match the order id
+// Coincidir por id de orden
 $app->get(
     '/orders/display/{id:[0-9]+}',
     function ($id) {
@@ -846,7 +854,7 @@ $app->get(
     }
 );
 
-// Match a numeric (4) year and a title (alpha)
+// Coincidir por 4 números y un título alfabético
 $app->get(
     '/posts/{year:[0-9][4]}/{title:[a-zA-Z\-]+}',
     function ($year, $title) {
@@ -856,13 +864,13 @@ $app->get(
 );
 ```
 
-Additional information: `Phalcon\Mvc\Router` [Info](/[[language]]/[[version]]/routing)
+Información adicional: `Phalcon\Mvc\Router` [Info](/[[language]]/[[version]]/routing)
 
 <a name='routing-redirections'></a>
 
-## Redirections
+## Redirecciones
 
-You can redirect one matched route to another using the `Phalcon\Http\Response` object, just like in a full application.
+Se puede redireccionar una ruta coincidente a otra mediante el objeto `Phalcon\Http\Response`, al igual que en una aplicación completa.
 
 ```php
 $app->post('/old/url',
@@ -879,9 +887,9 @@ $app->post('/new/welcome',
 );
 ```
 
-**Note** we have to pass the `$app` object in our anonymous function to have access to the `request` object.
+**Nota** tenemos que pasar el objeto `$app` en nuestra función anónima para tener acceso al objeto `request`.
 
-When using controllers as handlers, you can perform the redirect just as easy:
+Cuando utilices controladores como manejadores, puedes realizar la redirección así de fácil:
 
 ```php
 <?php
@@ -902,30 +910,32 @@ class UsersController extends Controller
 }
 ```
 
-Finally, you can perform redirections in your middleware (if you are using it). An example is below in the relevant section.
+Por último, puedes realizar redirecciones en el middleware (si lo usas). Un ejemplo se muestra a continuación en la sección correspondiente.
 
 <a name='routing-urls-for-routes'></a>
 
-## URLs for Routes
+## URLs para Rutas
 
-Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process. * First we need to name our route. This can be achieved with the `setName()` method that is exposed from the methods/verbs in our application (`get`, `post`, etc.);
+Otra característica de las rutas es la creación de rutas nombradas y la generación de URLs para estas rutas. Se trata de un proceso de dos pasos.
+
+* Primero tenemos que nombrar nuestra ruta. Esto puede lograrse con el método `setName()` que es presentado por los métodos/verbos (`get`, `post`, etc.) en nuestra aplicación
 
 ```php
-// Set a route with the name 'show-order'
+// Establecer una ruta con el nombre 'show-order'
 $app
     ->get(
         '/orders/display/{id}',
         function ($id) use ($app) {
-            // ... Find the order and show it
+            // ... Encontrar la orden y mostrarla
         }
     )
     ->setName('show-order');
 ```
 
-- We need to use the `Phalcon\Mvc\Url` component to generate URLs for the named routes.
+* Segundo tenemos que utilizar el componente `Phalcon\Mvc\Url` para generar las URLs para las rutas nombradas.
 
 ```php
-// Use the named route and produce a URL from it
+// Usar el nombre de ruta y generar una URL desde esta
 $app->get(
     '/',
     function () use ($app) {
@@ -946,9 +956,9 @@ $app->get(
 
 <a name='dependency-injector'></a>
 
-# Dependency Injector
+# Inyector de Dependencias
 
-When a micro application is created, a `Phalcon\Di\FactoryDefault` services container is create implicitly.
+Cuando se crea una micro aplicación, un contenedor de servicios de `Phalcon\Di\FactoryDefault` se crean implícitamente.
 
 ```php
 <?php
@@ -965,7 +975,7 @@ $app->get(
 );
 ```
 
-You can also create a Di container yourself, and assign it to the micro application, therefore manipulating the services depending on the needs of your application.
+También puede crear tu propio contenedor Di y asignarlo a la micro aplicación, por lo tanto, puedes manipular los servicios según las necesidades de tu aplicación.
 
 ```php
 <?php
@@ -990,7 +1000,7 @@ $app->setDI($di);
 $app->get(
     '/',
     function () use ($app) {
-        // Read a setting from the config
+        // Leer una configuración desde el config
         echo $app->config->app_name;
     }
 );
@@ -1003,17 +1013,17 @@ $app->post(
 );
 ```
 
-You can also use the array syntax to register services in the dependency injection container from the application object:
+También puedes utilizar la sintaxis de arreglos para registrar servicios en el contenedor de inyección de dependencias desde el objeto de la aplicación:
 
 ```php
-<br /><?php
+<?php
 
 use Phalcon\Mvc\Micro;
 use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
 
 $app = new Micro();
 
-// Setup the database service
+// Establece el servicio de Base de Datos
 $app['db'] = function () {
     return new MysqlAdapter(
         [
@@ -1039,15 +1049,15 @@ $app->get(
 
 <a name='responses'></a>
 
-# Responses
+# Respuestas
 
-A micro application can return many different types of responses. Direct output, use a template engine, calculated data, view based data, JSON etc.
+Una micro aplicación puede devolver diferentes tipos de respuestas. Salida directa, mediante un motor de plantillas, datos calculados, datos basados en vistas, JSON, etc.
 
-Handlers may return raw responses using plain text, `Phalcon\Http\Response` object or a custom built component that implements the `Phalcon\Http\ResponseInterface`.
+Los Manejadores pueden devolver respuestas simples utilizando texto sin formato, mediante el objeto `Phalcon\Http\Response` o con un componente personalizado que implemente `Phalcon\Http\ResponseInterface`.
 
 <a name='responses-direct-output'></a>
 
-## Direct output
+## Salida Directa
 
 ```php
 $app->get(
@@ -1060,7 +1070,7 @@ $app->get(
 
 <a name='responses-include'></a>
 
-## Including another file
+## Incluir Otro Archivo
 
 ```php
 $app->get(
@@ -1073,7 +1083,7 @@ $app->get(
 
 <a name='responses-direct-output-json'></a>
 
-## Direct output JSON
+## Salida Directa JSON
 
 ```php
 $app->get(
@@ -1091,24 +1101,24 @@ $app->get(
 
 <a name='responses-new-response-object'></a>
 
-## New Response object
+## Nuevo Objeto Response
 
-You can use the `setContent` method of the response object to return the response back:
+Puedes utilizar el método `setContent` del objeto Response para devolver la respuesta nuevamente:
 
 ```php
 $app->get(
     '/show/data',
     function () {
-        // Create a response
+        // Crear una respuesta
         $response = new Phalcon\Http\Response();
 
-        // Set the Content-Type header
+        // Establecer la cabecera Content-Type
         $response->setContentType('text/plain');
 
-        // Pass the content of a file
+        // Pasar el contenido del archivo
         $response->setContent(file_get_contents('data.txt'));
 
-        // Return the response
+        // Devolver la respuesta
         return $response;
     }
 );
@@ -1116,19 +1126,19 @@ $app->get(
 
 <a name='responses-application-response'></a>
 
-## Application Response
+## Respuesta de la Aplicación
 
-You can also use the `Phalcon\Http\Response` object to return responses to the caller. The response object has a lot of useful methods that make returning respones much easier.
+También puedes utilizar el objeto `Phalcon\Http\Response` para devolver las respuestas al objeto que realizó la llamada. El objeto Response tiene muchos métodos útiles que hacen que devolver las respuestas sea mucho más fácil.
 
 ```php
 $app->get(
     '/show/data',
     function () use ($app) {
-        // Set the Content-Type header
+        // Establecer la cabecera Content-Type
         $app->response->setContentType('text/plain');
         $app->response->sendHeaders();
 
-        // Print a file
+        // Imprimir un archivo
         readfile('data.txt');
     }
 );
@@ -1136,9 +1146,9 @@ $app->get(
 
 <a name='responses-return-application-response'></a>
 
-## Return Application Response
+## Devolver Respuestas de la Aplicación
 
-A different approach returning data back to the caller is to return the response object directly from the application. When responses are returned by handlers they are automatically sent by the application.
+Un enfoque diferente para regresar datos al objeto que realizó la llamada, es devolver el objeto Response directamente desde la aplicación. Cuando las respuestas son devueltas por los manejadores, éstas se envían automáticamente por la aplicación.
 
 ```php
 <?php
@@ -1148,7 +1158,7 @@ use Phalcon\Http\Response;
 
 $app = new Micro();
 
-// Return a response
+// Devuelve una respuesta
 $app->get(
     '/welcome/index',
     function () {
@@ -1166,7 +1176,7 @@ $app->get(
 
 ## JSON
 
-JSON can be sent back just as easy using the `Phalcon\Http\Response` object:
+Devolver datos JSON es muy sencillo, solo debes usar el objeto `Phalcon\Http\Response`:
 
 ```php
 $app->get(
@@ -1189,30 +1199,30 @@ $app->get(
 
 <a name='events'></a>
 
-# Events
+# Eventos
 
-A `Phalcon\Mvc\Micro` application works closely with a `Phalcon\Events\Manager` if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
+Una aplicación `Phalcon\Mvc\Micro` trabaja muy de cerca con `Phalcon\Events\Manager`, si este está presente, para activar eventos que puedan ser utilizados a través de nuestra aplicación. El tipo de estos eventos es `micro`. Estos eventos se activan en nuestra aplicación y pueden adjuntarse a los manejadores pertinentes que realizan las acciones que son necesitadas por nuestra aplicación.
 
 <a name='events-available-events'></a>
 
-## Available events
+## Eventos Disponibles
 
-The following events are supported:
+Son soportados los siguientes eventos:
 
-| Event Name         | Triggered                                                         | Can stop operation? |
-| ------------------ | ----------------------------------------------------------------- |:-------------------:|
-| beforeHandleRoute  | Main method called; Routes have not been checked yet              |         Yes         |
-| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |         Yes         |
-| afterExecuteRoute  | Handler just finished running                                     |         No          |
-| beforeNotFound     | Route has not been found                                          |         Yes         |
-| afterHandleRoute   | Route just finished executing                                     |         Yes         |
-| afterBinding       | Triggered after models are bound but before executing the handler |         Yes         |
+| Nombre de Evento   | Activador                                                                             | ¿Puede detener la operación? |
+| ------------------ | ------------------------------------------------------------------------------------- |:----------------------------:|
+| beforeHandleRoute  | Método principal llamado; Las rutas no han sido verificadas aún                       |              Sí              |
+| beforeExecuteRoute | Coincidencia en la Ruta, Manejador válido, el Manejador aún no ha sido ejecutado      |              Sí              |
+| afterExecuteRoute  | Manejador acaba de terminar de correr                                                 |              No              |
+| beforeNotFound     | Ruta no ha sido encontrada                                                            |              Sí              |
+| afterHandleRoute   | Ruta acaba de terminar su ejecución                                                   |              Sí              |
+| afterBinding       | Activa después de que los modelos están enlazados pero antes de ejecutar el Manejador |              Sí              |
 
 <a name='events-available-events-authentication'></a>
 
-### Authentication example
+### Ejemplo de Autenticación
 
-You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
+Puede comprobar fácilmente si un usuario se ha autenticado o no mediante el evento `beforeExecuteRoute`. En el ejemplo siguiente, explicamos cómo controlar la seguridad de las aplicaciones usando eventos:
 
 ```php
 <?php
@@ -1221,7 +1231,7 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 
-// Create a events manager
+// Crear un gestor de eventos
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
@@ -1233,7 +1243,7 @@ $eventsManager->attach(
             $app->response->redirect('/');
             $app->response->sendHeaders();
 
-            // Return (false) stop the operation
+            // Devolver (false) y detener la operación
             return false;
         }
     }
@@ -1241,15 +1251,15 @@ $eventsManager->attach(
 
 $app = new Micro();
 
-// Bind the events manager to the app
+// Enlazar el gestor de eventos a la aplicación
 $app->setEventsManager($eventsManager);
 ```
 
 <a name='events-available-events-not-found'></a>
 
-### Not found example
+### Ejemplo de Not Found
 
-You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
+Otro evento incorporado que se puede utilizar para implementar la lógica de negocio es `beforeNotFound`. En el ejemplo siguiente se muestra una de las maneras de manejar las solicitudes de una dirección inexistente:
 
 ```php
 <?php
@@ -1258,7 +1268,7 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 
-// Create a events manager
+// Crear un gestor de eventos
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
@@ -1273,7 +1283,7 @@ $eventsManager->attach(
 
 $app = new Micro();
 
-// Bind the events manager to the app
+// Enlazar el gestor de eventos a la aplicación
 $app->setEventsManager($eventsManager);
 ```
 
@@ -1281,37 +1291,41 @@ $app->setEventsManager($eventsManager);
 
 # Middleware
 
-Middleware are classes that can be attached to your application and introduce another layer where business logic can exist. They run sequentially, according to the order they are registered and not only improve mainainability, by encapsulating specific functionality, but also performance. A middleware class can stop execution when a particular business rule has not been satisfied, thus allowing the application to exit early without executing the full cycle of a request.
+Middleware son clases que pueden adjuntarse a su solicitud y presentar otra capa donde la lógica de negocio puede existir. Se ejecutan secuencialmente, según el orden que están registrados y no sólo mejoran el mantenimiento, mediante el encapsulamiento de funcionalidades específicas, sino también el rendimiento. Una clase de middleware puede detener la ejecución cuando una regla de negocio particular no haya sido satisfactoria, lo que permite a la aplicación salir antes de tiempo sin ejecutar el ciclo completo de una solicitud.
 
-The presence of a `Phalcon\Events\Manager` is essential for middleware to operate, so it has to be registered in our Di container.
+La presencia de un `Phalcon\Events\Manager` es esencial para el middleware al operar, por lo que tiene estar registrado en nuestro contenedor Di.
 
 <a name='middleware-attached-events'></a>
 
-## Attached events
+## Eventos adjuntos
 
-Middleware can be attached to a micro application in 3 different events. Those are:
+Middleware se puede adjuntar a una micro aplicación en 3 diferentes eventos. Estos son:
 
-| Event  | Description                                    |
-| ------ | ---------------------------------------------- |
-| before | Before the handler has been executed           |
-| after  | After the handler has been executed            |
-| final  | After the response has been sent to the caller |
+| Evento | Descripción                                                                   |
+| ------ | ----------------------------------------------------------------------------- |
+| before | Antes de que el manejador haya sido ejecutado                                 |
+| after  | Después de que el manejador haya sido ejecutado                               |
+| final  | Después de que la respuesta ha sido enviada al componente que hizo la llamada |
 
-<h5 class='alert alert-warning'>You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.</h5>
+<div class="alert alert-warning">
+    <p>
+        Puede colocar tantas clases de middleware como quieras en cada uno de los eventos antes mencionados. Se ejecutarán secuencialmente cuando el evento es disparado.
+    </p>
+</div>
 
 <a name='middleware-attached-events-before'></a>
 
 ### before
 
-This event is perfect for stopping execution of the application if certain criteria is not met. In the below example we are checking if the user has been authenticated and stop execution with the necessary redirect.
+Este evento es perfecto para detener la ejecución de la aplicación si no se cumplen ciertos criterios. En el siguiente ejemplo comprobaremos si el usuario ha sido autenticado y detenemos la ejecución con la redirección es necesaria.
 
 ```php
 <?php
 
 $app = new Phalcon\Mvc\Micro();
 
-// Executed before every route is executed
-// Return false cancels the route execution
+// Ejecutado antes que cada route se ejecute
+// Retornar false cancela la ejecución del route
 $app->before(
     function () use ($app) {
         if (false === $app['session']->get('auth')) {
@@ -1319,7 +1333,7 @@ $app->before(
 
             $app['response']->redirect('/error');
 
-            // Return false stops the normal execution
+            // Retornamos false para detener la ejecución 
             return false;
         }
 
@@ -1332,7 +1346,7 @@ $app->before(
 
 ### after
 
-This event can be used to manipulate data or perform actions that are needed after the handler has finished executing. In the example below, we manipulate our response to send JSON back to the caller.
+Este evento puede utilizarse para manipular los datos o realizar acciones que son necesarias después de que el manejador ha terminado de ejecutarse. En el siguiente ejemplo, manipulamos nuestra respuesta para enviar un JSON al llamador.
 
 ```php
 $app->map(
@@ -1346,7 +1360,7 @@ $app->map(
 
 $app->after(
     function () use ($app) {
-        // This is executed after the route is executed
+        // Esto es ejecutado después de ejecutarse el route
         echo json_encode($app->getReturnedValue());
     }
 );
@@ -1356,7 +1370,7 @@ $app->after(
 
 ### finish
 
-This even will fire up when the whole request cycle has been completed. In the example below, we use it to clean up some cache files.
+Esto se ejecuta cuando se ha completado el ciclo de toda petición. En el ejemplo siguiente, la utilizamos para limpiar algunos archivos de caché.
 
 ```php
 $app->finish(
@@ -1370,9 +1384,9 @@ $app->finish(
 
 <a name='middleware-setup'></a>
 
-## Setup
+## Configuración
 
-Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
+Agregar un middleware para tu aplicación es muy fácil como se muestra arriba, con las llamadas al método `before`, `after` y `finish`.
 
 ```php
 $app->before(
@@ -1382,7 +1396,7 @@ $app->before(
 
             $app['response']->redirect('/error');
 
-            // Return false stops the normal execution
+            // Devolver false detiene la ejecución normal
             return false;
         }
 
@@ -1392,13 +1406,13 @@ $app->before(
 
 $app->after(
     function () use ($app) {
-        // This is executed after the route is executed
+        // Esto se ejecuta después de que la ruta es ejecutada
         echo json_encode($app->getReturnedValue());
     }
 );
 ```
 
-Attaching middleware to your application as classes and having it listen to events from the events manager can be achieved as follows:
+Agregar middleware en tu aplicación como clases y para escuchar a los eventos desde el gestor de eventos, se logra de la siguiente manera:
 
 ```php
 <?php
@@ -1411,13 +1425,13 @@ use Website\Middleware\NotFoundMiddleware;
 use Website\Middleware\ResponseMiddleware;
 
 /**
- * Create a new Events Manager.
+ * Crear un nuevo Gestor de Eventos.
  */
 $eventsManager = new Manager();
 $application   = new Micro();
 
 /**
- * Attach the middleware both to the events manager and the application
+ * Agregar el middleware tanto para el gestor de eventos como para la aplicación
  */
 $eventsManager->attach('micro', new CacheMiddleware());
 $application->before(new CacheMiddleware());
@@ -1426,29 +1440,29 @@ $eventsManager->attach('micro', new NotFoundMiddleware());
 $application->before(new NotFoundMiddleware());
 
 /**
- * This one needs to listen on the `after` event
+ * Este se necesita para escuchar al eventos `after`
  */
 $eventsManager->attach('micro', new ResponseMiddleware());
 $application->after(new ResponseMiddleware());
 
 /**
- * Make sure our events manager is in the DI container now
+ * Asegurate que el gestor de eventos esté ahora en el contenedor DI
  */
 $application->setEventsManager($eventsManager);
 
 ```
 
-We need a `Phalcon\Events\Manager` object. This can be a newly instantiated object or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one).
+Necesitamos un objeto `Phalcon\Events\Manager`. Esto puede ser una nueva instancia del objeto o podemos conseguir uno que exista en nuestro contenedor de DI (si has usado el de `FactoryDefault`).
 
-We attach every middleware class in the `micro` hook in the Events Manager. We could also be a bit more specific and attach it to say the `micro:beforeExecuteRoute` event.
+Conectamos cada clase middleware en el conector `micro` del administrador de eventos. También podríamos ser un poco más específicos y conectarlo, por ejemplo, al evento `micro:beforeExecuteRoute`.
 
-We then attach the middleware class in our application on one of the three listening events discussed above (`before`, `after`, `finish`).
+Entonces conectamos la clase de middleware en nuestra aplicación en uno de los tres eventos comentados anteriormente (`before`, `after`, `finish`).
 
 <a name='middleware-implementation'></a>
 
-## Implementation
+## Implementación
 
-Middleware can be any kind of PHP callable functions. You can organize your code whichever way you like it to implement middleware. If you choose to use classes for your middleware, you will need them to implement the `Phalcon\Mvc\Micro\MiddlewareInterface`
+Un Middleware puede ser cualquier tipo de función PHP accesible. Puedes organizar el código de cualquier modo te guste para implementar un middleware. Si eliges utilizar las clases para el middleware, necesitarás que implementen la clase `Phalcon\Mvc\Micro\MiddlewareInterface`
 
 ```php
 <?php
@@ -1459,12 +1473,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * CacheMiddleware
  *
- * Caches pages to reduce processing
+ * Caches de página para reducir el procesamiento
  */
 class CacheMiddleware implements MiddlewareInterface
 {
     /**
-     * Calls the middleware
+     * Llama al middleware
      *
      * @param Micro $application
      *
@@ -1477,7 +1491,7 @@ class CacheMiddleware implements MiddlewareInterface
 
         $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
 
-        // Check if the request is cached
+        // Verificar si la solicitud se encuentra en cache
         if ($cache->exists($key)) {
             echo $cache->get($key);
 
@@ -1491,23 +1505,23 @@ class CacheMiddleware implements MiddlewareInterface
 
 <a name='middleware-events'></a>
 
-## Events in Middleware
+## Eventos en Middleware
 
-The [events](#events) that are triggered for our application also trigger inside a class that implements the `Phalcon\Mvc\Micro\MiddlewareInterface`. This offers great flexibility and power for developers since we can interact with the request process.
+Los [eventos](#events) que se activan para nuestra aplicación también accionan eventos internamente de una clase que implementa `Phalcon\Mvc\Micro\MiddlewareInterface`. Esto ofrece una gran flexibilidad y potencial para los desarrolladores, ya que podemos interactuar con el proceso de solicitud.
 
 <a name='middleware-events-api'></a>
 
-### API example
+### Ejemplo de API
 
-Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
+Supongamos que tenemos una API que hayamos implementado con una Micro aplicación. Tendríamos que colocar diferentes clases de Middleware en la aplicación y así podríamos controlar la ejecución de la aplicación.
 
-The middleware that we will use are: * Firewall * NotFound * Redirect * CORS * Request * Response
+El middleware que usaríamos sería el siguiente: * Firewall * NotFound * Redirect * CORS * Request * Response
 
 <a name='middleware-events-api-firewall'></a>
 
 #### Firewall Middleware
 
-This middleware is attached to the `before` event of our Micro application. The purpose of this middleware is to check who is calling our API and based on a whitelist, allow them to proceed or not
+Este middleware se conecta al evento `before` de nuestra Micro aplicación. El propósito de este middleware es verificar quién está llamando nuestra API y basado en una lista blanca, para permitir que se proceda o no
 
 ```php
 <?php
@@ -1519,12 +1533,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * FirewallMiddleware
  *
- * Checks the whitelist and allows clients or not
+ * Comprueba la lista blanca y permite el acceso a los clientes o no
  */
 class FirewallMiddleware implements MiddlewareInterface
 {
     /**
-     * Before anything happens
+     * Antes que se ejecute cualquier cosa
      *
      * @param Event $event
      * @param Micro $application
@@ -1552,7 +1566,7 @@ class FirewallMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Llamar al middleware
      *
      * @param Micro $application
      *
@@ -1569,7 +1583,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 #### Not Found Middleware
 
-When this middleware is processed, this means that the requesting IP is allowed to access our application. The application will try and match the route and if not found the `beforeNotFound` event will fire. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
+Cuando se procesa este middleware, significa que la IP solicitante está autorizada a acceder a nuestra aplicación. La aplicación probará y buscará una coincidencia con la ruta y si no encuentra alguna, el evento `beforeNotFound` se activará. Cuando esto ocurra se detendrá el proceso y se devolverá al usuario la respuesta 404 pertinente. Este middleware está conectado al evento `before` de la Micro aplicación
 
 ```php
 <?php
@@ -1580,12 +1594,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * NotFoundMiddleware
  *
- * Processes the 404s
+ * Procesa los 404s
  */
 class NotFoundMiddleware implements MiddlewareInterface
 {
     /**
-     * The route has not been found
+     * La ruta no ha sido encontrada
      *
      * @returns bool
      */
@@ -1598,7 +1612,7 @@ class NotFoundMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Llama al middleware
      *
      * @param Micro $application
      *
@@ -1615,7 +1629,7 @@ class NotFoundMiddleware implements MiddlewareInterface
 
 #### Redirect Middleware
 
-We attach this middleware again to the `before` event of our Micro application because we don't want the request to proceed if the requested endpoint needs to be redirected.
+Conectamos este middleware otra vez al evento `before` de nuestra Micro aplicación porque no queremos que se procese la solicitud si del destino requerido necesita ser redirigido.
 
 ```php
 <?php
@@ -1627,12 +1641,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * RedirectMiddleware
  *
- * Checks the request and redirects the user somewhere else if need be
+ * Verificar la solicitud y redireccionar al usuario a algún lugar si se necesario
  */
 class RedirectMiddleware implements MiddlewareInterface
 {
     /**
-     * Before anything happens
+     * Antes que nada ocurra
      *
      * @param Event $event
      * @param Micro $application
@@ -1652,7 +1666,7 @@ class RedirectMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Llama al middleware
      *
      * @param Micro $application
      *
@@ -1669,7 +1683,7 @@ class RedirectMiddleware implements MiddlewareInterface
 
 #### CORS Middleware
 
-Again this middleware is attached to the `before` event of our Micro application. We need to ensure that it fires before anything happens with our application
+De nuevo, este middleware se conecta al evento `before` de nuestra Micro aplicación. Tenemos que garantizar que esto se active antes de que algo suceda con nuestra aplicación
 
 ```php
 <?php
@@ -1681,12 +1695,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * CORSMiddleware
  *
- * CORS checking
+ * Verificación CORS
  */
 class CORSMiddleware implements MiddlewareInterface
 {
     /**
-     * Before anything happens
+     * Antes de que algo suceda
      *
      * @param Event $event
      * @param Micro $application
@@ -1714,10 +1728,12 @@ class CORSMiddleware implements MiddlewareInterface
                 'Content-Disposition, Content-Type, Authorization'
             )
             ->setHeader('Access-Control-Allow-Credentials', 'true');
+
+        return true;
     }
 
     /**
-     * Calls the middleware
+     * Llamar al middleware
      *
      * @param Micro $application
      *
@@ -1734,7 +1750,7 @@ class CORSMiddleware implements MiddlewareInterface
 
 #### Request Middleware
 
-This middleware is receiving a JSON payload and checks it. If the JSON payload is not valid it will stop execution.
+Este middleware está recibiendo una carga JSON y la revisa. Si la carga JSON no es válida detiene la ejecución.
 
 ```php
 <?php
@@ -1746,12 +1762,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * RequestMiddleware
  *
- * Check incoming payload
+ * Verifica la carga que se está recibiendo
  */
 class RequestMiddleware implements MiddlewareInterface
 {
     /**
-     * Before the route is executed
+     * Antes de que la ruta sea ejecutada
      *
      * @param Event $event
      * @param Micro $application
@@ -1773,7 +1789,7 @@ class RequestMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Calls the middleware
+     * Realiza la llamada al Middleware
      *
      * @param Micro $application
      *
@@ -1790,9 +1806,13 @@ class RequestMiddleware implements MiddlewareInterface
 
 #### Response Middleware
 
-This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
+Este middleware es responsable de manipular nuestra respuesta y enviarla de vuelta a la entidad que lo llamó como una cadena JSON. Por lo tanto tenemos que conectar al evento `after` de nuestra Micro aplicación.
 
-<h5 class='alert alert-warning'>We are going to be using the <code>call</code> method for this middleware, since we have nearly executed the whole request cycle.</h5>
+<div class='alert alert-warning'>
+    <p>
+        Usaremos el método <code>call</code> de este middleware, ya que casi hemos ejecutado el ciclo completo de la petición.
+    </p>
+</div>
 
 ```php
 <?php
@@ -1803,12 +1823,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
 * ResponseMiddleware
 *
-* Manipulates the response
+* Se manipula la respuesta
 */
 class ResponseMiddleware implements MiddlewareInterface
 {
      /**
-      * Before anything happens
+      * Antes que cualquier cosa ocurra
       *
       * @param Micro $application
       *
@@ -1833,11 +1853,15 @@ class ResponseMiddleware implements MiddlewareInterface
 
 <a name='models'></a>
 
-# Models
+# Modelos
 
-Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
+Los Modelos pueden utilizarse en Micro aplicaciones, siempre y cuando podamos indicar a la aplicación como puede encontrar las clases relevantes con un cargador automático.
 
-<h5 class='alert alert-warning'>The relevant <code>db</code> service must be registered in your Di container.</h5>
+<div class="alert alert-warning">
+    <p>
+        El servicio <code>db</code> debe estar registrado en el contenedor de Di.
+    </p>
+</div>
 
 ```php
 <?php
@@ -1869,9 +1893,9 @@ $app->handle();
 
 <a name='model-instances'></a>
 
-# Inject model instances
+# Inyectando instancias de modelos
 
-By using the `Phalcon\Mvc\Model\Binder` class you can inject model instances into your routes:
+Mediante el uso de la clase `Phalcon\Mvc\Model\Binder` puedes inyectar instancias de modelos en tus rutas:
 
 ```php
 <?php
@@ -1890,22 +1914,22 @@ $app->setModelBinder(new \Phalcon\Mvc\Model\Binder());
 $app->get(
     "/products/{product:[0-9]+}",
     function (Products $product) {
-        // do anything with $product object
+        // haz lo que necesites con el objeto $product
     }
 );
 
 $app->handle();
 ```
 
-Since Binder object is using internally Reflection Api which can be heavy, there is ability to set a cache so as to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
+Objeto Binder internamente utiliza la Api Reflection lo cual puede ser muy pesado, pero se puede configurar un caché para acelerar el proceso. Esto puede hacerse mediante el segundo argumento de `setModelBinder()` que también puede aceptar un nombre de servicio o simplemente pasando una instancia de caché al constructor `Binder`.
 
-Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/products/1`.
+Actualmente Binder utiliza solamente de la clave primaria de los modelos para realizar un `findFirst()`. Una ruta de ejemplo para lo anterior podría ser `/products/1`.
 
 <a name='views'></a>
 
-# Views
+# Vistas
 
-`Phalcon\Mvc\Micro` does not have inherently a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
+`Phalcon\Mvc\Micro` no tiene inherentemente un servicio de vistas. Sin embargo podemos utilizar el componente `Phalcon\Mvc\View\Simple` para crear una vista.
 
 ```php
 <?php
@@ -1920,11 +1944,11 @@ $app['view'] = function () {
     return $view;
 };
 
-// Return a rendered view
+// Devolver una vista
 $app->get(
     '/products/show',
     function () use ($app) {
-        // Render app/views/products/show.phtml passing some variables
+        // Construir app/views/products/show.phtml pasando algunas variables
         echo $app['view']->render(
             'products/show',
             [
@@ -1936,7 +1960,11 @@ $app->get(
 );
 ```
 
-<h5 class='alert alert-warning'>The above example uses the <code>Phalcon\\Mvc\\View\\Simple</code> component, which uses relative paths instead of controllers and actions. You can use the <code>Phalcon\\Mvc\\View</code> component instead, but to do so you will need to change the parameters passed to <code>render()</code></h5>
+<div class='alert alert-warning'>
+    <p>
+        El ejemplo anterior utiliza el componente <a href="/[[language]]/[[version]]/Phalcon_Mvc_View_Simple">Phalcon\Mvc\View\Simple</a>, que utiliza rutas relativas en lugar de los controladores y acciones. Puedes utilizar el componente <a href="/[[language]]/[[version]]/Phalcon_Mvc_View">Phalcon\Mvc\View</a> en su lugar, pero para ello tendrás que cambiar los parámetros pasados a <code>render()</code>
+    </p>
+</div>
 
 ```php
 <?php
@@ -1951,11 +1979,11 @@ $app['view'] = function () {
     return $view;
 };
 
-// Return a rendered view
+// Devuelve una vista
 $app->get(
     '/products/show',
     function () use ($app) {
-        // Render app/views/products/show.phtml passing some variables
+        // Construye app/views/products/show.phtml pasando algunas variables
         echo $app['view']->render(
             'products',
             'show',
@@ -1970,9 +1998,9 @@ $app->get(
 
 <a name='error-handling'></a>
 
-# Error Handling
+# Manejo de Errores
 
-The `Phalcon\Mvc\Micro` application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
+La aplicación `Phalcon\Mvc\Micro` también tiene un método `error`, que puede utilizarse para atrapar los errores que se originan de las excepciones. El siguiente fragmento de código muestra el uso básico de esta función:
 
 ```php
 <?php

@@ -18,7 +18,7 @@ $subscriber->save();
 
 ```
 
-## Methods
+## Metody
 
 public **getValue** ()
 

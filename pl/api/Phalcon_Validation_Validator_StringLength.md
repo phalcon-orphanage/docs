@@ -11,7 +11,10 @@ Validates that a string has the specified maximum and minimum constraints The te
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\StringLength as StringLength;
+
+$validator = new Validation();
 
 $validation->add(
     "name_last",
@@ -54,7 +57,7 @@ $validation->add(
 
 ```
 
-## Methods
+## Metody
 
 public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
 

@@ -6,7 +6,7 @@
 
 Base class for Phalcon\\Translate adapters
 
-## Methods
+## Metody
 
 public **__construct** (*array* $options)
 

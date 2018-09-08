@@ -1,21 +1,62 @@
-<div class='article-menu' markdown='1'>
-
-- [Contextual Escaping](#overview)
-- [Logging](#overview)
-    - [Adapters](#adapters)
-    - [Creating a Log](#creating)
-    - [Transactions](#transactions)
-    - [Logging to Multiple Handlers](#multiple-handlers)
-    - [Message Formatting](#message-formatting)
-        - [Line Formatter](#message-formatting-line)
-        - [Implementing your own formatters](#message-formatting-custom)
-    - [Adapters](#usage)
-        - [Stream Logger](#usage-stream)
-        - [File Logger](#usage-file)
-        - [Syslog Logger](#usage-syslog)
-        - [FirePHP Logger](#usage-firephp)
-        - [Implementing your own adapters](#usage-custom)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Contextual Escaping</a>
+    </li>
+    <li>
+      <a href="#overview">Logging</a>
+      <ul>
+        <li>
+          <a href="#adapters">Adapters</a>
+          <ul>
+            <li>
+              <a href="#adapters-factory">Factory</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#creating">Creating a Log</a>
+        </li>
+        <li>
+          <a href="#transactions">Transactions</a>
+        </li>
+        <li>
+          <a href="#multiple-handlers">Logging to Multiple Handlers</a>
+        </li>
+        <li>
+          <a href="#message-formatting">Message Formatting</a> 
+          <ul>
+            <li>
+              <a href="#message-formatting-line">Line Formatter</a>
+            </li>
+            <li>
+              <a href="#message-formatting-custom">Implementing your own formatters</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#usage">Adapters</a> 
+          <ul>
+            <li>
+              <a href="#usage-stream">Stream Logger</a>
+            </li>
+            <li>
+              <a href="#usage-file">File Logger</a>
+            </li>
+            <li>
+              <a href="#usage-syslog">Syslog Logger</a>
+            </li>
+            <li>
+              <a href="#usage-firephp">FirePHP Logger</a>
+            </li>
+            <li>
+              <a href="#usage-custom">Implementing your own adapters</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -32,6 +73,23 @@ This component makes use of adapters to store the logged messages. The use of ad
 | `Phalcon\Logger\Adapter\Stream`  | Logs to a PHP Streams     |
 | `Phalcon\Logger\Adapter\Syslog`  | Logs to the system logger |
 | `Phalcon\Logger\Adapter\FirePHP` | Logs to the FirePHP       |
+
+<a name='adapters-factory'></a>
+### Factory
+Loads Logger Adapter class using `adapter` option
+
+```php
+<?php
+
+use Phalcon\Logger\Factory;
+
+$options = [
+    'name'    => 'log.txt',
+    'adapter' => 'file',
+];
+
+$logger = Factory::load($options);
+```
 
 <a name='creating'></a>
 ## Creating a Log

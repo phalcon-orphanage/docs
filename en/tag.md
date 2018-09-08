@@ -1,24 +1,69 @@
-<div class='article-menu' markdown='1'>
-
-- [View Helpers (Tags)](#overview)
-    - [Document Type of Content](#document-type)
-    - [Creating Forms](#creating-forms)
-    - [Helpers to Generate Form Elements](#helpers-for-form-elements)
-    - [Making Select Boxes](#select-boxes)
-    - [Assigning HTML attributes](#html-attributes)
-    - [Setting Helper Values](#helper-values)
-        - [From Controllers](#helper-values-form-controllers)
-        - [From the Request](#helper-values-from-request)
-        - [Specifying values directly](#helper-values-directly)
-    - [Changing dynamically the Document Title](#changing-document-title-dynamically)
-    - [Static Content Helpers](#static-content-helpers)
-        - [Images](#static-content-helpers-images)
-        - [Stylesheets](#static-content-helpers-stylesheets)
-        - [Javascript](#static-content-helpers-javascript)
-        - [HTML5 elements - generic HTML helper](#static-content-helpers-html5)
-    - [Tag Service](#tag-helpers)
-    - [Creating your own helpers](#custom-helpers)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">View Helpers (Tags)</a> 
+      <ul>
+        <li>
+          <a href="#document-type">Document Type of Content</a>
+        </li>
+        <li>
+          <a href="#generating-links">Generating Links</a>
+        </li>        
+        <li>
+          <a href="#creating-forms">Creating Forms</a>
+        </li>
+        <li>
+          <a href="#helpers-for-form-elements">Helpers to Generate Form Elements</a>
+        </li>
+        <li>
+          <a href="#select-boxes">Making Select Boxes</a>
+        </li>
+        <li>
+          <a href="#html-attributes">Assigning HTML attributes</a>
+        </li>
+        <li>
+          <a href="#helper-values">Setting Helper Values</a> 
+          <ul>
+            <li>
+              <a href="#helper-values-form-controllers">From Controllers</a>
+            </li>
+            <li>
+              <a href="#helper-values-from-request">From the Request</a>
+            </li>
+            <li>
+              <a href="#helper-values-directly">Specifying values directly</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#changing-document-title-dynamically">Changing dynamically the Document Title</a>
+        </li>
+        <li>
+          <a href="#static-content-helpers">Static Content Helpers</a> 
+          <ul>
+            <li>
+              <a href="#static-content-helpers-images">Images</a>
+            </li>
+            <li>
+              <a href="#static-content-helpers-stylesheets">Stylesheets</a>
+            </li>
+            <li>
+              <a href="#static-content-helpers-javascript">Javascript</a>
+            </li>
+            <li>
+              <a href="#static-content-helpers-html5">HTML5 elements - generic HTML helper</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#tag-helpers">Tag Service</a>
+        </li>
+        <li>
+          <a href="#custom-helpers">Creating your own helpers</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -27,7 +72,11 @@ Writing and maintaining HTML markup can quickly become a tedious task because of
 
 This component can be used in a plain HTML+PHP view or in a [Volt](/[[language]]/[[version]]/volt) template.
 
-<h5 class='alert alert-warning' markdown='1'>This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the `Phalcon\Tag` page in the API for a complete reference. </h5>
+<div class="alert alert-warning">
+    <p>
+        This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the <a href="/[[language]]/[[version]]/api/Phalcon_Tag">Phalcon\Tag</a> page in the API for a complete reference.
+    </p>
+</div>
 
 <a name='document-type'></a>
 ## Document Type of Content

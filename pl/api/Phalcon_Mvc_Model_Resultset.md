@@ -53,7 +53,7 @@ while ($robots->valid()) {
 
 *integer* **HYDRATE_ARRAYS**
 
-## Methods
+## Metody
 
 public **__construct** ([Phalcon\Db\ResultInterface](/en/3.2/api/Phalcon_Db_ResultInterface) | *false* $result, [[Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface) $cache])
 

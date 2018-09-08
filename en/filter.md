@@ -1,16 +1,38 @@
-<div class='article-menu' markdown='1'>
-
-- [Filtering and Sanitizing](#overview)
-    - [Types of Built-in Filters](#types)
-    - [Sanitizing data](#sanitizing)
-    - [Sanitizing from Controllers](#sanitizing-from-controllers)
-    - [Filtering Action Parameters](#filtering-action-parameters)
-    - [Filtering data](#filtering-data)
-    - [Combining Filters](#combining-filters)
-    - [Adding filters](#adding-filters)
-    - [Complex Sanitizing and Filtering](#complex-sanitization-filtering)
-    - [Implementing your own Filter](#custom)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Filtering and Sanitizing</a> 
+      <ul>
+        <li>
+          <a href="#types">Types of Built-in Filters</a>
+        </li>
+        <li>
+          <a href="#sanitizing">Sanitizing data</a>
+        </li>
+        <li>
+          <a href="#sanitizing-from-controllers">Sanitizing from Controllers</a>
+        </li>
+        <li>
+          <a href="#filtering-action-parameters">Filtering Action Parameters</a>
+        </li>
+        <li>
+          <a href="#filtering-data">Filtering data</a>
+        </li>
+        <li>
+          <a href="#combining-filters">Combining Filters</a>
+        </li>
+        <li>
+          <a href="#adding-filters">Adding filters</a>
+        </li>
+        <li>
+          <a href="#complex-sanitization-filtering">Complex Sanitizing and Filtering</a>
+        </li>
+        <li>
+          <a href="#custom">Implementing your own Filter</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

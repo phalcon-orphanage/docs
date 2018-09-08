@@ -8,7 +8,7 @@
 
 Represents an inline Javascript
 
-## Methods
+## Metody
 
 public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 

@@ -25,7 +25,7 @@ $connection = new Mysql($config);
 
 ```
 
-## Methods
+## Metody
 
 public **describeColumns** (*mixed* $table, [*mixed* $schema])
 

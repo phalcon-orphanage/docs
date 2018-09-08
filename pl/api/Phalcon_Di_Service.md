@@ -6,15 +6,18 @@
 
 Represents individually a service in the services container
 
-```php <?php
+```php
+<?php
 
-$service = new \Phalcon\Di\Service( "request", "Phalcon\\Http\\Request" );
+$service = new \Phalcon\Di\Service(
+    "request",
+    "Phalcon\\Http\\Request"
+);
 
 $request = service->resolve();
+```
 
-```php <?php
-
-## Methods
+## Metody
 
 final public **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 

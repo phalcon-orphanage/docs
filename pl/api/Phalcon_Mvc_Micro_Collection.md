@@ -23,7 +23,7 @@ $app->mount($collection);
 
 ```
 
-## Methods
+## Metody
 
 protected **_addMap** (*string* | *array* $method, *string* $routePattern, *mixed* $handler, *string* $name)
 

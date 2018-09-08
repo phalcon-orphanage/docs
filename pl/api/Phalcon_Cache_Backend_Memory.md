@@ -27,7 +27,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Metody
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 

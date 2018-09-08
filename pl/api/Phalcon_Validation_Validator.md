@@ -6,7 +6,7 @@
 
 This is a base class for validators
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $options])
 

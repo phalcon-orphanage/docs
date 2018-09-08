@@ -33,7 +33,7 @@ $queue = new Beanstalk(
 
 *integer* **DEFAULT_PORT**
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $parameters])
 

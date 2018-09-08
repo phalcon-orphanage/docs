@@ -1,39 +1,95 @@
-<div class='article-menu'>
-  <ul>
-    <li>
-      <a href="#overview">Improving Performance with Cache</a>
-    </li>
-  </ul>
+<div class="article-menu">
+    <ul>
+        <li>
+            <a href="#overview">Imágenes</a>
+            <ul>
+                <li>
+                    <a href="#adapters">Adaptadores</a>
+                    <ul>
+                        <li>
+                            <a href="#adapters-factory">Factory</a>
+                        </li>
+                        <li>
+                            <a href="#adapters-custom">Implementar tus propios adaptadores</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#saving-rendering">Guardando y leyendo imágenes</a>
+                </li>
+                <li><a href="#resizing">Redimensionando imágenes</a>
+                    <ul>
+                        <li><a href="#resizing-width"><code>\Phalcon\Image::WIDTH</code></a>
+                        </li>
+                        <li><a href="#resizing-height"><code>\Phalcon\Image::HEIGHT</code></a>
+                        </li>
+                        <li>
+                            <a href="#resizing-none"><code>\Phalcon\Image::NONE</code></a>
+                        </li>
+                        <li><a href="#resizing-tensile"><code>\Phalcon\Image::TENSILE</code></a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#cropping">Recortar imágenes</a></li>
+                <li><a href="#rotating">Rotación de imágenes</a></li>
+                <li><a href="#flipping">Volteando imágenes</a></li>
+                <li><a href="#sharpening">Afilado de imágenes</a></li>
+                <li><a href="#watermarks">Agregar marcas de agua a imágenes</a></li>
+                <li><a href="#blurring">Imágenes borrosas</a></li>
+                <li><a href="#pixelating">Pixelando imágenes</a></li>
+            </ul>
+        </li>
+    </ul>
 </div>
 
 <a name='overview'></a>
 
-# Images
+# Imágenes
 
-`Phalcon\Image` is the component that allows you to manipulate image files. Multiple operations can be performed on the same image object.
+`Phalcon\Image` es el componente que permite manipular archivos de imagen. Pueden realizar múltiples operaciones sobre el mismo objeto de la imagen.
 
 <a name='adapters'></a>
 
-## Adapters
+## Adaptadores
 
-This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
+Este componente hace uso de adaptadores para encapsular programas específicos de manipulación de imagen. Son compatibles los siguientes programas de manipulación de imágenes:
 
-| Class                              | Description                                                                         |
-| ---------------------------------- | ----------------------------------------------------------------------------------- |
-| `Phalcon\Image\Adapter\Gd`      | Requires the [GD PHP extension](http://php.net/manual/en/book.image.php)            |
-| `Phalcon\Image\Adapter\Imagick` | Requires the [ImageMagick PHP extension](http://php.net/manual/en/book.imagick.php) |
+| Clase                              | Descripción                                                                           |
+| ---------------------------------- | ------------------------------------------------------------------------------------- |
+| `Phalcon\Image\Adapter\Gd`      | Requiere la [extensión GD PHP](http://php.net/manual/en/book.image.php)               |
+| `Phalcon\Image\Adapter\Imagick` | Requiere la [extensión de PHP ImageMagick](http://php.net/manual/en/book.imagick.php) |
+
+<a name='adapters-factory'></a>
+
+### Factory
+
+Carga una clase de adaptador de imagen utilizando la opción de `adapter`.
+
+```php
+<?php
+
+use Phalcon\Image\Factory;
+
+$options = [
+    'width'   => 200,
+    'height'  => 200,
+    'file'    => 'upload/test.jpg',
+    'adapter' => 'imagick',
+];
+
+$image = Factory::load($options);
+```
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### Implementar tus propios adaptadores
 
-The `Phalcon\Image\AdapterInterface` interface must be implemented in order to create your own image adapters or extend the existing ones.
+Debe implementar la interfaz `Phalcon\Image\AdapterInterface` para crear sus propios adaptadores imagen o extender los ya existentes.
 
 <a name='saving-rendering'></a>
 
-## Saving and rendering images
+## Guardando y leyendo imágenes
 
-Before we begin with the various features of the image component, it's worth understanding how to save and render these images.
+Antes de comenzar con las distintas características de los componentes de la imagen, vale la pena entender cómo guardar y representar estas imágenes.
 
 ```php
 <?php
@@ -42,7 +98,7 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 // ...
 
-// Overwrite the original image
+// Sobreescribir la imagen original
 $image->save();
 ```
 
@@ -53,11 +109,11 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 // ...
 
-// Save to 'new-image.jpg'
+// Guardar como 'new-image.jpg'
 $image->save('new-image.jpg');
 ```
 
-You can also change the format of the image:
+También puede cambiar el formato de la imagen:
 
 ```php
 <?php
@@ -66,11 +122,11 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 // ...
 
-// Save as a PNG file
+// Guardar como un archivo PNG
 $image->save('image.png');
 ```
 
-When saving as a JPEG, you can also specify the quality as the second parameter:
+Cuando se guarda como un archivo JPEG, puede especificar la calidad como segundo parámetro:
 
 ```php
 <?php
@@ -79,15 +135,15 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 // ...
 
-// Save as a JPEG with 80% quality
+// Guardar como JPEG con calidad al 80%
 $image->save('image.jpg', 80);
 ```
 
 <a name='resizing'></a>
 
-## Resizing images
+## Redimensionando imágenes
 
-There are several modes of resizing:
+Hay varios modos de redimensionamiento:
 
 * `\Phalcon\Image::WIDTH`
 * `\Phalcon\Image::HEIGHT`
@@ -101,7 +157,7 @@ There are several modes of resizing:
 
 ### `\Phalcon\Image::WIDTH`
 
-The height will automatically be generated to keep the proportions the same; if you specify a height, it will be ignored.
+Automáticamente se generará la altura para mantener las proporciones del mismo; Si se especifica una altura, se ignorará.
 
 ```php
 <?php
@@ -121,7 +177,7 @@ $image->save('resized-image.jpg');
 
 ### `\Phalcon\Image::HEIGHT`
 
-The width will automatically be generated to keep the proportions the same; if you specify a width, it will be ignored.
+Se generará automáticamente el ancho para mantener las proporciones del mismo; Si se especifica un ancho, se ignorará.
 
 ```php
 <?php
@@ -141,10 +197,10 @@ $image->save('resized-image.jpg');
 
 ### `\Phalcon\Image::NONE`
 
-* The `NONE` constant ignores the original image's ratio.
-* Neither width and height are required.
-* If a dimension is not specified, the original dimension will be used.
-* If the new proportions differ from the original proportions, the image may be distorted and stretched.
+* La constante `NONE` ignora la relación de la imagen original.
+* Ni el ancho ni la altura son requeridos.
+* Si una dimensión no se especifica, se utilizará la dimensión original.
+* Si las nuevas proporciones difieren de las proporciones originales, la imagen puede distorsionarse y estirarse.
 
 ```php
 <?php
@@ -164,9 +220,9 @@ $image->save('resized-image.jpg');
 
 ### `\Phalcon\Image::TENSILE`
 
-* Similar to the `NONE` constant, the `TENSILE` constant ignores the original image's ratio.
-* Both width and height are required.
-* If the new proportions differ from the original proportions, the image may be distorted and stretched.
+* Similar a la constante de `NONE`, la constante `TENSILE` ignora la relación de la imagen original.
+* Anchura y altura son necesarios.
+* Si las nuevas proporciones difieren de las proporciones originales, la imagen puede distorsionarse y estirarse.
 
 ```php
 <?php
@@ -184,9 +240,9 @@ $image->save('resized-image.jpg');
 
 <a name='cropping'></a>
 
-## Cropping images
+## Recortar imágenes
 
-For example, to get a 100px by 100px square from the centre of the image:
+Por ejemplo, para obtener un cuadrado de 100x100 pixels del centro de la imagen:
 
 ```php
 <?php
@@ -205,14 +261,14 @@ $image->save('cropped-image.jpg');
 
 <a name='rotating'></a>
 
-## Rotating images
+## Rotación de imágenes
 
 ```php
 <?php
 
 $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
-// Rotate an image by 90 degrees clockwise
+// Rotar una imagen 90º en sentido de las agujas del reloj
 $image->rotate(90);
 
 $image->save('rotated-image.jpg');
@@ -220,16 +276,16 @@ $image->save('rotated-image.jpg');
 
 <a name='flipping'></a>
 
-## Flipping images
+## Volteando imágenes
 
-You can flip an image horizontally (using the `\Phalcon\Image::HORIZONTAL` constant) and vertically (using the `\Phalcon\Image::VERTICAL` constant):
+Puede voltear una imagen horizontalmente (utilizando la constante de `\Phalcon\Image::HORIZONTAL`) y verticalmente (con la constante `\Phalcon\Image::VERTICAL`):
 
 ```php
 <?php
 
 $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
-// Flip an image horizontally
+// Voltear imagen horizontalmente
 $image->flip(
     \Phalcon\Image::HORIZONTAL
 );
@@ -239,9 +295,9 @@ $image->save('flipped-image.jpg');
 
 <a name='sharpening'></a>
 
-## Sharpening images
+## Afilado de imágenes
 
-The `sharpen()` method takes a single parameter - an integer between 0 (no effect) and 100 (very sharp):
+El método `sharpen()` toma un solo parámetro, un número entero entre 0 (ningún efecto) y 100 (muy agudo):
 
 ```php
 <?php
@@ -255,7 +311,7 @@ $image->save('sharpened-image.jpg');
 
 <a name='watermarks'></a>
 
-## Adding watermarks to images
+## Agregar marcas de agua a imágenes
 
 ```php
 <?php
@@ -264,7 +320,7 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 $watermark = new \Phalcon\Image\Adapter\Gd('me.jpg');
 
-// Put the watermark in the top left corner
+// Poner la marca de agua en la esquina superior izquierda
 $offsetX = 10;
 $offsetY = 10;
 
@@ -280,7 +336,7 @@ $image->watermark(
 $image->save('watermarked-image.jpg');
 ```
 
-Of course, you can also manipulate the watermarked image before applying it to the main image:
+Por supuesto, también puede manipular la imagen de marca de agua antes de aplicarla a la imagen principal:
 
 ```php
 <?php
@@ -293,7 +349,7 @@ $watermark->resize(100, 100);
 $watermark->rotate(90);
 $watermark->sharpen(5);
 
-// Put the watermark in the bottom right corner with a 10px margin
+// Poner marca de agua en la esquina inferior derecha con 10px de margen
 $offsetX = ($image->getWidth() - $watermark->getWidth() - 10);
 $offsetY = ($image->getHeight() - $watermark->getHeight() - 10);
 
@@ -311,9 +367,9 @@ $image->save('watermarked-image.jpg');
 
 <a name='blurring'></a>
 
-## Blurring images
+## Imágenes borrosas
 
-The `blur()` method takes a single parameter - an integer between 0 (no effect) and 100 (very blurry):
+El método `blur()` toma un solo parámetro, un número entero entre 0 (ningún efecto) y 100 (muy borrosa):
 
 ```php
 <?php
@@ -327,9 +383,9 @@ $image->save('blurred-image.jpg');
 
 <a name='pixelating'></a>
 
-## Pixelating images
+## Pixelando imágenes
 
-The `pixelate()` method takes a single parameter - the higher the integer, the more pixelated the image becomes:
+El método `pixelate()` toma un solo parámetro, cuanto mayor sea el número entero, el más pixelada la imagen que se convierte:
 
 ```php
 <?php

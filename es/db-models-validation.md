@@ -1,15 +1,16 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Validating Models</a> <ul>
+      <a href="#overview">Validación de modelos</a> 
+      <ul>
         <li>
-          <a href="#data-integrity">Validating Data Integrity</a>
+          <a href="#data-integrity">Validar la integridad de los datos</a>
         </li>
         <li>
-          <a href="#messages">Validation Messages</a>
+          <a href="#messages">Mensajes de validación</a>
         </li>
         <li>
-          <a href="#failed-events">Validation Failed Events</a>
+          <a href="#failed-events">Eventos de validación fallidos</a>
         </li>
       </ul>
     </li>
@@ -18,15 +19,15 @@
 
 <a name='overview'></a>
 
-# Validating Models
+# Validación de modelos
 
 <a name='data-integrity'></a>
 
-## Validating Data Integrity
+## Validar la integridad de los datos
 
-`Phalcon\Mvc\Model` provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+`Phalcon\Mvc\Model` ofrece varios eventos para validar los datos e implementar reglas de negocio. El evento especial `validation` nos permite llamar a validadores incorporados en el registro. Phalcon expone algunos validadores incorporados que pueden utilizarse en esta etapa de validación.
 
-The following example shows how to use it:
+En el ejemplo siguiente se muestra cómo se utiliza:
 
 ```php
 <?php
@@ -60,7 +61,7 @@ class Robots extends Model
             'name',
             new Uniqueness(
                 [
-                    'message' => 'The robot name must be unique',
+                    'message' => 'El nombre del robot debe ser único',
                 ]
             )
         );
@@ -70,11 +71,15 @@ class Robots extends Model
 }
 ```
 
-The above example performs a validation using the built-in validator 'InclusionIn'. It checks the value of the field `type` in a domain list. If the value is not included in the method then the validator will fail and return false.
+En el ejemplo anterior se realiza una validación utilizando el validador integrado 'InclusionIn'. Comprueba el valor del campo `type` en una lista de dominios. Si el valor no está incluido en el método entonces el validador fallará y devolverá false.
 
-<h5 class='alert alert-warning'>For more information on validators, see the <a href="/[[language]]/[[version]]/validation">Validation documentation</a></h5>
+<div class='alert alert-warning'>
+    <p>
+        Para más información sobre validadores, consulte la [documentación de validación](/[[language]]/[[version]]/validation)
+    </p>
+</div>
 
-The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
+La idea de crear validadores es hacerlos reutilizables entre varios modelos. Un validador puede también ser tan simple como:
 
 ```php
 <?php
@@ -90,7 +95,7 @@ class Robots extends Model
     {
         if ($this->type === 'Old') {
             $message = new Message(
-                'Sorry, old robots are not allowed anymore',
+                'Perdón, los robots viejos ya no son permitidos',
                 'type',
                 'MyType'
             );
@@ -107,11 +112,11 @@ class Robots extends Model
 
 <a name='messages'></a>
 
-## Validation Messages
+## Mensajes de validación
 
-`Phalcon\Mvc\Model` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
+`Phalcon\Mvc\Model` cuenta con un subsistema de mensajería que proporciona una forma flexible de salida o almacenamiento de mensajes de validación generados durante los procesos de insertar/actualizar.
 
-Each message is an instance of `Phalcon\Mvc\Model\Message` and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information like the field name that generated the message or the message type:
+Cada mensaje es una instancia de `Phalcon\Mvc\Model\Message` y el conjunto de mensajes generados puede ser obtenido con el método `getMessages()`. Cada mensaje proporciona información ampliada como el nombre del campo que genera el mensaje o el tipo de mensaje:
 
 ```php
 <?php
@@ -120,24 +125,24 @@ if ($robot->save() === false) {
     $messages = $robot->getMessages();
 
     foreach ($messages as $message) {
-        echo 'Message: ', $message->getMessage();
-        echo 'Field: ', $message->getField();
-        echo 'Type: ', $message->getType();
+        echo 'Mensaje: ', $message->getMessage();
+        echo 'Campo: ', $message->getField();
+        echo 'Tipo: ', $message->getType();
     }
 }
 ```
 
-`Phalcon\Mvc\Model` can generate the following types of validation messages:
+`Phalcon\Mvc\Model` puede generar los siguientes tipos de mensajes de validación:
 
-| Type                   | Description                                                                                                                        |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `PresenceOf`           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
-| `ConstraintViolation`  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
-| `InvalidValue`         | Generated when a validator failed because of an invalid value                                                                      |
-| `InvalidCreateAttempt` | Produced when a record is attempted to be created but it already exists                                                            |
-| `InvalidUpdateAttempt` | Produced when a record is attempted to be updated but it doesn't exist                                                             |
+| Tipo                   | Descripción                                                                                                                                 |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PresenceOf`           | Generado cuando se trata de un campo que no admite el valor null en la base de datos y se intenta insertar o actualizar a un valor nulo     |
+| `ConstraintViolation`  | Generado cuando una parte del campo de clave externa virtual intenta insertar o actualizar un valor que no existe en el modelo referenciado |
+| `InvalidValue`         | Generado cuando un validador falló debido a un valor no válido                                                                              |
+| `InvalidCreateAttempt` | Se produce cuando un registro que intenta crearse ya existe                                                                                 |
+| `InvalidUpdateAttempt` | Se produce cuando un registro que se intenta actualizar no existe                                                                           |
 
-The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+El método `getMessages()` puede ser reemplazado en un modelo para reemplazar/traducir los mensajes generados automáticamente por el ORM:
 
 ```php
 <?php
@@ -155,15 +160,15 @@ class Robots extends Model
         foreach (parent::getMessages() as $message) {
             switch ($message->getType()) {
                 case 'InvalidCreateAttempt':
-                    $messages[] = 'The record cannot be created because it already exists';
+                    $messages[] = 'El registro no puede ser creado porque ya existe';
                     break;
 
                 case 'InvalidUpdateAttempt':
-                    $messages[] = "The record cannot be updated because it doesn't exist";
+                    $messages[] = "El registro no puede ser actualizado porque no existe";
                     break;
 
                 case 'PresenceOf':
-                    $messages[] = 'The field ' . $message->getField() . ' is mandatory';
+                    $messages[] = 'El campo ' . $message->getField() . ' es obligatorio';
                     break;
             }
         }
@@ -175,11 +180,11 @@ class Robots extends Model
 
 <a name='failed-events'></a>
 
-## Validation Failed Events
+## Eventos de validación fallidos
 
-Another type of events are available when the data validation process finds any inconsistency:
+Otro tipo de eventos están disponibles cuando el proceso de validación de datos encuentra cualquier inconsistencia:
 
-| Operation                | Name                | Explanation                                                            |
-| ------------------------ | ------------------- | ---------------------------------------------------------------------- |
-| Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
-| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |
+| Operación                     | Nombre              | Explicación                                                                  |
+| ----------------------------- | ------------------- | ---------------------------------------------------------------------------- |
+| Insertar o actualizar         | `notSaved`          | Se dispara cuando la operación de `INSERT` o `UPDATE` falla por alguna razón |
+| Insertar, borrar o actualizar | `onValidationFails` | Se dispara cuando cualquier operación de manipulación de datos falla         |

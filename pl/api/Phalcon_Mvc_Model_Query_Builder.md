@@ -44,7 +44,7 @@ $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 
 *string* **OPERATOR_AND**
 
-## Methods
+## Metody
 
 public **__construct** ([*mixed* $params], [[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector])
 

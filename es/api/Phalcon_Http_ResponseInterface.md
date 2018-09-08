@@ -1,8 +1,8 @@
-# Interface **Phalcon\\Http\\ResponseInterface**
+# Interfaz **Phalcon\\Http\\ResponseInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/responseinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/responseinterface.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
-## Methods
+## Métodos
 
 abstract public **setStatusCode** (*mixed* $code, [*mixed* $message])
 

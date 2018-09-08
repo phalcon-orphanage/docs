@@ -11,7 +11,10 @@ Check for alphanumeric character(s)
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Alnum as AlnumValidator;
+
+$validator = new Validation();
 
 $validator->add(
     "username",

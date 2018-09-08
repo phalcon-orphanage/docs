@@ -8,7 +8,7 @@
 
 Allows to validate data using custom or built-in validators
 
-## Methods
+## Metody
 
 public **getData** ()
 

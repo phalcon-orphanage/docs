@@ -6,7 +6,8 @@
           <a href="#caching-metadata">Caching Metadata</a>
         </li>
         <li>
-          <a href="#metadata-strategies">Metadata Strategies</a> <ul>
+          <a href="#metadata-strategies">Metadata Strategies</a> 
+          <ul>
             <li>
               <a href="#strategies-database-introspection">Database Introspection Strategy</a>
             </li>
@@ -15,7 +16,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#strategies-manual">Manual Metadata</a>
         </li>
@@ -164,7 +164,7 @@ Annotations must be placed in properties that are mapped to columns in the mappe
 
 The following annotations are supported:
 
-| Name     | Description                                       |
+| Nazwa    | Description                                       |
 | -------- | ------------------------------------------------- |
 | Primary  | Mark the field as part of the table's primary key |
 | Identity | The field is an auto_increment/serial column      |
@@ -172,7 +172,7 @@ The following annotations are supported:
 
 The annotation @Column supports the following parameters:
 
-| Name     | Description                                           |
+| Nazwa    | Description                                           |
 | -------- | ----------------------------------------------------- |
 | type     | The column's type (string, integer, decimal, boolean) |
 | length   | The column's length if any                            |

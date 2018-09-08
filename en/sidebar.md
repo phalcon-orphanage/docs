@@ -1,19 +1,26 @@
-- [General](/[[language]]/[[version]]/introduction)
-    - [Release Notes](/[[language]]/[[version]]/release-notes)
-    - Upgrade
+- General
+    - [Introduction](/[[language]]/[[version]]/introduction)
+    - [Release Notes](https://github.com/phalcon/cphalcon/blob/3.2.x/CHANGELOG-3.2.md)
     - [Sponsors](/[[language]]/[[version]]/sponsors)
+    - [FAQ](/[[language]]/[[version]]/faq)
 - Contributions
     - [Overview](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
     - [Reproducible Tests](/[[language]]/[[version]]/reproducible-tests)
-    - Testing guide
+    - [Testing guide](/[[language]]/[[version]]/unit-testing)
 - Getting Started
     - [Installation](/[[language]]/[[version]]/installation)
     - [Webserver Setup](/[[language]]/[[version]]/webserver-setup)
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
+- Tutorials
+    - [Basic](/[[language]]/[[version]]/tutorial-base)
+    - [REST](/[[language]]/[[version]]/tutorial-rest)
+    - [Vokuro](/[[language]]/[[version]]/tutorial-vokuro)
+    - [Performance](/[[language]]/[[version]]/performance)
+    - [Invo](/[[language]]/[[version]]/tutorial-invo)
 - Environments
     - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
@@ -82,10 +89,3 @@
 - i18n
     - [Internationalization](/[[language]]/[[version]]/i18n)
     - [Translate](/[[language]]/[[version]]/translate)
-- Tutorials
-    - [Performance](/[[language]]/[[version]]/performance)
-    - [Basic](/[[language]]/[[version]]/tutorial-base)
-    - [Invo](/[[language]]/[[version]]/tutorial-invo)
-    - [REST](/[[language]]/[[version]]/tutorial-rest)
-    - [Vokuro](/[[language]]/[[version]]/tutorial-vokuro)
-    

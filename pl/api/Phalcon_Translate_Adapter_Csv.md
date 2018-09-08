@@ -8,7 +8,7 @@
 
 Allows to define translation lists using CSV file
 
-## Methods
+## Metody
 
 public **__construct** (*array* $options)
 

@@ -6,7 +6,7 @@
 
 Queries the table meta-data in order to introspect the model's metadata
 
-## Methods
+## Metody
 
 final public **getMetaData** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
 

@@ -15,3 +15,9 @@ Our mission is to offer developers an advanced, feature rich tool, which they ca
 Οι προγραμματιστές δεν χρειάζεται να γνωρίζουν τη γλώσσα C για να χρησιμοποιήσουν το Phalcon. Το interface είναι εκτεθειμένo ως classes PHP κάτω από το namespace `Phalcon`, έτοιμο για χρήση.
 
 Το Phalcon είναι χαλαρά συνδεδεμένο, επιτρέποντας στους προγραμματιστές να χρησιμοποιούν μόνο τα αντικείμενα που χρειάζονται ως κόλλα στοιχείων που βασίζονται στις ανάγκες των εφαρμογών τους.
+
+<div class="alert alert-danger">
+    <p>
+        The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in <a href="https://github.com/phalcon/docs">Github</a> for English, and <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> for other languages
+    </p>
+</div>

@@ -1,12 +1,27 @@
-<div class='article-menu' markdown='1'>
-
-- [Models Metadata](#overview)
-    - [Caching Metadata](#caching-metadata)
-    - [Metadata Strategies](#metadata-strategies)
-        - [Database Introspection Strategy](#strategies-database-introspection)
-        - [Annotations Strategy](#strategies-annotations)
-    - [Manual Metadata](#strategies-manual)
-    
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Models Metadata</a> <ul>
+        <li>
+          <a href="#caching-metadata">Caching Metadata</a>
+        </li>
+        <li>
+          <a href="#metadata-strategies">Metadata Strategies</a> 
+          <ul>
+            <li>
+              <a href="#strategies-database-introspection">Database Introspection Strategy</a>
+            </li>
+            <li>
+              <a href="#strategies-annotations">Annotations Strategy</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#strategies-manual">Manual Metadata</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='models-metadata'></a>

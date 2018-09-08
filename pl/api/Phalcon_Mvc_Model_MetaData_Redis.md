@@ -62,7 +62,7 @@ $metaData = new Redis(
 
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $options])
 

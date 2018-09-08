@@ -42,7 +42,7 @@ if ($content === null) {
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface) $frontend, *array* $options)
 

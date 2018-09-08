@@ -1,16 +1,27 @@
-<div class='article-menu' markdown='1'>
-
-- [Model Behaviors](#overview)
-    - [Timestampable](#timestampable)
-    - [SoftDelete](#softdelete)
-    - [Creating your own behaviors](#create-your-own-behaviors)
-    - [Using Traits as behaviors](#traits-as-behaviors)
-    
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Model Behaviors</a> <ul>
+        <li>
+          <a href="#timestampable">Timestampable</a>
+        </li>
+        <li>
+          <a href="#softdelete">SoftDelete</a>
+        </li>
+        <li>
+          <a href="#create-your-own-behaviors">Creating your own behaviors</a>
+        </li>
+        <li>
+          <a href="#traits-as-behaviors">Using Traits as behaviors</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
 # Model Behaviors
-Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
+Behaviors are shared constructs that several models may adopt in order to re-use code. The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 
 A behavior must be added in the model initializer, a model can have zero or more behaviors:
 

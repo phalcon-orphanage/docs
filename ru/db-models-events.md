@@ -1,9 +1,11 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">События модели</a> <ul>
+      <a href="#overview">События модели</a> 
+      <ul>
         <li>
-          <a href="#events">События и управление событиями</a> <ul>
+          <a href="#events">События и управление событиями</a> 
+          <ul>
             <li>
               <a href="#events-in-models">Реализация событий в классе модели</a>
             </li>
@@ -12,7 +14,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#logging-sql-statements">Логирование низкоуровневых SQL запросов</a>
         </li>
@@ -37,6 +38,7 @@
 | Операция           | Name                     |  Can stop operation?  | Пояснение                                                                                                                         |
 | ------------------ | ------------------------ |:---------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
 | Inserting          | afterCreate              |          NO           | Runs after the required operation over the database system only when an inserting operation is being made                         |
+| Deleting           | afterDelete              |          NO           | Runs after the delete operation was made                                                                                          |
 | Updating           | afterUpdate              |          NO           | Runs after the required operation over the database system only when an updating operation is being made                          |
 | Inserting/Updating | afterSave                |          NO           | Runs after the required operation over the database system                                                                        |
 | Inserting/Updating | afterValidation          |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
@@ -44,6 +46,7 @@
 | Updating           | afterValidationOnUpdate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
 | Inserting/Updating | beforeValidation         |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
 | Inserting          | beforeCreate             |          YES          | Runs before the required operation over the database system only when an inserting operation is being made                        |
+| Deleting           | beforeDelete             |          YES          | Runs before the delete operation is made                                                                                          |
 | Inserting/Updating | beforeSave               |          YES          | Runs before the required operation over the database system                                                                       |
 | Updating           | beforeUpdate             |          YES          | Runs before the required operation over the database system only when an updating operation is being made                         |
 | Inserting          | beforeValidationOnCreate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |

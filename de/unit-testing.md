@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Overview</a> 
+      <ul>
         <li>
           <a href="#integration">Integrating PHPUnit with Phalcon</a>
         </li>
@@ -9,7 +10,7 @@
           <a href="#unit-helper">The PHPUnit helper file</a>
         </li>
         <li>
-          <a href="#phpunit-config">The <code>phpunit.xml</code> file</a>
+          <a href="#phpunit-config">The phpunit.xml file</a>
         </li>
         <li>
           <a href="#sample">Sample Unit Test</a>

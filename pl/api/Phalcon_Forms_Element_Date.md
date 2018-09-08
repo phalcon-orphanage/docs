@@ -8,7 +8,7 @@
 
 Component INPUT[type=date] for forms
 
-## Methods
+## Metody
 
 public **render** ([*array* $attributes])
 

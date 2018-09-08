@@ -8,7 +8,7 @@
 
 This is a variant of the Phalcon\\Flash that immediately outputs any message passed to it
 
-## Methods
+## Metody
 
 public **message** (*mixed* $type, *mixed* $message)
 

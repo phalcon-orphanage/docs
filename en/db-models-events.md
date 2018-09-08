@@ -1,12 +1,28 @@
-<div class='article-menu' markdown='1'>
-
-- [Model Events](#overview)
-    - [Events and Events Manager](#events)
-        - [Implementing Events in the Model's class](#events-in-models)
-        - [Using a custom Events Manager](#custom-events-manager)
-    - [Logging Low-Level SQL Statements](#logging-sql-statements)
-    - [Profiling SQL Statements](#profiling-sql-statements)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Model Events</a> 
+      <ul>
+        <li>
+          <a href="#events">Events and Events Manager</a> 
+          <ul>
+            <li>
+              <a href="#events-in-models">Implementing Events in the Model's class</a>
+            </li>
+            <li>
+              <a href="#custom-events-manager">Using a custom Events Manager</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#logging-sql-statements">Logging Low-Level SQL Statements</a>
+        </li>
+        <li>
+          <a href="#profiling-sql-statements">Profiling SQL Statements</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -18,6 +34,7 @@ Models allow you to implement events that will be thrown while performing an ins
 | Operation          | Name                     | Can stop operation?   | Explanation                                                                                                                       |
 | ------------------ | ------------------------ | :-------------------: |---------------------------------------------------------------------------------------------------------------------------------- |
 | Inserting          | afterCreate              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made                         |
+| Deleting           | afterDelete              | NO                    | Runs after the delete operation was made                                                                                          |
 | Updating           | afterUpdate              | NO                    | Runs after the required operation over the database system only when an updating operation is being made                          |
 | Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                                        |
 | Inserting/Updating | afterValidation          | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
@@ -25,6 +42,7 @@ Models allow you to implement events that will be thrown while performing an ins
 | Updating           | afterValidationOnUpdate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
 | Inserting/Updating | beforeValidation         | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
 | Inserting          | beforeCreate             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made                        |
+| Deleting           | beforeDelete             | YES                   | Runs before the delete operation is made                                                                                          |
 | Inserting/Updating | beforeSave               | YES                   | Runs before the required operation over the database system                                                                       |
 | Updating           | beforeUpdate             | YES                   | Runs before the required operation over the database system only when an updating operation is being made                         |
 | Inserting          | beforeValidationOnCreate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |

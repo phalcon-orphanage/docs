@@ -20,7 +20,7 @@ Complex resultsets may include complete objects and scalar values. This class bu
 
 *integer* **HYDRATE_ARRAYS**
 
-## Methods
+## Metody
 
 public **__construct** (*array* $columnTypes, [[Phalcon\Db\ResultInterface](/en/3.2/api/Phalcon_Db_ResultInterface) $result], [[Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface) $cache])
 

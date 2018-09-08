@@ -6,7 +6,7 @@
 
 Provide OO wrappers to manage a HTTP cookie
 
-## Methods
+## Metody
 
 public **__construct** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly])
 

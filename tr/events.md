@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Events Manager</a> <ul>
+      <a href="#overview">Events Manager</a> 
+      <ul>
         <li>
           <a href="#naming-convention">Naming Convention</a>
         </li>
@@ -90,7 +91,11 @@ $connection->query(
 
 Now every time a query is executed, the SQL statement will be echoed out. The first parameter passed to the lambda function contains contextual information about the event that is running, the second is the source of the event (in this case the connection itself). A third parameter may also be specified which will contain arbitrary data specific to the event.
 
-<h5 class='alert alert-warning'>You must explicitly set the Events Manager to a component using the <code>setEventsManager()</code> method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts </h5>
+<div class="alert alert-warning">
+    <p>
+        You must explicitly set the Events Manager to a component using the <code>setEventsManager()</code> method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts.
+    </p>
+</div>
 
 Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events. In this example, we will implement the `Phalcon\Db\Profiler` to detect the SQL statements that are taking longer to execute than expected:
 
@@ -512,8 +517,8 @@ The events available in Phalcon are:
 | Middleware         | `beforeExecuteRoute`                |
 | Middleware         | `beforeHandleRoute`                 |
 | Middleware         | `beforeNotFound`                    |
-| Model              | `afterDelete`                       |
 | Model              | `afterCreate`                       |
+| Model              | `afterDelete`                       |
 | Model              | `afterSave`                         |
 | Model              | `afterUpdate`                       |
 | Model              | `afterValidation`                   |
@@ -522,6 +527,7 @@ The events available in Phalcon are:
 | Model              | `beforeDelete`                      |
 | Model              | `notDeleted`                        |
 | Model              | `beforeCreate`                      |
+| Model              | `beforeDelete`                      |
 | Model              | `beforeSave`                        |
 | Model              | `beforeUpdate`                      |
 | Model              | `beforeValidation`                  |

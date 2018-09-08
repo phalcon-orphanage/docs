@@ -6,7 +6,7 @@
 
 This is a base class for logger formatters
 
-## Methods
+## Metody
 
 public **getTypeString** (*mixed* $type)
 

@@ -6,7 +6,7 @@
 
 Phalcon Events Manager, offers an easy way to intercept and manipulate, if needed, the normal flow of operation. With the EventsManager the developer can create hooks or plugins that will offer monitoring of data, manipulation, conditional execution and much more.
 
-## Methods
+## Metody
 
 public **attach** (*string* $eventType, *object* | *callable* $handler, [*int* $priority])
 

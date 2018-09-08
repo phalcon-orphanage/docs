@@ -29,7 +29,7 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** (*string* $message, [*string* | *array* $field], [*string* $type], [[Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model], [*int* | *null* $code])
 

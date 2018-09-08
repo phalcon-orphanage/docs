@@ -71,7 +71,7 @@ echo $random->base58(7);  // 774SJD3vgP
 
 This class partially borrows SecureRandom library from Ruby
 
-## Methods
+## Metody
 
 public **bytes** ([*mixed* $len])
 
@@ -116,23 +116,29 @@ echo $random->base58(); // 4kUgL2pdQMSCQtjE
 
 public **base62** ([*mixed* $len])
 
-Generates a random base62 string If $len is not specified, 16 is assumed. It may be larger in future. It is similar to `Phalcon\\Security\\Random:base58` but has been modified to provide the largest value that can safely be used in URLs without needing to take extra characters into consideration because it is [A-Za-z0-9]. < code> $random = new \\Phalcon\\Security\\Random(); echo $random->base62(); // z0RkwHfh8ErDM1xw
+Generates a random base62 string If $len is not specified, 16 is assumed. It may be larger in future. It is similar to `Phalcon\\Security\\Random:base58` but has been modified to provide the largest value that can safely be used in URLs without needing to take extra characters into consideration because it is [A-Za-z0-9].
 
-    <br /><br /><br />public  **base64** ([*mixed* $len])
-    
-    Generates a random base64 string
-    If $len is not specified, 16 is assumed. It may be larger in future.
-    The length of the result string is usually greater of $len.
-    Size formula: 4 * ($len / 3) and this need to be rounded up to a multiple of 4.
-    
-    ```php
-    <?php
-    
-    $random = new \Phalcon\Security\Random();
-    
-    echo $random->base64(12); // 3rcq39QzGK9fUqh8
-    
-    
+```php
+<?php
+
+$random = new \Phalcon\Security\Random();
+
+echo $random->base62(); // z0RkwHfh8ErDM1xw
+
+```
+
+public **base64** ([*mixed* $len])
+
+Generates a random base64 string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len. Size formula: 4 * ($len / 3) and this need to be rounded up to a multiple of 4.
+
+```php
+<?php
+
+$random = new \Phalcon\Security\Random();
+
+echo $random->base64(12); // 3rcq39QzGK9fUqh8
+
+```
 
 public **base64Safe** ([*mixed* $len], [*mixed* $padding])
 

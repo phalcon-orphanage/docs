@@ -6,7 +6,7 @@
 
 This component allows Phalcon\\Mvc\\Collection to return rows without an associated entity. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
-## Methods
+## Metody
 
 public *boolean* **offsetExists** (*int* $index)
 

@@ -6,7 +6,7 @@
 
 Base class for Phalcon\\Db adapters
 
-## Methods
+## Metody
 
 public **getDialectType** ()
 

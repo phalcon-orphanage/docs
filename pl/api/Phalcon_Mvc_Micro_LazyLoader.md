@@ -4,7 +4,7 @@
 
 Lazy-Load of handlers for Mvc\\Micro using auto-loading
 
-## Methods
+## Metody
 
 public **getDefinition** ()
 

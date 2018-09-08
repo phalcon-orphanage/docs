@@ -1,25 +1,55 @@
-<div class='article-menu' markdown='1'>
-
-- [Phalcon Developer Tools](#overview)
-    - [Download](#download)
-    - [Installation](#installation)
-    - [Available Commands](#available-commands)
-    - [Generating a Project Skeleton](#project-skeleton)
-    - [Generating Controllers](#generating-controllers)
-    - [Preparing Database Settings](#database-settings)
-    - [Generating Models](#generating-models)
-    - [Scaffold a CRUD](#crud)
-    - [Web Interface to Tools](#web-interface)
-    - [Integrating Tools with PhpStorm IDE](#phpstorm-ide)
-    - [Conclusion](#conclusion)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Phalcon Developer Tools</a> 
+      <ul>
+        <li>
+          <a href="#download">Download</a>
+        </li>
+        <li>
+          <a href="#installation">Installation</a>
+        </li>
+        <li>
+          <a href="#available-commands">Available Commands</a>
+        </li>
+        <li>
+          <a href="#project-skeleton">Generating a Project Skeleton</a>
+        </li>
+        <li>
+          <a href="#generating-controllers">Generating Controllers</a>
+        </li>
+        <li>
+          <a href="#database-settings">Preparing Database Settings</a>
+        </li>
+        <li>
+          <a href="#generating-models">Generating Models</a>
+        </li>
+        <li>
+          <a href="#crud">Scaffold a CRUD</a>
+        </li>
+        <li>
+          <a href="#web-interface">Web Interface to Tools</a>
+        </li>
+        <li>
+          <a href="#phpstorm-ide">Integrating Tools with PhpStorm IDE</a>
+        </li>
+        <li>
+          <a href="#conclusion">Conclusion</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
 # Phalcon Developer Tools
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
-<h5 class='alert alert-danger' markdown='1'>If you prefer to use the web version instead of the console, this [blog post](https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem) offers more information. </h5>
+<div class="alert alert-danger">
+    <p>
+        If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information.
+    </p>
+</div>
 
 <a name='download'></a>
 ## Download
@@ -29,7 +59,7 @@ You can download or clone a cross platform package containing the developer tool
 ## Installation
 These are detailed instructions on how to install the developer tools on different platforms:
 
-[Linux](/[[language]]/[[version]]devtools-installation#installation-linux) : [MacOS](/[[language]]/[[version]]devtools-installation#installation-macos) : [Windows](/[[language]]/[[version]]devtools-installation#installation-windows)
+[Linux](/[[language]]/[[version]]/devtools-installation#installation-linux) : [MacOS](/[[language]]/[[version]]/devtools-installation#installation-macos) : [Windows](/[[language]]/[[version]]/devtools-installation#installation-windows)
 
 <a name='available-commands'></a>
 ## Available Commands

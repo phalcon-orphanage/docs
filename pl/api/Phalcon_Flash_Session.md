@@ -8,7 +8,7 @@
 
 Temporarily stores the messages in session, then messages can be printed in the next request
 
-## Methods
+## Metody
 
 protected **_getSessionMessages** (*mixed* $remove, [*mixed* $type])
 

@@ -1,9 +1,44 @@
-<div class='article-menu'>
-  <ul>
-    <li>
-      <a href="#overview">Improving Performance with Cache</a>
-    </li>
-  </ul>
+<div class="article-menu">
+    <ul>
+        <li>
+            <a href="#overview">Images</a>
+            <ul>
+                <li>
+                    <a href="#adapters">Adapters</a>
+                    <ul>
+                        <li>
+                            <a href="#adapters-factory">Factory</a>
+                        </li>
+                        <li>
+                            <a href="#adapters-custom">Implementing your own adapters</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#saving-rendering">Saving and rendering images</a>
+                </li>
+                <li><a href="#resizing">Resizing images</a>
+                    <ul>
+                        <li><a href="#resizing-width"><code>\Phalcon\Image::WIDTH</code></a>
+                        </li>
+                        <li><a href="#resizing-height"><code>\Phalcon\Image::HEIGHT</code></a>
+                        </li>
+                        <li>
+                            <a href="#resizing-none"><code>\Phalcon\Image::NONE</code></a>
+                        </li>
+                        <li><a href="#resizing-tensile"><code>\Phalcon\Image::TENSILE</code></a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#cropping">Cropping images</a></li>
+                <li><a href="#rotating">Rotating images</a></li>
+                <li><a href="#flipping">Flipping images</a></li>
+                <li><a href="#sharpening">Sharpening images</a></li>
+                <li><a href="#watermarks">Adding watermarks to images</a></li>
+                <li><a href="#blurring">Blurring images</a></li>
+                <li><a href="#pixelating">Pixelating images</a></li>
+            </ul>
+        </li>
+    </ul>
 </div>
 
 <a name='overview'></a>
@@ -22,6 +57,27 @@ This component makes use of adapters to encapsulate specific image manipulator p
 | ---------------------------------- | ----------------------------------------------------------------------------------- |
 | `Phalcon\Image\Adapter\Gd`      | Requires the [GD PHP extension](http://php.net/manual/en/book.image.php)            |
 | `Phalcon\Image\Adapter\Imagick` | Requires the [ImageMagick PHP extension](http://php.net/manual/en/book.imagick.php) |
+
+<a name='adapters-factory'></a>
+
+### Factory
+
+Loads an Image Adapter class using `adapter` option.
+
+```php
+<?php
+
+use Phalcon\Image\Factory;
+
+$options = [
+    'width'   => 200,
+    'height'  => 200,
+    'file'    => 'upload/test.jpg',
+    'adapter' => 'imagick',
+];
+
+$image = Factory::load($options);
+```
 
 <a name='adapters-custom'></a>
 

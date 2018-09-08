@@ -1,31 +1,92 @@
-<div class='article-menu' markdown='1'>
-
-- [Improving Performance with Cache](#overview)
-    - [When to implement cache?](#implementation)
-    - [Caching Behavior](#caching-behavior)
-    - [Factory](#factory)
-    - [Caching Output Fragments](#output-fragments)
-    - [Caching Arbitrary Data](#arbitrary-data)
-        - [File Backend Example](#backend-file-example)
-        - [Memcached Backend Example](#backend-memcached-example)
-    - [Querying the cache](#read)
-    - [Deleting data from the cache](#delete)
-    - [Checking cache existence](#exists)
-    - [Lifetime](#lifetime)
-    - [Multi-Level Cache](#multi-level)
-    - [Frontend Adapters](#adapters-frontend)
-        - [Implementing your own Frontend adapters](#adapters-frontend-custom)
-    - [Backend Adapters](#adapters-backend)
-        - [Implementing your own Backend adapters](#adapters-backend-custom)
-        - [File Backend Options](#adapters-backend-file)
-        - [Libmemcached Backend Options](#adapters-backend-libmemcached)
-        - [Memcache Backend Options](#adapters-backend-memcache)
-        - [APC Backend Options](#adapters-backend-apc)
-        - [APCU Backend Options](#adapters-backend-apcu)
-        - [Mongo Backend Options](#adapters-backend-mongo)
-        - [XCache Backend Options](#adapters-backend-xcache)
-        - [Redis Backend Options](#adapters-backend-redis)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Improving Performance with Cache</a> 
+      <ul>
+        <li>
+          <a href="#implementation">When to implement cache?</a>
+        </li>
+        <li>
+          <a href="#caching-behavior">Caching Behavior</a>
+        </li>
+        <li>
+          <a href="#factory">Factory</a>
+        </li>
+        <li>
+          <a href="#output-fragments">Caching Output Fragments</a>
+        </li>
+        <li>
+          <a href="#arbitrary-data">Caching Arbitrary Data</a> 
+          <ul>
+            <li>
+              <a href="#backend-file-example">File Backend Example</a>
+            </li>
+            <li>
+              <a href="#backend-memcached-example">Memcached Backend Example</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#read">Querying the cache</a>
+        </li>
+        <li>
+          <a href="#delete">Deleting data from the cache</a>
+        </li>
+        <li>
+          <a href="#exists">Checking cache existence</a>
+        </li>
+        <li>
+          <a href="#lifetime">Lifetime</a>
+        </li>
+        <li>
+          <a href="#multi-level">Multi-Level Cache</a>
+        </li>
+        <li>
+          <a href="#adapters-frontend">Frontend Adapters</a> 
+          <ul>
+            <li>
+              <a href="#adapters-frontend-custom">Implementing your own Frontend adapters</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#adapters-backend">Backend Adapters</a> 
+          <ul>
+            <li>
+              <a href="#adapters-backend-factory">Factory</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-custom">Implementing your own Backend adapters</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-file">File Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-libmemcached">Libmemcached Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-memcache">Memcache Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-apc">APC Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-apcu">APCU Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-xcache">XCache Backend Options</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-redis">Redis Backend Options</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -41,7 +102,11 @@ Although this component is very fast, implementing it in cases that are not need
 * You are using a lot of helpers and the output generated is almost always the same
 * You are accessing database data constantly and these data rarely change
 
-<h5 class='alert alert-warning' markdown='1'>*NOTE* Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.
+    </p>
+</div>
 
 <a name='caching-behavior'></a>
 ## Caching Behavior
@@ -161,7 +226,11 @@ if ($content === null) {
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>*NOTE* In the example above, our code remains the same, echoing output to the user as it has been doing before. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> In the example above, our code remains the same, echoing output to the user as it has been doing before. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations.
+    </p>
+</div>
 
 <a name='arbitrary-data'></a>
 ## Caching Arbitrary Data
@@ -169,7 +238,7 @@ Caching just data is equally important for your application. Caching can reduce 
 
 <a name='backend-file-example'></a>
 ### File Backend Example
-One of the caching adapters is 'File'. The only key area for this adapter is the location of where the cache files will be stored. This is controlled by the `cacheDir` option which *must* have a backslash at the end of it.
+One of the caching adapters is `File`. The only key area for this adapter is the location of where the cache files will be stored. This is controlled by the `cacheDir` option which *must* have a backslash at the end of it.
 
 ```php
 <?php
@@ -274,7 +343,11 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>*NOTE* Calling `save()` will return a boolean, indicating success (`true`) or failure (`false`). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> Calling <code>save()</code> will return a boolean, indicating success (<code>true</code>) or failure (<code>false</code>). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.
+    </p>
+</div>
 
 <a name='read'></a>
 ## Querying the cache
@@ -470,8 +543,29 @@ The backend adapters available to store cache data are:
 | `Phalcon\Cache\Backend\Redis`        | Stores data in Redis.                                | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache.                               | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
-<h5 class='alert alert-warning' markdown='1'>*NOTE* In PHP 7 to use phalcon `apc` based adapter classes you needed to install `apcu` and `apcu_bc` package from pecl. Now in Phalcon 3.2.0 you can switch your `*\Apc` classes to `*\Apcu` and remove `apcu_bc`. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.2.0 you can switch your <code>*\Apc</code> classes to <code>*\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes.
+    </p>
+</div>
 
+<a name='adapters-backend-factory'></a>
+### Factory
+There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+
+```php
+<?php
+
+use Phalcon\Cache\Backend\Factory;
+use Phalcon\Cache\Frontend\Data;
+
+$options = [
+    'prefix'   => 'app-data',
+    'frontend' => new Data(),
+    'adapter'  => 'apc',
+];
+$backendCache = Factory::load($options);
+```
 
 <a name='adapters-backend-custom'></a>
 ### Implementing your own Backend adapters

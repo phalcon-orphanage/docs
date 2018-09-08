@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Tutorial: INVO</a> <ul>
+      <a href="#overview">Tutorial: INVO</a> 
+      <ul>
         <li>
           <a href="#structure">Project Structure</a>
         </li>
@@ -27,7 +28,8 @@
           <a href="#log-in">Log into the Application</a>
         </li>
         <li>
-          <a href="#securing-backend">Securing the Backend</a> <ul>
+          <a href="#securing-backend">Securing the Backend</a> 
+          <ul>
             <li>
               <a href="#events-manager">Events Management</a>
             </li>
@@ -36,7 +38,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#working-with-crud">Working with the CRUD</a>
         </li>
@@ -1223,8 +1224,8 @@ $query = Criteria::fromInput(
 
 This method verifies which values are different from '' (empty string) and null and takes them into account to create the search criteria:
 
-- If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL `like` operator to filter the results.
-- If the data type is not text or similar, it'll use the operator `=`.
+* If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL `like` operator to filter the results.
+* If the data type is not text or similar, it'll use the operator `=`.
 
 Additionally, `Criteria` ignores all the `$_POST` variables that do not match any field in the table. Values are automatically escaped using `bound parameters`.
 

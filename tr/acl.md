@@ -1,9 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Erişim Kontrol Listeleri</a> <ul>
+      <a href="#overview">Access Control Lists (ACL)</a>
+      <ul>
         <li>
-          <a href="#setup">ACL Oluşturma</a>
+          <a href="#setup">Creating an ACL</a>
         </li>
         <li>
           <a href="#adding-roles">ACL'ye Rol Ekleme</a>
@@ -215,37 +216,38 @@ $acl->isAllowed(
 Ayrıca `isAllowed()` yönteminde herhangi bir parametre sağlamazsanız, varsayılan davranış `Acl::ALLOW` olacaktır. Bunu `setNoArgumentsDefaultAction()` yöntemi kullanarak değiştirebilirsiniz.
 
 ```php
+<?php
+
 use Phalcon\Acl;
 
-<?php
-// Rol için erişim düzeyini özel fonksiyonla kaynaklara ayarla
+// Set access level for role into resources with custom function
 $acl->allow(
-    'Ziyaretçiler',
-    'Müşteriler',
+    'Guests',
+    'Customers',
     'search',
     function ($a) {
         return $a % 2 === 0;
     }
 );
 
-// Rolün, özel fonksiyonla işleme erişimi olup olmadığını kontrol edin
+// Check whether role has access to the operation with custom function
 
 // Returns true
 $acl->isAllowed(
-    'Ziyaretçiler',
-    'Müşteriler',
+    'Guests',
+    'Customers',
     'search'
 );
 
-// Argümanları değiştirme varsayılan eylem
+// Change no arguments default action
 $acl->setNoArgumentsDefaultAction(
     Acl::DENY
 );
 
-// Geriye false döner
+// Returns false
 $acl->isAllowed(
-    'Ziyaretçiler',
-    'Müşteriler',
+    'Guests',
+    'Customers',
     'search'
 );
 ```

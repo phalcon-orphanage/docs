@@ -1,80 +1,78 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Queueing</a>
-    </li>
-    <li>
-      <a href="$overview">Routing</a> <ul>
+      <a href="#overview">Routing</a>
+      <ul>
         <li>
-          <a href="$defining">Defining Routes</a> <ul>
+          <a href="#defining">Defining Routes</a>
+          <ul>
             <li>
-              <a href="$defining-named-parameters">Parameters with Names</a>
+              <a href="#defining-named-parameters">Parameters with Names</a>
             </li>
             <li>
-              <a href="$defining-short-syntax">Short Syntax</a>
+              <a href="#defining-short-syntax">Short Syntax</a>
             </li>
             <li>
-              <a href="$defining-mixed-parameters">Mixing Array and Short Syntax</a>
+              <a href="#defining-mixed-parameters">Mixing Array and Short Syntax</a>
             </li>
             <li>
-              <a href="$defining-route-to-modules">Routing to Modules</a>
+              <a href="#defining-route-to-modules">Routing to Modules</a>
             </li>
             <li>
-              <a href="$defining-http-method-restrictions">HTTP Method Restrictions</a>
+              <a href="#defining-http-method-restrictions">HTTP Method Restrictions</a>
             </li>
             <li>
-              <a href="$defining-using-conversors">Using conversors</a>
+              <a href="#defining-using-conversors">Using conversors</a>
             </li>
             <li>
-              <a href="$defining-groups-of-routes">Groups of Routes</a>
+              <a href="#defining-groups-of-routes">Groups of Routes</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="$matching">Matching Routes</a>
+          <a href="#matching">Matching Routes</a>
         </li>
         <li>
-          <a href="$naming">Naming Routes</a>
+          <a href="#naming">Naming Routes</a>
         </li>
         <li>
-          <a href="$usage">Usage Examples</a>
+          <a href="#usage">Usage Examples</a>
         </li>
         <li>
-          <a href="$default-behavior">Default Behavior</a>
+          <a href="#default-behavior">Default Behavior</a>
         </li>
         <li>
-          <a href="$default-route">Setting the default route</a>
+          <a href="#default-route">Setting the default route</a>
         </li>
         <li>
-          <a href="$not-found-paths">Not Found Paths</a>
+          <a href="#not-found-paths">Not Found Paths</a>
         </li>
         <li>
-          <a href="$default-paths">Setting default paths</a>
+          <a href="#default-paths">Setting default paths</a>
         </li>
         <li>
-          <a href="$extra-slashes">Dealing with extra/trailing slashes</a>
+          <a href="#extra-slashes">Dealing with extra/trailing slashes</a>
         </li>
         <li>
-          <a href="$callbacks">Match Callbacks</a>
+          <a href="#callbacks">Match Callbacks</a>
         </li>
         <li>
-          <a href="$hostname-constraints">Hostname Constraints</a>
+          <a href="#hostname-constraints">Hostname Constraints</a>
         </li>
         <li>
-          <a href="$uri-sources">URI Sources</a>
+          <a href="#uri-sources">URI Sources</a>
         </li>
         <li>
-          <a href="$testing">Testing your routes</a>
+          <a href="#testing">Testing your routes</a>
         </li>
         <li>
-          <a href="$annotations">Annotations Router</a>
+          <a href="#annotations">Annotations Router</a>
         </li>
         <li>
-          <a href="$registration">Registering Router instance</a>
+          <a href="#registration">Registering Router instance</a>
         </li>
         <li>
-          <a href="$custom">Implementing your own Router</a>
+          <a href="#custom">Implementing your own Router</a>
         </li>
       </ul>
     </li>
@@ -83,7 +81,7 @@
 
 <a name='overview'></a>
 
-# Routing
+# Trasowanie (ang. routing)
 
 The router component allows you to define routes that are mapped to controllers or handlers that should receive the request. A router simply parses a URI to determine this information. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
 
@@ -120,10 +118,9 @@ $router->add(
 );
 
 $router->handle();
-````
+```
 
-The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths.
-In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. `Phalcon\Mvc\Dispatcher`) that this is the controller/action it should execute.
+The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths. In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. `Phalcon\Mvc\Dispatcher`) that this is the controller/action it should execute.
 
 An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can create more flexible routes:
 
@@ -148,7 +145,7 @@ $router->add(
 
 In the example above, we're using wildcards to make a route valid for many URIs. For example, by accessing the following URL (`/admin/users/a/delete/dave/301`) would produce:
 
-| Controller | Action | Parameter | Parameter |
+| Controller | Akcja  | Parameter | Parameter |
 |:----------:|:------:|:---------:|:---------:|
 |   users    | delete |   dave    |    301    |
 
@@ -158,7 +155,7 @@ The second parameter defines how the matched parts should bind to the controller
 
 These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported:
 
-| Placeholder    | Regular Expression       | Usage                                                                                                  |
+| Placeholder    | Regular Expression       | Sposób użycia                                                                                          |
 | -------------- | ------------------------ | ------------------------------------------------------------------------------------------------------ |
 | `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
 | `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
@@ -332,9 +329,9 @@ $router->add(
 
 In this case, the route always must have the module name as part of the URL. For example, the following URL: `/admin/users/edit/sonny`, will be processed as:
 
-| Module | Controller | Action | Parameter |
-|:------:|:----------:|:------:|:---------:|
-| admin  |   users    |  edit  |   sonny   |
+| Moduł | Controller | Akcja | Parameter |
+|:-----:|:----------:|:-----:|:---------:|
+| admin |   users    | edit  |   sonny   |
 
 Or you can bind specific routes to specific modules:
 
@@ -750,7 +747,11 @@ $router->add(
 );
 ```
 
-<h5 class='alert alert-warning'>Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: <code>/([a-zA-Z0-9\\\_\\-]+)</code> </h5>
+<div class="alert alert-warning">
+    <p>
+        Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: <code>/([a-zA-Z0-9\_\-]+)</code>
+    </p>
+</div>
 
 <a name='default-behavior'></a>
 
@@ -760,9 +761,9 @@ $router->add(
 
 For example, for a URL like this `http://phalconphp.com/documentation/show/about.html`, this router will translate it as follows:
 
-|  Controller   | Action | Parameter  |
-|:-------------:|:------:|:----------:|
-| documentation |  show  | about.html |
+|  Controller   | Akcja | Parameter  |
+|:-------------:|:-----:|:----------:|
+| documentation | show  | about.html |
 
 If you don't want the router to have this behavior, you must create the router passing `false` as the first parameter:
 
@@ -812,6 +813,8 @@ $router->notFound(
 ```
 
 This is typically for an Error 404 page.
+
+> This will only work if the router was created without default routes: `$router = Phalcon\Mvc\Router(FALSE);`
 
 <a name='default-paths'></a>
 
@@ -1080,7 +1083,11 @@ Or you can manually pass a URI to the `handle()` method:
 $router->handle('/some/route/to/handle');
 ```
 
-<h5 class='alert alert-danger'>Please note that using <code>Router::URI_SOURCE_GET_URL</code> automatically decodes the Uri, because it is based on the <code>$_REQUEST</code> superglobal. However, for the time being, using <code>Router::URI_SOURCE_SERVER_REQUEST_URI</code> will not automatically decode the Uri for you. This will change in the next major release.</h5>
+<div class='alert alert-danger'>
+    <p>
+        Please note that using <code>Router::URI_SOURCE_GET_URL</code> automatically decodes the Uri, because it is based on the <code>$_REQUEST</code> superglobal. However, for the time being, using <code>Router::URI_SOURCE_SERVER_REQUEST_URI</code> will not automatically decode the Uri for you. This will change in the next major release.
+    </p>
+</div>
 
 <a name='testing'></a>
 
@@ -1216,7 +1223,7 @@ class ProductsController
 
 Only methods marked with valid annotations are used as routes. List of annotations supported:
 
-| Name        | Description                                                                                       | Usage                                  |
+| Nazwa       | Description                                                                                       | Sposób użycia                          |
 | ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
 | Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
@@ -1228,7 +1235,7 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 
 For annotations that add routes, the following parameters are supported:
 
-| Name       | Description                                                            | Usage                                                                |
+| Nazwa      | Description                                                            | Sposób użycia                                                        |
 | ---------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | methods    | Define one or more HTTP method that route must meet with               | `@Route('/api/products', methods={'GET', 'POST'})`                   |
 | name       | Define a name for the route                                            | `@Route('/api/products', name='get-products')`                       |

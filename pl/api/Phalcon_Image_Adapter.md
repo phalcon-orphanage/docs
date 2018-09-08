@@ -6,7 +6,7 @@
 
 All image adapters must use this class
 
-## Methods
+## Metody
 
 public **getImage** ()
 

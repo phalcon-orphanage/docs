@@ -40,7 +40,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $frontendOptions])
 

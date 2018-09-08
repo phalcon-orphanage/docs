@@ -81,7 +81,7 @@ $connection->addColumn("robots", null, $column);
 
 *integer* **BIND_SKIP**
 
-## Methods
+## Metody
 
 public **getName** ()
 

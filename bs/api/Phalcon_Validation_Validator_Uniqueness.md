@@ -11,7 +11,10 @@ Check that a field is unique in the related table
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness as UniquenessValidator;
+
+$validator = new Validation();
 
 $validator->add(
     "username",

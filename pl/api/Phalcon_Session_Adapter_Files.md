@@ -14,7 +14,7 @@
 
 *integer* **SESSION_DISABLED**
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $options]) inherited from [Phalcon\Session\Adapter](/en/3.2/api/Phalcon_Session_Adapter)
 

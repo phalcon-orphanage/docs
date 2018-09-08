@@ -1,21 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Encryption/Decryption</a> <ul>
+      <a href="#overview">Encriptado / Desencriptado</a> <ul>
         <li>
-          <a href="#usage">Basic Usage</a>
+          <a href="#usage">Uso básico</a>
         </li>
         <li>
-          <a href="#options">Encryption Options</a>
+          <a href="#options">Opciones de encriptado</a>
         </li>
         <li>
-          <a href="#base64">Base64 Support</a>
+          <a href="#base64">Soporte Base64</a>
         </li>
         <li>
-          <a href="#service">Setting up an Encryption service</a>
+          <a href="#service">Configurando el servicio de encriptación</a>
         </li>
         <li>
-          <a href="#links">Links</a>
+          <a href="#links">Enlaces</a>
         </li>
       </ul>
     </li>
@@ -24,105 +24,109 @@
 
 <a name='overview'></a>
 
-# Encryption/Decryption
+# Encriptado / Desencriptado
 
-Phalcon provides encryption facilities via the `Phalcon\Crypt` component. This class offers simple object-oriented wrappers to the [openssl](http://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
+Phalcon proporciona un servicio de cifrado mediante el componente `Phalcon\Crypt`. Esta clase ofrece una envoltura simple orientada a objetos a la biblioteca de cifrado [openssl](http://www.php.net/manual/en/book.openssl.php) de PHP.
 
-By default, this component provides secure encryption using AES-256-CFB.
+De forma predeterminada, este componente proporciona cifrado seguro utilizando AES-256-CFB.
 
-<h5 class='alert alert-warning'>You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
+<div class="alert alert-warning">
+    <p>
+        Se debe utilizar una longitud de clave que corresponda con el algoritmo actual. El algoritmo usado por defecto es 32 bytes.
+    </p>
+</div>
 
 <a name='usage'></a>
 
-## Basic Usage
+## Uso básico
 
-This component is designed to provide a very simple usage:
+Este componente está diseñado para proporcionar un uso muy sencillo:
 
 ```php
 <?php
 
 use Phalcon\Crypt;
 
-// Create an instance
+// Crear instancia
 $crypt = new Crypt();
 
-$key  = 'This is a secret key (32 bytes).';
-$text = 'This is the text that you want to encrypt.';
+$key  = 'Esta es mi clave secreta (32 bytes).';
+$text = 'Este es el texto que deseamos encriptar.';
 
 $encrypted = $crypt->encrypt($text, $key);
 
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-You can use the same instance to encrypt/decrypt several times:
+Puede utilizar la misma instancia para encriptar/desencriptar varias veces:
 
 ```php
 <?php
 
 use Phalcon\Crypt;
 
-// Create an instance
+// Creamos la instancia
 $crypt = new Crypt();
 
 $texts = [
-    'my-key'    => 'This is a secret text',
-    'other-key' => 'This is a very secret',
+    'mi-llave'    => 'Este es un texto secreto',
+    'otra-llave' => 'Esta es muy secreta',
 ];
 
 foreach ($texts as $key => $text) {
-    // Perform the encryption
+    // Realizar el cifrado
     $encrypted = $crypt->encrypt($text, $key);
 
-    // Now decrypt
+    // Ahora desencriptar
     echo $crypt->decrypt($encrypted, $key);
 }
 ```
 
 <a name='options'></a>
 
-## Encryption Options
+## Opciones de encriptado
 
-The following options are available to change the encryption behavior:
+Las siguientes opciones están disponibles para cambiar el comportamiento de cifrado:
 
-| Name   | Description                                                                                                                                                          |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
+| Nombre | Descripción                                                                                                                                                                     |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cipher | Cipher es uno de los algoritmos de encriptación soportados por openssl. Usted puede ver una lista [ aquí](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
-Example:
+Ejemplo:
 
 ```php
 <?php
 
 use Phalcon\Crypt;
 
-// Create an instance
+// Creamos la instancia
 $crypt = new Crypt();
 
-// Use blowfish
+// Usamos blowfish
 $crypt->setCipher('bf-cbc');
 
-$key  = 'le password';
-$text = 'This is a secret text';
+$key  = 'La llave secreta';
+$text = 'Este es el texto secreto';
 
 echo $crypt->encrypt($text, $key);
 ```
 
 <a name='base64'></a>
 
-## Base64 Support
+## Soporte Base64
 
-In order for encryption to be properly transmitted (emails) or displayed (browsers) [base64](http://www.php.net/manual/en/function.base64-encode.php) encoding is usually applied to encrypted texts:
+Para que el cifrado se transmita correctamente (correos electrónicos) o se muestre (navegadores), generalmente se aplica el cifrado [base64](http://www.php.net/manual/en/function.base64-encode.php) a textos:
 
 ```php
 <?php
 
 use Phalcon\Crypt;
 
-// Create an instance
+// Creamos la instancia
 $crypt = new Crypt();
 
-$key  = 'le password';
-$text = 'This is a secret text';
+$key  = 'La llave secreta';
+$text = 'El texto secreto que queremos ocultar';
 
 $encrypt = $crypt->encryptBase64($text, $key);
 
@@ -131,9 +135,9 @@ echo $crypt->decryptBase64($encrypt, $key);
 
 <a name='service'></a>
 
-## Setting up an Encryption service
+## Configurando el servicio de encriptación
 
-You can set up the encryption component in the services container in order to use it from any part of the application:
+Puede configurar el componente de encriptación en un contenedor de servicios para su uso desde cualquier parte de la aplicación:
 
 ```php
 <?php
@@ -145,7 +149,7 @@ $di->set(
     function () {
         $crypt = new Crypt();
 
-        // Set a global encryption key
+        // Clave de seguridad global
         $crypt->setKey(
             '%31.1e$i86e$f!8jz'
         );
@@ -156,7 +160,7 @@ $di->set(
 );
 ```
 
-Then, for example, in a controller you can use it as follows:
+Entonces, por ejemplo, en un controller usted puede utilizarlo de la siguiente manera:
 
 ```php
 <?php
@@ -175,7 +179,7 @@ class SecretsController extends Controller
 
         if ($secret->save()) {
             $this->flash->success(
-                'Secret was successfully created!'
+                '¡Secreto creado correctamente!'
             );
         }
     }
@@ -184,8 +188,8 @@ class SecretsController extends Controller
 
 <a name='links'></a>
 
-## Links
+## Enlaces
 
-- [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
-- [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
-- [Introduction to Blowfish](http://www.splashdata.com/splashid/blowfish.htm)
+* [Estándar de cifrado avanzado (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+* [Qué es el bloque Cipher](https://en.wikipedia.org/wiki/Block_cipher)
+* [Introducción a Blowfish](http://www.splashdata.com/splashid/blowfish.htm)

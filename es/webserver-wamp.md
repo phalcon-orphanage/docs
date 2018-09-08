@@ -1,12 +1,13 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Resumen</a>
+      <ul>
         <li>
-          <a href="#phalcon">Download the right version of Phalcon</a>
+          <a href="#phalcon">Descargar la versión correcta de Phalcon</a>
         </li>
         <li>
-          <a href="#related">Related</a>
+          <a href="#related">Guías Relacionadas</a>
         </li>
       </ul>
     </li>
@@ -15,56 +16,59 @@
 
 <a name='overview'></a>
 
-# Installation on WAMP
+# Resumen
 
-[WampServer](http://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
+[WampServer](http://www.wampserver.com/en/) es un entorno de desarrollo web para Windows. Te permite crear aplicaciones web con Apache2, PHP y una base de datos MySQL. A continuación te mostramos las instrucciones detalladas para instalar Phalcon en un servidor Wamp para Windows. Utilizar la última versión de WAMP Server es lo mas recomendable.
 
 <a name='phalcon'></a>
 
-## Download the right version of Phalcon
+## Descargar la versión correcta de Phalcon
 
-WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMPP installation.
+WAMP tiene versiones de 32 y 64 bits. De la sección de descargas, puedes descargar la DLL de Phalcon que se adapte a tu instalación WAMPP.
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+Después de descargar la biblioteca Phalcon tendrás un archivo zip como se muestra a continuación:
 
 ![](/images/content/webserver-xampp-1.png)
 
-Extract the library from the archive to get the Phalcon DLL:
+Descomprime la biblioteca del archivo para obtener la DLL de Phalcon:
 
 ![](/images/content/webserver-xampp-2.png)
 
-Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php5.5.12\ext` (assuming your WAMP installation installed PHP 5.5.12).
+Copia el archivo `php_phalcon.dll` en la carpeta de extensiones de PHP. Si WAMP está instalado en la carpeta `C:\wamp`, la extensión debe ser ubicada en `C:\wamp\bin\php\php5.5.12\ext` (suponiendo que tu instalación de WAMP tiene instalado PHP 5.5.12):
 
 ![](/images/content/webserver-wamp-1.png)
 
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
+Edita el archivo `php.ini`, se encuentra en `C:\wamp\bin\php\php5.5.12\php.ini`. Puedes editarlo con el Bloc de notas o un programa similar. Te recomendamos Notepad ++ para evitar problemas con los caracteres de fin de línea. Agrega esto al final del archivo:
 
-```ini extension=php_phalcon.dll
+```ini
+extension=php_phalcon.dll
+```
 
-    <br />and save it.
-    
-    ![](/images/content/webserver-wamp-2.png)
-    
-    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file: 
-    
-    ```ini
-    extension=php_phalcon.dll 
-    
+y guarda los cambios.
 
-and save it.
+![](/images/content/webserver-wamp-2.png)
 
-Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose `Restart All Services` from the pop-up menu. Check out that tray icon will become green again.
+También editar el archivo `php.ini`, que se encuentra en `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Agregar al final del archivo:
+
+```ini
+extension=php_phalcon.dll
+```
+
+y guarda los cambios.
+
+Reinicia el servidor Web Apache. Haz un clic en el icono de WampServer en la bandeja del sistema. Elije "Reiniciar todos los servicios" en el menú emergente. Espera a que ese icono vuelva a ser verde.
 
 ![](/images/content/webserver-wamp-3.png)
 
-Open your browser to navigate to http://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that phalcon was loaded.
+Abrir el navegador para navegar a `http://localhost`. Aparecerá la página de bienvenida de WAMP. Consulte la sección "extensiones cargadas" para asegurar que Phalcon fue cargado.
 
 ![](/images/content/webserver-wamp-4.png)
 
-Congratulations! You are now phlying with Phalcon.
+¡Felicitaciones! Ahora estás volando con Phalcon.
 
 <a name='related'></a>
 
-## Related Guides
+## Guías Relacionadas
 
-- [Installation on XAMPP](/[[language]]/[[version]]/webserver-xampp)
+* [Instalación General](/[[language]]/[[version]]/installation)
+* [Instalación en XAMPP](/[[language]]/[[version]]/webserver-xampp)

@@ -1,15 +1,16 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#architecture">The MVC Architecture</a> <ul>
+      <a href="#architecture">La Arquitectura MVC</a> 
+      <ul>
         <li>
-          <a href="#models">Models</a>
+          <a href="#models">Modelos</a>
         </li>
         <li>
-          <a href="#views">Views</a>
+          <a href="#views">Vistas</a>
         </li>
         <li>
-          <a href="#controllers">Controllers</a>
+          <a href="#controllers">Controladores</a>
         </li>
       </ul>
     </li>
@@ -18,31 +19,31 @@
 
 <a name='architecture'></a>
 
-# The MVC Architecture
+# La Arquitectura MVC
 
-Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) in your application. This design pattern is widely used by other web frameworks and desktop applications.
+Phalcon ofrece las clases orientadas a objetos necesarias para implementar el arquitectura Modelo, Vista, Controlador (referido a menudo como [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) en su aplicación. Este patrón es ampliamente utilizado por otros frameworks web y aplicaciones de escritorio.
 
-MVC benefits include:
+Los beneficios de MVC incluyen:
 
-- Isolation of business logic from the user interface and the database layer
-- Making it clear where different types of code belong for easier maintenance
+* Aislamiento de la lógica de negocio de la interfaz de usuario y la capa de base de datos
+* Deja claro a cual parte de esta arquitectura pertenece cada tipo de código para facilitar el mantenimiento
 
-If you decide to use MVC, every request to your application resources will be managed by the MVC architecture. Phalcon classes are written in C language, offering a high performance approach of this pattern in a PHP based application.
+Si usted decide utilizar MVC, cada solicitud a los recursos de la aplicación será administrada por la arquitectura MVC. Las clases de Phalcon están escritas en lenguaje C, ofreciendo un enfoque de alto rendimiento de este patrón en una aplicación basada en PHP.
 
 <a name='models'></a>
 
-## Models
+## Modelos
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. [Learn more](/[[language]]/[[version]]/models)
+Un modelo representa la información (datos) de la aplicación y las reglas para manipular estos datos. Los modelos se utilizan principalmente para administrar las reglas de interacción con una tabla de base de datos correspondiente. En la mayoría de los casos, cada tabla de la base de datos corresponderá a un modelo en su aplicación. La mayor parte de la lógica de negocio de su aplicación se concentrará en los modelos. [Más información](/[[language]]/[[version]]/db-models)
 
 <a name='views'></a>
 
-## Views
+## Vistas
 
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. [Learn more](/[[language]]/[[version]]/views)
+Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son a menudo, archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente a la presentación de datos. Las vistas llevan a cabo el trabajo de proveer datos al navegador web u otra herramienta que es usada para hacer solicitudes desde su aplicación. [Más Información](/[[language]]/[[version]]/views)
 
 <a name='controllers'></a>
 
-## Controllers
+## Controladores
 
-The controllers provide the 'flow' between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [Learn more](/[[language]]/[[version]]/controllers)
+Los controladores proporcionan el 'flujo' entre modelos y vistas. Los controladores son responsables de procesar las peticiones entrantes desde el navegador web, solicitar datos a los modelos y pasar esos datos a las vistas para la representación de la información. [Más información](/[[language]]/[[version]]/controllers)

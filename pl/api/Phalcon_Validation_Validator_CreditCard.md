@@ -11,7 +11,10 @@ Checks if a value has a valid credit card number
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\CreditCard as CreditCardValidator;
+
+$validator = new Validation();
 
 $validator->add(
     "creditCard",
@@ -39,7 +42,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Metody
 
 public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
 

@@ -11,7 +11,10 @@ Checks if a value is identical to other
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Identical;
+
+$validator = new Validation();
 
 $validator->add(
     "terms",
@@ -44,7 +47,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Metody
 
 public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
 

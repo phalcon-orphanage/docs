@@ -33,7 +33,7 @@ $connection->addIndex("robots", null, $index_primary);
 
 ```
 
-## Methods
+## Metody
 
 public **getName** ()
 

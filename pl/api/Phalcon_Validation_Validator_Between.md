@@ -11,7 +11,10 @@ Validates that a value is between an inclusive range of two values. For a value 
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Between;
+
+$validator = new Validation();
 
 $validator->add(
     "price",
@@ -49,7 +52,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Metody
 
 public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
 

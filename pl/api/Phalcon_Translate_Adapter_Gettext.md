@@ -24,7 +24,7 @@ $adapter = new Gettext(
 
 Allows translate using gettext
 
-## Methods
+## Metody
 
 public **getDirectory** ()
 

@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Filtering and Sanitizing</a> <ul>
+      <a href="#overview">Filtering and Sanitizing</a> 
+      <ul>
         <li>
           <a href="#types">Types of Built-in Filters</a>
         </li>
@@ -52,7 +53,7 @@ The `Phalcon\Filter` component provides a set of commonly used filters and data 
 
 The following are the built-in filters provided by this component:
 
-| Name      | Description                                                                              |
+| Nazwa     | Description                                                                              |
 | --------- | ---------------------------------------------------------------------------------------- |
 | string    | Strip tags and encode HTML entities, including single and double quotes.                 |
 | email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.        |

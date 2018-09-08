@@ -11,7 +11,10 @@ Check for numeric character(s)
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Digit as DigitValidator;
+
+$validator = new Validation();
 
 $validator->add(
     "height",
@@ -39,7 +42,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Metody
 
 public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
 

@@ -27,7 +27,7 @@ $reference = new \Phalcon\Db\Reference(
 
 ```
 
-## Methods
+## Metody
 
 public **getName** ()
 

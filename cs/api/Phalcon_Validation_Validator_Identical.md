@@ -11,7 +11,10 @@ Checks if a value is identical to other
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Identical;
+
+$validator = new Validation();
 
 $validator->add(
     "terms",

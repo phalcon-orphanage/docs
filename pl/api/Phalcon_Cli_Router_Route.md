@@ -8,7 +8,7 @@ This class represents every route added to the router
 
 *string* **DEFAULT_DELIMITER**
 
-## Methods
+## Metody
 
 public **__construct** (*string* $pattern, [*array* $paths])
 

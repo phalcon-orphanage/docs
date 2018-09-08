@@ -192,7 +192,7 @@ try {
 }
 ```
 
-Transakce jsou znovu použity bez ohledu na to, kde je objekt transakce načten. Nová transakce se vygeneruje pouze v případě, že se provede příkaz `commit()` nebo :code:`rollback()`. Můžete také použít kontejner pro služby (Di) pro vytvoření globalního správce transakcí pro celou aplikaci:
+Transakce jsou znovu použity bez ohledu na to, kde je objekt transakce načten. A new transaction is generated only when a `commit()` or `rollback()` is performed. Můžete také použít kontejner pro služby (Di) pro vytvoření globalního správce transakcí pro celou aplikaci:
 
 ```php
 <?php

@@ -1,10 +1,14 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">View Helpers (Tags)</a> <ul>
+      <a href="#overview">View Helpers (Tags)</a> 
+      <ul>
         <li>
           <a href="#document-type">Document Type of Content</a>
         </li>
+        <li>
+          <a href="#generating-links">Generating Links</a>
+        </li>        
         <li>
           <a href="#creating-forms">Creating Forms</a>
         </li>
@@ -18,7 +22,8 @@
           <a href="#html-attributes">Assigning HTML attributes</a>
         </li>
         <li>
-          <a href="#helper-values">Setting Helper Values</a> <ul>
+          <a href="#helper-values">Setting Helper Values</a> 
+          <ul>
             <li>
               <a href="#helper-values-form-controllers">From Controllers</a>
             </li>
@@ -30,14 +35,14 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#changing-document-title-dynamically">Changing dynamically the Document Title</a>
         </li>
         <li>
-          <a href="#static-content-helpers">Static Content Helpers</a> <ul>
+          <a href="#static-content-helpers">Static Content Helpers</a> 
+          <ul>
             <li>
-              <a href="#static-content-helpers-images">Images</a>
+              <a href="#static-content-helpers-images">Obrazki</a>
             </li>
             <li>
               <a href="#static-content-helpers-stylesheets">Stylesheets</a>
@@ -50,7 +55,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#tag-helpers">Tag Service</a>
         </li>
@@ -70,7 +74,11 @@ Writing and maintaining HTML markup can quickly become a tedious task because of
 
 This component can be used in a plain HTML+PHP view or in a [Volt](/[[language]]/[[version]]/volt) template.
 
-<h5 class='alert alert-warning'>This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the <code>Phalcon\\Tag</code> page in the API for a complete reference. </h5>
+<div class="alert alert-warning">
+    <p>
+        This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the <a href="/[[language]]/[[version]]/api/Phalcon_Tag">Phalcon\Tag</a> page in the API for a complete reference.
+    </p>
+</div>
 
 <a name='document-type'></a>
 
@@ -92,7 +100,7 @@ Available document type constants in `Phalcon\Tag` namespace are:
 | XHTML10_FRAMESET     | XHTML 1.0 Frameset     |
 | XHTML11              | XHTML 1.1              |
 | XHTML20              | XHTML 2.0              |
-| XHTML5               | XHTML 5                |
+| HTML5                | XHTML 5                |
 
 Setting document type.
 
@@ -532,7 +540,7 @@ The following HTML will generated:
 
 <a name='static-content-helpers-images'></a>
 
-### Images
+### Obrazki
 
 ```php
 <?php

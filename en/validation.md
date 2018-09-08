@@ -1,16 +1,37 @@
-<div class='article-menu' markdown='1'>
-
-- [Validation](#overview)
-    - [Initializing Validation](#initializing)
-    - [Validators](#validators)
-    - [Callback Validator](#callback)
-    - [Validation Messages](#messages)
-    - [Filtering of Data](#filtering)
-    - [Validation Events](#events)
-    - [Cancelling Validations](#cancelling)
-    - [Avoid validating empty values](#empty-values)
-    - [Recursive Validation](#recursive)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Validation</a> <ul>
+        <li>
+          <a href="#initializing">Initializing Validation</a>
+        </li>
+        <li>
+          <a href="#validators">Validators</a>
+        </li>
+        <li>
+          <a href="#callback">Callback Validator</a>
+        </li>
+        <li>
+          <a href="#messages">Validation Messages</a>
+        </li>
+        <li>
+          <a href="#filtering">Filtering of Data</a>
+        </li>
+        <li>
+          <a href="#events">Validation Events</a>
+        </li>
+        <li>
+          <a href="#cancelling">Cancelling Validations</a>
+        </li>
+        <li>
+          <a href="#empty-values">Avoid validating empty values</a>
+        </li>
+        <li>
+          <a href="#recursive">Recursive Validation</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -141,17 +162,17 @@ Phalcon exposes a set of built-in validators for this component:
 | `Phalcon\Validation\Validator\Uniqueness`   | Validates that a field's value is unique in the related model.    |
 | `Phalcon\Validation\Validator\Numericality` | Validates that a field's value is a valid numeric value.          |
 | `Phalcon\Validation\Validator\PresenceOf`   | Validates that a field's value is not null or empty string.       |
-| `Phalcon\Validation\Validator\Identical`    | Validates that a field's value is the same as a specified value   |
-| `Phalcon\Validation\Validator\Email`        | Validates that field contains a valid email format                |
-| `Phalcon\Validation\Validator\ExclusionIn`  | Validates that a value is not within a list of possible values    |
-| `Phalcon\Validation\Validator\InclusionIn`  | Validates that a value is within a list of possible values        |
-| `Phalcon\Validation\Validator\Regex`        | Validates that the value of a field matches a regular expression  |
-| `Phalcon\Validation\Validator\StringLength` | Validates the length of a string                                  |
-| `Phalcon\Validation\Validator\Between`      | Validates that a value is between two values                      |
-| `Phalcon\Validation\Validator\Confirmation` | Validates that a value is the same as another present in the data |
-| `Phalcon\Validation\Validator\Url`          | Validates that field contains a valid URL                         |
-| `Phalcon\Validation\Validator\CreditCard`   | Validates a credit card number                                    |
-| `Phalcon\Validation\Validator\Callback`     | Validates using callback function                                 |
+| `Phalcon\Validation\Validator\Identical`    | Validates that a field's value is the same as a specified value.  |
+| `Phalcon\Validation\Validator\Email`        | Validates that field contains a valid email format.               |
+| `Phalcon\Validation\Validator\ExclusionIn`  | Validates that a value is not within a list of possible values.   |
+| `Phalcon\Validation\Validator\InclusionIn`  | Validates that a value is within a list of possible values.       |
+| `Phalcon\Validation\Validator\Regex`        | Validates that the value of a field matches a regular expression. |
+| `Phalcon\Validation\Validator\StringLength` | Validates the length of a string.                                 |
+| `Phalcon\Validation\Validator\Between`      | Validates that a value is between two values.                     |
+| `Phalcon\Validation\Validator\Confirmation` | Validates that a value is the same as another present in the data.|
+| `Phalcon\Validation\Validator\Url`          | Validates that field contains a valid URL.                        |
+| `Phalcon\Validation\Validator\CreditCard`   | Validates a credit card number.                                   |
+| `Phalcon\Validation\Validator\Callback`     | Validates using callback function.                                |
 
 The following example explains how to create additional validators for this component:
 
@@ -278,7 +299,7 @@ if (count($messages)) {
 }
 ```
 
-You can pass a 'message' parameter to change/translate the default message in each validator:
+You can pass a `message` parameter to change/translate the default message in each validator, even it's possible to use the wildcard `:field` in the message to be replaced by the label of the field:
 
 ```php
 <?php
@@ -350,7 +371,7 @@ Filtering and sanitizing is performed using the [filter](/[[language]]/[[version
 
 <a name='events'></a>
 ## Validation Events
-When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
+When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns `false` the validation is automatically cancelled:
 
 ```php
 <?php
@@ -443,7 +464,7 @@ $validation->add(
 );
 ```
 
-The first validator has the option `cancelOnFail` with a value of true, therefore if that validator fails the remaining validators in the chain are not executed.
+The first validator has the option `cancelOnFail` with a value of `true`, therefore if that validator fails the remaining validators in the chain are not executed.
 
 If you are creating custom validators you can dynamically stop the validation chain by setting the `cancelOnFail` option:
 
@@ -515,14 +536,10 @@ class CompanyValidation extends Validation
      */
     protected $phoneValidation;
 
-
-
     public function initialize()
     {
         $this->phoneValidation = new PhoneValidation();
     }
-
-
 
     public function afterValidation($data, $entity, $messages)
     {

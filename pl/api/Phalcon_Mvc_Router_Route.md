@@ -6,7 +6,7 @@
 
 This class represents every route added to the router
 
-## Methods
+## Metody
 
 public **__construct** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 

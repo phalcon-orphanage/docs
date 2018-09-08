@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Phalcon Developer Tools</a> <ul>
+      <a href="#overview">Phalcon Developer Tools</a> 
+      <ul>
         <li>
           <a href="#download">Download</a>
         </li>
@@ -46,7 +47,11 @@
 
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
-<h5 class='alert alert-danger'>If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information. </h5>
+<div class="alert alert-danger">
+    <p>
+        If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information.
+    </p>
+</div>
 
 <a name='download'></a>
 
@@ -60,7 +65,7 @@ You can download or clone a cross platform package containing the developer tool
 
 These are detailed instructions on how to install the developer tools on different platforms:
 
-[Linux](/[[language]]/[[version]]devtools-installation#installation-linux) : [MacOS](/[[language]]/[[version]]devtools-installation#installation-macos) : [Windows](/[[language]]/[[version]]devtools-installation#installation-windows)
+[Linux](/[[language]]/[[version]]/devtools-installation#installation-linux) : [MacOS](/[[language]]/[[version]]/devtools-installation#installation-macos) : [Windows](/[[language]]/[[version]]/devtools-installation#installation-windows)
 
 <a name='available-commands'></a>
 
@@ -353,7 +358,7 @@ $ phalcon scaffold --table-name products
 
 The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
 
-| File                                     | Purpose                        |
+| Plik                                     | Cel                            |
 | ---------------------------------------- | ------------------------------ |
 | `app/controllers/ProductsController.php` | The Products controller        |
 | `app/models/Products.php`                | The Products model             |

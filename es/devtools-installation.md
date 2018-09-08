@@ -1,12 +1,14 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">DevTools on Linux</a> <ul>
+      <a href="#overview">DevTools en Linux</a> 
+      <ul>
         <li>
-          <a href="#prerequisites">Prerequisites</a>
+          <a href="#prerequisites">Prerequisitos</a>
         </li>
         <li>
-          <a href="#installation">Installation</a> <ul>
+          <a href="#installation">Instalación</a> 
+          <ul>
             <li>
               <a href="#installation-linux">Linux</a>
             </li>
@@ -14,9 +16,10 @@
               <a href="#installation-mac">MacOS</a>
             </li>
             <li>
-              <a href="#installation-windows">Windows</a> <ul>
+              <a href="#installation-windows">Windows</a> 
+              <ul>
                 <li>
-                  <a href="#installation-windows-system-path">Adding PHP and Tools to your system PATH</a>
+                  <a href="#installation-windows-system-path">Agregar PHP y DevTools al PATH del sistema</a>
                 </li>
               </ul>
             </li>
@@ -29,27 +32,27 @@
 
 <a name='overview'></a>
 
-# Phalcon Developer Tools on Linux
+# Phalcon Developer Tools en Linux
 
-These steps will guide you through the process of installing Phalcon Developer Tools for Linux.
+Estos pasos le guiarán por el proceso de instalación de las Herramientas del Desarrollador de Phalcon para Linux.
 
 <a name='prerequisites'></a>
 
-## Prerequisites
+## Prerequisitos
 
-The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](/[[language]]/[[version]]//installation) section for instructions.
+La extensión de PHP, Phalcon, es necesaria para ejecutar las Herramientas del Desarrollador de Phalcon. Si no la ha instalado aún, por favor consulte la sección [instalación](/[[language]]/[[version]]//installation) para obtener las instrucciones.
 
 <a name='installation'></a>
 
-## Installation
+## Instalación
 
-You can download a cross platform package containing the developer tools from from [Github](https://github.com/phalcon/phalcon-devtools)
+Usted puede descargar un paquete multi plataforma que contiene las Herramientas del Desarrollador de desde [Github](https://github.com/phalcon/phalcon-devtools)
 
 <a name='installation-linux'></a>
 
 ### Linux
 
-Open a terminal and type the command below:
+Abra una terminal y escriba el comando siguiente:
 
 ```bash
 git clone git://github.com/phalcon/phalcon-devtools.git
@@ -57,7 +60,7 @@ git clone git://github.com/phalcon/phalcon-devtools.git
 
 ![](/images/content/devtools-linux-1.png)
 
-Then enter the folder where the tools were cloned and execute `. ./phalcon.sh`, (don't forget the dot at beginning of the command):
+Luego ubique la carpeta donde las Herramientas del Desarrollador se clonaron y ejecute `. ./phalcon.sh`, (no olvide el punto al principio del comando):
 
 ```bash
 cd phalcon-devtools/
@@ -66,7 +69,7 @@ cd phalcon-devtools/
 
 ![](/images/content/devtools-linux-2.png)
 
-Create a symbolic link to the phalcon.php script:
+Debe crear un enlace simbólico al script phalcon.php:
 
 ```bash
 ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
@@ -77,7 +80,7 @@ chmod ugo+x /usr/bin/phalcon
 
 ### MacOS
 
-Open a terminal and type the command below:
+Abra una terminal y escriba el comando siguiente:
 
 ```bash
 git clone git://github.com/phalcon/phalcon-devtools.git
@@ -85,7 +88,7 @@ git clone git://github.com/phalcon/phalcon-devtools.git
 
 ![](/images/content/devtools-mac-1.png)
 
-Then enter the folder where the tools were cloned and execute `. ./phalcon.sh`, (don't forget the dot at beginning of the command):
+Luego ubique la carpeta donde las Herramientas del Desarrollador se clonaron y ejecute `. ./phalcon.sh`, (no olvide el punto al principio del comando):
 
 ```bash
 cd phalcon-devtools/
@@ -94,7 +97,7 @@ cd phalcon-devtools/
 
 ![](/images/content/devtools-mac-2.png)
 
-Create a symbolink link to the phalcon.php script:
+Debe crear un enlace simbólico al script phalcon.php:
 
 ```bash
 ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
@@ -105,48 +108,48 @@ chmod ugo+x /usr/bin/phalcon
 
 ### Windows
 
-On the Windows platform, you need to configure the system `PATH` to include Phalcon tools as well as the PHP executable. If you download the Phalcon tools as a zip archive, extract it on any path of your local drive i.e. `c:\phalcon-tools`. You will need this path in the steps below. Edit the file `phalcon.bat` by right clicking on the file and selecting `Edit`:
+En la plataforma de Windows, debe configurar el `PATH` del sistema para que incluya las herramientas de Phalcon, así como el ejecutable de PHP. Si descarga las herramientas de Phalcon como un archivo zip, entonces, descomprimalo en cualquier ruta de su disco local por ejemplo, `c:\phalcon-tools`. Usted necesitará esta ruta en los pasos siguientes. Edite el archivo `phalcon.bat` haciendo clic derecho sobre el archivo y seleccionando `Editar`:
 
 ![](/images/content/devtools-windows-1.png)
 
-Change the path to the one you installed the Phalcon tools (set PTOOLSPATH=C:\phalcon-tools\):
+Cambie la ruta de acceso a la rutan en que se instalaron las herramientas de Phalcon (set PTOOLSPATH = C:\phalcon-tools\):
 
 ![](/images/content/devtools-windows-2.png)
 
-Save the changes.
+Guarde los cambios.
 
 <a name='installation-windows-system-path'></a>
 
-#### Adding PHP and Tools to your system PATH
+#### Agregar PHP y DevTools al PATH del sistema
 
-Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file `php.exe` and copy its path. For instance, using WAMPP you will locate the PHP executable in a location like this: `C:\wamp\bin\php\<php version>\php.exe* (where <php version> is the version of PHP that WAMPP comes bundled with).
+Debido a que los scripts están escritos en PHP, usted necesita instalar PHP en su máquina. Dependiendo de su instalación de PHP, el archivo ejecutable puede ubicarse en varios lugares. Busque el archivo `php.exe` y copie la ruta donde se encuentre. Por ejemplo, usando WAMPP localizaremos el ejecutable PHP en un lugar como este: ' C:\wamp\bin\php\<php version>php.exe* (donde <php version> está la versión de PHP que viene con el paquete WAMPP).
 
-From the Windows start menu, right mouse click on the `Computer` icon and select `Properties`:
+Desde el menú Inicio de Windows, haga derecho con el ratón y haga clic en el icono `Computer` y seleccione `Propiedades`:
 
 ![](/images/content/devtools-windows-3.png)
 
-Click the `Advanced` tab and then the button `Environment Variables`:
+Haga clic en la pestaña `Avanzado` y luego en el botón `Variables de Entorno`:
 
 ![](/images/content/devtools-windows-4.png)
 
-At the bottom, look for the section `System variables` and edit the variable `Path`:
+En la parte inferior, busque la sección `Variables del Sistema` y edite la variable `Path`:
 
 ![](/images/content/devtools-windows-5.png)
 
-Be very careful on this step! You need to append at the end of the long string the path where your `php.exe` was located and the path where Phalcon tools are installed. Use the `;` character to separate the different paths in the variable:
+¡Tenga mucho cuidado en este paso! Al final de la cadena es necesario agregar la ruta donde se encontraba el `php.exe` y la ruta donde están instaladas las herramientas de Phalcon. Utilice el carácter `;` para separar las diferentes rutas en la variable:
 
 ![](/images/content/devtools-windows-6.png)
 
-Accept the changes made by clicking `OK` and close the dialogs opened. From the start menu click on the option `Run`. If you can't find this option, press `Windows Key` + `R`.
+Acepte los cambios haciendo clic en `Aceptar` y cierre los cuadros de diálogo abiertos. Desde el inicio menú haga clic en la opción `Ejecutar`. Si no puede encontrar esta opción, presione la `Tecla de Windows` + `R`.
 
 ![](/images/content/devtools-windows-7.png)
 
-Type `cmd` and press enter to open the windows command line utility:
+Debe teclear `cmd` y luego presione enter para abrir la utilidad de línea de comandos de windows:
 
 ![](/images/content/devtools-windows-8.png)
 
-Type the commands `php -v` and `phalcon` and you will see something like this:
+Escriba los comandos `php - v` y `phalcon` y verá algo como esto:
 
 ![](/images/content/devtools-windows-9.png)
 
-Congratulations you now have Phalcon tools installed!
+¡Felicidades ahora tienes las herramientas de Phalcon instaladas!

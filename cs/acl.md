@@ -1,9 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Access Controler Lists (ACL)</a> <ul>
+      <a href="#overview">Access Control Lists (ACL)</a>
+      <ul>
         <li>
-          <a href="#setup">Vytvoření ACL</a>
+          <a href="#setup">Creating an ACL</a>
         </li>
         <li>
           <a href="#adding-roles">Přidání rolí do ACL</a>
@@ -215,9 +216,10 @@ $acl->isAllowed(
 Pokud neuvedete žádné parametry v metodě `isAllowed()`, pak výchozí chování bude `Acl::ALLOW`. Výchozí chování můžete změnit pomocí metody `setNoArgumentsDefaultAction()`.
 
 ```php
+<?php
+
 use Phalcon\Acl;
 
-<?php
 // Set access level for role into resources with custom function
 $acl->allow(
     'Guests',

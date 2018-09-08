@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Request Environment</a> <ul>
+      <a href="#overview">Request Environment</a> 
+      <ul>
         <li>
           <a href="#getting-values">Getting Values</a>
         </li>
@@ -137,7 +138,7 @@ class PostsController extends Controller
 }
 ```
 
-Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the `Phalcon\Http\Request\File` class. Using the `$_FILES` superglobal array offers the same behavior. `Phalcon\Http\Request\File>` encapsulates only the information related to each file uploaded with the request.
+Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the `Phalcon\Http\Request\File` class. Using the `$_FILES` superglobal array offers the same behavior. `Phalcon\Http\Request\File` encapsulates only the information related to each file uploaded with the request.
 
 <a name='working-with-headers'></a>
 
@@ -177,9 +178,9 @@ $userAgent = $request->getUserAgent();
 // Get the best acceptable content by the browser. ie text/xml
 $contentType = $request->getAcceptableContent();
 
-// Get the best charset accepted by the browser. ie. utf-8
+// Get the best charset accepted by the browser. tzn. utf-8
 $charset = $request->getBestCharset();
 
-// Get the best language accepted configured in the browser. ie. en-us
+// Get the best language accepted configured in the browser. tzn. en-us
 $language = $request->getBestLanguage();
 ```

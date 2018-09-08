@@ -1,31 +1,35 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Database Abstraction Layer</a> <ul>
+      <a href="#overview">Database Abstraction Layer</a> 
+      <ul>
         <li>
-          <a href="#adapters">Database Adapters</a> <ul>
+          <a href="#adapters">Database Adapters</a> 
+          <ul>
+            <li>
+              <a href="#adapters-factory">Factory</a>
+            </li>
             <li>
               <a href="#adapters-custom">Implementing your own adapters</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#dialects">Database Dialects</a> <ul>
+          <a href="#dialects">Database Dialects</a> 
+          <ul>
             <li>
               <a href="#dialects-custom">Implementing your own dialects</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#connection">Connecting to Databases</a> <ul>
+          <a href="#connection">Connecting to Databases</a> 
+          <ul>
             <li>
               <a href="#connection-factory">Connecting using Factory</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#options">Setting up additional PDO options</a>
         </li>
@@ -34,6 +38,15 @@
         </li>
         <li>
           <a href="#binding-parameters">Binding Parameters</a>
+        </li>
+        <li>
+          <a href="#typed-placeholders">Typed placeholders</a>
+        </li>
+        <li>
+          <a href="#cast-bound-parameter-values">Cast bound parameters values</a>
+        </li>
+        <li>
+          <a href="#cast-on-hydrate">Cast on Hydrate</a>
         </li>
         <li>
           <a href="#crud">Inserting/Updating/Deleting Rows</a>
@@ -57,7 +70,8 @@
           <a href="#describing-tables">Describing Tables/Views</a>
         </li>
         <li>
-          <a href="#tables">Creating/Altering/Dropping Tables</a> <ul>
+          <a href="#tables">Creating/Altering/Dropping Tables</a> 
+          <ul>
             <li>
               <a href="#tables-create">Creating Tables</a>
             </li>
@@ -86,13 +100,38 @@ This component allows for a lower level database manipulation than using traditi
 
 ## Database Adapters
 
-This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO_ to connect to databases. The following database engines are supported:
+This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
 
 | Class                                   | Description                                                                                                                                                                                                                          |
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Phalcon\Db\Adapter\Pdo\Mysql`      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    |
+| `Phalcon\Db\Adapter\Pdo\Mysql`      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases.                                                                                   |
 | `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
-| `Phalcon\Db\Adapter\Pdo\Sqlite`     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     |
+| `Phalcon\Db\Adapter\Pdo\Sqlite`     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.                                                                                                    |
+
+<a name='adapters-factory'></a>
+
+### Factory
+
+<a name='factory'></a>
+
+Loads PDO Adapter class using `adapter` option. For example:
+
+```php
+<?php
+
+use Phalcon\Db\Adapter\Pdo\Factory;
+
+$options = [
+    'host'     => 'localhost',
+    'dbname'   => 'blog',
+    'port'     => 3306,
+    'username' => 'sigma',
+    'password' => 'secret',
+    'adapter'  => 'mysql',
+];
+
+$db = Factory::load($options);
+```
 
 <a name='adapters-custom'></a>
 
@@ -352,6 +391,171 @@ $result = $connection->query(
         1 => 'Wall-E',
     ]
 );
+```
+
+<a name='typed-placeholders'></a>
+
+## Typed placeholders
+
+Placeholders allowed you to bind parameters to avoid SQL injections:
+
+```php
+<?php
+
+$phql = "SELECT * FROM Store\Robots WHERE id > :id:";
+
+$robots = $this->modelsManager->executeQuery($phql, ['id' => 100]);
+```
+
+However, some database systems require additional actions when using placeholders such as specifying the type of the bound parameter:
+
+```php
+<?php
+
+use Phalcon\Db\Column;
+
+// ...
+
+$phql = "SELECT * FROM Store\Robots LIMIT :number:";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['number' => 10],
+    Column::BIND_PARAM_INT
+);
+```
+
+You can use typed placeholders in your parameters, instead of specifying the bind type in `executeQuery()`:
+
+```php
+<?php
+
+$phql = "SELECT * FROM Store\Robots LIMIT {number:int}";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['number' => 10]
+);
+
+$phql = "SELECT * FROM Store\Robots WHERE name <> {name:str}";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['name' => $name]
+);
+```
+
+You can also omit the type if you don't need to specify it:
+
+```php
+<?php
+
+$phql = "SELECT * FROM Store\Robots WHERE name <> {name}";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['name' => $name]
+);
+```
+
+Typed placeholders are also more powerful, since we can now bind a static array without having to pass each element independently as a placeholder:
+
+```php
+<?php
+
+$phql = "SELECT * FROM Store\Robots WHERE id IN ({ids:array})";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['ids' => [1, 2, 3, 4]]
+);
+```
+
+The following types are available:
+
+| Bind Type | Bind Type Constant                | Example          |
+| --------- | --------------------------------- | ---------------- |
+| str       | `Column::BIND_PARAM_STR`          | `{name:str}`     |
+| int       | `Column::BIND_PARAM_INT`          | `{number:int}`   |
+| double    | `Column::BIND_PARAM_DECIMAL`      | `{price:double}` |
+| bool      | `Column::BIND_PARAM_BOOL`         | `{enabled:bool}` |
+| blob      | `Column::BIND_PARAM_BLOB`         | `{image:blob}`   |
+| null      | `Column::BIND_PARAM_NULL`         | `{exists:null}`  |
+| array     | Array of `Column::BIND_PARAM_STR` | `{codes:array}`  |
+| array-str | Array of `Column::BIND_PARAM_STR` | `{names:array}`  |
+| array-int | Array of `Column::BIND_PARAM_INT` | `{flags:array}`  |
+
+<a name='cast-bound-parameter-values'></a>
+
+## Cast bound parameters values
+
+By default, bound parameters aren't casted in the PHP userland to the specified bind types, this option allows you to make Phalcon cast values before bind them with PDO. A classic situation when this problem raises is passing a string in a `LIMIT`/`OFFSET` placeholder:
+
+```php
+<?php
+
+$number = '100';
+$robots = $modelsManager->executeQuery(
+    'SELECT * FROM Some\Robots LIMIT {number:int}',
+    ['number' => $number]
+);
+```
+
+This causes the following exception:
+
+    Fatal error: Uncaught exception 'PDOException' with message 'SQLSTATE[42000]:
+    Syntax error or access violation: 1064 You have an error in your SQL syntax;
+    check the manual that corresponds to your MySQL server version for the right
+    syntax to use near ''100'' at line 1' in /Users/scott/demo.php:78
+    
+
+This happens because 100 is a string variable. It is easily fixable by casting the value to integer first:
+
+```php
+<?php
+
+$number = '100';
+$robots = $modelsManager->executeQuery(
+    'SELECT * FROM Some\Robots LIMIT {number:int}',
+    ['number' => (int) $number]
+);
+```
+
+However this solution requires that the developer pays special attention about how bound parameters are passed and their types. To make this task easier and avoid unexpected exceptions you can instruct Phalcon to do this casting for you:
+
+```php
+<?php
+
+\Phalcon\Db::setup(['forceCasting' => true]);
+```
+
+The following actions are performed according to the bind type specified:
+
+| Bind Type                    | Action                                 |
+| ---------------------------- | -------------------------------------- |
+| Column::BIND_PARAM_STR     | Cast the value as a native PHP string  |
+| Column::BIND_PARAM_INT     | Cast the value as a native PHP integer |
+| Column::BIND_PARAM_BOOL    | Cast the value as a native PHP boolean |
+| Column::BIND_PARAM_DECIMAL | Cast the value as a native PHP double  |
+
+<a name='cast-on-hydrate'></a>
+
+## Cast on Hydrate
+
+Values returned from the database system are always represented as string values by PDO, no matter if the value belongs to a numerical or boolean type column. This happens because some column types cannot be represented with its corresponding PHP native types due to their size limitations. For instance, a `BIGINT` in MySQL can store large integer numbers that cannot be represented as a 32bit integer in PHP. Because of that, PDO and the ORM by default, make the safe decision of leaving all values as strings.
+
+You can set up the ORM to automatically cast those types considered safe to their corresponding PHP native types:
+
+```php
+<?php
+
+\Phalcon\Mvc\Model::setup(['castOnHydrate' => true]);
+```
+
+This way you can use strict operators or make assumptions about the type of variables:
+
+```php
+<?php
+
+$robot = Robots::findFirst();
+if (11 === $robot->id) {
+    echo $robot->name;
+}
 ```
 
 <a name='crud'></a>
@@ -889,13 +1093,13 @@ $connection->createTable(
 
 `Phalcon\Db` supports the following database column types:
 
-- `Phalcon\Db\Column::TYPE_INTEGER`
-- `Phalcon\Db\Column::TYPE_DATE`
-- `Phalcon\Db\Column::TYPE_VARCHAR`
-- `Phalcon\Db\Column::TYPE_DECIMAL`
-- `Phalcon\Db\Column::TYPE_DATETIME`
-- `Phalcon\Db\Column::TYPE_CHAR`
-- `Phalcon\Db\Column::TYPE_TEXT`
+* `Phalcon\Db\Column::TYPE_INTEGER`
+* `Phalcon\Db\Column::TYPE_DATE`
+* `Phalcon\Db\Column::TYPE_VARCHAR`
+* `Phalcon\Db\Column::TYPE_DECIMAL`
+* `Phalcon\Db\Column::TYPE_DATETIME`
+* `Phalcon\Db\Column::TYPE_CHAR`
+* `Phalcon\Db\Column::TYPE_TEXT`
 
 The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
 

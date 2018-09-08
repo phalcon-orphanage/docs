@@ -8,7 +8,7 @@
 
 Represents an inlined CSS
 
-## Methods
+## Metody
 
 public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 

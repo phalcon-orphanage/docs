@@ -14,7 +14,7 @@ $flash->error("Cannot open the file");
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** ([*mixed* $cssClasses])
 

@@ -39,7 +39,7 @@ $controller = $dispatcher->dispatch();
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Methods
+## Metody
 
 public **setControllerSuffix** (*mixed* $controllerSuffix)
 

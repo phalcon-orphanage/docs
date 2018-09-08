@@ -1,39 +1,40 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Access Control Lists</a> <ul>
+      <a href="#overview">Listas de control de acceso (ACL)</a>
+      <ul>
         <li>
-          <a href="#setup">Creating an ACL</a>
+          <a href="#setup">Creando una ACL</a>
         </li>
         <li>
-          <a href="#adding-roles">Adding Roles to the ACL</a>
+          <a href="#adding-roles">Agregando Roles en ACL</a>
         </li>
         <li>
-          <a href="#adding-resources">Adding Resources</a>
+          <a href="#adding-resources">Agregando Recursos</a>
         </li>
         <li>
-          <a href="#access-controls">Defining Access Controls</a>
+          <a href="#access-controls">Definición de controles de acceso</a>
         </li>
         <li>
-          <a href="#querying">Querying an ACL</a>
+          <a href="#querying">Consultando una ACL</a>
         </li>
         <li>
-          <a href="#function-based-access">Function based access</a>
+          <a href="#function-based-access">Acceso basado en una función</a>
         </li>
         <li>
-          <a href="#objects">Objects as role name and resource name</a>
+          <a href="#objects">Objetos como nombre de rol y recurso</a>
         </li>
         <li>
-          <a href="#roles-inheritance">Roles Inheritance</a>
+          <a href="#roles-inheritance">Herencia de roles</a>
         </li>
         <li>
-          <a href="#serialization">Serializing ACL lists</a>
+          <a href="#serialization">Serializando listas ACL</a>
         </li>
         <li>
-          <a href="#events">Events</a>
+          <a href="#events">Eventos</a>
         </li>
         <li>
-          <a href="#custom-adapters">Implementing your own adapters</a>
+          <a href="#custom-adapters">Implementando sus propios adaptadores</a>
         </li>
       </ul>
     </li>
@@ -42,17 +43,17 @@
 
 <a name='overview'></a>
 
-# Access Control Lists (ACL)
+# Listas de control de acceso (ACL)
 
-`Phalcon\Acl` provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](http://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
+`Phalcon\Acl` proporciona una fácil y ligera gestión de las ACL, así como los permisos que se les asignan. [Listas de Control de Acceso](http://en.wikipedia.org/wiki/Access_control_list) (ACL) permiten a una aplicación controlar el acceso a sus áreas y a los objetos subyacentes de las solicitudes. Te recomendamos leer más sobre la metodología ACL para familiarizarse con sus conceptos.
 
-In summary, ACLs have roles and resources. Resources are objects which abide by the permissions defined to them by the ACLs. Roles are objects that request access to resources and can be allowed or denied access by the ACL mechanism.
+En Resumen, las ACL tienen roles y recursos. Los recursos son objetos que cumplen con los permisos definidos por las ACL. Los Roles son objetos que solicitan acceso a recursos y se puede permitir o denegar el acceso por el mecanismo ACL.
 
 <a name='setup'></a>
 
-## Creating an ACL
+## Creando una ACL
 
-This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The `Phalcon\Acl` constructor takes as its first parameter an adapter used to retrieve the information related to the control list. An example using the memory adapter is below:
+Este componente está diseñado para trabajar inicialmente en la memoria. Esto proporciona facilidad de uso y rapidez en el acceso a todos los aspectos de la lista. El constructor de `Phalcon\Acl` toma como primer parámetro un adaptador que se utiliza para recuperar la información relacionada a la lista de control. Un ejemplo usando el adaptador de memoria es el siguiente:
 
 ```php
 <?php
@@ -62,14 +63,14 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 $acl = new AclList();
 ```
 
-By default `Phalcon\Acl` allows access to action on resources that have not yet been defined. To increase the security level of the access list we can define a `deny` level as a default access level.
+Por defecto `Phalcon\Acl` permite el acceso a la acción sobre los recursos que aún no han sido definidos. Para aumentar el nivel de seguridad de la lista de acceso podemos definir el nivel de acceso predeterminado en `deny`.
 
 ```php
 <?php
 
 use Phalcon\Acl;
 
-// Default action is deny access
+// Por defecto denegar acceso
 $acl->setDefaultAction(
     Acl::DENY
 );
@@ -77,193 +78,194 @@ $acl->setDefaultAction(
 
 <a name='adding-roles'></a>
 
-## Adding Roles to the ACL
+## Agregar roles a la ACL
 
-A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The `Phalcon\Acl\Role` class is available to create roles in a more structured way. Let's add some roles to our recently created list:
+Un rol es un objeto que puede o no acceder a ciertos recursos en la lista de acceso. Como ejemplo, vamos a definir roles como grupos de personas en una organización. La clase `Phalcon\Acl\Role` está disponible para crear roles de una manera más estructurada. Vamos a añadir algunos roles a la lista recién creada:
 
 ```php
 <?php
 
 use Phalcon\Acl\Role;
 
-// Create some roles.
-// The first parameter is the name, the second parameter is an optional description.
-$roleAdmins = new Role('Administrators', 'Super-User role');
-$roleGuests = new Role('Guests');
+// Creamos algunos roles.
+// El primer parámetro es el nombre, el segundo parámetro es una descripción opcional.
+$roleAdmins = new Role('Administrador', 'Super Usuario');
+$roleGuests = new Role('Invitado');
 
-// Add 'Guests' role to ACL
+// Agregamos el rol 'Invitado' al ACL
 $acl->addRole($roleGuests);
 
-// Add 'Designers' role to ACL without a Phalcon\Acl\Role
-$acl->addRole('Designers');
+// Agregamos el rol 'Diseñador' sin utilizar Phalcon\Acl\Role
+$acl->addRole('Diseñador');
 ```
 
-As you can see, roles are defined directly without using an instance.
+Como se puede ver en la última linea, se definieron roles directamente sin utilizar una instancia, utilizando el nombre del mismo.
 
 <a name='adding-resources'></a>
 
-## Adding Resources
+## Agregando Recursos
 
-Resources are objects where access is controlled. Normally in MVC applications resources refer to controllers. Although this is not mandatory, the `Phalcon\Acl\Resource` class can be used in defining resources. It's important to add related actions or operations to a resource so that the ACL can understand what it should to control.
+Recursos son objetos donde se controla el acceso. Normalmente en aplicaciones MVC los recursos se refieren a los controladores. Aunque esto no es obligatorio, se puede utilizar la clase `Phalcon\Acl\Resource` en la definición de recursos. Es importante agregar acciones relacionadas u operaciones a un recurso para que la ACL pueda entender lo que debe controlar.
 
 ```php
 <?php
 
 use Phalcon\Acl\Resource;
 
-// Define the 'Customers' resource
-$customersResource = new Resource('Customers');
+// Definimos el rescurso 'Clientes'
+$customersResource = new Resource('Clientes');
 
-// Add 'customers' resource with a couple of operations
+// Agregamos un par de operaciones a los 'Clientes'
 
 $acl->addResource(
     $customersResource,
-    'search'
+    'buscar'
 );
 
 $acl->addResource(
     $customersResource,
     [
-        'create',
-        'update',
+        'crear',
+        'actualizar',
     ]
 );
 ```
 
 <a name='access-controls'></a>
 
-## Defining Access Controls
+## Definir controles de acceso
 
-Now that we have roles and resources, it's time to define the ACL (i.e. which roles can access which resources). This part is very important especially taking into consideration your default access level `allow` or `deny`.
+Ahora que ya tenemos roles y recursos, es hora de definir la ACL (es decir, qué roles pueden acceder a qué recursos). Esta parte es muy importante, especialmente teniendo en cuenta su nivel de acceso nivel por predeterminado `allow` o `deny`.
 
 ```php
 <?php
 
-// Set access level for roles into resources
+// Seteamos el nivel de acceso para roles en recursos
 
-$acl->allow('Guests', 'Customers', 'search');
+$acl->allow('Invitado', 'Clientes', 'buscar');
 
-$acl->allow('Guests', 'Customers', 'create');
+$acl->allow('Invitado', 'Clientes', 'crear');
 
-$acl->deny('Guests', 'Customers', 'update');
+$acl->deny('Invitado', 'Clientes', 'actualizar');
 ```
 
-The `allow()` method designates that a particular role has granted access to a particular resource. The `deny()` method does the opposite.
+El método `allow()` señala que un determinado rol tiene permitido el acceso a un recurso determinado. El método `deny()` hace lo contrario, osea, restringe el acceso.
 
 <a name='querying'></a>
 
-## Querying an ACL
+## Consultando una ACL
 
-Once the list has been completely defined. We can query it to check if a role has a given permission or not.
+Una vez que la lista ha sido completamente definida. Nosotros podemos consultar para comprobar si un rol tiene permiso o no a un recurso.
 
 ```php
 <?php
 
-// Check whether role has access to the operations
+// Chequeamos si un rol tiene acceso a las operaciones
 
-// Returns 0
-$acl->isAllowed('Guests', 'Customers', 'edit');
+// Retorna false
+$acl->isAllowed('Invitado', 'Clientes', 'editar');
 
-// Returns 1
-$acl->isAllowed('Guests', 'Customers', 'search');
+// Retorna true
+$acl->isAllowed('Invitado', 'Clientes', 'buscar');
 
-// Returns 1
-$acl->isAllowed('Guests', 'Customers', 'create');
+// Retorna true
+$acl->isAllowed('Invitado', 'Clientes', 'crear');
 ```
 
 <a name='function-based-access'></a>
 
-## Function based access
+## Acceso basado en una función
 
-Also you can add as 4th parameter your custom function which must return boolean value. It will be called when you use `isAllowed()` method. You can pass parameters as associative array to `isAllowed()` method as 4th argument where key is parameter name in our defined function.
+También se puede añadir como cuarto parámetro, una función anónima, que debe devolver un valor booleano. Se llamará cuando se utilice el método `isAllowed()`. Puede pasar parámetros como un array asociativo al método `isAllowed()` en el cuarto argumento, donde las claves del array serán el utilizadas como nombre del parámetro de la función anónima definida. Veamos un ejemplo:
 
 ```php
 <?php
-// Set access level for role into resources with custom function
+// Damos acceso a un rol en un recurso con una función anónima 
 $acl->allow(
-    'Guests',
-    'Customers',
-    'search',
+    'Invitado',
+    'Clientes',
+    'buscar',
     function ($a) {
-        return $a % 2 === 0;
+        return $a % 2 === 0; // $a tiene que ser un número par
     }
 );
 
-// Check whether role has access to the operation with custom function
+// Chequeamos si el rol tiene acceso a la operación
 
-// Returns true
+// Retorna true
 $acl->isAllowed(
-    'Guests',
-    'Customers',
-    'search',
+    'Invitado',
+    'Clientes',
+    'buscar',
     [
         'a' => 4,
     ]
 );
 
-// Returns false
+// Retorna false
 $acl->isAllowed(
-    'Guests',
-    'Customers',
-    'search',
+    'Invitado',
+    'Clientes',
+    'buscar',
     [
         'a' => 3,
     ]
 );
 ```
 
-Also if you don't provide any parameters in `isAllowed()` method then default behaviour will be `Acl::ALLOW`. You can change it by using method `setNoArgumentsDefaultAction()`.
+Además si usted no proporciona ningún parámetro en el método de `isAllowed()` entonces el comportamiento por defecto será `Acl::ALLOW`. Puede cambiarlo utilizando el método `setNoArgumentsDefaultAction()`.
 
 ```php
+<?php
+
 use Phalcon\Acl;
 
-<?php
-// Set access level for role into resources with custom function
+// Configurar nivel de acceso para roles en recursos con funciones
 $acl->allow(
-    'Guests',
-    'Customers',
-    'search',
+    'Invitado',
+    'Clientes',
+    'buscar',
     function ($a) {
         return $a % 2 === 0;
     }
 );
 
-// Check whether role has access to the operation with custom function
+// Chequear si el rol tiene acceso a la operación con una función
 
-// Returns true
+// Retorna true
 $acl->isAllowed(
-    'Guests',
-    'Customers',
-    'search'
+    'Invitado',
+    'Clientes',
+    'buscar'
 );
 
-// Change no arguments default action
+// Cambiar el comportamiento de noArgumentsDefaultAction
 $acl->setNoArgumentsDefaultAction(
     Acl::DENY
 );
 
-// Returns false
+// Retorna false
 $acl->isAllowed(
-    'Guests',
-    'Customers',
-    'search'
+    'Invitado',
+    'Clientes',
+    'buscar'
 );
 ```
 
 <a name='objects'></a>
 
-## Objects as role name and resource name
+## Objetos como nombre de rol y recurso
 
-You can pass objects as `roleName` and `resourceName`. Your classes must implement `Phalcon\Acl\RoleAware` for `roleName` and `Phalcon\Acl\ResourceAware` for `resourceName`.
+Puede pasar objetos como `roleName` y `resourceName`. Las clases deben implementar `Phalcon\Acl\RoleAware` para `roleName` y `Phalcon\Acl\ResourceAware` para `resourceName`.
 
-Our `UserRole` class
+Nuestra clase `UserRole`
 
 ```php
 <?php
 
 use Phalcon\Acl\RoleAware;
 
-// Create our class which will be used as roleName
+// Crear nuestra clase que se utilizará como roleName
 class UserRole implements RoleAware
 {
     protected $id;
@@ -281,7 +283,7 @@ class UserRole implements RoleAware
         return $this->id;
     }
 
-    // Implemented function from RoleAware Interface
+    // Implementamos esta función desde RoleAware Interface
     public function getRoleName()
     {
         return $this->roleName;
@@ -289,14 +291,14 @@ class UserRole implements RoleAware
 }
 ```
 
-And our `ModelResource` class
+Y nuestra clase `ModelResource`
 
 ```php
 <?php
 
 use Phalcon\Acl\ResourceAware;
 
-// Create our class which will be used as resourceName
+// Crear nuestra clase que será utilizada como resourceName
 class ModelResource implements ResourceAware
 {
     protected $id;
@@ -322,7 +324,7 @@ class ModelResource implements ResourceAware
         return $this->userId;
     }
 
-    // Implemented function from ResourceAware Interface
+    // Implementamos la función desde ResourceAware Interface
     public function getResourceName()
     {
         return $this->resourceName;
@@ -330,7 +332,7 @@ class ModelResource implements ResourceAware
 }
 ```
 
-Then you can use them in `isAllowed()` method.
+Luego puede utilizarlos en el método `isAllowed()`.
 
 ```php
 <?php
@@ -338,59 +340,59 @@ Then you can use them in `isAllowed()` method.
 use UserRole;
 use ModelResource;
 
-// Set access level for role into resources
-$acl->allow('Guests', 'Customers', 'search');
-$acl->allow('Guests', 'Customers', 'create');
-$acl->deny('Guests', 'Customers', 'update');
+// Confirguramos la lista de acceso 
+$acl->allow('Invitado', 'Clientes', 'buscar');
+$acl->allow('Invitado', 'Clientes', 'crear');
+$acl->deny('Invitado', 'Clientes', 'actualizar');
 
-// Create our objects providing roleName and resourceName
+// Creamos nuestros objectos proveyendo roleName y resourceName
 
 $customer = new ModelResource(
     1,
-    'Customers',
+    'Clientes',
     2
 );
 
 $designer = new UserRole(
     1,
-    'Designers'
+    'Diseñador'
 );
 
 $guest = new UserRole(
     2,
-    'Guests'
+    'Invitado'
 );
 
 $anotherGuest = new UserRole(
     3,
-    'Guests'
+    'Invitado'
 );
 
-// Check whether our user objects have access to the operation on model object
+// Chequeamos si nuestro objecto usuario tiene acceso a la operación en el objecto modelo
 
-// Returns false
+// Retorna false
 $acl->isAllowed(
     $designer,
     $customer,
-    'search'
+    'buscar'
 );
 
-// Returns true
+// Retorna true
 $acl->isAllowed(
     $guest,
     $customer,
-    'search'
+    'buscar'
 );
 
-// Returns true
+// Retorna true
 $acl->isAllowed(
     $anotherGuest,
     $customer,
-    'search'
+    'buscar'
 );
 ```
 
-Also you can access those objects in your custom function in `allow()` or `deny()`. They are automatically bind to parameters by type in function.
+También puede acceder a los objetos en su función anónima personalizada en `allow()` o `deny()`. Son automáticamente pasados como parámetros en la función.
 
 ```php
 <?php
@@ -398,82 +400,82 @@ Also you can access those objects in your custom function in `allow()` or `deny(
 use UserRole;
 use ModelResource;
 
-// Set access level for role into resources with custom function
+// Configuramos la lista para el rol y la función
 $acl->allow(
-    'Guests',
-    'Customers',
-    'search',
-    function (UserRole $user, ModelResource $model) { // User and Model classes are necessary
+    'Invitado',
+    'Clientes',
+    'buscar',
+    function (UserRole $user, ModelResource $model) { // Las clases User y Model son necesarias
         return $user->getId == $model->getUserId();
     }
 );
 
 $acl->allow(
-    'Guests',
-    'Customers',
-    'create'
+    'Invitado',
+    'Clientes',
+    'crear'
 );
 
 $acl->deny(
-    'Guests',
-    'Customers',
-    'update'
+    'Invitado',
+    'Clientes',
+    'actualizar'
 );
 
-// Create our objects providing roleName and resourceName
+// Creamos nuestros objectos proveyendo roleName y resourceName
 
 $customer = new ModelResource(
     1,
-    'Customers',
+    'Clientes',
     2
 );
 
 $designer = new UserRole(
     1,
-    'Designers'
+    'Diseñador'
 );
 
 $guest = new UserRole(
     2,
-    'Guests'
+    'Invitado'
 );
 
 $anotherGuest = new UserRole(
     3,
-    'Guests'
+    'Invitado'
 );
 
-// Check whether our user objects have access to the operation on model object
+// Chequeamos si nuestro objecto usuario tiene acceso a la operación en el modelo
 
-// Returns false
+// Retorna false
 $acl->isAllowed(
     $designer,
     $customer,
-    'search'
+    'buscar'
 );
 
-// Returns true
+// Retorna true
 $acl->isAllowed(
     $guest,
     $customer,
-    'search'
+    'buscar'
 );
 
-// Returns false
+// Retorna false
 $acl->isAllowed(
     $anotherGuest,
     $customer,
-    'search'
+    'buscar'
 );
 ```
 
-You can still add any custom parameters to function and pass associative array in `isAllowed()` method. Also order doesn't matter.
+Puede agregar cualquier parámetro a la función y pasar un array asociativo en el método `isAllowed()`. No importa el orden.
 
 <a name='roles-inheritance'></a>
 
-## Roles Inheritance
+## Herencia de roles
 
-You can build complex role structures using the inheritance that `Phalcon\Acl\Role` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the method call, when adding that role in the list.
+Se pueden construir estructuras complejas usando la herencia que `Phalcon\Acl\Role` proporciona. Los roles pueden heredar de otros roles, permitiendo acceso a super conjuntos o subconjuntos de recursos. Para utilizar herencia de roles, debe pasar el rol hereditario como segundo parámetro al método `addRole()`, cuando agrega el rol a la lista.
 
 ```php
 <?php
@@ -482,24 +484,24 @@ use Phalcon\Acl\Role;
 
 // ...
 
-// Create some roles
+// Creamos algunos roles
 
-$roleAdmins = new Role('Administrators', 'Super-User role');
+$roleAdmins = new Role('Administrador', 'Super usuario');
 
-$roleGuests = new Role('Guests');
+$roleGuests = new Role('Invitado');
 
-// Add 'Guests' role to ACL
+// Agregamos el rol 'Invitado' al ACL
 $acl->addRole($roleGuests);
 
-// Add 'Administrators' role inheriting from 'Guests' its accesses
+// Agregamos el rol 'Administrador' heredando los accesos del rol 'Invitado'
 $acl->addRole($roleAdmins, $roleGuests);
 ```
 
 <a name='serialization'></a>
 
-## Serializing ACL lists
+## Serializado de listas ACL
 
-To improve performance `Phalcon\Acl` instances can be serialized and stored in APC, session, text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
+Para mejorar el rendimiento de las instancias de `Phalcon\Acl`, estas pueden ser serializadas y almacenadas en APC, sesión, archivos de texto o una tabla de base de datos por lo que pueden ser cargados a voluntad sin tener que redefinir toda la lista. Usted puede hacer lo siguiente:
 
 ```php
 <?php
@@ -508,46 +510,46 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 
 // ...
 
-// Check whether ACL data already exist
+// Chequeamos si los datos del ACL ya existen
 if (!is_file('app/security/acl.data')) {
     $acl = new AclList();
 
-    // ... Define roles, resources, access, etc
+    // ... Definimos roles, recursos, accesos, etc.
 
-    // Store serialized list into plain file
+    // Almacenamos la lista serializada en un archivo
     file_put_contents(
         'app/security/acl.data',
         serialize($acl)
     );
 } else {
-    // Restore ACL object from serialized file
+    // Restauramos el objecto ACL desde el archivo serializado
     $acl = unserialize(
         file_get_contents('app/security/acl.data')
     );
 }
 
-// Use ACL list as needed
-if ($acl->isAllowed('Guests', 'Customers', 'edit')) {
-    echo 'Access granted!';
+// Utilice la lista ACL como desee
+if ($acl->isAllowed('Invitado', 'Clientes', 'editar')) {
+    echo 'Accesos obtenidos!';
 } else {
-    echo 'Access denied :(';
+    echo 'Accesos denegados :(';
 }
 ```
 
-It's recommended to use the Memory adapter during development and use one of the other adapters in production.
+Es recomendable utilizar el adaptador de memoria durante el desarrollo y uno de los otros adaptadores disponibles en producción.
 
 <a name='events'></a>
 
-## Events
+## Eventos
 
-`Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Acl` puede enviar eventos a un `EventsManager` si está presente. Los eventos son disparados usando el tipo 'acl'. Algunos eventos cuando se devuelva `false` podrían detener la operación activa. Son soportados los siguientes eventos:
 
-| Event Name        | Triggered                                               | Can stop operation? |
-| ----------------- | ------------------------------------------------------- |:-------------------:|
-| beforeCheckAccess | Triggered before checking if a role/resource has access |         Yes         |
-| afterCheckAccess  | Triggered after checking if a role/resource has access  |         No          |
+| Nombre de evento  | Disparado                                                      | ¿Detiene la operación? |
+| ----------------- | -------------------------------------------------------------- |:----------------------:|
+| beforeCheckAccess | Lanzado antes de comprobar si un rol o recurso tiene acceso    |           Si           |
+| afterCheckAccess  | Lanzado después de comprobar si un rol o recursos tiene acceso |           No           |
 
-The following example demonstrates how to attach listeners to this component:
+En el ejemplo siguiente se muestra cómo adjuntar oyentes (listeners) a este componente:
 
 ```php
 <?php
@@ -558,10 +560,10 @@ use Phalcon\Events\Manager as EventsManager;
 
 // ...
 
-// Create an event manager
+// Crear un gestor de eventos
 $eventsManager = new EventsManager();
 
-// Attach a listener for type 'acl'
+// Adjuntar un listener para el tipo 'acl'
 $eventsManager->attach(
     'acl:beforeCheckAccess',
     function (Event $event, $acl) {
@@ -575,15 +577,15 @@ $eventsManager->attach(
 
 $acl = new AclList();
 
-// Setup the $acl
+// Configuramos el $acl
 // ...
 
-// Bind the eventsManager to the ACL component
+// Unimos el eventsManager con el ACL 
 $acl->setEventsManager($eventsManager);
 ```
 
 <a name='custom-adapters'></a>
 
-## Implementing your own adapters
+## Implementando sus propios adaptadores
 
-The `Phalcon\Acl\AdapterInterface` interface must be implemented in order to create your own ACL adapters or extend the existing ones.
+Debe implementar la interfaz `Phalcon\Acl\AdapterInterface` para crear sus propios adaptadores ACL o extender los ya existentes.

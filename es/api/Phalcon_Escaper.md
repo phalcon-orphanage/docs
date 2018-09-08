@@ -1,12 +1,12 @@
-# Class **Phalcon\\Escaper**
+# Clase **Phalcon\\Escaper**
 
-*implements* [Phalcon\EscaperInterface](/en/3.2/api/Phalcon_EscaperInterface)
+*implementa* [Phalcon\EscaperInterface](/en/3.2/api/Phalcon_EscaperInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/escaper.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/escaper.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
-Escapes different kinds of text securing them. By using this component you may prevent XSS attacks.
+Escapa diferentes tipos de textos haciéndolos seguros. Mediante el uso de este componente puede prevenir ataques XSS.
 
-This component only works with UTF-8. The PREG extension needs to be compiled with UTF-8 support.
+Este componente sólo funciona con UTF-8. La extensión PREG debe compilarse con soporte UTF-8.
 
 ```php
 <?php
@@ -19,11 +19,11 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 
 ```
 
-## Methods
+## Métodos
 
 public **setEncoding** (*mixed* $encoding)
 
-Sets the encoding to be used by the escaper
+Establece la codificación para ser utilizada por el escaper
 
 ```php
 <?php
@@ -34,11 +34,11 @@ $escaper->setEncoding("utf-8");
 
 public **getEncoding** ()
 
-Returns the internal encoding used by the escaper
+Devuelve la codificación interna utilizada por el escaper
 
 public **setHtmlQuoteType** (*mixed* $quoteType)
 
-Sets the HTML quoting type for htmlspecialchars
+Establece el tipo de comillas HTML para ser utilizadas en htmlspecialchars
 
 ```php
 <?php
@@ -49,7 +49,7 @@ $escaper->setHtmlQuoteType(ENT_XHTML);
 
 public **setDoubleEncode** (*mixed* $doubleEncode)
 
-Sets the double_encode to be used by the escaper
+Establece el double_encode para ser utilizado por el escaper
 
 ```php
 <?php
@@ -60,28 +60,28 @@ $escaper->setDoubleEncode(false);
 
 final public **detectEncoding** (*mixed* $str)
 
-Detect the character encoding of a string to be handled by an encoder Special-handling for chr(172) and chr(128) to chr(159) which fail to be detected by mb_detect_encoding()
+Detecta la codificación de caracteres de una cadena para ser manejada por un codificador de Manejo especial para chr(172) y chr(128) a chr(159) que no pueden ser detectados por mb_detect_encoding()
 
 final public **normalizeEncoding** (*mixed* $str)
 
-Utility to normalize a string's encoding to UTF-32.
+Utilidad para normalizar una cadena de codificación a UTF-32.
 
 public **escapeHtml** (*mixed* $text)
 
-Escapes a HTML string. Internally uses htmlspecialchars
+Escapa una cadena HTML. Internamente utiliza htmlspecialchars
 
 public **escapeHtmlAttr** (*mixed* $attribute)
 
-Escapes a HTML attribute string
+Escapa una cadena de atributo HTML
 
 public **escapeCss** (*mixed* $css)
 
-Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
+Escape cadenas de CSS sustituyendo caracteres no alfanuméricos por su representación hexadecimal
 
 public **escapeJs** (*mixed* $js)
 
-Escape javascript strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
+Escapa cadenas de javascript mediante la sustitución de caracteres no alfanuméricos por su representación hexadecimal
 
 public **escapeUrl** (*mixed* $url)
 
-Escapes a URL. Internally uses rawurlencode
+Escapa a una dirección URL. Internamente utiliza rawurlencode

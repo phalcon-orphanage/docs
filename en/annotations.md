@@ -1,16 +1,42 @@
-<div class='article-menu' markdown='1'>
-
-- [Annotations Parser](#overview)
-    - [Factory](#factory)
-    - [Reading Annotations](#reading)
-    - [Types of Annotations](#types)
-    - [Practical Usage](#usage)
-        - [Cache Enabler with Annotations](#usage-cache)
-        - [Private/Public areas with Annotations](#usage-access-management)
-    - [Annotations Adapters](#adapters)
-        - [Implementing your own adapters](#adapters-custom)
-    - [External Resources](#resources)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Annotations Parser</a> 
+      <ul>
+        <li>
+          <a href="#factory">Factory</a>
+        </li>
+        <li>
+          <a href="#reading">Reading Annotations</a>
+        </li>
+        <li>
+          <a href="#types">Types of Annotations</a>
+        </li>
+        <li>
+          <a href="#usage">Practical Usage</a> 
+          <ul>
+            <li>
+              <a href="#usage-cache">Cache Enabler with Annotations</a>
+            </li>
+            <li>
+              <a href="#usage-access-management">Private/Public areas with Annotations</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#adapters">Annotations Adapters</a> 
+          <ul>
+            <li>
+              <a href="#adapters-custom">Implementing your own adapters</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#resources">External Resources</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -102,7 +128,7 @@ However, to make the code more maintainable and understandable it is recommended
 
 <a name='factory'></a>
 ## Factory
-There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
 
 ```php
 <?php

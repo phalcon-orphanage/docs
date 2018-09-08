@@ -1,9 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Парсер аннотаций</a> <ul>
+      <a href="#overview">Парсер аннотаций</a> 
+      <ul>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">Фабрика</a>
         </li>
         <li>
           <a href="#reading">Чтение аннотаций</a>
@@ -12,7 +13,8 @@
           <a href="#types">Типы аннотаций</a>
         </li>
         <li>
-          <a href="#usage">Практическое использование</a> <ul>
+          <a href="#usage">Практическое использование</a> 
+          <ul>
             <li>
               <a href="#usage-cache">Кэширование с помощью аннотаций</a>
             </li>
@@ -21,15 +23,14 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#adapters">Адаптеры аннотаций</a> <ul>
+          <a href="#adapters">Адаптеры аннотаций</a> 
+          <ul>
             <li>
-              <a href="#adapters-custom">Implementing your own adapters</a>
+              <a href="#adapters-custom">Реализация собственных адаптеров</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#resources">Дополнительная информация</a>
         </li>
@@ -40,7 +41,7 @@
 
 <a name='overview'></a>
 
-# Annotations Parser
+# Парсер аннотаций
 
 Изначально компонент парсера аннотаций был написан на языке C для мира PHP. `Phalcon\Annotations` — это компонент общего назначения, который обеспечивает простоту синтаксического анализа и кеширования аннотаций в PHP-классах, для последующего их использования в приложениях.
 
@@ -129,9 +130,9 @@ someParameter='the value', false
 
 <a name='factory'></a>
 
-## Factory
+## Фабрика
 
-There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
+Существует множество адаптеров аннотаций (см. [Адаптеры](#adapters)). Используемый вами, будет зависеть от нужд вашего приложения. Традиционный способ инициализации экземпляра адаптера выглядит следующим образом:
 
 ```php
 <?php
@@ -143,7 +144,7 @@ $reader = new MemoryAdapter();
 // .....
 ```
 
-However you can also utilize the factory method to achieve the same thing:
+Однако, вы можете использовать фабричный метод, чтобы достигнуть того же самого:
 
 ```php
 <?php
@@ -154,17 +155,17 @@ use Phalcon\Annotations\Factory;
 $options = [
     'prefix'   => 'annotations',
     'lifetime' => '3600',
-    'adapter'  => 'memory',      // Load the Memory adapter
+    'adapter'  => 'memory',      // Загрузка Memory адаптера
 ];
 
 $annotations = Factory::load($options);
 ```
 
-The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
+Фабричный загрузчик обеспечивает большую гибкость, при создании экземпляров адаптеров аннотаций из конфигурационных файлов.
 
 <a name='reading'></a>
 
-## Reading Annotations
+## Чтение аннотаций
 
 Для простого получения аннотаций класса с использованием объектно-ориентированного интерфейса, реализован рефлектор:
 
@@ -200,7 +201,7 @@ foreach ($annotations as $annotation) {
 
 <a name='types'></a>
 
-## Types of Annotations
+## Типы аннотаций
 
 Аннотации могут иметь или не иметь параметров. Параметры могут быть простыми литералам (строкой, числом, булевым типом, null), массивом, хешированным списком или другими аннотациями:
 
@@ -259,13 +260,13 @@ foreach ($annotations as $annotation) {
 
 <a name='usage'></a>
 
-## Practical Usage
+## Практическое использование
 
 Далее мы разберем несколько примеров по использованию аннотаций в PHP приложениях:
 
 <a name='usage-cache'></a>
 
-### Cache Enabler with Annotations
+### Кэширование с помощью аннотаций
 
 Давайте представим, что у нас есть контроллер и разработчик хочет сделать плагин, который автоматически запускает кэширование если последнее запущенное действие было помечено как имеющее возможность кэширования. Прежде всего, мы зарегистрируем плагин в сервисе Dispatcher, чтобы получать уведомление при выполнении маршрута:
 
@@ -380,7 +381,7 @@ class NewsController extends Controller
 
 <a name='usage-access-management'></a>
 
-### Private/Public areas with Annotations
+### Контроль доступа и аннотации
 
 Вы можете использовать аннотации для того, чтобы сообщить ACL механизму какие контроллеры являются закрытыми для публичного доступа:
 
@@ -445,7 +446,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## Annotations Adapters
+## Адаптеры аннотаций
 
 Компонент поддерживает адаптеры с возможностью кэширования проанализированных аннотаций. Это позволяет увеличивать производительность в боевом режиме и моментальное обновление данных при разработке и тестировании:
 
@@ -458,12 +459,12 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### Реализация собственных адаптеров
 
 Для создания своего адаптера необходимо реализовать интерфейс `Phalcon\Annotations\AdapterInterface`, или использовать наследование от существующего адаптера.
 
 <a name='resources'></a>
 
-## External Resources
+## Внешние ресурсы
 
-- [Урок: Создание собственного инициализатора моделей с использованием аннотаций](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
+* [Урок: Создание собственного инициализатора моделей с использованием аннотаций](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)

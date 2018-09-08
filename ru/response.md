@@ -1,20 +1,22 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Returning Responses</a> <ul>
+      <a href="#overview">Возврат ответов</a> 
+      <ul>
         <li>
-          <a href="#working-with-headers">Working with Headers</a>
+          <a href="#working-with-headers">Работа с заголовками</a>
         </li>
         <li>
-          <a href="#redirections">Making Redirections</a>
+          <a href="#redirections">Создание переадресаций</a>
         </li>
         <li>
-          <a href="#http-cache">HTTP Cache</a> <ul>
+          <a href="#http-cache">HTTP-кэш</a> 
+          <ul>
             <li>
-              <a href="#http-cache-expiration-time">Setting an Expiration Time</a>
+              <a href="#http-cache-expiration-time">Установка времени актуальности</a>
             </li>
             <li>
-              <a href="#http-cache-control">Cache-Control</a>
+              <a href="#http-cache-control">Управление кэшем</a>
             </li>
             <li>
               <a href="#http-cache-etag">E-Tag</a>
@@ -28,7 +30,7 @@
 
 <a name='overview'></a>
 
-# Returning Responses
+# Возврат ответов
 
 Part of the HTTP cycle is returning responses to clients. `Phalcon\Http\Response` is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
@@ -80,7 +82,7 @@ class FeedController extends Controller
 
 <a name='working-with-headers'></a>
 
-## Working with Headers
+## Работа с заголовками
 
 Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status, type of response and much more.
 
@@ -111,7 +113,7 @@ $contentType = $headers->get('Content-Type');
 
 <a name='redirections'></a>
 
-## Making Redirections
+## Создание переадресаций
 
 With `Phalcon\Http\Response` you can also execute HTTP redirections:
 
@@ -146,24 +148,24 @@ return $response->redirect(
 );
 ```
 
-Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it will be executed anyway. You can disable the view from a controller by executing `$this->view->disable()`;
+Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it will be executed anyway. You can disable the view from a controller by executing `$this->view->disable()`.
 
 <a name='http-cache'></a>
 
-## HTTP Cache
+## HTTP-кэш
 
 One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 
 HTTP Cache can be altered in the following header values sent by the application when serving a page for the first time:
 
-- **`Expires:`** With this header the application can set a date in the future or the past telling the browser when the page must expire.
-- **`Cache-Control:`** This header allows to specify how much time a page should be considered fresh in the browser.
-- **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads
-- **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page
+* **`Expires:`** With this header the application can set a date in the future or the past telling the browser when the page must expire.
+* **`Cache-Control:`** This header allows to specify how much time a page should be considered fresh in the browser.
+* **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads.
+* **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page.
 
 <a name='http-cache-expiration-time'></a>
 
-### Setting an Expiration Time
+### Установка времени актуальности
 
 The expiration date is one of the easiest and most effective ways to cache a page in the client (browser). Starting from the current date we add the amount of time the page will be stored in the browser cache. Until this date expires no new content will be requested from the server:
 
@@ -193,7 +195,7 @@ Browsers rely on the client's clock to assess if this date has passed or not. Th
 
 <a name='http-cache-control'></a>
 
-### Cache-Control
+### Управление кэшем
 
 This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser how long it must keep the page in its cache:
 

@@ -11,7 +11,10 @@ Validates that a value is not null or empty string
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
+
+$validator = new Validation();
 
 $validator->add(
     "name",
@@ -39,7 +42,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Metody
 
 public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
 

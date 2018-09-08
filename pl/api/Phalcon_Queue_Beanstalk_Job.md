@@ -4,7 +4,7 @@
 
 Represents a job in a beanstalk queue
 
-## Methods
+## Metody
 
 public **getId** ()
 

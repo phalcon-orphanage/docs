@@ -8,7 +8,7 @@
 
 Represents Javascript resources
 
-## Methods
+## Metody
 
 public **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 

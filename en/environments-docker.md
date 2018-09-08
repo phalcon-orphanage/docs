@@ -1,25 +1,70 @@
-<div class='article-menu' markdown='1'>
-
-- [Overview](#overview)
-    - [Dependencies](#dependencies)
-    - [Services](#services)
-    - [Installation](#installation)
-        - [With Composer (recommended)](#installation-composer)
-        - [With Git](#installation-git)
-    - [Configuration](#configuration)
-    - [Usage](#usage)
-    - [Set up](#setup)
-    - [Logs](#logs)
-    - [Environment variables](#environment-variables)
-        - [Web environment](#environment-variables-web)
-        - [phpMyAdmin variables](#environment-variables-phpmyadmin)
-    - [Xdebug Remote debugger (PhpStorm)](#xdebug)
-    - [Troubleshooting](#troubleshooting)
-        - [Startup or linking errors](#troubleshooting-startup)
-        - [Full reset](#troubleshooting-full-reset)
-        - [Updating dependencies](#troubleshooting-dependencies)
-    - [Versions](#versions)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Overview</a> 
+      <ul>
+        <li>
+          <a href="#dependencies">Dependencies</a>
+        </li>
+        <li>
+          <a href="#services">Services</a>
+        </li>
+        <li>
+          <a href="#installation">Installation</a> 
+          <ul>
+            <li>
+              <a href="#installation-composer">With Composer (recommended)</a>
+            </li>
+            <li>
+              <a href="#installation-git">With Git</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#configuration">Configuration</a>
+        </li>
+        <li>
+          <a href="#usage">Usage</a>
+        </li>
+        <li>
+          <a href="#setup">Set up</a>
+        </li>
+        <li>
+          <a href="#logs">Logs</a>
+        </li>
+        <li>
+          <a href="#environment-variables">Environment variables</a> 
+          <ul>
+            <li>
+              <a href="#environment-variables-web">Web environment</a>
+            </li>
+            <li>
+              <a href="#environment-variables-phpmyadmin">phpMyAdmin variables</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#xdebug">Xdebug Remote debugger (PhpStorm)</a>
+        </li>
+        <li>
+          <a href="#troubleshooting">Troubleshooting</a> <ul>
+            <li>
+              <a href="#troubleshooting-startup">Startup or linking errors</a>
+            </li>
+            <li>
+              <a href="#troubleshooting-full-reset">Full reset</a>
+            </li>
+            <li>
+              <a href="#troubleshooting-dependencies">Updating dependencies</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#versions">Versions</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -56,9 +101,7 @@ Services included are:
 ### With Composer (recommended)
 Using Composer, you can create a new project as follows:
 
-```bash
-composer create-project phalcon/compose --prefer-dist <folder name>
-```
+$ `composer create-project phalcon/compose --prefer-dist <folder name>`
 
 Your output should be similar to this:
 
@@ -80,11 +123,13 @@ Generating autoload files
 ### With Git
 Another way to initialize your project is with Git.
 
-```bash
- git clone git@github.com:phalcon/phalcon-compose.git
-```
+$ `git clone git@github.com:phalcon/phalcon-compose.git`
 
-<h5 class='alert alert-warning' markdown='1'>Make sure that you copy `variables.env.example` to `variables.env` and adjust the settings in that file </h5>
+<div class="alert alert-warning">
+    <p>
+        Make sure that you copy <code>variables.env.example</code> to <code>variables.env</code> and adjust the settings in that file.
+    </p>
+</div>
 
 Add your Phalcon Application into `application` folder.
 
@@ -92,24 +137,25 @@ Add your Phalcon Application into `application` folder.
 ## Configuration
 Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as follows:
 
-```bash
-127.0.0.1 www.phalcon.local phalcon.local
-```
+$ `127.0.0.1 www.phalcon.local phalcon.local`
 
 <a name='usage'></a>
 ## Usage
 You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
 
-```php
-docker-compose build
-```
+$ `docker-compose build`
 
 To start the application and run the containers in the background, use following command inside project root:
 
-```bash
-# You can use here your prefered project name with "-p my-app" parameter
-$ docker-compose up -d
-```
+You can use here your prefered project name with `-p <my-app>` parameter
+
+$ `docker-compose up -d`
+
+Now setup your project in the app container using the Phalcon Developer Tools
+
+Replace project in **<project_app_1>** with the name of your project/directory (shown in the output of `docker-compose up -d`)
+
+$ `docker exec -t <project_app_1> phalcon project application simple`
 
 Now you can now launch your application in your browser visiting `http://phalcon.local` (or the host name you chose above).
 
@@ -166,22 +212,23 @@ You can pass multiple environment variables from an external file to a service's
 ## Xdebug Remote debugger (PhpStorm)
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
-| Environment variable         | Description                                              | Default |
-|------------------------------|----------------------------------------------------------|---------|
-| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host` (your host IP). |         |
-| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.                | 9000    |
-| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`.           | Off     |
-| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`.        | Off     |
+| Environment variable         | Description                                              | Default        |
+|------------------------------|----------------------------------------------------------|----------------|
+| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host`.                | (your host IP) | 
+| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.                | 9000           |
+| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`.           | Off            |
+| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`.        | Off            |
 
 *NOTE*
 You can find your local IP address as follows:
-```bash
-# Linux/MacOS
-ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .
 
-# Windows
-ipconfig
-```
+**Linux/macOS**
+
+$ `ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .`
+
+**Windows**
+
+&gt; `ipconfig`
 
 <a name='troubleshooting'></a>
 ## Troubleshooting
@@ -226,42 +273,10 @@ docker pull phalconphp/php-apache:ubuntu-16.04
 
 Linux/MacOS users can use `make` to perform the task:
 
-```bash
-make pull
-```
+$ `make pull`
 
 Then you have to reset all containers, delete all data, rebuild services and restart application.
 
 Linux/MacOS users can use `make` to perform the task:
 
-```bash
-make reset
-```
-
-<a name='versions'></a>
-## Versions
-The main tools used are Phalcon, Docker and Docker Compose.
-
-| Application     | Version          |
-|-----------------|------------------|
-| Aerospike       | 3.11.1.1         |
-| Apache          | 2.4.18           |
-| Beanstalk       | 1.10             |
-| Composer        | 1.4.1            |
-| Elasticsearch   | 5.2.2            |
-| Memcached       | 1.4.35           |
-| Mongo           | 3.4.2            |
-| MySQL           | 5.7.17           |
-| PHP             | 7.0.18 + PHP-FPM |
-| PHPMD           | 2.6.0            |
-| phpMyAdmin      | 4.6.5.2          |
-| PHP_CodeSniffer | 2.8.1            |
-| Phalcon         | 3.1.2            |
-| Phing           | 2.16.0           |
-| Phive           | 0.6.3            |
-| PostgreSQL      | 9.5.5            |
-| Redis           | 3.2.6            |
-| Weakref         | 0.3.3            |
-| Xdebug          | 2.4.0            |
-
-
+$ `make reset`

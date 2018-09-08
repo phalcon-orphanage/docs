@@ -134,7 +134,7 @@ namespace Vokuro\Controllers;
 
 use Vokuro\Forms\SignUpForm;
 
-class RegisterController extends ControllerBase
+class SessionController extends ControllerBase
 {
     public function signupAction()
     {

@@ -1,49 +1,55 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Relationships</a> <ul>
+      <a href="#overview">Relaciones de modelos</a> 
+      <ul>
         <li>
-          <a href="#relationships">Relationships between Models</a> <ul>
+          <a href="#relationships">Relaciones entre modelos</a> 
+          <ul>
             <li>
-              <a href="#unidirectional">Unidirectional relationships</a>
+              <a href="#unidirectional">Relaciones unidireccionales</a>
             </li>
             <li>
-              <a href="#bidirectional">Bidirectional relations</a>
+              <a href="#bidirectional">Relaciones bidireccionales</a>
             </li>
             <li>
-              <a href="#defining">Defining relationships</a>
+              <a href="#defining">Definiendo las relaciones</a>
             </li>
             <li>
-              <a href="#taking-advantage-of">Taking advantage of relationships</a>
+              <a href="#taking-advantage-of">Aprovechando las relaciones</a>
             </li>
             <li>
-              <a href="#aliases">Aliasing Relationships</a> <ul>
+              <a href="#aliases">Relaciones con alias</a> 
+              <ul>
                 <li>
-                  <a href="#getters-vs-methods">Magic Getters vs. Explicit methods</a>
+                  <a href="#getters-vs-methods">Getters mágicos vs métodos explícitos</a>
                 </li>
               </ul>
             </li>
-          </ul>
-        </li>
-        
-        <li>
-          <a href="#virtual-foreign-keys">Virtual Foreign Keys</a> <ul>
             <li>
-              <a href="#cascade-restrict-actions">Cascade/Restrict actions</a>
+              <a href="#conditionals">Condicionales</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#storing-related-records">Storing Related Records</a>
+          <a href="#virtual-foreign-keys">Claves externas virtuales</a> 
+          <ul>
+            <li>
+              <a href="#cascade-restrict-actions">Acciones en cascada o restringidas</a>
+            </li>
+          </ul>
         </li>
         <li>
-          <a href="#operations-over-resultsets">Operations over Resultsets</a> <ul>
+          <a href="#storing-related-records">Almacenamiento de registros relacionados</a>
+        </li>
+        <li>
+          <a href="#operations-over-resultsets">Operaciones sobre conjuntos de resultados</a> 
+          <ul>
             <li>
-              <a href="#updating-related-records">Updating related records</a>
+              <a href="#updating-related-records">Actualización de registros relacionados</a>
             </li>
             <li>
-              <a href="#deleting-related-records">Deleting related records</a>
+              <a href="#deleting-related-records">Eliminar registros relacionados</a>
             </li>
           </ul>
         </li>
@@ -54,40 +60,40 @@
 
 <a name='overview'></a>
 
-# Model Relationships
+# Relaciones de modelos
 
 <a name='relationships'></a>
 
-## Relationships between Models
+## Relaciones entre modelos
 
-There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
+Hay cuatro tipos de relaciones: uno-a-uno, uno-a-muchos, muchos-a-uno y muchos-a-muchos. La relaciones pueden ser unidireccionales o bidireccionales y cada una puede ser simple (un modelo uno a uno) o más complejas (una combinación de modelos). El administrador del modelos administra las restricciones de claves foráneas para estas relaciones, la definición de estas ayuda a la integridad referencial, así como un acceso fácil y rápido a registros relacionados con un modelo. Con la implementación de las relaciones, es fácil acceder a datos en modelos relacionados de cada registro de manera uniforme.
 
 <a name='unidirectional'></a>
 
-### Unidirectional relationships
+### Relaciones unidireccionales
 
-Unidirectional relations are those that are generated in relation to one another but not vice versa.
+Las relaciones unidireccionales son aquellas que se generan en relación a uno con el otro pero no viceversa.
 
 <a name='bidirectional'></a>
 
-### Bidirectional relations
+### Relaciones bidireccionales
 
-The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
+Las relaciones bidireccionales construyen relaciones en ambos modelos y cada modelo define la relación inversa de la otra.
 
 <a name='defining'></a>
 
-### Defining relationships
+### Definiendo las relaciones
 
-In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
+En Phalcon, las relaciones se deben definir en el método `initialize()` de un modelo. Los métodos `belongsTo()`, `hasOne()`, `hasMany()` y `hasManyToMany()` definen la relación entre uno o más campos del modelo actual a los campos de otro modelo. Cada uno de estos métodos requiere 3 parámetros: campos locales, modelo que se hace referencia, campos a los que hace referencia.
 
-| Method        | Description                |
+| Método        | Descripción                |
 | ------------- | -------------------------- |
-| hasMany       | Defines a 1-n relationship |
-| hasOne        | Defines a 1-1 relationship |
-| belongsTo     | Defines a n-1 relationship |
-| hasManyToMany | Defines a n-n relationship |
+| hasMany       | Define una relación 1-n    |
+| hasOne        | Define una relación de 1-1 |
+| belongsTo     | Define una relación n-1    |
+| hasManyToMany | Define una relación n-n    |
 
-The following schema shows 3 tables whose relations will serve us as an example regarding relationships:
+El siguiente esquema muestra 3 tablas cuyas relaciones nos servirán como un ejemplo en cuanto a las relaciones:
 
 ```sql
 CREATE TABLE robots (
@@ -115,16 +121,16 @@ CREATE TABLE parts (
 );
 ```
 
-- The model `Robots` has many `RobotsParts`.
-- The model `Parts` has many `RobotsParts`.
-- The model `RobotsParts` belongs to both `Robots` and `Parts` models as a many-to-one relation.
-- The model `Robots` has a relation many-to-many to `Parts` through `RobotsParts`.
+* El modelo de `Robots` tiene muchas `RobotsParts`.
+* El modelo de `Parts` tiene muchos `RobotsParts`.
+* El modelo `RobotsParts` pertenece a los modelos `Robots` y `Parts` con una relación de muchos a uno.
+* El modelo `Robots` tiene una relación muchos-a-muchos con `Parts` a través de `RobotsParts`.
 
-Check the EER diagram to understand better the relations:
+Compruebe el diagrama EER para entender mejor las relaciones:
 
 ![](/images/content/models-relationships-eer-1.png)
 
-The models with their relations could be implemented as follows:
+Los modelos con sus relaciones podrían implementarse de la siguiente manera:
 
 ```php
 <?php
@@ -202,9 +208,9 @@ class RobotsParts extends Model
 }
 ```
 
-The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
+El primer parámetro indica el campo del modelo local utilizado en la relación; la segunda indica el nombre del modelo referenciado y la tercera el nombre del campo en el modelo referenciado. También puede usar arrays para definir varios campos en la relación.
 
-Many to many relationships require 3 models and define the attributes involved in the relationship:
+Las relaciones muchos a muchos requieren 3 modelos y definir los atributos que intervienen en la relación:
 
 ```php
 <?php
@@ -234,9 +240,9 @@ class Robots extends Model
 
 <a name='taking-advantage-of'></a>
 
-### Taking advantage of relationships
+### Aprovechando las relaciones
 
-When explicitly defining the relationships between models, it is easy to find related records for a particular record.
+Al definir explícitamente las relaciones entre modelos, es fácil encontrar registros relacionados para un registro concreto.
 
 ```php
 <?php
@@ -250,9 +256,9 @@ foreach ($robot->robotsParts as $robotPart) {
 }
 ```
 
-Phalcon uses the magic methods `__set`/`__get`/`__call` to store or retrieve related data using relationships.
+Phalcon utiliza los métodos mágicos `__set`/`__get`/`__call` para almacenar o recuperar datos relacionados usando las relaciones.
 
-By accessing an attribute with the same name as the relationship will retrieve all its related record(s).
+Al acceder a un atributo con el mismo nombre que la relación recuperará el o los registros relacionados.
 
 ```php
 <?php
@@ -261,11 +267,11 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst();
 
-// All the related records in RobotsParts
+// Todos los registros relacionados en RobotsParts
 $robotsParts = $robot->robotsParts;
 ```
 
-Also, you can use a magic getter:
+Además, puede utilizar un getter mágico:
 
 ```php
 <?php
@@ -274,10 +280,10 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst();
 
-// All the related records in RobotsParts
+// Todos los registros relacionados en RobotsParts
 $robotsParts = $robot->getRobotsParts();
 
-// Passing parameters
+// Pasando parámetros
 $robotsParts = $robot->getRobotsParts(
     [
         'limit' => 5,
@@ -285,7 +291,7 @@ $robotsParts = $robot->getRobotsParts(
 );
 ```
 
-If the called method has a `get` prefix `Phalcon\Mvc\Model` will return a `findFirst()`/`find()` result. The following example compares retrieving related results with using magic methods and without:
+Si el método llamado tiene un prefijo `get`, el `Phalcon\Mvc\Model` devolverá un resultado `findFirst()`/`find()`. El siguiente ejemplo compara la recuperación de resultados relacionados con el uso de métodos mágicos y sin la utilización de ellos:
 
 ```php
 <?php
@@ -294,11 +300,10 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst(2);
 
-// Robots model has a 1-n (hasMany)
-// relationship to RobotsParts then
+// El modelo Robots tiene una relación 1-n (hasMany) con RobotsParts 
 $robotsParts = $robot->robotsParts;
 
-// Only parts that match conditions
+// Solo Parts que coinciden con las condiciones
 $robotsParts = $robot->getRobotsParts(
     [
         'created_at = :date:',
@@ -310,12 +315,11 @@ $robotsParts = $robot->getRobotsParts(
 
 $robotPart = RobotsParts::findFirst(1);
 
-// RobotsParts model has a n-1 (belongsTo)
-// relationship to RobotsParts then
+// El modelo RobotsParts tiene una relación n-1 (belongsTo)
 $robot = $robotPart->robots;
 ```
 
-Getting related records manually:
+Obteniendo registros relacionados manualmente:
 
 ```php
 <?php
@@ -324,8 +328,7 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst(2);
 
-// Robots model has a 1-n (hasMany)
-// relationship to RobotsParts, then
+// El modelo Robots tiene una relación 1-n (hasMany) con RobotsParts
 $robotsParts = RobotsParts::find(
     [
         'robots_id = :id:',
@@ -335,7 +338,7 @@ $robotsParts = RobotsParts::find(
     ]
 );
 
-// Only parts that match conditions
+// Solo las Parts que coinciden con la condición
 $robotsParts = RobotsParts::find(
     [
         'robots_id = :id: AND created_at = :date:',
@@ -348,8 +351,7 @@ $robotsParts = RobotsParts::find(
 
 $robotPart = RobotsParts::findFirst(1);
 
-// RobotsParts model has a n-1 (belongsTo)
-// relationship to RobotsParts then
+// El modelo RobotsParts tiene una relación n-1 (belongsTo) con RobotsParts then
 $robot = Robots::findFirst(
     [
         'id = :id:',
@@ -360,16 +362,16 @@ $robot = Robots::findFirst(
 );
 ```
 
-The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
+El prefijo `get` se utiliza para `find()`/`findFirst()` registros relacionados. Dependiendo del tipo de relación utilizará `find()` o `findFirst()`:
 
-| Type             | Description                                                                                                                | Implicit Method |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| Belongs-To       | Returns a model instance of the related record directly                                                                    | findFirst       |
-| Has-One          | Returns a model instance of the related record directly                                                                    | findFirst       |
-| Has-Many         | Returns a collection of model instances of the referenced model                                                            | find            |
-| Has-Many-to-Many | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query) |
+| Tipo             | Descripción                                                                                                                             | Método implícito    |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| Belongs-To       | Devuelve directamente una instancia del modelo del registro relacionado                                                                 | findFirst           |
+| Has-One          | Devuelve directamente una instancia de modelo de registro relacionado                                                                   | findFirst           |
+| Has-Many         | Devuelve una colección de instancias de modelo del modelo de referencia                                                                 | find                |
+| Has-Many-to-Many | Devuelve una colección de instancias de modelo del modelo de referencia, implícitamente hace 'inner joins' con los modelos involucrados | (consulta compleja) |
 
-You can also use the `count` prefix to return an integer denoting the count of the related records:
+También puede utilizar el prefijo `count` para devolver un entero que indica el recuento de los registros relacionados:
 
 ```php
 <?php
@@ -383,11 +385,11 @@ echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
 
 <a name='aliases'></a>
 
-### Aliasing Relationships
+### Relaciones con alias
 
-To explain better how aliases work, let's check the following example:
+Para explicar mejor cómo funcionan los alias, vamos a ver el siguiente ejemplo:
 
-The `robots_similar` table has the function to define what robots are similar to others:
+La tabla `robots_similar` tiene la función de definir qué robots son similares a otros:
 
 ```sql
 mysql> desc robots_similar;
@@ -401,11 +403,11 @@ mysql> desc robots_similar;
 3 rows in set (0.00 sec)
 ```
 
-Both `robots_id` and `similar_robots_id` have a relation to the model Robots:
+Los campos `robots_id` y `similar_robots_id` tienen una relación con el modelo Robots:
 
 ![](/images/content/models-relationships-eer-1.png)
 
-A model that maps this table and its relationships is the following:
+Un modelo que asigna esta tabla y sus relaciones es el siguiente:
 
 ```php
 <?php
@@ -429,23 +431,23 @@ class RobotsSimilar extends Phalcon\Mvc\Model
 }
 ```
 
-Since both relations point to the same model (Robots), obtain the records related to the relationship could not be clear:
+Puesto que las relaciones apuntan a un mismo modelo (Robots), la obtención los registros relacionados con la relación no puede ser clara:
 
 ```php
 <?php
 
 $robotsSimilar = RobotsSimilar::findFirst();
 
-// Returns the related record based on the column (robots_id)
-// Also as is a belongsTo it's only returning one record
-// but the name 'getRobots' seems to imply that return more than one
+// Devuelve el registro relacionado basado en la columna (robots_id)
+// También como es un belongsTo sólo está devolviendo un registro
+// pero el nombre 'getRobots' parece implicar que devuelve más de uno
 $robot = $robotsSimilar->getRobots();
 
-// but, how to get the related record based on the column (similar_robots_id)
-// if both relationships have the same name?
+// pero, cómo obtener el registro relacionado basado en la columna (similar_robots_id)
+// si ambas relaciones tienen el mismo nombre?
 ```
 
-The aliases allow us to rename both relationships to solve these problems:
+Los alias nos permiten renombrar las relaciones para resolver estos problemas:
 
 ```php
 <?php
@@ -477,27 +479,29 @@ class RobotsSimilar extends Model
 }
 ```
 
-With the aliasing we can get the related records easily:
+Con los alias podemos obtener fácilmente los registros relacionados. También puede utilizar el método `getRelated()` para acceder a la relación con el nombre del alias:
 
 ```php
 <?php
 
 $robotsSimilar = RobotsSimilar::findFirst();
 
-// Returns the related record based on the column (robots_id)
+// Retorna los registros relacionados basados en la columna 'robots_id'
 $robot = $robotsSimilar->getRobot();
 $robot = $robotsSimilar->robot;
+$robot = $robotsSimilar->getRelated('Robot');
 
-// Returns the related record based on the column (similar_robots_id)
+// Retorna los registros relacionados basados en la columna 'similar_robots_id'
 $similarRobot = $robotsSimilar->getSimilarRobot();
 $similarRobot = $robotsSimilar->similarRobot;
+$similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 ```
 
 <a name='getters-vs-methods'></a>
 
-#### Magic Getters vs. Explicit methods
+#### Getters mágicos vs métodos explícitos
 
-Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). To overcome that, you can use a class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
+La mayoría de los IDEs y editores con capacidades de auto-completado no pueden deducir los tipos correctos al utilizar getters mágicos (métodos y propiedades). Para superar eso, puede utilizar un docblock en la clase que especifica qué acciones mágicas están disponibles, ayudando al IDE para producir un mejor autocompletado:
 
 ```php
 <?php
@@ -507,7 +511,7 @@ namespace Store\Toys;
 use Phalcon\Mvc\Model;
 
 /**
- * Model class for the robots table.
+ * Clase del modelo para la tabla robots.
  * @property Simple|RobotsParts[] $robotsParts
  * @method   Simple|RobotsParts[] getRobotsParts($parameters = null)
  * @method   integer              countRobotsParts()
@@ -529,13 +533,105 @@ class Robots extends Model
 }
 ```
 
+<a name='conditionals'></a>
+
+## Condicionales
+
+También puede crear relaciones basadas en condicionales. Al consultar la relación, la condición se agregará automáticamente a la consulta:
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+// Empresas que tienen facturas emitidas a ellos (pagas/impagas)
+// Model Facturas
+class Invoices extends Model
+{
+
+}
+
+// Model Empresas
+class Companies extends Model
+{
+    public function initialize()
+    {
+        // Relación: todas las facturas
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias' => 'Invoices'
+            ]
+        );
+
+        // Relación: facturas pagadas
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesPaid',
+                'params'   => [
+                    'conditions' => "inv_status = 'paid'"
+                ]
+            ]
+        );
+
+        // Reglación: facturas impagas con parámetros enlazados
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesUnpaid',
+                'params'   => [
+                    'conditions' => "inv_status <> :status:",
+                    'bind' => ['status' => 'unpaid']
+                ]
+            ]
+        );
+    }
+}
+```
+
+Además, puede utilizar el segundo parámetro de `getRelated()` al acceder a la relación desde el objeto modelo para filtrar u ordenar la relación:
+
+```php
+<br />// Facturas impagas
+$company = Companies::findFirst(
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => ['id' => 1],
+    ]
+);
+
+$unpaidInvoices = $company->InvoicesUnpaid;
+$unpaidInvoices = $company->getInvoicesUnpaid();
+$unpaidInvoices = $company->getRelated('InvoicesUnpaid');
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    ['conditions' => "inv_status = 'paid'"]
+);
+
+// Ordenadas
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    [
+        'conditions' => "inv_status = 'paid'",
+        'order'      => 'inv_created_date ASC',
+    ]
+);
+```
+
 <a name='virtual-foreign-keys'></a>
 
-## Virtual Foreign Keys
+## Claves externas virtuales
 
-By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
+De forma predeterminada, las relaciones no actúan como claves foráneas de la base de datos, es decir, si se intenta insertar o actualizar un valor sin tener un valor válido en el modelo de referenciado, Phalcon no producirá un mensaje de validación. Se puede modificar este comportamiento agregando un cuarto parámetro en la definición de una relación.
 
-The RobotsPart model can be changed to demonstrate this feature:
+El modelo RobotsPart se puede cambiar para demostrar esta característica:
 
 ```php
 <?php
@@ -567,7 +663,7 @@ class RobotsParts extends Model
             'id',
             [
                 'foreignKey' => [
-                    'message' => 'The part_id does not exist on the Parts model'
+                    'message' => 'El part_id no existe en el modelo Parts'
                 ]
             ]
         );
@@ -575,7 +671,7 @@ class RobotsParts extends Model
 }
 ```
 
-If you alter a `belongsTo()` relationship to act as foreign key, it will validate that the values inserted/updated on those fields have a valid value on the referenced model. Similarly, if a `hasMany()`/`hasOne()` is altered it will validate that the records cannot be deleted if that record is used on a referenced model.
+Si modifica una relación `belongsTo()` para actuar como clave externa, validará que los valores insertados o actualizados en los campos tienen un valor válido en el modelo referenciado. Del mismo modo, si un `hasMany()`/`hasOne()` se altera, se validará que los registros no se puedan eliminar si ese registro se utiliza en un modelo referenciado.
 
 ```php
 <?php
@@ -592,7 +688,7 @@ class Parts extends Model
             'parts_id',
             [
                 'foreignKey' => [
-                    'message' => 'The part cannot be deleted because other robots are using it',
+                    'message' => 'La parte no puede ser borrada porque hay robots utilizandola',
                 ]
             ]
         );
@@ -600,7 +696,7 @@ class Parts extends Model
 }
 ```
 
-A virtual foreign key can be set up to allow null values as follows:
+Una clave externa virtual se puede configurar para permitir valores null de la siguiente manera:
 
 ```php
 <?php
@@ -624,7 +720,7 @@ class RobotsParts extends Model
             [
                 'foreignKey' => [
                     'allowNulls' => true,
-                    'message'    => 'The part_id does not exist on the Parts model',
+                    'message'    => 'El part_id no existe en el modelo Parts',
                 ]
             ]
         );
@@ -634,9 +730,9 @@ class RobotsParts extends Model
 
 <a name='cascade-restrict-actions'></a>
 
-### Cascade/Restrict actions
+### Acciones en cascada o restringidas
 
-Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
+Las relaciones que actúan como llaves foráneas virtuales por defecto restringen la creación/actualización/eliminación de registros para mantener la integridad de los datos:
 
 ```php
 <?php
@@ -668,45 +764,45 @@ class Robots extends Model
 }
 ```
 
-The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
+Con el código anterior, se borrarán todos los registros de referenciados (parts) si se elimina el registro maestro (robot).
 
 <a name='storing-related-records'></a>
 
-## Storing Related Records
+## Almacenamiento de registros relacionados
 
-Magic properties can be used to store a record and its related properties:
+Las propiedades mágicas se pueden utilizar para almacenar un registro y sus propiedades relacionadas:
 
 ```php
 <?php
 
-// Create an artist
+// Crear un artista
 $artist = new Artists();
 
 $artist->name    = 'Shinichi Osawa';
-$artist->country = 'Japan';
+$artist->country = 'Japón';
 
-// Create an album
+// Crear un álbum
 $album = new Albums();
 
 $album->name   = 'The One';
-$album->artist = $artist; // Assign the artist
+$album->artist = $artist; // Asignar el artista
 $album->year   = 2008;
 
-// Save both records
+// Guardar ambos registros
 $album->save();
 ```
 
-Saving a record and its related records in a has-many relation:
+Guardando un registro y sus registros relacionados en una relación has-many:
 
 ```php
 <?php
 
-// Get an existing artist
+// Obtener un artista existente
 $artist = Artists::findFirst(
     'name = 'Shinichi Osawa''
 );
 
-// Create an album
+// Crear un álbum
 $album = new Albums();
 
 $album->name   = 'The One';
@@ -714,44 +810,44 @@ $album->artist = $artist;
 
 $songs = [];
 
-// Create a first song
+// Crear una primer canción
 $songs[0]           = new Songs();
 $songs[0]->name     = 'Star Guitar';
 $songs[0]->duration = '5:54';
 
-// Create a second song
+// Crear una segunda canción
 $songs[1]           = new Songs();
 $songs[1]->name     = 'Last Days';
 $songs[1]->duration = '4:29';
 
-// Assign the songs array
+// Asignar el array de canciones
 $album->songs = $songs;
 
-// Save the album + its songs
+// Guardar el algum y sus canciones
 $album->save();
 ```
 
-Saving the album and the artist at the same time implicitly makes use of a transaction so if anything goes wrong with saving the related records, the parent will not be saved either. Messages are passed back to the user for information regarding any errors.
+Guardando el álbum y el artista al mismo tiempo, implícitamente se hace uso de una transacción, por lo que si algo sale mal al guardar los registros relacionados, el padre tampoco se guardará. Los mensajes se devuelven al usuario para obtener información sobre los errores.
 
-Note: Adding related entities by overloading the following methods is not possible:
+Nota: No es posible agregar entidades relacionadas sobrecargando los métodos siguientes:
 
-- `Phalcon\Mvc\Model::beforeSave()`
-- `Phalcon\Mvc\Model::beforeCreate()`
-- `Phalcon\Mvc\Model::beforeUpdate()`
+* `Phalcon\Mvc\Model::beforeSave()`
+* `Phalcon\Mvc\Model::beforeCreate()`
+* `Phalcon\Mvc\Model::beforeUpdate()`
 
-You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
+Es necesario sobrecargar el método `Phalcon\Mvc\Model::save()` del modelo para que esto funcione.
 
 <a name='operations-over-resultsets'></a>
 
-## Operations over Resultsets
+## Operaciones sobre conjuntos de resultados
 
-If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
+Si un conjunto de resultados se compone de objetos completos, el conjunto de resultados está en la capacidad para realizar operaciones sobre los registros obtenidos de una manera simple:
 
 <a name='updating-related-records'></a>
 
-### Updating related records
+### Actualización de registros relacionados
 
-Instead of doing this:
+En lugar de hacer esto:
 
 ```php
 <?php
@@ -774,7 +870,7 @@ foreach ($parts as $part) {
 }
 ```
 
-you can do this:
+Usted puede hacer esto:
 
 ```php
 <?php
@@ -787,7 +883,7 @@ $robots->getParts()->update(
 );
 ```
 
-`update` also accepts an anonymous function to filter what records must be updated:
+El método `update` también acepta una función anónima para filtrar qué registros que deben ser actualizados:
 
 ```php
 <?php
@@ -797,7 +893,7 @@ $data = [
     'updated_at' => time(),
 ];
 
-// Update all the parts except those whose type is basic
+// Actualiza todas las partes excepto las "TYPE_BASIC"
 $robots->getParts()->update(
     $data,
     function ($part) {
@@ -812,9 +908,9 @@ $robots->getParts()->update(
 
 <a name='deleting-related-records'></a>
 
-### Deleting related records
+### Eliminar registros relacionados
 
-Instead of doing this:
+En lugar de hacer esto:
 
 ```php
 <?php
@@ -834,7 +930,7 @@ foreach ($parts as $part) {
 }
 ```
 
-you can do this:
+Usted puede hacer esto:
 
 ```php
 <?php
@@ -842,12 +938,12 @@ you can do this:
 $robots->getParts()->delete();
 ```
 
-`delete()` also accepts an anonymous function to filter what records must be deleted:
+El método `delete()` también acepta una función anónima para filtrar qué registros deben ser eliminados:
 
 ```php
 <?php
 
-// Delete only whose stock is greater or equal than zero
+// Eliminar solo las partes con stock mayor o igual a cero
 $robots->getParts()->delete(
     function ($part) {
         if ($part->stock < 0) {

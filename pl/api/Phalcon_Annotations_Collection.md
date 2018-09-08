@@ -22,7 +22,7 @@ $annotation = $classAnnotations->get("Cacheable");
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $reflectionData])
 

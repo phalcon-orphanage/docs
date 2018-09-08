@@ -4,7 +4,7 @@
 
 Represents each item in a logging transaction
 
-## Methods
+## Metody
 
 public **getType** ()
 

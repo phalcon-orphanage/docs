@@ -9,13 +9,13 @@
           <a href="#questions-and-support">Вопросы и ответы</a>
         </li>
         <li>
-          <a href="#bug-report-checklist">Контрольный список отчета об ошибках</a> <ul>
+          <a href="#bug-report-checklist">Контрольный список отчета об ошибках</a> 
+          <ul>
             <li>
               <a href="#bug-report-generating-backtrace">Генерация трассировки</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#pull-request-checklist">Контрольный список пулл реквеста</a>
         </li>
@@ -32,79 +32,83 @@
 
 <a name='contributing'></a>
 
-# Contributing to Phalcon
+# Вклад в Phalcon
 
-Phalcon является проектом с открытым кодом и сильно зависит от добровольных усилий. Мы приветствуем вклады от всех!.
+Phalcon является проектом с открытым кодом и сильно зависит от добровольных усилий. Мы приветствуем посильную помощь от всех!
 
-Please take a moment to review this document in order to make the contribution process easy and effective all.
+Пожалуйста, уделите время на ознакомление с этим документом для того, чтобы сделать процесс вашего участия в развитии фреймворка легким и эффективным.
 
-Following these guidelines, allows better communication, faster resolution of issues and moves the project forward.
+Следование этим принципам, позволит вам эффективней общаться с остальными участниками сообщества, быстрее решать проблемы и двигать проект вперед.
 
 <a name='contributions'></a>
 
-## Contributions
+## Вклад
 
-Contributions to Phalcon should be made in the form of [GitHub pull requests](https://help.github.com/articles/using-pull-requests/). Each pull request will be reviewed by a core contributor (someone with permission to merge pull requests). Based on the type and content of the pull request, it can either be merged immediately, put on hold if clarifications are needed, or rejected.
+Вклад в Phalcon следует оформлять в виде [запроса на принятие изменений (Pull Request) на GitHub](https://help.github.com/articles/using-pull-requests/). Каждый такой запрос будет рассмотрен участником команды (кем-то с правом принимать запрос). В зависимости от типа и содержания запроса, он может быть принят сразу, отложен, если необходимы разъяснения, или отклонен.
 
-Please ensure that you are sending your pull request to the correct branch and that you already have rebased your code.
+Пожалуйста, убедитесь, что вы отправляете свой запрос на принятие изменений в соответствующую ветку, и что ваша ветка в актуальном состоянии.
 
 <a name='questions-and-support'></a>
 
-## Questions and Support
+## Вопросы и поддержка
 
-<h5 class='alert alert-warning'>We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.</h5>
+<div class="alert alert-warning">
+    <p>
+       На GitHub, мы принимаем только сообщения об ошибках, предложения и запросы на принятие изменений. Для вопросов относительно использования фреймворка или поддержки, пожалуйста, используйте <a href="https://phalcon.link/forum">официальный форум</a>.
+    </p>
+</div>
 
 <a name='bug-report-checklist'></a>
 
-## Bug Report Checklist
+## Контрольный список отчета об ошибках
 
-- Make sure you are using the latest released version of Phalcon before submitting a bug report. Bugs in versions older than the latest released one will not be addressed by the core team.
-- If you have found a bug, it is essential to add relevant information to reproduce it. Being able to reproduce a bug greatly reduces the time to investigate and fix it. This information should come in the form of a script, small application, or even a failing test. Please check [Submit Reproducible Test](https://github.com/phalcon/cphalcon/wiki/Submit-Reproducible-Test) for more information.
-- As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
-- If you're submitting a [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, we would require a backtrace. Please check [Generating a Backtrace](#bug-report-generating-backtrace) for more information.
+- Убедитесь, что вы используете последнюю стабильную версию Phalcon, перед отправкой отчёта об ошибке. Ошибки в предыдущих релизах не будут рассматриваться основной командой фреймворка.
+- Если вы нашли ошибку, добавьте как можно больше связанной информации — любые детали, которые помогут нам воспроизвести её. Это очень важно. Воспроизводимые ошибки имеют наивысший шанс быть исправленными. Эта информация должна быть в виде скрипта, небольшого приложения или падающего теста. Для получения дополнительной информации, пожалуйста, ознакомьтесь с разделом [Отправка воспроизводимого теста](https://github.com/phalcon/cphalcon/wiki/Submit-Reproducible-Test).
+- Пожалуйста, включите в ваш отчет дополнительную информацию, например ОС, версии PHP, Phalcon, веб-сервера, а так-же описание аппаратного обеспечения.
+- Если вы отправляете отчет об ошибке типа [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault), нам будет необходима трассировка. Пожалуйста, ознакомьтесь с разделом [Генерация трассировки](#bug-report-generating-backtrace) для получения дополнительной информации.
 
 <a name='bug-report-generating-backtrace'></a>
 
-### Generating a backtrace
+### Генерация трассировки
 
-Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. Please help us to find out the problem by adding a crash backtrace to your bug report.
+Иногда, из-за ошибки [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault), Phalcon может аварийно завершить работу. Пожалуйста, помогите нам найти эту проблему, добавив трассировку аварийного завершения работы ваше сообщение об ошибке.
 
-Please follow this guides to understand how to generate the backtrace:
+Пожалуйста, ознакомьтесь со следующим руководствами, в случае любых вопросов связанных с созданием трассировки:
 
-- [Generating a gdb backtrace](https://bugs.php.net/bugs-generating-backtrace.php)
-- [Generating a backtrace, with a compiler, on Win32](http://bugs.php.net/bugs-generating-backtrace-win32.php)
-- [Debugging Symbols](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
-- [Building PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
+- [Генерация gdb трассировки](https://bugs.php.net/bugs-generating-backtrace.php)
+- [Генерация трассировки с использованием компилятора в Win32](http://bugs.php.net/bugs-generating-backtrace-win32.php)
+- [Отладочные символы](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
+- [Сборка PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
 
 <a name='pull-request-checklist'></a>
 
-## Pull Request Checklist
+## Контрольный список запроса на принятие изменений
 
-- Don't submit your pull requests to the `master` branch. Branch from the required branch and, if needed, rebase to the proper branch before submitting your pull request. If it doesn't merge cleanly with master you may be asked to rebase your changes
-- Don't put submodule updates, `composer.lock`, etc in your pull request unless they are to merged commits
-- Add tests relevant to the fixed bug or new feature. See our [testing guide](https://github.com/phalcon/cphalcon/blob/master/tests/README.md) for more information
-- Phalcon is written in [Zephir](https://zephir-lang.com/), please do not submit commits that modify C generated files directly or those whose functionality/fixes are implemented in the C programming language
-- Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards](http://www.php-fig.org/psr/)
-- Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
+- Не отправляйте запросы на принятие изменений в `master` ветку. Перед отправкой запроса, сделайте ответвление из необходимой для изменений ветки и при необходимости сделайте перемещение (rebase) с соответствующей веткой. Если ваши изменения не возможно будет слить (merge) без конфликтов, вам будет предложено сделать перемещение (rebase).
+- Не отправляйте обновления подмодулей, файла `composer.lock` и т.д.
+- Ваш запрос на принятие изменений должен быть покрыт тестом. Дя более подробной информацией обратитесь к разделу [Руководство по тестированию](https://github.com/phalcon/cphalcon/blob/master/tests/README.md).
+- Phalcon написан на языке [Zephir](https://zephir-lang.com/). Пожалуйста, не отправляйте коммиты с изменениями C-файлов.
+- Убедитесь, что PHP-код, который вы написали, соответствует общему стилю и стандартам кодирования [PSR](http://www.php-fig.org/psr/).
+- Удалите любые изменения `ext/kernel`, `*.zep.c` и `*.zep.h` файлов перед отправкой запроса на изменение.
 
-Before submit **new functionality**, please open a [NFR](/[[language]]/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of include the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Перед отправкой **запроса на внесение новой функциональности**, пожалуйста, [предложите свою идею](/[[language]]/[[version]]/new-feature-request) в форме тикета GitHub, чтобы обсудить последствия или изменения в ядре фреймворка. После утверждения, убедитесь, что ваш запрос на принятие изменений содержит следующее:
 
-- An update to the `CHANGELOG.md`
-- Unit Tests
-- Documentation or Usage Examples
+- Обновлённый файл `CHANGELOG.md`
+- Модульные тесты
+- Документацию и примеры использования
 
 <a name='getting-support'></a>
 
-## Getting Support
+## Получение поддержки
 
-If you have a question about how to use Phalcon, please see the [support page](https://phalconphp.com/support).
+По вопросам использования Phalcon, пожалуйста, используйте [раздел поддержки](https://phalconphp.com/support) на нашем сайте.
 
 <a name='requesting-features'></a>
 
-## Requesting Features
+## Предложение идей
 
-If you have a change or new feature in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
+Если вы хотели бы предложить изменения или новый функционал, пожалуйста, [оформите](/[[language]]/[[version]]/new-feature-request) соответствующим образом ваше предложение.
 
-Thanks!
+Спасибо!
 
-<3 Phalcon Team
+<3 Команда Phalcon

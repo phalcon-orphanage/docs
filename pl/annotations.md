@@ -1,9 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Annotations Parser</a> <ul>
+      <a href="#overview">Annotations Parser</a> 
+      <ul>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">Fabryka</a>
         </li>
         <li>
           <a href="#reading">Reading Annotations</a>
@@ -12,7 +13,8 @@
           <a href="#types">Types of Annotations</a>
         </li>
         <li>
-          <a href="#usage">Practical Usage</a> <ul>
+          <a href="#usage">Practical Usage</a> 
+          <ul>
             <li>
               <a href="#usage-cache">Cache Enabler with Annotations</a>
             </li>
@@ -21,15 +23,14 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#adapters">Annotations Adapters</a> <ul>
+          <a href="#adapters">Annotations Adapters</a> 
+          <ul>
             <li>
               <a href="#adapters-custom">Implementing your own adapters</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#resources">External Resources</a>
         </li>
@@ -71,8 +72,7 @@ class Example
     public function someMethod()
     {
         // ...
-    }
-}
+    } }
 ```
 
 An annotation has the following syntax:
@@ -129,9 +129,9 @@ However, to make the code more maintainable and understandable it is recommended
 
 <a name='factory'></a>
 
-## Factory
+## Fabryka
 
-There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
 
 ```php
 <?php
@@ -448,7 +448,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
-| Class                                   | Description                                                                                                                                                                       |
+| Klasa                                   | Description                                                                                                                                                                       |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Phalcon\Annotations\Adapter\Memory` | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
 | `Phalcon\Annotations\Adapter\Files`  | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
@@ -465,4 +465,4 @@ The `Phalcon\Annotations\AdapterInterface` interface must be implemented in orde
 
 ## External Resources
 
-- [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
+* [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)

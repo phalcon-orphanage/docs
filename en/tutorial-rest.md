@@ -1,16 +1,38 @@
-<div class='article-menu' markdown='1'>
-
-- [Tutorial: Creating a Simple REST API](#overview)
-    - [Defining the API](#definitions)
-    - [Creating the Application](#implementation)
-    - [Creating a Model](#models)
-    - [Retrieving Data](#retrieving-data)
-    - [Inserting Data](#inserting-data)
-    - [Updating Data](#updating-data)
-    - [Deleting Data](#deleting-data)
-    - [Testing our Application](#testing)
-    - [Conclusion](#conclusion)
-   
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Tutorial: Creating a Simple REST API</a>
+      <ul>
+        <li>
+          <a href="#definitions">Defining the API</a>
+        </li>
+        <li>
+          <a href="#implementation">Creating the Application</a>
+        </li>
+        <li>
+          <a href="#models">Creating a Model</a>
+        </li>
+        <li>
+          <a href="#retrieving-data">Retrieving Data</a>
+        </li>
+        <li>
+          <a href="#inserting-data">Inserting Data</a>
+        </li>
+        <li>
+          <a href="#updating-data">Updating Data</a>
+        </li>
+        <li>
+          <a href="#deleting-data">Deleting Data</a>
+        </li>
+        <li>
+          <a href="#testing">Testing our Application</a>
+        </li>
+        <li>
+          <a href="#conclusion">Conclusion</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='basic'></a>
@@ -49,7 +71,7 @@ my-rest-api/
     .htaccess
 ```
 
-First, we need a `.htaccess` file that contains all the rules to rewrite the URIs to the `index.php` file, that is our application:
+First, we need a `.htaccess` file that contains all the rules to rewrite the request URIs to the `index.php` file (application entry-point):
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -86,7 +108,7 @@ $app = new Micro();
 $app->get(
     '/api/robots',
     function () {
-
+        // Operation to fetch all the robots
     }
 );
 
@@ -94,7 +116,7 @@ $app->get(
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
-
+        // Operation to fetch robot with name $name
     }
 );
 
@@ -102,7 +124,7 @@ $app->get(
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-
+        // Operation to fetch robot with id $id
     }
 );
 
@@ -110,23 +132,23 @@ $app->get(
 $app->post(
     '/api/robots',
     function () {
-
+        // Operation to create a fresh robot
     }
 );
 
 // Updates robots based on primary key
 $app->put(
     '/api/robots/{id:[0-9]+}',
-    function () {
-
+    function ($id) {
+        // Operation to update a robot with id $id
     }
 );
 
 // Deletes robots based on primary key
 $app->delete(
     '/api/robots/{id:[0-9]+}',
-    function () {
-
+    function ($id) {
+        // Operation to delete the robot with id $id
     }
 );
 
@@ -139,7 +161,7 @@ When a defined route matches the requested URI then the application executes the
 
 <a name='models'></a>
 ## Creating a Model
-Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder. 
+Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
 ```php
 <?php

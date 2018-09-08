@@ -1,19 +1,42 @@
-<div class='article-menu' markdown='1'>
-
-- [Pagination](#overview)
-    - [Data Adapters](#data-adapters)
-    - [Examples](#examples)
-    - [Using Adapters](#using-adapters)
-    - [Page Attributes](#page-attributes)
-    - [Implementing your own adapters](#custom)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Database Migrations</a> <ul>
+        <li>
+          <a href="#schema-dumping">Schema Dumping</a>
+        </li>
+        <li>
+          <a href="#migration-class-anatomy">Migration Class Anatomy</a>
+        </li>
+        <li>
+          <a href="#defining-columns">Defining Columns</a>
+        </li>
+        <li>
+          <a href="#defining-indexes">Defining Indexes</a>
+        </li>
+        <li>
+          <a href="#defining-references">Defining References</a>
+        </li>
+        <li>
+          <a href="#writing-migrations">Writing Migrations</a>
+        </li>
+        <li>
+          <a href="#running-migrations">Running Migrations</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
 # Database Migrations
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
-<h5 class='alert alert-danger' markdown='1'>Migrations are available in [Phalcon Developer Tools](/[[language]]/[[version]]/devtools-usage) You need at least Phalcon Framework version 0.5.0 to use developer tools.</h5>
+<div class="alert alert-danger">
+    <p>
+        Migrations are available in <a href="/[[language]]/[[version]]/devtools-usage">Phalcon Developer Tools</a> You need at least Phalcon Framework version 0.5.0 to use developer tools.
+    </p>
+</div>
 
 Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.
 
@@ -23,6 +46,7 @@ When a migration is generated a set of classes are created to describe how your 
     <iframe src='https://player.vimeo.com/video/41381817' width='500' height='281' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </div>
 
+<a name='schema-dumping'></a>
 ## Schema Dumping
 The [Phalcon Developer Tools](/[[language]]/[[version]]/devtools-usage) provides scripts to manage migrations (generation, running and rollback).
 
@@ -42,6 +66,7 @@ By default [Phalcon Developer Tools](/[[language]]/[[version]]/devtools-usage) u
 
 ![](/images/content/migrations-2.png)
 
+<a name='migration-class-anatomy'></a>
 ## Migration Class Anatomy
 Each file contains a unique class that extends the `Phalcon\Mvc\Model\Migration` class. These classes normally have two methods: `up()` and `down()`. `up()` performs the migration, while `down()` rolls it back.
 
@@ -149,15 +174,16 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 | `references` | An array with a set of table references (foreign keys).                                                                                     | Yes      |
 | `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. | Yes      |
 
+<a name='defining-columns'></a>
 ### Defining Columns
 `Phalcon\Db\Column` is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
 | Option          | Description                                                                                                                                | Optional |
 |-----------------|--------------------------------------------------------------------------------------------------------------------------------------------|:--------:|
 | `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below)                                                                            | No       |
-| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      | Yes      |
-| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   | Yes      |
-| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            | Yes      |
+| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  | Yes      |
+| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how much decimals it must store                                               | Yes      |
+| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          | Yes      |
 | `notNull`       | Column can store null values?                                                                                                              | Yes      |
 | `default`       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         | Yes      |
 | `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | Yes      |
@@ -185,9 +211,11 @@ Database migrations support the following database column types:
 * `Phalcon\Db\Column::TYPE_JSONB`
 * `Phalcon\Db\Column::TYPE_BIGINTEGER`
 
+<a name='defining-indexes'></a>
 ### Defining Indexes
-`Phalcon\Db\Index` defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index for that table.
+`Phalcon\Db\Index` defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name `PRIMARY`, Phalcon will create a primary key index for that table.
 
+<a name='defining-references'></a>
 ### Defining References
 `Phalcon\Db\Reference` defines table references (also called foreign keys). The following options can be used to define a reference:
 
@@ -200,6 +228,7 @@ Database migrations support the following database column types:
 | `onDelete`          | If the foreign record is removed, perform this action on the local record(s).                       | Yes      | MySQL PostgreSQL |
 | `onUpdate`          | If the foreign record is updated, perform this action on the local record(s).                       | Yes      | MySQL PostgreSQL |
 
+<a name='writing-migrations'></a>
 ## Writing Migrations
 Migrations aren't only designed to 'morph' table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the [database component](/[[language]]/[[version]]/db).
 
@@ -229,6 +258,7 @@ class ProductsMigration_100 extends Migration
 }
 ```
 
+<a name='running-migrations'></a>
 ## Running Migrations
 Once the generated migrations are uploaded on the target server, you can easily run them as shown in the following example:
 

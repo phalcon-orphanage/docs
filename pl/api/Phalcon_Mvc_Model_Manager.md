@@ -27,7 +27,7 @@ $robot = new Robots($di);
 
 ```
 
-## Methods
+## Metody
 
 public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
 

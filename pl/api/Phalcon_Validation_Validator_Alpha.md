@@ -11,7 +11,10 @@ Check for alphabetic character(s)
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Alpha as AlphaValidator;
+
+$validator = new Validation();
 
 $validator->add(
     "username",
@@ -39,7 +42,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Metody
 
 public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
 

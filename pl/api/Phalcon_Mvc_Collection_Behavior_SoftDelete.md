@@ -8,7 +8,7 @@
 
 Instead of permanently delete a record it marks the record as deleted changing the value of a flag column
 
-## Methods
+## Metody
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](/en/3.2/api/Phalcon_Mvc_CollectionInterface) $model)
 

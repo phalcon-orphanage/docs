@@ -4,7 +4,7 @@
 
 Provides debug capabilities to Phalcon applications
 
-## Methods
+## Metody
 
 public **setUri** (*mixed* $uri)
 

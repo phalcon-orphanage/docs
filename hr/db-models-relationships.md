@@ -1,9 +1,11 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Relationships</a> <ul>
+      <a href="#overview">Model Relationships</a> 
+      <ul>
         <li>
-          <a href="#relationships">Relationships between Models</a> <ul>
+          <a href="#relationships">Relationships between Models</a> 
+          <ul>
             <li>
               <a href="#unidirectional">Unidirectional relationships</a>
             </li>
@@ -17,28 +19,32 @@
               <a href="#taking-advantage-of">Taking advantage of relationships</a>
             </li>
             <li>
-              <a href="#aliases">Aliasing Relationships</a> <ul>
+              <a href="#aliases">Aliasing Relationships</a> 
+              <ul>
                 <li>
                   <a href="#getters-vs-methods">Magic Getters vs. Explicit methods</a>
                 </li>
               </ul>
             </li>
+            <li>
+              <a href="#conditionals">Conditionals</a>
+            </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#virtual-foreign-keys">Virtual Foreign Keys</a> <ul>
+          <a href="#virtual-foreign-keys">Virtual Foreign Keys</a> 
+          <ul>
             <li>
               <a href="#cascade-restrict-actions">Cascade/Restrict actions</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#storing-related-records">Storing Related Records</a>
         </li>
         <li>
-          <a href="#operations-over-resultsets">Operations over Resultsets</a> <ul>
+          <a href="#operations-over-resultsets">Operations over Resultsets</a> 
+          <ul>
             <li>
               <a href="#updating-related-records">Updating related records</a>
             </li>
@@ -115,10 +121,10 @@ CREATE TABLE parts (
 );
 ```
 
-- The model `Robots` has many `RobotsParts`.
-- The model `Parts` has many `RobotsParts`.
-- The model `RobotsParts` belongs to both `Robots` and `Parts` models as a many-to-one relation.
-- The model `Robots` has a relation many-to-many to `Parts` through `RobotsParts`.
+* The model `Robots` has many `RobotsParts`.
+* The model `Parts` has many `RobotsParts`.
+* The model `RobotsParts` belongs to both `Robots` and `Parts` models as a many-to-one relation.
+* The model `Robots` has a relation many-to-many to `Parts` through `RobotsParts`.
 
 Check the EER diagram to understand better the relations:
 
@@ -477,7 +483,7 @@ class RobotsSimilar extends Model
 }
 ```
 
-With the aliasing we can get the related records easily:
+With the aliasing we can get the related records easily. You can also use the `getRelated()` method to access the relationship using the alias name:
 
 ```php
 <?php
@@ -487,10 +493,12 @@ $robotsSimilar = RobotsSimilar::findFirst();
 // Returns the related record based on the column (robots_id)
 $robot = $robotsSimilar->getRobot();
 $robot = $robotsSimilar->robot;
+$robot = $robotsSimilar->getRelated('Robot');
 
 // Returns the related record based on the column (similar_robots_id)
 $similarRobot = $robotsSimilar->getSimilarRobot();
 $similarRobot = $robotsSimilar->similarRobot;
+$similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 ```
 
 <a name='getters-vs-methods'></a>
@@ -527,6 +535,98 @@ class Robots extends Model
         );
     }
 }
+```
+
+<a name='conditionals'></a>
+
+## Conditionals
+
+You can also create relationships based on conditionals. When querying based on the relationship the condition will be automatically appended to the query:
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+// Companies have invoices issued to them (paid/unpaid)
+// Invoices model
+class Invoices extends Model
+{
+
+}
+
+// Companies model
+class Companies extends Model
+{
+    public function initialize()
+    {
+        // All invoices relationship
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias' => 'Invoices'
+            ]
+        );
+
+        // Paid invoices relationship
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesPaid',
+                'params'   => [
+                    'conditions' => "inv_status = 'paid'"
+                ]
+            ]
+        );
+
+        // Unpaid invoices relationship + bound parameters
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesUnpaid',
+                'params'   => [
+                    'conditions' => "inv_status <> :status:",
+                    'bind' => ['status' => 'unpaid']
+                ]
+            ]
+        );
+    }
+}
+```
+
+Additionally, you can use the second parameter of `getRelated()` when accessing your relationship from your model object to further filter or order your relationship:
+
+```php
+<br />// Unpaid Invoices
+$company = Companies::findFirst(
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => ['id' => 1],
+    ]
+);
+
+$unpaidInvoices = $company->InvoicesUnpaid;
+$unpaidInvoices = $company->getInvoicesUnpaid();
+$unpaidInvoices = $company->getRelated('InvoicesUnpaid');
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    ['conditions' => "inv_status = 'paid'"]
+);
+
+// Also ordered
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    [
+        'conditions' => "inv_status = 'paid'",
+        'order'      => 'inv_created_date ASC',
+    ]
+);
 ```
 
 <a name='virtual-foreign-keys'></a>
@@ -735,9 +835,9 @@ Saving the album and the artist at the same time implicitly makes use of a trans
 
 Note: Adding related entities by overloading the following methods is not possible:
 
-- `Phalcon\Mvc\Model::beforeSave()`
-- `Phalcon\Mvc\Model::beforeCreate()`
-- `Phalcon\Mvc\Model::beforeUpdate()`
+* `Phalcon\Mvc\Model::beforeSave()`
+* `Phalcon\Mvc\Model::beforeCreate()`
+* `Phalcon\Mvc\Model::beforeUpdate()`
 
 You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 

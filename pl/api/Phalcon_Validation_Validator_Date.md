@@ -11,7 +11,10 @@ Checks if a value is a valid date
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Date as DateValidator;
+
+$validator = new Validation();
 
 $validator->add(
     "date",
@@ -44,7 +47,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Metody
 
 public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
 

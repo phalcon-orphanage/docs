@@ -43,7 +43,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 

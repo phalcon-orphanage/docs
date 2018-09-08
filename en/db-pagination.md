@@ -1,12 +1,26 @@
-<div class='article-menu' markdown='1'>
-
-- [Pagination](#overview)
-    - [Data Adapters](#data-adapters)
-    - [Examples](#examples)
-    - [Using Adapters](#using-adapters)
-    - [Page Attributes](#page-attributes)
-    - [Implementing your own adapters](#custom)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Pagination</a> 
+      <ul>
+        <li>
+          <a href="#data-adapters">Data Adapters</a>
+        </li>
+        <li>
+          <a href="#examples">Examples</a>
+        </li>
+        <li>
+          <a href="#using-adapters">Using Adapters</a>
+        </li>
+        <li>
+          <a href="#page-attributes">Page Attributes</a>
+        </li>
+        <li>
+          <a href="#custom">Implementing your own adapters</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -22,6 +36,31 @@ This component makes use of adapters to encapsulate different sources of data:
 | `Phalcon\Paginator\Adapter\NativeArray`  | Use a PHP array as source data                                                                                                                                               |
 | `Phalcon\Paginator\Adapter\Model`        | Use a `Phalcon\Mvc\Model\Resultset` object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
 | `Phalcon\Paginator\Adapter\QueryBuilder` | Use a `Phalcon\Mvc\Model\Query\Builder` object as source data                                                                                                                |
+
+<a name='factory'></a>
+## Factory
+Loads Paginator Adapter class using `adapter` option
+
+```php
+<?php
+
+use Phalcon\Paginator\Factory;
+ 
+$builder = $this->modelsManager->createBuilder()
+                ->columns('id, name')
+                ->from('Robots')
+                ->orderBy('name');
+
+$options = [
+    'builder' => $builder,
+    'limit'   => 20,
+    'page'    => 1,
+    'adapter' => 'queryBuilder',
+];
+
+$paginator = Factory::load($options);
+
+```
 
 <a name='examples'></a>
 ## Examples

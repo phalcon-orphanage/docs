@@ -20,7 +20,7 @@ Simple resultsets only contains a complete objects This class builds every compl
 
 *integer* **HYDRATE_ARRAYS**
 
-## Methods
+## Metody
 
 public **__construct** (*array* $columnMap, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) | [Phalcon\Mvc\Model\Row](/en/3.2/api/Phalcon_Mvc_Model_Row) $model, [Phalcon\Db\Result\Pdo](/en/3.2/api/Phalcon_Db_Result_Pdo) | *null* $result, [[Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface) $cache], [*boolean* $keepSnapshots])
 
@@ -60,7 +60,7 @@ Rewinds resultset to its beginning
 
 final public **seek** (*mixed* $position) inherited from [Phalcon\Mvc\Model\Resultset](/en/3.2/api/Phalcon_Mvc_Model_Resultset)
 
-Changes internal pointer to a specific position in the resultset Set new position if required and set this->_row
+Changes the internal pointer to a specific position in the resultset. Set the new position if required, and then set this->_row
 
 final public **count** () inherited from [Phalcon\Mvc\Model\Resultset](/en/3.2/api/Phalcon_Mvc_Model_Resultset)
 

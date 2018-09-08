@@ -6,7 +6,7 @@
 
 This is an optional base class for ORM behaviors
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $options])
 

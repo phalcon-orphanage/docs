@@ -4,7 +4,7 @@
 
 Handles multiples logger handlers
 
-## Methods
+## Metody
 
 public **getLoggers** ()
 

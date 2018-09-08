@@ -33,7 +33,7 @@ echo $view->render(
 
 ```
 
-## Methods
+## Metody
 
 public **getRegisteredEngines** ()
 

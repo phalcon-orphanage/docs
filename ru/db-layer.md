@@ -1,71 +1,85 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Database Abstraction Layer</a> <ul>
+      <a href="#overview">Уровень абстракции базы данных</a> 
+      <ul>
         <li>
-          <a href="#adapters">Database Adapters</a> <ul>
+          <a href="#adapters">Адаптеры баз данных</a> 
+          <ul>
             <li>
-              <a href="#adapters-custom">Implementing your own adapters</a>
+              <a href="#adapters-factory">Фабрика</a>
+            </li>
+            <li>
+              <a href="#adapters-custom">Реализация собственных адаптеров</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#dialects">Database Dialects</a> <ul>
+          <a href="#dialects">Диалекты базы данных</a> 
+          <ul>
             <li>
-              <a href="#dialects-custom">Implementing your own dialects</a>
+              <a href="#dialects-custom">Реализация собственных диалектов</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#connection">Connecting to Databases</a> <ul>
+          <a href="#connection">Подключение к базе данных</a> 
+          <ul>
             <li>
-              <a href="#connection-factory">Connecting using Factory</a>
+              <a href="#connection-factory">Подключение с помощью фабрики</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#options">Setting up additional PDO options</a>
+          <a href="#options">Настройка дополнительных параметров PDO</a>
         </li>
         <li>
-          <a href="#finding-rows">Finding Rows</a>
+          <a href="#finding-rows">Поиск строк</a>
         </li>
         <li>
-          <a href="#binding-parameters">Binding Parameters</a>
+          <a href="#binding-parameters">Подготавливаемые запросы</a>
         </li>
         <li>
-          <a href="#crud">Inserting/Updating/Deleting Rows</a>
+          <a href="#typed-placeholders">Типизированные псевдопеременные</a>
         </li>
         <li>
-          <a href="#transactions">Transactions and Nested Transactions</a>
+          <a href="#cast-bound-parameter-values">Приведение типов связываемых параметров</a>
         </li>
         <li>
-          <a href="#events">Database Events</a>
+          <a href="#cast-on-hydrate">Приведение типов при гидрации</a>
+        </li>
+        <li>
+          <a href="#crud">Вставка, обновление и удаление строк</a>
+        </li>
+        <li>
+          <a href="#transactions">Транзакции и вложенные транзакции</a>
+        </li>
+        <li>
+          <a href="#events">События базы данных</a>
         </li>
         <li>
           <a href="#profiling">Профилирование SQL запросов</a>
         </li>
         <li>
-          <a href="#logging-statements">Logging SQL Statements</a>
+          <a href="#logging-statements">Логирование SQL выражений</a>
         </li>
         <li>
-          <a href="#logger-custom">Implementing your own Logger</a>
+          <a href="#logger-custom">Реализация собственного логера</a>
         </li>
         <li>
-          <a href="#describing-tables">Describing Tables/Views</a>
+          <a href="#describing-tables">Описание таблиц и представлений</a>
         </li>
         <li>
-          <a href="#tables">Creating/Altering/Dropping Tables</a> <ul>
+          <a href="#tables">Создание, изменение и удаление таблиц</a> 
+          <ul>
             <li>
-              <a href="#tables-create">Creating Tables</a>
+              <a href="#tables-create">Создание таблиц</a>
             </li>
             <li>
-              <a href="#tables-altering">Altering Tables</a>
+              <a href="#tables-altering">Изменение таблиц</a>
             </li>
             <li>
-              <a href="#tables-dropping">Dropping Tables</a>
+              <a href="#tables-dropping">Удаление таблиц</a>
             </li>
           </ul>
         </li>
@@ -76,58 +90,83 @@
 
 <a name='overview'></a>
 
-# Database Abstraction Layer
+# Уровень абстракции базы данных
 
-`Phalcon\Db` is the component behind `Phalcon\Mvc\Model` that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
+`Phalcon\Db` является компонентом, располагающимся под `Phalcon\Mvc\Model`, который управляет слоем моделей в фреймворке. Он состоит из независимых абстракций высокого уровня для баз данных, полностью написанных на C.
 
-This component allows for a lower level database manipulation than using traditional models.
+Этот компонент позволяет производить манипуляции с базой данных на более низком уровне, чем при использовании традиционных моделей.
 
 <a name='adapters'></a>
 
-## Database Adapters
+## Адаптеры баз данных
 
-This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO_ to connect to databases. The following database engines are supported:
+Данный компонент позволяет использовать адаптеры для инкапсуляции конкретных деталей системы баз данных. Phalcon использует PDO для подключения к базам данных. Поддерживаются следующие СУБД:
 
-| Class                                   | Description                                                                                                                                                                                                                          |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Phalcon\Db\Adapter\Pdo\Mysql`      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    |
-| `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
-| `Phalcon\Db\Adapter\Pdo\Sqlite`     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     |
+| Класс                                   | Описание                                                                                                                                                                                                                          |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Db\Adapter\Pdo\Mysql`      | Наиболее часто используемая реляционная система управления базами данных (RDBMS), которая работает как сервер, обеспечивающий многопользовательский доступ к некоторому набору баз данных.                                        |
+| `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL- мощная реляционная система баз данных с открытым исходным кодом. Это более чем 15 лет активного развития и проверенная архитектура, которая завоевала прочную репутацию за надежность, целостность данных и точность. |
+| `Phalcon\Db\Adapter\Pdo\Sqlite`     | Библиотека SQLite реализует автономную, бессерверную, не требующую конфигурации и при этом поддерживающую транзакции базу данных на основе языка SQL.                                                                             |
 
-<a name='adapters-custom'></a>
+<a name='adapters-factory'></a>
 
-### Implementing your own adapters
+### Фабрика
 
-The `Phalcon\Db\AdapterInterface` interface must be implemented in order to create your own database adapters or extend the existing ones.
+<a name='factory'></a>
 
-<a name='dialects'></a>
-
-## Database Dialects
-
-Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
-
-| Class                              | Description                                         |
-| ---------------------------------- | --------------------------------------------------- |
-| `Phalcon\Db\Dialect\Mysql`      | SQL specific dialect for MySQL database system      |
-| `Phalcon\Db\Dialect\Postgresql` | SQL specific dialect for PostgreSQL database system |
-| `Phalcon\Db\Dialect\Sqlite`     | SQL specific dialect for SQLite database system     |
-
-<a name='dialects-custom'></a>
-
-### Implementing your own dialects
-
-The `Phalcon\Db\DialectInterface` interface must be implemented in order to create your own database dialects or extend the existing ones.
-
-<a name='connection'></a>
-
-## Connecting to Databases
-
-To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
+Загружает адаптер PDO используя параметр `adapter`. Например:
 
 ```php
 <?php
 
-// Required
+use Phalcon\Db\Adapter\Pdo\Factory;
+
+$options = [
+    'host'     => 'localhost',
+    'dbname'   => 'blog',
+    'port'     => 3306,
+    'username' => 'sigma',
+    'password' => 'secret',
+    'adapter'  => 'mysql',
+];
+
+$db = Factory::load($options);
+```
+
+<a name='adapters-custom'></a>
+
+### Реализация собственных адаптеров
+
+Для создания собственного адаптера, должен быть реализован интерфейс `Phalcon\Db\AdapterInterface` или расширен через наследование любой существующий адаптер.
+
+<a name='dialects'></a>
+
+## Диалекты баз данных
+
+Phalcon инкапсулирует специфические детали каждого компонента баз данных в диалектах. Которые в свою очередь предоставляют адаптером общие функции и генератор SQL.
+
+| Класс                              | Описание                                      |
+| ---------------------------------- | --------------------------------------------- |
+| `Phalcon\Db\Dialect\Mysql`      | Специфичный SQL диалект для MySQL             |
+| `Phalcon\Db\Dialect\Postgresql` | Специфичный SQL диалект для систем PostgreSQL |
+| `Phalcon\Db\Dialect\Sqlite`     | Специфичный SQL диалект для SQLite            |
+
+<a name='dialects-custom'></a>
+
+### Реализация собственных диалектов
+
+Для создания собственного диалекта, должен быть реализован интерфейс `Phalcon\Db\DialectInterface` или расширен через наследование любой существующий диалект.
+
+<a name='connection'></a>
+
+## Подключение к базе данных
+
+Чтобы создать подключение, необходимо создать экземпляр класса адаптера. Для этого требуется только массив с параметрами соединения. В приведенном примере ниже показано, как создать соединение с обязательными и необязательными параметрами:
+
+```php
+<?php
+
+// Обязательные
 $config = [
     'host'     => '127.0.0.1',
     'username' => 'mike',
@@ -135,17 +174,17 @@ $config = [
     'dbname'   => 'test_db',
 ];
 
-// Optional
+// Необязательные
 $config['persistent'] = false;
 
-// Create a connection
+// Создаём соединение
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
 
 ```php
 <?php
 
-// Required
+// Обязательные
 $config = [
     'host'     => 'localhost',
     'username' => 'postgres',
@@ -153,35 +192,35 @@ $config = [
     'dbname'   => 'template',
 ];
 
-// Optional
+// Необязательные
 $config['schema'] = 'public';
 
-// Create a connection
+// Создаём соединение
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
 
 ```php
 <?php
 
-// Required
+// Обязательные
 $config = [
     'dbname' => '/path/to/database.db',
 ];
 
-// Create a connection
+// Создаём соединение
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```
 
 <a name='options'></a>
 
-## Setting up additional PDO options
+## Настройка дополнительных параметров PDO
 
-You can set PDO options at connection time by passing the parameters `options`:
+Вы можете установить опции PDO во время соединения, передавая параметры `options`:
 
 ```php
 <?php
 
-// Create a connection with PDO options
+// Создаём соединение с настройками PDO
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
     [
         'host'     => 'localhost',
@@ -198,9 +237,9 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
 
 <a name='connection-factory'></a>
 
-## Connecting using Factory
+## Подключение с помощью фабрики
 
-You can also use a simple `ini` file to configure/connect your `db` service to your database.
+Также, существует возможность использовать простой `ini` файл, чтобы настроить/подключить сервис `db` к базе данных.
 
 ```ini
 [database]
@@ -233,45 +272,45 @@ $di->set(
 );
 ```
 
-The above will return the correct database instance and also has the advantage that you can change the connection credentials or even the database adapter without changing a single line of code in your application.
+Пример выше возвращает корректный экземпляр базы данных и имеет важное преимущество. Он позволяет изменять учётные данные подключения, или даже адаптер базы данных, не изменяя ни одной строки кода в приложении.
 
 <a name='finding-rows'></a>
 
-## Finding Rows
+## Поиск строк
 
-`Phalcon\Db` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
+`Phalcon\Db` предоставляет несколько методов для запроса строк из таблиц. В данном случае требуется конкретный SQL синтаксис целевой СУБД:
 
 ```php
 <?php
 
 $sql = 'SELECT id, name FROM robots ORDER BY name';
 
-// Send a SQL statement to the database system
+// Отправляем SQL выражение в базу данных
 $result = $connection->query($sql);
 
-// Print each robot name
+// Выводим имя каждого робота
 while ($robot = $result->fetch()) {
    echo $robot['name'];
 }
 
-// Get all rows in an array
+// Получаем все строки в массив
 $robots = $connection->fetchAll($sql);
 foreach ($robots as $robot) {
    echo $robot['name'];
 }
 
-// Get only the first row
+// Получаем только первую строку
 $robot = $connection->fetchOne($sql);
 ```
 
-By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using `Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
+По умолчанию эти вызовы создают массивы с ассоциативными и нумерованными индексами. Вы можете изменить это поведение используя `Phalcon\Db\Result::setFetchMode()`. Этот метод принимает константу, определяющую необходимый тип индексов.
 
-| Constant                   | Description                                               |
-| -------------------------- | --------------------------------------------------------- |
-| `Phalcon\Db::FETCH_NUM`   | Return an array with numeric indexes                      |
-| `Phalcon\Db::FETCH_ASSOC` | Return an array with associative indexes                  |
-| `Phalcon\Db::FETCH_BOTH`  | Return an array with both associative and numeric indexes |
-| `Phalcon\Db::FETCH_OBJ`   | Return an object instead of an array                      |
+| Константа                  | Описание                                                   |
+| -------------------------- | ---------------------------------------------------------- |
+| `Phalcon\Db::FETCH_NUM`   | Возврат массива с нумерованными индексами                  |
+| `Phalcon\Db::FETCH_ASSOC` | Возврат массива с ассоциативными индексами                 |
+| `Phalcon\Db::FETCH_BOTH`  | Возврат массива с ассоциативными и нумерованными индексами |
+| `Phalcon\Db::FETCH_OBJ`   | Возврат объекта вместо массива                             |
 
 ```php
 <?php
@@ -285,7 +324,7 @@ while ($robot = $result->fetch()) {
 }
 ```
 
-The `Phalcon\Db::query()` returns an instance of `Phalcon\Db\Result\Pdo`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
+`Phalcon\Db::query()` возвращает экземпляр класса `Phalcon\Db\Result\Pdo`. Эти объекты инкапсулируют все методы, которые связаны с возвращаемым набором данных, т.е. перебор набора данных, поиск конкретной записи, получение количества строк в наборе данных и т.д.
 
 ```php
 <?php
@@ -293,29 +332,29 @@ The `Phalcon\Db::query()` returns an instance of `Phalcon\Db\Result\Pdo`. These 
 $sql = 'SELECT id, name FROM robots';
 $result = $connection->query($sql);
 
-// Traverse the resultset
+// Перебор набора данных
 while ($robot = $result->fetch()) {
    echo $robot['name'];
 }
 
-// Seek to the third row
+// Получение третьей строки
 $result->seek(2);
 $robot = $result->fetch();
 
-// Count the resultset
+// Получение количества строк в наборе данных
 echo $result->numRows();
 ```
 
 <a name='binding-parameters'></a>
 
-## Binding Parameters
+## Подготавливаемые запросы
 
-Bound parameters is also supported in `Phalcon\Db`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
+Подготавливаемые запросы также поддерживается в `Phalcon\Db`. Хотя при её использовании есть минимальное влияние на производительность, рекомендуется использовать эту методику, чтобы исключить возможность SQL инъекций в вашем коде. Поддерживаются как именованные, так и неименованные псевдопеременные. Связывание параметров может просто быть достигнуто следующим образом:
 
 ```php
 <?php
 
-// Binding with numeric placeholders
+// Подготовленный запрос с не именованными псевдопеременными
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -324,7 +363,7 @@ $result = $connection->query(
     ]
 );
 
-// Binding with named placeholders
+// Подготовленный запрос с именованными псевдопеременными
 $sql     = 'INSERT INTO `robots`(name`, year) VALUES (:name, :year)';
 $success = $connection->query(
     $sql,
@@ -335,16 +374,16 @@ $success = $connection->query(
 );
 ```
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case '1' or '2' are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter data are automatically escaped using [PDO Quote](http://www.php.net/manual/en/pdo.quote.php).
+При использовании числовых не именованных псевдопеременных, вам понадобится определить их как целочисленные индексы, например 1 или 2. В случае использования индексов в виде строк, например '1' или '2', не именованные псевдопеременные не смогут быть успешно заменены. С любым адаптером данные автоматически экранируются с помощью [PDO Quote](http://www.php.net/manual/en/pdo.quote.php).
 
-This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+Эта функция принимает во внимание кодировку подключения, поэтому рекомендуется определить корректную кодировку в параметрах подключения или в конфигурации сервера баз данных, так как ошибочная кодировка приведет к неожиданным эффектам при сохранении или извлечении данных.
 
-Also, you can pass your parameters directly to the execute/query methods. In this case bound parameters are directly passed to PDO:
+Также, вы можете послать параметры напрямую в методы execute/query. В этом случае связанные параметры передаются напрямую в PDO:
 
 ```php
 <?php
 
-// Binding with PDO placeholders
+// Связывание при помощи не именованных псевдопеременных в PDO
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -354,20 +393,185 @@ $result = $connection->query(
 );
 ```
 
-<a name='crud'></a>
+<a name='typed-placeholders'></a>
 
-## Inserting/Updating/Deleting Rows
+## Типизированные псевдопеременные
 
-To insert, update or delete rows, you can use raw SQL or use the preset functions provided by the class:
+Placeholders allowed you to bind parameters to avoid SQL injections:
 
 ```php
 <?php
 
-// Inserting data with a raw SQL statement
+$phql = "SELECT * FROM Store\Robots WHERE id > :id:";
+
+$robots = $this->modelsManager->executeQuery($phql, ['id' => 100]);
+```
+
+However, some database systems require additional actions when using placeholders such as specifying the type of the bound parameter:
+
+```php
+<?php
+
+use Phalcon\Db\Column;
+
+// ...
+
+$phql = "SELECT * FROM Store\Robots LIMIT :number:";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['number' => 10],
+    Column::BIND_PARAM_INT
+);
+```
+
+You can use typed placeholders in your parameters, instead of specifying the bind type in `executeQuery()`:
+
+```php
+<?php
+
+$phql = "SELECT * FROM Store\Robots LIMIT {number:int}";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['number' => 10]
+);
+
+$phql = "SELECT * FROM Store\Robots WHERE name <> {name:str}";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['name' => $name]
+);
+```
+
+You can also omit the type if you don't need to specify it:
+
+```php
+<?php
+
+$phql = "SELECT * FROM Store\Robots WHERE name <> {name}";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['name' => $name]
+);
+```
+
+Typed placeholders are also more powerful, since we can now bind a static array without having to pass each element independently as a placeholder:
+
+```php
+<?php
+
+$phql = "SELECT * FROM Store\Robots WHERE id IN ({ids:array})";
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    ['ids' => [1, 2, 3, 4]]
+);
+```
+
+The following types are available:
+
+| Bind Type | Bind Type Constant                | Example          |
+| --------- | --------------------------------- | ---------------- |
+| str       | `Column::BIND_PARAM_STR`          | `{name:str}`     |
+| int       | `Column::BIND_PARAM_INT`          | `{number:int}`   |
+| double    | `Column::BIND_PARAM_DECIMAL`      | `{price:double}` |
+| bool      | `Column::BIND_PARAM_BOOL`         | `{enabled:bool}` |
+| blob      | `Column::BIND_PARAM_BLOB`         | `{image:blob}`   |
+| null      | `Column::BIND_PARAM_NULL`         | `{exists:null}`  |
+| array     | Array of `Column::BIND_PARAM_STR` | `{codes:array}`  |
+| array-str | Array of `Column::BIND_PARAM_STR` | `{names:array}`  |
+| array-int | Array of `Column::BIND_PARAM_INT` | `{flags:array}`  |
+
+<a name='cast-bound-parameter-values'></a>
+
+## Приведение типов связываемых параметров
+
+By default, bound parameters aren't casted in the PHP userland to the specified bind types, this option allows you to make Phalcon cast values before bind them with PDO. A classic situation when this problem raises is passing a string in a `LIMIT`/`OFFSET` placeholder:
+
+```php
+<?php
+
+$number = '100';
+$robots = $modelsManager->executeQuery(
+    'SELECT * FROM Some\Robots LIMIT {number:int}',
+    ['number' => $number]
+);
+```
+
+This causes the following exception:
+
+    Fatal error: Uncaught exception 'PDOException' with message 'SQLSTATE[42000]:
+    Syntax error or access violation: 1064 You have an error in your SQL syntax;
+    check the manual that corresponds to your MySQL server version for the right
+    syntax to use near ''100'' at line 1' in /Users/scott/demo.php:78
+    
+
+This happens because 100 is a string variable. It is easily fixable by casting the value to integer first:
+
+```php
+<?php
+
+$number = '100';
+$robots = $modelsManager->executeQuery(
+    'SELECT * FROM Some\Robots LIMIT {number:int}',
+    ['number' => (int) $number]
+);
+```
+
+However this solution requires that the developer pays special attention about how bound parameters are passed and their types. To make this task easier and avoid unexpected exceptions you can instruct Phalcon to do this casting for you:
+
+```php
+<?php
+
+\Phalcon\Db::setup(['forceCasting' => true]);
+```
+
+The following actions are performed according to the bind type specified:
+
+| Bind Type                    | Action                                 |
+| ---------------------------- | -------------------------------------- |
+| Column::BIND_PARAM_STR     | Cast the value as a native PHP string  |
+| Column::BIND_PARAM_INT     | Cast the value as a native PHP integer |
+| Column::BIND_PARAM_BOOL    | Cast the value as a native PHP boolean |
+| Column::BIND_PARAM_DECIMAL | Cast the value as a native PHP double  |
+
+<a name='cast-on-hydrate'></a>
+
+## Приведение типов при гидрации
+
+Values returned from the database system are always represented as string values by PDO, no matter if the value belongs to a numerical or boolean type column. This happens because some column types cannot be represented with its corresponding PHP native types due to their size limitations. For instance, a `BIGINT` in MySQL can store large integer numbers that cannot be represented as a 32bit integer in PHP. Because of that, PDO and the ORM by default, make the safe decision of leaving all values as strings.
+
+You can set up the ORM to automatically cast those types considered safe to their corresponding PHP native types:
+
+```php
+<?php
+
+\Phalcon\Mvc\Model::setup(['castOnHydrate' => true]);
+```
+
+This way you can use strict operators or make assumptions about the type of variables:
+
+```php
+<?php
+
+$robot = Robots::findFirst();
+if (11 === $robot->id) {
+    echo $robot->name;
+}
+```
+
+<a name='crud'></a>
+
+## Вставка, обновление и удаление строк
+
+Вставлять, обновлять и удалять строки вы можете с помощью стандартного SQL запроса или использовать методы, предоставляемые классом:
+
+```php
+<?php
+
+// Вставка с помощью стандартного SQL запроса
 $sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)';
 $success = $connection->execute($sql);
 
-// With placeholders
+// с помощью подготовленного запроса
 $sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)';
 $success = $connection->execute(
     $sql,
@@ -377,7 +581,7 @@ $success = $connection->execute(
     ]
 );
 
-// Generating dynamically the necessary SQL
+// Динамическое создание запроса с помощью метода класса
 $success = $connection->insert(
     'robots',
     [
@@ -390,7 +594,7 @@ $success = $connection->insert(
     ],
 );
 
-// Generating dynamically the necessary SQL (another syntax)
+// Динамическое создание запроса с помощью метода класса (альтернативный синтаксис)
 $success = $connection->insertAsDict(
     'robots',
     [
@@ -399,11 +603,11 @@ $success = $connection->insertAsDict(
     ]
 );
 
-// Updating data with a raw SQL statement
+// Обновление с помощью стандартного SQL запроса
 $sql     = 'UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101';
 $success = $connection->execute($sql);
 
-// With placeholders
+// с помощью подготовленного запроса
 $sql     = 'UPDATE `robots` SET `name` = ? WHERE `id` = ?';
 $success = $connection->execute(
     $sql,
@@ -413,7 +617,7 @@ $success = $connection->execute(
     ]
 );
 
-// Generating dynamically the necessary SQL
+// Динамическое создание запроса с помощью метода класса
 $success = $connection->update(
     'robots',
     [
@@ -422,19 +626,19 @@ $success = $connection->update(
     [
         'New Astro Boy',
     ],
-    'id = 101' // Warning! In this case values are not escaped
+    'id = 101' // Внимание! Значения не экранируются
 );
 
-// Generating dynamically the necessary SQL (another syntax)
+// Динамическое создание запроса с помощью метода класса (альтернативный синтаксис)
 $success = $connection->updateAsDict(
     'robots',
     [
         'name' => 'New Astro Boy',
     ],
-    'id = 101' // Warning! In this case values are not escaped
+    'id = 101' // Внимание! Значения не экранируются
 );
 
-// With escaping conditions
+// С экранированием условий
 $success = $connection->update(
     'robots',
     [
@@ -446,7 +650,7 @@ $success = $connection->update(
     [
         'conditions' => 'id = ?',
         'bind'       => [101],
-        'bindTypes'  => [PDO::PARAM_INT], // Optional parameter
+        'bindTypes'  => [PDO::PARAM_INT], // Необязательный параметр
     ]
 );
 $success = $connection->updateAsDict(
@@ -457,19 +661,19 @@ $success = $connection->updateAsDict(
     [
         'conditions' => 'id = ?',
         'bind'       => [101],
-        'bindTypes'  => [PDO::PARAM_INT], // Optional parameter
+        'bindTypes'  => [PDO::PARAM_INT], // Необязательный параметр
     ]
 );
 
-// Deleting data with a raw SQL statement
+// Удаление с помощью стандартного SQL запроса
 $sql     = 'DELETE `robots` WHERE `id` = 101';
 $success = $connection->execute($sql);
 
-// With placeholders
+// с помощью подготовленного запроса
 $sql     = 'DELETE `robots` WHERE `id` = ?';
 $success = $connection->execute($sql, [101]);
 
-// Generating dynamically the necessary SQL
+// Динамическое создание запроса с помощью метода класса
 $success = $connection->delete(
     'robots',
     'id = ?',
@@ -481,85 +685,85 @@ $success = $connection->delete(
 
 <a name='transactions'></a>
 
-## Transactions and Nested Transactions
+## Транзакции и вложенные транзакции
 
-Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
+Работа с транзакциями поддерживается также, как и в PDO. Выполнение изменения данных внутри транзакций, часто увеличивает производительность в большинстве систем баз данных:
 
 ```php
 <?php
 
 try {
-    // Start a transaction
+    // Начало новой транзакции
     $connection->begin();
 
-    // Execute some SQL statements
+    // Выполнение нескольких команд SQL
     $connection->execute('DELETE `robots` WHERE `id` = 101');
     $connection->execute('DELETE `robots` WHERE `id` = 102');
     $connection->execute('DELETE `robots` WHERE `id` = 103');
 
-    // Commit if everything goes well
+    // Фиксируем изменения в транзакции, если все хорошо
     $connection->commit();
 } catch (Exception $e) {
-    // An exception has occurred rollback the transaction
+    //  В случае исключения откатываем все изменения
     $connection->rollback();
 }
 ```
 
-In addition to standard transactions, `Phalcon\Db` provides built-in support for [nested transactions](http://en.wikipedia.org/wiki/Nested_transaction) (if the database system used supports them). When you call begin() for a second time a nested transaction is created:
+В дополнение к стандартным транзакциям, `Phalcon\Db` предоставляет встроенную поддержку для [вложенных транзакций](http://en.wikipedia.org/wiki/Nested_transaction) (если используемая база данных поддерживает их). Когда Вы вызываете begin() второй раз — создаётся вложенная транзакция:
 
 ```php
 <?php
 
 try {
-    // Start a transaction
+    // Начало транзакции
     $connection->begin();
 
-    // Execute some SQL statements
+    // Выполняем некоторое SQL выражение
     $connection->execute('DELETE `robots` WHERE `id` = 101');
 
     try {
-        // Start a nested transaction
+        // Начинаем вложенную транзакцию
         $connection->begin();
 
-        // Execute these SQL statements into the nested transaction
+        // Выполняем эти SQL выражения во вложенной транзакции
         $connection->execute('DELETE `robots` WHERE `id` = 102');
         $connection->execute('DELETE `robots` WHERE `id` = 103');
 
-        // Create a save point
+        // Создаем точку сохранения
         $connection->commit();
     } catch (Exception $e) {
-        // An error has occurred, release the nested transaction
+        // Произошла ошибка, откатываем все изменения
         $connection->rollback();
     }
 
-    // Continue, executing more SQL statements
+    // Продолжаем, выполнение других SQL выражений
     $connection->execute('DELETE `robots` WHERE `id` = 104');
 
-    // Commit if everything goes well
+    // Фиксируем изменения в транзакции, если все хорошо
     $connection->commit();
 } catch (Exception $e) {
-    // An exception has occurred rollback the transaction
+    // В случае исключения откатываем все изменения
     $connection->rollback();
 }
 ```
 
 <a name='events'></a>
 
-## Database Events
+## События базы данных
 
-`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
+Компонент `Phalcon\Db` способен оповещать [EventsManager](/[[language]]/[[version]]/events) о событиях, если менеджер событий присутствует. Некоторые события при возвращении булева значения false могут остановить выполняемую операцию. Поддерживаются следующие события:
 
-| Event Name            | Triggered                                            | Can stop operation? |
-| --------------------- | ---------------------------------------------------- |:-------------------:|
-| `afterConnect`        | After a successfully connection to a database system |         No          |
-| `beforeQuery`         | Before send a SQL statement to the database system   |         Yes         |
-| `afterQuery`          | After send a SQL statement to database system        |         No          |
-| `beforeDisconnect`    | Before close a temporal database connection          |         No          |
-| `beginTransaction`    | Before a transaction is going to be started          |         No          |
-| `rollbackTransaction` | Before a transaction is rollbacked                   |         No          |
-| `commitTransaction`   | Before a transaction is committed                    |         No          |
+| Название события      | Срабатывает                                          | Может остановить операцию? |
+| --------------------- | ---------------------------------------------------- |:--------------------------:|
+| `afterConnect`        | После успешного подключения к базе данных            |            Нет             |
+| `beforeQuery`         | Перед отправкой SQL выражения в базу данных          |             Да             |
+| `afterQuery`          | После отправки SQL выражения в базу данных           |            Нет             |
+| `beforeDisconnect`    | Перед закрытием временного подключения к базе данных |            Нет             |
+| `beginTransaction`    | Перед тем, как транзакция будет запущена             |            Нет             |
+| `rollbackTransaction` | Перед тем, как транзакция откатится                  |            Нет             |
+| `commitTransaction`   | Перед фиксацией транзакции                           |            Нет             |
 
-Bind an EventsManager to a connection is simple, `Phalcon\Db` will trigger the events with the type `db`:
+Привязать менеджер событий к соединению просто, `Phalcon\Db` будет оповещать о всех событиях с типом `db`:
 
 ```php
 <?php
@@ -569,7 +773,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
 
 $eventsManager = new EventsManager();
 
-// Listen all the database events
+// Слушать все события базы данных
 $eventsManager->attach('db', $dbListener);
 
 $connection = new Connection(
@@ -581,11 +785,11 @@ $connection = new Connection(
     ]
 );
 
-// Assign the eventsManager to the db adapter instance
+// Назначаем менеджер событий экземпляру адаптера БД
 $connection->setEventsManager($eventsManager);
 ```
 
-Stop SQL operations are very useful if for example you want to implement some last-resource SQL injector checker:
+Иметь возможность остановить выполнение SQL очень полезно, если вы хотите осуществить последнюю проверку SQL на наличие SQL инъекций:
 
 ```php
 <?php
@@ -597,14 +801,14 @@ $eventsManager->attach(
     function (Event $event, $connection) {
         $sql = $connection->getSQLStatement();
 
-        // Check for malicious words in SQL statements
+        // Проверка на наличие деструктивных ключевых слов в SQL
         if (preg_match('/DROP|ALTER/i', $sql)) {
-            // DROP/ALTER operations aren't allowed in the application,
-            // this must be a SQL injection!
+            // Операции DROP или ALTER не разрешено использовать в нашем приложении,
+            // это должно быть SQL инъекция (ну или чья то оплошность)!
             return false;
         }
 
-        // It's OK
+        // Всё хорошо
         return true;
     }
 );
@@ -612,7 +816,7 @@ $eventsManager->attach(
 
 <a name='profiling'></a>
 
-## Profiling SQL Statements
+## Профилирование SQL запросов
 
 `Phalcon\Db` includes a profiling component called `Phalcon\Db\Profiler`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
 
@@ -706,7 +910,7 @@ $eventsManager->attach('db', $dbProfiler);
 
 <a name='logging-statements'></a>
 
-## Logging SQL Statements
+## Логирование SQL выражений
 
 Using high-level abstraction components such as `Phalcon\Db` to access a database, it is difficult to understand which statements are sent to the database system. `Phalcon\Logger` interacts with `Phalcon\Db`, providing logging capabilities on the database abstraction layer.
 
@@ -757,13 +961,13 @@ As above, the file `app/logs/db.log` will contain something like this:
 
 <a name='logger-custom'></a>
 
-## Implementing your own Logger
+## Реализация собственного логера
 
 You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a string as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
 
 <a name='describing-tables'></a>
 
-## Describing Tables/Views
+## Описание таблиц и представлений
 
 `Phalcon\Db` also provides methods to retrieve detailed information about tables and views:
 
@@ -802,7 +1006,7 @@ foreach ($references as $reference) {
 
 A table description is very similar to the MySQL describe command, it contains the following information:
 
-| Field        | Type        | Key                                                | Null                               |
+| Поле         | Тип         | Ключ                                               | Null                               |
 | ------------ | ----------- | -------------------------------------------------- | ---------------------------------- |
 | Field's name | Column Type | Is the column part of the primary key or an index? | Does the column allow null values? |
 
@@ -820,13 +1024,13 @@ $exists = $connection->viewExists('robots');
 
 <a name='tables'></a>
 
-## Creating/Altering/Dropping Tables
+## Создание, изменение и удаление таблиц
 
 Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
 
 <a name='tables-create'></a>
 
-### Creating Tables
+### Создание таблиц
 
 The following example shows how to create a table:
 
@@ -873,42 +1077,42 @@ $connection->createTable(
 
 `Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class `Phalcon\Db\Column`. The table below shows the options available to define a column:
 
-| Option          | Description                                                                                                                                | Optional |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
-| `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below for a list)                                                               |    No    |
-| `primary`       | True if the column is part of the table's primary key                                                                                      |   Yes    |
-| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |   Yes    |
-| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |   Yes    |
-| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |   Yes    |
-| `notNull`       | Column can store null values?                                                                                                              |   Yes    |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |   Yes    |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Yes    |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |   Yes    |
-| `first`         | Column must be placed at first position in the column order                                                                                |   Yes    |
-| `after`         | Column must be placed after indicated column                                                                                               |   Yes    |
+| Параметр        | Description                                                                                                                                | Опционально |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:-----------:|
+| `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below for a list)                                                               |     No      |
+| `primary`       | True if the column is part of the table's primary key                                                                                      |     Yes     |
+| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |     Yes     |
+| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |     Yes     |
+| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |     Yes     |
+| `notNull`       | Column can store null values?                                                                                                              |     Yes     |
+| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |     Yes     |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |     Yes     |
+| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |     Yes     |
+| `first`         | Column must be placed at first position in the column order                                                                                |     Yes     |
+| `after`         | Column must be placed after indicated column                                                                                               |     Yes     |
 
 `Phalcon\Db` supports the following database column types:
 
-- `Phalcon\Db\Column::TYPE_INTEGER`
-- `Phalcon\Db\Column::TYPE_DATE`
-- `Phalcon\Db\Column::TYPE_VARCHAR`
-- `Phalcon\Db\Column::TYPE_DECIMAL`
-- `Phalcon\Db\Column::TYPE_DATETIME`
-- `Phalcon\Db\Column::TYPE_CHAR`
-- `Phalcon\Db\Column::TYPE_TEXT`
+* `Phalcon\Db\Column::TYPE_INTEGER`
+* `Phalcon\Db\Column::TYPE_DATE`
+* `Phalcon\Db\Column::TYPE_VARCHAR`
+* `Phalcon\Db\Column::TYPE_DECIMAL`
+* `Phalcon\Db\Column::TYPE_DATETIME`
+* `Phalcon\Db\Column::TYPE_CHAR`
+* `Phalcon\Db\Column::TYPE_TEXT`
 
 The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
 
-| Index        | Description                                                                                                                            | Optional |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |    No    |
-| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |   Yes    |
-| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |   Yes    |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |   Yes    |
+| Индекс       | Description                                                                                                                            | Опционально |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:-----------:|
+| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |     No      |
+| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |     Yes     |
+| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |     Yes     |
+| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |     Yes     |
 
 <a name='tables-altering'></a>
 
-### Altering Tables
+### Изменение таблиц
 
 As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. `Phalcon\Db` is limited by these constraints.
 
@@ -956,7 +1160,7 @@ $connection->dropColumn(
 
 <a name='tables-dropping'></a>
 
-### Dropping Tables
+### Удаление таблиц
 
 Examples on dropping tables:
 

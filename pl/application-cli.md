@@ -9,7 +9,7 @@
           <a href="#creating-bootstrap">Creating a Bootstrap</a>
         </li>
         <li>
-          <a href="#tasks">Tasks</a>
+          <a href="#tasks">Zadania</a>
         </li>
         <li>
           <a href="#processing-action-parameters">Processing action parameters</a>
@@ -34,9 +34,9 @@ CLI applications are executed from the command line. They are useful to create c
 
 A minimal structure of a CLI application will look like this:
 
-- `app/config/config.php`
-- `app/tasks/MainTask.php`
-- `app/cli.php` <-- main bootstrap file
+* `app/config/config.php`
+* `app/tasks/MainTask.php`
+* `app/cli.php` <-- main bootstrap file
 
 <a name='creating-bootstrap'></a>
 
@@ -123,7 +123,7 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Tasks
+## Zadania
 
 Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 

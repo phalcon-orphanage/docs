@@ -9,13 +9,13 @@
           <a href="#questions-and-support">Questions and Support</a>
         </li>
         <li>
-          <a href="#bug-report-checklist">Bug Report Checklist</a> <ul>
+          <a href="#bug-report-checklist">Bug Report Checklist</a> 
+          <ul>
             <li>
               <a href="#bug-report-generating-backtrace">Generating a backtrace</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#pull-request-checklist">Pull Request Checklist</a>
         </li>
@@ -34,7 +34,7 @@
 
 # Contributing to Phalcon
 
-Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!.
+Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!
 
 Please take a moment to review this document in order to make the contribution process easy and effective all.
 
@@ -52,7 +52,11 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 ## Questions and Support
 
-<h5 class='alert alert-warning'>We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.</h5>
+<div class="alert alert-warning">
+    <p>
+       We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.
+    </p>
+</div>
 
 <a name='bug-report-checklist'></a>
 

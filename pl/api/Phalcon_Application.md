@@ -8,7 +8,7 @@
 
 Base class for Phalcon\\Cli\\Console and Phalcon\\Mvc\\Application.
 
-## Methods
+## Metody
 
 public **__construct** ([[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector])
 

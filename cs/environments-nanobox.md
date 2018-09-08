@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Overview</a> 
+      <ul>
         <li>
           <a href="#create-project">Vytvoření nového projektu</a>
         </li>
@@ -86,7 +87,11 @@ Create a `composer.json` file in the root of your project and add the `phalcon/d
 }
 ```
 
-<h5 class='alert alert-warning'><strong>NOTE</strong>: The version of Phalcon Devtools depends on which PHP version you're using </h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>NOTE</strong> The version of Phalcon Devtools depends on which PHP version you're using.
+    </p>
+</div>
 
 <a name='new-phalcon-app'></a>
 

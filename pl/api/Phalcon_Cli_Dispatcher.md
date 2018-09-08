@@ -40,7 +40,7 @@ $handle = $dispatcher->dispatch();
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Methods
+## Metody
 
 public **setTaskSuffix** (*mixed* $taskSuffix)
 

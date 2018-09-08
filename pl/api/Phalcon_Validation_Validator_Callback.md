@@ -11,8 +11,11 @@ Calls user function for validation
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Callback as CallbackValidator;
 use Phalcon\Validation\Validator\Numericality as NumericalityValidator;
+
+$validator = new Validation();
 
 $validator->add(
     ["user", "admin"],
@@ -49,7 +52,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Metody
 
 public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
 

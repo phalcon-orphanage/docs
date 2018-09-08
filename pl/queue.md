@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Queueing</a> <ul>
+      <a href="#overview">Queueing</a>
+       <ul>
         <li>
           <a href="#put-jobs-in-queue">Putting Jobs into the Queue</a>
         </li>
@@ -23,7 +24,11 @@ The best solution here is to implement background jobs. The web application puts
 
 While you can find more sophisticated PHP extensions to address queueing in your applications like [RabbitMQ](http://pecl.php.net/package/amqp); Phalcon provides a client for [Beanstalk](http://www.igvita.com/2010/05/20/scalable-work-queues-with-beanstalk/), a job queueing backend inspired by [Memcached](http://memcached.org/). It’s simple, lightweight, and completely specialized for job queueing.
 
-<h5 class='alert alert-danger'>Some of the data returned from queue methods require that the module Yaml be installed. Please refer to <a href="http://php.net/manual/book.yaml.php">this</a> for more information. You will need to use Yaml >= 2.0.0 </h5>
+<div class="alert alert-danger">
+    <p>
+        Some of the data returned from queue methods require that the module Yaml be installed. Please refer to <a href="http://php.net/manual/book.yaml.php">this</a> for more information. You will need to use Yaml &gt;= 2.0.0
+    </p>
+</div>
 
 <a name='put-jobs-in-queue'></a>
 
@@ -54,10 +59,10 @@ $queue->put(
 
 Available connection options are:
 
-| Option | Description                              | Default   |
-| ------ | ---------------------------------------- | --------- |
-| host   | IP where the beanstalk server is located | 127.0.0.1 |
-| port   | Connection port                          | 11300     |
+| Opcja | Description                              | Domyślne  |
+| ----- | ---------------------------------------- | --------- |
+| host  | IP where the beanstalk server is located | 127.0.0.1 |
+| port  | Connection port                          | 11300     |
 
 In the above example we stored a message which will allow a background job to process a video. The message is stored in the queue immediately and does not have a certain time to live.
 
@@ -81,7 +86,7 @@ $queue->put(
 
 The following options are available:
 
-| Option   | Description                                                                                                                                                                                 |
+| Opcja    | Description                                                                                                                                                                                 |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | priority | It's an integer < 2**32. Jobs with smaller priority values will be scheduled before jobs with larger priorities. The most urgent priority is 0; the least urgent priority is 4,294,967,295. |
 | delay    | It's an integer number of seconds to wait before putting the job in the ready queue. The job will be in the 'delayed' state during this time.                                               |

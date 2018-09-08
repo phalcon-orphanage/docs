@@ -6,7 +6,8 @@
           <a href="#integrating-views-with-controllers">Integrace pohledů s controllery</a>
         </li>
         <li>
-          <a href="#hierarchical-rendering">Hierarchical Rendering</a> <ul>
+          <a href="#hierarchical-rendering">Hierarchical Rendering</a> 
+          <ul>
             <li>
               <a href="#using-templates">Using Templates</a>
             </li>
@@ -24,7 +25,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#simple-rendering">Simple Rendering</a>
         </li>
@@ -38,7 +38,8 @@
           <a href="#caching-fragments">Caching View Fragments</a>
         </li>
         <li>
-          <a href="#template-engines">Template Engines</a> <ul>
+          <a href="#template-engines">Template Engines</a> 
+          <ul>
             <li>
               <a href="#custom-template-engine">Creating your own Template Engine Adapter</a>
             </li>
@@ -47,12 +48,12 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#injecting-services">Injecting services in View</a>
         </li>
         <li>
-          <a href="#stand-along">Stand-Alone Component</a> <ul>
+          <a href="#stand-along">Stand-Alone Component</a> 
+          <ul>
             <li>
               <a href="#stand-alone-hierarchical-rendering">Hierarchical Rendering</a>
             </li>
@@ -61,7 +62,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#eventes">View Events</a>
         </li>
@@ -199,7 +199,7 @@ The generated HTML by the request will be:
 
 Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
 
-Templates can be rendered before the layout (using `$this->view->setTemplateBefore()`) or they can be rendered after the layout (using `this->view->setTemplateAfter()`). In the following example the template (`layouts/common.phtml`) is rendered after the main layout (`layouts/posts.phtml`):
+Templates can be rendered before the layout (using `$this->view->setTemplateBefore()`) or they can be rendered after the layout (using `this->view->setTemplateAfter()`). In the following example the template (`layouts/common.phtml`) is rendered after the contorller layout (`layouts/posts.phtml`):
 
 ```php
 <?php
@@ -840,7 +840,11 @@ $di->set(
 );
 ```
 
-<h5 class='alert alert-warning'>The frontend must always be <code>Phalcon\\Cache\\Frontend\\Output</code> and the service <code>viewCache</code> must be registered as always open (not shared) in the services container (DI). </h5>
+<div class="alert alert-warning">
+    <p>
+        The frontend must always be <a href="/[[language]]/[[version]]/api/Phalcon_Cache_Frontend_Output">Phalcon\Cache\Frontend\Output</a> and the service <code>viewCache</code> must be registered as always open (not shared) in the services container (DI).
+    </p>
+</div>
 
 When using views, caching can be used to prevent controllers from needing to generate view data on each request.
 

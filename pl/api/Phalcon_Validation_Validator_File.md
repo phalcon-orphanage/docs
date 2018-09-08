@@ -11,7 +11,10 @@ Checks if a value has a correct file
 ```php
 <?php
 
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\File as FileValidator;
+
+$validator = new Validation();
 
 $validator->add(
     "file",
@@ -72,7 +75,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Metody
 
 public **validate** ([Phalcon\Validation](/en/3.2/api/Phalcon_Validation) $validation, *mixed* $field)
 

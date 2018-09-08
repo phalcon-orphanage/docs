@@ -50,7 +50,7 @@ $application->main();
 
 ```
 
-## Methods
+## Metody
 
 public **useImplicitView** (*mixed* $implicitView)
 
