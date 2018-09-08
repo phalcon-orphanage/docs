@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Поддержка многоязычности</a> <ul>
+      <a href="#overview">Multi-lingual Support</a> <ul>
         <li>
           <a href="#adapters">Адаптеры</a>
         </li>
