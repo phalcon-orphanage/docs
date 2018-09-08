@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Creating a CLI Application</a> <ul>
+      <a href="#creating-cli-application">Creating a CLI Application</a> 
+      <ul>
         <li>
           <a href="#structure">Structure</a>
         </li>
@@ -9,7 +10,7 @@
           <a href="#creating-bootstrap">Creating a Bootstrap</a>
         </li>
         <li>
-          <a href="#tasks">Tasks</a>
+          <a href="#tasks">Zadania</a>
         </li>
         <li>
           <a href="#processing-action-parameters">Processing action parameters</a>
@@ -34,15 +35,15 @@ CLI applications are executed from the command line. They are useful to create c
 
 A minimal structure of a CLI application will look like this:
 
-- `app/config/config.php`
-- `app/tasks/MainTask.php`
-- `app/cli.php` <-- main bootstrap file
+* `app/config/config.php`
+* `app/tasks/MainTask.php`
+* `app/cli.php` main bootstrap file
 
 <a name='creating-bootstrap'></a>
 
 ## Creating a Bootstrap
 
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the `index.php` bootstrapper in web applications, we use a `cli.php` file for bootstrapping the application.
 
 Below is a sample bootstrap that is being used for this example.
 
@@ -109,9 +110,6 @@ try {
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
     exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-    exit(1);
 }
 ```
 
@@ -123,9 +121,9 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Tasks
+## Zadania
 
-Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+Tasks work similar to controllers. Any CLI application needs at least a `MainTask` and a `mainAction` and every task needs to have a `mainAction` which will run if no action is given explicitly.
 
 Below is an example of the `app/tasks/MainTask.php` file:
 
@@ -209,9 +207,6 @@ try {
     exit(1);
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-    exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
     exit(1);
 }
 ```

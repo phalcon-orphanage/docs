@@ -1,21 +1,22 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Creating a CLI Application</a> <ul>
+      <a href="#creating-cli-application">Crear una Aplicación de Línea de Comandos (CLI)</a> 
+      <ul>
         <li>
-          <a href="#structure">Structure</a>
+          <a href="#structure">Estructura</a>
         </li>
         <li>
-          <a href="#creating-bootstrap">Creating a Bootstrap</a>
+          <a href="#creating-bootstrap">Creando un Archivo Principal de Ejecución</a>
         </li>
         <li>
-          <a href="#tasks">Tasks</a>
+          <a href="#tasks">Tasks (Tareas)</a>
         </li>
         <li>
-          <a href="#processing-action-parameters">Processing action parameters</a>
+          <a href="#processing-action-parameters">Procesar parámetros del Action</a>
         </li>
         <li>
-          <a href="#running-tasks-chain">Running tasks in a chain</a>
+          <a href="#running-tasks-chain">Ejecutando Tasks en cadena</a>
         </li>
       </ul>
     </li>
@@ -24,27 +25,27 @@
 
 <a name='creating-cli-application'></a>
 
-# Creating a Command Line (CLI) Application
+# Crear una Aplicación de Línea de Comandos (CLI)
 
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+Las aplicaciones CLI se ejecutan desde la linea de comandos. Estas son útiles para crear tareas programadas por crons, scripts, herramientas de comandos y más.
 
 <a name='structure'></a>
 
-## Structure
+## Estructura
 
-A minimal structure of a CLI application will look like this:
+La estructura mínima de una aplicación CLI se verá así:
 
-- `app/config/config.php`
-- `app/tasks/MainTask.php`
-- `app/cli.php` <-- main bootstrap file
+* `app/config/config.php`
+* `app/tasks/MainTask.php`
+* `app/cli.php` archivo principal de ejecución
 
 <a name='creating-bootstrap'></a>
 
-## Creating a Bootstrap
+## Creando un Archivo Principal de Ejecución
 
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+Como en aplicaciones MVC normales, un archivo principal se utiliza para arrancar la ejecución de la aplicación. En lugar del archivo `index.php` que inicia las aplicaciones web, se utiliza un archivo llamado `cli.php` para que la aplicación arranque.
 
-Below is a sample bootstrap that is being used for this example.
+A continuación el Archivo Principal de Arranque que se utiliza en este ejemplo.
 
 ```php
 <?php
@@ -53,11 +54,11 @@ use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Loader;
 
-// Using the CLI factory default services container
+// Uso del contenedor de servicios predeterminado CLI
 $di = new CliDI();
 
 /**
- * Register the autoloader and tell it to register the tasks directory
+ * Registrar el autocargador e indicarle que registre el directorio de tareas
  */
 $loader = new Loader();
 
@@ -69,7 +70,7 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Load the configuration file (if any)
+// Cargar archivo de configuración (si hay alguno)
 $configFile = __DIR__ . '/config/config.php';
 
 if (is_readable($configFile)) {
@@ -78,13 +79,13 @@ if (is_readable($configFile)) {
     $di->set('config', $config);
 }
 
-// Create a console application
+// Crear una aplicación de consola (o de linea de comandos)
 $console = new ConsoleApp();
 
 $console->setDI($di);
 
 /**
- * Process the console arguments
+ * Procesar los argumentos de la consola
  */
 $arguments = [];
 
@@ -99,23 +100,20 @@ foreach ($argv as $k => $arg) {
 }
 
 try {
-    // Handle incoming arguments
+    // Gestionar los argumentos recibidos
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    // Do Phalcon related stuff here
+    // Gestionar el error de Phalcon aquí
     // ..
     fwrite(STDERR, $e->getMessage() . PHP_EOL);
     exit(1);
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
     exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-    exit(1);
 }
 ```
 
-This piece of code can be run using:
+Este fragmento de código se puede ejecutar utilizando:
 
 ```bash
 php app/cli.php
@@ -123,11 +121,11 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Tasks
+## Tasks (Tareas)
 
-Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+Las tareas funcionan de manera similar a los controladores. Cualquier aplicación CLI necesita al menos un `MainTask` y un `mainAction` y cada Task debe tener un `mainAction` que se ejecutará si no se indica alguna acción explícitamente.
 
-Below is an example of the `app/tasks/MainTask.php` file:
+A continuación un ejemplo del archivo `app/tasks/MainTask.php`:
 
 ```php
 <?php
@@ -138,18 +136,18 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Este es el Task por default y el Action por default' . PHP_EOL;
     }
 }
 ```
 
 <a name='processing-action-parameters'></a>
 
-## Processing action parameters
+## Procesar parámetros del Action
 
-It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
+Es posible pasar parámetros a los Action, el código ya está presente en el archivo principal del ejemplo.
 
-If you run the application with the following parameters and action:
+Si ejecuta la aplicación con los siguientes parámetros y acción:
 
 ```php
 <?php
@@ -160,7 +158,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Este es el Task por default y el Action por default' . PHP_EOL;
     }
 
     /**
@@ -168,31 +166,31 @@ class MainTask extends Task
      */
     public function testAction(array $params)
     {
-        echo sprintf('hello %s', $params[0]);
+        echo sprintf('hola %s', $params[0]);
 
         echo PHP_EOL;
 
-        echo sprintf('best regards, %s', $params[1]);
+        echo sprintf('saludos cordiales, %s', $params[1]);
 
         echo PHP_EOL;
     }
 }
 ```
 
-We can then run the following command:
+A continuación podemos ejecutar el siguiente comando:
 
 ```bash
-php app/cli.php main test world universe
+php app/cli.php main test mundo universo
 
-hello world
-best regards, universe
+hola mundo
+saludos cordiales, universo
 ```
 
 <a name='running-tasks-chain'></a>
 
-## Running tasks in a chain
+## Ejecutando Tasks en cadena
 
-It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
+También es posible ejecutar tareas en cadena si es necesario. Para lograr esto se debe agregar la consola al DI:
 
 ```php
 <?php
@@ -200,23 +198,20 @@ It's also possible to run tasks in a chain if it's required. To accomplish this 
 $di->setShared("console", $console);
 
 try {
-    // Handle incoming arguments
+    // Gestionar argumentos recibidos
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    // Do Phalcon related stuff here
+    // Gestionar el error de Phalcon aquí
     // ..
     fwrite(STDERR, $e->getMessage() . PHP_EOL);
     exit(1);
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
     exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-    exit(1);
 }
 ```
 
-Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
+Luego puede utilizar la consola dentro de cualquier tarea. A continuación un ejemplo de un MainTask.php modificado:
 
 ```php
 <?php
@@ -227,7 +222,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo "This is the default task and the default action" . PHP_EOL;
+        echo "Este es el Task por default y el Action por default" . PHP_EOL;
 
         $this->console->handle(
             [
@@ -239,9 +234,9 @@ class MainTask extends Task
 
     public function testAction()
     {
-        echo "I will get printed too!" . PHP_EOL;
+        echo "Yo también seré mostrado en pantalla!" . PHP_EOL;
     }
 }
 ```
 
-However, it's a better idea to extend `Phalcon\Cli\Task` and implement this kind of logic there.
+Sin embargo, es una mejor idea extender la clase `Phalcon\Cli\Task` y poner en práctica este tipo de lógica ahí.

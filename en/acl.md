@@ -1,18 +1,44 @@
-<div class='article-menu' markdown='1'>
-
-- [Access Control Lists](#overview)
-    - [Creating an ACL](#setup)
-    - [Adding Roles to the ACL](#adding-roles)
-    - [Adding Resources](#adding-resources)
-    - [Defining Access Controls](#access-controls)
-    - [Querying an ACL](#querying)
-    - [Function based access](#function-based-access)
-    - [Objects as role name and resource name](#objects)
-    - [Roles Inheritance](#roles-inheritance)
-    - [Serializing ACL lists](#serialization)
-    - [Events](#events)
-    - [Implementing your own adapters](#custom-adapters)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Access Control Lists (ACL)</a>
+      <ul>
+        <li>
+          <a href="#setup">Creating an ACL</a>
+        </li>
+        <li>
+          <a href="#adding-roles">Adding Roles to the ACL</a>
+        </li>
+        <li>
+          <a href="#adding-resources">Adding Resources</a>
+        </li>
+        <li>
+          <a href="#access-controls">Defining Access Controls</a>
+        </li>
+        <li>
+          <a href="#querying">Querying an ACL</a>
+        </li>
+        <li>
+          <a href="#function-based-access">Function based access</a>
+        </li>
+        <li>
+          <a href="#objects">Objects as role name and resource name</a>
+        </li>
+        <li>
+          <a href="#roles-inheritance">Roles Inheritance</a>
+        </li>
+        <li>
+          <a href="#serialization">Serializing ACL lists</a>
+        </li>
+        <li>
+          <a href="#events">Events</a>
+        </li>
+        <li>
+          <a href="#custom-adapters">Implementing your own adapters</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -176,9 +202,10 @@ $acl->isAllowed(
 Also if you don't provide any parameters in `isAllowed()` method then default behaviour will be `Acl::ALLOW`. You can change it by using method `setNoArgumentsDefaultAction()`.
 
 ```php
+<?php
+
 use Phalcon\Acl;
 
-<?php
 // Set access level for role into resources with custom function
 $acl->allow(
     'Guests',

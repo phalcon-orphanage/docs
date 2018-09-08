@@ -1,6 +1,6 @@
 # Class **Phalcon\\Validation\\Message**
 
-*implements* [Phalcon\Validation\MessageInterface](/en/3.2/api/Phalcon_Validation_MessageInterface)
+*implements* [Phalcon\Validation\MessageInterface](/[[language]]/[[version]]/api/Phalcon_Validation_MessageInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/message.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 

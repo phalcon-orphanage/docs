@@ -1,15 +1,16 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Access Control Lists</a> <ul>
+      <a href="#overview">Access Control Lists (ACL)</a>
+      <ul>
         <li>
-          <a href="#setup">Creating an ACL</a>
+          <a href="#setup">Tworzenie ACL</a>
         </li>
         <li>
-          <a href="#adding-roles">Adding Roles to the ACL</a>
+          <a href="#adding-roles">Dodawanie ról do ACL</a>
         </li>
         <li>
-          <a href="#adding-resources">Adding Resources</a>
+          <a href="#adding-resources">Dodawanie zasobów</a>
         </li>
         <li>
           <a href="#access-controls">Defining Access Controls</a>
@@ -30,7 +31,7 @@
           <a href="#serialization">Serializing ACL lists</a>
         </li>
         <li>
-          <a href="#events">Events</a>
+          <a href="#events">Zdarzenia</a>
         </li>
         <li>
           <a href="#custom-adapters">Implementing your own adapters</a>
@@ -215,9 +216,10 @@ $acl->isAllowed(
 Also if you don't provide any parameters in `isAllowed()` method then default behaviour will be `Acl::ALLOW`. You can change it by using method `setNoArgumentsDefaultAction()`.
 
 ```php
+<?php
+
 use Phalcon\Acl;
 
-<?php
 // Set access level for role into resources with custom function
 $acl->allow(
     'Guests',
@@ -538,14 +540,14 @@ It's recommended to use the Memory adapter during development and use one of the
 
 <a name='events'></a>
 
-## Events
+## Zdarzenia
 
 `Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
 
 | Event Name        | Triggered                                               | Can stop operation? |
 | ----------------- | ------------------------------------------------------- |:-------------------:|
-| beforeCheckAccess | Triggered before checking if a role/resource has access |         Yes         |
-| afterCheckAccess  | Triggered after checking if a role/resource has access  |         No          |
+| beforeCheckAccess | Triggered before checking if a role/resource has access |         Tak         |
+| afterCheckAccess  | Triggered after checking if a role/resource has access  |         Nie         |
 
 The following example demonstrates how to attach listeners to this component:
 

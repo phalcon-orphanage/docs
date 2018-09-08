@@ -1,24 +1,66 @@
-<div class='article-menu' markdown='1'>
-
-- [Phalcon Query Language (PHQL)](#overview)
-    - [Usage Example](#usage)
-    - [Creating PHQL Queries](#creating)
-    - [Selecting Records](#selecting-records)
-        - [Result Types](#result-types)
-        - [Joins](#joins)
-        - [Aggregations](#aggregations)
-        - [Conditions](#conditions)
-    - [Inserting Data](#inserting-data)
-    - [Updating Data](#updating-data)
-    - [Deleting Data](#deleting-data)
-    - [Creating queries using the Query Builder](#query-builder)
-        - [Bound Parameters](#query-builder-parameters)
-    - [Disallow literals in PHQL](#disallow-literals)
-    - [Escaping Reserved Words](#escaping-reserved-words)
-    - [PHQL Lifecycle](#lifecycle)
-    - [Using Raw SQL](#raw-sql)
-    - [Troubleshooting](#troubleshooting)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Phalcon Query Language (PHQL)</a> 
+      <ul>
+        <li>
+          <a href="#usage">Usage Example</a>
+        </li>
+        <li>
+          <a href="#creating">Creating PHQL Queries</a>
+        </li>
+        <li>
+          <a href="#selecting-records">Selecting Records</a> 
+          <ul>
+            <li>
+              <a href="#result-types">Result Types</a>
+            </li>
+            <li>
+              <a href="#joins">Joins</a>
+            </li>
+            <li>
+              <a href="#aggregations">Aggregations</a>
+            </li>
+            <li>
+              <a href="#conditions">Conditions</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#inserting-data">Inserting Data</a>
+        </li>
+        <li>
+          <a href="#updating-data">Updating Data</a>
+        </li>
+        <li>
+          <a href="#deleting-data">Deleting Data</a>
+        </li>
+        <li>
+          <a href="#query-builder">Creating queries using the Query Builder</a> 
+          <ul>
+            <li>
+              <a href="#query-builder-parameters">Bound Parameters</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#disallow-literals">Disallow literals in PHQL</a>
+        </li>
+        <li>
+          <a href="#escaping-reserved-words">Escaping Reserved Words</a>
+        </li>
+        <li>
+          <a href="#lifecycle">PHQL Lifecycle</a>
+        </li>
+        <li>
+          <a href="#raw-sql">Using Raw SQL</a>
+        </li>
+        <li>
+          <a href="#troubleshooting">Troubleshooting</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

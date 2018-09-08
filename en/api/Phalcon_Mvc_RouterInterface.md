@@ -83,7 +83,7 @@ abstract public  **addConnect** (*mixed* $pattern, [*mixed* $paths])
 ...
 
 
-abstract public  **mount** ([Phalcon\Mvc\Router\GroupInterface](/en/3.2/api/Phalcon_Mvc_Router_GroupInterface) $group)
+abstract public  **mount** ([Phalcon\Mvc\Router\GroupInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Router_GroupInterface) $group)
 
 ...
 

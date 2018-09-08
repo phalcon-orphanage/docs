@@ -1,19 +1,26 @@
-- [Γενικά](/[[language]]/[[version]]/introduction) 
-    - [Σημειώσεις έκδοσης](/[[language]]/[[version]]/release-notes)
-    - Αναβάθμιση
+- Γενικά 
+    - [Introduction](/[[language]]/[[version]]/introduction)
+    - [Σημειώσεις έκδοσης](https://github.com/phalcon/cphalcon/blob/master/CHANGELOG.md)
     - [Σπόνσορες](/[[language]]/[[version]]/sponsors)
+    - [FAQ](/[[language]]/[[version]]/faq)
 - Contributions 
     - [Overview](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
     - [Reproducible Tests](/[[language]]/[[version]]/reproducible-tests)
-    - Testing guide
+    - [Testing guide](/[[language]]/[[version]]/unit-testing)
 - Ξεκινώντας 
     - [Installation](/[[language]]/[[version]]/installation)
     - [Webserver Setup](/[[language]]/[[version]]/webserver-setup) 
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
+- Tutorials 
+    - [Basic](/[[language]]/[[version]]/tutorial-base)
+    - [REST](/[[language]]/[[version]]/tutorial-rest)
+    - [Vokuro](/[[language]]/[[version]]/tutorial-vokuro)
+    - [Performance](/[[language]]/[[version]]/performance)
+    - [Invo](/[[language]]/[[version]]/tutorial-invo)
 - Περιβάλλοντα 
     - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
@@ -24,7 +31,7 @@
     - [Εντοπισμός σφαλμάτων](/[[language]]/[[version]]/debug)
 - Πυρήνας 
     - [API Index](/[[language]]/[[version]]/api/index)
-    - Application 
+    - [Application] 
         - [Πλήρης](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
         - [Cli](/[[language]]/[[version]]/application-cli)
@@ -82,10 +89,3 @@
 - i18n 
     - [Internationalization](/[[language]]/[[version]]/i18n)
     - [Translate](/[[language]]/[[version]]/translate)
-- Tutorials 
-    - [Performance](/[[language]]/[[version]]/performance)
-    - [Basic](/[[language]]/[[version]]/tutorial-base)
-    - [Invo](/[[language]]/[[version]]/tutorial-invo)
-    - [REST](/[[language]]/[[version]]/tutorial-rest)
-    - [Vokuro](/[[language]]/[[version]]/tutorial-vokuro)
-- [API Index](/language/version/api/index)

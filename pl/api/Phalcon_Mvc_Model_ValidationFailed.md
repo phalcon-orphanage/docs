@@ -1,6 +1,6 @@
 # Class **Phalcon\\Mvc\\Model\\ValidationFailed**
 
-*extends* class [Phalcon\Mvc\Model\Exception](/en/3.2/api/Phalcon_Mvc_Model_Exception)
+*extends* class [Phalcon\Mvc\Model\Exception](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_Exception)
 
 *implements* [Throwable](http://php.net/manual/en/class.throwable.php)
 
@@ -8,7 +8,7 @@
 
 This exception is generated when a model fails to save a record Phalcon\\Mvc\\Model must be set up to have this behavior
 
-## Methods
+## Metody
 
 public **__construct** (*Model* $model, *Message*\ [] $validationMessages)
 

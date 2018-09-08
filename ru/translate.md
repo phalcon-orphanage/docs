@@ -1,15 +1,16 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Multi-lingual Support</a> <ul>
+      <a href="#overview">Поддержка многоязычности</a> 
+      <ul>
         <li>
-          <a href="#adapters">Adapters</a>
+          <a href="#adapters">Адаптеры</a>
         </li>
         <li>
-          <a href="#usage">Component Usage</a>
+          <a href="#usage">Использование компонента</a>
         </li>
         <li>
-          <a href="#custom">Implementing your own adapters</a>
+          <a href="#custom">Реализация собственных адаптеров</a>
         </li>
       </ul>
     </li>
@@ -18,23 +19,45 @@
 
 <a name='overview'></a>
 
-# Multi-lingual Support
+# Поддержка многоязычности
 
-The component `Phalcon\\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
+Компонент `Phalcon\Translate` поможет в создании многоязычных приложений. Приложения, использующие этот компонент, отображают содержимое на разных языках, основываясь на выборе пользователя из поддерживаемых приложением.
 
 <a name='adapters'></a>
 
-## Adapters
+## Адаптеры
 
-This component makes use of adapters to read translation messages from different sources in a unified way.
+Этот компонент позволяет использовать адаптеры для чтения, перевода сообщений из различных источников в едином виде.
 
-| Adapter                                    | Description                                                                             |
-| ------------------------------------------ | --------------------------------------------------------------------------------------- |
-| `Phalcon\Translate\Adapter\NativeArray` | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
+| Адаптер                                    | Описание                                                                                             |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| `Phalcon\Translate\Adapter\NativeArray` | Использует PHP массивы для хранения сообщений. Это лучший вариант с точки зрения производительности. |
+
+<a name='adapters-factory'></a>
+
+### Фабрика
+
+Загружает адаптер используя параметр `adapter`:
+
+```php
+<?php
+
+use Phalcon\Translate\Factory;
+
+$options = [
+    'locale'        => 'de_DE.UTF-8',
+    'defaultDomain' => 'translations',
+    'directory'     => '/path/to/application/locales',
+    'category'      => LC_MESSAGES,
+    'adapter'       => 'gettext',
+];
+
+$translate = Factory::load($options);
+```
 
 <a name='usage'></a>
 
-## Component Usage
+## Использование компонента
 
 Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:
 
@@ -45,7 +68,7 @@ app/messages/fr.php
 app/messages/zh.php
 ```
 
-Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in different files, where keys remain the same and values contain the translated strings depending on each language.
+Каждый файл содержит массив переводов в виде ключ/значение. Для каждого файла перевода ключи уникальны. The same array is used in different files, where keys remain the same and values contain the translated strings depending on each language.
 
 ```php
 <?php
@@ -67,11 +90,10 @@ $messages = [
     'hi'      => 'Bonjour',
     'bye'     => 'Au revoir',
     'hi-name' => 'Bonjour %name%',
-    'song'    => 'La chanson est %song%',
-];
+    'song'    => 'La chanson est %song%',;
 ```
 
-Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
+Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. Вы можете использовать автоматическое определение языка из браузера пользователя, или вы можете предоставить выбор языка пользователю.
 
 A simple way of detecting the user's language is to parse the `$_SERVER['HTTP_ACCEPT_LANGUAGE']` contents, or if you wish, access it directly by calling `$this->request->getBestLanguage()` from an action/controller:
 
@@ -85,10 +107,11 @@ class UserController extends Controller
 {
     protected function getTranslation()
     {
-        // Ask browser what is the best language
+        // Получение оптимального языка из браузера
         $language = $this->request->getBestLanguage();
+        $messages = [];
 
-        $translationFile = 'app/messages/' . $language . '.php';
+        $translationFile = 'app/messages/' . $language. '.php';
 
         // Check if we have a translation file for that lang
         if (file_exists($translationFile)) {
@@ -117,14 +140,13 @@ class UserController extends Controller
 
 The `_getTranslation()` method is available for all actions that require translations. The `$t` variable is passed to the views, and with it, we can translate strings in that layer:
 
-.. code-block:: html+php
+```php
+<!-- welcome -->
+<!-- String: hi => 'Hello' -->
+<p><?php echo $t->_('hi'), ' ', $name; ?></p>
+```
 
-    <!-- welcome -->
-    <!-- String: hi => 'Hello' -->
-    <p><?php echo $t->_('hi'), ' ', $name; ?></p>
-    
-
-The `_()` method is returning the translated string based on the index passed. Some strings need to incorporate placeholders for calculated data i.e. `Hello %name%`. These placeholders can be replaced with passed parameters in the `_()` method. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
+Метод `_ ()` возвращает переведенные строки на основе индекса, переданного функции. Some strings need to incorporate placeholders for calculated data i.e. `Hello %name%`. These placeholders can be replaced with passed parameters in the `_()` method. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
 
 ```php
 <!-- welcome -->
@@ -132,11 +154,72 @@ The `_()` method is returning the translated string based on the index passed. S
 <p><?php echo $t->_('hi-name', ['name' => $name]); ?></p>
 ```
 
-Some applications implement multilingual on the URL such as `http://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](/[[language]]/[[version]]/routing).
+Some applications implement multilingual on the URL such as `http://www.mozilla.org/**es-ES**/firefox/`. Реализовать такую схему в приложении на Phalcon можно используя компонент [Router](/[[language]]/[[version]]/routing).
+
+Реализация выше удобна, но она требует наличия базового контроллера для реализации `getTranslation()` и возвращения компонента `Phalcon\Translate\Adapter\NativeArray`. Кроме того, компонент должен быть передан в представление, как в примере выше, в виде переменной `$t`.
+
+Вы всегда можете реализовать эту функциональность в своём собственном классе и зарегистрировать его в DI:
+
+```php
+<?php
+
+use Phalcon\Mvc\User\Component;
+use Phalcon\Translate\Adapter\NativeArray;
+
+class Locale extends Component
+{
+    public function getTranslator()
+    {
+        // Получение оптимального языка из браузера
+        $language = $this->request->getBestLanguage();
+
+        /**
+         * Здесь мы используем JSON-файлы для хранения переводов. 
+         * Помните, вам необходимо убедиться, что файл существует! 
+         */
+        $translations = json_decode(
+            file_get_contents('app/messages/' . $language. '.json'),
+            true
+        );
+
+        // Возвращение объекта работы с переводом
+        return new NativeArray(
+            [
+                'content' => $translations,
+            ]
+        );
+    }
+}
+```
+
+Таким образом, вы можете использовать этот компонент в контроллерах:
+
+```php
+<?php
+
+use Phalcon\Mvc\Controller;
+
+class MyController extends Controller
+{
+    public function indexAction()
+    {
+        $name = 'Майк';
+        $text = $this->locale->_('hi-name', ['name' => $name]);
+
+        $this->view->text = $text;
+    }
+}
+```
+
+или напрямую в представлении
+
+```php
+<?php echo $locale->_('hi-name', ['name' => 'Майк']);
+```
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Реализация собственных адаптеров
 
 The `Phalcon\Translate\AdapterInterface` interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
@@ -148,14 +231,21 @@ use Phalcon\Translate\AdapterInterface;
 class MyTranslateAdapter implements AdapterInterface
 {
     /**
-     * Adapter constructor
+     * Конструктор адаптера
      *
      * @param array $options
      */
     public function __construct(array $options);
 
     /**
-     * Returns the translation string of the given key
+     * @param  string     $translateKey
+     * @param  array|null $placeholders
+     * @return string
+     */
+    public function t($translateKey, $placeholders = null);
+
+    /**
+     * Возвращает перевод строки по ключу
      *
      * @param   string $translateKey
      * @param   array $placeholders
@@ -164,7 +254,7 @@ class MyTranslateAdapter implements AdapterInterface
     public function _(string $translateKey, $placeholders = null): string;
 
     /**
-     * Returns the translation related to the given key
+     * Возвращает перевод, связанный с заданным ключом
      *
      * @param   string $index
      * @param   array $placeholders
@@ -173,7 +263,7 @@ class MyTranslateAdapter implements AdapterInterface
     public function query(string $index, $placeholders = null): string;
 
     /**
-     * Check whether is defined a translation key in the internal array
+     * Проверяет существование перевода ключа во внутреннем массиве
      *
      * @param   string $index
      * @return  bool

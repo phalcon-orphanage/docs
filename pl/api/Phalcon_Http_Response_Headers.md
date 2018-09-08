@@ -1,12 +1,12 @@
 # Class **Phalcon\\Http\\Response\\Headers**
 
-*implements* [Phalcon\Http\Response\HeadersInterface](/en/3.2/api/Phalcon_Http_Response_HeadersInterface)
+*implements* [Phalcon\Http\Response\HeadersInterface](/[[language]]/[[version]]/api/Phalcon_Http_Response_HeadersInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/response/headers.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This class is a bag to manage the response headers
 
-## Methods
+## Metody
 
 public **set** (*mixed* $name, *mixed* $value)
 

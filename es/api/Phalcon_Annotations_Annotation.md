@@ -1,47 +1,47 @@
-# Class **Phalcon\\Annotations\\Annotation**
+# Clase **Phalcon\\Annotations\\Annotation**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/annotation.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/annotation.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Represents a single annotation in an annotations collection
+Representa una sola anotación en una colección de anotaciones
 
-## Methods
+## Métodos
 
 public **__construct** (*array* $reflectionData)
 
-Phalcon\\Annotations\\Annotation constructor
+Constructor de la clase Phalcon\\Annotations\\Annotation
 
 public **getName** ()
 
-Returns the annotation's name
+Devuelve el nombre de la anotación
 
 public *mixed* **getExpression** (*array* $expr)
 
-Resolves an annotation expression
+Resuelve una expresión de anotación
 
 public *array* **getExprArguments** ()
 
-Returns the expression arguments without resolving
+Devuelve los argumentos de la expresión sin resolver
 
 public *array* **getArguments** ()
 
-Returns the expression arguments
+Devuelve los argumentos de la expresión
 
 public **numberArguments** ()
 
-Returns the number of arguments that the annotation has
+Devuelve el número de argumentos que tiene la anotación
 
 public *mixed* **getArgument** (*int* | *string* $position)
 
-Returns an argument in a specific position
+Devuelve un argumento en una posición específica
 
 public *boolean* **hasArgument** (*int* | *string* $position)
 
-Returns an argument in a specific position
+Devuelve un argumento en una posición específica
 
 public *mixed* **getNamedArgument** (*mixed* $name)
 
-Returns a named argument
+Devuelve el argumento nombrado
 
 public *mixed* **getNamedParameter** (*mixed* $name)
 
-Returns a named parameter
+Devuelve el parámetro nombrado

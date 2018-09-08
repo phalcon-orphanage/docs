@@ -1,11 +1,23 @@
-<div class='article-menu' markdown='1'>
-
-- [Request Environment](#overview)
-    - [Getting Values](#getting-values)
-    - [Accessing the Request from Controllers](#controller-access)
-    - [Uploading Files](#uploading-files)
-    - [Working with Headers](#working-with-headers)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Request Environment</a> 
+      <ul>
+        <li>
+          <a href="#getting-values">Getting Values</a>
+        </li>
+        <li>
+          <a href="#controller-access">Accessing the Request from Controllers</a>
+        </li>
+        <li>
+          <a href="#uploading-files">Uploading Files</a>
+        </li>
+        <li>
+          <a href="#working-with-headers">Working with Headers</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -118,12 +130,11 @@ class PostsController extends Controller
 }
 ```
 
-Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the `Phalcon\Http\Request\File` class. Using the `$_FILES` superglobal array offers the same behavior. `Phalcon\Http\Request\File>` encapsulates only the information related to each file uploaded with the request.
+Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the `Phalcon\Http\Request\File` class. Using the `$_FILES` superglobal array offers the same behavior. `Phalcon\Http\Request\File` encapsulates only the information related to each file uploaded with the request.
 
 <a name='working-with-headers'></a>
 ## Working with Headers
-As mentioned above, request headers contain useful information that allow us to send the proper response back to
-the user. The following examples show usages of that information:
+As mentioned above, request headers contain useful information that allow us to send the proper response back to the user. The following examples show usages of that information:
 
 ```php
 <?php
@@ -162,4 +173,9 @@ $charset = $request->getBestCharset();
 
 // Get the best language accepted configured in the browser. ie. en-us
 $language = $request->getBestLanguage();
+
+// Check if a header exists
+if ($request->hasHeader('my-header')) {
+    echo "Mary had a little lamb";
+}
 ```

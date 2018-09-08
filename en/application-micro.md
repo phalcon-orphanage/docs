@@ -1,67 +1,212 @@
-<div class='article-menu' markdown='1'>
-
-- [Creating a Micro Application](#creating-micro-application)
-- [Routing](#routing)
-    - [Setup](#routing-setup)
-        - [Application object](#routing-setup-application)
-        - [Router object](#routing-setup-router)
-    - [Rewrite Rules](#rewrite-rules)
-    - [Handlers](#routing-handlers)
-        - [Definitions](#routing-handlers-definitions)
-            - [Anonymous Function](#routing-handlers-anonymous-function)
-            - [Function](#routing-handlers-function)
-            - [Static Method](#routing-handlers-static-method)
-            - [Method in an Object](#routing-handlers-object-method)
-            - [Controllers](#routing-handlers-controllers)
-        - [Lazy Loading](#routing-handlers-controllers-lazy-loading)
-            - [Use case](#routing-handlers-controllers-lazy-loading-use-case)
-        - [Not Found (404)](#routing-handlers-not-found)
-    - [Methods - Verbs](#routing-verbs)
-        - [delete](#routing-verb-delete)
-        - [get](#routing-verb-get)
-        - [head](#routing-verb-head)
-        - [map](#routing-verb-map)
-        - [options](#routing-verb-options)
-        - [patch](#routing-verb-patch)
-        - [post](#routing-verb-post)
-        - [put](#routing-verb-put)
-    - [Collections](#routing-collections)
-    - [Parameters](#routing-parameters)
-    - [Redirections](#routing-redirections)
-    - [URLs for Routes](#routing-urls-for-routes)
-- [Dependency Injector](#dependency-injector)
-- [Responses](#responses)
-    - [Direct output](#responses-direct-output)
-    - [Including another file](#responses-include)
-    - [Direct output JSON](#responses-direct-output-json)
-    - [New Response object](#responses-new-response-object)
-    - [Application Response](#responses-application-response)
-    - [Return Application Response](#responses-return-application-response)
-    - [JSON](#responses-json)
-- [Events](#events)
-    - [Available events](#events-available-events)
-        - [Authentication example](#events-available-events-authentication)
-        - [Not found example](#events-available-events-not-found)
-- [Middleware](#middleware)
-    - [Attached events](#middleware-attached-events)
-        - [before](#middleware-attached-events-before)
-        - [after](#middleware-attached-events-after)
-        - [finish](#middleware-attached-events-finish)
-    - [Implementation](#middleware-implementation)
-    - [Setup](#middleware-setup)
-    - [Events in Middleware](#middleware-events)
-        - [API example](#middleware-events-api)
-            - [Firewall Middleware](#middleware-events-api-firewall)
-            - [Not Found Middleware](#middleware-events-api-not-found)
-            - [Redirect Middleware](#middleware-events-api-redirect)
-            - [CORS Middleware](#middleware-events-api-cors)
-            - [Request Middleware](#middleware-events-api-request)
-            - [Response Middleware](#middleware-events-api-response)
-- [Models](#models)
-- [Injecting Model Instances](#model-instances)
-- [Views](#views)
-- [Error Handling](#error-handling)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#creating-micro-applications">Creating a Micro Application</a>
+    </li>
+    <li>
+      <a href="#routing">Routing</a> 
+      <ul>
+        <li>
+          <a href="#routing-setup">Setup</a> 
+          <ul>
+            <li>
+              <a href="#routing-setup-application">Application object</a>
+            </li>
+            <li>
+              <a href="#routing-setup-router">Router object</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#rewrite-rules">Rewrite Rules</a>
+        </li>
+        <li>
+          <a href="#routing-handlers">Handlers</a> <ul>
+            <li>
+              <a href="#routing-handlers-definitions">Definitions</a> 
+              <ul>
+                <li>
+                  <a href="#routing-handlers-anonymous-function">Anonymous Function</a>
+                </li>
+                <li>
+                  <a href="#routing-handlers-function">Function</a>
+                </li>
+                <li>
+                  <a href="#routing-handlers-static-method">Static Method</a>
+                </li>
+                <li>
+                  <a href="#routing-handlers-object-method">Method in an Object</a>
+                </li>
+                <li>
+                  <a href="#routing-handlers-controllers">Controllers</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#routing-handlers-controllers-lazy-loading">Lazy Loading</a> 
+              <ul>
+                <li>
+                  <a href="#routing-handlers-controllers-lazy-loading-use-case">Use case</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#routing-handlers-not-found">Not Found (404)</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#routing-verbs">Methods - Verbs</a> 
+          <ul>
+            <li>
+              <a href="#routing-verb-delete">delete</a>
+            </li>
+            <li>
+              <a href="#routing-verb-get">get</a>
+            </li>
+            <li>
+              <a href="#routing-verb-head">head</a>
+            </li>
+            <li>
+              <a href="#routing-verb-map">map</a>
+            </li>
+            <li>
+              <a href="#routing-verb-options">options</a>
+            </li>
+            <li>
+              <a href="#routing-verb-patch">patch</a>
+            </li>
+            <li>
+              <a href="#routing-verb-post">post</a>
+            </li>
+            <li>
+              <a href="#routing-verb-put">put</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#routing-collections">Collections</a>
+        </li>
+        <li>
+          <a href="#routing-parameters">Parameters</a>
+        </li>
+        <li>
+          <a href="#routing-redirections">Redirections</a>
+        </li>
+        <li>
+          <a href="#routing-urls-for-routes">URLs for Routes</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#dependency-injector">Dependency Injector</a>
+    </li>
+    <li>
+      <a href="#responses">Responses</a> 
+      <ul>
+        <li>
+          <a href="#responses-direct-output">Direct output</a>
+        </li>
+        <li>
+          <a href="#responses-include">Including another file</a>
+        </li>
+        <li>
+          <a href="#responses-direct-output-json">Direct output JSON</a>
+        </li>
+        <li>
+          <a href="#responses-new-response-object">New Response object</a>
+        </li>
+        <li>
+          <a href="#responses-application-response">Application Response</a>
+        </li>
+        <li>
+          <a href="#responses-return-application-response">Return Application Response</a>
+        </li>
+        <li>
+          <a href="#responses-json">JSON</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#events">Events</a> 
+      <ul>
+        <li>
+          <a href="#events-available-events">Available events</a> <ul>
+            <li>
+              <a href="#events-available-events-authentication">Authentication example</a>
+            </li>
+            <li>
+              <a href="#events-available-events-not-found">Not found example</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#middleware">Middleware</a> <ul>
+        <li>
+          <a href="#middleware-attached-events">Attached events</a> 
+          <ul>
+            <li>
+              <a href="#middleware-attached-events-before">before</a>
+            </li>
+            <li>
+              <a href="#middleware-attached-events-after">after</a>
+            </li>
+            <li>
+              <a href="#middleware-attached-events-finish">finish</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#middleware-implementation">Implementation</a>
+        </li>
+        <li>
+          <a href="#middleware-setup">Setup</a>
+        </li>
+        <li>
+          <a href="#middleware-events">Events in Middleware</a> 
+          <ul>
+            <li>
+              <a href="#middleware-events-api">API example</a> 
+              <ul>
+                <li>
+                  <a href="#middleware-events-api-firewall">Firewall Middleware</a>
+                </li>
+                <li>
+                  <a href="#middleware-events-api-not-found">Not Found Middleware</a>
+                </li>
+                <li>
+                  <a href="#middleware-events-api-redirect">Redirect Middleware</a>
+                </li>
+                <li>
+                  <a href="#middleware-events-api-cors">CORS Middleware</a>
+                </li>
+                <li>
+                  <a href="#middleware-events-api-request">Request Middleware</a>
+                </li>
+                <li>
+                  <a href="#middleware-events-api-response">Response Middleware</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#models">Models</a>
+    </li>
+    <li>
+      <a href="#model-instances">Injecting Model Instances</a>
+    </li>
+    <li>
+      <a href="#views">Views</a>
+    </li>
+    <li>
+      <a href="#error-handling">Error Handling</a>
+    </li>
+  </ul>
 </div>
 
 # Micro Applications
@@ -103,14 +248,18 @@ $app = new Micro();
 Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are defined as follows:
 
 ```text
-   Application -> (method/verb) -> (route url/regex, callable PHP function)
+Application -> (method/verb) -> (route url/regex, callable PHP function)
 ```
 
 <a name='routing-setup'></a>
 ### Setup
 Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[version]]/routing)]
 
-<h5 class='alert alert-warning' markdown='1'>Routes must always start with `/`</h5>
+<div class="alert alert-danger">
+    <p>
+        Routes must always start with <code>/</code>
+    </p>
+</div>
 
 Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
 
@@ -173,7 +322,7 @@ Each method has its advantages and disadvantages. It all depends on the design a
 ## Rewrite Rules
 In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
 
-Those changes are outlined in the [rewrite rules](/[[language]]/[[version]]/rewrite-rules).
+Those changes are outlined in the [Apache Rewrite Rules](http://httpd.apache.org/docs/current/rewrite/) and [NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/).
 
 <a name='routing-handlers'></a>
 ## Handlers
@@ -202,8 +351,8 @@ Accessing the `$app` object inside the anonymous function can be achieved by inj
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $context = "<h1>This is order: {$name}!</h1>";
-        $app->response->setContext($context);
+        $content = "<h1>This is order: {$name}!</h1>";
+        $app->response->setContent($content);
         $app->response->send();
     }
 );
@@ -329,8 +478,8 @@ class OrdersController extends Controller
 
     public function show($name)
     {
-        $context = "<h1>This is order: {$name}!</h1>";
-        $this->response->setContext($context);
+        $content = "<h1>This is order: {$name}!</h1>";
+        $this->response->setContent($content);
 
         return $this->response;
     }
@@ -444,7 +593,7 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 // Users handler
 $users = new MicroCollection();
-$users->setHandler(new UsersController(), true);
+$users->setHandler('UsersController', true);
 $users->setPrefix('/users');
 $users->get('/get/{id}', 'get');
 $users->get('/add/{payload}', 'add');
@@ -452,7 +601,7 @@ $app->mount($users);
 
 // Orders handler
 $orders = new MicroCollection();
-$orders->setHandler(new OrdersController(), true);
+$orders->setHandler('OrdersController', true);
 $orders->setPrefix('/users');
 $orders->get('/get/{id}', 'get');
 $orders->get('/add/{payload}', 'add');
@@ -460,7 +609,7 @@ $app->mount($orders);
 
 // Products handler
 $products = new MicroCollection();
-$products->setHandler(new ProductsController(), true);
+$products->setHandler('ProductsController', true);
 $products->setPrefix('/products');
 $products->get('/get/{id}', 'get');
 $products->get('/add/{payload}', 'add');
@@ -520,7 +669,7 @@ Matches if the HTTP method is `GET` and the route is `/api/products`
 Matches if the HTTP method is `HEAD` and the route is `/api/products`
 
 ```php
-    $app->get(
+    $app->head(
         '/api/products',
         'get_products'
     );
@@ -618,7 +767,11 @@ $orders->get('/delete/{id}', 'deleteAction');
 
 $app->mount($orders);
 ```
-<h5 class='alert alert-warning' markdown='1'>The name that we bind each route has a suffix of `Action`. This is not necessary, your method can be called anything you like.</h5>
+<div class='alert alert-warning'>
+    <p>
+        The name that we bind each route has a suffix of <code>Action</code>. This is not necessary, your method can be called anything you like.
+    </p>
+</div>
 
 <a name='routing-parameters'></a>
 ## Parameters
@@ -702,7 +855,8 @@ Finally, you can perform redirections in your middleware (if you are using it). 
 
 <a name='routing-urls-for-routes'></a>
 ## URLs for Routes
-Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process. 
+Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process.
+
 * First we need to name our route. This can be achieved with the `setName()` method that is exposed from the methods/verbs in our application (`get`, `post`, etc.);
 
 ```php
@@ -741,7 +895,7 @@ $app->get(
 
 <a name='dependency-injector'></a>
 # Dependency Injector
-When a micro application is created, a `Phalcon\Di\FactoryDefault` services container is create implicitly. 
+When a micro application is created, a `Phalcon\Di\FactoryDefault` services container is create implicitly.
 
 ```php
 <?php
@@ -799,7 +953,6 @@ $app->post(
 You can also use the array syntax to register services in the dependency injection container from the application object:
 
 ```php
-
 <?php
 
 use Phalcon\Mvc\Micro;
@@ -877,7 +1030,7 @@ $app->get(
 
 <a name='responses-new-response-object'></a>
 ## New Response object
-You can use the `setContent` method of the response object to return the response back:
+You can use the `setContent` method of the Response object to return the response back:
 
 ```php
 $app->get(
@@ -900,7 +1053,7 @@ $app->get(
 
 <a name='responses-application-response'></a>
 ## Application Response
-You can also use the `Phalcon\Http\Response` object to return responses to the caller. The response object has a lot of useful methods that make returning respones much easier.
+You can also use the `Phalcon\Http\Response` object to return responses to the caller. The Response object has a lot of useful methods that make returning responses much easier.
 
 ```php
 $app->get(
@@ -918,7 +1071,7 @@ $app->get(
 
 <a name='responses-return-application-response'></a>
 ## Return Application Response
-A different approach returning data back to the caller is to return the response object directly from the application. When responses are returned by handlers they are automatically sent by the application.
+A different approach returning data back to the caller is to return the Response object directly from the application. When responses are returned by handlers they are automatically sent by the application.
 
 ```php
 <?php
@@ -1021,8 +1174,7 @@ $app->setEventsManager($eventsManager);
 
 <a name='events-available-events-not-found'></a>
 ### Not found example
-You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event.
-In the following example, we explain how to control the application security using events:
+Another built-in event that you can subscribe to implement business logic is `beforeNotFound`. The following example shows one of the ways to handle requests for a non-existent address:
 
 ```php
 <?php
@@ -1066,7 +1218,11 @@ Middleware can be attached to a micro application in 3 different events. Those a
 | after  | After the handler has been executed            |
 | final  | After the response has been sent to the caller |
 
-<h5 class='alert alert-warning' markdown='1'>You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.</h5>
+<div class="alert alert-warning">
+    <p>
+        You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.
+    </p>
+</div>
 
 <a name='middleware-attached-events-before'></a>
 ### before
@@ -1467,6 +1623,8 @@ class CORSMiddleware implements MiddlewareInterface
                 'Content-Disposition, Content-Type, Authorization'
             )
             ->setHeader('Access-Control-Allow-Credentials', 'true');
+            
+        return true;
     }
 
     /**
@@ -1541,7 +1699,11 @@ class RequestMiddleware implements MiddlewareInterface
 #### Response Middleware
 This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
 
-<h5 class='alert alert-warning' markdown='1'>We are going to be using the `call` method for this middleware, since we have nearly executed the whole request cycle.</h5>
+<div class='alert alert-warning'>
+    <p>
+        We are going to be using the <code>call</code> method for this middleware, since we have nearly executed the whole request cycle.
+    </p>
+</div>
 
 ```php
 <?php
@@ -1584,7 +1746,11 @@ class ResponseMiddleware implements MiddlewareInterface
 # Models
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
-<h5 class='alert alert-warning' markdown='1'>The relevant `db` service must be registered in your Di container.</h5>
+<div class="alert alert-warning">
+    <p>
+        The relevant <code>db</code> service must be registered in your Di container.
+    </p>
+</div>
 
 ```php
 <?php
@@ -1647,7 +1813,7 @@ Currently the binder will only use the models primary key to perform a `findFirs
 
 <a name='views'></a>
 # Views
-`Phalcon\Mvc\Micro` does not have inherently a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
+`Phalcon\Mvc\Micro` does not inherently have a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
 
 ```php
 <?php
@@ -1678,7 +1844,11 @@ $app->get(
 );
 ```
 
-<h5 class='alert alert-warning' markdown='1'>The above example uses the `Phalcon\Mvc\View\Simple` component, which uses relative paths instead of controllers and actions. You can use the `Phalcon\Mvc\View` component instead, but to do so you will need to change the parameters passed to `render()`</h5>
+<div class='alert alert-warning'>
+    <p>
+        The above example uses the <a href="/[[language]]/[[version]]/Phalcon_Mvc_View_Simple">Phalcon\Mvc\View\Simple</a> component, which uses relative paths instead of controllers and actions. You can use the <a href="/[[language]]/[[version]]/Phalcon_Mvc_View">Phalcon\Mvc\View</a> component instead, but to do so you will need to change the parameters passed to <code>render()</code>
+    </p>
+</div>
 
 ```php
 <?php
@@ -1698,14 +1868,14 @@ $app->get(
     '/products/show',
     function () use ($app) {
         // Render app/views/products/show.phtml passing some variables
-        echo $app['view']->render(
+        echo $app['view']->start()->render(
             'products',
             'show',
             [
                 'id'   => 100,
                 'name' => 'Artichoke',
             ]
-        );
+        )->finish()->getContent();
     }
 );
 ```

@@ -126,7 +126,7 @@ unset($config["database"]);
 
 
 
-public  **merge** ([Phalcon\Config](/en/3.2/api/Phalcon_Config) $config)
+public  **merge** ([Phalcon\Config](/[[language]]/[[version]]/api/Phalcon_Config) $config)
 
 Merges a configuration into the current one
 

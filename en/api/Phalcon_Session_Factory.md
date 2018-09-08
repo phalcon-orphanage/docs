@@ -1,8 +1,8 @@
 # Class **Phalcon\\Session\\Factory**
 
-*extends* abstract class [Phalcon\Factory](/en/3.2/api/Phalcon_Factory)
+*extends* abstract class [Phalcon\Factory](/[[language]]/[[version]]/api/Phalcon_Factory)
 
-*implements* [Phalcon\FactoryInterface](/en/3.2/api/Phalcon_FactoryInterface)
+*implements* [Phalcon\FactoryInterface](/[[language]]/[[version]]/api/Phalcon_FactoryInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/session/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -28,13 +28,13 @@ $session = Factory::load($options);
 
 
 ## Methods
-public static  **load** ([Phalcon\Config](/en/3.2/api/Phalcon_Config) | *array* $config)
+public static  **load** ([Phalcon\Config](/[[language]]/[[version]]/api/Phalcon_Config) | *array* $config)
 
 
 
 
 
-protected static  **loadClass** (*mixed* $namespace, *mixed* $config) inherited from [Phalcon\Factory](/en/3.2/api/Phalcon_Factory)
+protected static  **loadClass** (*mixed* $namespace, *mixed* $config) inherited from [Phalcon\Factory](/[[language]]/[[version]]/api/Phalcon_Factory)
 
 ...
 

@@ -28,7 +28,7 @@ Phalcon\\Tag is designed to simplify building of HTML tags. It provides a set of
 
 *integer* **XHTML5**
 
-## Methods
+## Metody
 
 public static *EscaperInterface* **getEscaper** (*array* $params)
 
@@ -38,7 +38,7 @@ public static **renderAttributes** (*mixed* $code, *array* $attributes)
 
 Renders parameters keeping order in their HTML attributes
 
-public static **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public static **setDI** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector container.
 

@@ -1,11 +1,27 @@
-# New Feature Request
+# Solicitud de Nueva Característica
 
-A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand implement it.
+Una NFR (New Feature Request) o solicitud de nueva característica es un pequeño documento explicando cómo debe presentarse, cómo se puede implementar y cómo puede ayudar a los desarrolladores del núcleo y otros a entender como implementarla.
 
-A NFR contains: * Suggested syntax * Suggested class names and methods * A short documentation * If the feature is already implemented in other frameworks, a short explanation of how that was implemented and its advantages
+Una solicitud de nueva funcionalidad contiene:
 
-In the following cases a new feature request will be rejected: * The feature makes the framework slow * The feature doesn't provide any additional value to the framework * The NFR is not clear, bad documentation, unclear explanation, etc. * The NFR doesn't follow the current guidelines/philosophy of the framework * The NFR affects/breaks applications developed in current/older versions of the framework * The original poster doesn't provide feedback/input when requested * It's technically impossible to implement * It can only be used in the development/testing stages * Submitted/proposed classes/components don't follow the [Single Responsibility Principle](http://en.wikipedia.org/wiki/Single_responsibility_principle) * Static methods aren't allowed
+* Sintaxis sugerida
+* Sugerencias de nombres de clase y métodos
+* Una breve documentación
+* Si la función ya está implementada en otros frameworks, una breve explicación de lo que fue implementado y sus ventajas
 
-To send a NFR you don't need to provide Zephir or C code or develop the feature. New Feture requests explain the goal of the intended implementation and open discussion on how best to implement it.
+En los siguientes casos se rechazará una solicitud de nueva característica:
 
-All NFRs should be posted as a new issue on [Github](https://github.com/phalcon/cphalcon/issues).
+* Una característica que haga al framework más lento
+* La característica que no proporcione ningún valor adicional al framework
+* Si la solicitud no es clara, mal documentada, explicación confusa, etcétera.
+* La solicitud no sigue la directrices o filosofía actual del framework
+* La solicitud afecta/rompe aplicaciones desarrolladas en versiones actuales o anteriores del framework
+* El autor de la propuesta no provee una retroalimentación o respuesta cuando así lo solicite
+* Es técnicamente imposible de aplicar
+* Sólo se puede utilizar en etapas de desarrollo o prueba
+* Si las clases o componentes presentados y propuestos no siguen el <a href="[">Principio de Responsabilidad Individual](https://es.wikipedia.org/wiki/Principio_de_responsabilidad_%C3%BAnica)
+* Los métodos estáticos no están permitidos
+
+Para enviar una NFR no necesita proporcionar el código C, Zephir o desarrollar la función. Las solicitudes de nuevas características explican el objetivo de la aplicación prevista y abren la discusión sobre la mejor manera de implementarla.
+
+Todas las solicitudes deben ser publicadas como un tema nuevo en [Github](https://github.com/phalcon/cphalcon/issues).

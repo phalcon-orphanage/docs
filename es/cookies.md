@@ -1,12 +1,13 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Cookies Management</a> <ul>
+      <a href="#overview">Gestión de cookies</a>
+       <ul>
         <li>
-          <a href="#usage">Basic Usage</a>
+          <a href="#usage">Uso básico</a>
         </li>
         <li>
-          <a href="#encryption-decryption">Encryption/Decryption of Cookies</a>
+          <a href="#encryption-decryption">Encriptado / Desencriptado de cookies</a>
         </li>
       </ul>
     </li>
@@ -15,15 +16,15 @@
 
 <a name='overview'></a>
 
-# Cookies Management
+# Gestión de cookies
 
-[Cookies](http://en.wikipedia.org/wiki/HTTP_cookie) are a very useful way to store small pieces of data on the client's machine that can be retrieved even if the user closes his/her browser. `Phalcon\Http\Response\Cookies` acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent automatically at the end of the request.
+[Las cookies](http://en.wikipedia.org/wiki/HTTP_cookie) son una manera muy útil para almacenar pequeñas piezas de datos en la máquina del cliente que puede ser obtenida aún cuando el usuario cierra su navegador. `Phalcon\Http\Response\Cookies` actúa como una bolsa global de cookies. Las cookies se almacenan en esta bolsa durante la ejecución de la solicitud y se envían automáticamente al final de la misma.
 
 <a name='usage'></a>
 
-## Basic Usage
+## Uso básico
 
-You can set/get cookies by just accessing the `cookies` service in any part of the application where services can be accessed:
+Se puede poner/obtener cookies con sólo acceder al servicio de `cookies` en cualquier parte de la aplicación, donde los servicios pueden ser accedidos:
 
 ```php
 <?php
@@ -34,12 +35,12 @@ class SessionController extends Controller
 {
     public function loginAction()
     {
-        // Check if the cookie has previously set
+        // Chequeamos si la cookie esta previamente seteada
         if ($this->cookies->has('remember-me')) {
-            // Get the cookie
+            // Obtenemos la cookie
             $rememberMeCookie = $this->cookies->get('remember-me');
 
-            // Get the cookie's value
+            // Obtenemos el valor de la cookie
             $value = $rememberMeCookie->getValue();
         }
     }
@@ -51,13 +52,15 @@ class SessionController extends Controller
             'some value',
             time() + 15 * 86400
         );
+
+        $this->cookies->send();
     }
 
     public function logoutAction()
     {
         $rememberMeCookie = $this->cookies->get('remember-me');
 
-        // Delete the cookie
+        // Borramos la cookie
         $rememberMeCookie->delete();
     }
 }
@@ -65,11 +68,11 @@ class SessionController extends Controller
 
 <a name='encryption-decryption'></a>
 
-## Encryption/Decryption of Cookies
+## Encriptado / Desencriptado de cookies
 
-By default, cookies are automatically encrypted before being sent to the client and are decrypted when retrieved from the user. This protection prevents unauthorized users to see the cookies' contents in the client (browser). Despite this protection, sensitive data should not be stored in cookies.
+De forma predeterminada, las cookies se encriptan automáticamente antes de ser enviadas al cliente y se desencriptan cuando regresan del mismo. Esta protección evita que usuarios no autorizados vean el contenido de las cookies en el cliente (navegador). A pesar de esta protección, los datos sensibles no deben almacenarse en cookies.
 
-You can disable encryption as follows:
+Puede deshabilitar el encriptado de la siguiente manera:
 
 ```php
 <?php
@@ -88,7 +91,7 @@ $di->set(
 );
 ```
 
-If you wish to use encryption, a global key must be set in the [crypt](/[[language]]/[[version]]/crypt) service:
+Si desea utilizar el encriptado, debe establecer una clave global al servicio [crypt](/[[language]]/[[version]]/crypt):
 
 ```php
     <?php
@@ -100,11 +103,44 @@ If you wish to use encryption, a global key must be set in the [crypt](/[[langua
         function () {
             $crypt = new Crypt();
 
-            $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Use your own key!
+            /**
+             * Establecer el algoritmo cipher.
+             *
+             * El cifrado `aes-256-gcm' es el preferido, pero no se puede utilizar
+             * hasta que la librería openssl este actualizada. Disponible desde PHP 7.1.
+             *
+             * El `aes-256-ctr' es posiblemente la mejor opción de algoritmo de cifrado
+             * en estos días.
+             */
+            $crypt->setCipher('aes-256-ctr');
+
+            /**
+             * Estableciendo la clave de encriptado.
+             *
+             * La clave debe ser generado previamente de una manera criptográficamente segura.
+             *
+             * Clave mala:
+             * "la contraseña"
+             *
+             * Mejor (Pero aún insegura):
+             * "#1dj8$=dp?.ak//j1V$~%*0X"
+             *
+             * Clave correcta:
+             * "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c"
+             *
+             * Utilice su propia clave. No copiar y pegar esta clave de ejemplo.
+             */
+            $key = "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c";
+
+            $crypt->setKey($key);
 
             return $crypt;
         }
     );
 ```
 
-<h5 class='alert alert-danger'>Sending cookies data without encryption to clients including complex objects structures, resultsets, service information, etc. could expose internal application details that could be used by an attacker to attack the application. If you do not want to use encryption, we highly recommend you only send very basic cookie data like numbers or small string literals.</h5>
+<div class="alert alert-danger">
+    <p>
+        Enviar cookies sin encriptación al clientes, incluyendo estructuras de objetos complejos, conjuntos de resultados (resultsets), información de servicio, etc. podría exponer los datos de uso interno para que puedan ser utilizados por un atacante y atacar la aplicación. Si no desea utilizar el cifrado, recomendamos que sólo enviar datos muy básicos como números o pequeñas cadenas de texto.
+    </p>
+</div>

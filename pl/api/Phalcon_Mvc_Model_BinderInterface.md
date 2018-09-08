@@ -2,7 +2,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/binderinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## Methods
+## Metody
 
 abstract public **getBoundModels** ()
 
@@ -12,7 +12,7 @@ abstract public **getCache** ()
 
 ...
 
-abstract public **setCache** ([Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface) $cache)
+abstract public **setCache** ([Phalcon\Cache\BackendInterface](/[[language]]/[[version]]/api/Phalcon_Cache_BackendInterface) $cache)
 
 ...
 

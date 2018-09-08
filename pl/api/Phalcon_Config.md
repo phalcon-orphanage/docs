@@ -32,7 +32,7 @@ $config = new \Phalcon\Config(
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $arrayConfig])
 
@@ -110,7 +110,7 @@ unset($config["database"]);
 
 ```
 
-public **merge** ([Phalcon\Config](/en/3.2/api/Phalcon_Config) $config)
+public **merge** ([Phalcon\Config](/[[language]]/[[version]]/api/Phalcon_Config) $config)
 
 Merges a configuration into the current one
 
@@ -153,7 +153,7 @@ print count($config);
 
 ```
 
-or
+lub
 
 ```php
 <?php

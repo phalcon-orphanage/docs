@@ -1,14 +1,17 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#di-service-location">Dependency Injection / Service Location</a> <ul>
+      <a href="#di-service-location">Dependency Injection / Service Location</a> 
+      <ul>
         <li>
           <a href="#di-explained">DI explained</a>
         </li>
         <li>
-          <a href="#registering-services">Registering services in the Container</a> <ul>
+          <a href="#registering-services">Registering services in the Container</a> 
+          <ul>
             <li>
-              <a href="#simple-registration">Simple Registration</a> <ul>
+              <a href="#simple-registration">Simple Registration</a> 
+              <ul>
                 <li>
                   <a href="#simple-registration-string">String</a>
                 </li>
@@ -20,9 +23,9 @@
                 </li>
               </ul>
             </li>
-            
             <li>
-              <a href="#complex-registration">Complex Registration</a> <ul>
+              <a href="#complex-registration">Complex Registration</a> 
+              <ul>
                 <li>
                   <a href="#constructor-injection">Constructor Injection</a>
                 </li>
@@ -34,7 +37,6 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#array-syntax">Array Syntax</a>
             </li>
@@ -43,15 +45,14 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#resolving-services">Resolving Services</a> <ul>
+          <a href="#resolving-services">Resolving Services</a> 
+          <ul>
             <li>
               <a href="#events">Events</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#shared-services">Shared services</a>
         </li>
@@ -472,9 +473,9 @@ The framework itself or the developer can register services. When a component A 
 
 This way of working gives us many advantages:
 
-- We can easily replace a component with one created by ourselves or a third party.
-- We have full control of the object initialization, allowing us to set these objects, as needed before delivering them to components.
-- We can get global instances of components in a structured and unified way.
+* We can easily replace a component with one created by ourselves or a third party.
+* We have full control of the object initialization, allowing us to set these objects, as needed before delivering them to components.
+* We can get global instances of components in a structured and unified way.
 
 Services can be registered using several types of definitions:
 
@@ -1000,6 +1001,12 @@ $di = new Di();
 $di->loadFromYaml('services.yml');
 $di->get('config'); // will properly return config service
 ```
+
+<div class="alert alert-danger">
+    <p>
+        This approach requires that the module Yaml be installed. Please refer to <a href="http://php.net/manual/book.yaml.php">this</a> for more information.
+    </p>
+</div>
 
 <a name='resolving-services'></a>
 

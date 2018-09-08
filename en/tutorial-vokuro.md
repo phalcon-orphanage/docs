@@ -1,10 +1,19 @@
-<div class='article-menu' markdown='1'>
-
-- [Tutorial: Vökuró](#overview)
-    - [Project Structure](#structure)
-    - [Load Classes and Dependencies](#dependencies)
-    - [Sign Up](#sign-up)
-    
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Tutorial: Vökuró</a> <ul>
+        <li>
+          <a href="#structure">Project Structure</a>
+        </li>
+        <li>
+          <a href="#dependencies">Load Classes and Dependencies</a>
+        </li>
+        <li>
+          <a href="#sign-up">Sign Up</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -117,7 +126,7 @@ namespace Vokuro\Controllers;
 
 use Vokuro\Forms\SignUpForm;
 
-class RegisterController extends ControllerBase
+class SessionController extends ControllerBase
 {
     public function signupAction()
     {

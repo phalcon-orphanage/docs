@@ -1,9 +1,11 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Increasing Performance</a> <ul>
+      <a href="#overview">Increasing Performance</a> 
+      <ul>
         <li>
-          <a href="#profiling-server">Profile on the Server</a> <ul>
+          <a href="#profiling-server">Profile on the Server</a> 
+          <ul>
             <li>
               <a href="#profiling-server-xhprof">Profiling with Xhprof</a>
             </li>
@@ -12,9 +14,9 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#profiling-client">Profile on the Client</a> <ul>
+          <a href="#profiling-client">Profile on the Client</a> 
+          <ul>
             <li>
               <a href="#profiling-client-chrome-firefox">Profile with Chrome/Firefox</a>
             </li>
@@ -26,7 +28,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#php-version">Use a recent PHP version</a>
         </li>
@@ -56,7 +57,7 @@ Get faster applications requires refine many aspects: server, client, network, d
 
 Each application is different, the permanent profiling is important to understand where performance can be increased. Profiling gives us a real picture on what is really slow and what does not. Profiles can vary between a request and another, so it is important to make enough measurements to make conclusions.
 
-Profiling with XDebug
+Профилирование с XDebug
 
 [XDebug](http://xdebug.org/docs) provides an easier way to profile PHP applications, just install the extension and enable profiling in the php.ini:
 
@@ -70,7 +71,7 @@ Using a tool like [Webgrind](https://github.com/jokkedk/webgrind/) you can see w
 
 <a name='profiling-server-xhprof'></a>
 
-### Profiling with Xhprof
+### Профилирование с Xhprof
 
 [Xhprof](https://github.com/facebook/xhprof) is another interesting extension to profile PHP applications. Add the following line to the start of the bootstrap file:
 
@@ -172,12 +173,12 @@ apc.enabled = On
 
 Process a video, send e-mails, compress a file or an image, etc., are slow tasks that must be processed in background jobs. There are a variety of tools that provide queuing or messaging systems that work well with PHP:
 
-- [Beanstalkd](http://kr.github.io/beanstalkd/)
-- [Redis](http://redis.io/)
-- [RabbitMQ](http://www.rabbitmq.com/)
-- [Resque](https://github.com/chrisboulton/php-resque>)
-- [Gearman](http://gearman.org/)
-- [ZeroMQ](http://www.zeromq.org/)
+* [Beanstalkd](http://kr.github.io/beanstalkd/)
+* [Redis](http://redis.io/)
+* [RabbitMQ](http://www.rabbitmq.com/)
+* [Resque](https://github.com/chrisboulton/php-resque>)
+* [Gearman](http://gearman.org/)
+* [ZeroMQ](http://www.zeromq.org/)
 
 <a name='page-speed'></a>
 

@@ -1,31 +1,92 @@
-<div class='article-menu' markdown='1'>
-
-- [Working with Models](#working-with)
-    - [Creating Models](#creating)
-        - [Public properties vs. Setters/Getters](#properties-setters-getters)
-    - [Understanding Records To Objects](#records-to-objects)
-    - [Finding Records](#finding-records)
-        - [Model Resultsets](#resultsets)
-        - [Filtering Resultsets](#filters)
-        - [Binding Parameters](#binding-parameters)
-    - [Initializing/Preparing fetched records](#preparing-records)
-    - [Generating Calculations](#calculations)
-    - [Creating/Updating Records](#create-update-records)
-        - [Create/Update with Confidence](#create-update-with-confidence)
-    - [Deleting Records](#delete-records)
-    - [Hydration Modes](#hydration-modes)
-    - [Table prefixes](#table-prefixes)
-    - [Auto-generated identity columns](#identity-columns)
-    - [Skipping Columns](#skipping-columns)
-    - [Dynamic Updates](#dynamic-updates)
-    - [Independent Column Mapping](#column-mapping)
-    - [Record Snapshots](#record-snapshots)
-    - [Pointing to a different schema](#different-schemas)
-    - [Setting multiple databases](#multiple-databases)
-    - [Injecting services into Models](#injecting-services-into-models)
-    - [Disabling/Enabling Features](#disabling-enabling-features)
-    - [Stand-Alone component](#stand-alone-component)
-    
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#working-with">Working with Models</a> 
+      <ul>
+        <li>
+          <a href="#creating">Creating Models</a> 
+          <ul>
+            <li>
+              <a href="#properties-setters-getters">Public properties vs. Setters/Getters</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#records-to-objects">Understanding Records To Objects</a>
+        </li>
+        <li>
+          <a href="#finding-records">Finding Records</a> 
+          <ul>
+            <li>
+              <a href="#resultsets">Model Resultsets</a>
+            </li>
+            <li>
+              <a href="#custom-resultsets">Custom Resultsets</a>
+            </li>
+            <li>
+              <a href="#filters">Filtering Resultsets</a>
+            </li>
+            <li>
+              <a href="#binding-parameters">Binding Parameters</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#preparing-records">Initializing/Preparing fetched records</a>
+        </li>
+        <li>
+          <a href="#calculations">Generating Calculations</a>
+        </li>
+        <li>
+          <a href="#create-update-records">Creating/Updating Records</a> 
+          <ul>
+            <li>
+              <a href="#create-update-with-confidence">Create/Update with Confidence</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#delete-records">Deleting Records</a>
+        </li>
+        <li>
+          <a href="#hydration-modes">Hydration Modes</a>
+        </li>
+        <li>
+          <a href="#table-prefixes">Table prefixes</a>
+        </li>
+        <li>
+          <a href="#identity-columns">Auto-generated identity columns</a>
+        </li>
+        <li>
+          <a href="#skipping-columns">Skipping Columns</a>
+        </li>
+        <li>
+          <a href="#dynamic-updates">Dynamic Updates</a>
+        </li>
+        <li>
+          <a href="#column-mapping">Independent Column Mapping</a>
+        </li>
+        <li>
+          <a href="#record-snapshots">Record Snapshots</a>
+        </li>
+        <li>
+          <a href="#different-schemas">Pointing to a different schema</a>
+        </li>
+        <li>
+          <a href="#multiple-databases">Setting multiple databases</a>
+        </li>
+        <li>
+          <a href="#injecting-services-into-models">Injecting services into Models</a>
+        </li>
+        <li>
+          <a href="#disabling-enabling-features">Disabling/Enabling Features</a>
+        </li>
+        <li>
+          <a href="#stand-alone-component">Stand-Alone component</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='working-with'></a>
@@ -36,7 +97,11 @@ A model represents the information (data) of the application and the rules to ma
 CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. `Phalcon\Mvc\Model` avoids the need of having to use SQL statements because it translates
 methods dynamically to the respective database engine operations.
 
-<h5 class='alert alert-warning' markdown='1'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the `Phalcon\Db` component documentation.</h5>
+<div class="alert alert-warning">
+    <p>
+        Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the <a href="/[[language]]/[[version]]/api/Phalcon_Db">Phalcon\Db</a> component documentation.
+    </p>
+</div>
 
 <a name='creating'></a>
 ## Creating Models
@@ -55,7 +120,11 @@ class RobotParts extends Model
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation. </h5>
+<div class="alert alert-warning">
+    <p>
+        If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation.
+    </p>
+</div>
 
 By default, the model `Store\Toys\RobotParts` will map to the table `robot_parts`. If you want to manually specify another name for the mapped table, you can use the `setSource()` method:
 
@@ -180,7 +249,11 @@ Public properties provide less complexity in development. However getters/setter
 extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
 application they are creating, depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
 
-<h5 class='alert alert-warning' markdown='1'>Underscores in property names can be problematic when using getters and setters. </h5>
+<div class="alert alert-warning">
+    <p>
+        Underscores in property names can be problematic when using getters and setters.
+    </p>
+</div>
 
 If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use
 with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName`
@@ -275,7 +348,11 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>If you want find record by external data (such as user input) or variable data you must use [Binding Parameters](#binding-parameters)`.</h5>
+<div class="alert alert-warning">
+    <p>
+        If you want find record by external data (such as user input) or variable data you must use <a href="#binding-parameters">Binding Parameters</a>
+    </p>
+</div>
 
 You could also use the `findFirst()` method to get only the first record matching the given criteria:
 
@@ -333,17 +410,17 @@ The available query options are:
 | Parameter     | Description                                                                                                                                                                                        | Example                                                           |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Mvc\Model` assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                          | `'columns' => 'id, name'`                                         |
-| `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                         | `'bind' => ['status' => 'A', 'type' => 'some-time']`              |
-| `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                         | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
+| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned.                                                                         | `'columns' => 'id, name'`                                         |
+| `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security.                                                                                        | `'bind' => ['status' => 'A', 'type' => 'some-time']`              |
+| `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security.                                                        | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
 | `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                         | `'order' => 'name DESC, status'`                                  |
-| `limit`       | Limit the results of the query to results to certain range                                                                                                                                         | `'limit' => 10`                                                   |
-| `offset`      | Offset the results of the query by a certain amount                                                                                                                                                | `'offset' => 5`                                                   |
-| `group`       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                        | `'group' => 'name, status'`                                       |
-| `for_update`  | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting exclusive locks on each row it reads                                                                                | `'for_update' => true`                                            |
-| `shared_lock` | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting shared locks on each row it reads                                                                                   | `'shared_lock' => true`                                           |
-| `cache`       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                       | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`         |
-| `hydration`   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
+| `limit`       | Limit the results of the query to results to certain range.                                                                                                                                        | `'limit' => 10`                                                   |
+| `offset`      | Offset the results of the query by a certain amount.                                                                                                                                               | `'offset' => 5`                                                   |
+| `group`       | Allows to collect data across multiple records and group the results by one or more columns.                                                                                                       | `'group' => 'name, status'`                                       |
+| `for_update`  | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting exclusive locks on each row it reads.                                                                               | `'for_update' => true`                                            |
+| `shared_lock` | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting shared locks on each row it reads.                                                                                  | `'shared_lock' => true`                                           |
+| `cache`       | Cache the resultset, reducing the continuous access to the relational system.                                                                                                                      | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`         |
+| `hydration`   | Sets the hydration strategy to represent each returned record in the result.                                                                                                                       | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
 If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
 
@@ -407,7 +484,7 @@ Notice that we used 'Name' in the method call and passed the variable `$name` to
 ### Model Resultsets
 While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a `Phalcon\Mvc\Model\Resultset\Simple`. This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
 
-These objects are more powerful than standard arrays. One of the greatest features of the :doc:`Phalcon\Mvc\Model\Resultset` is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
+These objects are more powerful than standard arrays. One of the greatest features of the `Phalcon\Mvc\Model\Resultset` is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
 
 ```php
 <?php
@@ -652,7 +729,11 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Since the default bind-type is `Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.</h5>
+<div class="alert alert-warning">
+    <p>
+        Since the default bind-type is <code>Phalcon\Db\Column::BIND_PARAM_STR</code>, there is no need to specify the <code>bindTypes</code> parameter if all of the columns are of that type.
+    </p>
+</div>
 
 If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
 
@@ -678,9 +759,13 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc. </h5>
+<div class="alert alert-warning">
+    <p>
+        Bound parameters are available for all query methods such as <code>find()</code> and <code>findFirst()</code> but also the calculation methods like <code>count()</code>, <code>sum()</code>, <code>average()</code> etc.
+    </p>
+</div>
 
-If you're using 'finders', bound parameters are automatically used:
+If you're using "finders" e.g. <code>find()</code>, <code>findFirst()</code>, etc., bound parameters are automatically used:
 
 ```php
 <?php
@@ -931,7 +1016,7 @@ $salary = Employees::minimum(
 
 <a name='create-update-records'></a>
 ## Creating/Updating Records
-The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of `Phalcon\Mvc\Model`. For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
+The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The `save()` method is called internally by the `create` and `update` methods of `Phalcon\Mvc\Model`. For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
 
 Also the method executes associated validators, virtual foreign keys and events that are defined in the model:
 
@@ -989,7 +1074,11 @@ $robot = new Robots();
 $robot->save($_POST);
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form. </h5>
+<div class="alert alert-warning">
+    <p>
+        Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form.
+    </p>
+</div>
 
 You can set an additional parameter in `save` to set a whitelist of fields that only must taken into account when doing the mass assignment:
 
@@ -1038,7 +1127,7 @@ if ($robot->create() === false) {
 }
 ```
 
-The methods `create` and 'update' also accept an array of values as parameter.
+The methods `create` and `update` also accept an array of values as parameter.
 
 <a name='delete-records'></a>
 ## Deleting Records
@@ -1066,7 +1155,7 @@ if ($robot !== false) {
 }
 ```
 
-You can also delete many records by traversing a resultset with a foreach:
+You can also delete many records by traversing a resultset with a `foreach`:
 
 ```php
 <?php
@@ -1096,8 +1185,8 @@ The following events are available to define custom business rules that can be e
 
 | Operation | Name         | Can stop operation? | Explanation                              |
 | --------- | ------------ | :-----------------: | ---------------------------------------- |
-| Deleting  | beforeDelete | Yes                 | Runs before the delete operation is made |
 | Deleting  | afterDelete  | No                  | Runs after the delete operation was made |
+| Deleting  | beforeDelete | Yes                 | Runs before the delete operation is made |
 
 With the above events can also define business rules in the models:
 
@@ -1330,13 +1419,19 @@ class Robots extends Model
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Never use a `Phalcon\Db\RawValue` to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. </h5>
+<div class="alert alert-danger">
+    <p>
+        Never use a <a href="/[[language]]/[[version]]/api/Phalcon_Db_RawValue">Phalcon\Db\RawValue</a> to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL.
+    </p>
+</div>
 
 <a name='dynamic-updates'></a>
 ## Dynamic Updates
 SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
 
 In some cases this could improve the performance by reducing the traffic between the application and the database server, this specially helps when the table has blob/text fields:
+
+**NOTE:** Enabling Dynamic updates implicitly enables record snapshots. See <a href="#record-snapshots">Record Snapshots</a> for more information.
 
 ```php
 <?php
@@ -1757,7 +1852,11 @@ The available options are:
 | updateSnapshotOnSave  | Enables/Disables updating snapshots on `save()`                                         | `true`  |
 | virtualForeignKeys    | Enables/Disables the virtual foreign keys                                               | `true`  |
 
-<h5 class='alert alert-warning' markdown='1'>*NOTE* `Phalcon\Mvc\Model::assign()` (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding `phalcon.orm.disable_assign_setters = 1` to your ini file, it will just simply use `this->property = value`.</h5>
+<div class="alert alert-warning">
+    <p>
+        <strong>NOTE</strong> <code>Phalcon\Mvc\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding <code>phalcon.orm.disable_assign_setters = 1</code> to your ini file, it will just simply use <code>$this->property = value</code>.
+    </p>
+</div>
 
 <a name='stand-alone-component'></a>
 ## Stand-Alone component

@@ -1,6 +1,6 @@
 # Class **Phalcon\\Http\\Response\\Cookies**
 
-*implements* [Phalcon\Http\Response\CookiesInterface](/en/3.2/api/Phalcon_Http_Response_CookiesInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Http\Response\CookiesInterface](/[[language]]/[[version]]/api/Phalcon_Http_Response_CookiesInterface), [Phalcon\Di\InjectionAwareInterface](/[[language]]/[[version]]/api/Phalcon_Di_InjectionAwareInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/response/cookies.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -9,7 +9,7 @@ A cookies bag is automatically registered as part of the 'response' service in t
 
 
 ## Methods
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 

@@ -1,23 +1,24 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Dispatching Controllers</a> <ul>
+      <a href="#overview">Dispatching Controllers</a> 
+      <ul>
         <li>
-          <a href="#dispatch-loop">The Dispatch Loop</a> <ul>
+          <a href="#dispatch-loop">The Dispatch Loop</a> 
+          <ul>
             <li>
               <a href="#dispatch-loop-events">Dispatch Loop Events</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#forwarding">Forwarding to other actions</a> <ul>
+          <a href="#forwarding">Forwarding to other actions</a> 
+          <ul>
             <li>
               <a href="#forwarding-events-manager">Using the Events Manager</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#preparing-parameters">Preparing Parameters</a>
         </li>
@@ -25,7 +26,8 @@
           <a href="#getting-parameters">Getting Parameters</a>
         </li>
         <li>
-          <a href="#preparing-actions">Preparing actions</a> <ul>
+          <a href="#preparing-actions">Preparing actions</a> 
+          <ul>
             <li>
               <a href="#preparing-actions-camelizing-action-names">Camelize action names</a>
             </li>
@@ -37,7 +39,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#handling-404">Handling Not-Found Exceptions</a>
         </li>
@@ -108,7 +109,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 | afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
 | afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | Yes                 | Listeners/Controllers |
 
-The [INVO](/[[language]]/[[version]]/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/[[language]]/[[version]]/acl)
+The [INVO](/[[language]]/[[version]]/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/[[language]]/[[version]]/acl).
 
 The following example demonstrates how to attach listeners to this component:
 
@@ -166,7 +167,11 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Methods on event listeners accept an <code>Phalcon\\Events\\Event</code> object as their first parameter - methods in controllers do not. </h5>
+<div class="alert alert-warning">
+    <p>
+        Methods on event listeners accept an <a href="/[[language]]/[[version]]/api/Phalcon_Events_Event">Phalcon\Events\Event</a> object as their first parameter - methods in controllers do not.
+    </p>
+</div>
 
 <a name='forwarding'></a>
 
@@ -225,14 +230,14 @@ $this->dispatcher->forward(
 );
 ```
 
-A forward action accepts the following parameters:
+A `forward` action accepts the following parameters:
 
-| Parameter  | Triggered                                              |
-| ---------- | ------------------------------------------------------ |
-| controller | A valid controller name to forward to.                 |
-| action     | A valid action name to forward to.                     |
-| params     | An array of parameters for the action                  |
-| namespace  | A valid namespace name where the controller is part of |
+| Parameter    | Description                                             |
+| ------------ | ------------------------------------------------------- |
+| `controller` | A valid controller name to forward to.                  |
+| `action`     | A valid action name to forward to.                      |
+| `params`     | An array of parameters for the action.                  |
+| `namespace`  | A valid namespace name where the controller is part of. |
 
 <a name='forwarding-events-manager'></a>
 
@@ -613,7 +618,11 @@ $dispatcher->setModelBinder(new Binder());
 return $dispatcher;
 ```
 
-<h5 class='alert alert-warning'>Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in <code>setModelBinder()</code> which can also accept service name or just by passing cache instance to <code>Binder</code> constructor. </h5>
+<div class="alert alert-warning">
+    <p>
+        Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in <code>setModelBinder()</code> which can also accept service name or just by passing cache instance to <code>Binder</code> constructor.
+    </p>
+</div>
 
 It also introduces a new interface `Phalcon\Mvc\Model\Binder\BindableInterface` which allows you to define the controllers associated models to allow models binding in base controllers.
 
@@ -674,7 +683,11 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Currently the binder will only use the models primary key to perform a <code>findFirst()</code> on. An example route for the above would be <code>/posts/show/{1}</code> </h5>
+<div class="alert alert-warning">
+    <p>
+        Currently the binder will only use the models primary key to perform a <code>findFirst()</code> on. An example route for the above would be <code>/posts/show/{1}</code>
+    </p>
+</div>
 
 <a name='handling-404'></a>
 
@@ -774,7 +787,11 @@ class ExceptionsPlugin
 }
 ```
 
-<h5 class='alert alert-danger'>Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the <code>beforeException</code> events. Exceptions produced in listeners or controller events are redirected to the latest try/catch. </h5>
+<div class="alert alert-danger">
+    <p>
+        Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the <code>beforeException</code> events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
+    </p>
+</div>
 
 <a name='custom'></a>
 

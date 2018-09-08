@@ -1,6 +1,6 @@
 # Class **Phalcon\\Mvc\\Model\\Row**
 
-*implements* [Phalcon\Mvc\EntityInterface](/en/3.2/api/Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\Model\ResultInterface](/en/3.2/api/Phalcon_Mvc_Model_ResultInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php), [JsonSerializable](http://php.net/manual/en/class.jsonserializable.php)
+*implements* [Phalcon\Mvc\EntityInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\Model\ResultInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_ResultInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php), [JsonSerializable](http://php.net/manual/en/class.jsonserializable.php)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/row.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -21,13 +21,13 @@ Checks whether offset exists in the row
 
 
 
-public *string* | [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) **offsetGet** (*string* | *int* $index)
+public *string* | [Phalcon\Mvc\ModelInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_ModelInterface) **offsetGet** (*string* | *int* $index)
 
 Gets a record in a specific position of the row
 
 
 
-public  **offsetSet** (*string* | *int* $index, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $value)
+public  **offsetSet** (*string* | *int* $index, [Phalcon\Mvc\ModelInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_ModelInterface) $value)
 
 Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 

@@ -1,30 +1,31 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">ORM Caching</a> <ul>
+      <a href="#overview">Cache en ORM</a> 
+      <ul>
         <li>
-          <a href="#caching-resultsets">Caching Resultsets</a>
+          <a href="#caching-resultsets">Cacheo de Resultsets</a>
         </li>
         <li>
-          <a href="#forcing-cache">Forcing Cache</a>
+          <a href="#forcing-cache">Forzando el caché</a>
         </li>
         <li>
-          <a href="#caching-phql-queries">Caching PHQL Queries</a>
+          <a href="#caching-phql-queries">Cache de consultas PHQL</a>
         </li>
         <li>
-          <a href="#reusable-related-records">Reusable Related Records</a>
+          <a href="#reusable-related-records">Registros relacionados reutilizables</a>
         </li>
         <li>
-          <a href="#caching-related-records">Caching Related Records</a>
+          <a href="#caching-related-records">Cache de registros relacionados</a>
         </li>
         <li>
-          <a href="#caching-related-records-recursively">Caching Related Records Recursively</a>
+          <a href="#caching-related-records-recursively">Cache de registros relacionados recursivamente</a>
         </li>
         <li>
-          <a href="#caching-based-on-conditions">Caching based on Conditions</a>
+          <a href="#caching-based-on-conditions">Cache basado en condiciones</a>
         </li>
         <li>
-          <a href="#caching-phql-execution-plan">Caching PHQL execution plan</a>
+          <a href="#caching-phql-execution-plan">Plan de ejecución para cacheo de PHQL</a>
         </li>
       </ul>
     </li>
@@ -33,21 +34,21 @@
 
 <a name='orm-caching'></a>
 
-# ORM Caching
+# Cache en ORM
 
-Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
+Cada aplicación es diferente. En la mayoría de las aplicaciones sin embargo, hay datos que cambian con poca frecuencia. Uno de los cuellos de botella más comunes en términos de rendimiento, es el acceso a la base de datos. Esto es debido a los procesos complejos de conexión/comunicación que PHP utiliza con cada solicitud para obtener los datos de la base de datos. Por lo tanto, si queremos lograr un buen rendimiento, necesitamos agregar algunas capas de caché donde la aplicación lo requiera.
 
-This chapter explains the potential areas where it is possible to implement caching to improve performance. Phalcon gives developers the tools they need to implement cashing where their application needs it.
+Este capítulo explica las posibles áreas donde es posible implementar el almacenamiento en caché para mejorar el rendimiento. Phalcon da a los desarrolladores las herramientas necesarias para implementar el cacheo donde su aplicación lo necesita.
 
 <a name='caching-resultsets'></a>
 
-## Caching Resultsets
+## Cacheo de Resultsets
 
-A well established technique to avoid continuously accessing the database, is to cache resultsets that don't change frequently, using a system with faster access (usually memory).
+Una técnica bien establecida para evitar continuamente accediendo a la base de datos, es el cacheo de conjunto de resultados (Resultsets) que no cambian con frecuencia, utilizando un sistema de acceso más rápido (generalmente memoria).
 
-When `Phalcon\Mvc\Model` requires a service to cache resultsets, it will request it from the Dependency Injection Container. The service name is called `modelsCache`. Phalcon offers a [cache](/[[language]]/[[version]]/cache) component that can store any kind of data. We will now see how we can integrate it with our Models.
+Cuando `Phalcon\Mvc\Model` requiere un servicio de caché de conjunto de resultados, lo solicitará desde el contenedor de inyección de dependencia (DI). El servicio se llama `modelsCache`. Phalcon ofrece un componente de [caché](/[[language]]/[[version]]/cache) que puede almacenar cualquier tipo de datos. Ahora veremos cómo podemos integrarlo con nuestros modelos.
 
-First, we will need to register the cache component as a service in the DI container.
+En primer lugar, necesitamos registrar el componente de caché como un servicio en el contenedor de DI.
 
 ```php
 <?php
@@ -55,18 +56,18 @@ First, we will need to register the cache component as a service in the DI conta
 use Phalcon\Cache\Frontend\Data as FrontendData;
 use Phalcon\Cache\Backend\Memcache as BackendMemcache;
 
-// Set the models cache service
+// Configuración del servicio de cacheo para modelos
 $di->set(
     'modelsCache',
     function () {
-        // Cache data for one day (default setting)
+        // Almacenar datos por un día (valor por defecto)
         $frontCache = new FrontendData(
             [
                 'lifetime' => 86400,
             ]
         );
 
-        // Memcached connection settings
+        // Configuración de conexión a Memcached 
         $cache = new BackendMemcache(
             $frontCache,
             [
@@ -80,15 +81,15 @@ $di->set(
 );
 ```
 
-Phalcon offers complete control in creating and customizing the cache component before registering it as a service in the DI container. Once the cache component is properly set up, resultsets can be cached as follows:
+Phalcon ofrece un control completo en la creación y personalización del componente de caché antes de registrarlo como un servicio en el contenedor de DI. Una vez que el componente de caché está correctamente configurado, los conjuntos de resultados pueden cachearse de la siguiente manera:
 
 ```php
 <?php
 
-// Get products without caching
+// Obtener productos sin cache
 $products = Products::find();
 
-// Just cache the resultset. The cache will expire in 1 hour (3600 seconds)
+// Almacenar en el cache el Resultset. El cacheo expira en una hora (3600 segundos)
 $products = Products::find(
     [
         'cache' => [
@@ -97,7 +98,7 @@ $products = Products::find(
     ]
 );
 
-// Cache the resultset for only for 5 minutes
+// Almacenar el resultset por solo 5 minutos
 $products = Products::find(
     [
         'cache' => [
@@ -107,7 +108,7 @@ $products = Products::find(
     ]
 );
 
-// Use the 'cache' service from the DI instead of 'modelsCache'
+// Utilizar el servicio 'cache' desde DI en vez del 'modelsCache'
 $products = Products::find(
     [
         'cache' => [
@@ -118,15 +119,15 @@ $products = Products::find(
 );
 ```
 
-Caching could also be applied to resultsets generated using relationships:
+El cache también puede aplicarse a conjuntos de resultados generados mediante relaciones:
 
 ```php
 <?php
 
-// Query some post
+// Consultamos algún post
 $post = Post::findFirst();
 
-// Get comments related to a post, also cache it
+// Obtenemos los comentarios relacionados y los cacheamos
 $comments = $post->getComments(
     [
         'cache' => [
@@ -135,7 +136,7 @@ $comments = $post->getComments(
     ]
 );
 
-// Get comments related to a post, setting lifetime
+// Obtener los comentarios relacionados al post, configurando el tiempo de vida 'lifetime'
 $comments = $post->getComments(
     [
         'cache' => [
@@ -146,20 +147,20 @@ $comments = $post->getComments(
 );
 ```
 
-When a cached resultset needs to be invalidated, you can simply delete it from the cache using the key specified as seen above.
+Cuando un resultset en caché debe ser invalidado, simplemente se puede borrar la caché utilizando la clave especificada como se ve arriba.
 
-Which resultset to cache and for how long is up to the developer, after having evaluated the needs of the application. Resultsets that change frequently should not be cached, since the cache results will be invalidated quickly. Additionally caching resultsets consumes processing cycles, therefore the cache that was intended to speed up the application actually slows it down. Resultsets that do not change frequently should be cached to minimize the database interactions. The decision on where to use caching and for how long is dictated by the application needs.
+Que resultset almacenar en caché y por cuánto tiempo es tarea del desarrollador, después de haber evaluado las necesidades de la aplicación. Los conjuntos de resultados que cambian con frecuencia no deben ser cacheados, ya que los resultados de la caché se invalidaran rápidamente. Además el cacheo de resultsets consume ciclos de procesamiento, por lo tanto el caché que pretendía acelerar la aplicación realmente la desacelera. Los resultsets que no cambian con frecuencia deben ser almacenados en caché para reducir al mínimo las interacciones de la base de datos. La decisión sobre dónde usar almacenamiento en caché y por cuánto tiempo, es dictada por las necesidades de aplicación.
 
 <a name='forcing-cache'></a>
 
-## Forcing Cache
+## Forzando el caché
 
-Earlier we saw how `Phalcon\Mvc\Model` integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
+Anteriormente vimos cómo `Phalcon\Mvc\Model` se integra con el componente de caché proporcionado por el framework. Para hacer cache de un registro o conjunto de resultados debemos pasar la clave `cache` en el array de parámetros:
 
 ```php
 <?php
 
-// Cache the resultset for only for 5 minutes
+// Cachear el resultset por solo 5 minutos
 $products = Products::find(
     [
         'cache' => [
@@ -170,7 +171,7 @@ $products = Products::find(
 );
 ```
 
-This gives us the freedom to cache specific queries, however if we want to cache globally every query performed over the model, we can override the `find()`/`findFirst()` methods to force every query to be cached:
+Esto nos da la libertad para almacenar en caché consultas específicas, sin embargo si queremos almacenar en memoria a nivel global cada consulta realizada sobre el modelo, podemos sobrecargar los métodos `find()`/`findFirst()` para forzar el cacheo en cada consulta:
 
 ```php
 <?php
@@ -180,8 +181,8 @@ use Phalcon\Mvc\Model;
 class Robots extends Model
 {
     /**
-     * Implement a method that returns a string key based
-     * on the query parameters
+     * Implementar un método que retorne una clave en string
+     * basada en los parámetros de la consulta
      */
     protected static function _createKey($parameters)
     {
@@ -200,13 +201,13 @@ class Robots extends Model
 
     public static function find($parameters = null)
     {
-        // Convert the parameters to an array
+        // Convertir parámetros a un array
         if (!is_array($parameters)) {
             $parameters = [$parameters];
         }
 
-        // Check if a cache key wasn't passed
-        // and create the cache parameters
+        // Chequear si la clave de cache no fue enviada,
+        // en tal caso, crearla
         if (!isset($parameters['cache'])) {
             $parameters['cache'] = [
                 'key'      => self::_createKey($parameters),
@@ -224,9 +225,9 @@ class Robots extends Model
 }
 ```
 
-Accessing the database is several times slower than calculating a cache key. You're free to implement any key generation strategy you find to better for your needs. Note that a good key avoids collisions as much as possible - meaning that different keys should return unrelated records.
+El acceso a la base de datos es varias veces más lento que el cálculo de una clave de caché. Eres libre de implementar cualquier estrategia de generación de claves que encuentres mejor para tus necesidades. Tenga en cuenta que una buena clave evita colisiones tanto como sea posibles - lo que significa que diferentes claves deben devolver registros no relacionados.
 
-This gives you full control on how the cache should be implemented for each model. If this strategy is common to several models you can create a base class for all of them:
+Esto le da control total sobre cómo debería implementarse la caché para cada modelo. Si esta estrategia es común a varios modelos puede crear una clase base para todos ellos:
 
 ```php
 <?php
@@ -237,22 +238,22 @@ class CacheableModel extends Model
 {
     protected static function _createKey($parameters)
     {
-        // ... Create a cache key based on the parameters
+        // ... Crear clave de cacheo con los parámetros
     }
 
     public static function find($parameters = null)
     {
-        // ... Custom caching strategy
+        // ... Estrategia de cacheo personalizada
     }
 
     public static function findFirst($parameters = null)
     {
-        // ... Custom caching strategy
+        // ... Estrategia de cacheo personalizada
     }
 }
 ```
 
-Then use this class as base class for each `Cacheable` model:
+Luego utilice esta clase como clase base para cada modelo `Cacheable`:
 
 ```php
 <?php
@@ -265,9 +266,9 @@ class Robots extends CacheableModel
 
 <a name='caching-phql-queries'></a>
 
-## Caching PHQL Queries
+## Cache de consultas PHQL
 
-Regardless of the syntax we used to create them, all queries in the ORM are handled internally using PHQL. This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
+Independientemente de la sintaxis que utilizamos para crearlos, todas las consultas en el ORM se manejan internamente con PHQL. Este lenguaje le da mucho más libertad a usted para crear todo tipo de consultas. Por supuesto estas consultas pueden ser almacenadas en caché:
 
 ```php
 <?php
@@ -292,43 +293,43 @@ $cars = $query->execute(
 
 <a name='reusable-related-records'></a>
 
-## Reusable Related Records
+## Registros relacionados reutilizables
 
-Some models may have relationships with other models. This allows us to easily check the records that relate to instances in memory:
+Algunos modelos pueden tener relaciones con otros modelos. Esto nos permite comprobar fácilmente los registros que tienen instancias en memoria:
 
 ```php
 <?php
 
-// Get some invoice
+// Buscar alguna factura
 $invoice = Invoices::findFirst();
 
-// Get the customer related to the invoice
+// Obtener el cliente relacionado a la factura
 $customer = $invoice->customer;
 
-// Print his/her name
+// Imprimir su nombre
 echo $customer->name, "\n";
 ```
 
-This example is very simple, a customer is queried and can be used as required, for example, to show its name. This also applies if we retrieve a set of invoices to show customers that correspond to these invoices:
+Este ejemplo es muy simple, un cliente es consultado y se puede utilizar según sea necesario, por ejemplo, para mostrar su nombre. Esto también se aplica si recuperamos un conjunto de facturas para mostrar los clientes de las correspondientes facturas:
 
 ```php
 <?php
 
-// Get a set of invoices
+// Obtener algunas facturas
 // SELECT * FROM invoices;
 $invoices = Invoices::find();
 
 foreach ($invoices as $invoice) {
-    // Get the customer related to the invoice
+    // Obtener el cliente relacionado a la factura
     // SELECT * FROM customers WHERE id = ?;
     $customer = $invoice->customer;
 
-    // Print his/her name
+    // Imprimir su nombre
     echo $customer->name, "\n";
 }
 ```
 
-A customer may have one or more bills so, in this example, the same customer record may be unnecessarily queried several times. To avoid this, we could mark the relationship as reusable; by doing so, we tell the ORM to automatically reuse the records from memory instead of re-querying them again and again:
+Un cliente puede tener una o más facturas entonces, en este ejemplo, el mismo cliente puede ser consultado varias veces innecesariamente. Para evitar esto, podríamos marcar la relación como `reusable`; por ello le decimos al ORM que reutilice automáticamente registros de la memoria en lugar de volver a consultarles una y otra vez:
 
 ```php
 <?php
@@ -351,36 +352,36 @@ class Invoices extends Model
 }
 ```
 
-Note that this type of cache works in memory only, this means that cached data are released when the request is terminated.
+Tenga en cuenta que este tipo de caché trabaja en memoria solamente, esto quiere decir que los datos almacenados en caché se liberan cuando se termina la petición.
 
 <a name='caching-related-records'></a>
 
-## Caching Related Records
+## Cache de registros relacionados
 
-When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
+Cuando se consulta un registro relacionado, el ORM internamente construye la condición adecuada y obtiene los registros necesarios utilizando `find()`/`findFirst()` en el modelo; según la siguiente tabla:
 
-| Type       | Description                                                     | Implicit Method |
-| ---------- | --------------------------------------------------------------- | --------------- |
-| Belongs-To | Returns a model instance of the related record directly         | `findFirst()`   |
-| Has-One    | Returns a model instance of the related record directly         | `findFirst()`   |
-| Has-Many   | Returns a collection of model instances of the referenced model | `find()`        |
+| Tipo       | Descripción                                                                    | Método implícito |
+| ---------- | ------------------------------------------------------------------------------ | ---------------- |
+| Belongs-To | Devuelve una instancia del modelo relacionado directamente                     | `findFirst()`    |
+| Has-One    | Devuelve una instancia del modelo relacionado directamente                     | `findFirst()`    |
+| Has-Many   | Devuelve una colección de instancias del modelo, según el modelo de referencia | `find()`         |
 
-This means that when you get a related record you could intercept how the data is obtained by implementing the corresponding method:
+Esto significa que cuando usted obtiene un registro relacionado, podría interceptar cómo los datos se obtuvieron aplicando el método correspondiente:
 
 ```php
 <?php
 
-// Get some invoice
+// Obtener la primer factura
 $invoice = Invoices::findFirst();
 
-// Get the customer related to the invoice
+// Obtiene el cliente relacionado a la factura
 $customer = $invoice->customer; // Invoices::findFirst('...');
 
-// Same as above
+// El mismo resultado que la linea anterior
 $customer = $invoice->getCustomer(); // Invoices::findFirst('...');
 ```
 
-Accordingly, we could replace the `findFirst()` method in the Invoices model and implement the cache we consider most appropriate:
+En consecuencia, podríamos reemplazar el método `findFirst()` en el modelo Invoices e implementar la caché que consideramos más adecuada:
 
 ```php
 <?php
@@ -391,16 +392,16 @@ class Invoices extends Model
 {
     public static function findFirst($parameters = null)
     {
-        // ... Custom caching strategy
+        // ... Estrategia de cache personalizada
     }
 }
 ```
 
 <a name='caching-related-records-recursively'></a>
 
-## Caching Related Records Recursively
+## Cache de registros relacionados recursivamente
 
-In this scenario, we assume that every time we query a result we also retrieve their associated records. If we store the records found together with their related entities perhaps we could reduce a bit the overhead required to obtain all entities:
+En este escenario, asumimos que en cada consulta de un registro también recuperamos sus registros asociados. Si almacenamos los registros encontrados junto con sus entidades relacionadas, quizá podríamos reducir un poco la sobrecarga requerida para obtener todas las entidades:
 
 ```php
 <?php
@@ -411,28 +412,28 @@ class Invoices extends Model
 {
     protected static function _createKey($parameters)
     {
-        // ... Create a cache key based on the parameters
+        // ... Creamos una clave de cache basada en los parámetros
     }
 
     protected static function _getCache($key)
     {
-        // Returns data from a cache
+        // Retorna datos desde el cache
     }
 
     protected static function _setCache($key, $results)
     {
-        // Stores data in the cache
+        // Almacena datos en cache
     }
 
     public static function find($parameters = null)
     {
-        // Create a unique key
+        // Crea una clave única
         $key = self::_createKey($parameters);
 
-        // Check if there are data in the cache
+        // Chequeamos si los datos están en cache
         $results = self::_getCache($key);
 
-        // Valid data is an object
+        // Validamos si los datos son un objecto
         if (is_object($results)) {
             return $results;
         }
@@ -442,16 +443,16 @@ class Invoices extends Model
         $invoices = parent::find($parameters);
 
         foreach ($invoices as $invoice) {
-            // Query the related customer
+            // Obtenemos los clientes relacionados
             $customer = $invoice->customer;
 
-            // Assign it to the record
+            // Los asignamos a la factura
             $invoice->customer = $customer;
 
             $results[] = $invoice;
         }
 
-        // Store the invoices in the cache + their customers
+        // Almacenamos la factura en cache con sus clientes
         self::_setCache($key, $results);
 
         return $results;
@@ -459,12 +460,12 @@ class Invoices extends Model
 
     public function initialize()
     {
-        // Add relations and initialize other stuff
+        // Agregar relaciones e iniciar otras cosas
     }
 }
 ```
 
-Getting the invoices from the cache already obtains the customer data in just one hit, reducing the overall overhead of the operation. Note that this process can also be performed with PHQL following an alternative solution:
+Al recibir las facturas de la caché ya obtiene también los datos del cliente todo en un solo paso, reduciendo la carga total de la operación. Tenga en cuenta que este proceso puede realizarse también con PHQL, con la siguiente solución alternativa:
 
 ```php
 <?php
@@ -475,12 +476,12 @@ class Invoices extends Model
 {
     public function initialize()
     {
-        // Add relations and initialize other stuff
+        // Agregar relaciones e iniciar otras cosas
     }
 
     protected static function _createKey($conditions, $params)
     {
-        // ... Create a cache key based on the parameters
+        // ... Creamos una clave de cache basada en los parámetros
     }
 
     public function getInvoicesCustomers($conditions, $params = null)
@@ -504,17 +505,17 @@ class Invoices extends Model
 
 <a name='caching-based-on-conditions'></a>
 
-## Caching based on Conditions
+## Cache basado en condiciones
 
-In this scenario, the cache is implemented differently depending on the conditions received. We might decide that the cache backend should be determined by the primary key:
+En este escenario, la caché se implementa dependiendo de diferentes condiciones. Nosotros podríamos decidir que tipo de cache backend debe implementarse dependiendo de la clave primaria:
 
-| Type          | Cache Backend |
+| Tipo          | Cache Backend |
 | ------------- | ------------- |
 | 1 - 10000     | mongo1        |
 | 10000 - 20000 | mongo2        |
 | > 20000       | mongo3        |
 
-The easiest way to achieve this is by adding a static method to the model that chooses the right cache to be used:
+La forma más sencilla de lograr esto es agregando un método estático para el modelo que elige el caché adecuado para ser utilizado:
 
 ```php
 <?php
@@ -545,7 +546,7 @@ class Robots extends Model
 }
 ```
 
-This approach solves the problem, however, if we want to add other parameters such orders or conditions we would have to create a more complicated method. Additionally, this method does not work if the data is obtained using related records or a `find()`/`findFirst()`:
+Este planteamiento resuelve el problema, sin embargo, si queremos añadir otros parámetros tales como ordenamiento o condiciones, tendríamos que crear un método más complejo. Además, este método no funciona si los datos se obtuvieron mediante registros relacionados o un `find()`/`findFirst()`:
 
 ```php
 <?php
@@ -563,9 +564,9 @@ $robots = Robots::find(
 );
 ```
 
-To achieve this we need to intercept the intermediate representation (IR) generated by the PHQL parser and thus customize the cache everything possible:
+Para lograr esto tenemos que interceptar la intermediate representation (IR) generada por el analizador PHQL y así personalizar el cache todo lo posible:
 
-The first is create a custom builder, so we can generate a totally customized query:
+La primera es crear un builder personalizado, entonces podremos generar una consulta totalmente personalizada:
 
 ```php
 <?php
@@ -580,12 +581,24 @@ class CustomQueryBuilder extends QueryBuilder
 
         $query->setDI($this->getDI());
 
+        if ( is_array($this->_bindParams) ) {
+            $query->setBindParams($this->_bindParams);
+        }
+
+        if ( is_array($this->_bindTypes) ) {
+            $query->setBindTypes($this->_bindTypes);
+        }
+
+        if ( is_array($this->_sharedLock) ) {
+            $query->setSharedLock($this->_sharedLock);
+        }
+
         return $query;
     }
 }
 ```
 
-Instead of directly returning a `Phalcon\Mvc\Model\Query`, our custom builder returns a CustomQuery instance, this class looks like:
+En lugar de regresar directamente un `Phalcon\Mvc\Model\Query`, nuestro constructor personalizado devuelve una instancia de CustomQuery, que se parece a esta clase:
 
 ```php
 <?php
@@ -595,37 +608,46 @@ use Phalcon\Mvc\Model\Query as ModelQuery;
 class CustomQuery extends ModelQuery
 {
     /**
-     * The execute method is overridden
+     * El método execute es sobre cargado
      */
     public function execute($params = null, $types = null)
     {
-        // Parse the intermediate representation for the SELECT
+        // Analizar la representación intermedia para el SELECT
         $ir = $this->parse();
 
-        // Check if the query has conditions
+        if ( is_array($this->_bindParams) ) {
+            $params = array_merge($this->_bindParams, (array)$params);
+        }
+
+        if ( is_array($this->_bindTypes) ) {
+            $types = array_merge($this->_bindTypes, (array)$types);
+        }
+
+        // Comprobar si la consulta tiene condiciones
         if (isset($ir['where'])) {
-            // The fields in the conditions can have any order
-            // We need to recursively check the conditions tree
-            // to find the info we're looking for
+            // Los campos en las condiciones pueden tener cualquier orden
+            // Necesitamos comprobar recursivamente el árbol de condiciones
+            // para encontrar la información que buscamos
             $visitor = new CustomNodeVisitor();
 
-            // Recursively visits the nodes
+            // Visitar los nodos recursivamente
             $visitor->visit($ir['where']);
 
             $initial = $visitor->getInitial();
             $final   = $visitor->getFinal();
 
-            // Select the cache according to the range
+            // Seleccionar el cache de acuerdo al rango
             // ...
 
-            // Check if the cache has data
+            // Chequeamos si el cache tiene datos
             // ...
         }
 
-        // Execute the query
+        // Ejecutamos la consulta
         $result = $this->_executeSelect($ir, $params, $types);
+        $result = $this->_uniqueRow ? $result->getFirst() : $result;
 
-        // Cache the result
+        // Cachear el resultado
         // ...
 
         return $result;
@@ -633,7 +655,7 @@ class CustomQuery extends ModelQuery
 }
 ```
 
-Implementing a helper (`CustomNodeVisitor`) that recursively checks the conditions looking for fields that tell us the possible range to be used in the cache:
+Implementando un ayudante (`CustomNodeVisitor`) que comprueba recursivamente las condiciones de los campos que nos dicen el rango posible para ser utilizado en el cache:
 
 ```php
 <?php
@@ -706,7 +728,7 @@ class CustomNodeVisitor
 }
 ```
 
-Finally, we can replace the find method in the Robots model to use the custom classes we've created:
+Por último, podemos reemplazar el método `find()` del modelo Robots para utilizar las clases personalizadas que hemos creado:
 
 ```php
 <?php
@@ -738,9 +760,9 @@ class Robots extends Model
 
 <a name='caching-phql-execution-plan'></a>
 
-## Caching PHQL execution plan
+## Plan de ejecución para cacheo de PHQL
 
-As well as most moderns database systems PHQL internally caches the execution plan, if the same statement is executed several times PHQL reuses the previously generated plan improving performance, for a developer to take better advantage of this is highly recommended build all your SQL statements passing variable parameters as bound parameters:
+Como en la mayoría de los sistemas de bases de datos modernos, PHQL internamente almacena en caché el plan de ejecución, si la misma sentencia se ejecuta varias veces, PHQL reutiliza el plan previamente generado mejorando el rendimiento, para que un desarrollador aproveche mejor esta opción es altamente recomendado armar todas las consultas SQL con parámetros enlazados:
 
 ```php
 <?php
@@ -754,7 +776,7 @@ for ($i = 1; $i <= 10; $i++) {
 }
 ```
 
-In the above example, ten plans were generated increasing the memory usage and processing in the application. Rewriting the code to take advantage of bound parameters reduces the processing by both ORM and database system:
+En el ejemplo anterior, se generaron diez planes aumentando el uso de memoria y procesamiento en la aplicación. Reescribir el código para aprovechar las ventajas de los parámetros enlazados reduce el procesamiento por el sistema ORM y la base de datos:
 
 ```php
 <?php
@@ -773,7 +795,7 @@ for ($i = 1; $i <= 10; $i++) {
 }
 ```
 
-Performance can be also improved reusing the PHQL query:
+El rendimiento puede mejorarse más aún reutilizando la consulta PHQL:
 
 ```php
 <?php
@@ -794,4 +816,4 @@ for ($i = 1; $i <= 10; $i++) {
 }
 ```
 
-Execution plans for queries involving [prepared statements](http://en.wikipedia.org/wiki/Prepared_statement) are also cached by most database systems reducing the overall execution time, also protecting your application against [SQL Injections](http://en.wikipedia.org/wiki/SQL_injection).
+Los planes de ejecución para consultas que implican [sentencias preparadas](http://en.wikipedia.org/wiki/Prepared_statement) también son almacenadas en caché en la mayoría sistemas de bases de datos, reduciendo el tiempo total de ejecución, también protegen su aplicación contra las [inyecciones de SQL (SQL Injections)](http://en.wikipedia.org/wiki/SQL_injection).

@@ -9,13 +9,13 @@
           <a href="#questions-and-support">Questions and Support</a>
         </li>
         <li>
-          <a href="#bug-report-checklist">Bug Report Checklist</a> <ul>
+          <a href="#bug-report-checklist">Bug Report Checklist</a> 
+          <ul>
             <li>
               <a href="#bug-report-generating-backtrace">Generating a backtrace</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#pull-request-checklist">Pull Request Checklist</a>
         </li>
@@ -34,9 +34,9 @@
 
 # Contributing to Phalcon
 
-Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!.
+Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!
 
-Please take a moment to review this document in order to make the contribution process easy and effective all.
+Please take a moment to review this document in order to make the contribution process easy and effective for all.
 
 Following these guidelines, allows better communication, faster resolution of issues and moves the project forward.
 
@@ -52,7 +52,11 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 ## Questions and Support
 
-<h5 class='alert alert-warning'>We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.</h5>
+<div class="alert alert-warning">
+    <p>
+       We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.
+    </p>
+</div>
 
 <a name='bug-report-checklist'></a>
 
@@ -87,7 +91,7 @@ Please follow this guides to understand how to generate the backtrace:
 - Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards](http://www.php-fig.org/psr/)
 - Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
 
-Before submit **new functionality**, please open a [NFR](/[[language]]/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of include the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Before submit **new functionality**, please open a [NFR](/[[language]]/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
 - An update to the `CHANGELOG.md`
 - Unit Tests
@@ -97,14 +101,14 @@ Before submit **new functionality**, please open a [NFR](/[[language]]/[[version
 
 ## Getting Support
 
-If you have a question about how to use Phalcon, please see the [support page](https://phalconphp.com/support).
+If you have any questions about how to use Phalcon, please see the [support page](https://phalconphp.com/support).
 
 <a name='requesting-features'></a>
 
 ## Requesting Features
 
-If you have a change or new feature in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
+If you have any changes or new features in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
 
-Thanks!
+Dziękujemy!
 
-<3 Phalcon Team
+&lt;3 Phalcon Team

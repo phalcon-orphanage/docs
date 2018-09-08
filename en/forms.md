@@ -1,11 +1,41 @@
-<div class='article-menu' markdown='1'>
-
-- [Flashing Messages](#overview)
-    - [Adapters](#adapters)
-    - [Usage](#usage)
-    - [Printing Messages](#printing)
-    - [Implicit Flush vs. Session](#implicit-flush-vs-session)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Forms</a>
+      <ul>
+        <li>
+          <a href="#initializing">Initializing forms</a>
+        </li>
+        <li>
+          <a href="#validation">Validation</a>
+        </li>      
+        <li>
+          <a href="#filtering">Filtering</a>
+        </li>
+        <li>
+          <a href="#entities">Forms + Entities</a>
+        </li>
+        <li>
+          <a href="#elements">Form Elements</a>
+        </li>
+        <li>
+          <a href="#event-callback">Event Callbacks</a>
+        </li>
+        <li>
+          <a href="#rendering">Rendering Forms</a>
+        </li>
+        <li>
+          <a href="#creating-elements">Creating Form Elements</a>
+        </li>
+        <li>
+          <a href="#forms-manager">Forms Manager</a>
+        </li>
+        <li>
+          <a href="#external-resources">External Resources</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -255,7 +285,8 @@ $form = new UsersForm(
 );
 ```
 
-Validation
+<a name='validation'></a>
+## Validation
 Phalcon forms are integrated with the [validation](/[[language]]/[[version]]/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
 
 ```php
@@ -366,7 +397,11 @@ $email->setFilters(
 $form->add($email);
 ```
 
-<h5 class='alert alert-info' markdown='1'>Learn more about filtering in Phalcon by reading the [Filter documentation](/[[language]]/[[version]]/filter) </h5>
+<div class='alert alert-info'>
+    <p>
+        Learn more about filtering in Phalcon by reading the <a href="/[[language]]/[[version]]/filter">Filter documentation</a>.
+    </p>
+</div>
 
 <a name='entities'></a>
 ## Forms + Entities
@@ -522,7 +557,6 @@ class ContactForm extends Form
 You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
 
 ```php
-<?php
 
 <form method='post'>
     <?php
@@ -634,7 +668,7 @@ class MyElement extends Element
     }
 }
 ```
-
+<a name='forms-manager'></a>
 ## Forms Manager
 This component provides a forms manager that can be used by the developer to register forms and access them via the service locator:
 
@@ -668,6 +702,6 @@ $loginForm = $this->forms->get('login');
 
 echo $loginForm->render();
 ```
-
+<a name='external-resources'></a>
 ## External Resources
 * [Vökuró](http://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]

@@ -1,8 +1,8 @@
-# Abstract class **Phalcon\\Acl**
+# Абстрактный класс **Phalcon\\Acl**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
 
-## Constants
+## Константы
 
 *integer* **ALLOW**
 

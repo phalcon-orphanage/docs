@@ -2,9 +2,9 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/transactioninterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## Methods
+## Metody
 
-abstract public **setTransactionManager** ([Phalcon\Mvc\Model\Transaction\ManagerInterface](/en/3.2/api/Phalcon_Mvc_Model_Transaction_ManagerInterface) $manager)
+abstract public **setTransactionManager** ([Phalcon\Mvc\Model\Transaction\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_Transaction_ManagerInterface) $manager)
 
 ...
 
@@ -44,6 +44,6 @@ abstract public **isValid** ()
 
 ...
 
-abstract public **setRollbackedRecord** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $record)
+abstract public **setRollbackedRecord** ([Phalcon\Mvc\ModelInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_ModelInterface) $record)
 
 ...

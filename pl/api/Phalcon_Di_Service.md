@@ -1,20 +1,23 @@
 # Class **Phalcon\\Di\\Service**
 
-*implements* [Phalcon\Di\ServiceInterface](/en/3.2/api/Phalcon_Di_ServiceInterface)
+*implements* [Phalcon\Di\ServiceInterface](/[[language]]/[[version]]/api/Phalcon_Di_ServiceInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/di/service.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Represents individually a service in the services container
 
-```php <?php
+```php
+<?php
 
-$service = new \Phalcon\Di\Service( "request", "Phalcon\\Http\\Request" );
+$service = new \Phalcon\Di\Service(
+    "request",
+    "Phalcon\\Http\\Request"
+);
 
 $request = service->resolve();
+```
 
-```php <?php
-
-## Methods
+## Metody
 
 final public **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
@@ -42,7 +45,7 @@ public *mixed* **getDefinition** ()
 
 Returns the service definition
 
-public *mixed* **resolve** ([*array* $parameters], [[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector])
+public *mixed* **resolve** ([*array* $parameters], [[Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector])
 
 Resolves the service
 

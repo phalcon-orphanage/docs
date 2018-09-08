@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Διαχείριση cookies</a> <ul>
+      <a href="#overview">Διαχείριση cookies</a>
+       <ul>
         <li>
           <a href="#usage">Basic Usage</a>
         </li>
@@ -51,6 +52,7 @@ class SessionController extends Controller
             'some value',
             time() + 15 * 86400
         );
+        $this->cookies->send();
     }
 
     public function logoutAction()
@@ -100,11 +102,44 @@ If you wish to use encryption, a global key must be set in the [crypt](/[[langua
         function () {
             $crypt = new Crypt();
 
-            $crypt->setKey('#1dj8$=dp?.ak//j1V$'); // Use your own key!
+            /**
+             * Set the cipher algorithm.
+             *
+             * The `aes-256-gcm' is the preferable cipher, but it is not usable until the
+             * openssl library is upgraded, which is available in PHP 7.1.
+             *
+             * The `aes-256-ctr' is arguably the best choice for cipher
+             * algorithm in these days.
+             */
+            $crypt->setCipher('aes-256-ctr');
+
+            /**
+             * Setting the encryption key.
+             *
+             * The key should have been previously generated in a cryptographically safe way.
+             *
+             * Bad key:
+             * "le password"
+             *
+             * Better (but still unsafe):
+             * "#1dj8$=dp?.ak//j1V$~%*0X"
+             *
+             * Good key:
+             * "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c"
+             *
+             * Use your own key. Do not copy and paste this example key.
+             */
+            $key = "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c";
+
+            $crypt->setKey($key);
 
             return $crypt;
         }
     );
 ```
 
-<h5 class='alert alert-danger'>Sending cookies data without encryption to clients including complex objects structures, resultsets, service information, etc. could expose internal application details that could be used by an attacker to attack the application. If you do not want to use encryption, we highly recommend you only send very basic cookie data like numbers or small string literals.</h5>
+<div class="alert alert-danger">
+    <p>
+        Sending cookies data without encryption to clients including complex objects structures, resultsets, service information, etc. could expose internal application details that could be used by an attacker to attack the application. If you do not want to use encryption, we highly recommend you only send very basic cookie data like numbers or small string literals.
+    </p>
+</div>

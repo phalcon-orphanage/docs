@@ -1,8 +1,8 @@
-# Class **Phalcon\\Annotations\\Reflection**
+# Clase **Phalcon\\Annotations\\Reflection**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/reflection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/reflection.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Allows to manipulate the annotations reflection in an OO manner
+Permite manipular la reflexión de las anotaciones en una forma Orientada a Objectos
 
 ```php
 <?php
@@ -10,40 +10,40 @@ Allows to manipulate the annotations reflection in an OO manner
 use Phalcon\Annotations\Reader;
 use Phalcon\Annotations\Reflection;
 
-// Parse the annotations in a class
+// Analizar las anotaciones en una clase
 $reader = new Reader();
 $parsing = $reader->parse("MyComponent");
 
-// Create the reflection
+// Crear la Reflexión 
 $reflection = new Reflection($parsing);
 
-// Get the annotations in the class docblock
+// Obtener las anotaciones en la clase docblock
 $classAnnotations = $reflection->getClassAnnotations();
 
 ```
 
-## Methods
+## Métodos
 
 public **__construct** ([*array* $reflectionData])
 
-Phalcon\\Annotations\\Reflection constructor
+Constructor de Phalcon\\Annotations\\Reflection
 
 public **getClassAnnotations** ()
 
-Returns the annotations found in the class docblock
+Devuelve las anotaciones encontradas en la clase docblock
 
 public **getMethodsAnnotations** ()
 
-Returns the annotations found in the methods' docblocks
+Devuelve las anotaciones encontradas en los métodos de docblocks
 
 public **getPropertiesAnnotations** ()
 
-Returns the annotations found in the properties' docblocks
+Devuelve las anotaciones encontradas en las propiedades de docblocks
 
 public *array* **getReflectionData** ()
 
-Returns the raw parsing intermediate definitions used to construct the reflection
+Devuelve las definiciones intermedias usadas en el análisis para construir la reflexión
 
 public static *array data* **__set_state** (*mixed* $data)
 
-Restores the state of a Phalcon\\Annotations\\Reflection variable export
+Restaura el estado de la exportación de una variable Phalcon\\Annotations\\Reflection

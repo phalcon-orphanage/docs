@@ -15,21 +15,31 @@
           <a href="#variables">Variables</a>
         </li>
         <li>
-          <a href="#filters">Filters</a>
+          <a href="#filters">Filtry</a>
         </li>
         <li>
           <a href="#comments">Comments</a>
         </li>
         <li>
-          <a href="#control-structures">List of Control Structures</a> <ul>
+          <a href="#control-structures">List of Control Structures</a> 
+          <ul>
             <li>
               <a href="#control-structures-for">For</a>
             </li>
             <li>
               <a href="#control-structures-loops">Loop Controls</a>
+              <ul>
+                <li>
+                  <a href="#loop-controls-if">If</a>
+                </li>
+                <li>
+                  <a href="#loop-controls-switch">Switch</a>
+                </li>
+              </ul>
             </li>
             <li>
-              <a href="#control-structures-loop">Loop Context</a> <ul>
+              <a href="#control-structures-loop">Loop Context</a> 
+              <ul>
                 <li>
                   <a href="#assignments">Assignments</a>
                 </li>
@@ -38,33 +48,31 @@
                 </li>
               </ul>
             </li>
-            
             <li>
               <a href="#expressions-literals">Literals</a>
             </li>
             <li>
-              <a href="#expressions-arrays">Arrays</a>
+              <a href="#expressions-arrays">Tablice</a>
             </li>
             <li>
-              <a href="#expressions-math">Math</a>
+              <a href="#expressions-math">Matematyka</a>
             </li>
             <li>
               <a href="#expressions-comparisons">Comparisons</a>
             </li>
             <li>
-              <a href="#expressions-logic">Logic</a>
+              <a href="#expressions-logic">Logika</a>
             </li>
             <li>
               <a href="#expressions-other-operators">Other Operators</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#tests">Tests</a>
+          <a href="#tests">Testy</a>
         </li>
         <li>
-          <a href="#macros">Macros</a>
+          <a href="#macros">Makra</a>
         </li>
         <li>
           <a href="#tag-helpers">Using Tag Helpers</a>
@@ -73,16 +81,16 @@
           <a href="#functions">Functions</a>
         </li>
         <li>
-          <a href="#view-integrations">View Integration</a> <ul>
+          <a href="#view-integrations">View Integration</a> 
+          <ul>
             <li>
-              <a href="#view-integration-include">Include</a>
+              <a href="#view-integration-include">Dołączanie</a>
             </li>
             <li>
               <a href="#view-integration-partial-vs-include">Partial vs Include</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#template-inheritance">Template Inheritance</a> <ul>
             <li>
@@ -90,24 +98,23 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#autoescape">Autoescape mode</a>
         </li>
         <li>
-          <a href="#extending">Extending Volt</a> <ul>
+          <a href="#extending">Extending Volt</a> 
+          <ul>
             <li>
               <a href="#extending-functions">Functions</a>
             </li>
             <li>
-              <a href="#extending-filters">Filters</a>
+              <a href="#extending-filters">Filtry</a>
             </li>
             <li>
               <a href="#extending-extensions">Extensions</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#caching-view-fragments">Caching view fragments</a>
         </li>
@@ -144,6 +151,7 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 {% block last_products %}
 
 {% for product in products %}
+
     * Name: {{ product.name|e }}
     {% if product.status === 'Active' %}
        Price: {{ product.price + product.taxes/100 }}
@@ -260,15 +268,15 @@ $di->set(
 
 The following options are available in Volt:
 
-| Option              | Description                                                                                                                  | Default |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
-| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
-| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
-| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
-| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
-| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
-| `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false` |
+| Opcja               | Description                                                                                                                  | Domyślne |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false`  |
+| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false`  |
+| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`   |
+| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`     |
+| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`     |
+| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`   |
+| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`   |
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
 
@@ -292,7 +300,7 @@ $volt->setOptions(
             $dirName = dirname($templatePath);
 
             if (!is_dir('cache/' . $dirName)) {
-                mkdir('cache/' . $dirName);
+                mkdir('cache/' . $dirName , 0777 , true);
             }
 
             return 'cache/' . $dirName . '/'. $templatePath . '.php';
@@ -382,7 +390,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 <a name='filters'></a>
 
-## Filters
+## Filtry
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -394,7 +402,7 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 
 The following is the list of available built-in filters in Volt:
 
-| Filter             | Description                                                                                                                        |
+| Filtr              | Description                                                                                                                        |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `abs`              | Applies the [abs](http://php.net/manual/en/function.abs.php) PHP function to a value.                                              |
 | `capitalize`       | Capitalizes a string by applying the [ucwords](http://php.net/manual/en/function.ucwords.php) PHP function to the value            |
@@ -415,7 +423,6 @@ The following is the list of available built-in filters in Volt:
 | `lower`            | Change the case of a string to lowercase                                                                                           |
 | `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](http://php.net/manual/en/function.nl2br.php) |
 | `right_trim`       | Applies the [rtrim](http://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                  |
-| `slashes`          | Applies the [slashes](http://php.net/manual/en/function.slashes.php) PHP function to the value. Escaping values                    |
 | `sort`             | Sorts an array using the PHP function [asort](http://php.net/manual/en/function.asort.php)                                         |
 | `stripslashes`     | Applies the [stripslashes](http://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes  |
 | `striptags`        | Applies the [striptags](http://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags             |
@@ -601,7 +608,7 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 {% endfor %}
 ```
 
-<a name='control-structures-if'></a>
+<a name='loop-controls-if'></a>
 
 ### If
 
@@ -644,6 +651,75 @@ The `elseif` control flow structure can be used together with if to emulate a `s
     Robot is mechanical
 {% endif %}
 ```
+
+<a name='loop-controls-switch'></a>
+
+### Switch
+
+An alternative to the `if` statement is `switch`, allowing you to create logical execution paths in your application:
+
+```twig
+{% switch foo %}
+    {% case 0 %}
+    {% case 1 %}
+    {% case 2 %}
+        "foo" is less than 3 but not negative
+        {% break %}
+    {% case 3 %}
+        "foo" is 3
+        {% break %}
+    {% default %}
+        "foo" is {{ foo }}
+{% endswitch %}
+
+```
+
+The `switch` statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any output (including whitespace) between a switch statement and the first `case` will result in a syntax error. Empty lines and whitespaces can therefore be cleared to reduce the number of errors [see here](http://php.net/control-structures.alternative-syntax).
+
+#### `case` without `switch`
+
+```twig
+{% case EXPRESSION %}
+```
+
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
+
+#### `switch` without `endswitch`
+
+```twig
+{% switch EXPRESSION %}
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected EOF in ..., there is a 'switch' block without 'endswitch'`.
+```
+
+#### `default` without `switch`
+
+```twig
+{% default %}
+```
+
+Will not throw an error because `default` is a reserved word for filters like `{{ EXPRESSION | default(VALUE) }}` but in this case the expression will only output an empty char '' .
+
+#### nested `switch`
+
+```twig
+{% switch EXPRESSION %}
+  {% switch EXPRESSION %}
+  {% endswitch %}
+{% endswitch %}
+```
+
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
+
+#### a `switch` without an expression
+
+```twig
+{% switch %}
+  {% case EXPRESSION %}
+      {% break %}
+{% endswitch %}
+```
+
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ...`
 
 <a name='control-structures-loop'></a>
 
@@ -742,7 +818,7 @@ If an expression needs to be evaluated without be printed the `do` statement can
 
 The following literals are supported:
 
-| Filter               | Description                                                        |
+| Filtr                | Description                                                        |
 | -------------------- | ------------------------------------------------------------------ |
 | `'this is a string'` | Text between double quotes or single quotes are handled as strings |
 | `100.25`             | Numbers with a decimal part are handled as doubles/floats          |
@@ -855,7 +931,7 @@ The following example shows how to use operators:
 
 <a name='tests'></a>
 
-## Tests
+## Testy
 
 Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
 
@@ -933,7 +1009,7 @@ More examples:
 
 <a name='macros'></a>
 
-## Macros
+## Makra
 
 Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
 
@@ -1040,7 +1116,7 @@ The following PHP is generated:
 
 To call a `Phalcon\Tag` helper, you only need to call an uncamelized version of the method:
 
-| Method                            | Volt function        |
+| Metoda                            | Volt function        |
 | --------------------------------- | -------------------- |
 | `Phalcon\Tag::checkField`        | `check_field`        |
 | `Phalcon\Tag::dateField`         | `date_field`         |
@@ -1070,7 +1146,7 @@ To call a `Phalcon\Tag` helper, you only need to call an uncamelized version of 
 
 The following built-in functions are available in Volt:
 
-| Name          | Description                                                 |
+| Nazwa         | Description                                                 |
 | ------------- | ----------------------------------------------------------- |
 | `content`     | Includes the content produced in a previous rendering stage |
 | `get_content` | Same as `content`                                           |
@@ -1132,14 +1208,14 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
-- `partial` allows you to include templates made in Volt and in other template engines as well
-- `partial` allows you to pass an expression like a variable allowing to include the content of other view dynamically
-- `partial` is better if the content that you have to include changes frequently
-
-- `include` copies the compiled content into the view which improves the performance
-
-- `include` only allows to include templates made with Volt
-- `include` requires an existing template at compile time
+| Typ        | Description                                                                                                |
+| ---------- | ---------------------------------------------------------------------------------------------------------- |
+| `partial`  | allows you to include templates made in Volt and in other template engines as well                         |
+|            | allows you to pass an expression like a variable allowing to include the content of other view dynamically |
+|            | is better if the content that you have to include changes frequently                                       |
+| `includes` | copies the compiled content into the view which improves the performance                                   |
+|            | only allows to include templates made with Volt                                                            |
+|            | requires an existing template at compile time                                                              |
 
 <a name='template-inheritance'></a>
 
@@ -1283,7 +1359,11 @@ Rendering `index.volt` produces:
 
 Note the call to the function `super()`. With that function it's possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
 
-<h5 class='alert alert-warning'>By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option <code>'compileAlways' =&gt; true</code>. Thus, the templates are compiled always taking into account changes in the parent templates. </h5>
+<div class="alert alert-warning">
+    <p>
+        By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option <code>'compileAlways' => true</code>. Thus, the templates are compiled always taking into account changes in the parent templates.
+    </p>
+</div>
 
 <a name='autoescape'></a>
 
@@ -1564,8 +1644,8 @@ require $compiler->getCompiledTemplatePath();
 
 ## External Resources
 
-- A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
-- [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)
-- [Our website](https://phalconphp.com) is running using Volt as template engine, [Github](https://github.com/phalcon/website)
-- [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [Github](https://github.com/phalcon/forum)
-- [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [Github](https://github.com/phalcon/vokuro)
+* A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
+* [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)
+* [Our website](https://phalconphp.com) is running using Volt as template engine, [Github](https://github.com/phalcon/website)
+* [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [Github](https://github.com/phalcon/forum)
+* [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [Github](https://github.com/phalcon/vokuro)

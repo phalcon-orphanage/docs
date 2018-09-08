@@ -1,6 +1,6 @@
 # Class **Phalcon\\Filter**
 
-*implements* [Phalcon\FilterInterface](/en/3.2/api/Phalcon_FilterInterface)
+*implements* [Phalcon\FilterInterface](/[[language]]/[[version]]/api/Phalcon_FilterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/filter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -48,7 +48,7 @@ $filter->sanitize("!100a019.01a", "float"); // returns "100019.01"
 
 *string* **FILTER_SPECIAL_CHARS**
 
-## Methods
+## Metody
 
 public **add** (*mixed* $name, *mixed* $handler)
 

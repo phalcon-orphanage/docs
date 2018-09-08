@@ -1,18 +1,37 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Flashing Messages</a> <ul>
+      <a href="#overview">Forms</a>
+      <ul>
         <li>
-          <a href="#adapters">Adapters</a>
+          <a href="#initializing">Initializing forms</a>
         </li>
         <li>
-          <a href="#usage">Usage</a>
+          <a href="#validation">Validation</a>
+        </li>      
+        <li>
+          <a href="#filtering">Filtering</a>
         </li>
         <li>
-          <a href="#printing">Printing Messages</a>
+          <a href="#entities">Forms + Entities</a>
         </li>
         <li>
-          <a href="#implicit-flush-vs-session">Implicit Flush vs. Session</a>
+          <a href="#elements">Form Elements</a>
+        </li>
+        <li>
+          <a href="#event-callback">Event Callbacks</a>
+        </li>
+        <li>
+          <a href="#rendering">Rendering Forms</a>
+        </li>
+        <li>
+          <a href="#creating-elements">Creating Form Elements</a>
+        </li>
+        <li>
+          <a href="#forms-manager">Forms Manager</a>
+        </li>
+        <li>
+          <a href="#external-resources">External Resources</a>
         </li>
       </ul>
     </li>
@@ -270,7 +289,11 @@ $form = new UsersForm(
 );
 ```
 
-Validation Phalcon forms are integrated with the [validation](/[[language]]/[[version]]/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
+<a name='validation'></a>
+
+## Validation
+
+Phalcon forms are integrated with the [validation](/[[language]]/[[version]]/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
 
 ```php
 <?php
@@ -382,7 +405,11 @@ $email->setFilters(
 $form->add($email);
 ```
 
-<h5 class='alert alert-info'>Learn more about filtering in Phalcon by reading the <a href="/[[language]]/[[version]]/filter">Filter documentation</a> </h5>
+<div class='alert alert-info'>
+    <p>
+        Learn more about filtering in Phalcon by reading the <a href="/[[language]]/[[version]]/filter">Filter documentation</a>.
+    </p>
+</div>
 
 <a name='entities'></a>
 
@@ -546,42 +573,40 @@ class ContactForm extends Form
 You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
 
 ```php
-<?php
-
-<form method='post'>
-    <?php
+<br />&lt;form method='post'&gt;
+    &lt;?php
 
         // Traverse the form
         foreach ($form as $element) {
             // Get any generated messages for the current element
-            $messages = $form->getMessagesFor(
-                $element->getName()
+            $messages = $form-&gt;getMessagesFor(
+                $element-&gt;getName()
             );
 
             if (count($messages)) {
                 // Print each element
-                echo '<div class='messages'>';
+                echo '&lt;div class='messages'&gt;';
 
                 foreach ($messages as $message) {
                     echo $message;
                 }
 
-                echo '</div>';
+                echo '&lt;/div&gt;';
             }
 
-            echo '<p>';
+            echo '&lt;p&gt;';
 
-            echo '<label for='', $element->getName(), ''>', $element->getLabel(), '</label>';
+            echo '&lt;label for='', $element-&gt;getName(), ''&gt;', $element-&gt;getLabel(), '&lt;/label&gt;';
 
             echo $element;
 
-            echo '</p>';
+            echo '&lt;/p&gt;';
         }
 
-    ?>
+    ?&gt;
 
-    <input type='submit' value='Send' />
-</form>
+    &lt;input type='submit' value='Send' /&gt;
+&lt;/form&gt;
 ```
 
 Or reuse the logic in your form class:
@@ -661,6 +686,8 @@ class MyElement extends Element
 }
 ```
 
+<a name='forms-manager'></a>
+
 ## Forms Manager
 
 This component provides a forms manager that can be used by the developer to register forms and access them via the service locator:
@@ -696,6 +723,8 @@ $loginForm = $this->forms->get('login');
 echo $loginForm->render();
 ```
 
+<a name='external-resources'></a>
+
 ## External Resources
 
-- [Vökuró](http://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]
+* [Vökuró](http://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]

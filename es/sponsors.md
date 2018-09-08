@@ -1,14 +1,14 @@
-# Becoming a sponsor
+# Convertirse en un patrocinador
 
-For those that wish to sponsor our work and further the development of Phalcon, we offer various sponsorship options that will fit any budget. Sponsoring our work allows us to devote more time to the project, offer faster responses to bugs and features and ensure the projects's stability.
+Para aquellos que quieran patrocinar nuestro trabajo y el desarrollo de Phalcon, ofrecemos varias opciones de patrocinio que se ajustan a cualquier presupuesto. Patrocinar nuestro trabajo nos permite dedicar más tiempo al proyecto, ofrecer respuestas más rápidas a bugs, características y asegurar la estabilidad de los proyectos.
 
 <a href="https://phalcon.link/fund">
 <button class="btn button-small btn-danger">
-    Become a Patron!
+    ¡Conviértase en un Patrón!
 </button>
 </a>
 
-# Sponsors and Supporters
+# Patrocinadores y Colaboradores
 
 <a href="https://pdffiller.com/" target="_blank">
     <img src="https://raw.githubusercontent.com/phalcon/cphalcon/master/backers/pdffiller-240x60.png" alt="PDFFiller" />

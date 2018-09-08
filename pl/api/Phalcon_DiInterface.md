@@ -4,7 +4,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/diinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## Methods
+## Metody
 
 abstract public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
@@ -30,7 +30,7 @@ abstract public **getShared** (*mixed* $name, [*mixed* $parameters])
 
 ...
 
-abstract public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/en/3.2/api/Phalcon_Di_ServiceInterface) $rawDefinition)
+abstract public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/[[language]]/[[version]]/api/Phalcon_Di_ServiceInterface) $rawDefinition)
 
 ...
 
@@ -54,7 +54,7 @@ abstract public **getServices** ()
 
 ...
 
-abstract public static **setDefault** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+abstract public static **setDefault** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector)
 
 ...
 

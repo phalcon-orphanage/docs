@@ -1,40 +1,125 @@
-<div class='article-menu' markdown='1'>
-
-- [Overview](#overview)
-    - [Requirements](#requirements)
-    - [Packages Included](#packages-included)
-    - [Installation](#installation)
-        - [Installing the Vagrant Box](#installation-vagrant-box)
-        - [Installing the Phalcon Box](#installation-phalcon-box)
-    - [Configuring](#installation-configuration)
-        - [Setting your provider](#installation-configuration-setting-provider)
-        - [Memory and CPU](#installation-configuration-memory-cpu)
-        - [Shared folders](#installation-configuration-shared-folders)
-        - [Nginx sites](#installation-configuration-nginx)
-            - [Custom Nginx configuration](#installation-configuration-custom-nginx)
-            - [Configuring the `hosts` file](#installation-configuration-hosts)
-        - [Install additional packages](#installation-aditional-packages)
-        - [Launching the Phalcon Box](#installation-launching-phalcon-box)
-    - [Daily usage](#daily-usage)
-        - [Accessing Phalcon Box globally](#daily-usage-accessing-box-globally)
-            - [Mac || Linux](#daily-usage-accessing-box-globally-mac-linux)
-            - [Windows](#daily-usage-accessing-box-globally-windows)
-        - [Connecting via SSH](#daily-usage-ssh)
-        - [Connecting to databases](#daily-usage-databases)
-        - [Adding additional sites](#daily-usage-additional-sites)
-        - [Environment variables](#daily-usage-environment-variables)
-            - [Global variables](#daily-usage-environment-global-variables)
-            - [Site variables](#daily-usage-environment-site-variables)
-        - [Ports](#daily-usage-ports)
-            - [Forwarding additional ports](#daily-usage-ports-forwarding)
-        - [Sharing your environment](#daily-usage-sharing-environment)
-        - [Network interfaces](#daily-usage-network-interfaces)
-        - [Updating Phalcon Box](#daily-usage-updating-box)
-        - [Provider specific settings](#daily-usage-provider-settings)
-            - [VirtualBox](#daily-usage-provider-settings-virtualbox)
-        - [Mail catcher](#daily-usage-mail-catcher)
-    - [Troubleshooting](#troubleshooting)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Overview</a> 
+      <ul>
+        <li>
+          <a href="#requirements">Requirements</a>
+        </li>
+        <li>
+          <a href="#packages-included">Packages Included</a>
+        </li>
+        <li>
+          <a href="#installation">Installation</a> <ul>
+            <li>
+              <a href="#installation-vagrant-box">Installing the Vagrant Box</a>
+            </li>
+            <li>
+              <a href="#installation-phalcon-box">Installing the Phalcon Box</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#installation-configuration">Configuring</a> 
+          <ul>
+            <li>
+              <a href="#installation-configuration-setting-provider">Setting your provider</a>
+            </li>
+            <li>
+              <a href="#installation-configuration-memory-cpu">Memory and CPU</a>
+            </li>
+            <li>
+              <a href="#installation-configuration-shared-folders">Shared folders</a>
+            </li>
+            <li>
+              <a href="#installation-configuration-nginx">Nginx sites</a> 
+              <ul>
+                <li>
+                  <a href="#installation-configuration-custom-nginx">Custom Nginx configuration</a>
+                </li>
+                <li>
+                  <a href="#installation-configuration-hosts">Configuring the <code>hosts</code> file</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#installation-aditional-packages">Install additional packages</a>
+            </li>
+            <li>
+              <a href="#installation-launching-phalcon-box">Launching the Phalcon Box</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#daily-usage">Daily usage</a> 
+          <ul>
+            <li>
+              <a href="#daily-usage-accessing-box-globally">Accessing Phalcon Box globally</a> 
+              <ul>
+                <li>
+                  <a href="#daily-usage-accessing-box-globally-mac-linux">Mac || Linux</a>
+                </li>
+                <li>
+                  <a href="#daily-usage-accessing-box-globally-windows">Windows</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#daily-usage-ssh">Connecting via SSH</a>
+            </li>
+            <li>
+              <a href="#daily-usage-databases">Connecting to databases</a>
+            </li>
+            <li>
+              <a href="#daily-usage-additional-sites">Adding additional sites</a>
+            </li>
+            <li>
+              <a href="#daily-usage-environment-variables">Environment variables</a> 
+              <ul>
+                <li>
+                  <a href="#daily-usage-environment-global-variables">Global variables</a>
+                </li>
+                <li>
+                  <a href="#daily-usage-environment-site-variables">Site variables</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#daily-usage-ports">Ports</a> 
+              <ul>
+                <li>
+                  <a href="#daily-usage-ports-forwarding">Forwarding additional ports</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#daily-usage-sharing-environment">Sharing your environment</a>
+            </li>
+            <li>
+              <a href="#daily-usage-network-interfaces">Network interfaces</a>
+            </li>
+            <li>
+              <a href="#daily-usage-updating-box">Updating Phalcon Box</a>
+            </li>
+            <li>
+              <a href="#daily-usage-provider-settings">Provider specific settings</a> 
+              <ul>
+                <li>
+                  <a href="#daily-usage-provider-settings-virtualbox">VirtualBox</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#daily-usage-mail-catcher">Mail catcher</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#troubleshooting">Troubleshooting</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -48,7 +133,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 * Operating System: Windows, Linux, or macOS
 * [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
 * [VMware Fusion](http://www.vmware.com/products/fusion) (or Workstation - if you want to build the VMware box)
-* [Vagrant](https://www.vagrantup.com/downloads.html) >= 1.9
+* [Vagrant](https://www.vagrantup.com/downloads.html) >= 1.9.8
 
 <a name='packages-included'></a>
 ## Packages Included
@@ -91,7 +176,11 @@ vagrant box add phalconphp/xenial64
 
 If this command fails, make sure your Vagrant installation is up to date.
 
-<h5 class='alert alert-warning' markdown='1'>To use the VMware provider, you will need to purchase both VMware Fusion / Workstation and the [VMware Vagrant plug-in](https://www.vagrantup.com/vmware). Though it is not free, VMware can provide faster shared folder performance out of the box.  </h5>
+<div class="alert alert-warning">
+    <p>
+        To use the VMware provider, you will need to purchase both VMware Fusion / Workstation and the <a href="https://www.vagrantup.com/vmware">VMware Vagrant plug-in</a>. Though it is not free, VMware can provide faster shared folder performance out of the box.  
+    </p>
+</div>
 
 <a name='installation-phalcon-box'></a>
 ### Installing the Phalcon Box
@@ -184,7 +273,11 @@ folders:
             rsync__exclude: ["node_modules"]
 ```
 
-<h5 class='alert alert-danger' markdown='1'>macOS users probably will need to install `vagrant-bindfs` plugin to fix shared folder (NFS) permission issue: </h5>
+<div class="alert alert-danger">
+    <p>
+        macOS users probably will need to install <code>vagrant-bindfs</code> plugin to fix shared folder (NFS) permission issue:    
+    </p>
+</div>
 
 ```bash
 vagrant plugin install vagrant-bindfs
@@ -226,7 +319,11 @@ Available types:
 
 Feel free to suggest a new type of Nginx configuration [through opening a New Feature Request](https://github.com/phalcon/box/issues/new).
 
-<h5 class='alert alert-warning' markdown='1'>If you change the `sites` property after provisioning the Phalcon Box, you must re-run `vagrant reload --provision` to update the Nginx configuration on the virtual machine. </h5>
+<div class="alert alert-warning">
+    <p>
+        If you change the <code>sites</code> property after provisioning the Phalcon Box, you must re-run <code>vagrant reload --provision</code> to update the Nginx configuration on the virtual machine.
+    </p>
+</div>
 
 <a name='installation-configuration-custom-nginx'></a>
 #### Custom Nginx configuration
@@ -272,7 +369,11 @@ Make sure the IP address listed is the one set in your `settings.yml` file. Once
 http://phalcon.local
 ```
 
-<h5 class='alert alert-danger' markdown='1'>To enable adding new sites to the `hosts` file automatically use `vagrant-hostsupdater` plugin: </h5>
+<div class="alert alert-danger">
+    <p>
+        To enable adding new sites to the <code>hosts</code> file automatically use <code>vagrant-hostsupdater</code> plugin: 
+    </p>
+</div>
 
 ```bash
 vagrant plugin install vagrant-hostsupdater
@@ -319,7 +420,11 @@ function box()
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Make sure to tweak the `$HOME/workspace` path in the function to the location of your actual Phalcon Box installation. Once the function is installed, you may run commands like `box up` or `box ssh` from anywhere on your system. </h5>
+<div class="alert alert-warning">
+    <p>
+        Make sure to tweak the <code>$HOME/workspace</code> path in the function to the location of your actual Phalcon Box installation. Once the function is installed, you may run commands like <code>box up</code> or <code>box ssh</code> from anywhere on your system. 
+    </p>
+</div>
 
 <a name='daily-usage-accessing-box-globally-windows'></a>
 #### Windows
@@ -338,7 +443,11 @@ set cwd=
 set box=
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Make sure to tweak the example `C:\workspace` path in the script to the actual location of your Phalcon Box installation. After creating the file, add the file location to your `PATH`. You may then run commands like `box up` or `box ssh` from anywhere on your system. </h5>
+<div class="alert alert-warning">
+    <p>
+        Make sure to tweak the example <code>C:\workspace</code> path in the script to the actual location of your Phalcon Box installation. After creating the file, add the file location to your <code>PATH</code>. You may then run commands like <code>box up</code> or <code>box ssh</code> from anywhere on your system.
+    </p>
+</div>
 
 <a name='daily-usage-ssh'></a>
 ### Connecting via SSH
@@ -351,7 +460,11 @@ But, since you will probably need to SSH into your Phalcon Box machine frequentl
 
 To connect to your MySQL, Postgres or MongoDB database from your host machine's database client, you should connect to `127.0.0.1` and port `33060` (MySQL), `54320` (Postgres) or `27017` (MongoDB). The username and password for databases is `phalcon` / `secret`.
 
-<h5 class='alert alert-danger' markdown='1'>You should only use these non-standard ports when connecting to the databases from your host machine. You will use the default `3306` and `5432` ports in your Phalcon database configuration file since Phalcon is running within the Virtual Machine. </h5>
+<div class="alert alert-danger">
+    <p>
+        You should only use these non-standard ports when connecting to the databases from your host machine. You will use the default <code>330</code> and `` ports in your Phalcon database configuration file since Phalcon is running within the Virtual Machine.
+    </p>
+</div>
 
 To access to the interactive db console from Phalcon Box type:
 
@@ -381,7 +494,11 @@ If Vagrant is not managing your "hosts" file automatically, you may need to add 
 192.168.50.4  blog.local
 ```
 
-<h5 class='alert alert-danger' markdown='1'>To enable adding new sites to the `hosts` file automatically use `vagrant-hostsupdater` plugin: </h5>
+<div class="alert alert-danger">
+    <p>
+        To enable adding new sites to the <code>hosts</code> file automatically use <code>vagrant-hostsupdater</code> plugin:
+    </p>
+</div>
 
 ```bash
 vagrant plugin install vagrant-hostsupdater
@@ -468,6 +585,8 @@ If you wish, you may forward additional ports to the Phalcon Box, as well as spe
 
 ```yaml
 ports:
+    - send: 63790
+      to: 6379
     - send: 50000
       to: 5000
     - send: 7777
@@ -491,7 +610,11 @@ After running the command, you will see an [Ngrok](https://ngrok.com) screen app
 share blog.local -region=eu -subdomain=phalcongelist
 ```
 
-<h5 class='alert alert-danger' markdown='1'>Vagrant is inherently insecure and you are exposing your virtual machine to the Internet when running the `share` command. </h5>
+<div class="alert alert-danger">
+    <p>
+        Vagrant is inherently insecure and you are exposing your virtual machine to the Internet when running the <code>share</code> command.
+    </p>
+</div>
 
 <a name='daily-usage-network-interfaces'></a>
 ### Network interfaces

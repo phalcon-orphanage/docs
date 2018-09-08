@@ -1,16 +1,38 @@
-<div class='article-menu' markdown='1'>
-
-- [Events Manager](#overview)
-    - [Naming Convention](#naming-convention)
-    - [Usage Example](#usage)
-    - [Creating components that trigger Events](#components-that-trigger-events)
-    - [Using Services From The DI](#using-services)
-    - [Event Propagation/Cancellation](#propagation-cancellation)
-    - [Listener Priorities](#listener-priorities)
-    - [Collecting Responses](#collecting-responses)
-    - [Implementing your own EventsManager](#custom)
-    - [List of events](#list)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Events Manager</a> 
+      <ul>
+        <li>
+          <a href="#naming-convention">Naming Convention</a>
+        </li>
+        <li>
+          <a href="#usage">Usage Example</a>
+        </li>
+        <li>
+          <a href="#components-that-trigger-events">Creating components that trigger Events</a>
+        </li>
+        <li>
+          <a href="#using-services">Using Services From The DI</a>
+        </li>
+        <li>
+          <a href="#propagation-cancellation">Event Propagation/Cancellation</a>
+        </li>
+        <li>
+          <a href="#listener-priorities">Listener Priorities</a>
+        </li>
+        <li>
+          <a href="#collecting-responses">Collecting Responses</a>
+        </li>
+        <li>
+          <a href="#custom">Implementing your own EventsManager</a>
+        </li>
+        <li>
+          <a href="#list">List of events</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -63,7 +85,11 @@ $connection->query(
 
 Now every time a query is executed, the SQL statement will be echoed out. The first parameter passed to the lambda function contains contextual information about the event that is running, the second is the source of the event (in this case the connection itself). A third parameter may also be specified which will contain arbitrary data specific to the event.
 
-<h5 class='alert alert-warning' markdown='1'>You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts </h5>
+<div class="alert alert-warning">
+    <p>
+        You must explicitly set the Events Manager to a component using the <code>setEventsManager()</code> method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts.
+    </p>
+</div>
 
 Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events. In this example, we will implement the `Phalcon\Db\Profiler` to detect the SQL statements that are taking longer to execute than expected:
 
@@ -161,13 +187,13 @@ You can create components in your application that trigger events to an EventsMa
 <?php
 
 use Phalcon\Events\EventsAwareInterface;
-use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Events\ManagerInterface;
 
 class MyComponent implements EventsAwareInterface
 {
     protected $eventsManager;
 
-    public function setEventsManager(EventsManager $eventsManager)
+    public function setEventsManager(ManagerInterface $eventsManager)
     {
         $this->eventsManager = $eventsManager;
     }
@@ -471,8 +497,8 @@ The events available in Phalcon are:
 | Middleware         | `beforeExecuteRoute`                |
 | Middleware         | `beforeHandleRoute`                 |
 | Middleware         | `beforeNotFound`                    |
-| Model              | `afterDelete`                       |
 | Model              | `afterCreate`                       |
+| Model              | `afterDelete`                       |
 | Model              | `afterSave`                         |
 | Model              | `afterUpdate`                       |
 | Model              | `afterValidation`                   |
@@ -481,6 +507,7 @@ The events available in Phalcon are:
 | Model              | `beforeDelete`                      |
 | Model              | `notDeleted`                        |
 | Model              | `beforeCreate`                      |
+| Model              | `beforeDelete`                      |
 | Model              | `beforeSave`                        |
 | Model              | `beforeUpdate`                      |
 | Model              | `beforeValidation`                  |
@@ -490,6 +517,12 @@ The events available in Phalcon are:
 | Model              | `notSaved`                          |
 | Model              | `onValidationFails`                 |
 | Models Manager     | `modelsManager:afterInitialize`     |
+| Router             | `router:beforeCheckRoutes`          |
+| Router             | `router:beforeCheckRoute`           |
+| Router             | `router:matchedRoute`               |
+| Router             | `router:notMatchedRoute`            |
+| Router             | `router:afterCheckRoutes`           |
+| Router             | `router:beforeMount`                |
 | View               | `view:afterRender`                  |
 | View               | `view:afterRenderView`              |
 | View               | `view:beforeRender`                 |

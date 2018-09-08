@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Flashing Messages</a> <ul>
+      <a href="#overview">Flashing Messages</a> 
+      <ul>
         <li>
           <a href="#adapters">Adapters</a>
         </li>

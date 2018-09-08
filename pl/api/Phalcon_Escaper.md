@@ -1,6 +1,6 @@
 # Class **Phalcon\\Escaper**
 
-*implements* [Phalcon\EscaperInterface](/en/3.2/api/Phalcon_EscaperInterface)
+*implements* [Phalcon\EscaperInterface](/[[language]]/[[version]]/api/Phalcon_EscaperInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/escaper.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -19,7 +19,7 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 
 ```
 
-## Methods
+## Metody
 
 public **setEncoding** (*mixed* $encoding)
 

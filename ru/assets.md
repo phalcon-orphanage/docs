@@ -1,21 +1,23 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Управление ресурсами</a> <ul>
+      <a href="#overview">Управление ресурсами</a> 
+      <ul>
         <li>
-          <a href="#add">Adding Resources</a>
+          <a href="#add">Добавление ресурсов</a>
         </li>
         <li>
           <a href="#resources-local-remote">Локальные/удалённые ресурсы</a>
         </li>
         <li>
-          <a href="#collections">Collections</a>
+          <a href="#collections">Коллекции</a>
         </li>
         <li>
           <a href="#url-prefixes">Префиксы</a>
         </li>
         <li>
-          <a href="#minification-filtering">Минификация/Фильтрация</a> <ul>
+          <a href="#minification-filtering">Минификация/Фильтрация</a> 
+          <ul>
             <li>
               <a href="#builtin-filters">Встроенные фильтры</a>
             </li>
@@ -24,7 +26,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#custom-output">Пользовательский вывод</a>
         </li>
@@ -38,7 +39,7 @@
 
 <a name='overview'></a>
 
-# Assets Management
+# Управление ресурсами
 
 `Phalcon\Assets` — это компонент позволяющий разработчику управлять статичными ресурсами в веб-приложении, такими как каскадные таблицы стилей или скрипты.
 
@@ -46,7 +47,7 @@
 
 <a name='add'></a>
 
-## Adding Resources
+## Добавление ресурсов
 
 Поддерживаются ресурсы двух типов: CSS и JavaScript. Но при необходимости, можно реализовать поддержку любых других. Внутренний механизм менеджера ресурсов хранит две коллекции, одну для JavaScript, а другую для CSS.
 
@@ -112,7 +113,7 @@ class IndexController extends Controller
 
 <a name='local-remote'></a>
 
-## Local/Remote resources
+## Локальные/удалённые ресурсы
 
 Локальные ресурсы это те, которые предоставляются вами в том же приложении. Обычно они расположены в корневом каталоге приложения. Ссылки на локальные ресурсы генерируются с помощью сервиса `url`, чаще с применением `Phalcon\Mvc\Url`.
 
@@ -136,7 +137,7 @@ public function indexAction()
 
 <a name='collections'></a>
 
-## Collections
+## Коллекции
 
 В коллекциях группируются однотипные ресурсы. Менеджер ресурсов всегда создает две коллекции: `css` и `js`. Для группирования специфичных ресурсов вы можете создавать дополнительные:
 
@@ -174,7 +175,7 @@ $footerCollection->addJs('js/bootstrap.min.js');
 <html>
 ```
 
-Volt syntax:
+Синтаксис шаблонизатора Volt:
 
 ```twig
 <html>
@@ -194,7 +195,7 @@ Volt syntax:
 
 <a name='url-prefixes'></a>
 
-## URL Prefixes
+## URL префиксы
 
 К коллекциям могут применяться URL префиксы, это позволит в любой момент легко изменить расположение ресурсов с одного сервера на другой:
 
@@ -228,7 +229,7 @@ $headerCollection = $assets
 
 <a name='minification-filtering'></a>
 
-## Minification/Filtering
+## Минификация/Фильтрация
 
 `Phalcon\Assets` предоставляет встроенную возможность минимизации JavaScript и CSS. Разработчик может создать коллекцию ресурсов, с указаниями для менеджера ресурсов, к каким ресурсам должны быть применены фильтры, а к каким нет. В дополнении к вышесказанному, `Jsmin` [Дугласа Крокфорда (Douglas Crockford)](http://www.crockford.com) входит в состав ядра минимизации JavaScript для увеличения производительности. Для минимизации CSS используется `CSSMin` [Райна Дэйя (Ryan Day)](https://github.com/soldair).
 
@@ -321,18 +322,18 @@ $jsFooterCollection->setTargetUri('production/final.js');
 
 <a name='builtin-filters'></a>
 
-### Built-In Filters
+### Встроенные фильтры
 
 Phalcon предоставляет два встроенных фильтра минимизации JavaScript и CSS ресурсов. Их реализация на языке Си обеспечивает минимальные накладные расходы для решения подобной задачи:
 
-| Фильтр                             | Description                                                                                                   |
+| Фильтр                             | Описание                                                                                                      |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | `Phalcon\Assets\Filters\Jsmin`  | Минимизирует JavaScript удаляя не нужны символы, которые игнорируются интерпретатором/компилятором JavaScript |
 | `Phalcon\Assets\Filters\Cssmin` | Минимизирует CSS удаляя ненужные символы, которые игнорируются браузерами                                     |
 
 <a name='custom-filters'></a>
 
-### Custom Filters
+### Пользовательские фильтры
 
 Кроме использования встроенных фильтров, вы можете создавать свои собственные фильтры. Вы можете воспользоваться существующими более продвинутыми инструментами, такими как [YUI](http://yui.github.io/yuicompressor/), [Sass](http://sass-lang.com/), [Closure](https://developers.google.com/closure/compiler/) и другие:
 
@@ -442,7 +443,7 @@ class LicenseStamper implements FilterInterface
 
 <a name='custom-output'></a>
 
-## Custom Output
+## Пользовательский вывод
 
 Методы `outputJs()` и `outputCss()` создают необходимые HTML-тэги в соответствии с каждым типом ресурсов. Однако вы можете переопределить эти методы или выводить ресурсы вручную, используя следующий подход:
 
@@ -462,7 +463,7 @@ foreach ($jsCollection as $resource) {
 
 <a name='improving-performance'></a>
 
-## Improving performance
+## Повышение производительности
 
 Существует множество способов оптимизации работы со статическими ресурсами. Ниже мы опишем простой метод, который позволит отдавать ресурсы непосредственно через веб-сервер, сокращая тем самым время ответа в целом.
 

@@ -1,80 +1,81 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Queueing</a>
-    </li>
-    <li>
-      <a href="$overview">Routing</a> <ul>
+      <a href="#overview">Routing</a>
+      <ul>
         <li>
-          <a href="$defining">Defining Routes</a> <ul>
+          <a href="#defining">Defining Routes</a>
+          <ul>
             <li>
-              <a href="$defining-named-parameters">Parameters with Names</a>
+              <a href="#defining-named-parameters">Parameters with Names</a>
             </li>
             <li>
-              <a href="$defining-short-syntax">Short Syntax</a>
+              <a href="#defining-short-syntax">Short Syntax</a>
             </li>
             <li>
-              <a href="$defining-mixed-parameters">Mixing Array and Short Syntax</a>
+              <a href="#defining-mixed-parameters">Mixing Array and Short Syntax</a>
             </li>
             <li>
-              <a href="$defining-route-to-modules">Routing to Modules</a>
+              <a href="#defining-route-to-modules">Routing to Modules</a>
             </li>
             <li>
-              <a href="$defining-http-method-restrictions">HTTP Method Restrictions</a>
+              <a href="#defining-http-method-restrictions">HTTP Method Restrictions</a>
             </li>
             <li>
-              <a href="$defining-using-conversors">Using conversors</a>
+              <a href="#defining-using-conversors">Using conversors</a>
             </li>
             <li>
-              <a href="$defining-groups-of-routes">Groups of Routes</a>
+              <a href="#defining-groups-of-routes">Groups of Routes</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="$matching">Matching Routes</a>
+          <a href="#matching">Matching Routes</a>
         </li>
         <li>
-          <a href="$naming">Naming Routes</a>
+          <a href="#naming">Naming Routes</a>
         </li>
         <li>
-          <a href="$usage">Usage Examples</a>
+          <a href="#usage">Usage Examples</a>
         </li>
         <li>
-          <a href="$default-behavior">Default Behavior</a>
+          <a href="#default-behavior">Default Behavior</a>
         </li>
         <li>
-          <a href="$default-route">Setting the default route</a>
+          <a href="#default-route">Setting the default route</a>
         </li>
         <li>
-          <a href="$not-found-paths">Not Found Paths</a>
+          <a href="#not-found-paths">Not Found Paths</a>
         </li>
         <li>
-          <a href="$default-paths">Setting default paths</a>
+          <a href="#default-paths">Setting default paths</a>
         </li>
         <li>
-          <a href="$extra-slashes">Dealing with extra/trailing slashes</a>
+          <a href="#extra-slashes">Dealing with extra/trailing slashes</a>
         </li>
         <li>
-          <a href="$callbacks">Match Callbacks</a>
+          <a href="#callbacks">Match Callbacks</a>
         </li>
         <li>
-          <a href="$hostname-constraints">Hostname Constraints</a>
+          <a href="#hostname-constraints">Hostname Constraints</a>
         </li>
         <li>
-          <a href="$uri-sources">URI Sources</a>
+          <a href="#uri-sources">URI Sources</a>
         </li>
         <li>
-          <a href="$testing">Testing your routes</a>
+          <a href="#testing">Testing your routes</a>
         </li>
         <li>
-          <a href="$annotations">Annotations Router</a>
+          <a href="#annotations">Annotations Router</a>
         </li>
         <li>
-          <a href="$registration">Registering Router instance</a>
+          <a href="#events">Events</a>
         </li>
         <li>
-          <a href="$custom">Implementing your own Router</a>
+          <a href="#registration">Registering Router instance</a>
+        </li>
+        <li>
+          <a href="#custom">Implementing your own Router</a>
         </li>
       </ul>
     </li>
@@ -120,10 +121,9 @@ $router->add(
 );
 
 $router->handle();
-````
+```
 
-The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths.
-In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. `Phalcon\Mvc\Dispatcher`) that this is the controller/action it should execute.
+The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths. In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. `Phalcon\Mvc\Dispatcher`) that this is the controller/action it should execute.
 
 An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can create more flexible routes:
 
@@ -750,7 +750,11 @@ $router->add(
 );
 ```
 
-<h5 class='alert alert-warning'>Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: <code>/([a-zA-Z0-9\\\_\\-]+)</code> </h5>
+<div class="alert alert-warning">
+    <p>
+        Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: <code>/([a-zA-Z0-9\_\-]+)</code>
+    </p>
+</div>
 
 <a name='default-behavior'></a>
 
@@ -812,6 +816,8 @@ $router->notFound(
 ```
 
 This is typically for an Error 404 page.
+
+> This will only work if the router was created without default routes: `$router = Phalcon\Mvc\Router(FALSE);`
 
 <a name='default-paths'></a>
 
@@ -1080,7 +1086,11 @@ Or you can manually pass a URI to the `handle()` method:
 $router->handle('/some/route/to/handle');
 ```
 
-<h5 class='alert alert-danger'>Please note that using <code>Router::URI_SOURCE_GET_URL</code> automatically decodes the Uri, because it is based on the <code>$_REQUEST</code> superglobal. However, for the time being, using <code>Router::URI_SOURCE_SERVER_REQUEST_URI</code> will not automatically decode the Uri for you. This will change in the next major release.</h5>
+<div class='alert alert-danger'>
+    <p>
+        Please note that using <code>Router::URI_SOURCE_GET_URL</code> automatically decodes the Uri, because it is based on the <code>$_REQUEST</code> superglobal. However, for the time being, using <code>Router::URI_SOURCE_SERVER_REQUEST_URI</code> will not automatically decode the Uri for you. This will change in the next major release.
+    </p>
+</div>
 
 <a name='testing'></a>
 
@@ -1127,6 +1137,21 @@ foreach ($testRoutes as $testRoute) {
     echo '<br>';
 }
 ```
+
+<a name='events'></a>
+
+## Events
+
+Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
+
+| Event                      | Description                          |
+| -------------------------- | ------------------------------------ |
+| `router:beforeCheckRoutes` | Fired before check all loaded routes |
+| `router:beforeCheckRoute`  | Fired before check a route           |
+| `router:matchedRoute`      | Fired when a route is matched        |
+| `router:notMatchedRoute`   | Fired is any route is matched        |
+| `router:afterCheckRoutes`  | Fired after check all routes         |
+| `router:beforeMount`       | Fired before mount a new route       |
 
 <a name='annotations'></a>
 

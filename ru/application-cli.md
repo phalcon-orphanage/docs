@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Создание консольного приложения</a> <ul>
+      <a href="#creating-cli-application">Создание консольного приложения</a> 
+      <ul>
         <li>
           <a href="#structure">Структура</a>
         </li>
@@ -30,19 +31,19 @@
 
 <a name='structure'></a>
 
-## Structure
+## Структура
 
 Минимальная структура консольного приложения будет выглядеть следующим образом:
 
-- `app/config/config.php`
-- `app/tasks/MainTask.php`
-- `app/cli.php` <-- основной загрузочный файл
+* `app/config/config.php`
+* `app/tasks/MainTask.php`
+* `app/cli.php` main bootstrap file
 
 <a name='creating-bootstrap'></a>
 
-## Creating a Bootstrap
+## Создание загрузочного файла
 
-Как и в обычных MVC приложениях, для начальной загрузки приложения используется загрузочный файл. Однако для начальной загрузки приложения мы будем использовать файл cli.php, вместо загрузочного файла index.php, который используется в классических веб-приложениях.
+Как и в обычных MVC приложениях, для начальной загрузки приложения используется загрузочный файл. Instead of the `index.php` bootstrapper in web applications, we use a `cli.php` file for bootstrapping the application.
 
 Ниже приведен образец загрузочного файла, который используется для этого примера.
 
@@ -110,9 +111,6 @@ try {
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
     exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-    exit(1);
 }
 ```
 
@@ -124,9 +122,9 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Tasks
+## Задачи
 
-Принцип работы задач похож на работу контролеров. Любое консольное приложение нуждается по крайней мере в одной задаче, именуемой MainTask. Каждая задача должна иметь по крайней мере одной действие, именуемое mainAction, которое будет запущено, если не указано другое, явно. Эти соглашения являются умолчанием.
+Tasks work similar to controllers. Any CLI application needs at least a `MainTask` and a `mainAction` and every task needs to have a `mainAction` which will run if no action is given explicitly.
 
 Ниже приведен пример файла `app/tasks/MainTask.php`:
 
@@ -146,7 +144,7 @@ class MainTask extends Task
 
 <a name='processing-action-parameters'></a>
 
-## Processing action parameters
+## Обработка параметров действия
 
 Вы можете передавать параметры в действие, код для этого уже присутствует в примере загрузочного файла.
 
@@ -191,7 +189,7 @@ best regards, universe
 
 <a name='running-tasks-chain'></a>
 
-## Running tasks in a chain
+## Запуск цепочки команд
 
 Также, возможно запускать задачи "цепочкой", если это необходимо. Для этого необходимо добавить само консольное приложение в DI:
 
@@ -210,9 +208,6 @@ try {
     exit(1);
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-    exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
     exit(1);
 }
 ```

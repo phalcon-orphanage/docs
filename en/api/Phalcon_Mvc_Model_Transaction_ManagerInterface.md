@@ -28,12 +28,12 @@ abstract public  **rollback** ([*mixed* $collect])
 ...
 
 
-abstract public  **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](/en/3.2/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
+abstract public  **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
 ...
 
 
-abstract public  **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](/en/3.2/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
+abstract public  **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
 ...
 

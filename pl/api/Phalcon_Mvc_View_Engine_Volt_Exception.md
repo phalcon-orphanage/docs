@@ -1,12 +1,12 @@
 # Class **Phalcon\\Mvc\\View\\Engine\\Volt\\Exception**
 
-*extends* class [Phalcon\Mvc\View\Exception](/en/3.2/api/Phalcon_Mvc_View_Exception)
+*extends* class [Phalcon\Mvc\View\Exception](/[[language]]/[[version]]/api/Phalcon_Mvc_View_Exception)
 
 *implements* [Throwable](http://php.net/manual/en/class.throwable.php)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/view/engine/volt/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## Methods
+## Metody
 
 final private [Exception](http://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 

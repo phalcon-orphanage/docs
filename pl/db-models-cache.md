@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">ORM Caching</a> <ul>
+      <a href="#overview">ORM Caching</a> 
+      <ul>
         <li>
           <a href="#caching-resultsets">Caching Resultsets</a>
         </li>
@@ -37,7 +38,7 @@
 
 Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
 
-This chapter explains the potential areas where it is possible to implement caching to improve performance. Phalcon gives developers the tools they need to implement cashing where their application needs it.
+This chapter explains the potential areas where it is possible to implement caching to improve performance. Phalcon gives developers the tools they need to implement caching where their application needs it.
 
 <a name='caching-resultsets'></a>
 
@@ -189,7 +190,7 @@ class Robots extends Model
 
         foreach ($parameters as $key => $value) {
             if (is_scalar($value)) {
-                $uniqueKey[] = $key . ':' . $value;
+                $uniqueKey[] = $key . ' :' . $value;
             } elseif (is_array($value)) {
                 $uniqueKey[] = $key . ':[' . self::_createKey($value) . ']';
             }
@@ -359,7 +360,7 @@ Note that this type of cache works in memory only, this means that cached data a
 
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
 
-| Type       | Description                                                     | Implicit Method |
+| Typ        | Description                                                     | Implicit Method |
 | ---------- | --------------------------------------------------------------- | --------------- |
 | Belongs-To | Returns a model instance of the related record directly         | `findFirst()`   |
 | Has-One    | Returns a model instance of the related record directly         | `findFirst()`   |
@@ -508,7 +509,7 @@ class Invoices extends Model
 
 In this scenario, the cache is implemented differently depending on the conditions received. We might decide that the cache backend should be determined by the primary key:
 
-| Type          | Cache Backend |
+| Typ           | Cache Backend |
 | ------------- | ------------- |
 | 1 - 10000     | mongo1        |
 | 10000 - 20000 | mongo2        |
@@ -580,6 +581,18 @@ class CustomQueryBuilder extends QueryBuilder
 
         $query->setDI($this->getDI());
 
+        if ( is_array($this->_bindParams) ) {
+            $query->setBindParams($this->_bindParams);
+        }
+
+        if ( is_array($this->_bindTypes) ) {
+            $query->setBindTypes($this->_bindTypes);
+        }
+
+        if ( is_array($this->_sharedLock) ) {
+            $query->setSharedLock($this->_sharedLock);
+        }
+
         return $query;
     }
 }
@@ -601,6 +614,14 @@ class CustomQuery extends ModelQuery
     {
         // Parse the intermediate representation for the SELECT
         $ir = $this->parse();
+
+        if ( is_array($this->_bindParams) ) {
+            $params = array_merge($this->_bindParams, (array)$params);
+        }
+
+        if ( is_array($this->_bindTypes) ) {
+            $types = array_merge($this->_bindTypes, (array)$types);
+        }
 
         // Check if the query has conditions
         if (isset($ir['where'])) {
@@ -624,6 +645,7 @@ class CustomQuery extends ModelQuery
 
         // Execute the query
         $result = $this->_executeSelect($ir, $params, $types);
+        $result = $this->_uniqueRow ? $result->getFirst() : $result;
 
         // Cache the result
         // ...

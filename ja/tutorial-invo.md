@@ -1,59 +1,60 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Tutorial: INVO</a> <ul>
+      <a href="#overview">チュートリアル: INVO</a> 
+      <ul>
         <li>
-          <a href="#structure">Project Structure</a>
+          <a href="#structure">プロジェクトの構成</a>
         </li>
         <li>
-          <a href="#routing">Routing</a>
+          <a href="#routing">ルーティング</a>
         </li>
         <li>
-          <a href="#configuration">Configuration</a>
+          <a href="#configuration">設定</a>
         </li>
         <li>
-          <a href="#autoloaders">Autoloaders</a>
+          <a href="#autoloaders">オートローダー</a>
         </li>
         <li>
-          <a href="#services">Registering services</a>
+          <a href="#services">サービスの登録</a>
         </li>
         <li>
-          <a href="#handling-requests">Handling the Request</a>
+          <a href="#handling-requests">リクエストの処理</a>
         </li>
         <li>
-          <a href="#dependency-injection">Dependency Injection</a>
+          <a href="#dependency-injection">依存性の注入</a>
         </li>
         <li>
-          <a href="#log-in">Log into the Application</a>
+          <a href="#log-in">アプリケーションへのログイン</a>
         </li>
         <li>
-          <a href="#securing-backend">Securing the Backend</a> <ul>
+          <a href="#securing-backend">バックエンドのセキュリティ保護</a> 
+          <ul>
             <li>
-              <a href="#events-manager">Events Management</a>
+              <a href="#events-manager">イベント管理</a>
             </li>
             <li>
-              <a href="#acl">Getting the ACL list</a>
+              <a href="#acl">ACLリストの提供</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#working-with-crud">Working with the CRUD</a>
+          <a href="#working-with-crud">CRUDを使用した作業</a>
         </li>
         <li>
-          <a href="#search-form">The Search Form</a>
+          <a href="#search-form">検索フォーム</a>
         </li>
         <li>
-          <a href="#performing-searches">Performing a Search</a>
+          <a href="#performing-searches">検索の実行</a>
         </li>
         <li>
-          <a href="#creating-updating-records">Creating and Updating Records</a>
+          <a href="#creating-updating-records">レコードの登録と更新</a>
         </li>
         <li>
-          <a href="#user-components">User Components</a>
+          <a href="#user-components">ユーザーコンポーネント</a>
         </li>
         <li>
-          <a href="#dynamic-titles">Changing the Title Dynamically</a>
+          <a href="#dynamic-titles">タイトルの動的な変更</a>
         </li>
       </ul>
     </li>
@@ -62,17 +63,17 @@
 
 <a name='overview'></a>
 
-# Tutorial: INVO
+# チュートリアル: INVO
 
-In this second tutorial, we'll explain a more complete application in order to gain a deeper understanding of developing with Phalcon. INVO is one of the sample applications we have created. INVO is a small website that allows users to generate invoices and do other tasks such as manage customers and products. You can clone its code from [Github](https://github.com/phalcon/invo).
+この第2のチュートリアルでは、より完全なアプリケーションを例にして説明し、Phalconを使用した開発について理解を深めます。 INVOは、私達が制作したサンプルアプリケーションの1つです。 INVOは小さなWebサイトで、ユーザーは請求書を作成したり、顧客や製品を管理したりといったタスクを行うことができます。 コードは [Github](https://github.com/phalcon/invo) からcloneすることができます。
 
-INVO was made with the client-side framework [Bootstrap](http://getbootstrap.com/). Although the application does not generate actual invoices, it still serves as an example showing how the framework works.
+INVOはクライアントサイドフレームワークである [Bootstrap](http://getbootstrap.com/) を使用して作られています。 アプリケーションは実際の請求書を生成しませんが、フレームワークの働きを理解するサンプルにはなります。
 
 <a name='structure'></a>
 
-## Project Structure
+## プロジェクトの構成
 
-Once you clone the project in your document root you'll see the following structure:
+ドキュメントルートでプロジェクトをcloneすると、次のような構造が表示されます:
 
 ```bash
 invo/
@@ -95,27 +96,27 @@ invo/
     schemas/
 ```
 
-As you know, Phalcon does not impose a particular file structure for application development. This project has a simple MVC structure and a public document root.
+ご存知のように、Phalconはアプリケーション開発に際して特定の構造を強制しません。このプロジェクトはシンプルなMVC構造を持ち、publicディレクトリをドキュメントルートとします。
 
-Once you open the application in your browser `http://localhost/invo` you'll see something like this:
+ブラウザで `http://localhost/invo` にアクセスしてアプリケーションを開くと、以下のように表示されるでしょう:
 
 ![](/images/content/tutorial-invo-1.png)
 
-The application is divided into two parts: a frontend and a backend. The frontend is a public area where visitors can receive information about INVO and request contact information. The backend is an administrative area where registered users can manage their products and customers.
+アプリケーションは2つの部分に分かれています: フロントエンド、バックエンド。 フロントエンドは公開されている部分で、訪問者はINVOの概要を知ったり、連絡先情報をリクエストする事ができます。 バックエンドは管理用の領域で、登録ユーザーが製品や顧客情報の管理ができます。
 
 <a name='routing'></a>
 
-## Routing
+## ルーティング
 
-INVO uses the standard route that is built-in with the [Router](/[[language]]/[[version]]/routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
+INVOは[Router](/[[language]]/[[version]]/routing)コンポーネントに組み込みの標準的なルートを使用します。 これらのルートは、 `/:controller/:action/:params` というパターンにマッチします。 これは、URIの最初の部分がコントローラー、2番めの部分がアクション、残りがパラメーターになる、ということを意味しています。
 
-The following route `/session/register` executes the controller `SessionController` and its action `registerAction`.
+`/session/register` というルートでは、`SessionController` コントローラの `registerAction` アクションが実行されます。
 
 <a name='configuration'></a>
 
-## Configuration
+## 設定
 
-INVO has a configuration file that sets general parameters in the application. This file is located at `app/config/config.ini` and is loaded in the very first lines of the application bootstrap (`public/index.php`):
+INVOにはアプリケーション内で、一般的なパラメーターをセットする設定ファイルがあります。 このファイルは `app/config/config.ini` にあり、アプリケーションのブートストラップ (`public/index.php`) の最初の数行で読み込まれています:
 
 ```php
 <?php
@@ -124,14 +125,14 @@ use Phalcon\Config\Adapter\Ini as ConfigIni;
 
 // ...
 
-// Read the configuration
+// 設定の読み込み
 $config = new ConfigIni(
     APP_PATH . 'app/config/config.ini'
 );
 
 ```
 
-[Phalcon Config](/[[language]]/[[version]]/config) (`Phalcon\Config`) allows us to manipulate the file in an object-oriented way. In this example, we're using an ini file for configuration but Phalcon has [adapters](/[[language]]/[[version]]/config) for other file types as well. The configuration file contains the following settings:
+[Phalcon Config](/[[language]]/[[version]]/config) (`Phalcon\Config`) を使うと、オブジェクト指向のやり方でファイルの操作を可能にします。 この例では、設定にiniファイルを使用していますが、Phalconは他のファイルタイプに対しても[アダプター](/[[language]]/[[version]]/config)を持っています。 構成ファイルには、次の設定が含まれています:
 
 ```ini
 [database]
@@ -150,31 +151,31 @@ libraryDir     = app/library/
 baseUri        = /invo/
 ```
 
-Phalcon doesn't have any pre-defined settings convention. Sections help us to organize the options as appropriate. In this file there are two sections to be used later: `application` and `database`.
+Phalconには、あらかじめ定義された設定規則はありません。 セクションは必要に応じてオプションを整理するのに役立ちます。 このファイルには、2つのセクションが使用されます: `application`と`database`。
 
 <a name='autoloaders'></a>
 
-## Autoloaders
+## オートローダー
 
-The second part that appears in the bootstrap file (`public/index.php`) is the autoloader:
+ブートストラップ(`public/index.php`)に記述されている2番目の部分はオートローダーです:
 
 ```php
 <?php
 
 /**
- * Auto-loader configuration
+ * オートローダーの設定
  */
 require APP_PATH . 'app/config/loader.php';
 ```
 
-The autoloader registers a set of directories in which the application will look for the classes that it will eventually need.
+オートローダーは、アプリケーションが最終的に必要とするクラスを探すディレクトリーのセットを登録します。
 
 ```php
 <?php
 
 $loader = new Phalcon\Loader();
 
-// We're a registering a set of directories taken from the configuration file
+// 設定ファイルからディレクトリの設定を取得して登録
 $loader->registerDirs(
     [
         APP_PATH . $config->application->controllersDir,
@@ -188,7 +189,7 @@ $loader->registerDirs(
 $loader->register();
 ```
 
-Note that the above code has registered the directories that were defined in the configuration file. The only directory that is not registered is the viewsDir because it contains HTML + PHP files but no classes. Also, note that we use a constant called APP_PATH. This constant is defined in the bootstrap (`public/index.php`) to allow us to have a reference to the root of our project:
+上記のコードは、設定ファイルで定義されたディレクトリを登録していることに注意してください。 viewsDirにはHTMLファイルとPHPファイルが含まれますが、クラスは含まれていないためviewsDirディレクトリだけは登録しません。 また、APP_PATHという定数を使っていることに注意してください。 この定数はブートストラップ(`public/index.php`)で定義されているもので、プロジェクトのルートパスを参照することができます。
 
 ```php
 <?php
@@ -203,15 +204,15 @@ define(
 
 <a name='services'></a>
 
-## Registering services
+## サービスの登録
 
-Another file that is required in the bootstrap is (`app/config/services.php`). This file allows us to organize the services that INVO uses.
+ブートストラップで必要とされる他のファイルは(`app/config/services.php`)です。 このファイルでINVOが利用するサービスを設定することができます。
 
 ```php
 <?php
 
 /**
- * Load application services
+ * アプリケーションのサービスを登録
  */
 require APP_PATH . 'app/config/services.php';
 ```
@@ -226,7 +227,7 @@ use Phalcon\Mvc\Url as UrlProvider;
 // ...
 
 /**
- * The URL component is used to generate all kind of URLs in the application
+ * URLコンポーネントはアプリケーションにおける全てのURLを生成するに使われる
  */
 $di->set(
     'url',
@@ -242,13 +243,13 @@ $di->set(
 );
 ```
 
-We will discuss this file in depth later.
+後でこのファイルについてより詳しく説明します。
 
 <a name='handling-requests'></a>
 
-## Handling the Request
+## リクエストの処理
 
-If we skip to the end of the file (`public/index.php`), the request is finally handled by `Phalcon\Mvc\Application` which initializes and executes all that is necessary to make the application run:
+ファイル(`public/index.php`)の最後では、リクエストは最終的に`Phalcon\Mvc\Application`で処理されています。このクラスは、アプリケーションの実行に必要な全ての初期化と処理の実行を行います:
 
 ```php
 <?php
@@ -266,13 +267,13 @@ $response->send();
 
 <a name='dependency-injection'></a>
 
-## Dependency Injection
+## 依存性の注入
 
-In the first line of the code block above, the Application class constructor is receiving the variable `$di` as an argument. What is the purpose of that variable? Phalcon is a highly decoupled framework so we need a component that acts as glue to make everything work together. That component is `Phalcon\Di`. It's a service container that also performs dependency injection and service location, instantiating all components as they are needed by the application.
+上記コード例の1行目を見てください。 Application クラスのコンストラクタは、`$di` 変数を引数として受け取っています。 この変数の目的は何でしょう？ Phalconは高度に分割されたフレームワークなので、全てが協調して動作するための接着剤の役割を果たすコンポーネントが必要です。 そのコンポーネントは、`Phalcon\Di` です。 これはサービスコンテナで、依存性の注入（Dependency Injection）や、アプリケーションに必要なコンポーネントの初期化も実行します。
 
-There are many ways of registering services in the container. In INVO, most services have been registered using anonymous functions/closures. Thanks to this, the objects are instantiated in a lazy way, reducing the resources needed by the application.
+コンテナにサービスを登録するには、様々な方法があります。 INVOでは、ほとんどのサービスは無名関数/クロージャーを使って登録されています。 このおかげで、オブジェクトは必要になるまでインスタンス化されないので、アプリケーションに必要なリソースが節約できます。
 
-For instance, in the following excerpt the session service is registered. The anonymous function will only be called when the application requires access to the session data:
+たとえば以下の抜粋では、sessionサービスが登録されています。無名関数はアプリケーションがsessionへのアクセスを要求した時に初めて呼ばれます:
 
 ```php
 <?php
@@ -281,7 +282,7 @@ use Phalcon\Session\Adapter\Files as Session;
 
 // ...
 
-// Start the session the first time a component requests the session service
+// コンポーネントがsessionサービスを最初に要求した時にセッションを開始する
 $di->set(
     'session',
     function () {
@@ -294,9 +295,9 @@ $di->set(
 );
 ```
 
-Here, we have the freedom to change the adapter, perform additional initialization and much more. Note that the service was registered using the name `session`. This is a convention that will allow the framework to identify the active service in the services container.
+これでアダプタを変更して、初期化処理を追加する等が自由に行えるようになりました。 サービスは “session” という名前で登録されていることに注意してください。 これは、フレームワークがサービスコンテナ内のアクティブなサービスを識別できるようにする規約です。
 
-A request can use many services and registering each service individually can be a cumbersome task. For that reason, the framework provides a variant of `Phalcon\Di` called `Phalcon\Di\FactoryDefault` whose task is to register all services providing a full-stack framework.
+リクエストは多数のサービスを利用する可能性があり、それらを1つずつ登録するのは面倒な作業です。 そのため、Phalconは `Phalcon\Di\FactoryDefault` という `Phalcon\Di` の別バージョンを用意しています。
 
 ```php
 <?php
@@ -305,22 +306,22 @@ use Phalcon\Di\FactoryDefault;
 
 // ...
 
-// The FactoryDefault Dependency Injector automatically registers the
-// right services providing a full-stack framework
+// FactoryDefault Dependency Injectorは、フルスタックフレームワークを提供するのに
+// 最適なサービスを、自動的に登録します
 $di = new FactoryDefault();
 ```
 
-It registers the majority of services with components provided by the framework as standard. If we need to override the definition of some service we could just set it again as we did above with `session` or `url`. This is the reason for the existence of the variable `$di`.
+FactoryDefault はフレームワークが標準的に提供しているコンポーネントサービスのほぼ全てを登録します。 サービスの定義をオーバーライドする必要がある場合は、上記のように`session`や`url`を再設定することができます。 以上が、`$di` 変数が存在する理由です。
 
 <a name='log-in'></a>
 
-## Log into the Application
+## アプリケーションへのログイン
 
-A `log in` facility will allow us to work on backend controllers. The separation between backend controllers and frontend ones is only logical. All controllers are located in the same directory (`app/controllers/`).
+`ログイン`機能によって、私たちはバックエンドコントローラの作業に取りかかることができます。 バックエンドとフロントエンドのコントローラーの分割は、あくまで論理上のものです。 全てのコントローラーは、同じディレクトリ (`app/controllers/`) に含まれています。
 
-To enter the system, users must have a valid username and password. Users are stored in the table `users` in the database `invo`.
+システムを利用するために、ユーザーは有効なユーザー名とパスワードを持っている必要があります。ユーザー情報は `invo` データベースの`users` テーブルに保存されます。
 
-Before we can start a session, we need to configure the connection to the database in the application. A service called `db` is set up in the service container with the connection information. As with the autoloader, we are again taking parameters from the configuration file in order to configure a service:
+セッションを開始する前に、アプリケーションがデータベースに接続できるよう設定する必要があります。 接続情報を持った `db` という名前のサービスが、サービスコンテナ内で用意されます。 オートローダーと同様、サービスを設定するための情報は設定ファイルから取得します:
 
 ```php
 <?php
@@ -329,7 +330,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
 // ...
 
-// Database connection is created based on parameters defined in the configuration file
+// 設定ファイルに定義されたパラメーターに基いてデータベース接続が作成される
 $di->set(
     'db',
     function () use ($config) {
@@ -345,9 +346,9 @@ $di->set(
 );
 ```
 
-Here, we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a logger, a profiler or change the adapter, setting it up as you want.
+ここで、MySQL接続アダプターのインスタンスを返しています。ロガーやプロファイラの追加、アダプターの変更等が必要であれば、それらの処理を追加することもできます。
 
-The following simple form (`app/views/session/index.volt`) requests the login information. We've removed some HTML code to make the example more concise:
+以下の簡単なフォーム (`app/views/session/index.volt`) では、ユーザーにログイン情報を求めています。サンプルを簡潔にするため、いくつかのHTMLコードは省いています:
 
 ```twig
 {{ form('session/start') }}
@@ -381,7 +382,7 @@ The following simple form (`app/views/session/index.volt`) requests the login in
 
 Instead of using raw PHP as the previous tutorial, we started to use [Volt](/[[language]]/[[version]]/volt). This is a built-in template engine inspired by Jinja_ providing a simpler and friendly syntax to create templates. It will not take too long before you become familiar with Volt.
 
-The `SessionController::startAction` function (`app/controllers/SessionController.php`) has the task of validating the data entered in the form including checking for a valid user in the database:
+`SessionController::startAction`関数 (`app/controllers/SessionController.php`) が、フォームに入力されたデータのバリデーションを行います。これには、データベース内の有効なユーザーかの確認も含まれます:
 
 ```php
 <?php
@@ -402,16 +403,16 @@ class SessionController extends ControllerBase
     }
 
     /**
-     * This action authenticate and logs a user into the application
+     * このアクションはユーザーを認証しアプリケーションにログインさせる
      */
     public function startAction()
     {
         if ($this->request->isPost()) {
-            // Get the data from the user
+            // POSTで送信された変数を受け取る
             $email    = $this->request->getPost('email');
             $password = $this->request->getPost('password');
 
-            // Find the user in the database
+            // データベースからユーザーを検索
             $user = Users::findFirst(
                 [
                     "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
@@ -429,7 +430,7 @@ class SessionController extends ControllerBase
                     'Welcome ' . $user->name
                 );
 
-                // Forward to the 'invoices' controller if the user is valid
+                // ユーザーが有効なら、'invoices' コントローラーに転送する
                 return $this->dispatcher->forward(
                     [
                         'controller' => 'invoices',
@@ -443,7 +444,7 @@ class SessionController extends ControllerBase
             );
         }
 
-        // Forward to the login form again
+        // ログインフォームへ再度転送
         return $this->dispatcher->forward(
             [
                 'controller' => 'session',
@@ -454,9 +455,9 @@ class SessionController extends ControllerBase
 }
 ```
 
-For the sake of simplicity, we have used [sha1](http://php.net/manual/en/function.sha1.php) to store the password hashes in the database, however, this algorithm is not recommended in real applications, use [bcrypt](/[[language]]/[[version]]/security) instead.
+簡単にするため、 データベースに保存するパスワードハッシュに[sha1](http://php.net/manual/en/function.sha1.php)を使用していますが、このアルゴリズムは実際のアプリケーションでは推奨されません。代わりに[bcrypt](/[[language]]/[[version]]/security)を使ってください。
 
-Note that multiple public attributes are accessed in the controller like: `$this->flash`, `$this->request` or `$this->session`. These are services defined in the services container from earlier (`app/config/services.php`). When they're accessed the first time, they are injected as part of the controller. These services are `shared`, which means that we are always accessing the same instance regardless of the place where we invoke them. For instance, here we invoke the `session` service and then we store the user identity in the variable `auth`:
+コントローラー内で `$this->flash`、`$this->request`、`$this->session` のようなpublic属性へのアクセスに注目してください。 これらは、サービスコンテナであらかじめ定義したサービスです (`app/config/services.php`)。 初めてアクセスされると、コントローラの一部として注入されます。 これらのサービスは`共有`されているため、これらのオブジェクトをどこから呼び出しても、常に同じインスタンスにアクセスすることになります。 例えば、ここで`session`サービスを呼び出して、ユーザーを識別する情報を`auth`という変数に保存しています:
 
 ```php
 <?php
@@ -470,7 +471,7 @@ $this->session->set(
 );
 ```
 
-Another important aspect of this section is how the user is validated as a valid one, first we validate whether the request has been made using method `POST`:
+このセクションのもう1つの重要な側面は、ユーザーが有効なものとして検証される方法です。まず、リクエストが`POST`メソッドを使用して行われたかどうかを検証します:
 
 ```php
 <?php
@@ -480,7 +481,7 @@ if ($this->request->isPost()) {
 }
 ```
 
-Then, we receive the parameters from the form:
+次に、フォームからパラメータを受け取ります:
 
 ```php
 <?php
@@ -489,7 +490,7 @@ $email    = $this->request->getPost('email');
 $password = $this->request->getPost('password');
 ```
 
-Now, we have to check if there is one user with the same username or email and password:
+ここで、同じユーザー名または電子メールとパスワードを持つユーザーが1人いるかどうかを確認する必要があります。
 
 ```php
 <?php
@@ -505,9 +506,9 @@ $user = Users::findFirst(
 );
 ```
 
-Note, the use of 'bound parameters', placeholders `:email:` and `:password:` are placed where values should be, then the values are 'bound' using the parameter `bind`. This safely replaces the values for those columns without having the risk of a SQL injection.
+'バインドパラメータ'を使う事で、プレースホルダ`:email:`と`:password:`を値が存在すべき場所に設置する事で、パラメータ`bind`の値が'バインド'されます。 これにより、SQLインジェクションのリスクがなくても、これらのカラムの値が安全に置き換えられます。
 
-If the user is valid we register it in session and forwards him/her to the dashboard:
+ユーザーが有効な場合、セッションに登録し、ダッシュボードに転送します:
 
 ```php
 <?php
@@ -528,7 +529,7 @@ if ($user !== false) {
 }
 ```
 
-If the user does not exist we forward the user back again to action where the form is displayed:
+ユーザーが存在しない場合は、フォームが表示されているアクションにユーザーを再度戻します:
 
 ```php
 <?php
@@ -543,17 +544,17 @@ return $this->dispatcher->forward(
 
 <a name='securing-backend'></a>
 
-## Securing the Backend
+## バックエンドのセキュリティ保護
 
-The backend is a private area where only registered users have access. Therefore, it is necessary to check that only registered users have access to these controllers. If you aren't logged into the application and you try to access, for example, the products controller (which is private) you will see a screen like this:
+バックエンドは登録されたユーザーだけがアクセスできるプライベートな領域です。 したがって、登録されたユーザーだけがそれらのコントローラーにアクセスできるようチェックする必要があります。 たとえば、ログインせずに products コントローラー (プライベート領域) にアクセスしようとすると、以下のように表示されるはずです:
 
 ![](/images/content/tutorial-invo-2.png)
 
-Every time someone attempts to access any controller/action, the application verifies that the current role (in session) has access to it, otherwise it displays a message like the above and forwards the flow to the home page.
+コントローラー・アクションにアクセスしようとしたときにはいつでも、アプリケーションは現在のロール (セッションに含まれる) が、アクセス権を持っているか確認します。アクセス権がない場合は、上のようなメッセージを表示し、インデックスページに遷移させます。
 
-Now let's find out how the application accomplishes this. The first thing to know is that there is a component called [Dispatcher](/[[language]]/[[version]]/dispatcher). It is informed about the route found by the [Routing](/[[language]]/[[version]]/routing) component. Then, it is responsible for loading the appropriate controller and execute the corresponding action method.
+次に、アプリケーションがこの動きをどのように実現しているか見ていきましょう。 最初に知るべきは、[Dispatcher](/[[language]]/[[version]]/dispatcher) コンポーネントです。 これは、[Routing](/[[language]]/[[version]]/routing)コンポーネントによって発見されたルートの情報を受け取ります。 次に、適切なコントローラーを読み込んで、対応するアクションのメソッドを実行します。
 
-Normally, the framework creates the Dispatcher automatically. In our case, we want to perform a verification before executing the required action, checking if the user has access to it or not. To achieve this, we have replaced the component by creating a function in the bootstrap:
+通常、フレームワークはディスパッチャを自動的に作成します。 今回は、要求されたアクションを実行する前に、認証を行い、ユーザーがアクセスできるか否かチェックする必要があります。 これを実現するため、ブートストラップの中に関数を用意して、ディスパッチャを置き換えています:
 
 ```php
 <?php
@@ -563,7 +564,7 @@ use Phalcon\Mvc\Dispatcher;
 // ...
 
 /**
- * MVC dispatcher
+ * MVCディスパッチャー
  */
 $di->set(
     'dispatcher',
@@ -577,13 +578,13 @@ $di->set(
 );
 ```
 
-We now have total control over the Dispatcher used in the application. Many components in the framework trigger events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue for components, a new component called [EventsManager](/[[language]]/[[version]]/events) allows us to intercept the events produced by a component, routing the events to listeners.
+これで、アプリケーションで使用されるディスパッチャを完全に制御できるようになりました。 フレーワークの多くのコンポーネントはイベントを発火するので、内部の処理の流れを変更することができます。 DIコンポーネントが接着剤として機能し、[EventsManager](/[[language]]/[[version]]/events)がコンポーネントが生み出すイベントをインターセプトし、イベントをリスナーに通知します。
 
 <a name='events-manager'></a>
 
-### Events Management
+### イベント管理
 
-The [EventsManager](/[[language]]/[[version]]/events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
+[EventsManager](/[[language]]/[[version]]/events)によって、特定のタイプのイベントにリスナーを割り当てることができます。 今、私達が取り組んでいるイベントのタイプは 'dispatch' です。 以下のコードは、ディスパッチャによって生成される全てのイベントをフィルタリングしています:
 
 ```php
 <?php
@@ -594,16 +595,16 @@ use Phalcon\Events\Manager as EventsManager;
 $di->set(
     'dispatcher',
     function () {
-        // Create an events manager
+        // イベントマネージャを作成する
         $eventsManager = new EventsManager();
 
-        // Listen for events produced in the dispatcher using the Security plugin
+        // Securityプラグインを使用して、ディスパッチャが生成するイベントを監視する
         $eventsManager->attach(
             'dispatch:beforeExecuteRoute',
             new SecurityPlugin()
         );
 
-        // Handle exceptions and not-found exceptions using NotFoundPlugin
+        // NotFoundPluginを使用して例外や未発見の例外を処理する
         $eventsManager->attach(
             'dispatch:beforeException',
             new NotFoundPlugin()
@@ -611,7 +612,7 @@ $di->set(
 
         $dispatcher = new Dispatcher();
 
-        // Assign the events manager to the dispatcher
+        // イベントマネージャーをディスパッチャにアサインする
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -619,13 +620,13 @@ $di->set(
 );
 ```
 
-When an event called `beforeExecuteRoute` is triggered the following plugin will be notified:
+`beforeExecuteRoute`というイベントが発生すると、次のプラグインが通知されます。
 
 ```php
 <?php
 
 /**
- * Check if the user is allowed to access certain action using the SecurityPlugin
+ * ユーザーがSecurityPluginを使用して特定のアクションにアクセスすることを許可されているかどうかを確認します
  */
 $eventsManager->attach(
     'dispatch:beforeExecuteRoute',
@@ -633,13 +634,13 @@ $eventsManager->attach(
 );
 ```
 
-When a `beforeException` is triggered then other plugin is notified:
+`beforeException`がトリガされると、他のプラグインに通知されます:
 
 ```php
 <?php
 
 /**
- * Handle exceptions and not-found exceptions using NotFoundPlugin
+ * NotFoundPluginを使用して例外や未発見の例外を処理する
  */
 $eventsManager->attach(
     'dispatch:beforeException',
@@ -647,7 +648,7 @@ $eventsManager->attach(
 );
 ```
 
-SecurityPlugin is a class located at (`app/plugins/SecurityPlugin.php`). This class implements the method `beforeExecuteRoute`. This is the same name as one of the events produced in the Dispatcher:
+SecurityPluginは (`app/plugins/SecurityPlugin.php`) にあるクラスです。 このクラスは`beforeExecuteRoute`メソッドを実装しています。 これは、ディスパッチャーが生成するイベントの1つと同じ名前です:
 
 ```php
 <?php
@@ -667,9 +668,9 @@ class SecurityPlugin extends Plugin
 }
 ```
 
-The hook events always receive a first parameter that contains contextual information of the event produced (`$event`) and a second one that is the object that produced the event itself (`$dispatcher`). It is not mandatory that plugins extend the class `Phalcon\Mvc\User\Plugin`, but by doing this they gain easier access to the services available in the application.
+フックイベントは常に2つの引数を取ります。第1引数はイベントが生成されたコンテキストの情報(`$event`) で、第2引数はイベントを生成したオブジェクト自身 (`$dispatcher`) です。 プラグインが`Phalcon\Mvc\User\Plugin`を継承することは必須ではありませんが、継承することでアプリケーションのサービスに簡単にアクセスできるようになります。
 
-Now, we're verifying the role in the current session, checking if the user has access using the ACL list. If the user does not have access we redirect to the home screen as explained before:
+ACLリストを使用してユーザーがアクセス権を持つかチェックすることで、現在のセッションのロールを検証するようになりました。ユーザーがアクセス権を持たない場合、前述したように最初のページにリダイレクトされます:
 
 ```php
 <?php
@@ -685,7 +686,7 @@ class SecurityPlugin extends Plugin
 
     public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
     {
-        // Check whether the 'auth' variable exists in session to define the active role
+        // ロールを定義するため、セッションに'auth'変数があるかチェックする
         $auth = $this->session->get('auth');
 
         if (!$auth) {
@@ -694,18 +695,18 @@ class SecurityPlugin extends Plugin
             $role = 'Users';
         }
 
-        // Take the active controller/action from the dispatcher
+        // ディスパッチャからアクティブなコントローラー名とアクション名を取得する
         $controller = $dispatcher->getControllerName();
         $action     = $dispatcher->getActionName();
 
-        // Obtain the ACL list
+        // ACLリストを取得
         $acl = $this->getAcl();
 
-        // Check if the Role have access to the controller (resource)
+        // ロールがコントローラー (又はリソース) にアクセス可能かチェックする
         $allowed = $acl->isAllowed($role, $controller, $action);
 
         if (!$allowed) {
-            // If he doesn't have access forward him to the index controller
+            // アクセス権が無い場合、indexコントローラーに転送する
             $this->flash->error(
                 "You don't have access to this module"
             );
@@ -717,7 +718,7 @@ class SecurityPlugin extends Plugin
                 ]
             );
 
-            // Returning 'false' we tell to the dispatcher to stop the current operation
+            // 'false'を返し、ディスパッチャーに現在の処理を停止させる
             return false;
         }
     }
@@ -726,9 +727,9 @@ class SecurityPlugin extends Plugin
 
 <a name='acl'></a>
 
-### Getting the ACL list
+### ACLリストの提供
 
-In the above example we have obtained the ACL using the method `$this->getAcl()`. This method is also implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
+上の例では、`$this->getAcl()`メソッドでACLを取得しました。 このメソッドもプラグインに実装されています。 ここでは、アクセス制御リスト (ACL) をどのように作ったか、ステップバイステップで解説します:
 
 ```php
 <?php
@@ -737,16 +738,16 @@ use Phalcon\Acl;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Adapter\Memory as AclList;
 
-// Create the ACL
+// ACLオブジェクトを作る
 $acl = new AclList();
 
-// The default action is DENY access
+// デフォルトの挙動はDENY（拒否）
 $acl->setDefaultAction(
     Acl::DENY
 );
 
-// Register two roles, Users is registered users
-// and guests are users without a defined identity
+// 2つのロールを登録する
+// ユーザーは登録済みユーザー、ゲストは未登録ユーザー
 $roles = [
     'users'  => new Role('Users'),
     'guests' => new Role('Guests'),
@@ -757,7 +758,7 @@ foreach ($roles as $role) {
 }
 ```
 
-Now, we define the resources for each area respectively. Controller names are resources and their actions are accesses for the resources:
+次に、それぞれのエリアのリソースを個別に定義していきます。コントローラー名がリソースで、これらのアクションがリソースへのアクセス権です:
 
 ```php
 <?php
@@ -766,7 +767,7 @@ use Phalcon\Acl\Resource;
 
 // ...
 
-// Private area resources (backend)
+// プライベートエリアのリソース (バックエンド)
 $privateResources = [
     'companies'    => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
     'products'     => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
@@ -783,7 +784,7 @@ foreach ($privateResources as $resourceName => $actions) {
 
 
 
-// Public area resources (frontend)
+// 公開エリアのリソース (フロントエンド)
 $publicResources = [
     'index'    => ['index'],
     'about'    => ['index'],
@@ -801,12 +802,12 @@ foreach ($publicResources as $resourceName => $actions) {
 }
 ```
 
-The ACL now knows about the existing controllers and their related actions. Role `Users` has access to all the resources of both frontend and backend. The role `Guests` only has access to the public area:
+いま、ACLは既存のコントローラーと関連するアクションの情報を知っている状態になっています。 `Users`ロールはバックエンドとフロントエンド双方の全てのリソースにアクセスできます。 `Guests`ロールは公開エリアにだけアクセスできます:
 
 ```php
 <?php
 
-// Grant access to public areas to both users and guests
+// 公開エリアのアクセス権をユーザーとゲストの双方に与える
 foreach ($roles as $role) {
     foreach ($publicResources as $resource => $actions) {
         $acl->allow(
@@ -817,7 +818,7 @@ foreach ($roles as $role) {
     }
 }
 
-// Grant access to private area only to role Users
+// ユーザーにだけ、プライベートエリアへのアクセス権を与える
 foreach ($privateResources as $resource => $actions) {
     foreach ($actions as $action) {
         $acl->allow(
@@ -831,11 +832,11 @@ foreach ($privateResources as $resource => $actions) {
 
 <a name='working-with-crud'></a>
 
-## Working with the CRUD
+## CRUDを使用した作業
 
-Backends usually provide forms to allow users to manipulate data. Continuing the explanation of INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you using forms, validations, paginators and more.
+バックエンドは一般的に、ユーザーがデータを操作できるようなフォームを提供します。 INVOの説明を続けると、今はCRUDの作成に取り組んでいます。Phalconにとっては、フォーム、バリデーション、ページネーターなどを利用する事で簡単に実装できる一般的な事例です。
 
-Most options that manipulate data in INVO (companies, products and types of products) were developed using a basic and common [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (Create, Read, Update and Delete). Each CRUD contains the following files:
+INVO (企業、製品、製品の種類) のデータを操作するほとんどのオプションは、基本的で一般的な[CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (Create, Read, Update, Delete) を使用して構築されます。 各CRUDには、次のファイルが含まれています:
 
 ```bash
 invo/
@@ -854,7 +855,7 @@ invo/
                 search.volt
 ```
 
-Each controller has the following actions:
+各コントローラーは、次のようなアクションを持っています:
 
 ```php
 <?php
@@ -862,7 +863,7 @@ Each controller has the following actions:
 class ProductsController extends ControllerBase
 {
     /**
-     * The start action, it shows the 'search' view
+     * 開始アクション。'search' ビューを表示
      */
     public function indexAction()
     {
@@ -870,8 +871,8 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Execute the 'search' based on the criteria sent from the 'index'
-     * Returning a paginator for the results
+     * 'index'から送信された検索条件に基づいて'search'を実行
+     * 結果のページネーターを返す
      */
     public function searchAction()
     {
@@ -879,7 +880,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Shows the view to create a 'new' product
+     * 'new' productを作成するビューを表示
      */
     public function newAction()
     {
@@ -887,7 +888,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Shows the view to 'edit' an existing product
+     * 既存のproductを 'edit' するビューを表示
      */
     public function editAction()
     {
@@ -895,7 +896,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Creates a product based on the data entered in the 'new' action
+     * 'new' アクションで入力されたデータに基づいてproductを作成
      */
     public function createAction()
     {
@@ -903,7 +904,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Updates a product based on the data entered in the 'edit' action
+     * 'edit' アクションで入力されたデータに基づいてproductを更新
      */
     public function saveAction()
     {
@@ -911,7 +912,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Deletes an existing product
+     * 既存のproductを削除
      */
     public function deleteAction($id)
     {
@@ -922,15 +923,15 @@ class ProductsController extends ControllerBase
 
 <a name='search-form'></a>
 
-## The Search Form
+## 検索フォーム
 
-Every CRUD starts with a search form. This form shows each field that the table has (products), allowing the user to create a search criteria for any field. The `products` table has a relationship with the table `products_types`. In this case, we previously queried the records in this table in order to facilitate the search by that field:
+すべてのCRUDは検索フォームから始まります。 このフォームは、テーブル (products) にある各フィールドを表示し、任意のフィールドの検索条件をユーザーが作成できるようにします。 `products`テーブルは`products_types`テーブルとのリレーションを持っています。 今回はフィールドでの検索を簡単に実装するために、テーブルのレコードを事前に取得しておきます:
 
 ```php
 <?php
 
 /**
- * The start action, it shows the 'search' view
+ * 開始アクション。'search' ビューを表示
  */
 public function indexAction()
 {
@@ -940,7 +941,7 @@ public function indexAction()
 }
 ```
 
-An instance of the `ProductsForm` form (`app/forms/ProductsForm.php`) is passed to the view. This form defines the fields that are visible to the user:
+`ProductsForm`フォーム (`app/forms/ProductsForm.php`) のインスタンスがビューに渡されます。このフォームは、ユーザーに表示されるフィールドを定義します:
 
 ```php
 <?php
@@ -956,7 +957,7 @@ use Phalcon\Validation\Validator\Numericality;
 class ProductsForm extends Form
 {
     /**
-     * Initialize the products form
+     * productsフォームの初期化
      */
     public function initialize($entity = null, $options = [])
     {
@@ -1029,18 +1030,18 @@ class ProductsForm extends Form
 }
 ```
 
-The form is declared using an object-oriented scheme based on the elements provided by the [forms](/[[language]]/[[version]]/forms) component. Every element follows almost the same structure:
+フォームはオブジェクト指向で設計されており、[forms](/[[language]]/[[version]]/forms)コンポーネントを基底としたエレメント提供します。 すべてのエレメントは、ほぼ同じ構造をしています:
 
 ```php
 <?php
 
-// Create the element
+// 要素を作成
 $name = new Text('name');
 
-// Set its label
+// ラベルを設定
 $name->setLabel('Name');
 
-// Before validating the element apply these filters
+// 要素を検証する前にフィルタを適用
 $name->setFilters(
     [
         'striptags',
@@ -1048,7 +1049,7 @@ $name->setFilters(
     ]
 );
 
-// Apply this validators
+// バリデーションを適用
 $name->addValidators(
     [
         new PresenceOf(
@@ -1059,16 +1060,16 @@ $name->addValidators(
     ]
 );
 
-// Add the element to the form
+// フォームに要素を追加
 $this->add($name);
 ```
 
-Other elements are also used in this form:
+他の要素もフォームで使用されます:
 
 ```php
 <?php
 
-// Add a hidden input to the form
+// 非表示項目をフォームに追加
 $this->add(
     new Hidden('id')
 );
@@ -1077,8 +1078,8 @@ $this->add(
 
 $productTypes = ProductTypes::find();
 
-// Add a HTML Select (list) to the form
-// and fill it with data from 'product_types'
+// フォームにHTMLのSELECT （リスト）を追加
+// 'product_types' のデータで埋める
 $type = new Select(
     'profilesId',
     $productTypes,
@@ -1094,7 +1095,7 @@ $type = new Select(
 );
 ```
 
-Note that `ProductTypes::find()` contains the data necessary to fill the SELECT tag using `Phalcon\Tag::select()`. Once the form is passed to the view, it can be rendered and presented to the user:
+`ProductTypes::find()`には、`Phalcon\Tag::select()`を使用してSELECTタグを埋めるために必要なデータが含まれています。 フォームがビューに渡されると、レンダリングしてユーザーに表示することができます:
 
 ```twig
 {{ form('products/search') }}
@@ -1126,7 +1127,7 @@ Note that `ProductTypes::find()` contains the data necessary to fill the SELECT 
 {{ endForm() }}
 ```
 
-This produces the following HTML:
+次の HTML が生成されます:
 
 ```html
 <form action='/invo/products/search' method='post'>
@@ -1182,34 +1183,34 @@ This produces the following HTML:
 </form>
 ```
 
-When the form is submitted, the `search` action is executed in the controller performing the search based on the data entered by the user.
+フォームが送信されると、`search`アクションは、ユーザーが入力したデータに基づいて検索を実行するコントローラーの中で実行されます。
 
 <a name='performing-searches'></a>
 
-## Performing a Search
+## 検索の実行
 
-The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/[[language]]/[[version]]/request) component:
+`search`アクションには2つの動作があります。 POSTでアクセスすると、フォームから送信されたデータに基づいて検索が実行されますが、GETでアクセスするとページネーション内のページに移動します。 HTTPメソッドを区別するために、[Request](/[[language]]/[[version]]/request)コンポーネントを使ってチェックします:
 
 ```php
 <?php
 
 /**
- * Execute the 'search' based on the criteria sent from the 'index'
- * Returning a paginator for the results
+ * 'index' から送信された検索条件に基づいて 'search' を実行
+ * 結果のページネーターを返す
  */
 public function searchAction()
 {
     if ($this->request->isPost()) {
-        // Create the query conditions
+        // クエリ条件を作成する
     } else {
-        // Paginate using the existing conditions
+        // 既存の条件を使用してページ切り替え
     }
 
     // ...
 }
 ```
 
-With the help of `Phalcon\Mvc\Model\Criteria`, we can create the search conditions intelligently based on the data types and values sent from the form:
+`Phalcon\Mvc\Model\Criteria`によって、フォームから送信されたデータ型と値に基づいてインテリジェントに検索条件を作成することができます:
 
 ```php
 <?php
@@ -1221,14 +1222,14 @@ $query = Criteria::fromInput(
 );
 ```
 
-This method verifies which values are different from '' (empty string) and null and takes them into account to create the search criteria:
+このメソッドは、どの値が ''（空の文字列）およびnullであるかを検証し、それらを考慮して検索条件を作成します。
 
-- If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL `like` operator to filter the results.
-- If the data type is not text or similar, it'll use the operator `=`.
+* フィールドのデータ型がテキストまたは同様のもの（char、varchar、textなど）の場合、SQLの`like`演算子を使用して結果をフィルタリングします。
+* データ型がテキストでない場合、演算子`=`が使用されます。
 
-Additionally, `Criteria` ignores all the `$_POST` variables that do not match any field in the table. Values are automatically escaped using `bound parameters`.
+さらに、`Criteria</ 0>は、テーブルのどのフィールドとも一致しないすべての<code>$POST`変数を無視します。 値は`バインドされたパラメータ`を使用して自動的にエスケープされます。
 
-Now, we store the produced parameters in the controller's session bag:
+ここでは、生成されたパラメータをコントローラのセッションバッグに格納します:
 
 ```php
 <?php
@@ -1236,9 +1237,9 @@ Now, we store the produced parameters in the controller's session bag:
 $this->persistent->searchParams = $query->getParams();
 ```
 
-A session bag, is a special attribute in a controller that persists between requests using the session service. When accessed, this attribute injects a `Phalcon\Session\Bag` instance that is independent in each controller.
+セッションバッグはリクエスト間で値を維持する、セッションサービスを利用したコントローラの特殊な変数です。 アクセスがあると、この変数は各コントローラで独立した`Phalcon\Session\Bag`インスタンスをインジェクションします。
 
-Then, based on the built params we perform the query:
+次に、生成されたパラメータに基づいてクエリを実行します:
 
 ```php
 <?php
@@ -1259,7 +1260,7 @@ if (count($products) === 0) {
 }
 ```
 
-If the search doesn't return any product, we forward the user to the index action again. Let's pretend the search returned results, then we create a paginator to navigate easily through them:
+検索でproductが返されない場合は、ユーザーをindexアクションに再度転送します。 返された検索結果をふりかえってみましょう。その後、それらを簡単にナビゲートするためにページネーションを作成します。
 
 ```php
 <?php
@@ -1270,17 +1271,17 @@ use Phalcon\Paginator\Adapter\Model as Paginator;
 
 $paginator = new Paginator(
     [
-        'data'  => $products,   // Data to paginate
-        'limit' => 5,           // Rows per page
-        'page'  => $numberPage, // Active page
+        'data'  => $products,   // ページネーション用データ
+        'limit' => 5,           // ページ内行数
+        'page'  => $numberPage, // 現在のページ
     ]
 );
 
-// Get active page in the paginator
+// paginatorの現在のページを取得
 $page = $paginator->getPaginate();
 ```
 
-Finally we pass the returned page to view:
+最後に、返されたページを渡して表示します:
 
 ```php
 <?php
@@ -1288,7 +1289,7 @@ Finally we pass the returned page to view:
 $this->view->page = $page;
 ```
 
-In the view (`app/views/products/search.volt`), we traverse the results corresponding to the current page, showing every row in the current page to the user:
+ビュー (`app/views/products/search.volt`) では、現在のページに対応する結果を取得し、取得した全ての行が表示されます。
 
 ```twig
 {% for product in page.items %}
@@ -1358,19 +1359,19 @@ In the view (`app/views/products/search.volt`), we traverse the results correspo
 {% endfor %}
 ```
 
-There are many things in the above example that worth detailing. First of all, active items in the current page are traversed using a Volt's `for`. Volt provides a simpler syntax for a PHP `foreach`.
+上記の例には、細かい部分で価値あることがたくさんあります。 まず第一に、現在のページ内のアクティブなアイテムは、Voltの`for`を使用して取得されます。 VoltはPHPの`foreach`を使うための、より簡単な構文を提供します。
 
 ```twig
 {% for product in page.items %}
 ```
 
-Which in PHP is the same as:
+PHPで同じ事は:
 
 ```php
 <?php foreach ($page->items as $product) { ?>
 ```
 
-The whole `for` block provides the following:
+`for`ブロック全体は以下を提供します:
 
 ```twig
 {% for product in page.items %}
@@ -1388,7 +1389,7 @@ The whole `for` block provides the following:
 {% endfor %}
 ```
 
-Now you can go back to the view and find out what every block is doing. Every field in `product` is printed accordingly:
+すぐにビューに戻り、すべてのブロックが何をしているのかを調べることができます。 `product`のすべてのフィールドがそれに応じて出力されます:
 
 ```twig
 <tr>
@@ -1422,7 +1423,7 @@ Now you can go back to the view and find out what every block is doing. Every fi
 </tr>
 ```
 
-As we seen before using `product.id` is the same as in PHP as doing: `$product->id`, we made the same with `product.name` and so on. Other fields are rendered differently, for instance, let's focus in `product.productTypes.name`. To understand this part, we have to check the Products model (`app/models/Products.php`):
+`product.id`を使用する前に見たように、PHPの場合ではこうなります: `$product->id`。`product.name`の場合も同様です。 他のフィールドは異なる方法でレンダリングされます。たとえば、`product.productTypes.name`に注目しましょう。 この部分を理解するには、Productsモデル (`app/models/Products.php`) を確認する必要があります。
 
 ```php
 <?php
@@ -1437,7 +1438,7 @@ class Products extends Model
     // ...
 
     /**
-     * Products initializer
+     * Products初期処理
      */
     public function initialize()
     {
@@ -1455,7 +1456,7 @@ class Products extends Model
 }
 ```
 
-A model can have a method called `initialize()`, this method is called once per request and it serves the ORM to initialize a model. In this case, 'Products' is initialized by defining that this model has a one-to-many relationship to another model called 'ProductTypes'.
+モデルは`initialize()`というメソッドを持つことができます。このメソッドはリクエストごとに1回呼び出され、ORMを使用してモデルを初期化します。 この場合、 'Products'は、このモデルが 'ProductTypes'と呼ばれる別のモデルと1対多の関係を持つことを定義することによって初期化されます。
 
 ```php
 <?php
@@ -1470,45 +1471,45 @@ $this->belongsTo(
 );
 ```
 
-Which means, the local attribute `product_types_id` in `Products` has an one-to-many relation to the `ProductTypes` model in its attribute `id`. By defining this relationship we can access the name of the product type by using:
+つまり、`Products`の属性`product_types_id`は、`ProductTypes`モデルの`id`属性と、1対多の関係をもっています。 この関係を定義することによって、以下を使用してproductのタイプ名にアクセスできます:
 
 ```twig
 <td>{{ product.productTypes.name }}</td>
 ```
 
-The field `price` is printed by its formatted using a Volt filter:
+フィールド`price`は、Voltのフィルタを使用してフォーマットされて出力されています。
 
 ```twig
 <td>{{ '%.2f'|format(product.price) }}</td>
 ```
 
-In plain PHP, this would be:
+素のPHPでは、次のようになります:
 
 ```php
 <?php echo sprintf('%.2f', $product->price) ?>
 ```
 
-Printing whether the product is active or not uses a helper implemented in the model:
+productがアクティブかどうかを表示するには、モデルに実装されているヘルパーを使用します。
 
 ```php
 <td>{{ product.getActiveDetail() }}</td>
 ```
 
-This method is defined in the model.
+このメソッドはモデルに定義されています。
 
 <a name='creating-updating-records'></a>
 
-## Creating and Updating Records
+## レコードの登録と更新
 
-Now let's see how the CRUD creates and updates records. From the `new` and `edit` views, the data entered by the user is sent to the `create` and `save` actions that perform actions of `creating` and `updating` products, respectively.
+CRUDがレコードを作成し更新する方法を見てみましょう。 `new`および`edit`ビューからユーザーが入力したデータは`create`および`save`アクションに送られ、それぞれproductsの`作成`および`更新`の処理を実行します。
 
-In the creation case, we recover the data submitted and assign them to a new `Products` instance:
+作成の場合、送信されたデータを取得し、新しい`Products`インスタンスに割り当てます:
 
 ```php
 <?php
 
 /**
- * Creates a product based on the data entered in the 'new' action
+ * 'new' アクションで入力されたデータに基づいてproductを作成
  */
 public function createAction()
 {
@@ -1535,7 +1536,7 @@ public function createAction()
 }
 ```
 
-Remember the filters we defined in the Products form? Data is filtered before being assigned to the object `$product`. This filtering is optional; the ORM also escapes the input data and performs additional casting according to the column types:
+Productsフォームで定義したフィルタを覚えていますか？ データは、オブジェクト`$product`に割り当てられる前にフィルタリングされます。 このフィルタリングはオプションです。 ORMはまた、入力データをエスケープし、列の種類に応じて追加の変換を実行します:
 
 ```php
 <?php
@@ -1546,7 +1547,7 @@ $name = new Text('name');
 
 $name->setLabel('Name');
 
-// Filters for name
+// nameをフィルタ
 $name->setFilters(
     [
         'striptags',
@@ -1554,7 +1555,7 @@ $name->setFilters(
     ]
 );
 
-// Validators for name
+// nameのバリデーション
 $name->addValidators(
     [
         new PresenceOf(
@@ -1568,7 +1569,7 @@ $name->addValidators(
 $this->add($name);
 ```
 
-When saving, we'll know whether the data conforms to the business rules and validations implemented in the form `ProductsForm` form (`app/forms/ProductsForm.php`):
+保存すると、データが`ProductsForm`フォーム (`app/forms/ProductsForm.php`)の形式で実装されたビジネスルールとバリデーションに沿っているかどうかがわかります。
 
 ```php
 <?php
@@ -1579,7 +1580,7 @@ $form = new ProductsForm();
 
 $product = new Products();
 
-// Validate the input
+// 入力内容をバリデーション
 $data = $this->request->getPost();
 
 if (!$form->isValid($data, $product)) {
@@ -1598,7 +1599,7 @@ if (!$form->isValid($data, $product)) {
 }
 ```
 
-Finally, if the form does not return any validation message we can save the product instance:
+最後に、フォームからバリデーションメッセージが返されない場合は、productインスタンスを保存できます:
 
 ```php
 <?php
@@ -1634,13 +1635,13 @@ return $this->dispatcher->forward(
 );
 ```
 
-Now, in the case of updating a product, we must first present the user with the data that is currently in the edited record:
+さて、productを更新する場合は、まず編集されたレコードに現在あるデータをユーザーに表示する必要があります:
 
 ```php
 <?php
 
 /**
- * Edits a product based on its id
+ * IDに紐づいたproductを編集
  */
 public function editAction($id)
 {
@@ -1670,13 +1671,13 @@ public function editAction($id)
 }
 ```
 
-The data found is bound to the form by passing the model as first parameter. Thanks to this, the user can change any value and then sent it back to the database through to the `save` action:
+見つかったデータは、最初のパラメータとしてモデルを渡すことによってフォームにバインドされます。 これにより、ユーザーは任意の値を変更し、`save`アクションを使用してデータベースを更新することができます:
 
 ```php
 <?php
 
 /**
- * Updates a product based on the data entered in the 'edit' action
+ * 'edit' アクションで入力されたデータに基づいてproductを更新
  */
 public function saveAction()
 {
@@ -1757,11 +1758,11 @@ public function saveAction()
 
 <a name='user-components'></a>
 
-## User Components
+## ユーザーコンポーネント
 
-All the UI elements and visual style of the application has been achieved mostly through [Bootstrap](http://getbootstrap.com/). Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
+アプリケーションのすべてのUI要素とビジュアルスタイルは、主に[Bootstrap](http://getbootstrap.com/)を使って実装されています。 アプリケーションの状態に応じてナビゲーションバーなどの一部の要素が変更されます。 たとえば、ユーザーがアプリケーションにログインしている場合、右上隅にある`Log in / Sign Up`リンクは`Log out`に変わります。
 
-This part of the application is implemented in the component `Elements` (`app/library/Elements.php`).
+アプリケーションのこの部分は、コンポーネント`Elements` (`app/library/Elements.php`) で実装されています。
 
 ```php
 <?php
@@ -1782,12 +1783,12 @@ class Elements extends Component
 }
 ```
 
-This class extends the `Phalcon\Mvc\User\Component`. It is not imposed to extend a component with this class, but it helps to get access more quickly to the application services. Now, we are going to register our first user component in the services container:
+このクラスは`Phalcon\Mvc\User\Component`を拡張しています。 このクラスを使ってコンポーネントを拡張することは必須ではありませんが、アプリケーションのサービスへのアクセスをスムーズにするのに役立ちます。 ここでは、最初のユーザーコンポーネントをサービスコンテナに登録します:
 
 ```php
 <?php
 
-// Register a user component
+// ユーザーコンポーネントを登録
 $di->set(
     'elements',
     function () {
@@ -1796,7 +1797,7 @@ $di->set(
 );
 ```
 
-As controllers, plugins or components within a view, this component also has access to the services registered in the container and by just accessing an attribute with the same name as a previously registered service:
+ビュー内のコントローラ、プラグイン、コンポーネントとして、このコンポーネントは、コンテナに登録されているサービスにアクセスし、登録したサービスと同じ名前の属性にアクセスするだけでアクセスできます。
 
 ```twig
 <div class='navbar navbar-fixed-top'>
@@ -1826,7 +1827,7 @@ As controllers, plugins or components within a view, this component also has acc
 </div>
 ```
 
-The important part is:
+重要な部分は次の箇所です:
 
 ```twig
 {{ elements.getMenu() }}
@@ -1834,9 +1835,9 @@ The important part is:
 
 <a name='dynamic-titles'></a>
 
-## Changing the Title Dynamically
+## タイトルの動的な変更
 
-When you browse between one option and another will see that the title changes dynamically indicating where we are currently working. This is achieved in each controller initializer:
+あるオプションと別のオプションを参照すると、現在作業している場所を示すタイトルが動的に変更されます。 これは、各コントローラーの初期化処理で実現されます:
 
 ```php
 <?php
@@ -1845,7 +1846,7 @@ class ProductsController extends ControllerBase
 {
     public function initialize()
     {
-        // Set the document title
+        // ページタイトルを指定
         $this->tag->setTitle(
             'Manage your product types'
         );
@@ -1857,7 +1858,7 @@ class ProductsController extends ControllerBase
 }
 ```
 
-Note, that the method `parent::initialize()` is also called, it adds more data to the title:
+`parent::initialize()`メソッドも呼び出され、タイトルにデータを追加します:
 
 ```php
 <?php
@@ -1868,7 +1869,7 @@ class ControllerBase extends Controller
 {
     protected function initialize()
     {
-        // Prepend the application name to the title
+        // タイトルの前にアプリケーション名を追加
         $this->tag->prependTitle('INVO | ');
     }
 
@@ -1876,7 +1877,7 @@ class ControllerBase extends Controller
 }
 ```
 
-Finally, the title is printed in the main view (app/views/index.volt):
+最後に、メインビュー (app/views/index.volt) でタイトルを出力:
 
 ```php
 <!DOCTYPE html>

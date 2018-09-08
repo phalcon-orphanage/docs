@@ -1,12 +1,12 @@
 # Class **Phalcon\\Mvc\\Model\\Relation**
 
-*implements* [Phalcon\Mvc\Model\RelationInterface](/en/3.2/api/Phalcon_Mvc_Model_RelationInterface)
+*implements* [Phalcon\Mvc\Model\RelationInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_RelationInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/relation.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This class represents a relationship between two models
 
-## Constants
+## Değişmezler
 
 *integer* **BELONGS_TO**
 
@@ -72,7 +72,7 @@ Returns parameters that must be always used when the related records are obtaine
 
 public **isThrough** ()
 
-Check whether the relation is a 'many-to-many' relation or not
+İlişkinin "çoktan çoklu" bir ilişki halinde olup olmadığını kontrol edin
 
 public **isReusable** ()
 

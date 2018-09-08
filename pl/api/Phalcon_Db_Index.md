@@ -1,6 +1,6 @@
 # Class **Phalcon\\Db\\Index**
 
-*implements* [Phalcon\Db\IndexInterface](/en/3.2/api/Phalcon_Db_IndexInterface)
+*implements* [Phalcon\Db\IndexInterface](/[[language]]/[[version]]/api/Phalcon_Db_IndexInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/index.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -33,7 +33,7 @@ $connection->addIndex("robots", null, $index_primary);
 
 ```
 
-## Methods
+## Metody
 
 public **getName** ()
 

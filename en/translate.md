@@ -1,15 +1,25 @@
-<div class='article-menu' markdown='1'>
-
-- [Multi-lingual Support](#overview)
-    - [Adapters](#adapters)
-    - [Component Usage](#usage)
-    - [Implementing your own adapters](#custom)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Multi-lingual Support</a> 
+      <ul>
+        <li>
+          <a href="#adapters">Adapters</a>
+        </li>
+        <li>
+          <a href="#usage">Component Usage</a>
+        </li>
+        <li>
+          <a href="#custom">Implementing your own adapters</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
 # Multi-lingual Support
-The component `Phalcon\\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
+The component `Phalcon\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
 <a name='adapters'></a>
 ## Adapters
@@ -19,6 +29,26 @@ This component makes use of adapters to read translation messages from different
 |-----------------------------------------|-----------------------------------------------------------------------------------------|
 | `Phalcon\Translate\Adapter\NativeArray` | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 
+<a name='adapters-factory'></a>
+### Factory
+Loads Translate Adapter class using `adapter` option
+
+```php
+<?php
+
+use Phalcon\Translate\Factory;
+
+$options = [
+    'locale'        => 'de_DE.UTF-8',
+    'defaultDomain' => 'translations',
+    'directory'     => '/path/to/application/locales',
+    'category'      => LC_MESSAGES,
+    'adapter'       => 'gettext',
+];
+
+$translate = Factory::load($options);
+```
+ 
 <a name='usage'></a>
 ## Component Usage
 Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:
@@ -56,8 +86,7 @@ $messages = [
 ];
 ```
 
-Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an
-automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
+Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
 
 A simple way of detecting the user's language is to parse the `$_SERVER['HTTP_ACCEPT_LANGUAGE']` contents, or if you wish, access it directly by calling `$this->request->getBestLanguage()` from an action/controller:
 
@@ -73,7 +102,8 @@ class UserController extends Controller
     {
         // Ask browser what is the best language
         $language = $this->request->getBestLanguage();
-
+        $messages = [];
+        
         $translationFile = 'app/messages/' . $language . '.php';
 
         // Check if we have a translation file for that lang
@@ -104,11 +134,11 @@ class UserController extends Controller
 The `_getTranslation()` method is available for all actions that require translations. The `$t` variable is passed to the views, and with it,
 we can translate strings in that layer:
 
-.. code-block:: html+php
-
-    <!-- welcome -->
-    <!-- String: hi => 'Hello' -->
-    <p><?php echo $t->_('hi'), ' ', $name; ?></p>
+```php
+<!-- welcome -->
+<!-- String: hi => 'Hello' -->
+<p><?php echo $t->_('hi'), ' ', $name; ?></p>
+```
 
 The `_()` method is returning the translated string based on the index passed. Some strings need to incorporate placeholders for
 calculated data i.e. `Hello %name%`. These placeholders can be replaced with passed parameters in the `_()` method. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
@@ -119,8 +149,69 @@ calculated data i.e. `Hello %name%`. These placeholders can be replaced with pas
 <p><?php echo $t->_('hi-name', ['name' => $name]); ?></p>
 ```
 
-Some applications implement multilingual on the URL such as `http://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement
-this by using a [Router](/[[language]]/[[version]]/routing).
+Some applications implement multilingual on the URL such as `http://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](/[[language]]/[[version]]/routing).
+
+The implementation above is helpful but it requires a base controller to implement the `_getTranslation()` and return the `Phalcon\Translate\Adapter\NativeArray` component. Additionaly the component needs to be set in the view as seen above in the `$t` variable.
+ 
+You can always wrap this functionality in its own class and register that class in the DI container:
+
+```php
+<?php
+
+use Phalcon\Mvc\User\Component;
+use Phalcon\Translate\Adapter\NativeArray;
+
+class Locale extends Component
+{
+    public function getTranslator()
+    {
+        // Ask browser what is the best language
+        $language = $this->request->getBestLanguage();
+
+        /**
+         * We are using JSON based files for storing translations. 
+         * You will need to check if the file exists! 
+         */
+        $translations = json_decode(
+            file_get_contents('app/messages/' . $language . '.json'),
+            true
+        );
+
+        // Return a translation object $messages comes from the require
+        // statement above
+        return new NativeArray(
+            [
+                'content' => $translations,
+            ]
+        );
+    }
+}
+``` 
+
+This way you can use the component in controllers:
+
+```php
+<?php
+
+use Phalcon\Mvc\Controller;
+
+class MyController extends Controller
+{
+    public function indexAction()
+    {
+        $name = 'Mike';
+        $text = $this->locale->_('hi-name', ['name' => $name]);
+        
+        $this->view->text = $text;
+    }
+}
+```
+
+or in a view directly
+
+```php
+<?php echo $locale->_('hi-name', ['name' => 'Mike']);
+```
 
 <a name='custom'></a>
 ## Implementing your own adapters
@@ -140,6 +231,13 @@ class MyTranslateAdapter implements AdapterInterface
      */
     public function __construct(array $options);
 
+    /**
+     * @param  string     $translateKey
+     * @param  array|null $placeholders
+     * @return string
+     */
+    public function t($translateKey, $placeholders = null);
+    
     /**
      * Returns the translation string of the given key
      *

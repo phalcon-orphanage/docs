@@ -24,7 +24,7 @@ abstract public **getDefinition** ()
 
 ...
 
-abstract public **resolve** ([*mixed* $parameters], [[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector])
+abstract public **resolve** ([*mixed* $parameters], [[Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector])
 
 ...
 

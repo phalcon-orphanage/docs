@@ -2,7 +2,12 @@
 
 A pull request is alterations to the code that either fixes a current issue or introduces new functionality.
 
-Your Pull request must include: * Issued to the correct branch. **We do not accept Pull Requests to the `master` branch** * Update to the CHANGELOG * Unit tests * Documentation if necessary and usage examples
+Your Pull request must include:
+
+* Issued to the correct branch. **We do not accept Pull Requests to the `master` branch**
+* Update to the CHANGELOG
+* Unit tests
+* Documentation if necessary and usage examples
 
 For fixing bugs, please ensure that you reference the issue in Github. If such issue does not exist, create one.
 

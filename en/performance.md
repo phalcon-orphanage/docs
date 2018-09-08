@@ -1,18 +1,48 @@
-<div class='article-menu' markdown='1'>
-
-- [Increasing Performance](#overview)
-    - [Profile on the Server](#profiling-server)
-        - [Profiling with Xhprof](#profiling-server-xhprof)
-        - [Profiling SQL Statements](#profiling-server-sql-statements)
-    - [Profile on the Client](#profiling-client)
-        - [Profile with Chrome/Firefox](#profiling-client-chrome-firefox)
-        - [Yahoo! YSlow](#profiling-client-yslow)
-        - [Profile with Speed Tracer](#profiling-client-speed-tracer)
-    - [Use a recent PHP version](#php-version)
-    - [Use a PHP Bytecode Cache](#bytecode-cache)
-    - [Do blocking work in the background](#background-tasks)
-    - [Google Page Speed](#page-speed)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Increasing Performance</a> 
+      <ul>
+        <li>
+          <a href="#profiling-server">Profile on the Server</a> 
+          <ul>
+            <li>
+              <a href="#profiling-server-xhprof">Profiling with Xhprof</a>
+            </li>
+            <li>
+              <a href="#profiling-server-sql-statements">Profiling SQL Statements</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#profiling-client">Profile on the Client</a> 
+          <ul>
+            <li>
+              <a href="#profiling-client-chrome-firefox">Profile with Chrome/Firefox</a>
+            </li>
+            <li>
+              <a href="#profiling-client-yslow">Yahoo! YSlow</a>
+            </li>
+            <li>
+              <a href="#profiling-client-speed-tracer">Profile with Speed Tracer</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#php-version">Use a recent PHP version</a>
+        </li>
+        <li>
+          <a href="#bytecode-cache">Use a PHP Bytecode Cache</a>
+        </li>
+        <li>
+          <a href="#background-tasks">Do blocking work in the background</a>
+        </li>
+        <li>
+          <a href="#page-speed">Google Page Speed</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

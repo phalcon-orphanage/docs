@@ -1,11 +1,23 @@
-<div class='article-menu' markdown='1'>
-
-- [Flashing Messages](#overview)
-    - [Adapters](#adapters)
-    - [Usage](#usage)
-    - [Printing Messages](#printing)
-    - [Implicit Flush vs. Session](#implicit-flush-vs-session)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Flashing Messages</a> 
+      <ul>
+        <li>
+          <a href="#adapters">Adapters</a>
+        </li>
+        <li>
+          <a href="#usage">Usage</a>
+        </li>
+        <li>
+          <a href="#printing">Printing Messages</a>
+        </li>
+        <li>
+          <a href="#implicit-flush-vs-session">Implicit Flush vs. Session</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

@@ -1,21 +1,40 @@
-<div class='article-menu' markdown='1'>
-
-- [Contributing to Phalcon](#contributing)
-    - [Contributions](#contributions)
-    - [Questions and Support](#questions-and-support)
-    - [Bug Report Checklist](#bug-report-checklist)
-        - [Generating a backtrace](#bug-report-generating-backtrace)
-    - [Pull Request Checklist](#pull-request-checklist)
-    - [Getting Support](#getting-support)
-    - [Requesting Features](#requesting-features)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#contributing">Contributing to Phalcon</a> <ul>
+        <li>
+          <a href="#contributions">Contributions</a>
+        </li>
+        <li>
+          <a href="#questions-and-support">Questions and Support</a>
+        </li>
+        <li>
+          <a href="#bug-report-checklist">Bug Report Checklist</a> 
+          <ul>
+            <li>
+              <a href="#bug-report-generating-backtrace">Generating a backtrace</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#pull-request-checklist">Pull Request Checklist</a>
+        </li>
+        <li>
+          <a href="#getting-support">Getting Support</a>
+        </li>
+        <li>
+          <a href="#requesting-features">Requesting Features</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='contributing'></a>
 # Contributing to Phalcon
-Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!.
+Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!
 
-Please take a moment to review this document in order to make the contribution process easy and effective all.
+Please take a moment to review this document in order to make the contribution process easy and effective for all.
 
 Following these guidelines, allows better communication, faster resolution of issues and moves the project forward.
 
@@ -27,8 +46,11 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 <a name='questions-and-support'></a>
 ## Questions and Support
-
-<h5 class='alert alert-warning' markdown='1'>We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forums][forum].</h5>
+<div class="alert alert-warning">
+    <p>
+       We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://phalcon.link/forum">official forums</a>.
+    </p>
+</div>
 
 <a name='bug-report-checklist'></a>
 ## Bug Report Checklist
@@ -57,7 +79,7 @@ Please follow this guides to understand how to generate the backtrace:
 - Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards][psr]
 - Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
 
-Before submit **new functionality**, please open a [NFR](/[[language]]/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of include the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Before submit **new functionality**, please open a [NFR](/[[language]]/[[version]]/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
 - An update to the `CHANGELOG.md`
 - Unit Tests
@@ -65,16 +87,16 @@ Before submit **new functionality**, please open a [NFR](/[[language]]/[[version
 
 <a name='getting-support'></a>
 ## Getting Support
-If you have a question about how to use Phalcon, please see the [support page][support].
+If you have any questions about how to use Phalcon, please see the [support page][support].
 
 <a name='requesting-features'></a>
 ## Requesting Features
-If you have a change or new feature in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
+If you have any changes or new features in mind, please fill an [NFR](/[[language]]/[[version]]/new-feature-request).
 
 Thanks!
 
 
-<3 Phalcon Team
+&lt;3 Phalcon Team
 
 [ghpr]: https://help.github.com/articles/using-pull-requests/
 [forum]: https://phalcon.link/forum

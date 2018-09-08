@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">Overview</a> 
+      <ul>
         <li>
           <a href="#dependencies">Závislosti</a>
         </li>
@@ -9,7 +10,8 @@
           <a href="#services">Services</a>
         </li>
         <li>
-          <a href="#installation">Installation</a> <ul>
+          <a href="#installation">Installation</a> 
+          <ul>
             <li>
               <a href="#installation-composer">With Composer (recommended)</a>
             </li>
@@ -18,7 +20,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#configuration">Configuration</a>
         </li>
@@ -32,7 +33,8 @@
           <a href="#logs">Logs</a>
         </li>
         <li>
-          <a href="#environment-variables">Environment variables</a> <ul>
+          <a href="#environment-variables">Environment variables</a> 
+          <ul>
             <li>
               <a href="#environment-variables-web">Web environment</a>
             </li>
@@ -41,7 +43,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#xdebug">Xdebug Remote debugger (PhpStorm)</a>
         </li>
@@ -58,7 +59,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#versions">Versions</a>
         </li>
@@ -77,7 +77,11 @@ Phalcon Compose is a community driven boilerplate development environment for Ph
 
 ## Dependencies
 
-To run this stack on your machine, you need at least: * Operating System: Windows, Linux, or OS X * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
+To run this stack on your machine, you need at least:
+
+* Operating System: Windows, Linux, or OS X
+* [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0
+* [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
 <a name='services'></a>
 
@@ -108,15 +112,14 @@ Services included are:
 
 Using Composer, you can create a new project as follows:
 
-```bash
-composer create-project phalcon/compose --prefer-dist <folder name>
-```
+$ `composer create-project phalcon/compose --prefer-dist <folder name>`
 
 Your output should be similar to this:
 
 ```php
 Example
  Installing phalcon/compose (version)
+
   - Installing phalcon/compose (version)
     Loading from cache
 
@@ -134,11 +137,13 @@ Generating autoload files
 
 Another way to initialize your project is with Git.
 
-```bash
- git clone git@github.com:phalcon/phalcon-compose.git
-```
+$ `git clone git@github.com:phalcon/phalcon-compose.git`
 
-<h5 class='alert alert-warning'>Make sure that you copy <code>variables.env.example</code> to <code>variables.env</code> and adjust the settings in that file </h5>
+<div class="alert alert-warning">
+    <p>
+        Make sure that you copy <code>variables.env.example</code> to <code>variables.env</code> and adjust the settings in that file.
+    </p>
+</div>
 
 Add your Phalcon Application into `application` folder.
 
@@ -148,9 +153,7 @@ Add your Phalcon Application into `application` folder.
 
 Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as follows:
 
-```bash
-127.0.0.1 www.phalcon.local phalcon.local
-```
+$ `127.0.0.1 www.phalcon.local phalcon.local`
 
 <a name='usage'></a>
 
@@ -158,16 +161,19 @@ Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as f
 
 You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
 
-```php
-docker-compose build
-```
+$ `docker-compose build`
 
 To start the application and run the containers in the background, use following command inside project root:
 
-```bash
-# You can use here your prefered project name with "-p my-app" parameter
-$ docker-compose up -d
-```
+You can use here your prefered project name with `-p <my-app>` parameter
+
+$ `docker-compose up -d`
+
+Now setup your project in the app container using the Phalcon Developer Tools
+
+Replace project in **<project_app_1>** with the name of your project/directory (shown in the output of `docker-compose up -d`)
+
+$ `docker exec -t <project_app_1> phalcon project application simple`
 
 Now you can now launch your application in your browser visiting `http://phalcon.local` (or the host name you chose above).
 
@@ -224,7 +230,11 @@ You can pass multiple environment variables from an external file to a service's
 | `PMA_PASSWORD`       | Define password to use for config authentication method.                                                     | secret  |
 | `PMA_ABSOLUTE_URI`   | The fully-qualified path (e.g. https://pma.example.net/) where the reverse proxy makes phpMyAdmin available. |         |
 
-*See also* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
+*See also*
+
+* https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker
+* https://docs.phpmyadmin.net/en/latest/config.html#config
+* https://docs.phpmyadmin.net/en/latest/setup.html
 
 <a name='xdebug'></a>
 
@@ -232,22 +242,22 @@ You can pass multiple environment variables from an external file to a service's
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
-| Environment variable         | Description                                              | Default |
-| ---------------------------- | -------------------------------------------------------- | ------- |
-| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host` (your host IP). |         |
-| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.                | 9000    |
-| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`.           | Off     |
-| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`.        | Off     |
+| Environment variable         | Description                                       | Default        |
+| ---------------------------- | ------------------------------------------------- | -------------- |
+| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host`.         | (your host IP) |
+| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.         | 9000           |
+| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`.    | Off            |
+| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`. | Off            |
 
 *NOTE* You can find your local IP address as follows:
 
-```bash
-# Linux/MacOS
-ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .
+**Linux/macOS**
 
-# Windows
-ipconfig
-```
+$ `ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .`
+
+**Windows**
+
+&gt; `ipconfig`
 
 <a name='troubleshooting'></a>
 
@@ -300,42 +310,10 @@ docker pull phalconphp/php-apache:ubuntu-16.04
 
 Linux/MacOS users can use `make` to perform the task:
 
-```bash
-make pull
-```
+$ `make pull`
 
 Then you have to reset all containers, delete all data, rebuild services and restart application.
 
 Linux/MacOS users can use `make` to perform the task:
 
-```bash
-make reset
-```
-
-<a name='versions'></a>
-
-## Versions
-
-The main tools used are Phalcon, Docker and Docker Compose.
-
-| Aplikace        | Version          |
-| --------------- | ---------------- |
-| Aerospike       | 3.11.1.1         |
-| Apache          | 2.4.18           |
-| Beanstalk       | 1.10             |
-| Composer        | 1.4.1            |
-| Elasticsearch   | 5.2.2            |
-| Memcached       | 1.4.35           |
-| Mongo           | 3.4.2            |
-| MySQL           | 5.7.17           |
-| PHP             | 7.0.18 + PHP-FPM |
-| PHPMD           | 2.6.0            |
-| phpMyAdmin      | 4.6.5.2          |
-| PHP_CodeSniffer | 2.8.1            |
-| Phalcon         | 3.1.2            |
-| Phing           | 2.16.0           |
-| Phive           | 0.6.3            |
-| PostgreSQL      | 9.5.5            |
-| Redis           | 3.2.6            |
-| Weakref         | 0.3.3            |
-| Xdebug          | 2.4.0            |
+$ `make reset`

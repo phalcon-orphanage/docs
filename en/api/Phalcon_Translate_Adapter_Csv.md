@@ -1,8 +1,8 @@
 # Class **Phalcon\\Translate\\Adapter\\Csv**
 
-*extends* abstract class [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
+*extends* abstract class [Phalcon\Translate\Adapter](/[[language]]/[[version]]/api/Phalcon_Translate_Adapter)
 
-*implements* [Phalcon\Translate\AdapterInterface](/en/3.2/api/Phalcon_Translate_AdapterInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
+*implements* [Phalcon\Translate\AdapterInterface](/[[language]]/[[version]]/api/Phalcon_Translate_AdapterInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/translate/adapter/csv.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -34,48 +34,48 @@ Check whether is defined a translation key in the internal array
 
 
 
-public  **setInterpolator** ([Phalcon\Translate\InterpolatorInterface](/en/3.2/api/Phalcon_Translate_InterpolatorInterface) $interpolator) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
+public  **setInterpolator** ([Phalcon\Translate\InterpolatorInterface](/[[language]]/[[version]]/api/Phalcon_Translate_InterpolatorInterface) $interpolator) inherited from [Phalcon\Translate\Adapter](/[[language]]/[[version]]/api/Phalcon_Translate_Adapter)
 
 ...
 
 
-public *string* **t** (*string* $translateKey, [*array* $placeholders]) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
+public *string* **t** (*string* $translateKey, [*array* $placeholders]) inherited from [Phalcon\Translate\Adapter](/[[language]]/[[version]]/api/Phalcon_Translate_Adapter)
 
 Returns the translation string of the given key
 
 
 
-public *string* **_** (*string* $translateKey, [*array* $placeholders]) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
+public *string* **_** (*string* $translateKey, [*array* $placeholders]) inherited from [Phalcon\Translate\Adapter](/[[language]]/[[version]]/api/Phalcon_Translate_Adapter)
 
 Returns the translation string of the given key (alias of method 't')
 
 
 
-public  **offsetSet** (*string* $offset, *string* $value) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
+public  **offsetSet** (*string* $offset, *string* $value) inherited from [Phalcon\Translate\Adapter](/[[language]]/[[version]]/api/Phalcon_Translate_Adapter)
 
 Sets a translation value
 
 
 
-public  **offsetExists** (*mixed* $translateKey) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
+public  **offsetExists** (*mixed* $translateKey) inherited from [Phalcon\Translate\Adapter](/[[language]]/[[version]]/api/Phalcon_Translate_Adapter)
 
 Check whether a translation key exists
 
 
 
-public  **offsetUnset** (*string* $offset) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
+public  **offsetUnset** (*string* $offset) inherited from [Phalcon\Translate\Adapter](/[[language]]/[[version]]/api/Phalcon_Translate_Adapter)
 
 Unsets a translation from the dictionary
 
 
 
-public *string* **offsetGet** (*string* $translateKey) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
+public *string* **offsetGet** (*string* $translateKey) inherited from [Phalcon\Translate\Adapter](/[[language]]/[[version]]/api/Phalcon_Translate_Adapter)
 
 Returns the translation related to the given key
 
 
 
-protected  **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders]) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
+protected  **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders]) inherited from [Phalcon\Translate\Adapter](/[[language]]/[[version]]/api/Phalcon_Translate_Adapter)
 
 Replaces placeholders by the values passed
 

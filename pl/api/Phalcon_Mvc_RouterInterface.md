@@ -2,7 +2,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/routerinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## Methods
+## Metody
 
 abstract public **setDefaultModule** (*mixed* $moduleName)
 
@@ -68,7 +68,7 @@ abstract public **addConnect** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
-abstract public **mount** ([Phalcon\Mvc\Router\GroupInterface](/en/3.2/api/Phalcon_Mvc_Router_GroupInterface) $group)
+abstract public **mount** ([Phalcon\Mvc\Router\GroupInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Router_GroupInterface) $group)
 
 ...
 

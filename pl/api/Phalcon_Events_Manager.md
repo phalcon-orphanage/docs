@@ -1,12 +1,12 @@
 # Class **Phalcon\\Events\\Manager**
 
-*implements* [Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface)
+*implements* [Phalcon\Events\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Events_ManagerInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/events/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Phalcon Events Manager, offers an easy way to intercept and manipulate, if needed, the normal flow of operation. With the EventsManager the developer can create hooks or plugins that will offer monitoring of data, manipulation, conditional execution and much more.
 
-## Methods
+## Metody
 
 public **attach** (*string* $eventType, *object* | *callable* $handler, [*int* $priority])
 
@@ -40,7 +40,7 @@ public **detachAll** ([*mixed* $type])
 
 Removes all events from the EventsManager
 
-final public *mixed* **fireQueue** ([SplPriorityQueue](http://php.net/manual/en/class.splpriorityqueue.php) | *array* $queue, [Phalcon\Events\Event](/en/3.2/api/Phalcon_Events_Event) $event)
+final public *mixed* **fireQueue** ([SplPriorityQueue](http://php.net/manual/en/class.splpriorityqueue.php) | *array* $queue, [Phalcon\Events\Event](/[[language]]/[[version]]/api/Phalcon_Events_Event) $event)
 
 Internal handler to call a queue of events
 

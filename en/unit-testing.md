@@ -1,9 +1,23 @@
-<div class='article-menu' markdown='1'>
-- [Overview](#overview)
-    - [Integrating PHPUnit with Phalcon](#integration)
-    - [The PHPUnit helper file](#unit-helper)
-    - [The `phpunit.xml` file](#phpunit-config)
-    - [Sample Unit Test](#sample)
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Overview</a> 
+      <ul>
+        <li>
+          <a href="#integration">Integrating PHPUnit with Phalcon</a>
+        </li>
+        <li>
+          <a href="#unit-helper">The PHPUnit helper file</a>
+        </li>
+        <li>
+          <a href="#phpunit-config">The phpunit.xml file</a>
+        </li>
+        <li>
+          <a href="#sample">Sample Unit Test</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>

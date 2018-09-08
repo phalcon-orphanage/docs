@@ -1,23 +1,24 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Events</a> <ul>
+      <a href="#overview">Eventos del Modelo</a> 
+      <ul>
         <li>
-          <a href="#events">Events and Events Manager</a> <ul>
+          <a href="#events">Eventos y Gestor de eventos</a> 
+          <ul>
             <li>
-              <a href="#events-in-models">Implementing Events in the Model's class</a>
+              <a href="#events-in-models">Implementando eventos en clases de Modelos</a>
             </li>
             <li>
-              <a href="#custom-events-manager">Using a custom Events Manager</a>
+              <a href="#custom-events-manager">Utilizando un Gestor de Eventos personalizado</a>
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#logging-sql-statements">Logging Low-Level SQL Statements</a>
+          <a href="#logging-sql-statements">Registro de sentencias SQL de bajo nivel</a>
         </li>
         <li>
-          <a href="#profiling-sql-statements">Profiling SQL Statements</a>
+          <a href="#profiling-sql-statements">Perfilando sentencias SQL</a>
         </li>
       </ul>
     </li>
@@ -26,36 +27,38 @@
 
 <a name='overview'></a>
 
-# Model Events
+# Eventos del Modelo
 
 <a name='events'></a>
 
-## Events and Events Manager
+## Eventos y Manager de eventos
 
-Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by `Phalcon\Mvc\Model` and their order of execution:
+Los modelos permiten implementar eventos que se disparan al realizar una inserción/actualización/eliminación, pueden usarse para definir reglas de negocio. Son soportados los siguientes eventos por `Phalcon\Mvc\Model` y su respectivo orden de ejecución:
 
-| Operation          | Name                     |  Can stop operation?  | Explanation                                                                                                                       |
-| ------------------ | ------------------------ |:---------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
-| Inserting          | afterCreate              |          NO           | Runs after the required operation over the database system only when an inserting operation is being made                         |
-| Updating           | afterUpdate              |          NO           | Runs after the required operation over the database system only when an updating operation is being made                          |
-| Inserting/Updating | afterSave                |          NO           | Runs after the required operation over the database system                                                                        |
-| Inserting/Updating | afterValidation          |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
-| Inserting          | afterValidationOnCreate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
-| Updating           | afterValidationOnUpdate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
-| Inserting/Updating | beforeValidation         |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
-| Inserting          | beforeCreate             |          YES          | Runs before the required operation over the database system only when an inserting operation is being made                        |
-| Inserting/Updating | beforeSave               |          YES          | Runs before the required operation over the database system                                                                       |
-| Updating           | beforeUpdate             |          YES          | Runs before the required operation over the database system only when an updating operation is being made                         |
-| Inserting          | beforeValidationOnCreate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
-| Updating           | beforeValidationOnUpdate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
-| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
-| Inserting/Updating | validation               |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
+| Operación             | Nombre                   | ¿Puede detener la operación? | Explicación                                                                                                                                      |
+| --------------------- | ------------------------ |:----------------------------:| ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Insertar              | afterCreate              |              NO              | Se ejecuta después de la operación sobre el sistema de base de datos pero sólo cuando se realiza una operación de inserción                      |
+| Eliminar              | afterDelete              |              NO              | Se ejecuta después de la operación de eliminación                                                                                                |
+| Actualizar            | afterUpdate              |              NO              | Se ejecuta después de la operación sobre el sistema de base de datos pero sólo cuando se realiza una operación de actualización                  |
+| Insertar o actualizar | afterSave                |              NO              | Después que la operación se ejecuta sobre el sistema de base de datos solo para inserción o actualización                                        |
+| Insertar o actualizar | afterValidation          |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas                                                        |
+| Insertar              | afterValidationOnCreate  |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas solo cuando se realiza una operación de inserción      |
+| Actualizar            | afterValidationOnUpdate  |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización |
+| Insertar o actualizar | beforeValidation         |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, para operaciones de inserción o actualización           |
+| Insertar              | beforeCreate             |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, sólo cuando se realiza una operación de inserción                            |
+| Eliminar              | beforeDelete             |              SI              | Se ejecuta antes de la operación de eliminación                                                                                                  |
+| Insertar o actualizar | beforeSave               |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, para operaciones de inserción o actualización                                |
+| Actualizar            | beforeUpdate             |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, sólo cuando se realiza una operación de actualización                        |
+| Insertar              | beforeValidationOnCreate |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de inserción       |
+| Actualizar            | beforeValidationOnUpdate |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización   |
+| Insertar o actualizar | onValidationFails        |        SI (detenido)         | Se ejecuta después de un validador de integridad falla                                                                                           |
+| Insertar o actualizar | validation               |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización   |
 
 <a name='events-in-models'></a>
 
-### Implementing Events in the Model's class
+### Implementando eventos en clases de Modelos
 
-The easier way to make a model react to events is to implement a method with the same name of the event in the model's class:
+La manera más fácil para hacer a un modelo reaccionar a los eventos es implementar un método con el mismo nombre del evento en la clase del modelo:
 
 ```php
 <?php
@@ -68,12 +71,12 @@ class Robots extends Model
 {
     public function beforeValidationOnCreate()
     {
-        echo 'This is executed before creating a Robot!';
+        echo 'Esto se ejecuta antes de crear un Robot!';
     }
 }
 ```
 
-Events can be used to assign values before performing an operation, for example:
+Los eventos pueden utilizarse para asignar valores antes de realizar una operación, por ejemplo:
 
 ```php
 <?php
@@ -84,13 +87,13 @@ class Products extends Model
 {
     public function beforeCreate()
     {
-        // Set the creation date
+        // Establecer fecha de creación
         $this->created_at = date('Y-m-d H:i:s');
     }
 
     public function beforeUpdate()
     {
-        // Set the modification date
+        // Establecer fecha de actualización
         $this->modified_in = date('Y-m-d H:i:s');
     }
 }
@@ -98,9 +101,9 @@ class Products extends Model
 
 <a name='custom-events-manager'></a>
 
-### Using a custom Events Manager
+### Utilizando un Manager de eventos personalizado
 
-Additionally, this component is integrated with `Phalcon\Events\Manager`, this means we can create listeners that run when an event is triggered.
+Además, este componente está integrado con `Phalcon\Events\Manager`, esto significa que podemos crear oyentes o listeners que se ejecutan cuando se activa un evento.
 
 ```php
 <?php
@@ -117,12 +120,12 @@ class Robots extends Model
     {
         $eventsManager = new EventsManager();
 
-        // Attach an anonymous function as a listener for 'model' events
+        // Adjuntamos una función anónima para escuchar los eventos del modelo
         $eventsManager->attach(
             'model:beforeSave',
             function (Event $event, $robot) {
                 if ($robot->name === 'Scooby Doo') {
-                    echo "Scooby Doo isn't a robot!";
+                    echo "Scooby Doo no es un robot!";
 
                     return false;
                 }
@@ -131,13 +134,13 @@ class Robots extends Model
             }
         );
 
-        // Attach the events manager to the event
+        // Adjuntamos el event manager al evento
         $this->setEventsManager($eventsManager);
     }
 }
 ```
 
-In the example given above, the Events Manager only acts as a bridge between an object and a listener (the anonymous function). Events will be fired to the listener when `robots` are saved:
+En el ejemplo anterior, el gestor de eventos sólo actúa como un puente entre un objeto y un oyente (la función anónima). Los eventos se dispararán al oyente cuando los `robots` se guarden:
 
 ```php
 <?php
@@ -152,7 +155,7 @@ $robot->year = 1969;
 $robot->save();
 ```
 
-If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager:
+Si queremos que todos los objetos creados en nuestra aplicación utilicen el mismo EventsManager, tenemos que asignarlo al administrador de modelos (Models Manager):
 
 ```php
 <?php
@@ -160,20 +163,20 @@ If we want all objects created in our application use the same EventsManager, th
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 
-// Registering the modelsManager service
+// Registramos el servicio modelsManager
 $di->setShared(
     'modelsManager',
     function () {
         $eventsManager = new EventsManager();
 
-        // Attach an anonymous function as a listener for 'model' events
+        // Adjuntamos una función anónima como listener para los eventos del 'model'
         $eventsManager->attach(
             'model:beforeSave',
             function (Event $event, $model) {
-                // Catch events produced by the Robots model
+                // Capturamos los eventos producidos en el modelo Robots
                 if (get_class($model) === 'Store\Toys\Robots') {
                     if ($model->name === 'Scooby Doo') {
-                        echo "Scooby Doo isn't a robot!";
+                        echo "Scooby Doo no es un robot!";
 
                         return false;
                     }
@@ -183,7 +186,7 @@ $di->setShared(
             }
         );
 
-        // Setting a default EventsManager
+        // Configuramos el EventsManager por defecto
         $modelsManager = new ModelsManager();
 
         $modelsManager->setEventsManager($eventsManager);
@@ -193,13 +196,13 @@ $di->setShared(
 );
 ```
 
-If a listener returns false that will stop the operation that is executing currently.
+Si un oyente devuelve `false` detendrá la operación que se esté ejecutando actualmente.
 
 <a name='logging-sql-statements'></a>
 
-## Logging Low-Level SQL Statements
+## Registro de sentencias SQL de bajo nivel
 
-When using high-level abstraction components such as `Phalcon\Mvc\Model` to access a database, it is difficult to understand which statements are finally sent to the database system. `Phalcon\Mvc\Model` is supported internally by `Phalcon\Db`. `Phalcon\Logger` interacts with `Phalcon\Db`, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
+Al utilizar componentes de alto nivel de abstracción como `Phalcon\Mvc\Model` para acceder a una base de datos, es difícil entender qué sentencias son finalmente enviadas al sistema de base de datos. `Phalcon\Mvc\Model` es soportado internamente por `Phalcon\Db`. `Phalcon\Logger` interactúa con `Phalcon\Db`, proporcionando las funciones de registro en la capa de abstracción de base de datos, esto nos permite registrar las sentencias SQL cuando suceden.
 
 ```php
 <?php
@@ -216,7 +219,7 @@ $di->set(
 
         $logger = new FileLogger('app/logs/debug.log');
 
-        // Listen all the database events
+        // Escucharemos todos los eventos de la base de datos
         $eventsManager->attach(
             'db:beforeQuery',
             function ($event, $connection) use ($logger) {
@@ -236,7 +239,7 @@ $di->set(
             ]
         );
 
-        // Assign the eventsManager to the db adapter instance
+        // Asignamos el eventsManager a la instancia del adaptador de db
         $connection->setEventsManager($eventsManager);
 
         return $connection;
@@ -244,7 +247,7 @@ $di->set(
 );
 ```
 
-As models access the default database connection, all SQL statements that are sent to the database system will be logged in the file:
+Como los modelos acceden a la conexión de base de datos por defecto, todas las sentencias SQL que se envían al sistema de base de datos se registrarán en un archivo:
 
 ```php
 <?php
@@ -253,23 +256,23 @@ use Store\Toys\Robots;
 
 $robot = new Robots();
 
-$robot->name       = 'Robby the Robot';
+$robot->name       = 'Robby el Robot';
 $robot->created_at = '1956-07-21';
 
 if ($robot->save() === false) {
-    echo 'Cannot save robot';
+    echo 'No se pudo guardar el robot';
 }
 ```
 
-As above, the file *app/logs/db.log* will contain something like this:
+Como en el anterior ejemplo, el archivo *app/logs/db.log* contendrá algo como esto:
 
-> `[Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots` `(name, created_at) VALUES ('Robby the Robot', '1956-07-21')`
+> `[Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots` `(name, created_at) VALUES ('Robby el Robot', '1956-07-21')`
 
 <a name='profiling-sql-statements'></a>
 
-## Profiling SQL Statements
+## Profiling de sentencias SQL
 
-Thanks to `Phalcon\Db`, the underlying component of `Phalcon\Mvc\Model`, it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks.
+Gracias a `Phalcon\Db`, el componente subyacente de `Phalcon\Mvc\Model`, es posible perfilar las sentencias SQL generadas por el ORM en orden para analizar el rendimiento de las operaciones de base de datos. Con esto usted puede diagnosticar problemas de rendimiento y descubrir cuellos de botella.
 
 ```php
 <?php
@@ -291,10 +294,10 @@ $di->set(
     function () use ($di) {
         $eventsManager = new EventsManager();
 
-        // Get a shared instance of the DbProfiler
+        // Obtenemos la instancia compartida de DbProfiler
         $profiler = $di->getProfiler();
 
-        // Listen all the database events
+        // Escuchamos todos los eventos de la base de datos
         $eventsManager->attach(
             'db',
             function ($event, $connection) use ($profiler) {
@@ -319,7 +322,7 @@ $di->set(
             ]
         );
 
-        // Assign the eventsManager to the db adapter instance
+        // Asignamos el eventsManager a la instancia del adaptador de db
         $connection->setEventsManager($eventsManager);
 
         return $connection;
@@ -327,14 +330,14 @@ $di->set(
 );
 ```
 
-Profiling some queries:
+Perfilando de algunas consultas:
 
 ```php
 <?php
 
 use Store\Toys\Robots;
 
-// Send some SQL statements to the database
+// Enviamos algunas sentencias SQL a la base de datos
 Robots::find();
 
 Robots::find(
@@ -349,15 +352,15 @@ Robots::find(
     ]
 );
 
-// Get the generated profiles from the profiler
+// Obtenemos los perfiles generador por el profiler
 $profiles = $di->get('profiler')->getProfiles();
 
 foreach ($profiles as $profile) {
-   echo 'SQL Statement: ', $profile->getSQLStatement(), '\n';
-   echo 'Start Time: ', $profile->getInitialTime(), '\n';
-   echo 'Final Time: ', $profile->getFinalTime(), '\n';
-   echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), '\n';
+   echo 'SQL Statement: ', $profile->getSQLStatement(), "\n";
+   echo 'Start Time: ', $profile->getInitialTime(), "\n";
+   echo 'Final Time: ', $profile->getFinalTime(), "\n";
+   echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), "\n";
 }
 ```
 
-Each generated profile contains the duration in milliseconds that each instruction takes to complete as well as the generated SQL statement.
+Cada perfil generado contiene la duración en milisegundos que tarda cada instrucción en completarse, así como la instrucción SQL generada.

@@ -1,11 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#setup">Ustawianie Web serwera</a> <ul>
+      <a href="#setup">Ustawianie Web serwera</a> 
+      <ul>
         <li>
-          <a href="#nginx">Nginx</a> <ul>
+          <a href="#php-built-in">Wbudowany serwer</a> 
+          <ul>
             <li>
-              <a href="#nginx-phalcon-configuration">Konfiguracja Phalcona</a> <ul>
+              <a href="#php-built-in-phalcon-configuration">Konfiguracja Phalcona</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#nginx">Nginx</a> 
+          <ul>
+            <li>
+              <a href="#nginx-phalcon-configuration">Phalcon configuration</a> <ul>
                 <li>
                   <a href="#nginx-phalcon-configuration-basic">Podstawowa konfiguracja</a>
                 </li>
@@ -13,11 +23,12 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#apache">Apache</a> <ul>
+          <a href="#apache">Apache</a> 
+          <ul>
             <li>
-              <a href="#apache-phalcon-configuration">Phalcon configuration</a> <ul>
+              <a href="#apache-phalcon-configuration">Phalcon configuration</a> 
+              <ul>
                 <li>
                   <a href="#apache-document-root">Absolutna ścieżka do witryny</a>
                 </li>
@@ -31,19 +42,11 @@
             </li>
           </ul>
         </li>
-        
         <li>
-          <a href="#cherokee">Cherokee</a> <ul>
+          <a href="#cherokee">Cherokee</a> 
+          <ul>
             <li>
               <a href="#cherokee-phalcon-configuration">Phalcon configuration</a>
-            </li>
-          </ul>
-        </li>
-        
-        <li>
-          <a href="#php-built-in">Wbudowany serwer</a> <ul>
-            <li>
-              <a href="#php-built-in-phalcon-configuration">Phalcon configuration</a>
             </li>
           </ul>
         </li>
@@ -58,93 +61,155 @@
 
 W celu działania routingu w phalconowej aplikacji najpierw musimy skonfigurować nasz web serwer aby przetwarzał przekierowywania prawidłowo. Konfiguracja popularnych web serwerów wygląda następująco:
 
+<a name='php-fpm'></a>
+
+## PHP-FPM
+
+The [PHP-FPM](http://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. W dzisiejszych czasach, PHP-FPM jest wbudowany w wszystkich dystrybucjach Linuxa posiadających PHP.
+
+On **Windows** PHP-FPM is in the PHP distribution archive through the file `php-cgi.exe` and you can start it with this script to help set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
+
+Create the file `php-fcgi.bat` with the following contents:
+
+```bat
+@ECHO OFF
+ECHO Starting PHP FastCGI...
+set PATH=C:\PHP;%PATH%
+c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
+```
+
+<a name='php-built-in'></a>
+
+## PHP Built-In Webserver (For Developers)
+
+To speed up getting your Phalcon application running in development the easiest way is to use this built-in PHP server. Do not use this server in a production environment. The following configurations for [Nginx](#nginx) and [Apache](#apache) are what you need.
+
+<a name='php-built-in-phalcon-configuration'></a>
+
+### Phalcon configuration
+
+To enable dynamic URI rewrites, without Apache or Nginx, that Phalcon needs, you can use the following router file:
+<a href="https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php" target="_blank">.htrouter.php</a>
+
+If you created your application with [Phalcon-Devtools](/[[language]]/[[version]]/devtools-installation) this file should already exist in the root directory of your project and you can start the server with the following command:
+
+```bash
+$(which php) -S localhost:8000 -t public .htrouter.php
+```
+
+The anatomy of the command above:
+
+- `$(which php)` - will insert the absolute path to your PHP binary
+- `-S localhost:8000` - invokes server mode with the provided `host:port`
+- `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory
+- `.htrouter.php` - the entry point that will be evaluated for each request
+
+Następnie otwórz w swojej przeglądarce http://localhost:8000/, aby sprawdzić, czy wszystko działa prawidłowo.
+
 <a name='nginx'></a>
 
 ## Nginx
 
 [Nginx](http://wiki.nginx.org/Main) jest darmowym, open source’owym, wysoce wydajnym serwerem HTTP i Reverse Proxy, jak jaki również serwerem pośredniczącym IMAP/POP3. W przeciwieństwie do tradycyjnych serwerów, Nginx nie korzysta z architektury wielowątkowej do obsługi żądań. Zamiast tego wykorzystuje on znacznie bardziej skalowalną architekturę sterowaną zdarzeniami (asynchroniczną). Ta architektura używa małą, a co ważniejsze, przewidywalną ilość pamięci pod obciążeniem.
 
-[PHP-FPM](http://php-fpm.org/) (FastCGI Process Manager) jest zazwyczaj używany aby NGINX mógł przetwarzać pliki PHP. W dzisiejszych czasach, PHP-FPM jest wbudowany w wszystkich dystrybucjach Linuxa posiadających PHP. Phalcon wraz z NGINX i PHP-FPM dostarcza potężny zestaw narzędzi, które zapewniają maksymalną wydajności dla aplikacji PHP.
+Phalcon wraz z NGINX i PHP-FPM dostarcza potężny zestaw narzędzi, które zapewniają maksymalną wydajności dla aplikacji PHP.
+
+### Install Nginx
+
+<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/" target="_blank">NginX Offical Site</a>
 
 <a name='nginx-phalcon-configuration'></a>
 
 ### Phalcon configuration
 
-Poniżej prezentujemy proponowane konfiguracje, jakich możesz użyć do konfiguracji Nginx'a dla Phalcona:
-
-<a name='nginx-phalcon-configuration-basic'></a>
-
-#### Basic configuration
-
-Użycie `$_GET['_url']` jako źródła URI
+You can use following potential configuration to setup Nginx with Phalcon:
 
 ```nginx
 server {
-    listen      80;
-    server_name localhost.dev;
+    # Port 80 will require Nginx to be started with root permissions
+    # Depending on how you install Nginx to use port 80 you will need
+    # to start the server with `sudo` ports about 1000 do not require
+    # root privileges
+    # listen      80;
+
+    listen        8000;
+    server_name   default;
+
+    ##########################
+    # In production require SSL
+    # listen 443 ssl default_server;
+
+    # ssl on;
+    # ssl_session_timeout  5m;
+    # ssl_protocols  SSLv2 SSLv3 TLSv1;
+    # ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+    # ssl_prefer_server_ciphers   on;
+
+    # These locations depend on where you store your certs
+    # ssl_certificate        /var/nginx/certs/default.cert;
+    # ssl_certificate_key    /var/nginx/certs/default.key;
+    ##########################
 
     # This is the folder that index.php is in
-    root /var/www/phalcon/public;
+    root /var/www/default/public;
     index index.php index.html index.htm;
 
     charset utf-8;
+    client_max_body_size 100M;
+    fastcgi_read_timeout 1800;
 
+    # Represents the root of the domain
+    # http://localhost:8000/[index.php]
     location / {
+        # Matches URLS `$_GET['_url']`
         try_files $uri $uri/ /index.php?_url=$uri&$args;
     }
 
-    location ~ \.php {
-        fastcgi_pass  unix:/run/php-fpm/php-fpm.sock;
+    # When the HTTP request does not match the above
+    # and the file ends in .php
+    location ~ [^/]\.php(/|$) {
+        # try_files $uri =404;
+
+        # Ubuntu and PHP7.0-fpm in socket mode
+        # This path is dependent on the version of PHP install
+        fastcgi_pass  unix:/var/run/php/php7.0-fpm.sock;
+
+
+        # Alternatively you use PHP-FPM in TCP mode (Required on Windows)
+        # You will need to configure FPM to listen on a standard port
+        # https://www.nginx.com/resources/wiki/start/topics/examples/phpfastcgionwindows/
+        # fastcgi_pass  127.0.0.1:9000;
+
         fastcgi_index /index.php;
 
         include fastcgi_params;
-        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+        if (!-f $document_root$fastcgi_script_name) {
+            return 404;
+        }
+
         fastcgi_param PATH_INFO       $fastcgi_path_info;
-        fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+        # fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+        # and set php.ini cgi.fix_pathinfo=0
+
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
 
     location ~ /\.ht {
         deny all;
     }
-}
-```
 
-Użycie `$_SERVER['REQUEST_URI']` jako źródła URI:
-
-```nginx
-server {
-    listen      80;
-    server_name localhost.dev;
-
-    # This is the folder that index.php is in
-    root /var/www/phalcon/public;
-    index index.php index.html index.htm;
-
-    charset utf-8;
-
-    location / {
-        try_files $uri $uri/ /index.php;
-    }
-
-    location ~ \.php$ {
-        try_files $uri =404;
-
-        fastcgi_pass  127.0.0.1:9000;
-        fastcgi_index /index.php;
-
-        include fastcgi_params;
-        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
-        fastcgi_param PATH_INFO       $fastcgi_path_info;
-        fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    }
-
-    location ~ /\.ht {
-        deny all;
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+        expires       max;
+        log_not_found off;
+        access_log    off;
     }
 }
 ```
+
+### Start Nginx
+
+Usually `start nginx` from the command line but this depends on your installation method.
 
 <a name='apache'></a>
 
@@ -173,11 +238,15 @@ test/
 
 <a name='apache-document-root'></a>
 
-#### Document root
+#### Absolutna ścieżka do witryny
 
 Najbardziej typowym przypadkiem jest aplikacja zainstalowana w dowolnym folderze znajdującym się w głównym katalogu witryny. W tym przypadku używamy dwóch plików `.htaccess`, pierwszego do ukrycia kodu aplikacjia i przekierowania wszystkich zapytań do głównego katalogu aplikacji (`public/`).
 
-<h5 class='alert alert-warning'>Note that using <code>.htaccess</code> files requires your apache installation to have the <code>AllowOverride All</code> option set. </h5>
+<div class="alert alert-warning">
+    <p>
+        Note that using <code>.htaccess</code> files requires your apache installation to have the `AllowOverride All` option set.
+    </p>
+</div>
 
 ```apacheconfig
 # test/.htaccess
@@ -204,7 +273,7 @@ Drugi plik `.htaccess` zlokalizowany jest w folderze `public/`, przekierowuje on
 
 <a name='apache-apache-configuration'></a>
 
-#### Apache configuration
+#### Konfiguracja Apache
 
 Jeśli nie chcesz używać plików `.htaccess` możesz przenieść te konfiguracje do głównego pliku konfiguracyjnego apache’a
 
@@ -229,7 +298,7 @@ Jeśli nie chcesz używać plików `.htaccess` możesz przenieść te konfigurac
 
 <a name='apache-virtual-hosts'></a>
 
-#### Virtual Hosts
+#### Wirtualne hosty
 
 Następująca konfiguracja umożliwia Ci zainstalowanie aplikacji Phalcona w wirtualnym hoście:
 
@@ -298,37 +367,3 @@ Na koniec, upewnij się, że zachowania mają następującą kolejność:
 Uruchom aplikację w przeglądarce:
 
 ![](/images/content/webserver-cherokee-9.jpg)
-
-<a name='php-built-in'></a>
-
-## Wbudowany serwer PHP
-
-Możesz skorzystać z [wbudowanego w](http://php.net/manual/en/features.commandline.webserver.php) PHP serwera podczas tworzenia aplikacji. Aby uruchomić serwer:
-
-```bash
-php -S localhost:8000 -t /public
-```
-
-<a name='php-built-in-phalcon-configuration'></a>
-
-### Phalcon configuration
-
-Aby włączyć przepisywanie adresów którego Phalcon potrzebuje, możesz użyć następującego pliku routera (`.htrouter.php`):
-
-```php
-<?php
-
-if (!file_exists(__DIR__ . '/' . $_SERVER['REQUEST_URI'])) {
-    $_GET['_url'] = $_SERVER['REQUEST_URI'];
-}
-
-return false;
-```
-
-a następnie uruchomić serwer z katalogu głównego projektu poprzez:
-
-```bash
-php -S localhost:8000 -t /public .htrouter.php
-```
-
-Następnie otwórz w swojej przeglądarce http://localhost:8000/, aby sprawdzić, czy wszystko działa prawidłowo.

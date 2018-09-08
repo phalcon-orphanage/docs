@@ -1,6 +1,6 @@
 # Abstract class **Phalcon\\Dispatcher**
 
-*implements* [Phalcon\DispatcherInterface](/en/3.2/api/Phalcon_DispatcherInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
+*implements* [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface), [Phalcon\Di\InjectionAwareInterface](/[[language]]/[[version]]/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](/[[language]]/[[version]]/api/Phalcon_Events_EventsAwareInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/dispatcher.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -22,7 +22,7 @@ This class can't be instantiated directly, you can use it to create your own dis
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
 ## Methods
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -34,7 +34,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets the events manager
 
@@ -184,7 +184,7 @@ $di->set('dispatcher', function() {
 
 
 
-public  **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](/en/3.2/api/Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache])
+public  **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache])
 
 Enable model binding during dispatch
 

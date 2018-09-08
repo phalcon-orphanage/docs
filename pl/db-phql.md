@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Phalcon Query Language (PHQL)</a> <ul>
+      <a href="#overview">Phalcon Query Language (PHQL)</a> 
+      <ul>
         <li>
           <a href="#usage">Usage Example</a>
         </li>
@@ -9,12 +10,13 @@
           <a href="#creating">Creating PHQL Queries</a>
         </li>
         <li>
-          <a href="#selecting-records">Selecting Records</a> <ul>
+          <a href="#selecting-records">Selecting Records</a> 
+          <ul>
             <li>
               <a href="#result-types">Result Types</a>
             </li>
             <li>
-              <a href="#joins">Joins</a>
+              <a href="#joins">Łączenie tabel (ang. Joins)</a>
             </li>
             <li>
               <a href="#aggregations">Aggregations</a>
@@ -24,7 +26,6 @@
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#inserting-data">Inserting Data</a>
         </li>
@@ -35,13 +36,13 @@
           <a href="#deleting-data">Deleting Data</a>
         </li>
         <li>
-          <a href="#query-builder">Creating queries using the Query Builder</a> <ul>
+          <a href="#query-builder">Creating queries using the Query Builder</a> 
+          <ul>
             <li>
               <a href="#query-builder-parameters">Bound Parameters</a>
             </li>
           </ul>
         </li>
-        
         <li>
           <a href="#disallow-literals">Disallow literals in PHQL</a>
         </li>
@@ -74,11 +75,11 @@ The parser first checks the syntax of the pass PHQL statement, then builds an in
 
 In PHQL, we've implemented a set of features to make your access to databases more secure:
 
-- Bound parameters are part of the PHQL language helping you to secure your code
-- PHQL only allows one SQL statement to be executed per call preventing injections
-- PHQL ignores all SQL comments which are often used in SQL injections
-- PHQL only allows data manipulation statements, avoiding altering or dropping tables/databases by mistake or externally without authorization
-- PHQL implements a high-level abstraction allowing you to handle tables as models and fields as class attributes
+* Bound parameters are part of the PHQL language helping you to secure your code
+* PHQL only allows one SQL statement to be executed per call preventing injections
+* PHQL ignores all SQL comments which are often used in SQL injections
+* PHQL only allows data manipulation statements, avoiding altering or dropping tables/databases by mistake or externally without authorization
+* PHQL implements a high-level abstraction allowing you to handle tables as models and fields as class attributes
 
 <a name='usage'></a>
 
@@ -345,7 +346,7 @@ foreach ($result as $row) {
 
 <a name='joins'></a>
 
-### Joins
+### Łączenie tabel (ang. Joins)
 
 It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined relationships in the models, PHQL adds these conditions automatically:
 
@@ -649,8 +650,8 @@ $manager->executeQuery(
 
 An `UPDATE` statement performs the update in two phases:
 
-- First, if the `UPDATE` has a `WHERE` clause it retrieves all the objects that match these criteria,
-- Second, based on the queried objects it updates/changes the requested attributes storing them to the relational database
+* First, if the `UPDATE` has a `WHERE` clause it retrieves all the objects that match these criteria,
+* Second, based on the queried objects it updates/changes the requested attributes storing them to the relational database
 
 This way of operation allows that events, virtual foreign keys and validations take part of the updating process. In summary, the following code:
 
@@ -1009,9 +1010,9 @@ The delimiters are dynamically translated to valid delimiters depending on the d
 
 Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs. The following is the life cycle of each PHQL statement executed:
 
-- The PHQL is parsed and converted into an Intermediate Representation (IR) which is independent of the SQL implemented by database system
-- The IR is converted to valid SQL according to the database system associated to the model
-- PHQL statements are parsed once and cached in memory. Further executions of the same statement result in a slightly faster execution
+* The PHQL is parsed and converted into an Intermediate Representation (IR) which is independent of the SQL implemented by database system
+* The IR is converted to valid SQL according to the database system associated to the model
+* PHQL statements are parsed once and cached in memory. Further executions of the same statement result in a slightly faster execution
 
 <a name='raw-sql'></a>
 
@@ -1092,7 +1093,7 @@ $robots = Robots::findByRawSql(
 
 Some things to keep in mind when using PHQL:
 
-- Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
-- Correct charset must be defined in the connection to bind parameters with success.
-- Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings.
-- If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver.
+* Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
+* Correct charset must be defined in the connection to bind parameters with success.
+* Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings.
+* If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver.

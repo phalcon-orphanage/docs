@@ -1,6 +1,6 @@
 # Class **Phalcon\\Mvc\\Router\\Group**
 
-*implements* [Phalcon\Mvc\Router\GroupInterface](/en/3.2/api/Phalcon_Mvc_Router_GroupInterface)
+*implements* [Phalcon\Mvc\Router\GroupInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Router_GroupInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/router/group.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -129,43 +129,43 @@ $router->add("/about", "About::index");
 
 
 
-public [Phalcon\Mvc\Router\Route](/en/3.2/api/Phalcon_Mvc_Router_Route) **addGet** (*string* $pattern, [*string/array* $paths])
+public [Phalcon\Mvc\Router\Route](/[[language]]/[[version]]/api/Phalcon_Mvc_Router_Route) **addGet** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is GET
 
 
 
-public [Phalcon\Mvc\Router\Route](/en/3.2/api/Phalcon_Mvc_Router_Route) **addPost** (*string* $pattern, [*string/array* $paths])
+public [Phalcon\Mvc\Router\Route](/[[language]]/[[version]]/api/Phalcon_Mvc_Router_Route) **addPost** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is POST
 
 
 
-public [Phalcon\Mvc\Router\Route](/en/3.2/api/Phalcon_Mvc_Router_Route) **addPut** (*string* $pattern, [*string/array* $paths])
+public [Phalcon\Mvc\Router\Route](/[[language]]/[[version]]/api/Phalcon_Mvc_Router_Route) **addPut** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is PUT
 
 
 
-public [Phalcon\Mvc\Router\Route](/en/3.2/api/Phalcon_Mvc_Router_Route) **addPatch** (*string* $pattern, [*string/array* $paths])
+public [Phalcon\Mvc\Router\Route](/[[language]]/[[version]]/api/Phalcon_Mvc_Router_Route) **addPatch** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is PATCH
 
 
 
-public [Phalcon\Mvc\Router\Route](/en/3.2/api/Phalcon_Mvc_Router_Route) **addDelete** (*string* $pattern, [*string/array* $paths])
+public [Phalcon\Mvc\Router\Route](/[[language]]/[[version]]/api/Phalcon_Mvc_Router_Route) **addDelete** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is DELETE
 
 
 
-public [Phalcon\Mvc\Router\Route](/en/3.2/api/Phalcon_Mvc_Router_Route) **addOptions** (*string* $pattern, [*string/array* $paths])
+public [Phalcon\Mvc\Router\Route](/[[language]]/[[version]]/api/Phalcon_Mvc_Router_Route) **addOptions** (*string* $pattern, [*string/array* $paths])
 
 Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 
-public [Phalcon\Mvc\Router\Route](/en/3.2/api/Phalcon_Mvc_Router_Route) **addHead** (*string* $pattern, [*string/array* $paths])
+public [Phalcon\Mvc\Router\Route](/[[language]]/[[version]]/api/Phalcon_Mvc_Router_Route) **addHead** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is HEAD
 

@@ -1,8 +1,8 @@
 # Class **Phalcon\\Db\\Dialect\\Mysql**
 
-*extends* abstract class [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+*extends* abstract class [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
-*implements* [Phalcon\Db\DialectInterface](/en/3.2/api/Phalcon_Db_DialectInterface)
+*implements* [Phalcon\Db\DialectInterface](/[[language]]/[[version]]/api/Phalcon_Db_DialectInterface)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/dialect/mysql.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -10,19 +10,19 @@ Generates database specific SQL for the MySQL RDBMS
 
 
 ## Methods
-public  **getColumnDefinition** ([Phalcon\Db\ColumnInterface](/en/3.2/api/Phalcon_Db_ColumnInterface) $column)
+public  **getColumnDefinition** ([Phalcon\Db\ColumnInterface](/[[language]]/[[version]]/api/Phalcon_Db_ColumnInterface) $column)
 
 Gets the column name in MySQL
 
 
 
-public  **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](/en/3.2/api/Phalcon_Db_ColumnInterface) $column)
+public  **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](/[[language]]/[[version]]/api/Phalcon_Db_ColumnInterface) $column)
 
 Generates SQL to add a column to a table
 
 
 
-public  **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](/en/3.2/api/Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](/en/3.2/api/Phalcon_Db_ColumnInterface) $currentColumn])
+public  **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](/[[language]]/[[version]]/api/Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](/[[language]]/[[version]]/api/Phalcon_Db_ColumnInterface) $currentColumn])
 
 Generates SQL to modify a column in a table
 
@@ -34,7 +34,7 @@ Generates SQL to delete a column from a table
 
 
 
-public  **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](/en/3.2/api/Phalcon_Db_IndexInterface) $index)
+public  **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](/[[language]]/[[version]]/api/Phalcon_Db_IndexInterface) $index)
 
 Generates SQL to add an index to a table
 
@@ -46,7 +46,7 @@ Generates SQL to delete an index from a table
 
 
 
-public  **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](/en/3.2/api/Phalcon_Db_IndexInterface) $index)
+public  **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](/[[language]]/[[version]]/api/Phalcon_Db_IndexInterface) $index)
 
 Generates SQL to add the primary key to a table
 
@@ -58,7 +58,7 @@ Generates SQL to delete primary key from a table
 
 
 
-public  **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](/en/3.2/api/Phalcon_Db_ReferenceInterface) $reference)
+public  **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](/[[language]]/[[version]]/api/Phalcon_Db_ReferenceInterface) $reference)
 
 Generates SQL to add an index to a table
 
@@ -181,31 +181,31 @@ Generates SQL to add the table creation options
 
 
 
-public  **registerCustomFunction** (*mixed* $name, *mixed* $customFunction) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+public  **registerCustomFunction** (*mixed* $name, *mixed* $customFunction) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Registers custom SQL functions
 
 
 
-public  **getCustomFunctions** () inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+public  **getCustomFunctions** () inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Returns registered functions
 
 
 
-final public  **escapeSchema** (*mixed* $str, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final public  **escapeSchema** (*mixed* $str, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Escape Schema
 
 
 
-final public  **escape** (*mixed* $str, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final public  **escape** (*mixed* $str, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Escape identifiers
 
 
 
-public  **limit** (*mixed* $sqlQuery, *mixed* $number) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+public  **limit** (*mixed* $sqlQuery, *mixed* $number) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Generates the SQL for LIMIT clause
 
@@ -222,7 +222,7 @@ echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 
 
-public  **forUpdate** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+public  **forUpdate** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Returns a SQL modified with a FOR UPDATE clause
 
@@ -236,7 +236,7 @@ echo $sql; // SELECT * FROM robots FOR UPDATE
 
 
 
-public  **sharedLock** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+public  **sharedLock** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
@@ -250,7 +250,7 @@ echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
 
 
 
-final public  **getColumnList** (*array* $columnList, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final public  **getColumnList** (*array* $columnList, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Gets a list of columns with escaped identifiers
 
@@ -268,181 +268,181 @@ echo $dialect->getColumnList(
 
 
 
-final public  **getSqlColumn** (*mixed* $column, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final public  **getSqlColumn** (*mixed* $column, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve Column expressions
 
 
 
-public  **getSqlExpression** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+public  **getSqlExpression** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Transforms an intermediate representation for an expression into a database system valid expression
 
 
 
-final public  **getSqlTable** (*mixed* $table, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final public  **getSqlTable** (*mixed* $table, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Transform an intermediate representation of a schema/table into a database system valid expression
 
 
 
-public  **select** (*array* $definition) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+public  **select** (*array* $definition) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Builds a SELECT statement
 
 
 
-public  **supportsSavepoints** () inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+public  **supportsSavepoints** () inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Checks whether the platform supports savepoints
 
 
 
-public  **supportsReleaseSavepoints** () inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+public  **supportsReleaseSavepoints** () inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Checks whether the platform supports releasing savepoints.
 
 
 
-public  **createSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+public  **createSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Generate SQL to create a new savepoint
 
 
 
-public  **releaseSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+public  **releaseSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Generate SQL to release a savepoint
 
 
 
-public  **rollbackSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+public  **rollbackSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Generate SQL to rollback a savepoint
 
 
 
-final protected  **getSqlExpressionScalar** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionScalar** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve Column expressions
 
 
 
-final protected  **getSqlExpressionObject** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionObject** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve object expressions
 
 
 
-final protected  **getSqlExpressionQualified** (*array* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionQualified** (*array* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve qualified expressions
 
 
 
-final protected  **getSqlExpressionBinaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionBinaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve binary operations expressions
 
 
 
-final protected  **getSqlExpressionUnaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionUnaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve unary operations expressions
 
 
 
-final protected  **getSqlExpressionFunctionCall** (*array* $expression, *mixed* $escapeChar, [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionFunctionCall** (*array* $expression, *mixed* $escapeChar, [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve function calls
 
 
 
-final protected  **getSqlExpressionList** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionList** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve Lists
 
 
 
-final protected  **getSqlExpressionAll** (*array* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionAll** (*array* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve *
 
 
 
-final protected  **getSqlExpressionCastValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionCastValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve CAST of values
 
 
 
-final protected  **getSqlExpressionConvertValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionConvertValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve CONVERT of values encodings
 
 
 
-final protected  **getSqlExpressionCase** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionCase** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve CASE expressions
 
 
 
-final protected  **getSqlExpressionFrom** (*mixed* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionFrom** (*mixed* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve a FROM clause
 
 
 
-final protected  **getSqlExpressionJoins** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionJoins** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve a JOINs clause
 
 
 
-final protected  **getSqlExpressionWhere** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionWhere** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve a WHERE clause
 
 
 
-final protected  **getSqlExpressionGroupBy** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionGroupBy** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve a GROUP BY clause
 
 
 
-final protected  **getSqlExpressionHaving** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionHaving** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve a HAVING clause
 
 
 
-final protected  **getSqlExpressionOrderBy** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionOrderBy** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve an ORDER BY clause
 
 
 
-final protected  **getSqlExpressionLimit** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+final protected  **getSqlExpressionLimit** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Resolve a LIMIT clause
 
 
 
-protected  **prepareColumnAlias** (*mixed* $qualified, [*mixed* $alias], [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+protected  **prepareColumnAlias** (*mixed* $qualified, [*mixed* $alias], [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Prepares column for this RDBMS
 
 
 
-protected  **prepareTable** (*mixed* $table, [*mixed* $schema], [*mixed* $alias], [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+protected  **prepareTable** (*mixed* $table, [*mixed* $schema], [*mixed* $alias], [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Prepares table for this RDBMS
 
 
 
-protected  **prepareQualified** (*mixed* $column, [*mixed* $domain], [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/en/3.2/api/Phalcon_Db_Dialect)
+protected  **prepareQualified** (*mixed* $column, [*mixed* $domain], [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](/[[language]]/[[version]]/api/Phalcon_Db_Dialect)
 
 Prepares qualified for this RDBMS
 

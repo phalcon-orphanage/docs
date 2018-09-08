@@ -1,30 +1,75 @@
-<div class='article-menu' markdown='1'>
-
-- [ODM (Object-Document Mapper)](#overview)
-    - [Creating Models](#creating-models)
-    - [Understanding Documents To Objects](#documents-to-objects)
-    - [Models in Namespaces](#namespaces)
-    - [Setting a Connection](#connection-setup)
-    - [Finding Documents](#finding-documents)
-    - [Aggregations](#aggregations)
-    - [Creating Updating/Records](#creating-updating)
-        - [Validation Messages](#validation-messages)
-        - [Validation Events and Events Manager](#events)
-        - [Implementing a Business Rule](#business-rules)
-        - [Validating Data Integrity](#data-integrity)
-    - [Deleting Records](#deleting-records)
-    - [Validation Failed Events](#validation-failed-events)
-    - [Implicit Ids vs. User Primary Keys](#ids-vs-primary-keys)
-    - [Setting multiple databases](#multiple-databases)
-    - [Injecting services into Models](#services-in-models)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">ODM (Object-Document Mapper)</a> 
+      <ul>
+        <li>
+          <a href="#creating-models">Creating Models</a>
+        </li>
+        <li>
+          <a href="#documents-to-objects">Understanding Documents To Objects</a>
+        </li>
+        <li>
+          <a href="#namespaces">Models in Namespaces</a>
+        </li>
+        <li>
+          <a href="#connection-setup">Setting a Connection</a>
+        </li>
+        <li>
+          <a href="#finding-documents">Finding Documents</a>
+        </li>
+        <li>
+          <a href="#finding-documents-field">Querying specific fields</a>
+        </li>
+        <li>
+          <a href="#aggregations">Aggregations</a>
+        </li>
+        <li>
+          <a href="#creating-updating">Creating Updating/Records</a> 
+          <ul>
+            <li>
+              <a href="#validation-messages">Validation Messages</a>
+            </li>
+            <li>
+              <a href="#events">Validation Events and Events Manager</a>
+            </li>
+            <li>
+              <a href="#business-rules">Implementing a Business Rule</a>
+            </li>
+            <li>
+              <a href="#data-integrity">Validating Data Integrity</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#deleting-records">Deleting Records</a>
+        </li>
+        <li>
+          <a href="#validation-failed-events">Validation Failed Events</a>
+        </li>
+        <li>
+          <a href="#ids-vs-primary-keys">Implicit Ids vs. User Primary Keys</a>
+        </li>
+        <li>
+          <a href="#multiple-databases">Setting multiple databases</a>
+        </li>
+        <li>
+          <a href="#services-in-models">Injecting services into Models</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
-<h5 class='alert alert-info' markdown='1'>Please note that if you are using the Mongo driver provided by PHP 7, the ODM will not work for you. There is an incubator adapter but all the Mongo code must be rewritten (new Bson type instead of arrays, no MongoId, no MongoDate, etc...). Please ensure that you test your code before upgrading to PHP 7 and/or Phalcon 3+</h5>
+<div class="alert alert-info">
+    <p>
+        Please note that if you are using the Mongo driver provided by PHP 7, the ODM will not work for you. There is an incubator adapter but all the Mongo code must be rewritten (new Bson type instead of arrays, no MongoId, no MongoDate, etc.). Please ensure that you test your code before upgrading to PHP 7 and/or Phalcon 3+
+    </p>
+</div>
 
 <a name='overview'></a>
 # ODM (Object-Document Mapper)
-In addition to its ability to [map tables](/[[language]]/[[version]]/models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
+In addition to its ability to [map tables](/[[language]]/[[version]]/db-models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
 
 Due to the absence of SQL queries and planners, NoSQL databases can see real improvements in performance using the Phalcon approach. Additionally, there are no SQL building reducing the possibility of SQL injections.
 
@@ -266,13 +311,22 @@ $robots = Robots::find(
         ],
     ]
 );
+
+// Find all robots that have more than 4 friends using the where condition
+$robots = Robots::find(
+    [
+        'conditions' => [
+            '$where' => 'this.friends.length > 4',
+        ]
+    ]
+);
 ```
 
 The available query options are:
 
 | Parameter    | Description                                                                                                                                                                                  | Example                                        |
 |--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
-| `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`         |
+| `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Model` assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`         |
 | `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`            |
 | `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | `'sort' => array('name' => -1, 'status' => 1)` |
 | `limit`      | Limit the results of the query to results to certain range                                                                                                                                   | `'limit' => 10`                                |
@@ -374,7 +428,7 @@ echo 'The generated id is: ', $robot->getId();
 ### Validation Messages
 `Phalcon\Mvc\Collection` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
-Each message consists of an instance of the class `Phalcon\Mvc\Model\Message`. The set of messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that generated the message or the message type:
+Each message consists of an instance of the class `Phalcon\Mvc\Model\Message`. The set of messages generated can be retrieved with the method `getMessages()`. Each message provides extended information like the field name that generated the message or the message type:
 
 ```php
 <?php
@@ -529,7 +583,7 @@ $di->set(
 ### Implementing a Business Rule
 When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above.
 
-We recommend that validation methods are declared protected to prevent that business logic implementation from being exposed publicly.
+We recommend that validation methods are declared `protected` to prevent that business logic implementation from being exposed publicly.
 
 The following example implements an event that validates the year cannot be smaller than 0 on update or insert:
 
@@ -540,7 +594,7 @@ use Phalcon\Mvc\Collection;
 
 class Robots extends Collection
 {
-    public function beforeSave()
+    protected function beforeSave()
     {
         if ($this->year < 0) {
             echo 'Year cannot be smaller than zero!';
@@ -551,7 +605,7 @@ class Robots extends Collection
 }
 ```
 
-Some events return false as an indication to stop the current operation. If an event doesn't return anything, `Phalcon\Mvc\Collection` will assume a true value.
+Some events return `false` as an indication to stop the current operation. If an event doesn't return anything, `Phalcon\Mvc\Collection` will assume a `true` value.
 
 <a name='data-integrity'></a>
 ### Validating Data Integrity
@@ -600,9 +654,13 @@ class Robots extends Collection
 }
 ```
 
-The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return false.
+The example above performs a validation using the built-in validator `InclusionIn`. It checks that the value of the field `type` is in a `domain` list. If the value is not included in the list, then the validator will fail and return `false`.
 
-<h5 class='alert alert-warning' markdown='1'>For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation) </h5>
+<div class='alert alert-warning'>
+    <p>
+        For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation).
+    </p>
+</div>
 
 <a name='deleting-records'></a>
 ## Deleting Records
@@ -694,7 +752,7 @@ class Robots extends Collection
 
 <a name='multiple-databases'></a>
 ## Setting multiple databases
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service setting it in the initialize method:
+In Phalcon, all models can share the same database connection or specify a connection per model. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service by setting it in the `initialize()` method:
 
 ```php
 <?php

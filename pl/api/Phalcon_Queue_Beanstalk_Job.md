@@ -4,13 +4,13 @@
 
 Represents a job in a beanstalk queue
 
-## Methods
+## Metody
 
 public **getId** ()
 
 public **getBody** ()
 
-public **__construct** ([Phalcon\Queue\Beanstalk](/en/3.2/api/Phalcon_Queue_Beanstalk) $queue, *mixed* $id, *mixed* $body)
+public **__construct** ([Phalcon\Queue\Beanstalk](/[[language]]/[[version]]/api/Phalcon_Queue_Beanstalk) $queue, *mixed* $id, *mixed* $body)
 
 public **delete** ()
 

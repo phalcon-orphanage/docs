@@ -2,17 +2,17 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validationinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## Methods
+## Metody
 
 abstract public **validate** ([*mixed* $data], [*mixed* $entity])
 
 ...
 
-abstract public **add** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/en/3.2/api/Phalcon_Validation_ValidatorInterface) $validator)
+abstract public **add** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/[[language]]/[[version]]/api/Phalcon_Validation_ValidatorInterface) $validator)
 
 ...
 
-abstract public **rule** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/en/3.2/api/Phalcon_Validation_ValidatorInterface) $validator)
+abstract public **rule** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/[[language]]/[[version]]/api/Phalcon_Validation_ValidatorInterface) $validator)
 
 ...
 
@@ -56,7 +56,7 @@ abstract public **getLabel** (*mixed* $field)
 
 ...
 
-abstract public **appendMessage** ([Phalcon\Validation\MessageInterface](/en/3.2/api/Phalcon_Validation_MessageInterface) $message)
+abstract public **appendMessage** ([Phalcon\Validation\MessageInterface](/[[language]]/[[version]]/api/Phalcon_Validation_MessageInterface) $message)
 
 ...
 

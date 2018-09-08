@@ -24,7 +24,7 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 ```
 
-## Methods
+## Metody
 
 public **getDetailed** ()
 

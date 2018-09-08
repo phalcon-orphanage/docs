@@ -1,13 +1,29 @@
-<div class='article-menu' markdown='1'>
-
-- [Generating URLs and Paths](#overview)
-    - [Setting a base URI](#base-uri)
-    - [Generating URIs](#generating-uri)
-    - [Producing URLs without mod_rewrite](#urls-without-mod-rewrite)
-    - [Producing URLs from Volt](#urls-from-volt)
-    - [Static vs. Dynamic URIs](#static-vs-dynamic-uri)
-    - [Implementing your own URL Generator](#custom-url)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Generating URLs and Paths</a> 
+      <ul>
+        <li>
+          <a href="#base-uri">Setting a base URI</a>
+        </li>
+        <li>
+          <a href="#generating-uri">Generating URIs</a>
+        </li>
+        <li>
+          <a href="#urls-without-mod-rewrite">Producing URLs without mod_rewrite</a>
+        </li>
+        <li>
+          <a href="#urls-from-volt">Producing URLs from Volt</a>
+        </li>
+        <li>
+          <a href="#static-vs-dynamic-uri">Static vs. Dynamic URIs</a>
+        </li>
+        <li>
+          <a href="#custom-url">Implementing your own URL Generator</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -72,7 +88,11 @@ $di->set(
 ## Generating URIs
 If you are using the [Router](/[[language]]/[[version]]/routing) with its default behavior, your application is able to match routes based on the following pattern: 
 
-<h5 class='alert alert-info' markdown='1'>/:controller/:action/:params </h5>
+<div class="alert alert-info">
+    <p>
+        /:controller/:action/:params
+    </p>
+</div>
 
 Accordingly it is easy to create routes that satisfy that pattern (or any other pattern defined in the router) passing a string to the method `get`:
 

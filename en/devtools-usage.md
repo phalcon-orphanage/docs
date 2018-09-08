@@ -1,25 +1,55 @@
-<div class='article-menu' markdown='1'>
-
-- [Phalcon Developer Tools](#overview)
-    - [Download](#download)
-    - [Installation](#installation)
-    - [Available Commands](#available-commands)
-    - [Generating a Project Skeleton](#project-skeleton)
-    - [Generating Controllers](#generating-controllers)
-    - [Preparing Database Settings](#database-settings)
-    - [Generating Models](#generating-models)
-    - [Scaffold a CRUD](#crud)
-    - [Web Interface to Tools](#web-interface)
-    - [Integrating Tools with PhpStorm IDE](#phpstorm-ide)
-    - [Conclusion](#conclusion)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Phalcon Developer Tools</a> 
+      <ul>
+        <li>
+          <a href="#download">Download</a>
+        </li>
+        <li>
+          <a href="#installation">Installation</a>
+        </li>
+        <li>
+          <a href="#available-commands">Available Commands</a>
+        </li>
+        <li>
+          <a href="#project-skeleton">Generating a Project Skeleton</a>
+        </li>
+        <li>
+          <a href="#generating-controllers">Generating Controllers</a>
+        </li>
+        <li>
+          <a href="#database-settings">Preparing Database Settings</a>
+        </li>
+        <li>
+          <a href="#generating-models">Generating Models</a>
+        </li>
+        <li>
+          <a href="#crud">Scaffold a CRUD</a>
+        </li>
+        <li>
+          <a href="#web-interface">Web Interface to Tools</a>
+        </li>
+        <li>
+          <a href="#phpstorm-ide">Integrating Tools with PhpStorm IDE</a>
+        </li>
+        <li>
+          <a href="#conclusion">Conclusion</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
 # Phalcon Developer Tools
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
-<h5 class='alert alert-danger' markdown='1'>If you prefer to use the web version instead of the console, this [blog post](https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem) offers more information. </h5>
+<div class="alert alert-danger">
+    <p>
+        If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information.
+    </p>
+</div>
 
 <a name='download'></a>
 ## Download
@@ -29,7 +59,7 @@ You can download or clone a cross platform package containing the developer tool
 ## Installation
 These are detailed instructions on how to install the developer tools on different platforms:
 
-[Linux](/[[language]]/[[version]]devtools-installation#installation-linux) : [MacOS](/[[language]]/[[version]]devtools-installation#installation-macos) : [Windows](/[[language]]/[[version]]devtools-installation#installation-windows)
+[Linux](/[[language]]/[[version]]/devtools-installation#installation-linux) : [MacOS](/[[language]]/[[version]]/devtools-installation#installation-macos) : [Windows](/[[language]]/[[version]]/devtools-installation#installation-windows)
 
 <a name='available-commands'></a>
 ## Available Commands
@@ -128,23 +158,40 @@ class TestController extends Controller
 
 <a name='database-settings'></a>
 ## Preparing Database Settings
-When a project is generated using developer tools. A configuration file can be found in `app/config/config.ini`. To generate models or scaffold, you will need to change the settings used to connect to your database.
+When a project is generated using developer tools. A configuration file can be found in `app/config/config.php`. To generate models or scaffold, you will need to change the settings used to connect to your database.
 
-Change the database section in your config.ini file:
+Change the database section in your config.php file:
 
-```ini
-[database]
-adapter  = Mysql
-host     = "127.0.0.1"
-username = "root"
-password = "secret"
-dbname   = "store_db"
+```php
+<?php
+defined('BASE_PATH') || define('BASE_PATH', getenv('BASE_PATH') ?: realpath(dirname(__FILE__) . '/../..'));
+defined('APP_PATH') || define('APP_PATH', BASE_PATH . '/app');
 
-[phalcon]
-controllersDir = "../app/controllers/"
-modelsDir      = "../app/models/"
-viewsDir       = "../app/views/"
-baseUri        = "/store/"
+return new \Phalcon\Config([
+    'database' => [
+        'adapter'     => 'Mysql',
+        'host'        => 'localhost',
+        'username'    => 'root',
+        'password'    => 'secret',
+        'dbname'      => 'test',
+        'charset'     => 'utf8',
+    ],
+    'application' => [
+        'appDir'         => APP_PATH . '/',
+        'controllersDir' => APP_PATH . '/controllers/',
+        'modelsDir'      => APP_PATH . '/models/',
+        'migrationsDir'  => APP_PATH . '/migrations/',
+        'viewsDir'       => APP_PATH . '/views/',
+        'pluginsDir'     => APP_PATH . '/plugins/',
+        'libraryDir'     => APP_PATH . '/library/',
+        'cacheDir'       => BASE_PATH . '/cache/',
+
+        // This allows the baseUri to be understand project paths that are not in the root directory
+        // of the webpspace.  This will break if the public/index.php entry point is moved or
+        // possibly if the web server rewrite rules are changed. This can also be set to a static path.
+        'baseUri'        => preg_replace('/public([\/\\\\])index.php$/', '', $_SERVER["PHP_SELF"]),
+    ]
+]);
 ```
 
 <a name='generating-models'></a>

@@ -1,6 +1,6 @@
 # Class **Phalcon\\Session\\Bag**
 
-*implements* [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Session\BagInterface](/en/3.2/api/Phalcon_Session_BagInterface), [IteratorAggregate](http://php.net/manual/en/class.iteratoraggregate.php), [Traversable](http://php.net/manual/en/class.traversable.php), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php), [Countable](http://php.net/manual/en/class.countable.php)
+*implements* [Phalcon\Di\InjectionAwareInterface](/[[language]]/[[version]]/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Session\BagInterface](/[[language]]/[[version]]/api/Phalcon_Session_BagInterface), [IteratorAggregate](http://php.net/manual/en/class.iteratoraggregate.php), [Traversable](http://php.net/manual/en/class.traversable.php), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php), [Countable](http://php.net/manual/en/class.countable.php)
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/session/bag.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -25,7 +25,7 @@ Phalcon\\Session\\Bag constructor
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the DependencyInjector container
 

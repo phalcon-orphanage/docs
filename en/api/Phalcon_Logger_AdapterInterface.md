@@ -3,7 +3,7 @@
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/logger/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
-abstract public  **setFormatter** ([Phalcon\Logger\FormatterInterface](/en/3.2/api/Phalcon_Logger_FormatterInterface) $formatter)
+abstract public  **setFormatter** ([Phalcon\Logger\FormatterInterface](/[[language]]/[[version]]/api/Phalcon_Logger_FormatterInterface) $formatter)
 
 ...
 

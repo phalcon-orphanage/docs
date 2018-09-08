@@ -22,7 +22,7 @@ $annotation = $classAnnotations->get("Cacheable");
 
 ```
 
-## Methods
+## Metody
 
 public **__construct** ([*array* $reflectionData])
 
@@ -36,7 +36,7 @@ public **rewind** ()
 
 Rewinds the internal iterator
 
-public [Phalcon\Annotations\Annotation](/en/3.2/api/Phalcon_Annotations_Annotation) **current** ()
+public [Phalcon\Annotations\Annotation](/[[language]]/[[version]]/api/Phalcon_Annotations_Annotation) **current** ()
 
 Returns the current annotation in the iterator
 
@@ -56,14 +56,14 @@ public **getAnnotations** ()
 
 Returns the internal annotations as an array
 
-public **get** (*mixed* $name)
+public **get** (*string* $name)
 
 Returns the first annotation that match a name
 
-public **getAll** (*mixed* $name)
+public **getAll** (*string* $name)
 
 Returns all the annotations that match a name
 
-public **has** (*mixed* $name)
+public **has** (*string* $name)
 
 Check if an annotation exists in a collection

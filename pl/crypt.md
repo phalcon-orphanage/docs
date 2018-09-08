@@ -15,7 +15,7 @@
           <a href="#service">Setting up an Encryption service</a>
         </li>
         <li>
-          <a href="#links">Links</a>
+          <a href="#links">Linki</a>
         </li>
       </ul>
     </li>
@@ -30,7 +30,13 @@ Phalcon provides encryption facilities via the `Phalcon\Crypt` component. This c
 
 By default, this component provides secure encryption using AES-256-CFB.
 
-<h5 class='alert alert-warning'>You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
+The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography), they have also recommended using higher than 128-bit keys for encryption.
+
+<div class="alert alert-warning">
+    <p>
+        You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.
+    </p>
+</div>
 
 <a name='usage'></a>
 
@@ -46,7 +52,35 @@ use Phalcon\Crypt;
 // Create an instance
 $crypt = new Crypt();
 
-$key  = 'This is a secret key (32 bytes).';
+/**
+ * Set the cipher algorithm.
+ *
+ * The `aes-256-gcm' is the preferable cipher, but it is not usable until the
+ * openssl library is upgraded, which is available in PHP 7.1.
+ *
+ * The `aes-256-ctr' is arguably the best choice for cipher
+ * algorithm in these days.
+ */
+$crypt->setCipher('aes-256-ctr');
+
+/**
+ * Set the encryption key.
+ *
+ * The `$key' should have been previously generated in a cryptographically safe way.
+ *
+ * Bad key:
+ * "le password"
+ *
+ * Better (but still unsafe):
+ * "#1dj8$=dp?.ak//j1V$~%*0X"
+ *
+ * Good key:
+ * "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+ *
+ * Use your own key. Do not copy and paste this example key.
+ */
+$key = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
+
 $text = 'This is the text that you want to encrypt.';
 
 $encrypted = $crypt->encrypt($text, $key);
@@ -61,12 +95,15 @@ You can use the same instance to encrypt/decrypt several times:
 
 use Phalcon\Crypt;
 
+$crypt->setCipher('aes-256-ctr');
+
 // Create an instance
 $crypt = new Crypt();
 
+// Use your own keys!
 $texts = [
-    'my-key'    => 'This is a secret text',
-    'other-key' => 'This is a very secret',
+    "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c" => 'This is a secret text',
+    "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3" => 'This is a very secret',
 ];
 
 foreach ($texts as $key => $text) {
@@ -84,9 +121,9 @@ foreach ($texts as $key => $text) {
 
 The following options are available to change the encryption behavior:
 
-| Name   | Description                                                                                                                                                          |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
+| Nazwa | Description                                                                                                                                                          |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Szyfr | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
 Example:
 
@@ -101,7 +138,8 @@ $crypt = new Crypt();
 // Use blowfish
 $crypt->setCipher('bf-cbc');
 
-$key  = 'le password';
+// Use your own key!
+$key  = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
 $text = 'This is a secret text';
 
 echo $crypt->encrypt($text, $key);
@@ -121,7 +159,8 @@ use Phalcon\Crypt;
 // Create an instance
 $crypt = new Crypt();
 
-$key  = 'le password';
+// Use your own key!
+$key  = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
 $text = 'This is a secret text';
 
 $encrypt = $crypt->encryptBase64($text, $key);
@@ -147,7 +186,7 @@ $di->set(
 
         // Set a global encryption key
         $crypt->setKey(
-            '%31.1e$i86e$f!8jz'
+            "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
         );
 
         return $crypt;
@@ -184,8 +223,11 @@ class SecretsController extends Controller
 
 <a name='links'></a>
 
-## Links
+## Linki
 
-- [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
-- [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
-- [Introduction to Blowfish](http://www.splashdata.com/splashid/blowfish.htm)
+* [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+* [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
+* [Introduction to Blowfish](http://www.splashdata.com/splashid/blowfish.htm)
+* [CTR-Mode Encryption](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.79.1353&rep=rep1&type=pdf)
+* [Recommendation for Block Cipher Modes of Operation: Methods and Techniques](https://csrc.nist.gov/publications/detail/sp/800-38a/final)
+* [Counter (CTR) mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29)

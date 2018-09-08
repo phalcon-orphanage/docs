@@ -1,26 +1,73 @@
-<div class='article-menu' markdown='1'>
-
-- [Using Views](#overview)
-    - [Integrating Views with Controllers](#integrating-views-with-controllers)
-    - [Hierarchical Rendering](#hierarchical-rendering)
-        - [Using Templates](#using-templates)
-        - [Control Rendering Levels](#control-rendering-levels)
-        - [Disabling render levels](#disabling-render-levels)
-        - [Picking Views](#picking-views)
-        - [Disabling the view](#disabling-view)
-    - [Simple Rendering](#simple-rendering)
-    - [Using Partials](#using-partials)
-    - [Transfer values from the controller to views](#value-transfer)
-    - [Caching View Fragments](#caching-fragments)
-    - [Template Engines](#template-engines)
-        - [Creating your own Template Engine Adapter](#custom-template-engine)
-        - [Changing the Template Engine](#changing-template-engine)
-    - [Injecting services in View](#injecting-services)
-    - [Stand-Alone Component](#stand-along)
-        - [Hierarchical Rendering](#stand-alone-hierarchical-rendering)
-        - [Simple Rendering](#stand-alone-simple-rendering)
-    - [View Events](#eventes)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Using Views</a> <ul>
+        <li>
+          <a href="#integrating-views-with-controllers">Integrating Views with Controllers</a>
+        </li>
+        <li>
+          <a href="#hierarchical-rendering">Hierarchical Rendering</a> 
+          <ul>
+            <li>
+              <a href="#using-templates">Using Templates</a>
+            </li>
+            <li>
+              <a href="#control-rendering-levels">Control Rendering Levels</a>
+            </li>
+            <li>
+              <a href="#disabling-render-levels">Disabling render levels</a>
+            </li>
+            <li>
+              <a href="#picking-views">Picking Views</a>
+            </li>
+            <li>
+              <a href="#disabling-view">Disabling the view</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#simple-rendering">Simple Rendering</a>
+        </li>
+        <li>
+          <a href="#using-partials">Using Partials</a>
+        </li>
+        <li>
+          <a href="#value-transfer">Transfer values from the controller to views</a>
+        </li>
+        <li>
+          <a href="#caching-fragments">Caching View Fragments</a>
+        </li>
+        <li>
+          <a href="#template-engines">Template Engines</a> 
+          <ul>
+            <li>
+              <a href="#custom-template-engine">Creating your own Template Engine Adapter</a>
+            </li>
+            <li>
+              <a href="#changing-template-engine">Changing the Template Engine</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#injecting-services">Injecting services in View</a>
+        </li>
+        <li>
+          <a href="#stand-alone">Stand-Alone Component</a> 
+          <ul>
+            <li>
+              <a href="#stand-alone-hierarchical-rendering">Hierarchical Rendering</a>
+            </li>
+            <li>
+              <a href="#stand-alone-simple-rendering">Simple Rendering</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#events">View Events</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -145,7 +192,7 @@ The generated HTML by the request will be:
 ### Using Templates
 Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
 
-Templates can be rendered before the layout (using `$this->view->setTemplateBefore()`) or they can be rendered after the layout (using `this->view->setTemplateAfter()`). In the following example the template (`layouts/common.phtml`) is rendered after the main layout (`layouts/posts.phtml`):
+Templates can be rendered before the layout (using `$this->view->setTemplateBefore()`) or they can be rendered after the layout (using `this->view->setTemplateAfter()`). In the following example the template (`layouts/common.phtml`) is rendered after the contorller layout (`layouts/posts.phtml`):
 
 ```php
 <?php
@@ -770,7 +817,11 @@ $di->set(
 );
 ```
 
-<h5 class='alert alert-warning' markdown='1'>The frontend must always be `Phalcon\Cache\Frontend\Output` and the service `viewCache` must be registered as always open (not shared) in the services container (DI). </h5>
+<div class="alert alert-warning">
+    <p>
+        The frontend must always be <a href="/[[language]]/[[version]]/api/Phalcon_Cache_Frontend_Output">Phalcon\Cache\Frontend\Output</a> and the service <code>viewCache</code> must be registered as always open (not shared) in the services container (DI).
+    </p>
+</div>
 
 When using views, caching can be used to prevent controllers from needing to generate view data on each request.
 
@@ -931,7 +982,7 @@ $.ajax({
 </script>
 ```
 
-<a name='stand-along'></a>
+<a name='stand-alone'></a>
 ## Stand-Alone Component
 All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
 
@@ -1020,7 +1071,7 @@ echo $view->render(
 );
 ```
 
-<a name='eventes'></a>
+<a name='events'></a>
 ## View Events
 `Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
 

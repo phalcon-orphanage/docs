@@ -1,9 +1,17 @@
-<div class='article-menu' markdown='1'>
-
-- [Queueing](#overview)
-    - [Putting Jobs into the Queue](#put-jobs-in-queue)
-    - [Retrieving Messages](#retrieving-messages)
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Queueing</a>
+       <ul>
+        <li>
+          <a href="#put-jobs-in-queue">Putting Jobs into the Queue</a>
+        </li>
+        <li>
+          <a href="#retrieving-messages">Retrieving Messages</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <a name='overview'></a>
@@ -15,7 +23,11 @@ The best solution here is to implement background jobs. The web application puts
 While you can find more sophisticated PHP extensions to address queueing in your applications like [RabbitMQ](http://pecl.php.net/package/amqp); Phalcon provides a client for [Beanstalk](http://www.igvita.com/2010/05/20/scalable-work-queues-with-beanstalk/), a job queueing backend inspired by [Memcached](http://memcached.org/).
 It’s simple, lightweight, and completely specialized for job queueing.
 
-<h5 class='alert alert-danger' markdown='1'>Some of the data returned from queue methods require that the module Yaml be installed. Please refer to [this](http://php.net/manual/book.yaml.php) for more information. You will need to use Yaml >= 2.0.0 </h5>
+<div class="alert alert-danger">
+    <p>
+        Some of the data returned from queue methods require that the module Yaml be installed. Please refer to <a href="http://php.net/manual/book.yaml.php">this</a> for more information. You will need to use Yaml &gt;= 2.0.0
+    </p>
+</div>
 
 <a name='put-jobs-in-queue'></a>
 ## Putting Jobs into the Queue
@@ -120,3 +132,117 @@ while (($job = $queue->reserve()) !== false) {
 ```
 
 Our client implements a basic set of the features provided by Beanstalkd but enough to allow you to build applications implementing queues.
+
+## Advanced Topics
+
+### Multiple Queues
+Beanstalkd supports multiple queues (called 'tubes') to allow for a single queue server to act as a hub for a variety of workers.  Phalcon supports this readily.
+
+Viewing the tubes available on the server, and choosing a tube for the queue object to use:
+
+```php
+<?php
+
+$tube_array = $queue->listTubes();
+
+$queue->choose('myOtherTube');
+```
+
+All subsequent work with `$queue` now manipulates `myOtherTube` instead of `default`.
+
+You can view which tube the queue is using as well.
+
+```php
+<?php
+
+$current_tube = $queue->listTubeUsed();
+```
+
+### Tube Manipulation
+
+Tubes can be paused and resumed if needed.  The example below pauses `myOtherTube` for 3 minutes.
+
+```php
+<?php
+
+$queue->pauseTube('myOtherTube', 180);
+```
+
+Setting the delay to 0 will resume normal operation.
+
+```php
+<?php
+
+$queue->pauseTube('myOtherTube', 0);
+```
+
+### Server Status
+
+You can get information about the entire server or specific tubes.
+
+```php
+<?php
+
+$server_stats = $queue->stats();
+
+$tube_stats = $queue->statsTube('myOtherTube');
+
+$server_status = $queue->readStatus();
+
+```
+
+### Job Management
+Beanstalkd supports the ability to manage jobs with both the idea of delaying a job and removing a job from the queue for later processing.
+
+Burying a job is typically used to deal with potential problems outside of the worker that can be resolved.  This takes the job and puts it into the buried queue.
+
+```php
+<?php
+
+$job = $queue->reserve();
+$job->bury();
+```
+
+A list of buried jobs is stored on the server.  You can inspect the first buried job in the queue.
+
+```php
+<?php
+
+$job_data = $queue->peekBuried();
+```
+
+If the buried queue is empty, this will return `false`, else it returns a Job object.
+
+You can kick the first [N] buried jobs in the buried queue to put it/them back in the ready queue.  Below is an example of kicking the first three buried jobs.
+
+```php
+<?php
+
+$queue->kick(3);
+```
+
+Releasing jobs back to the ready queue can be done, along with an optional delay.  This is handy for transient errors while processing a job.  Below is an example of putting a low (100) priority and a 3 minute delay on a job.
+
+```php
+<?php
+
+$job = $queue->reserve();
+
+$job->release(100, 180);
+```
+
+Priority and delay are the same as when `put`ing a job on the queue.
+
+Inspecting a job in the queue can be accomplished with `jobPeek($job_id)`.  The example below attempts to peek at job id 5.
+
+```php
+<?php
+
+$queue->jobPeek(5)
+```
+
+Jobs that have been `delete`ed cannot be inspected and will return `false`.  Ready, buried, and delayed jobs will return a Job object.
+
+### Further Reading
+
+[The protocol text](https://github.com/kr/beanstalkd/blob/master/doc/protocol.txt) contains all of the internal operational details of BeanstalkD and is often considered the defacto documentation for BeanstalkD.

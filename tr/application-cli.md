@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">CLI Uygulaması Oluşturma</a> <ul>
+      <a href="#creating-cli-application">CLI Uygulaması Oluşturma</a> 
+      <ul>
         <li>
           <a href="#structure">Yapı</a>
         </li>
@@ -34,15 +35,15 @@ CLI uygulamaları komut satırından yürütülür. Bunlar, cron işleri, komut 
 
 CLI uygulamasının asgari bir yapısı şöyle görünecektir:
 
-- `app/config/config.php`
-- `app/tasks/MainTask.php`
-- `app/cli.php` <-- ana önyükleme dosyası
+* `app/config/config.php`
+* `app/tasks/MainTask.php`
+* `app/cli.php` main bootstrap file
 
 <a name='creating-bootstrap'></a>
 
 ## Creating a Bootstrap
 
-Normal MVC uygulamalarında olduğu gibi, bir önyükleme dosyası, uygulamayı önyüklemek için kullanılır. Web uygulamalarında index.php önyükleme yerine, uygulamayı önyüklemek için bir cli.php dosyası kullanırız.
+Normal MVC uygulamalarında olduğu gibi, bir önyükleme dosyası, uygulamayı önyüklemek için kullanılır. Instead of the `index.php` bootstrapper in web applications, we use a `cli.php` file for bootstrapping the application.
 
 Bu örnek için kullanacağımız önyükleyici şöyledir:
 
@@ -109,9 +110,6 @@ try {
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
     exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-    exit(1);
 }
 ```
 
@@ -125,7 +123,7 @@ php app/cli.php
 
 ## Tasks
 
-Görevlerin çalışma şekli aynı kontrolcüler gibidir. Bir CLI uygulaması için en az bir Ana Görev (MainTask) ve Ana İşlem (MainAction) gereklidir ve her görev için (eğer özel bir işlem belirtilmediyse çalışacak) bir Ana İşlem (mainAction) olmalıdır.
+Tasks work similar to controllers. Any CLI application needs at least a `MainTask` and a `mainAction` and every task needs to have a `mainAction` which will run if no action is given explicitly.
 
 Below is an example of the `app/tasks/MainTask.php` file:
 
@@ -209,9 +207,6 @@ try {
     exit(1);
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-    exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
     exit(1);
 }
 ```

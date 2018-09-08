@@ -1,52 +1,59 @@
-- [General](/[[language]]/[[version]]/introduction) 
-    - [Release Notes](/[[language]]/[[version]]/release-notes)
-    - Upgrade
+- Główne 
+    - [Introduction](/[[language]]/[[version]]/introduction)
+    - [Release Notes](https://github.com/phalcon/cphalcon/blob/master/CHANGELOG.md)
     - [Sponsors](/[[language]]/[[version]]/sponsors)
+    - [FAQ](/[[language]]/[[version]]/faq)
 - Contributions 
     - [Overview](/[[language]]/[[version]]/contributions)
     - [Pull Requests](/[[language]]/[[version]]/new-pull-request)
     - [NFR](/[[language]]/[[version]]/new-feature-request)
     - [Backtrace Generation](/[[language]]/[[version]]/generating-backtrace)
     - [Reproducible Tests](/[[language]]/[[version]]/reproducible-tests)
-    - Testing guide
+    - [Testing guide](/[[language]]/[[version]]/unit-testing)
 - Getting Started 
     - [Installation](/[[language]]/[[version]]/installation)
     - [Webserver Setup](/[[language]]/[[version]]/webserver-setup) 
         - [WAMP](/[[language]]/[[version]]/webserver-wamp)
         - [XAMPP](/[[language]]/[[version]]/webserver-xampp)
+- Tutorials 
+    - [Podstawowe](/[[language]]/[[version]]/tutorial-base)
+    - [REST](/[[language]]/[[version]]/tutorial-rest)
+    - [Vokuro](/[[language]]/[[version]]/tutorial-vokuro)
+    - [Performance](/[[language]]/[[version]]/performance)
+    - [Invo](/[[language]]/[[version]]/tutorial-invo)
 - Environments 
     - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
     - [Nanobox](/[[language]]/[[version]]/environments-nanobox)
     - [Phalcon Box (Vagrant)](/[[language]]/[[version]]/environments-vagrant)
 - Development Tools 
     - [Installation](/[[language]]/[[version]]/devtools-installation)
-    - [Usage](/[[language]]/[[version]]/devtools-usage)
-    - [Debug](/[[language]]/[[version]]/debug)
-- Core 
+    - [Sposób użycia](/[[language]]/[[version]]/devtools-usage)
+    - [Debugowanie](/[[language]]/[[version]]/debug)
+- Rdzeń 
     - [API Index](/[[language]]/[[version]]/api/index)
-    - Application 
-        - [Full](/[[language]]/[[version]]/application)
-        - [Micro](/[[language]]/[[version]]/application-micro)
-        - [Cli](/[[language]]/[[version]]/application-cli)
+    - [Application] 
+        - [Kompletna](/[[language]]/[[version]]/application)
+        - [Mikro](/[[language]]/[[version]]/application-micro)
+        - [Konsolowa (ang. Cli)](/[[language]]/[[version]]/application-cli)
     - [DI Container](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
 - Services 
     - [Cache](/[[language]]/[[version]]/cache)
-    - [Config](/[[language]]/[[version]]/config)
+    - [Konfiguracja](/[[language]]/[[version]]/config)
     - [Escaper](/[[language]]/[[version]]/escaper)
     - [Loader](/[[language]]/[[version]]/loader) 
         - [Namespaces](/[[language]]/[[version]]/namespaces)
     - [Logging](/[[language]]/[[version]]/logging) 
         - [Adapters](/[[language]]/[[version]]/logging#usage)
-    - [Queue](/[[language]]/[[version]]/queue)
+    - [Kolejka](/[[language]]/[[version]]/queue)
 - Database 
-    - [Layer](/[[language]]/[[version]]/db-layer)
+    - [Warstwa](/[[language]]/[[version]]/db-layer)
     - [PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
-    - [Models](/[[language]]/[[version]]/db-models) 
+    - [Modele](/[[language]]/[[version]]/db-models) 
         - [Behaviors](/[[language]]/[[version]]/db-models-behaviors)
         - [Cache](/[[language]]/[[version]]/db-models-cache)
-        - [Events](/[[language]]/[[version]]/db-models-events)
+        - [Zdarzenia](/[[language]]/[[version]]/db-models-events)
         - [Metadata](/[[language]]/[[version]]/db-models-metadata)
         - [Relationships](/[[language]]/[[version]]/db-models-relationships)
         - [Transactions](/[[language]]/[[version]]/db-models-transactions)
@@ -56,10 +63,10 @@
 - Front End 
     - [Assets](/[[language]]/[[version]]/assets)
     - [Flash Messenger](/[[language]]/[[version]]/flash)
-    - [Forms](/[[language]]/[[version]]/forms)
-    - [Image](/[[language]]/[[version]]/image)
+    - [Formularze](/[[language]]/[[version]]/forms)
+    - [Zdjęcia](/[[language]]/[[version]]/image)
     - [Tag](/[[language]]/[[version]]/tag)
-    - [View](/[[language]]/[[version]]/views) 
+    - [Widok](/[[language]]/[[version]]/views) 
         - [Volt](/[[language]]/[[version]]/volt)
 - Business Logic 
     - [Access Control Lists](/[[language]]/[[version]]/acl)
@@ -67,8 +74,8 @@
     - [Controllers](/[[language]]/[[version]]/controllers)
     - [Dispatcher](/[[language]]/[[version]]/dispatcher)
     - [Event Manager](/[[language]]/[[version]]/events)
-    - [Filters](/[[language]]/[[version]]/filter)
-    - [Routing](/[[language]]/[[version]]/routing)
+    - [Filtry](/[[language]]/[[version]]/filter)
+    - [Trasowanie (ang. routing)](/[[language]]/[[version]]/routing)
     - [Sessions](/[[language]]/[[version]]/session)
     - [Url](/[[language]]/[[version]]/url)
     - [Validation](/[[language]]/[[version]]/validation)
@@ -82,10 +89,3 @@
 - i18n 
     - [Internationalization](/[[language]]/[[version]]/i18n)
     - [Translate](/[[language]]/[[version]]/translate)
-- Tutorials 
-    - [Performance](/[[language]]/[[version]]/performance)
-    - [Basic](/[[language]]/[[version]]/tutorial-base)
-    - [Invo](/[[language]]/[[version]]/tutorial-invo)
-    - [REST](/[[language]]/[[version]]/tutorial-rest)
-    - [Vokuro](/[[language]]/[[version]]/tutorial-vokuro)
-- [API Index](/language/version/api/index)
