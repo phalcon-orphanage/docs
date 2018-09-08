@@ -199,13 +199,13 @@ Returns the DependencyInjection connection service name used to write data relat
 
 public  **setDirtyState** (*mixed* $dirtyState)
 
-Sets the dirty state of the object using one of the DIRTY_STATE_* constants
+Sets the dirty state of the object using one of the `DIRTY_STATE_*` constants
 
 
 
 public  **getDirtyState** ()
 
-Returns one of the DIRTY_STATE_* constants telling if the record exists in the database or not
+Returns one of the `DIRTY_STATE_*` constants telling if the record exists in the database or not
 
 
 
@@ -654,7 +654,7 @@ use Phalcon\Mvc\Model;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\ExclusionIn;
 
-class Subscriptors extends Model
+class Subscribers extends Model
 {
     public function validation()
     {
@@ -1031,6 +1031,73 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
+Using more than one field:
+
+```php
+<?php
+
+class Robots extends \Phalcon\Mvc\Model
+{
+    public function initialize()
+    {
+        $this->hasOne(["id", "type"], "RobotParts", ["robots_id", "robots_type"]);
+    }
+}
+
+```
+
+Using options:
+
+```php
+<?php
+
+class Robots extends \Phalcon\Mvc\Model
+{
+    public function initialize()
+    {
+        $this->hasOne(
+            "id", 
+            "RobotParts", 
+            "robots_id",
+            [
+                "reusable" => true,    // cache the results of this relationship
+                "alias"    => "parts", // Alias of the relationship
+            ]
+        );
+    }
+}
+
+```
+
+Using conditionals:
+
+```php
+<?php
+
+class Robots extends \Phalcon\Mvc\Model
+{
+    public function initialize()
+    {
+        $this->hasOne(
+            "id", 
+            "RobotParts", 
+            "robots_id",
+            [
+                "reusable" => true,           // cache the results of this relationship
+                "alias"    => "partsTypeOne", // Alias of the relationship
+                "params"   => [               // Acts like a filter
+                    "conditions" => "type = :type:",
+                    "bind"       => [
+                        "type" => 1,
+                    ],
+                ],
+            ]
+        );
+    }
+}
+
+```
+
 
 
 protected  **belongsTo** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
@@ -1095,7 +1162,7 @@ class Robots extends \Phalcon\Mvc\Model
             "robots_id",
             "parts_id",
             "Parts",
-            "id",
+            "id"
         );
     }
 }
@@ -1284,6 +1351,29 @@ public [Phalcon\Mvc\Model\ResultsetInterface](/en/3.2/api/Phalcon_Mvc_Model_Resu
 
 Returns related records based on defined relations
 
+```php
+<?php
+
+// Gets the relationship data named "parts"
+$parts = $robot->getRelated('parts');
+
+// Gets the relationship data named "parts" sorted descending by name
+$parts = $robot->getRelated('parts', ['order' => 'name DESC']);
+
+// Gets the relationship data named "parts" filtered
+$parts = $robot->getRelated('parts', ['conditions' => 'type = 1']);
+
+$parts = $robot->getRelated(
+    'parts', 
+    [
+        'conditions' => 'type = :type:',
+        'bind'       => [
+            'type' => 1,
+        ]
+    ]
+);
+
+```
 
 
 protected *mixed* **_getRelatedRecords** (*string* $modelName, *string* $method, *array* $arguments)
