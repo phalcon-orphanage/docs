@@ -160,7 +160,7 @@ class Robots extends Model
 }
 ```
 
-Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the @Column annotation are handled as simple class attributes.
+Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the `@Column` annotation are handled as simple class attributes.
 
 The following annotations are supported:
 
@@ -170,18 +170,18 @@ The following annotations are supported:
 | Identity | The field is an auto_increment/serial column      |
 | Column   | This marks an attribute as a mapped column        |
 
-The annotation @Column supports the following parameters:
+The annotation `@Column` supports the following parameters:
 
-| Nazwa                | Description                                                                                                                                                                  |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| column               | Real column name                                                                                                                                                             |
-| type                 | The column's types: varchar/string (default), text, chr, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
-| length               | The column's length if any                                                                                                                                                   |
-| nullable             | Set whether the column accepts null values or not                                                                                                                            |
-| skip_on_insert     | Skip this column on insert                                                                                                                                                   |
-| skip_on_update     | Skip this column on updates                                                                                                                                                  |
-| allow_empty_string | Column allow empty strings                                                                                                                                                   |
-| default              | Default value                                                                                                                                                                |
+| Nazwa                | Description                                                                                                                                                                   |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| column               | Real column name                                                                                                                                                              |
+| type                 | The column's types: varchar/string (default), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
+| length               | The column's length if any                                                                                                                                                    |
+| nullable             | Set whether the column accepts null values or not                                                                                                                             |
+| skip_on_insert     | Skip this column on insert                                                                                                                                                    |
+| skip_on_update     | Skip this column on updates                                                                                                                                                   |
+| allow_empty_string | Column allow empty strings                                                                                                                                                    |
+| default              | Default value                                                                                                                                                                 |
 
 The annotations strategy could be set up this way:
 
