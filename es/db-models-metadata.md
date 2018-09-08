@@ -160,7 +160,7 @@ class Robots extends Model
 }
 ```
 
-Las anotaciones deben colocarse en las propiedades que se asignan a columnas en la fuente asignada. Las propiedades sin la anotación @Column se tratan como atributos simples de la clase.
+Las anotaciones deben colocarse en las propiedades que se asignan a columnas en la fuente asignada. Properties without the `@Column` annotation are handled as simple class attributes.
 
 Son soportadas las siguientes anotaciones:
 
@@ -170,7 +170,7 @@ Son soportadas las siguientes anotaciones:
 | Identity | El campo es una columna auto_increment/serial               |
 | Column   | Esto marca un atributo como una columna mapeada             |
 
-La anotación @Column admite los siguientes parámetros:
+La anotación `@Column` admite los siguientes parámetros:
 
 | Nombre               | Descripción                                                                                                                                                                      |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -160,7 +160,7 @@ class Robots extends Model
 }
 ```
 
-Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the @Column annotation are handled as simple class attributes.
+Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the `@Column` annotation are handled as simple class attributes.
 
 Поддерживаются следующие аннотации:
 
@@ -170,18 +170,18 @@ Annotations must be placed in properties that are mapped to columns in the mappe
 | Identity | Поле является автоинкрементным и/или идентифицирующим |
 | Column   | Отмечает атрибут в качестве отображаемого столбца     |
 
-Аннотация @Column поддерживает следующие параметры:
+The annotation `@Column` supports the following parameters:
 
-| Название             | Описание                                                                                                                                                                     |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| column               | Real column name                                                                                                                                                             |
-| type                 | The column's types: varchar/string (default), text, chr, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
-| length               | Длина столбца, если есть                                                                                                                                                     |
-| nullable             | Принимает ли столбец нулевые значения или нет                                                                                                                                |
-| skip_on_insert     | Skip this column on insert                                                                                                                                                   |
-| skip_on_update     | Skip this column on updates                                                                                                                                                  |
-| allow_empty_string | Column allow empty strings                                                                                                                                                   |
-| default              | Default value                                                                                                                                                                |
+| Название             | Описание                                                                                                                                                                      |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| column               | Real column name                                                                                                                                                              |
+| type                 | The column's types: varchar/string (default), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
+| length               | Длина столбца, если есть                                                                                                                                                      |
+| nullable             | Принимает ли столбец нулевые значения или нет                                                                                                                                 |
+| skip_on_insert     | Skip this column on insert                                                                                                                                                    |
+| skip_on_update     | Skip this column on updates                                                                                                                                                   |
+| allow_empty_string | Column allow empty strings                                                                                                                                                    |
+| default              | Default value                                                                                                                                                                 |
 
 Стратегия аннотаций может быть задана таким образом:
 
