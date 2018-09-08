@@ -124,7 +124,7 @@ public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](/[[language]]/[[version]]/api/Phalcon_Cache_Backend)
 
-Inicia un caché. El nombre clave permite identificar el fragmento creado
+Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](/[[language]]/[[version]]/api/Phalcon_Cache_Backend)
 

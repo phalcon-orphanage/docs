@@ -31,7 +31,7 @@
           <a href="#forms-manager">Administrador de formularios</a>
         </li>
         <li>
-          <a href="#external-resources">Recursos externos</a>
+          <a href="#external-resources">Recursos Externos</a>
         </li>
       </ul>
     </li>
@@ -150,7 +150,7 @@ $form->add(
 
 ## Inicializando formularios
 
-Como hemos visto anteriormente, los formularios se pueden inicializar fuera de la clase formulario agregando elementos en él. Puede reutilizar código u organizar tus formularios en clases e implementar el formulario en un archivo separado:
+Como vimos anteriormente, los formularios pueden inicializarse fuera de la clase del formulario agregando elementos en el. Es posible reutilizar código u organizar sus clases de formularios implementando el formulario en archivos separados:
 
 ```php
 <?php
@@ -180,16 +180,21 @@ class ContactForm extends Form
                 'telephoneType',
                 TelephoneTypes::find(),
                 [
-                    'using' => [
+                    'using'      => [
                         'id',
                         'name',
-                    ]
+                    ],
+                    'useEmpty'   => true,
+                    'emptyText'  => 'Seleccione uno...',
+                    'emptyValue' => '',
                 ]
             )
         );
     }
 }
 ```
+
+Ademas, los elementos Select soportan la opción `useEmpty` para habilitar el uso de un elemento en blanco en la lista de opciones disponibles. Las opciones `emptyText` y `emptyValue` son opcionales, pero le permiten personalizar el texto y el valor del elemento en blanco, respectivamente.
 
 `Phalcon\Forms\Form` extiende de `Phalcon\Di\Injectable` para tener acceso a los servicios de aplicación si es necesario:
 
@@ -291,7 +296,7 @@ $form = new UsersForm(
 
 ## Validación
 
-Los formularios en Phalcon se integran con el componente de [validación](/[[language]]/[[version]]/validation) para ofrecer una validación instantánea. Los validadores integrados o personalizados se pueden asignar a cada elemento:
+Los formularios en Phalcon están integrados con el componente [validación](/[[language]]/[[version]]/validation) para ofrecer una validación instantánea. Los validadores incorporados o personalizados se pueden configurar para cada elemento:
 
 ```php
 <?php
@@ -370,7 +375,7 @@ foreach ($messages as $message) {
 
 ## Filtrado
 
-Un formulario también es capaz de filtrar los datos antes de validarlos. Puede definir los filtros en cada elemento:
+Un formulario también puede filtrar los datos antes validarlos. Es posible asignar filtros en cada elemento:
 
 ```php
 <?php
@@ -500,7 +505,7 @@ $form->add(
 );
 ```
 
-Las entidades pueden implementar getters, que tienen una precedencia mayor que propiedades públicas. Estos métodos dan más libertad para producir valores:
+Las entidades pueden implementar getters, las cuales tienen mayor precedencia en frente de las propiedades públicas. Estos métodos le darán más libertad para producir valores:
 
 ```php
 <?php
@@ -531,16 +536,18 @@ Phalcon proporciona un conjunto de elementos incorporados para utilizar en sus f
 
 | Nombre                              | Descripción                                  |
 | ----------------------------------- | -------------------------------------------- |
-| `Phalcon\Forms\Element\Text`     | Genera elementos `INPUT[type=text]`          |
-| `Phalcon\Forms\Element\Password` | Genera elementos `INPUT[type=password]`      |
-| `Phalcon\Forms\Element\Select`   | Genera elementos `SELECT` basado en opciones |
 | `Phalcon\Forms\Element\Check`    | Genera elementos `INPUT[type=check]`         |
-| `Phalcon\Forms\Element\TextArea` | Genera elementos `TEXTAREA`                  |
-| `Phalcon\Forms\Element\Hidden`   | Genera elementos `INPUT[type=hidden]`        |
-| `Phalcon\Forms\Element\File`     | Genera elementos `INPUT[type=file]`          |
 | `Phalcon\Forms\Element\Date`     | Genera elementos `INPUT[type=date]`          |
+| `Phalcon\Forms\Element\Email`    | Genera elementos `INPUT[type=email]`         |
+| `Phalcon\Forms\Element\File`     | Genera elementos `INPUT[type=file]`          |
+| `Phalcon\Forms\Element\Hidden`   | Genera elementos `INPUT[type=hidden]`        |
 | `Phalcon\Forms\Element\Numeric`  | Genera elementos `INPUT[type=number]`        |
+| `Phalcon\Forms\Element\Password` | Genera elementos `INPUT[type=password]`      |
+| `Phalcon\Forms\Element\Radio`    | Genera elementos `INPUT[type=radio]`         |
+| `Phalcon\Forms\Element\Select`   | Genera elementos `SELECT` basado en opciones |
 | `Phalcon\Forms\Element\Submit`   | Genera elementos `INPUT[type=submit]`        |
+| `Phalcon\Forms\Element\Text`     | Genera elementos `INPUT[type=text]`          |
+| `Phalcon\Forms\Element\TextArea` | Genera elementos `TEXTAREA`                  |
 
 <a name='event-callback'></a>
 
@@ -566,7 +573,7 @@ class ContactForm extends Form
 
 ## Presentación de formularios
 
-Puede representar formularios con total flexibilidad, en el ejemplo siguiente se muestra cómo representar cada elemento mediante un procedimiento estándar:
+Puede representar el formulario con total flexibilidad, el siguiente ejemplo muestra cómo representar cada elemento mediante un procedimiento estándar:
 
 ```php
 <br />&lt;form method='post'&gt;
@@ -675,7 +682,7 @@ class MyElement extends Element
 {
     public function render($attributes = null)
     {
-        $html = // ... Producir algún HTML
+        $html = // ... Producir HTML
 
         return $html;
     }
@@ -721,6 +728,6 @@ echo $loginForm->render();
 
 <a name='external-resources'></a>
 
-## Recursos externos
+## Recursos Externos
 
 * [Vökuró](http://vokuro.phalconphp.com), es una aplicación de ejemplo que utiliza el generador de formularios para crear y administrar formularios, [Código fuente en Github](https://github.com/phalcon/vokuro)

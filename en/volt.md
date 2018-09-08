@@ -1401,7 +1401,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='extending-filters'></a>
 ### Filters
-A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
+A filter has the following form in a template: `leftExpr|name(optional-args)`. Adding new filters is similar as seen with the functions:
 
 ```php
 <?php

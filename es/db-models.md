@@ -7,7 +7,7 @@
           <a href="#creating">Creación de Modelos</a> 
           <ul>
             <li>
-              <a href="#properties-setters-getters">Propiedades públicas vs Setters / Getters</a>
+              <a href="#properties-setters-getters">Propiedades públicas vs. Setters/Getters</a>
             </li>
           </ul>
         </li>
@@ -107,7 +107,7 @@ Un modelo representa la información (datos) de la aplicación y las reglas para
 
 ## Creación de Modelos
 
-Un modelo es una clase que se extiende desde `Phalcon\Mvc\Model`. El nombre de la clase debe estar en notación camel case:
+Un modelo es una clase que extiende desde `Phalcon\Mvc\Model`. El nombre de la clase debe estar en notación de camel case:
 
 ```php
 <?php
@@ -146,7 +146,7 @@ class RobotParts extends Model
 }
 ```
 
-El modelo `RobotParts` ahora se mapea de la tabla `toys_robot_parts`. El método `initialize()` ayuda a configurar este modelo con un comportamiento personalizado, por ejemplo una tabla diferente.
+Ahora el modelo `RobotParts` se mapea desde la tabla `toys_robot_parts`. El método `initialize()` ayuda a configurar este modelo con un comportamiento personalizado, por ejemplo, una tabla diferente.
 
 El método `initialize()` se llama sólo una vez durante la solicitud. Este método pretende realizar inicializaciones que se aplican para todas las instancias del modelo creado dentro de la aplicación. Si desea realizar tareas de inicialización para cada instancia creada del modelo puede usar el método `onConstruct()`:
 
@@ -168,7 +168,7 @@ class RobotParts extends Model
 
 <a name='properties-setters-getters'></a>
 
-### Propiedades públicas vs Setters / Getters
+### Propiedades públicas vs. Setters/Getters
 
 Los modelos pueden ser implementados con propiedades públicas, lo que significa que cada propiedad puede ser leída y actualizada desde cualquier parte del código que ha instanciado esa clase de modelo:
 
@@ -263,7 +263,7 @@ Si utilizas guiones bajos en los nombres de sus propiedades, deberá utilizar ca
 
 ## Comprensión de Registros a Objetos
 
-Cada instancia de un modelo representa una fila en la tabla. Usted puede fácilmente acceder a datos del registro leyendo las propiedades del objeto. Por ejemplo, para una tabla de 'robots' con los siguientes registros:
+Cada instancia de un modelo representa una fila en la tabla. Podrás acceder fácilmente a los datos del registro, al leer las propiedades de los objetos. Por ejemplo, para una tabla 'robots' con los siguientes registros:
 
 ```sql
 mysql> select * from robots;
@@ -305,13 +305,13 @@ $robot->name = 'RoboCop';
 $robot->save();
 ```
 
-Como se puede ver, no es necesario utilizar sentencias SQL crudas. `Phalcon\Mvc\Model` ofrece una abstracción de base de datos de alto nivel para aplicaciones web.
+Como se puede ver, no es necesario utilizar sentencias SQL crudas. `Phalcon\Mvc\Model` proporciona una abstracción alta de base de datos para aplicaciones web.
 
 <a name='finding-records'></a>
 
 ## Búsqueda de registros
 
-`Phalcon\Mvc\Model` también ofrece varios métodos para consultar registros. Los siguientes ejemplos le muestran cómo consultar uno o varios registros de un modelo:
+`Phalcon\Mvc\Model` además ofrece muchos métodos para consultar registros. En los siguientes ejemplo mostraremos como consultar uno o más registros desde un modelo:
 
 ```php
 <?php
@@ -412,10 +412,10 @@ Las opciones disponibles de consulta son:
 | Parámetro     | Descripción                                                                                                                                                                                                                   | Ejemplo                                                              |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Condiciones de búsqueda para la operación de búsqueda. Se utiliza para extraer sólo los registros que cumplan con un criterio especificado. Por defecto `Phalcon\Mvc\Model` asume el primer parámetro como las condiciones. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Devolverá las columnas especificadas aquí en lugar de las todas columnas del modelo. Cuando se utiliza esta opción se devuelve un objeto incompleto.                                                                          | `'columns' => 'id, name'`                                         |
+| `columns`     | Retorna las columnas especificadas en vez de todas las columnas del modelo. Cuando utilizamos esta opción, un objecto incompleto es retornado.                                                                                | `'columns' => 'id, name'`                                         |
 | `bind`        | Se utiliza junto a las opciones, mediante la sustitución de marcadores y escapando los valores para aumentar la seguridad.                                                                                                    | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
 | `bindTypes`   | Al enlazar parámetros, puede utilizar este parámetro para definir el tipo de datos de los parámetros y aumentar aún más la seguridad.                                                                                         | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
-| `order`       | Se utiliza para ordenar el conjunto de resultados. Utilice uno o más campos separados por comas.                                                                                                                              | `'order' => 'name DESC, status'`                                  |
+| `order`       | Es utilizado para ordenar el conjunto de resultados. Utilice uno o más campos separados por comas.                                                                                                                            | `'order' => 'name DESC, status'`                                  |
 | `limit`       | Limitar los resultados de la consulta a cierto rango.                                                                                                                                                                         | `'limit' => 10`                                                   |
 | `offset`      | Desplazar los resultados de la consulta por una cierta cantidad.                                                                                                                                                              | `'offset' => 5`                                                   |
 | `group`       | Permite recopilar datos a través de múltiples registros y agrupar los resultados de una o más columnas.                                                                                                                       | `'group' => 'name, status'`                                       |
@@ -612,7 +612,7 @@ class Robots extends Model
 
     public function getResultsetClass()
     {
-        return 'Application\Mvc\Model\Resultset\Custom';
+    return 'Application\Mvc\Model\Resultset\Custom';
     }
 }
 ```
@@ -1462,8 +1462,6 @@ Las instrucciones de `UPDATE` en SQL son creadas, por defecto, con todas las col
 
 En algunos casos esto podría mejorar el rendimiento al reducir el tráfico entre la aplicación y el servidor de base de datos, esto ayuda especialmente cuando la tabla tiene campos blob o text:
 
-**NOTE:** Enabling Dynamic updates implicitly enables record snapshots. See [Record Snapshots](#record-snapshots) for more information.
-
 ```php
 <?php
 
@@ -1668,7 +1666,7 @@ array(0) {
 
 ## Apuntando a un esquema diferente
 
-Si un modelo se asigna a una tabla en un esquema/bases de datos distintas a la predeterminada. Puede utilizar el método `setSchema()` para redefinirlo:
+Si un modelo está asignado a una tabla que está en un esquema/base de datos diferente del predeterminado. Puede utilizar el método `setSchema()` para definirlo:
 
 ```php
 <?php

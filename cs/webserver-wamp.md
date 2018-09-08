@@ -24,7 +24,7 @@
 
 ## Download the right version of Phalcon
 
-WAMP podporuje jak 32bitové tak 64bitové verze. Ze sekce "Stažení" můžete stáhnout DLL knihovnu Phalcon frameworku která vyhovuje Vaší WAMP instalaci.
+WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMPP installation.
 
 Po stažení knihovny Phalcon frameworku budete mít ZIP soubor podobný ukázanému níže:
 
@@ -48,7 +48,7 @@ a uložte soubor.
 
 ![](/images/content/webserver-wamp-2.png)
 
-Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file:
+Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Přidejte následující řádek na konec souboru:
 
 ```ini
 extension=php_phalcon.dll
@@ -64,7 +64,7 @@ Open your browser to navigate to `http://localhost`. The WAMP welcome page will 
 
 ![](/images/content/webserver-wamp-4.png)
 
-Gratulujeme! Nyní je Phalcon framework připraven.
+Congratulations! You are now phlying with Phalcon.
 
 <a name='related'></a>
 

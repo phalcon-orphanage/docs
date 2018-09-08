@@ -9,7 +9,7 @@
           <a href="#dependencies">Carga de clases y dependencias</a>
         </li>
         <li>
-          <a href="#sign-up">Regístrarse</a>
+          <a href="#sign-up">Registrarse</a>
         </li>
       </ul>
     </li>
@@ -44,7 +44,7 @@ vokuro/
     schemas/
 ```
 
-Este proyecto sigue una estructura muy similar al INVO. Una vez que usted abra la aplicación en su navegador `http://localhost/vokuro` verás algo como esto:
+Este proyecto sigue una estructura similar al utilizado en INVO. Una vez que usted abra la aplicación en su navegador `http://localhost/vokuro` verás algo como esto:
 
 ![](/images/content/tutorial-vokuro-1.png)
 
@@ -123,7 +123,7 @@ class AboutController extends ControllerBase
 
 <a name='sign-up'></a>
 
-## Regístrarse
+## Registrarse
 
 En primer lugar, vamos a ver cómo los usuarios están registrados en Vökuró. Cuando un usuario hace clic en el botón `crear una cuenta`, el controlador `SessionController` se invoca y la acción `signup` se ejecuta:
 

@@ -159,7 +159,7 @@ Phalcon нуждается в следующем минимальном набо
 
 # Установка
 
-Поскольку Phalcon скомпилирован как расширение PHP, его установка несколько отличается от традиционных PHP фреймворков. Phalcon нуждается в установке и загрузке в виде модуля на вашем веб сервере.
+Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
 <a name='installation-linux'></a>
 
@@ -324,7 +324,7 @@ yum install php56-php-phalcon3
 
 ## FreeBSD
 
-Порт доступен для FreeBSD. Для установки достаточно пары простых команд:
+A port is available for FreeBSD. To install it you will need to issue the following commands:
 
 ### `pkg_add`
 
@@ -440,7 +440,7 @@ extension=php_phalcon.dll
 * re2c >= 0.13
 * libpcre-dev (libpcre3-dev)
 
-Вы можете установить эти пакеты в вашей системе используя соответствующий пакетный менеджер. Инструкции для популярных дистрибутивов приведены ниже:
+You can install these packages in your system with the relevant package manager. Instructions for popular linux distributions are below:
 
 #### Ubuntu
 

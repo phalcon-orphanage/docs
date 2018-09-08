@@ -326,7 +326,7 @@ $validation->add(
 );
 ```
 
-By default, the `getMessages()` method returns all the messages generated during validation. You can filter messages for a specific field using the `filter()` method:
+デフォルトでは、`getMessages()`メソッドは、バリデーション中に生成されたすべてのメッセージを返します。 `filter()`メソッドを使用して、特定のフィールドのメッセージをフィルタリングできます。
 
 ```php
 <?php
@@ -379,7 +379,7 @@ $validation->setFilters('name', 'trim');
 $validation->setFilters('email', 'trim');
 ```
 
-Filtering and sanitizing is performed using the [filter](/[[language]]/[[version]]/filter) component. You can add more filters to this component or use the built-in ones.
+フィルタリングとサニタイズは、[filter](/[[language]]/[[version]]/filter)コンポーネントを使用して実行されます。 このコンポーネントにフィルタを追加したり、組み込みのフィルタを使用することができます。
 
 <a name='events'></a>
 

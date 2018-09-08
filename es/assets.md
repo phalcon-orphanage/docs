@@ -465,9 +465,9 @@ foreach ($jsCollection as $resource) {
 
 ## Mejorar el Rendimiento
 
-Hay muchas maneras de optimizar el procesamiento de los recursos. Describiremos un método sencillo a continuación que te permite manejar recursos directamente a través de un servidor web para optimizar el tiempo de respuesta.
+Hay muchas formas de optimizar el procesamiento de recursos. A continuación, describiremos un método simple, que permite manejar recursos directamente a través del servidor web para optimizar el tiempo de respuesta.
 
-Primero tenemos que configurar el gestor de activos (Assets Manager). Vamos a utilizar el controlador base, pero puedes utilizar el proveedor de servicios o desde cualquier otro lugar:
+Primero necesitamos establecer el gestor de activos. Utilizaremos el controlador base, pero usted puede utilizar el proveedor de servicios o cualquier otro lugar:
 
 ```php
 <?php
@@ -598,6 +598,6 @@ Necesitamos crear los directorios `assets/js` y `assets/css` en la raíz de la a
 
 Cada vez que el usuario solicita recursos con una dirección del tipo `/assets/js/global.js`, el pedido será redirigido a `AssetsController` en el caso que este fichero esté ausente en el sistema de archivos. De lo contrario el recurso será manejado por el servidor web.
 
-No es el mejor ejemplo. Sin embargo, refleja la idea principal: la configuración adecuada de un servidor web con una aplicación puede ayudar a optimizar el tiempo de respuesta múltiple.
+Este no es el mejor ejemplo. Sin embargo, refleja la idea principal: la configuración adecuada de un servidor web con una aplicación, puede ayudar a optimizar el tiempo de respuesta múltiple.
 
 Puedes encontrar más información sobre la configuración del servidor Web y Enrutamiento en los artículos siguientes: [Configuración del Servidor Web](/[[language]]/[[version]]/webserver-setup) y [Enrutamiento](/[[language]]/[[version]]/routing).

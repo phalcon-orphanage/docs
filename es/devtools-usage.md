@@ -146,7 +146,7 @@ Accediendo al proyecto desde el servidor web le mostrará lo siguiente:
 
 ## Generando controladores
 
-El comando `create-controller` genera estructuras de esqueleto de controlador. Es importante invocar este comando dentro de un directorio que cuenta ya con un proyecto Phalcon.
+El comando `create-controller` genera la estructura esquelética del controlador. Es importante para invocar este comando dentro de un directorio que ya tiene un proyecto Phalcon.
 
 ```bash
 $ phalcon create-controller --name prueba
@@ -373,7 +373,7 @@ Una vez que el código está generado, debe modificarse para cumplir con sus nec
 $ phalcon scaffold --table-name products
 ```
 
-El generador de andamios produce varias archivos en su aplicación, junto con algunas carpetas. Aquí un resumen rápido de lo que se generará:
+El generador del CRUD generará varios archivos en la aplicación, justo con algunas carpetas. Aquí hay una descripción general rápida de lo que se generará:
 
 | Archivo                                  | Propósito                                 |
 | ---------------------------------------- | ----------------------------------------- |
@@ -392,7 +392,7 @@ La `página crear` permite crear productos aplicando los validadores en el model
 
 ![](/images/content/devtools-usage-04.png)
 
-Después de realizar una búsqueda, el componente de paginado esta disponible para mostrar los resultados en páginas. Utilice los enlaces "Editar" o "Borrar" de cada resultado para realizar dichas acciones.
+Después de realizar una búsqueda, hay disponible un componente de paginado para mostrar los resultados paginados. Use los enlaces "Editar" o "Eliminar" delante de cada resultado para realizar tales acciones.
 
 ![](/images/content/devtools-usage-05.png)
 
@@ -400,7 +400,7 @@ Después de realizar una búsqueda, el componente de paginado esta disponible pa
 
 ## Interfaz web para herramientas
 
-Además, si Ud. prefiere, es posible usar las Herramientas de Desarrollador de Phalcon desde una interfaz web. Revise el siguiente video tutorial para ver como funciona:
+Además, si lo prefiere, es posible usar las Herramientas de Desarrollador de Phalcon desde una interfaz web. Echa un vistazo al siguiente video tutorial para descubrir cómo funciona:
 
 <div align="center">
 <iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen mark="crwd-mark"></iframe>

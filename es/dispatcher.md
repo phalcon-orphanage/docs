@@ -100,12 +100,12 @@ El código anterior carece de validaciones, filtros y controles adicionales, per
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | --------------------- |
 | beforeDispatchLoop   | Activado antes de entrar en el bucle de despacho. En este momento el distribuidor no sabe si existen el controlador o las acciones a ejecutarse. El dispatcher sólo conoce la información pasada por el Router. | Sí                           | Listeners             |
 | beforeDispatch       | Activado después de entrar en el bucle de despacho. En este momento el dispatcher no sabe si existen el controlador o las acciones a ejecutarse. El dispatcher sólo conoce la información pasada por el Router. | Sí                           | Listeners             |
-| beforeExecuteRoute   | Dispara antes de ejecutar el método de controlador/acción. En este punto el dispatcher ha sido inicializado el controlador y sabe que si existe la acción.                                                      | Sí                           | Listeners/Controllers |
+| beforeExecuteRoute   | Ejecutado antes de ejecutar el método controlador/acción. En este punto el despachador tiene inicializado el controlador y conoce si existe la acción.                                                          | Sí                           | Listeners/Controllers |
 | initialize           | Permite inicializar globalmente el controlador en la solicitud                                                                                                                                                  | No                           | Controllers           |
-| afterExecuteRoute    | Se activa después de ejecutar el método controlador/acción. No se puede detener la operación, sólo utilice este evento para hacer limpieza tras ejecutar la acción                                              | No                           | Listeners/Controllers |
+| afterExecuteRoute    | Ejecutado después de ejecutar el método controlador/acción. Esta operación no puede ser detenida, solo utilizar esta acción para hacer limpieza después de ejecutar la acción                                   | No                           | Listeners/Controllers |
 | beforeNotFoundAction | Se activa cuando la acción no se encuentra en el controlador                                                                                                                                                    | Sí                           | Listeners             |
 | beforeException      | Disparado antes de que el dispatcher lance una excepción                                                                                                                                                        | Sí                           | Listeners             |
-| afterDispatch        | Se activa después de ejecutar el método controlador/acción. No se puede detener la operación, sólo utilice este evento para hacer limpieza tras ejecutar la acción                                              | Sí                           | Listeners             |
+| afterDispatch        | Ejecutado después de ejecutar el método controlador/acción. Esta operación no puede ser detenida, solo utilizar esta acción para hacer limpieza después de ejecutar la acción                                   | Sí                           | Listeners             |
 | afterDispatchLoop    | Activa después de salir del bucle de despacho                                                                                                                                                                   | No                           | Listeners             |
 | afterBinding         | Se dispara después de que los modelos están enlazados pero antes de ejecutar la ruta                                                                                                                            | Sí                           | Listeners/Controllers |
 
@@ -602,7 +602,7 @@ $di->set(
 );
 ```
 
-El ejemplo anterior ha sido simplificado. Un desarrollador puede mejorarlo para inyectar cualquier tipo de dependencia o modelo en las acciones antes de ser ejecutadas.
+El ejemplo anterior a sido simplificado. Un desarrollador puede mejorarlo para inyectar cualquier tipo de dependencia o modelo en las acciones antes de ser ejecutadas.
 
 A partir de la versión 3.1.x el dispatcher viene con una opción para manejar esto internamente para que cualquier modelo sea pasado a una acción de controlador mediante `Phalcon\Mvc\Model\Binder`.
 
@@ -625,7 +625,7 @@ return $dispatcher;
 
 También introduce una nueva interfaz `Phalcon\Mvc\Model\Binder\BindableInterface` que permite definir los controladores asociados para permitir modelos vinculantes en los base controllers.
 
-Por ejemplo, si tienes un controlador base `CrudController` y un `PostsController` que se extiende del anterior. El `CrudController` se verá algo como esto:
+Por ejemplo, usted tiene una base `CrudController` con su `PostsController` extendiéndolo. Su `CrudController` lucirá de la siguiente manera:
 
 ```php
 use Phalcon\Mvc\Controller;
@@ -684,7 +684,7 @@ class PostsController extends Controller
 
 <div class="alert alert-warning">
     <p>
-        Actualmente el Binder usa solamente de la clave primaria de modelos para realizar un <code>findFirst()</code>. Una ruta de ejemplo para lo anterior <code>/posts/show/{1}</code>
+        Actualmente, el binder solo utilizar la clave primaria de los modelos para realizar un <code>findFirst()</code>. Una ruta de ejemplo, para lo anterior, sería <code>/posts/show/{1}</code>
     </p>
 </div>
 

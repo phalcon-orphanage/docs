@@ -122,7 +122,7 @@ El código anterior produce el siguiente código HTML:
 &lt;/html&gt;
 ```
 
-Cada texto se escapó según su contexto. El uso del contexto adecuado es importante para evitar ataques XSS.
+Cada texto es escapado acorde al contexto. Utilizar el contexto apropiado es importante para evitar los ataques XSS.
 
 <a name='html'></a>
 

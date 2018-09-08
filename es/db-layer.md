@@ -100,7 +100,7 @@ Este componente permite una manipulación de base de datos a nivel inferior que 
 
 ## Adaptadores de base de datos
 
-Este componente hace uso de adaptadores para encapsular detalles específicos del sistema de base de datos. Phalcon utiliza PDO para conectar a las bases de datos. Son soportados los siguientes motores de base de datos:
+Este componente hace uso de adaptadores para encapsular los detalles especificos del sistema de base de datos. Phalcon utiliza PDO para conectarse a las bases de datos. Son soportados los siguientes motores de base de datos:
 
 | Clase                                   | Descripción                                                                                                                                                                                                                                                |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -114,7 +114,7 @@ Este componente hace uso de adaptadores para encapsular detalles específicos de
 
 <a name='factory'></a>
 
-Carga la clase del Adaptador PDO utilizando la opción `adapter`. Por ejemplo:
+Carga la clase adaptador PDO utilizando la opción `adapter`. Por ejemplo:
 
 ```php
 <?php
@@ -278,7 +278,7 @@ Lo anterior devuelve la instancia de base de datos correcta y también tiene la 
 
 ## Encontrar Registros
 
-`Phalcon\Db` proporciona varios métodos para consultar las filas de las tablas. En este caso se requiere la sintaxis SQL específica para el motor de base de datos de destino:
+`Phalcon\Db` proporciona varios métodos a las filas de consulta de tablas. La sintaxis SQL específica del motor de base de datos de destino, es requerida en este caso:
 
 ```php
 <?php
@@ -378,7 +378,7 @@ Cuando se utilizan marcadores numéricos, necesita definirlos como enteros, es d
 
 Esta función tiene en cuenta el conjunto de caracteres de conexión, por lo que se recomienda definir el conjunto de caracteres correcto en los parámetros de conexión o en la configuración de servidor de base de datos, como un conjunto de caracteres incorrecto producirá efectos no deseados al almacenar o recuperar datos.
 
-También, se puede pasar sus parámetros directamente a los métodos `execute` o `query`. En este caso los parámetros enlazados se pasan directamente al PDO:
+Además, puede pasar los parámetros directamente a los métodos `execute` o `query`. En este caso los parámetros enlazados sin pasados directamente a PDO:
 
 ```php
 <?php
@@ -504,7 +504,7 @@ Esto provoca la siguiente excepción:
     syntax to use near ''100'' at line 1' in /Users/scott/demo.php:78
     
 
-Esto sucede porque 100 es una variable de tipo cadena. Es fácilmente corregible moldeando primero el valor a entero:
+Esto sucede porque 100 es una variable de tipo string. Estos se soluciona fácilmente convirtiendo primero el valor a entero:
 
 ```php
 <?php
@@ -687,7 +687,7 @@ $success = $connection->delete(
 
 ## Transacciones y transacciones anidadas
 
-Trabajar con transacciones es posible como lo es con PDO. Realizar manipulación de datos dentro de las transacciones a menudo aumenta el rendimiento en la mayoría de sistemas de base de datos:
+Trabajar con transacciones es posible como lo es con PDO. Realizar la manipulación de datos dentro de las transacciones a menudo aumenta el rendimiento en la mayoría de los sistemas de bases de datos:
 
 ```php
 <?php
@@ -1010,15 +1010,15 @@ Una descripción de la tabla es muy similar al comando `DESCRIBE` de MySQL, cont
 | ---------------- | --------------- | ---------------------------------------------------------- | --------------------------------- |
 | Nombre del campo | Tipo de columna | ¿Es la columna parte de la clave principal o de un índice? | ¿La columna permite valores null? |
 
-Los métodos para obtener información acerca de las vistas también se aplican para cada sistema de base de datos soportadas:
+Methods to get information about views are also implemented for every supported database system:
 
 ```php
 <?php
 
-// Obtener las vistas en la base de datos 'test_db'
+// Obtener las vistas de la base de datos test_db
 $tables = $connection->listViews('test_db');
 
-// ¿Hay una vista llamada "robots" en la base de datos?
+// Hay una vista llamada 'robots' en la base de datos?
 $exists = $connection->viewExists('robots');
 ```
 
@@ -1077,19 +1077,19 @@ $connection->createTable(
 
 `Phalcon\Db::CreateTable()` acepta un array asociativo que describe la tabla. Las columnas se definen con la clase `Phalcon\Db\Column`. La tabla siguiente muestra las opciones disponibles para definir una columna:
 
-| Opción          | Descripción                                                                                                                         | Opcional |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `type`          | Tipo de columna. Debe ser una constante de `Phalcon\Db\Column` (ver lista de abajo)                                               |    No    |
-| `primary`       | `true` si la columna forma parte de la clave primaria de la tabla                                                                   |    Sí    |
-| `size`          | Algunos tipos de columnas como `VARCHAR` o `INTEGER` puede tener un tamaño específico                                               |    Sí    |
-| `scale`         | Columnas `DECIMAL` o `NUMBER` pueden tener una escala para especificar cuántos decimales deben almacenarse                          |    Sí    |
-| `unsigned`      | Las columnas `INTEGER` pueden tener signo o no. Esta opción no se aplica a otros tipos de columnas                                  |    Sí    |
-| `notNull`       | ¿La columna puede almacenar valores nulos?                                                                                          |    Sí    |
-| `default`       | Valor por defecto (cuando se usa con `'notNull' => true`).                                                                       |    Sí    |
-| `autoIncrement` | Con este atributo la columna se incrementará automáticamente con un entero. Solo una columna en la tabla puede tener este atributo. |    Sí    |
-| `bind`          | Una de las constantes `BIND_TYPE_*` que indica como debe tratarse la columna antes de guardarse                                     |    Sí    |
-| `first`         | La columna debe colocarse en primera posición en el orden de columnas                                                               |    Sí    |
-| `after`         | La columna debe colocarse después de la columna indicada                                                                            |    Sí    |
+| Opción          | Descripción                                                                                                                                                | Opcional |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
+| `type`          | Tipo de columna. Debe ser una constante de `Phalcon\Db\Column` (ver lista de abajo)                                                                      |    No    |
+| `primary`       | `true` si la columna forma parte de la clave primaria de la tabla                                                                                          |    Sí    |
+| `size`          | Algunos tipos de columnas como `VARCHAR` o `INTEGER` puede tener un tamaño específico                                                                      |    Sí    |
+| `scale`         | Columnas `DECIMAL` o `NUMBER` pueden tener una escala para especificar cuántos decimales deben almacenarse                                                 |    Sí    |
+| `unsigned`      | Las columnas `INTEGER` puede tener o no signo. Esta opción no se aplica a otros tipos de columnas                                                          |    Sí    |
+| `notNull`       | ¿La columna puede almacenar valores nulos?                                                                                                                 |    Sí    |
+| `default`       | Valor por defecto (cuando se usa con `'notNull' => true`).                                                                                              |    Sí    |
+| `autoIncrement` | Con este atributo, la columna se completará automáticamente con un número entero auto-incremental. Solo una columna en la tabla puede tener este atributo. |    Sí    |
+| `bind`          | Una de las constantes `BIND_TYPE_*` que indica como debe tratarse la columna antes de guardarse                                                            |    Sí    |
+| `first`         | La columna debe colocarse en primera posición en el orden de columnas                                                                                      |    Sí    |
+| `after`         | La columna debe colocarse después de la columna indicada                                                                                                   |    Sí    |
 
 `Phalcon\Db` soporta los siguientes tipos de columna de base de datos:
 
@@ -1103,12 +1103,12 @@ $connection->createTable(
 
 El array asociativo pasado en `Phalcon\Db::createTable()` puede tener las siguientes claves:
 
-| Índice       | Descripción                                                                                                                                                     | Opcional |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | Un array con un conjunto de columnas de la tabla definida con `Phalcon\Db\Column`                                                                             |    No    |
-| `indexes`    | Un array con un conjunto de índices de la tabla definida con `Phalcon\Db\Index`                                                                               |    Sí    |
-| `references` | Un array con un conjunto de referencias de tabla (foreign keys) definidas con `Phalcon\Db\Reference`                                                          |    Sí    |
-| `options`    | Un array con un conjunto de opciones de creación de la tabla. Estas opciones se refieren a menudo al sistema de base de datos en la que se generó la migración. |    Sí    |
+| Índice       | Descripción                                                                                                                                                       | Opcional |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
+| `columns`    | Un array con un conjunto de columnas de la tabla definida con `Phalcon\Db\Column`                                                                               |    No    |
+| `indexes`    | Un array con un conjunto de índices de la tabla definida con `Phalcon\Db\Index`                                                                                 |    Sí    |
+| `references` | Un array con un conjunto de referencias de tabla (foreign keys) definidas con `Phalcon\Db\Reference`                                                            |    Sí    |
+| `options`    | Un array con un conjunto de opciones para crear la tabla. Estas opciones a menudo se relacionan con el sistema de base de datos en el que se generó la migración. |    Sí    |
 
 <a name='tables-altering'></a>
 

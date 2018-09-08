@@ -1,8 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Crear una Aplicación de Línea de Comandos (CLI)</a> 
-      <ul>
+      <a href="#creating-cli-application">Crear una Aplicación de Línea de Comandos (CLI)</a> <ul>
         <li>
           <a href="#structure">Estructura</a>
         </li>
@@ -27,7 +26,7 @@
 
 # Crear una Aplicación de Línea de Comandos (CLI)
 
-Las aplicaciones CLI se ejecutan desde la linea de comandos. Estas son útiles para crear tareas programadas por crons, scripts, herramientas de comandos y más.
+Las aplicaciones CLI son ejecutadas desde la consola de comandos. Son útiles para crear trabajos cron, scripts, comandos de utilidades y más.
 
 <a name='structure'></a>
 
@@ -43,7 +42,7 @@ La estructura mínima de una aplicación CLI se verá así:
 
 ## Creando un Archivo Principal de Ejecución
 
-Como en aplicaciones MVC normales, un archivo principal se utiliza para arrancar la ejecución de la aplicación. En lugar del archivo `index.php` que inicia las aplicaciones web, se utiliza un archivo llamado `cli.php` para que la aplicación arranque.
+Como en aplicaciones MVC normales, un archivo principal se utiliza para arrancar la ejecución de la aplicación. En lugar del archivo index.php que inicia las aplicaciones web, se utiliza un archivo llamado cli.php para que la aplicación arranque.
 
 A continuación el Archivo Principal de Arranque que se utiliza en este ejemplo.
 
@@ -110,6 +109,9 @@ try {
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
     exit(1);
+} catch (\Exception $exception) {
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 
@@ -123,7 +125,7 @@ php app/cli.php
 
 ## Tasks (Tareas)
 
-Las tareas funcionan de manera similar a los controladores. Cualquier aplicación CLI necesita al menos un `MainTask` y un `mainAction` y cada Task debe tener un `mainAction` que se ejecutará si no se indica alguna acción explícitamente.
+Las tareas funcionan de manera similar a los controladores. Cualquier aplicación CLI necesita al menos un MainTask y un mainAction y cada Task debe tener un mainAction que se ejecutará si no se indica alguna acción explícitamente.
 
 A continuación un ejemplo del archivo `app/tasks/MainTask.php`:
 
@@ -190,7 +192,7 @@ saludos cordiales, universo
 
 ## Ejecutando Tasks en cadena
 
-También es posible ejecutar tareas en cadena si es necesario. Para lograr esto se debe agregar la consola al DI:
+También es posible ejecutar tareas en cadena is es necesario. Para lograr esto, debe agregar la consola al DI:
 
 ```php
 <?php
@@ -208,10 +210,13 @@ try {
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
     exit(1);
+} catch (\Exception $exception) {
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 
-Luego puede utilizar la consola dentro de cualquier tarea. A continuación un ejemplo de un MainTask.php modificado:
+Luego puede utilizar la consola dentro de cualquier tarea. A continuación vemos un ejemplo modificado del MainTask.php:
 
 ```php
 <?php

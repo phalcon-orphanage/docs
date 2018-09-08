@@ -128,12 +128,12 @@ $config = new Config($settings);
 
 The adapters available are:
 
-| Class                            | Description                                                                                             |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Config\Adapter\Ini`  | Použivá INI soubory jako úložiště nastavení. Tento adaptér interně využívá PHP funkci `parse_ini_file`. |
-| `Phalcon\Config\Adapter\Json` | Používá JSON soubory jako úložiště nastavení.                                                           |
-| `Phalcon\Config\Adapter\Php`  | Používá vícerozměrné PHP pole jako úložiště nastavení. Tento adaptér nabízí nejlepší výkon.             |
-| `Phalcon\Config\Adapter\Yaml` | Používá YAML soubory jako úložiště nastavení.                                                           |
+| Class                            | Description                                                                                      |
+| -------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `Phalcon\Config\Adapter\Ini`  | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
+| `Phalcon\Config\Adapter\Json` | Používá JSON soubory jako úložiště nastavení.                                                    |
+| `Phalcon\Config\Adapter\Php`  | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
+| `Phalcon\Config\Adapter\Yaml` | Používá YAML soubory jako úložiště nastavení.                                                    |
 
 <a name='ini-files'></a>
 

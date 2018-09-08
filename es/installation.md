@@ -159,7 +159,7 @@ Phalcon necesita las siguientes extensiones para ser ejecutado (mínimo):
 
 # Instalación
 
-Ya que Phalcon es compilado como una extensión PHP, su instalación es un poco diferente que cualquier otro framework PHP tradicional. Phalcon necesita ser instalado y cargado como un módulo en su servidor web.
+Como Phalcon está compilado como una extensión PHP, su instalación es un poco diferente que cualquier otro framework PHP tradicional. Phalcon necesita ser instalado y cargado como un módulo en el servidor web.
 
 <a name='installation-linux'></a>
 
@@ -324,7 +324,7 @@ Versiones adicionales están disponibles para cada arquitectura específica (x86
 
 ## FreeBSD
 
-Una versión alternativa está disponible para FreeBSD. Para instalarlo deberá ejecutar los siguientes comandos:
+Un puerto está disponible para FreeBSD. Para instalarlo deberá ejecutar los siguientes comandos:
 
 ### `pkg_add`
 
@@ -365,7 +365,7 @@ En sistemas macOS puede compilar e instalar la extensión con `brew`, `macports`
 
 Como el [homebrew/php ha quedado obsoleto](https://brew.sh/2018/01/19/homebrew-1.5.0/) y está en proceso de ser eliminado, se ha creado un repositorio personalizado para Phalcon.
 
-PHP 5.5 no ha sido portado a homebrew/core y como tal ya no existe. Por otro lado se ha añadido PHP 7.2.
+PHP 5.5 no ha sido portado a homebrew/core y como tal ya no existe. Por otro lado PHP 7.2 ha sido añadido.
 
 ```bash
 brew tap tigerstrikemedia/homebrew-phalconphp
@@ -440,7 +440,7 @@ Compilar desde código fuente es similar a la mayoría de los entornos (Linux/ma
 * re2c >= 0.13
 * libpcre-dev
 
-Puede instalar estos paquetes en su sistema con el gestor de paquetes relevantes. Las instrucciones para las distribuciones de linux populares están a continuación:
+Puede instalar estos paquetes in su sistema con el gestor de paquetes correspondiente. Las instrucciones para las distribuciones más populares de linux, son las siguientes:
 
 #### Ubuntu
 

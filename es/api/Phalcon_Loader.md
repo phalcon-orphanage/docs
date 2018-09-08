@@ -71,7 +71,7 @@ Devuelve los directorios registrados actualmente en el auto cargador
 
 public **registerFiles** (*array* $files, [*mixed* $merge])
 
-Registra archivos que son "no clases" y por lo tanto necesitan un "require". Esto es muy útil para incluir archivos que sólo tienen funciones
+Registers files that are "non-classes" hence need a "require". This is very useful for including files that only have functions
 
 public **getFiles** ()
 

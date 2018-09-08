@@ -38,7 +38,7 @@ Redimensiona el tamaño de la imagen al tamaño indicado
 
 public **liquidRescale** (*mixed* $width, *mixed* $height, [*mixed* $deltaX], [*mixed* $rigidity])
 
-Este método modifica la escala de las imágenes utilizando un método de cambio de escala líquido. Sólo es compatible con Imagick
+This method scales the images using liquid rescaling method. Only support Imagick
 
 public **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY])
 

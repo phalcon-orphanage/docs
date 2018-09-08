@@ -52,7 +52,7 @@ $response->setContent("Lo sentimos, la página no existe");
 $response->send();
 ```
 
-Si usted está usando el MVC de forma completa, no necesita crear las respuestas manualmente. Sin embargo, si usted necesita devolver una respuesta directamente desde la acción de un controlador siga este ejemplo:
+Si está utilizando MVC completo, no es necesario crear respuestas manualmente. Sin embargo, si necesitar retornar una respuesta directamente desde una acción de un controlador, siga el siguiente ejemplo:
 
 ```php
 <?php
@@ -84,7 +84,7 @@ class FeedController extends Controller
 
 ## Trabajando con Cabeceras
 
-Las cabeceras son una parte importante de la respuesta HTTP. Contiene información útil sobre el estado de respuesta como el estado HTTP, el tipo de respuesta y mucho más.
+Las cabeceras son una parte importante de las respuestas HTTP. Estas contienen información útil sobre el estado de la respuesta, como el estado HTTP, tipo de respuesta y mucho más.
 
 Se puede configurar los encabezados de la siguiente manera:
 
@@ -99,7 +99,7 @@ $response->setHeader('Content-Disposition', "attachment; filename='downloaded.pd
 $response->setRawHeader('HTTP/1.1 200 OK');
 ```
 
-Una bolsa de `Phalcon\Http\Response\Headers` internamente gestiona los encabezados. Esta clase recupera las cabeceras antes de enviarlas al cliente:
+Un contenedor `Phalcon\Http\Response\Headers` gestiona internamente cabeceras. Esta clase proporciona las cabeceras antes de enviarlas al cliente:
 
 ```php
 <?php
@@ -191,13 +191,13 @@ $expiryDate->modify('-10 minutes');
 $response->setExpires($expiryDate);
 ```
 
-Los navegadores confían en el reloj del cliente para evaluar si esta fecha ha pasado o no. El reloj del cliente se puede modificar para hacer que las páginas caduquen y esto puede representar una limitación para este mecanismo de caché.
+Los navegadores confían en el reloj del cliente para evaluar si la fecha a pasado o no. El reloj del cliente puede ser modificado para hacer que las páginas expiren y esto puede representar una limitación al mecanismo de cacheo.
 
 <a name='http-cache-control'></a>
 
 ### Cache-Control
 
-Este encabezado proporciona una forma más segura de almacenar en caché las páginas servidas. Simplemente debemos especificar un tiempo en segundos que indique al navegador cuánto tiempo debe mantener la página en su caché:
+Esta cabecera provee una forma segura de almacenar en cache las páginas entregadas. Simplemente hay que especificar un tiempo en segundos diciendo, al navegador, cuánto tiempo se debe mantener la página en su caché:
 
 ```php
 <?php

@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">MVC приложения</a> <ul>
+      <a href="#overview">MVC приложения</a>
+      <ul>
         <li>
           <a href="#manual-bootstrapping">Ручная обработка</a>
         </li>
@@ -230,7 +231,7 @@ if ($response instanceof ResponseInterface) {
 
 ### Одномодульное приложение
 
-Одномодульное MVC приложение состоит лишь из одного модуля. Пространства имён могут быть использованы, но не являются обязательными. Такое приложение может иметь следующую структуру:
+Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
 ```php
 single/
@@ -354,7 +355,7 @@ try {
 
 ### Многомодульное приложение
 
-Многомодульное приложение использует единый корень документов для нескольких модулей приложения. Файловая структура тогда может быть такой:
+A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
 
 ```php
 multiple/
@@ -375,7 +376,7 @@ multiple/
     js/
 ```
 
-Каждый каталог в apps/ содержит собственную MVC структуру. Файл Module.php внутри такого каталога создан для настройки параметров этого модуля, таких как автозагрузка и настраиваемые сервисы:
+Each directory in `apps/` have its own MVC structure. A `Module.php` is present to configure specific settings of each module like autoloaders or custom services:
 
 ```php
 <?php

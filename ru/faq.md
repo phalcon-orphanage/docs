@@ -41,7 +41,7 @@ Phalcon достигает этого благодаря следующим фа
 
 - Уменьшение потребляемой памяти посредством использования специально оптимизированных Си-структур и статически типизированных Си-компиляторов, таких как GCC/CLANG/VCC. Они выполняют [некоторые оптимизации](https://en.wikipedia.org/wiki/Category:Compiler_optimizations) кода, улучшая производительность.
 
-- Возможность располагать переменные и данные и стеке. Такие переменные, как правило, имеют большую [локальность](https://en.wikipedia.org/wiki/Locality_of_reference) доступа.
+- The ability to place variables and data in the stack. These would typically have a higher [locality](https://en.wikipedia.org/wiki/Locality_of_reference) of access.
 
 - Более простое предсказание переходов, так как обрабатывается код пользователя напрямую, а не через имплементацию VM. *Mystical написал хорошее объяснение в [Stack Overflow](https://stackoverflow.com/a/11227902/1661465).*
 

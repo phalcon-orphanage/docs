@@ -123,7 +123,7 @@ Este archivo gestiona 3 cosas:
 
 Los Cargadores Automáticos utilizan un cargador de archivos compatible con [PSR-4](http://www.php-fig.org/psr/psr-4/) a través de Phalcon. Otras cosas que se deben agregar al autocargador son sus controladores y modelos. Puede registrar directorios donde se buscarán archivos del namespace de la aplicación. Si quiere leer sobre otras maneras en que usted puede utilizar el Autocargador (Autoloader) puede dar un vistazo [aquí](/[[language]]/[[version]]/loader#overview).
 
-Para empezar, permite registrar los directorios de `Modelos` y `Controladores` de nuestra aplicación. No olvide incluir el cargador de `Phalcon\Loader`.
+Para comenzar, registramos los directorios `controllers` y `models` de nuestra aplicación. No se olvide de incluir el cargador `Phalcon\Loader`.
 
 `public/index.php`
 
@@ -153,7 +153,7 @@ $loader->register();
 
 ### Gestión de dependencias
 
-Debido a que Phalcon esta débilmente acoplado los servicios se registran con el Gestor de Dependencias del framework, por lo que puede ser inyectados automáticamente a componentes y servicios que estén integrados en el contenedor de [IoC](https://en.wikipedia.org/wiki/Inversion_of_control). Con frecuencia se encontrará el término DI que hace referencia a Inyección de Dependencias. La Inyección de dependencias y la Inversión de Control (IoC) pueden sonar como una característica compleja, pero en Phalcon su uso es muy sencillo y práctico. Contenedor IoC de Phalcon consta de los siguientes conceptos:
+Debido a que Phalcon esta débilmente acoplado los servicios se registran con el Gestor de Dependencias del framework, por lo que puede ser inyectados automáticamente a componentes y servicios que estén integrados en el contenedor de [IoC](https://en.wikipedia.org/wiki/Inversion_of_control). Con frecuencia se encontrará el término DI que hace referencia a Inyección de Dependencias. La Inyección de Dependencia y la Inversión de Control (IoC) pueden parecer una característica compleja, pero en Phalcon su uso es muy simple y práctico. Contenedor IoC de Phalcon consta de los siguientes conceptos:
 
 - Contenedor de servicio: una bolsa donde almacenamos globalmente los servicios que nuestra aplicación usará para funcionar.
 - Servicio o Componente: objeto de procesamiento de datos que será inyectado en los componentes
@@ -383,7 +383,7 @@ La salida del navegador debe seguir siendo la misma. El componente estático `Ph
 
 ## Diseñar un formulario de registro
 
-Ahora vamos a cambiar el archivo de la vista `index.phtml`, para añadir un enlace a un nuevo controlador denominado "signup". El objetivo es permitir a los usuarios registrarse dentro de nuestra aplicación.
+Ahora cambiaremos el archivo de vista `index.phtml`, para agregar un enlace a un nuevo controlador llamado "signup". El objetivo es permitir a los usuarios registrarse dentro de nuestra aplicación.
 
 `app/views/index/index.phtml`
 
@@ -504,9 +504,9 @@ Si haces clic en el botón "Registrar" otra vez, verás una página en blanco. E
 
 ## Creando un modelo
 
-Phalcon provee el primer ORM PHP escrito enteramente en lenguaje C. En lugar de aumentar la complejidad del desarrollo, lo simplifica.
+Phalcon ofrece el primer ORM para PHP escrito enteramente en el lenguaje C. En lugar de aumentar la complejidad del desarrollo, lo simplifica.
 
-Antes de crear nuestro primer modelo, necesitamos crear una tabla de base de datos fuera de Phalcon para mapearlo. Se puede crear una tabla simple para almacenar usuarios registrados así:
+Antes de crear nuestro primero modelo, necesitamos crear una tabla en la base de datos, desde donde Phalcon se mapea. Una tabla simple para almacenar usuarios registrado, puede ser creada de la siguiente manera:
 
 `create_users_table.sql`
 
@@ -619,7 +619,7 @@ Al principio del `registerAction` creamos un objeto de usuario vacío de la clas
 
 El ORM filtra automáticamente la entrada (auto-escape) para evitar inyecciones de SQL así que sólo tenemos que pasar la solicitud al método `save()`.
 
-Una validación adicional se produce automáticamente en los campos que se definen como no nulos (obligatorio). Si no ingresamos ninguno de los campos requeridos en el formulario de inscripción, nuestra pantalla se verá así:
+La validación adicional ocurre automáticamente en los campos que se definen como no nulos (obligatorios). Si no ingresamos ninguno de los campos obligatorios en el formulario de registro, nuestra pantalla se verá así:
 
 ![](/images/content/tutorial-basic-4.png)
 

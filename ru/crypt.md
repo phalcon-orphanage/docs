@@ -34,7 +34,7 @@ The cipher AES-256 is used among other places in SSL/TLS across the Internet. It
 
 <div class="alert alert-warning">
     <p>
-        Вы должны использовать длину ключа, соответствующую текущему алгоритму. Для алгоритма по-умолчанию она составляет 32 байта.
+        You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.
     </p>
 </div>
 
@@ -121,9 +121,9 @@ foreach ($texts as $key => $text) {
 
 Для изменения поведения шифрования доступны следующие параметры:
 
-| Название | Описание                                                                                                                                                         |
-| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Шифр     | Один из алгоритмов шифрования, поддерживаемый openssl. Посмотреть список вы можете [здесь](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
+| Название | Описание                                                                                                                                                             |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Шифр     | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
 Пример:
 

@@ -6,7 +6,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter/xcache.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Almacena las anotaciones analizadas en XCache. Este adaptador es adecuado para producción
+Stores the parsed annotations to XCache. This adapter is suitable for production
 
 ```php
 <?php

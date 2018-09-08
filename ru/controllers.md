@@ -54,7 +54,7 @@
 
 Для этого случая запрос будет отправлен для обработки в контроллер `PostsController`. Для контроллеров нет какого-то специального места в приложении, они загружаются с помощью автозагрузки (например `Phalcon\Loader`), поэтому вы можете организовать их так, как вам необходимо.
 
-Контроллеры должны иметь суффикс `Controller`, а действия, соответственно, `Action`. Пример контроллера:
+Controllers must have the suffix `Controller` while actions the suffix `Action`. A sample of a controller is as follows:
 
 ```php
 <?php
@@ -77,7 +77,7 @@ class PostsController extends Controller
 
 Дополнительные URI-параметры передаются в качестве параметров действия, таким образом, они легко могут быть получены как локальные переменные. Контроллер может наследоваться от `Phalcon\Mvc\Controller`, но это не обязательно. В таком случае он получает доступ к сервисам приложения.
 
-Параметры без значений по умолчанию являются обязательными. Установка значений по умолчанию производится обычным для PHP способом:
+Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
 
 ```php
 <?php
@@ -98,7 +98,7 @@ class PostsController extends Controller
 }
 ```
 
-Параметры присваиваются в том же порядке, в каком и были переданы. Получить доступ к произвольному параметру можно следующим образом:
+Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
 
 ```php
 <?php
@@ -241,7 +241,7 @@ class PostsController extends Controller
 
 ## Внедрение сервисов
 
-Если контроллер наследует `Phalcon\Mvc\Controller`, то он автоматически получает доступ к контейнеру сервисов приложения. Например, если мы зарегистрируем некий сервис следующим образом:
+If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
 
 ```php
 <?php
@@ -350,7 +350,7 @@ class PostsController extends Controller
 
 ## Данные сессий
 
-Сессии позволяют сохранять данные между запросами. Вы можете получить доступ к `Phalcon\Session\Bag` из любого контроллера, чтобы сохранить данные, которые должны быть постоянными:
+Sessions help us maintain persistent data between requests. You can access a `Phalcon\Session\Bag` from any controller to encapsulate data that needs to be persistent:
 
 ```php
 <?php
@@ -375,7 +375,7 @@ class UserController extends Controller
 
 ## Использование сервисов как контроллеров
 
-Сервисы могут работать в качестве контроллеров, классы контроллеров первым делом запрашиваются у сервиса контейнеров. Соответственно любой класс, зарегистрированный под именем контроллера, легко может его заменить:
+Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
 
 ```php
 <?php

@@ -12,7 +12,7 @@ Phalcon es un framework open source full stack para PHP, escrito como una extens
 
 ## Uso
 
-Los desarrolladores no necesitan conocer el lenguaje C para usar Phalcon. Su interfaz está expuesta como clases PHP bajo el espacio de nombres `Phalcon`, y está listo para ser usado.
+Los programadores no deben conocer el lenguaje C para utilizar Phalcon. Su interfaz se expone como clases de PHP listas para utilizarse bajo el espacio de nombres `Phalcon`.
 
 Phalcon está bajamente acoplado, permitiendo a los desarrolladores usar sólo los objetos que necesitan como componentes "pegamento" basados en las necesidades de sus aplicaciones.
 

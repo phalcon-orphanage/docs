@@ -6,7 +6,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter/apcu.zep" class="btn btn-default btn-sm">Codigo fuente en GitHub</a>
 
-Guarda las anotaciones analizadas en APCu. Este adaptador es adecuado para producción
+Stores the parsed annotations in APCu. This adapter is suitable for production
 
 ```php
 <?php

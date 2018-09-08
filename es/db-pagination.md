@@ -35,11 +35,11 @@ El proceso de paginación ocurre cuando tenemos que presentar gradualmente grand
 
 Este componente hace uso de adaptadores para encapsular diferentes fuentes de datos:
 
-| Adaptador                                   | Descripción                                                                                                                                                                                     |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Paginator\Adapter\NativeArray`  | Usa un array PHP como origen de datos                                                                                                                                                           |
-| `Phalcon\Paginator\Adapter\Model`        | Utiliza un objeto `Phalcon\Mvc\Model\Resultset` como origen de datos. Ya que PDO no admite cursores desplazables este adaptador no se debe utilizar para paginar un gran número de registros |
-| `Phalcon\Paginator\Adapter\QueryBuilder` | Utiliza un objeto `Phalcon\Mvc\Model\Query\Builder` como origen de datos                                                                                                                    |
+| Adaptador                                   | Descripción                                                                                                                                                                                   |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Paginator\Adapter\NativeArray`  | Usa un array PHP como origen de datos                                                                                                                                                         |
+| `Phalcon\Paginator\Adapter\Model`        | Utiliza un objeto `Phalcon\Mvc\Model\Resultset` como origen de datos. Como PDO no admite cursores desplazables, este adaptador no se debe usar para paginar una gran cantidad de registros |
+| `Phalcon\Paginator\Adapter\QueryBuilder` | Utiliza un objeto `Phalcon\Mvc\Model\Query\Builder` como origen de datos                                                                                                                  |
 
 <a name='factory'></a>
 
@@ -72,7 +72,7 @@ $paginator = Factory::load($options);
 
 ## Ejemplos
 
-En el ejemplo siguiente, el paginator utilizará el resultado de una consulta de un modelo como su origen de datos y limita los datos mostrados, 10 registros por página:
+En el siguiente ejemplo, el paginator utilizará el resultado de una consulta de un modelo como el origen de sus datos y limitará los datos mostrados, 10 registros por página:
 
 ```php
 <?php
@@ -185,7 +185,7 @@ $paginator = new PaginatorQueryBuilder(
 
 <a name='page-attributes'></a>
 
-## Atributos de página
+## Atributos de Página
 
 El objeto `$page` tiene los siguientes atributos:
 

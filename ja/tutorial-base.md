@@ -123,7 +123,7 @@ Phalcon の主な特徴である 疎結合 により、開発したいアプリ�
 
 オートローダーはPhalconの実行中に[PSR-4](http://www.php-fig.org/psr/psr-4/)準拠のファイルローダーを提供します。 通常、オートローダーに追加する必要があるのはControllerとModelです。 アプリケーションの名前空間内で、ファイルを検索するディレクトリを登録できます。 他の方法でオートローダーを使いたい場合、[こちら](/[[language]]/[[version]]/loader#overview)をご覧ください。
 
-まず、アプリケーションの`controllers`と`models`ディレクトリを登録します。`Phalcon\Loader`のローダーを含めることを忘れないでください。
+まず、アプリケーションの`controllers`と`models`ディレクトリを登録します。 `Phalcon\Loader`のローダーを含めることを忘れないでください。
 
 `public/index.php`
 
@@ -504,9 +504,9 @@ class SignupController extends Controller
 
 ## Modelの作成
 
-Phalconは、C言語で書かれた初めてのPHP用ORMを提供します。これは、開発の複雑さを増す事なく単純化します。
+Phalconは、C言語で書かれた初めてのPHP用ORMを提供します。 これは、開発の複雑さを増やすのではなく単純化します。
 
-最初のモデルを作る前に、Phalconがマッピングできるようデータベースのテーブルを作る必要があります。登録ユーザーを格納するための単純なテーブルは、次のように定義できます:
+最初のモデルを作成する前に、Phalconがマッピングできる様にデータベースのテーブルを作成する必要があります。 登録ユーザーを格納するためのシンプルなテーブルは、次のように作成できます:
 
 `create_users_table.sql`
 
@@ -520,7 +520,7 @@ CREATE TABLE `users` (
 );
 ```
 
-モデルは、`app/models`ディレクトリに配置する必要があります (`app/models/Users.php`)。このモデルは "users" テーブルにマッピングされます。
+モデルは、`app/models`ディレクトリに配置する必要があります (`app/models/Users.php`)。 このモデルは "users" テーブルにマッピングされます:
 
 `app/models/Users.php`
 
@@ -620,7 +620,7 @@ class SignupController extends Controller
 
 ORMは自動的に入力をエスケープしてSQLインジェクションを防ぐので、私たちはリクエストを`save()`メソッドに渡すだけ良いです。
 
-not null (required) として定義されているフィールドに対しては、追加のバリデーションが自動的に実行されます。サインアップフォームに必要なフィールドを入力しないと、画面は次のようになります:
+not null (required) として定義されているフィールドでは、追加のバリデーションが自動的に実行されます。 サインアップフォームに必要なフィールドを入力しないと、画面は次のようになります。
 
 ![](/images/content/tutorial-basic-4.png)
 

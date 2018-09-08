@@ -326,7 +326,7 @@ $validation->add(
 );
 ```
 
-Por defecto, el método `getMessages()` devuelve todos los mensajes generados durante la validación. Usted puede filtrar los mensajes para un campo específico usando el método `filter()`:
+Por defecto, el método `getMessages()` retorna todos los mensajes generados durante la validación. Puede filtrar los mensajes para un campo especifico utilizado el método `filter()`:
 
 ```php
 <?php
@@ -379,7 +379,7 @@ $validation->setFilters('name', 'trim');
 $validation->setFilters('email', 'trim');
 ```
 
-El filtrado y desinfección se realizan mediante el componente [filter](/[[language]]/[[version]]/filter). Puedes añadir más filtros a este componente o utilizar los incorporados.
+El filtrado y saneamiento de datos, es realizado utilizando el componente [filter](/[[language]]/[[version]]/filter). Usted puede agregar más filtro a este componente o simplemente utilizar los ya integrados.
 
 <a name='events'></a>
 

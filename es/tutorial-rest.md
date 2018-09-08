@@ -87,7 +87,7 @@ En primer lugar, necesitamos un archivo `.htaccess` que contiene todas las regla
 </IfModule>
 ```
 
-La mayor parte de nuestro código se colocará en `index.php`. El archivo se crea de la sigue manera:
+La mayor parte de nuestro código se colocará en `index.php`. Es creado un archivo como el sigue:
 
 ```php
 <?php
@@ -513,7 +513,7 @@ $app->put(
 
 ## Borrando datos
 
-La eliminación de datos es similar a actualizar. El `id` como parámetro indica qué robot debe ser eliminado [archivo: `index.php`]:
+El borrado de datos es similar a la actualización. El `id` como parámetro indica qué robot debe borrarse [archivo: `index.php`]:
 
 ```php
 <?php

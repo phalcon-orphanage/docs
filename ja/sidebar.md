@@ -1,5 +1,5 @@
 - 概要 
-    - [はじめに](/[[language]]/[[version]]/introduction)
+    - [Introduction](/[[language]]/[[version]]/introduction)
     - [リリースノート](https://github.com/phalcon/cphalcon/blob/master/CHANGELOG.md)
     - [スポンサー](/[[language]]/[[version]]/sponsors)
     - [FAQ](/[[language]]/[[version]]/faq)
@@ -19,7 +19,7 @@
     - [Basic](/[[language]]/[[version]]/tutorial-base)
     - [REST](/[[language]]/[[version]]/tutorial-rest)
     - [Vokuro](/[[language]]/[[version]]/tutorial-vokuro)
-    - [パフォーマンス](/[[language]]/[[version]]/performance)
+    - [Performance](/[[language]]/[[version]]/performance)
     - [Invo](/[[language]]/[[version]]/tutorial-invo)
 - 環境 
     - [Phalcon Compose (Docker)](/[[language]]/[[version]]/environments-docker)
@@ -75,8 +75,8 @@
     - [Dispatcher](/[[language]]/[[version]]/dispatcher)
     - [Event Manager](/[[language]]/[[version]]/events)
     - [フィルター](/[[language]]/[[version]]/filter)
-    - [ルーティング](/[[language]]/[[version]]/routing)
-    - [セッション](/[[language]]/[[version]]/session)
+    - [Routing](/[[language]]/[[version]]/routing)
+    - [Sessions](/[[language]]/[[version]]/session)
     - [Url](/[[language]]/[[version]]/url)
     - [バリデーション](/[[language]]/[[version]]/validation)
 - HTTP 

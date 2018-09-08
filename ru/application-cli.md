@@ -1,8 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Создание консольного приложения</a> 
-      <ul>
+      <a href="#creating-cli-application">Создание консольного приложения</a> <ul>
         <li>
           <a href="#structure">Структура</a>
         </li>
@@ -27,7 +26,7 @@
 
 # Создание консольного приложения
 
-Консольные приложения выполняются из командной строки.Они часто используются для работы cron, скриптов с долгим временем выполнения, командных утилит и т.п.
+CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
 <a name='structure'></a>
 
@@ -43,7 +42,7 @@
 
 ## Создание загрузочного файла
 
-Как и в обычных MVC приложениях, для начальной загрузки приложения используется загрузочный файл. Instead of the `index.php` bootstrapper in web applications, we use a `cli.php` file for bootstrapping the application.
+Как и в обычных MVC приложениях, для начальной загрузки приложения используется загрузочный файл. Однако для начальной загрузки приложения мы будем использовать файл cli.php, вместо загрузочного файла index.php, который используется в классических веб-приложениях.
 
 Ниже приведен образец загрузочного файла, который используется для этого примера.
 
@@ -111,6 +110,9 @@ try {
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
     exit(1);
+} catch (\Exception $exception) {
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 
@@ -124,7 +126,7 @@ php app/cli.php
 
 ## Задачи
 
-Tasks work similar to controllers. Any CLI application needs at least a `MainTask` and a `mainAction` and every task needs to have a `mainAction` which will run if no action is given explicitly.
+Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
 Ниже приведен пример файла `app/tasks/MainTask.php`:
 
@@ -191,7 +193,7 @@ best regards, universe
 
 ## Запуск цепочки команд
 
-Также, возможно запускать задачи "цепочкой", если это необходимо. Для этого необходимо добавить само консольное приложение в DI:
+It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
 ```php
 <?php
@@ -209,10 +211,13 @@ try {
 } catch (\Throwable $throwable) {
     fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
     exit(1);
+} catch (\Exception $exception) {
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 
-После этого, вы сможете использовать консольное приложение внутри любой задачи. Ниже приведен пример измененной задачи MainTask.php:
+Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
 
 ```php
 <?php

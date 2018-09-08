@@ -60,7 +60,7 @@ git clone git://github.com/phalcon/phalcon-devtools.git
 
 ![](/images/content/devtools-linux-1.png)
 
-Luego ubique la carpeta donde las Herramientas del Desarrollador se clonaron y ejecute `. ./phalcon.sh`, (no olvide el punto al principio del comando):
+Luego ingrese a la carpeta donde las herramientas fueron clonadas y ejecutar `. ./phalcon.sh`, (no olvides el punto al principio del comando):
 
 ```bash
 cd phalcon-devtools/
@@ -88,7 +88,7 @@ git clone git://github.com/phalcon/phalcon-devtools.git
 
 ![](/images/content/devtools-mac-1.png)
 
-Luego ubique la carpeta donde las Herramientas del Desarrollador se clonaron y ejecute `. ./phalcon.sh`, (no olvide el punto al principio del comando):
+Luego ingrese a la carpeta donde las herramientas fueron clonadas y ejecutar `. ./phalcon.sh`, (no olvides el punto al principio del comando):
 
 ```bash
 cd phalcon-devtools/

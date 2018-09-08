@@ -4,7 +4,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Esta clase implementa las funcionalidades comunes para los adaptadores de cache en back-end. Un adaptador de memoria caché de back-end puede extender esta clase
+This class implements common functionality for backend adapters. A backend cache adapter may extend this class
 
 ## Métodos
 

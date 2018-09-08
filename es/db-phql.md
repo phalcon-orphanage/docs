@@ -85,7 +85,7 @@ En PHQL, hemos implementado un conjunto de características para hacer más segu
 
 ## Ejemplo de Uso
 
-Para explicar mejor cómo funciona PHQL consideren el ejemplo siguiente. Tenemos dos modelos `Cars` y `Brands`, osea automóviles y marcas respectivamente:
+Para explicar mejor cómo trabaja PHQL, considere el siguiente ejemplo. Tenemos dos modelos `Cars` y `Brands`:
 
 ```php
 <?php
@@ -306,7 +306,7 @@ foreach ($cars as $car) {
 
 Sólo estamos solicitando algunos campos de la tabla, por lo tanto, aquellos no pueden considerarse un objeto completo, por lo que el objeto devuelto es todavía un resultset de tipo `Phalcon\Mvc\Model\Resultset\Simple`. Sin embargo, cada elemento es un objeto estándar que sólo contiene las dos columnas que fueron solicitadas.
 
-Estos valores que no representan objetos completos son lo que llamamos escalares. PHQL le permite consultar todos los tipos de escalares: campos, funciones, literales, expresiones, etcétera..:
+Estos valores no representan objectos completos, son los que llamamos escalares. PHQL acepta que consultes todos los tipos de escalares: campos, funciones, literales, expresiones, etc..:
 
 ```php
 <?php
@@ -330,7 +330,7 @@ $phql = 'SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name';
 $result = $manager->executeQuery($phql);
 ```
 
-En este caso, el resultado es un objeto `Phalcon\Mvc\Model\Resultset\Complex`. Esto permite el acceso a objetos completos y escalares a la vez:
+El resultado en este caso se un objeto `Phalcon\Mvc\Model\Resultset\Complex`. Este permite el acceso a objectos completos y escalares a la vez:
 
 ```php
 <?php
@@ -348,7 +348,7 @@ Los escalares se asignan como propiedades de cada 'fila', mientras que objetos c
 
 ### Uniones (Joins)
 
-Es fácil consultar registros de múltiples modelos con PHQL. La mayoría de los tipos de uniones son compatibles. Como definimos las relaciones en los modelos, PHQL agrega automáticamente estas condiciones:
+Es fácil solicitar registros de múltiples modelos usando PHQL. Son soportadas la mayoría de los tipos de uniones. Como definimos las relaciones en los modelos, PHQL agrega automáticamente estas condiciones:
 
 ```php
 <?php
@@ -363,7 +363,7 @@ foreach ($rows as $row) {
 }
 ```
 
-Por defecto, se asume un INNER JOIN. Usted puede especificar el tipo de JOIN en la consulta:
+Por defecto, se asume un INNER JOIN. Siempre puedes especificar el tipo de JOIN en la consulta:
 
 ```php
 <?php
@@ -487,7 +487,7 @@ foreach ($rows as $row) {
 
 ### Condiciones
 
-Las condiciones nos permiten filtrar el conjunto de registros que desea consultar. La cláusula `WHERE` permite hacerlo:
+Las condiciones nos permiten filtrar el conjunto de resultados que queremos consultar. La clausula `WHERE` nos permite hacer esto:
 
 ```php
 <?php
@@ -725,7 +725,7 @@ $manager->executeQuery(
 );
 ```
 
-Las operaciones `DELETE` también se ejecutan en dos etapas como los `UPDATE`. Para verificar que si la supresión produce mensajes de validación, debe verificar el código de estado devuelto:
+Las operaciones de `DELETE` son ejecutadas en dos fases, como en `UPDATE`. Para comprobar si la eliminación produce algún mensaje de validación, debemos comprobar el código de estado retornado:
 
 ```php
 <?php
@@ -984,7 +984,7 @@ Model::setup(
 );
 ```
 
-Los parámetros enlazados pueden utilizarse incluso si se permiten literales o no. Deshabilitarlos es solo una decisión de seguridad que podría tomar un desarrollador de aplicaciones web.
+Los parámetros enlazados pueden ser utilizados, incluso, si los literales están o no permitidos. No aceptarlos es solo otra decisión de seguridad que un desarrollador podría tomar en las aplicaciones web.
 
 <a name='escaping-reserved-words'></a>
 
@@ -1012,7 +1012,7 @@ Al ser un lenguaje de alto nivel, PHQL da a los desarrolladores la capacidad de 
 
 * El PHQL es analizado y convertido en una Representación Intermedia (IR) que es independiente de la implementada por el sistema de base de datos de SQL
 * La IR se convierte en SQL válido según el sistema de base de datos asociado al modelo
-* Las declaraciones de PHQL se analizan una vez y almacenan en caché en la memoria. Las ejecuciones posteriores de la misma instrucción dan como resultado una ejecución ligeramente más rápida
+* Las declaraciones PHQL son analizadas una vez y cacheadas en memoria. Las ejecuciones posteriores de la misma instrucción dan como resultado una ejecución ligeramente más rápida
 
 <a name='raw-sql'></a>
 

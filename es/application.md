@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Aplicaciones MVC</a> <ul>
+      <a href="#overview">Aplicaciones MVC</a>
+      <ul>
         <li>
           <a href="#manual-bootstrapping">Arranque manual</a>
         </li>
@@ -230,7 +231,7 @@ Con este componente se pueden ejecutar varios tipos de estructuras MVC:
 
 ### Módulo simple
 
-Son aplicaciones MVC simples que solo consisten de un módulo. Los espacios de nombres se pueden utilizar pero no son necesarios. Una aplicación como esta tendría la siguiente estructura de archivos:
+Estas aplicaciones MVC simples cuentan con un solo módulo. Los espacios de nombres pueden ser utilizados pero no son necesarios. Una aplicación como esta puede tener la siguiente estructura de archivos:
 
 ```php
 single/
@@ -354,7 +355,7 @@ try {
 
 ### Multi módulos
 
-Una aplicación de varios módulos utiliza la misma raíz del documento para más de un módulo. En este caso puede utilizarse la siguiente estructura de archivos:
+Una aplicación multi-módulos utiliza la misma raíz de documentos para más de un módulo. En este caso, la siguiente estructura de archivo debe ser utilizada:
 
 ```php
 multiple/
@@ -375,7 +376,7 @@ multiple/
     js/
 ```
 
-Cada directorio en apps/ tienen su propia estructura MVC. Un archivo Module.php está presente para configurar las opciones específicas de cada módulo como cargadores o servicios personalizados:
+Cada directorio en `apps/` tiene su propia estructura MVC. El archivo `Module.php` esta presente para configurar cuestiones especificas de cada módulo como autocargadores o servicios personalizados:
 
 ```php
 <?php

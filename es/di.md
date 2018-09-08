@@ -130,7 +130,7 @@ $some = new SomeComponent();
 $some->someDbTask();
 ```
 
-Para solucionar esta carencia, hemos creado un setter que inyecta la dependencia externamente antes de usarla. Esto también es una implementación válida pero tiene sus defectos:
+Para solucionar esta carencia, hemos creado un setter que inyecta la dependencia externamente antes de usarla. Esto también es una implementación válida, pero tiene sus defectos:
 
 ```php
 <?php
@@ -379,7 +379,7 @@ class SomeComponent
 }
 ```
 
-Ahora nos encontramos otra vez donde comenzamos, ¡estamos construyendo nuevamente las dependencias dentro del componente! Debemos encontrar una solución que nos aleje de caer repetidamente en malas prácticas.
+Ahora que nos encontramos de nuevo donde comenzamos, ¡de nuevo estamos construyendo las dependencias dentro del componente! Debemos encontrar una solución que nos evite caer repetidamente en malas prácticas.
 
 Una forma práctica y elegante de solucionar estos problemas es utilizando un contenedor para las dependencias. Los contenedores actúan como el registro global que vimos anteriormente. Utilizando el contenedor para las dependencias como un puente para obtenerlas permitiendo reducir la complejidad de nuestro componente:
 
@@ -652,7 +652,7 @@ $di->set(
 );
 ```
 
-Ambos registros de servicio producen el mismo resultado. La definición de matriz permite sin embargo, la alteración de los parámetros de servicio si es necesario:
+Ambos registros de servicio arriba producen el mismo resultado. Sin embargo, la definición de matriz, permite la alteración de los parámetros de servicio si es necesario:
 
 ```php
 <?php
@@ -680,7 +680,7 @@ Además mediante la sintaxis de matriz, puede utilizar tres tipos de inyección 
 
 #### Inyección de Contructores
 
-Este tipo de inyección pasa las dependencias/argumentos al constructor de la clase. Supongamos que tenemos los siguientes componentes:
+Este tipo de inyección pasa las dependencias/argumentos al constructor de la clase. Supongamos que tenemos el siguiente componente:
 
 ```php
 <?php
@@ -934,7 +934,7 @@ Los tipos de parámetros soportados son los siguientes:
   </tr>
 </table>
 
-La resolución de un servicio cuya definición es compleja puede ser ligeramente más lento que las definiciones simples vistas anteriormente. Sin embargo, estos ofrecen un enfoque más robusto para definir e inyectar servicios.
+La resolución de un servicio cuya definición es compleja, puede ser un poco más lenta que las definiciones simples vistas anteriormente. Sin embargo, esto permite un enfoque más robusto para definir e inyectar servicios.
 
 Es posible mezclar de diferentes tipos de definiciones, cada uno puede decidir cuál es la manera más apropiada para registrar los servicios según las necesidades de su aplicación.
 
@@ -982,7 +982,7 @@ Establecer un servicio por una cadena de texto es simple, pero carece de flexibi
 
 ### Cargando servicios desde archivos YAML
 
-Esta característica le permitirá establecer sus servicios en archivos `yaml` o en simples archivos php. Por ejemplo puede cargar servicios usando un archivo `yaml`:
+Esta característica le permitirá configurar sus servicios en archivos `yaml` o simplemente en php plano. Por ejemplo usted puede cargar un servicio utilizando un archivo `yaml` como este:
 
 ```yaml
 config:
@@ -1002,7 +1002,7 @@ $di->get('config'); // Se obtendrá el servicio config
 
 <div class="alert alert-danger">
     <p>
-        Este enfoque requiere que sea instalado el módulo Yaml. Para obtener más información <a href="http://php.net/manual/book.yaml.php">documentación oficial</a>.
+        Este enfoque requiere que este instalado el módulo Yaml. Refiera por favor a <a href="http://php.net/manual/book.yaml.php">la documentación de Yaml</a> para obtener más información.
     </p>
 </div>
 
@@ -1010,7 +1010,7 @@ $di->get('config'); // Se obtendrá el servicio config
 
 ## Resolviendo Servicios
 
-Obtener un servicio del contenedor es una cuestión sencilla, simplemente llamando al método `get()`, se devuelve una nueva instancia del servicio:
+Obtener un servicio del contenedor es una cuestión simple, solamente debe al método 'get'. Se devuelve una nueva instancia del servicio:
 
 ```php
 $request = $di->get('request');
@@ -1049,10 +1049,10 @@ $component = $di->get(
 
 `Phalcon\Di` es capaz de enviar eventos al `EventsManager` si está presente. Los eventos son disparados usando el tipo 'di'. Si algún evento devuelve `false` podría detener la operación activa. Son soportados los siguientes eventos:
 
-| Nombre de Evento     | Activador                                                                                                                          | ¿Puede detener la operación? | Activa en |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |:----------------------------:|:---------:|
-| beforeServiceResolve | Se dispara antes del servicio de resolución. Los oyentes reciben el nombre del servicio y los parámetros pasados a él.             |              No              |  Oyentes  |
-| afterServiceResolve  | Se activa después del servicio de resolución. Los oyentes reciben el nombre de servicio, instancia, y los parámetros pasados a él. |              No              |  Oyentes  |
+| Nombre de Evento     | Activador                                                                                                                         | ¿Puede detener la operación? | Activa en |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |:----------------------------:|:---------:|
+| beforeServiceResolve | Ejecutado antes de resolver el servicio. Los oyentes reciben el nombre del servicio y los parámetros pasados en el.               |              No              |  Oyentes  |
+| afterServiceResolve  | Ejecutado después de resolver el servicio. Los oyentes reciben el nombre de servicio, la instancia y los parámetros pasados a él. |              No              |  Oyentes  |
 
 <a name='shared-services'></a>
 
@@ -1271,7 +1271,7 @@ class SomeComponent
 
 ## Proveedores de Servicio
 
-Utilizando el `ServiceProviderInterface` puede registrar servicios por contexto. Puede mover todas sus llamadas `$di->set()` a clases como esta:
+Utilizando la interfaz `ServiceProviderInterface` puede registrar servicios por contexto. Puede mover todos sus llamadas `$di->set()` a clases como esta:
 
 ```php
 <?php

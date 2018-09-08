@@ -119,7 +119,6 @@ $ `composer create-project phalcon/compose --prefer-dist <folder name>`
 ```php
 Example
  Installing phalcon/compose (version)
-
   - Installing phalcon/compose (version)
     Loading from cache
 
@@ -159,7 +158,7 @@ $ `127.0.0.1 www.phalcon.local phalcon.local`
 
 ## Usage
 
-Теперь можно создавать, собирать и присоединять контейнеры к окружению вашего приложения. Для того, чтобы собрать контейнеры, используйте следующую команду в корне проекта:
+You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
 
 $ `docker-compose build`
 
@@ -218,17 +217,17 @@ $ `docker exec -t <project_app_1> phalcon project application simple`
 
 ### phpMyAdmin variables
 
-| Environment variable | Description                                                                                     | Default |
-| -------------------- | ----------------------------------------------------------------------------------------------- | ------- |
-| `PMA_ARBITRARY`      | Если установлено в 1, соединение с сервером баз данных будет разрешено.                         | 1       |
-| `PMA_HOST`           | Определяет адрес MySQL сервера.                                                                 | mysql   |
-| `PMA_HOSTS`          | Определяет список адресов MySQL серверов. Используется только если переменная `PMA_HOST` пуста. |         |
-| `PMA_PORT`           | Определяет порт MySQL сервера.                                                                  | 3306    |
-| `PMA_VERBOSE`        | Определяет имя MySQL сервера.                                                                   |         |
-| `PMA_VERBOSES`       | Определяет список имен MySQL серверов. Используется только если переменная `PMA_VERBOSE` пуста. |         |
-| `PMA_USER`           | Определяет имя пользователя для конфигурирования аутентификации.                                | phalcon |
-| `PMA_PASSWORD`       | Определяет пароль пользователя для конфигурирования аутентификации.                             | secret  |
-| `PMA_ABSOLUTE_URI`   | Определяет полный адрес к phpMyAdmin (например, https://pma.example.net/).                      |         |
+| Environment variable | Description                                                                                               | Default |
+| -------------------- | --------------------------------------------------------------------------------------------------------- | ------- |
+| `PMA_ARBITRARY`      | Если установлено в 1, соединение с сервером баз данных будет разрешено.                                   | 1       |
+| `PMA_HOST`           | Определяет адрес MySQL сервера.                                                                           | mysql   |
+| `PMA_HOSTS`          | Define comma separated list of address/host names of the MySQL servers. Used only if `PMA_HOST` is empty. |         |
+| `PMA_PORT`           | Определяет порт MySQL сервера.                                                                            | 3306    |
+| `PMA_VERBOSE`        | Определяет имя MySQL сервера.                                                                             |         |
+| `PMA_VERBOSES`       | Define comma separated list of verbose names of the MySQL servers. Used only if `PMA_VERBOSE` is empty.   |         |
+| `PMA_USER`           | Определяет имя пользователя для конфигурирования аутентификации.                                          | phalcon |
+| `PMA_PASSWORD`       | Определяет пароль пользователя для конфигурирования аутентификации.                                       | secret  |
+| `PMA_ABSOLUTE_URI`   | Определяет полный адрес к phpMyAdmin (например, https://pma.example.net/).                                |         |
 
 *See also*
 
@@ -267,7 +266,7 @@ $ `ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .`
 
 ### Startup or linking errors
 
-Если у вас возникли проблемы с контейнером приложения, вы можете безопасно пересобрать его, без потери данных:
+If you got any startup issues you can try to rebuild app container. There will be no loss of data., it is a safe reset:
 
 ```bash
 docker-compose stop

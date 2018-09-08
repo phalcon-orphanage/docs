@@ -45,7 +45,7 @@
 
 Je to poprvé, kdy je komponenta parseru anotací napsána v jazyku C pro PHP. `Phalcon\Annotations` je obecná komponenta, která umožňuje snadné analyzování a ukládání anotací do cache v PHP třídách, které jsou požity v aplikaci.
 
-Anotace jsou čteny z docblocků ve třídách, metodách a vlastnostech. Anotace mohou být umístěny na libovné místo v docblocku:
+Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
 ```php
 <?php

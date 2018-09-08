@@ -61,7 +61,7 @@ Returns the internal event manager
 
 public **getRewriteUri** ()
 
-Obtener información de reescritura Esta información se lee de $_GET["_url"]. Esto devuelve '/' si la información de reescritura no se puede leer
+Get rewrite info. This info is read from $_GET["_url"]. This returns '/' if the rewrite information cannot be read
 
 public **setUriSource** (*mixed* $uriSource)
 
@@ -98,7 +98,7 @@ Sets the default action name
 
 public **setDefaults** (*array* $defaults)
 
-Establece una matriz de rutas predeterminadas. Si a una ruta le falta un camino, el router usará lo definido aquí Este método no debe usarse para establecer una ruta 404
+Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route
 
 ```php
 <?php

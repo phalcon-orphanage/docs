@@ -4,7 +4,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Representa una colección de anotaciones. Esta clase permite recorrer fácilmente un grupo de anotaciones
+Represents a collection of annotations. This class allows to traverse a group of annotations easily
 
 ```php
 <?php

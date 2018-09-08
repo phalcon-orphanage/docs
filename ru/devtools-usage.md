@@ -146,7 +146,7 @@ Options:
 
 ## Создание контроллеров
 
-Команда `create-controller` генерирует заготовку контроллера. Её необходимо выполнять в корне существующего проекта Phalcon.
+The command `create-controller` generates controller skeleton structures. It's important to invoke this command inside a directory that already has a Phalcon project.
 
 ```bash
 $ phalcon create-controller --name test
@@ -373,7 +373,7 @@ class Products extends Model
 $ phalcon scaffold --table-name products
 ```
 
-Генератор создаст несколько файлов в вашем приложении, и каталоги для них. Вот краткий обзор того, что будет сгенерировано:
+The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
 
 | Файл                                     | Предназначение                      |
 | ---------------------------------------- | ----------------------------------- |
@@ -392,7 +392,7 @@ $ phalcon scaffold --table-name products
 
 ![](/images/content/devtools-usage-04.png)
 
-После выполнения поиска будут выведены результаты с постраничной навигацией. Используйте ссылки меню "Edit" или "Delete" возле каждого результата поиска, для выполнения требуемых действий.
+After performing a search, a pager component is available to show paged results. Use the "Edit" or "Delete" links in front of each result to perform such actions.
 
 ![](/images/content/devtools-usage-05.png)
 
@@ -400,7 +400,7 @@ $ phalcon scaffold --table-name products
 
 ## Веб интерфейс инструментов
 
-Кроме того, можно использовать инструменты разработчика Phalcon используя веб-интерфейс. Подробности его работы показаны на следующем скринкасте:
+Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
 
 <div align="center">
 <iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen mark="crwd-mark"></iframe>

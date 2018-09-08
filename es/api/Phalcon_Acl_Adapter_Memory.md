@@ -79,7 +79,7 @@ Constructor de Phalcon\\Acl\\Adapter\\Memory
 
 public **addRole** (*RoleInterface* | *string* $role, [*array* | *string* $accessInherits])
 
-Agrega un rol a la lista ACL. El segundo parámetro permite heredar el acceso a los datos de otro rol existente. Ejemplo:
+Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example:
 
 ```php
 <?php

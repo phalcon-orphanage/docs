@@ -60,7 +60,7 @@ git clone git://github.com/phalcon/phalcon-devtools.git
 
 ![](/images/content/devtools-linux-1.png)
 
-Затем откройте папку, в которую были скопированы инструменты, и выполните команду `. ./phalcon.sh`, (не забудьте точку в начале команды):
+Then enter the folder where the tools were cloned and execute `. ./phalcon.sh`, (don't forget the dot at beginning of the command):
 
 ```bash
 cd phalcon-devtools/
@@ -88,7 +88,7 @@ git clone git://github.com/phalcon/phalcon-devtools.git
 
 ![](/images/content/devtools-mac-1.png)
 
-Затем откройте папку, в которую были скопированы инструменты, и выполните команду `. ./phalcon.sh`, (не забудьте точку в начале команды):
+Then enter the folder where the tools were cloned and execute `. ./phalcon.sh`, (don't forget the dot at beginning of the command):
 
 ```bash
 cd phalcon-devtools/
@@ -97,14 +97,7 @@ cd phalcon-devtools/
 
 ![](/images/content/devtools-mac-2.png)
 
-Next, we'll create a symbolic link to the `phalcon.php` script. On El Capitan and newer versions of macOS:
-
-```bash
-ln -s ~/phalcon-devtools/phalcon.php /usr/local/bin/phalcon
-chmod ugo+x /usr/local/bin/phalcon
-```
-
-if you are running an older version:
+Create a symbolic link to the phalcon.php script:
 
 ```bash
 ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon

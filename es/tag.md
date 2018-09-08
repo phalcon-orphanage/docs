@@ -144,7 +144,7 @@ Sintaxis Volt:
 
 ## Generando enlaces
 
-Una tarea realmente común en cualquier aplicación web o sitio web es generar enlaces que nos permitan navegar de una página a otra. Cuando son direcciones URL internas los podemos crear de la siguiente manera:
+Una tarea muy común en cualquier aplicación web o sitio web es producir enlaces que permitan navegar de una a otra página. Cuando son URL's internas podemos crearlas de la siguiente manera:
 
 ```php
 <!-- para el router por defecto -->
@@ -157,7 +157,7 @@ Una tarea realmente común en cualquier aplicación web o sitio web es generar e
 <?= $this->tag->linkTo([['for' => 'show-product', 'title' => 123, 'name' => 'carrots'], 'Ver']) ?>
 ```
 
-En realidad, todas las URLs producidas son generadas por el componente `Phalcon\Mvc\Url`. También pueden generarse los mismos enlaces con Volt:
+Actualmente, todas las URL's producidas son generadas por el componente `Phalcon\Mvc\Url`. El mismo enlace puede ser generado en Volt con:
 
 ```twig
 <!-- para el router por defecto -->
@@ -174,7 +174,7 @@ En realidad, todas las URLs producidas son generadas por el componente `Phalcon\
 
 ## Creando Formularios
 
-Los formularios en las aplicaciones web juegan un papel esencial en la recuperación de entradas del usuario. En el ejemplo siguiente se muestra cómo implementar un formulario de búsqueda simple usando ayudantes de vistas:
+Los formularios en las aplicaciones web juegan un papel esencial en la recuperación de datos de entrada de los usuarios. El siguiente ejemplo muestra como implementar un formulario simple de búsqueda utilizando los ayudantes de la vista:
 
 ```php
 <!-- Enviando el formulario por el método POST -->
@@ -485,7 +485,7 @@ Cada ayudante de formulario soporta el parámetro 'value'. Con este es posible e
 
 ## Cambiando dinámicamente el título del documento
 
-`Phalcon\Tag` ofrece ayudantes para cambiar dinámicamente el título del documento desde el controlador. En el ejemplo siguiente se muestra justamente esto:
+`Phalcon\Tag` ofrece ayudantes para cambiar dinámicamente el título del documento desde el controlador. El ejemplo siguiente muestra esto:
 
 ```php
 <?php
@@ -536,7 +536,7 @@ Se producirá el siguiente código HTML:
 
 ## Ayudantes de contenidos estáticos
 
-`Phalcon\Tag` también provee ayudantes para generar etiquetas tales como script, link o img. Estos ayudan en la generación rápida y sencilla de los recursos estáticos de tu aplicación
+`Phalcon\Tag` además provee ayudantes para generar etiquetas como `script`, `link` o `img`. Ayudan en la generación rápida de recursos estáticos en su aplicación
 
 <a name='static-content-helpers-images'></a>
 
@@ -619,7 +619,7 @@ Sintaxis Volt:
 
 ### Elementos HTML5 - Ayudante HTML genérico
 
-Phalcon ofrece un ayudante HTML genérico que permite la generación de cualquier tipo de elemento HTML. Depende del desarrollador producir un nombre de elemento HTML válido para el ayudante.
+Phalcon ofrece un ayudante genérico de HTML que permite la generación de cualquier elemento HTML. Depende del desarrollador producir un nombre de elemento HTML válido para el ayudante.
 
 ```php
 <?php

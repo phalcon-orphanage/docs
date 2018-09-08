@@ -41,7 +41,7 @@ A lo largo de los tutoriales y ejemplos de la documentación de Phalcon, hay un 
 
 try {
 
-    // ... Código Phalcon/PHP
+    // ... Algún código Phalcon/PHP
 
 } catch (\Exception $e) {
 
@@ -159,7 +159,7 @@ $router = new Phalcon\Mvc\Router();
 print_r($router);
 ```
 
-Es fácil saber el estado interno de cualquier objeto. El ejemplo anterior mostraría lo siguiente:
+Es fácil conocer el estado interno de un objeto. El ejemplo anterior imprime lo siguiente:
 
 ```html
 Phalcon\Mvc\Router Object

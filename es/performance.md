@@ -73,7 +73,7 @@ Usando una herramienta como [Webgrind](https://github.com/jokkedk/webgrind/) pue
 
 ### Perfiles con Xhprof
 
-[XHProf](https://github.com/facebook/xhprof) es otra extensión interesante para perfilar aplicaciones en PHP. Agregue la siguiente línea al comienzo del archivo bootstrap:
+[Xhprof](https://github.com/facebook/xhprof) es otra extensión interesante para perfilar aplicaciones PHP. Agregue la siguiente línea al comienzo del archivo bootstrap:
 
 ```php
 <?php

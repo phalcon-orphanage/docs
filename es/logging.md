@@ -181,7 +181,7 @@ El registro generado está abajo:
 [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a parameter
 ```
 
-También puede establecer un nivel de registro utilizando el método `setLogLevel()`. Este método toma una constante Logger y solo guardará los mensajes de registro que son tan importantes o más importantes que la constante:
+También puede establecer un nivel de registro usando el método `setLogLevel()`. Este método toma una constante del Logger y sólo almacenará mensajes que son tan importantes o más importantes que la constante:
 
 ```php
 <?php
@@ -272,7 +272,7 @@ Los mensajes se envían a los controladores en el orden en que se registraron.
 
 ## Formato de mensaje
 
-Este componente utiliza `formatters` para formatear los mensajes antes de enviarlos al back-end. Los formatters disponibles son:
+Este componente utiliza `formatters` para formatear mensajes antes de enviarlos al backend. Los formateadores disponibles son:
 
 | Adaptador                             | Descripción                                                     |
 | ------------------------------------- | --------------------------------------------------------------- |
@@ -285,13 +285,13 @@ Este componente utiliza `formatters` para formatear los mensajes antes de enviar
 
 ### Formateador de línea
 
-Formatea los mensajes usando una cadena de una línea. El formato de registro predeterminado es:
+Formato de mensajes utilizando una cadena de texto de una línea. El formato por defecto de los mensajes es:
 
 ```bash
 [%date%][%type%] %message%
 ```
 
-Puede cambiar el formato predeterminado usando `setFormat()`, esto le permite cambiar el formato de los mensajes registrados definiendo el suyo. Las variables de formato de registro permitidas son:
+Puede cambiar el formato predeterminado utilizando `setFormat()`, esto le permite cambiar el formato de los mensajes registrados mediante la definición de uno propio. Las variables de formato de registro permitidas son:
 
 | Variable  | Descripción                        |
 | --------- | ---------------------------------- |
@@ -328,7 +328,7 @@ Los siguientes ejemplos muestran el uso básico de cada adaptador:
 
 ### Stream Logger
 
-El Stream Logger escribe mensajes en una secuencia registrada válida en PHP. Una lista de streams [aquí](http://php.net/manual/en/wrappers.php):
+El registro en stream escrime mensajes en una secuencia registrada valida para PHP. Lista disponible de [streams](http://php.net/manual/en/wrappers.php):
 
 ```php
 <?php
@@ -366,7 +366,7 @@ $logger = new FileAdapter(
 
 ### Syslog Logger
 
-Este registrador envía mensajes al registrador del sistema. El comportamiento de syslog puede variar de un sistema operativo a otro.
+Este logger envía mensajes al sistema de registro del sistema. El comportamiento del syslog puede variar entre distintos sistemas operativos.
 
 ```php
 <?php

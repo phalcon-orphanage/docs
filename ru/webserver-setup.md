@@ -59,7 +59,7 @@
 
 # Настройка веб-сервера
 
-Чтобы работала маршрутизация (анг. routing) в Phalcon, вам понадобится настроить должным образом веб-сервер, научив его правильно обрабатывать перенаправления. Ниже рассматриваются типичные конфигурации для популярных веб-серверов:
+In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
 
 <a name='php-fpm'></a>
 
@@ -75,7 +75,7 @@ PHP-FPM (FastCGI Process Manager) обычно используется для �
 @ECHO OFF
 ECHO Starting PHP FastCGI...
 set PATH=C:\PHP;%PATH%
-C:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
+c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 ```
 
 <a name='php-built-in'></a>
@@ -324,7 +324,7 @@ test/
 
 ## Cherokee
 
-[Cherokee](http://www.cherokee-project.com/) — это высокопроизводительный веб сервер. Он очень быстрый, гибкий и лёгкий в настройке.
+[Cherokee](http://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
 <a name='cherokee-phalcon-configuration'></a>
 
@@ -344,7 +344,7 @@ Cherokee имеет удобный графический интерфейс д�
 
 ![](/images/content/webserver-cherokee-3.jpg)
 
-С помощью мастера добавьте обработчик `PHP Language`. Это позволит запускать PHP приложения:
+Add the `PHP Language` behavior using the wizard. This behavior allows you to run PHP applications:
 
 ![](/images/content/webserver-cherokee-1.jpg)
 

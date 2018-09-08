@@ -28,7 +28,7 @@ Representa una vista utilizando el motor de la plantilla
 
 public **length** (*mixed* $item)
 
-Filtro de longitud. Si se pasa un objeto o matriz se realiza un count(), de lo contrario realiza un strlen()/mb_strlen()
+Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
 
 public **isIncluded** (*mixed* $needle, *mixed* $haystack)
 

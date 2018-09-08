@@ -45,7 +45,7 @@ Limpiar o desinfectar la entrada del usuario es una parte crítica del desarroll
 
 [Imagen completa en XKCD](http://xkcd.com/327)
 
-El componente `Phalcon\Filter` proporciona un conjunto de filtros y ayudantes de desinfección de datos de uso común. Proporciona contenedores orientados a objetos de la extensión de filtro de PHP.
+El componente `Phalcon\Filter` provee un conjunto de filtros y sanitizadores que se utilizan regularmente. Esto provee un envoltorio orientado a objectos sobre la extensión filter de PHP.
 
 <a name='types'></a>
 
@@ -197,7 +197,7 @@ $filter->sanitize(
 
 ## Agregando filtros
 
-Usted puede agregar sus propios filtros a `Phalcon\Filter`. La función del filtro puede ser una función anónima:
+Es posible agregar tus propios filtros en `Phalcon\Filter`. La función de filtro puede ser una función anónima:
 
 ```php
 <?php
@@ -249,7 +249,7 @@ $filteredIp = $filter->sanitize('127.0.0.1', 'ipv4');
 
 ## Filtrado y limpieza complejas
 
-PHP proporciona una extensión excelente de filtro que puede utilizar. Revisa su documentación: [Filtrado de datos en la documentación oficial de PHP](http://www.php.net/manual/en/book.filter.php)
+PHP ya provee una excelente extensión de filtros. Puedes revisar la documentación: [Filtrado de datos en la documentación de PHP](http://www.php.net/manual/en/book.filter.php)
 
 <a name='custom'></a>
 

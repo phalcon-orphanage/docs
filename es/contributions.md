@@ -34,7 +34,7 @@
 
 # Contribuir con Phalcon
 
-Phalcon es un proyecto de código abierto y depende en gran medida del esfuerzo de voluntarios. ¡Agradecemos las contribuciones de todo el mundo!
+Phalcon es un proyecto open source y depende en gran medida del esfuerzo de sus colaboradores voluntarios. ¡Son bienvenidas las contribuciones de todos!
 
 Por favor, tómese un momento, para revisar este documento con el fin de hacer el proceso de contribución más fácil y eficaz para todos.
 
@@ -62,7 +62,7 @@ Por favor asegúrese que está enviando su pull request a la rama correcta y que
 
 ## Lista de verificación para Reportes de Errores
 
-- Asegúrese de que está utilizando la última versión publicada de Phalcon antes de presentar un informe de error. Los errores en versiones anteriores a la última lanzada no serán abordados por el equipo principal.
+- Asegúrate de estar utilizando la última versión liberadas de Phalcon antes de enviar un reporte de errores. Los errores en las versiones anteriores al último publicado no serán abordados por el equipo central.
 - Si has encontrado un error, es esencial añadir información relevante para reproducirlo. Ser capaz de reproducir un error reduce en gran manera el tiempo para investigar y solucionarlo. Esta información debe venir en la forma de un script, pequeña aplicación o incluso una prueba que falla. Para obtener más información, compruebe por favor [Presentar prueba Reproducible](https://github.com/phalcon/cphalcon/wiki/Submit-Reproducible-Test).
 - Como parte de su informe, por favor incluya información adicional, como el sistema operativo, versión de PHP, versión de Phalcon, servidor web, memoria, etcétera.
 - Si estás enviando un error de [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault), requerimos un backtrace. Consulte [generación de un Backtrace](#bug-report-generating-backtrace) para obtener más información.
@@ -86,7 +86,7 @@ Por favor siga estas indicaciones para entender cómo generar el backtrace:
 
 - No envíe su pull request directamente a la rama `master`. Cree una rama de la rama requerida y, si es necesario, rebase a la rama adecuada antes de enviar su solicitud de pull request. Si no es posible hacer una fusión limpia con la rama master se te pedirá que hagas una nueva rama como base para tus cambios
 - No pongas actualizaciones de submódulos, `composer.lock`, etc. en tu solicitud de extracción a menos que sean para commits fusionados
-- Añadir pruebas relevantes para el error corregido o la nueva característica. Consulte nuestra [guía de la pruebas](https://github.com/phalcon/cphalcon/blob/master/tests/README.md) para obtener más información
+- Agregar las pruebas pertinentes para corregir el error o la nueva característica. Revise nuestra [guía de testeo](https://github.com/phalcon/cphalcon/blob/master/tests/README.md) para más información
 - Phalcon está escrito en [Zephir](https://zephir-lang.com/), por favor no envíe cambios que modifiquen archivos C que se generan directamente o de aquellos cuyas funcionalidad/correcciones se aplican en el lenguaje de programación C
 - Asegúrese de que el código PHP que escriba ajusta con el estilo general y codificación estándar de las [Normas Aceptadas de PHP](http://www.php-fig.org/psr/)
 - Retire cualquier cambio a los archivos `ext/kernel`, `*. zep.c` y `*. zep.h` antes de enviar su pull request

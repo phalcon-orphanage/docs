@@ -96,7 +96,7 @@ invo/
     schemas/
 ```
 
-Como usted sabe, Phalcon no impone una estructura de archivos en particular para el desarrollo de aplicaciones. Este proyecto tiene una estructura simple de MVC y una raíz de documento público.
+Como ya sabes, Phalcon no impone una estructura específica de archivos para el desarrollo de aplicaciones. Este proyecto tiene una estructura MVC simple y un directorio público raíz.
 
 Una vez que usted abra la aplicación en su navegador `http://localhost/invo` verás algo como esto:
 
@@ -163,7 +163,7 @@ La segunda parte que aparece en el archivo bootstrap (`public/index.php`) es el 
 <?php
 
 /**
- * Configuración del Auto cargador
+ * Configuración del auto cargador
  */
 require APP_PATH . 'app/config/loader.php';
 ```
@@ -206,13 +206,13 @@ define(
 
 ## Registro de servicios
 
-Otro archivo que se requiere en el bootstrap es (`app/config/services.php`). Este archivo nos permite organizar los servicios que utiliza INVO.
+Otro archivo es requerido en el arranque es `app/config/services.php`. Este archivo nos permite organizar los servicios que utiliza INVO.
 
 ```php
 <?php
 
 /**
- * Cargar servicios de la aplicación
+ * Cargar los servicios de la aplicación
  */
 require APP_PATH . 'app/config/services.php';
 ```
@@ -273,7 +273,7 @@ En la primera línea del bloque de código anterior, el constructor de la clase 
 
 Hay muchas maneras de registrar servicios en el contenedor. En INVO, la mayoría de los servicios se han registrado mediante funciones anónimas. Gracias a esto, se crean instancias de los objetos de una manera perezosa, reduciendo los recursos necesarios para la aplicación.
 
-Por ejemplo, en el siguiente fragmento el servicio de sesión es registrado. Sólo se llamará a la función anónima cuando la aplicación requiere acceso a los datos de sesión:
+Por ejemplo, en el siguiente extracto, se registra el servicio de sesión. La función anónima solo se ejecutará cuando la aplicación requiera acceso a los datos de la sesión:
 
 ```php
 <?php
@@ -319,7 +319,7 @@ Registra la mayoría de los servicios con componentes proporcionados por defecto
 
 Un `inicio de sesión` nos permitirá trabajar en los controladores del backend. La separación entre controladores de backend y frontend es solo por lógica. Todos los controladores se encuentran en el mismo directorio (`app/controladores/`).
 
-Para entrar en el sistema, los usuarios deben tener un nombre de usuario válido y una contraseña. Los usuarios se almacenan en la tabla `users` en la base de datos `invo`.
+Para ingresar al sistema, los usuarios deben tener un usuario y contraseña validos. Los usuarios sojn almacenados en la tabla `users` en la base de datos `invo`.
 
 Antes de que podamos iniciar una sesión, tenemos que configurar la conexión a la base de datos en la aplicación. Un servicio llamado `db` está configurado en el contenedor de servicios con la información de conexión. Con el autocargador, estamos otra vez tomando parámetros del archivo de configuración para configurar un servicio:
 
@@ -347,9 +347,9 @@ $di->set(
 );
 ```
 
-Aquí, nos devuelve una instancia del adaptador de conexión MySQL. Si es necesario, puedes realizar acciones adicionales como la adición de un registrador, un perfilador o cambiar el adaptador, configurándolos como desees.
+Aquí, retornamos una instancia del adaptador de conexión MySQL. Si es necesario, puede realizar acciones adicionales, como agregar un registrador, un generador de perfiles o cambiar el adaptador, configurándolo como desee.
 
-El siguiente formulario (`app/views/session/index.volt`) solicita la información de inicio de sesión. Hemos quitado algo de código HTML para hacer el ejemplo más conciso:
+El siguiente formulario simple (`app/views/session/index.volt`) solicita la información de inicio de sesión. Hemos eliminado algunos códigos HTML para que el ejemplo sea más conciso:
 
 ```twig
 {{ form('session/start') }}
@@ -671,7 +671,7 @@ class SecurityPlugin extends Plugin
 
 Los eventos enganchados siempre reciben un primer parámetro que contiene información contextual del evento producido (`$event`) y un segundo que es el objeto que produjo el evento en sí (`$dispatcher`). No es obligatorio que los plugins extiendan de la clase `Phalcon\Mvc\User\Plugin`, pero al hacerlo, obtienen un acceso más fácil a los servicios disponibles en la aplicación.
 
-Ahora, estamos verificando el rol en la sesión actual, verificando si el usuario tiene acceso utilizando la lista ACL. Si el usuario no tiene acceso nos redireccionara a la pantalla de inicio como se ha explicado antes:
+Ahora, estamos verificando el rol en la sesión actual, verificando si el usuario tiene acceso usando la lista de ACL. Si el usuario no tiene acceso, lo redirigiremos a la pantalla de inicio como se explicó anteriormente:
 
 ```php
 <?php
@@ -759,7 +759,7 @@ foreach ($roles as $role) {
 }
 ```
 
-Ahora, definimos los recursos para cada área respectivamente. Los nombres de los controladores son los recursos y sus acciones son los accesos a los recursos:
+Ahora, definimos los recursos para cada área respectivamente. Los nombres de los controladores son recursos y sus acciones son accesos a los recursos:
 
 ```php
 <?php
@@ -940,7 +940,7 @@ public function indexAction()
 }
 ```
 
-Una instancia del formulario `ProductsForm` (`app/forms/ProductsForm.php`) se pasa a la vista. Este formulario define los campos que son visibles para el usuario:
+Una instancia del formulario `ProductsForm` (`app/forms/ProductsForm.php`) es pasada a la vista. Este formulario define los campos que son visibles para el usuario:
 
 ```php
 <?php
@@ -1224,7 +1224,7 @@ Este método comprueba que los valores son diferentes de `''` (cadena vacía) y 
 * Si el tipo de datos de campo es texto o similar (char, varchar, text, etcetera). Utiliza un operador `like` de SQL para filtrar los resultados.
 * Si el tipo de datos no es texto o similar, usara el operador `=`.
 
-Además, `Criteria` ignora todas las variables de `$_POST` que no corresponden a ningún campo de la tabla. Los valores se escapan automáticamente utilizando `parámetros enlazados`.
+Adicionalmente, `Criteria` ingnora todas las variables `$_POST` si no coinciden con ningún campo de la tabla. Los valores son automáticamente escapados utilizando `parámetros enlazados`.
 
 Ahora, guardamos los parámetros producidos en la bolsa de sesión del controlador:
 
@@ -1257,7 +1257,7 @@ if (count($products) === 0) {
 }
 ```
 
-Si la búsqueda no devuelve ningún producto, remitimos al usuario a la acción del índice otra vez. Supongamos que la búsqueda devuelve resultados, entonces creamos un paginator para navegar fácilmente a través de ellos:
+Si la búsqueda no devuelve ningún producto, reenviamos al usuario a la acción índice nuevamente. Supongamos que la búsqueda devuelve resultados, entonces creamos un paginator para navegar fácilmente a través de ellos:
 
 ```php
 <?php
@@ -1386,7 +1386,7 @@ El bloque entero `for` proporciona lo siguiente:
 {% endfor %}
 ```
 
-Ahora puede volver a la vista y averiguar lo que cada bloque está haciendo. Cada campo en `products` se imprime en consecuencia:
+Ahora puede volver a la vista y descubrir qué está haciendo cada bloque. Cada campo en `product` es impreso respectivamente:
 
 ```twig
 <tr>

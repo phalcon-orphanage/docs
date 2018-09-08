@@ -6,7 +6,7 @@
 
 Se trata de una clase base para validadores de Phalcon\\Mvc\\Model
 
-Esta clase es sólo por razones de compatibilidad con versiones anteriores para usar con Phalcon\\Mvc\\Collection. De lo contrario utiliza los validadores proporcionados por Phalcon\\Validation.
+This class is only for backward compatibility reasons to use with Phalcon\\Mvc\\Collection. Otherwise please use the validators provided by Phalcon\\Validation.
 
 ## Métodos
 

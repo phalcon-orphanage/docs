@@ -92,7 +92,7 @@ El componente router le permite definir las rutas que se asignan a los controlad
 
 ## Definición de rutas
 
-`Phalcon\Mvc\Router` proporciona capacidades avanzadas de enrutamiento. En el modo de MVC, puede definir rutas y vincularlas a controladores/acciones que usted requiera. Una ruta es definida de la siguiente manera:
+`Phalcon\Mvc\Router` proporciona capacidades avanzadas de enrutamiento. En el modo MVC, se puede definir rutas y asignarlas a controladores/acciones. Una ruta se define de la siguiente manera:
 
 ```php
 <?php
@@ -146,7 +146,7 @@ $router->add(
 );
 ```
 
-En el ejemplo anterior, estamos usando comodines para hacer una ruta válida para muchos URIs. Por ejemplo, accediendo a la siguiente URL (`/admin/users/al/delete/dave/301`) produciría:
+En el ejemplo anterior, utilizamos comodines para hacer a la ruta, valida para distintas URIs. Por ejemplo, accediendo a la siguiente URL (`/admin/users/a/delete/dave/301`) produciría:
 
 | Controlador | Acción | Parámetro | Parámetro |
 |:-----------:|:------:|:---------:|:---------:|
@@ -263,7 +263,7 @@ class DocumentationController extends Controller
 
 ### Sintaxis corta
 
-Si no le gusta usar una matriz para definir las rutas de ruta, también hay disponible una sintaxis alternativa. Los siguientes ejemplos producen el mismo resultado:
+Si no te gusta usar una matriz para definir los caminos de la ruta, también está disponible una sintaxis alternativa. En los siguientes ejemplos producen el mismo resultado:
 
 ```php
 <?php
@@ -310,7 +310,7 @@ $router->add(
 
 ### Enrutamiento a los módulos
 
-Puede definir rutas cuyas caminos incluyen módulos. Esto es especialmente adecuado para aplicaciones de varios módulos. Es posible definir una ruta predeterminada que incluya un comodín de módulo:
+Puede definir rutas cuyos caminos incluyen módulos. Esta son especialmente utilices para aplicaciones multi-módulo. Es posible definir una ruta predeterminada que incluya un comodín de módulo:
 
 ```php
 <?php
@@ -330,7 +330,7 @@ $router->add(
 );
 ```
 
-En este caso, la ruta siempre debe tener el nombre del módulo como parte de la URL. Por ejemplo, la siguiente URL: `/admin/users/edit/sonny` se procesará como:
+En este caso, la ruta siempre debe tener el nombre del módulo como parte de la URL. Por ejemplo, la siguiente URL: `/admin/users/edit/sonny`, será procesada como:
 
 | Módulo | Controlador | Acción | Parámetro |
 |:------:|:-----------:|:------:|:---------:|
@@ -427,7 +427,7 @@ $router->add(
 
 ### Utilizando conversores
 
-Los conversores le permiten transformar libremente los parámetros de la ruta antes de pasarlos al dispatcher. Los siguientes ejemplos muestran cómo usarlos:
+Los conversores le permiten transformar libremente los parámetros de la ruta antes de pasarlos al despachador. Los siguientes ejemplos muestran cómo utilizarlos:
 
 ```php
 <?php
@@ -450,7 +450,7 @@ $route->convert(
 );
 ```
 
-Otro caso de uso para conversores es vincular un modelo en una ruta. Esto permite que el modelo pase directamente a la acción definida:
+Otro caso de uso de los conversores es enlazando un modelo con una ruta. Esto permite al modelo ser pasado directamente en la definición de la acción:
 
 ```php
 <?php
@@ -602,7 +602,7 @@ RewriteCond   %{REQUEST_FILENAME} !-f
 RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 ```
 
-En esta configuración, cualquier solicitud a archivos o carpetas que no existen se enviará a `index.php`. El siguiente ejemplo muestra cómo usar este componente en modo independiente:
+En esta configuración, cualquier solicitud a archivos o carpetas que no existen se enviará a `index.php`. En el siguiente ejemplo se muestra cómo utilizar este componente en modo independiente:
 
 ```php
 <?php
@@ -824,7 +824,7 @@ Esto es tipicamente para una página Error 404.
 
 ## Configurar rutas por defecto
 
-Es posible definir valores predeterminados para el módulo, controlador o acción. Cuando a una ruta le falta alguna de esas rutas, el router puede completarla automáticamente:
+Es posible definir valores predeterminados para el módulo, controlador o acción. Cuando a una ruta le falta alguna de esas rutas, el enrutador puede completarla automáticamente:
 
 ```php
 <?php
@@ -1240,17 +1240,17 @@ class ProductsController
 }
 ```
 
-Solo los métodos marcados con anotaciones válidas se usan como rutas. Lista de anotaciones compatibles:
+Solo los métodos marcados con anotaciones validas serán utilizados como rutas. A continuación una lista de anotaciones compatibles:
 
-| Nombre      | Descripción                                                                                                          | Uso                                    |
-| ----------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| RoutePrefix | Un prefijo que debe ser agregado al comienzo de cada URI. Esta anotación debe ser ubicada en el docblock de la clase | `@RoutePrefix('/api/products')`        |
-| Route       | Esta anotación marca al método como una ruta. Esta anotación debe ser ubicada en el docblock del método              | `@Route('/api/products/show')`         |
-| Get         | Esta anotación marca el método como una ruta restringida al método `GET` de HTTP                                     | `@Get('/api/products/search')`         |
-| Post        | Esta anotación marca el método como una ruta restringida al método `POST` de HTTP                                    | `@Post('/api/products/save')`          |
-| Put         | Esta anotación marca el método como una ruta restringida al método `PUT` de HTTP                                     | `@Put('/api/products/save')`           |
-| Delete      | Esta anotación marca el método como una ruta restringida al método `DELETE` de HTTP                                  | `@Delete('/api/products/delete/{id}')` |
-| Options     | Esta anotación marca el método como una ruta restringida al método `OPTIONS` de HTTP                                 | `@Option('/api/products/info')`        |
+| Nombre      | Descripción                                                                                          | Uso                                    |
+| ----------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| RoutePrefix | Un prefijo que se antepone a cada ruta URI. Esta anotación debe colocarse en el docblock de la clase | `@RoutePrefix('/api/products')`        |
+| Route       | Esta anotación marca un método como una ruta. Esta anotación debe colocarse en un docblock método    | `@Route('/api/products/show')`         |
+| Get         | Esta anotación marca el método como una ruta restringida al método `GET` de HTTP                     | `@Get('/api/products/search')`         |
+| Post        | Esta anotación marca el método como una ruta restringida al método `POST` de HTTP                    | `@Post('/api/products/save')`          |
+| Put         | Esta anotación marca el método como una ruta restringida al método `PUT` de HTTP                     | `@Put('/api/products/save')`           |
+| Delete      | Esta anotación marca el método como una ruta restringida al método `DELETE` de HTTP                  | `@Delete('/api/products/delete/{id}')` |
+| Options     | Esta anotación marca el método como una ruta restringida al método `OPTIONS` de HTTP                 | `@Option('/api/products/info')`        |
 
 Para las anotaciones que agregan rutas, se admiten los siguientes parámetros:
 
@@ -1291,7 +1291,7 @@ Necesita agregar el código a continuación en su archivo bootstrap (por ejemplo
 <?php
 
 /**
- * Agregar capacidades de ruteo
+ * Añadir capacidades de enrutamiento
  */
 $di->set(
     'router',

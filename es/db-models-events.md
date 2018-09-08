@@ -140,7 +140,7 @@ class Robots extends Model
 }
 ```
 
-En el ejemplo anterior, el gestor de eventos sólo actúa como un puente entre un objeto y un oyente (la función anónima). Los eventos se dispararán al oyente cuando los `robots` se guarden:
+En el ejemplo anterior, el EventsManager o Gestor de Eventos sólo actuó como un puente entre un objeto y un oyente (la función anónima). Los eventos serán disparados al oyente cuando `robots` sera guardado:
 
 ```php
 <?php

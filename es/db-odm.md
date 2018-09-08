@@ -48,7 +48,7 @@
           <a href="#validation-failed-events">Eventos de Fallas de Validación</a>
         </li>
         <li>
-          <a href="#ids-vs-primary-keys">IDs Implícitos vs. Llaves Primarias de Usuario</a>
+          <a href="#ids-vs-primary-keys">Ids implícitas vs. Claves primarias del usuario</a>
         </li>
         <li>
           <a href="#multiple-databases">Configuración de Múltiples Bases de Datos</a>
@@ -137,7 +137,7 @@ connecting to: test
 
 ## Modelos en Espacios de Nombres
 
-Los Espacios de Nombres se pueden utilizar para evitar la colisión de nombres de clases. En este caso es necesario indicar el nombre de la colección involucrada con el método `setSource()`:
+Los espacios de nombre pueden ser usados para evitar la colisión de nombres de clase. En este caso es necesario indicar el nombre de la colección relacionadas utilizando el método `setSource()`:
 
 ```php
 <?php
@@ -189,7 +189,7 @@ $robot->save();
 
 ## Establecer una Conexión
 
-Las conexiones se realizan desde el contenedor de servicios. Por defecto, Phalcon trata de encontrar la conexión en un servicio llamado `mongo`:
+Las conexiones son devueltas desde el contenedor de servicios. Por defecto, Phalcon intentará buscar una conexión en el servicio llamada `mongo`:
 
 ```php
 <?php
@@ -339,8 +339,8 @@ Las opciones disponibles de consulta son:
 | Parámetro    | Descripción                                                                                                                                                                                                              | Ejemplo                                                 |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
 | `conditions` | Condiciones de búsqueda para la operación de búsqueda. Se utiliza para extraer sólo los registros que cumplan con un criterio especificado. Por defecto `Phalcon\Model` asume el primer parámetro como las condiciones. | `'conditions' => array('$gt' => 1990)`            |
-| `fields`     | Devuelve columnas concretas en lugar de los campos completos de la colección. Cuando se utiliza esta opción que se devuelve un objeto incompleto                                                                         | `'fields' => array('name' => true)`               |
-| `sort`       | Se utiliza para ordenar el conjunto de resultados. Utiliza uno o más campos para cada elemento en el arreglo, 1 significa ordenar de forma ascendente, -1 descendente                                                    | `'sort' => array('name' => -1, 'status' => 1)` |
+| `fields`     | Retorna las columnas especificadas en vez de todos campos del modelo. Cuando utilizamos esta opción, un objecto incompleto es retornado                                                                                  | `'fields' => array('name' => true)`               |
+| `sort`       | Es utilizado para ordenar el conjunto de resultados. Utiliza uno o más campos para cada elemento en el arreglo, 1 significa ordenar de forma ascendente, -1 descendente                                                  | `'sort' => array('name' => -1, 'status' => 1)` |
 | `limit`      | Limitar los resultados de la consulta a cierto rango                                                                                                                                                                     | `'limit' => 10`                                      |
 | `skip`       | Omite un número específico de resultados                                                                                                                                                                                 | `'skip' => 50`                                       |
 
@@ -360,7 +360,7 @@ $myRobots = Robots:find(
 ];
 ```
 
-El `find()` anterior devuelve sólo un `nombre`. También puede combinarse con una `condición`:
+El método `find()` anterior solo retorna un `name`. También se puede convinar con una `condition`:
 
 ```php
 $myRobots = Robots:find(
@@ -630,13 +630,17 @@ class Robots extends Collection
 }
 ```
 
-Algunos eventos retornar el valor `false` indicando que se debe detener la operación actual. Si un evento no retorna nada, `Phalcon\Mvc\Collection` asume un valor `true`.
+Algunos eventos devuelven `false` como una indicación para detener la operación actual. Si un evento no vuelve nada, `Phalcon\Mvc\Collection` asumirá un valor </code>true`.</p>
+
+<p>
 
 <a name='data-integrity'></a>
 
-### Validar la Integridad de Datos
+</p>
 
-`Phalcon\Mvc\Collection` ofrece varios eventos para validar los datos e implementar reglas de negocio. El evento especial `validation` nos permite llamar a validadores incorporados en el registro. Phalcon expone algunos validadores incorporados que pueden utilizarse en esta etapa de validación.
+<h3>Validar la Integridad de Datos</h3>
+
+<p><code>Phalcon\Mvc\Collection` ofrece varios eventos para validar los datos e implementar reglas de negocio. El evento especial `validation` nos permite llamar a validadores incorporados en el registro. Phalcon expone algunos validadores incorporados que pueden utilizarse en esta etapa de validación.
 
 En el ejemplo siguiente se muestra cómo se utiliza:
 
@@ -763,7 +767,7 @@ Otro tipo de eventos está disponible cuando el proceso de validación de datos 
 
 <a name='ids-vs-primary-keys'></a>
 
-## IDs Implícitos vs. Llaves Primarias de Usuario
+## Ids implícitas vs. Claves primarias del usuario
 
 Por defecto `Phalcon\Mvc\Collection` asume que el atributo `_id` es generado automáticamente utilizando [MongoIds](http://www.php.net/manual/en/class.mongoid.php).
 

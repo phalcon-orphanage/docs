@@ -99,7 +99,7 @@ Phalcon proporciona la clase `Phalcon\Cache` que permite un acceso más rápido 
 
 ## ¿Cuándo Implementar Caché?
 
-Aunque este componente es muy rápido, su aplicación en los casos que no es necesario puede llevar a una pérdida de performance en lugar de ganancia. Le recomendamos que consulte que estos casos antes de usar un caché:
+Aunque este componente es muy rápido, su aplicación en los casos que no es necesario puede llevar a una pérdida de desempeño en lugar de ganancia. Le recomendamos que consulte que estos casos antes de usar un caché:
 
 * Usted está haciendo cálculos complejos que siempre devuelven el mismo resultado (cambian con poca frecuencia)
 * Utiliza un montón de ayudantes y la salida generada es casi siempre la misma
@@ -398,7 +398,7 @@ $keys = $cache->queryKeys('my-prefix');
 
 ## Eliminación de datos de la caché
 
-Hay momentos donde es necesario invalidar una entrada de caché (debido a una actualización de los datos en caché). El único requisito es saber la clave con la que los datos han sido almacenados.
+Hay ocasiones en las que se deberá invalidar por la fuerza una entrada de caché (debido a una actualización en los datos en caché). El único requisito es conocer la clave con la que se almacenaron los datos.
 
 ```php
 <?php
@@ -541,14 +541,14 @@ $cache->save('my-key', $data);
 
 Los adaptadores de frontend disponibles que se usan como interfaces o fuentes de entrada para el cache son:
 
-| Adaptador                            | Descripción                                                                                                                                                                                   |
-| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Cache\Frontend\Output`   | Lee los datos de entrada desde la salida estándar de PHP.                                                                                                                                     |
-| `Phalcon\Cache\Frontend\Data`     | Es utilizando para almacenar cualquier tipo de datos PHP (arreglos grandes, objectos, texto, etcétera). Los datos son serializados antes de almacenarse en el backend.                        |
-| `Phalcon\Cache\Frontend\Base64`   | Es utilizado para almacenar datos binarios. Los datos se serializan utilizando `base64_encode` antes de almacenarse en backend.                                                               |
-| `Phalcon\Cache\Frontend\Json`     | Los datos se condifican en JSON antes de ser almacenados en el backend. Son decodificados antes de devolverse. Este frontend es útil para compartir datos entre otros lenguajes o frameworks. |
-| `Phalcon\Cache\Frontend\Igbinary` | Es utilizando para almacenar cualquier tipo de datos PHP (arreglos grandes, objectos, texto, etcétera). Los datos son serializados usando `Igbinary` antes de almacenarse en el backend.      |
-| `Phalcon\Cache\Frontend\None`     | Se usa para almacenar en caché cualquier tipo de datos PHP sin serializarlos.                                                                                                                 |
+| Adaptador                            | Descripción                                                                                                                                                                                     |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Cache\Frontend\Output`   | Lee los datos de entrada desde la salida estándar de PHP.                                                                                                                                       |
+| `Phalcon\Cache\Frontend\Data`     | Es utilizado para almacenar cualquier tipo de datos de PHP (arreglos grandes, objectos, texto, etc.). Los datos son serializados antes de ser almacenados en el backend.                        |
+| `Phalcon\Cache\Frontend\Base64`   | Es utilizado para cachear datos binarios. Los datos se serializan utilizando `base64_encode()` antes de almacenarse en el backend.                                                              |
+| `Phalcon\Cache\Frontend\Json`     | Los datos son transformados a JSON antes de ser almacenados en el backend. Decodificados después de ser recuperados. Este método es útil para compartir datos con otros lenguajes o frameworks. |
+| `Phalcon\Cache\Frontend\Igbinary` | Es utilizado para almacenar cualquier tipo de datos de PHP (arreglos grandes, objectos, texto, etc.). Los datos se serializan utilizando `Igbinary` antes de almacenarse en el backend.         |
+| `Phalcon\Cache\Frontend\None`     | Se usa para almacenar en caché cualquier tipo de datos PHP sin serializarlos.                                                                                                                   |
 
 <a name='adapters-frontend-custom'></a>
 
@@ -609,7 +609,7 @@ Debe implementar la interfaz `Phalcon\Cache\BackendInterface` para crear sus pro
 
 ### Opciones de archivos backend
 
-Este backend almacena contenido cacheado en archivos en el servidor local. Las opciones disponibles para este componente son:
+Este backend almacena contenido almacenado en caché en archivos en el servidor local. Las opciones disponibles para este backend son:
 
 | Opción     | Descripción                                                                             |
 | ---------- | --------------------------------------------------------------------------------------- |
@@ -620,7 +620,7 @@ Este backend almacena contenido cacheado en archivos en el servidor local. Las o
 
 ### Opciones de back-end para Libmemcached
 
-Este backend almacena contenido cacheado en un servidor memcached. Por defecto se utilizan los pools de conexión persistente de memcached. Las opciones disponibles para este backend son:
+Este backend almacena contenido almacenado en caché en un servidor memcached. Por defecto se usan grupos de conexiones de memcached persistentes. Las opciones disponibles para este backend son:
 
 **Opciones Generales**
 
@@ -640,7 +640,7 @@ Este backend almacena contenido cacheado en un servidor memcached. Por defecto s
 
 **Opciones de cliente**
 
-Utilizado para configurar las opciones de Memcached. Vea [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) para más información.
+Usado para configurar las opciones de Memcached. Vea [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) para más información.
 
 **Ejemplo**
 
@@ -680,7 +680,7 @@ $cache = new Libmemcached(
 
 ### Opciones de back-end para Memcached
 
-Este backend almacena contenido cacheado en un servidor memcached. Las opciones disponibles son:
+Este backend almacena contenido almacenado en caché en un servidor memcached. Las opciones disponibles para este backend son:
 
 | Opción       | Descripción                                                    |
 | ------------ | -------------------------------------------------------------- |
@@ -726,7 +726,7 @@ Este backend almacena contenido cacheado en un servidor de MongoDB ([MongoDB](ht
 
 ### Opciones de back-end para XCache
 
-Este backend almacena contenido cacheado en XCache ([XCache](http://xcache.lighttpd.net/)). Las opciones disponibles son:
+Este backend almacenará contenido cacheado en XCache ([XCache](http://xcache.lighttpd.net/)). Las opciones disponibles son:
 
 | Opción   | Descripción                                                    |
 | -------- | -------------------------------------------------------------- |

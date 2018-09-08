@@ -45,7 +45,7 @@
 
 Es la primera vez que un analizador de anotaciones está escrito en C para el mundo PHP. `Phalcon\Annotations` es un componente de propósito general que proporciona facilidad de análisis y cacheo con anotaciones en las clases de PHP para ser utilizado en aplicaciones.
 
-Las anotaciones se pueden leer desde docblocks en clases, métodos y propiedades. Una anotación puede colocarse en cualquier ubicación del docblock:
+Las anotaciones son leídas desde los comentarios (docblocks) de las clases, métodos y propiedades. Una anotación puede ser colocada en cualquier parte de un docblock:
 
 ```php
 <?php
@@ -203,7 +203,7 @@ El proceso de lectura de anotaciones es muy rápido, sin embargo, por razones de
 
 ## Tipos de anotaciones
 
-Las anotaciones pueden tener parámetros o no. Un parámetro podría ser un simple literal (string, number, boolean, null), un array, una lista hash u otra anotación:
+Las anotaciones pueden tener parámetros o ninguno. Un parámetro podría ser un simple literal (string, number, boolean, null), un array, una lista hash u otra anotación:
 
 ```php
 <?php
@@ -449,12 +449,12 @@ class SecurityAnnotationsPlugin extends Plugin
 
 Este componente hace uso de los adaptadores para cachear las anotaciones analizadas y procesadas, y así mejorar el rendimiento o proveer facilidades para desarrollo y pruebas:
 
-| Clase                                   | Descripción                                                                                                                                                                                      |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Phalcon\Annotations\Adapter\Memory` | Las anotaciones son cacheadas en memoria. Cuando la petición finaliza la caché se limpia. Las anotaciones se recargan en cada solicitud. Este adaptador es adecuado para una etapa de desarrollo |
-| `Phalcon\Annotations\Adapter\Files`  | Las anotaciones analizadas y procesadas se almacenan permanentemente en archivos para mejorar el rendimiento. Este adaptador se debe utilizar junto con un caché bytecode.                       |
-| `Phalcon\Annotations\Adapter\Apc`    | Las anotaciones analizadas y procesadas se almacenan permanentemente en la caché de APC. Este es el adaptador más rápido                                                                         |
-| `Phalcon\Annotations\Adapter\Xcache` | Las anotaciones analizadas y procesadas se almacenan permanentemente en el cache XCache para mejorar el rendimiento. Este también es un adaptador rápido                                         |
+| Clase                                   | Descripción                                                                                                                                                                                            |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Phalcon\Annotations\Adapter\Memory` | Las anotaciones son cacheadas solo en memoria. Cuando una consulta termina el cache es limpiado, recargando las anotaciones en cada consulta. Este adaptador es adecuado para las etapas de desarrollo |
+| `Phalcon\Annotations\Adapter\Files`  | Analizadas y procesadas las anotaciones son almacenadas permanentemente en archivos PHP, mejorando el desempeño. Este adaptador debe ser utilizado en conjunto con un cache bytecode.                  |
+| `Phalcon\Annotations\Adapter\Apc`    | Analizadas y procesadas las anotaciones son almacenadas permanentemente en el cache APC, mejorando el desempeño. Es el adaptador más rápido                                                            |
+| `Phalcon\Annotations\Adapter\Xcache` | Analizadas y procesadas las anotaciones son almacenadas permanentemente en el cache XCache, mejorando el desempeño. Es también un adaptador muy rápido                                                 |
 
 <a name='adapters-custom'></a>
 

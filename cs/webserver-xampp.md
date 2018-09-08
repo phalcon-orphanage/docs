@@ -27,7 +27,7 @@
 
 ## Download the right version of Phalcon
 
-XAMPP je vždy vydáván jako 32bitová verze Apache a PHP. Musíte tedy stáhnout x86 verzi Phalcon frameworku pro Windows ze sekce "Stažení".
+XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
 After downloading the Phalcon library you will have a zip file like the one shown below:
 
@@ -51,11 +51,11 @@ and save it.
 
 ![](/images/content/webserver-xampp-4.png)
 
-Restartujte web server Apache z ovládacího panelu XAMPP. To způsobí načtení nové PHP konfigurace.
+Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration.
 
 ![](/images/content/webserver-xampp-5.png)
 
-Otevřete internetový prohlížeč a do řádku adresy zadejte `http://localhost`. Uvidíte uvítací stranku XAMPP. Klikněte na odkaz `phpinfo()`.
+Open your browser to navigate to `http://localhost`. The XAMPP welcome page will appear. Click on the link `phpinfo()`.
 
 ![](/images/content/webserver-xampp-6.png)
 

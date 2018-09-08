@@ -208,7 +208,7 @@ La rama `master` siempre contiene la última versión estable de Phalcon. Si ust
 Puede encontrar la última versión estable en la [Página de Lanzamientos de Github](https://github.com/phalcon/box/releases):
 
 ```bash
-# Clonar el lanzamiento deseado...
+# Clona la liberación deseada...
 git checkout v2.4.0
 ```
 
@@ -248,7 +248,7 @@ provider: virtualbox
 
 ### Memoria y CPU
 
-Por defecto se establece el uso de 2GB de memoria RAM. Es posible modificarlo en el archivo `settings.yml` y simplemente ejecutar `vagrant reload`:
+Por defecto se utilizan 2GB de memoria RAM. Es posible modificarlo en el archivo `settings.yml` y simplemente ejecutar `vagrant reload`:
 
 ```yaml
 memory: 4096
@@ -268,7 +268,6 @@ La propiedad `folders` del archivo `settings.yml` lista todas las carpetas que d
 
 ```yaml
 folders:
-
     - map: ~/workspace
       to: /home/vagrant/workspace
 ```
@@ -277,7 +276,6 @@ Para habilitar [NFS](https://www.vagrantup.com/docs/synced-folders/nfs.html), si
 
 ```yaml
 folders:
-
     - map: ~/workspace
       to: /home/vagrant/workspace
       type: "nfs"
@@ -287,7 +285,6 @@ Puede pasar cualquiera de las opciones soportadas por las [carpetas sincronizada
 
 ```yaml
 folders:
-
     - map: ~/workspace
       to: /home/vagrant/workspace
       type: "nfs"
@@ -298,7 +295,7 @@ folders:
 
 <div class="alert alert-danger">
     <p>
-        Los usuarios de macOS probablemente necesiten instalar el componente <code>vagrant-bindfs</code> para corregir los errores de permisos en las carpetas compartidas (NFS):    
+        los usuarios de macOS probablemente necesiten instalar el componente <code>vagrant-bindfs</code> para corregir los errores de permisos en las carpetas compartidas (NFS):    
     </p>
 </div>
 
@@ -314,7 +311,6 @@ La propiedad `sites` permite de una manera sencilla mapear un "dominio" a una ca
 
 ```yaml
 sites:
-
     - map: phalcon.local
       to:  /home/vagrant/workspace/phalcon/public
 ```
@@ -323,7 +319,6 @@ Puede utilizar el parámetro `type` para especificar el tipo de configuración d
 
 ```yaml
 sites:
-
     - map:  landing.local
       to:   /home/vagrant/workspace/landing/public
       type: spa
@@ -360,14 +355,13 @@ También puede crear sus propios tipos. Para hacer esto, tome como base cualquie
 
 ```yaml
 sites:
-
     - map:  my-site.local
       to:   /home/vagrant/workspace/my-site/public
       # provisioning/templates/nginx/phalcon-advanced.conf.j2
       type: phalcon-advanced
 ```
 
-¿Necesita una configuración personalizada de tipo *global* para Nginx? Sí, esto es posible. Por ejemplo, vamos a crear la configuración de auto-índice.
+¿Necesita una configuración personalizada Nginx *global*? Si, es posible. Por ejemplo, creamos una configuración de auto índice.
 
 Archivo `/home/user/nginx.d/00-autoindex.conf`:
 
@@ -380,7 +374,6 @@ Añadir los ajustes deseados al archivo y luego añadirlo a la sección `copy`:
 
 ```yaml
 copy:
-
     - from: /home/user/nginx.d/00-autoindex.conf
       to: /etc/nginx/conf.d/
 ```
@@ -415,7 +408,7 @@ vagrant plugin install vagrant-hostsupdater
 
 Hicimos nuestro mejor esfuerzo para proporcionar una Caja Phalcon con todos los programas necesarios y bibliotecas. Sin embargo, debe entenderse que el usuario normal no necesita todos los paquetes posibles que se pueden instalar. La Caja de Phalcon debe ser de un tamaño razonable para que pueda ser utilizado incluso por aquellas personas que están experimentando dificultades con el ancho de banda del canal de Internet.
 
-Debido a estas consideraciones, permitimos a los usuarios especificar qué paquetes personalizados necesitan por cada disposición. Para instalar los paquetes necesarios añadir sus nombres en la sección de `apt`:
+Debido a estas consideraciones, permitimos a los usuarios especificar qué paquetes personalizados necesitan para cada disposición. Para instalar los paquetes necesarios, agregue sus nombres en la sección `apt`:
 
 ```yaml
 # Características de prestación
@@ -540,7 +533,7 @@ Si Vagrant no está gestionando su fichero "hosts" automáticamente, además deb
 
 <div class="alert alert-danger">
     <p>
-        Para permitir agregar nuevos sitios para el archivo <code>hosts</code> automáticamente utilice el plugin <code>vagrant-hostsupdater</code>:
+        Para permitir la adición de nuevos sitios al archivo <code>hosts</code> utiliza automáticamente el complemento <code>vagrant-hostsupdater</code>:
     </p>
 </div>
 
@@ -558,7 +551,7 @@ Una vez que el sitio ha sido agregado, ejecute el comando `vagrant reload --prov
 
 #### Variables Globales
 
-Fácilmente puede registrar variables de entorno globales. Simplemente agregue la variable y el valor en la sección `variables`:
+Puede registrar fácilmente variables de entorno global. Simplemente agregue la variable y su valor en la sección `variables`:
 
 ```yaml
 variables:
@@ -573,13 +566,12 @@ variables:
       value: "mysql:host=127.0.0.1;dbname=phalcon_test"
 ```
 
-De esta manera es posible habilitar el uso de variables en sus aplicaciones o códigos. Por ejemplo, al configurar [Codeception](http://codeception.com) de esta manera:
+Es esta forma puede usar esos valores en su aplicación o código. Por ejemplo cuando configuramos [Codeception](http://codeception.com) de esta forma:
 
 ```yaml
 # Archivo codeception.yml
 params:
-    # Obtener parámetros del entorno
-
+    # Obtener parámetros desde el entorno
     - env
 ```
 
@@ -590,7 +582,6 @@ Usted podrá configurar el conjunto de unidades de la siguiente manera:
 class_name: UnitTester
 modules:
     enabled:
-
         - Db
     config
         Db:
@@ -610,7 +601,6 @@ Las variables del sitio se pueden agregar fácilmente con los valores de `fastcg
 
 ```yaml
 sites:
-
     - map: phalconbox.local
       to: /var/www/phalconbox/public
       variables:
@@ -644,7 +634,6 @@ Si quieres, puedes redirigir puertos adicionales a la Caja Phalcon, así como es
 
 ```yaml
 ports:
-
     - send: 63790
       to: 6379
     - send: 50000
@@ -686,7 +675,6 @@ La propiedad `networks` del `settings.yml` configura los interfaces de red para 
 
 ```yaml
 networks:
-
     - type: "private_network"
       ip: "192.168.50.99"
 ```
@@ -695,7 +683,6 @@ Para activar una interfaz [enlazada](https://www.vagrantup.com/docs/networking/p
 
 ```yaml
 networks:
-
     - type: "private_network"
       ip: "192.168.50.99"
       bridge: "en1: Wi-Fi (AirPort)"
@@ -705,7 +692,6 @@ Para activar [DHCP](https://www.vagrantup.com/docs/networking/public_network.htm
 
 ```yaml
 networks:
-
     - type: "private_network"
       bridge: "en1: Wi-Fi (AirPort)"
 ```
@@ -722,7 +708,7 @@ Puede actualizar la Caja de Phalcon en dos sencillos pasos.
 vagrant box update
 ```
 
-1. A continuación, necesitará actualizar el código de fuente de la Caja de Phalcon. Si clonaron el repositorio puede simplemente
+2. Luego, necesita actualizar el código fuente de la Caja de Phalcon. Si clonó el repositorio, puede utilizar simplemente
 
 ```bash
 git pull origin master

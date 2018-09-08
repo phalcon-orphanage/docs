@@ -6,7 +6,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter/memory.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Almacena en memoria las anotaciones analizadas. Este adaptador es adecuado desarrollo y pruebas
+Stores the parsed annotations in memory. This adapter is the suitable development/testing
 
 ## Métodos
 

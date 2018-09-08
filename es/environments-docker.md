@@ -114,12 +114,11 @@ Usando Composer, se puede crear un nuevo proyecto de la siguiente forma:
 
 $ `composer create-project phalcon/compose --prefer-dist <nombre de la carpeta>`
 
-La salida debería ser similar a:
+Su salida debería ser similar a esto:
 
 ```php
 Example
  Installing phalcon/compose (version)
-
   - Installing phalcon/compose (version)
     Loading from cache
 
@@ -159,7 +158,7 @@ $ `127.0.0.1 www.phalcon.local phalcon.local`
 
 ## Uso
 
-Ahora puede construir, crear, iniciar y colocar contenedores para el entorno de su aplicación. Para construir los contenedores utilice los siguientes comandos dentro de la raíz del proyecto:
+Ahora puede construir, crear, iniciar y adjuntar a contenedores al entorno para su aplicación. Para construir los contenedores use el siguiente comando dentro de la raíz del proyecto:
 
 $ `docker-compose build`
 
@@ -218,17 +217,17 @@ Usted puede pasar varias variables de entorno desde un archivo externo a los con
 
 ### Variables de phpMyAdmin
 
-| Variable de entorno | Descripción                                                                                                                       | Por defecto |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `PMA_ARBITRARY`     | Cuándo se configura en 1 se permitirá la conexión con el servidor.                                                                | 1           |
-| `PMA_HOST`          | Definir dirección o nombre de host del servidor MySQL.                                                                            | mysql       |
-| `PMA_HOSTS`         | Definir una lista separada por comas de nombres de host/dirección de los servidores de MySQL. Usar sólo si `PMA_HOST` está vacía. |             |
-| `PMA_PORT`          | Definir el puerto del servidor MySQL.                                                                                             | 3306        |
-| `PMA_VERBOSE`       | Definir el nombre detallado del servidor MySQL.                                                                                   |             |
-| `PMA_VERBOSES`      | Definir una lista separada por comas de nombres detallados de los servidores de MySQL. Usar sólo si `PMA_VERBOSE` está vacía.     |             |
-| `PMA_USER`          | Definir el nombre de usuario para configuración el método de autenticación.                                                       | phalcon     |
-| `PMA_PASSWORD`      | Definir la contraseña a utilizar para configurar el método de autenticación.                                                      | secret      |
-| `PMA_ABSOLUTE_URI`  | Ruta completa de acceso (por ejemplo https://pma.example.net/) donde el proxy inverso hace que phpMyAdmin este disponible.        |             |
+| Variable de entorno | Descripción                                                                                                                   | Por defecto |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `PMA_ARBITRARY`     | Cuándo se configura en 1 se permitirá la conexión con el servidor.                                                            | 1           |
+| `PMA_HOST`          | Definir dirección o nombre de host del servidor MySQL.                                                                        | mysql       |
+| `PMA_HOSTS`         | Definir lista separada por comas de nombres de host/dirección de los servidores de MySQL. Usar sólo si `PMA_HOST` está vacía. |             |
+| `PMA_PORT`          | Definir el puerto del servidor MySQL.                                                                                         | 3306        |
+| `PMA_VERBOSE`       | Definir el nombre detallado del servidor MySQL.                                                                               |             |
+| `PMA_VERBOSES`      | Definir lista separada por comas de nombres detallados de los servidores de MySQL. Usar sólo si `PMA_VERBOSE` está vacía.     |             |
+| `PMA_USER`          | Definir el nombre de usuario para configuración el método de autenticación.                                                   | phalcon     |
+| `PMA_PASSWORD`      | Definir la contraseña a utilizar para configurar el método de autenticación.                                                  | secret      |
+| `PMA_ABSOLUTE_URI`  | Ruta completa de acceso (por ejemplo https://pma.example.net/) donde el proxy inverso hace que phpMyAdmin este disponible.    |             |
 
 *Ver también*
 
@@ -267,7 +266,7 @@ $ `ifconfig en1 | grep inet | awk '{print $2}' | sed 's/addr://' | grep .`
 
 ### Inicio o enlace de errores
 
-Si tienes cualquier problema de inicio, puede intentar reconstruir el contenedor de la aplicación. No habrá ninguna pérdida de datos., es un reinicio seguro:
+Si tiene algún problema de inicio, puede intentar reconstruir el contenedor de la aplicación. No habrá pérdida de datos. Es un reinicio seguro:
 
 ```bash
 docker-compose stop
@@ -314,6 +313,6 @@ $ `make pull`
 
 Luego tienes que reiniciar todos los contenedores, eliminar todos los datos, reconstruir los servicios y reiniciar la aplicación.
 
-Los usuarios de Linux/MacOS pueden utilizar `make` para realizar la tarea:
+Los usuarios de Linux/MacOS pueden usar `make` para realizar la tarea:
 
 $ `make reset`

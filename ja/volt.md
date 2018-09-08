@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> <ul>
+      <a href="#overview">概要</a> <ul>
         <li>
           <a href="#introduction">はじめに</a>
         </li>
@@ -1476,7 +1476,7 @@ $compiler->addFunction('dump', 'print_r');
 
 ### Filters
 
-A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
+A filter has the following form in a template: `leftExpr|name(optional-args)`. Adding new filters is similar as seen with the functions:
 
 ```php
 <?php

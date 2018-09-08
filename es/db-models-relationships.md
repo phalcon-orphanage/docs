@@ -22,7 +22,7 @@
               <a href="#aliases">Relaciones con alias</a> 
               <ul>
                 <li>
-                  <a href="#getters-vs-methods">Getters mágicos vs métodos explícitos</a>
+                  <a href="#getters-vs-methods">Getters mágicos vs. Métodos explícitos</a>
                 </li>
               </ul>
             </li>
@@ -362,7 +362,7 @@ $robot = Robots::findFirst(
 );
 ```
 
-El prefijo `get` se utiliza para `find()`/`findFirst()` registros relacionados. Dependiendo del tipo de relación utilizará `find()` o `findFirst()`:
+El prefijo `get` se usa para los registros relacionados con `find()` o `findFirst()`. Dependiendo del tipo de relación, se utilizará `find()` o `findFirst()`:
 
 | Tipo             | Descripción                                                                                                                             | Método implícito    |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
@@ -479,7 +479,7 @@ class RobotsSimilar extends Model
 }
 ```
 
-Con los alias podemos obtener fácilmente los registros relacionados. También puede utilizar el método `getRelated()` para acceder a la relación con el nombre del alias:
+Con los alias podemos conseguir fácilmente los registros relacionados. Puede también utilizar el método `getRelated()` para acceder a la relación utilizando el nombre del alias:
 
 ```php
 <?php
@@ -499,7 +499,7 @@ $similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 
 <a name='getters-vs-methods'></a>
 
-#### Getters mágicos vs métodos explícitos
+#### Getters mágicos vs. Métodos explícitos
 
 La mayoría de los IDEs y editores con capacidades de auto-completado no pueden deducir los tipos correctos al utilizar getters mágicos (métodos y propiedades). Para superar eso, puede utilizar un docblock en la clase que especifica qué acciones mágicas están disponibles, ayudando al IDE para producir un mejor autocompletado:
 
@@ -537,7 +537,7 @@ class Robots extends Model
 
 ## Condicionales
 
-También puede crear relaciones basadas en condicionales. Al consultar la relación, la condición se agregará automáticamente a la consulta:
+Puede crear relaciones basadas en condiciones. Al consultar una relación, la condición se agregará automáticamente a la consulta:
 
 ```php
 <?php

@@ -30,7 +30,7 @@
 
 Para acelerar el desarrollo, `Phalcon\Mvc\Model` ayuda a consultar campos y restricciones de las tablas relacionadas con los modelos. Para lograr esto, está disponible `Phalcon\Mvc\Model\MetaData` para administrar y almacenar en caché los metadatos de las tablas.
 
-A veces es necesario obtener los atributos cuando se trabaja con modelos. Se puede obtener una instancia de metadatos de la siguiente manera:
+Muchas veces es necesario obtener estos atributos cuando trabajamos con modelos. Puede obtener una instancia de metadatos, de la siguiente forma:
 
 ```php
 <?php
@@ -58,7 +58,7 @@ Una vez que la aplicación está en una etapa de producción, no es necesario co
 | Adaptador    | Descripción                                                                                                                                                                                                                                                                                                                                                                 | API                                           |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
 | Apc          | Este adaptador utiliza [Alternative PHP Cache (APC)](http://www.php.net/manual/en/book.apc.php) para almacenar los metadatos de tabla. Puede especificar la duración de los metadatos con opciones. (Recomendado para producción).                                                                                                                                          | `Phalcon\Mvc\Model\MetaData\Apc`          |
-| Files        | Este adaptador utiliza archivos planos para almacenar metadatos. Este adaptador reduce consultas de base de datos pero tiene una mayor E/S con el sistema de archivos.                                                                                                                                                                                                      | `Phalcon\Mvc\Model\MetaData\Files`        |
+| Files        | Este adaptador utiliza archivos planos para almacenar los metadatos. Este adaptador reduce las consultas a la base de datos, pero puede incrementar el acceso al sistema de archivos.                                                                                                                                                                                       | `Phalcon\Mvc\Model\MetaData\Files`        |
 | Libmemcached | Este adaptador utiliza el [Servidor Memcached](https://www.memcached.org/) para almacenar los metadatos de la tabla. Los parámetros de servidor así como la duración de la caché se especifica en las opciones. (Recomendado para producción)                                                                                                                               | `Phalcon\Mvc\Model\MetaData\Libmemcached` |
 | Memcache     | Este adaptador utiliza [Memcache](http://php.net/manual/en/book.memcache.php) para almacenar los metadatos de la tabla. Puede especificar la duración de los metadatos con opciones. (Recomendado para producción)                                                                                                                                                          | `Phalcon\Mvc\Model\MetaData\Memcache`     |
 | Memory       | Este adaptador es el predeterminado. Se almacena en caché los metadatos sólo durante la solicitud. Cuando se haya completado la solicitud, los metadatos son liberados como parte de la memoria normal de la solicitud. (Recomendado para el desarrollo)                                                                                                                    | `Phalcon\Mvc\Model\MetaData\Memory`       |
@@ -160,7 +160,7 @@ class Robots extends Model
 }
 ```
 
-Las anotaciones deben colocarse en las propiedades que se asignan a columnas en la fuente asignada. Las propiedades sin la anotación `@Column` se trataran como simples atributos de la clase.
+Las anotaciones deben colocarse en las propiedades que se asignan a columnas en la fuente asignada. Las propiedades sin la anotación @Column se tratan como atributos simples de la clase.
 
 Son soportadas las siguientes anotaciones:
 
@@ -170,13 +170,13 @@ Son soportadas las siguientes anotaciones:
 | Identity | El campo es una columna auto_increment/serial               |
 | Column   | Esto marca un atributo como una columna mapeada             |
 
-La anotación `@Column` admite los siguientes parámetros:
+La anotación @Column admite los siguientes parámetros:
 
 | Nombre               | Descripción                                                                                                                                                                      |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | column               | Nombre real de la columna                                                                                                                                                        |
 | type                 | Tipos de columnas: varchar/string (por defecto), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
-| length               | Longitud de la columna, si lo hubiere                                                                                                                                            |
+| length               | Longitud de la columna si lo hubiere                                                                                                                                             |
 | nullable             | Si la columna acepta valores null o no                                                                                                                                           |
 | skip_on_insert     | Omitir esta columna al insertar                                                                                                                                                  |
 | skip_on_update     | Omitir esta columna al actualizar                                                                                                                                                |

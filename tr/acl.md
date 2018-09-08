@@ -149,13 +149,13 @@ $acl->allow('Ziyaretçiler', 'Müşteriler', 'create');
 $acl->deny('Ziyaretçiler', 'Müşteriler', 'update');
 ```
 
-`allow()` yöntemi, belirli bir role belirli bir kaynağa erişim izni verdiğini belirtir. `deny()` yöntemi tersini yapar.
+The `allow()` method designates that a particular role has granted access to a particular resource. The `deny()` method does the opposite.
 
 <a name='querying'></a>
 
 ## Querying an ACL
 
-Liste tamamen tanımlandıktan sonra bir role belirli bir izin verilip verilmediğini kontrol etmek için sorgulayabiliriz.
+Once the list has been completely defined. We can query it to check if a role has a given permission or not.
 
 ```php
 <?php
@@ -392,7 +392,7 @@ $acl->isAllowed(
 );
 ```
 
-Ayrıca, bu nesnelere özel fonksiyonunuzdaki `allow()` veya `deny()` içinde erişebilirsiniz. Bunlar otomatik olarak fonksiyon türüne göre parametrelere bağlanırlar.
+Also you can access those objects in your custom function in `allow()` or `deny()`. They are automatically bind to parameters by type in function.
 
 ```php
 <?php
@@ -469,7 +469,7 @@ $acl->isAllowed(
 );
 ```
 
-Fonksiyon ve ilişkisel diziyi `isAllowed()` yönteminde geçirmek için herhangi bir özel parametre ekleyebilirsiniz. Ayrıca sırası önemli değil.
+You can still add any custom parameters to function and pass associative array in `isAllowed()` method. Also order doesn't matter.
 
 <a name='roles-inheritance'></a>
 

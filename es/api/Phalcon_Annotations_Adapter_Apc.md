@@ -6,7 +6,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter/apc.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Guarda las anotaciones analizadas en APC. Este adaptador es adecuado para producción
+Stores the parsed annotations in APC. This adapter is suitable for production
 
 ```php
 <?php
