@@ -69,6 +69,9 @@
           <a href="#annotations">Anotaciones de Router</a>
         </li>
         <li>
+          <a href="#events">Eventos</a>
+        </li>
+        <li>
           <a href="#registration">Registro de instancia de Router</a>
         </li>
         <li>
@@ -1136,6 +1139,21 @@ foreach ($testRoutes as $testRoute) {
 }
 ```
 
+<a name='events'></a>
+
+## Eventos
+
+Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
+
+| Evento                     | Descripción                                            |
+| -------------------------- | ------------------------------------------------------ |
+| `router:beforeCheckRoutes` | Activado antes de comprobar todas las rutas cargadas   |
+| `router:beforeCheckRoute`  | Activado antes de comprobar una ruta                   |
+| `router:matchedRoute`      | Se activa cuando una ruta coincidente es encontrada    |
+| `router:notMatchedRoute`   | Activado cuando ninguna ruta coincidente es encontrada |
+| `router:afterCheckRoutes`  | Activado después de comprobar todas las rutas          |
+| `router:beforeMount`       | Se activa cuando se monta una nueva ruta               |
+
 <a name='annotations'></a>
 
 ## Anotaciones de Router
@@ -1222,17 +1240,17 @@ class ProductsController
 }
 ```
 
-Solo los métodos marcados con anotaciones validas serán utilizados como rutas. A continuación una lista de anotaciones compatibles:
+Only methods marked with valid annotations are used as routes. List of annotations supported:
 
-| Nombre      | Descripción                                                                                          | Uso                                    |
-| ----------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| RoutePrefix | Un prefijo que se antepone a cada ruta URI. Esta anotación debe colocarse en el docblock de la clase | `@RoutePrefix('/api/products')`        |
-| Route       | Esta anotación marca un método como una ruta. Esta anotación debe colocarse en un docblock método    | `@Route('/api/products/show')`         |
-| Get         | Esta anotación marca el método como una ruta restringida al método `GET` de HTTP                     | `@Get('/api/products/search')`         |
-| Post        | Esta anotación marca el método como una ruta restringida al método `POST` de HTTP                    | `@Post('/api/products/save')`          |
-| Put         | Esta anotación marca el método como una ruta restringida al método `PUT` de HTTP                     | `@Put('/api/products/save')`           |
-| Delete      | Esta anotación marca el método como una ruta restringida al método `DELETE` de HTTP                  | `@Delete('/api/products/delete/{id}')` |
-| Options     | Esta anotación marca el método como una ruta restringida al método `OPTIONS` de HTTP                 | `@Option('/api/products/info')`        |
+| Nombre      | Descripción                                                                                       | Uso                                    |
+| ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
+| Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
+| Get         | Esta anotación marca el método como una ruta restringida al método `GET` de HTTP                  | `@Get('/api/products/search')`         |
+| Post        | Esta anotación marca el método como una ruta restringida al método `POST` de HTTP                 | `@Post('/api/products/save')`          |
+| Put         | Esta anotación marca el método como una ruta restringida al método `PUT` de HTTP                  | `@Put('/api/products/save')`           |
+| Delete      | Esta anotación marca el método como una ruta restringida al método `DELETE` de HTTP               | `@Delete('/api/products/delete/{id}')` |
+| Options     | Esta anotación marca el método como una ruta restringida al método `OPTIONS` de HTTP              | `@Option('/api/products/info')`        |
 
 Para las anotaciones que agregan rutas, se admiten los siguientes parámetros:
 
