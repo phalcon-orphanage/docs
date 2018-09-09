@@ -58,6 +58,17 @@ Deletes the cookie by setting an expire time in the past
 
 
 
+public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](/[[language]]/[[version]]/api/Phalcon_Http_CookieInterface)
+
+Sets the cookie's sign key. The `$signKey` MUST be at least 32 characters long and generated using a cryptographically secure pseudo random generator.
+
+You can use `null` to disable cookie signing.
+
+See: [Phalcon\Security\Random](/[[language]]/[[version]]/api/Phalcon_Security_Random)
+Throws: [Phalcon\Http\Cookie\Exception](/[[language]]/[[version]]/api/Phalcon_Http_Cookie_Exception)
+
+
+
 public  **useEncryption** (*mixed* $useEncryption)
 
 Sets if the cookie must be encrypted/decrypted automatically

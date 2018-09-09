@@ -21,6 +21,17 @@ Returns the internal dependency injector
 
 
 
+public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](/[[language]]/[[version]]/api/Phalcon_Http_CookieInterface)
+
+Sets the cookie's sign key. The `$signKey` MUST be at least 32 characters long and generated using a cryptographically secure pseudo random generator.
+
+You can use `null` to disable cookie signing.
+
+See: [Phalcon\Security\Random](/[[language]]/[[version]]/api/Phalcon_Security_Random)
+Throws: [Phalcon\Http\Cookie\Exception](/[[language]]/[[version]]/api/Phalcon_Http_Cookie_Exception)
+
+
+	
 public  **useEncryption** (*mixed* $useEncryption)
 
 Set if cookies in the bag must be automatically encrypted/decrypted
