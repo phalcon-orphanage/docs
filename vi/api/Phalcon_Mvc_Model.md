@@ -4,7 +4,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).
+Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It's an implementation of the object-relational mapping (ORM).
 
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
 
@@ -20,7 +20,7 @@ $robot->name = "Astro Boy";
 $robot->year = 1952;
 
 if ($robot->save() === false) {
-    echo "Umh, We can store robots: ";
+    echo "Umh, We cannot store robots: ";
 
     $messages = $robot->getMessages();
 
@@ -160,11 +160,11 @@ Returns the DependencyInjection connection service name used to write data relat
 
 public **setDirtyState** (*mixed* $dirtyState)
 
-Sets the dirty state of the object using one of the DIRTY_STATE_* constants
+Sets the dirty state of the object using one of the `DIRTY_STATE_*` constants
 
 public **getDirtyState** ()
 
-Returns one of the DIRTY_STATE_* constants telling if the record exists in the database or not
+Returns one of the `DIRTY_STATE_*` constants telling if the record exists in the database or not
 
 public **getReadConnection** ()
 
@@ -568,7 +568,7 @@ use Phalcon\Mvc\Model;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\ExclusionIn;
 
-class Subscriptors extends Model
+class Subscribers extends Model
 {
     public function validation()
     {
@@ -879,6 +879,73 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
+Using more than one field:
+
+```php
+<?php
+
+class Robots extends \Phalcon\Mvc\Model
+{
+    public function initialize()
+    {
+        $this->hasOne(["id", "type"], "RobotParts", ["robots_id", "robots_type"]);
+    }
+}
+
+```
+
+Using options:
+
+```php
+<?php
+
+class Robots extends \Phalcon\Mvc\Model
+{
+    public function initialize()
+    {
+        $this->hasOne(
+            "id", 
+            "RobotParts", 
+            "robots_id",
+            [
+                "reusable" => true,    // cache the results of this relationship
+                "alias"    => "parts", // Alias of the relationship
+            ]
+        );
+    }
+}
+
+```
+
+Using conditionals:
+
+```php
+<?php
+
+class Robots extends \Phalcon\Mvc\Model
+{
+    public function initialize()
+    {
+        $this->hasOne(
+            "id", 
+            "RobotParts", 
+            "robots_id",
+            [
+                "reusable" => true,           // cache the results of this relationship
+                "alias"    => "partsTypeOne", // Alias of the relationship
+                "params"   => [               // Acts like a filter
+                    "conditions" => "type = :type:",
+                    "bind"       => [
+                        "type" => 1,
+                    ],
+                ],
+            ]
+        );
+    }
+}
+
+```
+
 protected **belongsTo** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
 
 Setup a reverse 1-1 or n-1 relation between two models
@@ -931,7 +998,7 @@ class Robots extends \Phalcon\Mvc\Model
             "robots_id",
             "parts_id",
             "Parts",
-            "id",
+            "id"
         );
     }
 }
@@ -1086,6 +1153,30 @@ class Robots extends Model
 public [Phalcon\Mvc\Model\ResultsetInterface](/en/3.2/api/Phalcon_Mvc_Model_ResultsetInterface) **getRelated** (*string* $alias, [*array* $arguments])
 
 Returns related records based on defined relations
+
+```php
+<?php
+
+// Gets the relationship data named "parts"
+$parts = $robot->getRelated('parts');
+
+// Gets the relationship data named "parts" sorted descending by name
+$parts = $robot->getRelated('parts', ['order' => 'name DESC']);
+
+// Gets the relationship data named "parts" filtered
+$parts = $robot->getRelated('parts', ['conditions' => 'type = 1']);
+
+$parts = $robot->getRelated(
+    'parts', 
+    [
+        'conditions' => 'type = :type:',
+        'bind'       => [
+            'type' => 1,
+        ]
+    ]
+);
+
+```
 
 protected *mixed* **_getRelatedRecords** (*string* $modelName, *string* $method, *array* $arguments)
 

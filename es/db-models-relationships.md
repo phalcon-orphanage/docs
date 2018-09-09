@@ -14,6 +14,11 @@
             </li>
             <li>
               <a href="#defining">Definiendo las relaciones</a>
+              <ul>
+                <li>
+                  <a href="#multiple-fields">Multiple field relationships</a>
+                </li>
+              </ul>
             </li>
             <li>
               <a href="#taking-advantage-of">Aprovechando las relaciones</a>
@@ -237,6 +242,86 @@ class Robots extends Model
     }
 }
 ```
+
+<a name='multiple-fields'></a>
+
+#### Multiple field relationships
+
+There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public $id;
+
+    public $name;
+
+    public $type;
+}
+```
+
+and
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Parts extends Model
+{
+    public $id;
+
+    public $robotId;
+
+    public $robotType;
+
+    public $name;
+}
+```
+
+In the above we have a `Robots` model which has three properties. A unique `id`, a `name` and a `type` which defines what this robot is (mechnical, etc.); In the `Parts` model we also have a `name` for the part but also fields that tie the robot and its type with a specific part.
+
+Using the relationships options discussed earlier, binding one field between the two models will not return the results we need. For that we can use an array in our relationship:
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public $id;
+
+    public $name;
+
+    public $type;
+
+    public function initialize()
+    {
+        $this->hasOne(
+            ['id', 'type'],
+            Parts::class,
+            ['robotId', 'robotType'],
+            [
+                'reusable' => true, // cache related data
+                'alias'    => 'parts',
+            ]
+        );
+    }
+}
+```
+
+**NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
 
 <a name='taking-advantage-of'></a>
 
@@ -499,7 +584,7 @@ $similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 
 <a name='getters-vs-methods'></a>
 
-#### Getters mágicos vs métodos explícitos
+#### Magic Getters vs. Explicit methods
 
 La mayoría de los IDEs y editores con capacidades de auto-completado no pueden deducir los tipos correctos al utilizar getters mágicos (métodos y propiedades). Para superar eso, puede utilizar un docblock en la clase que especifica qué acciones mágicas están disponibles, ayudando al IDE para producir un mejor autocompletado:
 
@@ -843,7 +928,27 @@ Es necesario sobrecargar el método `Phalcon\Mvc\Model::save()` del modelo para 
 
 ## Operaciones sobre conjuntos de resultados
 
-Si un conjunto de resultados está compuesto de objetos completos, puede realizar operaciones en los registros:
+If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
+
+```php
+<?php
+
+/** @var RobotType $type */
+$type = $robots->getRelated('type');
+
+$type->name = 'Some other type';
+$result = $type->save();
+
+
+// Get the related robot type but only the `name` column
+$type = $robots->getRelated('type', ['columns' => 'name']);
+
+$type->name = 'Some other type';
+
+// This will fail because `$type` is not a complete object
+$result = $type->save();
+
+```
 
 <a name='updating-related-records'></a>
 
