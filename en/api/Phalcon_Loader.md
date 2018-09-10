@@ -63,6 +63,28 @@ Register namespaces and their related directories
 
 
 
+public **setFileCheckingCallback** (*mixed* $callback = null): [Phalcon\Loader](/[[language]]/[[version]]/api/Phalcon_Loader)
+
+Sets the file check callback.
+
+```php
+<?php
+
+// Default behavior.
+$loader->setFileCheckingCallback("is_file");
+
+// Faster than `is_file()`, but implies some issues if
+// the file is removed from the filesystem.
+$loader->setFileCheckingCallback("stream_resolve_include_path");
+
+// Do not check file existence.
+$loader->setFileCheckingCallback(null);
+```
+
+A [Phalcon\Loader\Exception](/[[language]]/[[version]]/api/Phalcon_Loader_Exception) is thrown if the $callback parameter is not a `callable` or `null`;
+
+
+
 protected  **prepareNamespace** (*array* $namespace)
 
 ...
