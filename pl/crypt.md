@@ -32,17 +32,15 @@ By default, this component provides secure encryption using AES-256-CFB.
 
 The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography), they have also recommended using higher than 128-bit keys for encryption.
 
-<div class="alert alert-warning">
-    <p>
-        You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.
-    </p>
-</div>
+##### You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.   
+  
+If the algorithm for calculating the digest (signing) is not selected during the object construction, **aes-256-cfb** is selected by default. {.alert.alert-warning}
 
 <a name='usage'></a>
 
 ## Basic Usage
 
-This component is designed to provide a very simple usage:
+This component is designed be very simple to use:
 
 ```php
 <?php
@@ -88,6 +86,25 @@ $encrypted = $crypt->encrypt($text, $key);
 echo $crypt->decrypt($encrypted, $key);
 ```
 
+You can also set the algorithm and whether to calculate a digest of the message (signing) during the object construction. This removes the need to call `setCipher()` and `useSigning()`:
+
+```php
+<?php
+
+use Phalcon\Crypt;
+
+// Create an instance
+$crypt = new Crypt('aes-256-ctr', true);
+
+$key = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
+
+$text = 'This is the text that you want to encrypt.';
+
+$encrypted = $crypt->encrypt($text, $key);
+
+echo $crypt->decrypt($encrypted, $key);
+```
+
 You can use the same instance to encrypt/decrypt several times:
 
 ```php
@@ -95,10 +112,10 @@ You can use the same instance to encrypt/decrypt several times:
 
 use Phalcon\Crypt;
 
-$crypt->setCipher('aes-256-ctr');
-
 // Create an instance
 $crypt = new Crypt();
+
+$crypt->setCipher('aes-256-ctr');
 
 // Use your own keys!
 $texts = [
@@ -113,6 +130,34 @@ foreach ($texts as $key => $text) {
     // Now decrypt
     echo $crypt->decrypt($encrypted, $key);
 }
+```
+
+For better security, you can instruct the component to calculate a message digest based on one of the supported algorithms returned by `getAvailableHashAlgos`. As seen above this algorithm can be set during the object instantiation but can also be set afterwards.
+
+**NOTE** Calculating the message digest (signing) will be enabled by default in Phalcon 4.0.0 or greater.
+
+```php
+<?php
+
+use Phalcon\Crypt;
+
+// Create an instance
+$crypt = new Crypt();
+
+$crypt->setCipher('aes-256-ctr');
+$crypt->setHashAlgo('aes-256-cfb');
+
+// Force calculation of a digest of the message based on the Hash algorithm
+$crypt->useSigning(true);
+
+$key  = "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c";
+$text = 'This is a secret text';
+
+// Perform the encryption
+$encrypted = $crypt->encrypt($text, $key);
+
+// Now decrypt
+echo $crypt->decrypt($encrypted, $key);
 ```
 
 <a name='options'></a>
@@ -143,6 +188,22 @@ $key  = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
 $text = 'This is a secret text';
 
 echo $crypt->encrypt($text, $key);
+```
+
+If you wish to check the available algorithms that your system supports you can call the `getAvailableHashAlgos()` method.
+
+```php
+<?php
+
+use Phalcon\Crypt;
+
+// Create an instance
+$crypt = new Crypt();
+
+// Get the supported algorithms
+$algorithms = $crypt->getAvailableHashAlgos();
+
+var_dump($algorithms);
 ```
 
 <a name='base64'></a>

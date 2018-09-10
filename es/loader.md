@@ -21,6 +21,9 @@
           <a href="#registering-file-extensions">Extensiones de archivo adicionales</a>
         </li>
         <li>
+          <a href="#file-checking-callback">File checking callback</a>
+        </li>
+        <li>
           <a href="#modifying-current-strategies">Modificando estrategias actuales</a>
         </li>
         <li>
@@ -231,6 +234,28 @@ $loader->setExtensions(
 );
 ```
 
+<a name='file-checking-callback'></a>
+
+## File checking callback
+
+You can speed up the loader by setting a different file checking callback method using the `setFileCheckingCallback` method.
+
+The default behavior uses `is_file`. However you can also use `null` which will not check whether a file exists or not before loading it or you can use `stream_resolve_include_path` which is much faster than `is_file` but will cause problems if the target file is removed from the file system.
+
+```php
+<?php
+
+// Default behavior.
+$loader->setFileCheckingCallback("is_file");
+
+// Faster than `is_file()`, but implies some issues if
+// the file is removed from the filesystem.
+$loader->setFileCheckingCallback("stream_resolve_include_path");
+
+// Do not check file existence.
+$loader->setFileCheckingCallback(null);
+```
+
 <a name='modifying-current-strategies'></a>
 
 ## Modificando estrategias actuales
@@ -288,7 +313,7 @@ $loader->setEventsManager($eventsManager);
 $loader->register();
 ```
 
-Si algún evento devuelve `false` podría detener la operación activa. Son soportados los siguientes eventos:
+Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
 | Nombre del evento  | Activador                                                                                                                              | ¿Puede detener la operación? |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
