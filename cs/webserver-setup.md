@@ -242,11 +242,7 @@ test/
 
 Je běžné použití kdy aplikace je instalována v jakémkoliv adresáři který je v tzv.: Document Root složce. V tomto případě použijeme dva `.htaccess` soubory kde první schová aplikační kód a všechny požadavky přesmeruje do veřejné aplikační složky (v našem případě je to složka `public/`).
 
-<div class="alert alert-warning">
-    <p>
-        Note that using <code>.htaccess</code> files requires your apache installation to have the `AllowOverride All` option set.
-    </p>
-</div>
+##### Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set. {.alert.alert-warning}
 
 ```apacheconfig
 # test/.htaccess
@@ -270,6 +266,21 @@ Druhý `.htaccess` soubor je umístěn ve složce `public/`, kde přesměruje v�
     RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 </IfModule>
 ```
+
+For users that are using the Persian letter 'م' (meem) in uri parameters, there is an issue with `mod_rewrite`. To allow the matching to work as it does with English characters, you will need to change your `.htaccess` file:
+
+```apacheconfig
+# test/public/.htaccess
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond   %{REQUEST_FILENAME} !-d
+    RewriteCond   %{REQUEST_FILENAME} !-f
+    RewriteRule   ^([0-9A-Za-z\x7f-\xff]*)$ index.php?params=$1 [L]
+</IfModule>
+```
+
+If your uri contains characters other than English, you might need to resort to the above change to allow `mod_rewrite` to accurately match your route.
 
 <a name='apache-apache-configuration'></a>
 

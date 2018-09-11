@@ -500,7 +500,7 @@ class ProductsController extends Controller
 
 ### Deshabilitar la vista
 
-Si su controlador no produce ninguna salida en la vista (o ni siquiera tiene una) es posible deshabilitar el componente de vista, evitando un procesamiento innecesario:
+If your controller does not produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:
 
 ```php
 <?php
