@@ -227,7 +227,7 @@ It is important that validators return a valid boolean value indicating if the v
 
 ## Callback Validator
 
-By using `Phalcon\Validation\Validator\Callback` you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity then entity will be passed, otherwise data. There is example:
+By using `Phalcon\Validation\Validator\Callback` you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
 
 ```php
 <?php
