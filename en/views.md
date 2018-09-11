@@ -485,7 +485,7 @@ class ProductsController extends Controller
 
 <a name='disabling-view'></a>
 ### Disabling the view
-If your controller doesn't produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:
+If your controller does not produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:
 
 ```php
 <?php
