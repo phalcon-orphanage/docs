@@ -148,7 +148,7 @@ return $response->redirect(
 );
 ```
 
-Tenga en cuenta que una redirección no desactiva el componente de vista, por lo que si hay una vista asociada con la acción actual, se ejecutará de todos modos. Es posible desactivar la vista desde el controlador utilizando `$this->view->disable()`.
+Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
 
 <a name='http-cache'></a>
 
