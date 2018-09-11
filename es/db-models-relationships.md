@@ -11,7 +11,14 @@
               <a href="#bidirectional">Relaciones bidireccionales</a>
             </li>
             <li>
-              <a href="#defining">Definiendo las relaciones</a>
+              <a href="#defining">Definiendo las relaciones</a> <ul>
+                <li>
+                  <a href="#multiple-fields">Multiple field relationships</a>
+                </li>
+                <li>
+                  <a href="#parameters">Relationships with parameters</a>
+                </li>
+              </ul>
             </li>
             <li>
               <a href="#taking-advantage-of">Aprovechando las relaciones</a>
@@ -229,6 +236,128 @@ class Robots extends Model
     }
 }
 ```
+
+<a name='parameters'></a>
+
+#### Relationships with parameters
+
+Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance you might want to only have a table called `parts` which has a field `type` describing the type of the part.
+
+Using relationships, we can get only those parts that relate to our Robot that are of certain type. Defining that constraint in our relationship allows us to let the model do all the work.
+
+```php
+<?php
+
+ namespace Store\Toys;
+
+ use Phalcon\Mvc\Model;
+
+ class Robots extends Model
+ {
+     public $id;
+
+     public $name;
+
+     public $type;
+
+     public function initialize()
+     {
+         $this->hasMany(
+             'id',
+             Parts::class,
+             'robotId',
+             [
+                 'reusable' => true, // cache related data
+                 'alias'    => 'mechanicalParts',
+                 'params'   => [
+                     'conditions' => 'robotTypeId = :type:',
+                     'bind'       => [
+                         'type' => 4,
+                     ]
+                 ]
+             ]
+         );
+     }
+ }
+ ```
+
+<a name='multiple-fields'></a>
+#### Multiple field relationships
+There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public $id;
+
+    public $name;
+
+    public $type;
+}
+```
+
+and
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Parts extends Model
+{
+    public $id;
+
+    public $robotId;
+
+    public $robotType;
+
+    public $name;
+}
+```
+
+In the above we have a `Robots` model which has three properties. A unique `id`, a `name` and a `type` which defines what this robot is (mechnical, etc.); In the `Parts` model we also have a `name` for the part but also fields that tie the robot and its type with a specific part.
+
+Using the relationships options discussed earlier, binding one field between the two models will not return the results we need. For that we can use an array in our relationship:
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public $id;
+
+    public $name;
+
+    public $type;
+
+    public function initialize()
+    {
+        $this->hasOne(
+            ['id', 'type'],
+            Parts::class,
+            ['robotId', 'robotType'],
+            [
+                'reusable' => true, // cache related data
+                'alias'    => 'parts',
+            ]
+        );
+    }
+}
+```
+
+**NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
 
 <a name='taking-advantage-of'></a>
 
@@ -471,25 +600,25 @@ class RobotsSimilar extends Model
 }
 ```
 
-Con los alias podemos conseguir fácilmente los registros relacionados:
+With the aliasing we can get the related records easily:
 
 ```php
 <?php
 
 $robotsSimilar = RobotsSimilar::findFirst();
 
-// Devuelve los registros relacionados con la columna (robots_id)
+// Returns the related record based on the column (robots_id)
 $robot = $robotsSimilar->getRobot();
 $robot = $robotsSimilar->robot;
 
-// Devuleve los registros relacionados con la columna (similar_robots_id)
+// Returns the related record based on the column (similar_robots_id)
 $similarRobot = $robotsSimilar->getSimilarRobot();
 $similarRobot = $robotsSimilar->similarRobot;
 ```
 
 <a name='getters-vs-methods'></a>
 
-#### Getters mágicos vs métodos explícitos
+#### Magic Getters vs. Explicit methods
 
 La mayoría de los IDEs y editores con capacidades de auto-completado no pueden deducir los tipos correctos al utilizar getters mágicos (métodos y propiedades). Para superar eso, puede utilizar un docblock en la clase que especifica qué acciones mágicas están disponibles, ayudando al IDE para producir un mejor autocompletado:
 
@@ -739,7 +868,7 @@ Es necesario sobrecargar el método `Phalcon\Mvc\Model::save()` del modelo para 
 
 ## Operaciones sobre conjuntos de resultados
 
-Si un conjunto de resultados se compone de objetos completos, el conjunto de resultados está en la capacidad para realizar operaciones sobre los registros obtenidos de una manera simple:
+If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
 
 <a name='updating-related-records'></a>
 
