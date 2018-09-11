@@ -32,15 +32,15 @@ De forma predeterminada, este componente proporciona cifrado seguro utilizando A
 
 El algoritmo de cifrado AES-256 es utilizado entre otros en SSL/TLS a través de Internet. Se considera entre los mejores cifradores. En teoría no es manipulable ya que las combinaciones de claves son enormes. Aunque la NSA la ha categorizado en la [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography), también ha recomendado el uso de claves de encriptación de 128-bit y superiores.
 
-##### You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.   
+##### Debe utilizar una clave del largo correspondiente al algoritmo actual. Por defecto, para el algoritmo utilizado es 32 bytes.   
   
-If the algorithm for calculating the digest (signing) is not selected during the object construction, **aes-256-cfb** is selected by default. {.alert.alert-warning}
+Si el algoritmo para calcular el resumen (firma) no es seleccionado durante la construcción del objeto, **aes-256-cfb** es seleccionada por defecto. {.alert.alert-warning}
 
 <a name='usage'></a>
 
 ## Uso básico
 
-This component is designed be very simple to use:
+Este componente está diseñado para ser muy fácil de usar:
 
 ```php
 <?php
