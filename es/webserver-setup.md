@@ -241,11 +241,7 @@ test/
 
 Este es el caso más común, la aplicación se instala en un directorio bajo la raíz del documento. En este caso, utilizamos dos archivos `.htaccess`, el primero de ellos para ocultar el código de la aplicación reenviando todas las solicitudes a la raíz de documentos (`public/`).
 
-<div class="alert alert-warning">
-    <p>
-        Ten en cuenta que usar archivos <code>.htaccess</code> requiere que la instalación de apache tenga la opción 'AllowOverride All' configurada.
-    </p>
-</div>
+##### Tenga en cuenta que la utilización de archivos `.htaccess` requiere que la instalación de apache tenga la opción `AllowOverride All`. {.alert.alert-warning}
 
 ```apacheconfig
 # test/.htaccess
@@ -269,6 +265,21 @@ Un segundo archivo `.htaccess` se encuentra en el directorio `public/`, este ree
     RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 </IfModule>
 ```
+
+For users that are using the Persian letter 'م' (meem) in uri parameters, there is an issue with `mod_rewrite`. To allow the matching to work as it does with English characters, you will need to change your `.htaccess` file:
+
+```apacheconfig
+# test/public/.htaccess
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond   %{REQUEST_FILENAME} !-d
+    RewriteCond   %{REQUEST_FILENAME} !-f
+    RewriteRule   ^([0-9A-Za-z\x7f-\xff]*)$ index.php?params=$1 [L]
+</IfModule>
+```
+
+If your uri contains characters other than English, you might need to resort to the above change to allow `mod_rewrite` to accurately match your route.
 
 <a name='apache-apache-configuration'></a>
 
@@ -323,7 +334,7 @@ Y esta segunda configuración le permite instalar una aplicación de Phalcon en 
 
 ## Cherokee
 
-[Cherokee](http://www.cherokee-project.com/) es un servidor web de alto desempeño. Es muy rápido, flexible y fácil de configurar.
+[Cherokee](http://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
 <a name='cherokee-phalcon-configuration'></a>
 
@@ -343,7 +354,7 @@ El servidor virtual recientemente añadido debe aparecer en la barra izquierda d
 
 ![](/images/content/webserver-cherokee-3.jpg)
 
-Agregar el comportamiento `PHP Language` utilizando el asistente. Este comportamiento le permite correr aplicaciones PHP:
+Add the `PHP Language` behavior using the wizard. This behavior allows you to run PHP applications:
 
 ![](/images/content/webserver-cherokee-1.jpg)
 

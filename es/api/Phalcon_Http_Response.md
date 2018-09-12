@@ -64,6 +64,16 @@ public **getHeaders** ()
 
 Returns headers set by the user
 
+public **getReasonPhrase** (): *string* | *null*
+
+Returns the reason phrase from the response status
+
+```php
+<?php
+
+echo $response->getReasonPhrase();
+```
+
 public **setCookies** ([Phalcon\Http\Response\CookiesInterface](/[[language]]/[[version]]/api/Phalcon_Http_Response_CookiesInterface) $cookies)
 
 Sets a cookies bag for the response externally
