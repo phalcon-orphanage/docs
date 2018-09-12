@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Возврат ответов</a> <ul>
+      <a href="#overview">Возврат ответов</a> 
+      <ul>
         <li>
           <a href="#working-with-headers">Работа с заголовками</a>
         </li>
@@ -9,7 +10,8 @@
           <a href="#redirections">Создание перенаправлений</a>
         </li>
         <li>
-          <a href="#http-cache">HTTP-кэш</a> <ul>
+          <a href="#http-cache">HTTP-кэш</a> 
+          <ul>
             <li>
               <a href="#http-cache-expiration-time">Expires</a>
             </li>
@@ -146,7 +148,7 @@ return $response->redirect(
 );
 ```
 
-Обратите внимание, что перенаправление не отключает компонент представления, таким образом, если имеется представление, связанное с текущим действием, оно в любом случае будет выполняться. You can disable the view from a controller by executing `$this->view->disable()`;
+Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
 
 <a name='http-cache'></a>
 
@@ -156,10 +158,10 @@ return $response->redirect(
 
 Поведение HTTP-кэша может быть изменено с помощью заголовков, отправляемых при первой передаче страницы:
 
-- **`Expires:`** Устанавливая этот заголовок в прошлое или будущее можно указывать браузеру срок жизни страницы.
-- **`Cache-Control:`** Позволяет указать сколько времени страница должна считаться для браузера актуальной.
-- **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads
-- **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page
+* **`Expires:`** Устанавливая этот заголовок в прошлое или будущее можно указывать браузеру срок жизни страницы.
+* **`Cache-Control:`** Позволяет указать сколько времени страница должна считаться для браузера актуальной.
+* **`Last-Modified:`** Указывает браузеру когда было последнее изменение страницы, что позволяет избежать повторной загрузки страницы.
+* **`ETag:`** Представляет собой уникальный идентификатор, который должен быть сформирован с учетом времени изменения текущей страницы.
 
 <a name='http-cache-expiration-time'></a>
 
