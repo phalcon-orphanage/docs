@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Devolviendo Respuestas</a> <ul>
+      <a href="#overview">Devolviendo Respuestas</a> 
+      <ul>
         <li>
           <a href="#working-with-headers">Trabajando con Cabeceras</a>
         </li>
@@ -9,7 +10,8 @@
           <a href="#redirections">Haciendo redirecciones</a>
         </li>
         <li>
-          <a href="#http-cache">Caché HTTP</a> <ul>
+          <a href="#http-cache">Caché HTTP</a> 
+          <ul>
             <li>
               <a href="#http-cache-expiration-time">Estableciendo el tiempo de expiración</a>
             </li>
@@ -146,7 +148,7 @@ return $response->redirect(
 );
 ```
 
-Tenga en cuenta que una redirección no desactiva el componente de vista, por lo que si hay una vista asociada con la acción actual, se ejecutará de todos modos. Es posible desactivar la vista desde el controlador utilizando `$this->view->disable()`
+Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
 
 <a name='http-cache'></a>
 
@@ -156,10 +158,10 @@ Una de las formas más fáciles de mejorar el rendimiento en nuestras aplicacion
 
 La memoria caché HTTP se puede modificar en los siguientes valores de encabezado enviados por la aplicación al publicar una página por primera vez:
 
-- **`Expires:`** con este encabezado, la aplicación puede establecer una fecha en el futuro o en el pasado que indique al navegador cuándo debe caducar la página.
-- **`Cache-Control:`** este encabezado permite especificar cuánto tiempo una página debe considerarse como fresca en el navegador.
-- **`Last-Modified:`** este encabezado le dice al navegador cuál fue la última vez que se actualizó el sitio, evitando que la página se vuelva a cargar
-- **`ETag:`** un etag es un identificador único que se debe ser creado incluyendo el tiempo de modificación de la página actual
+* **`Expires:`** con este encabezado, la aplicación puede establecer una fecha en el futuro o en el pasado que indique al navegador cuándo debe caducar la página.
+* **`Cache-Control:`** este encabezado permite especificar cuánto tiempo una página debe considerarse como fresca en el navegador.
+* **`Last-Modified:`** este encabezado le dice al navegador cuál fue la última vez que se actualizó el sitio, evitando que la página se vuelva a cargar.
+* **`ETag:`** un etag es un identificador único que se debe ser creado incluyendo el tiempo de modificación de la página actual.
 
 <a name='http-cache-expiration-time'></a>
 
