@@ -35,20 +35,21 @@
 
 | Операция           | Название                 | Может остановить операцию? | Пояснение                                                                                                                         |
 | ------------------ | ------------------------ |:--------------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
-| Вставка/Обновление | beforeValidation         |             Да             | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
-| Вставка            | beforeValidationOnCreate |             Да             | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
-| Обновление         | beforeValidationOnUpdate |             Да             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления                  |
-| Вставка/Обновление | validation               |             Да             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления                  |
-| Вставка/Обновление | onValidationFails        |   YES (already stopped)    | Is executed after an integrity validator fails                                                                                    |
-| Вставка            | afterValidationOnCreate  |             Да             | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
-| Обновление         | afterValidationOnUpdate  |             Да             | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
-| Вставка/Обновление | afterValidation          |             Да             | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
-| Вставка            | beforeCreate             |             Да             | Runs before the required operation over the database system only when an inserting operation is being made                        |
-| Вставка/Обновление | beforeSave               |             Да             | Runs before the required operation over the database system                                                                       |
-| Обновление         | beforeUpdate             |             Да             | Runs before the required operation over the database system only when an updating operation is being made                         |
 | Вставка            | afterCreate              |            Нет             | Выполняется после выполнения требуемой операции над системой базы данных только при выполнении операции вставки                   |
+| Inserting/Updating | afterSave                |            Нет             | Runs after the required operation over the database system                                                                        |
 | Обновление         | afterUpdate              |            Нет             | Runs after the required operation over the database system only when an updating operation is being made                          |
-| Вставка/Обновление | afterSave                |            Нет             | Runs after the required operation over the database system                                                                        |
+| Вставка/Обновление | afterValidation          |            YES             | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
+| Inserting          | afterValidationOnCreate  |             Да             | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
+| Updating           | afterValidationOnUpdate  |             Да             | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
+| Inserting          | beforeCreate             |             Да             | Runs before the required operation over the database system only when an inserting operation is being made                        |
+| Вставка/Обновление | beforeSave               |             Да             | Runs before the required operation over the database system                                                                       |
+| Updating           | beforeUpdate             |             Да             | Runs before the required operation over the database system only when an updating operation is being made                         |
+| Inserting/Updating | beforeValidation         |             Да             | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
+| Inserting          | beforeValidationOnCreate |             Да             | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
+| Обновление         | beforeValidationOnUpdate |             Да             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления                  |
+| Inserting/Updating | onValidationFails        |   YES (already stopped)    | Is executed after an integrity validator fails                                                                                    |
+| Inserting/Updating | prepareSave              |             NO             | Is executed before saving and allows data manipulation                                                                            |
+| Вставка/Обновление | validation               |            YES             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления                  |
 
 <a name='events-in-models'></a>
 
