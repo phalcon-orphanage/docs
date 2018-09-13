@@ -1,7 +1,8 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Mejorar el Rendimiento Mediante Caché</a> <ul>
+      <a href="#overview">Mejorar el Rendimiento Mediante Caché</a> 
+      <ul>
         <li>
           <a href="#implementation">¿Cuándo Implementar Caché?</a>
         </li>
@@ -15,7 +16,8 @@
           <a href="#output-fragments">Almacenamiento en Caché de Fragmentos de Salida</a>
         </li>
         <li>
-          <a href="#arbitrary-data">Almacenamiento en Caché de Datos Arbitrarios</a> <ul>
+          <a href="#arbitrary-data">Almacenamiento en Caché de Datos Arbitrarios</a> 
+          <ul>
             <li>
               <a href="#backend-file-example">Ejemplo de archivo de Backend</a>
             </li>
@@ -40,14 +42,16 @@
           <a href="#multi-level">Memoria Caché de Niveles Múltiples</a>
         </li>
         <li>
-          <a href="#adapters-frontend">Adaptadores de Frontend</a> <ul>
+          <a href="#adapters-frontend">Adaptadores de Frontend</a> 
+          <ul>
             <li>
               <a href="#adapters-frontend-custom">Implementar tus Propios Adaptadores de Frontend</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#adapters-backend">Adaptadores de Backend</a> <ul>
+          <a href="#adapters-backend">Adaptadores de Backend</a> 
+          <ul>
             <li>
               <a href="#adapters-backend-factory">Fábrica</a>
             </li>
@@ -65,6 +69,9 @@
             </li>
             <li>
               <a href="#adapters-backend-apc">Opciones de back-end para APC</a>
+            </li>
+            <li>
+              <a href="#adapters-backend-apcu">Opciones de back-end para APCU</a>
             </li>
             <li>
               <a href="#adapters-backend-mongo">Opciones de back-end para Mongo</a>
@@ -94,11 +101,15 @@ Phalcon proporciona la clase `Phalcon\Cache` que permite un acceso más rápido 
 
 Aunque este componente es muy rápido, su aplicación en los casos que no es necesario puede llevar a una pérdida de performance en lugar de ganancia. Le recomendamos que consulte que estos casos antes de usar un caché:
 
-- Usted está haciendo cálculos complejos que siempre devuelven el mismo resultado (cambian con poca frecuencia)
-- Utiliza un montón de ayudantes y la salida generada es casi siempre la misma
-- Se accede a datos de la base de datos constantemente y rara vez cambian de estos datos
+* Usted está haciendo cálculos complejos que siempre devuelven el mismo resultado (cambian con poca frecuencia)
+* Utiliza un montón de ayudantes y la salida generada es casi siempre la misma
+* Se accede a datos de la base de datos constantemente y rara vez cambian de estos datos
 
-<h5 class='alert alert-warning'><em>Nota</em> Incluso después de implementar el caché, debe comprobar la proporción de aciertos de su caché durante un período de tiempo. Esto puede hacerse fácilmente, especialmente en el caso de Memcache o Apc, con las herramientas pertinentes que proporcionan los backends.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>Nota</strong> Incluso después de implementar el caché, debe comprobar la proporción de aciertos de su caché durante un período de tiempo. Esto puede hacerse fácilmente, especialmente en el caso de Memcache o Apc, con las herramientas pertinentes que proporcionan los backends.
+    </p>
+</div>
 
 <a name='caching-behavior'></a>
 
@@ -106,8 +117,8 @@ Aunque este componente es muy rápido, su aplicación en los casos que no es nec
 
 El proceso de almacenamiento en caché se divide en 2 partes:
 
-- **Frontend**: esta parte es responsable de comprobar si una clave ha expirado y realizar transformaciones adicionales a los datos antes de guardarlos y después recuperarlos desde el backend
-- **Backend**: esta parte es responsable de comunicar, escribir y leer los datos requeridos por la interfaz.
+* **Frontend**: esta parte es responsable de comprobar si una clave ha expirado y realizar transformaciones adicionales a los datos antes de guardarlos y después recuperarlos desde el backend
+* **Backend**: esta parte es responsable de comunicar, escribir y leer los datos requeridos por la interfaz.
 
 <a name='factory'></a>
 
@@ -115,7 +126,7 @@ El proceso de almacenamiento en caché se divide en 2 partes:
 
 Crear instancias de adaptadores del frontend o del backend, puede lograrse de dos maneras:
 
-- Tradicional
+Tradicional
 
 ```php
 <?php
@@ -165,8 +176,6 @@ $options = [
 
 $backendCache = BFactory::load($options);
 ```
-
-Si las opciones
 
 <a name='output-fragments'></a>
 
@@ -225,7 +234,11 @@ if ($content === null) {
 }
 ```
 
-<h5 class='alert alert-warning'><em>Nota</em> En el ejemplo anterior, nuestro código sigue siendo el mismo, haciéndose eco de salida para el usuario como lo ha venido haciendo antes. Nuestro componente de caché captura transparentemente esa salida y almacena en el archivo de caché (cuando se genera la caché) o envía hacia el usuario previamente compilado de una llamada anterior, evitando así operaciones costosas.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>Nota</strong> En el ejemplo anterior, nuestro código sigue siendo el mismo, haciéndose eco de salida para el usuario como lo ha venido haciendo antes. Nuestro componente de caché captura transparentemente esa salida y almacena en el archivo de caché (cuando se genera la caché) o envía hacia el usuario previamente compilado de una llamada anterior, evitando así operaciones costosas.
+    </p>
+</div>
 
 <a name='arbitrary-data'></a>
 
@@ -237,7 +250,7 @@ Almacenar sólo datos es igualmente importante para su aplicación. El almacenam
 
 ### Ejemplo de archivo de Backend
 
-Uno de los adaptadores de almacenamiento en caché es 'File'. La única área clave para este adaptador es el lugar de donde se almacenarán los archivos de caché. Esto se controla mediante la opción `cacheDir` que *debe* tener una barra invertida al final de la misma.
+Uno de los adaptadores de almacenamiento en caché es `File`. La única área clave para este adaptador es el lugar de donde se almacenarán los archivos de caché. Esto se controla mediante la opción `cacheDir` que *debe* tener una barra invertida al final de la misma.
 
 ```php
 <?php
@@ -344,7 +357,11 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning'><em>Nota</em> Llamar a <code>save()</code> regresará un booleano, indicando éxito (<code>true</code>) o fracaso (<code>false</code>). Dependiendo el servidor backend que utilices, necesitaras buscar en los registros pertinentes para identificar fallas.</h5>
+<div class='alert alert-warning'>
+    <p>
+        <strong>Nota</strong> Llamar a <code>save()</code> regresará un booleano, indicando éxito (<code>true</code>) o fracaso (<code>false</code>). Dependiendo el servidor backend que utilices, necesitaras buscar en los registros pertinentes para identificar fallas.
+    </p>
+</div>
 
 <a name='read'></a>
 
@@ -552,6 +569,7 @@ Los adaptadores de backend disponibles para almacenar datos en cache son:
 | `Phalcon\Cache\Backend\File`         | Almacena los datos en archivos planos locales.                            |                                           |                                                    |
 | `Phalcon\Cache\Backend\Libmemcached` | Almacena los datos en un servidor memcached.                              | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
 | `Phalcon\Cache\Backend\Memcache`     | Almacena los datos en un servidor memcached.                              | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| `Phalcon\Cache\Backend\Memory`       | Stores data in memory                                                     |                                           |                                                    |
 | `Phalcon\Cache\Backend\Mongo`        | Almacena los datos en base de datos Mongo.                                | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
 | `Phalcon\Cache\Backend\Redis`        | Almacena datos en Redis.                                                  | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Almacena datos en XCache.                                                 | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
@@ -671,6 +689,16 @@ Este backend almacena contenido cacheado en un servidor memcached. Las opciones 
 ### Opciones de back-end para APC
 
 Este backend almacenará contenido cacheado en la memoria caché alternativa de PHP ([APC](http://php.net/apc)). Las opciones disponibles son:
+
+| Opción   | Descripción                                                    |
+| -------- | -------------------------------------------------------------- |
+| `prefix` | Un prefijo se antepone automáticamente en las claves de caché. |
+
+<a name='adapters-backend-apcu'></a>
+
+### Opciones de back-end para APCU
+
+Este backend almacenará contenido cacheado en la memoria caché alternativa de PHP ([APCU](http://php.net/apcu)). Las opciones disponibles son:
 
 | Opción   | Descripción                                                    |
 | -------- | -------------------------------------------------------------- |
