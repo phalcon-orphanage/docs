@@ -97,7 +97,7 @@ cd phalcon-devtools/
 
 ![](/images/content/devtools-mac-2.png)
 
-Next, we'll create a symbolic link to the `phalcon.php` script. On El Capitan and newer versions of macOS:
+A continuación, vamos a crear un enlace simbólico al script `phalcon.php`. En el Capitan y nuevas versiones de macOS:
 
 ```bash
 ln -s ~/phalcon-devtools/phalcon.php /usr/local/bin/phalcon
