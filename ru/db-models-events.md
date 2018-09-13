@@ -35,24 +35,23 @@
 
 Модели позволяют реализовать события, которые будут срабатывать при выполнении вставки/обновления/удаления. Другими словами, события помогают определить бизнес-логику для определенной модели. Ниже приведены события, поддерживаемые `Phalcon\Mvc\Model` и порядок их выполнения:
 
-| Операция           | Название                 | Может остановить операцию? | Пояснение                                                                                                           |
-| ------------------ | ------------------------ |:--------------------------:| ------------------------------------------------------------------------------------------------------------------- |
-| Вставка            | afterCreate              |            Нет             | Выполняется после выполнения требуемой операции над системой базы данных только при выполнении операции вставки     |
-| Удаление           | afterDelete              |            Нет             | Выполняется после выполнения операции удаления                                                                      |
-| Обновление         | afterUpdate              |            Нет             | Выполняется после требуемой операции над системой базы данных для операции обновления                               |
-| Вставка/Обновление | afterSave                |            Нет             | Выполняется после требуемой операции над системой базы данных                                                       |
-| Вставка/Обновление | afterValidation          |             Да             | Выполняется после проверки поля на не нулевую/пустую строку или на внешние ключи                                    |
-| Вставка            | afterValidationOnCreate  |             Да             | Выполняется после проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции вставки    |
-| Обновление         | afterValidationOnUpdate  |             Да             | Выполняется после проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления |
-| Вставка/Обновление | beforeValidation         |             Да             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи                                       |
-| Вставка            | beforeCreate             |             Да             | Выполняется до требуемой операции над системой базы данных для операции вставки                                     |
-| Удаление           | beforeDelete             |             Да             | Выполняется до выполнения операции удаления                                                                         |
-| Вставка/Обновление | beforeSave               |             Да             | Выполняется до требуемой операции над системой базы данных                                                          |
-| Обновление         | beforeUpdate             |             Да             | Выполняется до требуемой операции над системой базы данных для операции обновления                                  |
-| Вставка            | beforeValidationOnCreate |             Да             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции вставки       |
-| Обновление         | beforeValidationOnUpdate |             Да             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления    |
-| Вставка/Обновление | onValidationFails        |    Да (уже остановлена)    | Выполняется после обнаружения нарушения целостности                                                                 |
-| Вставка/Обновление | validation               |             Да             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления    |
+| Операция           | Название                 | Может остановить операцию? | Пояснение                                                                                                                         |
+| ------------------ | ------------------------ |:--------------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
+| Вставка            | afterCreate              |            Нет             | Выполняется после выполнения требуемой операции над системой базы данных только при выполнении операции вставки                   |
+| Inserting/Updating | afterSave                |            Нет             | Runs after the required operation over the database system                                                                        |
+| Обновление         | afterUpdate              |            Нет             | Выполняется после требуемой операции над системой базы данных для операции обновления                                             |
+| Вставка/Обновление | afterValidation          |            YES             | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
+| Inserting          | afterValidationOnCreate  |             Да             | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
+| Updating           | afterValidationOnUpdate  |             Да             | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
+| Inserting          | beforeCreate             |             Да             | Runs before the required operation over the database system only when an inserting operation is being made                        |
+| Вставка/Обновление | beforeSave               |             Да             | Runs before the required operation over the database system                                                                       |
+| Updating           | beforeUpdate             |             Да             | Runs before the required operation over the database system only when an updating operation is being made                         |
+| Inserting/Updating | beforeValidation         |             Да             | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
+| Inserting          | beforeValidationOnCreate |             Да             | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
+| Обновление         | beforeValidationOnUpdate |             Да             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления                  |
+| Inserting/Updating | onValidationFails        |   YES (already stopped)    | Is executed after an integrity validator fails                                                                                    |
+| Inserting/Updating | prepareSave              |             NO             | Is executed before saving and allows data manipulation                                                                            |
+| Вставка/Обновление | validation               |            YES             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления                  |
 
 <a name='events-in-models'></a>
 
@@ -338,7 +337,7 @@ $di->set(
 
 use Store\Toys\Robots;
 
-// Отправим некоторый SQL запрос в базу данных
+// Отправим несколько SQL запросов в базу данных
 Robots::find();
 
 Robots::find(
@@ -353,14 +352,14 @@ Robots::find(
     ]
 );
 
-// Получим данные профилировщика
+// Получаем сгенерированные профили из профилировщика
 $profiles = $di->get('profiler')->getProfiles();
 
 foreach ($profiles as $profile) {
-   echo 'SQL запрос: ', $profile->getSQLStatement(), "\n";
-   echo 'Начальное время: ', $profile->getInitialTime(), "\n";
-   echo 'Конечное время: ', $profile->getFinalTime(), "\n";
-   echo 'Общее истекшее время: ', $profile->getTotalElapsedSeconds(), "\n";
+   echo 'SQL Statement: ', $profile->getSQLStatement(), '\n';
+   echo 'Start Time: ', $profile->getInitialTime(), '\n';
+   echo 'Final Time: ', $profile->getFinalTime(), '\n';
+   echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), '\n';
 }
 ```
 

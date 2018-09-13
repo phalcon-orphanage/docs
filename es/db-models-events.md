@@ -38,21 +38,20 @@ Los modelos permiten implementar eventos que se disparan al realizar una inserci
 | Operación             | Nombre                   | ¿Puede detener la operación? | Explicación                                                                                                                                      |
 | --------------------- | ------------------------ |:----------------------------:| ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Insertar              | afterCreate              |              NO              | Se ejecuta después de la operación sobre el sistema de base de datos pero sólo cuando se realiza una operación de inserción                      |
-| Eliminar              | afterDelete              |              NO              | Se ejecuta después de la operación de eliminación                                                                                                |
+| Inserting/Updating    | afterSave                |              NO              | Después que la operación se ejecuta sobre el sistema de base de datos solo para inserción o actualización                                        |
 | Actualizar            | afterUpdate              |              NO              | Se ejecuta después de la operación sobre el sistema de base de datos pero sólo cuando se realiza una operación de actualización                  |
-| Insertar o actualizar | afterSave                |              NO              | Después que la operación se ejecuta sobre el sistema de base de datos solo para inserción o actualización                                        |
-| Insertar o actualizar | afterValidation          |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas                                                        |
-| Insertar              | afterValidationOnCreate  |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas solo cuando se realiza una operación de inserción      |
-| Actualizar            | afterValidationOnUpdate  |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización |
-| Insertar o actualizar | beforeValidation         |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, para operaciones de inserción o actualización           |
-| Insertar              | beforeCreate             |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, sólo cuando se realiza una operación de inserción                            |
-| Eliminar              | beforeDelete             |              SI              | Se ejecuta antes de la operación de eliminación                                                                                                  |
+| Insertar o actualizar | afterValidation          |             YES              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas                                                        |
+| Inserting             | afterValidationOnCreate  |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas solo cuando se realiza una operación de inserción      |
+| Updating              | afterValidationOnUpdate  |              SI              | Se ejecuta después de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización |
+| Inserting             | beforeCreate             |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, sólo cuando se realiza una operación de inserción                            |
 | Insertar o actualizar | beforeSave               |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, para operaciones de inserción o actualización                                |
-| Actualizar            | beforeUpdate             |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, sólo cuando se realiza una operación de actualización                        |
-| Insertar              | beforeValidationOnCreate |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de inserción       |
+| Updating              | beforeUpdate             |              SI              | Se ejecuta antes de la operación sobre el sistema de base de datos, sólo cuando se realiza una operación de actualización                        |
+| Inserting/Updating    | beforeValidation         |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, para operaciones de inserción o actualización           |
+| Inserting             | beforeValidationOnCreate |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de inserción       |
 | Actualizar            | beforeValidationOnUpdate |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización   |
-| Insertar o actualizar | onValidationFails        |        SI (detenido)         | Se ejecuta después de un validador de integridad falla                                                                                           |
-| Insertar o actualizar | validation               |              SI              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización   |
+| Inserting/Updating    | onValidationFails        |        SI (detenido)         | Se ejecuta después de un validador de integridad falla                                                                                           |
+| Inserting/Updating    | prepareSave              |              NO              | Is executed before saving and allows data manipulation                                                                                           |
+| Insertar o actualizar | validation               |             YES              | Se ejecuta antes de que se validan los campos no nulos/cadenas vacías o llaves foráneas, solo cuando se realiza una operación de actualización   |
 
 <a name='events-in-models'></a>
 
@@ -352,14 +351,14 @@ Robots::find(
     ]
 );
 
-// Obtenemos los perfiles generador por el profiler
+// Obtenemos los perfiles generados por el profiler
 $profiles = $di->get('profiler')->getProfiles();
 
 foreach ($profiles as $profile) {
-   echo 'SQL Statement: ', $profile->getSQLStatement(), "\n";
-   echo 'Start Time: ', $profile->getInitialTime(), "\n";
-   echo 'Final Time: ', $profile->getFinalTime(), "\n";
-   echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), "\n";
+   echo 'SQL Statement: ', $profile->getSQLStatement(), '\n';
+   echo 'Start Time: ', $profile->getInitialTime(), '\n';
+   echo 'Final Time: ', $profile->getFinalTime(), '\n';
+   echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), '\n';
 }
 ```
 
