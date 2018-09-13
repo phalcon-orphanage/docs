@@ -38,7 +38,7 @@ Models allow you to implement events that will be thrown while performing an ins
 | Inserting          | afterCreate              |          NIE          | Runs after the required operation over the database system only when an inserting operation is being made                         |
 | Updating           | afterUpdate              |          NIE          | Runs after the required operation over the database system only when an updating operation is being made                          |
 | Inserting/Updating | afterSave                |          NIE          | Runs after the required operation over the database system                                                                        |
-| Inserting/Updating | afterValidation          |          TAK          | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
+| Inserting/Updating | afterValidation          |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
 | Inserting          | afterValidationOnCreate  |          TAK          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
 | Updating           | afterValidationOnUpdate  |          TAK          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
 | Inserting/Updating | beforeValidation         |          TAK          | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
