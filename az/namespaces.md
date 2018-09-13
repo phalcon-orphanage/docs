@@ -1,97 +1,106 @@
-<div class='article-menu' mark="crwd-mark">
-
-<ul>
-<li><a href="#overview">Working with Namespaces</a>
-
-<ul>
-<li><a href="#setting-up">Setting up the framework</a></li>
-<li><a href="#controllers">Controllers in Namespaces</a></li>
-<li><a href="#models">Models in Namespaces</a></li>
-</ul></li>
-</ul>
-
+<div class='article-menu'>
+  <ul>
+    <li>
+      <a href="#overview">Working with Namespaces</a> <ul>
+        <li>
+          <a href="#setting-up">Setting up the framework</a>
+        </li>
+        <li>
+          <a href="#controllers">Controllers in Namespaces</a>
+        </li>
+        <li>
+          <a href="#models">Models in Namespaces</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
-<p><a name='overview' mark="crwd-mark"></a></p>
+<a name='overview'></a>
 
-<h1>Working with Namespaces</h1>
+# Working with Namespaces
 
-<p><a href="http://php.net/manual/en/language.namespaces.php">Namespaces</a> can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.</p>
+[Namespaces](http://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
 
-<p><a name='setting-up' mark="crwd-mark"></a></p>
+<a name='setting-up'></a>
 
-<h2>Setting up the framework</h2>
+## Setting up the framework
 
-<p>Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:</p>
+Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:
 
-<p>Use an autoload strategy that takes into account the namespaces, for example with <code>Phalcon\Loader</code>:</p>
+Use an autoload strategy that takes into account the namespaces, for example with `Phalcon\Loader`:
 
-<pre><code class="php">&lt;?php
+```php
+<?php
 
-$loader-&gt;registerNamespaces(
+$loader->registerNamespaces(
     [
-       'Store\Admin\Controllers' =&gt; '../bundles/admin/controllers/',
-       'Store\Admin\Models'      =&gt; '../bundles/admin/models/',
+       'Store\Admin\Controllers' => '../bundles/admin/controllers/',
+       'Store\Admin\Models'      => '../bundles/admin/models/',
     ]
 );
-</code></pre>
+```
 
-<p>Specify it in the routes as a separate parameter in the route's paths:</p>
+Specify it in the routes as a separate parameter in the route's paths:
 
-<pre><code class="php">&lt;?php
+```php
+<?php
 
-$router-&gt;add(
+$router->add(
     '/admin/users/my-profile',
     [
-        'namespace'  =&gt; 'Store\Admin',
-        'controller' =&gt; 'Users',
-        'action'     =&gt; 'profile',
+        'namespace'  => 'Store\Admin',
+        'controller' => 'Users',
+        'action'     => 'profile',
     ]
 );
-</code></pre>
+```
 
-<p>Passing it as part of the route:</p>
+Passing it as part of the route:
 
-<pre><code class="php">&lt;?php
+```php
+<?php
 
-$router-&gt;add(
+$router->add(
     '/:namespace/admin/users/my-profile',
     [
-        'namespace'  =&gt; 1,
-        'controller' =&gt; 'Users',
-        'action'     =&gt; 'profile',
+        'namespace'  => 1,
+        'controller' => 'Users',
+        'action'     => 'profile',
     ]
 );
-</code></pre>
+```
 
-<p>If you are only working with the same namespace for every controller in your application, then you can define a default namespace in the <a href="/[[language]]/[[version]]/dispatcher">Dispatcher</a>, by doing this, you don't need to specify a full class name in the router path:</p>
+If you are only working with the same namespace for every controller in your application, then you can define a default namespace in the [Dispatcher](/[[language]]/[[version]]/dispatcher), by doing this, you don't need to specify a full class name in the router path:
 
-<pre><code class="php">&lt;?php
+```php
+<?php
 
 use Phalcon\Mvc\Dispatcher;
 
 // Registering a dispatcher
-$di-&gt;set(
+$di->set(
     'dispatcher',
     function () {
         $dispatcher = new Dispatcher();
 
-        $dispatcher-&gt;setDefaultNamespace(
+        $dispatcher->setDefaultNamespace(
             'Store\Admin\Controllers'
         );
 
         return $dispatcher;
     }
 );
-</code></pre>
+```
 
-<p><a name='controllers' mark="crwd-mark"></a></p>
+<a name='controllers'></a>
 
-<h2>Controllers in Namespaces</h2>
+## Controllers in Namespaces
 
-<p>The following example shows how to implement a controller that use namespaces:</p>
+The following example shows how to implement a controller that use namespaces:
 
-<pre><code class="php">&lt;?php
+```php
+<?php
 
 namespace Store\Admin\Controllers;
 
@@ -109,15 +118,16 @@ class UsersController extends Controller
 
     }
 }
-</code></pre>
+```
 
-<p><a name='models' mark="crwd-mark"></a></p>
+<a name='models'></a>
 
-<h2>Models in Namespaces</h2>
+## Models in Namespaces
 
-<p>Take the following into consideration when using models in namespaces:</p>
+Take the following into consideration when using models in namespaces:
 
-<pre><code class="php">&lt;?php
+```php
+<?php
 
 namespace Store\Models;
 
@@ -127,11 +137,12 @@ class Robots extends Model
 {
 
 }
-</code></pre>
+```
 
-<p>If models have relationships they must include the namespace too:</p>
+If models have relationships they must include the namespace too:
 
-<pre><code class="php">&lt;?php
+```php
+<?php
 
 namespace Store\Models;
 
@@ -141,21 +152,22 @@ class Robots extends Model
 {
     public function initialize()
     {
-        $this-&gt;hasMany(
+        $this->hasMany(
             'id',
             'Store\Models\Parts',
             'robots_id',
             [
-                'alias' =&gt; 'parts',
+                'alias' => 'parts',
             ]
         );
     }
 }
-</code></pre>
+```
 
-<p>In PHQL you must write the statements including namespaces:</p>
+In PHQL you must write the statements including namespaces:
 
-<pre><code class="php">&lt;?php
+```php
+<?php
 
 $phql = 'SELECT r.* FROM Store\Models\Robots r JOIN Store\Models\Parts p';
-</code></pre>
+```
