@@ -1,41 +1,50 @@
-# Class **Phalcon\\Queue\\Beanstalk\\Job**
+<h1>Class <strong>Phalcon\\Queue\\Beanstalk\\Job</strong></h1>
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/queue/beanstalk/job.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<p><a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/queue/beanstalk/job.zep" class="btn btn-default btn-sm" mark="crwd-mark">Source on GitHub</a></p>
 
-Represents a job in a beanstalk queue
+<p>Represents a job in a beanstalk queue</p>
 
-## Methods
+<h2>Methods</h2>
 
-public **getId** ()
+<p>public  <strong>getId</strong> ()</p>
 
-public **getBody** ()
+<p>public  <strong>getBody</strong> ()</p>
 
-public **__construct** ([Phalcon\Queue\Beanstalk](/en/3.2/api/Phalcon_Queue_Beanstalk) $queue, *mixed* $id, *mixed* $body)
+<p>public  <strong>__construct</strong> (<a href="/en/3.2/api/Phalcon_Queue_Beanstalk">Phalcon\Queue\Beanstalk</a> $queue, <em>mixed</em> $id, <em>mixed</em> $body)</p>
 
-public **delete** ()
+<p>public  <strong>delete</strong> ()</p>
 
-Removes a job from the server entirely
+<p>Removes a job from the server entirely</p>
 
-public **release** ([*mixed* $priority], [*mixed* $delay])
+<p>public  <strong>release</strong> ([<em>mixed</em> $priority], [<em>mixed</em> $delay])</p>
 
-The release command puts a reserved job back into the ready queue (and marks its state as "ready") to be run by any client. It is normally used when the job fails because of a transitory error.
+<p>The release command puts a reserved job back into the ready queue (and marks
+its state as "ready") to be run by any client. It is normally used when the job
+fails because of a transitory error.</p>
 
-public **bury** ([*mixed* $priority])
+<p>public  <strong>bury</strong> ([<em>mixed</em> $priority])</p>
 
-The bury command puts a job into the "buried" state. Buried jobs are put into a FIFO linked list and will not be touched by the server again until a client kicks them with the "kick" command.
+<p>The bury command puts a job into the "buried" state. Buried jobs are put into
+a FIFO linked list and will not be touched by the server again until a client
+kicks them with the "kick" command.</p>
 
-public **touch** ()
+<p>public  <strong>touch</strong> ()</p>
 
-The `touch` command allows a worker to request more time to work on a job. This is useful for jobs that potentially take a long time, but you still want the benefits of a TTR pulling a job away from an unresponsive worker. A worker may periodically tell the server that it's still alive and processing a job (e.g. it may do this on `DEADLINE_SOON`). The command postpones the auto release of a reserved job until TTR seconds from when the command is issued.
+<p>The <code>touch</code> command allows a worker to request more time to work on a job.
+This is useful for jobs that potentially take a long time, but you still
+want the benefits of a TTR pulling a job away from an unresponsive worker.
+A worker may periodically tell the server that it's still alive and processing
+a job (e.g. it may do this on <code>DEADLINE_SOON</code>). The command postpones the auto
+release of a reserved job until TTR seconds from when the command is issued.</p>
 
-public **kick** ()
+<p>public  <strong>kick</strong> ()</p>
 
-Move the job to the ready queue if it is delayed or buried.
+<p>Move the job to the ready queue if it is delayed or buried.</p>
 
-public **stats** ()
+<p>public  <strong>stats</strong> ()</p>
 
-Gives statistical information about the specified job if it exists.
+<p>Gives statistical information about the specified job if it exists.</p>
 
-public **__wakeup** ()
+<p>public  <strong>__wakeup</strong> ()</p>
 
-Checks if the job has been modified after unserializing the object
+<p>Checks if the job has been modified after unserializing the object</p>

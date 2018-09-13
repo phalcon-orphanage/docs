@@ -195,9 +195,9 @@ return new \Phalcon\Config([
         'libraryDir'     => APP_PATH . '/library/',
         'cacheDir'       => BASE_PATH . '/cache/',
 
-        // This allows the baseUri to be understand project paths that are not in the root directory
-        // of the webpspace.  This will break if the public/index.php entry point is moved or
-        // possibly if the web server rewrite rules are changed. This can also be set to a static path.
+        // Esto permite que la baseUri entienda las rutas del proyecto que no están en el 
+        // directorio raíz del espacio web.  Esto se romperá si se mueve el punto de entrada public/index.php o 
+        // posiblemente si se cambian las reglas de reescritura del servidor web. Esto también se puede establecer en una ruta estática.
         'baseUri'        => preg_replace('/public([\/\\\\])index.php$/', '', $_SERVER["PHP_SELF"]),
     ]
 ]);

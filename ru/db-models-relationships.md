@@ -1,9 +1,11 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Отношения модели</a> <ul>
+      <a href="#overview">Отношения модели</a> 
+      <ul>
         <li>
-          <a href="#relationships">Отношения между моделями</a> <ul>
+          <a href="#relationships">Отношения между моделями</a> 
+          <ul>
             <li>
               <a href="#unidirectional">Однонаправленные отношения</a>
             </li>
@@ -12,21 +14,31 @@
             </li>
             <li>
               <a href="#defining">Определение отношений</a>
+              <ul>
+                <li>
+                  <a href="#multiple-fields">Multiple field relationships</a>
+                </li>
+              </ul>
             </li>
             <li>
               <a href="#taking-advantage-of">Преимущества отношений</a>
             </li>
             <li>
-              <a href="#aliases">Синонимы отношений</a> <ul>
+              <a href="#aliases">Синонимы отношений</a> 
+              <ul>
                 <li>
                   <a href="#getters-vs-methods">Магические методы против явных</a>
                 </li>
               </ul>
             </li>
+            <li>
+              <a href="#conditionals">Conditionals</a>
+            </li>
           </ul>
         </li>
         <li>
-          <a href="#virtual-foreign-keys">Виртуальные внешние ключи</a> <ul>
+          <a href="#virtual-foreign-keys">Виртуальные внешние ключи</a> 
+          <ul>
             <li>
               <a href="#cascade-restrict-actions">Cascade/Restrict действия </a>
             </li>
@@ -36,7 +48,8 @@
           <a href="#storing-related-records">Связаное сохранение записей</a>
         </li>
         <li>
-          <a href="#operations-over-resultsets">Операции над набором результатов</a> <ul>
+          <a href="#operations-over-resultsets">Операции над набором результатов</a> 
+          <ul>
             <li>
               <a href="#updating-related-records">Обновление связанных записей</a>
             </li>
@@ -113,10 +126,10 @@ CREATE TABLE parts (
 );
 ```
 
-- The model `Robots` has many `RobotsParts`.
-- The model `Parts` has many `RobotsParts`.
-- The model `RobotsParts` belongs to both `Robots` and `Parts` models as a many-to-one relation.
-- The model `Robots` has a relation many-to-many to `Parts` through `RobotsParts`.
+* The model `Robots` has many `RobotsParts`.
+* The model `Parts` has many `RobotsParts`.
+* The model `RobotsParts` belongs to both `Robots` and `Parts` models as a many-to-one relation.
+* The model `Robots` has a relation many-to-many to `Parts` through `RobotsParts`.
 
 Check the EER diagram to understand better the relations:
 
@@ -229,6 +242,86 @@ class Robots extends Model
     }
 }
 ```
+
+<a name='multiple-fields'></a>
+
+#### Multiple field relationships
+
+There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public $id;
+
+    public $name;
+
+    public $type;
+}
+```
+
+and
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Parts extends Model
+{
+    public $id;
+
+    public $robotId;
+
+    public $robotType;
+
+    public $name;
+}
+```
+
+In the above we have a `Robots` model which has three properties. A unique `id`, a `name` and a `type` which defines what this robot is (mechnical, etc.); In the `Parts` model we also have a `name` for the part but also fields that tie the robot and its type with a specific part.
+
+Using the relationships options discussed earlier, binding one field between the two models will not return the results we need. For that we can use an array in our relationship:
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public $id;
+
+    public $name;
+
+    public $type;
+
+    public function initialize()
+    {
+        $this->hasOne(
+            ['id', 'type'],
+            Parts::class,
+            ['robotId', 'robotType'],
+            [
+                'reusable' => true, // cache related data
+                'alias'    => 'parts',
+            ]
+        );
+    }
+}
+```
+
+**NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
 
 <a name='taking-advantage-of'></a>
 
@@ -475,7 +568,7 @@ class RobotsSimilar extends Model
 }
 ```
 
-With the aliasing we can get the related records easily:
+With the aliasing we can get the related records easily. You can also use the `getRelated()` method to access the relationship using the alias name:
 
 ```php
 <?php
@@ -485,10 +578,12 @@ $robotsSimilar = RobotsSimilar::findFirst();
 // Returns the related record based on the column (robots_id)
 $robot = $robotsSimilar->getRobot();
 $robot = $robotsSimilar->robot;
+$robot = $robotsSimilar->getRelated('Robot');
 
 // Returns the related record based on the column (similar_robots_id)
 $similarRobot = $robotsSimilar->getSimilarRobot();
 $similarRobot = $robotsSimilar->similarRobot;
+$similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 ```
 
 <a name='getters-vs-methods'></a>
@@ -527,9 +622,103 @@ class Robots extends Model
 }
 ```
 
+<a name='conditionals'></a>
+
+## Conditionals
+
+You can also create relationships based on conditionals. When querying based on the relationship the condition will be automatically appended to the query:
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+// Companies have invoices issued to them (paid/unpaid)
+// Invoices model
+class Invoices extends Model
+{
+
+}
+
+// Companies model
+class Companies extends Model
+{
+    public function initialize()
+    {
+        // All invoices relationship
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias' => 'Invoices'
+            ]
+        );
+
+        // Paid invoices relationship
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesPaid',
+                'params'   => [
+                    'conditions' => "inv_status = 'paid'"
+                ]
+            ]
+        );
+
+        // Unpaid invoices relationship + bound parameters
+        $this->hasMany(
+            'id', 
+            'Invoices', 
+            'inv_id', 
+            [
+                'alias'    => 'InvoicesUnpaid',
+                'params'   => [
+                    'conditions' => "inv_status <> :status:",
+                    'bind' => ['status' => 'unpaid']
+                ]
+            ]
+        );
+    }
+}
+```
+
+Additionally, you can use the second parameter of `getRelated()` when accessing your relationship from your model object to further filter or order your relationship:
+
+```php
+<?php
+
+// Unpaid Invoices
+$company = Companies::findFirst(
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => ['id' => 1],
+    ]
+);
+
+$unpaidInvoices = $company->InvoicesUnpaid;
+$unpaidInvoices = $company->getInvoicesUnpaid();
+$unpaidInvoices = $company->getRelated('InvoicesUnpaid');
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    ['conditions' => "inv_status = 'paid'"]
+);
+
+// Also ordered
+$unpaidInvoices = $company->getRelated(
+    'Invoices', 
+    [
+        'conditions' => "inv_status = 'paid'",
+        'order'      => 'inv_created_date ASC',
+    ]
+);
+```
+
 <a name='virtual-foreign-keys'></a>
 
-## Виртуальные внешние ключи
+## Virtual Foreign Keys
 
 By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
 
@@ -670,7 +859,7 @@ The above code set up to delete all the referenced records (parts) if the master
 
 <a name='storing-related-records'></a>
 
-## Связаное сохранение записей
+## Storing Related Records
 
 Magic properties can be used to store a record and its related properties:
 
@@ -733,17 +922,37 @@ Saving the album and the artist at the same time implicitly makes use of a trans
 
 Note: Adding related entities by overloading the following methods is not possible:
 
-- `Phalcon\Mvc\Model::beforeSave()`
-- `Phalcon\Mvc\Model::beforeCreate()`
-- `Phalcon\Mvc\Model::beforeUpdate()`
+* `Phalcon\Mvc\Model::beforeSave()`
+* `Phalcon\Mvc\Model::beforeCreate()`
+* `Phalcon\Mvc\Model::beforeUpdate()`
 
 You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 
 <a name='operations-over-resultsets'></a>
 
-## Операции над набором результатов
+## Operations over Resultsets
 
-If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
+If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
+
+```php
+<?php
+
+/** @var RobotType $type */
+$type = $robots->getRelated('type');
+
+$type->name = 'Some other type';
+$result = $type->save();
+
+
+// Get the related robot type but only the `name` column
+$type = $robots->getRelated('type', ['columns' => 'name']);
+
+$type->name = 'Some other type';
+
+// This will fail because `$type` is not a complete object
+$result = $type->save();
+
+```
 
 <a name='updating-related-records'></a>
 
