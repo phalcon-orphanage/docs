@@ -1462,7 +1462,7 @@ Las instrucciones de `UPDATE` en SQL son creadas, por defecto, con todas las col
 
 En algunos casos esto podría mejorar el rendimiento al reducir el tráfico entre la aplicación y el servidor de base de datos, esto ayuda especialmente cuando la tabla tiene campos blob o text:
 
-**NOTE:** Enabling Dynamic updates implicitly enables record snapshots. See [Record Snapshots](#record-snapshots) for more information.
+**NOTA:** habilitando la actualización dinámica, implícitamente, habilita las instantáneas de los registros. Vea [Instantaneas de Registros](#record-snapshots) para más información.
 
 ```php
 <?php
@@ -1668,7 +1668,7 @@ array(0) {
 
 ## Apuntando a un esquema diferente
 
-If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
+Si un modelo está asignado a una tabla que está en un esquema/base de datos diferente del predeterminado. Puede utilizar el método `setSchema()` para definirlo:
 
 ```php
 <?php
