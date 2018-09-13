@@ -536,6 +536,7 @@ Los eventos disponibles en Phalcon son:
 | Model              | `notSave`                           |
 | Model              | `notSaved`                          |
 | Model              | `onValidationFails`                 |
+| Model              | `prepareSave`                       |
 | Models Manager     | `modelsManager:afterInitialize`     |
 | Router             | `router:beforeCheckRoutes`          |
 | Router             | `router:beforeCheckRoute`           |
