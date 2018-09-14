@@ -52,24 +52,24 @@ El componente `Phalcon\Filter` provee un conjunto de filtros y sanitizadores que
 
 Los siguientes filtros están incorporados en este componente:
 
-| Nombre    | Descripción                                                                                   |
-| --------- | --------------------------------------------------------------------------------------------- |
-| absint    | Casts the value as an integer and returns the absolute value of it.                           |
-| alphanum  | Quita todos los caracteres excepto [a-zA-Z0-9]                                                |
-| email     | Quita todos los caracteres excepto letras, números y `` !#$%&*+-/=?^_{\|}~@.[]` ``.      |
-| float     | Quita todos los caracteres excepto dígitos, puntos y los signos más y menos.                  |
-| float!    | Remove all characters except digits, dot, plus and minus sign and cast the result as a float. |
-| int       | Quita todos los caracteres excepto dígitos y los signos más y menos.                          |
-| int!      | Remove all characters except digits, plus and minus sign and cast the result as an integer.   |
-| lower     | Se aplica la función [strtolower](http://www.php.net/manual/en/function.strtolower.php)       |
-| string    | Elimina etiquetas y codifica entidades HTML, incluyendo comillas simples y dobles.            |
-| striptags | Se aplica la función [strip_tags](http://www.php.net/manual/en/function.strip-tags.php)       |
-| trim      | Se aplica la función [trim](http://www.php.net/manual/en/function.trim.php)                   |
-| upper     | Se aplica la función [strtoupper](http://www.php.net/manual/en/function.strtoupper.php)       |
+| Nombre    | Descripción                                                                                                          |
+| --------- | -------------------------------------------------------------------------------------------------------------------- |
+| absint    | Clasifica el valor como un número entero y devuelve el valor absoluto del mismo.                                     |
+| alphanum  | Quita todos los caracteres excepto [a-zA-Z0-9]                                                                       |
+| email     | Quita todos los caracteres excepto letras, números y `` !#$%&*+-/=?^_{\|}~@.[]` ``.                             |
+| float     | Quita todos los caracteres excepto dígitos, puntos y los signos más y menos.                                         |
+| float!    | Quite todos los caracteres excepto dígitos, puntos, signos positivo y negativo y convierte el resultado en un float. |
+| int       | Quita todos los caracteres excepto dígitos y los signos más y menos.                                                 |
+| int!      | Quite todos los caracteres excepto dígitos, signos positivo y negativo y convierte el resultado en un entero.        |
+| lower     | Se aplica la función [strtolower](http://www.php.net/manual/en/function.strtolower.php)                              |
+| string    | Elimina etiquetas y codifica entidades HTML, incluyendo comillas simples y dobles.                                   |
+| striptags | Se aplica la función [strip_tags](http://www.php.net/manual/en/function.strip-tags.php)                              |
+| trim      | Se aplica la función [trim](http://www.php.net/manual/en/function.trim.php)                                          |
+| upper     | Se aplica la función [strtoupper](http://www.php.net/manual/en/function.strtoupper.php)                              |
 
-Please note that the component uses the [filter_var](https://secure.php.net/manual/en/function.filter-var.php) PHP function internally.
+Tenga en cuenta que el componente utiliza internamente la función PHP [filter_var](https://secure.php.net/manual/en/function.filter-var.php).
 
-Constants are available and can be used to define the type of filtering required:
+Las constantes están disponibles y pueden utilizarse para definir el tipo de filtrado necesario:
 
 ```php
 <?php
@@ -214,7 +214,7 @@ $filter->sanitize(
 
 ## Agregando filtros
 
-You can add your own filters to `Phalcon\Filter`. The filter function could be an anonymous function:
+Es posible agregar tus propios filtros en `Phalcon\Filter`. La función de filtro puede ser una función anónima:
 
 ```php
 <?php
@@ -266,7 +266,7 @@ $filteredIp = $filter->sanitize('127.0.0.1', 'ipv4');
 
 ## Filtrado y limpieza complejas
 
-PHP itself provides an excellent filter extension you can use. Check out its documentation: [Data Filtering at PHP Documentation](http://www.php.net/manual/en/book.filter.php)
+PHP ya provee una excelente extensión de filtros. Puedes revisar la documentación: [Filtrado de datos en la documentación de PHP](http://www.php.net/manual/en/book.filter.php)
 
 <a name='custom'></a>
 
