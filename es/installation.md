@@ -118,11 +118,41 @@ Nuestro sitio web y blog (así como otros sitios) están alojados en una VM de A
 
 ## Software
 
-- PHP >= 5.5
+- PSR extension
+- PHP >= 7.0
 
-<h5 class='alert alert-danger'>Siempre deberias utilizar la última versión de PHP y Phalcon para evitar bugs, mejorar la seguridad y el rendimento. PHP 5.5 esterá obsoleto en el futuro cercano y el Phalcon 4 sólo soportará PHP 7 </h5>
+Phalcon 4.0 relies heavily on PSR in order to offer PSR compatibility in its classes. As a result the `php-psr` extension is required to be loaded before Phalcon.
 
-Phalcon necesita las siguientes extensiones para ser ejecutado (mínimo):
+Installing the PSR extension:
+
+```bash
+apt-get update -y
+apt-get install -y nano tree git gnupg gcc make re2c autoconf automake
+
+mkdir -p /tmp/psr-ext-setup
+cd /tmp/psr-ext-setup
+
+rm -rf /tmp/psr-ext-setup/php-psr
+git clone https://github.com/jbboehr/php-psr.git
+cd php-psr
+phpize
+./configure
+make
+make test
+make install
+rm -rf /var/lib/apt/lists/*
+```
+
+After this you need to load the `php-psr` module in your `php.ini` file before Phalcon.
+
+```ini
+extension=php-psr.so
+extension=phalcon.so
+```
+
+##### You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. Phalcon 4.0 only supports PHP 7.0 or greater {.alert.alert-warning}
+
+Phalcon needs the following extensions to run (minimal):
 
 - `curl`
 - `gettext`
@@ -130,11 +160,12 @@ Phalcon necesita las siguientes extensiones para ser ejecutado (mínimo):
 - `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (Mac OS)
 - `json`
 - `mbstring`
+- `psr`
 - `pdo_*`
 - `fileinfo`
 - `openssl`
 
-### Opcional, dependiendo de las necesidades de su aplicación
+### Depending on the needs of your application
 
 - La extensión [PDO](http://php.net/manual/en/book.pdo.php), así como la extensión específica pertinente a su RDBMS ([MySQL](http://php.net/manual/en/ref.pdo-mysql.php),[PostgreSQL](http://php.net/manual/en/ref.pdo-pgsql.php),etc.)
 - La extensión [OpenSSL](http://php.net/manual/en/book.openssl.php)
@@ -397,7 +428,7 @@ Editar el archivo php.ini y luego añadir al final:
 extension=php_phalcon.dll
 ```
 
-Reiniciar el servidor web.
+Reinicie su servidor Web.
 
 <a name='installation-sources'></a>
 
@@ -525,7 +556,7 @@ make
 make install
 ```
 
-Ahora usted tendrá que añadir `extension=phalcon.so` a su archivo PHP ini y reiniciar su servidor web, para que la extensión sea cargada.
+Ahora usted tendrá que añadir `extension=phalcon.so` a su PHP ini y reiniciar su servidor web, para que la extensión sea cargada.
 
 <a name='installation-testing'></a>
 Puede crear un pequeño script en la raíz del servidor web que tenga lo siguiente:

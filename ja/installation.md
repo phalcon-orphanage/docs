@@ -118,11 +118,41 @@ Phalconは、高いパフォーマンスを提供しながら、可能な限り�
 
 ## ソフトウェア
 
-- PHP >= 5.5
+- PSR extension
+- PHP >= 7.0
 
-<h5 class='alert alert-danger'>バグ、セキュリティ強化、パフォーマンスの為に常に最新のPhalconとPHPのバージョンを使う様にしてください。 PHP 5.5 は近い将来にサポートされなくなり、Phalcon 4 では PHP 7 のみがサポートされるようになります。 </h5>
+Phalcon 4.0 relies heavily on PSR in order to offer PSR compatibility in its classes. As a result the `php-psr` extension is required to be loaded before Phalcon.
 
-Phalcon を実行するためには、(最低限) 以下の拡張モジュールが必要です:
+Installing the PSR extension:
+
+```bash
+apt-get update -y
+apt-get install -y nano tree git gnupg gcc make re2c autoconf automake
+
+mkdir -p /tmp/psr-ext-setup
+cd /tmp/psr-ext-setup
+
+rm -rf /tmp/psr-ext-setup/php-psr
+git clone https://github.com/jbboehr/php-psr.git
+cd php-psr
+phpize
+./configure
+make
+make test
+make install
+rm -rf /var/lib/apt/lists/*
+```
+
+After this you need to load the `php-psr` module in your `php.ini` file before Phalcon.
+
+```ini
+extension=php-psr.so
+extension=phalcon.so
+```
+
+##### You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. Phalcon 4.0 only supports PHP 7.0 or greater {.alert.alert-warning}
+
+Phalcon needs the following extensions to run (minimal):
 
 - `curl`
 - `gettext`
@@ -130,11 +160,12 @@ Phalcon を実行するためには、(最低限) 以下の拡張モジュール
 - `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (Mac OS)
 - `json`
 - `mbstring`
+- `psr`
 - `pdo_*`
 - `fileinfo`
 - `openssl`
 
-### アプリケーションのニーズに応じた追加の依存
+### Depending on the needs of your application
 
 - [PDO](http://php.net/manual/en/book.pdo.php) 拡張や、関連するRDBMSの拡張 ([MySQL](http://php.net/manual/en/ref.pdo-mysql.php)や[PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php)など)
 - [OpenSSL](http://php.net/manual/en/book.openssl.php) 拡張
@@ -374,7 +405,7 @@ Webサーバを再起動します。
 
 Windows で Phalcon を使用するためには、phalcon.dll をインストールする必要があります。 プラットフォームに応じて、複数の DLL ファイルをコンパイルしています。 Dll は、[ダウンロード](https://phalconphp.com/en/download/windows) のページで見つけることができます。
 
-アーキテクチャと同様に、PHP がインストールされているかを識別します。 間違った DLL をダウンロードした場合、Phalcon は動作しません。 この情報は `phpinfo()` に含まれています。 次の例では、DLLのNTS バージョンを必要としています:
+アーキテクチャと同様に、PHP がインストールされているかを識別します。 間違った DLL をダウンロードした場合、Phalcon は動作しません。 この情報は `phpinfo()` に含まれています。 In the example below, we will need the NTS version of the DLL:
 
 ![phpinfo](/images/content/phpinfo-api.png)
 

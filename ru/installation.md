@@ -118,11 +118,41 @@ Phalcon разработан таким образом, чтобы потреб�
 
 ## Программное обеспечение
 
-- PHP > = 5.5
+- PSR extension
+- PHP >= 7.0
 
-<h5 class='alert alert-danger'>Рекомендуется всегда использовать последние версии Phalcon и PHP из соображений стабильности, улучшения безопасности, а также производительности. Поддержка PHP 5.x будет прекращена в ближайшее время. Phalcon 4 будет поддерживать только PHP 7. </h5>
+Phalcon 4.0 relies heavily on PSR in order to offer PSR compatibility in its classes. As a result the `php-psr` extension is required to be loaded before Phalcon.
 
-Phalcon нуждается в следующем минимальном наборе расширений:
+Installing the PSR extension:
+
+```bash
+apt-get update -y
+apt-get install -y nano tree git gnupg gcc make re2c autoconf automake
+
+mkdir -p /tmp/psr-ext-setup
+cd /tmp/psr-ext-setup
+
+rm -rf /tmp/psr-ext-setup/php-psr
+git clone https://github.com/jbboehr/php-psr.git
+cd php-psr
+phpize
+./configure
+make
+make test
+make install
+rm -rf /var/lib/apt/lists/*
+```
+
+After this you need to load the `php-psr` module in your `php.ini` file before Phalcon.
+
+```ini
+extension=php-psr.so
+extension=phalcon.so
+```
+
+##### You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. Phalcon 4.0 only supports PHP 7.0 or greater {.alert.alert-warning}
+
+Phalcon needs the following extensions to run (minimal):
 
 - `curl`
 - `gettext`
@@ -130,11 +160,12 @@ Phalcon нуждается в следующем минимальном набо
 - `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (Mac OS)
 - `json`
 - `mbstring`
+- `psr`
 - `pdo_*`
 - `fileinfo`
 - `openssl`
 
-### Дополнительно, в зависимости от потребностей вашего приложения
+### Depending on the needs of your application
 
 - Расширение [PDO](http://php.net/manual/en/book.pdo.php), а также расширение для работы с соответствующей СУБД ([MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) и т.д.)
 - Расширение [OpenSSL](http://php.net/manual/en/book.openssl.php)
