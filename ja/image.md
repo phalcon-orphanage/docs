@@ -1,7 +1,7 @@
 <div class="article-menu">
     <ul>
         <li>
-            <a href="#overview">Images</a>
+            <a href="#overview">画像</a>
             <ul>
                 <li>
                     <a href="#adapters">Adapters</a>
