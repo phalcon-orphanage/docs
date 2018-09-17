@@ -266,7 +266,7 @@ Un segundo archivo `.htaccess` se encuentra en el directorio `public/`, este ree
 </IfModule>
 ```
 
-For users that are using the Persian letter 'م' (meem) in uri parameters, there is an issue with `mod_rewrite`. To allow the matching to work as it does with English characters, you will need to change your `.htaccess` file:
+Para los usuarios que usan la letra persa 'م' (meem) en los parámetros uri, existe un problema con `mod_rewrite`. Para permitir que la coincidencia funcione como lo hace con los caracteres en inglés, deberá cambiar su archivo `.htaccess`:
 
 ```apacheconfig
 # test/public/.htaccess
@@ -279,7 +279,7 @@ For users that are using the Persian letter 'م' (meem) in uri parameters, there
 </IfModule>
 ```
 
-If your uri contains characters other than English, you might need to resort to the above change to allow `mod_rewrite` to accurately match your route.
+Si su uri contiene caracteres distintos al inglés, puede que necesite recurrir al cambio anterior para permitir que `mod_rewrite` coincida exactamente con su ruta.
 
 <a name='apache-apache-configuration'></a>
 
@@ -334,7 +334,7 @@ Y esta segunda configuración le permite instalar una aplicación de Phalcon en 
 
 ## Cherokee
 
-[Cherokee](http://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
+[Cherokee](http://www.cherokee-project.com/) es un servidor web de alto desempeño. Es muy rápido, flexible y fácil de configurar.
 
 <a name='cherokee-phalcon-configuration'></a>
 
@@ -354,7 +354,7 @@ El servidor virtual recientemente añadido debe aparecer en la barra izquierda d
 
 ![](/images/content/webserver-cherokee-3.jpg)
 
-Add the `PHP Language` behavior using the wizard. This behavior allows you to run PHP applications:
+Agregar el comportamiento `PHP Language` utilizando el asistente. Este comportamiento le permite correr aplicaciones PHP:
 
 ![](/images/content/webserver-cherokee-1.jpg)
 
