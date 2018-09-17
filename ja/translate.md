@@ -1,16 +1,16 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Multi-lingual Support</a> 
+      <a href="#overview">多言語サポート</a> 
       <ul>
         <li>
-          <a href="#adapters">Adapters</a>
+          <a href="#adapters">アダプター</a>
         </li>
         <li>
           <a href="#usage">Component Usage</a>
         </li>
         <li>
-          <a href="#custom">Implementing your own adapters</a>
+          <a href="#custom">独自のアダプターを実装</a>
         </li>
       </ul>
     </li>
@@ -19,23 +19,23 @@
 
 <a name='overview'></a>
 
-# Multi-lingual Support
+# 多言語サポート
 
 The component `Phalcon\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
 <a name='adapters'></a>
 
-## Adapters
+## アダプター
 
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
-| Adapter                                    | Description                                                                             |
+| アダプター                                      | 説明                                                                                      |
 | ------------------------------------------ | --------------------------------------------------------------------------------------- |
 | `Phalcon\Translate\Adapter\NativeArray` | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 
 <a name='adapters-factory'></a>
 
-### Factory
+### ファクトリー
 
 Loads Translate Adapter class using `adapter` option
 
@@ -221,7 +221,7 @@ or in a view directly
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## 独自のアダプターを実装
 
 The `Phalcon\Translate\AdapterInterface` interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
