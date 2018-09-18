@@ -1,115 +1,118 @@
-# Class **Phalcon\\Di\\FactoryDefault**
+<h1>Class <strong>Phalcon\\Di\\FactoryDefault</strong></h1>
 
-*extends* class [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p><em>extends</em> class <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-*implements* [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php), [Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface)
+<p><em>implements</em> <a href="http://php.net/manual/en/class.arrayaccess.php">ArrayAccess</a>, <a href="/[[language]]/[[version]]/api/Phalcon_DiInterface">Phalcon\DiInterface</a></p>
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/di/factorydefault.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<p><a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/di/factorydefault.zep" class="btn btn-default btn-sm" mark="crwd-mark">Source on GitHub</a></p>
 
-This is a variant of the standard Phalcon\\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually providing a full stack framework
+<p>This is a variant of the standard Phalcon\\Di. By default it automatically
+registers all the services provided by the framework. Thanks to this, the developer does not need
+to register each service individually providing a full stack framework</p>
 
-## Methods
+<h2>Methods</h2>
 
-public **__construct** ()
+<p>public  <strong>__construct</strong> ()</p>
 
-Phalcon\\Di\\FactoryDefault constructor
+<p>Phalcon\\Di\\FactoryDefault constructor</p>
 
-public **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>setInternalEventsManager</strong> (<a href="/[[language]]/[[version]]/api/Phalcon_Events_ManagerInterface">Phalcon\Events\ManagerInterface</a> $eventsManager) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Sets the internal event manager
+<p>Sets the internal event manager</p>
 
-public **getInternalEventsManager** () inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>getInternalEventsManager</strong> () inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Returns the internal event manager
+<p>Returns the internal event manager</p>
 
-public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>set</strong> (<em>mixed</em> $name, <em>mixed</em> $definition, [<em>mixed</em> $shared]) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Registers a service in the services container
+<p>Registers a service in the services container</p>
 
-public **setShared** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>setShared</strong> (<em>mixed</em> $name, <em>mixed</em> $definition) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Registers an "always shared" service in the services container
+<p>Registers an "always shared" service in the services container</p>
 
-public **remove** (*mixed* $name) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>remove</strong> (<em>mixed</em> $name) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Removes a service in the services container It also removes any shared instance created for the service
+<p>Removes a service in the services container
+It also removes any shared instance created for the service</p>
 
-public **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>attempt</strong> (<em>mixed</em> $name, <em>mixed</em> $definition, [<em>mixed</em> $shared]) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+<p>Attempts to register a service in the services container
+Only is successful if a service hasn't been registered previously
+with the same name</p>
 
-public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/[[language]]/[[version]]/api/Phalcon_Di_ServiceInterface) $rawDefinition) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>setRaw</strong> (<em>mixed</em> $name, <a href="/[[language]]/[[version]]/api/Phalcon_Di_ServiceInterface">Phalcon\Di\ServiceInterface</a> $rawDefinition) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Sets a service using a raw Phalcon\\Di\\Service definition
+<p>Sets a service using a raw Phalcon\\Di\\Service definition</p>
 
-public **getRaw** (*mixed* $name) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>getRaw</strong> (<em>mixed</em> $name) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Returns a service definition without resolving
+<p>Returns a service definition without resolving</p>
 
-public **getService** (*mixed* $name) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>getService</strong> (<em>mixed</em> $name) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Returns a Phalcon\\Di\\Service instance
+<p>Returns a Phalcon\\Di\\Service instance</p>
 
-public **get** (*mixed* $name, [*mixed* $parameters]) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>get</strong> (<em>mixed</em> $name, [<em>mixed</em> $parameters]) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Resolves the service based on its configuration
+<p>Resolves the service based on its configuration</p>
 
-public *mixed* **getShared** (*string* $name, [*array* $parameters]) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public <em>mixed</em> <strong>getShared</strong> (<em>string</em> $name, [<em>array</em> $parameters]) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
+<p>Resolves a service, the resolved service is stored in the DI, subsequent
+requests for this service will return the same instance</p>
 
-public **has** (*mixed* $name) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>has</strong> (<em>mixed</em> $name) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Check whether the DI contains a service by a name
+<p>Check whether the DI contains a service by a name</p>
 
-public **wasFreshInstance** () inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>wasFreshInstance</strong> () inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Check whether the last service obtained via getShared produced a fresh instance or an existing one
+<p>Check whether the last service obtained via getShared produced a fresh instance or an existing one</p>
 
-public **getServices** () inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>getServices</strong> () inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Return the services registered in the DI
+<p>Return the services registered in the DI</p>
 
-public **offsetExists** (*mixed* $name) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>offsetExists</strong> (<em>mixed</em> $name) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Check if a service is registered using the array syntax
+<p>Check if a service is registered using the array syntax</p>
 
-public **offsetSet** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>offsetSet</strong> (<em>mixed</em> $name, <em>mixed</em> $definition) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Allows to register a shared service using the array syntax
+<p>Allows to register a shared service using the array syntax</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 $di["request"] = new \Phalcon\Http\Request();
 
-```
+</code></pre>
 
-public **offsetGet** (*mixed* $name) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>offsetGet</strong> (<em>mixed</em> $name) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Allows to obtain a shared service using the array syntax
+<p>Allows to obtain a shared service using the array syntax</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 var_dump($di["request"]);
 
-```
+</code></pre>
 
-public **offsetUnset** (*mixed* $name) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>offsetUnset</strong> (<em>mixed</em> $name) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Removes a service from the services container using the array syntax
+<p>Removes a service from the services container using the array syntax</p>
 
-public **__call** (*mixed* $method, [*mixed* $arguments]) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>__call</strong> (<em>mixed</em> $method, [<em>mixed</em> $arguments]) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Magic method to get or set services using setters/getters
+<p>Magic method to get or set services using setters/getters</p>
 
-public **register** ([Phalcon\Di\ServiceProviderInterface](/[[language]]/[[version]]/api/Phalcon_Di_ServiceProviderInterface) $provider) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>register</strong> (<a href="/[[language]]/[[version]]/api/Phalcon_Di_ServiceProviderInterface">Phalcon\Di\ServiceProviderInterface</a> $provider) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Registers a service provider.
+<p>Registers a service provider.</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 use Phalcon\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
@@ -118,48 +121,46 @@ class SomeServiceProvider implements ServiceProviderInterface
 {
     public function register(DiInterface $di)
     {
-        $di->setShared('service', function () {
+        $di-&gt;setShared('service', function () {
             // ...
         });
     }
 }
 
-```
+</code></pre>
 
-public static **setDefault** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public static  <strong>setDefault</strong> (<a href="/[[language]]/[[version]]/api/Phalcon_DiInterface">Phalcon\DiInterface</a> $dependencyInjector) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Set a default dependency injection container to be obtained into static methods
+<p>Set a default dependency injection container to be obtained into static methods</p>
 
-public static **getDefault** () inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public static  <strong>getDefault</strong> () inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Return the latest DI created
+<p>Return the latest DI created</p>
 
-public static **reset** () inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public static  <strong>reset</strong> () inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Resets the internal default DI
+<p>Resets the internal default DI</p>
 
-public **loadFromYaml** (*mixed* $filePath, [*array* $callbacks]) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>loadFromYaml</strong> (<em>mixed</em> $filePath, [<em>array</em> $callbacks]) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Loads services from a yaml file.
+<p>Loads services from a yaml file.</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
-$di->loadFromYaml(
+$di-&gt;loadFromYaml(
     "path/services.yaml",
     [
-        "!approot" => function ($value) {
+        "!approot" =&gt; function ($value) {
             return dirname(__DIR__) . $value;
         }
     ]
 );
 
-```
+</code></pre>
 
-And the services can be specified in the file as:
+<p>And the services can be specified in the file as:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 myComponent:
     className: \Acme\Components\MyComponent
@@ -175,45 +176,43 @@ group:
 user:
    className: \Acme\User
 
-```
+</code></pre>
 
-public **loadFromPhp** (*mixed* $filePath) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>public  <strong>loadFromPhp</strong> (<em>mixed</em> $filePath) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Loads services from a php config file.
+<p>Loads services from a php config file.</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
-$di->loadFromPhp("path/services.php");
+$di-&gt;loadFromPhp("path/services.php");
 
-```
+</code></pre>
 
-And the services can be specified in the file as:
+<p>And the services can be specified in the file as:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 return [
-     'myComponent' => [
-         'className' => '\Acme\Components\MyComponent',
-         'shared' => true,
+     'myComponent' =&gt; [
+         'className' =&gt; '\Acme\Components\MyComponent',
+         'shared' =&gt; true,
      ],
-     'group' => [
-         'className' => '\Acme\Group',
-         'arguments' => [
+     'group' =&gt; [
+         'className' =&gt; '\Acme\Group',
+         'arguments' =&gt; [
              [
-                 'type' => 'service',
-                 'service' => 'myComponent',
+                 'type' =&gt; 'service',
+                 'service' =&gt; 'myComponent',
              ],
          ],
      ],
-     'user' => [
-         'className' => '\Acme\User',
+     'user' =&gt; [
+         'className' =&gt; '\Acme\User',
      ],
 ];
 
-```
+</code></pre>
 
-protected **loadFromConfig** ([Phalcon\Config](/[[language]]/[[version]]/api/Phalcon_Config) $config) inherited from [Phalcon\Di](/[[language]]/[[version]]/api/Phalcon_Di)
+<p>protected  <strong>loadFromConfig</strong> (<a href="/[[language]]/[[version]]/api/Phalcon_Config">Phalcon\Config</a> $config) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_Di">Phalcon\Di</a></p>
 
-Loads services from a Config object.
+<p>Loads services from a Config object.</p>
