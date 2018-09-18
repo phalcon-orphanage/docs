@@ -118,11 +118,41 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 ## Software
 
-- PHP >= 5.5
+- PSR extension
+- PHP >= 7.0
 
-<h5 class='alert alert-danger'>You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 </h5>
+Phalcon 4.0 relies heavily on PSR in order to offer PSR compatibility in its classes. As a result the `php-psr` extension is required to be loaded before Phalcon.
 
-Phalcon need the following extensions to run (minimal):
+Installing the PSR extension:
+
+```bash
+apt-get update -y
+apt-get install -y nano tree git gnupg gcc make re2c autoconf automake
+
+mkdir -p /tmp/psr-ext-setup
+cd /tmp/psr-ext-setup
+
+rm -rf /tmp/psr-ext-setup/php-psr
+git clone https://github.com/jbboehr/php-psr.git
+cd php-psr
+phpize
+./configure
+make
+make test
+make install
+rm -rf /var/lib/apt/lists/*
+```
+
+After this you need to load the `php-psr` module in your `php.ini` file before Phalcon.
+
+```ini
+extension=php-psr.so
+extension=phalcon.so
+```
+
+##### You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. Phalcon 4.0 only supports PHP 7.0 or greater {.alert.alert-warning}
+
+Phalcon needs the following extensions to run (minimal):
 
 - `curl`
 - `gettext`
@@ -130,11 +160,12 @@ Phalcon need the following extensions to run (minimal):
 - `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (Mac OS)
 - `json`
 - `mbstring`
+- `psr`
 - `pdo_*`
 - `fileinfo`
 - `openssl`
 
-### Optional depending on the needs of your application
+### Depending on the needs of your application
 
 - [PDO](http://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) etc.)
 - [OpenSSL](http://php.net/manual/en/book.openssl.php) Extension

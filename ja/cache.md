@@ -1,12 +1,12 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Improving Performance with Cache</a> <ul>
+      <a href="#overview">キャッシュによるパフォーマンスの向上</a> <ul>
         <li>
-          <a href="#implementation">When to implement cache?</a>
+          <a href="#implementation">いつキャッシュを実装する？</a>
         </li>
         <li>
-          <a href="#caching-behavior">Caching Behavior</a>
+          <a href="#caching-behavior">キャッシュの振る舞い</a>
         </li>
         <li>
           <a href="#factory">Factory</a>
@@ -84,25 +84,25 @@
 
 <a name='overview'></a>
 
-# Improving Performance with Cache
+# キャッシュによるパフォーマンスの向上
 
-Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently used or already processed data. `Phalcon\Cache` is written in C, achieving higher performance and reducing the overhead when getting items from the backends. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
+Phalcon は、頻繁に使用される、またはすでに処理されたデータに、高速なアクセスを行う `Phalcon\Cache` クラスを提供しています。 `Phalcon\Cache` は C で実装され、バックエンドからアイテムを取得する際にオーバーヘッドを減らし、高いパフォーマンスで動作します。 このクラスでは、フロントエンドとバックエンドのコンポーネントの内部構造を使用します。 フロントエンドコンポーネントは、バックエンドコンポーネントクラスにストレージオプションを提供しながら入力ソースまたはインターフェイスとして機能します。
 
 <a name='implementation'></a>
 
-## When to implement cache?
+## いつキャッシュを実装する？
 
-Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
+このコンポーネントは非常に高速ですが、必要でないケースで実装すると、利用することで得られるメリットよりも、パフォーマンスの低下によるデメリットの方が大きくなる可能性があります。キャッシュを利用する前に、次のケースについて確認する事をお勧めします。
 
-- You are making complex calculations that every time return the same result (changing infrequently)
-- You are using a lot of helpers and the output generated is almost always the same
+- 毎回同じ結果 (変更頻度の低い) を返す複雑な計算をしている
+- 多くのヘルパを利用し、生成される出力がほとんど同じである
 - You are accessing database data constantly and these data rarely change
 
 <h5 class='alert alert-warning'><em>NOTE</em> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.</h5>
 
 <a name='caching-behavior'></a>
 
-## Caching Behavior
+## キャッシュの振る舞い
 
 The caching process is divided into 2 parts:
 
