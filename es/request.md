@@ -16,7 +16,7 @@
           <a href="#working-with-headers">Trabajando con Cabeceras</a>
         </li>
         <li>
-          <a href="#events">Events</a>
+          <a href="#events">Eventos</a>
         </li>
       </ul>
     </li>
@@ -195,15 +195,15 @@ if ($request->hasHeader('my-header')) {
 
 <a name='events'></a>
 
-## Events
+## Eventos
 
-When using HTTP authorization, the `Authorization` header has the following format:
+Cuando usamos la autorización HTTP, la cabecera `Authorization` tiene el siguiente formato:
 
 ```text
 Authorization: <type> <credentials>
 ```
 
-where `<type>` is an authentication type. A common type is `Basic`. Additional authentication types are described in [IANA registry of Authentication schemes](http://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml) and [Authentication for AWS servers (AWS4-HMAC-SHA256)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html). In 99.99% use cases the authentication type is:
+donde `<type>` es un tipo de autenticación. El tipo común es `Basic`. Los tipos adicionales de autenticación están en el [Registro IANA de esquemas de autenticación](http://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml) y [Autenticación para los servidores AWS (AWS4-HMAC-SHA256)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html). En el 99.99% de los casos los tipos de autenticación son:
 
 * `AWS4-HMAC-SHA256`
 * `Basic`
@@ -217,9 +217,9 @@ where `<type>` is an authentication type. A common type is `Basic`. Additional a
 * `SCRAM-SHA-256`
 * `vapid`
 
-You can use the `request:beforeAuthorizationResolve` and `request:afterAuthorizationResolve` events to perform additional operations before or after the authorization resolves. A custom authorization resolver is required.
+Se pueden utilizar los eventos `request:beforeAuthorizationResolve` y `request:afterAuthorizationResolve` para realizar operaciones adicionales antes o después de las resoluciones de autorización. Se requiere una resolución de autorizaciones personalizada.
 
-Example without using custom authorization resolver:
+Un ejemplo sin usar el solucionador de autorizaciones personalizado:
 
 ```php
 <?php
@@ -232,7 +232,7 @@ $request = new Request();
 print_r($request->getHeaders());
 ```
 
-Result:
+Resultado:
 
 ```bash
 Array
@@ -244,7 +244,7 @@ Type: Enigma
 Credentials: Secret
 ```
 
-Example using custom authorization resolver:
+Un ejemplo usando el solucionador de autorizaciones personalizado:
 
 ```php
 <?php
@@ -291,7 +291,7 @@ $request->setDI($di);
 print_r($request->getHeaders());
 ```
 
-Result:
+Resultado:
 
 ```bash
 Array

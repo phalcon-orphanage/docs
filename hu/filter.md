@@ -1,8 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Filtering and Sanitizing</a> 
-      <ul>
+      <a href="#overview">Filtering and Sanitizing</a> <ul>
         <li>
           <a href="#types">Types of Built-in Filters</a>
         </li>
@@ -53,22 +52,40 @@ The `Phalcon\Filter` component provides a set of commonly used filters and data 
 
 The following are the built-in filters provided by this component:
 
-| Name          | Description                                                                                                   |
-| ------------- | ------------------------------------------------------------------------------------------------------------- |
-| string        | Strip tags and encode HTML entities, including single and double quotes                                       |
-| email         | Remove all characters except letters, digits and ``!#$%&*+-/=?^_`{\|}~@.[]``                             |
-| int           | Remove all characters except digits, plus and minus sign                                                      |
-| int!          | Convert the value to an integer value using [intval](http://php.net/manual/en/function.intval.php) function   |
-| absint        | Gets the absolute value of a value that was converted to integer                                              |
-| float         | Remove all characters except digits, dot, plus and minus sign                                                 |
-| float!        | Convert the value to an float value using [floatval](http://php.net/manual/en/function.floatval.php) function |
-| alphanum      | Remove all characters except [a-zA-Z0-9]                                                                      |
-| striptags     | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function                       |
-| special_chars | Escape `'"<>&` and characters with ASCII value less than 32                                         |
-| trim          | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function                                   |
-| lower         | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function                       |
-| url           | Remove all characters except letters, digits and ``&#124;$`-_.+!*'(),{}[]<>#%";/?:@&=.^\\~``         |
-| upper         | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function                       |
+| Name      | Description                                                                                   |
+| --------- | --------------------------------------------------------------------------------------------- |
+| absint    | Casts the value as an integer and returns the absolute value of it.                           |
+| alphanum  | Remove all characters except [a-zA-Z0-9]                                                      |
+| email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.             |
+| float     | Remove all characters except digits, dot, plus and minus sign.                                |
+| float!    | Remove all characters except digits, dot, plus and minus sign and cast the result as a float. |
+| int       | Remove all characters except digits, plus and minus sign.                                     |
+| int!      | Remove all characters except digits, plus and minus sign and cast the result as an integer.   |
+| lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function       |
+| string    | Strip tags and encode HTML entities, including single and double quotes.                      |
+| striptags | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function       |
+| trim      | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function                   |
+| upper     | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function       |
+
+Please note that the component uses the [filter_var](https://secure.php.net/manual/en/function.filter-var.php) PHP function internally.
+
+Constants are available and can be used to define the type of filtering required:
+
+```php
+<?php
+const FILTER_ABSINT     = "absint";
+const FILTER_ALPHANUM   = "alphanum";
+const FILTER_EMAIL      = "email";
+const FILTER_FLOAT      = "float";
+const FILTER_FLOAT_CAST = "float!";
+const FILTER_INT        = "int";
+const FILTER_INT_CAST   = "int!";
+const FILTER_LOWER      = "lower";
+const FILTER_STRING     = "string";
+const FILTER_STRIPTAGS  = "striptags";
+const FILTER_TRIM       = "trim";
+const FILTER_UPPER      = "upper";
+```
 
 <a name='sanitizing'></a>
 

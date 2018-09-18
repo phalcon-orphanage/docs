@@ -16,7 +16,7 @@
               <a href="#defining">Definiendo las relaciones</a>
               <ul>
                 <li>
-                  <a href="#multiple-fields">Multiple field relationships</a>
+                  <a href="#multiple-fields">Múltiples relaciones de campo</a>
                 </li>
               </ul>
             </li>
@@ -245,9 +245,9 @@ class Robots extends Model
 
 <a name='multiple-fields'></a>
 
-#### Multiple field relationships
+#### Múltiples relaciones de campo
 
-There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
+Hay momentos donde las relaciones necesitan ser definidas en una combinación de campos y no sólo una. Considere el siguiente ejemplo:
 
 ```php
 <?php
@@ -266,7 +266,7 @@ class Robots extends Model
 }
 ```
 
-and
+y
 
 ```php
 <?php
@@ -287,9 +287,9 @@ class Parts extends Model
 }
 ```
 
-In the above we have a `Robots` model which has three properties. A unique `id`, a `name` and a `type` which defines what this robot is (mechnical, etc.); In the `Parts` model we also have a `name` for the part but also fields that tie the robot and its type with a specific part.
+En lo anterior, tenemos un modelo de `Robots` que tiene tres propiedades. Un `id` único, un `name` y un `type` que define qué tipo de robot es (mecánico, etc.); En el modelo `Parts` también tenemos un `name` para la parte del robot pero también campos que relacionan el robot y su tipo, con una parte específica.
 
-Using the relationships options discussed earlier, binding one field between the two models will not return the results we need. For that we can use an array in our relationship:
+Usando las opciones de relaciones discutidas anteriormente, vincular un campo entre los dos modelos no devolverá los resultados que necesitamos. Para ello podemos utilizar un arreglo en nuestra relación:
 
 ```php
 <?php
@@ -321,7 +321,7 @@ class Robots extends Model
 }
 ```
 
-**NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
+**NOTA** Las asignaciones de campo en la relación son una a una, es decir, el primer campo de la matriz del modelo fuente coincide con el primer campo de la matriz objetivo, etc. La cantidad de campos debe ser idéntica tanto en el modelo de origen como el de destino.
 
 <a name='taking-advantage-of'></a>
 
@@ -447,7 +447,7 @@ $robot = Robots::findFirst(
 );
 ```
 
-The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
+El prefijo `get` se usa para los registros relacionados con `find()` o `findFirst()`. Dependiendo del tipo de relación, se utilizará `find()` o `findFirst()`:
 
 | Tipo             | Descripción                                                                                                                             | Método implícito    |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
@@ -564,7 +564,7 @@ class RobotsSimilar extends Model
 }
 ```
 
-With the aliasing we can get the related records easily. You can also use the `getRelated()` method to access the relationship using the alias name:
+Con los alias podemos conseguir fácilmente los registros relacionados. Puede también utilizar el método `getRelated()` para acceder a la relación utilizando el nombre del alias:
 
 ```php
 <?php
@@ -584,7 +584,7 @@ $similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 
 <a name='getters-vs-methods'></a>
 
-#### Magic Getters vs. Explicit methods
+#### Getters mágicos vs. Métodos explícitos
 
 La mayoría de los IDEs y editores con capacidades de auto-completado no pueden deducir los tipos correctos al utilizar getters mágicos (métodos y propiedades). Para superar eso, puede utilizar un docblock en la clase que especifica qué acciones mágicas están disponibles, ayudando al IDE para producir un mejor autocompletado:
 
@@ -622,7 +622,7 @@ class Robots extends Model
 
 ## Condicionales
 
-You can also create relationships based on conditionals. When querying based on the relationship the condition will be automatically appended to the query:
+Puede crear relaciones basadas en condiciones. Al consultar una relación, la condición se agregará automáticamente a la consulta:
 
 ```php
 <?php
@@ -928,7 +928,7 @@ Es necesario sobrecargar el método `Phalcon\Mvc\Model::save()` del modelo para 
 
 ## Operaciones sobre conjuntos de resultados
 
-If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
+Si un conjunto de resultados se compone de objetos completos, las operaciones del modelo, se pueden realizar en esos objetos. Por ejemplo:
 
 ```php
 <?php
@@ -940,12 +940,12 @@ $type->name = 'Some other type';
 $result = $type->save();
 
 
-// Get the related robot type but only the `name` column
+// Obtener el tipo de robot relacionado pero solo la columna `name`
 $type = $robots->getRelated('type', ['columns' => 'name']);
 
 $type->name = 'Some other type';
 
-// This will fail because `$type` is not a complete object
+// Esto fallará porque `$type` no es un objecto completo
 $result = $type->save();
 
 ```

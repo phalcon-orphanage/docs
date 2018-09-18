@@ -160,7 +160,7 @@ class Robots extends Model
 }
 ```
 
-Las anotaciones deben colocarse en las propiedades que se asignan a columnas en la fuente asignada. Properties without the `@Column` annotation are handled as simple class attributes.
+Las anotaciones deben colocarse en las propiedades que se asignan a columnas en la fuente asignada. Las propiedades sin la anotación `@Column` se tratan como atributos simples de la clase.
 
 Son soportadas las siguientes anotaciones:
 
