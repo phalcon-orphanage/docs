@@ -56,7 +56,7 @@
               <a href="#adapters-backend-factory">Factory</a>
             </li>
             <li>
-              <a href="#adapters-backend-custom">Implementing your own Backend adapters</a>
+              <a href="#adapters-backend-custom">独自のバックエンドアダプターを実装</a>
             </li>
             <li>
               <a href="#adapters-backend-file">File Backend Options</a>
@@ -598,7 +598,7 @@ $backendCache = Factory::load($options);
 
 <a name='adapters-backend-custom'></a>
 
-### Implementing your own Backend adapters
+### 独自のバックエンドアダプターを実装
 
 The `Phalcon\Cache\BackendInterface` interface must be implemented in order to create your own backend adapters or extend the existing ones.
 
