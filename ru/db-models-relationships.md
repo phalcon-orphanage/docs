@@ -622,7 +622,7 @@ $similarRobot = $robotsSimilar->similarRobot;
 
 <a name='getters-vs-methods'></a>
 
-#### Магические методы против явных
+#### Magic Getters vs. Explicit methods
 
 Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). To overcome that, you can use a class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
 

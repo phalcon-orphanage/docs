@@ -1,21 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Security</a> <ul>
+      <a href="#overview">セキュリティ</a> <ul>
         <li>
-          <a href="#hashing">Password Hashing</a>
+          <a href="#hashing">パスワードのハッシュ</a>
         </li>
         <li>
-          <a href="#csrf">Cross-Site Request Forgery (CSRF) protection</a>
+          <a href="#csrf">Cross-Site Request Forgery (CSRF) の保護</a>
         </li>
         <li>
-          <a href="#setup">Setting up the component</a>
+          <a href="#setup">コンポーネントの設定</a>
         </li>
         <li>
-          <a href="#random">Random</a>
+          <a href="#random">乱数</a>
         </li>
         <li>
-          <a href="#resources">External Resources</a>
+          <a href="#resources">外部リソース</a>
         </li>
       </ul>
     </li>
@@ -24,13 +24,13 @@
 
 <a name='overview'></a>
 
-# Security
+# セキュリティ
 
 This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 
 <a name='hashing'></a>
 
-## Password Hashing
+## パスワードのハッシュ
 
 Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods '[md5](http://php.net/manual/en/function.md5.php)' and '[sha1](http://php.net/manual/en/function.sha1.php)'. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](http://en.wikipedia.org/wiki/Rainbow_table).
 
@@ -101,7 +101,7 @@ The salt is generated using pseudo-random bytes with the PHP's function [openssl
 
 <a name='csrf'></a>
 
-## Cross-Site Request Forgery (CSRF) protection
+## Cross-Site Request Forgery (CSRF) の保護
 
 This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
 
@@ -159,7 +159,7 @@ Adding a [captcha](http://www.google.com/recaptcha) to the form is also recommen
 
 <a name='setup'></a>
 
-## Setting up the component
+## コンポーネントの設定
 
 This component is automatically registered in the services container as `security`, you can re-register it to setup its options:
 
@@ -184,7 +184,7 @@ $di->set(
 
 <a name='random'></a>
 
-## Random
+## 乱数
 
 The `Phalcon\Security\Random` class makes it really easy to generate lots of types of random data.
 
@@ -217,6 +217,6 @@ $number     = $random->number($n);
 
 <a name='resources'></a>
 
-## External Resources
+## 外部リソース
 
 - [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [Github](https://github.com/phalcon/vokuro)
