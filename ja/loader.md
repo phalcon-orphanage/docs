@@ -1,24 +1,24 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Class Autoloader</a> <ul>
+      <a href="#overview">クラスオートローダ</a> <ul>
         <li>
           <a href="#security">Security Layer</a>
         </li>
         <li>
-          <a href="#registering-namespaces">Registering Namespaces</a>
+          <a href="#registering-namespaces">名前空間の登録</a>
         </li>
         <li>
-          <a href="#registering-directories">Registering Directories</a>
+          <a href="#registering-directories">ディレクトリの登録</a>
         </li>
         <li>
-          <a href="#registering-classes">Registering Classes</a>
+          <a href="#registering-classes">クラスの登録</a>
         </li>
         <li>
-          <a href="#registering-files">Registering Files</a>
+          <a href="#registering-files">ファイルの登録</a>
         </li>
         <li>
-          <a href="#registering-file-extensions">Additional file extensions</a>
+          <a href="#registering-file-extensions">追加のファイル拡張子</a>
         </li>
         <li>
           <a href="#modifying-current-strategies">Modifying current strategies</a>
@@ -27,7 +27,7 @@
           <a href="#events">Autoloading Events</a>
         </li>
         <li>
-          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#troubleshooting">トラブルシューティング</a>
         </li>
       </ul>
     </li>
@@ -36,13 +36,13 @@
 
 <a name='overview'></a>
 
-# Class Autoloader
+# クラスオートローダ
 
-`Phalcon\Loader` allows you to load project classes automatically, based on some predefined rules. Since this component is written in C, it provides the lowest overhead in reading and interpreting external PHP files.
+`Phalcon\Loader` により、定義済みのルールに基づいて、自動的にプロジェクトのクラスを読み込むことができます。 Since this component is written in C, it provides the lowest overhead in reading and interpreting external PHP files.
 
-The behavior of this component is based on the PHP's capability of [autoloading classes](http://www.php.net/manual/en/language.oop5.autoload.php). If a class that does not yet exist is used in any part of the code, a special handler will try to load it. `Phalcon\Loader` serves as the special handler for this operation. By loading classes on a need-to-load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called [lazy initialization](http://en.wikipedia.org/wiki/Lazy_initialization).
+このコンポーネントの動作は、[クラスのオートローディング](http://www.php.net/manual/en/language.oop5.autoload.php) に関する PHP の機能に基づいています。 まだ存在しないクラスがコードの任意の部分で利用される場合、特別なハンドラーがそれをロードしようとします。 `Phalcon\Loader` はこの操作に対して、特別なハンドラーとして機能します。 By loading classes on a need-to-load basis, the overall performance is increased since the only file reads that occur are for the files needed. この手法は、[lazy initialization](http://en.wikipedia.org/wiki/Lazy_initialization) と呼ばれます。
 
-With this component you can load files from other projects or vendors, this autoloader is [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) and [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md) compliant.
+このコンポーネントによって他のプロジェクトやベンダーからファイルをロードする事ができます。このオートローダーは [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) と [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md) 準拠です。
 
 `Phalcon\Loader` offers four options to autoload classes. You can use them one at a time or combine them.
 
