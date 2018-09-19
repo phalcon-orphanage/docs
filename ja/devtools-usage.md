@@ -1,21 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Phalcon Developer Tools</a> <ul>
+      <a href="#overview">Phalconデベロッパーツール</a> <ul>
         <li>
-          <a href="#download">Download</a>
+          <a href="#download">ダウンロード</a>
         </li>
         <li>
-          <a href="#installation">Installation</a>
+          <a href="#installation">インストール</a>
         </li>
         <li>
-          <a href="#available-commands">Available Commands</a>
+          <a href="#available-commands">利用可能なコマンド</a>
         </li>
         <li>
-          <a href="#project-skeleton">Generating a Project Skeleton</a>
+          <a href="#project-skeleton">プロジェクトスケルトンの生成</a>
         </li>
         <li>
-          <a href="#generating-controllers">Generating Controllers</a>
+          <a href="#generating-controllers">コントローラーの生成</a>
         </li>
         <li>
           <a href="#database-settings">Preparing Database Settings</a>
@@ -42,21 +42,21 @@
 
 <a name='overview'></a>
 
-# Phalcon Developer Tools
+# Phalconデベロッパーツール
 
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
-<h5 class='alert alert-danger'>If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information. </h5>
+<h5 class='alert alert-danger'>コンソールの代わりにウェブバージョンを使用したい場合は、この <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">ブログの記事</a> に詳細を記載しています。 </h5>
 
 <a name='download'></a>
 
-## Download
+## ダウンロード
 
-You can download or clone a cross platform package containing the developer tools from [Github](https://github.com/phalcon/phalcon-devtools).
+[Github](https://github.com/phalcon/phalcon-devtools) から、開発ツールが含まれているクロスプラットフォームのパッケージをダウンロードしたり、cloneすることができます
 
 <a name='installation'></a>
 
-## Installation
+## インストール
 
 These are detailed instructions on how to install the developer tools on different platforms:
 
@@ -64,7 +64,7 @@ These are detailed instructions on how to install the developer tools on differe
 
 <a name='available-commands'></a>
 
-## Available Commands
+## 利用可能なコマンド
 
 You can get a list of available commands in Phalcon tools by typing: :code:`phalcon commands`
 
@@ -173,17 +173,17 @@ Change the database section in your config.ini file:
 
 ```ini
 [database]
-adapter  = Mysql
-host     = "127.0.0.1"
+adapter = Mysql
+host    = "127.0.0.1"
 username = "root"
 password = "secret"
 dbname   = "store_db"
 
 [phalcon]
 controllersDir = "../app/controllers/"
-modelsDir      = "../app/models/"
-viewsDir       = "../app/views/"
-baseUri        = "/store/"
+modelsDir    = "../app/models/"
+viewsDir      = "../app/views/"
+baseUri       = "/store/"
 ```
 
 <a name='generating-models'></a>
