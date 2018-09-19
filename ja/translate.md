@@ -1,19 +1,19 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Multi-lingual Support</a> <ul>
+      <a href="#overview">多言語サポート</a> <ul>
         <li>
-          <a href="#adapters">Adapters</a> <ul>
+          <a href="#adapters">アダプター</a> <ul>
             <li>
-              <a href="#adapters-factory">Factory</a>
+              <a href="#adapters-factory">ファクトリー</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#usage">Component Usage</a>
+          <a href="#usage">コンポーネントの使い方</a>
         </li>
         <li>
-          <a href="#custom">Implementing your own adapters</a>
+          <a href="#custom">独自のアダプターを実装</a>
         </li>
       </ul>
     </li>
@@ -22,25 +22,25 @@
 
 <a name='overview'></a>
 
-# Multi-lingual Support
+# 多言語サポート
 
-The component `Phalcon\\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
+`Phalcon\\Translate` コンポーネントは多言語アプリケーションの作成に役立ちます。 Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
 <a name='adapters'></a>
 
-## Adapters
+## アダプター
 
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
-| Adapter                                    | Description                                                                             |
+| アダプター                                      | 説明                                                                                      |
 | ------------------------------------------ | --------------------------------------------------------------------------------------- |
 | `Phalcon\Translate\Adapter\NativeArray` | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 
 <a name='adapters-factory'></a>
 
-### Factory
+### ファクトリー
 
-Loads Translate Adapter class using `adapter` option
+`adaper`オプションを使用してTranslate Adapterクラスをロードします
 
 ```php
 <?php
@@ -60,9 +60,9 @@ $translate = Factory::load($options);
 
 <a name='usage'></a>
 
-## Component Usage
+## コンポーネントの使い方
 
-Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:
+翻訳文字列はファイルに格納されます。 これらのファイルの構造は、使用しているアダプタによって変化する可能性があります。 Phalcon はあなたの翻訳文字列を組織化する自由を与えます。 単純な構造は以下のようになりえます。
 
 ```bash
 app/messages/en.php
@@ -111,21 +111,21 @@ class UserController extends Controller
 {
     protected function getTranslation()
     {
-        // Ask browser what is the best language
+        // どの言語がベストかブラウザに尋ねる
         $language = $this->request->getBestLanguage();
 
         $translationFile = 'app/messages/' . $language . '.php';
 
-        // Check if we have a translation file for that lang
+        // そのベスト言語の翻訳ファイルがあるかを確認する
         if (file_exists($translationFile)) {
             require $translationFile;
         } else {
-            // Fallback to some default
+            // なかった場合デフォルト言語にフォールバック
             require 'app/messages/en.php';
         }
 
-        // Return a translation object $messages comes from the require
-        // statement above
+        // 上の要求したステートメントからの翻訳オブジェクト $messages を
+        // 返す
         return new NativeArray(
             [
                 'content' => $messages,
@@ -162,7 +162,7 @@ Some applications implement multilingual on the URL such as `http://www.mozilla.
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## 独自のアダプターを実装
 
 The `Phalcon\Translate\AdapterInterface` interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
@@ -208,4 +208,4 @@ class MyTranslateAdapter implements AdapterInterface
 }
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter)
+[Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter) には、このコンポーネントを利用するための複数のアダプターが用意されています。

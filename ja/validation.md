@@ -438,7 +438,7 @@ class LoginValidation extends Validation
 
 ## バリデーションのキャンセル
 
-By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
+デフォルトでは、フィールドに割り当てられたすべてのバリデータは、いずれかが失敗したかどうかに関係なくテストされます。 この動作を変更するには、バリデーションコンポーネントが処理を中止する可能性のあるバリデーションを指定します:
 
 ```php
 <?php
@@ -482,7 +482,7 @@ $validation->add(
 
 最初のバリデータにはtrueの値を持つ`cancelOnFail`オプションがあります。したがって、バリデータが失敗した場合、チェーン内の残りのバリデータは実行されません。
 
-If you are creating custom validators you can dynamically stop the validation chain by setting the `cancelOnFail` option:
+カスタムバリデータを作成している場合は、`cancelOnFail`オプションを設定することでバリデーションチェーンを動的に停止できます。
 
 ```php
 <?php
@@ -516,7 +516,7 @@ class MyValidator extends Validator
 
 ## 空の値のバリデーションを避ける
 
-You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
+空の値が渡された場合に検証が実行されないように、すべてのビルトインバリデータにオプション`allowEmpty`を渡すことができます。
 
 ```php
 <?php
@@ -542,7 +542,7 @@ $validation->add(
 
 ## 再起的バリデーション
 
-You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
+`afterValidation()`メソッドを使用して、別のインスタンス内でValidationインスタンスを実行することもできます。 この例では、`CompanyValidation`インスタンスをバリデーションすると、`PhoneValidation`インスタンスもチェックされます。
 
 ```php
 <?php

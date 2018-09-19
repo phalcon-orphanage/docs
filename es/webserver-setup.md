@@ -261,7 +261,7 @@ Un segundo archivo `.htaccess` se encuentra en el directorio `public/`, este ree
 </IfModule>
 ```
 
-For users that are using the Persian letter 'م' (meem) in uri parameters, there is an issue with `mod_rewrite`. To allow the matching to work as it does with English characters, you will need to change your `.htaccess` file:
+Para los usuarios que usan la letra persa 'م' (meem) en los parámetros uri, existe un problema con `mod_rewrite`. Para permitir que la coincidencia funcione como lo hace con los caracteres en inglés, deberá cambiar su archivo `.htaccess`:
 
 ```apacheconfig
 # test/public/.htaccess
@@ -274,7 +274,7 @@ For users that are using the Persian letter 'م' (meem) in uri parameters, there
 </IfModule>
 ```
 
-If your uri contains characters other than English, you might need to resort to the above change to allow `mod_rewrite` to accurately match your route.
+Si su uri contiene caracteres distintos al inglés, puede que necesite recurrir al cambio anterior para permitir que `mod_rewrite` coincida exactamente con su ruta.
 
 <a name='apache-apache-configuration'></a>
 
