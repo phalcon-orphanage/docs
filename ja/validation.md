@@ -227,7 +227,7 @@ class IpValidator extends Validator
 
 ## Callbackバリデーター
 
-`Phalcon\Validation\Validator\Callback`を使う事で、ブール値を必ず返すようなカスタム関数や、同じ値かどうかを検証するのに使える新しいバリデータークラスを実行する事ができます。 `true`を返すことでバリデーションが成功し、`false`を返すとバリデーションが失敗したことを意味します。 When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). 例を示します:
+`Phalcon\Validation\Validator\Callback`を使う事で、ブール値を必ず返すようなカスタム関数や、同じ値かどうかを検証するのに使える新しいバリデータークラスを実行する事ができます。 `true`を返すことでバリデーションが成功し、`false`を返すとバリデーションが失敗したことを意味します。 このバリデータを実行するときにPhalconはそれが何であるかに応じてデータを渡します。エンティティ（例えば、モデル、`stdClass`など）であればエンティティが渡され、そうでなければデータ（例えば`$_POST`のようなArray）が渡されます。 例を示します:
 
 ```php
 <?php
@@ -291,9 +291,9 @@ $messages = $validation->validate(['amount' => 10]); // will return message from
 
 ## バリデーションメッセージ
 
-`Phalcon\Validation` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
+`Phalcon\Validation`は、バリデーション中に生成されたメッセージを出力または格納する、柔軟な方法を提供するメッセージングサブシステムを持っています。
 
-Each message consists of an instance of the class `Phalcon\Validation\Message`. The set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information like the attribute that generated the message or the message type:
+各メッセージは、`Phalcon\Validation\Message` クラスのインスタンスで構成されます。 `getMessages()`メソッドで、生成されたメッセージのセットが取得できます。 各メッセージは、メッセージを生成した属性やメッセージの種類のような拡張情報を提供します。
 
 ```php
 <?php
@@ -309,7 +309,7 @@ if (count($messages)) {
 }
 ```
 
-You can pass a `message` parameter to change/translate the default message in each validator, even it's possible to use the wildcard `:field` in the message to be replaced by the label of the field:
+`message`パラメータを渡すと、各バリデータのデフォルトメッセージを変更/変換できます。それから、メッセージのワイルドカード`:field`をフィールドのラベルに置き換えることもできます:
 
 ```php
 <?php
@@ -326,7 +326,7 @@ $validation->add(
 );
 ```
 
-By default, the `getMessages()` method returns all the messages generated during validation. You can filter messages for a specific field using the `filter()` method:
+デフォルトでは、`getMessages()`メソッドは、バリデーション中に生成されたすべてのメッセージを返します。`filter()`メソッドを使用して、特定のフィールドのメッセージをフィルタリングできます。
 
 ```php
 <?php
@@ -347,7 +347,7 @@ if (count($messages)) {
 
 ## データのフィルタリング
 
-Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
+バリデーションの前にデータをフィルタリングして、悪意のあるデータまたは不正確なデータが処理されないようにできます。
 
 ```php
 <?php
@@ -379,13 +379,13 @@ $validation->setFilters('name', 'trim');
 $validation->setFilters('email', 'trim');
 ```
 
-Filtering and sanitizing is performed using the [filter](/[[language]]/[[version]]/filter) component. You can add more filters to this component or use the built-in ones.
+フィルタとサニタイズは、[filter](/[[language]]/[[version]]/filter)コンポーネントを使用して実行されます。 このコンポーネントにフィルタを追加したり、組み込みのフィルタを使用することができます。
 
 <a name='events'></a>
 
 ## バリデーションイベント
 
-When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns `false` the validation is automatically cancelled:
+バリデーションがクラスで構成されている場合、`beforeValidation()`メソッドおよび`afterValidation()`メソッドを実装して、追加のチェック、フィルタ、クリーンアップなどを実行できます。 `beforeValidation()`メソッドが`false`を返す場合、バリデーションは自動的にキャンセルされます。
 
 ```php
 <?php
@@ -438,7 +438,7 @@ class LoginValidation extends Validation
 
 ## バリデーションのキャンセル
 
-By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
+デフォルトでは、フィールドに割り当てられたすべてのバリデータは、いずれかが失敗したかどうかに関係なくテストされます。 この動作を変更するには、バリデーションコンポーネントが処理を中止する可能性のあるバリデーションを指定します:
 
 ```php
 <?php
@@ -480,9 +480,9 @@ $validation->add(
 );
 ```
 
-The first validator has the option `cancelOnFail` with a value of `true`, therefore if that validator fails the remaining validators in the chain are not executed.
+最初のバリデータには`true`の値を持つ`cancelOnFail`オプションがあります。したがって、バリデータが失敗した場合、チェーン内の残りのバリデータは実行されません。
 
-If you are creating custom validators you can dynamically stop the validation chain by setting the `cancelOnFail` option:
+カスタムバリデータを作成している場合は、`cancelOnFail`オプションを設定することでバリデーションチェーンを動的に停止できます。
 
 ```php
 <?php
@@ -516,7 +516,7 @@ class MyValidator extends Validator
 
 ## 空の値のバリデーションを避ける
 
-You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
+空の値が渡された場合に検証が実行されないように、すべてのビルトインバリデータにオプション`allowEmpty`を渡すことができます。
 
 ```php
 <?php
@@ -542,7 +542,7 @@ $validation->add(
 
 ## 再起的バリデーション
 
-You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
+`afterValidation()`メソッドを使用して、別のインスタンス内でValidationインスタンスを実行することもできます。 この例では、`CompanyValidation`インスタンスをバリデーションすると、`PhoneValidation`インスタンスもチェックされます。
 
 ```php
 <?php

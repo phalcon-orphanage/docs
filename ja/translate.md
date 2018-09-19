@@ -59,7 +59,7 @@ $translate = Factory::load($options);
 
 ## Component Usage
 
-Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:
+翻訳文字列はファイルに格納されます。 これらのファイルの構造は、使用しているアダプタによって変化する可能性があります。 Phalcon はあなたの翻訳文字列を組織化する自由を与えます。 単純な構造は以下のようになりえます。
 
 ```bash
 app/messages/en.php
@@ -108,22 +108,22 @@ class UserController extends Controller
 {
     protected function getTranslation()
     {
-        // Ask browser what is the best language
+        // どの言語がベストかブラウザにたずねる
         $language = $this->request->getBestLanguage();
         $messages = [];
 
         $translationFile = 'app/messages/' . $language . '.php';
 
-        // Check if we have a translation file for that lang
+        // そのベスト言語の翻訳ファイルがあるかを確認する
         if (file_exists($translationFile)) {
             require $translationFile;
         } else {
-            // Fallback to some default
+            // なかった場合デフォルト言語にフォールバック
             require 'app/messages/en.php';
         }
 
-        // Return a translation object $messages comes from the require
-        // statement above
+        // 上の要求したステートメントからの翻訳オブジェクト $messages を
+        // 返す
         return new NativeArray(
             [
                 'content' => $messages,
@@ -274,4 +274,4 @@ class MyTranslateAdapter implements AdapterInterface
 }
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter)
+[Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter) には、このコンポーネントを利用するための複数のアダプターが用意されています。
