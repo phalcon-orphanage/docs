@@ -267,7 +267,7 @@ Using relationships, we can get only those parts that relate to our Robot that a
              Parts::class,
              'robotId',
              [
-                 'reusable' => true, // cache related data
+                 'reusable' => true, // 関連データのキャッシュ
                  'alias'    => 'mechanicalParts',
                  'params'   => [
                      'conditions' => 'robotTypeId = :type:',
@@ -282,8 +282,8 @@ Using relationships, we can get only those parts that relate to our Robot that a
  ```
 
 <a name='multiple-fields'></a>
-#### Multiple field relationships
-There are times where relationships need to be defined on a combination of fields and not only one. 次の例を考えてみます:
+#### 複数フィールドのリレーション
+フィールドの組み合わせだけでなく、複数の関係を定義しなければならない場合もあります。 次の例を考えてみます:
 
 ```php
 <?php
@@ -349,7 +349,7 @@ class Robots extends Model
             Parts::class,
             ['robotId', 'robotType'],
             [
-                'reusable' => true, // cache related data
+                'reusable' => true, // 関連データのキャッシュ
                 'alias'    => 'parts',
             ]
         );
@@ -388,7 +388,7 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst();
 
-// All the related records in RobotsParts
+// RobotsPartsのすべての関連レコード
 $robotsParts = $robot->robotsParts;
 ```
 
@@ -401,10 +401,10 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst();
 
-// All the related records in RobotsParts
+// RobotsPartsのすべての関連レコード
 $robotsParts = $robot->getRobotsParts();
 
-// Passing parameters
+// パラメータを渡す
 $robotsParts = $robot->getRobotsParts(
     [
         'limit' => 5,
@@ -421,11 +421,11 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst(2);
 
-// Robots model has a 1-n (hasMany)
-// relationship to RobotsParts then
+// RobotsモデルがRobotsPartsと
+// 1-n (hasMany)の関係にあるなら
 $robotsParts = $robot->robotsParts;
 
-// Only parts that match conditions
+// 条件に一致するレコードのみ
 $robotsParts = $robot->getRobotsParts(
     [
         'created_at = :date:',
@@ -437,8 +437,8 @@ $robotsParts = $robot->getRobotsParts(
 
 $robotPart = RobotsParts::findFirst(1);
 
-// RobotsParts model has a n-1 (belongsTo)
-// relationship to RobotsParts then
+// RobotsモデルがRobotsPartsと
+// n-1 (belongsTo)の関係にあるなら
 $robot = $robotPart->robots;
 ```
 
@@ -451,8 +451,8 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst(2);
 
-// Robots model has a 1-n (hasMany)
-// relationship to RobotsParts, then
+// RobotsモデルがRobotsPartsと
+// 1-n (hasMany)の関係にあるなら
 $robotsParts = RobotsParts::find(
     [
         'robots_id = :id:',
@@ -462,7 +462,7 @@ $robotsParts = RobotsParts::find(
     ]
 );
 
-// Only parts that match conditions
+// 条件に一致するレコードのみ
 $robotsParts = RobotsParts::find(
     [
         'robots_id = :id: AND created_at = :date:',
@@ -475,8 +475,8 @@ $robotsParts = RobotsParts::find(
 
 $robotPart = RobotsParts::findFirst(1);
 
-// RobotsParts model has a n-1 (belongsTo)
-// relationship to RobotsParts then
+// RobotsモデルがRobotsPartsと
+// n-1 (belongsTo)の関係にあるなら
 $robot = Robots::findFirst(
     [
         'id = :id:',
@@ -489,12 +489,12 @@ $robot = Robots::findFirst(
 
 The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
 
-| タイプ              | 説明                                                                                                                         | 暗黙のメソッド名        |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| Belongs-To       | Returns a model instance of the related record directly                                                                    | findFirst       |
-| Has-One          | Returns a model instance of the related record directly                                                                    | findFirst       |
-| Has-Many         | Returns a collection of model instances of the referenced model                                                            | find            |
-| Has-Many-to-Many | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query) |
+| タイプ              | 説明                                                                                                                         | 暗黙のメソッド名  |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------- | --------- |
+| Belongs-To       | Returns a model instance of the related record directly                                                                    | findFirst |
+| Has-One          | Returns a model instance of the related record directly                                                                    | findFirst |
+| Has-Many         | Returns a collection of model instances of the referenced model                                                            | find      |
+| Has-Many-to-Many | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (クエリの組合せ) |
 
 You can also use the `count` prefix to return an integer denoting the count of the related records:
 
@@ -609,20 +609,20 @@ With the aliasing we can get the related records easily:
 ```php
 <?php
 
-$robotsSimilar = RobotsSimilar::findFirst();
+$robotsSimilar = RobotsSimilar::findFirst(); 
 
-// Returns the related record based on the column (robots_id)
+// カラム(robots_id) に基いて、関連するレコードを返す。 
 $robot = $robotsSimilar->getRobot();
 $robot = $robotsSimilar->robot;
 
-// Returns the related record based on the column (similar_robots_id)
+// カラム(similar_robots_id)に基いて、関連するレコードを返す。
 $similarRobot = $robotsSimilar->getSimilarRobot();
 $similarRobot = $robotsSimilar->similarRobot;
 ```
 
 <a name='getters-vs-methods'></a>
 
-#### Magic Getters vs. Explicit methods
+#### Getterのマジックメソッド vs 明示的なメソッド
 
 Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). To overcome that, you can use a class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
 
@@ -806,20 +806,20 @@ Magic properties can be used to store a record and its related properties:
 ```php
 <?php
 
-// Create an artist
+// アーティストを作成
 $artist = new Artists();
 
 $artist->name    = 'Shinichi Osawa';
 $artist->country = 'Japan';
 
-// Create an album
+// アルバムを作成
 $album = new Albums();
 
 $album->name   = 'The One';
-$album->artist = $artist; // Assign the artist
+$album->artist = $artist; // アーティストをセット
 $album->year   = 2008;
 
-// Save both records
+// 両方のレコードを保存
 $album->save();
 ```
 
@@ -828,12 +828,12 @@ Saving a record and its related records in a has-many relation:
 ```php
 <?php
 
-// Get an existing artist
+// 既存のアーティストを取得
 $artist = Artists::findFirst(
     'name = 'Shinichi Osawa''
 );
 
-// Create an album
+// アルバムを作成
 $album = new Albums();
 
 $album->name   = 'The One';
@@ -841,20 +841,20 @@ $album->artist = $artist;
 
 $songs = [];
 
-// Create a first song
+// 最初の曲を作成
 $songs[0]           = new Songs();
 $songs[0]->name     = 'Star Guitar';
 $songs[0]->duration = '5:54';
 
-// Create a second song
+// 2番目の曲を作成
 $songs[1]           = new Songs();
 $songs[1]->name     = 'Last Days';
 $songs[1]->duration = '4:29';
 
-// Assign the songs array
+// 曲リストをセット
 $album->songs = $songs;
 
-// Save the album + its songs
+// アルバム+曲を保存
 $album->save();
 ```
 
@@ -924,7 +924,7 @@ $data = [
     'updated_at' => time(),
 ];
 
-// Update all the parts except those whose type is basic
+// typeがbasicのもの以外のすべてのカラムを更新
 $robots->getParts()->update(
     $data,
     function ($part) {
