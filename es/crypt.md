@@ -86,14 +86,14 @@ $encrypted = $crypt->encrypt($text, $key);
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-You can also set the algorithm and whether to calculate a digest of the message (signing) during the object construction. This removes the need to call `setCipher()` and `useSigning()`:
+También puede establecer el algoritmo y si se debe calcular un resumen del mensaje (firma) durante la construcción del objeto. Esto elimina la necesidad de llamar a `setCipher()` y `useSigning()`:
 
 ```php
 <?php
 
 use Phalcon\Crypt;
 
-// Create an instance
+// Crear una instancia
 $crypt = new Crypt('aes-256-ctr', true);
 
 $key = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
@@ -112,12 +112,12 @@ Puede utilizar la misma instancia para encriptar/desencriptar varias veces:
 
 use Phalcon\Crypt;
 
-// Create an instance
+// Crear una instancia
 $crypt = new Crypt();
 
 $crypt->setCipher('aes-256-ctr');
 
-// Use your own keys!
+// ¡Utilice sus propias claves!
 $texts = [
     "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c" => 'Este es un texto secreto',
     "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3" => 'Esto es muy secreto',
@@ -132,31 +132,31 @@ foreach ($texts as $key => $text) {
 }
 ```
 
-For better security, you can instruct the component to calculate a message digest based on one of the supported algorithms returned by `getAvailableHashAlgos`. As seen above this algorithm can be set during the object instantiation but can also be set afterwards.
+Para mayor seguridad, puede indicar al componente que calcule un resumen del mensaje basado en uno de los algoritmos admitidos devueltos por `getAvailableHashAlgos`. Como puede verse, este algoritmo se puede establecer durante la instanciación del objecto pero también se puede establecer después.
 
-**NOTE** Calculating the message digest (signing) will be enabled by default in Phalcon 4.0.0 or greater.
+**NOTA** Calculando el resumen del mensajes (firma) estará activado por defecto a partir de Phalcon 4.0.0 o superior.
 
 ```php
 <?php
 
 use Phalcon\Crypt;
 
-// Create an instance
+// Crear una instancia
 $crypt = new Crypt();
 
 $crypt->setCipher('aes-256-ctr');
 $crypt->setHashAlgo('aes-256-cfb');
 
-// Force calculation of a digest of the message based on the Hash algorithm
+// Forzar el calculo del resumen del mensaje basado en el algoritmo Hash
 $crypt->useSigning(true);
 
 $key  = "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c";
 $text = 'This is a secret text';
 
-// Perform the encryption
+// Realizar encriptación
 $encrypted = $crypt->encrypt($text, $key);
 
-// Now decrypt
+// Ahora desencriptar
 echo $crypt->decrypt($encrypted, $key);
 ```
 
@@ -190,17 +190,17 @@ $text = 'Este es un texto secreto';
 echo $crypt->encrypt($text, $key);
 ```
 
-If you wish to check the available algorithms that your system supports you can call the `getAvailableHashAlgos()` method.
+Si desea cmoprobar los algoritmos disponibles en su sistema, puede llamar al método `getAvailableHashAlgos()`.
 
 ```php
 <?php
 
 use Phalcon\Crypt;
 
-// Create an instance
+// Crear una instancia
 $crypt = new Crypt();
 
-// Get the supported algorithms
+// Obtener algoritmos disponibles
 $algorithms = $crypt->getAvailableHashAlgos();
 
 var_dump($algorithms);
