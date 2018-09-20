@@ -169,7 +169,7 @@ When a defined route matches the requested URI then the application executes the
 
 ## Creating a Model
 
-Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
+Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file `Robots.php` should be placed in your `models` folder.
 
 ```php
 <?php
@@ -177,49 +177,39 @@ Our API provides information about `robots`, these data are stored in a database
 namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Mvc\Model\Message;
-use Phalcon\Mvc\Model\Validator\Uniqueness;
-use Phalcon\Mvc\Model\Validator\InclusionIn;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness;
+use Phalcon\Validation\Validator\InclusionIn;
 
 class Robots extends Model
 {
     public function validation()
     {
-        // Type must be: droid, mechanical or virtual
-        $this->validate(
+        $validator = new Validation();
+
+        $validator->add(
+            'type',
             new InclusionIn(
                 [
-                    'field'  => 'type',
                     'domain' => [
-                        'droid',
-                        'mechanical',
-                        'virtual',
-                    ],
+                        'Mechanical',
+                        'Virtual',
+                        'Droid',
+                    ]
                 ]
             )
         );
 
-        // Robot name must be unique
-        $this->validate(
+        $validator->add(
+            'name',
             new Uniqueness(
                 [
-                    'field'   => 'name',
                     'message' => 'The robot name must be unique',
                 ]
             )
         );
 
-        // Year cannot be less than zero
-        if ($this->year < 0) {
-            $this->appendMessage(
-                new Message('The year cannot be less than zero')
-            );
-        }
-
-        // Check if any messages have been produced
-        if ($this->validationHasFailed() === true) {
-            return false;
-        }
+        return $this->validate($validator);
     }
 }
 ```
@@ -565,6 +555,20 @@ $app->delete(
 );
 ```
 
+## Creating database
+
+Now we will create database for our application. Run SQL queries as follows:
+
+    CREATE DATABASE `robotics`;
+    CREATE TABLE `robotics`.`robots` (
+     `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+     `name` varchar(200) COLLATE utf8_bin NOT NULL,
+     `type` varchar(200) COLLATE utf8_bin NOT NULL,
+     `year` smallint(2) unsigned NOT NULL,
+     PRIMARY KEY (`id`)
+    )
+    
+
 <a name='testing'></a>
 
 ## Testing our Application
@@ -616,8 +620,7 @@ Content-Type: text/html; charset=UTF-8
 Insert a new robot:
 
 ```bash
-curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
-    http://localhost/my-rest-api/api/robots
+curl -i -X POST -d '{"name":"C-3PO","type":"Droid","year":1977}' http://localhost/my-rest-api/api/robots
 
 HTTP/1.1 201 Created
 Date: Tue, 21 Jul 2015 07:15:09 GMT
@@ -625,14 +628,13 @@ Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 75
 Content-Type: text/html; charset=UTF-8
 
-{"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
+{"status":"OK","data":{"name":"C-3PO","type":"Droid","year":1977,"id":"4"}}
 ```
 
 Try to insert a new robot with the name of an existing robot:
 
 ```bash
-curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
-    http://localhost/my-rest-api/api/robots
+curl -i -X POST -d '{"name":"C-3PO","type":"Droid","year":1977}' http://localhost/my-rest-api/api/robots
 
 HTTP/1.1 409 Conflict
 Date: Tue, 21 Jul 2015 07:18:28 GMT
@@ -656,13 +658,13 @@ Content-Length: 104
 Content-Type: text/html; charset=UTF-8
 
 {"status":"ERROR","messages":["Value of field 'type' must be part of
-    list: droid, mechanical, virtual"]}
+    list: Droid, Mechanical, Virtual"]}
 ```
 
 Finally, delete a robot:
 
 ```bash
-curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
+curl -i -X DELETE http://localhost/my-rest-api/api/robots/1
 
 HTTP/1.1 200 OK
 Date: Tue, 21 Jul 2015 08:49:29 GMT
