@@ -1,28 +1,28 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Improving Performance with Cache</a> 
+      <a href="#overview">キャッシュによるパフォーマンスの向上</a> 
       <ul>
         <li>
-          <a href="#implementation">When to implement cache?</a>
+          <a href="#implementation">いつキャッシュを実装する？</a>
         </li>
         <li>
-          <a href="#caching-behavior">Caching Behavior</a>
+          <a href="#caching-behavior">キャッシュの振る舞い</a>
         </li>
         <li>
           <a href="#factory">Factory</a>
         </li>
         <li>
-          <a href="#output-fragments">Caching Output Fragments</a>
+          <a href="#output-fragments">出力フラグメントのキャッシュ</a>
         </li>
         <li>
-          <a href="#arbitrary-data">Caching Arbitrary Data</a> 
+          <a href="#arbitrary-data">任意データのキャッシュ</a> 
           <ul>
             <li>
-              <a href="#backend-file-example">File Backend Example</a>
+              <a href="#backend-file-example">ファイルバックエンドの例</a>
             </li>
             <li>
-              <a href="#backend-memcached-example">Memcached Backend Example</a>
+              <a href="#backend-memcached-example">Memcached バックエンドの例</a>
             </li>
           </ul>
         </li>
@@ -56,7 +56,7 @@
               <a href="#adapters-backend-factory">Factory</a>
             </li>
             <li>
-              <a href="#adapters-backend-custom">Implementing your own Backend adapters</a>
+              <a href="#adapters-backend-custom">独自のバックエンドアダプターを実装</a>
             </li>
             <li>
               <a href="#adapters-backend-file">File Backend Options</a>
@@ -91,29 +91,29 @@
 
 <a name='overview'></a>
 
-# Improving Performance with Cache
+# キャッシュによるパフォーマンスの向上
 
-Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently used or already processed data. `Phalcon\Cache` is written in C, achieving higher performance and reducing the overhead when getting items from the backends. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
+Phalcon は、頻繁に使用される、またはすでに処理されたデータに、高速なアクセスを行う `Phalcon\Cache` クラスを提供しています。 `Phalcon\Cache` は C で実装され、バックエンドからアイテムを取得する際にオーバーヘッドを減らし、高いパフォーマンスで動作します。 このクラスでは、フロントエンドとバックエンドのコンポーネントの内部構造を使用します。 フロントエンドコンポーネントは、バックエンドコンポーネントクラスにストレージオプションを提供しながら入力ソースまたはインターフェイスとして機能します。
 
 <a name='implementation'></a>
 
-## When to implement cache?
+## いつキャッシュを実装する？
 
 Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
 
-* You are making complex calculations that every time return the same result (changing infrequently)
-* You are using a lot of helpers and the output generated is almost always the same
+* 毎回同じ結果 (変更頻度の低い) を返す複雑な計算をしている
+* 多くのヘルパを利用し、生成される出力がほとんど同じである
 * You are accessing database data constantly and these data rarely change
 
 <div class='alert alert-warning'>
     <p>
-        <strong>NOTE</strong> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.
+        <strong>メモ</strong> キャッシュを実装した後でも、一定の期間でキャッシュのヒット率を確認するようにしましょう。 This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.
     </p>
 </div>
 
 <a name='caching-behavior'></a>
 
-## Caching Behavior
+## キャッシュの振る舞い
 
 The caching process is divided into 2 parts:
 
@@ -601,7 +601,7 @@ $backendCache = Factory::load($options);
 
 <a name='adapters-backend-custom'></a>
 
-### Implementing your own Backend adapters
+### 独自のバックエンドアダプターを実装
 
 The `Phalcon\Cache\BackendInterface` interface must be implemented in order to create your own backend adapters or extend the existing ones.
 
