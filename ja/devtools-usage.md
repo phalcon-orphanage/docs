@@ -353,7 +353,7 @@ $ phalcon scaffold --table-name products
 
 The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
 
-| File                                     | Purpose                        |
+| ファイル                                     | 目的                             |
 | ---------------------------------------- | ------------------------------ |
 | `app/controllers/ProductsController.php` | The Products controller        |
 | `app/models/Products.php`                | The Products model             |
@@ -396,6 +396,6 @@ The screencast below shows how to integrate developer tools with the [PhpStorm I
 
 <a name='conclusion'></a>
 
-## Conclusion
+## まとめ
 
 Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.
