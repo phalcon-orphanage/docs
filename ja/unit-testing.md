@@ -3,16 +3,16 @@
     <li>
       <a href="#overview">概要</a> <ul>
         <li>
-          <a href="#integration">Integrating PHPUnit with Phalcon</a>
+          <a href="#integration">PhalconとPHPUnitの統合</a>
         </li>
         <li>
-          <a href="#unit-helper">The PHPUnit helper file</a>
+          <a href="#unit-helper">PHPUnitのヘルパーファイル</a>
         </li>
         <li>
-          <a href="#phpunit-config">The <code>phpunit.xml</code> file</a>
+          <a href="#phpunit-config"><code>phpunit.xml</code>ファイル</a>
         </li>
         <li>
-          <a href="#sample">Sample Unit Test</a>
+          <a href="#sample">ユニットテストのサンプル</a>
         </li>
       </ul>
     </li>
@@ -23,11 +23,11 @@
 
 # 概要
 
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
+適切なテストはより良いソフトウェアを作ります。適切なテストケースを設定すれば、最大限に機能的バグを退治でき、ソフトウェアをもっと良い状態に保てます。
 
 <a name='integration'></a>
 
-## Integrating PHPUnit with Phalcon
+## PhalconとPHPUnitの統合
 
 PHPUnit をインストールしていない場合、次のコマンドを実行してインストールすることができます。
 
@@ -35,7 +35,7 @@ PHPUnit をインストールしていない場合、次のコマンドを実行
 composer require phpunit/phpunit
 ```
 
-or by manually adding it to `composer.json`:
+または`composer.json`に手動で追加:
 
 ```json
 <br />{
@@ -45,20 +45,20 @@ or by manually adding it to `composer.json`:
 }
 ```
 
-Once PHPUnit is installed create a directory called `tests` in project root directory:
+PHPUnitをインストールすると、プロジェクトのルートディレクトリに`tests`というディレクトリが作成されます:
 
     app/
     public/
     tests/
     
 
-Next, we need a 'helper' file to bootstrap the application for unit testing.
+次に、ユニットテストのためにアプリケーションをブートストラップするための 'ヘルパー' ファイルが必要です。
 
 <a name='unit-helper'></a>
 
-## The PHPUnit helper file
+## PHPUnitのヘルパーファイル
 
-A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your `tests/` directory as `TestHelper.php`.
+テストを実行するためにアプリケーションをブートストラップするには、ヘルパーファイルが必要です。 サンプルファイルを用意しました。 ファイルを`tests/`ディレクトリに`TestHelper.php`として置いてください。
 
 ```php
 <?php
@@ -100,17 +100,17 @@ Di::reset();
 Di::setDefault($di);
 ```
 
-Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your main application.
+あなたのライブラリからコンポーネントをテストする必要がある場合は、それらをオートローダーに追加するか、メインアプリケーションのオートローダーを使用してください。
 
-To help you build the Unit Tests, we made a few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in the [Phalcon Incubator](https://github.com/phalcon/incubator).
+ユニットテストの構築に役立つように、ユニットテスト自体をブートストラップするために使用できる抽象クラスをいくつか作成しました。 これらのファイルは[Phalcon Incubator](https://github.com/phalcon/incubator)にあります。
 
-You can use the Incubator library by adding it as a dependency:
+Incubatorライブラリは依存関係として追加することで使用できます:
 
 ```bash
 composer require phalcon/incubator
 ```
 
-or by manually adding it to `composer.json`:
+または`composer.json`に手動で追加:
 
 ```json
 {
@@ -124,9 +124,9 @@ or by manually adding it to `composer.json`:
 
 <a name='phpunit-config'></a>
 
-## The `phpunit.xml` file
+## `phpunit.xml`ファイル
 
-Now, create a `phpunit.xml` file as follows:
+`phpunit.xml`ファイルを次のように作成します:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -149,17 +149,17 @@ Now, create a `phpunit.xml` file as follows:
 </phpunit>
 ```
 
-Modify the `phpunit.xml` to fit your needs and save it in `tests`. This will run any tests under the `tests` directory.
+ニーズに合わせて`phpunit.xml`を修正し、`tests`ディレクトリに保存します。 これにより、`tests`ディレクトリの下でテストが実行されます。
 
 <a name='sample'></a>
 
-## Sample Unit Test
+## ユニットテストのサンプル
 
-To run any Unit Tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
+ユニットテストを実行するには、ユニットテストを定義する必要があります。 オートローダーは、適切なファイルがロードされていることを確認します。そのため、ファイルを作成するだけで、phpunitがテストを実行します。
 
-This example does not contain a config file, most test cases however, do need one. You can add it to the `DI` to get the `UnitTestCase` file.
+この例は設定ファイルを含んでいませんが、ほとんどのテストケースは必要です。 `DI`に追加して`UnitTestCase`ファイルを取得できます。
 
-First create a base Unit Test called `UnitTestCase.php` in your `tests` directory:
+最初に、`tests`ディレクトリに`UnitTestCase.php`というベースのユニットテストを作成します。
 
 ```php
 <?php
@@ -178,10 +178,10 @@ abstract class UnitTestCase extends PhalconTestCase
     {
         parent::setUp();
 
-        // Load any additional services that might be required during testing
+        // テスト中に必要となるかもしれない追加のサービスをロードする
         $di = Di::getDefault();
 
-        // Get any DI components here. If you have a config, be sure to pass it to the parent
+        // ここでDIコンポーネントを取得。 設定がある場合、必ず親クラスに渡す。
 
         $this->setDi($di);
 
@@ -189,7 +189,7 @@ abstract class UnitTestCase extends PhalconTestCase
     }
 
     /**
-     * Check if the test case is setup properly
+     * テストケースが正しく設定されているかどうかを確認する
      *
      * @throws \PHPUnit_Framework_IncompleteTestError;
      */
@@ -204,7 +204,7 @@ abstract class UnitTestCase extends PhalconTestCase
 }
 ```
 
-It's always a good idea to separate your Unit Tests in namespaces. For this test we will create the namespace 'Test'. So create a file called `tests\Test\UnitTest.php`:
+ユニットテストを名前空間で分離することは常に良い考えです。 このテストでは、名前空間 'Test'を作成します。 したがって、`tests\Test\UnitTest.php`というファイルを作成します。
 
 ```php
 <?php
@@ -233,7 +233,7 @@ class UnitTest extends \UnitTestCase
 }
 ```
 
-Now when you execute `phpunit` in your command-line from the `tests` directory you will get the following output:
+`tests`ディレクトリ内で`phpunit`コマンドを実行すると、次のような出力が得られます:
 
 ```bash
 $ phpunit
@@ -260,4 +260,4 @@ FAILURES!
 Tests: 1, Assertions: 2, Failures: 1.
 ```
 
-Now you can start building your Unit Tests. You can view a [good guide here](http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/). We also recommend reading the PHPUnit documentation if you're not familiar with PHPUnit.
+今すぐユニットテストの構築を開始できます。 [ここで良いガイド](http://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/)を見ることができます。 また、PHPUnitに精通していない場合は、PHPUnitのドキュメントを読むことをお勧めします。
