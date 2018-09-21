@@ -52,22 +52,22 @@ The `Phalcon\Filter` component provides a set of commonly used filters and data 
 
 The following are the built-in filters provided by this component:
 
-| Name      | Description                                                                                   |
-| --------- | --------------------------------------------------------------------------------------------- |
-| absint    | Casts the value as an integer and returns the absolute value of it.                           |
-| alphanum  | Remove all characters except [a-zA-Z0-9]                                                      |
-| email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.             |
-| float     | Remove all characters except digits, dot, plus and minus sign.                                |
-| float!    | Remove all characters except digits, dot, plus and minus sign and cast the result as a float. |
-| int       | Remove all characters except digits, plus and minus sign.                                     |
-| int!      | Remove all characters except digits, plus and minus sign and cast the result as an integer.   |
-| lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function       |
-| string    | Strip tags and encode HTML entities, including single and double quotes.                      |
-| striptags | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function       |
-| trim      | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function                   |
-| upper     | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function       |
+| Name      | Description                                                                             |
+| --------- | --------------------------------------------------------------------------------------- |
+| absint    | 値をintegerとしてキャストし、その絶対値を返す。                                                             |
+| alphanum  | [a-zA-Z0-9] 以外のすべての文字を削除します。                                                            |
+| email     | 文字・数字`!#$%&*+-/=?^_`{\|}~@.[]`以外のすべての文字を削除し、                                      |
+| float     | Remove all characters except digits, dot, plus and minus sign.                          |
+| float!    | 数字、ドット、プラス記号、マイナス記号以外のすべての文字を削除し、残りを float としてキャストする。                                   |
+| int       | 数字、プラス記号、マイナス記号以外のすべての文字を削除します。                                                         |
+| int!      | 数字、プラス記号、マイナス記号以外のすべての文字を削除し、残りを integer としてキャストする。                                     |
+| lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function |
+| string    | タグを除去し、シングルクォートとダブルクォートでHTML エンティティをエンコードします。                                           |
+| striptags | [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) 関数を適用します。            |
+| trim      | [trim](http://www.php.net/manual/en/function.trim.php) 関数を適用します。                        |
+| upper     | [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) 関数を適用します。            |
 
-Please note that the component uses the [filter_var](https://secure.php.net/manual/en/function.filter-var.php) PHP function internally.
+コンポーネントが内部的に[filter_var](https://secure.php.net/manual/en/function.filter-var.php) PHP の関数を使用することに注意してください。
 
 Constants are available and can be used to define the type of filtering required:
 
@@ -91,7 +91,7 @@ const FILTER_UPPER      = "upper";
 
 ## Sanitizing data
 
-Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input we ensure that application integrity will be intact.
+サニタイズは、ユーザーまたはアプリケーションに必要ではないまたは望まれていない、特定の文字を値から削除するプロセスです。 入力値のサニタイズによって、アプリケーションの整合性を確かめます。
 
 ```php
 <?php
@@ -171,7 +171,7 @@ class ProductsController extends Controller
 
 ## Filtering data
 
-In addition to sanitizing, `Phalcon\Filter` also provides filtering by removing or modifying input data to the format we expect.
+サニタイズに加えて、`Phalcon\Filter` は、入力データを私達が期待する形式に修正したり、削除したりすることで、フィルタリング機能を提供します。
 
 ```php
 <?php
@@ -214,7 +214,7 @@ $filter->sanitize(
 
 ## Adding filters
 
-You can add your own filters to `Phalcon\Filter`. The filter function could be an anonymous function:
+自身のフィルターを`Phalcon\Filter`に追加できます。このフィルタ関数は無名関数でも問題ありません。:
 
 ```php
 <?php

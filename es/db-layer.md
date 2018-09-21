@@ -155,11 +155,11 @@ Phalcon encapsula los detalles específicos de cada motor de base de datos en di
 
 ### Implementar sus propios dialectos
 
-The `Phalcon\Db\DialectInterface` interface must be implemented in order to create your own database dialects or extend the existing ones. You can also enhance your current dialect by adding more commands/methods that PHQL will understand.
+La interfaz `Phalcon\Db\DialectInterface` debe implementarse para crear sus propios dialectos de base de datos o extender los ya existentes. Incluso puede mejorar su dialecto actual agregando más comandos/métodos para que PHQL los entienda.
 
-For instance when using the MySQL adapter, you might want to allow PHQL to recognize the `MATCH ... AGAINST ...` syntax. We associate that syntax with `MATCH_AGAINST`
+Por ejemplo, cuando utilizamos el adaptador MySQL, y queremos permitir que PHQL reconozca la sintaxis `MATCH ... AGAINST ...`. Asociamos la sintaxis con `MATCH_AGAINST`
 
-We instantiate the dialect. We add the custom function so that PHQL understands what to do when it finds it during the parsing process. In the example below, we register a new custom function called `MATCH_AGAINST`. After that all we have to do is add the customized dialect object to our connection.
+Instanciamos el dialecto. Agregamos la función personalizada para que PHQL comprenda qué hacer cuando la encuentra durante el proceso de análisis sintáctico. En el siguiente ejemplo, registramos una nueva función personalizada llamada `MATCH_AGAINST`. Después de eso todo lo que tenemos que hacer es añadir el objeto del dialecto personalizado a nuestra conexión.
 
 ```php
 <?php
@@ -192,7 +192,7 @@ $connection = new Connection(
 );
 ```
 
-We can now use this new function in PHQL, which in turn will translate it to the proper SQL syntax:
+Ahora podemos utilizar esta nueva función en PHQL, que a su vez lo traducirá en la sintaxis SQL adecuada:
 
 ```php
 $phql = "
@@ -207,9 +207,9 @@ $posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
 
 ## Conexión a bases de datos
 
-To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
+Para crear una conexión es necesario crear una instancia de la clase del adaptador. Solo se requiere un arreglo con los parámetros de conexión. En el ejemplo siguiente se muestra cómo crear una conexión pasando tanto los parámetros opcionales como los parámetros requeridos:
 
-##### MySQL Required elements
+##### Elementos requeridos en MySQL
 
 ```php
 <?php
@@ -222,19 +222,19 @@ $config = [
 ];
 ```
 
-##### MySQL Optional
+##### MySQL Opcionales
 
 ```php
 $config['persistent'] = false;
 ```
 
-##### MySQL Create a connection
+##### Crear una conexión MySQL
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
 
-##### PostgreSQL Required elements
+##### Elementos requeridos en PostgreSQL
 
 ```php
 <?php
@@ -247,19 +247,19 @@ $config = [
 ];
 ```
 
-##### PostgreSQL Optional
+##### PostgreSQL Opcionales
 
 ```php
 $config['schema'] = 'public';
 ```
 
-##### PostgreSQL Create a connection
+##### Crear una conexión PostgreSQL
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
 
-##### SQLite Required elements
+##### Elementos requeridos en SQLite
 
 ```php
 <?php
@@ -269,7 +269,7 @@ $config = [
 ];
 ```
 
-##### SQLite Create a connection
+##### Crear una conexión SQLite
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
@@ -689,7 +689,7 @@ $success = $connection->update(
     [
         'New Astro Boy',
     ],
-    'id = 101' // Warning! In this case values are not escaped
+    'id = 101' // Advertencia! En este caso los valores no son escapados
 );
 
 // Generating dynamically the necessary SQL (another syntax)
@@ -698,7 +698,7 @@ $success = $connection->updateAsDict(
     [
         'name' => 'New Astro Boy',
     ],
-    'id = 101' // Warning! In this case values are not escaped
+    'id = 101' // ¡Advertencia! En este caso los valores no son escapados
 );
 
 // With escaping conditions
@@ -826,7 +826,7 @@ try {
 | `rollbackTransaction` | Antes de anular (roolback) una transacción                         |              No              |
 | `commitTransaction`   | Antes de que una finalizar (commit) una transacción                |              No              |
 
-Bind an EventsManager to a connection is simple, `Phalcon\Db` will trigger the events with the type `db`:
+Enlazarun EventsManager a una conexión es sencillo. `Phalcon\Db` activará los eventos con el tipo `db`:
 
 ```php
 <?php
@@ -881,7 +881,7 @@ $eventsManager->attach(
 
 ## Perfiles de sentencias SQL
 
-`Phalcon\Db` includes a profiling component called `Phalcon\Db\Profiler`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
+`Phalcon\Db` incluye un componente de generación de perfiles llamado `Phalcon\Db\Profiler`, que se utiliza para analizar el rendimiento de las operaciones de base de datos con el fin de diagnosticar problemas de rendimiento y descubrir los cuellos de botella.
 
 Database profiling is really easy With `Phalcon\Db\Profiler`:
 
@@ -1089,7 +1089,7 @@ $exists = $connection->viewExists('robots');
 
 ## Crear/Modificar/Eliminar tablas
 
-Diferentes sistemas de base de datos (MySQL, Postgresql, etc.) ofrecen la capacidad para crear, modificar o eliminar tablas con el uso de comandos como `CREATE`, `ALTER` o `DROP`. La sintaxis SQL difiere según el sistema de base de datos utilizado. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
+Diferentes sistemas de base de datos (MySQL, Postgresql, etc.) ofrecen la capacidad para crear, modificar o eliminar tablas con el uso de comandos como `CREATE`, `ALTER` o `DROP`. La sintaxis SQL difiere según el sistema de base de datos utilizado. `Phalcon\Db` ofrece una interfaz unificada para modificar las tablas, sin la necesidad de diferenciar la sintaxis SQL basandose en el sistema de almacenamiento de destino.
 
 <a name='tables-create'></a>
 

@@ -49,7 +49,7 @@ These tools are a collection of useful scripts to generate skeleton code. Core c
 
 <div class="alert alert-danger">
     <p>
-        If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information.
+        コンソールの代わりにウェブバージョンを使用したい場合は、この <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">ブログの記事</a> に詳細を記載しています。
     </p>
 </div>
 
