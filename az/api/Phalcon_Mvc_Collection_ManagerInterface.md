@@ -1,49 +1,49 @@
-<h1>Interface <strong>Phalcon\\Mvc\\Collection\\ManagerInterface</strong></h1>
+# Interface **Phalcon\\Mvc\\Collection\\ManagerInterface**
 
-<p><a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/collection/managerinterface.zep" class="btn btn-default btn-sm" mark="crwd-mark">Source on GitHub</a></p>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/collection/managerinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-<h2>Methods</h2>
+## Methods
 
-<p>abstract public  <strong>setCustomEventsManager</strong> (<a href="/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface">Phalcon\Mvc\CollectionInterface</a> $model, <a href="/[[language]]/[[version]]/api/Phalcon_Events_ManagerInterface">Phalcon\Events\ManagerInterface</a> $eventsManager)</p>
+abstract public **setCustomEventsManager** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model, [Phalcon\Events\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getCustomEventsManager</strong> (<a href="/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface">Phalcon\Mvc\CollectionInterface</a> $model)</p>
+abstract public **getCustomEventsManager** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>initialize</strong> (<a href="/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface">Phalcon\Mvc\CollectionInterface</a> $model)</p>
+abstract public **initialize** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>isInitialized</strong> (<em>mixed</em> $modelName)</p>
+abstract public **isInitialized** (*mixed* $modelName)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getLastInitialized</strong> ()</p>
+abstract public **getLastInitialized** ()
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>setConnectionService</strong> (<a href="/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface">Phalcon\Mvc\CollectionInterface</a> $model, <em>mixed</em> $connectionService)</p>
+abstract public **setConnectionService** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model, *mixed* $connectionService)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>useImplicitObjectIds</strong> (<a href="/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface">Phalcon\Mvc\CollectionInterface</a> $model, <em>mixed</em> $useImplicitObjectIds)</p>
+abstract public **useImplicitObjectIds** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model, *mixed* $useImplicitObjectIds)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>isUsingImplicitObjectIds</strong> (<a href="/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface">Phalcon\Mvc\CollectionInterface</a> $model)</p>
+abstract public **isUsingImplicitObjectIds** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getConnection</strong> (<a href="/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface">Phalcon\Mvc\CollectionInterface</a> $model)</p>
+abstract public **getConnection** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>notifyEvent</strong> (<em>mixed</em> $eventName, <a href="/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface">Phalcon\Mvc\CollectionInterface</a> $model)</p>
+abstract public **notifyEvent** (*mixed* $eventName, [Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>addBehavior</strong> (<a href="/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface">Phalcon\Mvc\CollectionInterface</a> $model, <a href="/[[language]]/[[version]]/api/Phalcon_Mvc_Collection_BehaviorInterface">Phalcon\Mvc\Collection\BehaviorInterface</a> $behavior)</p>
+abstract public **addBehavior** ([Phalcon\Mvc\CollectionInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_CollectionInterface) $model, [Phalcon\Mvc\Collection\BehaviorInterface](/[[language]]/[[version]]/api/Phalcon_Mvc_Collection_BehaviorInterface) $behavior)
 
-<p>...</p>
+...
