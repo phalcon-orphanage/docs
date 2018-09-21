@@ -1,99 +1,99 @@
-<h1>Interface <strong>Phalcon\\Cli\\DispatcherInterface</strong></h1>
+# Interface **Phalcon\\Cli\\DispatcherInterface**
 
-<p><em>implements</em> <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+*implements* [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p><a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/dispatcherinterface.zep" class="btn btn-default btn-sm" mark="crwd-mark">Source on GitHub</a></p>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/dispatcherinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-<h2>Methods</h2>
+## Methods
 
-<p>abstract public  <strong>setTaskSuffix</strong> (<em>mixed</em> $taskSuffix)</p>
+abstract public **setTaskSuffix** (*mixed* $taskSuffix)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>setDefaultTask</strong> (<em>mixed</em> $taskName)</p>
+abstract public **setDefaultTask** (*mixed* $taskName)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>setTaskName</strong> (<em>mixed</em> $taskName)</p>
+abstract public **setTaskName** (*mixed* $taskName)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getTaskName</strong> ()</p>
+abstract public **getTaskName** ()
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getLastTask</strong> ()</p>
+abstract public **getLastTask** ()
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getActiveTask</strong> ()</p>
+abstract public **getActiveTask** ()
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>setActionSuffix</strong> (<em>mixed</em> $actionSuffix) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getActionSuffix</strong> () inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **getActionSuffix** () inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>setDefaultNamespace</strong> (<em>mixed</em> $defaultNamespace) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **setDefaultNamespace** (*mixed* $defaultNamespace) inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>setDefaultAction</strong> (<em>mixed</em> $actionName) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>setNamespaceName</strong> (<em>mixed</em> $namespaceName) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **setNamespaceName** (*mixed* $namespaceName) inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>setModuleName</strong> (<em>mixed</em> $moduleName) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **setModuleName** (*mixed* $moduleName) inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>setActionName</strong> (<em>mixed</em> $actionName) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **setActionName** (*mixed* $actionName) inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getActionName</strong> () inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **getActionName** () inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>setParams</strong> (<em>mixed</em> $params) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **setParams** (*mixed* $params) inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getParams</strong> () inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **getParams** () inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>setParam</strong> (<em>mixed</em> $param, <em>mixed</em> $value) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **setParam** (*mixed* $param, *mixed* $value) inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getParam</strong> (<em>mixed</em> $param, [<em>mixed</em> $filters]) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **getParam** (*mixed* $param, [*mixed* $filters]) inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>hasParam</strong> (<em>mixed</em> $param) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **hasParam** (*mixed* $param) inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>isFinished</strong> () inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **isFinished** () inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getReturnedValue</strong> () inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **getReturnedValue** () inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>dispatch</strong> () inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **dispatch** () inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>forward</strong> (<em>mixed</em> $forward) inherited from <a href="/[[language]]/[[version]]/api/Phalcon_DispatcherInterface">Phalcon\DispatcherInterface</a></p>
+abstract public **forward** (*mixed* $forward) inherited from [Phalcon\DispatcherInterface](/[[language]]/[[version]]/api/Phalcon_DispatcherInterface)
 
-<p>...</p>
+...
