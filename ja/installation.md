@@ -112,15 +112,15 @@
 
 # 必要条件
 
-Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
+Phalconを利用するにはPHPが実行できる必要があります。 疎結合に設計されている為、開発者はPhalconをインストールし、追加の拡張モジュールなしに利用することができます。 特定のコンポーネントは他の拡張モジュールに依存します。 たとえば、データベース接続を使用するには、`php_pdo`拡張モジュールが必要です。 RDBMSがMySQL/MariaDBまたはAuroraデータベースの場合は、`php_mysqlnd`拡張モジュールも必要です。 同様に、PhalconでPostgreSQLデータベースを使用するには、`php_pgsql`拡張モジュールが必要です。
 
 <a name='requirements-hardware'></a>
 
 ## ハードウェア
 
-Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
+Phalconは、高いパフォーマンスを提供しながら、可能な限り少ないリソースを使用するように設計されています。 さまざまなローエンド環境 (0.25GB RAM、0.5 CPUなど) でPhalconをテストしましたが、選択するハードウェアはアプリケーションのニーズによって異なります。
 
-Our website and blog (as well as other sites) are hosted on an Amazon VM with 512MB RAM and 1 vCPU.
+当社のウェブサイトとブログ(および他のサイト) は、512MBのRAMと1つのvCPUを備えたAmazon VM上でホストされています。
 
 <a name='requirements-software'></a>
 
@@ -138,7 +138,7 @@ Phalcon を実行するためには、最低限以下の拡張機能が必要で
 
 * `curl`
 * `gettext`
-* `gd2` (to use the `Phalcon\Image\Adapter\Gd` class)
+* `gd2` (`Phalcon\Image\Adapter\Gd`クラスを使う場合)
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
 * `json`
 * `mbstring`
@@ -148,7 +148,7 @@ Phalcon を実行するためには、最低限以下の拡張機能が必要で
 
 <a name='requirements-software-optional'></a>
 
-### Optional depending on the needs of your application
+### アプリケーションのニーズに応じた追加の依存
 
 * [PDO](http://php.net/manual/en/book.pdo.php) 拡張や、関連するRDBMSの拡張 ([MySQL](http://php.net/manual/en/ref.pdo-mysql.php)や[PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php)など)
 * [OpenSSL](http://php.net/manual/en/book.openssl.php) 拡張
@@ -197,7 +197,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <div class="alert alert-warning">
     <p>
-        This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+        この作業は、あなたがディストリビューションを変更したり安定板とナイトリーを切り替えるといった事情がなければ、実施は一度だけしか必要ありません。
     </p>
 </div>
 
@@ -233,14 +233,14 @@ sudo apt-get install php7.0-phalcon
 
 [packagecloud.io](https://packagecloud.io/phalcon)でリポジトリを使用したくない場合は、[OndřejSurý](https://launchpad.net/~ondrej/+archive/ubuntu/php/)が提供するリポジトリをいつでも使用できます。
 
-Installation of the repo:
+リポジトリのインストール:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-and Phalcon:
+Phalconのインストール:
 
 ```php
 sudo apt-get install php-phalcon
@@ -276,7 +276,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <div class="alert alert-warning">
     <p>
-        This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+        この作業は、あなたがディストリビューションを変更したり安定板とナイトリーを選び直すといった事情がなければ、実施は一度だけしか必要ありません。
     </p>
 </div>
 
@@ -400,28 +400,28 @@ Windows で Phalcon を使用するためには、phalcon.dll をインストー
 
 利用可能な DLL は次のとおりです。
 
-| Architecture | バージョン | 種類                    |
-|:------------:|:-----:| --------------------- |
-|     x64      |  7.x  | スレッドセーフ               |
-|     x64      |  7.x  | Non Thread safe (NTS) |
-|     x86      |  7.x  | Thread safe           |
-|     x86      |  7.x  | Non Thread safe (NTS) |
-|     x64      |  5.6  | Thread safe           |
-|     x64      |  5.6  | Non Thread safe (NTS) |
-|     x86      |  5.6  | Thread safe           |
-|     x86      |  5.6  | Non Thread safe (NTS) |
-|     x64      |  5.5  | Thread safe           |
-|     x64      |  5.5  | Non Thread safe (NTS) |
-|     x86      |  5.5  | Thread safe           |
-|     x86      |  5.5  | Non Thread safe (NTS) |
+| Architecture | バージョン | 種類             |
+|:------------:|:-----:| -------------- |
+|     x64      |  7.x  | スレッドセーフ        |
+|     x64      |  7.x  | 非スレッドセーフ (NTS) |
+|     x86      |  7.x  | スレッドセーフ        |
+|     x86      |  7.x  | 非スレッドセーフ (NTS) |
+|     x64      |  5.6  | スレッドセーフ        |
+|     x64      |  5.6  | 非スレッドセーフ (NTS) |
+|     x86      |  5.6  | スレッドセーフ        |
+|     x86      |  5.6  | 非スレッドセーフ (NTS) |
+|     x64      |  5.5  | スレッドセーフ        |
+|     x64      |  5.5  | 非スレッドセーフ (NTS) |
+|     x86      |  5.5  | スレッドセーフ        |
+|     x86      |  5.5  | 非スレッドセーフ (NTS) |
 
-Edit your php.ini file and then append at the end:
+php.ini ファイルを編集し、末尾に下記を追記します:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-Restart your webserver.
+Webサーバを再起動します。
 
 <a name='installation-sources'></a>
 
@@ -549,7 +549,7 @@ make
 make install
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+次に、PHP ini ファイルに`extension=phalcon.so` と追記し、拡張モジュールが読み込まれるように、Webサーバを再起動する必要があります。
 
 <a name='installation-testing'></a>
 Webサーバのルートに次のような小さなスクリプトを作成します:

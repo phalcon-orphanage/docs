@@ -13,16 +13,16 @@
           <a href="#factory">Factory</a>
         </li>
         <li>
-          <a href="#output-fragments">Caching Output Fragments</a>
+          <a href="#output-fragments">出力フラグメントのキャッシュ</a>
         </li>
         <li>
-          <a href="#arbitrary-data">Caching Arbitrary Data</a> 
+          <a href="#arbitrary-data">任意データのキャッシュ</a> 
           <ul>
             <li>
-              <a href="#backend-file-example">File Backend Example</a>
+              <a href="#backend-file-example">ファイルバックエンドの例</a>
             </li>
             <li>
-              <a href="#backend-memcached-example">Memcached Backend Example</a>
+              <a href="#backend-memcached-example">Memcached バックエンドの例</a>
             </li>
           </ul>
         </li>
