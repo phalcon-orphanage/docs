@@ -121,17 +121,17 @@
 
 # Volt: テンプレートエンジン
 
-Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
+Volt は、PHPのためにCで記述されており、とても速く、デザイナにも扱いやすいテンプレート言語です。 簡単にビューを書けるように、ヘルパーセットを提供します。 Volt はPhalconの他のコンポーネントと高度に統合されていて、アプリケーションの中で独立したコンポーネントとしても利用できます。
 
 ![](/images/content/volt.jpg)
 
-Volt is inspired by [Jinja](http://jinja.pocoo.org/), originally created by [Armin Ronacher](https://github.com/mitsuhiko). Therefore many developers will be in familiar territory using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to while working with Phalcon.
+Volt は、[Armin Ronacher](https://github.com/mitsuhiko)によって作られた[Jinja](http://jinja.pocoo.org/)にインスパイアされています。 そのため、よく似た既存のテンプレートエンジンと同じ記法を採用しており、利用する多くの開発者にとって親しみやすくなっています。 Voltの記法と機能は、Phalconを使う開発者が慣れ親しんだ多くの要素を備え、当然パフォーマンスの点においても強化されています。
 
 <a name='introduction'></a>
 
 ## はじめに
 
-Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
+Voltによるビューは純粋なPHPコードにコンパイルされるので、基本的には手でPHPコードを書く労力を節約することができます:
 
 ```twig
 {# app/views/products/show.volt #}
@@ -152,7 +152,7 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
 ## Voltを使うために
 
-As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
+他のテンプレートエンジンと同じように、新しい拡張子や標準的な拡張子`.phtml`を用いて、Voltをビューコンポーネントに登録することもできます:
 
 ```php
 <?php
@@ -160,7 +160,7 @@ As with other templating engines, you may register Volt in the view component, u
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Volt;
 
-// Register Volt as a service
+// Voltをサービスとして登録
 $di->set(
     'voltService',
     function ($view, $di) {
@@ -177,7 +177,7 @@ $di->set(
     }
 );
 
-// Register Volt as template engine
+// Voltをテンプレートエンジンとして登録
 $di->set(
     'view',
     function () {
@@ -196,7 +196,7 @@ $di->set(
 );
 ```
 
-Use the standard `.phtml` extension:
+標準的な`.phtml`という拡張子を用いる:
 
 ```php
 <?php
@@ -208,7 +208,7 @@ $view->registerEngines(
 );
 ```
 
-You don't have to specify the Volt Service in the DI; you can also use the Volt engine with the default settings:
+DIでVoltサービスを指定する必要はありません。 デフォルトの設定でVoltエンジンを利用することができます:
 
 ```php
 <?php
@@ -220,7 +220,7 @@ $view->registerEngines(
 );
 ```
 
-` If you do not want to reuse Volt as a service, you can pass an anonymous function to register the engine instead of a service name:
+サービスとしてVoltを再利用したくない場合は、無名関数を渡すことでサービス名の代わりにエンジンを登録することができます。
 
 ```php
 <?php
@@ -228,7 +228,7 @@ $view->registerEngines(
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Volt;
 
-// Register Volt as template engine with an anonymous function
+// 無名関数によってVoltをテンプレートエンジンとして登録
 $di->set(
     'view',
     function () {
@@ -253,25 +253,25 @@ $di->set(
 );
 ```
 
-The following options are available in Volt:
+Voltで使用できるオプション:
 
-| Option              | Description                                                                                                                  | Default |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `compiledPath`      | コンパイルされたPHPテンプレートが保存される書き込み可能なパス                                                                                             | `./`    |
-| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
-| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
-| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
-| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
-| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
-| `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false` |
+| オプション               | 説明                                                         | デフォルト   |
+| ------------------- | ---------------------------------------------------------- | ------- |
+| `compiledPath`      | コンパイルされたPHPテンプレートが保存される書き込み可能なパス                           | `./`    |
+| `compiledExtension` | コンパイル済みのPHPファイルに追加する拡張子                                    | `.php`  |
+| `compiledSeparator` | Voltはコンパイルされたディレクトリに単一のファイルを作成するために、この区切り文字/を¥に置き換えます      | `%%`    |
+| `stat`              | テンプレートファイルとコンパイルされたパスの違いが存在するかどうかをPhalconがチェックするかどうか       | `true`  |
+| `compileAlways`     | リクエスト毎にテンプレートをコンパイルしなければならない場合、または変更が必要な場合にのみ、Voltに伝えてください | `false` |
+| `prefix`            | コンパイルパスのテンプレートにプレフィックスを付加することができます                         | `null`  |
+| `autoescape`        | HTMLの自動エスケープをグローバルに利用可能にする                                 | `false` |
 
-The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
+コンパイルパスは、上記のオプションに従って生成されます。開発者がコンパイルパスを自由に定義したい場合は、無名関数を使用して生成することができます。この関数は、viewsディレクトリのテンプレートへの相対パスを受け取ります。 次の例は、コンパイルパスを動的に変更する方法を示しています:
 
 ```php
 <?php
 
-// Just append the .php extension to the template path
-// leaving the compiled templates in the same directory
+// .php拡張子をテンプレートパスに追加するだけ
+// コンパイルされたテンプレートは同じディレクトリに残す
 $volt->setOptions(
     [
         'compiledPath' => function ($templatePath) {
@@ -280,7 +280,7 @@ $volt->setOptions(
     ]
 );
 
-// Recursively create the same structure in another directory
+// 他のディレクトリに同じ構造で作成
 $volt->setOptions(
     [
         'compiledPath' => function ($templatePath) {
@@ -298,11 +298,11 @@ $volt->setOptions(
 
 <a name='basic-usage'></a>
 
-## Basic Usage
+## 基本的な使い方
 
-A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% ... %}` is used to execute statements such as for-loops or assign values and `{{ ... }}`, prints the result of an expression to the template.
+ビューは、VoltやPHP、HTMLのコードで構成されます。 Voltモードでは特別なデリミタが使用できます。 `{% ... %}`は、forループや値の代入などの構文を実行するために使用され、`{{ }}`が式の結果をテンプレートに出力します。
 
-Below is a minimal template that illustrates a few basics:
+下記は、いくつかの基本を示す最小限のテンプレートです:
 
 ```twig
 {# app/views/posts/show.phtml #}
@@ -335,7 +335,7 @@ Below is a minimal template that illustrates a few basics:
 </html>
 ```
 
-Using `Phalcon\Mvc\View` you can pass variables from the controller to the views. In the above example, four variables were passed to the view: `show_navigation`, `menu`, `title` and `post`:
+`Phalcon\Mvc\View`を使うことで、コントローラからビューへ変数を渡すことができます。 上記の例では次の変数がビューに渡されています。`show_navigation`、`menu`、`title`、`post`:
 
 ```php
 <?php
@@ -368,7 +368,7 @@ class PostsController extends Controller
 
 ## 変数
 
-Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
+オブジェクト変数は、`foo.bar`というシンタックスを用いてアクセスできる属性を持っています。もし配列を渡すなら、`foo['bar']`という角括弧のシンタックスを使ってください。
 
 ```twig
 {{ post.title }} {# for $post->title #}
@@ -379,7 +379,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 ## フィルター
 
-Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
+変数は、フォーマットしたり、フィルタを用いて加工することができます。変数にフィルタを適用するには、パイプ演算子`|`を使います:
 
 ```twig
 {{ post.title|e }}
@@ -387,9 +387,9 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 {{ name|capitalize|trim }}
 ```
 
-The following is the list of available built-in filters in Volt:
+以下は、Voltで利用可能な、ビルトインのフィルタのリストです:
 
-| Filter             | Description                                                                                                                        |
+| フィルター              | 説明                                                                                                                                 |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `abs`              | Applies the [abs](http://php.net/manual/en/function.abs.php) PHP function to a value.                                              |
 | `capitalize`       | Capitalizes a string by applying the [ucwords](http://php.net/manual/en/function.ucwords.php) PHP function to the value            |
@@ -411,14 +411,14 @@ The following is the list of available built-in filters in Volt:
 | `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](http://php.net/manual/en/function.nl2br.php) |
 | `right_trim`       | Applies the [rtrim](http://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                  |
 | `slashes`          | Applies the [slashes](http://php.net/manual/en/function.slashes.php) PHP function to the value. Escaping values                    |
-| `sort`             | Sorts an array using the PHP function [asort](http://php.net/manual/en/function.asort.php)                                         |
-| `stripslashes`     | Applies the [stripslashes](http://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes  |
-| `striptags`        | Applies the [striptags](http://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags             |
-| `trim`             | Applies the [trim](http://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                    |
-| `upper`            | Change the case of a string to uppercase                                                                                           |
-| `url_encode`       | Applies the [urlencode](http://php.net/manual/en/function.urlencode.php) PHP function to the value                                 |
+| `sort`             | PHP 関数 [asort](http://php.net/manual/en/function.asort.php) を使用して配列をソートします。                                                        |
+| `stripslashes`     | [stripslashes](http://php.net/manual/en/function.stripslashes.php) PHP 関数を値に適用して、エスケープされた引用符を削除します。                                |
+| `striptags`        | [striptags](http://php.net/manual/en/function.striptags.php) PHP 関数を値に適用して、HTMLタグを削除します。                                           |
+| `trim`             | [trim](http://php.net/manual/en/function.trim.php) PHP 関数を値に適用して、余分な半角スペースを削除します。                                                  |
+| `upper`            | 文字列を大文字に変更します。                                                                                                                     |
+| `url_encode`       | [urlencode](http://php.net/manual/en/function.urlencode.php) PHP 関数を値に適用します。                                                       |
 
-Examples:
+例:
 
 ```twig
 {# e or escape filter #}
@@ -482,7 +482,7 @@ Examples:
 
 ## コメント
 
-Comments may also be added to a template using the `{# ... #}` delimiters. All text inside them is just ignored in the final output:
+コメントも、`{# ... #}`というデリミタを用いることで、テンプレートに含めることができます。このデリミタの内側にあるテキストはすべて、最終的な出力の際に無視されます:
 
 ```twig
 {# note: this is a comment
@@ -492,15 +492,15 @@ Comments may also be added to a template using the `{# ... #}` delimiters. All t
 
 <a name='control-structures'></a>
 
-## List of Control Structures
+## 制御構文の一覧
 
-Volt provides a set of basic but powerful control structures for use in templates:
+Volt には、テンプレートで使用するための基本的かつ強力な制御構文が用意されています。
 
 <a name='control-structures-for'></a>
 
-### For
+### for文
 
-Loop over each item in a sequence. The following example shows how to traverse a set of 'robots' and print his/her name:
+シーケンス中のそれぞれのアイテムを繰り返し処理します。以下の例では、「robots」のセットを横断して処理し、彼/彼女らの名前を表示する方法を示しています:
 
 ```twig
 <h1>Robots</h1>
@@ -513,7 +513,7 @@ Loop over each item in a sequence. The following example shows how to traverse a
 </ul>
 ```
 
-for-loops can also be nested:
+forループは入れ子にすることもできます:
 
 ```twig
 <h1>Robots</h1>
@@ -524,7 +524,7 @@ for-loops can also be nested:
 {% endfor %}
 ```
 
-You can get the element `keys` as in the PHP counterpart using the following syntax:
+以下のシンタックスを用いることで、PHPにおける要素の`keys`を得ることができます:
 
 ```twig
 {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
@@ -534,7 +534,7 @@ You can get the element `keys` as in the PHP counterpart using the following syn
 {% endfor %}
 ```
 
-An `if` evaluation can be optionally set:
+必要に応じて`if`の評価を設定することができます:
 
 ```twig
 {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
@@ -548,7 +548,7 @@ An `if` evaluation can be optionally set:
 {% endfor %}
 ```
 
-If an `else` is defined inside the `for`, it will be executed if the expression in the iterator result in zero iterations:
+もし、`for`の中で`else`を定義した場合は、イテレータの結果が 0回のときに、そこに記述した文が実行されるでしょう:
 
 ```twig
 <h1>Robots</h1>
@@ -572,9 +572,9 @@ Alternative syntax:
 
 <a name='control-structures-loops'></a>
 
-### Loop Controls
+### ループ制御
 
-The `break` and `continue` statements can be used to exit from a loop or force an iteration in the current block:
+`break`と`continue`文は、ループから抜けたり、現在のブロック内で強制的に次のイテレーションへ移ったりすることができます:
 
 ```twig
 {# skip the even robots #}
@@ -598,9 +598,9 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 
 <a name='control-structures-if'></a>
 
-### If
+### If文
 
-As PHP, an `if` statement checks if an expression is evaluated as true or false:
+PHPと同じように、`if`文は、条件式が true または false に評価されるかをチェックします:
 
 ```twig
 <h1>Cyborg Robots</h1>
@@ -613,7 +613,7 @@ As PHP, an `if` statement checks if an expression is evaluated as true or false:
 </ul>
 ```
 
-The else clause is also supported:
+else 文もサポートされています:
 
 ```twig
 <h1>Robots</h1>
@@ -628,7 +628,7 @@ The else clause is also supported:
 </ul>
 ```
 
-The `elseif` control flow structure can be used together with if to emulate a `switch` block:
+`switch`ブロックをエミュレートするifと一緒に、`elseif`制御フロー構造を使用することができます:
 
 ```twig
 {% if robot.type === 'cyborg' %}
@@ -644,9 +644,9 @@ The `elseif` control flow structure can be used together with if to emulate a `s
 
 ### ループ変数
 
-A special variable is available inside `for` loops providing you information about
+`for` ループで使用できる特別な変数の情報を提供します。
 
-| Variable         | Description                                                   |
+| 変数               | Description                                                   |
 | ---------------- | ------------------------------------------------------------- |
 | `loop.index`     | The current iteration of the loop. (1 indexed)                |
 | `loop.index0`    | The current iteration of the loop. (0 indexed)                |
@@ -656,7 +656,7 @@ A special variable is available inside `for` loops providing you information abo
 | `loop.last`      | True if in the last iteration.                                |
 | `loop.length`    | The number of items to iterate                                |
 
-Example:
+例:
 
 ```twig
 {% for robot in robots %}
@@ -681,7 +681,7 @@ Example:
 
 <a name='assignments'></a>
 
-## Assignments
+## 変数の割り当て
 
 Variables may be changed in a template using the instruction 'set':
 
@@ -705,27 +705,27 @@ Additionally, you can use compound assignment operators:
 {% set age *= 5 %}
 ```
 
-The following operators are available:
+次の演算子が使用できます。
 
-| Operator | Description               |
-| -------- | ------------------------- |
-| `=`      | Standard Assignment       |
-| `+=`     | Addition assignment       |
-| `-=`     | Subtraction assignment    |
-| `\*=`  | Multiplication assignment |
-| `/=`     | Division assignment       |
+| 演算子     | 説明                        |
+| ------- | ------------------------- |
+| `=`     | Standard Assignment       |
+| `+=`    | Addition assignment       |
+| `-=`    | Subtraction assignment    |
+| `\*=` | Multiplication assignment |
+| `/=`    | Division assignment       |
 
 <a name='expressions'></a>
 
-## Expressions
+## 条件式
 
-Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `{{` and `}}` delimiters:
+Voltは基本的な式をサポートします。この式にはリテラルと基本演算子が含まれます。式は評価でき、これらは`{{;crwdn;ht;1;ht;crwdn; and ;crwdn;ht;2;ht;crwdn;}}` 区切りを使用して表示されます。
 
 ```twig
 {{ (1 + 1) * 2 }}
 ```
 
-If an expression needs to be evaluated without be printed the `do` statement can be used:
+表示を行わずに式を評価する必要がある場合、 `do` ステートメントを使用します。
 
 ```twig
 {% do (1 + 1) * 2 %}
@@ -735,9 +735,9 @@ If an expression needs to be evaluated without be printed the `do` statement can
 
 ### 定数
 
-The following literals are supported:
+以下のリテラルがサポートされています。
 
-| Filter               | Description                                                        |
+| フィルター                | Description                                                        |
 | -------------------- | ------------------------------------------------------------------ |
 | `'this is a string'` | Text between double quotes or single quotes are handled as strings |
 | `100.25`             | Numbers with a decimal part are handled as doubles/floats          |
@@ -750,7 +750,7 @@ The following literals are supported:
 
 ### 配列
 
-Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list of values in square brackets:
+あなたが PHP 5.3 または 5.4以上を使用している場合、角括弧 [] でリストの値を囲んで配列を作成できます。
 
 ```twig
 {# Simple array #}
@@ -766,7 +766,7 @@ Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list
 {{ ['first': 1, 'second': 4/2, 'third': '3'] }}
 ```
 
-Curly braces also can be used to define arrays or hashes:
+中括弧 {} もまた配列やハッシュを定義するために使用します。
 
 ```twig
 {% set myArray = {'Apple', 'Banana', 'Orange'} %}
@@ -777,7 +777,7 @@ Curly braces also can be used to define arrays or hashes:
 
 ### 計算
 
-You may make calculations in templates using the following operators:
+次の演算子を使用して、テンプレートで計算を行えます。
 
 | Operator | Description                                                             |
 |:--------:| ----------------------------------------------------------------------- |
@@ -791,7 +791,7 @@ You may make calculations in templates using the following operators:
 
 ### 比較
 
-The following comparison operators are available:
+次の比較演算が使用できます。
 
 |  Operator  | Description                                                       |
 |:----------:| ----------------------------------------------------------------- |
@@ -809,7 +809,7 @@ The following comparison operators are available:
 
 ### 演算子
 
-Logic operators are useful in the `if` expression evaluation to combine multiple tests:
+論理演算子は、複数のテストを組合せた`if` 式で使用します。
 
 |  Operator  | Description                                                       |
 |:----------:| ----------------------------------------------------------------- |
@@ -822,7 +822,7 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 
 ### その他演算子
 
-Additional operators seen the following operators are available:
+以下の追加の演算子が利用できます。
 
 | Operator          | Description                                                                     |
 | ----------------- | ------------------------------------------------------------------------------- |
@@ -836,7 +836,7 @@ Additional operators seen the following operators are available:
 | `++`              | Increments a value                                                              |
 | `--`              | Decrements a value                                                              |
 
-The following example shows how to use operators:
+演算子を使用方法を示します。
 
 ```twig
 {% set robots = ['Voltron', 'Astro Boy', 'Terminator', 'C3PO'] %}
@@ -852,7 +852,7 @@ The following example shows how to use operators:
 
 ## Tests
 
-Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
+テストは、その変数が期待された有効な値を持っているかを調べるために使用できます。演算子の`is`はテストの実行に使用します。
 
 ```twig
 {% set robots = ['1': 'Voltron', '2': 'Astro Boy', '3': 'Terminator', '4': 'C3PO'] %}
@@ -864,7 +864,7 @@ Tests can be used to test if a variable has a valid expected value. The operator
 {% endfor %}
 ```
 
-The following built-in tests are available in Volt:
+Voltで使用できるビルトインのテスト:
 
 | Test          | Description                                                          |
 | ------------- | -------------------------------------------------------------------- |
@@ -879,7 +879,7 @@ The following built-in tests are available in Volt:
 | `scalar`      | Checks if value is scalar (not an array or object)                   |
 | `type`        | Checks if a value is of the specified type                           |
 
-More examples:
+その他の例
 
 ```twig
 {% if robot is defined %}
@@ -930,7 +930,7 @@ More examples:
 
 ## Macros
 
-Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
+マクロは、テンプレート内のロジックを再利用するために使用できます。マクロは PHP関数として機能し、パラメータを受け取り、値を返すことができます。
 
 ```twig
 {# Macro 'display a list of links to related topics' #}
@@ -997,7 +997,7 @@ And receive optional parameters:
 
 ## Using Tag Helpers
 
-Volt is highly integrated with `Phalcon\Tag`, so it's easy to use the helpers provided by that component in a Volt template:
+Voltは高度に`Phalcon\Tag`と統合しています。そのためVoltテンプレートのコンポーネントによって提供されたヘルパーを簡単に使用できます。
 
 ```twig
 {{ javascript_include('js/jquery.js') }}
@@ -1015,7 +1015,7 @@ Volt is highly integrated with `Phalcon\Tag`, so it's easy to use the helpers pr
 {{ end_form() }}
 ```
 
-The following PHP is generated:
+以下のPHPが生成できます。
 
 ```php
 <?php echo Phalcon\Tag::javascriptInclude('js/jquery.js') ?>
@@ -1063,7 +1063,7 @@ To call a `Phalcon\Tag` helper, you only need to call an uncamelized version of 
 
 ## Functions
 
-The following built-in functions are available in Volt:
+Voltで使用できるビルトインの関数:
 
 | Name          | Description                                                 |
 | ------------- | ----------------------------------------------------------- |

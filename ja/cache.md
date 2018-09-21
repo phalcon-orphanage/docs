@@ -10,19 +10,19 @@
           <a href="#caching-behavior">キャッシュの振る舞い</a>
         </li>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">ファクトリー</a>
         </li>
         <li>
-          <a href="#output-fragments">Caching Output Fragments</a>
+          <a href="#output-fragments">出力フラグメントのキャッシュ</a>
         </li>
         <li>
-          <a href="#arbitrary-data">Caching Arbitrary Data</a> 
+          <a href="#arbitrary-data">任意データのキャッシュ</a> 
           <ul>
             <li>
-              <a href="#backend-file-example">File Backend Example</a>
+              <a href="#backend-file-example">ファイルバックエンドの例</a>
             </li>
             <li>
-              <a href="#backend-memcached-example">Memcached Backend Example</a>
+              <a href="#backend-memcached-example">Memcached バックエンドの例</a>
             </li>
           </ul>
         </li>
@@ -56,7 +56,7 @@
               <a href="#adapters-backend-factory">Factory</a>
             </li>
             <li>
-              <a href="#adapters-backend-custom">Implementing your own Backend adapters</a>
+              <a href="#adapters-backend-custom">独自のバックエンドアダプターを実装</a>
             </li>
             <li>
               <a href="#adapters-backend-file">File Backend Options</a>
@@ -103,11 +103,11 @@ Phalcon は、頻繁に使用される、またはすでに処理されたデー
 
 * 毎回同じ結果 (変更頻度の低い) を返す複雑な計算をしている
 * 多くのヘルパを利用し、生成される出力がほとんど同じである
-* You are accessing database data constantly and these data rarely change
+* 常にデータベースのデータにアクセスしており、これらのデータはほとんど変わらない
 
 <div class='alert alert-warning'>
     <p>
-        <strong>メモ</strong> キャッシュを実装した後でも、一定の期間でキャッシュのヒット率を確認するようにしましょう。 This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.
+        <strong>メモ</strong> キャッシュを実装した後でも、一定の期間でキャッシュのヒット率を確認するようにしましょう。 特にMemcacheやApcの場合、バックエンドが提供する関連ツールを使用すると、これを簡単に行うことができます。
     </p>
 </div>
 
@@ -596,7 +596,7 @@ $backendCache = Factory::load($options);
 
 <a name='adapters-backend-custom'></a>
 
-### Implementing your own Backend adapters
+### 独自のバックエンドアダプターを実装
 
 The `Phalcon\Cache\BackendInterface` interface must be implemented in order to create your own backend adapters or extend the existing ones.
 
