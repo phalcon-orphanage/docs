@@ -4,13 +4,13 @@
       <a href="#overview">Working with Namespaces</a> 
       <ul>
         <li>
-          <a href="#setting-up">Setting up the framework</a>
+          <a href="#setting-up">フレームワークの設定</a>
         </li>
         <li>
-          <a href="#controllers">Controllers in Namespaces</a>
+          <a href="#controllers">コントローラでの名前空間</a>
         </li>
         <li>
-          <a href="#models">Models in Namespaces</a>
+          <a href="#models">モデルでの名前空間</a>
         </li>
       </ul>
     </li>
@@ -21,15 +21,15 @@
 
 # Working with Namespaces
 
-[Namespaces](http://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
+[名前空間](http://php.net/manual/en/language.namespaces.php) は、クラス名の衝突を避けるために使用できます。つまり、もし同じクラス名を持つコントローラがアプリケーションに 2 つ存在する場合は、それらを区別するために名前空間を使用することができます。 名前空間はバンドルやモジュールの作成に役立ちます。
 
 <a name='setting-up'></a>
 
-## Setting up the framework
+## フレームワークの設定
 
 Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:
 
-Use an autoload strategy that takes into account the namespaces, for example with `Phalcon\Loader`:
+`Phalcon\Loader` などの名前空間を考慮したオートロードを利用する場合:
 
 ```php
 <?php
@@ -96,7 +96,7 @@ $di->set(
 
 <a name='controllers'></a>
 
-## Controllers in Namespaces
+## コントローラでの名前空間
 
 The following example shows how to implement a controller that use namespaces:
 
@@ -123,7 +123,7 @@ class UsersController extends Controller
 
 <a name='models'></a>
 
-## Models in Namespaces
+## モデルでの名前空間
 
 Take the following into consideration when using models in namespaces:
 

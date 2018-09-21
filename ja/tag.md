@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">View Helpers (Tags)</a> 
+      <a href="#overview">ビューヘルパー (タグ)</a> 
       <ul>
         <li>
           <a href="#document-type">Document Type of Content</a>
@@ -68,7 +68,7 @@
 
 <a name='overview'></a>
 
-# View Helpers (Tags)
+# ビューヘルパー (タグ)
 
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the `Phalcon\Tag` component which in turn offers view helpers to generate HTML markup.
 

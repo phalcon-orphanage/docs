@@ -214,7 +214,7 @@ $filter->sanitize(
 
 ## Agregando filtros
 
-You can add your own filters to `Phalcon\Filter`. The filter function could be an anonymous function:
+Es posible agregar tus propios filtros en `Phalcon\Filter`. La función de filtro puede ser una función anónima:
 
 ```php
 <?php
@@ -266,7 +266,7 @@ $filteredIp = $filter->sanitize('127.0.0.1', 'ipv4');
 
 ## Filtrado y limpieza complejas
 
-PHP itself provides an excellent filter extension you can use. Check out its documentation: [Data Filtering at PHP Documentation](http://www.php.net/manual/en/book.filter.php)
+PHP ya provee una excelente extensión de filtros. Puedes revisar la documentación: [Filtrado de datos en la documentación de PHP](http://www.php.net/manual/en/book.filter.php)
 
 <a name='custom'></a>
 
