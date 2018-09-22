@@ -3,48 +3,48 @@
     <li>
       <a href="#overview">Overview</a> <ul>
         <li>
-          <a href="#dependencies">Dependencies</a>
+          <a href="#dependencies">依存関係</a>
         </li>
         <li>
-          <a href="#services">Services</a>
+          <a href="#services">サービス</a>
         </li>
         <li>
-          <a href="#installation">Installation</a> <ul>
+          <a href="#installation">インストール</a> <ul>
             <li>
-              <a href="#installation-composer">With Composer (recommended)</a>
+              <a href="#installation-composer">Composerを使う (推奨)</a>
             </li>
             <li>
-              <a href="#installation-git">With Git</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#configuration">Configuration</a>
-        </li>
-        <li>
-          <a href="#usage">Usage</a>
-        </li>
-        <li>
-          <a href="#setup">Set up</a>
-        </li>
-        <li>
-          <a href="#logs">Logs</a>
-        </li>
-        <li>
-          <a href="#environment-variables">Environment variables</a> <ul>
-            <li>
-              <a href="#environment-variables-web">Web environment</a>
-            </li>
-            <li>
-              <a href="#environment-variables-phpmyadmin">phpMyAdmin variables</a>
+              <a href="#installation-git">Gitを使う</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#xdebug">Xdebug Remote debugger (PhpStorm)</a>
+          <a href="#configuration">設定</a>
         </li>
         <li>
-          <a href="#troubleshooting">Troubleshooting</a> <ul>
+          <a href="#usage">使い方</a>
+        </li>
+        <li>
+          <a href="#setup">設定</a>
+        </li>
+        <li>
+          <a href="#logs">ログ</a>
+        </li>
+        <li>
+          <a href="#environment-variables">環境変数</a> <ul>
+            <li>
+              <a href="#environment-variables-web">Web 環境</a>
+            </li>
+            <li>
+              <a href="#environment-variables-phpmyadmin">phpMyAdmin 変数</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#xdebug">Xdebug リモート デバッガー (PhpStorm)</a>
+        </li>
+        <li>
+          <a href="#troubleshooting">トラブルシューティング</a> <ul>
             <li>
               <a href="#troubleshooting-startup">Startup or linking errors</a>
             </li>
@@ -52,12 +52,12 @@
               <a href="#troubleshooting-full-reset">Full reset</a>
             </li>
             <li>
-              <a href="#troubleshooting-dependencies">Updating dependencies</a>
+              <a href="#troubleshooting-dependencies">依存関係の更新</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#versions">Versions</a>
+          <a href="#versions">バージョン</a>
         </li>
       </ul>
     </li>
@@ -66,7 +66,7 @@
 
 <a name='overview'></a>
 
-# Overview
+# 概要
 
 Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
 

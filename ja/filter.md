@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Filtering and Sanitizing</a> <ul>
+      <a href="#overview">フィルタとサニタイズ</a> <ul>
         <li>
           <a href="#types">Types of Built-in Filters</a>
         </li>
@@ -36,7 +36,7 @@
 
 <a name='overview'></a>
 
-# Filtering and Sanitizing
+# フィルタとサニタイズ
 
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
@@ -89,7 +89,7 @@ const FILTER_UPPER      = "upper";
 
 <a name='sanitizing'></a>
 
-## Sanitizing data
+## データのサニタイズ
 
 サニタイズは、ユーザーまたはアプリケーションに必要ではないまたは望まれていない、特定の文字を値から削除するプロセスです。 入力値のサニタイズによって、アプリケーションの整合性を確かめます。
 
@@ -169,9 +169,9 @@ class ProductsController extends Controller
 
 <a name='filtering-data'></a>
 
-## Filtering data
+## データのフィルタリング
 
-In addition to sanitizing, `Phalcon\Filter` also provides filtering by removing or modifying input data to the format we expect.
+サニタイズに加えて、`Phalcon\Filter` は、入力データを私達が期待する形式に修正したり、削除したりすることで、フィルタリング機能を提供します。
 
 ```php
 <?php
@@ -214,7 +214,7 @@ $filter->sanitize(
 
 ## Adding filters
 
-You can add your own filters to `Phalcon\Filter`. The filter function could be an anonymous function:
+自身のフィルターを`Phalcon\Filter`に追加できます。このフィルタ関数は無名関数でも問題ありません。:
 
 ```php
 <?php
@@ -270,6 +270,6 @@ PHP itself provides an excellent filter extension you can use. Check out its doc
 
 <a name='custom'></a>
 
-## Implementing your own Filter
+## 独自のフィルターを実装
 
-The `Phalcon\FilterInterface` interface must be implemented to create your own filtering service replacing the one provided by Phalcon.
+Phalconが提供するフィルタリングサービスの代わりに独自のフィルタリングサービスを作成するには、`Phalcon\FilterInterface`インターフェイスを実装する必要があります。
