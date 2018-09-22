@@ -1,45 +1,45 @@
-<h1>Interface <strong>Phalcon\\Cli\\Router\\RouteInterface</strong></h1>
+# Interface **Phalcon\\Cli\\Router\\RouteInterface**
 
-<p><a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/router/routeinterface.zep" class="btn btn-default btn-sm" mark="crwd-mark">Source on GitHub</a></p>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cli/router/routeinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-<h2>Methods</h2>
+## Methods
 
-<p>abstract public  <strong>compilePattern</strong> (<em>mixed</em> $pattern)</p>
+abstract public **compilePattern** (*mixed* $pattern)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>reConfigure</strong> (<em>mixed</em> $pattern, [<em>mixed</em> $paths])</p>
+abstract public **reConfigure** (*mixed* $pattern, [*mixed* $paths])
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getName</strong> ()</p>
+abstract public **getName** ()
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>setName</strong> (<em>mixed</em> $name)</p>
+abstract public **setName** (*mixed* $name)
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getRouteId</strong> ()</p>
+abstract public **getRouteId** ()
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getPattern</strong> ()</p>
+abstract public **getPattern** ()
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getCompiledPattern</strong> ()</p>
+abstract public **getCompiledPattern** ()
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getPaths</strong> ()</p>
+abstract public **getPaths** ()
 
-<p>...</p>
+...
 
-<p>abstract public  <strong>getReversedPaths</strong> ()</p>
+abstract public **getReversedPaths** ()
 
-<p>...</p>
+...
 
-<p>abstract public static  <strong>reset</strong> ()</p>
+abstract public static **reset** ()
 
-<p>...</p>
+...
