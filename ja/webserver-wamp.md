@@ -44,7 +44,7 @@ Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. I
 extension=php_phalcon.dll
 ```
 
-and save it.
+それから保存します。
 
 ![](/images/content/webserver-wamp-2.png)
 
@@ -54,7 +54,7 @@ Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.
 extension=php_phalcon.dll
 ```
 
-and save it.
+それから保存します。
 
 Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose "Restart All Services" from the pop-up menu. Check out that tray icon will become green again.
 
@@ -64,11 +64,11 @@ Open your browser to navigate to `http://localhost`. The WAMP welcome page will 
 
 ![](/images/content/webserver-wamp-4.png)
 
-Congratulations! You are now phlying with Phalcon.
+おめでとう、あなたはPhalconで飛び立つことができました！
 
 <a name='related'></a>
 
 ## Related Guides
 
 * [General Installation](/[[language]]/[[version]]/installation)
-* [Installation on XAMPP](/[[language]]/[[version]]/webserver-xampp)
+* [XAMPP にインストール](/[[language]]/[[version]]/webserver-xampp)
