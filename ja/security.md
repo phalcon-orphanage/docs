@@ -26,17 +26,17 @@
 
 # セキュリティ
 
-This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
+このコンポーネントは、パスワードハッシュやCross-Site Request Forgery ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)) 対策などの, 一般的なセキュリティタスクで開発者を支援します。
 
 <a name='hashing'></a>
 
 ## パスワードのハッシュ
 
-Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods '[md5](http://php.net/manual/en/function.md5.php)' and '[sha1](http://php.net/manual/en/function.sha1.php)'. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](http://en.wikipedia.org/wiki/Rainbow_table).
+プレーンテキストでパスワードを保存することは、セキュリティ上の習慣としては不適切です。 データベースへのアクセス権を持つ人は、すぐにすべてのユーザーアカウントにアクセスし、権限がなくても行動することができてしまいます。 この問題に対処するために、多くのアプリケーションは、有名な一方向ハッシュ メソッド'[md5](http://php.net/manual/en/function.md5.php)' や '[sha1](http://php.net/manual/en/function.sha1.php) 'を使用します。 しかし、ハードウェアは毎日進化し、より高速になり、これらのアルゴリズムは総当たり攻撃に対して脆弱になっています。 これらの攻撃は、[レインボーテーブル](http://en.wikipedia.org/wiki/Rainbow_table) とも呼ばれます。
 
-The security component uses [bcrypt](http://en.wikipedia.org/wiki/Bcrypt) as the hashing algorithm. Thanks to the '[Eksblowfish](http://en.wikipedia.org/wiki/Bcrypt#Algorithm)' key setup algorithm, we can make the password encryption as `slow` as we want. Slow algorithms minimize the impact of bruce force attacks.
+セキュリティコンポーネントは、ハッシュアルゴリズムに[bcrypt](http://en.wikipedia.org/wiki/Bcrypt) を採用しています。 その ' [Eksblowfish'](http://en.wikipedia.org/wiki/Bcrypt#Algorithm) キー設定アルゴリズムのおかげで パスワードの暗号化を望むだけ`遅く` できます。 遅いアルゴリズムは、総当たり攻撃の影響を最小限に抑えます。
 
-Bcrypt, is an adaptive hash function based on the Blowfish symmetric block cipher cryptographic algorithm. It also introduces a security or work factor, which determines how slow the hash function will be to generate the hash. This effectively negates the use of FPGA or GPU hashing techniques.
+Bcrypt はBlowfish 対称ブロック暗号アルゴリズムに基づく、アダプティブハッシュ関数です。 また、ハッシュ関数がハッシュを生成する速度を決定する、セキュリティまたは作業係数も導入されています。 This effectively negates the use of FPGA or GPU hashing techniques.
 
 Should hardware becomes faster in the future, we can increase the work factor to mitigate this.
 
