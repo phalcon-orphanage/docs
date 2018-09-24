@@ -1,22 +1,22 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Returning Responses</a> 
+      <a href="#overview">レスポンスを返す</a> 
       <ul>
         <li>
-          <a href="#working-with-headers">Working with Headers</a>
+          <a href="#working-with-headers">HTTPヘッダの利用</a>
         </li>
         <li>
-          <a href="#redirections">Making Redirections</a>
+          <a href="#redirections">リダイレクト</a>
         </li>
         <li>
-          <a href="#http-cache">HTTP Cache</a> 
+          <a href="#http-cache">HTTPキャッシュ</a> 
           <ul>
             <li>
-              <a href="#http-cache-expiration-time">Setting an Expiration Time</a>
+              <a href="#http-cache-expiration-time">期限の設定</a>
             </li>
             <li>
-              <a href="#http-cache-control">Cache-Control</a>
+              <a href="#http-cache-control">キャッシュコントロール</a>
             </li>
             <li>
               <a href="#http-cache-etag">E-Tag</a>
@@ -30,29 +30,29 @@
 
 <a name='overview'></a>
 
-# Returning Responses
+# レスポンスを返す
 
-Part of the HTTP cycle is returning responses to clients. `Phalcon\Http\Response` is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
+HTTP サイクルの一部は、クライアントへレスポンスを返すことです。 `Phalcon\Http\Response` は、このタスクを達成するために設計されたPhalconコンポーネントです。 HTTP 応答は通常、ヘッダーとボディで構成されます。 以下に、基本的な使い方の例を示します。
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Getting a response instance
+// Responseインスタンスの取得
 $response = new Response();
 
-// Set status code
+// ステータスコードの設定
 $response->setStatusCode(404, 'Not Found');
 
-// Set the content of the response
+// レスポンスの内容の設定
 $response->setContent("Sorry, the page doesn't exist");
 
-// Send response to the client
+// クライアントにレスポンスを送信
 $response->send();
 ```
 
-If you are using the full MVC stack there is no need to create responses manually. However, if you need to return a response directly from a controller's action follow this example:
+完全な MVC スタックを使用している場合、手動で反応を作成する必要はありません。しかし、コントローラーのアクションから直接応答を返す必要がある場合この例に従います。
 
 ```php
 <?php
@@ -64,17 +64,17 @@ class FeedController extends Controller
 {
     public function getAction()
     {
-        // Getting a response instance
+        // Responseインスタンスの取得
         $response = new Response();
 
-        $feed = // ... Load here the feed
+        $feed = // ... ここでfeedをロード
 
-        // Set the content of the response
+        // レスポンスの内容をセット
         $response->setContent(
             $feed->asString()
         );
 
-        // Return the response
+        // レスポンスを返す
         return $response;
     }
 }
@@ -82,63 +82,63 @@ class FeedController extends Controller
 
 <a name='working-with-headers'></a>
 
-## Working with Headers
+## HTTPヘッダの利用
 
-Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status, type of response and much more.
+ヘッダーはHTTPレスポンスの重要な部分です。 HTTPステータス、レスポンスタイプなどのレスポンスの状態に関する有用な情報が含まれています。
 
-You can set headers in the following way:
+次のようにしてヘッダを設定できます:
 
 ```php
 <?php
 
-// Setting a header by its name
+// 名前でヘッダーを指定
 $response->setHeader('Content-Type', 'application/pdf');
 $response->setHeader('Content-Disposition', "attachment; filename='downloaded.pdf'");
 
-// Setting a raw header
+// 直接ヘッダーを指定
 $response->setRawHeader('HTTP/1.1 200 OK');
 ```
 
-A `Phalcon\Http\Response\Headers` bag internally manages headers. This class retrieves the headers before sending it to client:
+`Phalcon\Http\Response\Headers` バッグは内部でヘッダを管理します。このクラスはクライアントに送信する前にヘッダを取得します。
 
 ```php
 <?php
 
-// Get the headers bag
+// ヘッダーバッグの取得
 $headers = $response->getHeaders();
 
-// Get a header by its name
+// 名前でヘッダーを取得
 $contentType = $headers->get('Content-Type');
 ```
 
 <a name='redirections'></a>
 
-## Making Redirections
+## リダイレクト
 
-With `Phalcon\Http\Response` you can also execute HTTP redirections:
+`Phalcon\Http\Response` で HTTPリダイレクトを実行できます:
 
 ```php
 <?php
 
-// Redirect to the default URI
+// デフォルトのURIへリダイレクト
 $response->redirect();
 
-// Redirect to the local base URI
+// ローカルベースURIへリダイレクト
 $response->redirect('posts/index');
 
-// Redirect to an external URL
+// 外部 URL へリダイレクト
 $response->redirect('http://en.wikipedia.org', true);
 
-// Redirect specifying the HTTP status code
+// HTTP ステータスコードを指定してリダイレクト
 $response->redirect('http://www.example.com/new-location', true, 301);
 ```
 
-All internal URIs are generated using the [url](/[[language]]/[[version]]/url) service (by default `Phalcon\Mvc\Url`). This example demonstrates how you can redirect using a route you have defined in your application:
+[url](/[[language]]/[[version]]/url)サービス（デフォルトでは `Phalcon\Mvc\Url`）を使用して、すべての内部URIを生成します。 この例では、アプリケーションで定義したルートを使用してリダイレクトする方法を示します。
 
 ```php
 <?php
 
-// Redirect based on a named route
+// 名前付きルートでリダイレクト
 return $response->redirect(
     [
         'for'        => 'index-lang',
@@ -148,11 +148,11 @@ return $response->redirect(
 );
 ```
 
-Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
+現在のアクションに関連付けられたビューがある場合でも、`redirect`がビューを無効にするためレンダリングしません。
 
 <a name='http-cache'></a>
 
-## HTTP Cache
+## HTTPキャッシュ
 
 One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 
