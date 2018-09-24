@@ -36,11 +36,11 @@
 
 セキュリティコンポーネントは、ハッシュアルゴリズムに[bcrypt](http://en.wikipedia.org/wiki/Bcrypt) を採用しています。 その ' [Eksblowfish'](http://en.wikipedia.org/wiki/Bcrypt#Algorithm) キー設定アルゴリズムのおかげで パスワードの暗号化を望むだけ`遅く` できます。 遅いアルゴリズムは、総当たり攻撃の影響を最小限に抑えます。
 
-Bcrypt はBlowfish 対称ブロック暗号アルゴリズムに基づく、アダプティブハッシュ関数です。 また、ハッシュ関数がハッシュを生成する速度を決定する、セキュリティまたは作業係数も導入されています。 This effectively negates the use of FPGA or GPU hashing techniques.
+Bcrypt はBlowfish 対称ブロック暗号アルゴリズムに基づく、アダプティブハッシュ関数です。 また、ハッシュ関数がハッシュを生成する速度を決定する、セキュリティまたは作業係数も導入されています。 これは、FPGAまたはGPUのハッシュ技術の使用を効果的に無効にします。
 
-Should hardware becomes faster in the future, we can increase the work factor to mitigate this.
+将来的にハードウェアが高速化すれば、これを軽減するために作業係数を増やすことができます。
 
-This component offers a simple interface to use the algorithm:
+このコンポーネントでは、このアルゴリズムを使用するシンプルなインターフェイスを提供しています。
 
 ```php
 <?php
@@ -58,7 +58,7 @@ class UsersController extends Controller
 
         $user->login = $login;
 
-        // Store the password hashed
+        // パスワードのハッシュの保存
         $user->password = $this->security->hash($password);
 
         $user->save();
