@@ -65,25 +65,25 @@
 
 ## モデル同士のリレーション
 
-There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
+リレーションは4種類あります: 1対1、1対多、多対1、多対多です。 リレーションは1方向と双方向がありえます。それぞれ、(1対1モデルの) 単純なものから、(モデルを組合せた) 複雑なものがあります。 モデルマネージャーは、これらのリレーションの外部キー制約を管理します。これらの定義は、参照整合性と関連レコードのモデルへの簡単で迅速なアクセスに役立ちます。 リレーションの実装によって、一定の方法で各レコードから関連モデルのデータへ容易にアクセスできます。
 
 <a name='unidirectional'></a>
 
 ### 一方向の関係
 
-Unidirectional relations are those that are generated in relation to one another but not vice versa.
+一方向の関係は、一方が他方へ関係するのに対して逆は成り立ちません。
 
 <a name='bidirectional'></a>
 
 ### 双方向の関係
 
-The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
+双方向の関係は両方のモデルで関係が構築されます。そしてそれぞれのモデルは互いに逆の関係を定義します。
 
 <a name='defining'></a>
 
 ### リレーションの定義
 
-In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
+Phalconでは、リレーションは モデルの`initialize()` メソッドによって定義しなければなりません。 `belongsTo()`, `hasOne()`, `hasMany()` や `hasManyToMany()` のメソッドは現在のモデルの一つまたは複数のフィールドと別のモデルのフィールドとの関係を定義します。 これらのメソッドは3つのパラメーターを必要とします: ローカルフィールド、参照モデル、参照フィールドです。
 
 | メソッド          | 説明        |
 | ------------- | --------- |
@@ -92,7 +92,7 @@ In Phalcon, relationships must be defined in the `initialize()` method of a mode
 | belongsTo     | n対1の関係を定義 |
 | hasManyToMany | n対nの関係を定義 |
 
-The following schema shows 3 tables whose relations will serve us as an example regarding relationships:
+次のスキーマでは、リレーションシップに関するサンプルとしてリレーションを持つ3つのテーブルを示しています。
 
 ```sql
 CREATE TABLE robots (
@@ -120,16 +120,16 @@ CREATE TABLE parts (
 );
 ```
 
-- The model `Robots` has many `RobotsParts`.
-- The model `Parts` has many `RobotsParts`.
-- The model `RobotsParts` belongs to both `Robots` and `Parts` models as a many-to-one relation.
-- The model `Robots` has a relation many-to-many to `Parts` through `RobotsParts`.
+- `Robots`モデルは、複数の`RobotsParts`を持つ。
+- `Parts`モデルは、複数の`RobotsParts`を持つ。
+- モデル`RobotsParts`は多対1の関係として、`Robots`と`Parts`モデルの両方に属します。
+- `Robots`モデルは `Parts` とn対nの関係があり、それは`RobotsParts`を経由しています。
 
-Check the EER diagram to understand better the relations:
+関係をよりよく理解するために、EER図を確認してください:
 
 ![](/images/content/models-relationships-eer-1.png)
 
-The models with their relations could be implemented as follows:
+この関係のあるモデルは次のように実装できます:
 
 ```php
 <?php
@@ -207,9 +207,9 @@ class RobotsParts extends Model
 }
 ```
 
-The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
+最初のパラメーターは、リレーションで使用されるローカルモデルのフィールドを示します。2 番目のパラメーターは参照先モデル、3番目は参照モデル内のフィールド名を示します。 また、配列を使用して、リレーションの複数のフィールドを定義できます。
 
-Many to many relationships require 3 models and define the attributes involved in the relationship:
+多対多リレーションは 3 つのモデルが必要です。また、そのリレーションの属性を定義します。
 
 ```php
 <?php
@@ -323,9 +323,9 @@ class Parts extends Model
 }
 ```
 
-In the above we have a `Robots` model which has three properties. A unique `id`, a `name` and a `type` which defines what this robot is (mechnical, etc.); In the `Parts` model we also have a `name` for the part but also fields that tie the robot and its type with a specific part.
+上の例で、`Robots`モデルは3つの属性を持っています。 一意の`id`、`name` と `type` はそのロボットが何か(mechnicalなど) を定義します。`Parts` モデルの`name` は部品の名前ですが、その他のフィールドはそのロボットとそのtypeに結びついており特定の部品であることを意味しています。
 
-Using the relationships options discussed earlier, binding one field between the two models will not return the results we need. For that we can use an array in our relationship:
+前述のリレーションオプションを使用すると、2つのモデル間で1つのフィールドをバインドしても、必要な結果は返されません。 そのために、私たちの関係に配列を使うことができます:
 
 ```php
 <?php
@@ -357,7 +357,7 @@ class Robots extends Model
 }
 ```
 
-**NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
+**注意** リレーションのフィールドマッピングは1対1です。いいかえれば、参照元モデルの最初のフィールドは対象となる配列の最初のフィールドにマッチします。 フィールド数は、参照元モデルと対象モデルの両方で同等でなければなりません。
 
 <a name='taking-advantage-of'></a>
 
@@ -914,7 +914,7 @@ $robots->getParts()->update(
 );
 ```
 
-`update` also accepts an anonymous function to filter what records must be updated:
+`update` は無名関数を使用して、どのレコードを更新するかをフィルタすることができます。
 
 ```php
 <?php
@@ -969,12 +969,12 @@ foreach ($parts as $part) {
 $robots->getParts()->delete();
 ```
 
-`delete()` also accepts an anonymous function to filter what records must be deleted:
+`delete()` は無名関数を使用して、どのレコードを削除するかをフィルタすることができます。
 
 ```php
 <?php
 
-// Delete only whose stock is greater or equal than zero
+// ストックが0以上のもののみを削除する
 $robots->getParts()->delete(
     function ($part) {
         if ($part->stock < 0) {
