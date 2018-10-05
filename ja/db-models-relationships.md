@@ -1,60 +1,60 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Relationships</a> 
+      <a href="#overview">モデルのリレーション</a> 
       <ul>
         <li>
-          <a href="#relationships">Relationships between Models</a> 
+          <a href="#relationships">モデル同士のリレーション</a> 
           <ul>
             <li>
-              <a href="#unidirectional">Unidirectional relationships</a>
+              <a href="#unidirectional">一方向のリレーション</a>
             </li>
             <li>
-              <a href="#bidirectional">Bidirectional relations</a>
+              <a href="#bidirectional">双方向のリレーション</a>
             </li>
             <li>
-              <a href="#defining">Defining relationships</a>
+              <a href="#defining">リレーションの定義</a>
               <ul>
                 <li>
-                  <a href="#multiple-fields">Multiple field relationships</a>
+                  <a href="#multiple-fields">複数フィールドのリレーション</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#taking-advantage-of">Taking advantage of relationships</a>
+              <a href="#taking-advantage-of">リレーションの活用</a>
             </li>
             <li>
-              <a href="#aliases">Aliasing Relationships</a> 
+              <a href="#aliases">リレーションのエイリアス</a> 
               <ul>
                 <li>
-                  <a href="#getters-vs-methods">Magic Getters vs. Explicit methods</a>
+                  <a href="#getters-vs-methods">Getterのマジックメソッド vs 明示的なメソッド</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#conditionals">Conditionals</a>
+              <a href="#conditionals">条件</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#virtual-foreign-keys">Virtual Foreign Keys</a> 
+          <a href="#virtual-foreign-keys">仮想外部キー</a> 
           <ul>
             <li>
-              <a href="#cascade-restrict-actions">Cascade/Restrict actions</a>
+              <a href="#cascade-restrict-actions">カスケード/制限アクション</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#storing-related-records">Storing Related Records</a>
+          <a href="#storing-related-records">関連レコードの保存</a>
         </li>
         <li>
-          <a href="#operations-over-resultsets">Operations over Resultsets</a> 
+          <a href="#operations-over-resultsets">結果セットの操作</a> 
           <ul>
             <li>
-              <a href="#updating-related-records">Updating related records</a>
+              <a href="#updating-related-records">関連レコードの更新</a>
             </li>
             <li>
-              <a href="#deleting-related-records">Deleting related records</a>
+              <a href="#deleting-related-records">関連レコードの削除</a>
             </li>
           </ul>
         </li>
@@ -65,40 +65,40 @@
 
 <a name='overview'></a>
 
-# Model Relationships
+# モデルのリレーション
 
 <a name='relationships'></a>
 
-## Relationships between Models
+## モデル同士のリレーション
 
-There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
+リレーションは4種類あります: 1対1、1対多、多対1、多対多です。 リレーションは1方向と双方向がありえます。それぞれ、(1対1モデルの) 単純なものから、(モデルを組合せた) 複雑なものがあります。 モデルマネージャーは、これらのリレーションの外部キー制約を管理します。これらの定義は、参照整合性と関連レコードのモデルへの簡単で迅速なアクセスに役立ちます。 リレーションの実装によって、一定の方法で各レコードから関連モデルのデータへ容易にアクセスできます。
 
 <a name='unidirectional'></a>
 
-### Unidirectional relationships
+### 一方向のリレーション
 
-Unidirectional relations are those that are generated in relation to one another but not vice versa.
+一方向の関係は、一方が他方へ関係するのに対して逆は成り立ちません。
 
 <a name='bidirectional'></a>
 
-### Bidirectional relations
+### 双方向のリレーション
 
-The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
+双方向の関係は両方のモデルで関係が構築されます。そしてそれぞれのモデルは互いに逆の関係を定義します。
 
 <a name='defining'></a>
 
-### Defining relationships
+### リレーションの定義
 
-In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
+Phalconでは、リレーションは モデルの`initialize()` メソッドによって定義しなければなりません。 `belongsTo()`, `hasOne()`, `hasMany()` や `hasManyToMany()` のメソッドは現在のモデルの一つまたは複数のフィールドと別のモデルのフィールドとの関係を定義します。 これらのメソッドは3つのパラメーターを必要とします: ローカルフィールド、参照モデル、参照フィールドです。
 
-| Method        | Description                |
-| ------------- | -------------------------- |
-| hasMany       | Defines a 1-n relationship |
-| hasOne        | Defines a 1-1 relationship |
-| belongsTo     | Defines a n-1 relationship |
-| hasManyToMany | Defines a n-n relationship |
+| メソッド          | 説明        |
+| ------------- | --------- |
+| hasMany       | 1対nの関係を定義 |
+| hasOne        | 1対1の関係を定義 |
+| belongsTo     | n対1の関係を定義 |
+| hasManyToMany | n対nの関係を定義 |
 
-The following schema shows 3 tables whose relations will serve us as an example regarding relationships:
+次のスキーマでは、リレーションシップに関するサンプルとしてリレーションを持つ3つのテーブルを示しています。
 
 ```sql
 CREATE TABLE robots (
@@ -126,16 +126,16 @@ CREATE TABLE parts (
 );
 ```
 
-* The model `Robots` has many `RobotsParts`.
-* The model `Parts` has many `RobotsParts`.
-* The model `RobotsParts` belongs to both `Robots` and `Parts` models as a many-to-one relation.
-* The model `Robots` has a relation many-to-many to `Parts` through `RobotsParts`.
+* `Robots`モデルは、複数の`RobotsParts`を持つ。
+* `Parts`モデルは、複数の`RobotsParts`を持つ。
+* モデル`RobotsParts`は多対1の関係として、`Robots`と`Parts`モデルの両方に属します。
+* `Robots`モデルは `Parts` とn対nの関係があり、それは`RobotsParts`を経由しています。
 
-Check the EER diagram to understand better the relations:
+関係をよりよく理解するために、EER図を確認してください:
 
 ![](/images/content/models-relationships-eer-1.png)
 
-The models with their relations could be implemented as follows:
+この関係のあるモデルは次のように実装できます:
 
 ```php
 <?php
@@ -213,9 +213,9 @@ class RobotsParts extends Model
 }
 ```
 
-The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
+最初のパラメーターは、リレーションで使用されるローカルモデルのフィールドを示します。2 番目のパラメーターは参照先モデル、3番目は参照モデル内のフィールド名を示します。 また、配列を使用して、リレーションの複数のフィールドを定義できます。
 
-Many to many relationships require 3 models and define the attributes involved in the relationship:
+多対多リレーションは 3 つのモデルが必要です。また、そのリレーションの属性を定義します。
 
 ```php
 <?php
@@ -245,9 +245,9 @@ class Robots extends Model
 
 <a name='multiple-fields'></a>
 
-#### Multiple field relationships
+#### 複数フィールドのリレーション
 
-There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
+フィールドの組み合わせだけでなく、複数の関係を定義する必要がある場合もあります。 次の例を考えてみましょう:
 
 ```php
 <?php
@@ -266,7 +266,7 @@ class Robots extends Model
 }
 ```
 
-and
+と
 
 ```php
 <?php
@@ -287,9 +287,9 @@ class Parts extends Model
 }
 ```
 
-In the above we have a `Robots` model which has three properties. A unique `id`, a `name` and a `type` which defines what this robot is (mechnical, etc.); In the `Parts` model we also have a `name` for the part but also fields that tie the robot and its type with a specific part.
+上の例で、`Robots`モデルは3つの属性を持っています。 一意の`id`、`name` と `type` はそのロボットが何か(mechnicalなど) を定義します。`Parts` モデルの`name` は部品の名前ですが、その他のフィールドはそのロボットとそのtypeに結びついており特定の部品であることを意味しています。
 
-Using the relationships options discussed earlier, binding one field between the two models will not return the results we need. For that we can use an array in our relationship:
+前述のリレーションオプションを使用すると、2つのモデル間で1つのフィールドをバインドしても、必要な結果は返されません。 そのために、私たちの関係に配列を使うことができます:
 
 ```php
 <?php
@@ -313,7 +313,7 @@ class Robots extends Model
             Parts::class,
             ['robotId', 'robotType'],
             [
-                'reusable' => true, // cache related data
+                'reusable' => true, // 関連データのキャッシュ
                 'alias'    => 'parts',
             ]
         );
@@ -321,11 +321,11 @@ class Robots extends Model
 }
 ```
 
-**NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
+**注意** リレーションのフィールドマッピングは1対1です。いいかえれば、参照元モデルの最初のフィールドは対象となる配列の最初のフィールドにマッチします。 フィールド数は、参照元モデルと対象モデルの両方で同等でなければなりません。
 
 <a name='taking-advantage-of'></a>
 
-### Taking advantage of relationships
+### リレーションの活用
 
 When explicitly defining the relationships between models, it is easy to find related records for a particular record.
 
@@ -352,7 +352,7 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst();
 
-// All the related records in RobotsParts
+// RobotsPartsのすべての関連レコード
 $robotsParts = $robot->robotsParts;
 ```
 
@@ -365,10 +365,10 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst();
 
-// All the related records in RobotsParts
+// RobotsPartsの関連するすべてのレコード
 $robotsParts = $robot->getRobotsParts();
 
-// Passing parameters
+// パラメータ渡し
 $robotsParts = $robot->getRobotsParts(
     [
         'limit' => 5,
@@ -385,11 +385,11 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst(2);
 
-// Robots model has a 1-n (hasMany)
-// relationship to RobotsParts then
+// Robots モデルは RobotsPartsは
+// 1対n (hasMany) の関係です。
 $robotsParts = $robot->robotsParts;
 
-// Only parts that match conditions
+// 条件にマッチした partsのみ
 $robotsParts = $robot->getRobotsParts(
     [
         'created_at = :date:',
@@ -401,8 +401,8 @@ $robotsParts = $robot->getRobotsParts(
 
 $robotPart = RobotsParts::findFirst(1);
 
-// RobotsParts model has a n-1 (belongsTo)
-// relationship to RobotsParts then
+// RobotsParts モデルは RobotsPartsと
+//  n対1 (belongsTo)の関係です。
 $robot = $robotPart->robots;
 ```
 
@@ -415,8 +415,8 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst(2);
 
-// Robots model has a 1-n (hasMany)
-// relationship to RobotsParts, then
+// Robots モデルは RobotsPartsと
+// 1対n (hasMany)の関係です。
 $robotsParts = RobotsParts::find(
     [
         'robots_id = :id:',
@@ -426,7 +426,7 @@ $robotsParts = RobotsParts::find(
     ]
 );
 
-// Only parts that match conditions
+// 条件にマッチした Partsのみ
 $robotsParts = RobotsParts::find(
     [
         'robots_id = :id: AND created_at = :date:',
@@ -439,8 +439,8 @@ $robotsParts = RobotsParts::find(
 
 $robotPart = RobotsParts::findFirst(1);
 
-// RobotsParts model has a n-1 (belongsTo)
-// relationship to RobotsParts then
+// RobotsParts モデルは RobotsPartsと
+// n対1 (belongsTo)の関係です。
 $robot = Robots::findFirst(
     [
         'id = :id:',
@@ -453,7 +453,7 @@ $robot = Robots::findFirst(
 
 The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
 
-| Type             | Description                                                                                                                | Implicit Method |
+| タイプ              | 説明                                                                                                                         | 暗黙のメソッド名        |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | Belongs-To       | Returns a model instance of the related record directly                                                                    | findFirst       |
 | Has-One          | Returns a model instance of the related record directly                                                                    | findFirst       |
@@ -474,7 +474,7 @@ echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
 
 <a name='aliases'></a>
 
-### Aliasing Relationships
+### リレーションのエイリアス
 
 To explain better how aliases work, let's check the following example:
 
@@ -588,7 +588,7 @@ $similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 
 <a name='getters-vs-methods'></a>
 
-#### Magic Getters vs. Explicit methods
+#### Getterのマジックメソッド vs 明示的なメソッド
 
 Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). To overcome that, you can use a class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
 
@@ -624,7 +624,7 @@ class Robots extends Model
 
 <a name='conditionals'></a>
 
-## Conditionals
+## 条件
 
 You can also create relationships based on conditionals. When querying based on the relationship the condition will be automatically appended to the query:
 
@@ -718,7 +718,7 @@ $unpaidInvoices = $company->getRelated(
 
 <a name='virtual-foreign-keys'></a>
 
-## Virtual Foreign Keys
+## 仮想外部キー
 
 By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
 
@@ -821,7 +821,7 @@ class RobotsParts extends Model
 
 <a name='cascade-restrict-actions'></a>
 
-### Cascade/Restrict actions
+### カスケード/制限アクション
 
 Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
 
@@ -859,7 +859,7 @@ The above code set up to delete all the referenced records (parts) if the master
 
 <a name='storing-related-records'></a>
 
-## Storing Related Records
+## 関連レコードの保存
 
 Magic properties can be used to store a record and its related properties:
 
@@ -930,7 +930,7 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 <a name='operations-over-resultsets'></a>
 
-## Operations over Resultsets
+## 結果セットの操作
 
 If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
 
@@ -956,9 +956,9 @@ $result = $type->save();
 
 <a name='updating-related-records'></a>
 
-### Updating related records
+### 関連レコードの更新
 
-Instead of doing this:
+こうする代わりに:
 
 ```php
 <?php
@@ -981,7 +981,7 @@ foreach ($parts as $part) {
 }
 ```
 
-you can do this:
+以下のようにできます:
 
 ```php
 <?php
@@ -994,7 +994,7 @@ $robots->getParts()->update(
 );
 ```
 
-`update` also accepts an anonymous function to filter what records must be updated:
+`update` は無名関数を使用して、どのレコードを更新するかをフィルタすることができます。
 
 ```php
 <?php
@@ -1004,7 +1004,7 @@ $data = [
     'updated_at' => time(),
 ];
 
-// Update all the parts except those whose type is basic
+// typeがbasicのもの以外のすべてのカラムを更新
 $robots->getParts()->update(
     $data,
     function ($part) {
@@ -1019,9 +1019,9 @@ $robots->getParts()->update(
 
 <a name='deleting-related-records'></a>
 
-### Deleting related records
+### 関連レコードの削除
 
-Instead of doing this:
+こうする代わりに:
 
 ```php
 <?php
@@ -1041,7 +1041,7 @@ foreach ($parts as $part) {
 }
 ```
 
-you can do this:
+以下のようにできます:
 
 ```php
 <?php
@@ -1049,12 +1049,12 @@ you can do this:
 $robots->getParts()->delete();
 ```
 
-`delete()` also accepts an anonymous function to filter what records must be deleted:
+`delete()` は無名関数を使用して、どのレコードを削除するかをフィルタすることができます。
 
 ```php
 <?php
 
-// Delete only whose stock is greater or equal than zero
+// ストックが0以上のもののみを削除する
 $robots->getParts()->delete(
     function ($part) {
         if ($part->stock < 0) {
