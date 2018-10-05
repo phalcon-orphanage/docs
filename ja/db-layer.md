@@ -1,67 +1,67 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Database Abstraction Layer</a> <ul>
+      <a href="#overview">データベース抽象化レイヤー</a> <ul>
         <li>
-          <a href="#adapters">Database Adapters</a> <ul>
+          <a href="#adapters">データベースアダプター</a> <ul>
             <li>
-              <a href="#adapters-factory">Factory</a>
+              <a href="#adapters-factory">ファクトリー</a>
             </li>
             <li>
-              <a href="#adapters-custom">Implementing your own adapters</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#dialects">Database Dialects</a> <ul>
-            <li>
-              <a href="#dialects-custom">Implementing your own dialects</a>
+              <a href="#adapters-custom">独自のアダプターを実装</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#connection">Connecting to Databases</a>
+          <a href="#dialects">データベースの方言</a> <ul>
+            <li>
+              <a href="#dialects-custom">独自の方言を実装します</a>
+            </li>
+          </ul>
         </li>
         <li>
-          <a href="#options">Setting up additional PDO options</a>
+          <a href="#connection">データベースへの接続</a>
         </li>
         <li>
-          <a href="#finding-rows">Finding Rows</a>
+          <a href="#options">PDO の追加オプションを設定</a>
         </li>
         <li>
-          <a href="#binding-parameters">Binding Parameters</a>
+          <a href="#finding-rows">行の検索</a>
         </li>
         <li>
-          <a href="#crud">Inserting/Updating/Deleting Rows</a>
+          <a href="#binding-parameters">パラメーターのバインド</a>
         </li>
         <li>
-          <a href="#transactions">Transactions and Nested Transactions</a>
+          <a href="#crud">行の挿入、更新、および削除</a>
         </li>
         <li>
-          <a href="#events">Database Events</a>
+          <a href="#transactions">トランザクションとネストしたトランザクション</a>
         </li>
         <li>
-          <a href="#profiling">Profiling SQL Statements</a>
+          <a href="#events">データベースのイベント</a>
         </li>
         <li>
-          <a href="#logging-statements">Logging SQL Statements</a>
+          <a href="#profiling">SQL ステートメントのプロファイリング</a>
         </li>
         <li>
-          <a href="#logger-custom">Implementing your own Logger</a>
+          <a href="#logging-statements">SQL ステートメントのロギング</a>
+        </li>
+        <li>
+          <a href="#logger-custom">独自のロガーを実装</a>
         </li>
         <li>
           <a href="#describing-tables">Describing Tables/Views</a>
         </li>
         <li>
-          <a href="#tables">Creating/Altering/Dropping Tables</a> <ul>
+          <a href="#tables">テーブルの作成/変更/削除</a> <ul>
             <li>
-              <a href="#tables-create">Creating Tables</a>
+              <a href="#tables-create">テーブルの作成</a>
             </li>
             <li>
-              <a href="#tables-altering">Altering Tables</a>
+              <a href="#tables-altering">テーブルの変更</a>
             </li>
             <li>
-              <a href="#tables-dropping">Dropping Tables</a>
+              <a href="#tables-dropping">テーブルの削除</a>
             </li>
           </ul>
         </li>
@@ -72,27 +72,27 @@
 
 <a name='overview'></a>
 
-# Database Abstraction Layer
+# データベース抽象化レイヤー
 
-`Phalcon\Db` is the component behind `Phalcon\Mvc\Model` that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
+`Phalcon\Db` は、フレームワークのモデル層で動作する`Phalcon\Mvc\Model`の背後にあるコンポーネントです。 完全にC言語で書かれた、データベースシステムでのための、独立した高度な抽象化レイヤーで構成されています。
 
-This component allows for a lower level database manipulation than using traditional models.
+このコンポーネントは従来のモデルを使用するよりも、データベースを低レベルで操作することができます。
 
 <a name='adapters'></a>
 
-## Database Adapters
+## データベースアダプター
 
-This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO_ to connect to databases. The following database engines are supported:
+このコンポーネントはアダプターを使用して、特定のデータベースシステムの詳細をカプセル化します。Phalconでは、PDO_ を使用してデータベースに接続します。次のデータベースエンジンがサポートされます:
 
-| Class                                   | Description                                                                                                                                                                                                                          |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Phalcon\Db\Adapter\Pdo\Mysql`      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    |
-| `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
-| `Phalcon\Db\Adapter\Pdo\Sqlite`     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     |
+| クラス                                     | 説明                                                                                                             |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Db\Adapter\Pdo\Mysql`      | 世界で最も使用されているリレーショナルデータベース管理システム（RDBMS）は、多数のデータベースへのマルチユーザーアクセスを提供するサーバーとして動作します                                |
+| `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL は、強力なオープンソースのリレーショナルデータベースシステムです。 これは15年以上の積極的な開発と実績のあるアーキテクチャを備えており、信頼性、データの完全性、正確性について高い評価を得ています。 |
+| `Phalcon\Db\Adapter\Pdo\Sqlite`     | SQLiteは、自己完結型でサーバレスでゼロ設定のトランザクション型SQLデータベースエンジンを実装したソフトウェアライブラリです                                              |
 
 <a name='adapters-factory'></a>
 
-### Factory
+### ファクトリー
 
 <a name='factory'></a>
 
@@ -117,31 +117,31 @@ $db = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### 独自のアダプターを実装
 
-The `Phalcon\Db\AdapterInterface` interface must be implemented in order to create your own database adapters or extend the existing ones.
+独自のデータベースアダプターを作成したり、既存のデータベースアダプターを拡張するには、`Phalcon\Db\AdapterInterface`インターフェースを実装する必要があります。
 
 <a name='dialects'></a>
 
-## Database Dialects
+## データベースの方言
 
-Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
+Phalconは、各データベースエンジンの特定の詳細を方言にカプセル化します。 これらは共通の機能とSQLジェネレータをアダプタに提供します。
 
-| Class                              | Description                                         |
-| ---------------------------------- | --------------------------------------------------- |
-| `Phalcon\Db\Dialect\Mysql`      | SQL specific dialect for MySQL database system      |
-| `Phalcon\Db\Dialect\Postgresql` | SQL specific dialect for PostgreSQL database system |
-| `Phalcon\Db\Dialect\Sqlite`     | SQL specific dialect for SQLite database system     |
+| クラス                                | 説明                           |
+| ---------------------------------- | ---------------------------- |
+| `Phalcon\Db\Dialect\Mysql`      | MySQL データベースシステム向けのSQL方言     |
+| `Phalcon\Db\Dialect\Postgresql` | PostgreSQLデータベースシステム向けのSQL方言 |
+| `Phalcon\Db\Dialect\Sqlite`     | SQLiteデータベースシステム向けのSQL方言     |
 
 <a name='dialects-custom'></a>
 
-### Implementing your own dialects
+### 独自の方言を実装します
 
-The `Phalcon\Db\DialectInterface` interface must be implemented in order to create your own database dialects or extend the existing ones. You can also enhance your current dialect by adding more commands/methods that PHQL will understand.
+独自のデータベース方言を作成したり既存のデータベース方言を拡張するには、`Phalcon\Db\DialectInterface`インタフェースを実装する必要があります。 PHQLが理解するより多くのコマンドやメソッドを追加して、現在の方言を強化できます。
 
-For instance when using the MySQL adapter, you might want to allow PHQL to recognize the `MATCH ... AGAINST ...` syntax. We associate that syntax with `MATCH_AGAINST`
+例えば MySQL アダプターを使用する場合は、PHQL が認識できるように`MATCH... AGAINST...`構文を使うことできます。私達は、この構文を`MATCH_AGAINST` と関連付けます。
 
-We instantiate the dialect. We add the custom function so that PHQL understands what to do when it finds it during the parsing process. In the example below, we register a new custom function called `MATCH_AGAINST`. After that all we have to do is add the customized dialect object to our connection.
+方言をインスタンス化します。 カスタム関数を追加して、PHQLが、パースプロセス中にこれを検出したときに、理解できるようにします。 次の例では、`MATCH_AGAINST` と呼ばれる新しいカスタム関数を登録します。 その後、カスタマイズされた方言オブジェクトをDBコネクションに追加するだけです。
 
 ```php
 <?php
@@ -174,7 +174,7 @@ $connection = new Connection(
 );
 ```
 
-We can now use this new function in PHQL, which in turn will translate it to the proper SQL syntax:
+PHQLでこの新しい関数を使用できます。この場合、これは適切なSQL構文に翻訳されます:
 
 ```php
 $phql = "
@@ -187,11 +187,11 @@ $posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
 
 <a name='connection'></a>
 
-## Connecting to Databases
+## データベースへの接続
 
-To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
+接続を作成するためには、アダプター クラスをインスタンス化する必要があります。 接続パラメーターの配列だけが必要です。 次の例は、必須またはオプションのパラメーターを渡す接続を作成する方法を示しています。
 
-##### MySQL Required elements
+##### MySQL 必須要素
 
 ```php
 <?php
@@ -204,19 +204,19 @@ $config = [
 ];
 ```
 
-##### MySQL Optional
+##### MySQL オプション
 
 ```php
 $config['persistent'] = false;
 ```
 
-##### MySQL Create a connection
+##### MySQLの接続を作成
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
 
-##### PostgreSQL Required elements
+##### PostgreSQL 必須要素
 
 ```php
 <?php
@@ -229,19 +229,19 @@ $config = [
 ];
 ```
 
-##### PostgreSQL Optional
+##### PostgreSQL オプション
 
 ```php
 $config['schema'] = 'public';
 ```
 
-##### PostgreSQL Create a connection
+##### PostgreSQLの接続を作成
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
 
-##### SQLite Required elements
+##### SQLite 必須要素
 
 ```php
 <?php
@@ -251,7 +251,7 @@ $config = [
 ];
 ```
 
-##### SQLite Create a connection
+##### SQLite接続を作成
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
@@ -259,9 +259,9 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 <a name='options'></a>
 
-## Setting up additional PDO options
+## PDO の追加オプションを設定
 
-You can set PDO options at connection time by passing the parameters `options`:
+`options`パラメータを渡すことで接続時にPDOオプションを設定できます:
 
 ```php
 <?php
@@ -282,9 +282,9 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
 
 <a name='finding-rows'></a>
 
-## Finding Rows
+## 行の検索
 
-`Phalcon\Db` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
+`Phalcon\Db` は、テーブルから行を照会するいくつかのメソッドを提供します。この場合、対象のデータベースエンジン固有のSQL構文が必要です:
 
 ```php
 <?php
@@ -353,7 +353,7 @@ echo $result->numRows();
 
 <a name='binding-parameters'></a>
 
-## Binding Parameters
+## パラメーターのバインド
 
 Bound parameters is also supported in `Phalcon\Db`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
 
@@ -526,7 +526,7 @@ $success = $connection->delete(
 
 <a name='transactions'></a>
 
-## Transactions and Nested Transactions
+## トランザクションとネストしたトランザクション
 
 Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
 
@@ -590,7 +590,7 @@ try {
 
 <a name='events'></a>
 
-## Database Events
+## データベースのイベント
 
 `Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
 
@@ -657,7 +657,7 @@ $eventsManager->attach(
 
 <a name='profiling'></a>
 
-## Profiling SQL Statements
+## SQL ステートメントのプロファイリング
 
 `Phalcon\Db` includes a profiling component called `Phalcon\Db\Profiler`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
 
@@ -751,7 +751,7 @@ $eventsManager->attach('db', $dbProfiler);
 
 <a name='logging-statements'></a>
 
-## Logging SQL Statements
+## SQL ステートメントのロギング
 
 Using high-level abstraction components such as `Phalcon\Db` to access a database, it is difficult to understand which statements are sent to the database system. `Phalcon\Logger` interacts with `Phalcon\Db`, providing logging capabilities on the database abstraction layer.
 
@@ -802,7 +802,7 @@ As above, the file `app/logs/db.log` will contain something like this:
 
 <a name='logger-custom'></a>
 
-## Implementing your own Logger
+## 独自のロガーを実装
 
 You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a string as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
 
@@ -865,13 +865,13 @@ $exists = $connection->viewExists('robots');
 
 <a name='tables'></a>
 
-## Creating/Altering/Dropping Tables
+## テーブルの作成/変更/削除
 
 Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
 
 <a name='tables-create'></a>
 
-### Creating Tables
+### テーブルの作成
 
 The following example shows how to create a table:
 
@@ -918,7 +918,7 @@ $connection->createTable(
 
 `Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class `Phalcon\Db\Column`. The table below shows the options available to define a column:
 
-| Option          | Description                                                                                                                                | Optional |
+| Option          | 説明                                                                                                                                         | Optional |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
 | `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below for a list)                                                               |    No    |
 | `primary`       | True if the column is part of the table's primary key                                                                                      |   Yes    |
@@ -944,7 +944,7 @@ $connection->createTable(
 
 The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
 
-| Index        | Description                                                                                                                            | Optional |
+| Index        | 説明                                                                                                                                     | Optional |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
 | `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |    No    |
 | `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |   Yes    |
@@ -953,7 +953,7 @@ The associative array passed in `Phalcon\Db::createTable()` can have the possibl
 
 <a name='tables-altering'></a>
 
-### Altering Tables
+### テーブルの変更
 
 As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. `Phalcon\Db` is limited by these constraints.
 
@@ -1001,7 +1001,7 @@ $connection->dropColumn(
 
 <a name='tables-dropping'></a>
 
-### Dropping Tables
+### テーブルの削除
 
 Examples on dropping tables:
 

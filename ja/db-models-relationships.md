@@ -241,9 +241,9 @@ class Robots extends Model
 
 #### パラメーター付きリレーション
 
-Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance you might want to only have a table called `parts` which has a field `type` describing the type of the part.
+アプリケーションのニーズに応じて、さまざまな動作を記述する、1つのテーブルにデータを格納することができます。 たとえば、`parts`という名前のテーブルを持つことができます。このテーブルには、パーツのタイプを記述するフィールド`type`があります。
 
-Using relationships, we can get only those parts that relate to our Robot that are of certain type. Defining that constraint in our relationship allows us to let the model do all the work.
+リレーションを使用して、特定のタイプのRobotに関連するpartsだけを取得することができます。 私たちのリレーションにその制約を定義することで、モデルにすべての作業をさせることができます。
 
 ```php
 <?php
@@ -604,7 +604,7 @@ class RobotsSimilar extends Model
 }
 ```
 
-With the aliasing we can get the related records easily:
+エイリアスを使用すると、関連するレコードを簡単に取得できます。
 
 ```php
 <?php
@@ -872,7 +872,7 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 ## 結果セットの操作
 
-If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
+結果セットが完全なオブジェクトで構成されている場合、結果セットは取得されたレコードに対して、簡単な方法で操作を実行することができます:
 
 <a name='updating-related-records'></a>
 
