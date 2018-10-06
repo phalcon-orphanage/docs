@@ -604,7 +604,7 @@ try {
 | `rollbackTransaction` | Antes de anular (roolback) una transacción                         |              No              |
 | `commitTransaction`   | Antes de que una finalizar (commit) una transacción                |              No              |
 
-Bind an EventsManager to a connection is simple, `Phalcon\Db` will trigger the events with the type `db`:
+Enlazarun EventsManager a una conexión es sencillo. `Phalcon\Db` activará los eventos con el tipo `db`:
 
 ```php
 <?php

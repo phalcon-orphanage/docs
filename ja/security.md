@@ -66,7 +66,7 @@ class UsersController extends Controller
 }
 ```
 
-We saved the password hashed with a default work factor. A higher work factor will make the password less vulnerable as its encryption will be slow. We can check if the password is correct as follows:
+デフォルトの作業係数でパスワードのハッシュを保存します。より高い作業係数により暗号化が遅くなれば、パスワードの脆弱性が低くなります。パスワードが正しいかどうかを次のように確認できます。
 
 ```php
 <?php
@@ -83,34 +83,34 @@ class SessionController extends Controller
         $user = Users::findFirstByLogin($login);
         if ($user) {
             if ($this->security->checkHash($password, $user->password)) {
-                // The password is valid
+                // パスワード有効
             }
         } else {
-            // To protect against timing attacks. Regardless of whether a user
-            // exists or not, the script will take roughly the same amount as
-            // it will always be computing a hash.
+            // タイミング攻撃への対応 ユーザーの有無に関わらず、
+            // このスクリプトは常にハッシュ計算と
+            // 同程度の時間をかける
             $this->security->hash(rand());
         }
 
-        // The validation has failed
+        // バリデーション失敗時
     }
 }
 ```
 
-The salt is generated using pseudo-random bytes with the PHP's function [openssl_random_pseudo_bytes](http://php.net/manual/en/function.openssl-random-pseudo-bytes.php) so is required to have the [openssl](http://php.net/manual/en/book.openssl.php) extension loaded.
+[openssl_random_pseudo_bytes](http://php.net/manual/en/function.openssl-random-pseudo-bytes.php)という PHPの関数により疑似乱数で saltを生成します。このためには [openssl](http://php.net/manual/en/book.openssl.php) 拡張モジュールのロードが必要です。
 
 <a name='csrf'></a>
 
 ## Cross-Site Request Forgery (CSRF) の保護
 
-This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
+これは、Webサイトやアプリケーションに対するもう1つの一般的な攻撃です。 ユーザーの登録やコメントの追加などのタスクを実行するように設計されたフォームは、この攻撃に対して脆弱です。
 
-The idea is to prevent the form values from being sent outside our application. To fix this, we generate a [random nonce](http://en.wikipedia.org/wiki/Cryptographic_nonce) (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:
+そのアイデアは、フォームの値がアプリケーションの外部に送信されないようにすることです。 この問題への対処として、各フォームで[random nonce](http://en.wikipedia.org/wiki/Cryptographic_nonce) （トークン）を生成し、トークンをセッションに保存します。それから、フォームから送信されたトークンと、セッションに保存していたトークンを比較して検証します: 
 
 ```php
 <?php echo Tag::form('session/login') ?>
 
-    <!-- Login and password inputs ... -->
+    <!-- ログイン と パスワードの入力 ... -->
 
     <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
         value='<?php echo $this->security->getToken() ?>'/>
@@ -118,7 +118,7 @@ The idea is to prevent the form values from being sent outside our application. 
 </form>
 ```
 
-Then in the controller's action you can check if the CSRF token is valid:
+このコントローラのアクションでは、CSRFトークンが有効かどうかを確認できます:
 
 ```php
 <?php
@@ -131,14 +131,14 @@ class SessionController extends Controller
     {
         if ($this->request->isPost()) {
             if ($this->security->checkToken()) {
-                // The token is OK
+                // トークンOK
             }
         }
     }
 }
 ```
 
-Remember to add a session adapter to your Dependency Injector, otherwise the token check won't work:
+セッションアダプターをあなたのDIに追加するのを忘れないでください。そうしないと、このトークンチェックは動作しません。
 
 ```php
 <?php
@@ -155,13 +155,13 @@ $di->setShared(
 );
 ```
 
-Adding a [captcha](http://www.google.com/recaptcha) to the form is also recommended to completely avoid the risks of this attack.
+[captcha](http://www.google.com/recaptcha)をフォームに追加することも、この攻撃のリスクを完全に回避できるのでお勧めです。
 
 <a name='setup'></a>
 
 ## コンポーネントの設定
 
-This component is automatically registered in the services container as `security`, you can re-register it to setup its options:
+このコンポーネントは`security`としてサービスコンテナに自動的に登録されます。オプションを設定するために再登録することができます:
 
 ```php
 <?php
@@ -173,7 +173,7 @@ $di->set(
     function () {
         $security = new Security();
 
-        // Set the password hashing factor to 12 rounds
+        // パスワードハッシュの係数を12ラウンドに設定
         $security->setWorkFactor(12);
 
         return $security;
@@ -186,7 +186,7 @@ $di->set(
 
 ## 乱数
 
-The `Phalcon\Security\Random` class makes it really easy to generate lots of types of random data.
+`Phalcon\Security\Random` クラスは、本当に簡単に、さまざまな種類のランダムなデータを生成します。
 
 ```php
 <?php
@@ -198,20 +198,20 @@ $random = new Random();
 // ...
 $bytes      = $random->bytes();
 
-// Generate a random hex string of length $len.
+// 長さ $len の ランダム16進数文字列の生成
 $hex        = $random->hex($len);
 
-// Generate a random base64 string of length $len.
+// 長さ $len のbase64文字列の生成
 $base64     = $random->base64($len);
 
-// Generate a random URL-safe base64 string of length $len.
+// 長さ $len の URL-safeなbase64文字列の生成
 $base64Safe = $random->base64Safe($len);
 
-// Generate a UUID (version 4).
-// See https://en.wikipedia.org/wiki/Universally_unique_identifier
+// UUID (version 4) の生成
+// 詳細については以下を参照してください https://en.wikipedia.org/wiki/Universally_unique_identifier
 $uuid       = $random->uuid();
 
-// Generate a random integer between 0 and $n.
+// 0 から $n の間の乱数の生成
 $number     = $random->number($n);
 ```
 
@@ -219,4 +219,4 @@ $number     = $random->number($n);
 
 ## 外部リソース
 
-- [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [Github](https://github.com/phalcon/vokuro)
+- [Vökuró](https://vokuro.phalconphp.com) はCSRFとパスワードハッシュ攻撃を避けるためのセキュリティコンポーネントを使うサンプルアプリケーションです。[Github](https://github.com/phalcon/vokuro)
