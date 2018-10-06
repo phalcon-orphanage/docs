@@ -574,7 +574,7 @@ Los adaptadores de backend disponibles para almacenar datos en cache son:
 | `Phalcon\Cache\Backend\Redis`        | Almacena datos en Redis.                                                  | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Almacena datos en XCache.                                                 | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
-##### **Nota** En PHP 7 para utilizar las clases de adaptadores base phalcon `apc` necesitastas instalar los paquetes `apcu` y `apcu_bc` desde pecl. Now in Phalcon 3.2.0 you can switch your `<em>\Apc` classes to `</em>\Apcu` and remove `apcu_bc`. Tenga en cuenta que en Phalcon 4 seguramente eliminaremos todas las clases `*\Apc`. {.alert.alert-warning}
+##### **Nota** En PHP 7 para utilizar las clases de adaptadores base phalcon `apc` necesitastas instalar los paquetes `apcu` y `apcu_bc` desde pecl. Ahora en Phalcon 3.2.0 puede cambiar su clases `*\Apc` a `*\Apcu` y eliminar `apcu_bc`. Tenga en cuenta que en Phalcon 4 seguramente eliminaremos todas las clases `*\Apc`. {.alert.alert-warning}
 
 <a name='adapters-backend-factory'></a>
 
