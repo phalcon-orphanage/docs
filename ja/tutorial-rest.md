@@ -188,7 +188,7 @@ class Robots extends Model
     {
         $validator = new Validation();
 
-        // Type must be: droid, mechanical or virtual
+        // typeはdroid、mechanical、virtualでなければならない
         $validator->add(
             "type",
             new InclusionIn(
@@ -203,7 +203,7 @@ class Robots extends Model
             )
         );
 
-        // Robot name must be unique
+        // Robotの名前はユニークでなけばならない。
         $validator->add(
             'name',
             new Uniqueness(
@@ -214,14 +214,14 @@ class Robots extends Model
             )
         );
 
-        // Year cannot be less than zero
+        // yearは0以下ではいけない
         if ($this->year < 0) {
             $this->appendMessage(
                 new Message('The year cannot be less than zero')
             );
         }
 
-        // Check if any messages have been produced
+        // メッセージが生成されたかを確認
         if ($this->validationHasFailed() === true) {
             return false;
         }
@@ -229,7 +229,7 @@ class Robots extends Model
 }
 ```
 
-Now, we must set up a connection to be used by this model and load it within our app [File: `index.php`]:
+このモデルで使用されるコネクションを設定し、アプリ内でロードする必要があります[ファイル: `index.php`]:
 
 ```php
 <?php
