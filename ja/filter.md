@@ -3,28 +3,28 @@
     <li>
       <a href="#overview">フィルタとサニタイズ</a> <ul>
         <li>
-          <a href="#types">Types of Built-in Filters</a>
+          <a href="#types">ビルトインフィルターの種類</a>
         </li>
         <li>
           <a href="#sanitizing">Sanitizing data</a>
         </li>
         <li>
-          <a href="#sanitizing-from-controllers">Sanitizing from Controllers</a>
+          <a href="#sanitizing-from-controllers">コントローラーからのサニタイズ</a>
         </li>
         <li>
-          <a href="#filtering-action-parameters">Filtering Action Parameters</a>
+          <a href="#filtering-action-parameters">アクションパラメーターのフィルタリング</a>
         </li>
         <li>
           <a href="#filtering-data">Filtering data</a>
         </li>
         <li>
-          <a href="#combining-filters">Combining Filters</a>
+          <a href="#combining-filters">フィルターの組合せ</a>
         </li>
         <li>
-          <a href="#adding-filters">Adding filters</a>
+          <a href="#adding-filters">フィルターの追加</a>
         </li>
         <li>
-          <a href="#complex-sanitization-filtering">Complex Sanitizing and Filtering</a>
+          <a href="#complex-sanitization-filtering">複雑なサニタイズとフィルタリング</a>
         </li>
         <li>
           <a href="#custom">Implementing your own Filter</a>
@@ -38,19 +38,19 @@
 
 # フィルタとサニタイズ
 
-Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
+ユーザー入力のサニタイズは、ソフトウェア開発の重要な部分です。 ユーザー入力を信頼したり無視してしまうと、アプリケーションのコンテンツ、主にユーザーデータ、またはアプリケーションがホストされているサーバーにも不正にアクセスさせてしまう可能性があります。
 
 ![](/images/content/filter-sql.png)
 
-[Full image on XKCD](http://xkcd.com/327)
+[XKCD の完全なイメージ](http://xkcd.com/327)
 
-The `Phalcon\Filter` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
+`Phalcon\Filter` コンポーネントは、一般的に使用されるフィルターとサニタイズヘルパーのデータのセットを提供します。またオブジェクト指向の PHP フィルター拡張機能ラッパーも提供します。
 
 <a name='types'></a>
 
-## Types of Built-in Filters
+## ビルトインフィルターの種類
 
-The following are the built-in filters provided by this component:
+このコンポーネントによって提供される、ビルドインフィルターを次に示します。
 
 | 名前        | 説明                                                                             |
 | --------- | ------------------------------------------------------------------------------ |
@@ -69,7 +69,7 @@ The following are the built-in filters provided by this component:
 
 コンポーネントが内部的に[filter_var](https://secure.php.net/manual/en/function.filter-var.php) PHP の関数を使用することに注意してください。
 
-Constants are available and can be used to define the type of filtering required:
+定数が利用可能であり、必要なフィルタリングのタイプを定義するために使用できます:
 
 ```php
 <?php
@@ -115,7 +115,7 @@ $filter->sanitize('!100a019.01a', 'float');
 
 <a name='sanitizing-from-controllers'></a>
 
-## Sanitizing from Controllers
+## コントローラーからのサニタイズ
 
 You can access a `Phalcon\Filter` object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
 
@@ -144,7 +144,7 @@ class ProductsController extends Controller
 
 <a name='filtering-action-parameters'></a>
 
-## Filtering Action Parameters
+## アクションパラメーターのフィルタリング
 
 The next example shows you how to sanitize the action parameters within a controller action:
 
@@ -189,7 +189,7 @@ $filter->sanitize('  Hello   ', 'trim');
 
 <a name='combining-filters'></a>
 
-## Combining Filters
+## フィルターの組合せ
 
 You can also run multiple filters on a string at the same time by passing an array of filter identifiers as the second parameter:
 
@@ -212,7 +212,7 @@ $filter->sanitize(
 
 <a name='adding-filters'></a>
 
-## Adding filters
+## フィルターの追加
 
 自身のフィルターを`Phalcon\Filter`に追加できます。このフィルタ関数は無名関数でも問題ありません。:
 
@@ -264,7 +264,7 @@ $filteredIp = $filter->sanitize('127.0.0.1', 'ipv4');
 
 <a name='complex-sanitization-filtering'></a>
 
-## Complex Sanitizing and Filtering
+## 複雑なサニタイズとフィルタリング
 
 PHP itself provides an excellent filter extension you can use. Check out its documentation: [Data Filtering at PHP Documentation](http://www.php.net/manual/en/book.filter.php)
 
