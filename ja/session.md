@@ -1,31 +1,31 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Storing data in the Session</a> <ul>
+      <a href="#overview">セッションにデータを保存する</a> <ul>
         <li>
-          <a href="#start">Starting the Session</a> <ul>
+          <a href="#start">セッションの開始</a> <ul>
             <li>
-              <a href="#start-factory">Factory</a>
+              <a href="#start-factory">ファクトリー</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#store">Storing/Retrieving data in Session</a>
+          <a href="#store">セッションへのデータ保存と取得</a>
         </li>
         <li>
-          <a href="#remove-destroy">Removing/Destroying Sessions</a>
+          <a href="#remove-destroy">セッションの削除と破棄</a>
         </li>
         <li>
-          <a href="#data-isolation">Isolating Session Data between Applications</a>
+          <a href="#data-isolation">アプリケーション間のセッションデータの分離</a>
         </li>
         <li>
-          <a href="#bags">Session Bags</a>
+          <a href="#bags">セッションバッグ</a>
         </li>
         <li>
-          <a href="#data-persistency">Persistent Data in Components</a>
+          <a href="#data-persistency">コンポーネントの不揮発性データ</a>
         </li>
         <li>
-          <a href="#custom-adapters">Implementing your own adapters</a>
+          <a href="#custom-adapters">独自のアダプターを実装</a>
         </li>
       </ul>
     </li>
@@ -34,28 +34,28 @@
 
 <a name='overview'></a>
 
-# Storing data in the Session
+# セッションにデータを保存する
 
-The session component provides object-oriented wrappers to access session data.
+セッションコンポーネントは、セッションデータにアクセスする、オブジェクト指向のラッパーを提供します。
 
-Reasons to use this component instead of raw-sessions:
+直接セッションを使用せずにコンポーネントを使う理由:
 
-- You can easily isolate session data across applications on the same domain
-- Intercept where session data is set/get in your application
-- Change the session adapter according to the application needs
+- 同じドメイン上のアプリケーション間で簡単にセッションデータを分離できます
+- セッションデータがアプリケーションで設定/取得されるところへ割り込み
+- アプリケーションのニーズに応じてセッションアダプターを変更
 
 <a name='start'></a>
 
-## Starting the Session
+## セッションの開始
 
-Some applications are session-intensive, almost any action that performs requires access to session data. There are others who access session data casually. Thanks to the service container, we can ensure that the session is accessed only when it's clearly needed:
+アプリケーションによってはセッション集約型のものがあり、実行するほとんどすべての処理でセッションデータへのアクセスが必要です。 セッションデータに無意識にアクセスする人もいます。 サービスコンテナのおかげで、セッションが明らかに必要なときにのみセッションにアクセスできるようにすることができます:
 
 ```php
 <?php
 
 use Phalcon\Session\Adapter\Files as Session;
 
-// Start the session the first time when some component request the session service
+// なんらかのコンポーネントがセッションサービスを要求する最初の時にセッションを開始
 $di->setShared(
     'session',
     function () {
@@ -70,9 +70,9 @@ $di->setShared(
 
 <a name='start-factory'></a>
 
-## Factory
+## ファクトリー
 
-Loads Session Adapter class using `adapter` option
+`adaper`オプションを使用してSession Adapterクラスをロードします
 
 ```php
 <?php
@@ -94,9 +94,9 @@ $session = Factory::load($options);
 
 <a name='store'></a>
 
-## Storing/Retrieving data in Session
+## セッションへのデータ保存と取得
 
-From a controller, a view or any other component that extends `Phalcon\Di\Injectable` you can access the session service and store items and retrieve them in the following way:
+コントローラ、ビュー、または`Phalcon\Di\Injectable`を拡張する他のコンポーネントから、セッションサービスにアクセスしてアイテムを格納し、次のように取得できます:
 
 ```php
 <?php
@@ -107,15 +107,15 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        // Set a session variable
+        // セッシュン変数のセット
         $this->session->set('user-name', 'Michael');
     }
 
     public function welcomeAction()
     {
-        // Check if the variable is defined
+        // この変数が定義されているかを確認
         if ($this->session->has('user-name')) {
-            // Retrieve its value
+            // その値を取得
             $name = $this->session->get('user-name');
         }
     }
@@ -125,9 +125,9 @@ class UserController extends Controller
 
 <a name='remove-destroy'></a>
 
-## Removing/Destroying Sessions
+## セッションの削除と破棄
 
-It's also possible remove specific variables or destroy the whole session:
+また、特定の変数の削除やセッション全体の破棄が可能です。
 
 ```php
 <?php
@@ -138,13 +138,13 @@ class UserController extends Controller
 {
     public function removeAction()
     {
-        // Remove a session variable
+        // セッション変数の削除
         $this->session->remove('user-name');
     }
 
     public function logoutAction()
     {
-        // Destroy the whole session
+        // セッション全体の破棄
         $this->session->destroy();
     }
 }
@@ -152,20 +152,20 @@ class UserController extends Controller
 
 <a name='data-isolation'></a>
 
-## Isolating Session Data between Applications
+## アプリケーション間のセッションデータの分離
 
-Sometimes a user can use the same application twice, on the same server, in the same session. Surely, if we use variables in session, we want that every application have separate session data (even though the same code and same variable names). To solve this, you can add a prefix for every session variable created in a certain application:
+ユーザーは同じサーバーの同じセッションで、同じアプリケーションを二回使うこともあります。 確かに、セッションで変数を使用する場合、すべてのアプリケーションが別のセッションデータを持っていることを望みます (しかし、同じコードで同じ変数名です)。 この問題を解決するため、あなたは特定のアプリケーションに作成したそれぞれのセッシュン変数にプレフィックスを追加できます。
 
 ```php
 <?php
 
 use Phalcon\Session\Adapter\Files as Session;
 
-// Isolating the session data
+// セッションデータの隔離
 $di->set(
     'session',
     function () {
-        // All variables created will prefixed with 'my-app-1'
+        // 作成した全ての変数に 'my-app-1' とプレフィックスを追加
         $session = new Session(
             [
                 'uniqueId' => 'my-app-1',
@@ -179,16 +179,15 @@ $di->set(
 );
 ```
 
-Adding a unique ID is not necessary.
+ユニークIDの追加は必須ではありません。
 
 <a name='bags'></a>
 
-## Session Bags
+## セッションバッグ
 
-`Phalcon\Session\Bag` is a component that helps separating session data into `namespaces`. Working by this way you can easily create groups of session variables into the application. By only setting the variables in the `bag`, it's automatically stored in session:
+`Phalcon\Session\Bag` はセッシュンデータを `namespaces` に分離することができるコンポーネントです。 この方法で、セッシュン変数のグループをアプリケーションに簡単に作成できます。 `bag</ 0>の変数を設定するだけで、自動的にセッションに格納されます:</p>
 
-```php
-<?php
+<pre><code class="php"><?php
 
 use Phalcon\Session\Bag as SessionBag;
 
@@ -198,13 +197,13 @@ $user->setDI($di);
 
 $user->name = 'Kimbra Johnson';
 $user->age  = 22;
-```
+`</pre> 
 
 <a name='data-persistency'></a>
 
-## Persistent Data in Components
+## コンポーネントの不揮発性データ
 
-Controller, components and classes that extends `Phalcon\Di\Injectable` may inject a `Phalcon\Session\Bag`. This class isolates variables for every class. Thanks to this you can persist data between requests in every class in an independent way.
+`Phalcon\Di\Injectable` を拡張する、コント ローラー、コンポーネント、クラスは、 `Phalcon\Session\Bag`を挿入する可能性があります。 このクラスはそれぞれのクラスで変数を隔離します。 これのおかげで、それぞれの方法のすべてのクラスでリクエスト間でデータを保持できます。
 
 ```php
 <?php
@@ -215,7 +214,7 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        // Create a persistent variable 'name'
+        // persistent 変数 'name' の作成
         $this->persistent->name = 'Laura';
     }
 
@@ -228,7 +227,7 @@ class UserController extends Controller
 }
 ```
 
-In a component:
+コンポーネント内:
 
 ```php
 <?php
@@ -239,7 +238,7 @@ class Security extends Component
 {
     public function auth()
     {
-        // Create a persistent variable 'name'
+        // persistent 変数 'name' の作成
         $this->persistent->name = 'Laura';
     }
 
@@ -250,12 +249,12 @@ class Security extends Component
 }
 ```
 
-The data added to the session (`$this->session`) are available throughout the application, while persistent (`$this->persistent`) can only be accessed in the scope of the current class.
+このセッシュンに追加したデータ(`$this->session`)はそのアプリケーション内で利用可能です。一方persistent (`$this->persistent`) は現在のクラスのスコープ内でのみアクセス可能です。
 
 <a name='custom-adapters'></a>
 
-## Implementing your own adapters
+## 独自のアダプターを実装
 
-The `Phalcon\Session\AdapterInterface` interface must be implemented in order to create your own session adapters or extend the existing ones.
+独自のセッションアダプターを作成したり、既存のセッションアダプターを拡張するには、`Phalcon\Session\AdapterInterface`インターフェースを実装する必要があります。
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter)
+[Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter) には、このコンポーネントを利用するための複数のアダプターが用意されています。
