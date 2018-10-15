@@ -100,16 +100,16 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Returns 'someone@example.com'
+// 'someone@example.com' を返す
 $filter->sanitize('some(one)@exa\mple.com', 'email');
 
-// Returns 'hello'
+// 'hello' を返す
 $filter->sanitize('hello<<', 'string');
 
-// Returns '100019'
+// '100019' を返す
 $filter->sanitize('!100a019', 'int');
 
-// Returns '100019.01'
+// '100019.01' を返す
 $filter->sanitize('!100a019.01a', 'float');
 ```
 
@@ -133,10 +133,10 @@ class ProductsController extends Controller
 
     public function saveAction()
     {
-        // Sanitizing price from input
+        // 入力されたpriceをサニタイズ
         $price = $this->request->getPost('price', 'double');
 
-        // Sanitizing email from input
+        // 入力されたemailをサニタイズ
         $email = $this->request->getPost('customerEmail', 'email');
     }
 }
@@ -180,10 +180,10 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Returns 'Hello'
+// 'hello' を返す
 $filter->sanitize('<h1>Hello</h1>', 'striptags');
 
-// Returns 'Hello'
+// 'hello' を返す
 $filter->sanitize('  Hello   ', 'trim');
 ```
 
@@ -200,7 +200,7 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Returns 'Hello'
+// 'hello' を返す
 $filter->sanitize(
     '   <h1> Hello </h1>   ',
     [
@@ -223,7 +223,7 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Using an anonymous function
+// 無名関数を使う
 $filter->add(
     'md5',
     function ($value) {
@@ -231,11 +231,11 @@ $filter->add(
     }
 );
 
-// Sanitize with the 'md5' filter
+// 'md5' フィルターでサニタイズ
 $filtered = $filter->sanitize($possibleMd5, 'md5');
 ```
 
-Or, if you prefer, you can implement the filter in a class:
+また、必要に応じて、クラス内にフィルタを実装することもできます:
 
 ```php
 <?php
@@ -252,13 +252,13 @@ class IPv4Filter
 
 $filter = new Filter();
 
-// Using an object
+// オブジェクトを使う
 $filter->add(
     'ipv4',
     new IPv4Filter()
 );
 
-// Sanitize with the 'ipv4' filter
+// 'ipv4' フィルターでサニタイズ
 $filteredIp = $filter->sanitize('127.0.0.1', 'ipv4');
 ```
 
