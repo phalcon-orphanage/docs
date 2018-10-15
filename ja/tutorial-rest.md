@@ -1,34 +1,34 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Tutorial: Creating a Simple REST API</a>
+      <a href="#overview">チュートリアル: 単純な REST API の作成</a>
       <ul>
         <li>
-          <a href="#definitions">Defining the API</a>
+          <a href="#definitions">API の定義</a>
         </li>
         <li>
-          <a href="#implementation">Creating the Application</a>
+          <a href="#implementation">アプリケーションの作成</a>
         </li>
         <li>
-          <a href="#models">Creating a Model</a>
+          <a href="#models">モデルの作成</a>
         </li>
         <li>
-          <a href="#retrieving-data">Retrieving Data</a>
+          <a href="#retrieving-data">データの取得</a>
         </li>
         <li>
-          <a href="#inserting-data">Inserting Data</a>
+          <a href="#inserting-data">データの挿入</a>
         </li>
         <li>
-          <a href="#updating-data">Updating Data</a>
+          <a href="#updating-data">データの更新</a>
         </li>
         <li>
-          <a href="#deleting-data">Deleting Data</a>
+          <a href="#deleting-data">データの削除</a>
         </li>
         <li>
-          <a href="#testing">Testing our Application</a>
+          <a href="#testing">アプリケーションのテスト</a>
         </li>
         <li>
-          <a href="#conclusion">Conclusion</a>
+          <a href="#conclusion">まとめ</a>
         </li>
       </ul>
     </li>
@@ -37,37 +37,37 @@
 
 <a name='basic'></a>
 
-# Tutorial: Creating a Simple REST API
+# チュートリアル: 単純な REST API の作成
 
-In this tutorial, we will explain how to create a simple application that provides a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
+このチュートリアルでは、異なる HTTP メソッドを使用して[RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API を提供する、単純なアプリケーションを作成する方法について説明します。
 
-* `GET` to retrieve and search data
-* `POST` to add data
-* `PUT` to update data
-* `DELETE` to delete data
+* `GET` データの取得と検索
+* `POST` データの追加
+* `PUT` データの更新
+* `DELETE` データの削除
 
 <a name='definitions'></a>
 
-## Defining the API
+## API の定義
 
-The API consists of the following methods:
+APIは、以下のメソッドで構成されています:
 
-| Method   | URL                      | Action                                         |
-| -------- | ------------------------ | ---------------------------------------------- |
-| `GET`    | /api/robots              | Retrieves all robots                           |
-| `GET`    | /api/robots/search/Astro | Searches for robots with 'Astro' in their name |
-| `GET`    | /api/robots/2            | Retrieves robots based on primary key          |
-| `POST`   | /api/robots              | Adds a new robot                               |
-| `PUT`    | /api/robots/2            | Updates robots based on primary key            |
-| `DELETE` | /api/robots/2            | Deletes robots based on primary key            |
+| メソッド     | URL                      | アクション                  |
+| -------- | ------------------------ | ---------------------- |
+| `GET`    | /api/robots              | すべてのロボットを取得します。        |
+| `GET`    | /api/robots/search/Astro | 名前が 'Astro' のロボットを検索   |
+| `GET`    | /api/robots/2            | プライマリーキーが2のロボットを取得します。 |
+| `POST`   | /api/robots              | robotを追加               |
+| `PUT`    | /api/robots/2            | プライマリーキーが2のロボットを更新します。 |
+| `DELETE` | /api/robots/2            | プライマリーキーが2のロボットを削除します。 |
 
 <a name='implementation'></a>
 
-## Creating the Application
+## アプリケーションの作成
 
-As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/[[language]]/[[version]]/application-micro) to meet our goal.
+このアプリケーションはとても単純なので、full MVC 環境は実装しません。 この場合、[micro application](/[[language]]/[[version]]/application-micro) を使用すれば、ゴールに到達できます。
 
-The following file structure is more than enough:
+以下のファイル構造で十分です。
 
 ```php
 my-rest-api/
@@ -77,7 +77,7 @@ my-rest-api/
     .htaccess
 ```
 
-First, we need a `.htaccess` file that contains all the rules to rewrite the request URIs to the `index.php` file (application entry-point):
+まず、リクエストURIを`index.php`ファイル（アプリケーションのエントリポイント）に書き換えるための、すべてのルールを含む`.htaccess`ファイルが必要です:
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -87,7 +87,7 @@ First, we need a `.htaccess` file that contains all the rules to rewrite the req
 </IfModule>
 ```
 
-The bulk of our code will be placed in `index.php`. The file is created as follows:
+コードの大半は`index.php`に配置されます。このファイルは次のように作成されます:
 
 ```php
 <?php
@@ -96,12 +96,12 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Define the routes here
+// ここでルートを定義
 
 $app->handle();
 ```
 
-Now we will create the routes as we defined above:
+上で定義した、ルートを作成します:
 
 ```php
 <?php
@@ -110,66 +110,66 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Retrieves all robots
+// 全ての robots を取得
 $app->get(
     '/api/robots',
     function () {
-        // Operation to fetch all the robots
+        // 全 robot を取得する操作
     }
 );
 
-// Searches for robots with $name in their name
+// 名前が $name である robotを検索
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
-        // Operation to fetch robot with name $name
+        // 名前が $name である robotを検索する操作
     }
 );
 
-// Retrieves robots based on primary key
+// プライマリーキーで robotを指定して取得
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to fetch robot with id $id
+        // プライマリーキーが $idの robotを指定して取得する操作
     }
 );
 
-// Adds a new robot
+// 新しいrobotの追加
 $app->post(
     '/api/robots',
     function () {
-        // Operation to create a fresh robot
+        // 新しいrobotを追加する操作
     }
 );
 
-// Updates robots based on primary key
+// プライマリーキーで指定したrobotを更新する
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to update a robot with id $id
+        // プライマリーキーが $id のrobotを更新する
     }
 );
 
-// Deletes robots based on primary key
+// プライマリーキーで指定したrobotを削除する
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to delete the robot with id $id
+        // プライマリーキーが $id のrobotを削除する
     }
 );
 
 $app->handle();
 ```
 
-Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern, followed by a handler. In this case, the handler is an anonymous function. The following route: `/api/robots/{id:[0-9]+}`, by example, explicitly sets that the `id` parameter must have a numeric format.
+各ルートは、HTTPメソッドと同じ名前のメソッドで定義されます。最初のパラメータとしてルートパターンを渡し、その後にハンドラが続きます。 この場合、ハンドラーは無名関数です。 次のルート: `/api/robots/{id:[0-9]+}`を例にすると、 `id` パラメーターが数値形式でなければならないことを明示的にしています。
 
-When a defined route matches the requested URI then the application executes the corresponding handler.
+定義されたルートがこの要求されたURIにマッチするとき、このアプリケーションは相当するハンドラを実行します。
 
 <a name='models'></a>
 
-## Creating a Model
+## モデルの作成
 
-Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
+私達のAPIは`robots`の情報を提供します。これらのデータはデータベースに保存されています。 次のモデルでは、オブジェクト指向の方法でテーブルにアクセスできます。 ビルドインのバリデーターとシンプルなバリデーターを使って、いくつかのビジネスルールを実装しました。 こうすることで、アプリケーションの要件を満たすようにデータを保存できます。 このモデルファイルは、`Models` フォルダーに配置する必要があります。
 
 ```php
 <?php
@@ -189,7 +189,7 @@ class Robots extends Model
     {
         $validator = new Validation();
 
-        // Type must be: droid, mechanical or virtual
+        // typeはdroid、mechanical、virtualでなければならない
         $validator->add(
             "type",
             new InclusionIn(
@@ -204,7 +204,7 @@ class Robots extends Model
             )
         );
 
-        // Robot name must be unique
+        // Robotの名前はユニークでなけばならない。
         $validator->add(
             'name',
             new Uniqueness(
@@ -215,14 +215,14 @@ class Robots extends Model
             )
         );
 
-        // Year cannot be less than zero
+        // yearは0以下ではいけない
         if ($this->year < 0) {
             $this->appendMessage(
                 new Message('The year cannot be less than zero')
             );
         }
 
-        // Check if any messages have been produced
+        // メッセージが生成されたかを確認
         if ($this->validationHasFailed() === true) {
             return false;
         }
@@ -230,7 +230,7 @@ class Robots extends Model
 }
 ```
 
-Now, we must set up a connection to be used by this model and load it within our app [File: `index.php`]:
+このモデルで使用されるコネクションを設定し、アプリ内でロードする必要があります[ファイル: `index.php`]:
 
 ```php
 <?php
@@ -240,7 +240,7 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
-// Use Loader() to autoload our model
+// Loader() を使って私達のモデルをオートロードします。
 $loader = new Loader();
 
 $loader->registerNamespaces(
@@ -253,7 +253,7 @@ $loader->register();
 
 $di = new FactoryDefault();
 
-// Set up the database service
+// データベースサービスのセットアップ
 $di->set(
     'db',
     function () {
@@ -268,20 +268,20 @@ $di->set(
     }
 );
 
-// Create and bind the DI to the application
+// DI を作成し、アプリケーションにバインド
 $app = new Micro($di);
 ```
 
 <a name='retrieving-data'></a>
 
-## Retrieving Data
+## データの取得
 
-The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
+私達が実装する、最初の `handler` は、GETメソッドで利用可能なすべてのロボットを返します。 結果を JSON として返す単純なクエリを実行する PHQL を使いましょう。 [ファイル: `index.php`]
 
 ```php
 <?php
 
-// Retrieves all robots
+// ロボットの取得
 $app->get(
     '/api/robots',
     function () use ($app) {
@@ -303,14 +303,14 @@ $app->get(
 );
 ```
 
-[PHQL](/[[language]]/[[version]]/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
+[PHQL](/[[language]]/[[version]]/db-phql)は、高度なレベルのオブジェクト指向でクエリを書くことのできるSQL方言です。内部では、使用しているデータベースシステム上で正しいSQLステートメントに翻訳されます。 無名関数の`use`句によって簡単にグローバルスコープからローカルスコープへ変数をいくつか渡すことができます。
 
-The searching by name handler would look like [File: `index.php`]:
+nameハンドラによる検索は次のようになります。[ファイル: `index.php`]:
 
 ```php
 <?php
 
-// Searches for robots with $name in their name
+// ロボットの検索(その名前を $name で検索)
 $app->get(
     '/api/robots/search/{name}',
     function ($name) use ($app) {
@@ -337,14 +337,14 @@ $app->get(
 );
 ```
 
-Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not [File: `index.php`]:
+フィールド`id`での検索とよく似ており、今回の場合はロボットが見つかったかどうかを通知します [ファイル: `index.php`]:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Retrieves robots based on primary key
+// プライマリーキーでロボットを取得
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
@@ -359,7 +359,7 @@ $app->get(
 
 
 
-        // Create a response
+        // レスポンスを作成
         $response = new Response();
 
         if ($robot === false) {
@@ -387,16 +387,16 @@ $app->get(
 
 <a name='inserting-data'></a>
 
-## Inserting Data
+## データの挿入
 
-Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion [File: `index.php`]:
+リクエストのボディに挿入されたJSON文字列として与えらえたデータを使って、挿入用のPHQLを使用します [ファイル: `index.php`]:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Adds a new robot
+// 新しいロボットの追加
 $app->post(
     '/api/robots',
     function () use ($app) {
@@ -413,12 +413,12 @@ $app->post(
             ]
         );
 
-        // Create a response
+        // レスポンスの作成
         $response = new Response();
 
-        // Check if the insertion was successful
+        // 挿入が成功したかを確認
         if ($status->success() === true) {
-            // Change the HTTP status
+            // HTTPステータスの変更
             $response->setStatusCode(201, 'Created');
 
             $robot->id = $status->getModel()->id;
@@ -430,10 +430,10 @@ $app->post(
                 ]
             );
         } else {
-            // Change the HTTP status
+            // HTTPステータスの変更
             $response->setStatusCode(409, 'Conflict');
 
-            // Send errors to the client
+            // クライアントにエラーを送信
             $errors = [];
 
             foreach ($status->getMessages() as $message) {
@@ -455,16 +455,16 @@ $app->post(
 
 <a name='updating-data'></a>
 
-## Updating Data
+## データの更新
 
-The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
+データの更新は挿入と似ています。パラメータとして渡されるこの`id`はどのロボットを更新すべきかを示しています [ファイル:`index.php`]:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Updates robots based on primary key
+// プライマリーキーで指定したロボットを更新する
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
@@ -482,10 +482,10 @@ $app->put(
             ]
         );
 
-        // Create a response
+        // レスポンスの作成
         $response = new Response();
 
-        // Check if the insertion was successful
+        // この挿入が成功したか確認する
         if ($status->success() === true) {
             $response->setJsonContent(
                 [
@@ -493,7 +493,7 @@ $app->put(
                 ]
             );
         } else {
-            // Change the HTTP status
+            // HTTP ステータスの変更
             $response->setStatusCode(409, 'Conflict');
 
             $errors = [];
@@ -517,16 +517,16 @@ $app->put(
 
 <a name='deleting-data'></a>
 
-## Deleting Data
+## データの削除
 
-The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
+データの削除は更新と似ています。パラメータとして渡されるこの`id`はどのロボットを削除すべきかを示しています [ファイル:`index.php`]:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Deletes robots based on primary key
+// プライマリーキーによってロボットを削除する
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
@@ -539,7 +539,7 @@ $app->delete(
             ]
         );
 
-        // Create a response
+        // レスポンスの作成
         $response = new Response();
 
         if ($status->success() === true) {
@@ -549,7 +549,7 @@ $app->delete(
                 ]
             );
         } else {
-            // Change the HTTP status
+            // HTTPステータスの変更
             $response->setStatusCode(409, 'Conflict');
 
             $errors = [];
@@ -573,11 +573,11 @@ $app->delete(
 
 <a name='testing'></a>
 
-## Testing our Application
+## アプリケーションのテスト
 
-Using [curl](http://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
+[curl](http://en.wikipedia.org/wiki/CURL)を使って、アプリケーションの適切な操作を確認するために、すべてのルートを確認します。
 
-Obtain all the robots:
+全てのロボットの取得:
 
 ```bash
 curl -i -X GET http://localhost/my-rest-api/api/robots
@@ -591,7 +591,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 ```
 
-Search a robot by its name:
+名前でロボットを検索:
 
 ```bash
 curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
@@ -605,7 +605,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"2","name":"Astro Boy"}]
 ```
 
-Obtain a robot by its id:
+Idでロボットを取得:
 
 ```bash
 curl -i -X GET http://localhost/my-rest-api/api/robots/3
@@ -619,7 +619,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
 ```
 
-Insert a new robot:
+新しいロボットの挿入:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
@@ -634,7 +634,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 ```
 
-Try to insert a new robot with the name of an existing robot:
+既存のロボットの名前で新しいロボットの挿入:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
@@ -649,7 +649,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"ERROR","messages":["The robot name must be unique"]}
 ```
 
-Or update a robot with an unknown type:
+種類がunknownのロボットの更新:
 
 ```bash
 curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
@@ -665,7 +665,7 @@ Content-Type: text/html; charset=UTF-8
     list: droid, mechanical, virtual"]}
 ```
 
-Finally, delete a robot:
+最後に、ロボットの削除:
 
 ```bash
 curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
@@ -681,6 +681,6 @@ Content-Type: text/html; charset=UTF-8
 
 <a name='conclusion'></a>
 
-## Conclusion
+## まとめ
 
-As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/[[language]]/[[version]]/application-micro) and [PHQL](/[[language]]/[[version]]/db-phql).
+ここで見たように、Phalconを使用した[RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) APIの開発は簡単であり、開発には[micro applications](/[[language]]/[[version]]/application-micro) と [PHQL](/[[language]]/[[version]]/db-phql)を使います。
