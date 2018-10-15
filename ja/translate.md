@@ -20,17 +20,17 @@
 
 # 多言語サポート
 
-`Phalcon\\Translate` コンポーネントは多言語アプリケーションの作成に役立ちます。 Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
+`Phalcon\\Translate` コンポーネントは多言語アプリケーションの作成に役立ちます。 このコンポーネントを使用するアプリケーションは、アプリケーションでサポートされているユーザーが選択した言語に基づいて、異なる言語でコンテンツを表示します。
 
 <a name='adapters'></a>
 
 ## アダプター
 
-This component makes use of adapters to read translation messages from different sources in a unified way.
+このコンポーネントはアダプターを使用して、異なるソースからの翻訳メッセージを、統一された方法で読み込みます。
 
-| アダプター                                      | 説明                                                                                      |
-| ------------------------------------------ | --------------------------------------------------------------------------------------- |
-| `Phalcon\Translate\Adapter\NativeArray` | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
+| アダプター                                      | 説明                                               |
+| ------------------------------------------ | ------------------------------------------------ |
+| `Phalcon\Translate\Adapter\NativeArray` | PHP配列を使用してメッセージを格納します。 これは、パフォーマンスの面で最適なオプションです。 |
 
 <a name='usage'></a>
 
@@ -45,7 +45,7 @@ app/messages/fr.php
 app/messages/zh.php
 ```
 
-Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in different files, where keys remain the same and values contain the translated strings depending on each language.
+それぞれのファイルには、key/value 形式で、翻訳の配列が含まれます。 それぞれの翻訳ファイルで、Keysは一意です。 それぞれのファイルには同じ配列を使用します。ここでその配列の Keysはそのまま同じとし値はそれぞれの言語によって異なる翻訳文字列とします。
 
 ```php
 <?php
@@ -71,9 +71,9 @@ $messages = [
 ];
 ```
 
-Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
+あなたのアプリケーションで翻訳メカニズムを実装するのは簡単ですが、実装方法に依存します。 ユーザーのブラウザから自動的に言語を検出することもできれば、ユーザーが言語を選択する設定ページを提供することができます。
 
-A simple way of detecting the user's language is to parse the `$_SERVER['HTTP_ACCEPT_LANGUAGE']` contents, or if you wish, access it directly by calling `$this->request->getBestLanguage()` from an action/controller:
+ユーザーの言語を検出する最も簡単な方法は`$_SERVER['HTTP_ACCEPT_LANGUAGE']` の内容のパースです。もしくは、あなたが望む場合 action/controller から`$this->request->getBestLanguage()` を呼び出して直接アクセスすることです。
 
 ```php
 <?php
@@ -115,7 +115,7 @@ class UserController extends Controller
 }
 ```
 
-The `_getTranslation()` method is available for all actions that require translations. The `$t` variable is passed to the views, and with it, we can translate strings in that layer:
+`_getTranslation()` メソッドは、翻訳を要求する全てのアクションに対して利用可能です。 `$t`変数がビューに渡され、そのレイヤー内の文字列を翻訳できます。
 
 .. code-block:: html+php
 
@@ -124,7 +124,7 @@ The `_getTranslation()` method is available for all actions that require transla
     <p><?php echo $t->_('hi'), ' ', $name; ?></p>
     
 
-The `_()` method is returning the translated string based on the index passed. Some strings need to incorporate placeholders for calculated data i.e. `Hello %name%`. These placeholders can be replaced with passed parameters in the `_()` method. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
+`_()` メソッドは、その渡されたインデックスに基づいて、翻訳された文字列を返します。 例えば、`Hello %name%`のような種類の文字列は計算されたデータのプレースホルダーを組込む必要があります。 これらのプレースホルダーは `_()`メソッドで渡されたパラメータで置き換えることができます。 渡されたパラメータは、key/value配列の形式になっています。ここでkeyはプレースホルダーにマッチする名前で、valueが置き換える実際のデータです。
 
 ```php
 <!-- welcome -->
@@ -132,13 +132,13 @@ The `_()` method is returning the translated string based on the index passed. S
 <p><?php echo $t->_('hi-name', ['name' => $name]); ?></p>
 ```
 
-Some applications implement multilingual on the URL such as `http://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](/[[language]]/[[version]]/routing).
+いくつかのアプリケーションは、`http://www.mozilla.org/**es-ES**/firefox/`のように、URLの多言語化を実装します。 Phalcon は [Router](/[[language]]/[[version]]/routing)を使ってこれを実装します。
 
 <a name='custom'></a>
 
 ## 独自のアダプターを実装
 
-The `Phalcon\Translate\AdapterInterface` interface must be implemented in order to create your own translate adapters or extend the existing ones:
+`Phalcon\Translate\AdapterInterface` インターフェースは次の目的のために実装されなければなりません。それは、あたなの翻訳アダプタを作成するため、または、既存のものを拡張するためです。:
 
 ```php
 <?php
@@ -148,14 +148,14 @@ use Phalcon\Translate\AdapterInterface;
 class MyTranslateAdapter implements AdapterInterface
 {
     /**
-     * Adapter constructor
+     * アダプタのコンストラクタ
      *
      * @param array $options
      */
     public function __construct(array $options);
 
     /**
-     * Returns the translation string of the given key
+     * 指定されたキーの翻訳文字列を返す
      *
      * @param   string $translateKey
      * @param   array $placeholders
@@ -164,7 +164,7 @@ class MyTranslateAdapter implements AdapterInterface
     public function _(string $translateKey, $placeholders = null): string;
 
     /**
-     * Returns the translation related to the given key
+     * 指定されたキーに関連する翻訳を返す
      *
      * @param   string $index
      * @param   array $placeholders
@@ -173,7 +173,7 @@ class MyTranslateAdapter implements AdapterInterface
     public function query(string $index, $placeholders = null): string;
 
     /**
-     * Check whether is defined a translation key in the internal array
+     * 内部の配列に翻訳キーが定義されているかを確認
      *
      * @param   string $index
      * @return  bool
