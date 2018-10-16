@@ -169,7 +169,7 @@ Cuando una ruta definida coincide con el identificador URI solicitando, entonces
 
 ## Creando un modelo
 
-Nuestra API proporciona información sobre `robots`, estos datos están almacenados en una base de datos. El siguiente modelo nos permite acceder a la tabla de una manera orientada a objetos. Hemos implementado algunas reglas del negocio usando validadores incorporados y validaciones simples. Esto nos da la tranquilidad que guarda datos cumpliendo con los requisitos de nuestra aplicación. This model file `Robots.php` should be placed in your `models` folder.
+Nuestra API proporciona información sobre `robots`, estos datos están almacenados en una base de datos. El siguiente modelo nos permite acceder a la tabla de una manera orientada a objetos. Hemos implementado algunas reglas del negocio usando validadores incorporados y validaciones simples. Esto nos da la tranquilidad que guarda datos cumpliendo con los requisitos de nuestra aplicación. Este archivo de modelo `Robots.php` debe colocarse en la carpeta `models`.
 
 ```php
 <?php
@@ -204,7 +204,7 @@ class Robots extends Model
             'name',
             new Uniqueness(
                 [
-                    'message' => 'The robot name must be unique',
+                    'message' => 'El nombre del robot debe ser único',
                 ]
             )
         );
@@ -555,9 +555,9 @@ $app->delete(
 );
 ```
 
-## Creating database
+## Creando una base de datos
 
-Now we will create database for our application. Run SQL queries as follows:
+Ahora crearemos una base de datos para nuestra aplicación. Ejecute la siguiente instrucción SQL:
 
     CREATE DATABASE `robotics`;
     CREATE TABLE `robotics`.`robots` (
