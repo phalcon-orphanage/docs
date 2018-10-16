@@ -74,7 +74,7 @@ This component makes use of adapters to store the logged messages. The use of ad
 
 ## Creating a Log
 
-The example below shows how to create a log and add messages to it:
+次の例は、ログを作成し、メッセージを追加する方法を示します。
 
 ```php
 <?php

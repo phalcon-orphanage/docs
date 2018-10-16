@@ -118,10 +118,39 @@ Phalconは、高いパフォーマンスを提供しながら、可能な限り�
 
 ## ソフトウェア
 
-- PSR extension
+- PSR 拡張モジュール
 - PHP >= 7.0
 
-Phalcon 4.0 relies heavily on PSR in order to offer PSR compatibility in its classes. As a result the `php-psr` extension is required to be loaded before Phalcon.
+Phalcon 4.0 は、そのクラスでの PSR の互換性を提供するために PSR を多用します。その結果、Phalconのロード前に `php-psr` 拡張モジュールをロードする必要があります。
+
+PSR 拡張モジュールのインストール:
+
+```bash
+apt-get update -y
+apt-get install -y nano tree git gnupg gcc make re2c autoconf automake
+
+mkdir -p /tmp/psr-ext-setup
+cd /tmp/psr-ext-setup
+
+rm -rf /tmp/psr-ext-setup/php-psr
+git clone https://github.com/jbboehr/php-psr.git
+cd php-psr
+phpize
+./configure
+make
+make test
+make install
+rm -rf /var/lib/apt/lists/*
+```
+
+この後、`php-psr` 拡張モジュールを`php.ini`ファイルでロードし、その後で Phalcon をロードします。
+
+```ini
+extension=php-psr.so
+extension=phalcon.so
+```
+
+##### バグ、セキュリティ強化、パフォーマンスの為に常に最新のPhalconとPHPのバージョンを使う様にしてください。Phalcon 4.0は PHP 7.0またはそれ以上のみをサポートします。 {.alert.alert-warning}
 
 Installing the PSR extension:
 
@@ -165,7 +194,7 @@ Phalcon needs the following extensions to run (minimal):
 - `fileinfo`
 - `openssl`
 
-### Depending on the needs of your application
+### アプリケーションのニーズに応じた依存
 
 - [PDO](http://php.net/manual/en/book.pdo.php) 拡張や、関連するRDBMSの拡張 ([MySQL](http://php.net/manual/en/ref.pdo-mysql.php)や[PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php)など)
 - [OpenSSL](http://php.net/manual/en/book.openssl.php) 拡張
@@ -329,7 +358,7 @@ Installing Phalcon after that is as easy as:
 yum install php56-php-phalcon3
 ```
 
-Additional versions are available both architecture specific (x86/x64) as well as PHP specific (5.5, 5.6, 7.x)
+追加のバージョンには、アーキテクチャー固有のもの (x86/x64) とPHP固有のもの (5.5, 5.6, 7.x) があります
 
 <a name='installation-freebsd'></a>
 
@@ -465,20 +494,20 @@ sudo yum install php-devel pcre-devel gcc make
 
 ### Phalconのコンパイル
 
-We first need to clone Phalcon from the Github repository
+まず、GitHub のリポジトリから Phalcon のソースコードをクローンする必要があります。
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 ```
 
-and now build the extension
+その後、拡張機能をビルドします。
 
 ```bash
 cd cphalcon/build
 sudo ./install
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+次に、PHP ini ファイルに`extension=phalcon.so` と追記し、拡張機能が読み込まれるように、ウェブサーバを再起動する必要があります。
 
 ```ini
 # Suse の場合: /etc/php5/conf.d/ に下記内容が書いてある phalcon.ini を追加します:
@@ -519,9 +548,9 @@ git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# NOTE: for PHP 7 you have to use
+# 注意: PHP 7 を使う場合は以下
 # cd cphalcon/build/php7/32bits
-# or
+# または
 # cd cphalcon/build/php7/64bits
 
 make clean
@@ -541,9 +570,9 @@ git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# NOTE: for PHP 7 you have to use
+# 注意: PHP 7 を使う場合は以下
 # cd cphalcon/build/php7/32bits
-# or
+# または
 # cd cphalcon/build/php7/64bits
 
 make clean
@@ -556,7 +585,7 @@ make
 make install
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+次に、PHP ini ファイルに`extension=phalcon.so` と追記し、拡張機能が読み込まれるように、ウェブサーバを再起動する必要があります。
 
 <a name='installation-testing'></a>
 You can create a small script in your web server root that has the following in it:

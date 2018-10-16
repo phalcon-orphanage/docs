@@ -1,68 +1,68 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Database Abstraction Layer</a> <ul>
+      <a href="#overview">データベース抽象化レイヤー</a> <ul>
         <li>
-          <a href="#adapters">Database Adapters</a> <ul>
+          <a href="#adapters">データベースアダプター</a> <ul>
             <li>
-              <a href="#adapters-custom">Implementing your own adapters</a>
+              <a href="#adapters-custom">独自のアダプターを実装</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#dialects">Database Dialects</a> <ul>
+          <a href="#dialects">データベースの方言</a> <ul>
             <li>
-              <a href="#dialects-custom">Implementing your own dialects</a>
+              <a href="#dialects-custom">独自の方言を実装します</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#connection">Connecting to Databases</a> <ul>
+          <a href="#connection">データベースへの接続</a> <ul>
             <li>
-              <a href="#connection-factory">Connecting using Factory</a>
+              <a href="#connection-factory">Factoryを使用した接続</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#options">Setting up additional PDO options</a>
+          <a href="#options">PDO の追加オプションを設定</a>
         </li>
         <li>
-          <a href="#finding-rows">Finding Rows</a>
+          <a href="#finding-rows">行の検索</a>
         </li>
         <li>
-          <a href="#binding-parameters">Binding Parameters</a>
+          <a href="#binding-parameters">パラメーターのバインド</a>
         </li>
         <li>
-          <a href="#crud">Inserting/Updating/Deleting Rows</a>
+          <a href="#crud">ロウの挿入、更新、および削除</a>
         </li>
         <li>
-          <a href="#transactions">Transactions and Nested Transactions</a>
+          <a href="#transactions">トランザクションとネストしたトランザクション</a>
         </li>
         <li>
-          <a href="#events">Database Events</a>
+          <a href="#events">データベースのイベント</a>
         </li>
         <li>
-          <a href="#profiling">Profiling SQL Statements</a>
+          <a href="#profiling">SQL ステートメントのプロファイリング</a>
         </li>
         <li>
-          <a href="#logging-statements">Logging SQL Statements</a>
+          <a href="#logging-statements">SQL ステートメントのロギング</a>
         </li>
         <li>
-          <a href="#logger-custom">Implementing your own Logger</a>
+          <a href="#logger-custom">独自のロガーを実装</a>
         </li>
         <li>
-          <a href="#describing-tables">Describing Tables/Views</a>
+          <a href="#describing-tables">テーブル/ビューの定義取得</a>
         </li>
         <li>
-          <a href="#tables">Creating/Altering/Dropping Tables</a> <ul>
+          <a href="#tables">テーブルの作成/変更/削除</a> <ul>
             <li>
-              <a href="#tables-create">Creating Tables</a>
+              <a href="#tables-create">テーブルの作成</a>
             </li>
             <li>
-              <a href="#tables-altering">Altering Tables</a>
+              <a href="#tables-altering">テーブルの変更</a>
             </li>
             <li>
-              <a href="#tables-dropping">Dropping Tables</a>
+              <a href="#tables-dropping">テーブルの削除</a>
             </li>
           </ul>
         </li>
@@ -73,58 +73,58 @@
 
 <a name='overview'></a>
 
-# Database Abstraction Layer
+# データベース抽象化レイヤー
 
-`Phalcon\Db` is the component behind `Phalcon\Mvc\Model` that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
+`Phalcon\Db` は、フレームワークのモデル層で動作する`Phalcon\Mvc\Model`の背後にあるコンポーネントです。 これは、C言語で完全に書かれたデータベースシステムのための独立した高レベルの抽象化レイヤーで構成されています。
 
-This component allows for a lower level database manipulation than using traditional models.
+このコンポーネントは従来のモデルを使用するよりも、データベースを低レベルで操作することができます。
 
 <a name='adapters'></a>
 
-## Database Adapters
+## データベースアダプター
 
-This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO_ to connect to databases. The following database engines are supported:
+このコンポーネントはアダプターを使用して、特定のデータベースシステムの詳細をカプセル化します。ファルコンでは、PDO_ を使用してデータベースに接続します。次のデータベースエンジンがサポートされます。
 
-| Class                                   | Description                                                                                                                                                                                                                          |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Phalcon\Db\Adapter\Pdo\Mysql`      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    |
-| `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
-| `Phalcon\Db\Adapter\Pdo\Sqlite`     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     |
+| クラス                                     | 説明                                                                                                             |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Db\Adapter\Pdo\Mysql`      | 世界で最も使用されているリレーショナルデータベース管理システム (RDBMS) です。サーバーで動作し、多数のユーザーがいくつかのデータベースにアクセスできます。                              |
+| `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL は、強力なオープンソースのリレーショナルデータベースシステムです。 これは15年以上の積極的な開発と実績のあるアーキテクチャを備えており、信頼性、データの完全性、正確性について高い評価を得ています。 |
+| `Phalcon\Db\Adapter\Pdo\Sqlite`     | SQLiteは、自己完結型でサーバレスでゼロ設定のトランザクション型SQLデータベースエンジンを実装したソフトウェアライブラリです                                              |
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### 独自のアダプターを実装
 
-The `Phalcon\Db\AdapterInterface` interface must be implemented in order to create your own database adapters or extend the existing ones.
+独自のデータベースアダプターを作成したり、既存のデータベースアダプターを拡張するには、`Phalcon\Db\AdapterInterface`インターフェースを実装する必要があります。
 
 <a name='dialects'></a>
 
-## Database Dialects
+## データベースの方言
 
-Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
+Phalcon は、各データベース エンジンの特定の詳細を方言でカプセル化します。それらはアダプターに共通の機能と SQL ジェネレーターを提供します。
 
-| Class                              | Description                                         |
-| ---------------------------------- | --------------------------------------------------- |
-| `Phalcon\Db\Dialect\Mysql`      | SQL specific dialect for MySQL database system      |
-| `Phalcon\Db\Dialect\Postgresql` | SQL specific dialect for PostgreSQL database system |
-| `Phalcon\Db\Dialect\Sqlite`     | SQL specific dialect for SQLite database system     |
+| クラス                                | 説明                           |
+| ---------------------------------- | ---------------------------- |
+| `Phalcon\Db\Dialect\Mysql`      | MySQL データベースシステム向けのSQL方言     |
+| `Phalcon\Db\Dialect\Postgresql` | PostgreSQLデータベースシステム向けのSQL方言 |
+| `Phalcon\Db\Dialect\Sqlite`     | SQLiteデータベースシステム向けのSQL方言     |
 
 <a name='dialects-custom'></a>
 
-### Implementing your own dialects
+### 独自の方言を実装します
 
-The `Phalcon\Db\DialectInterface` interface must be implemented in order to create your own database dialects or extend the existing ones.
+独自のデータベース方言を作成したり既存のデータベース方言を拡張するには、`Phalcon\Db\DialectInterface`インタフェースを実装する必要があります。
 
 <a name='connection'></a>
 
-## Connecting to Databases
+## データベースへの接続
 
-To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
+接続を作成するためには、アダプター クラスをインスタンス化する必要があります。 接続パラメーターの配列だけが必要です。 次の例は、必須またはオプションのパラメーターを渡す接続を作成する方法を示しています。
 
 ```php
 <?php
 
-// Required
+// 必須
 $config = [
     'host'     => '127.0.0.1',
     'username' => 'mike',
@@ -132,17 +132,17 @@ $config = [
     'dbname'   => 'test_db',
 ];
 
-// Optional
+// オプション
 $config['persistent'] = false;
 
-// Create a connection
+// 接続の作成
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
 
 ```php
 <?php
 
-// Required
+// 必須
 $config = [
     'host'     => 'localhost',
     'username' => 'postgres',
@@ -150,35 +150,35 @@ $config = [
     'dbname'   => 'template',
 ];
 
-// Optional
+// オプション
 $config['schema'] = 'public';
 
-// Create a connection
+// 接続の作成
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
 
 ```php
 <?php
 
-// Required
+// 必須
 $config = [
     'dbname' => '/path/to/database.db',
 ];
 
-// Create a connection
+// 接続の作成
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```
 
 <a name='options'></a>
 
-## Setting up additional PDO options
+## PDO の追加オプションを設定
 
-You can set PDO options at connection time by passing the parameters `options`:
+`options`パラメータを渡すことで接続時にPDOオプションを設定できます:
 
 ```php
 <?php
 
-// Create a connection with PDO options
+// PDOオプションで接続を作成
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
     [
         'host'     => 'localhost',
@@ -195,9 +195,9 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
 
 <a name='connection-factory'></a>
 
-## Connecting using Factory
+## Factoryを使用した接続
 
-You can also use a simple `ini` file to configure/connect your `db` service to your database.
+単純に`ini` ファイルを使ってあなたの `データベース`サービスをデータベースに設定/接続できます。
 
 ```ini
 [database]
@@ -230,45 +230,45 @@ $di->set(
 );
 ```
 
-The above will return the correct database instance and also has the advantage that you can change the connection credentials or even the database adapter without changing a single line of code in your application.
+上記は適切なデータベース インスタンスを返ます。また、アプリケーションのコードを1 行も変更することがなく、接続資格情報を変更したり、データベース アダプターを変更したりできる利点があります。
 
 <a name='finding-rows'></a>
 
-## Finding Rows
+## 行の検索
 
-`Phalcon\Db` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
+`Phalcon\Db` は、テーブルから行を照会するいくつかのメソッドを提供します。この場合、対象のデータベースエンジン固有のSQL構文が必要です:
 
 ```php
 <?php
 
 $sql = 'SELECT id, name FROM robots ORDER BY name';
 
-// Send a SQL statement to the database system
+// データベースシステムへSQLステートメントを送信
 $result = $connection->query($sql);
 
-// Print each robot name
+// 各robotの名前を表示
 while ($robot = $result->fetch()) {
    echo $robot['name'];
 }
 
-// Get all rows in an array
+// 配列内のすべての行を取得する
 $robots = $connection->fetchAll($sql);
 foreach ($robots as $robot) {
    echo $robot['name'];
 }
 
-// Get only the first row
+// 最初の行だけを取得する
 $robot = $connection->fetchOne($sql);
 ```
 
-By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using `Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
+デフォルトで、これらの呼び出しは連想配列と数値インデックスを持つ配列を両方とも作成します。 `Phalcon\Db\Result::setFetchMode()` を使用してこの動作を変更できます。 このメソッドは、どの種類のインデックスの種類が必要なのかを定義する、定数を受け取ります。
 
-| Constant                   | Description                                               |
-| -------------------------- | --------------------------------------------------------- |
-| `Phalcon\Db::FETCH_NUM`   | Return an array with numeric indexes                      |
-| `Phalcon\Db::FETCH_ASSOC` | Return an array with associative indexes                  |
-| `Phalcon\Db::FETCH_BOTH`  | Return an array with both associative and numeric indexes |
-| `Phalcon\Db::FETCH_OBJ`   | Return an object instead of an array                      |
+| 定数                         | 説明                        |
+| -------------------------- | ------------------------- |
+| `Phalcon\Db::FETCH_NUM`   | 数字インデックスのある配列を返す          |
+| `Phalcon\Db::FETCH_ASSOC` | 関連インデックスのある配列を返す          |
+| `Phalcon\Db::FETCH_BOTH`  | 関連インデックスと数字インデックスのある配列を返す |
+| `Phalcon\Db::FETCH_OBJ`   | 配列ではなく、オブジェクトを返す。         |
 
 ```php
 <?php
@@ -282,7 +282,7 @@ while ($robot = $result->fetch()) {
 }
 ```
 
-The `Phalcon\Db::query()` returns an instance of `Phalcon\Db\Result\Pdo`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
+`Phalcon\Db::query()` は `Phalcon\Db\Result\Pdo`のインスタンスを返します。 これらのオブジェクトは、返された resultset に関連した機能(トラバース、特定のレコードのシーク、カウント)をカプセル化します。
 
 ```php
 <?php
@@ -290,29 +290,29 @@ The `Phalcon\Db::query()` returns an instance of `Phalcon\Db\Result\Pdo`. These 
 $sql = 'SELECT id, name FROM robots';
 $result = $connection->query($sql);
 
-// Traverse the resultset
+// resultset のトラバース
 while ($robot = $result->fetch()) {
    echo $robot['name'];
 }
 
-// Seek to the third row
+// 3番目の row のシーク
 $result->seek(2);
 $robot = $result->fetch();
 
-// Count the resultset
+// resultset のカウント
 echo $result->numRows();
 ```
 
 <a name='binding-parameters'></a>
 
-## Binding Parameters
+## パラメーターのバインド
 
-Bound parameters is also supported in `Phalcon\Db`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
+バインドされたパラメーターは `Phalcon\Db` でもサポートしています。 バインドされたパラメータを使用することで、パフォーマンスの影響は最小限に抑えられますが、コードがSQLインジェクション攻撃の対象になる可能性を排除するために、この方法を使用することをお勧めします。 文字列と位置指定のプレースホルダーの両方をサポートしています。 パラメータのバインドは、以下のように簡単に実施できます:
 
 ```php
 <?php
 
-// Binding with numeric placeholders
+// 数値プレースホルダーにバインド
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -321,7 +321,7 @@ $result = $connection->query(
     ]
 );
 
-// Binding with named placeholders
+// 名前つきプレースホルダーにバインド
 $sql     = 'INSERT INTO `robots`(name`, year) VALUES (:name, :year)';
 $success = $connection->query(
     $sql,
@@ -332,16 +332,16 @@ $success = $connection->query(
 );
 ```
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case '1' or '2' are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter data are automatically escaped using [PDO Quote](http://www.php.net/manual/en/pdo.quote.php).
+数値プレースホルダを使用する場合は、整数を1または2として定義する必要があります。 この場合、 '1'または '2'は文字列であり数字ではないため、プレースホルダを正常に置き換えることができません。 アダプターのデータはすべて[PDO Quote](http://www.php.net/manual/en/pdo.quote.php)を使って自動的にエスケープ処理されます。
 
-This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+この関数は、接続の文字セットを考慮します。そのため、接続パラメータまたはデータベースサーバーの設定で正しい文字セットを定義すうことをお勧めします。間違った文字セットの場合、データの保管や取得字に予期せぬ結果が発生するかもしれません。
 
-Also, you can pass your parameters directly to the execute/query methods. In this case bound parameters are directly passed to PDO:
+また、execute/query メソッドに直接パラメータを渡すこともできます。この場合、バインドパラメータは直接 PDO に渡されます:
 
 ```php
 <?php
 
-// Binding with PDO placeholders
+// PDOプレースホルダーでのバインド
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -353,18 +353,18 @@ $result = $connection->query(
 
 <a name='crud'></a>
 
-## Inserting/Updating/Deleting Rows
+## 行の挿入、更新、および削除
 
-To insert, update or delete rows, you can use raw SQL or use the preset functions provided by the class:
+行を挿入、更新、または削除するには、生のSQLを使用するか、クラスが提供するプリセット関数を使用します:
 
 ```php
 <?php
 
-// Inserting data with a raw SQL statement
+// 生のSQL文を使用したデータの挿入
 $sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)';
 $success = $connection->execute($sql);
 
-// With placeholders
+// プレースホルダー付き
 $sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)';
 $success = $connection->execute(
     $sql,
@@ -374,7 +374,7 @@ $success = $connection->execute(
     ]
 );
 
-// Generating dynamically the necessary SQL
+// 必要なSQLを動的に生成する
 $success = $connection->insert(
     'robots',
     [
@@ -387,7 +387,7 @@ $success = $connection->insert(
     ],
 );
 
-// Generating dynamically the necessary SQL (another syntax)
+// 必要なSQLを動的に生成する（別のシンタックス）
 $success = $connection->insertAsDict(
     'robots',
     [
@@ -396,11 +396,11 @@ $success = $connection->insertAsDict(
     ]
 );
 
-// Updating data with a raw SQL statement
+// 生のSQL文によるデータの更新
 $sql     = 'UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101';
 $success = $connection->execute($sql);
 
-// With placeholders
+// プレースホルダー付き
 $sql     = 'UPDATE `robots` SET `name` = ? WHERE `id` = ?';
 $success = $connection->execute(
     $sql,
@@ -410,7 +410,7 @@ $success = $connection->execute(
     ]
 );
 
-// Generating dynamically the necessary SQL
+// 必要なSQLを動的に生成する
 $success = $connection->update(
     'robots',
     [
@@ -419,19 +419,19 @@ $success = $connection->update(
     [
         'New Astro Boy',
     ],
-    'id = 101' // Warning! In this case values are not escaped
+    'id = 101' // 注意！ この場合、値はエスケープされません
 );
 
-// Generating dynamically the necessary SQL (another syntax)
+// 必要なSQLを動的に生成する（別のシンタックス）
 $success = $connection->updateAsDict(
     'robots',
     [
         'name' => 'New Astro Boy',
     ],
-    'id = 101' // Warning! In this case values are not escaped
+    'id = 101' // 注意！ この場合、値はエスケープされません
 );
 
-// With escaping conditions
+// エスケープ条件
 $success = $connection->update(
     'robots',
     [
@@ -443,7 +443,7 @@ $success = $connection->update(
     [
         'conditions' => 'id = ?',
         'bind'       => [101],
-        'bindTypes'  => [PDO::PARAM_INT], // Optional parameter
+        'bindTypes'  => [PDO::PARAM_INT], // オプションのパラメータ
     ]
 );
 $success = $connection->updateAsDict(
@@ -454,19 +454,19 @@ $success = $connection->updateAsDict(
     [
         'conditions' => 'id = ?',
         'bind'       => [101],
-        'bindTypes'  => [PDO::PARAM_INT], // Optional parameter
+        'bindTypes'  => [PDO::PARAM_INT], // オプションのパラメータ
     ]
 );
 
-// Deleting data with a raw SQL statement
+// 生のSQL文を使用したデータの削除
 $sql     = 'DELETE `robots` WHERE `id` = 101';
 $success = $connection->execute($sql);
 
-// With placeholders
+// プレースホルダー付き
 $sql     = 'DELETE `robots` WHERE `id` = ?';
 $success = $connection->execute($sql, [101]);
 
-// Generating dynamically the necessary SQL
+// 必要なSQLを動的に生成する
 $success = $connection->delete(
     'robots',
     'id = ?',
@@ -478,85 +478,85 @@ $success = $connection->delete(
 
 <a name='transactions'></a>
 
-## Transactions and Nested Transactions
+## トランザクションとネストしたトランザクション
 
-Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
+トランザクションの処理は、PDOの場合と同様にサポートされています。トランザクション内でデータ操作を実行すると、たいていのデータベースシステムでパフォーマンスが向上することがあります:
 
 ```php
 <?php
 
 try {
-    // Start a transaction
+    // トランザクション開始
     $connection->begin();
 
-    // Execute some SQL statements
+    // 複数のSQL文を実行
     $connection->execute('DELETE `robots` WHERE `id` = 101');
     $connection->execute('DELETE `robots` WHERE `id` = 102');
     $connection->execute('DELETE `robots` WHERE `id` = 103');
 
-    // Commit if everything goes well
+    // 全てうまくいけばコミット
     $connection->commit();
 } catch (Exception $e) {
-    // An exception has occurred rollback the transaction
+    // 例外が発生したらトランザクションをロールバック
     $connection->rollback();
 }
 ```
 
-In addition to standard transactions, `Phalcon\Db` provides built-in support for [nested transactions](http://en.wikipedia.org/wiki/Nested_transaction) (if the database system used supports them). When you call begin() for a second time a nested transaction is created:
+`Phalcon\Db`は標準トランザクションに加えて、（使用しているデータベースシステムがサポートしている場合は）[入れ子トランザクション](http://en.wikipedia.org/wiki/Nested_transaction)の組み込みサポートを提供します。 二回begin()を呼び出すとき、 入れ子になったトランザクションが作成されます:
 
 ```php
 <?php
 
 try {
-    // Start a transaction
+    // トランザクション開始
     $connection->begin();
 
-    // Execute some SQL statements
+    // 複数のSQL文を実行
     $connection->execute('DELETE `robots` WHERE `id` = 101');
 
     try {
-        // Start a nested transaction
+        // 入れ子トランザクション開始
         $connection->begin();
 
-        // Execute these SQL statements into the nested transaction
+        // 入れ子トランザクションのSQL文を実行
         $connection->execute('DELETE `robots` WHERE `id` = 102');
         $connection->execute('DELETE `robots` WHERE `id` = 103');
 
-        // Create a save point
+        // セーブポイントを作成
         $connection->commit();
     } catch (Exception $e) {
-        // An error has occurred, release the nested transaction
+        // エラー発生、入れ子トランザクションを解放
         $connection->rollback();
     }
 
-    // Continue, executing more SQL statements
+    // 継続、他のSQL文を実行
     $connection->execute('DELETE `robots` WHERE `id` = 104');
 
-    // Commit if everything goes well
+    // 全てうまくいけばコミット
     $connection->commit();
 } catch (Exception $e) {
-    // An exception has occurred rollback the transaction
+    // 例外が発生したらトランザクションをロールバック
     $connection->rollback();
 }
 ```
 
 <a name='events'></a>
 
-## Database Events
+## データベースのイベント
 
-`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Db` はイベントを[EventsManager](/[[language]]/[[version]]/events) に送信することができます。ただし、それが存在する場合に限ります。 ブール値 false を返すいくつかのイベントは、アクティブな操作を停止することがあります。 以下のイベントがサポートされています。
 
-| Event Name            | Triggered                                            | Can stop operation? |
-| --------------------- | ---------------------------------------------------- |:-------------------:|
-| `afterConnect`        | After a successfully connection to a database system |         No          |
-| `beforeQuery`         | Before send a SQL statement to the database system   |         Yes         |
-| `afterQuery`          | After send a SQL statement to database system        |         No          |
-| `beforeDisconnect`    | Before close a temporal database connection          |         No          |
-| `beginTransaction`    | Before a transaction is going to be started          |         No          |
-| `rollbackTransaction` | Before a transaction is rollbacked                   |         No          |
-| `commitTransaction`   | Before a transaction is committed                    |         No          |
+| イベント名                 | トリガー                        | 処理中断が可能 |
+| --------------------- | --------------------------- |:-------:|
+| `afterConnect`        | データベースシステムへの接続が成功した後        |   いいえ   |
+| `beforeQuery`         | データベースシステムへSQLステートメントを送信する前 |   はい    |
+| `afterQuery`          | データベースシステムへSQLステートメントを送信した後 |   いいえ   |
+| `beforeDisconnect`    | 一時的なデータベース接続を切断する前          |   いいえ   |
+| `beginTransaction`    | トランザクションが実行される前             |   いいえ   |
+| `rollbackTransaction` | トランザクションがロールバックされる前         |   いいえ   |
+| `commitTransaction`   | トランザクションがコミットされる前           |   いいえ   |
 
-Bind an EventsManager to a connection is simple, `Phalcon\Db` will trigger the events with the type `db`:
+EventsManager をconnectionにバインドすることは単純です。`Phalcon\Db` は `db`タイプのイベントを発火します:
 
 ```php
 <?php
@@ -566,7 +566,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
 
 $eventsManager = new EventsManager();
 
-// Listen all the database events
+// 全てのデータベースのイベントをリッスン
 $eventsManager->attach('db', $dbListener);
 
 $connection = new Connection(
@@ -578,11 +578,11 @@ $connection = new Connection(
     ]
 );
 
-// Assign the eventsManager to the db adapter instance
+// イベントマネージャをそのデータベースアダプタのインスタンスへ割り当て
 $connection->setEventsManager($eventsManager);
 ```
 
-Stop SQL operations are very useful if for example you want to implement some last-resource SQL injector checker:
+SQL操作の停止が便利なのは、例えば、あなたが最後のリソースのSQLインジェクションのチェッカーなどを実装しようと思っている場合です:
 
 ```php
 <?php
@@ -594,14 +594,14 @@ $eventsManager->attach(
     function (Event $event, $connection) {
         $sql = $connection->getSQLStatement();
 
-        // Check for malicious words in SQL statements
+        // SQL ステートメントに悪意のあるワードがあるか確認
         if (preg_match('/DROP|ALTER/i', $sql)) {
-            // DROP/ALTER operations aren't allowed in the application,
-            // this must be a SQL injection!
+            // このアプリケーションではDROPやALTER操作は許可されていません。
+            // これはSQL インジェクションです！
             return false;
         }
 
-        // It's OK
+        // OK
         return true;
     }
 );
@@ -609,11 +609,11 @@ $eventsManager->attach(
 
 <a name='profiling'></a>
 
-## Profiling SQL Statements
+## SQL ステートメントのプロファイリング
 
-`Phalcon\Db` includes a profiling component called `Phalcon\Db\Profiler`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
+`Phalcon\Db` には`Phalcon\Db\Profiler`というプロファイリングのコンポーネントがあります。これは、データベース操作の性能を分析に使用して、性能上の問題を診断したりボトルネックを発見するのに使用します。
 
-Database profiling is really easy With `Phalcon\Db\Profiler`:
+`Phalcon\Db\Profiler`を使うことで、データベースのプロファイリングが簡単に行えます:
 
 ```php
 <?php
@@ -626,35 +626,35 @@ $eventsManager = new EventsManager();
 
 $profiler = new DbProfiler();
 
-// Listen all the database events
+// すべてのデータベースイベントをリッスンします。
 $eventsManager->attach(
     'db',
     function (Event $event, $connection) use ($profiler) {
         if ($event->getType() === 'beforeQuery') {
             $sql = $connection->getSQLStatement();
 
-            // Start a profile with the active connection
+            // 接続をしたままプロファイルを開始
             $profiler->startProfile($sql);
         }
 
         if ($event->getType() === 'afterQuery') {
-            // Stop the active profile
+            // プロファイリングを停止
             $profiler->stopProfile();
         }
     }
 );
 
-// Assign the events manager to the connection
+// イベントマネージャーに接続を割り当て
 $connection->setEventsManager($eventsManager);
 
 $sql = 'SELECT buyer_name, quantity, product_name '
      . 'FROM buyers '
      . 'LEFT JOIN products ON buyers.pid = products.id';
 
-// Execute a SQL statement
+// SQLステートメントの実行
 $connection->query($sql);
 
-// Get the last profile in the profiler
+// プロファイラ内の最後のプロファイルを取得
 $profile = $profiler->getLastProfile();
 
 echo 'SQL Statement: ', $profile->getSQLStatement(), "\n";
@@ -663,7 +663,7 @@ echo 'Final Time: ', $profile->getFinalTime(), "\n";
 echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), "\n";
 ```
 
-You can also create your own profile class based on `Phalcon\Db\Profiler` to record real time statistics of the statements sent to the database system:
+`Phalcon\Db\Profiler`をベースとしたプロファイルクラスを作成して、データベースシステムに送信したステートメントのリアルタイム統計を記録します:
 
 ```php
 <?php
@@ -675,7 +675,7 @@ use Phalcon\Db\Profiler\Item as Item;
 class DbProfiler extends Profiler
 {
     /**
-     * Executed before the SQL statement will sent to the db server
+     * DBサーバーへSQLステートメントを送る前に実行
      */
     public function beforeStartProfile(Item $profile)
     {
@@ -683,7 +683,7 @@ class DbProfiler extends Profiler
     }
 
     /**
-     * Executed after the SQL statement was sent to the db server
+     * DBサーバーへSQLステートメントを送った後に実行
      */
     public function afterEndProfile(Item $profile)
     {
@@ -691,21 +691,21 @@ class DbProfiler extends Profiler
     }
 }
 
-// Create an Events Manager
+// イベントマネージャの作成
 $eventsManager = new EventsManager();
 
-// Create a listener
+// リスナーの作成
 $dbProfiler = new DbProfiler();
 
-// Attach the listener listening for all database events
+// 全データベースイベントをリッスンするリスナーにアタッチ
 $eventsManager->attach('db', $dbProfiler);
 ```
 
 <a name='logging-statements'></a>
 
-## Logging SQL Statements
+## SQL ステートメントのロギング
 
-Using high-level abstraction components such as `Phalcon\Db` to access a database, it is difficult to understand which statements are sent to the database system. `Phalcon\Logger` interacts with `Phalcon\Db`, providing logging capabilities on the database abstraction layer.
+`Phalcon\Db`のようなハイレベルの抽象化コンポーネントを使用してデータベースにアクセスすると、どのステートメントがデータベースシステムに送信されるのかを理解することは困難です。 `Phalcon\Logger` は、`Phalcon\Db`と相互作用し、データベース抽象化レイヤー上でログ機能を提供します。
 
 ```php
 <?php
@@ -728,10 +728,10 @@ $eventsManager->attach(
     }
 );
 
-// Assign the eventsManager to the db adapter instance
+// eventsManagerをdbアダプタインスタンスに割り当てる
 $connection->setEventsManager($eventsManager);
 
-// Execute some SQL statement
+// 複数のSQL文を実行
 $connection->insert(
     'products',
     [
@@ -745,7 +745,7 @@ $connection->insert(
 );
 ```
 
-As above, the file `app/logs/db.log` will contain something like this:
+上記のように、ファイル`app/logs/db.log`には次のようなものが含まれます:
 
 ```bash
 [Sun, 29 Apr 12 22:35:26 -0500][DEBUG][Resource Id #77] INSERT INTO products
@@ -754,32 +754,32 @@ As above, the file `app/logs/db.log` will contain something like this:
 
 <a name='logger-custom'></a>
 
-## Implementing your own Logger
+## 独自のロガーを実装
 
-You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a string as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
+データベースのクエリのため、独自のロガー クラスを実装できます。それは`log` と呼ぶ単一のメソッドを実装するクラスを作成することによって行います。 このメソッドは、最初の引数として string を受け入れる必要があります。 ログ オブジェクトを`Phalcon\Db::setLogger()`に渡して、その時から実行されたすべての SQL ステートメントの結果を記録するメソッドを呼び出せます。
 
 <a name='describing-tables'></a>
 
-## Describing Tables/Views
+## テーブル/ビューの定義取得
 
-`Phalcon\Db` also provides methods to retrieve detailed information about tables and views:
+`Phalcon\Db` は、テーブルとビューについての詳細情報を取得するメソッドも提供します:
 
 ```php
 <?php
 
-// Get tables on the test_db database
-$tables = $connection->listTables('test_db');
+// test_db データベースのテーブルを取得
+$tables = $connection->listViews('test_db');
 
-// Is there a table 'robots' in the database?
+// このデータベースに 'robots' テーブルがあるかどうか
 $exists = $connection->tableExists('robots');
 
-// Get name, data types and special features of 'robots' fields
+// 'robots'フィールドから、名前、データタイプ、特別な機能を取得
 $fields = $connection->describeColumns('robots');
 foreach ($fields as $field) {
     echo 'Column Type: ', $field['Type'];
 }
 
-// Get indexes on the 'robots' table
+// 'robots'テーブルのインデックスを取得
 $indexes = $connection->describeIndexes('robots');
 foreach ($indexes as $index) {
     print_r(
@@ -787,45 +787,45 @@ foreach ($indexes as $index) {
     );
 }
 
-// Get foreign keys on the 'robots' table
+// 'robots'テーブルの外部キーを取得
 $references = $connection->describeReferences('robots');
 foreach ($references as $reference) {
-    // Print referenced columns
+    // 参照カラムの表示
     print_r(
         $reference->getReferencedColumns()
     );
 }
 ```
 
-A table description is very similar to the MySQL describe command, it contains the following information:
+テーブルの説明はMySQLのdescribeコマンドとほとんど同じで、次の情報が含まれています。
 
-| Field        | Type        | Key                                                | Null                               |
-| ------------ | ----------- | -------------------------------------------------- | ---------------------------------- |
-| Field's name | Column Type | Is the column part of the primary key or an index? | Does the column allow null values? |
+| フィールド  | タイプ    | キー                        | Null              |
+| ------ | ------ | ------------------------- | ----------------- |
+| フィールド名 | カラムタイプ | プライマリーキーまたはインデックスのカラムかどうか | カラムがnullを許可するかどうか |
 
-Methods to get information about views are also implemented for every supported database system:
+ビューに関する情報を取得するメソッドは、サポートされているすべてのデータベースシステムに対しても実装されています:
 
 ```php
 <?php
 
-// Get views on the test_db database
+// test_db データベースのviewを取得
 $tables = $connection->listViews('test_db');
 
-// Is there a view 'robots' in the database?
+// このデータベースに 'robots' viewがあるかどうか
 $exists = $connection->viewExists('robots');
 ```
 
 <a name='tables'></a>
 
-## Creating/Altering/Dropping Tables
+## テーブルの作成/変更/削除
 
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
+(MySQL、Postgresql など) データベースシステム は、CREATE、ALTER または DROP などのコマンドを使ってテーブルを作成、変更、削除する機能を提供します。 SQL のシンタックスは、どのデータベースシステムを使用しているかによって異なります。 `Phalcon\Db` は、テーブルを変更する統一されたインターフェイスを提供しています。ターゲットのストレージシステムに基づいたSQL シンタックスの違いを必要としません。
 
 <a name='tables-create'></a>
 
-### Creating Tables
+### テーブルの作成
 
-The following example shows how to create a table:
+テーブルを作成する方法を示します。
 
 ```php
 <?php
@@ -868,23 +868,23 @@ $connection->createTable(
 );
 ```
 
-`Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class `Phalcon\Db\Column`. The table below shows the options available to define a column:
+`Phalcon\Db::createTable()` は、テーブルを表す連想配列を受けつけます。 カラムは、`Phalcon\Db\Column` クラスで定義します。 カラムの定義に使用できるオプションを次の表で示します。
 
-| Option          | Description                                                                                                                                | Optional |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
-| `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below for a list)                                                               |    No    |
-| `primary`       | True if the column is part of the table's primary key                                                                                      |   Yes    |
-| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |   Yes    |
-| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |   Yes    |
-| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |   Yes    |
-| `notNull`       | Column can store null values?                                                                                                              |   Yes    |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |   Yes    |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Yes    |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |   Yes    |
-| `first`         | Column must be placed at first position in the column order                                                                                |   Yes    |
-| `after`         | Column must be placed after indicated column                                                                                               |   Yes    |
+| オプション           | 説明                                                                      | オプション |
+| --------------- | ----------------------------------------------------------------------- |:-----:|
+| `type`          | カラムのタイプです。`Phalcon\Db\Column` の定数でなければなりません。 (定数リストについては下記を参照してください。) |  いいえ  |
+| `primary`       | そのカラムがテーブルのプライマリーキーの部分だった場合は true です。                                   |  はい   |
+| `size`          | `VARCHAR` や `INTEGER` のような種類のカラムは指定のサイズになります。                           |  はい   |
+| `scale`         | `DECIMAL` または `NUMBER` カラムでサイズを指定します。どのくらい多くの桁を保持すべきかを示します。             |  はい   |
+| `unsigned`      | `INTEGER` カラムが符号付きまたは符号なしかを示します。このオプションは他の種類のカラムには適用しません。               |  はい   |
+| `notNull`       | カラムが、nullを格納できるかどうか。                                                    |  はい   |
+| `default`       | デフォルト値 (`'notNull' => true`の場合に使用する)                                 |  はい   |
+| `autoIncrement` | この属性を持つカラムはオートインクリメント値で自動的に決定します。テーブルのカラムのうち、1カラムだけがこの属性を持つことができます。     |  はい   |
+| `bind`          | `BIND_TYPE _*`定数の1つで、カラムをバインドしてから保存する必要があります                            |  はい   |
+| `first`         | このカラムは、最初の位置に置かれなければなりません。                                              |  はい   |
+| `after`         | このカラムは、指定されたカラムの後に置く必要があります。                                            |  はい   |
 
-`Phalcon\Db` supports the following database column types:
+`Phalcon\Db`は次のDBカラムタイプをサポートしています:
 
 - `Phalcon\Db\Column::TYPE_INTEGER`
 - `Phalcon\Db\Column::TYPE_DATE`
@@ -894,27 +894,27 @@ $connection->createTable(
 - `Phalcon\Db\Column::TYPE_CHAR`
 - `Phalcon\Db\Column::TYPE_TEXT`
 
-The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
+`Phalcon\Db::createTable()` に渡された連想配列は、次のキーを持てます:
 
-| Index        | Description                                                                                                                            | Optional |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |    No    |
-| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |   Yes    |
-| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |   Yes    |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |   Yes    |
+| インデックス       | 説明                                                                 | オプション |
+| ------------ | ------------------------------------------------------------------ |:-----:|
+| `columns`    | `Phalcon\Db\Column`で定義されたテーブルカラムの配列                              |  いいえ  |
+| `indexes`    | `Phalcon\Db\Index`で定義されたテーブルインデックスの配列                            |  はい   |
+| `references` | `Phalcon\Db\Reference`で定義されたテーブル参照 (外部キー) の配列                    |  はい   |
+| `options`    | テーブル作成オプションの配列。これらのオプションはマイグレーションによって生成された、データベースシステムに関連することが多いです。 |  はい   |
 
 <a name='tables-altering'></a>
 
-### Altering Tables
+### テーブルの変更
 
-As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. `Phalcon\Db` is limited by these constraints.
+アプリケーションが大きくなるにつれて、リファクタリングや新しい機能の追加の一環として、データベースを変更する必要が生じる場合があります。 すべてのデータベースシステムで既存のカラムを変更したり、既存のカラムの間にカラムを追加することはできません。 `Phalcon\Db`は、これらの制約によって制限されます。
 
 ```php
 <?php
 
 use Phalcon\Db\Column as Column;
 
-// Adding a new column
+// 新しいカラムの追加
 $connection->addColumn(
     'robots',
     null,
@@ -929,7 +929,7 @@ $connection->addColumn(
     )
 );
 
-// Modifying an existing column
+// 既存カラムの修正
 $connection->modifyColumn(
     'robots',
     null,
@@ -943,7 +943,7 @@ $connection->modifyColumn(
     )
 );
 
-// Deleting the column 'name'
+// 'name' カラムの削除
 $connection->dropColumn(
     'robots',
     null,
@@ -953,16 +953,16 @@ $connection->dropColumn(
 
 <a name='tables-dropping'></a>
 
-### Dropping Tables
+### テーブルの削除
 
-Examples on dropping tables:
+テーブル削除の例:
 
 ```php
 <?php
 
-// Drop table robot from active database
+// アクティブなデータベースから 'robots' テーブルを削除
 $connection->dropTable('robots');
 
-// Drop table robot from database 'machines'
+// 'machines' データベースから 'robots' テーブルを削除 
 $connection->dropTable('robots', 'machines');
 ```

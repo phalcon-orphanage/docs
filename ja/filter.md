@@ -1,33 +1,33 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Filtering and Sanitizing</a> <ul>
+      <a href="#overview">フィルターとサニタイズ</a> <ul>
         <li>
-          <a href="#types">Types of Built-in Filters</a>
+          <a href="#types">ビルトインフィルターの種類</a>
         </li>
         <li>
-          <a href="#sanitizing">Sanitizing data</a>
+          <a href="#sanitizing">データのサニタイズ</a>
         </li>
         <li>
-          <a href="#sanitizing-from-controllers">Sanitizing from Controllers</a>
+          <a href="#sanitizing-from-controllers">コントローラーからのサニタイズ</a>
         </li>
         <li>
-          <a href="#filtering-action-parameters">Filtering Action Parameters</a>
+          <a href="#filtering-action-parameters">アクションパラメーターのフィルタリング</a>
         </li>
         <li>
-          <a href="#filtering-data">Filtering data</a>
+          <a href="#filtering-data">データのフィルタリング</a>
         </li>
         <li>
-          <a href="#combining-filters">Combining Filters</a>
+          <a href="#combining-filters">フィルターの組合せ</a>
         </li>
         <li>
-          <a href="#adding-filters">Adding filters</a>
+          <a href="#adding-filters">フィルターの追加</a>
         </li>
         <li>
-          <a href="#complex-sanitization-filtering">Complex Sanitizing and Filtering</a>
+          <a href="#complex-sanitization-filtering">複雑なサニタイズとフィルタリング</a>
         </li>
         <li>
-          <a href="#custom">Implementing your own Filter</a>
+          <a href="#custom">独自のフィルターを実装</a>
         </li>
       </ul>
     </li>
@@ -36,40 +36,40 @@
 
 <a name='overview'></a>
 
-# Filtering and Sanitizing
+# フィルターとサニタイズ
 
-Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
+ユーザー入力のサニタイズは、ソフトウェア開発の重要な部分です。 ユーザー入力を信頼したり無視してしまうと、アプリケーションのコンテンツ、主にユーザーデータ、またはアプリケーションがホストされているサーバーにも不正にアクセスさせてしまう可能性があります。
 
 ![](/images/content/filter-sql.png)
 
-[Full image on XKCD](http://xkcd.com/327)
+[XKCD の完全なイメージ](http://xkcd.com/327)
 
-The `Phalcon\Filter` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
+`Phalcon\Filter` コンポーネントは、一般的に使用されるフィルターとサニタイズヘルパーのデータのセットを提供します。またオブジェクト指向の PHP フィルター拡張機能ラッパーも提供します。
 
 <a name='types'></a>
 
-## Types of Built-in Filters
+## ビルトインフィルターの種類
 
-The following are the built-in filters provided by this component:
+このコンポーネントによって提供される、ビルドインフィルターを次に示します。
 
-| Name      | Description                                                                              |
-| --------- | ---------------------------------------------------------------------------------------- |
-| string    | Strip tags and encode HTML entities, including single and double quotes.                 |
-| email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.        |
-| int       | Remove all characters except digits, plus and minus sign.                                |
-| float     | Remove all characters except digits, dot, plus and minus sign.                           |
-| alphanum  | Remove all characters except [a-zA-Z0-9]                                                 |
-| striptags | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function  |
-| trim      | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function              |
-| lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function  |
-| url       | Remove all characters except letters, digits and `|`$-_.+!*'(),{}[]<>#%";/?:@&=.^~\\` |
-| upper     | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function  |
+| 名前        | 説明                                                                           |
+| --------- | ---------------------------------------------------------------------------- |
+| string    | タグを除去し、シングルクォートとダブルクォートでHTML エンティティをエンコードします。                                |
+| email     | 文字・数字`!#$%&*+-/=?^_`{\|}~@.[]`以外のすべての文字を削除し、                           |
+| int       | 数字、プラス記号、マイナス記号以外のすべての文字を削除します。                                              |
+| float     | 数字、ドット、プラス記号、マイナス記号以外のすべての文字を削除します。                                          |
+| alphanum  | [a-zA-Z0-9] 以外のすべての文字を削除します。                                                 |
+| striptags | [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) 関数を適用します。 |
+| trim      | [trim](http://www.php.net/manual/en/function.trim.php) 関数を適用します。             |
+| lower     | [strtolower](http://www.php.net/manual/en/function.strtolower.php) 関数を適用します。 |
+| url       | 英字、数字、`|`$-_.+!*'(),{}[]<>#%";/?:@&=.^~\\`を除くすべての文字を削除                    |
+| upper     | [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) 関数を適用します。 |
 
 <a name='sanitizing'></a>
 
-## Sanitizing data
+## データのサニタイズ
 
-Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input we ensure that application integrity will be intact.
+サニタイズは、ユーザーまたはアプリケーションに必要ではないまたは望まれていない、特定の文字を値から削除するプロセスです。 入力値のサニタイズによって、アプリケーションの整合性を確かめます。
 
 ```php
 <?php
@@ -78,24 +78,24 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Returns 'someone@example.com'
+// 'someone@example.com' を返す
 $filter->sanitize('some(one)@exa\mple.com', 'email');
 
-// Returns 'hello'
+// 'hello' を返す
 $filter->sanitize('hello<<', 'string');
 
-// Returns '100019'
+// '100019' を返す
 $filter->sanitize('!100a019', 'int');
 
-// Returns '100019.01'
+// '100019.01' を返す
 $filter->sanitize('!100a019.01a', 'float');
 ```
 
 <a name='sanitizing-from-controllers'></a>
 
-## Sanitizing from Controllers
+## コントローラーからのサニタイズ
 
-You can access a `Phalcon\Filter` object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
+（リクエストオブジェクトを通じて）`GET` または `POST` の入力データにアクセスするとき、コントローラーから `Phalcon\Filter` オブジェクトにアクセスできます。 最初のパラメータは、取得する変数の名前です。 2番目はそれに適用されるフィルタです。
 
 ```php
 <?php
@@ -111,10 +111,10 @@ class ProductsController extends Controller
 
     public function saveAction()
     {
-        // Sanitizing price from input
+        // 入力されたpriceをサニタイズ
         $price = $this->request->getPost('price', 'double');
 
-        // Sanitizing email from input
+        // 入力されたemailをサニタイズ
         $email = $this->request->getPost('customerEmail', 'email');
     }
 }
@@ -122,9 +122,9 @@ class ProductsController extends Controller
 
 <a name='filtering-action-parameters'></a>
 
-## Filtering Action Parameters
+## アクションパラメーターのフィルタリング
 
-The next example shows you how to sanitize the action parameters within a controller action:
+次の例では、コント ローラーのアクションの中でアクションパラメーターをサニタイズする方法を示します。
 
 ```php
 <?php
@@ -147,9 +147,9 @@ class ProductsController extends Controller
 
 <a name='filtering-data'></a>
 
-## Filtering data
+## データのフィルタリング
 
-In addition to sanitizing, `Phalcon\Filter` also provides filtering by removing or modifying input data to the format we expect.
+サニタイズに加えて、`Phalcon\Filter` は、入力データを私達が期待する形式に修正したり、削除したりすることで、フィルタリング機能を提供します。
 
 ```php
 <?php
@@ -158,18 +158,18 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Returns 'Hello'
+// 'hello' を返す
 $filter->sanitize('<h1>Hello</h1>', 'striptags');
 
-// Returns 'Hello'
+// 'hello' を返す
 $filter->sanitize('  Hello   ', 'trim');
 ```
 
 <a name='combining-filters'></a>
 
-## Combining Filters
+## フィルターの組合せ
 
-You can also run multiple filters on a string at the same time by passing an array of filter identifiers as the second parameter:
+2 番目のパラメーターとしてフィルターのIDの配列を渡すことによって、同時に複数のフィルターを文字列に対して実行することもできます:
 
 ```php
 <?php
@@ -178,7 +178,7 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Returns 'Hello'
+// 'hello' を返す
 $filter->sanitize(
     '   <h1> Hello </h1>   ',
     [
@@ -190,9 +190,9 @@ $filter->sanitize(
 
 <a name='adding-filters'></a>
 
-## Adding filters
+## フィルターの追加
 
-You can add your own filters to `Phalcon\Filter`. The filter function could be an anonymous function:
+自身のフィルターを`Phalcon\Filter`に追加できます。このフィルタ関数は無名関数でも問題ありません。:
 
 ```php
 <?php
@@ -201,7 +201,7 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Using an anonymous function
+// 無名関数を使う
 $filter->add(
     'md5',
     function ($value) {
@@ -209,11 +209,11 @@ $filter->add(
     }
 );
 
-// Sanitize with the 'md5' filter
+// 'md5' フィルターでサニタイズ
 $filtered = $filter->sanitize($possibleMd5, 'md5');
 ```
 
-Or, if you prefer, you can implement the filter in a class:
+また、必要に応じて、クラス内にフィルタを実装することもできます:
 
 ```php
 <?php
@@ -230,24 +230,24 @@ class IPv4Filter
 
 $filter = new Filter();
 
-// Using an object
+// オブジェクトを使う
 $filter->add(
     'ipv4',
     new IPv4Filter()
 );
 
-// Sanitize with the 'ipv4' filter
+// 'ipv4' フィルターでサニタイズ
 $filteredIp = $filter->sanitize('127.0.0.1', 'ipv4');
 ```
 
 <a name='complex-sanitization-filtering'></a>
 
-## Complex Sanitizing and Filtering
+## 複雑なサニタイズとフィルタリング
 
-PHP itself provides an excellent filter extension you can use. Check out its documentation: [Data Filtering at PHP Documentation](http://www.php.net/manual/en/book.filter.php)
+PHP自体、あなたが使用できる素晴らしいフィルタ拡張モジュールを提供します。ドキュメントをチェックしてみてください: [Data Filtering at PHP Documentation](http://www.php.net/manual/en/book.filter.php)
 
 <a name='custom'></a>
 
-## Implementing your own Filter
+## 独自のフィルターを実装
 
-The `Phalcon\FilterInterface` interface must be implemented to create your own filtering service replacing the one provided by Phalcon.
+Phalconが提供するフィルタリングサービスの代わりに独自のフィルタリングサービスを作成するには、`Phalcon\FilterInterface`インターフェイスを実装する必要があります。
