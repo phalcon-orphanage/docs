@@ -642,7 +642,7 @@ Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 63
 Content-Type: text/html; charset=UTF-8
 
-{"status":"ERROR","messages":["The robot name must be unique"]}
+{"status":"ERROR","messages":["El nombre del robot debe ser único"]}
 ```
 
 O actualizar un robot con un tipo desconocido:
