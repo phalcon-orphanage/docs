@@ -2,39 +2,39 @@
 
 *implements* [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface), [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Adapter for Phalcon\\Acl adapters
+Phalcon\\Acl 用アダプター
 
-## Methods
+## メソッド
 
 public **getActiveRole** ()
 
-Role which the list is checking if it's allowed to certain resource/access
+特定のリソース/アクセスを許可するかどうかをチェックするリストの役割
 
 public **getActiveResource** ()
 
-Resource which the list is checking if some role can access it
+いくつかのロールがアクセスできるかをチェックするリストのリソース
 
 public **getActiveAccess** ()
 
-Active access which the list is checking if some role can access it
+いくつかのロールがアクセスできるかをチェックするリストのアクティブなアクセス
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+イベントマネージャーをセットします
 
 public **getEventsManager** ()
 
-Returns the internal event manager
+内部イベントマネージャーを返します
 
 public **setDefaultAction** (*mixed* $defaultAccess)
 
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
+デフォルトのアクセスレベルをセットします (Phalcon\\Acl::ALLOW または Phalcon\\Acl::DENY)
 
 public **getDefaultAction** ()
 
-Returns the default ACL access level
+デフォルトのACLアクセスレベルを返します
 
 abstract public **setNoArgumentsDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface)
 
