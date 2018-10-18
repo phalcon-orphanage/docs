@@ -1,142 +1,145 @@
-<h1>Class <strong>Phalcon\\Translate\\Adapter\\Gettext</strong></h1>
+# Class **Phalcon\\Translate\\Adapter\\Gettext**
 
-<p><em>extends</em> abstract class <a href="/en/3.2/api/Phalcon_Translate_Adapter">Phalcon\Translate\Adapter</a></p>
+*extends* abstract class [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
 
-<p><em>implements</em> <a href="/en/3.2/api/Phalcon_Translate_AdapterInterface">Phalcon\Translate\AdapterInterface</a>, <a href="http://php.net/manual/en/class.arrayaccess.php">ArrayAccess</a></p>
+*implements* [Phalcon\Translate\AdapterInterface](/en/3.2/api/Phalcon_Translate_AdapterInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
 
-<p><a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/translate/adapter/gettext.zep" class="btn btn-default btn-sm" mark="crwd-mark">Source on GitHub</a></p>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/translate/adapter/gettext.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-<pre><code class="php">&lt;?php
+```php
+<?php
 
 use Phalcon\Translate\Adapter\Gettext;
 
 $adapter = new Gettext(
     [
-        "locale"        =&gt; "de_DE.UTF-8",
-        "defaultDomain" =&gt; "translations",
-        "directory"     =&gt; "/path/to/application/locales",
-        "category"      =&gt; LC_MESSAGES,
+        "locale"        => "de_DE.UTF-8",
+        "defaultDomain" => "translations",
+        "directory"     => "/path/to/application/locales",
+        "category"      => LC_MESSAGES,
     ]
 );
 
-</code></pre>
+```
 
-<p>Allows translate using gettext</p>
+Allows translate using gettext
 
-<h2>Methods</h2>
+## Methods
 
-<p>public  <strong>getDirectory</strong> ()</p>
+public **getDirectory** ()
 
-<p>public  <strong>getDefaultDomain</strong> ()</p>
+public **getDefaultDomain** ()
 
-<p>public  <strong>getLocale</strong> ()</p>
+public **getLocale** ()
 
-<p>public  <strong>getCategory</strong> ()</p>
+public **getCategory** ()
 
-<p>public  <strong>__construct</strong> (<em>array</em> $options)</p>
+public **__construct** (*array* $options)
 
-<p>Phalcon\\Translate\\Adapter\\Gettext constructor</p>
+Phalcon\\Translate\\Adapter\\Gettext constructor
 
-<p>public  <strong>query</strong> (<em>mixed</em> $index, [<em>mixed</em> $placeholders])</p>
+public **query** (*mixed* $index, [*mixed* $placeholders])
 
-<p>Returns the translation related to the given key.</p>
+Returns the translation related to the given key.
 
-<pre><code class="php">&lt;?php
+```php
+<?php
 
-$translator-&gt;query("你好 %name%！", ["name" =&gt; "Phalcon"]);
+$translator->query("你好 %name%！", ["name" => "Phalcon"]);
 
-</code></pre>
+```
 
-<p>public  <strong>exists</strong> (<em>mixed</em> $index)</p>
+public **exists** (*mixed* $index)
 
-<p>Check whether is defined a translation key in the internal array</p>
+Check whether is defined a translation key in the internal array
 
-<p>public  <strong>nquery</strong> (<em>mixed</em> $msgid1, <em>mixed</em> $msgid2, <em>mixed</em> $count, [<em>mixed</em> $placeholders], [<em>mixed</em> $domain])</p>
+public **nquery** (*mixed* $msgid1, *mixed* $msgid2, *mixed* $count, [*mixed* $placeholders], [*mixed* $domain])
 
-<p>The plural version of gettext().
-Some languages have more than one form for plural messages dependent on the count.</p>
+The plural version of gettext(). Some languages have more than one form for plural messages dependent on the count.
 
-<p>public  <strong>setDomain</strong> (<em>mixed</em> $domain)</p>
+public **setDomain** (*mixed* $domain)
 
-<p>Changes the current domain (i.e. the translation file)</p>
+Changes the current domain (i.e. the translation file)
 
-<p>public  <strong>resetDomain</strong> ()</p>
+public **resetDomain** ()
 
-<p>Sets the default domain</p>
+Sets the default domain
 
-<p>public  <strong>setDefaultDomain</strong> (<em>mixed</em> $domain)</p>
+public **setDefaultDomain** (*mixed* $domain)
 
-<p>Sets the domain default to search within when calls are made to gettext()</p>
+Sets the domain default to search within when calls are made to gettext()
 
-<p>public  <strong>setDirectory</strong> (<em>mixed</em> $directory)</p>
+public **setDirectory** (*mixed* $directory)
 
-<p>Sets the path for a domain</p>
+Sets the path for a domain
 
-<pre><code class="php">&lt;?php
+```php
+<?php
 
 // Set the directory path
-$gettext-&gt;setDirectory("/path/to/the/messages");
+$gettext->setDirectory("/path/to/the/messages");
 
 // Set the domains and directories path
-$gettext-&gt;setDirectory(
+$gettext->setDirectory(
     [
-        "messages" =&gt; "/path/to/the/messages",
-        "another"  =&gt; "/path/to/the/another",
+        "messages" => "/path/to/the/messages",
+        "another"  => "/path/to/the/another",
     ]
 );
 
-</code></pre>
+```
 
-<p>public  <strong>setLocale</strong> (<em>mixed</em> $category, <em>mixed</em> $locale)</p>
+public **setLocale** (*mixed* $category, *mixed* $locale)
 
-<p>Sets locale information</p>
+Sets locale information
 
-<pre><code class="php">&lt;?php
+```php
+<?php
 
 // Set locale to Dutch
-$gettext-&gt;setLocale(LC_ALL, "nl_NL");
+$gettext->setLocale(LC_ALL, "nl_NL");
 
 // Try different possible locale names for german
-$gettext-&gt;setLocale(LC_ALL, "de_DE@euro", "de_DE", "de", "ge");
+$gettext->setLocale(LC_ALL, "de_DE@euro", "de_DE", "de", "ge");
 
-</code></pre>
+```
 
-<p>protected  <strong>prepareOptions</strong> (<em>array</em> $options)</p>
+protected **prepareOptions** (*array* $options)
 
-<p>Validator for constructor</p>
+Validator for constructor
 
-<p>protected  <strong>getOptionsDefault</strong> ()</p>
+protected **getOptionsDefault** ()
 
-<p>Gets default options</p>
+Gets default options
 
-<p>public  <strong>setInterpolator</strong> (<a href="/en/3.2/api/Phalcon_Translate_InterpolatorInterface">Phalcon\Translate\InterpolatorInterface</a> $interpolator) inherited from <a href="/en/3.2/api/Phalcon_Translate_Adapter">Phalcon\Translate\Adapter</a></p>
+public **setInterpolator** ([Phalcon\Translate\InterpolatorInterface](/en/3.2/api/Phalcon_Translate_InterpolatorInterface) $interpolator) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
 
-<p>...</p>
+...
 
-<p>public <em>string</em> <strong>t</strong> (<em>string</em> $translateKey, [<em>array</em> $placeholders]) inherited from <a href="/en/3.2/api/Phalcon_Translate_Adapter">Phalcon\Translate\Adapter</a></p>
+public *string* **t** (*string* $translateKey, [*array* $placeholders]) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
 
-<p>Returns the translation string of the given key</p>
+Returns the translation string of the given key
 
-<p>public <em>string</em> <strong>_</strong> (*string* $translateKey, [*array* $placeholders]) inherited from <a href="/en/3.2/api/Phalcon_Translate_Adapter">Phalcon\Translate\Adapter</a></p>
+public *string* **_** (*string* $translateKey, [*array* $placeholders]) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
 
-<p>Returns the translation string of the given key (alias of method 't')</p>
+Returns the translation string of the given key (alias of method 't')
 
-<p>public  <strong>offsetSet</strong> (<em>string</em> $offset, <em>string</em> $value) inherited from <a href="/en/3.2/api/Phalcon_Translate_Adapter">Phalcon\Translate\Adapter</a></p>
+public **offsetSet** (*string* $offset, *string* $value) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
 
-<p>Sets a translation value</p>
+Sets a translation value
 
-<p>public  <strong>offsetExists</strong> (<em>mixed</em> $translateKey) inherited from <a href="/en/3.2/api/Phalcon_Translate_Adapter">Phalcon\Translate\Adapter</a></p>
+public **offsetExists** (*mixed* $translateKey) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
 
-<p>Check whether a translation key exists</p>
+Check whether a translation key exists
 
-<p>public  <strong>offsetUnset</strong> (<em>string</em> $offset) inherited from <a href="/en/3.2/api/Phalcon_Translate_Adapter">Phalcon\Translate\Adapter</a></p>
+public **offsetUnset** (*string* $offset) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
 
-<p>Unsets a translation from the dictionary</p>
+Unsets a translation from the dictionary
 
-<p>public <em>string</em> <strong>offsetGet</strong> (<em>string</em> $translateKey) inherited from <a href="/en/3.2/api/Phalcon_Translate_Adapter">Phalcon\Translate\Adapter</a></p>
+public *string* **offsetGet** (*string* $translateKey) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
 
-<p>Returns the translation related to the given key</p>
+Returns the translation related to the given key
 
-<p>protected  <strong>replacePlaceholders</strong> (<em>mixed</em> $translation, [<em>mixed</em> $placeholders]) inherited from <a href="/en/3.2/api/Phalcon_Translate_Adapter">Phalcon\Translate\Adapter</a></p>
+protected **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders]) inherited from [Phalcon\Translate\Adapter](/en/3.2/api/Phalcon_Translate_Adapter)
 
-<p>Replaces placeholders by the values passed</p>
+Replaces placeholders by the values passed
