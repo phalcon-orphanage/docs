@@ -475,7 +475,9 @@ You can still add any custom parameters to function and pass associative array i
 
 ## Roles Inheritance
 
-Můžete vytvářet komplexní strukturu rolí pomocí dědičnosti, kterou poskytuje `Phalcon\Acl\Role`. Role můžou dědit z jiných rolí, což umožňuje přístup ke zdrojům rodiče. Chcete-li použít dědičnost rolí, je třeba předat zděděnou roli jako druhý parametr volání metody, při přidání této role v seznamu.
+Můžete vytvářet komplexní strukturu rolí pomocí dědičnosti, kterou poskytuje `Phalcon\Acl\Role`. Role můžou dědit z jiných rolí, což umožňuje přístup ke zdrojům rodiče. There are two ways to use role inheritance:
+
+1. You can pass the inherited role as the second parameter of the method call, when adding that role in the list.
 
 ```php
 <?php
@@ -495,6 +497,25 @@ $acl->addRole($roleGuests);
 
 // Add 'Administrators' role inheriting from 'Guests' its accesses
 $acl->addRole($roleAdmins, $roleGuests);
+```
+
+2. You can setup the relationships after roles are added
+
+```php
+<?php
+
+use Phalcon\Acl\Role;
+
+// Create some roles
+$roleAdmins = new Role('Administrators', 'Super-User role');
+$roleGuests = new Role('Guests');
+
+// Add Roles to ACL
+$acl->addRole($roleGuests);
+$acl->addRole($roleAdmins);
+
+// Have 'Administrators' role inherit from 'Guests' its accesses
+$acl->addInherit($rollAdmins, $roleGuests);
 ```
 
 <a name='serialization'></a>

@@ -1,4 +1,4 @@
-<div class='article-menu'>
+<div class='article-menu' mark="crwd-mark">
   <ul>
     <li>
       <a href="#overview">Generating URLs and Paths</a> 
@@ -26,158 +26,149 @@
   </ul>
 </div>
 
-<a name='overview'></a>
+<p><a name='overview' mark="crwd-mark"></a></p>
 
-# Generating URLs and Paths
+<h1>Generating URLs and Paths</h1>
 
-`Phalcon\Mvc\Url` is the component responsible of generate URLs in a Phalcon application. It's capable of produce independent URLs based on routes.
+<p><code>Phalcon\Mvc\Url</code> is the component responsible of generate URLs in a Phalcon application. It's capable of produce independent URLs based on routes.</p>
 
-<a name='base-uri'></a>
+<p><a name='base-uri' mark="crwd-mark"></a></p>
 
-## Setting a base URI
+<h2>Setting a base URI</h2>
 
-Depending of which directory of your document root your application is installed, it may have a base URI or not.
+<p>Depending of which directory of your document root your application is installed, it may have a base URI or not.</p>
 
-For example, if your document root is `/var/www/htdocs` and your application is installed in `/var/www/htdocs/invo` then your baseUri will be `/invo/`. If you are using a VirtualHost or your application is installed on the document root, then your baseUri is `/`. Execute the following code to know the base URI detected by Phalcon:
+<p>For example, if your document root is <code>/var/www/htdocs</code> and your application is installed in <code>/var/www/htdocs/invo</code> then your baseUri will be <code>/invo/</code>. If you are using a VirtualHost or your application is installed on the document root, then your baseUri is <code>/</code>. Execute the following code to know the base URI detected by Phalcon:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 use Phalcon\Mvc\Url;
 
 $url = new Url();
 
-echo $url->getBaseUri();
-```
+echo $url-&gt;getBaseUri();
+</code></pre>
 
-By default, Phalcon automatically may detect your baseUri, but if you want to increase the performance of your application is recommended setting up it manually:
+<p>By default, Phalcon automatically may detect your baseUri, but if you want to increase the performance of your application is recommended setting up it manually:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 use Phalcon\Mvc\Url;
 
 $url = new Url();
 
 // Setting a relative base URI
-$url->setBaseUri('/invo/');
+$url-&gt;setBaseUri('/invo/');
 
 // Setting a full domain as base URI
-$url->setBaseUri('//my.domain.com/');
+$url-&gt;setBaseUri('//my.domain.com/');
 
 // Setting a full domain as base URI
-$url->setBaseUri('http://my.domain.com/my-app/');
-```
+$url-&gt;setBaseUri('http://my.domain.com/my-app/');
+</code></pre>
 
-Usually, this component must be registered in the Dependency Injector container, so you can set up it there:
+<p>Usually, this component must be registered in the Dependency Injector container, so you can set up it there:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 use Phalcon\Mvc\Url;
 
-$di->set(
+$di-&gt;set(
     'url',
     function () {
         $url = new Url();
 
-        $url->setBaseUri('/invo/');
+        $url-&gt;setBaseUri('/invo/');
 
         return $url;
     }
 );
-```
+</code></pre>
 
-<a name='generating-uri'></a>
+<p><a name='generating-uri' mark="crwd-mark"></a></p>
 
-## Generating URIs
+<h2>Generating URIs</h2>
 
-If you are using the [Router](/[[language]]/[[version]]/routing) with its default behavior, your application is able to match routes based on the following pattern:
+<p>If you are using the <a href="/[[language]]/[[version]]/routing">Router</a> with its default behavior, your application is able to match routes based on the following pattern:</p>
 
-<div class="alert alert-info">
+<div class="alert alert-info" mark="crwd-mark">
     <p>
         /:controller/:action/:params
     </p>
 </div>
 
-Accordingly it is easy to create routes that satisfy that pattern (or any other pattern defined in the router) passing a string to the method `get`:
+<p>Accordingly it is easy to create routes that satisfy that pattern (or any other pattern defined in the router) passing a string to the method <code>get</code>:</p>
 
-```php
-<?php echo $url->get('products/save'); ?>
-```
+<pre><code class="php">&lt;?php echo $url-&gt;get('products/save'); ?&gt;
+</code></pre>
 
-Note that isn't necessary to prepend the base URI. If you have named routes you can easily change it creating it dynamically. For Example if you have the following route:
+<p>Note that isn't necessary to prepend the base URI. If you have named routes you can easily change it creating it dynamically. For Example if you have the following route:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 $router
-    ->add(
+    -&gt;add(
         '/blog/{year}/{month}/{title}',
         [
-            'controller' => 'posts',
-            'action'     => 'show',
+            'controller' =&gt; 'posts',
+            'action'     =&gt; 'show',
         ]
     )
-    ->setName('show-post');
-```
+    -&gt;setName('show-post');
+</code></pre>
 
-A URL can be generated in the following way:
+<p>A URL can be generated in the following way:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 // This produces: /blog/2015/01/some-blog-post
-$url->get(
+$url-&gt;get(
     [
-        'for'   => 'show-post',
-        'year'  => '2015',
-        'month' => '01',
-        'title' => 'some-blog-post',
+        'for'   =&gt; 'show-post',
+        'year'  =&gt; '2015',
+        'month' =&gt; '01',
+        'title' =&gt; 'some-blog-post',
     ]
 );
-```
+</code></pre>
 
-<a name='urls-without-mod-rewrite'></a>
+<p><a name='urls-without-mod-rewrite' mark="crwd-mark"></a></p>
 
-## Producing URLs without mod_rewrite
+<h2>Producing URLs without mod_rewrite</h2>
 
-You can use this component also to create URLs without mod_rewrite:
+<p>You can use this component also to create URLs without mod_rewrite:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 use Phalcon\Mvc\Url;
 
 $url = new Url();
 
 // Pass the URI in $_GET['_url']
-$url->setBaseUri('/invo/index.php?_url=/');
+$url-&gt;setBaseUri('/invo/index.php?_url=/');
 
 // This produce: /invo/index.php?_url=/products/save
-echo $url->get('products/save');
-```
+echo $url-&gt;get('products/save');
+</code></pre>
 
-You can also use `$_SERVER['REQUEST_URI']`:
+<p>You can also use <code>$_SERVER['REQUEST_URI']</code>:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 use Phalcon\Mvc\Url;
 
 $url = new Url();
 
 // Pass the URI in $_GET['_url']
-$url->setBaseUri('/invo/index.php?_url=/');
+$url-&gt;setBaseUri('/invo/index.php?_url=/');
 
 // Pass the URI using $_SERVER['REQUEST_URI']
-$url->setBaseUri('/invo/index.php/');
-```
+$url-&gt;setBaseUri('/invo/index.php/');
+</code></pre>
 
-In this case, it's necessary to manually handle the required URI in the Router:
+<p>In this case, it's necessary to manually handle the required URI in the Router:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 use Phalcon\Mvc\Router;
 
@@ -187,58 +178,54 @@ $router = new Router();
 
 $uri = str_replace($_SERVER['SCRIPT_NAME'], '', $_SERVER['REQUEST_URI']);
 
-$router->handle($uri);
-```
+$router-&gt;handle($uri);
+</code></pre>
 
-The produced routes would look like:
+<p>The produced routes would look like:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 // This produce: /invo/index.php/products/save
-echo $url->get('products/save');
-```
+echo $url-&gt;get('products/save');
+</code></pre>
 
-<a name='urls-from-volt'></a>
+<p><a name='urls-from-volt' mark="crwd-mark"></a></p>
 
-## Producing URLs from Volt
+<h2>Producing URLs from Volt</h2>
 
-The function `url` is available in volt to generate URLs using this component:
+<p>The function <code>url</code> is available in volt to generate URLs using this component:</p>
 
-```twig
-<a href='{{ url('posts/edit/1002') }}'>Edit</a>
-```
+<pre><code class="twig">&lt;a href='{{ url('posts/edit/1002') }}' mark="crwd-mark"&gt;Edit&lt;/a&gt;
+</code></pre>
 
-Generate static routes:
+<p>Generate static routes:</p>
 
-```twig
-<link rel='stylesheet' href='{{ static_url('css/style.css') }}' type='text/css' />
-```
+<pre><code class="twig">&lt;link rel='stylesheet' href='{{ static_url('css/style.css') }}' type='text/css' /&gt;
+</code></pre>
 
-<a name='static-vs-dynamic-uri'></a>
+<p><a name='static-vs-dynamic-uri' mark="crwd-mark"></a></p>
 
-## Static vs. Dynamic URIs
+<h2>Static vs. Dynamic URIs</h2>
 
-This component allow you to set up a different base URI for static resources in the application:
+<p>This component allow you to set up a different base URI for static resources in the application:</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 use Phalcon\Mvc\Url;
 
 $url = new Url();
 
 // Dynamic URIs are
-$url->setBaseUri('/');
+$url-&gt;setBaseUri('/');
 
 // Static resources go through a CDN
-$url->setStaticBaseUri('http://static.mywebsite.com/');
-```
+$url-&gt;setStaticBaseUri('http://static.mywebsite.com/');
+</code></pre>
 
-`Phalcon\Tag` will request both dynamic and static URIs using this component.
+<p><code>Phalcon\Tag</code> will request both dynamic and static URIs using this component.</p>
 
-<a name='custom-url'></a>
+<p><a name='custom-url' mark="crwd-mark"></a></p>
 
-## Implementing your own URL Generator
+<h2>Implementing your own URL Generator</h2>
 
-The `Phalcon\Mvc\UrlInterface` interface must be implemented to create your own URL generator replacing the one provided by Phalcon.
+<p>The <code>Phalcon\Mvc\UrlInterface</code> interface must be implemented to create your own URL generator replacing the one provided by Phalcon.</p>
