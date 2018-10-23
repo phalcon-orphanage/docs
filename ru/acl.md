@@ -479,7 +479,9 @@ You can still add any custom parameters to function and pass associative array i
 
 ## Наследование ролей
 
-Вы можете строить сложные структуры ролей используя наследование, которое предоставляет класс `Phalcon\Acl\Role`. Роли могут наследовать доступ других ролей, таким образом предоставляя доступ к надмножествам или подмножествам ресурсов. Чтобы использовать наследование ролей вам необходимо передать в качестве второго параметра другую роль при определении роли.
+Вы можете строить сложные структуры ролей используя наследование, которое предоставляет класс `Phalcon\Acl\Role`. Роли могут наследовать доступ других ролей, таким образом предоставляя доступ к надмножествам или подмножествам ресурсов. There are two ways to use role inheritance:
+
+1. You can pass the inherited role as the second parameter of the method call, when adding that role in the list.
 
 ```php
 <?php
@@ -499,6 +501,25 @@ $acl->addRole($roleGuests);
 
 // Добавляем роль 'Administrators' наследуемую от роли 'Guests'
 $acl->addRole($roleAdmins, $roleGuests);
+```
+
+2. You can setup the relationships after roles are added
+
+```php
+<?php
+
+use Phalcon\Acl\Role;
+
+// Create some roles
+$roleAdmins = new Role('Administrators', 'Super-User role');
+$roleGuests = new Role('Guests');
+
+// Add Roles to ACL
+$acl->addRole($roleGuests);
+$acl->addRole($roleAdmins);
+
+// Have 'Administrators' role inherit from 'Guests' its accesses
+$acl->addInherit($rollAdmins, $roleGuests);
 ```
 
 <a name='serialization'></a>
