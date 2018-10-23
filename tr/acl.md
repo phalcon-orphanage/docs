@@ -473,7 +473,9 @@ Fonksiyon ve ilişkisel diziyi `isAllowed()` yönteminde geçirmek için herhang
 
 ## Roles Inheritance
 
-`Phalcon\Acl\Role` sınıfının sağladığı kalıtımı kullanarak karmaşık rol yapıları oluşturabilirsiniz. Roller diğer rollerden miras kalabilir, böylece üst sınıflara veya kaynak alt kümelerine erişime izin verebilir. Rol kalıtımını kullanmak için, devredilen rolü, listede bu rolü eklerken yöntem çağrısının ikinci parametresi olarak iletmeniz gerekir.
+`Phalcon\Acl\Role` sınıfının sağladığı kalıtımı kullanarak karmaşık rol yapıları oluşturabilirsiniz. Roller diğer rollerden miras kalabilir, böylece üst sınıflara veya kaynak alt kümelerine erişime izin verebilir. There are two ways to use role inheritance:
+
+1. You can pass the inherited role as the second parameter of the method call, when adding that role in the list.
 
 ```php
 <?php
@@ -493,6 +495,25 @@ $acl->addRole($roleGuests);
 
 // Erişimlere 'Misafirler' rolünden miras kalan 'Yöneticiler' rolünü ekleyin
 $acl->addRole($roleAdmins, $roleGuests);
+```
+
+1. You can setup the relationships after roles are added
+
+```php
+<?php
+
+use Phalcon\Acl\Role;
+
+// Create some roles
+$roleAdmins = new Role('Administrators', 'Super-User role');
+$roleGuests = new Role('Guests');
+
+// Add Roles to ACL
+$acl->addRole($roleGuests);
+$acl->addRole($roleAdmins);
+
+// Have 'Administrators' role inherit from 'Guests' its accesses
+$acl->addInherit($rollAdmins, $roleGuests);
 ```
 
 <a name='serialization'></a>
