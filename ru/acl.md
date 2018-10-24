@@ -519,7 +519,7 @@ $acl->addRole($roleGuests);
 $acl->addRole($roleAdmins);
 
 // Have 'Administrators' role inherit from 'Guests' its accesses
-$acl->addInherit($rollAdmins, $roleGuests);
+$acl->addInherit($roleAdmins, $roleGuests);
 ```
 
 <a name='serialization'></a>
