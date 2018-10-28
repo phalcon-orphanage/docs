@@ -4,9 +4,9 @@
 
 *implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Manages ACL lists in memory
+メモリ上のアクセス制御リストを管理します
 
 ```php
 <?php
@@ -17,7 +17,7 @@ $acl->setDefaultAction(
     \Phalcon\Acl::DENY
 );
 
-// Register roles
+// ロールの登録
 $roles = [
     "users"  => new \Phalcon\Acl\Role("Users"),
     "guests" => new \Phalcon\Acl\Role("Guests"),
@@ -26,7 +26,7 @@ foreach ($roles as $role) {
     $acl->addRole($role);
 }
 
-// Private area resources
+// 非公開エリアのリソース
 $privateResources = [
     "companies" => ["index", "search", "new", "edit", "save", "create", "delete"],
     "products"  => ["index", "search", "new", "edit", "save", "create", "delete"],
@@ -40,7 +40,7 @@ foreach ($privateResources as $resourceName => $actions) {
     );
 }
 
-// Public area resources
+// 公開エリアのリソース
 $publicResources = [
     "index"   => ["index"],
     "about"   => ["index"],
@@ -55,14 +55,14 @@ foreach ($publicResources as $resourceName => $actions) {
     );
 }
 
-// Grant access to public areas to both users and guests
+// ユーザーとゲストの両方に公開エリアへのアクセスを許可する
 foreach ($roles as $role){
     foreach ($publicResources as $resource => $actions) {
         $acl->allow($role->getName(), $resource, "*");
     }
 }
 
-// Grant access to private area to role Users
+// Usersロールにプライベートエリアへのアクセスを許可する
 foreach ($privateResources as $resource => $actions) {
     foreach ($actions as $action) {
         $acl->allow("Users", $resource, $action);
@@ -71,15 +71,15 @@ foreach ($privateResources as $resource => $actions) {
 
 ```
 
-## Methods
+## メソッド
 
 public **__construct** ()
 
-Phalcon\\Acl\\Adapter\\Memory constructor
+Phalcon\\Acl\\Adapter\\Memory コンストラクタ
 
 public **addRole** (*RoleInterface* | *string* $role, [*array* | *string* $accessInherits])
 
-Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example:
+アクセス制御リストにロールを追加します。第二引数は、その他の既存のロールからアクセスデータを継承します。 例:
 
 ```php
 <?php
@@ -95,24 +95,24 @@ $acl->addRole("administrator", "consultant");
 
 public **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
 
-Do a role inherit from another existing role
+既存のロールからロールを継承する。
 
 public **isRole** (*mixed* $roleName)
 
-Check whether role exist in the roles list
+ロールリストにロールが存在するかどうかをチェックします。
 
 public **isResource** (*mixed* $resourceName)
 
-Check whether resource exist in the resources list
+リソースリストにリソースが存在するかどうかをチェックします
 
 public **addResource** ([Phalcon\Acl\Resource](/en/3.2/api/Phalcon_Acl_Resource) | *string* $resourceValue, *array* | *string* $accessList)
 
-Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example:
+リソースをアクセス制御リストリストに追加します。 アクセス名は特定のアクションで使用します。例えば search(検索), update(更新), delete(削除)などで、これらのリストになります。 例:
 
 ```php
 <?php
 
-// Add a resource to the the list allowing access to an action
+// リソースをリストに追加して、アクションへのアクセスを許可します。
 $acl->addResource(
     new Phalcon\Acl\Resource("customers"),
     "search"
@@ -120,7 +120,7 @@ $acl->addResource(
 
 $acl->addResource("customers", "search");
 
-// Add a resource  with an access list
+// リソースをアクセスリストに追加します。
 $acl->addResource(
     new Phalcon\Acl\Resource("customers"),
     [
@@ -141,69 +141,69 @@ $acl->addResource(
 
 public **addResourceAccess** (*mixed* $resourceName, *array* | *string* $accessList)
 
-Adds access to resources
+リソースへのアクセスを追加します
 
 public **dropResourceAccess** (*mixed* $resourceName, *array* | *string* $accessList)
 
-Removes an access from a resource
+リソースからのアクセスを削除します
 
 protected **_allowOrDeny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, *mixed* $action, [*mixed* $func])
 
-Checks if a role has access to a resource
+ロールがリソースへのアクセスを許可されているかをチェックします
 
 public **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-Allow access to a role on a resource You can use '*' as wildcard Example:
+リソース上のロールへのアクセスを許可します ワイルドカードとして'*'を使用できます 例:
 
 ```php
 <?php
 
-//Allow access to guests to search on customers
+// guestsロールに対して、customersリソースのsearchアクションを許可
 $acl->allow("guests", "customers", "search");
 
-//Allow access to guests to search or create on customers
+// guestsロールに対して、customersリソースのsearchとcreateアクションを許可
 $acl->allow("guests", "customers", ["search", "create"]);
 
-//Allow access to any role to browse on products
+// 全ロールに対して、productsリソースのbrowseアクションを許可
 $acl->allow("*", "products", "browse");
 
-//Allow access to any role to browse on any resource
+// 全ロールに対して、全リソースのbrowseアクションを許可
 $acl->allow("*", "*", "browse");
 
 ```
 
 public **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-Deny access to a role on a resource You can use '*' as wildcard Example:
+リソース上のロールへのアクセスを禁止します。 ワイルドカードとして'*'を使用できます。 例:
 
 ```php
 <?php
 
-//Deny access to guests to search on customers
+// guestsロールに対して、customersリソースのsearchアクションを禁止
 $acl->deny("guests", "customers", "search");
 
-//Deny access to guests to search or create on customers
+// guestsロールに対して、customersリソースのsearchとcreateアクションを禁止
 $acl->deny("guests", "customers", ["search", "create"]);
 
-//Deny access to any role to browse on products
+// 全ロールに対して、productsリソースのbrowseアクションを禁止
 $acl->deny("*", "products", "browse");
 
-//Deny access to any role to browse on any resource
+// 全ロールに対して、全リソースのbrowseアクションを禁止
 $acl->deny("*", "*", "browse");
 
 ```
 
 public **isAllowed** (*RoleInterface* | *RoleAware* | *string* $roleName, *ResourceInterface* | *ResourceAware* | *string* $resourceName, *mixed* $access, [*array* $parameters])
 
-Check whether a role is allowed to access an action from a resource
+リソースへのアクションが、ロールに対して許可されているかどうかを確認する
 
 ```php
 <?php
 
-//Does andres have access to the customers resource to create?
+// andresロールに対して、customersリソースのcreateアクションが許可されているか？
 $acl->isAllowed("andres", "Products", "create");
 
-//Do guests have access to any resource to edit?
+// guestsロールに対して、全てのリソースに対するeditアクションが許可されているか？
 $acl->isAllowed("guests", "*", "edit");
 
 ```
