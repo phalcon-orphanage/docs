@@ -71,15 +71,15 @@ foreach ($privateResources as $resource => $actions) {
 
 ```
 
-## Methods
+## 方法
 
 public **__construct** ()
 
-Phalcon\\Acl\\Adapter\\Memory constructor
+Phalcon\\Acl\\Adapter\\Memory 的构造函数
 
 public **addRole** (*RoleInterface* | *string* $role, [*array* | *string* $accessInherits])
 
-Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example:
+将角色添加到 ACL 列表。第二个参数允许继承访问的数据从其他现有角色的示例：
 
 ```php
 <?php
@@ -95,19 +95,19 @@ $acl->addRole("administrator", "consultant");
 
 public **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
 
-Do a role inherit from another existing role
+添加一个角色继承自另一个现有角色
 
 public **isRole** (*mixed* $roleName)
 
-Check whether role exist in the roles list
+检查角色列表中是否存在的作用
 
 public **isResource** (*mixed* $resourceName)
 
-Check whether resource exist in the resources list
+请检查资源列表中是否存在资源
 
 public **addResource** ([Phalcon\Acl\Resource](/[[language]]/[[version]]/api/Phalcon_Acl_Resource) | *string* $resourceValue, *array* | *string* $accessList)
 
-Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example:
+添加到 ACL 列表访问名称的资源可以是特定的操作，通过示例搜索、 更新、 删除等或它们的列表示例：
 
 ```php
 <?php
@@ -141,40 +141,40 @@ $acl->addResource(
 
 public **addResourceAccess** (*mixed* $resourceName, *array* | *string* $accessList)
 
-Adds access to resources
+增加对资源的访问权限
 
 public **dropResourceAccess** (*mixed* $resourceName, *array* | *string* $accessList)
 
-Removes an access from a resource
+删除从资源的访问权限
 
 protected **_allowOrDeny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, *mixed* $action, [*mixed* $func])
 
-Checks if a role has access to a resource
+检查是否角色具有访问权限的资源
 
 public **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-Allow access to a role on a resource You can use '*' as wildcard Example:
+允许访问角色上的资源，你可以使用 ' *' 作为通配符的示例：
 
 ```php
 <?php
 
-//Allow access to guests to search on customers
+//允许游客使用customers > search
 $acl->allow("guests", "customers", "search");
 
-//Allow access to guests to search or create on customers
+//允许游客使用 customers > ["search", "create"]
 $acl->allow("guests", "customers", ["search", "create"]);
 
-//Allow access to any role to browse on products
+//允许任何角色使用 products > browse
 $acl->allow("*", "products", "browse");
 
-//Allow access to any role to browse on any resource
+//允许任何角色使用 * > browse 
 $acl->allow("*", "*", "browse");
 
 ```
 
 public **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-Deny access to a role on a resource You can use '*' as wildcard Example:
+拒绝访问资源，您可以使用一个角色 ' *' 作为通配符的示例：
 
 ```php
 <?php
@@ -195,7 +195,7 @@ $acl->deny("*", "*", "browse");
 
 public **isAllowed** (*RoleInterface* | *RoleAware* | *string* $roleName, *ResourceInterface* | *ResourceAware* | *string* $resourceName, *mixed* $access, [*array* $parameters])
 
-Check whether a role is allowed to access an action from a resource
+检查是否允许角色从一个资源访问的行动
 
 ```php
 <?php
@@ -210,7 +210,7 @@ $acl->isAllowed("guests", "*", "edit");
 
 public **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
 
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY) for no arguments provided in isAllowed action if there exists func for accessKey
+设置任何参数，如果存在 func accessKey 在讲课行动中提供的默认访问级别 （Phalcon\\Acl::ALLOW 或 Phalcon\\Acl::DENY）
 
 public **getNoArgumentsDefaultAction** ()
 
@@ -218,27 +218,27 @@ Returns the default ACL access level for no arguments provided in isAllowed acti
 
 public **getRoles** ()
 
-Return an array with every role registered in the list
+以数组形式返回已经注册的角色
 
 public **getResources** ()
 
-Return an array with every resource registered in the list
+以数组形式返回已经注册的资源
 
 public **getActiveRole** () inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
-Role which the list is checking if it's allowed to certain resource/access
+列表检查是否它允许对某些资源/访问的作用
 
 public **getActiveResource** () inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
-Resource which the list is checking if some role can access it
+获取角色的可访问资源列表
 
 public **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
-Active access which the list is checking if some role can access it
+获取角色权限列表
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
-Sets the events manager
+设置事件管理器
 
 public **getEventsManager** () inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
@@ -246,7 +246,7 @@ Returns the internal event manager
 
 public **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
+设置的默认访问级别 （Phalcon\\Acl::ALLOW 或 Phalcon\\Acl::DENY）
 
 public **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](/[[language]]/[[version]]/api/Phalcon_Acl_Adapter)
 
