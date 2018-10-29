@@ -502,20 +502,16 @@ $acl->addRole($roleAdmins, $roleGuests);
 2. Puede configurar las relaciones después que los roles se agregaron
 
 ```php
-<?php
+// Creamos algunos roles
+$roleAdmins = new Role('Administrador', 'Super usuario');
+$roleGuests = new Role('Invitado');
 
-use Phalcon\Acl\Role;
-
-// Create some roles
-$roleAdmins = new Role('Administrators', 'Super-User role');
-$roleGuests = new Role('Guests');
-
-// Add Roles to ACL
-$acl->addRole($roleGuests);
+// Agregamos los roles al ACL
 $acl->addRole($roleAdmins);
+$acl->addRole($roleGuests);
 
-// Have 'Administrators' role inherit from 'Guests' its accesses
-$acl->addInherit($roleAdmins, $roleGuests);
+// Agregamos el rol 'Administrador' heredando los accesos del rol 'Invitado'
+$acl->addRole($roleAdmins, $roleGuests);
 ```
 
 <a name='serialization'></a>
