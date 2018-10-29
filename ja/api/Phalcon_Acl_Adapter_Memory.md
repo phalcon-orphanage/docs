@@ -210,44 +210,44 @@ $acl->isAllowed("guests", "*", "edit");
 
 public **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
 
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY) for no arguments provided in isAllowed action if there exists func for accessKey
+isAllowedアクションに引数が指定されていなかった際のデフォルトのアクセスレベル(Phalcon\\Acl::ALLOW または Phalcon\\Acl::DENY)を設定します。ただしaccessKeyのfuncは存在しているものとします。
 
 public **getNoArgumentsDefaultAction** ()
 
-Returns the default ACL access level for no arguments provided in isAllowed action if there exists func for accessKey
+isAllowedアクションに引数が指定されていなかった際のデフォルトのアクセスレベルを返します。ただしaccessKeyのfuncは存在しているものとします。
 
 public **getRoles** ()
 
-Return an array with every role registered in the list
+リストに登録されている全ロールの配列を返します。
 
 public **getResources** ()
 
-Return an array with every resource registered in the list
+リストに登録されている全リソースの配列を返します。
 
 public **getActiveRole** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Role which the list is checking if it's allowed to certain resource/access
+特定のリソース/アクセスが許可されているかをチェックするための、ロールリストを返します
 
 public **getActiveResource** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Resource which the list is checking if some role can access it
+ロールがアクセスできるかをチェックするための、リソースリストを返します
 
 public **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Active access which the list is checking if some role can access it
+ロールがアクセスできるかをチェックするための、有効なアクセス制御リストを返します
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Sets the events manager
+イベントマネージャーをセットします
 
 public **getEventsManager** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Returns the internal event manager
+内部イベントマネージャーを返します
 
 public **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
+デフォルトのアクセスレベル (Phalcon\\Acl::ALLOW または Phalcon\\Acl::DENY)をセットします。
 
 public **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
 
-Returns the default ACL access level
+デフォルトのACLアクセスレベルを返します
