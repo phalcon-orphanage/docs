@@ -1,48 +1,48 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Improving Performance with Cache</a> 
+      <a href="#overview">使用高速缓存提高性能</a> 
       <ul>
         <li>
           <a href="#implementation">When to implement cache?</a>
         </li>
         <li>
-          <a href="#caching-behavior">Caching Behavior</a>
+          <a href="#caching-behavior">缓存行为</a>
         </li>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">工厂</a>
         </li>
         <li>
-          <a href="#output-fragments">Caching Output Fragments</a>
+          <a href="#output-fragments">缓存的视图片段</a>
         </li>
         <li>
-          <a href="#arbitrary-data">Caching Arbitrary Data</a> 
+          <a href="#arbitrary-data">任意的数据缓存</a> 
           <ul>
             <li>
-              <a href="#backend-file-example">File Backend Example</a>
+              <a href="#backend-file-example">文件后端示例</a>
             </li>
             <li>
-              <a href="#backend-memcached-example">Memcached Backend Example</a>
+              <a href="#backend-memcached-example">Memcached 后端示例</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#read">Querying the cache</a>
+          <a href="#read">查询缓存</a>
         </li>
         <li>
-          <a href="#delete">Deleting data from the cache</a>
+          <a href="#delete">从缓存中删除数据</a>
         </li>
         <li>
           <a href="#exists">Checking cache existence</a>
         </li>
         <li>
-          <a href="#lifetime">Lifetime</a>
+          <a href="#lifetime">生命周期</a>
         </li>
         <li>
-          <a href="#multi-level">Multi-Level Cache</a>
+          <a href="#multi-level">多级缓存</a>
         </li>
         <li>
-          <a href="#adapters-frontend">Frontend Adapters</a> 
+          <a href="#adapters-frontend">前端适配器</a> 
           <ul>
             <li>
               <a href="#adapters-frontend-custom">Implementing your own Frontend adapters</a>
@@ -50,37 +50,37 @@
           </ul>
         </li>
         <li>
-          <a href="#adapters-backend">Backend Adapters</a> 
+          <a href="#adapters-backend">后端适配器</a> 
           <ul>
             <li>
-              <a href="#adapters-backend-factory">Factory</a>
+              <a href="#adapters-backend-factory">工厂</a>
             </li>
             <li>
               <a href="#adapters-backend-custom">Implementing your own Backend adapters</a>
             </li>
             <li>
-              <a href="#adapters-backend-file">File Backend Options</a>
+              <a href="#adapters-backend-file">文件后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-libmemcached">Libmemcached Backend Options</a>
+              <a href="#adapters-backend-libmemcached">Libmemcached 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-memcache">Memcache Backend Options</a>
+              <a href="#adapters-backend-memcache">Memcache 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-apc">APC Backend Options</a>
+              <a href="#adapters-backend-apc">APC 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-apcu">APCU Backend Options</a>
+              <a href="#adapters-backend-apcu">APCU 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
+              <a href="#adapters-backend-mongo">Mongo后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">XCache Backend Options</a>
+              <a href="#adapters-backend-xcache">XCache 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Redis Backend Options</a>
+              <a href="#adapters-backend-redis">Redis后端选项</a>
             </li>
           </ul>
         </li>
@@ -93,40 +93,40 @@
 
 # Improving Performance with Cache
 
-Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently used or already processed data. `Phalcon\Cache` is written in C, achieving higher performance and reducing the overhead when getting items from the backends. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
+Phacon提供 `Phalcon\Cache` 类允许更快地访问常用或已处理的数据。 `Phalcon\Cache` 是用 C 编写的实现更高的性能和降低开销，当从后端获取项目。 此类使用前端和后端组件的内部的结构。 前端组件作为输入的源或接口后, 端组件提供对类的存储选项。
 
 <a name='implementation'></a>
 
-## When to implement cache?
+## 什么时候使用缓存
 
 Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
 
-* You are making complex calculations that every time return the same result (changing infrequently)
-* You are using a lot of helpers and the output generated is almost always the same
-* You are accessing database data constantly and these data rarely change
+* 你使复杂的运算，每次都返回相同的结果 （不经常更改）
+* 你正在使用大量的助手和生成的输出几乎都是一样
+* 你正在不断地访问数据库中的数据，这些数据很少更改
 
 <div class='alert alert-warning'>
     <p>
-        <strong>NOTE</strong> Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.
+        <strong>注意</strong>即使在执行缓存之后, 应在一段时间检查您的缓存的命中率。 这能很容易做到，尤其是 Memcache 或 Apc，与后端提供的相关工具。
     </p>
 </div>
 
 <a name='caching-behavior'></a>
 
-## Caching Behavior
+## 缓存行为
 
-The caching process is divided into 2 parts:
+缓存的过程分为 2 个部分：
 
 * **Frontend**: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-
-* **Backend**: This part is responsible for communicating, writing/reading the data required by the frontend.
+* **Backend**： 这部分是负责沟通，写/读前端所需的数据。
 
 <a name='factory'></a>
 
-## Factory
+## 工厂
 
-Instantiating frontend or backend adapters can be achieved by two ways:
+实例化前端或后端适配器可以通过两种方式实现：
 
-Traditional way
+传统的方式
 
 ```php
 <?php
@@ -152,7 +152,7 @@ $cache = new BackFile(
 );
 ```
 
-or using the Factory object as follows:
+或使用工厂对象，如下所示：
 
 ```php
 <?php
@@ -179,9 +179,9 @@ $backendCache = BFactory::load($options);
 
 <a name='output-fragments'></a>
 
-## Caching Output Fragments
+## 缓存的视图片段
 
-An output fragment is a piece of HTML or text that is cached as is and returned as is. The output is automatically captured from the `ob_*` functions or the PHP output so that it can be saved in the cache. The following example demonstrates such usage. It receives the output generated by PHP and stores it into a file. The contents of the file are refreshed every 172,800 seconds (2 days).
+输出片段是一块的 HTML 或文本，缓存是原样退回。 从 `ob_ *` 函数或 PHP 输出，这样它可以保存在缓存中，将自动捕获输出。 下面的示例演示这种用法。 It receives the output generated by PHP and stores it into a file. The contents of the file are refreshed every 172,800 seconds (2 days).
 
 The implementation of this caching mechanism allows us to gain performance by not executing the helper `Phalcon\Tag::linkTo()` call whenever this piece of code is called.
 
@@ -607,7 +607,7 @@ The `Phalcon\Cache\BackendInterface` interface must be implemented in order to c
 
 <a name='adapters-backend-file'></a>
 
-### File Backend Options
+### 文件后端选项
 
 This backend will store cached content into files in the local server. The available options for this backend are:
 
@@ -618,7 +618,7 @@ This backend will store cached content into files in the local server. The avail
 
 <a name='adapters-backend-libmemcached'></a>
 
-### Libmemcached Backend Options
+### Libmemcached 后端选项
 
 This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
 
@@ -678,7 +678,7 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-memcache'></a>
 
-### Memcache Backend Options
+### Memcache 后端选项
 
 This backend will store cached content on a memcached server. The available options for this backend are:
 
@@ -691,7 +691,7 @@ This backend will store cached content on a memcached server. The available opti
 
 <a name='adapters-backend-apc'></a>
 
-### APC Backend Options
+### APC 后端选项
 
 This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
 
@@ -701,7 +701,7 @@ This backend will store cached content on Alternative PHP Cache ([APC](http://ph
 
 <a name='adapters-backend-apcu'></a>
 
-### APCU Backend Options
+### APCU 后端选项
 
 This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
 
@@ -711,7 +711,7 @@ This backend will store cached content on Alternative PHP Cache ([APCU](http://p
 
 <a name='adapters-backend-mongo'></a>
 
-### Mongo Backend Options
+### Mongo后端选项
 
 This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
 
@@ -724,7 +724,7 @@ This backend will store cached content on a MongoDB server ([MongoDB](http://mon
 
 <a name='adapters-backend-xcache'></a>
 
-### XCache Backend Options
+### XCache 后端选项
 
 This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
 
@@ -734,7 +734,7 @@ This backend will store cached content on XCache ([XCache](http://xcache.lighttp
 
 <a name='adapters-backend-redis'></a>
 
-### Redis Backend Options
+### Redis后端选项
 
 This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
 
