@@ -155,7 +155,53 @@ Phalcon は、方言で各データベース エンジンの詳細をカプセ�
 
 ### 独自の方言を実装します
 
-独自のデータベース方言を作成したり既存のデータベース方言を拡張するには、`Phalcon\Db\DialectInterface`インタフェースを実装する必要があります。
+独自のデータベース方言を作成したり既存のデータベース方言を拡張するには、`Phalcon\Db\DialectInterface`インタフェースを実装する必要があります。 PHQLが理解するより多くのコマンドやメソッドを追加して、現在の方言を強化できます。
+
+For instance when using the MySQL adapter, you might want to allow PHQL to recognize the `MATCH ... AGAINST ...` syntax. We associate that syntax with `MATCH_AGAINST`
+
+方言をインスタンス化します。 カスタム関数を追加して、PHQLが、パースプロセス中にこれを検出したときに、理解できるようにします。 次の例では、`MATCH_AGAINST` と呼ばれる新しいカスタム関数を登録します。 その後、カスタマイズされた方言オブジェクトをDBコネクションに追加するだけです。
+
+```php
+<?php
+
+use Phalcon\Db\Dialect\MySQL as SqlDialect;
+use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
+
+$dialect = new SqlDialect();
+
+$dialect->registerCustomFunction(
+    'MATCH_AGAINST',
+    function($dialect, $expression) {
+        $arguments = $expression['arguments'];
+        return sprintf(
+            " MATCH (%s) AGAINST (%s)",
+            $dialect->getSqlExpression($arguments[0]),
+            $dialect->getSqlExpression($arguments[1])
+         );
+    }
+);
+
+$connection = new Connection(
+    [
+        "host"          => "localhost",
+        "username"      => "root",
+        "password"      => "",
+        "dbname"        => "test",
+        "dialectClass"  => $dialect
+    ]
+);
+```
+
+PHQLでこの新しい関数を使用できます。この場合、これは適切なSQL構文に翻訳されます:
+
+```php
+$phql = "
+  SELECT *
+  FROM   Posts
+  WHERE  MATCH_AGAINST(title, :pattern:)";
+
+$posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
+```
 
 <a name='connection'></a>
 
@@ -163,51 +209,69 @@ Phalcon は、方言で各データベース エンジンの詳細をカプセ�
 
 接続を作成するためには、アダプター クラスをインスタンス化する必要があります。 接続パラメーターの配列だけが必要です。 次の例は、必須またはオプションのパラメーターを渡す接続を作成する方法を示しています。
 
+##### MySQL 必須要素
+
 ```php
 <?php
 
-// 必須
 $config = [
     'host'     => '127.0.0.1',
     'username' => 'mike',
     'password' => 'sigma',
     'dbname'   => 'test_db',
 ];
+```
 
-// オプション
+##### MySQL オプション
+
+```php
 $config['persistent'] = false;
+```
 
-// 接続の作成
+##### MySQLの接続を作成
+
+```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
+
+##### PostgreSQL 必須要素
 
 ```php
 <?php
 
-// 必須
 $config = [
     'host'     => 'localhost',
     'username' => 'postgres',
     'password' => 'secret1',
     'dbname'   => 'template',
 ];
+```
 
-// オプション
+##### PostgreSQL オプション
+
+```php
 $config['schema'] = 'public';
+```
 
-// 接続の作成
+##### PostgreSQLの接続を作成
+
+```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
+
+##### SQLite 必須要素
 
 ```php
 <?php
 
-// 必須
 $config = [
     'dbname' => '/path/to/database.db',
 ];
+```
 
-// 接続の作成
+##### SQLite接続を作成
+
+```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```
 
@@ -220,7 +284,6 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```php
 <?php
 
-// PDOオプションで接続を作成
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
     [
         'host'     => 'localhost',
@@ -278,7 +341,7 @@ $di->set(
 
 ## 行の検索
 
-`Phalcon\Db` は、テーブルから行を照会するいくつかのメソッドを提供します。 この場合、対象のデータベースエンジン固有のSQL構文が必要です:
+`Phalcon\Db` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
 
 ```php
 <?php
@@ -378,12 +441,12 @@ $success = $connection->query(
 
 この関数は、接続の文字セットを考慮します。そのため、接続パラメータまたはデータベースサーバーの設定で正しい文字セットを定義すうことをお勧めします。間違った文字セットの場合、データの保管や取得字に予期せぬ結果が発生するかもしれません。
 
-また、`execute`や`query`メソッドに直接パラメータを渡すこともできます。 この場合、バインドパラメータは直接 PDO に渡されます:
+Also, you can pass your parameters directly to the `execute` or `query` methods. In this case bound parameters are directly passed to PDO:
 
 ```php
 <?php
 
-// PDO プレースフォルダーのバインド
+// Binding with PDO placeholders
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -397,7 +460,7 @@ $result = $connection->query(
 
 ## 型指定されたプレース ホルダー
 
-プレースホルダーは、SQL インジェクション攻撃を避けるためにパラメーターをバインドすることができます。
+プレースホルダーは、SQL インジェクション攻撃を避けるためにパラメーターをバインドすることができます:
 
 ```php
 <?php
@@ -424,7 +487,7 @@ $robots = $this->modelsManager->executeQuery(
 );
 ```
 
-`executeQuery()` でバインドタイプを指定する代わりに、パラメーターで型指定されたプレース ホルダーを使用できます。
+`executeQuery()` でバインドタイプを指定する代わりに、パラメーターで型指定されたプレース ホルダーを使用できます:
 
 ```php
 <?php
@@ -484,7 +547,7 @@ $robots = $this->modelsManager->executeQuery(
 
 ## バインドされたパラメータのキャスト
 
-デフォルトでは、バインドされたパラメーターは PHP ユーザーランドで指定されたバインド型にキャストされていません。このオプションで、PDO でそれらをバインドする前に、Phalconが値をキャストできます。 この問題が発生する一般的な状況は、`LIMIT`/`OFFSET` プレース ホルダーの文字列を渡す場合です。
+デフォルトでは、バインドされたパラメーターは PHP ユーザーランドで指定されたバインド型にキャストされていません。このオプションで、PDO でそれらをバインドする前に、Phalconが値をキャストできます。 この問題が発生する一般的な状況は、`LIMIT`/`OFFSET` プレース ホルダーの文字列を渡す場合です:
 
 ```php
 <?php
@@ -504,7 +567,7 @@ $robots = $modelsManager->executeQuery(
     syntax to use near ''100'' at line 1' in /Users/scott/demo.php:78
     
 
-こうなるのは、100が文字列変数だからです。 最初にこの値を整数にキャストすることで簡単に修正可能です:
+This happens because 100 is a string variable. It is easily fixable by casting the value to integer first:
 
 ```php
 <?php
@@ -687,7 +750,7 @@ $success = $connection->delete(
 
 ## トランザクションとネストしたトランザクション
 
-トランザクションの操作は PDO によってサポートされています。 ほとんどのデータベース システムでトランザクション内のデータ操作はパフォーマンスを向上させます。
+Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
 
 ```php
 <?php
@@ -1015,10 +1078,10 @@ foreach ($references as $reference) {
 ```php
 <?php
 
-// test_db データベースのviewを取得
+// Get views on the test_db database
 $tables = $connection->listViews('test_db');
 
-// このデータベースに 'robots' viewがあるかどうか
+// Is there a view 'robots' in the database?
 $exists = $connection->viewExists('robots');
 ```
 
