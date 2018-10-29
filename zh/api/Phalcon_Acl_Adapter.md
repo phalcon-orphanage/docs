@@ -1,40 +1,40 @@
-# Abstract class **Phalcon\\Acl\\Adapter**
+# 抽象类 **Phalcon\\Acl\\Adapter**
 
 *implements* [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface), [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
-Adapter for Phalcon\\Acl adapters
+Phalcon\\Acl 适配器
 
-## Methods
+## 方法
 
 public **getActiveRole** ()
 
-Role which the list is checking if it's allowed to certain resource/access
+获取 资源/权限 列表
 
 public **getActiveResource** ()
 
-Resource which the list is checking if some role can access it
+获取角色的可访问资源列表
 
 public **getActiveAccess** ()
 
-Active access which the list is checking if some role can access it
+获取角色权限类表
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+设置事件管理器
 
 public **getEventsManager** ()
 
-Returns the internal event manager
+返回内部事件管理器
 
 public **setDefaultAction** (*mixed* $defaultAccess)
 
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
+设置的默认访问级别 （Phalcon\\Acl::ALLOW 或 Phalcon\\Acl::DENY）
 
 public **getDefaultAction** ()
 
-Returns the default ACL access level
+返回默认 ACL 访问级别
 
 abstract public **setNoArgumentsDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface)
 
