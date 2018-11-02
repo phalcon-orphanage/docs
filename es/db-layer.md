@@ -145,8 +145,8 @@ Debe implementar la interfaz `Phalcon\Db\AdapterInterface` para crear sus propio
 
 Phalcon encapsula los detalles específicos de cada motor de base de datos en dialectos. Estos proporcionan funciones comunes y generadores de SQL a los adaptadores.
 
-| Clase                              | Descripción                                           |
-| ---------------------------------- | ----------------------------------------------------- |
+| Clase                           | Descripción                                           |
+| ------------------------------- | ----------------------------------------------------- |
 | `Phalcon\Db\Dialect\Mysql`      | Dialecto específico SQL para base de datos MySQL      |
 | `Phalcon\Db\Dialect\Postgresql` | Dialecto específico SQL para base de datos PostgreSQL |
 | `Phalcon\Db\Dialect\Sqlite`     | Dialecto específico SQL para base de datos de SQLite  |
@@ -341,7 +341,7 @@ Lo anterior devuelve la instancia de base de datos correcta y también tiene la 
 
 ## Encontrar Registros
 
-`Phalcon\Db` proporciona varios métodos a las filas de consulta de tablas. La sintaxis SQL específica del motor de base de datos de destino, es requerida en este caso:
+`Phalcon\Db` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
 
 ```php
 <?php
@@ -441,12 +441,12 @@ Cuando se utilizan a marcadores numéricos, Ud. necesita definirlos como enteros
 
 Esta función tiene en cuenta el conjunto de caracteres de conexión, por lo que se recomienda definir el conjunto de caracteres correcto en los parámetros de conexión o en la configuración de servidor de base de datos, como un conjunto de caracteres incorrecto producirá efectos no deseados al almacenar o recuperar datos.
 
-Además, puede pasar los parámetros directamente a los métodos `execute` o `query`. En este caso los parámetros enlazados sin pasados directamente a PDO:
+Also, you can pass your parameters directly to the `execute` or `query` methods. In this case bound parameters are directly passed to PDO:
 
 ```php
 <?php
 
-// Enlazando con marcadores PDO
+// Binding with PDO placeholders
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -567,7 +567,7 @@ Esto provoca la siguiente excepción:
     syntax to use near ''100'' at line 1' in /Users/scott/demo.php:78
     
 
-Esto sucede porque 100 es una variable de tipo string. Estos se soluciona fácilmente convirtiendo primero el valor a entero:
+This happens because 100 is a string variable. It is easily fixable by casting the value to integer first:
 
 ```php
 <?php
@@ -750,7 +750,7 @@ $success = $connection->delete(
 
 ## Transacciones y transacciones anidadas
 
-Trabajar con transacciones es posible como lo es con PDO. Realizar la manipulación de datos dentro de las transacciones a menudo aumenta el rendimiento en la mayoría de los sistemas de bases de datos:
+Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
 
 ```php
 <?php
@@ -1078,10 +1078,10 @@ Los métodos para obtener información acerca de las vistas también se aplican 
 ```php
 <?php
 
-// Obtener las vistas de la base de datos test_db
+// Get views on the test_db database
 $tables = $connection->listViews('test_db');
 
-// Hay una vista llamada 'robots' en la base de datos?
+// Is there a view 'robots' in the database?
 $exists = $connection->viewExists('robots');
 ```
 
