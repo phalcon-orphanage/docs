@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Returning Responses</a> 
+      <a href="#overview">返回的响应</a> 
       <ul>
         <li>
           <a href="#working-with-headers">Working with Headers</a>
@@ -10,7 +10,7 @@
           <a href="#redirections">Making Redirections</a>
         </li>
         <li>
-          <a href="#http-cache">HTTP Cache</a> 
+          <a href="#http-cache">HTTP 缓存</a> 
           <ul>
             <li>
               <a href="#http-cache-expiration-time">Setting an Expiration Time</a>
