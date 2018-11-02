@@ -3,7 +3,7 @@
     <li>
       <a href="#requirements">Requirements</a> <ul>
         <li>
-          <a href="#requirements-hardware">Hardware</a>
+          <a href="#requirements-hardware">硬件</a>
         </li>
         <li>
           <a href="#requirements-software">Software</a>
@@ -15,7 +15,7 @@
         <li>
           <a href="#installation-linux">Linux</a> <ul>
             <li>
-              <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a> <ul>
+              <a href="#installation-linux-debian">DEB 用于分布 （Debian，Ubuntu 等）</a> <ul>
                 <li>
                   <a href="#installation-linux-debian-repository">Repository installation</a> <ul>
                     <li>
@@ -54,7 +54,7 @@
                   </ul>
                 </li>
                 <li>
-                  <a href="#installation-linux-rpm-phalcon">Phalcon installation</a> <ul>
+                  <a href="#installation-linux-rpm-phalcon">Phalcon 安装</a> <ul>
                     <li>
                       <a href="#installation-linux-rpm-phalcon-php5">PHP 5.x</a>
                     </li>
@@ -77,7 +77,7 @@
           </ul>
         </li>
         <li>
-          <a href="#installation-macos">MacOS</a> <ul>
+          <a href="#installation-macos">MacOS 系统</a> <ul>
             <li>
               <a href="#installation-macos-brew">Brew</a>
             </li>
