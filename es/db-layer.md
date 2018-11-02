@@ -155,11 +155,11 @@ Phalcon encapsula los detalles específicos de cada motor de base de datos en di
 
 ### Implementar sus propios dialectos
 
-Debe implementar la interfaz `Phalcon\Db\DialectInterface` para crear sus propios dialectos de la base de datos o extender los ya existentes. You can also enhance your current dialect by adding more commands/methods that PHQL will understand.
+Debe implementar la interfaz `Phalcon\Db\DialectInterface` para crear sus propios dialectos de la base de datos o extender los ya existentes. Incluso puede mejorar su dialecto actual agregando más comandos/métodos para que PHQL los entienda.
 
-For instance when using the MySQL adapter, you might want to allow PHQL to recognize the `MATCH ... AGAINST ...` syntax. We associate that syntax with `MATCH_AGAINST`
+Para instancias donde utilizamos el adaptador de MySQL, si desea permitir a PHQL reconocer la sintaxis `MATCH ... AGAINST ...`. Asociamos la sintaxis con `MATCH_AGAINST`
 
-We instantiate the dialect. We add the custom function so that PHQL understands what to do when it finds it during the parsing process. In the example below, we register a new custom function called `MATCH_AGAINST`. After that all we have to do is add the customized dialect object to our connection.
+Instanciamos el dialecto. Agregamos la función personalizada para que PHQL comprenda qué hacer cuando la encuentra durante el proceso de análisis sintáctico. En el siguiente ejemplo, registramos una nueva función personalizada llamada `MATCH_AGAINST`. Después de eso todo lo que tenemos que hacer es añadir el objeto del dialecto personalizado a nuestra conexión.
 
 ```php
 <?php
@@ -192,7 +192,7 @@ $connection = new Connection(
 );
 ```
 
-We can now use this new function in PHQL, which in turn will translate it to the proper SQL syntax:
+Ahora podemos utilizar esta nueva función en PHQL, que a su vez lo traducirá en la sintaxis SQL adecuada:
 
 ```php
 $phql = "
@@ -209,7 +209,7 @@ $posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
 
 Para crear una conexión es necesario crear una instancia de la clase del adaptador. Sólo requiere una arreglo con los parámetros de conexión. En el ejemplo siguiente se muestra cómo crear una conexión pasando tanto los parámetros opcionales como los parámetros requeridos:
 
-##### MySQL Required elements
+##### Elementos requeridos en MySQL
 
 ```php
 <?php
@@ -222,19 +222,19 @@ $config = [
 ];
 ```
 
-##### MySQL Optional
+##### MySQL Opcionales
 
 ```php
 $config['persistent'] = false;
 ```
 
-##### MySQL Create a connection
+##### Crear una conexión MySQL
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
 
-##### PostgreSQL Required elements
+##### Elementos requeridos en PostgreSQL
 
 ```php
 <?php
@@ -247,19 +247,19 @@ $config = [
 ];
 ```
 
-##### PostgreSQL Optional
+##### PostgreSQL Opcionales
 
 ```php
 $config['schema'] = 'public';
 ```
 
-##### PostgreSQL Create a connection
+##### Crear una conexión PostgreSQL
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
 
-##### SQLite Required elements
+##### Elementos requeridos en SQLite
 
 ```php
 <?php
@@ -269,7 +269,7 @@ $config = [
 ];
 ```
 
-##### SQLite Create a connection
+##### Crear una conexión SQLite
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
@@ -341,7 +341,7 @@ Lo anterior devuelve la instancia de base de datos correcta y también tiene la 
 
 ## Encontrar Registros
 
-`Phalcon\Db` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
+`Phalcon\Db` proporciona varios métodos a las filas de consulta de tablas. La sintaxis SQL específica del motor de base de datos de destino, es requerida en este caso:
 
 ```php
 <?php
@@ -441,12 +441,12 @@ Cuando se utilizan a marcadores numéricos, Ud. necesita definirlos como enteros
 
 Esta función tiene en cuenta el conjunto de caracteres de conexión, por lo que se recomienda definir el conjunto de caracteres correcto en los parámetros de conexión o en la configuración de servidor de base de datos, como un conjunto de caracteres incorrecto producirá efectos no deseados al almacenar o recuperar datos.
 
-Also, you can pass your parameters directly to the `execute` or `query` methods. In this case bound parameters are directly passed to PDO:
+Además, puede pasar los parámetros directamente a los métodos `execute` o `query`. En este caso los parámetros enlazados sin pasados directamente a PDO:
 
 ```php
 <?php
 
-// Binding with PDO placeholders
+// Enlazando con marcadores PDO
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -567,7 +567,7 @@ Esto provoca la siguiente excepción:
     syntax to use near ''100'' at line 1' in /Users/scott/demo.php:78
     
 
-This happens because 100 is a string variable. It is easily fixable by casting the value to integer first:
+Esto sucede porque 100 es una variable de tipo string. Estos se soluciona fácilmente convirtiendo primero el valor a entero:
 
 ```php
 <?php
@@ -750,7 +750,7 @@ $success = $connection->delete(
 
 ## Transacciones y transacciones anidadas
 
-Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
+Trabajar con transacciones es posible como lo es con PDO. Realizar la manipulación de datos dentro de las transacciones a menudo aumenta el rendimiento en la mayoría de los sistemas de bases de datos:
 
 ```php
 <?php
@@ -1078,10 +1078,10 @@ Los métodos para obtener información acerca de las vistas también se aplican 
 ```php
 <?php
 
-// Get views on the test_db database
+// Obtener las vistas de la base de datos test_db
 $tables = $connection->listViews('test_db');
 
-// Is there a view 'robots' in the database?
+// Hay una vista llamada 'robots' en la base de datos?
 $exists = $connection->viewExists('robots');
 ```
 
