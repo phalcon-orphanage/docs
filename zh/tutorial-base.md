@@ -1,46 +1,46 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#basic">Tutorial - basic</a> <ul>
+      <a href="#basic">教程-基本</a> <ul>
         <li>
-          <a href="#file-structure">File structure</a>
+          <a href="#file-structure">文件结构</a>
         </li>
         <li>
-          <a href="#bootstrap">Bootstrap</a> <ul>
+          <a href="#bootstrap">启动</a> <ul>
             <li>
-              <a href="#autoloaders">Autoloaders</a>
+              <a href="#autoloaders">自动加载</a>
             </li>
             <li>
-              <a href="#dependency-management">Dependency Management</a>
+              <a href="#dependency-management">依赖关系管理</a>
             </li>
             <li>
-              <a href="#request">Handling the application request</a>
+              <a href="#request">处理应用程序请求</a>
             </li>
             <li>
-              <a href="#full-example">Putting everything together</a>
+              <a href="#full-example">把一切都放在一起</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#controller">Creating a Controller</a>
+          <a href="#controller">创建控制器</a>
         </li>
         <li>
-          <a href="#view">Sending output to a view</a>
+          <a href="#view">将输出发送到一个视图</a>
         </li>
         <li>
-          <a href="#signup-form">Designing a sign up form</a>
+          <a href="#signup-form">设计注册表单</a>
         </li>
         <li>
-          <a href="#model">Creating a Model</a>
+          <a href="#model">创建模型</a>
         </li>
         <li>
-          <a href="#database-connection">Setting a Database Connection</a>
+          <a href="#database-connection">设置数据库连接</a>
         </li>
         <li>
-          <a href="#storing-data">Storing data using models</a>
+          <a href="#storing-data">使用模型存储数据</a>
         </li>
         <li>
-          <a href="#conclusion">Conclusion</a>
+          <a href="#conclusion">结论</a>
         </li>
       </ul>
     </li>
@@ -49,19 +49,19 @@
 
 <a name='basic'></a>
 
-# Tutorial - basic
+# 教程-基本
 
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/[[language]]/[[version]]/developer-tools).
+在第一个教程中，我们将从头到尾带您从头到尾创建一个带有简单注册表单的应用程序。 我们还将解释框架的行为的基本方面。 如果你有兴趣在Phalcon的自动代码生成工具，你可以检查我们的 [开发人员工具](/[[language]]/[[version]]/developer-tools)。
 
-The best way to use this guide is to follow each step in turn. You can get the complete code [here](https://github.com/phalcon/tutorial).
+使用本指南的最佳方法是依次执行每个步骤。你可以获得完整的代码 [在这里](https://github.com/phalcon/tutorial)。
 
 <a name='file-structure'></a>
 
-## File structure
+## 文件结构
 
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Phalcon没有为应用程序开发强加特定的文件结构。 Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
 
-For the purposes of this tutorial and as a starting point, we suggest this very simple structure:
+出于本教程的和作为一个起点，我们建议这个非常简单的结构：
 
 ```bash
 tutorial/
@@ -75,29 +75,29 @@ tutorial/
     js/
 ```
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+注意，您不需要任何有关 Phalcon的"library"目录。框架是可在内存中，随时供您使用。
 
-Before continuing, please be sure you've successfully [installed Phalcon](/[[language]]/[[version]]/installation) and have setup either [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
+在继续之前，请务必您已经成功地 [安装Phalcon](/[[language]]/[[version]]/installation) 和已安装程序要么 [nginX](/[[language]]/[[version]]/setup#nginx)，[Apache](/[[language]]/[[version]]/setup#apache) 或 [Cherokee](/[[language]]/[[version]]/setup#cherokee)。
 
 <a name='bootstrap'></a>
 
-## Bootstrap
+## 启动
 
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+您需要创建的第一个文件是引导文件。 此文件是非常重要的; 因为它作为您的应用程序，使您能够控制它的各个方面的基础。 在此文件中，您可以实现初始化组件以及应用程序的行为。
 
-Ultimately, it is responsible for doing 3 things:
+最终，它是负责做 3 件事：
 
-- Setting up the autoloader.
-- Configuring the Dependency Injector.
-- Handling the application request.
+- 设置自动加载。
+- 配置依赖注入器。
+- 处理应用程序请求
 
 <a name='autoloaders'></a>
 
-### Autoloaders
+### 自动加载
 
-The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component `Phalcon\Loader`.
+第一部分，我们发现在引导正在注册自动加载。 这将用于作为控制器和模型在应用程序中加载的类。 例如我们可以注册一个或多个目录的控制器增加应用程序的灵活性。 在我们的例子中我们使用 `Phalcon\Loader` 组件。
 
-With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
+有了它，我们可以加载类使用各种策略，但本例中我们选择定位基于预定义目录类：
 
 ```php
 <?php
@@ -120,11 +120,11 @@ $loader->register();
 
 <a name='dependency-management'></a>
 
-### Dependency Management
+### 依赖关系管理
 
-A very important concept that must be understood when working with Phalcon is its `dependency injection container <di>`. It may sound complex but is actually very simple and practical.
+当工作与Phalcon是其 `依赖注入容器 1` 必须理解的非常重要的概念。 这可能听起来复杂，但实际上是非常简单和实用。
 
-A service container is a bag where we globally store the services that our application will use to function. Each time the framework requires a component, it will ask the container using an agreed upon name for the service. Since Phalcon is a highly decoupled framework, `Phalcon\Di` acts as glue facilitating the integration of the different components achieving their work together in a transparent manner.
+服务容器就是一袋在哪里我们全球存储我们的应用程序将使用的服务功能。 每个时间框架所需的组件，它会询问容器使用商定后服务的名称。 因为Phalcon是一个高度解耦的框架，`Phalcon\Di` 作为胶促进实现他们的工作在一起以透明的方式的不同组件的集成。
 
 ```php
 <?php
@@ -137,11 +137,11 @@ use Phalcon\Di\FactoryDefault;
 $di = new FactoryDefault();
 ```
 
-`Phalcon\Di\FactoryDefault` is a variant of `Phalcon\Di`. To make things easier, it has registered most of the components that come with Phalcon. Thus we should not register them one by one. Later there will be no problem in replacing a factory service.
+`Phalcon\Di\FactoryDefault` 是 `Phalcon\Di` 的变体。 为了使事情更容易，它已注册的大部分组件附带Phalcon。 因此我们不应注册逐一进行。 后来将取代工厂服务没有问题。
 
-In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
+在下一部分中，我们注册表示框架在这里可以品尝意见文件的目录的"view"服务。 如意见不对应的类，它们不能自动加载。
 
-Services can be registered in several ways, but for our tutorial we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
+服务可以注册几个方面，但对于我们的教程中，我们将使用 [匿名函数](http://php.net/manual/en/functions.anonymous.php)：
 
 ```php
 <?php
@@ -163,7 +163,7 @@ $di->set(
 );
 ```
 
-Next we register a base URI so that all URIs generated by Phalcon include the "tutorial" folder we setup earlier. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
+接下来我们注册的基 URI，以便所有 Uri 由Phalcon生成都包括我们刚才设置的"教程"文件夹。 当我们使用 `Phalcon\Tag` 类来生成超链接，这将成为重要稍后在本教程中。
 
 ```php
 <?php
@@ -187,9 +187,9 @@ $di->set(
 
 <a name='request'></a>
 
-### Handling the application request
+### 处理应用程序请求
 
-In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+在该文件的最后一部分，我们发现 `Phalcon\Mvc\Application`。 其目的是以初始化请求环境，路由传入的请求，然后派遣任何发现的行动; 它聚合了任何响应，并将它们返回过程完成后。
 
 ```php
 <?php
@@ -207,9 +207,9 @@ $response->send();
 
 <a name='full-example'></a>
 
-### Putting everything together
+### 把一切都放在一起
 
-The `tutorial/public/index.php` file should look like:
+`Tutorial/public/index.php` 文件应该看起来像：
 
 ```php
 <?php
@@ -272,13 +272,13 @@ try {
 }
 ```
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. We have set ourselves a flexible MVC application in less than 30 lines of code.
+正如你所看到的引导文件是很短，我们不需要包括任何其他文件。我们有少于 30 行代码设置自己灵活的 MVC 应用程序。
 
 <a name='controller'></a>
 
-## Creating a Controller
+## 创建控制器
 
-By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. The index controller (`app/controllers/IndexController.php`) looks like:
+By default Phalcon will look for a controller named "Index". It is the starting point when no controller or action has been passed in the request. 索引控制器 (`app/controllers/IndexController.php`) 看起来像：
 
 ```php
 <?php
@@ -294,7 +294,7 @@ class IndexController extends Controller
 }
 ```
 
-The controller classes must have the suffix "Controller" and controller actions must have the suffix "Action". If you access the application from your browser, you should see something like this:
+控制器类必须有后缀"Controller"和控制器操作必须有后缀"Action"。如果您从您的浏览器访问该应用程序，您应该看到这样的事情：
 
 ![](/images/content/tutorial-basic-1.png)
 
@@ -302,15 +302,15 @@ Congratulations, you're phlying with Phalcon!
 
 <a name='view'></a>
 
-## Sending output to a view
+## 将输出发送到一个视图
 
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
+将输出发送到屏幕从控制器有时是必要的但不是可取大多数纯粹主义者在 MVC 社区将证明这一点。 一切必须传递给视图，它负责输出屏幕上的数据。 Phalcon将查找具有相同名称的最后一个视图执行行动作为最后一个执行控制器命名的目录里面。 在我们的例子 (`app/views/index/index.phtml`):
 
 ```php
 <?php echo "<h1>Hello!</h1>";
 ```
 
-Our controller (`app/controllers/IndexController.php`) now has an empty action definition:
+我们的控制器 (`app/controllers/IndexController.php`) 现在有一个空操作定义：
 
 ```php
 <?php
@@ -326,13 +326,13 @@ class IndexController extends Controller
 }
 ```
 
-The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about `views usage here <views>`.
+浏览器输出应保持不变。 `Phalcon\Mvc\View` 静态组件操作执行结束时自动创建。 Learn more about `views usage here <views>`.
 
 <a name='signup-form'></a>
 
-## Designing a sign up form
+## 设计注册表单
 
-Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
+现在我们将改变 `index.phtml` 视图文件，将链接添加到新的控制器命名为"signup"。目标是允许用户在我们的应用程序内报名。
 
 ```php
 <?php
@@ -349,7 +349,7 @@ echo $this->tag->linkTo(
 );
 ```
 
-The generated HTML code displays an anchor ("a") HTML tag linking to a new controller:
+生成的 HTML 代码显示链接到一个新的控制器 ("a") 的 HTML 锚标记：
 
 ```html
 <h1>Hello!</h1>
@@ -357,13 +357,13 @@ The generated HTML code displays an anchor ("a") HTML tag linking to a new contr
 <a href="/tutorial/signup">Sign Up Here!</a>
 ```
 
-To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is a also a service registered in the DI we use `$this->tag` to access it.
+若要生成标记我们使用 `Phalcon\Tag` 类。 这是一个实用程序类，使我们能够构建与框架公约在头脑中的 HTML 标记。 由于此类也是在 DI 中注册的服务, 因此我们使用 `$this->tag ` 来访问它。
 
-A more detailed article regarding HTML generation can be :doc:`found here <tags>`.
+关于 HTML 生成更详细的文章可以是 :doc: `发现这里 <tags> `。
 
 ![](/images/content/tutorial-basic-2.png)
 
-Here is the Signup controller (`app/controllers/SignupController.php`):
+这里是注册控制器 (`app/controllers/SignupController.php`):
 
 ```php
 <?php
@@ -379,7 +379,7 @@ class SignupController extends Controller
 }
 ```
 
-The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
+空索引行动给清洁通的视图中，窗体定义 (`app/views/signup/index.phtml`):
 
 ```php
 <h2>
@@ -413,21 +413,21 @@ The empty index action gives the clean pass to a view with the form definition (
 </form>
 ```
 
-Viewing the form in your browser will show something like this:
+在您的浏览器中查看窗体将显示这样的事情：
 
 ![](/images/content/tutorial-basic-3.png)
 
-`Phalcon\Tag` also provides useful methods to build form elements.
+`Phalcon\Tag` 还提供了有用的方法，以生成窗体元素。
 
-The :code:`Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application.
+:code: `Phalcon\Tag::form()` 方法在应用程序中接收只有一个参数为例，相对 URI 的控制器操作。
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our `public/index.php` file throws this exception:
+通过单击"Send"按钮，你会发现从框架，引发的异常指示我们缺少控制器"register"中的"signup"操作。 我们的 `public/index.php` 文件会引发此异常：
 
 ```bash
-Exception: Action "register" was not found on handler "signup"
+例外： 行动"register"中找不到处理程序"signup"
 ```
 
-Implementing that method will remove the exception:
+实施这种方法将删除该异常：
 
 ```php
 <?php
@@ -448,15 +448,15 @@ class SignupController extends Controller
 }
 ```
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+如果您再次单击"Send"按钮，您将看到一个空白页面。 The name and email input provided by the user should be stored in a database. 根据 MVC 的指引，必须通过模型完成数据库交互以确保干净的面向对象的代码。
 
 <a name='model'></a>
 
-## Creating a Model
+## 创建模型
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalcon为完全用 C 语言编写的 PHP 带来第一个 ORM。而不是增加发展的复杂性，它简化了它。
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:
+在创建之前我们第一个模型，我们需要创建外Phalcon要映射到的数据库表。一个简单的表来存储注册的用户可以像这样定义：
 
 ```sql
 CREATE TABLE `users` (
@@ -468,7 +468,7 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
+模型应该位于 `app/models` 目录 (`app/models/Users.php`)。该模型将映射到"users"表：
 
 ```php
 <?php
@@ -487,9 +487,9 @@ class Users extends Model
 
 <a name='database-connection'></a>
 
-## Setting a Database Connection
+## 设置数据库连接
 
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+为了能够使用数据库连接并随后访问数据，通过我们的模型，我们需要在我们引导过程中指定它。 数据库连接是我们应用程序的另一个服务可以用于几个组件：
 
 ```php
 <?php
@@ -512,13 +512,13 @@ $di->set(
 );
 ```
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+使用正确的数据库的参数，我们的模型已作好准备工作，并与其余的应用程序进行交互。
 
 <a name='storing-data'></a>
 
-## Storing data using models
+## 使用模型存储数据
 
-Receiving data from the form and storing them in the table is the next step.
+从窗体接收数据并将它们存储在表中是下一步。
 
 ```php
 <?php
@@ -562,16 +562,16 @@ class SignupController extends Controller
 }
 ```
 
-We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+我们然后实例化用户类，对应于用户记录。 类的公共属性映射到用户表中的记录的字段。 设置新记录中的相关值以及调用 `save （）` 会将数据存储在数据库中为该记录。 `Save （）` 方法返回一个布尔值，该值指示存储的数据是否成功或不。
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
+ORM 自动逃脱防止 SQL 注入，所以我们只需要将请求传递到 `save()` 方法的输入。
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
+额外的验证上被定义为非空 （必需） 的字段会自动发生。如果我们不在注册表格中输入任何所需的字段我们屏幕将如下所示：
 
 ![](/images/content/tutorial-basic-4.png)
 
 <a name='conclusion'></a>
 
-## Conclusion
+## 结论
 
-This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon. The fact that Phalcon is an extension on your web server has not interfered with the ease of development or features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
+这是一个非常简单的教程，正如你所看到的很容易开始构建应用程序，使用Phalcon。 Phalcon是web服务器上的一个扩展，这一事实并没有妨碍开发的便利性和可用的特性。 我们邀请你继续阅读手册 》，以便你可以发现Phalcon所提供的额外功能 ！
