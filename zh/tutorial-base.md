@@ -456,7 +456,7 @@ class SignupController extends Controller
 
 Phalcon为完全用 C 语言编写的 PHP 带来第一个 ORM。而不是增加发展的复杂性，它简化了它。
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:
+在创建之前我们第一个模型，我们需要创建外Phalcon要映射到的数据库表。一个简单的表来存储注册的用户可以像这样定义：
 
 ```sql
 CREATE TABLE `users` (
@@ -468,7 +468,7 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
+模型应该位于 `app/models` 目录 (`app/models/Users.php`)。该模型将映射到"users"表：
 
 ```php
 <?php
@@ -487,9 +487,9 @@ class Users extends Model
 
 <a name='database-connection'></a>
 
-## Setting a Database Connection
+## 设置数据库连接
 
-In order to be able to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+为了能够使用数据库连接并随后访问数据，通过我们的模型，我们需要在我们引导过程中指定它。 数据库连接是我们应用程序的另一个服务可以用于几个组件：
 
 ```php
 <?php
@@ -512,13 +512,13 @@ $di->set(
 );
 ```
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+使用正确的数据库的参数，我们的模型已作好准备工作，并与其余的应用程序进行交互。
 
 <a name='storing-data'></a>
 
-## Storing data using models
+## 使用模型存储数据
 
-Receiving data from the form and storing them in the table is the next step.
+从窗体接收数据并将它们存储在表中是下一步。
 
 ```php
 <?php
@@ -562,16 +562,16 @@ class SignupController extends Controller
 }
 ```
 
-We then instantiate the Users class, which corresponds to a User record. The class public properties map to the fields of the record in the users table. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+我们然后实例化用户类，对应于用户记录。 类的公共属性映射到用户表中的记录的字段。 设置新记录中的相关值以及调用 `save （）` 会将数据存储在数据库中为该记录。 `Save （）` 方法返回一个布尔值，该值指示存储的数据是否成功或不。
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
+ORM 自动逃脱防止 SQL 注入，所以我们只需要将请求传递到 `save()` 方法的输入。
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign up form our screen will look like this:
+额外的验证上被定义为非空 （必需） 的字段会自动发生。如果我们不在注册表格中输入任何所需的字段我们屏幕将如下所示：
 
 ![](/images/content/tutorial-basic-4.png)
 
 <a name='conclusion'></a>
 
-## Conclusion
+## 结论
 
-This is a very simple tutorial and as you can see, it's easy to start building an application using Phalcon. The fact that Phalcon is an extension on your web server has not interfered with the ease of development or features available. We invite you to continue reading the manual so that you can discover additional features offered by Phalcon!
+这是一个非常简单的教程，正如你所看到的很容易开始构建应用程序，使用Phalcon。 Phalcon是web服务器上的一个扩展，这一事实并没有妨碍开发的便利性和可用的特性。 我们邀请你继续阅读手册 》，以便你可以发现Phalcon所提供的额外功能 ！
