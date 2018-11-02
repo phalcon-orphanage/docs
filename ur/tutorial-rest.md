@@ -1,34 +1,34 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">教程： 创建一个简单的 REST API</a>
+      <a href="#overview">Tutorial: Creating a Simple REST API</a>
       <ul>
         <li>
-          <a href="#definitions">定义 API</a>
+          <a href="#definitions">Defining the API</a>
         </li>
         <li>
-          <a href="#implementation">创建应用程序</a>
+          <a href="#implementation">Creating the Application</a>
         </li>
         <li>
-          <a href="#models">创建模型</a>
+          <a href="#models">Creating a Model</a>
         </li>
         <li>
-          <a href="#retrieving-data">检索数据</a>
+          <a href="#retrieving-data">Retrieving Data</a>
         </li>
         <li>
-          <a href="#inserting-data">插入数据</a>
+          <a href="#inserting-data">Inserting Data</a>
         </li>
         <li>
-          <a href="#updating-data">更新数据</a>
+          <a href="#updating-data">Updating Data</a>
         </li>
         <li>
-          <a href="#deleting-data">删除数据</a>
+          <a href="#deleting-data">Deleting Data</a>
         </li>
         <li>
-          <a href="#testing">测试我们的应用程序</a>
+          <a href="#testing">Testing our Application</a>
         </li>
         <li>
-          <a href="#conclusion">结论</a>
+          <a href="#conclusion">Conclusion</a>
         </li>
       </ul>
     </li>
@@ -37,37 +37,37 @@
 
 <a name='basic'></a>
 
-# 教程： 创建一个简单的 REST API
+# Tutorial: Creating a Simple REST API
 
-在本教程中，我们会解释如何通过不同的HTTP访问方法来创建一个简单的[RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer)风格的接口类型的应用程序：
+In this tutorial, we will explain how to create a simple application that provides a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
 
-* `GET` 要检索和搜索数据
-* `POST`，以添加数据
-* `PUT` 更新的数据
-* `DELETE` 来删除数据
+* `GET` to retrieve and search data
+* `POST` to add data
+* `PUT` to update data
+* `DELETE` to delete data
 
 <a name='definitions'></a>
 
-## 定义的 API
+## Defining the API
 
-该 API 包括以下方法：
+The API consists of the following methods:
 
-| 方法       | URL                      | 操作                                  |
-| -------- | ------------------------ | ----------------------------------- |
-| `GET`    | /api/robots              | 检索所有的机器人                            |
-| `GET`    | /api/robots/search/Astro | 在他们的名字与 'Astro' 机器人搜索               |
-| `GET`    | /api/robots/2            | 检索基于主键机器人                           |
-| `POST`   | /api/robots              | 添加一个新的机器人                           |
-| `PUT`    | /api/robots/2            | Updates robots based on primary key |
-| `DELETE` | /api/robots/2            | 删除基于主键机器人                           |
+| Method   | URL                      | Action                                         |
+| -------- | ------------------------ | ---------------------------------------------- |
+| `GET`    | /api/robots              | Retrieves all robots                           |
+| `GET`    | /api/robots/search/Astro | Searches for robots with 'Astro' in their name |
+| `GET`    | /api/robots/2            | Retrieves robots based on primary key          |
+| `POST`   | /api/robots              | Adds a new robot                               |
+| `PUT`    | /api/robots/2            | Updates robots based on primary key            |
+| `DELETE` | /api/robots/2            | Deletes robots based on primary key            |
 
 <a name='implementation'></a>
 
-## 创建应用程序
+## Creating the Application
 
-由于应用程序需求简单，我们不会实现完整的MVC环境来开发它。 在这种情况下，我们使用[micro application](/[[language]]/[[version]]/application-micro) 足以满足需求。
+As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/[[language]]/[[version]]/application-micro) to meet our goal.
 
-以下的文件结构足够了：
+The following file structure is more than enough:
 
 ```php
 my-rest-api/
@@ -96,12 +96,12 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// 在这定义路由
+// Define the routes here
 
 $app->handle();
 ```
 
-现在根据上面的需求来创建路由：
+Now we will create the routes as we defined above:
 
 ```php
 <?php
@@ -161,15 +161,15 @@ $app->delete(
 $app->handle();
 ```
 
-每个路由使用与HTTP访问方式相同名称的方法进行定义。首选第一个参数为路由匹配参数，接下来的是处理访问。 在这种情况下，处理访问的是一个匿名函数。 以下路由：`/api/robots/{id:[0-9]+}`，以身作则，显式设置`id`参数必须为数字格式。
+Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern, followed by a handler. In this case, the handler is an anonymous function. The following route: `/api/robots/{id:[0-9]+}`, by example, explicitly sets that the `id` parameter must have a numeric format.
 
-当定义的路由与访问与之匹配，应用会执行对应的处理。
+When a defined route matches the requested URI then the application executes the corresponding handler.
 
 <a name='models'></a>
 
-## 创建模型
+## Creating a Model
 
-我们的 API 提供了关于 `robots` 的信息，这些信息都存储在数据库中。 下列的模型允许我们以面向对象的方式访问对应表。 我们通过使用框架自带的验证器和手动实现了一些简单的验证实现了业务规则。 这样做会让将会保存的数据符合我们的应用要求，将使我们安心。 This model file `Robots.php` should be placed in your `models` folder.
+Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file `Robots.php` should be placed in your `models` folder.
 
 ```php
 <?php
@@ -214,7 +214,7 @@ class Robots extends Model
 }
 ```
 
-现在，我们必须设置连接采用这种模式并加载它在我们的应用程序内 [文件： `index.php`]:
+Now, we must set up a connection to be used by this model and load it within our app [File: `index.php`]:
 
 ```php
 <?php
@@ -571,7 +571,7 @@ Now we will create database for our application. Run SQL queries as follows:
 
 <a name='testing'></a>
 
-## 测试我们的应用程序
+## Testing our Application
 
 Using [curl](http://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
 
@@ -677,6 +677,6 @@ Content-Type: text/html; charset=UTF-8
 
 <a name='conclusion'></a>
 
-## 结论
+## Conclusion
 
 As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/[[language]]/[[version]]/application-micro) and [PHQL](/[[language]]/[[version]]/db-phql).
