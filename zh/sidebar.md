@@ -1,6 +1,6 @@
-- [General](/[[language]]/[[version]]/introduction) 
-    - [Release Notes](https://github.com/phalcon/cphalcon/blob/3.1.x/CHANGELOG.md)
-    - Upgrade
+- [常规信息](/[[language]]/[[version]]/introduction) 
+    - [发行说明](https://github.com/phalcon/cphalcon/blob/3.1.x/CHANGELOG.md)
+    - 升級
     - [Sponsors](/[[language]]/[[version]]/sponsors)
 - Contributions 
     - [Overview](/[[language]]/[[version]]/contributions)
@@ -23,11 +23,11 @@
     - [Usage](/[[language]]/[[version]]/devtools-usage)
     - [Debug](/[[language]]/[[version]]/debug)
 - Core 
-    - Application 
-        - [Full](/[[language]]/[[version]]/application)
+    - 应用程序 
+        - [完整](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
         - [Cli](/[[language]]/[[version]]/application-cli)
-    - [DI Container](/[[language]]/[[version]]/di)
+    - [DI 容器](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
 - Services 
     - [Cache](/[[language]]/[[version]]/cache)
@@ -43,7 +43,7 @@
     - [PHQL](/[[language]]/[[version]]/db-phql)
     - [ODM](/[[language]]/[[version]]/db-odm)
     - [Models](/[[language]]/[[version]]/db-models) 
-        - [Advanced](/[[language]]/[[version]]/db-models-advanced)
+        - [高级设置](/[[language]]/[[version]]/db-models-advanced)
         - [Behaviors](/[[language]]/[[version]]/db-models-behaviors)
         - [Cache](/[[language]]/[[version]]/db-models-cache)
         - [Events](/[[language]]/[[version]]/db-models-events)
