@@ -1,33 +1,33 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Validation</a> <ul>
+      <a href="#overview">验证</a> <ul>
         <li>
-          <a href="#initializing">Initializing Validation</a>
+          <a href="#initializing">初始化验证</a>
         </li>
         <li>
-          <a href="#validators">Validators</a>
+          <a href="#validators">验证程序</a>
         </li>
         <li>
-          <a href="#callback">Callback Validator</a>
+          <a href="#callback">回调验证程序</a>
         </li>
         <li>
-          <a href="#messages">Validation Messages</a>
+          <a href="#messages">验证消息</a>
         </li>
         <li>
-          <a href="#filtering">Filtering of Data</a>
+          <a href="#filtering">数据过滤</a>
         </li>
         <li>
-          <a href="#events">Validation Events</a>
+          <a href="#events">验证事件</a>
         </li>
         <li>
-          <a href="#cancelling">Cancelling Validations</a>
+          <a href="#cancelling">取消验证</a>
         </li>
         <li>
-          <a href="#empty-values">Avoid validating empty values</a>
+          <a href="#空值">避免验证空值</a>
         </li>
         <li>
-          <a href="#recursive">Recursive Validation</a>
+          <a href="#recursive">递归验证</a>
         </li>
       </ul>
     </li>
@@ -36,11 +36,11 @@
 
 <a name='overview'></a>
 
-# Validation
+# 验证
 
-`Phalcon\Validation` is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
+`Phalcon\Validation` 是一个独立的验证组件，验证任意一组数据。 此组件可以用于不属于模型或集合的数据的对象上进行验证。
 
-The following example shows its basic usage:
+下面的示例演示如何使用它：
 
 ```php
 <?php
@@ -87,13 +87,13 @@ if (count($messages)) {
 }
 ```
 
-The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
+此组件的松散耦合设计允许您创建自己的验证器以及使用框架提供的验证器。
 
 <a name='initializing'></a>
 
-## Initializing Validation
+## 初始化验证
 
-Validation chains can be initialized in a direct manner by just adding validators to the `Phalcon\Validation` object. You can put your validations in a separate file for better re-use code and organization:
+验证链可通过只将验证添加到 `Phalcon\Validation` 对象进行初始化。 为了更好得重用或者管理您的代码，您可以把你的验证器放在独立的文件：
 
 ```php
 <?php
@@ -136,7 +136,7 @@ class MyValidation extends Validation
 }
 ```
 
-Then initialize and use your own validator:
+然后初始化并使用您自己的验证器：
 
 ```php
 <?php
@@ -154,33 +154,33 @@ if (count($messages)) {
 
 <a name='validators'></a>
 
-## Validators
+## 验证程序
 
-Phalcon exposes a set of built-in validators for this component:
+Phalcon公开一组内置的验证组件：
 
-| Class                                          | Explanation                                                       |
-| ---------------------------------------------- | ----------------------------------------------------------------- |
-| `Phalcon\Validation\Validator\Alnum`        | Validates that a field's value is only alphanumeric character(s). |
-| `Phalcon\Validation\Validator\Alpha`        | Validates that a field's value is only alphabetic character(s).   |
-| `Phalcon\Validation\Validator\Date`         | Validates that a field's value is a valid date.                   |
-| `Phalcon\Validation\Validator\Digit`        | Validates that a field's value is only numeric character(s).      |
-| `Phalcon\Validation\Validator\File`         | Validates that a field's value is a correct file.                 |
-| `Phalcon\Validation\Validator\Uniqueness`   | Validates that a field's value is unique in the related model.    |
-| `Phalcon\Validation\Validator\Numericality` | Validates that a field's value is a valid numeric value.          |
-| `Phalcon\Validation\Validator\PresenceOf`   | Validates that a field's value is not null or empty string.       |
-| `Phalcon\Validation\Validator\Identical`    | Validates that a field's value is the same as a specified value   |
-| `Phalcon\Validation\Validator\Email`        | Validates that field contains a valid email format                |
-| `Phalcon\Validation\Validator\ExclusionIn`  | Validates that a value is not within a list of possible values    |
-| `Phalcon\Validation\Validator\InclusionIn`  | Validates that a value is within a list of possible values        |
-| `Phalcon\Validation\Validator\Regex`        | Validates that the value of a field matches a regular expression  |
-| `Phalcon\Validation\Validator\StringLength` | Validates the length of a string                                  |
-| `Phalcon\Validation\Validator\Between`      | Validates that a value is between two values                      |
-| `Phalcon\Validation\Validator\Confirmation` | Validates that a value is the same as another present in the data |
-| `Phalcon\Validation\Validator\Url`          | Validates that field contains a valid URL                         |
-| `Phalcon\Validation\Validator\CreditCard`   | Validates a credit card number                                    |
-| `Phalcon\Validation\Validator\Callback`     | Validates using callback function                                 |
+| 类                                              | 注解                                                             |
+| ---------------------------------------------- | -------------------------------------------------------------- |
+| `Phalcon\Validation\Validator\Alnum`        | 验证字段值只能是字母和数字字符                                                |
+| `Phalcon\Validation\Validator\Alpha`        | 验证字段值只能是字母字符                                                   |
+| `Phalcon\Validation\Validator\Date`         | 验证字段值是一个有效的日期。                                                 |
+| `Phalcon\Validation\Validator\Digit`        | 验证字段值只能是数字字符。                                                  |
+| `Phalcon\Validation\Validator\File`         | 验证字段的值是正确的文件。                                                  |
+| `Phalcon\Validation\Validator\Uniqueness`   | Validates that a field's value is unique in the related model. |
+| `Phalcon\Validation\Validator\Numericality` | 验证字段值是一个有效的数值                                                  |
+| `Phalcon\Validation\Validator\PresenceOf`   | 验证字段的值不是 null 或空字符串                                            |
+| `Phalcon\Validation\Validator\Identical`    | 验证字段值是否于指定的值相同                                                 |
+| `Phalcon\Validation\Validator\Email`        | 验证字段包含一个有效的电子邮件格式                                              |
+| `Phalcon\Validation\Validator\ExclusionIn`  | 验证的值不在列表中                                                      |
+| `Phalcon\Validation\Validator\InclusionIn`  | 验证值存在列表中                                                       |
+| `Phalcon\Validation\Validator\Regex`        | 验证字段的值匹配的正则表达式                                                 |
+| `Phalcon\Validation\Validator\StringLength` | 验证一个字符串的长度                                                     |
+| `Phalcon\Validation\Validator\Between`      | 验证值是两个值之间                                                      |
+| `Phalcon\Validation\Validator\Confirmation` | 验证值是相同的数据中的字段                                                  |
+| `Phalcon\Validation\Validator\Url`          | 验证字段包含一个有效的 URL                                                |
+| `Phalcon\Validation\Validator\CreditCard`   | 验证的信用卡卡号                                                       |
+| `Phalcon\Validation\Validator\Callback`     | 验证时使用回调函数                                                      |
 
-The following example explains how to create additional validators for this component:
+下面的示例说明如何创建此组件附加验证程序：
 
 ```php
 <?php
@@ -192,7 +192,7 @@ use Phalcon\Validation\Validator;
 class IpValidator extends Validator
 {
     /**
-     * Executes the validation
+     * 执行以下验证
      *
      * @param Validation $validator
      * @param string     $attribute
@@ -221,13 +221,13 @@ class IpValidator extends Validator
 }
 ```
 
-It is important that validators return a valid boolean value indicating if the validation was successful or not.
+重要的是验证器必须返回一个布尔类型的值来判断验证是否通过。
 
 <a name='callback'></a>
 
-## Callback Validator
+## 回调验证程序
 
-By using `Phalcon\Validation\Validator\Callback` you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
+通过使用 `Phalcon\Validation\Validator\Callback`您可以继续使用一个返回布尔值的自定义方法来对同一个字段进行验证。 通过返回 `true` 验证将成功，返回 `false` 将意味着验证失败。 When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). 这是示例：
 
 ```php
 <?php
@@ -289,11 +289,11 @@ $messages = $validation->validate(['amount' => 10]); // will return message from
 
 <a name='messages'></a>
 
-## Validation Messages
+## 验证消息
 
-`Phalcon\Validation` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
+`Phalcon\Validation`拥有一种灵活方式输出或存储验证过程中生成的信息的消息子系统。
 
-Each message consists of an instance of the class `Phalcon\Validation\Message`. The set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information like the attribute that generated the message or the message type:
+每个消息由`Phalcon\Validation\Message`类的实例组成。 `getMessages()` 方法，即可检索到消息生成的集。 每个消息会提供扩展信息像消息和消息类型等属性：
 
 ```php
 <?php
@@ -309,7 +309,7 @@ if (count($messages)) {
 }
 ```
 
-You can pass a 'message' parameter to change/translate the default message in each validator:
+你可以给么一个验证器传递一个‘消息’作为参数来改变／翻译默认的消息：
 
 ```php
 <?php
@@ -326,7 +326,7 @@ $validation->add(
 );
 ```
 
-By default, the `getMessages()` method returns all the messages generated during validation. You can filter messages for a specific field using the `filter()` method:
+默认情况下，`getMessages()` 方法会返回在验证过程中生成的所有消息。您可以通过`filter()`方法来进行过滤以此获取某个特定字段的所有信息：
 
 ```php
 <?php
@@ -334,7 +334,7 @@ By default, the `getMessages()` method returns all the messages generated during
 $messages = $validation->validate();
 
 if (count($messages)) {
-    // Filter only the messages generated for the field 'name'
+    // 过滤为只含有'name'字段的信息
     $filteredMessages = $messages->filter('name');
 
     foreach ($filteredMessages as $message) {
@@ -345,9 +345,9 @@ if (count($messages)) {
 
 <a name='filtering'></a>
 
-## Filtering of Data
+## 数据过滤
 
-Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
+数据可以在验证之前进行过滤，以确保恶意或不正确的数据未被验证。
 
 ```php
 <?php
@@ -374,18 +374,18 @@ $validation->add(
     )
 );
 
-// Filter any extra space
+// 过滤掉两端的不可见字符
 $validation->setFilters('name', 'trim');
 $validation->setFilters('email', 'trim');
 ```
 
-Filtering and sanitizing is performed using the [filter](/[[language]]/[[version]]/filter) component. You can add more filters to this component or use the built-in ones.
+过滤和处理是使用 [filter](/[[language]]/[[version]]/filter) 组件来执行的。您可以将多个筛选器添加到此组件或使用内置的。
 
 <a name='events'></a>
 
-## Validation Events
+## 验证事件
 
-When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
+当所有的验证器都被初始化在类中，你可以实现`beforeValidation()`和`afterValidation()`方法做额外的检查、过滤、清理等。 如果在`beforeValidation()`返回false那么验证会自动取消：
 
 ```php
 <?php
@@ -400,7 +400,7 @@ class LoginValidation extends Validation
     }
 
     /**
-     * Executed before validation
+     * 在验证之前执行
      *
      * @param array $data
      * @param object $entity
@@ -421,7 +421,7 @@ class LoginValidation extends Validation
     }
 
     /**
-     * Executed after validation
+     * 验证之后执行
      *
      * @param array $data
      * @param object $entity
@@ -429,16 +429,16 @@ class LoginValidation extends Validation
      */
     public function afterValidation($data, $entity, $messages)
     {
-        // ... Add additional messages or perform more validations
+        // ... 添加其他的信息或者执行更多的验证
     }
 }
 ```
 
 <a name='cancelling'></a>
 
-## Cancelling Validations
+## 取消验证
 
-By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
+默认情况下所有在该字段的验证器都会一一测试，无论其中一个或者多个验证器是否通过。 你可以通过当验证器不通过时停止验证过程来告诉验证组件改变此行为。
 
 ```php
 <?php
@@ -480,9 +480,9 @@ $validation->add(
 );
 ```
 
-The first validator has the option `cancelOnFail` with a value of true, therefore if that validator fails the remaining validators in the chain are not executed.
+第一个验证程器的选项`cancelOnFail`的值为 true，该验证器如果验证不通过，那么剩下的验证链将不执行。
 
-If you are creating custom validators you can dynamically stop the validation chain by setting the `cancelOnFail` option:
+如果您正在创建自定义验证器，您可以通过设置`cancelOnFail`选项动态停止验证链：
 
 ```php
 <?php
@@ -494,7 +494,7 @@ use Phalcon\Validation\Validator;
 class MyValidator extends Validator
 {
     /**
-     * Executes the validation
+     * 执行验证
      *
      * @param Phalcon\Validation $validator
      * @param string $attribute
@@ -502,7 +502,7 @@ class MyValidator extends Validator
      */
     public function validate(Validation $validator, $attribute)
     {
-        // If the attribute value is name we must stop the chain
+        // 如果验证的属性名为'name'那么设置自动停下验证链
         if ($attribute === 'name') {
             $validator->setOption('cancelOnFail', true);
         }
@@ -514,9 +514,9 @@ class MyValidator extends Validator
 
 <a name='empty-values'></a>
 
-## Avoid validating empty values
+## 避免验证空值
 
-You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
+您可以在为所有内置的验证器传递`allowEmpty`选项以避免给验证器传递一个空值：
 
 ```php
 <?php
@@ -540,9 +540,9 @@ $validation->add(
 
 <a name='recursive'></a>
 
-## Recursive Validation
+## 递归验证
 
-You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
+您也能实现`afterValidation()`方法在内部进行另一种验证实例。 在此示例中，在使用验证`CompanyValidation`的情况下还会使用`PhoneValidation`进行验证。
 
 ```php
 <?php
