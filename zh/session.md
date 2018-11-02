@@ -228,7 +228,7 @@ class UserController extends Controller
 }
 ```
 
-In a component:
+在组件：
 
 ```php
 <?php
