@@ -4,7 +4,7 @@
 
 *implements* [Throwable](http://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/exception.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 ## Methods
 
@@ -14,7 +14,7 @@ Clone the exception
 
 public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Exception constructor
+异常构造函数
 
 public **__wakeup** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
@@ -22,32 +22,32 @@ public **__wakeup** () inherited from [Exception](http://php.net/manual/en/class
 
 final public *string* **getMessage** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the Exception message
+获取异常消息
 
 final public *int* **getCode** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the Exception code
+获取异常代码
 
 final public *string* **getFile** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the file in which the exception occurred
+获取发生异常的文件
 
 final public *int* **getLine** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the line in which the exception occurred
+获取发生异常的行
 
 final public *array* **getTrace** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the stack trace
+获取堆栈跟踪
 
 final public [Exception](http://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Returns previous Exception
+返回前一个异常
 
 final public [Exception](http://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the stack trace as a string
+以字符串形式获取堆栈跟踪
 
 public *string* **__toString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-String representation of the exception
+异常的字符串表示形式
