@@ -1,33 +1,33 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Tutorial: Creating a Simple REST API</a> <ul>
+      <a href="#overview">教程： 创建一个简单的 REST API</a> <ul>
         <li>
-          <a href="#definitions">Defining the API</a>
+          <a href="#definitions">定义 API</a>
         </li>
         <li>
-          <a href="#implementation">Creating the Application</a>
+          <a href="#implementation">创建应用程序</a>
         </li>
         <li>
-          <a href="#models">Creating a Model</a>
+          <a href="#models">创建模型</a>
         </li>
         <li>
-          <a href="#retrieving-data">Retrieving Data</a>
+          <a href="#retrieving-data">检索数据</a>
         </li>
         <li>
-          <a href="#inserting-data">Inserting Data</a>
+          <a href="#inserting-data">插入数据</a>
         </li>
         <li>
-          <a href="#updating-data">Updating Data</a>
+          <a href="#updating-data">更新数据</a>
         </li>
         <li>
-          <a href="#deleting-data">Deleting Data</a>
+          <a href="#deleting-data">删除数据</a>
         </li>
         <li>
-          <a href="#testing">Testing our Application</a>
+          <a href="#testing">测试我们的应用程序</a>
         </li>
         <li>
-          <a href="#conclusion">Conclusion</a>
+          <a href="#conclusion">结论</a>
         </li>
       </ul>
     </li>
@@ -36,37 +36,37 @@
 
 <a name='basic'></a>
 
-# Tutorial: Creating a Simple REST API
+# 教程： 创建一个简单的 REST API
 
-In this tutorial, we will explain how to create a simple application that provides a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
+在本教程中，我们会解释如何通过不同的HTTP访问方法来创建一个简单的[RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer)风格的接口类型的应用程序：
 
-- `GET` to retrieve and search data
-- `POST` to add data
-- `PUT` to update data
-- `DELETE` to delete data
+- `GET` 要检索和搜索数据
+- `POST`，以添加数据
+- `PUT` 更新的数据
+- `DELETE` 来删除数据
 
 <a name='definitions'></a>
 
-## Defining the API
+## 定义的 API
 
-The API consists of the following methods:
+该 API 包括以下方法：
 
-| Method   | URL                      | Action                                         |
-| -------- | ------------------------ | ---------------------------------------------- |
-| `GET`    | /api/robots              | Retrieves all robots                           |
-| `GET`    | /api/robots/search/Astro | Searches for robots with 'Astro' in their name |
-| `GET`    | /api/robots/2            | Retrieves robots based on primary key          |
-| `POST`   | /api/robots              | Adds a new robot                               |
-| `PUT`    | /api/robots/2            | Updates robots based on primary key            |
-| `DELETE` | /api/robots/2            | Deletes robots based on primary key            |
+| 方法       | URL                      | 操作                                  |
+| -------- | ------------------------ | ----------------------------------- |
+| `GET`    | /api/robots              | 检索所有的机器人                            |
+| `GET`    | /api/robots/search/Astro | 在他们的名字与 'Astro' 机器人搜索               |
+| `GET`    | /api/robots/2            | 检索基于主键机器人                           |
+| `POST`   | /api/robots              | 添加一个新的机器人                           |
+| `PUT`    | /api/robots/2            | Updates robots based on primary key |
+| `DELETE` | /api/robots/2            | 删除基于主键机器人                           |
 
 <a name='implementation'></a>
 
-## Creating the Application
+## 创建应用程序
 
-As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/[[language]]/[[version]]/application-micro) to meet our goal.
+由于应用程序需求简单，我们不会实现完整的MVC环境来开发它。 在这种情况下，我们使用[micro application](/[[language]]/[[version]]/application-micro) 足以满足需求。
 
-The following file structure is more than enough:
+以下的文件结构足够了：
 
 ```php
 my-rest-api/
@@ -76,7 +76,7 @@ my-rest-api/
     .htaccess
 ```
 
-First, we need a `.htaccess` file that contains all the rules to rewrite the URIs to the `index.php` file, that is our application:
+首先我们需要一个包含重写规则、重写所有访问到`index.php`的`.htaccess`文件，以下是我们的应用程序：
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -86,7 +86,7 @@ First, we need a `.htaccess` file that contains all the rules to rewrite the URI
 </IfModule>
 ```
 
-The bulk of our code will be placed in `index.php`. The file is created as follows:
+大部分的我们的代码将放置在 `index.php`。文件内容如下：
 
 ```php
 <?php
@@ -95,12 +95,12 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Define the routes here
+// 在这定义路由
 
 $app->handle();
 ```
 
-Now we will create the routes as we defined above:
+现在根据上面的需求来创建路由：
 
 ```php
 <?php
@@ -109,7 +109,7 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Retrieves all robots
+// 检索所有的机器人
 $app->get(
     '/api/robots',
     function () {
@@ -117,7 +117,7 @@ $app->get(
     }
 );
 
-// Searches for robots with $name in their name
+// 检索所有名字中带有$name的机器人
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
@@ -125,7 +125,7 @@ $app->get(
     }
 );
 
-// Retrieves robots based on primary key
+// 通过主键检索机器人
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
@@ -133,7 +133,7 @@ $app->get(
     }
 );
 
-// Adds a new robot
+// 添加新的机器人
 $app->post(
     '/api/robots',
     function () {
@@ -141,7 +141,7 @@ $app->post(
     }
 );
 
-// Updates robots based on primary key
+// 通过主键修改机器人状态
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function () {
@@ -149,7 +149,7 @@ $app->put(
     }
 );
 
-// Deletes robots based on primary key
+// 通过主键删除机器人
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function () {
@@ -160,15 +160,15 @@ $app->delete(
 $app->handle();
 ```
 
-Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern, followed by a handler. In this case, the handler is an anonymous function. The following route: `/api/robots/{id:[0-9]+}`, by example, explicitly sets that the `id` parameter must have a numeric format.
+每个路由使用与HTTP访问方式相同名称的方法进行定义。首选第一个参数为路由匹配参数，接下来的是处理访问。 在这种情况下，处理访问的是一个匿名函数。 以下路由：`/api/robots/{id:[0-9]+}`，以身作则，显式设置`id`参数必须为数字格式。
 
-When a defined route matches the requested URI then the application executes the corresponding handler.
+当定义的路由与访问与之匹配，应用会执行对应的处理。
 
 <a name='models'></a>
 
-## Creating a Model
+## 创建模型
 
-Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
+我们的 API 提供了关于 `robots` 的信息，这些信息都存储在数据库中。 下列的模型允许我们以面向对象的方式访问对应表。 我们通过使用框架自带的验证器和手动实现了一些简单的验证实现了业务规则。 这样做会让将会保存的数据符合我们的应用要求，将使我们安心。 此模型文件应放在 `Models` 文件夹中。
 
 ```php
 <?php
@@ -223,7 +223,7 @@ class Robots extends Model
 }
 ```
 
-Now, we must set up a connection to be used by this model and load it within our app [File: `index.php`]:
+现在，我们必须设置连接采用这种模式并加载它在我们的应用程序内 [文件： `index.php`]:
 
 ```php
 <?php
