@@ -304,13 +304,13 @@ Congratulations, you're phlying with Phalcon!
 
 ## 将输出发送到一个视图
 
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
+将输出发送到屏幕从控制器有时是必要的但不是可取大多数纯粹主义者在 MVC 社区将证明这一点。 一切必须传递给视图，它负责输出屏幕上的数据。 Phalcon将查找具有相同名称的最后一个视图执行行动作为最后一个执行控制器命名的目录里面。 在我们的例子 (`app/views/index/index.phtml`):
 
 ```php
 <?php echo "<h1>Hello!</h1>";
 ```
 
-Our controller (`app/controllers/IndexController.php`) now has an empty action definition:
+我们的控制器 (`app/controllers/IndexController.php`) 现在有一个空操作定义：
 
 ```php
 <?php
@@ -326,13 +326,13 @@ class IndexController extends Controller
 }
 ```
 
-The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about `views usage here <views>`.
+浏览器输出应保持不变。 `Phalcon\Mvc\View` 静态组件操作执行结束时自动创建。 Learn more about `views usage here <views>`.
 
 <a name='signup-form'></a>
 
 ## 设计注册表单
 
-Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
+现在我们将改变 `index.phtml` 视图文件，将链接添加到新的控制器命名为"signup"。目标是允许用户在我们的应用程序内报名。
 
 ```php
 <?php
@@ -349,7 +349,7 @@ echo $this->tag->linkTo(
 );
 ```
 
-The generated HTML code displays an anchor ("a") HTML tag linking to a new controller:
+生成的 HTML 代码显示链接到一个新的控制器 ("a") 的 HTML 锚标记：
 
 ```html
 <h1>Hello!</h1>
@@ -357,13 +357,13 @@ The generated HTML code displays an anchor ("a") HTML tag linking to a new contr
 <a href="/tutorial/signup">Sign Up Here!</a>
 ```
 
-To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is a also a service registered in the DI we use `$this->tag` to access it.
+若要生成标记我们使用 `Phalcon\Tag` 类。 这是一个实用程序类，使我们能够构建与框架公约在头脑中的 HTML 标记。 由于此类也是在 DI 中注册的服务, 因此我们使用 `$this->tag ` 来访问它。
 
-A more detailed article regarding HTML generation can be :doc:`found here <tags>`.
+关于 HTML 生成更详细的文章可以是 :doc: `发现这里 <tags> `。
 
 ![](/images/content/tutorial-basic-2.png)
 
-Here is the Signup controller (`app/controllers/SignupController.php`):
+这里是注册控制器 (`app/controllers/SignupController.php`):
 
 ```php
 <?php
@@ -379,7 +379,7 @@ class SignupController extends Controller
 }
 ```
 
-The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
+空索引行动给清洁通的视图中，窗体定义 (`app/views/signup/index.phtml`):
 
 ```php
 <h2>
@@ -413,15 +413,15 @@ The empty index action gives the clean pass to a view with the form definition (
 </form>
 ```
 
-Viewing the form in your browser will show something like this:
+在您的浏览器中查看窗体将显示这样的事情：
 
 ![](/images/content/tutorial-basic-3.png)
 
-`Phalcon\Tag` also provides useful methods to build form elements.
+`Phalcon\Tag` 还提供了有用的方法，以生成窗体元素。
 
-The :code:`Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application.
+:code: `Phalcon\Tag::form()` 方法在应用程序中接收只有一个参数为例，相对 URI 的控制器操作。
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the "register" action in the controller "signup". Our `public/index.php` file throws this exception:
+通过单击"Send"按钮，你会发现从框架，引发的异常指示我们缺少控制器"register"中的"signup"操作。 Our `public/index.php` file throws this exception:
 
 ```bash
 Exception: Action "register" was not found on handler "signup"
