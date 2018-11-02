@@ -421,13 +421,13 @@ class SignupController extends Controller
 
 :code: `Phalcon\Tag::form()` 方法在应用程序中接收只有一个参数为例，相对 URI 的控制器操作。
 
-通过单击"Send"按钮，你会发现从框架，引发的异常指示我们缺少控制器"register"中的"signup"操作。 Our `public/index.php` file throws this exception:
+通过单击"Send"按钮，你会发现从框架，引发的异常指示我们缺少控制器"register"中的"signup"操作。 我们的 `public/index.php` 文件会引发此异常：
 
 ```bash
-Exception: Action "register" was not found on handler "signup"
+例外： 行动"register"中找不到处理程序"signup"
 ```
 
-Implementing that method will remove the exception:
+实施这种方法将删除该异常：
 
 ```php
 <?php
@@ -448,13 +448,13 @@ class SignupController extends Controller
 }
 ```
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+如果您再次单击"Send"按钮，您将看到一个空白页面。 The name and email input provided by the user should be stored in a database. 根据 MVC 的指引，必须通过模型完成数据库交互以确保干净的面向对象的代码。
 
 <a name='model'></a>
 
-## Creating a Model
+## 创建模型
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalcon为完全用 C 语言编写的 PHP 带来第一个 ORM。而不是增加发展的复杂性，它简化了它。
 
 Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be defined like this:
 
