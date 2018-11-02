@@ -61,7 +61,7 @@
 
 Phalcon没有为应用程序开发强加特定的文件结构。 Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
 
-For the purposes of this tutorial and as a starting point, we suggest this very simple structure:
+出于本教程的和作为一个起点，我们建议这个非常简单的结构：
 
 ```bash
 tutorial/
@@ -75,29 +75,29 @@ tutorial/
     js/
 ```
 
-Note that you don't need any "library" directory related to Phalcon. The framework is available in memory, ready for you to use.
+注意，您不需要任何有关 Phalcon的"library"目录。框架是可在内存中，随时供您使用。
 
-Before continuing, please be sure you've successfully [installed Phalcon](/[[language]]/[[version]]/installation) and have setup either [nginX](/[[language]]/[[version]]/setup#nginx), [Apache](/[[language]]/[[version]]/setup#apache) or [Cherokee](/[[language]]/[[version]]/setup#cherokee).
+在继续之前，请务必您已经成功地 [安装Phalcon](/[[language]]/[[version]]/installation) 和已安装程序要么 [nginX](/[[language]]/[[version]]/setup#nginx)，[Apache](/[[language]]/[[version]]/setup#apache) 或 [Cherokee](/[[language]]/[[version]]/setup#cherokee)。
 
 <a name='bootstrap'></a>
 
-## Bootstrap
+## 启动
 
-The first file you need to create is the bootstrap file. This file is very important; since it serves as the base of your application, giving you control of all aspects of it. In this file you can implement initialization of components as well as application behavior.
+您需要创建的第一个文件是引导文件。 此文件是非常重要的; 因为它作为您的应用程序，使您能够控制它的各个方面的基础。 在此文件中，您可以实现初始化组件以及应用程序的行为。
 
-Ultimately, it is responsible for doing 3 things:
+最终，它是负责做 3 件事：
 
-- Setting up the autoloader.
-- Configuring the Dependency Injector.
-- Handling the application request.
+- 设置自动加载。
+- 配置依赖注入器。
+- 处理应用程序请求
 
 <a name='autoloaders'></a>
 
-### Autoloaders
+### 自动加载
 
-The first part that we find in the bootstrap is registering an autoloader. This will be used to load classes as controllers and models in the application. For example we may register one or more directories of controllers increasing the flexibility of the application. In our example we have used the component `Phalcon\Loader`.
+第一部分，我们发现在引导正在注册自动加载。 这将用于作为控制器和模型在应用程序中加载的类。 例如我们可以注册一个或多个目录的控制器增加应用程序的灵活性。 在我们的例子中我们使用 `Phalcon\Loader` 组件。
 
-With it, we can load classes using various strategies but for this example we have chosen to locate classes based on predefined directories:
+有了它，我们可以加载类使用各种策略，但本例中我们选择定位基于预定义目录类：
 
 ```php
 <?php
@@ -120,7 +120,7 @@ $loader->register();
 
 <a name='dependency-management'></a>
 
-### Dependency Management
+### 依赖关系管理
 
 A very important concept that must be understood when working with Phalcon is its `dependency injection container <di>`. It may sound complex but is actually very simple and practical.
 
