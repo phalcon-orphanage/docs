@@ -1,46 +1,46 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#basic">Tutorial - basic</a> <ul>
+      <a href="#basic">教程-基本</a> <ul>
         <li>
-          <a href="#file-structure">File structure</a>
+          <a href="#file-structure">文件结构</a>
         </li>
         <li>
-          <a href="#bootstrap">Bootstrap</a> <ul>
+          <a href="#bootstrap">启动</a> <ul>
             <li>
-              <a href="#autoloaders">Autoloaders</a>
+              <a href="#autoloaders">自动加载</a>
             </li>
             <li>
-              <a href="#dependency-management">Dependency Management</a>
+              <a href="#dependency-management">依赖关系管理</a>
             </li>
             <li>
-              <a href="#request">Handling the application request</a>
+              <a href="#request">处理应用程序请求</a>
             </li>
             <li>
-              <a href="#full-example">Putting everything together</a>
+              <a href="#full-example">把一切都放在一起</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#controller">Creating a Controller</a>
+          <a href="#controller">创建控制器</a>
         </li>
         <li>
-          <a href="#view">Sending output to a view</a>
+          <a href="#view">将输出发送到一个视图</a>
         </li>
         <li>
-          <a href="#signup-form">Designing a sign up form</a>
+          <a href="#signup-form">设计注册表单</a>
         </li>
         <li>
-          <a href="#model">Creating a Model</a>
+          <a href="#model">创建模型</a>
         </li>
         <li>
-          <a href="#database-connection">Setting a Database Connection</a>
+          <a href="#database-connection">设置数据库连接</a>
         </li>
         <li>
-          <a href="#storing-data">Storing data using models</a>
+          <a href="#storing-data">使用模型存储数据</a>
         </li>
         <li>
-          <a href="#conclusion">Conclusion</a>
+          <a href="#conclusion">结论</a>
         </li>
       </ul>
     </li>
@@ -49,17 +49,17 @@
 
 <a name='basic'></a>
 
-# Tutorial - basic
+# 教程-基本
 
-Throughout this first tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. We will also explain the basic aspects of the framework's behavior. If you are interested in automatic code generation tools for Phalcon, you can check our [developer tools](/[[language]]/[[version]]/developer-tools).
+在第一个教程中，我们将从头到尾带您从头到尾创建一个带有简单注册表单的应用程序。 我们还将解释框架的行为的基本方面。 如果你有兴趣在Phalcon的自动代码生成工具，你可以检查我们的 [开发人员工具](/[[language]]/[[version]]/developer-tools)。
 
-The best way to use this guide is to follow each step in turn. You can get the complete code [here](https://github.com/phalcon/tutorial).
+使用本指南的最佳方法是依次执行每个步骤。你可以获得完整的代码 [在这里](https://github.com/phalcon/tutorial)。
 
 <a name='file-structure'></a>
 
-## File structure
+## 文件结构
 
-Phalcon does not impose a particular file structure for application development. Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
+Phalcon没有为应用程序开发强加特定的文件结构。 Due to the fact that it is loosely coupled, you can implement Phalcon powered applications with a file structure you are most comfortable using.
 
 For the purposes of this tutorial and as a starting point, we suggest this very simple structure:
 
@@ -187,7 +187,7 @@ $di->set(
 
 <a name='request'></a>
 
-### Handling the application request
+### 处理应用程序请求
 
 In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
 
@@ -207,7 +207,7 @@ $response->send();
 
 <a name='full-example'></a>
 
-### Putting everything together
+### 把一切都放在一起
 
 The `tutorial/public/index.php` file should look like:
 
@@ -330,7 +330,7 @@ The browser output should remain the same. The `Phalcon\Mvc\View` static compone
 
 <a name='signup-form'></a>
 
-## Designing a sign up form
+## 设计注册表单
 
 Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
 
