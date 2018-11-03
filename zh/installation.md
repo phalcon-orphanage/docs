@@ -2,7 +2,7 @@
     <ul>
         <li><a href="#requirements">Requirements</a>
             <ul>
-                <li><a href="#requirements-hardware">Hardware</a></li>
+                <li><a href="#requirements-hardware">硬件</a></li>
                 <li><a href="#requirements-software">Software</a>
                     <ul>
                         <li>
@@ -17,7 +17,7 @@
                 <li><a href="#installation-linux">Linux</a>
                     <ul>
                         <li>
-                            <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a>
+                            <a href="#installation-linux-debian">DEB 基于分布 （Debian，Ubuntu 等）</a>
                             <ul>
                                 <li>
                                     <a href="#installation-linux-debian-repository">Repository installation</a>
