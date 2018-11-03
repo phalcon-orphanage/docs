@@ -1,20 +1,30 @@
-# Class **Phalcon\\Acl\\Exception**
+# Class **Phalcon\\Mvc\\Model\\ValidationFailed**
 
-*extends* class [Phalcon\Exception](/en/3.2/api/Phalcon_Exception)
+*extends* class [Phalcon\Mvc\Model\Exception](/en/3.2/api/Phalcon_Mvc_Model_Exception)
 
 *implements* [Throwable](http://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/exception.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/validationfailed.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+
+This exception is generated when a model fails to save a record Phalcon\\Mvc\\Model must be set up to have this behavior
 
 ## Methods
+
+public **__construct** (*Model* $model, *Message*\ [] $validationMessages)
+
+Phalcon\\Mvc\\Model\\ValidationFailed constructor
+
+public **getModel** ()
+
+Returns the model that generated the messages
+
+public **getMessages** ()
+
+Returns the complete group of messages produced in the validation
 
 final private [Exception](http://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
 Clone the exception
-
-public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](http://php.net/manual/en/class.exception.php)
-
-异常构造函数
 
 public **__wakeup** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
@@ -22,32 +32,32 @@ public **__wakeup** () inherited from [Exception](http://php.net/manual/en/class
 
 final public *string* **getMessage** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-获取异常消息
+Gets the Exception message
 
 final public *int* **getCode** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-获取异常代码
+Gets the Exception code
 
 final public *string* **getFile** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-获取发生异常的文件
+Gets the file in which the exception occurred
 
 final public *int* **getLine** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-获取发生异常的行
+Gets the line in which the exception occurred
 
 final public *array* **getTrace** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-获取堆栈跟踪
+Gets the stack trace
 
 final public [Exception](http://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-返回前一个异常
+Returns previous Exception
 
 final public [Exception](http://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-以字符串形式获取堆栈跟踪
+Gets the stack trace as a string
 
 public *string* **__toString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-异常的字符串表示形式
+String representation of the exception
