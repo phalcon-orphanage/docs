@@ -1,9 +1,9 @@
-# Abstract class **Phalcon\\Acl**
+# 抽象类 **Phalcon\\Acl**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
-## Constants
+## 常量
 
-*integer* **ALLOW**
+*integer***允许**
 
-*integer* **DENY**
+*integer***拒绝**

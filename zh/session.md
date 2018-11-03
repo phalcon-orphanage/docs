@@ -1,15 +1,15 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Storing data in the Session</a> <ul>
+      <a href="#overview">在会话中存储数据</a> <ul>
         <li>
-          <a href="#start">Starting the Session</a>
+          <a href="#start">启动新会话</a>
         </li>
         <li>
           <a href="#store">Storing/Retrieving data in Session</a>
         </li>
         <li>
-          <a href="#remove-destroy">Removing/Destroying Sessions</a>
+          <a href="#remove-destroy">删除/销毁会话</a>
         </li>
         <li>
           <a href="#data-isolation">Isolating Session Data between Applications</a>
@@ -97,7 +97,7 @@ class UserController extends Controller
 
 <a name='remove-destroy'></a>
 
-## Removing/Destroying Sessions
+## 删除/销毁会话
 
 It's also possible remove specific variables or destroy the whole session:
 
@@ -200,7 +200,7 @@ class UserController extends Controller
 }
 ```
 
-In a component:
+在组件：
 
 ```php
 <?php
