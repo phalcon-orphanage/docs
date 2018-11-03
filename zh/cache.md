@@ -117,7 +117,7 @@ Although this component is very fast, implementing it in cases that are not need
 
 缓存的过程分为 2 个部分：
 
-* <0Frontend</strong>： 这一部分是负责检查，如果密钥已过期，并且执行更多转换对数据存储之前和之后从后端-检索
+* **Frontend**： 这一部分是负责检查，如果密钥已过期，并且执行更多转换对数据存储之前和之后从后端-检索
 * **Backend**： 这部分是负责沟通，写/读前端所需的数据。
 
 <a name='factory'></a>
