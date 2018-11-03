@@ -1,16 +1,16 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">安全</a> 
+      <a href="#overview">Security</a> 
       <ul>
         <li>
-          <a href="#hashing">密码哈希</a>
+          <a href="#hashing">Password Hashing</a>
         </li>
         <li>
           <a href="#csrf">Cross-Site Request Forgery (CSRF) protection</a>
         </li>
         <li>
-          <a href="#setup">设置该组件</a>
+          <a href="#setup">Setting up the component</a>
         </li>
         <li>
           <a href="#random">Random</a>

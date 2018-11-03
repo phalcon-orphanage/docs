@@ -1,64 +1,95 @@
-# Abstract class **Phalcon\\Db\\Adapter\\Pdo**
+# Class **Phalcon\\Db\\Adapter\\Pdo\\Sqlite**
 
-*extends* abstract class [Phalcon\Db\Adapter](/[[language]]/[[version]]/api/Phalcon_Db_Adapter)
+*extends* abstract class [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/[[language]]/[[version]]/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Db\AdapterInterface](/[[language]]/[[version]]/api/Phalcon_Db_AdapterInterface)
+*implements* [Phalcon\Db\AdapterInterface](/[[language]]/[[version]]/api/Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](/[[language]]/[[version]]/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/adapter/pdo.zep" class="btn btn-default btn-sm">源码在 GitHub 上</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/adapter/pdo/sqlite.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Phalcon\\Db\\Adapter\\Pdo 是在内部通过PDO连接数据库的 Phalcon\\Db
-
-```php
-<?php
-
-use Phalcon\Db\Adapter\Pdo\Mysql;
-
-$config = [
-    "host"     => "localhost",
-    "dbname"   => "blog",
-    "port"     => 3306,
-    "username" => "sigma",
-    "password" => "secret",
-];
-
-$connection = new Mysql($config);
-
-```
-
-## 方法
-
-public **__construct** (*array* $descriptor)
-
-Phalcon\\Db\\Adapter\\Pdo 构造器
-
-public **connect** ([*array* $descriptor])
-
-This method is automatically called in \\Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection.
+Specific functions for the Sqlite database system
 
 ```php
 <?php
 
-use Phalcon\Db\Adapter\Pdo\Mysql;
+use Phalcon\Db\Adapter\Pdo\Sqlite;
 
-// 建立连接
-$connection = new Mysql(
+$connection = new Sqlite(
     [
-        "host"     => "localhost",
-        "username" => "sigma",
-        "password" => "secret",
-        "dbname"   => "blog",
-        "port"     => 3306,
+        "dbname" => "/tmp/test.sqlite",
     ]
 );
 
-// 重新连接
-$connection->connect();
+```
+
+## Methods
+
+public **connect** ([*array* $descriptor])
+
+This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection.
+
+public **describeColumns** (*mixed* $table, [*mixed* $schema])
+
+Returns an array of Phalcon\\Db\\Column objects describing a table
+
+```php
+<?php
+
+print_r(
+    $connection->describeColumns("posts")
+);
 
 ```
 
-public **prepare** (*mixed* $sqlStatement)
+public [Phalcon\Db\IndexInterface](/[[language]]/[[version]]/api/Phalcon_Db_IndexInterface) **describeIndexes** (*string* $table, [*string* $schema])
 
-返回一个将以 'executePrepared' 执行的PDO预执行语句
+Lists table indexes
+
+```php
+<?php
+
+print_r(
+    $connection->describeIndexes("robots_parts")
+);
+
+```
+
+public [Phalcon\Db\ReferenceInterface](/[[language]]/[[version]]/api/Phalcon_Db_ReferenceInterface) **describeReferences** (*string* $table, [*string* $schema])
+
+Lists table references
+
+public **useExplicitIdValue** ()
+
+Check whether the database system requires an explicit value for identity columns
+
+public **getDefaultValue** ()
+
+Returns the default value to make the RBDM use the default value declared in the table definition
+
+```php
+<?php
+
+// Inserting a new robot with a valid default value for the column 'year'
+$success = $connection->insert(
+    "robots",
+    [
+        "Astro Boy",
+        $connection->getDefaultValue(),
+    ],
+    [
+        "name",
+        "year",
+    ]
+);
+
+```
+
+public **__construct** (*array* $descriptor) inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
+
+Constructor for Phalcon\\Db\\Adapter\\Pdo
+
+public **prepare** (*mixed* $sqlStatement) inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
+
+Returns a PDO prepared statement to be executed with 'executePrepared'
 
 ```php
 <?php
@@ -81,7 +112,7 @@ $result = $connection->executePrepared(
 
 ```
 
-public [PDOStatement](http://php.net/manual/en/class.pdostatement.php) **executePrepared** ([PDOStatement](http://php.net/manual/en/class.pdostatement.php) $statement, *array* $placeholders, *array* $dataTypes)
+public [PDOStatement](http://php.net/manual/en/class.pdostatement.php) **executePrepared** ([PDOStatement](http://php.net/manual/en/class.pdostatement.php) $statement, *array* $placeholders, *array* $dataTypes) inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
 Executes a prepared statement binding. This function uses integer indexes starting from zero
 
@@ -106,7 +137,7 @@ $result = $connection->executePrepared(
 
 ```
 
-public **query** (*mixed* $sqlStatement, [*mixed* $bindParams], [*mixed* $bindTypes])
+public **query** (*mixed* $sqlStatement, [*mixed* $bindParams], [*mixed* $bindTypes]) inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows
 
@@ -127,7 +158,7 @@ $resultset = $connection->query(
 
 ```
 
-public **execute** (*mixed* $sqlStatement, [*mixed* $bindParams], [*mixed* $bindTypes])
+public **execute** (*mixed* $sqlStatement, [*mixed* $bindParams], [*mixed* $bindTypes]) inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn't return any rows
 
@@ -149,9 +180,9 @@ $success = $connection->execute(
 
 ```
 
-public **affectedRows** ()
+public **affectedRows** () inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
-返回数据库系统中执行的最新插入/更新/删除返回受影响行的数目
+Returns the number of affected rows by the latest INSERT/UPDATE/DELETE executed in the database system
 
 ```php
 <?php
@@ -164,13 +195,13 @@ echo $connection->affectedRows(), " were deleted";
 
 ```
 
-public **close** ()
+public **close** () inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
 Closes the active connection returning success. Phalcon automatically closes and destroys active connections when the request ends
 
-public **escapeString** (*mixed* $str)
+public **escapeString** (*mixed* $str) inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
-根据连接中的活动字符集逃避值以避免SQL注入
+Escapes a value to avoid SQL injections according to the active charset in the connection
 
 ```php
 <?php
@@ -179,9 +210,9 @@ $escapedStr = $connection->escapeString("some dangerous value");
 
 ```
 
-public **convertBoundParams** (*mixed* $sql, [*array* $params])
+public **convertBoundParams** (*mixed* $sql, [*array* $params]) inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
-转换绑定参数，例如：:name: 或 ?1 到PDO绑定参数？
+Converts bound parameters such as :name: or ?1 into PDO bind params ?
 
 ```php
 <?php
@@ -197,14 +228,14 @@ print_r(
 
 ```
 
-public *int* | *boolean* **lastInsertId** ([*string* $sequenceName])
+public *int* | *boolean* **lastInsertId** ([*string* $sequenceName]) inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
-返回插入在最近执行的SQL语句中的 自增/连续 列的插入ID
+Returns the insert id for the auto_increment/serial column inserted in the latest executed SQL statement
 
 ```php
 <?php
 
-// 插入一条新的机器人数据
+// Inserting a new robot
 $success = $connection->insert(
     "robots",
     [
@@ -217,30 +248,30 @@ $success = $connection->insert(
     ]
 );
 
-// 获取ID
+// Getting the generated id
 $id = $connection->lastInsertId();
 
 ```
 
-public **begin** ([*mixed* $nesting])
+public **begin** ([*mixed* $nesting]) inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
-在当前连接中启动事务
+Starts a transaction in the connection
 
-public **rollback** ([*mixed* $nesting])
+public **rollback** ([*mixed* $nesting]) inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
-回滚当前连接中的事务
+Rollbacks the active transaction in the connection
 
-public **commit** ([*mixed* $nesting])
+public **commit** ([*mixed* $nesting]) inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
-提交当前连接中的事务
+Commits the active transaction in the connection
 
-public **getTransactionLevel** ()
+public **getTransactionLevel** () inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
-返回当前事务嵌套级别
+Returns the current transaction nesting level
 
-public **isUnderTransaction** ()
+public **isUnderTransaction** () inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
-检查连接是否在事务
+Checks whether the connection is under a transaction
 
 ```php
 <?php
@@ -254,11 +285,11 @@ var_dump(
 
 ```
 
-public **getInternalHandler** ()
+public **getInternalHandler** () inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
 Return internal PDO handler
 
-public *array* **getErrorInfo** ()
+public *array* **getErrorInfo** () inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
 Return the error info, if any
 
@@ -625,32 +656,6 @@ print_r(
 
 ```
 
-public [Phalcon\Db\Index](/[[language]]/[[version]]/api/Phalcon_Db_Index) **describeIndexes** (*string* $table, [*string* $schema]) inherited from [Phalcon\Db\Adapter](/[[language]]/[[version]]/api/Phalcon_Db_Adapter)
-
-Lists table indexes
-
-```php
-<?php
-
-print_r(
-    $connection->describeIndexes("robots_parts")
-);
-
-```
-
-public **describeReferences** (*mixed* $table, [*mixed* $schema]) inherited from [Phalcon\Db\Adapter](/[[language]]/[[version]]/api/Phalcon_Db_Adapter)
-
-Lists table references
-
-```php
-<?php
-
-print_r(
-    $connection->describeReferences("robots_parts")
-);
-
-```
-
 public **tableOptions** (*mixed* $tableName, [*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](/[[language]]/[[version]]/api/Phalcon_Db_Adapter)
 
 Gets creation options from a table
@@ -712,35 +717,9 @@ $success = $connection->insert(
 
 ```
 
-public **getDefaultValue** () inherited from [Phalcon\Db\Adapter](/[[language]]/[[version]]/api/Phalcon_Db_Adapter)
-
-Returns the default value to make the RBDM use the default value declared in the table definition
-
-```php
-<?php
-
-// Inserting a new robot with a valid default value for the column 'year'
-$success = $connection->insert(
-    "robots",
-    [
-        "Astro Boy",
-        $connection->getDefaultValue()
-    ],
-    [
-        "name",
-        "year",
-    ]
-);
-
-```
-
 public **supportSequences** () inherited from [Phalcon\Db\Adapter](/[[language]]/[[version]]/api/Phalcon_Db_Adapter)
 
 Check whether the database system requires a sequence to produce auto-numeric values
-
-public **useExplicitIdValue** () inherited from [Phalcon\Db\Adapter](/[[language]]/[[version]]/api/Phalcon_Db_Adapter)
-
-Check whether the database system requires an explicit value for identity columns
 
 public **getDescriptor** () inherited from [Phalcon\Db\Adapter](/[[language]]/[[version]]/api/Phalcon_Db_Adapter)
 
@@ -761,7 +740,3 @@ Active SQL statement in the object without replace bound parameters
 public *array* **getSQLBindTypes** () inherited from [Phalcon\Db\Adapter](/[[language]]/[[version]]/api/Phalcon_Db_Adapter)
 
 Active SQL statement in the object
-
-abstract public **describeColumns** (*mixed* $table, [*mixed* $schema]) inherited from [Phalcon\Db\AdapterInterface](/[[language]]/[[version]]/api/Phalcon_Db_AdapterInterface)
-
-...

@@ -4,9 +4,9 @@
 
 *implements* [Phalcon\Events\EventsAwareInterface](/[[language]]/[[version]]/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Db\AdapterInterface](/[[language]]/[[version]]/api/Phalcon_Db_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/adapter/pdo.zep" class="btn btn-default btn-sm">源码在 GitHub 上</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/adapter/pdo.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Phalcon\\Db\\Adapter\\Pdo 是在内部通过PDO连接数据库的 Phalcon\\Db
+Phalcon\\Db\\Adapter\\Pdo is the Phalcon\\Db that internally uses PDO to connect to a database
 
 ```php
 <?php
@@ -25,11 +25,11 @@ $connection = new Mysql($config);
 
 ```
 
-## 方法
+## Methods
 
 public **__construct** (*array* $descriptor)
 
-Phalcon\\Db\\Adapter\\Pdo 构造器
+Constructor for Phalcon\\Db\\Adapter\\Pdo
 
 public **connect** ([*array* $descriptor])
 
@@ -40,7 +40,7 @@ This method is automatically called in \\Phalcon\\Db\\Adapter\\Pdo constructor. 
 
 use Phalcon\Db\Adapter\Pdo\Mysql;
 
-// 建立连接
+// Make a connection
 $connection = new Mysql(
     [
         "host"     => "localhost",
@@ -51,14 +51,14 @@ $connection = new Mysql(
     ]
 );
 
-// 重新连接
+// Reconnect
 $connection->connect();
 
 ```
 
 public **prepare** (*mixed* $sqlStatement)
 
-返回一个将以 'executePrepared' 执行的PDO预执行语句
+Returns a PDO prepared statement to be executed with 'executePrepared'
 
 ```php
 <?php
@@ -151,7 +151,7 @@ $success = $connection->execute(
 
 public **affectedRows** ()
 
-返回数据库系统中执行的最新插入/更新/删除返回受影响行的数目
+Returns the number of affected rows by the latest INSERT/UPDATE/DELETE executed in the database system
 
 ```php
 <?php
@@ -170,7 +170,7 @@ Closes the active connection returning success. Phalcon automatically closes and
 
 public **escapeString** (*mixed* $str)
 
-根据连接中的活动字符集逃避值以避免SQL注入
+Escapes a value to avoid SQL injections according to the active charset in the connection
 
 ```php
 <?php
@@ -181,7 +181,7 @@ $escapedStr = $connection->escapeString("some dangerous value");
 
 public **convertBoundParams** (*mixed* $sql, [*array* $params])
 
-转换绑定参数，例如：:name: 或 ?1 到PDO绑定参数？
+Converts bound parameters such as :name: or ?1 into PDO bind params ?
 
 ```php
 <?php
@@ -199,12 +199,12 @@ print_r(
 
 public *int* | *boolean* **lastInsertId** ([*string* $sequenceName])
 
-返回插入在最近执行的SQL语句中的 自增/连续 列的插入ID
+Returns the insert id for the auto_increment/serial column inserted in the latest executed SQL statement
 
 ```php
 <?php
 
-// 插入一条新的机器人数据
+// Inserting a new robot
 $success = $connection->insert(
     "robots",
     [
@@ -217,30 +217,30 @@ $success = $connection->insert(
     ]
 );
 
-// 获取ID
+// Getting the generated id
 $id = $connection->lastInsertId();
 
 ```
 
 public **begin** ([*mixed* $nesting])
 
-在当前连接中启动事务
+Starts a transaction in the connection
 
 public **rollback** ([*mixed* $nesting])
 
-回滚当前连接中的事务
+Rollbacks the active transaction in the connection
 
 public **commit** ([*mixed* $nesting])
 
-提交当前连接中的事务
+Commits the active transaction in the connection
 
 public **getTransactionLevel** ()
 
-返回当前事务嵌套级别
+Returns the current transaction nesting level
 
 public **isUnderTransaction** ()
 
-检查连接是否在事务
+Checks whether the connection is under a transaction
 
 ```php
 <?php

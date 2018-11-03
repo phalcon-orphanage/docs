@@ -1,10 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">在会话中存储数据</a> 
+      <a href="#overview">Storing data in the Session</a> 
       <ul>
         <li>
-          <a href="#start">启动新会话</a>
+          <a href="#start">Starting the Session</a>
           <ul>
             <li>
               <a href="#start-factory">Factory</a>
@@ -15,7 +15,7 @@
           <a href="#store">Storing/Retrieving data in Session</a>
         </li>
         <li>
-          <a href="#remove-destroy">删除/销毁会话</a>
+          <a href="#remove-destroy">Removing/Destroying Sessions</a>
         </li>
         <li>
           <a href="#data-isolation">Isolating Session Data between Applications</a>
@@ -230,7 +230,7 @@ class UserController extends Controller
 }
 ```
 
-在组件：
+In a component:
 
 ```php
 <?php
