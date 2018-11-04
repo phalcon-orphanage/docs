@@ -56,7 +56,7 @@
               <a href="#adapters-backend-factory">工厂</a>
             </li>
             <li>
-              <a href="#adapters-backend-custom">Implementing your own Backend adapters</a>
+              <a href="#adapters-backend-custom">执行您自己的后端适配器</a>
             </li>
             <li>
               <a href="#adapters-backend-file">文件后端选项</a>
@@ -68,19 +68,19 @@
               <a href="#adapters-backend-memcache">Memcache 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-apc">APC 后端选项</a>
+              <a href="#adapters-backend-apc">APC Backend Options</a>
             </li>
             <li>
               <a href="#adapters-backend-apcu">APCU 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Mongo后端选项</a>
+              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
             </li>
             <li>
               <a href="#adapters-backend-xcache">XCache 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Redis后端选项</a>
+              <a href="#adapters-backend-redis">Redis Backend Options</a>
             </li>
           </ul>
         </li>
@@ -117,7 +117,7 @@ Although this component is very fast, implementing it in cases that are not need
 
 缓存的过程分为 2 个部分：
 
-* **Frontend**： 这一部分是负责检查，如果密钥已过期，并且执行更多转换对数据存储之前和之后从后端-检索
+* <0Frontend</strong>： 这一部分是负责检查，如果密钥已过期，并且执行更多转换对数据存储之前和之后从后端-检索
 * **Backend**： 这部分是负责沟通，写/读前端所需的数据。
 
 <a name='factory'></a>
@@ -567,20 +567,20 @@ $cache->save('my-key', $data);
 | `Phalcon\Cache\Backend\Apc`          | 存储数据到替代 PHP 缓存 (APC)。              | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
 | `Phalcon\Cache\Backend\Apcu`         | 存储数据的处理 (APC 不操作码缓存)               | [APCu](http://php.net/apcu)               | [APCu](http://pecl.php.net/package/APCu)           |
 | `Phalcon\Cache\Backend\File`         | 存储到本地普通文件的数据。                      |                                           |                                                    |
-| `Phalcon\Cache\Backend\Libmemcached` | Stores data to a memcached server. | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
+| `Phalcon\Cache\Backend\Libmemcached` | 存储到 memcached 服务器数据。               | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
 | `Phalcon\Cache\Backend\Memcache`     | Stores data to a memcached server. | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
-| `Phalcon\Cache\Backend\Memory`       | Stores data in memory              |                                           |                                                    |
+| `Phalcon\Cache\Backend\Memory`       | 将数据存储在内存中                          |                                           |                                                    |
 | `Phalcon\Cache\Backend\Mongo`        | Stores data to Mongo Database.     | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
-| `Phalcon\Cache\Backend\Redis`        | Stores data in Redis.              | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
-| `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache.             | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
+| `Phalcon\Cache\Backend\Redis`        | 储存数据到Redis.                        | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
+| `Phalcon\Cache\Backend\Xcache`       | 在 XCache 中存储数据。                    | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
 ##### **NOTE** In PHP 7 to use phalcon `apc` based adapter classes you needed to install `apcu` and `apcu_bc` package from pecl. Now in Phalcon 3.2.0 you can switch your `<em>\Apc` classes to `</em>\Apcu` and remove `apcu_bc`. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. {.alert.alert-warning}
 
 <a name='adapters-backend-factory'></a>
 
-### Factory
+### 工厂
 
-There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+有很多 （见 [后端适配器](#adapters-backend)） 的后端适配器。 您将取决于您的应用程序的需要使用。 下面的示例加载后端缓存适配器类使用 `适配器` 选项，如果前端将提供数组作为它将调用前端缓存工厂
 
 ```php
 <?php
@@ -598,48 +598,48 @@ $backendCache = Factory::load($options);
 
 <a name='adapters-backend-custom'></a>
 
-### Implementing your own Backend adapters
+### 执行您自己的后端适配器
 
-The `Phalcon\Cache\BackendInterface` interface must be implemented in order to create your own backend adapters or extend the existing ones.
+为了创建你自己的后端适配器或扩展现有的必须实现 `Phalcon\Cache\BackendInterface` 接口。
 
 <a name='adapters-backend-file'></a>
 
 ### 文件后端选项
 
-This backend will store cached content into files in the local server. The available options for this backend are:
+这个后端会将缓存的内容存储到本地服务器中的文件。这个后端的可用选项有：
 
-| Option     | Description                                                 |
-| ---------- | ----------------------------------------------------------- |
-| `prefix`   | A prefix that is automatically prepended to the cache keys. |
-| `cacheDir` | A writable directory on which cached files will be placed.  |
+| 选项         | 描述           |
+| ---------- | ------------ |
+| `前缀`       | 自动预置到缓存键的前缀。 |
+| `cacheDir` | 将缓存的文件可写目录。  |
 
 <a name='adapters-backend-libmemcached'></a>
 
 ### Libmemcached 后端选项
 
-This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
+这个后端将 memcached 服务器上存储缓存的内容。每个默认使用持久性 memcached 连接池。这个后端的可用选项有：
 
-**General options**
+**常规选项**
 
-| Option          | Description                                                                                                        |
-| --------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `statsKey`      | Used to tracking of cached keys.                                                                                   |
-| `prefix`        | A prefix that is automatically prepended to the cache keys.                                                        |
-| `persistent_id` | To create an instance that persists between requests, use `persistent_id` to specify a unique ID for the instance. |
+| 选项              | 描述                                               |
+| --------------- | ------------------------------------------------ |
+| `statsKey`      | 用于动态跟踪的缓存键。                                      |
+| `prefix`        | 自动预置到缓存键的前缀。                                     |
+| `persistent_id` | 若要创建一个请求之间仍然存在的实例，使用 `persistent_id` 指定实例的唯一 ID。 |
 
-**Servers options**
+**服务器选项**
 
-| Option   | Description                                                                                                 |
+| 选项       | 描述                                                                                                          |
 | -------- | ----------------------------------------------------------------------------------------------------------- |
-| `host`   | The `memcached` host.                                                                                       |
-| `port`   | The `memcached` port.                                                                                       |
+| `host`   | `Memcached` 主机。                                                                                             |
+| `port`   | `Memcached` 端口。                                                                                             |
 | `weight` | The weight parameter effects the consistent hashing used to determine which server to read/write keys from. |
 
-**Client options**
+**客户端选项**
 
-Used for setting Memcached options. See [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) for more.
+用于设置 Memcached 选项。更多信息，请参阅 [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php)。
 
-**Example**
+**示例**
 
 ```php
 <?php
@@ -677,71 +677,71 @@ $cache = new Libmemcached(
 
 ### Memcache 后端选项
 
-This backend will store cached content on a memcached server. The available options for this backend are:
+这个后端将 memcached 服务器上存储缓存的内容。这个后端的可用选项有：
 
-| Option       | Description                                                 |
+| 选项           | 描述                                                          |
 | ------------ | ----------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `host`       | The memcached host.                                         |
-| `port`       | The memcached port.                                         |
-| `persistent` | Create a persistent connection to memcached?                |
+| `host`       | Memcached 主机。                                               |
+| `port`       | Memcached 端口。                                               |
+| `persistent` | 创建到 memcached 的持久性连接吗？                                      |
 
 <a name='adapters-backend-apc'></a>
 
-### APC 后端选项
+### APC Backend Options
 
-This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
+这个后端将替代 PHP 缓存 ([APC](http://php.net/apc)) 上存储缓存的内容。这个后端的可用选项有：
 
-| Option   | Description                                                 |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| 选项       | 描述           |
+| -------- | ------------ |
+| `prefix` | 自动预置到缓存键的前缀。 |
 
 <a name='adapters-backend-apcu'></a>
 
 ### APCU 后端选项
 
-This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
+这个后端将替代 PHP 缓存 （[APCU ](http://php.net/apcu)） 上存储缓存的内容。这个后端的可用选项有：
 
-| Option   | Description                                                 |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| 选项       | 描述           |
+| -------- | ------------ |
+| `prefix` | 自动预置到缓存键的前缀。 |
 
 <a name='adapters-backend-mongo'></a>
 
-### Mongo后端选项
+### Mongo Backend Options
 
-This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
+这个后端将 MongoDB 服务器 ([MongoDB](http://mongodb.org/)) 上存储缓存的内容。这个后端的可用选项有：
 
-| Option       | Description                                                 |
-| ------------ | ----------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `server`     | A MongoDB connection string.                                |
-| `db`         | Mongo database name.                                        |
-| `collection` | Mongo collection in the database.                           |
+| 选项           | 描述              |
+| ------------ | --------------- |
+| `prefix`     | 自动预置到缓存键的前缀。    |
+| `服务器`        | MongoDB 的连接字符串。 |
+| `db`         | 输入数据库名称。        |
+| `collection` | Mongo 集合在数据库中。  |
 
 <a name='adapters-backend-xcache'></a>
 
 ### XCache 后端选项
 
-This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
+这个后端将在 XCache ([XCache](http://xcache.lighttpd.net/)) 上存储缓存的内容。这个后端的可用选项有：
 
-| Option   | Description                                                 |
+| 选项       | 描述                                                          |
 | -------- | ----------------------------------------------------------- |
 | `prefix` | A prefix that is automatically prepended to the cache keys. |
 
 <a name='adapters-backend-redis'></a>
 
-### Redis后端选项
+### Redis Backend Options
 
-This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
+这个后端将 ([Redis](http://redis.io/)) Redis的服务器上存储缓存的内容。这个后端的可用选项有：
 
-| Option       | Description                                                    |
-| ------------ | -------------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys.    |
-| `host`       | Redis host.                                                    |
-| `port`       | Redis port.                                                    |
-| `auth`       | Password to authenticate to a password-protected Redis server. |
-| `persistent` | Create a persistent connection to Redis.                       |
-| `index`      | The index of the Redis database to use.                        |
+| 选项           | 描述                                                          |
+| ------------ | ----------------------------------------------------------- |
+| `prefix`     | A prefix that is automatically prepended to the cache keys. |
+| `host`       | Redis的主机。                                                   |
+| `port`       | Redis的端口                                                    |
+| `auth`       | 密码保护Redis服务器进行身份验证的密码。                                      |
+| `persistent` | 创建与Redis持久连接。                                               |
+| `index`      | Frontend数据库使用的索引。                                           |
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+有更多的适配器可供此 [Phalcon incubaror](https://github.com/phalcon/incubator) 中的组件
