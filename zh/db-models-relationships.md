@@ -1,22 +1,22 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Model Relationships</a> <ul>
+      <a href="#overview">关联模型</a> <ul>
         <li>
-          <a href="#relationships">Relationships between Models</a> <ul>
+          <a href="#relationships">模型之间的关系</a> <ul>
             <li>
-              <a href="#unidirectional">Unidirectional relationships</a>
+              <a href="#unidirectional">单向的关系</a>
             </li>
             <li>
-              <a href="#bidirectional">Bidirectional relations</a>
+              <a href="#bidirectional">双向关系</a>
             </li>
             <li>
-              <a href="#defining">Defining relationships</a> <ul>
+              <a href="#defining">定义关系</a> <ul>
                 <li>
                   <a href="#multiple-fields">Multiple field relationships</a>
                 </li>
                 <li>
-                  <a href="#parameters">Relationships with parameters</a>
+                  <a href="#parameters">有参数的关联关系</a>
                 </li>
               </ul>
             </li>
@@ -24,16 +24,16 @@
               <a href="#taking-advantage-of">Taking advantage of relationships</a>
             </li>
             <li>
-              <a href="#aliases">Aliasing Relationships</a> <ul>
+              <a href="#aliases">混叠的关系</a> <ul>
                 <li>
-                  <a href="#getters-vs-methods">Magic Getters vs. Explicit methods</a>
+                  <a href="#getters-vs-methods">魔术方法 Getters vs. 显式方法</a>
                 </li>
               </ul>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#virtual-foreign-keys">Virtual Foreign Keys</a> <ul>
+          <a href="#virtual-foreign-keys">虚拟外键</a> <ul>
             <li>
               <a href="#cascade-restrict-actions">Cascade/Restrict actions</a>
             </li>
@@ -658,7 +658,7 @@ class Robots extends Model
 
 <a name='virtual-foreign-keys'></a>
 
-## Virtual Foreign Keys
+## 虚拟的外键
 
 By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
 
