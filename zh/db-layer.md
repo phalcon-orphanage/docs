@@ -26,34 +26,34 @@
           <a href="#options">PDO 的附加选项设置</a>
         </li>
         <li>
-          <a href="#finding-rows">Finding Rows</a>
+          <a href="#finding-rows">查找行记录</a>
         </li>
         <li>
-          <a href="#binding-parameters">Binding Parameters</a>
+          <a href="#binding-parameters">绑定参数</a>
         </li>
         <li>
-          <a href="#crud">Inserting/Updating/Deleting Rows</a>
+          <a href="#crud">插入/更新/删除行</a>
         </li>
         <li>
-          <a href="#transactions">Transactions and Nested Transactions</a>
+          <a href="#transactions">事务和嵌套的事务</a>
         </li>
         <li>
-          <a href="#events">Database Events</a>
+          <a href="#events">数据库事件</a>
         </li>
         <li>
-          <a href="#profiling">Profiling SQL Statements</a>
+          <a href="#profiling">分析 SQL 语句</a>
         </li>
         <li>
-          <a href="#logging-statements">Logging SQL Statements</a>
+          <a href="#logging-statements">日志记录的 SQL 语句</a>
         </li>
         <li>
-          <a href="#logger-custom">Implementing your own Logger</a>
+          <a href="#logger-custom">执行您自己的记录器</a>
         </li>
         <li>
-          <a href="#describing-tables">Describing Tables/Views</a>
+          <a href="#describing-tables">描述 表/视图</a>
         </li>
         <li>
-          <a href="#tables">Creating/Altering/Dropping Tables</a> <ul>
+          <a href="#tables">[创建/更改/删除]表</a> <ul>
             <li>
               <a href="#tables-create">创建表</a>
             </li>
@@ -72,15 +72,15 @@
 
 <a name='overview'></a>
 
-# Database Abstraction Layer
+# 数据库抽象层
 
-`Phalcon\Db` is the component behind `Phalcon\Mvc\Model` that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
+在框架中，`Phalcon\Db` 是 `Phalcon\Mvc\Model` 模型层后面的一个组件。 它是由数据库系统完全用 C 编写的一个独立的高级别抽象层
 
-This component allows for a lower level database manipulation than using traditional models.
+此组件允许比使用传统模式更低的级别的数据库操作。
 
 <a name='adapters'></a>
 
-## Database Adapters
+## 数据库适配器
 
 此组件使用适配器来封装特定的数据库系统的详细信息。Phalcon使用 PDO_ 连接到数据库。支持以下数据库引擎：
 
@@ -117,13 +117,13 @@ $db = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### 实现你自己的适配器
 
 以创建您自己的数据库适配器或扩展现有的必须实现 `Phalcon\Db\AdapterInterface` 接口。
 
 <a name='dialects'></a>
 
-## Database Dialects
+## 数据库语言
 
 Phalcon封装在方言中每个数据库引擎的具体细节。那些向适配器提供常见的函数和 SQL 生成器。
 
@@ -135,13 +135,13 @@ Phalcon封装在方言中每个数据库引擎的具体细节。那些向适配�
 
 <a name='dialects-custom'></a>
 
-### Implementing your own dialects
+### 执行您自己的方言
 
 以创建您自己的数据库方言或扩展现有的必须实现 `Phalcon\Db\DialectInterface` 接口。 您还可以通过添加 PHQL 将了解的更多命令/方法来增强当前语言。
 
 例如, 当使用 MySQL 适配器时, 您可能希望允许 PHQL 识别 ` MATCH ... AGAINST ...`语法。我们将该语法与 ` MATCH_AGAINST ` 相关联
 
-We instantiate the dialect. 我们添加自定义函数, 以便 PHQL 了解在分析过程中找到它时应执行的操作。 在下面的示例中, 我们注册了一个名为 ` MATCH_AGAINST ` 的新自定义函数。 之后, 我们要做的就是添加自定义的语言解析器对象到我们的连接。
+我们实例化方言。 我们添加自定义函数, 以便 PHQL 了解在分析过程中找到它时应执行的操作。 在下面的示例中, 我们注册了一个名为 ` MATCH_AGAINST ` 的新自定义函数。 之后, 我们要做的就是添加自定义的语言解析器对象到我们的连接。
 
 ```php
 <?php
@@ -282,7 +282,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
 
 <a name='finding-rows'></a>
 
-## Finding Rows
+## 查找行记录
 
 `Phalcon\Db` 提供几个方法查询行从表。在这种情况下的具体的 SQL 语法的目标数据库引擎是必需的：
 
@@ -353,7 +353,7 @@ echo $result->numRows();
 
 <a name='binding-parameters'></a>
 
-## Binding Parameters
+## 绑定参数
 
 在 `Phalcon\Db` 也支持绑定的参数。 虽然通过使用绑定的参数的最小的性能影响，你被鼓励使用此方法，以消除您的代码受到 SQL 注入式攻击的可能性。 支持字符串和位置的占位符。 绑定参数可以简单地实现，如下所示：
 
@@ -380,16 +380,16 @@ $success = $connection->query(
 );
 ```
 
-当使用数字占位符，您将需要将它们定义为即 1 或 2 的整数。 在这种情况下 '1' 或 '2' 是字符串而不是数字，所以该占位符不能被成功替换。 With any adapter data are automatically escaped using [PDO Quote](http://www.php.net/manual/en/pdo.quote.php).
+当使用数字占位符，您将需要将它们定义为即 1 或 2 的整数。 在这种情况下 '1' 或 '2' 是字符串而不是数字，所以该占位符不能被成功替换。 与任何适配器数据自动转义使用 [PDO Quota](http://www.php.net/manual/en/pdo.quote.php)。
 
-This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+此函数还考虑连接字符集，它建议要在连接参数中或在您的数据库服务器配置，作为错误的字符集中定义正确的字符集将产生意外的影响，在存储或检索数据时。
 
-Also, you can pass your parameters directly to the execute/query methods. In this case bound parameters are directly passed to PDO:
+另外，你可以直接传递参数给执行/查询方法。在这种情况下， 绑定的参数将直接传递给 PDO：
 
 ```php
 <?php
 
-// Binding with PDO placeholders
+// 使用 PDO 占位符绑定
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -403,7 +403,7 @@ $result = $connection->query(
 
 ## 插入/更新/删除行
 
-To insert, update or delete rows, you can use raw SQL or use the preset functions provided by the class:
+插入、 更新或删除行的你可以使用原始 SQL 或使用类所提供的预设的函数：
 
 ```php
 <?php
@@ -528,7 +528,7 @@ $success = $connection->delete(
 
 ## 事务和嵌套的事务
 
-Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
+它是与 PDO 支持与交易工作。在大多数数据库系统上执行数据操作在事务内部经常增加的性能：
 
 ```php
 <?php
@@ -550,7 +550,7 @@ try {
 }
 ```
 
-In addition to standard transactions, `Phalcon\Db` provides built-in support for [nested transactions](http://en.wikipedia.org/wiki/Nested_transaction) (if the database system used supports them). When you call begin() for a second time a nested transaction is created:
+除了标准的交易，`Phalcon\Db` 提供内置支持 [嵌套](http://en.wikipedia.org/wiki/Nested_transaction) 事务 （如果使用的数据库系统支持它们）。 当第二次调用链表你嵌套的事务创建：
 
 ```php
 <?php
@@ -592,17 +592,17 @@ try {
 
 ## 数据库事件
 
-`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Db` 是能够将事件发送到 [EventsManager](/[[language]]/[[version]]/events)，如果它是存在的。 一些事件可以通过返回false来停止当前操作。 The following events are supported:
 
-| Event Name            | Triggered                                            | Can stop operation? |
-| --------------------- | ---------------------------------------------------- |:-------------------:|
-| `afterConnect`        | After a successfully connection to a database system |         No          |
-| `beforeQuery`         | Before send a SQL statement to the database system   |         Yes         |
-| `afterQuery`          | After send a SQL statement to database system        |         No          |
-| `beforeDisconnect`    | Before close a temporal database connection          |         No          |
-| `beginTransaction`    | Before a transaction is going to be started          |         No          |
-| `rollbackTransaction` | Before a transaction is rollbacked                   |         No          |
-| `commitTransaction`   | Before a transaction is committed                    |         No          |
+| 事件名称                  | Triggered          | 是否能停止操作吗？ |
+| --------------------- | ------------------ |:---------:|
+| `afterConnect`        | 成功连接到数据库系统后        |    No     |
+| `beforeQuery`         | 之前将 SQL 语句发送到数据库系统 |    Yes    |
+| `afterQuery`          | 后将 SQL 语句发送到数据库系统  |    No     |
+| `beforeDisconnect`    | 关闭时态数据库连接之前        |    No     |
+| `beginTransaction`    | 启动事务之前             |    No     |
+| `rollbackTransaction` | 在事务回滚之前            |    No     |
+| `commitTransaction`   | 在一个事务被提交之前         |    No     |
 
 Bind an EventsManager to a connection is simple, `Phalcon\Db` will trigger the events with the type `db`:
 
