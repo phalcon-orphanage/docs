@@ -40,15 +40,15 @@
           </ul>
         </li>
         <li>
-          <a href="#storing-related-records">Storing Related Records</a>
+          <a href="#storing-related-records">存储相关的记录</a>
         </li>
         <li>
-          <a href="#operations-over-resultsets">Operations over Resultsets</a> <ul>
+          <a href="#operations-over-resultsets">结果集的操作</a> <ul>
             <li>
-              <a href="#updating-related-records">Updating related records</a>
+              <a href="#updating-related-records">更新相关的记录</a>
             </li>
             <li>
-              <a href="#deleting-related-records">Deleting related records</a>
+              <a href="#deleting-related-records">删除相关的记录</a>
             </li>
           </ul>
         </li>
@@ -59,40 +59,40 @@
 
 <a name='overview'></a>
 
-# Model Relationships
+# 关联模型
 
 <a name='relationships'></a>
 
-## Relationships between Models
+## 模型之间的关系
 
-There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
+有四种类型的关系： 一对一、 一到多、 多对一和多对多。 The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. 通过执行的关系，很容易从每个记录中以统一的方式访问相关模型中的数据。
 
 <a name='unidirectional'></a>
 
-### Unidirectional relationships
+### 单向的关系
 
-Unidirectional relations are those that are generated in relation to one another but not vice versa.
+单向关系是那些彼此相关但反之不生成。
 
 <a name='bidirectional'></a>
 
-### Bidirectional relations
+### 双向关系
 
-The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
+双向关系在两个模型中建立关系, 每个模型定义另一个模型的反向关系。
 
 <a name='defining'></a>
 
 ### Defining relationships
 
-In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
+在Phalcon，必须在模型的 `initialize()` 方法中定义关系。 方法 `belongsTo()`、 `hasOne()`、 `hasMany()` 和 `hasManyToMany()` 定义一个或多个字段从当前模型到另一个模型中的字段之间的关系。 每一种方法需要 3 个参数： 本地字段，引用模型引用字段。
 
-| Method        | Description                |
-| ------------- | -------------------------- |
-| hasMany       | Defines a 1-n relationship |
-| hasOne        | Defines a 1-1 relationship |
-| belongsTo     | Defines a n-1 relationship |
-| hasManyToMany | Defines a n-n relationship |
+| 方法            | 描述           |
+| ------------- | ------------ |
+| hasMany       | 定义 1 n 的关系   |
+| hasOne        | 定义 1-1 的关系   |
+| belongsTo     | 定义一个 n-1 的关系 |
+| hasManyToMany | 定义 n-n 的关系   |
 
-The following schema shows 3 tables whose relations will serve us as an example regarding relationships:
+下面的架构显示 3 表的关系将我们作为关于关系的示例：
 
 ```sql
 CREATE TABLE robots (
@@ -120,10 +120,10 @@ CREATE TABLE parts (
 );
 ```
 
-- The model `Robots` has many `RobotsParts`.
-- The model `Parts` has many `RobotsParts`.
-- The model `RobotsParts` belongs to both `Robots` and `Parts` models as a many-to-one relation.
-- The model `Robots` has a relation many-to-many to `Parts` through `RobotsParts`.
+- `Robots` 的模型有很多 `RobotsParts`。
+- `Parts` 模型有很多 `RobotsParts`。
+- `RobotsParts` 模型属于 `Robots` 和 `Parts` 模型作为一种多对一关系。
+- `Robots` 模型已关系到 `Parts` 通过 `RobotsParts` 多。
 
 Check the EER diagram to understand better the relations:
 
@@ -207,9 +207,9 @@ class RobotsParts extends Model
 }
 ```
 
-The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
+The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model and the third the field name in the referenced model. 你也可以使用数组来定义多个字段中的关系。
 
-Many to many relationships require 3 models and define the attributes involved in the relationship:
+多对多关系需要 3 模型和定义关系中涉及的属性：
 
 ```php
 <?php
@@ -239,14 +239,13 @@ class Robots extends Model
 
 <a name='parameters'></a>
 
-#### Relationships with parameters
+#### 有参数的关联关系
 
-Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance you might want to only have a table called `parts` which has a field `type` describing the type of the part.
+根据我们的应用程序的需要，我们可能希望将数据存储在一个表中，描述不同的行为。 例如，您可能想要只有一个名为` parts `的表格，它的字段`type</0，描述该部分的类型。</p>
 
-Using relationships, we can get only those parts that relate to our Robot that are of certain type. Defining that constraint in our relationship allows us to let the model do all the work.
+<p>Using relationships, we can get only those parts that relate to our Robot that are of certain type. Defining that constraint in our relationship allows us to let the model do all the work.</p>
 
-```php
-<?php
+<pre><code class="php"><?php
 
  namespace Store\Toys;
 
@@ -300,7 +299,7 @@ class Robots extends Model
 
     public $type;
 }
-```
+`</pre> 
 
 and
 
@@ -799,7 +798,7 @@ The above code set up to delete all the referenced records (parts) if the master
 
 <a name='storing-related-records'></a>
 
-## Storing Related Records
+## 存储相关的记录
 
 Magic properties can be used to store a record and its related properties:
 
