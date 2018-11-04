@@ -571,7 +571,7 @@ $robot = $robotsSimilar->getRobots();
 // if both relationships have the same name?
 ```
 
-The aliases allow us to rename both relationships to solve these problems:
+别名允许我们重命名这两个关系来解决这些问题：
 
 ```php
 <?php
@@ -603,7 +603,7 @@ class RobotsSimilar extends Model
 }
 ```
 
-With the aliasing we can get the related records easily:
+通过映射，我们可以很容易地得到相关的记录：
 
 ```php
 <?php
@@ -623,7 +623,7 @@ $similarRobot = $robotsSimilar->similarRobot;
 
 #### Magic Getters vs. Explicit methods
 
-Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). To overcome that, you can use a class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
+大多数具有自动完成功能的ide和编辑器在使用magic getter(方法和属性) 时不能推断出正确的类型。 要克服的您可以使用指定什么神奇的行为是可用的类块帮助 IDE 以产生更好的自动完成功能：
 
 ```php
 <?php
@@ -657,9 +657,9 @@ class Robots extends Model
 
 <a name='virtual-foreign-keys'></a>
 
-## 虚拟的外键
+## 虚拟外键
 
-By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
+By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. 通过添加第四个参数，当定义一个关系时，您可以修改此行为。
 
 The RobotsPart model can be changed to demonstrate this feature:
 
@@ -760,9 +760,9 @@ class RobotsParts extends Model
 
 <a name='cascade-restrict-actions'></a>
 
-### Cascade/Restrict actions
+### 级联/限制行动
 
-Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
+默认情况下充当虚拟的外键的关系限制创建/更新/删除的记录，以保持数据的完整性：
 
 ```php
 <?php
