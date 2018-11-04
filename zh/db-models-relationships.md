@@ -243,7 +243,7 @@ class Robots extends Model
 
 根据我们的应用程序的需要，我们可能希望将数据存储在一个表中，描述不同的行为。 例如，您可能想要只有一个名为` parts `的表格，它的字段`type</0，描述该部分的类型。</p>
 
-<p>Using relationships, we can get only those parts that relate to our Robot that are of certain type. Defining that constraint in our relationship allows us to let the model do all the work.</p>
+<p>使用关系，我们只能得到与我们的机器人相关的部分。在我们的关系中定义约束允许我们让模型完成所有的工作。</p>
 
 <pre><code class="php"><?php
 
@@ -282,7 +282,7 @@ class Robots extends Model
 
 <a name='multiple-fields'></a>
 #### Multiple field relationships
-There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
+There are times where relationships need to be defined on a combination of fields and not only one. 如下例子:
 
 ```php
 <?php
@@ -360,9 +360,9 @@ class Robots extends Model
 
 <a name='taking-advantage-of'></a>
 
-### Taking advantage of relationships
+### 使用关系
 
-When explicitly defining the relationships between models, it is easy to find related records for a particular record.
+当显式定义模型之间的关系，很容易查找特定记录相关的记录。
 
 ```php
 <?php
@@ -378,7 +378,7 @@ foreach ($robot->robotsParts as $robotPart) {
 
 Phalcon uses the magic methods `__set`/`__get`/`__call` to store or retrieve related data using relationships.
 
-By accessing an attribute with the same name as the relationship will retrieve all its related record(s).
+通过访问属性与关系相同的名称将检索其相关的记录。
 
 ```php
 <?php
@@ -391,7 +391,7 @@ $robot = Robots::findFirst();
 $robotsParts = $robot->robotsParts;
 ```
 
-Also, you can use a magic getter:
+此外，您可以使用魔术方法的 getter:
 
 ```php
 <?php
@@ -411,7 +411,7 @@ $robotsParts = $robot->getRobotsParts(
 );
 ```
 
-If the called method has a `get` prefix `Phalcon\Mvc\Model` will return a `findFirst()`/`find()` result. The following example compares retrieving related results with using magic methods and without:
+If the called method has a `get` prefix `Phalcon\Mvc\Model` will return a `findFirst()`/`find()` result. 下面的示例检索相关的结果使用魔法的方法与无：
 
 ```php
 <?php
@@ -441,7 +441,7 @@ $robotPart = RobotsParts::findFirst(1);
 $robot = $robotPart->robots;
 ```
 
-Getting related records manually:
+手动获取相关的记录：
 
 ```php
 <?php
@@ -488,14 +488,14 @@ $robot = Robots::findFirst(
 
 The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
 
-| Type             | Description                                                                                                                | Implicit Method |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| Belongs-To       | Returns a model instance of the related record directly                                                                    | findFirst       |
-| Has-One          | Returns a model instance of the related record directly                                                                    | findFirst       |
-| Has-Many         | Returns a collection of model instances of the referenced model                                                            | find            |
-| Has-Many-to-Many | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query) |
+| 类型               | Description                         | 隐式方法        |
+| ---------------- | ----------------------------------- | ----------- |
+| Belongs-To       | 直接返回相关记录的模型实例                       | findFirst() |
+| Has-One          | 直接返回相关记录的模型实例                       | findFirst   |
+| Has-Many         | 返回引用模型的模型实例的集合                      | find        |
+| Has-Many-to-Many | 返回一个集合的引用模型的模型实例，它隐式对 '内部联接' 所涉及的模型 | （复杂的查询）     |
 
-You can also use the `count` prefix to return an integer denoting the count of the related records:
+您还可以使用 `count` 前缀返回一个整数，表示的相关记录的计数：
 
 ```php
 <?php
@@ -509,11 +509,11 @@ echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
 
 <a name='aliases'></a>
 
-### Aliasing Relationships
+### 混叠的关系
 
-To explain better how aliases work, let's check the following example:
+为了更好地解释别名是如何工作的让我们检查下面的示例：
 
-The `robots_similar` table has the function to define what robots are similar to others:
+`Robots_similar` 表具有用于定义什么机器人与其他相近的函数：
 
 ```sql
 mysql> desc robots_similar;
@@ -527,7 +527,7 @@ mysql> desc robots_similar;
 3 rows in set (0.00 sec)
 ```
 
-Both `robots_id` and `similar_robots_id` have a relation to the model Robots:
+`Robots_id` 和 `similar_robots_id` 具有模型机器人的关系：
 
 ![](/images/content/models-relationships-eer-1.png)
 
