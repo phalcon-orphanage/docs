@@ -1,29 +1,29 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Database Abstraction Layer</a> 
+      <a href="#overview">数据库抽象层</a> 
       <ul>
         <li>
-          <a href="#adapters">Database Adapters</a> 
+          <a href="#adapters">数据库适配器</a> 
           <ul>
             <li>
               <a href="#adapters-factory">Factory</a>
             </li>
             <li>
-              <a href="#adapters-custom">Implementing your own adapters</a>
+              <a href="#adapters-custom">实现自己的适配器</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#dialects">Database Dialects</a> 
+          <a href="#dialects">数据库语言</a> 
           <ul>
             <li>
-              <a href="#dialects-custom">Implementing your own dialects</a>
+              <a href="#dialects-custom">执行您自己的DI注入器</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#connection">Connecting to Databases</a> 
+          <a href="#connection">连接到数据库</a> 
           <ul>
             <li>
               <a href="#connection-factory">Connecting using Factory</a>
@@ -31,7 +31,7 @@
           </ul>
         </li>
         <li>
-          <a href="#options">Setting up additional PDO options</a>
+          <a href="#options">PDO 的附加选项设置</a>
         </li>
         <li>
           <a href="#finding-rows">Finding Rows</a>
@@ -58,28 +58,28 @@
           <a href="#events">Database Events</a>
         </li>
         <li>
-          <a href="#profiling">Profiling SQL Statements</a>
+          <a href="#profiling">分析 SQL 语句</a>
         </li>
         <li>
-          <a href="#logging-statements">Logging SQL Statements</a>
+          <a href="#logging-statements">日志记录的 SQL 语句</a>
         </li>
         <li>
-          <a href="#logger-custom">Implementing your own Logger</a>
+          <a href="#logger-custom">执行您自己的记录器</a>
         </li>
         <li>
-          <a href="#describing-tables">Describing Tables/Views</a>
+          <a href="#describing-tables">描述表/视图</a>
         </li>
         <li>
-          <a href="#tables">Creating/Altering/Dropping Tables</a> 
+          <a href="#tables">[创建/更改/删除]表</a> 
           <ul>
             <li>
-              <a href="#tables-create">Creating Tables</a>
+              <a href="#tables-create">创建表</a>
             </li>
             <li>
-              <a href="#tables-altering">Altering Tables</a>
+              <a href="#tables-altering">变更表</a>
             </li>
             <li>
-              <a href="#tables-dropping">Dropping Tables</a>
+              <a href="#tables-dropping">删除表</a>
             </li>
           </ul>
         </li>
@@ -90,23 +90,23 @@
 
 <a name='overview'></a>
 
-# Database Abstraction Layer
+# 数据库抽象层
 
-`Phalcon\Db` is the component behind `Phalcon\Mvc\Model` that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
+在框架中，`Phalcon\Db` 是 `Phalcon\Mvc\Model` 模型层后面的一个组件。 它是由数据库系统完全用 C 编写的一个独立的高级别抽象层
 
-This component allows for a lower level database manipulation than using traditional models.
+此组件允许比使用传统模式更低的级别的数据库操作。
 
 <a name='adapters'></a>
 
-## Database Adapters
+## 数据库适配器
 
 This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
 
-| Class                                   | Description                                                                                                                                                                                                                          |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Phalcon\Db\Adapter\Pdo\Mysql`      | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases.                                                                                   |
-| `Phalcon\Db\Adapter\Pdo\Postgresql` | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
-| `Phalcon\Db\Adapter\Pdo\Sqlite`     | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.                                                                                                    |
+| 类                                   | 描述                                                                                                                                                 |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Phalcon\Db\Adapter\Pdo\Mysql`  | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases. |
+| `Phalcon\Db\Adapter\Pdo\Mysql`  | PostgreSQL 是一个功能强大的开源关系型数据库系统。 它有超过 15 年的积极发展和行之有效的体系结构，它赢得了良好声誉的可靠性、 数据完整性和正确性。                                                                   |
+| `Phalcon\Db\Adapter\Pdo\Sqlite` | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.                  |
 
 <a name='adapters-factory'></a>
 
@@ -135,31 +135,31 @@ $db = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### 实现自己的适配器
 
-The `Phalcon\Db\AdapterInterface` interface must be implemented in order to create your own database adapters or extend the existing ones.
+以创建您自己的数据库适配器或扩展现有的必须实现 `Phalcon\Db\AdapterInterface` 接口。
 
 <a name='dialects'></a>
 
-## Database Dialects
+## 数据库语言
 
-Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
+Phalcon封装在方言中每个数据库引擎的具体细节。那些向适配器提供常见的函数和 SQL 生成器。
 
-| Class                              | Description                                         |
-| ---------------------------------- | --------------------------------------------------- |
-| `Phalcon\Db\Dialect\Mysql`      | SQL specific dialect for MySQL database system      |
-| `Phalcon\Db\Dialect\Postgresql` | SQL specific dialect for PostgreSQL database system |
-| `Phalcon\Db\Dialect\Sqlite`     | SQL specific dialect for SQLite database system     |
+| 类                                  | 描述                        |
+| ---------------------------------- | ------------------------- |
+| `Phalcon\Db\Dialect\Mysql`      | SQL 特定方言为 MySQL 数据库系统的    |
+| `Phalcon\Db\Dialect\Postgresql` | SQL 特定方言 PostgreSQL 数据库系统 |
+| `Phalcon\Db\Dialect\Sqlite`     | SQLite 数据库系统的 SQL 特定方言    |
 
 <a name='dialects-custom'></a>
 
 ### Implementing your own dialects
 
-The `Phalcon\Db\DialectInterface` interface must be implemented in order to create your own database dialects or extend the existing ones. You can also enhance your current dialect by adding more commands/methods that PHQL will understand.
+以创建您自己的数据库方言或扩展现有的必须实现 `Phalcon\Db\DialectInterface` 接口。 您还可以通过添加 PHQL 将了解的更多命令/方法来增强当前语言。
 
-For instance when using the MySQL adapter, you might want to allow PHQL to recognize the `MATCH ... AGAINST ...` syntax. We associate that syntax with `MATCH_AGAINST`
+例如, 当使用 MySQL 适配器时, 您可能希望允许 PHQL 识别 ` MATCH ... AGAINST ...`语法。我们将该语法与 ` MATCH_AGAINST ` 相关联
 
-We instantiate the dialect. We add the custom function so that PHQL understands what to do when it finds it during the parsing process. In the example below, we register a new custom function called `MATCH_AGAINST`. After that all we have to do is add the customized dialect object to our connection.
+We instantiate the dialect. 我们添加自定义函数, 以便 PHQL 了解在分析过程中找到它时应执行的操作。 在下面的示例中, 我们注册了一个名为 ` MATCH_AGAINST ` 的新自定义函数。 之后, 我们要做的就是添加自定义的语言解析器对象到我们的连接。
 
 ```php
 <?php
@@ -192,7 +192,7 @@ $connection = new Connection(
 );
 ```
 
-We can now use this new function in PHQL, which in turn will translate it to the proper SQL syntax:
+我们现在可以在PHQL中使用这个新函数，而后者又将其转换为正确的SQL语法：
 
 ```php
 $phql = "
@@ -205,11 +205,11 @@ $posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
 
 <a name='connection'></a>
 
-## Connecting to Databases
+## 连接到数据库
 
-To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
+To create a connection it's necessary instantiate the adapter class. 它只需要一个连接参数的数组。 下面的示例演示如何创建连接传递必需和可选的参数：
 
-##### MySQL Required elements
+##### MySQL 必须的参数
 
 ```php
 <?php
@@ -222,19 +222,19 @@ $config = [
 ];
 ```
 
-##### MySQL Optional
+##### MySQL 参数
 
 ```php
 $config['persistent'] = false;
 ```
 
-##### MySQL Create a connection
+##### 创建一个MySQL 连接
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
 
-##### PostgreSQL Required elements
+##### PostgreSQL 必须的参数
 
 ```php
 <?php
@@ -247,19 +247,19 @@ $config = [
 ];
 ```
 
-##### PostgreSQL Optional
+##### PostgreSQL 参数
 
 ```php
 $config['schema'] = 'public';
 ```
 
-##### PostgreSQL Create a connection
+##### 创建一个PostgreSQL 连接
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
 
-##### SQLite Required elements
+##### SQLite 必须的参数
 
 ```php
 <?php
@@ -269,7 +269,7 @@ $config = [
 ];
 ```
 
-##### SQLite Create a connection
+##### 创建一个SQLite 连接
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
@@ -277,9 +277,9 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 <a name='options'></a>
 
-## Setting up additional PDO options
+## PDO 的附加选项设置
 
-You can set PDO options at connection time by passing the parameters `options`:
+通过传递参数 `options`，可以设置在连接时的 PDO 选项：
 
 ```php
 <?php
@@ -341,7 +341,7 @@ The above will return the correct database instance and also has the advantage t
 
 ## Finding Rows
 
-`Phalcon\Db` provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
+`Phalcon\Db` 提供几个方法查询行从表。在这种情况下的具体的 SQL 语法的目标数据库引擎是必需的：
 
 ```php
 <?php
@@ -366,14 +366,14 @@ foreach ($robots as $robot) {
 $robot = $connection->fetchOne($sql);
 ```
 
-By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using `Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
+By default these calls create arrays with both associative and numeric indexes. 通过使用 `Phalcon\Db\Result::setFetchMode()`，您可以更改此行为。 此方法接收一个常数，确定哪种类型的索引所需。
 
-| Constant                   | Description                                               |
-| -------------------------- | --------------------------------------------------------- |
-| `Phalcon\Db::FETCH_NUM`   | Return an array with numeric indexes                      |
-| `Phalcon\Db::FETCH_ASSOC` | Return an array with associative indexes                  |
-| `Phalcon\Db::FETCH_BOTH`  | Return an array with both associative and numeric indexes |
-| `Phalcon\Db::FETCH_OBJ`   | Return an object instead of an array                      |
+| 常量：                        | 描述            |
+| -------------------------- | ------------- |
+| `Phalcon\Db::FETCH_NUM`   | 返回一个数字索引的数组   |
+| `Phalcon\Db::FETCH_ASSOC` | 返回一个数组具有关联的索引 |
+| `Phalcon\Db::FETCH_BOTH`  | 返回与关联和数字索引数组  |
+| `Phalcon\Db::FETCH_OBJ`   | 返回一个对象而不是数组   |
 
 ```php
 <?php
@@ -387,7 +387,7 @@ while ($robot = $result->fetch()) {
 }
 ```
 
-The `Phalcon\Db::query()` returns an instance of `Phalcon\Db\Result\Pdo`. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
+`Phalcon\Db::query()` 将返回 `Phalcon\Db\Result\Pdo` 的一个实例。 这些对象封装了所有与返回的结果集有关的功能函数，例如遍历、查找特定记录、计数等等。
 
 ```php
 <?php
@@ -412,7 +412,7 @@ echo $result->numRows();
 
 ## Binding Parameters
 
-Bound parameters is also supported in `Phalcon\Db`. Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
+在 `Phalcon\Db` 也支持绑定的参数。 虽然通过使用绑定的参数的最小的性能影响，你被鼓励使用此方法，以消除您的代码受到 SQL 注入式攻击的可能性。 支持字符串和位置的占位符。 绑定参数可以简单地实现，如下所示：
 
 ```php
 <?php
@@ -437,16 +437,16 @@ $success = $connection->query(
 );
 ```
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case '1' or '2' are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter data are automatically escaped using [PDO Quote](http://www.php.net/manual/en/pdo.quote.php).
+当使用数字占位符，您将需要将它们定义为即 1 或 2 的整数。 在这种情况下 '1' 或 '2' 是字符串而不是数字，所以该占位符不能被成功替换。 与任何适配器数据自动转义使用 [PDO Quota](http://www.php.net/manual/en/pdo.quote.php)。
 
-This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+此函数还考虑连接字符集，它建议要在连接参数中或在您的数据库服务器配置，作为错误的字符集中定义正确的字符集将产生意外的影响，在存储或检索数据时。
 
-Also, you can pass your parameters directly to the execute/query methods. In this case bound parameters are directly passed to PDO:
+另外，你可以直接传递参数给执行/查询方法。在这种情况下， 绑定的参数将直接传递给 PDO：
 
 ```php
 <?php
 
-// Binding with PDO placeholders
+// 使用 PDO 占位符绑定
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -625,7 +625,7 @@ if (11 === $robot->id) {
 
 ## Inserting/Updating/Deleting Rows
 
-To insert, update or delete rows, you can use raw SQL or use the preset functions provided by the class:
+插入、 更新或删除行的你可以使用原始 SQL 或使用类所提供的预设的函数：
 
 ```php
 <?php
@@ -750,7 +750,7 @@ $success = $connection->delete(
 
 ## Transactions and Nested Transactions
 
-Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
+它是与 PDO 支持与交易工作。在大多数数据库系统上执行数据操作在事务内部经常增加的性能：
 
 ```php
 <?php
@@ -772,7 +772,7 @@ try {
 }
 ```
 
-In addition to standard transactions, `Phalcon\Db` provides built-in support for [nested transactions](http://en.wikipedia.org/wiki/Nested_transaction) (if the database system used supports them). When you call begin() for a second time a nested transaction is created:
+除了标准的交易，`Phalcon\Db` 提供内置支持 [嵌套](http://en.wikipedia.org/wiki/Nested_transaction) 事务 （如果使用的数据库系统支持它们）。 当第二次调用链表你嵌套的事务创建：
 
 ```php
 <?php
@@ -879,7 +879,7 @@ $eventsManager->attach(
 
 <a name='profiling'></a>
 
-## Profiling SQL Statements
+## 分析 SQL 语句
 
 `Phalcon\Db` includes a profiling component called `Phalcon\Db\Profiler`, that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
 
@@ -973,7 +973,7 @@ $eventsManager->attach('db', $dbProfiler);
 
 <a name='logging-statements'></a>
 
-## Logging SQL Statements
+## 日志记录的 SQL 语句
 
 Using high-level abstraction components such as `Phalcon\Db` to access a database, it is difficult to understand which statements are sent to the database system. `Phalcon\Logger` interacts with `Phalcon\Db`, providing logging capabilities on the database abstraction layer.
 
@@ -1024,13 +1024,13 @@ As above, the file `app/logs/db.log` will contain something like this:
 
 <a name='logger-custom'></a>
 
-## Implementing your own Logger
+## 执行您自己的记录器
 
 You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a string as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
 
 <a name='describing-tables'></a>
 
-## Describing Tables/Views
+## 描述表/视图
 
 `Phalcon\Db` also provides methods to retrieve detailed information about tables and views:
 
@@ -1087,13 +1087,13 @@ $exists = $connection->viewExists('robots');
 
 <a name='tables'></a>
 
-## Creating/Altering/Dropping Tables
+## [创建/更改/删除]表
 
 Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
 
 <a name='tables-create'></a>
 
-### Creating Tables
+### 创建表
 
 The following example shows how to create a table:
 
@@ -1175,7 +1175,7 @@ The associative array passed in `Phalcon\Db::createTable()` can have the possibl
 
 <a name='tables-altering'></a>
 
-### Altering Tables
+### 变更表
 
 As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. `Phalcon\Db` is limited by these constraints.
 
@@ -1223,7 +1223,7 @@ $connection->dropColumn(
 
 <a name='tables-dropping'></a>
 
-### Dropping Tables
+### 删除表
 
 To drop an existing table from the current database, use the `dropTable` method. To drop an table from custom database, use second parameter describes database name. Examples on dropping tables:
 
