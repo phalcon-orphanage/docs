@@ -1,21 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Encryption/Decryption</a> <ul>
+      <a href="#overview">加密/解密</a> <ul>
         <li>
           <a href="#usage">Basic Usage</a>
         </li>
         <li>
-          <a href="#options">Encryption Options</a>
+          <a href="#options">加密选项</a>
         </li>
         <li>
-          <a href="#base64">Base64 Support</a>
+          <a href="#base64">Base64 支持</a>
         </li>
         <li>
-          <a href="#service">Setting up an Encryption service</a>
+          <a href="#service">设置加密服务</a>
         </li>
         <li>
-          <a href="#links">Links</a>
+          <a href="#links">链接</a>
         </li>
       </ul>
     </li>
@@ -24,19 +24,19 @@
 
 <a name='overview'></a>
 
-# Encryption/Decryption
+# 加密/解密
 
-Phalcon provides encryption facilities via the `Phalcon\Crypt` component. This class offers simple object-oriented wrappers to the [openssl](http://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
+Phalcon提供加密设施通过 `Phalcon\Crypt` 组件。 此类提供 [openssl](http://www.php.net/manual/en/book.openssl.php) PHP 加密库简单的面向对象的封装器。
 
-By default, this component provides secure encryption using AES-256-CFB.
+默认情况下，此组件提供安全的加密使用 AES-256-CFB.。
 
-<h5 class='alert alert-warning'>You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
+<h5 class='alert alert-warning'>您必须使用对应于当前的算法密钥长度。默认情况下使用的算法为 32 个字节。</h5>
 
 <a name='usage'></a>
 
-## Basic Usage
+## 基本用法
 
-This component is designed to provide a very simple usage:
+此组件被旨在提供一种非常简单的用法：
 
 ```php
 <?php
@@ -54,7 +54,7 @@ $encrypted = $crypt->encrypt($text, $key);
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-You can use the same instance to encrypt/decrypt several times:
+你可以使用相同的实例以加密解密几次：
 
 ```php
 <?php
@@ -80,9 +80,9 @@ foreach ($texts as $key => $text) {
 
 <a name='options'></a>
 
-## Encryption Options
+## 加密选项
 
-The following options are available to change the encryption behavior:
+以下选项可以用来更改加密行为：
 
 | Name   | Description                                                                                                                                                          |
 | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
