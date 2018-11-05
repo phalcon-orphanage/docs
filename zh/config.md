@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Reading Configurations</a> <ul>
+      <a href="#overview">读取配置</a> <ul>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">工厂</a>
         </li>
         <li>
           <a href="#native-arrays">Native Arrays</a>
@@ -18,10 +18,10 @@
           <a href="#merging">Merging Configurations</a>
         </li>
         <li>
-          <a href="#nested-configuration">Nested Configuration</a>
+          <a href="#nested-configuration">嵌套的配置</a>
         </li>
         <li>
-          <a href="#injecting-into-di">Injecting Configuration Dependency</a>
+          <a href="#injecting-into-di">配置依赖注入</a>
         </li>
       </ul>
     </li>
@@ -30,15 +30,15 @@
 
 <a name='overview'></a>
 
-# Reading Configurations
+# 读取配置
 
-`Phalcon\Config` is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
+`Phalcon\Config` 到应用程序中使用的 PHP 对象是组件，用于转换配置文件的不同格式 （使用适配器）。
 
 <a name='factory'></a>
 
-## Factory
+## 工厂
 
-Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
+使用 `adapter` 选项加载配置适配器类，如果没有扩展提供，它将被添加到 `文件的路径`
 
 ```php
 <?php
@@ -54,8 +54,8 @@ $options = [
  ```
 
 <a name='native-arrays'></a>
-## Native Arrays
-The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
+## 原生数组
+第一个例子将展示，如何转换原生数组到  `Phalcon\Config` 对象. 此选项提供了最佳性能，因为在此请求时没有读取文件。
 
 ```php
 <?php
