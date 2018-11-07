@@ -37,7 +37,7 @@
           <a href="#finding-rows">Finding Rows</a>
         </li>
         <li>
-          <a href="#binding-parameters">Binding Parameters</a>
+          <a href="#binding-parameters">绑定参数</a>
         </li>
         <li>
           <a href="#typed-placeholders">Typed placeholders</a>
@@ -49,13 +49,13 @@
           <a href="#cast-on-hydrate">Cast on Hydrate</a>
         </li>
         <li>
-          <a href="#crud">Inserting/Updating/Deleting Rows</a>
+          <a href="#crud">插入/更新/删除行</a>
         </li>
         <li>
-          <a href="#transactions">Transactions and Nested Transactions</a>
+          <a href="#transactions">事务和嵌套的事务</a>
         </li>
         <li>
-          <a href="#events">Database Events</a>
+          <a href="#events">数据库事件</a>
         </li>
         <li>
           <a href="#profiling">分析 SQL 语句</a>
@@ -159,7 +159,7 @@ Phalcon封装在方言中每个数据库引擎的具体细节。那些向适配�
 
 例如, 当使用 MySQL 适配器时, 您可能希望允许 PHQL 识别 ` MATCH ... AGAINST ...`语法。我们将该语法与 ` MATCH_AGAINST ` 相关联
 
-We instantiate the dialect. 我们添加自定义函数, 以便 PHQL 了解在分析过程中找到它时应执行的操作。 在下面的示例中, 我们注册了一个名为 ` MATCH_AGAINST ` 的新自定义函数。 之后, 我们要做的就是添加自定义的语言解析器对象到我们的连接。
+我们实例化方言。 我们添加自定义函数, 以便 PHQL 了解在分析过程中找到它时应执行的操作。 在下面的示例中, 我们注册了一个名为 ` MATCH_AGAINST ` 的新自定义函数。 之后, 我们要做的就是添加自定义的语言解析器对象到我们的连接。
 
 ```php
 <?php
@@ -623,7 +623,7 @@ if (11 === $robot->id) {
 
 <a name='crud'></a>
 
-## Inserting/Updating/Deleting Rows
+## 插入/更新/删除行
 
 插入、 更新或删除行的你可以使用原始 SQL 或使用类所提供的预设的函数：
 
@@ -748,7 +748,7 @@ $success = $connection->delete(
 
 <a name='transactions'></a>
 
-## Transactions and Nested Transactions
+## 事务和嵌套的事务
 
 它是与 PDO 支持与交易工作。在大多数数据库系统上执行数据操作在事务内部经常增加的性能：
 
@@ -812,19 +812,19 @@ try {
 
 <a name='events'></a>
 
-## Database Events
+## 数据库事件
 
 `Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
 
-| Event Name            | Triggered                                            | Can stop operation? |
-| --------------------- | ---------------------------------------------------- |:-------------------:|
-| `afterConnect`        | After a successfully connection to a database system |         No          |
-| `beforeQuery`         | Before send a SQL statement to the database system   |         Yes         |
-| `afterQuery`          | After send a SQL statement to database system        |         No          |
-| `beforeDisconnect`    | Before close a temporal database connection          |         No          |
-| `beginTransaction`    | Before a transaction is going to be started          |         No          |
-| `rollbackTransaction` | Before a transaction is rollbacked                   |         No          |
-| `commitTransaction`   | Before a transaction is committed                    |         No          |
+| Event Name            | Triggered          | Can stop operation? |
+| --------------------- | ------------------ |:-------------------:|
+| `afterConnect`        | 后成功连接到数据库系统        |         No          |
+| `beforeQuery`         | 之前将 SQL 语句发送到数据库系统 |         Yes         |
+| `afterQuery`          | 后将 SQL 语句发送到数据库系统  |         No          |
+| `beforeDisconnect`    | 之前关闭时态数据库连接        |         No          |
+| `beginTransaction`    | 启动事务之前             |         No          |
+| `rollbackTransaction` | 在事务回滚之前            |         No          |
+| `commitTransaction`   | 在一个事务被提交之前         |         No          |
 
 Bind an EventsManager to a connection is simple, `Phalcon\Db` will trigger the events with the type `db`:
 
@@ -1015,7 +1015,7 @@ $connection->insert(
 );
 ```
 
-As above, the file `app/logs/db.log` will contain something like this:
+如上所述，`app/logs/db.log` 文件将包含这样的事情：
 
 ```bash
 [Sun, 29 Apr 12 22:35:26 -0500][DEBUG][Resource Id #77] INSERT INTO products
@@ -1069,9 +1069,9 @@ foreach ($references as $reference) {
 
 A table description is very similar to the MySQL describe command, it contains the following information:
 
-| Field        | Type        | Key                                                | Null                               |
-| ------------ | ----------- | -------------------------------------------------- | ---------------------------------- |
-| Field's name | Column Type | Is the column part of the primary key or an index? | Does the column allow null values? |
+| 字段   | 类型  | 关键字           | Null      |
+| ---- | --- | ------------- | --------- |
+| 字段名称 | 列类型 | 是的主键或索引的列部分吗？ | 该列是否允许空值？ |
 
 Methods to get information about views are also implemented for every supported database system:
 
@@ -1140,19 +1140,19 @@ $connection->createTable(
 
 `Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class `Phalcon\Db\Column`. The table below shows the options available to define a column:
 
-| Option          | Description                                                                                                                                | Optional |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
-| `type`          | Column type. Must be a `Phalcon\Db\Column` constant (see below for a list)                                                               |    No    |
-| `primary`       | True if the column is part of the table's primary key                                                                                      |   Yes    |
-| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |   Yes    |
-| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |   Yes    |
-| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |   Yes    |
-| `notNull`       | Column can store null values?                                                                                                              |   Yes    |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |   Yes    |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Yes    |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |   Yes    |
-| `first`         | Column must be placed at first position in the column order                                                                                |   Yes    |
-| `after`         | Column must be placed after indicated column                                                                                               |   Yes    |
+| Option     | Description                                                                                       | 可选  |
+| ---------- | ------------------------------------------------------------------------------------------------- |:---:|
+| `type`     | 列类型。必须是一个 `Phalcon\Db\Column` 常量 （见下面列表）                                                        | No  |
+| `primary`  | 如果列是表的主键的一部分                                                                                      | Yes |
+| `size`     | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                         | Yes |
+| `scale`    | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored   | Yes |
+| `unsigned` | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns | Yes |
+| `notNull`  | 列可以存储 null 值吗？                                                                                    | Yes |
+| `default`  | Default value (when used with `'notNull' => true`).                                            | Yes |
+| `自动增量`     | 用此属性列将自动填充与自动递增的整数。表中的只有一列可以具有此属性。                                                                | Yes |
+| `bind`     | `BIND_TYPE_ *` 常量告诉如何列必须绑定之前之一保存它                                                                 | Yes |
+| `first`    | 列必须放置在第一个位置中的列顺序                                                                                  | Yes |
+| `after`    | 列必须置于之后指定列                                                                                        | Yes |
 
 `Phalcon\Db` supports the following database column types:
 
@@ -1166,12 +1166,12 @@ $connection->createTable(
 
 The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
 
-| Index        | Description                                                                                                                            | Optional |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                |    No    |
-| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 |   Yes    |
-| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           |   Yes    |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |   Yes    |
+| 索引           | Description                                                                                                                            | 可选  |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:---:|
+| `columns`    | An array with a set of table columns defined with `Phalcon\Db\Column`                                                                | No  |
+| `indexes`    | An array with a set of table indexes defined with `Phalcon\Db\Index`                                                                 | Yes |
+| `references` | An array with a set of table references (foreign keys) defined with `Phalcon\Db\Reference`                                           | Yes |
+| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | Yes |
 
 <a name='tables-altering'></a>
 
@@ -1225,7 +1225,7 @@ $connection->dropColumn(
 
 ### 删除表
 
-To drop an existing table from the current database, use the `dropTable` method. To drop an table from custom database, use second parameter describes database name. Examples on dropping tables:
+To drop an existing table from the current database, use the `dropTable` method. To drop an table from custom database, use second parameter describes database name. 在删除表的例子：
 
 ```php
 <?php

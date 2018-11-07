@@ -1,10 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#working-with">Working with Models</a> 
+      <a href="#working-with">使用模型</a> 
       <ul>
         <li>
-          <a href="#creating">Creating Models</a> 
+          <a href="#creating">创建模型</a> 
           <ul>
             <li>
               <a href="#properties-setters-getters">Public properties vs. Setters/Getters</a>
@@ -15,10 +15,10 @@
           <a href="#records-to-objects">Understanding Records To Objects</a>
         </li>
         <li>
-          <a href="#finding-records">Finding Records</a> 
+          <a href="#finding-records">查找记录</a> 
           <ul>
             <li>
-              <a href="#resultsets">Model Resultsets</a>
+              <a href="#resultsets">模型结果集</a>
             </li>
             <li>
               <a href="#custom-resultsets">Custom Resultsets</a>
@@ -32,13 +32,13 @@
           </ul>
         </li>
         <li>
-          <a href="#preparing-records">Initializing/Preparing fetched records</a>
+          <a href="#preparing-records">初始化/准备读取的记录</a>
         </li>
         <li>
-          <a href="#calculations">Generating Calculations</a>
+          <a href="#calculations">生成的计算</a>
         </li>
         <li>
-          <a href="#create-update-records">Creating/Updating Records</a> 
+          <a href="#create-update-records">创建/更新记录</a> 
           <ul>
             <li>
               <a href="#create-update-with-confidence">Create/Update with Confidence</a>
@@ -46,7 +46,7 @@
           </ul>
         </li>
         <li>
-          <a href="#delete-records">Deleting Records</a>
+          <a href="#delete-records">删除记录</a>
         </li>
         <li>
           <a href="#hydration-modes">Hydration Modes</a>
@@ -55,34 +55,34 @@
           <a href="#table-prefixes">Table prefixes</a>
         </li>
         <li>
-          <a href="#identity-columns">Auto-generated identity columns</a>
+          <a href="#identity-columns">自动生成的标识列</a>
         </li>
         <li>
-          <a href="#skipping-columns">Skipping Columns</a>
+          <a href="#skipping-columns">跳过列</a>
         </li>
         <li>
-          <a href="#dynamic-updates">Dynamic Updates</a>
+          <a href="#dynamic-updates">动态更新</a>
         </li>
         <li>
-          <a href="#column-mapping">Independent Column Mapping</a>
+          <a href="#column-mapping">独立列映射</a>
         </li>
         <li>
-          <a href="#record-snapshots">Record Snapshots</a>
+          <a href="#record-snapshots">记录快照</a>
         </li>
         <li>
-          <a href="#different-schemas">Pointing to a different schema</a>
+          <a href="#different-schemas">指向一个不同的架构</a>
         </li>
         <li>
-          <a href="#multiple-databases">Setting multiple databases</a>
+          <a href="#multiple-databases">设置多个数据库</a>
         </li>
         <li>
-          <a href="#injecting-services-into-models">Injecting services into Models</a>
+          <a href="#injecting-services-into-models">服务注入模型</a>
         </li>
         <li>
-          <a href="#disabling-enabling-features">Disabling/Enabling Features</a>
+          <a href="#disabling-enabling-features">禁用/启用的功能</a>
         </li>
         <li>
-          <a href="#stand-alone-component">Stand-Alone component</a>
+          <a href="#stand-alone-component">独立组件</a>
         </li>
       </ul>
     </li>
@@ -91,11 +91,11 @@
 
 <a name='working-with'></a>
 
-# Working with Models
+# 使用模型
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
+模型表示的信息 （数据） 的应用程序和规则来操作这些数据。 Models are primarily used for managing the rules of interaction with a corresponding database table. 在大多数情况下，每个数据库中的表将对应于在应用程序中的一个模型。 您的应用程序的业务逻辑的大部分将集中在模型。
 
-`Phalcon\Mvc\Model` is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. `Phalcon\Mvc\Model` avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
+`Phalcon\Mvc\Model` 是一个Phalcon应用程序中的所有模型的基础。 It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. `Phalcon\Mvc\Model` 避免了不得不使用 SQL 语句，因为它意味着方法动态地向各自的数据库引擎操作的需要。
 
 <div class="alert alert-warning">
     <p>
@@ -105,7 +105,7 @@ A model represents the information (data) of the application and the rules to ma
 
 <a name='creating'></a>
 
-## Creating Models
+## 创建模型
 
 A model is a class that extends from `Phalcon\Mvc\Model`. Its class name should be in camel case notation:
 
@@ -640,7 +640,7 @@ $this->view->mydata = $robots->getSomeData();
 
 <a name='filters'></a>
 
-### Filtering Resultsets
+### 筛选结果集
 
 The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
 
@@ -661,7 +661,7 @@ $customers = $customers->filter(
 
 <a name='binding-parameters'></a>
 
-### Binding Parameters
+### 绑定参数
 
 Bound parameters are also supported in `Phalcon\Mvc\Model`. You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
 
