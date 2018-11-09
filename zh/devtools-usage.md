@@ -1,10 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Phalcon Developer Tools</a> 
+      <a href="#overview">Phalcon开发人员工具</a> 
       <ul>
         <li>
-          <a href="#download">Download</a>
+          <a href="#download">下载</a>
         </li>
         <li>
           <a href="#installation">Installation</a>
@@ -13,7 +13,7 @@
           <a href="#available-commands">Available Commands</a>
         </li>
         <li>
-          <a href="#project-skeleton">Generating a Project Skeleton</a>
+          <a href="#project-skeleton">生成一个项目骨架</a>
         </li>
         <li>
           <a href="#generating-controllers">Generating Controllers</a>
@@ -212,7 +212,7 @@ return new \Phalcon\Config([
 
 ## Generating Models
 
-There are several ways to create models. You can create all models from the default database connection or some selectively. Models can have public attributes for the field representations or setters/getters can be used.
+There are several ways to create models. You can create all models from the default database connection or some selectively. 模型可以具有字段表示的公共属性，也可以使用 setter/getter。
 
 ```bash
 Options:
