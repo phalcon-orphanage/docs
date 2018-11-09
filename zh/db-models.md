@@ -96,7 +96,7 @@
 
 ## 创建模型
 
-A model is a class that extends from `Phalcon\Mvc\Model`. Its class name should be in camel case notation:
+模型是一个类，继承 `Phalcon\Mvc\Model` 。其类名称应为驼峰法：
 
 ```php
 <?php
@@ -111,9 +111,9 @@ class RobotParts extends Model
 }
 ```
 
-<h5 class='alert alert-warning'>If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation. </h5>
+<h5 class='alert alert-warning'>如果您使用的 PHP 5.4/5.5 建议您声明使为了节省内存，减少内存分配模型的一部分的每一列。 </h5>
 
-By default, the model `Store\Toys\RobotParts` will map to the table `robot_parts`. If you want to manually specify another name for the mapped table, you can use the `setSource()` method:
+默认情况下，该模型 `Store\Toys\RobotParts` 将映射到表 `robot_parts`。 如果你想要手动指定映射表的另一个名称，您可以使用 `setSource()` 方法：
 
 ```php
 <?php
@@ -131,9 +131,9 @@ class RobotParts extends Model
 }
 ```
 
-The model `RobotParts` now maps to `toys_robot_parts` table. The `initialize()` method helps with setting up this model with a custom behavior i.e. a different table.
+该模型 `RobotParts` 现在映射到 `toys_robot_parts` 表。`Initialize()` 方法帮助建立这个模型的自定义行为即一个不同的表。
 
-The `initialize()` method is only called once during the request. This method is intended to perform initializations that apply for all instances of the model created within the application. If you want to perform initialization tasks for every instance created you can use the `onConstruct()` method:
+在请求期间一次只调用 `initialize()` 方法。 此方法用于执行初始化，则适用的所有实例的应用程序中创建的模型。 如果您想要创建的每个实例执行初始化任务你可以使用 `onConstruct()` 方法：
 
 ```php
 <?php
@@ -153,7 +153,7 @@ class RobotParts extends Model
 
 <a name='properties-setters-getters'></a>
 
-### Public properties vs. Setters/Getters
+### 公共属性 与 Setter/getter 方法
 
 Models can be implemented public properties, meaning that each property can be read/updated from any part of the code that has instantiated that model class:
 
@@ -174,7 +174,7 @@ class Robots extends Model
 }
 ```
 
-Another implementation is to use getters and setter functions, which control which properties are publicly available for that model. The benefit of using getters and setters is that the developer can perform transformations and validation checks on the values set for the model, which is impossible when using public properties. Additionally getters and setters allow for future changes without changing the interface of the model class. So if a field name changes, the only change needed will be in the private property of the model referenced in the relevant getter/setter and nowhere else in the code.
+另一个实现是使用 getter 和 setter 函数，控制哪些属性是公开可用于该模型。 使用 getter 和 setter 的好处是，开发人员可以执行转换和验证检查为模型，这是不可能的当使用公共属性设置的值。 另外 getter 和 setter 允许将来的更改而无需更改模型的类的接口。 所以如果一个字段名称发生了变化，唯一的改变所需也会在模型中相关的 getter/setter 和无处可在代码中引用的私有财产。
 
 ```php
 <?php
@@ -234,17 +234,17 @@ class Robots extends Model
 }
 ```
 
-Public properties provide less complexity in development. However getters/setters can heavily increase the testability, extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the application they are creating, depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
+公共属性提供在发展中的复杂程度较低。 然而 getter/setter 可以大大提高可测试性、 可扩展性和可维护性的应用程序。 开发人员可以决定哪一种策略是更适合他们正在创建，具体取决于应用程序的需要的应用。 ORM 是符合这两项计划的定义属性。
 
-<h5 class='alert alert-warning'>Underscores in property names can be problematic when using getters and setters. </h5>
+<h5 class='alert alert-warning'>当使用 getter 和 setter，下划线属性名称中的可能有问题。 </h5>
 
-If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName` instead of `$model->findByProperty_name`, etc.). As much of the system expects camel case, and underscores are commonly removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a column map (as described above) to ensure proper mapping of your properties to their database counterparts.
+如果你在你的属性名称中使用下划线，你必须仍然 camel 大小写你的 getter/setter 在声明中使用用于与神奇的方法。 (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName` instead of `$model->findByProperty_name`, etc.). 由于大部分的系统预计 camel 大小写，并且通常删除下划线，它建议来命名您的属性显示整个文档的方式。 你可以使用列映射 （如上文所述） 以确保您的属性与数据库的同行的正确映射。
 
 <a name='records-to-objects'></a>
 
 ## Understanding Records To Objects
 
-Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
+模型的每个实例表示表中的一行。通过阅读对象属性，您可以轻松访问记录数据。例如，对于一个表 '机器人' 的记录：
 
 ```sql
 mysql> select * from robots;
@@ -258,7 +258,7 @@ mysql> select * from robots;
 3 rows in set (0.00 sec)
 ```
 
-You could find a certain record by its primary key and then print its name:
+你可以按其主键查找某个记录，然后打印它的名字：
 
 ```php
 <?php
@@ -272,7 +272,7 @@ $robot = Robots::findFirst(3);
 echo $robot->name;
 ```
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+一旦该记录是在内存中，可以对其数据进行修改，然后保存更改：
 
 ```php
 <?php
@@ -286,13 +286,13 @@ $robot->name = 'RoboCop';
 $robot->save();
 ```
 
-As you can see, there is no need to use raw SQL statements. `Phalcon\Mvc\Model` provides high database abstraction for web applications.
+正如你所看到的那里是没有需要使用原始 SQL 语句。`Phalcon\Mvc\Model` 提供高数据库抽象为 web 应用程序。
 
 <a name='finding-records'></a>
 
-## Finding Records
+## 查找记录
 
-`Phalcon\Mvc\Model` also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
+`Phalcon\Mvc\Model` 还提供查询记录的几种方法。下面的示例将显示你如何查询模型中的一个或多个记录：
 
 ```php
 <?php
@@ -331,16 +331,16 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning'>If you want find record by external data (such as user input) or variable data you must use <a href="#binding-parameters">Binding Parameters</a>`.</h5>
+<h5 class='alert alert-warning'>如果你想要查找的外部数据 （如用户输入） 或变量的数据，您必须使用 <a href="#binding-parameters">绑定参数</a> 的记录 '。</h5>
 
-You could also use the `findFirst()` method to get only the first record matching the given criteria:
+你也可以使用 `findFirst()` 方法去只匹配给定的条件的第一个记录：
 
 ```php
 <?php
 
 use Store\Toys\Robots;
 
-// What's the first robot in robots table?
+// 机器人表的第一个机器人
 $robot = Robots::findFirst();
 echo 'The robot name is ', $robot->name, "\n";
 
@@ -359,7 +359,7 @@ $robot = Robots::findFirst(
 echo 'The first virtual robot name is ', $robot->name, "\n";
 ```
 
-Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria:
+`Find （）` 和 `findFirst()` 方法接受一个关联数组，指定的搜索条件：
 
 ```php
 <?php
@@ -384,22 +384,22 @@ $robots = Robots::find(
 );
 ```
 
-The available query options are:
+可用的查询选项有：
 
-| Parameter     | Description                                                                                                                                                                                          | Example                                                              |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Mvc\Model` assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                            | `'columns' => 'id, name'`                                         |
-| `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                           | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
-| `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                           | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
-| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                           | `'order' => 'name DESC, status'`                                  |
-| `limit`       | Limit the results of the query to results to certain range                                                                                                                                           | `'limit' => 10`                                                   |
-| `offset`      | Offset the results of the query by a certain amount                                                                                                                                                  | `'offset' => 5`                                                   |
-| `group`       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                          | `'group' => 'name, status'`                                       |
-| `for_update`  | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting exclusive locks on each row it reads                                                                                | `'for_update' => true`                                            |
-| `shared_lock` | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting shared locks on each row it reads                                                                                   | `'shared_lock' => true`                                           |
-| `cache`       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                         | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
-| `hydration`   | Sets the hydration strategy to represent each returned record in the result                                                                                                                          | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
+| 参数            | 描述                                                                                                                                         | 示例                                                                   |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `conditions`  | 查找操作的搜索条件。 用于提取只有那些满足指定的条件的记录。 默认情况下 `Phalcon\Mvc\Model` 假定第一个参数是的条件。                                                                    | `'conditions' => "name LIKE 'steve%'"`                            |
+| `columns`     | 返回模型中的特定列而不是全部的列。使用此选项时返回不完整的对象                                                                                                            | `'columns' => 'id, name'`                                         |
+| `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                 | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
+| `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
+| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                 | `'order' => 'name DESC, status'`                                  |
+| `limit`       | Limit the results of the query to results to certain range                                                                                 | `'limit' => 10`                                                   |
+| `offset`      | Offset the results of the query by a certain amount                                                                                        | `'offset' => 5`                                                   |
+| `group`       | Allows to collect data across multiple records and group the results by one or more columns                                                | `'group' => 'name, status'`                                       |
+| `for_update`  | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting exclusive locks on each row it reads                      | `'for_update' => true`                                            |
+| `shared_lock` | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting shared locks on each row it reads                         | `'shared_lock' => true`                                           |
+| `cache`       | Cache the resultset, reducing the continuous access to the relational system                                                               | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
+| `hydration`   | Sets the hydration strategy to represent each returned record in the result                                                                | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
 If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
 
