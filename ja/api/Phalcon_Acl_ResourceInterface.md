@@ -1,17 +1,17 @@
 # Interface **Phalcon\\Acl\\ResourceInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/resourceinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/resourceinterface.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-## Methods
+## メソッド
 
 abstract public **getName** ()
 
-Returns the resource name
+リソース名を返します。
 
 abstract public **getDescription** ()
 
-Returns resource description
+リソースの説明を返します。
 
 abstract public **__toString** ()
 
-Magic method __toString
+マジックメソッド __toString
