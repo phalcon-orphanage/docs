@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">读取配置</a> <ul>
         <li>
-          <a href="#native-arrays">Native Arrays</a>
+          <a href="#native-arrays">本机数组</a>
         </li>
         <li>
           <a href="#file-adapter">文件适配器</a>
@@ -18,7 +18,7 @@
           <a href="#nested-configuration">嵌套的配置</a>
         </li>
         <li>
-          <a href="#injecting-into-di">Injecting Configuration Dependency</a>
+          <a href="#injecting-into-di">注射配置依赖项</a>
         </li>
       </ul>
     </li>
@@ -58,7 +58,7 @@ echo $config->path('test.parent.property');                 // displays 1
 
 ## Native Arrays
 
-The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
+第一个示例演示如何将本机数组转换成 `Phalcon\Config` 对象。此选项提供了最佳性能，因为在此请求时读取没有文件。
 
 ```php
 <?php
@@ -88,7 +88,7 @@ echo $config->database->username, "\n";
 echo $config->mysetting, "\n";
 ```
 
-If you want to better organize your project you can save the array in another file and then read it.
+如果你想要更好地组织你的项目你可以在另一个文件中保存该数组，然后阅读它。
 
 ```php
 <?php
