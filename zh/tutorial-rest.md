@@ -1,31 +1,31 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">教程： 创建一个简单的 REST API</a>
+      <a href="#overview">Tutorial: Creating a Simple REST API</a>
       <ul>
         <li>
-          <a href="#definitions">定义 API</a>
+          <a href="#definitions">Defining the API</a>
         </li>
         <li>
-          <a href="#implementation">创建应用程序</a>
+          <a href="#implementation">Creating the Application</a>
         </li>
         <li>
-          <a href="#models">创建模型</a>
+          <a href="#models">Creating a Model</a>
         </li>
         <li>
-          <a href="#retrieving-data">检索数据</a>
+          <a href="#retrieving-data">Retrieving Data</a>
         </li>
         <li>
-          <a href="#inserting-data">插入数据</a>
+          <a href="#inserting-data">Inserting Data</a>
         </li>
         <li>
-          <a href="#updating-data">更新数据</a>
+          <a href="#updating-data">Updating Data</a>
         </li>
         <li>
-          <a href="#deleting-data">删除数据</a>
+          <a href="#deleting-data">Deleting Data</a>
         </li>
         <li>
-          <a href="#testing">测试我们的应用程序</a>
+          <a href="#testing">Testing our Application</a>
         </li>
         <li>
           <a href="#conclusion">结论</a>
@@ -274,9 +274,9 @@ $app = new Micro($di);
 
 <a name='retrieving-data'></a>
 
-## Retrieving Data
+## 检索数据
 
-The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
+我们将实施的第一个 `handler` 是由方法 GET 返回所有可用的机器人。 让我们使用 PHQL 来执行这个简单的查询，以 json 格式返回结果。 [文件： `index.php`]
 
 ```php
 <?php
@@ -303,7 +303,7 @@ $app->get(
 );
 ```
 
-[PHQL](/[[language]]/[[version]]/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
+[PHQL](/[[language]]/[[version]]/db-phql)，使我们能够编写查询使用内部转换为正确的 SQL 语句，具体取决于我们所使用的数据库系统的高层次的、 面向对象的 SQL 方言。 The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
 
 The searching by name handler would look like [File: `index.php`]:
 
