@@ -13,7 +13,7 @@
             <li>
               <a href="#defining">定义关系</a> <ul>
                 <li>
-                  <a href="#multiple-fields">Multiple field relationships</a>
+                  <a href="#multiple-fields">多个字段关系</a>
                 </li>
                 <li>
                   <a href="#parameters">有参数的关联关系</a>
@@ -21,7 +21,7 @@
               </ul>
             </li>
             <li>
-              <a href="#taking-advantage-of">Taking advantage of relationships</a>
+              <a href="#taking-advantage-of">使用关系</a>
             </li>
             <li>
               <a href="#aliases">混叠的关系</a> <ul>
@@ -35,7 +35,7 @@
         <li>
           <a href="#virtual-foreign-keys">虚拟外键</a> <ul>
             <li>
-              <a href="#cascade-restrict-actions">Cascade/Restrict actions</a>
+              <a href="#cascade-restrict-actions">级联/限制行动</a>
             </li>
           </ul>
         </li>
@@ -65,7 +65,7 @@
 
 ## 模型之间的关系
 
-有四种类型的关系： 一对一、 一到多、 多对一和多对多。 The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. 通过执行的关系，很容易从每个记录中以统一的方式访问相关模型中的数据。
+有四种类型的关系： 一对一、 一到多、 多对一和多对多。 关系可以是单向或双向，和每个可以简单 （一对一模式） 或更复杂 （模型的组合）。 模型管理器管理这些关系的外键约束, 这些约束的定义有助于数据完整性以及对模型的相关记录的轻松快速访问。 通过执行的关系，很容易从每个记录中以统一的方式访问相关模型中的数据。
 
 <a name='unidirectional'></a>
 
@@ -81,7 +81,7 @@
 
 <a name='defining'></a>
 
-### Defining relationships
+### 定义关系
 
 在Phalcon，必须在模型的 `initialize()` 方法中定义关系。 方法 `belongsTo()`、 `hasOne()`、 `hasMany()` 和 `hasManyToMany()` 定义一个或多个字段从当前模型到另一个模型中的字段之间的关系。 每一种方法需要 3 个参数： 本地字段，引用模型引用字段。
 
@@ -125,7 +125,7 @@ CREATE TABLE parts (
 - `RobotsParts` 模型属于 `Robots` 和 `Parts` 模型作为一种多对一关系。
 - `Robots` 模型已关系到 `Parts` 通过 `RobotsParts` 多。
 
-Check the EER diagram to understand better the relations:
+检查EER图表以更好地理解关系:
 
 ![](/images/content/models-relationships-eer-1.png)
 
@@ -207,7 +207,7 @@ class RobotsParts extends Model
 }
 ```
 
-The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model and the third the field name in the referenced model. 你也可以使用数组来定义多个字段中的关系。
+第一个参数表示用于关联的字段; 第二个字段是用于关联的模型名字, 第三个字段的引用的模型的字段名字。 你也可以使用数组来定义多个字段中的关系。
 
 多对多关系需要 3 模型和定义关系中涉及的属性：
 
@@ -301,7 +301,7 @@ class Robots extends Model
 }
 `</pre> 
 
-and
+以及
 
 ```php
 <?php
@@ -322,9 +322,9 @@ class Parts extends Model
 }
 ```
 
-In the above we have a `Robots` model which has three properties. A unique `id`, a `name` and a `type` which defines what this robot is (mechnical, etc.); In the `Parts` model we also have a `name` for the part but also fields that tie the robot and its type with a specific part.
+在上面我们有一个`Robots`模型，它有三个属性。 一个唯一的`id`，一个`name`，一个`type`，它定义了这个机器人是什么(机械的，等等); 在`Parts` model中，我们也有一个`name`的部分，以及连接机器人及其类型与特定部分的字段。
 
-Using the relationships options discussed earlier, binding one field between the two models will not return the results we need. For that we can use an array in our relationship:
+使用前面讨论的关系选项，在两个模型之间绑定一个字段不会返回我们需要的结果。为此，我们可以在我们的关系中使用一个数组:
 
 ```php
 <?php
@@ -356,7 +356,7 @@ class Robots extends Model
 }
 ```
 
-**NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
+**NOTE** 关系中的字段映射是一对一的，即源模型数组的第一个字段与目标数组的第一个字段匹配，等等。 在源模型和目标模型中，字段计数必须相同。
 
 <a name='taking-advantage-of'></a>
 
@@ -376,7 +376,7 @@ foreach ($robot->robotsParts as $robotPart) {
 }
 ```
 
-Phalcon uses the magic methods `__set`/`__get`/`__call` to store or retrieve related data using relationships.
+Phalcon使用魔法的方法，`__set` / `__get` / `__call` 来存储或检索相关数据使用关系。
 
 通过访问属性与关系相同的名称将检索其相关的记录。
 
@@ -411,7 +411,7 @@ $robotsParts = $robot->getRobotsParts(
 );
 ```
 
-If the called method has a `get` prefix `Phalcon\Mvc\Model` will return a `findFirst()`/`find()` result. 下面的示例检索相关的结果使用魔法的方法与无：
+如果被调用的方法已 `get` prefix `Phalcon\Mvc\Model` 将返回 `findFirst()` `find()` 导致。 下面的示例检索相关的结果使用魔法的方法与无：
 
 ```php
 <?php
@@ -486,7 +486,7 @@ $robot = Robots::findFirst(
 );
 ```
 
-The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
+前缀`get`用于`find()`/`findFirst()`相关记录。取决于它将使用的关系类型< 0 >find()< / 0 >或< 0 > findFirst()< / 0 >:
 
 | 类型               | Description                         | 隐式方法        |
 | ---------------- | ----------------------------------- | ----------- |
@@ -555,7 +555,7 @@ class RobotsSimilar extends Phalcon\Mvc\Model
 }
 ```
 
-Since both relations point to the same model (Robots), obtain the records related to the relationship could not be clear:
+既然两者关系指向相同的模型 （Robots） 获得的记录相关的关系不能被清除:
 
 ```php
 <?php
@@ -659,9 +659,9 @@ class Robots extends Model
 
 ## 虚拟外键
 
-By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. 通过添加第四个参数，当定义一个关系时，您可以修改此行为。
+默认情况下，关系不像数据库外键，也就是说，如果您尝试在引用的模型中插入/更新值而没有有效值，Phalcon将不会生成验证消息。 通过添加第四个参数，当定义一个关系时，您可以修改此行为。
 
-The RobotsPart model can be changed to demonstrate this feature:
+可以更改RobotsPart模型来演示这个特性:
 
 ```php
 <?php
@@ -701,7 +701,7 @@ class RobotsParts extends Model
 }
 ```
 
-If you alter a `belongsTo()` relationship to act as foreign key, it will validate that the values inserted/updated on those fields have a valid value on the referenced model. Similarly, if a `hasMany()`/`hasOne()` is altered it will validate that the records cannot be deleted if that record is used on a referenced model.
+如果您将`belongsTo() 关系修改为外键，它将验证在这些字段中插入/更新的值在被引用的模型上是否具有有效值。 类似地，如果<code>hasMany()`/`hasOne()`被修改，它将验证如果在引用的模型上使用该记录，则不能删除该记录。
 
 ```php
 <?php
@@ -726,7 +726,7 @@ class Parts extends Model
 }
 ```
 
-A virtual foreign key can be set up to allow null values as follows:
+可以设置一个虚拟的外键允许空值，如下所示：
 
 ```php
 <?php
@@ -794,13 +794,13 @@ class Robots extends Model
 }
 ```
 
-The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
+上面的代码中设置删除被引用的所有记录 （parts），如果删除了主记录 （robot）。
 
 <a name='storing-related-records'></a>
 
 ## 存储相关的记录
 
-Magic properties can be used to store a record and its related properties:
+魔法属性可以用于存储记录和其相关的属性：
 
 ```php
 <?php
@@ -822,7 +822,7 @@ $album->year   = 2008;
 $album->save();
 ```
 
-Saving a record and its related records in a has-many relation:
+有许多关系中保存记录和其相关的记录：
 
 ```php
 <?php
@@ -857,27 +857,27 @@ $album->songs = $songs;
 $album->save();
 ```
 
-Saving the album and the artist at the same time implicitly makes use of a transaction so if anything goes wrong with saving the related records, the parent will not be saved either. Messages are passed back to the user for information regarding any errors.
+保存这张专辑，艺术家，同时隐式使用的交易所以如果有任何差错与保存相关的记录，父将不会保存任何。 消息传递有关任何错误的信息返回给用户。
 
-Note: Adding related entities by overloading the following methods is not possible:
+注意： 通过重载以下方法添加相关的实体是不可能的：
 
 - `Phalcon\Mvc\Model::beforeSave()`
 - `Phalcon\Mvc\Model::beforeCreate()`
 - `Phalcon\Mvc\Model::beforeUpdate()`
 
-You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
+您需要重载 `Phalcon\Mvc\Model::save()` 为此要从内部模型工作。
 
 <a name='operations-over-resultsets'></a>
 
-## Operations over Resultsets
+## 在结果集的操作
 
-If a resultset is composed of complete objects, the resultset is in the ability to perform operations on the records obtained in a simple manner:
+如果结果集是由完整对象组成的, 则集是能够对以简单方式获取的记录执行操作:
 
 <a name='updating-related-records'></a>
 
-### Updating related records
+### 更新相关的记录
 
-Instead of doing this:
+不要这样做：
 
 ```php
 <?php
@@ -900,7 +900,7 @@ foreach ($parts as $part) {
 }
 ```
 
-you can do this:
+你可以这样做：
 
 ```php
 <?php
@@ -913,7 +913,7 @@ $robots->getParts()->update(
 );
 ```
 
-`update` also accepts an anonymous function to filter what records must be updated:
+`update` 也接受匿名函数来筛选哪些记录必须更新：
 
 ```php
 <?php
@@ -938,9 +938,9 @@ $robots->getParts()->update(
 
 <a name='deleting-related-records'></a>
 
-### Deleting related records
+### 删除相关的记录
 
-Instead of doing this:
+不要这样做：
 
 ```php
 <?php
@@ -960,7 +960,7 @@ foreach ($parts as $part) {
 }
 ```
 
-you can do this:
+你可以这样做：
 
 ```php
 <?php
@@ -968,7 +968,7 @@ you can do this:
 $robots->getParts()->delete();
 ```
 
-`delete()` also accepts an anonymous function to filter what records must be deleted:
+`delete （） 方法` 还接受匿名函数来筛选哪些记录，必须先删除：
 
 ```php
 <?php
