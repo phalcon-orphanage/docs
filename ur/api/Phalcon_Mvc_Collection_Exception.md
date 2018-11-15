@@ -1,12 +1,12 @@
-# Class **Phalcon\\Annotations\\Exception**
+# Class **Phalcon\\Mvc\\Collection\\Exception**
 
-*extends* class [Exception](http://php.net/manual/en/class.exception.php)
+*extends* class [Phalcon\Exception](/en/3.2/api/Phalcon_Exception)
 
 *implements* [Throwable](http://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/exception.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/collection/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## メソッド
+## Methods
 
 final private [Exception](http://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
@@ -22,11 +22,11 @@ public **__wakeup** () inherited from [Exception](http://php.net/manual/en/class
 
 final public *string* **getMessage** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-例外メッセージを取得します。
+Gets the Exception message
 
 final public *int* **getCode** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-例外コードを取得します。
+Gets the Exception code
 
 final public *string* **getFile** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
