@@ -42,6 +42,12 @@
           <a href="#storing-data">Storing data using models</a>
         </li>
         <li>
+          <a href="#list-of-users">List of users</a>
+        </li>
+        <li>
+          <a href="#adding-styles">Adding styles</a>
+        </li>
+        <li>
           <a href="#conclusion">Conclusion</a>
         </li>
       </ul>
@@ -536,11 +542,16 @@ use Phalcon\Mvc\Controller;
 
 class SignupController extends Controller
 {
+    /**
+     * Show form to register a new user
+     */
     public function indexAction()
     {
-
     }
 
+    /**
+     * Register new user and show message
+     */
     public function registerAction()
     {
         $user = new Users();
@@ -548,36 +559,127 @@ class SignupController extends Controller
         // Store and check for errors
         $success = $user->save(
             $this->request->getPost(),
-            [
-                "name",
-                "email",
-            ]
+            ['name', 'email']
         );
 
+        // passing the result to the view
+        $this->view->success = $success;
+
         if ($success) {
-            echo "Thanks for registering!";
+            $message = "Thanks for registering!";
         } else {
-            echo "Sorry, the following problems were generated: ";
-
-            $messages = $user->getMessages();
-
-            foreach ($messages as $message) {
-                echo $message->getMessage(), "<br/>";
-            }
+            $message = "Sorry, the following problems were generated:<br>" . implode('<br>', $user->getMessages());
         }
 
-        $this->view->disable();
+        // passing a message to the view
+        $this->view->message = $message;
     }
 }
 ```
 
-At the beginning of the `registerAction` we create an empty user object from the Users class, which manages a User's record. The class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+At the beginning of the `registerAction` we create an empty user object from the `Users` class, which manages a User's record. The class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
 
 The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
 
 Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign-up form our screen will look like this:
 
 ![](/images/content/tutorial-basic-4.png)
+
+<a name='list-of-users'></a>
+## List of users
+Now let's see how to obtain and see the users that we have registered in the database.
+
+The first thing that we are going to do in our `indexAction` of the` IndexController` is to show the result of the search of all the users, which is done simply in the following way `Users::find()`. Let's see how our `indexAction` would look
+
+`app/controllers/IndexController.php`
+```php
+<?php
+
+use Phalcon\Mvc\Controller;
+
+class IndexController extends Controller
+{
+    /**
+     * Welcome and user list
+     */
+    public function indexAction()
+    {
+        $this->view->users = Users::find();
+    }
+}
+```
+
+Now, in our view file `views/index/index.phtml` we will have access to the users found in the database. These will be available in the variable `$users`. This variable has the same name as the one we use in `$this->view->users`.
+
+The view will look like this:
+
+`views/index/index.phtml`
+```html
+<?php
+
+echo "<h1>Hello!</h1>";
+
+echo $this->tag->linkTo(["signup", "Sign Up Here!", 'class' => 'btn btn-primary']);
+
+if ($users->count() > 0) {
+    ?>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <td colspan="3">Users quantity: <?php echo $users->count(); ?></td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <?php foreach ($users as $user) { ?>
+            <tr>
+                <td><?php echo $user->id; ?></td>
+                <td><?php echo $user->name; ?></td>
+                <td><?php echo $user->email; ?></td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    <?php
+}
+```
+
+As you can see our variables `$users` can be iterated and counted, this we will see in depth later on when viewing the [models](/[[language]]/[[version]]/db-models).
+
+![](/images/content/tutorial-basic-5.png)
+
+<a name='adding-style'></a>
+## Adding Style
+To give a design touch to our first application we will add bootstrap and a small template that will be used in all views.
+
+We will add an `index.phtml` file in the` views` folder, with the following content:
+
+`app/views/index.phtml`
+```html
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phalcon Tutorial</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <?php echo $this->getContent(); ?>
+</div>
+</body>
+</html>
+```
+
+The most important thing to highlight in our template is the function `getContent()` which will give us the content generated by the view. Now, our application will be something like this:
+
+![](/images/content/tutorial-basic-6.png) 
 
 <a name='conclusion'></a>
 ## Conclusion
