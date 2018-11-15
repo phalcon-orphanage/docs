@@ -2,68 +2,68 @@
 
 *implements* [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php), [Countable](http://php.net/manual/en/class.countable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Represents a collection of annotations. This class allows to traverse a group of annotations easily
+アノテーションのコレクションを表します。このクラスはアノテーションのグループを簡単に走査できます。
 
 ```php
 <?php
 
-//Traverse annotations
+// アノテーションを走査する
 foreach ($classAnnotations as $annotation) {
     echo "Name=", $annotation->getName(), PHP_EOL;
 }
 
-//Check if the annotations has a specific
+// そのアノテーションが特定のものを持っているかチェック
 var_dump($classAnnotations->has("Cacheable"));
 
-//Get an specific annotation in the collection
+// コレクション中に指定のアノテーションを取得
 $annotation = $classAnnotations->get("Cacheable");
 
 ```
 
-## Methods
+## メソッド
 
 public **__construct** ([*array* $reflectionData])
 
-Phalcon\\Annotations\\Collection constructor
+Phalcon\\Annotations\\Collection コンストラクタ
 
 public **count** ()
 
-Returns the number of annotations in the collection
+コレクション中のアノテーションの数を返します。
 
 public **rewind** ()
 
-Rewinds the internal iterator
+内部のイテレータを巻き戻します。
 
 public [Phalcon\Annotations\Annotation](/en/3.2/api/Phalcon_Annotations_Annotation) **current** ()
 
-Returns the current annotation in the iterator
+イテレータ中の現在のアノテーションを返します。
 
 public **key** ()
 
-Returns the current position/key in the iterator
+イテレータ中の現在の位置/キーを返します。
 
 public **next** ()
 
-Moves the internal iteration pointer to the next position
+内部のイテレータの位置を次の位置に移動します。
 
 public **valid** ()
 
-Check if the current annotation in the iterator is valid
+イテレータ中の現在のアノテーションが妥当かどうかチェックします。
 
 public **getAnnotations** ()
 
-Returns the internal annotations as an array
+内部のアノテーションを配列として返します。
 
 public **get** (*string* $name)
 
-Returns the first annotation that match a name
+名前にマッチした最初のアノテーションを返します。
 
 public **getAll** (*string* $name)
 
-Returns all the annotations that match a name
+名前にマッチした全てのアノテーションを返します。
 
 public **has** (*string* $name)
 
-Check if an annotation exists in a collection
+コレクション中にアノテーションが存在するかをチェックします。
