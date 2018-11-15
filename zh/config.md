@@ -1,27 +1,27 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Reading Configurations</a> <ul>
+      <a href="#overview">读取配置</a> <ul>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">工厂</a>
         </li>
         <li>
-          <a href="#native-arrays">Native Arrays</a>
+          <a href="#native-arrays">本机数组</a>
         </li>
         <li>
-          <a href="#file-adapter">File Adapters</a>
+          <a href="#file-adapter">文件适配器</a>
         </li>
         <li>
-          <a href="#ini-files">Reading INI Files</a>
+          <a href="#ini-files">读取 INI 文件</a>
         </li>
         <li>
-          <a href="#merging">Merging Configurations</a>
+          <a href="#merging">合并的配置</a>
         </li>
         <li>
-          <a href="#nested-configuration">Nested Configuration</a>
+          <a href="#nested-configuration">嵌套的配置</a>
         </li>
         <li>
-          <a href="#injecting-into-di">Injecting Configuration Dependency</a>
+          <a href="#injecting-into-di">注射配置依赖项</a>
         </li>
       </ul>
     </li>
@@ -30,9 +30,9 @@
 
 <a name='overview'></a>
 
-# Reading Configurations
+# 读取配置
 
-`Phalcon\Config` is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
+`Phalcon\Config` 到应用程序中使用的 PHP 对象是组件，用于转换配置文件的不同格式 （使用适配器）。
 
 Values can be obtained from `Phalcon\Config` as follows:
 
@@ -59,7 +59,7 @@ echo $config->path('test.parent.property');                 // displays 1
 
 <a name='factory'></a>
 
-## Factory
+## 工厂
 
 Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`.
 
@@ -78,9 +78,9 @@ $config = Factory::load($options);
 
 <a name='native-arrays'></a>
 
-## Native Arrays
+## 本机数组
 
-The first example shows how to convert native arrays into `Phalcon\Config` objects. This option offers the best performance since no files are read during this request.
+第一个示例演示如何将本机数组转换成 `Phalcon\Config` 对象。此选项提供了最佳性能，因为在此请求时读取没有文件。
 
 ```php
 <?php
@@ -110,7 +110,7 @@ echo $config->database->username, "\n";
 echo $config->mysetting, "\n";
 ```
 
-If you want to better organize your project you can save the array in another file and then read it.
+如果你想要更好地组织你的项目你可以在另一个文件中保存该数组，然后阅读它。
 
 ```php
 <?php
@@ -124,22 +124,22 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## File Adapters
+## 文件适配器
 
-The adapters available are:
+可用的适配器是：
 
-| Class                            | Description                                                                                      |
-| -------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `Phalcon\Config\Adapter\Ini`  | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
-| `Phalcon\Config\Adapter\Json` | Uses JSON files to store settings.                                                               |
-| `Phalcon\Config\Adapter\Php`  | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
-| `Phalcon\Config\Adapter\Yaml` | Uses YAML files to store settings.                                                               |
+| 类                                | 描述                                               |
+| -------------------------------- | ------------------------------------------------ |
+| `Phalcon\Config\Adapter\Ini`  | 使用 INI 文件来存储设置。在内部适配器使用 PHP 函数 `parse_ini_file`。 |
+| `Phalcon\Config\Adapter\Json` | 使用 JSON 文件来存储设置。                                 |
+| `Phalcon\Config\Adapter\Php`  | 使用 PHP 多维数组来存储设置。此适配器提供了最佳的性能。                   |
+| `Phalcon\Config\Adapter\Yaml` | 使用 YAML 文件来存储设置。                                 |
 
 <a name='ini-files'></a>
 
-## Reading INI Files
+## 读取 INI 文件
 
-Ini files are a common way to store settings. `Phalcon\Config` uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
+Ini 文件是常见的方式来存储设置。 `Phalcon\Config` 使用优化的 PHP 函数 `parse_ini_file` 来读取这些文件。 Files sections are parsed into sub-settings for easy access.
 
 ```ini
 [database]
@@ -158,7 +158,7 @@ viewsDir       = '../app/views/'
 metadata.adapter  = 'Memory'
 ```
 
-You can read the file as follows:
+您可以读取文件，如下所示：
 
 ```php
 <?php
@@ -174,9 +174,9 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## Merging Configurations
+## 合并的配置
 
-`Phalcon\Config` can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
+`Phalcon\Config` 可以递归地合并到另一个配置对象的属性。添加了新属性，并更新现有属性。
 
 ```php
 <?php
@@ -209,7 +209,7 @@ $config->merge($config2);
 print_r($config);
 ```
 
-The above code produces the following:
+上面的代码产生以下内容：
 
 ```bash
 Phalcon\Config Object
@@ -226,13 +226,13 @@ Phalcon\Config Object
 )
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator).
+在[Phalcon Incubator](https://github.com/phalcon/incubator)中有更多可用的适配器可用于配置组件
 
 <a name='nested-configuration'></a>
 
-## Nested Configuration
+## 嵌套的配置
 
-You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. Let's look at an example:
+您可以使用`Phalcon\Config::path`方法轻松访问嵌套的配置值。 这种方法允许获取值，而不考虑路径的某些部分不存在。 让我们看看一个例子：
 
 ```php
 <?php
@@ -302,7 +302,7 @@ function config() {
 
 <a name='injecting-into-di'></a>
 
-## Injecting Configuration Dependency
+## 注射配置依赖项
 
 You can inject your configuration to the controller allowing us to use `Phalcon\Config` inside `Phalcon\Mvc\Controller`. To be able to do that, you have to add it as a service in the Dependency Injector container. Add following code inside your bootstrap file:
 
@@ -325,7 +325,7 @@ $di->set(
 );
 ```
 
-Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
+现在在您的控制器可以访问您的配置通过使用依赖注入功能使用名称 `config` 像下面的代码：
 
 ```php
 <?php
