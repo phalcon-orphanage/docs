@@ -4,9 +4,9 @@
 
 *implements* [Throwable](http://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/exception.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-## Methods
+## メソッド
 
 final private [Exception](http://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
@@ -22,11 +22,11 @@ public **__wakeup** () inherited from [Exception](http://php.net/manual/en/class
 
 final public *string* **getMessage** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the Exception message
+例外メッセージを取得します。
 
 final public *int* **getCode** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the Exception code
+例外コードを取得します。
 
 final public *string* **getFile** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
