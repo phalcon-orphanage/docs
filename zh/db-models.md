@@ -661,7 +661,7 @@ $customers = $customers->filter(
 
 <a name='binding-parameters'></a>
 
-### Binding Parameters
+### 绑定参数
 
 在 `Phalcon\Mvc\Model` 也支持绑定的参数。 你被鼓励使用此方法，以消除您的代码受到 SQL 注入式攻击的可能性。 支持字符串和整数的占位符。 绑定参数可以简单地实现，如下所示：
 

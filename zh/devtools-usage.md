@@ -1,10 +1,10 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#总览">Phalcon开发人员工具</a> 
+      <a href="#overview">Phalcon开发人员工具</a> 
       <ul>
         <li>
-          <a href="#下载">下载</a>
+          <a href="#download">下载</a>
         </li>
         <li>
           <a href="#安装">安装</a>
@@ -13,7 +13,7 @@
           <a href="#可用的命令">可用的命令</a>
         </li>
         <li>
-          <a href="#project 骨架">生成一个项目骨架</a>
+          <a href="#project-skeleton">生成一个项目骨架</a>
         </li>
         <li>
           <a href="#生成控制器">生成控制器</a>
