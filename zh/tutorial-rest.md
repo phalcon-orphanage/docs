@@ -258,9 +258,9 @@ $app = new Micro($di);
 
 <a name='retrieving-data'></a>
 
-## Retrieving Data
+## 检索数据
 
-The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
+我们将实施的第一个 `handler` 是由方法 GET 返回所有可用的机器人。 让我们使用 PHQL 来执行这个简单的查询，以 json 格式返回结果。 [文件： `index.php`]
 
 ```php
 <?php
@@ -287,9 +287,9 @@ $app->get(
 );
 ```
 
-[PHQL](/[[language]]/[[version]]/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
+[PHQL](/[[language]]/[[version]]/db-phql)，使我们能够编写查询使用内部转换为正确的 SQL 语句，具体取决于我们所使用的数据库系统的高层次的、 面向对象的 SQL 方言。 子句 `use` 匿名函数中允许我们将一些变量从全球传递到本地范围很容易。
 
-The searching by name handler would look like [File: `index.php`]:
+搜索名称处理程序看起来就像 [文件： `index.php`]:
 
 ```php
 <?php
@@ -321,7 +321,7 @@ $app->get(
 );
 ```
 
-Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not [File: `index.php`]:
+搜索的字段 `id`，它是相当类似，在这种情况下，我们也要通知如果机器人被发现或不 [文件： `index.php`]:
 
 ```php
 <?php
@@ -371,9 +371,9 @@ $app->get(
 
 <a name='inserting-data'></a>
 
-## Inserting Data
+## 插入数据
 
-Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion [File: `index.php`]:
+以数据为 JSON 字符串插入请求的正文中，我们还用 PHQL 来插入 [文件： `index.php`]:
 
 ```php
 <?php
@@ -439,7 +439,7 @@ $app->post(
 
 <a name='updating-data'></a>
 
-## Updating Data
+## 更新数据
 
 The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
 
@@ -501,7 +501,7 @@ $app->put(
 
 <a name='deleting-data'></a>
 
-## Deleting Data
+## 删除数据
 
 The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
 
@@ -573,9 +573,9 @@ Now we will create database for our application. Run SQL queries as follows:
 
 ## 测试我们的应用程序
 
-Using [curl](http://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
+使用 [curl](http://en.wikipedia.org/wiki/CURL) 我们会在我们的应用程序验证其正确运行中测试每条路线。
 
-Obtain all the robots:
+获取所有机器人：
 
 ```bash
 curl -i -X GET http://localhost/my-rest-api/api/robots
@@ -589,7 +589,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 ```
 
-Search a robot by its name:
+按其名称搜索机器人：
 
 ```bash
 curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
@@ -603,7 +603,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"2","name":"Astro Boy"}]
 ```
 
-Obtain a robot by its id:
+通过其 id 来获得一个机器人：
 
 ```bash
 curl -i -X GET http://localhost/my-rest-api/api/robots/3
@@ -617,7 +617,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
 ```
 
-Insert a new robot:
+插入一个新的机器人：
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"Droid","year":1977}' http://localhost/my-rest-api/api/robots
@@ -631,7 +631,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"OK","data":{"name":"C-3PO","type":"Droid","year":1977,"id":"4"}}
 ```
 
-Try to insert a new robot with the name of an existing robot:
+尝试插入新机器人与现有的机器人的名称：
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"Droid","year":1977}' http://localhost/my-rest-api/api/robots
@@ -645,7 +645,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"ERROR","messages":["The robot name must be unique"]}
 ```
 
-Or update a robot with an unknown type:
+或更新一个机器人与未知的类型：
 
 ```bash
 curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
@@ -661,7 +661,7 @@ Content-Type: text/html; charset=UTF-8
     list: Droid, Mechanical, Virtual"]}
 ```
 
-Finally, delete a robot:
+最后，删除一个机器人：
 
 ```bash
 curl -i -X DELETE http://localhost/my-rest-api/api/robots/1
@@ -679,4 +679,4 @@ Content-Type: text/html; charset=UTF-8
 
 ## 结论
 
-As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/[[language]]/[[version]]/application-micro) and [PHQL](/[[language]]/[[version]]/db-phql).
+正如我们所看到的开发 [基于 Rest](http://en.wikipedia.org/wiki/Representational_state_transfer) API 与Phalcon很容易使用 [微应用程序](/[[language]]/[[version]]/application-micro) 和 [PHQL](/[[language]]/[[version]]/db-phql)。
