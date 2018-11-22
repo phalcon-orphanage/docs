@@ -68,19 +68,19 @@
               <a href="#adapters-backend-memcache">Memcache 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-apc">APC 后端选项</a>
+              <a href="#adapters-backend-apc">APC Backend Options</a>
             </li>
             <li>
               <a href="#adapters-backend-apcu">APCU 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Mongo后端选项</a>
+              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
             </li>
             <li>
               <a href="#adapters-backend-xcache">XCache 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Redis后端选项</a>
+              <a href="#adapters-backend-redis">Redis Backend Options</a>
             </li>
           </ul>
         </li>
@@ -117,7 +117,7 @@ Phacon提供 `Phalcon\Cache` 类允许更快地访问常用或已处理的数据
 
 缓存的过程分为 2 个部分：
 
-* **Frontend**： 这一部分是负责检查，如果密钥已过期，并且执行更多转换对数据存储之前和之后从后端-检索
+* <0Frontend</strong>： 这一部分是负责检查，如果密钥已过期，并且执行更多转换对数据存储之前和之后从后端-检索
 * **Backend**： 这部分是负责沟通，写/读前端所需的数据。
 
 <a name='factory'></a>
@@ -676,71 +676,71 @@ $cache = new Libmemcached(
 
 ### Memcache 后端选项
 
-This backend will store cached content on a memcached server. The available options for this backend are:
+这个后端将 memcached 服务器上存储缓存的内容。这个后端的可用选项有：
 
-| Option       | Description                                                 |
+| 选项           | 描述                                                          |
 | ------------ | ----------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `host`       | The memcached host.                                         |
-| `port`       | The memcached port.                                         |
-| `persistent` | Create a persistent connection to memcached?                |
+| `host`       | Memcached 主机。                                               |
+| `port`       | Memcached 端口。                                               |
+| `persistent` | 创建到 memcached 的持久性连接吗？                                      |
 
 <a name='adapters-backend-apc'></a>
 
-### APC 后端选项
+### APC Backend Options
 
-This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
+这个后端将替代 PHP 缓存 ([APC](http://php.net/apc)) 上存储缓存的内容。这个后端的可用选项有：
 
-| Option   | Description                                                 |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| 选项       | 描述           |
+| -------- | ------------ |
+| `prefix` | 自动预置到缓存键的前缀。 |
 
 <a name='adapters-backend-apcu'></a>
 
 ### APCU 后端选项
 
-This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
+这个后端将替代 PHP 缓存 （[APCU ](http://php.net/apcu)） 上存储缓存的内容。这个后端的可用选项有：
 
-| Option   | Description                                                 |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| 选项       | 描述           |
+| -------- | ------------ |
+| `prefix` | 自动预置到缓存键的前缀。 |
 
 <a name='adapters-backend-mongo'></a>
 
-### Mongo后端选项
+### Mongo Backend Options
 
-This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
+这个后端将 MongoDB 服务器 ([MongoDB](http://mongodb.org/)) 上存储缓存的内容。这个后端的可用选项有：
 
-| Option       | Description                                                 |
-| ------------ | ----------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `server`     | A MongoDB connection string.                                |
-| `db`         | Mongo database name.                                        |
-| `collection` | Mongo collection in the database.                           |
+| 选项           | 描述                   |
+| ------------ | -------------------- |
+| `prefix`     | 自动预置到缓存键的前缀。         |
+| `服务器`        | MongoDB 的连接字符串。      |
+| `db`         | Mongo database name. |
+| `collection` | Mongo数据库的集合名字。       |
 
 <a name='adapters-backend-xcache'></a>
 
 ### XCache 后端选项
 
-This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
+这个后端将在 XCache ([XCache](http://xcache.lighttpd.net/)) 上存储缓存的内容。这个后端的可用选项有：
 
-| Option   | Description                                                 |
+| 选项       | 描述                                                          |
 | -------- | ----------------------------------------------------------- |
 | `prefix` | A prefix that is automatically prepended to the cache keys. |
 
 <a name='adapters-backend-redis'></a>
 
-### Redis后端选项
+### Redis Backend Options
 
-This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
+这个后端将 ([Redis](http://redis.io/)) Redis的服务器上存储缓存的内容。这个后端的可用选项有：
 
-| Option       | Description                                                    |
-| ------------ | -------------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys.    |
-| `host`       | Redis host.                                                    |
-| `port`       | Redis port.                                                    |
-| `auth`       | Password to authenticate to a password-protected Redis server. |
-| `persistent` | Create a persistent connection to Redis.                       |
-| `index`      | The index of the Redis database to use.                        |
+| 选项           | 描述                                                          |
+| ------------ | ----------------------------------------------------------- |
+| `prefix`     | A prefix that is automatically prepended to the cache keys. |
+| `host`       | Redis的主机。                                                   |
+| `port`       | Redis的端口                                                    |
+| `auth`       | 密码保护Redis服务器进行身份验证的密码。                                      |
+| `persistent` | 创建与Redis持久连接。                                               |
+| `index`      | Frontend数据库使用的索引。                                           |
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+有更多的适配器可供此 [Phalcon incubaror](https://github.com/phalcon/incubator) 中的组件
