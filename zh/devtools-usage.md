@@ -1,33 +1,33 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Phalcon开发人员工具</a> <ul>
+      <a href="#总览">Phalcon开发人员工具</a> <ul>
         <li>
-          <a href="#download">下载</a>
+          <a href="#下载">下载</a>
         </li>
         <li>
-          <a href="#installation">安装</a>
+          <a href="#安装">安装</a>
         </li>
         <li>
-          <a href="#available-commands">可用的命令</a>
+          <a href="#可用的命令">可用的命令</a>
         </li>
         <li>
-          <a href="#project-skeleton">生成一个项目骨架</a>
+          <a href="#project 骨架">生成一个项目骨架</a>
         </li>
         <li>
-          <a href="#generating-controllers">生成控制器</a>
+          <a href="#生成控制器">生成控制器</a>
         </li>
         <li>
-          <a href="#database-settings">准备数据库设置</a>
+          <a href="数据库设置">准备数据库设置</a>
         </li>
         <li>
-          <a href="#generating-models">生成模型</a>
+          <a href="#生成模型">生成模型</a>
         </li>
         <li>
           <a href="#crud">CURD 脚手架</a>
         </li>
         <li>
-          <a href="#web-interface">工具的 web 接口</a>
+          <a href="#Web 界面">工具的 web 接口</a>
         </li>
         <li>
           <a href="#phpstorm-ide">Integrating Tools with PhpStorm IDE</a>
@@ -196,19 +196,19 @@ baseUri        = "/store/"
 Options:
  --name=s             表名
  --schema=s           数据库名 [optional]
- --namespace=s        Model's namespace [optional]
- --get-set            Attributes will be protected and have setters/getters. [optional]
- --extends=s          Model extends the class name supplied [optional]
- --excludefields=l    Excludes fields defined in a comma separated list [optional]
- --doc                Helps to improve code completion on IDEs [optional]
- --directory=s        Base path on which project will be created [optional]
- --force              Rewrite the model. [optional]
- --trace              Shows the trace of the framework in case of exception. [optional]
- --mapcolumn          Get some code for map columns. [optional]
- --abstract           Abstract Model [optional]
+ --namespace=s       模型的命名空间 [optional]
+ --get-set            属性将受到保护，并具有setter/getter。 [optional]
+ --extends=s           模型扩展了提供的类名 [optional]
+ --excludefields=l   排除逗号分隔列表中定义的字段 [optional]
+ --doc                帮助改进ide上的代码完成 [optional]
+ --directory=s        创建项目的基本路径 [optional]
+ --force              重写模型 [optional]
+ --trace              在出现异常时显示框架的跟踪。 [optional]
+ --mapcolumn          获取一些映射列的代码。 [optional]
+ --abstract       抽象模型  [optional]
 ```
 
-The simplest way to generate a model is:
+生成模型的最简单方法是:
 
 ```bash
 $ phalcon model products
@@ -218,7 +218,7 @@ $ phalcon model products
 $ phalcon model --name tablename
 ```
 
-All table fields are declared public for direct access.
+所有表字段都声明为公共以便直接访问。
 
 ```php
 <?php
@@ -259,7 +259,7 @@ class Products extends Model
 }
 ```
 
-By adding the `--get-set` you can generate the fields with protected variables and public setter/getter methods. Those methods can help in business logic implementation within the setter/getter methods.
+通过添加`--get-set`，您可以使用受保护的变量和公共setter/getter方法生成字段。 这些方法可以帮助在setter/getter方法中实现业务逻辑。
 
 ```php
 <?php
@@ -333,7 +333,7 @@ class Products extends Model
 }
 ```
 
-A nice feature of the model generator is that it keeps changes made by the developer between code generations. This allows the addition or removal of fields and properties, without worrying about losing changes made to the model itself. The following screencast shows you how it works:
+模型生成器的一个很好的特性是，它可以在代码生成之间保持开发人员所做的更改。 这允许添加或删除字段和属性，而不必担心会丢失对模型本身所做的更改。 下面的视频展示了它的工作原理:
 
 <div align="center">
     <iframe src="https://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -341,44 +341,44 @@ A nice feature of the model generator is that it keeps changes made by the devel
 
 <a name='crud'></a>
 
-## Scaffold a CRUD
+## CURD 脚手架
 
-Scaffolding is a quick way to generate some of the major pieces of an application. If you want to create the models, views, and controllers for a new resource in a single operation, scaffolding is the tool for the job.
+脚手架是生成应用程序主要部分的一种快速方法。 如果您希望在单个操作中为新资源创建模型、视图和控制器，那么脚手架就是这项工作的工具。
 
-Once the code is generated, it will have to be customized to meet your needs. Many developers avoid scaffolding entirely, opting to write all or most of their source code from scratch. The generated code can serve as a guide to better understand of how the framework works or develop prototypes. The code below shows a scaffold based on the table `products`:
+一旦生成了代码，就必须对其进行定制，以满足您的需求。 许多开发人员完全避免搭建代码，而是选择从头开始编写全部或大部分源代码。 生成的代码可以作为指导，更好地理解框架如何工作或开发原型。 下面的代码显示了基于表`products`的脚手架:
 
 ```bash
 $ phalcon scaffold --table-name products
 ```
 
-The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
+脚手架生成器将在应用程序中生成多个文件, 以及一些文件夹。下面是将生成的内容的快速概述:
 
-| File                                     | Purpose                        |
-| ---------------------------------------- | ------------------------------ |
-| `app/controllers/ProductsController.php` | The Products controller        |
-| `app/models/Products.php`                | The Products model             |
-| `app/views/layout/products.phtml`        | Controller layout for Products |
-| `app/views/products/new.phtml`           | View for the action `new`      |
-| `app/views/products/edit.phtml`          | View for the action `edit`     |
-| `app/views/products/search.phtml`        | View for the action `search`   |
+| File                                     | 目的             |
+| ---------------------------------------- | -------------- |
+| `app/controllers/ProductsController.php` | 产品控制器          |
+| `app/models/Products.php`                | Products 模型    |
+| `app/views/layout/products.phtml`        | 产品的控制器布局       |
+| `app/views/products/new.phtml`           | `new`操作的视图     |
+| `app/views/products/edit.phtml`          | `edit` 操作的视图   |
+| `app/views/products/search.phtml`        | `search` 操作的视图 |
 
-When browsing the recently generated controller, you will see a search form and a link to create a new Product:
+浏览最近生成的控制器时, 您将看到一个搜索窗体和一个用于创建新产品的链接:
 
 ![](/images/content/devtools-usage-03.png)
 
-The `create page` allows you to create products applying validations on the Products model. Phalcon will automatically validate not null fields producing warnings if any of them is required.
+"0>create 页 </0 > 允许您在" 产品 "模型上创建应用验证的产品。 如果需要其中任何一个, phalcon 将自动验证非空字段并生成警告。
 
 ![](/images/content/devtools-usage-04.png)
 
-After performing a search, a pager component is available to show paged results. Use the "Edit" or "Delete" links in front of each result to perform such actions.
+执行搜索后, 分页组件可用于显示分页结果。使用每个结果前面的 "编辑" 或 "删除" 链接执行此类操作。
 
 ![](/images/content/devtools-usage-05.png)
 
 <a name='web-interface'></a>
 
-## Web Interface to Tools
+## 工具的 web 接口
 
-Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
+此外, 如果您愿意, 可以从 web 界面使用 phalcon 开发人员工具。查看下面的屏幕截图, 了解其工作原理:
 
 <div align="center">
 <iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen mark="crwd-mark"></iframe>
@@ -386,9 +386,9 @@ Also, if you prefer, it's possible to use Phalcon Developer Tools from a web int
 
 <a name='phpstorm-ide'></a>
 
-## Integrating Tools with PhpStorm IDE
+## 将工具与 phpstorm ide 集成
 
-The screencast below shows how to integrate developer tools with the [PhpStorm IDE](http://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
+下面的视频展示了如何将开发工具与[PhpStorm IDE](http://www.jetbrains.com/phpstorm/)集成。 配置步骤可以很容易地适应 php 的其他 ide。
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
@@ -396,6 +396,6 @@ The screencast below shows how to integrate developer tools with the [PhpStorm I
 
 <a name='conclusion'></a>
 
-## Conclusion
+## 结语
 
-Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.
+Phalcon开发人员工具提供了一种为应用程序生成代码的简单方法, 从而减少了开发时间和潜在的编码错误。
