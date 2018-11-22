@@ -129,7 +129,7 @@ CREATE TABLE parts (
 
 ![](/images/content/models-relationships-eer-1.png)
 
-The models with their relations could be implemented as follows:
+与他们的关系模型可以实施如下：
 
 ```php
 <?php
