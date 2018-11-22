@@ -1,58 +1,58 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-micro-application">Creating a Micro Application</a>
+      <a href="#creating-micro-application">创建一个微型的应用程序</a>
     </li>
     <li>
-      <a href="#routing">Routing</a> <ul>
+      <a href="#routing">路由</a> <ul>
         <li>
-          <a href="#routing-setup">Setup</a> <ul>
+          <a href="#routing-setup">安装程序</a> <ul>
             <li>
-              <a href="#routing-setup-application">Application object</a>
+              <a href="#routing-setup-application">应用程序对象</a>
             </li>
             <li>
-              <a href="#routing-setup-router">Router object</a>
+              <a href="#routing-setup-router">路由对象</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#rewrite-rules">Rewrite Rules</a>
+          <a href="#rewrite-rules">重定向规则</a>
         </li>
         <li>
           <a href="#routing-handlers">Handlers</a> <ul>
             <li>
-              <a href="#routing-handlers-definitions">Definitions</a> <ul>
+              <a href="#routing-handlers-definitions">定义</a> <ul>
                 <li>
-                  <a href="#routing-handlers-anonymous-function">Anonymous Function</a>
+                  <a href="#routing-handlers-anonymous-function">匿名函数</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-function">Function</a>
+                  <a href="#routing-handlers-function">函数</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-static-method">Static Method</a>
+                  <a href="#routing-handlers-static-method">静态方法</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-object-method">Method in an Object</a>
+                  <a href="#routing-handlers-object-method">对象中的方法</a>
                 </li>
                 <li>
-                  <a href="#routing-handlers-controllers">Controllers</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#routing-handlers-controllers-lazy-loading">Lazy Loading</a> <ul>
-                <li>
-                  <a href="#routing-handlers-controllers-lazy-loading-use-case">Use case</a>
+                  <a href="#routing-handlers-controllers">控制器</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#routing-handlers-not-found">Not Found (404)</a>
+              <a href="#routing-handlers-controllers-lazy-loading">延迟加载</a> <ul>
+                <li>
+                  <a href="#routing-handlers-controllers-lazy-loading-use-case">使用案例</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#routing-handlers-not-found">未找到 (404)</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#routing-verbs">Methods - Verbs</a> <ul>
+          <a href="#routing-verbs">方法-动词</a> <ul>
             <li>
               <a href="#routing-verb-delete">delete</a>
             </li>
@@ -80,41 +80,41 @@
           </ul>
         </li>
         <li>
-          <a href="#routing-collections">Collections</a>
+          <a href="#routing-collections">集合</a>
         </li>
         <li>
-          <a href="#routing-parameters">Parameters</a>
+          <a href="#routing-parameters">参数</a>
         </li>
         <li>
-          <a href="#routing-redirections">Redirections</a>
+          <a href="#routing-redirections">重定向</a>
         </li>
         <li>
-          <a href="#routing-urls-for-routes">URLs for Routes</a>
+          <a href="#routing-urls-for-routes">用于路由的 Url</a>
         </li>
       </ul>
     </li>
     <li>
-      <a href="#dependency-injector">Dependency Injector</a>
+      <a href="#dependency-injector">依赖注入</a>
     </li>
     <li>
-      <a href="#responses">Responses</a> <ul>
+      <a href="#responses">响应</a> <ul>
         <li>
-          <a href="#responses-direct-output">Direct output</a>
+          <a href="#responses-direct-output">直接输出</a>
         </li>
         <li>
-          <a href="#responses-include">Including another file</a>
+          <a href="#responses-include">包括其他文件</a>
         </li>
         <li>
-          <a href="#responses-direct-output-json">Direct output JSON</a>
+          <a href="#responses-direct-output-json">直接输出 JSON</a>
         </li>
         <li>
-          <a href="#responses-new-response-object">New Response object</a>
+          <a href="#responses-new-response-object">新响应对象</a>
         </li>
         <li>
-          <a href="#responses-application-response">Application Response</a>
+          <a href="#responses-application-response">应用程序响应</a>
         </li>
         <li>
-          <a href="#responses-return-application-response">Return Application Response</a>
+          <a href="#responses-return-application-response">返回应用程序响应</a>
         </li>
         <li>
           <a href="#responses-json">JSON</a>
@@ -122,23 +122,23 @@
       </ul>
     </li>
     <li>
-      <a href="#events">Events</a> <ul>
+      <a href="#events">事件</a> <ul>
         <li>
-          <a href="#events-available-events">Available events</a> <ul>
+          <a href="#events-available-events">可用的事件</a> <ul>
             <li>
-              <a href="#events-available-events-authentication">Authentication example</a>
+              <a href="#events-available-events-authentication">身份验证示例</a>
             </li>
             <li>
-              <a href="#events-available-events-not-found">Not found example</a>
+              <a href="#events-available-events-not-found">未找到 示例</a>
             </li>
           </ul>
         </li>
       </ul>
     </li>
     <li>
-      <a href="#middleware">Middleware</a> <ul>
+      <a href="#middleware">中间件</a> <ul>
         <li>
-          <a href="#middleware-attached-events">Attached events</a> <ul>
+          <a href="#middleware-attached-events">附加的事件</a> <ul>
             <li>
               <a href="#middleware-attached-events-before">before</a>
             </li>
@@ -151,32 +151,32 @@
           </ul>
         </li>
         <li>
-          <a href="#middleware-implementation">Implementation</a>
+          <a href="#middleware-implementation">实现</a>
         </li>
         <li>
-          <a href="#middleware-setup">Setup</a>
+          <a href="#middleware-setup">设置</a>
         </li>
         <li>
-          <a href="#middleware-events">Events in Middleware</a> <ul>
+          <a href="#middleware-events">在中间件中的事件</a> <ul>
             <li>
-              <a href="#middleware-events-api">API example</a> <ul>
+              <a href="#middleware-events-api">API 的示例</a> <ul>
                 <li>
-                  <a href="#middleware-events-api-firewall">Firewall Middleware</a>
+                  <a href="#middleware-events-api-firewall">防火墙中间件</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-not-found">Not Found Middleware</a>
+                  <a href="#middleware-events-api-not-found">找不到中间件</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-redirect">Redirect Middleware</a>
+                  <a href="#middleware-events-api-redirect">重定向中间件</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-cors">CORS Middleware</a>
+                  <a href="#middleware-events-api-cors">CORS 中间件</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-request">Request Middleware</a>
+                  <a href="#middleware-events-api-request">请求中间件</a>
                 </li>
                 <li>
-                  <a href="#middleware-events-api-response">Response Middleware</a>
+                  <a href="#middleware-events-api-response">响应中间件</a>
                 </li>
               </ul>
             </li>
@@ -185,25 +185,25 @@
       </ul>
     </li>
     <li>
-      <a href="#models">Models</a>
+      <a href="#models">模型</a>
     </li>
     <li>
-      <a href="#model-instances">Injecting Model Instances</a>
+      <a href="#model-instances">注入模型实例</a>
     </li>
     <li>
-      <a href="#views">Views</a>
+      <a href="#views">视图</a>
     </li>
     <li>
-      <a href="#error-handling">Error Handling</a>
+      <a href="#error-handling">错误处理</a>
     </li>
   </ul>
 </div>
 
-# Micro Applications
+# 微型应用
 
-Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code.
+Phalcon 提供一个非常 '轻' 的应用，因此您可以用很少的的 PHP 代码创建 'Micro' 应用。
 
-Micro applications are suitable for small applications that will have very low overhead. Such applications are for instance our [website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
+微应用程序，适合小的应用，这样会有很低的资源开销。 此类应用程序例如在我们的 [网站](https://github.com/phalcon/website)，这个网站 ([文档](https://github.com/phalcon/docs))、 我们 [存储](https://github.com/phalcon/store) Api，原型等。
 
 ```php
 <?php
@@ -224,9 +224,9 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 
-## Creating a Micro Application
+## 创建一个微型的应用程序
 
-The `Phalcon\Mvc\Micro` class is the one responsible for creating a Micro application.
+`Phalcon\Mvc\Micro` 类是负责创建一个微型的应用程序。
 
 ```php
 <?php
@@ -238,9 +238,9 @@ $app = new Micro();
 
 <a name='routing'></a>
 
-## Routing
+## 路由
 
-Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are defined as follows:
+`Phalcon\Mvc\Micro` 应用程序中定义路由是很容易的。路由的定义如下：
 
 ```text
    Application -> (method/verb) -> (route url/regex, callable PHP function)
@@ -248,11 +248,11 @@ Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are de
 
 <a name='routing-setup'></a>
 
-### Setup
+### 设置
 
-Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[version]]/routing)]
+路由是由 `Phalcon\Mvc\Router` 对象处理的。[[info](/[[language]]/[[version]]/routing)]
 
-<h5 class='alert alert-warning'>Routes must always start with <code>/</code></h5>
+<h5 class='alert alert-warning'>路由必须总是以 <code>/</code> 开头</h5>
 
 Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
 
@@ -270,9 +270,9 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-### Application object
+### 应用程序对象
 
-Routes can be set using the `Phalcon\Mvc\Micro` application object as follows:
+可以按如下方式使用 `Phalcon\Mvc\Micro` 应用程序对象设置路由：
 
 ```php
 use Phalcon\Mvc\Micro;
@@ -290,9 +290,9 @@ $app->get(
 
 <a name='routing-setup-router'></a>
 
-### Router object
+### 路由对象
 
-You can also create a `Phalcon\Mvc\Router` object, setting the routes there and then injecting it in the dependency injection container.
+您还可以创建 `Phalcon\Mvc\Router` 对象，那里设置路由，然后注射的依赖注入容器中。
 
 ```php
 use Phalcon\Mvc\Micro;
@@ -313,33 +313,33 @@ $app->setService('router', $router, true);
 
 Setting up your routes using the `Phalcon\Mvc\Micro` applications verb methods (`get`, `post`, etc.) is much easier than setting up a router object with relevant routes and then injecting it in the application.
 
-Each method has its advantages and disadvantages. It all depends on the design and needs of your application.
+每个方法有其优点和缺点。这一切取决于您的应用程序需求与设计。
 
 <a name='rewrite-rules'></a>
 
-## Rewrite Rules
+## 伪静态规则
 
-In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
+让路由正常工作，需要在您的 web 服务器配置为特定的站点配置特定的选项。
 
 Those changes are outlined in the [rewrite rules](/[[language]]/[[version]]/rewrite-rules).
 
 <a name='routing-handlers'></a>
 
-## Handlers
+## 处理程序
 
-Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
+处理程序是代码的可调用段，得到附加到路由。 路由匹配匹配时，该处理程序执行已定义的所有参数。 A handler is any callable piece of code that exists in PHP.
 
 <a name='routing-handlers-definitions'></a>
 
-### Definitions
+### 定义
 
-Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
+Phalcon提供几种方法可以将处理程序附加到路由。您的应用需求和设计，以及编码风格会影响您选择的执行的因素。
 
 <a name='routing-handlers-anonymous-function'></a>
 
-#### Anonymous Function
+#### 匿名函数
 
-Finally we can use an anonymous function (as seen above) to handle the request
+最后我们可以使用匿名函数 （如上图所示） 来处理该请求
 
 ```php
 $app->get(
@@ -350,7 +350,7 @@ $app->get(
 );
 ```
 
-Accessing the `$app` object inside the anonymous function can be achieved by injecting it as follows:
+访问匿名函数内部的 `$app` 对象可以通过注射它，如下所示：
 
 ```php
 $app->get(
