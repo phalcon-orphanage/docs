@@ -4,19 +4,19 @@
       <a href="#overview">返回的响应</a> 
       <ul>
         <li>
-          <a href="#working-with-headers">Working with Headers</a>
+          <a href="#working-with-headers">使用Headers</a>
         </li>
         <li>
-          <a href="#redirections">Making Redirections</a>
+          <a href="#redirections">重定向</a>
         </li>
         <li>
           <a href="#http-cache">HTTP 缓存</a> 
           <ul>
             <li>
-              <a href="#http-cache-expiration-time">Setting an Expiration Time</a>
+              <a href="#http-cache-expiration-time">设置过期时间</a>
             </li>
             <li>
-              <a href="#http-cache-control">Cache-Control</a>
+              <a href="#http-cache-control">缓存控制</a>
             </li>
             <li>
               <a href="#http-cache-etag">E-Tag</a>
@@ -30,29 +30,29 @@
 
 <a name='overview'></a>
 
-# Returning Responses
+# 返回的响应
 
-Part of the HTTP cycle is returning responses to clients. `Phalcon\Http\Response` is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
+HTTP周期的一部分是向客户机返回响应。 `Phalcon\Http\Response`是Phalcon设计来完成这项任务的组件。 HTTP响应通常由标题和正文组成。 下面是一个基本用法的例子:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Getting a response instance
+// 获取一个response 实例
 $response = new Response();
 
-// Set status code
+// 设置状态码
 $response->setStatusCode(404, 'Not Found');
 
-// Set the content of the response
+// 设置内容
 $response->setContent("Sorry, the page doesn't exist");
 
-// Send response to the client
+// 发送给客户端
 $response->send();
 ```
 
-If you are using the full MVC stack there is no need to create responses manually. However, if you need to return a response directly from a controller's action follow this example:
+如果您使用的是完整的MVC栈，则不需要手动创建响应。但是，如果您需要直接从控制器的操作返回响应，请遵循以下示例:
 
 ```php
 <?php
@@ -82,11 +82,11 @@ class FeedController extends Controller
 
 <a name='working-with-headers'></a>
 
-## Working with Headers
+## 使用Headers
 
-Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status, type of response and much more.
+标头是HTTP响应的重要部分。它包含关于响应状态的有用信息，比如HTTP状态、响应类型等等。
 
-You can set headers in the following way:
+您可以通过以下方式设置headers:
 
 ```php
 <?php
@@ -99,23 +99,23 @@ $response->setHeader('Content-Disposition', "attachment; filename='downloaded.pd
 $response->setRawHeader('HTTP/1.1 200 OK');
 ```
 
-A `Phalcon\Http\Response\Headers` bag internally manages headers. This class retrieves the headers before sending it to client:
+一个`Phalcon\Http\Response\Headers` 包内部用于管理header。这个类在发送给客户端之前检索报头:
 
 ```php
 <?php
 
-// Get the headers bag
+// 获取包头
 $headers = $response->getHeaders();
 
-// Get a header by its name
+// 根据名字获取包头
 $contentType = $headers->get('Content-Type');
 ```
 
 <a name='redirections'></a>
 
-## Making Redirections
+## 重定向
 
-With `Phalcon\Http\Response` you can also execute HTTP redirections:
+使用`Phalcon\Http\Response`，您还可以执行Http重定向:
 
 ```php
 <?php
@@ -133,10 +133,9 @@ $response->redirect('http://en.wikipedia.org', true);
 $response->redirect('http://www.example.com/new-location', true, 301);
 ```
 
-All internal URIs are generated using the [url](/[[language]]/[[version]]/url) service (by default `Phalcon\Mvc\Url`). This example demonstrates how you can redirect using a route you have defined in your application:
+所有内部uri都使用[url](/[[language]]/[[version]]/url)服务(默认情况下`Phalcon\Mvc\ url</ 1>) 生成。 这个示例演示了如何使用在应用程序中定义的路由重定向:</p>
 
-```php
-<?php
+<pre><code class="php"><?php
 
 // Redirect based on a named route
 return $response->redirect(
@@ -146,28 +145,28 @@ return $response->redirect(
         'controller' => 'index',
     ]
 );
-```
+`</pre> 
 
-Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
+即使有一个视图与当前操作相关联，它也不会被呈现，因为`重定向`会禁用视图。
 
 <a name='http-cache'></a>
 
 ## HTTP Cache
 
-One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
+提高应用程序性能和减少流量的最简单方法之一是使用HTTP缓存。 大多数现代浏览器都支持HTTP缓存，这也是许多网站目前速度很快的原因之一。
 
-HTTP Cache can be altered in the following header values sent by the application when serving a page for the first time:
+在第一次服务页时, 应用程序发送的以下标头值可以更改 HTTP 缓存:
 
-* **`Expires:`** With this header the application can set a date in the future or the past telling the browser when the page must expire.
-* **`Cache-Control:`** This header allows to specify how much time a page should be considered fresh in the browser.
-* **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads.
-* **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page.
+* **` Expires: `**使用此标头, 应用程序可以设置将来的日期, 或在页面必须过期时告知浏览器。
+* **` Cache-Control: `**此标头允许指定在浏览器中应将页面视为新鲜的时间。
+* **` Last-Modified: `**此标头告诉浏览器这是最后一次更新站点, 避免页面重新加载。
+* **` ETag: `**etag 是必须创建的唯一标识符, 包括当前页的修改时间戳。
 
 <a name='http-cache-expiration-time'></a>
 
-### Setting an Expiration Time
+### 设置过期时间
 
-The expiration date is one of the easiest and most effective ways to cache a page in the client (browser). Starting from the current date we add the amount of time the page will be stored in the browser cache. Until this date expires no new content will be requested from the server:
+过期日期是在客户端 (浏览器) 中缓存页面的最简单、最有效的方法之一。 从当前日期开始, 我们将添加页面在浏览器缓存中存储的时间量。 在此日期到期之前, 不会从服务器请求任何新内容:
 
 ```php
 <?php
@@ -178,9 +177,9 @@ $expiryDate->modify('+2 months');
 $response->setExpires($expiryDate);
 ```
 
-The Response component automatically shows the date in GMT timezone as expected in an Expires header.
+响应组件按预期的过期标头自动显示 GMT 时区中的日期。
 
-If we set this value to a date in the past the browser will always refresh the requested page:
+如果我们将此值设置为过去的某个日期, 浏览器将始终刷新请求的页面:
 
 ```php
 <?php
@@ -191,13 +190,13 @@ $expiryDate->modify('-10 minutes');
 $response->setExpires($expiryDate);
 ```
 
-Browsers rely on the client's clock to assess if this date has passed or not. The client clock can be modified to make pages expire and this may represent a limitation for this cache mechanism.
+浏览器依赖于客户的时钟来评估此日期是否已通过。可以修改客户端时钟以使页面过期, 这是此缓存机制的限制。
 
 <a name='http-cache-control'></a>
 
-### Cache-Control
+### 缓存控制
 
-This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser how long it must keep the page in its cache:
+此标头提供了一种更安全的方式来缓存所服务的页面。我们必须指定一个时间 (以秒为单位), 告知浏览器必须在其缓存中保留该页的长度:
 
 ```php
 <?php
@@ -206,7 +205,7 @@ This header provides a safer way to cache the pages served. We simply must speci
 $response->setHeader('Cache-Control', 'max-age=86400');
 ```
 
-The opposite effect (avoid page caching) is achieved in this way:
+相反的效果(避免页面缓存) 是这样实现的:
 
 ```php
 <?php
