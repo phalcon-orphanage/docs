@@ -716,7 +716,7 @@ $robots = Robots::find(
 
 <h5 class='alert alert-warning'>由于默认的绑定类型是 <code>Phalcon\Db\Column::BIND_PARAM_STR</code>，还有没有必要指定 'bindTypes' 参数，如果所有的列都是该类型。</h5>
 
-If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
+如果您在绑定参数绑定数组，请牢记，编号为键的同时，还必须从零开始：
 
 ```php
 <?php
@@ -1057,9 +1057,9 @@ $robot = new Robots();
 $robot->save($_POST);
 ```
 
-<h5 class='alert alert-warning'>Without precautions mass assignment could allow attackers to set any database column's value. 仅当您希望允许用户插入/更新模型中的每一列时才使用该特性，即使这些字段不在提交的表单中。 </h5>
+<h5 class='alert alert-warning'>如果没有预防措施，大规模分配可能允许攻击者设置任何数据库列的值。 仅当您希望允许用户插入/更新模型中的每一列时才使用该特性，即使这些字段不在提交的表单中。 </h5>
 
-You can set an additional parameter in `save` to set a whitelist of fields that only must taken into account when doing the mass assignment:
+您可以在`save`中设置一个额外的参数，以设置一个只有在执行大规模分配时才必须考虑的白名单字段:
 
 ```php
 <?php
@@ -1081,7 +1081,7 @@ $robot->save(
 
 ### Create/Update with Confidence
 
-当应用程序有很多的竞争时，我们可以期待创建记录，但它实际上更新。 如果我们使用 `Phalcon\Mvc\Model::save()` 来保留数据库中的记录，这可能发生。 If we want to be absolutely sure that a record is created or updated, we can change the `save()` call with `create()` or `update()`:
+当应用程序有很多的竞争时，我们可以期待创建记录，但它实际上更新。 如果我们使用 `Phalcon\Mvc\Model::save()` 来保留数据库中的记录，这可能发生。 如果我们想要绝对确定一条记录被创建或更新，我们可以使用`save()` ，使用`create()`或`update()`:
 
 ```php
 <?php
@@ -1349,7 +1349,7 @@ class Robots extends Model
 }
 ```
 
-This will ignore globally these fields on each `INSERT`/`UPDATE` operation on the whole application. If you want to ignore different attributes on different `INSERT`/`UPDATE` operations, you can specify the second parameter (boolean) - `true` for replacement. Forcing a default value can be done as follows:
+这将全局忽略每个`INSERT`/`UPDATE`操作对整个应用程序的影响。 如果要忽略不同的不同属性在`INSERT`/`UPDATE`操作，可以指定第二个参数(布尔值)- `true`进行替换。 强制一个默认值可以这样做:
 
 ```php
 <?php
@@ -1388,7 +1388,7 @@ class Robots extends Model
 }
 ```
 
-<h5 class='alert alert-warning'>Never use a <code>Phalcon\Db\RawValue</code> to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. </h5>
+<h5 class='alert alert-warning'>永远不要使用<code>Phalcon\Db\RawValue</code>分配外部数据(如用户输入) 或变量数据。 将参数绑定到查询时，将忽略这些字段的值。 所以它可以用于攻击注入 SQL 的应用程序。 </h5>
 
 <a name='dynamic-updates'></a>
 
@@ -1418,7 +1418,7 @@ class Robots extends Model
 
 ## 独立列映射
 
-The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
+ORM支持独立的列映射，允许开发人员在模型中使用与表中不同的列名。 Phalcon将识别新的列名，并相应地重新命名它们以匹配数据库中的相应列。 当需要重命名数据库中的字段时，无需担心代码中的所有查询，这是一个很好的特性。 模型中列映射的更改将处理其余部分。 例如：
 
 ```php
 <?php
@@ -1451,7 +1451,7 @@ class Robots extends Model
 }
 ```
 
-Then you can use the new names naturally in your code:
+然后可以在代码中自然地使用新的名称：
 
 ```php
 <?php
@@ -1487,16 +1487,16 @@ $robot->theYear = 2999;
 $robot->save();
 ```
 
-Consider the following when renaming your columns:
+重命名您的列时，请考虑下列事项：
 
-- References to attributes in relationships/validators must use the new names
-- Refer the real column names will result in an exception by the ORM
+- 对relationships/validators的属性的引用必须使用新的名称
+- 引用真实列名将导致ORM异常
 
-The independent column map allows you to:
+独立的列映射，您可以：
 
-- Write applications using your own conventions
-- Eliminate vendor prefixes/suffixes in your code
-- Change column names without change your application code
+- 编写应用程序使用您自己的约定
+- 消除供应商的前缀后缀，可在您的代码
+- 更改列名称不改变应用程序代码
 
 <a name='record-snapshots'></a>
 
@@ -1520,7 +1520,7 @@ class Robots extends Model
 }
 ```
 
-When activating this feature the application consumes a bit more of memory to keep track of the original values obtained from the persistence. In models that have this feature activated you can check what fields changed as follows:
+在激活该特性时，应用程序会消耗更多的内存来跟踪从持久性中获得的原始值。 已激活此功能的模型中，您可以检查字段，如下所示更改：
 
 ```php
 <?php
@@ -1542,9 +1542,9 @@ var_dump($robot->hasChanged('type')); // false
 
 <a name='different-schemas'></a>
 
-## 指向一个不同的架构
+## 指向一个不同的表
 
-If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
+如果模型映射到与默认模式/数据库不同的表。 您可以使用`setSchema()`方法来定义:
 
 ```php
 <?php
@@ -1687,7 +1687,7 @@ class Robots extends Model
 }
 ```
 
-The `selectReadConnection()` method is called to choose the right connection, this method intercepts any new query executed:
+调用 `selectReadConnection()` 方法来选择正确的连接，此方法截取执行任何新查询：
 
 ```php
 <?php
@@ -1727,13 +1727,13 @@ class Robots extends Model
 }
 ```
 
-The `notSaved` event is triggered every time that a `create` or `update` action fails. So we're flashing the validation messages obtaining the `flash` service from the DI container. By doing this, we don't have to print messages after each save.
+每次当`create`或`update`操作失败时，`notSaved`事件被触发。 因此，我们正在从DI容器中获取`flash`服务的验证消息。 通过这样做，我们不需要在每个保存以后打印消息。
 
 <a name='disabling-enabling-features'></a>
 
 ## 禁用/启用的功能
 
-In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly. According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
+在ORM中，我们实现了一种机制，允许您在全局范围内启用/禁用特定的特性或选项。 根据您如何使用ORM，您可以禁用您不使用的ORM。 如果需要，这些选项也可以暂时禁用:
 
 ```php
 <?php
@@ -1748,22 +1748,22 @@ Model::setup(
 );
 ```
 
-The available options are:
+可用的查询选项有：
 
-| Option             | Description                                                                               | Default |
-| ------------------ | ----------------------------------------------------------------------------------------- |:-------:|
-| events             | Enables/Disables callbacks, hooks and event notifications from all the models             | `true`  |
-| columnRenaming     | Enables/Disables the column renaming                                                      | `true`  |
-| notNullValidations | The ORM automatically validate the not null columns present in the mapped table           | `true`  |
-| virtualForeignKeys | Enables/Disables the virtual foreign keys                                                 | `true`  |
-| phqlLiterals       | Enables/Disables literals in the PHQL parser                                              | `true`  |
-| lateStateBinding   | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method | `false` |
+| 选项                 | 描述                                                    |   默认    |
+| ------------------ | ----------------------------------------------------- |:-------:|
+| events             | 启用/禁用所有模型的回调、钩子和事件通知                                  | `true`  |
+| columnRenaming     | 启用/禁用列重命名                                             | `true`  |
+| notNullValidations | ORM自动验证映射表中出现的not null列                               | `true`  |
+| virtualForeignKeys | 启用/禁用虚拟外键                                             | `true`  |
+| phqlLiterals       | 在PHQL解析器中启用/禁用文字                                      | `true`  |
+| lateStateBinding   | 启用/禁用`Phalcon\Mvc\Model::cloneResultMap()`方法的延迟状态绑定 | `false` |
 
 <a name='stand-alone-component'></a>
 
 ## 独立组件
 
-Using `Phalcon\Mvc\Model` in a stand-alone mode can be demonstrated below:
+在独立模式下使用 `Phalcon\Mvc\Model` 可以如下文所示：
 
 ```php
 <?php

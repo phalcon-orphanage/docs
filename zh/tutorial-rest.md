@@ -664,7 +664,7 @@ Content-Type: text/html; charset=UTF-8
     list: droid, mechanical, virtual"]}
 ```
 
-Finally, delete a robot:
+最后，删除一个机器人：
 
 ```bash
 curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
@@ -680,6 +680,6 @@ Content-Type: text/html; charset=UTF-8
 
 <a name='conclusion'></a>
 
-## Conclusion
+## 结论
 
-As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/[[language]]/[[version]]/application-micro) and [PHQL](/[[language]]/[[version]]/db-phql).
+正如我们所看到的开发 [基于 Rest](http://en.wikipedia.org/wiki/Representational_state_transfer) API 与Phalcon很容易使用 [微应用程序](/[[language]]/[[version]]/application-micro) 和 [PHQL](/[[language]]/[[version]]/db-phql)。

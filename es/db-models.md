@@ -934,7 +934,7 @@ $group = Employees::sum(
 );
 ```
 
-Ejemplos de AVERANGE:
+Ejemplos de AVERAGE:
 
 ```php
 <?php
