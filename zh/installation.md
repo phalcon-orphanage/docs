@@ -130,7 +130,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <div class="alert alert-danger">
     <p>
-        You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7.
+        您应该始终尝试使用最新版本的Phalcon和PHP作为解决bug、增强安全性和提高性能的工具。 PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7.
     </p>
 </div>
 
@@ -233,14 +233,14 @@ sudo apt-get install php7.0-phalcon
 
 If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
 
-Installation of the repo:
+存储库的安装:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-and Phalcon:
+接着 Phalcon:
 
 ```php
 sudo apt-get install php-phalcon

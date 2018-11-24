@@ -1,13 +1,13 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Dispatching Controllers</a> 
+      <a href="#overview">调度控制器</a> 
       <ul>
         <li>
-          <a href="#dispatch-loop">The Dispatch Loop</a> 
+          <a href="#dispatch-loop">调度循环</a> 
           <ul>
             <li>
-              <a href="#dispatch-loop-events">Dispatch Loop Events</a>
+              <a href="#dispatch-loop-events">调度循环事件</a>
             </li>
           </ul>
         </li>
@@ -20,7 +20,7 @@
           </ul>
         </li>
         <li>
-          <a href="#preparing-parameters">Preparing Parameters</a>
+          <a href="#preparing-parameters">准备参数</a>
         </li>
         <li>
           <a href="#getting-parameters">Getting Parameters</a>
@@ -232,12 +232,12 @@ $this->dispatcher->forward(
 
 A `forward` action accepts the following parameters:
 
-| Parameter    | Description                                             |
-| ------------ | ------------------------------------------------------- |
-| `controller` | A valid controller name to forward to.                  |
-| `action`     | A valid action name to forward to.                      |
-| `params`     | An array of parameters for the action.                  |
-| `namespace`  | A valid namespace name where the controller is part of. |
+| Parameter    | Description     |
+| ------------ | --------------- |
+| `controller` | 要转发的有效控制器名称。    |
+| `action`     | 要转发的有效方法名称。     |
+| `params`     | 操作的参数数组。        |
+| `namespace`  | 控制器所在的有效名称空间名称。 |
 
 <a name='forwarding-events-manager'></a>
 
@@ -620,7 +620,7 @@ return $dispatcher;
 
 <div class="alert alert-warning">
     <p>
-        Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in <code>setModelBinder()</code> which can also accept service name or just by passing cache instance to <code>Binder</code> constructor.
+        由于绑定器对象在使用内部的反射API，这些API可能是重量级的，因此可以设置缓存。 这可以使用<code>setModelBinder()</code> 的第二个参数来实现，该参数可以是服务名或是传给<code>Binder</code> 构造函数的缓存实例。
     </p>
 </div>
 
@@ -789,7 +789,7 @@ class ExceptionsPlugin
 
 <div class="alert alert-danger">
     <p>
-        Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the <code>beforeException</code> events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
+        只有调度器产生的异常，和在<code>beforeException</code> 事件中执行的动作产生的异常通知。 监听器和控制器事件产生的异常被重定向到最后一个 try/catch 块
     </p>
 </div>
 
