@@ -482,6 +482,7 @@ $acl->addRole($roleAdmins, $roleGuests);
 ```
 
 2. You can setup the relationships after roles are added
+
 ```php
 <?php
 
