@@ -2,7 +2,7 @@
     <ul>
         <li><a href="#requirements">Requirements</a>
             <ul>
-                <li><a href="#requirements-hardware">Hardware</a></li>
+                <li><a href="#requirements-hardware">硬件</a></li>
                 <li><a href="#requirements-software">Software</a>
                     <ul>
                         <li>
@@ -17,7 +17,7 @@
                 <li><a href="#installation-linux">Linux</a>
                     <ul>
                         <li>
-                            <a href="#installation-linux-debian">DEB based distributions (Debian, Ubuntu, etc.)</a>
+                            <a href="#installation-linux-debian">DEB 基于分布 （Debian，Ubuntu 等）</a>
                             <ul>
                                 <li>
                                     <a href="#installation-linux-debian-repository">Repository installation</a>
@@ -130,7 +130,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <div class="alert alert-danger">
     <p>
-        You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7.
+        您应该始终尝试使用最新版本的Phalcon和PHP作为解决bug、增强安全性和提高性能的工具。 PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7.
     </p>
 </div>
 
@@ -159,7 +159,7 @@ Phalcon need the following extensions to run (minimal):
 
 # Installation
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+由于 Phalcon 被编译为 PHP 扩展, 它的安装与任何其他传统的 php 框架有所不同。Phalcon 需要在 web 服务器上作为模块进行安装和加载。
 
 <a name='installation-linux'></a>
 
@@ -233,14 +233,14 @@ sudo apt-get install php7.0-phalcon
 
 If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
 
-Installation of the repo:
+存储库的安装:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-and Phalcon:
+接着 Phalcon:
 
 ```php
 sudo apt-get install php-phalcon
