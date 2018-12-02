@@ -10,11 +10,11 @@
 
 final private [Exception](http://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Clone the exception
+例外のクローンを生成します。
 
 public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Exception constructor
+例外のコンストラクタ
 
 public **__wakeup** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
@@ -30,24 +30,24 @@ final public *int* **getCode** () inherited from [Exception](http://php.net/manu
 
 final public *string* **getFile** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the file in which the exception occurred
+例外が発生したファイルを取得します。
 
 final public *int* **getLine** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the line in which the exception occurred
+例外が発生した行を取得します。
 
 final public *array* **getTrace** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the stack trace
+スタックトレースを取得します。
 
 final public [Exception](http://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Returns previous Exception
+以前の例外を返します。
 
 final public [Exception](http://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-Gets the stack trace as a string
+スタックトレースを文字列として取得します。
 
 public *string* **__toString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-String representation of the exception
+例外を表す文字列
