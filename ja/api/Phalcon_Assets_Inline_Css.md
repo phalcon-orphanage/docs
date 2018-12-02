@@ -4,44 +4,44 @@
 
 *implements* [Phalcon\Assets\ResourceInterface](/[[language]]/[[version]]/api/Phalcon_Assets_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/inline/css.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/inline/css.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Represents an inlined CSS
+インラインCSSを表します。
 
-## Methods
+## メソッド
 
 public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 
-Phalcon\\Assets\\Inline\\Css Constructor
+Phalcon\\Assets\\Inline\\Css コンストラクタ
 
 public *string* **getType** () inherited from [Phalcon\Assets\Inline](/[[language]]/[[version]]/api/Phalcon_Assets_Inline)
 
-Gets the resource's type.
+リソースの型を取得します。
 
 public *string* **getContent** () inherited from [Phalcon\Assets\Inline](/[[language]]/[[version]]/api/Phalcon_Assets_Inline)
 
-Gets the content.
+コンテンツを取得します。
 
 public *boolean* **getFilter** () inherited from [Phalcon\Assets\Inline](/[[language]]/[[version]]/api/Phalcon_Assets_Inline)
 
-Gets if the resource must be filtered or not.
+リソースをフィルターするかどうかを取得します。
 
 public *array* **getAttributes** () inherited from [Phalcon\Assets\Inline](/[[language]]/[[version]]/api/Phalcon_Assets_Inline)
 
-Gets extra HTML attributes.
+追加の HTML 属性を取得します。
 
 public [*self*](/[[language]]/[[version]]/api/Phalcon_Assets_Inline_Css) **setType** (*string* $type) inherited from [Phalcon\Assets\Inline](/[[language]]/[[version]]/api/Phalcon_Assets_Inline)
 
-Sets the inline's type
+インラインのタイプを設定します。
 
 public [*self*](/[[language]]/[[version]]/api/Phalcon_Assets_Inline_Css) **setFilter** (*boolean* $filter) inherited from [Phalcon\Assets\Inline](/[[language]]/[[version]]/api/Phalcon_Assets_Inline)
 
-Sets if the resource must be filtered or not
+リソースをフィルターするかどうかを設定します。
 
 public [*self*](/[[language]]/[[version]]/api/Phalcon_Assets_Inline_Css) **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Inline](/[[language]]/[[version]]/api/Phalcon_Assets_Inline)
 
-Sets extra HTML attributes
+追加の HTML 属性を設定します
 
 public *string* **getResourceKey** () inherited from [Phalcon\Assets\Inline](/[[language]]/[[version]]/api/Phalcon_Assets_Inline)
 
-Gets the resource's key.
+リソースのキーを取得します。

@@ -1,6 +1,6 @@
-- General 
+- 常规信息 
     - [Introduction](/[[language]]/[[version]]/introduction)
-    - [Release Notes](https://github.com/phalcon/cphalcon/blob/master/CHANGELOG.md)
+    - [发行说明](https://github.com/phalcon/cphalcon/blob/master/CHANGELOG.md)
     - [Sponsors](/[[language]]/[[version]]/sponsors)
     - [FAQ](/[[language]]/[[version]]/faq)
 - Contributions 
@@ -32,10 +32,10 @@
 - Core 
     - [API Index](/[[language]]/[[version]]/api/index)
     - [Application] 
-        - [Full](/[[language]]/[[version]]/application)
+        - [完整](/[[language]]/[[version]]/application)
         - [Micro](/[[language]]/[[version]]/application-micro)
         - [Cli](/[[language]]/[[version]]/application-cli)
-    - [DI Container](/[[language]]/[[version]]/di)
+    - [DI 容器](/[[language]]/[[version]]/di)
     - [MVC](/[[language]]/[[version]]/mvc)
 - Services 
     - [Cache](/[[language]]/[[version]]/cache)
