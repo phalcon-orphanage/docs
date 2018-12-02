@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Filtering and Sanitizing</a> <ul>
+      <a href="#overview">过滤和处理</a> <ul>
         <li>
-          <a href="#types">Types of Built-in Filters</a>
+          <a href="#types">类型的内置过滤器</a>
         </li>
         <li>
           <a href="#sanitizing">Sanitizing data</a>
@@ -12,7 +12,7 @@
           <a href="#sanitizing-from-controllers">Sanitizing from Controllers</a>
         </li>
         <li>
-          <a href="#filtering-action-parameters">Filtering Action Parameters</a>
+          <a href="#filtering-action-parameters">过滤操作参数</a>
         </li>
         <li>
           <a href="#filtering-data">Filtering data</a>
@@ -52,24 +52,24 @@ The `Phalcon\Filter` component provides a set of commonly used filters and data 
 
 The following are the built-in filters provided by this component:
 
-| Name      | Description                                                                                   |
-| --------- | --------------------------------------------------------------------------------------------- |
-| absint    | Casts the value as an integer and returns the absolute value of it.                           |
-| alphanum  | Remove all characters except [a-zA-Z0-9]                                                      |
-| email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.             |
-| float     | Remove all characters except digits, dot, plus and minus sign.                                |
-| float!    | Remove all characters except digits, dot, plus and minus sign and cast the result as a float. |
-| int       | Remove all characters except digits, plus and minus sign.                                     |
-| int!      | Remove all characters except digits, plus and minus sign and cast the result as an integer.   |
-| lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function       |
-| string    | Strip tags and encode HTML entities, including single and double quotes.                      |
-| striptags | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function       |
-| trim      | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function                   |
-| upper     | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function       |
+| Name      | Description                                                                             |
+| --------- | --------------------------------------------------------------------------------------- |
+| absint    | 将值强制转换为整数, 并返回它的绝对值。                                                                    |
+| alphanum  | Remove all characters except [a-zA-Z0-9]                                                |
+| email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.       |
+| float     | Remove all characters except digits, dot, plus and minus sign.                          |
+| float!    | 删除除数字、点、加号和减号之外的所有字符, 然后将结果强制转换为浮点型。                                                    |
+| int       | Remove all characters except digits, plus and minus sign.                               |
+| int!      | 删除除数字、加号和减号之外的所有字符, 并将结果强制转换为整数。                                                        |
+| lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function |
+| string    | Strip tags and encode HTML entities, including single and double quotes.                |
+| striptags | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function |
+| trim      | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function             |
+| upper     | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function |
 
-Please note that the component uses the [filter_var](https://secure.php.net/manual/en/function.filter-var.php) PHP function internally.
+请注意，组件在内部使用[filter_var](https://secure.php.net/manual/en/function.filter-var.php)PHP函数。
 
-Constants are available and can be used to define the type of filtering required:
+常数是可用的，可以用来定义所需的过滤类型：
 
 ```php
 <?php
