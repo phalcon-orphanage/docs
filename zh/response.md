@@ -148,7 +148,7 @@ return $response->redirect(
 );
 ```
 
-Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
+即使有一个视图与当前操作相关联，它也不会被呈现，因为`重定向`会禁用视图。
 
 <a name='http-cache'></a>
 
