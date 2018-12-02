@@ -4,11 +4,11 @@
 
 *implements* [Phalcon\Events\EventsAwareInterface](/[[language]]/[[version]]/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/[[language]]/[[version]]/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\ValidationInterface](/[[language]]/[[version]]/api/Phalcon_ValidationInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Allows to validate data using custom or built-in validators
+カスタムまたは内蔵のバリデーターを使用してデータを検証できます
 
-## Methods
+## メソッド
 
 public **getData** ()
 
@@ -20,96 +20,96 @@ public **setValidators** (*mixed* $validators)
 
 public **__construct** ([*array* $validators])
 
-Phalcon\\Validation constructor
+Phalcon\\Validation のコンストラクタ
 
 public [Phalcon\Validation\Message\Group](/[[language]]/[[version]]/api/Phalcon_Validation_Message_Group) **validate** ([*array* | *object* $data], [*object* $entity])
 
-Validate a set of data according to a set of rules
+一連のルールに従ってデータのセットを検証する
 
 public **add** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/[[language]]/[[version]]/api/Phalcon_Validation_ValidatorInterface) $validator)
 
-Adds a validator to a field
+フィールドにバリデーターを追加します。
 
 public **rule** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/[[language]]/[[version]]/api/Phalcon_Validation_ValidatorInterface) $validator)
 
-Alias of `add` method
+`add`メソッドのエイリアス
 
 public **rules** (*mixed* $field, *array* $validators)
 
-Adds the validators to a field
+フィールドにバリデーターを追加します。
 
 public [Phalcon\Validation](/[[language]]/[[version]]/api/Phalcon_Validation) **setFilters** (*string* $field, *array* | *string* $filters)
 
-Adds filters to the field
+フィールドにフィルタを追加する
 
 public *mixed* **getFilters** ([*string* $field])
 
-Returns all the filters or a specific one
+すべてのフィルタまたは特定のフィルタを返します。
 
 public **getValidators** ()
 
-Returns the validators added to the validation
+バリデーションに追加されたバリデータを返します。
 
 public **setEntity** (*object* $entity)
 
-Sets the bound entity
+バインドされたエンティティを設定する
 
 public *object* **getEntity** ()
 
-Returns the bound entity
+バインドされたエンティティを返す
 
 public **setDefaultMessages** ([*array* $messages])
 
-Adds default messages to validators
+バリデーターにデフォルトのメッセージを追加する
 
 public **getDefaultMessage** (*mixed* $type)
 
-Get default message for validator type
+バリデーター型のデフォルトメッセージを取得する
 
 public **getMessages** ()
 
-Returns the registered validators
+登録済みのバリデータを返します。
 
 public **setLabels** (*array* $labels)
 
-Adds labels for fields
+フィールドのラベルを追加します
 
 public *string* **getLabel** (*string* $field)
 
-Get label for field
+フィールドのラベルを取得します。
 
 public **appendMessage** ([Phalcon\Validation\MessageInterface](/[[language]]/[[version]]/api/Phalcon_Validation_MessageInterface) $message)
 
-Appends a message to the messages list
+メッセージをメッセージリストに追加します
 
 public [Phalcon\Validation](/[[language]]/[[version]]/api/Phalcon_Validation) **bind** (*object* $entity, *array* | *object* $data)
 
-Assigns the data to an entity The entity is used to obtain the validation values
+エンティティにデータを割り当てます。
 
 public *mixed* **getValue** (*string* $field)
 
-Gets the a value to validate in the array/object data source
+配列/オブジェクトデータソースで検証する値を取得します。
 
 protected **preChecking** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/[[language]]/[[version]]/api/Phalcon_Validation_ValidatorInterface) $validator)
 
-Internal validations, if it returns true, then skip the current validator
+内部のバリデーションがtrueを返した場合は、現在のバリデータをスキップします。
 
 public **setDI** ([Phalcon\DiInterface](/[[language]]/[[version]]/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/[[language]]/[[version]]/api/Phalcon_Di_Injectable)
 
-Sets the dependency injector
+DIをセットします。
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](/[[language]]/[[version]]/api/Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+内部のDIを返します。
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/[[language]]/[[version]]/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](/[[language]]/[[version]]/api/Phalcon_Di_Injectable)
 
-Sets the event manager
+イベントマネージャーをセットします
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](/[[language]]/[[version]]/api/Phalcon_Di_Injectable)
 
-Returns the internal event manager
+内部イベントマネージャーを返します
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/[[language]]/[[version]]/api/Phalcon_Di_Injectable)
 
-Magic method __get
+マジックメソッド __get
