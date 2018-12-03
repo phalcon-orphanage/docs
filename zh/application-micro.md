@@ -335,7 +335,7 @@ $app->setService('router', $router, true);
 
 让路由正常工作，需要在您的 web 服务器配置为特定的站点配置特定的选项。
 
-Those changes are outlined in the [Apache Rewrite Rules](http://httpd.apache.org/docs/current/rewrite/) and [NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/).
+这些更改在 Apache重写规则</ 0>和 NGINX重写规则</ 1>中列出。</p> 
 
 <a name='routing-handlers'></a>
 
@@ -379,9 +379,9 @@ $app->get(
 
 <a name='routing-handlers-function'></a>
 
-#### Function
+#### 函数
 
-We can define a function as our handler and attach it to a specific route.
+我们可以定义一个函数作为我们的处理程序并将其附加到 a 的特定路由。
 
 ```php
 // With a function
@@ -397,9 +397,9 @@ $app->get(
 
 <a name='routing-handlers-static-method'></a>
 
-#### Static Method
+#### 静态方法
 
-We can also use a static method as our handler as follows:
+如下，我们也可以使用静态方法作为我们的处理程序：
 
 ```php
 class OrdersClass
@@ -417,9 +417,9 @@ $app->get(
 
 <a name='routing-handlers-object-method'></a>
 
-#### Method in an Object
+#### 对象中的方法
 
-We can also use a method in an object:
+我们还可以在对象中使用一种方法：
 
 ```php
 class OrdersClass
@@ -441,11 +441,11 @@ $app->get(
 
 <a name='routing-handlers-controllers'></a>
 
-#### Controllers
+#### 控制器
 
-With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
+与 `Phalcon\Mvc\Micro`，您可以创建微型或介质的应用程序。 中小型应用程序使用微体系结构，但扩大上它能利用更多微但小于完整的应用程序。
 
-In medium applications you can organize handlers in controllers.
+在中小型应用程序中，您可以组织中控制器的处理程序。
 
 ```php
 <?php
@@ -454,7 +454,7 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $orders = new MicroCollection();
 
-// Set the main handler. ie. a controller instance
+// Set the main handler. ie。 a controller instance
 $orders->setHandler(new OrdersController());
 
 // Set a common prefix for all routes
@@ -469,7 +469,7 @@ $orders->get('/display/{slug}', 'show');
 $app->mount($orders);
 ```
 
-The `OrdersController` might look like this:
+`OrdersController` 可能如下所示：
 
 ```php
 <?php
@@ -516,11 +516,11 @@ class OrdersController extends Controller
 
 <a name='routing-handlers-controllers-lazy-loading'></a>
 
-### Lazy Loading
+### 延迟加载
 
 In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
 
-Lazy loading can be easily achieved when setting your handler in your `Phalcon\Mvc\Micro\Collection`:
+时在你的 `Phalcon\Mvc\Micro\Collection` 中设置您的处理程序，就很容易实现延迟加载：
 
 ```php
 $orders->setHandler('OrdersController', true);
@@ -529,9 +529,9 @@ $orders->setHandler('Blog\Controllers\OrdersController', true);
 
 <a name='routing-handlers-controllers-lazy-loading-use-case'></a>
 
-#### Use case
+#### 使用案例
 
-We are developing an API for an online store. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
+我们正在开发一个 API 的在线商店。 终结点是 `/ 用户`，`/ 订单` 和 `/ 产品`。 Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
 
 The controllers that we use as handlers are as follows:
 
