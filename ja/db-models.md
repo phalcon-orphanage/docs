@@ -383,7 +383,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parameter     | Description                                                                                                                                                                                          | Example                                                              |
+| パラメーター        | 説明                                                                                                                                                                                                   | 例                                                                    |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Mvc\Model` assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
 | `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                            | `'columns' => 'id, name'`                                         |
