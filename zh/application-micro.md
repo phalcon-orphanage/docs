@@ -254,7 +254,7 @@ $app = new Micro();
 
 <h5 class='alert alert-warning'>路由必须总是以 <code>/</code> 开头</h5>
 
-Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
+通常情况下，起始应用程序中是路线 `/`，并在大多数情况下它通过获取 HTTP 方法访问：
 
 ```php
 <?php
@@ -311,7 +311,7 @@ $app = new Micro();
 $app->setService('router', $router, true);
 ```
 
-Setting up your routes using the `Phalcon\Mvc\Micro` applications verb methods (`get`, `post`, etc.) is much easier than setting up a router object with relevant routes and then injecting it in the application.
+设置你的路由使用 `Phalcon\Mvc\Micro` 应用谓词方法 （`get`、 `post`、 等） 是比设置路由器对象与相关路路由，然后注射它在应用中容易得多。
 
 每个方法有其优点和缺点。这一切取决于您的应用程序需求与设计。
 
@@ -327,7 +327,7 @@ Those changes are outlined in the [rewrite rules](/[[language]]/[[version]]/rewr
 
 ## 处理程序
 
-处理程序是代码的可调用段，得到附加到路由。 路由匹配匹配时，该处理程序执行已定义的所有参数。 A handler is any callable piece of code that exists in PHP.
+处理程序是代码的可调用段，得到附加到路由。 路由匹配匹配时，该处理程序执行已定义的所有参数。 处理程序是代码的任何可调用的 PHP 中存在。
 
 <a name='routing-handlers-definitions'></a>
 
@@ -365,9 +365,9 @@ $app->get(
 
 <a name='routing-handlers-function'></a>
 
-#### Function
+#### 函数
 
-We can define a function as our handler and attach it to a specific route.
+我们可以定义一个函数作为我们的处理程序并将其附加到 a 的特定路由。
 
 ```php
 // With a function
@@ -383,9 +383,9 @@ $app->get(
 
 <a name='routing-handlers-static-method'></a>
 
-#### Static Method
+#### 静态方法
 
-We can also use a static method as our handler as follows:
+如下，我们也可以使用静态方法作为我们的处理程序：
 
 ```php
 class OrdersClass
@@ -403,9 +403,9 @@ $app->get(
 
 <a name='routing-handlers-object-method'></a>
 
-#### Method in an Object
+#### 对象中的方法
 
-We can also use a method in an object:
+我们还可以在对象中使用一种方法：
 
 ```php
 class OrdersClass
@@ -427,11 +427,11 @@ $app->get(
 
 <a name='routing-handlers-controllers'></a>
 
-#### Controllers
+#### 控制器
 
-With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
+与 `Phalcon\Mvc\Micro`，您可以创建微型或介质的应用程序。 中小型应用程序使用微体系结构，但扩大上它能利用更多微但小于完整的应用程序。
 
-In medium applications you can organize handlers in controllers.
+在中小型应用程序中，您可以组织中控制器的处理程序。
 
 ```php
 <?php
@@ -440,7 +440,7 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $orders = new MicroCollection();
 
-// Set the main handler. ie. a controller instance
+// Set the main handler. ie。 a controller instance
 $orders->setHandler(new OrdersController());
 
 // Set a common prefix for all routes
@@ -455,7 +455,7 @@ $orders->get('/display/{slug}', 'show');
 $app->mount($orders);
 ```
 
-The `OrdersController` might look like this:
+`OrdersController` 可能如下所示：
 
 ```php
 <?php
@@ -502,11 +502,11 @@ class OrdersController extends Controller
 
 <a name='routing-handlers-controllers-lazy-loading'></a>
 
-### Lazy Loading
+### 延迟加载
 
 In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
 
-Lazy loading can be easily achieved when setting your handler in your `Phalcon\Mvc\Micro\Collection`:
+时在你的 `Phalcon\Mvc\Micro\Collection` 中设置您的处理程序，就很容易实现延迟加载：
 
 ```php
 $orders->setHandler('OrdersController', true);
@@ -515,9 +515,9 @@ $orders->setHandler('Blog\Controllers\OrdersController', true);
 
 <a name='routing-handlers-controllers-lazy-loading-use-case'></a>
 
-#### Use case
+#### 使用案例
 
-We are developing an API for an online store. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
+我们正在开发一个 API 的在线商店。 终结点是 `/ 用户`，`/ 订单` 和 `/ 产品`。 Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
 
 The controllers that we use as handlers are as follows:
 
