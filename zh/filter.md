@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">过滤和处理</a> <ul>
         <li>
-          <a href="#types">Types of Built-in Filters</a>
+          <a href="#types">类型的内置过滤器</a>
         </li>
         <li>
           <a href="#sanitizing">Sanitizing data</a>
@@ -54,7 +54,7 @@ The following are the built-in filters provided by this component:
 
 | Name      | Description                                                                             |
 | --------- | --------------------------------------------------------------------------------------- |
-| absint    | Casts the value as an integer and returns the absolute value of it.                     |
+| absint    | 将值强制转换为整数, 并返回它的绝对值。                                                                    |
 | alphanum  | Remove all characters except [a-zA-Z0-9]                                                |
 | email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.       |
 | float     | Remove all characters except digits, dot, plus and minus sign.                          |
