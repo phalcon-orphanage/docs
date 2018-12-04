@@ -250,7 +250,7 @@ $app = new Micro();
 
 ## 路由
 
-Defining routes in a `Phalcon\Mvc\Micro` application is very easy. Routes are defined as follows:
+在 `Phalcon\Mvc\Micro` 应用程序中定义路由是很容易的。 路由定义如下:
 
 ```text
 Application -> (method/verb) -> (route url/regex, callable PHP function)
@@ -260,7 +260,7 @@ Application -> (method/verb) -> (route url/regex, callable PHP function)
 
 ### 设置
 
-Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[version]]/routing)]
+路由由 ` Phalcon\Mvc\Router ` 对象处理。 [[Info](/[[language]]/[[version]]/routing)]
 
 <div class="alert alert-danger">
     <p>
@@ -268,7 +268,7 @@ Routing is handled by the `Phalcon\Mvc\Router` object. [[Info](/[[language]]/[[v
     </p>
 </div>
 
-Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
+通常情况下，起始应用程序中是路线 `/`，并在大多数情况下它通过获取 HTTP 方法访问：
 
 ```php
 <?php
@@ -325,9 +325,9 @@ $app = new Micro();
 $app->setService('router', $router, true);
 ```
 
-Setting up your routes using the `Phalcon\Mvc\Micro` applications verb methods (`get`, `post`, etc.) is much easier than setting up a router object with relevant routes and then injecting it in the application.
+设置你的路由使用 `Phalcon\Mvc\Micro` 应用谓词方法 （`get`、 `post`、 等） 是比设置路由器对象与相关路路由，然后注射它在应用中容易得多。
 
-Each method has its advantages and disadvantages. It all depends on the design and needs of your application.
+每种方法都有其优缺点。 这取决于您的应用程序的设计和需要。
 
 <a name='rewrite-rules'></a>
 
@@ -335,19 +335,19 @@ Each method has its advantages and disadvantages. It all depends on the design a
 
 让路由正常工作，需要在您的 web 服务器配置为特定的站点配置特定的选项。
 
-Those changes are outlined in the [Apache Rewrite Rules](http://httpd.apache.org/docs/current/rewrite/) and [NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/).
+这些更改在 Apache重写规则</ 0>和 NGINX重写规则</ 1>中列出。</p> 
 
 <a name='routing-handlers'></a>
 
 ## 处理程序
 
-处理程序是代码的可调用段，得到附加到路由。 路由匹配匹配时，该处理程序执行已定义的所有参数。 A handler is any callable piece of code that exists in PHP.
+处理程序是代码的可调用段，得到附加到路由。 路由匹配匹配时，该处理程序执行已定义的所有参数。 处理程序是代码的任何可调用的 PHP 中存在。
 
 <a name='routing-handlers-definitions'></a>
 
 ### 定义
 
-Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
+Phalcon 提供了几种将处理程序附加到路由的方法。 您的应用程序需求和设计以及编码风格将是影响您选择那个实现的因素。
 
 <a name='routing-handlers-anonymous-function'></a>
 
@@ -379,9 +379,9 @@ $app->get(
 
 <a name='routing-handlers-function'></a>
 
-#### Function
+#### 函数
 
-We can define a function as our handler and attach it to a specific route.
+我们可以定义一个函数作为我们的处理程序并将其附加到 a 的特定路由。
 
 ```php
 // With a function
@@ -397,9 +397,9 @@ $app->get(
 
 <a name='routing-handlers-static-method'></a>
 
-#### Static Method
+#### 静态方法
 
-We can also use a static method as our handler as follows:
+如下，我们也可以使用静态方法作为我们的处理程序：
 
 ```php
 class OrdersClass
@@ -417,9 +417,9 @@ $app->get(
 
 <a name='routing-handlers-object-method'></a>
 
-#### Method in an Object
+#### 对象中的方法
 
-We can also use a method in an object:
+我们还可以在对象中使用一种方法：
 
 ```php
 class OrdersClass
@@ -441,11 +441,11 @@ $app->get(
 
 <a name='routing-handlers-controllers'></a>
 
-#### Controllers
+#### 控制器
 
-With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
+与 `Phalcon\Mvc\Micro`，您可以创建微型或介质的应用程序。 中小型应用程序使用微体系结构，但可以在此基础上进行扩展，以利用比微体系结构更多但比完整应用程序更少的资源。
 
-In medium applications you can organize handlers in controllers.
+在中小型应用程序中，您可以组织中控制器的处理程序。
 
 ```php
 <?php
@@ -454,7 +454,7 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $orders = new MicroCollection();
 
-// Set the main handler. ie. a controller instance
+// Set the main handler. ie。 a controller instance
 $orders->setHandler(new OrdersController());
 
 // Set a common prefix for all routes
@@ -469,7 +469,7 @@ $orders->get('/display/{slug}', 'show');
 $app->mount($orders);
 ```
 
-The `OrdersController` might look like this:
+`OrdersController` 可能如下所示：
 
 ```php
 <?php
@@ -490,7 +490,7 @@ class OrdersController extends Controller
 }
 ```
 
-Since our controllers extend the `Phalcon\Mvc\Controller`, all the dependency injection services are available with their respective registration names. For example:
+由于我们的控制器扩展了`Phalcon\Mvc\Controller`，所以所有依赖注入服务都具有各自的注册名称。 For example:
 
 ```php
 <?php
@@ -516,11 +516,11 @@ class OrdersController extends Controller
 
 <a name='routing-handlers-controllers-lazy-loading'></a>
 
-### Lazy Loading
+### 延迟加载
 
-In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
+为了提高性能, 您可以考虑为控制器 (处理程序) 实现延迟加载。 只有在匹配相关路由的情况下, 才会加载控制器。
 
-Lazy loading can be easily achieved when setting your handler in your `Phalcon\Mvc\Micro\Collection`:
+时在你的 `Phalcon\Mvc\Micro\Collection` 中设置您的处理程序，就很容易实现延迟加载：
 
 ```php
 $orders->setHandler('OrdersController', true);
@@ -529,9 +529,9 @@ $orders->setHandler('Blog\Controllers\OrdersController', true);
 
 <a name='routing-handlers-controllers-lazy-loading-use-case'></a>
 
-#### Use case
+#### 使用案例
 
-We are developing an API for an online store. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
+我们正在开发一个 API 的在线商店。 终结点是 `/users`，`/orders` 和 `/products`。 Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
 
 The controllers that we use as handlers are as follows:
 
