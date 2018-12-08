@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">返回的响应</a> 
+      <a href="总览">返回的响应</a> 
       <ul>
         <li>
           <a href="#working-with-headers">使用Headers</a>
@@ -10,7 +10,7 @@
           <a href="#redirections">重定向</a>
         </li>
         <li>
-          <a href="#http-cache">HTTP 缓存</a> 
+          <a href="#http 缓存">HTTP 缓存</a> 
           <ul>
             <li>
               <a href="#http-cache-expiration-time">设置过期时间</a>
@@ -19,7 +19,7 @@
               <a href="#http-cache-control">缓存控制</a>
             </li>
             <li>
-              <a href="#http-cache-etag">E-Tag</a>
+              <a href="#http 缓存-etag">E-Tag</a>
             </li>
           </ul>
         </li>
@@ -218,7 +218,7 @@ $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
 
 ### E-Tag
 
-An `entity-tag` or `E-tag` is a unique identifier that helps the browser realize if the page has changed or not between two requests. The identifier must be calculated taking into account that this must change if the previously served content has changed:
+` entity-tag` 或 ` E-tag` 是一个唯一标识符, 可帮助浏览器实现页面是否已更改或不在两个请求之间。 必须计算标识符, 考虑到如果以前服务的内容已更改, 则必须更改:
 
 ```php
 <?php
