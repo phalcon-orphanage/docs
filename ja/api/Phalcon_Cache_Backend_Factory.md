@@ -4,9 +4,9 @@
 
 *implements* [Phalcon\FactoryInterface](/en/3.2/api/Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/factory.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Loads Backend Cache Adapter class using 'adapter' option, if frontend will be provided as array it will call Frontend Cache Factory
+次の例では、'adapter'オプションを使用してBackend Cache Adapterクラスをロードし、フロントエンドが配列として提供される場合は、Frontend Cache Factoryが呼ばれます。
 
 ```php
 <?php
@@ -23,7 +23,7 @@ $backendCache = Factory::load($options);
 
 ```
 
-## Methods
+## メソッド
 
 public static **load** ([Phalcon\Config](/en/3.2/api/Phalcon_Config) | *array* $config)
 
