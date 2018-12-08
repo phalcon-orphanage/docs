@@ -2,11 +2,11 @@
 
 *implements* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-This class implements common functionality for backend adapters. A backend cache adapter may extend this class
+このクラスはバックエンドアダプタの共通機能を実装します。バックエンドキャッシュアダプタはこのクラスを拡張できます。
 
-## Methods
+## メソッド
 
 public **getFrontend** ()
 
@@ -34,27 +34,27 @@ public **setLastKey** (*mixed* $lastKey)
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
-Phalcon\\Cache\\Backend constructor
+Phalcon\\Cache\\Backend コンストラクタ
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime])
 
-Starts a cache. The keyname allows to identify the created fragment
+キャッシュを開始します。このkeynameは作成したフラグメントの特定に使用できます。
 
 public **stop** ([*mixed* $stopBuffer])
 
-Stops the frontend without store any cached content
+キャッシュしたコンテンツを保存しないで、フロントエンドを停止します。
 
 public **isFresh** ()
 
-Checks whether the last cache is fresh or cached
+直前のキャッシュが新鮮なものか、それともキャッシュされているかをチェックします。
 
 public **isStarted** ()
 
-Checks whether the cache has starting buffering or not
+このキャッシュのバッファリングが開始しているか、そうでないかをチェックします。
 
 public *int* **getLifetime** ()
 
-Gets the last lifetime set
+直前のライフタイムのセットを取得します。
 
 abstract public **get** (*mixed* $keyName, [*mixed* $lifetime]) inherited from [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
 
