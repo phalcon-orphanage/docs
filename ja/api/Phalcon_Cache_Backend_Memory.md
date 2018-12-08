@@ -4,9 +4,9 @@
 
 *implements* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface), [Serializable](http://php.net/manual/en/class.serializable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/memory.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Stores content in memory. Data is lost when the request is finished
+メモリにコンテンツを保管します。リクエストが終了したときにデータを失います。
 
 ```php
 <?php
@@ -14,36 +14,36 @@ Stores content in memory. Data is lost when the request is finished
 use Phalcon\Cache\Backend\Memory;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache data
+// データのキャッシュ
 $frontCache = new FrontData();
 
 $cache = new Memory($frontCache);
 
-// Cache arbitrary data
+// 任意のデータをキャッシュ
 $cache->save("my-data", [1, 2, 3, 4, 5]);
 
-// Get data
+// データを取得
 $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## メソッド
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+キャッシュしたコンテンツを返します。
 
 public **save** ([*string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the backend and stops the frontend
+バックエンドにキャッシュしたコンテンツを保管し、フロントエンドを停止します。
 
 public *boolean* **delete** (*string* $keyName)
 
-Deletes a value from the cache by its key
+キャッシュから そのキーによって値を削除します。
 
 public **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys.
+既存のキャッシュされたキーを問合せ
 
 ```php
 <?php
@@ -57,27 +57,27 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it hasn't expired
+キャッシュが存在しそれが期限切れでないことをチェックします。
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
-Increment of given $keyName by $value
+与えられた$keyName を $value だけインクリメント
 
 public **decrement** ([*string* $keyName], [*mixed* $value])
 
-Decrement of $keyName by given $value
+$keyName を指定された $value だけデクリメントします。
 
 public **flush** ()
 
-Immediately invalidates all existing items.
+ただちに、すべての既存のアイテムを無効にします。
 
 public **serialize** ()
 
-Required for interface \\Serializable
+\\Serializable インターフェースが必要
 
 public **unserialize** (*mixed* $data)
 
-Required for interface \\Serializable
+\\Serializable インターフェースが必要
 
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
@@ -105,24 +105,24 @@ public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options]) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Phalcon\\Cache\\Backend constructor
+Phalcon\\Cache\\Backend コンストラクタ
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Starts a cache. The keyname allows to identify the created fragment
+キャッシュを開始します。このkeynameは作成したフラグメントの特定に使用できます。
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+キャッシュしたコンテンツを保存しないで、フロントエンドを停止します。
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+直前のキャッシュが新鮮なものか、それともキャッシュされているかをチェックします。
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+このキャッシュのバッファリングが開始しているか、そうでないかをチェックします。
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+直前のライフタイムのセットを取得します。
