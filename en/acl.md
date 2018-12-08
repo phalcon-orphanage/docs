@@ -459,7 +459,8 @@ You can still add any custom parameters to function and pass associative array i
 ## Roles Inheritance
 You can build complex role structures using the inheritance that `Phalcon\Acl\Role` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. There are two ways to use role inheritance:
 
-1. You can pass the inherited role as the second parameter of the method call, when adding that role in the list.
+### Setup relationships as roles are added.
+You can pass the inherited role as the second parameter of the method call, when adding that role in the list.
 
 ```php
 <?php
@@ -481,7 +482,9 @@ $acl->addRole($roleGuests);
 $acl->addRole($roleAdmins, $roleGuests);
 ```
 
-2. You can setup the relationships after roles are added
+### Setup relationships after adding roles
+Or you may prefer to add all of your roles together and then define the inheritance relationships afterwards.
+
 ```php
 <?php
 
