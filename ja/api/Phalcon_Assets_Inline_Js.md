@@ -4,11 +4,11 @@
 
 *implements* [Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/inline/js.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/inline/js.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Represents an inline Javascript
+インライン Javascriptを表します。
 
-## Methods
+## メソッド
 
 public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 
@@ -30,16 +30,16 @@ public **getAttributes** () inherited from [Phalcon\Assets\Inline](/en/3.2/api/P
 
 public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
 
-Sets the inline's type
+インラインのタイプを設定します。
 
 public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
 
-Sets if the resource must be filtered or not
+リソースをフィルターするかどうかを設定します。
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
 
-Sets extra HTML attributes
+追加の HTML 属性を設定します
 
 public **getResourceKey** () inherited from [Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline)
 
-Gets the resource's key.
+リソースのキーを取得します。
