@@ -1,20 +1,20 @@
-# Class **Phalcon\\Assets\\Exception**
+# Class **Phalcon\\Exception**
 
-*extends* class [Phalcon\Exception](/en/3.2/api/Phalcon_Exception)
+*extends* class [Exception](http://php.net/manual/en/class.exception.php)
 
 *implements* [Throwable](http://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/exception.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## メソッド
+## Methods
 
 final private [Exception](http://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-例外のクローンを生成します。
+Clone the exception
 
 public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-例外のコンストラクタ
+Exception constructor
 
 public **__wakeup** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
@@ -22,32 +22,32 @@ public **__wakeup** () inherited from [Exception](http://php.net/manual/en/class
 
 final public *string* **getMessage** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-例外メッセージを取得します。
+Gets the Exception message
 
 final public *int* **getCode** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-例外コードを取得します。
+Gets the Exception code
 
 final public *string* **getFile** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-例外が発生したファイルを取得します。
+Gets the file in which the exception occurred
 
 final public *int* **getLine** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-例外が発生した行を取得します。
+Gets the line in which the exception occurred
 
 final public *array* **getTrace** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-スタックトレースを取得します。
+Gets the stack trace
 
 final public [Exception](http://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-以前の例外を返します。
+Returns previous Exception
 
 final public [Exception](http://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-スタックトレースを文字列として取得します。
+Gets the stack trace as a string
 
 public *string* **__toString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
 
-例外を表す文字列
+String representation of the exception
