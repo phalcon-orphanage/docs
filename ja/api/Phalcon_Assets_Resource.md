@@ -2,9 +2,9 @@
 
 *implements* [Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resource.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Represents an asset resource
+アセットリソースを表します。
 
 ```php
 <?php
@@ -13,7 +13,7 @@ $resource = new \Phalcon\Assets\Resource("js", "javascripts/jquery.js");
 
 ```
 
-## Methods
+## メソッド
 
 public **getType** ()
 
@@ -39,56 +39,56 @@ public **getTargetUri** ()
 
 public **__construct** (*string* $type, *string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
-Phalcon\\Assets\\Resource constructor
+Phalcon\\Assets\\Resource コンストラクタ
 
 public **setType** (*mixed* $type)
 
-Sets the resource's type
+リソースのタイプを設定します。
 
 public **setPath** (*mixed* $path)
 
-Sets the resource's path
+リソースのパスを設定します。
 
 public **setLocal** (*mixed* $local)
 
-Sets if the resource is local or external
+リソースがローカル(local)か外部(external)かを設定します。
 
 public **setFilter** (*mixed* $filter)
 
-Sets if the resource must be filtered or not
+リソースをフィルターするかどうかを設定します。
 
 public **setAttributes** (*array* $attributes)
 
-Sets extra HTML attributes
+追加の HTML 属性を設定します
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Sets a target uri for the generated HTML
+生成するHTML のターゲット uri を設定します。
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Sets the resource's source path
+リソースのソースパスを設定します。
 
 public **setTargetPath** (*mixed* $targetPath)
 
-Sets the resource's target path
+リソースのターゲットパスを設定します。
 
 public **getContent** ([*mixed* $basePath])
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+文字列としてリソースの内容を返します。 オプションとして、そのリソースの保管するベースパスを設定できます。
 
 public **getRealTargetUri** ()
 
-Returns the real target uri for the generated HTML
+生成するHTML の実際のターゲット uri を返します。
 
 public **getRealSourcePath** ([*mixed* $basePath])
 
-Returns the complete location where the resource is located
+リソースを保管する、完全な位置を返します。
 
 public **getRealTargetPath** ([*mixed* $basePath])
 
-Returns the complete location where the resource must be written
+リソースの書き込み先の完全な位置を返します。
 
 public **getResourceKey** ()
 
-Gets the resource's key.
+リソースのキーを取得します。
