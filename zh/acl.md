@@ -19,7 +19,7 @@
           <a href="#querying">查询ACL</a>
         </li>
         <li>
-          <a href="#function-based-access">Function based access</a>
+          <a href="#function-based-access">基于访问控制的自定义函数</a>
         </li>
         <li>
           <a href="#objects">对象作为角色名称和资源名称</a>
@@ -135,7 +135,7 @@ $acl->addResource(
 
 ## 定义访问控制
 
-Now that we have roles and resources, it's time to define the ACL (i.e. which roles can access which resources). This part is very important especially taking into consideration your default access level `allow` or `deny`.
+现在我们有角色和资源，是时候定义ACL（即哪些角色可以访问哪些资源）。 这部分是很重要，尤其考虑到您的默认访问级别 `allow` 或 `deny`。
 
 ```php
 <?php
@@ -149,13 +149,13 @@ $acl->allow('Guests', 'Customers', 'create');
 $acl->deny('Guests', 'Customers', 'update');
 ```
 
-The `allow()` method designates that a particular role has granted access to a particular resource. The `deny()` method does the opposite.
+`allow()`方法指定特定角色已授予对特定资源的访问权。 `deny()`方法的作用正好相反。
 
 <a name='querying'></a>
 
 ## 查询的 ACL
 
-Once the list has been completely defined. We can query it to check if a role has a given permission or not.
+一旦列表被完全定义。 我们可以查询它来检查角色是否具有给定的权限。
 
 ```php
 <?php
@@ -174,12 +174,11 @@ $acl->isAllowed('Guests', 'Customers', 'create');
 
 <a name='function-based-access'></a>
 
-## Function based access
+## 基于访问控制的自定义函数
 
-此外可以添加 4 参数作为您自定义的函数必须返回布尔值。 当您使用 `isAllowed()` 方法时，它将被调用。 You can pass parameters as associative array to `isAllowed()` method as 4th argument where key is parameter name in our defined function.
+此外可以添加 4 参数作为您自定义的函数必须返回布尔值。 当您使用 `isAllowed()` 方法时，它将被调用。 您可以将参数作为关联数组传递给` isAllowed（）</ 0>方法作为第4个参数，其中key是我们定义的函数中的参数名称。</p>
 
-```php
-<?php
+<pre><code class="php"><?php
 // Set access level for role into resources with custom function
 $acl->allow(
     'Guests',
@@ -211,9 +210,9 @@ $acl->isAllowed(
         'a' => 3,
     ]
 );
-```
+`</pre> 
 
-Also if you don't provide any parameters in `isAllowed()` method then default behaviour will be `Acl::ALLOW`. 您可以更改它的使用方法 `setNoArgumentsDefaultAction()`。
+此外，如果您未在` isAllowed()</ 0>方法中提供任何参数，则默认行为将为<code> Acl::ALLOW </ 0>。 您可以更改它的使用方法 <code>setNoArgumentsDefaultAction()`。
 
 ```php
 <?php
@@ -256,9 +255,9 @@ $acl->isAllowed(
 
 ## 对象作为角色名称和资源名称
 
-您可以将对象作为 `角色名` 和 `资源名称` 传递。 Your classes must implement `Phalcon\Acl\RoleAware` for `roleName` and `Phalcon\Acl\ResourceAware` for `resourceName`.
+您可以将对象作为 `角色名` 和 `资源名称` 传递。 您的类必须实现 `Phalcon\Acl\RoleAware` `roleName` 和 `Phalcon\Acl\ResourceAware`，为 `资源名称`。
 
-Our `UserRole` class
+我们的 `UserRole` 类
 
 ```php
 <?php
@@ -291,7 +290,7 @@ class UserRole implements RoleAware
 }
 ```
 
-And our `ModelResource` class
+和我们的 `ModelResource` 类
 
 ```php
 <?php
@@ -332,7 +331,7 @@ class ModelResource implements ResourceAware
 }
 ```
 
-Then you can use them in `isAllowed()` method.
+然后你可以在 `isAllowed()` 方法中使用它们。
 
 ```php
 <?php
@@ -392,7 +391,7 @@ $acl->isAllowed(
 );
 ```
 
-Also you can access those objects in your custom function in `allow()` or `deny()`. They are automatically bind to parameters by type in function.
+您还可以在`allow()`或`deny()`的自定义函数中访问这些对象。 它们根据函数类型自动绑定到参数。
 
 ```php
 <?php
@@ -469,15 +468,17 @@ $acl->isAllowed(
 );
 ```
 
-You can still add any custom parameters to function and pass associative array in `isAllowed()` method. Also order doesn't matter.
+您仍然可以向函数中添加任何自定义参数，并在`isAllowed()`方法中传递关联数组。 而且顺序也不重要。
 
 <a name='roles-inheritance'></a>
 
-## Roles Inheritance
+## 角色继承
 
-You can build complex role structures using the inheritance that `Phalcon\Acl\Role` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. There are two ways to use role inheritance:
+您可以使用 `Phalcon\Acl\Role` 提供的继承，构建复杂的角色结构。 角色可以继承其他角色，从而允许用户访问超集或资源的子集。 有两种使用角色继承的方法:
 
-1. You can pass the inherited role as the second parameter of the method call, when adding that role in the list.
+### Setup relationships as roles are added.
+
+在将继承的角色添加到列表中时，可以将其作为方法调用的第二个参数传递。
 
 ```php
 <?php
@@ -499,7 +500,9 @@ $acl->addRole($roleGuests);
 $acl->addRole($roleAdmins, $roleGuests);
 ```
 
-2. You can setup the relationships after roles are added
+### Setup relationships after adding roles
+
+Or you may prefer to add all of your roles together and then define the inheritance relationships afterwards.
 
 ```php
 <?php
@@ -520,9 +523,9 @@ $acl->addInherit($roleAdmins, $roleGuests);
 
 <a name='serialization'></a>
 
-## Serializing ACL lists
+## 序列化 ACL 列表
 
-To improve performance `Phalcon\Acl` instances can be serialized and stored in APC, session, text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
+若要提高性能 `Phalcon\Acl` 实例，可以序列化并存储在 APC、 会话、 文本文件或数据库表，以便他们加载时无需重新定义整个列表。 你能这样做，如下所示︰
 
 ```php
 <?php
@@ -557,20 +560,20 @@ if ($acl->isAllowed('Guests', 'Customers', 'edit')) {
 }
 ```
 
-It's recommended to use the Memory adapter during development and use one of the other adapters in production.
+它被建议在开发期间使用内存适配器，并在生产中使用其他适配器之一。
 
 <a name='events'></a>
 
-## Events
+## 事件
 
-`Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Acl` 是能够将事件发送到 `EventsManager`，如果它是存在的。 事件被触发，使用类型 'acl'。 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
 
-| Event Name        | Triggered                                               | Can stop operation? |
-| ----------------- | ------------------------------------------------------- |:-------------------:|
-| beforeCheckAccess | Triggered before checking if a role/resource has access |         Yes         |
-| afterCheckAccess  | Triggered after checking if a role/resource has access  |         No          |
+| 事件名称              | 触发器                 | 可以停止操作吗？ |
+| ----------------- | ------------------- |:--------:|
+| beforeCheckAccess | 检查规则/资源是否具有访问权限之前触发 |    是的    |
+| afterCheckAccess  | 检查规则/资源是否具有访问权限之后触发 |    否     |
 
-The following example demonstrates how to attach listeners to this component:
+下面的示例演示如何将侦听器附加到此组件︰
 
 ```php
 <?php
@@ -607,6 +610,6 @@ $acl->setEventsManager($eventsManager);
 
 <a name='custom-adapters'></a>
 
-## Implementing your own adapters
+## 实现自己的适配器
 
-The `Phalcon\Acl\AdapterInterface` interface must be implemented in order to create your own ACL adapters or extend the existing ones.
+当创建您自己的 ACL 适配器或扩展已经存在的ACL时，必须实现 `Phalcon\Acl\AdapterInterface` 接口。

@@ -145,8 +145,8 @@ Debe implementar la interfaz `Phalcon\Db\AdapterInterface` para crear sus propio
 
 Phalcon encapsula los detalles específicos de cada motor de base de datos en dialectos. Estos proporcionan funciones comunes y generadores de SQL a los adaptadores.
 
-| Clase                           | Descripción                                           |
-| ------------------------------- | ----------------------------------------------------- |
+| Clase                              | Descripción                                           |
+| ---------------------------------- | ----------------------------------------------------- |
 | `Phalcon\Db\Dialect\Mysql`      | Dialecto específico SQL para base de datos MySQL      |
 | `Phalcon\Db\Dialect\Postgresql` | Dialecto específico SQL para base de datos PostgreSQL |
 | `Phalcon\Db\Dialect\Sqlite`     | Dialecto específico SQL para base de datos de SQLite  |
