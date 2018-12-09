@@ -4,11 +4,11 @@
 
 *implements* [Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resource/js.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resource/js.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Represents Javascript resources
+Javascriptのリソースを表します。
 
-## Methods
+## メソッド
 
 public **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
@@ -36,52 +36,52 @@ public **getTargetUri** () inherited from [Phalcon\Assets\Resource](/en/3.2/api/
 
 public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets the resource's type
+リソースのタイプを設定します。
 
 public **setPath** (*mixed* $path) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets the resource's path
+リソースのパスを設定します。
 
 public **setLocal** (*mixed* $local) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets if the resource is local or external
+リソースがローカル(local) か外部(external) かを設定します。
 
 public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets if the resource must be filtered or not
+リソースをフィルターするかどうかを設定します。
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets extra HTML attributes
+追加の HTML 属性を設定します
 
 public **setTargetUri** (*mixed* $targetUri) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets a target uri for the generated HTML
+生成するHTML のターゲット uri を設定します。
 
 public **setSourcePath** (*mixed* $sourcePath) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets the resource's source path
+リソースのソースパスを設定します。
 
 public **setTargetPath** (*mixed* $targetPath) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
 
-Sets the resource's target path
+リソースのターゲットパスを設定します。
 
 public **getContent** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+文字列としてリソースの内容を返します。 オプションとして、そのリソースの保管するベースパスを設定できます。
 
 public **getRealTargetUri** () inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
 
-Returns the real target uri for the generated HTML
+生成するHTML の実際のターゲット uri を返します。
 
 public **getRealSourcePath** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
 
-Returns the complete location where the resource is located
+リソースを保管する、完全な位置を返します。
 
 public **getRealTargetPath** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
 
-Returns the complete location where the resource must be written
+リソースの書き込み先の完全な位置を返します。
 
 public **getResourceKey** () inherited from [Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource)
 
-Gets the resource's key.
+リソースのキーを取得します。
