@@ -417,7 +417,7 @@ $robots = Robots::query()
 
 すべてのクエリは内部的には [PHQL](/[[language]]/[[version]]/db-phql) クエリとして処理されます。 PHQLは、高度で、オブジェクト指向な、SQLライクな言語です。 この言語は、他のモデルへのjoin、グルーピングの定義、集計の追加など、クエリを実行するための多くの機能を提供します。
 
-最後に、 `findFirstBy<property-name>()` メソッドがあります。 このメソッドは、前述の `findFirst()` メソッドを拡張します。 メソッド自体のプロパティ名を使用し、その列で検索するデータを含むパラメータを渡すことで、テーブルからの取得を素早く実行できます。 An example is in order, so taking our Robots model mentioned earlier:
+最後に、 `findFirstBy<property-name>()` メソッドがあります。 このメソッドは、前述の `findFirst()` メソッドを拡張します。 メソッド自体のプロパティ名を使用し、その列で検索するデータを含むパラメータを渡すことで、テーブルからの取得を素早く実行できます。 例が整っているので前述のRomotsモデルを使用します:
 
 ```php
 <?php
@@ -436,7 +436,7 @@ class Robots extends Model
 }
 ```
 
-We have three properties to work with here: `$id`, `$name` and `$price`. So, let's say you want to retrieve the first record in the table with the name 'Terminator'. This could be written like:
+ここでは3つのプロパティがあります: `$id`, `$name`, `$price` それでは、テーブル内で名前が 'Terminator' の最初のレコードを取得したいとしましょう。 このように記述することができます:
 
 ```php
 <?php
@@ -454,11 +454,11 @@ if ($robot) {
 }
 ```
 
-Notice that we used 'Name' in the method call and passed the variable `$name` to it, which contains the name we are looking for in our table. Notice also that when we find a match with our query, all the other properties are available to us as well.
+メソッド呼び出しで 'Name' を使用し、 `$name` という変数を渡したことに注目してください。この変数には、テーブルで検索する名前が含まれています。 また、クエリと一致するものが見つかると、他のすべてのプロパティも同様に使用できることに注意してください。
 
 <a name='resultsets'></a>
 
-### Model Resultsets
+### モデルの結果セット
 
 While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a `Phalcon\Mvc\Model\Resultset\Simple`. This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
 
