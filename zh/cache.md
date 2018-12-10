@@ -68,19 +68,19 @@
               <a href="#adapters-backend-memcache">Memcache 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-apc">APC Backend Options</a>
+              <a href="#adapters-backend-apc">APC 后端选项</a>
             </li>
             <li>
               <a href="#adapters-backend-apcu">APCU 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
+              <a href="#adapters-backend-mongo">Mongo后端选项</a>
             </li>
             <li>
               <a href="#adapters-backend-xcache">XCache 后端选项</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Redis Backend Options</a>
+              <a href="#adapters-backend-redis">Redis后端选项</a>
             </li>
           </ul>
         </li>
@@ -687,7 +687,7 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-apc'></a>
 
-### APC Backend Options
+### APC 后端选项
 
 这个后端将替代 PHP 缓存 ([APC](http://php.net/apc)) 上存储缓存的内容。这个后端的可用选项有：
 
@@ -707,7 +707,7 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-mongo'></a>
 
-### Mongo Backend Options
+### Mongo后端选项
 
 这个后端将 MongoDB 服务器 ([MongoDB](http://mongodb.org/)) 上存储缓存的内容。这个后端的可用选项有：
 
@@ -730,7 +730,7 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-redis'></a>
 
-### Redis Backend Options
+### Redis后端选项
 
 这个后端将 ([Redis](http://redis.io/)) Redis的服务器上存储缓存的内容。这个后端的可用选项有：
 

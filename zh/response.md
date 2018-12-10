@@ -4,7 +4,7 @@
       <a href="总览">返回的响应</a> 
       <ul>
         <li>
-          <a href="#working-with-headers">使用Headers</a>
+          <a href="#使用Headers">使用Headers</a>
         </li>
         <li>
           <a href="#redirections">重定向</a>
@@ -13,10 +13,10 @@
           <a href="#http 缓存">HTTP 缓存</a> 
           <ul>
             <li>
-              <a href="#http-cache-expiration-time">设置过期时间</a>
+              <a href="#http 缓存-过期时间">设置过期时间</a>
             </li>
             <li>
-              <a href="#http-cache-control">缓存控制</a>
+              <a href="#http 缓存控制">缓存控制</a>
             </li>
             <li>
               <a href="#http 缓存-etag">E-Tag</a>
