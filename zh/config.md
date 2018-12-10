@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">读取配置</a> <ul>
+      <a href="#总览">读取配置</a> <ul>
         <li>
-          <a href="#factory">工厂</a>
+          <a href="#工厂">工厂</a>
         </li>
         <li>
           <a href="#native-arrays">本机数组</a>
@@ -34,7 +34,7 @@
 
 `Phalcon\Config` 到应用程序中使用的 PHP 对象是组件，用于转换配置文件的不同格式 （使用适配器）。
 
-Values can be obtained from `Phalcon\Config` as follows:
+值可以从 `Phalcon\Config` 获得，详情如下：
 
 ```php
 <?php
@@ -61,7 +61,7 @@ echo $config->path('test.parent.property');                 // displays 1
 
 ## 工厂
 
-Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`.
+使用 `adapter` 选项加载配置适配器类，如果没有扩展提供，它将被添加到 `文件的路径`.
 
 ```php
 <?php
@@ -139,7 +139,7 @@ $config = new Config($settings);
 
 ## 读取 INI 文件
 
-Ini 文件是常见的方式来存储设置。 `Phalcon\Config` 使用优化的 PHP 函数 `parse_ini_file` 来读取这些文件。 Files sections are parsed into sub-settings for easy access.
+Ini 文件是常见的方式来存储设置。 `Phalcon\Config` 使用优化的 PHP 函数 `parse_ini_file` 来读取这些文件。 文件节被解析成子设置，以便轻松访问。
 
 ```ini
 [database]
@@ -269,15 +269,15 @@ $config->path('database.host', null, '.'); // localhost
 
 $config->path('test.parent'); // Phalcon\Config
 
-// Using slash as delimiter. A default value may also be specified and
-// will be returned if the configuration option does not exist.
+// Using slash as delimiter. 也可以指定默认值
+// 如果配置选项不存在, 将返回。
 $config->path('test/parent/property3', 'no', '/'); // no
 
 Config::setPathDelimiter('/');
 $config->path('test/parent/property2'); // yeah
 ```
 
-The following example shows how to create usefull facade to access nested configuration values:
+下面的示例展示了如何创建usefull facade来访问嵌套的配置值:
 
 ```php
 <?php
@@ -304,7 +304,7 @@ function config() {
 
 ## 注射配置依赖项
 
-You can inject your configuration to the controller allowing us to use `Phalcon\Config` inside `Phalcon\Mvc\Controller`. To be able to do that, you have to add it as a service in the Dependency Injector container. Add following code inside your bootstrap file:
+您可以将您的配置注入控制器，允许我们在`Phalcon\Config`内部使用`Phalcon\Mvc\controller `。 要做到这一点，您必须将其作为服务添加到依赖注入器容器中。 在引导文件中添加以下代码:
 
 ```php
 <?php

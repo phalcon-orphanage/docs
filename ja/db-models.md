@@ -4,85 +4,85 @@
       <a href="#working-with">Working with Models</a> 
       <ul>
         <li>
-          <a href="#creating">Creating Models</a> 
+          <a href="#creating">モデルの作成</a> 
           <ul>
             <li>
-              <a href="#properties-setters-getters">Public properties vs. Setters/Getters</a>
+              <a href="#properties-setters-getters">パブリックプロバティー VS セッター/ゲッター</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#records-to-objects">Understanding Records To Objects</a>
+          <a href="#records-to-objects">オブジェクトへのレコード格納について理解する</a>
         </li>
         <li>
-          <a href="#finding-records">Finding Records</a> 
+          <a href="#finding-records">レコードの検索</a> 
           <ul>
             <li>
-              <a href="#resultsets">Model Resultsets</a>
+              <a href="#resultsets">モデルの結果セット</a>
             </li>
             <li>
-              <a href="#custom-resultsets">Custom Resultsets</a>
+              <a href="#custom-resultsets">カスタム結果セット</a>
             </li>
             <li>
-              <a href="#filters">Filtering Resultsets</a>
+              <a href="#filters">結果セットのフィルタリング</a>
             </li>
             <li>
-              <a href="#binding-parameters">Binding Parameters</a>
+              <a href="#binding-parameters">パラメーターのバインド</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#preparing-records">Initializing/Preparing fetched records</a>
+          <a href="#preparing-records">取得したレコードの初期化/準備</a>
         </li>
         <li>
-          <a href="#calculations">Generating Calculations</a>
+          <a href="#calculations">集計の生成</a>
         </li>
         <li>
-          <a href="#create-update-records">Creating/Updating Records</a> 
+          <a href="#create-update-records">レコードの登録と更新</a> 
           <ul>
             <li>
-              <a href="#create-update-with-confidence">Create/Update with Confidence</a>
+              <a href="#create-update-with-confidence">確実に作成/更新する</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#delete-records">Deleting Records</a>
+          <a href="#delete-records">レコードの削除</a>
         </li>
         <li>
-          <a href="#hydration-modes">Hydration Modes</a>
+          <a href="#hydration-modes">ハイドレーションモード</a>
         </li>
         <li>
-          <a href="#table-prefixes">Table prefixes</a>
+          <a href="#table-prefixes">テーブル名のプレフィックス</a>
         </li>
         <li>
-          <a href="#identity-columns">Auto-generated identity columns</a>
+          <a href="#identity-columns">自動生成された id カラム</a>
         </li>
         <li>
-          <a href="#skipping-columns">Skipping Columns</a>
+          <a href="#skipping-columns">カラムをスキップ</a>
         </li>
         <li>
-          <a href="#dynamic-updates">Dynamic Updates</a>
+          <a href="#dynamic-updates">ダイナミックアップデート</a>
         </li>
         <li>
-          <a href="#column-mapping">Independent Column Mapping</a>
+          <a href="#column-mapping">独立したカラムマッピング</a>
         </li>
         <li>
-          <a href="#record-snapshots">Record Snapshots</a>
+          <a href="#record-snapshots">レコードのスナップショット</a>
         </li>
         <li>
-          <a href="#different-schemas">Pointing to a different schema</a>
+          <a href="#different-schemas">別のスキーマを指す</a>
         </li>
         <li>
-          <a href="#multiple-databases">Setting multiple databases</a>
+          <a href="#multiple-databases">複数のデータベースを設定</a>
         </li>
         <li>
-          <a href="#injecting-services-into-models">Injecting services into Models</a>
+          <a href="#injecting-services-into-models">モデルへのサービスインジェクション</a>
         </li>
         <li>
-          <a href="#disabling-enabling-features">Disabling/Enabling Features</a>
+          <a href="#disabling-enabling-features">機能の有効/無効</a>
         </li>
         <li>
-          <a href="#stand-alone-component">Stand-Alone component</a>
+          <a href="#stand-alone-component">独立コンポーネント</a>
         </li>
       </ul>
     </li>
@@ -91,23 +91,23 @@
 
 <a name='working-with'></a>
 
-# Working with Models
+# モデルの動作
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
+モデルは、アプリケーションの情報 (データ) と、そのデータを操作するためのルールを表します。 モデルは主に、それに対応するテーブルとの対話のルールを管理するために使用されます。 ほとんどの場合、データベース内の各テーブルは、アプリケーション内の1つのモデルと対応します。 アプリケーションのビジネスロジックの大半は、モデルに集中します。
 
-`Phalcon\Mvc\Model` is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. `Phalcon\Mvc\Model` avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
+`Phalcon\Mvc\Model` は、Phalconアプリケーションのすべてのモデルのベースです。 データベースの独立性、基本的なCRUD機能、高度な検索機能、および他のサービスの中でモデルを相互に関連付ける機能を提供します。 `Phalcon\Mvc\Model` によって、メソッドをそれぞれのデータベースエンジンの操作に動的に変換されるため、SQL文を使用する必要がなくなります。
 
 <div class="alert alert-warning">
     <p>
-        Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the <a href="/[[language]]/[[version]]/api/Phalcon_Db">Phalcon\Db</a> component documentation.
+        モデルは、高い抽象化レイヤーでデータベースと連動します。 ローレベルなデータベース操作が必要な場合は、 <a href="/[[language]]/[[version]]/api/Phalcon_Db">Phalcon\Db</a> コンポーネントのドキュメントを参照してください。
     </p>
 </div>
 
 <a name='creating'></a>
 
-## Creating Models
+## モデルの作成
 
-A model is a class that extends from `Phalcon\Mvc\Model`. Its class name should be in camel case notation:
+モデルは、 `Phalcon\Mvc\Model` から拡張するクラスです。そのクラス名は、キャメルケース表記にする必要があります。
 
 ```php
 <?php
@@ -128,7 +128,7 @@ class RobotParts extends Model
     </p>
 </div>
 
-By default, the model `Store\Toys\RobotParts` will map to the table `robot_parts`. If you want to manually specify another name for the mapped table, you can use the `setSource()` method:
+デフォルトでは、モデル `Store\Toys\RobotParts` が `robot_parts` テーブルにマッピングされます。 マッピングされたテーブル名を手動で指定する場合は、 `setSource()` メソッドが使用できます:
 
 ```php
 <?php
@@ -146,9 +146,9 @@ class RobotParts extends Model
 }
 ```
 
-The model `RobotParts` now maps to `toys_robot_parts` table. The `initialize()` method helps with setting up this model with a custom behavior i.e. a different table.
+モデル `RobotParts` は、 `toys_robot_parts` テーブルにマッピングされています。 `initialize()` メソッドは、カスタムビヘイビア（例えば別のテーブル）などでこのモデルを設定するのに役立ちます。
 
-The `initialize()` method is only called once during the request. This method is intended to perform initializations that apply for all instances of the model created within the application. If you want to perform initialization tasks for every instance created you can use the `onConstruct()` method:
+`initialize()` メソッドはリクエスト時に1度だけ呼ばれます。 このメソッドは、アプリケーション内で作成されたモデルのすべてのインスタンスに適用される、初期化処理を実行するためのものです。 作成されたすべてのインスタンスに対して初期化タスクを実行する場合は、`onConstruct()` メソッドを使用できます。
 
 ```php
 <?php
@@ -168,9 +168,9 @@ class RobotParts extends Model
 
 <a name='properties-setters-getters'></a>
 
-### Public properties vs. Setters/Getters
+### パブリックプロバティー VS セッター/ゲッター
 
-Models can be implemented public properties, meaning that each property can be read/updated from any part of the code that has instantiated that model class:
+モデルはパブリックプロパティとして実装できます。つまり、モデルクラスをインスタンス化したコードの任意の部分から各プロパティを読み込み/更新できます。
 
 ```php
 <?php
@@ -189,7 +189,7 @@ class Robots extends Model
 }
 ```
 
-Another implementation is to use getters and setter functions, which control which properties are publicly available for that model. The benefit of using getters and setters is that the developer can perform transformations and validation checks on the values set for the model, which is impossible when using public properties. Additionally getters and setters allow for future changes without changing the interface of the model class. So if a field name changes, the only change needed will be in the private property of the model referenced in the relevant getter/setter and nowhere else in the code.
+もう1つの実装では、gettersとsetter関数を使用して、そのモデルで公開されているプロパティを制御します。 getterとsetterを使用する利点は、パブリックプロパティを使用する場合に不可能な、モデルに対して設定された値の変換と検証チェックを実行できることです。 さらに、getterとsetterは、モデルクラスのインタフェースを変更せずに将来の変更を可能にします。 したがって、フィールド名が変更された場合に必要な変更は、関連するgetter/setterで参照されているモデルのプライベートプロパティだけで、コード内の他の場所にはありません。
 
 ```php
 <?php
@@ -214,7 +214,7 @@ class Robots extends Model
 
     public function setName($name)
     {
-        // The name is too short?
+        // 名前は短すぎないか？
         if (strlen($name) < 10) {
             throw new InvalidArgumentException(
                 'The name is too short'
@@ -231,7 +231,7 @@ class Robots extends Model
 
     public function setPrice($price)
     {
-        // Negative prices aren't allowed
+        // マイナスの価格は許可されない
         if ($price < 0) {
             throw new InvalidArgumentException(
                 "Price can't be negative"
@@ -243,13 +243,13 @@ class Robots extends Model
 
     public function getPrice()
     {
-        // Convert the value to double before be used
+        // 使う前にdouble型に変換
         return (double) $this->price;
     }
 }
 ```
 
-Public properties provide less complexity in development. However getters/setters can heavily increase the testability, extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the application they are creating, depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
+パブリックプロパティは、開発の複雑さを軽減します。 しかし、getter/setterはアプリケーションのテスト容易性、拡張性、保守性を大幅に向上させる可能性があります。 開発者はアプリケーションのニーズに応じて、作成するアプリケーションに適した戦略を決めることができます。 ORMは、プロパティを定義する両方のスキーマと互換性があります。
 
 <div class="alert alert-warning">
     <p>
@@ -257,13 +257,13 @@ Public properties provide less complexity in development. However getters/setter
     </p>
 </div>
 
-If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName` instead of `$model->findByProperty_name`, etc.). As much of the system expects camel case, and underscores are commonly removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a column map (as described above) to ensure proper mapping of your properties to their database counterparts.
+プロパティ名にアンダースコアを使用する場合は、マジックメソッドで使用するために、getter/setter宣言でキャメルケースを使う必要があります。 (例えば、 `$model->getProperty_name` は `$model->getPropertyName` に, `$model->findByProperty_name` は `$model->findByPropertyName` にするなど) 多くのシステムではキャメルケースが前提とされ、アンダースコアは一般的に削除されるためドキュメント全体に示されている方法でプロパティの名前を付けることをお勧めします。 カラムのマッピングを使用すると（上で説明したように）、データベースに対してプロパティを正しくマッピングすることができます。
 
 <a name='records-to-objects'></a>
 
-## Understanding Records To Objects
+## オブジェクトへのレコード格納について理解する
 
-Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
+モデルの各インスタンスは、表の行を表します。 オブジェクトのプロパティを読み取ることで、レコードのデータに簡単にアクセスできます。 たとえば、レコードが存在するテーブル 'robots' の場合は、次のようになります:
 
 ```sql
 mysql> select * from robots;
@@ -277,21 +277,21 @@ mysql> select * from robots;
 3 rows in set (0.00 sec)
 ```
 
-You could find a certain record by its primary key and then print its name:
+プライマリキーで特定のレコードを見つけ、その名前を出力することができます:
 
 ```php
 <?php
 
 use Store\Toys\Robots;
 
-// Find record with id = 3
+// id = 3のレコードを検索
 $robot = Robots::findFirst(3);
 
-// Prints 'Terminator'
+// 'Terminator' を出力
 echo $robot->name;
 ```
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+一度レコードがメモリ内に格納されれば、データを更新して、その変更を保存することができます:
 
 ```php
 <?php
@@ -305,28 +305,28 @@ $robot->name = 'RoboCop';
 $robot->save();
 ```
 
-As you can see, there is no need to use raw SQL statements. `Phalcon\Mvc\Model` provides high database abstraction for web applications.
+ご覧のとおり、生のSQL文を使用する必要はありません。 `Phalcon\Mvc\Model` は、Webアプリケーションのためにデータベースの高い抽象化を提供します。
 
 <a name='finding-records'></a>
 
-## Finding Records
+## レコードの検索
 
-`Phalcon\Mvc\Model` also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
+`Phalcon\Mvc\Model` には、レコードを照会するためのいくつかのメソッドもあります。 次の例は、モデルから1つ以上のレコードを照会する方法を示しています:
 
 ```php
 <?php
 
 use Store\Toys\Robots;
 
-// How many robots are there?
+// どれくらいロボットがいるか？
 $robots = Robots::find();
 echo 'There are ', count($robots), "\n";
 
-// How many mechanical robots are there?
+// 機械式のロボットはどれくらいいるか？
 $robots = Robots::find("type = 'mechanical'");
 echo 'There are ', count($robots), "\n";
 
-// Get and print virtual robots ordered by name
+// バーチャルなロボットを取得して名前順に並び替えて出力する
 $robots = Robots::find(
     [
         "type = 'virtual'",
@@ -337,7 +337,7 @@ foreach ($robots as $robot) {
     echo $robot->name, "\n";
 }
 
-// Get first 100 virtual robots ordered by name
+// バーチャルなロボットを名前順に並び替えて最初の100件を取得する
 $robots = Robots::find(
     [
         "type = 'virtual'",
@@ -352,26 +352,26 @@ foreach ($robots as $robot) {
 
 <div class="alert alert-warning">
     <p>
-        If you want find record by external data (such as user input) or variable data you must use <a href="#binding-parameters">Binding Parameters</a>
+        外部データ（ユーザー入力など）や変数データでレコードを検索する場合は、 <a href="#binding-parameters">バインディングパラメータ</a> を使用する必要があります。
     </p>
 </div>
 
-You could also use the `findFirst()` method to get only the first record matching the given criteria:
+`findFirst()` メソッドを使用して、指定した条件に一致する最初のレコードのみを取得することもできます。
 
 ```php
 <?php
 
 use Store\Toys\Robots;
 
-// What's the first robot in robots table?
+// robotsテーブルの最初のレコードは？
 $robot = Robots::findFirst();
 echo 'The robot name is ', $robot->name, "\n";
 
-// What's the first mechanical robot in robots table?
+// robotsテーブルの最初の機械式のロボットは？
 $robot = Robots::findFirst("type = 'mechanical'");
 echo 'The first mechanical robot name is ', $robot->name, "\n";
 
-// Get first virtual robot ordered by name
+// バーチャルなロボットを名前順に並び替えて最初の100件を取得する
 $robot = Robots::findFirst(
     [
         "type = 'virtual'",
@@ -382,7 +382,7 @@ $robot = Robots::findFirst(
 echo 'The first virtual robot name is ', $robot->name, "\n";
 ```
 
-Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria:
+`find()` および `findFirst()` メソッドは、検索条件を指定する連想配列を受け付けます:
 
 ```php
 <?php
@@ -407,24 +407,24 @@ $robots = Robots::find(
 );
 ```
 
-The available query options are:
+使用可能なクエリのオプションは次のとおりです:
 
-| Parameter     | Description                                                                                                                                                                                          | Example                                                              |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Mvc\Model` assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned.                                                                           | `'columns' => 'id, name'`                                         |
-| `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security.                                                                                          | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
-| `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security.                                                          | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
-| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                           | `'order' => 'name DESC, status'`                                  |
-| `limit`       | Limit the results of the query to results to certain range.                                                                                                                                          | `'limit' => 10`                                                   |
-| `offset`      | Offset the results of the query by a certain amount.                                                                                                                                                 | `'offset' => 5`                                                   |
-| `group`       | Allows to collect data across multiple records and group the results by one or more columns.                                                                                                         | `'group' => 'name, status'`                                       |
-| `for_update`  | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting exclusive locks on each row it reads.                                                                               | `'for_update' => true`                                            |
-| `shared_lock` | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting shared locks on each row it reads.                                                                                  | `'shared_lock' => true`                                           |
-| `cache`       | Cache the resultset, reducing the continuous access to the relational system.                                                                                                                        | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
-| `hydration`   | Sets the hydration strategy to represent each returned record in the result.                                                                                                                         | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
+| パラメーター        | 説明                                                                                                     | 例                                                                    |
+| ------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `conditions`  | find時の検索条件。 指定された条件を満たすレコードのみを抽出するために使用されます。 デフォルトでは、 `Phalcon\Mvc\Model` は最初のパラメータが検索条件であることを期待します。 | `'conditions' => "name LIKE 'steve%'"`                            |
+| `columns`     | モデル内の完全な列の代わりに特定の列を返します。 このオプションを使用すると、不完全なオブジェクトが返されます。                                               | `'columns' => 'id, name'`                                         |
+| `bind`        | bindは、プレースホルダをエスケープ値で置き換えるオプションと一緒に使用されるため、セキュリティが強化されます。                                              | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
+| `bindTypes`   | パラメータをバインドする時にこのパラメータを使用すると、バインドされたパラメータをさらに型キャストして、セキュリティをさらに強化することができます。                             | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
+| `order`       | 結果セットをソートするために使用されます。 1つまたは複数のフィールドをカンマで区切って使用します。                                                     | `'order' => 'name DESC, status'`                                  |
+| `limit`       | クエリの結果を特定の範囲に制限します。                                                                                    | `'limit' => 10`                                                   |
+| `offset`      | クエリの結果を一定量だけオフセットします。                                                                                  | `'offset' => 5`                                                   |
+| `group`       | 複数のレコードにわたってデータを収集し、結果を1つ以上の列でグループ化することができます。                                                          | `'group' => 'name, status'`                                       |
+| `for_update`  | このオプションを指定すると、 `Phalcon\Mvc\Model` は利用可能な最新のデータを読み込み、読み取った各行に対して排他ロックを設定します。                         | `'for_update' => true`                                            |
+| `shared_lock` | このオプションを指定すると、 `Phalcon\Mvc\Model` は利用可能な最新のデータを読み込み、読み取った各行に対して共有ロックを設定します。                         | `'shared_lock' => true`                                           |
+| `cache`       | 結果セットをキャッシュし、リレーショナルシステムへの継続的なアクセスを減らします。                                                              | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
+| `hydration`   | 結果に返された各レコードを表すためのハイドレーション戦略を設定します。                                                                    | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
-If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
+必要に応じて、一連のパラメータを使用する代わりに、オブジェクト指向の方法でクエリを作成する方法もあります:
 
 ```php
 <?php
@@ -439,11 +439,11 @@ $robots = Robots::query()
     ->execute();
 ```
 
-The static method `query()` returns a `Phalcon\Mvc\Model\Criteria` object that is friendly with IDE autocompleters.
+静的メソッド `query()` は、IDEのオートフィルタと親和性の高い `Phalcon\Mvc\Model\Criteria` オブジェクトを返します。
 
-All the queries are internally handled as [PHQL](/[[language]]/[[version]]/db-phql) queries. PHQL is a high-level, object-oriented and SQL-like language. This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
+すべてのクエリは内部的には [PHQL](/[[language]]/[[version]]/db-phql) クエリとして処理されます。 PHQLは、高度で、オブジェクト指向な、SQLライクな言語です。 この言語は、他のモデルへのjoin、グルーピングの定義、集計の追加など、クエリを実行するための多くの機能を提供します。
 
-Lastly, there is the `findFirstBy<property-name>()` method. This method expands on the `findFirst()` method mentioned earlier. It allows you to quickly perform a retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column. An example is in order, so taking our Robots model mentioned earlier:
+最後に、 `findFirstBy<property-name>()` メソッドがあります。 このメソッドは、前述の `findFirst()` メソッドを拡張します。 メソッド自体のプロパティ名を使用し、その列で検索するデータを含むパラメータを渡すことで、テーブルからの取得を素早く実行できます。 An example is in order, so taking our Robots model mentioned earlier:
 
 ```php
 <?php

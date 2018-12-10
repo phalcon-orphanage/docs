@@ -241,11 +241,7 @@ test/
 
 Este es el caso más común, la aplicación se instala en un directorio bajo la raíz del documento. En este caso, utilizamos dos archivos `.htaccess`, el primero de ellos para ocultar el código de la aplicación reenviando todas las solicitudes a la raíz de documentos (`public/`).
 
-<div class="alert alert-warning">
-    <p>
-        Ten en cuenta que usar archivos <code>.htaccess</code> requiere que la instalación de apache tenga la opción 'AllowOverride All' configurada.
-    </p>
-</div>
+##### Tenga en cuenta que la utilización de archivos `.htaccess` requiere que la instalación de apache tenga la opción `AllowOverride All`. {.alert.alert-warning}
 
 ```apacheconfig
 # test/.htaccess
@@ -269,6 +265,21 @@ Un segundo archivo `.htaccess` se encuentra en el directorio `public/`, este ree
     RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 </IfModule>
 ```
+
+Para los usuarios que usan la letra persa 'م' (meem) en los parámetros uri, existe un problema con `mod_rewrite`. Para permitir que la coincidencia funcione como lo hace con los caracteres en inglés, deberá cambiar su archivo `.htaccess`:
+
+```apacheconfig
+# test/public/.htaccess
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond   %{REQUEST_FILENAME} !-d
+    RewriteCond   %{REQUEST_FILENAME} !-f
+    RewriteRule   ^([0-9A-Za-z\x7f-\xff]*)$ index.php?params=$1 [L]
+</IfModule>
+```
+
+Si su uri contiene caracteres distintos al inglés, puede que necesite recurrir al cambio anterior para permitir que `mod_rewrite` coincida exactamente con su ruta.
 
 <a name='apache-apache-configuration'></a>
 

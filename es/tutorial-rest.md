@@ -178,18 +178,23 @@ namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Message;
-use Phalcon\Mvc\Model\Validator\Uniqueness;
-use Phalcon\Mvc\Model\Validator\InclusionIn;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness
+use Phalcon\Validation\Validator\InclusionIn;
+
 
 class Robots extends Model
 {
     public function validation()
     {
-        // El tipo debe ser: droid, mechanical o virtual
-        $this->validate(
+        $validator = new Validation();
+
+        // Type must be: droid, mechanical or virtual
+        $validator->add(
+            "type",
             new InclusionIn(
                 [
-                    'field'  => 'type',
+                    'message' => 'Type must be "droid", "mechanical", or "virtual"',
                     'domain' => [
                         'droid',
                         'mechanical',
@@ -199,24 +204,25 @@ class Robots extends Model
             )
         );
 
-        // El nombre del Robot debe ser único
-        $this->validate(
+        // Robot name must be unique
+        $validator->add(
+            'name',
             new Uniqueness(
                 [
                     'field'   => 'name',
-                    'message' => 'El nombre del Robot debe ser único',
+                    'message' => 'The robot name must be unique',
                 ]
             )
         );
 
-        // El año no debe ser menor a cero
+        // Year cannot be less than zero
         if ($this->year < 0) {
             $this->appendMessage(
-                new Message('El año no debe ser menor a cero')
+                new Message('The year cannot be less than zero')
             );
         }
 
-        // Comprobar si se han producido mensajes
+        // Check if any messages have been produced
         if ($this->validationHasFailed() === true) {
             return false;
         }
