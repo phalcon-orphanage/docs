@@ -2,24 +2,24 @@
 
 *implements* [Phalcon\Acl\RoleInterface](/[[language]]/[[version]]/api/Phalcon_Acl_RoleInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/role.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/role.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-This class defines role entity and its description
+このクラスはロールエントリとその説明を定義します。
 
-## Methods
+## メソッド
 
 public **getName** ()
 
-Role name
+ロール名
 
 public **__toString** ()
 
-Role name
+ロール名
 
 public **getDescription** ()
 
-Role description
+ロールの説明
 
 public **__construct** (*mixed* $name, [*mixed* $description])
 
-Phalcon\\Acl\\Role constructor
+Phalcon\\Acl\\Role コンストラクタ
