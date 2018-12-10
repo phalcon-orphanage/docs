@@ -1,87 +1,87 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#di-service-location">Dependency Injection / Service Location</a> 
+      <a href="#di-service-location">依赖注入 / 服务定位</a> 
       <ul>
         <li>
-          <a href="#di-explained">DI explained</a>
+          <a href="#di-explained">DI 解释</a>
         </li>
         <li>
-          <a href="#registering-services">Registering services in the Container</a> 
+          <a href="#registering-services">在容器中注册服务</a> 
           <ul>
             <li>
-              <a href="#simple-registration">Simple Registration</a> 
+              <a href="#simple-registration">简单的注册</a> 
               <ul>
                 <li>
-                  <a href="#simple-registration-string">String</a>
+                  <a href="#simple-registration-string">字符串</a>
                 </li>
                 <li>
-                  <a href="#class-instances">Class instances</a>
+                  <a href="#class-instances">类实例</a>
                 </li>
                 <li>
-                  <a href="#closures-anonymous-functions">Closures/Anonymous functions</a>
+                  <a href="#closures-anonymous-functions">闭包/匿名函数</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#complex-registration">Complex Registration</a> 
+              <a href="#complex-registration">复杂的注册</a> 
               <ul>
                 <li>
-                  <a href="#constructor-injection">Constructor Injection</a>
+                  <a href="#constructor-injection">构造函数注入</a>
                 </li>
                 <li>
-                  <a href="#setter-injection">Setter Injection</a>
+                  <a href="#setter-injection">设置注入</a>
                 </li>
                 <li>
-                  <a href="#properties-injection">Properties Injection</a>
+                  <a href="#properties-injection">采用属性的方式注入</a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#array-syntax">Array Syntax</a>
+              <a href="#array-syntax">数组方式</a>
             </li>
             <li>
-              <a href="#loading-from-yaml">Loading from YAML</a>
+              <a href="#loading-from-yaml">从 YAML 加载</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#resolving-services">Resolving Services</a> 
+          <a href="#resolving-services">解析服务</a> 
           <ul>
             <li>
-              <a href="#events">Events</a>
+              <a href="#events">事件</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#shared-services">Shared services</a>
+          <a href="#shared-services">共享的服务</a>
         </li>
         <li>
-          <a href="#manipulating-services-individually">Manipulating services individually</a>
+          <a href="#manipulating-services-individually">单独操纵服务</a>
         </li>
         <li>
-          <a href="#instantiating-classes-service-container">Instantiating classes via the Service Container</a>
+          <a href="#instantiating-classes-service-container">通过服务容器实例化类</a>
         </li>
         <li>
-          <a href="#automatic-injecting-di-itself">Automatic Injecting of the DI itself</a>
+          <a href="#automatic-injecting-di-itself">从DI本身自动注入</a>
         </li>
         <li>
-          <a href="#organizing-services-files">Organizing services in files</a>
+          <a href="#organizing-services-files">在文件中组织服务</a>
         </li>
         <li>
-          <a href="#accessing-di-static-way">Accessing the DI in a static way</a>
+          <a href="#accessing-di-static-way">以静态的方式访问DI</a>
         </li>
         <li>
-          <a href="#factory-default-di">Factory Default DI</a>
+          <a href="#factory-default-di">默认的Di注入器</a>
         </li>
         <li>
-          <a href="#service-name-conventions">Service Name Conventions</a>
+          <a href="#service-name-conventions">服务名称约定</a>
         </li>
         <li>
-          <a href="#service-provider">Service Providers</a>
+          <a href="#service-provider">服务提供商</a>
         </li>
         <li>
-          <a href="#implementing-your-own-di">Implementing your own DI</a>
+          <a href="#implementing-your-own-di">实现你自己的DI</a>
         </li>
       </ul>
     </li>
@@ -90,15 +90,15 @@
 
 <a name='di-service-location'></a>
 
-# Dependency Injection / Service Location
+# 依赖注入 / 服务定位
 
 <a name='di-explained'></a>
 
-## DI explained
+## DI 解释
 
-The following example is a bit long, but it attempts to explain why Phalcon uses service location and dependency injection. First, let's assume we are developing a component called `SomeComponent`. This performs some task. Our component has a dependency, that is a connection to a database.
+下面的示例是有点长，但它试图解释为什么Phalcon使用服务定位和依赖关系注入。 首先，让我们假设我们正在开发一个称为 `SomeComponent` 的组件。 这个组件执行某一任务。 我们的组件具有依赖项，就是与数据库的连接。
 
-In this first example, the connection is created inside the component. Although this is a perfectly valid implementation, it is impartical, due to the fact that we cannot change the connection parameters or the type of the database system because the component only works as created.
+在这第一个示例中，连接是在组件内创建的。 Although this is a perfectly valid implementation, it is impartical, due to the fact that we cannot change the connection parameters or the type of the database system because the component only works as created.
 
 ```php
 <?php
@@ -124,13 +124,15 @@ class SomeComponent
         // ...
     }
 }
+    }
+}
 
 $some = new SomeComponent();
 
-$some->someDbTask();
+$some-&gt;someDbTask();
 ```
 
-To solve this shortcoming, we have created a setter that injects the dependency externally before using it. This is also a valid implementation but has its shortcomings:
+为了解决这一缺陷，我们在使用它之前先创建这个依赖并且将它注入。这也是一种实现方式，但有其不足之处：
 
 ```php
 <?php
@@ -175,7 +177,7 @@ $some->setConnection($connection);
 $some->someDbTask();
 ```
 
-Now consider that we use this component in different parts of the application and then we will need to create the connection several times before passing it to the component. Using a global registry pattern, we can store the connection object there and reuse it whenever we need it.
+现在考虑，我们使用此组件在应用程序的不同部分，然后我们将需要创建传递给该组件之前几次连接。 使用全局注册表模式，我们可以存储连接对象在那里和重用它，当我们需要它的时候。
 
 ```php
 <?php
@@ -228,7 +230,7 @@ $some->setConnection(Registry::getConnection());
 $some->someDbTask();
 ```
 
-Now, let's imagine that we must implement two methods in the component, the first always needs to create a new connection and the second always needs to use a shared connection:
+现在，让我们想象一下，我们必须实现两个方法在该组件上，第一次总是需要创建一个新的连接和第二个总是需要使用一个共享的连接：
 
 ```php
 <?php
@@ -329,9 +331,9 @@ $some->someOtherDbTask(
 );
 ```
 
-So far we have seen how dependency injection solved our problems. Passing dependencies as arguments instead of creating them internally in the code makes our application more maintainable and decoupled. However, in the long-term, this form of dependency injection has some disadvantages.
+到目前为止我们看到如何依赖注入解决我们的问题。 作为参数而不是在代码中创建内部传递依赖关系使我们的应用程序，更可维护性和去除耦合性。 然而，从长远来看，这种形式的依赖注入有一些缺点。
 
-For instance, if the component has many dependencies, we will need to create multiple setter arguments to pass the dependencies or create a constructor that pass them with many arguments, additionally creating dependencies before using the component, every time, makes our code not as maintainable as we would like:
+例如，如果该组件有许多依赖关系，我们将需要创建多个二传手参数传递依赖项或创建一个构造函数，通过他们与许多参数，此外之前使用的组件，每次创建依赖关系，使得我们的代码不容易维护，我们会像：
 
 ```php
 <?php
@@ -354,7 +356,7 @@ $some->setFilter($filter);
 $some->setSelector($selector);
 ```
 
-Think if we had to create this object in many parts of our application. In the future, if we do not require any of the dependencies, we need to go through the entire code base to remove the parameter in any constructor or setter where we injected the code. To solve this, we return again to a global registry to create the component. However, it adds a new layer of abstraction before creating the object:
+认为是否我们不得不在我们的应用程序的许多部分中创建此对象。 将来，如果我们不需要任何依赖项，我们需要去通过整个代码库的任何构造函数或 setter 中删除参数在那里我们注入的代码。 为了解决这个问题，我们再返回到全局注册表创建的组件。 然而，它会添加一个新创建的对象之前抽象层：
 
 ```php
 <?php
@@ -379,9 +381,9 @@ class SomeComponent
 }
 ```
 
-Now we find ourselves back where we started, we are again building the dependencies inside of the component! We must find a solution that keeps us from repeatedly falling into bad practices.
+现在我们发现自己回到我们开始的地方，我们再建立内部组件依赖项 ！我们必须找到一种解决方案，让我们从一再陷入糟糕的实践。
 
-A practical and elegant way to solve these problems is using a container for dependencies. The containers act as the global registry that we saw earlier. Using the container for dependencies as a bridge to obtain the dependencies allows us to reduce the complexity of our component:
+以实际和优雅的方式来解决这些问题使用容器的依赖关系。 容器作为我们前面看到的全局注册表。 使用容器的依赖关系作为桥梁获得依赖关系使我们能够减少我们的组件的复杂性：
 
 ```php
 <?php
@@ -455,41 +457,41 @@ $some = new SomeComponent($di);
 $some->someDbTask();
 ```
 
-The component can now simply access the service it requires when it needs it, if it does not require a service it is not even initialized, saving resources. The component is now highly decoupled. For example, we can replace the manner in which connections are created, their behavior or any other aspect of them and that would not affect the component.
+组件现在可以简单地访问它需要时需要它，如果它不需要服务它不甚至初始化，节约资源的服务。 现在组件是高度解耦的。 例如，我们可以替换创建连接的方式，他们的行为或任何其他方面的他们，不会影响该组件。
 
-`Phalcon\Di` is a component implementing Dependency Injection and Location of services and it's itself a container for them.
+`Phalcon\Di` 是一个组件执行依赖注入和服务的位置和它本身就是他们的容器。
 
-Since Phalcon is highly decoupled, `Phalcon\Di` is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.
+因为Phalcon的高度解耦，`Phalcon\Di` 是必须将纳入框架的不同组件。 开发人员还可以使用此组件把依赖项注入和管理的应用程序中使用的不同类的全局实例。
 
-Basically, this component implements the [Inversion of Control](http://en.wikipedia.org/wiki/Inversion_of_control) pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only one way to get the required dependencies within a component.
+基本上，此组件实现的 [控制反转](http://en.wikipedia.org/wiki/Inversion_of_control) 模式。 应用这个，对象不会收到使用 setter 或构造函数，但请求服务依赖注入器及其依赖项。 这降低了整体的复杂性，因为只有一种方式得到的组件中所需的依赖项。
 
-Additionally, this pattern increases testability in the code, thus making it less prone to errors.
+另外，这种模式会增加可测试性的代码，从而使它不容易出错。
 
 <a name='registering-services'></a>
 
-## Registering services in the Container
+## 在容器中注册服务
 
-The framework itself or the developer can register services. When a component A requires component B (or an instance of its class) to operate, it can request component B from the container, rather than creating a new instance component B.
+框架本身或开发人员可以注册服务。 当 A 的组件要求组件 B （或其类的一个实例） 操作时，它可以从容器中，而不是创建新的实例组件 B. 请求组件 B
 
-This way of working gives us many advantages:
+这种工作方式给了我们很多的优点：
 
-* We can easily replace a component with one created by ourselves or a third party.
-* We have full control of the object initialization, allowing us to set these objects, as needed before delivering them to components.
-* We can get global instances of components in a structured and unified way.
+* 我们可以轻松地用一个我们自己造的替换组件或第三方。
+* 我们可以完全控制的对象初始化，允许我们设置这些对象，根据需要将他们输送到组件之前。
+* 我们可以以结构的和统一的方式来管理全局组件实例。
 
-Services can be registered using several types of definitions:
+可以使用几种类型的定义注册服务：
 
 <a name='simple-registration'></a>
 
-### Simple Registration
+### 简单的注册
 
-As seen before, there are several ways to register services. These we call simple:
+以前见过，有几种方法可以注册服务。这些我们称之为简单：
 
 <a name='simple-registration-string'></a>
 
-#### String
+#### 字符串
 
-This type expects the name of a valid class, returning an object of the specified class, if the class is not loaded it will be instantiated using an auto-loader. This type of definition does not allow to specify arguments for the class constructor or parameters:
+这种类型预计有效类名称，返回指定的类，如果它不加载的类的对象将使用自动加载程序实例化。 这种类型的定义不允许指定的类构造函数或参数的参数：
 
 ```php
 <?php
@@ -503,9 +505,9 @@ $di->set(
 
 <a name='class-instances'></a>
 
-#### Class instances
+#### 类实例
 
-This type expects an object. Due to the fact that object does not need to be resolved as it is already an object, one could say that it is not really a dependency injection, however it is useful if you want to force the returned dependency to always be the same object/value:
+这种期望的对象。 由于事实对象不需要解决的它已经是一个对象，可以说，并非真正的依赖注入，然而它是有用的如果你想强制返回的依赖关系，以永远是相同的对象值：
 
 ```php
 <?php
@@ -521,9 +523,9 @@ $di->set(
 
 <a name='closures-anonymous-functions'></a>
 
-#### Closures/Anonymous functions
+#### 闭包/匿名函数
 
-This method offers greater freedom to build the dependency as desired, however, it is difficult to change some of the parameters externally without having to completely change the definition of dependency:
+此方法提供了更大的自由来生成所需的依赖，然而，它是难以改变的一些参数外部而不必完全更改依赖项的定义：
 
 ```php
 <?php
@@ -545,7 +547,7 @@ $di->set(
 );
 ```
 
-Some of the limitations can be overcome by passing additional variables to the closure's environment:
+将额外的变量传递给封闭的环境，可以克服的一些限制：
 
 ```php
 <?php
@@ -578,7 +580,7 @@ $di->set(
 );
 ```
 
-You can also access other DI services using the `get()` method:
+您还可以访问其他 DI 服务使用 `get()` 方法：
 
 ```php
 <?php
@@ -620,9 +622,9 @@ $di->set(
 
 <a name='complex-registration'></a>
 
-### Complex Registration
+### 复杂的注册
 
-If it is required to change the definition of a service without instantiating/resolving the service, then, we need to define the services using the array syntax. Define a service using an array definition can be a little more verbose:
+如果需要更改服务的定义，而无需实例化解析服务，然后，我们需要定义使用数组语法的服务。 定义了一个服务使用数组定义可以更详细：
 
 ```php
 <?php
@@ -652,7 +654,7 @@ $di->set(
 );
 ```
 
-Both service registrations above produce the same result. The array definition however, allows for alteration of the service parameters if needed:
+上述两个服务注册产生相同的结果。如果需要数组定义然而，允许服务参数的修改：
 
 ```php
 <?php
@@ -674,13 +676,13 @@ $di
     );
 ```
 
-In addition by using the array syntax you can use three types of dependency injection:
+另外通过使用数组语法你可以使用三种类型的依赖注入：
 
 <a name='constructor-injection'></a>
 
-#### Constructor Injection
+#### 构造函数注入
 
-This injection type passes the dependencies/arguments to the class constructor. Let's pretend we have the following component:
+这种注入类型将之前依赖项的参数传递给类的构造函数。让我们假设我们有以下组件：
 
 ```php
 <?php
@@ -708,7 +710,7 @@ class SomeComponent
 }
 ```
 
-The service can be registered this way:
+这种方式，可以注册服务：
 
 ```php
 <?php
@@ -738,13 +740,13 @@ $di->set(
 );
 ```
 
-The service 'response' (`Phalcon\Http\Response`) is resolved to be passed as the first argument of the constructor, while the second is a boolean value (true) that is passed as it is.
+服务 'response' (`Phalcon\Http\Response`) 是解决作为第一个参数的构造函数，传递，而第二种通过，因为它是一个布尔值 (true)。
 
 <a name='setter-injection'></a>
 
-#### Setter Injection
+#### 设置注入
 
-Classes may have setters to inject optional dependencies, our previous class can be changed to accept the dependencies with setters:
+类可能有设置器注入可选依赖项，我们的前一个类可以改变接受依赖与设置:
 
 ```php
 <?php
@@ -776,7 +778,7 @@ class SomeComponent
 }
 ```
 
-A service with setter injection can be registered as follows:
+Setter 注入可以被注册的服务，如下所示：
 
 ```php
 <?php
@@ -818,9 +820,9 @@ $di->set(
 
 <a name='properties-injection'></a>
 
-#### Properties Injection
+#### 属性注入
 
-A less common strategy is to inject dependencies or parameters directly into public attributes of the class:
+一个不太常见的策略是依赖关系或参数直接注入的类的公共属性：
 
 ```php
 <?php
@@ -840,7 +842,7 @@ class SomeComponent
 }
 ```
 
-A service with properties injection can be registered as follows:
+Setter 注入可以被注册的服务，如下所示：
 
 ```php
 <?php
@@ -876,30 +878,30 @@ $di->set(
 );
 ```
 
-Supported parameter types include the following:
+支持的参数类型包括以下内容：
 
 <table>
   <tr>
     <th>
-      Type
+      类型
     </th>
     
     <th>
-      Description
+      描述
     </th>
     
     <th>
-      Example
+      示例
     </th>
   </tr>
   
   <tr>
     <td>
-      parameter
+      参数
     </td>
     
     <td>
-      Represents a literal value to be passed as parameter
+      表示要作为参数传递的文本值
     </td>
     
     <td>
@@ -913,7 +915,7 @@ Supported parameter types include the following:
     </td>
     
     <td>
-      Represents another service in the service container
+      表示在服务容器中的另一个服务
     </td>
     
     <td>
@@ -927,7 +929,7 @@ Supported parameter types include the following:
     </td>
     
     <td>
-      Represents an object that must be built dynamically
+      表示必须动态构建的对象
     </td>
     
     <td>
@@ -936,15 +938,15 @@ Supported parameter types include the following:
   </tr>
 </table>
 
-Resolving a service whose definition is complex may be slightly slower than simple definitions seen previously. However, these provide a more robust approach to define and inject services.
+解决其定义是复杂的服务可能会比以前见过的简单定义稍慢。然而，这些提供更可靠的方法，定义和将服务注入。
 
-Mixing different types of definitions is allowed, everyone can decide what is the most appropriate way to register the services according to the application needs.
+混合使用不同类型的定义，允许，每个人都可以决定什么是最适当的方法来注册服务根据应用的需要。
 
 <a name='array-syntax'></a>
 
-### Array Syntax
+### 数组语法
 
-The array syntax is also allowed to register services:
+数组语法也可以获取已经注册的服务：
 
 ```php
 <?php
@@ -952,39 +954,39 @@ The array syntax is also allowed to register services:
 use Phalcon\Di;
 use Phalcon\Http\Request;
 
-// Create the Dependency Injector Container
+// 创建一个依赖注入容器
 $di = new Di();
 
-// By its class name
+// 通过类名注册
 $di['request'] = 'Phalcon\Http\Request';
 
-// Using an anonymous function, the instance will be lazy loaded
+// 使用匿名函数，该实例将被延迟加载
 $di['request'] = function () {
     return new Request();
 };
 
-// Registering an instance directly
+// 直接注册实例
 $di['request'] = new Request();
 
-// Using an array definition
+// 使用数组定义
 $di['request'] = [
     'className' => 'Phalcon\Http\Request',
 ];
 ```
 
-In the examples above, when the framework needs to access the request data, it will ask for the service identified as 'request' in the container. The container in turn will return an instance of the required service. A developer might eventually replace a component when he/she needs.
+在上面的例子中，当框架需要访问请求数据，它会要求输入标识作为 'request' 在容器中的服务。 容器反过来将返回所需的服务的一个实例。 他/她需要的时候，开发人员可能最终替换元件。
 
-Each of the methods (demonstrated in the examples above) used to set/register a service has advantages and disadvantages. It is up to the developer and the particular requirements that will designate which one is used.
+每个方法 （如上面的例子所示） 用于set/register(设置/注册) 服务有优点和缺点。 它是由开发人员和将指定使用哪一个的特定要求。
 
-Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the code more complicated. The lambda function is a good balance between the two, but could lead to more maintenance than one would expect.
+将服务设置为一个字符串是简单，但缺乏灵活性。 设置服务使用数组提供了更多的灵活性，但使得代码更复杂。 Lambda 函数是一个好的平衡这两者之间，但可能会导致更多的维护比人们想象。
 
-`Phalcon\Di` offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
+`Phalcon\Di` 提供它存储每个服务的延迟加载。 除非开发人员选择直接实例化一个对象并将其存储在容器中，任何对象 （通过数组、 字符串等） 存储在它将懒加载即实例化只在请求时。
 
 <a name='loading-from-yaml'></a>
 
-### Loading services from YAML files
+### 从 YAML 文件加载服务
 
-This feature will let you set your services in `yaml` files or just in plain php. For example you can load services using a `yaml` file like this:
+此功能会让你在 `yaml` 文件或只是在普通的 php 设置您的服务。例如，您可以加载使用 `yaml` 文件中的像这样的服务：
 
 ```yaml
 config:
@@ -1010,27 +1012,27 @@ $di->get('config'); // will properly return config service
 
 <a name='resolving-services'></a>
 
-## Resolving Services
+## 解析服务
 
-Obtaining a service from the container is a matter of simply calling the 'get' method. A new instance of the service will be returned:
+调用 get 方法，是一种简单地方法从容器中获取服务。将返回一个新的服务的实例：
 
 ```php
 $request = $di->get('request');
 ```
 
-Or by calling through the magic method:
+或通过魔术方法调用：
 
 ```php
 $request = $di->getRequest();
 ```
 
-Or using the array-access syntax:
+或使用数组访问语法：
 
 ```php
 $request = $di['request'];
 ```
 
-Arguments can be passed to the constructor by adding an array parameter to the method 'get':
+通过将一个数组参数添加到 get 方法，可以给构造函数传递参数：
 
 ```php
 <?php
@@ -1047,18 +1049,18 @@ $component = $di->get(
 
 <a name='envents'></a>
 
-### Events
+### 事件
 
-`Phalcon\Di` is able to send events to an :doc:`EventsManager <events>` if it is present. Events are triggered using the type 'di'. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Di` 是能够将事件发送到 `EventsManager `，如果它是存在的。 事件被触发使用类型 'di'。 一些事件可以停止操作，当返回布尔值 false 时。 支持以下事件：
 
-| Event Name           | Triggered                                                                                                       | Can stop operation? | Triggered on |
-| -------------------- | --------------------------------------------------------------------------------------------------------------- |:-------------------:|:------------:|
-| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |         No          |  Listeners   |
-| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |         No          |  Listeners   |
+| 事件名称                 | 触发器                            | 可以停止操作吗？ |   触发条件    |
+| -------------------- | ------------------------------ |:--------:|:---------:|
+| beforeServiceResolve | 触发之前解决服务。侦听器接收服务名称和传递给它的参数。    |    No    | Listeners |
+| afterServiceResolve  | 触发后决心服务。侦听器接收服务名称、 实例和传递给它的参数。 |    No    | Listeners |
 
 <a name='shared-services'></a>
 
-## Shared services
+## 共享的服务
 
 Services can be registered as 'shared' services this means that they always will act as [singletons](http://en.wikipedia.org/wiki/Singleton_pattern). Once the service is resolved for the first time the same instance of it is returned every time a consumer retrieve the service from the container:
 
@@ -1109,7 +1111,7 @@ $request = $di->getShared('request');
 
 <a name='manipulating-services-individually'></a>
 
-## Manipulating services individually
+## 单独操纵服务
 
 Once a service is registered in the service container, you can retrieve it to manipulate it individually:
 
@@ -1140,7 +1142,7 @@ Once a service is registered in the service container, you can retrieve it to ma
 
 <a name='instantiating-classes-service-container'></a>
 
-## Instantiating classes via the Service Container
+## 通过服务容器实例化类
 
 When you request a service to the service container, if it can't find out a service with the same name it'll try to load a class with the same name. With this behavior we can replace any class by another simply by registering a service with its name:
 
@@ -1221,7 +1223,7 @@ $myClass = $di->get('myClass');
 
 <a name='organizing-services-files'></a>
 
-## Organizing services in files
+## 在文件中组织服务
 
 You can better organize your application by moving the service registration to individual files instead of doing everything in the application's bootstrap:
 
@@ -1250,7 +1252,7 @@ return $router;
 
 <a name='accessing-di-static-way'></a>
 
-## Accessing the DI in a static way
+## 以静态的方式访问DI
 
 If needed you can access the latest DI created in a static function in the following way:
 
@@ -1271,7 +1273,7 @@ class SomeComponent
 
 <a name='service-providers'></a>
 
-## Service Providers
+## 服务提供商
 
 Using the `ServiceProviderInterface` you now register services by context. You can move all your `$di->set()` calls to classes like this:
 
@@ -1303,7 +1305,7 @@ var_dump($di->get('config')); // will return properly our config
 
 <a name='factory-default-di'></a>
 
-## Factory Default DI
+## 默认的Di注入器
 
 Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack framework. To achieve this, the framework provides a variant of `Phalcon\Di` called `Phalcon\Di\FactoryDefault`. This class automatically registers the appropriate services bundled with the framework to act as full-stack.
 
@@ -1317,39 +1319,39 @@ $di = new FactoryDefault();
 
 <a name='service-name-conventions'></a>
 
-## Service Name Conventions
+## 服务名称约定
 
 Although you can register services with the names you want, Phalcon has a several naming conventions that allow it to get the the correct (built-in) service when you need it.
 
-| Service Name       | Description                           | Default                                     | Shared |
-| ------------------ | ------------------------------------- | ------------------------------------------- |:------:|
-| assets             | Assets Manager                        | `Phalcon\Assets\Manager`                  |  Yes   |
-| annotations        | Annotations Parser                    | `Phalcon\Annotations\Adapter\Memory`     |  Yes   |
-| cookies            | HTTP Cookies Management Service       | `Phalcon\Http\Response\Cookies`          |  Yes   |
-| crypt              | Encrypt/Decrypt data                  | `Phalcon\Crypt`                            |  Yes   |
-| db                 | Low-Level Database Connection Service | `Phalcon\Db`                               |  Yes   |
-| dispatcher         | Controllers Dispatching Service       | `Phalcon\Mvc\Dispatcher`                  |  Yes   |
-| eventsManager      | Events Management Service             | `Phalcon\Events\Manager`                  |  Yes   |
-| escaper            | Contextual Escaping                   | `Phalcon\Escaper`                          |  Yes   |
-| flash              | Flash Messaging Service               | `Phalcon\Flash\Direct`                    |  Yes   |
-| flashSession       | Flash Session Messaging Service       | `Phalcon\Flash\Session`                   |  Yes   |
-| filter             | Input Filtering Service               | `Phalcon\Filter`                           |  Yes   |
-| modelsCache        | Cache backend for models cache        | None                                        |   No   |
-| modelsManager      | Models Management Service             | `Phalcon\Mvc\Model\Manager`              |  Yes   |
-| modelsMetadata     | Models Meta-Data Service              | `Phalcon\Mvc\Model\MetaData\Memory`     |  Yes   |
-| request            | HTTP Request Environment Service      | `Phalcon\Http\Request`                    |  Yes   |
-| response           | HTTP Response Environment Service     | `Phalcon\Http\Response`                   |  Yes   |
-| router             | Routing Service                       | `Phalcon\Mvc\Router`                      |  Yes   |
-| security           | Security helpers                      | `Phalcon\Security`                         |  Yes   |
-| session            | Session Service                       | `Phalcon\Session\Adapter\Files`          |  Yes   |
-| sessionBag         | Session Bag service                   | `Phalcon\Session\Bag`                     |  Yes   |
-| tag                | HTML generation helpers               | `Phalcon\Tag`                              |  Yes   |
-| transactionManager | Models Transaction Manager Service    | `Phalcon\Mvc\Model\Transaction\Manager` |  Yes   |
-| url                | URL Generator Service                 | `Phalcon\Mvc\Url`                         |  Yes   |
-| viewsCache         | Cache backend for views fragments     | None                                        |   No   |
+| 服务名称               | 描述               | 默认                                          | 是否共享 |
+| ------------------ | ---------------- | ------------------------------------------- |:----:|
+| assets             | 资源管理器            | `Phalcon\Assets\Manager`                  | Yes  |
+| annotations        | 注释语法分析器          | `Phalcon\Annotations\Adapter\Memory`     | Yes  |
+| cookies            | HTTP Cookie 管理服务 | `Phalcon\Http\Response\Cookies`          | Yes  |
+| crypt              | 加密解密数据           | `Phalcon\Crypt`                            | Yes  |
+| db                 | 低级数据库连接服务        | `Phalcon\Db`                               | Yes  |
+| dispatcher         | 调度服务控制器          | `Phalcon\Mvc\Dispatcher`                  | Yes  |
+| eventsManager      | 事件管理服务           | `Phalcon\Events\Manager`                  | Yes  |
+| escaper            | 内容的过滤筛选          | `Phalcon\Escaper`                          | Yes  |
+| flash              | 闪存的消息传递服务        | `Phalcon\Flash\Direct`                    | Yes  |
+| flashSession       | Flash 会话消息服务     | `Phalcon\Flash\Session`                   | Yes  |
+| filter             | 输入过滤服务           | `Phalcon\Filter`                           | Yes  |
+| modelsCache        | 模型缓存的缓存后端        | 无                                           |  No  |
+| modelsManager      | 模型管理服务           | `Phalcon\Mvc\Model\Manager`              | Yes  |
+| modelsMetadata     | 模型元数据服务          | `Phalcon\Mvc\Model\MetaData\Memory`     | Yes  |
+| request            | HTTP 请求环境服务      | `Phalcon\Http\Request`                    | Yes  |
+| response           | HTTP 响应环境服务      | `Phalcon\Http\Response`                   | Yes  |
+| router             | 路由服务             | `Phalcon\Mvc\Router`                      | Yes  |
+| security           | 安全助手             | `Phalcon\Security`                         | Yes  |
+| session            | 会话服务             | `Phalcon\Session\Adapter\Files`          | Yes  |
+| sessionBag         | 会话包服务            | `Phalcon\Session\Bag`                     | Yes  |
+| tag                | 生成的 HTML 助手      | `Phalcon\Tag`                              | Yes  |
+| transactionManager | 模型事务管理器服务        | `Phalcon\Mvc\Model\Transaction\Manager` | Yes  |
+| url                | URL 生成器服务        | `Phalcon\Mvc\Url`                         | Yes  |
+| viewsCache         | 视图片段缓存后端         | 无                                           |  No  |
 
 <a name='implementing-your-own-di'></a>
 
-## Implementing your own DI
+## 实现你自己的DI
 
 The `Phalcon\DiInterface` interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.

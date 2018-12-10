@@ -1,9 +1,9 @@
 # Interface **Phalcon\\Acl\\ResourceAware**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/resourceaware.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/resourceaware.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-## Methods
+## メソッド
 
 abstract public **getResourceName** ()
 
-Returns resource name
+リソース名を返します。

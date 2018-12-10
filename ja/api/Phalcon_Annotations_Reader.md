@@ -2,16 +2,16 @@
 
 *implements* [Phalcon\Annotations\ReaderInterface](/[[language]]/[[version]]/api/Phalcon_Annotations_ReaderInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/reader.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/reader.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Parses docblocks returning an array with the found annotations
+見つかったアノテーションの配列が返す docblockをパースします。
 
-## Methods
+## メソッド
 
 public **parse** (*mixed* $className)
 
-Reads annotations from the class dockblocks, its methods and/or properties
+クラスのdockblock、そのメソッドまたはプロパティの注釈を読み込みます。
 
 public static **parseDocBlock** (*mixed* $docBlock, [*mixed* $file], [*mixed* $line])
 
-Parses a raw doc block returning the annotations found
+見つかったアノテーションが返す doc blockをそのままパースします。

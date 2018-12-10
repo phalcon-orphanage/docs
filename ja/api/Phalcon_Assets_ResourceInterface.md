@@ -1,8 +1,8 @@
 # Interface **Phalcon\\Assets\\ResourceInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resourceinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resourceinterface.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-## Methods
+## メソッド
 
 abstract public **setType** (*mixed* $type)
 

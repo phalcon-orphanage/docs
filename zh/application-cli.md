@@ -1,22 +1,22 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#creating-cli-application">Creating a CLI Application</a> 
+      <a href="#creating-cli-application">创建一个 CLI 应用程序</a> 
       <ul>
         <li>
-          <a href="#structure">Structure</a>
+          <a href="#structure">结构</a>
         </li>
         <li>
-          <a href="#creating-bootstrap">Creating a Bootstrap</a>
+          <a href="#creating-bootstrap">创建一个引导</a>
         </li>
         <li>
-          <a href="#tasks">Tasks</a>
+          <a href="#tasks">任务</a>
         </li>
         <li>
-          <a href="#processing-action-parameters">Processing action parameters</a>
+          <a href="#processing-action-parameters">处理操作参数</a>
         </li>
         <li>
-          <a href="#running-tasks-chain">Running tasks in a chain</a>
+          <a href="#running-tasks-chain">在任务链中执行多个任务</a>
         </li>
       </ul>
     </li>
@@ -25,15 +25,15 @@
 
 <a name='creating-cli-application'></a>
 
-# Creating a Command Line (CLI) Application
+# 创建命令行 (CLI) 应用程序
 
-CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
+CLI 应用程序从命令行执行。它们还可用于创建 cron 作业、 脚本、 命令实用程序和更多。
 
 <a name='structure'></a>
 
-## Structure
+## 结构
 
-A minimal structure of a CLI application will look like this:
+最小结构的 CLI 应用程序将如下所示︰
 
 * `app/config/config.php`
 * `app/tasks/MainTask.php`
@@ -41,11 +41,11 @@ A minimal structure of a CLI application will look like this:
 
 <a name='creating-bootstrap'></a>
 
-## Creating a Bootstrap
+## 创建引导
 
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the `index.php` bootstrapper in web applications, we use a `cli.php` file for bootstrapping the application.
+在常规的 MVC 应用程序，引导文件用于启动应用程序。 Instead of the `index.php` bootstrapper in web applications, we use a `cli.php` file for bootstrapping the application.
 
-Below is a sample bootstrap that is being used for this example.
+下面是一个简单的引导程序，被使用于此示例。
 
 ```php
 <?php
@@ -113,7 +113,7 @@ try {
 }
 ```
 
-This piece of code can be run using:
+可以使用运行这段代码︰
 
 ```bash
 php app/cli.php
@@ -121,11 +121,11 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Tasks
+## 任务
 
 Tasks work similar to controllers. Any CLI application needs at least a `MainTask` and a `mainAction` and every task needs to have a `mainAction` which will run if no action is given explicitly.
 
-Below is an example of the `app/tasks/MainTask.php` file:
+下面是 `app/tasks/MainTask.php` 文件的一个示例︰
 
 ```php
 <?php
@@ -143,11 +143,11 @@ class MainTask extends Task
 
 <a name='processing-action-parameters'></a>
 
-## Processing action parameters
+## 处理操作参数
 
-It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
+也可以将参数传递到操作，此代码已存在于样本引导。
 
-If you run the application with the following parameters and action:
+如果您运行该应用程序附带以下参数与行动︰
 
 ```php
 <?php
@@ -177,7 +177,7 @@ class MainTask extends Task
 }
 ```
 
-We can then run the following command:
+然后，我们可以运行以下命令︰
 
 ```bash
 php app/cli.php main test world universe
@@ -188,9 +188,9 @@ best regards, universe
 
 <a name='running-tasks-chain'></a>
 
-## Running tasks in a chain
+## 在任务链中执行多个任务
 
-It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
+在任务链中运行多个任务也是可以得，如果它是必需的。要做到这一点必须向DI，添加控制台本身︰
 
 ```php
 <?php
@@ -211,7 +211,7 @@ try {
 }
 ```
 
-Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
+然后你可以在任何任务中使用控制台。下面是修改后的 MainTask.php 示例︰
 
 ```php
 <?php
@@ -239,4 +239,4 @@ class MainTask extends Task
 }
 ```
 
-However, it's a better idea to extend `Phalcon\Cli\Task` and implement this kind of logic there.
+总之，扩展 `Phalcon\Cli\Task` 并实现这种逻辑，是一个更好的办法。

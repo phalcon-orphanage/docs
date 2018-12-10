@@ -1,17 +1,17 @@
 # Interface **Phalcon\\Acl\\RoleInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/roleinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/roleinterface.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-## Methods
+## メソッド
 
 abstract public **getName** ()
 
-Returns the role name
+ロール名を返します。
 
 abstract public **getDescription** ()
 
-Returns role description
+ロールの説明を返します。
 
 abstract public **__toString** ()
 
-Magic method __toString
+マジックメソッド __toString

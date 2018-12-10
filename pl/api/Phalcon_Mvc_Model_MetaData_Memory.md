@@ -115,7 +115,7 @@ Writes meta-data for certain model using a MODEL_* constant
 <?php
 
 print_r(
-    $metaData->writeColumnMapIndex(
+    $metaData->writeMetaDataIndex(
         new Robots(),
         MetaData::MODELS_REVERSE_COLUMN_MAP,
         [
