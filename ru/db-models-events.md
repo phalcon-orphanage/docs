@@ -1,11 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">События модели</a> 
-      <ul>
+      <a href="#overview">События модели</a> <ul>
         <li>
-          <a href="#events">События и управление событиями</a> 
-          <ul>
+          <a href="#events">События и управление событиями</a> <ul>
             <li>
               <a href="#events-in-models">Реализация событий в классе модели</a>
             </li>
@@ -38,21 +36,20 @@
 | Операция           | Название                 | Может остановить операцию? | Пояснение                                                                                                                         |
 | ------------------ | ------------------------ |:--------------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
 | Вставка            | afterCreate              |            Нет             | Выполняется после выполнения требуемой операции над системой базы данных только при выполнении операции вставки                   |
-| Удаление           | afterDelete              |            Нет             | Выполняется после выполнения операции удаления                                                                                    |
+| Inserting/Updating | afterSave                |            Нет             | Runs after the required operation over the database system                                                                        |
 | Обновление         | afterUpdate              |            Нет             | Runs after the required operation over the database system only when an updating operation is being made                          |
-| Вставка/Обновление | afterSave                |            Нет             | Runs after the required operation over the database system                                                                        |
-| Вставка/Обновление | afterValidation          |             Да             | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
-| Вставка            | afterValidationOnCreate  |             Да             | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
-| Обновление         | afterValidationOnUpdate  |             Да             | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
-| Вставка/Обновление | beforeValidation         |             Да             | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
-| Вставка            | beforeCreate             |             Да             | Runs before the required operation over the database system only when an inserting operation is being made                        |
-| Удаление           | beforeDelete             |             Да             | Выполняется до выполнения операции удаления                                                                                       |
+| Вставка/Обновление | afterValidation          |            YES             | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
+| Inserting          | afterValidationOnCreate  |             Да             | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
+| Updating           | afterValidationOnUpdate  |             Да             | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
+| Inserting          | beforeCreate             |             Да             | Runs before the required operation over the database system only when an inserting operation is being made                        |
 | Вставка/Обновление | beforeSave               |             Да             | Runs before the required operation over the database system                                                                       |
-| Обновление         | beforeUpdate             |             Да             | Runs before the required operation over the database system only when an updating operation is being made                         |
-| Вставка            | beforeValidationOnCreate |             Да             | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
+| Updating           | beforeUpdate             |             Да             | Runs before the required operation over the database system only when an updating operation is being made                         |
+| Inserting/Updating | beforeValidation         |             Да             | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
+| Inserting          | beforeValidationOnCreate |             Да             | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
 | Обновление         | beforeValidationOnUpdate |             Да             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления                  |
-| Вставка/Обновление | onValidationFails        |   YES (already stopped)    | Is executed after an integrity validator fails                                                                                    |
-| Вставка/Обновление | validation               |             Да             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления                  |
+| Inserting/Updating | onValidationFails        |   YES (already stopped)    | Is executed after an integrity validator fails                                                                                    |
+| Inserting/Updating | prepareSave              |             NO             | Is executed before saving and allows data manipulation                                                                            |
+| Вставка/Обновление | validation               |            YES             | Выполняется до проверки поля на не нулевую/пустую строку или на внешние ключи при выполнении операции обновления                  |
 
 <a name='events-in-models'></a>
 
@@ -338,7 +335,7 @@ $di->set(
 
 use Store\Toys\Robots;
 
-// Отправим некоторый SQL запрос в базу данных
+// Отправим несколько SQL запросов в базу данных
 Robots::find();
 
 Robots::find(
@@ -353,14 +350,14 @@ Robots::find(
     ]
 );
 
-// Получим данные профилировщика
+// Получаем сгенерированные профили из профилировщика
 $profiles = $di->get('profiler')->getProfiles();
 
 foreach ($profiles as $profile) {
-   echo 'SQL запрос: ', $profile->getSQLStatement(), "\n";
-   echo 'Начальное время: ', $profile->getInitialTime(), "\n";
-   echo 'Конечное время: ', $profile->getFinalTime(), "\n";
-   echo 'Общее истекшее время: ', $profile->getTotalElapsedSeconds(), "\n";
+   echo 'SQL Statement: ', $profile->getSQLStatement(), '\n';
+   echo 'Start Time: ', $profile->getInitialTime(), '\n';
+   echo 'Final Time: ', $profile->getFinalTime(), '\n';
+   echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), '\n';
 }
 ```
 
