@@ -4,9 +4,9 @@
 
 *implements* [Phalcon\Cache\BackendInterface](/[[language]]/[[version]]/api/Phalcon_Cache_BackendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/apc.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/apc.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Allows to cache output fragments, PHP data and raw data using an APC backend
+APCバックエンドを使用して、出力フラグメント、PHPデータ、生のデータをキャッシュできます。
 
 ```php
 <?php
@@ -14,7 +14,7 @@ Allows to cache output fragments, PHP data and raw data using an APC backend
 use Phalcon\Cache\Backend\Apc;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache data for 2 days
+// データを2日間キャッシュ
 $frontCache = new FrontData(
     [
         "lifetime" => 172800,
@@ -28,39 +28,39 @@ $cache = new Apc(
     ]
 );
 
-// Cache arbitrary data
+// 任意のデータをキャッシュ
 $cache->save("my-data", [1, 2, 3, 4, 5]);
 
-// Get data
+// データを取得
 $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## メソッド
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+キャッシュしたコンテンツを返します。
 
 public **save** ([*string* | *int* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the APC backend and stops the frontend
+APCバックエンドにキャッシュしたコンテンツを保管し、フロントエンドを停止します。
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
-Increment of a given key, by number $value
+与えられたキーを $value だけインクリメント
 
 public **decrement** ([*string* $keyName], [*mixed* $value])
 
-Decrement of a given key, by number $value
+与えられたキーを $value だけデクリメント
 
 public **delete** (*mixed* $keyName)
 
-Deletes a value from the cache by its key
+キャッシュから そのキーによって値を削除します。
 
 public **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys.
+既存のキャッシュされたキーを問合せ
 
 ```php
 <?php
@@ -74,11 +74,11 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it hasn't expired
+キャッシュが存在しそれが期限切れでないことをチェックします。
 
 public **flush** ()
 
-Immediately invalidates all existing items.
+ただちに、すべての既存のアイテムを無効にします。
 
 ```php
 <?php
@@ -89,7 +89,7 @@ $cache = new Apc($frontCache, ["prefix" => "app-data"]);
 
 $cache->save("my-data", [1, 2, 3, 4, 5]);
 
-// 'my-data' and all other used keys are deleted
+// 'my-data' と使用している他のキーを削除
 $cache->flush();
 
 ```
@@ -120,24 +120,24 @@ public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](/[[language]]/[[version]]/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options]) inherited from [Phalcon\Cache\Backend](/[[language]]/[[version]]/api/Phalcon_Cache_Backend)
 
-Phalcon\\Cache\\Backend constructor
+Phalcon\\Cache\\Backend コンストラクタ
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](/[[language]]/[[version]]/api/Phalcon_Cache_Backend)
 
-Starts a cache. The keyname allows to identify the created fragment
+キャッシュを開始します。 このkeynameは作成したフラグメントの特定に使用できます。
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](/[[language]]/[[version]]/api/Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+キャッシュしたコンテンツを保存しないで、フロントエンドを停止します。
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](/[[language]]/[[version]]/api/Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+直前のキャッシュが新鮮なものか、それともキャッシュされているかをチェックします。
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](/[[language]]/[[version]]/api/Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+このキャッシュのバッファリングが開始しているか、そうでないかをチェックします。
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](/[[language]]/[[version]]/api/Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+直前のライフタイムのセットを取得します。
