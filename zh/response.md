@@ -148,7 +148,7 @@ return $response->redirect(
 );
 ```
 
-Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it will be executed anyway. You can disable the view from a controller by executing `$this->view->disable()`.
+即使有一个视图与当前操作相关联，它也不会被呈现，因为`重定向`会禁用视图。
 
 <a name='http-cache'></a>
 

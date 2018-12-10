@@ -35,9 +35,13 @@
 
 プレーンテキストでパスワードを保存することは、セキュリティ上の習慣としては不適切です。 データベースへのアクセス権を持つ人は、すぐにすべてのユーザーアカウントにアクセスし、権限がなくても行動することができてしまいます。 この問題に対処するために、多くのアプリケーションは、有名な一方向ハッシュ メソッド'[md5](http://php.net/manual/en/function.md5.php)' や '[sha1](http://php.net/manual/en/function.sha1.php) 'を使用します。 しかし、ハードウェアは毎日進化し、より高速になり、これらのアルゴリズムは総当たり攻撃に対して脆弱になっています。 これらの攻撃は、[レインボー テーブル](http://en.wikipedia.org/wiki/Rainbow_table) とも呼ばれます。
 
-この問題を解決するために、[bcrypt](http://en.wikipedia.org/wiki/Bcrypt) ハッシュ アルゴリズムを使用できます。 なぜ bcryptか? その ' [Eksblowfish'](http://en.wikipedia.org/wiki/Bcrypt#Algorithm) キー設定アルゴリズムのおかげで パスワードの暗号化を望むだけ '遅く' できます。 遅いアルゴリズムは、不可能ではないにしても、ハッシュの背後にある本当のパスワードを計算するプロセスを非常に困難にします。 これにより、レインボーテーブルを使った攻撃から長い時間あなたを守ることができます。
+セキュリティコンポーネントは、ハッシュアルゴリズムに[bcrypt](http://en.wikipedia.org/wiki/Bcrypt) を採用しています。 その ' [Eksblowfish'](http://en.wikipedia.org/wiki/Bcrypt#Algorithm) キー設定アルゴリズムのおかげで パスワードの暗号化を望むだけ`遅く` できます。 遅いアルゴリズムは、総当たり攻撃の影響を最小限に抑えます。
 
-このコンポーネントを使用すると、このアルゴリズムを簡単な方法で使用できます:
+Bcrypt はBlowfish 対称ブロック暗号アルゴリズムに基づく、アダプティブハッシュ関数です。 また、ハッシュ関数がハッシュを生成する速度を決定する、セキュリティまたは作業係数も導入されています。 これは、FPGAまたはGPUのハッシュ技術の使用を効果的に無効にします。
+
+将来的にハードウェアが高速化すれば、これを軽減するために作業係数を増やすことができます。
+
+このコンポーネントでは、このアルゴリズムを使用するシンプルなインターフェイスを提供しています。
 
 ```php
 <?php
@@ -63,7 +67,7 @@ class UsersController extends Controller
 }
 ```
 
-私達は、デフォルトの作業係数でハッシュ化されたパスワードを保存します。 高い作業係数を設定することで、その暗号処理が遅くなり、パスワードの脆弱性が減ります。 パスワードが正しいかどうかは次のように確認できます。
+We saved the password hashed with a default work factor. A higher work factor will make the password less vulnerable as its encryption will be slow. We can check if the password is correct as follows:
 
 ```php
 <?php
@@ -100,7 +104,7 @@ class SessionController extends Controller
 
 ## Cross-Site Request Forgery (CSRF) の保護
 
-これは、Webサイトやアプリケーションに対するもう1つの一般的な攻撃です。 ユーザーの登録やコメントの追加などのタスクを実行するように設計されたフォームは、この攻撃に対して脆弱です。
+This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
 
 そのアイデアは、フォームの値がアプリケーションの外部に送信されないようにすることです。 この問題への対処として、各フォームで[random nonce](http://en.wikipedia.org/wiki/Cryptographic_nonce) （トークン）を生成し、トークンをセッションに保存します。それから、フォームから送信されたトークンと、セッションに保存していたトークンを比較して検証します: 
 

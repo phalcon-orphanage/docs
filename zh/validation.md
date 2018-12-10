@@ -227,7 +227,7 @@ class IpValidator extends Validator
 
 ## 回调验证程序
 
-通过使用 `Phalcon\Validation\Validator\Callback`您可以继续使用一个返回布尔值的自定义方法来对同一个字段进行验证。 通过返回 `true` 验证将成功，返回 `false` 将意味着验证失败。 When executing this validator Phalcon will pass data depending what it is - if it's an entity then entity will be passed, otherwise data. 这是示例：
+通过使用 `Phalcon\Validation\Validator\Callback`您可以继续使用一个返回布尔值的自定义方法来对同一个字段进行验证。 通过返回 `true` 验证将成功，返回 `false` 将意味着验证失败。 当执行这个验证器时，Phalcon将根据它是什么传递数据——如果它是一个实体(例如，一个模型，一个`stdClass`等)，那么将传递实体，否则数据(i)。一个数组，比如`$_POST`)。 这是示例：
 
 ```php
 <?php
