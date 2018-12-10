@@ -1,47 +1,47 @@
 # Class **Phalcon\\Annotations\\Annotation**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/annotation.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/annotation.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Represents a single annotation in an annotations collection
+アノテーションコレクションの単一のアノテーションを表示します。
 
-## Methods
+## メソッド
 
 public **__construct** (*array* $reflectionData)
 
-Phalcon\\Annotations\\Annotation constructor
+Phalcon\\Annotations\\Annotation コンストラクタ
 
 public **getName** ()
 
-Returns the annotation's name
+アノテーションの名前を返します。
 
 public *mixed* **getExpression** (*array* $expr)
 
-Resolves an annotation expression
+アノテーションの式を解決します。
 
 public *array* **getExprArguments** ()
 
-Returns the expression arguments without resolving
+引数を解釈しないで式を返します。
 
 public *array* **getArguments** ()
 
-Returns the expression arguments
+式の引数を返します。
 
 public **numberArguments** ()
 
-Returns the number of arguments that the annotation has
+そのアノテーションが持っている引数の数を返します。
 
 public *mixed* **getArgument** (*int* | *string* $position)
 
-Returns an argument in a specific position
+指定位置にある引数を返します。
 
 public *boolean* **hasArgument** (*int* | *string* $position)
 
-Returns an argument in a specific position
+指定位置にある引数を返します
 
 public *mixed* **getNamedArgument** (*mixed* $name)
 
-Returns a named argument
+名前付き引数を返します。
 
 public *mixed* **getNamedParameter** (*mixed* $name)
 
-Returns a named parameter
+名前付きパラメーターを返します。
