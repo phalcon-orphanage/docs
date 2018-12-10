@@ -256,16 +256,15 @@ if ($content === null) {
 use Phalcon\Cache\Backend\File as BackFile;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache the files for 2 days using a Data frontend
+// Dataフロントエンドを使用して2日間ファイルをキャッシュする
 $frontCache = new FrontData(
     [
         'lifetime' => 172800,
     ]
 );
 
-// Create the component that will cache 'Data' to a 'File' backend
-// Set the cache file directory - important to keep the `/` at the end of
-// the value for the folder
+// 'Data'を'File'バックエンドにキャッシュするコンポーネントを作成する
+// キャッシュファイルディレクトリを設定する - フォルダの値の最後に `/`を置くことが重要
 $cache = new BackFile(
     $frontCache,
     [
@@ -275,23 +274,23 @@ $cache = new BackFile(
 
 $cacheKey = 'robots_order_id.cache';
 
-// Try to get cached records
+// キャッシュされたレコードを取得してみる
 $robots = $cache->get($cacheKey);
 
 if ($robots === null) {
-    // $robots is null because of cache expiration or data does not exist
-    // Make the database call and populate the variable
+    // $robotsはキャッシュの有効期限が切れているか、データが存在しないためnull
+    // データベースを呼び出して変数に代入
     $robots = Robots::find(
         [
             'order' => 'id',
         ]
     );
 
-    // Store it in the cache
+    // キャッシュに保存
     $cache->save($cacheKey, $robots);
 }
 
-// Use $robots :)
+// $robotsを使う:)
 foreach ($robots as $robot) {
    echo $robot->name, '\n';
 }
@@ -309,15 +308,15 @@ Memcachedバックエンドを使用するとき、上の例を少しだけ変�
 use Phalcon\Cache\Frontend\Data as FrontData;
 use Phalcon\Cache\Backend\Libmemcached as BackMemCached;
 
-// Cache data for one hour
+// データを1時間キャッシュする
 $frontCache = new FrontData(
     [
         'lifetime' => 3600,
     ]
 );
 
-// Create the component that will cache 'Data' to a 'Memcached' backend
-// Memcached connection settings
+// 'Memcached'バックエンドに'データ'をキャッシュするコンポーネントを作成する
+// Memcached接続設定
 $cache = new BackMemCached(
     $frontCache,
     [
@@ -333,23 +332,23 @@ $cache = new BackMemCached(
 
 $cacheKey = 'robots_order_id.cache';
 
-// Try to get cached records
+// キャッシュされたレコードを取得してみる
 $robots = $cache->get($cacheKey);
 
 if ($robots === null) {
-    // $robots is null because of cache expiration or data does not exist
-    // Make the database call and populate the variable
+    // $robotsはキャッシュの有効期限が切れているか、データが存在しないためnull
+    // データベースを呼び出して変数に代入
     $robots = Robots::find(
         [
             'order' => 'id',
         ]
     );
 
-    // Store it in the cache
+    // キャッシュに保存
     $cache->save($cacheKey, $robots);
 }
 
-// Use $robots :)
+// $robotsを使う :)
 foreach ($robots as $robot) {
    echo $robot->name, '\n';
 }
@@ -370,7 +369,7 @@ foreach ($robots as $robot) {
 ```php
 <?php
 
-// Retrieve products by key 'myProducts'
+// キー'myProducts'で製品を取得する
 $products = $cache->get('myProducts');
 ```
 
@@ -379,7 +378,7 @@ $products = $cache->get('myProducts');
 ```php
 <?php
 
-// Query all keys used in the cache
+// キャッシュで使用されているすべてのキーを照会する
 $keys = $cache->queryKeys();
 
 foreach ($keys as $key) {
@@ -388,7 +387,7 @@ foreach ($keys as $key) {
     echo 'Key=', $key, ' Data=', $data;
 }
 
-// Query keys in the cache that begins with 'my-prefix'
+// 'my-prefix'で始まるキャッシュ内のクエリキー
 $keys = $cache->queryKeys('my-prefix');
 ```
 
@@ -401,12 +400,12 @@ $keys = $cache->queryKeys('my-prefix');
 ```php
 <?php
 
-// Delete an item with a specific key
+// 対象のキーを持つアイテムを削除する
 $cache->delete('someKey');
 
 $keys = $cache->queryKeys();
 
-// Delete all items from the cache
+// キャッシュからすべてのアイテムを削除する
 foreach ($keys as $key) {
     $cache->delete($key);
 }
@@ -571,11 +570,12 @@ $cache->save('my-key', $data);
 | `Phalcon\Cache\Backend\Mongo`        | データをMongoデータベースに保存します。                  | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
 | `Phalcon\Cache\Backend\Redis`        | Redisにデータを格納します。                        | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | XCacheにデータを格納します。                       | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
+
 <a name='adapters-backend-factory'></a>
 
 ### ファクトリー
 
-There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+多くのバックエンドアダプタがあります ([バックエンドアダプター](#adapters-backend)を参照)。 使用するものはアプリケーションのニーズに応じて異なります。 次の例では、`adapter`オプションを使用してBackend Cache Adapterクラスをロードし、フロントエンドが配列として提供される場合はFrontend Cache Factoryが呼ばれます。
 
 ```php
 <?php
@@ -595,60 +595,60 @@ $backendCache = Factory::load($options);
 
 ### 独自のバックエンドアダプターを実装
 
-The `Phalcon\Cache\BackendInterface` interface must be implemented in order to create your own backend adapters or extend the existing ones.
+独自のバックエンドアダプタを作成したり既存のバックエンドアダプタを拡張するには、`Phalcon\Cache\BackendInterface`インタフェースを実装する必要があります。
 
 <a name='adapters-backend-file'></a>
 
 ### ファイルバックエンドのオプション
 
-This backend will store cached content into files in the local server. The available options for this backend are:
+このバックエンドは、キャッシュされたコンテンツをローカルサーバーのファイルに格納します。 このバックエンドで利用できるオプションは次のとおりです:
 
-| オプション      | 説明                                                          |
-| ---------- | ----------------------------------------------------------- |
-| `prefix`   | A prefix that is automatically prepended to the cache keys. |
-| `cacheDir` | A writable directory on which cached files will be placed.  |
+| オプション      | 説明                              |
+| ---------- | ------------------------------- |
+| `prefix`   | キャッシュキーの前に自動的に付加される接頭辞。         |
+| `cacheDir` | キャッシュされたファイルが置かれる書き込み可能なディレクトリ。 |
 
 <a name='adapters-backend-libmemcached'></a>
 
 ### Libmemcachedバックエンドのオプション
 
-This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
+このバックエンドは、キャッシュされたコンテンツをmemcachedサーバーに格納します。 デフォルトでは、永続的なmemcached接続プールが使用されます。 このバックエンドで利用できるオプションは次のとおりです。
 
-**General options**
+**一般設定**
 
-| オプション           | 説明                                                                                                                 |
-| --------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `statsKey`      | Used to tracking of cached keys.                                                                                   |
-| `prefix`        | A prefix that is automatically prepended to the cache keys.                                                        |
-| `persistent_id` | To create an instance that persists between requests, use `persistent_id` to specify a unique ID for the instance. |
+| オプション           | 説明                                                                |
+| --------------- | ----------------------------------------------------------------- |
+| `statsKey`      | キャッシュされたキーの追跡に使用されます。                                             |
+| `prefix`        | キャッシュキーの前に自動的に付加される接頭辞。                                           |
+| `persistent_id` | リクエストの間に存続するインスタンスを作成するには、`persistent_id`を使用してインスタンスの一意のIDを指定します。 |
 
 **サーバー設定**
 
-| オプション    | 説明                                                                                                          |
-| -------- | ----------------------------------------------------------------------------------------------------------- |
-| `host`   | The `memcached` host.                                                                                       |
-| `port`   | The `memcached` port.                                                                                       |
-| `weight` | The weight parameter effects the consistent hashing used to determine which server to read/write keys from. |
+| オプション    | 説明                                                        |
+| -------- | --------------------------------------------------------- |
+| `host`   | `memcached`ホスト。                                           |
+| `port`   | `memcached`ポート番号。                                         |
+| `weight` | weightパラメータは、キーを読み書きするサーバを決定するために使用されるコンシステントハッシュ法に影響します。 |
 
 **クライアント設定**
 
-Used for setting Memcached options. See [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) for more.
+Memcachedオプションの設定に使用します。 詳細については、[Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php)を参照してください。
 
-**Example**
+**例**
 
 ```php
 <?php
 use Phalcon\Cache\Backend\Libmemcached;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache data for 2 days
+// データを2日間キャッシュ
 $frontCache = new FrontData(
     [
         'lifetime' => 172800,
     ]
 );
 
-// Create the Cache setting memcached connection options
+// memcachedの接続オプションを設定するキャッシュを作成する
 $cache = new Libmemcached(
     $frontCache,
     [
@@ -672,71 +672,71 @@ $cache = new Libmemcached(
 
 ### Memcacheバックエンドのオプション
 
-This backend will store cached content on a memcached server. The available options for this backend are:
+このバックエンドは、キャッシュされたコンテンツをmemcachedサーバーに格納します。 このバックエンドで利用できるオプションは次のとおりです。
 
-| オプション        | 説明                                                          |
-| ------------ | ----------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `host`       | The memcached host.                                         |
-| `port`       | The memcached port.                                         |
-| `persistent` | Create a persistent connection to memcached?                |
+| オプション        | 説明                          |
+| ------------ | --------------------------- |
+| `prefix`     | キャッシュキーの前に自動的に付加される接頭辞。     |
+| `host`       | memcachedホスト。               |
+| `port`       | memcachedポート番号。             |
+| `persistent` | memcachedへの永続的な接続を作成するかどうか。 |
 
 <a name='adapters-backend-apc'></a>
 
 ### APCバックエンドのオプション
 
-This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
+このバックエンドは、Alternative PHP Cache ([APC](http://php.net/apc)) にキャッシュされたコンテンツを格納します。 このバックエンドで利用できるオプションは次のとおりです。
 
-| オプション    | 説明                                                          |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| オプション    | 説明                      |
+| -------- | ----------------------- |
+| `prefix` | キャッシュキーの前に自動的に付加される接頭辞。 |
 
 <a name='adapters-backend-apcu'></a>
 
 ### APCUバックエンドのオプション
 
-This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
+このバックエンドは、Alternative PHP Cache ([APCU](http://php.net/apcu)) にキャッシュされたコンテンツを格納します。 このバックエンドで利用できるオプションは次のとおりです。
 
-| オプション    | 説明                                                          |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| オプション    | 説明                      |
+| -------- | ----------------------- |
+| `prefix` | キャッシュキーの前に自動的に付加される接頭辞。 |
 
 <a name='adapters-backend-mongo'></a>
 
 ### Mongoバックエンドのオプション
 
-This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
+このバックエンドは、キャッシュされたコンテンツをMongoDBサーバー ([MongoDB](http://mongodb.org/)) に格納します。 このバックエンドで利用できるオプションは次のとおりです。
 
-| オプション        | 説明                                                          |
-| ------------ | ----------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `server`     | A MongoDB connection string.                                |
-| `db`         | Mongo database name.                                        |
-| `collection` | Mongo collection in the database.                           |
+| オプション        | 説明                      |
+| ------------ | ----------------------- |
+| `prefix`     | キャッシュキーの前に自動的に付加される接頭辞。 |
+| `server`     | MongoDB接続文字列。           |
+| `db`         | Mongoデータベース名。           |
+| `collection` | データベースのMongoコレクション。     |
 
 <a name='adapters-backend-xcache'></a>
 
 ### XCacheバックエンドのオプション
 
-This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
+このバックエンドはキャッシュされたコンテンツをXCache ([XCache](http://xcache.lighttpd.net/)) に格納します。 このバックエンドで利用できるオプションは次のとおりです。
 
-| オプション    | 説明                                                          |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| オプション    | 説明                      |
+| -------- | ----------------------- |
+| `prefix` | キャッシュキーの前に自動的に付加される接頭辞。 |
 
 <a name='adapters-backend-redis'></a>
 
 ### Redisバックエンドのオプション
 
-This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
+このバックエンドは、キャッシュされたコンテンツをRedisサーバー ([ Redis ](http://redis.io/)) に格納します。 このバックエンドで利用できるオプションは次のとおりです。
 
-| オプション        | 説明                                                             |
-| ------------ | -------------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys.    |
-| `host`       | Redis host.                                                    |
-| `port`       | Redis port.                                                    |
-| `auth`       | Password to authenticate to a password-protected Redis server. |
-| `persistent` | Create a persistent connection to Redis.                       |
-| `index`      | The index of the Redis database to use.                        |
+| オプション        | 説明                                 |
+| ------------ | ---------------------------------- |
+| `prefix`     | キャッシュキーの前に自動的に付加される接頭辞。            |
+| `host`       | Redisホスト。                          |
+| `port`       | Redisポート。                          |
+| `auth`       | パスワードで保護されたRedisサーバーに認証するためのパスワード。 |
+| `persistent` | Redisへの永続的な接続を作成するかどうか。            |
+| `index`      | 使用するRedisデータベースのインデックス。            |
 
 [Phalcon Incubator](https://github.com/phalcon/incubator) には、このコンポーネントを利用するための複数のアダプターが用意されています。

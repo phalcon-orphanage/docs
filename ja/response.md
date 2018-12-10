@@ -154,20 +154,20 @@ return $response->redirect(
 
 ## HTTPキャッシュ
 
-One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
+アプリケーションのパフォーマンスを向上させ、トラフィックを削減する最も簡単な方法の 1 つに、HTTP キャッシュの使用があります。 最新のブラウザーは HTTP キャッシュをサポートしています。そしてそれが多くのウェブサイトが高速な理由の 1 つです。
 
-HTTP Cache can be altered in the following header values sent by the application when serving a page for the first time:
+HTTPキャッシュは、ページを最初に提供するときにアプリケーションによって送信される次のヘッダー値で変更できます:
 
-* **`Expires:`** With this header the application can set a date in the future or the past telling the browser when the page must expire.
-* **`Cache-Control:`** This header allows to specify how much time a page should be considered fresh in the browser.
-* **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads.
-* **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page.
+* **`Expires:`**このヘッダーを使用すると、アプリケーションは将来の日付を設定したり、ページが期限切れになったときにブラウザに通知したりすることができます。
+* **`Cache-Control:`**このヘッダーは、ページをブラウザーが新しいと判断する時間を指定できます。
+* **`Last-Modified:`**このヘッダーはブラウザへ、サイトの最終更新時を伝えて、ページの再読み込みを回避させます。
+* **`ETag:`**Etag はユニークなIDです。その中には現在のページの変更のタイムスタンプを含んでいます。
 
 <a name='http-cache-expiration-time'></a>
 
-### Setting an Expiration Time
+### 期限の設定
 
-The expiration date is one of the easiest and most effective ways to cache a page in the client (browser). Starting from the current date we add the amount of time the page will be stored in the browser cache. Until this date expires no new content will be requested from the server:
+有効期限の日付は、クライアント (ブラウザー) にページをキャッシュさせる最も簡単なで効果的な方法です。 現在の日付から、その時間の間、そのページはブラウザのキャッシュに保存されます。 この有効期限が切れるまでは、サーバーへ新しいコンテンツを要求しません。
 
 ```php
 <?php
@@ -178,9 +178,9 @@ $expiryDate->modify('+2 months');
 $response->setExpires($expiryDate);
 ```
 
-The Response component automatically shows the date in GMT timezone as expected in an Expires header.
+Responseコンポーネントは自動でExpiresヘッダーにGMTタイムゾーンの日付を設定します。
 
-If we set this value to a date in the past the browser will always refresh the requested page:
+この値を過去の日付に設定した場合、ブラウザーは常にリクエストされたページを更新します:
 
 ```php
 <?php
@@ -191,27 +191,27 @@ $expiryDate->modify('-10 minutes');
 $response->setExpires($expiryDate);
 ```
 
-Browsers rely on the client's clock to assess if this date has passed or not. The client clock can be modified to make pages expire and this may represent a limitation for this cache mechanism.
+ブラウザーは、クライアントの時計を利用して、この日付が過ぎたかどうかを判断します。 ページを期限切れにするようにクライアントの時計を変更することができ、これはこのキャッシュメカニズムの制限を表している可能性があります。
 
 <a name='http-cache-control'></a>
 
-### Cache-Control
+### キャッシュコントロール
 
-This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser how long it must keep the page in its cache:
+このヘッダーは、保存されたページをキュッシュするより安全な方法を提供します。キャッシュにページを維持する必要がある時間をブラウザに、秒単位で時間を指定します。
 
 ```php
 <?php
 
-// Starting from now, cache the page for one day
+// 今から1日間ページをキャシュ
 $response->setHeader('Cache-Control', 'max-age=86400');
 ```
 
-The opposite effect (avoid page caching) is achieved in this way:
+このように、反対の効果（ページキャッシュを避ける）が実現されます。
 
 ```php
 <?php
 
-// Never cache the served page
+// 提供したページをキャッシュさせない
 $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
 ```
 
@@ -219,12 +219,12 @@ $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
 
 ### E-Tag
 
-An `entity-tag` or `E-tag` is a unique identifier that helps the browser realize if the page has changed or not between two requests. The identifier must be calculated taking into account that this must change if the previously served content has changed:
+`entity-tag`または`E-tag`は、ページが2つのリクエストの間に変更されたかどうかをブラウザが認識するのに役立つ一意の識別子です。 この識別子は、以前に提供したコンテンツが変更された場合に変更する必要があることを考慮して計算する必要があります。
 
 ```php
 <?php
 
-// Calculate the E-Tag based on the modification time of the latest news
+// 最新Newsの修正時間を元にE-Tagを計算する。
 $mostRecentDate = News::maximum(
     [
         'column' => 'created_at'
@@ -233,6 +233,6 @@ $mostRecentDate = News::maximum(
 
 $eTag = md5($mostRecentDate);
 
-// Send an E-Tag header
+// E-Tag ヘッダを送信
 $response->setHeader('E-Tag', $eTag);
 ```
