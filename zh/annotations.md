@@ -1,20 +1,20 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Annotations Parser</a> <ul>
+      <a href="#overview">注释语法分析器</a> <ul>
         <li>
-          <a href="#factory">Factory</a>
+          <a href="#factory">工厂</a>
         </li>
         <li>
-          <a href="#reading">Reading Annotations</a>
+          <a href="#reading">读取注释</a>
         </li>
         <li>
-          <a href="#types">Types of Annotations</a>
+          <a href="#types">类型的注释</a>
         </li>
         <li>
-          <a href="#usage">Practical Usage</a> <ul>
+          <a href="#usage">实际使用情况</a> <ul>
             <li>
-              <a href="#usage-cache">Cache Enabler with Annotations</a>
+              <a href="#usage-cache">带注释的缓存启用</a>
             </li>
             <li>
               <a href="#usage-access-management">Private/Public areas with Annotations</a>
@@ -22,14 +22,14 @@
           </ul>
         </li>
         <li>
-          <a href="#adapters">Annotations Adapters</a> <ul>
+          <a href="#adapters">注释适配器</a> <ul>
             <li>
-              <a href="#adapters-custom">Implementing your own adapters</a>
+              <a href="#adapters-custom">执行您自己的适配器</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#resources">External Resources</a>
+          <a href="#resources">外部资源</a>
         </li>
       </ul>
     </li>
@@ -38,9 +38,9 @@
 
 <a name='overview'></a>
 
-# Annotations Parser
+# 注释语法分析器
 
-It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
+它是第一次，为了PHP 的世界，用 C 编写的注释解析器组件。 `Phalcon\Annotations` 是一个通用组件，用于在应用程序中的注释，在PHP 类中提供了方便的解析和缓存。
 
 Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
@@ -73,7 +73,7 @@ class Example
 }
 ```
 
-An annotation has the following syntax:
+注释具有以下语法︰
 
 ```php
 /**
@@ -82,7 +82,7 @@ An annotation has the following syntax:
  */
 ```
 
-Also, an annotation can be placed at any part of a docblock:
+此外，注释可以放在块的任何部分︰
 
 ```php
 <?php
@@ -98,7 +98,7 @@ Also, an annotation can be placed at any part of a docblock:
  */
 ```
 
-The parser is highly flexible, the following docblock is valid:
+解析器是高度灵活，下面的文档块是有效︰
 
 ```php
 <?php
@@ -111,7 +111,7 @@ someParameter='the value', false
  **/
 ```
 
-However, to make the code more maintainable and understandable it is recommended to place annotations at the end of the docblock:
+然而，为了使代码更易于维护和理解，它被建议放置于注释块结尾︰
 
 ```php
 <?php
@@ -127,9 +127,9 @@ However, to make the code more maintainable and understandable it is recommended
 
 <a name='factory'></a>
 
-## Factory
+## 工厂
 
-There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an addapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). 您使用将取决于您的应用程序的需要。 The traditional way of instantiating such an addapter is as follows:
 
 ```php
 <?php
@@ -141,7 +141,7 @@ $reader = new MemoryAdapter();
 // .....
 ```
 
-However you can also utilize the factory method to achieve the same thing:
+但是你也可以利用工厂方法来达到相同的效果：
 
 ```php
 <?php
@@ -158,13 +158,13 @@ $options = [
 $annotations = Factory::load($options);
 ```
 
-The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
+工厂装载机处理实例化注释适配器从配置文件时提供更大的灵活性。
 
 <a name='reading'></a>
 
-## Reading Annotations
+## 读取注释
 
-A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
+一个反射器的实现可以容易地得到，使用面向对象的接口的类上定义的注释︰
 
 ```php
 <?php
@@ -192,13 +192,13 @@ foreach ($annotations as $annotation) {
 }
 ```
 
-The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter. Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
+注释的阅读过程是非常快的，然而，出于性能原因，建议使用适配器，存储已解析的注释。 适配器缓存已经处理的注释，避免再次解析需要的注释。
 
-`Phalcon\Annotations\Adapter\Memory` was used in the above example. This adapter only caches the annotations while the request is running and for this reason the adapter is more suitable for development. There are other adapters to swap out when the application is in production stage.
+`Phalcon\Annotations\Adapter\Memory` 已经用于上面的例子。 此适配器只缓存当请求正在运行时的注释，为此该适配器是更适合开发。 当应用程序在生产阶段时，有其他适配器换出。
 
 <a name='types'></a>
 
-## Types of Annotations
+## 注释类型
 
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
@@ -257,15 +257,15 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 <a name='usage'></a>
 
-## Practical Usage
+## 实际使用情况
 
-Next we will explain some practical examples of annotations in PHP applications:
+下一步，我们将解释一些实际例子，关于 PHP 应用程序中的注释︰
 
 <a name='usage-cache'></a>
 
 ### Cache Enabler with Annotations
 
-Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
+让我们假装我们创建了以下控制器并且您想要创建一个自动启动缓存中，如果最后执行的操作被标记为可缓存的插件。 首先，当一个路由被执行时，我们注册一个插件等待调度服务被通知︰
 
 ```php
 <?php
@@ -290,7 +290,7 @@ $di['dispatcher'] = function () {
 };
 ```
 
-`CacheEnablerPlugin` is a plugin that intercepts every action executed in the dispatcher enabling the cache if needed:
+`CacheEnablerPlugin` 是一个插件，如果需要时，在调度程序启用缓存后，拦截每个行为的执行︰
 
 ```php
 <?php
@@ -340,7 +340,7 @@ class CacheEnablerPlugin extends Plugin
 }
 ```
 
-Now, we can use the annotation in a controller:
+现在，我们可以在控制器中使用注释︰
 
 ```php
 <?php
@@ -378,9 +378,9 @@ class NewsController extends Controller
 
 <a name='usage-access-management'></a>
 
-### Private/Public areas with Annotations
+### 私有/公共 的注释
 
-You can use annotations to tell the ACL which controllers belong to the administrative areas:
+你可以使用注释来告诉 ACL 控制器，哪个控制器属于管理区域︰
 
 ```php
 <?php
@@ -442,11 +442,11 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## Annotations Adapters
+## 注释适配器
 
-This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
+这个组件使的，使用的适配器到缓存或不缓存解析和处理的注释，从而提高性能或向开发测试提供便利︰
 
-| Class                                   | Description                                                                                                                                                                       |
+| 类                                       | 描述                                                                                                                                                                                |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Phalcon\Annotations\Adapter\Memory` | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
 | `Phalcon\Annotations\Adapter\Files`  | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
@@ -455,12 +455,12 @@ This component makes use of adapters to cache or no cache the parsed and process
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### 执行您自己的适配器
 
-The `Phalcon\Annotations\AdapterInterface` interface must be implemented in order to create your own annotations adapters or extend the existing ones.
+如果创建您自己的注释适配器或扩展，现有的 `Phalcon\Annotations\AdapterInterface` 接口必须实现。
 
 <a name='resources'></a>
 
-## External Resources
+## 外部资源
 
-- [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
+- [教程︰ 创建一个自定义的初始化模型，附带注释](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)

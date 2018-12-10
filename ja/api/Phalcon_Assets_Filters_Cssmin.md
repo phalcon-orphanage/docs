@@ -2,12 +2,12 @@
 
 *implements* [Phalcon\Assets\FilterInterface](/en/3.2/api/Phalcon_Assets_FilterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/filters/cssmin.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/filters/cssmin.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Minify the css - removes comments removes newlines and line feeds keeping removes last semicolon from last property
+cssの最小化 - コメントの除去 改行文字除去やラインフィード文字保持 最後のプロパティから最後のセミコロンを除去
 
-## Methods
+## メソッド
 
 public **filter** (*mixed* $content)
 
-Filters the content using CSSMIN
+CSSMIN を使用してコンテンツをフィルタします。

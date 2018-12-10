@@ -2,11 +2,11 @@
 
 *implements* [Countable](http://php.net/manual/en/class.countable.php), [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/collection.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Represents a collection of resources
+リソースのコレクションを表します。
 
-## Methods
+## メソッド
 
 public **getPrefix** ()
 
@@ -58,19 +58,19 @@ public **getSourcePath** ()
 
 public **__construct** ()
 
-Phalcon\\Assets\\Collection constructor
+Phalcon\\Assets\\Collection コンストラクタ
 
 public **add** ([Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource) $resource)
 
-Adds a resource to the collection
+リソースをコレクションに追加します。
 
 public **addInline** ([Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline) $code)
 
-Adds an inline code to the collection
+インラインコードをコレクションに追加します。
 
 public **has** ([Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface) $resource)
 
-Checks this the resource is added to the collection.
+このリソースがコレクションに加えられているかどうかをチェックします。
 
 ```php
 <?php
@@ -87,88 +87,88 @@ $resource->has($resource); // true
 
 public **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-Adds a CSS resource to the collection
+CSSリソースをコレクションに追加します。
 
 public **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds an inline CSS to the collection
+インラインCSSをコレクションに追加します。
 
 public [Phalcon\Assets\Collection](/en/3.2/api/Phalcon_Assets_Collection) **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
-Adds a javascript resource to the collection
+Javascriptリソースをコレクションに追加します。
 
 public **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds an inline javascript to the collection
+インラインJavascriptをコレクションに追加します。
 
 public **count** ()
 
-Returns the number of elements in the form
+フォームの要素数を返します
 
 public **rewind** ()
 
-Rewinds the internal iterator
+内部のイテレータを巻き戻します。
 
 public **current** ()
 
-Returns the current resource in the iterator
+イテレータ中の現在のリソースを返します。
 
 public *int* **key** ()
 
-Returns the current position/key in the iterator
+イテレータ中の現在の位置/キーを返します。
 
 public **next** ()
 
-Moves the internal iteration pointer to the next position
+内部のイテレータの位置を次の位置に移動します。
 
 public **valid** ()
 
-Check if the current element in the iterator is valid
+イテレータ中の現在の要素が妥当かどうかチェックします。
 
 public **setTargetPath** (*mixed* $targetPath)
 
-Sets the target path of the file for the filtered/join output
+フィルタリングされたまたは追加された出力のためのファイルの対象パスを設定します。
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Sets a base source path for all the resources in this collection
+このコレクション内のすべてのリソースの ベースソース パスを設定します
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Sets a target uri for the generated HTML
+生成するHTML のターゲット uri を設定します。
 
 public **setPrefix** (*mixed* $prefix)
 
-Sets a common prefix for all the resources
+すべてのリソースに共通したプレフィックスを設定します
 
 public **setLocal** (*mixed* $local)
 
-Sets if the collection uses local resources by default
+コレクションがデフォルトでローカルリソースを使用するかどうかを設定します。
 
 public **setAttributes** (*array* $attributes)
 
-Sets extra HTML attributes
+追加の HTML 属性を設定します
 
 public **setFilters** (*array* $filters)
 
-Sets an array of filters in the collection
+コレクションのフィルター配列を設定します
 
 public **setTargetLocal** (*mixed* $targetLocal)
 
-Sets the target local
+ターゲットをローカルに設定します
 
 public **join** (*mixed* $join)
 
-Sets if all filtered resources in the collection must be joined in a single result file
+コレクション内のフィルターされた全リソースが単一のファイルに結合するかどうかを設定します。
 
 public **getRealTargetPath** (*mixed* $basePath)
 
-Returns the complete location where the joined/filtered collection must be written
+フィルター または結合したコレクションの書き込み先の完全な位置を返します。
 
 public **addFilter** ([Phalcon\Assets\FilterInterface](/en/3.2/api/Phalcon_Assets_FilterInterface) $filter)
 
-Adds a filter to the collection
+フィルターをコレクションに追加します。
 
 final protected **addResource** ([Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface) $resource)
 
-Adds a resource or inline-code to the collection
+リソースまたはインラインコードをコレクションに追加します。

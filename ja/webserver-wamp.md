@@ -41,7 +41,7 @@ Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. I
 
 ```ini extension=php_phalcon.dll
 
-    <br />and save it.
+    <br />それから保存します。
     
     ![](/images/content/webserver-wamp-2.png)
     
@@ -61,10 +61,10 @@ Open your browser to navigate to http://localhost. The WAMP welcome page will ap
 
 ![](/images/content/webserver-wamp-4.png)
 
-Congratulations! You are now phlying with Phalcon.
+おめでとう、あなたはPhalconで飛び立つことができました！
 
 <a name='related'></a>
 
 ## Related Guides
 
-- [Installation on XAMPP](/[[language]]/[[version]]/webserver-xampp)
+- [XAMPP にインストール](/[[language]]/[[version]]/webserver-xampp)
