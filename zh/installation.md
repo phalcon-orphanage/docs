@@ -176,13 +176,13 @@ Phalcon needs the following extensions to run (minimal):
 
 # Installation
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+由于 Phalcon 被编译为 PHP 扩展, 它的安装与任何其他传统的 php 框架有所不同。Phalcon 需要在 web 服务器上作为模块进行安装和加载。
 
 <a name='installation-linux'></a>
 
 ## Linux
 
-To install Phalcon on linux, you will need to add our repository in your distribution and then install it.
+要在 linux 上安装 Phalcon, 您将需要在分发中添加我们的存储库, 然后安装它。
 
 <a name='installation-linux-debian'></a>
 
@@ -244,16 +244,16 @@ sudo apt-get install php7.0-phalcon
 
 #### Ondřej Surý
 
-If you do not wish to use our packagecloud.io repository, you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
+如果您不希望使用我们的 packagecloud 存储库, 则您始终可以使用 [ Ondřej Surý ](https://launchpad.net/~ondrej/+archive/ubuntu/php/) 提供的知识库。
 
-Installation of the repo:
+存储库的安装:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-and Phalcon:
+接着 Phalcon:
 
 ```php
 sudo apt-get install php-phalcon
@@ -321,7 +321,7 @@ sudo yum install php70u-phalcon
 
 ##### Remi
 
-Remi maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en)
+Remi为基于RPM的安装维护了一个优秀的存储库。您可以在这里找到关于如何为您的描述[here ](https://blog.remirepo.net/pages/Config-en)启用它的说明
 
 Installing Phalcon after that is as easy as:
 
@@ -363,7 +363,7 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 ## Mac OS X
 
-On a Mac OS X system you can compile and install the extension with `brew`, `macports` or the source code:
+在Mac OS X系统上，你可以使用`brew`， `macports`或源代码编译和安装扩展:
 
 ### Requirements
 
@@ -434,7 +434,7 @@ Restart your webserver.
 
 ## Compile from Sources
 
-Compiling from source is similar to most environments (Linux/Mac).
+从源代码编译类似于大多数环境(Linux/Mac)。
 
 ### Requirements
 
@@ -512,7 +512,7 @@ sudo ./install --arch 64bits
 sudo ./install --arch safe
 ```
 
-If the automatic installer fails you can build the extension manually
+如果自动安装程序失败，您可以手动构建扩展
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -534,7 +534,7 @@ make
 make install
 ```
 
-If you have specific php versions running
+如果运行特定的php版本
 
 ```bash
 git clone https://github.com/phalcon/cphalcon

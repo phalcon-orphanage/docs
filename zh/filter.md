@@ -1,9 +1,9 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Filtering and Sanitizing</a> <ul>
+      <a href="#overview">过滤和处理</a> <ul>
         <li>
-          <a href="#types">Types of Built-in Filters</a>
+          <a href="#types">类型的内置过滤器</a>
         </li>
         <li>
           <a href="#sanitizing">Sanitizing data</a>
@@ -12,7 +12,7 @@
           <a href="#sanitizing-from-controllers">Sanitizing from Controllers</a>
         </li>
         <li>
-          <a href="#filtering-action-parameters">Filtering Action Parameters</a>
+          <a href="#filtering-action-parameters">过滤操作参数</a>
         </li>
         <li>
           <a href="#filtering-data">Filtering data</a>

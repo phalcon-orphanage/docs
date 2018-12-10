@@ -113,59 +113,123 @@ Phalcon封装在方言中每个数据库引擎的具体细节。那些向适配�
 
 ### 执行您自己的DI注入器
 
-以创建您自己的数据库方言或扩展现有的必须实现 `Phalcon\Db\DialectInterface` 接口。
+以创建您自己的数据库方言或扩展现有的必须实现 `Phalcon\Db\DialectInterface` 接口。 您还可以通过添加 PHQL 将了解的更多命令/方法来增强当前语言。
+
+例如, 当使用 MySQL 适配器时, 您可能希望允许 PHQL 识别 ` MATCH ... AGAINST ...`语法。我们将该语法与 ` MATCH_AGAINST ` 相关联
+
+我们实例化方言。 我们添加自定义函数, 以便 PHQL 了解在分析过程中找到它时应执行的操作。 在下面的示例中, 我们注册了一个名为 ` MATCH_AGAINST ` 的新自定义函数。 之后, 我们要做的就是添加自定义的语言解析器对象到我们的连接。
+
+```php
+<?php
+
+use Phalcon\Db\Dialect\MySQL as SqlDialect;
+use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
+
+$dialect = new SqlDialect();
+
+$dialect->registerCustomFunction(
+    'MATCH_AGAINST',
+    function($dialect, $expression) {
+        $arguments = $expression['arguments'];
+        return sprintf(
+            " MATCH (%s) AGAINST (%)",
+            $dialect->getSqlExpression($arguments[0]),
+            $dialect->getSqlExpression($arguments[1])
+         );
+    }
+);
+
+$connection = new Connection(
+    [
+        "host"          => "localhost",
+        "username"      => "root",
+        "password"      => "",
+        "dbname"        => "test",
+        "dialectClass"  => $dialect
+    ]
+);
+```
+
+我们现在可以在PHQL中使用这个新函数，而后者又将其转换为正确的SQL语法：
+
+```php
+$phql = "
+  SELECT *
+  FROM   Posts
+  WHERE  MATCH_AGAINST(title, :pattern:)";
+
+$posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
+```
 
 <a name='connection'></a>
 
 ## 连接到数据库
 
-To create a connection it's necessary instantiate the adapter class. 它只需要一个连接参数的数组。 下面的示例演示如何创建连接传递必需和可选的参数：
+要创建连接，必须实例化适配器类。 它只需要一个连接参数的数组。 下面的示例演示如何创建连接传递必需和可选的参数：
+
+##### MySQL 必须的参数
 
 ```php
 <?php
 
-// Required
 $config = [
     'host'     => '127.0.0.1',
     'username' => 'mike',
     'password' => 'sigma',
     'dbname'   => 'test_db',
 ];
+```
 
-// Optional
+##### MySQL 参数
+
+```php
 $config['persistent'] = false;
+```
 
-// Create a connection
+##### 创建一个MySQL 连接
+
+```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
+
+##### PostgreSQL 必须的参数
 
 ```php
 <?php
 
-// Required
 $config = [
     'host'     => 'localhost',
     'username' => 'postgres',
     'password' => 'secret1',
     'dbname'   => 'template',
 ];
+```
 
-// Optional
+##### PostgreSQL 参数
+
+```php
 $config['schema'] = 'public';
+```
 
-// Create a connection
+##### 创建一个PostgreSQL 连接
+
+```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
+
+##### SQLite 必须的参数
 
 ```php
 <?php
 
-// Required
 $config = [
     'dbname' => '/path/to/database.db',
 ];
+```
 
-// Create a connection
+##### 创建一个SQLite 连接
+
+```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```
 
@@ -178,7 +242,6 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```php
 <?php
 
-// Create a connection with PDO options
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
     [
         'host'     => 'localhost',
@@ -544,7 +607,7 @@ try {
 
 ## Database Events
 
-`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Db` 是能够将事件发送到 [EventsManager](/[[language]]/[[version]]/events)，如果它是存在的。 一些事件可以通过返回false来停止当前操作。 The following events are supported:
 
 | Event Name            | Triggered          | Can stop operation? |
 | --------------------- | ------------------ |:-------------------:|
@@ -556,7 +619,7 @@ try {
 | `rollbackTransaction` | 在事务回滚之前            |         No          |
 | `commitTransaction`   | 在一个事务被提交之前         |         No          |
 
-Bind an EventsManager to a connection is simple, `Phalcon\Db` will trigger the events with the type `db`:
+绑定 EventsManager 到数据库连接就是这么简单，`Phalcon\Db` 将触发事件与 `db` 类型:
 
 ```php
 <?php
@@ -705,7 +768,7 @@ $eventsManager->attach('db', $dbProfiler);
 
 ## Logging SQL Statements
 
-Using high-level abstraction components such as `Phalcon\Db` to access a database, it is difficult to understand which statements are sent to the database system. `Phalcon\Logger` interacts with `Phalcon\Db`, providing logging capabilities on the database abstraction layer.
+Using high-level abstraction components such as `Phalcon\Db` to access a database, it is difficult to understand which statements are sent to the database system. `Phalcon\Logger`与`Phalcon\Db`交互，使数据库抽象层具有日志功能。
 
 ```php
 <?php
@@ -808,10 +871,10 @@ Methods to get information about views are also implemented for every supported 
 ```php
 <?php
 
-// Get views on the test_db database
+// 获取test_db数据库上的视图
 $tables = $connection->listViews('test_db');
 
-// Is there a view 'robots' in the database?
+// 数据库中是否有“robots”视图?
 $exists = $connection->viewExists('robots');
 ```
 
@@ -819,7 +882,7 @@ $exists = $connection->viewExists('robots');
 
 ## Creating/Altering/Dropping Tables
 
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
+Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as CREATE, ALTER or DROP. The SQL syntax differs based on which database system is used. `Phalcon\Db` 提供了一个统一的接口来更改表, 而无需根据目标存储系统区分 sql 语法。
 
 <a name='tables-create'></a>
 

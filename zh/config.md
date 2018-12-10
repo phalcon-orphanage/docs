@@ -31,7 +31,7 @@
 
 `Phalcon\Config` 到应用程序中使用的 PHP 对象是组件，用于转换配置文件的不同格式 （使用适配器）。
 
-Values can be obtained from `Phalcon\Config` as follows:
+值可以从 `Phalcon\Config` 获得，详情如下：
 
 ```php
 <?php
@@ -117,7 +117,7 @@ $config = new Config($settings);
 
 ## 读取 INI 文件
 
-Ini 文件是常见的方式来存储设置。 `Phalcon\Config` 使用优化的 PHP 函数 `parse_ini_file` 来读取这些文件。 Files sections are parsed into sub-settings for easy access.
+Ini 文件是常见的方式来存储设置。 `Phalcon\Config` 使用优化的 PHP 函数 `parse_ini_file` 来读取这些文件。 文件节被解析成子设置，以便轻松访问。
 
 ```ini
 [database]

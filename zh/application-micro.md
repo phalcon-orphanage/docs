@@ -254,7 +254,7 @@ $app = new Micro();
 
 <h5 class='alert alert-warning'>路由必须总是以 <code>/</code> 开头</h5>
 
-Usually, the starting route in an application is the route `/`, and in most cases it is accessed via the GET HTTP method:
+通常情况下，起始应用程序中是路线 `/`，并在大多数情况下它通过获取 HTTP 方法访问：
 
 ```php
 <?php
@@ -311,7 +311,7 @@ $app = new Micro();
 $app->setService('router', $router, true);
 ```
 
-Setting up your routes using the `Phalcon\Mvc\Micro` applications verb methods (`get`, `post`, etc.) is much easier than setting up a router object with relevant routes and then injecting it in the application.
+设置你的路由使用 `Phalcon\Mvc\Micro` 应用谓词方法 （`get`、 `post`、 等） 是比设置路由器对象与相关路路由，然后注射它在应用中容易得多。
 
 每个方法有其优点和缺点。这一切取决于您的应用程序需求与设计。
 
@@ -327,7 +327,7 @@ Those changes are outlined in the [rewrite rules](/[[language]]/[[version]]/rewr
 
 ## 处理程序
 
-处理程序是代码的可调用段，得到附加到路由。 路由匹配匹配时，该处理程序执行已定义的所有参数。 A handler is any callable piece of code that exists in PHP.
+处理程序是代码的可调用段，得到附加到路由。 路由匹配匹配时，该处理程序执行已定义的所有参数。 处理程序是代码的任何可调用的 PHP 中存在。
 
 <a name='routing-handlers-definitions'></a>
 
@@ -365,9 +365,9 @@ $app->get(
 
 <a name='routing-handlers-function'></a>
 
-#### Function
+#### 函数
 
-We can define a function as our handler and attach it to a specific route.
+我们可以定义一个函数作为我们的处理程序并将其附加到 a 的特定路由。
 
 ```php
 // With a function
@@ -383,9 +383,9 @@ $app->get(
 
 <a name='routing-handlers-static-method'></a>
 
-#### Static Method
+#### 静态方法
 
-We can also use a static method as our handler as follows:
+如下，我们也可以使用静态方法作为我们的处理程序：
 
 ```php
 class OrdersClass
@@ -403,9 +403,9 @@ $app->get(
 
 <a name='routing-handlers-object-method'></a>
 
-#### Method in an Object
+#### 对象中的方法
 
-We can also use a method in an object:
+我们还可以在对象中使用一种方法：
 
 ```php
 class OrdersClass
@@ -427,11 +427,11 @@ $app->get(
 
 <a name='routing-handlers-controllers'></a>
 
-#### Controllers
+#### 控制器
 
-With the `Phalcon\Mvc\Micro` you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
+与 `Phalcon\Mvc\Micro`，您可以创建微型或介质的应用程序。 中小型应用程序使用微体系结构，但扩大上它能利用更多微但小于完整的应用程序。
 
-In medium applications you can organize handlers in controllers.
+在中小型应用程序中，您可以组织中控制器的处理程序。
 
 ```php
 <?php
@@ -440,7 +440,7 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $orders = new MicroCollection();
 
-// Set the main handler. ie. a controller instance
+// Set the main handler. ie。 a controller instance
 $orders->setHandler(new OrdersController());
 
 // Set a common prefix for all routes
@@ -455,7 +455,7 @@ $orders->get('/display/{slug}', 'show');
 $app->mount($orders);
 ```
 
-The `OrdersController` might look like this:
+`OrdersController` 可能如下所示：
 
 ```php
 <?php
@@ -502,11 +502,11 @@ class OrdersController extends Controller
 
 <a name='routing-handlers-controllers-lazy-loading'></a>
 
-### Lazy Loading
+### 延迟加载
 
 In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
 
-Lazy loading can be easily achieved when setting your handler in your `Phalcon\Mvc\Micro\Collection`:
+时在你的 `Phalcon\Mvc\Micro\Collection` 中设置您的处理程序，就很容易实现延迟加载：
 
 ```php
 $orders->setHandler('OrdersController', true);
@@ -515,9 +515,9 @@ $orders->setHandler('Blog\Controllers\OrdersController', true);
 
 <a name='routing-handlers-controllers-lazy-loading-use-case'></a>
 
-#### Use case
+#### 使用案例
 
-We are developing an API for an online store. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
+我们正在开发一个 API 的在线商店。 终结点是 `/ 用户`，`/ 订单` 和 `/ 产品`。 Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
 
 The controllers that we use as handlers are as follows:
 
@@ -1360,9 +1360,9 @@ $app->finish(
 
 <a name='middleware-setup'></a>
 
-## Setup
+## 设置
 
-Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
+附加到您应用程序的中间件是很容易的如上所示，与 `before`、 `after` 和 `finish` 的方法调用。
 
 ```php
 $app->before(
@@ -1388,7 +1388,7 @@ $app->after(
 );
 ```
 
-Attaching middleware to your application as classes and having it listen to events from the events manager can be achieved as follows:
+将中间件附加到您的应用程序，如类和让它听事件中，从事件管理器可以实现，如下所示：
 
 ```php
 <?php
@@ -1428,17 +1428,17 @@ $application->setEventsManager($eventsManager);
 
 ```
 
-We need a `Phalcon\Events\Manager` object. This can be a newly instantiated object or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one).
+我们需要一个 `Phalcon\Events\Manager` 对象。 这可以是一个新实例化的对象或者我们可以得到那个存在在我们 DI 容器 （如果你使用了 `FactoryDefault` 人）。
 
 We attach every middleware class in the `micro` hook in the Events Manager. We could also be a bit more specific and attach it to say the `micro:beforeExecuteRoute` event.
 
-We then attach the middleware class in our application on one of the three listening events discussed above (`before`, `after`, `finish`).
+我们然后将中间件类附加在我们的应用程序上讨论以上 （`before`, `after`, `finish`） 的三个侦听事件之一。
 
 <a name='middleware-implementation'></a>
 
 ## Implementation
 
-Middleware can be any kind of PHP callable functions. You can organize your code whichever way you like it to implement middleware. If you choose to use classes for your middleware, you will need them to implement the `Phalcon\Mvc\Micro\MiddlewareInterface`
+中间件可以是任何类型的 PHP 可调用函数。 您可以组织你的代码不管你喜欢它执行中间件。 If you choose to use classes for your middleware, you will need them to implement the `Phalcon\Mvc\Micro\MiddlewareInterface`
 
 ```php
 <?php
@@ -1481,23 +1481,23 @@ class CacheMiddleware implements MiddlewareInterface
 
 <a name='middleware-events'></a>
 
-## Events in Middleware
+## 在中间件中的事件
 
-The [events](#events) that are triggered for our application also trigger inside a class that implements the `Phalcon\Mvc\Micro\MiddlewareInterface`. This offers great flexibility and power for developers since we can interact with the request process.
+对我们的应用程序触发的 [events](#events) 也引发内部实现 `Phalcon\Mvc\Micro\MiddlewareInterface` 的类。 这提供了极大的灵活性和力量开发商因为我们可以与请求流程进行交互。
 
 <a name='middleware-events-api'></a>
 
-### API example
+### API 的示例
 
-Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
+假设我们有一个 API，我们已与微观应用程序。 我们将需要附加不同的中间件类在应用程序中，这样我们可以更好地控制应用程序的执行。
 
 The middleware that we will use are: * Firewall * NotFound * Redirect * CORS * Request * Response
 
 <a name='middleware-events-api-firewall'></a>
 
-#### Firewall Middleware
+#### 防火墙中间件
 
-This middleware is attached to the `before` event of our Micro application. The purpose of this middleware is to check who is calling our API and based on a whitelist, allow them to proceed or not
+这个中间件被附加到我们微应用 `before` 事件。 这个中间件的目的是检查谁我们的 API 和基于白名单中，允许他们继续或不
 
 ```php
 <?php
@@ -1559,7 +1559,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 #### Not Found Middleware
 
-When this middleware is processed, this means that the requesting IP is allowed to access our application. The application will try and match the route and if not found the `beforeNotFound` event will fire. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
+这个中间件进行处理时，这意味着请求 IP 允许访问我们的应用程序。 应用程序将尝试和匹配的路由，如果找不到 `beforeNotFound` 事件会火。 我们将停止处理然后发送回用户有关 404 响应。 这个中间件被附加到我们微应用 `before` 事件。
 
 ```php
 <?php
@@ -1605,7 +1605,7 @@ class NotFoundMiddleware implements MiddlewareInterface
 
 #### Redirect Middleware
 
-We attach this middleware again to the `before` event of our Micro application because we don't want the request to proceed if the requested endpoint needs to be redirected.
+我们附加这个中间件再到我们的微应用程序 `before` 事件因为我们不想请求继续如果请求终结点需要被重定向。
 
 ```php
 <?php
@@ -1657,7 +1657,7 @@ class RedirectMiddleware implements MiddlewareInterface
 
 <a name='middleware-events-api-cors'></a>
 
-#### CORS Middleware
+#### CORS 中间件
 
 Again this middleware is attached to the `before` event of our Micro application. We need to ensure that it fires before anything happens with our application
 
@@ -1722,7 +1722,7 @@ class CORSMiddleware implements MiddlewareInterface
 
 <a name='middleware-events-api-request'></a>
 
-#### Request Middleware
+#### 请求中间件
 
 This middleware is receiving a JSON payload and checks it. If the JSON payload is not valid it will stop execution.
 
@@ -1778,11 +1778,11 @@ class RequestMiddleware implements MiddlewareInterface
 
 <a name='middleware-events-api-response'></a>
 
-#### Response Middleware
+#### 响应中间件
 
-This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
+这个中间件负责操纵我们的反应，并将其发送回调用方以 JSON 字符串。 因此我们需要将它附加到我们微应用 `后` 事件。
 
-<h5 class='alert alert-warning'>We are going to be using the <code>call</code> method for this middleware, since we have nearly executed the whole request cycle.</h5>
+<h5 class='alert alert-warning'>我们打算使用 <code>call</code> 方法这个中间件，因为我们有近执行整个请求周期。</h5>
 
 ```php
 <?php
@@ -1823,11 +1823,11 @@ class ResponseMiddleware implements MiddlewareInterface
 
 <a name='models'></a>
 
-# Models
+# 模型
 
-Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
+模型可以用于在微观应用中，只要我们指示应用程序如何去自动加载相关的类。
 
-<h5 class='alert alert-warning'>The relevant <code>db</code> service must be registered in your Di container.</h5>
+<h5 class='alert alert-warning'>有关 <code>db</code> 服务必须在你 Di 容器注册。</h5>
 
 ```php
 <?php
@@ -1859,9 +1859,9 @@ $app->handle();
 
 <a name='model-instances'></a>
 
-# Inject model instances
+# 注入模型实例
 
-By using the `Phalcon\Mvc\Model\Binder` class you can inject model instances into your routes:
+通过使用 `Phalcon\Mvc\Model\Binder` 类可以将模型实例注入你的路线：
 
 ```php
 <?php
@@ -1887,13 +1887,13 @@ $app->get(
 $app->handle();
 ```
 
-Since Binder object is using internally Reflection Api which can be heavy, there is ability to set a cache so as to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
+既然联编程序对象内部使用反射 Api，可以是重，就设置一个缓存，加快这一进程的能力。 这可以通过使用 `setModelBinder()` 也可以接受服务名称第二个参数或只是通过向 `Binder` 构造函数传递一个缓存实例。
 
 Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/products/1`.
 
 <a name='views'></a>
 
-# Views
+# 视图
 
 `Phalcon\Mvc\Micro` does not have inherently a view service. We can however use the `Phalcon\Mvc\View\Simple` component to render views.
 
@@ -1960,9 +1960,9 @@ $app->get(
 
 <a name='error-handling'></a>
 
-# Error Handling
+# 错误处理
 
-The `Phalcon\Mvc\Micro` application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
+`Phalcon\Mvc\Micro` 应用程序还具有一种 `error` 的方法，可以用来捕获任何起源于异常的错误。 下面的代码片段显示了此功能的基本用法：
 
 ```php
 <?php

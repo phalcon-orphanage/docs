@@ -4,11 +4,11 @@
 
 *implements* [Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/memcache.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backend/memcache.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Allows to cache output fragments, PHP data or raw data to a memcache backend
+memcache バックエンドを使用して、出力フラグメント、PHPデータ、生のデータをキャッシュできます。
 
-This adapter uses the special memcached key "_PHCM" to store all the keys internally used by the adapter
+このアダプタは特別な"_PHCM"のmemcachedキーを使用して、このアダプタで内部で使用する全てのキーを保管します。
 
 ```php
 <?php
@@ -16,14 +16,14 @@ This adapter uses the special memcached key "_PHCM" to store all the keys intern
 use Phalcon\Cache\Backend\Memcache;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache data for 2 days
+// データを2日間キャッシュ
 $frontCache = new FrontData(
     [
         "lifetime" => 172800,
     ]
 );
 
-// Create the Cache setting memcached connection options
+// memcachedの接続オプションを設定するキャッシュを作成する
 $cache = new Memcache(
     $frontCache,
     [
@@ -33,43 +33,43 @@ $cache = new Memcache(
     ]
 );
 
-// Cache arbitrary data
+// 任意のデータをキャッシュ
 $cache->save("my-data", [1, 2, 3, 4, 5]);
 
-// Get data
+// データを取得
 $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## メソッド
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
-Phalcon\\Cache\\Backend\\Memcache constructor
+Phalcon\\Cache\\Backend\\Memcache コンストラクタ
 
 public **_connect** ()
 
-Create internal connection to memcached
+memcachedへの内部接続を作成する
 
 public **addServers** (*mixed* $host, *mixed* $port, [*mixed* $persistent])
 
-Add servers to memcache pool
+Memcache プールにサーバーを追加します。
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+キャッシュしたコンテンツを返します。
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the file backend and stops the frontend
+ファイルバックエンドにキャッシュしたコンテンツを保管し、フロントエンドを停止します。
 
 public *boolean* **delete** (*int* | *string* $keyName)
 
-Deletes a value from the cache by its key
+キャッシュから そのキーによって値を削除します。
 
 public **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys.
+既存のキャッシュされたキーを問合せ
 
 ```php
 <?php
@@ -83,19 +83,19 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it isn't expired
+キャッシュが存在しそれが期限切れでないことをチェックします。
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
-Increment of given $keyName by $value
+与えられた$keyName を $value だけインクリメント
 
 public **decrement** ([*string* $keyName], [*mixed* $value])
 
-Decrement of $keyName by given $value
+$keyName を指定された $value だけデクリメントします。
 
 public **flush** ()
 
-Immediately invalidates all existing items.
+ただちに、すべての既存のアイテムを無効にします。
 
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
@@ -123,20 +123,20 @@ public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Starts a cache. The keyname allows to identify the created fragment
+キャッシュを開始します。このkeynameは作成したフラグメントの特定に使用できます。
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+キャッシュしたコンテンツを保存しないで、フロントエンドを停止します。
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+直前のキャッシュが新鮮なものか、それともキャッシュされているかをチェックします。
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+このキャッシュのバッファリングが開始しているか、そうでないかをチェックします。
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](/en/3.2/api/Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+直前のライフタイムのセットを取得します。

@@ -48,7 +48,7 @@
           <a href="#storing-related-records">存储相关的记录</a>
         </li>
         <li>
-          <a href="#operations-over-resultsets">Operations over Resultsets</a> 
+          <a href="#operations-over-resultsets">在结果集的操作</a> 
           <ul>
             <li>
               <a href="#updating-related-records">更新相关的记录</a>
@@ -87,7 +87,7 @@ The bidirectional relations build relationships in both models and each model de
 
 <a name='defining'></a>
 
-### Defining relationships
+### 定义关系
 
 在Phalcon，必须在模型的 `initialize()` 方法中定义关系。 方法 `belongsTo()`、 `hasOne()`、 `hasMany()` 和 `hasManyToMany()` 定义一个或多个字段从当前模型到另一个模型中的字段之间的关系。 每一种方法需要 3 个参数： 本地字段，引用模型引用字段。
 
@@ -855,13 +855,13 @@ class Robots extends Model
 }
 ```
 
-The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
+上面的代码中设置删除被引用的所有记录 （parts），如果删除了主记录 （robot）。
 
 <a name='storing-related-records'></a>
 
 ## Storing Related Records
 
-Magic properties can be used to store a record and its related properties:
+魔法属性可以用于存储记录和其相关的属性：
 
 ```php
 <?php
@@ -883,7 +883,7 @@ $album->year   = 2008;
 $album->save();
 ```
 
-Saving a record and its related records in a has-many relation:
+有许多关系中保存记录和其相关的记录：
 
 ```php
 <?php
@@ -918,15 +918,15 @@ $album->songs = $songs;
 $album->save();
 ```
 
-Saving the album and the artist at the same time implicitly makes use of a transaction so if anything goes wrong with saving the related records, the parent will not be saved either. Messages are passed back to the user for information regarding any errors.
+保存这张专辑，艺术家，同时隐式使用的交易所以如果有任何差错与保存相关的记录，父将不会保存任何。 消息传递有关任何错误的信息返回给用户。
 
-Note: Adding related entities by overloading the following methods is not possible:
+注意： 通过重载以下方法添加相关的实体是不可能的：
 
 * `Phalcon\Mvc\Model::beforeSave()`
 * `Phalcon\Mvc\Model::beforeCreate()`
 * `Phalcon\Mvc\Model::beforeUpdate()`
 
-You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
+您需要重载 `Phalcon\Mvc\Model::save()` 为此要从内部模型工作。
 
 <a name='operations-over-resultsets'></a>
 
@@ -956,7 +956,7 @@ $result = $type->save();
 
 <a name='updating-related-records'></a>
 
-### Updating related records
+### 更新相关的记录
 
 Instead of doing this:
 
@@ -981,7 +981,7 @@ foreach ($parts as $part) {
 }
 ```
 
-you can do this:
+你可以这样做：
 
 ```php
 <?php
@@ -994,7 +994,7 @@ $robots->getParts()->update(
 );
 ```
 
-`update` also accepts an anonymous function to filter what records must be updated:
+`update` 也接受匿名函数来筛选哪些记录必须更新：
 
 ```php
 <?php
@@ -1019,7 +1019,7 @@ $robots->getParts()->update(
 
 <a name='deleting-related-records'></a>
 
-### Deleting related records
+### 删除相关的记录
 
 Instead of doing this:
 
@@ -1049,7 +1049,7 @@ you can do this:
 $robots->getParts()->delete();
 ```
 
-`delete()` also accepts an anonymous function to filter what records must be deleted:
+`delete （） 方法` 还接受匿名函数来筛选哪些记录，必须先删除：
 
 ```php
 <?php
