@@ -148,7 +148,7 @@ return $response->redirect(
 );
 ```
 
-Обратите внимание, что перенаправление не отключает компонент представления, таким образом, если имеется представление, связанное с текущим действием, оно в любом случае будет выполняться. Вы можете отключить представление из контроллера, выполнив `$this->view->disable()`.
+Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
 
 <a name='http-cache'></a>
 
