@@ -237,11 +237,7 @@ test/
 
 Самый распространённый случай - когда приложение устанавливается в любой подкаталог корневой директории. В таких случаях мы используем два `.htaccess` файла. Первый будет скрывать код приложения и перенаправлять запросы к корню приложения (`public/`).
 
-<div class="alert alert-warning">
-    <p>
-        Внимание, в каждом файле <code>.htaccess</code>, необходимо указывать опцию `AllowOverride All`.
-    </p>
-</div>
+##### Обратите внимание, для полного разрешения использования директив в `.htaccess` файле, в главном конфигурационном файле Apache необходимо установить параметр `AllowOverride All`. {.alert.alert-warning}
 
 ```apacheconfig
 # test/.htaccess
@@ -265,6 +261,21 @@ test/
     RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 </IfModule>
 ```
+
+For users that are using the Persian letter 'م' (meem) in uri parameters, there is an issue with `mod_rewrite`. To allow the matching to work as it does with English characters, you will need to change your `.htaccess` file:
+
+```apacheconfig
+# test/public/.htaccess
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond   %{REQUEST_FILENAME} !-d
+    RewriteCond   %{REQUEST_FILENAME} !-f
+    RewriteRule   ^([0-9A-Za-z\x7f-\xff]*)$ index.php?params=$1 [L]
+</IfModule>
+```
+
+If your uri contains characters other than English, you might need to resort to the above change to allow `mod_rewrite` to accurately match your route.
 
 <a name='apache-apache-configuration'></a>
 
