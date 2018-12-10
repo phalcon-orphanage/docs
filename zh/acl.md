@@ -3,37 +3,37 @@
     <li>
       <a href="#overview">Access Control Lists</a> <ul>
         <li>
-          <a href="#setup">Creating an ACL</a>
+          <a href="#setup">创建 ACL</a>
         </li>
         <li>
-          <a href="#adding-roles">Adding Roles to the ACL</a>
+          <a href="#adding-roles">将角色添加到 ACL</a>
         </li>
         <li>
-          <a href="#adding-resources">Adding Resources</a>
+          <a href="#adding-resources">添加资源</a>
         </li>
         <li>
-          <a href="#access-controls">Defining Access Controls</a>
+          <a href="#access-controls">定义访问控制</a>
         </li>
         <li>
-          <a href="#querying">Querying an ACL</a>
+          <a href="#querying">查询ACL</a>
         </li>
         <li>
-          <a href="#function-based-access">Function based access</a>
+          <a href="#function-based-access">基于访问控制的自定义函数</a>
         </li>
         <li>
-          <a href="#objects">Objects as role name and resource name</a>
+          <a href="#objects">对象作为角色名称和资源名称</a>
         </li>
         <li>
-          <a href="#roles-inheritance">Roles Inheritance</a>
+          <a href="#roles-inheritance">角色继承</a>
         </li>
         <li>
-          <a href="#serialization">Serializing ACL lists</a>
+          <a href="#serialization">序列化 ACL 列表</a>
         </li>
         <li>
-          <a href="#events">Events</a>
+          <a href="#events">事件</a>
         </li>
         <li>
-          <a href="#custom-adapters">Implementing your own adapters</a>
+          <a href="#custom-adapters">实现自己的适配器</a>
         </li>
       </ul>
     </li>
@@ -42,17 +42,17 @@
 
 <a name='overview'></a>
 
-# Access Control Lists (ACL)
+# 访问控制列表 (ACL)
 
-`Phalcon\Acl` provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](http://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
+`Phalcon\Acl` 提供了简单、 轻量级的 Acl，以及附属于他们的权限管理。 [访问控制列表](http://en.wikipedia.org/wiki/Access_control_list)(ACL) 允许应用程序对其领域与基础对象的访问请求进行控制。 我们鼓励您阅读更多关于 ACL 的方法，以更熟悉它的概念。
 
-In summary, ACLs have roles and resources. Resources are objects which abide by the permissions defined to them by the ACLs. Roles are objects that request access to resources and can be allowed or denied access by the ACL mechanism.
+总之，Acl 有角色和资源。 资源是通过ACLs定义的权限对象。 角色是通过ACL机制确定访问资源的请求是否被拒绝或允许的对象。
 
 <a name='setup'></a>
 
-## Creating an ACL
+## 创建 ACL
 
-This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The `Phalcon\Acl` constructor takes as its first parameter an adapter used to retrieve the information related to the control list. An example using the memory adapter is below:
+此组件最初被设计工作在内存中。 这提供了易用性和快速的访问列表中的每个方面。 `Phalcon\Acl` 构造函数作为适配器的第一个参数用于检索控制列表中信息。 下面是使用内存适配器示例︰
 
 ```php
 <?php
@@ -62,7 +62,7 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 $acl = new AclList();
 ```
 
-By default `Phalcon\Acl` allows access to action on resources that have not yet been defined. To increase the security level of the access list we can define a `deny` level as a default access level.
+默认情况下 `Phalcon\Acl` 允许访问尚未定义的资源。 为了提高访问列表中的安全级别，我们可以定义 `deny` 级别，作为默认访问级别。
 
 ```php
 <?php
@@ -77,17 +77,17 @@ $acl->setDefaultAction(
 
 <a name='adding-roles'></a>
 
-## Adding Roles to the ACL
+## 将角色添加到 ACL
 
-A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The `Phalcon\Acl\Role` class is available to create roles in a more structured way. Let's add some roles to our recently created list:
+角色是能或不能访问控制列表里面的某些资源的对象。 举例说明，我们将定义一个公司一组人员的的角色。 `Phalcon\Acl\Role` 类是可用于创建角色更结构化的方式。 让我们添加一些角色到我们最近创建的列表︰
 
 ```php
 <?php
 
 use Phalcon\Acl\Role;
 
-// Create some roles.
-// The first parameter is the name, the second parameter is an optional description.
+// 创建一些角色.
+// 第一个参数是名称，第二个参数是可选的说明。
 $roleAdmins = new Role('Administrators', 'Super-User role');
 $roleGuests = new Role('Guests');
 
@@ -98,13 +98,13 @@ $acl->addRole($roleGuests);
 $acl->addRole('Designers');
 ```
 
-As you can see, roles are defined directly without using an instance.
+正如你所看到的不使用实例的情况下直接定义角色。
 
 <a name='adding-resources'></a>
 
-## Adding Resources
+## 添加资源
 
-Resources are objects where access is controlled. Normally in MVC applications resources refer to controllers. Although this is not mandatory, the `Phalcon\Acl\Resource` class can be used in defining resources. It's important to add related actions or operations to a resource so that the ACL can understand what it should to control.
+资源是的对象的访问控制。 通常在 MVC 应用程序中的资源引用到控制器。 虽然这不是强制性的 `Phalcon\Acl\Resource` 类可以用于定义资源。 它是重要的是将相关的操作添加到资源以便 ACL 可以理解它应控制。
 
 ```php
 <?php
@@ -132,9 +132,9 @@ $acl->addResource(
 
 <a name='access-controls'></a>
 
-## Defining Access Controls
+## 定义访问控制
 
-Now that we have roles and resources, it's time to define the ACL (i.e. which roles can access which resources). This part is very important especially taking into consideration your default access level `allow` or `deny`.
+现在我们有角色和资源，是时候定义ACL（即哪些角色可以访问哪些资源）。 这部分是很重要，尤其考虑到您的默认访问级别 `allow` 或 `deny`。
 
 ```php
 <?php
@@ -148,13 +148,13 @@ $acl->allow('Guests', 'Customers', 'create');
 $acl->deny('Guests', 'Customers', 'update');
 ```
 
-The `allow()` method designates that a particular role has granted access to a particular resource. The `deny()` method does the opposite.
+`Allow()` 方法选定一个特定的角色已授予对特定资源的访问。`Deny()` 方法则相反。
 
 <a name='querying'></a>
 
-## Querying an ACL
+## 查询的 ACL
 
-Once the list has been completely defined. We can query it to check if a role has a given permission or not.
+一旦完全定义列表。我们可以查询它来检查是否角色具有给定的权限或不。
 
 ```php
 <?php
@@ -173,12 +173,11 @@ $acl->isAllowed('Guests', 'Customers', 'create');
 
 <a name='function-based-access'></a>
 
-## Function based access
+## 基于访问控制的自定义函数
 
-Also you can add as 4th parameter your custom function which must return boolean value. It will be called when you use `isAllowed()` method. You can pass parameters as associative array to `isAllowed()` method as 4th argument where key is parameter name in our defined function.
+此外可以添加 4 参数作为您自定义的函数必须返回布尔值。 当您使用 `isAllowed()` 方法时，它将被调用。 您可以将参数作为关联数组传递给` isAllowed（）</ 0>方法作为第4个参数，其中key是我们定义的函数中的参数名称。</p>
 
-```php
-<?php
+<pre><code class="php"><?php
 // Set access level for role into resources with custom function
 $acl->allow(
     'Guests',
@@ -210,9 +209,9 @@ $acl->isAllowed(
         'a' => 3,
     ]
 );
-```
+`</pre> 
 
-Also if you don't provide any parameters in `isAllowed()` method then default behaviour will be `Acl::ALLOW`. You can change it by using method `setNoArgumentsDefaultAction()`.
+此外，如果您未在` isAllowed()</ 0>方法中提供任何参数，则默认行为将为<code> Acl::ALLOW </ 0>。 您可以更改它的使用方法 <code>setNoArgumentsDefaultAction()`。
 
 ```php
 use Phalcon\Acl;
@@ -252,11 +251,11 @@ $acl->isAllowed(
 
 <a name='objects'></a>
 
-## Objects as role name and resource name
+## 对象作为角色名称和资源名称
 
-You can pass objects as `roleName` and `resourceName`. Your classes must implement `Phalcon\Acl\RoleAware` for `roleName` and `Phalcon\Acl\ResourceAware` for `resourceName`.
+您可以将对象作为 `角色名` 和 `资源名称` 传递。 您的类必须实现 `Phalcon\Acl\RoleAware` `roleName` 和 `Phalcon\Acl\ResourceAware`，为 `资源名称`。
 
-Our `UserRole` class
+我们的 `UserRole` 类
 
 ```php
 <?php
@@ -289,7 +288,7 @@ class UserRole implements RoleAware
 }
 ```
 
-And our `ModelResource` class
+和我们的 `ModelResource` 类
 
 ```php
 <?php
@@ -330,7 +329,7 @@ class ModelResource implements ResourceAware
 }
 ```
 
-Then you can use them in `isAllowed()` method.
+然后你可以在 `isAllowed()` 方法中使用它们。
 
 ```php
 <?php
@@ -471,11 +470,11 @@ You can still add any custom parameters to function and pass associative array i
 
 <a name='roles-inheritance'></a>
 
-## Roles Inheritance
+## 角色继承
 
-You can build complex role structures using the inheritance that `Phalcon\Acl\Role` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. There are two ways to use role inheritance:
+您可以使用 `Phalcon\Acl\Role` 提供的继承，构建复杂的角色结构。 角色可以继承其他角色，从而允许用户访问超集或资源的子集。 有两种使用角色继承的方法:
 
-1. You can pass the inherited role as the second parameter of the method call, when adding that role in the list.
+1. 在将继承的角色添加到列表中时，可以将其作为方法调用的第二个参数传递。
 
 ```php
 <?php
@@ -497,7 +496,7 @@ $acl->addRole($roleGuests);
 $acl->addRole($roleAdmins, $roleGuests);
 ```
 
-1. You can setup the relationships after roles are added
+1. 您可以在添加角色之后设置关系
 
 ```php
 <?php
@@ -518,9 +517,9 @@ $acl->addInherit($rollAdmins, $roleGuests);
 
 <a name='serialization'></a>
 
-## Serializing ACL lists
+## 序列化 ACL 列表
 
-To improve performance `Phalcon\Acl` instances can be serialized and stored in APC, session, text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
+若要提高性能 `Phalcon\Acl` 实例，可以序列化并存储在 APC、 会话、 文本文件或数据库表，以便他们加载时无需重新定义整个列表。 你能这样做，如下所示︰
 
 ```php
 <?php
@@ -555,20 +554,20 @@ if ($acl->isAllowed('Guests', 'Customers', 'edit')) {
 }
 ```
 
-It's recommended to use the Memory adapter during development and use one of the other adapters in production.
+它被建议在开发期间使用内存适配器，并在生产中使用其他适配器之一。
 
 <a name='events'></a>
 
-## Events
+## 事件
 
-`Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
+`Phalcon\Acl` 是能够将事件发送到 `EventsManager`，如果它是存在的。 事件被触发，使用类型 'acl'。 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
 
-| Event Name        | Triggered                                               | Can stop operation? |
-| ----------------- | ------------------------------------------------------- |:-------------------:|
-| beforeCheckAccess | Triggered before checking if a role/resource has access |         Yes         |
-| afterCheckAccess  | Triggered after checking if a role/resource has access  |         No          |
+| 事件名称              | 触发器                 | 可以停止操作吗？ |
+| ----------------- | ------------------- |:--------:|
+| beforeCheckAccess | 检查规则/资源是否具有访问权限之前触发 |    是的    |
+| afterCheckAccess  | 检查规则/资源是否具有访问权限之后触发 |    否     |
 
-The following example demonstrates how to attach listeners to this component:
+下面的示例演示如何将侦听器附加到此组件︰
 
 ```php
 <?php
@@ -605,6 +604,6 @@ $acl->setEventsManager($eventsManager);
 
 <a name='custom-adapters'></a>
 
-## Implementing your own adapters
+## 实现自己的适配器
 
-The `Phalcon\Acl\AdapterInterface` interface must be implemented in order to create your own ACL adapters or extend the existing ones.
+当创建您自己的 ACL 适配器或扩展已经存在的ACL时，必须实现 `Phalcon\Acl\AdapterInterface` 接口。
