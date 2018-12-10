@@ -12,6 +12,13 @@ Loads Paginator Adapter class using 'adapter' option
 <?php
 
 use Phalcon\Paginator\Factory;
+
+/**
+ * The `modelsManager` is automatically created when you instantiate your DI
+ * container using the `FactoryDefault` class. It returns a 
+ * [Phalcon\Mvc\Model\Manager](/en/3.2/api/Phalcon_Mvc_Model_Manager) object
+ */
+
 $builder = $this->modelsManager->createBuilder()
                 ->columns("id, name")
                 ->from("Robots")
