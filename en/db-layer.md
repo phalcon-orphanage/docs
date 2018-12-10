@@ -162,7 +162,7 @@ $dialect->registerCustomFunction(
     function($dialect, $expression) {
         $arguments = $expression['arguments'];
         return sprintf(
-            " MATCH (%s) AGAINST (%)",
+            " MATCH (%s) AGAINST (%s)",
             $dialect->getSqlExpression($arguments[0]),
             $dialect->getSqlExpression($arguments[1])
          );

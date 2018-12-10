@@ -2,44 +2,44 @@
 
 *implements* [Phalcon\Validation\ValidatorInterface](/[[language]]/[[version]]/api/Phalcon_Validation_ValidatorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/validator.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-This is a base class for validators
+バリデータの基本クラスです
 
-## Methods
+## メソッド
 
 public **__construct** ([*array* $options])
 
-Phalcon\\Validation\\Validator constructor
+Phalcon\\Validation\\Validator のコンストラクタ
 
 public **isSetOption** (*mixed* $key)
 
-Checks if an option has been defined
+オプションが定義されているかをチェックします。
 
 public **hasOption** (*mixed* $key)
 
-Checks if an option is defined
+オプションが定義されているかをチェックします。
 
 public **getOption** (*mixed* $key, [*mixed* $defaultValue])
 
-Returns an option in the validator's options Returns null if the option hasn't set
+バリデータのオプションから一つのオプションを返します。 オプションが設定されていない場合はnullを返します。
 
 public **setOption** (*mixed* $key, *mixed* $value)
 
-Sets an option in the validator
+バリデーターのオプションを設定します
 
 abstract public **validate** ([Phalcon\Validation](/[[language]]/[[version]]/api/Phalcon_Validation) $validation, *mixed* $attribute)
 
-Executes the validation
+バリデーションの実行
 
 protected **prepareLabel** ([Phalcon\Validation](/[[language]]/[[version]]/api/Phalcon_Validation) $validation, *mixed* $field)
 
-Prepares a label for the field.
+フィールドのラベルを準備します。
 
 protected **prepareMessage** ([Phalcon\Validation](/[[language]]/[[version]]/api/Phalcon_Validation) $validation, *mixed* $field, *mixed* $type, [*mixed* $option])
 
-Prepares a validation message.
+バリデーションメッセージを準備します。
 
 protected **prepareCode** (*mixed* $field)
 
-Prepares a validation code.
+バリデーションコードを準備します。

@@ -475,7 +475,11 @@ Puede agregar cualquier parámetro a la función y pasar un array asociativo en 
 
 ## Herencia de roles
 
-Se pueden construir estructuras complejas usando la herencia que `Phalcon\Acl\Role` proporciona. Los roles pueden heredar de otros roles, permitiendo acceso a super conjuntos o subconjuntos de recursos. Para utilizar herencia de roles, debe pasar el rol hereditario como segundo parámetro al método `addRole()`, cuando agrega el rol a la lista.
+Se pueden construir estructuras complejas usando la herencia que `Phalcon\Acl\Role` proporciona. Los roles pueden heredar de otros roles, permitiendo acceso a super conjuntos o subconjuntos de recursos. Hay dos formas de utilizar la herencia de roles:
+
+### Configurar relaciones a medida que se agregan roles.
+
+Puede pasar el rol heredado como segundo parámetro al método `addRole()`, cuando agrega el rol a la lista.
 
 ```php
 <?php
@@ -491,6 +495,23 @@ $roleAdmins = new Role('Administrador', 'Super usuario');
 $roleGuests = new Role('Invitado');
 
 // Agregamos el rol 'Invitado' al ACL
+$acl->addRole($roleGuests);
+
+// Agregamos el rol 'Administrador' heredando los accesos del rol 'Invitado'
+$acl->addRole($roleAdmins, $roleGuests);
+```
+
+### Configurar relaciones después que se agregan los roles
+
+O puede preferir agregar todos sus roles juntos y luego definir las relaciones de herencia.
+
+```php
+// Creamos algunos roles
+$roleAdmins = new Role('Administrador', 'Super usuario');
+$roleGuests = new Role('Invitado');
+
+// Agregamos los roles al ACL
+$acl->addRole($roleAdmins);
 $acl->addRole($roleGuests);
 
 // Agregamos el rol 'Administrador' heredando los accesos del rol 'Invitado'

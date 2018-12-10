@@ -155,59 +155,123 @@ Phalcon encapsula los detalles específicos de cada motor de base de datos en di
 
 ### Implementar sus propios dialectos
 
-Debe implementar la interfaz `Phalcon\Db\DialectInterface` para crear sus propios dialectos de la base de datos o extender los ya existentes.
+Debe implementar la interfaz `Phalcon\Db\DialectInterface` para crear sus propios dialectos de la base de datos o extender los ya existentes. Incluso puede mejorar su dialecto actual agregando más comandos/métodos para que PHQL los entienda.
+
+Para instancias donde utilizamos el adaptador de MySQL, si desea permitir a PHQL reconocer la sintaxis `MATCH ... AGAINST ...`. Asociamos la sintaxis con `MATCH_AGAINST`
+
+Instanciamos el dialecto. Agregamos la función personalizada para que PHQL comprenda qué hacer cuando la encuentra durante el proceso de análisis sintáctico. En el siguiente ejemplo, registramos una nueva función personalizada llamada `MATCH_AGAINST`. Después de eso todo lo que tenemos que hacer es añadir el objeto del dialecto personalizado a nuestra conexión.
+
+```php
+<?php
+
+use Phalcon\Db\Dialect\MySQL as SqlDialect;
+use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
+
+$dialect = new SqlDialect();
+
+$dialect->registerCustomFunction(
+    'MATCH_AGAINST',
+    function($dialect, $expression) {
+        $arguments = $expression['arguments'];
+        return sprintf(
+            " MATCH (%s) AGAINST (%s)",
+            $dialect->getSqlExpression($arguments[0]),
+            $dialect->getSqlExpression($arguments[1])
+         );
+    }
+);
+
+$connection = new Connection(
+    [
+        "host"          => "localhost",
+        "username"      => "root",
+        "password"      => "",
+        "dbname"        => "test",
+        "dialectClass"  => $dialect
+    ]
+);
+```
+
+Ahora podemos utilizar esta nueva función en PHQL, que a su vez lo traducirá en la sintaxis SQL adecuada:
+
+```php
+$phql = "
+  SELECT *
+  FROM   Posts
+  WHERE  MATCH_AGAINST(title, :pattern:)";
+
+$posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
+```
 
 <a name='connection'></a>
 
 ## Conexión a bases de datos
 
-Para crear una conexión es necesario crear una instancia del adaptador. Sólo requiere una arreglo con los parámetros de conexión. En el ejemplo siguiente se muestra cómo crear una conexión pasando parámetros requeridos y opcionales:
+Para crear una conexión es necesario crear una instancia de la clase del adaptador. Sólo requiere una arreglo con los parámetros de conexión. En el ejemplo siguiente se muestra cómo crear una conexión pasando tanto los parámetros opcionales como los parámetros requeridos:
+
+##### Elementos requeridos en MySQL
 
 ```php
 <?php
 
-//Requerido
 $config = [
     'host'     => '127.0.0.1',
     'username' => 'mike',
     'password' => 'sigma',
     'dbname'   => 'test_db',
 ];
+```
 
-//Opcional
+##### MySQL Opcionales
+
+```php
 $config['persistent'] = false;
+```
 
-// Crear una conexión
+##### Crear una conexión MySQL
+
+```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
+
+##### Elementos requeridos en PostgreSQL
 
 ```php
 <?php
 
-// Requerido
 $config = [
     'host'     => 'localhost',
     'username' => 'postgres',
     'password' => 'secret1',
     'dbname'   => 'template',
 ];
+```
 
-// Opcional
+##### PostgreSQL Opcionales
+
+```php
 $config['schema'] = 'public';
+```
 
-// Crea una conección
+##### Crear una conexión PostgreSQL
+
+```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
+
+##### Elementos requeridos en SQLite
 
 ```php
 <?php
 
-// Requerido
 $config = [
     'dbname' => '/path/to/database.db',
 ];
+```
 
-// Crea una conección
+##### Crear una conexión SQLite
+
+```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```
 
@@ -220,7 +284,6 @@ Se pueden definir opciones de PDO al momento de conexión pasando los parámetro
 ```php
 <?php
 
-// Crea una conección con opciones PDO
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
     [
         'host'     => 'localhost',
@@ -374,7 +437,7 @@ $success = $connection->query(
 );
 ```
 
-Cuando se utilizan marcadores numéricos, necesita definirlos como enteros, es decir, 1 o 2. En este caso '1' o '2' se consideran cadenas y no números, por lo que el marcador de posición no podría sustituirse con éxito. Con cualquier adaptador de datos se escapan automáticamente utilizando [PDO Quote](http://www.php.net/manual/en/pdo.quote.php).
+Cuando se utilizan a marcadores numéricos, Ud. necesita definirlos como enteros es decir, 1 o 2. En este caso '1' o '2' son considerados como cadenas de texto y no como números, por lo que el marcador de posición no podría sustituirse con éxito. Con cualquier adaptador de datos se escapan automáticamente utilizando [PDO Quote](http://www.php.net/manual/en/pdo.quote.php).
 
 Esta función tiene en cuenta el conjunto de caracteres de conexión, por lo que se recomienda definir el conjunto de caracteres correcto en los parámetros de conexión o en la configuración de servidor de base de datos, como un conjunto de caracteres incorrecto producirá efectos no deseados al almacenar o recuperar datos.
 
@@ -562,7 +625,7 @@ if (11 === $robot->id) {
 
 ## Insertar/Actualizar/Borrar registros
 
-Para Insertar, actualizar o eliminar filas, puede utilizar SQL crudo o utilizar las funciones proporcionadas por la clase:
+Para insertar, actualizar o eliminar filas, se puede utilizar SQL sin procesar o utilizar las funciones preestablecidas proporcionadas por la clase:
 
 ```php
 <?php
@@ -626,7 +689,7 @@ $success = $connection->update(
     [
         'New Astro Boy',
     ],
-    'id = 101' // Advertencia! en este caso los valores no son escapados
+    'id = 101' // Advertencia! En este caso los valores no son escapados
 );
 
 // Generando dinámicamente el SQL necesario (otra sintaxis)
@@ -763,7 +826,7 @@ try {
 | `rollbackTransaction` | Antes de anular (roolback) una transacción                         |              No              |
 | `commitTransaction`   | Antes de que una finalizar (commit) una transacción                |              No              |
 
-Vincular un EventsManager a una conexión es muy sencillo, `Phalcon\Db` activará los eventos con el tipo `db`:
+Enlazarun EventsManager a una conexión es sencillo. `Phalcon\Db` activará los eventos con el tipo `db`:
 
 ```php
 <?php
@@ -1010,7 +1073,7 @@ Una descripción de la tabla es muy similar al comando `DESCRIBE` de MySQL, cont
 | ---------------- | --------------- | ---------------------------------------------------------- | --------------------------------- |
 | Nombre del campo | Tipo de columna | ¿Es la columna parte de la clave principal o de un índice? | ¿La columna permite valores null? |
 
-Methods to get information about views are also implemented for every supported database system:
+Los métodos para obtener información acerca de las vistas también se aplican para cada sistema de base de datos soportadas:
 
 ```php
 <?php

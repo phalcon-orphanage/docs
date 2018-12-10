@@ -27,60 +27,60 @@
           </ul>
         </li>
         <li>
-          <a href="#read">Querying the cache</a>
+          <a href="#read">キャッシュの確認</a>
         </li>
         <li>
-          <a href="#delete">Deleting data from the cache</a>
+          <a href="#delete">キャッシュからのデータ削除</a>
         </li>
         <li>
-          <a href="#exists">Checking cache existence</a>
+          <a href="#exists">キャッシュ有無の確認</a>
         </li>
         <li>
-          <a href="#lifetime">Lifetime</a>
+          <a href="#lifetime">有効期間</a>
         </li>
         <li>
-          <a href="#multi-level">Multi-Level Cache</a>
+          <a href="#multi-level">マルチレベルキャッシュ</a>
         </li>
         <li>
-          <a href="#adapters-frontend">Frontend Adapters</a> 
+          <a href="#adapters-frontend">フロントエンド アダプター</a> 
           <ul>
             <li>
-              <a href="#adapters-frontend-custom">Implementing your own Frontend adapters</a>
+              <a href="#adapters-frontend-custom">独自フロントエンドアダプターの実装</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#adapters-backend">Backend Adapters</a> 
+          <a href="#adapters-backend">バックエンドアダプター</a> 
           <ul>
             <li>
-              <a href="#adapters-backend-factory">Factory</a>
+              <a href="#adapters-backend-factory">ファクトリー</a>
             </li>
             <li>
               <a href="#adapters-backend-custom">独自のバックエンドアダプターを実装</a>
             </li>
             <li>
-              <a href="#adapters-backend-file">File Backend Options</a>
+              <a href="#adapters-backend-file">ファイルバックエンドのオプション</a>
             </li>
             <li>
-              <a href="#adapters-backend-libmemcached">Libmemcached Backend Options</a>
+              <a href="#adapters-backend-libmemcached">Libmemcachedバックエンドのオプション</a>
             </li>
             <li>
-              <a href="#adapters-backend-memcache">Memcache Backend Options</a>
+              <a href="#adapters-backend-memcache">Memcacheバックエンドのオプション</a>
             </li>
             <li>
-              <a href="#adapters-backend-apc">APC Backend Options</a>
+              <a href="#adapters-backend-apc">APCバックエンドのオプション</a>
             </li>
             <li>
-              <a href="#adapters-backend-apcu">APCU Backend Options</a>
+              <a href="#adapters-backend-apcu">APCUバックエンドのオプション</a>
             </li>
             <li>
-              <a href="#adapters-backend-mongo">Mongo Backend Options</a>
+              <a href="#adapters-backend-mongo">Mongoバックエンドのオプション</a>
             </li>
             <li>
-              <a href="#adapters-backend-xcache">XCache Backend Options</a>
+              <a href="#adapters-backend-xcache">XCacheバックエンドのオプション</a>
             </li>
             <li>
-              <a href="#adapters-backend-redis">Redis Backend Options</a>
+              <a href="#adapters-backend-redis">Redisバックエンドのオプション</a>
             </li>
           </ul>
         </li>
@@ -99,15 +99,15 @@ Phalcon は、頻繁に使用される、またはすでに処理されたデー
 
 ## いつキャッシュを実装する？
 
-Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
+このコンポーネントは非常に高速ですが、必要でないケースで実装すると、利用することで得られるメリットよりも、パフォーマンスの低下によるデメリットの方が大きくなる可能性があります。 キャッシュを使用する前に確認をお勧めします。
 
 * 毎回同じ結果 (変更頻度の低い) を返す複雑な計算をしている
 * 多くのヘルパを利用し、生成される出力がほとんど同じである
-* You are accessing database data constantly and these data rarely change
+* 常にデータベースのデータにアクセスしており、これらのデータはほとんど変わらない
 
 <div class='alert alert-warning'>
     <p>
-        <strong>メモ</strong> キャッシュを実装した後でも、一定の期間でキャッシュのヒット率を確認するようにしましょう。 This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.
+        <strong>メモ</strong> キャッシュを実装した後でも、一定の期間でキャッシュのヒット率を確認するようにしましょう。 特にMemcacheやApcの場合、バックエンドが提供する関連ツールを使用すると、これを簡単に行うことができます。
     </p>
 </div>
 
@@ -115,18 +115,18 @@ Although this component is very fast, implementing it in cases that are not need
 
 ## キャッシュの振る舞い
 
-The caching process is divided into 2 parts:
+キャッシュ処理は、2 つの部分に分かれています。
 
-* **Frontend**: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-
-* **Backend**: This part is responsible for communicating, writing/reading the data required by the frontend.
+* **フロントエンド**: この部分は、キーが期限切れになっていないかどうかをチェックし、保存する前にデータに追加の変換を実行します。
+* **バックエンド**: この部分は、フロントエンドが必要とするデータの通信、書き込み、読み取りを行います。
 
 <a name='factory'></a>
 
-## Factory
+## ファクトリー
 
-Instantiating frontend or backend adapters can be achieved by two ways:
+フロントエンドまたはバックエンドのアダプタをインスタンス化するには、次の2つの方法があります。
 
-Traditional way
+従来の方法
 
 ```php
 <?php
@@ -134,16 +134,15 @@ Traditional way
 use Phalcon\Cache\Backend\File as BackFile;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Create an Output frontend. Cache the files for 2 days
+// 出力フロントエンドの作成。 ファイルを2日間キャッシュ。
 $frontCache = new FrontData(
     [
         'lifetime' => 172800,
     ]
 );
 
-// Create the component that will cache from the 'Output' to a 'File' backend
-// Set the cache file directory - it's important to keep the '/' at the end of
-// the value for the folder
+// 'Output'から'File'バックエンドにキャッシュするコンポーネントを作成する
+// キャッシュファイルディレクトリを設定する - フォルダの値の最後に '/'を置くことが重要
 $cache = new BackFile(
     $frontCache,
     [
@@ -152,7 +151,7 @@ $cache = new BackFile(
 );
 ```
 
-or using the Factory object as follows:
+または、次のようにFactoryオブジェクトを使用します:
 
 ```php
 <?php
@@ -179,11 +178,11 @@ $backendCache = BFactory::load($options);
 
 <a name='output-fragments'></a>
 
-## Caching Output Fragments
+## 出力フラグメントのキャッシュ
 
-An output fragment is a piece of HTML or text that is cached as is and returned as is. The output is automatically captured from the `ob_*` functions or the PHP output so that it can be saved in the cache. The following example demonstrates such usage. It receives the output generated by PHP and stores it into a file. The contents of the file are refreshed every 172,800 seconds (2 days).
+出力フラグメントは、そのままの状態でキャッシュされ、HTML またはテキストの一部で、そのまま返されます。 出力は、`ob_*`関数またはPHP出力から自動的にキャプチャされ、キャッシュに保存されます。 次の例は、このような使用法を示しています。 PHPが生成した出力を受け取り、ファイルに格納します。 ファイルの内容は172,800秒（2日）ごとに更新されます。
 
-The implementation of this caching mechanism allows us to gain performance by not executing the helper `Phalcon\Tag::linkTo()` call whenever this piece of code is called.
+このキャッシュ機構の実装では、コードの該当部分を呼び出すたびに、ヘルパー `Phalcon\Tag::linkTo()`を呼び出さないので、パフォーマンスが向上します。
 
 ```php
 <?php
@@ -192,16 +191,15 @@ use Phalcon\Tag;
 use Phalcon\Cache\Backend\File as BackFile;
 use Phalcon\Cache\Frontend\Output as FrontOutput;
 
-// Create an Output frontend. Cache the files for 2 days
+// 出力フロントエンドの作成。 ファイルを2日間キャッシュ。
 $frontCache = new FrontOutput(
     [
         'lifetime' => 172800,
     ]
 );
 
-// Create the component that will cache from the 'Output' to a 'File' backend
-// Set the cache file directory - it's important to keep the '/' at the end of
-// the value for the folder
+// 'Output'から'File'バックエンドにキャッシュするコンポーネントを作成する
+// キャッシュファイルディレクトリを設定する - フォルダの値の最後に '/'を置いておくことが重要です
 $cache = new BackFile(
     $frontCache,
     [
@@ -209,15 +207,15 @@ $cache = new BackFile(
     ]
 );
 
-// Get/Set the cache file to ../app/cache/my-cache.html
+// キャッシュファイルを ../app/cache/my-cache.html で取得/設定する
 $content = $cache->start('my-cache.html');
 
-// If $content is null then the content will be generated for the cache
+// $contentがnullの場合、コンテンツはキャッシュ用に生成されます。
 if ($content === null) {
-    // Print date and time
+    // 日付と時刻を表示する
     echo date('r');
 
-    // Generate a link to the sign-up action
+    // サインアップアクションへのリンクを生成する
     echo Tag::linkTo(
         [
             'user/signup',
@@ -226,31 +224,31 @@ if ($content === null) {
         ]
     );
 
-    // Store the output into the cache file
+    // 出力をキャッシュファイルに保存する
     $cache->save();
 } else {
-    // Echo the cached output
+    // キャッシュされた出力をechoする
     echo $content;
 }
 ```
 
 <div class='alert alert-warning'>
     <p>
-        <strong>NOTE</strong> In the example above, our code remains the same, echoing output to the user as it has been doing before. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations.
+        <strong>注意</strong>上記の例では、コードは以前と同じように出力されます。 キャッシュコンポーネントは透過的にその出力をキャプチャし、キャッシュファイルに保存します（キャッシュが生成されたとき）。または、前回の呼び出しで事前にコンパイルされたものをユーザーにレスポンスすることで、コストの高い処理を回避します。
     </p>
 </div>
 
 <a name='arbitrary-data'></a>
 
-## Caching Arbitrary Data
+## 任意データのキャッシュ
 
-Caching just data is equally important for your application. Caching can reduce database load by reusing commonly used (but not updated) data, thus speeding up your application.
+データのキャッシュは、あなたのアプリケーションの重要さと同じです。 キャッシュは、一般的に使用されるデータ(で更新されないもの) を再利用することで、データベースの負荷を減らすことができます。またあなたのアプリケーションを高速化します。
 
 <a name='backend-file-example'></a>
 
-### File Backend Example
+### ファイルバックエンドの例
 
-One of the caching adapters is `File`. The only key area for this adapter is the location of where the cache files will be stored. This is controlled by the `cacheDir` option which *must* have a backslash at the end of it.
+キャッシュのアダプターの1つは、`File`です。 このアダプターの唯一重要なところは、そのキャッシュファイルを保存する場所です。 これは、`cacheDir` オプションで制御できます。このディレクトリは、最後が バックスラッシュで*終らなければなりません。*
 
 ```php
 <?php
@@ -258,16 +256,15 @@ One of the caching adapters is `File`. The only key area for this adapter is the
 use Phalcon\Cache\Backend\File as BackFile;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache the files for 2 days using a Data frontend
+// Dataフロントエンドを使用して2日間ファイルをキャッシュする
 $frontCache = new FrontData(
     [
         'lifetime' => 172800,
     ]
 );
 
-// Create the component that will cache 'Data' to a 'File' backend
-// Set the cache file directory - important to keep the `/` at the end of
-// the value for the folder
+// 'Data'を'File'バックエンドにキャッシュするコンポーネントを作成する
+// キャッシュファイルディレクトリを設定する - フォルダの値の最後に `/`を置くことが重要
 $cache = new BackFile(
     $frontCache,
     [
@@ -277,23 +274,23 @@ $cache = new BackFile(
 
 $cacheKey = 'robots_order_id.cache';
 
-// Try to get cached records
+// キャッシュされたレコードを取得してみる
 $robots = $cache->get($cacheKey);
 
 if ($robots === null) {
-    // $robots is null because of cache expiration or data does not exist
-    // Make the database call and populate the variable
+    // $robotsはキャッシュの有効期限が切れているか、データが存在しないためnull
+    // データベースを呼び出して変数に代入
     $robots = Robots::find(
         [
             'order' => 'id',
         ]
     );
 
-    // Store it in the cache
+    // キャッシュに保存
     $cache->save($cacheKey, $robots);
 }
 
-// Use $robots :)
+// $robotsを使う:)
 foreach ($robots as $robot) {
    echo $robot->name, '\n';
 }
@@ -301,9 +298,9 @@ foreach ($robots as $robot) {
 
 <a name='backend-memcached-example'></a>
 
-### Memcached Backend Example
+### Memcached バックエンドの例
 
-The above example changes slightly (especially in terms of configuration) when we are using a Memcached backend.
+Memcachedバックエンドを使用するとき、上の例を少しだけ変更します(特に設定項目のあたり)。
 
 ```php
 <?php
@@ -311,15 +308,15 @@ The above example changes slightly (especially in terms of configuration) when w
 use Phalcon\Cache\Frontend\Data as FrontData;
 use Phalcon\Cache\Backend\Libmemcached as BackMemCached;
 
-// Cache data for one hour
+// データを1時間キャッシュする
 $frontCache = new FrontData(
     [
         'lifetime' => 3600,
     ]
 );
 
-// Create the component that will cache 'Data' to a 'Memcached' backend
-// Memcached connection settings
+// 'Memcached'バックエンドに'データ'をキャッシュするコンポーネントを作成する
+// Memcached接続設定
 $cache = new BackMemCached(
     $frontCache,
     [
@@ -335,23 +332,23 @@ $cache = new BackMemCached(
 
 $cacheKey = 'robots_order_id.cache';
 
-// Try to get cached records
+// キャッシュされたレコードを取得してみる
 $robots = $cache->get($cacheKey);
 
 if ($robots === null) {
-    // $robots is null because of cache expiration or data does not exist
-    // Make the database call and populate the variable
+    // $robotsはキャッシュの有効期限が切れているか、データが存在しないためnull
+    // データベースを呼び出して変数に代入
     $robots = Robots::find(
         [
             'order' => 'id',
         ]
     );
 
-    // Store it in the cache
+    // キャッシュに保存
     $cache->save($cacheKey, $robots);
 }
 
-// Use $robots :)
+// $robotsを使う :)
 foreach ($robots as $robot) {
    echo $robot->name, '\n';
 }
@@ -359,29 +356,29 @@ foreach ($robots as $robot) {
 
 <div class='alert alert-warning'>
     <p>
-        <strong>NOTE</strong> Calling <code>save()</code> will return a boolean, indicating success (<code>true</code>) or failure (<code>false</code>). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.
+        <strong>注意</strong> <code>save()</code>を呼び、論理値を返します。これは成功 (<code>true</code>) または失敗 (<code>false</code>) を示します。 使用しているバックエンドに応じて、関連するログを調べて障害を特定する必要があります。
     </p>
 </div>
 
 <a name='read'></a>
 
-## Querying the cache
+## キャッシュの確認
 
-The elements added to the cache are uniquely identified by a key. In the case of the File backend, the key is the actual filename. To retrieve data from the cache, we just have to call it using the unique key. If the key does not exist, the get method will return null.
+このキャッシュに加えられた要素はキーによって一意に特定できます。 ファイルバックエンドの場合、キーは実際のファイル名です。 キャッシュからデータを取得するため、一意のキーを使って呼び出さなければなりません。 もしキーが存在しない場合、getメソッドはnullを返します。
 
 ```php
 <?php
 
-// Retrieve products by key 'myProducts'
+// キー'myProducts'で製品を取得する
 $products = $cache->get('myProducts');
 ```
 
-If you want to know which keys are stored in the cache you could call the `queryKeys` method:
+もしあなたがどのようなキーがそのキャッシュに保存されているのかが知りたい場合、`queryKeys` メソッドを呼びだすことができます。
 
 ```php
 <?php
 
-// Query all keys used in the cache
+// キャッシュで使用されているすべてのキーを照会する
 $keys = $cache->queryKeys();
 
 foreach ($keys as $key) {
@@ -390,25 +387,25 @@ foreach ($keys as $key) {
     echo 'Key=', $key, ' Data=', $data;
 }
 
-// Query keys in the cache that begins with 'my-prefix'
+// 'my-prefix'で始まるキャッシュ内のクエリキー
 $keys = $cache->queryKeys('my-prefix');
 ```
 
 <a name='delete'></a>
 
-## Deleting data from the cache
+## キャッシュからのデータ削除
 
-There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data). The only requirement is to know the key that the data have been stored with.
+(キャッシュされたデータの更新のために) キャッシュ エントリを強制的に無効にする必要があります。 唯一の要件は、データが格納されているキーを知ることです。
 
 ```php
 <?php
 
-// Delete an item with a specific key
+// 対象のキーを持つアイテムを削除する
 $cache->delete('someKey');
 
 $keys = $cache->queryKeys();
 
-// Delete all items from the cache
+// キャッシュからすべてのアイテムを削除する
 foreach ($keys as $key) {
     $cache->delete($key);
 }
@@ -416,9 +413,9 @@ foreach ($keys as $key) {
 
 <a name='exists'></a>
 
-## Checking cache existence
+## キャッシュ有無の確認
 
-It is possible to check if a cache already exists with a given key:
+指定されたキーでキャッシュがすでに存在するかどうかを確認することができます。
 
 ```php
 <?php
@@ -432,29 +429,29 @@ if ($cache->exists('someKey')) {
 
 <a name='lifetime'></a>
 
-## Lifetime
+## 有効期間
 
-A `lifetime` is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation. You can set a specific lifetime in the creation or retrieving of the data from the cache:
+`有効期間`は、期限が切れるまでキャッシュが存続できる時間（秒）です。 デフォルトでは、作成されたすべてのキャッシュは、フロントエンドの作成時に設定された有効期間を使用します。 キャッシュからのデータの作成または取得では、特定の有効期間を設定できます。
 
-Setting the lifetime when retrieving:
+取得時の有効期間の設定:
 
 ```php
 <?php
 
 $cacheKey = 'my.cache';
 
-// Setting the cache when getting a result
+// 結果を取得するときにキャッシュを設定
 $robots = $cache->get($cacheKey, 3600);
 
 if ($robots === null) {
     $robots = 'some robots';
 
-    // Store it in the cache
+    // キャッシュに格納
     $cache->save($cacheKey, $robots);
 }
 ```
 
-Setting the lifetime when saving:
+保存時の有効期間の設定:
 
 ```php
 <?php
@@ -466,16 +463,16 @@ $robots = $cache->get($cacheKey);
 if ($robots === null) {
     $robots = 'some robots';
 
-    // Setting the cache when saving data
+    // データを保存するときにキャッシュを設定
     $cache->save($cacheKey, $robots, 3600);
 }
 ```
 
 <a name='multi-level'></a>
 
-## Multi-Level Cache
+## マルチレベルキャッシュ
 
-This feature of the cache component, allows the developer to implement a multi-level cache. This new feature is very useful because you can save the same data in several cache locations with different lifetimes, reading first from the one with the faster adapter and ending with the slowest one until the data expires:
+キャッシュコンポーネントの機能によって、開発者はマルチレベルキャッシュを実装できます。 この新しい機能は、同じデータを複数のキャッシュに保存することができるため、データの有効期限が切れるまで一番速いアダプタで読み込み、最も遅いもので終了するため、非常に便利です:
 
 ```php
 <?php
@@ -504,7 +501,7 @@ $slowFrontend = new DataFrontend(
     ]
 );
 
-// Backends are registered from the fastest to the slower
+// バックエンドは、早いものから遅いものへと順番に登録される
 $cache = new Multiple(
     [
         new ApcCache(
@@ -531,59 +528,59 @@ $cache = new Multiple(
     ]
 );
 
-// Save, saves in every backend
+// すべてのバックエンドに保存
 $cache->save('my-key', $data);
 ```
 
 <a name='adapters-frontend'></a>
 
-## Frontend Adapters
+## フロントエンド アダプター
 
-The available frontend adapters that are used as interfaces or input sources to the cache are:
+インターフェイスとして使用される使用可能なフロントエンドアダプタ、またはキャッシュへの入力ソースは次のとおりです:
 
-| Adapter                              | Description                                                                                                                                                    |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Phalcon\Cache\Frontend\Output`   | Read input data from standard PHP output.                                                                                                                      |
-| `Phalcon\Cache\Frontend\Data`     | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                     |
-| `Phalcon\Cache\Frontend\Base64`   | It's used to cache binary data. The data is serialized using `base64_encode` before be stored in the backend.                                                  |
-| `Phalcon\Cache\Frontend\Json`     | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks. |
-| `Phalcon\Cache\Frontend\Igbinary` | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using `Igbinary` before be stored in the backend.                 |
-| `Phalcon\Cache\Frontend\None`     | It's used to cache any kind of PHP data without serializing them.                                                                                              |
+| アダプター                                | 説明                                                                                                |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------- |
+| `Phalcon\Cache\Frontend\Output`   | 標準のPHP出力から入力データを読み込みます。                                                                           |
+| `Phalcon\Cache\Frontend\Data`     | あらゆる種類のPHPデータ（大きな配列、オブジェクト、テキストなど）をキャッシュするために使用されます。 データは、バックエンドへ保存する前にシリアライズされます。                |
+| `Phalcon\Cache\Frontend\Base64`   | バイナリ データのキャッシュに使用します。 データは、バックエンドに格納される前に`base64_encode`を使用してシリアル化されます。                           |
+| `Phalcon\Cache\Frontend\Json`     | データは、バックエンドへ保存する前にJSON形式にエンコードされます。 取得後にデコードします。 このフロントエンドは、他の言語やフレームワークとのデータ共有に便利です。             |
+| `Phalcon\Cache\Frontend\Igbinary` | あらゆる種類のPHPデータ（大きな配列、オブジェクト、テキストなど）をキャッシュするために使用されます。 データは、バックエンドに格納される前に`Igbinary`を使用してシリアル化されます。 |
+| `Phalcon\Cache\Frontend\None`     | あらゆる種類のPHPデータをシリアル化せずにキャッシュするために使用されます。                                                           |
 
 <a name='adapters-frontend-custom'></a>
 
-### Implementing your own Frontend adapters
+### 独自フロントエンドアダプターの実装
 
-The `Phalcon\Cache\FrontendInterface` interface must be implemented in order to create your own frontend adapters or extend the existing ones.
+独自のフロントエンドアダプタを作成するか、既存のフロントエンドアダプタを拡張するには、`Phalcon\Cache\FrontendInterface`インタフェースを実装する必要があります。
 
 <a name='adapters-backend'></a>
 
-## Backend Adapters
+## バックエンドアダプター
 
-The backend adapters available to store cache data are:
+キャッシュデータを格納するために使用できるバックエンドアダプタは次のとおりです:
 
-| Adapter                                 | Description                                          | Info                                      | Required Extensions                                |
-| --------------------------------------- | ---------------------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
-| `Phalcon\Cache\Backend\Apc`          | Stores data to the Alternative PHP Cache (APC).      | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
-| `Phalcon\Cache\Backend\Apcu`         | Stores data to the APCu (APC without opcode caching) | [APCu](http://php.net/apcu)               | [APCu](http://pecl.php.net/package/APCu)           |
-| `Phalcon\Cache\Backend\File`         | Stores data to local plain files.                    |                                           |                                                    |
-| `Phalcon\Cache\Backend\Libmemcached` | Stores data to a memcached server.                   | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
-| `Phalcon\Cache\Backend\Memcache`     | Stores data to a memcached server.                   | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
-| `Phalcon\Cache\Backend\Mongo`        | Stores data to Mongo Database.                       | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
-| `Phalcon\Cache\Backend\Redis`        | Stores data in Redis.                                | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
-| `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache.                               | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
+| アダプター                                   | 説明                                      | 情報                                        | 必須エクステンション                                         |
+| --------------------------------------- | --------------------------------------- | ----------------------------------------- | -------------------------------------------------- |
+| `Phalcon\Cache\Backend\Apc`          | Alternative PHP Cache (APC) にデータを格納します。 | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
+| `Phalcon\Cache\Backend\Apcu`         | データをAPCuに格納します（オペコードキャッシングなしのAPC）       | [APCu](http://php.net/apcu)               | [APCu](http://pecl.php.net/package/APCu)           |
+| `Phalcon\Cache\Backend\File`         | ローカルのプレーンファイルにデータを格納します。                |                                           |                                                    |
+| `Phalcon\Cache\Backend\Libmemcached` | memcachedサーバーにデータを格納します。                | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
+| `Phalcon\Cache\Backend\Memcache`     | memcachedサーバーにデータを格納します。                | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| `Phalcon\Cache\Backend\Mongo`        | データをMongoデータベースに保存します。                  | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
+| `Phalcon\Cache\Backend\Redis`        | Redisにデータを格納します。                        | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
+| `Phalcon\Cache\Backend\Xcache`       | XCacheにデータを格納します。                       | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
 <div class='alert alert-warning'>
     <p>
-        <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.2.0 you can switch your <code>*\Apc</code> classes to <code>*\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes.
+        <strong>注意</strong> PHP7で Phalcon <code>apc</code> ベースのアダプター クラスを使用する場合、pecl から <code>apcu</code>と<code>apcu_bc</code> パッケージをインストールする必要があります。 Phalcon 3.2.0 では、あなたは <code>*\Apc</code> クラスを <code>*\Apcu</code> に変更して、<code>apcu_bc</code>を削除できます。 Phalcon 4 では、ほとんどすべての ' * \Apc' クラスを削除したことを覚えていてだください。
     </p>
 </div>
 
 <a name='adapters-backend-factory'></a>
 
-### Factory
+### ファクトリー
 
-There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+多くのバックエンドアダプタがあります ([バックエンドアダプター](#adapters-backend)を参照)。 使用するものはアプリケーションのニーズに応じて異なります。 次の例では、`adapter`オプションを使用してBackend Cache Adapterクラスをロードし、フロントエンドが配列として提供される場合はFrontend Cache Factoryが呼ばれます。
 
 ```php
 <?php
@@ -603,60 +600,60 @@ $backendCache = Factory::load($options);
 
 ### 独自のバックエンドアダプターを実装
 
-The `Phalcon\Cache\BackendInterface` interface must be implemented in order to create your own backend adapters or extend the existing ones.
+独自のバックエンドアダプタを作成したり既存のバックエンドアダプタを拡張するには、`Phalcon\Cache\BackendInterface`インタフェースを実装する必要があります。
 
 <a name='adapters-backend-file'></a>
 
-### File Backend Options
+### ファイルバックエンドのオプション
 
-This backend will store cached content into files in the local server. The available options for this backend are:
+このバックエンドは、キャッシュされたコンテンツをローカル サーバー内のファイルに格納されます。 このバックエンドの使用可能なオプションは次のとおりです。
 
-| Option     | Description                                                 |
-| ---------- | ----------------------------------------------------------- |
-| `prefix`   | A prefix that is automatically prepended to the cache keys. |
-| `cacheDir` | A writable directory on which cached files will be placed.  |
+| オプション      | 説明                              |
+| ---------- | ------------------------------- |
+| `prefix`   | キャッシュキーの前に自動的に付加される接頭辞。         |
+| `cacheDir` | キャッシュされたファイルが置かれる書き込み可能なディレクトリ。 |
 
 <a name='adapters-backend-libmemcached'></a>
 
-### Libmemcached Backend Options
+### Libmemcachedバックエンドのオプション
 
-This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
+このバックエンドは、memcached サーバー内のキャッシュされたコンテンツを 格納します。 デフォルトでは永続的な memcached 接続プールが使用されます。 このバックエンドの使用可能なオプションは次のとおりです。
 
-**General options**
+**一般設定**
 
-| Option          | Description                                                                                                        |
-| --------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `statsKey`      | Used to tracking of cached keys.                                                                                   |
-| `prefix`        | A prefix that is automatically prepended to the cache keys.                                                        |
-| `persistent_id` | To create an instance that persists between requests, use `persistent_id` to specify a unique ID for the instance. |
+| オプション           | 説明                                                                |
+| --------------- | ----------------------------------------------------------------- |
+| `statsKey`      | キャッシュされたキーの追跡に使用されます。                                             |
+| `prefix`        | キャッシュキーの前に自動的に付加される接頭辞。                                           |
+| `persistent_id` | リクエストの間に存続するインスタンスを作成するには、`persistent_id`を使用してインスタンスの一意のIDを指定します。 |
 
-**Servers options**
+**サーバー設定**
 
-| Option   | Description                                                                                                 |
-| -------- | ----------------------------------------------------------------------------------------------------------- |
-| `host`   | The `memcached` host.                                                                                       |
-| `port`   | The `memcached` port.                                                                                       |
-| `weight` | The weight parameter effects the consistent hashing used to determine which server to read/write keys from. |
+| オプション    | 説明                                                        |
+| -------- | --------------------------------------------------------- |
+| `host`   | `memcached`ホスト。                                           |
+| `port`   | `memcached`ポート番号。                                         |
+| `weight` | weightパラメータは、キーを読み書きするサーバを決定するために使用されるコンシステントハッシュ法に影響します。 |
 
-**Client options**
+**クライアント設定**
 
-Used for setting Memcached options. See [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) for more.
+Memcached のオプションの設定に使用されます。 詳細については、[Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php)を参照してください。
 
-**Example**
+**例**
 
 ```php
 <?php
 use Phalcon\Cache\Backend\Libmemcached;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache data for 2 days
+// データを2日間キャッシュ
 $frontCache = new FrontData(
     [
         'lifetime' => 172800,
     ]
 );
 
-// Create the Cache setting memcached connection options
+// memcachedの接続オプションを設定するキャッシュを作成する
 $cache = new Libmemcached(
     $frontCache,
     [
@@ -678,73 +675,73 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-memcache'></a>
 
-### Memcache Backend Options
+### Memcacheバックエンドのオプション
 
-This backend will store cached content on a memcached server. The available options for this backend are:
+このバックエンドは、memcached サーバー内のキャッシュされたコンテンツを 格納します。 このバックエンドの使用可能なオプションは次のとおりです。
 
-| Option       | Description                                                 |
-| ------------ | ----------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `host`       | The memcached host.                                         |
-| `port`       | The memcached port.                                         |
-| `persistent` | Create a persistent connection to memcached?                |
+| オプション        | 説明                          |
+| ------------ | --------------------------- |
+| `prefix`     | キャッシュキーの前に自動的に付加される接頭辞。     |
+| `host`       | Memcachedホスト。               |
+| `port`       | memcachedポート番号。             |
+| `persistent` | memcachedへの永続的な接続を作成するかどうか。 |
 
 <a name='adapters-backend-apc'></a>
 
-### APC Backend Options
+### APCバックエンドのオプション
 
-This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
+このバックエンドは、Alternative PHP Cache ([APC](http://php.net/apc)) にキャッシュされたコンテンツを格納します。 このバックエンドの使用可能なオプションは次のとおりです。
 
-| Option   | Description                                                 |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| オプション    | 説明                      |
+| -------- | ----------------------- |
+| `prefix` | キャッシュキーの前に自動的に付加される接頭辞。 |
 
 <a name='adapters-backend-apcu'></a>
 
-### APCU Backend Options
+### APCUバックエンドのオプション
 
-This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
+このバックエンドは、Alternative PHP Cache ([APCU](http://php.net/apcu)) にキャッシュされたコンテンツを格納します。 このバックエンドの使用可能なオプションは次のとおりです。
 
-| Option   | Description                                                 |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| オプション    | 説明                      |
+| -------- | ----------------------- |
+| `prefix` | キャッシュキーの前に自動的に付加される接頭辞。 |
 
 <a name='adapters-backend-mongo'></a>
 
-### Mongo Backend Options
+### Mongoバックエンドのオプション
 
-This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
+このバックエンドは、キャッシュされたコンテンツをMongoDBサーバー ([MongoDB](http://mongodb.org/)) に格納します。 このバックエンドの使用可能なオプションは次のとおりです。
 
-| Option       | Description                                                 |
-| ------------ | ----------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `server`     | A MongoDB connection string.                                |
-| `db`         | Mongo database name.                                        |
-| `collection` | Mongo collection in the database.                           |
+| オプション        | 説明                      |
+| ------------ | ----------------------- |
+| `prefix`     | キャッシュキーの前に自動的に付加される接頭辞。 |
+| `server`     | MongoDB接続文字列。           |
+| `db`         | Mongoデータベース名。           |
+| `collection` | データベースのMongoコレクション。     |
 
 <a name='adapters-backend-xcache'></a>
 
-### XCache Backend Options
+### XCacheバックエンドのオプション
 
-This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
+このバックエンドは、XCache ([XCache](http://xcache.lighttpd.net/)) にキャッシュされたコンテンツを格納します。 このバックエンドの使用可能なオプションは次のとおりです。
 
-| Option   | Description                                                 |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
+| オプション    | 説明                      |
+| -------- | ----------------------- |
+| `prefix` | キャッシュキーの前に自動的に付加される接頭辞。 |
 
 <a name='adapters-backend-redis'></a>
 
-### Redis Backend Options
+### Redisバックエンドのオプション
 
-This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
+このバックエンドは、キャッシュされたコンテンツをRedisサーバー ([Redis](http://redis.io/)) に格納します。 このバックエンドの使用可能なオプションは次のとおりです。
 
-| Option       | Description                                                    |
-| ------------ | -------------------------------------------------------------- |
-| `prefix`     | A prefix that is automatically prepended to the cache keys.    |
-| `host`       | Redis host.                                                    |
-| `port`       | Redis port.                                                    |
-| `auth`       | Password to authenticate to a password-protected Redis server. |
-| `persistent` | Create a persistent connection to Redis.                       |
-| `index`      | The index of the Redis database to use.                        |
+| オプション        | 説明                                 |
+| ------------ | ---------------------------------- |
+| `prefix`     | キャッシュキーの前に自動的に付加される接頭辞。            |
+| `host`       | Redisホスト。                          |
+| `port`       | Redisポート。                          |
+| `auth`       | パスワードで保護されたRedisサーバーに認証するためのパスワード。 |
+| `persistent` | Redisへの永続的な接続を作成するかどうか。            |
+| `index`      | 使用するRedisデータベースのインデックス。            |
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+[Phalcon Incubator](https://github.com/phalcon/incubator) には、このコンポーネントを利用するための複数のアダプターが用意されています。

@@ -467,7 +467,7 @@ foreach ($jsCollection as $resource) {
 
 There are many ways to optimize the processing resources. We'll describe a simple method below which allows to handle resourses directly through web server to optimize the response time.
 
-First we need to set up the Assets Manager. We'll use base controller, but you can use the service provider or any other place:
+首先，我们需要设置资源管理器。 We'll use base controller, but you can use the service provider or any other place:
 
 ```php
 <?php
@@ -600,4 +600,4 @@ Every time when the user requests resources using address of type `/assets/js/gl
 
 It isn't the best example. However, it reflects the main idea: the reasonable configuration of a web server with an application can help optimize response time multifold.
 
-Learn more about the Web Server Setup and Routing in their dedicated articles [Web Server Setup](/[[language]]/[[version]]/webserver-setup) and [Routing](/[[language]]/[[version]]/routing).
+了解更多关于 Web 服务器安装和其专用条款 [Web 服务器安装](/[[language]]/[[version]]/webserver-setup) 中的路由和 [Routing](/[[language]]/[[version]]/routing)。

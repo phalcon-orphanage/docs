@@ -231,7 +231,7 @@ print_r(
 
 public *int* | *boolean* **lastInsertId** ([*string* $sequenceName]) inherited from [Phalcon\Db\Adapter\Pdo](/[[language]]/[[version]]/api/Phalcon_Db_Adapter_Pdo)
 
-Returns the insert id for the auto_increment/serial column inserted in the latest executed SQL statement
+返回插入在最近执行的SQL语句中的自增ID
 
 ```php
 <?php

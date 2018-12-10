@@ -42,6 +42,12 @@
           <a href="#storing-data">Almacenando datos utilizando modelos</a>
         </li>
         <li>
+          <a href="#list-of-users">Lista de usuarios</a>
+        </li>
+        <li>
+          <a href="#adding-styles">Agregando estilos</a>
+        </li>
+        <li>
           <a href="#conclusion">Conclusión</a>
         </li>
       </ul>
@@ -580,11 +586,16 @@ use Phalcon\Mvc\Controller;
 
 class SignupController extends Controller
 {
+    /**
+     * Mostrar formulario para registrar un nuevo usuario
+     */
     public function indexAction()
     {
-
     }
 
+    /**
+     * Registrar nuevo usuario y mostrar un mensaje
+     */
     public function registerAction()
     {
         $user = new Users();
@@ -592,30 +603,25 @@ class SignupController extends Controller
         // Almacenar y comprobar errores
         $success = $user->save(
             $this->request->getPost(),
-            [
-                "name",
-                "email",
-            ]
+            ['name', 'email']
         );
 
+        // pasando el resultado a la vista
+        $this->view->success = $success;
+
         if ($success) {
-            echo "¡Gracias por registrarte!";
+            $message = "¡Gracias por registrarte!";
         } else {
-            echo "Lo sentimos, se generaron los siguiente problemas: ";
-
-            $messages = $user->getMessages();
-
-            foreach ($messages as $message) {
-                echo $message->getMessage(), "<br/>";
-            }
+            $message = "Lo sentimos, se generaron los siguiente problemas:<br>" . implode('<br>', $user->getMessages());
         }
 
-        $this->view->disable();
+        // pasando un mensaje a la vista
+        $this->view->message = $message;
     }
 }
 ```
 
-Al principio del `registerAction` creamos un objeto de usuario vacío de la clase de Users, que gestiona el registro de un usuario. La clase asigna las propiedades públicas a los campos de la tabla `users` en nuestra base de datos. Al establecer los valores correspondientes del nuevo registro y llamar a `save()`, almacenará los datos en la base de datos para ese registro. El método de `save()` devuelve un valor booleano que indica si el almacenamiento de los datos fue exitoso o no.
+Al principio del `registerAction` creamos un objeto de usuario vacío de la clase `Users`, que gestiona el registro de un usuario. La clase asigna las propiedades públicas a los campos de la tabla `users` en nuestra base de datos. Al establecer los valores correspondientes del nuevo registro y llamar a `save()`, almacenará los datos en la base de datos para ese registro. El método de `save()` devuelve un valor booleano que indica si el almacenamiento de los datos fue exitoso o no.
 
 El ORM filtra automáticamente la entrada (auto-escape) para evitar inyecciones de SQL así que sólo tenemos que pasar la solicitud al método `save()`.
 
@@ -623,10 +629,113 @@ La validación adicional ocurre automáticamente en los campos que se definen co
 
 ![](/images/content/tutorial-basic-4.png)
 
+<a name='list-of-users'></a>
+
+## Lista de usuarios
+
+Ahora veremos como obtener y mostrar los usuarios que tenemos registrados en la base de datos.
+
+Lo primero que tenemos que hacer en nuestra acción `indexAction` del controlador `IndexController` es mostrar el resultado de la búsqueda de todos los usuarios, esto se puede hacer simplemente utilizando `Users::find()`. Veamos como se vería ahora nuestro `indexAction`
+
+`app/controllers/IndexController.php`
+
+```php
+<?php
+
+use Phalcon\Mvc\Controller;
+
+class IndexController extends Controller
+{
+    /**
+     * Bienvenida y lista de usuarios
+     */
+    public function indexAction()
+    {
+        $this->view->users = Users::find();
+    }
+}
+```
+
+Ahora, en nuestro archivo `views/index/index.phtml` tendremos acceso a los usuarios encontrados en la base de datos. Estos estarán disponibles en la variable `$users`. Esta variable tiene el mismo nombre al que usamos en `$this->view->users`.
+
+La vista se verá así:
+
+`views/index/index.phtml`
+
+```html
+<?php
+
+echo "<h1>Hello!</h1>";
+
+echo $this->tag->linkTo(["signup", "¡Regístrate aquí!", 'class' => 'btn btn-primary']);
+
+if ($users->count() > 0) {
+    ?>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <td colspan="3">Cantidad de usuarios: <?php echo $users->count(); ?></td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <?php foreach ($users as $user) { ?>
+            <tr>
+                <td><?php echo $user->id; ?></td>
+                <td><?php echo $user->name; ?></td>
+                <td><?php echo $user->email; ?></td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    <?php
+}
+```
+
+Como puede ver nuestra variable `$users` puede ser iterada y contada, esto lo veremos luego en profundidad cuando veamos los [modelos](/[[language]]/[[version]]/db-models).
+
+![](/images/content/tutorial-basic-5.png)
+
+<a name='adding-style'></a>
+
+## Agregando estilos
+
+Para darle un toque de diseño a nuestra primer aplicación agregaremos bootstrap y una pequeña plantilla que será utilizada en todas las vistas.
+
+Agregamos un archivo `index.phtml` en la carpeta `views`, con el siguiente contenido:
+
+`app/views/index.phtml`
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phalcon Tutorial</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <?php echo $this->getContent(); ?>
+</div>
+</body>
+</html>
+```
+
+Lo más importante para destacar de nuestra plantilla es la función `getContent()` la cual nos entregará el contenido generado por la vista. Ahora, nuestra aplicación se verá así:
+
+![](/images/content/tutorial-basic-6.png)
+
 <a name='conclusion'></a>
 
 ## Conclusión
 
-Como se puede ver, es fácil empezar a construir una aplicación usando Phalcon. El hecho de que Phalcon se ejecute desde una extensión reduce significativamente la huella de los proyectos y le da un aumento considerable en el rendimiento.
+Como puede ver, es fácil comenzar a construir una aplicación usando Phalcon. El hecho de que Phalcon se ejecute desde una extensión reduce significativamente la huella de los proyectos y le da un aumento considerable en el rendimiento.
 
 Si está listo para obtener más información, consulte el [Rest Tutorial](/[[language]]/[[version]]/tutorial-rest) siguiente.

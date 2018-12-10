@@ -1,21 +1,21 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Encryption/Decryption</a> <ul>
+      <a href="#overview">加密/解密</a> <ul>
         <li>
           <a href="#usage">Basic Usage</a>
         </li>
         <li>
-          <a href="#options">Encryption Options</a>
+          <a href="#options">加密选项</a>
         </li>
         <li>
-          <a href="#base64">Base64 Support</a>
+          <a href="#base64">Base64 支持</a>
         </li>
         <li>
-          <a href="#service">Setting up an Encryption service</a>
+          <a href="#service">设置加密服务</a>
         </li>
         <li>
-          <a href="#links">Links</a>
+          <a href="#links">链接</a>
         </li>
       </ul>
     </li>
@@ -24,11 +24,11 @@
 
 <a name='overview'></a>
 
-# Encryption/Decryption
+# 加密/解密
 
-Phalcon provides encryption facilities via the `Phalcon\Crypt` component. This class offers simple object-oriented wrappers to the [openssl](http://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
+Phalcon提供加密设施通过 `Phalcon\Crypt` 组件。 此类提供 [openssl](http://www.php.net/manual/en/book.openssl.php) PHP 加密库简单的面向对象的封装器。
 
-By default, this component provides secure encryption using AES-256-CFB.
+默认情况下，此组件提供安全的加密使用 AES-256-CFB.。
 
 The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography), they have also recommended using higher than 128-bit keys for encryption.
 
@@ -38,7 +38,7 @@ If the algorithm for calculating the digest (signing) is not selected during the
 
 <a name='usage'></a>
 
-## Basic Usage
+## 基本用法
 
 This component is designed be very simple to use:
 
@@ -105,7 +105,7 @@ $encrypted = $crypt->encrypt($text, $key);
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-You can use the same instance to encrypt/decrypt several times:
+你可以使用相同的实例以加密解密几次：
 
 ```php
 <?php
@@ -162,9 +162,9 @@ echo $crypt->decrypt($encrypted, $key);
 
 <a name='options'></a>
 
-## Encryption Options
+## 加密选项
 
-The following options are available to change the encryption behavior:
+以下选项可以用来更改加密行为：
 
 | Name   | Description                                                                                                                                                          |
 | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

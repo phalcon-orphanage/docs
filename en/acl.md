@@ -457,7 +457,10 @@ You can still add any custom parameters to function and pass associative array i
 
 <a name='roles-inheritance'></a>
 ## Roles Inheritance
-You can build complex role structures using the inheritance that `Phalcon\Acl\Role` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the method call, when adding that role in the list.
+You can build complex role structures using the inheritance that `Phalcon\Acl\Role` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. There are two ways to use role inheritance:
+
+### Setup relationships as roles are added.
+You can pass the inherited role as the second parameter of the method call, when adding that role in the list.
 
 ```php
 <?php
@@ -478,6 +481,27 @@ $acl->addRole($roleGuests);
 // Add 'Administrators' role inheriting from 'Guests' its accesses
 $acl->addRole($roleAdmins, $roleGuests);
 ```
+
+### Setup relationships after adding roles
+Or you may prefer to add all of your roles together and then define the inheritance relationships afterwards.
+
+```php
+<?php
+
+use Phalcon\Acl\Role;
+
+// Create some roles
+$roleAdmins = new Role('Administrators', 'Super-User role');
+$roleGuests = new Role('Guests');
+
+// Add Roles to ACL
+$acl->addRole($roleGuests);
+$acl->addRole($roleAdmins);
+
+// Have 'Administrators' role inherit from 'Guests' its accesses
+$acl->addInherit($roleAdmins, $roleGuests);
+```
+
 
 <a name='serialization'></a>
 ## Serializing ACL lists

@@ -1,19 +1,19 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Overview</a> 
+      <a href="#overview">目录预览</a> 
       <ul>
         <li>
-          <a href="#integration">Integrating PHPUnit with Phalcon</a>
+          <a href="#integration">Phalcon于PHPUnit结合</a>
         </li>
         <li>
-          <a href="#unit-helper">The PHPUnit helper file</a>
+          <a href="#unit-helper">PHPUnit"桥"文件</a>
         </li>
         <li>
           <a href="#phpunit-config">The phpunit.xml file</a>
         </li>
         <li>
-          <a href="#sample">Sample Unit Test</a>
+          <a href="#sample">单元测试示例</a>
         </li>
       </ul>
     </li>
@@ -22,13 +22,13 @@
 
 <a name='overview'></a>
 
-# Overview
+# 概述
 
 Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
 
 <a name='integration'></a>
 
-## Integrating PHPUnit with Phalcon
+## Phalcon于PHPUnit结合
 
 If you don't already have phpunit installed, you can do it by using the following composer command:
 
@@ -36,7 +36,7 @@ If you don't already have phpunit installed, you can do it by using the followin
 composer require phpunit/phpunit:^5.0
 ```
 
-or by manually adding it to `composer.json`:
+或者手动添加如下内容到`composer.json`：
 
 ```json
 <br />{
@@ -46,7 +46,7 @@ or by manually adding it to `composer.json`:
 }
 ```
 
-Once PHPUnit is installed create a directory called `tests` in project root directory:
+当PHPUnit安装成功后在根目录创建一个名为`tests`的文件：
 
     app/
     public/
@@ -103,15 +103,15 @@ Di::setDefault($di);
 
 Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your main application.
 
-To help you build the Unit Tests, we made a few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in the [Phalcon Incubator](https://github.com/phalcon/incubator).
+为帮助您生成单元测试，需要创建几个抽象类，您可以使用来引导自己的单元测试。 这些文件在[Phalcon Incubator](https://github.com/phalcon/incubator)中。
 
-You can use the Incubator library by adding it as a dependency:
+你可以使用Incubator项目中库作为依赖添加。
 
 ```bash
 composer require phalcon/incubator
 ```
 
-or by manually adding it to `composer.json`:
+或者手动添加如下内容到`composer.json`：
 
 ```json
 {
@@ -125,9 +125,9 @@ You can also clone the repository using the repo link above.
 
 <a name='phpunit-config'></a>
 
-## The `phpunit.xml` file
+## `phpunit.xml`文件
 
-Now, create a `phpunit.xml` file as follows:
+现在创建使用下面的内容创建`phpunit.xml`文件：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -154,13 +154,13 @@ Modify the `phpunit.xml` to fit your needs and save it in `tests`. This will run
 
 <a name='sample'></a>
 
-## Sample Unit Test
+## 单元测试示例
 
 To run any Unit Tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
 
 This example does not contain a config file, most test cases however, do need one. You can add it to the `DI` to get the `UnitTestCase` file.
 
-First create a base Unit Test called `UnitTestCase.php` in your `tests` directory:
+首先创建一个基础的单元测试名为`UnitTestCase.php`在你的`tests`文件夹中：
 
 ```php
 <?php
@@ -179,10 +179,10 @@ abstract class UnitTestCase extends PhalconTestCase
     {
         parent::setUp();
 
-        // Load any additional services that might be required during testing
+        // 加载所有已添加的服务，它们可能会在测试过程中所需要
         $di = Di::getDefault();
 
-        // Get any DI components here. If you have a config, be sure to pass it to the parent
+        // 获取DI中所有的组建。 If you have a config, be sure to pass it to the parent
 
         $this->setDi($di);
 
