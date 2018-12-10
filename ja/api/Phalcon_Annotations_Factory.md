@@ -4,9 +4,9 @@
 
 *implements* [Phalcon\FactoryInterface](/en/3.2/api/Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/factory.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Loads Annotations Adapter class using 'adapter' option
+'adaper'オプションを使用してAnnotations Adapterクラスをロードします。
 
 ```php
 <?php
@@ -22,7 +22,7 @@ $annotations = Factory::load($options);
 
 ```
 
-## Methods
+## メソッド
 
 public static **load** ([Phalcon\Config](/en/3.2/api/Phalcon_Config) | *array* $config)
 

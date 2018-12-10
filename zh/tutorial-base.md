@@ -1,48 +1,48 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#basic">Tutorial - basic</a> 
+      <a href="#basic">教程-基本</a> 
       <ul>
         <li>
-          <a href="#file-structure">File structure</a>
+          <a href="#file-structure">文件结构</a>
         </li>
         <li>
-          <a href="#bootstrap">Bootstrap</a> 
+          <a href="#bootstrap">启动</a> 
           <ul>
             <li>
-              <a href="#autoloaders">Autoloaders</a>
+              <a href="#autoloaders">自动加载</a>
             </li>
             <li>
-              <a href="#dependency-management">Dependency Management</a>
+              <a href="#dependency-management">依赖关系管理</a>
             </li>
             <li>
-              <a href="#request">Handling the application request</a>
+              <a href="#request">处理应用程序请求</a>
             </li>
             <li>
-              <a href="#full-example">Putting everything together</a>
+              <a href="#full-example">把一切都放在一起</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#controller">Creating a Controller</a>
+          <a href="#controller">创建控制器</a>
         </li>
         <li>
-          <a href="#view">Sending output to a view</a>
+          <a href="#view">将输出发送到一个视图</a>
         </li>
         <li>
-          <a href="#signup-form">Designing a sign up form</a>
+          <a href="#signup-form">设计注册表单</a>
         </li>
         <li>
-          <a href="#model">Creating a Model</a>
+          <a href="#model">创建模型</a>
         </li>
         <li>
-          <a href="#database-connection">Setting a Database Connection</a>
+          <a href="#database-connection">设置数据库连接</a>
         </li>
         <li>
-          <a href="#storing-data">Storing data using models</a>
+          <a href="#storing-data">使用模型存储数据</a>
         </li>
         <li>
-          <a href="#conclusion">Conclusion</a>
+          <a href="#conclusion">结论</a>
         </li>
       </ul>
     </li>
@@ -51,7 +51,7 @@
 
 <a name='basic'></a>
 
-# Tutorial - basic
+# 教程-基本
 
 Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. The following guide is to provided to introduce you to Phalcon framework's design aspects.
 
@@ -69,7 +69,7 @@ The best way to use this guide is to follow along and try to have fun. You can g
 
 <a name='file-structure'></a>
 
-## File structure
+## 文件结构
 
 A key feature of Phalcon is it's loosely coupled, you can build a Phalcon project with a directory structure that is convenient for your specific application. That said some uniformity is helpful when collaborating with others, so this tutorial will use a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.   
 
@@ -107,15 +107,15 @@ Finally, if you flavor is Cherokee use the setup [here](/[[language]]/[[version]
 
 <a name='bootstrap'></a>
 
-## Bootstrap
+## 启动
 
-The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well as application behavior.
+您需要创建的第一个文件是引导文件。 This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well as application behavior.
 
 This file handles 3 things: - Registration of component autoloaders - Configuring Services and registering them with the Dependency Injection context - Resolving the application's HTTP requests
 
 <a name='autoloaders'></a>
 
-### Autoloaders
+### 自动加载
 
 Autoloaders leverage a [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon. Common things that should be added to the autoloader are your controllers and models. You can register directories which will search for files within the application's namespace. If you want to read about other ways that you can use autoloaders head [here](/[[language]]/[[version]]/loader#overview).
 
@@ -147,7 +147,7 @@ $loader->register();
 
 <a name='dependency-management'></a>
 
-### Dependency Management
+### 依赖关系管理
 
 Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound like a complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts: - Service Container: a "bag" where we globally store the services that our application needs to function. - Service or Component: Data processing object which will be injected into components
 
@@ -178,7 +178,7 @@ use Phalcon\Di\FactoryDefault;
 $di = new FactoryDefault();
 ```
 
-In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
+在下一部分中，我们注册表示框架在这里可以品尝意见文件的目录的"view"服务。 如意见不对应的类，它们不能自动加载。
 
 `public/index.php`
 
@@ -200,7 +200,7 @@ $di->set(
 );
 ```
 
-Next, we register a base URI so that all URIs generated by Phalcon match the application's base path of "/". This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
+Next, we register a base URI so that all URIs generated by Phalcon match the application's base path of "/". 当我们使用 `Phalcon\Tag` 类来生成超链接，这将成为重要稍后在本教程中。
 
 `public/index.php`
 
@@ -226,7 +226,7 @@ $di->set(
 
 ### Handling the application request
 
-In the last part of this file, we find `Phalcon\Mvc\Application`. Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+在该文件的最后一部分，我们发现 `Phalcon\Mvc\Application`。 其目的是以初始化请求环境，路由传入的请求，然后派遣任何发现的行动; 它聚合了任何响应，并将它们返回过程完成后。
 
 `public/index.php`
 
@@ -246,7 +246,7 @@ $response->send();
 
 ### Putting everything together
 
-The `tutorial/public/index.php` file should look like:
+`Tutorial/public/index.php` 文件应该看起来像：
 
 `public/index.php`
 
@@ -314,7 +314,7 @@ As you can see, the bootstrap file is very short and we do not need to include a
 
 <a name='controller'></a>
 
-## Creating a Controller
+## 创建控制器
 
 By default Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (eg. `http://localhost:8000/`). An `IndexController` and its `IndexAction` should resemble the following example:
 
@@ -342,9 +342,9 @@ Congratulations, you're phlying with Phalcon!
 
 <a name='view'></a>
 
-## Sending output to a view
+## 将输出发送到一个视图
 
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
+将输出发送到屏幕从控制器有时是必要的但不是可取大多数纯粹主义者在 MVC 社区将证明这一点。 一切必须传递给视图，它负责输出屏幕上的数据。 Phalcon将查找具有相同名称的最后一个视图执行行动作为最后一个执行控制器命名的目录里面。 在我们的例子 (`app/views/index/index.phtml`):
 
 `app/views/index/index.phtml`
 
@@ -352,7 +352,7 @@ Sending output to the screen from the controller is at times necessary but not d
 <?php echo "<h1>Hello!</h1>";
 ```
 
-Our controller (`app/controllers/IndexController.php`) now has an empty action definition:
+我们的控制器 (`app/controllers/IndexController.php`) 现在有一个空操作定义：
 
 `app/controllers/IndexController.php`
 
@@ -370,13 +370,13 @@ class IndexController extends Controller
 }
 ```
 
-The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about views usage [here](/[[language]]/[[version]]/views).
+浏览器输出应保持不变。 `Phalcon\Mvc\View` 静态组件操作执行结束时自动创建。 Learn more about views usage [here](/[[language]]/[[version]]/views).
 
 <a name='signup-form'></a>
 
 ## Designing a sign-up form
 
-Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
+现在我们将改变 `index.phtml` 视图文件，将链接添加到新的控制器命名为"signup"。目标是允许用户在我们的应用程序内报名。
 
 `app/views/index/index.phtml`
 
@@ -405,13 +405,13 @@ The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new con
 <a href="/signup">Sign Up Here!</a>
 ```
 
-To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is also a service registered in the DI we use `$this->tag` to access it.
+若要生成标记我们使用 `Phalcon\Tag` 类。 这是一个实用程序类，使我们能够构建与框架公约在头脑中的 HTML 标记。 As this class is also a service registered in the DI we use `$this->tag` to access it.
 
 A more detailed article regarding HTML generation [can be found here](/[[language]]/[[version]]/tag).
 
 ![](/images/content/tutorial-basic-2.png)
 
-Here is the Signup controller (`app/controllers/SignupController.php`):
+这里是注册控制器 (`app/controllers/SignupController.php`):
 
 `app/controllers/SignupController.php`
 
@@ -429,7 +429,7 @@ class SignupController extends Controller
 }
 ```
 
-The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
+空索引行动给清洁通的视图中，窗体定义 (`app/views/signup/index.phtml`):
 
 `app/views/signup/index.phtml`
 
@@ -455,20 +455,20 @@ The empty index action gives the clean pass to a view with the form definition (
 </form>
 ```
 
-Viewing the form in your browser will show something like this:
+在您的浏览器中查看窗体将显示这样的事情：
 
 ![](/images/content/tutorial-basic-3.png)
 
-`Phalcon\Tag` also provides useful methods to build form elements.
+`Phalcon\Tag` 还提供了有用的方法，以生成窗体元素。
 
 The `Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application.
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the `register` action in the controller `signup`. Our `public/index.php` file throws this exception:
+By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the `register` action in the controller `signup`. 我们的 `public/index.php` 文件会引发此异常：
 
-    Exception: Action "register" was not found on handler "signup"
+    例外： 行动"register"中找不到处理程序"signup"
     
 
-Implementing that method will remove the exception:
+实施这种方法将删除该异常：
 
 `app/controllers/SignupController.php`
 
@@ -491,13 +491,13 @@ class SignupController extends Controller
 }
 ```
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+如果您再次单击"Send"按钮，您将看到一个空白页面。 The name and email input provided by the user should be stored in a database. 根据 MVC 的指引，必须通过模型完成数据库交互以确保干净的面向对象的代码。
 
 <a name='model'></a>
 
-## Creating a Model
+## 创建模型
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalcon为完全用 C 语言编写的 PHP 带来第一个 ORM。而不是增加发展的复杂性，它简化了它。
 
 Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be created like this:
 
@@ -513,7 +513,7 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
+模型应该位于 `app/models` 目录 (`app/models/Users.php`)。该模型将映射到"users"表：
 
 `app/models/Users.php`
 
@@ -532,9 +532,9 @@ class Users extends Model
 
 <a name='database-connection'></a>
 
-## Setting a Database Connection
+## 设置数据库连接
 
-In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. 数据库连接是我们应用程序的另一个服务可以用于几个组件：
 
 `public/index.php`
 
@@ -559,11 +559,11 @@ $di->set(
 );
 ```
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+使用正确的数据库的参数，我们的模型已作好准备工作，并与其余的应用程序进行交互。
 
 <a name='storing-data'></a>
 
-## Storing data using models
+## 使用模型存储数据
 
 `app/controllers/SignupController.php`
 
@@ -609,9 +609,9 @@ class SignupController extends Controller
 }
 ```
 
-At the beginning of the `registerAction` we create an empty user object from the Users class, which manages a User's record. The class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+At the beginning of the `registerAction` we create an empty user object from the Users class, which manages a User's record. The class's public properties map to the fields of the `users` table in our database. 设置新记录中的相关值以及调用 `save （）` 会将数据存储在数据库中为该记录。 `Save （）` 方法返回一个布尔值，该值指示存储的数据是否成功或不。
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
+ORM 自动逃脱防止 SQL 注入，所以我们只需要将请求传递到 `save()` 方法的输入。
 
 Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign-up form our screen will look like this:
 
@@ -619,7 +619,7 @@ Additional validation happens automatically on fields that are defined as not nu
 
 <a name='conclusion'></a>
 
-## Conclusion
+## 结论
 
 As you can see, it's easy to start building an application using Phalcon. The fact that Phalcon runs from an extension significantly reduces the footprint of projects as well as giving it a considerable performance boost.
 

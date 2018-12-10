@@ -4,27 +4,27 @@
 
 *implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/application.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/application.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Base class for Phalcon\\Cli\\Console and Phalcon\\Mvc\\Application.
+Phalcon\\Cli\\Console と Phalcon\\Mvc\\Application のベースクラス。
 
-## Methods
+## メソッド
 
 public **__construct** ([[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector])
 
-Phalcon\\Application Constructor
+Phalcon\\Application のコンストラクタ
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+イベントマネージャーをセットします
 
 public **getEventsManager** ()
 
-Returns the internal event manager
+内部イベントマネージャーを返します
 
 public **registerModules** (*array* $modules, [*mixed* $merge])
 
-Register an array of modules present in the application
+アプリケーション内にあるモジュールの配列を登録します。
 
 ```php
 <?php
@@ -46,32 +46,32 @@ $this->registerModules(
 
 public **getModules** ()
 
-Return the modules registered in the application
+アプリケーションに登録されているモジュールを返す
 
 public **getModule** (*mixed* $name)
 
-Gets the module definition registered in the application via module name
+モジュール名でアプリケーションに登録されているモジュール定義を取得します。
 
 public **setDefaultModule** (*mixed* $defaultModule)
 
-Sets the module name to be used if the router doesn't return a valid module
+ルーターが有効なモジュールを返さない場合、使用するモジュール名を設定します
 
 public **getDefaultModule** ()
 
-Returns the default module name
+デフォルトのモジュール名を返します
 
 abstract public **handle** ()
 
-Handles a request
+リクエストを処理します。
 
 public **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
 
-Sets the dependency injector
+DIをセットします。
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+内部のDIを返します。
 
 public **__get** (*string* $propertyName) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
 
-Magic method __get
+マジックメソッド __get

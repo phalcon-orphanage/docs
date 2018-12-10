@@ -1,13 +1,13 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Cookies Management</a>
+      <a href="#overview">cookieの管理</a>
        <ul>
         <li>
-          <a href="#usage">Basic Usage</a>
+          <a href="#usage">基本的な使い方</a>
         </li>
         <li>
-          <a href="#encryption-decryption">Encryption/Decryption of Cookies</a>
+          <a href="#encryption-decryption">cookieの暗号化/復号化</a>
         </li>
       </ul>
     </li>
@@ -16,15 +16,15 @@
 
 <a name='overview'></a>
 
-# Cookies Management
+# cookieの管理
 
-[Cookies](http://en.wikipedia.org/wiki/HTTP_cookie) are a very useful way to store small pieces of data on the client's machine that can be retrieved even if the user closes his/her browser. `Phalcon\Http\Response\Cookies` acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent automatically at the end of the request.
+[cookie](http://en.wikipedia.org/wiki/HTTP_cookie) は、たとえユーザーがブラウザーを閉じた場合でも、取得することができる、クライアントのコンピュータ上にごく少量のデータを格納する非常に便利な方法です。 `Phalcon\Http\Response\Cookies` はcookieのグローバルなバッグのように振舞います。 cookieは、リクエストの処理中にこのバッグに格納されて、リクエストのの最後に自動的に送信されます。
 
 <a name='usage'></a>
 
-## Basic Usage
+## 基本的な使い方
 
-You can set/get cookies by just accessing the `cookies` service in any part of the application where services can be accessed:
+アプリケーション内のどこででも、サービスにアクセスできるのであれば`cookies`サービスにアクセスするだけでcookieを設定/取得することができます:
 
 ```php
 <?php
@@ -35,12 +35,12 @@ class SessionController extends Controller
 {
     public function loginAction()
     {
-        // Check if the cookie has previously set
+        // cookieがすでに設定されているかどうかを確認
         if ($this->cookies->has('remember-me')) {
-            // Get the cookie
+            // cookieの値を取得
             $rememberMeCookie = $this->cookies->get('remember-me');
 
-            // Get the cookie's value
+            // クッキーの値を取得
             $value = $rememberMeCookie->getValue();
         }
     }
@@ -58,7 +58,7 @@ class SessionController extends Controller
     {
         $rememberMeCookie = $this->cookies->get('remember-me');
 
-        // Delete the cookie
+        // cookieを削除
         $rememberMeCookie->delete();
     }
 }
@@ -66,11 +66,11 @@ class SessionController extends Controller
 
 <a name='encryption-decryption'></a>
 
-## Encryption/Decryption of Cookies
+## cookieの暗号化/復号化
 
-By default, cookies are automatically encrypted before being sent to the client and are decrypted when retrieved from the user. This protection prevents unauthorized users to see the cookies' contents in the client (browser). Despite this protection, sensitive data should not be stored in cookies.
+デフォルトでは、cookieはクライアントに送信される前に自動的に暗号化され、ユーザーが取得する際に解読されます。 この保護は、許可されていないユーザーがcookieの内容をクライアント（ブラウザー）で見ることを防ぎます。 この保護があったとしても、機密データはクッキーに保存されてはなりません。
 
-You can disable encryption as follows:
+以下のようにして、暗号化を無効にすることができます。
 
 ```php
 <?php
@@ -89,7 +89,7 @@ $di->set(
 );
 ```
 
-If you wish to use encryption, a global key must be set in the [crypt](/[[language]]/[[version]]/crypt) service:
+暗号化を使用したい場合、グローバルな鍵は [crypt](/[[language]]/[[version]]/crypt) サービスで設定しなければなりません。
 
 ```php
     <?php
@@ -102,31 +102,31 @@ If you wish to use encryption, a global key must be set in the [crypt](/[[langua
             $crypt = new Crypt();
 
             /**
-             * Set the cipher algorithm.
+             * 暗号アルゴリズムの設定
              *
-             * The `aes-256-gcm' is the preferable cipher, but it is not usable until the
-             * openssl library is upgraded, which is available in PHP 7.1.
+             * `aes-256-gcm' は好ましい暗号です。しかし opensslライブラリが
+             * アップグレードされるまで利用できません。これは PHP 7.1で利用できます。
              *
-             * The `aes-256-ctr' is arguably the best choice for cipher
-             * algorithm in these days.
+             * `aes-256-ctr' は今日の暗号アルゴリズムの中で、間違いなく
+             * 最高のものです。
              */
             $crypt->setCipher('aes-256-ctr');
 
             /**
-             * Setting the encryption key.
+             * 暗号鍵の設定
              *
-             * The key should have been previously generated in a cryptographically safe way.
+             * この鍵は暗号学上安全な方法で、前もって生成されているものとします。
              *
-             * Bad key:
+             * 悪い鍵:
              * "le password"
              *
-             * Better (but still unsafe):
+             * 少しよい鍵 (安全ではない):
              * "#1dj8$=dp?.ak//j1V$~%*0X"
              *
-             * Good key:
+             * 良い鍵:
              * "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c"
              *
-             * Use your own key. Do not copy and paste this example key.
+             * あなたの鍵を使う この例の鍵をコピーペーストしないでください。
              */
             $key = "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c";
 
@@ -139,6 +139,6 @@ If you wish to use encryption, a global key must be set in the [crypt](/[[langua
 
 <div class="alert alert-danger">
     <p>
-        Sending cookies data without encryption to clients including complex objects structures, resultsets, service information, etc. could expose internal application details that could be used by an attacker to attack the application. If you do not want to use encryption, we highly recommend you only send very basic cookie data like numbers or small string literals.
+        暗号化なしに、複雑なオブジェクト、構造体、結果のセット、サービス情報などを含むクッキーデータをクライアントに送信すること は、そのアプリケーションを攻撃する攻撃者によって使用するヒントとなりうる内部のアプリケーションの詳細を晒すことになります。 もしあなたが暗号を使用したくない場合、私達は数字や短い文字列リテラルのような基本的なcookieデータだけを送信することを強く勧めます。
     </p>
 </div>

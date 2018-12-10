@@ -2,24 +2,24 @@
 
 *implements* [Phalcon\Acl\ResourceInterface](/en/3.2/api/Phalcon_Acl_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/resource.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-This class defines resource entity and its description
+このクラスはリソースエントリとその説明を定義します。
 
-## Methods
+## メソッド
 
 public **getName** ()
 
-Resource name
+リソース名
 
 public **__toString** ()
 
-Resource name
+リソース名
 
 public **getDescription** ()
 
-Resource description
+リソースの説明
 
 public **__construct** (*mixed* $name, [*mixed* $description])
 
-Phalcon\\Acl\\Resource constructor
+Phalcon\\Acl\\Resource コンストラクタ

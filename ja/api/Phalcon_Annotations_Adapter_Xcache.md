@@ -4,9 +4,9 @@
 
 *implements* [Phalcon\Annotations\AdapterInterface](/en/3.2/api/Phalcon_Annotations_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter/xcache.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/adapter/xcache.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Stores the parsed annotations to XCache. This adapter is suitable for production
+パースしたアノテーションをXCacheに保存します。このアダプターはプロダクション向けです。
 
 ```php
 <?php
@@ -15,40 +15,40 @@ $annotations = new \Phalcon\Annotations\Adapter\Xcache();
 
 ```
 
-## Methods
+## メソッド
 
 public [Phalcon\Annotations\Reflection](/en/3.2/api/Phalcon_Annotations_Reflection) **read** (*string* $key)
 
-Reads parsed annotations from XCache
+パースしたアノテーションをXCacheから読み込みます。
 
 public **write** (*mixed* $key, [Phalcon\Annotations\Reflection](/en/3.2/api/Phalcon_Annotations_Reflection) $data)
 
-Writes parsed annotations to XCache
+パースしたアノテーションをXCacheに書き込みます。
 
 public **setReader** ([Phalcon\Annotations\ReaderInterface](/en/3.2/api/Phalcon_Annotations_ReaderInterface) $reader) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Sets the annotations parser
+アノテーションパーサーを設定します。
 
 public **getReader** () inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Returns the annotation reader
+アノテーションリーダーを返します。
 
 public **get** (*string* | *object* $className) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Parses or retrieves all the annotations found in a class
+クラス内で見つかったすべてのアノテーションをパースまたは取得します。
 
 public **getMethods** (*mixed* $className) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Returns the annotations found in all the class' methods
+そのクラスのすべてのメソッドで見つかったアノテーションを返します。
 
 public **getMethod** (*mixed* $className, *mixed* $methodName) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Returns the annotations found in a specific method
+そのメソッドで見つかったアノテーションを返します。
 
 public **getProperties** (*mixed* $className) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Returns the annotations found in all the class' methods
+そのクラスのすべてのメソッドで見つかったアノテーションを返します。
 
 public **getProperty** (*mixed* $className, *mixed* $propertyName) inherited from [Phalcon\Annotations\Adapter](/en/3.2/api/Phalcon_Annotations_Adapter)
 
-Returns the annotations found in a specific property
+そのプロパティで見つかったアノテーションを返します。

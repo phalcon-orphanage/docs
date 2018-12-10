@@ -148,7 +148,7 @@ return $response->redirect(
 );
 ```
 
-Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
+Incluso si hay una vista asociada con la acción actual, no se generará porque `redirect` deshabilita la vista.
 
 <a name='http-cache'></a>
 
