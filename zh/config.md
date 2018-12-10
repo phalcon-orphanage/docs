@@ -1,7 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#总览">读取配置</a> <ul>
+      <a href="#overview">读取配置</a> <ul>
         <li>
           <a href="#native-arrays">本机数组</a>
         </li>
