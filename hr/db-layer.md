@@ -113,7 +113,53 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 
 ### Implementing your own dialects
 
-The `Phalcon\Db\DialectInterface` interface must be implemented in order to create your own database dialects or extend the existing ones.
+The `Phalcon\Db\DialectInterface` interface must be implemented in order to create your own database dialects or extend the existing ones. You can also enhance your current dialect by adding more commands/methods that PHQL will understand.
+
+For instance when using the MySQL adapter, you might want to allow PHQL to recognize the `MATCH ... AGAINST ...` syntax. We associate that syntax with `MATCH_AGAINST`
+
+We instantiate the dialect. We add the custom function so that PHQL understands what to do when it finds it during the parsing process. In the example below, we register a new custom function called `MATCH_AGAINST`. After that all we have to do is add the customized dialect object to our connection.
+
+```php
+<?php
+
+use Phalcon\Db\Dialect\MySQL as SqlDialect;
+use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
+
+$dialect = new SqlDialect();
+
+$dialect->registerCustomFunction(
+    'MATCH_AGAINST',
+    function($dialect, $expression) {
+        $arguments = $expression['arguments'];
+        return sprintf(
+            " MATCH (%s) AGAINST (%)",
+            $dialect->getSqlExpression($arguments[0]),
+            $dialect->getSqlExpression($arguments[1])
+         );
+    }
+);
+
+$connection = new Connection(
+    [
+        "host"          => "localhost",
+        "username"      => "root",
+        "password"      => "",
+        "dbname"        => "test",
+        "dialectClass"  => $dialect
+    ]
+);
+```
+
+We can now use this new function in PHQL, which in turn will translate it to the proper SQL syntax:
+
+```php
+$phql = "
+  SELECT *
+  FROM   Posts
+  WHERE  MATCH_AGAINST(title, :pattern:)";
+
+$posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
+```
 
 <a name='connection'></a>
 
@@ -121,51 +167,69 @@ The `Phalcon\Db\DialectInterface` interface must be implemented in order to crea
 
 To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
 
+##### MySQL Required elements
+
 ```php
 <?php
 
-// Required
 $config = [
     'host'     => '127.0.0.1',
     'username' => 'mike',
     'password' => 'sigma',
     'dbname'   => 'test_db',
 ];
+```
 
-// Optional
+##### MySQL Optional
+
+```php
 $config['persistent'] = false;
+```
 
-// Create a connection
+##### MySQL Create a connection
+
+```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
+
+##### PostgreSQL Required elements
 
 ```php
 <?php
 
-// Required
 $config = [
     'host'     => 'localhost',
     'username' => 'postgres',
     'password' => 'secret1',
     'dbname'   => 'template',
 ];
+```
 
-// Optional
+##### PostgreSQL Optional
+
+```php
 $config['schema'] = 'public';
+```
 
-// Create a connection
+##### PostgreSQL Create a connection
+
+```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
+
+##### SQLite Required elements
 
 ```php
 <?php
 
-// Required
 $config = [
     'dbname' => '/path/to/database.db',
 ];
+```
 
-// Create a connection
+##### SQLite Create a connection
+
+```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```
 
@@ -178,7 +242,6 @@ You can set PDO options at connection time by passing the parameters `options`:
 ```php
 <?php
 
-// Create a connection with PDO options
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
     [
         'host'     => 'localhost',
