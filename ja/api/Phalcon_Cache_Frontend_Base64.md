@@ -2,25 +2,25 @@
 
 *implements* [Phalcon\Cache\FrontendInterface](/[[language]]/[[version]]/api/Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/base64.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/base64.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Allows to cache data converting/deconverting them to base64.
+base64形式でエンコード/デコードしたデータをキャッシュできる。
 
-This adapter uses the base64_encode/base64_decode PHP's functions
+このアダプタは base64_encode/base64_decode のPHP関数を使用します。
 
 ```php
 <?php
 
 <?php
 
-// Cache the files for 2 days using a Base64 frontend
+// Base64 フロントエンドを使ってファイルを2日間キャッシュ。
 $frontCache = new \Phalcon\Cache\Frontend\Base64(
     [
         "lifetime" => 172800,
     ]
 );
 
-//Create a MongoDB cache
+// MongoDBキャッシュを作成
 $cache = new \Phalcon\Cache\Backend\Mongo(
     $frontCache,
     [
@@ -32,11 +32,11 @@ $cache = new \Phalcon\Cache\Backend\Mongo(
 
 $cacheKey = "some-image.jpg.cache";
 
-// Try to get cached image
+// キャッシュされたイメージの取得を試みる
 $image = $cache->get($cacheKey);
 
 if ($image === null) {
-    // Store the image in the cache
+    // キャッシュ内にイメージを保存する
     $cache->save(
         $cacheKey,
         file_get_contents("tmp-dir/some-image.jpg")
@@ -49,36 +49,36 @@ echo $image;
 
 ```
 
-## Methods
+## メソッド
 
 public **__construct** ([*array* $frontendOptions])
 
-Phalcon\\Cache\\Frontend\\Base64 constructor
+Phalcon\\Cache\\Frontend\\Base64 コンストラクタ
 
 public **getLifetime** ()
 
-Returns the cache lifetime
+キャッシュの有効期間を返します。
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output
+フロントエンドが出力をバッファリングするかどうかチェックします。
 
 public **start** ()
 
-Starts output frontend. Actually, does nothing in this adapter
+フロントエンドの出力を開始します。実際には、このアダプターでは何もしません。
 
 public *string* **getContent** ()
 
-Returns output cached content
+キャッシュしたコンテンツを返します。
 
 public **stop** ()
 
-Stops output frontend
+フロントエンドの出力を停止します。
 
 public **beforeStore** (*mixed* $data)
 
-Serializes data before storing them
+保存する前にデータをシリアライズします。
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrieval
+取得後にデータのシリアライズ化を戻します。
