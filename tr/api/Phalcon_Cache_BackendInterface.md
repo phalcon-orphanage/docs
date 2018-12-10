@@ -1,57 +1,57 @@
-# Interface **Phalcon\\Cache\\BackendInterface**
+<h1>Interface <strong>Phalcon\\Cache\\BackendInterface</strong></h1>
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backendinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<p><a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/backendinterface.zep" class="btn btn-default btn-sm" mark="crwd-mark">Source on GitHub</a></p>
 
-## Methods
+<h2>Methods</h2>
 
-abstract public **start** (*mixed* $keyName, [*mixed* $lifetime])
+<p>abstract public  <strong>start</strong> (<em>mixed</em> $keyName, [<em>mixed</em> $lifetime])</p>
 
-...
+<p>...</p>
 
-abstract public **stop** ([*mixed* $stopBuffer])
+<p>abstract public  <strong>stop</strong> ([<em>mixed</em> $stopBuffer])</p>
 
-...
+<p>...</p>
 
-abstract public **getFrontend** ()
+<p>abstract public  <strong>getFrontend</strong> ()</p>
 
-...
+<p>...</p>
 
-abstract public **getOptions** ()
+<p>abstract public  <strong>getOptions</strong> ()</p>
 
-...
+<p>...</p>
 
-abstract public **isFresh** ()
+<p>abstract public  <strong>isFresh</strong> ()</p>
 
-...
+<p>...</p>
 
-abstract public **isStarted** ()
+<p>abstract public  <strong>isStarted</strong> ()</p>
 
-...
+<p>...</p>
 
-abstract public **setLastKey** (*mixed* $lastKey)
+<p>abstract public  <strong>setLastKey</strong> (<em>mixed</em> $lastKey)</p>
 
-...
+<p>...</p>
 
-abstract public **getLastKey** ()
+<p>abstract public  <strong>getLastKey</strong> ()</p>
 
-...
+<p>...</p>
 
-abstract public **get** (*mixed* $keyName, [*mixed* $lifetime])
+<p>abstract public  <strong>get</strong> (<em>mixed</em> $keyName, [<em>mixed</em> $lifetime])</p>
 
-...
+<p>...</p>
 
-abstract public **save** ([*mixed* $keyName], [*mixed* $content], [*mixed* $lifetime], [*mixed* $stopBuffer])
+<p>abstract public  <strong>save</strong> ([<em>mixed</em> $keyName], [<em>mixed</em> $content], [<em>mixed</em> $lifetime], [<em>mixed</em> $stopBuffer])</p>
 
-...
+<p>...</p>
 
-abstract public **delete** (*mixed* $keyName)
+<p>abstract public  <strong>delete</strong> (<em>mixed</em> $keyName)</p>
 
-...
+<p>...</p>
 
-abstract public **queryKeys** ([*mixed* $prefix])
+<p>abstract public  <strong>queryKeys</strong> ([<em>mixed</em> $prefix])</p>
 
-...
+<p>...</p>
 
-abstract public **exists** ([*mixed* $keyName], [*mixed* $lifetime])
+<p>abstract public  <strong>exists</strong> ([<em>mixed</em> $keyName], [<em>mixed</em> $lifetime])</p>
 
-...
+<p>...</p>
