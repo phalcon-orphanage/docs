@@ -1,8 +1,8 @@
 # Interface **Phalcon\\Acl\\RoleInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/roleinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/roleinterface.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-## Methods
+## メソッド
 
 abstract public **getName** ()
 
