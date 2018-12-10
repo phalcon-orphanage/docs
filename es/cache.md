@@ -569,15 +569,12 @@ Los adaptadores de backend disponibles para almacenar datos en cache son:
 | `Phalcon\Cache\Backend\File`         | Almacena los datos en archivos planos locales.                            |                                           |                                                    |
 | `Phalcon\Cache\Backend\Libmemcached` | Almacena los datos en un servidor memcached.                              | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
 | `Phalcon\Cache\Backend\Memcache`     | Almacena los datos en un servidor memcached.                              | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| `Phalcon\Cache\Backend\Memory`       | Almacena datos en memoria                                                 |                                           |                                                    |
 | `Phalcon\Cache\Backend\Mongo`        | Almacena los datos en base de datos Mongo.                                | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
 | `Phalcon\Cache\Backend\Redis`        | Almacena datos en Redis.                                                  | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Almacena datos en XCache.                                                 | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
-<div class='alert alert-warning'>
-    <p>
-        <strong>Nota</strong> En PHP 7 para utilizar las clases de adaptadores base phalcon <code>apc</code> necesitastas instalar los paquetes <code>apcu</code> y <code>apcu_bc</code> desde pecl. Ahora en Phalcon 3.2.0 puede cambiar su clases <code>*\Apc</code> a <code>*\Apcu</code> y eliminar <code>apcu_bc</code>. Tenga en cuenta que en Phalcon 4 seguramente eliminaremos todas las clases `*\Apc`.
-    </p>
-</div>
+##### **Nota** En PHP 7 para utilizar las clases de adaptadores base phalcon `apc` necesitastas instalar los paquetes `apcu` y `apcu_bc` desde pecl. Ahora en Phalcon 3.2.0 puede cambiar su clases `*\Apc` a `*\Apcu` y eliminar `apcu_bc`. Tenga en cuenta que en Phalcon 4 seguramente eliminaremos todas las clases `*\Apc`. {.alert.alert-warning}
 
 <a name='adapters-backend-factory'></a>
 
