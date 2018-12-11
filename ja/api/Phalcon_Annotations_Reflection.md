@@ -1,8 +1,8 @@
 # Class **Phalcon\\Annotations\\Reflection**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/reflection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/reflection.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Allows to manipulate the annotations reflection in an OO manner
+オブジェクト指向の方法で、アノテーションのリフレクションを操作できます。
 
 ```php
 <?php
@@ -10,40 +10,40 @@ Allows to manipulate the annotations reflection in an OO manner
 use Phalcon\Annotations\Reader;
 use Phalcon\Annotations\Reflection;
 
-// Parse the annotations in a class
+// クラスのアノテーションのパース
 $reader = new Reader();
 $parsing = $reader->parse("MyComponent");
 
-// Create the reflection
+// リフレクションの作成
 $reflection = new Reflection($parsing);
 
-// Get the annotations in the class docblock
+// クラスのdocblockのアノテーションを取得
 $classAnnotations = $reflection->getClassAnnotations();
 
 ```
 
-## Methods
+## メソッド
 
 public **__construct** ([*array* $reflectionData])
 
-Phalcon\\Annotations\\Reflection constructor
+Phalcon\\Annotations\\Reflection コンストラクタ
 
 public **getClassAnnotations** ()
 
-Returns the annotations found in the class docblock
+そのクラスのdocblockで見つかったアノテーションを返します。
 
 public **getMethodsAnnotations** ()
 
-Returns the annotations found in the methods' docblocks
+そのメソッドのdocblockで見つかったアノテーションを返します。
 
 public **getPropertiesAnnotations** ()
 
-Returns the annotations found in the properties' docblocks
+そのプロパティのdocblockで見つかったアノテーションを返します。
 
 public *array* **getReflectionData** ()
 
-Returns the raw parsing intermediate definitions used to construct the reflection
+リフレクションを構成する際に使用する中間定義をそのままパースして返します。
 
 public static *array data* **__set_state** (*mixed* $data)
 
-Restores the state of a Phalcon\\Annotations\\Reflection variable export
+Phalcon\\Annotations\\Reflection の変数エクスポートの状態を修復します。

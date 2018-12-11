@@ -1,12 +1,12 @@
 # Class **Phalcon\\Annotations\\Factory**
 
-*extends* abstract class [Phalcon\Factory](/[[language]]/[[version]]/api/Phalcon_Factory)
+*拡張*: [Phalcon\Factory](/[[language]]/[[version]]/api/Phalcon_Factory)抽象クラス
 
-*implements* [Phalcon\FactoryInterface](/[[language]]/[[version]]/api/Phalcon_FactoryInterface)
+*実装*: [Phalcon\FactoryInterface](/[[language]]/[[version]]/api/Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/factory.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Loads Annotations Adapter class using 'adapter' option
+'adaper'オプションを使用してAnnotations Adapterクラスをロードします。
 
 ```php
 <?php
@@ -22,7 +22,7 @@ $annotations = Factory::load($options);
 
 ```
 
-## Methods
+## メソッド
 
 public static **load** ([Phalcon\Config](/[[language]]/[[version]]/api/Phalcon_Config) | *array* $config)
 

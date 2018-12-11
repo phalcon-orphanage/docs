@@ -131,7 +131,7 @@ MODEL_* sabitini kullanarak belirli bir model için meta-verisi yazar
 <?php
 
 print_r(
-    $metaData->writeColumnMapIndex(
+    $metaData->writeMetaDataIndex(
         new Robots(),
         MetaData::MODELS_REVERSE_COLUMN_MAP,
         [
