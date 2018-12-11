@@ -177,18 +177,23 @@ namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Message;
-use Phalcon\Mvc\Model\Validator\Uniqueness;
-use Phalcon\Mvc\Model\Validator\InclusionIn;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness
+use Phalcon\Validation\Validator\InclusionIn;
+
 
 class Robots extends Model
 {
     public function validation()
     {
+        $validator = new Validation();
+
         // Type must be: droid, mechanical or virtual
-        $this->validate(
+        $validator->add(
+            "type",
             new InclusionIn(
                 [
-                    'field'  => 'type',
+                    'message' => 'Type must be "droid", "mechanical", or "virtual"',
                     'domain' => [
                         'droid',
                         'mechanical',
@@ -199,7 +204,8 @@ class Robots extends Model
         );
 
         // Robot name must be unique
-        $this->validate(
+        $validator->add(
+            'name',
             new Uniqueness(
                 [
                     'field'   => 'name',
