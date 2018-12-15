@@ -99,7 +99,7 @@ $assets->set("js", $collection);
 
 public **get** (*mixed* $id)
 
-Returns a collection by its id
+Idによってコレクションを返します。
 
 ```php
 <?php
@@ -150,4 +150,4 @@ public **getCollections** ()
 
 public **exists** (*mixed* $id)
 
-Returns true or false if collection exists
+コレクションが存在するかどうか、真偽値を返します。
