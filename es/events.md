@@ -1,8 +1,7 @@
 <div class='article-menu'>
   <ul>
     <li>
-      <a href="#overview">Gestor de Eventos</a> 
-      <ul>
+      <a href="#overview">Gestor de Eventos</a> <ul>
         <li>
           <a href="#naming-convention">Convención de Nombres</a>
         </li>
@@ -91,11 +90,7 @@ $connection->query(
 
 Ahora, cada vez que se ejecuta una consulta, la instrucción SQL se repetirá. El primer parámetro a la función lambda contiene información contextual sobre el evento que se ejecuta, el segundo parámetro es la fuente del evento (en este caso la conexión sí misma). También se puede especificar un tercer parámetro que contiene datos arbitrarios específicos para el evento.
 
-<div class="alert alert-warning">
-    <p>
-        Debe configurar explícitamente el administrador de eventos de un componente mediante el método <code>setEventsManager()</code> de tal forma que el componente disparare los eventos. Usted puede crear una nueva instancia del gestor de eventos para cada componente o puede establecer el mismo gestor de eventos para varios componentes, ya que la convención de nombres evitará conflictos.
-    </p>
-</div>
+<h5 class='alert alert-warning'>Debe configurar explícitamente el administrador de eventos de un componente mediante el método <code>setEventsManager()</code> de tal forma que el componente disparare los eventos. Usted puede crear una nueva instancia del gestor de eventos para cada componente o puede establecer el mismo gestor de eventos para varios componentes, ya que la convención de nombres evitará conflictos </h5>
 
 En lugar de utilizar funciones anónimas, se puede utilizar las clases oyentes de eventos. Los oyentes o detectores de eventos también permiten escuchar a varios eventos. En este ejemplo, vamos a implementar el `Phalcon\Db\Profiler` para detectar las declaraciones SQL que están tomando más tiempo de lo previsto para su ejecución:
 
@@ -195,13 +190,13 @@ Es posible crear componentes en su aplicación que activen eventos de un EventsM
 <?php
 
 use Phalcon\Events\EventsAwareInterface;
-use Phalcon\Events\ManagerInterface;
+use Phalcon\Events\Manager as EventsManager;
 
 class MyComponent implements EventsAwareInterface
 {
     protected $eventsManager;
 
-    public function setEventsManager(ManagerInterface $eventsManager)
+    public function setEventsManager(EventsManager $eventsManager)
     {
         $this->eventsManager = $eventsManager;
     }
@@ -215,7 +210,7 @@ class MyComponent implements EventsAwareInterface
     {
         $this->eventsManager->fire('my-component:beforeSomeTask', $this);
 
-        // Hacer alguna tarea
+        // Hacer algunas tareas
         echo 'Aquí, someTask\n';
 
         $this->eventsManager->fire('my-component:afterSomeTask', $this);
@@ -536,6 +531,7 @@ Los eventos disponibles en Phalcon son:
 | Model              | `notSave`                            |
 | Model              | `notSaved`                           |
 | Model              | `onValidationFails`                  |
+| Model              | `prepareSave`                        |
 | Models Manager     | `modelsManager:afterInitialize`      |
 | Request            | `request:afterAuthorizationResolve`  |
 | Request            | `request:beforeAuthorizationResolve` |
