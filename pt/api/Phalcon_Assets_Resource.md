@@ -1,94 +1,94 @@
-# Class **Phalcon\\Assets\\Resource**
+<h1>Class <strong>Phalcon\\Assets\\Resource</strong></h1>
 
-*implements* [Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface)
+<p><em>implements</em> <a href="/en/3.2/api/Phalcon_Assets_ResourceInterface">Phalcon\Assets\ResourceInterface</a></p>
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<p><a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resource.zep" class="btn btn-default btn-sm" mark="crwd-mark">Source on GitHub</a></p>
 
-Represents an asset resource
+<p>Represents an asset resource</p>
 
-```php
-<?php
+<pre><code class="php">&lt;?php
 
 $resource = new \Phalcon\Assets\Resource("js", "javascripts/jquery.js");
 
-```
+</code></pre>
 
-## Methods
+<h2>Methods</h2>
 
-public **getType** ()
+<p>public  <strong>getType</strong> ()</p>
 
-public **getPath** ()
+<p>public  <strong>getPath</strong> ()</p>
 
-public **getLocal** ()
+<p>public  <strong>getLocal</strong> ()</p>
 
-public **getFilter** ()
+<p>public  <strong>getFilter</strong> ()</p>
 
-public **getAttributes** ()
+<p>public  <strong>getAttributes</strong> ()</p>
 
-public **getSourcePath** ()
+<p>public  <strong>getSourcePath</strong> ()</p>
 
-...
+<p>...</p>
 
-public **getTargetPath** ()
+<p>public  <strong>getTargetPath</strong> ()</p>
 
-...
+<p>...</p>
 
-public **getTargetUri** ()
+<p>public  <strong>getTargetUri</strong> ()</p>
 
-...
+<p>...</p>
 
-public **__construct** (*string* $type, *string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+<p>public  <strong>__construct</strong> (<em>string</em> $type, <em>string</em> $path, [<em>boolean</em> $local], [<em>boolean</em> $filter], [<em>array</em> $attributes])</p>
 
-Phalcon\\Assets\\Resource constructor
+<p>Phalcon\\Assets\\Resource constructor</p>
 
-public **setType** (*mixed* $type)
+<p>public  <strong>setType</strong> (<em>mixed</em> $type)</p>
 
-Sets the resource's type
+<p>Sets the resource's type</p>
 
-public **setPath** (*mixed* $path)
+<p>public  <strong>setPath</strong> (<em>mixed</em> $path)</p>
 
-Sets the resource's path
+<p>Sets the resource's path</p>
 
-public **setLocal** (*mixed* $local)
+<p>public  <strong>setLocal</strong> (<em>mixed</em> $local)</p>
 
-Sets if the resource is local or external
+<p>Sets if the resource is local or external</p>
 
-public **setFilter** (*mixed* $filter)
+<p>public  <strong>setFilter</strong> (<em>mixed</em> $filter)</p>
 
-Sets if the resource must be filtered or not
+<p>Sets if the resource must be filtered or not</p>
 
-public **setAttributes** (*array* $attributes)
+<p>public  <strong>setAttributes</strong> (<em>array</em> $attributes)</p>
 
-Sets extra HTML attributes
+<p>Sets extra HTML attributes</p>
 
-public **setTargetUri** (*mixed* $targetUri)
+<p>public  <strong>setTargetUri</strong> (<em>mixed</em> $targetUri)</p>
 
-Sets a target uri for the generated HTML
+<p>Sets a target uri for the generated HTML</p>
 
-public **setSourcePath** (*mixed* $sourcePath)
+<p>public  <strong>setSourcePath</strong> (<em>mixed</em> $sourcePath)</p>
 
-Sets the resource's source path
+<p>Sets the resource's source path</p>
 
-public **setTargetPath** (*mixed* $targetPath)
+<p>public  <strong>setTargetPath</strong> (<em>mixed</em> $targetPath)</p>
 
-Sets the resource's target path
+<p>Sets the resource's target path</p>
 
-public **getContent** ([*mixed* $basePath])
+<p>public  <strong>getContent</strong> ([<em>mixed</em> $basePath])</p>
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+<p>Returns the content of the resource as an string
+Optionally a base path where the resource is located can be set</p>
 
-public **getRealTargetUri** ()
+<p>public  <strong>getRealTargetUri</strong> ()</p>
 
-Returns the real target uri for the generated HTML
+<p>Returns the real target uri for the generated HTML</p>
 
-public **getRealSourcePath** ([*mixed* $basePath])
+<p>public  <strong>getRealSourcePath</strong> ([<em>mixed</em> $basePath])</p>
 
-Returns the complete location where the resource is located
+<p>Returns the complete location where the resource is located</p>
 
-public **getRealTargetPath** ([*mixed* $basePath])
+<p>public  <strong>getRealTargetPath</strong> ([<em>mixed</em> $basePath])</p>
 
-Returns the complete location where the resource must be written
+<p>Returns the complete location where the resource must be written</p>
 
-public **getResourceKey** ()
+<p>public  <strong>getResourceKey</strong> ()</p>
 
-Gets the resource's key.
+<p>Gets the resource's key.</p>
