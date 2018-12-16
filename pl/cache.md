@@ -569,15 +569,12 @@ The backend adapters available to store cache data are:
 | `Phalcon\Cache\Backend\File`         | Stores data to local plain files.                    |                                           |                                                    |
 | `Phalcon\Cache\Backend\Libmemcached` | Stores data to a memcached server.                   | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
 | `Phalcon\Cache\Backend\Memcache`     | Stores data to a memcached server.                   | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| `Phalcon\Cache\Backend\Memory`       | Stores data in memory                                |                                           |                                                    |
 | `Phalcon\Cache\Backend\Mongo`        | Stores data to Mongo Database.                       | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
 | `Phalcon\Cache\Backend\Redis`        | Stores data in Redis.                                | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | Stores data in XCache.                               | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
-<div class='alert alert-warning'>
-    <p>
-        <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.2.0 you can switch your <code>*\Apc</code> classes to <code>*\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes.
-    </p>
-</div>
+##### **NOTE** In PHP 7 to use phalcon `apc` based adapter classes you needed to install `apcu` and `apcu_bc` package from pecl. Now in Phalcon 3.2.0 you can switch your `<em>\Apc` classes to `</em>\Apcu` and remove `apcu_bc`. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. {.alert.alert-warning}
 
 <a name='adapters-backend-factory'></a>
 
