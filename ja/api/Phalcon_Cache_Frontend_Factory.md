@@ -4,9 +4,9 @@
 
 *implements* [Phalcon\FactoryInterface](/[[language]]/[[version]]/api/Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/factory.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Loads Frontend Cache Adapter class using 'adapter' option
+アダプターオプションを使用してFrontend Cache Adapterクラスをロードします
 
 ```php
 <?php
@@ -21,7 +21,7 @@ $frontendCache = Factory::load($options);
 
 ```
 
-## Methods
+## メソッド
 
 public static **load** ([Phalcon\Config](/[[language]]/[[version]]/api/Phalcon_Config) | *array* $config)
 
