@@ -118,12 +118,12 @@ Nuestro sitio web y blog (así como otros sitios) están alojados en una VM de A
 
 ## Software
 
-- PSR extension
+- Extensión PSR
 - PHP >= 7.0
 
-Phalcon 4.0 relies heavily on PSR in order to offer PSR compatibility in its classes. As a result the `php-psr` extension is required to be loaded before Phalcon.
+Phalcon 4.0 se basa en gran medida en PSR para ofrecer compatibilidad en sus clases. Como resultado, se requiere que la extensión `php-psr` se cargue antes de Phalcon.
 
-Installing the PSR extension:
+Instalando la extensión PSR:
 
 ```bash
 apt-get update -y
@@ -143,16 +143,16 @@ make install
 rm -rf /var/lib/apt/lists/*
 ```
 
-After this you need to load the `php-psr` module in your `php.ini` file before Phalcon.
+Después de esto necesitas cargar el módulo `php-psr` en tu archivo `php.ini` antes de Phalcon.
 
 ```ini
 extension=php-psr.so
 extension=phalcon.so
 ```
 
-##### You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. Phalcon 4.0 only supports PHP 7.0 or greater {.alert.alert-warning}
+##### Siempre deberías utilizar la última versión de PHP y Phalcon para evitar bugs, mejorar la seguridad y el rendimiento. Phalcon 4.0 solo soporta PHP 7.0 o superior {.alert.alert-warning}
 
-Phalcon needs the following extensions to run (minimal):
+Phalcon necesita las siguientes extensiones para ser ejecutado (mínimo):
 
 - `curl`
 - `gettext`
@@ -165,7 +165,7 @@ Phalcon needs the following extensions to run (minimal):
 - `fileinfo`
 - `openssl`
 
-### Depending on the needs of your application
+### Dependiendo de las necesidades de su aplicación
 
 - La extensión [PDO](http://php.net/manual/en/book.pdo.php), así como la extensión específica pertinente a su RDBMS ([MySQL](http://php.net/manual/en/ref.pdo-mysql.php),[PostgreSQL](http://php.net/manual/en/ref.pdo-pgsql.php),etc.)
 - La extensión [OpenSSL](http://php.net/manual/en/book.openssl.php)
