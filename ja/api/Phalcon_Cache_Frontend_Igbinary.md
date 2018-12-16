@@ -4,23 +4,23 @@
 
 *implements* [Phalcon\Cache\FrontendInterface](/[[language]]/[[version]]/api/Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/igbinary.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/igbinary.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Allows to cache native PHP data in a serialized form using igbinary extension
+igbinary拡張モジュールを使用して、シリアライズしたフォームにネイティブのPHPデータをキャッシュできます。
 
 ```php
 <?php
 
-// Cache the files for 2 days using Igbinary frontend
+// Igbinaryフロントエンドで二日間、ファイルをキャッシュ
 $frontCache = new \Phalcon\Cache\Frontend\Igbinary(
     [
         "lifetime" => 172800,
     ]
 );
 
-// Create the component that will cache "Igbinary" to a "File" backend
-// Set the cache file directory - important to keep the "/" at the end of
-// of the value for the folder
+// "Igbinary"を "File"バックエンドにキャッシュするコンポーネントの作成
+// キャッシュファイルディレクトリの設定 このフォルダの値の最後が "/" 
+// になるように注意
 $cache = new \Phalcon\Cache\Backend\File(
     $frontCache,
     [
@@ -30,59 +30,59 @@ $cache = new \Phalcon\Cache\Backend\File(
 
 $cacheKey = "robots_order_id.cache";
 
-// Try to get cached records
+// キャッシュされたレコードを取得
 $robots = $cache->get($cacheKey);
 
 if ($robots === null) {
-    // $robots is null due to cache expiration or data do not exist
-    // Make the database call and populate the variable
+    // キャッシュ期限切れかデータがない場合 $robots は nullになる。
+    // データベースを呼び出してこの変数に値を設定
     $robots = Robots::find(
         [
             "order" => "id",
         ]
     );
 
-    // Store it in the cache
+    // これをキャッシュに保存
     $cache->save($cacheKey, $robots);
 }
 
-// Use $robots :)
+// $robots を使用 (^_^)
 foreach ($robots as $robot) {
     echo $robot->name, "\n";
 }
 
 ```
 
-## Methods
+## メソッド
 
 public **__construct** ([*array* $frontendOptions])
 
-Phalcon\\Cache\\Frontend\\Data constructor
+Phalcon\\Cache\\Frontend\\Data コンストラクタ
 
 public **getLifetime** ()
 
-Returns the cache lifetime
+キャッシュの有効期間を返します。
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output
+フロントエンドが出力をバッファリングするかどうかチェックします。
 
 public **start** ()
 
-Starts output frontend. Actually, does nothing
+フロントエンドの出力を開始します。 実際には何もしません。
 
 public *string* **getContent** ()
 
-Returns output cached content
+キャッシュしたコンテンツを返します。
 
 public **stop** ()
 
-Stops output frontend
+フロントエンドの出力を停止します。
 
 public **beforeStore** (*mixed* $data)
 
-Serializes data before storing them
+保存する前にデータをシリアライズします。
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrieval
+取得後にデータのシリアライズ化を戻します。
