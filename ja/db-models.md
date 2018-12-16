@@ -7,7 +7,7 @@
           <a href="#creating">モデルの作成</a> 
           <ul>
             <li>
-              <a href="#properties-setters-getters">Public properties vs. Setters/Getters</a>
+              <a href="#properties-setters-getters">パブリックプロバティー VS  セッター/ゲッター</a>
             </li>
           </ul>
         </li>
@@ -107,7 +107,7 @@
 
 ## モデルの作成
 
-A model is a class that extends from `Phalcon\Mvc\Model`. Its class name should be in camel case notation:
+モデルは、`Phalcon\Mvc\Model` から拡張するクラスです。 そのクラス名は、キャメルケース表記にする必要があります:
 
 ```php
 <?php
@@ -124,7 +124,7 @@ class RobotParts extends Model
 
 <div class="alert alert-warning">
     <p>
-        If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation.
+        PHP 5.4/5.5を使用している場合は、メモリを節約しメモリの割り当てを削減するために、一部のモデルは各列を宣言することをお勧めします。
     </p>
 </div>
 
@@ -146,7 +146,7 @@ class RobotParts extends Model
 }
 ```
 
-The model `RobotParts` now maps to `toys_robot_parts` table. The `initialize()` method helps with setting up this model with a custom behavior i.e. a different table.
+モデル `RobotParts` は今 `toys_robot_parts` テーブルにマッピングされています。 `initialize()` メソッドは、カスタムビヘイビア（例えば別のテーブル）などでこのモデルを設定するのに役立ちます。
 
 `initialize()` メソッドはリクエスト時に1度だけ呼ばれます。 このメソッドは、アプリケーション内で作成されたモデルのすべてのインスタンスに適用される、初期化処理を実行するためのものです。 作成されたすべてのインスタンスに対して初期化タスクを実行する場合は、`onConstruct()` メソッドを使用できます。
 
@@ -168,7 +168,7 @@ class RobotParts extends Model
 
 <a name='properties-setters-getters'></a>
 
-### Public properties vs. Setters/Getters
+### パブリックプロバティー VS セッター/ゲッター
 
 モデルはパブリックプロパティとして実装できます。つまり、モデルクラスをインスタンス化したコードの任意の部分から各プロパティを読み込み/更新できます。
 
@@ -253,7 +253,7 @@ class Robots extends Model
 
 <div class="alert alert-warning">
     <p>
-        Underscores in property names can be problematic when using getters and setters.
+        getterとsetterを使用すると、プロパティ名のアンダースコアが問題になることがあります。
     </p>
 </div>
 
@@ -263,7 +263,7 @@ class Robots extends Model
 
 ## オブジェクトへのレコード格納について理解する
 
-Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
+モデルの各インスタンスは、表の行を表します。 オブジェクトのプロパティを読み取ることで、レコードのデータに簡単にアクセスできます。 たとえば、レコードが存在するテーブル 'robots' の場合は、次のようになります:
 
 ```sql
 mysql> select * from robots;
@@ -305,13 +305,13 @@ $robot->name = 'RoboCop';
 $robot->save();
 ```
 
-As you can see, there is no need to use raw SQL statements. `Phalcon\Mvc\Model` provides high database abstraction for web applications.
+ご覧のとおり、生のSQL文を使用する必要はありません。 `Phalcon\Mvc\Model` は、Webアプリケーションのためにデータベースの高い抽象化を提供します。
 
 <a name='finding-records'></a>
 
 ## レコードの検索
 
-`Phalcon\Mvc\Model` also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
+`Phalcon\Mvc\Model` には、レコードを照会するためのいくつかのメソッドもあります。 次の例は、モデルから1つ以上のレコードを照会する方法を示しています:
 
 ```php
 <?php
@@ -409,20 +409,20 @@ $robots = Robots::find(
 
 使用可能なクエリのオプションは次のとおりです:
 
-| パラメーター        | 説明                                                                                                                         | 例                                                                    |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `conditions`  | find時の検索条件。 指定された条件を満たすレコードのみを抽出するために使用されます。 デフォルトでは、 `Phalcon\Mvc\Model` は最初のパラメータが検索条件であることを期待します。                     | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned. | `'columns' => 'id, name'`                                         |
-| `bind`        | bindは、プレースホルダをエスケープ値で置き換えるオプションと一緒に使用されるため、セキュリティが強化されます。                                                                  | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
-| `bindTypes`   | パラメータをバインドする時にこのパラメータを使用すると、バインドされたパラメータをさらに型キャストして、セキュリティをさらに強化することができます。                                                 | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
-| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                 | `'order' => 'name DESC, status'`                                  |
-| `limit`       | クエリの結果を特定の範囲に制限します。                                                                                                        | `'limit' => 10`                                                   |
-| `offset`      | クエリの結果を一定量だけオフセットします。                                                                                                      | `'offset' => 5`                                                   |
-| `group`       | 複数のレコードにわたってデータを収集し、結果を1つ以上の列でグループ化することができます。                                                                              | `'group' => 'name, status'`                                       |
-| `for_update`  | このオプションを指定すると、 `Phalcon\Mvc\Model` は利用可能な最新のデータを読み込み、読み取った各行に対して排他ロックを設定します。                                             | `'for_update' => true`                                            |
-| `shared_lock` | このオプションを指定すると、 `Phalcon\Mvc\Model` は利用可能な最新のデータを読み込み、読み取った各行に対して共有ロックを設定します。                                             | `'shared_lock' => true`                                           |
-| `cache`       | 結果セットをキャッシュし、リレーショナルシステムへの継続的なアクセスを減らします。                                                                                  | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
-| `hydration`   | 結果に返された各レコードを表すためのハイドレーション戦略を設定します。                                                                                        | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
+| パラメーター        | 説明                                                                                                     | 例                                                                    |
+| ------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `conditions`  | find時の検索条件。 指定された条件を満たすレコードのみを抽出するために使用されます。 デフォルトでは、 `Phalcon\Mvc\Model` は最初のパラメータが検索条件であることを期待します。 | `'conditions' => "name LIKE 'steve%'"`                            |
+| `columns`     | モデル内の完全な列の代わりに特定の列を返します。 このオプションを使用すると、不完全なオブジェクトが返されます。                                               | `'columns' => 'id, name'`                                         |
+| `bind`        | bindは、プレースホルダをエスケープ値で置き換えるオプションと一緒に使用されるため、セキュリティが強化されます。                                              | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
+| `bindTypes`   | パラメータをバインドする時にこのパラメータを使用すると、バインドされたパラメータをさらに型キャストして、セキュリティをさらに強化することができます。                             | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
+| `order`       | 結果セットをソートするために使用されます。 1つまたは複数のフィールドをカンマで区切って使用します。                                                     | `'order' => 'name DESC, status'`                                  |
+| `limit`       | クエリの結果を特定の範囲に制限します。                                                                                    | `'limit' => 10`                                                   |
+| `offset`      | クエリの結果を一定量だけオフセットします。                                                                                  | `'offset' => 5`                                                   |
+| `group`       | 複数のレコードにわたってデータを収集し、結果を1つ以上の列でグループ化することができます。                                                          | `'group' => 'name, status'`                                       |
+| `for_update`  | このオプションを指定すると、 `Phalcon\Mvc\Model` は利用可能な最新のデータを読み込み、読み取った各行に対して排他ロックを設定します。                         | `'for_update' => true`                                            |
+| `shared_lock` | このオプションを指定すると、 `Phalcon\Mvc\Model` は利用可能な最新のデータを読み込み、読み取った各行に対して共有ロックを設定します。                         | `'shared_lock' => true`                                           |
+| `cache`       | 結果セットをキャッシュし、リレーショナルシステムへの継続的なアクセスを減らします。                                                              | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
+| `hydration`   | 結果に返された各レコードを表すためのハイドレーション戦略を設定します。                                                                    | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
 必要に応じて、一連のパラメータを使用する代わりに、オブジェクト指向の方法でクエリを作成する方法もあります:
 
@@ -486,24 +486,24 @@ if ($robot) {
 
 ### モデルの結果セット
 
-While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a `Phalcon\Mvc\Model\Resultset\Simple`. This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
+`findFirst()` が呼び出されたクラスのインスタンスを直接返す（返されるデータがある場合）際に、`find()` メソッドは `Phalcon\Mvc\Model\Resultset\Simple` を返します。 これは結果セットを横断したり、特定のレコードを探したり数えたりするような、すべての機能をカプセル化するオブジェクトです。
 
-These objects are more powerful than standard arrays. One of the greatest features of the `Phalcon\Mvc\Model\Resultset` is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
+これらのオブジェクトは、スタンダードな配列よりも強力です。 `Phalcon\Mvc\Model\Resultset` の最大の特徴の1つは、メモリ内には常に1つのレコードしか存在しないということです。 これは特に、大量のデータを扱う場合のメモリ管理に大きく役立ちます。
 
 ```php
 <?php
 
 use Store\Toys\Robots;
 
-// Get all robots
+// 全てのロボットを取得
 $robots = Robots::find();
 
-// Traversing with a foreach
+// foreachで横断する
 foreach ($robots as $robot) {
     echo $robot->name, "\n";
 }
 
-// Traversing with a while
+// whileで横断する
 $robots->rewind();
 
 while ($robots->valid()) {
@@ -514,56 +514,56 @@ while ($robots->valid()) {
     $robots->next();
 }
 
-// Count the resultset
+// 結果セットをカウント
 echo count($robots);
 
-// Alternative way to count the resultset
+// 結果セットをカウントする他の方法
 echo $robots->count();
 
-// Move the internal cursor to the third robot
+// 内部カーソルを3番目のロボットに移動する
 $robots->seek(2);
 
 $robot = $robots->current();
 
-// Access a robot by its position in the resultset
+// 結果セットのあるポジションのロボットにアクセス
 $robot = $robots[5];
 
-// Check if there is a record in certain position
+// 特定の位置にレコードがあるかどうかを確認する
 if (isset($robots[3])) {
    $robot = $robots[3];
 }
 
-// Get the first record in the resultset
+// 結果セットの最初のレコードを取得
 $robot = $robots->getFirst();
 
-// Get the last record
+// 最後のレコードを取得
 $robot = $robots->getLast();
 ```
 
-Phalcon's resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
+Phalconの結果セットはスクロール可能なカーソルをエミュレートします。その位置にアクセスするだけで行を取得したり、特定のポジションへの内部ポインタを探すことができます。 一部のデータベースシステムではスクロール可能なカーソルはサポートされていません。このため、要求されたポジションのレコードを取得するために、カーソルを先頭に戻してクエリを再実行する必要があります。 同様に、結果セットが複数回走査される場合、クエリは同じ回数だけ実行されなければなりません。
 
-As storing large query results in memory could consume many resources, resultsets are obtained from the database in chunks of 32 rows - reducing the need to re-execute the request in several cases.
+大きなクエリ結果をメモリに格納すると、多くのリソースを消費する可能性があります。結果セットは32行のチャンクでデータベースから取得されるため、いくつかのケースではリクエストを再実行する必要性が減ります。
 
-Note that resultsets can be serialized and stored in a cache backend. `Phalcon\Cache` can help with that task. However, serializing data causes `Phalcon\Mvc\Model` to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
+結果セットをシリアライズしてキャッシュバックエンドに格納できることに注意してください。 `Phalcon\Cache` はその課題に役立ちます。 しかし、データをシリアライズすると、 `Phalcon\Mvc\Model` はデータベースからすべてのデータを配列に格納します。したがって、この処理が行われている間に、より多くのメモリを消費してしまいます。
 
 ```php
 <?php
 
-// Query all records from model parts
+// partsモデルからすべてのレコードを照会します
 $parts = Parts::find();
 
-// Store the resultset into a file
+// ファイルに結果セットを保存
 file_put_contents(
     'cache.txt',
     serialize($parts)
 );
 
-// Get parts from file
+// ファイルからpartsを取得
 $parts = unserialize(
     file_get_contents('cache.txt')
 );
 
-// Traverse the parts
+// partsを走査
 foreach ($parts as $part) {
     echo $part->id;
 }
@@ -571,13 +571,13 @@ foreach ($parts as $part) {
 
 <a name='custom-resultsets'></a>
 
-### Custom Resultsets
+### カスタム結果セット
 
-There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning back to the caller usually an array of transformed data.
+アプリケーションのロジックでは、データベースから取得されたデータに対して、追加の操作を必要とすることがあります。 以前は、モデルを拡張して、モデルのクラスやtraitの機能をカプセル化し、通常は変換されたデータの配列を呼び出し側に返すだけでした。
 
-With custom resultsets, you no longer need to do that. The custom resultset will encapsulate the functionality that otherwise would be in the model and can be reused by other models, thus keeping the code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). This way, the `find()` method will no longer return the default `Phalcon\Mvc\Model\Resultset`, but instead the custom one. Phalcon allows you to do this by using the `getResultsetClass()` in your model.
+カスタム結果セットでは、これを行う必要はありません。 カスタム結果セットは、他のモデルになる機能をカプセル化し、他のモデルから再利用することができます。このためコードの [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) が保たれます。 このようにして `find()` メソッドは、デフォルトの `Phalcon\Mvc\Model\Resultset` を返すのではなく、カスタムの結果セットを返します。 Phalconでは、モデル内で `getResultsetClass()` を使用してこれを行うことができます。
 
-First we need to define the resultset class:
+最初に、結果セットのクラスを定義する必要があります:
 
 ```php
 <?php
@@ -594,7 +594,7 @@ class Custom extends Simple
 }
 ```
 
-In the model, we set the class in the `getResultsetClass()` as follows:
+モデルでは、クラスを次のように `getResultsetClass()` に設定します。
 
 ```php
 <?php
@@ -617,13 +617,13 @@ class Robots extends Model
 }
 ```
 
-and finally in your code you will have something like this:
+そして最後にあなたのコードでは、次のようなになります:
 
 ```php
 <?php
 
 /**
- * Find the robots 
+ * robotsの検索
  */
 $robots = Robots::find(
     [
@@ -633,16 +633,16 @@ $robots = Robots::find(
 );
 
 /**
- * Pass the data to the view
+ * データをビューに渡す
  */
 $this->view->mydata = $robots->getSomeData();
 ```
 
 <a name='filters'></a>
 
-### Filtering Resultsets
+### 結果セットのフィルタリング
 
-The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
+データをフィルタリングする最も効率的な方法は、いくつかの検索条件を設定することです。データベースは、テーブルに設定されたインデックスを使用してデータを高速に返します。 Phalconではさらに、データベースでは利用できない機能を、PHPを使うことでデータをフィルタリングすることができます:
 
 ```php
 <?php
@@ -651,7 +651,7 @@ $customers = Customers::find();
 
 $customers = $customers->filter(
     function ($customer) {
-        // Return only customers with a valid e-mail
+        // 有効な電子メールを持っている顧客のみを返します
         if (filter_var($customer->email, FILTER_VALIDATE_EMAIL)) {
             return $customer;
         }
@@ -661,17 +661,17 @@ $customers = $customers->filter(
 
 <a name='binding-parameters'></a>
 
-### Binding Parameters
+### パラメーターのバインド
 
-Bound parameters are also supported in `Phalcon\Mvc\Model`. You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+バインドされたパラメーターは `Phalcon\Mvc\Model` でもサポートしています。 この方法論を使用して、コードがSQLインジェクション攻撃を受けないようにすることをお勧めします。 文字列と整数の両方のプレースホルダがサポートされています。 パラメータのバインドは、以下のように簡単に実施できます:
 
 ```php
 <?php
 
 use Store\Toys\Robots;
 
-// Query robots binding parameters with string placeholders
-// Parameters whose keys are the same as placeholders
+// 文字列プレースホルダを使用してパラメータをバインドするrobotsテーブル用クエリ
+// プレースホルダと同じキーのパラメータ
 $robots = Robots::find(
     [
         'name = :name: AND type = :type:',
@@ -682,7 +682,7 @@ $robots = Robots::find(
     ]
 );
 
-// Query robots binding parameters with integer placeholders
+// 整数のプレースホルダによるパラメータをバインドしたrobotsテーブル用クエリ
 $robots = Robots::find(
     [
         'name = ?1 AND type = ?2',
@@ -693,8 +693,8 @@ $robots = Robots::find(
     ]
 );
 
-// Query robots binding parameters with both string and integer placeholders
-// Parameters whose keys are the same as placeholders
+// 文字列と整数の両方のプレースホルダによるパラメータをバインドしたrobotsテーブル用クエリ
+// プレースホルダと同じキーのパラメータ
 $robots = Robots::find(
     [
         'name = :name: AND type = ?1',
@@ -706,11 +706,11 @@ $robots = Robots::find(
 );
 ```
 
-When using numeric placeholders, you will need to define them as integers i.e. `1` or `2`. In this case `'1'` or `'2'` are considered strings and not numbers, so the placeholder could not be successfully replaced.
+数値プレースホルダを使用する場合は、整数を `1` または `2` として定義する必要があります。 この場合、 `'1'` または `'2'` は文字列であり数字ではないため、プレースホルダを正常に置き換えることができません。
 
-Strings are automatically escaped using [PDO](http://php.net/manual/en/pdo.prepared-statements.php). This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+文字列は [PDO](http://php.net/manual/en/pdo.prepared-statements.php) を使用して自動的にエスケープされます。 この関数は接続文字セットを考慮しているため、接続パラメータまたはデータベースの設定で、正しい文字セットを定義することをお勧めします。データセットを格納または取得するときに間違った文字セットが望ましくない影響を及ぼすためです。
 
-Additionally you can set the parameter `bindTypes`, this allows defining how the parameters should be bound according to its data type:
+さらに、パラメータ `bindTypes` を設定することができます。これにより、データ型に応じてパラメータをバインドする方法を定義できます:
 
 ```php
 <?php
@@ -718,19 +718,19 @@ Additionally you can set the parameter `bindTypes`, this allows defining how the
 use Phalcon\Db\Column;
 use Store\Toys\Robots;
 
-// Bind parameters
+// バインドパラメータ
 $parameters = [
     'name' => 'Robotina',
     'year' => 2008,
 ];
 
-// Casting Types
+// 型キャスト
 $types = [
     'name' => Column::BIND_PARAM_STR,
     'year' => Column::BIND_PARAM_INT,
 ];
 
-// Query robots binding parameters with string placeholders
+// 文字列プレースホルダを使用してパラメータをバインドするrobotsテーブル用クエリ
 $robots = Robots::find(
     [
         'name = :name: AND year = :year:',
@@ -742,11 +742,11 @@ $robots = Robots::find(
 
 <div class="alert alert-warning">
     <p>
-        Since the default bind-type is <code>Phalcon\Db\Column::BIND_PARAM_STR</code>, there is no need to specify the <code>bindTypes</code> parameter if all of the columns are of that type.
+        デフォルトのバインドタイプは <code>Phalcon\Db\Column::BIND_PARAM_STR</code> なので、すべてのカラムがそのタイプの場合は <code>bindTypes</code> パラメータを指定する必要はありません。
     </p>
 </div>
 
-If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
+バインドパラメータに配列をバインドする場合、キーには0から番号を付ける必要があることに注意してください:
 
 ```php
 <?php
@@ -757,7 +757,7 @@ $array = ['a','b','c']; // $array: [[0] => 'a', [1] => 'b', [2] => 'c']
 
 unset($array[1]); // $array: [[0] => 'a', [2] => 'c']
 
-// Now we have to renumber the keys
+// キーの番号を振り直さなければならない
 $array = array_values($array); // $array: [[0] => 'a', [1] => 'c']
 
 $robots = Robots::find(
@@ -772,18 +772,18 @@ $robots = Robots::find(
 
 <div class="alert alert-warning">
     <p>
-        Bound parameters are available for all query methods such as <code>find()</code> and <code>findFirst()</code> but also the calculation methods like <code>count()</code>, <code>sum()</code>, <code>average()</code> etc.
+        バインドされたパラメータは、 <code>find()</code> や <code>findFirst()</code> などのすべてのクエリメソッドで使用でき、 <code>count()</code> 、 <code>sum()</code> 、 <code>average()</code> などの集計関数も同様です。
     </p>
 </div>
 
-If you're using "finders" e.g. `find()`, `findFirst()`, etc., bound parameters are automatically used:
+もし "finders" ( `find()`、 `findFirst()` 、etc) を使用している場合、バインドパラメータは自動的に使用されます:
 
 ```php
 <?php
 
 use Store\Toys\Robots;
 
-// Explicit query using bound parameters
+// バインドパラメータを使用する明示的なクエリ
 $robots = Robots::find(
     [
         'name = ?0',
@@ -793,15 +793,15 @@ $robots = Robots::find(
     ]
 );
 
-// Implicit query using bound parameters
+// バインドパラメータを使用した暗黙的なクエリ
 $robots = Robots::findByName('Ultron');
 ```
 
 <a name='preparing-records'></a>
 
-## Initializing/Preparing fetched records
+## 取得したレコードの初期化/準備
 
-May be the case that after obtaining a record from the database is necessary to initialise the data before being used by the rest of the application. You can implement the `afterFetch()` method in a model, this event will be executed just after create the instance and assign the data to it:
+データベースからレコードを取得した後に、アプリケーションの残りの部分が使用する前にデータを初期化する必要があるかもしれません。 モデル内で `afterFetch()` メソッドを実装することができます。このイベントは、インスタンスを作成してデータを割り当てる直後に実行されます。
 
 ```php
 <?php
@@ -820,25 +820,25 @@ class Robots extends Model
 
     public function beforeSave()
     {
-        // Convert the array into a string
+        // 配列を文字列に変換
         $this->status = join(',', $this->status);
     }
 
     public function afterFetch()
     {
-        // Convert the string to an array
+        // 文字列を配列に変換
         $this->status = explode(',', $this->status);
     }
 
     public function afterSave()
     {
-        // Convert the string to an array
+        // 文字列を配列に変換
         $this->status = explode(',', $this->status);
     }
 }
 ```
 
-If you use getters/setters instead of/or together with public properties, you can initialize the field once it is accessed:
+publicプロパティの代わり、もしくは一緒にgetters/settersを使用する場合、一度アクセスされたフィールドを初期化することができます:
 
 ```php
 <?php
@@ -864,31 +864,31 @@ class Robots extends Model
 
 <a name='calculations'></a>
 
-## Generating Calculations
+## 集計の生成
 
-Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. `Phalcon\Mvc\Model` allows to use these functions directly from the exposed methods.
+計算（集計）は、データベースシステムで一般に使用される、`COUNT` 、 `SUM` 、 `MAX` 、 `MIN` 、 `AVG` などの関数のヘルパーです。 `Phalcon\Mvc\Model` では、公開されたメソッドから直接これらの関数を使用することができます。
 
-Count examples:
+countの例:
 
 ```php
 <?php
 
-// How many employees are?
+// 従業員は何名？
 $rowcount = Employees::count();
 
-// How many different areas are assigned to employees?
+// 従業員に割り当てられる担当はいくつあるか？
 $rowcount = Employees::count(
     [
         'distinct' => 'area',
     ]
 );
 
-// How many employees are in the Testing area?
+// 検査担当の従業員は何名いるか？
 $rowcount = Employees::count(
     'area = 'Testing''
 );
 
-// Count employees grouping results by their area
+// 担当別にグルーピングした結果で従業員をカウントする
 $group = Employees::count(
     [
         'group' => 'area',
@@ -898,7 +898,7 @@ foreach ($group as $row) {
    echo 'There are ', $row->rowcount, ' in ', $row->area;
 }
 
-// Count employees grouping by their area and ordering the result by count
+// 従業員を担当別にグルーピングしてカウントし、件数で結果を並び替える
 $group = Employees::count(
     [
         'group' => 'area',
@@ -906,7 +906,7 @@ $group = Employees::count(
     ]
 );
 
-// Avoid SQL injections using bound parameters
+// バインドされたパラメータを使用してSQLインジェクションを避ける
 $group = Employees::count(
     [
         'type > ?0',
@@ -917,19 +917,19 @@ $group = Employees::count(
 );
 ```
 
-Sum examples:
+sumの例:
 
 ```php
 <?php
 
-// How much are the salaries of all employees?
+// 全従業員の給与はいくらか？
 $total = Employees::sum(
     [
         'column' => 'salary',
     ]
 );
 
-// How much are the salaries of all employees in the Sales area?
+// 全ての営業担当の給与はいくらか？
 $total = Employees::sum(
     [
         'column'     => 'salary',
@@ -937,7 +937,7 @@ $total = Employees::sum(
     ]
 );
 
-// Generate a grouping of the salaries of each area
+// 各担当ごとの給与のグルーピングを生成する
 $group = Employees::sum(
     [
         'column' => 'salary',
@@ -948,8 +948,8 @@ foreach ($group as $row) {
    echo 'The sum of salaries of the ', $row->area, ' is ', $row->sumatory;
 }
 
-// Generate a grouping of the salaries of each area ordering
-// salaries from higher to lower
+// 各担当ごとの給与のグルーピングを生成して
+// 給与が高いものから低いものへ並べる
 $group = Employees::sum(
     [
         'column' => 'salary',
@@ -958,7 +958,7 @@ $group = Employees::sum(
     ]
 );
 
-// Avoid SQL injections using bound parameters
+// バインドされたパラメータを使用してSQLインジェクションを避ける
 $group = Employees::sum(
     [
         'conditions' => 'area > ?0',
@@ -969,19 +969,19 @@ $group = Employees::sum(
 );
 ```
 
-Average examples:
+averageの例:
 
 ```php
 <?php
 
-// What is the average salary for all employees?
+// 全従業員の平均給与はいくらか？
 $average = Employees::average(
     [
         'column' => 'salary',
     ]
 );
 
-// What is the average salary for the Sales's area employees?
+// 営業担当者の平均給与はいくらか？
 $average = Employees::average(
     [
         'column'     => 'salary',
@@ -989,7 +989,7 @@ $average = Employees::average(
     ]
 );
 
-// Avoid SQL injections using bound parameters
+// バインドされたパラメータを使用してSQLインジェクションを避ける
 $average = Employees::average(
     [
         'column'     => 'age',
@@ -1001,19 +1001,19 @@ $average = Employees::average(
 );
 ```
 
-Max/Min examples:
+max/min の例:
 
 ```php
 <?php
 
-// What is the oldest age of all employees?
+// 全従業員で最年長は？
 $age = Employees::maximum(
     [
         'column' => 'age',
     ]
 );
 
-// What is the oldest of employees from the Sales area?
+// 全ての営業担当で最年長は？
 $age = Employees::maximum(
     [
         'column'     => 'age',
@@ -1021,7 +1021,7 @@ $age = Employees::maximum(
     ]
 );
 
-// What is the lowest salary of all employees?
+// 全従業員中の最低給与は？
 $salary = Employees::minimum(
     [
         'column' => 'salary',
@@ -1031,11 +1031,11 @@ $salary = Employees::minimum(
 
 <a name='create-update-records'></a>
 
-## Creating/Updating Records
+## レコードの登録と更新
 
-The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The `save()` method is called internally by the `create` and `update` methods of `Phalcon\Mvc\Model`. For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
+`Phalcon\Mvc\Model::save()` メソッドを使用すると、モデルに関連付けられたテーブルにレコードがすでに存在するかどうかによってレコードを作成/更新できます。 `save()` メソッドは、`Phalcon\Mvc\Model` の `create` と `update` メソッドによって内部的に呼び出されます。 これが期待どおりに機能するためには、レコードを更新または作成するかどうかを判断するために、主キーをエンティティに適切に定義する必要があります。
 
-Also the method executes associated validators, virtual foreign keys and events that are defined in the model:
+またこのメソッドはモデルで定義されている関連付けられたバリデータ、仮想外部キー、およびイベントを実行します。
 
 ```php
 <?php
@@ -1061,7 +1061,7 @@ if ($robot->save() === false) {
 }
 ```
 
-An array could be passed to `save` to avoid assign every column manually. `Phalcon\Mvc\Model` will check if there are setters implemented for the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
+すべての列を手動で割り当てるのを避けるために、配列を `save` に渡すことができます。 `Phalcon\Mvc\Model` は、アトリビュートの値を直接代入するのではなく、配列に渡されたカラムに対してセッターが実装されているかどうかをチェックします。
 
 ```php
 <?php
@@ -1079,7 +1079,7 @@ $robot->save(
 );
 ```
 
-Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass an insecure array without worrying about possible SQL injections:
+直接または属性の配列を介して割り当てられた値は、関連する属性データ型に従ってエスケープ/サニタイズされます。 SQLインジェクションを心配することなく、安全でない配列を渡すことができます:
 
 ```php
 <?php
@@ -1093,11 +1093,11 @@ $robot->save($_POST);
 
 <div class="alert alert-warning">
     <p>
-        Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form.
+        脆弱性対策に注意を払わないと、攻撃者はデータベースの列の値を設定できてしまいます。 これらのフィールドが送信されたフォームにない場合でも、モデルのすべての列を挿入/更新できるようにする場合にのみ、この機能を使用します。
     </p>
 </div>
 
-You can set an additional parameter in `save` to set a whitelist of fields that only must taken into account when doing the mass assignment:
+`save` に追加のパラメータを設定して、脆弱性対策を行う際に考慮する必要があるフィールドの、ホワイトリストを設定することができます。
 
 ```php
 <?php
@@ -1117,9 +1117,9 @@ $robot->save(
 
 <a name='create-update-with-confidence'></a>
 
-### Create/Update with Confidence
+### 確実に作成／更新する
 
-When an application has a lot of competition, we could be expecting create a record but it is actually updated. This could happen if we use `Phalcon\Mvc\Model::save()` to persist the records in the database. If we want to be absolutely sure that a record is created or updated, we can change the `save()` call with `create()` or `update()`:
+アプリケーションの負荷が高い時には、レコードが作成されることを期待しているにも関わらず、更新されてしまう場合があります。 これは、 `Phalcon\Mvc\Model::save()` を使用してデータベースのレコードに永続化する際に発生します。 レコードの作成や更新を確実に行いたい場合は、`save()` の代わりに `create()` や `update()` の呼び出しに変更できます。
 
 ```php
 <?php
@@ -1132,7 +1132,7 @@ $robot->type = 'mechanical';
 $robot->name = 'Astro Boy';
 $robot->year = 1952;
 
-// This record only must be created
+// このレコードは作成されなければいけない
 if ($robot->create() === false) {
     echo "Umh, We can't store robots right now: \n";
 
@@ -1146,13 +1146,13 @@ if ($robot->create() === false) {
 }
 ```
 
-The methods `create` and `update` also accept an array of values as parameter.
+`create` と `update` メソッドは、値の配列をパラメータとして受け入れます。
 
 <a name='delete-records'></a>
 
-## Deleting Records
+## レコードの削除
 
-The `Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
+`Phalcon\Mvc\Model::delete()` メソッドは、レコードを削除することを可能にします。 次のように使用できます:
 
 ```php
 <?php
@@ -1176,7 +1176,7 @@ if ($robot !== false) {
 }
 ```
 
-You can also delete many records by traversing a resultset with a `foreach`:
+`foreach` を使用して結果セットを横断することで、多くのレコードを削除することもできます。
 
 ```php
 <?php
@@ -1202,14 +1202,14 @@ foreach ($robots as $robot) {
 }
 ```
 
-The following events are available to define custom business rules that can be executed when a delete operation is performed:
+削除が処理される際に、カスタムビジネスルールの実行を定義するには、次のイベントを使用します。
 
-| Operation | Name         | Can stop operation? | Explanation                              |
-| --------- | ------------ |:-------------------:| ---------------------------------------- |
-| Deleting  | afterDelete  |         No          | Runs after the delete operation was made |
-| Deleting  | beforeDelete |         Yes         | Runs before the delete operation is made |
+| 操作 | 名前           | 処理中断が可能 | 説明                 |
+| -- | ------------ |:-------:| ------------------ |
+| 削除 | afterDelete  |   いいえ   | 削除処理が行われた後に実行されます。 |
+| 削除 | beforeDelete |   はい    | 削除処理が行われる前に実行されます。 |
 
-With the above events can also define business rules in the models:
+上記のイベントを使用すると、ビジネスルールをモデルで定義することもできます:
 
 ```php
 <?php
@@ -1235,9 +1235,9 @@ class Robots extends Model
 
 <a name='hydration-modes'></a>
 
-## Hydration Modes
+## ハイドレーションモード
 
-As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object representing a row in the database. These objects can be modified and saved again to persistence:
+前述のように、結果セットは完全なオブジェクトの集合です。つまり、返される結果はすべて、データベース内の行を表すオブジェクトです。 これらのオブジェクトは変更して、再び永続的に保存することができます:
 
 ```php
 <?php
@@ -1246,7 +1246,7 @@ use Store\Toys\Robots;
 
 $robots = Robots::find();
 
-// Manipulating a resultset of complete objects
+// 完全なオブジェクトの結果セットを操作する
 foreach ($robots as $robot) {
     $robot->year = 2000;
 
@@ -1254,7 +1254,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-Sometimes records are obtained only to be presented to a user in read-only mode, in these cases it may be useful to change the way in which records are represented to facilitate their handling. The strategy used to represent objects returned in a resultset is called 'hydration mode':
+時として、ユーザーに対して読み取り専用モードでレコードを取得させることがあります。このような場合、レコードの表示方法を変更して処理を簡単にすると便利です。 結果セットとして返されるオブジェクトを指定する方法は、「ハイドレーションモード」と呼ばれます:
 
 ```php
 <?php
@@ -1264,7 +1264,7 @@ use Store\Toys\Robots;
 
 $robots = Robots::find();
 
-// Return every robot as an array
+// すべてのrobotを配列として返す
 $robots->setHydrateMode(
     Resultset::HYDRATE_ARRAYS
 );
@@ -1273,7 +1273,7 @@ foreach ($robots as $robot) {
     echo $robot['year'], PHP_EOL;
 }
 
-// Return every robot as a stdClass
+// すべてのrobotを標準クラスとして返す
 $robots->setHydrateMode(
     Resultset::HYDRATE_OBJECTS
 );
@@ -1282,7 +1282,7 @@ foreach ($robots as $robot) {
     echo $robot->year, PHP_EOL;
 }
 
-// Return every robot as a Robots instance
+// すべてのrobotをRobotsインスタンスとして返す
 $robots->setHydrateMode(
     Resultset::HYDRATE_RECORDS
 );
@@ -1292,7 +1292,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-Hydration mode can also be passed as a parameter of `find`:
+ハイドレーションモードは、 `find` のパラメーターとして渡すこともできます:
 
 ```php
 <?php
@@ -1313,9 +1313,9 @@ foreach ($robots as $robot) {
 
 <a name='table-prefixes'></a>
 
-## Table prefixes
+## テーブル名のプレフィックス
 
-If you want all your tables to have certain prefix and without setting source in all models you can use the `Phalcon\Mvc\Model\Manager` and the method `setModelPrefix()`:
+すべてのテーブルに特定のプレフィックスがあり、ソースを設定しない場合は、 すべてのモデルに対して `Phalcon\Mvc\Model\Manager` の `setModelPrefix()` メソッドが使用できます:
 
 ```php
 <?php
@@ -1331,14 +1331,14 @@ class Robots extends Model
 $manager = new Manager();
 $manager->setModelPrefix('wp_');
 $robots = new Robots(null, null, $manager);
-echo $robots->getSource(); // will return wp_robots
+echo $robots->getSource(); // wp_robotsが返される
 ```
 
 <a name='identity-columns'></a>
 
-## Auto-generated identity columns
+## 自動生成された id 列
 
-Some models may have identity columns. These columns usually are the primary key of the mapped table. `Phalcon\Mvc\Model` can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
+一部のモデルにはID列があります。 これらの列は通常、マッピングされた表の主キーです。 `Phalcon\Mvc\Model` は、生成されるSQLの `INSERT` 文のID列を省略できるため、データベースシステムの自動生成値を利用することができます。 レコードを作成した後は常に、IDフィールドはデータベースシステムで生成された値が設定されます:
 
 ```php
 <?php
@@ -1348,9 +1348,9 @@ $robot->save();
 echo 'The generated id is: ', $robot->id;
 ```
 
-`Phalcon\Mvc\Model` is able to recognize the identity column. Depending on the database system, those columns may be serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
+`Phalcon\Mvc\Model` はID列を認識できます。 データベースシステムによっては、PostgreSQLのようなシリアルカラムや、MySQLの場合はauto_incrementカラムがあります。
 
-PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence `table_field_seq`, for example: `robots_id_seq`, if that sequence has a different name, the `getSequenceName()` method needs to be implemented:
+PostgreSQLはシーケンスを使って自動数値を生成しますが、Phalconはシーケンス `table_field_seq` から生成された値を取得しようとします。例えば: `robots_id_seq`。そのシーケンスの名前が異なる場合は、 `getSequenceName()` メソッドを実装する必要があります。
 
 ```php
 <?php
@@ -1370,9 +1370,9 @@ class Robots extends Model
 
 <a name='skipping-columns'></a>
 
-## Skipping Columns
+## カラムをスキップ
 
-To tell `Phalcon\Mvc\Model` that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
+トリガーまたはデフォルトによる値の割り当てをデータベースシステムに委譲するために、レコードの作成や更新時にいくつかのフィールドを常に省略することを `Phalcon\Mvc\Model` に伝えます:
 
 ```php
 <?php
@@ -1385,7 +1385,7 @@ class Robots extends Model
 {
     public function initialize()
     {
-        // Skips fields/columns on both INSERT/UPDATE operations
+        // INSERT / UPDATE操作の両方でフィールド/列をスキップします。
         $this->skipAttributes(
             [
                 'year',
@@ -1393,14 +1393,14 @@ class Robots extends Model
             ]
         );
 
-        // Skips only when inserting
+        // INSERT時のみスキップする
         $this->skipAttributesOnCreate(
             [
                 'created_at',
             ]
         );
 
-        // Skips only when updating
+        // UPDATE時のみスキップする
         $this->skipAttributesOnUpdate(
             [
                 'modified_in',
@@ -1410,10 +1410,9 @@ class Robots extends Model
 }
 ```
 
-This will ignore globally these fields on each `INSERT`/`UPDATE` operation on the whole application. If you want to ignore different attributes on different `INSERT`/`UPDATE` operations, you can specify the second parameter (boolean) - `true` for replacement. Forcing a default value can be done as follows:
+これにより各 `INSERT` / `UPDATE` 操作に対して、アプリケーション全体でこれらのフィールドが無視されます。 `INSERT` / `UPDATE` で異なる属性を無視する場合は、置換のために2番目のパラメータ（ブール値） - ` true </ 0>を指定できます。 デフォルト値を強制するには、次のようにします:</p>
 
-```php
-<?php
+<pre><code class="php"><?php
 
 use Store\Toys\Robots;
 
@@ -1426,9 +1425,9 @@ $robot->year       = 1999;
 $robot->created_at = new RawValue('default');
 
 $robot->create();
-```
+`</pre> 
 
-A callback also can be used to create a conditional assignment of automatic default values:
+コールバックを使用して、自動デフォルト値の条件付き割り当てを作成することもできます:
 
 ```php
 <?php
@@ -1451,19 +1450,19 @@ class Robots extends Model
 
 <div class="alert alert-danger">
     <p>
-        Never use a <a href="/[[language]]/[[version]]/api/Phalcon_Db_RawValue">Phalcon\Db\RawValue</a> to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL.
+        <a href="/[[language]]/[[version]]/api/Phalcon_Db_RawValue">Phalcon\Db\RawValue</a> を使用して、外部データ（ユーザー入力など）または可変データを割り当てないでください。 これらのフィールドの値は、パラメータをクエリにバインドするときは無視されます。 したがって、アプリケーション にSQLインジェクション攻撃できるようになってしまいます。
     </p>
 </div>
 
 <a name='dynamic-updates'></a>
 
-## Dynamic Updates
+## ダイナミックアップデート
 
-SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
+SQLの `UPDATE` ステートメントはデフォルトで、モデルに定義されたすべての列に対して作成されます（全フィールドの更新SQL）。 特定のモデルを変更して動的に更新を行うことができます。この場合、変更されたフィールドだけが最終的なSQL文の作成に使用されます。
 
-In some cases this could improve the performance by reducing the traffic between the application and the database server, this specially helps when the table has blob/text fields:
+場合によっては、アプリケーションとデータベースサーバー間のトラフィックを減らすことでパフォーマンスを向上させることができます。これは、テーブルにBLOB /テキストフィールドがある場合に特に役立ちます:
 
-**NOTE:** Enabling Dynamic updates implicitly enables record snapshots. See [Record Snapshots](#record-snapshots) for more information.
+**注:** 動的更新を有効にすると、暗黙的にレコードスナップショットが有効になります。 詳細は、 [スナップショットの記録](#record-snapshots) を参照してください。
 
 ```php
 <?php
@@ -1483,9 +1482,9 @@ class Robots extends Model
 
 <a name='column-mapping'></a>
 
-## Independent Column Mapping
+## 独立したカラムマッピング
 
-The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
+ORMは、独立したカラムマッピングをサポートしています。これにより開発者は、テーブルのカラム名とは別の名前をモデル内のカラム名として使用することができます。 Phalconは新しいカラム名を認識し、データベースのそれぞれのカラムと一致するように名前を変更します。 これは、コード内のすべてのクエリについて心配することなく、データベース内のフィールドの名前を変更する必要がある場合に便利な機能です。 モデル内のカラムのマッピング変更により、残りの部分が処理されます。 例えば:
 
 ```php
 <?php
@@ -1506,8 +1505,8 @@ class Robots extends Model
 
     public function columnMap()
     {
-        // Keys are the real names in the table and
-        // the values their names in the application
+        // キーはテーブル内の実際の名前
+        // 値はアプリケーション内の名前
         return [
             'id'       => 'code',
             'the_name' => 'theName',
@@ -1518,21 +1517,21 @@ class Robots extends Model
 }
 ```
 
-Then you can use the new names naturally in your code:
+次に、あなたのコードで新しい名前を自然に使うことができます:
 
 ```php
 <?php
 
 use Store\Toys\Robots;
 
-// Find a robot by its name
+// 名前でrobotを見つける
 $robot = Robots::findFirst(
     "theName = 'Voltron'"
 );
 
 echo $robot->theName, "\n";
 
-// Get robots ordered by type
+// タイプで並び替えてrobotを取得
 $robot = Robots::find(
     [
         'order' => 'theType DESC',
@@ -1543,7 +1542,7 @@ foreach ($robots as $robot) {
     echo 'Code: ', $robot->code, "\n";
 }
 
-// Create a robot
+// robotを作成
 $robot = new Robots();
 
 $robot->code    = '10101';
@@ -1554,22 +1553,22 @@ $robot->theYear = 2999;
 $robot->save();
 ```
 
-Consider the following when renaming your columns:
+列の名前を変更するときは、次の点を考慮してください:
 
-* References to attributes in relationships/validators must use the new names
-* Refer the real column names will result in an exception by the ORM
+* リレーションやバリデータの属性への参照は、新しい名前を使用する必要があります
+* 実際の列名を参照すると、ORMによる例外が発生します
 
-The independent column map allows you to:
+独立したカラムマッピングは以下を可能にします:
 
-* Write applications using your own conventions
-* Eliminate vendor prefixes/suffixes in your code
-* Change column names without change your application code
+* 独自の規則を使用してアプリケーションを記述する
+* コード内のベンダー接頭辞/接尾辞を排除する
+* アプリケーションコードを変更せずに列名を変更する
 
 <a name='record-snapshots'></a>
 
-## Record Snapshots
+## レコードのスナップショット
 
-Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what fields are changed according to the data queried from the persistence:
+特定のモデルはクエリーを実行した際に、レコードのスナップショットを維持するように設定できます。 この機能を使用して、監査を実装したり、永続データの照会時にどのフィールドが変更されるかを知ることができます。
 
 ```php
 <?php
@@ -1587,17 +1586,17 @@ class Robots extends Model
 }
 ```
 
-When activating this feature the application consumes a bit more of memory to keep track of the original values obtained from the persistence. In models that have this feature activated you can check what fields changed as follows:
+この機能を有効にすると、アプリケーションは永続データから取得した元の値を追跡するために、少しだけメモリを消費します。 この機能が有効になっているモデルでは、次のように変更されたフィールドを確認できます:
 
 ```php
 <?php
 
 use Store\Toys\Robots;
 
-// Get a record from the database
+// データベースからレコードを取得する
 $robot = Robots::findFirst();
 
-// Change a column
+// 列を変更する
 $robot->name = 'Other name';
 
 var_dump($robot->getChangedFields()); // ['name']
@@ -1607,9 +1606,9 @@ var_dump($robot->hasChanged('name')); // true
 var_dump($robot->hasChanged('type')); // false
 ```
 
-Snapshots are updated on model creation/update. Using `hasUpdated()` and `getUpdatedFields()` can be used to check if fields were updated after a create/save/update but it could potentially cause problems to your application if you execute `getChangedFields()` in `afterUpdate()`, `afterSave()` or `afterCreate()`.
+スナップショットは、モデルの作成/更新時に更新されます。 作成/保存/更新後にフィールドが更新されたかどうかを確認するには、 `hasUpdated()` および `getUpdatedFields()` を使用できます。 しかし `getUpdatedFields()` を `afterUpdate()` 、 `afterSave()` 、 `afterCreate()` の中で実行すると、アプリケーションに問題を引き起こす可能性があります
 
-You can disable this functionality by using:
+この機能を無効にするには、次のコマンドを使用します:
 
 ```php
 Phalcon\Mvc\Model::setup(
@@ -1619,13 +1618,13 @@ Phalcon\Mvc\Model::setup(
 );
 ```
 
-or if you prefer set this in your `php.ini`
+または `php.ini` でこれを設定したい場合は、
 
 ```ini
 phalcon.orm.update_snapshot_on_save = 0
 ```
 
-Using this functionality will have the following effect:
+この機能を使用すると、次のような効果があります:
 
 ```php
 <?php
@@ -1650,7 +1649,7 @@ $user->update();
 var_dump($user->getChangedFields());
 ```
 
-On Phalcon 3.1.0 and later it is:
+Phalcon 3.1.0以降では:
 
 ```php
 array(0) {
@@ -1663,13 +1662,13 @@ array(0) {
 }
 ```
 
-`getUpdatedFields()` will properly return updated fields or as mentioned above you can go back to the previous behavior by setting the relevant ini value.
+` getUpdatedFields()` は更新されたフィールドを適切に返しますが、上記のように関連するini値を設定することで前の動作に戻ることもできます。
 
 <a name='different-schemas'></a>
 
-## Pointing to a different schema
+## 別のスキーマを指す
 
-If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
+モデルが、デフォルトとは異なるスキーマやデータベースのテーブルにマップされている場合。 `setSchema()` メソッドを使用して、以下を定義できます:
 
 ```php
 <?php
@@ -1689,9 +1688,9 @@ class Robots extends Model
 
 <a name='multiple-databases'></a>
 
-## Setting multiple databases
+## 複数のデータベースを設定
 
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Model` needs to connect to the database it requests the `db` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
+Phalconでは、すべてのモデルが同じデータベース接続に属しているか、個別のものを持つことができます。 実際には、 `Phalcon\Mvc\Model` がデータベースに接続する必要があるとき、アプリケーションのサービスコンテナの `db` サービスを要求します。 このサービス設定は、 `initialize()` メソッドで上書きできます。
 
 ```php
 <?php
@@ -1699,7 +1698,7 @@ In Phalcon, all models can belong to the same database connection or have an ind
 use Phalcon\Db\Adapter\Pdo\Mysql as MysqlPdo;
 use Phalcon\Db\Adapter\Pdo\PostgreSQL as PostgreSQLPdo;
 
-// This service returns a MySQL database
+// このサービスはMySQLデータベースを返す
 $di->set(
     'dbMysql',
     function () {
@@ -1714,7 +1713,7 @@ $di->set(
     }
 );
 
-// This service returns a PostgreSQL database
+// このサービスはPostgreSQLデータベースを返します
 $di->set(
     'dbPostgres',
     function () {
@@ -1730,7 +1729,7 @@ $di->set(
 );
 ```
 
-Then, in the `initialize()` method, we define the connection service for the model:
+次に、 `initialize()` メソッドで、モデルの接続サービスを定義します:
 
 ```php
 <?php
@@ -1748,7 +1747,7 @@ class Robots extends Model
 }
 ```
 
-But Phalcon offers you more flexibility, you can define the connection that must be used to `read` and for `write`. This is specially useful to balance the load to your databases implementing a master-slave architecture:
+しかし、Phalconはあなたにもっと柔軟性を提供します。あなたは `read` と `write` に使わなければならない接続を定義できます。 これは、マスタとスレーブのアーキテクチャを実装するデータベースと負荷のバランスをとるのに特に役立ちます:
 
 ```php
 <?php
@@ -1768,7 +1767,7 @@ class Robots extends Model
 }
 ```
 
-The ORM also provides Horizontal Sharding facilities, by allowing you to implement a 'shard' selection according to the current query conditions:
+ORMは、現在のクエリ条件に従って「シャード」選択を実装できるようにすることで、Horizontal Sharding機能も提供します。
 
 ```php
 <?php
@@ -1780,7 +1779,7 @@ use Phalcon\Mvc\Model;
 class Robots extends Model
 {
     /**
-     * Dynamically selects a shard
+     * シャードを動的に選択
      *
      * @param array $intermediate
      * @param array $bindParams
@@ -1788,11 +1787,11 @@ class Robots extends Model
      */
     public function selectReadConnection($intermediate, $bindParams, $bindTypes)
     {
-        // Check if there is a 'where' clause in the select
+        // select文に 'where' 句があるかどうかを確認する
         if (isset($intermediate['where'])) {
             $conditions = $intermediate['where'];
 
-            // Choose the possible shard according to the conditions
+            // 条件に応じて可能なシャードを選択する
             if ($conditions['left']['name'] === 'id') {
                 $id = $conditions['right']['value'];
 
@@ -1806,13 +1805,13 @@ class Robots extends Model
             }
         }
 
-        // Use a default shard
+        // デフォルトのシャードを使用する
         return $this->getDI()->get('dbShard0');
     }
 }
 ```
 
-The `selectReadConnection()` method is called to choose the right connection, this method intercepts any new query executed:
+`selectReadConnection()` メソッドは、正しい接続を選択するために呼び出されます。このメソッドは、実行された新しいクエリをインターセプトします:
 
 ```php
 <?php
@@ -1824,9 +1823,9 @@ $robot = Robots::findFirst('id = 101');
 
 <a name='injecting-services-into-models'></a>
 
-## Injecting services into Models
+## モデルへのサービスインジェクション
 
-You may be required to access the application services within a model, the following example explains how to do that:
+モデル内でアプリケーションサービスにアクセスする必要がある場合があります。次の例は、その方法を説明しています:
 
 ```php
 <?php
@@ -1839,12 +1838,12 @@ class Robots extends Model
 {
     public function notSaved()
     {
-        // Obtain the flash service from the DI container
+        // DIコンテナからflashサービスを取得する
         $flash = $this->getDI()->getFlash();
 
         $messages = $this->getMessages();
 
-        // Show validation messages
+        // バリデーションメッセージを表示
         foreach ($messages as $message) {
             $flash->error($message);
         }
@@ -1852,13 +1851,13 @@ class Robots extends Model
 }
 ```
 
-The `notSaved` event is triggered every time that a `create` or `update` action fails. So we're flashing the validation messages obtaining the `flash` service from the DI container. By doing this, we don't have to print messages after each save.
+`notSaved` イベントは、`create` または `update` アクションが失敗するたびにトリガーされます。 そしてDIコンテナから `flash` サービスを取得して、バリデーションメッセージをフラッシュさせます。 これにより、保存後に毎回メッセージを出力する必要が無くなります。
 
 <a name='disabling-enabling-features'></a>
 
-## Disabling/Enabling Features
+## 機能の有効/無効
 
-In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly. According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
+ORMでは、特定の機能やオプションをオンザフライでグローバルに有効/無効にする仕組みを実装しました。 ORMの使い方に応じて、使用していないものを無効にすることができます。 これらのオプションは、必要に応じて一時的に無効にすることもできます。
 
 ```php
 <?php
@@ -1873,41 +1872,41 @@ Model::setup(
 );
 ```
 
-The available options are:
+使用可能なオプションは次のとおりです:
 
-| Option                | Description                                                                               | Default |
-| --------------------- | ----------------------------------------------------------------------------------------- |:-------:|
-| astCache              | Enables/Disables callbacks, hooks and event notifications from all the models             | `null`  |
-| cacheLevel            | Sets the cache level for the ORM                                                          |   `3`   |
-| castOnHydrate         |                                                                                           | `false` |
-| columnRenaming        | Enables/Disables the column renaming                                                      | `true`  |
-| disableAssignSetters  | Allow disabling setters in your model                                                     | `false` |
-| enableImplicitJoins   |                                                                                           | `true`  |
-| enableLiterals        |                                                                                           | `true`  |
-| escapeIdentifiers     |                                                                                           | `true`  |
-| events                | Enables/Disables callbacks, hooks and event notifications from all the models             | `true`  |
-| exceptionOnFailedSave | Enables/Disables throwing an exception when there is a failed `save()`                    | `false` |
-| forceCasting          |                                                                                           | `false` |
-| ignoreUnknownColumns  | Enables/Disables ignoring unknown columns on the model                                    | `false` |
-| lateStateBinding      | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method | `false` |
-| notNullValidations    | The ORM automatically validate the not null columns present in the mapped table           | `true`  |
-| parserCache           |                                                                                           | `null`  |
-| phqlLiterals          | Enables/Disables literals in the PHQL parser                                              | `true`  |
-| uniqueCacheId         |                                                                                           |   `3`   |
-| updateSnapshotOnSave  | Enables/Disables updating snapshots on `save()`                                           | `true`  |
-| virtualForeignKeys    | Enables/Disables the virtual foreign keys                                                 | `true`  |
+| オプション                 | 説明                                                                 |  デフォルト  |
+| --------------------- | ------------------------------------------------------------------ |:-------:|
+| astCache              | すべてのモデルのコールバック、フック、イベント通知を有効/無効にする                                 | `null`  |
+| cacheLevel            | ORMのキャッシュレベルを設定します。                                                |   `3`   |
+| castOnHydrate         |                                                                    | `false` |
+| columnRenaming        | 列名の変更を有効または無効にします。                                                 | `true`  |
+| disableAssignSetters  | モデル内のセッターを無効にすることを許可する                                             | `false` |
+| enableImplicitJoins   |                                                                    | `true`  |
+| enableLiterals        |                                                                    | `true`  |
+| escapeIdentifiers     |                                                                    | `true`  |
+| events                | すべてのモデルのコールバック、フック、イベント通知を有効/無効にする                                 | `true`  |
+| exceptionOnFailedSave | 失敗した `save()` が存在する場合に例外をスローするかどうかを設定します。                          | `false` |
+| forceCasting          |                                                                    | `false` |
+| ignoreUnknownColumns  | モデル上の未知の列の無視を有効または無効にする                                            | `false` |
+| lateStateBinding      | `Phalcon\Mvc\Model::cloneResultMap()` メソッドの遅延バインディングを有効または無効にします | `false` |
+| notNullValidations    | ORMは、マップされた表に存在するNOT NULL列を自動的に検証します                               | `true`  |
+| parserCache           |                                                                    | `null`  |
+| phqlLiterals          | PHQLパーサのリテラルを有効/無効にする                                              | `true`  |
+| uniqueCacheId         |                                                                    |   `3`   |
+| updateSnapshotOnSave  | `save()` でスナップショットの更新を有効または無効にします。                                 | `true`  |
+| virtualForeignKeys    | 仮想外部キーを有効/無効にします。                                                  | `true`  |
 
 <div class="alert alert-warning">
     <p>
-        <strong>NOTE</strong> <code>Phalcon\Mvc\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding <code>phalcon.orm.disable_assign_setters = 1</code> to your ini file, it will just simply use <code>$this->property = value</code>.
+        <strong>備考</strong> <code>Phalcon\Mvc\Model::assign()</code> （モデルの作成/更新/保存時にも使用されます）は、データ引数が渡されたときには常にセッターが使われます。 これにより、アプリケーションにオーバーヘッドが追加されます。 この動作を変更するには、 <code>phalcon.orm.disable_assign_setters = 1</code> をiniファイルに追加します。これは単に <code>$this->property = value</code> を使用するだけです。
     </p>
 </div>
 
 <a name='stand-alone-component'></a>
 
-## Stand-Alone component
+## 独立コンポーネント
 
-Using `Phalcon\Mvc\Model` in a stand-alone mode can be demonstrated below:
+スタンドアロンモードで `Phalcon\Mvc\Model` を使用すると、以下のようになります。
 
 ```php
 <?php
@@ -1920,7 +1919,7 @@ use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
 
 $di = new Di();
 
-// Setup a connection
+// コネクションの初期化
 $di->set(
     'db',
     new Connection(
@@ -1930,24 +1929,24 @@ $di->set(
     )
 );
 
-// Set a models manager
+// モデルマネージャを設定する
 $di->set(
     'modelsManager',
     new ModelsManager()
 );
 
-// Use the memory meta-data adapter or other
+// メタデータ記憶アダプターなどを使用する
 $di->set(
     'modelsMetadata',
     new MetaData()
 );
 
-// Create a model
+// モデルを作成する
 class Robots extends Model
 {
 
 }
 
-// Use the model
+// モデルを使用する
 echo Robots::count();
 ```
