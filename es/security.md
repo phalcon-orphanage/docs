@@ -35,9 +35,13 @@ Este componente ayuda al desarrollador en tareas comunes de seguridad como el ha
 
 Almacenar contraseñas en texto plano es una mala práctica de seguridad. Cualquier persona con acceso a la base de datos inmediatamente tendrá acceso a todas las cuentas de usuario, pudiendo así participar en actividades no autorizadas. Para combatir esto, muchas aplicaciones usan un forma familar de métodos de hash como el [`md5`](http://php.net/manual/en/function.md5.php) y el [`sha1`](http://php.net/manual/en/function.sha1.php). Sin embargo, el hardware evoluciona cada día y se vuelve más rápido, estos algoritmos se están volviendo vulnerables a los ataques por fuerza bruta. Estos ataques también son conocidos como [Tablas Arcoíris](http://en.wikipedia.org/wiki/Rainbow_table).
 
-Para solucionar este problema podemos utilizar algoritmos de hash como [bcrypt](http://en.wikipedia.org/wiki/Bcrypt). ¿Por qué bcrypt? Gracias a su algoritmo de clave de configuración [Eksblowfish](http://en.wikipedia.org/wiki/Bcrypt#Algorithm) podemos hacer el cifrado de contraseña como 'lento' como queramos. Los algoritmos lentos hacen que el proceso para calcular la contraseña verdadera detrás de un hash sea muy difícil si no imposible. Esto te protegerá durante mucho tiempo de un posible ataque usando tablas arcoíris.
+El componente de seguridad utiliza [bcrypt](http://en.wikipedia.org/wiki/Bcrypt) como algoritmo de hashing. Gracias a su algoritmo de clave de configuración [Eksblowfish](http://en.wikipedia.org/wiki/Bcrypt#Algorithm) podemos hacer el cifrado de contraseña tan "lento" como queramos. Los algoritmos lentos minimizan el impacto de los ataques de fuerza bruta.
 
-Este componente le da la habilidad de usar este algoritmo de una manera sencilla:
+Bcrypt, es una función hash adaptativa basada en el algoritmo criptográfico de cifrado de bloque simétrico Blowfish. También introduce un factor de seguridad o trabajo, que determina qué tan lenta será la función hash para generar el hash. Esto niega efectivamente el uso de técnicas de hashing FPGA o GPU.
+
+Si en el futuro el hardware se vuelve más rápido, podemos aumentar el factor de trabajo para mitigar esto.
+
+Este componente ofrece una interfaz sencilla para usar el algoritmo:
 
 ```php
 <?php
