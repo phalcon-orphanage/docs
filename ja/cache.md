@@ -566,15 +566,12 @@ $cache->save('my-key', $data);
 | `Phalcon\Cache\Backend\File`         | ローカルのプレーンファイルにデータを格納します。                |                                           |                                                    |
 | `Phalcon\Cache\Backend\Libmemcached` | memcachedサーバーにデータを格納します。                | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
 | `Phalcon\Cache\Backend\Memcache`     | memcachedサーバーにデータを格納します。                | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| `Phalcon\Cache\Backend\Memory`       | メモリ中にデータを保存                             |                                           |                                                    |
 | `Phalcon\Cache\Backend\Mongo`        | データをMongoデータベースに保存します。                  | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
 | `Phalcon\Cache\Backend\Redis`        | Redisにデータを格納します。                        | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
 | `Phalcon\Cache\Backend\Xcache`       | XCacheにデータを格納します。                       | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
 
-<div class='alert alert-warning'>
-    <p>
-        <strong>注意</strong> PHP7で Phalcon <code>apc</code> ベースのアダプター クラスを使用する場合、pecl から <code>apcu</code>と<code>apcu_bc</code> パッケージをインストールする必要があります。 Phalcon 3.2.0 では、あなたは <code>*\Apc</code> クラスを <code>*\Apcu</code> に変更して、<code>apcu_bc</code>を削除できます。 Phalcon 4 では、ほとんどすべての ' * \Apc' クラスを削除したことを覚えていてだください。
-    </p>
-</div>
+##### **注意** PHP7で Phalcon `apc` ベースのアダプター クラスを使用する場合、pecl から `apcu`と`apcu_bc` パッケージをインストールする必要があります。 Phalcon 3.2.0 では、あなたは `<em>\Apc` クラスを `</em>\Apcu` に変更して、`apcu_bc`を削除できます。 Phalcon 4 では、ほとんどすべての `*\Apc` クラスを削除したことを覚えていてだください。 {.alert.alert-warning}
 
 <a name='adapters-backend-factory'></a>
 
