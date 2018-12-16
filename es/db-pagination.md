@@ -9,16 +9,16 @@
           <a href="#factory">Factory</a>
         </li>
         <li>
-          <a href="#examples">Examples</a>
+          <a href="#examples">Ejemplos</a>
         </li>
         <li>
-          <a href="#using-adapters">Using Adapters</a>
+          <a href="#using-adapters">Usando Adaptadores</a>
         </li>
         <li>
-          <a href="#page-attributes">Page Attributes</a>
+          <a href="#page-attributes">Atributos de Página</a>
         </li>
         <li>
-          <a href="#custom">Implementing your own adapters</a>
+          <a href="#custom">Implementando sus propios adaptadores</a>
         </li>
       </ul>
     </li>
@@ -72,25 +72,25 @@ $paginator = Factory::load($options);
 
 <a name='examples'></a>
 
-## Examples
+## Ejemplos
 
-In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
+En el siguiente ejemplo, el paginador usará el resultado de una consulta de un modelo como su fuente de datos y limitará los datos mostrados a 10 registros por página:
 
 ```php
 <?php
 
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
-// Current page to show
-// In a controller/component this can be:
+// Página actual para mostrar
+// En un controlador/componente este puede ser
 // $this->request->getQuery('page', 'int'); // GET
 // $this->request->getPost('page', 'int'); // POST
 $currentPage = (int) $_GET['page'];
 
-// The data set to paginate
+// El conjunto de datos a paginar
 $robots = Robots::find();
 
-// Create a Model paginator, show 10 rows by page starting from $currentPage
+// Crear un paginador del modelo, mostrando 10 registros por página empezando desde $currentPage
 $paginator = new PaginatorModel(
     [
         'data'  => $robots,
@@ -99,18 +99,18 @@ $paginator = new PaginatorModel(
     ]
 );
 
-// Get the paginated results
+// Obtener los resultados paginados
 $page = $paginator->getPaginate();
 ```
 
-La variable `$currentPage` controla la página que se mostrará. El `$paginator->getPaginate()` devuelve un objeto `$page` que contiene los datos paginados. It can be used for generating the pagination:
+La variable `$currentPage` controla la página que se mostrará. El `$paginator->getPaginate()` devuelve un objeto `$page` que contiene los datos paginados. Se puede usar para generar la paginación:
 
 ```php
 <table>
     <tr>
         <th>Id</th>
-        <th>Name</th>
-        <th>Type</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
     </tr>
     <?php foreach ($page->items as $item) { ?>
     <tr>
@@ -125,19 +125,19 @@ La variable `$currentPage` controla la página que se mostrará. El `$paginator-
 El objeto `$page` también contiene datos de navegación:
 
 ```php
-<a href='/robots/search'>First</a>
-<a href='/robots/search?page=<?= $page->before; ?>'>Previous</a>
-<a href='/robots/search?page=<?= $page->next; ?>'>Next</a>
-<a href='/robots/search?page=<?= $page->last; ?>'>Last</a>
+<a href='/robots/search'>Primera</a>
+<a href='/robots/search?page=<?= $page->before; ?>'>Anterior</a>
+<a href='/robots/search?page=<?= $page->next; ?>'>Siguiente</a>
+<a href='/robots/search?page=<?= $page->last; ?>'>Última</a>
 
-<?php echo 'You are in page ', $page->current, ' of ', $page->total_pages; ?>
+<?php echo 'Estas en la página ', $page->current, ' de ', $page->total_pages; ?>
 ```
 
 <a name='using-adapters'></a>
 
-## Using Adapters
+## Usando Adaptadores
 
-An example of the source data that must be used for each adapter:
+Un ejemplo de los datos de origen que se deben usar para cada adaptador:
 
 ```php
 <?php
@@ -146,7 +146,7 @@ use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
 use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
 
-// Passing a resultset as data
+// Pasando un conjunto de resultados como datos
 $paginator = new PaginatorModel(
     [
         'data'  => Products::find(),
@@ -155,7 +155,7 @@ $paginator = new PaginatorModel(
     ]
 );
 
-// Passing an array as data
+// Pasando un array como datos
 $paginator = new PaginatorArray(
     [
         'data'  => [
@@ -170,8 +170,7 @@ $paginator = new PaginatorArray(
     ]
 );
 
-// Passing a QueryBuilder as data
-
+// Pasando un QueryBuilder como datos
 $builder = $this->modelsManager->createBuilder()
     ->columns('id, name')
     ->from('Robots')
@@ -188,7 +187,7 @@ $paginator = new PaginatorQueryBuilder(
 
 <a name='page-attributes'></a>
 
-## Page Attributes
+## Atributos de Página
 
 El objeto `$page` tiene los siguientes atributos:
 
@@ -204,9 +203,9 @@ El objeto `$page` tiene los siguientes atributos:
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Implementando sus propios adaptadores
 
-The `Phalcon\Paginator\AdapterInterface` interface must be implemented in order to create your own paginator adapters or extend the existing ones:
+La interfaz `Phalcon\Paginator\AdapterInterface` debe implementarse para crear sus propios adaptadores de paginador o ampliar los existentes:
 
 ```php
 <?php
@@ -216,21 +215,21 @@ use Phalcon\Paginator\AdapterInterface as PaginatorInterface;
 class MyPaginator implements PaginatorInterface
 {
     /**
-     * Adapter constructor
+     * Constructor del adaptador
      *
      * @param array $config
      */
     public function __construct($config);
 
     /**
-     * Set the current page number
+     * Establece la página actual
      *
      * @param int $page
      */
     public function setCurrentPage($page);
 
     /**
-     * Returns a slice of the resultset to show in the pagination
+     * Devuelve una parte del conjunto de resultados para mostrar en la paginación
      *
      * @return stdClass
      */
