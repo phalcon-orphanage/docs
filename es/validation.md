@@ -227,7 +227,7 @@ Es importante que los validadores retornen un valor booleano indicando si la val
 
 ## Validador de Devolución de Llamada
 
-Utilizando `Phalcon\Validation\Validator\Callback` puede ejecutar una función personalizada que debe devolver un valor booleano o una nueva clase de validador que se usará para validar el mismo campo. Al retornar `true` la validación fue exitosa, retornando `false` significa que la misma falló. Cuando ejecutamos este validado, Phalcon pasará los datos dependiendo de lo que sea. Si es una entidad se pasará la entidad, sino los datos. Aquí un ejemplo:
+Utilizando `Phalcon\Validation\Validator\Callback` puede ejecutar una función personalizada que debe devolver un valor booleano o una nueva clase de validador que se usará para validar el mismo campo. Al retornar `true` la validación fue exitosa, retornando `false` significa que la misma falló. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). Aquí un ejemplo:
 
 ```php
 <?php
