@@ -602,7 +602,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 <?php
 
 // Inserting data with a raw SQL statement
-$sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)';
+$sql     = "INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)";
 $success = $connection->execute($sql);
 
 // With placeholders
@@ -638,7 +638,7 @@ $success = $connection->insertAsDict(
 );
 
 // Updating data with a raw SQL statement
-$sql     = 'UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101';
+$sql     = "UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101";
 $success = $connection->execute($sql);
 
 // With placeholders
