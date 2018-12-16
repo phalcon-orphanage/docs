@@ -207,7 +207,7 @@ $posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
 
 ## 连接到数据库
 
-To create a connection it's necessary instantiate the adapter class. 它只需要一个连接参数的数组。 下面的示例演示如何创建连接传递必需和可选的参数：
+要创建连接，必须实例化适配器类。 它只需要一个连接参数的数组。 下面的示例演示如何创建连接传递必需和可选的参数：
 
 ##### MySQL 必须的参数
 
@@ -814,7 +814,7 @@ try {
 
 ## 数据库事件
 
-`Phalcon\Db` is able to send events to a [EventsManager](/[[language]]/[[version]]/events) if it's present. Some events when returning boolean `false` could stop the active operation. The following events are supported:
+`Phalcon\Db` 是能够将事件发送到 [EventsManager](/[[language]]/[[version]]/events)，如果它是存在的。 Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
 | Event Name            | Triggered          | Can stop operation? |
 | --------------------- | ------------------ |:-------------------:|
@@ -826,7 +826,7 @@ try {
 | `rollbackTransaction` | 在事务回滚之前            |         No          |
 | `commitTransaction`   | 在一个事务被提交之前         |         No          |
 
-Bind an EventsManager to a connection is simple, `Phalcon\Db` will trigger the events with the type `db`:
+绑定 EventsManager 到数据库连接就是这么简单，`Phalcon\Db` 将触发事件与 `db` 类型:
 
 ```php
 <?php
@@ -975,7 +975,7 @@ $eventsManager->attach('db', $dbProfiler);
 
 ## 日志记录的 SQL 语句
 
-Using high-level abstraction components such as `Phalcon\Db` to access a database, it is difficult to understand which statements are sent to the database system. `Phalcon\Logger` interacts with `Phalcon\Db`, providing logging capabilities on the database abstraction layer.
+Using high-level abstraction components such as `Phalcon\Db` to access a database, it is difficult to understand which statements are sent to the database system. `Phalcon\Logger`与`Phalcon\Db`交互，使数据库抽象层具有日志功能。
 
 ```php
 <?php
@@ -1089,7 +1089,7 @@ $exists = $connection->viewExists('robots');
 
 ## [创建/更改/删除]表
 
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as `CREATE`, `ALTER` or `DROP`. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
+Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as `CREATE`, `ALTER` or `DROP`. The SQL syntax differs based on which database system is used. `Phalcon\Db` 提供了一个统一的接口来更改表, 而无需根据目标存储系统区分 sql 语法。
 
 <a name='tables-create'></a>
 
