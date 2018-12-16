@@ -3,7 +3,7 @@
     <li>
       <a href="#overview">ビューの使用</a> <ul>
         <li>
-          <a href="#integrating-views-with-controllers">コント ローラーとビューの統合</a>
+          <a href="#integrating-views-with-controllers">コントローラーとビューの統合</a>
         </li>
         <li>
           <a href="#hierarchical-rendering">Hierarchical Rendering</a> 
