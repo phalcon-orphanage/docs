@@ -4,7 +4,7 @@
 
 <a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).
+Phalcon\\Mvc\\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It's an implementation of the object-relational mapping (ORM).
 
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
 
@@ -20,7 +20,7 @@ $robot->name = "Astro Boy";
 $robot->year = 1952;
 
 if ($robot->save() === false) {
-    echo "Umh, We can store robots: ";
+    echo "Umh, We cannot store robots: ";
 
     $messages = $robot->getMessages();
 
