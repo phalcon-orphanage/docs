@@ -150,8 +150,7 @@ class Robots extends Model
 }
 ```
 
-Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the `@Column` annotation
-are handled as simple class attributes.
+Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the `@Column` annotation are handled as simple class attributes.
 
 The following annotations are supported:
 
@@ -202,7 +201,7 @@ $di['modelsMetadata'] = function () {
 
 <a name='strategies-manual'></a>
 ## Manual Metadata
-Phalcon can obtain the metadata for each model automatically without the developer must set them manually using any of the introspection strategies presented above.
+Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically without the developer needing to set them manually.
 
 The developer also has the option of define the metadata manually. This strategy overrides any strategy set in the metadata manager. New columns added/modified/removed to/from the mapped table must be added/modified/removed also for everything to work properly.
 
