@@ -160,7 +160,7 @@ class Robots extends Model
 }
 ```
 
-Las anotaciones deben colocarse en las propiedades que se asignan a columnas en la fuente asignada. Las propiedades sin la anotación `@Column` se trataran como simples atributos de la clase.
+Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the `@Column` annotation are handled as simple class attributes.
 
 Son soportadas las siguientes anotaciones:
 
@@ -213,7 +213,7 @@ $di['modelsMetadata'] = function () {
 
 ## Metadata manual
 
-Phalcon puede obtener los metadatos de cada modelo automáticamente sin que el desarrollador deba establecerlas manualmente usando cualquiera de las estrategias de introspección presentadas arriba.
+Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically without the developer needing to set them manually.
 
 Sin embargo, el desarrollador también tiene la opción de definir los metadatos manualmente. Esta estrategia sobrescribe cualquier estrategia establecida en el gestor de metadatos. Las nuevas columnas añadidas/modificadas/eliminadas de/hacia la tabla asignada deben agregarse/modificarse/eliminarse también para que todo funcione correctamente.
 
