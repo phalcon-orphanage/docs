@@ -213,7 +213,7 @@ $di['modelsMetadata'] = function () {
 
 ## Manual Metadata
 
-Phalcon can obtain the metadata for each model automatically without the developer must set them manually using any of the introspection strategies presented above.
+Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically without the developer needing to set them manually.
 
 The developer also has the option of define the metadata manually. This strategy overrides any strategy set in the metadata manager. New columns added/modified/removed to/from the mapped table must be added/modified/removed also for everything to work properly.
 
