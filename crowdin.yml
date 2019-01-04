@@ -5,3 +5,7 @@ files:
     translation: /%two_letters_code%/api/%original_file_name%
   - source: /en/home.json
     translation: /%two_letters_code%/%original_file_name%
+  - source: /en/*.md
+    translation: /%locale%/%original_file_name%
+  - source: /en/api/*.md
+    translation: /%locale%/api/%original_file_name%
