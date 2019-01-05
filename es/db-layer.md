@@ -630,11 +630,11 @@ Para insertar, actualizar o eliminar filas, se puede utilizar SQL sin procesar o
 ```php
 <?php
 
-// Insertando datos con instrucciones SQL en bruto
-$sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)';
+// Inserting data with a raw SQL statement
+$sql     = "INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)";
 $success = $connection->execute($sql);
 
-// Con marcadores
+// With placeholders
 $sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)';
 $success = $connection->execute(
     $sql,
@@ -644,7 +644,7 @@ $success = $connection->execute(
     ]
 );
 
-// Generando dinámicamente el SQL necesario
+// Generating dynamically the necessary SQL
 $success = $connection->insert(
     'robots',
     [
@@ -657,7 +657,7 @@ $success = $connection->insert(
     ],
 );
 
-// Generando dinámicamente el SQL necesario (otra sintaxis)
+// Generating dynamically the necessary SQL (another syntax)
 $success = $connection->insertAsDict(
     'robots',
     [
@@ -666,11 +666,11 @@ $success = $connection->insertAsDict(
     ]
 );
 
-// Actualizando datos con instrucciones SQL en crudo
-$sql     = 'UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101';
+// Updating data with a raw SQL statement
+$sql     = "UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101";
 $success = $connection->execute($sql);
 
-// Con marcadores
+// With placeholders
 $sql     = 'UPDATE `robots` SET `name` = ? WHERE `id` = ?';
 $success = $connection->execute(
     $sql,
