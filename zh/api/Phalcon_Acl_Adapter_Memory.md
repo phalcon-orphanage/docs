@@ -17,7 +17,7 @@ $acl->setDefaultAction(
     \Phalcon\Acl::DENY
 );
 
-// Register roles
+// 注册角色
 $roles = [
     "users"  => new \Phalcon\Acl\Role("Users"),
     "guests" => new \Phalcon\Acl\Role("Guests"),
@@ -26,7 +26,7 @@ foreach ($roles as $role) {
     $acl->addRole($role);
 }
 
-// Private area resources
+// 私有的资源
 $privateResources = [
     "companies" => ["index", "search", "new", "edit", "save", "create", "delete"],
     "products"  => ["index", "search", "new", "edit", "save", "create", "delete"],
@@ -40,7 +40,7 @@ foreach ($privateResources as $resourceName => $actions) {
     );
 }
 
-// Public area resources
+// 公开的资源
 $publicResources = [
     "index"   => ["index"],
     "about"   => ["index"],
@@ -55,7 +55,7 @@ foreach ($publicResources as $resourceName => $actions) {
     );
 }
 
-// Grant access to public areas to both users and guests
+//授权游客和用户可以i访问公开的资源 
 foreach ($roles as $role){
     foreach ($publicResources as $resource => $actions) {
         $acl->allow($role->getName(), $resource, "*");
