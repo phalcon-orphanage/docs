@@ -630,11 +630,11 @@ if (11 === $robot->id) {
 ```php
 <?php
 
-// 生のSQL文を使用したデータの挿入
-$sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)';
+// Inserting data with a raw SQL statement
+$sql     = "INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)";
 $success = $connection->execute($sql);
 
-// プレースホルダー付き
+// With placeholders
 $sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)';
 $success = $connection->execute(
     $sql,
@@ -644,7 +644,7 @@ $success = $connection->execute(
     ]
 );
 
-// 必要なSQLを動的に生成する
+// Generating dynamically the necessary SQL
 $success = $connection->insert(
     'robots',
     [
@@ -657,7 +657,7 @@ $success = $connection->insert(
     ],
 );
 
-// 必要なSQLを動的に生成する（別のシンタックス）
+// Generating dynamically the necessary SQL (another syntax)
 $success = $connection->insertAsDict(
     'robots',
     [
@@ -666,11 +666,11 @@ $success = $connection->insertAsDict(
     ]
 );
 
-// 生のSQL文によるデータの更新
-$sql     = 'UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101';
+// Updating data with a raw SQL statement
+$sql     = "UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101";
 $success = $connection->execute($sql);
 
-// プレースホルダー付き
+// With placeholders
 $sql     = 'UPDATE `robots` SET `name` = ? WHERE `id` = ?';
 $success = $connection->execute(
     $sql,
