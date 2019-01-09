@@ -1,46 +1,20 @@
-<div class='article-menu' markdown='1'>
-
-- [Working with Models](#working-with)
-    - [Creating Models](#creating)
-        - [Public properties vs. Setters/Getters](#properties-setters-getters)
-    - [Understanding Records To Objects](#records-to-objects)
-    - [Finding Records](#finding-records)
-        - [Model Resultsets](#resultsets)
-        - [Filtering Resultsets](#filters)
-        - [Binding Parameters](#binding-parameters)
-    - [Initializing/Preparing fetched records](#preparing-records)
-    - [Generating Calculations](#calculations)
-    - [Creating/Updating Records](#create-update-records)
-        - [Create/Update with Confidence](#create-update-with-confidence)
-    - [Deleting Records](#delete-records)
-    - [Hydration Modes](#hydration-modes)
-    - [Table prefixes](#table-prefixes)
-    - [Auto-generated identity columns](#identity-columns)
-    - [Skipping Columns](#skipping-columns)
-    - [Dynamic Updates](#dynamic-updates)
-    - [Independent Column Mapping](#column-mapping)
-    - [Record Snapshots](#record-snapshots)
-    - [Pointing to a different schema](#different-schemas)
-    - [Setting multiple databases](#multiple-databases)
-    - [Injecting services into Models](#injecting-services-into-models)
-    - [Disabling/Enabling Features](#disabling-enabling-features)
-    - [Stand-Alone component](#stand-alone-component)
-    
-</div>
-
+---
+layout: default
+language: 'en'
+---
 <a name='working-with'></a>
 # Working with Models
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
 
-`Phalcon\Mvc\Model` is the base for all models in a Phalcon application. It provides database independence, basic
-CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. `Phalcon\Mvc\Model` avoids the need of having to use SQL statements because it translates
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. It provides database independence, basic
+CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates
 methods dynamically to the respective database engine operations.
 
-<h5 class='alert alert-warning' markdown='1'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the `Phalcon\Db` component documentation.</h5>
+<h5 class='alert alert-warning' markdown='1'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the [Phalcon\Db](api/Phalcon_Db) component documentation.</h5>
 
 <a name='creating'></a>
 ## Creating Models
-A model is a class that extends from `Phalcon\Mvc\Model`. Its class name should be in camel case notation:
+A model is a class that extends from [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). Its class name should be in camel case notation:
 
 ```php
 <?php
@@ -232,11 +206,11 @@ $robot->name = 'RoboCop';
 $robot->save();
 ```
 
-As you can see, there is no need to use raw SQL statements. `Phalcon\Mvc\Model` provides high database abstraction for web applications.
+As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) provides high database abstraction for web applications.
 
 <a name='finding-records'></a>
 ## Finding Records
-`Phalcon\Mvc\Model` also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
 
 ```php
 <?php
@@ -332,7 +306,7 @@ The available query options are:
 
 | Parameter     | Description                                                                                                                                                                                        | Example                                                           |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default `Phalcon\Mvc\Model` assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
+| `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
 | `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                          | `'columns' => 'id, name'`                                         |
 | `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                         | `'bind' => ['status' => 'A', 'type' => 'some-time']`              |
 | `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                         | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
@@ -340,8 +314,8 @@ The available query options are:
 | `limit`       | Limit the results of the query to results to certain range                                                                                                                                         | `'limit' => 10`                                                   |
 | `offset`      | Offset the results of the query by a certain amount                                                                                                                                                | `'offset' => 5`                                                   |
 | `group`       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                        | `'group' => 'name, status'`                                       |
-| `for_update`  | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting exclusive locks on each row it reads                                                                                | `'for_update' => true`                                            |
-| `shared_lock` | With this option, `Phalcon\Mvc\Model` reads the latest available data, setting shared locks on each row it reads                                                                                   | `'shared_lock' => true`                                           |
+| `for_update`  | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) reads the latest available data, setting exclusive locks on each row it reads                                                                                | `'for_update' => true`                                            |
+| `shared_lock` | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) reads the latest available data, setting shared locks on each row it reads                                                                                   | `'shared_lock' => true`                                           |
 | `cache`       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                       | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`         |
 | `hydration`   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
@@ -360,9 +334,9 @@ $robots = Robots::query()
     ->execute();
 ```
 
-The static method `query()` returns a `Phalcon\Mvc\Model\Criteria` object that is friendly with IDE autocompleters.
+The static method `query()` returns a [Phalcon\Mvc\Model\Criteria](api/Phalcon_Mvc_Model_Criteria) object that is friendly with IDE autocompleters.
 
-All the queries are internally handled as [PHQL](/[[language]]/[[version]]/db-phql) queries. PHQL is a high-level, object-oriented and SQL-like language. This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
+All the queries are internally handled as [PHQL](/3.4/en/db-phql) queries. PHQL is a high-level, object-oriented and SQL-like language. This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
 
 Lastly, there is the `findFirstBy<property-name>()` method. This method expands on the `findFirst()` method mentioned earlier. It allows you to quickly perform a retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column. An example is in order, so taking our Robots model mentioned earlier:
 
@@ -405,9 +379,9 @@ Notice that we used 'Name' in the method call and passed the variable `$name` to
 
 <a name='resultsets'></a>
 ### Model Resultsets
-While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a `Phalcon\Mvc\Model\Resultset\Simple`. This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
+While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
 
-These objects are more powerful than standard arrays. One of the greatest features of the :doc:`Phalcon\Mvc\Model\Resultset` is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
+These objects are more powerful than standard arrays. One of the greatest features of the [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset) is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
 
 ```php
 <?php
@@ -463,7 +437,7 @@ Phalcon's resultsets emulate scrollable cursors, you can get any row just by acc
 
 As storing large query results in memory could consume many resources, resultsets are obtained from the database in chunks of 32 rows - reducing the need to re-execute the request in several cases.
 
-Note that resultsets can be serialized and stored in a cache backend. `Phalcon\Cache` can help with that task. However, serializing data causes `Phalcon\Mvc\Model` to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
+Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache](api/Phalcon_Cache) can help with that task. However, serializing data causes [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
 
 ```php
 <?php
@@ -491,7 +465,7 @@ foreach ($parts as $part) {
 ### Custom Resultsets
 There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning back to the caller usually an array of transformed data. 
 
-With custom resultsets, you no longer need to do that. The custom resultset will encapsulate the functionality that otherwise would be in the model and can be reused by other models, thus keeping the code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). This way, the `find()` method will no longer return the default `Phalcon\Mvc\Model\Resultset`, but instead the custom one. Phalcon allows you to do this by using the `getResultsetClass()` in your model.
+With custom resultsets, you no longer need to do that. The custom resultset will encapsulate the functionality that otherwise would be in the model and can be reused by other models, thus keeping the code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). This way, the `find()` method will no longer return the default [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset), but instead the custom one. Phalcon allows you to do this by using the `getResultsetClass()` in your model.
 
 
 First we need to define the resultset class:
@@ -575,7 +549,7 @@ $customers = $customers->filter(
 
 <a name='binding-parameters'></a>
 ### Binding Parameters
-Bound parameters are also supported in `Phalcon\Mvc\Model`. You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
 
 ```php
 <?php
@@ -680,7 +654,7 @@ $robots = Robots::find(
 
 <h5 class='alert alert-warning' markdown='1'>Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc. </h5>
 
-If you're using 'finders', bound parameters are automatically used:
+If you're using "finders" e.g. `find()`, `findFirst()`, etc., bound parameters are automatically used:
 
 ```php
 <?php
@@ -766,7 +740,7 @@ class Robots extends Model
 
 <a name='calculations'></a>
 ## Generating Calculations
-Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. `Phalcon\Mvc\Model` allows to use these functions directly from the exposed methods.
+Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) allows to use these functions directly from the exposed methods.
 
 Count examples:
 
@@ -931,7 +905,7 @@ $salary = Employees::minimum(
 
 <a name='create-update-records'></a>
 ## Creating/Updating Records
-The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of `Phalcon\Mvc\Model`. For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
+The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
 
 Also the method executes associated validators, virtual foreign keys and events that are defined in the model:
 
@@ -959,7 +933,7 @@ if ($robot->save() === false) {
 }
 ```
 
-An array could be passed to `save` to avoid assign every column manually. `Phalcon\Mvc\Model` will check if there are setters implemented for the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
+An array could be passed to `save` to avoid assign every column manually. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) will check if there are setters implemented for the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
 
 ```php
 <?php
@@ -1038,7 +1012,7 @@ if ($robot->create() === false) {
 }
 ```
 
-The methods `create` and 'update' also accept an array of values as parameter.
+The methods `create` and `update` also accept an array of values as parameter.
 
 <a name='delete-records'></a>
 ## Deleting Records
@@ -1066,7 +1040,7 @@ if ($robot !== false) {
 }
 ```
 
-You can also delete many records by traversing a resultset with a foreach:
+You can also delete many records by traversing a resultset with a `foreach`:
 
 ```php
 <?php
@@ -1096,8 +1070,8 @@ The following events are available to define custom business rules that can be e
 
 | Operation | Name         | Can stop operation? | Explanation                              |
 | --------- | ------------ | :-----------------: | ---------------------------------------- |
-| Deleting  | beforeDelete | Yes                 | Runs before the delete operation is made |
 | Deleting  | afterDelete  | No                  | Runs after the delete operation was made |
+| Deleting  | beforeDelete | Yes                 | Runs before the delete operation is made |
 
 With the above events can also define business rules in the models:
 
@@ -1221,7 +1195,7 @@ echo $robots->getSource(); // will return wp_robots
 
 <a name='identity-columns'></a>
 ## Auto-generated identity columns
-Some models may have identity columns. These columns usually are the primary key of the mapped table. `Phalcon\Mvc\Model` can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
+Some models may have identity columns. These columns usually are the primary key of the mapped table. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
 
 ```php
 <?php
@@ -1231,7 +1205,7 @@ $robot->save();
 echo 'The generated id is: ', $robot->id;
 ```
 
-`Phalcon\Mvc\Model` is able to recognize the identity column. Depending on the database system, those columns may be serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is able to recognize the identity column. Depending on the database system, those columns may be serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
 
 PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence `table_field_seq`, for example: `robots_id_seq`, if that sequence has a different name, the `getSequenceName()` method needs to be implemented:
 
@@ -1253,7 +1227,7 @@ class Robots extends Model
 
 <a name='skipping-columns'></a>
 ## Skipping Columns
-To tell `Phalcon\Mvc\Model` that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
+To tell [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
 
 ```php
 <?php
@@ -1330,7 +1304,7 @@ class Robots extends Model
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Never use a `Phalcon\Db\RawValue` to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. </h5>
+<h5 class='alert alert-warning' markdown='1'>Never use a [Phalcon\Db\RawValue](api/Phalcon_Db_RawValue) to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. </h5>
 
 <a name='dynamic-updates'></a>
 ## Dynamic Updates
@@ -1518,7 +1492,7 @@ $user->update();
 var_dump($user->getChangedFields());
 ```
 
-On Phalcon 3.1.0 and later it is:
+On Phalcon 3.4.0 and later it is:
 
 ```php
 array(0) {
@@ -1555,7 +1529,7 @@ class Robots extends Model
 
 <a name='multiple-databases'></a>
 ## Setting multiple databases
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Model` needs to connect to the database it requests the `db` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
+In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) needs to connect to the database it requests the `db` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
 
 ```php
 <?php
@@ -1757,11 +1731,15 @@ The available options are:
 | updateSnapshotOnSave  | Enables/Disables updating snapshots on `save()`                                         | `true`  |
 | virtualForeignKeys    | Enables/Disables the virtual foreign keys                                               | `true`  |
 
-<h5 class='alert alert-warning' markdown='1'>*NOTE* `Phalcon\Mvc\Model::assign()` (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding `phalcon.orm.disable_assign_setters = 1` to your ini file, it will just simply use `this->property = value`.</h5>
+<div class="alert alert-warning">
+    <p>
+        <strong>NOTE</strong> <code>Phalcon\Mvc\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding <code>phalcon.orm.disable_assign_setters = 1</code> to your ini file, it will just simply use <code>$this->property = value</code>.
+    </p>
+</div>
 
 <a name='stand-alone-component'></a>
 ## Stand-Alone component
-Using `Phalcon\Mvc\Model` in a stand-alone mode can be demonstrated below:
+Using [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) in a stand-alone mode can be demonstrated below:
 
 ```php
 <?php

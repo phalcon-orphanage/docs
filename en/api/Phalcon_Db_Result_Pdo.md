@@ -1,8 +1,14 @@
-# Class **Phalcon\\Db\\Result\\Pdo**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Result\Pdo'
+---
+# Class **Phalcon\Db\Result\Pdo**
 
-*implements* [Phalcon\Db\ResultInterface](/en/3.2/api/Phalcon_Db_ResultInterface)
+*implements* [Phalcon\Db\ResultInterface](/3.4/en/api/Phalcon_Db_ResultInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/result/pdo.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/result/pdo.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Encapsulates the resultset internals
 
@@ -23,9 +29,9 @@ while ($robot = $result->fetchArray()) {
 
 
 ## Methods
-public  **__construct** ([Phalcon\Db\AdapterInterface](/en/3.2/api/Phalcon_Db_AdapterInterface) $connection, [PDOStatement](http://php.net/manual/en/class.pdostatement.php) $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
+public  **__construct** ([Phalcon\Db\AdapterInterface](/3.4/en/api/Phalcon_Db_AdapterInterface) $connection, [PDOStatement](http://php.net/manual/en/class.pdostatement.php) $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
 
-Phalcon\\Db\\Result\\Pdo constructor
+Phalcon\Db\Result\Pdo constructor
 
 
 
@@ -39,7 +45,7 @@ So, as cursors are forward only, we need to execute the cursor again to fetch ro
 public  **fetch** ([*mixed* $fetchStyle], [*mixed* $cursorOrientation], [*mixed* $cursorOffset])
 
 Fetches an array/object of strings that corresponds to the fetched row, or FALSE if there are no more rows.
-This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode
+This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode
 
 ```php
 <?php
@@ -61,7 +67,7 @@ while ($robot = $result->fetch()) {
 public  **fetchArray** ()
 
 Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows.
-This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode
+This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode
 
 ```php
 <?php
@@ -83,7 +89,7 @@ while ($robot = result->fetchArray()) {
 public  **fetchAll** ([*mixed* $fetchStyle], [*mixed* $fetchArgument], [*mixed* $ctorArgs])
 
 Returns an array of arrays containing all the records in the result
-This method is affected by the active fetch flag set using Phalcon\\Db\\Result\\Pdo::setFetchMode
+This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode
 
 ```php
 <?php
@@ -138,7 +144,7 @@ $row = $result->fetch();
 
 public  **setFetchMode** (*mixed* $fetchMode, [*mixed* $colNoOrClassNameOrObject], [*mixed* $ctorargs])
 
-Changes the fetching mode affecting Phalcon\\Db\\Result\\Pdo::fetch()
+Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
 
 ```php
 <?php

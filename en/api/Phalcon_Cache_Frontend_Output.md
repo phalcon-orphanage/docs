@@ -1,8 +1,14 @@
-# Class **Phalcon\\Cache\\Frontend\\Output**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Frontend\Output'
+---
+# Class **Phalcon\Cache\Frontend\Output**
 
-*implements* [Phalcon\Cache\FrontendInterface](/en/3.2/api/Phalcon_Cache_FrontendInterface)
+*implements* [Phalcon\Cache\FrontendInterface](/3.4/en/api/Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontend/output.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cache/frontend/output.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Allows to cache output fragments captured with ob_* functions
 
@@ -61,7 +67,7 @@ Allows to cache output fragments captured with ob_* functions
 ## Methods
 public  **__construct** ([*array* $frontendOptions])
 
-Phalcon\\Cache\\Frontend\\Output constructor
+Phalcon\Cache\Frontend\Output constructor
 
 
 

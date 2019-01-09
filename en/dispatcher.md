@@ -1,28 +1,15 @@
-<div class='article-menu' markdown='1'>
-
-- [Dispatching Controllers](#overview)
-    - [The Dispatch Loop](#dispatch-loop)
-        - [Dispatch Loop Events](#dispatch-loop-events)
-    - [Forwarding to other actions](#forwarding)
-        - [Using the Events Manager](#forwarding-events-manager)
-    - [Preparing Parameters](#preparing-parameters)
-    - [Getting Parameters](#getting-parameters)
-    - [Preparing actions](#preparing-actions)
-        - [Camelize action names](#preparing-actions-camelizing-action-names)
-        - [Remove legacy extensions](#preparing-actions-removing-legacy-extensions)
-        - [Inject model instances](#preparing-actions-inject-model-instances)
-    - [Handling Not-Found Exceptions](#handling-404)
-    - [Implementing your own Dispatcher](#custom)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Dispatching Controllers
-`Phalcon\Mvc\Dispatcher` is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
+[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
 
 <a name='dispatch-loop'></a>
 ## The Dispatch Loop
-This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller dispatcher. The controller files are read, loaded, and instantiated. Then the required actions are executed. If an action forwards the flow to another controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed within `Phalcon\Mvc\Dispatcher`:
+This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller dispatcher. The controller files are read, loaded, and instantiated. Then the required actions are executed. If an action forwards the flow to another controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed within [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher):
 
 ```php
 <?php
@@ -54,7 +41,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 <a name='dispatch-loop-events'></a>
 ### Dispatch Loop Events
-`Phalcon\Mvc\Dispatcher` is able to send events to an [EventsManager](/[[language]]/[[version]]/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
+[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/3.4/en/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
 | Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Triggered on          |
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|-----------------------|
@@ -69,7 +56,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 | afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
 | afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | Yes                 | Listeners/Controllers |
 
-The [INVO](/[[language]]/[[version]]/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/[[language]]/[[version]]/acl)
+The [INVO](/3.4/en/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/3.4/en/acl)
 
 The following example demonstrates how to attach listeners to this component:
 
@@ -127,7 +114,7 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Methods on event listeners accept an `Phalcon\Events\Event` object as their first parameter - methods in controllers do not. </h5>
+<h5 class='alert alert-warning' markdown='1'>Methods on event listeners accept an [Phalcon\Events\Event](api/Phalcon_Events_Event) object as their first parameter - methods in controllers do not. </h5>
 
 <a name='forwarding'></a>
 ## Forwarding to other actions
@@ -184,14 +171,14 @@ $this->dispatcher->forward(
 );
 ```
 
-A forward action accepts the following parameters:
+A `forward` action accepts the following parameters:
 
-| Parameter  | Triggered                                              |
-|------------|--------------------------------------------------------|
-| controller | A valid controller name to forward to.                 |
-| action     | A valid action name to forward to.                     |
-| params     | An array of parameters for the action                  |
-| namespace  | A valid namespace name where the controller is part of |
+| Parameter    | Description                                             |
+|--------------|---------------------------------------------------------|
+| `controller` | A valid controller name to forward to.                  |
+| `action`     | A valid action name to forward to.                      |
+| `params`     | An array of parameters for the action.                  |
+| `namespace`  | A valid namespace name where the controller is part of. |
 
 <a name='forwarding-events-manager'></a>
 ### Using the Events Manager
@@ -245,7 +232,7 @@ echo $dispatcher->getModuleName(); // will display properly 'backend'
 
 <a name='preparing-parameters'></a>
 ## Preparing Parameters
-Thanks to the hook points provided by `Phalcon\Mvc\Dispatcher` you can easily adapt your application to any URL schema; i.e. you might want your URLs look like: `http://example.com/controller/key1/value1/key2/value`. Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to adopt the desired schema:
+Thanks to the hook points provided by [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) you can easily adapt your application to any URL schema; i.e. you might want your URLs look like: `http://example.com/controller/key1/value1/key2/value`. Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to adopt the desired schema:
 
 ```php
 <?php
@@ -340,7 +327,7 @@ $di->set(
 
 <a name='getting-parameters'></a>
 ## Getting Parameters
-When a route provides named parameters you can receive them in a controller, a view or any other component that extends `Phalcon\Di\Injectable`.
+When a route provides named parameters you can receive them in a controller, a view or any other component that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable).
 
 ```php
 <?php
@@ -545,7 +532,7 @@ $di->set(
 
 The above example has been simplified. A developer can improve it to inject any kind of dependency or model in actions before be executed.
 
-From 3.1.x onwards the dispatcher also comes with an option to handle this internally for all models passed into a controller action by using `Phalcon\Mvc\Model\Binder`.
+From 3.1.x onwards the dispatcher also comes with an option to handle this internally for all models passed into a controller action by using [Phalcon\Mvc\Model\Binder](api/Phalcon_Mvc_Model_Binder).
 
 ```php
 use Phalcon\Mvc\Dispatcher;
@@ -560,7 +547,7 @@ return $dispatcher;
 
 <h5 class='alert alert-warning' markdown='1'>Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in `setModelBinder()` which can also accept service name or just by passing cache instance to `Binder` constructor. </h5>
 
-It also introduces a new interface `Phalcon\Mvc\Model\Binder\BindableInterface` which allows you to define the controllers associated models to allow models binding in base controllers.
+It also introduces a new interface [Phalcon\Mvc\Model\Binder\BindableInterface](api/Phalcon_Mvc_Model_Binder_BindableInterface) which allows you to define the controllers associated models to allow models binding in base controllers.
 
 For example, you have a base `CrudController` which your `PostsController` extends from. Your `CrudController` looks something like this:
 
@@ -582,7 +569,7 @@ class CrudController extends Controller
 }
 ```
 
-In your PostsController you need to define which model the controller is associated with. This is done by implementing the `Phalcon\Mvc\Model\Binder\BindableInterface` which will add the `getModelName()` method from which you can return the model name. It can return string with just one model name or associative array where key is parameter name.
+In your PostsController you need to define which model the controller is associated with. This is done by implementing the [Phalcon\Mvc\Model\Binder\BindableInterface](api/Phalcon_Mvc_Model_Binder_BindableInterface) which will add the `getModelName()` method from which you can return the model name. It can return string with just one model name or associative array where key is parameter name.
 
 ```php
 use Phalcon\Mvc\Model\Binder\BindableInterface;
@@ -623,7 +610,7 @@ class PostsController extends Controller
 
 <a name='handling-404'></a>
 ## Handling Not-Found Exceptions
-Using the [EventsManager](/[[language]]/[[version]]/events) it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
+Using the [EventsManager](/3.4/en/events) it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
 
 ```php
 <?php
@@ -721,4 +708,4 @@ class ExceptionsPlugin
 
 <a name='custom'></a>
 ## Implementing your own Dispatcher
-The `Phalcon\Mvc\DispatcherInterface` interface must be implemented to create your own dispatcher replacing the one provided by Phalcon.
+The [Phalcon\Mvc\DispatcherInterface](api/Phalcon_Mvc_DispatcherInterface) interface must be implemented to create your own dispatcher replacing the one provided by Phalcon.

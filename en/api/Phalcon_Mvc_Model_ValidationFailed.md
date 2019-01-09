@@ -1,19 +1,25 @@
-# Class **Phalcon\\Mvc\\Model\\ValidationFailed**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\ValidationFailed'
+---
+# Class **Phalcon\Mvc\Model\ValidationFailed**
 
-*extends* class [Phalcon\Mvc\Model\Exception](/en/3.2/api/Phalcon_Mvc_Model_Exception)
+*extends* class [Phalcon\Mvc\Model\Exception](/3.4/en/api/Phalcon_Mvc_Model_Exception)
 
 *implements* [Throwable](http://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/validationfailed.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/validationfailed.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This exception is generated when a model fails to save a record
-Phalcon\\Mvc\\Model must be set up to have this behavior
+Phalcon\Mvc\Model must be set up to have this behavior
 
 
 ## Methods
 public  **__construct** (*Model* $model, *Message*\ [] $validationMessages)
 
-Phalcon\\Mvc\\Model\\ValidationFailed constructor
+Phalcon\Mvc\Model\ValidationFailed constructor
 
 
 

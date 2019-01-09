@@ -1,10 +1,16 @@
-# Class **Phalcon\\Mvc\\Model\\Binder**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Binder'
+---
+# Class **Phalcon\Mvc\Model\Binder**
 
-*implements* [Phalcon\Mvc\Model\BinderInterface](/en/3.2/api/Phalcon_Mvc_Model_BinderInterface)
+*implements* [Phalcon\Mvc\Model\BinderInterface](/3.4/en/api/Phalcon_Mvc_Model_BinderInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/binder.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/binder.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Phalcon\\Mvc\\Model\\Binding
+Phalcon\Mvc\Model\Binding
 
 This is an class for binding models into params for handler
 
@@ -22,13 +28,13 @@ Array for original values
 
 
 
-public  **__construct** ([[Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface) $cache])
+public  **__construct** ([[Phalcon\Cache\BackendInterface](/3.4/en/api/Phalcon_Cache_BackendInterface) $cache])
 
-Phalcon\\Mvc\\Model\\Binder constructor
+Phalcon\Mvc\Model\Binder constructor
 
 
 
-public  **setCache** ([Phalcon\Cache\BackendInterface](/en/3.2/api/Phalcon_Cache_BackendInterface) $cache)
+public  **setCache** ([Phalcon\Cache\BackendInterface](/3.4/en/api/Phalcon_Cache_BackendInterface) $cache)
 
 Gets cache instance
 

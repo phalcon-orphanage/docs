@@ -1,10 +1,10 @@
-# Class **Phalcon\\Mvc\\Router**
+# Class **Phalcon\Mvc\Router**
 
-*implements* [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\RouterInterface](/en/3.2/api/Phalcon_Mvc_RouterInterface), [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
+*implements* [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\RouterInterface](/3.4/en/api/Phalcon_Mvc_RouterInterface), [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/router.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/router.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Phalcon\\Mvc\\Router is the standard framework router. Routing is the
+Phalcon\Mvc\Router is the standard framework router. Routing is the
 process of taking a URI endpoint (that part of the URI which comes after the base URL) and
 decomposing it into parameters to determine which module, controller, and
 action of that controller should receive the request
@@ -43,11 +43,11 @@ echo $router->getControllerName();
 ## Methods
 public  **__construct** ([*mixed* $defaultRoutes])
 
-Phalcon\\Mvc\\Router constructor
+Phalcon\Mvc\Router constructor
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -59,7 +59,7 @@ Returns the internal dependency injector
 
 
 
-public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets the events manager
 
@@ -241,7 +241,7 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 
 
 
-public  **mount** ([Phalcon\Mvc\Router\GroupInterface](/en/3.2/api/Phalcon_Mvc_Router_GroupInterface) $group)
+public  **mount** ([Phalcon\Mvc\Router\GroupInterface](/3.4/en/api/Phalcon_Mvc_Router_GroupInterface) $group)
 
 Mounts a group of routes in the router
 

@@ -1,16 +1,8 @@
-<div class='article-menu' markdown='1'>
-
-- [Overview](#overview)
-    - [Create a New Project](#create-project)
-    - [Add a `boxfile.yml`](#boxfile-yml)
-    - [Add Phalcon Devtools to your `composer.json`](#add-devtools)
-    - [Start Nanobox and Generate a New Phalcon App](#new-phalcon-app)
-    - [Run the App Locally](#run-app)
-    - [Check Out the Environment](#environment)
-    - [Phalcon and Nanobox](#conclusion)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Overview
 [Nanobox](https://nanobox.io) is a portable, micro platform for developing and deploying apps. When working locally, Nanobox uses Docker to spin up and configure a virtual development environment configured to your specific needs. When you're ready to deploy to live servers, Nanobox will take that same environment and spin it up on your cloud provider of choice, where you can then manage and scale your app through the Nanobox dashboard.

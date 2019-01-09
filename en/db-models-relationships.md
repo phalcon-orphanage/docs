@@ -1,68 +1,8 @@
-<div class='article-menu'>
-  <ul>
-    <li>
-      <a href="#overview">Model Relationships</a> 
-      <ul>
-        <li>
-          <a href="#relationships">Relationships between Models</a> 
-          <ul>
-            <li>
-              <a href="#unidirectional">Unidirectional relationships</a>
-            </li>
-            <li>
-              <a href="#bidirectional">Bidirectional relations</a>
-            </li>
-            <li>
-              <a href="#defining">Defining relationships</a>
-              <ul>
-                <li>
-                  <a href="#multiple-fields">Multiple field relationships</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#taking-advantage-of">Taking advantage of relationships</a>
-            </li>
-            <li>
-              <a href="#aliases">Aliasing Relationships</a> 
-              <ul>
-                <li>
-                  <a href="#getters-vs-methods">Magic Getters vs. Explicit methods</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#conditionals">Conditionals</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#virtual-foreign-keys">Virtual Foreign Keys</a> 
-          <ul>
-            <li>
-              <a href="#cascade-restrict-actions">Cascade/Restrict actions</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#storing-related-records">Storing Related Records</a>
-        </li>
-        <li>
-          <a href="#operations-over-resultsets">Operations over Resultsets</a> 
-          <ul>
-            <li>
-              <a href="#updating-related-records">Updating related records</a>
-            </li>
-            <li>
-              <a href="#deleting-related-records">Deleting related records</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Model Relationships
 <a name='relationships'></a>
@@ -123,7 +63,7 @@ CREATE TABLE parts (
 
 Check the EER diagram to understand better the relations:
 
-![](/images/content/models-relationships-eer-1.png)
+![](/assets/images/content/models-relationships-eer-1.png)
 
 The models with their relations could be implemented as follows:
 
@@ -232,6 +172,48 @@ class Robots extends Model
     }
 }
 ```
+
+<a name='parameters'></a>
+#### Relationships with parameters
+Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance you might want to only have a table called `parts` which has a field `type` describing the type of the part. 
+
+Using relationships, we can get only those parts that relate to our Robot that are of certain type. Defining that constraint in our relationship allows us to let the model do all the work.
+
+```php
+<?php
+ 
+ namespace Store\Toys;
+ 
+ use Phalcon\Mvc\Model;
+ 
+ class Robots extends Model
+ {
+     public $id;
+ 
+     public $name;
+ 
+     public $type;
+     
+     public function initialize()
+     {
+         $this->hasMany(
+             'id',
+             Parts::class,
+             'robotId',
+             [
+                 'reusable' => true, // cache related data
+                 'alias'    => 'mechanicalParts',
+                 'params'   => [
+                     'conditions' => 'robotTypeId = :type:',
+                     'bind'       => [
+                         'type' => 4,
+                     ]
+                 ]
+             ]
+         );
+     }
+ }
+ ```
 
 <a name='multiple-fields'></a>
 #### Multiple field relationships
@@ -362,7 +344,7 @@ $robotsParts = $robot->getRobotsParts(
 );
 ```
 
-If the called method has a `get` prefix `Phalcon\Mvc\Model` will return a `findFirst()`/`find()` result. The following example compares retrieving related results with using magic methods and without:
+If the called method has a `get` prefix [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) will return a `findFirst()`/`find()` result. The following example compares retrieving related results with using magic methods and without:
 
 ```php
 <?php
@@ -479,7 +461,7 @@ mysql> desc robots_similar;
 
 Both `robots_id` and `similar_robots_id` have a relation to the model Robots:
 
-![](/images/content/models-relationships-eer-1.png)
+![](/assets/images/content/models-relationships-eer-1.png)
 
 A model that maps this table and its relationships is the following:
 

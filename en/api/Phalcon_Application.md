@@ -1,22 +1,28 @@
-# Abstract class **Phalcon\\Application**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Application'
+---
+# Abstract class **Phalcon\Application**
 
-*extends* abstract class [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+*extends* abstract class [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/application.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/application.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Base class for Phalcon\\Cli\\Console and Phalcon\\Mvc\\Application.
+Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
 
 ## Methods
-public  **__construct** ([[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector])
+public  **__construct** ([[Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector])
+
+Phalcon\Application Constructor
 
 
 
-
-
-public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets the events manager
 
@@ -38,11 +44,11 @@ Register an array of modules present in the application
 $this->registerModules(
     [
         "frontend" => [
-            "className" => "Multiple\\Frontend\\Module",
+            "className" => "Multiple\Frontend\Module",
             "path"      => "../apps/frontend/Module.php",
         ],
         "backend" => [
-            "className" => "Multiple\\Backend\\Module",
+            "className" => "Multiple\Backend\Module",
             "path"      => "../apps/backend/Module.php",
         ],
     ]
@@ -82,19 +88,19 @@ Handles a request
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public  **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
 Sets the dependency injector
 
 
 
-public  **getDI** () inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public  **getDI** () inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
 Returns the internal dependency injector
 
 
 
-public  **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public  **__get** (*string* $propertyName) inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
 Magic method __get
 

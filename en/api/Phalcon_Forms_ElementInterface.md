@@ -1,9 +1,15 @@
-# Interface **Phalcon\\Forms\\ElementInterface**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Forms\ElementInterface'
+---
+# Interface **Phalcon\Forms\ElementInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/forms/elementinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/forms/elementinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
-abstract public  **setForm** ([Phalcon\Forms\Form](/en/3.2/api/Phalcon_Forms_Form) $form)
+abstract public  **setForm** ([Phalcon\Forms\Form](/3.4/en/api/Phalcon_Forms_Form) $form)
 
 ...
 
@@ -43,7 +49,7 @@ abstract public  **addValidators** (*array* $validators, [*mixed* $merge])
 ...
 
 
-abstract public  **addValidator** ([Phalcon\Validation\ValidatorInterface](/en/3.2/api/Phalcon_Validation_ValidatorInterface) $validator)
+abstract public  **addValidator** ([Phalcon\Validation\ValidatorInterface](/3.4/en/api/Phalcon_Validation_ValidatorInterface) $validator)
 
 ...
 
@@ -138,12 +144,12 @@ abstract public  **hasMessages** ()
 ...
 
 
-abstract public  **setMessages** ([Phalcon\Validation\Message\Group](/en/3.2/api/Phalcon_Validation_Message_Group) $group)
+abstract public  **setMessages** ([Phalcon\Validation\Message\Group](/3.4/en/api/Phalcon_Validation_Message_Group) $group)
 
 ...
 
 
-abstract public  **appendMessage** ([Phalcon\Validation\MessageInterface](/en/3.2/api/Phalcon_Validation_MessageInterface) $message)
+abstract public  **appendMessage** ([Phalcon\Validation\MessageInterface](/3.4/en/api/Phalcon_Validation_MessageInterface) $message)
 
 ...
 

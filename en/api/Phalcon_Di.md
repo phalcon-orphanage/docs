@@ -1,13 +1,19 @@
-# Class **Phalcon\\Di**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Di'
+---
+# Class **Phalcon\Di**
 
-*implements* [Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
+*implements* [Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/di.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/di.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Phalcon\\Di is a component that implements Dependency Injection/Service Location
+Phalcon\Di is a component that implements Dependency Injection/Service Location
 of services and it's itself a container for them.
 
-Since Phalcon is highly decoupled, Phalcon\\Di is essential to integrate the different
+Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the different
 components of the framework. The developer can also use this component to inject dependencies
 and manage global instances of the different classes used in the application.
 
@@ -45,11 +51,11 @@ $request = $di->getRequest();
 ## Methods
 public  **__construct** ()
 
-Phalcon\\Di constructor
+Phalcon\Di constructor
 
 
 
-public  **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public  **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets the internal event manager
 
@@ -88,9 +94,9 @@ with the same name
 
 
 
-public  **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/en/3.2/api/Phalcon_Di_ServiceInterface) $rawDefinition)
+public  **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/3.4/en/api/Phalcon_Di_ServiceInterface) $rawDefinition)
 
-Sets a service using a raw Phalcon\\Di\\Service definition
+Sets a service using a raw Phalcon\Di\Service definition
 
 
 
@@ -102,7 +108,7 @@ Returns a service definition without resolving
 
 public  **getService** (*mixed* $name)
 
-Returns a Phalcon\\Di\\Service instance
+Returns a Phalcon\Di\Service instance
 
 
 
@@ -181,7 +187,7 @@ Magic method to get or set services using setters/getters
 
 
 
-public  **register** ([Phalcon\Di\ServiceProviderInterface](/en/3.2/api/Phalcon_Di_ServiceProviderInterface) $provider)
+public  **register** ([Phalcon\Di\ServiceProviderInterface](/3.4/en/api/Phalcon_Di_ServiceProviderInterface) $provider)
 
 Registers a service provider.
 
@@ -205,7 +211,7 @@ class SomeServiceProvider implements ServiceProviderInterface
 
 
 
-public static  **setDefault** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public static  **setDefault** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Set a default dependency injection container to be obtained into static methods
 
@@ -300,7 +306,7 @@ return [
 
 
 
-protected  **loadFromConfig** ([Phalcon\Config](/en/3.2/api/Phalcon_Config) $config)
+protected  **loadFromConfig** ([Phalcon\Config](/3.4/en/api/Phalcon_Config) $config)
 
 Loads services from a Config object.
 

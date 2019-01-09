@@ -1,8 +1,14 @@
-# Class **Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\View\Engine\Volt\Compiler'
+---
+# Class **Phalcon\Mvc\View\Engine\Volt\Compiler**
 
-*implements* [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/view/engine/volt/compiler.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/view/engine/volt/compiler.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This class reads and compiles Volt templates into PHP plain code
 
@@ -19,13 +25,13 @@ require $compiler->getCompiledTemplatePath();
 
 
 ## Methods
-public  **__construct** ([[Phalcon\Mvc\ViewBaseInterface](/en/3.2/api/Phalcon_Mvc_ViewBaseInterface) $view])
+public  **__construct** ([[Phalcon\Mvc\ViewBaseInterface](/3.4/en/api/Phalcon_Mvc_ViewBaseInterface) $view])
 
 
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -303,7 +309,7 @@ Parses a Volt template returning its intermediate representation
 <?php
 
 print_r(
-    $compiler->parse("{{ 3 + 2 }}")
+    $compiler->parse("{% raw %}{{ 3 + 2 }}{% endraw %}")
 );
 
 ```

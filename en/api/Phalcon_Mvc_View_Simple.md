@@ -1,10 +1,16 @@
-# Class **Phalcon\\Mvc\\View\\Simple**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\View\Simple'
+---
+# Class **Phalcon\Mvc\View\Simple**
 
-*extends* abstract class [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+*extends* abstract class [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\ViewBaseInterface](/en/3.2/api/Phalcon_Mvc_ViewBaseInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\ViewBaseInterface](/3.4/en/api/Phalcon_Mvc_ViewBaseInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/view/simple.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/view/simple.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This component allows to render views without hierarchical levels
 
@@ -43,7 +49,7 @@ public  **getRegisteredEngines** ()
 
 public  **__construct** ([*array* $options])
 
-Phalcon\\Mvc\\View\\Simple constructor
+Phalcon\Mvc\View\Simple constructor
 
 
 
@@ -68,8 +74,8 @@ Register templating engines
 
 $this->view->registerEngines(
     [
-        ".phtml" => "Phalcon\\Mvc\\View\\Engine\\Php",
-        ".volt"  => "Phalcon\\Mvc\\View\\Engine\\Volt",
+        ".phtml" => "Phalcon\Mvc\View\Engine\Php",
+        ".volt"  => "Phalcon\Mvc\View\Engine\Volt",
         ".mhtml" => "MyCustomEngine",
     ]
 );
@@ -80,7 +86,7 @@ $this->view->registerEngines(
 
 protected *array* **_loadTemplateEngines** ()
 
-Loads registered template engines, if none is registered it will use Phalcon\\Mvc\\View\\Engine\\Php
+Loads registered template engines, if none is registered it will use Phalcon\Mvc\View\Engine\Php
 
 
 
@@ -137,7 +143,7 @@ Returns the cache options
 
 protected  **_createCache** ()
 
-Create a Phalcon\\Cache based on the internal cache options
+Create a Phalcon\Cache based on the internal cache options
 
 
 
@@ -271,25 +277,25 @@ echo $this->view->products;
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public  **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
 Sets the dependency injector
 
 
 
-public  **getDI** () inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public  **getDI** () inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
 Sets the event manager
 
 
 
-public  **getEventsManager** () inherited from [Phalcon\Di\Injectable](/en/3.2/api/Phalcon_Di_Injectable)
+public  **getEventsManager** () inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
 Returns the internal event manager
 

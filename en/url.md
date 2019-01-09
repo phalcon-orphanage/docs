@@ -1,18 +1,11 @@
-<div class='article-menu' markdown='1'>
-
-- [Generating URLs and Paths](#overview)
-    - [Setting a base URI](#base-uri)
-    - [Generating URIs](#generating-uri)
-    - [Producing URLs without mod_rewrite](#urls-without-mod-rewrite)
-    - [Producing URLs from Volt](#urls-from-volt)
-    - [Static vs. Dynamic URIs](#static-vs-dynamic-uri)
-    - [Implementing your own URL Generator](#custom-url)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Generating URLs and Paths
-`Phalcon\Mvc\Url` is the component responsible of generate URLs in a Phalcon application. It's capable of produce independent URLs based on routes.
+[Phalcon\Mvc\Url](api/Phalcon_Mvc_Url) is the component responsible of generate URLs in a Phalcon application. It's capable of produce independent URLs based on routes.
 
 <a name='base-uri'></a>
 ## Setting a base URI
@@ -70,7 +63,7 @@ $di->set(
 
 <a name='generating-uri'></a>
 ## Generating URIs
-If you are using the [Router](/[[language]]/[[version]]/routing) with its default behavior, your application is able to match routes based on the following pattern: 
+If you are using the [Router](/3.4/en/routing) with its default behavior, your application is able to match routes based on the following pattern: 
 
 <h5 class='alert alert-info' markdown='1'>/:controller/:action/:params </h5>
 
@@ -176,13 +169,17 @@ echo $url->get('products/save');
 The function `url` is available in volt to generate URLs using this component:
 
 ```twig
+{% raw %}
 <a href='{{ url('posts/edit/1002') }}'>Edit</a>
+{% endraw %}
 ```
 
 Generate static routes:
 
 ```twig
+{% raw %}
 <link rel='stylesheet' href='{{ static_url('css/style.css') }}' type='text/css' />
+{% endraw %}
 ```
 
 <a name='static-vs-dynamic-uri'></a>
@@ -203,8 +200,8 @@ $url->setBaseUri('/');
 $url->setStaticBaseUri('http://static.mywebsite.com/');
 ```
 
-`Phalcon\Tag` will request both dynamic and static URIs using this component.
+[Phalcon\Tag](api/Phalcon_Tag) will request both dynamic and static URIs using this component.
 
 <a name='custom-url'></a>
 ## Implementing your own URL Generator
-The `Phalcon\Mvc\UrlInterface` interface must be implemented to create your own URL generator replacing the one provided by Phalcon.
+The [Phalcon\Mvc\UrlInterface](api/Phalcon_Mvc_UrlInterface) interface must be implemented to create your own URL generator replacing the one provided by Phalcon.

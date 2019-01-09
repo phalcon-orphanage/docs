@@ -1,20 +1,8 @@
-<div class='article-menu' markdown='1'>
-
-- [Phalcon Developer Tools](#overview)
-    - [Download](#download)
-    - [Installation](#installation)
-    - [Available Commands](#available-commands)
-    - [Generating a Project Skeleton](#project-skeleton)
-    - [Generating Controllers](#generating-controllers)
-    - [Preparing Database Settings](#database-settings)
-    - [Generating Models](#generating-models)
-    - [Scaffold a CRUD](#crud)
-    - [Web Interface to Tools](#web-interface)
-    - [Integrating Tools with PhpStorm IDE](#phpstorm-ide)
-    - [Conclusion](#conclusion)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Phalcon Developer Tools
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
@@ -29,7 +17,7 @@ You can download or clone a cross platform package containing the developer tool
 ## Installation
 These are detailed instructions on how to install the developer tools on different platforms:
 
-[Linux](/[[language]]/[[version]]devtools-installation#installation-linux) : [MacOS](/[[language]]/[[version]]devtools-installation#installation-macos) : [Windows](/[[language]]/[[version]]devtools-installation#installation-windows)
+[Linux](/[/3.4/en/devtools-installation#installation-linux) : [MacOS](/3.4/en/devtools-installation#installation-macos) : [Windows](/3.4/en/devtools-installation#installation-windows)
 
 <a name='available-commands'></a>
 ## Available Commands
@@ -66,7 +54,7 @@ $ phalcon create-project store
 
 The above recommended project structure was generated:
 
-![](/images/content/devtools-usage-01.png)
+![](/assets/images/content/devtools-usage-01.png)
 
 You could add the parameter `--help` to get help on the usage of a certain script:
 
@@ -100,7 +88,7 @@ Options:
 
 Accessing the project from the web server will show you:
 
-![](/images/content/devtools-usage-02.png)
+![](/assets/images/content/devtools-usage-02.png)
 
 <a name='generating-controllers'></a>
 ## Generating Controllers
@@ -128,9 +116,9 @@ class TestController extends Controller
 
 <a name='database-settings'></a>
 ## Preparing Database Settings
-When a project is generated using developer tools. A configuration file can be found in `app/config/config.ini`. To generate models or scaffold, you will need to change the settings used to connect to your database.
+When a project is generated using developer tools. A configuration file can be found in `app/config/config.php`. To generate models or scaffold, you will need to change the settings used to connect to your database.
 
-Change the database section in your config.ini file:
+Change the database section in your config.php file:
 
 ```php
 <?php
@@ -159,7 +147,7 @@ return new \Phalcon\Config([
         // This allows the baseUri to be understand project paths that are not in the root directory
         // of the webpspace.  This will break if the public/index.php entry point is moved or
         // possibly if the web server rewrite rules are changed. This can also be set to a static path.
-        'baseUri'        => preg_replace('/public([\/\\\\])index.php$/', '', $_SERVER["PHP_SELF"]),
+        'baseUri'        => preg_replace('/public([\/\\])index.php$/', '', $_SERVER["PHP_SELF"]),
     ]
 ]);
 ```
@@ -338,15 +326,15 @@ The scaffold generator will build several files in your application, along with 
 
 When browsing the recently generated controller, you will see a search form and a link to create a new Product:
 
-![](/images/content/devtools-usage-03.png)
+![](/assets/images/content/devtools-usage-03.png)
 
 The `create page` allows you to create products applying validations on the Products model. Phalcon will automatically validate not null fields producing warnings if any of them is required.
 
-![](/images/content/devtools-usage-04.png)
+![](/assets/images/content/devtools-usage-04.png)
 
 After performing a search, a pager component is available to show paged results. Use the "Edit" or "Delete" links in front of each result to perform such actions.
 
-![](/images/content/devtools-usage-05.png)
+![](/assets/images/content/devtools-usage-05.png)
 
 <a name='web-interface'></a>
 ## Web Interface to Tools

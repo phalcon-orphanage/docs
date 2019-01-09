@@ -1,16 +1,8 @@
-<div class='article-menu' markdown='1'>
-
-- [Storing data in the Session](#overview)
-    - [Starting the Session](#start)
-    - [Storing/Retrieving data in Session](#store)
-    - [Removing/Destroying Sessions](#remove-destroy)
-    - [Isolating Session Data between Applications](#data-isolation)
-    - [Session Bags](#bags)
-    - [Persistent Data in Components](#data-persistency)
-    - [Implementing your own adapters](#custom-adapters)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Storing data in the Session
 The session component provides object-oriented wrappers to access session data.
@@ -43,9 +35,32 @@ $di->setShared(
 );
 ```
 
+<a name='start-factory'></a>
+## Factory
+Loads Session Adapter class using `adapter` option
+ 
+```php
+<?php
+
+use Phalcon\Session\Factory;
+
+$options = [
+    'uniqueId'   => 'my-private-app',
+    'host'       => '127.0.0.1',
+    'port'       => 11211,
+    'persistent' => true,
+    'lifetime'   => 3600,
+    'prefix'     => 'my_',
+    'adapter'    => 'memcache',
+];
+
+$session = Factory::load($options);
+$session->start();
+```
+
 <a name='store'></a>
 ## Storing/Retrieving data in Session
-From a controller, a view or any other component that extends `Phalcon\Di\Injectable` you can access the session service and store items and retrieve them in the following way:
+From a controller, a view or any other component that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) you can access the session service and store items and retrieve them in the following way:
 
 ```php
 <?php
@@ -128,7 +143,7 @@ Adding a unique ID is not necessary.
 
 <a name='bags'></a>
 ## Session Bags
-`Phalcon\Session\Bag` is a component that helps separating session data into `namespaces`. Working by this way you can easily create groups of session variables into the application. By only setting the variables in the `bag`, it's automatically stored in session:
+[Phalcon\Session\Bag](api/Phalcon_Session_Bag) is a component that helps separating session data into `namespaces`. Working by this way you can easily create groups of session variables into the application. By only setting the variables in the `bag`, it's automatically stored in session:
 
 ```php
 <?php
@@ -143,9 +158,9 @@ $user->name = 'Kimbra Johnson';
 $user->age  = 22;
 ```
 
-<a name='data-persistency'></a>
+<a name='data-persistence'></a>
 ## Persistent Data in Components
-Controller, components and classes that extends `Phalcon\Di\Injectable` may inject a `Phalcon\Session\Bag`. This class isolates variables for every class. Thanks to this you can persist data between requests in every class in an independent way.
+Controller, components and classes that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) may inject a [Phalcon\Session\Bag](api/Phalcon_Session_Bag). This class isolates variables for every class. Thanks to this you can persist data between requests in every class in an independent way.
 
 ```php
 <?php
@@ -195,6 +210,6 @@ The data added to the session (`$this->session`) are available throughout the ap
 
 <a name='custom-adapters'></a>
 ## Implementing your own adapters
-The `Phalcon\Session\AdapterInterface` interface must be implemented in order to create your own session adapters or extend the existing ones.
+The [Phalcon\Session\AdapterInterface](api/Phalcon_Session_AdapterInterface) interface must be implemented in order to create your own session adapters or extend the existing ones.
 
 There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter)

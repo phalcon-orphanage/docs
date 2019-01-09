@@ -1,10 +1,16 @@
-# Class **Phalcon\\Acl\\Adapter\\Memory**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Acl\Adapter\Memory'
+---
+# Class **Phalcon\Acl\Adapter\Memory**
 
-*extends* abstract class [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+*extends* abstract class [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/en/3.2/api/Phalcon_Acl_AdapterInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/3.4/en/api/Phalcon_Acl_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Manages ACL lists in memory
 
@@ -75,7 +81,7 @@ foreach ($privateResources as $resource => $actions) {
 ## Methods
 public  **__construct** ()
 
-Phalcon\\Acl\\Adapter\\Memory constructor
+Phalcon\Acl\Adapter\Memory constructor
 
 
 
@@ -116,7 +122,7 @@ Check whether resource exist in the resources list
 
 
 
-public  **addResource** ([Phalcon\Acl\Resource](/en/3.2/api/Phalcon_Acl_Resource) | *string* $resourceValue, *array* | *string* $accessList)
+public  **addResource** ([Phalcon\Acl\Resource](/3.4/en/api/Phalcon_Acl_Resource) | *string* $resourceValue, *array* | *string* $accessList)
 
 Adds a resource to the ACL list
 Access names can be a particular action, by example
@@ -242,7 +248,7 @@ $acl->isAllowed("guests", "*", "edit");
 
 public  **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
 
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
+Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 for no arguments provided in isAllowed action if there exists func for
 accessKey
 
@@ -267,43 +273,43 @@ Return an array with every resource registered in the list
 
 
 
-public  **getActiveRole** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public  **getActiveRole** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
 Role which the list is checking if it's allowed to certain resource/access
 
 
 
-public  **getActiveResource** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public  **getActiveResource** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
 Resource which the list is checking if some role can access it
 
 
 
-public  **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public  **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
 Active access which the list is checking if some role can access it
 
 
 
-public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
 Sets the events manager
 
 
 
-public  **getEventsManager** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public  **getEventsManager** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
 Returns the internal event manager
 
 
 
-public  **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public  **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
-Sets the default access level (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
+Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 
 
 
-public  **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](/en/3.2/api/Phalcon_Acl_Adapter)
+public  **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
 Returns the default ACL access level
 

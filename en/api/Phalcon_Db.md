@@ -1,15 +1,21 @@
-# Abstract class **Phalcon\\Db**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db'
+---
+# Abstract class **Phalcon\Db**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Phalcon\\Db and its related classes provide a simple SQL database interface for Phalcon Framework.
-The Phalcon\\Db is the basic class you use to connect your PHP application to an RDBMS.
+Phalcon\Db and its related classes provide a simple SQL database interface for Phalcon Framework.
+The Phalcon\Db is the basic class you use to connect your PHP application to an RDBMS.
 There is a different adapter class for each brand of RDBMS.
 
 This component is intended to lower level database operations. If you want to interact with databases using
-higher level of abstraction use Phalcon\\Mvc\\Model.
+higher level of abstraction use Phalcon\Mvc\Model.
 
-Phalcon\\Db is an abstract class. You only can use it with a database adapter like Phalcon\\Db\\Adapter\\Pdo
+Phalcon\Db is an abstract class. You only can use it with a database adapter like Phalcon\Db\Adapter\Pdo
 
 ```php
 <?php

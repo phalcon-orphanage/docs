@@ -1,26 +1,8 @@
-<div class='article-menu' markdown='1'>
-
-- [Phalcon Query Language (PHQL)](#overview)
-    - [Usage Example](#usage)
-    - [Creating PHQL Queries](#creating)
-    - [Selecting Records](#selecting-records)
-        - [Result Types](#result-types)
-        - [Joins](#joins)
-        - [Aggregations](#aggregations)
-        - [Conditions](#conditions)
-    - [Inserting Data](#inserting-data)
-    - [Updating Data](#updating-data)
-    - [Deleting Data](#deleting-data)
-    - [Creating queries using the Query Builder](#query-builder)
-        - [Bound Parameters](#query-builder-parameters)
-    - [Disallow literals in PHQL](#disallow-literals)
-    - [Escaping Reserved Words](#escaping-reserved-words)
-    - [PHQL Lifecycle](#lifecycle)
-    - [Using Raw SQL](#raw-sql)
-    - [Troubleshooting](#troubleshooting)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Phalcon Query Language (PHQL)
 Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows to write queries using a standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
@@ -111,7 +93,7 @@ class Brands extends Model
 
 <a name='creating'></a>
 ## Creating PHQL Queries
-PHQL queries can be created just by instantiating the class `Phalcon\Mvc\Model\Query`:
+PHQL queries can be created just by instantiating the class [Phalcon\Mvc\Model\Query](api/Phalcon_Mvc_Model_Query):
 
 ```php
 <?php
@@ -128,7 +110,7 @@ $query = new Query(
 $cars = $query->execute();
 ```
 
-From a controller or a view, it's easy to create/execute them using an injected `models manager` (`Phalcon\Mvc\Model\Manager`):
+From a controller or a view, it's easy to create/execute them using an injected `models manager` ([Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc_Model_Manager)):
 
 ```php
 <?php
@@ -208,7 +190,7 @@ $query = $manager->createQuery($phql);
 
 <a name='result-types'></a>
 ### Result Types
-Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is a `Phalcon\Mvc\Model\Resultset\Simple`. This kind of resultset is a set of complete model objects:
+Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This kind of resultset is a set of complete model objects:
 
 ```php
 <?php
@@ -253,7 +235,7 @@ foreach ($cars as $car) {
 ```
 
 We are only requesting some fields in the table, therefore those cannot be considered an entire object, so the returned object is
-still a resultset of type `Phalcon\Mvc\Model\Resultset\Simple`. However, each element is a standard object that only contain the two columns that were requested.
+still a resultset of type [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). However, each element is a standard object that only contain the two columns that were requested.
 
 These values that don't represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
 
@@ -279,7 +261,7 @@ $phql = 'SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name';
 $result = $manager->executeQuery($phql);
 ```
 
-The result in this case is an object `Phalcon\Mvc\Model\Resultset\Complex`. This allows access to both complete objects and scalars at once:
+The result in this case is an object [Phalcon\Mvc\Model\Resultset\Complex](api/Phalcon_Mvc_Model_Resultset_Complex). This allows access to both complete objects and scalars at once:
 
 ```php
 <?php

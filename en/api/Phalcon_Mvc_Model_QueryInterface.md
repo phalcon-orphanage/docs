@@ -1,6 +1,12 @@
-# Interface **Phalcon\\Mvc\\Model\\QueryInterface**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\QueryInterface'
+---
+# Interface **Phalcon\Mvc\Model\QueryInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/queryinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/queryinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 abstract public  **parse** ()

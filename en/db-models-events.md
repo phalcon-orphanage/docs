@@ -1,35 +1,30 @@
-<div class='article-menu' markdown='1'>
-
-- [Model Events](#overview)
-    - [Events and Events Manager](#events)
-        - [Implementing Events in the Model's class](#events-in-models)
-        - [Using a custom Events Manager](#custom-events-manager)
-    - [Logging Low-Level SQL Statements](#logging-sql-statements)
-    - [Profiling SQL Statements](#profiling-sql-statements)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Model Events
 <a name='events'></a>
 ## Events and Events Manager
-Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by `Phalcon\Mvc\Model` and their order of execution:
+Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) and their order of execution:
 
 | Operation          | Name                     | Can stop operation?   | Explanation                                                                                                                       |
 | ------------------ | ------------------------ | :-------------------: |---------------------------------------------------------------------------------------------------------------------------------- |
 | Inserting          | afterCreate              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made                         |
-| Updating           | afterUpdate              | NO                    | Runs after the required operation over the database system only when an updating operation is being made                          |
 | Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                                        |
+| Updating           | afterUpdate              | NO                    | Runs after the required operation over the database system only when an updating operation is being made                          |
 | Inserting/Updating | afterValidation          | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
 | Inserting          | afterValidationOnCreate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
 | Updating           | afterValidationOnUpdate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
-| Inserting/Updating | beforeValidation         | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
 | Inserting          | beforeCreate             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made                        |
 | Inserting/Updating | beforeSave               | YES                   | Runs before the required operation over the database system                                                                       |
 | Updating           | beforeUpdate             | YES                   | Runs before the required operation over the database system only when an updating operation is being made                         |
+| Inserting/Updating | beforeValidation         | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
 | Inserting          | beforeValidationOnCreate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
 | Updating           | beforeValidationOnUpdate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
 | Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
+| Inserting/Updating | prepareSave              | NO                    | Is executed before saving and allows data manipulation                                                                            |
 | Inserting/Updating | validation               | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
 
 <a name='events-in-models'></a>
@@ -77,7 +72,7 @@ class Products extends Model
 
 <a name='custom-events-manager'></a>
 ### Using a custom Events Manager
-Additionally, this component is integrated with `Phalcon\Events\Manager`, this means we can create listeners that run when an event is triggered.
+Additionally, this component is integrated with [Phalcon\Events\Manager](api/Phalcon_Events_Manager), this means we can create listeners that run when an event is triggered.
 
 ```php
 <?php
@@ -174,7 +169,7 @@ If a listener returns false that will stop the operation that is executing curre
 
 <a name='logging-sql-statements'></a>
 ## Logging Low-Level SQL Statements
-When using high-level abstraction components such as `Phalcon\Mvc\Model` to access a database, it is difficult to understand which statements are finally sent to the database system. `Phalcon\Mvc\Model` is supported internally by `Phalcon\Db`. `Phalcon\Logger` interacts with `Phalcon\Db`, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
+When using high-level abstraction components such as [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) to access a database, it is difficult to understand which statements are finally sent to the database system. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is supported internally by [Phalcon\Db](api/Phalcon_Db). [Phalcon\Logger](api/Phalcon_Logger) interacts with [Phalcon\Db](api/Phalcon_Db), providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
 
 ```php
 <?php
@@ -244,7 +239,7 @@ As above, the file *app/logs/db.log* will contain something like this:
 
 <a name='profiling-sql-statements'></a>
 ## Profiling SQL Statements
-Thanks to `Phalcon\Db`, the underlying component of `Phalcon\Mvc\Model`, it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks.
+Thanks to [Phalcon\Db](api/Phalcon_Db), the underlying component of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model), it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks.
 
 ```php
 <?php

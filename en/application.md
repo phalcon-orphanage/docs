@@ -1,18 +1,11 @@
-<div class='article-menu' markdown='1'>
-
-- [MVC Applications](#overview)
-    - [Manual Bootstrapping](#manual-bootstrapping)
-    - [Single or Multi Module Applications](#single-vs-module)
-        - [Single Module](#single)
-        - [Multi Module](#module)
-    - [Application Events](#events)
-    - [External Resources](#resources)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # MVC Applications
-All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by `Phalcon\Mvc\Application`. This component encapsulates all the complex operations required in the background, instantiating every component needed and integrating it with the project, to allow the MVC pattern to operate as desired.
+All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). This component encapsulates all the complex operations required in the background, instantiating every component needed and integrating it with the project, to allow the MVC pattern to operate as desired.
 
 The following bootstrap code is typical for a Phalcon application:
 
@@ -49,7 +42,7 @@ $response = $application->handle();
 
 <a name='manual-bootstrapping'></a>
 ## Manual bootstrapping
-If you do not wish to use `Phalcon\Mvc\Application`, the code above can be changed as follows:
+If you do not wish to use [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), the code above can be changed as follows:
 
 ```php
 <?php
@@ -104,7 +97,7 @@ $response->setContent(
 $response->send();
 ```
 
-The following replacement of `Phalcon\Mvc\Application` lacks of a view component making it suitable for Rest APIs:
+The following replacement of [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) lacks of a view component making it suitable for Rest APIs:
 
 ```php
 <?php
@@ -197,7 +190,7 @@ if ($response instanceof ResponseInterface) {
 }
 ```
 
-Although the above implementations are a lot more verbose than the code needed while using `Phalcon\Mvc\Application`, offers an alternative in bootstrapping your application. Depending on your needs, you might want to have full control of what should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
+Although the above implementations are a lot more verbose than the code needed while using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), offers an alternative in bootstrapping your application. Depending on your needs, you might want to have full control of what should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
 
 <a name='single-vs-module'></a>
 ## Single or Multi Module Applications
@@ -527,11 +520,11 @@ $application->registerModules(
 );
 ```
 
-When `Phalcon\Mvc\Application` have modules registered, always is necessary that every matched route returns a valid module. Each registered module has an associated class offering functions to set the module itself up. Each module class definition must implement two methods: `registerAutoloaders()` and `registerServices()`, they will be called by `Phalcon\Mvc\Application` according to the module to be executed.
+When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registered, always is necessary that every matched route returns a valid module. Each registered module has an associated class offering functions to set the module itself up. Each module class definition must implement two methods: `registerAutoloaders()` and `registerServices()`, they will be called by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) according to the module to be executed.
 
 <a name='events'></a>
 ## Application Events
-`Phalcon\Mvc\Application` is able to send events to the [EventsManager](/[[language]]/[[version]]/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
+[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/3.4/en/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
 | Event Name            | Triggered                                                    |
 |-----------------------|--------------------------------------------------------------|

@@ -1,8 +1,14 @@
-# Class **Phalcon\\Mvc\\Micro\\Collection**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Micro\Collection'
+---
+# Class **Phalcon\Mvc\Micro\Collection**
 
-*implements* [Phalcon\Mvc\Micro\CollectionInterface](/en/3.2/api/Phalcon_Mvc_Micro_CollectionInterface)
+*implements* [Phalcon\Mvc\Micro\CollectionInterface](/3.4/en/api/Phalcon_Mvc_Micro_CollectionInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/micro/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/micro/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Groups Micro-Mvc handlers as controllers
 
@@ -49,7 +55,7 @@ Returns the registered handlers
 
 
 
-public [Phalcon\Mvc\Micro\Collection](/en/3.2/api/Phalcon_Mvc_Micro_Collection) **setHandler** (*mixed* $handler, [*boolean* $lazy])
+public [Phalcon\Mvc\Micro\Collection](/3.4/en/api/Phalcon_Mvc_Micro_Collection) **setHandler** (*mixed* $handler, [*boolean* $lazy])
 
 Sets the main handler
 
@@ -73,49 +79,49 @@ Returns the main handler
 
 
 
-public [Phalcon\Mvc\Micro\Collection](/en/3.2/api/Phalcon_Mvc_Micro_Collection) **map** (*string* $routePattern, *callable* $handler, [*string* $name])
+public [Phalcon\Mvc\Micro\Collection](/3.4/en/api/Phalcon_Mvc_Micro_Collection) **map** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler
 
 
 
-public [Phalcon\Mvc\Micro\Collection](/en/3.2/api/Phalcon_Mvc_Micro_Collection) **get** (*string* $routePattern, *callable* $handler, [*string* $name])
+public [Phalcon\Mvc\Micro\Collection](/3.4/en/api/Phalcon_Mvc_Micro_Collection) **get** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is GET
 
 
 
-public [Phalcon\Mvc\Micro\Collection](/en/3.2/api/Phalcon_Mvc_Micro_Collection) **post** (*string* $routePattern, *callable* $handler, [*string* $name])
+public [Phalcon\Mvc\Micro\Collection](/3.4/en/api/Phalcon_Mvc_Micro_Collection) **post** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is POST
 
 
 
-public [Phalcon\Mvc\Micro\Collection](/en/3.2/api/Phalcon_Mvc_Micro_Collection) **put** (*string* $routePattern, *callable* $handler, [*string* $name])
+public [Phalcon\Mvc\Micro\Collection](/3.4/en/api/Phalcon_Mvc_Micro_Collection) **put** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is PUT
 
 
 
-public [Phalcon\Mvc\Micro\Collection](/en/3.2/api/Phalcon_Mvc_Micro_Collection) **patch** (*string* $routePattern, *callable* $handler, [*string* $name])
+public [Phalcon\Mvc\Micro\Collection](/3.4/en/api/Phalcon_Mvc_Micro_Collection) **patch** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is PATCH
 
 
 
-public [Phalcon\Mvc\Micro\Collection](/en/3.2/api/Phalcon_Mvc_Micro_Collection) **head** (*string* $routePattern, *callable* $handler, [*string* $name])
+public [Phalcon\Mvc\Micro\Collection](/3.4/en/api/Phalcon_Mvc_Micro_Collection) **head** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is HEAD
 
 
 
-public [Phalcon\Mvc\Micro\Collection](/en/3.2/api/Phalcon_Mvc_Micro_Collection) **delete** (*string* $routePattern, *callable* $handler, [*string* $name])
+public [Phalcon\Mvc\Micro\Collection](/3.4/en/api/Phalcon_Mvc_Micro_Collection) **delete** (*string* $routePattern, *callable* $handler, [*string* $name])
 
 Maps a route to a handler that only matches if the HTTP method is DELETE
 
 
 
-public [Phalcon\Mvc\Micro\Collection](/en/3.2/api/Phalcon_Mvc_Micro_Collection) **options** (*string* $routePattern, *callable* $handler, [*mixed* $name])
+public [Phalcon\Mvc\Micro\Collection](/3.4/en/api/Phalcon_Mvc_Micro_Collection) **options** (*string* $routePattern, *callable* $handler, [*mixed* $name])
 
 Maps a route to a handler that only matches if the HTTP method is OPTIONS
 

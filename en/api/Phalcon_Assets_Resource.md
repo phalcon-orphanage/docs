@@ -1,8 +1,14 @@
-# Class **Phalcon\\Assets\\Resource**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Assets\Resource'
+---
+# Class **Phalcon\Assets\Resource**
 
-*implements* [Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface)
+*implements* [Phalcon\Assets\ResourceInterface](/3.4/en/api/Phalcon_Assets_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/assets/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Represents an asset resource
 
@@ -62,7 +68,7 @@ public  **getTargetUri** ()
 
 public  **__construct** (*string* $type, *string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
-Phalcon\\Assets\\Resource constructor
+Phalcon\Assets\Resource constructor
 
 
 

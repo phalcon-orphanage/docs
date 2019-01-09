@@ -1,15 +1,21 @@
-# Class **Phalcon\\Http\\Response\\Cookies**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Http\Response\Cookies'
+---
+# Class **Phalcon\Http\Response\Cookies**
 
-*implements* [Phalcon\Http\Response\CookiesInterface](/en/3.2/api/Phalcon_Http_Response_CookiesInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Http\Response\CookiesInterface](/3.4/en/api/Phalcon_Http_Response_CookiesInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/response/cookies.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/response/cookies.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This class is a bag to manage the cookies
 A cookies bag is automatically registered as part of the 'response' service in the DI
 
 
 ## Methods
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -21,6 +27,17 @@ Returns the internal dependency injector
 
 
 
+public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](/3.4/en/api/Phalcon_Http_CookieInterface)
+
+Sets the cookie's sign key. The `$signKey` MUST be at least 32 characters long and generated using a cryptographically secure pseudo random generator.
+
+You can use `null` to disable cookie signing.
+
+See: [Phalcon\Security\Random](/3.4/en/api/Phalcon_Security_Random)
+Throws: [Phalcon\Http\Cookie\Exception](/3.4/en/api/Phalcon_Http_Cookie_Exception)
+
+
+	
 public  **useEncryption** (*mixed* $useEncryption)
 
 Set if cookies in the bag must be automatically encrypted/decrypted

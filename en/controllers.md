@@ -1,17 +1,8 @@
-<div class='article-menu' markdown='1'>
-
-- [Overview](#overview)
-    - [Using Controllers](#using)
-    - [Dispatch Loop](#dispatch-loop)
-    - [Initializing Controllers](#initializing)
-    - [Injecting Services](#injecting-services)
-    - [Request and Response](#request-response)
-    - [Session Data](#session-data)
-    - [Using Services as Controllers](#services)
-    - [Events in Controllers](#events)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Overview
 
@@ -29,7 +20,7 @@ For instance, when you access a URL like this: `http://localhost/blog/posts/show
 | **Parameter**         | 2015           |
 | **Parameter**         | the-post-title |
 
-In this case, the `PostsController` will handle this request. There is no a special location to put controllers in an application, they could be loaded using `Phalcon\Loader`, so you're free to organize your controllers as you need.
+In this case, the `PostsController` will handle this request. There is no a special location to put controllers in an application, they could be loaded using [Phalcon\Loader](api/Phalcon_Loader), so you're free to organize your controllers as you need.
 
 Controllers must have the suffix `Controller` while actions the suffix `Action`. A sample of a controller is as follows:
 
@@ -52,7 +43,7 @@ class PostsController extends Controller
 }
 ```
 
-Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend `Phalcon\Mvc\Controller`. By doing this, the controller can have easy access to
+Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller). By doing this, the controller can have easy access to
 the application services.
 
 Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
@@ -152,11 +143,11 @@ class UsersController extends Controller
 }
 ```
 
-There is no limit on the `forwards` you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by `Phalcon\Mvc\View`.
+There is no limit on the `forwards` you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by [Phalcon\Mvc\View](api/Phalcon_Mvc_View).
 
 <a name='initializing'></a>
 ## Initializing Controllers
-`Phalcon\Mvc\Controller` offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
+[Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller) offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
 
 ```php
 <?php
@@ -205,7 +196,7 @@ class PostsController extends Controller
 
 <a name='injecting-services'></a>
 ## Injecting Services
-If a controller extends `Phalcon\Mvc\Controller` then it has easy access to the service container in application. For example, if we have registered a service like this:
+If a controller extends [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller) then it has easy access to the service container in application. For example, if we have registered a service like this:
 
 ```php
 <?php
@@ -254,11 +245,11 @@ class FilesController extends Controller
 }
 ```
 
-If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/[[language]]/[[version]]/di) in the framework.
+If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/3.4/en/di) in the framework.
 
 <a name='request-response'></a>
 ## Request and Response
-Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The `request` service contains an instance of `Phalcon\Http\Request` and the `response` contains a `Phalcon\Http\Response` representing what is going to be sent back to the client.
+Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The `request` service contains an instance of [Phalcon\Http\Request](api/Phalcon_Http_Request) and the `response` contains a [Phalcon\Http\Response](api/Phalcon_Http_Response) representing what is going to be sent back to the client.
 
 ```php
 <?php
@@ -306,11 +297,11 @@ class PostsController extends Controller
 }
 ```
 
-Learn more about the HTTP environment in their dedicated articles [request](/[[language]]/[[version]]/request) and [response](/[[language]]/[[version]]/response).
+Learn more about the HTTP environment in their dedicated articles [request](/3.4/en/request) and [response](/3.4/en/response).
 
 <a name='session-data'></a>
 ## Session Data
-Sessions help us maintain persistent data between requests. You can access a `Phalcon\Session\Bag` from any controller to encapsulate data that needs to be persistent:
+Sessions help us maintain persistent data between requests. You can access a [Phalcon\Session\Bag](api/Phalcon_Session_Bag) from any controller to encapsulate data that needs to be persistent:
 
 ```php
 <?php
@@ -361,7 +352,7 @@ $di->set(
 
 <a name='events'></a>
 ## Events in Controllers
-Controllers automatically act as listeners for [dispatcher](/en/[[versopm]]/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
+Controllers automatically act as listeners for [dispatcher](/3.4/en/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
 ```php
 <?php

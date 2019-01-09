@@ -1,6 +1,12 @@
-# Interface **Phalcon\\Validation\\MessageInterface**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Validation\MessageInterface'
+---
+# Interface **Phalcon\Validation\MessageInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validation/messageinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/validation/messageinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 abstract public  **setType** (*mixed* $type)

@@ -1,6 +1,12 @@
-# Interface **Phalcon\\Cache\\FrontendInterface**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\FrontendInterface'
+---
+# Interface **Phalcon\Cache\FrontendInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/cache/frontendinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cache/frontendinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 abstract public  **getLifetime** ()

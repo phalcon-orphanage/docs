@@ -1,18 +1,14 @@
-<div class='article-menu' markdown='1'>
-
-- [Validating Models](#overview)
-    - [Validating Data Integrity](#data-integrity)
-    - [Validation Messages](#messages)
-    - [Validation Failed Events](#failed-events)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Validating Models
 
 <a name='data-integrity'></a>
 ## Validating Data Integrity
-`Phalcon\Mvc\Model` provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
 
 The following example shows how to use it:
 
@@ -60,7 +56,7 @@ class Robots extends Model
 
 The above example performs a validation using the built-in validator 'InclusionIn'. It checks the value of the field `type` in a domain list. If the value is not included in the method then the validator will fail and return false.
 
-<h5 class='alert alert-warning' markdown='1'>For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation)</h5>
+<h5 class='alert alert-warning' markdown='1'>For more information on validators, see the [Validation documentation](/3.4/en/validation)</h5>
 
 The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
 
@@ -95,9 +91,9 @@ class Robots extends Model
 
 <a name='messages'></a>
 ## Validation Messages
-`Phalcon\Mvc\Model` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
-Each message is an instance of `Phalcon\Mvc\Model\Message` and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information like the field name that generated the message or the message type:
+Each message is an instance of [Phalcon\Mvc\Model\Message](api/Phalcon_Mvc_Model_Message) and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information like the field name that generated the message or the message type:
 
 ```php
 <?php
@@ -113,7 +109,7 @@ if ($robot->save() === false) {
 }
 ```
 
-`Phalcon\Mvc\Model` can generate the following types of validation messages:
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can generate the following types of validation messages:
 
 | Type                   | Description                                                                                                                        |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |

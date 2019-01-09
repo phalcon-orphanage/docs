@@ -1,18 +1,24 @@
-# Class **Phalcon\\Mvc\\Model\\Transaction\\Failed**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Transaction\Failed'
+---
+# Class **Phalcon\Mvc\Model\Transaction\Failed**
 
-*extends* class [Phalcon\Mvc\Model\Transaction\Exception](/en/3.2/api/Phalcon_Mvc_Model_Transaction_Exception)
+*extends* class [Phalcon\Mvc\Model\Transaction\Exception](/3.4/en/api/Phalcon_Mvc_Model_Transaction_Exception)
 
 *implements* [Throwable](http://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/transaction/failed.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/transaction/failed.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This class will be thrown to exit a try/catch block for isolated transactions
 
 
 ## Methods
-public  **__construct** (*mixed* $message, [[Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $record])
+public  **__construct** (*mixed* $message, [[Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $record])
 
-Phalcon\\Mvc\\Model\\Transaction\\Failed constructor
+Phalcon\Mvc\Model\Transaction\Failed constructor
 
 
 

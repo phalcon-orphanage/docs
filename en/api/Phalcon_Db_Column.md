@@ -1,8 +1,14 @@
-# Class **Phalcon\\Db\\Column**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Column'
+---
+# Class **Phalcon\Db\Column**
 
-*implements* [Phalcon\Db\ColumnInterface](/en/3.2/api/Phalcon_Db_ColumnInterface)
+*implements* [Phalcon\Db\ColumnInterface](/3.4/en/api/Phalcon_Db_ColumnInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/column.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/column.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Allows to define columns to be used on create or alter table operations
 
@@ -132,7 +138,7 @@ Default column value
 
 public  **__construct** (*mixed* $name, *array* $definition)
 
-Phalcon\\Db\\Column constructor
+Phalcon\Db\Column constructor
 
 
 
@@ -186,7 +192,7 @@ Returns the type of bind handling
 
 public static  **__set_state** (*array* $data)
 
-Restores the internal state of a Phalcon\\Db\\Column object
+Restores the internal state of a Phalcon\Db\Column object
 
 
 

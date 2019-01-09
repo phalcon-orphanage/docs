@@ -1,8 +1,14 @@
-# Class **Phalcon\\Tag**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Tag'
+---
+# Class **Phalcon\Tag**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/tag.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/tag.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Phalcon\\Tag is designed to simplify building of HTML tags.
+Phalcon\Tag is designed to simplify building of HTML tags.
 It provides a set of helpers to generate HTML in a dynamic way.
 This component is an abstract class that you can extend to add more helpers.
 
@@ -43,7 +49,7 @@ Renders parameters keeping order in their HTML attributes
 
 
 
-public static  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public static  **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector container.
 
@@ -113,20 +119,20 @@ echo Phalcon\Tag::textField("name"); // Will have the value "peter" by default
 
 public static  **displayTo** (*string* $id, *string* $value)
 
-Alias of Phalcon\\Tag::setDefault
+Alias of Phalcon\Tag::setDefault
 
 
 
 public static *boolean* **hasValue** (*string* $name)
 
-Check if a helper has a default value set using Phalcon\\Tag::setDefault or value from $_POST
+Check if a helper has a default value set using Phalcon\Tag::setDefault or value from $_POST
 
 
 
 public static *mixed* **getValue** (*string* $name, [*array* $params])
 
 Every helper calls this function to check whether a component has a predefined
-value using Phalcon\\Tag::setDefault or value from $_POST
+value using Phalcon\Tag::setDefault or value from $_POST
 
 
 
@@ -400,7 +406,7 @@ Volt syntax:
 ```php
 <?php
 
-{{ check_field("terms") }}
+{% raw %}{{ check_field("terms") }}{% endraw %}
 
 ```
 
@@ -426,7 +432,7 @@ Volt syntax:
 ```php
 <?php
 
-{{ radio_field("Save") }}
+{% raw %}{{ radio_field("Save") }}{% endraw %}
 
 ```
 
@@ -451,7 +457,7 @@ Volt syntax:
 ```php
 <?php
 
-{{ image_input("src": "/img/button.png") }}
+{% raw %}{{ image_input("src": "/img/button.png") }}{% endraw %}
 
 ```
 
@@ -472,7 +478,7 @@ Volt syntax:
 ```php
 <?php
 
-{{ submit_button("Save") }}
+{% raw %}{{ submit_button("Save") }}{% endraw %}
 
 ```
 
@@ -499,7 +505,7 @@ echo Phalcon\Tag::selectStatic(
 
 public static *string* **select** (*array* $parameters, [*array* $data])
 
-Builds a HTML SELECT tag using a Phalcon\\Mvc\\Model resultset as options
+Builds a HTML SELECT tag using a Phalcon\Mvc\Model resultset as options
 
 ```php
 <?php
@@ -518,7 +524,7 @@ Volt syntax:
 ```php
 <?php
 
-{{ select("robotId", robots, "using": ["id", "name"]) }}
+{% raw %}{{ select("robotId", robots, "using": ["id", "name"]) }}{% endraw %}
 
 ```
 
@@ -545,7 +551,7 @@ Volt syntax:
 ```php
 <?php
 
-{{ text_area("comments", "cols": 10, "rows": 4) }}
+{% raw %}{{ text_area("comments", "cols": 10, "rows": 4) }}{% endraw %}
 
 ```
 
@@ -573,8 +579,8 @@ Volt syntax:
 ```php
 <?php
 
-{{ form("posts/save") }}
-{{ form("posts/save", "method": "post") }}
+{% raw %}{{ form("posts/save") }}{% endraw %}
+{% raw %}{{ form("posts/save", "method": "post") }}{% endraw %}
 
 ```
 
@@ -639,7 +645,7 @@ echo Phalcon\Tag::getTitle();
 ```php
 <?php
 
-{{ get_title() }}
+{% raw %}{{ get_title() }}{% endraw %}
 
 ```
 
@@ -659,7 +665,7 @@ echo Phalcon\Tag::getTitleSeparator();
 ```php
 <?php
 
-{{ get_title_separator() }}
+{% raw %}{{ get_title_separator() }}{% endraw %}
 
 ```
 
@@ -681,8 +687,8 @@ Volt Syntax:
 ```php
 <?php
 
-{{ stylesheet_link("http://fonts.googleapis.com/css?family=Rosario", false) }}
-{{ stylesheet_link("css/style.css") }}
+{% raw %}{{ stylesheet_link("http://fonts.googleapis.com/css?family=Rosario", false) }}{% endraw %}
+{% raw %}{{ stylesheet_link("css/style.css") }}{% endraw %}
 
 ```
 
@@ -704,8 +710,8 @@ Volt syntax:
 ```php
 <?php
 
-{{ javascript_include("http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js", false) }}
-{{ javascript_include("javascript/jquery.js") }}
+{% raw %}{{ javascript_include("http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js", false) }}{% endraw %}
+{% raw %}{{ javascript_include("javascript/jquery.js") }}{% endraw %}
 
 ```
 
@@ -733,9 +739,9 @@ Volt Syntax:
 ```php
 <?php
 
-{{ image("img/bg.png") }}
-{{ image("img/photo.jpg", "alt": "Some Photo") }}
-{{ image("http://static.mywebsite.com/img/bg.png", false) }}
+{% raw %}{{ image("img/bg.png") }}{% endraw %}
+{% raw %}{{ image("img/photo.jpg", "alt": "Some Photo") }}{% endraw %}
+{% raw %}{{ image("http://static.mywebsite.com/img/bg.png", false) }}{% endraw %}
 
 ```
 

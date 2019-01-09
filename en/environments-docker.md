@@ -1,27 +1,8 @@
-<div class='article-menu' markdown='1'>
-
-- [Overview](#overview)
-    - [Dependencies](#dependencies)
-    - [Services](#services)
-    - [Installation](#installation)
-        - [With Composer (recommended)](#installation-composer)
-        - [With Git](#installation-git)
-    - [Configuration](#configuration)
-    - [Usage](#usage)
-    - [Set up](#setup)
-    - [Logs](#logs)
-    - [Environment variables](#environment-variables)
-        - [Web environment](#environment-variables-web)
-        - [phpMyAdmin variables](#environment-variables-phpmyadmin)
-    - [Xdebug Remote debugger (PhpStorm)](#xdebug)
-    - [Troubleshooting](#troubleshooting)
-        - [Startup or linking errors](#troubleshooting-startup)
-        - [Full reset](#troubleshooting-full-reset)
-        - [Updating dependencies](#troubleshooting-dependencies)
-    - [Versions](#versions)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Overview
 Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
@@ -110,6 +91,11 @@ To start the application and run the containers in the background, use following
 # You can use here your prefered project name with "-p my-app" parameter
 $ docker-compose up -d
 ```
+Now setup your project in the app container using the Phalcon Developer Tools
+
+Replace project in **<project_app_1>** with the name of your project/directory (shown in the output of `docker-compose up -d`)
+
+$ `docker exec -t <project_app_1> phalcon project application simple`
 
 Now you can now launch your application in your browser visiting `http://phalcon.local` (or the host name you chose above).
 
@@ -219,7 +205,7 @@ docker pull phpmyadmin/phpmyadmin:4.6
 docker pull memcached:1.4-alpine
 docker pull phalconphp/beanstalkd:1.10
 docker pull aerospike:latest
-docker pull redis:3.2-alpine
+docker pull redis:3.4-alpine
 docker pull elasticsearch:5.2-alpine
 docker pull phalconphp/php-apache:ubuntu-16.04
 ```
@@ -237,31 +223,3 @@ Linux/MacOS users can use `make` to perform the task:
 ```bash
 make reset
 ```
-
-<a name='versions'></a>
-## Versions
-The main tools used are Phalcon, Docker and Docker Compose.
-
-| Application     | Version          |
-|-----------------|------------------|
-| Aerospike       | 3.11.1.1         |
-| Apache          | 2.4.18           |
-| Beanstalk       | 1.10             |
-| Composer        | 1.4.1            |
-| Elasticsearch   | 5.2.2            |
-| Memcached       | 1.4.35           |
-| Mongo           | 3.4.2            |
-| MySQL           | 5.7.17           |
-| PHP             | 7.0.18 + PHP-FPM |
-| PHPMD           | 2.6.0            |
-| phpMyAdmin      | 4.6.5.2          |
-| PHP_CodeSniffer | 2.8.1            |
-| Phalcon         | 3.1.2            |
-| Phing           | 2.16.0           |
-| Phive           | 0.6.3            |
-| PostgreSQL      | 9.5.5            |
-| Redis           | 3.2.6            |
-| Weakref         | 0.3.3            |
-| Xdebug          | 2.4.0            |
-
-

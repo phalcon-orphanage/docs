@@ -1,44 +1,56 @@
-<div class='article-menu' markdown='1'>
-
-- [Filtering and Sanitizing](#overview)
-    - [Types of Built-in Filters](#types)
-    - [Sanitizing data](#sanitizing)
-    - [Sanitizing from Controllers](#sanitizing-from-controllers)
-    - [Filtering Action Parameters](#filtering-action-parameters)
-    - [Filtering data](#filtering-data)
-    - [Combining Filters](#combining-filters)
-    - [Adding filters](#adding-filters)
-    - [Complex Sanitizing and Filtering](#complex-sanitization-filtering)
-    - [Implementing your own Filter](#custom)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Filtering and Sanitizing
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
-![](/images/content/filter-sql.png)
+![](/assets/images/content/filter-sql.png)
 
 [Full image on XKCD](http://xkcd.com/327)
 
-The `Phalcon\Filter` component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
+The [Phalcon\Filter](api/Phalcon_Filter) component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
 
 <a name='types'></a>
 ## Types of Built-in Filters
 The following are the built-in filters provided by this component:
 
-| Name      | Description                                                                             |
-|-----------|-----------------------------------------------------------------------------------------|
-| string    | Strip tags and encode HTML entities, including single and double quotes.                |
-| email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.             |
-| int       | Remove all characters except digits, plus and minus sign.                               |
-| float     | Remove all characters except digits, dot, plus and minus sign.                          |
-| alphanum  | Remove all characters except [a-zA-Z0-9]                                                |
-| striptags | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function |
-| trim      | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function             |
-| lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function |
-| url       | Remove all characters except letters, digits and `|`$-_.+!*'(),{}[]<>#%";/?:@&=.^~\\`   |
-| upper     | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function |
+| Name      | Description                                                                                   |
+|-----------|-----------------------------------------------------------------------------------------------|
+| absint    | Casts the value as an integer and returns the absolute value of it.                           |
+| alphanum  | Remove all characters except [a-zA-Z0-9]                                                      |
+| email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.                   |
+| float     | Remove all characters except digits, dot, plus and minus sign.                                |
+| float!    | Remove all characters except digits, dot, plus and minus sign and cast the result as a float. |
+| int       | Remove all characters except digits, plus and minus sign.                                     |
+| int!      | Remove all characters except digits, plus and minus sign and cast the result as an integer.   |
+| lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function       |
+| string    | Strip tags and encode HTML entities, including single and double quotes.                      |
+| striptags | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function       |
+| trim      | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function                   |
+| upper     | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function       |
+
+Please note that the component uses the [filter_var](https://secure.php.net/manual/en/function.filter-var.php) PHP function internally.
+
+Constants are available and can be used to define the type of filtering required:
+
+```php
+<?php
+const FILTER_ABSINT     = "absint";
+const FILTER_ALPHANUM   = "alphanum";
+const FILTER_EMAIL      = "email";
+const FILTER_FLOAT      = "float";
+const FILTER_FLOAT_CAST = "float!";
+const FILTER_INT        = "int";
+const FILTER_INT_CAST   = "int!";
+const FILTER_LOWER      = "lower";
+const FILTER_STRING     = "string";
+const FILTER_STRIPTAGS  = "striptags";
+const FILTER_TRIM       = "trim";
+const FILTER_UPPER      = "upper";
+```
 
 <a name='sanitizing'></a>
 ## Sanitizing data
@@ -66,7 +78,7 @@ $filter->sanitize('!100a019.01a', 'float');
 
 <a name='sanitizing-from-controllers'></a>
 ## Sanitizing from Controllers
-You can access a `Phalcon\Filter` object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
+You can access a [Phalcon\Filter](api/Phalcon_Filter) object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
 
 ```php
 <?php
@@ -116,7 +128,7 @@ class ProductsController extends Controller
 
 <a name='filtering-data'></a>
 ## Filtering data
-In addition to sanitizing, `Phalcon\Filter` also provides filtering by removing or modifying input data to the format we expect.
+In addition to sanitizing, [Phalcon\Filter](api/Phalcon_Filter) also provides filtering by removing or modifying input data to the format we expect.
 
 ```php
 <?php
@@ -155,7 +167,7 @@ $filter->sanitize(
 
 <a name='adding-filters'></a>
 ## Adding filters
-You can add your own filters to `Phalcon\Filter`. The filter function could be an anonymous function:
+You can add your own filters to [Phalcon\Filter](api/Phalcon_Filter). The filter function could be an anonymous function:
 
 ```php
 <?php
@@ -209,4 +221,4 @@ PHP itself provides an excellent filter extension you can use. Check out its doc
 
 <a name='custom'></a>
 ## Implementing your own Filter
-The `Phalcon\FilterInterface` interface must be implemented to create your own filtering service replacing the one provided by Phalcon.
+The [Phalcon\FilterInterface](api/Phalcon_FilterInterface) interface must be implemented to create your own filtering service replacing the one provided by Phalcon.

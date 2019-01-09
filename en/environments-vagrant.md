@@ -1,42 +1,8 @@
-<div class='article-menu' markdown='1'>
-
-- [Overview](#overview)
-    - [Requirements](#requirements)
-    - [Packages Included](#packages-included)
-    - [Installation](#installation)
-        - [Installing the Vagrant Box](#installation-vagrant-box)
-        - [Installing the Phalcon Box](#installation-phalcon-box)
-    - [Configuring](#installation-configuration)
-        - [Setting your provider](#installation-configuration-setting-provider)
-        - [Memory and CPU](#installation-configuration-memory-cpu)
-        - [Shared folders](#installation-configuration-shared-folders)
-        - [Nginx sites](#installation-configuration-nginx)
-            - [Custom Nginx configuration](#installation-configuration-custom-nginx)
-            - [Configuring the `hosts` file](#installation-configuration-hosts)
-        - [Install additional packages](#installation-aditional-packages)
-        - [Launching the Phalcon Box](#installation-launching-phalcon-box)
-    - [Daily usage](#daily-usage)
-        - [Accessing Phalcon Box globally](#daily-usage-accessing-box-globally)
-            - [Mac || Linux](#daily-usage-accessing-box-globally-mac-linux)
-            - [Windows](#daily-usage-accessing-box-globally-windows)
-        - [Connecting via SSH](#daily-usage-ssh)
-        - [Connecting to databases](#daily-usage-databases)
-        - [Adding additional sites](#daily-usage-additional-sites)
-        - [Environment variables](#daily-usage-environment-variables)
-            - [Global variables](#daily-usage-environment-global-variables)
-            - [Site variables](#daily-usage-environment-site-variables)
-        - [Ports](#daily-usage-ports)
-            - [Forwarding additional ports](#daily-usage-ports-forwarding)
-        - [Sharing your environment](#daily-usage-sharing-environment)
-        - [Network interfaces](#daily-usage-network-interfaces)
-        - [Updating Phalcon Box](#daily-usage-updating-box)
-        - [Provider specific settings](#daily-usage-provider-settings)
-            - [VirtualBox](#daily-usage-provider-settings-virtualbox)
-        - [Mail catcher](#daily-usage-mail-catcher)
-    - [Troubleshooting](#troubleshooting)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Overview
 Phalcon Box uses the default **phalcon/xenial64** box from [Vagrant Cloud](https://atlas.hashicorp.com/phalconphp/boxes/xenial64/) for compatibility. If you choose to use a 64-bit ISO you may need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `AMD-V`, `Intel VT-x` or `VIA VT`.
@@ -48,7 +14,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 * Operating System: Windows, Linux, or macOS
 * [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
 * [VMware Fusion](http://www.vmware.com/products/fusion) (or Workstation - if you want to build the VMware box)
-* [Vagrant](https://www.vagrantup.com/downloads.html) >= 1.9
+* [Vagrant](https://www.vagrantup.com/downloads.html) >= 1.9.8
 
 <a name='packages-included'></a>
 ## Packages Included
@@ -468,6 +434,8 @@ If you wish, you may forward additional ports to the Phalcon Box, as well as spe
 
 ```yaml
 ports:
+    - send: 63790
+      to: 6379
     - send: 50000
       to: 5000
     - send: 7777

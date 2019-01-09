@@ -1,31 +1,21 @@
-<div class='article-menu' markdown='1'>
-
-- [Events Manager](#overview)
-    - [Naming Convention](#naming-convention)
-    - [Usage Example](#usage)
-    - [Creating components that trigger Events](#components-that-trigger-events)
-    - [Using Services From The DI](#using-services)
-    - [Event Propagation/Cancellation](#propagation-cancellation)
-    - [Listener Priorities](#listener-priorities)
-    - [Collecting Responses](#collecting-responses)
-    - [Implementing your own EventsManager](#custom)
-    - [List of events](#list)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Events Manager
 The purpose of this component is to intercept the execution of most of the other components of the framework by creating 'hook points'. These hook points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
 <a name='naming-convention'></a>
 ## Naming Convention
-Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as `Phalcon\Db` occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
+Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as [Phalcon\Db](api/Phalcon_Db) occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
 
-When attaching event listeners to the events manager, you can use `component` to catch all events from that component (eg. `db` to catch all of the `Phalcon\Db` events) or `component:event` to target a specific event (eg. `db:afterQuery`).
+When attaching event listeners to the events manager, you can use `component` to catch all events from that component (eg. `db` to catch all of the [Phalcon\Db](api/Phalcon_Db) events) or `component:event` to target a specific event (eg. `db:afterQuery`).
 
 <a name='usage'></a>
 ## Usage Example
-In the following example, we will use the EventsManager to listen for the `afterQuery` event produced in a MySQL connection managed by `Phalcon\Db`:
+In the following example, we will use the EventsManager to listen for the `afterQuery` event produced in a MySQL connection managed by [Phalcon\Db](api/Phalcon_Db):
 
 ```php
 <?php
@@ -65,7 +55,7 @@ Now every time a query is executed, the SQL statement will be echoed out. The fi
 
 <h5 class='alert alert-warning' markdown='1'>You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts </h5>
 
-Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events. In this example, we will implement the `Phalcon\Db\Profiler` to detect the SQL statements that are taking longer to execute than expected:
+Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events. In this example, we will implement the [Phalcon\Db\Profiler](api/Phalcon_Db_Profiler) to detect the SQL statements that are taking longer to execute than expected:
 
 ```php
 <?php
@@ -155,19 +145,19 @@ foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
 
 <a name='components-that-trigger-events'></a>
 ## Creating components that trigger Events
-You can create components in your application that trigger events to an EventsManager. As a consequence, there may exist listeners that react to these events when generated. In the following example we're creating a component called `MyComponent`. This component is EventsManager aware (it implements `Phalcon\Events\EventsAwareInterface`); when its `someTask()` method is executed it triggers two events to any listener in the EventsManager:
+You can create components in your application that trigger events to an EventsManager. As a consequence, there may exist listeners that react to these events when generated. In the following example we're creating a component called `MyComponent`. This component is EventsManager aware (it implements [Phalcon\Events\EventsAwareInterface](api/Phalcon_Events_EventsAwareInterface)); when its `someTask()` method is executed it triggers two events to any listener in the EventsManager:
 
 ```php
 <?php
 
 use Phalcon\Events\EventsAwareInterface;
-use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Events\ManagerInterface;
 
 class MyComponent implements EventsAwareInterface
 {
     protected $eventsManager;
 
-    public function setEventsManager(EventsManager $eventsManager)
+    public function setEventsManager(ManagerInterface $eventsManager)
     {
         $this->eventsManager = $eventsManager;
     }
@@ -278,7 +268,7 @@ $eventsManager->attach(
 
 <a name='using-services'></a>
 ## Using Services From The DI
-By extending `Phalcon\Mvc\User\Plugin`, you can access services from the DI, just like you would in a controller:
+By extending [Phalcon\Mvc\User\Plugin](api/Phalcon_Mvc_User_Plugin), you can access services from the DI, just like you would in a controller:
 
 ```php
 <?php
@@ -398,7 +388,7 @@ The above example produces:
 
 <a name='custom'></a>
 ## Implementing your own EventsManager
-The `Phalcon\Events\ManagerInterface` interface must be implemented to create your own EventsManager replacing the one provided by Phalcon.
+The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) interface must be implemented to create your own EventsManager replacing the one provided by Phalcon.
 
 <a name='list'></a>
 ## List of Events
@@ -471,8 +461,8 @@ The events available in Phalcon are:
 | Middleware         | `beforeExecuteRoute`                |
 | Middleware         | `beforeHandleRoute`                 |
 | Middleware         | `beforeNotFound`                    |
-| Model              | `afterDelete`                       |
 | Model              | `afterCreate`                       |
+| Model              | `afterDelete`                       |
 | Model              | `afterSave`                         |
 | Model              | `afterUpdate`                       |
 | Model              | `afterValidation`                   |
@@ -481,6 +471,7 @@ The events available in Phalcon are:
 | Model              | `beforeDelete`                      |
 | Model              | `notDeleted`                        |
 | Model              | `beforeCreate`                      |
+| Model              | `beforeDelete`                      |
 | Model              | `beforeSave`                        |
 | Model              | `beforeUpdate`                      |
 | Model              | `beforeValidation`                  |
@@ -489,7 +480,16 @@ The events available in Phalcon are:
 | Model              | `notSave`                           |
 | Model              | `notSaved`                          |
 | Model              | `onValidationFails`                 |
+| Model              | `prepareSave`                       |
 | Models Manager     | `modelsManager:afterInitialize`     |
+| Request            | `request:afterAuthorizationResolve`  |
+| Request            | `request:beforeAuthorizationResolve` |
+| Router             | `router:beforeCheckRoutes`          |
+| Router             | `router:beforeCheckRoute`           |
+| Router             | `router:matchedRoute`               |
+| Router             | `router:notMatchedRoute`            |
+| Router             | `router:afterCheckRoutes`           |
+| Router             | `router:beforeMount`                |
 | View               | `view:afterRender`                  |
 | View               | `view:afterRenderView`              |
 | View               | `view:beforeRender`                 |

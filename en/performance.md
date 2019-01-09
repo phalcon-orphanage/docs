@@ -1,20 +1,8 @@
-<div class='article-menu' markdown='1'>
-
-- [Increasing Performance](#overview)
-    - [Profile on the Server](#profiling-server)
-        - [Profiling with Xhprof](#profiling-server-xhprof)
-        - [Profiling SQL Statements](#profiling-server-sql-statements)
-    - [Profile on the Client](#profiling-client)
-        - [Profile with Chrome/Firefox](#profiling-client-chrome-firefox)
-        - [Yahoo! YSlow](#profiling-client-yslow)
-        - [Profile with Speed Tracer](#profiling-client-speed-tracer)
-    - [Use a recent PHP version](#php-version)
-    - [Use a PHP Bytecode Cache](#bytecode-cache)
-    - [Do blocking work in the background](#background-tasks)
-    - [Google Page Speed](#page-speed)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Increasing Performance
 Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc. In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in your application.
@@ -33,7 +21,7 @@ xdebug.profiler_enable = On
 
 Using a tool like [Webgrind](https://github.com/jokkedk/webgrind/) you can see which functions/methods are slower than others:
 
-![](/images/content/performance-webgrind.jpg)
+![](/assets/images/content/performance-webgrind.jpg)
 
 <a name='profiling-server-xhprof'></a>
 ### Profiling with Xhprof
@@ -64,9 +52,9 @@ echo "http://localhost/xhprof/xhprof_html/index.php?run={$run_id}&source=xhprof_
 
 Xhprof provides a built-in HTML viewer to analyze the profiled data:
 
-![](/images/content/performance-xhprof-2.jpg)
+![](/assets/images/content/performance-xhprof-2.jpg)
 
-![](/images/content/performance-xhprof-1.jpg)
+![](/assets/images/content/performance-xhprof-1.jpg)
 
 <a name='profiling-server-sql-statements'></a>
 ### Profiling SQL Statements
@@ -86,23 +74,23 @@ The following tools are useful to detect common bottlenecks in the client side:
 ### Profile with Chrome/Firefox
 Most modern browsers have tools to profile the page loading time. In Chrome you can use the web inspector to know how much time is taking the loading of the different resources required by a single page:
 
-![](/images/content/performance-chrome-1.jpg)
+![](/assets/images/content/performance-chrome-1.jpg)
 
 [Firebug](http://getfirebug.com/) provides a similar functionality:
 
-![](/images/content/performance-firefox-1.jpg)
+![](/assets/images/content/performance-firefox-1.jpg)
 
 <a name='profiling-client-yslow'></a>
 ### Yahoo! YSlow
 [YSlow](http://developer.yahoo.com/yslow/) analyzes web pages and suggests ways to improve their performance based on a set of [rules for high performance web pages](http://developer.yahoo.com/performance/rules.html)
 
-![](/images/content/performance-yslow-1.jpg)
+![](/assets/images/content/performance-yslow-1.jpg)
 
 <a name='profiling-client-speed-tracer'></a>
 ### Profile with Speed Tracer
 [Speed Tracer](https://developers.google.com/web-toolkit/speedtracer/) is a tool to help you identify and fix performance problems in your web applications. It visualizes metrics that are taken from low level instrumentation points inside of the browser and analyzes them as your application runs. Speed Tracer is available as a Chrome extension and works on all platforms where extensions are currently supported (Windows and Linux).
 
-![](/images/content/performance-speed-tracer.jpg)
+![](/assets/images/content/performance-speed-tracer.jpg)
 
 This tool is very useful because it help you to get the real time used to render the whole page including HTML parsing,
 Javascript evaluation and CSS styling.

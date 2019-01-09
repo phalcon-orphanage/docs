@@ -1,8 +1,14 @@
-# Class **Phalcon\\Escaper**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Escaper'
+---
+# Class **Phalcon\Escaper**
 
-*implements* [Phalcon\EscaperInterface](/en/3.2/api/Phalcon_EscaperInterface)
+*implements* [Phalcon\EscaperInterface](/3.4/en/api/Phalcon_EscaperInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/escaper.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/escaper.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Escapes different kinds of text securing them. By using this component you may
 prevent XSS attacks.

@@ -1,14 +1,8 @@
-<div class='article-menu' markdown='1'>
-
-- [Security](#overview)
-    - [Password Hashing](#hashing)
-    - [Cross-Site Request Forgery (CSRF) protection](#csrf)
-    - [Setting up the component](#setup)
-    - [Random](#random)
-    - [External Resources](#resources)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Security
 This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF][wiki-csrf]).
@@ -17,9 +11,13 @@ This component aids the developer in common security tasks such as password hash
 ## Password Hashing
 Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods '[md5](http://php.net/manual/en/function.md5.php)' and '[sha1](http://php.net/manual/en/function.sha1.php)'. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](http://en.wikipedia.org/wiki/Rainbow_table).
 
-To solve this problem we can use hash algorithms as [bcrypt](http://en.wikipedia.org/wiki/Bcrypt). Why bcrypt? Thanks to its '[Eksblowfish](http://en.wikipedia.org/wiki/Bcrypt#Algorithm)' key setup algorithm we can make the password encryption as 'slow' as we want. Slow algorithms make the process to calculate the real password behind a hash extremely difficult if not impossible. This will protect your for a long time from a possible attack using rainbow tables.
+The security component uses [bcrypt](http://en.wikipedia.org/wiki/Bcrypt) as the hashing algorithm. Thanks to the '[Eksblowfish](http://en.wikipedia.org/wiki/Bcrypt#Algorithm)' key setup algorithm, we can make the password encryption as `slow` as we want. Slow algorithms minimize the impact of bruce force attacks. 
 
-This component gives you the ability to use this algorithm in a simple way:
+Bcrypt, is an adaptive hash function based on the Blowfish symmetric block cipher cryptographic algorithm. It also introduces a security or work factor, which determines how slow the hash function will be to generate the hash. This effectively negates the use of FPGA or GPU hashing techniques.
+
+Should hardware becomes faster in the future, we can increase the work factor to mitigate this.
+
+This component offers a simple interface to use the algorithm:
 
 ```php
 <?php
@@ -159,7 +157,7 @@ $di->set(
 
 <a name='random'></a>
 ## Random
-The `Phalcon\Security\Random` class makes it really easy to generate lots of types of random data.
+The [Phalcon\Security\Random](api/Phalcon_Security_Random) class makes it really easy to generate lots of types of random data.
 
 ```php
 <?php

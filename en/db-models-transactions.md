@@ -1,12 +1,8 @@
-<div class='article-menu' markdown='1'>
-
-- [Model Transactions](#overview)
-    - [Manual Transactions](#manual)
-    - [Implicit Transactions](#implicit)
-    - [Isolated Transactions](#isolated)
-    
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Model Transactions
 When a process performs multiple database operations, it might be important that each step is completed successfully so that data integrity can be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data

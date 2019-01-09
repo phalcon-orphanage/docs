@@ -1,11 +1,8 @@
-<div class='article-menu' markdown='1'>
-- [Overview](#overview)
-    - [Integrating PHPUnit with Phalcon](#integration)
-    - [The PHPUnit helper file](#unit-helper)
-    - [The `phpunit.xml` file](#phpunit-config)
-    - [Sample Unit Test](#sample)
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Overview
 
@@ -226,7 +223,7 @@ PHPUnit 3.7.23 by Sebastian Bergmann.
 
 Configuration read from /var/www/tests/phpunit.xml
 
-Time: 3 ms, Memory: 3.25Mb
+Time: 3 ms, Memory: 3.45Mb
 
 There was 1 failure:
 

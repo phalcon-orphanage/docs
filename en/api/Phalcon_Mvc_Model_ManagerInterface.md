@@ -1,64 +1,70 @@
-# Interface **Phalcon\\Mvc\\Model\\ManagerInterface**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\ManagerInterface'
+---
+# Interface **Phalcon\Mvc\Model\ManagerInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/managerinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/managerinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
-abstract public  **initialize** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
+abstract public  **initialize** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 ...
 
 
-abstract public  **setModelSource** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $source)
+abstract public  **setModelSource** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $source)
 
 ...
 
 
-abstract public  **getModelSource** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
+abstract public  **getModelSource** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 ...
 
 
-abstract public  **setModelSchema** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $schema)
+abstract public  **setModelSchema** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $schema)
 
 ...
 
 
-abstract public  **getModelSchema** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
+abstract public  **getModelSchema** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 ...
 
 
-abstract public  **setConnectionService** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
+abstract public  **setConnectionService** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
 
 ...
 
 
-abstract public  **setReadConnectionService** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
+abstract public  **setReadConnectionService** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
 
 ...
 
 
-abstract public  **getReadConnectionService** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
+abstract public  **getReadConnectionService** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 ...
 
 
-abstract public  **setWriteConnectionService** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
+abstract public  **setWriteConnectionService** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
 
 ...
 
 
-abstract public  **getWriteConnectionService** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
+abstract public  **getWriteConnectionService** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 ...
 
 
-abstract public  **getReadConnection** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
+abstract public  **getReadConnection** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 ...
 
 
-abstract public  **getWriteConnection** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
+abstract public  **getWriteConnection** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 ...
 
@@ -78,17 +84,17 @@ abstract public  **load** (*mixed* $modelName, [*mixed* $newInstance])
 ...
 
 
-abstract public  **addHasOne** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $fields, *mixed* $referencedModel, *mixed* $referencedFields, [*mixed* $options])
+abstract public  **addHasOne** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $fields, *mixed* $referencedModel, *mixed* $referencedFields, [*mixed* $options])
 
 ...
 
 
-abstract public  **addBelongsTo** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $fields, *mixed* $referencedModel, *mixed* $referencedFields, [*mixed* $options])
+abstract public  **addBelongsTo** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $fields, *mixed* $referencedModel, *mixed* $referencedFields, [*mixed* $options])
 
 ...
 
 
-abstract public  **addHasMany** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $fields, *mixed* $referencedModel, *mixed* $referencedFields, [*mixed* $options])
+abstract public  **addHasMany** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $fields, *mixed* $referencedModel, *mixed* $referencedFields, [*mixed* $options])
 
 ...
 
@@ -108,37 +114,37 @@ abstract public  **existsHasOne** (*mixed* $modelName, *mixed* $modelRelation)
 ...
 
 
-abstract public  **getBelongsToRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
+abstract public  **getBelongsToRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
 
 ...
 
 
-abstract public  **getHasManyRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
+abstract public  **getHasManyRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
 
 ...
 
 
-abstract public  **getHasOneRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
+abstract public  **getHasOneRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
 
 ...
 
 
-abstract public  **getBelongsTo** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
+abstract public  **getBelongsTo** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 ...
 
 
-abstract public  **getHasMany** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
+abstract public  **getHasMany** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 ...
 
 
-abstract public  **getHasOne** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
+abstract public  **getHasOne** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 ...
 
 
-abstract public  **getHasOneAndHasMany** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
+abstract public  **getHasOneAndHasMany** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 ...
 
@@ -168,17 +174,17 @@ abstract public  **createBuilder** ([*mixed* $params])
 ...
 
 
-abstract public  **addBehavior** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\Mvc\Model\BehaviorInterface](/en/3.2/api/Phalcon_Mvc_Model_BehaviorInterface) $behavior)
+abstract public  **addBehavior** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\Mvc\Model\BehaviorInterface](/3.4/en/api/Phalcon_Mvc_Model_BehaviorInterface) $behavior)
 
 ...
 
 
-abstract public  **notifyEvent** (*mixed* $eventName, [Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model)
+abstract public  **notifyEvent** (*mixed* $eventName, [Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 ...
 
 
-abstract public  **missingMethod** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $eventName, *mixed* $data)
+abstract public  **missingMethod** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $eventName, *mixed* $data)
 
 ...
 

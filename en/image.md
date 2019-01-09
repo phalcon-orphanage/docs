@@ -1,13 +1,11 @@
-<div class='article-menu' markdown='1'>
-
-- [Improving Performance with Cache](#overview)
-
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Images
-`Phalcon\Image` is the component that allows you to manipulate image files. Multiple operations can be performed on the same image object.
+[Phalcon\Image](api/Phalcon_Image) is the component that allows you to manipulate image files. Multiple operations can be performed on the same image object.
 
 <a name='adapters'></a>
 ## Adapters
@@ -15,12 +13,31 @@ This component makes use of adapters to encapsulate specific image manipulator p
 
 | Class                           | Description                                                                         |
 |---------------------------------|-------------------------------------------------------------------------------------|
-| `Phalcon\Image\Adapter\Gd`      | Requires the [GD PHP extension](http://php.net/manual/en/book.image.php)            |
-| `Phalcon\Image\Adapter\Imagick` | Requires the [ImageMagick PHP extension](http://php.net/manual/en/book.imagick.php) |
+| [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd)      | Requires the [GD PHP extension](http://php.net/manual/en/book.image.php)            |
+| [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) | Requires the [ImageMagick PHP extension](http://php.net/manual/en/book.imagick.php) |
+
+<a name='adapters-factory'></a>
+### Factory
+Loads an Image Adapter class using `adapter` option.
+ 
+```php
+<?php
+
+use Phalcon\Image\Factory;
+
+$options = [
+    'width'   => 200,
+    'height'  => 200,
+    'file'    => 'upload/test.jpg',
+    'adapter' => 'imagick',
+];
+
+$image = Factory::load($options);
+```
 
 <a name='adapters-custom'></a>
 ### Implementing your own adapters
-The `Phalcon\Image\AdapterInterface` interface must be implemented in order to create your own image adapters or extend the existing ones.
+The [Phalcon\Image\AdapterInterface](api/Phalcon_Image_AdapterInterface) interface must be implemented in order to create your own image adapters or extend the existing ones.
 
 <a name='saving-rendering'></a>
 ## Saving and rendering images

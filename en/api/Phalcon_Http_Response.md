@@ -1,11 +1,17 @@
-# Class **Phalcon\\Http\\Response**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Http\Response'
+---
+# Class **Phalcon\Http\Response**
 
-*implements* [Phalcon\Http\ResponseInterface](/en/3.2/api/Phalcon_Http_ResponseInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Http\ResponseInterface](/3.4/en/api/Phalcon_Http_ResponseInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/response.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/response.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Part of the HTTP cycle is return responses to the clients.
-Phalcon\\HTTP\\Response is the Phalcon component responsible to achieve this task.
+Phalcon\HTTP\Response is the Phalcon component responsible to achieve this task.
 HTTP responses are usually composed by headers and body.
 
 ```php
@@ -24,11 +30,11 @@ $response->send();
 ## Methods
 public  **__construct** ([*mixed* $content], [*mixed* $code], [*mixed* $status])
 
-Phalcon\\Http\\Response constructor
+Phalcon\Http\Response constructor
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -68,7 +74,7 @@ print_r(
 
 
 
-public  **setHeaders** ([Phalcon\Http\Response\HeadersInterface](/en/3.2/api/Phalcon_Http_Response_HeadersInterface) $headers)
+public  **setHeaders** ([Phalcon\Http\Response\HeadersInterface](/3.4/en/api/Phalcon_Http_Response_HeadersInterface) $headers)
 
 Sets a headers bag for the response externally
 
@@ -79,14 +85,25 @@ public  **getHeaders** ()
 Returns headers set by the user
 
 
+public **getReasonPhrase** (): *string* | *null*
 
-public  **setCookies** ([Phalcon\Http\Response\CookiesInterface](/en/3.2/api/Phalcon_Http_Response_CookiesInterface) $cookies)
+Returns the reason phrase from the response status
+
+```php
+<?php
+
+echo $response->getReasonPhrase();
+```
+
+
+
+public  **setCookies** ([Phalcon\Http\Response\CookiesInterface](/3.4/en/api/Phalcon_Http_Response_CookiesInterface) $cookies)
 
 Sets a cookies bag for the response externally
 
 
 
-public [Phalcon\Http\Response\CookiesInterface](/en/3.2/api/Phalcon_Http_Response_CookiesInterface) **getCookies** ()
+public [Phalcon\Http\Response\CookiesInterface](/3.4/en/api/Phalcon_Http_Response_CookiesInterface) **getCookies** ()
 
 Returns cookies set by the user
 

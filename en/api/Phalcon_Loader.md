@@ -1,8 +1,14 @@
-# Class **Phalcon\\Loader**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Loader'
+---
+# Class **Phalcon\Loader**
 
-*implements* [Phalcon\Events\EventsAwareInterface](/en/3.2/api/Phalcon_Events_EventsAwareInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/loader.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/loader.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This component helps to load your project classes automatically based on some conventions
 
@@ -17,8 +23,8 @@ $loader = new Loader();
 // Register some namespaces
 $loader->registerNamespaces(
     [
-        "Example\\Base"    => "vendor/example/base/",
-        "Example\\Adapter" => "vendor/example/adapter/",
+        "Example\Base"    => "vendor/example/base/",
+        "Example\Adapter" => "vendor/example/adapter/",
         "Example"          => "vendor/example/",
     ]
 );
@@ -33,7 +39,7 @@ $adapter = new \Example\Adapter\Some();
 
 
 ## Methods
-public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/en/3.2/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets the events manager
 
@@ -60,6 +66,28 @@ Returns the file extensions registered in the loader
 public  **registerNamespaces** (*array* $namespaces, [*mixed* $merge])
 
 Register namespaces and their related directories
+
+
+
+public **setFileCheckingCallback** (*mixed* $callback = null): [Phalcon\Loader](/3.4/en/api/Phalcon_Loader)
+
+Sets the file check callback.
+
+```php
+<?php
+
+// Default behavior.
+$loader->setFileCheckingCallback("is_file");
+
+// Faster than `is_file()`, but implies some issues if
+// the file is removed from the filesystem.
+$loader->setFileCheckingCallback("stream_resolve_include_path");
+
+// Do not check file existence.
+$loader->setFileCheckingCallback(null);
+```
+
+A [Phalcon\Loader\Exception](/3.4/en/api/Phalcon_Loader_Exception) is thrown if the $callback parameter is not a `callable` or `null`;
 
 
 

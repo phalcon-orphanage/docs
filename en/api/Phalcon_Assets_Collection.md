@@ -1,8 +1,14 @@
-# Class **Phalcon\\Assets\\Collection**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Assets\Collection'
+---
+# Class **Phalcon\Assets\Collection**
 
 *implements* [Countable](http://php.net/manual/en/class.countable.php), [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/assets/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/assets/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Represents a collection of resources
 
@@ -70,23 +76,23 @@ public  **getSourcePath** ()
 
 public  **__construct** ()
 
-Phalcon\\Assets\\Collection constructor
+Phalcon\Assets\Collection constructor
 
 
 
-public  **add** ([Phalcon\Assets\Resource](/en/3.2/api/Phalcon_Assets_Resource) $resource)
+public  **add** ([Phalcon\Assets\Resource](/3.4/en/api/Phalcon_Assets_Resource) $resource)
 
 Adds a resource to the collection
 
 
 
-public  **addInline** ([Phalcon\Assets\Inline](/en/3.2/api/Phalcon_Assets_Inline) $code)
+public  **addInline** ([Phalcon\Assets\Inline](/3.4/en/api/Phalcon_Assets_Inline) $code)
 
 Adds an inline code to the collection
 
 
 
-public  **has** ([Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface) $resource)
+public  **has** ([Phalcon\Assets\ResourceInterface](/3.4/en/api/Phalcon_Assets_ResourceInterface) $resource)
 
 Checks this the resource is added to the collection.
 
@@ -117,7 +123,7 @@ Adds an inline CSS to the collection
 
 
 
-public [Phalcon\Assets\Collection](/en/3.2/api/Phalcon_Assets_Collection) **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+public [Phalcon\Assets\Collection](/3.4/en/api/Phalcon_Assets_Collection) **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 Adds a javascript resource to the collection
 
@@ -225,13 +231,13 @@ Returns the complete location where the joined/filtered collection must be writt
 
 
 
-public  **addFilter** ([Phalcon\Assets\FilterInterface](/en/3.2/api/Phalcon_Assets_FilterInterface) $filter)
+public  **addFilter** ([Phalcon\Assets\FilterInterface](/3.4/en/api/Phalcon_Assets_FilterInterface) $filter)
 
 Adds a filter to the collection
 
 
 
-final protected  **addResource** ([Phalcon\Assets\ResourceInterface](/en/3.2/api/Phalcon_Assets_ResourceInterface) $resource)
+final protected  **addResource** ([Phalcon\Assets\ResourceInterface](/3.4/en/api/Phalcon_Assets_ResourceInterface) $resource)
 
 Adds a resource or inline-code to the collection
 

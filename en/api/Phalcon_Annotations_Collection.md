@@ -1,8 +1,14 @@
-# Class **Phalcon\\Annotations\\Collection**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Annotations\Collection'
+---
+# Class **Phalcon\Annotations\Collection**
 
 *implements* [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php), [Countable](http://php.net/manual/en/class.countable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Represents a collection of annotations. This class allows to traverse a group of annotations easily
 
@@ -26,7 +32,7 @@ $annotation = $classAnnotations->get("Cacheable");
 ## Methods
 public  **__construct** ([*array* $reflectionData])
 
-Phalcon\\Annotations\\Collection constructor
+Phalcon\Annotations\Collection constructor
 
 
 
@@ -42,7 +48,7 @@ Rewinds the internal iterator
 
 
 
-public [Phalcon\Annotations\Annotation](/en/3.2/api/Phalcon_Annotations_Annotation) **current** ()
+public [Phalcon\Annotations\Annotation](/3.4/en/api/Phalcon_Annotations_Annotation) **current** ()
 
 Returns the current annotation in the iterator
 
@@ -72,19 +78,19 @@ Returns the internal annotations as an array
 
 
 
-public  **get** (*mixed* $name)
+public  **get** (*string* $name)
 
 Returns the first annotation that match a name
 
 
 
-public  **getAll** (*mixed* $name)
+public  **getAll** (*string* $name)
 
 Returns all the annotations that match a name
 
 
 
-public  **has** (*mixed* $name)
+public  **has** (*string* $name)
 
 Check if an annotation exists in a collection
 

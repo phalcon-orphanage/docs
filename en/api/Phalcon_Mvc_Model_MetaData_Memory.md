@@ -1,10 +1,16 @@
-# Class **Phalcon\\Mvc\\Model\\MetaData\\Memory**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\MetaData\Memory'
+---
+# Class **Phalcon\Mvc\Model\MetaData\Memory**
 
-*extends* abstract class [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+*extends* abstract class [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
-*implements* [Phalcon\Mvc\Model\MetaDataInterface](/en/3.2/api/Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Mvc\Model\MetaDataInterface](/3.4/en/api/Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/metadata/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/metadata/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Stores model meta-data in memory. Data will be erased when the request finishes
 
@@ -45,7 +51,7 @@ Stores model meta-data in memory. Data will be erased when the request finishes
 ## Methods
 public  **__construct** ([*array* $options])
 
-Phalcon\\Mvc\\Model\\MetaData\\Memory constructor
+Phalcon\Mvc\Model\MetaData\Memory constructor
 
 
 
@@ -61,37 +67,37 @@ Writes the meta-data to temporal memory
 
 
 
-final protected  **_initialize** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $key, *mixed* $table, *mixed* $schema) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+final protected  **_initialize** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $key, *mixed* $table, *mixed* $schema) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Initialize the metadata for certain table
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Sets the DependencyInjector container
 
 
 
-public  **getDI** () inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getDI** () inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns the DependencyInjector container
 
 
 
-public  **setStrategy** ([Phalcon\Mvc\Model\MetaData\StrategyInterface](/en/3.2/api/Phalcon_Mvc_Model_MetaData_StrategyInterface) $strategy) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **setStrategy** ([Phalcon\Mvc\Model\MetaData\StrategyInterface](/3.4/en/api/Phalcon_Mvc_Model_MetaData_StrategyInterface) $strategy) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Set the meta-data extraction strategy
 
 
 
-public  **getStrategy** () inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getStrategy** () inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Return the strategy to obtain the meta-data
 
 
 
-final public  **readMetaData** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+final public  **readMetaData** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Reads the complete meta-data for certain model
 
@@ -108,7 +114,7 @@ print_r(
 
 
 
-final public  **readMetaDataIndex** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $index) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+final public  **readMetaDataIndex** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $index) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Reads meta-data for certain model
 
@@ -126,7 +132,7 @@ print_r(
 
 
 
-final public  **writeMetaDataIndex** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $index, *mixed* $data) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+final public  **writeMetaDataIndex** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $index, *mixed* $data) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Writes meta-data for certain model using a MODEL_* constant
 
@@ -134,7 +140,7 @@ Writes meta-data for certain model using a MODEL_* constant
 <?php
 
 print_r(
-    $metaData->writeColumnMapIndex(
+    $metaData->writeMetaDataIndex(
         new Robots(),
         MetaData::MODELS_REVERSE_COLUMN_MAP,
         [
@@ -147,7 +153,7 @@ print_r(
 
 
 
-final public  **readColumnMap** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+final public  **readColumnMap** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Reads the ordered/reversed column map for certain model
 
@@ -164,7 +170,7 @@ print_r(
 
 
 
-final public  **readColumnMapIndex** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $index) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+final public  **readColumnMapIndex** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $index) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Reads column-map information for certain model using a MODEL_* constant
 
@@ -182,7 +188,7 @@ print_r(
 
 
 
-public  **getAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getAttributes** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns table attributes names (fields)
 
@@ -199,7 +205,7 @@ print_r(
 
 
 
-public  **getPrimaryKeyAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getPrimaryKeyAttributes** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns an array of fields which are part of the primary key
 
@@ -216,7 +222,7 @@ print_r(
 
 
 
-public  **getNonPrimaryKeyAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getNonPrimaryKeyAttributes** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns an array of fields which are not part of the primary key
 
@@ -233,7 +239,7 @@ print_r(
 
 
 
-public  **getNotNullAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getNotNullAttributes** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns an array of not null attributes
 
@@ -250,7 +256,7 @@ print_r(
 
 
 
-public  **getDataTypes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getDataTypes** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns attributes and their data types
 
@@ -267,7 +273,7 @@ print_r(
 
 
 
-public  **getDataTypesNumeric** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getDataTypesNumeric** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns attributes which types are numerical
 
@@ -284,7 +290,7 @@ print_r(
 
 
 
-public *string* **getIdentityField** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public *string* **getIdentityField** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns the name of identity field (if one is present)
 
@@ -301,7 +307,7 @@ print_r(
 
 
 
-public  **getBindTypes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getBindTypes** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns attributes and their bind data types
 
@@ -318,7 +324,7 @@ print_r(
 
 
 
-public  **getAutomaticCreateAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getAutomaticCreateAttributes** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns attributes that must be ignored from the INSERT SQL generation
 
@@ -335,7 +341,7 @@ print_r(
 
 
 
-public  **getAutomaticUpdateAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getAutomaticUpdateAttributes** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns attributes that must be ignored from the UPDATE SQL generation
 
@@ -352,7 +358,7 @@ print_r(
 
 
 
-public  **setAutomaticCreateAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *array* $attributes) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **setAutomaticCreateAttributes** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *array* $attributes) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Set the attributes that must be ignored from the INSERT SQL generation
 
@@ -370,7 +376,7 @@ $metaData->setAutomaticCreateAttributes(
 
 
 
-public  **setAutomaticUpdateAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *array* $attributes) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **setAutomaticUpdateAttributes** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *array* $attributes) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Set the attributes that must be ignored from the UPDATE SQL generation
 
@@ -388,7 +394,7 @@ $metaData->setAutomaticUpdateAttributes(
 
 
 
-public  **setEmptyStringAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *array* $attributes) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **setEmptyStringAttributes** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *array* $attributes) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Set the attributes that allow empty string values
 
@@ -406,7 +412,7 @@ $metaData->setEmptyStringAttributes(
 
 
 
-public  **getEmptyStringAttributes** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getEmptyStringAttributes** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns attributes allow empty strings
 
@@ -423,7 +429,7 @@ print_r(
 
 
 
-public  **getDefaultValues** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getDefaultValues** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns attributes (which have default values) and their default values
 
@@ -440,7 +446,7 @@ print_r(
 
 
 
-public  **getColumnMap** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getColumnMap** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns the column map if any
 
@@ -457,7 +463,7 @@ print_r(
 
 
 
-public  **getReverseColumnMap** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **getReverseColumnMap** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Returns the reverse column map if any
 
@@ -474,7 +480,7 @@ print_r(
 
 
 
-public  **hasAttribute** ([Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $attribute) inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **hasAttribute** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $attribute) inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Check if a model has certain attribute
 
@@ -492,7 +498,7 @@ var_dump(
 
 
 
-public  **isEmpty** () inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **isEmpty** () inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Checks if the internal meta-data container is empty
 
@@ -507,7 +513,7 @@ var_dump(
 
 
 
-public  **reset** () inherited from [Phalcon\Mvc\Model\MetaData](/en/3.2/api/Phalcon_Mvc_Model_MetaData)
+public  **reset** () inherited from [Phalcon\Mvc\Model\MetaData](/3.4/en/api/Phalcon_Mvc_Model_MetaData)
 
 Resets internal meta-data in order to regenerate it
 

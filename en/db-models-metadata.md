@@ -1,17 +1,11 @@
-<div class='article-menu' markdown='1'>
-
-- [Models Metadata](#overview)
-    - [Caching Metadata](#caching-metadata)
-    - [Metadata Strategies](#metadata-strategies)
-        - [Database Introspection Strategy](#strategies-database-introspection)
-        - [Annotations Strategy](#strategies-annotations)
-    - [Manual Metadata](#strategies-manual)
-    
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='models-metadata'></a>
 # Models Metadata
-To speed up development `Phalcon\Mvc\Model` helps you to query fields and constraints from tables related to models. To achieve this, `Phalcon\Mvc\Model\MetaData` is available to manage and cache table metadata.
+To speed up development [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) helps you to query fields and constraints from tables related to models. To achieve this, [Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc_Model_MetaData) is available to manage and cache table metadata.
 
 Sometimes it is necessary to get those attributes when working with models. You can get a metadata instance as follows:
 
@@ -38,14 +32,14 @@ Once the application is in a production stage, it is not necessary to query the 
 
 | Adapter      | Description                                                                                                                                                                                                                                                                                                              | API                                       |
 |--------------| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|
-| Apc          | This adapter uses the [Alternative PHP Cache (APC)](http://www.php.net/manual/en/book.apc.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production).                                                                                                     | `Phalcon\Mvc\Model\MetaData\Apc`          |
-| Files        | This adapter uses plain files to store metadata. This adapter reduces database queries but has an increased I/O with the file system.                                                                                                                                                                                    | `Phalcon\Mvc\Model\MetaData\Files`        |
-| Libmemcached | This adapter uses the [Memcached Server](https://www.memcached.org/) to store the table metadata. The server parameters as well as the cache lifetime are specified in the options. (Recommended for Production)                                                                                                         | `Phalcon\Mvc\Model\MetaData\Libmemcached` |
+| Apc          | This adapter uses the [Alternative PHP Cache (APC)](http://www.php.net/manual/en/book.apc.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production).                                                                                                     | [Phalcon\Mvc\Model\MetaData\Apc](api/Phalcon_Mvc_Model_MetaData_Apc)          |
+| Files        | This adapter uses plain files to store metadata. This adapter reduces database queries but has an increased I/O with the file system.                                                                                                                                                                                    | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData_Files)        |
+| Libmemcached | This adapter uses the [Memcached Server](https://www.memcached.org/) to store the table metadata. The server parameters as well as the cache lifetime are specified in the options. (Recommended for Production)                                                                                                         | [Phalcon\Mvc\Model\MetaData\Libmemcached](api/Phalcon_Mvc_Model_MetaData_Libmemcached) |
 | Memcache     | This adapter uses [Memcache](http://php.net/manual/en/book.memcache.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production)                                                                                                                            | `Phalcon\Mvc\Model\MetaData\MEmcache`     |
-| Memory       | This adapter is the default. The metadata is cached only during the request. When the request is completed, the metadata are released as part of the normal memory of the request. (Recommended for Development)                                                                                                         | `Phalcon\Mvc\Model\MetaData\Memory`       |
-| Redis        | This adapter uses [Redis](https://redis.io/) to store the table metadata. The server parameters as well as the cache lifetime are specified in the options. (Recommended for Production).                                                                                                                                | `Phalcon\Mvc\Model\MetaData\Redis`        |
-| Session      | This adapter stores metadata in the `$_SESSION` superglobal. This adapter is recommended only when the application is actually using a small number of models. The metadata are refreshed every time a new session starts. This also requires the use of `session_start()` to start the session before using any models. | `Phalcon\Mvc\Model\MetaData\Session`      |
-| XCache       | This adapter uses [XCache](http://xcache.lighttpd.net/) to store the table metadata. You can specify the lifetime of the metadata with options. This is one of the recommended ways to store metadata when the application is in production.                                                                             | `Phalcon\Mvc\Model\MetaData\Xcache`       |
+| Memory       | This adapter is the default. The metadata is cached only during the request. When the request is completed, the metadata are released as part of the normal memory of the request. (Recommended for Development)                                                                                                         | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)       |
+| Redis        | This adapter uses [Redis](https://redis.io/) to store the table metadata. The server parameters as well as the cache lifetime are specified in the options. (Recommended for Production).                                                                                                                                | [Phalcon\Mvc\Model\MetaData\Redis](api/Phalcon_Mvc_Model_MetaData_Redis)        |
+| Session      | This adapter stores metadata in the `$_SESSION` superglobal. This adapter is recommended only when the application is actually using a small number of models. The metadata are refreshed every time a new session starts. This also requires the use of `session_start()` to start the session before using any models. | [Phalcon\Mvc\Model\MetaData\Session](api/Phalcon_Mvc_Model_MetaData_Session)      |
+| XCache       | This adapter uses [XCache](http://xcache.lighttpd.net/) to store the table metadata. You can specify the lifetime of the metadata with options. This is one of the recommended ways to store metadata when the application is in production.                                                                             | [Phalcon\Mvc\Model\MetaData\Xcache](api/Phalcon_Mvc_Model_MetaData_Xcache)       |
 
 As other ORM's dependencies, the metadata manager is requested from the services container:
 
@@ -135,8 +129,7 @@ class Robots extends Model
 }
 ```
 
-Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the @Column annotation
-are handled as simple class attributes.
+Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the `@Column` annotation are handled as simple class attributes.
 
 The following annotations are supported:
 
@@ -146,13 +139,18 @@ The following annotations are supported:
 | Identity | The field is an auto_increment/serial column      |
 | Column   | This marks an attribute as a mapped column        |
 
-The annotation @Column supports the following parameters:
+The annotation `@Column` supports the following parameters:
 
-| Name     | Description                                           |
-| -------- | ----------------------------------------------------- |
-| type     | The column's type (string, integer, decimal, boolean) |
-| length   | The column's length if any                            |
-| nullable | Set whether the column accepts null values or not     |
+| Name               | Description                                           |
+| ------------------ | ----------------------------------------------------- |
+| column             | Real column name                                      |
+| type               | The column's types: varchar/string (default), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
+| length             | The column's length if any                            |
+| nullable           | Set whether the column accepts null values or not     |
+| skip_on_insert     | Skip this column on insert                            |
+| skip_on_update     | Skip this column on updates                           |
+| allow_empty_string | Column allow empty strings                            |
+| default            | Default value                                         |
 
 The annotations strategy could be set up this way:
 
@@ -182,7 +180,7 @@ $di['modelsMetadata'] = function () {
 
 <a name='strategies-manual'></a>
 ## Manual Metadata
-Phalcon can obtain the metadata for each model automatically without the developer must set them manually using any of the introspection strategies presented above.
+Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically without the developer needing to set them manually.
 
 The developer also has the option of define the metadata manually. This strategy overrides any strategy set in the metadata manager. New columns added/modified/removed to/from the mapped table must be added/modified/removed also for everything to work properly.
 

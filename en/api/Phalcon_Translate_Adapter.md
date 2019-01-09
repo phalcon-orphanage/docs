@@ -1,10 +1,16 @@
-# Abstract class **Phalcon\\Translate\\Adapter**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Translate\Adapter'
+---
+# Abstract class **Phalcon\Translate\Adapter**
 
-*implements* [Phalcon\Translate\AdapterInterface](/en/3.2/api/Phalcon_Translate_AdapterInterface)
+*implements* [Phalcon\Translate\AdapterInterface](/3.4/en/api/Phalcon_Translate_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/translate/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/translate/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Base class for Phalcon\\Translate adapters
+Base class for Phalcon\Translate adapters
 
 
 ## Methods
@@ -13,7 +19,7 @@ public  **__construct** (*array* $options)
 ...
 
 
-public  **setInterpolator** ([Phalcon\Translate\InterpolatorInterface](/en/3.2/api/Phalcon_Translate_InterpolatorInterface) $interpolator)
+public  **setInterpolator** ([Phalcon\Translate\InterpolatorInterface](/3.4/en/api/Phalcon_Translate_InterpolatorInterface) $interpolator)
 
 ...
 
@@ -60,12 +66,12 @@ Replaces placeholders by the values passed
 
 
 
-abstract public  **query** (*mixed* $index, [*mixed* $placeholders]) inherited from [Phalcon\Translate\AdapterInterface](/en/3.2/api/Phalcon_Translate_AdapterInterface)
+abstract public  **query** (*mixed* $index, [*mixed* $placeholders]) inherited from [Phalcon\Translate\AdapterInterface](/3.4/en/api/Phalcon_Translate_AdapterInterface)
 
 ...
 
 
-abstract public  **exists** (*mixed* $index) inherited from [Phalcon\Translate\AdapterInterface](/en/3.2/api/Phalcon_Translate_AdapterInterface)
+abstract public  **exists** (*mixed* $index) inherited from [Phalcon\Translate\AdapterInterface](/3.4/en/api/Phalcon_Translate_AdapterInterface)
 
 ...
 

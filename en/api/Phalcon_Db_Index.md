@@ -1,8 +1,14 @@
-# Class **Phalcon\\Db\\Index**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Index'
+---
+# Class **Phalcon\Db\Index**
 
-*implements* [Phalcon\Db\IndexInterface](/en/3.2/api/Phalcon_Db_IndexInterface)
+*implements* [Phalcon\Db\IndexInterface](/3.4/en/api/Phalcon_Db_IndexInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/index.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/index.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Allows to define indexes to be used on tables. Indexes are a common way
 to enhance database performance. An index allows the database server to find
@@ -57,13 +63,13 @@ Index type
 
 public  **__construct** (*mixed* $name, *array* $columns, [*mixed* $type])
 
-Phalcon\\Db\\Index constructor
+Phalcon\Db\Index constructor
 
 
 
 public static  **__set_state** (*array* $data)
 
-Restore a Phalcon\\Db\\Index object from export
+Restore a Phalcon\Db\Index object from export
 
 
 

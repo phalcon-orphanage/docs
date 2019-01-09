@@ -1,17 +1,8 @@
-<div class='article-menu' markdown='1'>
-
-- [ORM Caching](#overview)
-    - [Caching Resultsets](#caching-resultsets)
-    - [Forcing Cache](#forcing-cache)
-    - [Caching PHQL Queries](#caching-phql-queries)
-    - [Reusable Related Records](#reusable-related-records)
-    - [Caching Related Records](#caching-related-records)
-    - [Caching Related Records Recursively](#caching-related-records-recursively)
-    - [Caching based on Conditions](#caching-based-on-conditions)
-    - [Caching PHQL execution plan](#caching-phql-execution-plan)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='orm-caching'></a>
 # ORM Caching
 Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
@@ -22,7 +13,7 @@ This chapter explains the potential areas where it is possible to implement cach
 ## Caching Resultsets
 A well established technique to avoid continuously accessing the database, is to cache resultsets that don't change frequently, using a system with faster access (usually memory).
 
-When `Phalcon\Mvc\Model` requires a service to cache resultsets, it will request it from the Dependency Injection Container. The service name is called `modelsCache`. Phalcon offers a [cache](/[[language]]/[[version]]/cache) component that can store any kind of data. We will now see how we can integrate it with our Models.
+When [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) requires a service to cache resultsets, it will request it from the Dependency Injection Container. The service name is called `modelsCache`. Phalcon offers a [cache](/3.4/en/cache) component that can store any kind of data. We will now see how we can integrate it with our Models.
 
 First, we will need to register the cache component as a service in the DI container.
 ```php
@@ -128,7 +119,7 @@ Which resultset to cache and for how long is up to the developer, after having e
 
 <a name='forcing-cache'></a>
 ## Forcing Cache
-Earlier we saw how `Phalcon\Mvc\Model` integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
+Earlier we saw how [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
 
 ```php
 <?php
@@ -543,13 +534,25 @@ class CustomQueryBuilder extends QueryBuilder
         $query = new CustomQuery($this->getPhql());
 
         $query->setDI($this->getDI());
+        
+        if ( is_array($this->_bindParams) ) {
+            $query->setBindParams($this->_bindParams);
+        }
+
+        if ( is_array($this->_bindTypes) ) {
+            $query->setBindTypes($this->_bindTypes);
+        }
+
+        if ( is_array($this->_sharedLock) ) {
+            $query->setSharedLock($this->_sharedLock);
+        }
 
         return $query;
     }
 }
 ```
 
-Instead of directly returning a `Phalcon\Mvc\Model\Query`, our custom builder returns a CustomQuery instance, this class looks like:
+Instead of directly returning a [Phalcon\Mvc\Model\Query](api/Phalcon_Mvc_Model_Query), our custom builder returns a CustomQuery instance, this class looks like:
 
 ```php
 <?php
@@ -565,6 +568,14 @@ class CustomQuery extends ModelQuery
     {
         // Parse the intermediate representation for the SELECT
         $ir = $this->parse();
+
+        if ( is_array($this->_bindParams) ) {
+            $params = array_merge($this->_bindParams, (array)$params);
+        }
+
+        if ( is_array($this->_bindTypes) ) {
+            $types = array_merge($this->_bindTypes, (array)$types);
+        }
 
         // Check if the query has conditions
         if (isset($ir['where'])) {
@@ -588,6 +599,7 @@ class CustomQuery extends ModelQuery
 
         // Execute the query
         $result = $this->_executeSelect($ir, $params, $types);
+        $result = $this->_uniqueRow ? $result->getFirst() : $result;
 
         // Cache the result
         // ...

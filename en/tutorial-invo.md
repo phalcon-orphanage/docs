@@ -1,26 +1,8 @@
-<div class='article-menu' markdown='1'>
-
-- [Tutorial: INVO](#overview)
-    - [Project Structure](#structure)
-    - [Routing](#routing)
-    - [Configuration](#configuration)
-    - [Autoloaders](#autoloaders)
-    - [Registering services](#services)
-    - [Handling the Request](#handling-requests)
-    - [Dependency Injection](#dependency-injection)
-    - [Log into the Application](#log-in)
-    - [Securing the Backend](#securing-backend)
-        - [Events Management](#events-manager)
-        - [Getting the ACL list](#acl)
-    - [Working with the CRUD](#working-with-crud)
-    - [The Search Form](#search-form)
-    - [Performing a Search](#performing-searches)
-    - [Creating and Updating Records](#creating-updating-records)
-    - [User Components](#user-components)
-    - [Changing the Title Dynamically](#dynamic-titles)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Tutorial: INVO
 In this second tutorial, we'll explain a more complete application in order to gain a deeper understanding of developing with Phalcon. INVO is one of the sample applications we have created. INVO is a small website that allows users to generate invoices and do other tasks such as manage customers and products. You can clone its code from [Github](https://github.com/phalcon/invo).
@@ -56,13 +38,13 @@ As you know, Phalcon does not impose a particular file structure for application
 
 Once you open the application in your browser `http://localhost/invo` you'll see something like this:
 
-![](/images/content/tutorial-invo-1.png)
+![](/assets/images/content/tutorial-invo-1.png)
 
 The application is divided into two parts: a frontend and a backend. The frontend is a public area where visitors can receive information about INVO and request contact information. The backend is an administrative area where registered users can manage their products and customers.
 
 <a name='routing'></a>
 ## Routing
-INVO uses the standard route that is built-in with the [Router](/[[language]]/[[version]]/routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
+INVO uses the standard route that is built-in with the [Router](/3.4/en/routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
 
 The following route `/session/register` executes the controller `SessionController` and its action `registerAction`.
 
@@ -84,7 +66,7 @@ $config = new ConfigIni(
 
 ```
 
-[Phalcon Config](/[[language]]/[[version]]/config) (`Phalcon\Config`) allows us to manipulate the file in an object-oriented way. In this example, we're using an ini file for configuration but Phalcon has [adapters](/[[language]]/[[version]]/config) for other file types as well. The configuration file contains the following settings:
+[Phalcon Config](/3.4/en/config) ([Phalcon\Config](api/Phalcon_Config)) allows us to manipulate the file in an object-oriented way. In this example, we're using an ini file for configuration but Phalcon has [adapters](/3.4/en/config) for other file types as well. The configuration file contains the following settings:
 
 ```ini
 [database]
@@ -195,7 +177,7 @@ We will discuss this file in depth later.
 
 <a name='handling-requests'></a>
 ## Handling the Request
-If we skip to the end of the file (`public/index.php`), the request is finally handled by `Phalcon\Mvc\Application` which initializes and executes all that is necessary to make the application run:
+If we skip to the end of the file (`public/index.php`), the request is finally handled by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) which initializes and executes all that is necessary to make the application run:
 
 ```php
 <?php
@@ -213,7 +195,7 @@ $response->send();
 
 <a name='dependency-injection'></a>
 ## Dependency Injection
-In the first line of the code block above, the Application class constructor is receiving the variable `$di` as an argument. What is the purpose of that variable? Phalcon is a highly decoupled framework so we need a component that acts as glue to make everything work together. That component is `Phalcon\Di`. It's a service container that also performs dependency injection and service location, instantiating all components as they are needed by the application.
+In the first line of the code block above, the Application class constructor is receiving the variable `$di` as an argument. What is the purpose of that variable? Phalcon is a highly decoupled framework so we need a component that acts as glue to make everything work together. That component is [Phalcon\Di](api/Phalcon_Di). It's a service container that also performs dependency injection and service location, instantiating all components as they are needed by the application.
 
 There are many ways of registering services in the container. In INVO, most services have been registered using anonymous functions/closures. Thanks to this, the objects are instantiated in a lazy way, reducing the resources needed by the application.
 
@@ -241,7 +223,7 @@ $di->set(
 
 Here, we have the freedom to change the adapter, perform additional initialization and much more. Note that the service was registered using the name `session`. This is a convention that will allow the framework to identify the active service in the services container.
 
-A request can use many services and registering each service individually can be a cumbersome task. For that reason, the framework provides a variant of `Phalcon\Di` called `Phalcon\Di\FactoryDefault` whose task is to register all services providing a full-stack framework.
+A request can use many services and registering each service individually can be a cumbersome task. For that reason, the framework provides a variant of [Phalcon\Di](api/Phalcon_Di) called [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) whose task is to register all services providing a full-stack framework.
 
 ```php
 <?php
@@ -293,6 +275,7 @@ Here, we return an instance of the MySQL connection adapter. If needed, you coul
 The following simple form (`app/views/session/index.volt`) requests the login information. We've removed some HTML code to make the example more concise:
 
 ```twig
+{% raw %}
 {{ form('session/start') }}
     <fieldset>
         <div>
@@ -320,9 +303,10 @@ The following simple form (`app/views/session/index.volt`) requests the login in
         </div>
     </fieldset>
 {{ endForm() }}
+{% endraw %}
 ```
 
-Instead of using raw PHP as the previous tutorial, we started to use [Volt](/[[language]]/[[version]]/volt). This is a built-in template engine inspired by Jinja_ providing a simpler and friendly syntax to create templates. It will not take too long before you become familiar with Volt.
+Instead of using raw PHP as the previous tutorial, we started to use [Volt](/3.4/en/volt). This is a built-in template engine inspired by Jinja_ providing a simpler and friendly syntax to create templates. It will not take too long before you become familiar with Volt.
 
 The `SessionController::startAction` function (`app/controllers/SessionController.php`) has the task of validating the data entered in the form including checking for a valid user in the database:
 
@@ -397,7 +381,7 @@ class SessionController extends ControllerBase
 }
 ```
 
-For the sake of simplicity, we have used [sha1](http://php.net/manual/en/function.sha1.php) to store the password hashes in the database, however, this algorithm is not recommended in real applications, use [bcrypt](/[[language]]/[[version]]/security) instead.
+For the sake of simplicity, we have used [sha1](http://php.net/manual/en/function.sha1.php) to store the password hashes in the database, however, this algorithm is not recommended in real applications, use [bcrypt](/3.4/en/security) instead.
 
 Note that multiple public attributes are accessed in the controller like: `$this->flash`, `$this->request` or `$this->session`. These are services defined in the services container from earlier (`app/config/services.php`). When they're accessed the first time, they are injected as part of the controller. These services are `shared`, which means that we are always accessing the same instance regardless of the place where we invoke them. For instance, here we invoke the `session` service and then we store the user identity in the variable `auth`:
 
@@ -488,11 +472,11 @@ return $this->dispatcher->forward(
 ## Securing the Backend
 The backend is a private area where only registered users have access. Therefore, it is necessary to check that only registered users have access to these controllers. If you aren't logged into the application and you try to access, for example, the products controller (which is private) you will see a screen like this:
 
-![](/images/content/tutorial-invo-2.png)
+![](/assets/images/content/tutorial-invo-2.png)
 
 Every time someone attempts to access any controller/action, the application verifies that the current role (in session) has access to it, otherwise it displays a message like the above and forwards the flow to the home page.
 
-Now let's find out how the application accomplishes this. The first thing to know is that there is a component called [Dispatcher](/[[language]]/[[version]]/dispatcher). It is informed about the route found by the [Routing](/[[language]]/[[version]]/routing) component. Then, it is responsible for loading the appropriate controller and execute the corresponding action method.
+Now let's find out how the application accomplishes this. The first thing to know is that there is a component called [Dispatcher](/3.4/en/dispatcher). It is informed about the route found by the [Routing](/3.4/en/routing) component. Then, it is responsible for loading the appropriate controller and execute the corresponding action method.
 
 Normally, the framework creates the Dispatcher automatically. In our case, we want to perform a verification before executing the required action, checking if the user has access to it or not. To achieve this, we have replaced the component by creating a function in the bootstrap:
 
@@ -518,11 +502,11 @@ $di->set(
 );
 ```
 
-We now have total control over the Dispatcher used in the application. Many components in the framework trigger events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue for components, a new component called [EventsManager](/[[language]]/[[version]]/events) allows us to intercept the events produced by a component, routing the events to listeners.
+We now have total control over the Dispatcher used in the application. Many components in the framework trigger events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue for components, a new component called [EventsManager](/3.4/en/events) allows us to intercept the events produced by a component, routing the events to listeners.
 
 <a name='events-manager'></a>
 ### Events Management
-The [EventsManager](/[[language]]/[[version]]/events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
+The [EventsManager](/3.4/en/events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
 
 ```php
 <?php
@@ -606,7 +590,7 @@ class SecurityPlugin extends Plugin
 }
 ```
 
-The hook events always receive a first parameter that contains contextual information of the event produced (`$event`) and a second one that is the object that produced the event itself (`$dispatcher`). It is not mandatory that plugins extend the class `Phalcon\Mvc\User\Plugin`, but by doing this they gain easier access to the services available in the application.
+The hook events always receive a first parameter that contains contextual information of the event produced (`$event`) and a second one that is the object that produced the event itself (`$dispatcher`). It is not mandatory that plugins extend the class [Phalcon\Mvc\User\Plugin](api/Phalcon_Mvc_User_Plugin), but by doing this they gain easier access to the services available in the application.
 
 Now, we're verifying the role in the current session, checking if the user has access using the ACL list. If the user does not have access we redirect to the home screen as explained before:
 
@@ -962,7 +946,7 @@ class ProductsForm extends Form
 }
 ```
 
-The form is declared using an object-oriented scheme based on the elements provided by the [forms](/[[language]]/[[version]]/forms) component. Every element follows almost the same structure:
+The form is declared using an object-oriented scheme based on the elements provided by the [forms](/3.4/en/forms) component. Every element follows almost the same structure:
 
 ```php
 <?php
@@ -1030,6 +1014,7 @@ $type = new Select(
 Note that `ProductTypes::find()` contains the data necessary to fill the SELECT tag using `Phalcon\Tag::select()`. Once the form is passed to the view, it can be rendered and presented to the user:
 
 ```twig
+{% raw %}
 {{ form('products/search') }}
 
     <h2>
@@ -1057,6 +1042,7 @@ Note that `ProductTypes::find()` contains the data necessary to fill the SELECT 
     </fieldset>
 
 {{ endForm() }}
+{% endraw %}
 ```
 
 This produces the following HTML:
@@ -1119,7 +1105,7 @@ When the form is submitted, the `search` action is executed in the controller pe
 
 <a name='performing-searches'></a>
 ## Performing a Search
-The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/[[language]]/[[version]]/request) component:
+The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/3.4/en/request) component:
 
 ```php
 <?php
@@ -1140,7 +1126,7 @@ public function searchAction()
 }
 ```
 
-With the help of `Phalcon\Mvc\Model\Criteria`, we can create the search conditions intelligently based on the data types and values sent from the form:
+With the help of [Phalcon\Mvc\Model\Criteria](api/Phalcon_Mvc_Model_Criteria), we can create the search conditions intelligently based on the data types and values sent from the form:
 
 ```php
 <?php
@@ -1167,7 +1153,7 @@ Now, we store the produced parameters in the controller's session bag:
 $this->persistent->searchParams = $query->getParams();
 ```
 
-A session bag, is a special attribute in a controller that persists between requests using the session service. When accessed, this attribute injects a `Phalcon\Session\Bag` instance that is independent in each controller.
+A session bag, is a special attribute in a controller that persists between requests using the session service. When accessed, this attribute injects a [Phalcon\Session\Bag](api/Phalcon_Session_Bag) instance that is independent in each controller.
 
 Then, based on the built params we perform the query:
 
@@ -1222,6 +1208,7 @@ $this->view->page = $page;
 In the view (`app/views/products/search.volt`), we traverse the results corresponding to the current page, showing every row in the current page to the user:
 
 ```twig
+{% raw %}
 {% for product in page.items %}
     {% if loop.first %}
         <table>
@@ -1287,12 +1274,15 @@ In the view (`app/views/products/search.volt`), we traverse the results correspo
 {% else %}
     No products are recorded
 {% endfor %}
+{% endraw %}
 ```
 
 There are many things in the above example that worth detailing. First of all, active items in the current page are traversed using a Volt's `for`. Volt provides a simpler syntax for a PHP `foreach`.
 
 ```twig
+{% raw %}
 {% for product in page.items %}
+{% endraw %}
 ```
 
 Which in PHP is the same as:
@@ -1304,6 +1294,7 @@ Which in PHP is the same as:
 The whole `for` block provides the following:
 
 ```twig
+{% raw %}
 {% for product in page.items %}
     {% if loop.first %}
         Executed before the first product in the loop
@@ -1317,11 +1308,13 @@ The whole `for` block provides the following:
 {% else %}
     Executed if page.items does not have any products
 {% endfor %}
+{% endraw %}
 ```
 
 Now you can go back to the view and find out what every block is doing. Every field in `product` is printed accordingly:
 
 ```twig
+{% raw %}
 <tr>
     <td>
         {{ product.id }}
@@ -1351,6 +1344,7 @@ Now you can go back to the view and find out what every block is doing. Every fi
         {{ link_to('products/delete/' ~ product.id, 'Delete') }}
     </td>
 </tr>
+{% endraw %}
 ```
 
 As we seen before using `product.id` is the same as in PHP as doing: `$product->id`, we made the same with `product.name` and so on. Other fields are rendered differently, for instance, let's focus in `product.productTypes.name`. To understand this part, we have to check the Products model (`app/models/Products.php`):
@@ -1403,13 +1397,17 @@ $this->belongsTo(
 Which means, the local attribute `product_types_id` in `Products` has an one-to-many relation to the `ProductTypes` model in its attribute `id`. By defining this relationship we can access the name of the product type by using:
 
 ```twig
+{% raw %}
 <td>{{ product.productTypes.name }}</td>
+{% endraw %}
 ```
 
 The field `price` is printed by its formatted using a Volt filter:
 
 ```twig
+{% raw %}
 <td>{{ '%.2f'|format(product.price) }}</td>
+{% endraw %}
 ```
 
 In plain PHP, this would be:
@@ -1421,7 +1419,9 @@ In plain PHP, this would be:
 Printing whether the product is active or not uses a helper implemented in the model:
 
 ```php
+{% raw %}
 <td>{{ product.getActiveDetail() }}</td>
+{% endraw %}
 ```
 
 This method is defined in the model.
@@ -1708,7 +1708,7 @@ class Elements extends Component
 }
 ```
 
-This class extends the `Phalcon\Mvc\User\Component`. It is not imposed to extend a component with this class, but it helps to get access more quickly to the application services. Now, we are going to register our first user component in the services container:
+This class extends the [Phalcon\Mvc\User\Component](api/Phalcon_Mvc_User_Component). It is not imposed to extend a component with this class, but it helps to get access more quickly to the application services. Now, we are going to register our first user component in the services container:
 
 ```php
 <?php
@@ -1725,6 +1725,7 @@ $di->set(
 As controllers, plugins or components within a view, this component also has access to the services registered in the container and by just accessing an attribute with the same name as a previously registered service:
 
 ```twig
+{% raw %}
 <div class='navbar navbar-fixed-top'>
     <div class='navbar-inner'>
         <div class='container'>
@@ -1750,12 +1751,15 @@ As controllers, plugins or components within a view, this component also has acc
         <p>&copy; Company 2017</p>
     </footer>
 </div>
+{% endraw %}
 ```
 
 The important part is:
 
 ```twig
+{% raw %}
 {{ elements.getMenu() }}
+{% endraw %}
 ```
 
 <a name='dynamic-titles'></a>

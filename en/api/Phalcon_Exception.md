@@ -1,10 +1,16 @@
-# Class **Phalcon\\Exception**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Exception'
+---
+# Class **Phalcon\Exception**
 
 *extends* class [Exception](http://php.net/manual/en/class.exception.php)
 
 *implements* [Throwable](http://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 final private [Exception](http://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](http://php.net/manual/en/class.exception.php)

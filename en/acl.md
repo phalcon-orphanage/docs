@@ -1,29 +1,17 @@
-<div class='article-menu' markdown='1'>
-
-- [Access Control Lists](#overview)
-    - [Creating an ACL](#setup)
-    - [Adding Roles to the ACL](#adding-roles)
-    - [Adding Resources](#adding-resources)
-    - [Defining Access Controls](#access-controls)
-    - [Querying an ACL](#querying)
-    - [Function based access](#function-based-access)
-    - [Objects as role name and resource name](#objects)
-    - [Roles Inheritance](#roles-inheritance)
-    - [Serializing ACL lists](#serialization)
-    - [Events](#events)
-    - [Implementing your own adapters](#custom-adapters)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Access Control Lists (ACL)
-`Phalcon\Acl` provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](http://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
+[Phalcon\Acl](api/Phalcon_Acl) provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](http://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests. You are encouraged to read more about the ACL methodology so as to be familiar with its concepts.
 
 In summary, ACLs have roles and resources. Resources are objects which abide by the permissions defined to them by the ACLs. Roles are objects that request access to resources and can be allowed or denied access by the ACL mechanism.
 
 <a name='setup'></a>
 ## Creating an ACL
-This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The `Phalcon\Acl` constructor takes as its first parameter an adapter used to retrieve the information related to the control list. An example using the memory adapter is below:
+This component is designed to initially work in memory. This provides ease of use and speed in accessing every aspect of the list. The [Phalcon\Acl](api/Phalcon_Acl) constructor takes as its first parameter an adapter used to retrieve the information related to the control list. An example using the memory adapter is below:
 
 ```php
 <?php
@@ -33,7 +21,7 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 $acl = new AclList();
 ```
 
-By default `Phalcon\Acl` allows access to action on resources that have not yet been defined. To increase the security level of the access list we can define a `deny` level as a default access level.
+By default [Phalcon\Acl](api/Phalcon_Acl) allows access to action on resources that have not yet been defined. To increase the security level of the access list we can define a `deny` level as a default access level.
 
 ```php
 <?php
@@ -48,7 +36,7 @@ $acl->setDefaultAction(
 
 <a name='adding-roles'></a>
 ## Adding Roles to the ACL
-A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The `Phalcon\Acl\Role` class is available to create roles in a more structured way. Let's add some roles to our recently created list:
+A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The [Phalcon\Acl\Role](api/Phalcon_Acl_Role) class is available to create roles in a more structured way. Let's add some roles to our recently created list:
 
 ```php
 <?php
@@ -71,7 +59,7 @@ As you can see, roles are defined directly without using an instance.
 
 <a name='adding-resources'></a>
 ## Adding Resources
-Resources are objects where access is controlled. Normally in MVC applications resources refer to controllers. Although this is not mandatory, the `Phalcon\Acl\Resource` class can be used in defining resources. It's important to add related actions or operations to a resource so that the ACL can understand what it should to control.
+Resources are objects where access is controlled. Normally in MVC applications resources refer to controllers. Although this is not mandatory, the [Phalcon\Acl\Resource](api/Phalcon_Acl_Resource) class can be used in defining resources. It's important to add related actions or operations to a resource so that the ACL can understand what it should to control.
 
 ```php
 <?php
@@ -176,9 +164,10 @@ $acl->isAllowed(
 Also if you don't provide any parameters in `isAllowed()` method then default behaviour will be `Acl::ALLOW`. You can change it by using method `setNoArgumentsDefaultAction()`.
 
 ```php
+<?php
+
 use Phalcon\Acl;
 
-<?php
 // Set access level for role into resources with custom function
 $acl->allow(
     'Guests',
@@ -213,7 +202,7 @@ $acl->isAllowed(
 
 <a name='objects'></a>
 ## Objects as role name and resource name
-You can pass objects as `roleName` and `resourceName`. Your classes must implement `Phalcon\Acl\RoleAware` for `roleName` and `Phalcon\Acl\ResourceAware` for `resourceName`.
+You can pass objects as `roleName` and `resourceName`. Your classes must implement [Phalcon\Acl\RoleAware](api/Phalcon_Acl_RoleAware) for `roleName` and [Phalcon\Acl\ResourceAware](api/Phalcon_Acl_ResourceAware) for `resourceName`.
 
 Our `UserRole` class
 
@@ -430,10 +419,7 @@ You can still add any custom parameters to function and pass associative array i
 
 <a name='roles-inheritance'></a>
 ## Roles Inheritance
-You can build complex role structures using the inheritance that `Phalcon\Acl\Role` provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. There are two ways to use role inheritance:
-
-### Setup relationships as roles are added.
-You can pass the inherited role as the second parameter of the method call, when adding that role in the list.
+You can build complex role structures using the inheritance that [Phalcon\Acl\Role](api/Phalcon_Acl_Role) provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the method call, when adding that role in the list.
 
 ```php
 <?php
@@ -478,7 +464,7 @@ $acl->addInherit($roleAdmins, $roleGuests);
 
 <a name='serialization'></a>
 ## Serializing ACL lists
-To improve performance `Phalcon\Acl` instances can be serialized and stored in APC, session, text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
+To improve performance [Phalcon\Acl](api/Phalcon_Acl) instances can be serialized and stored in APC, session, text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
 
 ```php
 <?php
@@ -517,7 +503,7 @@ It's recommended to use the Memory adapter during development and use one of the
 
 <a name='events'></a>
 ## Events
-`Phalcon\Acl` is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
+[Phalcon\Acl](api/Phalcon_Acl) is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. Some events when returning boolean false could stop the active operation. The following events are supported:
 
 | Event Name        | Triggered                                               | Can stop operation? |
 |-------------------|---------------------------------------------------------|:-------------------:|
@@ -561,6 +547,6 @@ $acl->setEventsManager($eventsManager);
 
 <a name='custom-adapters'></a>
 ## Implementing your own adapters
-The `Phalcon\Acl\AdapterInterface` interface must be implemented in order to create your own ACL adapters or extend the existing ones.
+The [Phalcon\Acl\AdapterInterface](api/Phalcon_Acl_AdapterInterface) interface must be implemented in order to create your own ACL adapters or extend the existing ones.
 
 

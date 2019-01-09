@@ -1,6 +1,12 @@
-# Class **Phalcon\\Annotations\\Reflection**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Annotations\Reflection'
+---
+# Class **Phalcon\Annotations\Reflection**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/annotations/reflection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/reflection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Allows to manipulate the annotations reflection in an OO manner
 
@@ -26,7 +32,7 @@ $classAnnotations = $reflection->getClassAnnotations();
 ## Methods
 public  **__construct** ([*array* $reflectionData])
 
-Phalcon\\Annotations\\Reflection constructor
+Phalcon\Annotations\Reflection constructor
 
 
 
@@ -56,7 +62,7 @@ Returns the raw parsing intermediate definitions used to construct the reflectio
 
 public static *array data* **__set_state** (*mixed* $data)
 
-Restores the state of a Phalcon\\Annotations\\Reflection variable export
+Restores the state of a Phalcon\Annotations\Reflection variable export
 
 
 

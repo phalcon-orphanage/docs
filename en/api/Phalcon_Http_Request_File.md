@@ -1,8 +1,14 @@
-# Class **Phalcon\\Http\\Request\\File**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Http\Request\File'
+---
+# Class **Phalcon\Http\Request\File**
 
-*implements* [Phalcon\Http\Request\FileInterface](/en/3.2/api/Phalcon_Http_Request_FileInterface)
+*implements* [Phalcon\Http\Request\FileInterface](/3.4/en/api/Phalcon_Http_Request_FileInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/http/request/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/request/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Provides OO wrappers to the $_FILES superglobal
 
@@ -49,7 +55,7 @@ public  **getExtension** ()
 
 public  **__construct** (*array* $file, [*mixed* $key])
 
-Phalcon\\Http\\Request\\File constructor
+Phalcon\Http\Request\File constructor
 
 
 

@@ -1,31 +1,21 @@
-<div class='article-menu' markdown='1'>
-
-- [Class Autoloader](#overview)
-    - [Security Layer](#security)
-    - [Registering Namespaces](#registering-namespaces)
-    - [Registering Directories](#registering-directories)
-    - [Registering Classes](#registering-classes)
-    - [Registering Files](#registering-files)
-    - [Additional file extensions](#registering-file-extensions)
-    - [Modifying current strategies](#modifying-current-strategies)
-    - [Autoloading Events](#events)
-    - [Troubleshooting](#troubleshooting)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Class Autoloader
-`Phalcon\Loader` allows you to load project classes automatically, based on some predefined rules. Since this component is written in C, it provides the lowest overhead in reading and interpreting external PHP files.
+[Phalcon\Loader](api/Phalcon_Loader) allows you to load project classes automatically, based on some predefined rules. Since this component is written in C, it provides the lowest overhead in reading and interpreting external PHP files.
 
-The behavior of this component is based on the PHP's capability of [autoloading classes](http://www.php.net/manual/en/language.oop5.autoload.php). If a class that does not yet exist is used in any part of the code, a special handler will try to load it. `Phalcon\Loader` serves as the special handler for this operation. By loading classes on a need-to-load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called [lazy initialization](http://en.wikipedia.org/wiki/Lazy_initialization).
+The behavior of this component is based on the PHP's capability of [autoloading classes](http://www.php.net/manual/en/language.oop5.autoload.php). If a class that does not yet exist is used in any part of the code, a special handler will try to load it. [Phalcon\Loader](api/Phalcon_Loader) serves as the special handler for this operation. By loading classes on a need-to-load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called [lazy initialization](http://en.wikipedia.org/wiki/Lazy_initialization).
 
 With this component you can load files from other projects or vendors, this autoloader is [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) and [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md) compliant.
 
-`Phalcon\Loader` offers four options to autoload classes. You can use them one at a time or combine them.
+[Phalcon\Loader](api/Phalcon_Loader) offers four options to autoload classes. You can use them one at a time or combine them.
 
 <a name='security'></a>
 ## Security Layer
-`Phalcon\Loader` offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files. Consider the following example:
+[Phalcon\Loader](api/Phalcon_Loader) offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files. Consider the following example:
 
 ```php
 <?php
@@ -59,11 +49,11 @@ if (class_exists($className)) {
 
 If `../processes/important-process.php` is a valid file, an external user could execute the file without authorization.
 
-To avoid these or most sophisticated attacks, `Phalcon\Loader` removes invalid characters from the class name, reducing the possibility of being attacked.
+To avoid these or most sophisticated attacks, [Phalcon\Loader](api/Phalcon_Loader) removes invalid characters from the class name, reducing the possibility of being attacked.
 
 <a name='registering-namespaces'></a>
 ## Registering Namespaces
-If you're organizing your code using namespaces, or using external libraries which do, the `registerNamespaces()` method provides the autoloading mechanism. It takes an associative array; the keys are namespace prefixes and their values are directories where the classes are located in. The namespace separator will be replaced by the directory separator when the loader tries to find the classes. Always remember to add a trailing slash at the end of the paths.
+If you're organizing your code using namespaces, or using external libraries which do, the `registerNamespaces()` method provides the autoloading mechanism. It takes an associative array; the keys are namespace prefixes and their values are directories where the classes are located in. The namespace separator will be replaced by the directory separator when the loader tries to find the classes.
 
 ```php
 <?php
@@ -76,9 +66,9 @@ $loader = new Loader();
 // Register some namespaces
 $loader->registerNamespaces(
     [
-       'Example\Base'    => 'vendor/example/base/',
-       'Example\Adapter' => 'vendor/example/adapter/',
-       'Example'         => 'vendor/example/',
+       'Example\Base'    => 'vendor/example/base',
+       'Example\Adapter' => 'vendor/example/adapter',
+       'Example'         => 'vendor/example',
     ]
 );
 
@@ -92,7 +82,7 @@ $some = new \Example\Adapter\Some();
 
 <a name='registering-directories'></a>
 ## Registering Directories
-The third option is to register directories, in which classes could be found. This option is not recommended in terms of performance, since Phalcon will need to perform a significant number of file stats on each folder, looking for the file with the same name as the class. It's important to register the directories in relevance order. Remember always add a trailing slash at the end of the paths.
+The third option is to register directories, in which classes could be found. This option is not recommended in terms of performance, since Phalcon will need to perform a significant number of file stats on each folder, looking for the file with the same name as the class. It's important to register the directories in relevance order.
 
 ```php
 <?php
@@ -105,10 +95,10 @@ $loader = new Loader();
 // Register some directories
 $loader->registerDirs(
     [
-        'library/MyComponent/',
-        'library/OtherComponent/Other/',
-        'vendor/example/adapters/',
-        'vendor/example/',
+        'library/MyComponent',
+        'library/OtherComponent/Other',
+        'vendor/example/adapters',
+        'vendor/example',
     ]
 );
 
@@ -198,6 +188,26 @@ $loader->setExtensions(
 );
 ```
 
+<a name='file-checking-callback'></a>
+## File checking callback
+You can speed up the loader by setting a different file checking callback method using the `setFileCheckingCallback` method.
+
+The default behavior uses `is_file`. However you can also use `null` which will not check whether a file exists or not before loading it or you can use `stream_resolve_include_path` which is much faster than `is_file` but will cause problems if the target file is removed from the file system.
+
+```php
+<?php
+
+// Default behavior.
+$loader->setFileCheckingCallback("is_file");
+
+// Faster than `is_file()`, but implies some issues if
+// the file is removed from the filesystem.
+$loader->setFileCheckingCallback("stream_resolve_include_path");
+
+// Do not check file existence.
+$loader->setFileCheckingCallback(null);
+```
+
 <a name='modifying-current-strategies'></a>
 ## Modifying current strategies
 Additional auto-loading data can be added to existing values by passing `true` as the second parameter:
@@ -208,8 +218,8 @@ Additional auto-loading data can be added to existing values by passing `true` a
 // Adding more directories
 $loader->registerDirs(
     [
-        '../app/library/',
-        '../app/plugins/',
+        '../app/library',
+        '../app/plugins',
     ],
     true
 );
@@ -232,9 +242,9 @@ $loader = new Loader();
 
 $loader->registerNamespaces(
     [
-        'Example\Base'    => 'vendor/example/base/',
-        'Example\Adapter' => 'vendor/example/adapter/',
-        'Example'         => 'vendor/example/',
+        'Example\Base'    => 'vendor/example/base',
+        'Example\Adapter' => 'vendor/example/adapter',
+        'Example'         => 'vendor/example',
     ]
 );
 

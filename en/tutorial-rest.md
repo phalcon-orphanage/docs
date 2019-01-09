@@ -1,18 +1,8 @@
-<div class='article-menu' markdown='1'>
-
-- [Tutorial: Creating a Simple REST API](#overview)
-    - [Defining the API](#definitions)
-    - [Creating the Application](#implementation)
-    - [Creating a Model](#models)
-    - [Retrieving Data](#retrieving-data)
-    - [Inserting Data](#inserting-data)
-    - [Updating Data](#updating-data)
-    - [Deleting Data](#deleting-data)
-    - [Testing our Application](#testing)
-    - [Conclusion](#conclusion)
-   
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='basic'></a>
 # Tutorial: Creating a Simple REST API
 In this tutorial, we will explain how to create a simple application that provides a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
@@ -37,7 +27,7 @@ The API consists of the following methods:
 
 <a name='implementation'></a>
 ## Creating the Application
-As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/[[language]]/[[version]]/application-micro) to meet our goal.
+As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/3.4/en/application-micro) to meet our goal.
 
 The following file structure is more than enough:
 
@@ -49,7 +39,7 @@ my-rest-api/
     .htaccess
 ```
 
-First, we need a `.htaccess` file that contains all the rules to rewrite the URIs to the `index.php` file, that is our application:
+First, we need a `.htaccess` file that contains all the rules to rewrite the request URIs to the `index.php` file (application entry-point):
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -86,7 +76,7 @@ $app = new Micro();
 $app->get(
     '/api/robots',
     function () {
-
+        // Operation to fetch all the robots
     }
 );
 
@@ -94,7 +84,7 @@ $app->get(
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
-
+        // Operation to fetch robot with name $name
     }
 );
 
@@ -102,7 +92,7 @@ $app->get(
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-
+        // Operation to fetch robot with id $id
     }
 );
 
@@ -110,23 +100,23 @@ $app->get(
 $app->post(
     '/api/robots',
     function () {
-
+        // Operation to create a fresh robot
     }
 );
 
 // Updates robots based on primary key
 $app->put(
     '/api/robots/{id:[0-9]+}',
-    function () {
-
+    function ($id) {
+        // Operation to update a robot with id $id
     }
 );
 
 // Deletes robots based on primary key
 $app->delete(
     '/api/robots/{id:[0-9]+}',
-    function () {
-
+    function ($id) {
+        // Operation to delete the robot with id $id
     }
 );
 
@@ -139,7 +129,7 @@ When a defined route matches the requested URI then the application executes the
 
 <a name='models'></a>
 ## Creating a Model
-Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder. 
+Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
 ```php
 <?php
@@ -271,7 +261,7 @@ $app->get(
 );
 ```
 
-[PHQL](/[[language]]/[[version]]/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
+[PHQL](/3.4/en/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
 
 The searching by name handler would look like [File: `index.php`]:
 
@@ -533,6 +523,20 @@ $app->delete(
 );
 ```
 
+## Creating database
+Now we will create database for our application.
+Run SQL queries as follows:
+```
+CREATE DATABASE `robotics`;
+CREATE TABLE `robotics`.`robots` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+ `name` varchar(200) COLLATE utf8_bin NOT NULL,
+ `type` varchar(200) COLLATE utf8_bin NOT NULL,
+ `year` smallint(2) unsigned NOT NULL,
+ PRIMARY KEY (`id`)
+)
+```
+
 <a name='testing'></a>
 ## Testing our Application
 Using [curl](http://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
@@ -641,4 +645,4 @@ Content-Type: text/html; charset=UTF-8
 
 <a name='conclusion'></a>
 ## Conclusion
-As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using   [micro applications](/[[language]]/[[version]]/application-micro) and [PHQL](/[[language]]/[[version]]/db-phql).
+As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using   [micro applications](/3.4/en/application-micro) and [PHQL](/3.4/en/db-phql).

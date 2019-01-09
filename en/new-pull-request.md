@@ -1,3 +1,8 @@
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 # New Pull Request
 
 A pull request is alterations to the code that either fixes a current issue or introduces new functionality.

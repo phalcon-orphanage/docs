@@ -1,30 +1,13 @@
-<div class='article-menu' markdown='1'>
-
-- [ODM (Object-Document Mapper)](#overview)
-    - [Creating Models](#creating-models)
-    - [Understanding Documents To Objects](#documents-to-objects)
-    - [Models in Namespaces](#namespaces)
-    - [Setting a Connection](#connection-setup)
-    - [Finding Documents](#finding-documents)
-    - [Aggregations](#aggregations)
-    - [Creating Updating/Records](#creating-updating)
-        - [Validation Messages](#validation-messages)
-        - [Validation Events and Events Manager](#events)
-        - [Implementing a Business Rule](#business-rules)
-        - [Validating Data Integrity](#data-integrity)
-    - [Deleting Records](#deleting-records)
-    - [Validation Failed Events](#validation-failed-events)
-    - [Implicit Ids vs. User Primary Keys](#ids-vs-primary-keys)
-    - [Setting multiple databases](#multiple-databases)
-    - [Injecting services into Models](#services-in-models)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <h5 class='alert alert-info' markdown='1'>Please note that if you are using the Mongo driver provided by PHP 7, the ODM will not work for you. There is an incubator adapter but all the Mongo code must be rewritten (new Bson type instead of arrays, no MongoId, no MongoDate, etc...). Please ensure that you test your code before upgrading to PHP 7 and/or Phalcon 3+</h5>
 
 <a name='overview'></a>
 # ODM (Object-Document Mapper)
-In addition to its ability to [map tables](/[[language]]/[[version]]/models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
+In addition to its ability to [map tables](/3.4/en/models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
 
 Due to the absence of SQL queries and planners, NoSQL databases can see real improvements in performance using the Phalcon approach. Additionally, there are no SQL building reducing the possibility of SQL injections.
 
@@ -36,7 +19,7 @@ The following NoSQL databases are supported:
 
 <a name='creating-models'></a>
 ## Creating Models
-A model is a class that extends from `Phalcon\Mvc\Collection`. It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
+A model is a class that extends from [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection). It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
 
 ```php
 <?php
@@ -166,7 +149,7 @@ $di->set(
 
 <a name='finding-documents'></a>
 ## Finding Documents
-As `Phalcon\Mvc\Collection` relies on the Mongo PHP extension you have the same facilities to query documents and convert them transparently to model instances:
+As [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) relies on the Mongo PHP extension you have the same facilities to query documents and convert them transparently to model instances:
 
 ```php
 <?php
@@ -266,6 +249,15 @@ $robots = Robots::find(
         ],
     ]
 );
+
+// Find all robots that have more than 4 friends using the where condition
+$robots = Robots::find(
+    [
+        'conditions' => [
+            '$where' => 'this.friends.length > 4',
+        ]
+    ]
+);
 ```
 
 The available query options are:
@@ -334,7 +326,7 @@ $data = Article::aggregate(
 
 <a name='creating-updating'></a>
 ## Creating Updating/Records
-The `Phalcon\Mvc\Collection::save()` method allows you to create/update documents according to whether they already exist in the collection associated with a model. The `save()` method is called internally by the create and update methods of `Phalcon\Mvc\Collection`.
+The `Phalcon\Mvc\Collection::save()` method allows you to create/update documents according to whether they already exist in the collection associated with a model. The `save()` method is called internally by the create and update methods of [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection).
 
 Also the method executes associated validators and events that are defined in the model:
 
@@ -372,9 +364,9 @@ echo 'The generated id is: ', $robot->getId();
 
 <a name='validation-messages'></a>
 ### Validation Messages
-`Phalcon\Mvc\Collection` has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
+[Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
-Each message consists of an instance of the class `Phalcon\Mvc\Model\Message`. The set of messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that generated the message or the message type:
+Each message consists of an instance of the class [Phalcon\Mvc\Model\Message](api/Phalcon_Mvc_Model_Message). The set of messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that generated the message or the message type:
 
 ```php
 <?php
@@ -392,7 +384,7 @@ if ($robot->save() === false) {
 
 <a name='events'></a>
 ### Validation Events and Events Manager
-Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by `Phalcon\Mvc\Collection` and their order of execution:
+Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) and their order of execution:
 
 | Operation          | Name                       | Can stop operation?   | Explanation                                                                                                        |
 |--------------------|----------------------------|-----------------------|--------------------------------------------------------------------------------------------------------------------|
@@ -449,7 +441,7 @@ class Products extends Collection
 }
 ```
 
-Additionally, this component is integrated with the [Phalcon Events Manager](/[[language]]/[[version]]/events) (`Phalcon\Events\Manager`), this means we can create listeners that run when an event is triggered.
+Additionally, this component is integrated with the [Phalcon Events Manager](/3.4/en/events) ([Phalcon\Events\Manager](api/Phalcon_Events_Manager)), this means we can create listeners that run when an event is triggered.
 
 ```php
 <?php
@@ -540,7 +532,7 @@ use Phalcon\Mvc\Collection;
 
 class Robots extends Collection
 {
-    public function beforeSave()
+    protected function beforeSave()
     {
         if ($this->year < 0) {
             echo 'Year cannot be smaller than zero!';
@@ -551,11 +543,11 @@ class Robots extends Collection
 }
 ```
 
-Some events return false as an indication to stop the current operation. If an event doesn't return anything, `Phalcon\Mvc\Collection` will assume a true value.
+Some events return `false` as an indication to stop the current operation. If an event doesn't return anything, `Phalcon\Mvc\Collection` will assume a `true` value.
 
 <a name='data-integrity'></a>
 ### Validating Data Integrity
-`Phalcon\Mvc\Collection` provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+[Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
 
 The following example shows how to use it:
 
@@ -600,9 +592,9 @@ class Robots extends Collection
 }
 ```
 
-The example given above performs a validation using the built-in validator `InclusionIn`. It checks the value of the field `type` in a domain list. If the value is not included in the method, then the validator will fail and return false.
+The example above performs a validation using the built-in validator `InclusionIn`. It checks that the value of the field `type` is in a `domain` list. If the value is not included in the list, then the validator will fail and return `false`.
 
-<h5 class='alert alert-warning' markdown='1'>For more information on validators, see the [Validation documentation](/[[language]]/[[version]]/validation) </h5>
+<h5 class='alert alert-warning' markdown='1'>For more information on validators, see the [Validation documentation](/3.4/en/validation) </h5>
 
 <a name='deleting-records'></a>
 ## Deleting Records
@@ -674,7 +666,7 @@ Another type of events is available when the data validation process finds any i
 
 <a name='ids-vs-primary-keys'></a>
 ## Implicit Ids vs. User Primary Keys
-By default `Phalcon\Mvc\Collection` assumes that the `_id` attribute is automatically generated using [MongoIds](http://www.php.net/manual/en/class.mongoid.php).
+By default [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) assumes that the `_id` attribute is automatically generated using [MongoIds](http://www.php.net/manual/en/class.mongoid.php).
 
 If a model uses custom primary keys this behavior can be overridden:
 
@@ -694,7 +686,7 @@ class Robots extends Collection
 
 <a name='multiple-databases'></a>
 ## Setting multiple databases
-In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service setting it in the initialize method:
+In Phalcon, all models can share the same database connection or specify a connection per model. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service by setting it in the `initialize()` method:
 
 ```php
 <?php

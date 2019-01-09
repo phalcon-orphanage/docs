@@ -1,8 +1,14 @@
-# Class **Phalcon\\Mvc\\Model\\Query\\Status**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Query\Status'
+---
+# Class **Phalcon\Mvc\Model\Query\Status**
 
-*implements* [Phalcon\Mvc\Model\Query\StatusInterface](/en/3.2/api/Phalcon_Mvc_Model_Query_StatusInterface)
+*implements* [Phalcon\Mvc\Model\Query\StatusInterface](/3.4/en/api/Phalcon_Mvc_Model_Query_StatusInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/query/status.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/query/status.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This class represents the status returned by a PHQL
 statement like INSERT, UPDATE or DELETE. It offers context
@@ -33,7 +39,7 @@ if ($status->success() === true) {
 
 
 ## Methods
-public  **__construct** (*mixed* $success, [[Phalcon\Mvc\ModelInterface](/en/3.2/api/Phalcon_Mvc_ModelInterface) $model])
+public  **__construct** (*mixed* $success, [[Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model])
 
 
 

@@ -1,18 +1,11 @@
-<div class='article-menu' markdown='1'>
-
-- [Returning Responses](#overview)
-    - [Working with Headers](#working-with-headers)
-    - [Making Redirections](#redirections)
-    - [HTTP Cache](#http-cache)
-        - [Setting an Expiration Time](#http-cache-expiration-time)
-        - [Cache-Control](#http-cache-control)
-        - [E-Tag](#http-cache-etag)
-
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Returning Responses
-Part of the HTTP cycle is returning responses to clients. `Phalcon\Http\Response` is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
+Part of the HTTP cycle is returning responses to clients. [Phalcon\Http\Response](api/Phalcon_Http_Response) is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
 ```php
 <?php
@@ -77,7 +70,7 @@ $response->setHeader('Content-Disposition', "attachment; filename='downloaded.pd
 $response->setRawHeader('HTTP/1.1 200 OK');
 ```
 
-A `Phalcon\Http\Response\Headers` bag internally manages headers. This class retrieves the headers before sending it to client:
+A [Phalcon\Http\Response\Headers](api/Phalcon_Http_Response_Headers) bag internally manages headers. This class retrieves the headers before sending it to client:
 
 ```php
 <?php
@@ -91,7 +84,7 @@ $contentType = $headers->get('Content-Type');
 
 <a name='redirections'></a>
 ## Making Redirections
-With `Phalcon\Http\Response` you can also execute HTTP redirections:
+With [Phalcon\Http\Response](api/Phalcon_Http_Response) you can also execute HTTP redirections:
 
 ```php
 <?php
@@ -109,7 +102,7 @@ $response->redirect('http://en.wikipedia.org', true);
 $response->redirect('http://www.example.com/new-location', true, 301);
 ```
 
-All internal URIs are generated using the [url](/[[language]]/[[version]]/url) service (by default `Phalcon\Mvc\Url`). This example demonstrates how you can redirect using a route you have defined in your application:
+All internal URIs are generated using the [url](/3.4/en/url) service (by default [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)). This example demonstrates how you can redirect using a route you have defined in your application:
 
 ```php
 <?php
@@ -124,7 +117,7 @@ return $response->redirect(
 );
 ```
 
-Note that a redirection doesn't disable the view component, so if there is a view associated with the current action it will be executed anyway. You can disable the view from a controller by executing `$this->view->disable()`;
+Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
 
 <a name='http-cache'></a>
 ## HTTP Cache
@@ -134,8 +127,8 @@ HTTP Cache can be altered in the following header values sent by the application
 
 * **`Expires:`** With this header the application can set a date in the future or the past telling the browser when the page must expire.
 * **`Cache-Control:`** This header allows to specify how much time a page should be considered fresh in the browser.
-* **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads
-* **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page
+* **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads.
+* **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page.
 
 <a name='http-cache-expiration-time'></a>
 ### Setting an Expiration Time

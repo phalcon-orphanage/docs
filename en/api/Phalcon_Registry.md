@@ -1,8 +1,14 @@
-# Final class **Phalcon\\Registry**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Registry'
+---
+# Final class **Phalcon\Registry**
 
 *implements* [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php), [Countable](http://php.net/manual/en/class.countable.php), [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/registry.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/registry.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 A registry is a container for storing objects and values in the application space.
 By storing the value in a registry, the same object is always available throughout
@@ -35,17 +41,17 @@ unset($registry["something"]);
 
 ```
 
-In addition to ArrayAccess, Phalcon\\Registry also implements Countable
+In addition to ArrayAccess, Phalcon\Registry also implements Countable
 (count($registry) will return the number of elements in the registry),
 Serializable and Iterator (you can iterate over the registry
 using a foreach loop) interfaces. For PHP 5.4 and higher, JsonSerializable
 interface is implemented.
 
-Phalcon\\Registry is very fast (it is typically faster than any userspace
+Phalcon\Registry is very fast (it is typically faster than any userspace
 implementation of the registry); however, this comes at a price:
-Phalcon\\Registry is a final class and cannot be inherited from.
+Phalcon\Registry is a final class and cannot be inherited from.
 
-Though Phalcon\\Registry exposes methods like __get(), offsetGet(), count() etc,
+Though Phalcon\Registry exposes methods like __get(), offsetGet(), count() etc,
 it is not recommended to invoke them manually (these methods exist mainly to
 match the interfaces the registry implements): $registry->__get("property")
 is several times slower than $registry->property.

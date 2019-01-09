@@ -1,6 +1,12 @@
-# Class **Phalcon\\Security\\Random**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Security\Random'
+---
+# Class **Phalcon\Security\Random**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/security/random.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/security/random.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Secure random number generator class.
 
@@ -14,7 +20,7 @@ It supports following secure random number generators:
 - openssl, libressl
 - /dev/urandom
 
-`Phalcon\\Security\\Random` could be mainly useful for:
+`Phalcon\Security\Random` could be mainly useful for:
 
 - Key generation (e.g. generation of complicated keys)
 - Generating random passwords for new user accounts
@@ -117,7 +123,7 @@ public  **base58** ([*mixed* $len])
 Generates a random base58 string
 If $len is not specified, 16 is assumed. It may be larger in future.
 The result may contain alphanumeric characters except 0, O, I and l.
-It is similar to `Phalcon\\Security\\Random:base64` but has been modified to avoid both non-alphanumeric
+It is similar to `Phalcon\Security\Random:base64` but has been modified to avoid both non-alphanumeric
 characters and letters which might look ambiguous when printed.
 
 ```php
@@ -135,11 +141,16 @@ public  **base62** ([*mixed* $len])
 
 Generates a random base62 string
 If $len is not specified, 16 is assumed. It may be larger in future.
-It is similar to `Phalcon\\Security\\Random:base58` but has been modified to provide the largest value that can
+It is similar to `Phalcon\Security\Random:base58` but has been modified to provide the largest value that can
 safely be used in URLs without needing to take extra characters into consideration because it is [A-Za-z0-9].
-< code>
-$random = new \\Phalcon\\Security\\Random();
+
+```php
+<?php
+
+$random = new \Phalcon\Security\Random();
+
 echo $random->base62(); // z0RkwHfh8ErDM1xw
+
 ```
 
 

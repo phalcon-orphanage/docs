@@ -1,6 +1,12 @@
-# Interface **Phalcon\\ValidationInterface**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\ValidationInterface'
+---
+# Interface **Phalcon\ValidationInterface**
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/validationinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/validationinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 abstract public  **validate** ([*mixed* $data], [*mixed* $entity])
@@ -8,12 +14,12 @@ abstract public  **validate** ([*mixed* $data], [*mixed* $entity])
 ...
 
 
-abstract public  **add** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/en/3.2/api/Phalcon_Validation_ValidatorInterface) $validator)
+abstract public  **add** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/3.4/en/api/Phalcon_Validation_ValidatorInterface) $validator)
 
 ...
 
 
-abstract public  **rule** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/en/3.2/api/Phalcon_Validation_ValidatorInterface) $validator)
+abstract public  **rule** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/3.4/en/api/Phalcon_Validation_ValidatorInterface) $validator)
 
 ...
 
@@ -68,7 +74,7 @@ abstract public  **getLabel** (*mixed* $field)
 ...
 
 
-abstract public  **appendMessage** ([Phalcon\Validation\MessageInterface](/en/3.2/api/Phalcon_Validation_MessageInterface) $message)
+abstract public  **appendMessage** ([Phalcon\Validation\MessageInterface](/3.4/en/api/Phalcon_Validation_MessageInterface) $message)
 
 ...
 

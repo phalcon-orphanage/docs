@@ -1,5 +1,11 @@
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 If you have found a bug it is important to add relevant reproducibility information to your issue to allow us to reproduce the bug and fix it quicker. If you have the application publicly on Github please submit the repository address along with the issue description. You can also use [Gist](https://gist.github.com/) to post any code you want to share with us.
 
+<a name="overview"></a>
 ## Creating a small script
 A small single-file script is usually the best way to reproduce a problem:
 
@@ -42,6 +48,7 @@ var_dump($_COOKIE);
 
 Depending on your application, you can use these skeletons in order to create your own script and reproduce the bug:
 
+<a name="database"></a>
 ### Database
 Remember to add to the script how you registered the database service:
 
@@ -64,6 +71,7 @@ $result = $di['db']->query('SELECT * FROM customers');
 
 ```
 
+<a name="single-multi"></a>
 ### Single/Multi-Module applications
 Remember to add to the script how you are creating the Phalcon\Mvc\Application instance:
 
@@ -110,6 +118,7 @@ echo $app->handle->getContent()
 
 ```
 
+<a name="micro"></a>
 ### Micro application
 Follow this structure to create the script:
 
@@ -125,9 +134,7 @@ $app = new \Phalcon\Mvc\Micro($di);
 $app->handle();
 ```
 
-### Dispatcher
-
-
+<a name="orm"></a>
 ### ORM
 You can provide your own database schema or even better use any of the phalcon test [databases](https://github.com/phalcon/cphalcon/tree/master/unit-tests/schemas). Follow this structure to create the script:
 

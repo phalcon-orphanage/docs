@@ -1,8 +1,14 @@
-# Class **Phalcon\\Mvc\\Model\\Transaction\\Manager**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Transaction\Manager'
+---
+# Class **Phalcon\Mvc\Model\Transaction\Manager**
 
-*implements* [Phalcon\Mvc\Model\Transaction\ManagerInterface](/en/3.2/api/Phalcon_Mvc_Model_Transaction_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Mvc\Model\Transaction\ManagerInterface](/3.4/en/api/Phalcon_Mvc_Model_Transaction_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/mvc/model/transaction/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/transaction/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 A transaction acts on a single database connection. If you have multiple class-specific
 databases, the transaction will not protect interaction among them.
@@ -51,13 +57,13 @@ try {
 
 
 ## Methods
-public  **__construct** ([[Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector])
+public  **__construct** ([[Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector])
 
-Phalcon\\Mvc\\Model\\Transaction\\Manager constructor
+Phalcon\Mvc\Model\Transaction\Manager constructor
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -101,7 +107,7 @@ Checks whether the manager has an active transaction
 
 public  **get** ([*mixed* $autoBegin])
 
-Returns a new \\Phalcon\\Mvc\\Model\\Transaction or an already created once
+Returns a new \Phalcon\Mvc\Model\Transaction or an already created once
 This method registers a shutdown function to rollback active connections
 
 
@@ -131,19 +137,19 @@ Collect will remove the transaction from the manager
 
 
 
-public  **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](/en/3.2/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
+public  **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](/3.4/en/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
 Notifies the manager about a rollbacked transaction
 
 
 
-public  **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](/en/3.2/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
+public  **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](/3.4/en/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
 Notifies the manager about a committed transaction
 
 
 
-protected  **_collectTransaction** ([Phalcon\Mvc\Model\TransactionInterface](/en/3.2/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
+protected  **_collectTransaction** ([Phalcon\Mvc\Model\TransactionInterface](/3.4/en/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
 Removes transactions from the TransactionManager
 

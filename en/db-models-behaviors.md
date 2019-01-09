@@ -1,16 +1,11 @@
-<div class='article-menu' markdown='1'>
-
-- [Model Behaviors](#overview)
-    - [Timestampable](#timestampable)
-    - [SoftDelete](#softdelete)
-    - [Creating your own behaviors](#create-your-own-behaviors)
-    - [Using Traits as behaviors](#traits-as-behaviors)
-    
-</div>
-
+---
+layout: default
+language: 'en'
+version: '4.0'
+---
 <a name='overview'></a>
 # Model Behaviors
-Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
+Behaviors are shared constructs that several models may adopt in order to re-use code. The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 
 A behavior must be added in the model initializer, a model can have zero or more behaviors:
 
@@ -179,7 +174,7 @@ Note that you need to specify the deleted condition in your queries to effective
 
 <a name='create-your-own-behaviors'></a>
 ## Creating your own behaviors
-The ORM provides an API to create your own behaviors. A behavior must be a class implementing the `Phalcon\Mvc\Model\BehaviorInterface`. Also, `Phalcon\Mvc\Model\Behavior` provides most of the methods needed to ease the implementation of behaviors.
+The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](api/Phalcon_Mvc_Model_BehaviorInterface). Also, [Phalcon\Mvc\Model\Behavior](api/Phalcon_Mvc_Model_Behavior) provides most of the methods needed to ease the implementation of behaviors.
 
 The following behavior is an example, it implements the Blameable behavior which helps identify the user that is performed operations over a model:
 

@@ -1,8 +1,14 @@
-# Abstract class **Phalcon\\Flash**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Flash'
+---
+# Abstract class **Phalcon\Flash**
 
-*implements* [Phalcon\FlashInterface](/en/3.2/api/Phalcon_FlashInterface), [Phalcon\Di\InjectionAwareInterface](/en/3.2/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\FlashInterface](/3.4/en/api/Phalcon_FlashInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/flash.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/flash.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS
 
@@ -18,7 +24,7 @@ $flash->error("Cannot open the file");
 ## Methods
 public  **__construct** ([*mixed* $cssClasses])
 
-Phalcon\\Flash constructor
+Phalcon\Flash constructor
 
 
 
@@ -40,13 +46,13 @@ Returns the Escaper Service
 
 
 
-public  **setEscaperService** ([Phalcon\EscaperInterface](/en/3.2/api/Phalcon_EscaperInterface) $escaperService)
+public  **setEscaperService** ([Phalcon\EscaperInterface](/3.4/en/api/Phalcon_EscaperInterface) $escaperService)
 
 Sets the Escaper Service
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/en/3.2/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -147,7 +153,7 @@ Clears accumulated messages when implicit flush is disabled
 
 
 
-abstract public  **message** (*mixed* $type, *mixed* $message) inherited from [Phalcon\FlashInterface](/en/3.2/api/Phalcon_FlashInterface)
+abstract public  **message** (*mixed* $type, *mixed* $message) inherited from [Phalcon\FlashInterface](/3.4/en/api/Phalcon_FlashInterface)
 
 ...
 

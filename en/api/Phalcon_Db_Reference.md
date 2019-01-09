@@ -1,8 +1,14 @@
-# Class **Phalcon\\Db\\Reference**
+---
+layout: default
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Reference'
+---
+# Class **Phalcon\Db\Reference**
 
-*implements* [Phalcon\Db\ReferenceInterface](/en/3.2/api/Phalcon_Db_ReferenceInterface)
+*implements* [Phalcon\Db\ReferenceInterface](/3.4/en/api/Phalcon_Db_ReferenceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/db/reference.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/reference.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Allows to define reference constraints on tables
 
@@ -77,13 +83,13 @@ ON UPDATE
 
 public  **__construct** (*mixed* $name, *array* $definition)
 
-Phalcon\\Db\\Reference constructor
+Phalcon\Db\Reference constructor
 
 
 
 public static  **__set_state** (*array* $data)
 
-Restore a Phalcon\\Db\\Reference object from export
+Restore a Phalcon\Db\Reference object from export
 
 
 
