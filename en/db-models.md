@@ -1,6 +1,7 @@
 ---
 layout: default
 language: 'en'
+version: '4.0'
 ---
 <a name='working-with'></a>
 # Working with Models
