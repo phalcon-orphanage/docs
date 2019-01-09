@@ -3,78 +3,77 @@ files:
     translation: /%locale%/%original_file_name%
     languages_mapping:
       locale:
-        el : el-gr
-        bg : bg-bg
-        zh-CN : zh-cn
-        cs : cs-cz
-        fr : fr-fr
-        de : de-de
-        hu : hu-hu
-        id : id-id
-        it : it-it
-        ja : ja-jp
-        ko : ko-kr
-        fa : fa-ir
-        pl : pl-pl
-        pt : pt-pt
-        ro : ro-ro
-        ru : ru-ru
-        es : es-es
-        tr : tr-tr
-        uk : uk-ua
-        ur-IN : ur-in
-        ur-PK : ur-pk
-        vi : vi-vn
+        el: el-gr
+        bg: bg-bg
+        zh-CN: zh-cn
+        cs: cs-cz
+        fr: fr-fr
+        de: de-de
+        hu: hu-hu
+        id: id-id
+        it: it-it
+        ja: ja-jp
+        ko: ko-kr
+        fa: fa-ir
+        pl: pl-pl
+        pt-PT: pt-pt
+        ro: ro-ro
+        ru: ru-ru
+        es-ES: es-es
+        tr: tr-tr
+        uk: uk-ua
+        ur-IN: ur-in
+        ur-PK: ur-pk
+        vi: vi-vn
   - source: /en/*.md
     translation: /%locale%/%original_file_name%
     languages_mapping:
       locale:
-        el : el-gr
-        bg : bg-bg
-        zh-CN : zh-cn
-        cs : cs-cz
-        fr : fr-fr
-        de : de-de
-        hu : hu-hu
-        id : id-id
-        it : it-it
-        ja : ja-jp
-        ko : ko-kr
-        fa : fa-ir
-        pl : pl-pl
-        pt : pt-pt
-        ro : ro-ro
-        ru : ru-ru
-        es : es-es
-        tr : tr-tr
-        uk : uk-ua
-        ur-IN : ur-in
-        ur-PK : ur-pk
-        vi : vi-vn
+        el: el-gr
+        bg: bg-bg
+        zh-CN: zh-cn
+        cs: cs-cz
+        fr: fr-fr
+        de: de-de
+        hu: hu-hu
+        id: id-id
+        it: it-it
+        ja: ja-jp
+        ko: ko-kr
+        fa: fa-ir
+        pl: pl-pl
+        pt-PT: pt-pt
+        ro: ro-ro
+        ru: ru-ru
+        es-ES: es-es
+        tr: tr-tr
+        uk: uk-ua
+        ur-IN: ur-in
+        ur-PK: ur-pk
+        vi: vi-vn
   - source: /en/api/*.md
     translation: /%locale%/api/%original_file_name%
     languages_mapping:
       locale:
-        el : el-gr
-        bg : bg-bg
-        zh-CN : zh-cn
-        cs : cs-cz
-        fr : fr-fr
-        de : de-de
-        hu : hu-hu
-        id : id-id
-        it : it-it
-        ja : ja-jp
-        ko : ko-kr
-        fa : fa-ir
-        pl : pl-pl
-        pt : pt-pt
-        ro : ro-ro
-        ru : ru-ru
-        es : es-es
-        tr : tr-tr
-        uk : uk-ua
-        ur-IN : ur-in
-        ur-PK : ur-pk
-        vi : vi-vn
-
+        el: el-gr
+        bg: bg-bg
+        zh-CN: zh-cn
+        cs: cs-cz
+        fr: fr-fr
+        de: de-de
+        hu: hu-hu
+        id: id-id
+        it: it-it
+        ja: ja-jp
+        ko: ko-kr
+        fa: fa-ir
+        pl: pl-pl
+        pt-PT: pt-pt
+        ro: ro-ro
+        ru: ru-ru
+        es-ES: es-es
+        tr: tr-tr
+        uk: uk-ua
+        ur-IN: ur-in
+        ur-PK: ur-pk
+        vi: vi-vn
