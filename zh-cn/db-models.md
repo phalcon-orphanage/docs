@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en'
+layout: default language: 'en' version: '3.4'
 
 * * *
 
