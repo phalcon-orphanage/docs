@@ -1,18 +1,8 @@
-<div class='article-menu'>
-  <ul>
-    <li>
-      <a href="#overview">Διαχείριση cookies</a>
-       <ul>
-        <li>
-          <a href="#usage">Basic Usage</a>
-        </li>
-        <li>
-          <a href="#encryption-decryption">Encryption/Decryption of Cookies</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
+* * *
+
+layout: default language: 'en' version: '3.4'
+
+* * *
 
 <a name='overview'></a>
 
