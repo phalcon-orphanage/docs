@@ -1,7 +1,16 @@
 files:
   - source: /en/*.json
     translation: /%locale%/%original_file_name%
+    languages_mapping:
+      locale:
+        zh-CN: zh-cn
   - source: /en/*.md
     translation: /%locale%/%original_file_name%
+    languages_mapping:
+      locale:
+        zh-CN: zh-cn
   - source: /en/api/*.md
     translation: /%locale%/api/%original_file_name%
+    languages_mapping:
+      locale:
+        zh-CN: zh-cn
