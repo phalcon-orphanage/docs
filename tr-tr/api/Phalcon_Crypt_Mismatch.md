@@ -1,3 +1,9 @@
+* * *
+
+layout: default language: 'en' version: '3.4' title: 'Phalcon\Crypt\Mismatch'
+
+* * *
+
 # Class **Phalcon\Crypt\Mismatch**
 
 *extends* class [Phalcon\Crypt\Exception](/3.4/en/api/Phalcon_Crypt_Exception)
