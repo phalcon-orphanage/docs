@@ -1,18 +1,8 @@
-<div class='article-menu'>
-  <ul>
-    <li>
-      <a href="#overview">Управление куками</a>
-       <ul>
-        <li>
-          <a href="#usage">Базовое использование</a>
-        </li>
-        <li>
-          <a href="#encryption-decryption">Шифрование/дешифрование кук</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
+* * *
+
+layout: default language: 'en' version: '3.4'
+
+* * *
 
 <a name='overview'></a>
 
