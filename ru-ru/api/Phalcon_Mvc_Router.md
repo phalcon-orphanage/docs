@@ -1,3 +1,9 @@
+* * *
+
+layout: default language: 'en' version: '3.4' title: 'Phalcon\Mvc\Router'
+
+* * *
+
 # Class **Phalcon\Mvc\Router**
 
 *implements* [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\RouterInterface](/3.4/en/api/Phalcon_Mvc_RouterInterface), [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface)
