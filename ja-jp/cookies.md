@@ -1,18 +1,8 @@
-<div class='article-menu'>
-  <ul>
-    <li>
-      <a href="#overview">cookieの管理</a>
-       <ul>
-        <li>
-          <a href="#usage">基本的な使い方</a>
-        </li>
-        <li>
-          <a href="#encryption-decryption">cookieの暗号化/復号化</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
+* * *
+
+layout: default language: 'en' version: '3.4'
+
+* * *
 
 <a name='overview'></a>
 
