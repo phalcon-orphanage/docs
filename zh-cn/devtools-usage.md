@@ -20,7 +20,7 @@ layout: default language: 'en' version: '4.0'
 
 <a name='installation'></a>
 
-## 安装
+## Installation
 
 以下是有关如何在不同平台上安装开发人员工具的详细说明:
 
@@ -169,7 +169,7 @@ return new \Phalcon\Config([
 
 <a name='generating-models'></a>
 
-## Generating Models
+## 生成模型
 
 创建模型有几种方法。 您可以从默认数据库连接或有选择地创建所有模型。 Models can have public attributes for the field representations or setters/getters can be used.
 
@@ -367,7 +367,7 @@ $ phalcon scaffold --table-name products
 
 <a name='phpstorm-ide'></a>
 
-## 将工具与 phpstorm ide 集成
+## Integrating Tools with PhpStorm IDE
 
 The screencast below shows how to integrate developer tools with the [PhpStorm IDE](http://www.jetbrains.com/phpstorm/). 配置步骤可以很容易地适应 php 的其他 ide。
 
