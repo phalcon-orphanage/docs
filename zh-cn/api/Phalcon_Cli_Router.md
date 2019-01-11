@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Cli\Router'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cli/router.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cli/router.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Phalcon\Cli\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request
 
@@ -29,7 +29,7 @@ echo $router->getTaskName();
 
 ```
 
-## Methods
+## 方法
 
 public **__construct** ([*mixed* $defaultRoutes])
 
