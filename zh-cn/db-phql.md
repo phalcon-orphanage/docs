@@ -384,7 +384,7 @@ WHERE `artists`.`genre` = 'Trip-Hop'
 
 <a name='aggregations'></a>
 
-### 聚合
+### Aggregations
 
 下面的例子展示了如何在PHQL中使用聚合:
 
@@ -876,7 +876,7 @@ $robots = $this->modelsManager->createBuilder()
 
 <a name='disallow-literals'></a>
 
-## PHQL不允许的文字
+## 不允许PHQL中的文字
 
 在PHQL中可以禁用文字，这意味着直接使用字符串、数字和布尔值将被禁用。 如果创建了将外部数据嵌入到PHQL语句上的PHQL语句，这可能会使应用程序面临潜在的SQL注入:
 
