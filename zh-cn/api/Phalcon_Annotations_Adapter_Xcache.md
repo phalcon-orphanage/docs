@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Annotations\Adapte
 
 *implements* [Phalcon\Annotations\AdapterInterface](/3.4/en/api/Phalcon_Annotations_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/adapter/xcache.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/adapter/xcache.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Stores the parsed annotations to XCache. This adapter is suitable for production
 
@@ -21,7 +21,7 @@ $annotations = new \Phalcon\Annotations\Adapter\Xcache();
 
 ```
 
-## Methods
+## 方法
 
 public [Phalcon\Annotations\Reflection](/3.4/en/api/Phalcon_Annotations_Reflection) **read** (*string* $key)
 
