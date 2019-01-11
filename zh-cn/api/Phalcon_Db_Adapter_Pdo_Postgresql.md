@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\Adapter\Pdo\Pos
 
 *implements* [Phalcon\Db\AdapterInterface](/3.4/en/api/Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/adapter/pdo/postgresql.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/adapter/pdo/postgresql.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Specific functions for the Postgresql database system
 
@@ -31,7 +31,7 @@ $connection = new Postgresql($config);
 
 ```
 
-## Methods
+## 方法
 
 public **connect** ([*array* $descriptor])
 
@@ -96,7 +96,7 @@ Constructor for Phalcon\Db\Adapter\Pdo
 
 public **prepare** (*mixed* $sqlStatement) inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-Returns a PDO prepared statement to be executed with 'executePrepared'
+返回一个将以 'executePrepared' 执行的PDO预执行语句
 
 ```php
 <?php
@@ -121,7 +121,7 @@ $result = $connection->executePrepared(
 
 public [PDOStatement](http://php.net/manual/en/class.pdostatement.php) **executePrepared** ([PDOStatement](http://php.net/manual/en/class.pdostatement.php) $statement, *array* $placeholders, *array* $dataTypes) inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-Executes a prepared statement binding. This function uses integer indexes starting from zero
+执行一个预执行语句。该方法使用以0起始的整数索引。
 
 ```php
 <?php
@@ -146,7 +146,7 @@ $result = $connection->executePrepared(
 
 public **query** (*mixed* $sqlStatement, [*mixed* $bindParams], [*mixed* $bindTypes]) inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows
+将SQL语句发送到数据库服务器并返回成功状态。仅在SQL语句有返回数据行的情况下使用此方法。
 
 ```php
 <?php
@@ -167,7 +167,7 @@ $resultset = $connection->query(
 
 public **execute** (*mixed* $sqlStatement, [*mixed* $bindParams], [*mixed* $bindTypes]) inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn't return any rows
+将SQL语句发送到返回成功状态的数据库服务器。 只有当发送到服务器的SQL语句不会返回任何行时，才使用此方法
 
 ```php
 <?php
@@ -189,7 +189,7 @@ $success = $connection->execute(
 
 public **affectedRows** () inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-Returns the number of affected rows by the latest INSERT/UPDATE/DELETE executed in the database system
+返回数据库系统中执行的最新插入/更新/删除返回受影响行的数目
 
 ```php
 <?php
@@ -204,11 +204,11 @@ echo $connection->affectedRows(), " were deleted";
 
 public **close** () inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-Closes the active connection returning success. Phalcon automatically closes and destroys active connections when the request ends
+关闭活动连接返回成功。Phalcon自动关闭和破坏请求结束时的活动连接
 
 public **escapeString** (*mixed* $str) inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-Escapes a value to avoid SQL injections according to the active charset in the connection
+根据连接中的活动字符集逃避值以避免SQL注入
 
 ```php
 <?php
@@ -219,7 +219,7 @@ $escapedStr = $connection->escapeString("some dangerous value");
 
 public **convertBoundParams** (*mixed* $sql, [*array* $params]) inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-Converts bound parameters such as :name: or ?1 into PDO bind params ?
+转换绑定参数，例如：:name: 或 ?1 到PDO绑定参数？
 
 ```php
 <?php
@@ -237,12 +237,12 @@ print_r(
 
 public *int* | *boolean* **lastInsertId** ([*string* $sequenceName]) inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-返回插入在最近执行的SQL语句中的自增ID
+返回插入在最近执行的SQL语句中的 自增/连续 列的插入ID
 
 ```php
 <?php
 
-// Inserting a new robot
+// 插入一条新的机器人数据
 $success = $connection->insert(
     "robots",
     [
@@ -255,30 +255,30 @@ $success = $connection->insert(
     ]
 );
 
-// Getting the generated id
+// 获取ID
 $id = $connection->lastInsertId();
 
 ```
 
 public **begin** ([*mixed* $nesting]) inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-Starts a transaction in the connection
+在当前连接中启动事务
 
 public **rollback** ([*mixed* $nesting]) inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-Rollbacks the active transaction in the connection
+回滚当前连接中的事务
 
 public **commit** ([*mixed* $nesting]) inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-Commits the active transaction in the connection
+提交当前连接中的事务
 
 public **getTransactionLevel** () inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-Returns the current transaction nesting level
+返回当前事务嵌套级别
 
 public **isUnderTransaction** () inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-Checks whether the connection is under a transaction
+检查连接是否在事务
 
 ```php
 <?php
@@ -318,7 +318,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-Returns the internal event manager
+返回内部事件管理器
 
 public **setDialect** ([Phalcon\Db\DialectInterface](/3.4/en/api/Phalcon_Db_DialectInterface) $dialect) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
