@@ -41,7 +41,7 @@ Next, we need a 'helper' file to bootstrap the application for unit testing.
 
 <a name='unit-helper'></a>
 
-## The PHPUnit helper file
+## PHPUnit"桥"文件
 
 A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your `tests/` directory as `TestHelper.php`.
 
