@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Config'
 
 *implements* [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php), [Countable](http://php.net/manual/en/class.countable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/config.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/config.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.
 
@@ -34,11 +34,11 @@ $config = new \Phalcon\Config(
 
 ```
 
-## Constants
+## 常量
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## 方法
 
 public **__construct** ([*array* $arrayConfig])
 
