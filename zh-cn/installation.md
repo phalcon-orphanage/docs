@@ -12,7 +12,7 @@ Phalcon needs PHP to run. Its loosely coupled design allows developers to instal
 
 <a name='requirements-hardware'></a>
 
-## Hardware
+## 硬件
 
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
@@ -24,7 +24,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 * PHP >= 5.5
 
-<h5 class='alert alert-danger'>您应该始终尝试使用最新版本的Phalcon和PHP作为解决bug、增强安全性和提高性能的工具。 在不久的将来 PHP 5.5 版本会被遗弃， Phalcon 4 会只支持 PHP 7 版本。 </h5>
+<h5 class='alert alert-danger'>You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 </h5>
 
 Phalcon need the following extensions to run (minimal):
 
@@ -51,7 +51,7 @@ Phalcon need the following extensions to run (minimal):
 
 # Installation
 
-由于 Phalcon 被编译为 PHP 扩展, 它的安装与任何其他传统的 php 框架有所不同。Phalcon 需要在 web 服务器上作为模块进行安装和加载。
+Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
 <a name='installation-linux'></a>
 
@@ -61,7 +61,7 @@ To install Phalcon on Linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian'></a>
 
-### DEB based distributions (Debian, Ubuntu, etc.)
+### DEB 基于分布 （Debian，Ubuntu 等）
 
 <a name='installation-linux-debian-repository'></a>
 
@@ -121,14 +121,14 @@ sudo apt-get install php7.0-phalcon
 
 If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
 
-存储库的安装:
+Installation of the repo:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-接着 Phalcon:
+and Phalcon:
 
 ```php
 sudo apt-get install php-phalcon
