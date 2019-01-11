@@ -187,7 +187,7 @@ $volt->setOptions(
 
 <a name='basic-usage'></a>
 
-## Basic Usage
+## Základní použití
 
 A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% raw %}{% ... %}{% endraw %}` is used to execute statements such as for-loops or assign values and `{% raw %}{{ ... }}{% endraw %}`, prints the result of an expression to the template.
 
@@ -1618,7 +1618,7 @@ $compiler->compile(
 require $compiler->getCompiledTemplatePath();
 ```
 
-## External Resources
+## Externí zdroje
 
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
 * [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)
