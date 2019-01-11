@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\View\Engine\Vo
 
 *implements* [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/view/engine/volt/compiler.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/view/engine/volt/compiler.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 This class reads and compiles Volt templates into PHP plain code
 
@@ -23,7 +23,7 @@ require $compiler->getCompiledTemplatePath();
 
 ```
 
-## Methods
+## 方法
 
 public **__construct** ([[Phalcon\Mvc\ViewBaseInterface](/3.4/en/api/Phalcon_Mvc_ViewBaseInterface) $view])
 
