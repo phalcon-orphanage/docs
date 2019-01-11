@@ -6,15 +6,15 @@ layout: default language: 'en' version: '4.0'
 
 <a name='overview'></a>
 
-# Model Events
+# Události modelů
 
 <a name='events'></a>
 
-## Events and Events Manager
+## Události a Správce událostí
 
 Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) and their order of execution:
 
-| Operation          | Name                     |  Can stop operation?  | Explanation                                                                                                                       |
+| Operation          | Name                     |   Zastaví operaci?    | Explanation                                                                                                                       |
 | ------------------ | ------------------------ |:---------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
 | Inserting          | afterCreate              |          NO           | Runs after the required operation over the database system only when an inserting operation is being made                         |
 | Inserting/Updating | afterSave                |          NO           | Runs after the required operation over the database system                                                                        |
