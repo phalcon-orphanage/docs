@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Paginator\Adapter\
 
 *implements* [Phalcon\Paginator\AdapterInterface](/3.4/en/api/Phalcon_Paginator_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/paginator/adapter/querybuilder.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/paginator/adapter/querybuilder.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Pagination using a PHQL query builder as source of data
 
@@ -34,7 +34,7 @@ $paginator = new QueryBuilder(
 
 ```
 
-## Methods
+## 方法
 
 public **__construct** (*array* $config)
 
