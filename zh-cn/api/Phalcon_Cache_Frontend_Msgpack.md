@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Msg
 
 *implements* [Phalcon\Cache\FrontendInterface](/3.4/en/api/Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cache/frontend/msgpack.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cache/frontend/msgpack.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Allows to cache native PHP data in a serialized form using msgpack extension This adapter uses a Msgpack frontend to store the cached content and requires msgpack extension.
 
@@ -62,7 +62,7 @@ foreach ($robots as $robot) {
 
 ```
 
-## Methods
+## 方法
 
 public **__construct** ([*array* $frontendOptions])
 
