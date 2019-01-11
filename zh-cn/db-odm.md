@@ -16,13 +16,13 @@ Due to the absence of SQL queries and planners, NoSQL databases can see real imp
 
 The following NoSQL databases are supported:
 
-| Name                               | Description                                                          |
+| Name                               | 描述                                                                   |
 | ---------------------------------- | -------------------------------------------------------------------- |
 | [MongoDB](http://www.mongodb.org/) | MongoDB is a scalable, high-performance, open source NoSQL database. |
 
 <a name='creating-models'></a>
 
-## Creating Models
+## 创建模型
 
 A model is a class that extends from [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection). It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
 
@@ -106,7 +106,7 @@ $robot = Robots::findById('5087358f2d42b8c3d15ec4e2');
 echo $robot->name;
 ```
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+一旦该记录是在内存中，可以对其数据进行修改，然后保存更改：
 
 ```php
 <?php
@@ -215,7 +215,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-You could also use the `findFirst()` method to get only the first record matching the given criteria:
+你也可以使用 `findFirst()` 方法去只匹配给定的条件的第一个记录：
 
 ```php
 <?php
@@ -236,7 +236,7 @@ $robot = Robots::findFirst(
 echo 'The first mechanical robot name is ', $robot->name, "\n";
 ```
 
-Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria:
+`Find （）` 和 `findFirst()` 方法接受一个关联数组，指定的搜索条件：
 
 ```php
 <?php
@@ -273,9 +273,9 @@ $robots = Robots::find(
 );
 ```
 
-The available query options are:
+可用的查询选项有：
 
-| Parameter    | Description                                                                                                                                                                                  | Example                                                 |
+| Parameter    | 描述                                                                                                                                                                                           | 示例                                                      |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
 | `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`               |
@@ -410,7 +410,7 @@ if ($robot->save() === false) {
 
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) and their order of execution:
 
-| Operation          | Name                       | Can stop operation?   | Explanation                                                                                                        |
+| Operation          | Name                       | 可以停止操作吗？              | Explanation                                                                                                        |
 | ------------------ | -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | Inserting/Updating | `beforeValidation`         | YES                   | Is executed before the validation process and the final insert/update to the database                              |
 | Inserting          | `beforeValidationOnCreate` | YES                   | Is executed before the validation process only when an insertion operation is being made                           |
@@ -626,7 +626,7 @@ The example above performs a validation using the built-in validator `InclusionI
 
 <a name='deleting-records'></a>
 
-## Deleting Records
+## 删除记录
 
 The `Phalcon\Mvc\Collection::delete()` method allows you to delete a document. You can use it as follows:
 
@@ -678,12 +678,12 @@ foreach ($robots as $robot) {
 }
 ```
 
-The following events are available to define custom business rules that can be executed when a delete operation is performed:
+以下事件可以用来定义可以执行删除操作时执行的自定义业务规则：
 
-| Operation | Name           | Can stop operation? | Explanation                              |
-| --------- | -------------- | ------------------- | ---------------------------------------- |
-| Deleting  | `beforeDelete` | YES                 | Runs before the delete operation is made |
-| Deleting  | `afterDelete`  | NO                  | Runs after the delete operation was made |
+| Operation | Name           | 可以停止操作吗？ | Explanation                              |
+| --------- | -------------- | -------- | ---------------------------------------- |
+| Deleting  | `beforeDelete` | YES      | Runs before the delete operation is made |
+| Deleting  | `afterDelete`  | NO       | Runs after the delete operation was made |
 
 <a name='validation-failed-events'></a>
 
