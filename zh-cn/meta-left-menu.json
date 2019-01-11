@@ -1,17 +1,17 @@
 [
     {
-        "text": "General",
+        "text": "常规信息",
         "level": 1,
         "url": "/introduction"
     },
     {
-        "text": "Release Notes",
+        "text": "发行说明",
         "level": 2,
         "url": "https://github.com/phalcon/cphalcon/blob/3.4.x/CHANGELOG.md",
         "external": true
     },
     {
-        "text": "Upgrade",
+        "text": "升級",
         "level": 2,
         "url": ""
     },
@@ -21,12 +21,12 @@
         "url": "/sponsors"
     },
     {
-        "text": "Contributions",
+        "text": "贡献者",
         "level": 1,
         "url": ""
     },
     {
-        "text": "Overview",
+        "text": "概述",
         "level": 2,
         "url": "/contributions"
     },
@@ -111,7 +111,7 @@
         "url": "/devtools-installation"
     },
     {
-        "text": "Usage",
+        "text": "使用",
         "level": 2,
         "url": "/devtools-usage"
     },
@@ -161,7 +161,7 @@
         "url": ""
     },
     {
-        "text": "Full",
+        "text": "完整",
         "level": 3,
         "url": "/application"
     },
@@ -176,7 +176,7 @@
         "url": "/application-cli"
     },
     {
-        "text": "DI Container",
+        "text": "DI 容器",
         "level": 2,
         "url": "/di"
     },
@@ -186,7 +186,7 @@
         "url": "/mvc"
     },
     {
-        "text": "Services",
+        "text": "服务",
         "level": 1,
         "url": ""
     },
@@ -251,7 +251,7 @@
         "url": "/db-odm"
     },
     {
-        "text": "Models",
+        "text": "模型",
         "level": 2,
         "url": "/db-models"
     },
@@ -271,7 +271,7 @@
         "url": "/db-models-cache"
     },
     {
-        "text": "Events",
+        "text": "事件",
         "level": 3,
         "url": "/db-models-events"
     },
@@ -291,7 +291,7 @@
         "url": "/db-models-transactions"
     },
     {
-        "text": "Validators",
+        "text": "验证程序",
         "level": 3,
         "url": "/db-models-validation"
     },
@@ -361,7 +361,7 @@
         "url": "/annotations"
     },
     {
-        "text": "Controllers",
+        "text": "控制器",
         "level": 2,
         "url": "/controllers"
     },
@@ -381,7 +381,7 @@
         "url": "/filter"
     },
     {
-        "text": "Routing",
+        "text": "路由",
         "level": 2,
         "url": "/routing"
     },
@@ -396,7 +396,7 @@
         "url": "/url"
     },
     {
-        "text": "Validation",
+        "text": "验证",
         "level": 2,
         "url": "/validation"
     },
@@ -421,7 +421,7 @@
         "url": "/response"
     },
     {
-        "text": "Security",
+        "text": "安全",
         "level": 1,
         "url": ""
     },
@@ -431,7 +431,7 @@
         "url": "/crypt"
     },
     {
-        "text": "Security",
+        "text": "安全",
         "level": 2,
         "url": "/security"
     },
