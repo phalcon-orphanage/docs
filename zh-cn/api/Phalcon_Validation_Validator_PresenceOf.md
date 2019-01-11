@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Validation\Validat
 
 *implements* [Phalcon\Validation\ValidatorInterface](/3.4/en/api/Phalcon_Validation_ValidatorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/validation/validator/presenceof.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/validation/validator/presenceof.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Validates that a value is not null or empty string
 
@@ -48,7 +48,7 @@ $validator->add(
 
 ```
 
-## Methods
+## 方法
 
 public **validate** ([Phalcon\Validation](/3.4/en/api/Phalcon_Validation) $validation, *mixed* $field)
 
