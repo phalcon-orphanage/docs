@@ -6,11 +6,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Debug'
 
 # Class **Phalcon\Debug**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/debug.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/debug.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Provides debug capabilities to Phalcon applications
 
-## Methods
+## 方法
 
 public **setUri** (*mixed* $uri)
 
