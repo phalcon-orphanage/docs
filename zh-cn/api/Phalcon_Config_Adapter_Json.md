@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Config\Adapter\Jso
 
 *implements* [Countable](http://php.net/manual/en/class.countable.php), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/config/adapter/json.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/config/adapter/json.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Reads JSON files and converts them to Phalcon\Config objects.
 
@@ -35,11 +35,11 @@ echo $config->models->metadata;
 
 ```
 
-## Constants
+## 常量
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## 方法
 
 public **__construct** (*mixed* $filePath)
 
