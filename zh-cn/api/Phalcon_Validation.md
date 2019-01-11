@@ -10,11 +10,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Validation'
 
 *implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\ValidationInterface](/3.4/en/api/Phalcon_ValidationInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/validation.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/validation.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Allows to validate data using custom or built-in validators
 
-## Methods
+## 方法
 
 public **getData** ()
 
@@ -114,7 +114,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
-Returns the internal event manager
+返回内部事件管理器
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
