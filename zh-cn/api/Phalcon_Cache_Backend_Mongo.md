@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\Mong
 
 *implements* [Phalcon\Cache\BackendInterface](/3.4/en/api/Phalcon_Cache_BackendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cache/backend/mongo.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cache/backend/mongo.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Allows to cache output fragments, PHP data or raw data to a MongoDb backend
 
@@ -48,7 +48,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## 方法
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](/3.4/en/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
