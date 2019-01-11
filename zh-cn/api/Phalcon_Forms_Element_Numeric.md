@@ -10,11 +10,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Forms\Element\Nume
 
 *implements* [Phalcon\Forms\ElementInterface](/3.4/en/api/Phalcon_Forms_ElementInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/forms/element/numeric.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/forms/element/numeric.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Component INPUT[type=number] for forms
 
-## Methods
+## 方法
 
 public **render** ([*array* $attributes])
 
