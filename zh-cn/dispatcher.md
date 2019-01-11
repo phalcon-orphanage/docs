@@ -6,13 +6,13 @@ layout: default language: 'en' version: '4.0'
 
 <a name='overview'></a>
 
-# Dispatching Controllers
+# 调度控制器
 
 [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
 
 <a name='dispatch-loop'></a>
 
-## The Dispatch Loop
+## 调度循环
 
 This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller dispatcher. The controller files are read, loaded, and instantiated. Then the required actions are executed. If an action forwards the flow to another controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed within [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher):
 
@@ -46,26 +46,26 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 <a name='dispatch-loop-events'></a>
 
-### Dispatch Loop Events
+### 调度循环事件
 
-[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/3.4/en/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
+[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/3.4/en/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. 以下事件被支持︰
 
-| Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Triggered on          |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | --------------------- |
-| beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Yes                 | Listeners             |
-| beforeDispatch       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | Yes                 | Listeners             |
-| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | Yes                 | Listeners/Controllers |
-| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | No                  | Controllers           |
-| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | No                  | Listeners/Controllers |
-| beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                      | Yes                 | Listeners             |
-| beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                           | Yes                 | Listeners             |
-| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Yes                 | Listeners             |
-| afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
-| afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | Yes                 | Listeners/Controllers |
+| 事件名称                 | 触发器                                                                                                                                                                                                            | 可以停止操作吗？ | 触发条件                  |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------- |
+| beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | 是的       | Listeners             |
+| beforeDispatch       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | 是的       | Listeners             |
+| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | 是的       | Listeners/Controllers |
+| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | 否        | 控制器                   |
+| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | 否        | Listeners/Controllers |
+| beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                      | 是的       | Listeners             |
+| beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                           | 是的       | Listeners             |
+| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | 是的       | Listeners             |
+| afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | 否        | Listeners             |
+| afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | 是的       | Listeners/Controllers |
 
 The [INVO](/3.4/en/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/3.4/en/acl)
 
-The following example demonstrates how to attach listeners to this component:
+下面的示例演示如何将侦听器附加到此组件︰
 
 ```php
 <?php
@@ -182,7 +182,7 @@ $this->dispatcher->forward(
 
 A `forward` action accepts the following parameters:
 
-| Parameter    | Description     |
+| Parameter    | 描述              |
 | ------------ | --------------- |
 | `controller` | 要转发的有效控制器名称。    |
 | `action`     | 要转发的有效方法名称。     |
@@ -243,7 +243,7 @@ echo $dispatcher->getModuleName(); // will display properly 'backend'
 
 <a name='preparing-parameters'></a>
 
-## Preparing Parameters
+## 准备参数
 
 Thanks to the hook points provided by [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) you can easily adapt your application to any URL schema; i.e. you might want your URLs look like: `http://example.com/controller/key1/value1/key2/value`. Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to adopt the desired schema:
 
@@ -467,7 +467,7 @@ $di->set(
 
 <a name='preparing-actions-inject-model-instances'></a>
 
-### Inject model instances
+### 注入模型实例
 
 In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically inject model instances.
 
