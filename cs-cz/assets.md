@@ -6,7 +6,7 @@ layout: default language: 'en' version: '4.0'
 
 <a name='overview'></a>
 
-# Assets Management
+# Správa assetů
 
 `Phalcon\Assets` is a component that allows you to manage static resources such as CSS stylesheets or JavaScript libraries in a web application.
 
@@ -14,7 +14,7 @@ layout: default language: 'en' version: '4.0'
 
 <a name='add'></a>
 
-## Adding Resources
+## Přidávání zdrojů
 
 Assets supports two built-in resources: CSS and JavaScripts. You can create other resources if you need. The assets manager internally stores two default collections of resources - one for JavaScript and another for CSS.
 
