@@ -6,9 +6,9 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Router\GroupIn
 
 # Interface **Phalcon\Mvc\Router\GroupInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/router/groupinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/router/groupinterface.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
-## Methods
+## 方法
 
 abstract public **setHostname** (*mixed* $hostname)
 
