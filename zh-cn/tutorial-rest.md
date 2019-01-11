@@ -17,11 +17,11 @@ layout: default language: 'en' version: '4.0'
 
 <a name='definitions'></a>
 
-## 定义的 API
+## 定义 API
 
 该 API 包括以下方法：
 
-| 方法       | URL                      | 操作                                  |
+| 方法       | URL                      | Action                              |
 | -------- | ------------------------ | ----------------------------------- |
 | `GET`    | /api/robots              | 检索所有的机器人                            |
 | `GET`    | /api/robots/search/Astro | 在他们的名字与 'Astro' 机器人搜索               |
@@ -664,6 +664,6 @@ Content-Type: text/html; charset=UTF-8
 
 <a name='conclusion'></a>
 
-## 结论
+## 结语
 
 As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/3.4/en/application-micro) and [PHQL](/3.4/en/db-phql).
