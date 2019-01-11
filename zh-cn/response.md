@@ -6,7 +6,7 @@ layout: default language: 'en' version: '4.0'
 
 <a name='overview'></a>
 
-# Returning Responses
+# 返回的响应
 
 Part of the HTTP cycle is returning responses to clients. [Phalcon\Http\Response](api/Phalcon_Http_Response) is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
@@ -124,11 +124,11 @@ return $response->redirect(
 );
 ```
 
-即使有一个视图与当前操作相关联，它也不会被呈现，因为`重定向`会禁用视图。
+Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
 
 <a name='http-cache'></a>
 
-## HTTP Cache
+## HTTP 缓存
 
 One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 
