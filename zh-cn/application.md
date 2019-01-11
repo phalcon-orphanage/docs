@@ -538,9 +538,9 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 
 ## Application Events
 
-[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/3.4/en/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
+[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/3.4/en/events) (if it is present). Events are triggered using the type `application`. 以下事件被支持︰
 
-| Event Name            | Triggered                                                    |
+| 事件名称                  | 触发器                                                          |
 | --------------------- | ------------------------------------------------------------ |
 | `boot`                | Executed when the application handles its first request      |
 | `beforeStartModule`   | Before initialize a module, only when modules are registered |
@@ -548,7 +548,7 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 | `beforeHandleRequest` | Before execute the dispatch loop                             |
 | `afterHandleRequest`  | After execute the dispatch loop                              |
 
-The following example demonstrates how to attach listeners to this component:
+下面的示例演示如何将侦听器附加到此组件︰
 
 ```php
 <?php
@@ -570,6 +570,6 @@ $eventsManager->attach(
 
 <a name='resources'></a>
 
-## External Resources
+## 外部资源
 
 * [MVC examples on Github](https://github.com/phalcon/mvc)
