@@ -6,7 +6,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Annotations\Reflec
 
 # Class **Phalcon\Annotations\Reflection**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/reflection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/reflection.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Allows to manipulate the annotations reflection in an OO manner
 
@@ -28,7 +28,7 @@ $classAnnotations = $reflection->getClassAnnotations();
 
 ```
 
-## Methods
+## 方法
 
 public **__construct** ([*array* $reflectionData])
 
