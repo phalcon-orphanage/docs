@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '3.4' title: 'Phalcon\Mvc\View\Engine\Volt\Compiler'
+layout: article language: 'en' version: '3.4' title: 'Phalcon\Mvc\View\Engine\Volt\Compiler'
 
 * * *
 
