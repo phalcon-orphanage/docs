@@ -8,11 +8,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\Dialect'
 
 *implements* [Phalcon\Db\DialectInterface](/3.4/en/api/Phalcon_Db_DialectInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/dialect.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/dialect.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This is the base class to each database dialect. This implements common methods to transform intermediate code into its RDBMS related syntax
 
-## 方法
+## Methods
 
 public **registerCustomFunction** (*mixed* $name, *mixed* $customFunction)
 
