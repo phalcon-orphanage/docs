@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Escaper'
 
 *implements* [Phalcon\EscaperInterface](/3.4/en/api/Phalcon_EscaperInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/escaper.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/escaper.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Escapes different kinds of text securing them. By using this component you may prevent XSS attacks.
 
@@ -25,7 +25,7 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 
 ```
 
-## Methods
+## 方法
 
 public **setEncoding** (*mixed* $encoding)
 
