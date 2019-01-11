@@ -6,7 +6,7 @@ layout: default language: 'en' version: '4.0'
 
 <a name='overview'></a>
 
-# Annotations Parser
+# Parser anotací
 
 Je to poprvé, kdy je komponenta parseru anotací napsána v jazyku C pro PHP. `Phalcon\Annotations` je obecná komponenta, která umožňuje snadné analyzování a ukládání anotací do cache v PHP třídách, které jsou požity v aplikaci.
 
@@ -130,7 +130,7 @@ The Factory loader provides more flexibility when dealing with instantiating ann
 
 <a name='reading'></a>
 
-## Reading Annotations
+## Čtení anotací
 
 A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
@@ -166,7 +166,7 @@ The annotation reading process is very fast, however, for performance reasons it
 
 <a name='types'></a>
 
-## Types of Annotations
+## Typy anotací
 
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
@@ -225,13 +225,13 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 <a name='usage'></a>
 
-## Practical Usage
+## Praktické využití
 
 Next we will explain some practical examples of annotations in PHP applications:
 
 <a name='usage-cache'></a>
 
-### Cache Enabler with Annotations
+### Cache povolení pro anotace
 
 Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
 
@@ -346,7 +346,7 @@ class NewsController extends Controller
 
 <a name='usage-access-management'></a>
 
-### Private/Public areas with Annotations
+### Soukromé/veřejné oblasti s anotacemi
 
 You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
@@ -410,7 +410,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## Annotations Adapters
+## Anotační adaptéry
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
@@ -423,12 +423,12 @@ This component makes use of adapters to cache or no cache the parsed and process
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### Implementace vlastních adaptérů
 
 The [Phalcon\Annotations\AdapterInterface](api/Phalcon_Annotations_AdapterInterface) interface must be implemented in order to create your own annotations adapters or extend the existing ones.
 
 <a name='resources'></a>
 
-## External Resources
+## Externí zdroje
 
 * [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
