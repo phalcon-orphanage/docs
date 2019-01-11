@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Filter'
 
 *implements* [Phalcon\FilterInterface](/3.4/en/api/Phalcon_FilterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/filter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/filter.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 The Phalcon\Filter component provides a set of commonly needed data filters. It provides object oriented wrappers to the php filter extension. Also allows the developer to define his/her own filters
 
@@ -24,7 +24,7 @@ $filter->sanitize("!100a019.01a", "float"); // returns "100019.01"
 
 ```
 
-## Constants
+## 常量
 
 *string* **FILTER_EMAIL**
 
@@ -54,7 +54,7 @@ $filter->sanitize("!100a019.01a", "float"); // returns "100019.01"
 
 *string* **FILTER_SPECIAL_CHARS**
 
-## Methods
+## 方法
 
 public **add** (*mixed* $name, *mixed* $handler)
 
