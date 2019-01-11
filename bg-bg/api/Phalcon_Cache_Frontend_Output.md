@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '3.4' title: 'Phalcon\Cache\Frontend\Output'
+layout: article language: 'en' version: '3.4' title: 'Phalcon\Cache\Frontend\Output'
 
 * * *
 
