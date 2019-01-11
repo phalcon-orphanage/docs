@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Http\Request'
 
 *implements* [Phalcon\Http\RequestInterface](/3.4/en/api/Phalcon_Http_RequestInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/request.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/request.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Encapsulates request information for easy and secure access from application controllers.
 
@@ -31,7 +31,7 @@ $request->getLanguages();         // An array of languages the client accepts
 
 ```
 
-## Methods
+## 方法
 
 public **getHttpMethodParameterOverride** ()
 
