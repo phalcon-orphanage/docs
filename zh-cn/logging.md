@@ -16,7 +16,7 @@ layout: default language: 'en' version: '4.0'
 
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch backends if necessary. The adapters supported are:
 
-| Adapter                                                               | Description               |
+| 适配器                                                                   | 描述                        |
 | --------------------------------------------------------------------- | ------------------------- |
 | [Phalcon\Logger\Adapter\File](api/Phalcon_Logger_Adapter_File)     | Logs to a plain text file |
 | [Phalcon\Logger\Adapter\Stream](api/Phalcon_Logger_Adapter_Stream) | Logs to a PHP Streams     |
@@ -25,7 +25,7 @@ This component makes use of adapters to store the logged messages. The use of ad
 
 <a name='adapters-factory'></a>
 
-### Factory
+### 工厂
 
 Loads Logger Adapter class using `adapter` option
 
@@ -222,7 +222,7 @@ The messages are sent to the handlers in the order they were registered.
 
 This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:
 
-| Adapter                                                                     | Description                                              |
+| 适配器                                                                         | 描述                                                       |
 | --------------------------------------------------------------------------- | -------------------------------------------------------- |
 | [Phalcon\Logger\Formatter\Line](api/Phalcon_Logger_Formatter_Line)       | Formats the messages using a one-line string             |
 | [Phalcon\Logger\Formatter\Firephp](api/Phalcon_Logger_Formatter_Firephp) | Formats the messages so that they can be sent to FirePHP |
@@ -241,7 +241,7 @@ Formats the messages using a one-line string. The default logging format is:
 
 You can change the default format using `setFormat()`, this allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
 
-| Variable  | Description                              |
+| Variable  | 描述                                       |
 | --------- | ---------------------------------------- |
 | %message% | The message itself expected to be logged |
 | %date%    | Date the message was added               |
@@ -364,6 +364,6 @@ $logger->error(
 
 <a name='usage-custom'></a>
 
-### Implementing your own adapters
+### 实现自己的适配器
 
 The [Phalcon\Logger\AdapterInterface](api/Phalcon_Logger_AdapterInterface) interface must be implemented in order to create your own logger adapters or extend the existing ones.
