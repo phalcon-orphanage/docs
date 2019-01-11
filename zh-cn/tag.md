@@ -22,7 +22,7 @@ Phalcon offers the `Phalcon\Tag::setDoctype()` helper to set document type of th
 
 Available document type constants in [Phalcon\Tag](api/Phalcon_Tag) namespace are:
 
-| Constant             | Document type          |
+| 常量：                  | Document type          |
 | -------------------- | ---------------------- |
 | HTML32               | HTML 3.4               |
 | HTML401_STRICT       | HTML 4.01 Strict       |
