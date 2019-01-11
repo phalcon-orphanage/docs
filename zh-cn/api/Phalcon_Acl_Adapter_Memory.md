@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Acl\Adapter\Memory
 
 *implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/3.4/en/api/Phalcon_Acl_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Manages ACL lists in memory
 
@@ -77,7 +77,7 @@ foreach ($privateResources as $resource => $actions) {
 
 ```
 
-## 方法
+## Methods
 
 public **__construct** ()
 
@@ -85,7 +85,7 @@ Phalcon\Acl\Adapter\Memory constructor
 
 public **addRole** (*RoleInterface* | *string* $role, [*array* | *string* $accessInherits])
 
-将角色添加到 ACL 列表。第二个参数允许继承访问的数据从其他现有角色的示例：
+Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example:
 
 ```php
 <?php
@@ -105,15 +105,15 @@ Do a role inherit from another existing role
 
 public **isRole** (*mixed* $roleName)
 
-检查角色列表中是否存在的作用
+Check whether role exist in the roles list
 
 public **isResource** (*mixed* $resourceName)
 
-请检查资源列表中是否存在资源
+Check whether resource exist in the resources list
 
 public **addResource** ([Phalcon\Acl\Resource](/3.4/en/api/Phalcon_Acl_Resource) | *string* $resourceValue, *array* | *string* $accessList)
 
-添加到 ACL 列表访问名称的资源可以是特定的操作，通过示例搜索、 更新、 删除等或它们的列表示例：
+Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example:
 
 ```php
 <?php
@@ -147,19 +147,19 @@ $acl->addResource(
 
 public **addResourceAccess** (*mixed* $resourceName, *array* | *string* $accessList)
 
-将访问添加到资源
+Adds access to resources
 
 public **dropResourceAccess** (*mixed* $resourceName, *array* | *string* $accessList)
 
-删除从资源的访问权限
+Removes an access from a resource
 
 protected **_allowOrDeny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, *mixed* $action, [*mixed* $func])
 
-检查是否角色具有访问权限的资源
+Checks if a role has access to a resource
 
 public **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-允许访问角色上的资源，你可以使用 ' *' 作为通配符的示例：
+Allow access to a role on a resource You can use '*' as wildcard Example:
 
 ```php
 <?php
@@ -180,7 +180,7 @@ $acl->allow("*", "*", "browse");
 
 public **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-拒绝访问资源，您可以使用一个角色 ' *' 作为通配符的示例：
+Deny access to a role on a resource You can use '*' as wildcard Example:
 
 ```php
 <?php
@@ -201,7 +201,7 @@ $acl->deny("*", "*", "browse");
 
 public **isAllowed** (*RoleInterface* | *RoleAware* | *string* $roleName, *ResourceInterface* | *ResourceAware* | *string* $resourceName, *mixed* $access, [*array* $parameters])
 
-检查是否允许角色从一个资源访问的行动
+Check whether a role is allowed to access an action from a resource
 
 ```php
 <?php
@@ -224,36 +224,36 @@ Returns the default ACL access level for no arguments provided in isAllowed acti
 
 public **getRoles** ()
 
-以数组形式返回已经注册的角色
+Return an array with every role registered in the list
 
 public **getResources** ()
 
-以数组形式返回已经注册的资源
+Return an array with every resource registered in the list
 
 public **getActiveRole** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
-获取 资源/权限 列表
+Role which the list is checking if it's allowed to certain resource/access
 
 public **getActiveResource** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
-获取角色的可访问资源列表
+Resource which the list is checking if some role can access it
 
 public **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
-获取角色权限类表
+Active access which the list is checking if some role can access it
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
-设置事件管理器
+Sets the events manager
 
 public **getEventsManager** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
-返回内部事件管理器
+Returns the internal event manager
 
 public **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
-设置默认的访问级别（Phalcon\Acl::ALLOW 或者 Phalcon\Acl::DENY）
+Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 
 public **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
-返回默认 ACL 访问级别
+Returns the default ACL access level
