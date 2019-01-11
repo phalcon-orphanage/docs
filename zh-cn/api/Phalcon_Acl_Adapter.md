@@ -36,7 +36,7 @@ public **getEventsManager** ()
 
 public **setDefaultAction** (*mixed* $defaultAccess)
 
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
+设置默认的访问级别（Phalcon\Acl::ALLOW 或者 Phalcon\Acl::DENY）
 
 public **getDefaultAction** ()
 
