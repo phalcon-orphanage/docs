@@ -10,11 +10,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Forms\Form'
 
 *implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface), [Countable](http://php.net/manual/en/class.countable.php), [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/forms/form.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/forms/form.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 This component allows to build forms using an object-oriented interface
 
-## Methods
+## 方法
 
 public **setValidation** (*mixed* $validation)
 
@@ -158,7 +158,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
-Returns the internal event manager
+返回内部事件管理器
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
