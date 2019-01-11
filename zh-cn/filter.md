@@ -6,7 +6,7 @@ layout: default language: 'en' version: '4.0'
 
 <a name='overview'></a>
 
-# Filtering and Sanitizing
+# 过滤和处理
 
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
@@ -18,28 +18,28 @@ The [Phalcon\Filter](api/Phalcon_Filter) component provides a set of commonly us
 
 <a name='types'></a>
 
-## Types of Built-in Filters
+## 类型的内置过滤器
 
 The following are the built-in filters provided by this component:
 
-| Name      | Description                                                                             |
-| --------- | --------------------------------------------------------------------------------------- |
-| absint    | 将值强制转换为整数, 并返回它的绝对值。                                                                    |
-| alphanum  | 除去[a-zA-Z0-9] 之外的所有字符                                                                   |
-| email     | 删除所有字符除了字母, 数字和< 0 >! # $ %,* +,/ =? ^ _ < / 0 > {\ |}~ @。[]”。                         |
-| float     | Remove all characters except digits, dot, plus and minus sign.                          |
-| float!    | 删除除数字、点、加号和减号之外的所有字符, 然后将结果强制转换为浮点型。                                                    |
-| int       | 除去所有字符除了数字，加减号。                                                                         |
-| int!      | 删除除数字、加号和减号之外的所有字符, 并将结果强制转换为整数。                                                        |
-| lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function |
-| string    | 标签和编码HTML实体，包括单引号和双引号。                                                                  |
-| striptags | 应用[strip_tags](http://www.php.net/manual/en/function.strip-tags.php)函数                  |
-| trim      | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function             |
-| upper     | 应用[strtoupper](http://www.php.net/manual/en/function.strtoupper.php)函数                  |
+| Name      | 描述                                                                                            |
+| --------- | --------------------------------------------------------------------------------------------- |
+| absint    | Casts the value as an integer and returns the absolute value of it.                           |
+| alphanum  | Remove all characters except [a-zA-Z0-9]                                                      |
+| email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.             |
+| float     | Remove all characters except digits, dot, plus and minus sign.                                |
+| float!    | Remove all characters except digits, dot, plus and minus sign and cast the result as a float. |
+| int       | Remove all characters except digits, plus and minus sign.                                     |
+| int!      | Remove all characters except digits, plus and minus sign and cast the result as an integer.   |
+| lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function       |
+| string    | Strip tags and encode HTML entities, including single and double quotes.                      |
+| striptags | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function       |
+| trim      | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function                   |
+| upper     | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function       |
 
-请注意，组件在内部使用[filter_var](https://secure.php.net/manual/en/function.filter-var.php)PHP函数。
+Please note that the component uses the [filter_var](https://secure.php.net/manual/en/function.filter-var.php) PHP function internally.
 
-常数是可用的，可以用来定义所需的过滤类型：
+Constants are available and can be used to define the type of filtering required:
 
 ```php
 <?php
@@ -61,7 +61,7 @@ const FILTER_UPPER      = "upper";
 
 ## Sanitizing data
 
-清理数据是将用户或应用程序不需要或不需要的特定字符从值中删除的过程。 通过对输入进行清理，我们可以确保应用程序的完整性是完整的。
+Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input we ensure that application integrity will be intact.
 
 ```php
 <?php
@@ -87,7 +87,7 @@ $filter->sanitize('!100a019.01a', 'float');
 
 ## Sanitizing from Controllers
 
-You can access a [Phalcon\Filter](api/Phalcon_Filter) object from your controllers when accessing `GET` or `POST` input data (through the request object). 第一个参数是要获得的变量的名称; 第二个是应用于它的过滤器。
+You can access a [Phalcon\Filter](api/Phalcon_Filter) object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
 
 ```php
 <?php
@@ -114,9 +114,9 @@ class ProductsController extends Controller
 
 <a name='filtering-action-parameters'></a>
 
-## Filtering Action Parameters
+## 过滤操作参数
 
-下一个例子展示了如何清理控制器动作中的动作参数:
+The next example shows you how to sanitize the action parameters within a controller action:
 
 ```php
 <?php
@@ -161,7 +161,7 @@ $filter->sanitize('  Hello   ', 'trim');
 
 ## Combining Filters
 
-您还可以同时在一个字符串上运行多个过滤器，方法是传递一个过滤器标识符数组作为第二个参数:
+You can also run multiple filters on a string at the same time by passing an array of filter identifiers as the second parameter:
 
 ```php
 <?php
@@ -205,7 +205,7 @@ $filter->add(
 $filtered = $filter->sanitize($possibleMd5, 'md5');
 ```
 
-或者，如果您愿意，您可以在类中实现过滤器:
+Or, if you prefer, you can implement the filter in a class:
 
 ```php
 <?php
@@ -236,7 +236,7 @@ $filteredIp = $filter->sanitize('127.0.0.1', 'ipv4');
 
 ## Complex Sanitizing and Filtering
 
-PHP本身提供了一个您可以使用的优秀过滤器扩展。查看它的文档:[数据过滤PHP文档](http://www.php.net/manual/en/book.filter.php)
+PHP itself provides an excellent filter extension you can use. Check out its documentation: [Data Filtering at PHP Documentation](http://www.php.net/manual/en/book.filter.php)
 
 <a name='custom'></a>
 
