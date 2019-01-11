@@ -22,11 +22,11 @@ Phalcon\Application Constructor
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
-设置事件管理器
+Sets the events manager
 
 public **getEventsManager** ()
 
-返回内部事件管理器
+Returns the internal event manager
 
 public **registerModules** (*array* $modules, [*mixed* $merge])
 
