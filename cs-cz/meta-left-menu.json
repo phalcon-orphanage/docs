@@ -1,11 +1,11 @@
 [
     {
-        "text": "General",
+        "text": "Obecné",
         "level": 1,
         "url": "/introduction"
     },
     {
-        "text": "Release Notes",
+        "text": "Poznámky k vydání",
         "level": 2,
         "url": "https://github.com/phalcon/cphalcon/blob/3.4.x/CHANGELOG.md",
         "external": true
@@ -16,7 +16,7 @@
         "url": ""
     },
     {
-        "text": "Sponsors",
+        "text": "Sponzoři",
         "level": 2,
         "url": "/sponsors"
     },
@@ -26,7 +26,7 @@
         "url": ""
     },
     {
-        "text": "Overview",
+        "text": "Přehled",
         "level": 2,
         "url": "/contributions"
     },
@@ -51,22 +51,22 @@
         "url": "/reproducible-tests"
     },
     {
-        "text": "Testing guide",
+        "text": "Průvodce testováním",
         "level": 2,
         "url": ""
     },
     {
-        "text": "Getting Started",
+        "text": "Začínáme",
         "level": 1,
         "url": ""
     },
     {
-        "text": "Installation",
+        "text": "Instalace",
         "level": 2,
         "url": "/installation"
     },
     {
-        "text": "Webserver Setup",
+        "text": "Instalace webserveru",
         "level": 3,
         "url": "/webserver-setup"
     },
@@ -81,7 +81,7 @@
         "url": "/webserver-xampp"
     },
     {
-        "text": "Environments",
+        "text": "Prostředí",
         "level": 1,
         "url": ""
     },
@@ -101,12 +101,12 @@
         "url": "/environments-vagrant"
     },
     {
-        "text": "Development Tools",
+        "text": "Vývojářské nástroje",
         "level": 1,
         "url": ""
     },
     {
-        "text": "Installation",
+        "text": "Instalace",
         "level": 2,
         "url": "/devtools-installation"
     },
@@ -171,12 +171,12 @@
         "url": "/application-micro"
     },
     {
-        "text": "Cli",
+        "text": "Command Line Interface (Cli)",
         "level": 3,
         "url": "/application-cli"
     },
     {
-        "text": "DI Container",
+        "text": "DI kontejner",
         "level": 2,
         "url": "/di"
     },
@@ -196,7 +196,7 @@
         "url": "/cache"
     },
     {
-        "text": "Config",
+        "text": "Konfigurace",
         "level": 2,
         "url": "/config"
     },
@@ -286,7 +286,7 @@
         "url": "/db-models-relationships"
     },
     {
-        "text": "Transactions",
+        "text": "Transakce",
         "level": 3,
         "url": "/db-models-transactions"
     },
@@ -306,12 +306,12 @@
         "url": "/db-pagination"
     },
     {
-        "text": "Front End",
+        "text": "Frontend",
         "level": 1,
         "url": ""
     },
     {
-        "text": "Assets",
+        "text": "Assety",
         "level": 2,
         "url": "/assets"
     },
@@ -346,7 +346,7 @@
         "url": "/volt"
     },
     {
-        "text": "Business Logic",
+        "text": "Aplikační logika",
         "level": 1,
         "url": ""
     },
@@ -356,7 +356,7 @@
         "url": "/acl"
     },
     {
-        "text": "Annotations",
+        "text": "Anotace",
         "level": 2,
         "url": "/annotations"
     },
@@ -381,7 +381,7 @@
         "url": "/filter"
     },
     {
-        "text": "Routing",
+        "text": "Routování",
         "level": 2,
         "url": "/routing"
     },
