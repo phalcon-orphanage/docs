@@ -6,11 +6,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Text'
 
 # Abstract class **Phalcon\Text**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/text.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/text.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Provides utilities to work with texts
 
-## Constants
+## 常量
 
 *integer* **RANDOM_ALNUM**
 
@@ -24,7 +24,7 @@ Provides utilities to work with texts
 
 *integer* **RANDOM_DISTINCT**
 
-## Methods
+## 方法
 
 public static **camelize** (*mixed* $str, [*mixed* $delimiter])
 
