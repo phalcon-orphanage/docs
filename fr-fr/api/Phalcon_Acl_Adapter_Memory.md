@@ -10,9 +10,9 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Acl\Adapter\Memory
 
 *implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/3.4/en/api/Phalcon_Acl_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Source sur GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-Gère les listes ACL dans la mémoire
+Manages ACL lists in memory
 
 ```php
 <?php
@@ -77,7 +77,7 @@ foreach ($privateResources as $resource => $actions) {
 
 ```
 
-## Méthodes
+## Methods
 
 public **__construct** ()
 
@@ -85,7 +85,7 @@ Phalcon\Acl\Adapter\Memory constructor
 
 public **addRole** (*RoleInterface* | *string* $role, [*array* | *string* $accessInherits])
 
-Ajoute un rôle à la liste de contrôle d'accès. Le deuxième paramètre permet d'hériter d'accéder aux données à partir d'autres rôles existants Exemple:
+Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example:
 
 ```php
 <?php
@@ -99,21 +99,21 @@ $acl->addRole("administrator", "consultant");
 
 ```
 
-public **addInherit** (*mixte* $roleName, *mixte* $roleToInherit)
+public **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
 
-Faire un rôle hériter d'un autre rôle existant
+Do a role inherit from another existing role
 
 public **isRole** (*mixed* $roleName)
 
-Vérifier si le rôle existe dans la liste des rôles
+Check whether role exist in the roles list
 
 public **isResource** (*mixed* $resourceName)
 
-Vérifier si la ressource existe dans la liste des ressources
+Check whether resource exist in the resources list
 
 public **addResource** ([Phalcon\Acl\Resource](/3.4/en/api/Phalcon_Acl_Resource) | *string* $resourceValue, *array* | *string* $accessList)
 
-Ajoute une ressource à la liste des listes de contrôle d'accès Les noms d'accès peuvent être une action particulière, par exemple rechercher, mettre à jour, supprimer, etc ou une liste d'entre eux Exemple:
+Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example:
 
 ```php
 <?php
@@ -180,7 +180,7 @@ $acl->allow("*", "*", "browse");
 
 public **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-Refuser l'accès à un rôle sur une ressource Vous pouvez utiliser '*' comme caractère générique Exemple:
+Deny access to a role on a resource You can use '*' as wildcard Example:
 
 ```php
 <?php
@@ -201,7 +201,7 @@ $acl->deny("*", "*", "browse");
 
 public **isAllowed** (*RoleInterface* | *RoleAware* | *string* $roleName, *ResourceInterface* | *ResourceAware* | *string* $resourceName, *mixed* $access, [*array* $parameters])
 
-Vérifier si un rôle est autorisé à accéder à une action à partir d'une ressource
+Check whether a role is allowed to access an action from a resource
 
 ```php
 <?php
