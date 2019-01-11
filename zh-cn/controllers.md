@@ -6,7 +6,7 @@ layout: default language: 'en' version: '4.0'
 
 <a name='overview'></a>
 
-# Overview
+# 概述
 
 <a name='using'></a>
 
@@ -16,7 +16,7 @@ Actions are methods on a controller that handle requests. By default all public 
 
 For instance, when you access a URL like this: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon by default will decompose each part like this:
 
-| Description           | Slug           |
+| 描述                    | Slug           |
 | --------------------- | -------------- |
 | **Phalcon Directory** | blog           |
 | **Controller**        | posts          |
