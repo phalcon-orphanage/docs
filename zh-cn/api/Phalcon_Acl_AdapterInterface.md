@@ -6,29 +6,29 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Acl\AdapterInterfa
 
 # Interface **Phalcon\Acl\AdapterInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/adapterinterface.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
-## 方法
+## Methods
 
 abstract public **setDefaultAction** (*mixed* $defaultAccess)
 
-设置默认的访问级别（Phalcon\Acl::ALLOW 或者 Phalcon\Acl::DENY）
+Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 
 abstract public **getDefaultAction** ()
 
-返回默认 ACL 访问级别
+Returns the default ACL access level
 
 abstract public **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
 
-设置任何参数，如果存在方法 accessKey 在讲课行动中提供的默认访问级别 （Phalcon\\Acl::ALLOW 或 Phalcon\\Acl::DENY）
+Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY) for no arguments provided in isAllowed action if there exists func for accessKey
 
 abstract public **getNoArgumentsDefaultAction** ()
 
-如果存在用于 accessKey 的函数, 则返回 isAllowed 操作中提供的任何参数的默认 ACL 访问级别。
+Returns the default ACL access level for no arguments provided in isAllowed action if there exists func for accessKey
 
 abstract public **addRole** (*mixed* $role, [*mixed* $accessInherits])
 
-将角色添加到 ACL 列表。第二个参数允许继承其他现有角色的访问数据
+Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role
 
 abstract public **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
 
@@ -36,52 +36,52 @@ Do a role inherit from another existing role
 
 abstract public **isRole** (*mixed* $roleName)
 
-检查角色列表中是否存在的作用
+Check whether role exist in the roles list
 
 abstract public **isResource** (*mixed* $resourceName)
 
-请检查资源列表中是否存在资源
+Check whether resource exist in the resources list
 
 abstract public **addResource** (*mixed* $resourceObject, *mixed* $accessList)
 
-将资源添加到 ACL 列表访问名称可以是特定的操作, 例如搜索、更新、删除等或列表。
+Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them
 
 abstract public **addResourceAccess** (*mixed* $resourceName, *mixed* $accessList)
 
-将访问添加到资源
+Adds access to resources
 
 abstract public **dropResourceAccess** (*mixed* $resourceName, *mixed* $accessList)
 
-删除从资源的访问权限
+Removes an access from a resource
 
 abstract public **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-允许角色访问资源
+Allow access to a role on a resource
 
 abstract public **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
-禁止角色访问资源
+Deny access to a role on a resource
 
 abstract public **isAllowed** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*array* $parameters])
 
-检查是否允许角色从一个资源访问的行动
+Check whether a role is allowed to access an action from a resource
 
 abstract public **getActiveRole** ()
 
-列表检查是否它允许对某些资源/访问的作用
+Returns the role which the list is checking if it's allowed to certain resource/access
 
 abstract public **getActiveResource** ()
 
-如果某个角色可以访问它，则返回列表正在检查的资源
+返回列表某个角色可以访问的资源(!!)
 
 abstract public **getActiveAccess** ()
 
-返回列表正在检查的访问, 如果某个角色可以访问它
+返回列表正在检查的访问, 如果某个角色可以访问它(!!!!翻译可能错误)
 
 abstract public **getRoles** ()
 
-以数组形式返回已经注册的角色
+Return an array with every role registered in the list
 
 abstract public **getResources** ()
 
-以数组形式返回已经注册的资源
+Return an array with every resource registered in the list
