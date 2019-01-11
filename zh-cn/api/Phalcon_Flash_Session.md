@@ -10,11 +10,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Flash\Session'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\FlashInterface](/3.4/en/api/Phalcon_FlashInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/flash/session.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/flash/session.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Temporarily stores the messages in session, then messages can be printed in the next request
 
-## Methods
+## 方法
 
 protected **_getSessionMessages** (*mixed* $remove, [*mixed* $type])
 
