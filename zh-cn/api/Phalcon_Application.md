@@ -10,11 +10,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Application'
 
 *implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/application.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/application.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
-## Methods
+## 方法
 
 public **__construct** ([[Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector])
 
@@ -22,11 +22,11 @@ Phalcon\Application Constructor
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+设置事件管理器
 
 public **getEventsManager** ()
 
-Returns the internal event manager
+返回内部事件管理器
 
 public **registerModules** (*array* $modules, [*mixed* $merge])
 
