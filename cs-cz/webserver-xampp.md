@@ -12,15 +12,15 @@ layout: default language: 'en' version: '4.0'
 
 <a name='phalcon'></a>
 
-## Download the right version of Phalcon
+## Stažení správné verze Phalcon frameworku
 
 XAMPP je vždy vydáván jako 32bitová verze Apache a PHP. Musíte tedy stáhnout x86 verzi Phalcon frameworku pro Windows ze sekce "Stažení".
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+Po stažení knihovny Phalcon frameworku budete mít ZIP soubor podobný ukázanému níže:
 
 ![](/assets/images/content/webserver-xampp-1.png)
 
-Extract the library from the archive to get the Phalcon DLL:
+Extrahujte knihovnu z archivu a budete mít Phalcon framework jako DLL soubor:
 
 ![](/assets/images/content/webserver-xampp-2.png)
 
@@ -28,13 +28,13 @@ Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have ins
 
 ![](/assets/images/content/webserver-xampp-3.png)
 
-Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Append at the end of the file:
+Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. Soubor může být upraven v libovolném textovém editoru. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Přidejte následující řádek na konec souboru:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-and save it.
+a uložte soubor.
 
 ![](/assets/images/content/webserver-xampp-4.png)
 
@@ -54,7 +54,7 @@ Pokud vidíte verzi Phalcon frameworku ve výstupu `phpinfo()`, gratulujeme. Nyn
 
 <a name='screencast'></a>
 
-## Screencast
+## Video
 
 Následující video Vás provede krok za krokem instalací Phalcon frameworku pro Windows:
 
@@ -68,7 +68,7 @@ Následující video Vás provede krok za krokem instalací Phalcon frameworku p
 
 <a name='related'></a>
 
-## Related Guides
+## Související průvodci
 
 * [General Installation](/3.4/en/installation)
-* [Installation on WAMP](/3.4/en/webserver-wamp)
+* [Instalace: WAMP](/3.4/en/webserver-wamp)
