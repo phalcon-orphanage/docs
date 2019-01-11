@@ -37,7 +37,7 @@ echo $config->path('test.parent.property');                 // displays 1
 
 ## 工厂
 
-使用 `adapter` 选项加载配置适配器类，如果没有扩展提供，它将被添加到 `文件的路径`
+Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
 
 ```php
 <?php
@@ -54,7 +54,7 @@ $options = [
 
 <a name='native-arrays'></a>
 ## Native Arrays
-The first example shows how to convert native arrays into [Phalcon\Config](api/Phalcon_Config) objects. 此选项提供了最佳性能，因为在此请求时没有读取文件。
+The first example shows how to convert native arrays into [Phalcon\Config](api/Phalcon_Config) objects. This option offers the best performance since no files are read during this request.
 
 ```php
 <?php
@@ -84,7 +84,7 @@ echo $config->database->username, "\n";
 echo $config->mysetting, "\n";
 ```
 
-如果你想要更好地组织你的项目你可以在另一个文件中保存该数组，然后读取它。
+If you want to better organize your project you can save the array in another file and then read it.
 
 ```php
 <?php
@@ -100,7 +100,7 @@ $config = new Config($settings);
 
 ## 文件适配器
 
-可用的适配器是：
+The adapters available are:
 
 | 类                                                                 | 描述                                               |
 | ----------------------------------------------------------------- | ------------------------------------------------ |
@@ -113,7 +113,7 @@ $config = new Config($settings);
 
 ## 读取 INI 文件
 
-Ini 文件是常见的方式来存储设置。 [Phalcon\Config](api/Phalcon_Config) uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
+Ini files are a common way to store settings. [Phalcon\Config](api/Phalcon_Config) uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
 
 ```ini
 [database]
@@ -132,7 +132,7 @@ viewsDir       = '../app/views/'
 metadata.adapter  = 'Memory'
 ```
 
-您可以读取文件，如下所示：
+You can read the file as follows:
 
 ```php
 <?php
@@ -183,7 +183,7 @@ $config->merge($config2);
 print_r($config);
 ```
 
-上面的代码产生以下内容：
+The above code produces the following:
 
 ```bash
 Phalcon\Config Object
@@ -200,13 +200,13 @@ Phalcon\Config Object
 )
 ```
 
-有更多的适配器可供此 [Phalcon incubaror](https://github.com/phalcon/incubator) 中的组件
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
 
 <a name='nested-configuration'></a>
 
 ## 嵌套的配置
 
-您可以使用`Phalcon\Config::path`方法轻松访问嵌套的配置值。 这种方法允许获取值，而不考虑路径的某些部分不存在。 让我们看看一个例子：
+您可以使用`Phalcon\Config::path`方法轻松访问嵌套的配置值。 这种方法允许获取值，而不考虑路径的某些部分不存在。 Let's look at an example:
 
 ```php
 <?php
@@ -299,7 +299,7 @@ $di->set(
 );
 ```
 
-现在在您的控制器可以访问您的配置通过使用依赖注入功能使用名称 `config` 像下面的代码：
+Now in your controller you can access your configuration by using dependency injection feature using name `config` like following code:
 
 ```php
 <?php
