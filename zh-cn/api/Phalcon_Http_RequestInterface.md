@@ -6,9 +6,9 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Http\RequestInterf
 
 # Interface **Phalcon\Http\RequestInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/requestinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/requestinterface.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
-## Methods
+## 方法
 
 abstract public **get** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue])
 
