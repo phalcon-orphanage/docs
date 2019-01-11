@@ -736,7 +736,7 @@ $di->set(
 
 <a name='properties-injection'></a>
 
-#### 属性注入
+#### 采用属性的方式注入
 
 一个不太常见的策略是依赖关系或参数直接注入的类的公共属性：
 
@@ -799,7 +799,7 @@ $di->set(
 <table>
   <tr>
     <th>
-      类型
+      Type
     </th>
     
     <th>
@@ -860,7 +860,7 @@ $di->set(
 
 <a name='array-syntax'></a>
 
-### 数组语法
+### 数组方式
 
 数组语法也可以获取已经注册的服务：
 
@@ -967,12 +967,12 @@ $component = $di->get(
 
 ### 事件
 
-[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/3.4/en/events) if it is present. 事件被触发使用类型 'di'。 一些事件可以停止操作，当返回布尔值 false 时。 支持以下事件：
+[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/3.4/en/events) if it is present. 事件被触发使用类型 'di'。 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
 
 | 事件名称                 | 触发器                            | 可以停止操作吗？ |   触发条件    |
 | -------------------- | ------------------------------ |:--------:|:---------:|
-| beforeServiceResolve | 触发之前解决服务。侦听器接收服务名称和传递给它的参数。    |    No    | Listeners |
-| afterServiceResolve  | 触发后决心服务。侦听器接收服务名称、 实例和传递给它的参数。 |    No    | Listeners |
+| beforeServiceResolve | 触发之前解决服务。侦听器接收服务名称和传递给它的参数。    |    否     | Listeners |
+| afterServiceResolve  | 触发后决心服务。侦听器接收服务名称、 实例和传递给它的参数。 |    否     | Listeners |
 
 <a name='shared-services'></a>
 
@@ -1095,7 +1095,7 @@ You can take advantage of this, always instantiating your classes via the servic
 
 <a name='automatic-injecting-di-itself'></a>
 
-## Automatic Injecting of the DI itself
+## 从DI本身自动注入
 
 If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates, to do this, you need to implement the [Phalcon\Di\InjectionAwareInterface](api/Phalcon_Di_InjectionAwareInterface) in your classes:
 
@@ -1241,30 +1241,30 @@ Although you can register services with the names you want, Phalcon has a severa
 
 | 服务名称               | 描述               | 默认                                                                                     | 是否共享 |
 | ------------------ | ---------------- | -------------------------------------------------------------------------------------- |:----:|
-| assets             | 资源管理器            | [Phalcon\Assets\Manager](api/Phalcon_Assets_Manager)                                 | Yes  |
-| annotations        | 注释语法分析器          | [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory)        | Yes  |
-| cookies            | HTTP Cookie 管理服务 | [Phalcon\Http\Response\Cookies](api/Phalcon_Http_Response_Cookies)                  | Yes  |
-| crypt              | 加密解密数据           | [Phalcon\Crypt](api/Phalcon_Crypt)                                                    | Yes  |
-| db                 | 低级数据库连接服务        | [Phalcon\Db](api/Phalcon_Db)                                                          | Yes  |
-| dispatcher         | 调度服务控制器          | [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)                                 | Yes  |
-| eventsManager      | 事件管理服务           | [Phalcon\Events\Manager](api/Phalcon_Events_Manager)                                 | Yes  |
-| escaper            | 内容的过滤筛选          | [Phalcon\Escaper](api/Phalcon_Escaper)                                                | Yes  |
-| flash              | 闪存的消息传递服务        | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)                                     | Yes  |
-| flashSession       | Flash 会话消息服务     | [Phalcon\Flash\Session](api/Phalcon_Flash_Session)                                   | Yes  |
-| filter             | 输入过滤服务           | [Phalcon\Filter](api/Phalcon_Filter)                                                  | Yes  |
-| modelsCache        | 模型缓存的缓存后端        | 无                                                                                      |  No  |
-| modelsManager      | 模型管理服务           | [Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc_Model_Manager)                          | Yes  |
-| modelsMetadata     | 模型元数据服务          | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)         | Yes  |
-| request            | HTTP 请求环境服务      | [Phalcon\Http\Request](api/Phalcon_Http_Request)                                     | Yes  |
-| response           | HTTP 响应环境服务      | [Phalcon\Http\Response](api/Phalcon_Http_Response)                                   | Yes  |
-| router             | 路由服务             | [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router)                                         | Yes  |
-| security           | 安全助手             | [Phalcon\Security](api/Phalcon_Security)                                              | Yes  |
-| session            | 会话服务             | [Phalcon\Session\Adapter\Files](api/Phalcon_Session_Adapter_Files)                  | Yes  |
-| sessionBag         | 会话包服务            | [Phalcon\Session\Bag](api/Phalcon_Session_Bag)                                       | Yes  |
-| tag                | 生成的 HTML 助手      | [Phalcon\Tag](api/Phalcon_Tag)                                                        | Yes  |
-| transactionManager | 模型事务管理器服务        | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) | Yes  |
-| url                | URL 生成器服务        | [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)                                               | Yes  |
-| viewsCache         | 视图片段缓存后端         | 无                                                                                      |  No  |
+| assets             | 资源管理器            | [Phalcon\Assets\Manager](api/Phalcon_Assets_Manager)                                 |  是的  |
+| annotations        | 注释语法分析器          | [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory)        |  是的  |
+| cookies            | HTTP Cookie 管理服务 | [Phalcon\Http\Response\Cookies](api/Phalcon_Http_Response_Cookies)                  |  是的  |
+| crypt              | 加密解密数据           | [Phalcon\Crypt](api/Phalcon_Crypt)                                                    |  是的  |
+| db                 | 低级数据库连接服务        | [Phalcon\Db](api/Phalcon_Db)                                                          |  是的  |
+| dispatcher         | 调度服务控制器          | [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)                                 |  是的  |
+| eventsManager      | 事件管理服务           | [Phalcon\Events\Manager](api/Phalcon_Events_Manager)                                 |  是的  |
+| escaper            | 内容的过滤筛选          | [Phalcon\Escaper](api/Phalcon_Escaper)                                                |  是的  |
+| flash              | 闪存的消息传递服务        | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)                                     |  是的  |
+| flashSession       | Flash 会话消息服务     | [Phalcon\Flash\Session](api/Phalcon_Flash_Session)                                   |  是的  |
+| filter             | 输入过滤服务           | [Phalcon\Filter](api/Phalcon_Filter)                                                  |  是的  |
+| modelsCache        | 模型缓存的缓存后端        | 无                                                                                      |  否   |
+| modelsManager      | 模型管理服务           | [Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc_Model_Manager)                          |  是的  |
+| modelsMetadata     | 模型元数据服务          | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)         |  是的  |
+| request            | HTTP 请求环境服务      | [Phalcon\Http\Request](api/Phalcon_Http_Request)                                     |  是的  |
+| response           | HTTP 响应环境服务      | [Phalcon\Http\Response](api/Phalcon_Http_Response)                                   |  是的  |
+| router             | 路由服务             | [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router)                                         |  是的  |
+| security           | 安全助手             | [Phalcon\Security](api/Phalcon_Security)                                              |  是的  |
+| session            | 会话服务             | [Phalcon\Session\Adapter\Files](api/Phalcon_Session_Adapter_Files)                  |  是的  |
+| sessionBag         | 会话包服务            | [Phalcon\Session\Bag](api/Phalcon_Session_Bag)                                       |  是的  |
+| tag                | 生成的 HTML 助手      | [Phalcon\Tag](api/Phalcon_Tag)                                                        |  是的  |
+| transactionManager | 模型事务管理器服务        | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) |  是的  |
+| url                | URL 生成器服务        | [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)                                               |  是的  |
+| viewsCache         | 视图片段缓存后端         | 无                                                                                      |  否   |
 
 <a name='implementing-your-own-di'></a>
 
