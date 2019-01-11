@@ -6,11 +6,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Tag'
 
 # Class **Phalcon\Tag**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/tag.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/tag.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Phalcon\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is an abstract class that you can extend to add more helpers.
 
-## Constants
+## 常量
 
 *integer* **HTML32**
 
@@ -34,7 +34,7 @@ Phalcon\Tag is designed to simplify building of HTML tags. It provides a set of 
 
 *integer* **XHTML5**
 
-## Methods
+## 方法
 
 public static *EscaperInterface* **getEscaper** (*array* $params)
 
