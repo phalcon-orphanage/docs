@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Cli\Dispatcher'
 
 *implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](/3.4/en/api/Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherInterface](/3.4/en/api/Phalcon_Cli_DispatcherInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cli/dispatcher.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cli/dispatcher.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.
 
@@ -32,7 +32,7 @@ $handle = $dispatcher->dispatch();
 
 ```
 
-## Constants
+## 常量
 
 *integer* **EXCEPTION_NO_DI**
 
@@ -46,7 +46,7 @@ $handle = $dispatcher->dispatch();
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Methods
+## 方法
 
 public **setTaskSuffix** (*mixed* $taskSuffix)
 
@@ -110,11 +110,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](/3.4/en/api/Phalcon_Dispatcher)
 
-Sets the events manager
+设置事件管理器
 
 public **getEventsManager** () inherited from [Phalcon\Dispatcher](/3.4/en/api/Phalcon_Dispatcher)
 
-Returns the internal event manager
+返回内部事件管理器
 
 public **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\Dispatcher](/3.4/en/api/Phalcon_Dispatcher)
 
