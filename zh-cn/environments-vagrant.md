@@ -6,7 +6,7 @@ layout: default language: 'en' version: '4.0'
 
 <a name='overview'></a>
 
-# Overview
+# 概述
 
 Phalcon Box uses the default **phalcon/xenial64** box from [Vagrant Cloud](https://atlas.hashicorp.com/phalconphp/boxes/xenial64/) for compatibility. If you choose to use a 64-bit ISO you may need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `AMD-V`, `Intel VT-x` or `VIA VT`.
 
@@ -395,7 +395,7 @@ Once the site has been added, run the `vagrant reload --provision` command from 
 
 <a name='daily-usage-environment-variables'></a>
 
-### Environment variables
+### 环境变量
 
 <a name='daily-usage-environment-global-variables'></a>
 
@@ -589,7 +589,7 @@ By default, Phalcon Box redirects all PHP emails to [MailHog](https://github.com
 
 <a name='troubleshooting'></a>
 
-## Troubleshooting
+## 疑难解答
 
 **Problem:**
 
