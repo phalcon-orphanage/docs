@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Di'
 
 *implements* [Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/di.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/di.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Phalcon\Di is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.
 
@@ -16,7 +16,7 @@ Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the diff
 
 Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.
 
-Additionally, this pattern increases testability in the code, thus making it less prone to errors.
+另外，这种模式会增加可测试性的代码，从而使它不容易出错。
 
 ```php
 <?php
@@ -41,7 +41,7 @@ $request = $di->getRequest();
 
 ```
 
-## Methods
+## 方法
 
 public **__construct** ()
 
@@ -53,7 +53,7 @@ Sets the internal event manager
 
 public **getInternalEventsManager** ()
 
-Returns the internal event manager
+返回内部事件管理器
 
 public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
