@@ -6,7 +6,7 @@ layout: default language: 'en' version: '4.0'
 
 <a name='overview'></a>
 
-# 总览
+# 概述
 
 Phalcon Compose 是社区驱动的，为Phalcon项目打造的，在Docker运行的样板开发环境。 其目的是，使它更易于引导Phalcon应用和在开发或生产环境中运行它们。
 
@@ -40,7 +40,7 @@ Phalcon Compose 是社区驱动的，为Phalcon项目打造的，在Docker运行
 
 <a name='installation'></a>
 
-## 安装
+## Installation
 
 <a name='installation-composer'></a>
 
@@ -52,7 +52,7 @@ Phalcon Compose 是社区驱动的，为Phalcon项目打造的，在Docker运行
 composer create-project phalcon/compose --prefer-dist <folder name>
 ```
 
-您的输出应该与此类似：
+Your output should be similar to this:
 
 ```php
 Example
@@ -72,7 +72,7 @@ Generating autoload files
 
 ### 使用 Git
 
-另一种方法来初始化您的项目是通过Git。
+Another way to initialize your project is with Git.
 
 ```bash
  git clone git@github.com:phalcon/phalcon-compose.git
@@ -80,13 +80,13 @@ Generating autoload files
 
 <h5 class='alert alert-warning'>Make sure that you copy <code>variables.env.example</code> to <code>variables.env</code> and adjust the settings in that file </h5>
 
-将您Phalcon的应用程序，添加到 `application` 文件夹。
+Add your Phalcon Application into `application` folder.
 
 <a name='configuration'></a>
 
 ## 配置
 
-添加`Phalcon.local` （或您首选的主机名 `）到您的 <o>/etc/hosts` 文件，如下所示：
+Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as follows:
 
 ```bash
 127.0.0.1 www.phalcon.local phalcon.local
@@ -94,15 +94,15 @@ Generating autoload files
 
 <a name='usage'></a>
 
-## 用法
+## 使用
 
-你现在可以建立、 创建、 启动容器，并将容器附加到环境中以供应用程序使用。若要生成容器，请在项目的根目录下，使用以下命令：
+You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
 
 ```php
 docker-compose build
 ```
 
-要启动应用程序并在后台运行容器，可以在项目的根目录内，使用以下命令：
+To start the application and run the containers in the background, use following command inside project root:
 
 ```bash
 # You can use here your prefered project name with "-p my-app" parameter
@@ -121,24 +121,24 @@ Now you can now launch your application in your browser visiting `http://phalcon
 
 ## 设置
 
-如果您的应用程序使用文件缓存，或将日志写入到文件，你可以设置你的缓存和日志文件夹，如下所示：
+If your application uses a file cache or writes logs to files, you can set up your cache and log folders as follows:
 
 | 目录    | 路径               |
 | ----- | ---------------- |
 | Cache | `/project/cache` |
-| Logs  | `/project/log`   |
+| 日志    | `/project/log`   |
 
 <a name='logs'></a>
 
 ## 日志
 
-对于大多数容器，您可以使用 `docker logs 1` 命令，访问在您的主机上的日志。
+For most containers you can access the logs using the `docker logs <container_name>` command in your host machine.
 
 <a name='environment-variables'></a>
 
 ## 环境变量
 
-你可以通过编辑 `variables.env` 文件，从外部文件传递多个环境变量到服务容器。
+You can pass multiple environment variables from an external file to a service's containers by editing the `variables.env` file.
 
 <a name='environment-variables-web'></a>
 
@@ -170,13 +170,13 @@ Now you can now launch your application in your browser visiting `http://phalcon
 | `PMA_PASSWORD`     | 定义密码用于配置身份验证方法。                                             | secret  |
 | `PMA_ABSOLUTE_URI` | 完全限定的路径 (例如 https://pma.example.net/) 在反向代理使 phpMyAdmin 可用。 |         |
 
-*也可以阅读*</br> * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker</br> * https://docs.phpmyadmin.net/en/latest/config.html#config</br> * https://docs.phpmyadmin.net/en/latest/setup.html
+*See also* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
 
 <a name='xdebug'></a>
 
 ## Xdebug 远程调试器 (PhpStorm)
 
-出于调试目的，您可以设置 Xdebug 通过传递所需的参数 （见 variables.env）。
+For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
 | 环境变量                         | 描述                                                       | 默认   |
 | ---------------------------- | -------------------------------------------------------- | ---- |
@@ -185,7 +185,7 @@ Now you can now launch your application in your browser visiting `http://phalcon
 | `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`.           | Off  |
 | `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`.        | Off  |
 
-*注意*你可以找到你本地的 IP 地址，如下所示：
+*NOTE* You can find your local IP address as follows:
 
 ```bash
 # Linux/MacOS
@@ -203,7 +203,7 @@ ipconfig
 
 ### 启动或链接错误
 
-如果你有任何启动问题，您可以尝试重新生成应用程序容器。那样将不会有数据丢失，它是安全的重置：。
+If you got any startup issues you can try to rebuild app container. There will be no loss of data., it is a safe reset:
 
 ```bash
 docker-compose stop
@@ -216,7 +216,7 @@ docker-compose up -d
 
 ### 完全重置
 
-要重置所有容器，请删除所有数据 （mysql、 elasticsearch 等），但不是 `application` 文件夹中的项目文件：
+To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in `application` folder:
 
 ```bash
 docker-compose stop
@@ -229,7 +229,7 @@ docker-compose up -d
 
 ### 更新依赖项
 
-有时，基础的镜像 (例如 `phalconphp/php-apache:ubuntu-16.04`) 已经更新。 Phalcon Compose 取决于这些镜像. 你因此将需要更新它们，它始终是好事，确保您有可用的最新功能。 对这些镜像的从属容器，将需要更新和重建：
+Sometimes the base images (for example `phalconphp/php-apache:ubuntu-16.04`) are updated. Phalcon Compose depends on these images. You will therefore need to update them and it is always a good thing to do so to ensure that you have the latest functionality available. The dependent containers to these images will need to be updated and rebuilt:
 
 ```bash
 docker pull mongo:3.4
@@ -244,15 +244,15 @@ docker pull elasticsearch:5.2-alpine
 docker pull phalconphp/php-apache:ubuntu-16.04
 ```
 
-Linux/苹果 Mac 用户可以使用 `make` 执行任务：
+Linux/MacOS users can use `make` to perform the task:
 
 ```bash
 make pull
 ```
 
-然后你必须重置所有容器、 删除所有数据，重建服务并重新启动应用程序。
+Then you have to reset all containers, delete all data, rebuild services and restart application.
 
-Linux/苹果 Mac 用户可以使用 `make` 执行任务：
+Linux/MacOS users can use `make` to perform the task:
 
 ```bash
 make reset
