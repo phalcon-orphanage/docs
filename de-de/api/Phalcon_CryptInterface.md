@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '3.4' title: 'Phalcon\CryptInterface'
+layout: article language: 'en' version: '3.4' title: 'Phalcon\CryptInterface'
 
 * * *
 
