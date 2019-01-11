@@ -6,9 +6,9 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Paginator\AdapterI
 
 # Interface **Phalcon\Paginator\AdapterInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/paginator/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/paginator/adapterinterface.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
-## Methods
+## 方法
 
 abstract public **setCurrentPage** (*mixed* $page)
 
