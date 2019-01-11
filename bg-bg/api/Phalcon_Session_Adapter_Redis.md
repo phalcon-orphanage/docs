@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '3.4' title: 'Phalcon\Session\Adapter\Redis'
+layout: article language: 'en' version: '3.4' title: 'Phalcon\Session\Adapter\Redis'
 
 * * *
 
