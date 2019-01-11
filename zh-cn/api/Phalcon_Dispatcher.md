@@ -8,11 +8,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Dispatcher'
 
 *implements* [Phalcon\DispatcherInterface](/3.4/en/api/Phalcon_DispatcherInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/dispatcher.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/dispatcher.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers.
 
-## Constants
+## 常量
 
 *integer* **EXCEPTION_NO_DI**
 
@@ -26,7 +26,7 @@ This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. Th
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Methods
+## 方法
 
 public **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
 
@@ -38,11 +38,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+设置事件管理器
 
 public **getEventsManager** ()
 
-Returns the internal event manager
+返回内部事件管理器
 
 public **setActionSuffix** (*mixed* $actionSuffix)
 
