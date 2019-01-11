@@ -186,13 +186,14 @@ class Robots extends Model
 
 <a name='parameters'></a>
 
-#### 有参数的关联关系
+#### Relationships with parameters
 
-根据我们的应用程序的需要，我们可能希望将数据存储在一个表中，描述不同的行为。 例如，您可能想要只有一个名为` parts `的表格，它的字段`type</0，描述该部分的类型。</p>
+Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance you might want to only have a table called `parts` which has a field `type` describing the type of the part.
 
-<p>使用关系，我们只能得到与我们的机器人相关的部分。在我们的关系中定义约束允许我们让模型完成所有的工作。</p>
+Using relationships, we can get only those parts that relate to our Robot that are of certain type. Defining that constraint in our relationship allows us to let the model do all the work.
 
-<pre><code class="php"><?php
+```php
+<?php
 
  namespace Store\Toys;
 
@@ -229,7 +230,7 @@ class Robots extends Model
 
 <a name='multiple-fields'></a>
 #### Multiple field relationships
-There are times where relationships need to be defined on a combination of fields and not only one. 如下例子:
+There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
 
 ```php
 <?php
@@ -246,7 +247,7 @@ class Robots extends Model
 
     public $type;
 }
-`</pre> 
+```
 
 and
 
@@ -309,7 +310,7 @@ class Robots extends Model
 
 ### Taking advantage of relationships
 
-当显式定义模型之间的关系，很容易查找特定记录相关的记录。
+When explicitly defining the relationships between models, it is easy to find related records for a particular record.
 
 ```php
 <?php
@@ -325,7 +326,7 @@ foreach ($robot->robotsParts as $robotPart) {
 
 Phalcon uses the magic methods `__set`/`__get`/`__call` to store or retrieve related data using relationships.
 
-通过访问属性与关系相同的名称将检索其相关的记录。
+By accessing an attribute with the same name as the relationship will retrieve all its related record(s).
 
 ```php
 <?php
@@ -338,7 +339,7 @@ $robot = Robots::findFirst();
 $robotsParts = $robot->robotsParts;
 ```
 
-此外，您可以使用魔法的 getter:
+Also, you can use a magic getter:
 
 ```php
 <?php
@@ -358,7 +359,7 @@ $robotsParts = $robot->getRobotsParts(
 );
 ```
 
-If the called method has a `get` prefix [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) will return a `findFirst()`/`find()` result. 下面的示例检索相关的结果使用魔法的方法与无：
+If the called method has a `get` prefix [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) will return a `findFirst()`/`find()` result. The following example compares retrieving related results with using magic methods and without:
 
 ```php
 <?php
@@ -388,7 +389,7 @@ $robotPart = RobotsParts::findFirst(1);
 $robot = $robotPart->robots;
 ```
 
-手动获取相关的记录：
+Getting related records manually:
 
 ```php
 <?php
@@ -435,14 +436,14 @@ $robot = Robots::findFirst(
 
 The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
 
-| Type             | Description                         | 隐式方法        |
-| ---------------- | ----------------------------------- | ----------- |
-| Belongs-To       | 直接返回相关记录的模型实例                       | findFirst() |
-| Has-One          | 直接返回相关记录的模型实例                       | findFirst   |
-| Has-Many         | 返回引用模型的模型实例的集合                      | find        |
-| Has-Many-to-Many | 返回一个集合的引用模型的模型实例，它隐式对 '内部联接' 所涉及的模型 | （复杂的查询）     |
+| Type             | 描述                                                              | Implicit Method |
+| ---------------- | --------------------------------------------------------------- | --------------- |
+| Belongs-To       | Returns a model instance of the related record directly         | findFirst()     |
+| Has-One          | Returns a model instance of the related record directly         | findFirst()     |
+| Has-Many         | Returns a collection of model instances of the referenced model | find            |
+| Has-Many-to-Many | 返回一个集合的引用模型的模型实例，它隐式对 '内部联接' 所涉及的模型                             | （复杂的查询）         |
 
-您还可以使用 `count` 前缀返回一个整数，表示的相关记录的计数：
+You can also use the `count` prefix to return an integer denoting the count of the related records:
 
 ```php
 <?php
@@ -458,9 +459,9 @@ echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
 
 ### 混叠的关系
 
-为了更好地解释别名是如何工作的让我们检查下面的示例：
+To explain better how aliases work, let's check the following example:
 
-`Robots_similar` 表具有用于定义什么机器人与其他相近的函数：
+The `robots_similar` table has the function to define what robots are similar to others:
 
 ```sql
 mysql> desc robots_similar;
@@ -474,7 +475,7 @@ mysql> desc robots_similar;
 3 rows in set (0.00 sec)
 ```
 
-`Robots_id` 和 `similar_robots_id` 具有模型机器人的关系：
+Both `robots_id` and `similar_robots_id` have a relation to the model Robots:
 
 ![](/assets/images/content/models-relationships-eer-1.png)
 
@@ -518,7 +519,7 @@ $robot = $robotsSimilar->getRobots();
 // if both relationships have the same name?
 ```
 
-别名允许我们重命名这两个关系来解决这些问题：
+The aliases allow us to rename both relationships to solve these problems:
 
 ```php
 <?php
@@ -572,7 +573,7 @@ $similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 
 #### Magic Getters vs. Explicit methods
 
-Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). 要克服的您可以使用指定什么神奇的行为是可用的类块帮助 IDE 以产生更好的自动完成功能：
+Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). To overcome that, you can use a class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
 
 ```php
 <?php
@@ -700,9 +701,9 @@ $unpaidInvoices = $company->getRelated(
 
 <a name='virtual-foreign-keys'></a>
 
-## Virtual Foreign Keys
+## 虚拟的外键
 
-By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. 通过添加第四个参数，当定义一个关系时，您可以修改此行为。
+By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
 
 The RobotsPart model can be changed to demonstrate this feature:
 
@@ -803,9 +804,9 @@ class RobotsParts extends Model
 
 <a name='cascade-restrict-actions'></a>
 
-### 级联/限制行动
+### Cascade/Restrict actions
 
-默认情况下充当虚拟的外键的关系限制创建/更新/删除的记录，以保持数据的完整性：
+Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
 
 ```php
 <?php
@@ -837,13 +838,13 @@ class Robots extends Model
 }
 ```
 
-上面的代码中设置删除被引用的所有记录 （parts），如果删除了主记录 （robot）。
+The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
 
 <a name='storing-related-records'></a>
 
-## Storing Related Records
+## 存储相关的记录
 
-魔法属性可以用于存储记录和其相关的属性：
+Magic properties can be used to store a record and its related properties:
 
 ```php
 <?php
@@ -865,7 +866,7 @@ $album->year   = 2008;
 $album->save();
 ```
 
-有许多关系中保存记录和其相关的记录：
+Saving a record and its related records in a has-many relation:
 
 ```php
 <?php
@@ -900,19 +901,19 @@ $album->songs = $songs;
 $album->save();
 ```
 
-保存这张专辑，艺术家，同时隐式使用的交易所以如果有任何差错与保存相关的记录，父将不会保存任何。 消息传递有关任何错误的信息返回给用户。
+Saving the album and the artist at the same time implicitly makes use of a transaction so if anything goes wrong with saving the related records, the parent will not be saved either. Messages are passed back to the user for information regarding any errors.
 
-注意： 通过重载以下方法添加相关的实体是不可能的：
+Note: Adding related entities by overloading the following methods is not possible:
 
 * `Phalcon\Mvc\Model::beforeSave()`
 * `Phalcon\Mvc\Model::beforeCreate()`
 * `Phalcon\Mvc\Model::beforeUpdate()`
 
-您需要重载 `Phalcon\Mvc\Model::save()` 为此要从内部模型工作。
+You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 
 <a name='operations-over-resultsets'></a>
 
-## Operations over Resultsets
+## 在结果集的操作
 
 If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
 
@@ -963,7 +964,7 @@ foreach ($parts as $part) {
 }
 ```
 
-你可以这样做：
+you can do this:
 
 ```php
 <?php
@@ -976,7 +977,7 @@ $robots->getParts()->update(
 );
 ```
 
-`update` 也接受匿名函数来筛选哪些记录必须更新：
+`update` also accepts an anonymous function to filter what records must be updated:
 
 ```php
 <?php
@@ -1023,7 +1024,7 @@ foreach ($parts as $part) {
 }
 ```
 
-你可以这样做：
+you can do this:
 
 ```php
 <?php
@@ -1031,7 +1032,7 @@ foreach ($parts as $part) {
 $robots->getParts()->delete();
 ```
 
-`delete （） 方法` 还接受匿名函数来筛选哪些记录，必须先删除：
+`delete()` also accepts an anonymous function to filter what records must be deleted:
 
 ```php
 <?php
