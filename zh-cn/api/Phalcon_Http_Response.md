@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Http\Response'
 
 *implements* [Phalcon\Http\ResponseInterface](/3.4/en/api/Phalcon_Http_ResponseInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/response.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/response.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Part of the HTTP cycle is return responses to the clients. Phalcon\HTTP\Response is the Phalcon component responsible to achieve this task. HTTP responses are usually composed by headers and body.
 
@@ -24,7 +24,7 @@ $response->send();
 
 ```
 
-## Methods
+## 方法
 
 public **__construct** ([*mixed* $content], [*mixed* $code], [*mixed* $status])
 
