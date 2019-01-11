@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Paginator\Adapter\
 
 *implements* [Phalcon\Paginator\AdapterInterface](/3.4/en/api/Phalcon_Paginator_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/paginator/adapter/model.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/paginator/adapter/model.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a base.
 
@@ -31,7 +31,7 @@ $paginate = $paginator->getPaginate();
 
 ```
 
-## Methods
+## 方法
 
 public **__construct** (*array* $config)
 
