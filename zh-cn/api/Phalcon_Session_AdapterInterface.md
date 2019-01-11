@@ -6,9 +6,9 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Session\AdapterInt
 
 # Interface **Phalcon\Session\AdapterInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/session/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/session/adapterinterface.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
-## Methods
+## 方法
 
 abstract public **start** ()
 
