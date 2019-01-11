@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Cli\Task'
 
 *implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Cli\TaskInterface](/3.4/en/api/Phalcon_Cli_TaskInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cli/task.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cli/task.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Every command-line task should extend this class that encapsulates all the task functionality
 
@@ -35,7 +35,7 @@ class HelloTask extends \Phalcon\Cli\Task
 
 ```
 
-## Methods
+## 方法
 
 final public **__construct** ()
 
@@ -55,7 +55,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
-Returns the internal event manager
+返回内部事件管理器
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
