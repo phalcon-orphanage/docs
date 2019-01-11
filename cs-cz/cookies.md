@@ -12,7 +12,7 @@ layout: default language: 'en' version: '4.0'
 
 <a name='usage'></a>
 
-## Basic Usage
+## Základní použití
 
 You can set/get cookies by just accessing the `cookies` service in any part of the application where services can be accessed:
 
