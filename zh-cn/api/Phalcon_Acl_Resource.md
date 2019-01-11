@@ -8,11 +8,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Acl\Resource'
 
 *implements* [Phalcon\Acl\ResourceInterface](/3.4/en/api/Phalcon_Acl_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/resource.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This class defines resource entity and its description
 
-## 方法
+## Methods
 
 public **getName** ()
 
