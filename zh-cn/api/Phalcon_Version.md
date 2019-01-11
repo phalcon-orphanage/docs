@@ -6,11 +6,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Version'
 
 # Class **Phalcon\Version**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/version.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/version.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 This class allows to get the installed version of the framework
 
-## Constants
+## 常量
 
 *integer* **VERSION_MAJOR**
 
@@ -22,7 +22,7 @@ This class allows to get the installed version of the framework
 
 *integer* **VERSION_SPECIAL_NUMBER**
 
-## Methods
+## 方法
 
 protected static **_getVersion** ()
 
