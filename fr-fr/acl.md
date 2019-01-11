@@ -41,7 +41,7 @@ $acl->setDefaultAction(
 
 <a name='adding-roles'></a>
 
-## Adding Roles to the ACL
+## Ajout de rôles à l’ACL
 
 A role is an object that can or cannot access certain resources in the access list. As an example, we will define roles as groups of people in an organization. The [Phalcon\Acl\Role](api/Phalcon_Acl_Role) class is available to create roles in a more structured way. Let's add some roles to our recently created list:
 
@@ -116,7 +116,7 @@ The `allow()` method designates that a particular role has granted access to a p
 
 <a name='querying'></a>
 
-## Querying an ACL
+## Interroger une ACL
 
 Once the list has been completely defined. We can query it to check if a role has a given permission or not.
 
