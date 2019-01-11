@@ -10,11 +10,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\Dialect\Mysql'
 
 *implements* [Phalcon\Db\DialectInterface](/3.4/en/api/Phalcon_Db_DialectInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/dialect/mysql.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/dialect/mysql.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Generates database specific SQL for the MySQL RDBMS
 
-## Methods
+## 方法
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](/3.4/en/api/Phalcon_Db_ColumnInterface) $column)
 
