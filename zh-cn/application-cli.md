@@ -22,7 +22,7 @@ CLI 应用程序从命令行执行。它们还可用于创建 cron 作业、 脚
 
 <a name='creating-bootstrap'></a>
 
-## 创建引导
+## 创建一个引导
 
 在常规的 MVC 应用程序，引导文件用于启动应用程序。 我们使用 cli.php 文件引导应用程序，而不是 web 应用程序中的 index.php 引导程序。
 
