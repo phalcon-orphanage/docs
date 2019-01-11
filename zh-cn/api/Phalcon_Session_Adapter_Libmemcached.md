@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Session\Adapter\Li
 
 *implements* [Phalcon\Session\AdapterInterface](/3.4/en/api/Phalcon_Session_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/session/adapter/libmemcached.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/session/adapter/libmemcached.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 This adapter store sessions in libmemcached
 
@@ -45,7 +45,7 @@ echo $session->get("var");
 
 ```
 
-## Constants
+## 常量
 
 *integer* **SESSION_ACTIVE**
 
@@ -53,7 +53,7 @@ echo $session->get("var");
 
 *integer* **SESSION_DISABLED**
 
-## Methods
+## 方法
 
 public **getLibmemcached** ()
 
