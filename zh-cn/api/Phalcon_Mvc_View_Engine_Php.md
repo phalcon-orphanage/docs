@@ -10,11 +10,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\View\Engine\Ph
 
 *implements* [Phalcon\Mvc\View\EngineInterface](/3.4/en/api/Phalcon_Mvc_View_EngineInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/view/engine/php.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/view/engine/php.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Adapter to use PHP itself as templating engine
 
-## Methods
+## 方法
 
 public **render** (*mixed* $path, *mixed* $params, [*mixed* $mustClean])
 
@@ -50,7 +50,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
-Returns the internal event manager
+返回内部事件管理器
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
