@@ -57,7 +57,7 @@ The `setVar()` method allows us to create view variables on demand so that they 
 
 This component uses by default PHP itself as the template engine, therefore views should have the `.phtml` extension. If the views directory is *app/views* then view component will find automatically for these 3 view files.
 
-| Name              | File                          | Description                                                                                                                                                                                                              |
+| Name              | File                          | 描述                                                                                                                                                                                                                       |
 | ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                        |
 | Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
@@ -332,7 +332,7 @@ class PostsController extends Controller
 
 The available render levels are:
 
-| Class Constant          | Description                                                              | Order |
+| Class Constant          | 描述                                                                       | Order |
 | ----------------------- | ------------------------------------------------------------------------ |:-----:|
 | `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |       |
 | `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |   1   |
@@ -1042,17 +1042,17 @@ echo $view->render(
 
 ## View Events
 
-[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
+[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
 
-| Event Name       | Triggered                                     | Can stop operation? |
-| ---------------- | --------------------------------------------- |:-------------------:|
-| beforeRender     | Triggered before starting the render process  |         Yes         |
-| beforeRenderView | Triggered before rendering an existing view   |         Yes         |
-| afterRenderView  | Triggered after rendering an existing view    |         No          |
-| afterRender      | Triggered after completing the render process |         No          |
-| notFoundView     | Triggered when a view was not found           |         No          |
+| 事件名称             | 触发器                                           | 可以停止操作吗？ |
+| ---------------- | --------------------------------------------- |:--------:|
+| beforeRender     | Triggered before starting the render process  |    是的    |
+| beforeRenderView | Triggered before rendering an existing view   |    是的    |
+| afterRenderView  | Triggered after rendering an existing view    |    否     |
+| afterRender      | Triggered after completing the render process |    否     |
+| notFoundView     | Triggered when a view was not found           |    否     |
 
-The following example demonstrates how to attach listeners to this component:
+下面的示例演示如何将侦听器附加到此组件︰
 
 ```php
 <?php
