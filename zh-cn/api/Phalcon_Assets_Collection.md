@@ -8,11 +8,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Assets\Collection'
 
 *implements* [Countable](http://php.net/manual/en/class.countable.php), [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/assets/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/assets/collection.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Represents a collection of resources
 
-## Methods
+## 方法
 
 public **getPrefix** ()
 
