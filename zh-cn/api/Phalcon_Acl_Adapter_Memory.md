@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Acl\Adapter\Memory
 
 *implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/3.4/en/api/Phalcon_Acl_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Manages ACL lists in memory
 
@@ -232,7 +232,7 @@ public **getResources** ()
 
 public **getActiveRole** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
-列表检查是否它允许对某些资源/访问的作用
+获取 资源/权限 列表
 
 public **getActiveResource** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
@@ -252,7 +252,7 @@ public **getEventsManager** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/
 
 public **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
+设置默认的访问级别（Phalcon\Acl::ALLOW 或者 Phalcon\Acl::DENY）
 
 public **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](/3.4/en/api/Phalcon_Acl_Adapter)
 
