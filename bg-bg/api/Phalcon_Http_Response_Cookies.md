@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '3.4' title: 'Phalcon\Http\Response\Cookies'
+layout: article language: 'en' version: '3.4' title: 'Phalcon\Http\Response\Cookies'
 
 * * *
 
