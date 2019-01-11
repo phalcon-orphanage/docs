@@ -144,14 +144,14 @@ $di->set(
 
 The following options are available in Volt:
 
-| Option              | Description                                                                                                                  | Default |
+| 选项                  | 描述                                                                                                                           | 默认      |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
 | `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false` |
 | `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
 | `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
 | `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
 | `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
-| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
+| `前缀`                | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
 | `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
@@ -284,7 +284,7 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 
 The following is the list of available built-in filters in Volt:
 
-| Filter             | Description                                                                                                                        |
+| Filter             | 描述                                                                                                                                 |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `abs`              | Applies the [abs](http://php.net/manual/en/function.abs.php) PHP function to a value.                                              |
 | `capitalize`       | Capitalizes a string by applying the [ucwords](http://php.net/manual/en/function.ucwords.php) PHP function to the value            |
@@ -647,7 +647,7 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unex
 
 A special variable is available inside `for` loops providing you information about
 
-| Variable         | Description                                                   |
+| Variable         | 描述                                                            |
 | ---------------- | ------------------------------------------------------------- |
 | `loop.index`     | The current iteration of the loop. (1 indexed)                |
 | `loop.index0`    | The current iteration of the loop. (0 indexed)                |
@@ -716,7 +716,7 @@ Additionally, you can use compound assignment operators:
 
 The following operators are available:
 
-| Operator | Description               |
+| Operator | 描述                        |
 | -------- | ------------------------- |
 | `=`      | Standard Assignment       |
 | `+=`     | Addition assignment       |
@@ -750,7 +750,7 @@ If an expression needs to be evaluated without be printed the `do` statement can
 
 The following literals are supported:
 
-| Filter               | Description                                                        |
+| Filter               | 描述                                                                 |
 | -------------------- | ------------------------------------------------------------------ |
 | `'this is a string'` | Text between double quotes or single quotes are handled as strings |
 | `100.25`             | Numbers with a decimal part are handled as doubles/floats          |
@@ -796,7 +796,7 @@ Curly braces also can be used to define arrays or hashes:
 
 You may make calculations in templates using the following operators:
 
-| Operator | Description                                                                                  |
+| Operator | 描述                                                                                           |
 |:--------:| -------------------------------------------------------------------------------------------- |
 |   `+`    | Perform an adding operation. `{% raw %}{{ 2 + 3 }}{% endraw %}` returns 5                    |
 |   `-`    | Perform a substraction operation `{% raw %}{{ 2 - 3 }}{% endraw %}` returns -1               |
@@ -810,7 +810,7 @@ You may make calculations in templates using the following operators:
 
 The following comparison operators are available:
 
-|  Operator  | Description                                                       |
+|  Operator  | 描述                                                                |
 |:----------:| ----------------------------------------------------------------- |
 |    `==`    | Check whether both operands are equal                             |
 |    `!=`    | Check whether both operands aren't equal                          |
@@ -828,7 +828,7 @@ The following comparison operators are available:
 
 Logic operators are useful in the `if` expression evaluation to combine multiple tests:
 
-|  Operator  | Description                                                       |
+|  Operator  | 描述                                                                |
 |:----------:| ----------------------------------------------------------------- |
 |    `or`    | Return true if the left or right operand is evaluated as true     |
 |   `and`    | Return true if both left and right operands are evaluated as true |
@@ -841,7 +841,7 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 
 Additional operators seen the following operators are available:
 
-| Operator          | Description                                                                                      |
+| Operator          | 描述                                                                                               |
 | ----------------- | ------------------------------------------------------------------------------------------------ |
 | `~`               | Concatenates both operands `{% raw %}{{ 'hello ' ~ 'world' }}{% endraw %}`                       |
 | `|`               | Applies a filter in the right operand to the left `{% raw %}{{ 'hello'|uppercase }}{% endraw %}` |
@@ -887,7 +887,7 @@ Tests can be used to test if a variable has a valid expected value. The operator
 
 The following built-in tests are available in Volt:
 
-| Test          | Description                                                          |
+| Test          | 描述                                                                   |
 | ------------- | -------------------------------------------------------------------- |
 | `defined`     | Checks if a variable is defined (`isset()`)                          |
 | `divisibleby` | Checks if a value is divisible by other value                        |
@@ -1070,7 +1070,7 @@ The following PHP is generated:
 
 To call a [Phalcon\Tag](api/Phalcon_Tag) helper, you only need to call an uncamelized version of the method:
 
-| Method                            | Volt function        |
+| 方法                                | Volt function        |
 | --------------------------------- | -------------------- |
 | `Phalcon\Tag::checkField`        | `check_field`        |
 | `Phalcon\Tag::dateField`         | `date_field`         |
@@ -1100,7 +1100,7 @@ To call a [Phalcon\Tag](api/Phalcon_Tag) helper, you only need to call an uncame
 
 The following built-in functions are available in Volt:
 
-| Name          | Description                                                 |
+| Name          | 描述                                                          |
 | ------------- | ----------------------------------------------------------- |
 | `content`     | Includes the content produced in a previous rendering stage |
 | `get_content` | Same as `content`                                           |
@@ -1168,7 +1168,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
-| Type       | Description                                                                                                |
+| Type       | 描述                                                                                                         |
 | ---------- | ---------------------------------------------------------------------------------------------------------- |
 | `partial`  | allows you to include templates made in Volt and in other template engines as well                         |
 |            | allows you to pass an expression like a variable allowing to include the content of other view dynamically |
@@ -1502,7 +1502,7 @@ The above class implements the method `compileFunction` which is invoked before 
 
 The following compilation events are available to be implemented in extensions:
 
-| Event/Method        | Description                                                                                            |
+| Event/Method        | 描述                                                                                                     |
 | ------------------- | ------------------------------------------------------------------------------------------------------ |
 | `compileFunction`   | Triggered before trying to compile any function call in a template                                     |
 | `compileFilter`     | Triggered before trying to compile any filter call in a template                                       |
@@ -1618,7 +1618,7 @@ $compiler->compile(
 require $compiler->getCompiledTemplatePath();
 ```
 
-## External Resources
+## 外部资源
 
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
 * [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)
