@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\Adapter\Pdo\Mys
 
 *implements* [Phalcon\Db\AdapterInterface](/3.4/en/api/Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/adapter/pdo/mysql.zep" class="btn btn-default btn-sm">源码在 GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/adapter/pdo/mysql.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Mysql数据库系统的特定参数
 
@@ -31,7 +31,7 @@ $connection = new Mysql($config);
 
 ```
 
-## 方法列表
+## 方法
 
 public **describeColumns** (*mixed* $table, [*mixed* $schema])
 
@@ -48,7 +48,7 @@ print_r(
 
 public [Phalcon\Db\IndexInterface](/3.4/en/api/Phalcon_Db_IndexInterface) **describeIndexes** (*string* $table, [*string* $schema])
 
-列出表的索引
+Lists table indexes
 
 ```php
 <?php
@@ -61,7 +61,7 @@ print_r(
 
 public **describeReferences** (*mixed* $table, [*mixed* $schema])
 
-列出表引用
+Lists table references
 
 ```php
 <?php
@@ -85,7 +85,7 @@ This method is automatically called in \Phalcon\Db\Adapter\Pdo constructor. Call
 
 use Phalcon\Db\Adapter\Pdo\Mysql;
 
-// 设置一个数据库连接
+// 建立连接
 $connection = new Mysql(
     [
         "host"     => "localhost",
@@ -96,7 +96,7 @@ $connection = new Mysql(
     ]
 );
 
-// Reconnect
+// 重新连接
 $connection->connect();
 
 ```
@@ -158,7 +158,7 @@ public **query** (*mixed* $sqlStatement, [*mixed* $bindParams], [*mixed* $bindTy
 ```php
 <?php
 
-// 查询数据
+// Querying data
 $resultset = $connection->query(
     "SELECT * FROM robots WHERE type = 'mechanical'"
 );
@@ -211,7 +211,7 @@ echo $connection->affectedRows(), " were deleted";
 
 public **close** () inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-关闭活动连接返回成功。Phalcon会自动关闭并摧毁 请求结束时的活动连接
+关闭活动连接返回成功。Phalcon自动关闭和破坏请求结束时的活动连接
 
 public **escapeString** (*mixed* $str) inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
@@ -244,12 +244,12 @@ print_r(
 
 public *int* | *boolean* **lastInsertId** ([*string* $sequenceName]) inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-返回插入在最近执行的SQL语句中的自增ID
+返回插入在最近执行的SQL语句中的 自增/连续 列的插入ID
 
 ```php
 <?php
 
-// 插入一条新数据
+// 插入一条新的机器人数据
 $success = $connection->insert(
     "robots",
     [
@@ -301,27 +301,27 @@ var_dump(
 
 public **getInternalHandler** () inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-返回内部 PDO 处理程序
+Return internal PDO handler
 
 public *array* **getErrorInfo** () inherited from [Phalcon\Db\Adapter\Pdo](/3.4/en/api/Phalcon_Db_Adapter_Pdo)
 
-返回错误信息 (如果有)
+Return the error info, if any
 
 public **getDialectType** () inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-所使用的数据库方言, 可以参考: http://blog. csdn. net/jialinqiang/article/details/8679171
+Name of the dialect used
 
 public **getType** () inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-获取数据库系统的类型
+Type of database system the adapter is used for
 
 public **getSqlVariables** () inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-获取当前SQL语句绑定的参数列表
+Active SQL bound parameter variables
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-设置事件管理器
+Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
@@ -329,24 +329,24 @@ public **getEventsManager** () inherited from [Phalcon\Db\Adapter](/3.4/en/api/P
 
 public **setDialect** ([Phalcon\Db\DialectInterface](/3.4/en/api/Phalcon_Db_DialectInterface) $dialect) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-设置用于生成 SQL 的方言
+Sets the dialect used to produce the SQL
 
 public **getDialect** () inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-返回内部方言实例
+Returns internal dialect instance
 
 public **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $bindParams], [*mixed* $bindTypes]) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-返回 SQL 查询结果中的第一行
+Returns the first row in a SQL query result
 
 ```php
 <?php
 
-// 获取第一个机器人数据
+// Getting first robot
 $robot = $connection->fetchOne("SELECT * FROM robots");
 print_r($robot);
 
-// 获取第一个机器人数据仅通过索引
+// Getting first robot with associative indexes only
 $robot = $connection->fetchOne("SELECT * FROM robots", \Phalcon\Db::FETCH_ASSOC);
 print_r($robot);
 
@@ -354,12 +354,12 @@ print_r($robot);
 
 public *array* **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-将查询的完整结果转储到数组中
+Dumps the complete result of a query into an array
 
 ```php
 <?php
 
-/获取所有的机器人数据仅通过索引形式
+// Getting all robots with associative indexes only
 $robots = $connection->fetchAll(
     "SELECT * FROM robots",
     \Phalcon\Db::FETCH_ASSOC
@@ -369,7 +369,7 @@ foreach ($robots as $robot) {
     print_r($robot);
 }
 
- //  获取所有的名字中包含'robot'的机器人数据 
+ // Getting all robots that contains word "robot" withing the name
 $robots = $connection->fetchAll(
     "SELECT * FROM robots WHERE name LIKE :name",
     \Phalcon\Db::FETCH_ASSOC,
@@ -385,16 +385,16 @@ foreach($robots as $robot) {
 
 public *string* | ** **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int* | *string* $column]) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-返回查询结果的第一行的第N个字段
+Returns the n'th field of first row in a SQL query result
 
 ```php
 <?php
 
-// 统计机器人数据 
+// Getting count of robots
 $robotsCount = $connection->fetchColumn("SELECT count(*) FROM robots");
 print_r($robotsCount);
 
-// 获取最后一个人编辑的机器人 
+// Getting name of last edited robot
 $robot = $connection->fetchColumn(
     "SELECT id, name FROM robots order by modified desc",
     1
@@ -405,31 +405,31 @@ print_r($robot);
 
 public *boolean* **insert** (*string* | *array* $table, *array* $values, [*array* $fields], [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-使用自定义的RDBMS SQL语句向数据表中插入数据
+Inserts data into a table using custom RDBMS SQL syntax
 
 ```php
 <?php
 
-// 插入一条新数据 
+// Inserting a new robot
 $success = $connection->insert(
     "robots",
     ["Astro Boy", 1952],
     ["name", "year"]
 );
 
-// 下面的SQL语句将会在数据库中执行 
+// Next SQL sentence is sent to the database system
 INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 ```
 
 public *boolean* **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-使用自定义的RDBMS SQL语句向数据表中插入数据
+Inserts data into a table using custom RBDM SQL syntax
 
 ```php
 <?php
 
-//插入一个新的机器人
+// Inserting a new robot
 $success = $connection->insertAsDict(
     "robots",
     [
@@ -438,19 +438,19 @@ $success = $connection->insertAsDict(
     ]
 );
 
-//下面SQL语句被发送到数据库系统
+// Next SQL sentence is sent to the database system
 INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 ```
 
 public *boolean* **update** (*string* | *array* $table, *array* $fields, *array* $values, [*string* | *array* $whereCondition], [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-使用自定义的RDBMS SQL语句向数据表中更新数据
+Updates data on a table using custom RBDM SQL syntax
 
 ```php
 <?php
 
-// 更新现有的机器人
+// Updating existing robot
 $success = $connection->update(
     "robots",
     ["name"],
@@ -458,10 +458,10 @@ $success = $connection->update(
     "id = 101"
 );
 
-// 这是在数据库系统中实际执行的语句
+// Next SQL sentence is sent to the database system
 UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
-// 使用数组条件和 $dataTypes 更新现有的robot数据  
+// Updating existing robot with array condition and $dataTypes
 $success = $connection->update(
     "robots",
     ["name"],
@@ -478,16 +478,16 @@ $success = $connection->update(
 
 ```
 
-警告! 如果$whereCondition 是字符串它将不会被转义.
+Warning! If $whereCondition is string it not escaped.
 
 public *boolean* **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-另一种更方便的语法, 使用定制的RBDM SQL语法更新表上的数据.
+Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax
 
 ```php
 <?php
 
-// 更新现有的机器人
+// Updating existing robot
 $success = $connection->updateAsDict(
     "robots",
     [
@@ -496,7 +496,7 @@ $success = $connection->updateAsDict(
     "id = 101"
 );
 
-// 这是在数据库系统中执行的语句
+// Next SQL sentence is sent to the database system
 UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
 ```
@@ -642,7 +642,7 @@ Drops a foreign key from a table
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](/3.4/en/api/Phalcon_Db_ColumnInterface) $column) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-返回SQL列定义
+Returns the SQL column definition from a column
 
 public **listTables** ([*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
@@ -693,7 +693,7 @@ Releases given savepoint
 
 public **rollbackSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-回滚给定的事务保存点
+Rollbacks given savepoint
 
 public **setNestedTransactionsWithSavepoints** (*mixed* $nestedTransactionsWithSavepoints) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
