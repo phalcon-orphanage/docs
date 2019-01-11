@@ -4,11 +4,11 @@
 
 *implements* [Phalcon\Forms\ElementInterface](/en/3.2/api/Phalcon_Forms_ElementInterface)
 
-<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/forms/element/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/blob/master/phalcon/forms/element/file.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Component INPUT[type=file] for forms
 
-## Methods
+## 方法
 
 public **render** ([*array* $attributes])
 
