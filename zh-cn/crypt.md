@@ -18,7 +18,7 @@ The cipher AES-256 is used among other places in SSL/TLS across the Internet. It
 
 <a name='usage'></a>
 
-## 基本用法
+## Basic Usage
 
 This component is designed be very simple to use:
 
@@ -85,7 +85,7 @@ $encrypted = $crypt->encrypt($text, $key);
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-你可以使用相同的实例以加密解密几次：
+You can use the same instance to encrypt/decrypt several times:
 
 ```php
 <?php
@@ -144,9 +144,9 @@ echo $crypt->decrypt($encrypted, $key);
 
 ## 加密选项
 
-以下选项可以用来更改加密行为：
+The following options are available to change the encryption behavior:
 
-| Name   | Description                                                                                                                                                          |
+| Name   | 描述                                                                                                                                                                   |
 | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
@@ -188,7 +188,7 @@ var_dump($algorithms);
 
 <a name='base64'></a>
 
-## Base64 Support
+## Base64 支持
 
 In order for encryption to be properly transmitted (emails) or displayed (browsers) [base64](http://www.php.net/manual/en/function.base64-encode.php) encoding is usually applied to encrypted texts:
 
@@ -211,7 +211,7 @@ echo $crypt->decryptBase64($encrypt, $key);
 
 <a name='service'></a>
 
-## Setting up an Encryption service
+## 设置加密服务
 
 You can set up the encryption component in the services container in order to use it from any part of the application:
 
@@ -264,7 +264,7 @@ class SecretsController extends Controller
 
 <a name='links'></a>
 
-## Links
+## 链接
 
 * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 * [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
