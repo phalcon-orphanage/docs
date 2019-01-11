@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\Adapter\Pdo'
 
 *implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Db\AdapterInterface](/3.4/en/api/Phalcon_Db_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/adapter/pdo.zep" class="btn btn-default btn-sm">源码在 GitHub 上</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/adapter/pdo.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Phalcon\Db\Adapter\Pdo is the Phalcon\Db that internally uses PDO to connect to a database
 
@@ -286,7 +286,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
-Returns the internal event manager
+返回内部事件管理器
 
 public **setDialect** ([Phalcon\Db\DialectInterface](/3.4/en/api/Phalcon_Db_DialectInterface) $dialect) inherited from [Phalcon\Db\Adapter](/3.4/en/api/Phalcon_Db_Adapter)
 
