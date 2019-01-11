@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\Reference'
 
 *implements* [Phalcon\Db\ReferenceInterface](/3.4/en/api/Phalcon_Db_ReferenceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/reference.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/reference.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Allows to define reference constraints on tables
 
@@ -33,7 +33,7 @@ $reference = new \Phalcon\Db\Reference(
 
 ```
 
-## 方法
+## Methods
 
 public **getName** ()
 
