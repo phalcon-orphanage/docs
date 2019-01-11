@@ -6,7 +6,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\Profiler'
 
 # Class **Phalcon\Db\Profiler**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/profiler.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/profiler.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Instances of Phalcon\Db can generate execution profiles on SQL statements sent to the relational database. Profiled information includes execution time in milliseconds. This helps you to identify bottlenecks in your applications.
 
@@ -35,7 +35,7 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
 ```
 
-## 方法
+## Methods
 
 public [Phalcon\Db\Profiler](/3.4/en/api/Phalcon_Db_Profiler) **startProfile** (*string* $sqlStatement, [*mixed* $sqlVariables], [*mixed* $sqlBindTypes])
 
