@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0'
 
 [Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. 此组件可以用于不属于模型或集合的数据的对象上进行验证。
 
-下面的示例演示如何使用它：
+The following example shows its basic usage:
 
 ```php
 <?php
@@ -128,7 +128,7 @@ if (count($messages)) {
 
 Phalcon公开一组内置的验证此组件：
 
-| 类                                                                                             | 注解                                                             |
+| 类                                                                                             | Explanation                                                    |
 | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
 | [Phalcon\Validation\Validator\Alnum](api/Phalcon_Validation_Validator_Alnum)               | 验证字段值只能是字母和数字字符                                                |
 | [Phalcon\Validation\Validator\Alpha](api/Phalcon_Validation_Validator_Alpha)               | 验证字段值只能是字母字符                                                   |
@@ -197,7 +197,7 @@ class IpValidator extends Validator
 
 ## 回调验证程序
 
-By using [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. 通过返回 `true` 验证将成功，返回 `false` 将意味着验证失败。 当执行这个验证器时，Phalcon将根据它是什么传递数据——如果它是一个实体(例如，一个模型，一个`stdClass`等)，那么将传递实体，否则数据(i)。一个数组，比如`$_POST`)。 这是示例：
+By using [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. 通过返回 `true` 验证将成功，返回 `false` 将意味着验证失败。 When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). 这是示例：
 
 ```php
 <?php
@@ -259,7 +259,7 @@ $messages = $validation->validate(['amount' => 10]); // 会从第三个验证器
 
 <a name='messages'></a>
 
-## 验证消息
+## Validation Messages
 
 [Phalcon\Validation](api/Phalcon_Validation) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
 
@@ -355,7 +355,7 @@ Filtering and sanitizing is performed using the [filter](/3.4/en/filter) compone
 
 ## 验证事件
 
-当所有的验证器都被初始化在类中，你可以实现`beforeValidation()`和`afterValidation()`方法做额外的检查、过滤、清理等。 如果在`beforeValidation()`返回false那么验证会自动取消：
+当所有的验证器都被初始化在类中，你可以实现`beforeValidation()`和`afterValidation()`方法做额外的检查、过滤、清理等。 If the `beforeValidation()` method returns false the validation is automatically cancelled:
 
 ```php
 <?php
