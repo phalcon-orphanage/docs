@@ -6,7 +6,7 @@ layout: default language: 'en' version: '4.0'
 
 <a name='setup'></a>
 
-# Web Server Setup
+# Nastavení webserveru
 
 Aby routování v aplikaci postavené na Phalcon frameworku fungovalo správně, musíte nastavit Vaš webserver aby správně zpracovával přesměrování a požadavky. Instrukce pro oblíbené webservery jsou:
 
@@ -35,7 +35,7 @@ To speed up getting your Phalcon application running in development the easiest 
 
 <a name='php-built-in-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Konfigurace Phalcon frameworku
 
 To enable dynamic URI rewrites, without Apache or Nginx, that Phalcon needs, you can use the following router file:
 <a href="https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php" target="_blank">.htrouter.php</a>
@@ -64,7 +64,7 @@ Phalcon framework společně s Nginx a PHP-FPM nabízí mocnou sadu nástrojů, 
 
 <a name='nginx-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Konfigurace Phalcon frameworku
 
 You can use following potential configuration to setup Nginx with Phalcon:
 
@@ -163,7 +163,7 @@ Usually `start nginx` from the command line but this depends on your installatio
 
 <a name='apache-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Konfigurace Phalcon frameworku
 
 Níže jsou uvedeny potenciální konfigurace, které můžete použít pro nastavení Apache a Phalcon frameworku. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/3.4/en/routing). Běžně má aplikace následující strukturu:
 
@@ -230,7 +230,7 @@ If your uri contains characters other than English, you might need to resort to 
 
 #### Konfigurace Apache webserveru
 
-V případě že nechcete či nemůžete použít soubory `.htaccess`, můžete vše nastavit v hlavním konfiguračním souboru webserveru Apache:
+If you do not want to use `.htaccess` files you can move these configurations to the apache's main configuration file:
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -255,7 +255,7 @@ V případě že nechcete či nemůžete použít soubory `.htaccess`, můžete 
 
 #### Virtuální domény (VirtualHost)
 
-Tato druhá konfigurace Vám dovolí připravit Phalcon aplikaci jako virtuální doménu (virtuální doména nemusí ani existovat ani být registrována ale na serveru, kde takto nakonfigurujeme Apache bude fungovat):
+And this second configuration allows you to install a Phalcon application in a virtual host:
 
 ```apacheconfig
 <VirtualHost *:80>
@@ -279,46 +279,46 @@ Tato druhá konfigurace Vám dovolí připravit Phalcon aplikaci jako virtuáln�
 
 ## Cherokee
 
-[Cherokee](http://www.cherokee-project.com/) je vysoce výkonný webserver. Je velmi rychlý, flexibilní a jednoduchý na konfiguraci.
+[Cherokee](http://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
 <a name='cherokee-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Konfigurace Phalcon frameworku
 
-Cherokee nabízí přátelské grafické prostředí pro konfiguraci skoro všech nastavení webserveru přímo v internetovém prohlížeči.
+Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 
-Spusťte administraci Cherokee jako správce (root) přes `/cesta-k-cherokee/sbin/cherokee-admin`
+Start the cherokee administrator by executing as root `/path-to-cherokee/sbin/cherokee-admin`
 
 ![](/assets/images/content/webserver-cherokee-1.jpg)
 
-Vytvořte novou virtuální doménu kliknutím na `vServers`, poté přidejte nový virtuální server:
+Create a new virtual host by clicking on `vServers`, then add a new virtual server:
 
 ![](/assets/images/content/webserver-cherokee-2.jpg)
 
-Vámi přidaný virtuální server se zobrazí na levé straně obrazovky. Na záložce `Behaviors` uvidíte sadu výchozího chování pro vybraný virtuální server. Klikněte na tlačítko `Rule Management`. Odstraňte tyto pravidla: `Directory /cherokee_themes` a `Directory /icons`:
+The recently added virtual server must appear at the left bar of the screen. In the `Behaviors` tab you will see a set of default behaviors for this virtual server. Click the `Rule Management` button. Remove those labeled as `Directory /cherokee_themes` and `Directory /icons`:
 
 ![](/assets/images/content/webserver-cherokee-3.jpg)
 
-Pomocí průvodce přidejte `PHP Langauge`. To Vám umožní spouštět PHP aplikace:
+Add the `PHP Language` behavior using the wizard. This behavior allows you to run PHP applications:
 
 ![](/assets/images/content/webserver-cherokee-1.jpg)
 
-Normálně toto chování nepotřebuje žádné další nastavení. Přidejte další chování. Tentokrát v sekci `Manual Configuration`. V sekci `Rule Type` vyberte `File Exists`, poté se ujistěte že volba `Match any file` je povolena:
+Normally this behavior does not require additional settings. Add another behavior, this time in the `Manual Configuration` section. In `Rule Type` choose `File Exists`, then make sure the option `Match any file` is enabled:
 
 ![](/assets/images/content/webserver-cherokee-5.jpg)
 
-V záložce 'Handler' vyberte `List & Send` jako handler:
+In the 'Handler' tab choose `List & Send` as handler:
 
 ![](/assets/images/content/webserver-cherokee-7.jpg)
 
-Upravte chování `Default` abychom mohli povolit přepis URL adres (URL-rewrite engine). Změnte handler na `Redirection` a poté přidejte následujicí regulární výraz: `^(.*)$`:
+Edit the `Default` behavior in order to enable the URL-rewrite engine. Change the handler to `Redirection`, then add the following regular expression to the engine `^(.*)$`:
 
 ![](/assets/images/content/webserver-cherokee-6.jpg)
 
-Nakonec se ujistěte že chování mají následující pořadí:
+Finally, make sure the behaviors have the following order:
 
 ![](/assets/images/content/webserver-cherokee-8.jpg)
 
-Spusťe aplikaci v prohlížeči:
+Execute the application in a browser:
 
 ![](/assets/images/content/webserver-cherokee-9.jpg)
