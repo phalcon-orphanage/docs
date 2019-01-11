@@ -6,15 +6,15 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Cli\Router\Route'
 
 # Class **Phalcon\Cli\Router\Route**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cli/router/route.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cli/router/route.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 This class represents every route added to the router
 
-## Constants
+## 常量
 
 *string* **DEFAULT_DELIMITER**
 
-## Methods
+## 方法
 
 public **__construct** (*string* $pattern, [*array* $paths])
 
