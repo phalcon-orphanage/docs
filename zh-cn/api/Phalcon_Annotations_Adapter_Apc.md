@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Annotations\Adapte
 
 *implements* [Phalcon\Annotations\AdapterInterface](/3.4/en/api/Phalcon_Annotations_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/adapter/apc.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/adapter/apc.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Stores the parsed annotations in APC. This adapter is suitable for production
 
@@ -23,7 +23,7 @@ $annotations = new Apc();
 
 ```
 
-## 方法
+## Methods
 
 public **__construct** ([*array* $options])
 
