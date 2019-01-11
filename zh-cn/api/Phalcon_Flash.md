@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Flash'
 
 *implements* [Phalcon\FlashInterface](/3.4/en/api/Phalcon_FlashInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/flash.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/flash.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS
 
@@ -20,7 +20,7 @@ $flash->error("Cannot open the file");
 
 ```
 
-## Methods
+## 方法
 
 public **__construct** ([*mixed* $cssClasses])
 
