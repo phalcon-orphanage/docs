@@ -16,7 +16,7 @@ Please take a moment to review this document in order to make the contribution p
 
 <a name='contributions'></a>
 
-## 贡献
+## 贡献者
 
 Phalcon的贡献应该在 [GitHub pr](https://help.github.com/articles/using-pull-requests/) 的形式。 Each pull request will be reviewed by a core contributor (someone with permission to merge pull requests). Based on the type and content of the pull request, it can either be merged immediately, put on hold if clarifications are needed, or rejected.
 
@@ -52,7 +52,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 <a name='pull-request-checklist'></a>
 
-## Pull Request Checklist
+## 拉请求清单
 
 - 不要将您的 pull 请求提交给 `master` 分支。 Branch from the required branch and, if needed, rebase to the proper branch before submitting your pull request. 如果它不能和 master 分支合并，你可能会被要求改变你的改变
 - 除非要合并提交，否则不要将子模块更新，`composer.lock` 等放在您的 pull 请求中
@@ -75,7 +75,7 @@ If you have any questions about how to use Phalcon, please see the [support page
 
 <a name='requesting-features'></a>
 
-## 请求功能
+## 请求的功能
 
 If you have any changes or new features in mind, please fill an [NFR](/3.4/en/new-feature-request).
 
