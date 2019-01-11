@@ -116,7 +116,7 @@ $acl->deny('Guests', 'Customers', 'update');
 
 <a name='querying'></a>
 
-## 查询的 ACL
+## 查询ACL
 
 一旦完全定义列表。我们可以查询它来检查是否角色具有给定的权限或不。
 
