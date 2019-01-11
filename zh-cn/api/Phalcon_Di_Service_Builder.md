@@ -6,11 +6,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Di\Service\Builder
 
 # Class **Phalcon\Di\Service\Builder**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/di/service/builder.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/di/service/builder.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 This class builds instances based on complex definitions
 
-## Methods
+## 方法
 
 private *mixed* **_buildParameter** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector, *int* $position, *array* $argument)
 
