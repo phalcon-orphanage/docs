@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Annotations\Collec
 
 *implements* [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php), [Countable](http://php.net/manual/en/class.countable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Represents a collection of annotations. This class allows to traverse a group of annotations easily
 
@@ -28,7 +28,7 @@ $annotation = $classAnnotations->get("Cacheable");
 
 ```
 
-## Methods
+## 方法
 
 public **__construct** ([*array* $reflectionData])
 
