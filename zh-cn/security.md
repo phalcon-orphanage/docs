@@ -6,23 +6,23 @@ layout: default language: 'en' version: '4.0'
 
 <a name='overview'></a>
 
-# Security
+# 安全
 
 This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 
 <a name='hashing'></a>
 
-## Password Hashing
+## 密码哈希
 
 Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods '[md5](http://php.net/manual/en/function.md5.php)' and '[sha1](http://php.net/manual/en/function.sha1.php)'. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](http://en.wikipedia.org/wiki/Rainbow_table).
 
-安全组件使用[bcrypt](http://en.wikipedia.org/wiki/Bcrypt)作为散列算法。 通过“[Eksblowfish](http://en.wikipedia.org/wiki/Bcrypt#Algorithm)”密钥设置算法，我们可以将密码加密为`slow`”。 慢算法最小化了布鲁斯力攻击的影响。
+The security component uses [bcrypt](http://en.wikipedia.org/wiki/Bcrypt) as the hashing algorithm. Thanks to the '[Eksblowfish](http://en.wikipedia.org/wiki/Bcrypt#Algorithm)' key setup algorithm, we can make the password encryption as `slow` as we want. Slow algorithms minimize the impact of bruce force attacks.
 
-Bcrypt是一种基于Blowfish对称分组密码算法的自适应哈希函数。 它还引入了一个安全性或工作因素，它决定了哈希函数生成哈希的速度。 这有效地否定了FPGA或GPU哈希技术的使用。
+Bcrypt, is an adaptive hash function based on the Blowfish symmetric block cipher cryptographic algorithm. It also introduces a security or work factor, which determines how slow the hash function will be to generate the hash. This effectively negates the use of FPGA or GPU hashing techniques.
 
-如果将来硬件变得更快，我们可以增加工作因素来缓解这个问题。
+Should hardware becomes faster in the future, we can increase the work factor to mitigate this.
 
-这个组件提供了一个简单的界面来使用算法:
+This component offers a simple interface to use the algorithm:
 
 ```php
 <?php
@@ -48,7 +48,7 @@ class UsersController extends Controller
 }
 ```
 
-我们用默认的工作因子保存了哈希的密码。更高的工作因素将使密码不易受到攻击, 因为其加密速度会很慢。我们可以检查密码是否正确, 如下所示:
+We saved the password hashed with a default work factor. A higher work factor will make the password less vulnerable as its encryption will be slow. We can check if the password is correct as follows:
 
 ```php
 <?php
@@ -79,15 +79,15 @@ class SessionController extends Controller
 }
 ```
 
-使用带有 PHP 函数 [ openssl_random_pseudo_bytes ](http://php.net/manual/en/function.openssl-random-pseudo-bytes.php) 的伪随机字节生成 salt, 因此需要加载 [ openssl ](http://php.net/manual/en/book.openssl.php) 扩展。
+The salt is generated using pseudo-random bytes with the PHP's function [openssl_random_pseudo_bytes](http://php.net/manual/en/function.openssl-random-pseudo-bytes.php) so is required to have the [openssl](http://php.net/manual/en/book.openssl.php) extension loaded.
 
 <a name='csrf'></a>
 
 ## Cross-Site Request Forgery (CSRF) protection
 
-这是针对web站点和应用程序的另一种常见攻击。用于执行用户注册或添加评论等任务的表单很容易受到这种攻击。
+This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
 
-其思想是防止表单值被发送到应用程序之外。 为了解决这个问题，我们在每个表单中生成一个[random nonce](http://en.wikipedia.org/wiki/Cryptographic_nonce) (token)，在会话中添加令牌，然后在表单将数据发送回应用程序时验证令牌，将会话中的存储令牌与表单提交的令牌进行比较:
+The idea is to prevent the form values from being sent outside our application. To fix this, we generate a [random nonce](http://en.wikipedia.org/wiki/Cryptographic_nonce) (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:
 
 ```php
 <?php echo Tag::form('session/login') ?>
@@ -100,7 +100,7 @@ class SessionController extends Controller
 </form>
 ```
 
-然后在控制器的操作中，您可以检查CSRF令牌是否有效:
+Then in the controller's action you can check if the CSRF token is valid:
 
 ```php
 <?php
@@ -120,7 +120,7 @@ class SessionController extends Controller
 }
 ```
 
-记住要向依赖注入器添加会话适配器，否则令牌检查将不起作用:
+Remember to add a session adapter to your Dependency Injector, otherwise the token check won't work:
 
 ```php
 <?php
@@ -137,13 +137,13 @@ $di->setShared(
 );
 ```
 
-还建议在表单中添加[captcha](http://www.google.com/recaptcha)，以完全避免这种攻击的风险。
+Adding a [captcha](http://www.google.com/recaptcha) to the form is also recommended to completely avoid the risks of this attack.
 
 <a name='setup'></a>
 
-## Setting up the component
+## 设置该组件
 
-此组件在服务容器中自动注册为`security`，您可以重新注册它来设置它的选项:
+This component is automatically registered in the services container as `security`, you can re-register it to setup its options:
 
 ```php
 <?php
@@ -199,6 +199,6 @@ $number     = $random->number($n);
 
 <a name='resources'></a>
 
-## External Resources
+## 外部资源
 
 * [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [Github](https://github.com/phalcon/vokuro)
