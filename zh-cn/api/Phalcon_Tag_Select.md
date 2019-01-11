@@ -6,11 +6,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Tag\Select'
 
 # Abstract class **Phalcon\Tag\Select**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/tag/select.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/tag/select.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Generates a SELECT html tag using a static array of values or a Phalcon\Mvc\Model resultset
 
-## Methods
+## 方法
 
 public static **selectField** (*array* $parameters, [*array* $data])
 
