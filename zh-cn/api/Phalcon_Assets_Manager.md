@@ -6,11 +6,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Assets\Manager'
 
 # Class **Phalcon\Assets\Manager**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/assets/manager.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/assets/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Manages collections of CSS/Javascript assets
 
-## 方法
+## Methods
 
 public **__construct** ([*array* $options])
 
