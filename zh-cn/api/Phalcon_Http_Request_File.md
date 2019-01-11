@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Http\Request\File'
 
 *implements* [Phalcon\Http\Request\FileInterface](/3.4/en/api/Phalcon_Http_Request_FileInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/request/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/request/file.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Provides OO wrappers to the $_FILES superglobal
 
@@ -33,7 +33,7 @@ class PostsController extends Controller
 
 ```
 
-## Methods
+## 方法
 
 public **getError** ()
 
