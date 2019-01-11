@@ -16,7 +16,7 @@ Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the diff
 
 Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.
 
-另外，这种模式会增加可测试性的代码，从而使它不容易出错。
+Additionally, this pattern increases testability in the code, thus making it less prone to errors.
 
 ```php
 <?php
