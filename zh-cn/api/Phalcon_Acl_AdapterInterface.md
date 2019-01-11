@@ -32,15 +32,15 @@ abstract public **addRole** (*mixed* $role, [*mixed* $accessInherits])
 
 abstract public **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
 
-做一个角色继承自另一个现有角色
+Do a role inherit from another existing role
 
 abstract public **isRole** (*mixed* $roleName)
 
-检查角色列表中是否存在角色
+检查角色列表中是否存在的作用
 
 abstract public **isResource** (*mixed* $resourceName)
 
-检查资源列表中是否存在资源
+请检查资源列表中是否存在资源
 
 abstract public **addResource** (*mixed* $resourceObject, *mixed* $accessList)
 
@@ -48,11 +48,11 @@ abstract public **addResource** (*mixed* $resourceObject, *mixed* $accessList)
 
 abstract public **addResourceAccess** (*mixed* $resourceName, *mixed* $accessList)
 
-给资源添加访问权限
+将访问添加到资源
 
 abstract public **dropResourceAccess** (*mixed* $resourceName, *mixed* $accessList)
 
-删除资源的访问权限
+删除从资源的访问权限
 
 abstract public **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
@@ -64,7 +64,7 @@ abstract public **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $acc
 
 abstract public **isAllowed** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*array* $parameters])
 
-检查角色是否可以访问资源
+检查是否允许角色从一个资源访问的行动
 
 abstract public **getActiveRole** ()
 
