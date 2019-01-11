@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Assets\Inline'
 
 *implements* [Phalcon\Assets\ResourceInterface](/3.4/en/api/Phalcon_Assets_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/assets/inline.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/assets/inline.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Represents an inline asset
 
@@ -19,7 +19,7 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 
 ```
 
-## Methods
+## 方法
 
 public **getType** ()
 
