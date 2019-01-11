@@ -10,7 +10,7 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\View'
 
 *implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\ViewInterface](/3.4/en/api/Phalcon_Mvc_ViewInterface), [Phalcon\Mvc\ViewBaseInterface](/3.4/en/api/Phalcon_Mvc_ViewBaseInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/view.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/view.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Phalcon\Mvc\View is a class for working with the "view" portion of the model-view-controller pattern. That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping.
 
@@ -35,7 +35,7 @@ echo $view->getContent();
 
 ```
 
-## Constants
+## 常量
 
 *integer* **LEVEL_MAIN_LAYOUT**
 
@@ -53,7 +53,7 @@ echo $view->getContent();
 
 *integer* **CACHE_MODE_INVERSE**
 
-## Methods
+## 方法
 
 public **getRenderLevel** ()
 
@@ -510,4 +510,4 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
 
-Returns the internal event manager
+返回内部事件管理器
