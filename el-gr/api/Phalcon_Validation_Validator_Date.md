@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '3.4' title: 'Phalcon\Validation\Validator\Date'
+layout: article language: 'en' version: '3.4' title: 'Phalcon\Validation\Validator\Date'
 
 * * *
 
