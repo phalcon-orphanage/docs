@@ -6,11 +6,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Annotations\Annota
 
 # Class **Phalcon\Annotations\Annotation**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/annotation.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/annotation.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Represents a single annotation in an annotations collection
 
-## Methods
+## 方法
 
 public **__construct** (*array* $reflectionData)
 
