@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '3.4' title: 'Phalcon\Mvc\Model\MetaData\Strategy\Annotations'
+layout: article language: 'en' version: '3.4' title: 'Phalcon\Mvc\Model\MetaData\Strategy\Annotations'
 
 * * *
 
