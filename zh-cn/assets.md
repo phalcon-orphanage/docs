@@ -14,7 +14,7 @@ layout: default language: 'en' version: '4.0'
 
 <a name='add'></a>
 
-## Adding Resources
+## 添加资源
 
 Assets supports two built-in resources: CSS and JavaScripts. You can create other resources if you need. The assets manager internally stores two default collections of resources - one for JavaScript and another for CSS.
 
@@ -104,7 +104,7 @@ public function indexAction()
 
 <a name='collections'></a>
 
-## Collections
+## 集合
 
 Collections group resources of the same type. The assets manager implicitly creates two collections: `css` and `js`. You can create additional collections to group specific resources to make it easier to place those resources in the views:
 
@@ -293,7 +293,7 @@ $jsFooterCollection->setTargetUri('production/final.js');
 
 Phalcon provides 2 built-in filters to minify both JavaScript and CSS, their C-backend provide the minimum overhead to perform this task:
 
-| Filter                                                                | Description                                                                                                  |
+| Filter                                                                | 描述                                                                                                           |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | [Phalcon\Assets\Filters\Jsmin](api/Phalcon_Assets_Filters_Jsmin)   | Minifies JavaScript by removing unnecessary characters that are ignored by Javascript interpreters/compilers |
 | [Phalcon\Assets\Filters\Cssmin](api/Phalcon_Assets_Filters_Cssmin) | Minifies CSS by removing unnecessary characters that are already ignored by browsers                         |
