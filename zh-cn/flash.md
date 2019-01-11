@@ -16,14 +16,14 @@ Flash messages are used to notify the user about the state of actions he/she mad
 
 This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
 
-| Adapter | Description                                                                                  | API                                                  |
+| 适配器     | 描述                                                                                           | API                                                  |
 | ------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | Direct  | Directly outputs the messages passed to the flasher                                          | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)   |
 | Session | Temporarily stores the messages in session, then messages can be printed in the next request | [Phalcon\Flash\Session](api/Phalcon_Flash_Session) |
 
 <a name='usage'></a>
 
-## Usage
+## 使用
 
 Usually the Flash Messaging service is requested from the services container. If you're using [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) then [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct) is automatically registered as `flash` service and [Phalcon\Flash\Session](api/Phalcon_Flash_Session) is automatically registered as `flashSession` service. You can also manually register it:
 
