@@ -166,7 +166,7 @@ foreach ($annotations as $annotation) {
 
 <a name='types'></a>
 
-## 注释类型
+## 类型的注释
 
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
@@ -231,7 +231,7 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 <a name='usage-cache'></a>
 
-### Cache Enabler with Annotations
+### 带注释的缓存启用
 
 让我们假装我们创建了以下控制器并且您想要创建一个自动启动缓存中，如果最后执行的操作被标记为可缓存的插件。 首先，当一个路由被执行时，我们注册一个插件等待调度服务被通知︰
 
@@ -346,7 +346,7 @@ class NewsController extends Controller
 
 <a name='usage-access-management'></a>
 
-### 私有/公共 的注释
+### Private/Public areas with Annotations
 
 你可以使用注释来告诉 ACL 控制器，哪个控制器属于管理区域︰
 
@@ -423,7 +423,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters-custom'></a>
 
-### 执行您自己的适配器
+### 实现自己的适配器
 
 The [Phalcon\Annotations\AdapterInterface](api/Phalcon_Annotations_AdapterInterface) interface must be implemented in order to create your own annotations adapters or extend the existing ones.
 
