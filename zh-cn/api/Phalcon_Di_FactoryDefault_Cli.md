@@ -10,11 +10,11 @@ layout: default language: 'en' version: '4.0' title: 'Phalcon\Di\FactoryDefault\
 
 *implements* [Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/di/factorydefault/cli.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/di/factorydefault/cli.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually. This class is specially suitable for CLI applications
 
-## Methods
+## 方法
 
 public **__construct** ()
 
@@ -26,7 +26,7 @@ Sets the internal event manager
 
 public **getInternalEventsManager** () inherited from [Phalcon\Di](/3.4/en/api/Phalcon_Di)
 
-Returns the internal event manager
+返回内部事件管理器
 
 public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](/3.4/en/api/Phalcon_Di)
 
