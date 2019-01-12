@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
 
@@ -16,10 +16,10 @@ layout: default language: 'en' version: '4.0'
 
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
-| 类                                                                     | 描述                                                                                  |
-| --------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd)           | Requires the [GD PHP extension](http://php.net/manual/en/book.image.php)            |
-| [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) | Requires the [ImageMagick PHP extension](http://php.net/manual/en/book.imagick.php) |
+| 类                                                                     | 描述                                                                                   |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd)           | Requires the [GD PHP extension](https://php.net/manual/en/book.image.php)            |
+| [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) | Requires the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php) |
 
 <a name='adapters-factory'></a>
 
