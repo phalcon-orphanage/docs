@@ -1,14 +1,14 @@
 * * *
 
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Router\Route'
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Router\Route'
 
 * * *
 
 # Class **Phalcon\Mvc\Router\Route**
 
-*implements* [Phalcon\Mvc\Router\RouteInterface](/3.4/en/api/Phalcon_Mvc_Router_RouteInterface)
+*implements* [Phalcon\Mvc\Router\RouteInterface](/4.0/en/api/Phalcon_Mvc_Router_RouteInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/router/route.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/router/route.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This class represents every route added to the router
 
@@ -175,7 +175,7 @@ public **getHostname** ()
 
 Returns the hostname restriction if any
 
-public **setGroup** ([Phalcon\Mvc\Router\GroupInterface](/3.4/en/api/Phalcon_Mvc_Router_GroupInterface) $group)
+public **setGroup** ([Phalcon\Mvc\Router\GroupInterface](/4.0/en/api/Phalcon_Mvc_Router_GroupInterface) $group)
 
 Sets the group associated with the route
 
