@@ -1,0 +1,387 @@
+[
+    {
+        "text": "General",
+        "url": "/introduction",
+        "menu": [
+            {
+                "text": "Notas de la Versión",
+                "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
+                "external": true
+            },
+            {
+                "text": "Actualizar",
+                "url": ""
+            },
+            {
+                "text": "Patrocinadores",
+                "url": "/sponsors"
+            }
+        ]
+    },
+    {
+        "text": "Contribuciones",
+        "url": "",
+        "menu": [
+            {
+                "text": "Controladores",
+                "url": "/contributions"
+            },
+            {
+                "text": "Pull Requests",
+                "url": "/new-pull-request"
+            },
+            {
+                "text": "NFR (Solicitud de Nuevas Características)",
+                "url": "/new-feature-request"
+            },
+            {
+                "text": "Generación de Backtrace",
+                "url": "/generating-backtrace"
+            },
+            {
+                "text": "Pruebas Reproducibles",
+                "url": "/reproducible-tests"
+            },
+            {
+                "text": "Guía para Pruebas",
+                "url": ""
+            }
+        ]
+    },
+    {
+        "text": "Cómo Empezar",
+        "url": "",
+        "menu": [
+            {
+                "text": "Instalación",
+                "url": "/installation"
+            },
+            {
+                "text": "Configuración de Servidor Web",
+                "url": "/webserver-setup"
+            },
+            {
+                "text": "WAMP",
+                "url": "/webserver-wamp"
+            },
+            {
+                "text": "XAMPP",
+                "url": "/webserver-xampp"
+            }
+        ]
+    },
+    {
+        "text": "Entornos",
+        "url": "",
+        "menu": [
+            {
+                "text": "Phalcon Compose (Docker)",
+                "url": "/environments-docker"
+            },
+            {
+                "text": "Nanobox",
+                "url": "/environments-nanobox"
+            },
+            {
+                "text": "Phalcon Box (Vagrant)",
+                "url": "/environments-vagrant"
+            }
+        ]
+    },
+    {
+        "text": "Herramientas de Desarrollo",
+        "url": "",
+        "menu": [
+            {
+                "text": "Instalación",
+                "url": "/devtools-installation"
+            },
+            {
+                "text": "Uso",
+                "url": "/devtools-usage"
+            },
+            {
+                "text": "Depuración",
+                "url": "/debug"
+            }
+        ]
+    },
+    {
+        "text": "Tutoriales",
+        "url": "",
+        "menu": [
+            {
+                "text": "Rendimiento",
+                "url": "/performance"
+            },
+            {
+                "text": "Básico",
+                "url": "/tutorial-base"
+            },
+            {
+                "text": "Invo",
+                "url": "/tutorial-invo"
+            },
+            {
+                "text": "REST",
+                "url": "/tutorial-rest"
+            },
+            {
+                "text": "Vokuro",
+                "url": "/tutorial-vokuro"
+            },
+            {
+                "text": "Casos de uso",
+                "url": "/use-case"
+            }
+        ]
+    },
+    {
+        "text": "Núcleo",
+        "url": "",
+        "menu": [
+            {
+                "text": "Índice del API",
+                "url": "/api/"
+            },
+            {
+                "text": "Application",
+                "url": "/application"
+            },
+            {
+                "text": "Micro",
+                "url": "/application-micro"
+            },
+            {
+                "text": "CLI",
+                "url": "/application-cli"
+            },
+            {
+                "text": "Contenedor DI",
+                "url": "/di"
+            },
+            {
+                "text": "MVC",
+                "url": "/mvc"
+            }
+        ]
+    },
+    {
+        "text": "Servicios",
+        "url": "",
+        "menu": [
+            {
+                "text": "Cache",
+                "url": "/cache"
+            },
+            {
+                "text": "Configuración",
+                "url": "/config"
+            },
+            {
+                "text": "Escaper",
+                "url": "/escaper"
+            },
+            {
+                "text": "Loader",
+                "url": "/loader"
+            },
+            {
+                "text": "Logging",
+                "url": "/logging"
+            },
+            {
+                "text": "Colas",
+                "url": "/queue"
+            }
+        ]
+    },
+    {
+        "text": "Base de Datos",
+        "url": "",
+        "menu": [
+            {
+                "text": "Capa",
+                "url": "/db-layer"
+            },
+            {
+                "text": "PHQL",
+                "url": "/db-phql"
+            },
+            {
+                "text": "ODM",
+                "url": "/db-odm"
+            },
+            {
+                "text": "Modelos",
+                "url": "/db-models"
+            },
+            {
+                "text": "Advanced",
+                "url": "/db-models-advanced"
+            },
+            {
+                "text": "Comportamientos",
+                "url": "/db-models-behaviors"
+            },
+            {
+                "text": "Cache",
+                "url": "/db-models-cache"
+            },
+            {
+                "text": "Eventos",
+                "url": "/db-models-events"
+            },
+            {
+                "text": "Metadatos",
+                "url": "/db-models-metadata"
+            },
+            {
+                "text": "Relaciones",
+                "url": "/db-models-relationships"
+            },
+            {
+                "text": "Transacciones",
+                "url": "/db-models-transactions"
+            },
+            {
+                "text": "Validadores",
+                "url": "/db-models-validation"
+            },
+            {
+                "text": "Migraciones",
+                "url": "/db-migrations"
+            },
+            {
+                "text": "Paginación",
+                "url": "/db-pagination"
+            }
+        ]
+    },
+    {
+        "text": "Front End",
+        "url": "",
+        "menu": [
+            {
+                "text": "Recursos",
+                "url": "/assets"
+            },
+            {
+                "text": "Mensajes Flash",
+                "url": "/flash"
+            },
+            {
+                "text": "Formularios",
+                "url": "/forms"
+            },
+            {
+                "text": "Imagen",
+                "url": "/image"
+            },
+            {
+                "text": "Tag",
+                "url": "/tag"
+            },
+            {
+                "text": "Vistas",
+                "url": "/views"
+            },
+            {
+                "text": "Volt",
+                "url": "/volt"
+            }
+        ]
+    },
+    {
+        "text": "Lógica de Negocio",
+        "url": "",
+        "menu": [
+            {
+                "text": "Listas de Control de Acceso",
+                "url": "/acl"
+            },
+            {
+                "text": "Anotaciones",
+                "url": "/annotations"
+            },
+            {
+                "text": "Controladores",
+                "url": "/controllers"
+            },
+            {
+                "text": "Dispatcher",
+                "url": "/dispatcher"
+            },
+            {
+                "text": "Gestor de Eventos",
+                "url": "/events"
+            },
+            {
+                "text": "Filtros",
+                "url": "/filter"
+            },
+            {
+                "text": "Ruteo",
+                "url": "/routing"
+            },
+            {
+                "text": "Sesiones",
+                "url": "/session"
+            },
+            {
+                "text": "Url",
+                "url": "/url"
+            },
+            {
+                "text": "Validación",
+                "url": "/validation"
+            }
+        ]
+    },
+    {
+        "text": "HTTP",
+        "url": "",
+        "menu": [
+            {
+                "text": "Cookies",
+                "url": "/cookies"
+            },
+            {
+                "text": "Consulta",
+                "url": "/request"
+            },
+            {
+                "text": "Respuesta",
+                "url": "/response"
+            }
+        ]
+    },
+    {
+        "text": "Seguridad",
+        "url": "",
+        "menu": [
+            {
+                "text": "Crypto",
+                "url": "/crypt"
+            },
+            {
+                "text": "Seguridad",
+                "url": "/security"
+            }
+        ]
+    },
+    {
+        "text": "i18n",
+        "url": "",
+        "menu": [
+            {
+                "text": "Internacionalización",
+                "url": "/i18n"
+            },
+            {
+                "text": "Traducciones",
+                "url": "/translate"
+            }
+        ]
+    }
+]
