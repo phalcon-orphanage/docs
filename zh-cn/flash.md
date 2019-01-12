@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
 
@@ -216,4 +216,4 @@ In this case you need to manually print the messages in the corresponding view:
 <p><?php $this->flashSession->output() ?></p>
 ```
 
-The attribute `flashSession` is how the flash was previously set into the dependency injection container. You need to start the [session](/3.4/en/session) first to successfully use the `flashSession` messenger.
+The attribute `flashSession` is how the flash was previously set into the dependency injection container. You need to start the [session](/4.0/en/session) first to successfully use the `flashSession` messenger.
