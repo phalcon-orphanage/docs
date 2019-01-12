@@ -1,14 +1,14 @@
 ---
-layout: default
+layout: article
 language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Criteria'
 ---
 # Class **Phalcon\Mvc\Model\Criteria**
 
-*implements* [Phalcon\Mvc\Model\CriteriaInterface](/3.4/en/api/Phalcon_Mvc_Model_CriteriaInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Mvc\Model\CriteriaInterface](/4.0/en/api/Phalcon_Mvc_Model_CriteriaInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/criteria.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/criteria.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This class is used to build the array parameter required by
 Phalcon\Mvc\Model::find() and Phalcon\Mvc\Model::findFirst()
@@ -29,7 +29,7 @@ $robots = Robots::query()
 
 
 ## Methods
-public  **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -73,7 +73,7 @@ Sets SELECT DISTINCT / SELECT ALL flag
 
 
 
-public [Phalcon\Mvc\Model\Criteria](/3.4/en/api/Phalcon_Mvc_Model_Criteria) **columns** (*string* | *array* $columns)
+public [Phalcon\Mvc\Model\Criteria](/4.0/en/api/Phalcon_Mvc_Model_Criteria) **columns** (*string* | *array* $columns)
 
 Sets the columns to be queried
 
@@ -339,7 +339,7 @@ Returns all the parameters defined in the criteria
 
 
 
-public static  **fromInput** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector, *mixed* $modelName, *array* $data, [*mixed* $operator])
+public static  **fromInput** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector, *mixed* $modelName, *array* $data, [*mixed* $operator])
 
 Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST
 

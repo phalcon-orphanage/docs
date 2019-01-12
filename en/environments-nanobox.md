@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: article
 language: 'en'
 version: '4.0'
 ---
@@ -93,7 +93,7 @@ Nanobox provides a `php-server` helper script that starts both Apache (or Nginx 
 nanobox run php-server
 ```
 
-Once running, you can visit your app at [phalcon.dev](http://phalcon.dev).
+Once running, you can visit your app at [phalcon.dev](https://phalcon.dev).
 
 <a name='environment'></a>
 ## Check Out the Environment
@@ -120,4 +120,4 @@ exit
 ## Phalcon and Nanobox
 Nanobox gives you everything you need develop and run your Phalcon app in an isolated virtual environment. With the `boxfile.yml` in your project, collaborators can get up and running in minutes simply by running `nanobox run`.
 
-Nanobox has a [Phalcon Quickstart](https://github.com/nanobox-quickstarts/nanobox-phalcon) that includes everything covered in this post. They also have as guides for [using Phalcon with Nanobox](https://guides.nanobox.io/php/phalcon/). In future posts, we'd like to cover other aspects of using Phalcon with Nanobox, including adding and connecting to a database, deploying Phalcon into production, etc. If you're interested [let us know on Twitter](http://twitter.com/nanobox_io).
+Nanobox has a [Phalcon Quickstart](https://github.com/nanobox-quickstarts/nanobox-phalcon) that includes everything covered in this post. They also have as guides for [using Phalcon with Nanobox](https://guides.nanobox.io/php/phalcon/). In future posts, we'd like to cover other aspects of using Phalcon with Nanobox, including adding and connecting to a database, deploying Phalcon into production, etc. If you're interested [let us know on Twitter](https://twitter.com/nanobox_io).

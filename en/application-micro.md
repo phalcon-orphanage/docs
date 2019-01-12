@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: article
 language: 'en'
 version: '4.0'
 ---
@@ -47,7 +47,7 @@ Defining routes in a [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application is v
 
 <a name='routing-setup'></a>
 ### Setup
-Routing is handled by the [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) object. [[Info](/3.4/en/routing)]
+Routing is handled by the [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) object. [[Info](/4.0/en/routing)]
 
 <h5 class='alert alert-warning' markdown='1'>Routes must always start with `/`</h5>
 
@@ -112,7 +112,7 @@ Each method has its advantages and disadvantages. It all depends on the design a
 ## Rewrite Rules
 In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
 
-Those changes are outlined in the [rewrite rules](/3.4/en/rewrite-rules).
+Those changes are outlined in the [rewrite rules](/4.0/en/rewrite-rules).
 
 <a name='routing-handlers'></a>
 ## Handlers
@@ -593,7 +593,7 @@ $app->get(
 );
 ```
 
-Additional information: [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) [Info](/3.4/en/routing)
+Additional information: [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) [Info](/4.0/en/routing)
 
 <a name='routing-redirections'></a>
 ## Redirections

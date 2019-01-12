@@ -1,12 +1,12 @@
 ---
-layout: default
+layout: article
 language: 'en'
 version: '4.0'
 title: 'Phalcon\Tag'
 ---
 # Class **Phalcon\Tag**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/tag.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/tag.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Phalcon\Tag is designed to simplify building of HTML tags.
 It provides a set of helpers to generate HTML in a dynamic way.
@@ -49,7 +49,7 @@ Renders parameters keeping order in their HTML attributes
 
 
 
-public static  **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
+public static  **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector container.
 
@@ -166,11 +166,11 @@ echo Phalcon\Tag::linkTo(
     ]
 );
 
-echo Phalcon\Tag::linkTo("http://phalconphp.com/", "Phalcon", false);
+echo Phalcon\Tag::linkTo("https://phalconphp.com/", "Phalcon", false);
 
 echo Phalcon\Tag::linkTo(
     [
-        "http://phalconphp.com/",
+        "https://phalconphp.com/",
         "Phalcon Home",
         false,
     ]
@@ -178,7 +178,7 @@ echo Phalcon\Tag::linkTo(
 
 echo Phalcon\Tag::linkTo(
     [
-        "http://phalconphp.com/",
+        "https://phalconphp.com/",
         "Phalcon Home",
         "local" => false,
     ]
@@ -186,7 +186,7 @@ echo Phalcon\Tag::linkTo(
 
 echo Phalcon\Tag::linkTo(
     [
-        "action" => "http://phalconphp.com/",
+        "action" => "https://phalconphp.com/",
         "text"   => "Phalcon Home",
         "local"  => false,
         "target" => "_new"
@@ -678,7 +678,7 @@ Builds a LINK[rel="stylesheet"] tag
 ```php
 <?php
 
-echo Phalcon\Tag::stylesheetLink("http://fonts.googleapis.com/css?family=Rosario", false);
+echo Phalcon\Tag::stylesheetLink("https://fonts.googleapis.com/css?family=Rosario", false);
 echo Phalcon\Tag::stylesheetLink("css/style.css");
 
 ```
@@ -687,7 +687,7 @@ Volt Syntax:
 ```php
 <?php
 
-{% raw %}{{ stylesheet_link("http://fonts.googleapis.com/css?family=Rosario", false) }}{% endraw %}
+{% raw %}{{ stylesheet_link("https://fonts.googleapis.com/css?family=Rosario", false) }}{% endraw %}
 {% raw %}{{ stylesheet_link("css/style.css") }}{% endraw %}
 
 ```
@@ -701,7 +701,7 @@ Builds a SCRIPT[type="javascript"] tag
 ```php
 <?php
 
-echo Phalcon\Tag::javascriptInclude("http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js", false);
+echo Phalcon\Tag::javascriptInclude("https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js", false);
 echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
 
 ```
@@ -710,7 +710,7 @@ Volt syntax:
 ```php
 <?php
 
-{% raw %}{{ javascript_include("http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js", false) }}{% endraw %}
+{% raw %}{{ javascript_include("https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js", false) }}{% endraw %}
 {% raw %}{{ javascript_include("javascript/jquery.js") }}{% endraw %}
 
 ```
@@ -741,7 +741,7 @@ Volt Syntax:
 
 {% raw %}{{ image("img/bg.png") }}{% endraw %}
 {% raw %}{{ image("img/photo.jpg", "alt": "Some Photo") }}{% endraw %}
-{% raw %}{{ image("http://static.mywebsite.com/img/bg.png", false) }}{% endraw %}
+{% raw %}{{ image("https://static.mywebsite.com/img/bg.png", false) }}{% endraw %}
 
 ```
 

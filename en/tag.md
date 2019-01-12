@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: article
 language: 'en'
 version: '4.0'
 ---
@@ -7,7 +7,7 @@ version: '4.0'
 # View Helpers (Tags)
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the [Phalcon\Tag](api/Phalcon_Tag) component which in turn offers view helpers to generate HTML markup.
 
-This component can be used in a plain HTML+PHP view or in a [Volt](/3.4/en/volt) template.
+This component can be used in a plain HTML+PHP view or in a [Volt](/4.0/en/volt) template.
 
 <h5 class='alert alert-warning' markdown='1'>This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit the [Phalcon\Tag](api/Phalcon_Tag) page in the API for a complete reference. </h5>
 
@@ -19,7 +19,7 @@ Available document type constants in [Phalcon\Tag](api/Phalcon_Tag) namespace ar
 
 | Constant             | Document type          |
 |----------------------|------------------------|
-| HTML32               | HTML 3.4               |
+| HTML32               | HTML 4.0               |
 | HTML401_STRICT       | HTML 4.01 Strict       |
 | HTML401_TRANSITIONAL | HTML 4.01 Transitional |
 | HTML401_FRAMESET     | HTML 4.01 Frameset     |
@@ -54,7 +54,7 @@ The following HTML will be produced.
 
 ```html
 <!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01//EN'
-        'http://www.w3.org/TR/html4/strict.dtd'>
+        'https://www.w3.org/TR/html4/strict.dtd'>
 <html>
 <!-- your HTML code -->
 </html>
@@ -152,7 +152,7 @@ Same form generated in Volt:
 {% endraw %}
 ```
 
-Phalcon also provides a [form builder](/3.4/en/forms) to create forms in an object-oriented manner.
+Phalcon also provides a [form builder](/4.0/en/forms) to create forms in an object-oriented manner.
 
 <a name='helpers-for-form-elements'></a>
 ## Helpers to Generate Form Elements
@@ -201,7 +201,7 @@ Volt syntax:
 
 <a name='select-boxes'></a>
 ## Making Select Boxes
-Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are `Phalcon\Tag::select()` and `Phalcon\Tag::selectStatic()`. `Phalcon\Tag::select()` has been was specifically designed to work with the Phalcon [Models](/3.4/en/models) ([Phalcon\Mvc\Model](api/Phalcon_Mvc_Model)), while `Phalcon\Tag::selectStatic()` can with PHP arrays.
+Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are `Phalcon\Tag::select()` and `Phalcon\Tag::selectStatic()`. `Phalcon\Tag::select()` has been was specifically designed to work with the Phalcon [Models](/4.0/en/models) ([Phalcon\Mvc\Model](api/Phalcon_Mvc_Model)), while `Phalcon\Tag::selectStatic()` can with PHP arrays.
 
 ```php
 <?php
@@ -492,8 +492,8 @@ Volt syntax:
 ```php
 <?php
 
-// Generate <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Rosario' type='text/css'>
-echo $this->tag->stylesheetLink('http://fonts.googleapis.com/css?family=Rosario', false);
+// Generate <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rosario' type='text/css'>
+echo $this->tag->stylesheetLink('https://fonts.googleapis.com/css?family=Rosario', false);
 
 // Generate <link rel='stylesheet' href='/your-app/css/styles.css' type='text/css'>
 echo $this->tag->stylesheetLink('css/styles.css');
@@ -502,8 +502,8 @@ echo $this->tag->stylesheetLink('css/styles.css');
 Volt syntax:
 ```twig
 {% raw %}
-{# Generate <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Rosario' type='text/css'> #}
-{{ stylesheet_link('http://fonts.googleapis.com/css?family=Rosario', false) }}
+{# Generate <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rosario' type='text/css'> #}
+{{ stylesheet_link('https://fonts.googleapis.com/css?family=Rosario', false) }}
 
 {# Generate <link rel='stylesheet' href='/your-app/css/styles.css' type='text/css'> #}
 {{ stylesheet_link('css/styles.css') }}
@@ -515,8 +515,8 @@ Volt syntax:
 ```php
 <?php
 
-// Generate <script src='http://localhost/javascript/jquery.min.js' type='text/javascript'></script>
-echo $this->tag->javascriptInclude('http://localhost/javascript/jquery.min.js', false);
+// Generate <script src='https://localhost/javascript/jquery.min.js' type='text/javascript'></script>
+echo $this->tag->javascriptInclude('https://localhost/javascript/jquery.min.js', false);
 
 // Generate <script src='/your-app/javascript/jquery.min.js' type='text/javascript'></script>
 echo $this->tag->javascriptInclude('javascript/jquery.min.js');
@@ -525,8 +525,8 @@ echo $this->tag->javascriptInclude('javascript/jquery.min.js');
 Volt syntax:
 ```twig
 {% raw %}
-{# Generate <script src='http://localhost/javascript/jquery.min.js' type='text/javascript'></script> #}
-{{ javascript_include('http://localhost/javascript/jquery.min.js', false) }}
+{# Generate <script src='https://localhost/javascript/jquery.min.js' type='text/javascript'></script> #}
+{{ javascript_include('https://localhost/javascript/jquery.min.js', false) }}
 
 {# Generate <script src='/your-app/javascript/jquery.min.js' type='text/javascript'></script> #}
 {{ javascript_include('javascript/jquery.min.js') }}
@@ -574,7 +574,7 @@ This is my canvas
 
 <a name='tag-helpers'></a>
 ## Tag Service
-[Phalcon\Tag](api/Phalcon_Tag) is available via the [tag](/3.4/en/tag) service, this means you can access it from any part of the application where the services container is located:
+[Phalcon\Tag](api/Phalcon_Tag) is available via the [tag](/4.0/en/tag) service, this means you can access it from any part of the application where the services container is located:
 
 ```php
 <?php echo $this->tag->linkTo('pages/about', 'About') ?>
@@ -605,7 +605,7 @@ class MyTags extends Tag
 }
 ```
 
-Then change the definition of the service [tag](/3.4/en/tag):
+Then change the definition of the service [tag](/4.0/en/tag):
 
 ```php
 <?php
@@ -743,4 +743,4 @@ Now you are ready to use your new helper within your views:
 </body>
 ```
 
-You can also check out [Volt](/3.4/en/volt) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by [Phalcon\Tag](api/Phalcon_Tag).
+You can also check out [Volt](/4.0/en/volt) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by [Phalcon\Tag](api/Phalcon_Tag).

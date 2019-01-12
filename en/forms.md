@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: article
 language: 'en'
 version: '4.0'
 ---
@@ -254,7 +254,7 @@ $form = new UsersForm(
 
 <a name='validation'></a>
 ## Validation
-Phalcon forms are integrated with the [validation](/3.4/en/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
+Phalcon forms are integrated with the [validation](/4.0/en/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
 
 ```php
 <?php
@@ -364,7 +364,7 @@ $email->setFilters(
 $form->add($email);
 ```
 
-<h5 class='alert alert-info' markdown='1'>Learn more about filtering in Phalcon by reading the [Filter documentation](/3.4/en/filter) </h5>
+<h5 class='alert alert-info' markdown='1'>Learn more about filtering in Phalcon by reading the [Filter documentation](/4.0/en/filter) </h5>
 
 <a name='entities'></a>
 ## Forms + Entities
@@ -670,4 +670,4 @@ echo $loginForm->render();
 
 <a name='external'></a>
 ## External Resources
-* [Vökuró](http://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]
+* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]

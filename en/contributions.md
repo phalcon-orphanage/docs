@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: article
 language: 'en'
 version: '4.0'
 ---
@@ -49,7 +49,7 @@ Please follow this guides to understand how to generate the backtrace:
 - Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards][psr]
 - Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
 
-Before submit **new functionality**, please open a [NFR](/3.4/en/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Before submit **new functionality**, please open a [NFR](/4.0/en/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
 - An update to the `CHANGELOG.md`
 - Unit Tests
@@ -61,7 +61,7 @@ If you have any questions about how to use Phalcon, please see the [support page
 
 <a name='requesting-features'></a>
 ## Requesting Features
-If you have any changes or new features in mind, please fill an [NFR](/3.4/en/new-feature-request).
+If you have any changes or new features in mind, please fill an [NFR](/4.0/en/new-feature-request).
 
 Thanks!
 
@@ -73,12 +73,12 @@ Thanks!
 [srt]: https://github.com/phalcon/cphalcon/wiki/Submit-Reproducible-Test
 [segfault]: https://en.wikipedia.org/wiki/Segmentation_fault
 [gdb-howto]: https://bugs.php.net/bugs-generating-backtrace.php
-[gdb-howto-w32]: http://bugs.php.net/bugs-generating-backtrace-win32.php
+[gdb-howto-w32]: https://bugs.php.net/bugs-generating-backtrace-win32.php
 [gdb-dbgsym]: https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols
-[internals-build-php]: http://www.phpinternalsbook.com/build_system/building_php.html
+[internals-build-php]: https://www.phpinternalsbook.com/build_system/building_php.html
 [testing]: https://github.com/phalcon/cphalcon/blob/master/tests/README.md
 [zephir]: https://zephir-lang.com/
-[psr]: http://www.php-fig.org/psr/
+[psr]: https://www.php-fig.org/psr/
 [support]: https://phalconphp.com/support
-[nfr]: /3.4/en/new-feature-request
+[nfr]: /4.0/en/new-feature-request
 

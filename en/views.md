@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: article
 language: 'en'
 version: '4.0'
 ---
@@ -11,7 +11,7 @@ Views represent the user interface of your application. Views are often HTML fil
 
 <a name='integrating-views-with-controllers'></a>
 ## Integrating Views with Controllers
-Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *http://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
+Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *https://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
 | Server Address    | 127.0.0.1 |
 |-------------------|-----------|
@@ -715,7 +715,7 @@ class PostsController extends Controller
 }
 ```
 
-When we do not define a key to the cache, the component automatically creates one using an [MD5](http://php.net/manual/en/function.md5.php) hash of the name of the controller and view currently being rendered in the format of `controller/view`. It is a good practice to define a key for each action so you can easily identify the cache associated with each view.
+When we do not define a key to the cache, the component automatically creates one using an [MD5](https://php.net/manual/en/function.md5.php) hash of the name of the controller and view currently being rendered in the format of `controller/view`. It is a good practice to define a key for each action so you can easily identify the cache associated with each view.
 
 When the View component needs to cache something it will request a cache service from the services container. The service name convention for this service is `viewCache`:
 
@@ -896,7 +896,7 @@ There are adapters available for several template engines on the [Phalcon Incuba
 ## Injecting services in View
 Every view executed is included inside a [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) instance, providing easy access to the application's service container.
 
-The following example shows how to write a jQuery [ajax request](http://api.jquery.com/jQuery.ajax/) using a URL with the framework conventions. The service `url` (usually [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)) is injected in the view by accessing a property with the same name:
+The following example shows how to write a jQuery [ajax request](https://api.jquery.com/jQuery.ajax/) using a URL with the framework conventions. The service `url` (usually [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)) is injected in the view by accessing a property with the same name:
 
 ```js
 <script type='text/javascript'>
@@ -1048,7 +1048,7 @@ $di->set(
 );
 ```
 
-The following example shows how to create a plugin that cleans/repair the HTML produced by the render process using [Tidy](http://www.php.net/manual/en/book.tidy.php):
+The following example shows how to create a plugin that cleans/repair the HTML produced by the render process using [Tidy](https://www.php.net/manual/en/book.tidy.php):
 
 ```php
 <?php

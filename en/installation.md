@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: article
 language: 'en'
 version: '4.0'
 ---
@@ -33,10 +33,10 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='requirements-software-optional'></a>
 ### Optional depending on the needs of your application
-* [PDO](http://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](http://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](http://php.net/manual/en/ref.pdo-pgsql.php) etc.)
-* [OpenSSL](http://php.net/manual/en/book.openssl.php) Extension
-* [Mbstring](http://php.net/manual/en/book.mbstring.php) Extension
-* [Memcache](http://php.net/manual/en/book.memcache.php), [Memcached](http://php.net/manual/en/book.memcached.php) or other relevant cache adapters depending on your usage of cache
+* [PDO](https://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
+* [OpenSSL](https://php.net/manual/en/book.openssl.php) Extension
+* [Mbstring](https://php.net/manual/en/book.mbstring.php) Extension
+* [Memcache](https://php.net/manual/en/book.memcache.php), [Memcached](https://php.net/manual/en/book.memcached.php) or other relevant cache adapters depending on your usage of cache
 
 <a name='installation'></a>
 # Installation

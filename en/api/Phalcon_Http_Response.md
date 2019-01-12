@@ -1,14 +1,14 @@
 ---
-layout: default
+layout: article
 language: 'en'
 version: '4.0'
 title: 'Phalcon\Http\Response'
 ---
 # Class **Phalcon\Http\Response**
 
-*implements* [Phalcon\Http\ResponseInterface](/3.4/en/api/Phalcon_Http_ResponseInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Http\ResponseInterface](/4.0/en/api/Phalcon_Http_ResponseInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/response.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/response.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Part of the HTTP cycle is return responses to the clients.
 Phalcon\HTTP\Response is the Phalcon component responsible to achieve this task.
@@ -34,7 +34,7 @@ Phalcon\Http\Response constructor
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -74,7 +74,7 @@ print_r(
 
 
 
-public  **setHeaders** ([Phalcon\Http\Response\HeadersInterface](/3.4/en/api/Phalcon_Http_Response_HeadersInterface) $headers)
+public  **setHeaders** ([Phalcon\Http\Response\HeadersInterface](/4.0/en/api/Phalcon_Http_Response_HeadersInterface) $headers)
 
 Sets a headers bag for the response externally
 
@@ -97,13 +97,13 @@ echo $response->getReasonPhrase();
 
 
 
-public  **setCookies** ([Phalcon\Http\Response\CookiesInterface](/3.4/en/api/Phalcon_Http_Response_CookiesInterface) $cookies)
+public  **setCookies** ([Phalcon\Http\Response\CookiesInterface](/4.0/en/api/Phalcon_Http_Response_CookiesInterface) $cookies)
 
 Sets a cookies bag for the response externally
 
 
 
-public [Phalcon\Http\Response\CookiesInterface](/3.4/en/api/Phalcon_Http_Response_CookiesInterface) **getCookies** ()
+public [Phalcon\Http\Response\CookiesInterface](/4.0/en/api/Phalcon_Http_Response_CookiesInterface) **getCookies** ()
 
 Returns cookies set by the user
 
@@ -141,7 +141,7 @@ Resets all the established headers
 
 
 
-public  **setExpires** ([DateTime](http://php.net/manual/en/class.datetime.php) $datetime)
+public  **setExpires** ([DateTime](https://php.net/manual/en/class.datetime.php) $datetime)
 
 Sets an Expires header in the response that allows to use the HTTP cache
 
@@ -156,7 +156,7 @@ $this->response->setExpires(
 
 
 
-public  **setLastModified** ([DateTime](http://php.net/manual/en/class.datetime.php) $datetime)
+public  **setLastModified** ([DateTime](https://php.net/manual/en/class.datetime.php) $datetime)
 
 Sets Last-Modified header
 
@@ -239,8 +239,8 @@ Redirect by HTTP to another action or URL
 
 // Using a string redirect (internal/external)
 $response->redirect("posts/index");
-$response->redirect("http://en.wikipedia.org", true);
-$response->redirect("http://www.example.com/new-location", true, 301);
+$response->redirect("https://en.wikipedia.org", true);
+$response->redirect("https://www.example.com/new-location", true, 301);
 
 // Making a redirection based on a named route
 $response->redirect(

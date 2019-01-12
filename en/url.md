@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: article
 language: 'en'
 version: '4.0'
 ---
@@ -39,7 +39,7 @@ $url->setBaseUri('/invo/');
 $url->setBaseUri('//my.domain.com/');
 
 // Setting a full domain as base URI
-$url->setBaseUri('http://my.domain.com/my-app/');
+$url->setBaseUri('https://my.domain.com/my-app/');
 ```
 
 Usually, this component must be registered in the Dependency Injector container, so you can set up it there:
@@ -63,7 +63,7 @@ $di->set(
 
 <a name='generating-uri'></a>
 ## Generating URIs
-If you are using the [Router](/3.4/en/routing) with its default behavior, your application is able to match routes based on the following pattern: 
+If you are using the [Router](/4.0/en/routing) with its default behavior, your application is able to match routes based on the following pattern: 
 
 <h5 class='alert alert-info' markdown='1'>/:controller/:action/:params </h5>
 
@@ -197,7 +197,7 @@ $url = new Url();
 $url->setBaseUri('/');
 
 // Static resources go through a CDN
-$url->setStaticBaseUri('http://static.mywebsite.com/');
+$url->setStaticBaseUri('https://static.mywebsite.com/');
 ```
 
 [Phalcon\Tag](api/Phalcon_Tag) will request both dynamic and static URIs using this component.

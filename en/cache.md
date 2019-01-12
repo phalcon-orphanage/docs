@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: article
 language: 'en'
 version: '4.0'
 ---
@@ -448,17 +448,17 @@ The backend adapters available to store cache data are:
 
 | Adapter                              | Description                                          | Info                                      | Required Extensions                                |
 |--------------------------------------|------------------------------------------------      |-------------------------------------------|----------------------------------------------------|
-| [Phalcon\Cache\Backend\Apc](api/Phalcon_Cache_Backend_Apc)          | Stores data to the Alternative PHP Cache (APC).      | [APC](http://php.net/apc)                 | [APC](http://pecl.php.net/package/APC)             |
-| `Phalcon\Cache\Backend\Apcu`         | Stores data to the APCu (APC without opcode caching) | [APCu](http://php.net/apcu)               | [APCu](http://pecl.php.net/package/APCu)           |
+| [Phalcon\Cache\Backend\Apc](api/Phalcon_Cache_Backend_Apc)          | Stores data to the Alternative PHP Cache (APC).      | [APC](https://php.net/apc)                 | [APC](https://pecl.php.net/package/APC)             |
+| `Phalcon\Cache\Backend\Apcu`         | Stores data to the APCu (APC without opcode caching) | [APCu](https://php.net/apcu)               | [APCu](https://pecl.php.net/package/APCu)           |
 | [Phalcon\Cache\Backend\File](api/Phalcon_Cache_Backend_File)         | Stores data to local plain files.                    |                                           |                                                    |
-| [Phalcon\Cache\Backend\Libmemcached](api/Phalcon_Cache_Backend_Libmemcached) | Stores data to a memcached server.                   | [Memcached](http://www.php.net/memcached) | [Memcached](http://pecl.php.net/package/memcached) |
-| [Phalcon\Cache\Backend\Memcache](api/Phalcon_Cache_Backend_Memcache)     | Stores data to a memcached server.                   | [Memcache](http://www.php.net/memcache)   | [Memcache](http://pecl.php.net/package/memcache)   |
+| [Phalcon\Cache\Backend\Libmemcached](api/Phalcon_Cache_Backend_Libmemcached) | Stores data to a memcached server.                   | [Memcached](https://www.php.net/memcached) | [Memcached](https://pecl.php.net/package/memcached) |
+| [Phalcon\Cache\Backend\Memcache](api/Phalcon_Cache_Backend_Memcache)     | Stores data to a memcached server.                   | [Memcache](https://www.php.net/memcache)   | [Memcache](https://pecl.php.net/package/memcache)   |
 | [Phalcon\Cache\Backend\Memory](api/Phalcon_Cache_Backend_Memory)       | Stores data in memory                                |                                           |                                                    |
-| [Phalcon\Cache\Backend\Mongo](api/Phalcon_Cache_Backend_Mongo)        | Stores data to Mongo Database.                       | [MongoDB](http://mongodb.org/)            | [Mongo](http://mongodb.org/)                       |
-| [Phalcon\Cache\Backend\Redis](api/Phalcon_Cache_Backend_Redis)        | Stores data in Redis.                                | [Redis](http://redis.io/)                 | [Redis](http://pecl.php.net/package/redis)         |
-| [Phalcon\Cache\Backend\Xcache](api/Phalcon_Cache_Backend_Xcache)       | Stores data in XCache.                               | [XCache](http://xcache.lighttpd.net/)     | [XCache](http://pecl.php.net/package/xcache)       |
+| [Phalcon\Cache\Backend\Mongo](api/Phalcon_Cache_Backend_Mongo)        | Stores data to Mongo Database.                       | [MongoDB](https://mongodb.org/)            | [Mongo](https://mongodb.org/)                       |
+| [Phalcon\Cache\Backend\Redis](api/Phalcon_Cache_Backend_Redis)        | Stores data in Redis.                                | [Redis](https://redis.io/)                 | [Redis](https://pecl.php.net/package/redis)         |
+| [Phalcon\Cache\Backend\Xcache](api/Phalcon_Cache_Backend_Xcache)       | Stores data in XCache.                               | [XCache](https://xcache.lighttpd.net/)     | [XCache](https://pecl.php.net/package/xcache)       |
 
-##### <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.4.0 you can switch your <code>*\Apc</code> classes to <code>*\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. ##### {.alert .alert-warning}
+##### <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 4.0.0 you can switch your <code>*\Apc</code> classes to <code>*\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. ##### {.alert .alert-warning}
 
 <a name='adapters-backend-factory'></a>
 ### Factory
@@ -513,7 +513,7 @@ This backend will store cached content on a memcached server. Per default persis
 
 **Client options**
 
-Used for setting Memcached options. See [Memcached::setOptions](http://php.net/manual/en/memcached.setoptions.php) for more.
+Used for setting Memcached options. See [Memcached::setOptions](https://php.net/manual/en/memcached.setoptions.php) for more.
 
 **Example**
 
@@ -562,7 +562,7 @@ This backend will store cached content on a memcached server. The available opti
 
 <a name='adapters-backend-apc'></a>
 ### APC Backend Options
-This backend will store cached content on Alternative PHP Cache ([APC](http://php.net/apc)). The available options for this backend are:
+This backend will store cached content on Alternative PHP Cache ([APC](https://php.net/apc)). The available options for this backend are:
 
 | Option   | Description                                                 |
 |----------|-------------------------------------------------------------|
@@ -570,7 +570,7 @@ This backend will store cached content on Alternative PHP Cache ([APC](http://ph
 
 <a name='adapters-backend-apcu'></a>
 ### APCU Backend Options
-This backend will store cached content on Alternative PHP Cache ([APCU](http://php.net/apcu)). The available options for this backend are:
+This backend will store cached content on Alternative PHP Cache ([APCU](https://php.net/apcu)). The available options for this backend are:
 
 | Option   | Description                                                 |
 |----------|-------------------------------------------------------------|
@@ -578,7 +578,7 @@ This backend will store cached content on Alternative PHP Cache ([APCU](http://p
 
 <a name='adapters-backend-mongo'></a>
 ### Mongo Backend Options
-This backend will store cached content on a MongoDB server ([MongoDB](http://mongodb.org/)). The available options for this backend are:
+This backend will store cached content on a MongoDB server ([MongoDB](https://mongodb.org/)). The available options for this backend are:
 
 | Option       | Description                                                 |
 |--------------|-------------------------------------------------------------|
@@ -589,7 +589,7 @@ This backend will store cached content on a MongoDB server ([MongoDB](http://mon
 
 <a name='adapters-backend-xcache'></a>
 ### XCache Backend Options
-This backend will store cached content on XCache ([XCache](http://xcache.lighttpd.net/)). The available options for this backend are:
+This backend will store cached content on XCache ([XCache](https://xcache.lighttpd.net/)). The available options for this backend are:
 
 | Option   | Description                                                 |
 |----------|-------------------------------------------------------------|
@@ -597,7 +597,7 @@ This backend will store cached content on XCache ([XCache](http://xcache.lighttp
 
 <a name='adapters-backend-redis'></a>
 ### Redis Backend Options
-This backend will store cached content on a Redis server ([Redis](http://redis.io/)). The available options for this backend are:
+This backend will store cached content on a Redis server ([Redis](https://redis.io/)). The available options for this backend are:
 
 | Option       | Description                                                    |
 |--------------|----------------------------------------------------------------|

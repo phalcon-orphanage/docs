@@ -1,12 +1,12 @@
 ---
-layout: default
+layout: article
 language: 'en'
 version: '4.0'
 title: 'Phalcon\Acl\AdapterInterface'
 ---
 # Interface **Phalcon\Acl\AdapterInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/acl/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 abstract public  **setDefaultAction** (*mixed* $defaultAccess)
@@ -29,77 +29,77 @@ abstract public  **getNoArgumentsDefaultAction** ()
 Returns the default ACL access level for no arguments provided in isAllowed action if there exists func for accessKey
 
 
-abstract public  **addRole** (*mixed* $role, [*mixed* $accessInherits])
+abstract public  **addOperation** (*mixed* $operation, [*mixed* $accessInherits])
 
-Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role
-
-
-abstract public  **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
-
-Do a role inherit from another existing role
+Adds a operation to the ACL list. Second parameter lets to inherit access data from other existing operation
 
 
-abstract public  **isRole** (*mixed* $roleName)
+abstract public  **addInherit** (*mixed* $operationName, *mixed* $operationToInherit)
 
-Check whether role exist in the roles list
-
-
-abstract public  **isResource** (*mixed* $resourceName)
-
-Check whether resource exist in the resources list
+Do a operation inherit from another existing operation
 
 
-abstract public  **addResource** (*mixed* $resourceObject, *mixed* $accessList)
+abstract public  **isOperation** (*mixed* $operationName)
 
-Adds a resource to the ACL list
+Check whether operation exist in the operations list
+
+
+abstract public  **isSubject** (*mixed* $subjectName)
+
+Check whether subject exist in the subjects list
+
+
+abstract public  **addSubject** (*mixed* $subjectObject, *mixed* $accessList)
+
+Adds a subject to the ACL list
 Access names can be a particular action, by example search, update, delete, etc or a list of them
 
 
-abstract public  **addResourceAccess** (*mixed* $resourceName, *mixed* $accessList)
+abstract public  **addSubjectAccess** (*mixed* $subjectName, *mixed* $accessList)
 
-Adds access to resources
-
-
-abstract public  **dropResourceAccess** (*mixed* $resourceName, *mixed* $accessList)
-
-Removes an access from a resource
+Adds access to subjects
 
 
-abstract public  **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
+abstract public  **dropSubjectAccess** (*mixed* $subjectName, *mixed* $accessList)
 
-Allow access to a role on a resource
-
-
-abstract public  **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
-
-Deny access to a role on a resource
+Removes an access from a subject
 
 
-abstract public  **isAllowed** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*array* $parameters])
+abstract public  **allow** (*mixed* $operationName, *mixed* $subjectName, *mixed* $access, [*mixed* $func])
 
-Check whether a role is allowed to access an action from a resource
-
-
-abstract public  **getActiveRole** ()
-
-Returns the role which the list is checking if it's allowed to certain resource/access
+Allow access to a operation on a subject
 
 
-abstract public  **getActiveResource** ()
+abstract public  **deny** (*mixed* $operationName, *mixed* $subjectName, *mixed* $access, [*mixed* $func])
 
-Returns the resource which the list is checking if some role can access it
+Deny access to a operation on a subject
+
+
+abstract public  **isAllowed** (*mixed* $operationName, *mixed* $subjectName, *mixed* $access, [*array* $parameters])
+
+Check whether a operation is allowed to access an action from a subject
+
+
+abstract public  **getActiveOperation** ()
+
+Returns the operation which the list is checking if it's allowed to certain subject/access
+
+
+abstract public  **getActiveSubject** ()
+
+Returns the subject which the list is checking if some operation can access it
 
 
 abstract public  **getActiveAccess** ()
 
-Returns the access which the list is checking if some role can access it
+Returns the access which the list is checking if some operation can access it
 
 
-abstract public  **getRoles** ()
+abstract public  **getOperations** ()
 
-Return an array with every role registered in the list
+Return an array with every operation registered in the list
 
 
-abstract public  **getResources** ()
+abstract public  **getSubjects** ()
 
-Return an array with every resource registered in the list
+Return an array with every subject registered in the list
