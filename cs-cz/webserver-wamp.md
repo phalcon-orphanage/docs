@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
 
@@ -8,7 +8,7 @@ layout: default language: 'en' version: '4.0'
 
 # Instalace: WAMP
 
-[WampServer](http://www.wampserver.com/en/) je vývojové prostředí pro web pro Windows. Umožňuje vám vytvářet webové aplikace běžící na Apache2, PHP a MySQL databázi. Níže jsou podrobné informace jak nainstalovat Phalcon framework na WampServer pro Windows. Použití nejnovější verze WampServeru je vysoce doporučeno.
+[WampServer](https://www.wampserver.com/en/) is a Windows web development environment. Umožňuje vám vytvářet webové aplikace běžící na Apache2, PHP a MySQL databázi. Níže jsou podrobné informace jak nainstalovat Phalcon framework na WampServer pro Windows. Použití nejnovější verze WampServeru je vysoce doporučeno.
 
 <a name='phalcon'></a>
 
@@ -47,7 +47,7 @@ Restart the Apache Web Server. Do a single click on the WampServer icon at syste
 
 ![](/assets/images/content/webserver-wamp-3.png)
 
-Open your browser to navigate to http://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that phalcon was loaded.
+Open your browser to navigate to https://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that phalcon was loaded.
 
 ![](/assets/images/content/webserver-wamp-4.png)
 
@@ -57,5 +57,5 @@ Congratulations! You are now phlying with Phalcon.
 
 ## Související průvodci
 
-* [General Installation](/3.4/en/installation)
-* [Installation on XAMPP](/3.4/en/webserver-xampp)
+* [General Installation](/4.0/en/installation)
+* [Installation on XAMPP](/4.0/en/webserver-xampp)
