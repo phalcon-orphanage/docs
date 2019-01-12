@@ -1,14 +1,14 @@
 * * *
 
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\Column'
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\Column'
 
 * * *
 
 # Class **Phalcon\Db\Column**
 
-*implements* [Phalcon\Db\ColumnInterface](/3.4/en/api/Phalcon_Db_ColumnInterface)
+*implements* [Phalcon\Db\ColumnInterface](/4.0/en/api/Phalcon_Db_ColumnInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/column.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/column.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Allows to define columns to be used on create or alter table operations
 
@@ -35,7 +35,7 @@ $connection->addColumn("robots", null, $column);
 
 ```
 
-## Constants
+## 常量
 
 *integer* **TYPE_INTEGER**
 
@@ -87,7 +87,7 @@ $connection->addColumn("robots", null, $column);
 
 *integer* **BIND_SKIP**
 
-## Methods
+## 方法
 
 public **getName** ()
 
