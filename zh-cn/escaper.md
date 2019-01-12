@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
 
@@ -12,7 +12,7 @@ Websites and web applications are vulnerable to [XSS](https://www.owasp.org/inde
 
 We designed this component based on the [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) created by the [OWASP](https://www.owasp.org).
 
-Additionally, this component relies on [mbstring](http://php.net/manual/en/book.mbstring.php) to support almost any charset.
+Additionally, this component relies on [mbstring](https://php.net/manual/en/book.mbstring.php) to support almost any charset.
 
 To illustrate how this component works and why it is important, consider the following example:
 
