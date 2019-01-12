@@ -1,22 +1,22 @@
 * * *
 
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Transaction\Failed'
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Transaction\Failed'
 
 * * *
 
 # Class **Phalcon\Mvc\Model\Transaction\Failed**
 
-*extends* class [Phalcon\Mvc\Model\Transaction\Exception](/3.4/en/api/Phalcon_Mvc_Model_Transaction_Exception)
+*extends* class [Phalcon\Mvc\Model\Transaction\Exception](/4.0/en/api/Phalcon_Mvc_Model_Transaction_Exception)
 
-*implements* [Throwable](http://php.net/manual/en/class.throwable.php)
+*implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/transaction/failed.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/transaction/failed.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 This class will be thrown to exit a try/catch block for isolated transactions
 
-## Methods
+## 方法
 
-public **__construct** (*mixed* $message, [[Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $record])
+public **__construct** (*mixed* $message, [[Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $record])
 
 Phalcon\Mvc\Model\Transaction\Failed constructor
 
@@ -28,42 +28,42 @@ public **getRecord** ()
 
 Returns validation record messages which stop the transaction
 
-final private [Exception](http://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Clone the exception
 
-public **__wakeup** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
-final public *string* **getMessage** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the Exception message
+获取异常消息
 
-final public *int* **getCode** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the Exception code
+获取异常代码
 
-final public *string* **getFile** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the file in which the exception occurred
+获取发生异常的文件
 
-final public *int* **getLine** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the line in which the exception occurred
+获取发生异常的行
 
-final public *array* **getTrace** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the stack trace
+获取堆栈跟踪
 
-final public [Exception](http://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Returns previous Exception
+返回前一个异常
 
-final public [Exception](http://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the stack trace as a string
+以字符串形式获取堆栈跟踪
 
-public *string* **__toString** () inherited from [Exception](http://php.net/manual/en/class.exception.php)
+public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-String representation of the exception
+异常的字符串表示形式
