@@ -1,15 +1,23 @@
 * * *
 
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Acl'
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Acl'
 
 * * *
 
 # Abstract class **Phalcon\Acl**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/acl.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
-## Constants
+## 常量
 
-*integer* **ALLOW**
+```php
+integer ALLOW
+```
 
-*integer* **DENY**
+* * *
+
+```php
+integer DENY
+```
+
+* * *
