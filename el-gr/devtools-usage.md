@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
 
@@ -24,7 +24,7 @@ You can download or clone a cross platform package containing the developer tool
 
 These are detailed instructions on how to install the developer tools on different platforms:
 
-[Linux](/[/3.4/en/devtools-installation#installation-linux) : [MacOS](/3.4/en/devtools-installation#installation-macos) : [Windows](/3.4/en/devtools-installation#installation-windows)
+[Linux](/[/4.0/en/devtools-installation#installation-linux) : [MacOS](/4.0/en/devtools-installation#installation-macos) : [Windows](/4.0/en/devtools-installation#installation-windows)
 
 <a name='available-commands'></a>
 
@@ -369,7 +369,7 @@ Also, if you prefer, it's possible to use Phalcon Developer Tools from a web int
 
 ## Integrating Tools with PhpStorm IDE
 
-The screencast below shows how to integrate developer tools with the [PhpStorm IDE](http://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
+The screencast below shows how to integrate developer tools with the [PhpStorm IDE](https://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
