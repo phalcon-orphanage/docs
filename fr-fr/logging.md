@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
 
@@ -276,7 +276,7 @@ The following examples show the basic use of each adapter:
 
 ### Stream Logger
 
-The stream logger writes messages to a valid registered stream in PHP. A list of streams is available [here](http://php.net/manual/en/wrappers.php):
+The stream logger writes messages to a valid registered stream in PHP. A list of streams is available [here](https://php.net/manual/en/wrappers.php):
 
 ```php
 <?php
@@ -338,7 +338,7 @@ $logger = new SyslogAdapter(
 
 ### FirePHP Logger
 
-This logger sends messages in HTTP response headers that are displayed by [FirePHP](http://www.firephp.org/), a [Firebug](http://getfirebug.com/) extension for Firefox.
+This logger sends messages in HTTP response headers that are displayed by [FirePHP](https://www.firephp.org/), a [Firebug](https://getfirebug.com/) extension for Firefox.
 
 ```php
 <?php
