@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
 
@@ -12,4 +12,4 @@ Sometimes due to segmentation faults, Phalcon could crash some of your web serve
 
 <https://bugs.php.net/bugs-generating-backtrace.php>
 
-<http://bugs.php.net/bugs-generating-backtrace-win32.php>
+<https://bugs.php.net/bugs-generating-backtrace-win32.php>
