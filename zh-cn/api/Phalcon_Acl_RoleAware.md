@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Acl\RoleAware'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Acl\RoleAware'
+---
 
 # Interface **Phalcon\Acl\RoleAware**
 

@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Micro\LazyLoader'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Mvc\Micro\LazyLoader'
+---
 
 # Class **Phalcon\Mvc\Micro\LazyLoader**
 

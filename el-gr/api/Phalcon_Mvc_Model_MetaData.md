@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\MetaData'
-
-* * *
+---
+layout: article
+language: 'el-gr'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\MetaData'
+---
 
 # Abstract class **Phalcon\Mvc\Model\MetaData**
 

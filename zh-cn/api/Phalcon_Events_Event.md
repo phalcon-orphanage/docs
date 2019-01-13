@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Events\Event'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Events\Event'
+---
 
 # Class **Phalcon\Events\Event**
 

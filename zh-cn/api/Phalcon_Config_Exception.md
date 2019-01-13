@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Config\Exception'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Config\Exception'
+---
 
 # Class **Phalcon\Config\Exception**
 

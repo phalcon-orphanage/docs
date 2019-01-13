@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Cli\Router\Exception'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Cli\Router\Exception'
+---
 
 # Class **Phalcon\Cli\Router\Exception**
 

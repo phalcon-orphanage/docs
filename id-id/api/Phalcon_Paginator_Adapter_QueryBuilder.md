@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Paginator\Adapter\QueryBuilder'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Paginator\Adapter\QueryBuilder'
+---
 
 # Class **Phalcon\Paginator\Adapter\QueryBuilder**
 

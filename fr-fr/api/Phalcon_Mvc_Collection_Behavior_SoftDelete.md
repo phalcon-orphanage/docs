@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Collection\Behavior\SoftDelete'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Mvc\Collection\Behavior\SoftDelete'
+---
 
 # Class **Phalcon\Mvc\Collection\Behavior\SoftDelete**
 

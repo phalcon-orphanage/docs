@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Validator'
-
-* * *
+---
+layout: article
+language: 'cs-cz'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Validator'
+---
 
 # Abstract class **Phalcon\Mvc\Model\Validator**
 

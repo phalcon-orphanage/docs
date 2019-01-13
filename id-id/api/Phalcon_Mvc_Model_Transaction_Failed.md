@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Transaction\Failed'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Transaction\Failed'
+---
 
 # Class **Phalcon\Mvc\Model\Transaction\Failed**
 

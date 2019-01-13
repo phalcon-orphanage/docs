@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\ResultInterface'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Db\ResultInterface'
+---
 
 # Interface **Phalcon\Db\ResultInterface**
 

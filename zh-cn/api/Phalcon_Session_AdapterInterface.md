@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Session\AdapterInterface'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Session\AdapterInterface'
+---
 
 # Interface **Phalcon\Session\AdapterInterface**
 

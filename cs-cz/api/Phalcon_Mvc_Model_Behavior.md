@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Behavior'
-
-* * *
+---
+layout: article
+language: 'cs-cz'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Behavior'
+---
 
 # Abstract class **Phalcon\Mvc\Model\Behavior**
 

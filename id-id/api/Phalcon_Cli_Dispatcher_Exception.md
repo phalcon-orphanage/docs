@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Cli\Dispatcher\Exception'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Cli\Dispatcher\Exception'
+---
 
 # Class **Phalcon\Cli\Dispatcher\Exception**
 

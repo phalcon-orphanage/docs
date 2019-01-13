@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\View\Engine\Volt\Exception'
-
-* * *
+---
+layout: article
+language: 'el-gr'
+version: '4.0'
+title: 'Phalcon\Mvc\View\Engine\Volt\Exception'
+---
 
 # Class **Phalcon\Mvc\View\Engine\Volt\Exception**
 

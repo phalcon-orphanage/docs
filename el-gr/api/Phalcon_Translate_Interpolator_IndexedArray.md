@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Translate\Interpolator\IndexedArray'
-
-* * *
+---
+layout: article
+language: 'el-gr'
+version: '4.0'
+title: 'Phalcon\Translate\Interpolator\IndexedArray'
+---
 
 # Class **Phalcon\Translate\Interpolator\IndexedArray**
 

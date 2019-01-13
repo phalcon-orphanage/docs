@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Queue\Beanstalk\Job'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Queue\Beanstalk\Job'
+---
 
 # Class **Phalcon\Queue\Beanstalk\Job**
 

@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Session\Adapter'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Session\Adapter'
+---
 
 # Abstract class **Phalcon\Session\Adapter**
 

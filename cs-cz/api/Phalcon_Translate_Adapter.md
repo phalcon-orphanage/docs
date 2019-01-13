@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Translate\Adapter'
-
-* * *
+---
+layout: article
+language: 'cs-cz'
+version: '4.0'
+title: 'Phalcon\Translate\Adapter'
+---
 
 # Abstract class **Phalcon\Translate\Adapter**
 

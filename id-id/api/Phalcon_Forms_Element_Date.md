@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Forms\Element\Date'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Forms\Element\Date'
+---
 
 # Class **Phalcon\Forms\Element\Date**
 

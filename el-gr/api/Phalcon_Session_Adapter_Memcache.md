@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Session\Adapter\Memcache'
-
-* * *
+---
+layout: article
+language: 'el-gr'
+version: '4.0'
+title: 'Phalcon\Session\Adapter\Memcache'
+---
 
 # Class **Phalcon\Session\Adapter\Memcache**
 

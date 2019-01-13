@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Image\Adapter\Gd'
-
-* * *
+---
+layout: article
+language: 'it-it'
+version: '4.0'
+title: 'Phalcon\Image\Adapter\Gd'
+---
 
 # Class **Phalcon\Image\Adapter\Gd**
 

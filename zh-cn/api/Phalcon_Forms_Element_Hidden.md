@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Forms\Element\Hidden'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Forms\Element\Hidden'
+---
 
 # Class **Phalcon\Forms\Element\Hidden**
 

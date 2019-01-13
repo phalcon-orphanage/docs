@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Micro\Exception'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Mvc\Micro\Exception'
+---
 
 # Class **Phalcon\Mvc\Micro\Exception**
 

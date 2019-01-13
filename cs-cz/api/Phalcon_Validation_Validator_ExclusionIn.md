@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Validation\Validator\ExclusionIn'
-
-* * *
+---
+layout: article
+language: 'cs-cz'
+version: '4.0'
+title: 'Phalcon\Validation\Validator\ExclusionIn'
+---
 
 # Class **Phalcon\Validation\Validator\ExclusionIn**
 

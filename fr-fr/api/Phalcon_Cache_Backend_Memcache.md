@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\Memcache'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Cache\Backend\Memcache'
+---
 
 # Class **Phalcon\Cache\Backend\Memcache**
 

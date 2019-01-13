@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Validation\Validator\Callback'
-
-* * *
+---
+layout: article
+language: 'el-gr'
+version: '4.0'
+title: 'Phalcon\Validation\Validator\Callback'
+---
 
 # Class **Phalcon\Validation\Validator\Callback**
 

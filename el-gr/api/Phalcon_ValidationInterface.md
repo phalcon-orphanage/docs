@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\ValidationInterface'
-
-* * *
+---
+layout: article
+language: 'el-gr'
+version: '4.0'
+title: 'Phalcon\ValidationInterface'
+---
 
 # Interface **Phalcon\ValidationInterface**
 

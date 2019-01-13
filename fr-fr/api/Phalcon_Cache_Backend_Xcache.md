@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\Xcache'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Cache\Backend\Xcache'
+---
 
 # Class **Phalcon\Cache\Backend\Xcache**
 

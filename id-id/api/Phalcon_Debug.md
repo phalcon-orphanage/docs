@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Debug'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Debug'
+---
 
 # Class **Phalcon\Debug**
 

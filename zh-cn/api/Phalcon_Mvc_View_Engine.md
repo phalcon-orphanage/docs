@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\View\Engine'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Mvc\View\Engine'
+---
 
 # Abstract class **Phalcon\Mvc\View\Engine**
 

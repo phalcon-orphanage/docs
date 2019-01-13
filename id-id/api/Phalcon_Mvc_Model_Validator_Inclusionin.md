@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Validator\Inclusionin'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Validator\Inclusionin'
+---
 
 # Class **Phalcon\Mvc\Model\Validator\Inclusionin**
 

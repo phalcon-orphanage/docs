@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Validation\Validator\Date'
-
-* * *
+---
+layout: article
+language: 'cs-cz'
+version: '4.0'
+title: 'Phalcon\Validation\Validator\Date'
+---
 
 # Class **Phalcon\Validation\Validator\Date**
 

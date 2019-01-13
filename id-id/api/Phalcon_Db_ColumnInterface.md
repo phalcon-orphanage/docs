@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\ColumnInterface'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Db\ColumnInterface'
+---
 
 # Interface **Phalcon\Db\ColumnInterface**
 

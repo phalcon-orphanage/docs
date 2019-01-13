@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Logger\Formatter\Line'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Logger\Formatter\Line'
+---
 
 # Class **Phalcon\Logger\Formatter\Line**
 

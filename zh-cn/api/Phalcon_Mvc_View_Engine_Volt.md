@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\View\Engine\Volt'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Mvc\View\Engine\Volt'
+---
 
 # Class **Phalcon\Mvc\View\Engine\Volt**
 

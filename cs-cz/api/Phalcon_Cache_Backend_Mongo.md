@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\Mongo'
-
-* * *
+---
+layout: article
+language: 'cs-cz'
+version: '4.0'
+title: 'Phalcon\Cache\Backend\Mongo'
+---
 
 # Class **Phalcon\Cache\Backend\Mongo**
 

@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Cli\Router\Route'
-
-* * *
+---
+layout: article
+language: 'cs-cz'
+version: '4.0'
+title: 'Phalcon\Cli\Router\Route'
+---
 
 # Class **Phalcon\Cli\Router\Route**
 

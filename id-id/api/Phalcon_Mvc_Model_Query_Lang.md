@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Query\Lang'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Query\Lang'
+---
 
 # Abstract class **Phalcon\Mvc\Model\Query\Lang**
 

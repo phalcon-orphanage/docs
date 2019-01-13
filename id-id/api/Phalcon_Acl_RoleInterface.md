@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Acl\RoleInterface'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Acl\RoleInterface'
+---
 
 # Interface **Phalcon\Acl\RoleInterface**
 

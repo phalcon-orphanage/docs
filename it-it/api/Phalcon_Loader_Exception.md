@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Loader\Exception'
-
-* * *
+---
+layout: article
+language: 'it-it'
+version: '4.0'
+title: 'Phalcon\Loader\Exception'
+---
 
 # Class **Phalcon\Loader\Exception**
 

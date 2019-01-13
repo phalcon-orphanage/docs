@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\ResultsetInterface'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\ResultsetInterface'
+---
 
 # Interface **Phalcon\Mvc\Model\ResultsetInterface**
 

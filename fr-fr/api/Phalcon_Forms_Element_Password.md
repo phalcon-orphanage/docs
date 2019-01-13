@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Forms\Element\Password'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Forms\Element\Password'
+---
 
 # Class **Phalcon\Forms\Element\Password**
 

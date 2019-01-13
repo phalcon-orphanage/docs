@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\IndexInterface'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Db\IndexInterface'
+---
 
 # Interface **Phalcon\Db\IndexInterface**
 

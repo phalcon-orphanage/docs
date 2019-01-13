@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Acl\ResourceInterface'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Acl\ResourceInterface'
+---
 
 # Interface **Phalcon\Acl\ResourceInterface**
 

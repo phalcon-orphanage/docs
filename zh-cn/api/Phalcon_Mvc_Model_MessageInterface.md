@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\MessageInterface'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\MessageInterface'
+---
 
 # Interface **Phalcon\Mvc\Model\MessageInterface**
 

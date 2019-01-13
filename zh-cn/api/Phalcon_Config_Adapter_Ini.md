@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Config\Adapter\Ini'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Config\Adapter\Ini'
+---
 
 # Class **Phalcon\Config\Adapter\Ini**
 

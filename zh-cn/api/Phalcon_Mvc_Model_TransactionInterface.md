@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\TransactionInterface'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\TransactionInterface'
+---
 
 # Interface **Phalcon\Mvc\Model\TransactionInterface**
 

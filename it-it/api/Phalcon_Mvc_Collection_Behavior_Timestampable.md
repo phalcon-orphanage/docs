@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Collection\Behavior\Timestampable'
-
-* * *
+---
+layout: article
+language: 'it-it'
+version: '4.0'
+title: 'Phalcon\Mvc\Collection\Behavior\Timestampable'
+---
 
 # Class **Phalcon\Mvc\Collection\Behavior\Timestampable**
 

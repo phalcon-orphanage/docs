@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Assets\Resource\Css'
-
-* * *
+---
+layout: article
+language: 'el-gr'
+version: '4.0'
+title: 'Phalcon\Assets\Resource\Css'
+---
 
 # Class **Phalcon\Assets\Resource\Css**
 

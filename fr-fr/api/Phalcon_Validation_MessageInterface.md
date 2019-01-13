@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Validation\MessageInterface'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Validation\MessageInterface'
+---
 
 # Interface **Phalcon\Validation\MessageInterface**
 

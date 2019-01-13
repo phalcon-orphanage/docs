@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Validation\Validator\Exception'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Validation\Validator\Exception'
+---
 
 # Class **Phalcon\Validation\Validator\Exception**
 

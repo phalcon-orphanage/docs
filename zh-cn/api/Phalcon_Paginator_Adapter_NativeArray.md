@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Paginator\Adapter\NativeArray'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Paginator\Adapter\NativeArray'
+---
 
 # Class **Phalcon\Paginator\Adapter\NativeArray**
 

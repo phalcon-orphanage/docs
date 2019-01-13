@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Acl\Adapter'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Acl\Adapter'
+---
 
 # Abstract class **Phalcon\Acl\Adapter**
 

@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\MetaData\Apc'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\MetaData\Apc'
+---
 
 # Class **Phalcon\Mvc\Model\MetaData\Apc**
 

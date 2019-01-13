@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Forms\Element\Check'
-
-* * *
+---
+layout: article
+language: 'cs-cz'
+version: '4.0'
+title: 'Phalcon\Forms\Element\Check'
+---
 
 # Class **Phalcon\Forms\Element\Check**
 

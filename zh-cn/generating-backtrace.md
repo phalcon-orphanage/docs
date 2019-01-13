@@ -1,8 +1,8 @@
-* * *
-
-layout: default language: 'en' version: '4.0'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+---
 
 # 生成回溯跟踪
 

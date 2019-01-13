@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\Adapter\Pdo'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Db\Adapter\Pdo'
+---
 
 # Abstract class **Phalcon\Db\Adapter\Pdo**
 

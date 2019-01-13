@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Paginator\AdapterInterface'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Paginator\AdapterInterface'
+---
 
 # Interface **Phalcon\Paginator\AdapterInterface**
 

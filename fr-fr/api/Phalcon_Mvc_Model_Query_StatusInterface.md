@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Query\StatusInterface'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Query\StatusInterface'
+---
 
 # Interface **Phalcon\Mvc\Model\Query\StatusInterface**
 

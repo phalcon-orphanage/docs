@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Annotations\Adapter\Memory'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Annotations\Adapter\Memory'
+---
 
 # Class **Phalcon\Annotations\Adapter\Memory**
 

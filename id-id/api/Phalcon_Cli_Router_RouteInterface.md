@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Cli\Router\RouteInterface'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Cli\Router\RouteInterface'
+---
 
 # Interface **Phalcon\Cli\Router\RouteInterface**
 

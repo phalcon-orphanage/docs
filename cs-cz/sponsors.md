@@ -1,8 +1,8 @@
-* * *
-
-layout: default language: 'en' version: '4.0'
-
-* * *
+---
+layout: article
+language: 'cs-cz'
+version: '4.0'
+---
 
 # Staňte se sponzorem
 

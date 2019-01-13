@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\MetaData\Strategy\Annotations'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\MetaData\Strategy\Annotations'
+---
 
 # Class **Phalcon\Mvc\Model\MetaData\Strategy\Annotations**
 

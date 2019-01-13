@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Validator\Regex'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Validator\Regex'
+---
 
 # Class **Phalcon\Mvc\Model\Validator\Regex**
 

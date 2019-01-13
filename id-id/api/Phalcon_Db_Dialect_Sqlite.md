@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\Dialect\Sqlite'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Db\Dialect\Sqlite'
+---
 
 # Class **Phalcon\Db\Dialect\Sqlite**
 

@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Http\Response\Cookies'
-
-* * *
+---
+layout: article
+language: 'it-it'
+version: '4.0'
+title: 'Phalcon\Http\Response\Cookies'
+---
 
 # Class **Phalcon\Http\Response\Cookies**
 

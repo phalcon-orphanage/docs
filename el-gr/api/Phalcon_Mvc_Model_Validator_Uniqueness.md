@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Validator\Uniqueness'
-
-* * *
+---
+layout: article
+language: 'el-gr'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Validator\Uniqueness'
+---
 
 # Class **Phalcon\Mvc\Model\Validator\Uniqueness**
 

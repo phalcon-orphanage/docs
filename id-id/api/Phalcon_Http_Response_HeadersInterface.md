@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Http\Response\HeadersInterface'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Http\Response\HeadersInterface'
+---
 
 # Interface **Phalcon\Http\Response\HeadersInterface**
 

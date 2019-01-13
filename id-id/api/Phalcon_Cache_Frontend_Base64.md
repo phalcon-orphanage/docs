@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Base64'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Cache\Frontend\Base64'
+---
 
 # Class **Phalcon\Cache\Frontend\Base64**
 

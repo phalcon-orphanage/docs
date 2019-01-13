@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\View\Engine\Php'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Mvc\View\Engine\Php'
+---
 
 # Class **Phalcon\Mvc\View\Engine\Php**
 

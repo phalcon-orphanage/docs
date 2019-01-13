@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Forms\ElementInterface'
-
-* * *
+---
+layout: article
+language: 'cs-cz'
+version: '4.0'
+title: 'Phalcon\Forms\ElementInterface'
+---
 
 # Interface **Phalcon\Forms\ElementInterface**
 

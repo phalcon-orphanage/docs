@@ -1,8 +1,8 @@
-* * *
-
-layout: default language: 'en' version: '4.0'
-
-* * *
+---
+layout: article
+language: 'cs-cz'
+version: '4.0'
+---
 
 Pokud jste našli chybu, je důležité přidat relevantní informace pro reprodukování problému a rychlejší opravě. If you have the application publicly on Github please submit the repository address along with the issue description. Také můžete použít [Gist](https://gist.github.com/) pro jakýkoliv kód který s námi chcete sdílet.
 

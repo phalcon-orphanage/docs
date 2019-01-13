@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Config\Adapter\Json'
-
-* * *
+---
+layout: article
+language: 'el-gr'
+version: '4.0'
+title: 'Phalcon\Config\Adapter\Json'
+---
 
 # Class **Phalcon\Config\Adapter\Json**
 

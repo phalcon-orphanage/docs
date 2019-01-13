@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Assets\Filters\Cssmin'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Assets\Filters\Cssmin'
+---
 
 # Class **Phalcon\Assets\Filters\Cssmin**
 

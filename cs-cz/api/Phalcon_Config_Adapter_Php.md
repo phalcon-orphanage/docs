@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Config\Adapter\Php'
-
-* * *
+---
+layout: article
+language: 'cs-cz'
+version: '4.0'
+title: 'Phalcon\Config\Adapter\Php'
+---
 
 # Class **Phalcon\Config\Adapter\Php**
 

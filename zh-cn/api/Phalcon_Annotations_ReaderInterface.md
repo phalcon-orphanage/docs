@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Annotations\ReaderInterface'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Annotations\ReaderInterface'
+---
 
 # Interface **Phalcon\Annotations\ReaderInterface**
 

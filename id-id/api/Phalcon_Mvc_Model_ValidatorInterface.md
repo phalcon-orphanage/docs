@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\ValidatorInterface'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\ValidatorInterface'
+---
 
 # Interface **Phalcon\Mvc\Model\ValidatorInterface**
 

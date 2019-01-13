@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\CollectionInterface'
-
-* * *
+---
+layout: article
+language: 'it-it'
+version: '4.0'
+title: 'Phalcon\Mvc\CollectionInterface'
+---
 
 # Interface **Phalcon\Mvc\CollectionInterface**
 

@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Binder\BindableInterface'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Binder\BindableInterface'
+---
 
 # Interface **Phalcon\Mvc\Model\Binder\BindableInterface**
 

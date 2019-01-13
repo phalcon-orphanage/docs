@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Validation\Validator\PresenceOf'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Validation\Validator\PresenceOf'
+---
 
 # Class **Phalcon\Validation\Validator\PresenceOf**
 

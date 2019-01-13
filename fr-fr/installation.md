@@ -1,8 +1,8 @@
-* * *
-
-layout: default language: 'en' version: '4.0'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+---
 
 <a name='requirements'></a>
 

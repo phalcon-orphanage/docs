@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Image\AdapterInterface'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Image\AdapterInterface'
+---
 
 # Interface **Phalcon\Image\AdapterInterface**
 

@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\Adapter\Pdo\Sqlite'
-
-* * *
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Db\Adapter\Pdo\Sqlite'
+---
 
 # Class **Phalcon\Db\Adapter\Pdo\Sqlite**
 

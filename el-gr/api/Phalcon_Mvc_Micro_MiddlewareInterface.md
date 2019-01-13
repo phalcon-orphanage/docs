@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Micro\MiddlewareInterface'
-
-* * *
+---
+layout: article
+language: 'el-gr'
+version: '4.0'
+title: 'Phalcon\Mvc\Micro\MiddlewareInterface'
+---
 
 # Interface **Phalcon\Mvc\Micro\MiddlewareInterface**
 

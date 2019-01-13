@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Http\Response\CookiesInterface'
-
-* * *
+---
+layout: article
+language: 'cs-cz'
+version: '4.0'
+title: 'Phalcon\Http\Response\CookiesInterface'
+---
 
 # Interface **Phalcon\Http\Response\CookiesInterface**
 

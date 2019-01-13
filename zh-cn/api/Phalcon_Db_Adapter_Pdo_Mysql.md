@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Db\Adapter\Pdo\Mysql'
-
-* * *
+---
+layout: article
+language: 'zh-cn'
+version: '4.0'
+title: 'Phalcon\Db\Adapter\Pdo\Mysql'
+---
 
 # Class **Phalcon\Db\Adapter\Pdo\Mysql**
 

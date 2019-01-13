@@ -1,8 +1,9 @@
-* * *
-
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Config\Adapter\Yaml'
-
-* * *
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Config\Adapter\Yaml'
+---
 
 # Class **Phalcon\Config\Adapter\Yaml**
 
