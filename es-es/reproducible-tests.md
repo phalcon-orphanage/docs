@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 Si has encontrado un error, es importante agregar información reproducible pertinente a su problema para poder reproducir el error y solucionarlo más rápido. Si tienes la aplicación públicamente en Github por favor enviar la dirección del repositorio junto con la descripción del problema. También puede utilizar [Gist](https://gist.github.com/) para publicar cualquier código que desea compartir con nosotros.
 
 <a name="overview"></a>
