@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # 使用高速缓存提高性能
@@ -489,7 +491,7 @@ The [Phalcon\Cache\FrontendInterface](api/Phalcon_Cache_FrontendInterface) inter
 | [Phalcon\Cache\Backend\Redis](api/Phalcon_Cache_Backend_Redis)               | Stores data in Redis.          | [Redis](https://redis.io/)                 | [Redis](https://pecl.php.net/package/redis)         |
 | [Phalcon\Cache\Backend\Xcache](api/Phalcon_Cache_Backend_Xcache)             | Stores data in XCache.         | [XCache](https://xcache.lighttpd.net/)     | [XCache](https://pecl.php.net/package/xcache)       |
 
-##### **注意**在 PHP 7 使用Phalcon `apc` 基于适配器类你需要从 pecl 安装 `apcu` 和 `apcu_bc` 的包。 Now in Phalcon 4.0.0 you can switch your `<em>\Apc` classes to `</em>\Apcu` and remove `apcu_bc`. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. {.alert.alert-warning}
+##### **NOTE** In PHP 7 to use phalcon `apc` based adapter classes you needed to install `apcu` and `apcu_bc` package from pecl. Now in Phalcon 4.0.0 you can switch your `<em>\Apc` classes to `</em>\Apcu` and remove `apcu_bc`. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. {.alert.alert-warning}
 
 <a name='adapters-backend-factory'></a>
 
