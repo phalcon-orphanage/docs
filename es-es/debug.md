@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # Depuración de aplicaciones
@@ -212,7 +214,7 @@ The following screencast shows a Xdebug session with Phalcon:
 
 Once you have xdebug installed, you can use its API to get a more detailed information about exceptions and messages.
 
-<h5 class='alert alert-warning'>Le recomendamos utilizar la última versión de Xdebug para una mejor compatibilidad con Phalcon </h5>
+<h5 class='alert alert-warning'>We highly recommend using the latest version of XDebug for a better compatibility with Phalcon </h5>
 
 The following example implements [xdebug_print_function_stack](https://xdebug.org/docs/stack_trace) to stop the execution and generate a backtrace:
 
