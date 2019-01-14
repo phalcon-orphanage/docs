@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\MetaData\StrategyInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\MetaData\StrategyInterface'
+
+* * *
 
 # Interface **Phalcon\Mvc\Model\MetaData\StrategyInterface**
 

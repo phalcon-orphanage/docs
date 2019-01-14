@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Acl\Resource'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Acl\Resource'
+
+* * *
 
 # Class **Phalcon\Acl\Resource**
 

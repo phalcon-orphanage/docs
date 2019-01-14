@@ -1,9 +1,8 @@
----
-layout: article
-language: 'zh-cn'
-version: '4.0'
-title: 'Phalcon\Cache\Frontend\Output'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Output'
+
+* * *
 
 # Class **Phalcon\Cache\Frontend\Output**
 

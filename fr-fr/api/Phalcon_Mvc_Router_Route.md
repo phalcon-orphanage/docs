@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Mvc\Router\Route'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Router\Route'
+
+* * *
 
 # Class **Phalcon\Mvc\Router\Route**
 

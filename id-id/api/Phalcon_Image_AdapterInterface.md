@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Image\AdapterInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Image\AdapterInterface'
+
+* * *
 
 # Interface **Phalcon\Image\AdapterInterface**
 

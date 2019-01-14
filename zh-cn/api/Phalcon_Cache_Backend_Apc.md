@@ -1,9 +1,8 @@
----
-layout: article
-language: 'zh-cn'
-version: '4.0'
-title: 'Phalcon\Cache\Backend\Apc'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\Apc'
+
+* * *
 
 # Class **Phalcon\Cache\Backend\Apc**
 

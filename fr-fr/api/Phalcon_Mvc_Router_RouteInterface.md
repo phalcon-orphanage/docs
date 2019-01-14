@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Mvc\Router\RouteInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Router\RouteInterface'
+
+* * *
 
 # Interface **Phalcon\Mvc\Router\RouteInterface**
 

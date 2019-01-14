@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Mvc\ControllerInterface'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\ControllerInterface'
+
+* * *
 
 # Interface **Phalcon\Mvc\ControllerInterface**
 

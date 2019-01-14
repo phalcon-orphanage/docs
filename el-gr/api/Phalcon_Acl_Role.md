@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Acl\Role'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Acl\Role'
+
+* * *
 
 # Class **Phalcon\Acl\Role**
 

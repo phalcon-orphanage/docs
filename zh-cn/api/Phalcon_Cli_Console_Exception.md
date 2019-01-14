@@ -1,9 +1,8 @@
----
-layout: article
-language: 'zh-cn'
-version: '4.0'
-title: 'Phalcon\Cli\Console\Exception'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Cli\Console\Exception'
+
+* * *
 
 # Class **Phalcon\Cli\Console\Exception**
 

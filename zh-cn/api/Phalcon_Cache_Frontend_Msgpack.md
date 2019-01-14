@@ -1,9 +1,8 @@
----
-layout: article
-language: 'zh-cn'
-version: '4.0'
-title: 'Phalcon\Cache\Frontend\Msgpack'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Msgpack'
+
+* * *
 
 # Class **Phalcon\Cache\Frontend\Msgpack**
 

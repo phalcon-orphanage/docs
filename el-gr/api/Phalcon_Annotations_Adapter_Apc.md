@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Annotations\Adapter\Apc'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Annotations\Adapter\Apc'
+
+* * *
 
 # Class **Phalcon\Annotations\Adapter\Apc**
 

@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\Row'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Row'
+
+* * *
 
 # Class **Phalcon\Mvc\Model\Row**
 

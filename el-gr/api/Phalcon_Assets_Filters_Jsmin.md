@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Assets\Filters\Jsmin'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Assets\Filters\Jsmin'
+
+* * *
 
 # Class **Phalcon\Assets\Filters\Jsmin**
 

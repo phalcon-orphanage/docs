@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\MetaData\Libmemcached'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\MetaData\Libmemcached'
+
+* * *
 
 # Class **Phalcon\Mvc\Model\MetaData\Libmemcached**
 

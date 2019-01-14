@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Validation\CombinedFieldsValidator'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Validation\CombinedFieldsValidator'
+
+* * *
 
 # Abstract class **Phalcon\Validation\CombinedFieldsValidator**
 

@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Db\Result\Pdo'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\Result\Pdo'
+
+* * *
 
 # Class **Phalcon\Db\Result\Pdo**
 

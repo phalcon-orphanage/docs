@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Session\Adapter\Files'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Session\Adapter\Files'
+
+* * *
 
 # Class **Phalcon\Session\Adapter\Files**
 

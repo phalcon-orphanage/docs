@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Cache\Frontend\Base64'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Base64'
+
+* * *
 
 # Class **Phalcon\Cache\Frontend\Base64**
 

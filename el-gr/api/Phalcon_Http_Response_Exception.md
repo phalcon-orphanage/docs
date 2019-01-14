@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Http\Response\Exception'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\Response\Exception'
+
+* * *
 
 # Class **Phalcon\Http\Response\Exception**
 

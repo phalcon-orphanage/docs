@@ -1,9 +1,8 @@
----
-layout: article
-language: 'it-it'
-version: '4.0'
-title: 'Phalcon\Http\Request\FileInterface'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Http\Request\FileInterface'
+
+* * *
 
 # Interface **Phalcon\Http\Request\FileInterface**
 

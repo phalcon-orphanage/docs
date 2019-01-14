@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Di\FactoryDefault\Cli'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Di\FactoryDefault\Cli'
+
+* * *
 
 # Class **Phalcon\Di\FactoryDefault\Cli**
 

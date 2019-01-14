@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Mvc\Url\Exception'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Url\Exception'
+
+* * *
 
 # Class **Phalcon\Mvc\Url\Exception**
 

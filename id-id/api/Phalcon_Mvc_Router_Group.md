@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Mvc\Router\Group'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Router\Group'
+
+* * *
 
 # Class **Phalcon\Mvc\Router\Group**
 

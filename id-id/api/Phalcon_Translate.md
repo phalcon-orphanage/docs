@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Translate'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Translate'
+
+* * *
 
 # Abstract class **Phalcon\Translate**
 

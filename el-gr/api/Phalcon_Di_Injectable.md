@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Di\Injectable'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Di\Injectable'
+
+* * *
 
 # Abstract class **Phalcon\Di\Injectable**
 

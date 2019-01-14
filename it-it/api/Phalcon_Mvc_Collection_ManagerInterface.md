@@ -1,9 +1,8 @@
----
-layout: article
-language: 'it-it'
-version: '4.0'
-title: 'Phalcon\Mvc\Collection\ManagerInterface'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Collection\ManagerInterface'
+
+* * *
 
 # Interface **Phalcon\Mvc\Collection\ManagerInterface**
 

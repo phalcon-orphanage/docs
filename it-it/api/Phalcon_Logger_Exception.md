@@ -1,9 +1,8 @@
----
-layout: article
-language: 'it-it'
-version: '4.0'
-title: 'Phalcon\Logger\Exception'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Logger\Exception'
+
+* * *
 
 # Class **Phalcon\Logger\Exception**
 

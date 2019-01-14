@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Logger'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Logger'
+
+* * *
 
 # Abstract class **Phalcon\Logger**
 

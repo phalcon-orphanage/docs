@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Mvc\Collection\BehaviorInterface'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Collection\BehaviorInterface'
+
+* * *
 
 # Interface **Phalcon\Mvc\Collection\BehaviorInterface**
 

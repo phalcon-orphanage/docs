@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\MetaDataInterface'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\MetaDataInterface'
+
+* * *
 
 # Interface **Phalcon\Mvc\Model\MetaDataInterface**
 

@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Assets\Filters\None'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Assets\Filters\None'
+
+* * *
 
 # Class **Phalcon\Assets\Filters\None**
 

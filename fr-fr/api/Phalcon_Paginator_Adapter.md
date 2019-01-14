@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Paginator\Adapter'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Paginator\Adapter'
+
+* * *
 
 # Abstract class **Phalcon\Paginator\Adapter**
 

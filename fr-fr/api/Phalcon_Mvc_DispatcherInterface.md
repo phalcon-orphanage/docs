@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Mvc\DispatcherInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\DispatcherInterface'
+
+* * *
 
 # Interface **Phalcon\Mvc\DispatcherInterface**
 

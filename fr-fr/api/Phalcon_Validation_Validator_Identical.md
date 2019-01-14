@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Validation\Validator\Identical'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Validation\Validator\Identical'
+
+* * *
 
 # Class **Phalcon\Validation\Validator\Identical**
 

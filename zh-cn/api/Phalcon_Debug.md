@@ -1,17 +1,16 @@
----
-layout: article
-language: 'zh-cn'
-version: '4.0'
-title: 'Phalcon\Debug'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Debug'
+
+* * *
 
 # Class **Phalcon\Debug**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/debug.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/debug.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Provides debug capabilities to Phalcon applications
 
-## Methods
+## 方法
 
 public **setUri** (*mixed* $uri)
 
@@ -89,6 +88,6 @@ public **onUncaughtLowSeverity** (*mixed* $severity, *mixed* $message, *mixed* $
 
 Throws an exception when a notice or warning is raised
 
-public **onUncaughtException** ([Exception](http://php.net/manual/en/class.exception.php) $exception)
+public **onUncaughtException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
 Handles uncaught exceptions

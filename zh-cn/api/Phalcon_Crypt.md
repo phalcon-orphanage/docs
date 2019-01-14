@@ -1,3 +1,9 @@
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Crypt'
+
+* * *
+
 # Class **Phalcon\Crypt**
 
 *implements* [Phalcon\CryptInterface](/3.4/en/api/Phalcon_CryptInterface)

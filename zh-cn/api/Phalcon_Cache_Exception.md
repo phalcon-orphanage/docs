@@ -1,9 +1,8 @@
----
-layout: article
-language: 'zh-cn'
-version: '4.0'
-title: 'Phalcon\Cache\Exception'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Cache\Exception'
+
+* * *
 
 # Class **Phalcon\Cache\Exception**
 

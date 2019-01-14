@@ -1,9 +1,8 @@
----
-layout: article
-language: 'it-it'
-version: '4.0'
-title: 'Phalcon\Mvc\Collection'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Collection'
+
+* * *
 
 # Abstract class **Phalcon\Mvc\Collection**
 

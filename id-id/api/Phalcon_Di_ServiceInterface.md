@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Di\ServiceInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Di\ServiceInterface'
+
+* * *
 
 # Interface **Phalcon\Di\ServiceInterface**
 

@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Annotations\ReaderInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Annotations\ReaderInterface'
+
+* * *
 
 # Interface **Phalcon\Annotations\ReaderInterface**
 

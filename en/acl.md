@@ -290,6 +290,7 @@ $acl->isAllowed('guest', 'reports', 'view');
 $acl->isAllowed('guest', 'reports', 'add');
 ```
 
+
 ** WIP BELOW **
 <a name='function-based-access'></a>
 ## Function based access

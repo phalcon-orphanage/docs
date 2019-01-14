@@ -1,9 +1,8 @@
----
-layout: article
-language: 'zh-cn'
-version: '4.0'
-title: 'Phalcon\Cli\Console'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Cli\Console'
+
+* * *
 
 # Class **Phalcon\Cli\Console**
 

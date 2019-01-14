@@ -1,9 +1,8 @@
----
-layout: article
-language: 'zh-cn'
-version: '4.0'
-title: 'Phalcon\Annotations\Annotation'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Annotations\Annotation'
+
+* * *
 
 # Class **Phalcon\Annotations\Annotation**
 

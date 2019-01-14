@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Di\Service'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Di\Service'
+
+* * *
 
 # Class **Phalcon\Di\Service**
 

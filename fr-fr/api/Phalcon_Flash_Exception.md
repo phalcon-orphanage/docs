@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Flash\Exception'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Flash\Exception'
+
+* * *
 
 # Class **Phalcon\Flash\Exception**
 

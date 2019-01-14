@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Acl\Adapter\Memory'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Acl\Adapter\Memory'
+
+* * *
 
 # Class **Phalcon\Acl\Adapter\Memory**
 

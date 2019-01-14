@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Mvc\View'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\View'
+
+* * *
 
 # Class **Phalcon\Mvc\View**
 

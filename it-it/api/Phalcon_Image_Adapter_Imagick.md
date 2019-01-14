@@ -1,9 +1,8 @@
----
-layout: article
-language: 'it-it'
-version: '4.0'
-title: 'Phalcon\Image\Adapter\Imagick'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Image\Adapter\Imagick'
+
+* * *
 
 # Class **Phalcon\Image\Adapter\Imagick**
 

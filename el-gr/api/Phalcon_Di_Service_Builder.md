@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Di\Service\Builder'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Di\Service\Builder'
+
+* * *
 
 # Class **Phalcon\Di\Service\Builder**
 

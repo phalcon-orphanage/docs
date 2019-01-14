@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Logger\Formatter\Json'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Logger\Formatter\Json'
+
+* * *
 
 # Class **Phalcon\Logger\Formatter\Json**
 

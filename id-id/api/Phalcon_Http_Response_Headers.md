@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Http\Response\Headers'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\Response\Headers'
+
+* * *
 
 # Class **Phalcon\Http\Response\Headers**
 

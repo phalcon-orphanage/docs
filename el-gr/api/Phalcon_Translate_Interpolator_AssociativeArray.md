@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Translate\Interpolator\AssociativeArray'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Translate\Interpolator\AssociativeArray'
+
+* * *
 
 # Class **Phalcon\Translate\Interpolator\AssociativeArray**
 

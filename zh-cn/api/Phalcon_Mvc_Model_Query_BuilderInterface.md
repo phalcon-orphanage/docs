@@ -1,21 +1,20 @@
----
-layout: article
-language: 'zh-cn'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\Query\BuilderInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Query\BuilderInterface'
+
+* * *
 
 # Interface **Phalcon\Mvc\Model\Query\BuilderInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/query/builderinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/query/builderinterface.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
-## Constants
+## 常量
 
 *string* **OPERATOR_OR**
 
 *string* **OPERATOR_AND**
 
-## Methods
+## 方法
 
 abstract public **columns** (*mixed* $columns)
 

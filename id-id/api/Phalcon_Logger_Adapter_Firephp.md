@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Logger\Adapter\Firephp'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Logger\Adapter\Firephp'
+
+* * *
 
 # Class **Phalcon\Logger\Adapter\Firephp**
 

@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Validation\Validator\CreditCard'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Validation\Validator\CreditCard'
+
+* * *
 
 # Class **Phalcon\Validation\Validator\CreditCard**
 

@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Paginator\Adapter\Model'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Paginator\Adapter\Model'
+
+* * *
 
 # Class **Phalcon\Paginator\Adapter\Model**
 

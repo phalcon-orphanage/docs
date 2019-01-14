@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Assets\Inline\Css'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Assets\Inline\Css'
+
+* * *
 
 # Class **Phalcon\Assets\Inline\Css**
 

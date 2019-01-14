@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Mvc\Collection\Exception'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Collection\Exception'
+
+* * *
 
 # Class **Phalcon\Mvc\Collection\Exception**
 

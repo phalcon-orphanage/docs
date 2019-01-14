@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Cache\Backend'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend'
+
+* * *
 
 # Abstract class **Phalcon\Cache\Backend**
 

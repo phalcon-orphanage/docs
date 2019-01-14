@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\Query\Builder'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Query\Builder'
+
+* * *
 
 # Class **Phalcon\Mvc\Model\Query\Builder**
 

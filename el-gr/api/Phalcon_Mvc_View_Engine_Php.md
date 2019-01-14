@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Mvc\View\Engine\Php'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\View\Engine\Php'
+
+* * *
 
 # Class **Phalcon\Mvc\View\Engine\Php**
 

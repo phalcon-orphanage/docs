@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Exception'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Exception'
+
+* * *
 
 # Class **Phalcon\Exception**
 

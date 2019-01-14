@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Http\CookieInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\CookieInterface'
+
+* * *
 
 # Interface **Phalcon\Http\CookieInterface**
 

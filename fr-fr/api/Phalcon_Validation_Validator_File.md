@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Validation\Validator\File'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Validation\Validator\File'
+
+* * *
 
 # Class **Phalcon\Validation\Validator\File**
 

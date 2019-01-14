@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\Validator\Ip'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Validator\Ip'
+
+* * *
 
 # Class **Phalcon\Mvc\Model\Validator\Ip**
 

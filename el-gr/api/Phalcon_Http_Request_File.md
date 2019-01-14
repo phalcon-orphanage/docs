@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Http\Request\File'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\Request\File'
+
+* * *
 
 # Class **Phalcon\Http\Request\File**
 

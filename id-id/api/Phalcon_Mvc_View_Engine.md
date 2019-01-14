@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Mvc\View\Engine'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\View\Engine'
+
+* * *
 
 # Abstract class **Phalcon\Mvc\View\Engine**
 

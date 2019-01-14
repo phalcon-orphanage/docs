@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Cache\BackendInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\BackendInterface'
+
+* * *
 
 # Interface **Phalcon\Cache\BackendInterface**
 

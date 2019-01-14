@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\ResultInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\ResultInterface'
+
+* * *
 
 # Interface **Phalcon\Mvc\Model\ResultInterface**
 

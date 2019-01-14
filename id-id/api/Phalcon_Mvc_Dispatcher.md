@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Mvc\Dispatcher'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Dispatcher'
+
+* * *
 
 # Class **Phalcon\Mvc\Dispatcher**
 

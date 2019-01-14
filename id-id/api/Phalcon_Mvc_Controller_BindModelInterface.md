@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Mvc\Controller\BindModelInterface'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Controller\BindModelInterface'
+
+* * *
 
 # Interface **Phalcon\Mvc\Controller\BindModelInterface**
 

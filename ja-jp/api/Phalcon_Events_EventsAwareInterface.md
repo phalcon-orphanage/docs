@@ -1,0 +1,19 @@
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Events\EventsAwareInterface'
+
+* * *
+
+# Interface **Phalcon\Events\EventsAwareInterface**
+
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/events/eventsawareinterface.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+
+## メソッド
+
+abstract public **setEventsManager** ([Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
+
+...
+
+abstract public **getEventsManager** ()
+
+...

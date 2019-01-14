@@ -1,8 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
----
+* * *
+
+layout: article language: 'en' version: '4.0'
+
+* * *
 
 If you have found a bug it is important to add relevant reproducibility information to your issue to allow us to reproduce the bug and fix it quicker. If you have the application publicly on Github please submit the repository address along with the issue description. You can also use [Gist](https://gist.github.com/) to post any code you want to share with us.
 

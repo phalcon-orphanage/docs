@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Acl'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Acl'
+
+* * *
 
 # Abstract class **Phalcon\Acl**
 
@@ -11,6 +10,14 @@ title: 'Phalcon\Acl'
 
 ## Constants
 
+```php
 *integer* **ALLOW**
+```
 
+* * *
+
+```php
 *integer* **DENY**
+```
+
+* * *

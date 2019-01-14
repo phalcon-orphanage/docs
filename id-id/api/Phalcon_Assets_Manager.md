@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Assets\Manager'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Assets\Manager'
+
+* * *
 
 # Class **Phalcon\Assets\Manager**
 

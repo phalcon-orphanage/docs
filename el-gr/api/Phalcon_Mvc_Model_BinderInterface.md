@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\BinderInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\BinderInterface'
+
+* * *
 
 # Interface **Phalcon\Mvc\Model\BinderInterface**
 

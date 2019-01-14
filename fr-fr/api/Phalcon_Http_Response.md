@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Http\Response'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\Response'
+
+* * *
 
 # Class **Phalcon\Http\Response**
 

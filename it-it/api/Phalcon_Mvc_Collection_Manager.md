@@ -1,9 +1,8 @@
----
-layout: article
-language: 'it-it'
-version: '4.0'
-title: 'Phalcon\Mvc\Collection\Manager'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Collection\Manager'
+
+* * *
 
 # Class **Phalcon\Mvc\Collection\Manager**
 

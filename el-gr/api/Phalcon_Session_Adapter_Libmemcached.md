@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Session\Adapter\Libmemcached'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Session\Adapter\Libmemcached'
+
+* * *
 
 # Class **Phalcon\Session\Adapter\Libmemcached**
 

@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Forms\Element\Submit'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Forms\Element\Submit'
+
+* * *
 
 # Class **Phalcon\Forms\Element\Submit**
 

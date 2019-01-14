@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Cache\Frontend\Data'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Data'
+
+* * *
 
 # Class **Phalcon\Cache\Frontend\Data**
 

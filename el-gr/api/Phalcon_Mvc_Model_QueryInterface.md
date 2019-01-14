@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\QueryInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\QueryInterface'
+
+* * *
 
 # Interface **Phalcon\Mvc\Model\QueryInterface**
 

@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Http\Response\Cookies'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\Response\Cookies'
+
+* * *
 
 # Class **Phalcon\Http\Response\Cookies**
 

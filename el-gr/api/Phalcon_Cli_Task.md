@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Cli\Task'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Cli\Task'
+
+* * *
 
 # Class **Phalcon\Cli\Task**
 

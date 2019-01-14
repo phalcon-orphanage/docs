@@ -1,9 +1,8 @@
----
-layout: article
-language: 'it-it'
-version: '4.0'
-title: 'Phalcon\Mvc\Collection\Document'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Mvc\Collection\Document'
+
+* * *
 
 # Class **Phalcon\Mvc\Collection\Document**
 

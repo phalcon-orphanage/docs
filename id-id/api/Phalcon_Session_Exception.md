@@ -1,9 +1,8 @@
----
-layout: article
-language: 'id-id'
-version: '4.0'
-title: 'Phalcon\Session\Exception'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Session\Exception'
+
+* * *
 
 # Class **Phalcon\Session\Exception**
 

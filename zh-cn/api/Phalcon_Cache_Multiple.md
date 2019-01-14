@@ -1,9 +1,8 @@
----
-layout: article
-language: 'zh-cn'
-version: '4.0'
-title: 'Phalcon\Cache\Multiple'
----
+* * *
+
+layout: default language: 'en' version: '4.0' title: 'Phalcon\Cache\Multiple'
+
+* * *
 
 # Class **Phalcon\Cache\Multiple**
 

@@ -1,9 +1,8 @@
----
-layout: article
-language: 'el-gr'
-version: '4.0'
-title: 'Phalcon\Cache\Frontend\Igbinary'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Igbinary'
+
+* * *
 
 # Class **Phalcon\Cache\Frontend\Igbinary**
 

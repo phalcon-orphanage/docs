@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\Query\Lang'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Query\Lang'
+
+* * *
 
 # Abstract class **Phalcon\Mvc\Model\Query\Lang**
 

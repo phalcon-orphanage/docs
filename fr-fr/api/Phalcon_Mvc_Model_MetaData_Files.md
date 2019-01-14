@@ -1,9 +1,8 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\MetaData\Files'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\MetaData\Files'
+
+* * *
 
 # Class **Phalcon\Mvc\Model\MetaData\Files**
 
