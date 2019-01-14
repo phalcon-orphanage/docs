@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # Введение
@@ -75,7 +77,7 @@ Another way to initialize your project is with Git.
  git clone git@github.com:phalcon/phalcon-compose.git
 ```
 
-<h5 class='alert alert-warning'>Убедитесь, что вы скопировали <code>variables.env.example</code> <code>variables.env</code> и настроили параметры в этом файле </h5>
+<h5 class='alert alert-warning'>Make sure that you copy <code>variables.env.example</code> to <code>variables.env</code> and adjust the settings in that file </h5>
 
 Add your Phalcon Application into `application` folder.
 
