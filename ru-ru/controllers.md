@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # Введение
@@ -181,7 +183,7 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Метод <code>initialize()</code> вызывается только в том случае, если событие <code>beforeExecuteRoute</code> выполнено успешно. Это позволяет избежать ситуации, когда логика приложения в инициализаторе не может быть выполнена без авторизации.</h5>
+<h5 class='alert alert-warning'>The <code>initialize()</code> method is only called if the <code>beforeExecuteRoute</code> event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
 
 Если вы все же хотите выполнить некоторую инициализацию после создания объекта контроллера, то можете реализовать метод `onConstruct()`:
 
@@ -199,7 +201,7 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Имейте в виду, что метод <code>onConstruct()</code> выполняется, даже если действие, которое должно быть выполнено, не существует в контроллере, или пользователь не имеет к нему доступа (контроль доступа обеспечивает разработчик).</h5>
+<h5 class='alert alert-warning'>Be aware that <code>onConstruct()</code> method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).</h5>
 
 <a name='injecting-services'></a>
 
