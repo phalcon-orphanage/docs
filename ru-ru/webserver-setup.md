@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='setup'></a>
 
 # Настройка веб-сервера
@@ -186,7 +188,7 @@ test/
 
 Самый распространённый случай - когда приложение устанавливается в любой подкаталог корневой директории. В таких случаях мы используем два `.htaccess` файла. Первый будет скрывать код приложения и перенаправлять запросы к корню приложения (`public/`).
 
-##### Обратите внимание, для полного разрешения использования директив в `.htaccess` файле, в главном конфигурационном файле Apache необходимо установить параметр `AllowOverride All`. {.alert.alert-warning}
+##### Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set. {.alert.alert-warning}
 
 ```apacheconfig
 # test/.htaccess
