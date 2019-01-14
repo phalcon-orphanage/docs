@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # 加密/解密
@@ -14,7 +16,7 @@ Phalcon provides encryption facilities via the [Phalcon\Crypt](api/Phalcon_Crypt
 
 The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography), they have also recommended using higher than 128-bit keys for encryption.
 
-<h5 class='alert alert-warning'>您必须使用对应于当前的算法密钥长度。默认情况下使用的算法为 32 个字节。</h5>
+<h5 class='alert alert-warning'>You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
 
 <a name='usage'></a>
 
