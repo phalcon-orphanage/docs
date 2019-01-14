@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='requirements'></a>
 
 # Requirements
@@ -24,7 +26,7 @@ Phalconは、高いパフォーマンスを提供しながら、可能な限り�
 
 * PHP >= 5.5
 
-<h5 class='alert alert-danger'>バグ、セキュリティ強化、パフォーマンスの為に常に最新のPhalconとPHPのバージョンを使う様にしてください。 PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 </h5>
+<h5 class='alert alert-danger'>You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 </h5>
 
 Phalcon を実行するためには、最低限以下の拡張機能が必要です。
 
@@ -87,7 +89,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.s
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-<h5 class='alert alert-warning'>この作業は、あなたがディストリビューションを変更したり安定板とナイトリーを切り替えるといった事情がなければ、実施は一度だけしか必要ありません。 </h5>
+<h5 class='alert alert-warning'>This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. </h5>
 
 <a name='installation-linux-debian-phalcon'></a>
 
@@ -162,7 +164,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.s
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-<h5 class='alert alert-warning'>この作業は、あなたがディストリビューションを変更したり安定板とナイトリーを切り替えるといった事情がなければ、実施は一度だけしか必要ありません。 </h5>
+<h5 class='alert alert-warning'>This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. </h5>
 
 <a name='installation-linux-rpm-phalcon'></a>
 
@@ -477,4 +479,4 @@ CLIを使用してモジュールをインストールすることもできま�
 php -m
 ```
 
-<h5 class='alert alert-danger'>一部のLinuxベースのシステムでは、Webサーバー(Apache/Nginx)用とCLI用の2つの<code>php.ini</code>ファイルを変更する必要があります。 PhalconがWebサーバーだけにロードされている場合は、CLI <code>php.ini</code>を探して、ロードするモジュールに必要な追加を行う必要があります。 </h5>
+<h5 class='alert alert-danger'>Note that in some Linux based systems, you might need to change two <code>php.ini</code> files, one for your web server (Apache/Nginx), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI <code>php.ini</code> and make the necessary additions for the module to be loaded. </h5>
