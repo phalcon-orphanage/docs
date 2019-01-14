@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 Pokud jste našli chybu, je důležité přidat relevantní informace pro reprodukování problému a rychlejší opravě. If you have the application publicly on Github please submit the repository address along with the issue description. Také můžete použít [Gist](https://gist.github.com/) pro jakýkoliv kód který s námi chcete sdílet.
 
 <a name="overview"></a>
