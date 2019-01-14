@@ -4,13 +4,15 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # Phalcon Developer Tools
 
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
-<h5 class='alert alert-danger'>コンソールの代わりにウェブバージョンを使用したい場合は、この <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">ブログの記事</a> に詳細を記載しています。 </h5>
+<h5 class='alert alert-danger'>If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information. </h5>
 
 <a name='download'></a>
 
