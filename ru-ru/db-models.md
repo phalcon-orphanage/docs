@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='working-with'></a>
 
 # Работа с моделями
@@ -12,7 +14,7 @@ layout: article language: 'en' version: '4.0'
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. Он обеспечивает независимость данных от вашей базы, основные CRUD операции, расширенные поисковые возможности, а также возможность построения зависимостей между моделями. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
 
-<h5 class='alert alert-warning'>Модели предназначены для работы с базой данных на высшем уровне абстракции. If you need to work with databases at a lower level check out the <a href="api/Phalcon_Db">Phalcon\Db</a> component documentation.</h5>
+<h5 class='alert alert-warning'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the <a href="api/Phalcon_Db">Phalcon\Db</a> component documentation.</h5>
 
 <a name='creating'></a>
 
