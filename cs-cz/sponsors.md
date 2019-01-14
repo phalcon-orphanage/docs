@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 # Staňte se sponzorem
 
 Pro všechny, kteří chtějí podpořit naši práci a další vývoj Phalcon frameworku, nabízíme možnosti které vyhoví každému rozpočtu. Sponzorování naší práce dovolí vývojářům vyhradit si více času na projekt a tím nabídnout rychlejší reakce v opravě bugů, přidávání nových funkcí a tím zajistit větší stabilitu frameworku.
