@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='working-with'></a>
 
 # モデルの動作
@@ -12,7 +14,7 @@ layout: article language: 'en' version: '4.0'
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. データベースの独立性、基本的なCRUD機能、高度な検索機能、および他のサービスの中でモデルを相互に関連付ける機能を提供します。 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
 
-<h5 class='alert alert-warning'>モデルは、高い抽象化レイヤーでデータベースと連動します。 If you need to work with databases at a lower level check out the <a href="api/Phalcon_Db">Phalcon\Db</a> component documentation.</h5>
+<h5 class='alert alert-warning'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the <a href="api/Phalcon_Db">Phalcon\Db</a> component documentation.</h5>
 
 <a name='creating'></a>
 
@@ -33,7 +35,7 @@ class RobotParts extends Model
 }
 ```
 
-<h5 class='alert alert-warning'>PHP 5.4/5.5を使用している場合は、メモリを節約しメモリの割り当てを削減するために、一部のモデルは各列を宣言することをお勧めします。 </h5>
+<h5 class='alert alert-warning'>If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation. </h5>
 
 デフォルトでは、モデル `Store\Toys\RobotParts` が `robot_parts` テーブルにマッピングされます。 マッピングされたテーブル名を手動で指定する場合は、 `setSource()` メソッドが使用できます:
 
@@ -158,7 +160,7 @@ class Robots extends Model
 
 パブリックプロパティは、開発の複雑さを軽減します。 しかし、getter/setterはアプリケーションのテスト容易性、拡張性、保守性を大幅に向上させる可能性があります。 開発者はアプリケーションのニーズに応じて、作成するアプリケーションに適した戦略を決めることができます。 ORMは、プロパティを定義する両方のスキーマと互換性があります。
 
-<h5 class='alert alert-warning'>getterとsetterを使用すると、プロパティ名のアンダースコアが問題になることがあります。 </h5>
+<h5 class='alert alert-warning'>Underscores in property names can be problematic when using getters and setters. </h5>
 
 プロパティ名にアンダースコアを使用する場合は、マジックメソッドで使用するために、getter/setter宣言でキャメルケースを使う必要があります。 (例えば、 `$model->getProperty_name` は `$model->getPropertyName` に, `$model->findByProperty_name` は `$model->findByPropertyName` にするなど) 多くのシステムではキャメルケースが前提とされ、アンダースコアは一般的に削除されるためドキュメント全体に示されている方法でプロパティの名前を付けることをお勧めします。 カラムのマッピングを使用すると（上で説明したように）、データベースに対してプロパティを正しくマッピングすることができます。
 
@@ -253,7 +255,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning'>外部データ（ユーザー入力など）や変数データでレコードを検索する場合は、 <a href="#binding-parameters">バインディングパラメータ</a> を使用する必要があります。</h5>
+<h5 class='alert alert-warning'>If you want find record by external data (such as user input) or variable data you must use <a href="#binding-parameters">Binding Parameters</a>`.</h5>
 
 `findFirst()` メソッドを使用して、指定した条件に一致する最初のレコードのみを取得することもできます。
 
@@ -639,7 +641,7 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class='alert alert-warning'>デフォルトのバインドタイプは <code>Phalcon\Db\Column::BIND_PARAM_STR</code> なので、すべてのカラムがそのタイプの場合は 'bindTypes' パラメータを指定する必要はありません。</h5>
+<h5 class='alert alert-warning'>Since the default bind-type is <code>Phalcon\Db\Column::BIND_PARAM_STR</code>, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.</h5>
 
 バインドパラメータに配列をバインドする場合、キーには0から番号を付ける必要があることに注意してください:
 
@@ -665,7 +667,7 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class='alert alert-warning'>バインドされたパラメータは、 <code>find()</code> や <code>findFirst()</code> などのすべてのクエリメソッドで使用でき、 <code>count()</code> 、 <code>sum()</code> 、 <code>average()</code> などの集計関数も同様です。 </h5>
+<h5 class='alert alert-warning'>Bound parameters are available for all query methods such as <code>find()</code> and <code>findFirst()</code> but also the calculation methods like <code>count()</code>, <code>sum()</code>, <code>average()</code> etc. </h5>
 
 もし "finders" ( `find()`、 `findFirst()` 、etc) を使用している場合、バインドパラメータは自動的に使用されます:
 
@@ -982,7 +984,7 @@ $robot = new Robots();
 $robot->save($_POST);
 ```
 
-<h5 class='alert alert-warning'>脆弱性対策に注意を払わないと、攻撃者はデータベースの列の値を設定できてしまいます。 これらのフィールドが送信されたフォームにない場合でも、モデルのすべての列を挿入/更新できるようにする場合にのみ、この機能を使用します。 </h5>
+<h5 class='alert alert-warning'>Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form. </h5>
 
 `save` に追加のパラメータを設定して、脆弱性対策を行う際に考慮する必要があるフィールドの、ホワイトリストを設定することができます。
 
@@ -1335,7 +1337,7 @@ class Robots extends Model
 }
 ```
 
-<h5 class='alert alert-warning'>Never use a <a href="api/Phalcon_Db_RawValue">Phalcon\Db\RawValue</a> to assign external data (such as user input) or variable data. これらのフィールドの値は、パラメータをクエリにバインドするときは無視されます。 したがって、アプリケーション にSQLインジェクション攻撃できるようになってしまいます。 </h5>
+<h5 class='alert alert-warning'>Never use a <a href="api/Phalcon_Db_RawValue">Phalcon\Db\RawValue</a> to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. </h5>
 
 <a name='dynamic-updates'></a>
 
