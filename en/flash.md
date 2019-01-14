@@ -3,6 +3,8 @@ layout: article
 language: 'en'
 version: '4.0'
 ---
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 # Flashing Messages
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.

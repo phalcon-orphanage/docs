@@ -3,6 +3,8 @@ layout: article
 language: 'en'
 version: '4.0'
 ---
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 # Assets Management
 `Phalcon\Assets` is a component that allows you to manage static resources such as CSS stylesheets or JavaScript libraries in a web application.
