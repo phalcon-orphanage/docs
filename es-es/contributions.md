@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='contributing'></a>
 
 # Contribuir con Phalcon
@@ -26,7 +28,7 @@ Por favor asegúrese que está enviando su pull request a la rama correcta y que
 
 ## Preguntas y ayuda
 
-<h5 class='alert alert-warning'>Solo aceptamos reportes de errores, solicitudes de nuevas características y pull requests en GitHub. For questions regarding the usage of the framework or support requests please visit the <a href='https://phalcon.link/forum'>official forum</a>.</h5>
+<h5 class='alert alert-warning'>We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href='https://phalcon.link/forum'>official forum</a>.</h5>
 
 <a name='bug-report-checklist'></a>
 
