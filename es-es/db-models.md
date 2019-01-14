@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='working-with'></a>
 
 # Trabajando con Modelos
@@ -12,7 +14,7 @@ Un modelo representa la información (datos) de la aplicación y las reglas para
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. Proporciona independencia de base de datos, funcionalidades básicas de CRUD (Crear Leer Actualizar Eliminar, por sus siglas en inglés), capacidades de búsqueda avanzadas y la capacidad para crear relaciones con otros modelos, entre otros servicios. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
 
-<h5 class='alert alert-warning'>Los modelos están diseñados para trabajar con la base de datos en una capa de alto nivel de abstracción. If you need to work with databases at a lower level check out the <a href="api/Phalcon_Db">Phalcon\Db</a> component documentation.</h5>
+<h5 class='alert alert-warning'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the <a href="api/Phalcon_Db">Phalcon\Db</a> component documentation.</h5>
 
 <a name='creating'></a>
 
@@ -33,7 +35,7 @@ class RobotParts extends Model
 }
 ```
 
-<h5 class='alert alert-warning'>Si usa PHP 5.4/5.5 se recomienda declarar cada columna que sea parte del modelo con el fin de ahorrar memoria y reducir la asignación de memoria. </h5>
+<h5 class='alert alert-warning'>If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation. </h5>
 
 Por defecto, el modelo `Store\Toys\RobotParts` se asigna a la tabla `robot_parts`. Si desea especificar manualmente otro nombre para la tabla asignada, puede utilizar el método `setSource()`:
 
@@ -158,7 +160,7 @@ class Robots extends Model
 
 Las propiedades públicas proporcionan menor complejidad en el desarrollo. Sin embargo los getters/setters puede aumentar fuertemente la testabilidad, extensibilidad y mantenimiento de aplicaciones. Los desarrolladores pueden decidir qué estrategia es más apropiada para la aplicación que va a crear, dependiendo de las necesidades de la aplicación. El ORM es compatible con ambos esquemas de definición de propiedades.
 
-<h5 class='alert alert-warning'>Los guiones bajos "_" en los nombres de propiedades pueden ser problemáticos al usar getters y setters. </h5>
+<h5 class='alert alert-warning'>Underscores in property names can be problematic when using getters and setters. </h5>
 
 Si utilizas guiones bajos en los nombres de sus propiedades, deberá utilizar camel case en las declaraciones de getter/setter para poder usar los métodos mágicos. (p. ej. `$model->getPropertyName` en lugar de `$model->getProperty_name`, `$model->findByPropertyName` en lugar de `$model->findByProperty_name`, etcétera.). Como gran parte del sistema espera el uso de camel case, y los guiones bajos se quitan, es aconsejable nombrar sus propiedades en la forma que se muestra a través de la documentación. Puede utilizar un mapa de columna (como se describe anteriormente) para asegurar la correcta asignación de sus propiedades a sus contrapartes de la base de datos.
 
@@ -253,7 +255,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning'>Si desea buscar registros mediante datos externos (como la entrada del usuario) o datos variables, debe utilizar <a href="#binding-parameters">Parámetros enlazados</a>`.</h5>
+<h5 class='alert alert-warning'>If you want find record by external data (such as user input) or variable data you must use <a href="#binding-parameters">Binding Parameters</a>`.</h5>
 
 También puede utilizar el método `findFirst()` para obtener sólo el primer registro que coincida con el criterio dado:
 
@@ -639,7 +641,7 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class='alert alert-warning'>Puesto que el tipo de enlace por defecto es <code>Phalcon\Db\Column::BIND_PARAM_STR</code>, no hay necesidad para especificar el parámetro <code>bindTypes</code> si todas las columnas son de ese tipo.</h5>
+<h5 class='alert alert-warning'>Since the default bind-type is <code>Phalcon\Db\Column::BIND_PARAM_STR</code>, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.</h5>
 
 Si vincula arrays en parámetros enlazados, tenga en cuenta que las claves deben numerarse desde cero:
 
@@ -665,7 +667,7 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class='alert alert-warning'>Los parámetros enlazados están disponibles para todos los métodos de consulta como <code>find()</code> y <code>findFirst()</code> como así también en los métodos de cálculo como <code>count()</code>, <code>sum()</code>, <code>average()</code> etcétera. </h5>
+<h5 class='alert alert-warning'>Bound parameters are available for all query methods such as <code>find()</code> and <code>findFirst()</code> but also the calculation methods like <code>count()</code>, <code>sum()</code>, <code>average()</code> etc. </h5>
 
 Si está utilizando los "buscadores", por ejemplo `find()`, `findFirst()`, etc., los parámetros enlazados se usan automáticamente:
 
@@ -981,7 +983,7 @@ $robot = new Robots();
 $robot->save($_POST);
 ```
 
-<h5 class='alert alert-warning'>Sin precauciones, la asignación masiva podría permitir a los atacantes establecer el valor de cualquier columna de la base de datos. Sólo utilice esta característica si desea permitir a un usuario insertar o actualizar todas las columnas en el modelo, incluso si los campos no están en la forma presentada. </h5>
+<h5 class='alert alert-warning'>Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form. </h5>
 
 Además usted puede establecer un parámetro adicional en `save` para definir una lista blanca de campos que pueden ser tenidos en cuenta al hacer la asignación en masa:
 
@@ -1335,7 +1337,7 @@ class Robots extends Model
 }
 ```
 
-<h5 class='alert alert-warning'>Never use a <a href="api/Phalcon_Db_RawValue">Phalcon\Db\RawValue</a> to assign external data (such as user input) or variable data. El valor de estos campos se omite al enlazar parámetros a la consulta. Por lo tanto podría utilizarse para atacar la aplicación con inyección SQL. </h5>
+<h5 class='alert alert-warning'>Never use a <a href="api/Phalcon_Db_RawValue">Phalcon\Db\RawValue</a> to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. </h5>
 
 <a name='dynamic-updates'></a>
 
