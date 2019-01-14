@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='requirements'></a>
 
 # Requerimentos
@@ -87,7 +89,7 @@ o
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-<h5 class='alert alert-warning'>Esto sólo debe hacerse una sola vez, a menos que cambie su distribución o quiera cambiar de versiones estables a nocturnas. </h5>
+<h5 class='alert alert-warning'>This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. </h5>
 
 <a name='installation-linux-debian-phalcon'></a>
 
@@ -162,7 +164,7 @@ o
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-<h5 class='alert alert-warning'>Esto sólo debe hacerse una sola vez, a menos que cambie su distribución o quiera cambiar de versiones estables a nocturnas. </h5>
+<h5 class='alert alert-warning'>This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. </h5>
 
 <a name='installation-linux-rpm-phalcon'></a>
 
@@ -477,4 +479,4 @@ También puede ver los módulos instalados mediante la CLI:
 php -m
 ```
 
-<h5 class='alert alert-danger'>Tenga en cuenta que en algunos sistemas basado en Linux, puede que necesite cambiar dos archivos <code>php.ini</code>, uno para el servidor web (Apache/Nginx) y otro para el CLI. Si Phalcon es cargado solamente para el servidor web, necesita localizar el <code>php.ini</code> del CLI y hacer las adiciones necesarias para que el módulo que se cargue. </h5>
+<h5 class='alert alert-danger'>Note that in some Linux based systems, you might need to change two <code>php.ini</code> files, one for your web server (Apache/Nginx), and one for the CLI. If Phalcon is loaded only for say the web server, you will need to locate the CLI <code>php.ini</code> and make the necessary additions for the module to be loaded. </h5>
