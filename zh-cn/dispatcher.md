@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # 调度控制器
@@ -568,7 +570,7 @@ $dispatcher->setModelBinder(new Binder());
 return $dispatcher;
 ```
 
-<h5 class='alert alert-warning'>由于绑定器对象在使用内部的反射API，这些API可能是重量级的，因此可以设置缓存。 这可以使用<code>setModelBinder()</code> 的第二个参数来实现，该参数可以是服务名或是传给<code>Binder</code> 构造函数的缓存实例。 </h5>
+<h5 class='alert alert-warning'>Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in <code>setModelBinder()</code> which can also accept service name or just by passing cache instance to <code>Binder</code> constructor. </h5>
 
 It also introduces a new interface [Phalcon\Mvc\Model\Binder\BindableInterface](api/Phalcon_Mvc_Model_Binder_BindableInterface) which allows you to define the controllers associated models to allow models binding in base controllers.
 
@@ -629,7 +631,7 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>当前，绑定器将只用模型的主键来执行<code>findFirst()</code>。上面的路由示例 <code>/posts/show/{1}</code>会 </h5>
+<h5 class='alert alert-warning'>Currently the binder will only use the models primary key to perform a <code>findFirst()</code> on. An example route for the above would be <code>/posts/show/{1}</code> </h5>
 
 <a name='handling-404'></a>
 
@@ -729,7 +731,7 @@ class ExceptionsPlugin
 }
 ```
 
-<h5 class='alert alert-danger'>只有调度器产生的异常，和在<code>beforeException</code> 事件中执行的动作产生的异常通知。 监听器和控制器事件产生的异常被重定向到最后一个 try/catch 块 </h5>
+<h5 class='alert alert-danger'>Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the <code>beforeException</code> events. Exceptions produced in listeners or controller events are redirected to the latest try/catch. </h5>
 
 <a name='custom'></a>
 
