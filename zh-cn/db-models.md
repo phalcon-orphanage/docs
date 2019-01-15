@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='working-with'></a>
 
@@ -37,7 +39,7 @@ class RobotParts extends Model
 
 <h5 class='alert alert-warning'>If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation. </h5>
 
-默认情况下，该模型 `Store\Toys\RobotParts` 将映射到表 `robot_parts`。 如果你想要手动指定映射表的另一个名称，您可以使用 `setSource()` 方法：
+By default, the model `Store\Toys\RobotParts` will map to the table `robot_parts`. If you want to manually specify another name for the mapped table, you can use the `setSource()` method:
 
 ```php
 <?php
@@ -55,9 +57,9 @@ class RobotParts extends Model
 }
 ```
 
-该模型 `RobotParts` 现在映射到 `toys_robot_parts` 表。`Initialize()` 方法帮助建立这个模型的自定义行为即一个不同的表。
+The model `RobotParts` now maps to `toys_robot_parts` table. The `initialize()` method helps with setting up this model with a custom behavior i.e. a different table.
 
-在请求期间一次只调用 `initialize()` 方法。 此方法用于执行初始化，则适用的所有实例的应用程序中创建的模型。 如果您想要创建的每个实例执行初始化任务你可以使用 `onConstruct()` 方法：
+The `initialize()` method is only called once during the request. This method is intended to perform initializations that apply for all instances of the model created within the application. If you want to perform initialization tasks for every instance created you can use the `onConstruct()` method:
 
 ```php
 <?php
@@ -98,7 +100,7 @@ class Robots extends Model
 }
 ```
 
-另一个实现是使用 getter 和 setter 函数，控制哪些属性是公开可用于该模型。 使用 getter 和 setter 的好处是，开发人员可以执行转换和验证检查为模型，这是不可能的当使用公共属性设置的值。 另外 getter 和 setter 允许将来的更改而无需更改模型的类的接口。 所以如果一个字段名称发生了变化，唯一的改变所需也会在模型中相关的 getter/setter 和无处可在代码中引用的私有财产。
+Another implementation is to use getters and setter functions, which control which properties are publicly available for that model. The benefit of using getters and setters is that the developer can perform transformations and validation checks on the values set for the model, which is impossible when using public properties. Additionally getters and setters allow for future changes without changing the interface of the model class. So if a field name changes, the only change needed will be in the private property of the model referenced in the relevant getter/setter and nowhere else in the code.
 
 ```php
 <?php
@@ -158,17 +160,17 @@ class Robots extends Model
 }
 ```
 
-公共属性提供在发展中的复杂程度较低。 然而 getter/setter 可以大大提高可测试性、 可扩展性和可维护性的应用程序。 开发人员可以决定哪一种策略是更适合他们正在创建，具体取决于应用程序的需要的应用。 ORM 是符合这两项计划的定义属性。
+Public properties provide less complexity in development. However getters/setters can heavily increase the testability, extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the application they are creating, depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
 
 <h5 class='alert alert-warning'>Underscores in property names can be problematic when using getters and setters. </h5>
 
-如果你在你的属性名称中使用下划线，你必须仍然 camel 大小写你的 getter/setter 在声明中使用用于与神奇的方法。 (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName` instead of `$model->findByProperty_name`, etc.). 由于大部分的系统预计 camel 大小写，并且通常删除下划线，它建议来命名您的属性显示整个文档的方式。 你可以使用列映射 （如上文所述） 以确保您的属性与数据库的同行的正确映射。
+If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName` instead of `$model->findByProperty_name`, etc.). As much of the system expects camel case, and underscores are commonly removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a column map (as described above) to ensure proper mapping of your properties to their database counterparts.
 
 <a name='records-to-objects'></a>
 
 ## Understanding Records To Objects
 
-模型的每个实例表示表中的一行。通过阅读对象属性，您可以轻松访问记录数据。例如，对于一个表 '机器人' 的记录：
+Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
 
 ```sql
 mysql> select * from robots;
@@ -182,7 +184,7 @@ mysql> select * from robots;
 3 rows in set (0.00 sec)
 ```
 
-你可以按其主键查找某个记录，然后打印它的名字：
+You could find a certain record by its primary key and then print its name:
 
 ```php
 <?php
@@ -325,7 +327,7 @@ $robots = Robots::find(
 | `cache`       | 缓存的结果集，减少连续访问关系型系统                                                                                                                           | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
 | `hydration`   | 设置hydration 来表示每个返回的记录的结果                                                                                                                    | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
-如果你喜欢，也是在一种面向对象的方式，而不是使用一个数组参数中可用一个方法来创建查询：
+If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
 
 ```php
 <?php
@@ -342,9 +344,9 @@ $robots = Robots::query()
 
 The static method `query()` returns a [Phalcon\Mvc\Model\Criteria](api/Phalcon_Mvc_Model_Criteria) object that is friendly with IDE autocompleters.
 
-All the queries are internally handled as [PHQL](/4.0/en/db-phql) queries. PHQL is a high-level, object-oriented and SQL-like language. 这种语言为您提供了更多的功能来执行查询像加入其他模型，定义分组，添加聚合等。
+All the queries are internally handled as [PHQL](/4.0/en/db-phql) queries. PHQL is a high-level, object-oriented and SQL-like language. This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
 
-最后，是 `findFirstBy<property-name>()` 方法。 此方法扩展前面提到的 `findFirst()` 方法。 它允许您快速使用属性名称方法本身从表执行检索和传递给它的参数，其中包含的数据要在该列中搜索。 An example is in order, so taking our Robots model mentioned earlier:
+Lastly, there is the `findFirstBy<property-name>()` method. This method expands on the `findFirst()` method mentioned earlier. It allows you to quickly perform a retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column. An example is in order, so taking our Robots model mentioned earlier:
 
 ```php
 <?php
@@ -363,7 +365,7 @@ class Robots extends Model
 }
 ```
 
-我们都要在这里工作的三个属性： `$id`、 `$name` 和 `$price`。 所以，让我们说你想要检索 'Terminator' 的名称与表中的第一个记录。 这可以像编写：
+We have three properties to work with here: `$id`, `$name` and `$price`. So, let's say you want to retrieve the first record in the table with the name 'Terminator'. This could be written like:
 
 ```php
 <?php
@@ -381,15 +383,15 @@ if ($robot) {
 }
 ```
 
-请注意我们在方法调用中使用的名称和传递变量 `$name` 给它，其中包含我们正在寻找我们的表中的名称。 此外请注意，当我们与我们的查询找到匹配项，所有其他属性是提供给我们的。
+Notice that we used 'Name' in the method call and passed the variable `$name` to it, which contains the name we are looking for in our table. Notice also that when we find a match with our query, all the other properties are available to us as well.
 
 <a name='resultsets'></a>
 
 ### 模型结果集
 
-While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). 这是一个对象，封装所有结果集有像遍历、 寻求特定记录、 计数等功能。
+While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
 
-这些对象是比标准数组更强大。 One of the greatest features of the [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset) is that at any time there is only one record in memory. 这大大有助于在内存管理，特别是处理大量数据时。
+These objects are more powerful than standard arrays. One of the greatest features of the [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset) is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
 
 ```php
 <?php
@@ -441,11 +443,11 @@ $robot = $robots->getFirst();
 $robot = $robots->getLast();
 ```
 
-Phalcon的结果集模拟可滚动游标，你可以得到任何行只是通过访问它的位置，或寻求内部的指针指向一个特定的位置。 请注意，某些数据库系统不支持可滚动游标，这会强制重新执行查询以倒带将光标移动到开始并获得所请求的位置处的记录。 同样，如果结果集遍历几次，查询必须执行相同的次数。
+Phalcon's resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
 
 As storing large query results in memory could consume many resources, resultsets are obtained from the database in chunks of 32 rows - reducing the need to re-execute the request in several cases.
 
-请注意结果集可以被序列化并存储在缓存后端。 [Phalcon\Cache](api/Phalcon_Cache) can help with that task. However, serializing data causes [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
+Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache](api/Phalcon_Cache) can help with that task. However, serializing data causes [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
 
 ```php
 <?php
@@ -474,11 +476,11 @@ foreach ($parts as $part) {
 
 ### 自定义结果集
 
-有的应用程序逻辑需要额外的操作的数据，因为它从数据库中检索。 以前，我们只是将扩展模型，封装在类中的模型或特征，功能将返回到调用方通常数组转换后的数据。
+There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning back to the caller usually an array of transformed data.
 
-With custom resultsets, you no longer need to do that. 自定义结果集将封装的功能，否则为会在模型中，可以通过其他的模型，从而保持 [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) 的代码重用。 This way, the `find()` method will no longer return the default [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset), but instead the custom one. Phalcon allows you to do this by using the `getResultsetClass()` in your model.
+With custom resultsets, you no longer need to do that. The custom resultset will encapsulate the functionality that otherwise would be in the model and can be reused by other models, thus keeping the code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). This way, the `find()` method will no longer return the default [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset), but instead the custom one. Phalcon allows you to do this by using the `getResultsetClass()` in your model.
 
-首先，我们需要定义的结果集类：
+First we need to define the resultset class:
 
 ```php
 <?php
@@ -495,7 +497,7 @@ class Custom extends Simple
 }
 ```
 
-在模型中，我们设置了 `getResultsetClass()` 中的类如下：
+In the model, we set the class in the `getResultsetClass()` as follows:
 
 ```php
 <?php
@@ -518,7 +520,7 @@ class Robots extends Model
 }
 ```
 
-和最后在您的代码中你会有这样的事情：
+and finally in your code you will have something like this:
 
 ```php
 <?php
@@ -543,7 +545,7 @@ $this->view->mydata = $robots->getSomeData();
 
 ### 筛选结果集
 
-筛选数据的最有效途径设置一些搜索条件，数据库将使用索引在表上设置数据更快地返回。 Phalcon另外允许您筛选数据使用 PHP 使用不是数据库中可用的任何资源：
+The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
 
 ```php
 <?php
@@ -564,7 +566,7 @@ $customers = $customers->filter(
 
 ### 绑定参数
 
-Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). 你被鼓励使用此方法，以消除您的代码受到 SQL 注入式攻击的可能性。 支持字符串和整数的占位符。 绑定参数可以简单地实现，如下所示：
+Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. 绑定参数可以简单地实现，如下所示：
 
 ```php
 <?php
@@ -607,9 +609,9 @@ $robots = Robots::find(
 );
 ```
 
-当使用数字占位符，您将需要将它们定义为即 `1` 或 `2` 的整数。 在这种情况下 `'1'` 或 `'2'` 是考虑的字符串而不是数字，所以该占位符不能被成功替换。
+When using numeric placeholders, you will need to define them as integers i.e. `1` or `2`. In this case `'1'` or `'2'` are considered strings and not numbers, so the placeholder could not be successfully replaced.
 
-Strings are automatically escaped using [PDO](https://php.net/manual/en/pdo.prepared-statements.php). 此函数还考虑连接字符集，其建议以定义正确的字符集中的数据库配置，作为错误的字符集或在连接参数中会产生意外的影响，在存储或检索数据时。
+Strings are automatically escaped using [PDO](https://php.net/manual/en/pdo.prepared-statements.php). This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
 
 Additionally you can set the parameter `bindTypes`, this allows defining how the parameters should be bound according to its data type:
 
@@ -643,7 +645,7 @@ $robots = Robots::find(
 
 <h5 class='alert alert-warning'>Since the default bind-type is <code>Phalcon\Db\Column::BIND_PARAM_STR</code>, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.</h5>
 
-如果您在绑定参数绑定数组，请牢记，编号为键的同时，还必须从零：
+If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
 
 ```php
 <?php
@@ -694,7 +696,7 @@ $robots = Robots::findByName('Ultron');
 
 ## 初始化/准备读取的记录
 
-可能是从数据库获取记录后有必要在正在使用的应用程序的其余部分之前初始化数据的情况。 您可以在模型中实现的 `afterFetch()` 方法，此事件将只是后执行创建实例并将数据分配给它：
+May be the case that after obtaining a record from the database is necessary to initialise the data before being used by the rest of the application. You can implement the `afterFetch()` method in a model, this event will be executed just after create the instance and assign the data to it:
 
 ```php
 <?php
@@ -731,7 +733,7 @@ class Robots extends Model
 }
 ```
 
-如果你使用而不是 getter/setter / 或公共的属性，你可以初始化字段一旦访问它：
+If you use getters/setters instead of/or together with public properties, you can initialize the field once it is accessed:
 
 ```php
 <?php
@@ -759,9 +761,9 @@ class Robots extends Model
 
 ## 生成的计算
 
-为常用功能的数据库系统，如 `COUNT`、 `SUM`、 `MAX`、 `MIN` 或 `AVG` 佣工是计算 （或聚合）。 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) allows to use these functions directly from the exposed methods.
+Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) allows to use these functions directly from the exposed methods.
 
-计数的例子：
+Count examples:
 
 ```php
 <?php
@@ -810,7 +812,7 @@ $group = Employees::count(
 );
 ```
 
-求和的例子：
+Sum examples:
 
 ```php
 <?php
@@ -862,7 +864,7 @@ $group = Employees::sum(
 );
 ```
 
-平均数的例子：
+Average examples:
 
 ```php
 <?php
@@ -894,7 +896,7 @@ $average = Employees::average(
 );
 ```
 
-最大/最小的例子：
+Max/Min examples:
 
 ```php
 <?php
@@ -926,7 +928,7 @@ $salary = Employees::minimum(
 
 ## 创建/更新记录
 
-`Phalcon\Mvc\Model::save()` 方法允许您创建并更新记录是否已经存在与模型关联的表中。 The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
+The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
 
 Also the method executes associated validators, virtual foreign keys and events that are defined in the model:
 
@@ -972,7 +974,7 @@ $robot->save(
 );
 ```
 
-Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. 所以你可以传递一个不安全的数组，而不用担心可能的 SQL 注入：
+Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass an insecure array without worrying about possible SQL injections:
 
 ```php
 <?php
@@ -1008,7 +1010,7 @@ $robot->save(
 
 ### Create/Update with Confidence
 
-当应用程序有很多的竞争时，我们可以期待创建记录，但它实际上更新。 如果我们使用 `Phalcon\Mvc\Model::save()` 来保留数据库中的记录，这可能发生。 If we want to be absolutely sure that a record is created or updated, we can change the `save()` call with `create()` or `update()`:
+When an application has a lot of competition, we could be expecting create a record but it is actually updated. This could happen if we use `Phalcon\Mvc\Model::save()` to persist the records in the database. If we want to be absolutely sure that a record is created or updated, we can change the `save()` call with `create()` or `update()`:
 
 ```php
 <?php
@@ -1041,7 +1043,7 @@ The methods `create` and `update` also accept an array of values as parameter.
 
 ## 删除记录
 
-`Phalcon\Mvc\Model::delete()` 方法允许删除一条记录。你可以使用它，如下所示：
+The `Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
 
 ```php
 <?php
@@ -1098,7 +1100,7 @@ foreach ($robots as $robot) {
 | Deleting  | afterDelete  |    否     | Runs after the delete operation was made |
 | Deleting  | beforeDelete |    是的    | Runs before the delete operation is made |
 
-与上述事件还可以定义业务规则的模型：
+With the above events can also define business rules in the models:
 
 ```php
 <?php
@@ -1126,7 +1128,7 @@ class Robots extends Model
 
 ## Hydration Modes
 
-正如前面提到的结果集是完整的对象的集合，这意味着每个返回的结果是一个对象，表示数据库中的行。 这些对象可以修改并再次保存到持久性：
+As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object representing a row in the database. These objects can be modified and saved again to persistence:
 
 ```php
 <?php
@@ -1143,7 +1145,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-有时记录可得出只以提交给用户在只读模式下，在这些情况下，它可能是有用的改变，从而记录都代表，以便他们处理的方式。 用来表示在结果集中返回的对象的策略称为'hydration mode':
+Sometimes records are obtained only to be presented to a user in read-only mode, in these cases it may be useful to change the way in which records are represented to facilitate their handling. The strategy used to represent objects returned in a resultset is called 'hydration mode':
 
 ```php
 <?php
@@ -1401,7 +1403,7 @@ class Robots extends Model
 }
 ```
 
-然后可以在代码中自然地使用新的名称：
+Then you can use the new names naturally in your code:
 
 ```php
 <?php
@@ -1437,12 +1439,12 @@ $robot->theYear = 2999;
 $robot->save();
 ```
 
-重命名您的列时，请考虑下列事项：
+Consider the following when renaming your columns:
 
 * 对relationships/validators的属性的引用必须使用新的名称
 * 请参阅名称将导致异常的 ORM 的实列
 
-独立的列映射，您可以：
+The independent column map allows you to:
 
 * 编写应用程序使用您自己的约定
 * 消除供应商的前缀后缀，可在您的代码
@@ -1756,7 +1758,7 @@ Model::setup(
 );
 ```
 
-可用的查询选项有：
+The available options are:
 
 | 选项                    | 描述                                                                                        |   默认    |
 | --------------------- | ----------------------------------------------------------------------------------------- |:-------:|
