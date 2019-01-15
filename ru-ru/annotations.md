@@ -4,15 +4,17 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Парсер аннотаций
 
-Изначально компонент парсера аннотаций был написан на языке C для мира PHP. `Phalcon\Annotations` — это компонент общего назначения, который обеспечивает простоту синтаксического анализа и кеширования аннотаций в PHP-классах, для последующего их использования в приложениях.
+It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
 
-Аннотации читаются из блоков комментариев docblock в классах, его методах и свойствах. Аннотации могут быть помещены в любое место блока документации docblock:
+Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
 ```php
 <?php
@@ -43,7 +45,7 @@ class Example
 }
 ```
 
-Аннотации имеют следующий синтаксис:
+An annotation has the following syntax:
 
 ```php
 /**
@@ -52,7 +54,7 @@ class Example
  */
 ```
 
-Аннотации также могут быть помещены в любую часть блока документации:
+Also, an annotation can be placed at any part of a docblock:
 
 ```php
 <?php
@@ -68,7 +70,7 @@ class Example
  */
 ```
 
-Парсер является очень гибким инструментом, поэтому следующий блок документации также является правильным:
+The parser is highly flexible, the following docblock is valid:
 
 ```php
 <?php
@@ -81,7 +83,7 @@ someParameter='the value', false
  **/
 ```
 
-Тем не менее, рекомендуется помещать аннотации в конце блоков документации, чтобы сделать код более понятным и удобным для поддержки:
+However, to make the code more maintainable and understandable it is recommended to place annotations at the end of the docblock:
 
 ```php
 <?php
@@ -99,7 +101,7 @@ someParameter='the value', false
 
 ## Фабрика
 
-Существует множество адаптеров аннотаций (см. [Адаптеры](#adapters)). Используемый вами, будет зависеть от нужд вашего приложения. Традиционный способ инициализации экземпляра адаптера выглядит следующим образом:
+There are many annotations adapters available (see [Adapters](#adapters)). Используемый вами, будет зависеть от нужд вашего приложения. The traditional way of instantiating such an adapter is as follows:
 
 ```php
 <?php
@@ -111,7 +113,7 @@ $reader = new MemoryAdapter();
 // .....
 ```
 
-Однако, вы можете использовать фабричный метод, чтобы достигнуть того же самого:
+However you can also utilize the factory method to achieve the same thing:
 
 ```php
 <?php
@@ -128,13 +130,13 @@ $options = [
 $annotations = Factory::load($options);
 ```
 
-Фабричный загрузчик обеспечивает большую гибкость, при создании экземпляров адаптеров аннотаций из конфигурационных файлов.
+The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
 
 <a name='reading'></a>
 
 ## Чтение аннотаций
 
-Для простого получения аннотаций класса с использованием объектно-ориентированного интерфейса, реализован рефлектор:
+A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
 ```php
 <?php
@@ -162,15 +164,15 @@ foreach ($annotations as $annotation) {
 }
 ```
 
-Процесс чтения аннотаций является очень быстрым. Тем не менее, по причинам производительности, мы рекомендуем использовать адаптер для хранения обработанных аннотаций. Адаптеры кэшируют обработанные аннотации, избегая необходимости в их разборе снова и снова.
+The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter. Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
 
-[Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory) was used in the above example. Этот адаптер кэширует аннотации только в процессе работы, поэтому он более подходит для разработки. Существуют и другие адаптеры, которые можно использовать в промышленной эксплуатации.
+[Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory) was used in the above example. This adapter only caches the annotations while the request is running and for this reason the adapter is more suitable for development. There are other adapters to swap out when the application is in production stage.
 
 <a name='types'></a>
 
 ## Типы аннотаций
 
-Аннотации могут иметь или не иметь параметров. Параметры могут быть простыми литералам (строкой, числом, булевым типом, null), массивом, хешированным списком или другими аннотациями:
+Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
 ```php
 <?php
@@ -229,13 +231,13 @@ foreach ($annotations as $annotation) {
 
 ## Практическое использование
 
-Далее мы разберем несколько примеров по использованию аннотаций в PHP приложениях:
+Next we will explain some practical examples of annotations in PHP applications:
 
 <a name='usage-cache'></a>
 
 ### Кэширование с помощью аннотаций
 
-Давайте представим, что у нас есть контроллер и разработчик хочет сделать плагин, который автоматически запускает кэширование если последнее запущенное действие было помечено как имеющее возможность кэширования. Прежде всего, мы зарегистрируем плагин в сервисе Dispatcher, чтобы получать уведомление при выполнении маршрута:
+Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
 
 ```php
 <?php
@@ -260,7 +262,7 @@ $di['dispatcher'] = function () {
 };
 ```
 
-`CacheEnablerPlugin` это плагин, который перехватывает каждое запущенное действие в диспетчере, включая кэширование если необходимо:
+`CacheEnablerPlugin` is a plugin that intercepts every action executed in the dispatcher enabling the cache if needed:
 
 ```php
 <?php
@@ -310,7 +312,7 @@ class CacheEnablerPlugin extends Plugin
 }
 ```
 
-Теперь мы можем использовать аннотации в контроллере:
+Now, we can use the annotation in a controller:
 
 ```php
 <?php
@@ -350,7 +352,7 @@ class NewsController extends Controller
 
 ### Контроль доступа и аннотации
 
-Вы можете использовать аннотации для того, чтобы сообщить ACL механизму какие контроллеры являются закрытыми для публичного доступа:
+You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
 ```php
 <?php
@@ -415,7 +417,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 ## Адаптеры аннотаций
 
-Компонент поддерживает адаптеры с возможностью кэширования проанализированных аннотаций. Это позволяет увеличивать производительность в боевом режиме и моментальное обновление данных при разработке и тестировании:
+This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
 | Класс                                                                           | Описание                                                                                                                                                                         |
 | ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
