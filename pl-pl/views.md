@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -18,7 +20,7 @@ Views represent the user interface of your application. Views are often HTML fil
 
 ## Integracja widoków z kontrolerami
 
-Phalcon automatycznie przekazuje wykonanie do komponentu widoku w momencie gdy wybrany kontroler zakończył swój cykl. Komponent widoku będzie szukał w folderze widoków folderu nazwanego tak samo, jak nazwa ostatniego wykonanego kontrolera i następnie pliku o nazwie ostatniej wykonanej akcji. For instance, if a request is made to the URL *https://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
+Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *https://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
 | Adres serwera    | 127.0.0.1 |
 | ---------------- | --------- |
@@ -27,7 +29,7 @@ Phalcon automatycznie przekazuje wykonanie do komponentu widoku w momencie gdy w
 | Akcja            | show      |
 | Parametr         | 301       |
 
-Dyspozytor (ang. dispatcher) będzie szukał `PostsController` oraz akcji `showAction`. Prosty plik kontrolera dla tego przykładu wygląda tak:
+The dispatcher will look for a `PostsController` and its action `showAction`. A simple controller file for this example:
 
 ```php
 <?php
@@ -49,15 +51,15 @@ class PostsController extends Controller
 }
 ```
 
-Metoda `setVar()` pozwala nam stworzyć zmienne w widoku na żądanie, które mogą zostać użyte w szablonie widoku. Powyższy przykład demonstruje przesyłanie parametru `$postId` do odpowiedniego szablonu widoku.
+The `setVar()` method allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates how to pass the `$postId` parameter to the respective view template.
 
 <a name='hierarchical-rendering'></a>
 
 ## Hierarchiczne renderowanie
 
-[Phalcon\Mvc\View](api/Phalcon_Mvc_View) supports a hierarchy of files and is the default component for view rendering in Phalcon. Ta hierarchia pozwala na wspólne punkty layoutu (często używane widoki), jak również foldery o nazwach kontrolerów definiujące odpowiednie szablony widoków.
+[Phalcon\Mvc\View](api/Phalcon_Mvc_View) supports a hierarchy of files and is the default component for view rendering in Phalcon. This hierarchy allows for common layout points (commonly used views), as well as controller named folders defining respective view templates.
 
-Ten komponent używa domyślnie języka PHP jako silnika szablonów, więc widoki powinny mieć rozszerzenie `.phtml`. Jeżeli katalogiem widoków jest *app/views* to komponent widoku znajdzie automatycznie te 3 pliki widoków.
+This component uses by default PHP itself as the template engine, therefore views should have the `.phtml` extension. If the views directory is *app/views* then view component will find automatically for these 3 view files.
 
 | Nazwa             | Plik                          | Description                                                                                                                                                                                                                   |
 | ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -65,7 +67,7 @@ Ten komponent używa domyślnie języka PHP jako silnika szablonów, więc widok
 | Layout kontrolera | app/views/layouts/posts.phtml | Ten widok związany jest z kontrolerem. Będzie on wyświetlany tylko dla każdej akcji wykonanej w ramach kontrolera "posts". Cały kod zaimplementowany w layoucie będzie ponownie użyty dla wszystkich akcji w tym kontrolerze. |
 | Layout główny     | app/views/index.phtml         | To jest główna akcja, która będzie wyświetlona dla każdego kontrolera lub akcji wykonanej w aplikacji.                                                                                                                        |
 
-Nie jesteś zobligowany do zaimplementowania wszystkich plików wspomnianych powyżej. [Phalcon\Mvc\View](api/Phalcon_Mvc_View) will simply move to the next view level in the hierarchy of files. Jeżeli wszystkie trzy pliki są zaimplementowane, będą przetwarzane w następujący sposób:
+You are not required to implement all of the files mentioned above. [Phalcon\Mvc\View](api/Phalcon_Mvc_View) will simply move to the next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
 
 ```php
 <!-- app/views/posts/show.phtml -->
@@ -99,11 +101,11 @@ Nie jesteś zobligowany do zaimplementowania wszystkich plików wspomnianych pow
 </html>
 ```
 
-Zauważ linie gdzie metoda `$this->getContent()` została wykonana. This method instructs [Phalcon\Mvc\View](api/Phalcon_Mvc_View) on where to inject the contents of the previous view executed in the hierarchy. Na powyższym przykładzie danymi wyjściowymi będą:
+Note the lines where the method `$this->getContent()` was called. This method instructs [Phalcon\Mvc\View](api/Phalcon_Mvc_View) on where to inject the contents of the previous view executed in the hierarchy. For the example above, the output will be:
 
 .. figure:: ../_static/img/views-1.png :align: center
 
-Wygenerowanym kodem HTML przez żądanie będzie:
+The generated HTML by the request will be:
 
 ```php
 <!-- app/views/index.phtml -->
