@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='basic'></a>
 
@@ -21,7 +23,7 @@ In this tutorial, we will explain how to create a simple application that provid
 
 ## Definición de la API
 
-La API consta de los siguientes métodos:
+The API consists of the following methods:
 
 | Método   | URL                      | Action                                          |
 | -------- | ------------------------ | ----------------------------------------------- |
@@ -38,7 +40,7 @@ La API consta de los siguientes métodos:
 
 As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/4.0/en/application-micro) to meet our goal.
 
-La siguiente estructura de archivos es más que suficiente:
+The following file structure is more than enough:
 
 ```php
 my-rest-api/
@@ -48,7 +50,7 @@ my-rest-api/
     .htaccess
 ```
 
-En primer lugar, necesitamos un archivo `.htaccess` que contiene todas las reglas para reescribir la solicitud URI hacia el archivo `index.php` (punto de entrada de la aplicación):
+First, we need a `.htaccess` file that contains all the rules to rewrite the request URIs to the `index.php` file (application entry-point):
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -58,7 +60,7 @@ En primer lugar, necesitamos un archivo `.htaccess` que contiene todas las regla
 </IfModule>
 ```
 
-La mayor parte de nuestro código se colocará en `index.php`. El archivo se crea de la sigue manera:
+The bulk of our code will be placed in `index.php`. The file is created as follows:
 
 ```php
 <?php
@@ -72,7 +74,7 @@ $app = new Micro();
 $app->handle();
 ```
 
-Ahora vamos a crear las rutas como las hemos definido anteriormente:
+Now we will create the routes as we defined above:
 
 ```php
 <?php
@@ -132,15 +134,15 @@ $app->delete(
 $app->handle();
 ```
 
-Cada ruta se define con un método con el mismo nombre que el método HTTP, como primer parámetro que pasaremos un patrón de ruta, seguido por un controlador. En este caso, el controlador es una función anónima. La siguiente ruta: `/api/robots/{id:[0-9]+}`, por ejemplo, establece explícitamente que el parámetro `id` debe tener un formato numérico.
+Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern, followed by a handler. In this case, the handler is an anonymous function. The following route: `/api/robots/{id:[0-9]+}`, by example, explicitly sets that the `id` parameter must have a numeric format.
 
-Cuando una ruta definida coincide con el identificador URI solicitando, entonces la aplicación ejecuta el controlador correspondiente.
+When a defined route matches the requested URI then the application executes the corresponding handler.
 
 <a name='models'></a>
 
 ## Creando un modelo
 
-Nuestra API proporciona información sobre `robots`, estos datos están almacenados en una base de datos. El siguiente modelo nos permite acceder a la tabla de una manera orientada a objetos. Hemos implementado algunas reglas del negocio usando validadores incorporados y validaciones simples. Esto nos da la tranquilidad que guarda datos cumpliendo con los requisitos de nuestra aplicación. Este archivo de modelo debe colocarse en la carpeta `models`.
+Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
 ```php
 <?php
@@ -201,7 +203,7 @@ class Robots extends Model
 }
 ```
 
-Ahora, debemos configurar una conexión para ser utilizada por este modelo y cargala dentro de nuestra aplicación [archivo: `index.php`]:
+Now, we must set up a connection to be used by this model and load it within our app [File: `index.php`]:
 
 ```php
 <?php
@@ -247,7 +249,7 @@ $app = new Micro($di);
 
 ## Recuperando Datos
 
-El primer `controlador` que vamos a implementar es por el método GET que devuelve los robots disponibles. Vamos a utilizar PHQL para realizar esta consulta simple y devolver los resultados en formato JSON. [Archivo: `index.php`]
+The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
 
 ```php
 <?php
@@ -274,9 +276,9 @@ $app->get(
 );
 ```
 
-[PHQL](/4.0/en/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. La cláusula `use` en la función anónima nos permite pasar algunas variables del ámbito global al local fácilmente.
+[PHQL](/4.0/en/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
 
-El controlador de búsqueda por nombre se vería como [archivo: `index.php`]:
+The searching by name handler would look like [File: `index.php`]:
 
 ```php
 <?php
@@ -308,7 +310,7 @@ $app->get(
 );
 ```
 
-Buscando por el campo `id` es bastante similar, en este caso, también estamos notificando si el robot se encontró o no [archivo: `index.php`]:
+Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not [File: `index.php`]:
 
 ```php
 <?php
@@ -360,7 +362,7 @@ $app->get(
 
 ## Insertando datos
 
-Tomando los datos como una cadena JSON insertada en el cuerpo de la solicitud, también utilizamos PHQL para la inserción [archivo: `index.php`]:
+Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion [File: `index.php`]:
 
 ```php
 <?php
@@ -428,7 +430,7 @@ $app->post(
 
 ## Actualizando datos
 
-La actualización de datos es similar a la inserción. El `id` como parámetro indica qué robot debe actualizarse [archivo: `index.php`]:
+The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
 
 ```php
 <?php
@@ -490,7 +492,7 @@ $app->put(
 
 ## Borrando datos
 
-La eliminación de datos es similar a actualizar. El `id` como parámetro indica qué robot debe ser eliminado [archivo: `index.php`]:
+The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
 
 ```php
 <?php
@@ -562,7 +564,7 @@ Now we will create database for our application. Run SQL queries as follows:
 
 Using [curl](https://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
 
-Obtener todos los robots:
+Obtain all the robots:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots
@@ -576,7 +578,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 ```
 
-Buscar un robot por su nombre:
+Search a robot by its name:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots/search/Astro
@@ -590,7 +592,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"2","name":"Astro Boy"}]
 ```
 
-Obtener un robot por su id:
+Obtain a robot by its id:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots/3
@@ -604,7 +606,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
 ```
 
-Insertar un nuevo robot:
+Insert a new robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
@@ -619,7 +621,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 ```
 
-Intentar insertar un nuevo robot con el nombre de un robot existente:
+Try to insert a new robot with the name of an existing robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
@@ -634,7 +636,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"ERROR","messages":["The robot name must be unique"]}
 ```
 
-O actualizar un robot con un tipo desconocido:
+Or update a robot with an unknown type:
 
 ```bash
 curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
@@ -650,7 +652,7 @@ Content-Type: text/html; charset=UTF-8
     list: droid, mechanical, virtual"]}
 ```
 
-Por último, eliminar un robot:
+Finally, delete a robot:
 
 ```bash
 curl -i -X DELETE https://localhost/my-rest-api/api/robots/4
