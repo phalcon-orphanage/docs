@@ -1,29 +1,29 @@
 [
     {
-        "text": "Γενικά",
+        "text": "General",
         "url": "/introduction",
         "menu": [
             {
-                "text": "Σημειώσεις έκδοσης",
+                "text": "Release Notes",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Αναβάθμιση",
+                "text": "Upgrade",
                 "url": ""
             },
             {
-                "text": "Σπόνσορες",
+                "text": "Sponsors",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Συνεισφορές",
+        "text": "Contributions",
         "url": "",
         "menu": [
             {
-                "text": "Επισκόπηση",
+                "text": "Overview",
                 "url": "/contributions"
             },
             {
@@ -49,7 +49,7 @@
         ]
     },
     {
-        "text": "Ξεκινώντας",
+        "text": "Getting Started",
         "url": "",
         "menu": [
             {
@@ -71,7 +71,7 @@
         ]
     },
     {
-        "text": "Περιβάλλοντα",
+        "text": "Environments",
         "url": "",
         "menu": [
             {
@@ -89,7 +89,7 @@
         ]
     },
     {
-        "text": "Εργαλεία ανάπτυξης",
+        "text": "Development Tools",
         "url": "",
         "menu": [
             {
@@ -101,7 +101,7 @@
                 "url": "/devtools-usage"
             },
             {
-                "text": "Εντοπισμός σφαλμάτων",
+                "text": "Debug",
                 "url": "/debug"
             }
         ]
@@ -137,7 +137,7 @@
         ]
     },
     {
-        "text": "Πυρήνας",
+        "text": "Core",
         "url": "",
         "menu": [
             {
@@ -201,7 +201,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Στρώμα",
+                "text": "Layer",
                 "url": "/db-layer"
             },
             {
@@ -229,7 +229,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Γεγονότα",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {
