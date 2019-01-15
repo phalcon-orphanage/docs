@@ -1,8 +1,10 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
----
+* * *
+
+layout: article language: 'en' version: '4.0'
+
+* * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
@@ -42,11 +44,11 @@ Restartujte web server Apache z ovládacího panelu XAMPP. To způsobí načten�
 
 ![](/assets/images/content/webserver-xampp-5.png)
 
-Otevřete internetový prohlížeč a do řádku adresy zadejte `http://localhost`. Uvidíte uvítací stranku XAMPP. Klikněte na odkaz `phpinfo()`.
+Open your browser to navigate to `https://localhost`. The XAMPP welcome page will appear. Click on the link `phpinfo()`.
 
 ![](/assets/images/content/webserver-xampp-6.png)
 
-[phpinfo](http://php.net/manual/en/function.phpinfo.php) will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly.
+[phpinfo](https://php.net/manual/en/function.phpinfo.php) will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly.
 
 ![](/assets/images/content/webserver-xampp-7.png)
 
@@ -70,5 +72,5 @@ Následující video Vás provede krok za krokem instalací Phalcon frameworku p
 
 ## Související průvodci
 
-* [General Installation](/3.4/en/installation)
-* [Instalace: WAMP](/3.4/en/webserver-wamp)
+* [General Installation](/4.0/en/installation)
+* [Instalace: WAMP](/4.0/en/webserver-wamp)
