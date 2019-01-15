@@ -1,16 +1,16 @@
 * * *
 
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Igbinary'
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Igbinary'
 
 * * *
 
 # Class **Phalcon\Cache\Frontend\Igbinary**
 
-*extends* class [Phalcon\Cache\Frontend\Data](/3.4/en/api/Phalcon_Cache_Frontend_Data)
+*extends* class [Phalcon\Cache\Frontend\Data](/4.0/en/api/Phalcon_Cache_Frontend_Data)
 
-*implements* [Phalcon\Cache\FrontendInterface](/3.4/en/api/Phalcon_Cache_FrontendInterface)
+*implements* [Phalcon\Cache\FrontendInterface](/4.0/en/api/Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cache/frontend/igbinary.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/igbinary.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
 Allows to cache native PHP data in a serialized form using igbinary extension
 
