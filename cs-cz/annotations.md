@@ -4,15 +4,17 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Parser anotací
 
-Je to poprvé, kdy je komponenta parseru anotací napsána v jazyku C pro PHP. `Phalcon\Annotations` je obecná komponenta, která umožňuje snadné analyzování a ukládání anotací do cache v PHP třídách, které jsou požity v aplikaci.
+It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
 
-Anotace jsou čteny z docblocků ve třídách, metodách a vlastnostech. Anotace mohou být umístěny na libovné místo v docblocku:
+Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
 ```php
 <?php
@@ -43,7 +45,7 @@ class Example
 }
 ```
 
-Anotace má následující syntaxi:
+An annotation has the following syntax:
 
 ```php
 /**
@@ -52,7 +54,7 @@ Anotace má následující syntaxi:
  */
 ```
 
-Anotaci také můžeme vložit na kterékoliv místo v docblocku:
+Also, an annotation can be placed at any part of a docblock:
 
 ```php
 <?php
@@ -68,7 +70,7 @@ Anotaci také můžeme vložit na kterékoliv místo v docblocku:
  */
 ```
 
-Parser je vysoce flexibilní, následující docblock je také validní:
+The parser is highly flexible, the following docblock is valid:
 
 ```php
 <?php
