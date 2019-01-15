@@ -1,8 +1,10 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
----
+* * *
+
+layout: article language: 'en' version: '4.0'
+
+* * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
@@ -60,7 +62,7 @@ class Robots extends Model
 
 The above example performs a validation using the built-in validator 'InclusionIn'. It checks the value of the field `type` in a domain list. If the value is not included in the method then the validator will fail and return false.
 
-<h5 class='alert alert-warning'>For more information on validators, see the <a href="/3.4/en/validation">Validation documentation</a></h5>
+<h5 class='alert alert-warning'>For more information on validators, see the <a href="/4.0/en/validation">Validation documentation</a></h5>
 
 The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
 
