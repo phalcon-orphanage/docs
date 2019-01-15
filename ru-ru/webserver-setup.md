@@ -4,23 +4,25 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='setup'></a>
 
 # Настройка веб-сервера
 
-Чтобы работала маршрутизация (анг. routing) в Phalcon, вам понадобится настроить должным образом веб-сервер, научив его правильно обрабатывать перенаправления. Ниже рассматриваются типичные конфигурации для популярных веб-серверов:
+In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
 
 <a name='php-fpm'></a>
 
 ## PHP-FPM
 
-The [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. В настоящее время PHP-FPM идёт в комплекте с любым дистрибутивом PHP в Unix.
+The [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. Nowadays, PHP-FPM is bundled with all Linux based PHP distributions.
 
-На **Windows** PHP-FPM поставляется вместе с пакетом PHP, как файл `php-cgi.exe`. Вы можете запустить его с этом скриптом. Windows не поддерживает Unix сокеты, скрипт запускает fast-cgi в TCP режиме на порте `9000`.
+On **Windows** PHP-FPM is in the PHP distribution archive through the file `php-cgi.exe` and you can start it with this script to help set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
 
-Создайте файл `php-fcgi.bar` с данным текстом:
+Create the file `php-fcgi.bat` with the following contents:
 
 ```bat
 @ECHO OFF
@@ -33,13 +35,13 @@ C:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 
 ## Встроенный в PHP веб-сервер (для разработки)
 
-Чтобы ускорить разработку вашего Phalcon-приложения, самым простым способом его запуска является использование встроенного в PHP веб-сервера. Мы рекомендуем использовать встроенный в PHP веб-сервер исключительно на стадии разработки. Ниже рассмотрены типичные конфигурации для [Nginx](#nginx) и [Apache](#apache), которые вам вероятнее всего подойдут.
+To speed up getting your Phalcon application running in development the easiest way is to use this built-in PHP server. Do not use this server in a production environment. The following configurations for [Nginx](#nginx) and [Apache](#apache) are what you need.
 
 <a name='php-built-in-phalcon-configuration'></a>
 
 ### Настройка под Phalcon
 
-Для включения ЧПУ без Apache или Nginx (которые необходимы для Phalcon), вы можете использовать файл-роутер:
+To enable dynamic URI rewrites, without Apache or Nginx, that Phalcon needs, you can use the following router file:
 <a href="https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php" target="_blank">.htrouter.php</a>
 
 If you created your application with [Phalcon-Devtools](/4.0/en/devtools-installation) this file should already exist in the root directory of your project and you can start the server with the following command:
@@ -48,7 +50,7 @@ If you created your application with [Phalcon-Devtools](/4.0/en/devtools-install
 $(which php) -S localhost:8000 -t public .htrouter.php
 ```
 
-Работа команды выше: - `$(which php)` — выводит абсолютный путь до интерпретатора PHP на вашей машине - `-S localhost:8000` — "говорит" серверу слушать `host:port` - `-t public` — указывает директорию ресурсов - `.htrouter.php` — отправляет все запросы на роутер (выступает в роли файла .htaccess)
+The anatomy of the command above: - `$(which php)` - will insert the absolute path to your PHP binary - `-S localhost:8000` - invokes server mode with the provided `host:port` - `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory - `.htrouter.php` - the entry point that will be evaluated for each request
 
 Then point your browser to https://localhost:8000/ to check if everything is working.
 
@@ -56,19 +58,19 @@ Then point your browser to https://localhost:8000/ to check if everything is wor
 
 ## Nginx
 
-[Nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. В отличие от традиционных серверов Nginx не использует потоки для обработки запросов. Вместо этого он использует гораздо более масштабируемую, управляемую событиями (асинхронную) архитектуру. Эта архитектура под высокой нагрузкой использует небольшой, и главное, предсказуемый объем памяти.
+[Nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
 
-Связка Phalcon + Nginx + PHP-FPM предоставляет мощный набор инструментов, который позволяет добиться максимальной производительности ваших PHP приложений.
+Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
 ### Установка Nginx
 
-<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/" target="_blank">Официальный сайт Nginx</a>
+<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/" target="_blank">NginX Offical Site</a>
 
 <a name='nginx-phalcon-configuration'></a>
 
 ### Настройка под Phalcon
 
-Вы можете использовать следующую конфигурацию Nginx для работы с Phalcon, вероятнее всего на вам подойдёт:
+You can use following potential configuration to setup Nginx with Phalcon:
 
 ```nginx
 server {
@@ -155,7 +157,7 @@ server {
 
 ### Запуск Nginx
 
-Обычно запуск производится командой `service start nginx`. Но это зависит от метода установки веб-сервера и системного менеджера вашей операционной системы.
+Usually `start nginx` from the command line but this depends on your installation method.
 
 <a name='apache'></a>
 
@@ -167,7 +169,7 @@ server {
 
 ### Настройка под Phalcon
 
-Следующие инструкции позволят настроить Apache для корректной работы с Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/4.0/en/routing). Типичное приложение имеет следующую структуру:
+The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/4.0/en/routing). Commonly an application has the following structure:
 
 ```bash
 test/
@@ -186,7 +188,7 @@ test/
 
 #### Корневой каталог
 
-Самый распространённый случай - когда приложение устанавливается в любой подкаталог корневой директории. В таких случаях мы используем два `.htaccess` файла. Первый будет скрывать код приложения и перенаправлять запросы к корню приложения (`public/`).
+This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`).
 
 ##### Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set. {.alert.alert-warning}
 
@@ -200,7 +202,7 @@ test/
 </IfModule>
 ```
 
-Второй `.htaccess` будет располагаться уже в каталоге `public/` и будет перенаправлять все запросы на файл `public/index.php`:
+A second `.htaccess` file is located in the `public/` directory, this re-writes all the URIs to the `public/index.php` file:
 
 ```apacheconfig
 # test/public/.htaccess
