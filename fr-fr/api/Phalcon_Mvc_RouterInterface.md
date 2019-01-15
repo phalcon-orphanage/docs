@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\RouterInterfac
 
 # Interface **Phalcon\Mvc\RouterInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/routerinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/routerinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 
@@ -74,7 +74,7 @@ abstract public **addConnect** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
-abstract public **mount** ([Phalcon\Mvc\Router\GroupInterface](/3.4/en/api/Phalcon_Mvc_Router_GroupInterface) $group)
+abstract public **mount** ([Phalcon\Mvc\Router\GroupInterface](/4.0/en/api/Phalcon_Mvc_Router_GroupInterface) $group)
 
 ...
 
