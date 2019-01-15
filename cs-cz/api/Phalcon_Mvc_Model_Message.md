@@ -1,15 +1,14 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\Message'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Message'
+
+* * *
 
 # Class **Phalcon\Mvc\Model\Message**
 
-*implements* [Phalcon\Mvc\Model\MessageInterface](/3.4/en/api/Phalcon_Mvc_Model_MessageInterface)
+*implements* [Phalcon\Mvc\Model\MessageInterface](/4.0/en/api/Phalcon_Mvc_Model_MessageInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/message.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/message.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Encapsulates validation info generated before save/delete records fails
 
@@ -38,7 +37,7 @@ class Robots extends \Phalcon\Mvc\Model
 
 ## Methods
 
-public **__construct** (*string* $message, [*string* | *array* $field], [*string* $type], [[Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model], [*int* | *null* $code])
+public **__construct** (*string* $message, [*string* | *array* $field], [*string* $type], [[Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model], [*int* | *null* $code])
 
 Phalcon\Mvc\Model\Message constructor
 
@@ -66,7 +65,7 @@ public **getField** ()
 
 Returns field name related to message
 
-public **setModel** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **setModel** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Set the model who generates the message
 
