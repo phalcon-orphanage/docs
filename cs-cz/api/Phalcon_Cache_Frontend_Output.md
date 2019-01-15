@@ -1,15 +1,14 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
-title: 'Phalcon\Cache\Frontend\Output'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Output'
+
+* * *
 
 # Class **Phalcon\Cache\Frontend\Output**
 
-*implements* [Phalcon\Cache\FrontendInterface](/3.4/en/api/Phalcon_Cache_FrontendInterface)
+*implements* [Phalcon\Cache\FrontendInterface](/4.0/en/api/Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cache/frontend/output.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/output.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Allows to cache output fragments captured with ob_* functions
 
