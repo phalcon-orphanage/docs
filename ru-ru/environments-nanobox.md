@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -54,7 +56,7 @@ This tells Nanobox to:
 
 ## Добавление Phalcon Devtools в `composer.json`
 
-Создайте файл `composer.json` в корневом каталоге вашего проекта и добавьте пакет `phalcon/devtools` в ваши dev зависимости:
+Create a `composer.json` file in the root of your project and add the `phalcon/devtools` package to your dev requirements:
 
 ```json
 {
