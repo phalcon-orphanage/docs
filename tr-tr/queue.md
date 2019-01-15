@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # Queueing
@@ -14,7 +16,7 @@ The best solution here is to implement background jobs. The web application puts
 
 While you can find more sophisticated PHP extensions to address queueing in your applications like [RabbitMQ](https://pecl.php.net/package/amqp); Phalcon provides a client for [Beanstalk](https://www.igvita.com/2010/05/20/scalable-work-queues-with-beanstalk/), a job queueing backend inspired by [Memcached](https://memcached.org/). It’s simple, lightweight, and completely specialized for job queueing.
 
-<h5 class='alert alert-danger'>Some of the data returned from queue methods require that the module Yaml be installed. Please refer to <a href="https://php.net/manual/book.yaml.php">this</a> for more information. Yaml >= 2.0.0 kullanmaya ihtiyacınız olacak </h5>
+<h5 class='alert alert-danger'>Some of the data returned from queue methods require that the module Yaml be installed. Please refer to <a href="https://php.net/manual/book.yaml.php">this</a> for more information. You will need to use Yaml >= 2.0.0 </h5>
 
 <a name='put-jobs-in-queue'></a>
 
