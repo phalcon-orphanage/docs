@@ -4,21 +4,23 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # データベース抽象化レイヤー
 
-[Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. これは、C言語で完全に書かれたデータベースシステムのための独立した高レベルの抽象化レイヤーで構成されています。
+[Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
-このコンポーネントは従来のモデルを使用するよりも、データベースを低レベルで操作することができます。
+This component allows for a lower level database manipulation than using traditional models.
 
 <a name='adapters'></a>
 
 ## データベースアダプター
 
-このコンポーネントはアダプターを使用して、特定のデータベースシステムの詳細をカプセル化します。Phalconでは、PDO を使用してデータベースに接続します。次のデータベースエンジンがサポートされます。
+This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
 
 | Class                                                                          | Description                                                                                                    |
 | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
@@ -32,7 +34,7 @@ layout: article language: 'en' version: '4.0'
 
 <a name='factory'></a>
 
-`adaper`オプションを使用してPDO Adapterクラスをロードします。例えば:
+Loads PDO Adapter class using `adapter` option. For example:
 
 ```php
 <?php
@@ -61,7 +63,7 @@ The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface mus
 
 ## データベースの方言
 
-Phalcon は、各データベース エンジンの特定の詳細を方言でカプセル化します。それらはアダプターに共通の機能と SQL ジェネレーターを提供します。
+Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
 
 | Class                                                                 | Description                  |
 | --------------------------------------------------------------------- | ---------------------------- |
@@ -197,7 +199,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 ## PDO の追加オプションを設定
 
-`options`パラメータを渡すことで接続時にPDOオプションを設定できます:
+You can set PDO options at connection time by passing the parameters `options`:
 
 ```php
 <?php
@@ -220,7 +222,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
 
 ## Factoryを使用した接続
 
-単純に`ini` ファイルを使ってあなたの `データベース`サービスをデータベースに設定/接続できます。
+You can also use a simple `ini` file to configure/connect your `db` service to your database.
 
 ```ini
 [database]
@@ -253,7 +255,7 @@ $di->set(
 );
 ```
 
-上記は適切なデータベース インスタンスを返ます。また、アプリケーションのコードを1 行も変更することがなく、接続資格情報を変更したり、データベース アダプターを変更したりできる利点があります。
+The above will return the correct database instance and also has the advantage that you can change the connection credentials or even the database adapter without changing a single line of code in your application.
 
 <a name='finding-rows'></a>
 
@@ -330,7 +332,7 @@ echo $result->numRows();
 
 ## パラメーターのバインド
 
-Bound parameters is also supported in [Phalcon\Db](api/Phalcon_Db). バインドされたパラメータを使用することで、パフォーマンスの影響は最小限に抑えられますが、コードがSQLインジェクション攻撃の対象になる可能性を排除するために、この方法を使用することをお勧めします。 文字列と位置指定のプレースホルダーの両方をサポートしています。 パラメータのバインドは、以下のように簡単に実施できます:
+Bound parameters is also supported in [Phalcon\Db](api/Phalcon_Db). Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. パラメータのバインドは、以下のように簡単に実施できます:
 
 ```php
 <?php
@@ -355,11 +357,11 @@ $success = $connection->query(
 );
 ```
 
-数値プレースホルダを使用する場合は、整数を1または2として定義する必要があります。 この場合、 '1'または '2'は文字列であり数字ではないため、プレースホルダを正常に置き換えることができません。 With any adapter data are automatically escaped using [PDO Quote](https://www.php.net/manual/en/pdo.quote.php).
+When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case '1' or '2' are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter data are automatically escaped using [PDO Quote](https://www.php.net/manual/en/pdo.quote.php).
 
 This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
 
-また、`execute`や`query`メソッドに直接パラメータを渡すこともできます。この場合、バインドパラメータは直接 PDO に渡されます:
+Also, you can pass your parameters directly to the `execute` or `query` methods. In this case bound parameters are directly passed to PDO:
 
 ```php
 <?php
@@ -378,7 +380,7 @@ $result = $connection->query(
 
 ## 型指定されたプレース ホルダー
 
-プレースホルダーは、SQL インジェクション攻撃を避けるためにパラメーターをバインドすることができます:
+Placeholders allowed you to bind parameters to avoid SQL injections:
 
 ```php
 <?php
@@ -388,7 +390,7 @@ $phql = "SELECT * FROM Store\Robots WHERE id > :id:";
 $robots = $this->modelsManager->executeQuery($phql, ['id' => 100]);
 ```
 
-しかし、いくつかのデータベースでは、バインドパラメータが特定のタイプのプレースホルダーを使用する時、追加のアクションが必要になります:
+However, some database systems require additional actions when using placeholders such as specifying the type of the bound parameter:
 
 ```php
 <?php
@@ -405,7 +407,7 @@ $robots = $this->modelsManager->executeQuery(
 );
 ```
 
-`executeQuery()` でバインドタイプを指定する代わりに、パラメーターで型指定されたプレース ホルダーを使用できます:
+You can use typed placeholders in your parameters, instead of specifying the bind type in `executeQuery()`:
 
 ```php
 <?php
@@ -423,7 +425,7 @@ $robots = $this->modelsManager->executeQuery(
 );
 ```
 
-タイプを指定する必要がない場合は、型を省略することもできます:
+You can also omit the type if you don't need to specify it:
 
 ```php
 <?php
@@ -435,7 +437,7 @@ $robots = $this->modelsManager->executeQuery(
 );
 ```
 
-型指定されたプレースホルダーは非常に有用です。というのも、静的な配列をプレースホルダーとしてバインドできますが、その際に配列の各要素を単独で渡す必要はないからです:
+Typed placeholders are also more powerful, since we can now bind a static array without having to pass each element independently as a placeholder:
 
 ```php
 <?php
@@ -447,7 +449,7 @@ $robots = $this->modelsManager->executeQuery(
 );
 ```
 
-以下のタイプが使用できます：
+The following types are available:
 
 | バインドタイプ   | バインドタイプ定数                    | 例                   |
 | --------- | ---------------------------- | ------------------- |
@@ -465,7 +467,7 @@ $robots = $this->modelsManager->executeQuery(
 
 ## バインドされたパラメータのキャスト
 
-デフォルトでは、バインドされたパラメーターは PHP ユーザーランドで指定されたバインド型にキャストされていません。このオプションで、PDO でそれらをバインドする前に、Phalconが値をキャストできます。 この問題が発生する一般的な状況は、`LIMIT`/`OFFSET` プレース ホルダーの文字列を渡す場合です:
+By default, bound parameters aren't casted in the PHP userland to the specified bind types, this option allows you to make Phalcon cast values before bind them with PDO. A classic situation when this problem raises is passing a string in a `LIMIT`/`OFFSET` placeholder:
 
 ```php
 <?php
@@ -477,7 +479,7 @@ $robots = $modelsManager->executeQuery(
 );
 ```
 
-これは、次の例外を発生します:
+This causes the following exception:
 
     Fatal error: Uncaught exception 'PDOException' with message 'SQLSTATE[42000]:
     Syntax error or access violation: 1064 You have an error in your SQL syntax;
@@ -485,7 +487,7 @@ $robots = $modelsManager->executeQuery(
     syntax to use near ''100'' at line 1' in /Users/scott/demo.php:78
     
 
-こうなるのは、100が文字列変数だからです。最初にこの値を整数にキャストすることで簡単に修正可能です:
+This happens because 100 is a string variable. It is easily fixable by casting the value to integer first:
 
 ```php
 <?php
@@ -497,7 +499,7 @@ $robots = $modelsManager->executeQuery(
 );
 ```
 
-ただしこのソリューションの開発者は、どのようにバインドされているパラメーターが渡されるのか、またそのタイプについての特別な注意を払う必要があります。 このタスクを簡単にし、予期しない例外を回避するために、このキャストを行うように Phalconに指示することができます:
+However this solution requires that the developer pays special attention about how bound parameters are passed and their types. To make this task easier and avoid unexpected exceptions you can instruct Phalcon to do this casting for you:
 
 ```php
 <?php
@@ -505,7 +507,7 @@ $robots = $modelsManager->executeQuery(
 \Phalcon\Db::setup(['forceCasting' => true]);
 ```
 
-バインドタイプによって次のアクションが実行されます:
+The following actions are performed according to the bind type specified:
 
 | バインドタイプ                      | Action                           |
 | ---------------------------- | -------------------------------- |
@@ -518,9 +520,9 @@ $robots = $modelsManager->executeQuery(
 
 ## Hydrateでのキャスト
 
-データベースシステムからの返り値はPDOによって常に文字列型で表現されます。その値が数字型や論理型であっても、文字列型です。 これは、いくつかのカラムの型が、そのサイズ制限により対応する PHP ネイティブ型で表現できないために発生します。 例えば、MySQL の `BIGINT` は、PHP の 32 ビット整数として表すことができない大きな整数を格納できます。 そのため、PDO とORM は、デフォルトで文字列としてすべての値を残す、安全策を実施します。
+Values returned from the database system are always represented as string values by PDO, no matter if the value belongs to a numerical or boolean type column. This happens because some column types cannot be represented with its corresponding PHP native types due to their size limitations. For instance, a `BIGINT` in MySQL can store large integer numbers that cannot be represented as a 32bit integer in PHP. Because of that, PDO and the ORM by default, make the safe decision of leaving all values as strings.
 
-ORM が自動的にこれらの型へ対応する PHP ネイティブ型に安全にキャストするように設定できます。
+You can set up the ORM to automatically cast those types considered safe to their corresponding PHP native types:
 
 ```php
 <?php
@@ -528,7 +530,7 @@ ORM が自動的にこれらの型へ対応する PHP ネイティブ型に安�
 \Phalcon\Mvc\Model::setup(['castOnHydrate' => true]);
 ```
 
-このようにして、厳密に演算子を使用したり、変数のタイプを推測させたりすることができます:
+This way you can use strict operators or make assumptions about the type of variables:
 
 ```php
 <?php
@@ -985,7 +987,7 @@ foreach ($references as $reference) {
 }
 ```
 
-テーブルの説明は MySQLの `DESCRIBE`コマンドとほとんど同じで、次の情報が含まれています。
+A table description is very similar to the MySQL `DESCRIBE` command, it contains the following information:
 
 | Field        | Type        | Key                                                | Null                               |
 | ------------ | ----------- | -------------------------------------------------- | ---------------------------------- |
@@ -1007,7 +1009,7 @@ $exists = $connection->viewExists('robots');
 
 ## Creating/Altering/Dropping Tables
 
-(MySQL、Postgresql など) データベースシステム は、`CREATE`、`ALTER` または `DROP` などのコマンドを使ってテーブルを作成、変更、削除する機能を提供します。 The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
+Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as `CREATE`, `ALTER` or `DROP`. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
 
 <a name='tables-create'></a>
 
@@ -1143,7 +1145,7 @@ $connection->dropColumn(
 
 ### Dropping Tables
 
-現在のデータベースから既存のテーブルをドロップするには、`dropTable` メソッドを使用します。 カスタム データベースからテーブルを削除するには、2 番目のパラメーターでデータベースの名前を指定します。 Examples on dropping tables:
+To drop an existing table from the current database, use the `dropTable` method. To drop an table from custom database, use second parameter describes database name. Examples on dropping tables:
 
 ```php
 <?php
