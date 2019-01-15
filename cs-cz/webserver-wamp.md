@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Instalace: WAMP
 
-[WampServer](https://www.wampserver.com/en/) is a Windows web development environment. Umožňuje vám vytvářet webové aplikace běžící na Apache2, PHP a MySQL databázi. Níže jsou podrobné informace jak nainstalovat Phalcon framework na WampServer pro Windows. Použití nejnovější verze WampServeru je vysoce doporučeno.
+[WampServer](https://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
 <a name='phalcon'></a>
 
 ## Stažení správné verze Phalcon frameworku
 
-WAMP podporuje jak 32bitové tak 64bitové verze. Ze sekce "Stažení" můžete stáhnout DLL knihovnu Phalcon frameworku která vyhovuje Vaší WAMP instalaci.
+WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMPP installation.
 
 Po stažení knihovny Phalcon frameworku budete mít ZIP soubor podobný ukázanému níže:
 
@@ -26,11 +28,11 @@ Extrahujte knihovnu z archivu a budete mít Phalcon framework jako DLL soubor:
 
 ![](/assets/images/content/webserver-xampp-2.png)
 
-Zkopírujte soubor `php_phalcon.dll` do adresáře kde máte rozšíření pro PHP. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php5.5.12\ext` (assuming your WAMP installation installed PHP 5.5.12).
+Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php5.5.12\ext` (assuming your WAMP installation installed PHP 5.5.12).
 
 ![](/assets/images/content/webserver-wamp-1.png)
 
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. Soubor může být upraven v libovolném textovém editoru. My doporučujeme použít Notepad++ pro předejití problémů s konci řádků a kódováním. Přidejte následující řádek na konec souboru:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. Soubor může být upraven v libovolném textovém editoru. We recommend Notepad++ to avoid issues with line endings. Přidejte následující řádek na konec souboru:
 
 ```ini extension=php_phalcon.dll
 
