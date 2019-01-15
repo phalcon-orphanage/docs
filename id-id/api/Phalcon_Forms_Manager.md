@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Forms\Manager'
 
 # Class **Phalcon\Forms\Manager**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/forms/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/forms/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 
@@ -22,6 +22,6 @@ public **has** (*mixed* $name)
 
 Checks if a form is registered in the forms manager
 
-public **set** (*mixed* $name, [Phalcon\Forms\Form](/3.4/en/api/Phalcon_Forms_Form) $form)
+public **set** (*mixed* $name, [Phalcon\Forms\Form](/4.0/en/api/Phalcon_Forms_Form) $form)
 
 Registers a form in the Forms Manager
