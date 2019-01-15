@@ -4,17 +4,19 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # フィルターとサニタイズ
 
-ユーザー入力のサニタイズは、ソフトウェア開発の重要な部分です。 ユーザー入力を信頼したり無視してしまうと、アプリケーションのコンテンツ、主にユーザーデータ、またはアプリケーションがホストされているサーバーにも不正にアクセスさせてしまう可能性があります。
+Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
 ![](/assets/images/content/filter-sql.png)
 
-[XKCD の完全なイメージ](https://xkcd.com/327)
+[Full image on XKCD](https://xkcd.com/327)
 
 The [Phalcon\Filter](api/Phalcon_Filter) component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
 
@@ -22,7 +24,7 @@ The [Phalcon\Filter](api/Phalcon_Filter) component provides a set of commonly us
 
 ## ビルトインフィルターの種類
 
-このコンポーネントによって提供される、ビルドインフィルターを次に示します。
+The following are the built-in filters provided by this component:
 
 | Name      | Description                                                                                   |
 | --------- | --------------------------------------------------------------------------------------------- |
