@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='contributing'></a>
 
@@ -81,6 +83,6 @@ If you have any questions about how to use Phalcon, please see the [support page
 
 If you have any changes or new features in mind, please fill an [NFR](/4.0/en/new-feature-request).
 
-Dziękujemy!
+Thanks!
 
 <3 Phalcon Team
