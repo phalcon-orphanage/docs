@@ -4,15 +4,17 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='basic'></a>
 
 # チュートリアル - 基本
 
-この最初のチュートリアルでは、簡単な登録フォームのアプリケーションの作成を、基礎から一歩ずつ進めます。 次のガイドでは、Phalconフレームワークの設計面をご紹介します。
+Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. The following guide is to provided to introduce you to Phalcon framework's design aspects.
 
-このチュートリアルでは、単純なMVCアプリケーションの実装について説明し、Phalconを使用してどのように迅速かつ簡単に実行できるかを示します。 このチュートリアルでは、多くのニーズに対応できるように、拡張可能なアプリケーションを作成するのに役立ちます。 このチュートリアルのコードは、他のPhalcon固有の概念やアイデアを学ぶための遊び場としても使用できます。
+This tutorial covers the implementation of a simple MVC application, showing how fast and easy it can be done with Phalcon. This tutorial will get you started and help create an application that you can extend to address many needs. The code in this tutorial can also be used as a playground to learn other Phalcon specific concepts and ideas.
 
 <div class="alert alert-info">
     <p>
@@ -20,15 +22,15 @@ layout: article language: 'en' version: '4.0'
     </p>
 </div>
 
-If you just want to get started you can skip this and create a Phalcon project automatically with our [developer tools](/4.0/en/devtools-usage). (あなたが立ち往生した場合、ここに戻って来ると良いでしょう)
+If you just want to get started you can skip this and create a Phalcon project automatically with our [developer tools](/4.0/en/devtools-usage). (It is recommended that if you have not had experience with to come back here if you get stuck)
 
-このガイドを使用する最善の方法は、一緒に楽しく進めることです。 完全なコードは[ここ](https://github.com/phalcon/tutorial)で取得できます。 どうすることもできない場合は、[Discord](https://phalcon.link/discord)または[Forum](https://phalcon.link/forum)にアクセスしてください。
+The best way to use this guide is to follow along and try to have fun. You can get the complete code [here](https://github.com/phalcon/tutorial). If you get hung-up on something please visit us on [Discord](https://phalcon.link/discord) or in our [Forum](https://phalcon.link/forum).
 
 <a name='file-structure'></a>
 
 ## ファイル構造
 
-Phalcon の主な特徴である 疎結合 により、開発したいアプリケーションに応じて最適なディレクトリ構成を持つ Phalcon プロジェクトを構築することができます。 他の人と共同作業するときに、ある種の統一性が役立ちます。このチュートリアルでは、過去に他のMVCを使っていた場合に親近感を覚えるはずの "Standard" な構造を使用します。   
+A key feature of Phalcon is it's loosely coupled, you can build a Phalcon project with a directory structure that is convenient for your specific application. That said some uniformity is helpful when collaborating with others, so this tutorial will use a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.   
 
 
 ```text
@@ -66,17 +68,17 @@ Finally, if you flavor is Cherokee use the setup [here](/4.0/en/webserver-setup#
 
 ## Bootstrap
 
-The first file you need to create is the bootstrap file. このファイルは、アプリケーションのエントリポイント、そして設定ファイルとして機能します。 このファイルでは、アプリケーションの動作と同様に、コンポーネントの初期化を実装できます。
+The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well as application behavior.
 
-このファイルは3つのことを処理します: - コンポーネントのオートローダーの登録 - サービスの設定とDependency Injectionへの登録 - アプリケーションのHTTPリクエストの処理
+This file handles 3 things: - Registration of component autoloaders - Configuring Services and registering them with the Dependency Injection context - Resolving the application's HTTP requests
 
 <a name='autoloaders'></a>
 
 ### オートローダ
 
-Autoloaders leverage a [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon. 通常、オートローダーに追加する必要があるのはControllerとModelです。 アプリケーションの名前空間内で、ファイルを検索するディレクトリを登録できます。 If you want to read about other ways that you can use autoloaders head [here](/4.0/en/loader#overview).
+Autoloaders leverage a [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon. Common things that should be added to the autoloader are your controllers and models. You can register directories which will search for files within the application's namespace. If you want to read about other ways that you can use autoloaders head [here](/4.0/en/loader#overview).
 
-まず、アプリケーションの`controllers`と`models`ディレクトリを登録します。`Phalcon\Loader`のローダーを含めることを忘れないでください。
+To start, lets register our app's `controllers` and `models` directories. Don't forget to include the loader from `Phalcon\Loader`.
 
 `public/index.php`
 
@@ -106,9 +108,9 @@ $loader->register();
 
 ### 依存関係の管理
 
-Phalconは疎結合で実装されており、サービスはDependency Managerに登録されているため、[IoC](https://en.wikipedia.org/wiki/Inversion_of_control)コンテナにラップされたコンポーネントやサービスに自動的に挿入できます。 Dependency Injectionの略語であるDIが出てくることがよくあります。 Dependency InjectionとInversion of Control(IoC) は複雑な機能のような聞こえるかもしれませんが、ファルコンでの使用は非常にシンプルで実用的です。 PhalconのIoCコンテナは、以下の概念で構成されています。 - Serviceコンテナ: アプリケーションが機能するために必要なサービスをグローバルに格納する "バッグ"。 - ServiceまたはComponent: コンポーネントに注入されるデータ処理オブジェクト
+Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound like a complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts: - Service Container: a "bag" where we globally store the services that our application needs to function. - Service or Component: Data processing object which will be injected into components
 
-フレームワークがコンポーネントやサービスを必要とするたびに、サービスに紐づけられた名前を使用してコンテナに問い合わせます。 `Phalcon\Di`をサービスコンテナの設定に含めることを忘れないでください。
+Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. Don't forget to include `Phalcon\Di` with setting up the service container.
 
 <div class='alert alert-warning'>
     <p>
@@ -118,7 +120,7 @@ Phalconは疎結合で実装されており、サービスはDependency Manager�
 
 ### Factory Default
 
-The [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) is a variant of [Phalcon\Di](api/Phalcon_Di). 実装を簡単にするために、Phalconに付属するほとんどのコンポーネントは自動的に登録されます。 Dependency Managementに慣れやすくする為にも、サービスを手動で登録することをお勧めします。 後で、このコンセプトに慣れたらいつでも指定できます。
+The [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) is a variant of [Phalcon\Di](api/Phalcon_Di). To make things easier, it will automatically register most of the components that come with Phalcon. We recommend that you register your services manually but this has been included to help lower the barrier of entry when getting used to Dependency Management. Later, you can always specify once you become more comfortable with the concept.
 
 Services can be registered in several ways, but for our tutorial, we'll use an [anonymous function](https://php.net/manual/en/functions.anonymous.php):
 
@@ -157,7 +159,7 @@ $di->set(
 );
 ```
 
-次に、Phalconによって生成されたすべてのURIがアプリケーションのベースパス "/"と一致するようにベースURIを登録します。 This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
+Next, we register a base URI so that all URIs generated by Phalcon match the application's base path of "/". This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
 
 `public/index.php`
 
@@ -267,13 +269,13 @@ try {
 }
 ```
 
-ご覧のように、ブートストラップファイルは非常に短く、追加のファイルを含める必要はありません。 おめでとうございます、30行以下のコードで柔軟なMVCアプリケーションを作成できました。
+As you can see, the bootstrap file is very short and we do not need to include any additional files. Congratulations you are well on your to having created a flexible MVC application in less than 30 lines of code.
 
 <a name='controller'></a>
 
 ## Controllerの作成
 
-デフォルトでは、Phalconは`IndexController`という名前のコントローラを探します。 これは、リクエストでコントローラまたはアクションが渡されていないときの開始点です。 (例えば `https://localhost:8000/`). `IndexController`と`IndexAction`は、次の例のようになります:
+By default Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (eg. `https://localhost:8000/`). An `IndexController` and its `IndexAction` should resemble the following example:
 
 `app/controllers/IndexController.php`
 
@@ -291,7 +293,7 @@ class IndexController extends Controller
 }
 ```
 
-コントローラクラスには後ろに`Controller`が必要であり、コントローラのアクションには後ろに`Action`をつける必要があります。 ブラウザからアプリケーションにアクセスすると、次のように表示されます。
+The controller classes must have the suffix `Controller` and controller actions must have the suffix `Action`. If you access the application from your browser, you should see something like this:
 
 ![](/assets/images/content/tutorial-basic-1.png)
 
@@ -352,9 +354,9 @@ echo $this->tag->linkTo(
 );
 ```
 
-生成されたHTMLコードでは、新しいコントローラにリンクするアンカータグ (`<a>`) を表示します:
+The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new controller:
 
-`app/views/index/index.phtml` (レンダリング後)
+`app/views/index/index.phtml` (rendered)
 
 ```html
 <h1>Hello!</h1>
@@ -362,7 +364,7 @@ echo $this->tag->linkTo(
 <a href="/signup">Sign Up Here!</a>
 ```
 
-To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. このクラスはDIに登録されたサービスでもあるため、`$this->tag`を使用してアクセスします。
+To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is also a service registered in the DI we use `$this->tag` to access it.
 
 A more detailed article regarding HTML generation [can be found here](/4.0/en/tag).
 
@@ -418,9 +420,9 @@ Viewing the form in your browser will show something like this:
 
 [Phalcon\Tag](api/Phalcon_Tag) also provides useful methods to build form elements.
 
-`Phalcon\Tag::form()`メソッドは、例えばアプリケーション内の controller/action に対する相対URIを唯一のパラメータとして受け取ります。
+The `Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application.
 
-「送信」ボタンをクリックすると、フレームワークから例外がスローされ、`signup`コントローラーの`register`アクションが無いことがわかります。 Our `public/index.php` file throws this exception:
+By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the `register` action in the controller `signup`. Our `public/index.php` file throws this exception:
 
 ```bash
 Exception: Action "register" was not found on handler "signup"
@@ -457,7 +459,7 @@ If you click the "Send" button again, you will see a blank page. The name and em
 
 Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
-最初のモデルを作る前に、Phalconがマッピングできるようデータベースのテーブルを作る必要があります。登録ユーザーを格納するための単純なテーブルは、次のように定義できます:
+Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be created like this:
 
 `create_users_table.sql`
 
@@ -492,7 +494,7 @@ class Users extends Model
 
 ## データベース接続の設定
 
-モデルからデータベース接続を使用してデータにアクセスできるようにするには、ブートストラップの処理中にデータベースの接続を設定する必要があります。 A database connection is just another service that our application has that can be used for several components:
+In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
 
 `public/index.php`
 
@@ -567,11 +569,11 @@ class SignupController extends Controller
 }
 ```
 
-`registerAction`の最初にユーザーのレコードを管理するUsersクラスから空のユーザーオブジェクトを作成しています。 クラスのパブリックプロパティは、データベースの`users`テーブルのフィールドにマッピングされます。 Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+At the beginning of the `registerAction` we create an empty user object from the Users class, which manages a User's record. The class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
 
 The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
 
-not null (required) として定義されているフィールドに対しては、追加のバリデーションが自動的に実行されます。サインアップフォームに必要なフィールドを入力しないと、画面は次のようになります:
+Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign-up form our screen will look like this:
 
 ![](/assets/images/content/tutorial-basic-4.png)
 
@@ -682,6 +684,6 @@ The most important thing to highlight in our template is the function `getConten
 
 ## Conclusion
 
-ご覧のとおり、Phalconを使用してアプリケーションを構築するのは簡単です。 Phalconがextensionから実行されているという事実は、プロジェクトのフットプリントを大幅に減らし、パフォーマンスを大幅に向上させます。
+As you can see, it's easy to start building an application using Phalcon. The fact that Phalcon runs from an extension significantly reduces the footprint of projects as well as giving it a considerable performance boost.
 
 If you are ready to learn more check out the [Rest Tutorial](/4.0/en/tutorial-rest) next.
