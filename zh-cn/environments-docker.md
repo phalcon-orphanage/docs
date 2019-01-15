@@ -4,28 +4,27 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # 概述
 
-Phalcon Compose 是社区驱动的，为Phalcon项目打造的，在Docker运行的样板开发环境。 其目的是，使它更易于引导Phalcon应用和在开发或生产环境中运行它们。
+Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
 
 <a name='dependencies'></a>
 
 ## 依赖项
 
-在您的机器上运行此堆栈，您至少需要:   
-* 操作系统： Windows、 Linux 或 OS X   
-* [Docker 引擎](https://docs.docker.com/installation/) > = 1.10.0   
-* [Docker Compose](https://docs.docker.com/compose/install/) > = 1.6.2
+To run this stack on your machine, you need at least: * Operating System: Windows, Linux, or OS X * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
 <a name='services'></a>
 
 ## 服务
 
-服务包括有：
+Services included are:
 
 | 服务名称          | 描述                                        |
 | ------------- | ----------------------------------------- |
@@ -48,7 +47,7 @@ Phalcon Compose 是社区驱动的，为Phalcon项目打造的，在Docker运行
 
 ### 使用 Composer (推荐)
 
-使用Composer，你可以创建一个如下的新项目：
+Using Composer, you can create a new project as follows:
 
 ```bash
 composer create-project phalcon/compose --prefer-dist <folder name>
