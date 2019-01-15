@@ -3,7 +3,8 @@ layout: article
 language: 'en'
 version: '4.0'
 ---
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+{:.alert .alert-danger}
 
 # Micro Applications
 Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code.
