@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # Capa de abstracción de base de datos
@@ -125,7 +127,7 @@ $posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
 
 Para crear una conexión es necesario crear una instancia de la clase del adaptador. Solo se requiere un arreglo con los parámetros de conexión. En el ejemplo siguiente se muestra cómo crear una conexión pasando tanto los parámetros opcionales como los parámetros requeridos:
 
-##### Elementos requeridos en MySQL
+##### MySQL Required elements
 
 ```php
 <?php
@@ -138,19 +140,19 @@ $config = [
 ];
 ```
 
-##### MySQL Opcionales
+##### MySQL Optional
 
 ```php
 $config['persistent'] = false;
 ```
 
-##### Crear una conexión MySQL
+##### MySQL Create a connection
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
 
-##### Elementos requeridos en PostgreSQL
+##### PostgreSQL Required elements
 
 ```php
 <?php
@@ -163,19 +165,19 @@ $config = [
 ];
 ```
 
-##### PostgreSQL Opcionales
+##### PostgreSQL Optional
 
 ```php
 $config['schema'] = 'public';
 ```
 
-##### Crear una conexión PostgreSQL
+##### PostgreSQL Create a connection
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
 
-##### Elementos requeridos en SQLite
+##### SQLite Required elements
 
 ```php
 <?php
@@ -185,7 +187,7 @@ $config = [
 ];
 ```
 
-##### Crear una conexión SQLite
+##### SQLite Create a connection
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
