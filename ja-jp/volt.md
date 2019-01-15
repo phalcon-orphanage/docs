@@ -4,23 +4,25 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Volt: テンプレートエンジン
 
-Volt は、PHPのためにCで記述されており、とても速く、デザイナにも扱いやすいテンプレート言語です。 簡単にビューを書けるように、ヘルパーセットを提供します。 Volt はPhalconの他のコンポーネントと高度に統合されていて、アプリケーションの中で独立したコンポーネントとしても利用できます。
+Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
 
 ![](/assets/images/content/volt.jpg)
 
-Volt is inspired by [Jinja](https://jinja.pocoo.org/), originally created by [Armin Ronacher](https://github.com/mitsuhiko). そのため、よく似た既存のテンプレートエンジンと同じ記法を採用しており、利用する多くの開発者にとって親しみやすくなっています。 Voltの記法と機能は、Phalconを使う開発者が慣れ親しんだ多くの要素を備え、当然パフォーマンスの点においても強化されています。
+Volt is inspired by [Jinja](https://jinja.pocoo.org/), originally created by [Armin Ronacher](https://github.com/mitsuhiko). Therefore many developers will be in familiar territory using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to while working with Phalcon.
 
 <a name='introduction'></a>
 
 ## はじめに
 
-Voltによるビューは純粋なPHPコードにコンパイルされるので、基本的には手でPHPコードを書く労力を節約することができます:
+Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
 ```twig
 {% raw %}
@@ -43,7 +45,7 @@ Voltによるビューは純粋なPHPコードにコンパイルされるので�
 
 ## Voltを使うために
 
-他のテンプレートエンジンと同じように、新しい拡張子や標準的な拡張子`.phtml`を用いて、Voltをビューコンポーネントに登録することもできます:
+As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
 ```php
 <?php
@@ -87,7 +89,7 @@ $di->set(
 );
 ```
 
-標準的な`.phtml`という拡張子を用いる:
+Use the standard `.phtml` extension:
 
 ```php
 <?php
@@ -99,7 +101,7 @@ $view->registerEngines(
 );
 ```
 
-DIでVoltサービスを指定する必要はありません。 デフォルトの設定でVoltエンジンを利用することができます:
+You don't have to specify the Volt Service in the DI; you can also use the Volt engine with the default settings:
 
 ```php
 <?php
@@ -111,7 +113,7 @@ $view->registerEngines(
 );
 ```
 
-サービスとしてVoltを再利用したくない場合は、無名関数を渡すことでサービス名の代わりにエンジンを登録することができます。
+` If you do not want to reuse Volt as a service, you can pass an anonymous function to register the engine instead of a service name:
 
 ```php
 <?php
@@ -144,7 +146,7 @@ $di->set(
 );
 ```
 
-Voltで使用できるオプション:
+The following options are available in Volt:
 
 | オプション               | Description                                                                                      | デフォルト   |
 | ------------------- | ------------------------------------------------------------------------------------------------ | ------- |
@@ -156,7 +158,7 @@ Voltで使用できるオプション:
 | `prefix`            | コンパイルパスのテンプレートにプレフィックスを付加することができます                                                               | `null`  |
 | `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path | `true`  |
 
-コンパイルパスは、上記のオプションに従って生成されます。開発者がコンパイルパスを自由に定義したい場合は、無名関数を使用して生成することができます。この関数は、viewsディレクトリのテンプレートへの相対パスを受け取ります。 次の例は、コンパイルパスを動的に変更する方法を示しています:
+The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
 
 ```php
 <?php
@@ -191,9 +193,9 @@ $volt->setOptions(
 
 ## 基本的な使い方
 
-ビューは、VoltやPHP、HTMLのコードで構成されます。 Voltモードでは特別なデリミタが使用できます。 `{% raw %}{% ... %}{% endraw %}` is used to execute statements such as for-loops or assign values and `{% raw %}{{ ... }}{% endraw %}`, prints the result of an expression to the template.
+A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% raw %}{% ... %}{% endraw %}` is used to execute statements such as for-loops or assign values and `{% raw %}{{ ... }}{% endraw %}`, prints the result of an expression to the template.
 
-下記は、いくつかの基本を示す最小限のテンプレートです:
+Below is a minimal template that illustrates a few basics:
 
 ```twig
 {% raw %}
@@ -228,7 +230,7 @@ $volt->setOptions(
 {% endraw %}
 ```
 
-Using [Phalcon\Mvc\View](api/Phalcon_Mvc_View) you can pass variables from the controller to the views. 上記の例では次の変数がビューに渡されています。`show_navigation`、`menu`、`title`、`post`:
+Using [Phalcon\Mvc\View](api/Phalcon_Mvc_View) you can pass variables from the controller to the views. In the above example, four variables were passed to the view: `show_navigation`, `menu`, `title` and `post`:
 
 ```php
 <?php
@@ -261,7 +263,7 @@ class PostsController extends Controller
 
 ## 変数
 
-オブジェクト変数は、`foo.bar`というシンタックスを用いてアクセスできる属性を持っています。もし配列を渡すなら、`foo['bar']`という角括弧のシンタックスを使ってください。
+Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
 
 ```twig
 {% raw %}
@@ -274,7 +276,7 @@ class PostsController extends Controller
 
 ## フィルター
 
-変数は、フォーマットしたり、フィルタを用いて加工することができます。変数にフィルタを適用するには、パイプ演算子`|`を使います:
+Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
 ```twig
 {% raw %}
@@ -284,7 +286,7 @@ class PostsController extends Controller
 {% endraw %}
 ```
 
-以下は、Voltで利用可能な、ビルトインのフィルタのリストです:
+The following is the list of available built-in filters in Volt:
 
 | Filter             | Description                                                                                                                         |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -314,7 +316,7 @@ class PostsController extends Controller
 | `upper`            | Change the case of a string to uppercase                                                                                            |
 | `url_encode`       | Applies the [urlencode](https://php.net/manual/en/function.urlencode.php) PHP function to the value                                 |
 
-例:
+Examples:
 
 ```twig
 {% raw %}
@@ -394,13 +396,13 @@ Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw 
 
 ## 制御構文の一覧
 
-Volt には、テンプレートで使用するための基本的かつ強力な制御構文が用意されています。
+Volt provides a set of basic but powerful control structures for use in templates:
 
 <a name='control-structures-for'></a>
 
 ### for文
 
-シーケンス中のそれぞれのアイテムを繰り返し処理します。以下の例では、「robots」のセットを横断して処理し、彼/彼女らの名前を表示する方法を示しています:
+Loop over each item in a sequence. The following example shows how to traverse a set of 'robots' and print his/her name:
 
 ```twig
 {% raw %}
@@ -415,7 +417,7 @@ Volt には、テンプレートで使用するための基本的かつ強力な
 {% endraw %}
 ```
 
-forループは入れ子にすることもできます:
+for-loops can also be nested:
 
 ```twig
 {% raw %}
@@ -428,7 +430,7 @@ forループは入れ子にすることもできます:
 {% endraw %}
 ```
 
-以下のシンタックスを用いることで、PHPにおける要素の`keys`を得ることができます:
+You can get the element `keys` as in the PHP counterpart using the following syntax:
 
 ```twig
 {% raw %}
@@ -440,7 +442,7 @@ forループは入れ子にすることもできます:
 {% endraw %}
 ```
 
-必要に応じて`if`の評価を設定することができます:
+An `if` evaluation can be optionally set:
 
 ```twig
 {% raw %}
@@ -456,7 +458,7 @@ forループは入れ子にすることもできます:
 {% endraw %}
 ```
 
-もし、`for`の中で`else`を定義した場合は、イテレータの結果が 0回のときに、そこに記述した文が実行されるでしょう:
+If an `else` is defined inside the `for`, it will be executed if the expression in the iterator result in zero iterations:
 
 ```twig
 {% raw %}
@@ -469,7 +471,7 @@ forループは入れ子にすることもできます:
 {% endraw %}
 ```
 
-代替構文:
+Alternative syntax:
 
 ```twig
 {% raw %}
@@ -486,7 +488,7 @@ forループは入れ子にすることもできます:
 
 ### ループ制御
 
-`break`と`continue`文は、ループから抜けたり、現在のブロック内で強制的に次のイテレーションへ移ったりすることができます:
+The `break` and `continue` statements can be used to exit from a loop or force an iteration in the current block:
 
 ```twig
 {% raw %}
@@ -516,7 +518,7 @@ forループは入れ子にすることもできます:
 
 ### If文
 
-PHPと同じように、`if`文は、条件式が true または false に評価されるかをチェックします:
+As PHP, an `if` statement checks if an expression is evaluated as true or false:
 
 ```twig
 {% raw %}
@@ -531,7 +533,7 @@ PHPと同じように、`if`文は、条件式が true または false に評価
 {% endraw %}
 ```
 
-else 文もサポートされています:
+The else clause is also supported:
 
 ```twig
 {% raw %}
@@ -548,7 +550,7 @@ else 文もサポートされています:
 {% endraw %}
 ```
 
-`switch`ブロックをエミュレートするifと一緒に、`elseif`制御フロー構造を使用することができます:
+The `elseif` control flow structure can be used together with if to emulate a `switch` block:
 
 ```twig
 {% raw %}
@@ -566,7 +568,7 @@ else 文もサポートされています:
 
 ### switch文
 
-`if` ステートメントの代わりに `switch` を使用すると、アプリケーションで論理実行パスを作成できます。
+An alternative to the `if` statement is `switch`, allowing you to create logical execution paths in your application:
 
 ```twig
 {% raw %}
@@ -586,7 +588,7 @@ else 文もサポートされています:
 
 ```
 
-`switch` ステートメントはステートメントごとに実行されるため、`break` ステートメントが必要な場合があります。 switch 文と最初の `case` の間の出力（空白を含む）は、構文エラーになります。 Empty lines and whitespaces can therefore be cleared to reduce the number of errors [see here](https://php.net/control-structures.alternative-syntax).
+The `switch` statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any output (including whitespace) between a switch statement and the first `case` will result in a syntax error. Empty lines and whitespaces can therefore be cleared to reduce the number of errors [see here](https://php.net/control-structures.alternative-syntax).
 
 #### `switch` 無し `case` 文
 
@@ -596,7 +598,7 @@ else 文もサポートされています:
 {% endraw %}
 ```
 
-`Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE` がthrowされます。
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
 
 #### `endswitch` 無し `switch` 文
 
@@ -628,7 +630,7 @@ Will not throw an error because `default` is a reserved word for filters like `{
 {% endraw %}
 ```
 
-`Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...` がthrowされます
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
 
 #### 式の無い `switch` 文
 
@@ -698,7 +700,7 @@ Variables may be changed in a template using the instruction `set`:
 {% endraw %}
 ```
 
-ひとつの命令で複数の代入が可能です:
+Multiple assignments are allowed in the same instruction:
 
 ```twig
 {% raw %}
@@ -706,7 +708,7 @@ Variables may be changed in a template using the instruction `set`:
 {% endraw %}
 ```
 
-加えて複合代入命令も使用できます:
+Additionally, you can use compound assignment operators:
 
 ```twig
 {% raw %}
@@ -730,7 +732,7 @@ The following operators are available:
 
 ## 条件式
 
-Voltは、リテラルや一般的な演算子を含む基本的な式のサポートを提供します。 A expression can be evaluated and printed using the `{% raw %}{{{% endraw %}` and `{% raw %}}}{% endraw %}` delimiters:
+Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `{% raw %}{{{% endraw %}` and `{% raw %}}}{% endraw %}` delimiters:
 
 ```twig
 {% raw %}
@@ -750,7 +752,7 @@ If an expression needs to be evaluated without be printed the `do` statement can
 
 ### 定数
 
-以下のリテラルがサポートされています:
+The following literals are supported:
 
 | Filter               | Description                      |
 | -------------------- | -------------------------------- |
@@ -982,7 +984,7 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
 {% endraw %}
 ```
 
-マクロを呼び出すとき、パラメーターは名前渡しです:
+When calling macros, parameters can be passed by name:
 
 ```twig
 {% raw %}
@@ -999,7 +1001,7 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
 {% endraw %}
 ```
 
-マクロは値を返します:
+Macros can return values:
 
 ```twig
 {% raw %}
@@ -1012,7 +1014,7 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
 {% endraw %}
 ```
 
-またオプションのパラメーターを受け取ります:
+And receive optional parameters:
 
 ```twig
 {% raw %}
@@ -1133,7 +1135,7 @@ Also, Volt is integrated with [Phalcon\Mvc\View](api/Phalcon_Mvc_View), you can 
 {% endraw %}
 ```
 
-パーシャルはランタイムに含まれています。Voltは`include`を提供しており、これはビューのコンテンツをコンパイルし、インクルードされたビューのパーツとしてそのコンテンツを返します:
+A partial is included in runtime, Volt also provides `include`, this compiles the content of a view and returns its contents as part of the view which was included:
 
 ```twig
 {% raw %}
