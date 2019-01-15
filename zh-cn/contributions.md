@@ -1,8 +1,10 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='contributing'></a>
 
@@ -46,9 +48,9 @@ Please ensure that you are sending your pull request to the correct branch and t
 请按照本指南了解如何生成回溯跟踪：
 
 - [生成 gdb 回溯](https://bugs.php.net/bugs-generating-backtrace.php)
-- [使用编译器在 Win32 上生成回溯](http://bugs.php.net/bugs-generating-backtrace-win32.php)
+- [使用编译器在 Win32 上生成回溯](https://bugs.php.net/bugs-generating-backtrace-win32.php)
 - [调试符号](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
-- [构建PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
+- [构建PHP](https://www.phpinternalsbook.com/build_system/building_php.html)
 
 <a name='pull-request-checklist'></a>
 
@@ -58,10 +60,10 @@ Please ensure that you are sending your pull request to the correct branch and t
 - 除非要合并提交，否则不要将子模块更新，`composer.lock` 等放在您的 pull 请求中
 - Add tests relevant to the fixed bug or new feature. See our [testing guide](https://github.com/phalcon/cphalcon/blob/master/tests/README.md) for more information
 - Phalcon 是在 [Zephir](https://zephir-lang.com/) 中编写的，请不要提交修改 C 生成的文件，或者是使用 C 语言实现其功能/修复的提交
-- 请确保您编写的 PHP 代码符合 [公认的PHP标准](http://www.php-fig.org/psr/) 的一般风格和编码标准
+- Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards](https://www.php-fig.org/psr/)
 - 在提交 Pull 请求之前，删除对 `ext/kernel`, `*.zep.c` 和 `*.zep.h` 文件的任何更改
 
-Before submit **new functionality**, please open a [NFR](/3.4/en/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. 一旦功能被批准，请确保您的 PR 包含以下内容:
+Before submit **new functionality**, please open a [NFR](/4.0/en/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. 一旦功能被批准，请确保您的 PR 包含以下内容:
 
 - 对 `CHANGELOG.md` 的更新
 - 单元测试
@@ -77,7 +79,7 @@ If you have any questions about how to use Phalcon, please see the [support page
 
 ## 请求的功能
 
-If you have any changes or new features in mind, please fill an [NFR](/3.4/en/new-feature-request).
+If you have any changes or new features in mind, please fill an [NFR](/4.0/en/new-feature-request).
 
 谢谢！
 
