@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='setup'></a>
 
 # Nastavení webserveru
 
-Aby routování v aplikaci postavené na Phalcon frameworku fungovalo správně, musíte nastavit Vaš webserver aby správně zpracovával přesměrování a požadavky. Instrukce pro oblíbené webservery jsou:
+In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
 
 <a name='php-fpm'></a>
 
 ## PHP-FPM
 
-The [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. V dnešní době je PHP-FPM součástí všech distribucí PHP pro Linuxové systémy.
+The [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. Nowadays, PHP-FPM is bundled with all Linux based PHP distributions.
 
 On **Windows** PHP-FPM is in the PHP distribution archive through the file `php-cgi.exe` and you can start it with this script to help set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
 
@@ -56,9 +58,9 @@ Then point your browser to https://localhost:8000/ to check if everything is wor
 
 ## Nginx
 
-[Nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Oproti tradičním serverům, Nginx nezávisí na vláknech pro zpracování požadavků. Místo toho používá mnohem více škálovatelnou event-driven (asynchroní) architekturu. Tato architektura používá malé, ale více důležíté, předvídatelné množství paměti.
+[Nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
 
-Phalcon framework společně s Nginx a PHP-FPM nabízí mocnou sadu nástrojů, která nabízí maximální výkon pro Vaše PHP aplikace.
+Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
 ### Install Nginx
 
@@ -167,7 +169,7 @@ Usually `start nginx` from the command line but this depends on your installatio
 
 ### Konfigurace Phalcon frameworku
 
-Níže jsou uvedeny potenciální konfigurace, které můžete použít pro nastavení Apache a Phalcon frameworku. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/4.0/en/routing). Běžně má aplikace následující strukturu:
+The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/4.0/en/routing). Commonly an application has the following structure:
 
 ```bash
 test/
@@ -186,7 +188,7 @@ test/
 
 #### Document root
 
-Je běžné použití kdy aplikace je instalována v jakémkoliv adresáři který je v tzv.: Document Root složce. V tomto případě použijeme dva `.htaccess` soubory kde první schová aplikační kód a všechny požadavky přesmeruje do veřejné aplikační složky (v našem případě je to složka `public/`).
+This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`).
 
 ##### Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set. {.alert.alert-warning}
 
@@ -200,7 +202,7 @@ Je běžné použití kdy aplikace je instalována v jakémkoliv adresáři kter
 </IfModule>
 ```
 
-Druhý `.htaccess` soubor je umístěn ve složce `public/`, kde přesměruje všechny URI na soubor `public/index.php`:
+A second `.htaccess` file is located in the `public/` directory, this re-writes all the URIs to the `public/index.php` file:
 
 ```apacheconfig
 # test/public/.htaccess
