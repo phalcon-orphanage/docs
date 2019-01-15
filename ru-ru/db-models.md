@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='working-with'></a>
 
@@ -12,7 +14,7 @@ layout: article language: 'en' version: '4.0'
 
 Модель представляет собой информацию (данные) приложения и правила для манипуляции этими данными. Модели в основном используется для управления соответствующей таблицей базы данных и правил взаимодействия с ней. В большинстве случаев, каждая таблица в вашей базе данных соответствует одной модели в вашем приложении. Большая часть всей бизнес-логики вашего приложения будет сосредоточена в моделях.
 
-[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. Он обеспечивает независимость данных от вашей базы, основные CRUD операции, расширенные поисковые возможности, а также возможность построения зависимостей между моделями. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
 
 <h5 class='alert alert-warning'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the <a href="api/Phalcon_Db">Phalcon\Db</a> component documentation.</h5>
 
@@ -37,7 +39,7 @@ class RobotParts extends Model
 
 <h5 class='alert alert-warning'>If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation. </h5>
 
-По умолчанию модель `Store\Toys\RobotParts` будет ссылаться на таблицу `robot_parts`. Если вы хотите вручную указать другое имя для таблицы, вы можете использовать метод `setSource()`:
+By default, the model `Store\Toys\RobotParts` will map to the table `robot_parts`. If you want to manually specify another name for the mapped table, you can use the `setSource()` method:
 
 ```php
 <?php
@@ -55,9 +57,9 @@ class RobotParts extends Model
 }
 ```
 
-Теперь модель `RobotParts` отображается на таблицу `toys_robot_parts`. Метод `initialize()` обеспечивает возможность применять пользовательские настройки, например, название таблицы.
+The model `RobotParts` now maps to `toys_robot_parts` table. The `initialize()` method helps with setting up this model with a custom behavior i.e. a different table.
 
-Метод `initialize()` вызывается только один раз во время запроса. Этот метод предназначен для инициализации экземпляров модели в приложении. Если вам необходимо произвести некоторые настройки экземпляра объекта после того, как он создан, вы можете использовать метод `onConstruct()`:
+The `initialize()` method is only called once during the request. This method is intended to perform initializations that apply for all instances of the model created within the application. If you want to perform initialization tasks for every instance created you can use the `onConstruct()` method:
 
 ```php
 <?php
@@ -79,7 +81,7 @@ class RobotParts extends Model
 
 ### Публичные свойства vs геттеры/сеттеры
 
-Модели могут быть реализованы с помощью публичных свойств, при этом свойства модели доступны для чтения/изменения из любой части кода без ограничений:
+Models can be implemented public properties, meaning that each property can be read/updated from any part of the code that has instantiated that model class:
 
 ```php
 <?php
@@ -168,7 +170,7 @@ If you use underscores in your property names, you must still use camel case in 
 
 ## Понимание записей в объектах
 
-Каждый экземпляр объекта модели представляет собой строку таблицы базы данных. Вы можете легко получить доступ к любой записи, считывая свойство объекта. К примеру, для таблицы “robots” с записями:
+Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
 
 ```sql
 mysql> select * from robots;
@@ -182,7 +184,7 @@ mysql> select * from robots;
 3 rows in set (0.00 sec)
 ```
 
-Вы можете найти определенную запись по ее первичному ключу и напечатать её имя:
+You could find a certain record by its primary key and then print its name:
 
 ```php
 <?php
@@ -325,7 +327,7 @@ $robots = Robots::find(
 | `cache`       | Кэширует результаты, уменьшая нагрузку на реляционную систему.                                                                                                                                                          | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
 | `hydration`   | Устанавливает режим гидратации для представления каждой записи в результате.                                                                                                                                            | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
-Существует еще один вариант записи запросов поиска, в объектно-ориентированном стиле:
+If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
 
 ```php
 <?php
@@ -342,9 +344,9 @@ $robots = Robots::query()
 
 The static method `query()` returns a [Phalcon\Mvc\Model\Criteria](api/Phalcon_Mvc_Model_Criteria) object that is friendly with IDE autocompleters.
 
-All the queries are internally handled as [PHQL](/4.0/en/db-phql) queries. PHQL это высокоуровневый, объектно-ориентированный, SQL подобный язык. Этот язык предоставляет вам больше возможностей для выполнения запросов, таких как объединение с другими моделями, определение группировок, добавление агрегации и т.д.
+All the queries are internally handled as [PHQL](/4.0/en/db-phql) queries. PHQL is a high-level, object-oriented and SQL-like language. This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
 
-Наконец, имеется метод `findFirstBy<property-name>()`. Данный метод расширяет упомянутый ранее `findFirst()`. Он позволяет вам выполнять поиск по таблице, используя название свойства в самом методе, и, передавая ему параметр, содержащий информацию по которой вы хотите произвести поиск в столбце. В качестве примера возьмем упомянутую ранее модель Robots:
+Lastly, there is the `findFirstBy<property-name>()` method. This method expands on the `findFirst()` method mentioned earlier. It allows you to quickly perform a retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column. An example is in order, so taking our Robots model mentioned earlier:
 
 ```php
 <?php
@@ -363,7 +365,7 @@ class Robots extends Model
 }
 ```
 
-Мы имеем три свойства, с которыми можно работать: `$id`, `$name` и `$price`. Допустим, вы хотите получить первую запись с именем ‘Terminator’. Можно сделать это следующим образом:
+We have three properties to work with here: `$id`, `$name` and `$price`. So, let's say you want to retrieve the first record in the table with the name 'Terminator'. This could be written like:
 
 ```php
 <?php
@@ -381,15 +383,15 @@ if ($robot) {
 }
 ```
 
-Заметьте, что мы используем 'Name' в вызове метода, а также передаем ему переменную `$name`, содержащую имя, которое мы ищем в таблице. Также обратите внимание, что если по запросу была найдена запись, то и все остальные свойства тоже доступны.
+Notice that we used 'Name' in the method call and passed the variable `$name` to it, which contains the name we are looking for in our table. Notice also that when we find a match with our query, all the other properties are available to us as well.
 
 <a name='resultsets'></a>
 
 ### Возвращение результатов моделью
 
-While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). Этот объект инкапсулирует в себя весь функционал такой как, итерирование, поиск определенных записей, подсчёт и прочее.
+While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
 
-Эти объекты являются более мощными, чем стандартные массивы. One of the greatest features of the [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset) is that at any time there is only one record in memory. Это очень помогает в управлении памятью, особенно при работе с большими объемами данных.
+These objects are more powerful than standard arrays. One of the greatest features of the [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset) is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
 
 ```php
 <?php
@@ -441,11 +443,11 @@ $robot = $robots->getFirst();
 $robot = $robots->getLast();
 ```
 
-Набор результатов в Phalcon эмулирует перемещаемый курсор, вы можете получить любую строку по её позиции, или установив внутренний указатель в конкретную позицию. Обратите внимание, что некоторые системы баз данных не поддерживают курсоры с прокруткой, это заставляет базу данных повторно выполнять запрос для того, чтобы перемотать курсор в начало и получить запись в запрашиваемой позиции. Аналогично, если набор результатов вызывается несколько раз, то и запрос должен быть выполнен такое же количество раз.
+Phalcon's resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
 
-Хранение больших результатов запроса в памяти может потребовать много ресурсов, из-за этого наборы результатов получаются из базы данных блоками по 32 строки, снижая потребность в повторном выполнении запроса, в ряде случаев экономя память.
+As storing large query results in memory could consume many resources, resultsets are obtained from the database in chunks of 32 rows - reducing the need to re-execute the request in several cases.
 
-Обратите внимание, что наборы результатов могут быть сериализованы и храниться в кэше бэкэнда. [Phalcon\Cache](api/Phalcon_Cache) can help with that task. However, serializing data causes [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
+Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache](api/Phalcon_Cache) can help with that task. However, serializing data causes [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
 
 ```php
 <?php
@@ -543,7 +545,7 @@ $this->view->mydata = $robots->getSomeData();
 
 ### Фильтрация результатов
 
-Самый эффективный способ фильтрации данных — задание поисковых критериев. База данных сможет использовать индексирование, чтобы быстрее вернуть результат. В дополнение, Phalcon позволяет вам производить фильтрацию данных с помощью PHP, расширяя тем самым возможности базы данных:
+The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
 
 ```php
 <?php
@@ -564,7 +566,7 @@ $customers = $customers->filter(
 
 ### Подготавливаемые запросы
 
-Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). Использование привязки параметров рекомендуется, чтобы исключить возможность SQL инъекции. Привязка параметров поддерживает строки и числа. Связывание параметров может быть легко достигнуто следующим образом:
+Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Связывание параметров может быть легко достигнуто следующим образом:
 
 ```php
 <?php
@@ -607,11 +609,11 @@ $robots = Robots::find(
 );
 ```
 
-При использовании цифровых указателей, необходимо определить их как целые числа, то есть `1` or `2`. В этом случае `'1'` или `'2'` считаются строками, а не числами, поэтому псевдопеременная не может быть заменена.
+When using numeric placeholders, you will need to define them as integers i.e. `1` or `2`. In this case `'1'` or `'2'` are considered strings and not numbers, so the placeholder could not be successfully replaced.
 
-Strings are automatically escaped using [PDO](https://php.net/manual/en/pdo.prepared-statements.php). Эта функция принимает во внимание кодировку подключения, поэтому рекомендуется определить корректную кодировку в параметрах подключения или в конфигурации сервера баз данных, так как ошибочная кодировка приведет к неожиданным эффектам при сохранении или извлечении данных.
+Strings are automatically escaped using [PDO](https://php.net/manual/en/pdo.prepared-statements.php). This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
 
-Кроме того, вы можете установить параметр `bindTypes`, что позволит определить, каким образом параметры должны быть связаны в соответствии с их типами данных:
+Additionally you can set the parameter `bindTypes`, this allows defining how the parameters should be bound according to its data type:
 
 ```php
 <?php
@@ -643,7 +645,7 @@ $robots = Robots::find(
 
 <h5 class='alert alert-warning'>Since the default bind-type is <code>Phalcon\Db\Column::BIND_PARAM_STR</code>, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.</h5>
 
-Если вы связываете массивы с параметрами, то помните, что нумерация ключей должна начинаться с нуля:
+If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
 
 ```php
 <?php
@@ -694,7 +696,7 @@ $robots = Robots::findByName('Ultron');
 
 ## Инициализация/изменение полученных записей
 
-Бывают случаи, что после получения записи из базы данных необходимо инициализировать данные перед их использованием остальной частью приложения. Вы можете определить в модели метод `afterFetch()`. Этот метод будет выполнен сразу после создания экземпляра записи и получения им данных:
+May be the case that after obtaining a record from the database is necessary to initialise the data before being used by the rest of the application. You can implement the `afterFetch()` method in a model, this event will be executed just after create the instance and assign the data to it:
 
 ```php
 <?php
@@ -731,7 +733,7 @@ class Robots extends Model
 }
 ```
 
-Независимо от того, используете вы геттеры/сеттеры или публичные свойства, вы можете реализовать обработку поля при получении доступа к последнему:
+If you use getters/setters instead of/or together with public properties, you can initialize the field once it is accessed:
 
 ```php
 <?php
@@ -759,9 +761,9 @@ class Robots extends Model
 
 ## Использование расчетов
 
-Расчеты (или агрегатные функции) являются помощниками для часто используемых функций СУБД, таких как `COUNT`, `SUM`, `MAX`, `MIN` или `AVG`. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) allows to use these functions directly from the exposed methods.
+Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) allows to use these functions directly from the exposed methods.
 
-Пример подсчёта:
+Count examples:
 
 ```php
 <?php
@@ -810,7 +812,7 @@ $group = Employees::count(
 );
 ```
 
-Пример суммы:
+Sum examples:
 
 ```php
 <?php
@@ -862,7 +864,7 @@ $group = Employees::sum(
 );
 ```
 
-Пример поиска среднего:
+Average examples:
 
 ```php
 <?php
@@ -894,7 +896,7 @@ $average = Employees::average(
 );
 ```
 
-Пример нахождения максимального/минимального:
+Max/Min examples:
 
 ```php
 <?php
@@ -926,9 +928,9 @@ $salary = Employees::minimum(
 
 ## Создание/обновление записей
 
-Метод `Phalcon\Mvc\Model::save()` позволяет создавать/обновлять записи в зависимости от того, существуют ли они уже в таблице, связанной с моделью. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). Для этого необходимо иметь в таблице должным образом установленный первичный ключ, чтобы можно было определить, должна ли запись быть обновлена или создана.
+The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
 
-Также метод выполняет связанные валидаторы, виртуальные внешние ключи и события, которые определены в модели:
+Also the method executes associated validators, virtual foreign keys and events that are defined in the model:
 
 ```php
 <?php
@@ -954,7 +956,7 @@ if ($robot->save() === false) {
 }
 ```
 
-В метод `save` может быть передан массив, чтобы избежать назначения каждого столбца вручную. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) will check if there are setters implemented for the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
+An array could be passed to `save` to avoid assign every column manually. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) will check if there are setters implemented for the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
 
 ```php
 <?php
@@ -972,7 +974,7 @@ $robot->save(
 );
 ```
 
-Значения, назначеные непосредственно через атрибуты или через массив, экранируются/проверяются в соответствии с типом данных атрибута. Таким образом, вы можете передать ненадежный массив, не беспокоясь о возможных SQL инъекциях:
+Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass an insecure array without worrying about possible SQL injections:
 
 ```php
 <?php
@@ -986,7 +988,7 @@ $robot->save($_POST);
 
 <h5 class='alert alert-warning'>Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form. </h5>
 
-Вы можете передать дополнительный параметр в метод `save`, чтобы установить список полей, которые должны быть прининяты во внимание при массовом присваивании:
+You can set an additional parameter in `save` to set a whitelist of fields that only must taken into account when doing the mass assignment:
 
 ```php
 <?php
@@ -1008,7 +1010,7 @@ $robot->save(
 
 ### Создание/обновление с уверенностью
 
-При разработке мы можем столкнуться с ситуацией, когда две идентичные записи происходят одновременно. Это может произойти, если мы используем `Phalcon\Mvc\Model::save()` для сохранения элемента в БД. Если мы хотим быть абсолютно уверены, что запись будет создана или обновлена, мы можем заменить `save()` на вызов `create()` или `update()`:
+When an application has a lot of competition, we could be expecting create a record but it is actually updated. This could happen if we use `Phalcon\Mvc\Model::save()` to persist the records in the database. If we want to be absolutely sure that a record is created or updated, we can change the `save()` call with `create()` or `update()`:
 
 ```php
 <?php
@@ -1041,7 +1043,7 @@ The methods `create` and `update` also accept an array of values as parameter.
 
 ## Удаление записей
 
-Метод `Phalcon\Mvc\Model::delete()` позволяет удалить запись. Вы можете использовать его следующим образом:
+The `Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
 
 ```php
 <?php
@@ -1098,7 +1100,7 @@ foreach ($robots as $robot) {
 | Удаление | afterDelete  |            Нет             | Runs after the delete operation was made |
 | Удаление | beforeDelete |             Да             | Runs before the delete operation is made |
 
-В событиях, указанных выше, также можно определять бизнес-логику модели:
+With the above events can also define business rules in the models:
 
 ```php
 <?php
@@ -1756,7 +1758,7 @@ Model::setup(
 );
 ```
 
-Доступные опции:
+The available options are:
 
 | Параметр              | Описание                                                                                         | По умолчанию |
 | --------------------- | ------------------------------------------------------------------------------------------------ |:------------:|
