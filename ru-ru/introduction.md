@@ -4,25 +4,27 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 # Добро пожаловать
 
-Добро пожаловать в документацию фреймворка Phalcon.
+Welcome to the documentation for the Phalcon framework.
 
 ## Миссия
 
-Наша миссия заключается в создании продвинутого инструмента для разработки веб-сайтов и приложений, не беспокоясь о производительности.
+Our mission is to offer developers an advanced, feature rich tool, which they can use to develop powerful applications with low server consumption and high performance.
 
 ## Что такое Phalcon
 
-Phalcon это проект с открытым исходным кодом, полноценный фреймворк для PHP в виде Cи-расширения. Он оптимизирован для высокой производительности. Его уникальная архитектура позволяет фреймворку всегда находится в памяти. Такой подход предоставляет возможность использования Phalcon, всякий раз, когда в этом есть необходимость, без дорогостоящих операций обращения к файлам и парсинга PHP синтаксиса, как это реализовано в традиционных фреймворках.
+Phalcon is an open source full stack framework for PHP, written as a C-extension. Phalcon is optimized for high performance. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever its needed, without expensive file stats and file reads that traditional PHP frameworks employ.
 
 ## Использование
 
-Для работы вам не нужно знать язык Cи, так как функциональность фреймворка представлена PHP-классами в пространстве имён `Phalcon` и полностью готова к использованию.
+Developers do not need to know the C language to use Phalcon. Its interface is exposed as PHP classes under the `Phalcon` namespace, ready to be used.
 
-Части Phalcon слабо связаны между собой, что позволяет использовать их в качестве независимых компонентов для любого вашего приложения.
+Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based in the needs of their applications.
 
 <div class="alert alert-danger">
     <p>
