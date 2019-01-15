@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Working with Namespaces
 
-[Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. 名前空間はバンドルやモジュールの作成に役立ちます。
+[Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
 
 <a name='setting-up'></a>
 
 ## フレームワークの設定
 
-名前空間を利用することは、適切なコントローラを読み込む時にいくつかの意味を持ちます。次のタスクの内、1 つまたは全てを実行するためには、名前空間に合わせてフレームワークの振る舞いを調整する必要があります。
+Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:
 
 Use an autoload strategy that takes into account the namespaces, for example with [Phalcon\Loader](api/Phalcon_Loader):
 
