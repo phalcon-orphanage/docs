@@ -1,15 +1,14 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
-title: 'Phalcon\Db\Index'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\Index'
+
+* * *
 
 # Class **Phalcon\Db\Index**
 
-*implements* [Phalcon\Db\IndexInterface](/3.4/en/api/Phalcon_Db_IndexInterface)
+*implements* [Phalcon\Db\IndexInterface](/4.0/en/api/Phalcon_Db_IndexInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/db/index.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/index.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Allows to define indexes to be used on tables. Indexes are a common way to enhance database performance. An index allows the database server to find and retrieve specific rows much faster than it could do without an index
 
