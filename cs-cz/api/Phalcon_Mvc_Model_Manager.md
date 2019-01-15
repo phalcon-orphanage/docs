@@ -1,15 +1,14 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\Manager'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Manager'
+
+* * *
 
 # Class **Phalcon\Mvc\Model\Manager**
 
-*implements* [Phalcon\Mvc\Model\ManagerInterface](/3.4/en/api/Phalcon_Mvc_Model_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface)
+*implements* [Phalcon\Mvc\Model\ManagerInterface](/4.0/en/api/Phalcon_Mvc_Model_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](/4.0/en/api/Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This components controls the initialization of models, keeping record of relations between the different models of the application.
 
@@ -36,7 +35,7 @@ $robot = new Robots($di);
 
 ## Methods
 
-public **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -44,7 +43,7 @@ public **getDI** ()
 
 Returns the DependencyInjector container
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets a global events manager
 
@@ -52,15 +51,15 @@ public **getEventsManager** ()
 
 Returns the internal event manager
 
-public **setCustomEventsManager** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public **setCustomEventsManager** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets a custom events manager for a specific model
 
-public **getCustomEventsManager** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **getCustomEventsManager** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Returns a custom events manager related to a model
 
-public **initialize** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **initialize** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Initializes a model in the model manager
 
@@ -118,11 +117,11 @@ echo $robots->getSource(); // wp_robots
 
 ```
 
-public **setModelSource** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $source)
+public **setModelSource** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $source)
 
 Sets the mapped source for a model
 
-final public **isVisibleModelProperty** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $property)
+final public **isVisibleModelProperty** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $property)
 
 Check whether a model property is declared as public.
 
@@ -136,95 +135,95 @@ $isPublic = $manager->isVisibleModelProperty(
 
 ```
 
-public **getModelSource** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **getModelSource** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Returns the mapped source for a model
 
-public **setModelSchema** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $schema)
+public **setModelSchema** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $schema)
 
 Sets the mapped schema for a model
 
-public **getModelSchema** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **getModelSchema** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Returns the mapped schema for a model
 
-public **setConnectionService** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
+public **setConnectionService** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
 
 Sets both write and read connection service for a model
 
-public **setWriteConnectionService** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
+public **setWriteConnectionService** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
 
 Sets write connection service for a model
 
-public **setReadConnectionService** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
+public **setReadConnectionService** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
 
 Sets read connection service for a model
 
-public **getReadConnection** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **getReadConnection** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Returns the connection to read data related to a model
 
-public **getWriteConnection** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **getWriteConnection** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Returns the connection to write data related to a model
 
-protected **_getConnection** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionServices)
+protected **_getConnection** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionServices)
 
 Returns the connection to read or write data related to a model depending on the connection services.
 
-public **getReadConnectionService** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **getReadConnectionService** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Returns the connection service name used to read data related to a model
 
-public **getWriteConnectionService** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **getWriteConnectionService** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Returns the connection service name used to write data related to a model
 
-public **_getConnectionService** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionServices)
+public **_getConnectionService** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionServices)
 
 Returns the connection service name used to read or write data related to a model depending on the connection services
 
-public **notifyEvent** (*mixed* $eventName, [Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **notifyEvent** (*mixed* $eventName, [Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Receives events generated in the models and dispatches them to an events-manager if available Notify the behaviors that are listening in the model
 
-public **missingMethod** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $eventName, *mixed* $data)
+public **missingMethod** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $eventName, *mixed* $data)
 
 Dispatch an event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one was implemented
 
-public **addBehavior** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\Mvc\Model\BehaviorInterface](/3.4/en/api/Phalcon_Mvc_Model_BehaviorInterface) $behavior)
+public **addBehavior** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\Mvc\Model\BehaviorInterface](/4.0/en/api/Phalcon_Mvc_Model_BehaviorInterface) $behavior)
 
 Binds a behavior to a model
 
-public **keepSnapshots** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $keepSnapshots)
+public **keepSnapshots** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $keepSnapshots)
 
 Sets if a model must keep snapshots
 
-public **isKeepingSnapshots** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **isKeepingSnapshots** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Checks if a model is keeping snapshots for the queried records
 
-public **useDynamicUpdate** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $dynamicUpdate)
+public **useDynamicUpdate** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $dynamicUpdate)
 
 Sets if a model must use dynamic update instead of the all-field update
 
-public **isUsingDynamicUpdate** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **isUsingDynamicUpdate** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Checks if a model is using dynamic update instead of all-field update
 
-public [Phalcon\Mvc\Model\Relation](/3.4/en/api/Phalcon_Mvc_Model_Relation) **addHasOne** ([Phalcon\Mvc\Model](/3.4/en/api/Phalcon_Mvc_Model) $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
+public [Phalcon\Mvc\Model\Relation](/4.0/en/api/Phalcon_Mvc_Model_Relation) **addHasOne** ([Phalcon\Mvc\Model](/4.0/en/api/Phalcon_Mvc_Model) $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
 
 Setup a 1-1 relation between two models
 
-public [Phalcon\Mvc\Model\Relation](/3.4/en/api/Phalcon_Mvc_Model_Relation) **addBelongsTo** ([Phalcon\Mvc\Model](/3.4/en/api/Phalcon_Mvc_Model) $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
+public [Phalcon\Mvc\Model\Relation](/4.0/en/api/Phalcon_Mvc_Model_Relation) **addBelongsTo** ([Phalcon\Mvc\Model](/4.0/en/api/Phalcon_Mvc_Model) $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
 
 Setup a relation reverse many to one between two models
 
-public **addHasMany** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
+public **addHasMany** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
 
 Setup a relation 1-n between two models
 
-public [Phalcon\Mvc\Model\Relation](/3.4/en/api/Phalcon_Mvc_Model_Relation) **addHasManyToMany** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *string* $fields, *string* $intermediateModel, *string* $intermediateFields, *string* $intermediateReferencedFields, *string* $referencedModel, *string* $referencedFields, [*array* $options])
+public [Phalcon\Mvc\Model\Relation](/4.0/en/api/Phalcon_Mvc_Model_Relation) **addHasManyToMany** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *string* $fields, *string* $intermediateModel, *string* $intermediateFields, *string* $intermediateReferencedFields, *string* $referencedModel, *string* $referencedFields, [*array* $options])
 
 Setups a relation n-m between two models
 
@@ -252,7 +251,7 @@ final protected **_mergeFindParameters** (*mixed* $findParamsOne, *mixed* $findP
 
 Merge two arrays of find parameters
 
-public [Phalcon\Mvc\Model\Resultset\Simple](/3.4/en/api/Phalcon_Mvc_Model_Resultset_Simple) | [Phalcon\Mvc\Model\Resultset\Simple](/3.4/en/api/Phalcon_Mvc_Model_Resultset_Simple) | *int* | *false* **getRelationRecords** ([Phalcon\Mvc\Model\RelationInterface](/3.4/en/api/Phalcon_Mvc_Model_RelationInterface) $relation, *mixed* $method, [Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
+public [Phalcon\Mvc\Model\Resultset\Simple](/4.0/en/api/Phalcon_Mvc_Model_Resultset_Simple) | [Phalcon\Mvc\Model\Resultset\Simple](/4.0/en/api/Phalcon_Mvc_Model_Resultset_Simple) | *int* | *false* **getRelationRecords** ([Phalcon\Mvc\Model\RelationInterface](/4.0/en/api/Phalcon_Mvc_Model_RelationInterface) $relation, *mixed* $method, [Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
 
 Helper method to query records based on a relation definition
 
@@ -268,19 +267,19 @@ public **clearReusableObjects** ()
 
 Clears the internal reusable list
 
-public **getBelongsToRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
+public **getBelongsToRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
 
 Gets belongsTo related records from a model
 
-public **getHasManyRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
+public **getHasManyRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
 
 Gets hasMany related records from a model
 
-public **getHasOneRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
+public **getHasOneRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
 
 Gets belongsTo related records from a model
 
-public **getBelongsTo** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **getBelongsTo** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Gets all the belongsTo relations defined in a model
 
@@ -293,19 +292,19 @@ $relations = $modelsManager->getBelongsTo(
 
 ```
 
-public **getHasMany** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **getHasMany** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Gets hasMany relations defined on a model
 
-public **getHasOne** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **getHasOne** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Gets hasOne relations defined on a model
 
-public **getHasManyToMany** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **getHasManyToMany** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Gets hasManyToMany relations defined on a model
 
-public **getHasOneAndHasMany** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model)
+public **getHasOneAndHasMany** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
 
 Gets hasOne relations defined on a model
 
