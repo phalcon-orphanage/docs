@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Criteria
 
 # Interface **Phalcon\Mvc\Model\CriteriaInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/criteriainterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/criteriainterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 
