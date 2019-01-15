@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='basic'></a>
 
 # Tutorial - basic
@@ -18,7 +20,7 @@ This tutorial covers the implementation of a simple MVC application, showing how
     </p>
 </div>
 
-If you just want to get started you can skip this and create a Phalcon project automatically with our [developer tools](/3.4/en/devtools-usage). (It is recommended that if you have not had experience with to come back here if you get stuck)
+If you just want to get started you can skip this and create a Phalcon project automatically with our [developer tools](/4.0/en/devtools-usage). (It is recommended that if you have not had experience with to come back here if you get stuck)
 
 The best way to use this guide is to follow along and try to have fun. You can get the complete code [here](https://github.com/phalcon/tutorial). If you get hung-up on something please visit us on [Discord](https://phalcon.link/discord) or in our [Forum](https://phalcon.link/forum).
 
@@ -48,17 +50,17 @@ A key feature of Phalcon is it's loosely coupled, you can build a Phalcon projec
 
 <div class='alert alert-warning'>
     <p>
-        Note: You will not see a `vendor` directory as all of Phalcon's core dependencies are loaded into memory via the Phalcon extension you should have installed. If you missed that part have not installed the Phalcon extension [please go back](/3.4/en/installation) and finish the installation before continuing.
+        Note: You will not see a `vendor` directory as all of Phalcon's core dependencies are loaded into memory via the Phalcon extension you should have installed. If you missed that part have not installed the Phalcon extension [please go back](/4.0/en/installation) and finish the installation before continuing.
     </p>
 </div>
 
-If this is all brand new it is recommended that you install the [Phalcon Devtools](/3.4/en/devtools-installation) since it leverages PHP's built-in server you to get your app running without having to configure a web server by adding this [.htrouter](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php) to the root of your project.
+If this is all brand new it is recommended that you install the [Phalcon Devtools](/4.0/en/devtools-installation) since it leverages PHP's built-in server you to get your app running without having to configure a web server by adding this [.htrouter](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php) to the root of your project.
 
-Otherwise if you want to use Nginx here are some additional setup [here](/3.4/en/webserver-setup#nginx).
+Otherwise if you want to use Nginx here are some additional setup [here](/4.0/en/webserver-setup#nginx).
 
-Apache can also be used with these additional setup [here](/3.4/en/webserver-setup#apache).
+Apache can also be used with these additional setup [here](/4.0/en/webserver-setup#apache).
 
-Finally, if you flavor is Cherokee use the setup [here](/3.4/en/webserver-setup#cherokee).
+Finally, if you flavor is Cherokee use the setup [here](/4.0/en/webserver-setup#cherokee).
 
 <a name='bootstrap'></a>
 
@@ -72,7 +74,7 @@ This file handles 3 things: - Registration of component autoloaders - Configurin
 
 ### Autoloaders
 
-Autoloaders leverage a [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon. Common things that should be added to the autoloader are your controllers and models. You can register directories which will search for files within the application's namespace. If you want to read about other ways that you can use autoloaders head [here](/3.4/en/loader#overview).
+Autoloaders leverage a [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon. Common things that should be added to the autoloader are your controllers and models. You can register directories which will search for files within the application's namespace. If you want to read about other ways that you can use autoloaders head [here](/4.0/en/loader#overview).
 
 To start, lets register our app's `controllers` and `models` directories. Don't forget to include the loader from `Phalcon\Loader`.
 
@@ -110,7 +112,7 @@ Each time the framework requires a component or service, it will ask the contain
 
 <div class='alert alert-warning'>
     <p>
-        If you are still interested in the details please see this article by [Martin Fowler](https://martinfowler.com/articles/injection.html). Also we have [a great tutorial](/3.4/en/di) covering many use cases.
+        If you are still interested in the details please see this article by [Martin Fowler](https://martinfowler.com/articles/injection.html). Also we have [a great tutorial](/4.0/en/di) covering many use cases.
     </p>
 </div>
 
@@ -118,7 +120,7 @@ Each time the framework requires a component or service, it will ask the contain
 
 The [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) is a variant of [Phalcon\Di](api/Phalcon_Di). To make things easier, it will automatically register most of the components that come with Phalcon. We recommend that you register your services manually but this has been included to help lower the barrier of entry when getting used to Dependency Management. Later, you can always specify once you become more comfortable with the concept.
 
-Services can be registered in several ways, but for our tutorial, we'll use an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
+Services can be registered in several ways, but for our tutorial, we'll use an [anonymous function](https://php.net/manual/en/functions.anonymous.php):
 
 `public/index.php`
 
@@ -271,7 +273,7 @@ As you can see, the bootstrap file is very short and we do not need to include a
 
 ## Creating a Controller
 
-By default Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (eg. `http://localhost:8000/`). An `IndexController` and its `IndexAction` should resemble the following example:
+By default Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (eg. `https://localhost:8000/`). An `IndexController` and its `IndexAction` should resemble the following example:
 
 `app/controllers/IndexController.php`
 
@@ -325,7 +327,7 @@ class IndexController extends Controller
 }
 ```
 
-The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about views usage [here](/3.4/en/views).
+The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about views usage [here](/4.0/en/views).
 
 <a name='signup-form'></a>
 
@@ -362,7 +364,7 @@ The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new con
 
 To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is also a service registered in the DI we use `$this->tag` to access it.
 
-A more detailed article regarding HTML generation [can be found here](/3.4/en/tag).
+A more detailed article regarding HTML generation [can be found here](/4.0/en/tag).
 
 ![](/images/content/tutorial-basic-2.png)
 
@@ -642,7 +644,7 @@ if ($users->count() > 0) {
 }
 ```
 
-As you can see our variables `$users` can be iterated and counted, this we will see in depth later on when viewing the [models](/3.4/en/db-models).
+As you can see our variables `$users` can be iterated and counted, this we will see in depth later on when viewing the [models](/4.0/en/db-models).
 
 ![](/images/content/tutorial-basic-5.png)
 
@@ -682,4 +684,4 @@ The most important thing to highlight in our template is the function `getConten
 
 As you can see, it's easy to start building an application using Phalcon. The fact that Phalcon runs from an extension significantly reduces the footprint of projects as well as giving it a considerable performance boost.
 
-If you are ready to learn more check out the [Rest Tutorial](/3.4/en/tutorial-rest) next.
+If you are ready to learn more check out the [Rest Tutorial](/4.0/en/tutorial-rest) next.
