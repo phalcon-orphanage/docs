@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='contributing'></a>
 
@@ -14,13 +16,13 @@ Phalcon is an open source project and heavily relies on volunteer efforts. We we
 
 Please take a moment to review this document in order to make the contribution process easy and effective for all.
 
-遵循这些准则，允许更好的交流，更快地解决问题和向前移动该项目。
+Following these guidelines, allows better communication, faster resolution of issues and moves the project forward.
 
 <a name='contributions'></a>
 
 ## 贡献者
 
-Phalcon的贡献应该在 [GitHub pr](https://help.github.com/articles/using-pull-requests/) 的形式。 Each pull request will be reviewed by a core contributor (someone with permission to merge pull requests). Based on the type and content of the pull request, it can either be merged immediately, put on hold if clarifications are needed, or rejected.
+Contributions to Phalcon should be made in the form of [GitHub pull requests](https://help.github.com/articles/using-pull-requests/). Each pull request will be reviewed by a core contributor (someone with permission to merge pull requests). Based on the type and content of the pull request, it can either be merged immediately, put on hold if clarifications are needed, or rejected.
 
 Please ensure that you are sending your pull request to the correct branch and that you already have rebased your code.
 
@@ -43,9 +45,9 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 ### 生成回溯跟踪
 
-有时由于 [分段故障](https://en.wikipedia.org/wiki/Segmentation_fault) 错误，Phalcon 能会使您的一些 Web 服务器进程崩溃。 请通过在错误报告中添加崩溃回溯来帮助我们找出问题所在。
+Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. Please help us to find out the problem by adding a crash backtrace to your bug report.
 
-请按照本指南了解如何生成回溯跟踪：
+Please follow this guides to understand how to generate the backtrace:
 
 - [生成 gdb 回溯](https://bugs.php.net/bugs-generating-backtrace.php)
 - [使用编译器在 Win32 上生成回溯](https://bugs.php.net/bugs-generating-backtrace-win32.php)
@@ -63,7 +65,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 - Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards](https://www.php-fig.org/psr/)
 - 在提交 Pull 请求之前，删除对 `ext/kernel`, `*.zep.c` 和 `*.zep.h` 文件的任何更改
 
-Before submit **new functionality**, please open a [NFR](/4.0/en/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. 一旦功能被批准，请确保您的 PR 包含以下内容:
+Before submit **new functionality**, please open a [NFR](/4.0/en/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
 - 对 `CHANGELOG.md` 的更新
 - 单元测试
@@ -81,6 +83,6 @@ If you have any questions about how to use Phalcon, please see the [support page
 
 If you have any changes or new features in mind, please fill an [NFR](/4.0/en/new-feature-request).
 
-谢谢！
+Thanks!
 
 <3 Phalcon Team
