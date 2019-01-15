@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='basic'></a>
 
@@ -21,7 +23,7 @@ In this tutorial, we will explain how to create a simple application that provid
 
 ## 定义 API
 
-该 API 包括以下方法：
+The API consists of the following methods:
 
 | 方法       | URL                      | Action                              |
 | -------- | ------------------------ | ----------------------------------- |
@@ -38,7 +40,7 @@ In this tutorial, we will explain how to create a simple application that provid
 
 As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/4.0/en/application-micro) to meet our goal.
 
-以下的文件结构足够了：
+The following file structure is more than enough:
 
 ```php
 my-rest-api/
@@ -58,7 +60,7 @@ First, we need a `.htaccess` file that contains all the rules to rewrite the req
 </IfModule>
 ```
 
-大部分的我们的代码将放置在 `index.php`。文件内容如下：
+The bulk of our code will be placed in `index.php`. The file is created as follows:
 
 ```php
 <?php
@@ -72,7 +74,7 @@ $app = new Micro();
 $app->handle();
 ```
 
-现在根据上面的需求来创建路由：
+Now we will create the routes as we defined above:
 
 ```php
 <?php
@@ -132,15 +134,15 @@ $app->delete(
 $app->handle();
 ```
 
-每个路由使用与HTTP访问方式相同名称的方法进行定义。首选第一个参数为路由匹配参数，接下来的是处理访问。 在这种情况下，处理访问的是一个匿名函数。 以下路由：`/api/robots/{id:[0-9]+}`，以身作则，显式设置`id`参数必须为数字格式。
+Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern, followed by a handler. In this case, the handler is an anonymous function. The following route: `/api/robots/{id:[0-9]+}`, by example, explicitly sets that the `id` parameter must have a numeric format.
 
-当定义的路由与访问与之匹配，应用会执行对应的处理。
+When a defined route matches the requested URI then the application executes the corresponding handler.
 
 <a name='models'></a>
 
 ## 创建模型
 
-我们的 API 提供了关于 `robots` 的信息，这些信息都存储在数据库中。 下列的模型允许我们以面向对象的方式访问对应表。 我们通过使用框架自带的验证器和手动实现了一些简单的验证实现了业务规则。 这样做会让将会保存的数据符合我们的应用要求，将使我们安心。 此模型文件应放在 `Models` 文件夹中。
+Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
 ```php
 <?php
@@ -201,7 +203,7 @@ class Robots extends Model
 }
 ```
 
-现在，我们必须设置连接采用这种模式并加载它在我们的应用程序内 [文件： `index.php`]:
+Now, we must set up a connection to be used by this model and load it within our app [File: `index.php`]:
 
 ```php
 <?php
@@ -247,7 +249,7 @@ $app = new Micro($di);
 
 ## 检索数据
 
-我们将实施的第一个 `handler` 是由方法 GET 返回所有可用的机器人。 让我们使用 PHQL 来执行这个简单的查询，以 json 格式返回结果。 [文件： `index.php`]
+The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
 
 ```php
 <?php
@@ -274,9 +276,9 @@ $app->get(
 );
 ```
 
-[PHQL](/4.0/en/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. 子句 `use` 匿名函数中允许我们将一些变量从全球传递到本地范围很容易。
+[PHQL](/4.0/en/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
 
-搜索名称处理程序看起来就像 [文件： `index.php`]:
+The searching by name handler would look like [File: `index.php`]:
 
 ```php
 <?php
@@ -308,7 +310,7 @@ $app->get(
 );
 ```
 
-搜索的字段 `id`，它是相当类似，在这种情况下，我们也要通知如果机器人被发现或不 [文件： `index.php`]:
+Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not [File: `index.php`]:
 
 ```php
 <?php
@@ -360,7 +362,7 @@ $app->get(
 
 ## 插入数据
 
-以数据为 JSON 字符串插入请求的正文中，我们还用 PHQL 来插入 [文件： `index.php`]:
+Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion [File: `index.php`]:
 
 ```php
 <?php
@@ -428,7 +430,7 @@ $app->post(
 
 ## 更新数据
 
-数据更新是类似于插入。作为参数传递的 `id` 指示必须更新什么机器人 [文件： `index.php`]:
+The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
 
 ```php
 <?php
@@ -490,7 +492,7 @@ $app->put(
 
 ## 删除数据
 
-数据删除是类似于更新。作为参数传递的 `id` 指示必须删除什么机器人 [文件： `index.php`]:
+The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
 
 ```php
 <?php
@@ -562,7 +564,7 @@ Now we will create database for our application. Run SQL queries as follows:
 
 Using [curl](https://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
 
-获取所有机器人：
+Obtain all the robots:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots
@@ -576,7 +578,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 ```
 
-按其名称搜索机器人：
+Search a robot by its name:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots/search/Astro
@@ -590,7 +592,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"2","name":"Astro Boy"}]
 ```
 
-通过其 id 来获得一个机器人：
+Obtain a robot by its id:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots/3
@@ -604,7 +606,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
 ```
 
-插入一个新的机器人：
+Insert a new robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
@@ -619,7 +621,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 ```
 
-尝试插入新机器人与现有的机器人的名称：
+Try to insert a new robot with the name of an existing robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
@@ -634,7 +636,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"ERROR","messages":["The robot name must be unique"]}
 ```
 
-或更新一个机器人与未知的类型：
+Or update a robot with an unknown type:
 
 ```bash
 curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
@@ -650,7 +652,7 @@ Content-Type: text/html; charset=UTF-8
     list: droid, mechanical, virtual"]}
 ```
 
-最后，删除一个机器人：
+Finally, delete a robot:
 
 ```bash
 curl -i -X DELETE https://localhost/my-rest-api/api/robots/4
