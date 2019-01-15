@@ -1,14 +1,16 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='basic'></a>
 
 # 教程： 创建一个简单的 REST API
 
-在本教程中，我们会解释如何通过不同的HTTP访问方法来创建一个简单的[RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer)风格的接口类型的应用程序：
+In this tutorial, we will explain how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
 
 * `GET` 要检索和搜索数据
 * `POST`，以添加数据
@@ -34,7 +36,7 @@ layout: default language: 'en' version: '4.0'
 
 ## 创建应用程序
 
-As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/3.4/en/application-micro) to meet our goal.
+As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/4.0/en/application-micro) to meet our goal.
 
 以下的文件结构足够了：
 
@@ -272,7 +274,7 @@ $app->get(
 );
 ```
 
-[PHQL](/3.4/en/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. 子句 `use` 匿名函数中允许我们将一些变量从全球传递到本地范围很容易。
+[PHQL](/4.0/en/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. 子句 `use` 匿名函数中允许我们将一些变量从全球传递到本地范围很容易。
 
 搜索名称处理程序看起来就像 [文件： `index.php`]:
 
@@ -558,12 +560,12 @@ Now we will create database for our application. Run SQL queries as follows:
 
 ## 测试我们的应用程序
 
-使用 [curl](http://en.wikipedia.org/wiki/CURL) 我们会在我们的应用程序验证其正确运行中测试每条路线。
+Using [curl](https://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
 
 获取所有机器人：
 
 ```bash
-curl -i -X GET http://localhost/my-rest-api/api/robots
+curl -i -X GET https://localhost/my-rest-api/api/robots
 
 HTTP/1.1 200 OK
 Date: Tue, 21 Jul 2015 07:05:13 GMT
@@ -577,7 +579,7 @@ Content-Type: text/html; charset=UTF-8
 按其名称搜索机器人：
 
 ```bash
-curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
+curl -i -X GET https://localhost/my-rest-api/api/robots/search/Astro
 
 HTTP/1.1 200 OK
 Date: Tue, 21 Jul 2015 07:09:23 GMT
@@ -591,7 +593,7 @@ Content-Type: text/html; charset=UTF-8
 通过其 id 来获得一个机器人：
 
 ```bash
-curl -i -X GET http://localhost/my-rest-api/api/robots/3
+curl -i -X GET https://localhost/my-rest-api/api/robots/3
 
 HTTP/1.1 200 OK
 Date: Tue, 21 Jul 2015 07:12:18 GMT
@@ -606,7 +608,7 @@ Content-Type: text/html; charset=UTF-8
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
-    http://localhost/my-rest-api/api/robots
+    https://localhost/my-rest-api/api/robots
 
 HTTP/1.1 201 Created
 Date: Tue, 21 Jul 2015 07:15:09 GMT
@@ -621,7 +623,7 @@ Content-Type: text/html; charset=UTF-8
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
-    http://localhost/my-rest-api/api/robots
+    https://localhost/my-rest-api/api/robots
 
 HTTP/1.1 409 Conflict
 Date: Tue, 21 Jul 2015 07:18:28 GMT
@@ -636,7 +638,7 @@ Content-Type: text/html; charset=UTF-8
 
 ```bash
 curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
-    http://localhost/my-rest-api/api/robots/4
+    https://localhost/my-rest-api/api/robots/4
 
 HTTP/1.1 409 Conflict
 Date: Tue, 21 Jul 2015 08:48:01 GMT
@@ -651,7 +653,7 @@ Content-Type: text/html; charset=UTF-8
 最后，删除一个机器人：
 
 ```bash
-curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
+curl -i -X DELETE https://localhost/my-rest-api/api/robots/4
 
 HTTP/1.1 200 OK
 Date: Tue, 21 Jul 2015 08:49:29 GMT
@@ -666,4 +668,4 @@ Content-Type: text/html; charset=UTF-8
 
 ## 结语
 
-As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/3.4/en/application-micro) and [PHQL](/3.4/en/db-phql).
+As we saw, developing a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/4.0/en/application-micro) and [PHQL](/4.0/en/db-phql).
