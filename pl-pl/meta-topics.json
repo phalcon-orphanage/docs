@@ -1,6 +1,6 @@
 [
     {
-        "text": "Główne",
+        "text": "General",
         "url": "/introduction",
         "menu": [
             {
@@ -9,7 +9,7 @@
                 "external": true
             },
             {
-                "text": "Aktualizacja",
+                "text": "Upgrade",
                 "url": ""
             },
             {
@@ -23,7 +23,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Przegląd",
+                "text": "Overview",
                 "url": "/contributions"
             },
             {
@@ -97,11 +97,11 @@
                 "url": "/devtools-installation"
             },
             {
-                "text": "Sposób użycia",
+                "text": "Usage",
                 "url": "/devtools-usage"
             },
             {
-                "text": "Debugowanie",
+                "text": "Debug",
                 "url": "/debug"
             }
         ]
@@ -115,7 +115,7 @@
                 "url": "/performance"
             },
             {
-                "text": "Podstawowe",
+                "text": "Basic",
                 "url": "/tutorial-base"
             },
             {
@@ -137,7 +137,7 @@
         ]
     },
     {
-        "text": "Rdzeń",
+        "text": "Core",
         "url": "",
         "menu": [
             {
@@ -153,7 +153,7 @@
                 "url": "/application-micro"
             },
             {
-                "text": "Konsolowa (ang. Cli)",
+                "text": "Cli",
                 "url": "/application-cli"
             },
             {
@@ -175,7 +175,7 @@
                 "url": "/cache"
             },
             {
-                "text": "Konfiguracja",
+                "text": "Config",
                 "url": "/config"
             },
             {
@@ -191,7 +191,7 @@
                 "url": "/logging"
             },
             {
-                "text": "Kolejka",
+                "text": "Queue",
                 "url": "/queue"
             }
         ]
@@ -201,7 +201,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Warstwa",
+                "text": "Layer",
                 "url": "/db-layer"
             },
             {
@@ -213,7 +213,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Modele",
+                "text": "Models",
                 "url": "/db-models"
             },
             {
@@ -229,7 +229,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Zdarzenia",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {
@@ -271,11 +271,11 @@
                 "url": "/flash"
             },
             {
-                "text": "Formularze",
+                "text": "Forms",
                 "url": "/forms"
             },
             {
-                "text": "Zdjęcia",
+                "text": "Image",
                 "url": "/image"
             },
             {
@@ -283,7 +283,7 @@
                 "url": "/tag"
             },
             {
-                "text": "Widok",
+                "text": "View",
                 "url": "/views"
             },
             {
@@ -317,7 +317,7 @@
                 "url": "/events"
             },
             {
-                "text": "Filtry",
+                "text": "Filters",
                 "url": "/filter"
             },
             {
