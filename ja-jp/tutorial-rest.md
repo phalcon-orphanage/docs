@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='basic'></a>
 
@@ -21,7 +23,7 @@ In this tutorial, we will explain how to create a simple application that provid
 
 ## API の定義
 
-APIは、以下のメソッドで構成されています:
+The API consists of the following methods:
 
 | メソッド     | URL                      | Action                 |
 | -------- | ------------------------ | ---------------------- |
@@ -38,7 +40,7 @@ APIは、以下のメソッドで構成されています:
 
 As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/4.0/en/application-micro) to meet our goal.
 
-以下のファイル構造で十分です。
+The following file structure is more than enough:
 
 ```php
 my-rest-api/
@@ -48,7 +50,7 @@ my-rest-api/
     .htaccess
 ```
 
-まず、リクエストURIを`index.php`ファイル（アプリケーションのエントリポイント）に書き換えるための、すべてのルールを含む`.htaccess`ファイルが必要です:
+First, we need a `.htaccess` file that contains all the rules to rewrite the request URIs to the `index.php` file (application entry-point):
 
 ```apacheconfig
 <IfModule mod_rewrite.c>
@@ -58,7 +60,7 @@ my-rest-api/
 </IfModule>
 ```
 
-コードの大半は`index.php`に配置されます。このファイルは次のように作成されます:
+The bulk of our code will be placed in `index.php`. The file is created as follows:
 
 ```php
 <?php
@@ -72,7 +74,7 @@ $app = new Micro();
 $app->handle();
 ```
 
-上で定義した、ルートを作成します:
+Now we will create the routes as we defined above:
 
 ```php
 <?php
@@ -132,15 +134,15 @@ $app->delete(
 $app->handle();
 ```
 
-各ルートは、HTTPメソッドと同じ名前のメソッドで定義されます。最初のパラメータとしてルートパターンを渡し、その後にハンドラが続きます。 この場合、ハンドラーは無名関数です。 次のルート: `/api/robots/{id:[0-9]+}`を例にすると、 `id` パラメーターが数値形式でなければならないことを明示的にしています。
+Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern, followed by a handler. In this case, the handler is an anonymous function. The following route: `/api/robots/{id:[0-9]+}`, by example, explicitly sets that the `id` parameter must have a numeric format.
 
-定義されたルートがこの要求されたURIにマッチするとき、このアプリケーションは相当するハンドラを実行します。
+When a defined route matches the requested URI then the application executes the corresponding handler.
 
 <a name='models'></a>
 
 ## Modelの作成
 
-私達のAPIは`robots`の情報を提供します。これらのデータはデータベースに保存されています。 次のモデルでは、オブジェクト指向の方法でテーブルにアクセスできます。 ビルドインのバリデーターとシンプルなバリデーターを使って、いくつかのビジネスルールを実装しました。 こうすることで、アプリケーションの要件を満たすようにデータを保存できます。 このモデルファイルは、`Models` フォルダーに配置する必要があります。
+Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
 ```php
 <?php
@@ -201,7 +203,7 @@ class Robots extends Model
 }
 ```
 
-このモデルで使用されるコネクションを設定し、アプリ内でロードする必要があります[ファイル: `index.php`]:
+Now, we must set up a connection to be used by this model and load it within our app [File: `index.php`]:
 
 ```php
 <?php
@@ -247,7 +249,7 @@ $app = new Micro($di);
 
 ## データの取得
 
-私達が実装する、最初の `handler` は、GETメソッドで利用可能なすべてのロボットを返します。 結果を JSON として返す単純なクエリを実行する PHQL を使いましょう。 [ファイル: `index.php`]
+The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
 
 ```php
 <?php
@@ -274,9 +276,9 @@ $app->get(
 );
 ```
 
-[PHQL](/4.0/en/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. 無名関数の`use`句によって簡単にグローバルスコープからローカルスコープへ変数をいくつか渡すことができます。
+[PHQL](/4.0/en/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
 
-nameハンドラによる検索は次のようになります。[ファイル: `index.php`]:
+The searching by name handler would look like [File: `index.php`]:
 
 ```php
 <?php
@@ -308,7 +310,7 @@ $app->get(
 );
 ```
 
-フィールド`id`での検索とよく似ており、今回の場合はロボットが見つかったかどうかを通知します [ファイル: `index.php`]:
+Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not [File: `index.php`]:
 
 ```php
 <?php
@@ -360,7 +362,7 @@ $app->get(
 
 ## Inserting Data
 
-リクエストのボディに挿入されたJSON文字列として与えらえたデータを使って、挿入用のPHQLを使用します [ファイル: `index.php`]:
+Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion [File: `index.php`]:
 
 ```php
 <?php
@@ -428,7 +430,7 @@ $app->post(
 
 ## Updating Data
 
-データの更新は挿入と似ています。パラメータとして渡されるこの`id`はどのロボットを更新すべきかを示しています [ファイル:`index.php`]:
+The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
 
 ```php
 <?php
@@ -490,7 +492,7 @@ $app->put(
 
 ## Deleting Data
 
-データの削除は更新と似ています。パラメータとして渡されるこの`id`はどのロボットを削除すべきかを示しています [ファイル:`index.php`]:
+The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
 
 ```php
 <?php
@@ -562,7 +564,7 @@ Now we will create database for our application. Run SQL queries as follows:
 
 Using [curl](https://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
 
-全てのロボットの取得:
+Obtain all the robots:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots
@@ -576,7 +578,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 ```
 
-名前でロボットを検索:
+Search a robot by its name:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots/search/Astro
@@ -590,7 +592,7 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"2","name":"Astro Boy"}]
 ```
 
-Idでロボットを取得:
+Obtain a robot by its id:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots/3
@@ -604,7 +606,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
 ```
 
-新しいロボットの挿入:
+Insert a new robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
@@ -619,7 +621,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"OK","data":{"name":"C-3PO","type":"droid","year":1977,"id":"4"}}
 ```
 
-既存のロボットの名前で新しいロボットの挿入:
+Try to insert a new robot with the name of an existing robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
@@ -634,7 +636,7 @@ Content-Type: text/html; charset=UTF-8
 {"status":"ERROR","messages":["The robot name must be unique"]}
 ```
 
-種類がunknownのロボットの更新:
+Or update a robot with an unknown type:
 
 ```bash
 curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
@@ -650,7 +652,7 @@ Content-Type: text/html; charset=UTF-8
     list: droid, mechanical, virtual"]}
 ```
 
-最後に、ロボットの削除:
+Finally, delete a robot:
 
 ```bash
 curl -i -X DELETE https://localhost/my-rest-api/api/robots/4
