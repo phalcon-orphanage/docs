@@ -6,9 +6,9 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Binder'
 
 # Class **Phalcon\Mvc\Model\Binder**
 
-*implements* [Phalcon\Mvc\Model\BinderInterface](/3.4/en/api/Phalcon_Mvc_Model_BinderInterface)
+*implements* [Phalcon\Mvc\Model\BinderInterface](/4.0/en/api/Phalcon_Mvc_Model_BinderInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/binder.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/binder.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Phalcon\Mvc\Model\Binding
 
@@ -24,11 +24,11 @@ public **getOriginalValues** ()
 
 Array for original values
 
-public **__construct** ([[Phalcon\Cache\BackendInterface](/3.4/en/api/Phalcon_Cache_BackendInterface) $cache])
+public **__construct** ([[Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface) $cache])
 
 Phalcon\Mvc\Model\Binder constructor
 
-public **setCache** ([Phalcon\Cache\BackendInterface](/3.4/en/api/Phalcon_Cache_BackendInterface) $cache)
+public **setCache** ([Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface) $cache)
 
 Gets cache instance
 
