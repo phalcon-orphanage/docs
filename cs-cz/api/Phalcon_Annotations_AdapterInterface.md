@@ -1,19 +1,18 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
-title: 'Phalcon\Annotations\AdapterInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Annotations\AdapterInterface'
+
+* * *
 
 # Interface **Phalcon\Annotations\AdapterInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This interface must be implemented by adapters in Phalcon\Annotations
 
 ## Methods
 
-abstract public **setReader** ([Phalcon\Annotations\ReaderInterface](/3.4/en/api/Phalcon_Annotations_ReaderInterface) $reader)
+abstract public **setReader** ([Phalcon\Annotations\ReaderInterface](/4.0/en/api/Phalcon_Annotations_ReaderInterface) $reader)
 
 Sets the annotations parser
 
