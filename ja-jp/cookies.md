@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # cookieの管理
 
-[Cookies](https://en.wikipedia.org/wiki/HTTP_cookie) are a very useful way to store small pieces of data on the client's machine that can be retrieved even if the user closes his/her browser. `Phalcon\Http\Response\Cookies` はcookieのグローバルなバッグのように振舞います。 cookieは、リクエストの処理中にこのバッグに格納されて、リクエストのの最後に自動的に送信されます。
+[Cookies](https://en.wikipedia.org/wiki/HTTP_cookie) are a very useful way to store small pieces of data on the client's machine that can be retrieved even if the user closes his/her browser. `Phalcon\Http\Response\Cookies` acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent automatically at the end of the request.
 
 <a name='usage'></a>
 
 ## 基本的な使い方
 
-アプリケーション内のどこででも、サービスにアクセスできるのであれば`cookies`サービスにアクセスするだけでcookieを設定/取得することができます:
+You can set/get cookies by just accessing the `cookies` service in any part of the application where services can be accessed:
 
 ```php
 <?php
@@ -61,9 +63,9 @@ class SessionController extends Controller
 
 ## cookieの暗号化/復号化
 
-デフォルトでは、cookieはクライアントに送信される前に自動的に暗号化され、ユーザーが取得する際に解読されます。 この保護は、許可されていないユーザーがcookieの内容をクライアント（ブラウザー）で見ることを防ぎます。 この保護があったとしても、機密データはクッキーに保存されてはなりません。
+By default, cookies are automatically encrypted before being sent to the client and are decrypted when retrieved from the user. This protection prevents unauthorized users to see the cookies' contents in the client (browser). Despite this protection, sensitive data should not be stored in cookies.
 
-以下のようにして、暗号化を無効にすることができます。
+You can disable encryption as follows:
 
 ```php
 <?php
