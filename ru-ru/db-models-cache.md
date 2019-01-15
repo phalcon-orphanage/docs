@@ -4,25 +4,27 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='orm-caching'></a>
 
 # Кэширование в ORM
 
-Каждое приложение уникально. В большинстве приложений, однако, есть данные, которые меняются редко. Одним из наиболее распространенных узких мест в плане производительности является доступ к базе данных. Это связано со сложными процессами подключения/коммуникации, которые PHP должен выполнять при каждом запросе к базе данных для получения требуемых данных. Поэтому, если мы хотим добиться хорошей производительности, нам нужно добавить несколько уровней кэширования, где это требуется приложению.
+Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
 
-В этой главе описываются потенциальные области, в которых можно реализовать кэширование для повышения производительности. Phalcon gives developers the tools they need to implement cashing where their application needs it.
+This chapter explains the potential areas where it is possible to implement caching to improve performance. Phalcon gives developers the tools they need to implement cashing where their application needs it.
 
 <a name='caching-resultsets'></a>
 
 ## Кэширование наборов данных
 
-Хорошо устоявшийся метод, чтобы избежать постоянного доступа к базе данных, заключается в кэшировании результирующих наборов, которые не меняются часто, используя систему с более быстрым доступом (обычно память).
+A well established technique to avoid continuously accessing the database, is to cache resultsets that don't change frequently, using a system with faster access (usually memory).
 
-When [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) requires a service to cache resultsets, it will request it from the Dependency Injection Container. Название запрашиваемого сервиса — `modelsCache`. Phalcon offers a [cache](/4.0/en/cache) component that can store any kind of data. Теперь мы посмотрим, как мы можем интегрировать его с нашими моделями.
+When [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) requires a service to cache resultsets, it will request it from the Dependency Injection Container. The service name is called `modelsCache`. Phalcon offers a [cache](/4.0/en/cache) component that can store any kind of data. We will now see how we can integrate it with our Models.
 
-Во-первых, нам нужно будет зарегистрировать компонент кэша как сервис в контейнере DI.
+First, we will need to register the cache component as a service in the DI container.
 
 ```php
 <?php
@@ -55,7 +57,7 @@ $di->set(
 );
 ```
 
-Вы имеете полный контроль в создании и настройке компонента кэша перед его регистрацией в качестве службы в контейнере DI. После того, как компонент кэш настроен правильно, результирующие наборы могут быть кэшированы следующим образом:
+Phalcon offers complete control in creating and customizing the cache component before registering it as a service in the DI container. Once the cache component is properly set up, resultsets can be cached as follows:
 
 ```php
 <?php
@@ -93,7 +95,7 @@ $products = Products::find(
 );
 ```
 
-Кэширование также может быть применено к результирующим наборам, созданным с использованием связей:
+Caching could also be applied to resultsets generated using relationships:
 
 ```php
 <?php
@@ -121,15 +123,15 @@ $comments = $post->getComments(
 );
 ```
 
-Когда кэшированный результирующий набор должен быть признан недействительным, его можно просто удалить из кэша с помощью ключа, указанного выше.
+When a cached resultset needs to be invalidated, you can simply delete it from the cache using the key specified as seen above.
 
-Какие наборы данных кэшировать и на какое время, решает разработчик, после оценки потребностей приложения. Данные, которые меняют свои значения очень часто, не следует кэшировать, так как они становятся не действительными очень быстро, и кэширование в этом случаи отрицательно влияет на производительность приложения. Кроме того, большие наборы данных, которые не часто меняют свои значения, могут располагаться в кэше, но для реализации этой идеи необходимо оценить имеющиеся механизмы кэширования и влияния на производительность, так как это не всегда будет способствовать увеличению производительности приложения. Для минимизации взаимодействия с базой данных необходимо кэшировать нечасто изменяющиеся результирующие наборы. Решение о том, где использовать кэширование и как долго продиктовано потребностями приложения.
+Which resultset to cache and for how long is up to the developer, after having evaluated the needs of the application. Resultsets that change frequently should not be cached, since the cache results will be invalidated quickly. Additionally caching resultsets consumes processing cycles, therefore the cache that was intended to speed up the application actually slows it down. Resultsets that do not change frequently should be cached to minimize the database interactions. The decision on where to use caching and for how long is dictated by the application needs.
 
 <a name='forcing-cache'></a>
 
 ## Форсирование кэша
 
-Earlier we saw how [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) integrates with the caching component provided by the framework. Чтобы сделать запись/результирующий набор кэшируемым, мы передаем ключ `cache` в массиве параметров:
+Earlier we saw how [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
 
 ```php
 <?php
@@ -145,7 +147,7 @@ $products = Products::find(
 );
 ```
 
-Это дает нам свободу для кэширования конкретных запросов. Однако если мы хотим кэшировать глобально все запросы, выполняемые моделью, мы можем переопределить метод `find()`/`findFirst()`, чтобы заставить кэшировать каждый запрос:
+This gives us the freedom to cache specific queries, however if we want to cache globally every query performed over the model, we can override the `find()`/`findFirst()` methods to force every query to be cached:
 
 ```php
 <?php
@@ -199,9 +201,9 @@ class Robots extends Model
 }
 ```
 
-Доступ к базе данных в несколько раз медленнее, чем вычисление ключа кэша. Вы вольны в реализации стратегии генерации ключа, которая лучше подходит для ваших задач. Следует отметить, что хороший ключ позволяет избежать конфликтов, насколько это возможно, это означает, что разные ключи возвращают при поиске независимые наборы записей.
+Accessing the database is several times slower than calculating a cache key. You're free to implement any key generation strategy you find to better for your needs. Note that a good key avoids collisions as much as possible - meaning that different keys should return unrelated records.
 
-Это дает вам полный контроль над тем, как кэши должны быть реализованы для каждой модели, эта стратегия может быть общей для нескольких моделей, которую можно вынести в отдельный базовый класс для всех подобных классов:
+This gives you full control on how the cache should be implemented for each model. If this strategy is common to several models you can create a base class for all of them:
 
 ```php
 <?php
@@ -227,7 +229,7 @@ class CacheableModel extends Model
 }
 ```
 
-Затем используйте этот класс в качестве базового класса для каждой модели `Cacheable`:
+Then use this class as base class for each `Cacheable` model:
 
 ```php
 <?php
@@ -242,7 +244,7 @@ class Robots extends CacheableModel
 
 ## Кэширование PHQL запросов
 
-Независимо от синтаксиса, который мы использовали для их создания, все запросы в ORM обрабатываются внутренне с помощью PHQL. Этот язык дает гораздо больше свободы для создания всех видов запросов. Конечно, эти запросы могут кэшироваться:
+Regardless of the syntax we used to create them, all queries in the ORM are handled internally using PHQL. This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
 
 ```php
 <?php
@@ -269,7 +271,7 @@ $cars = $query->execute(
 
 ## Многократное использование связанных записей
 
-Некоторые модели могут иметь отношения с другими моделями. Это позволяет легко проверять записи, относящиеся к экземплярам в памяти:
+Some models may have relationships with other models. This allows us to easily check the records that relate to instances in memory:
 
 ```php
 <?php
@@ -284,7 +286,7 @@ $customer = $invoice->customer;
 echo $customer->name, "\n";
 ```
 
-Этот пример очень прост, клиент запрашивается и может использоваться по мере необходимости, например, для отображения его имени. Это также применяется, если мы извлекаем набор счетов-фактур для отображения клиентов, которые соответствуют этим счетам-фактурам:
+This example is very simple, a customer is queried and can be used as required, for example, to show its name. This also applies if we retrieve a set of invoices to show customers that correspond to these invoices:
 
 ```php
 <?php
@@ -481,7 +483,7 @@ class Invoices extends Model
 
 ## Кэширование на основе условий
 
-В этом сценарии кэширование реализуется по-разному в зависимости от полученных условий. Мы можем решить, что выбор сервера для кэша должен быть обусловлен первичным ключом:
+In this scenario, the cache is implemented differently depending on the conditions received. We might decide that the cache backend should be determined by the primary key:
 
 | Тип           | Кэширующий сервер |
 | ------------- | ----------------- |
@@ -489,7 +491,7 @@ class Invoices extends Model
 | 10000 - 20000 | mongo2            |
 | > 20000       | mongo3            |
 
-Самый простой способ добиться этого — добавить статический метод в модель, которая выбирает правильный кэш для использования:
+The easiest way to achieve this is by adding a static method to the model that chooses the right cache to be used:
 
 ```php
 <?php
@@ -520,7 +522,7 @@ class Robots extends Model
 }
 ```
 
-Этот подход решает проблему, однако, если мы хотим добавить другие параметры выборки, например тип сортировки или различные условия для выборки, нам придется создать более сложный метод. Кроме того, этот подход не работает, если данные получены с помощью связанных записей или `find()`/`findFirst()`:
+This approach solves the problem, however, if we want to add other parameters such orders or conditions we would have to create a more complicated method. Additionally, this method does not work if the data is obtained using related records or a `find()`/`findFirst()`:
 
 ```php
 <?php
@@ -538,9 +540,9 @@ $robots = Robots::find(
 );
 ```
 
-Для этого нам необходимо перехватить промежуточное представление (IR), генерируемое парсером PHQL и реализовать логику кэширования для всех возможных условий выборки:
+To achieve this we need to intercept the intermediate representation (IR) generated by the PHQL parser and thus customize the cache everything possible:
 
-Для начала нам понадобится реализовать пользовательский конструктор запросов, чтобы иметь возможность перехватывать и генерировать полностью сформированный запрос:
+The first is create a custom builder, so we can generate a totally customized query:
 
 ```php
 <?php
@@ -629,7 +631,7 @@ class CustomQuery extends ModelQuery
 }
 ```
 
-Реализация хелпера (`CustomNodeVisitor`), который рекурсивно проверяет условия выборки и формирует возможный диапазон для использования его в кэше:
+Implementing a helper (`CustomNodeVisitor`) that recursively checks the conditions looking for fields that tell us the possible range to be used in the cache:
 
 ```php
 <?php
@@ -702,7 +704,7 @@ class CustomNodeVisitor
 }
 ```
 
-Наконец, мы можем заменить метод find в модели Robots, чтобы использовать наши классы, которые мы создали:
+Finally, we can replace the find method in the Robots model to use the custom classes we've created:
 
 ```php
 <?php
@@ -736,7 +738,7 @@ class Robots extends Model
 
 ## Кэширования плана выполнения PHQL
 
-Как и большинство современных систем баз данных, PHQL внутренне кэширует план выполнения. Если один и тот же оператор выполняется несколько раз, PHQL повторно использует ранее созданный план, улучшая производительность. В целях достежения лучшей производительности настоятельно рекомендуется создавать все ваши SQL-запросы таким образом, чтобы передавать переменные параметры как связанные параметры:
+As well as most moderns database systems PHQL internally caches the execution plan, if the same statement is executed several times PHQL reuses the previously generated plan improving performance, for a developer to take better advantage of this is highly recommended build all your SQL statements passing variable parameters as bound parameters:
 
 ```php
 <?php
@@ -750,7 +752,7 @@ for ($i = 1; $i <= 10; $i++) {
 }
 ```
 
-В приведенном выше примере было создано десять планов, увеличивающих время выполнения приложения и потребление памяти. Перепишем этот код, воспользовавшись преимуществом связанных параметров для соращения обработки запроса ORM и базой данных:
+In the above example, ten plans were generated increasing the memory usage and processing in the application. Rewriting the code to take advantage of bound parameters reduces the processing by both ORM and database system:
 
 ```php
 <?php
