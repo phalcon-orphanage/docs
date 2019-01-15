@@ -4,15 +4,17 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 # Стать спонсором
 
-Для тех, кто хочет спонсировать нашу работу и дальнейшую разработку Phalcon, мы предлагаем варианты спосорства, которые подойдут при любом бюджете. Спонсорство позволяет нам уделять больше времени проекту, быстрее исправлять ошибки и реализовывать новый функционал, а также обеспечивать стабильность проекта.
+For those that wish to sponsor our work and further the development of Phalcon, we offer various sponsorship options that will fit any budget. Sponsoring our work allows us to devote more time to the project, offer faster responses to bugs and features and ensure the projects's stability.
 
 <a href="https://phalcon.link/fund">
 <button class="btn button-small btn-danger">
-    Станьте патроном!
+    Become a Patron!
 </button>
 </a>
 
