@@ -1,8 +1,10 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
----
+* * *
+
+layout: article language: 'en' version: '4.0'
+
+* * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
@@ -14,7 +16,7 @@ version: '4.0'
 
 Akce jsou metody v controllerech, které zpracovávají požadavky. Ve výchozím nastavení jsou všechny veřejné metody mapované jako akce na controllerech a přístupné pomocí URL adresy. Akce jsou zodpovědné za interpretaci požadavku a vytvoření odpovědi. Odpovědi jsou obvykle ve formě vykreslených šablon, ale existují i jiné způsoby, jak vytvořit odpovědi.
 
-Například při přístupu k URL, jako je: `http://localhost/blog/posts/show/2015/the-post-title` Phalcon ve výchozím nastavení rozloží každou část takto:
+For instance, when you access a URL like this: `https://localhost/blog/posts/show/2015/the-post-title` Phalcon by default will decompose each part like this:
 
 | Description         | Slug           |
 | ------------------- | -------------- |
@@ -254,7 +256,7 @@ class FilesController extends Controller
 }
 ```
 
-If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/3.4/en/di) in the framework.
+If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/4.0/en/di) in the framework.
 
 <a name='request-response'></a>
 
@@ -308,7 +310,7 @@ class PostsController extends Controller
 }
 ```
 
-Learn more about the HTTP environment in their dedicated articles [request](/3.4/en/request) and [response](/3.4/en/response).
+Learn more about the HTTP environment in their dedicated articles [request](/4.0/en/request) and [response](/4.0/en/response).
 
 <a name='session-data'></a>
 
@@ -369,7 +371,7 @@ $di->set(
 
 ## Události v controllerech
 
-Controllers automatically act as listeners for [dispatcher](/3.4/en/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
+Controllers automatically act as listeners for [dispatcher](/4.0/en/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
 ```php
 <?php
