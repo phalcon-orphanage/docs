@@ -23,7 +23,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Genel Bakış",
+                "text": "Overview",
                 "url": "/contributions"
             },
             {
@@ -229,7 +229,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Olaylar",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {
