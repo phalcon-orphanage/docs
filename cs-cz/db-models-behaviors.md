@@ -1,8 +1,10 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
----
+* * *
+
+layout: article language: 'en' version: '4.0'
+
+* * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
@@ -75,7 +77,7 @@ public function initialize()
 }
 ```
 
-Each event can have its own options, `field` is the name of the column that must be updated, if `format` is a string it will be used as format of the PHP's function [date](http://php.net/manual/en/function.date.php), format can also be an anonymous function providing you the free to generate any kind timestamp:
+Each event can have its own options, `field` is the name of the column that must be updated, if `format` is a string it will be used as format of the PHP's function [date](https://php.net/manual/en/function.date.php), format can also be an anonymous function providing you the free to generate any kind timestamp:
 
 ```php
 <?php
@@ -105,7 +107,7 @@ public function initialize()
 }
 ```
 
-If the option `format` is omitted a timestamp using the PHP's function [time](http://php.net/manual/en/function.time.php), will be used.
+If the option `format` is omitted a timestamp using the PHP's function [time](https://php.net/manual/en/function.time.php), will be used.
 
 <a name='softdelete'></a>
 
@@ -270,7 +272,7 @@ $title = $post->getSlug();
 
 ## Using Traits as behaviors
 
-You can use [Traits](http://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the Timestampable behavior:
+You can use [Traits](https://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the Timestampable behavior:
 
 ```php
 <?php
