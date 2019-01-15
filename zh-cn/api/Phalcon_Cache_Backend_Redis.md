@@ -1,28 +1,16 @@
 * * *
 
-<<<<<<< HEAD
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\Redis'
-=======
 layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\Redis'
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 * * *
 
 # Class **Phalcon\Cache\Backend\Redis**
 
-<<<<<<< HEAD
-*extends* abstract class [Phalcon\Cache\Backend](/3.4/en/api/Phalcon_Cache_Backend)
-
-*implements* [Phalcon\Cache\BackendInterface](/3.4/en/api/Phalcon_Cache_BackendInterface)
-
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cache/backend/redis.zep" class="btn btn-default btn-sm">源码在GitHub</a>
-=======
 *extends* abstract class [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
 
 *implements* [Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/redis.zep" class="btn btn-default btn-sm">源码在GitHub</a>
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 Allows to cache output fragments, PHP data or raw data to a redis backend
 
@@ -63,11 +51,7 @@ $data = $cache->get("my-data");
 
 ## 方法
 
-<<<<<<< HEAD
-public **__construct** ([Phalcon\Cache\FrontendInterface](/3.4/en/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
-=======
 public **__construct** ([Phalcon\Cache\FrontendInterface](/4.0/en/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 Phalcon\Cache\Backend\Redis constructor
 
@@ -127,49 +111,6 @@ public **flush** ()
 
 Immediately invalidates all existing items.
 
-<<<<<<< HEAD
-public **getFrontend** () inherited from [Phalcon\Cache\Backend](/3.4/en/api/Phalcon_Cache_Backend)
-
-...
-
-public **setFrontend** (*mixed* $frontend) inherited from [Phalcon\Cache\Backend](/3.4/en/api/Phalcon_Cache_Backend)
-
-...
-
-public **getOptions** () inherited from [Phalcon\Cache\Backend](/3.4/en/api/Phalcon_Cache_Backend)
-
-...
-
-public **setOptions** (*mixed* $options) inherited from [Phalcon\Cache\Backend](/3.4/en/api/Phalcon_Cache_Backend)
-
-...
-
-public **getLastKey** () inherited from [Phalcon\Cache\Backend](/3.4/en/api/Phalcon_Cache_Backend)
-
-...
-
-public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](/3.4/en/api/Phalcon_Cache_Backend)
-
-...
-
-public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](/3.4/en/api/Phalcon_Cache_Backend)
-
-Starts a cache. The keyname allows to identify the created fragment
-
-public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](/3.4/en/api/Phalcon_Cache_Backend)
-
-Stops the frontend without store any cached content
-
-public **isFresh** () inherited from [Phalcon\Cache\Backend](/3.4/en/api/Phalcon_Cache_Backend)
-
-Checks whether the last cache is fresh or cached
-
-public **isStarted** () inherited from [Phalcon\Cache\Backend](/3.4/en/api/Phalcon_Cache_Backend)
-
-Checks whether the cache has starting buffering or not
-
-public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](/3.4/en/api/Phalcon_Cache_Backend)
-=======
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
 
 ...
@@ -211,6 +152,5 @@ public **isStarted** () inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalc
 Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 Gets the last lifetime set
