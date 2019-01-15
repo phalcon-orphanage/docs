@@ -4,15 +4,17 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # MVC приложения
 
-All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). Этот компонент инкапсулирует все сложные операции, требуемые в фоновом режиме, отвечает за создание каждого необходимого компонента и интеграцию его с проектом, позволяя паттерну MVC работать как положено.
+All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). This component encapsulates all the complex operations required in the background, instantiating every component needed and integrating it with the project, to allow the MVC pattern to operate as desired.
 
-Следующий код начальной загрузки является типичным для Phalcon приложения:
+The following bootstrap code is typical for a Phalcon application:
 
 ```php
 <?php
@@ -37,7 +39,7 @@ try {
 }
 ```
 
-Основная работа контроллера происходит при вызове метода `handle()`:
+The core of all the work of the controller occurs when `handle()` is invoked:
 
 ```php
 <?php
@@ -145,7 +147,7 @@ if ($response instanceof ResponseInterface) {
 }
 ```
 
-Еще один вариант, который перехватывает исключения произведенные в диспетчере, пересылаемые в другие действия последовательно:
+Yet another alternative that catch exceptions produced in the dispatcher forwarding to other actions consequently:
 
 ```php
 <?php
@@ -197,19 +199,19 @@ if ($response instanceof ResponseInterface) {
 }
 ```
 
-Although the above implementations are a lot more verbose than the code needed while using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), offers an alternative in bootstrapping your application. В зависимости от ваших нужд, вы можете захотеть иметь полный контроль над тем, что должно быть создано или нет, или заменить определенные компоненты своими для расширения функциональности по умолчанию.
+Although the above implementations are a lot more verbose than the code needed while using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), offers an alternative in bootstrapping your application. Depending on your needs, you might want to have full control of what should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
 
 <a name='single-vs-module'></a>
 
 ## Одномодульные и многомодульные приложения
 
-С помощью этого компонента можно запускать разные типы MVC приложений:
+With this component you can run various types of MVC structures:
 
 <a name='single'></a>
 
 ### Одномодульное приложение
 
-Одномодульное MVC приложение состоит лишь из одного модуля. Пространства имён могут быть использованы, но не являются обязательными. Такое приложение может иметь следующую структуру:
+Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
 ```php
 single/
@@ -223,7 +225,7 @@ single/
         js/
 ```
 
-Если не используется пространство имён, то в качестве файла загрузки MVC можно использовать следующий подход:
+If namespaces are not used, the following bootstrap file could be used to orchestrate the MVC flow:
 
 ```php
 <?php
@@ -269,7 +271,7 @@ try {
 }
 ```
 
-Если же используются пространства имён, то инициализация приложения может быть реализована следующим образом:
+If namespaces are used, the following bootstrap can be used:
 
 ```php
 <?php
@@ -333,7 +335,7 @@ try {
 
 ### Многомодульное приложение
 
-Многомодульное приложение использует единый корень документов для нескольких модулей приложения. Файловая структура тогда может быть такой:
+A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
 
 ```php
 multiple/
@@ -354,7 +356,7 @@ multiple/
     js/
 ```
 
-Каждый каталог в apps/ содержит собственную MVC структуру. Файл Module.php внутри такого каталога создан для настройки параметров этого модуля, таких как автозагрузка и настраиваемые сервисы:
+Each directory in apps/ have its own MVC structure. A Module.php is present to configure specific settings of each module like autoloaders or custom services:
 
 ```php
 <?php
@@ -418,7 +420,7 @@ class Module implements ModuleDefinitionInterface
 }
 ```
 
-Для загрузки многомодульных MVC приложений можно использовать такой файл автозагрузки:
+A special bootstrap file is required to load a multi-module MVC architecture:
 
 ```php
 <?php
@@ -494,7 +496,7 @@ try {
 }
 ```
 
-Если вы желаете хранить конфигурацию модуля в загрузочном файле, можно использовать анонимную функцию для регистрации модуля:
+If you want to maintain the module configuration in the bootstrap file you can use an anonymous function to register the module:
 
 ```php
 <?php
@@ -534,13 +536,13 @@ $application->registerModules(
 );
 ```
 
-When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registered, always is necessary that every matched route returns a valid module. Каждый зарегистрированный модуль должен иметь соответствующий класс и функцию для настройки самого модуля. Each module class definition must implement two methods: `registerAutoloaders()` and `registerServices()`, they will be called by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) according to the module to be executed.
+When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registered, always is necessary that every matched route returns a valid module. Each registered module has an associated class offering functions to set the module itself up. Each module class definition must implement two methods: `registerAutoloaders()` and `registerServices()`, they will be called by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) according to the module to be executed.
 
 <a name='events'></a>
 
 ## События приложения
 
-[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). События вызываются с типом `application`. Поддерживаются следующие типы событий:
+[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. Поддерживаются следующие типы событий:
 
 | Название события      | Срабатывает                                              |
 | --------------------- | -------------------------------------------------------- |
