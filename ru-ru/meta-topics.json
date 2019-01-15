@@ -4,16 +4,20 @@
         "url": "/introduction",
         "menu": [
             {
-                "text": "Release Notes",
+                "text": "Введение",
+                "url": "/introduction"
+            },
+            {
+                "text": "Примечания к выпуску",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Upgrade",
+                "text": "Обновление",
                 "url": ""
             },
             {
-                "text": "Sponsors",
+                "text": "Спонсоры",
                 "url": "/sponsors"
             }
         ]
