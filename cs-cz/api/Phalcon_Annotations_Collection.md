@@ -1,15 +1,14 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
-title: 'Phalcon\Annotations\Collection'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Annotations\Collection'
+
+* * *
 
 # Class **Phalcon\Annotations\Collection**
 
-*implements* [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php), [Countable](http://php.net/manual/en/class.countable.php)
+*implements* [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [Countable](https://php.net/manual/en/class.countable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Represents a collection of annotations. This class allows to traverse a group of annotations easily
 
@@ -43,7 +42,7 @@ public **rewind** ()
 
 Rewinds the internal iterator
 
-public [Phalcon\Annotations\Annotation](/3.4/en/api/Phalcon_Annotations_Annotation) **current** ()
+public [Phalcon\Annotations\Annotation](/4.0/en/api/Phalcon_Annotations_Annotation) **current** ()
 
 Returns the current annotation in the iterator
 
