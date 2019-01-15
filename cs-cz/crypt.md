@@ -1,14 +1,16 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
----
+* * *
+
+layout: article language: 'en' version: '4.0'
+
+* * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
 # Šifrování / Dešifrování
 
-Phalcon provides encryption facilities via the [Phalcon\Crypt](api/Phalcon_Crypt) component. This class offers simple object-oriented wrappers to the [openssl](http://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
+Phalcon provides encryption facilities via the [Phalcon\Crypt](api/Phalcon_Crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
 By default, this component provides secure encryption using AES-256-CFB.
 
@@ -146,9 +148,9 @@ echo $crypt->decrypt($encrypted, $key);
 
 The following options are available to change the encryption behavior:
 
-| Name   | Description                                                                                                                                                          |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](http://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
+| Name   | Description                                                                                                                                                           |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](https://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
 Example:
 
@@ -190,7 +192,7 @@ var_dump($algorithms);
 
 ## Base64 Support
 
-In order for encryption to be properly transmitted (emails) or displayed (browsers) [base64](http://www.php.net/manual/en/function.base64-encode.php) encoding is usually applied to encrypted texts:
+In order for encryption to be properly transmitted (emails) or displayed (browsers) [base64](https://www.php.net/manual/en/function.base64-encode.php) encoding is usually applied to encrypted texts:
 
 ```php
 <?php
@@ -268,7 +270,7 @@ class SecretsController extends Controller
 
 * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 * [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
-* [Introduction to Blowfish](http://www.splashdata.com/splashid/blowfish.htm)
-* [CTR-Mode Encryption](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.79.1353&rep=rep1&type=pdf)
+* [Introduction to Blowfish](https://www.splashdata.com/splashid/blowfish.htm)
+* [CTR-Mode Encryption](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.79.1353&rep=rep1&type=pdf)
 * [Recommendation for Block Cipher Modes of Operation: Methods and Techniques](https://csrc.nist.gov/publications/detail/sp/800-38a/final)
 * [Counter (CTR) mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29)
