@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -14,7 +16,7 @@ layout: article language: 'en' version: '4.0'
 
 ## 模型之间的关系
 
-有四种类型的关系： 一对一、 一到多、 多对一和多对多。 The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. 通过执行的关系，很容易从每个记录中以统一的方式访问相关模型中的数据。
+There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
 
 <a name='unidirectional'></a>
 
@@ -32,7 +34,7 @@ The bidirectional relations build relationships in both models and each model de
 
 ### 定义关系
 
-在Phalcon，必须在模型的 `initialize()` 方法中定义关系。 方法 `belongsTo()`、 `hasOne()`、 `hasMany()` 和 `hasManyToMany()` 定义一个或多个字段从当前模型到另一个模型中的字段之间的关系。 每一种方法需要 3 个参数： 本地字段，引用模型引用字段。
+In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
 | 方法            | 描述           |
 | ------------- | ------------ |
@@ -41,7 +43,7 @@ The bidirectional relations build relationships in both models and each model de
 | belongsTo     | 定义一个 n-1 的关系 |
 | hasManyToMany | 定义 n n 的关系   |
 
-下面的架构显示 3 表的关系将我们作为关于关系的示例：
+The following schema shows 3 tables whose relations will serve us as an example regarding relationships:
 
 ```sql
 CREATE TABLE robots (
@@ -78,7 +80,7 @@ Check the EER diagram to understand better the relations:
 
 ![](/assets/images/content/models-relationships-eer-1.png)
 
-与他们的关系模型可以实施如下：
+The models with their relations could be implemented as follows:
 
 ```php
 <?php
@@ -156,9 +158,9 @@ class RobotsParts extends Model
 }
 ```
 
-The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model and the third the field name in the referenced model. 你也可以使用数组来定义多个字段中的关系。
+The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
 
-多对多关系需要 3 模型和定义关系中涉及的属性：
+Many to many relationships require 3 models and define the attributes involved in the relationship:
 
 ```php
 <?php
@@ -312,7 +314,7 @@ class Robots extends Model
 
 ### Taking advantage of relationships
 
-当显式定义模型之间的关系，很容易查找特定记录相关的记录。
+When explicitly defining the relationships between models, it is easy to find related records for a particular record.
 
 ```php
 <?php
@@ -328,7 +330,7 @@ foreach ($robot->robotsParts as $robotPart) {
 
 Phalcon uses the magic methods `__set`/`__get`/`__call` to store or retrieve related data using relationships.
 
-通过访问属性与关系相同的名称将检索其相关的记录。
+By accessing an attribute with the same name as the relationship will retrieve all its related record(s).
 
 ```php
 <?php
@@ -341,7 +343,7 @@ $robot = Robots::findFirst();
 $robotsParts = $robot->robotsParts;
 ```
 
-此外，您可以使用魔法的 getter:
+Also, you can use a magic getter:
 
 ```php
 <?php
@@ -361,7 +363,7 @@ $robotsParts = $robot->getRobotsParts(
 );
 ```
 
-If the called method has a `get` prefix [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) will return a `findFirst()`/`find()` result. 下面的示例检索相关的结果使用魔法的方法与无：
+If the called method has a `get` prefix [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) will return a `findFirst()`/`find()` result. The following example compares retrieving related results with using magic methods and without:
 
 ```php
 <?php
@@ -391,7 +393,7 @@ $robotPart = RobotsParts::findFirst(1);
 $robot = $robotPart->robots;
 ```
 
-手动获取相关的记录：
+Getting related records manually:
 
 ```php
 <?php
@@ -445,7 +447,7 @@ The prefix `get` is used to `find()`/`findFirst()` related records. Depending on
 | Has-Many         | Returns a collection of model instances of the referenced model | find            |
 | Has-Many-to-Many | 返回一个集合的引用模型的模型实例，它隐式对 '内部联接' 所涉及的模型                             | （复杂的查询）         |
 
-您还可以使用 `count` 前缀返回一个整数，表示的相关记录的计数：
+You can also use the `count` prefix to return an integer denoting the count of the related records:
 
 ```php
 <?php
@@ -461,9 +463,9 @@ echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
 
 ### 混叠的关系
 
-为了更好地解释别名是如何工作的让我们检查下面的示例：
+To explain better how aliases work, let's check the following example:
 
-`Robots_similar` 表具有用于定义什么机器人与其他相近的函数：
+The `robots_similar` table has the function to define what robots are similar to others:
 
 ```sql
 mysql> desc robots_similar;
@@ -477,7 +479,7 @@ mysql> desc robots_similar;
 3 rows in set (0.00 sec)
 ```
 
-`Robots_id` 和 `similar_robots_id` 具有模型机器人的关系：
+Both `robots_id` and `similar_robots_id` have a relation to the model Robots:
 
 ![](/assets/images/content/models-relationships-eer-1.png)
 
@@ -521,7 +523,7 @@ $robot = $robotsSimilar->getRobots();
 // if both relationships have the same name?
 ```
 
-别名允许我们重命名这两个关系来解决这些问题：
+The aliases allow us to rename both relationships to solve these problems:
 
 ```php
 <?php
@@ -575,7 +577,7 @@ $similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 
 #### Magic Getters vs. Explicit methods
 
-Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). 要克服的您可以使用指定什么神奇的行为是可用的类块帮助 IDE 以产生更好的自动完成功能：
+Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). To overcome that, you can use a class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
 
 ```php
 <?php
@@ -705,7 +707,7 @@ $unpaidInvoices = $company->getRelated(
 
 ## 虚拟的外键
 
-By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. 通过添加第四个参数，当定义一个关系时，您可以修改此行为。
+By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
 
 The RobotsPart model can be changed to demonstrate this feature:
 
@@ -808,7 +810,7 @@ class RobotsParts extends Model
 
 ### Cascade/Restrict actions
 
-默认情况下充当虚拟的外键的关系限制创建/更新/删除的记录，以保持数据的完整性：
+Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
 
 ```php
 <?php
@@ -840,13 +842,13 @@ class Robots extends Model
 }
 ```
 
-上面的代码中设置删除被引用的所有记录 （parts），如果删除了主记录 （robot）。
+The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
 
 <a name='storing-related-records'></a>
 
 ## 存储相关的记录
 
-魔法属性可以用于存储记录和其相关的属性：
+Magic properties can be used to store a record and its related properties:
 
 ```php
 <?php
@@ -868,7 +870,7 @@ $album->year   = 2008;
 $album->save();
 ```
 
-有许多关系中保存记录和其相关的记录：
+Saving a record and its related records in a has-many relation:
 
 ```php
 <?php
@@ -903,15 +905,15 @@ $album->songs = $songs;
 $album->save();
 ```
 
-保存这张专辑，艺术家，同时隐式使用的交易所以如果有任何差错与保存相关的记录，父将不会保存任何。 消息传递有关任何错误的信息返回给用户。
+Saving the album and the artist at the same time implicitly makes use of a transaction so if anything goes wrong with saving the related records, the parent will not be saved either. Messages are passed back to the user for information regarding any errors.
 
-注意： 通过重载以下方法添加相关的实体是不可能的：
+Note: Adding related entities by overloading the following methods is not possible:
 
 * `Phalcon\Mvc\Model::beforeSave()`
 * `Phalcon\Mvc\Model::beforeCreate()`
 * `Phalcon\Mvc\Model::beforeUpdate()`
 
-您需要重载 `Phalcon\Mvc\Model::save()` 为此要从内部模型工作。
+You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 
 <a name='operations-over-resultsets'></a>
 
@@ -966,7 +968,7 @@ foreach ($parts as $part) {
 }
 ```
 
-你可以这样做：
+you can do this:
 
 ```php
 <?php
@@ -979,7 +981,7 @@ $robots->getParts()->update(
 );
 ```
 
-`update` 也接受匿名函数来筛选哪些记录必须更新：
+`update` also accepts an anonymous function to filter what records must be updated:
 
 ```php
 <?php
@@ -1026,7 +1028,7 @@ foreach ($parts as $part) {
 }
 ```
 
-你可以这样做：
+you can do this:
 
 ```php
 <?php
@@ -1034,7 +1036,7 @@ foreach ($parts as $part) {
 $robots->getParts()->delete();
 ```
 
-`delete （） 方法` 还接受匿名函数来筛选哪些记录，必须先删除：
+`delete()` also accepts an anonymous function to filter what records must be deleted:
 
 ```php
 <?php
