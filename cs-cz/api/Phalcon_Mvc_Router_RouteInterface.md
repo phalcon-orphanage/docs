@@ -1,13 +1,12 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
-title: 'Phalcon\Mvc\Router\RouteInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Router\RouteInterface'
+
+* * *
 
 # Interface **Phalcon\Mvc\Router\RouteInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/router/routeinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/router/routeinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 
