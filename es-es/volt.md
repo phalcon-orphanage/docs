@@ -4,23 +4,25 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Volt: Motor de plantillas
 
-Volt es un lenguaje de plantillas ultrarrápido y de diseño amigable, escrito en C para PHP. Le proporciona un conjunto de ayudantes a escribir vistas de una manera fácil. Volt están altamente integrado con otros componentes de Phalcon, del mismo modo que puede utilizarlo como componente independiente en sus aplicaciones.
+Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
 
 ![](/assets/images/content/volt.jpg)
 
-Volt is inspired by [Jinja](https://jinja.pocoo.org/), originally created by [Armin Ronacher](https://github.com/mitsuhiko). Por lo tanto muchos desarrolladores estarán en territorio familiar al utilizar la misma sintaxis que han estado utilizando con motores de plantillas similares. La sintaxis y características de Volt se han mejorado con más elementos y, por supuesto, con el rendimiento que los desarrolladores están acostumbrados a trabajar en Phalcon.
+Volt is inspired by [Jinja](https://jinja.pocoo.org/), originally created by [Armin Ronacher](https://github.com/mitsuhiko). Therefore many developers will be in familiar territory using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to while working with Phalcon.
 
 <a name='introduction'></a>
 
 ## Introducción
 
-Las vistas de Volt se compilan a código PHP puro, así que, básicamente ahorran el esfuerzo de escribir el código PHP manualmente:
+Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
 ```twig
 {% raw %}
@@ -43,7 +45,7 @@ Las vistas de Volt se compilan a código PHP puro, así que, básicamente ahorra
 
 ## Activando Volt
 
-Como con otros motores de plantillas, se puede registrar Volt en el componente de la vista, usando una nueva extensión o reusar el estándar `phtml`:
+As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
 ```php
 <?php
@@ -87,7 +89,7 @@ $di->set(
 );
 ```
 
-Utilice la extensión estándar `phtml`:
+Use the standard `.phtml` extension:
 
 ```php
 <?php
@@ -99,7 +101,7 @@ $view->registerEngines(
 );
 ```
 
-No tienes que especificar el servicio Volt en el DI; también puede utilizar el motor de Volt con la configuración predeterminada:
+You don't have to specify the Volt Service in the DI; you can also use the Volt engine with the default settings:
 
 ```php
 <?php
@@ -111,7 +113,7 @@ $view->registerEngines(
 );
 ```
 
-Si no quieres reutilizar Volt como un servicio, puedes pasar una función anónima para registrar el motor en lugar de un nombre de servicio:
+` If you do not want to reuse Volt as a service, you can pass an anonymous function to register the engine instead of a service name:
 
 ```php
 <?php
@@ -144,7 +146,7 @@ $di->set(
 );
 ```
 
-Las siguientes opciones están disponibles en Volt:
+The following options are available in Volt:
 
 | Opción              | Descripción                                                                                                                  | Predeterminado |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------------- |
@@ -156,7 +158,7 @@ Las siguientes opciones están disponibles en Volt:
 | `prefix`            | Permite anteponer un prefijo a las plantillas en la ruta de compilación                                                      | `null`         |
 | `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`         |
 
-La ruta de compilación se genera según las opciones anteriores, si el desarrollador quiere libertad total para definir la ruta de compilación, una función anónima puede utilizarse para generarlas, esta función recibe la ruta relativa de acceso a la plantilla al directorio de las vistas. Los ejemplos siguientes muestran cómo cambiar dinámicamente la ruta de compilación:
+The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
 
 ```php
 <?php
@@ -191,9 +193,9 @@ $volt->setOptions(
 
 ## Uso básico
 
-Una vista consiste en código Volt, PHP y HTML. Un conjunto de delimitadores especiales está disponible para entrar en modo de Volt. `{% raw %}{% ... %}{% endraw %}` is used to execute statements such as for-loops or assign values and `{% raw %}{{ ... }}{% endraw %}`, prints the result of an expression to the template.
+A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% raw %}{% ... %}{% endraw %}` is used to execute statements such as for-loops or assign values and `{% raw %}{{ ... }}{% endraw %}`, prints the result of an expression to the template.
 
-Abajo se encuentra una plantilla mínima, que muestra algunos conceptos básicos:
+Below is a minimal template that illustrates a few basics:
 
 ```twig
 {% raw %}
@@ -228,7 +230,7 @@ Abajo se encuentra una plantilla mínima, que muestra algunos conceptos básicos
 {% endraw %}
 ```
 
-Using [Phalcon\Mvc\View](api/Phalcon_Mvc_View) you can pass variables from the controller to the views. En el ejemplo anterior, se pasaron cuatro variables a la vista: `show_navigation`, `menu`, `title` y `post`:
+Using [Phalcon\Mvc\View](api/Phalcon_Mvc_View) you can pass variables from the controller to the views. In the above example, four variables were passed to the view: `show_navigation`, `menu`, `title` and `post`:
 
 ```php
 <?php
@@ -261,7 +263,7 @@ class PostsController extends Controller
 
 ## Variables
 
-Las variables de objetos pueden tener atributos, que se pueden acceder utilizando la sintaxis: `foo.bar`. Si usted está pasando arreglos, tienes que usar la sintaxis de corchetes: `foo['bar']`
+Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
 
 ```twig
 {% raw %}
@@ -274,7 +276,7 @@ Las variables de objetos pueden tener atributos, que se pueden acceder utilizand
 
 ## Filtros
 
-Las variables pueden ser formateadas o modificadas mediante filtros. El operador de la pipa o pleca `|` se utiliza para aplicar filtros a las variables:
+Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
 ```twig
 {% raw %}
@@ -284,7 +286,7 @@ Las variables pueden ser formateadas o modificadas mediante filtros. El operador
 {% endraw %}
 ```
 
-La siguiente lista contiene los filtros disponibles incorporados en Volt:
+The following is the list of available built-in filters in Volt:
 
 | Filtro             | Descripción                                                                                                                         |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -314,7 +316,7 @@ La siguiente lista contiene los filtros disponibles incorporados en Volt:
 | `upper`            | Change the case of a string to uppercase                                                                                            |
 | `url_encode`       | Applies the [urlencode](https://php.net/manual/en/function.urlencode.php) PHP function to the value                                 |
 
-Ejemplos:
+Examples:
 
 ```twig
 {% raw %}
@@ -394,13 +396,13 @@ Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw 
 
 ## Lista de estructuras de Control
 
-Volt proporciona un conjunto de estructuras de control básicas pero de gran alcance para el uso de plantillas:
+Volt provides a set of basic but powerful control structures for use in templates:
 
 <a name='control-structures-for'></a>
 
 ### For
 
-Un bucle sobre cada elemento en una secuencia. En el ejemplo siguiente se muestra cómo recorrer un conjunto de 'robots' e imprimir su nombre:
+Loop over each item in a sequence. The following example shows how to traverse a set of 'robots' and print his/her name:
 
 ```twig
 {% raw %}
@@ -415,7 +417,7 @@ Un bucle sobre cada elemento en una secuencia. En el ejemplo siguiente se muestr
 {% endraw %}
 ```
 
-Los bucles `for` también se pueden anidar:
+for-loops can also be nested:
 
 ```twig
 {% raw %}
@@ -428,7 +430,7 @@ Los bucles `for` también se pueden anidar:
 {% endraw %}
 ```
 
-Usted puede conseguir las `claves` de los elementos, como la contraparte PHP, con la siguiente sintaxis:
+You can get the element `keys` as in the PHP counterpart using the following syntax:
 
 ```twig
 {% raw %}
@@ -440,7 +442,7 @@ Usted puede conseguir las `claves` de los elementos, como la contraparte PHP, co
 {% endraw %}
 ```
 
-Opcionalmente, se puede establecer una evaluación `if`:
+An `if` evaluation can be optionally set:
 
 ```twig
 {% raw %}
@@ -456,7 +458,7 @@ Opcionalmente, se puede establecer una evaluación `if`:
 {% endraw %}
 ```
 
-Si un `else` se define dentro del `for`, se ejecutará si la expresión en el iterador da como resultado cero iteraciones:
+If an `else` is defined inside the `for`, it will be executed if the expression in the iterator result in zero iterations:
 
 ```twig
 {% raw %}
@@ -469,7 +471,7 @@ Si un `else` se define dentro del `for`, se ejecutará si la expresión en el it
 {% endraw %}
 ```
 
-Sintaxis alternativa:
+Alternative syntax:
 
 ```twig
 {% raw %}
@@ -486,7 +488,7 @@ Sintaxis alternativa:
 
 ### Controles de bucle
 
-Las declaraciones de `break` y `continue` pueden utilizarse para salir de un bucle o forzar una iteración en el bloque actual:
+The `break` and `continue` statements can be used to exit from a loop or force an iteration in the current block:
 
 ```twig
 {% raw %}
@@ -516,7 +518,7 @@ Las declaraciones de `break` y `continue` pueden utilizarse para salir de un buc
 
 ### If
 
-Como en PHP, una declaración `if` comprueba si una expresión se evalúa como verdadera o falsa:
+As PHP, an `if` statement checks if an expression is evaluated as true or false:
 
 ```twig
 {% raw %}
@@ -531,7 +533,7 @@ Como en PHP, una declaración `if` comprueba si una expresión se evalúa como v
 {% endraw %}
 ```
 
-También se admite la cláusula `else`:
+The else clause is also supported:
 
 ```twig
 {% raw %}
@@ -548,7 +550,7 @@ También se admite la cláusula `else`:
 {% endraw %}
 ```
 
-También puede utilizar la estructura de flujo de control `elseif` para emular un bloque `switch`:
+The `elseif` control flow structure can be used together with if to emulate a `switch` block:
 
 ```twig
 {% raw %}
@@ -566,7 +568,7 @@ También puede utilizar la estructura de flujo de control `elseif` para emular u
 
 ### Switch
 
-Una alternativa a la instrucción `if` es `switch`, que le permite crear caminos de ejecución lógica en su aplicación:
+An alternative to the `if` statement is `switch`, allowing you to create logical execution paths in your application:
 
 ```twig
 {% raw %}
@@ -586,7 +588,7 @@ Una alternativa a la instrucción `if` es `switch`, que le permite crear caminos
 
 ```
 
-La sentencia `switch` ejecuta instrucción por instrucción, por lo tanto es necesario en algunos casos la instrucción `break`. Cualquier salida (incluyendo espacios en blanco) entre una instrucción switch y el primer `case` dará lugar a un error de sintaxis. Empty lines and whitespaces can therefore be cleared to reduce the number of errors [see here](https://php.net/control-structures.alternative-syntax).
+The `switch` statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any output (including whitespace) between a switch statement and the first `case` will result in a syntax error. Empty lines and whitespaces can therefore be cleared to reduce the number of errors [see here](https://php.net/control-structures.alternative-syntax).
 
 #### `case` sin `switch`
 
@@ -596,7 +598,7 @@ La sentencia `switch` ejecuta instrucción por instrucción, por lo tanto es nec
 {% endraw %}
 ```
 
-Lanzará un `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
 
 #### `switch` sin `endswitch`
 
@@ -628,7 +630,7 @@ Will not throw an error because `default` is a reserved word for filters like `{
 {% endraw %}
 ```
 
-Lanzará un `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
+Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
 
 #### un `switch` sin expresión
 
@@ -730,7 +732,7 @@ The following operators are available:
 
 ## Expresiones
 
-Volt proporciona un conjunto básico de expresiones, incluyendo literales y operadores comunes. A expression can be evaluated and printed using the `{% raw %}{{{% endraw %}` and `{% raw %}}}{% endraw %}` delimiters:
+Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `{% raw %}{{{% endraw %}` and `{% raw %}}}{% endraw %}` delimiters:
 
 ```twig
 {% raw %}
