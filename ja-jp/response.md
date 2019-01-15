@@ -4,13 +4,15 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # レスポンスを返す
 
-HTTP サイクルの一部は、クライアントへレスポンスを返すことです。 [Phalcon\Http\Response](api/Phalcon_Http_Response) is the Phalcon component designed to achieve this task. HTTP 応答は通常、ヘッダーとボディで構成されます。 以下に、基本的な使い方の例を示します。
+Part of the HTTP cycle is returning responses to clients. [Phalcon\Http\Response](api/Phalcon_Http_Response) is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
 ```php
 <?php
@@ -30,7 +32,7 @@ $response->setContent("Sorry, the page doesn't exist");
 $response->send();
 ```
 
-完全な MVC スタックを使用している場合、手動で反応を作成する必要はありません。しかし、コントローラーのアクションから直接応答を返す必要がある場合この例に従います。
+If you are using the full MVC stack there is no need to create responses manually. However, if you need to return a response directly from a controller's action follow this example:
 
 ```php
 <?php
@@ -62,9 +64,9 @@ class FeedController extends Controller
 
 ## HTTPヘッダの利用
 
-ヘッダーはHTTPレスポンスの重要な部分です。 HTTPステータス、レスポンスタイプなどのレスポンスの状態に関する有用な情報が含まれています。
+Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status, type of response and much more.
 
-次のようにしてヘッダを設定できます。
+You can set headers in the following way:
 
 ```php
 <?php
@@ -111,7 +113,7 @@ $response->redirect('https://en.wikipedia.org', true);
 $response->redirect('https://www.example.com/new-location', true, 301);
 ```
 
-All internal URIs are generated using the [url](/4.0/en/url) service (by default [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)). この例では、アプリケーションで定義したルートを使用してリダイレクトする方法を示します。
+All internal URIs are generated using the [url](/4.0/en/url) service (by default [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)). This example demonstrates how you can redirect using a route you have defined in your application:
 
 ```php
 <?php
@@ -132,9 +134,9 @@ Even if there is a view associated with the current action, it will not be rende
 
 ## HTTPキャッシュ
 
-アプリケーションのパフォーマンスを向上させ、トラフィックを削減する最も簡単な方法の 1 つに、HTTP キャッシュの使用があります。 最新のブラウザーは HTTP キャッシュをサポートしています。そしてそれが多くのウェブサイトが高速な理由の 1 つです。
+One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 
-HTTPキャッシュは、ページを最初に提供するときにアプリケーションによって送信される次のヘッダー値で変更できます:
+HTTP Cache can be altered in the following header values sent by the application when serving a page for the first time:
 
 * **`Expires:`**このヘッダーを使用すると、アプリケーションは将来の日付を設定したり、ページが期限切れになったときにブラウザに通知したりすることができます。
 * **`Cache-Control:`**このヘッダーは、ページをブラウザーが新しいと判断する時間を指定できます。
@@ -145,7 +147,7 @@ HTTPキャッシュは、ページを最初に提供するときにアプリケ�
 
 ### 期限の設定
 
-有効期限の日付は、クライアント (ブラウザー) にページをキャッシュさせる最も簡単なで効果的な方法です。 現在の日付から、その時間の間、そのページはブラウザのキャッシュに保存されます。 この有効期限が切れるまでは、サーバーへ新しいコンテンツを要求しません。
+The expiration date is one of the easiest and most effective ways to cache a page in the client (browser). Starting from the current date we add the amount of time the page will be stored in the browser cache. Until this date expires no new content will be requested from the server:
 
 ```php
 <?php
@@ -156,9 +158,9 @@ $expiryDate->modify('+2 months');
 $response->setExpires($expiryDate);
 ```
 
-Responseコンポーネントは自動でExpiresヘッダーにGMTタイムゾーンの日付を設定します。
+The Response component automatically shows the date in GMT timezone as expected in an Expires header.
 
-この値を過去の日付に設定した場合、ブラウザーは常にリクエストされたページを更新します:
+If we set this value to a date in the past the browser will always refresh the requested page:
 
 ```php
 <?php
@@ -169,13 +171,13 @@ $expiryDate->modify('-10 minutes');
 $response->setExpires($expiryDate);
 ```
 
-ブラウザーは、クライアントの時計を利用して、この日付が過ぎたかどうかを判断します。 ページを期限切れにするようにクライアントの時計を変更することができ、これはこのキャッシュメカニズムの制限を表している可能性があります。
+Browsers rely on the client's clock to assess if this date has passed or not. The client clock can be modified to make pages expire and this may represent a limitation for this cache mechanism.
 
 <a name='http-cache-control'></a>
 
 ### キャッシュコントロール
 
-このヘッダーは、保存されたページをキュッシュするより安全な方法を提供します。キャッシュにページを維持する必要がある時間をブラウザに、秒単位で時間を指定します。
+This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser how long it must keep the page in its cache:
 
 ```php
 <?php
@@ -184,7 +186,7 @@ $response->setExpires($expiryDate);
 $response->setHeader('Cache-Control', 'max-age=86400');
 ```
 
-このように、反対の効果（ページキャッシュを避ける）が実現されます。
+The opposite effect (avoid page caching) is achieved in this way:
 
 ```php
 <?php
@@ -197,7 +199,7 @@ $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
 
 ### E-Tag
 
-`entity-tag`または`E-tag`は、ページが2つのリクエストの間に変更されたかどうかをブラウザが認識するのに役立つ一意の識別子です。 この識別子は、以前に提供したコンテンツが変更された場合に変更する必要があることを考慮して計算する必要があります。
+An `entity-tag` or `E-tag` is a unique identifier that helps the browser realize if the page has changed or not between two requests. The identifier must be calculated taking into account that this must change if the previously served content has changed:
 
 ```php
 <?php
