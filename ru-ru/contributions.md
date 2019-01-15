@@ -4,25 +4,27 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='contributing'></a>
 
 # Вклад в Phalcon
 
-Phalcon является проектом с открытым кодом и сильно зависит от добровольных усилий. Мы приветствуем посильную помощь от всех!
+Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!
 
 Please take a moment to review this document in order to make the contribution process easy and effective for all.
 
-Следование этим принципам, позволит вам эффективней общаться с остальными участниками сообщества, быстрее решать проблемы и двигать проект вперед.
+Following these guidelines, allows better communication, faster resolution of issues and moves the project forward.
 
 <a name='contributions'></a>
 
 ## Вклад
 
-Вклад в Phalcon следует оформлять в виде [запроса на принятие изменений (Pull Request) на GitHub](https://help.github.com/articles/using-pull-requests/). Каждый такой запрос будет рассмотрен участником команды (кем-то с правом принимать запрос). В зависимости от типа и содержания запроса, он может быть принят сразу, отложен, если необходимы разъяснения, или отклонен.
+Contributions to Phalcon should be made in the form of [GitHub pull requests](https://help.github.com/articles/using-pull-requests/). Each pull request will be reviewed by a core contributor (someone with permission to merge pull requests). Based on the type and content of the pull request, it can either be merged immediately, put on hold if clarifications are needed, or rejected.
 
-Пожалуйста, убедитесь, что вы отправляете свой запрос на принятие изменений в соответствующую ветку, и что ваша ветка в актуальном состоянии.
+Please ensure that you are sending your pull request to the correct branch and that you already have rebased your code.
 
 <a name='questions-and-support'></a>
 
@@ -43,9 +45,9 @@ Please take a moment to review this document in order to make the contribution p
 
 ### Генерация трассировки
 
-Иногда, из-за ошибки [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault), Phalcon может аварийно завершить работу. Пожалуйста, помогите нам найти эту проблему, добавив трассировку аварийного завершения работы ваше сообщение об ошибке.
+Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. Please help us to find out the problem by adding a crash backtrace to your bug report.
 
-Пожалуйста, ознакомьтесь со следующим руководствами, в случае любых вопросов связанных с созданием трассировки:
+Please follow this guides to understand how to generate the backtrace:
 
 - [Генерация gdb трассировки](https://bugs.php.net/bugs-generating-backtrace.php)
 - [Генерация трассировки с использованием компилятора в Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
@@ -63,7 +65,7 @@ Please take a moment to review this document in order to make the contribution p
 - Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards](https://www.php-fig.org/psr/)
 - Удалите любые изменения `ext/kernel`, `*.zep.c` и `*.zep.h` файлов перед отправкой запроса на изменение.
 
-Before submit **new functionality**, please open a [NFR](/4.0/en/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. После утверждения, убедитесь, что ваш запрос на принятие изменений содержит следующее:
+Before submit **new functionality**, please open a [NFR](/4.0/en/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
 - Обновлённый файл `CHANGELOG.md`
 - Модульные тесты
@@ -81,6 +83,6 @@ If you have any questions about how to use Phalcon, please see the [support page
 
 If you have any changes or new features in mind, please fill an [NFR](/4.0/en/new-feature-request).
 
-Спасибо!
+Thanks!
 
-<3 Команда Phalcon
+<3 Phalcon Team
