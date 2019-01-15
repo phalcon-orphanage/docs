@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='working-with'></a>
 
@@ -731,7 +733,7 @@ class Robots extends Model
 }
 ```
 
-Eğer gönderici / ayarlayıcıları ortak özelliklerle birlikte / hariç olarak kullanırsanız, erişildiği zaman alanı kullanabilirsiniz:
+If you use getters/setters instead of/or together with public properties, you can initialize the field once it is accessed:
 
 ```php
 <?php
