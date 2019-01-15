@@ -1,8 +1,10 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
@@ -353,7 +355,7 @@ $success = $connection->query(
 );
 ```
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case '1' or '2' are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter data are automatically escaped using [PDO Quote](http://www.php.net/manual/en/pdo.quote.php).
+When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case '1' or '2' are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter data are automatically escaped using [PDO Quote](https://www.php.net/manual/en/pdo.quote.php).
 
 This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
 
@@ -688,7 +690,7 @@ try {
 }
 ```
 
-In addition to standard transactions, [Phalcon\Db](api/Phalcon_Db) provides built-in support for [nested transactions](http://en.wikipedia.org/wiki/Nested_transaction) (if the database system used supports them). When you call begin() for a second time a nested transaction is created:
+In addition to standard transactions, [Phalcon\Db](api/Phalcon_Db) provides built-in support for [nested transactions](https://en.wikipedia.org/wiki/Nested_transaction) (if the database system used supports them). When you call begin() for a second time a nested transaction is created:
 
 ```php
 <?php
@@ -730,7 +732,7 @@ try {
 
 ## Database Events
 
-[Phalcon\Db](api/Phalcon_Db) is able to send events to a [EventsManager](/3.4/en/events) if it's present. 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
+[Phalcon\Db](api/Phalcon_Db) is able to send events to a [EventsManager](/4.0/en/events) if it's present. 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
 
 | 事件名称                  | 触发器                                                  | 可以停止操作吗？ |
 | --------------------- | ---------------------------------------------------- |:--------:|
