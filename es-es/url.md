@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -16,9 +18,9 @@ layout: article language: 'en' version: '4.0'
 
 ## Configuración de un URI base
 
-Dependiendo del directorio del documento en el que esté instalada su aplicación, puede tener un URI base o no.
+Depending of which directory of your document root your application is installed, it may have a base URI or not.
 
-Por ejemplo, si el documento raíz es `es/var/www/htdocs` y su aplicación se instala en `en/var/www/htdocs/invo` entonces su baseUri será `/invo/`. Si usted está utilizando un VirtualHost o la aplicación se instala en la raíz del documento, su baseUri es `/`. Ejecute el siguiente código para saber el URI base detectado por Phalcon:
+For example, if your document root is `/var/www/htdocs` and your application is installed in `/var/www/htdocs/invo` then your baseUri will be `/invo/`. If you are using a VirtualHost or your application is installed on the document root, then your baseUri is `/`. Execute the following code to know the base URI detected by Phalcon:
 
 ```php
 <?php
@@ -30,7 +32,7 @@ $url = new Url();
 echo $url->getBaseUri();
 ```
 
-Por defecto, Phalcon puede detectar automáticamente su baseUri, pero si quieres mejorar el rendimiento de su aplicación se recomienda configurarlo manualmente:
+By default, Phalcon automatically may detect your baseUri, but if you want to increase the performance of your application is recommended setting up it manually:
 
 ```php
 <?php
@@ -49,7 +51,7 @@ $url->setBaseUri('//my.domain.com/');
 $url->setBaseUri('https://my.domain.com/my-app/');
 ```
 
-Generalmente, este componente debe estar registrado en el contenedor de inyección de dependencias, por lo que se puede establecer ahí mismo:
+Usually, this component must be registered in the Dependency Injector container, so you can set up it there:
 
 ```php
 <?php
@@ -76,13 +78,13 @@ If you are using the [Router](/4.0/en/routing) with its default behavior, your a
 
 <h5 class='alert alert-info'>/:controller/:action/:params </h5>
 
-Por consiguiente es muy fácil crear rutas que satisfacen ese patrón (o cualquier otro patrón definido en el router) pasando una cadena para el método `get()`:
+Accordingly it is easy to create routes that satisfy that pattern (or any other pattern defined in the router) passing a string to the method `get`:
 
 ```php
 <?php echo $url->get('products/save'); ?>
 ```
 
-Tenga en cuenta que no es necesario anteponer el URI base. Si tiene rutas con nombre, puede cambiarlo fácilmente creándolo dinámicamente. Por ejemplo si tienes la siguiente ruta:
+Note that isn't necessary to prepend the base URI. If you have named routes you can easily change it creating it dynamically. For Example if you have the following route:
 
 ```php
 <?php
@@ -98,7 +100,7 @@ $router
     ->setName('show-post');
 ```
 
-Puede generar una dirección URL de la siguiente manera:
+A URL can be generated in the following way:
 
 ```php
 <?php
@@ -118,7 +120,7 @@ $url->get(
 
 ## Produciendo URLs sin mod_rewrite
 
-También puede utilizar este componente para crear URLs sin mod_rewrite:
+You can use this component also to create URLs without mod_rewrite:
 
 ```php
 <?php
@@ -134,7 +136,7 @@ $url->setBaseUri('/invo/index.php?_url=/');
 echo $url->get('products/save');
 ```
 
-También se puede utilizar `$_SERVER['REQUEST_URI']`:
+You can also use `$_SERVER['REQUEST_URI']`:
 
 ```php
 <?php
@@ -150,7 +152,7 @@ $url->setBaseUri('/invo/index.php?_url=/');
 $url->setBaseUri('/invo/index.php/');
 ```
 
-En este caso, es necesario manejar manualmente el URI requerido en el enrutador:
+In this case, it's necessary to manually handle the required URI in the Router:
 
 ```php
 <?php
@@ -166,7 +168,7 @@ $uri = str_replace($_SERVER['SCRIPT_NAME'], '', $_SERVER['REQUEST_URI']);
 $router->handle($uri);
 ```
 
-Las rutas producidas se verán de la siguiente manera:
+The produced routes would look like:
 
 ```php
 <?php
@@ -179,7 +181,7 @@ echo $url->get('products/save');
 
 ## Produciendo URLs desde Volt
 
-La función `url()` esta disponible en Volt para generar URLs usando este componente:
+The function `url` is available in volt to generate URLs using this component:
 
 ```twig
 {% raw %}
@@ -187,7 +189,7 @@ La función `url()` esta disponible en Volt para generar URLs usando este compon
 {% endraw %}
 ```
 
-Generar rutas estáticas:
+Generate static routes:
 
 ```twig
 {% raw %}
@@ -199,7 +201,7 @@ Generar rutas estáticas:
 
 ## URI Estáticas vs Dinámicas
 
-Este componente permite establecer una URI base diferente para los recursos estáticos en la aplicación:
+This component allow you to set up a different base URI for static resources in the application:
 
 ```php
 <?php
