@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Installation on XAMPP
 
-[XAMPP](https://www.apachefriends.org/download.html) je jednoduše instalovatelná distribuce Apache web serveru obsahující MySQL, PHP a Perl. Jakmile stáhnete XAMPP, jediné co je potřeba udělat před používáním je extrahovat archív a spustit. Níže jsou podrobné informace jak nainstalovat Phalcon framework pro XAMPP pro Windows. Použití nejnovější verze XAMPP je vysoce doporučeno.
+[XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
 <a name='phalcon'></a>
 
 ## Stažení správné verze Phalcon frameworku
 
-XAMPP je vždy vydáván jako 32bitová verze Apache a PHP. Musíte tedy stáhnout x86 verzi Phalcon frameworku pro Windows ze sekce "Stažení".
+XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
 Po stažení knihovny Phalcon frameworku budete mít ZIP soubor podobný ukázanému níže:
 
@@ -40,7 +42,7 @@ a uložte soubor.
 
 ![](/assets/images/content/webserver-xampp-4.png)
 
-Restartujte web server Apache z ovládacího panelu XAMPP. To způsobí načtení nové PHP konfigurace.
+Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration.
 
 ![](/assets/images/content/webserver-xampp-5.png)
 
@@ -52,13 +54,13 @@ Open your browser to navigate to `https://localhost`. The XAMPP welcome page wil
 
 ![](/assets/images/content/webserver-xampp-7.png)
 
-Pokud vidíte verzi Phalcon frameworku ve výstupu `phpinfo()`, gratulujeme. Nyní je Phalcon framework připraven.
+If you can see the phalcon version in the `phpinfo()` output, congratulations!, You are now phlying with Phalcon.
 
 <a name='screencast'></a>
 
 ## Video
 
-Následující video Vás provede krok za krokem instalací Phalcon frameworku pro Windows:
+The following screencast is a step by step guide to install Phalcon on Windows:
 
 <div align="center">
   <iframe src="https://player.vimeo.com/video/40265988" 

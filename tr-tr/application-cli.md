@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='creating-cli-application'></a>
 
 # Bir Komut Satırı (CLI) Uygulaması Oluşturma
 
-CLI uygulamaları komut satırından yürütülür. Bunlar, cron işleri, komut dosyaları, komut araçları ve daha fazlasını oluşturmak için yararlıdır.
+CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
 <a name='structure'></a>
 
 ## Yapı
 
-CLI uygulamasının asgari bir yapısı şöyle görünecektir:
+A minimal structure of a CLI application will look like this:
 
 * `app/config/config.php`
 * `app/tasks/MainTask.php`
@@ -26,9 +28,9 @@ CLI uygulamasının asgari bir yapısı şöyle görünecektir:
 
 ## Bir Önyükleme Oluşturma
 
-Normal MVC uygulamalarında olduğu gibi, bir önyükleme dosyası, uygulamayı önyüklemek için kullanılır. Web uygulamalarında index.php önyükleme yerine, uygulamayı önyüklemek için bir cli.php dosyası kullanırız.
+As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
 
-Bu örnek için kullanacağımız önyükleyici şöyledir:
+Below is a sample bootstrap that is being used for this example.
 
 ```php
 <?php
@@ -99,7 +101,7 @@ try {
 }
 ```
 
-Bu kod parçası şöyle çalıştırılabilir:
+This piece of code can be run using:
 
 ```bash
 php app/cli.php
@@ -109,7 +111,7 @@ php app/cli.php
 
 ## Görevler
 
-Görevlerin çalışma şekli aynı kontrolcüler gibidir. Bir CLI uygulaması için en az bir Ana Görev (MainTask) ve Ana İşlem (MainAction) gereklidir ve her görev için (eğer özel bir işlem belirtilmediyse çalışacak) bir Ana İşlem (mainAction) olmalıdır.
+Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
 Below is an example of the `app/tasks/MainTask.php` file:
 
@@ -163,7 +165,7 @@ class MainTask extends Task
 }
 ```
 
-Daha sonra aşağıdaki komutu çalıştırabiliriz:
+We can then run the following command:
 
 ```bash
 php app/cli.php main test dünya evren

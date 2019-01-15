@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -12,7 +14,7 @@ layout: article language: 'en' version: '4.0'
 
 [Phalcon\Config](api/Phalcon_Config) is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
-值可以从 `Phalcon\Config` 获得，详情如下：
+Values can be obtained from `Phalcon\Config` as follows:
 
 ```php
 <?php
@@ -208,7 +210,7 @@ There are more adapters available for this components in the [Phalcon Incubator]
 
 ## 嵌套的配置
 
-您可以使用`Phalcon\Config::path`方法轻松访问嵌套的配置值。 这种方法允许获取值，而不考虑路径的某些部分不存在。 Let's look at an example:
+You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. Let's look at an example:
 
 ```php
 <?php
@@ -253,7 +255,7 @@ Config::setPathDelimiter('/');
 $config->path('test/parent/property2'); // yeah
 ```
 
-下面的示例展示了如何创建usefull facade来访问嵌套的配置值:
+The following example shows how to create usefull facade to access nested configuration values:
 
 ```php
 <?php
@@ -280,7 +282,7 @@ function config() {
 
 ## Injecting Configuration Dependency
 
-You can inject your configuration to the controller allowing us to use [Phalcon\Config](api/Phalcon_Config) inside [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller). 要做到这一点，您必须将其作为服务添加到依赖注入器容器中。 在引导文件中添加以下代码:
+You can inject your configuration to the controller allowing us to use [Phalcon\Config](api/Phalcon_Config) inside [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller). To be able to do that, you have to add it as a service in the Dependency Injector container. Add following code inside your bootstrap file:
 
 ```php
 <?php

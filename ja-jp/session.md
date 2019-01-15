@@ -4,15 +4,17 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # セッションにデータを保存する
 
-セッションコンポーネントは、セッションデータにアクセスする、オブジェクト指向のラッパーを提供します。
+The session component provides object-oriented wrappers to access session data.
 
-直接セッションを使用せずにコンポーネントを使う理由:
+Reasons to use this component instead of raw-sessions:
 
 * 同じドメイン上のアプリケーション間で簡単にセッションデータを分離できます
 * セッションデータがアプリケーションで設定/取得されるところへ割り込み
@@ -22,7 +24,7 @@ layout: article language: 'en' version: '4.0'
 
 ## セッションの開始
 
-アプリケーションによってはセッション集約型のものがあり、実行するほとんどすべての処理でセッションデータへのアクセスが必要です。 セッションデータに無意識にアクセスする人もいます。 サービスコンテナのおかげで、セッションが明らかに必要なときにのみセッションにアクセスできるようにすることができます:
+Some applications are session-intensive, almost any action that performs requires access to session data. There are others who access session data casually. Thanks to the service container, we can ensure that the session is accessed only when it's clearly needed:
 
 ```php
 <?php
@@ -46,7 +48,7 @@ $di->setShared(
 
 ## Factory
 
-`adaper`オプションを使用してSession Adapterクラスをロードします
+Loads Session Adapter class using `adapter` option
 
 ```php
 <?php
@@ -102,7 +104,7 @@ class UserController extends Controller
 
 ## セッションの削除と破棄
 
-また、特定の変数の削除やセッション全体の破棄が可能です。
+It's also possible remove specific variables or destroy the whole session:
 
 ```php
 <?php
@@ -129,7 +131,7 @@ class UserController extends Controller
 
 ## アプリケーション間のセッションデータの分離
 
-ユーザーは同じサーバーの同じセッションで、同じアプリケーションを二回使うこともあります。 確かに、セッションで変数を使用する場合、すべてのアプリケーションが別のセッションデータを持っていることを望みます (しかし、同じコードで同じ変数名です)。 この問題を解決するため、あなたは特定のアプリケーションに作成したそれぞれのセッシュン変数にプレフィックスを追加できます。
+Sometimes a user can use the same application twice, on the same server, in the same session. Surely, if we use variables in session, we want that every application have separate session data (even though the same code and same variable names). To solve this, you can add a prefix for every session variable created in a certain application:
 
 ```php
 <?php
@@ -154,15 +156,16 @@ $di->set(
 );
 ```
 
-ユニークIDの追加は必須ではありません。
+Adding a unique ID is not necessary.
 
 <a name='bags'></a>
 
 ## セッションバッグ
 
-[Phalcon\Session\Bag](api/Phalcon_Session_Bag) is a component that helps separating session data into `namespaces`. この方法で、セッシュン変数のグループをアプリケーションに簡単に作成できます。 `bag</ 0>の変数を設定するだけで、自動的にセッションに格納されます:</p>
+[Phalcon\Session\Bag](api/Phalcon_Session_Bag) is a component that helps separating session data into `namespaces`. Working by this way you can easily create groups of session variables into the application. By only setting the variables in the `bag`, it's automatically stored in session:
 
-<pre><code class="php"><?php
+```php
+<?php
 
 use Phalcon\Session\Bag as SessionBag;
 
@@ -172,13 +175,13 @@ $user->setDI($di);
 
 $user->name = 'Kimbra Johnson';
 $user->age  = 22;
-`</pre> 
+```
 
 <a name='data-persistence'></a>
 
 ## コンポーネントの不揮発性データ
 
-Controller, components and classes that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) may inject a [Phalcon\Session\Bag](api/Phalcon_Session_Bag). このクラスはそれぞれのクラスで変数を隔離します。 これのおかげで、それぞれの方法のすべてのクラスでリクエスト間でデータを保持できます。
+Controller, components and classes that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) may inject a [Phalcon\Session\Bag](api/Phalcon_Session_Bag). This class isolates variables for every class. Thanks to this you can persist data between requests in every class in an independent way.
 
 ```php
 <?php
@@ -202,7 +205,7 @@ class UserController extends Controller
 }
 ```
 
-コンポーネント内:
+In a component:
 
 ```php
 <?php
@@ -224,7 +227,7 @@ class Security extends Component
 }
 ```
 
-このセッシュンに追加したデータ(`$this->session`)はそのアプリケーション内で利用可能です。一方persistent (`$this->persistent`) は現在のクラスのスコープ内でのみアクセス可能です。
+The data added to the session (`$this->session`) are available throughout the application, while persistent (`$this->persistent`) can only be accessed in the scope of the current class.
 
 <a name='custom-adapters'></a>
 
@@ -232,4 +235,4 @@ class Security extends Component
 
 The [Phalcon\Session\AdapterInterface](api/Phalcon_Session_AdapterInterface) interface must be implemented in order to create your own session adapters or extend the existing ones.
 
-[Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter) には、このコンポーネントを利用するための複数のアダプターが用意されています。
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter)

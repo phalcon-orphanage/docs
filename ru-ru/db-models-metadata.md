@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='models-metadata'></a>
 
@@ -12,7 +14,7 @@ layout: article language: 'en' version: '4.0'
 
 To speed up development [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) helps you to query fields and constraints from tables related to models. To achieve this, [Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc_Model_MetaData) is available to manage and cache table metadata.
 
-При работе с моделями иногда возникает необходимость получения этих атрибутов. Вы можете получить экземпляр метаданных следующим образом:
+Sometimes it is necessary to get those attributes when working with models. You can get a metadata instance as follows:
 
 ```php
 <?php
@@ -35,7 +37,7 @@ print_r($dataTypes);
 
 ## Кэширование метаданных
 
-После того как приложение переведено в продакшн режим, нет необходимости запрашивать метаданные таблицы из базы данных каждый раз, когда вы используете таблицу. В таком случае можно задействовать кэширование метаданных, используя любой из следующих адаптеров:
+Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the metadata using any of the following adapters:
 
 | Адаптер      | Описание                                                                                                                                                                                                                                                                                                                                  | API                                                                                        |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -48,7 +50,7 @@ print_r($dataTypes);
 | Session      | Этот адаптер сохраняет метаданные в суперглобальной переменной `$_SESSION`. Данный адаптер рекомендуется использовать только при небольшом количестве моделей. Метаданные обновляются каждый раз, когда начинается новая сессия. При этом перед использованием любой модели необходимо начать сессию с помощью функции `session_start()`. | [Phalcon\Mvc\Model\MetaData\Session](api/Phalcon_Mvc_Model_MetaData_Session)           |
 | XCache       | This adapter uses [XCache](https://xcache.lighttpd.net/) to store the table metadata. Вы можете задать время жизни метаданных с помощью параметров. Это один из рекомендуемых способов для хранения метаданных, когда приложение находится в продакшн режиме.                                                                             | [Phalcon\Mvc\Model\MetaData\Xcache](api/Phalcon_Mvc_Model_MetaData_Xcache)             |
 
-Как и другие зависимости ORM, менеджер метаданных запрашивается из контейнера сервисов:
+As other ORM's dependencies, the metadata manager is requested from the services container:
 
 ```php
 <?php
@@ -72,9 +74,9 @@ $di['modelsMetadata'] = function () {
 
 ## Стратегии метаданных
 
-Как уже упоминалось выше, стратегией по умолчанию для получения метаданных модели является интроспекция базы данных. В этой стратегии используется информационная схема, чтобы узнать поля таблицы, ее первичный ключ, обнуляемые поля, типы данных и т. д.
+As mentioned above the default strategy to obtain the model's metadata is database introspection. In this strategy, the information schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.
 
-Вы можете изменить стандартную интроспекцию метаданных следующим образом:
+You can change the default metadata introspection in the following way:
 
 ```php
 <?php
@@ -103,13 +105,13 @@ $di['modelsMetadata'] = function () {
 
 ### Стратегия интроспекции базы данных
 
-Эта стратегия не требует какой-либо настройки и неявно используется всеми адаптерами метаданных.
+This strategy doesn't require any customization and is implicitly used by all the metadata adapters.
 
 <a name='strategies-annotations'></a>
 
 ### Стратегия аннотаций
 
-Эта стратегия позволяет использовать `аннотации <annotations>` для описания столбцов в модели:
+This strategy makes use of `annotations <annotations>` to describe the columns in a model:
 
 ```php
 <?php
@@ -144,7 +146,7 @@ class Robots extends Model
 
 Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the `@Column` annotation are handled as simple class attributes.
 
-Поддерживаются следующие аннотации:
+The following annotations are supported:
 
 | Название | Описание                                              |
 | -------- | ----------------------------------------------------- |
@@ -165,7 +167,7 @@ The annotation `@Column` supports the following parameters:
 | allow_empty_string | Column allow empty strings                                                                                                                                                    |
 | default              | Default value                                                                                                                                                                 |
 
-Стратегия аннотаций может быть задана таким образом:
+The annotations strategy could be set up this way:
 
 ```php
 <?php
@@ -197,9 +199,9 @@ $di['modelsMetadata'] = function () {
 
 Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically without the developer needing to set them manually.
 
-Разработчик также имеет возможность определить метаданные вручную. Эта стратегия перекрывает любые другие, заданные в менеджере метаданных. При добавлении/изменении/удалении столбцов в связанной таблице информация о них также должна быть добавлена/изменена/удалена в модели.
+The developer also has the option of define the metadata manually. This strategy overrides any strategy set in the metadata manager. New columns added/modified/removed to/from the mapped table must be added/modified/removed also for everything to work properly.
 
-Следующий пример показывает, как определить метаданные вручную:
+The following example shows how to define the metadata manually:
 
 ```php
 <?php

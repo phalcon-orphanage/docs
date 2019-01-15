@@ -4,13 +4,15 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # 注释语法分析器
 
-它是第一次，为了PHP 的世界，用 C 编写的注释解析器组件。 `Phalcon\Annotations` 是一个通用组件，用于在应用程序中的注释，在PHP 类中提供了方便的解析和缓存。
+It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
 
 Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
@@ -43,7 +45,7 @@ class Example
 }
 ```
 
-注释具有以下语法︰
+An annotation has the following syntax:
 
 ```php
 /**
@@ -52,7 +54,7 @@ class Example
  */
 ```
 
-此外，注释可以放在块的任何部分︰
+Also, an annotation can be placed at any part of a docblock:
 
 ```php
 <?php
@@ -68,7 +70,7 @@ class Example
  */
 ```
 
-解析器是高度灵活，下面的文档块是有效︰
+The parser is highly flexible, the following docblock is valid:
 
 ```php
 <?php
@@ -81,7 +83,7 @@ someParameter='the value', false
  **/
 ```
 
-然而，为了使代码更易于维护和理解，它被建议放置于注释块结尾︰
+However, to make the code more maintainable and understandable it is recommended to place annotations at the end of the docblock:
 
 ```php
 <?php
@@ -99,7 +101,7 @@ someParameter='the value', false
 
 ## 工厂
 
-There are many annotations adapters available (see [Adapters](#adapters)). 您使用将取决于您的应用程序的需要。 实例化此类 adapter 的传统方法是，如下所示：
+There are many annotations adapters available (see [Adapters](#adapters)). 您使用将取决于您的应用程序的需要。 The traditional way of instantiating such an adapter is as follows:
 
 ```php
 <?php
@@ -111,7 +113,7 @@ $reader = new MemoryAdapter();
 // .....
 ```
 
-但是你也可以利用工厂方法来达到相同的效果：
+However you can also utilize the factory method to achieve the same thing:
 
 ```php
 <?php
@@ -128,13 +130,13 @@ $options = [
 $annotations = Factory::load($options);
 ```
 
-工厂装载机处理实例化注释适配器从配置文件时提供更大的灵活性。
+The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
 
 <a name='reading'></a>
 
 ## 读取注释
 
-一个反射器的实现可以容易地得到，使用面向对象的接口的类上定义的注释︰
+A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
 ```php
 <?php
@@ -162,9 +164,9 @@ foreach ($annotations as $annotation) {
 }
 ```
 
-注释的阅读过程是非常快的，然而，出于性能原因，建议使用适配器，存储已解析的注释。 适配器缓存已经处理的注释，避免再次解析需要的注释。
+The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter. Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
 
-[Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory) was used in the above example. 此适配器只缓存当请求正在运行时的注释，为此该适配器是更适合开发。 当应用程序在生产阶段时，有其他适配器换出。
+[Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory) was used in the above example. This adapter only caches the annotations while the request is running and for this reason the adapter is more suitable for development. There are other adapters to swap out when the application is in production stage.
 
 <a name='types'></a>
 
@@ -229,13 +231,13 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 ## 实际使用情况
 
-下一步，我们将解释一些实际例子，关于 PHP 应用程序中的注释︰
+Next we will explain some practical examples of annotations in PHP applications:
 
 <a name='usage-cache'></a>
 
 ### 带注释的缓存启用
 
-让我们假装我们创建了以下控制器并且您想要创建一个自动启动缓存中，如果最后执行的操作被标记为可缓存的插件。 首先，当一个路由被执行时，我们注册一个插件等待调度服务被通知︰
+Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
 
 ```php
 <?php
@@ -260,7 +262,7 @@ $di['dispatcher'] = function () {
 };
 ```
 
-`CacheEnablerPlugin` 是一个插件，如果需要时，在调度程序启用缓存后，拦截每个行为的执行︰
+`CacheEnablerPlugin` is a plugin that intercepts every action executed in the dispatcher enabling the cache if needed:
 
 ```php
 <?php
@@ -310,7 +312,7 @@ class CacheEnablerPlugin extends Plugin
 }
 ```
 
-现在，我们可以在控制器中使用注释︰
+Now, we can use the annotation in a controller:
 
 ```php
 <?php
@@ -350,7 +352,7 @@ class NewsController extends Controller
 
 ### Private/Public areas with Annotations
 
-你可以使用注释来告诉 ACL 控制器，哪个控制器属于管理区域︰
+You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
 ```php
 <?php
@@ -414,7 +416,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 ## 注释适配器
 
-这个组件使的，使用的适配器到缓存或不缓存解析和处理的注释，从而提高性能或向开发测试提供便利︰
+This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
 | 类                                                                               | 描述                                                                                                                                                                                |
 | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

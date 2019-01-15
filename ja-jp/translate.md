@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # 多言語サポート
 
-`Phalcon\Translate` コンポーネントは多言語アプリケーションの作成に役立ちます。 このコンポーネントを使用するアプリケーションは、アプリケーションでサポートされているユーザーが選択した言語に基づいて、異なる言語でコンテンツを表示します。
+The component `Phalcon\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
 <a name='adapters'></a>
 
 ## Adapters
 
-このコンポーネントはアダプターを使用して、異なるソースからの翻訳メッセージを、統一された方法で読み込みます。
+This component makes use of adapters to read translation messages from different sources in a unified way.
 
 | アダプター                                                                                 | Description                                      |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------ |
@@ -26,7 +28,7 @@ layout: article language: 'en' version: '4.0'
 
 ### Factory
 
-`adaper`オプションを使用してTranslate Adapterクラスをロードします
+Loads Translate Adapter class using `adapter` option
 
 ```php
 <?php
@@ -48,7 +50,7 @@ $translate = Factory::load($options);
 
 ## コンポーネントの使い方
 
-翻訳文字列はファイルに格納されます。 これらのファイルの構造は、使用しているアダプタによって変化する可能性があります。 Phalcon はあなたの翻訳文字列を組織化する自由を与えます。 単純な構造は以下のようになりえます。
+Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:
 
 ```bash
 app/messages/en.php
@@ -57,7 +59,7 @@ app/messages/fr.php
 app/messages/zh.php
 ```
 
-それぞれのファイルには、key/value 形式で、翻訳の配列が含まれます。 それぞれの翻訳ファイルで、Keysは一意です。 それぞれのファイルには同じ配列を使用します。ここでその配列の Keysはそのまま同じとし値はそれぞれの言語によって異なる翻訳文字列とします。
+Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in different files, where keys remain the same and values contain the translated strings depending on each language.
 
 ```php
 <?php
@@ -83,9 +85,9 @@ $messages = [
 ];
 ```
 
-あなたのアプリケーションで翻訳メカニズムを実装するのは簡単ですが、実装方法に依存します。 ユーザーのブラウザから自動的に言語を検出することもできれば、ユーザーが言語を選択する設定ページを提供することができます。
+Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
 
-ユーザーの言語を検出する最も簡単な方法は`$_SERVER['HTTP_ACCEPT_LANGUAGE']` の内容のパースです。もしくは、あなたが望む場合 action/controller から`$this->request->getBestLanguage()` を呼び出して直接アクセスすることです。
+A simple way of detecting the user's language is to parse the `$_SERVER['HTTP_ACCEPT_LANGUAGE']` contents, or if you wish, access it directly by calling `$this->request->getBestLanguage()` from an action/controller:
 
 ```php
 <?php
@@ -128,7 +130,7 @@ class UserController extends Controller
 }
 ```
 
-`_getTranslation()` メソッドは、翻訳を要求する全てのアクションに対して利用可能です。 `$t`変数がビューに渡され、そのレイヤー内の文字列を翻訳できます。
+The `_getTranslation()` method is available for all actions that require translations. The `$t` variable is passed to the views, and with it, we can translate strings in that layer:
 
 ```php
 <!-- welcome -->
@@ -146,9 +148,9 @@ The `_()` method is returning the translated string based on the index passed. S
 
 Some applications implement multilingual on the URL such as `https://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](/4.0/en/routing).
 
-上記の実装は役に立ちますが、`_getTranslation()`を実装し、`Phalcon\Translate\Adapter\NativeArray`コンポーネントを返すためにはベースコントローラが必要です。 さらに、上記のように、`$t`変数でコンポーネントをビューに設定する必要があります。
+The implementation above is helpful but it requires a base controller to implement the `_getTranslation()` and return the `Phalcon\Translate\Adapter\NativeArray` component. Additionaly the component needs to be set in the view as seen above in the `$t` variable.
 
-この機能を常に独自のクラスにラップし、そのクラスをDIコンテナに登録することができます。
+You can always wrap this functionality in its own class and register that class in the DI container:
 
 ```php
 <?php
@@ -182,7 +184,7 @@ class Locale extends Component
 }
 ```
 
-この方法で、コントローラ内のコンポーネントを使用できます。
+This way you can use the component in controllers:
 
 ```php
 <?php
@@ -201,7 +203,7 @@ class MyController extends Controller
 }
 ```
 
-または直接ビューで
+or in a view directly
 
 ```php
 <?php echo $locale->_('hi-name', ['name' => 'Mike']);

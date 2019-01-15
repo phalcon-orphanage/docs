@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -14,7 +16,7 @@ layout: article language: 'en' version: '4.0'
 
 ## Použití controllerů / řadičů
 
-Akce jsou metody v controllerech, které zpracovávají požadavky. Ve výchozím nastavení jsou všechny veřejné metody mapované jako akce na controllerech a přístupné pomocí URL adresy. Akce jsou zodpovědné za interpretaci požadavku a vytvoření odpovědi. Odpovědi jsou obvykle ve formě vykreslených šablon, ale existují i jiné způsoby, jak vytvořit odpovědi.
+Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
 For instance, when you access a URL like this: `https://localhost/blog/posts/show/2015/the-post-title` Phalcon by default will decompose each part like this:
 
@@ -49,9 +51,9 @@ class PostsController extends Controller
 }
 ```
 
-Další parametry URI jsou definovány jako parametry akce, které mohou být snadno přístupné pomocí lokální proměnné. A controller can optionally extend [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller). Tímto způsobem může mít Controller snadný přístup k aplikačním službám.
+Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller). By doing this, the controller can have easy access to the application services.
 
-Parametry bez výchozí hodnoty jsou zpracovány podle potřeby. Nastavení hodnot pro parametry se provádí obvykle v PHP:
+Parameters without a default value are handled as required. Setting optional values for parameters is done as usual in PHP:
 
 ```php
 <?php
@@ -72,7 +74,7 @@ class PostsController extends Controller
 }
 ```
 
-Parametry jsou přiřazeny ve stejném pořadí, jak byly předány v požadavku. Můžete získat libovolný parametr z názvu následujícím způsobem:
+Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
 
 ```php
 <?php
@@ -98,7 +100,7 @@ class PostsController extends Controller
 
 ## Dispatch Loop
 
-"dispatch loop" bude spuštěn v rámci dispečeru pokud nejsou provedeny žádné další akce. V předchozím příkladu byla provedena pouze jedna akce. V následujícím příkladu můžeme vidět, jak metoda `forward()` může poskytnout "flow of operation" v "dispatch loop", a to předáním jinému controlleru / akci.
+The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
 
 ```php
 <?php
@@ -156,7 +158,7 @@ There is no limit on the `forwards` you can have in your application, so long as
 
 ## Inicializace controllerů
 
-[Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller) offers the `initialize()` method, which is executed first, before any action is executed on a controller. Použití metody `__construct()` se nedoporučuje.
+[Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller) offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
 
 ```php
 <?php
@@ -185,7 +187,7 @@ class PostsController extends Controller
 
 <h5 class='alert alert-warning'>The <code>initialize()</code> method is only called if the <code>beforeExecuteRoute</code> event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
 
-Pokud chcete provést některé inicializace logiky hned, jak je vytvořen objekt controlleru můžete implementovat metodu `onConstruct()`:
+If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
 
 ```php
 <?php
@@ -227,7 +229,7 @@ $di->set(
 );
 ```
 
-Poté můžeme přístupovat ke službě několika způsoby:
+Then, we can access that service in several ways:
 
 ```php
 <?php
@@ -262,7 +264,7 @@ If you're using Phalcon as a full-stack framework, you can read the services pro
 
 ## Požadavek a odpověď
 
-Za předpokladu, že framework poskytuje sadu předem registrovaných služeb. Vysvětlíme si, jak pracovat s prostředím HTTP. The `request` service contains an instance of [Phalcon\Http\Request](api/Phalcon_Http_Request) and the `response` contains a [Phalcon\Http\Response](api/Phalcon_Http_Response) representing what is going to be sent back to the client.
+Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The `request` service contains an instance of [Phalcon\Http\Request](api/Phalcon_Http_Request) and the `response` contains a [Phalcon\Http\Response](api/Phalcon_Http_Response) representing what is going to be sent back to the client.
 
 ```php
 <?php
@@ -288,7 +290,7 @@ class PostsController extends Controller
 }
 ```
 
-Objekt odpovědi se nepoužívá obvykle přímo, ale je proveden před spuštění akce, někdy - jako v případě `afterDispatch` - to může být užitečné pro přímý přístup k odpovědi:
+The response object is not usually used directly, but is built up before the execution of the action, sometimes - like in an `afterDispatch` event - it can be useful to access the response directly:
 
 ```php
 <?php
@@ -341,7 +343,7 @@ class UserController extends Controller
 
 ## Používání služeb jako controllerů
 
-Služby mohou jednat jako controllery, třídy controlleru jsou vždy požadovány z kontejneru služeb. Každá jiná třida registrovaná se správným názvem může jednoduše nahradit controller:
+Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
 
 ```php
 <?php

@@ -4,13 +4,15 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Tutorial: Vökuró
 
-Vökuró es otra aplicación de ejemplo que se puede utilizar para aprender más sobre Phalcon. Vökuró es un pequeño sitio web que muestra cómo implementar características en materia de seguridad y gestión de usuarios y permisos. Puede clonar su código desde [Github](https://github.com/phalcon/vokuro).
+Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [Github](https://github.com/phalcon/vokuro).
 
 <a name='structure'></a>
 
@@ -38,20 +40,20 @@ This project follows a quite similar structure to INVO. Once you open the applic
 
 ![](/assets/images/content/tutorial-vokuro-1.png)
 
-La aplicación se divide en dos partes, un frontend, donde los visitantes pueden inscribirse al servicio y un backend donde los usuarios administradores pueden gestionar los usuarios registrados. Ambos, frontend y backend, se combinan en un solo módulo.
+The application is divided into two parts, a frontend, where visitors can sign up the service and a backend where administrative users can manage registered users. Both frontend and backend are combined in a single module.
 
 <a name='dependencies'></a>
 
 ## Carga de clases y dependencias
 
-This project uses [Phalcon\Loader](api/Phalcon_Loader) to load controllers, models, forms, etc. dentro del proyecto y [composer](https://getcomposer.org/) para cargar las dependencias del proyecto. Por lo tanto, lo primero que tienes que ejecutar antes de Vökuró es instalar sus dependencias a través de [composer](https://getcomposer.org/). Suponiendo que lo tiene correctamente instalado, escriba el siguiente comando en la consola:
+This project uses [Phalcon\Loader](api/Phalcon_Loader) to load controllers, models, forms, etc. within the project and [composer](https://getcomposer.org/) to load the project's dependencies. So, the first thing you have to do before execute Vökuró is install its dependencies via [composer](https://getcomposer.org/). Assuming you have it correctly installed, type the following command in the console:
 
 ```bash
 cd vokuro
 composer install
 ```
 
-Vökuró envía mensajes de correo electrónico para confirmar la inscripción de usuarios registrados utilizando Swift, el archivo `composer.json` se ve de la siguiente manera:
+Vökuró sends emails to confirm the sign up of registered users using Swift, the `composer.json` looks like:
 
 ```json
 {
@@ -64,7 +66,7 @@ Vökuró envía mensajes de correo electrónico para confirmar la inscripción d
 }
 ```
 
-Ahora, hay un archivo llamado `app/config/loader.php` donde se configura toda la carga automática. Al final de este archivo se puede ver que el autocargador de composer es incluido, permitiendo a la aplicación cargar automáticamente cualquiera de las clases en las dependencias descargadas:
+Now, there is a file called `app/config/loader.php` where all the auto-loading stuff is set up. At the end of this file you can see that the composer autoloader is included enabling the application to autoload any of the classes in the downloaded dependencies:
 
 ```php
 <?php
@@ -75,7 +77,7 @@ Ahora, hay un archivo llamado `app/config/loader.php` donde se configura toda la
 require_once BASE_PATH . '/vendor/autoload.php';
 ```
 
-Por otra parte, Vökuró, a diferencia del INVO, utiliza espacios de nombres para controladores y modelos, que es la práctica recomendada para estructurar un proyecto. De esta manera el autocargador se ve ligeramente diferente al que vimos antes (`app/config/loader.php`):
+Moreover, Vökuró, unlike the INVO, utilizes namespaces for controllers and models which is the recommended practice to structure a project. This way the autoloader looks slightly different than the one we saw before (`app/config/loader.php`):
 
 ```php
 <?php
@@ -98,7 +100,7 @@ $loader->register();
 // ...
 ```
 
-En lugar de utilizar `registerDirectories()`, utilizamos `registerNamespaces()`. Cada espacio de nombres apunta a un directorio definido en el archivo de configuración (app/config/config.php). Por ejemplo el espacio de nombres `Vokuro\Controllers` apunta a `app/controllers` para que todas las clases requeridas por la aplicación dentro de este espacio de nombres lo requieren en su definición:
+Instead of using `registerDirectories()`, we use `registerNamespaces()`. Every namespace points to a directory defined in the configuration file (app/config/config.php). For instance the namespace `Vokuro\Controllers` points to `app/controllers` so all the classes required by the application within this namespace requires it in its definition:
 
 ```php
 <?php
@@ -115,7 +117,7 @@ class AboutController extends ControllerBase
 
 ## Regístrarse
 
-En primer lugar, vamos a ver cómo los usuarios están registrados en Vökuró. Cuando un usuario hace clic en el botón `crear una cuenta`, el controlador `SessionController` se invoca y la acción `signup` se ejecuta:
+First, let's check how users are registered in Vökuró. When a user clicks the `Create an Account` button, the controller SessionController is invoked and the action `signup` is executed:
 
 ```php
 <?php
@@ -137,7 +139,7 @@ class SessionController extends ControllerBase
 }
 ```
 
-Esta acción simplemente pasa una instancia del formulario `SignUpForm` a la vista, que se procesa para que el usuario introduzca los datos de inicio de sesión:
+This action simply pass a form instance of `SignUpForm` to the view, which itself is rendered to allow the user enter the login details:
 
 ```twig
 {% raw %}

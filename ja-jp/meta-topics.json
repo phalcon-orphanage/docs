@@ -4,16 +4,20 @@
         "url": "/introduction",
         "menu": [
             {
-                "text": "Release Notes",
+                "text": "はじめに",
+                "url": "/introduction"
+            },
+            {
+                "text": "リリースノート",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Upgrade",
+                "text": "アップグレード",
                 "url": ""
             },
             {
-                "text": "Sponsors",
+                "text": "スポンサー",
                 "url": "/sponsors"
             }
         ]

@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Phalcon的查询语言 (PHQL)
 
-Phalcon查询语言、PhalconQL或简单的PHQL是一种高级的、面向对象的SQL方言，允许使用标准化的类似SQL的语言编写查询。 PHQL实现为解析器(用C语言编写)，将语法转换为目标RDBMS的语法。
+Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows to write queries using a standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
 
-To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as [SQLite](https://en.wikipedia.org/wiki/Lemon_Parser_Generator). 这项技术提供了一个小的内存解析器, 内存占用非常低, 也是线程安全的。
+To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as [SQLite](https://en.wikipedia.org/wiki/Lemon_Parser_Generator). This technology provides a small in-memory parser with a very low memory footprint that is also thread-safe.
 
-解析器首先检查 pass PHQL 语句的语法, 然后生成语句的中间表示形式, 最后将其转换为目标 rdbms 的相应 sql 方言。
+The parser first checks the syntax of the pass PHQL statement, then builds an intermediate representation of the statement and finally it converts it to the respective SQL dialect of the target RDBMS.
 
-在 PHQL 中, 我们实现了一组功能, 使您对数据库的访问更加安全:
+In PHQL, we've implemented a set of features to make your access to databases more secure:
 
 * 绑定参数是 PHQL语言的一部分, 可帮助您保护代码
 * PHQL只允许每个调用执行一个 sql 语句, 以防止注入
@@ -28,7 +30,7 @@ To achieve the highest performance possible, Phalcon provides a parser that uses
 
 ## 用法示例
 
-为了更好地解释PHQL如何工作，请考虑下面的示例。我们有两个车的模型`Cars`和`Brands`:
+To better explain how PHQL works consider the following example. We have two models `Cars` and `Brands`:
 
 ```php
 <?php
@@ -67,7 +69,7 @@ class Cars extends Model
 }
 ```
 
-每辆车都有一个品牌，所以一个品牌有很多车:
+And every Car has a Brand, so a Brand has many Cars:
 
 ```php
 <?php
@@ -137,7 +139,7 @@ $cars  = $query->execute(
 );
 ```
 
-或者简单地执行:
+Or simply execute it:
 
 ```php
 <?php
@@ -160,7 +162,7 @@ $cars = $this->modelsManager->executeQuery(
 
 ## 查询记录
 
-作为熟悉的SQL, PHQL允许使用我们知道的SELECT语句查询记录，除了我们使用模型类而不是指定表:
+As the familiar SQL, PHQL allows querying of records using the SELECT statement we know, except that instead of specifying tables, we use the models classes:
 
 ```php
 <?php
@@ -174,7 +176,7 @@ $query = $manager->createQuery(
 );
 ```
 
-名称空间中的类也被允许:
+Classes in namespaces are also allowed:
 
 ```php
 <?php
@@ -189,7 +191,7 @@ $phql  = 'SELECT c.name FROM Formula\Cars c ORDER BY c.name';
 $query = $manager->createQuery($phql);
 ```
 
-大多数SQL标准都由PHQL支持，甚至是非标准指令，如LIMIT:
+Most of the SQL standard is supported by PHQL, even nonstandard directives such as LIMIT:
 
 ```php
 <?php
@@ -203,7 +205,7 @@ $query = $manager->createQuery($phql);
 
 ### 结果类型
 
-根据我们查询的列的类型，结果类型会有所不同。 If you retrieve a single whole object, then the object returned is a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). 这种resultset是一组完整的模型对象:
+Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This kind of resultset is a set of complete model objects:
 
 ```php
 <?php
@@ -217,7 +219,7 @@ foreach ($cars as $car) {
 }
 ```
 
-这与:
+This is exactly the same as:
 
 ```php
 <?php
@@ -233,7 +235,7 @@ foreach ($cars as $car) {
 }
 ```
 
-完整的对象可以被修改并重新保存在数据库中，因为它们表示关联表的完整记录。 还有其他类型的查询不返回完整的对象，例如:
+Complete objects can be modified and re-saved in the database because they represent a complete record of the associated table. There are other types of queries that do not return complete objects, for example:
 
 ```php
 <?php
@@ -247,9 +249,9 @@ foreach ($cars as $car) {
 }
 ```
 
-We are only requesting some fields in the table, therefore those cannot be considered an entire object, so the returned object is still a resultset of type [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). 但是，每个元素都是一个标准对象，只包含请求的两列。
+We are only requesting some fields in the table, therefore those cannot be considered an entire object, so the returned object is still a resultset of type [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). However, each element is a standard object that only contain the two columns that were requested.
 
-这些不代表完整对象的值就是我们所说的标量。PHQL允许您查询所有类型的标量: 字段、函数、文字、表达式等等。
+These values that don't represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
 
 ```php
 <?php
@@ -263,7 +265,7 @@ foreach ($cars as $car) {
 }
 ```
 
-因为我们可以查询完整的对象或标量，我们也可以同时查询:
+As we can query complete objects or scalars, we can also query both at once:
 
 ```php
 <?php
@@ -285,13 +287,13 @@ foreach ($result as $row) {
 }
 ```
 
-”标量映射为每个“行”的属性，而完整对象映射为具有相关模型名称的属性。
+` Scalars are mapped as properties of each 'row', while complete objects are mapped as properties with the name of its related model.
 
 <a name='joins'></a>
 
 ### Joins
 
-使用PHQL从多个模型请求记录很容易。支持大多数类型的连接。当我们在模型中定义关系时，PHQL会自动添加这些条件:
+It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined relationships in the models, PHQL adds these conditions automatically:
 
 ```php
 <?php
@@ -306,7 +308,7 @@ foreach ($rows as $row) {
 }
 ```
 
-默认情况下，假定内部连接。您可以在查询中指定连接的类型:
+By default, an INNER JOIN is assumed. You can specify the type of JOIN in the query:
 
 ```php
 <?php
@@ -324,7 +326,7 @@ $phql = 'SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands';
 $rows = $manager->executeQuery($phql);
 ```
 
-也可以手动设置连接的条件:
+It is also possible to manually set the conditions of the JOIN:
 
 ```php
 <?php
@@ -334,7 +336,7 @@ $phql = 'SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands ON Brands.id = Cars
 $rows = $manager->executeQuery($phql);
 ```
 
-另外，可以使用FROM子句中的多个表创建连接:
+Also, the joins can be created using multiple tables in the FROM clause:
 
 ```php
 <?php
@@ -349,7 +351,7 @@ foreach ($rows as $row) {
 }
 ```
 
-如果一个别名用于重命名查询中的模型，那么这些别名将用于命名结果的每一行中的属性:
+If an alias is used to rename the models in the query, those will be used to name the attributes in the every row of the result:
 
 ```php
 <?php
@@ -364,7 +366,7 @@ foreach ($rows as $row) {
 }
 ```
 
-当连接的模型与模型有多对多关系时，中间模型隐式地添加到生成的查询中:
+When the joined model has a many-to-many relation to the `from` model, the intermediate model is implicitly added to the generated query:
 
 ```php
 <?php
@@ -375,7 +377,7 @@ $phql = 'SELECT Artists.name, Songs.name FROM Artists ' .
 $result = $this->modelsManager->executeQuery($phql);
 ```
 
-此代码在MySQL中执行以下SQL:
+This code executes the following SQL in MySQL:
 
 ```sql
 SELECT `artists`.`name`, `songs`.`name` FROM `artists`
@@ -388,7 +390,7 @@ WHERE `artists`.`genre` = 'Trip-Hop'
 
 ### Aggregations
 
-下面的例子展示了如何在PHQL中使用聚合:
+The following examples show how to use aggregations in PHQL:
 
 ```php
 <?php
@@ -430,7 +432,7 @@ foreach ($rows as $row) {
 
 ### 条件
 
-条件允许我们过滤我们想查询的记录集。`WHERE`子句允许这样做:
+Conditions allow us to filter the set of records we want to query. The `WHERE` clause allows to do that:
 
 ```php
 <?php
@@ -464,7 +466,7 @@ $phql = 'SELECT * FROM Cars WHERE Cars.id BETWEEN 1 AND 100';
 $cars = $manager->executeQuery($phql);
 ```
 
-同时，作为PHQL的一部分，准备的参数会自动转义输入数据，引入更多的安全性:
+Also, as part of PHQL, prepared parameters automatically escape the input data, introducing more security:
 
 ```php
 <?php
@@ -490,7 +492,7 @@ $cars = $manager->executeQuery(
 
 ## 插入数据
 
-使用PHQL，可以使用熟悉的insert语句插入数据:
+With PHQL it's possible to insert data using the familiar INSERT statement:
 
 ```php
 <?php
@@ -519,7 +521,7 @@ $manager->executeQuery(
 );
 ```
 
-Phalcon不只是将PHQL语句转换成SQL。 模型中定义的所有事件和业务规则都像手动创建单个对象一样执行。 让我们在模型汽车上添加一个业务规则。 一辆车的价格不能低于1万美元:
+Phalcon doesn't only transform the PHQL statements into SQL. All events and business rules defined in the model are executed as if we created individual objects manually. Let's add a business rule on the model cars. A car cannot cost less than $ 10,000:
 
 ```php
 <?php
@@ -542,7 +544,7 @@ class Cars extends Model
 }
 ```
 
-如果我们在Cars模型中插入以下`INSERT`，操作将不会成功，因为价格不符合我们实现的业务规则。 通过检查插入的状态，我们可以打印内部生成的任何验证消息:
+If we made the following `INSERT` in the models Cars, the operation will not be successful because the price does not meet the business rule that we implemented. By checking the status of the insertion we can print any validation messages generated internally:
 
 ```php
 <?php
@@ -562,7 +564,7 @@ if ($result->success() === false) {
 
 ## 更新数据
 
-更新行与插入行非常相似。 您可能知道，更新记录的指令是UPDATE。 当一条记录被更新时，将对每一行执行与更新操作相关的事件。
+Updating rows is very similar than inserting rows. As you may know, the instruction to update records is UPDATE. When a record is updated the events related to the update operation will be executed for each row.
 
 ```php
 <?php
@@ -591,12 +593,12 @@ $manager->executeQuery(
 );
 ```
 
-一个`UPDATE`语句执行两个阶段的更新:
+An `UPDATE` statement performs the update in two phases:
 
 * 首先，如果`UPDATE`具有`WHERE`子句检索所有符合这些条件的对象，
 * 其次，基于查询对象，它更新/更改将其存储到关系数据库的请求属性
 
-这种操作方式允许事件、虚拟外键和验证参与更新过程。 综上所述，以下代码:
+This way of operation allows that events, virtual foreign keys and validations take part of the updating process. In summary, the following code:
 
 ```php
 <?php
@@ -614,7 +616,7 @@ if ($result->success() === false) {
 }
 ```
 
-相当于:
+is somewhat equivalent to:
 
 ```php
 <?php
@@ -644,7 +646,7 @@ $success = $process();
 
 ## 删除数据
 
-当一个记录被删除时，与删除操作相关的事件将对每一行执行:
+When a record is deleted the events related to the delete operation will be executed for each row:
 
 ```php
 <?php
@@ -668,7 +670,7 @@ $manager->executeQuery(
 );
 ```
 
-`删除`操作也执行在两个阶段，就像`更新`。要检查删除是否产生任何验证消息，您应该检查返回的状态码:
+`DELETE` operations are also executed in two phases like `UPDATEs`. To check if the deletion produces any validation messages you should check the status code returned:
 
 ```php
 <?php
@@ -691,7 +693,7 @@ if ($result->success() === false) {
 
 ## 使用查询生成器创建查询
 
-构建器可以创建PHQL查询，而不需要编写PHQL语句，还提供IDE工具:
+A builder is available to create PHQL queries without the need to write PHQL statements, also providing IDE facilities:
 
 ```php
 <?php
@@ -713,7 +715,7 @@ $robots = $this->modelsManager->createBuilder()
     ->getSingleResult();
 ```
 
-这等于:
+That is the same as:
 
 ```php
 <?php
@@ -723,7 +725,7 @@ $phql = 'SELECT Robots.* FROM Robots JOIN RobotsParts p ORDER BY Robots.name LIM
 $result = $manager->executeQuery($phql);
 ```
 
-更多的构建器例子:
+More examples of the builder:
 
 ```php
 <?php
@@ -854,7 +856,7 @@ $builder->from(['r' => 'Store\Robots'])
 
 ### 绑定参数
 
-查询生成器中的绑定参数可以在查询被构造时设置，或者在执行时一次性全部超过:
+Bound parameters in the query builder can be set as the query is constructed or past all at once when executing:
 
 ```php
 <?php
@@ -880,7 +882,7 @@ $robots = $this->modelsManager->createBuilder()
 
 ## 不允许PHQL中的文字
 
-在PHQL中可以禁用文字，这意味着直接使用字符串、数字和布尔值将被禁用。 如果创建了将外部数据嵌入到PHQL语句上的PHQL语句，这可能会使应用程序面临潜在的SQL注入:
+Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings will be disallowed. If PHQL statements are created embedding external data on them, this could open the application to potential SQL injections:
 
 ```php
 <?php
@@ -890,15 +892,15 @@ $phql   = "SELECT * FROM Models\Users WHERE login = '$login'";
 $result = $manager->executeQuery($phql);
 ```
 
-如果`$login` 被更改为 `' OR '' = '`, name生成的PHQL就是:
+If `$login` is changed to `' OR '' = '`, the produced PHQL is:
 
 ```sql
 SELECT * FROM Models\Users WHERE login = '' OR '' = ''
 ```
 
-无论数据库中存储的登录名是什么，它总是`true`。
+Which is always `true` no matter what the login stored in the database is.
 
-如果不允许字面值的字符串可以作为PHQL语句的一部分使用，那么就会抛出一个异常，迫使开发人员使用绑定参数。 可以以安全的方式编写相同的查询, 如下所示:
+If literals are disallowed strings can be used as part of a PHQL statement, thus an exception will be thrown forcing the developer to use bound parameters. The same query can be written in a secure way like this:
 
 ```php
 <?php
@@ -913,7 +915,7 @@ $result = $manager->executeQuery(
 );
 ```
 
-您可以通过以下方式不允许文本:
+You can disallow literals in the following way:
 
 ```php
 <?php
@@ -927,13 +929,13 @@ Model::setup(
 );
 ```
 
-即使允许或不允许使用文本, 也可以使用绑定参数。不允许它们只是开发人员在 web 应用程序中可以采取的另一个安全决定。
+Bound parameters can be used even if literals are allowed or not. Disallowing them is just another security decision a developer could take in web applications.
 
 <a name='escaping-reserved-words'></a>
 
 ## 转义保留字
 
-PHQL 有几个保留字, 如果要将其中任何一个用作属性或模型名称, 则需要使用跨数据库转义分隔符 ` [` 和 `] ` 来转义这些单词:
+PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those words using the cross-database escaping delimiters `[` and `]`:
 
 ```php
 <?php
@@ -945,13 +947,13 @@ $phql   = 'SELECT id, [Like] FROM Posts';
 $result = $manager->executeQuery($phql);
 ```
 
-根据应用程序当前运行的数据库系统，将分隔符动态转换为有效的分隔符。
+The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
 
 <a name='lifecycle'></a>
 
 ## PHQL生命周期
 
-作为一种高级语言, PHQL 使开发人员能够个性化和自定义不同方面, 以满足他们的需求。 以下是执行的每个 PHQL 语句的生命周期:
+Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs. The following is the life cycle of each PHQL statement executed:
 
 * 对 PHQL 进行解析并转换为中间表示 (IR), 该表示独立于数据库系统实现的 sql
 * IR 根据与模型关联的数据库系统转换为有效的 sql
@@ -961,7 +963,7 @@ $result = $manager->executeQuery($phql);
 
 ## 使用原始的SQL
 
-数据库系统可以提供 PHQL 不支持的特定 sql 扩展, 在这种情况下, 原始 sql 可能是合适的:
+A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropriate:
 
 ```php
 <?php
@@ -989,7 +991,7 @@ class Robots extends Model
 }
 ```
 
-如果原始SQL查询在您的应用程序中是常见的，一个通用的方法可以添加到您的模型:
+If raw SQL queries are common in your application a generic method could be added to your model:
 
 ```php
 <?php
@@ -1017,7 +1019,7 @@ class Robots extends Model
 }
 ```
 
-以上`findByRawSql`可使用如下:
+The above `findByRawSql` could be used as follows:
 
 ```php
 <?php
@@ -1034,7 +1036,7 @@ $robots = Robots::findByRawSql(
 
 ## 疑难解答
 
-使用PHQL时要记住的一些事情:
+Some things to keep in mind when using PHQL:
 
 * 类是区分大小写的，如果一个类在创建时没有使用相同的名称定义，这可能会导致在具有区分大小写文件系统(如Linux) 的操作系统中出现意外行为。
 * 必须在连接中定义正确的字符集，才能成功绑定参数。

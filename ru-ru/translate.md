@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Поддержка многоязычности
 
-Компонент `Phalcon\Translate` поможет в создании многоязычных приложений. Приложения, использующие этот компонент, отображают содержимое на разных языках, основываясь на выборе пользователя из поддерживаемых приложением.
+The component `Phalcon\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
 <a name='adapters'></a>
 
 ## Adapters
 
-Этот компонент позволяет использовать адаптеры для чтения, перевода сообщений из различных источников в едином виде.
+This component makes use of adapters to read translation messages from different sources in a unified way.
 
 | Адаптер                                                                               | Описание                                                                                             |
 | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
@@ -26,7 +28,7 @@ layout: article language: 'en' version: '4.0'
 
 ### Фабрика
 
-Загружает адаптер используя параметр `adapter`:
+Loads Translate Adapter class using `adapter` option
 
 ```php
 <?php
@@ -48,7 +50,7 @@ $translate = Factory::load($options);
 
 ## Использование компонента
 
-Строки переводов хранятся в файлах. Структура этих файлов может отличаться в зависимости от используемого адаптера. Phalcon дает вам свободу выбора в организации правил перевода строк. Типичной структурой может быть:
+Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:
 
 ```bash
 app/messages/en.php
@@ -57,7 +59,7 @@ app/messages/fr.php
 app/messages/zh.php
 ```
 
-Каждый файл содержит массив переводов в виде ключ/значение. Для каждого файла перевода ключи уникальны. Один и тот же массив используется в разных файлах, ключи в нём остаются прежними, а значения содержат переводы строк, разные для разных языков.
+Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in different files, where keys remain the same and values contain the translated strings depending on each language.
 
 ```php
 <?php
@@ -82,9 +84,9 @@ $messages = [
     'song'    => 'La chanson est %song%',;
 ```
 
-Механизм осуществления перевода в приложении тривиален, но зависит от предпочитаемого вами способа реализации. Вы можете использовать автоматическое определение языка из браузера пользователя, или вы можете предоставить выбор языка пользователю.
+Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
 
-Простой способ обнаружения языка пользователя — разбор содержимого `$_SERVER['HTTP_ACCEPT_LANGUAGE']`, доступ к нему можно получить непосредственно обратившись в `$this->request->getBestLanguage()` из действия/контроллера:
+A simple way of detecting the user's language is to parse the `$_SERVER['HTTP_ACCEPT_LANGUAGE']` contents, or if you wish, access it directly by calling `$this->request->getBestLanguage()` from an action/controller:
 
 ```php
 <?php
@@ -126,7 +128,7 @@ class UserController extends Controller
 }
 ```
 
-Метод `_getTranslation()` в этом примере доступен для всех действий, требующих перевода. Переменная `$t` передается в представление и позволяет непосредственно переводить строки:
+The `_getTranslation()` method is available for all actions that require translations. The `$t` variable is passed to the views, and with it, we can translate strings in that layer:
 
 ```php
 <!-- welcome -->
@@ -144,9 +146,9 @@ The `_()` method is returning the translated string based on the index passed. S
 
 Some applications implement multilingual on the URL such as `https://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](/4.0/en/routing).
 
-Реализация выше удобна, но она требует наличия базового контроллера для реализации `getTranslation()` и возвращения компонента `Phalcon\Translate\Adapter\NativeArray`. Кроме того, компонент должен быть передан в представление, как в примере выше, в виде переменной `$t`.
+The implementation above is helpful but it requires a base controller to implement the `_getTranslation()` and return the `Phalcon\Translate\Adapter\NativeArray` component. Additionaly the component needs to be set in the view as seen above in the `$t` variable.
 
-Вы всегда можете реализовать эту функциональность в своём собственном классе и зарегистрировать его в DI:
+You can always wrap this functionality in its own class and register that class in the DI container:
 
 ```php
 <?php
@@ -180,7 +182,7 @@ class Locale extends Component
 }
 ```
 
-Таким образом, вы можете использовать этот компонент в контроллерах:
+This way you can use the component in controllers:
 
 ```php
 <?php
@@ -199,7 +201,7 @@ class MyController extends Controller
 }
 ```
 
-или напрямую в представлении
+or in a view directly
 
 ```php
 <?php echo $locale->_('hi-name', ['name' => 'Майк']);

@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -43,7 +45,7 @@ The caching process is divided into 2 parts:
 
 Instantiating frontend or backend adapters can be achieved by two ways:
 
-حالت سنتی
+Traditional way
 
 ```php
 <?php

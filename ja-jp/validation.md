@@ -4,13 +4,15 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # バリデーション
 
-[Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. このコンポーネントを使用して、モデルまたはコレクションに属していないデータオブジェクトに対するバリデーションルールを実装できます。
+[Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
 The following example shows its basic usage:
 
@@ -59,13 +61,13 @@ if (count($messages)) {
 }
 ```
 
-このコンポーネントは疎結合に設計されているため、フレームワークが提供するバリデータとともに独自のバリデータを作成することができます。
+The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
 
 <a name='initializing'></a>
 
 ## バリデーションの初期化
 
-Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation](api/Phalcon_Validation) object. コードと構成を再利用しやすくするために、バリデーションを別々のファイルに入れることができます:
+Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation](api/Phalcon_Validation) object. You can put your validations in a separate file for better re-use code and organization:
 
 ```php
 <?php
@@ -108,7 +110,7 @@ class MyValidation extends Validation
 }
 ```
 
-次に、独自のバリデータを初期化して使用します:
+Then initialize and use your own validator:
 
 ```php
 <?php
@@ -128,7 +130,7 @@ if (count($messages)) {
 
 ## バリデーター
 
-Phalconは下記のような組み込みバリデーター一式をコンポーネントとして公開しています:
+Phalcon exposes a set of built-in validators for this component:
 
 | Class                                                                                         | Explanation                         |
 | --------------------------------------------------------------------------------------------- | ----------------------------------- |
@@ -152,7 +154,7 @@ Phalconは下記のような組み込みバリデーター一式をコンポー�
 | [Phalcon\Validation\Validator\CreditCard](api/Phalcon_Validation_Validator_CreditCard)     | クレジットカード番号を検証します。                   |
 | [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback)         | コールバック関数を使用して検証します。                 |
 
-次の例では、コンポーネントにどうやってバリデーターを作成するかを説明します。
+The following example explains how to create additional validators for this component:
 
 ```php
 <?php
@@ -193,13 +195,13 @@ class IpValidator extends Validator
 }
 ```
 
-バリデーターは、検証が成功したかどうかを示す有効なブール値を返すことが重要です。
+It is important that validators return a valid boolean value indicating if the validation was successful or not.
 
 <a name='callback'></a>
 
 ## Callbackバリデーター
 
-By using [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. `true`を返すことでバリデーションが成功し、`false`を返すとバリデーションが失敗したことを意味します。 When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). 例を示します:
+By using [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
 
 ```php
 <?php
@@ -265,7 +267,7 @@ $messages = $validation->validate(['amount' => 10]); // will return message from
 
 [Phalcon\Validation](api/Phalcon_Validation) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
 
-Each message consists of an instance of the class [Phalcon\Validation\Message](api/Phalcon_Validation_Message). `getMessages()`メソッドで、生成されたメッセージのセットが取得できます。 各メッセージは、メッセージを生成した属性やメッセージの種類のような拡張情報を提供します。
+Each message consists of an instance of the class [Phalcon\Validation\Message](api/Phalcon_Validation_Message). The set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information like the attribute that generated the message or the message type:
 
 ```php
 <?php
@@ -281,7 +283,7 @@ if (count($messages)) {
 }
 ```
 
-`message`パラメータを渡すと、各バリデータのデフォルトメッセージを変更/変換できます。それから、メッセージのワイルドカード`:field`をフィールドのラベルに置き換えることもできます:
+You can pass a `message` parameter to change/translate the default message in each validator, even it's possible to use the wildcard `:field` in the message to be replaced by the label of the field:
 
 ```php
 <?php
@@ -298,7 +300,7 @@ $validation->add(
 );
 ```
 
-デフォルトでは、`getMessages()`メソッドは、バリデーション中に生成されたすべてのメッセージを返します。`filter()`メソッドを使用して、特定のフィールドのメッセージをフィルタリングできます。
+By default, the `getMessages()` method returns all the messages generated during validation. You can filter messages for a specific field using the `filter()` method:
 
 ```php
 <?php
@@ -319,7 +321,7 @@ if (count($messages)) {
 
 ## データのフィルタリング
 
-バリデーションの前にデータをフィルタリングして、悪意のあるデータまたは不正確なデータが処理されないようにできます。
+Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
 
 ```php
 <?php
@@ -357,7 +359,7 @@ Filtering and sanitizing is performed using the [filter](/4.0/en/filter) compone
 
 ## バリデーションイベント
 
-バリデーションがクラスで構成されている場合、`beforeValidation()`メソッドおよび`afterValidation()`メソッドを実装して、追加のチェック、フィルタ、クリーンアップなどを実行できます。 If the `beforeValidation()` method returns false the validation is automatically cancelled:
+When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
 
 ```php
 <?php
@@ -410,7 +412,7 @@ class LoginValidation extends Validation
 
 ## バリデーションのキャンセル
 
-デフォルトでは、フィールドに割り当てられたすべてのバリデータは、いずれかが失敗したかどうかに関係なくテストされます。 この動作を変更するには、バリデーションコンポーネントが処理を中止する可能性のあるバリデーションを指定します:
+By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
 
 ```php
 <?php
@@ -452,9 +454,9 @@ $validation->add(
 );
 ```
 
-最初のバリデータには`true`の値を持つ`cancelOnFail`オプションがあります。したがって、バリデータが失敗した場合、チェーン内の残りのバリデータは実行されません。
+The first validator has the option `cancelOnFail` with a value of `true`, therefore if that validator fails the remaining validators in the chain are not executed.
 
-カスタムバリデータを作成している場合は、`cancelOnFail`オプションを設定することでバリデーションチェーンを動的に停止できます。
+If you are creating custom validators you can dynamically stop the validation chain by setting the `cancelOnFail` option:
 
 ```php
 <?php
@@ -488,7 +490,7 @@ class MyValidator extends Validator
 
 ## 空の値のバリデーションを避ける
 
-空の値が渡された場合に検証が実行されないように、すべてのビルトインバリデータにオプション`allowEmpty`を渡すことができます。
+You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
 
 ```php
 <?php
@@ -514,7 +516,7 @@ $validation->add(
 
 ## 再起的バリデーション
 
-`afterValidation()`メソッドを使用して、別のインスタンス内でValidationインスタンスを実行することもできます。 この例では、`CompanyValidation`インスタンスをバリデーションすると、`PhoneValidation`インスタンスもチェックされます。
+You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
 
 ```php
 <?php

@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # セキュリティ
 
-このコンポーネントは、パスワードハッシュやCross-Site Request Forgery ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)) 対策などの, 一般的なセキュリティタスクで開発者を支援します。
+This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 
 <a name='hashing'></a>
 
 ## パスワードのハッシュ
 
-プレーンテキストでパスワードを保存することは、セキュリティ上の習慣としては不適切です。 データベースへのアクセス権を持つ人は、すぐにすべてのユーザーアカウントにアクセスし、権限がなくても行動することができてしまいます。 To combat that, many applications use the familiar one way hashing methods '[md5](https://php.net/manual/en/function.md5.php)' and '[sha1](https://php.net/manual/en/function.sha1.php)'. しかし、ハードウェアは毎日進化し、より高速になり、これらのアルゴリズムは総当たり攻撃に対して脆弱になっています。 These attacks are also known as [rainbow tables](https://en.wikipedia.org/wiki/Rainbow_table).
+Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods '[md5](https://php.net/manual/en/function.md5.php)' and '[sha1](https://php.net/manual/en/function.sha1.php)'. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](https://en.wikipedia.org/wiki/Rainbow_table).
 
 The security component uses [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) as the hashing algorithm. Thanks to the '[Eksblowfish](https://en.wikipedia.org/wiki/Bcrypt#Algorithm)' key setup algorithm, we can make the password encryption as `slow` as we want. Slow algorithms minimize the impact of bruce force attacks.
 
@@ -50,7 +52,7 @@ class UsersController extends Controller
 }
 ```
 
-デフォルトの作業係数でパスワードのハッシュを保存します。より高い作業係数により暗号化が遅くなれば、パスワードの脆弱性が低くなります。パスワードが正しいかどうかを次のように確認できます。
+We saved the password hashed with a default work factor. A higher work factor will make the password less vulnerable as its encryption will be slow. We can check if the password is correct as follows:
 
 ```php
 <?php
@@ -87,9 +89,9 @@ The salt is generated using pseudo-random bytes with the PHP's function [openssl
 
 ## Cross-Site Request Forgery (CSRF) の保護
 
-これは、Webサイトやアプリケーションに対するもう1つの一般的な攻撃です。 ユーザーの登録やコメントの追加などのタスクを実行するように設計されたフォームは、この攻撃に対して脆弱です。
+This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
 
-そのアイデアは、フォームの値がアプリケーションの外部に送信されないようにすることです。 To fix this, we generate a [random nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:
+The idea is to prevent the form values from being sent outside our application. To fix this, we generate a [random nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:
 
 ```php
 <?php echo Tag::form('session/login') ?>
@@ -102,7 +104,7 @@ The salt is generated using pseudo-random bytes with the PHP's function [openssl
 </form>
 ```
 
-このコントローラのアクションでは、CSRFトークンが有効かどうかを確認できます:
+Then in the controller's action you can check if the CSRF token is valid:
 
 ```php
 <?php
@@ -122,7 +124,7 @@ class SessionController extends Controller
 }
 ```
 
-セッションアダプターをあなたのDIに追加するのを忘れないでください。そうしないと、このトークンチェックは動作しません。
+Remember to add a session adapter to your Dependency Injector, otherwise the token check won't work:
 
 ```php
 <?php
@@ -145,7 +147,7 @@ Adding a [captcha](https://www.google.com/recaptcha) to the form is also recomme
 
 ## コンポーネントの設定
 
-このコンポーネントは`security`としてサービスコンテナに自動的に登録されます。オプションを設定するために再登録することができます:
+This component is automatically registered in the services container as `security`, you can re-register it to setup its options:
 
 ```php
 <?php

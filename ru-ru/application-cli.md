@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='creating-cli-application'></a>
 
 # Создание консольного приложения
 
-Консольные приложения выполняются из командной строки.Они часто используются для работы cron, скриптов с долгим временем выполнения, командных утилит и т.п.
+CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
 <a name='structure'></a>
 
 ## Структура
 
-Минимальная структура консольного приложения будет выглядеть следующим образом:
+A minimal structure of a CLI application will look like this:
 
 * `app/config/config.php`
 * `app/tasks/MainTask.php`
@@ -26,9 +28,9 @@ layout: article language: 'en' version: '4.0'
 
 ## Создание загрузочного файла
 
-Как и в обычных MVC приложениях, для начальной загрузки приложения используется загрузочный файл. Однако для начальной загрузки приложения мы будем использовать файл cli.php, вместо загрузочного файла index.php, который используется в классических веб-приложениях.
+As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
 
-Ниже приведен образец загрузочного файла, который используется для этого примера.
+Below is a sample bootstrap that is being used for this example.
 
 ```php
 <?php
@@ -100,7 +102,7 @@ try {
 }
 ```
 
-Эта часть кода может быть запущена с помощью команды:
+This piece of code can be run using:
 
 ```bash
 php app/cli.php
@@ -110,9 +112,9 @@ php app/cli.php
 
 ## Задачи
 
-Принцип работы задач похож на работу контролеров. Любое консольное приложение нуждается по крайней мере в одной задаче, именуемой MainTask. Каждая задача должна иметь по крайней мере одной действие, именуемое mainAction, которое будет запущено, если не указано другое, явно. Эти соглашения являются умолчанием.
+Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
-Ниже приведен пример файла `app/tasks/MainTask.php`:
+Below is an example of the `app/tasks/MainTask.php` file:
 
 ```php
 <?php
@@ -132,9 +134,9 @@ class MainTask extends Task
 
 ## Обработка параметров
 
-Вы можете передавать параметры в действие, код для этого уже присутствует в примере загрузочного файла.
+It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
 
-Если вы запустите приложение, с задачей, составленной следующим образом:
+If you run the application with the following parameters and action:
 
 ```php
 <?php
@@ -164,7 +166,7 @@ class MainTask extends Task
 }
 ```
 
-Вы сможете запустить её используя следующую команду:
+We can then run the following command:
 
 ```bash
 php app/cli.php main test world universe
@@ -177,7 +179,7 @@ best regards, universe
 
 ## Запуск цепочки команд
 
-Также, возможно запускать задачи "цепочкой", если это необходимо. Для этого необходимо добавить само консольное приложение в DI:
+It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
 ```php
 <?php
@@ -201,7 +203,7 @@ try {
 }
 ```
 
-После этого, вы сможете использовать консольное приложение внутри любой задачи. Ниже приведен пример измененной задачи MainTask.php:
+Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
 
 ```php
 <?php

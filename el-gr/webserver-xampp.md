@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -58,7 +60,7 @@ If you can see the phalcon version in the `phpinfo()` output, congratulations!, 
 
 ## Screencast
 
-Το παρακάτω screencast είναι ένας βήμα προς βήμα οδηγός για να εγκαταστήσετε το Phalcon στα Windows:
+The following screencast is a step by step guide to install Phalcon on Windows:
 
 <div align="center">
   <iframe src="https://player.vimeo.com/video/40265988" 

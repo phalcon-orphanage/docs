@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -202,7 +204,7 @@ sites:
 
 The default type is `phalcon`. If the desired type is not allowed or not available `phalcon` will be used as fallback.
 
-Доступные типы:
+Available types:
 
 * `phalcon`
 * `slayer`

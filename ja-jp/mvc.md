@@ -4,20 +4,22 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='architecture'></a>
 
 # MVC アーキテクチャ
 
-Phalcon は、モデル、ビュー、コントローラのアーキテクチャ (これは [MVC](https://en.wikipedia.org/wiki/Model–view–controller) と呼ばれます) でアプリケーションを実装するためのオブジェクト指向のクラスを提供しています。 このデザインパターンは、他のウェブフレームワークやデスクトップアプリケーションでも広く使用されています。
+Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) in your application. This design pattern is widely used by other web frameworks and desktop applications.
 
-MVC の利点は以下の通りです:
+MVC benefits include:
 
 * ビジネスロジックをユーザインタフェースとデータベース層から分離
 * 異なる種類のコードがどこに属するかを明確にし、メンテナンスを容易にする
 
-MVC を使用する場合、アプリケーションへの全てのリクエストは MVC アーキテクチャによって管理されます。 C 言語で記述された Phalcon のクラスは、PHP アプリケーションで、このパターンをハイパフォーマンスなアプローチで提供します。
+If you decide to use MVC, every request to your application resources will be managed by the MVC architecture. Phalcon classes are written in C language, offering a high performance approach of this pattern in a PHP based application.
 
 <a name='models'></a>
 
@@ -35,4 +37,4 @@ MVC を使用する場合、アプリケーションへの全てのリクエス�
 
 ## Controllers
 
-コントローラは、モデルとビューの間の '流れ' を提供します。 コントローラは、ウェブブラウザからの要求を受け取り、モデルのデータを問い合わせ、そのデータをビューに渡して表示する役割を果たします。 [Learn more](/4.0/en/controllers)
+The controllers provide the 'flow' between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [Learn more](/4.0/en/controllers)

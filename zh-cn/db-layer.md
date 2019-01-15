@@ -4,15 +4,17 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # 数据库抽象层
 
-[Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. 它是由数据库系统完全用 C 编写的一个独立的高级别抽象层
+[Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
-此组件允许比使用传统模式更低的级别的数据库操作。
+This component allows for a lower level database manipulation than using traditional models.
 
 <a name='adapters'></a>
 
@@ -61,7 +63,7 @@ The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface mus
 
 ## 数据库语言
 
-Phalcon封装在方言中每个数据库引擎的具体细节。那些向适配器提供常见的函数和 SQL 生成器。
+Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
 
 | 类                                                                     | 描述                        |
 | --------------------------------------------------------------------- | ------------------------- |

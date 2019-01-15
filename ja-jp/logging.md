@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -48,7 +50,7 @@ $logger = Factory::load($options);
 
 ## Creating a Log
 
-次の例は、ログを作成し、メッセージを追加する方法を示します。
+The example below shows how to create a log and add messages to it:
 
 ```php
 <?php

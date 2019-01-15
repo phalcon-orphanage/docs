@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='creating-cli-application'></a>
 
 # 创建命令行 (CLI) 应用程序
 
-CLI 应用程序从命令行执行。它们还可用于创建 cron 作业、 脚本、 命令实用程序和更多。
+CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
 <a name='structure'></a>
 
 ## 结构
 
-最小结构的 CLI 应用程序将如下所示︰
+A minimal structure of a CLI application will look like this:
 
 * `app/config/config.php`
 * `app/tasks/MainTask.php`
@@ -26,9 +28,9 @@ CLI 应用程序从命令行执行。它们还可用于创建 cron 作业、 脚
 
 ## 创建一个引导
 
-在常规的 MVC 应用程序，引导文件用于启动应用程序。 我们使用 cli.php 文件引导应用程序，而不是 web 应用程序中的 index.php 引导程序。
+As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
 
-下面是一个简单的引导程序，被使用于此示例。
+Below is a sample bootstrap that is being used for this example.
 
 ```php
 <?php
@@ -99,7 +101,7 @@ try {
 }
 ```
 
-可以使用运行这段代码︰
+This piece of code can be run using:
 
 ```bash
 php app/cli.php
@@ -109,9 +111,9 @@ php app/cli.php
 
 ## 任务
 
-任务的工作类似于控制器。任何 CLI 应用程序至少需要一个MainTask 和一个 mainAction ，每个任务都需要有一个 mainAction将运行，如果没有明确给出一个action时。
+Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
-下面是 `app/tasks/MainTask.php` 文件的一个示例︰
+Below is an example of the `app/tasks/MainTask.php` file:
 
 ```php
 <?php
@@ -131,9 +133,9 @@ class MainTask extends Task
 
 ## 处理操作参数
 
-也可以将参数传递到操作，此代码已存在于样本引导。
+It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
 
-如果您运行该应用程序附带以下参数与行动︰
+If you run the application with the following parameters and action:
 
 ```php
 <?php
@@ -163,7 +165,7 @@ class MainTask extends Task
 }
 ```
 
-然后，我们可以运行以下命令︰
+We can then run the following command:
 
 ```bash
 php app/cli.php main test world universe
@@ -176,7 +178,7 @@ best regards, universe
 
 ## 在任务链中执行多个任务
 
-在任务链中运行多个任务也是可以得，如果它是必需的。要做到这一点必须向DI，添加控制台本身︰
+It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
 ```php
 <?php
@@ -200,7 +202,7 @@ try {
 }
 ```
 
-然后你可以在任何任务中使用控制台。下面是修改后的 MainTask.php 示例︰
+Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
 
 ```php
 <?php

@@ -4,21 +4,23 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Уровень абстракции базы данных
 
-[Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. Он состоит из независимых абстракций высокого уровня для баз данных, полностью написанных на C.
+[Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
-Этот компонент позволяет производить манипуляции с базой данных на более низком уровне, чем при использовании традиционных моделей.
+This component allows for a lower level database manipulation than using traditional models.
 
 <a name='adapters'></a>
 
 ## Адаптеры баз данных
 
-Данный компонент позволяет использовать адаптеры для инкапсуляции конкретных деталей системы баз данных. Phalcon использует PDO для подключения к базам данных. Поддерживаются следующие СУБД:
+This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
 
 | Класс                                                                          | Описание                                                                                                                                                                                                                          |
 | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -32,7 +34,7 @@ layout: article language: 'en' version: '4.0'
 
 <a name='factory'></a>
 
-Загружает адаптер PDO используя параметр `adapter`. Например:
+Loads PDO Adapter class using `adapter` option. For example:
 
 ```php
 <?php
@@ -61,7 +63,7 @@ The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface mus
 
 ## Диалекты базы данных
 
-Phalcon инкапсулирует специфические детали каждого компонента баз данных в диалектах. Которые в свою очередь предоставляют адаптером общие функции и генератор SQL.
+Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
 
 | Класс                                                                 | Описание                                      |
 | --------------------------------------------------------------------- | --------------------------------------------- |

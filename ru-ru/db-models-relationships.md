@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -78,7 +80,7 @@ Check the EER diagram to understand better the relations:
 
 ![](/assets/images/content/models-relationships-eer-1.png)
 
-Модели с их отношениями могут быть реализованы следующим образом:
+The models with their relations could be implemented as follows:
 
 ```php
 <?php
@@ -158,7 +160,7 @@ class RobotsParts extends Model
 
 The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
 
-Отношение “многие-ко-многим” требуют 3 модели и определение атрибутов, участвующих в отношениях:
+Many to many relationships require 3 models and define the attributes involved in the relationship:
 
 ```php
 <?php

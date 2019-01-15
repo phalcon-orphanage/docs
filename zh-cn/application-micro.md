@@ -4,13 +4,15 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 # 微型应用
 
-Phalcon 提供一个非常 '轻' 的应用，因此您可以用很少的的 PHP 代码创建 'Micro' 应用。
+Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code.
 
-微应用程序，适合小的应用，这样会有很低的资源开销。 Such applications are for instance our `[website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
+Micro applications are suitable for small applications that will have very low overhead. Such applications are for instance our `[website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
 
 ```php
 <?php

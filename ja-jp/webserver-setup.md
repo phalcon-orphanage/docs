@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='setup'></a>
 
@@ -16,7 +18,7 @@ In order for the routing of the Phalcon application to work, you will need to se
 
 ## PHP-FPM
 
-The [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. 現在では、PHP-FPMは全てのLinuxベースのPHPディストリビューションに含まれています。
+The [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. Nowadays, PHP-FPM is bundled with all Linux based PHP distributions.
 
 On **Windows** PHP-FPM is in the PHP distribution archive through the file `php-cgi.exe` and you can start it with this script to help set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
 
@@ -56,13 +58,13 @@ Then point your browser to https://localhost:8000/ to check if everything is wor
 
 ## Nginx
 
-[Nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. 従来のサーバーとは異なり、Nginx は要求を処理するスレッドに依存しません。 代わりに、よりスケーラブルなイベント駆動 (非同期) アーキテクチャを使用します。 このアーキテクチャは、ロードするメモリ量を抑えます。しかしより重要なことは、メモリ量を予測できることです。
+[Nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
 
-Nginx と PHP-FPM と Phalcon のパワフルなセットは、PHP アプリケーションの最高のパフォーマンスを提供します。
+Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
 ### Nginxのインストール
 
-<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/" target="_blank">NginX公式サイト</a>
+<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/" target="_blank">NginX Offical Site</a>
 
 <a name='nginx-phalcon-configuration'></a>
 
@@ -167,7 +169,7 @@ Usually `start nginx` from the command line but this depends on your installatio
 
 ### Phalcon configuration
 
-Phalcon と Apache を使用する、よくある構成を次に示します。 These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/4.0/en/routing). 一般的にアプリケーションは次の構造になります。
+The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/4.0/en/routing). Commonly an application has the following structure:
 
 ```bash
 test/
@@ -186,7 +188,7 @@ test/
 
 #### ドキュメントルート
 
-ここでは、最も一般的なケースとして、アプリケーションがドキュメントのルートの下の任意のディレクトリにインストールされています。 この場合、`.htaccess`ファイルを2つ使います。最初の一つはそのアプリケーションのドキュメントルート (`public/`) への全てのアプリケーションのフォーワーディングからアプリケーションのコードを隠します。
+This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`).
 
 ##### Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set. {.alert.alert-warning}
 
@@ -200,7 +202,7 @@ test/
 </IfModule>
 ```
 
-2 番目の `.htaccess` ファイルは`public/` ディレクトリに置きます。これは`public/index.php` ファイルへのすべての URIをリライトします:
+A second `.htaccess` file is located in the `public/` directory, this re-writes all the URIs to the `public/index.php` file:
 
 ```apacheconfig
 # test/public/.htaccess
