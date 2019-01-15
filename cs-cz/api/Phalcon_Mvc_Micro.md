@@ -1,17 +1,16 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
-title: 'Phalcon\Mvc\Micro'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Micro'
+
+* * *
 
 # Class **Phalcon\Mvc\Micro**
 
-*extends* abstract class [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
+*extends* abstract class [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/3.4/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php)
+*implements* [Phalcon\Events\EventsAwareInterface](/4.0/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/micro.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/micro.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of code to create a PHP application. Micro applications are suitable to small applications, APIs and prototypes in a practical way.
 
@@ -33,55 +32,55 @@ $app->handle();
 
 ## Methods
 
-public **__construct** ([[Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector])
+public **__construct** ([[Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector])
 
 Phalcon\Mvc\Micro constructor
 
-public **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the DependencyInjector container
 
-public [Phalcon\Mvc\Router\RouteInterface](/3.4/en/api/Phalcon_Mvc_Router_RouteInterface) **map** (*string* $routePattern, *callable* $handler)
+public [Phalcon\Mvc\Router\RouteInterface](/4.0/en/api/Phalcon_Mvc_Router_RouteInterface) **map** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler without any HTTP method constraint
 
-public [Phalcon\Mvc\Router\RouteInterface](/3.4/en/api/Phalcon_Mvc_Router_RouteInterface) **get** (*string* $routePattern, *callable* $handler)
+public [Phalcon\Mvc\Router\RouteInterface](/4.0/en/api/Phalcon_Mvc_Router_RouteInterface) **get** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is GET
 
-public [Phalcon\Mvc\Router\RouteInterface](/3.4/en/api/Phalcon_Mvc_Router_RouteInterface) **post** (*string* $routePattern, *callable* $handler)
+public [Phalcon\Mvc\Router\RouteInterface](/4.0/en/api/Phalcon_Mvc_Router_RouteInterface) **post** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is POST
 
-public [Phalcon\Mvc\Router\RouteInterface](/3.4/en/api/Phalcon_Mvc_Router_RouteInterface) **put** (*string* $routePattern, *callable* $handler)
+public [Phalcon\Mvc\Router\RouteInterface](/4.0/en/api/Phalcon_Mvc_Router_RouteInterface) **put** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is PUT
 
-public [Phalcon\Mvc\Router\RouteInterface](/3.4/en/api/Phalcon_Mvc_Router_RouteInterface) **patch** (*string* $routePattern, *callable* $handler)
+public [Phalcon\Mvc\Router\RouteInterface](/4.0/en/api/Phalcon_Mvc_Router_RouteInterface) **patch** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is PATCH
 
-public [Phalcon\Mvc\Router\RouteInterface](/3.4/en/api/Phalcon_Mvc_Router_RouteInterface) **head** (*string* $routePattern, *callable* $handler)
+public [Phalcon\Mvc\Router\RouteInterface](/4.0/en/api/Phalcon_Mvc_Router_RouteInterface) **head** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is HEAD
 
-public [Phalcon\Mvc\Router\RouteInterface](/3.4/en/api/Phalcon_Mvc_Router_RouteInterface) **delete** (*string* $routePattern, *callable* $handler)
+public [Phalcon\Mvc\Router\RouteInterface](/4.0/en/api/Phalcon_Mvc_Router_RouteInterface) **delete** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is DELETE
 
-public [Phalcon\Mvc\Router\RouteInterface](/3.4/en/api/Phalcon_Mvc_Router_RouteInterface) **options** (*string* $routePattern, *callable* $handler)
+public [Phalcon\Mvc\Router\RouteInterface](/4.0/en/api/Phalcon_Mvc_Router_RouteInterface) **options** (*string* $routePattern, *callable* $handler)
 
 Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
-public **mount** ([Phalcon\Mvc\Micro\CollectionInterface](/3.4/en/api/Phalcon_Mvc_Micro_CollectionInterface) $collection)
+public **mount** ([Phalcon\Mvc\Micro\CollectionInterface](/4.0/en/api/Phalcon_Mvc_Micro_CollectionInterface) $collection)
 
 Mounts a collection of handlers
 
-public [Phalcon\Mvc\Micro](/3.4/en/api/Phalcon_Mvc_Micro) **notFound** (*callable* $handler)
+public [Phalcon\Mvc\Micro](/4.0/en/api/Phalcon_Mvc_Micro) **notFound** (*callable* $handler)
 
 Sets a handler that will be called when the router doesn't match any of the defined routes
 
-public [Phalcon\Mvc\Micro](/3.4/en/api/Phalcon_Mvc_Micro) **error** (*callable* $handler)
+public [Phalcon\Mvc\Micro](/4.0/en/api/Phalcon_Mvc_Micro) **error** (*callable* $handler)
 
 Sets a handler that will be called when an exception is thrown handling the route
 
@@ -89,7 +88,7 @@ public **getRouter** ()
 
 Returns the internal router used by the application
 
-public [Phalcon\Di\ServiceInterface](/3.4/en/api/Phalcon_Di_ServiceInterface) **setService** (*string* $serviceName, *mixed* $definition, [*boolean* $shared])
+public [Phalcon\Di\ServiceInterface](/4.0/en/api/Phalcon_Di_ServiceInterface) **setService** (*string* $serviceName, *mixed* $definition, [*boolean* $shared])
 
 Sets a service from the DI
 
@@ -157,19 +156,19 @@ public **offsetUnset** (*string* $alias)
 
 Removes a service from the internal services container using the array syntax
 
-public [Phalcon\Mvc\Micro](/3.4/en/api/Phalcon_Mvc_Micro) **before** (*callable* $handler)
+public [Phalcon\Mvc\Micro](/4.0/en/api/Phalcon_Mvc_Micro) **before** (*callable* $handler)
 
 Appends a before middleware to be called before execute the route
 
-public [Phalcon\Mvc\Micro](/3.4/en/api/Phalcon_Mvc_Micro) **afterBinding** (*callable* $handler)
+public [Phalcon\Mvc\Micro](/4.0/en/api/Phalcon_Mvc_Micro) **afterBinding** (*callable* $handler)
 
 Appends a afterBinding middleware to be called after model binding
 
-public [Phalcon\Mvc\Micro](/3.4/en/api/Phalcon_Mvc_Micro) **after** (*callable* $handler)
+public [Phalcon\Mvc\Micro](/4.0/en/api/Phalcon_Mvc_Micro) **after** (*callable* $handler)
 
 Appends an 'after' middleware to be called after execute the route
 
-public [Phalcon\Mvc\Micro](/3.4/en/api/Phalcon_Mvc_Micro) **finish** (*callable* $handler)
+public [Phalcon\Mvc\Micro](/4.0/en/api/Phalcon_Mvc_Micro) **finish** (*callable* $handler)
 
 Appends a 'finish' middleware to be called when the request is finished
 
@@ -181,7 +180,7 @@ public **getModelBinder** ()
 
 Gets model binder
 
-public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](/3.4/en/api/Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache])
+public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](/4.0/en/api/Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache])
 
 Sets model binder
 
@@ -197,18 +196,18 @@ public **getBoundModels** ()
 
 Returns bound models from binder instance
 
-public **getDI** () inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
+public **getDI** () inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
 
 Returns the internal dependency injector
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/en/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
 
 Sets the event manager
 
-public **getEventsManager** () inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
+public **getEventsManager** () inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
 
 Returns the internal event manager
 
-public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/3.4/en/api/Phalcon_Di_Injectable)
+public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
 
 Magic method __get
