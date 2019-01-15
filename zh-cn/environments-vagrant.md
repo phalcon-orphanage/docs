@@ -1,8 +1,10 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
@@ -18,7 +20,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 * Operating System: Windows, Linux, or macOS
 * [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
-* [VMware Fusion](http://www.vmware.com/products/fusion) (or Workstation - if you want to build the VMware box)
+* [VMware Fusion](https://www.vmware.com/products/fusion) (or Workstation - if you want to build the VMware box)
 * [Vagrant](https://www.vagrantup.com/downloads.html) >= 1.9.8
 
 <a name='packages-included'></a>
@@ -259,7 +261,7 @@ You must add the "domains" for your Nginx sites to the hosts file on your machin
 
 Make sure the IP address listed is the one set in your `settings.yml` file. Once you have added the domain to your `hosts` file and launched the Vagrant box you will be able to access the site via your web browser:
 
-    http://phalcon.local
+    https://phalcon.local
     
 
 <h5 class='alert alert-danger'>To enable adding new sites to the <code>hosts</code> file automatically use <code>vagrant-hostsupdater</code> plugin: </h5>
@@ -304,7 +306,7 @@ To destroy the machine, you may use the `vagrant destroy --force` command.
 
 ### Accessing Phalcon Box globally
 
-Sometimes you may want to `vagrant up` your Phalcon Box machine from anywhere on your filesystem. You can do this on Mac or Linux systems by adding a [Bash function](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-8.html) to your Bash profile. On Windows, you may accomplish this by adding a "batch" file to your `PATH`. These scripts will allow you to run any Vagrant command from anywhere on your system and will automatically point that command to your Phalcon Box installation:
+Sometimes you may want to `vagrant up` your Phalcon Box machine from anywhere on your filesystem. You can do this on Mac or Linux systems by adding a [Bash function](https://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-8.html) to your Bash profile. On Windows, you may accomplish this by adding a "batch" file to your `PATH`. These scripts will allow you to run any Vagrant command from anywhere on your system and will automatically point that command to your Phalcon Box installation:
 
 <a name='daily-usage-accessing-box-globally-mac-linux'></a>
 
@@ -415,7 +417,7 @@ variables:
       value: "mysql:host=127.0.0.1;dbname=phalcon_test"
 ```
 
-This way you will be able to use these variables in your applications or scripts. For example when configuring [Codeception](http://codeception.com) in such way:
+This way you will be able to use these variables in your applications or scripts. For example when configuring [Codeception](https://codeception.com) in such way:
 
 ```yaml
 # File codeception.yml
@@ -585,7 +587,7 @@ natdnshostresolver: off
 
 ### Mail catcher
 
-By default, Phalcon Box redirects all PHP emails to [MailHog](https://github.com/mailhog/MailHog) (instead of sending them to the outside world). You can access the MailHog UI at `http://localhost:8025/` (or whatever domain you have configured in `settings.yml`).
+By default, Phalcon Box redirects all PHP emails to [MailHog](https://github.com/mailhog/MailHog) (instead of sending them to the outside world). You can access the MailHog UI at `https://localhost:8025/` (or whatever domain you have configured in `settings.yml`).
 
 <a name='troubleshooting'></a>
 
