@@ -4,11 +4,13 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 # Καλώς ορίσατε
 
-Καλώς ήρθατε στην τεκμηρίωση για το Phalcon framework.
+Welcome to the documentation for the Phalcon framework.
 
 ## Mission
 
@@ -16,13 +18,13 @@ Our mission is to offer developers an advanced, feature rich tool, which they ca
 
 ## Τι είναι το Phalcon
 
-Το Phalcon είναι ένα πλαίσιο PHP πλήρης στοίβας και ανοικτού κώδικα, γραμμένο ως επέκταση C. Το Phalcon είναι βελτιστοποιημένο για υψηλή απόδοση. Η μοναδική αρχιτεκτονική του, του επιτρέπει να είναι πάντα φορτωμένο στη μνήμη, προσφέροντας τη λειτουργικότητά του, οπότε είναι αναγκαίο, δίχως στατιστικές και αναγνώσεις φακέλων που όπως σε παραδοσιακά πλαίσια PHP.
+Phalcon is an open source full stack framework for PHP, written as a C-extension. Phalcon is optimized for high performance. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever its needed, without expensive file stats and file reads that traditional PHP frameworks employ.
 
 ## Usage
 
-Οι προγραμματιστές δεν χρειάζεται να γνωρίζουν τη γλώσσα C για να χρησιμοποιήσουν το Phalcon. Το interface είναι εκτεθειμένo ως classes PHP κάτω από το namespace `Phalcon`, έτοιμο για χρήση.
+Developers do not need to know the C language to use Phalcon. Its interface is exposed as PHP classes under the `Phalcon` namespace, ready to be used.
 
-Το Phalcon είναι χαλαρά συνδεδεμένο, επιτρέποντας στους προγραμματιστές να χρησιμοποιούν μόνο τα αντικείμενα που χρειάζονται ως κόλλα στοιχείων που βασίζονται στις ανάγκες των εφαρμογών τους.
+Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based in the needs of their applications.
 
 <div class="alert alert-danger">
     <p>
