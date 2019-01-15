@@ -6,9 +6,9 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Non
 
 # Class **Phalcon\Cache\Frontend\None**
 
-*implements* [Phalcon\Cache\FrontendInterface](/3.4/en/api/Phalcon_Cache_FrontendInterface)
+*implements* [Phalcon\Cache\FrontendInterface](/4.0/en/api/Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cache/frontend/none.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/none.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Discards any kind of frontend data input. This frontend does not have expiration time or any other options
 
