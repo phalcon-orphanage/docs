@@ -4,13 +4,15 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Entorno de Consulta
 
-Cada petición HTTP (normalmente originada por un navegador) contiene información adicional sobre la petición, tal como datos de cabecera, archivos, variables, etcétera. Una aplicación basada en web necesita analizar esa información para proporcionar la respuesta correcta al solicitante. [Phalcon\Http\Request](api/Phalcon_Http_Request) encapsulates the information of the request, allowing you to access it in an object-oriented way.
+Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data, files, variables, etc. A web based application needs to parse that information so as to provide the correct response back to the requester. [Phalcon\Http\Request](api/Phalcon_Http_Request) encapsulates the information of the request, allowing you to access it in an object-oriented way.
 
 ```php
 <?php
@@ -33,9 +35,9 @@ if ($request->isPost()) {
 
 ## Obteniendo Valores
 
-PHP automáticamente llena los arreglos superglobales `$_GET` y `$_POST` dependiendo del tipo de solicitud. Estos arrays contienen los valores presentes en los formularios o los parámetros enviados por la URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) or [Cross Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
+PHP automatically fills the superglobal arrays `$_GET` and `$_POST` depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) or [Cross Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
 
-[Phalcon\Http\Request](api/Phalcon_Http_Request) allows you to access the values stored in the `$_REQUEST`, `$_GET` and `$_POST` arrays and sanitize or filter them with the [filter](/4.0/en/filter) service, (by default [Phalcon\Filter](api/Phalcon_Filter)). Los siguientes ejemplos ofrecen el mismo comportamiento:
+[Phalcon\Http\Request](api/Phalcon_Http_Request) allows you to access the values stored in the `$_REQUEST`, `$_GET` and `$_POST` arrays and sanitize or filter them with the [filter](/4.0/en/filter) service, (by default [Phalcon\Filter](api/Phalcon_Filter)). The following examples offer the same behavior:
 
 ```php
 <?php
@@ -64,7 +66,7 @@ $email = $request->getPost('user_email', null, 'some@example.com');
 
 ## Accediendo a la Consulta desde los Controladores
 
-El lugar más común para acceder el ambiente de la petición es en una acción de un controlador. To access the [Phalcon\Http\Request](api/Phalcon_Http_Request) object from a controller you will need to use the `$this->request` public property of the controller:
+The most common place to access the request environment is in an action of a controller. To access the [Phalcon\Http\Request](api/Phalcon_Http_Request) object from a controller you will need to use the `$this->request` public property of the controller:
 
 ```php
 <?php
@@ -124,13 +126,13 @@ class PostsController extends Controller
 }
 ```
 
-Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the [Phalcon\Http\Request\File](api/Phalcon_Http_Request_File) class. Utilizar el arreglo superglobal `$_FILES` ofrece el mismo comportamiento. `Phalcon\Http\Request\File>` encapsulates only the information related to each file uploaded with the request.
+Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the [Phalcon\Http\Request\File](api/Phalcon_Http_Request_File) class. Using the `$_FILES` superglobal array offers the same behavior. `Phalcon\Http\Request\File>` encapsulates only the information related to each file uploaded with the request.
 
 <a name='working-with-headers'></a>
 
 ## Trabajando con Cabeceras
 
-Como se mencionó anteriormente, los encabezados de las solicitudes contienen información útil que nos permite enviar la respuesta adecuada de nuevo al usuario. Los siguientes ejemplos muestran usos de esa información:
+As mentioned above, request headers contain useful information that allow us to send the proper response back to the user. The following examples show usages of that information:
 
 ```php
 <?php
@@ -180,13 +182,13 @@ if ($request->hasHeader('my-header')) {
 
 ## Eventos
 
-Cuando usamos la autorización HTTP, la cabecera `Authorization` tiene el siguiente formato:
+When using HTTP authorization, the `Authorization` header has the following format:
 
 ```text
 Authorization: <type> <credentials>
 ```
 
-donde `<type>` es un tipo de autenticación. El tipo común es `Basic`. Additional authentication types are described in [IANA registry of Authentication schemes](https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml) and [Authentication for AWS servers (AWS4-HMAC-SHA256)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html). En el 99.99% de los casos los tipos de autenticación son:
+where `<type>` is an authentication type. A common type is `Basic`. Additional authentication types are described in [IANA registry of Authentication schemes](https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml) and [Authentication for AWS servers (AWS4-HMAC-SHA256)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html). In 99.99% use cases the authentication type is:
 
 * `AWS4-HMAC-SHA256`
 * `Básico`
@@ -200,9 +202,9 @@ donde `<type>` es un tipo de autenticación. El tipo común es `Basic`. Addition
 * `SCRAM-SHA-256`
 * `vapid`
 
-Se pueden utilizar los eventos `request:beforeAuthorizationResolve` y `request:afterAuthorizationResolve` para realizar operaciones adicionales antes o después de las resoluciones de autorización. Se requiere una resolución de autorizaciones personalizada.
+You can use the `request:beforeAuthorizationResolve` and `request:afterAuthorizationResolve` events to perform additional operations before or after the authorization resolves. A custom authorization resolver is required.
 
-Un ejemplo sin usar el solucionador de autorizaciones personalizado:
+Example without using custom authorization resolver:
 
 ```php
 <?php
@@ -215,7 +217,7 @@ $request = new Request();
 print_r($request->getHeaders());
 ```
 
-Resultado:
+Result:
 
 ```bash
 Array
@@ -227,7 +229,7 @@ Type: Enigma
 Credentials: Secret
 ```
 
-Un ejemplo usando el solucionador de autorizaciones personalizado:
+Example using custom authorization resolver:
 
 ```php
 <?php
@@ -274,7 +276,7 @@ $request->setDI($di);
 print_r($request->getHeaders());
 ```
 
-Resultado:
+Result:
 
 ```bash
 Array
