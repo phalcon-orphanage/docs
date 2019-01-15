@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -394,13 +396,13 @@ Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw 
 
 ## List of Control Structures
 
-Volt zawiera zestaw prostych, ale bardzo użytecznych struktur do użycia w szablonach:
+Volt provides a set of basic but powerful control structures for use in templates:
 
 <a name='control-structures-for'></a>
 
 ### For
 
-Iteruje każdy element w sekwencji. Poniższy przykład pokazuje, jak przechodzi przez kolekcję z 'robotów' i wyświetla ich imię:
+Loop over each item in a sequence. The following example shows how to traverse a set of 'robots' and print his/her name:
 
 ```twig
 {% raw %}
@@ -415,7 +417,7 @@ Iteruje każdy element w sekwencji. Poniższy przykład pokazuje, jak przechodzi
 {% endraw %}
 ```
 
-pętle for mogą być również zagnieżdżone:
+for-loops can also be nested:
 
 ```twig
 {% raw %}
