@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 # Convertirse en un patrocinador
 
 Para aquellos que quieran patrocinar nuestro trabajo y el desarrollo de Phalcon, ofrecemos varias opciones de patrocinio que se ajustan a cualquier presupuesto. Patrocinar nuestro trabajo nos permite dedicar más tiempo al proyecto, ofrecer respuestas más rápidas a bugs, características y asegurar la estabilidad de los proyectos.

@@ -6,9 +6,9 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Config'
 
 # Class **Phalcon\Config**
 
-*implements* [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php), [Countable](http://php.net/manual/en/class.countable.php)
+*implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/config.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/config.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.
 
@@ -116,7 +116,7 @@ unset($config["database"]);
 
 ```
 
-public **merge** ([Phalcon\Config](/3.4/en/api/Phalcon_Config) $config)
+public **merge** ([Phalcon\Config](/4.0/en/api/Phalcon_Config) $config)
 
 Merges a configuration into the current one
 

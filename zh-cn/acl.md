@@ -1,35 +1,53 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
 # 访问控制列表 (ACL)
 
 [Phalcon\Acl](api/Phalcon_Acl) provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](https://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests.
-[Phalcon\Acl](api/Phalcon_Acl) provides an easy and lightweight management of ACLs as well as the permissions attached to them. [访问控制列表](http://en.wikipedia.org/wiki/Access_control_list)(ACL) 允许应用程序对其领域与基础对象的访问请求进行控制。 我们鼓励您阅读更多关于 ACL 的方法，以更熟悉它的概念。
+
 In short, ACLs have two objects: The object that needs access, and the object that we need access to. In the programming world, these are usually referred to as Roles and Resources. In the Phalcon world, we use the terminology [Operation](api/Phalcon_Acl_Operation) and [Subject](api/Phalcon_Acl_Subject).
 
 <div class="alert alert-info">
-  <p>
-    <strong>Use Case</strong>
-  </p>
-  
-  <p>
-    An accounting application needs to have different groups of users have access to various areas of the application.
-  </p>
-  
-  <p>
-    <strong>Operation</strong> * Administrator Access * Accounting Department Access * Manager Access * Guest Access
-  </p>
-  
-  <p>
-    <strong>Subject</strong> * Login page * Admin page * Invoices page * Reports page
-  </p>
+    <p><strong>
+        Use Case
+    </strong></p>
+    <p>
+        An accounting application needs to have different groups of users have access to various areas of the application.
+    </p>
+    <p><strong>
+        Operation
+    </strong><ul>
+    <li>
+        Administrator Access
+    </li><li>
+        Accounting Department Access
+    </li><li>
+        Manager Access
+    </li><li>
+        Guest Access
+    </li></ul></p>
+    <p><strong>
+        Subject
+    </strong><ul>
+    <li>
+        Login page
+    </li><li>
+        Admin page
+    </li><li>
+        Invoices page
+    </li><li>
+        Reports page
+    </li>
+    </ul></p>
 </div>
-总之，Acl 有角色和资源。 资源是通过ACLs定义的权限对象。 角色是通过ACL机制确定访问资源的请求是否被拒绝或允许的对象。
+
 As seen above in the use case, an [Operation](api/Phalcon_Acl_Operation) is defined as who needs to access a particular [Subject](api/Phalcon_Acl_Subject) i.e. an area of the application. A [Subject](api/Phalcon_Acl_Subject) is defined as the area of the application that needs to be accessed.
 
 Using the [Phalcon\Acl](api/Phalcon_Acl) component, we can tie those two together, and strengthen the security of our application, allowing only specific operations to be bound to specific subjects.
@@ -39,7 +57,7 @@ Using the [Phalcon\Acl](api/Phalcon_Acl) component, we can tie those two togethe
 ## 创建 ACL
 
 [Phalcon\Acl](api/Phalcon_Acl) uses adapters to store and work with operations and subjects. The only adapter available right now is [Phalcon\Acl\Adapter\Memory](api/Phalcon_Acl_Adapter_Memory). Having the adapter use the memory, significantly increases the speed that the ACL is accessed but also comes with drawbacks. The main drawback is that memory is not persistent, so the developer will need to implement a storing strategy for the ACL data, so that the ACL is not generated at every request. This could easily lead to delays and unnecessary processing, especially if the ACL is quite big and/or stored in a database or file system.
-此组件最初被设计工作在内存中。 这提供了易用性和快速的访问列表中的每个方面。 The [Phalcon\Acl](api/Phalcon_Acl) constructor takes as its first parameter an adapter used to retrieve the information related to the control list. 下面是使用内存适配器示例︰
+
 Phalcon also offers an easy way for developers to build their own adapters by implementing the [Phalcon\Acl\AdapterInterface](api/Phalcon_Acl_AdapterInterface) interface.
 
 ### In action
@@ -55,7 +73,7 @@ $acl = new AclList();
 ```
 
 There are two self explanatory actions that the [Phalcon\Acl](api/Phalcon_Acl) provides: - `Phalcon\Acl::ALLOW` - `Phalcon\Acl::DENY`
-By default [Phalcon\Acl](api/Phalcon_Acl) allows access to action on resources that have not yet been defined. 为了提高访问列表中的安全级别，我们可以定义 `deny` 级别，作为默认访问级别。
+
 The default action is **`Phalcon\Acl::DENY`** for any [Operation](api/Phalcon_Acl_Operation) or [Subject](api/Phalcon_Acl_Subject). This is on purpose to ensure that only the developer or application allows access to specific subjects and not the ACL component itself.
 
 ```php
@@ -69,89 +87,85 @@ $acl = new AclList();
 // Default action is deny access
 
 // Change it to allow
-$acl->setDefaultAction(
-    Acl::DENY
-);
+$acl->setDefaultAction(Acl::ALLOW);
 ```
 
-<a name='adding-roles'></a>
+<a name='adding-operations'></a>
 
 ## Adding Operations
-## 将角色添加到 ACL
+
 As mentioned above, a [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) is an object that can or cannot access a set of [Subject](api/Phalcon_Acl_Subject) in the access list.
 
 There are two ways of adding operations to our list. * by using a [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) object or * using a string, representing the name of the operation
-角色是能或不能访问控制列表里面的某些资源的对象。 举例说明，我们将定义一个公司一组人员的的角色。 The [Phalcon\Acl\Role](api/Phalcon_Acl_Role) class is available to create roles in a more structured way. 让我们添加一些角色到我们最近创建的列表︰
+
 To see this in action, using the example outlined above, we will add the relevant [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) objects in our list:
 
 ```php
 <?php
 
-use Phalcon\Acl\Role;
+use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory as AclList;
 use Phalcon\Acl\Operation;
 
 $acl = new AclList();
-// 创建一些角色.
+
 /**
  * Create some Operations.
  * 
  * The first parameter is the name of the operation, 
  * the second is an optional description
  */
-// 第一个参数是名称，第二个参数是可选的说明。
-$roleAdmins = new Role('Administrators', 'Super-User role');
+
+$operationAdmins     = new Operation('admins', 'Administrator Access');
 $operationAccounting = new Operation('accounting', 'Accounting Department Access'); 
-$roleGuests = new Role('Guests');
 
-// Add 'Guests' role to ACL
+/**
+ * Add these operations in the list 
  */
-$acl->addRole($roleGuests);
+$acl->addOperation($operationAdmins);
+$acl->addOperation($operationAccounting);
 
-// Add 'Designers' role to ACL without a Phalcon\Acl\Role
 /**
  * Add operations without creating an object first 
  */
 $acl->addOperation('manager');
-$acl->addRole('Designers');
+$acl->addOperation('guest');
 ```
 
 <a name='adding-subjects'></a>
-正如你所看到的不使用实例的情况下直接定义角色。
 
-<a name='adding-resources'></a>
+## Adding Subjects
 
-## 添加资源
+A [Subject](api/Phalcon_Acl_Subject) is the area of the application where access is controlled. In a MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Subject](api/Phalcon_Acl_Subject) class can be used to define resources in the application. Also it is important to add related actions to a subject so that the ACL can understand what it should control.
 
-资源是的对象的访问控制。 通常在 MVC 应用程序中的资源引用到控制器。 Although this is not mandatory, the [Phalcon\Acl\Resource](api/Phalcon_Acl_Resource) class can be used in defining resources. 它是重要的是将相关的操作添加到资源以便 ACL 可以理解它应控制。
+There are two ways of adding subjects to our list. * by using a [Phalcon\Acl\Subject](api/Phalcon_Acl_Subject) object or * using a string, representing the name of the operation
+
 Similar to the `addOperation`, `addSubject` requires a name for the subject and an optional description.
 
 ```php
 <?php
 
-use Phalcon\Acl\Resource;
-
+use Phalcon\Acl;
+use Phalcon\Acl\Adapter\Memory as AclList;
 use Phalcon\Acl\Subject;
-// Define the 'Customers' resource
+
 $acl = new AclList();
-$customersResource = new Resource('Customers');
 
-// Add 'customers' resource with a couple of operations
+/**
+ * Create some Subjects and add their respective actions in the ACL
+ */
+$admin   = new Subject('admin', 'Administration Pages');
+$reports = new Subject('reports', 'Reports Pages');
 
-$acl->addResource(
-    $customersResource,
-    'search'
-);
-
-$acl->addResource(
-    $customersResource,
-    [
-        'create',
+/**
+ * Add the subjects to the ACL and attach them to relevant actions 
+ */
+$acl->addResource($admin, ['dashboard', 'users']);
 $acl->addResource($reports, ['list', 'add']);
-        'update',
-    ]
+
+/**
  * Add subjects without creating an object first 
-);
+ */
 $acl->addResource('admin', ['dashboard', 'users']);
 $acl->addResource('reports', ['list', 'add']);
 ```
@@ -161,7 +175,7 @@ $acl->addResource('reports', ['list', 'add']);
 ## 定义访问控制
 
 After both the `Operations` and `Subjects` have been defined, we need to tie them together so that the access list can be created. This is the most important step in the operation since a small mistake here can provide access for subjects to operations that the developer does not intend to. As mentioned earlier, the default access action for [Phalcon\Acl](api/Phalcon_Acl) is `Acl::DENY`, following the [whitelist](https://en.wikipedia.org/wiki/Whitelisting) approach.
-现在我们有角色和资源，是时候定义ACL（即哪些角色可以访问哪些资源）。 这部分是很重要，尤其考虑到您的默认访问级别 `allow` 或 `deny`。
+
 To tie `Operations` and `Subjects` together we use the `allow()` and `deny()` methods that the [Phalcon\Acl\Memory](api/Phalcon_Acl_Memory) exposes.
 
 ```php
@@ -171,7 +185,7 @@ use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory as AclList;
 use Phalcon\Acl\Operation;
 use Phalcon\Acl\Subject;
-// Set access level for roles into resources
+
 $acl = new AclList();
 
 /**
@@ -192,7 +206,7 @@ $acl->addResource('session', ['login', 'logout']);
 /**
  * Now tie them all together 
  */
-$acl->allow('Guests', 'Customers', 'search');
+$acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);
 $acl->allow('*', 'session', '*');
 $acl->allow('*', '*', 'view');
@@ -203,7 +217,7 @@ $acl->deny('guest', '*', 'view');
 What the above lines tell us:
 
 ```php
-$acl->allow('Guests', 'Customers', 'create');
+$acl->allow('manager', 'admin', 'users');
 ```
 
 For the `manager` operation, allow access to the `admin` subject and `users` action. To bring this into perspective with a MVC application, the above line says that the group `manager` is allowed to access the `admin` controller and `users` action.
@@ -237,11 +251,11 @@ Similarly the above gives access to any operation, any subject that has the `vie
 </div>
 
 ```php
-$acl->deny('Guests', 'Customers', 'update');
+$acl->deny('guest', '*', 'view');
 ```
 
 For the `guest` operation, we deny access to all subjects with the `view` action. Despite the fact that the default access level is `Acl::DENY` in our example above, we specifically allowed the `view` action to all operations and subjects. This includes the `guest` operation. We want to allow the `guest` operation access only to the `session` subject and the `login` and `logout` actions, since `guests` are not logged into our application.
-`Allow()` 方法选定一个特定的角色已授予对特定资源的访问。`Deny()` 方法则相反。
+
 ```php
 $acl->allow('*', '*', 'view');
 ```
@@ -256,7 +270,7 @@ $acl->deny('guest', '*', 'view');
 
 ## 查询ACL
 
-一旦完全定义列表。我们可以查询它来检查是否角色具有给定的权限或不。
+Once the list has been defined, we can query it to check if a particular operation has access to a particular subject and action. To do so, we need to use the `isAllowed()` method.
 
 ```php
 <?php
@@ -265,7 +279,7 @@ use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory as AclList;
 use Phalcon\Acl\Operation;
 use Phalcon\Acl\Subject;
-// Check whether role has access to the operations
+
 $acl = new AclList();
 
 /**
@@ -274,17 +288,17 @@ $acl = new AclList();
 $acl->addOperation('manager');                   
 $acl->addOperation('accounting');                   
 $acl->addOperation('guest');                       
-// Returns 0
+
 
 $acl->addResource('admin', ['dashboard', 'users', 'view']);
 $acl->addResource('reports', ['list', 'add', 'view']);
-$acl->isAllowed('Guests', 'Customers', 'edit');
+$acl->addResource('session', ['login', 'logout']);
 
 $acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);
 $acl->allow('*', 'session', '*');
 $acl->allow('*', '*', 'view');
-// Returns 1
+
 $acl->deny('guest', '*', 'view');
 
 // ....
@@ -297,13 +311,13 @@ $acl->isAllowed('manager', 'admin', 'dashboard');
 $acl->isAllowed('manager', 'session', 'login');
 
 // true - defined with wildcard
-$acl->isAllowed('Guests', 'Customers', 'search');
+$acl->isAllowed('accounting', 'reports', 'view');
 
 // false - defined explicitly
 $acl->isAllowed('guest', 'reports', 'view');
-// Returns 1
+
 // false - default access level
-$acl->isAllowed('Guests', 'Customers', 'create');
+$acl->isAllowed('guest', 'reports', 'add');
 ```
 
 ** WIP BELOW **
@@ -312,9 +326,9 @@ $acl->isAllowed('Guests', 'Customers', 'create');
 ## 基于访问控制的自定义函数
 
 Also you can add as 4th parameter your custom function which must return boolean value. It will be called when you use `isAllowed()` method. You can pass parameters as associative array to `isAllowed()` method as 4th argument where key is parameter name in our defined function.
-此外可以添加 4 参数作为您自定义的函数必须返回布尔值。 当您使用 `isAllowed()` 方法时，它将被调用。 您可以将参数作为关联数组传递给` isAllowed（）</ 0>方法作为第4个参数，其中key是我们定义的函数中的参数名称。</p>
 
-<pre><code class="php"><?php
+```php
+<?php
 // Set access level for role into resources with custom function
 $acl->allow(
     'Guests',
@@ -347,9 +361,8 @@ $acl->isAllowed(
     ]
 );
 ```
-`</pre> 
 
-此外，如果您未在` isAllowed()</ 0>方法中提供任何参数，则默认行为将为<code> Acl::ALLOW </ 0>。 您可以更改它的使用方法 <code>setNoArgumentsDefaultAction()`。
+Also if you don't provide any parameters in `isAllowed()` method then default behaviour will be `Acl::ALLOW`. You can change it by using method `setNoArgumentsDefaultAction()`.
 
 ```php
 <?php
@@ -392,9 +405,9 @@ $acl->isAllowed(
 
 ## 对象作为角色名称和资源名称
 
-您可以将对象作为 `角色名` 和 `资源名称` 传递。 Your classes must implement [Phalcon\Acl\RoleAware](api/Phalcon_Acl_RoleAware) for `roleName` and [Phalcon\Acl\ResourceAware](api/Phalcon_Acl_ResourceAware) for `resourceName`.
+You can pass objects as `roleName` and `resourceName`. Your classes must implement [Phalcon\Acl\RoleAware](api/Phalcon_Acl_RoleAware) for `roleName` and [Phalcon\Acl\ResourceAware](api/Phalcon_Acl_ResourceAware) for `resourceName`.
 
-我们的 `UserRole` 类
+Our `UserRole` class
 
 ```php
 <?php
@@ -427,7 +440,7 @@ class UserRole implements RoleAware
 }
 ```
 
-和我们的 `ModelResource` 类
+And our `ModelResource` class
 
 ```php
 <?php
@@ -468,7 +481,7 @@ class ModelResource implements ResourceAware
 }
 ```
 
-然后你可以在 `isAllowed()` 方法中使用它们。
+Then you can use them in `isAllowed()` method.
 
 ```php
 <?php
@@ -611,7 +624,7 @@ You can still add any custom parameters to function and pass associative array i
 
 ## 角色继承
 
-You can build complex role structures using the inheritance that [Phalcon\Acl\Role](api/Phalcon_Acl_Role) provides. 角色可以继承其他角色，从而允许用户访问超集或资源的子集。 To use role inheritance, you need to pass the inherited role as the second parameter of the method call, when adding that role in the list.
+You can build complex role structures using the inheritance that [Phalcon\Acl\Role](api/Phalcon_Acl_Role) provides. Roles can inherit from other roles, thus allowing access to supersets or subsets of resources. To use role inheritance, you need to pass the inherited role as the second parameter of the method call, when adding that role in the list.
 
 ```php
 <?php
@@ -658,7 +671,7 @@ $acl->addInherit($roleAdmins, $roleGuests);
 
 ## 序列化 ACL 列表
 
-To improve performance [Phalcon\Acl](api/Phalcon_Acl) instances can be serialized and stored in APC, session, text files or a database table so that they can be loaded at will without having to redefine the whole list. 你能这样做，如下所示︰
+To improve performance [Phalcon\Acl](api/Phalcon_Acl) instances can be serialized and stored in APC, session, text files or a database table so that they can be loaded at will without having to redefine the whole list. You can do that as follows:
 
 ```php
 <?php
@@ -693,13 +706,13 @@ if ($acl->isAllowed('Guests', 'Customers', 'edit')) {
 }
 ```
 
-它被建议在开发期间使用内存适配器，并在生产中使用其他适配器之一。
+It's recommended to use the Memory adapter during development and use one of the other adapters in production.
 
 <a name='events'></a>
 
 ## 事件
 
-[Phalcon\Acl](api/Phalcon_Acl) is able to send events to an `EventsManager` if it's present. 事件被触发，使用类型 'acl'。 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
+[Phalcon\Acl](api/Phalcon_Acl) is able to send events to an `EventsManager` if it's present. Events are triggered using the type 'acl'. 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
 
 | 事件名称              | 触发器                 | 可以停止操作吗？ |
 | ----------------- | ------------------- |:--------:|

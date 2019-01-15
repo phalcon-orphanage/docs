@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # Volt: Motor de plantillas
@@ -1329,7 +1331,7 @@ Rendering `index.volt` produces:
 
 Note the call to the function `super()`. With that function it's possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
 
-<h5 class='alert alert-warning'>Por defecto y por motivos de rendimiento, Volt sólo comprueba cambios en las plantillas hijas para saber cuándo debe volver a compilar y generar PHP plano otra vez, por lo que es recomendable inicializar Volt con la opción de <code>'compileAlways' =&gt; true</code>. Por lo tanto, las plantillas se compilan siempre teniendo en cuenta los cambios en las plantillas padre. </h5>
+<h5 class='alert alert-warning'>By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option <code>'compileAlways' =&gt; true</code>. Thus, the templates are compiled always taking into account changes in the parent templates. </h5>
 
 <a name='autoescape'></a>
 

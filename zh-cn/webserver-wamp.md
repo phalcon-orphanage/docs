@@ -1,14 +1,16 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
 # Installation on WAMP
 
-[WampServer](http://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
+[WampServer](https://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
 <a name='phalcon'></a>
 
@@ -48,7 +50,7 @@ Restart the Apache Web Server. Do a single click on the WampServer icon at syste
 
 ![](/assets/images/content/webserver-wamp-3.png)
 
-Open your browser to navigate to http://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that phalcon was loaded.
+Open your browser to navigate to https://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that phalcon was loaded.
 
 ![](/assets/images/content/webserver-wamp-4.png)
 
@@ -58,5 +60,5 @@ Congratulations! You are now phlying with Phalcon.
 
 ## Related Guides
 
-* [General Installation](/3.4/en/installation)
-* [Installation on XAMPP](/3.4/en/webserver-xampp)
+* [General Installation](/4.0/en/installation)
+* [Installation on XAMPP](/4.0/en/webserver-xampp)

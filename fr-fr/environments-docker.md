@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # Overview
@@ -112,7 +114,7 @@ Replace project in **<project_app_1>** with the name of your project/directory (
 
 $ `docker exec -t <project_app_1> phalcon project application simple`
 
-Now you can now launch your application in your browser visiting `http://phalcon.local` (or the host name you chose above).
+Now you can now launch your application in your browser visiting `https://phalcon.local` (or the host name you chose above).
 
 <a name='setup'></a>
 
@@ -229,14 +231,14 @@ docker-compose up -d
 Sometimes the base images (for example `phalconphp/php-apache:ubuntu-16.04`) are updated. Phalcon Compose depends on these images. You will therefore need to update them and it is always a good thing to do so to ensure that you have the latest functionality available. The dependent containers to these images will need to be updated and rebuilt:
 
 ```bash
-docker pull mongo:3.4
+docker pull mongo:4.0
 docker pull postgres:9.5-alpine
 docker pull mysql:5.7
 docker pull phpmyadmin/phpmyadmin:4.6
 docker pull memcached:1.4-alpine
 docker pull phalconphp/beanstalkd:1.10
 docker pull aerospike:latest
-docker pull redis:3.4-alpine
+docker pull redis:4.0-alpine
 docker pull elasticsearch:5.2-alpine
 docker pull phalconphp/php-apache:ubuntu-16.04
 ```

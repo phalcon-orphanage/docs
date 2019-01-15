@@ -1,7 +1,7 @@
 {
   "acl": [
     {
-      "text": "Przegląd",
+      "text": "Overview",
       "url": "overview"
     },
     {
@@ -41,7 +41,7 @@
       "url": "serialization"
     },
     {
-      "text": "Zdarzenia",
+      "text": "Events",
       "url": "events"
     },
     {
@@ -51,15 +51,15 @@
   ],
   "annotations": [
     {
-      "text": "Przegląd",
+      "text": "Overview",
       "url": "overview"
     },
     {
-      "text": "Fabryka",
+      "text": "Factory",
       "url": "setup"
     },
     {
-      "text": "Dodawanie ról do ACL",
+      "text": "Adding Roles to the ACL",
       "url": "factory"
     },
     {
@@ -116,7 +116,7 @@
       "url": "creating-bootstrap"
     },
     {
-      "text": "Zadania",
+      "text": "Tasks",
       "url": "tasks"
     },
     {
@@ -138,7 +138,7 @@
       "url": "routing",
       "menu": [
         {
-          "text": "Konfiguracja",
+          "text": "Setup",
           "level": 2,
           "url": "routing-setup",
           "menu": [
@@ -330,7 +330,7 @@
       ]
     },
     {
-      "text": "Zdarzenia",
+      "text": "Events",
       "url": "events",
       "menu": [
         {
@@ -384,7 +384,7 @@
           "url": ""
         },
         {
-          "text": "Konfiguracja",
+          "text": "Setup",
           "level": 2,
           "url": ""
         },
@@ -431,7 +431,7 @@
           ]
         },
         {
-          "text": "Modele",
+          "text": "Models",
           "url": ""
         },
         {
@@ -439,7 +439,7 @@
           "url": ""
         },
         {
-          "text": "Widoki",
+          "text": "Views",
           "url": ""
         },
         {
@@ -451,7 +451,7 @@
   ],
   "application": [
     {
-      "text": "Przegląd",
+      "text": "Overview",
       "url": "overview"
     },
     {
@@ -485,11 +485,11 @@
   ],
   "assets": [
     {
-      "text": "Przegląd",
+      "text": "Overview",
       "url": "overview"
     },
     {
-      "text": "Dodawanie zasobów",
+      "text": "Adding Resources",
       "url": "add"
     },
     {
@@ -543,7 +543,7 @@
       "url": "caching-behavior"
     },
     {
-      "text": "Fabryka",
+      "text": "Factory",
       "url": "factory"
     },
     {
@@ -603,7 +603,7 @@
       "url": "adapters-backend",
       "menu": [
         {
-          "text": "Fabryka",
+          "text": "Factory",
           "level": 2,
           "url": "adapters-backend-factory"
         },
@@ -661,7 +661,7 @@
       "url": "overview",
       "menu": [
         {
-          "text": "Fabryka",
+          "text": "Factory",
           "level": 2,
           "url": "factory"
         }
@@ -731,15 +731,15 @@
   ],
   "controllers": [
     {
-      "text": "Przegląd",
+      "text": "Overview",
       "url": "overview"
     },
     {
-      "text": "Używanie kontrolerów",
+      "text": "Using Controllers",
       "url": "using"
     },
     {
-      "text": "Pętla Komunikacyjna (ang. Dispatch Loop)",
+      "text": "Dispatch Loop",
       "url": "dispatch-loop"
     },
     {
@@ -747,23 +747,23 @@
       "url": "initializing"
     },
     {
-      "text": "Wstrzykiwanie serwisów",
+      "text": "Injecting Services",
       "url": "injecting-services"
     },
     {
-      "text": "Żądanie i Odpowiedź",
+      "text": "Request and Response",
       "url": "request-response"
     },
     {
-      "text": "Dane Sesji",
+      "text": "Session Data",
       "url": "session-data"
     },
     {
-      "text": "Korzystanie z Serwisów jako Kontrolerów",
+      "text": "Using Services as Controllers",
       "url": "services"
     },
     {
-      "text": "Zdarzenia w Kontrolerach",
+      "text": "Events in Controllers",
       "url": "events"
     }
   ],
@@ -803,7 +803,7 @@
       "url": "service"
     },
     {
-      "text": "Linki",
+      "text": "Links",
       "url": "links"
     }
   ],
@@ -817,7 +817,7 @@
       "url": "adapters",
       "menu": [
         {
-          "text": "Fabryka",
+          "text": "Factory",
           "level": 2,
           "url": "adapters-factory"
         },
@@ -1384,7 +1384,7 @@
       "url": "data-adapters"
     },
     {
-      "text": "Fabryka",
+      "text": "Factory",
       "url": "factory"
     },
     {
@@ -1427,7 +1427,7 @@
           "url": "result-types"
         },
         {
-          "text": "Łączenie tabel (ang. Joins)",
+          "text": "Joins",
           "level": 2,
           "url": "joins"
         },
@@ -1616,7 +1616,7 @@
           "url": "simple-registration",
           "menu": [
             {
-              "text": "Ciąg tekstu",
+              "text": "String",
               "level": 3,
               "url": "simple-registration-string"
             },
@@ -1666,7 +1666,7 @@
       "url": "resolving-services",
       "menu": [
         {
-          "text": "Zdarzenia",
+          "text": "Events",
           "level": 2,
           "url": "events"
         }
@@ -1799,15 +1799,15 @@
       "url": "configuration"
     },
     {
-      "text": "Sposób użycia",
+      "text": "Usage",
       "url": "usage"
     },
     {
-      "text": "Konfiguracja",
+      "text": "Set up",
       "url": "setup"
     },
     {
-      "text": "Logi",
+      "text": "Logs",
       "url": "logs"
     },
     {
@@ -2021,7 +2021,7 @@
           ]
         },
         {
-          "text": "Porty",
+          "text": "Ports",
           "level": 2,
           "url": "daily-usage-ports",
           "menu": [
@@ -2191,7 +2191,7 @@
       "url": "adapters"
     },
     {
-      "text": "Sposób użycia",
+      "text": "Usage",
       "url": "usage"
     },
     {
@@ -2205,7 +2205,7 @@
   ],
   "forms": [
     {
-      "text": "Formularze",
+      "text": "Forms",
       "url": "overview"
     },
     {
@@ -2269,7 +2269,7 @@
   ],
   "image": [
     {
-      "text": "Obrazki",
+      "text": "Images",
       "url": "overview"
     },
     {
@@ -2277,7 +2277,7 @@
       "url": "adapters",
       "menu": [
         {
-          "text": "Fabryka",
+          "text": "Factory",
           "level": 2,
           "url": "adapters-factory"
         },
@@ -2574,7 +2574,7 @@
       "url": "adapters"
     },
     {
-      "text": "Fabryka",
+      "text": "Factory",
       "level": 2,
       "url": "adapters-factory"
     },
@@ -2644,11 +2644,11 @@
       "url": "architecture"
     },
     {
-      "text": "Modele",
+      "text": "Models",
       "url": "models"
     },
     {
-      "text": "Widoki",
+      "text": "Views",
       "url": "views"
     },
     {
@@ -2951,7 +2951,7 @@
       "url": "setup"
     },
     {
-      "text": "Komponent Random",
+      "text": "Random",
       "url": "random"
     },
     {
@@ -2969,7 +2969,7 @@
       "url": "start",
       "menu": [
         {
-          "text": "Fabryka",
+          "text": "Factory",
           "level": 2,
           "url": "start-factory"
         }
@@ -3059,7 +3059,7 @@
       "url": "static-content-helpers",
       "menu": [
         {
-          "text": "Obrazki",
+          "text": "Images",
           "level": 2,
           "url": "static-content-helpers-images"
         },
@@ -3099,7 +3099,7 @@
       "url": "adapters",
       "menu": [
         {
-          "text": "Fabryka",
+          "text": "Factory",
           "level": 2,
           "url": "adapters-factory"
         }
@@ -3116,7 +3116,7 @@
   ],
   "tutorial-base": [
     {
-      "text": "Widok",
+      "text": "View",
       "url": "basic"
     },
     {
@@ -3312,7 +3312,7 @@
       "url": "dependencies"
     },
     {
-      "text": "Zarejestruj się",
+      "text": "Sign Up",
       "url": "sign-up"
     }
   ],
@@ -3430,98 +3430,98 @@
   ],
   "views": [
     {
-      "text": "Używanie widoków",
+      "text": "Using Views",
       "url": "overview"
     },
     {
-      "text": "Integracja widoków z kontrolerami",
+      "text": "Integrating Views with Controllers",
       "url": "integrating-views-with-controllers"
     },
     {
-      "text": "Hierarchiczne renderowanie",
+      "text": "Hierarchical Rendering",
       "url": "hierarchical-rendering",
       "menu": [
         {
-          "text": "Używanie szablonów",
+          "text": "Using Templates",
           "level": 2,
           "url": "using-templates"
         },
         {
-          "text": "Kontrola poziomów renderowania",
+          "text": "Control Rendering Levels",
           "level": 2,
           "url": "control-rendering-levels"
         },
         {
-          "text": "Blokowanie poziomów renderowania",
+          "text": "Disabling render levels",
           "level": 2,
           "url": "disabling-render-levels"
         },
         {
-          "text": "Wybieranie widoków",
+          "text": "Picking Views",
           "level": 2,
           "url": "picking-views"
         },
         {
-          "text": "Wyłączanie widoku",
+          "text": "Disabling the view",
           "level": 2,
           "url": "disabling-view"
         }
       ]
     },
     {
-      "text": "Proste renderowanie",
+      "text": "Simple Rendering",
       "url": "simple-rendering"
     },
     {
-      "text": "Używanie częściowych widoków(ang. Partials)",
+      "text": "Using Partials",
       "url": "using-partials"
     },
     {
-      "text": "Przenoszenie wartości z kontrolera do widoków",
+      "text": "Transfer values from the controller to views",
       "url": "value-transfer"
     },
     {
-      "text": "Zachowywanie fragmentów widoku w Cache",
+      "text": "Caching View Fragments",
       "url": "caching-fragments"
     },
     {
-      "text": "Silniki szablonów",
+      "text": "Template Engines",
       "url": "template-engines",
       "menu": [
         {
-          "text": "Tworzenie Twojego własnego adaptera silnika szablonów",
+          "text": "Creating your own Template Engine Adapter",
           "level": 2,
           "url": "custom-template-engine"
         },
         {
-          "text": "Zmiana silnika szablonów",
+          "text": "Changing the Template Engine",
           "level": 2,
           "url": "changing-template-engine"
         }
       ]
     },
     {
-      "text": "Wstrzykiwanie serwisów do widoku",
+      "text": "Injecting services in View",
       "url": "injecting-services"
     },
     {
-      "text": "Autonomiczny komponent",
+      "text": "Stand-Alone Component",
       "url": "stand-alone",
       "menu": [
         {
-          "text": "Hierarchiczne renderowanie",
+          "text": "Hierarchical Rendering",
           "level": 2,
           "url": "stand-alone-hierarchical-rendering"
         },
         {
-          "text": "Proste renderowanie",
+          "text": "Simple Rendering",
           "level": 2,
           "url": "stand-alone-simple-rendering"
         }
       ]
     },
     {
-      "text": "Zdarzenia widoku",
+      "text": "View Events",
       "url": "events"
     }
   ],
@@ -3547,7 +3547,7 @@
       "url": "variables"
     },
     {
-      "text": "Filtry",
+      "text": "Filters",
       "url": "filters"
     },
     {
@@ -3603,12 +3603,12 @@
           "url": "expressions-literals"
         },
         {
-          "text": "Tablice",
+          "text": "Arrays",
           "level": 2,
           "url": "expressions-arrays"
         },
         {
-          "text": "Matematyka",
+          "text": "Math",
           "level": 2,
           "url": "expressions-math"
         },
@@ -3618,7 +3618,7 @@
           "url": "expressions-comparisons"
         },
         {
-          "text": "Logika",
+          "text": "Logic",
           "level": 2,
           "url": "expressions-logic"
         },
@@ -3630,11 +3630,11 @@
       ]
     },
     {
-      "text": "Testy",
+      "text": "Tests",
       "url": "tests"
     },
     {
-      "text": "Makra",
+      "text": "Macros",
       "url": "macros"
     },
     {
@@ -3650,7 +3650,7 @@
       "url": "view-integrations",
       "menu": [
         {
-          "text": "Dołączanie",
+          "text": "Include",
           "level": 2,
           "url": "view-integration-include"
         },
@@ -3686,7 +3686,7 @@
           "url": "extending-functions"
         },
         {
-          "text": "Filtry",
+          "text": "Filters",
           "level": 2,
           "url": "extending-filters"
         },

@@ -1,8 +1,10 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
@@ -10,7 +12,7 @@ layout: default language: 'en' version: '4.0'
 
 Phalcon查询语言、PhalconQL或简单的PHQL是一种高级的、面向对象的SQL方言，允许使用标准化的类似SQL的语言编写查询。 PHQL实现为解析器(用C语言编写)，将语法转换为目标RDBMS的语法。
 
-为了实现尽可能高的性能, phalcon 提供了一个使用与 [SQLite](http://en.wikipedia.org/wiki/Lemon_Parser_Generator) 相同技术的解析器。 这项技术提供了一个小的内存解析器, 内存占用非常低, 也是线程安全的。
+To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as [SQLite](https://en.wikipedia.org/wiki/Lemon_Parser_Generator). 这项技术提供了一个小的内存解析器, 内存占用非常低, 也是线程安全的。
 
 解析器首先检查 pass PHQL 语句的语法, 然后生成语句的中间表示形式, 最后将其转换为目标 rdbms 的相应 sql 方言。
 

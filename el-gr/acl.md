@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # Λίστες ελέγχου πρόσβασης (ACL)
@@ -13,21 +15,37 @@ layout: article language: 'en' version: '4.0'
 In short, ACLs have two objects: The object that needs access, and the object that we need access to. In the programming world, these are usually referred to as Roles and Resources. In the Phalcon world, we use the terminology [Operation](api/Phalcon_Acl_Operation) and [Subject](api/Phalcon_Acl_Subject).
 
 <div class="alert alert-info">
-  <p>
-    <strong>Use Case</strong>
-  </p>
-  
-  <p>
-    An accounting application needs to have different groups of users have access to various areas of the application.
-  </p>
-  
-  <p>
-    <strong>Operation</strong> * Administrator Access * Accounting Department Access * Manager Access * Guest Access
-  </p>
-  
-  <p>
-    <strong>Subject</strong> * Login page * Admin page * Invoices page * Reports page
-  </p>
+    <p><strong>
+        Use Case
+    </strong></p>
+    <p>
+        An accounting application needs to have different groups of users have access to various areas of the application.
+    </p>
+    <p><strong>
+        Operation
+    </strong><ul>
+    <li>
+        Administrator Access
+    </li><li>
+        Accounting Department Access
+    </li><li>
+        Manager Access
+    </li><li>
+        Guest Access
+    </li></ul></p>
+    <p><strong>
+        Subject
+    </strong><ul>
+    <li>
+        Login page
+    </li><li>
+        Admin page
+    </li><li>
+        Invoices page
+    </li><li>
+        Reports page
+    </li>
+    </ul></p>
 </div>
 
 As seen above in the use case, an [Operation](api/Phalcon_Acl_Operation) is defined as who needs to access a particular [Subject](api/Phalcon_Acl_Subject) i.e. an area of the application. A [Subject](api/Phalcon_Acl_Subject) is defined as the area of the application that needs to be accessed.

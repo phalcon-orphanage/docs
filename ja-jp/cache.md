@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # キャッシュによるパフォーマンスの向上
@@ -486,7 +488,7 @@ The [Phalcon\Cache\FrontendInterface](api/Phalcon_Cache_FrontendInterface) inter
 | [Phalcon\Cache\Backend\Redis](api/Phalcon_Cache_Backend_Redis)               | Redisにデータを格納します。                        | [Redis](https://redis.io/)                 | [Redis](https://pecl.php.net/package/redis)         |
 | [Phalcon\Cache\Backend\Xcache](api/Phalcon_Cache_Backend_Xcache)             | XCacheにデータを格納します。                       | [XCache](https://xcache.lighttpd.net/)     | [XCache](https://pecl.php.net/package/xcache)       |
 
-##### **注意** PHP7で Phalcon `apc` ベースのアダプター クラスを使用する場合、pecl から `apcu`と`apcu_bc` パッケージをインストールする必要があります。 Now in Phalcon 4.0.0 you can switch your `<em>\Apc` classes to `</em>\Apcu` and remove `apcu_bc`. Phalcon 4 では、ほとんどすべての `*\Apc` クラスを削除したことを覚えていてだください。 {.alert.alert-warning}
+##### **NOTE** In PHP 7 to use phalcon `apc` based adapter classes you needed to install `apcu` and `apcu_bc` package from pecl. Now in Phalcon 4.0.0 you can switch your `<em>\Apc` classes to `</em>\Apcu` and remove `apcu_bc`. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. {.alert.alert-warning}
 
 <a name='adapters-backend-factory'></a>
 

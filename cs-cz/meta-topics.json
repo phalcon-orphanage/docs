@@ -1,387 +1,387 @@
 [
-  {
-    "text": "General",
-    "url": "/introduction",
-    "menu": [
-      {
-        "text": "Release Notes",
-        "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
-        "external": true
-      },
-      {
-        "text": "Upgrade",
-        "url": ""
-      },
-      {
-        "text": "Sponsors",
-        "url": "/sponsors"
-      }
-    ]
-  },
-  {
-    "text": "Contributions",
-    "url": "",
-    "menu": [
-      {
-        "text": "Overview",
-        "url": "/contributions"
-      },
-      {
-        "text": "Pull Requests",
-        "url": "/new-pull-request"
-      },
-      {
-        "text": "NFR",
-        "url": "/new-feature-request"
-      },
-      {
-        "text": "Backtrace Generation",
-        "url": "/generating-backtrace"
-      },
-      {
-        "text": "Reproducible Tests",
-        "url": "/reproducible-tests"
-      },
-      {
-        "text": "Testing guide",
-        "url": ""
-      }
-    ]
-  },
-  {
-    "text": "Getting Started",
-    "url": "",
-    "menu": [
-      {
-        "text": "Installation",
-        "url": "/installation"
-      },
-      {
-        "text": "Webserver Setup",
-        "url": "/webserver-setup"
-      },
-      {
-        "text": "WAMP",
-        "url": "/webserver-wamp"
-      },
-      {
-        "text": "XAMPP",
-        "url": "/webserver-xampp"
-      }
-    ]
-  },
-  {
-    "text": "Environments",
-    "url": "",
-    "menu": [
-      {
-        "text": "Phalcon Compose (Docker)",
-        "url": "/environments-docker"
-      },
-      {
-        "text": "Nanobox",
-        "url": "/environments-nanobox"
-      },
-      {
-        "text": "Phalcon Box (Vagrant)",
-        "url": "/environments-vagrant"
-      }
-    ]
-  },
-  {
-    "text": "Development Tools",
-    "url": "",
-    "menu": [
-      {
-        "text": "Installation",
-        "url": "/devtools-installation"
-      },
-      {
-        "text": "Usage",
-        "url": "/devtools-usage"
-      },
-      {
-        "text": "Debug",
-        "url": "/debug"
-      }
-    ]
-  },
-  {
-    "text": "Tutorials",
-    "url": "",
-    "menu": [
-      {
-        "text": "Performance",
-        "url": "/performance"
-      },
-      {
-        "text": "Basic",
-        "url": "/tutorial-base"
-      },
-      {
-        "text": "Invo",
-        "url": "/tutorial-invo"
-      },
-      {
-        "text": "REST",
-        "url": "/tutorial-rest"
-      },
-      {
-        "text": "Vokuro",
-        "url": "/tutorial-vokuro"
-      },
-      {
-        "text": "Use case",
-        "url": "/use-case"
-      }
-    ]
-  },
-  {
-    "text": "Core",
-    "url": "",
-    "menu": [
-      {
-        "text": "API Index",
-        "url": "/api/"
-      },
-      {
-        "text": "Application",
-        "url": "/application"
-      },
-      {
-        "text": "Micro",
-        "url": "/application-micro"
-      },
-      {
-        "text": "Cli",
-        "url": "/application-cli"
-      },
-      {
-        "text": "DI Container",
-        "url": "/di"
-      },
-      {
-        "text": "MVC",
-        "url": "/mvc"
-      }
-    ]
-  },
-  {
-    "text": "Services",
-    "url": "",
-    "menu": [
-      {
-        "text": "Cache",
-        "url": "/cache"
-      },
-      {
-        "text": "Config",
-        "url": "/config"
-      },
-      {
-        "text": "Escaper",
-        "url": "/escaper"
-      },
-      {
-        "text": "Loader",
-        "url": "/loader"
-      },
-      {
-        "text": "Logging",
-        "url": "/logging"
-      },
-      {
-        "text": "Queue",
-        "url": "/queue"
-      }
-    ]
-  },
-  {
-    "text": "Database",
-    "url": "",
-    "menu": [
-      {
-        "text": "Layer",
-        "url": "/db-layer"
-      },
-      {
-        "text": "PHQL",
-        "url": "/db-phql"
-      },
-      {
-        "text": "ODM",
-        "url": "/db-odm"
-      },
-      {
-        "text": "Models",
-        "url": "/db-models"
-      },
-      {
-        "text": "Advanced",
-        "url": "/db-models-advanced"
-      },
-      {
-        "text": "Behaviors",
-        "url": "/db-models-behaviors"
-      },
-      {
-        "text": "Cache",
-        "url": "/db-models-cache"
-      },
-      {
-        "text": "Events",
-        "url": "/db-models-events"
-      },
-      {
-        "text": "Metadata",
-        "url": "/db-models-metadata"
-      },
-      {
-        "text": "Relationships",
-        "url": "/db-models-relationships"
-      },
-      {
-        "text": "Transactions",
-        "url": "/db-models-transactions"
-      },
-      {
-        "text": "Validators",
-        "url": "/db-models-validation"
-      },
-      {
-        "text": "Migrations",
-        "url": "/db-migrations"
-      },
-      {
-        "text": "Pagination",
-        "url": "/db-pagination"
-      }
-    ]
-  },
-  {
-    "text": "Front End",
-    "url": "",
-    "menu": [
-      {
-        "text": "Assets",
-        "url": "/assets"
-      },
-      {
-        "text": "Flash Messenger",
-        "url": "/flash"
-      },
-      {
-        "text": "Forms",
-        "url": "/forms"
-      },
-      {
-        "text": "Image",
-        "url": "/image"
-      },
-      {
-        "text": "Tag",
-        "url": "/tag"
-      },
-      {
-        "text": "View",
-        "url": "/views"
-      },
-      {
-        "text": "Volt",
-        "url": "/volt"
-      }
-    ]
-  },
-  {
-    "text": "Business Logic",
-    "url": "",
-    "menu": [
-      {
-        "text": "Access Control Lists",
-        "url": "/acl"
-      },
-      {
-        "text": "Annotations",
-        "url": "/annotations"
-      },
-      {
-        "text": "Controllers",
-        "url": "/controllers"
-      },
-      {
-        "text": "Dispatcher",
-        "url": "/dispatcher"
-      },
-      {
-        "text": "Event Manager",
-        "url": "/events"
-      },
-      {
-        "text": "Filters",
-        "url": "/filter"
-      },
-      {
-        "text": "Routing",
-        "url": "/routing"
-      },
-      {
-        "text": "Sessions",
-        "url": "/session"
-      },
-      {
-        "text": "Url",
-        "url": "/url"
-      },
-      {
-        "text": "Validation",
-        "url": "/validation"
-      }
-    ]
-  },
-  {
-    "text": "HTTP",
-    "url": "",
-    "menu": [
-      {
-        "text": "Cookies",
-        "url": "/cookies"
-      },
-      {
-        "text": "Request",
-        "url": "/request"
-      },
-      {
-        "text": "Response",
-        "url": "/response"
-      }
-    ]
-  },
-  {
-    "text": "Security",
-    "url": "",
-    "menu": [
-      {
-        "text": "Crypto",
-        "url": "/crypt"
-      },
-      {
+    {
+        "text": "Obecné",
+        "url": "/introduction",
+        "menu": [
+            {
+                "text": "Poznámky k vydání",
+                "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
+                "external": true
+            },
+            {
+                "text": "Upgrade",
+                "url": ""
+            },
+            {
+                "text": "Sponzoři",
+                "url": "/sponsors"
+            }
+        ]
+    },
+    {
+        "text": "Contributions",
+        "url": "",
+        "menu": [
+            {
+                "text": "Přehled",
+                "url": "/contributions"
+            },
+            {
+                "text": "Pull Requests",
+                "url": "/new-pull-request"
+            },
+            {
+                "text": "NFR",
+                "url": "/new-feature-request"
+            },
+            {
+                "text": "Backtrace Generation",
+                "url": "/generating-backtrace"
+            },
+            {
+                "text": "Reproducible Tests",
+                "url": "/reproducible-tests"
+            },
+            {
+                "text": "Průvodce testováním",
+                "url": ""
+            }
+        ]
+    },
+    {
+        "text": "Začínáme",
+        "url": "",
+        "menu": [
+            {
+                "text": "Instalace",
+                "url": "/installation"
+            },
+            {
+                "text": "Instalace webserveru",
+                "url": "/webserver-setup"
+            },
+            {
+                "text": "WAMP",
+                "url": "/webserver-wamp"
+            },
+            {
+                "text": "XAMPP",
+                "url": "/webserver-xampp"
+            }
+        ]
+    },
+    {
+        "text": "Prostředí",
+        "url": "",
+        "menu": [
+            {
+                "text": "Phalcon Compose (Docker)",
+                "url": "/environments-docker"
+            },
+            {
+                "text": "Nanobox",
+                "url": "/environments-nanobox"
+            },
+            {
+                "text": "Phalcon Box (Vagrant)",
+                "url": "/environments-vagrant"
+            }
+        ]
+    },
+    {
+        "text": "Vývojářské nástroje",
+        "url": "",
+        "menu": [
+            {
+                "text": "Instalace",
+                "url": "/devtools-installation"
+            },
+            {
+                "text": "Usage",
+                "url": "/devtools-usage"
+            },
+            {
+                "text": "Debug",
+                "url": "/debug"
+            }
+        ]
+    },
+    {
+        "text": "Tutorials",
+        "url": "",
+        "menu": [
+            {
+                "text": "Performance",
+                "url": "/performance"
+            },
+            {
+                "text": "Basic",
+                "url": "/tutorial-base"
+            },
+            {
+                "text": "Invo",
+                "url": "/tutorial-invo"
+            },
+            {
+                "text": "REST",
+                "url": "/tutorial-rest"
+            },
+            {
+                "text": "Vokuro",
+                "url": "/tutorial-vokuro"
+            },
+            {
+                "text": "Use case",
+                "url": "/use-case"
+            }
+        ]
+    },
+    {
+        "text": "Core",
+        "url": "",
+        "menu": [
+            {
+                "text": "API Index",
+                "url": "/api/"
+            },
+            {
+                "text": "Application",
+                "url": "/application"
+            },
+            {
+                "text": "Micro",
+                "url": "/application-micro"
+            },
+            {
+                "text": "Command Line Interface (Cli)",
+                "url": "/application-cli"
+            },
+            {
+                "text": "DI kontejner",
+                "url": "/di"
+            },
+            {
+                "text": "MVC",
+                "url": "/mvc"
+            }
+        ]
+    },
+    {
+        "text": "Services",
+        "url": "",
+        "menu": [
+            {
+                "text": "Cache",
+                "url": "/cache"
+            },
+            {
+                "text": "Konfigurace",
+                "url": "/config"
+            },
+            {
+                "text": "Escaper",
+                "url": "/escaper"
+            },
+            {
+                "text": "Loader",
+                "url": "/loader"
+            },
+            {
+                "text": "Logging",
+                "url": "/logging"
+            },
+            {
+                "text": "Queue",
+                "url": "/queue"
+            }
+        ]
+    },
+    {
+        "text": "Database",
+        "url": "",
+        "menu": [
+            {
+                "text": "Layer",
+                "url": "/db-layer"
+            },
+            {
+                "text": "PHQL",
+                "url": "/db-phql"
+            },
+            {
+                "text": "ODM",
+                "url": "/db-odm"
+            },
+            {
+                "text": "Models",
+                "url": "/db-models"
+            },
+            {
+                "text": "Advanced",
+                "url": "/db-models-advanced"
+            },
+            {
+                "text": "Behaviors",
+                "url": "/db-models-behaviors"
+            },
+            {
+                "text": "Cache",
+                "url": "/db-models-cache"
+            },
+            {
+                "text": "Events",
+                "url": "/db-models-events"
+            },
+            {
+                "text": "Metadata",
+                "url": "/db-models-metadata"
+            },
+            {
+                "text": "Relationships",
+                "url": "/db-models-relationships"
+            },
+            {
+                "text": "Transakce",
+                "url": "/db-models-transactions"
+            },
+            {
+                "text": "Validators",
+                "url": "/db-models-validation"
+            },
+            {
+                "text": "Migrations",
+                "url": "/db-migrations"
+            },
+            {
+                "text": "Pagination",
+                "url": "/db-pagination"
+            }
+        ]
+    },
+    {
+        "text": "Frontend",
+        "url": "",
+        "menu": [
+            {
+                "text": "Assety",
+                "url": "/assets"
+            },
+            {
+                "text": "Flash Messenger",
+                "url": "/flash"
+            },
+            {
+                "text": "Forms",
+                "url": "/forms"
+            },
+            {
+                "text": "Image",
+                "url": "/image"
+            },
+            {
+                "text": "Tag",
+                "url": "/tag"
+            },
+            {
+                "text": "View",
+                "url": "/views"
+            },
+            {
+                "text": "Volt",
+                "url": "/volt"
+            }
+        ]
+    },
+    {
+        "text": "Aplikační logika",
+        "url": "",
+        "menu": [
+            {
+                "text": "Access Control Lists",
+                "url": "/acl"
+            },
+            {
+                "text": "Anotace",
+                "url": "/annotations"
+            },
+            {
+                "text": "Controllers",
+                "url": "/controllers"
+            },
+            {
+                "text": "Dispatcher",
+                "url": "/dispatcher"
+            },
+            {
+                "text": "Event Manager",
+                "url": "/events"
+            },
+            {
+                "text": "Filters",
+                "url": "/filter"
+            },
+            {
+                "text": "Routování",
+                "url": "/routing"
+            },
+            {
+                "text": "Sessions",
+                "url": "/session"
+            },
+            {
+                "text": "Url",
+                "url": "/url"
+            },
+            {
+                "text": "Validation",
+                "url": "/validation"
+            }
+        ]
+    },
+    {
+        "text": "HTTP",
+        "url": "",
+        "menu": [
+            {
+                "text": "Cookies",
+                "url": "/cookies"
+            },
+            {
+                "text": "Request",
+                "url": "/request"
+            },
+            {
+                "text": "Response",
+                "url": "/response"
+            }
+        ]
+    },
+    {
         "text": "Security",
-        "url": "/security"
-      }
-    ]
-  },
-  {
-    "text": "i18n",
-    "url": "",
-    "menu": [
-      {
-        "text": "Internationalization",
-        "url": "/i18n"
-      },
-      {
-        "text": "Translate",
-        "url": "/translate"
-      }
-    ]
-  }
+        "url": "",
+        "menu": [
+            {
+                "text": "Crypto",
+                "url": "/crypt"
+            },
+            {
+                "text": "Security",
+                "url": "/security"
+            }
+        ]
+    },
+    {
+        "text": "i18n",
+        "url": "",
+        "menu": [
+            {
+                "text": "Internationalization",
+                "url": "/i18n"
+            },
+            {
+                "text": "Translate",
+                "url": "/translate"
+            }
+        ]
+    }
 ]

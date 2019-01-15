@@ -1,8 +1,10 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
----
+* * *
+
+layout: article language: 'en' version: '4.0'
+
+* * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
@@ -48,7 +50,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 ### Dispatch Loop Events
 
-[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/3.4/en/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. Podporovány jsou následující události:
+[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. Podporovány jsou následující události:
 
 | Jméno události       | Spuštění                                                                                                                                                                                                       | Zastaví operaci? | Triggered on          |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | --------------------- |
@@ -63,7 +65,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 | afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | Ne               | Listeners             |
 | afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | Ano              | Listeners/Controllers |
 
-The [INVO](/3.4/en/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/3.4/en/acl)
+The [INVO](/4.0/en/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/4.0/en/acl)
 
 Následující příklad ukazuje, jak připojit listenery k událostem:
 
@@ -245,7 +247,7 @@ echo $dispatcher->getModuleName(); // will display properly 'backend'
 
 ## Preparing Parameters
 
-Thanks to the hook points provided by [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) you can easily adapt your application to any URL schema; i.e. you might want your URLs look like: `http://example.com/controller/key1/value1/key2/value`. Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to adopt the desired schema:
+Thanks to the hook points provided by [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) you can easily adapt your application to any URL schema; i.e. you might want your URLs look like: `https://example.com/controller/key1/value1/key2/value`. Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to adopt the desired schema:
 
 ```php
 <?php
@@ -293,7 +295,7 @@ $di->set(
 );
 ```
 
-If the desired schema is: `http://example.com/controller/key1:value1/key2:value`, the following code is required:
+If the desired schema is: `https://example.com/controller/key1:value1/key2:value`, the following code is required:
 
 ```php
 <?php
@@ -381,7 +383,7 @@ You can also define an arbitrary schema for actions `before` in the dispatch loo
 
 ### Camelize action names
 
-If the original URL is: `http://example.com/admin/products/show-latest-products`, and for example you want to camelize `show-latest-products` to `ShowLatestProducts`, the following code is required:
+If the original URL is: `https://example.com/admin/products/show-latest-products`, and for example you want to camelize `show-latest-products` to `ShowLatestProducts`, the following code is required:
 
 ```php
 <?php
@@ -423,8 +425,8 @@ $di->set(
 If the original URL always contains a `.php` extension:
 
 ```php
-http://example.com/admin/products/show-latest-products.php
-http://example.com/admin/products/index.php
+https://example.com/admin/products/show-latest-products.php
+https://example.com/admin/products/index.php
 ```
 
 You can remove it before dispatch the controller/action combination:
@@ -635,7 +637,7 @@ class PostsController extends Controller
 
 ## Handling Not-Found Exceptions
 
-Using the [EventsManager](/3.4/en/events) it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
+Using the [EventsManager](/4.0/en/events) it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
 
 ```php
 <?php

@@ -6,9 +6,9 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Cli\Router'
 
 # Class **Phalcon\Cli\Router**
 
-*implements* [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/cli/router.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cli/router.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Phalcon\Cli\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request
 
@@ -35,7 +35,7 @@ public **__construct** ([*mixed* $defaultRoutes])
 
 Phalcon\Cli\Router constructor
 
-public **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -75,7 +75,7 @@ public **handle** ([*array* $arguments])
 
 Handles routing information received from command-line arguments
 
-public [Phalcon\Cli\Router\Route](/3.4/en/api/Phalcon_Cli_Router_Route) **add** (*string* $pattern, [*string/array* $paths])
+public [Phalcon\Cli\Router\Route](/4.0/en/api/Phalcon_Cli_Router_Route) **add** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router
 
@@ -118,7 +118,7 @@ public **getRoutes** ()
 
 Returns all the routes defined in the router
 
-public [Phalcon\Cli\Router\Route](/3.4/en/api/Phalcon_Cli_Router_Route) **getRouteById** (*int* $id)
+public [Phalcon\Cli\Router\Route](/4.0/en/api/Phalcon_Cli_Router_Route) **getRouteById** (*int* $id)
 
 Returns a route object by its id
 

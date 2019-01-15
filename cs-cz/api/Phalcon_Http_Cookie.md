@@ -1,15 +1,14 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
-title: 'Phalcon\Http\Cookie'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\Cookie'
+
+* * *
 
 # Class **Phalcon\Http\Cookie**
 
-*implements* [Phalcon\Http\CookieInterface](/3.4/en/api/Phalcon_Http_CookieInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Http\CookieInterface](/4.0/en/api/Phalcon_Http_CookieInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/cookie.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/cookie.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Provide OO wrappers to manage a HTTP cookie
 
@@ -19,7 +18,7 @@ public **__construct** (*string* $name, [*mixed* $value], [*int* $expire], [*str
 
 Phalcon\Http\Cookie constructor
 
-public **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -27,7 +26,7 @@ public **getDI** ()
 
 Returns the internal dependency injector
 
-public [Phalcon\Http\Cookie](/3.4/en/api/Phalcon_Http_Cookie) **setValue** (*string* $value)
+public [Phalcon\Http\Cookie](/4.0/en/api/Phalcon_Http_Cookie) **setValue** (*string* $value)
 
 Sets the cookie's value
 
@@ -47,13 +46,13 @@ public **delete** ()
 
 Deletes the cookie by setting an expire time in the past
 
-public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](/3.4/en/api/Phalcon_Http_CookieInterface)
+public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](/4.0/en/api/Phalcon_Http_CookieInterface)
 
 Sets the cookie's sign key. The `$signKey` MUST be at least 32 characters long and generated using a cryptographically secure pseudo random generator.
 
 You can use `null` to disable cookie signing.
 
-See: [Phalcon\Security\Random](/3.4/en/api/Phalcon_Security_Random) Throws: [Phalcon\Http\Cookie\Exception](/3.4/en/api/Phalcon_Http_Cookie_Exception)
+See: [Phalcon\Security\Random](/4.0/en/api/Phalcon_Security_Random) Throws: [Phalcon\Http\Cookie\Exception](/4.0/en/api/Phalcon_Http_Cookie_Exception)
 
 public **useEncryption** (*mixed* $useEncryption)
 

@@ -1,8 +1,10 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 # 生成回溯跟踪
 
@@ -12,4 +14,4 @@ Please follow this guide to understand how to generate the backtrace.
 
 <https://bugs.php.net/bugs-generating-backtrace.php>
 
-<http://bugs.php.net/bugs-generating-backtrace-win32.php>
+<https://bugs.php.net/bugs-generating-backtrace-win32.php>

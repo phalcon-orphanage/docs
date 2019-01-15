@@ -6,9 +6,9 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Query'
 
 # Class **Phalcon\Mvc\Model\Query**
 
-*implements* [Phalcon\Mvc\Model\QueryInterface](/3.4/en/api/Phalcon_Mvc_Model_QueryInterface), [Phalcon\Di\InjectionAwareInterface](/3.4/en/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Mvc\Model\QueryInterface](/4.0/en/api/Phalcon_Mvc_Model_QueryInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/query.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/query.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This class takes a PHQL intermediate representation and executes it.
 
@@ -45,11 +45,11 @@ foreach ($result as $row) {
 
 ## Methods
 
-public **__construct** ([*string* $phql], [[Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector], [*mixed* $options])
+public **__construct** ([*string* $phql], [[Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector], [*mixed* $options])
 
 Phalcon\Mvc\Model\Query constructor
 
-public **setDI** ([Phalcon\DiInterface](/3.4/en/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -89,11 +89,11 @@ final protected **_getSelectColumn** (*array* $column)
 
 Resolves a column from its intermediate representation into an array used to determine if the resultset produced is simple or complex
 
-final protected *string* **_getTable** ([Phalcon\Mvc\Model\ManagerInterface](/3.4/en/api/Phalcon_Mvc_Model_ManagerInterface) $manager, *array* $qualifiedName)
+final protected *string* **_getTable** ([Phalcon\Mvc\Model\ManagerInterface](/4.0/en/api/Phalcon_Mvc_Model_ManagerInterface) $manager, *array* $qualifiedName)
 
 Resolves a table in a SELECT statement checking if the model exists
 
-final protected **_getJoin** ([Phalcon\Mvc\Model\ManagerInterface](/3.4/en/api/Phalcon_Mvc_Model_ManagerInterface) $manager, *mixed* $join)
+final protected **_getJoin** ([Phalcon\Mvc\Model\ManagerInterface](/4.0/en/api/Phalcon_Mvc_Model_ManagerInterface) $manager, *mixed* $join)
 
 Resolves a JOIN clause checking if the associated models exist
 
@@ -101,11 +101,11 @@ final protected *string* **_getJoinType** (*array* $join)
 
 Resolves a JOIN type
 
-final protected *array* **_getSingleJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, [Phalcon\Mvc\Model\RelationInterface](/3.4/en/api/Phalcon_Mvc_Model_RelationInterface) $relation)
+final protected *array* **_getSingleJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, [Phalcon\Mvc\Model\RelationInterface](/4.0/en/api/Phalcon_Mvc_Model_RelationInterface) $relation)
 
 Resolves joins involving has-one/belongs-to/has-many relations
 
-final protected *array* **_getMultiJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, [Phalcon\Mvc\Model\RelationInterface](/3.4/en/api/Phalcon_Mvc_Model_RelationInterface) $relation)
+final protected *array* **_getMultiJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, [Phalcon\Mvc\Model\RelationInterface](/4.0/en/api/Phalcon_Mvc_Model_RelationInterface) $relation)
 
 Resolves joins involving many-to-many relations
 
@@ -153,19 +153,19 @@ final protected **_executeSelect** (*mixed* $intermediate, *mixed* $bindParams, 
 
 Executes the SELECT intermediate representation producing a Phalcon\Mvc\Model\Resultset
 
-final protected [Phalcon\Mvc\Model\Query\StatusInterface](/3.4/en/api/Phalcon_Mvc_Model_Query_StatusInterface) **_executeInsert** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
+final protected [Phalcon\Mvc\Model\Query\StatusInterface](/4.0/en/api/Phalcon_Mvc_Model_Query_StatusInterface) **_executeInsert** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Executes the INSERT intermediate representation producing a Phalcon\Mvc\Model\Query\Status
 
-final protected [Phalcon\Mvc\Model\Query\StatusInterface](/3.4/en/api/Phalcon_Mvc_Model_Query_StatusInterface) **_executeUpdate** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
+final protected [Phalcon\Mvc\Model\Query\StatusInterface](/4.0/en/api/Phalcon_Mvc_Model_Query_StatusInterface) **_executeUpdate** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Executes the UPDATE intermediate representation producing a Phalcon\Mvc\Model\Query\Status
 
-final protected [Phalcon\Mvc\Model\Query\StatusInterface](/3.4/en/api/Phalcon_Mvc_Model_Query_StatusInterface) **_executeDelete** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
+final protected [Phalcon\Mvc\Model\Query\StatusInterface](/4.0/en/api/Phalcon_Mvc_Model_Query_StatusInterface) **_executeDelete** (*array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Executes the DELETE intermediate representation producing a Phalcon\Mvc\Model\Query\Status
 
-final protected [Phalcon\Mvc\Model\ResultsetInterface](/3.4/en/api/Phalcon_Mvc_Model_ResultsetInterface) **_getRelatedRecords** ([Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $model, *array* $intermediate, *array* $bindParams, *array* $bindTypes)
+final protected [Phalcon\Mvc\Model\ResultsetInterface](/4.0/en/api/Phalcon_Mvc_Model_ResultsetInterface) **_getRelatedRecords** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
 Query the records on which the UPDATE/DELETE operation well be done
 
@@ -173,7 +173,7 @@ public *mixed* **execute** ([*array* $bindParams], [*array* $bindTypes])
 
 Executes a parsed PHQL statement
 
-public [Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) **getSingleResult** ([*array* $bindParams], [*array* $bindTypes])
+public [Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) **getSingleResult** ([*array* $bindParams], [*array* $bindTypes])
 
 Executes the query returning the first result
 

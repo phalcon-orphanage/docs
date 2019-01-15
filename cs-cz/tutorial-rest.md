@@ -1,14 +1,16 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
----
+* * *
+
+layout: article language: 'en' version: '4.0'
+
+* * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='basic'></a>
 
 # Tutorial: Creating a Simple REST API
 
-In this tutorial, we will explain how to create a simple application that provides a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
+In this tutorial, we will explain how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
 
 * `GET` to retrieve and search data
 * `POST` to add data
@@ -34,7 +36,7 @@ The API consists of the following methods:
 
 ## Creating the Application
 
-As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/3.4/en/application-micro) to meet our goal.
+As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/4.0/en/application-micro) to meet our goal.
 
 The following file structure is more than enough:
 
@@ -272,7 +274,7 @@ $app->get(
 );
 ```
 
-[PHQL](/3.4/en/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
+[PHQL](/4.0/en/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
 
 The searching by name handler would look like [File: `index.php`]:
 
@@ -558,12 +560,12 @@ Now we will create database for our application. Run SQL queries as follows:
 
 ## Testing our Application
 
-Using [curl](http://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
+Using [curl](https://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
 
 Obtain all the robots:
 
 ```bash
-curl -i -X GET http://localhost/my-rest-api/api/robots
+curl -i -X GET https://localhost/my-rest-api/api/robots
 
 HTTP/1.1 200 OK
 Date: Tue, 21 Jul 2015 07:05:13 GMT
@@ -577,7 +579,7 @@ Content-Type: text/html; charset=UTF-8
 Search a robot by its name:
 
 ```bash
-curl -i -X GET http://localhost/my-rest-api/api/robots/search/Astro
+curl -i -X GET https://localhost/my-rest-api/api/robots/search/Astro
 
 HTTP/1.1 200 OK
 Date: Tue, 21 Jul 2015 07:09:23 GMT
@@ -591,7 +593,7 @@ Content-Type: text/html; charset=UTF-8
 Obtain a robot by its id:
 
 ```bash
-curl -i -X GET http://localhost/my-rest-api/api/robots/3
+curl -i -X GET https://localhost/my-rest-api/api/robots/3
 
 HTTP/1.1 200 OK
 Date: Tue, 21 Jul 2015 07:12:18 GMT
@@ -606,7 +608,7 @@ Insert a new robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
-    http://localhost/my-rest-api/api/robots
+    https://localhost/my-rest-api/api/robots
 
 HTTP/1.1 201 Created
 Date: Tue, 21 Jul 2015 07:15:09 GMT
@@ -621,7 +623,7 @@ Try to insert a new robot with the name of an existing robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
-    http://localhost/my-rest-api/api/robots
+    https://localhost/my-rest-api/api/robots
 
 HTTP/1.1 409 Conflict
 Date: Tue, 21 Jul 2015 07:18:28 GMT
@@ -636,7 +638,7 @@ Or update a robot with an unknown type:
 
 ```bash
 curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
-    http://localhost/my-rest-api/api/robots/4
+    https://localhost/my-rest-api/api/robots/4
 
 HTTP/1.1 409 Conflict
 Date: Tue, 21 Jul 2015 08:48:01 GMT
@@ -651,7 +653,7 @@ Content-Type: text/html; charset=UTF-8
 Finally, delete a robot:
 
 ```bash
-curl -i -X DELETE http://localhost/my-rest-api/api/robots/4
+curl -i -X DELETE https://localhost/my-rest-api/api/robots/4
 
 HTTP/1.1 200 OK
 Date: Tue, 21 Jul 2015 08:49:29 GMT
@@ -666,4 +668,4 @@ Content-Type: text/html; charset=UTF-8
 
 ## Conclusion
 
-As we saw, developing a [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/3.4/en/application-micro) and [PHQL](/3.4/en/db-phql).
+As we saw, developing a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/4.0/en/application-micro) and [PHQL](/4.0/en/db-phql).

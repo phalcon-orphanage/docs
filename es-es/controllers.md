@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # Controladores
@@ -181,7 +183,7 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>El método <code>initialize()</code> se llama sólo si el evento <code>beforeExecuteRoute</code> se ejecuta con éxito. Esto evitará que la lógica de la aplicación en el inicializador no pueda ejecutar sin autorización.</h5>
+<h5 class='alert alert-warning'>The <code>initialize()</code> method is only called if the <code>beforeExecuteRoute</code> event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
 
 Si desea ejecutar cierta lógica de inicialización justo después de que se construye el objeto controlador puede implementar el método `onConstruct()`:
 
@@ -199,7 +201,7 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Tenga en cuenta que el método <code>onConstruct()</code> se ejecuta incluso si no existe la acción a ejecutarse en el controlador o el usuario no tiene acceso a ella (según control de acceso personalizado proporcionado por el desarrollador).</h5>
+<h5 class='alert alert-warning'>Be aware that <code>onConstruct()</code> method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).</h5>
 
 <a name='injecting-services'></a>
 

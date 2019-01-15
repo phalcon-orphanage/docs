@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='overview'></a>
 
 # Routing
@@ -75,7 +77,7 @@ In the example above, we're using wildcards to make a route valid for many URIs.
 |:----------:|:------:|:---------:|:---------:|
 |   users    | delete |   dave    |    301    |
 
-The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions](http://www.php.net/manual/en/book.pcre.php). Note that, it is not necessary to add regular expression delimiters. All route patterns are case-insensitive.
+The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions](https://www.php.net/manual/en/book.pcre.php). Note that, it is not necessary to add regular expression delimiters. All route patterns are case-insensitive.
 
 The second parameter defines how the matched parts should bind to the controller/action/parameters. Matching parts are placeholders or subpatterns delimited by parentheses (round brackets). In the example given above, the first subpattern matched (`:controller`) is the controller part of the route, the second the action and so on.
 
@@ -681,7 +683,7 @@ $router->add(
 
 [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) has a default behavior that provides a very simple routing that always expects a URI that matches the following pattern: `/:controller/:action/:params`
 
-For example, for a URL like this `http://phalconphp.com/documentation/show/about.html`, this router will translate it as follows:
+For example, for a URL like this `https://phalconphp.com/documentation/show/about.html`, this router will translate it as follows:
 
 |  Controller   | Action | Parameter  |
 |:-------------:|:------:|:----------:|
@@ -1072,7 +1074,7 @@ Like many other components, routers also have events. None of the events can sto
 
 ## Annotations Router
 
-This component provides a variant that's integrated with the [annotations](/3.4/en/annotations) service. Using this strategy you can write the routes directly in the controllers instead of adding them in the service registration:
+This component provides a variant that's integrated with the [annotations](/4.0/en/annotations) service. Using this strategy you can write the routes directly in the controllers instead of adding them in the service registration:
 
 ```php
 <?php
@@ -1199,7 +1201,7 @@ $di['router'] = function () {
 
 You can register router during service registration with Phalcon dependency injector to make it available inside the controllers.
 
-You need to add code below in your bootstrap file (for example `index.php` or `app/config/services.php` if you use [Phalcon Developer Tools](http://phalconphp.com/en/download/tools).
+You need to add code below in your bootstrap file (for example `index.php` or `app/config/services.php` if you use [Phalcon Developer Tools](https://phalconphp.com/en/download/tools).
 
 ```php
 <?php

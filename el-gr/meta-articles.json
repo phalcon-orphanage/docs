@@ -1,7 +1,7 @@
 {
   "acl": [
     {
-      "text": "Επισκόπηση",
+      "text": "Overview",
       "url": "overview"
     },
     {
@@ -41,7 +41,7 @@
       "url": "serialization"
     },
     {
-      "text": "Γεγονότα",
+      "text": "Events",
       "url": "events"
     },
     {
@@ -51,7 +51,7 @@
   ],
   "annotations": [
     {
-      "text": "Επισκόπηση",
+      "text": "Overview",
       "url": "overview"
     },
     {
@@ -330,7 +330,7 @@
       ]
     },
     {
-      "text": "Γεγονότα",
+      "text": "Events",
       "url": "events",
       "menu": [
         {
@@ -451,7 +451,7 @@
   ],
   "application": [
     {
-      "text": "Επισκόπηση",
+      "text": "Overview",
       "url": "overview"
     },
     {
@@ -485,7 +485,7 @@
   ],
   "assets": [
     {
-      "text": "Επισκόπηση",
+      "text": "Overview",
       "url": "overview"
     },
     {
@@ -694,11 +694,11 @@
   ],
   "contributions": [
     {
-      "text": "Συμβάλλοντας στο Phalcon",
+      "text": "Contributing to Phalcon",
       "url": "contributing"
     },
     {
-      "text": "Συνεισφορές",
+      "text": "Contributions",
       "url": "contributions"
     },
     {
@@ -731,7 +731,7 @@
   ],
   "controllers": [
     {
-      "text": "Επισκόπηση",
+      "text": "Overview",
       "url": "overview"
     },
     {
@@ -769,7 +769,7 @@
   ],
   "cookies": [
     {
-      "text": "Διαχείριση cookies",
+      "text": "Cookies Management",
       "url": "overview"
     },
     {
@@ -1666,7 +1666,7 @@
       "url": "resolving-services",
       "menu": [
         {
-          "text": "Γεγονότα",
+          "text": "Events",
           "level": 2,
           "url": "events"
         }
@@ -1896,7 +1896,7 @@
       "url": "overview"
     },
     {
-      "text": "Προϋποθέσεις",
+      "text": "Requirements",
       "url": "requirements"
     },
     {
@@ -2349,7 +2349,7 @@
   ],
   "installation": [
     {
-      "text": "Προϋποθέσεις",
+      "text": "Requirements",
       "url": "requirements",
       "menu": [
         {
@@ -2524,7 +2524,7 @@
   ],
   "loader": [
     {
-      "text": "Προϋποθέσεις",
+      "text": "Requirements",
       "url": "overview"
     },
     {
@@ -2640,7 +2640,7 @@
   ],
   "mvc": [
     {
-      "text": "Η αρχιτεκτονική MVC",
+      "text": "The MVC Architecture",
       "url": "architecture"
     },
     {
@@ -2735,7 +2735,7 @@
   ],
   "queue": [
     {
-      "text": "Χρησημοποίηση Ουρών",
+      "text": "Queueing",
       "url": "overview"
     },
     {
@@ -3180,7 +3180,7 @@
   ],
   "tutorial-invo": [
     {
-      "text": "Σεμινάριο: INVO",
+      "text": "Tutorial: INVO",
       "url": "overview"
     },
     {
@@ -3258,7 +3258,7 @@
   ],
   "tutorial-rest": [
     {
-      "text": "Βοήθημα: Δημιουργώντας ένα απλό REST API",
+      "text": "Tutorial: Creating a Simple REST API",
       "url": "overview"
     },
     {
@@ -3300,7 +3300,7 @@
   ],
   "tutorial-vokuro": [
     {
-      "text": "Σεμινάριο: Vökuró",
+      "text": "Tutorial: Vökuró",
       "url": "overview"
     },
     {
@@ -3322,7 +3322,7 @@
       "url": "overview"
     },
     {
-      "text": "Προϋποθέσεις",
+      "text": "Requirements",
       "url": "requirements"
     },
     {

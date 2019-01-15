@@ -6,11 +6,11 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Logger\Adapter\Fil
 
 # Class **Phalcon\Logger\Adapter\File**
 
-*extends* abstract class [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+*extends* abstract class [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
-*implements* [Phalcon\Logger\AdapterInterface](/3.4/en/api/Phalcon_Logger_AdapterInterface)
+*implements* [Phalcon\Logger\AdapterInterface](/4.0/en/api/Phalcon_Logger_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/logger/adapter/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger/adapter/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Adapter to store logs in plain text files
 
@@ -53,66 +53,66 @@ public **__wakeup** ()
 
 Opens the internal file handler after unserialization
 
-public **setLogLevel** (*mixed* $level) inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **setLogLevel** (*mixed* $level) inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Filters the logs sent to the handlers that are less or equal than a specific level
 
-public **getLogLevel** () inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **getLogLevel** () inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Returns the current log level
 
-public **setFormatter** ([Phalcon\Logger\FormatterInterface](/3.4/en/api/Phalcon_Logger_FormatterInterface) $formatter) inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **setFormatter** ([Phalcon\Logger\FormatterInterface](/4.0/en/api/Phalcon_Logger_FormatterInterface) $formatter) inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Sets the message formatter
 
-public **begin** () inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **begin** () inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Starts a transaction
 
-public **commit** () inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **commit** () inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Commits the internal transaction
 
-public **rollback** () inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **rollback** () inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Rollbacks the internal transaction
 
-public **isTransaction** () inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **isTransaction** () inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Returns the whether the logger is currently in an active transaction or not
 
-public **critical** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **critical** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Sends/Writes a critical message to the log
 
-public **emergency** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **emergency** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Sends/Writes an emergency message to the log
 
-public **debug** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **debug** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Sends/Writes a debug message to the log
 
-public **error** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **error** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Sends/Writes an error message to the log
 
-public **info** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **info** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Sends/Writes an info message to the log
 
-public **notice** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **notice** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Sends/Writes a notice message to the log
 
-public **warning** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **warning** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Sends/Writes a warning message to the log
 
-public **alert** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **alert** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Sends/Writes an alert message to the log
 
-public **log** (*mixed* $type, [*mixed* $message], [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/en/api/Phalcon_Logger_Adapter)
+public **log** (*mixed* $type, [*mixed* $message], [*array* $context]) inherited from [Phalcon\Logger\Adapter](/4.0/en/api/Phalcon_Logger_Adapter)
 
 Logs messages to the internal logger. Appends logs to the logger

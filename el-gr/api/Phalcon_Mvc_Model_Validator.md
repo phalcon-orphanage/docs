@@ -6,9 +6,9 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Validato
 
 # Abstract class **Phalcon\Mvc\Model\Validator**
 
-*implements* [Phalcon\Mvc\Model\ValidatorInterface](/3.4/en/api/Phalcon_Mvc_Model_ValidatorInterface)
+*implements* [Phalcon\Mvc\Model\ValidatorInterface](/4.0/en/api/Phalcon_Mvc_Model_ValidatorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/validator.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/validator.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This is a base class for Phalcon\Mvc\Model validators
 
@@ -40,6 +40,6 @@ public **isSetOption** (*mixed* $option)
 
 Check whether an option has been defined in the validator options
 
-abstract public **validate** ([Phalcon\Mvc\EntityInterface](/3.4/en/api/Phalcon_Mvc_EntityInterface) $record) inherited from [Phalcon\Mvc\Model\ValidatorInterface](/3.4/en/api/Phalcon_Mvc_Model_ValidatorInterface)
+abstract public **validate** ([Phalcon\Mvc\EntityInterface](/4.0/en/api/Phalcon_Mvc_EntityInterface) $record) inherited from [Phalcon\Mvc\Model\ValidatorInterface](/4.0/en/api/Phalcon_Mvc_Model_ValidatorInterface)
 
 ...

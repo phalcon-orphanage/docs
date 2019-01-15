@@ -1,8 +1,10 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
----
+* * *
+
+layout: article language: 'en' version: '4.0'
+
+* * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <h5 class='alert alert-info'>Please note that if you are using the Mongo driver provided by PHP 7, the ODM will not work for you. There is an incubator adapter but all the Mongo code must be rewritten (new Bson type instead of arrays, no MongoId, no MongoDate, etc...). Please ensure that you test your code before upgrading to PHP 7 and/or Phalcon 3+</h5>
 
@@ -10,15 +12,15 @@ version: '4.0'
 
 # ODM (Object-Document Mapper)
 
-In addition to its ability to [map tables](/3.4/en/models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
+In addition to its ability to [map tables](/4.0/en/models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
 
 Due to the absence of SQL queries and planners, NoSQL databases can see real improvements in performance using the Phalcon approach. Additionally, there are no SQL building reducing the possibility of SQL injections.
 
 The following NoSQL databases are supported:
 
-| Name                               | Description                                                          |
-| ---------------------------------- | -------------------------------------------------------------------- |
-| [MongoDB](http://www.mongodb.org/) | MongoDB is a scalable, high-performance, open source NoSQL database. |
+| Name                                | Description                                                          |
+| ----------------------------------- | -------------------------------------------------------------------- |
+| [MongoDB](https://www.mongodb.org/) | MongoDB is a scalable, high-performance, open source NoSQL database. |
 
 <a name='creating-models'></a>
 
@@ -283,7 +285,7 @@ The available query options are:
 | `limit`      | Limit the results of the query to results to certain range                                                                                                                                   | `'limit' => 10`                                      |
 | `skip`       | Skips a number of results                                                                                                                                                                    | `'skip' => 50`                                       |
 
-If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](http://www.php.net/manual/en/mongo.sqltomongo.php).
+If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](https://www.php.net/manual/en/mongo.sqltomongo.php).
 
 <a name='finding-documents-fields'></a>
 
@@ -316,7 +318,7 @@ The example above returns the `name` of the robot with the `type = 'maid'`.
 
 ## Aggregations
 
-A model can return calculations using [aggregation framework](http://docs.mongodb.org/manual/applications/aggregation/) provided by Mongo. The aggregated values are calculate without having to use MapReduce. With this option is easy perform tasks such as totaling or averaging field values:
+A model can return calculations using [aggregation framework](https://docs.mongodb.org/manual/applications/aggregation/) provided by Mongo. The aggregated values are calculate without having to use MapReduce. With this option is easy perform tasks such as totaling or averaging field values:
 
 ```php
 <?php
@@ -372,7 +374,7 @@ if ($robot->save() === false) {
 }
 ```
 
-The `_id` property is automatically updated with the [MongoId](http://www.php.net/manual/en/class.mongoid.php) object created by the driver:
+The `_id` property is automatically updated with the [MongoId](https://www.php.net/manual/en/class.mongoid.php) object created by the driver:
 
 ```php
 <?php
@@ -465,7 +467,7 @@ class Products extends Collection
 }
 ```
 
-Additionally, this component is integrated with the [Phalcon Events Manager](/3.4/en/events) ([Phalcon\Events\Manager](api/Phalcon_Events_Manager)), this means we can create listeners that run when an event is triggered.
+Additionally, this component is integrated with the [Phalcon Events Manager](/4.0/en/events) ([Phalcon\Events\Manager](api/Phalcon_Events_Manager)), this means we can create listeners that run when an event is triggered.
 
 ```php
 <?php
@@ -622,7 +624,7 @@ class Robots extends Collection
 
 The example above performs a validation using the built-in validator `InclusionIn`. It checks that the value of the field `type` is in a `domain` list. If the value is not included in the list, then the validator will fail and return `false`.
 
-<h5 class='alert alert-warning'>For more information on validators, see the <a href="/3.4/en/validation">Validation documentation</a> </h5>
+<h5 class='alert alert-warning'>For more information on validators, see the <a href="/4.0/en/validation">Validation documentation</a> </h5>
 
 <a name='deleting-records'></a>
 
@@ -700,7 +702,7 @@ Another type of events is available when the data validation process finds any i
 
 ## Implicit Ids vs. User Primary Keys
 
-By default [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) assumes that the `_id` attribute is automatically generated using [MongoIds](http://www.php.net/manual/en/class.mongoid.php).
+By default [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) assumes that the `_id` attribute is automatically generated using [MongoIds](https://www.php.net/manual/en/class.mongoid.php).
 
 If a model uses custom primary keys this behavior can be overridden:
 

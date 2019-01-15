@@ -6,9 +6,9 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Session\Adapter'
 
 # Abstract class **Phalcon\Session\Adapter**
 
-*implements* [Phalcon\Session\AdapterInterface](/3.4/en/api/Phalcon_Session_AdapterInterface)
+*implements* [Phalcon\Session\AdapterInterface](/4.0/en/api/Phalcon_Session_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/session/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/session/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Base class for Phalcon\Session adapters
 

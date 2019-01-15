@@ -1,8 +1,10 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
----
+* * *
+
+layout: article language: 'en' version: '4.0'
+
+* * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
@@ -103,13 +105,13 @@ $response->redirect();
 $response->redirect('posts/index');
 
 // Redirect to an external URL
-$response->redirect('http://en.wikipedia.org', true);
+$response->redirect('https://en.wikipedia.org', true);
 
 // Redirect specifying the HTTP status code
-$response->redirect('http://www.example.com/new-location', true, 301);
+$response->redirect('https://www.example.com/new-location', true, 301);
 ```
 
-All internal URIs are generated using the [url](/3.4/en/url) service (by default [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)). This example demonstrates how you can redirect using a route you have defined in your application:
+All internal URIs are generated using the [url](/4.0/en/url) service (by default [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)). This example demonstrates how you can redirect using a route you have defined in your application:
 
 ```php
 <?php

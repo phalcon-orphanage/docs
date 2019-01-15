@@ -1,15 +1,14 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\Resultset'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Resultset'
+
+* * *
 
 # Abstract class **Phalcon\Mvc\Model\Resultset**
 
-*implements* [Phalcon\Mvc\Model\ResultsetInterface](/3.4/en/api/Phalcon_Mvc_Model_ResultsetInterface), [Iterator](http://php.net/manual/en/class.iterator.php), [Traversable](http://php.net/manual/en/class.traversable.php), [SeekableIterator](http://php.net/manual/en/class.seekableiterator.php), [Countable](http://php.net/manual/en/class.countable.php), [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php), [Serializable](http://php.net/manual/en/class.serializable.php), [JsonSerializable](http://php.net/manual/en/class.jsonserializable.php)
+*implements* [Phalcon\Mvc\Model\ResultsetInterface](/4.0/en/api/Phalcon_Mvc_Model_ResultsetInterface), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [SeekableIterator](https://php.net/manual/en/class.seekableiterator.php), [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Serializable](https://php.net/manual/en/class.serializable.php), [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/mvc/model/resultset.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/resultset.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This component allows to Phalcon\Mvc\Model returns large resultsets with the minimum memory consumption Resultsets can be traversed using a standard foreach or a while statement. If a resultset is serialized it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before serializing.
 
@@ -62,7 +61,7 @@ while ($robots->valid()) {
 
 ## Methods
 
-public **__construct** ([Phalcon\Db\ResultInterface](/3.4/en/api/Phalcon_Db_ResultInterface) | *false* $result, [[Phalcon\Cache\BackendInterface](/3.4/en/api/Phalcon_Cache_BackendInterface) $cache])
+public **__construct** ([Phalcon\Db\ResultInterface](/4.0/en/api/Phalcon_Db_ResultInterface) | *false* $result, [[Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface) $cache])
 
 Phalcon\Mvc\Model\Resultset constructor
 
@@ -98,7 +97,7 @@ public **offsetGet** (*mixed* $index)
 
 Gets row in a specific position of the resultset
 
-public **offsetSet** (*int* $index, [Phalcon\Mvc\ModelInterface](/3.4/en/api/Phalcon_Mvc_ModelInterface) $value)
+public **offsetSet** (*int* $index, [Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $value)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
@@ -142,15 +141,15 @@ public **getMessages** ()
 
 Returns the error messages produced by a batch operation
 
-public *boolean* **update** (*array* $data, [[Closure](http://php.net/manual/en/class.closure.php) $conditionCallback])
+public *boolean* **update** (*array* $data, [[Closure](https://php.net/manual/en/class.closure.php) $conditionCallback])
 
 Updates every record in the resultset
 
-public **delete** ([[Closure](http://php.net/manual/en/class.closure.php) $conditionCallback])
+public **delete** ([[Closure](https://php.net/manual/en/class.closure.php) $conditionCallback])
 
 Deletes every record in the resultset
 
-public [Phalcon\Mvc\Model](/3.4/en/api/Phalcon_Mvc_Model) **filter** (*callback* $filter)
+public [Phalcon\Mvc\Model](/4.0/en/api/Phalcon_Mvc_Model) **filter** (*callback* $filter)
 
 Filters a resultset returning only those the developer requires
 
@@ -179,18 +178,18 @@ echo json_encode($robots);
 
 ```
 
-abstract public **toArray** () inherited from [Phalcon\Mvc\Model\ResultsetInterface](/3.4/en/api/Phalcon_Mvc_Model_ResultsetInterface)
+abstract public **toArray** () inherited from [Phalcon\Mvc\Model\ResultsetInterface](/4.0/en/api/Phalcon_Mvc_Model_ResultsetInterface)
 
 ...
 
-abstract public **current** () inherited from [Iterator](http://php.net/manual/en/class.iterator.php)
+abstract public **current** () inherited from [Iterator](https://php.net/manual/en/class.iterator.php)
 
 ...
 
-abstract public **serialize** () inherited from [Serializable](http://php.net/manual/en/class.serializable.php)
+abstract public **serialize** () inherited from [Serializable](https://php.net/manual/en/class.serializable.php)
 
 ...
 
-abstract public **unserialize** (*mixed* $serialized) inherited from [Serializable](http://php.net/manual/en/class.serializable.php)
+abstract public **unserialize** (*mixed* $serialized) inherited from [Serializable](https://php.net/manual/en/class.serializable.php)
 
 ...

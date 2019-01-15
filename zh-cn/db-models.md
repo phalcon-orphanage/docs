@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='working-with'></a>
 
 # 使用模型
@@ -33,7 +35,7 @@ class RobotParts extends Model
 }
 ```
 
-<h5 class='alert alert-warning'>如果您使用的 PHP 5.4/5.5 建议您声明使为了节省内存，减少内存分配模型的一部分的每一列。 </h5>
+<h5 class='alert alert-warning'>If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation. </h5>
 
 默认情况下，该模型 `Store\Toys\RobotParts` 将映射到表 `robot_parts`。 如果你想要手动指定映射表的另一个名称，您可以使用 `setSource()` 方法：
 
@@ -158,7 +160,7 @@ class Robots extends Model
 
 公共属性提供在发展中的复杂程度较低。 然而 getter/setter 可以大大提高可测试性、 可扩展性和可维护性的应用程序。 开发人员可以决定哪一种策略是更适合他们正在创建，具体取决于应用程序的需要的应用。 ORM 是符合这两项计划的定义属性。
 
-<h5 class='alert alert-warning'>当使用 getter 和 setter，下划线属性名称中的可能有问题。 </h5>
+<h5 class='alert alert-warning'>Underscores in property names can be problematic when using getters and setters. </h5>
 
 如果你在你的属性名称中使用下划线，你必须仍然 camel 大小写你的 getter/setter 在声明中使用用于与神奇的方法。 (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName` instead of `$model->findByProperty_name`, etc.). 由于大部分的系统预计 camel 大小写，并且通常删除下划线，它建议来命名您的属性显示整个文档的方式。 你可以使用列映射 （如上文所述） 以确保您的属性与数据库的同行的正确映射。
 
@@ -253,7 +255,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-<h5 class='alert alert-warning'>如果你想要查找的外部数据 （如用户输入） 或变量的数据，您必须使用 <a href="#binding-parameters">绑定参数</a> 的记录 '。</h5>
+<h5 class='alert alert-warning'>If you want find record by external data (such as user input) or variable data you must use <a href="#binding-parameters">Binding Parameters</a>`.</h5>
 
 你也可以使用 `findFirst()` 方法去只匹配给定的条件的第一个记录：
 
@@ -639,7 +641,7 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class='alert alert-warning'>由于默认的绑定类型是 <code>Phalcon\Db\Column::BIND_PARAM_STR</code>，还有没有必要指定 'bindTypes' 参数，如果所有的列都是该类型。</h5>
+<h5 class='alert alert-warning'>Since the default bind-type is <code>Phalcon\Db\Column::BIND_PARAM_STR</code>, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.</h5>
 
 如果您在绑定参数绑定数组，请牢记，编号为键的同时，还必须从零：
 
@@ -665,7 +667,7 @@ $robots = Robots::find(
 );
 ```
 
-<h5 class='alert alert-warning'>绑定的参数，供所有查询方法 <code>find （）</code> 和 <code>findFirst()</code> 等，但也像 <code>count （）</code>，<code>sum （）</code>，<code>average()</code> 等的计算方法。 </h5>
+<h5 class='alert alert-warning'>Bound parameters are available for all query methods such as <code>find()</code> and <code>findFirst()</code> but also the calculation methods like <code>count()</code>, <code>sum()</code>, <code>average()</code> etc. </h5>
 
 If you're using "finders" e.g. `find()`, `findFirst()`, etc., bound parameters are automatically used:
 
@@ -1336,7 +1338,7 @@ class Robots extends Model
 }
 ```
 
-<h5 class='alert alert-warning'>Never use a <a href="api/Phalcon_Db_RawValue">Phalcon\Db\RawValue</a> to assign external data (such as user input) or variable data. 将参数绑定到查询时，将忽略这些字段的值。 所以它可以用于攻击注入 SQL 的应用程序。 </h5>
+<h5 class='alert alert-warning'>Never use a <a href="api/Phalcon_Db_RawValue">Phalcon\Db\RawValue</a> to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. </h5>
 
 <a name='dynamic-updates'></a>
 

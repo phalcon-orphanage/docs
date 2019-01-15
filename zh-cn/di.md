@@ -1,8 +1,10 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='di-service-location'></a>
 
@@ -379,7 +381,7 @@ $some->someDbTask();
 
 Since Phalcon is highly decoupled, [Phalcon\Di](api/Phalcon_Di) is essential to integrate the different components of the framework. 开发人员还可以使用此组件把依赖项注入和管理的应用程序中使用的不同类的全局实例。
 
-基本上，此组件实现的 [控制反转](http://en.wikipedia.org/wiki/Inversion_of_control) 模式。 应用这个，对象不会收到使用 setter 或构造函数，但请求服务依赖注入器及其依赖项。 这降低了整体的复杂性，因为只有一种方式得到的组件中所需的依赖项。
+Basically, this component implements the [Inversion of Control](https://en.wikipedia.org/wiki/Inversion_of_control) pattern. 应用这个，对象不会收到使用 setter 或构造函数，但请求服务依赖注入器及其依赖项。 这降低了整体的复杂性，因为只有一种方式得到的组件中所需的依赖项。
 
 另外，这种模式会增加可测试性的代码，从而使它不容易出错。
 
@@ -922,7 +924,7 @@ $di->get('config'); // will properly return config service
 
 <div class="alert alert-danger">
     <p>
-        This approach requires that the module Yaml be installed. Please refer to <a href="http://php.net/manual/book.yaml.php">this</a> for more information.
+        This approach requires that the module Yaml be installed. Please refer to <a href="https://php.net/manual/book.yaml.php">this</a> for more information.
     </p>
 </div>
 
@@ -967,7 +969,7 @@ $component = $di->get(
 
 ### 事件
 
-[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/3.4/en/events) if it is present. 事件被触发使用类型 'di'。 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
+[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. 事件被触发使用类型 'di'。 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
 
 | 事件名称                 | 触发器                            | 可以停止操作吗？ |   触发条件    |
 | -------------------- | ------------------------------ |:--------:|:---------:|
@@ -978,7 +980,7 @@ $component = $di->get(
 
 ## 共享的服务
 
-Services can be registered as 'shared' services this means that they always will act as [singletons](http://en.wikipedia.org/wiki/Singleton_pattern). Once the service is resolved for the first time the same instance of it is returned every time a consumer retrieve the service from the container:
+Services can be registered as 'shared' services this means that they always will act as [singletons](https://en.wikipedia.org/wiki/Singleton_pattern). Once the service is resolved for the first time the same instance of it is returned every time a consumer retrieve the service from the container:
 
 ```php
 <?php

@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 # Solicita una nueva funcionalidad
 
 Una NFR (New Feature Request) o solicitud de nueva característica es un pequeño documento explicando cómo debe presentarse, cómo se puede implementar y cómo puede ayudar a los desarrolladores del núcleo y otros a entender como implementarla.

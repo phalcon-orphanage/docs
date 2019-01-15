@@ -1,8 +1,10 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
@@ -48,7 +50,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 ### 调度循环事件
 
-[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/3.4/en/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. 以下事件被支持︰
+[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. 以下事件被支持︰
 
 | 事件名称                 | 触发器                                                                                                                                                                                                            | 可以停止操作吗？ | 触发条件                  |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------- |
@@ -63,7 +65,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 | afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | 否        | Listeners             |
 | afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | 是的       | Listeners/Controllers |
 
-The [INVO](/3.4/en/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/3.4/en/acl)
+The [INVO](/4.0/en/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/4.0/en/acl)
 
 下面的示例演示如何将侦听器附加到此组件︰
 
@@ -245,7 +247,7 @@ echo $dispatcher->getModuleName(); // will display properly 'backend'
 
 ## 准备参数
 
-Thanks to the hook points provided by [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) you can easily adapt your application to any URL schema; i.e. you might want your URLs look like: `http://example.com/controller/key1/value1/key2/value`. Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to adopt the desired schema:
+Thanks to the hook points provided by [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) you can easily adapt your application to any URL schema; i.e. you might want your URLs look like: `https://example.com/controller/key1/value1/key2/value`. Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to adopt the desired schema:
 
 ```php
 <?php
@@ -293,7 +295,7 @@ $di->set(
 );
 ```
 
-If the desired schema is: `http://example.com/controller/key1:value1/key2:value`, the following code is required:
+If the desired schema is: `https://example.com/controller/key1:value1/key2:value`, the following code is required:
 
 ```php
 <?php
@@ -381,7 +383,7 @@ You can also define an arbitrary schema for actions `before` in the dispatch loo
 
 ### Camelize action names
 
-If the original URL is: `http://example.com/admin/products/show-latest-products`, and for example you want to camelize `show-latest-products` to `ShowLatestProducts`, the following code is required:
+If the original URL is: `https://example.com/admin/products/show-latest-products`, and for example you want to camelize `show-latest-products` to `ShowLatestProducts`, the following code is required:
 
 ```php
 <?php
@@ -423,8 +425,8 @@ $di->set(
 If the original URL always contains a `.php` extension:
 
 ```php
-http://example.com/admin/products/show-latest-products.php
-http://example.com/admin/products/index.php
+https://example.com/admin/products/show-latest-products.php
+https://example.com/admin/products/index.php
 ```
 
 You can remove it before dispatch the controller/action combination:
@@ -568,7 +570,7 @@ $dispatcher->setModelBinder(new Binder());
 return $dispatcher;
 ```
 
-<h5 class='alert alert-warning'>由于绑定器对象在使用内部的反射API，这些API可能是重量级的，因此可以设置缓存。 这可以使用<code>setModelBinder()</code> 的第二个参数来实现，该参数可以是服务名或是传给<code>Binder</code> 构造函数的缓存实例。 </h5>
+<h5 class='alert alert-warning'>Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in <code>setModelBinder()</code> which can also accept service name or just by passing cache instance to <code>Binder</code> constructor. </h5>
 
 It also introduces a new interface [Phalcon\Mvc\Model\Binder\BindableInterface](api/Phalcon_Mvc_Model_Binder_BindableInterface) which allows you to define the controllers associated models to allow models binding in base controllers.
 
@@ -629,13 +631,13 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>当前，绑定器将只用模型的主键来执行<code>findFirst()</code>。上面的路由示例 <code>/posts/show/{1}</code>会 </h5>
+<h5 class='alert alert-warning'>Currently the binder will only use the models primary key to perform a <code>findFirst()</code> on. An example route for the above would be <code>/posts/show/{1}</code> </h5>
 
 <a name='handling-404'></a>
 
 ## Handling Not-Found Exceptions
 
-Using the [EventsManager](/3.4/en/events) it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
+Using the [EventsManager](/4.0/en/events) it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
 
 ```php
 <?php
@@ -729,7 +731,7 @@ class ExceptionsPlugin
 }
 ```
 
-<h5 class='alert alert-danger'>只有调度器产生的异常，和在<code>beforeException</code> 事件中执行的动作产生的异常通知。 监听器和控制器事件产生的异常被重定向到最后一个 try/catch 块 </h5>
+<h5 class='alert alert-danger'>Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the <code>beforeException</code> events. Exceptions produced in listeners or controller events are redirected to the latest try/catch. </h5>
 
 <a name='custom'></a>
 

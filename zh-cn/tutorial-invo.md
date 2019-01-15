@@ -1,12 +1,10 @@
 * * *
 
-<<<<<<< HEAD
-layout: default language: 'en' version: '4.0'
-=======
 layout: article language: 'en' version: '4.0'
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 * * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
@@ -14,11 +12,7 @@ layout: article language: 'en' version: '4.0'
 
 In this second tutorial, we'll explain a more complete application in order to gain a deeper understanding of developing with Phalcon. INVO is one of the sample applications we have created. INVO is a small website that allows users to generate invoices and do other tasks such as manage customers and products. You can clone its code from [Github](https://github.com/phalcon/invo).
 
-<<<<<<< HEAD
-INVO was made with the client-side framework [Bootstrap](http://getbootstrap.com/). Although the application does not generate actual invoices, it still serves as an example showing how the framework works.
-=======
 INVO was made with the client-side framework [Bootstrap](https://getbootstrap.com/). Although the application does not generate actual invoices, it still serves as an example showing how the framework works.
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 <a name='structure'></a>
 
@@ -49,11 +43,7 @@ invo/
 
 As you know, Phalcon does not impose a particular file structure for application development. This project has a simple MVC structure and a public document root.
 
-<<<<<<< HEAD
-Once you open the application in your browser `http://localhost/invo` you'll see something like this:
-=======
 Once you open the application in your browser `https://localhost/invo` you'll see something like this:
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 ![](/assets/images/content/tutorial-invo-1.png)
 
@@ -63,11 +53,7 @@ The application is divided into two parts: a frontend and a backend. The fronten
 
 ## 路由
 
-<<<<<<< HEAD
-INVO uses the standard route that is built-in with the [Router](/3.4/en/routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
-=======
 INVO uses the standard route that is built-in with the [Router](/4.0/en/routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 The following route `/session/register` executes the controller `SessionController` and its action `registerAction`.
 
@@ -91,11 +77,7 @@ $config = new ConfigIni(
 
 ```
 
-<<<<<<< HEAD
-[Phalcon Config](/3.4/en/config) ([Phalcon\Config](api/Phalcon_Config)) allows us to manipulate the file in an object-oriented way. In this example, we're using an ini file for configuration but Phalcon has [adapters](/3.4/en/config) for other file types as well. The configuration file contains the following settings:
-=======
 [Phalcon Config](/4.0/en/config) ([Phalcon\Config](api/Phalcon_Config)) allows us to manipulate the file in an object-oriented way. In this example, we're using an ini file for configuration but Phalcon has [adapters](/4.0/en/config) for other file types as well. The configuration file contains the following settings:
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 ```ini
 [database]
@@ -345,11 +327,7 @@ The following simple form (`app/views/session/index.volt`) requests the login in
 {% endraw %}
 ```
 
-<<<<<<< HEAD
-Instead of using raw PHP as the previous tutorial, we started to use [Volt](/3.4/en/volt). This is a built-in template engine inspired by Jinja_ providing a simpler and friendly syntax to create templates. It will not take too long before you become familiar with Volt.
-=======
 Instead of using raw PHP as the previous tutorial, we started to use [Volt](/4.0/en/volt). This is a built-in template engine inspired by Jinja_ providing a simpler and friendly syntax to create templates. It will not take too long before you become familiar with Volt.
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 The `SessionController::startAction` function (`app/controllers/SessionController.php`) has the task of validating the data entered in the form including checking for a valid user in the database:
 
@@ -424,11 +402,7 @@ class SessionController extends ControllerBase
 }
 ```
 
-<<<<<<< HEAD
-For the sake of simplicity, we have used [sha1](http://php.net/manual/en/function.sha1.php) to store the password hashes in the database, however, this algorithm is not recommended in real applications, use [bcrypt](/3.4/en/security) instead.
-=======
 For the sake of simplicity, we have used [sha1](https://php.net/manual/en/function.sha1.php) to store the password hashes in the database, however, this algorithm is not recommended in real applications, use [bcrypt](/4.0/en/security) instead.
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 Note that multiple public attributes are accessed in the controller like: `$this->flash`, `$this->request` or `$this->session`. These are services defined in the services container from earlier (`app/config/services.php`). When they're accessed the first time, they are injected as part of the controller. These services are `shared`, which means that we are always accessing the same instance regardless of the place where we invoke them. For instance, here we invoke the `session` service and then we store the user identity in the variable `auth`:
 
@@ -525,11 +499,7 @@ The backend is a private area where only registered users have access. Therefore
 
 Every time someone attempts to access any controller/action, the application verifies that the current role (in session) has access to it, otherwise it displays a message like the above and forwards the flow to the home page.
 
-<<<<<<< HEAD
-Now let's find out how the application accomplishes this. The first thing to know is that there is a component called [Dispatcher](/3.4/en/dispatcher). It is informed about the route found by the [Routing](/3.4/en/routing) component. Then, it is responsible for loading the appropriate controller and execute the corresponding action method.
-=======
 Now let's find out how the application accomplishes this. The first thing to know is that there is a component called [Dispatcher](/4.0/en/dispatcher). It is informed about the route found by the [Routing](/4.0/en/routing) component. Then, it is responsible for loading the appropriate controller and execute the corresponding action method.
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 Normally, the framework creates the Dispatcher automatically. In our case, we want to perform a verification before executing the required action, checking if the user has access to it or not. To achieve this, we have replaced the component by creating a function in the bootstrap:
 
@@ -555,21 +525,13 @@ $di->set(
 );
 ```
 
-<<<<<<< HEAD
-We now have total control over the Dispatcher used in the application. Many components in the framework trigger events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue for components, a new component called [EventsManager](/3.4/en/events) allows us to intercept the events produced by a component, routing the events to listeners.
-=======
 We now have total control over the Dispatcher used in the application. Many components in the framework trigger events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue for components, a new component called [EventsManager](/4.0/en/events) allows us to intercept the events produced by a component, routing the events to listeners.
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 <a name='events-manager'></a>
 
 ### Events Management
 
-<<<<<<< HEAD
-The [EventsManager](/3.4/en/events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
-=======
 The [EventsManager](/4.0/en/events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 ```php
 <?php
@@ -821,11 +783,7 @@ foreach ($privateResources as $resource => $actions) {
 
 Backends usually provide forms to allow users to manipulate data. Continuing the explanation of INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you using forms, validations, paginators and more.
 
-<<<<<<< HEAD
-Most options that manipulate data in INVO (companies, products and types of products) were developed using a basic and common [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (Create, Read, Update and Delete). Each CRUD contains the following files:
-=======
 Most options that manipulate data in INVO (companies, products and types of products) were developed using a basic and common [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (Create, Read, Update and Delete). Each CRUD contains the following files:
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 ```bash
 invo/
@@ -1019,11 +977,7 @@ class ProductsForm extends Form
 }
 ```
 
-<<<<<<< HEAD
-The form is declared using an object-oriented scheme based on the elements provided by the [forms](/3.4/en/forms) component. Every element follows almost the same structure:
-=======
 The form is declared using an object-oriented scheme based on the elements provided by the [forms](/4.0/en/forms) component. Every element follows almost the same structure:
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 ```php
 <?php
@@ -1184,11 +1138,7 @@ When the form is submitted, the `search` action is executed in the controller pe
 
 ## Performing a Search
 
-<<<<<<< HEAD
-The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/3.4/en/request) component:
-=======
 The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/4.0/en/request) component:
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 ```php
 <?php
@@ -1773,11 +1723,7 @@ public function saveAction()
 
 ## User Components
 
-<<<<<<< HEAD
-All the UI elements and visual style of the application has been achieved mostly through [Bootstrap](http://getbootstrap.com/). Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
-=======
 All the UI elements and visual style of the application has been achieved mostly through [Bootstrap](https://getbootstrap.com/). Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
->>>>>>> 73fa73b040c87e5bc28ac848a5de044aaa9774c5
 
 This part of the application is implemented in the component `Elements` (`app/library/Elements.php`).
 

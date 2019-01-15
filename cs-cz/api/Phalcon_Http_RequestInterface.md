@@ -1,13 +1,12 @@
----
-layout: article
-language: 'cs-cz'
-version: '4.0'
-title: 'Phalcon\Http\RequestInterface'
----
+* * *
+
+layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\RequestInterface'
+
+* * *
 
 # Interface **Phalcon\Http\RequestInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/requestinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/requestinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 
