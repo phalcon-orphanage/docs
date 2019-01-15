@@ -1,8 +1,10 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
@@ -262,7 +264,7 @@ $form = new UsersForm(
 
 ## 验证
 
-Phalcon forms are integrated with the [validation](/3.4/en/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
+Phalcon forms are integrated with the [validation](/4.0/en/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
 
 ```php
 <?php
@@ -374,7 +376,7 @@ $email->setFilters(
 $form->add($email);
 ```
 
-<h5 class='alert alert-info'>Learn more about filtering in Phalcon by reading the <a href="/3.4/en/filter">Filter documentation</a> </h5>
+<h5 class='alert alert-info'>Learn more about filtering in Phalcon by reading the <a href="/4.0/en/filter">Filter documentation</a> </h5>
 
 <a name='entities'></a>
 
@@ -694,4 +696,4 @@ echo $loginForm->render();
 
 ## 外部资源
 
-* [Vökuró](http://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]
+* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]
