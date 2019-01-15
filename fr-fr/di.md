@@ -4,6 +4,8 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+
 <a name='di-service-location'></a>
 
 # Dependency Injection / Service Location
@@ -377,7 +379,7 @@ The component can now simply access the service it requires when it needs it, if
 
 Since Phalcon is highly decoupled, [Phalcon\Di](api/Phalcon_Di) is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.
 
-Basically, this component implements the [Inversion of Control](http://en.wikipedia.org/wiki/Inversion_of_control) pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only one way to get the required dependencies within a component.
+Basically, this component implements the [Inversion of Control](https://en.wikipedia.org/wiki/Inversion_of_control) pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only one way to get the required dependencies within a component.
 
 Additionally, this pattern increases testability in the code, thus making it less prone to errors.
 
@@ -920,7 +922,7 @@ $di->get('config'); // will properly return config service
 
 <div class="alert alert-danger">
     <p>
-        This approach requires that the module Yaml be installed. Please refer to <a href="http://php.net/manual/book.yaml.php">this</a> for more information.
+        This approach requires that the module Yaml be installed. Please refer to <a href="https://php.net/manual/book.yaml.php">this</a> for more information.
     </p>
 </div>
 
@@ -965,7 +967,7 @@ $component = $di->get(
 
 ### Events
 
-[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/3.4/en/events) if it is present. Events are triggered using the type 'di'. Some events when returning boolean false could stop the active operation. The following events are supported:
+[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. Some events when returning boolean false could stop the active operation. The following events are supported:
 
 | Event Name           | Triggered                                                                                                       | Can stop operation? | Triggered on |
 | -------------------- | --------------------------------------------------------------------------------------------------------------- |:-------------------:|:------------:|
@@ -976,7 +978,7 @@ $component = $di->get(
 
 ## Shared services
 
-Services can be registered as 'shared' services this means that they always will act as [singletons](http://en.wikipedia.org/wiki/Singleton_pattern). Once the service is resolved for the first time the same instance of it is returned every time a consumer retrieve the service from the container:
+Services can be registered as 'shared' services this means that they always will act as [singletons](https://en.wikipedia.org/wiki/Singleton_pattern). Once the service is resolved for the first time the same instance of it is returned every time a consumer retrieve the service from the container:
 
 ```php
 <?php
