@@ -4,13 +4,15 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Validación
 
-[Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. Este componente puede utilizarse para implementar reglas de validación a objetos de datos que no pertenecen a una colección o un modelo.
+[Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
 En el ejemplo siguiente se muestra su uso básico:
 
@@ -59,13 +61,13 @@ if (count($messages)) {
 }
 ```
 
-El diseño flexible de este componente te permite crear tus propios validadores junto con los proporcionados por el framework.
+The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
 
 <a name='initializing'></a>
 
 ## Iniciando la Validación
 
-Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation](api/Phalcon_Validation) object. Puedes poner tus validaciones en un archivo independiente para mejorar la organización y la re-utilización del código:
+Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation](api/Phalcon_Validation) object. You can put your validations in a separate file for better re-use code and organization:
 
 ```php
 <?php
@@ -108,7 +110,7 @@ class MyValidation extends Validation
 }
 ```
 
-Luego inicializar y utilizar su propio validador:
+Then initialize and use your own validator:
 
 ```php
 <?php
@@ -128,7 +130,7 @@ if (count($messages)) {
 
 ## Validadores
 
-Phalcon cuenta con un conjunto de validadores incorporados para este componente:
+Phalcon exposes a set of built-in validators for this component:
 
 | Clase                                                                                         | Explicación                                                            |
 | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
@@ -152,7 +154,7 @@ Phalcon cuenta con un conjunto de validadores incorporados para este componente:
 | [Phalcon\Validation\Validator\CreditCard](api/Phalcon_Validation_Validator_CreditCard)     | Valida un número de tarjeta de crédito                                 |
 | [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback)         | Valida utilizando una función de retorno de llamada                    |
 
-El siguiente ejemplo explica como crear validadores adicionales para este componente:
+The following example explains how to create additional validators for this component:
 
 ```php
 <?php
@@ -193,13 +195,13 @@ class IpValidator extends Validator
 }
 ```
 
-Es importante que los validadores retornen un valor booleano indicando si la validación fue exitosa o no.
+It is important that validators return a valid boolean value indicating if the validation was successful or not.
 
 <a name='callback'></a>
 
 ## Validador de Devolución de Llamada
 
-By using [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. Al retornar `true` la validación fue exitosa, retornando `false` significa que la misma falló. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). Aquí un ejemplo:
+By using [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
 
 ```php
 <?php
@@ -265,7 +267,7 @@ $messages = $validation->validate(['amount' => 10]); // retornará el mensaje de
 
 [Phalcon\Validation](api/Phalcon_Validation) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
 
-Each message consists of an instance of the class [Phalcon\Validation\Message](api/Phalcon_Validation_Message). El conjunto de mensajes generados se puede recuperar con el método `getMessages()`. Cada mensaje proporciona información ampliada como el atributo que genera el mensaje o el tipo de mensaje:
+Each message consists of an instance of the class [Phalcon\Validation\Message](api/Phalcon_Validation_Message). The set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information like the attribute that generated the message or the message type:
 
 ```php
 <?php
@@ -281,7 +283,7 @@ if (count($messages)) {
 }
 ```
 
-Es posible pasar un parámetro `message` para cambiar o traducir el mensaje por defecto en cada validador, incluso es posible utilizar en el mensaje el comodín `:field` para ser reemplazado por el nombre del campo:
+You can pass a `message` parameter to change/translate the default message in each validator, even it's possible to use the wildcard `:field` in the message to be replaced by the label of the field:
 
 ```php
 <?php
@@ -298,7 +300,7 @@ $validation->add(
 );
 ```
 
-Por defecto, el método `getMessages()` devuelve todos los mensajes generados durante la validación. Usted puede filtrar los mensajes para un campo específico usando el método `filter()`:
+By default, the `getMessages()` method returns all the messages generated during validation. You can filter messages for a specific field using the `filter()` method:
 
 ```php
 <?php
@@ -319,7 +321,7 @@ if (count($messages)) {
 
 ## Filtrando de Datos
 
-Es posible filtrar datos antes de validarlos, garantizando que los datos maliciosos o incorrectos no sean validados.
+Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
 
 ```php
 <?php
@@ -357,7 +359,7 @@ Filtering and sanitizing is performed using the [filter](/4.0/en/filter) compone
 
 ## Eventos de Validación
 
-Los validaciones se organizan en clases, es posible implementar los métodos `beforeValidation()` y `afterValidation()` para llevar a cabo más controles, filtros, limpieza, etcétera. If the `beforeValidation()` method returns false the validation is automatically cancelled:
+When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
 
 ```php
 <?php
@@ -410,7 +412,7 @@ class LoginValidation extends Validation
 
 ## Cancelando Validaciones
 
-Por defecto, todos los validadores asignados a un campo se prueban independientemente si uno de ellos falló o no. Es posible cambiar este comportamiento diciéndole al componente de validación qué validador puede detener la validación:
+By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
 
 ```php
 <?php
@@ -452,9 +454,9 @@ $validation->add(
 );
 ```
 
-El primero validador tiene la opción `cancelOnFail` con el valor `true`, por lo tanto, si el validador falla los validadores restantes no se ejecutarán.
+The first validator has the option `cancelOnFail` with a value of `true`, therefore if that validator fails the remaining validators in the chain are not executed.
 
-Si esta creando validadores personalizados, es posible detener la validación en cadena estableciendo la opción `cancelOnFail` como vemos a continuación:
+If you are creating custom validators you can dynamically stop the validation chain by setting the `cancelOnFail` option:
 
 ```php
 <?php
@@ -488,7 +490,7 @@ class MyValidator extends Validator
 
 ## Evitar Validar Valores Vacíos
 
-Es posible pasar la opción `allowEmpty` a todos los validadores incorportados para evitar la validación a realizarse si el valor pasado esta vacío:
+You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
 
 ```php
 <?php
@@ -514,7 +516,7 @@ $validation->add(
 
 ## Validación Recursiva
 
-También puede ejecutar instancias de validación dentro de otra, mediante el método `afterValidation()`. En este ejemplo, al validar la instancia `CompanyValidation` también comprobaremos la instancia `PhoneValidation`:
+You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
 
 ```php
 <?php
