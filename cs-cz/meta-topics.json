@@ -4,6 +4,10 @@
         "url": "/introduction",
         "menu": [
             {
+                "text": "Introduction",
+                "url": "/introduction"
+            },
+            {
                 "text": "Poznámky k vydání",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
