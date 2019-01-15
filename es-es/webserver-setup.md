@@ -4,23 +4,25 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='setup'></a>
 
 # Configuración de Servidor Web
 
-Para que el esquema de rutas de una aplicación Phalcon funcione, será necesario que configures tu servidor web para procesar las redirecciones adecuadamente. Las instrucciones de configuración de servidores web populares son:
+In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
 
 <a name='php-fpm'></a>
 
 ## PHP-FPM
 
-The [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. Hoy en día PHP-FPM está incluído en todas las distribuciones Linux.
+The [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. Nowadays, PHP-FPM is bundled with all Linux based PHP distributions.
 
-En **Windows** PHP-FPM está en el archivo de distribución de PHP a través del archivo `php-cgi.exe` y puede iniciarlo con este script para ayudarlo a configurar las opciones. Windows no soporta sockets unix por lo que este script empezará fast-cgi en TCP en el puerto `9000`.
+On **Windows** PHP-FPM is in the PHP distribution archive through the file `php-cgi.exe` and you can start it with this script to help set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
 
-Crear el archivo `php-fcgi.bat` con el siguiente contenido:
+Create the file `php-fcgi.bat` with the following contents:
 
 ```bat
 @ECHO OFF
@@ -33,13 +35,14 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 
 ## PHP servidor Web incorporado (para desarrolladores)
 
-Para acelerar la ejecución de su aplicación Phalcon en desarrollo, la forma más fácil es utilizar este servidor PHP incorporado. No use este servidor en producción. Las siguientes configuraciones para [Nginx](#nginx) y [Apache](#apache) son las que necesita.
+To speed up getting your Phalcon application running in development the easiest way is to use this built-in PHP server. Do not use this server in a production environment. The following configurations for [Nginx](#nginx) and [Apache](#apache) are what you need.
 
 <a name='php-built-in-phalcon-configuration'></a>
 
 ### Configuración de Phalcon
 
-Para habilitar la reescritura de URI dinámicas, sin Apache o Nginx, que Phalcon necesita que usted utilice el siguiente archivo: <a href="https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php" target="_blank">.htrouter.php</a>
+To enable dynamic URI rewrites, without Apache or Nginx, that Phalcon needs, you can use the following router file:
+<a href="https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php" target="_blank">.htrouter.php</a>
 
 If you created your application with [Phalcon-Devtools](/4.0/en/devtools-installation) this file should already exist in the root directory of your project and you can start the server with the following command:
 
@@ -47,7 +50,7 @@ If you created your application with [Phalcon-Devtools](/4.0/en/devtools-install
 $(which php) -S localhost:8000 -t public .htrouter.php
 ```
 
-La anatomía de este comando: - `$(which php)` - insertara la ruta absoluta a su binario PHP - `-S localhost:8000` - abre el modo de servidor con el `host:puerto` proporcionado - `-t public`-define el directorio raíz del servidor, necesario para que php enture las solicitudes de ruta a activos como JS, CSS e imágenes en el directorio público - `.htrouter.php`- el punto de entrada que será evaluado para cada solicitud
+The anatomy of the command above: - `$(which php)` - will insert the absolute path to your PHP binary - `-S localhost:8000` - invokes server mode with the provided `host:port` - `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory - `.htrouter.php` - the entry point that will be evaluated for each request
 
 Then point your browser to https://localhost:8000/ to check if everything is working.
 
@@ -55,19 +58,19 @@ Then point your browser to https://localhost:8000/ to check if everything is wor
 
 ## Nginx
 
-[Nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. A diferencia de los tradicionales servidores, Nginx no se basa en hilos para procesar las solicitudes. En lugar de esto, utiliza una arquitectura basada en eventos (asíncrona) que es más escalable. Esta arquitectura utiliza pequeñas cantidades de memoria, pero más importante, predecibles bajo carga.
+[Nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
 
-Phalcon con Nginx y PHP-FPM proveen un set de herramientas poderoso para ofrecer el mejor desempeño para tus aplicaciones PHP.
+Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
 ### Instalar Nginx
 
-<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/" target="_blank">Sitio oficial de NginX</a>
+<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/" target="_blank">NginX Offical Site</a>
 
 <a name='nginx-phalcon-configuration'></a>
 
 ### Configuración de Phalcon
 
-Puede utilizar la siguiente configuración posible para configurar Nginx con Phalcon:
+You can use following potential configuration to setup Nginx with Phalcon:
 
 ```nginx
 server {
@@ -154,7 +157,7 @@ server {
 
 ### Iniciar Nginx
 
-Usar `start nginx` desde la línea de comandos, pero esto depende del método de instalación.
+Usually `start nginx` from the command line but this depends on your installation method.
 
 <a name='apache'></a>
 
@@ -166,7 +169,7 @@ Usar `start nginx` desde la línea de comandos, pero esto depende del método de
 
 ### Configuración de Phalcon
 
-Las siguientes son posibles configuraciones que puedes usar para configurar Apache con Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/4.0/en/routing). Comúnmente una aplicación tiene la siguiente estructura:
+The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/4.0/en/routing). Commonly an application has the following structure:
 
 ```bash
 test/
@@ -185,7 +188,7 @@ test/
 
 #### Raíz de documentos
 
-Este es el caso más común, la aplicación se instala en un directorio bajo la raíz del documento. En este caso, utilizamos dos archivos `.htaccess`, el primero de ellos para ocultar el código de la aplicación reenviando todas las solicitudes a la raíz de documentos (`public/`).
+This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`).
 
 ##### Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set. {.alert.alert-warning}
 
@@ -199,7 +202,7 @@ Este es el caso más común, la aplicación se instala en un directorio bajo la 
 </IfModule>
 ```
 
-Un segundo archivo `.htaccess` se encuentra en el directorio `public/`, este reescribe todas las URIs hacia el archivo `public/index.php`:
+A second `.htaccess` file is located in the `public/` directory, this re-writes all the URIs to the `public/index.php` file:
 
 ```apacheconfig
 # test/public/.htaccess
