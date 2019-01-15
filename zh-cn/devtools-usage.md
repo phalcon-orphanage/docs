@@ -1,8 +1,10 @@
 * * *
 
-layout: default language: 'en' version: '4.0'
+layout: article language: 'en' version: '4.0'
 
 * * *
+
+<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
 
 <a name='overview'></a>
 
@@ -24,7 +26,7 @@ layout: default language: 'en' version: '4.0'
 
 以下是有关如何在不同平台上安装开发人员工具的详细说明:
 
-[Linux](/[/3.4/en/devtools-installation#installation-linux) : [MacOS](/3.4/en/devtools-installation#installation-macos) : [Windows](/3.4/en/devtools-installation#installation-windows)
+[Linux](/[/4.0/en/devtools-installation#installation-linux) : [MacOS](/4.0/en/devtools-installation#installation-macos) : [Windows](/4.0/en/devtools-installation#installation-windows)
 
 <a name='available-commands'></a>
 
@@ -369,7 +371,7 @@ $ phalcon scaffold --table-name products
 
 ## Integrating Tools with PhpStorm IDE
 
-The screencast below shows how to integrate developer tools with the [PhpStorm IDE](http://www.jetbrains.com/phpstorm/). 配置步骤可以很容易地适应 php 的其他 ide。
+The screencast below shows how to integrate developer tools with the [PhpStorm IDE](https://www.jetbrains.com/phpstorm/). 配置步骤可以很容易地适应 php 的其他 ide。
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
