@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\ResponseInter
 
 # Interface **Phalcon\Http\ResponseInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/http/responseinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/responseinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 
@@ -30,7 +30,7 @@ abstract public **resetHeaders** ()
 
 ...
 
-abstract public **setExpires** ([DateTime](http://php.net/manual/en/class.datetime.php) $datetime)
+abstract public **setExpires** ([DateTime](https://php.net/manual/en/class.datetime.php) $datetime)
 
 ...
 
