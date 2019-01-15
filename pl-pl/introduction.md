@@ -4,25 +4,27 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 # Witaj
 
-Witamy w dokumentacji frameworka Phalcon.
+Welcome to the documentation for the Phalcon framework.
 
 ## Misja
 
-Naszą misją jest oferowanie deweloperom zaawansowanego, bogatego w funkcje narzędzia, którego mogą używać do tworzenia zaawansowanych aplikacji z niskim wykorzystaniem zasobów serwera i o wysokiej wydajności.
+Our mission is to offer developers an advanced, feature rich tool, which they can use to develop powerful applications with low server consumption and high performance.
 
 ## Czym jest Phalcon
 
-Phalcon jest open source’owym, pełno wartościowym frameworkiem dla PHP, napisanym w C jako rozszerzenie. Phalcon jest zoptymalizowany pod kątem wysokiej wydajności. Jego wyjątkowa architektura pozwala frameworkowi na działanie w pamięci, oferując swoje funkcjonalności kiedykolwiek są potrzebne, bez wymagających operacji odczytu i uprawnień na plikach które posiadają tradycyjne frameworki PHP.
+Phalcon is an open source full stack framework for PHP, written as a C-extension. Phalcon is optimized for high performance. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever its needed, without expensive file stats and file reads that traditional PHP frameworks employ.
 
 ## Sposób użycia
 
-Deweloperzy nie muszą znać języka C aby używać Phalcona. Jego funkcjonalności są udostępnione jako gotowe do użycia klasy PHP w przestrzeni nazw `Phalcon`.
+Developers do not need to know the C language to use Phalcon. Its interface is exposed as PHP classes under the `Phalcon` namespace, ready to be used.
 
-Phalcon jest luźno powiązany, pozwalając deweloperom na użycie tylko tych obiektów których potrzebują jako doklejanych składników w zależności od potrzeb ich aplikacji.
+Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based in the needs of their applications.
 
 <div class="alert alert-danger">
     <p>
