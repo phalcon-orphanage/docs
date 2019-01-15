@@ -4,13 +4,15 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # 验证
 
-[Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. 此组件可以用于不属于模型或集合的数据的对象上进行验证。
+[Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
 The following example shows its basic usage:
 
@@ -65,7 +67,7 @@ The loosely-coupled design of this component allows you to create your own valid
 
 ## 初始化验证
 
-Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation](api/Phalcon_Validation) object. 为了更好得重用或者管理您的代码，您可以把你的验证器放在独立的文件：
+Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation](api/Phalcon_Validation) object. You can put your validations in a separate file for better re-use code and organization:
 
 ```php
 <?php
@@ -108,7 +110,7 @@ class MyValidation extends Validation
 }
 ```
 
-然后初始化并使用您自己的验证器：
+Then initialize and use your own validator:
 
 ```php
 <?php
@@ -128,7 +130,7 @@ if (count($messages)) {
 
 ## 验证程序
 
-Phalcon公开一组内置的验证此组件：
+Phalcon exposes a set of built-in validators for this component:
 
 | 类                                                                                             | Explanation                                                    |
 | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
@@ -152,7 +154,7 @@ Phalcon公开一组内置的验证此组件：
 | [Phalcon\Validation\Validator\CreditCard](api/Phalcon_Validation_Validator_CreditCard)     | 验证的信用卡卡号                                                       |
 | [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback)         | 验证时使用回调函数                                                      |
 
-下面的示例说明如何创建此组件附加验证程序：
+The following example explains how to create additional validators for this component:
 
 ```php
 <?php
@@ -193,13 +195,13 @@ class IpValidator extends Validator
 }
 ```
 
-重要的是验证器必须返回一个布尔类型的值来判断验证是否通过。
+It is important that validators return a valid boolean value indicating if the validation was successful or not.
 
 <a name='callback'></a>
 
 ## 回调验证程序
 
-By using [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. 通过返回 `true` 验证将成功，返回 `false` 将意味着验证失败。 When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). 这是示例：
+By using [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
 
 ```php
 <?php
@@ -265,7 +267,7 @@ $messages = $validation->validate(['amount' => 10]); // 会从第三个验证器
 
 [Phalcon\Validation](api/Phalcon_Validation) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
 
-Each message consists of an instance of the class [Phalcon\Validation\Message](api/Phalcon_Validation_Message). `getMessages()` 方法，即可检索到消息生成的集。 每个消息会提供扩展信息像消息和消息类型等属性：
+Each message consists of an instance of the class [Phalcon\Validation\Message](api/Phalcon_Validation_Message). The set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information like the attribute that generated the message or the message type:
 
 ```php
 <?php
@@ -298,7 +300,7 @@ $validation->add(
 );
 ```
 
-默认情况下，`getMessages()` 方法会返回在验证过程中生成的所有消息。您可以通过`filter()`方法来进行过滤以此获取某个特定字段的所有信息：
+By default, the `getMessages()` method returns all the messages generated during validation. You can filter messages for a specific field using the `filter()` method:
 
 ```php
 <?php
@@ -319,7 +321,7 @@ if (count($messages)) {
 
 ## 数据过滤
 
-数据可以在验证之前进行过滤，以确保恶意或不正确的数据未被验证。
+Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
 
 ```php
 <?php
@@ -357,7 +359,7 @@ Filtering and sanitizing is performed using the [filter](/4.0/en/filter) compone
 
 ## 验证事件
 
-当所有的验证器都被初始化在类中，你可以实现`beforeValidation()`和`afterValidation()`方法做额外的检查、过滤、清理等。 If the `beforeValidation()` method returns false the validation is automatically cancelled:
+When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
 
 ```php
 <?php
@@ -410,7 +412,7 @@ class LoginValidation extends Validation
 
 ## 取消验证
 
-默认情况下所有在该字段的验证器都会一一测试，无论其中一个或者多个验证器是否通过。 你可以通过当验证器不通过时停止验证过程来告诉验证组件改变此行为。
+By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
 
 ```php
 <?php
@@ -454,7 +456,7 @@ $validation->add(
 
 The first validator has the option `cancelOnFail` with a value of `true`, therefore if that validator fails the remaining validators in the chain are not executed.
 
-如果您正在创建自定义验证器，您可以通过设置`cancelOnFail`选项动态停止验证链：
+If you are creating custom validators you can dynamically stop the validation chain by setting the `cancelOnFail` option:
 
 ```php
 <?php
@@ -488,7 +490,7 @@ class MyValidator extends Validator
 
 ## 避免验证空值
 
-您可以在为所有内置的验证器传递`allowEmpty`选项以避免给验证器传递一个空值：
+You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
 
 ```php
 <?php
@@ -514,7 +516,7 @@ $validation->add(
 
 ## 递归验证
 
-您也能实现`afterValidation()`方法在内部进行另一种验证实例。 在此示例中，在使用验证`CompanyValidation`的情况下还会使用`PhoneValidation`进行验证。
+You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
 
 ```php
 <?php
