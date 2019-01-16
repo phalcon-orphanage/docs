@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -149,12 +148,12 @@ class ProductsMigration_100 extends Migration
 
 The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.0.0. `morphTable()` receives an associative array with 4 possible sections:
 
-| Параметр     | Описание                                                                                                                               | Опционально |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:-----------:|
-| `columns`    | Массив c набором столбцов таблицы.                                                                                                     |     Нет     |
-| `indexes`    | Массив с набором индексов таблицы.                                                                                                     |     Да      |
-| `references` | Массив с набором связей таблицы (внешние ключи).                                                                                       |     Да      |
-| `options`    | Массив с набором параметров таблицы при создании. Эти параметры часто связаны с системой базы данных, в которой была создана миграция. |     Да      |
+| Параметр     | Описание                                                                                                                                    | Опционально |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |:-----------:|
+| `columns`    | Массив c набором столбцов таблицы.                                                                                                          |     Нет     |
+| `indexes`    | Массив с набором индексов таблицы.                                                                                                          |     Да      |
+| `references` | Массив с набором связей таблицы (внешние ключи).                                                                                            |     Да      |
+| `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |     Да      |
 
 <a name='class-anatomy-columns'></a>
 
@@ -162,17 +161,17 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 
 [Phalcon\Db\Column](api/Phalcon_Db_Column) is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
-| Параметр        | Описание                                                                                                                   | Опционально |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------- |:-----------:|
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                   |     Нет     |
-| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                      |     Да      |
-| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                   |     Да      |
-| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                            |     Да      |
-| `notNull`       | Может ли столбец содержать значения Null?                                                                                  |     Да      |
-| `default`       | Значение по умолчанию для столбца (Должно быть конкретизировано. Использование функций, таких как `NOW()`, не допускается) |     Да      |
-| `autoIncrement` | С данными атрибутом числовое поле будет заполняться автоматически. Только одно поле в таблице может иметь такой атрибут.   |     Да      |
-| `first`         | Столбец будет размещен первым в структуре таблицы                                                                          |     Да      |
-| `after`         | Название столбца, после которого будет размещен текущий столбец                                                            |     Да      |
+| Параметр        | Описание                                                                                                                                   | Опционально |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:-----------:|
+| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                                   |     Нет     |
+| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      |     Да      |
+| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   |     Да      |
+| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            |     Да      |
+| `notNull`       | Может ли столбец содержать значения Null?                                                                                                  |     Да      |
+| `default`       | Значение по умолчанию для столбца (Должно быть конкретизировано. Использование функций, таких как `NOW()`, не допускается)                 |     Да      |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |     Да      |
+| `first`         | Столбец будет размещен первым в структуре таблицы                                                                                          |     Да      |
+| `after`         | Название столбца, после которого будет размещен текущий столбец                                                                            |     Да      |
 
 Database migrations support the following database column types:
 
@@ -207,14 +206,14 @@ Database migrations support the following database column types:
 
 [Phalcon\Db\Reference](api/Phalcon_Db_Reference) defines table references (also called foreign keys). The following options can be used to define a reference:
 
-| Параметр            | Описание                                                                                                    | Опционально | Реализовано в    |
-| ------------------- | ----------------------------------------------------------------------------------------------------------- |:-----------:| ---------------- |
-| `referencedTable`   | Говорит само за себя. Содержит имя ссылочной таблицы.                                                       |     Нет     | Все адаптеры     |
-| `columns`           | Массив с названием столбцов, которые формируют связь с внешней таблицей.                                    |     Нет     | Все адаптеры     |
-| `referencedColumns` | Массив с названием столбцов связываемой (внешней) таблицы.                                                  |     Нет     | Все адаптеры     |
-| `referencedSchema`  | Связываемая таблица может находится в другой схеме или базе данных. Эта опция позволяет вам определить это. |     Да      | Все адаптеры     |
-| `onDelete`          | Если внешняя запись удалена, выполняет это действие с локальной записью (записями).                         |     Да      | MySQL PostgreSQL |
-| `onUpdate`          | Если внешняя запись обновлена, выполняет это действие с локальной записью (записями).                       |     Да      | MySQL PostgreSQL |
+| Параметр            | Описание                                                                                            | Опционально | Реализовано в    |
+| ------------------- | --------------------------------------------------------------------------------------------------- |:-----------:| ---------------- |
+| `referencedTable`   | It's auto-descriptive. It refers to the name of the referenced table.                               |     Нет     | Все адаптеры     |
+| `columns`           | Массив с названием столбцов, которые формируют связь с внешней таблицей.                            |     Нет     | Все адаптеры     |
+| `referencedColumns` | Массив с названием столбцов связываемой (внешней) таблицы.                                          |     Нет     | Все адаптеры     |
+| `referencedSchema`  | The referenced table maybe is on another schema or database. This option allows you to define that. |     Да      | Все адаптеры     |
+| `onDelete`          | Если внешняя запись удалена, выполняет это действие с локальной записью (записями).                 |     Да      | MySQL PostgreSQL |
+| `onUpdate`          | Если внешняя запись обновлена, выполняет это действие с локальной записью (записями).               |     Да      | MySQL PostgreSQL |
 
 <a name='writing'></a>
 
