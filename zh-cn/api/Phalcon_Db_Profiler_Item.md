@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\Profiler\Item'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Profiler\Item'
+---
 # Class **Phalcon\Db\Profiler\Item**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/profiler/item.zep" class="btn btn-default btn-sm">源码在GitHub</a>
