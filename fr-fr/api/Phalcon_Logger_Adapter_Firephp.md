@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Logger\Adapter\Firephp'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Logger\Adapter\Firephp'
+---
 # Class **Phalcon\Logger\Adapter\Firephp**
 
 *extends* abstract class [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
