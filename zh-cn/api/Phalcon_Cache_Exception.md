@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Exception'
+---
 # Class **Phalcon\Cache\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)
