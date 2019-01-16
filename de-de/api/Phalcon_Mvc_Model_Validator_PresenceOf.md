@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Validator\PresenceOf'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Validator\PresenceOf'
+---
 # Class **Phalcon\Mvc\Model\Validator\PresenceOf**
 
 *extends* abstract class [Phalcon\Mvc\Model\Validator](Phalcon_Mvc_Model_Validator)
