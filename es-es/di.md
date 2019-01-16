@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -969,10 +968,10 @@ $component = $di->get(
 
 [Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. Algunos eventos cuando se devuelva `false` podrían detener la operación activa. Son soportados los siguientes eventos:
 
-| Nombre de evento     | Disparado                                                                                                                          | ¿Detiene la operación? | Activa en |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |:----------------------:|:---------:|
-| beforeServiceResolve | Se dispara antes del servicio de resolución. Los oyentes reciben el nombre del servicio y los parámetros pasados a él.             |           No           |  Oyentes  |
-| afterServiceResolve  | Se activa después del servicio de resolución. Los oyentes reciben el nombre de servicio, instancia, y los parámetros pasados a él. |           No           |  Oyentes  |
+| Nombre de evento     | Disparado                                                                                                       | ¿Detiene la operación? | Activa en |
+| -------------------- | --------------------------------------------------------------------------------------------------------------- |:----------------------:|:---------:|
+| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |           No           |  Oyentes  |
+| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |           No           |  Oyentes  |
 
 <a name='shared-services'></a>
 
@@ -1009,7 +1008,7 @@ An alternative way to register shared services is to pass 'true' as third parame
 ```php
 <?php
 
-// Registrar el servicio de sesión como 'siempre compartido'
+// Register the session service as 'always shared'
 $di->set(
     'session',
     function () {
