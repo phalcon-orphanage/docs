@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Queue\Beanstalk\Job'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Queue\Beanstalk\Job'
+---
 # Class **Phalcon\Queue\Beanstalk\Job**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/queue/beanstalk/job.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
@@ -16,7 +16,7 @@ public **getId** ()
 
 public **getBody** ()
 
-public **__construct** ([Phalcon\Queue\Beanstalk](/4.0/en/api/Phalcon_Queue_Beanstalk) $queue, *mixed* $id, *mixed* $body)
+public **__construct** ([Phalcon\Queue\Beanstalk](Phalcon_Queue_Beanstalk) $queue, *mixed* $id, *mixed* $body)
 
 public **delete** ()
 
