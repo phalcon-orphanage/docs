@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Igbinary'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Frontend\Igbinary'
+---
 # Class **Phalcon\Cache\Frontend\Igbinary**
 
 *extends* class [Phalcon\Cache\Frontend\Data](Phalcon_Cache_Frontend_Data)
