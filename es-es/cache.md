@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -460,14 +459,14 @@ $cache->save('my-key', $data);
 
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
-| Adaptador                                                                 | Descripción                                                                                                                                                                                   |
-| ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Phalcon\Cache\Frontend\Output](api/Phalcon_Cache_Frontend_Output)     | Lee los datos de entrada desde la salida estándar de PHP.                                                                                                                                     |
-| [Phalcon\Cache\Frontend\Data](api/Phalcon_Cache_Frontend_Data)         | Es utilizando para almacenar cualquier tipo de datos PHP (arreglos grandes, objectos, texto, etcétera). Los datos son serializados antes de almacenarse en el backend.                        |
-| [Phalcon\Cache\Frontend\Base64](api/Phalcon_Cache_Frontend_Base64)     | Es utilizado para almacenar datos binarios. Los datos se serializan utilizando `base64_encode` antes de almacenarse en backend.                                                               |
-| [Phalcon\Cache\Frontend\Json](api/Phalcon_Cache_Frontend_Json)         | Los datos se condifican en JSON antes de ser almacenados en el backend. Son decodificados antes de devolverse. Este frontend es útil para compartir datos entre otros lenguajes o frameworks. |
-| [Phalcon\Cache\Frontend\Igbinary](api/Phalcon_Cache_Frontend_Igbinary) | Es utilizando para almacenar cualquier tipo de datos PHP (arreglos grandes, objectos, texto, etcétera). Los datos son serializados usando `Igbinary` antes de almacenarse en el backend.      |
-| [Phalcon\Cache\Frontend\None](api/Phalcon_Cache_Frontend_None)         | Se usa para almacenar en caché cualquier tipo de datos PHP sin serializarlos.                                                                                                                 |
+| Adaptador                                                                 | Descripción                                                                                                                                                    |
+| ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Phalcon\Cache\Frontend\Output](api/Phalcon_Cache_Frontend_Output)     | Lee los datos de entrada desde la salida estándar de PHP.                                                                                                      |
+| [Phalcon\Cache\Frontend\Data](api/Phalcon_Cache_Frontend_Data)         | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                     |
+| [Phalcon\Cache\Frontend\Base64](api/Phalcon_Cache_Frontend_Base64)     | It's used to cache binary data. The data is serialized using `base64_encode` before be stored in the backend.                                                  |
+| [Phalcon\Cache\Frontend\Json](api/Phalcon_Cache_Frontend_Json)         | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks. |
+| [Phalcon\Cache\Frontend\Igbinary](api/Phalcon_Cache_Frontend_Igbinary) | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using `Igbinary` before be stored in the backend.                 |
+| [Phalcon\Cache\Frontend\None](api/Phalcon_Cache_Frontend_None)         | Se usa para almacenar en caché cualquier tipo de datos PHP sin serializarlos.                                                                                  |
 
 <a name='adapters-frontend-custom'></a>
 
@@ -487,7 +486,7 @@ The backend adapters available to store cache data are:
 | `Phalcon\Cache\Backend\Apcu`                                                 | Almacena los datos en la APCu (APC sin almacenamiento en caché de opcode) | [APCu](https://php.net/apcu)               | [APCu](https://pecl.php.net/package/APCu)           |
 | [Phalcon\Cache\Backend\File](api/Phalcon_Cache_Backend_File)                 | Almacena los datos en archivos planos locales.                            |                                            |                                                     |
 | [Phalcon\Cache\Backend\Libmemcached](api/Phalcon_Cache_Backend_Libmemcached) | Almacena los datos en un servidor memcached.                              | [Memcached](https://www.php.net/memcached) | [Memcached](https://pecl.php.net/package/memcached) |
-| [Phalcon\Cache\Backend\Memcache](api/Phalcon_Cache_Backend_Memcache)         | Almacena los datos en un servidor memcache.                               | [Memcache](https://www.php.net/memcache)   | [Memcache](https://pecl.php.net/package/memcache)   |
+| [Phalcon\Cache\Backend\Memcache](api/Phalcon_Cache_Backend_Memcache)         | Almacena los datos en un servidor memcached.                              | [Memcache](https://www.php.net/memcache)   | [Memcache](https://pecl.php.net/package/memcache)   |
 | [Phalcon\Cache\Backend\Memory](api/Phalcon_Cache_Backend_Memory)             | Stores data in memory                                                     |                                            |                                                     |
 | [Phalcon\Cache\Backend\Mongo](api/Phalcon_Cache_Backend_Mongo)               | Stores data to Mongo Database.                                            | [MongoDB](https://mongodb.org/)            | [Mongo](https://mongodb.org/)                       |
 | [Phalcon\Cache\Backend\Redis](api/Phalcon_Cache_Backend_Redis)               | Stores data in Redis.                                                     | [Redis](https://redis.io/)                 | [Redis](https://pecl.php.net/package/redis)         |
