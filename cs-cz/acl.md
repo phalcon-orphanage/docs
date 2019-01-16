@@ -1,8 +1,9 @@
-* * *
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 
-layout: article language: 'en' version: '4.0'
-
-* * *
 
 <a name='overview'></a>
 
