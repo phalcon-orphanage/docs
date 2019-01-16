@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\Memory'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Backend\Memory'
+---
 # Class **Phalcon\Cache\Backend\Memory**
 
 *extends* abstract class [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
