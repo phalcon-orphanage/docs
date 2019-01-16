@@ -1,12 +1,12 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Validation\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Validation\Exception'
+---
 # Class **Phalcon\Validation\Exception**
 
-*extends* class [Phalcon\Exception](/4.0/en/api/Phalcon_Exception)
+*extends* class [Phalcon\Exception](Phalcon_Exception)
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
