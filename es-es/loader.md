@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -284,13 +283,13 @@ $loader->setEventsManager($eventsManager);
 $loader->register();
 ```
 
-Some events when returning boolean `false` could stop the active operation. The following events are supported:
+Some events when returning boolean `false` could stop the active operation. Son soportados los siguientes eventos:
 
-| Nombre de evento   | Disparado                                                                                                                          | ¿Detiene la operación? |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `beforeCheckClass` | Activado antes de iniciar el proceso de auto carga                                                                                 | Si                     |
-| `pathFound`        | Se activa cuando el cargador localiza una clase                                                                                    | No                     |
-| `afterCheckClass`  | Se activa después de acabado el proceso de carga. Si este evento es lanzado si el autocargador no encuentra el archivo de la clase | No                     |
+| Nombre de evento   | Disparado                                                                                                           | ¿Detiene la operación? |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| `beforeCheckClass` | Activado antes de iniciar el proceso de auto carga                                                                  | Si                     |
+| `pathFound`        | Se activa cuando el cargador localiza una clase                                                                     | No                     |
+| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                     |
 
 <a name='troubleshooting'></a>
 
