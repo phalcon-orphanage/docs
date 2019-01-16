@@ -10,7 +10,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Logger\AdapterInte
 
 ## 方法
 
-abstract public **setFormatter** ([Phalcon\Logger\FormatterInterface](/4.0/en/api/Phalcon_Logger_FormatterInterface) $formatter)
+abstract public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 
 ...
 
