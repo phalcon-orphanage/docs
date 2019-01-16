@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\Dialect\Sqlite'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Dialect\Sqlite'
+---
 # Class **Phalcon\Db\Dialect\Sqlite**
 
 *extends* abstract class [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
