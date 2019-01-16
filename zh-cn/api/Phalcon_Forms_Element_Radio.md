@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Forms\Element\Radio'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Forms\Element\Radio'
+---
 # Class **Phalcon\Forms\Element\Radio**
 
 *extends* abstract class [Phalcon\Forms\Element](Phalcon_Forms_Element)
