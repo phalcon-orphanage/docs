@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\FrontendInterface'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\FrontendInterface'
+---
 # Interface **Phalcon\Cache\FrontendInterface**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontendinterface.zep" class="btn btn-default btn-sm">源码在GitHub</a>
