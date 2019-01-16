@@ -296,89 +296,130 @@ $acl->isAllowed('guest', 'reports', 'view');
 $acl->isAllowed('guest', 'reports', 'add');
 ```
 
-** WIP BELOW - NEEDS REWRITING **
 <a name='function-based-access'></a>
 
 ## Function based access
 
-Depending on the needs of your application, you might need another layer of calculations to allow or deny access to users through the ACL. The method `isAllowed()` accepts a 4th parameter.
+Depending on the needs of your application, you might need another layer of calculations to allow or deny access to users through the ACL. The method `isAllowed()` accepts a 4th parameter which is a callable such as an anonymous function.
 
-Also you can add as 4th parameter your custom function which must return boolean value. It will be called when you use `isAllowed()` method. You can pass parameters as associative array to `isAllowed()` method as 4th argument where key is parameter name in our defined function.
-
-```php
-<?php
-// Set access level for role into resources with custom function
-$acl->allow(
-    'Guests',
-    'Customers',
-    'search',
-    function ($a) {
-        return $a % 2 === 0;
-    }
-);
-
-// Check whether role has access to the operation with custom function
-
-// Returns true
-$acl->isAllowed(
-    'Guests',
-    'Customers',
-    'search',
-    [
-        'a' => 4,
-    ]
-);
-
-// Returns false
-$acl->isAllowed(
-    'Guests',
-    'Customers',
-    'search',
-    [
-        'a' => 3,
-    ]
-);
-```
-
-Also if you don't provide any parameters in `isAllowed()` method then default behaviour will be `Acl::ALLOW`. You can change it by using method `setNoArgumentsDefaultAction()`.
+To take advantage of this functionality, you will need to define your function when calling the `allow()` method for the operation and subject you need. Assume that we need to allow access to all `manager` operations to the `admin` subject except if their name is 'Bob' (Poor Bob!). To achieve this we will register an anonymous function that will check this condition.
 
 ```php
 <?php
 
 use Phalcon\Acl;
+use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Operation;
+use Phalcon\Acl\Subject;
+
+$acl = new AclList();
+
+/**
+ * Setup the ACL
+ */
+$acl->addOperation('manager');                   
+$acl->addResource('admin', ['dashboard', 'users', 'view']);
 
 // Set access level for role into resources with custom function
 $acl->allow(
-    'Guests',
-    'Customers',
-    'search',
-    function ($a) {
-        return $a % 2 === 0;
+    'manager',
+    'admin',
+    'dashboard',
+    function ($name) {
+        return boolval('Bob' !== $name);
+    }
+);
+```
+
+Now that the callable is defined in the ACL, we will need to call the `isAllowed()` with an array as the fourth parameter:
+
+```php
+<?php
+
+use Phalcon\Acl;
+use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Operation;
+use Phalcon\Acl\Subject;
+
+$acl = new AclList();
+
+/**
+ * Setup the ACL
+ */
+$acl->addOperation('manager');                   
+$acl->addResource('admin', ['dashboard', 'users', 'view']);
+
+// Set access level for role into resources with custom function
+$acl->allow(
+    'manager',
+    'admin',
+    'dashboard',
+    function ($name) {
+        return boolval('Bob' !== $name);
     }
 );
 
-// Check whether role has access to the operation with custom function
-
 // Returns true
 $acl->isAllowed(
-    'Guests',
-    'Customers',
-    'search'
-);
-
-// Change no arguments default action
-$acl->setNoArgumentsDefaultAction(
-    Acl::DENY
+    'manager',
+    'admin',
+    'dashboard',
+    [
+        'name' => 'John',
+    ]
 );
 
 // Returns false
 $acl->isAllowed(
-    'Guests',
-    'Customers',
-    'search'
+    'manager',
+    'admin',
+    'dashboard',
+    [
+        'name' => 'Bob',
+    ]
 );
 ```
 
+> The fourth parameter must be an array. Each array element represents a parameter that your anonymous function accepts. The key of the element is the name of the parameter, while the value is the value that the parameter of the function will accept {:.alert .alert-info}
+
+You can also omit to pass the fourth parameter to `isAllowed()` if you wish. The default action for a call to `isAllowed()` without the last parameter is `Acl::DENY`. To change this behavior, you can make a call to `setNoArgumentsDefaultAction()`:
+
+```php
+<?php
+
+use Phalcon\Acl;
+use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Operation;
+use Phalcon\Acl\Subject;
+
+$acl = new AclList();
+
+/**
+ * Setup the ACL
+ */
+$acl->addOperation('manager');                   
+$acl->addResource('admin', ['dashboard', 'users', 'view']);
+
+// Set access level for role into resources with custom function
+$acl->allow(
+    'manager',
+    'admin',
+    'dashboard',
+    function ($name) {
+        return boolval('Bob' !== $name);
+    }
+);
+
+// Returns false
+$acl->isAllowed('manager', 'admin', 'dashboard');
+
+$acl->setNoArgumentsDefaultAction(Acl::ALLOW);
+
+// Returns true
+$acl->isAllowed('manager', 'admin', 'dashboard');
+```
+
+** WIP BELOW - NEEDS REWRITING **
 <a name='objects'></a>
 
 ## Objects as role name and resource name
