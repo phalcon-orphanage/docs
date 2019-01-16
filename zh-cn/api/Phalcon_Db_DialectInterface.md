@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\DialectInterface'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\DialectInterface'
+---
 # Interface **Phalcon\Db\DialectInterface**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/dialectinterface.zep" class="btn btn-default btn-sm">源码在GitHub</a>
