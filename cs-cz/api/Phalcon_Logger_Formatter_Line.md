@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Logger\Formatter\Line'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Logger\Formatter\Line'
+---
 # Class **Phalcon\Logger\Formatter\Line**
 
 *extends* abstract class [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
