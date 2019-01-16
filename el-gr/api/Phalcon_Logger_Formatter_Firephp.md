@@ -6,9 +6,9 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Logger\Formatter\F
 
 # Class **Phalcon\Logger\Formatter\Firephp**
 
-*extends* abstract class [Phalcon\Logger\Formatter](/4.0/en/api/Phalcon_Logger_Formatter)
+*extends* abstract class [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-*implements* [Phalcon\Logger\FormatterInterface](/4.0/en/api/Phalcon_Logger_FormatterInterface)
+*implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger/formatter/firephp.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -40,6 +40,6 @@ public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*
 
 Applies a format to a message before sending it to the log
 
-public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](/4.0/en/api/Phalcon_Logger_Formatter)
+public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
 Interpolates context values into the message placeholders
