@@ -47,8 +47,8 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing guide",
-                "url": ""
+                "text": "Testing environment",
+                "url": "testing-environment"
             }
         ]
     },
