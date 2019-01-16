@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Validation\Validator'
+layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Validation\Validator'
 
 * * *
 

@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Di\Service\Builder'
+layout: article language: 'cs-cz' version: '4.0' title: 'Phalcon\Di\Service\Builder'
 
 * * *
 

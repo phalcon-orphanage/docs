@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\FlashInterface'
+layout: article language: 'cs-cz' version: '4.0' title: 'Phalcon\FlashInterface'
 
 * * *
 

@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\Adapter'
+layout: article language: 'fa-ir' version: '4.0' title: 'Phalcon\Db\Adapter'
 
 * * *
 

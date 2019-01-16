@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Paginator\Adapter\Model'
+layout: article language: 'fa-ir' version: '4.0' title: 'Phalcon\Paginator\Adapter\Model'
 
 * * *
 

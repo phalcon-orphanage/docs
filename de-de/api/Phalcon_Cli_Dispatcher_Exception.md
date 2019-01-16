@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cli\Dispatcher\Exception'
+layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Cli\Dispatcher\Exception'
 
 * * *
 

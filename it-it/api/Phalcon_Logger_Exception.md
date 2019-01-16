@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Logger\Exception'
+layout: article language: 'it-it' version: '4.0' title: 'Phalcon\Logger\Exception'
 
 * * *
 

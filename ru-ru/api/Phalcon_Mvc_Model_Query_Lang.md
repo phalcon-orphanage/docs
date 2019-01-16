@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'ru-ru'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Query\Lang'
 ---

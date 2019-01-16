@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\Response\CookiesInterface'
+layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Http\Response\CookiesInterface'
 
 * * *
 

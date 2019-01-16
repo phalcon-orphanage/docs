@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Data'
+layout: article language: 'it-it' version: '4.0' title: 'Phalcon\Cache\Frontend\Data'
 
 * * *
 

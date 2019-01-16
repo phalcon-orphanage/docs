@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Text'
+layout: article language: 'el-gr' version: '4.0' title: 'Phalcon\Text'
 
 * * *
 

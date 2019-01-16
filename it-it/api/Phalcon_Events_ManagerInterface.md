@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Events\ManagerInterface'
+layout: article language: 'it-it' version: '4.0' title: 'Phalcon\Events\ManagerInterface'
 
 * * *
 

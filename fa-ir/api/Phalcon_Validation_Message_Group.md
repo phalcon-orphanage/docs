@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Validation\Message\Group'
+layout: article language: 'fa-ir' version: '4.0' title: 'Phalcon\Validation\Message\Group'
 
 * * *
 

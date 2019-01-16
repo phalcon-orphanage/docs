@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Config\Adapter\Ini'
+layout: article language: 'fa-ir' version: '4.0' title: 'Phalcon\Config\Adapter\Ini'
 
 * * *
 

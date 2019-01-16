@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Crypt\Mismatch'
+layout: article language: 'fr-fr' version: '4.0' title: 'Phalcon\Crypt\Mismatch'
 
 * * *
 

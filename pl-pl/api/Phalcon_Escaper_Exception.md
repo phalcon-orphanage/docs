@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Escaper\Exception'
+layout: article language: 'pl-pl' version: '4.0' title: 'Phalcon\Escaper\Exception'
 
 * * *
 

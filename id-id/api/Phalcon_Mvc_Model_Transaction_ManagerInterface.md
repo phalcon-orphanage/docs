@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Transaction\ManagerInterface'
+layout: article language: 'id-id' version: '4.0' title: 'Phalcon\Mvc\Model\Transaction\ManagerInterface'
 
 * * *
 

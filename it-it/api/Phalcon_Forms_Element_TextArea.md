@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Forms\Element\TextArea'
+layout: article language: 'it-it' version: '4.0' title: 'Phalcon\Forms\Element\TextArea'
 
 * * *
 

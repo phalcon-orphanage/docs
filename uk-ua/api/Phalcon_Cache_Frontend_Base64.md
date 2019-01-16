@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Base64'
+layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Cache\Frontend\Base64'
 
 * * *
 

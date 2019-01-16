@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\Request\Exception'
+layout: article language: 'ja-jp' version: '4.0' title: 'Phalcon\Http\Request\Exception'
 
 * * *
 

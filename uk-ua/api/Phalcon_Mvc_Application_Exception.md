@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Application\Exception'
+layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Mvc\Application\Exception'
 
 * * *
 

@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\Dialect'
+layout: article language: 'tr-tr' version: '4.0' title: 'Phalcon\Db\Dialect'
 
 * * *
 

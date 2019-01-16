@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Forms\Element\Hidden'
+layout: article language: 'id-id' version: '4.0' title: 'Phalcon\Forms\Element\Hidden'
 
 * * *
 

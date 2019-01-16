@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\Adapter\Pdo\Sqlite'
+layout: article language: 'cs-cz' version: '4.0' title: 'Phalcon\Db\Adapter\Pdo\Sqlite'
 
 * * *
 

@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Forms\Manager'
+layout: article language: 'ru-ru' version: '4.0' title: 'Phalcon\Forms\Manager'
 
 * * *
 

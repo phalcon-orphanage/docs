@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'it-it'
 version: '4.0'
 title: 'Phalcon\Assets\Resource'
 ---

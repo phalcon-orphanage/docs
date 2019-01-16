@@ -1,6 +1,6 @@
 * * *
 
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Forms\Element\Select'
+layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Forms\Element\Select'
 
 * * *
 
