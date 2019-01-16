@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\ResponseInterface'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Http\ResponseInterface'
+---
 # Interface **Phalcon\Http\ResponseInterface**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/responseinterface.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
