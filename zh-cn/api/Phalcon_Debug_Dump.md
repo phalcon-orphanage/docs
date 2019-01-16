@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Debug\Dump'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Debug\Dump'
+---
 # Class **Phalcon\Debug\Dump**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/debug/dump.zep" class="btn btn-default btn-sm">源码在GitHub</a>
