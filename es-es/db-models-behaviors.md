@@ -4,15 +4,17 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Comportamientos en modelos (Behaviors)
 
-Los comportamientos son construcciones compartidas que varios modelos pueden adoptar para reutilizar el código. El ORM provee un API para implementar los comportamientos en tus modelos. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
+Behaviors are shared constructs that several models may adopt in order to re-use code. The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 
-Un comportamiento debe agregarse en el inicializador del modelo, un modelo puede tener cero o más comportamientos:
+A behavior must be added in the model initializer, a model can have zero or more behaviors:
 
 ```php
 <?php
@@ -44,7 +46,7 @@ class Users extends Model
 }
 ```
 
-Phalcon proporciona los siguientes comportamientos listos para utilizarse:
+The following built-in behaviors are provided by the framework:
 
 | Nombre        | Descripción                                                                                                                     |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -55,7 +57,7 @@ Phalcon proporciona los siguientes comportamientos listos para utilizarse:
 
 ## Timestampable
 
-Este comportamiento recibe un array de opciones, la primera clave debe ser un nombre de evento que indica cuando la columna debe ser asignada:
+This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
 
 ```php
 <?php
@@ -113,7 +115,7 @@ If the option `format` is omitted a timestamp using the PHP's function [time](ht
 
 ## SoftDelete
 
-Este comportamiento se puede utilizar de la sigue manera:
+This behavior can be used as follows:
 
 ```php
 <?php
@@ -144,7 +146,7 @@ class Users extends Model
 }
 ```
 
-Este comportamiento acepta dos opciones: `field` y `vale`, siendo `field` el campo debe ser actualizado y `vale` el valor de eliminado. Supongamos que la tabla `users` tiene los siguientes datos:
+This behavior accepts two options: `field` and `value`, `field` determines what field must be updated and `value` the value to be deleted. Let's pretend the table `users` has the following data:
 
 ```sql
 mysql> select * from users;
@@ -157,7 +159,7 @@ mysql> select * from users;
 2 rows in set (0.00 sec)
 ```
 
-Si borramos cualquiera de los dos usuarios se actualizará el estado (status) en vez borrarse el registro:
+If we delete any of the two records the status will be updated instead of delete the record:
 
 ```php
 <?php
@@ -165,7 +167,7 @@ Si borramos cualquiera de los dos usuarios se actualizará el estado (status) en
 Users::findFirst(2)->delete();
 ```
 
-La operación resultará en los siguientes datos en la tabla:
+The operation will result in the following data in the table:
 
 ```sql
 mysql> select * from users;
@@ -178,15 +180,15 @@ mysql> select * from users;
 2 rows in set (0.01 sec)
 ```
 
-Nota: Tenga en cuenta que usted necesitara especificar la condición de eliminado en sus consultas para ignorar registros marcados como eliminados, este comportamiento no tiene soporte para hacerlo automáticamente.
+Note that you need to specify the deleted condition in your queries to effectively ignore them as deleted records, this behavior doesn't support that.
 
 <a name='create-your-own-behaviors'></a>
 
 ## Crea tus propios comportamientos
 
-El ORM proporciona una API para crear tus propios comportamientos. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](api/Phalcon_Mvc_Model_BehaviorInterface). Also, [Phalcon\Mvc\Model\Behavior](api/Phalcon_Mvc_Model_Behavior) provides most of the methods needed to ease the implementation of behaviors.
+The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](api/Phalcon_Mvc_Model_BehaviorInterface). Also, [Phalcon\Mvc\Model\Behavior](api/Phalcon_Mvc_Model_Behavior) provides most of the methods needed to ease the implementation of behaviors.
 
-El siguiente comportamiento es un ejemplo, implementa el comportamiento Blameable que ayuda a identificar al usuario que realizo operaciones sobre un modelo:
+The following behavior is an example, it implements the Blameable behavior which helps identify the user that is performed operations over a model:
 
 ```php
 <?php
@@ -221,7 +223,7 @@ class Blameable extends Behavior implements BehaviorInterface
 }
 ```
 
-El primero es un comportamiento muy simple, pero ilustra cómo crear un comportamiento, ahora vamos a agregar este comportamiento a un modelo:
+The former is a very simple behavior, but it illustrates how to create a behavior, now let's add this behavior to a model:
 
 ```php
 <?php
@@ -239,7 +241,7 @@ class Profiles extends Model
 }
 ```
 
-Un comportamiento también es capaz de interceptar métodos faltantes en tus modelos:
+A behavior is also capable of intercepting missing methods on your models:
 
 ```php
 <?php
@@ -260,7 +262,7 @@ class Sluggable extends Behavior implements BehaviorInterface
 }
 ```
 
-Llame a ese método en un modelo que implementa Sluggable y devolverá un título amigable para el SEO:
+Call that method on a model that implements Sluggable returns a SEO friendly title:
 
 ```php
 <?php
@@ -272,7 +274,7 @@ $title = $post->getSlug();
 
 ## Utilizando traits como comportamientos
 
-You can use [Traits](https://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. El traits siguiente implementa una versión simple del comportamiento Timestampable:
+You can use [Traits](https://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the Timestampable behavior:
 
 ```php
 <?php
@@ -291,7 +293,7 @@ trait MyTimestampable
 }
 ```
 
-Entonces lo puedes utilizar en tu modelo de la siguiente manera:
+Then you can use it in your model as follows:
 
 ```php
 <?php
