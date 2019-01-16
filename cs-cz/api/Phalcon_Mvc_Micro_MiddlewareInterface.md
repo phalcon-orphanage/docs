@@ -10,6 +10,6 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Micro\Middlewa
 
 ## Methods
 
-abstract public **call** ([Phalcon\Mvc\Micro](/4.0/en/api/Phalcon_Mvc_Micro) $application)
+abstract public **call** ([Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) $application)
 
 ...
