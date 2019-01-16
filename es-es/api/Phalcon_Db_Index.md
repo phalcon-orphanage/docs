@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\Index'
 
 # Class **Phalcon\Db\Index**
 
-*implements* [Phalcon\Db\IndexInterface](/4.0/en/api/Phalcon_Db_IndexInterface)
+*implements* [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/index.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
