@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Paginación
 
-El proceso de paginación ocurre cuando tenemos que presentar gradualmente grandes grupos de datos. `Phalcon\Paginator` ofrece una manera rápida y conveniente para dividir estos conjuntos de datos en páginas navegables.
+The process of pagination takes place when we need to present big groups of arbitrary data gradually. `Phalcon\Paginator` offers a fast and convenient way to split these sets of data into browsable pages.
 
 <a name='data-adapters'></a>
 
 ## Adaptadores de datos
 
-Este componente hace uso de adaptadores para encapsular diferentes fuentes de datos:
+This component makes use of adapters to encapsulate different sources of data:
 
 | Adaptador                                                                               | Descripción                                                                                                                                                                                                         |
 | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -28,7 +30,7 @@ Este componente hace uso de adaptadores para encapsular diferentes fuentes de da
 
 ## Factory
 
-Carga un adaptador de Paginator utilizando la opción `adapter`
+Loads Paginator Adapter class using `adapter` option
 
 ```php
 <?php
@@ -55,7 +57,7 @@ $paginator = Factory::load($options);
 
 ## Ejemplos
 
-En el ejemplo siguiente, el paginator utilizará el resultado de una consulta de un modelo como su origen de datos y limita los datos mostrados, 10 registros por página:
+In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
 
 ```php
 <?php
@@ -84,7 +86,7 @@ $paginator = new PaginatorModel(
 $page = $paginator->getPaginate();
 ```
 
-La variable `$currentPage` controla la página que se mostrará. El `$paginator->getPaginate()` devuelve un objeto `$page` que contiene los datos paginados. Puede ser utilizado para la generación de la paginación:
+The `$currentPage` variable controls the page to be displayed. The `$paginator->getPaginate()` returns a `$page` object that contains the paginated data. It can be used for generating the pagination:
 
 ```php
 <table>
@@ -103,7 +105,7 @@ La variable `$currentPage` controla la página que se mostrará. El `$paginator-
 </table>
 ```
 
-El objeto `$page` también contiene datos de navegación:
+The `$page` object also contains navigation data:
 
 ```php
 <a href='/robots/search'>Primera</a>
@@ -118,7 +120,7 @@ El objeto `$page` también contiene datos de navegación:
 
 ## Uso de adaptadores
 
-Un ejemplo de los datos de origen que deben utilizarse para cada adaptador:
+An example of the source data that must be used for each adapter:
 
 ```php
 <?php
@@ -170,7 +172,7 @@ $paginator = new PaginatorQueryBuilder(
 
 ## Atributos de Página
 
-El objeto `$page` tiene los siguientes atributos:
+The `$page` object has the following attributes:
 
 | Atributos     | Descripción                                                        |
 | ------------- | ------------------------------------------------------------------ |

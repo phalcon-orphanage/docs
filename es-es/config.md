@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -12,7 +14,7 @@ layout: article language: 'en' version: '4.0'
 
 [Phalcon\Config](api/Phalcon_Config) is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
-Los valores pueden obtenerse de `Phalcon\Config` como se muestra a continuación:
+Values can be obtained from `Phalcon\Config` as follows:
 
 ```php
 <?php
@@ -208,7 +210,7 @@ There are more adapters available for this components in the [Phalcon Incubator]
 
 ## Configuraciones Anidadas
 
-Usted puede acceder fácilmente a los valores de configuración anidados, utilizando el método `Phalcon\Config::path`. Este método permite obtener valores sin preocuparse, por el hecho, de que algunas partes de la ruta estén ausentes. Let's look at an example:
+You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. Let's look at an example:
 
 ```php
 <?php
@@ -253,7 +255,7 @@ Config::setPathDelimiter('/');
 $config->path('test/parent/property2'); // yeah
 ```
 
-En el ejemplo siguiente se muestra cómo crear una fachada útil para acceder a los valores de configuración anidados:
+The following example shows how to create usefull facade to access nested configuration values:
 
 ```php
 <?php
@@ -280,7 +282,7 @@ function config() {
 
 ## Inyección de Dependencias de Configuración
 
-You can inject your configuration to the controller allowing us to use [Phalcon\Config](api/Phalcon_Config) inside [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller). Para poder hacerlo, tienes que añadirlo como un servicio en el contenedor del Inyector de Dependencias. Añade el siguiente código dentro de tu archivo bootstrap o de inicialización:
+You can inject your configuration to the controller allowing us to use [Phalcon\Config](api/Phalcon_Config) inside [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller). To be able to do that, you have to add it as a service in the Dependency Injector container. Add following code inside your bootstrap file:
 
 ```php
 <?php

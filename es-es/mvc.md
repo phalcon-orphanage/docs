@@ -4,20 +4,22 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='architecture'></a>
 
 # La Arquitectura MVC
 
-Phalcon ofrece las clases orientadas a objetos necesarias para implementar el arquitectura Modelo, Vista, Controlador (referido a menudo como [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) en su aplicación. Este patrón es ampliamente utilizado por otros frameworks web y aplicaciones de escritorio.
+Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) in your application. This design pattern is widely used by other web frameworks and desktop applications.
 
-Los beneficios de MVC incluyen:
+MVC benefits include:
 
 * Aislamiento de la lógica de negocio de la interfaz de usuario y la capa de base de datos
 * Deja claro a cual parte de esta arquitectura pertenece cada tipo de código para facilitar el mantenimiento
 
-Si usted decide utilizar MVC, cada solicitud a los recursos de la aplicación será administrada por la arquitectura MVC. Las clases de Phalcon están escritas en lenguaje C, ofreciendo un enfoque de alto rendimiento de este patrón en una aplicación basada en PHP.
+If you decide to use MVC, every request to your application resources will be managed by the MVC architecture. Phalcon classes are written in C language, offering a high performance approach of this pattern in a PHP based application.
 
 <a name='models'></a>
 
@@ -35,4 +37,4 @@ Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son
 
 ## Controladores
 
-Los controladores proporcionan el 'flujo' entre modelos y vistas. Los controladores son responsables de procesar las peticiones entrantes desde el navegador web, solicitar datos a los modelos y pasar esos datos a las vistas para la representación de la información. [Learn more](/4.0/en/controllers)
+The controllers provide the 'flow' between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [Learn more](/4.0/en/controllers)

@@ -4,21 +4,23 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Transacciones en modelos
 
-Cuando un proceso realiza múltiples operaciones de base de datos, sería importante que cada paso se haya completado con éxito para que pueda mantenerse la integridad de los datos. Las transacciones ofrecen la capacidad para garantizar que todas las operaciones de base de datos han sido ejecutadas con éxito antes de que los datos se asienten en la base de datos.
+When a process performs multiple database operations, it might be important that each step is completed successfully so that data integrity can be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data is committed to the database.
 
-Las transacciones en Phalcon permiten comprometer a todas las operaciones si se ejecutaron con éxito o deshacer todas las operaciones si algo salió mal.
+Transactions in Phalcon allow you to commit all operations if they were executed successfully or rollback all operations if something went wrong.
 
 <a name='manual'></a>
 
 ## Transacciones manuales
 
-Si una aplicación utiliza sólo una conexión y las transacciones no son muy complejas, se puede crear una transacción moviendo sólo la conexión actual a modo de transacción y luego confirmar o deshacer la operación sea exitosa o no:
+If an application only uses one connection and the transactions are not very complex, a transaction can be created by just moving the current connection into transaction mode and then commit or rollback the operation whether it is successful or not:
 
 ```php
 <?php
@@ -65,7 +67,7 @@ class RobotsController extends Controller
 
 ## Transacciones implícitas
 
-Las relaciones existentes se pueden utilizar para almacenar registros y sus instancias relacionadas, este tipo de operación implícitamente crea una transacción para asegurar que los datos se almacenan correctamente:
+Existing relationships can be used to store records and their related instances, this kind of operation implicitly creates a transaction to ensure that data is correctly stored:
 
 ```php
 <?php
@@ -88,7 +90,7 @@ $robot->save();
 
 ## Transacciones aisladas
 
-Las transacciones aisladas se ejecutan en una nueva conexión, asegurando que todos los SQL generados, controles de claves extranjeras virtuales y reglas de negocio están aisladas de la conexión principal. Este tipo de transacción requiere de un administrador de transacciones que gestiona globalmente cada transacción creada, asegurando que ellas sean correctamente confirmadas/desechadas antes de terminar la solicitud:
+Isolated transactions are executed in a new connection ensuring that all the generated SQL, virtual foreign key checks and business rules are isolated from the main connection. This kind of transaction requires a transaction manager that globally manages each transaction created ensuring that they are correctly rolled back/committed before ending the request:
 
 ```php
 <?php
@@ -136,7 +138,7 @@ try {
 }
 ```
 
-Las transacciones pueden utilizarse para eliminar muchos registros de forma coherente:
+Transactions can be used to delete many records in a consistent way:
 
 ```php
 <?php
@@ -180,7 +182,7 @@ try {
 }
 ```
 
-Las transacciones se reutilizan, sin importar de donde es obtenido el objeto de la transacción. A new transaction is generated only when a `commit()` or :code:`rollback()` is performed. Se puede utilizar el contenedor de servicio para crear un administrador global de transacciones para toda la aplicación:
+Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a `commit()` or :code:`rollback()` is performed. You can use the service container to create the global transaction manager for the entire application:
 
 ```php
 <?php
@@ -195,7 +197,7 @@ $di->setShared(
 );
 ```
 
-Para luego acceder a él desde un controlador o vista:
+Then access it from a controller or view:
 
 ```php
 <?php
@@ -220,4 +222,4 @@ class ProductsController extends Controller
 }
 ```
 
-Mientras una transacción está activa, el administrador de transacciones siempre devuelve la misma transacción a través de la aplicación.
+While a transaction is active, the transaction manager will always return the same transaction across the application.

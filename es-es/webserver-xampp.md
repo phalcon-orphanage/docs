@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Instalación en XAMPP
 
-[XAMPP](https://www.apachefriends.org/download.html) es una distribución fácil de instalar que contiene Apache, MySQL, PHP y Perl. Al descargar XAMPP, todo lo que tiene que hacer es descomprimirlo y empezar a usarlo. A continuación se muestran instrucciones detalladas para instalar Phalcon en XAMPP para Windows, utilizando la última versión XAMPP que es siempre lo más recomendable.
+[XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
 <a name='phalcon'></a>
 
 ## Descargar la versión correcta de Phalcon
 
-Los desarrollos de XAMPP siempre lanzan versiones de 32 bits de Apache y PHP. Usted tendrá que descargar el versión x86 de Phalcon para Windows desde la sección de descargas.
+XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
 Después de descargar la biblioteca Phalcon tendrás un archivo zip como se muestra a continuación:
 
@@ -30,7 +32,7 @@ Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have ins
 
 ![](/assets/images/content/webserver-xampp-3.png)
 
-Edite el archivo `php.ini`, que se encuentra en `C:\xampp\php\php.ini`. Puedes editarlo con el Bloc de notas o un programa similar. Le recomendamos [Notepad++](https://notepad-plus-plus.org/) para evitar problemas con finales de línea. Agrega esto al final del archivo:
+Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. Puedes editarlo con el Bloc de notas o un programa similar. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Agrega esto al final del archivo:
 
 ```ini
 extension=php_phalcon.dll
@@ -40,7 +42,7 @@ y guarda los cambios.
 
 ![](/assets/images/content/webserver-xampp-4.png)
 
-Reinicie el servidor de Web Apache desde el centro de Control de XAMPP. Esto cargará la nueva configuración de PHP.
+Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration.
 
 ![](/assets/images/content/webserver-xampp-5.png)
 
@@ -48,17 +50,17 @@ Open your browser to navigate to `https://localhost`. The XAMPP welcome page wil
 
 ![](/assets/images/content/webserver-xampp-6.png)
 
-[phpinfo](https://php.net/manual/en/function.phpinfo.php) will output a significant amount of information on screen about the current state of PHP. Desplácese hacia abajo para comprobar si la extensión Phalcon ha sido cargada correctamente.
+[phpinfo](https://php.net/manual/en/function.phpinfo.php) will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly.
 
 ![](/assets/images/content/webserver-xampp-7.png)
 
-Si ves la versión de phalcon en la pagina `phpinfo()`, ¡Felicidades!, ahora está volando con Phalcon.
+If you can see the phalcon version in the `phpinfo()` output, congratulations!, You are now phlying with Phalcon.
 
 <a name='screencast'></a>
 
 ## Video tutorial
 
-El siguiente video tutorial es una guía paso a paso para instalar Phalcon en Windows:
+The following screencast is a step by step guide to install Phalcon on Windows:
 
 <div align="center">
   <iframe src="https://player.vimeo.com/video/40265988" 

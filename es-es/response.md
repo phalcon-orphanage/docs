@@ -4,13 +4,15 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Devolviendo Respuestas
 
-Parte del ciclo HTTP es devolver las respuestas a los clientes. [Phalcon\Http\Response](api/Phalcon_Http_Response) is the Phalcon component designed to achieve this task. Las respuestas HTTP generalmente están compuestas por cabeceras y un cuerpo. El siguiente es un ejemplo básico de uso:
+Part of the HTTP cycle is returning responses to clients. [Phalcon\Http\Response](api/Phalcon_Http_Response) is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
 ```php
 <?php
@@ -30,7 +32,7 @@ $response->setContent("Lo sentimos, la página no existe");
 $response->send();
 ```
 
-Si usted está usando el MVC de forma completa, no necesita crear las respuestas manualmente. Sin embargo, si usted necesita devolver una respuesta directamente desde la acción de un controlador siga este ejemplo:
+If you are using the full MVC stack there is no need to create responses manually. However, if you need to return a response directly from a controller's action follow this example:
 
 ```php
 <?php
@@ -62,9 +64,9 @@ class FeedController extends Controller
 
 ## Trabajando con Cabeceras
 
-Las cabeceras son una parte importante de la respuesta HTTP. Contiene información útil sobre el estado de respuesta como el estado HTTP, el tipo de respuesta y mucho más.
+Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status, type of response and much more.
 
-Se puede configurar los encabezados de la siguiente manera:
+You can set headers in the following way:
 
 ```php
 <?php
@@ -111,7 +113,7 @@ $response->redirect('https://en.wikipedia.org', true);
 $response->redirect('https://www.example.com/new-location', true, 301);
 ```
 
-All internal URIs are generated using the [url](/4.0/en/url) service (by default [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)). Este ejemplo demuestra cómo puede redirigir utilizando una ruta que ha definido en su aplicación:
+All internal URIs are generated using the [url](/4.0/en/url) service (by default [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)). This example demonstrates how you can redirect using a route you have defined in your application:
 
 ```php
 <?php
@@ -132,9 +134,9 @@ Even if there is a view associated with the current action, it will not be rende
 
 ## Caché HTTP
 
-Una de las formas más fáciles de mejorar el rendimiento en nuestras aplicaciones y reducir el trafico es utilizando el cache HTTP. Los nevadores modernos soportan el cacheo HTTP y es una de las razones por la que mucho sitios web son tan rápidos.
+One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 
-La memoria caché HTTP se puede modificar en los siguientes valores de encabezado enviados por la aplicación al publicar una página por primera vez:
+HTTP Cache can be altered in the following header values sent by the application when serving a page for the first time:
 
 * **`Expires:`** con este encabezado, la aplicación puede establecer una fecha en el futuro o en el pasado que indique al navegador cuándo debe caducar la página.
 * **`Cache-Control:`** este encabezado permite especificar cuánto tiempo una página debe considerarse como fresca en el navegador.
@@ -145,7 +147,7 @@ La memoria caché HTTP se puede modificar en los siguientes valores de encabezad
 
 ### Estableciendo el tiempo de expiración
 
-La fecha de vencimiento o expiración es una de las maneras más fáciles y efectivas de almacenar en caché una página en el cliente (navegador). A partir de la fecha actual, agregamos la cantidad de tiempo que la página se almacenará en el caché del navegador. Hasta que caduque esta fecha, no se solicitará contenido nuevo desde el servidor:
+The expiration date is one of the easiest and most effective ways to cache a page in the client (browser). Starting from the current date we add the amount of time the page will be stored in the browser cache. Until this date expires no new content will be requested from the server:
 
 ```php
 <?php
@@ -156,9 +158,9 @@ $expiryDate->modify('+2 months');
 $response->setExpires($expiryDate);
 ```
 
-El componente respuesta muestra automáticamente la fecha en la zona horaria GMT como se esperaba en un encabezado Expires.
+The Response component automatically shows the date in GMT timezone as expected in an Expires header.
 
-Si especificamos este valor en una fecha pasada, el navegador siempre actualizará la página consultada:
+If we set this value to a date in the past the browser will always refresh the requested page:
 
 ```php
 <?php
@@ -169,13 +171,13 @@ $expiryDate->modify('-10 minutes');
 $response->setExpires($expiryDate);
 ```
 
-Los navegadores confían en el reloj del cliente para evaluar si esta fecha ha pasado o no. El reloj del cliente se puede modificar para hacer que las páginas caduquen y esto puede representar una limitación para este mecanismo de caché.
+Browsers rely on the client's clock to assess if this date has passed or not. The client clock can be modified to make pages expire and this may represent a limitation for this cache mechanism.
 
 <a name='http-cache-control'></a>
 
 ### Cache-Control
 
-Este encabezado proporciona una forma más segura de almacenar en caché las páginas servidas. Simplemente debemos especificar un tiempo en segundos que indique al navegador cuánto tiempo debe mantener la página en su caché:
+This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser how long it must keep the page in its cache:
 
 ```php
 <?php
@@ -184,7 +186,7 @@ Este encabezado proporciona una forma más segura de almacenar en caché las pá
 $response->setHeader('Cache-Control', 'max-age=86400');
 ```
 
-El efecto opuesto (evitar que la página se cachee) se logra de esta manera:
+The opposite effect (avoid page caching) is achieved in this way:
 
 ```php
 <?php
@@ -197,7 +199,7 @@ $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
 
 ### E-Tag
 
-Un `entity-tag` o `E-tag` es un identificador único que ayuda al navegador a darse cuenta si la página ha cambiado o no entre dos solicitudes. El identificador debe calcularse teniendo en cuenta que esto debe cambiar si el contenido publicado anteriormente ha cambiado:
+An `entity-tag` or `E-tag` is a unique identifier that helps the browser realize if the page has changed or not between two requests. The identifier must be calculated taking into account that this must change if the previously served content has changed:
 
 ```php
 <?php

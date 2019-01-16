@@ -4,21 +4,23 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Gestor de Eventos
 
-El propósito de este componente es interceptar la ejecución de la mayoría de los otros componentes del framework mediante la creación de 'puntos de anclaje'. Estos puntos de anclaje o gancho permiten al desarrollador obtener información del estado, manipular los datos o cambiar el flujo de ejecución durante el proceso de un componente.
+The purpose of this component is to intercept the execution of most of the other components of the framework by creating 'hook points'. These hook points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
 <a name='naming-convention'></a>
 
 ## Convención de Nombres
 
-Los eventos de Phalcon utilizan espacios de nombres para evitar colisiones de nombres. Cada componente de Phalcon ocupa un espacio de nombres de evento diferente y eres libre crear el tuyo propio como mejor te parezca. Los nombres de evento tienen el formato `componente:evento`. For example, as [Phalcon\Db](api/Phalcon_Db) occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
+Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as [Phalcon\Db](api/Phalcon_Db) occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
 
-Al adjuntar oyentes de eventos en el administrador de eventos, puede utilizar el `componente` para atrapar a todos los eventos de dicho componente (por ejemplo. `db` to catch all of the [Phalcon\Db](api/Phalcon_Db) events) or `component:event` to target a specific event (eg. `db:afterQuery`).
+When attaching event listeners to the events manager, you can use `component` to catch all events from that component (eg. `db` to catch all of the [Phalcon\Db](api/Phalcon_Db) events) or `component:event` to target a specific event (eg. `db:afterQuery`).
 
 <a name='usage'></a>
 
@@ -60,11 +62,11 @@ $connection->query(
 );
 ```
 
-Ahora, cada vez que se ejecuta una consulta, la instrucción SQL se repetirá. El primer parámetro a la función lambda contiene información contextual sobre el evento que se ejecuta, el segundo parámetro es la fuente del evento (en este caso la conexión sí misma). También se puede especificar un tercer parámetro que contiene datos arbitrarios específicos para el evento.
+Now every time a query is executed, the SQL statement will be echoed out. The first parameter passed to the lambda function contains contextual information about the event that is running, the second is the source of the event (in this case the connection itself). A third parameter may also be specified which will contain arbitrary data specific to the event.
 
 <h5 class='alert alert-warning'>You must explicitly set the Events Manager to a component using the <code>setEventsManager()</code> method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts </h5>
 
-En lugar de utilizar funciones anónimas, se puede utilizar las clases oyentes de eventos. Los oyentes o detectores de eventos también permiten escuchar a varios eventos. In this example, we will implement the [Phalcon\Db\Profiler](api/Phalcon_Db_Profiler) to detect the SQL statements that are taking longer to execute than expected:
+Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events. In this example, we will implement the [Phalcon\Db\Profiler](api/Phalcon_Db_Profiler) to detect the SQL statements that are taking longer to execute than expected:
 
 ```php
 <?php
@@ -119,7 +121,7 @@ class MyDbListener
 }
 ```
 
-Adjuntar un detector de eventos al administrador de eventos es tan simple como:
+Attaching an event listener to the events manager is as simple as:
 
 ```php
 <?php
@@ -134,7 +136,7 @@ $eventsManager->attach(
 );
 ```
 
-Los datos de perfil resultantes se pueden obtener del oyente:
+The resulting profile data can be obtained from the listener:
 
 ```php
 <?php
@@ -156,7 +158,7 @@ foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
 
 ## Creando Componentes que Desencadenan Eventos
 
-Es posible crear componentes en su aplicación que activen eventos de un EventsManager. Como consecuencia, pueden existir oyentes que reaccionan a estos eventos cuando se generan. En el siguiente ejemplo estamos creando un componente llamado `MyComponent`. This component is EventsManager aware (it implements [Phalcon\Events\EventsAwareInterface](api/Phalcon_Events_EventsAwareInterface)); when its `someTask()` method is executed it triggers two events to any listener in the EventsManager:
+You can create components in your application that trigger events to an EventsManager. As a consequence, there may exist listeners that react to these events when generated. In the following example we're creating a component called `MyComponent`. This component is EventsManager aware (it implements [Phalcon\Events\EventsAwareInterface](api/Phalcon_Events_EventsAwareInterface)); when its `someTask()` method is executed it triggers two events to any listener in the EventsManager:
 
 ```php
 <?php
@@ -190,7 +192,7 @@ class MyComponent implements EventsAwareInterface
 }
 ```
 
-Observe que en este ejemplo, estamos utilizando el espacio de nombres de eventos de `my-component`. Ahora necesitamos crear un detector de eventos para este componente:
+Notice that in this example, we're using the `my-component` event namespace. Now we need to create an event listener for this component:
 
 ```php
 <?php
@@ -211,7 +213,7 @@ class SomeListener
 }
 ```
 
-Ahora vamos a hacer que todo trabaje junto:
+Now let's make everything work together:
 
 ```php
 <?php
@@ -237,7 +239,7 @@ $eventsManager->attach(
 $myComponent->someTask();
 ```
 
-Como `someTask()` es ejecutado, se ejecutarán los dos métodos en el oyente, produciendo la siguiente salida:
+As `someTask()` is executed, the two methods in the listener will be executed, producing the following output:
 
 ```bash
 Aquí, beforeSomeTask
@@ -245,7 +247,7 @@ Aquí, someTask
 Aquí, afterSomeTask
 ```
 
-Datos adicionales también se pueden pasar al desencadenar un evento usando el tercer parámetro del método `fire()`:
+Additional data may also be passed when triggering an event using the third parameter of `fire()`:
 
 ```php
 <?php
@@ -253,7 +255,7 @@ Datos adicionales también se pueden pasar al desencadenar un evento usando el t
 $eventsManager->fire('my-component:afterSomeTask', $this, $extraData);
 ```
 
-En el oyente, el tercer parámetro también recibe estos datos:
+In a listener the third parameter also receives this data:
 
 ```php
 <?php
@@ -315,7 +317,7 @@ class SomeListener extends Plugin
 
 ## Propagación y Cancelación de Eventos
 
-Muchos oyentes pueden ser agregados al mismo gestor de eventos. Esto significa que para el mismo tipo de evento, muchos oyentes pueden ser notificados. Los oyentes son notificados en el mismo orden que fueron registrados en el EventsManager. Algunos eventos son cancelables, indicando que se puede detener para evitar que otros oyentes sean notificados sobre el evento:
+Many listeners may be added to the same event manager. This means that for the same type of event, many listeners can be notified. The listeners are notified in the order they were registered in the EventsManager. Some events are cancelable, indicating that these may be stopped preventing other listeners from being notified about the event:
 
 ```php
 <?php
@@ -336,7 +338,7 @@ $eventsManager->attach(
 );
 ```
 
-Por defecto, los eventos son cancelables, incluso la mayoria de los eventos producidos por el framework son cancelables. Es posible disparar un evento no cancelable pasando el valor `false` en el cuarto parámetro del evento `fire()`:
+By default, events are cancelable - even most of the events produced by the framework are cancelables. You can fire a not-cancelable event by passing `false` in the fourth parameter of `fire()`:
 
 ```php
 <?php
@@ -348,7 +350,7 @@ $eventsManager->fire('my-component:afterSomeTask', $this, $extraData, false);
 
 ## Prioridades del Oyente
 
-Cuando adjuntamos oyentes es posible especificar su prioridad. Con esta característica puede adjuntar oyentes indicando el orden en el que deben ser llamados:
+When attaching listeners you can set a specific priority. With this feature you can attach listeners indicating the order in which they must be called:
 
 ```php
 <?php
@@ -364,7 +366,7 @@ $eventsManager->attach('db', new DbListener(), 50);  // Menos prioridad
 
 ## Recogiendo Respuestas
 
-El gestor de eventos puede recoger cada respuesta devuelta por cada oyente notificado. Este ejemplo explica como funciona esto:
+The events manager can collect every response returned by every notified listener. This example explains how it works:
 
 ```php
 <?php
@@ -399,7 +401,7 @@ $eventsManager->fire('custom:custom', null);
 print_r($eventsManager->getResponses());
 ```
 
-El ejemplo anterior produce lo siguiente:
+The above example produces:
 
 ```php
     Array ( [0] => primer respuesta [1] => segunda respuesta )
@@ -415,7 +417,7 @@ The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) inter
 
 ## Lista de Eventos
 
-Los eventos disponibles en Phalcon son:
+The events available in Phalcon are:
 
 | Componente         | Evento                               |
 | ------------------ | ------------------------------------ |

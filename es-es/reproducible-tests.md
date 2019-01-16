@@ -4,15 +4,17 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
 
-Si has encontrado un error, es importante agregar información reproducible pertinente a su problema para poder reproducir el error y solucionarlo más rápido. Si tienes la aplicación públicamente en Github por favor enviar la dirección del repositorio junto con la descripción del problema. También puede utilizar [Gist](https://gist.github.com/) para publicar cualquier código que desea compartir con nosotros.
+{:.alert .alert-danger}
+
+If you have found a bug it is important to add relevant reproducibility information to your issue to allow us to reproduce the bug and fix it quicker. If you have the application publicly on Github please submit the repository address along with the issue description. You can also use [Gist](https://gist.github.com/) to post any code you want to share with us.
 
 <a name="overview"></a>
 
 ## Creando un pequeño script
 
-Un archivo de código único y pequeño es generalmente la mejor manera de reproducir un problema:
+A small single-file script is usually the best way to reproduce a problem:
 
 ```php
 <?php
@@ -51,13 +53,13 @@ var_dump($_SESSION);
 var_dump($_COOKIE);
 ```
 
-Dependiendo de la aplicación, puede utilizar estos esqueletos para crear su propio código y reproducir el error:
+Depending on your application, you can use these skeletons in order to create your own script and reproduce the bug:
 
 <a name="database"></a>
 
 ### Base de Datos
 
-No olvide añadir al código cómo has registrado el servicio de base de datos:
+Remember to add to the script how you registered the database service:
 
 ```php
 <?php
@@ -82,7 +84,7 @@ $result = $di['db']->query('SELECT * FROM customers');
 
 ### Aplicaciones simples o multi módulo
 
-No olvide añadir al script cómo has creado la instancia de Phalcon\Mvc\Application:
+Remember to add to the script how you are creating the Phalcon\Mvc\Application instance:
 
 ```php
 <?php
@@ -100,7 +102,7 @@ echo $app->handle->getContent()
 
 ```
 
-Incluye modelos y controladores como parte de la prueba:
+Include models and controllers as part of the test:
 
 ```php
 <?php
@@ -131,7 +133,7 @@ echo $app->handle->getContent()
 
 ### Micro Aplicaciones
 
-Sigue esta estructura para crear el script:
+Follow this structure to create the script:
 
 ```php
 <?php
@@ -149,7 +151,7 @@ $app->handle();
 
 ### ORM
 
-Puede proporcionar su propio esquema de base de datos o incluso mejor, usar cualquiera de las [bases de datos](https://github.com/phalcon/cphalcon/tree/master/unit-tests/schemas) de prueba de Phalcon. Sigue esta estructura para crear el script:
+You can provide your own database schema or even better use any of the phalcon test [databases](https://github.com/phalcon/cphalcon/tree/master/unit-tests/schemas). Follow this structure to create the script:
 
 ```php
 <?php

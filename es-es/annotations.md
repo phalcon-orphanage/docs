@@ -4,15 +4,17 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Analizador de anotaciones
 
-Es la primera vez que un analizador de anotaciones está escrito en C para el mundo PHP. `Phalcon\Annotations` es un componente de propósito general que proporciona facilidad de análisis y cacheo con anotaciones en las clases de PHP para ser utilizado en aplicaciones.
+It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
 
-Las anotaciones se pueden leer desde docblocks en clases, métodos y propiedades. Una anotación puede colocarse en cualquier ubicación del docblock:
+Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
 ```php
 <?php
@@ -43,7 +45,7 @@ class Example
 }
 ```
 
-Una anotación tiene la siguiente sintaxis:
+An annotation has the following syntax:
 
 ```php
 /**
@@ -52,7 +54,7 @@ Una anotación tiene la siguiente sintaxis:
  */
 ```
 
-También, una anotación puede ser colocada en cualquier parte de un docblock:
+Also, an annotation can be placed at any part of a docblock:
 
 ```php
 <?php
@@ -68,7 +70,7 @@ También, una anotación puede ser colocada en cualquier parte de un docblock:
  */
 ```
 
-El analizador es altamente flexible, el siguiente docblock es válido:
+The parser is highly flexible, the following docblock is valid:
 
 ```php
 <?php
@@ -81,7 +83,7 @@ someParameter='the value', false
  **/
 ```
 
-Sin embargo, para hacer el código más mantenible y comprensible se recomienda colocar las anotaciones en el final del docblock:
+However, to make the code more maintainable and understandable it is recommended to place annotations at the end of the docblock:
 
 ```php
 <?php
@@ -99,7 +101,7 @@ Sin embargo, para hacer el código más mantenible y comprensible se recomienda 
 
 ## Factory
 
-Hay muchos adaptadores de anotaciones disponibles (ver [adaptadores](#adapters)). El que desee utilizar dependerá de las necesidades de su aplicación. La forma tradicional de crear instancias de un adaptador es la siguiente:
+There are many annotations adapters available (see [Adapters](#adapters)). El que desee utilizar dependerá de las necesidades de su aplicación. The traditional way of instantiating such an adapter is as follows:
 
 ```php
 <?php
@@ -111,7 +113,7 @@ $reader = new MemoryAdapter();
 // .....
 ```
 
-Además puede utilizar el método factory para conseguir el mismo resultado:
+However you can also utilize the factory method to achieve the same thing:
 
 ```php
 <?php
@@ -128,13 +130,13 @@ $options = [
 $annotations = Factory::load($options);
 ```
 
-El cargador factory proporciona más flexibilidad cuando se trata de instanciar adaptadores de anotaciones de archivos de configuración.
+The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
 
 <a name='reading'></a>
 
 ## Leyendo anotaciones
 
-Un [PHP Reflection](http://php.net/manual/es/book.reflection.php "Más información") es implementado para obtener fácilmente las anotaciones definidas en una clase con una interfaz orientada a objetos:
+A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
 ```php
 <?php
@@ -162,15 +164,15 @@ foreach ($annotations as $annotation) {
 }
 ```
 
-El proceso de lectura de anotaciones es muy rápido, sin embargo, por razones de rendimiento que se recomienda almacenar las anotaciones analizadas utilizando un adaptador. Los adaptadores de caché para anotaciones, evitan la necesidad de analizar las anotaciones una y otra vez.
+The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter. Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
 
-[Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory) was used in the above example. Este adaptador sólo almacena en caché las anotaciones mientras se ejecuta la petición y por ello es que este adaptador es más conveniente para el desarrollo. Hay otros [adaptadores disponibles](#adapters) para usar cuando la aplicación está en fase de producción.
+[Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory) was used in the above example. This adapter only caches the annotations while the request is running and for this reason the adapter is more suitable for development. There are other adapters to swap out when the application is in production stage.
 
 <a name='types'></a>
 
 ## Tipos de anotaciones
 
-Las anotaciones pueden tener parámetros o no. Un parámetro podría ser un simple literal (string, number, boolean, null), un array, una lista hash u otra anotación:
+Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
 ```php
 <?php
@@ -229,13 +231,13 @@ Las anotaciones pueden tener parámetros o no. Un parámetro podría ser un simp
 
 ## Usos prácticos
 
-A continuación explicamos algunos ejemplos prácticos de las anotaciones en las aplicaciones PHP:
+Next we will explain some practical examples of annotations in PHP applications:
 
 <a name='usage-cache'></a>
 
 ### Activar cache con anotaciones
 
-Supongamos que hemos creado el controlador siguiente y quieres crear un plugin que inicia automáticamente el caché si la última acción ejecutada es marcada como almacenable en caché. Primero de todo, registramos un plugin en el servicio Dispatcher para que se notifique cuando una ruta se ejecuta:
+Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
 
 ```php
 <?php
@@ -260,7 +262,7 @@ $di['dispatcher'] = function () {
 };
 ```
 
-`CacheEnablerPlugin` es un plugin que intercepta cada acción ejecutada en el Dispatcher habilitando el caché si es necesario:
+`CacheEnablerPlugin` is a plugin that intercepts every action executed in the dispatcher enabling the cache if needed:
 
 ```php
 <?php
@@ -310,7 +312,7 @@ class CacheEnablerPlugin extends Plugin
 }
 ```
 
-Ahora, podemos usar la anotación en un controlador:
+Now, we can use the annotation in a controller:
 
 ```php
 <?php
@@ -350,7 +352,7 @@ class NewsController extends Controller
 
 ### Áreas privadas y públicas con anotaciones
 
-Puede utilizar las anotaciones para decir al ACL que controladores pertenecen a las áreas administrativas:
+You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
 ```php
 <?php
@@ -414,7 +416,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 ## Adaptadores de anotaciones
 
-Este componente hace uso de los adaptadores para cachear las anotaciones analizadas y procesadas, y así mejorar el rendimiento o proveer facilidades para desarrollo y pruebas:
+This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
 | Clase                                                                           | Descripción                                                                                                                                                                                      |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

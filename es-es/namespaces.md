@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Trabajando con Espacios de Nombres
 
-[Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Los espacios de nombres también son útiles para crear paquetes o módulos.
+[Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
 
 <a name='setting-up'></a>
 
 ## Configurando el framework
 
-Utilizar espacios de nombres tiene algunas implicaciones cuando se carga el controlador adecuado. Para ajustar el comportamiento del framework a los espacios de nombres es necesario realizar una o todas de las siguientes tareas:
+Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:
 
 Use an autoload strategy that takes into account the namespaces, for example with [Phalcon\Loader](api/Phalcon_Loader):
 
@@ -31,7 +33,7 @@ $loader->registerNamespaces(
 );
 ```
 
-Especifíquelo en las rutas como un parámetro separado en las rutas de la ruta:
+Specify it in the routes as a separate parameter in the route's paths:
 
 ```php
 <?php
@@ -46,7 +48,7 @@ $router->add(
 );
 ```
 
-Pasandolo como parte de la ruta:
+Passing it as part of the route:
 
 ```php
 <?php
@@ -87,7 +89,7 @@ $di->set(
 
 ## Controladores en espacios de nombres
 
-En el ejemplo siguiente se muestra cómo implementar un controlador que utiliza espacios de nombres:
+The following example shows how to implement a controller that use namespaces:
 
 ```php
 <?php
@@ -114,7 +116,7 @@ class UsersController extends Controller
 
 ## Modelos en Espacios de Nombres
 
-Tener en cuenta lo siguiente al utilizar modelos en los espacios de nombres:
+Take the following into consideration when using models in namespaces:
 
 ```php
 <?php
@@ -129,7 +131,7 @@ class Robots extends Model
 }
 ```
 
-Si los modelos tienen relaciones también debe incluir el espacio de nombres:
+If models have relationships they must include the namespace too:
 
 ```php
 <?php
@@ -154,7 +156,7 @@ class Robots extends Model
 }
 ```
 
-En PHQL también debe escribir las declaraciones incluyendo los espacios de nombres:
+In PHQL you must write the statements including namespaces:
 
 ```php
 <?php

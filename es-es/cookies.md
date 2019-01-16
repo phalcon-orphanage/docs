@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Gestión de cookies
 
-[Cookies](https://en.wikipedia.org/wiki/HTTP_cookie) are a very useful way to store small pieces of data on the client's machine that can be retrieved even if the user closes his/her browser. `Phalcon\Http\Response\Cookies` actúa como una bolsa global de cookies. Las cookies se almacenan en esta bolsa durante la ejecución de la solicitud y se envían automáticamente al final de la misma.
+[Cookies](https://en.wikipedia.org/wiki/HTTP_cookie) are a very useful way to store small pieces of data on the client's machine that can be retrieved even if the user closes his/her browser. `Phalcon\Http\Response\Cookies` acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent automatically at the end of the request.
 
 <a name='usage'></a>
 
 ## Uso básico
 
-Se puede poner/obtener cookies con sólo acceder al servicio de `cookies` en cualquier parte de la aplicación, donde los servicios pueden ser accedidos:
+You can set/get cookies by just accessing the `cookies` service in any part of the application where services can be accessed:
 
 ```php
 <?php
@@ -62,9 +64,9 @@ class SessionController extends Controller
 
 ## Encriptado / Desencriptado de cookies
 
-De forma predeterminada, las cookies se encriptan automáticamente antes de ser enviadas al cliente y se desencriptan cuando regresan del mismo. Esta protección evita que usuarios no autorizados vean el contenido de las cookies en el cliente (navegador). A pesar de esta protección, los datos sensibles no deben almacenarse en cookies.
+By default, cookies are automatically encrypted before being sent to the client and are decrypted when retrieved from the user. This protection prevents unauthorized users to see the cookies' contents in the client (browser). Despite this protection, sensitive data should not be stored in cookies.
 
-Puede deshabilitar el encriptado de la siguiente manera:
+You can disable encryption as follows:
 
 ```php
 <?php

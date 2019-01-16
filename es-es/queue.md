@@ -4,17 +4,19 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Formación de Colas
 
-Actividades como el procesamiento de vídeos, redimensionamiento de imágenes o enviar correos electrónicos no son adecuados para ser ejecutados en línea o en tiempo real porque puede disminuir el tiempo de carga de páginas y afectan seriamente la experiencia de usuario.
+Activities like processing videos, resizing images or sending emails aren't suitable to be executed online or in real time because it may slow the loading time of pages and severely impact the user experience.
 
-Aquí la mejor solución es implementar trabajos de fondo o en paralelo. La aplicación web pone trabajos en una cola y que se tramitarán por separado.
+The best solution here is to implement background jobs. The web application puts jobs into a queue and which will be processed separately.
 
-While you can find more sophisticated PHP extensions to address queueing in your applications like [RabbitMQ](https://pecl.php.net/package/amqp); Phalcon provides a client for [Beanstalk](https://www.igvita.com/2010/05/20/scalable-work-queues-with-beanstalk/), a job queueing backend inspired by [Memcached](https://memcached.org/). Es simple, ligero y totalmente especializado para la formación de colas de trabajo.
+While you can find more sophisticated PHP extensions to address queueing in your applications like [RabbitMQ](https://pecl.php.net/package/amqp); Phalcon provides a client for [Beanstalk](https://www.igvita.com/2010/05/20/scalable-work-queues-with-beanstalk/), a job queueing backend inspired by [Memcached](https://memcached.org/). It’s simple, lightweight, and completely specialized for job queueing.
 
 <h5 class='alert alert-danger'>Some of the data returned from queue methods require that the module Yaml be installed. Please refer to <a href="https://php.net/manual/book.yaml.php">this</a> for more information. You will need to use Yaml >= 2.0.0 </h5>
 
@@ -22,7 +24,7 @@ While you can find more sophisticated PHP extensions to address queueing in your
 
 ## Poner Trabajos en la Cola
 
-Después de conectar a Beanstalk se puede insertar tantos trabajos como sea necesario. Se puede definir la estructura del mensaje según las necesidades de la aplicación:
+After connecting to Beanstalk you can insert as many jobs as required. You can define the message structure according to the needs of the application:
 
 ```php
 <?php
@@ -45,16 +47,16 @@ $queue->put(
 );
 ```
 
-Opciones de conexión disponibles:
+Available connection options are:
 
 | Opción | Descripción                                 | Predeterminado |
 | ------ | ------------------------------------------- | -------------- |
 | host   | IP donde se encuentra el servidor Beanstalk | 127.0.0.1      |
 | port   | Puerto de conexión                          | 11300          |
 
-En el ejemplo anterior se almacena un mensaje que permitirá a un trabajo de fondo procesar un video. El mensaje se almacena en la cola inmediatamente y no tiene un tiempo determinado de vida.
+In the above example we stored a message which will allow a background job to process a video. The message is stored in the queue immediately and does not have a certain time to live.
 
-Las opciones adicionales como: tiempo de funcionamiento, prioridad y el retardo pueden ser pasadas como segundo parámetro:
+Additional options as: time to run, priority and delay can be passed as second parameter:
 
 ```php
 <?php
@@ -72,7 +74,7 @@ $queue->put(
 );
 ```
 
-Las siguientes opciones están disponibles:
+The following options are available:
 
 | Opción   | Descripción                                                                                                                                                                                                                         |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -80,7 +82,7 @@ Las siguientes opciones están disponibles:
 | delay    | Es un número entero de segundos a esperar antes de poner el trabajo en la cola de lista. El trabajo estará en estado 'delayed', osea retrasado, durante este tiempo.                                                                |
 | ttr      | Tiempo para ejecutar: es un número entero de segundos para permitir a un trabajador ejecutar este trabajo. Este tiempo se cuenta desde el momento que un trabajador reserva este trabajo.                                           |
 
-Cada trabajo puesto en la cola retornará un `job id` con el cual es posible hacer un seguimiento del trabajo:
+Every job put into the queue returns a `job id` which you can use to track the status of the job:
 
 ```php
 <?php
@@ -96,7 +98,7 @@ $jobId = $queue->put(
 
 ## Recuperando Mensajes
 
-Una vez que un trabajo se coloca en la cola, esos mensajes pueden ser consumidos por un trabajador de segundo plano que tendrá suficiente tiempo para completar la tarea:
+Once a job is placed into the queue, those messages can be consumed by a background worker which will have enough time to complete the task:
 
 ```php
 <?php
@@ -110,7 +112,7 @@ while (($job = $queue->peekReady()) !== false) {
 }
 ```
 
-Los trabajos son removidos de la cola para evitar doble procesamiento. Si son implementados multiples trabajadores en segudo plano, los trabajos son `reserved` para evitar que otros trabajadores los vuelvan a procesar cuando otro trabajador lo tiene reservado:
+Jobs must be removed from the queue to avoid double processing. If multiple background jobs workers are implemented, jobs must be `reserved` so other workers don't re-process them while other workers have them reserved:
 
 ```php
 <?php
@@ -124,15 +126,15 @@ while (($job = $queue->reserve()) !== false) {
 }
 ```
 
-Nuestro cliente implementa un conjunto básico de características provistas por Beanstalkd pero suficientes para permitir construir aplicaciones que implementen colas.
+Our client implements a basic set of the features provided by Beanstalkd but enough to allow you to build applications implementing queues.
 
 ## Temas avanzados
 
 ### Colas múltiples
 
-Beanstalkd soporta múltiples colas (llamadas 'tubos') para permitir a un servidor de colas simple actuar como un hub para una variedad de trabajadores. Phalcon permite hacer esto fácilmente.
+Beanstalkd supports multiple queues (called 'tubes') to allow for a single queue server to act as a hub for a variety of workers. Phalcon supports this readily.
 
-Ver los tubos disponibles en el servidor y elegir un tubo para que el objeto de la cola lo use, ver el siguiente ejemplo:
+Viewing the tubes available on the server, and choosing a tube for the queue object to use:
 
 ```php
 <?php
@@ -142,9 +144,9 @@ $tube_array = $queue->listTubes();
 $queue->choose('myOtherTube');
 ```
 
-Todo el trabajo posterior con `$queue` ahora se manipula en `myOtherTube` en lugar de `default`.
+All subsequent work with `$queue` now manipulates `myOtherTube` instead of `default`.
 
-Puede ver qué tubo está usando la cola, a continuación un ejemplo.
+You can view which tube the queue is using as well.
 
 ```php
 <?php
@@ -154,7 +156,7 @@ $current_tube = $queue->listTubeUsed();
 
 ### Manipulación de tubos
 
-Los tubos pueden ser pausados o reanudados si lo necesita. Por ejemplo, pausaremos por 3 minutos el tubo `myOtherTube`.
+Tubes can be paused and resumed if needed. The example below pauses `myOtherTube` for 3 minutes.
 
 ```php
 <?php
@@ -162,7 +164,7 @@ Los tubos pueden ser pausados o reanudados si lo necesita. Por ejemplo, pausarem
 $queue->pauseTube('myOtherTube', 180);
 ```
 
-Estableciendo el retraso en 0, se reanudará el funcionamiento normal.
+Setting the delay to 0 will resume normal operation.
 
 ```php
 <?php
@@ -172,7 +174,7 @@ $queue->pauseTube('myOtherTube', 0);
 
 ### Estado del servidor
 
-Puede obtener información sobre el servidor entero o de un tubo especifico.
+You can get information about the entire server or specific tubes.
 
 ```php
 <?php
@@ -187,9 +189,9 @@ $server_status = $queue->readStatus();
 
 ### Gestión de trabajos
 
-Beanstalkd admite la gestión de trabajos con la idea de retrasar un trabajo y eliminar un trabajo de la cola para su posterior procesamiento.
+Beanstalkd supports the ability to manage jobs with both the idea of delaying a job and removing a job from the queue for later processing.
 
-Enterrar un trabajo, generalmente, se usa para tratar problemas potenciales que pueden resolverse fuera del trabajador. Esto toma el trabajo y lo pone en la cola enterrada.
+Burying a job is typically used to deal with potential problems outside of the worker that can be resolved. This takes the job and puts it into the buried queue.
 
 ```php
 <?php
@@ -198,7 +200,7 @@ $job = $queue->reserve();
 $job->bury();
 ```
 
-Una lista de trabajos enterrados es almacenada en el servidor. Es posible inspeccionar el primer trabajo enterrado en la cola, de la siguiente manera.
+A list of buried jobs is stored on the server. You can inspect the first buried job in the queue.
 
 ```php
 <?php
@@ -206,9 +208,9 @@ Una lista de trabajos enterrados es almacenada en el servidor. Es posible inspec
 $job_data = $queue->peekBuried();
 ```
 
-Si la cola de trabajos enterrados esta vacía, esto retornará `false`, en el caso contrario, retorna el objecto de trabajo.
+If the buried queue is empty, this will return `false`, else it returns a Job object.
 
-Puede tomar los primeros [N] trabajos enterrados en la cola para ponerlos nuevamente en la cola de espera. A continuación hay un ejemplo de patear los primeros 3 trabajos enterrados.
+You can kick the first [N] buried jobs in the buried queue to put it/them back in the ready queue. Below is an example of kicking the first three buried jobs.
 
 ```php
 <?php
@@ -216,7 +218,7 @@ Puede tomar los primeros [N] trabajos enterrados en la cola para ponerlos nuevam
 $queue->kick(3);
 ```
 
-Se puede realizar trabajos de liberación a la lista de espera, junto con un retraso opcional. Esto es útil para errores transitorios al procesar un trabajo. A continuación se muestra un ejemplo de poner una prioridad baja (100) y una demora de 3 minutos en un trabajo.
+Releasing jobs back to the ready queue can be done, along with an optional delay. This is handy for transient errors while processing a job. Below is an example of putting a low (100) priority and a 3 minute delay on a job.
 
 ```php
 <?php
@@ -226,9 +228,9 @@ $job = $queue->reserve();
 $job->release(100, 180);
 ```
 
-La prioridad y el retraso son las mismas cuando pone un trabajo en la cola.
+Priority and delay are the same as when `put`ing a job on the queue.
 
-La inspección de un trabajo en la cola se puede lograr con `jobPeek($job_id)`. El siguiente ejemplo intenta echar un vistazo a la identificación de trabajo 5.
+Inspecting a job in the queue can be accomplished with `jobPeek($job_id)`. The example below attempts to peek at job id 5.
 
 ```php
 <?php
@@ -236,8 +238,8 @@ La inspección de un trabajo en la cola se puede lograr con `jobPeek($job_id)`. 
 $queue->jobPeek(5)
 ```
 
-Los trabajos que han sido eliminados no se pueden inspeccionar y devolverán `false`. Los trabajos listos, enterrados y retrasados devolverán un objeto de trabajo.
+Jobs that have been `delete`ed cannot be inspected and will return `false`. Ready, buried, and delayed jobs will return a Job object.
 
 ### Lecturas adicionales
 
-[El texto del protocolo](https://github.com/kr/beanstalkd/blob/master/doc/protocol.txt) contiene todos los detalles operacionales internos de BeanstalkD, a menudo se considera la documentación de facto para BeanstalkD.
+[The protocol text](https://github.com/kr/beanstalkd/blob/master/doc/protocol.txt) contains all of the internal operational details of BeanstalkD and is often considered the defacto documentation for BeanstalkD.

@@ -4,17 +4,19 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Cargador automático de clases
 
-[Phalcon\Loader](api/Phalcon_Loader) allows you to load project classes automatically, based on some predefined rules. Ya que este componente está escrito en C, provee una sobrecarga mínima en lectura e interpretación de archivos PHP externos.
+[Phalcon\Loader](api/Phalcon_Loader) allows you to load project classes automatically, based on some predefined rules. Since this component is written in C, it provides the lowest overhead in reading and interpreting external PHP files.
 
-The behavior of this component is based on the PHP's capability of [autoloading classes](https://www.php.net/manual/en/language.oop5.autoload.php). Si se utiliza una clase que todavía no existe en ninguna parte del código, un gestor especial intentará cargarlo. [Phalcon\Loader](api/Phalcon_Loader) serves as the special handler for this operation. Al cargar las clases en función de la necesidad de carga, el rendimiento general aumenta ya que las únicas lecturas de archivos que se producen son para los archivos necesarios. This technique is called [lazy initialization](https://en.wikipedia.org/wiki/Lazy_initialization).
+The behavior of this component is based on the PHP's capability of [autoloading classes](https://www.php.net/manual/en/language.oop5.autoload.php). If a class that does not yet exist is used in any part of the code, a special handler will try to load it. [Phalcon\Loader](api/Phalcon_Loader) serves as the special handler for this operation. By loading classes on a need-to-load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called [lazy initialization](https://en.wikipedia.org/wiki/Lazy_initialization).
 
-Con este componente se pueden cargar archivos de otros proyectos o proveedores, este cargador automático es compatible con [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) y [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md).
+With this component you can load files from other projects or vendors, this autoloader is [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) and [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md) compliant.
 
 [Phalcon\Loader](api/Phalcon_Loader) offers four options to autoload classes. You can use them one at a time or combine them.
 
@@ -39,7 +41,7 @@ spl_autoload_register(
 );
 ```
 
-El autocargador anterior carece de cualquier tipo de seguridad. Si una función inicia por error el autocargador y una cadena maliciosa preparada se utiliza como parámetro, esto permitiría ejecutar cualquier archivo accesible por la aplicación:
+The above auto-loader lacks any kind of security. If a function mistakenly launches the auto-loader and a malicious prepared string is used as parameter this would allow to execute any file accessible by the application:
 
 ```php
 <?php
@@ -53,7 +55,7 @@ if (class_exists($className)) {
 }
 ```
 
-Si `../processes/important-process.php` es un archivo válido, un usuario externo puede ejecutar el archivo sin autorización.
+If `../processes/important-process.php` is a valid file, an external user could execute the file without authorization.
 
 To avoid these or most sophisticated attacks, [Phalcon\Loader](api/Phalcon_Loader) removes invalid characters from the class name, reducing the possibility of being attacked.
 
@@ -61,7 +63,7 @@ To avoid these or most sophisticated attacks, [Phalcon\Loader](api/Phalcon_Loade
 
 ## Registrando espacios de nombres
 
-Si estás organizando tu código usando espacios de nombres, o usando bibliotecas externas que los utilizan, el método `registerNamespaces()` proporciona el mecanismo de carga automática. Se necesita una matriz asociativa; las claves son los prefijos de los espacio de nombres y los valores son los directorios donde se encuentran las clases. El separador de espacio de nombres se sustituirá por el separador de directorio cuando el cargador intente encontrar las clases.
+If you're organizing your code using namespaces, or using external libraries which do, the `registerNamespaces()` method provides the autoloading mechanism. It takes an associative array; the keys are namespace prefixes and their values are directories where the classes are located in. The namespace separator will be replaced by the directory separator when the loader tries to find the classes.
 
 ```php
 <?php
@@ -91,7 +93,7 @@ $some = new \Example\Adapter\Some();
 
 ## Registrando directorios
 
-La tercera opción es registrar directorios, en los cuales pueden ser encontradas las clases. Esta opción no se recomienda en términos de rendimiento, ya que Phalcon tendrá que realizar un gran número de estadísticas de archivo en cada carpeta, buscando el archivo con el mismo nombre que la clase. Es importante registrar los directorios en orden de importancia.
+The third option is to register directories, in which classes could be found. This option is not recommended in terms of performance, since Phalcon will need to perform a significant number of file stats on each folder, looking for the file with the same name as the class. It's important to register the directories in relevance order.
 
 ```php
 <?php
@@ -124,7 +126,7 @@ $some = new \Some();
 
 ## Registrando clases
 
-La última opción es registrar el nombre de la clase y su camino. Este cargador automático puede ser muy útil cuando la convención de la carpeta del proyecto no permite la fácil recuperación del archivo utilizando la ruta de acceso y el nombre de clase. Este es el método más rápido de carga. Sin embargo mientras más crece su aplicación, más clases y archivos necesitan ser agregados a este cargador automático, lo que hará que el mantenimiento de la lista de clases sea muy engorroso y no es recomendable.
+The last option is to register the class name and its path. This autoloader can be very useful when the folder convention of the project does not allow for easy retrieval of the file using the path and the class name. This is the fastest method of autoloading. However the more your application grows, the more classes/files need to be added to this autoloader, which will effectively make maintenance of the class list very cumbersome and it is not recommended.
 
 ```php
 <?php
@@ -155,7 +157,7 @@ $some = new \Some();
 
 ## Registrando archivos
 
-Usted también puede registrar archivos que son `sin-clases` por lo tanto necesitan un `require`. Esto es muy útil para incluir archivos que sólo tienen funciones:
+You can also registers files that are `non-classes` hence needing a `require`. This is very useful for including files that only have functions:
 
 ```php
 <?php
@@ -177,13 +179,13 @@ $loader->registerFiles(
 $loader->register();
 ```
 
-Estos archivos se cargan automáticamente en el método `register()`.
+These files are automatically loaded in the `register()` method.
 
 <a name='registering-file-extensions'></a>
 
 ## Extensiones de archivo adicionales
 
-Algunas estrategias de carga tales como `prefijos`, `espacios de nombres` o `directorios` automáticamente agregar la extensión de `php` al final del archivo comprobado. Si usted está usando extensiones adicionales se podrían establecerlas con el método `setExtensions()`. Los archivos se comprueban en el orden como fueron definidos:
+Some autoloading strategies such as `prefixes`, `namespaces` or `directories` automatically append the `php` extension at the end of the checked file. If you are using additional extensions you could set it with the method `setExtensions`. Files are checked in the order as it were defined:
 
 ```php
 <?php
@@ -207,9 +209,9 @@ $loader->setExtensions(
 
 ## Chequeo de archivo por retro llamada
 
-Usted puede acelerar el cargador, configurando un método de devolución de llamada de comprobación de archivos diferente utilizando el método `setFileCheckingCallback`.
+You can speed up the loader by setting a different file checking callback method using the `setFileCheckingCallback` method.
 
-Este comportamiento, por defecto utiliza la función `is_file`. Sin embargo, también puede usar el valor `null` que no comprobará si un archivo existe o no antes de cargarlo o puede usar `stream_resolve_include_path` que es mucho más rápido que `is_file` pero causará problemas si el archivo de destino se elimina del sistema de archivos.
+The default behavior uses `is_file`. However you can also use `null` which will not check whether a file exists or not before loading it or you can use `stream_resolve_include_path` which is much faster than `is_file` but will cause problems if the target file is removed from the file system.
 
 ```php
 <?php
@@ -229,7 +231,7 @@ $loader->setFileCheckingCallback(null);
 
 ## Modificando estrategias actuales
 
-Se pueden agregar datos adicionales a la carga automática pueden añadirse a los valores existentes, pasando `true` como segundo parámetro:
+Additional auto-loading data can be added to existing values by passing `true` as the second parameter:
 
 ```php
 <?php
@@ -248,7 +250,7 @@ $loader->registerDirs(
 
 ## Eventos de carga automática
 
-En el ejemplo siguiente, el `EventsManager` está trabajando con el cargador de clases, lo que nos permite obtener información de depuración sobre el flujo de operación:
+In the following example, the `EventsManager` is working with the class loader, allowing us to obtain debugging information regarding the flow of operation:
 
 ```php
 <?php
@@ -282,7 +284,7 @@ $loader->setEventsManager($eventsManager);
 $loader->register();
 ```
 
-Si algún evento devuelve `false` podría detener la operación activa. Los siguientes eventos son soportados:
+Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
 | Nombre de evento   | Disparado                                                                                                                          | ¿Detiene la operación? |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
@@ -294,7 +296,7 @@ Si algún evento devuelve `false` podría detener la operación activa. Los sigu
 
 ## Resolución de problemas
 
-Tenga en mente esta lista cuando utilice auto cargadores universales:
+Some things to keep in mind when using the universal autoloader:
 
 * El proceso de auto carga es sensible a mayúsculas, la clase se cargará como fue escrita en el código
 * Las estrategias basadas en espacios de nombres o prefijos son más rápidas que las estrategias de directorios
