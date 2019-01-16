@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Mensajes Flash
 
-Los mensajes flash se utilizan para notificar al usuario sobre el estado de las acciones que hacen o simplemente mostrar información a los usuarios. Estos tipos de mensajes se pueden generar utilizando este componente.
+Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.
 
 <a name='adapters'></a>
 
 ## Adaptadores
 
-Este componente hace uso de adaptadores para definir el comportamiento de los mensajes después de ser pasado al Flasher:
+This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
 
 | Adaptador | Descripción                                                                                                         | API                                                  |
 | --------- | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
@@ -27,7 +29,7 @@ Este componente hace uso de adaptadores para definir el comportamiento de los me
 
 ## Uso
 
-Generalmente se solicita el servicio de mensajería Flash desde el contenedor de servicios. If you're using [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) then [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct) is automatically registered as `flash` service and [Phalcon\Flash\Session](api/Phalcon_Flash_Session) is automatically registered as `flashSession` service. También es posible registrarlos manualmente:
+Usually the Flash Messaging service is requested from the services container. If you're using [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) then [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct) is automatically registered as `flash` service and [Phalcon\Flash\Session](api/Phalcon_Flash_Session) is automatically registered as `flashSession` service. You can also manually register it:
 
 ```php
 <?php
@@ -52,7 +54,7 @@ $di->set(
 );
 ```
 
-De esta manera, usted puede utilizarlo en vistas o controladores:
+This way, you can use it in controllers or views:
 
 ```php
 <?php
@@ -73,7 +75,7 @@ class PostsController extends Controller
 }
 ```
 
-Hay cuatro tipos de mensaje incorporados:
+There are four built-in message types supported:
 
 ```php
 <?php
@@ -87,7 +89,7 @@ $this->flash->notice('Esta es una información muy importante');
 $this->flash->warning("Mejor que te revisen, no te ves muy bien.");
 ```
 
-También puede agregar mensajes con sus propios tipos, utilizando el método `message()`:
+You can also add messages with your own types using the `message()` method:
 
 ```php
 <?php
@@ -99,7 +101,7 @@ $this->flash->message('debug', "Este es un mensaje de depuración, no lo digas")
 
 ## Imprimiendo Mensajes
 
-Los mensajes enviados al servicio flash automáticamente son formateados a HTML:
+Messages sent to the flash service are automatically formatted with HTML:
 
 ```html
 <div class='errorMessage'>Que mal! el formulario tiene errores</div>
@@ -111,7 +113,7 @@ Los mensajes enviados al servicio flash automáticamente son formateados a HTML:
 <div class='warningMessage'>Mejor que te revisen, no te ves muy bien.</div>
 ```
 
-Como se puede ver, las clases CSS se añaden automáticamente a los `<div>`. Estas clases le permiten definir la presentación gráfica de los mensajes en el navegador. Las clases CSS se pueden redefinir, por ejemplo, si estás utilizando Bootstrap de Twitter, las clases pueden configurarse de la siguiente manera:
+As you can see, CSS classes are added automatically to the `<div>`s. These classes allow you to define the graphical presentation of the messages in the browser. The CSS classes can be overridden, for example, if you're using Twitter Bootstrap, classes can be configured as:
 
 ```php
 <?php
@@ -136,7 +138,7 @@ $di->set(
 );
 ```
 
-Entonces los mensajes será impresos de la siguiente manera:
+Then the messages would be printed as follows:
 
 ```html
 <div class='alert alert-danger'>Que mal! el formulario tiene errores</div>
@@ -152,7 +154,7 @@ Entonces los mensajes será impresos de la siguiente manera:
 
 ## Flush Implícito vs Sesión
 
-Dependiendo del adaptador utilizado para enviar mensajes, es posible producir salidas directas o temporales, para este último, almacenando los mensajes en la sesión para ser mostrados luego. ¿Cuándo debo utilizar cada uno? Esto dependerá del tipo de redirección que utilices antes de enviar los mensajes. Por ejemplo, si haces un `forward` no es necesario almacenar los mensajes en sesión, pero si utiliza una redirección HTTP entonces, necesitan ser almacenados en sesión:
+Depending on the adapter used to send the messages, it could be producing output directly, or be temporarily storing the messages in session to be shown later. When should you use each? That usually depends on the type of redirection you do after sending the messages. For example, if you make a `forward` is not necessary to store the messages in session, but if you do a HTTP redirect then, they need to be stored in session:
 
 ```php
 <?php
@@ -183,7 +185,7 @@ class ContactController extends Controller
 }
 ```
 
-O utilizando redirecciones HTTP:
+Or using a HTTP redirection:
 
 ```php
 <?php
@@ -210,7 +212,7 @@ class ContactController extends Controller
 }
 ```
 
-En este caso, debe imprimir manualmente los mensajes en la vista correspondiente:
+In this case you need to manually print the messages in the corresponding view:
 
 ```php
 <!-- app/views/contact/index.phtml -->
@@ -218,4 +220,4 @@ En este caso, debe imprimir manualmente los mensajes en la vista correspondiente
 <p><?php $this->flashSession->output() ?></p>
 ```
 
-El atributo `flashSession` es como el servicio flash fue previamente registrado en el contenedor de inyección de dependencias. You need to start the [session](/4.0/en/session) first to successfully use the `flashSession` messenger.
+The attribute `flashSession` is how the flash was previously set into the dependency injection container. You need to start the [session](/4.0/en/session) first to successfully use the `flashSession` messenger.
