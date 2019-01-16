@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Validator\Regex'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Validator\Regex'
+---
 # Class **Phalcon\Mvc\Model\Validator\Regex**
 
 *extends* abstract class [Phalcon\Mvc\Model\Validator](Phalcon_Mvc_Model_Validator)
