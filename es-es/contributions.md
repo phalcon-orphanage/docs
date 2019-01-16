@@ -4,25 +4,27 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='contributing'></a>
 
 # Contribuir con Phalcon
 
-Phalcon es un proyecto de código abierto y depende en gran medida del esfuerzo de voluntarios. ¡Agradecemos las contribuciones de todo el mundo!
+Phalcon is an open source project and heavily relies on volunteer efforts. We welcome contributions from everyone!
 
-Por favor, tómese un momento, para revisar este documento con el fin de hacer el proceso de contribución más fácil y eficaz para todos.
+Please take a moment to review this document in order to make the contribution process easy and effective for all.
 
-Seguir estas directrices, permite una mejor comunicación, más rápida resolución de problemas y permite que el proyecto avance.
+Following these guidelines, allows better communication, faster resolution of issues and moves the project forward.
 
 <a name='contributions'></a>
 
 ## Contribuciones
 
-Las contribuciones para Phalcon deben realizarse en la forma de [Pull Requests de GitHub](https://help.github.com/articles/using-pull-requests/). Cada pull request será revisada por un colaborador principal (alguien con permiso para fusionar los pull requests). Basado en el tipo y contenido del pull request, puede ser fusionado inmediatamente, puesto en espera si se requieren aclaraciones, o bien, rechazado.
+Contributions to Phalcon should be made in the form of [GitHub pull requests](https://help.github.com/articles/using-pull-requests/). Each pull request will be reviewed by a core contributor (someone with permission to merge pull requests). Based on the type and content of the pull request, it can either be merged immediately, put on hold if clarifications are needed, or rejected.
 
-Por favor asegúrese que está enviando su pull request a la rama correcta y que ya cuenta con un rebase en el código.
+Please ensure that you are sending your pull request to the correct branch and that you already have rebased your code.
 
 <a name='questions-and-support'></a>
 
@@ -43,9 +45,9 @@ Por favor asegúrese que está enviando su pull request a la rama correcta y que
 
 ### Generar una traza inversa
 
-A veces debido a un error de [Fallo de segmentación](https://en.wikipedia.org/wiki/Segmentation_fault), Phalcon podría bloquear algunos procesos de su servidor web. Por favor ayúdenos a averiguar el problema añadiendo un backtrace del bloqueo de procesos a su informe de fallo.
+Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. Please help us to find out the problem by adding a crash backtrace to your bug report.
 
-Por favor siga estas indicaciones para entender cómo generar el backtrace:
+Please follow this guides to understand how to generate the backtrace:
 
 - [Generando un backtrace de gdb](https://bugs.php.net/bugs-generating-backtrace.php)
 - [Generar una backtrace, con un compilador, en Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
@@ -63,7 +65,7 @@ Por favor siga estas indicaciones para entender cómo generar el backtrace:
 - Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards](https://www.php-fig.org/psr/)
 - Retire cualquier cambio a los archivos `ext/kernel`, `*. zep.c` y `*. zep.h` antes de enviar su pull request
 
-Before submit **new functionality**, please open a [NFR](/4.0/en/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Una vez aprobada la funcionalidad, asegúrese de que su PR contiene lo siguiente:
+Before submit **new functionality**, please open a [NFR](/4.0/en/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
 - Una actualización al `CHANGELOG.md`
 - Pruebas unitarias
@@ -73,7 +75,7 @@ Before submit **new functionality**, please open a [NFR](/4.0/en/new-feature-req
 
 ## Obtener ayuda
 
-Si usted tiene una pregunta acerca de cómo utilizar Phalcon, consulte la [Página de soporte](https://phalconphp.com/support).
+If you have any questions about how to use Phalcon, please see the [support page](https://phalconphp.com/support).
 
 <a name='requesting-features'></a>
 
@@ -81,6 +83,6 @@ Si usted tiene una pregunta acerca de cómo utilizar Phalcon, consulte la [Pági
 
 If you have any changes or new features in mind, please fill an [NFR](/4.0/en/new-feature-request).
 
-¡Gracias!
+Thanks!
 
-<3 El equipo de Phalcon
+<3 Phalcon Team
