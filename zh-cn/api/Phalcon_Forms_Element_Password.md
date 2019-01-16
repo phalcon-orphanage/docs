@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Forms\Element\Password'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Forms\Element\Password'
+---
 # Class **Phalcon\Forms\Element\Password**
 
 *extends* abstract class [Phalcon\Forms\Element](Phalcon_Forms_Element)
