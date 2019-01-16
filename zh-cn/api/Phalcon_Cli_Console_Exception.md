@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cli\Console\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cli\Console\Exception'
+---
 # Class **Phalcon\Cli\Console\Exception**
 
 *extends* class [Phalcon\Application\Exception](Phalcon_Application_Exception)
