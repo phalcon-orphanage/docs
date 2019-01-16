@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -653,8 +652,8 @@ A special variable is available inside `for` loops providing you information abo
 
 | Variable         | Descripción                                                            |
 | ---------------- | ---------------------------------------------------------------------- |
-| `loop.index`     | Iteración actual del bucle. (comenzando desde 1)                       |
-| `loop.index0`    | Iteración actual del bucle. (comenzando desde 0)                       |
+| `loop.index`     | The current iteration of the loop. (1 indexed)                         |
+| `loop.index0`    | The current iteration of the loop. (0 indexed)                         |
 | `loop.revindex`  | El número de iteraciones desde el final del bucle (comenzando desde 1) |
 | `loop.revindex0` | El número de iteraciones desde el final del bucle (comenzando desde 0) |
 | `loop.first`     | Si es la primera iteración, el valor será `true`.                      |
@@ -853,7 +852,7 @@ Additional operators seen the following operators are available:
 | `is`              | Alias de == (igual), también realiza pruebas                                                     |
 | `in`              | Para comprobar si una expresión está contenida en otras expresiones `if 'a' in 'abc'`            |
 | `is not`          | Alias de != (no iguales)                                                                         |
-| `'a' ? 'b' : 'c'` | Operador ternario. Igual al operador ternario de PHP                                             |
+| `'a' ? 'b' : 'c'` | Ternary operator. The same as the PHP ternary operator                                           |
 | `++`              | Incrementa un valor                                                                              |
 | `--`              | Decrementa un valor                                                                              |
 
@@ -891,18 +890,18 @@ Tests can be used to test if a variable has a valid expected value. The operator
 
 The following built-in tests are available in Volt:
 
-| Prueba        | Descripción                                                                                    |
-| ------------- | ---------------------------------------------------------------------------------------------- |
-| `defined`     | Comprueba si una variable esta definida (`isset()`)                                            |
-| `divisibleby` | Comprueba si un valor es divisible por otro valor                                              |
-| `empty`       | Comprueba si una variable está vacía                                                           |
-| `even`        | Comprueba si un valor numérico es par                                                          |
-| `iterable`    | Comprueba si un valor es iterable. Es decir, que puede ser recorrido por una instrucción 'for' |
-| `numeric`     | Comprueba si el valor es numérico                                                              |
-| `odd`         | Comprueba si un valor numérico es impar                                                        |
-| `sameas`      | Comprueba si un valor es idéntico a otro valor                                                 |
-| `scalar`      | Comprueba si el valor es escalar (no una matriz, objeto o recurso)                             |
-| `type`        | Comprueba si un valor es del tipo especificado                                                 |
+| Prueba        | Descripción                                                          |
+| ------------- | -------------------------------------------------------------------- |
+| `defined`     | Comprueba si una variable esta definida (`isset()`)                  |
+| `divisibleby` | Comprueba si un valor es divisible por otro valor                    |
+| `empty`       | Comprueba si una variable está vacía                                 |
+| `even`        | Comprueba si un valor numérico es par                                |
+| `iterable`    | Checks if a value is iterable. Can be traversed by a 'for' statement |
+| `numeric`     | Comprueba si el valor es numérico                                    |
+| `odd`         | Comprueba si un valor numérico es impar                              |
+| `sameas`      | Comprueba si un valor es idéntico a otro valor                       |
+| `scalar`      | Comprueba si el valor es escalar (no una matriz, objeto o recurso)   |
+| `type`        | Comprueba si un valor es del tipo especificado                       |
 
 More examples:
 
