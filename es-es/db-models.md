@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='working-with'></a>
 
@@ -12,7 +14,7 @@ layout: article language: 'en' version: '4.0'
 
 Un modelo representa la información (datos) de la aplicación y las reglas para manipular estos datos. Los modelos se utilizan principalmente para gestionar las reglas de interacción con una tabla de base de datos correspondiente. En la mayoría de los casos, cada tabla de la base de datos corresponderá a un modelo en su aplicación. La mayor parte de la lógica de negocio de su aplicación se concentrará en los modelos.
 
-[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. Proporciona independencia de base de datos, funcionalidades básicas de CRUD (Crear Leer Actualizar Eliminar, por sus siglas en inglés), capacidades de búsqueda avanzadas y la capacidad para crear relaciones con otros modelos, entre otros servicios. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
 
 <h5 class='alert alert-warning'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the <a href="api/Phalcon_Db">Phalcon\Db</a> component documentation.</h5>
 
@@ -37,7 +39,7 @@ class RobotParts extends Model
 
 <h5 class='alert alert-warning'>If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation. </h5>
 
-Por defecto, el modelo `Store\Toys\RobotParts` se asigna a la tabla `robot_parts`. Si desea especificar manualmente otro nombre para la tabla asignada, puede utilizar el método `setSource()`:
+By default, the model `Store\Toys\RobotParts` will map to the table `robot_parts`. If you want to manually specify another name for the mapped table, you can use the `setSource()` method:
 
 ```php
 <?php
@@ -55,9 +57,9 @@ class RobotParts extends Model
 }
 ```
 
-El modelo `RobotParts` ahora se mapea de la tabla `toys_robot_parts`. El método `initialize()` ayuda a configurar este modelo con un comportamiento personalizado, por ejemplo una tabla diferente.
+The model `RobotParts` now maps to `toys_robot_parts` table. The `initialize()` method helps with setting up this model with a custom behavior i.e. a different table.
 
-El método `initialize()` se llama sólo una vez durante la solicitud. Este método pretende realizar inicializaciones que se aplican para todas las instancias del modelo creado dentro de la aplicación. Si desea realizar tareas de inicialización para cada instancia creada del modelo puede usar el método `onConstruct()`:
+The `initialize()` method is only called once during the request. This method is intended to perform initializations that apply for all instances of the model created within the application. If you want to perform initialization tasks for every instance created you can use the `onConstruct()` method:
 
 ```php
 <?php
@@ -79,7 +81,7 @@ class RobotParts extends Model
 
 ### Propiedades públicas vs Setters / Getters
 
-Los modelos pueden ser implementados con propiedades públicas, lo que significa que cada propiedad puede ser leída y actualizada desde cualquier parte del código que ha instanciado esa clase de modelo:
+Models can be implemented public properties, meaning that each property can be read/updated from any part of the code that has instantiated that model class:
 
 ```php
 <?php
@@ -98,7 +100,7 @@ class Robots extends Model
 }
 ```
 
-Otra implementación es usar las funciones getters y setter, que controlan las propiedades que están públicamente disponibles para ese modelo. El beneficio de la utilización de setters y getters es que el desarrollador puede realizar transformaciones y validaciones en los valores para el modelo, lo cual es imposible tratándose de propiedades públicas. Además getters y setters permiten futuros cambios sin cambiar la interfaz de la clase modelo. Así que si cambia un nombre de campo, el único cambio necesario será en la propiedad privada del modelo referido en el getter / setter relevante y en ninguna otra parte del código.
+Another implementation is to use getters and setter functions, which control which properties are publicly available for that model. The benefit of using getters and setters is that the developer can perform transformations and validation checks on the values set for the model, which is impossible when using public properties. Additionally getters and setters allow for future changes without changing the interface of the model class. So if a field name changes, the only change needed will be in the private property of the model referenced in the relevant getter/setter and nowhere else in the code.
 
 ```php
 <?php
@@ -158,17 +160,17 @@ class Robots extends Model
 }
 ```
 
-Las propiedades públicas proporcionan menor complejidad en el desarrollo. Sin embargo los getters/setters puede aumentar fuertemente la testabilidad, extensibilidad y mantenimiento de aplicaciones. Los desarrolladores pueden decidir qué estrategia es más apropiada para la aplicación que va a crear, dependiendo de las necesidades de la aplicación. El ORM es compatible con ambos esquemas de definición de propiedades.
+Public properties provide less complexity in development. However getters/setters can heavily increase the testability, extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the application they are creating, depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
 
 <h5 class='alert alert-warning'>Underscores in property names can be problematic when using getters and setters. </h5>
 
-Si utilizas guiones bajos en los nombres de sus propiedades, deberá utilizar camel case en las declaraciones de getter/setter para poder usar los métodos mágicos. (p. ej. `$model->getPropertyName` en lugar de `$model->getProperty_name`, `$model->findByPropertyName` en lugar de `$model->findByProperty_name`, etcétera.). Como gran parte del sistema espera el uso de camel case, y los guiones bajos se quitan, es aconsejable nombrar sus propiedades en la forma que se muestra a través de la documentación. Puede utilizar un mapa de columna (como se describe anteriormente) para asegurar la correcta asignación de sus propiedades a sus contrapartes de la base de datos.
+If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName` instead of `$model->findByProperty_name`, etc.). As much of the system expects camel case, and underscores are commonly removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a column map (as described above) to ensure proper mapping of your properties to their database counterparts.
 
 <a name='records-to-objects'></a>
 
 ## Comprensión de Registros a Objetos
 
-Cada instancia de un modelo representa una fila en la tabla. Usted puede fácilmente acceder a datos del registro leyendo las propiedades del objeto. Por ejemplo, para una tabla de 'robots' con los siguientes registros:
+Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
 
 ```sql
 mysql> select * from robots;
@@ -182,7 +184,7 @@ mysql> select * from robots;
 3 rows in set (0.00 sec)
 ```
 
-Podría encontrar cierto registro por su clave primaria y luego imprimir su nombre:
+You could find a certain record by its primary key and then print its name:
 
 ```php
 <?php
@@ -325,7 +327,7 @@ Las opciones disponibles de consulta son:
 | `cache`       | Almacenar en caché el conjunto de resultados, reduciendo el acceso continuo al sistema relacional                                                                                                                                                   | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
 | `hydration`   | Establece la estrategia de hidratación para representar cada registro devuelto en el resultado                                                                                                                                                      | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
-Si lo prefiere, también hay disponible una manera de crear consultas de una manera orientada a objetos, en lugar de utilizar un array de parámetros:
+If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
 
 ```php
 <?php
@@ -342,9 +344,9 @@ $robots = Robots::query()
 
 The static method `query()` returns a [Phalcon\Mvc\Model\Criteria](api/Phalcon_Mvc_Model_Criteria) object that is friendly with IDE autocompleters.
 
-All the queries are internally handled as [PHQL](/4.0/en/db-phql) queries. PHQL es un lenguaje de alto nivel, orientado a objetos y similar a SQL. Este lenguaje le proporciona más características para realizar consultas como unir otros modelos, definir grupos, agregar agregaciones, etcétera.
+All the queries are internally handled as [PHQL](/4.0/en/db-phql) queries. PHQL is a high-level, object-oriented and SQL-like language. This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
 
-Por último, el método `findFirstBy<nombre de la propiedad>()`. Este método amplía al método `findFirst()` mencionado anteriormente. Le permite realizar rápidamente una recuperación de una tabla utilizando el nombre de la propiedad en el método en sí mismo y se pasa un parámetro que contiene los datos que desea buscar en la columna. Veamos un ejemplo, tomando el modelo de Robots visto anteriormente:
+Lastly, there is the `findFirstBy<property-name>()` method. This method expands on the `findFirst()` method mentioned earlier. It allows you to quickly perform a retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column. An example is in order, so taking our Robots model mentioned earlier:
 
 ```php
 <?php
@@ -363,7 +365,7 @@ class Robots extends Model
 }
 ```
 
-Tenemos tres propiedades a trabajar aquí: `$id`, `$name` y `$price`. Entonces supongamos que deseamos recuperar el primer registro en la tabla con el nombre de 'Terminator'. Esto podría escribirse como:
+We have three properties to work with here: `$id`, `$name` and `$price`. So, let's say you want to retrieve the first record in the table with the name 'Terminator'. This could be written like:
 
 ```php
 <?php
@@ -381,15 +383,15 @@ if ($robot) {
 }
 ```
 
-Tenga en cuenta que se utilizó 'Name' en el método y se paso la variable `$name`, que contiene el nombre que buscamos en nuestra tabla. Observe también que cuando encontramos una coincidencia con nuestra consulta, todas las otras propiedades también están disponibles para nosotros.
+Notice that we used 'Name' in the method call and passed the variable `$name` to it, which contains the name we are looking for in our table. Notice also that when we find a match with our query, all the other properties are available to us as well.
 
 <a name='resultsets'></a>
 
 ### Conjuntos de resultados
 
-While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). Se trata de un objeto que encapsula toda la funcionalidad que un conjunto de resultados, como recorrer los registros, buscar registros específicos, contar, etcétera.
+While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
 
-Estos objetos son más poderosos que los array regulares. One of the greatest features of the [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset) is that at any time there is only one record in memory. Esto ayuda enormemente en la gestión de memoria especialmente cuando se trabaja con grandes cantidades de datos.
+These objects are more powerful than standard arrays. One of the greatest features of the [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset) is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
 
 ```php
 <?php
@@ -441,11 +443,11 @@ $robot = $robots->getFirst();
 $robot = $robots->getLast();
 ```
 
-Los conjuntos de resultados o Resultset de Phalcon emulan cursores desplazables, usted puede conseguir cualquier fila sólo por acceder a su posición, o moviendo el puntero interno a una posición específica. Tenga en cuenta que algunos sistemas de base de datos no soportan cursores desplazables, Esto obliga a volver a ejecutar la consulta para retroceder el cursor hasta el principio y obtener el registro en la posición solicitada. Del mismo modo, si un resultado es recorrido varias veces, la consulta debe ser ejecutada el mismo número de veces.
+Phalcon's resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
 
-Como almacenar resultados de grandes consultas en la memoria podrían consumir muchos recursos, los conjuntos de resultados se obtienen de la base de datos en fragmentos de 32 filas para reducir la necesidad de volver a ejecutar la solicitud en demasiadas ocasiones.
+As storing large query results in memory could consume many resources, resultsets are obtained from the database in chunks of 32 rows - reducing the need to re-execute the request in several cases.
 
-Tenga en cuenta que los conjuntos de resultados pueden ser serializados y almacenados en caché. [Phalcon\Cache](api/Phalcon_Cache) can help with that task. However, serializing data causes [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
+Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache](api/Phalcon_Cache) can help with that task. However, serializing data causes [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
 
 ```php
 <?php
@@ -474,11 +476,11 @@ foreach ($parts as $part) {
 
 ### Conjuntos de resultados personalizados
 
-Hay veces que la lógica de la aplicación requiere manipulación adicional de los datos que se recupera de la base de datos. Anteriormente, extenderiamos el modelo y encapsulariamos la funcionalidad en una clase del modelo o de un trait, regresando a la llama, generalmente, un array con los datos transformados.
+There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning back to the caller usually an array of transformed data.
 
-Con los conjuntos de resultados personalizados, no es necesario seguir haciendo este trabajo. El conjunto de resultados personalizado encapsulará la funcionalidad que de otro modo estaría en el modelo y puede ser reutilizado por otros modelos, manteniendo así el código [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). This way, the `find()` method will no longer return the default [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset), but instead the custom one. Phalcon permite hacer esto mediante el uso de la función `getResultsetClass()` en el modelo.
+With custom resultsets, you no longer need to do that. The custom resultset will encapsulate the functionality that otherwise would be in the model and can be reused by other models, thus keeping the code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). This way, the `find()` method will no longer return the default [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset), but instead the custom one. Phalcon allows you to do this by using the `getResultsetClass()` in your model.
 
-Primero tenemos que definir la clase resultset:
+First we need to define the resultset class:
 
 ```php
 <?php
@@ -495,7 +497,7 @@ class Custom extends Simple
 }
 ```
 
-En el modelo, configuramos la clase en el `getResultsetClass()` de la siguiente manera:
+In the model, we set the class in the `getResultsetClass()` as follows:
 
 ```php
 <?php
@@ -518,7 +520,7 @@ class Robots extends Model
 }
 ```
 
-y finalmente en el código tenemos algo como esto:
+and finally in your code you will have something like this:
 
 ```php
 <?php
@@ -543,7 +545,7 @@ $this->view->mydata = $robots->getSomeData();
 
 ### Filtrar Conjuntos de Resultados
 
-La manera más eficiente para filtrar datos es establecer algunos criterios de búsqueda, las bases de datos utilizan índices en las tablas para devolver los datos más rápidamente. Phalcon además permite filtrar los datos mediante PHP usando cualquier recurso que no está disponible en la base de datos:
+The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
 
 ```php
 <?php
@@ -564,7 +566,7 @@ $customers = $customers->filter(
 
 ### Enlazando parámetros
 
-Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). Recomendamos utilizar esta metodología con el fin de eliminar la posibilidad de que su código sea vulnerable a ataques de inyección SQL. Se admiten dos tipos de marcadores: por nombre o numérico. El enlazado de parámetros se hace simplemente de la siguiente manera:
+Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. El enlazado de parámetros se hace simplemente de la siguiente manera:
 
 ```php
 <?php
@@ -607,11 +609,11 @@ $robots = Robots::find(
 );
 ```
 
-Cuando se utilizan a marcadores numéricos, Ud. necesita definirlos como enteros es decir, `1` o `2`. En este caso `'1'` o `'2'` son considerados como cadenas de texto y no como números, por lo que el marcador de posición no podría sustituirse con éxito.
+When using numeric placeholders, you will need to define them as integers i.e. `1` or `2`. In this case `'1'` or `'2'` are considered strings and not numbers, so the placeholder could not be successfully replaced.
 
-Strings are automatically escaped using [PDO](https://php.net/manual/en/pdo.prepared-statements.php). Esta función tiene en cuenta el conjunto de caracteres de conexión, por lo que se recomienda definir el conjunto de caracteres correcto en los parámetros de conexión o en la configuración de la base de datos, un conjunto de caracteres incorrecto producirá efectos no deseados al almacenar o recuperar datos.
+Strings are automatically escaped using [PDO](https://php.net/manual/en/pdo.prepared-statements.php). This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
 
-Además puede establecer el parámetro `bindTypes`, este permite definir cómo los parámetros deben regirse según su tipo de datos:
+Additionally you can set the parameter `bindTypes`, this allows defining how the parameters should be bound according to its data type:
 
 ```php
 <?php
@@ -643,7 +645,7 @@ $robots = Robots::find(
 
 <h5 class='alert alert-warning'>Since the default bind-type is <code>Phalcon\Db\Column::BIND_PARAM_STR</code>, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.</h5>
 
-Si vincula arrays en parámetros enlazados, tenga en cuenta que las claves deben numerarse desde cero:
+If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
 
 ```php
 <?php
@@ -669,7 +671,7 @@ $robots = Robots::find(
 
 <h5 class='alert alert-warning'>Bound parameters are available for all query methods such as <code>find()</code> and <code>findFirst()</code> but also the calculation methods like <code>count()</code>, <code>sum()</code>, <code>average()</code> etc. </h5>
 
-Si está utilizando los "buscadores", por ejemplo `find()`, `findFirst()`, etc., los parámetros enlazados se usan automáticamente:
+If you're using "finders" e.g. `find()`, `findFirst()`, etc., bound parameters are automatically used:
 
 ```php
 <?php
@@ -694,7 +696,7 @@ $robots = Robots::findByName('Ultron');
 
 ## Inicializando y preparando registros obtenidos
 
-Puede ser el caso que después de obtener un registro de la base de datos sea necesario inicializar los datos, antes de ser utilizados por la aplicación. Puede implementar el método `afterFetch()` en un modelo, este evento se ejecutará justo después de crear la instancia y asignarle los datos:
+May be the case that after obtaining a record from the database is necessary to initialise the data before being used by the rest of the application. You can implement the `afterFetch()` method in a model, this event will be executed just after create the instance and assign the data to it:
 
 ```php
 <?php
@@ -731,7 +733,7 @@ class Robots extends Model
 }
 ```
 
-Si utilizas getters/setters en vez de propiedades públicas, puede inicializar el campo una vez que se accede:
+If you use getters/setters instead of/or together with public properties, you can initialize the field once it is accessed:
 
 ```php
 <?php
@@ -759,9 +761,9 @@ class Robots extends Model
 
 ## Generando Cálculos
 
-Los cálculos (o agregados) son funciones de ayuda comúnmente utilizadas por sistemas de bases de datos tales como `COUNT`, `SUM`, `MAX`, `MIN` o `AVG`. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) allows to use these functions directly from the exposed methods.
+Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) allows to use these functions directly from the exposed methods.
 
-Ejemplos de COUNT:
+Count examples:
 
 ```php
 <?php
@@ -810,7 +812,7 @@ $group = Employees::count(
 );
 ```
 
-Ejemplos de SUM:
+Sum examples:
 
 ```php
 <?php
@@ -861,7 +863,7 @@ $group = Employees::sum(
 );
 ```
 
-Ejemplos de AVERAGE:
+Average examples:
 
 ```php
 <?php
@@ -893,7 +895,7 @@ $average = Employees::average(
 );
 ```
 
-Ejemplos MIN/MAX:
+Max/Min examples:
 
 ```php
 <?php
@@ -925,9 +927,9 @@ $salary = Employees::minimum(
 
 ## Crear/Actualizar Registros
 
-El método `Phalcon\Mvc\Model::save()` le permite crear o actualizar registros, según sea si ya existen en la tabla asociada al modelo o no. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). Para que funcione como se espera, es necesario haber definido correctamente una clave primaria en la entidad para determinar si un registro debe ser actualizado o creado.
+The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
 
-El método también ejecutará los validadores asociados, claves externas virtuales y eventos que se definen en el modelo:
+Also the method executes associated validators, virtual foreign keys and events that are defined in the model:
 
 ```php
 <?php
@@ -953,7 +955,7 @@ if ($robot->save() === false) {
 }
 ```
 
-Se puede pasar un array al método `save` para evitar asignar cada columna manualmente. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) will check if there are setters implemented for the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
+An array could be passed to `save` to avoid assign every column manually. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) will check if there are setters implemented for the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
 
 ```php
 <?php
@@ -971,7 +973,7 @@ $robot->save(
 );
 ```
 
-Los valores se asignan directamente o a través del array de atributos, se escapan/sanitizan según el tipo de datos relacionados con atributo. Por lo que puede pasar un array inseguro sin preocuparse de posibles inyecciones de SQL:
+Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass an insecure array without worrying about possible SQL injections:
 
 ```php
 <?php
@@ -985,7 +987,7 @@ $robot->save($_POST);
 
 <h5 class='alert alert-warning'>Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form. </h5>
 
-Además usted puede establecer un parámetro adicional en `save` para definir una lista blanca de campos que pueden ser tenidos en cuenta al hacer la asignación en masa:
+You can set an additional parameter in `save` to set a whitelist of fields that only must taken into account when doing the mass assignment:
 
 ```php
 <?php
@@ -1007,7 +1009,7 @@ $robot->save(
 
 ### Crear/actualizar con confianza
 
-Cuando una aplicación tiene mucha competencia, nosotros podríamos estar esperando crear un registro pero realmente estamos actualizadolo. Esto podría ocurrir si usamos `Phalcon\Mvc\Model::save()` para conservar los registros de la base de datos. Si queremos estar absolutamente seguros que se ha creado o actualizado un registro, podemos cambiar el uso de la función `save()` por `create()` o `update()`:
+When an application has a lot of competition, we could be expecting create a record but it is actually updated. This could happen if we use `Phalcon\Mvc\Model::save()` to persist the records in the database. If we want to be absolutely sure that a record is created or updated, we can change the `save()` call with `create()` or `update()`:
 
 ```php
 <?php
@@ -1034,13 +1036,13 @@ if ($robot->create() === false) {
 }
 ```
 
-Los métodos de `create` y `update` también aceptan un array de valores como parámetro.
+The methods `create` and `update` also accept an array of values as parameter.
 
 <a name='delete-records'></a>
 
 ## Eliminar Registros
 
-El método `Phalcon\Mvc\Model::delete()` permite eliminar un registro. Se puede utilizar de la siguiente manera:
+The `Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
 
 ```php
 <?php
@@ -1064,7 +1066,7 @@ if ($robot !== false) {
 }
 ```
 
-También puede eliminar muchos registro recorriendo un conjunto de resultados con un `foreach`:
+You can also delete many records by traversing a resultset with a `foreach`:
 
 ```php
 <?php
@@ -1097,7 +1099,7 @@ Los siguientes eventos están disponibles para definir reglas de negocios person
 | Deleting  | afterDelete  |           No           | Se ejecuta después de la operación de eliminación |
 | Deleting  | beforeDelete |           Si           | Se ejecuta antes de la operación de eliminación   |
 
-Con los eventos antes mencionados también se pueden definir reglas de negocio en los modelos:
+With the above events can also define business rules in the models:
 
 ```php
 <?php
@@ -1125,7 +1127,7 @@ class Robots extends Model
 
 ## Modos de hidratación
 
-Como se mencionó anteriormente, los conjuntos de resultados son colecciones de objetos completos, esto significa que cada resultado devuelto es un objeto que representa una fila en la base de datos. Estos objetos pueden ser modificados y guardados otra vez para persistir:
+As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object representing a row in the database. These objects can be modified and saved again to persistence:
 
 ```php
 <?php
@@ -1142,7 +1144,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-A veces se obtienen registros sólo para ser presentados a un usuario en modo de sólo lectura, en estos casos puede ser útil cambiar la forma en que están representados los registros para facilitar su manejo. La estrategia utilizada para representar objetos en un conjunto de resultados se llama 'modo de hidratación' o 'hydration mode':
+Sometimes records are obtained only to be presented to a user in read-only mode, in these cases it may be useful to change the way in which records are represented to facilitate their handling. The strategy used to represent objects returned in a resultset is called 'hydration mode':
 
 ```php
 <?php
@@ -1180,7 +1182,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-El modo de hidratación también puede ser pasado como un parámetro de `find`:
+Hydration mode can also be passed as a parameter of `find`:
 
 ```php
 <?php
@@ -1203,7 +1205,7 @@ foreach ($robots as $robot) {
 
 ## Prefijos de Tablas
 
-Si desea que todas sus tablas tengan cierto prefijo sin configurarlo en todos los modelos, se puede utilizar el `Phalcon\Mvc\Model\Manager` y el método `setModelPrefix()`:
+If you want all your tables to have certain prefix and without setting source in all models you can use the `Phalcon\Mvc\Model\Manager` and the method `setModelPrefix()`:
 
 ```php
 <?php
@@ -1226,7 +1228,7 @@ echo $robots->getSource(); // regresará wp_robots
 
 ## Columnas de identidad auto generadas
 
-Algunos modelos pueden tener columnas de identidad. Estas columnas suelen ser la clave primaria de la tabla asignada. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Siempre después de la creación de un registro, se registrará el valor generado por el sistema de base de datos para el campo de identidad:
+Some models may have identity columns. These columns usually are the primary key of the mapped table. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
 
 ```php
 <?php
@@ -1236,9 +1238,9 @@ $robot->save();
 echo 'El ID generado es: ', $robot->id;
 ```
 
-[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is able to recognize the identity column. Dependiendo del sistema de base de datos, las columnas pueden ser columnas seriales como en PostgreSQL o columnas auto_increment en MySQL.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is able to recognize the identity column. Depending on the database system, those columns may be serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
 
-PostgreSQL utiliza secuencias para generar valores auto-numeric, por defecto, Phalcon intenta obtener el valor generado de la secuencia `table_field_seq`, por ejemplo: `robots_id_seq`, si esa secuencia tiene un nombre diferente, el método ` getSequenceName()` debe aplicarse:
+PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence `table_field_seq`, for example: `robots_id_seq`, if that sequence has a different name, the `getSequenceName()` method needs to be implemented:
 
 ```php
 <?php
@@ -1298,7 +1300,7 @@ class Robots extends Model
 }
 ```
 
-Esto omitirá globalmente estos campos en cada operación de `INSERT`/`UPDATE` en la aplicación. Si quiere ignorar diferentes atributos en diferentes operaciones de `INSERT`/`UPDATE` puede especificar un segundo parámetro (boolean) - `true` para el reemplazo. Forzando un valor por defecto se puede hacer de la siguiente manera:
+This will ignore globally these fields on each `INSERT`/`UPDATE` operation on the whole application. If you want to ignore different attributes on different `INSERT`/`UPDATE` operations, you can specify the second parameter (boolean) - `true` for replacement. Forcing a default value can be done as follows:
 
 ```php
 <?php
@@ -1316,7 +1318,7 @@ $robot->created_at = new RawValue('default');
 $robot->create();
 ```
 
-Un callback también puede ser utilizado para crear una asignación condicional de valores por defecto:
+A callback also can be used to create a conditional assignment of automatic default values:
 
 ```php
 <?php
@@ -1343,9 +1345,9 @@ class Robots extends Model
 
 ## Actualización Dinámica
 
-Las instrucciones de `UPDATE` en SQL son creadas, por defecto, con todas las columnas definidas en el modelo (actualización completa de filas utilizando todos los campos). Usted puede especificar que modelos pueden realizar actualizaciones dinámicas, en este caso, sólo los campos que habían cambiado se utilizan para crear la instrucción SQL final.
+SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
 
-En algunos casos esto podría mejorar el rendimiento al reducir el tráfico entre la aplicación y el servidor de base de datos, esto ayuda especialmente cuando la tabla tiene campos blob o text:
+In some cases this could improve the performance by reducing the traffic between the application and the database server, this specially helps when the table has blob/text fields:
 
 ```php
 <?php
@@ -1367,7 +1369,7 @@ class Robots extends Model
 
 ## Mapeo de columnas independiente
 
-ORM soporta mapas de columnas independientes, lo que permite al desarrollador utilizar nombres de columnas diferentes en el modelo a los de la tabla. Phalcon reconocerá los nuevos nombres de columna y renombrará en consecuencia para que coincida con las respectivas columnas de la base de datos. Esta es una gran característica cuando uno necesita cambiar el nombre de campos en la base de datos sin tener que preocuparse por todas las consultas en el código. Un cambio en el mapa de columnas y el modelo se encargará del resto. Por ejemplo:
+The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. Por ejemplo:
 
 ```php
 <?php
@@ -1400,7 +1402,7 @@ class Robots extends Model
 }
 ```
 
-Naturalmente puede utilizar los nuevos nombres en el código:
+Then you can use the new names naturally in your code:
 
 ```php
 <?php
@@ -1436,12 +1438,12 @@ $robot->theYear = 2999;
 $robot->save();
 ```
 
-Considere lo siguiente al renombrar sus columnas:
+Consider the following when renaming your columns:
 
 * Referencias a atributos en relaciones/validadores deben utilizar los nuevos nombres
 * Hacer referencia a nombres de columna reales resultará en una excepción por el ORM
 
-El mapa de columnas independiente le permite:
+The independent column map allows you to:
 
 * Escribir aplicaciones que utilizan sus propios convenciones
 * Eliminar prefijos/sufijos del proveedor en tu código
@@ -1451,7 +1453,7 @@ El mapa de columnas independiente le permite:
 
 ## Instantáneas de registros
 
-Modelos específicos pueden establecer para mantener una instantánea del registro cuando se consultan. Puede utilizar esta función para implementar la auditorias o simplemente para saber qué campos se cambian según los datos consultados de la persistencia:
+Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what fields are changed according to the data queried from the persistence:
 
 ```php
 <?php
@@ -1469,7 +1471,7 @@ class Robots extends Model
 }
 ```
 
-Al activar esta función la aplicación consume un poco más de memoria para mantener los valores originales de la persistencia. En los modelos que tienen esta característica activada puede comprobar qué campos se modifican de la siguiente manera:
+When activating this feature the application consumes a bit more of memory to keep track of the original values obtained from the persistence. In models that have this feature activated you can check what fields changed as follows:
 
 ```php
 <?php
@@ -1489,9 +1491,9 @@ var_dump($robot->hasChanged('name')); // true
 var_dump($robot->hasChanged('type')); // false
 ```
 
-Las instantáneas son actualizadas en la creación/actualización del modelo. Utilizando `hasUpdated()` y `getUpdatedFields()` se puede comprobar si los campos se actualizaron después de un crear, guardar o actualizar, pero potencialmente podría causar problemas para su aplicación si ejecuta `getChangedFields()` en `afterUpdate()`, `afterSave()` o `afterCreate()`.
+Snapshots are updated on model creation/update. Using `hasUpdated()` and `getUpdatedFields()` can be used to check if fields were updated after a create/save/update but it could potentially cause problems to your application if you execute `getChangedFields()` in `afterUpdate()`, `afterSave()` or `afterCreate()`.
 
-Puede desactivar esta funcionalidad mediante el uso de:
+You can disable this functionality by using:
 
 ```php
 Phalcon\Mvc\Model::setup(
@@ -1501,13 +1503,13 @@ Phalcon\Mvc\Model::setup(
 );
 ```
 
-o si prefiere en su `php.ini`
+or if you prefer set this in your `php.ini`
 
 ```ini
 phalcon.orm.update_snapshot_on_save = 0
 ```
 
-Utilizando esta funcionalidad tendrá el siguiente efecto:
+Using this functionality will have the following effect:
 
 ```php
 <?php
@@ -1545,13 +1547,13 @@ array(0) {
 }
 ```
 
-`getUpdatedFields()` devolverá debidamente los campos actualizados o como mencionamos anteriormente usted puede volver al comportamiento anterior estableciendo el valor ini pertinente.
+`getUpdatedFields()` will properly return updated fields or as mentioned above you can go back to the previous behavior by setting the relevant ini value.
 
 <a name='different-schemas'></a>
 
 ## Apuntando a un esquema diferente
 
-Si un modelo se asigna a una tabla en un esquema/bases de datos distintas a la predeterminada. Puede utilizar el método `setSchema()` para redefinirlo:
+If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
 
 ```php
 <?php
@@ -1573,7 +1575,7 @@ class Robots extends Model
 
 ## Configuración de Múltiples Bases de Datos
 
-En Phalcon, todos los modelos pueden pertenecer a la misma conexión de base de datos o tener una individual. Actually, when [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) needs to connect to the database it requests the `db` service in the application's services container. Usted puede sobrescribir este servicio configurándolo en el método `initialize()`:
+In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) needs to connect to the database it requests the `db` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
 
 ```php
 <?php
@@ -1630,7 +1632,7 @@ class Robots extends Model
 }
 ```
 
-Pero Phalcon le ofrece más flexibilidad, puede definir la conexión que debe utilizar para `read` y para `write`. Esto es especialmente útil para balancear la carga a sus bases de datos implementando de una arquitectura master-slave:
+But Phalcon offers you more flexibility, you can define the connection that must be used to `read` and for `write`. This is specially useful to balance the load to your databases implementing a master-slave architecture:
 
 ```php
 <?php
@@ -1650,7 +1652,7 @@ class Robots extends Model
 }
 ```
 
-El ORM también proporciona instalaciones de Sharding Horizontal, por lo que le permite implementar una selección de 'fragmentos' según las condiciones actuales de la consulta:
+The ORM also provides Horizontal Sharding facilities, by allowing you to implement a 'shard' selection according to the current query conditions:
 
 ```php
 <?php
@@ -1694,7 +1696,7 @@ class Robots extends Model
 }
 ```
 
-El método `selectReadConnection()` es utilizado para elegir la conexión correcta, este método intercepta cualquier consulta nueva ejecutada:
+The `selectReadConnection()` method is called to choose the right connection, this method intercepts any new query executed:
 
 ```php
 <?php
@@ -1734,13 +1736,13 @@ class Robots extends Model
 }
 ```
 
-El evento `notSaved` se desencadena cada vez que falla una acción de `create` o `update`. Así que estamos mostrando los mensajes de validación obteniendo el servicio `flash` del contenedor DI. Haciendo esto, no tenemos que imprimir los mensajes después de cada save.
+The `notSaved` event is triggered every time that a `create` or `update` action fails. So we're flashing the validation messages obtaining the `flash` service from the DI container. By doing this, we don't have to print messages after each save.
 
 <a name='disabling-enabling-features'></a>
 
 ## Deshabilitar/habilitar características
 
-En el ORM se ha implementado un mecanismo que permite activar o desactivar opciones globalmente sobre la marcha o características específicas. Según cómo utilice el ORM puede deshabilitar lo que usted no está usando. Estas opciones también pueden ser temporalmente desactivadas si es necesario:
+In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly. According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
 
 ```php
 <?php
@@ -1755,7 +1757,7 @@ Model::setup(
 );
 ```
 
-Las opciones disponibles son:
+The available options are:
 
 | Opción                | Descripción                                                                                    | Predeterminado |
 | --------------------- | ---------------------------------------------------------------------------------------------- |:--------------:|
