@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\Request\File'
 
 # Class **Phalcon\Http\Request\File**
 
-*implements* [Phalcon\Http\Request\FileInterface](/4.0/en/api/Phalcon_Http_Request_FileInterface)
+*implements* [Phalcon\Http\Request\FileInterface](Phalcon_Http_Request_FileInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/request/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
