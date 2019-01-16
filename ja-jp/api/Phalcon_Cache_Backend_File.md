@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\File'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Backend\File'
+---
 # Class **Phalcon\Cache\Backend\File**
 
 *extends* abstract class [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
@@ -130,7 +130,7 @@ public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-キャッシュを開始します。このkeynameは作成したフラグメントの特定に使用できます。
+キャッシュを開始します。 このkeynameは作成したフラグメントの特定に使用できます。
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
