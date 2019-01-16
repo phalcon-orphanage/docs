@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -72,7 +71,7 @@ use Phalcon\Config\Adapter\Ini as ConfigIni;
 
 // ...
 
-// 設定の読み込み
+// Read the configuration
 $config = new ConfigIni(
     APP_PATH . 'app/config/config.ini'
 );
@@ -110,7 +109,7 @@ The second part that appears in the bootstrap file (`public/index.php`) is the a
 <?php
 
 /**
- * オートローダーの設定
+ * Auto-loader configuration
  */
 require APP_PATH . 'app/config/loader.php';
 ```
@@ -159,7 +158,7 @@ Another file that is required in the bootstrap is (`app/config/services.php`). T
 <?php
 
 /**
- * アプリケーションのサービスを登録
+ * Load application services
  */
 require APP_PATH . 'app/config/services.php';
 ```
@@ -253,8 +252,8 @@ use Phalcon\Di\FactoryDefault;
 
 // ...
 
-// FactoryDefault Dependency Injectorは、フルスタックフレームワークを提供するのに
-// 最適なサービスを、自動的に登録します
+// The FactoryDefault Dependency Injector automatically registers the
+// right services providing a full-stack framework
 $di = new FactoryDefault();
 ```
 
