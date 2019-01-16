@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -12,9 +14,9 @@ layout: article language: 'en' version: '4.0'
 
 ![](/assets/images/content/xdebug-1.jpg)
 
-PHP ofrece herramientas para depurar aplicaciones con avisos, advertencias, errores y excepciones. The [Exception class](https://www.php.net/manual/en/language.exceptions.php) offers information such as the file, line, message, numeric code, backtrace etc. en donde se produjo un error. Los frameworks orientados a objetos como Phalcon principalmente utilizan esta clase para encapsular esta funcionalidad y proporcionar información al desarrollador o el usuario.
+PHP offers tools to debug applications with notices, warnings, errors and exceptions. The [Exception class](https://www.php.net/manual/en/language.exceptions.php) offers information such as the file, line, message, numeric code, backtrace etc. on where an error occurred. OOP frameworks like Phalcon mainly use this class to encapsulate this functionality and provide information back to the developer or user.
 
-A pesar de estar escrito en C, que Phalcon ejecuta métodos en el espacio de usuario de PHP, proporcionando la capacidad de depuración al igual que cualquier otra aplicación o framework escrito en PHP.
+Despite being written in C, Phalcon executes methods in the PHP userland, providing the debug capability that any other application or framework written in PHP has.
 
 <a name='catching-exceptions'></a>
 
