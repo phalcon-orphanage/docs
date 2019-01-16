@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -457,14 +456,14 @@ $cache->save('my-key', $data);
 
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
-| アダプター                                                                     | Description                                                                                      |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| [Phalcon\Cache\Frontend\Output](api/Phalcon_Cache_Frontend_Output)     | 標準のPHP出力から入力データを読み込みます。                                                                          |
-| [Phalcon\Cache\Frontend\Data](api/Phalcon_Cache_Frontend_Data)         | あらゆる種類のPHPデータ（大きな配列、オブジェクト、テキストなど）をキャッシュするために使用されます。 データは、バックエンドに格納される前にシリアル化されます。               |
-| [Phalcon\Cache\Frontend\Base64](api/Phalcon_Cache_Frontend_Base64)     | バイナリデータをキャッシュするために使用されます。 データは、バックエンドに格納される前に`base64_encode`を使用してシリアル化されます。                      |
-| [Phalcon\Cache\Frontend\Json](api/Phalcon_Cache_Frontend_Json)         | データはバックエンドに格納される前にJSONでエンコードされます。 検索後にデコードされます。 このフロントエンドは、他の言語やフレームワークとデータを共有するのに便利です。          |
-| [Phalcon\Cache\Frontend\Igbinary](api/Phalcon_Cache_Frontend_Igbinary) | あらゆる種類のPHPデータ（大きな配列、オブジェクト、テキストなど）をキャッシュするために使用されます。 データはバックエンドに格納される前に`Igbinary`を使用してシリアル化されます。 |
-| [Phalcon\Cache\Frontend\None](api/Phalcon_Cache_Frontend_None)         | あらゆる種類のPHPデータをシリアル化せずにキャッシュするために使用されます。                                                          |
+| アダプター                                                                     | Description                                                                                                                                                    |
+| ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Phalcon\Cache\Frontend\Output](api/Phalcon_Cache_Frontend_Output)     | 標準のPHP出力から入力データを読み込みます。                                                                                                                                        |
+| [Phalcon\Cache\Frontend\Data](api/Phalcon_Cache_Frontend_Data)         | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                     |
+| [Phalcon\Cache\Frontend\Base64](api/Phalcon_Cache_Frontend_Base64)     | It's used to cache binary data. The data is serialized using `base64_encode` before be stored in the backend.                                                  |
+| [Phalcon\Cache\Frontend\Json](api/Phalcon_Cache_Frontend_Json)         | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks. |
+| [Phalcon\Cache\Frontend\Igbinary](api/Phalcon_Cache_Frontend_Igbinary) | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using `Igbinary` before be stored in the backend.                 |
+| [Phalcon\Cache\Frontend\None](api/Phalcon_Cache_Frontend_None)         | あらゆる種類のPHPデータをシリアル化せずにキャッシュするために使用されます。                                                                                                                        |
 
 <a name='adapters-frontend-custom'></a>
 
