@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -285,7 +284,7 @@ $loader->setEventsManager($eventsManager);
 $loader->register();
 ```
 
-Some events when returning boolean `false` could stop the active operation. The following events are supported:
+Some events when returning boolean `false` could stop the active operation. 以下事件被支持︰
 
 | 事件名称               | 触发器                                                                                                                 | 可以停止操作吗？ |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------- | -------- |
