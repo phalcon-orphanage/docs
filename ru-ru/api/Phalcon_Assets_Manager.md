@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Assets\Manager'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Assets\Manager'
+---
 # Class **Phalcon\Assets\Manager**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/manager.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
