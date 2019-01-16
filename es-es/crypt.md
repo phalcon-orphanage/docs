@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -12,9 +14,9 @@ layout: article language: 'en' version: '4.0'
 
 Phalcon provides encryption facilities via the [Phalcon\Crypt](api/Phalcon_Crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
-De forma predeterminada, este componente proporciona cifrado seguro utilizando AES-256-CFB.
+By default, this component provides secure encryption using AES-256-CFB.
 
-El algoritmo de cifrado AES-256 es utilizado entre otros en SSL/TLS a través de Internet. Se considera entre los mejores cifradores. En teoría no es manipulable ya que las combinaciones de claves son enormes. Aunque la NSA la ha categorizado en la [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography), también ha recomendado el uso de claves de encriptación de 128-bit y superiores.
+The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography), they have also recommended using higher than 128-bit keys for encryption.
 
 <h5 class='alert alert-warning'>You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
 
@@ -22,7 +24,7 @@ El algoritmo de cifrado AES-256 es utilizado entre otros en SSL/TLS a través de
 
 ## Uso básico
 
-Este componente está diseñado para ser muy fácil de usar:
+This component is designed be very simple to use:
 
 ```php
 <?php
@@ -68,7 +70,7 @@ $encrypted = $crypt->encrypt($text, $key);
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-También puede establecer el algoritmo y si se debe calcular un resumen del mensaje (firma) durante la construcción del objeto. Esto elimina la necesidad de llamar a `setCipher()` y `useSigning()`:
+You can also set the algorithm and whether to calculate a digest of the message (signing) during the object construction. This removes the need to call `setCipher()` and `useSigning()`:
 
 ```php
 <?php
@@ -114,9 +116,9 @@ foreach ($texts as $key => $text) {
 }
 ```
 
-Para mayor seguridad, puede indicar al componente que calcule un resumen del mensaje basado en uno de los algoritmos admitidos devueltos por `getAvailableHashAlgos`. Como puede verse, este algoritmo se puede establecer durante la instanciación del objecto pero también se puede establecer después.
+For better security, you can instruct the component to calculate a message digest based on one of the supported algorithms returned by `getAvailableHashAlgos`. As seen above this algorithm can be set during the object instantiation but can also be set afterwards.
 
-**NOTA** Calculando el resumen del mensajes (firma) estará activado por defecto a partir de Phalcon 4.0.0 o superior.
+**NOTE** Calculating the message digest (signing) will be enabled by default in Phalcon 4.0.0 or greater.
 
 ```php
 <?php
@@ -172,7 +174,7 @@ $text = 'Este es un texto secreto';
 echo $crypt->encrypt($text, $key);
 ```
 
-Si desea cmoprobar los algoritmos disponibles en su sistema, puede llamar al método `getAvailableHashAlgos()`.
+If you wish to check the available algorithms that your system supports you can call the `getAvailableHashAlgos()` method.
 
 ```php
 <?php
