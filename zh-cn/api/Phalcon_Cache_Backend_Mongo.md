@@ -6,9 +6,9 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\Mong
 
 # Class **Phalcon\Cache\Backend\Mongo**
 
-*extends* abstract class [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
+*extends* abstract class [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-*implements* [Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface)
+*implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/mongo.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
@@ -50,7 +50,7 @@ $data = $cache->get("my-data");
 
 ## 方法
 
-public **__construct** ([Phalcon\Cache\FrontendInterface](/4.0/en/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
+public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
 Phalcon\Cache\Backend\Mongo constructor
 
@@ -104,46 +104,46 @@ public **flush** ()
 
 Immediately invalidates all existing items.
 
-public **getFrontend** () inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
+public **getFrontend** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
 ...
 
-public **setFrontend** (*mixed* $frontend) inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
+public **setFrontend** (*mixed* $frontend) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
 ...
 
-public **getOptions** () inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
+public **getOptions** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
 ...
 
-public **setOptions** (*mixed* $options) inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
+public **setOptions** (*mixed* $options) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
 ...
 
-public **getLastKey** () inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
+public **getLastKey** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
 ...
 
-public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
+public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
 ...
 
-public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
+public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
 Starts a cache. The keyname allows to identify the created fragment
 
-public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
+public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
 Stops the frontend without store any cached content
 
-public **isFresh** () inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
+public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
 Checks whether the last cache is fresh or cached
 
-public **isStarted** () inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
+public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
 Checks whether the cache has starting buffering or not
 
-public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](/4.0/en/api/Phalcon_Cache_Backend)
+public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
 Gets the last lifetime set

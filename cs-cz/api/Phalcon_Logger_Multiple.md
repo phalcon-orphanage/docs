@@ -24,11 +24,11 @@ public **getLogLevel** ()
 
 ...
 
-public **push** ([Phalcon\Logger\AdapterInterface](/4.0/en/api/Phalcon_Logger_AdapterInterface) $logger)
+public **push** ([Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface) $logger)
 
 Pushes a logger to the logger tail
 
-public **setFormatter** ([Phalcon\Logger\FormatterInterface](/4.0/en/api/Phalcon_Logger_FormatterInterface) $formatter)
+public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 
 Sets a global formatter
 

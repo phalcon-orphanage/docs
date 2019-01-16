@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Application\Ex
 
 # Class **Phalcon\Mvc\Application\Exception**
 
-*extends* class [Phalcon\Application\Exception](/4.0/en/api/Phalcon_Application_Exception)
+*extends* class [Phalcon\Application\Exception](Phalcon_Application_Exception)
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 

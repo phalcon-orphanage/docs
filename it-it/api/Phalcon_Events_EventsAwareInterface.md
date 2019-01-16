@@ -10,7 +10,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Events\EventsAware
 
 ## Methods
 
-abstract public **setEventsManager** ([Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
+abstract public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
 ...
 

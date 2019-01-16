@@ -10,6 +10,6 @@ title: 'Phalcon\Di\ServiceProviderInterface'
 
 ## 方法
 
-abstract public **register** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $di)
+abstract public **register** ([Phalcon\DiInterface](Phalcon_DiInterface) $di)
 
 ...

@@ -6,9 +6,9 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\View'
 
 # Class **Phalcon\Mvc\View**
 
-*extends* abstract class [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+*extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/4.0/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\ViewInterface](/4.0/en/api/Phalcon_Mvc_ViewInterface), [Phalcon\Mvc\ViewBaseInterface](/4.0/en/api/Phalcon_Mvc_ViewBaseInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\ViewInterface](Phalcon_Mvc_ViewInterface), [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/view.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
@@ -266,7 +266,7 @@ protected **_loadTemplateEngines** ()
 
 Loads registered template engines, if none is registered it will use Phalcon\Mvc\View\Engine\Php
 
-protected **_engineRender** (*array* $engines, *string* $viewPath, *boolean* $silence, *boolean* $mustClean, [[Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface) $cache])
+protected **_engineRender** (*array* $engines, *string* $viewPath, *boolean* $silence, *boolean* $mustClean, [[Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $cache])
 
 Checks whether view exists on registered extensions and render it
 
@@ -496,18 +496,18 @@ protected **getViewsDirs** ()
 
 Gets views directories
 
-public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 Sets the dependency injector
 
-public **getDI** () inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 Returns the internal dependency injector
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 Sets the event manager
 
-public **getEventsManager** () inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 返回内部事件管理器

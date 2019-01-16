@@ -58,7 +58,7 @@ public **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attribute
 
 インラインJavascriptを 'js' コレクションに追加します。
 
-public **addResourceByType** (*mixed* $type, [Phalcon\Assets\Resource](/4.0/en/api/Phalcon_Assets_Resource) $resource)
+public **addResourceByType** (*mixed* $type, [Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
 そのタイプによってリソースを追加します
 
@@ -71,11 +71,11 @@ $assets->addResourceByType("css",
 
 ```
 
-public **addInlineCodeByType** (*mixed* $type, [Phalcon\Assets\Inline](/4.0/en/api/Phalcon_Assets_Inline) $code)
+public **addInlineCodeByType** (*mixed* $type, [Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
 そのタイプによってインラインコードを追加します
 
-public **addResource** ([Phalcon\Assets\Resource](/4.0/en/api/Phalcon_Assets_Resource) $resource)
+public **addResource** ([Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
 生のリソースをマネージャーに追加します。
 
@@ -88,11 +88,11 @@ $assets->addResource(
 
 ```
 
-public **addInlineCode** ([Phalcon\Assets\Inline](/4.0/en/api/Phalcon_Assets_Inline) $code)
+public **addInlineCode** ([Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
 生のインラインコードをマネージャーに追加します。
 
-public **set** (*mixed* $id, [Phalcon\Assets\Collection](/4.0/en/api/Phalcon_Assets_Collection) $collection)
+public **set** (*mixed* $id, [Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection)
 
 アセットマネージャのコレクションを設定する。
 
@@ -126,11 +126,11 @@ public **collection** (*mixed* $name)
 
 リソースのコレクションを作成または返します。
 
-public **output** ([Phalcon\Assets\Collection](/4.0/en/api/Phalcon_Assets_Collection) $collection, *callback* $callback, *string* $type)
+public **output** ([Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection, *callback* $callback, *string* $type)
 
 コレクションを縦断して、そのHTMLを生成するためのコールバックを呼び出します。
 
-public **outputInline** ([Phalcon\Assets\Collection](/4.0/en/api/Phalcon_Assets_Collection) $collection, *string* $type)
+public **outputInline** ([Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection, *string* $type)
 
 コレクションを縦断してHTMLを生成します。
 

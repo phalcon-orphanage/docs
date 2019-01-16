@@ -10,10 +10,10 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\MetaData
 
 ## 方法
 
-abstract public **getMetaData** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
+abstract public **getMetaData** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
 ...
 
-abstract public **getColumnMaps** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
+abstract public **getColumnMaps** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
 ...

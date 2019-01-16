@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Out
 
 # Class **Phalcon\Cache\Frontend\Output**
 
-*implements* [Phalcon\Cache\FrontendInterface](/4.0/en/api/Phalcon_Cache_FrontendInterface)
+*implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/output.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
 

@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Assets\Resource'
 
 # Class **Phalcon\Assets\Resource**
 
-*implements* [Phalcon\Assets\ResourceInterface](/4.0/en/api/Phalcon_Assets_ResourceInterface)
+*implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/resource.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 

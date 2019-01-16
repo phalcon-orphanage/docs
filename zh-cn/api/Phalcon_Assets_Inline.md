@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Assets\Inline'
 
 # Class **Phalcon\Assets\Inline**
 
-*implements* [Phalcon\Assets\ResourceInterface](/4.0/en/api/Phalcon_Assets_ResourceInterface)
+*implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/inline.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 

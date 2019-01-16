@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\ViewInterface'
 
 # Interface **Phalcon\Mvc\ViewInterface**
 
-*implements* [Phalcon\Mvc\ViewBaseInterface](/4.0/en/api/Phalcon_Mvc_ViewBaseInterface)
+*implements* [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/viewinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -124,42 +124,42 @@ abstract public **isDisabled** ()
 
 ...
 
-abstract public **setViewsDir** (*mixed* $viewsDir) inherited from [Phalcon\Mvc\ViewBaseInterface](/4.0/en/api/Phalcon_Mvc_ViewBaseInterface)
+abstract public **setViewsDir** (*mixed* $viewsDir) inherited from [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
 ...
 
-abstract public **getViewsDir** () inherited from [Phalcon\Mvc\ViewBaseInterface](/4.0/en/api/Phalcon_Mvc_ViewBaseInterface)
+abstract public **getViewsDir** () inherited from [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
 ...
 
-abstract public **setParamToView** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Mvc\ViewBaseInterface](/4.0/en/api/Phalcon_Mvc_ViewBaseInterface)
+abstract public **setParamToView** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
 ...
 
-abstract public **setVar** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Mvc\ViewBaseInterface](/4.0/en/api/Phalcon_Mvc_ViewBaseInterface)
+abstract public **setVar** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
 ...
 
-abstract public **getParamsToView** () inherited from [Phalcon\Mvc\ViewBaseInterface](/4.0/en/api/Phalcon_Mvc_ViewBaseInterface)
+abstract public **getParamsToView** () inherited from [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
 ...
 
-abstract public **getCache** () inherited from [Phalcon\Mvc\ViewBaseInterface](/4.0/en/api/Phalcon_Mvc_ViewBaseInterface)
+abstract public **getCache** () inherited from [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
 ...
 
-abstract public **cache** ([*mixed* $options]) inherited from [Phalcon\Mvc\ViewBaseInterface](/4.0/en/api/Phalcon_Mvc_ViewBaseInterface)
+abstract public **cache** ([*mixed* $options]) inherited from [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
 ...
 
-abstract public **setContent** (*mixed* $content) inherited from [Phalcon\Mvc\ViewBaseInterface](/4.0/en/api/Phalcon_Mvc_ViewBaseInterface)
+abstract public **setContent** (*mixed* $content) inherited from [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
 ...
 
-abstract public **getContent** () inherited from [Phalcon\Mvc\ViewBaseInterface](/4.0/en/api/Phalcon_Mvc_ViewBaseInterface)
+abstract public **getContent** () inherited from [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
 ...
 
-abstract public **partial** (*mixed* $partialPath, [*mixed* $params]) inherited from [Phalcon\Mvc\ViewBaseInterface](/4.0/en/api/Phalcon_Mvc_ViewBaseInterface)
+abstract public **partial** (*mixed* $partialPath, [*mixed* $params]) inherited from [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
 ...

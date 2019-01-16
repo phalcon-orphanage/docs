@@ -10,10 +10,10 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Collection\Beh
 
 ## Methods
 
-abstract public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](/4.0/en/api/Phalcon_Mvc_CollectionInterface) $collection)
+abstract public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $collection)
 
 ...
 
-abstract public **missingMethod** ([Phalcon\Mvc\CollectionInterface](/4.0/en/api/Phalcon_Mvc_CollectionInterface) $collection, *mixed* $method, [*mixed* $arguments])
+abstract public **missingMethod** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $collection, *mixed* $method, [*mixed* $arguments])
 
 ...

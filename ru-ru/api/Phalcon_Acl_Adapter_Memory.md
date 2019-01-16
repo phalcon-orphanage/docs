@@ -6,9 +6,9 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Acl\Adapter\Memory
 
 # Class **Phalcon\Acl\Adapter\Memory**
 
-*extends* abstract class [Phalcon\Acl\Adapter](/4.0/en/api/Phalcon_Acl_Adapter)
+*extends* abstract class [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/4.0/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](/4.0/en/api/Phalcon_Acl_AdapterInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/acl/adapter/memory.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
 
@@ -111,7 +111,7 @@ public **isSubject** (*mixed* $subjectName)
 
 Check whether subject exist in the subjects list
 
-public **addSubject** ([Phalcon\Acl\Subject](/4.0/en/api/Phalcon_Acl_Subject) | *string* $subjectValue, *array* | *string* $accessList)
+public **addSubject** ([Phalcon\Acl\Subject](Phalcon_Acl_Subject) | *string* $subjectValue, *array* | *string* $accessList)
 
 Adds a subject to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example:
 
@@ -230,30 +230,30 @@ public **getSubjects** ()
 
 Return an array with every subject registered in the list
 
-public **getActiveOperation** () inherited from [Phalcon\Acl\Adapter](/4.0/en/api/Phalcon_Acl_Adapter)
+public **getActiveOperation** () inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
 
 Operation which the list is checking if it's allowed to certain subject/access
 
-public **getActiveSubject** () inherited from [Phalcon\Acl\Adapter](/4.0/en/api/Phalcon_Acl_Adapter)
+public **getActiveSubject** () inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
 
 Subject which the list is checking if some operation can access it
 
-public **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](/4.0/en/api/Phalcon_Acl_Adapter)
+public **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
 
 Active access which the list is checking if some operation can access it
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Acl\Adapter](/4.0/en/api/Phalcon_Acl_Adapter)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
 
 Sets the events manager
 
-public **getEventsManager** () inherited from [Phalcon\Acl\Adapter](/4.0/en/api/Phalcon_Acl_Adapter)
+public **getEventsManager** () inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
 
 Returns the internal event manager
 
-public **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\Adapter](/4.0/en/api/Phalcon_Acl_Adapter)
+public **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
 
 Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 
-public **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](/4.0/en/api/Phalcon_Acl_Adapter)
+public **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
 
 Returns the default ACL access level

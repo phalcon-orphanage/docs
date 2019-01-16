@@ -10,7 +10,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Di\InjectionAwareI
 
 ## メソッド
 
-abstract public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
+abstract public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
 ...
 

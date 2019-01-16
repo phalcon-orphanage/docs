@@ -6,9 +6,9 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Di\FactoryDefault\
 
 # Class **Phalcon\Di\FactoryDefault\Cli**
 
-*extends* class [Phalcon\Di\FactoryDefault](/4.0/en/api/Phalcon_Di_FactoryDefault)
+*extends* class [Phalcon\Di\FactoryDefault](Phalcon_Di_FactoryDefault)
 
-*implements* [Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
+*implements* [Phalcon\DiInterface](Phalcon_DiInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/di/factorydefault/cli.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
@@ -20,67 +20,67 @@ public **__construct** ()
 
 Phalcon\Di\FactoryDefault\Cli constructor
 
-public **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di](Phalcon_Di)
 
 Sets the internal event manager
 
-public **getInternalEventsManager** () inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **getInternalEventsManager** () inherited from [Phalcon\Di](Phalcon_Di)
 
 返回内部事件管理器
 
-public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](Phalcon_Di)
 
 Registers a service in the services container
 
-public **setShared** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **setShared** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](Phalcon_Di)
 
 Registers an "always shared" service in the services container
 
-public **remove** (*mixed* $name) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **remove** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
 Removes a service in the services container It also removes any shared instance created for the service
 
-public **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](Phalcon_Di)
 
 Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
-public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/4.0/en/api/Phalcon_Di_ServiceInterface) $rawDefinition) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface) $rawDefinition) inherited from [Phalcon\Di](Phalcon_Di)
 
 Sets a service using a raw Phalcon\Di\Service definition
 
-public **getRaw** (*mixed* $name) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **getRaw** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
 Returns a service definition without resolving
 
-public **getService** (*mixed* $name) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **getService** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
 Returns a Phalcon\Di\Service instance
 
-public **get** (*mixed* $name, [*mixed* $parameters]) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **get** (*mixed* $name, [*mixed* $parameters]) inherited from [Phalcon\Di](Phalcon_Di)
 
 Resolves the service based on its configuration
 
-public *mixed* **getShared** (*string* $name, [*array* $parameters]) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public *mixed* **getShared** (*string* $name, [*array* $parameters]) inherited from [Phalcon\Di](Phalcon_Di)
 
 Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
 
-public **has** (*mixed* $name) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **has** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
 Check whether the DI contains a service by a name
 
-public **wasFreshInstance** () inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **wasFreshInstance** () inherited from [Phalcon\Di](Phalcon_Di)
 
 Check whether the last service obtained via getShared produced a fresh instance or an existing one
 
-public **getServices** () inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **getServices** () inherited from [Phalcon\Di](Phalcon_Di)
 
 Return the services registered in the DI
 
-public **offsetExists** (*mixed* $name) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **offsetExists** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
 Check if a service is registered using the array syntax
 
-public **offsetSet** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **offsetSet** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](Phalcon_Di)
 
 Allows to register a shared service using the array syntax
 
@@ -91,7 +91,7 @@ $di["request"] = new \Phalcon\Http\Request();
 
 ```
 
-public **offsetGet** (*mixed* $name) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **offsetGet** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
 Allows to obtain a shared service using the array syntax
 
@@ -102,15 +102,15 @@ var_dump($di["request"]);
 
 ```
 
-public **offsetUnset** (*mixed* $name) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **offsetUnset** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
 Removes a service from the services container using the array syntax
 
-public **__call** (*mixed* $method, [*mixed* $arguments]) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **__call** (*mixed* $method, [*mixed* $arguments]) inherited from [Phalcon\Di](Phalcon_Di)
 
 Magic method to get or set services using setters/getters
 
-public **register** ([Phalcon\Di\ServiceProviderInterface](/4.0/en/api/Phalcon_Di_ServiceProviderInterface) $provider) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **register** ([Phalcon\Di\ServiceProviderInterface](Phalcon_Di_ServiceProviderInterface) $provider) inherited from [Phalcon\Di](Phalcon_Di)
 
 Registers a service provider.
 
@@ -132,19 +132,19 @@ class SomeServiceProvider implements ServiceProviderInterface
 
 ```
 
-public static **setDefault** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public static **setDefault** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di](Phalcon_Di)
 
 Set a default dependency injection container to be obtained into static methods
 
-public static **getDefault** () inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public static **getDefault** () inherited from [Phalcon\Di](Phalcon_Di)
 
 Return the latest DI created
 
-public static **reset** () inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public static **reset** () inherited from [Phalcon\Di](Phalcon_Di)
 
 Resets the internal default DI
 
-public **loadFromYaml** (*mixed* $filePath, [*array* $callbacks]) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **loadFromYaml** (*mixed* $filePath, [*array* $callbacks]) inherited from [Phalcon\Di](Phalcon_Di)
 
 Loads services from a yaml file.
 
@@ -182,7 +182,7 @@ user:
 
 ```
 
-public **loadFromPhp** (*mixed* $filePath) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+public **loadFromPhp** (*mixed* $filePath) inherited from [Phalcon\Di](Phalcon_Di)
 
 Loads services from a php config file.
 
@@ -219,6 +219,6 @@ return [
 
 ```
 
-protected **loadFromConfig** ([Phalcon\Config](/4.0/en/api/Phalcon_Config) $config) inherited from [Phalcon\Di](/4.0/en/api/Phalcon_Di)
+protected **loadFromConfig** ([Phalcon\Config](Phalcon_Config) $config) inherited from [Phalcon\Di](Phalcon_Di)
 
 Loads services from a Config object.

@@ -6,9 +6,9 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Cli\Dispatcher'
 
 # Class **Phalcon\Cli\Dispatcher**
 
-*extends* abstract class [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+*extends* abstract class [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/4.0/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](/4.0/en/api/Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherInterface](/4.0/en/api/Phalcon_Cli_DispatcherInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherInterface](Phalcon_Cli_DispatcherInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cli/dispatcher.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -100,103 +100,103 @@ public **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $
 
 Calls the action method.
 
-public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Sets the dependency injector
 
-public **getDI** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **getDI** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Returns the internal dependency injector
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Sets the events manager
 
-public **getEventsManager** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **getEventsManager** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Returns the internal event manager
 
-public **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Sets the default action suffix
 
-public **getActionSuffix** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **getActionSuffix** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Gets the default action suffix
 
-public **setModuleName** (*mixed* $moduleName) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **setModuleName** (*mixed* $moduleName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Sets the module where the controller is (only informative)
 
-public **getModuleName** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **getModuleName** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Gets the module where the controller class is
 
-public **setNamespaceName** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **setNamespaceName** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Sets the namespace where the controller class is
 
-public **getNamespaceName** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **getNamespaceName** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Gets a namespace to be prepended to the current handler name
 
-public **setDefaultNamespace** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **setDefaultNamespace** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Sets the default namespace
 
-public **getDefaultNamespace** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **getDefaultNamespace** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Returns the default namespace
 
-public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Sets the default action name
 
-public **setActionName** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **setActionName** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Sets the action name to be dispatched
 
-public **getActionName** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **getActionName** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Gets the latest dispatched action name
 
-public **setParams** (*array* $params) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **setParams** (*array* $params) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Sets action params to be dispatched
 
-public **getParams** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **getParams** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Gets action params
 
-public **setParam** (*mixed* $param, *mixed* $value) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **setParam** (*mixed* $param, *mixed* $value) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Set a param by its name or numeric index
 
-public *mixed* **getParam** (*mixed* $param, [*string* | *array* $filters], [*mixed* $defaultValue]) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public *mixed* **getParam** (*mixed* $param, [*string* | *array* $filters], [*mixed* $defaultValue]) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Gets a param by its name or numeric index
 
-public *boolean* **hasParam** (*mixed* $param) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public *boolean* **hasParam** (*mixed* $param) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Check if a param exists
 
-public **getActiveMethod** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **getActiveMethod** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Returns the current method to be/executed in the dispatcher
 
-public **isFinished** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **isFinished** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
 
-public **setReturnedValue** (*mixed* $value) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **setReturnedValue** (*mixed* $value) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Sets the latest returned value by an action manually
 
-public *mixed* **getReturnedValue** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public *mixed* **getReturnedValue** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Returns value returned by the latest dispatched action
 
-public **setModelBinding** (*mixed* $value, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **setModelBinding** (*mixed* $value, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Enable/Disable model binding during dispatch
 
@@ -212,7 +212,7 @@ $di->set('dispatcher', function() {
 
 ```
 
-public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](/4.0/en/api/Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Enable model binding during dispatch
 
@@ -228,19 +228,19 @@ $di->set('dispatcher', function() {
 
 ```
 
-public **getModelBinder** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **getModelBinder** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Gets model binder
 
-public *object* **dispatch** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public *object* **dispatch** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Dispatches a handle action taking into account the routing parameters
 
-protected *object* **_dispatch** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+protected *object* **_dispatch** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Dispatches a handle action taking into account the routing parameters
 
-public **forward** (*array* $forward) inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **forward** (*array* $forward) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Forwards the execution flow to another controller/action.
 
@@ -256,15 +256,15 @@ $this->dispatcher->forward(
 
 ```
 
-public **wasForwarded** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **wasForwarded** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Check if the current executed action was forwarded by another one
 
-public **getHandlerClass** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **getHandlerClass** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Possible class name that will be located to dispatch the request
 
-public **getBoundModels** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+public **getBoundModels** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Returns bound models from binder instance
 
@@ -281,6 +281,6 @@ class UserController extends Controller
 
 ```
 
-protected **_resolveEmptyProperties** () inherited from [Phalcon\Dispatcher](/4.0/en/api/Phalcon_Dispatcher)
+protected **_resolveEmptyProperties** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 Set empty properties to their defaults (where defaults are available)

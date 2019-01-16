@@ -36,7 +36,7 @@ abstract public **getShared** (*mixed* $name, [*mixed* $parameters])
 
 ...
 
-abstract public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/4.0/en/api/Phalcon_Di_ServiceInterface) $rawDefinition)
+abstract public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface) $rawDefinition)
 
 ...
 
@@ -60,7 +60,7 @@ abstract public **getServices** ()
 
 ...
 
-abstract public static **setDefault** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
+abstract public static **setDefault** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
 ...
 
