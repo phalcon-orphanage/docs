@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Data'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Frontend\Data'
+---
 # Class **Phalcon\Cache\Frontend\Data**
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
@@ -76,7 +76,7 @@ public **isBuffering** ()
 
 public **start** ()
 
-フロントエンドの出力を開始します。実際には、何もしません。
+Starts output frontend. Actually, does nothing
 
 public *string* **getContent** ()
 
