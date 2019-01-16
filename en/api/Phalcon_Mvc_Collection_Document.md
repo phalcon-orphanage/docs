@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Collection\Document'
 ---
 # Class **Phalcon\Mvc\Collection\Document**
 
-*implements* [Phalcon\Mvc\EntityInterface](/4.0/en/api/Phalcon_Mvc_EntityInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
+*implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/collection/document.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 

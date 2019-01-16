@@ -6,9 +6,9 @@ title: 'Phalcon\Session\Adapter\Redis'
 ---
 # Class **Phalcon\Session\Adapter\Redis**
 
-*extends* abstract class [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+*extends* abstract class [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-*implements* [Phalcon\Session\AdapterInterface](/4.0/en/api/Phalcon_Session_AdapterInterface)
+*implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/session/adapter/redis.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -101,13 +101,13 @@ public  **gc** ()
 
 
 
-public  **start** () inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **start** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Starts the session (if headers are already sent the session will not be started)
 
 
 
-public  **setOptions** (*array* $options) inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **setOptions** (*array* $options) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Sets session's options
 
@@ -124,31 +124,31 @@ $session->setOptions(
 
 
 
-public  **getOptions** () inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **getOptions** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Get internal options
 
 
 
-public  **setName** (*mixed* $name) inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **setName** (*mixed* $name) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Set session name
 
 
 
-public  **getName** () inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **getName** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Get session name
 
 
 
-public  **regenerateId** ([*mixed* $deleteOldSession]) inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **regenerateId** ([*mixed* $deleteOldSession]) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 
 
 
 
-public  **get** (*mixed* $index, [*mixed* $defaultValue], [*mixed* $remove]) inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **get** (*mixed* $index, [*mixed* $defaultValue], [*mixed* $remove]) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Gets a session variable from an application context
 
@@ -161,7 +161,7 @@ $session->get("auth", "yes");
 
 
 
-public  **set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Sets a session variable in an application context
 
@@ -174,7 +174,7 @@ $session->set("auth", "yes");
 
 
 
-public  **has** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **has** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Check whether a session variable is set in an application context
 
@@ -189,7 +189,7 @@ var_dump(
 
 
 
-public  **remove** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **remove** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Removes a session variable from an application context
 
@@ -202,7 +202,7 @@ $session->remove("auth");
 
 
 
-public  **getId** () inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **getId** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Returns active session id
 
@@ -215,7 +215,7 @@ echo $session->getId();
 
 
 
-public  **setId** (*mixed* $id) inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **setId** (*mixed* $id) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Set the current session id
 
@@ -228,7 +228,7 @@ $session->setId($id);
 
 
 
-public  **isStarted** () inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **isStarted** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Check whether the session has been started
 
@@ -243,7 +243,7 @@ var_dump(
 
 
 
-public  **status** () inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **status** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Returns the status of the current session.
 
@@ -262,25 +262,25 @@ if ($session->status() !== $session::SESSION_ACTIVE) {
 
 
 
-public  **__get** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **__get** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Alias: Gets a session variable from an application context
 
 
 
-public  **__set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **__set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Alias: Sets a session variable in an application context
 
 
 
-public  **__isset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **__isset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Alias: Check whether a session variable is set in an application context
 
 
 
-public  **__unset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **__unset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 Alias: Removes a session variable from an application context
 
@@ -293,12 +293,12 @@ unset($session->auth);
 
 
 
-public  **__destruct** () inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+public  **__destruct** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 ...
 
 
-protected  **removeSessionData** () inherited from [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+protected  **removeSessionData** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 ...
 

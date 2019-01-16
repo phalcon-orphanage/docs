@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\Transaction\Failed'
 ---
 # Class **Phalcon\Mvc\Model\Transaction\Failed**
 
-*extends* class [Phalcon\Mvc\Model\Transaction\Exception](/4.0/en/api/Phalcon_Mvc_Model_Transaction_Exception)
+*extends* class [Phalcon\Mvc\Model\Transaction\Exception](Phalcon_Mvc_Model_Transaction_Exception)
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
@@ -16,7 +16,7 @@ This class will be thrown to exit a try/catch block for isolated transactions
 
 
 ## Methods
-public  **__construct** (*mixed* $message, [[Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $record])
+public  **__construct** (*mixed* $message, [[Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $record])
 
 Phalcon\Mvc\Model\Transaction\Failed constructor
 

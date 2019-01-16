@@ -9,7 +9,7 @@ title: 'Phalcon\Logger\AdapterInterface'
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
-abstract public  **setFormatter** ([Phalcon\Logger\FormatterInterface](/4.0/en/api/Phalcon_Logger_FormatterInterface) $formatter)
+abstract public  **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 
 ...
 

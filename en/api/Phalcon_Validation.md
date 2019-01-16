@@ -6,9 +6,9 @@ title: 'Phalcon\Validation'
 ---
 # Class **Phalcon\Validation**
 
-*extends* abstract class [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+*extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/4.0/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\ValidationInterface](/4.0/en/api/Phalcon_ValidationInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\ValidationInterface](Phalcon_ValidationInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/validation.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -32,19 +32,19 @@ Phalcon\Validation constructor
 
 
 
-public [Phalcon\Validation\Message\Group](/4.0/en/api/Phalcon_Validation_Message_Group) **validate** ([*array* | *object* $data], [*object* $entity])
+public [Phalcon\Validation\Message\Group](Phalcon_Validation_Message_Group) **validate** ([*array* | *object* $data], [*object* $entity])
 
 Validate a set of data according to a set of rules
 
 
 
-public  **add** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/4.0/en/api/Phalcon_Validation_ValidatorInterface) $validator)
+public  **add** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface) $validator)
 
 Adds a validator to a field
 
 
 
-public  **rule** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/4.0/en/api/Phalcon_Validation_ValidatorInterface) $validator)
+public  **rule** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface) $validator)
 
 Alias of `add` method
 
@@ -56,7 +56,7 @@ Adds the validators to a field
 
 
 
-public [Phalcon\Validation](/4.0/en/api/Phalcon_Validation) **setFilters** (*string* $field, *array* | *string* $filters)
+public [Phalcon\Validation](Phalcon_Validation) **setFilters** (*string* $field, *array* | *string* $filters)
 
 Adds filters to the field
 
@@ -116,13 +116,13 @@ Get label for field
 
 
 
-public  **appendMessage** ([Phalcon\Validation\MessageInterface](/4.0/en/api/Phalcon_Validation_MessageInterface) $message)
+public  **appendMessage** ([Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface) $message)
 
 Appends a message to the messages list
 
 
 
-public [Phalcon\Validation](/4.0/en/api/Phalcon_Validation) **bind** (*object* $entity, *array* | *object* $data)
+public [Phalcon\Validation](Phalcon_Validation) **bind** (*object* $entity, *array* | *object* $data)
 
 Assigns the data to an entity
 The entity is used to obtain the validation values
@@ -135,37 +135,37 @@ Gets the a value to validate in the array/object data source
 
 
 
-protected  **preChecking** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/4.0/en/api/Phalcon_Validation_ValidatorInterface) $validator)
+protected  **preChecking** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface) $validator)
 
 Internal validations, if it returns true, then skip the current validator
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public  **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 Sets the dependency injector
 
 
 
-public  **getDI** () inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public  **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 Returns the internal dependency injector
 
 
 
-public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public  **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 Sets the event manager
 
 
 
-public  **getEventsManager** () inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public  **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 Returns the internal event manager
 
 
 
-public  **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public  **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 Magic method __get
 

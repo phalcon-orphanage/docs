@@ -6,7 +6,7 @@ title: 'Phalcon\Crypt\Mismatch'
 ---
 # Class **Phalcon\Crypt\Mismatch**
 
-*extends* class [Phalcon\Crypt\Exception](/4.0/en/api/Phalcon_Crypt_Exception)
+*extends* class [Phalcon\Crypt\Exception](Phalcon_Crypt_Exception)
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 

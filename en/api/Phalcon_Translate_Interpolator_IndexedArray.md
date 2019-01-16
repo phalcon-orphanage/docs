@@ -6,7 +6,7 @@ title: 'Phalcon\Translate\Interpolator\IndexedArray'
 ---
 # Class **Phalcon\Translate\Interpolator\IndexedArray**
 
-*implements* [Phalcon\Translate\InterpolatorInterface](/4.0/en/api/Phalcon_Translate_InterpolatorInterface)
+*implements* [Phalcon\Translate\InterpolatorInterface](Phalcon_Translate_InterpolatorInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/translate/interpolator/indexedarray.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 

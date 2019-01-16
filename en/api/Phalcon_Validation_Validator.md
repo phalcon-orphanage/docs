@@ -6,7 +6,7 @@ title: 'Phalcon\Validation\Validator'
 ---
 # Abstract class **Phalcon\Validation\Validator**
 
-*implements* [Phalcon\Validation\ValidatorInterface](/4.0/en/api/Phalcon_Validation_ValidatorInterface)
+*implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/validation/validator.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -45,19 +45,19 @@ Sets an option in the validator
 
 
 
-abstract public  **validate** ([Phalcon\Validation](/4.0/en/api/Phalcon_Validation) $validation, *mixed* $attribute)
+abstract public  **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $attribute)
 
 Executes the validation
 
 
 
-protected  **prepareLabel** ([Phalcon\Validation](/4.0/en/api/Phalcon_Validation) $validation, *mixed* $field)
+protected  **prepareLabel** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
 Prepares a label for the field.
 
 
 
-protected  **prepareMessage** ([Phalcon\Validation](/4.0/en/api/Phalcon_Validation) $validation, *mixed* $field, *mixed* $type, [*mixed* $option])
+protected  **prepareMessage** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field, *mixed* $type, [*mixed* $option])
 
 Prepares a validation message.
 

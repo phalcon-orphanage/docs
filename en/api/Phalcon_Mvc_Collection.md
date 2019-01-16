@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Collection'
 ---
 # Abstract class **Phalcon\Mvc\Collection**
 
-*implements* [Phalcon\Mvc\EntityInterface](/4.0/en/api/Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\CollectionInterface](/4.0/en/api/Phalcon_Mvc_CollectionInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface), [Serializable](https://php.net/manual/en/class.serializable.php)
+*implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Serializable](https://php.net/manual/en/class.serializable.php)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -30,7 +30,7 @@ works with documents
 *integer* **DIRTY_STATE_DETACHED**
 
 ## Methods
-final public  **__construct** ([[Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector], [[Phalcon\Mvc\Collection\ManagerInterface](/4.0/en/api/Phalcon_Mvc_Collection_ManagerInterface) $modelsManager])
+final public  **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector], [[Phalcon\Mvc\Collection\ManagerInterface](Phalcon_Mvc_Collection_ManagerInterface) $modelsManager])
 
 Phalcon\Mvc\Collection constructor
 
@@ -48,7 +48,7 @@ Returns the value of the _id property
 
 
 
-public  **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
+public  **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injection container
 
@@ -60,7 +60,7 @@ Returns the dependency injection container
 
 
 
-protected  **setEventsManager** ([Phalcon\Mvc\Collection\ManagerInterface](/4.0/en/api/Phalcon_Mvc_Collection_ManagerInterface) $eventsManager)
+protected  **setEventsManager** ([Phalcon\Mvc\Collection\ManagerInterface](Phalcon_Mvc_Collection_ManagerInterface) $eventsManager)
 
 Sets a custom events manager
 
@@ -146,25 +146,25 @@ $robot->writeAttribute("name", "Rosey");
 
 
 
-public static  **cloneResult** ([Phalcon\Mvc\CollectionInterface](/4.0/en/api/Phalcon_Mvc_CollectionInterface) $collection, *array* $document)
+public static  **cloneResult** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $collection, *array* $document)
 
 Returns a cloned collection
 
 
 
-protected static *array* **_getResultset** (*array* $params, [Phalcon\Mvc\Collection](/4.0/en/api/Phalcon_Mvc_Collection) $collection, *MongoDb* $connection, *boolean* $unique)
+protected static *array* **_getResultset** (*array* $params, [Phalcon\Mvc\Collection](Phalcon_Mvc_Collection) $collection, *MongoDb* $connection, *boolean* $unique)
 
 Returns a collection resultset
 
 
 
-protected static *int* **_getGroupResultset** (*array* $params, [Phalcon\Mvc\Collection](/4.0/en/api/Phalcon_Mvc_Collection) $collection, *MongoDb* $connection)
+protected static *int* **_getGroupResultset** (*array* $params, [Phalcon\Mvc\Collection](Phalcon_Mvc_Collection) $collection, *MongoDb* $connection)
 
 Perform a count over a resultset
 
 
 
-final protected *boolean* **_preSave** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
+final protected *boolean* **_preSave** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
 
 Executes internal hooks before save a document
 
@@ -319,7 +319,7 @@ if ($robot->save() === false) {
 
 
 
-public  **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](/4.0/en/api/Phalcon_Mvc_Model_MessageInterface) $message)
+public  **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](Phalcon_Mvc_Model_MessageInterface) $message)
 
 Appends a customized message on the validation process
 
@@ -590,7 +590,7 @@ Returns one of the DIRTY_STATE_* constants telling if the document exists in the
 
 
 
-protected  **addBehavior** ([Phalcon\Mvc\Collection\BehaviorInterface](/4.0/en/api/Phalcon_Mvc_Collection_BehaviorInterface) $behavior)
+protected  **addBehavior** ([Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface) $behavior)
 
 Sets up a behavior in a collection
 

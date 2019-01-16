@@ -76,7 +76,7 @@ Adds an inline javascript to the 'js' collection
 
 
 
-public  **addResourceByType** (*mixed* $type, [Phalcon\Assets\Resource](/4.0/en/api/Phalcon_Assets_Resource) $resource)
+public  **addResourceByType** (*mixed* $type, [Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
 Adds a resource by its type
 
@@ -91,13 +91,13 @@ $assets->addResourceByType("css",
 
 
 
-public  **addInlineCodeByType** (*mixed* $type, [Phalcon\Assets\Inline](/4.0/en/api/Phalcon_Assets_Inline) $code)
+public  **addInlineCodeByType** (*mixed* $type, [Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
 Adds an inline code by its type
 
 
 
-public  **addResource** ([Phalcon\Assets\Resource](/4.0/en/api/Phalcon_Assets_Resource) $resource)
+public  **addResource** ([Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
 Adds a raw resource to the manager
 
@@ -112,13 +112,13 @@ $assets->addResource(
 
 
 
-public  **addInlineCode** ([Phalcon\Assets\Inline](/4.0/en/api/Phalcon_Assets_Inline) $code)
+public  **addInlineCode** ([Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
 Adds a raw inline code to the manager
 
 
 
-public  **set** (*mixed* $id, [Phalcon\Assets\Collection](/4.0/en/api/Phalcon_Assets_Collection) $collection)
+public  **set** (*mixed* $id, [Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection)
 
 Sets a collection in the Assets Manager
 
@@ -162,13 +162,13 @@ Creates/Returns a collection of resources
 
 
 
-public  **output** ([Phalcon\Assets\Collection](/4.0/en/api/Phalcon_Assets_Collection) $collection, *callback* $callback, *string* $type)
+public  **output** ([Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection, *callback* $callback, *string* $type)
 
 Traverses a collection calling the callback to generate its HTML
 
 
 
-public  **outputInline** ([Phalcon\Assets\Collection](/4.0/en/api/Phalcon_Assets_Collection) $collection, *string* $type)
+public  **outputInline** ([Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection, *string* $type)
 
 Traverses a collection and generate its HTML
 

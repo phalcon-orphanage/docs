@@ -6,9 +6,9 @@ title: 'Phalcon\Cache\Frontend\Msgpack'
 ---
 # Class **Phalcon\Cache\Frontend\Msgpack**
 
-*extends* class [Phalcon\Cache\Frontend\Data](/4.0/en/api/Phalcon_Cache_Frontend_Data)
+*extends* class [Phalcon\Cache\Frontend\Data](Phalcon_Cache_Frontend_Data)
 
-*implements* [Phalcon\Cache\FrontendInterface](/4.0/en/api/Phalcon_Cache_FrontendInterface)
+*implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/msgpack.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 

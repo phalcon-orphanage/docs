@@ -6,7 +6,7 @@ title: 'Phalcon\Http\Request\Exception'
 ---
 # Class **Phalcon\Http\Request\Exception**
 
-*extends* class [Phalcon\Exception](/4.0/en/api/Phalcon_Exception)
+*extends* class [Phalcon\Exception](Phalcon_Exception)
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 

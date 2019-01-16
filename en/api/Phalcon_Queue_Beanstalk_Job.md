@@ -24,7 +24,7 @@ public  **getBody** ()
 
 
 
-public  **__construct** ([Phalcon\Queue\Beanstalk](/4.0/en/api/Phalcon_Queue_Beanstalk) $queue, *mixed* $id, *mixed* $body)
+public  **__construct** ([Phalcon\Queue\Beanstalk](Phalcon_Queue_Beanstalk) $queue, *mixed* $id, *mixed* $body)
 
 
 

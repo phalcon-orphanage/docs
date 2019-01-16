@@ -6,7 +6,7 @@ title: 'Phalcon\Db\Column'
 ---
 # Class **Phalcon\Db\Column**
 
-*implements* [Phalcon\Db\ColumnInterface](/4.0/en/api/Phalcon_Db_ColumnInterface)
+*implements* [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/column.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 

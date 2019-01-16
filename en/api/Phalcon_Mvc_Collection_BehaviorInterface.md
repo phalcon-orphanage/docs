@@ -9,12 +9,12 @@ title: 'Phalcon\Mvc\Collection\BehaviorInterface'
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/collection/behaviorinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
-abstract public  **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](/4.0/en/api/Phalcon_Mvc_CollectionInterface) $collection)
+abstract public  **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $collection)
 
 ...
 
 
-abstract public  **missingMethod** ([Phalcon\Mvc\CollectionInterface](/4.0/en/api/Phalcon_Mvc_CollectionInterface) $collection, *mixed* $method, [*mixed* $arguments])
+abstract public  **missingMethod** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $collection, *mixed* $method, [*mixed* $arguments])
 
 ...
 

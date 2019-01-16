@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\Resultset'
 ---
 # Abstract class **Phalcon\Mvc\Model\Resultset**
 
-*implements* [Phalcon\Mvc\Model\ResultsetInterface](/4.0/en/api/Phalcon_Mvc_Model_ResultsetInterface), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [SeekableIterator](https://php.net/manual/en/class.seekableiterator.php), [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Serializable](https://php.net/manual/en/class.serializable.php), [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)
+*implements* [Phalcon\Mvc\Model\ResultsetInterface](Phalcon_Mvc_Model_ResultsetInterface), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [SeekableIterator](https://php.net/manual/en/class.seekableiterator.php), [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Serializable](https://php.net/manual/en/class.serializable.php), [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/resultset.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -63,7 +63,7 @@ while ($robots->valid()) {
 *integer* **HYDRATE_ARRAYS**
 
 ## Methods
-public  **__construct** ([Phalcon\Db\ResultInterface](/4.0/en/api/Phalcon_Db_ResultInterface) | *false* $result, [[Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface) $cache])
+public  **__construct** ([Phalcon\Db\ResultInterface](Phalcon_Db_ResultInterface) | *false* $result, [[Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $cache])
 
 Phalcon\Mvc\Model\Resultset constructor
 
@@ -118,7 +118,7 @@ Gets row in a specific position of the resultset
 
 
 
-public  **offsetSet** (*int* $index, [Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $value)
+public  **offsetSet** (*int* $index, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $value)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
@@ -196,7 +196,7 @@ Deletes every record in the resultset
 
 
 
-public [Phalcon\Mvc\Model](/4.0/en/api/Phalcon_Mvc_Model) **filter** (*callback* $filter)
+public [Phalcon\Mvc\Model](Phalcon_Mvc_Model) **filter** (*callback* $filter)
 
 Filters a resultset returning only those the developer requires
 
@@ -230,7 +230,7 @@ echo json_encode($robots);
 
 
 
-abstract public  **toArray** () inherited from [Phalcon\Mvc\Model\ResultsetInterface](/4.0/en/api/Phalcon_Mvc_Model_ResultsetInterface)
+abstract public  **toArray** () inherited from [Phalcon\Mvc\Model\ResultsetInterface](Phalcon_Mvc_Model_ResultsetInterface)
 
 ...
 
