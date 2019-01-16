@@ -1,23 +1,23 @@
 [
     {
-        "text": "General",
+        "text": "概要",
         "url": "/introduction",
         "menu": [
             {
-                "text": "はじめに",
+                "text": "Introduction",
                 "url": "/introduction"
             },
             {
-                "text": "リリースノート",
+                "text": "Release Notes",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "アップグレード",
+                "text": "Upgrade",
                 "url": ""
             },
             {
-                "text": "スポンサー",
+                "text": "Sponsors",
                 "url": "/sponsors"
             }
         ]
@@ -31,7 +31,7 @@
                 "url": "/contributions"
             },
             {
-                "text": "Pull Requests",
+                "text": "プルリクエスト",
                 "url": "/new-pull-request"
             },
             {
@@ -39,21 +39,21 @@
                 "url": "/new-feature-request"
             },
             {
-                "text": "Backtrace Generation",
+                "text": "バグ報告",
                 "url": "/generating-backtrace"
             },
             {
-                "text": "Reproducible Tests",
+                "text": "再現テスト",
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing guide",
+                "text": "テストガイド",
                 "url": ""
             }
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "はじめに",
         "url": "",
         "menu": [
             {
@@ -61,7 +61,7 @@
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "Webサーバのセットアップ",
                 "url": "/webserver-setup"
             },
             {
@@ -75,7 +75,7 @@
         ]
     },
     {
-        "text": "Environments",
+        "text": "環境",
         "url": "",
         "menu": [
             {
@@ -93,7 +93,7 @@
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "開発ツール",
         "url": "",
         "menu": [
             {
@@ -105,21 +105,21 @@
                 "url": "/devtools-usage"
             },
             {
-                "text": "Debug",
+                "text": "デバッグ",
                 "url": "/debug"
             }
         ]
     },
     {
-        "text": "Tutorials",
+        "text": "チュートリアル",
         "url": "",
         "menu": [
             {
-                "text": "Performance",
+                "text": "パフォーマンス",
                 "url": "/performance"
             },
             {
-                "text": "Basic",
+                "text": "基本",
                 "url": "/tutorial-base"
             },
             {
@@ -141,11 +141,11 @@
         ]
     },
     {
-        "text": "Core",
+        "text": "コア",
         "url": "",
         "menu": [
             {
-                "text": "API Index",
+                "text": "API 索引",
                 "url": "/api/"
             },
             {
@@ -161,7 +161,7 @@
                 "url": "/application-cli"
             },
             {
-                "text": "DI Container",
+                "text": "DI コンテナ",
                 "url": "/di"
             },
             {
@@ -171,7 +171,7 @@
         ]
     },
     {
-        "text": "Services",
+        "text": "サービス",
         "url": "",
         "menu": [
             {
@@ -179,11 +179,11 @@
                 "url": "/cache"
             },
             {
-                "text": "Config",
+                "text": "設定",
                 "url": "/config"
             },
             {
-                "text": "Escaper",
+                "text": "エスケープ",
                 "url": "/escaper"
             },
             {
@@ -195,7 +195,7 @@
                 "url": "/logging"
             },
             {
-                "text": "Queue",
+                "text": "キュー",
                 "url": "/queue"
             }
         ]
@@ -205,7 +205,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Layer",
+                "text": "レイヤー",
                 "url": "/db-layer"
             },
             {
@@ -225,7 +225,7 @@
                 "url": "/db-models-advanced"
             },
             {
-                "text": "Behaviors",
+                "text": "ビヘイビア",
                 "url": "/db-models-behaviors"
             },
             {
@@ -237,11 +237,11 @@
                 "url": "/db-models-events"
             },
             {
-                "text": "Metadata",
+                "text": "メタデータ",
                 "url": "/db-models-metadata"
             },
             {
-                "text": "Relationships",
+                "text": "リレーション",
                 "url": "/db-models-relationships"
             },
             {
@@ -249,11 +249,11 @@
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "バリデーター",
                 "url": "/db-models-validation"
             },
             {
-                "text": "Migrations",
+                "text": "マイグレーション",
                 "url": "/db-migrations"
             },
             {
@@ -263,15 +263,15 @@
         ]
     },
     {
-        "text": "Front End",
+        "text": "フロントエンド",
         "url": "",
         "menu": [
             {
-                "text": "Assets",
+                "text": "アセット",
                 "url": "/assets"
             },
             {
-                "text": "Flash Messenger",
+                "text": "フラッシュメッセージ",
                 "url": "/flash"
             },
             {
@@ -279,15 +279,15 @@
                 "url": "/forms"
             },
             {
-                "text": "Image",
+                "text": "画像",
                 "url": "/image"
             },
             {
-                "text": "Tag",
+                "text": "タグ",
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "ビュー",
                 "url": "/views"
             },
             {
@@ -297,15 +297,15 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "ビジネスロジック",
         "url": "",
         "menu": [
             {
-                "text": "Access Control Lists",
+                "text": "アクセス制御リスト",
                 "url": "/acl"
             },
             {
-                "text": "Annotations",
+                "text": "アノテーション",
                 "url": "/annotations"
             },
             {
@@ -317,11 +317,11 @@
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "イベント管理",
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "フィルター",
                 "url": "/filter"
             },
             {
@@ -329,7 +329,7 @@
                 "url": "/routing"
             },
             {
-                "text": "Sessions",
+                "text": "セッション",
                 "url": "/session"
             },
             {
@@ -337,7 +337,7 @@
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "バリデーション",
                 "url": "/validation"
             }
         ]
@@ -347,29 +347,29 @@
         "url": "",
         "menu": [
             {
-                "text": "Cookies",
+                "text": "Cookie",
                 "url": "/cookies"
             },
             {
-                "text": "Request",
+                "text": "リクエスト",
                 "url": "/request"
             },
             {
-                "text": "Response",
+                "text": "レスポンス",
                 "url": "/response"
             }
         ]
     },
     {
-        "text": "Security",
+        "text": "セキュリティ",
         "url": "",
         "menu": [
             {
-                "text": "Crypto",
+                "text": "暗号化",
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "セキュリティ",
                 "url": "/security"
             }
         ]
@@ -383,7 +383,7 @@
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "翻訳",
                 "url": "/translate"
             }
         ]
