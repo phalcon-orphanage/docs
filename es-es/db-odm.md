@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -279,13 +278,13 @@ $robots = Robots::find(
 
 Las opciones disponibles de consulta son:
 
-| Parameter    | Descripción                                                                                                                                                                                                               | Ejemplo                                                 |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| `conditions` | Condiciones de búsqueda para la operación de búsqueda. Se utiliza para extraer sólo los registros que cumplan con un criterio especificado. Por defecto Phalcon_model supone que el primer parámetro son las condiciones. | `'conditions' => array('$gt' => 1990)`            |
-| `fields`     | Devuelve columnas concretas en lugar de los campos completos de la colección. Cuando se utiliza esta opción que se devuelve un objeto incompleto                                                                          | `'fields' => array('name' => true)`               |
-| `sort`       | Se utiliza para ordenar el conjunto de resultados. Utiliza uno o más campos para cada elemento en el arreglo, 1 significa ordenar de forma ascendente, -1 descendente                                                     | `'sort' => array('name' => -1, 'status' => 1)` |
-| `limit`      | Limitar los resultados de la consulta a cierto rango                                                                                                                                                                      | `'limit' => 10`                                      |
-| `skip`       | Omite un número específico de resultados                                                                                                                                                                                  | `'skip' => 50`                                       |
+| Parameter    | Descripción                                                                                                                                                                                                          | Ejemplo                                                 |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `conditions` | Condiciones de búsqueda para la operación de búsqueda. Se utiliza para extraer sólo los registros que cumplan con un criterio especificado. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
+| `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                                                       | `'fields' => array('name' => true)`               |
+| `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                                          | `'sort' => array('name' => -1, 'status' => 1)` |
+| `limit`      | Limitar los resultados de la consulta a cierto rango                                                                                                                                                                 | `'limit' => 10`                                      |
+| `skip`       | Omite un número específico de resultados                                                                                                                                                                             | `'skip' => 50`                                       |
 
 If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](https://www.php.net/manual/en/mongo.sqltomongo.php).
 
@@ -702,7 +701,7 @@ Another type of events is available when the data validation process finds any i
 
 <a name='ids-vs-primary-keys'></a>
 
-## IDs Implícitos vs. Llaves Primarias de Usuario
+## Implicit Ids vs. User Primary Keys
 
 By default [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) assumes that the `_id` attribute is automatically generated using [MongoIds](https://www.php.net/manual/en/class.mongoid.php).
 
