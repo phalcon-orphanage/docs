@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Msgpack'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Frontend\Msgpack'
+---
 # Class **Phalcon\Cache\Frontend\Msgpack**
 
 *extends* class [Phalcon\Cache\Frontend\Data](Phalcon_Cache_Frontend_Data)
@@ -78,7 +78,7 @@ public **isBuffering** ()
 
 public **start** ()
 
-フロントエンドの出力を開始します。実際には、何もしません。
+Starts output frontend. Actually, does nothing
 
 public **getContent** ()
 
