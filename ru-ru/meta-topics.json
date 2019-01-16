@@ -1,37 +1,37 @@
 [
     {
-        "text": "General",
+        "text": "Главная",
         "url": "/introduction",
         "menu": [
             {
-                "text": "Введение",
+                "text": "Introduction",
                 "url": "/introduction"
             },
             {
-                "text": "Примечания к выпуску",
+                "text": "Release Notes",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Обновление",
+                "text": "Upgrade",
                 "url": ""
             },
             {
-                "text": "Спонсоры",
+                "text": "Sponsors",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Contributions",
+        "text": "Вклад",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "Введение",
                 "url": "/contributions"
             },
             {
-                "text": "Pull Requests",
+                "text": "Пулл реквесты",
                 "url": "/new-pull-request"
             },
             {
@@ -39,29 +39,29 @@
                 "url": "/new-feature-request"
             },
             {
-                "text": "Backtrace Generation",
+                "text": "Генерация трассировки выполнения",
                 "url": "/generating-backtrace"
             },
             {
-                "text": "Reproducible Tests",
+                "text": "Воспроизводимые тесты",
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing guide",
+                "text": "Руководство по тестированию",
                 "url": ""
             }
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "Приступая к работе",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Установка",
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "Настройка веб-сервера",
                 "url": "/webserver-setup"
             },
             {
@@ -75,11 +75,11 @@
         ]
     },
     {
-        "text": "Environments",
+        "text": "Окружение",
         "url": "",
         "menu": [
             {
-                "text": "Phalcon Compose (Docker)",
+                "text": "Phalcon Compose",
                 "url": "/environments-docker"
             },
             {
@@ -87,39 +87,39 @@
                 "url": "/environments-nanobox"
             },
             {
-                "text": "Phalcon Box (Vagrant)",
+                "text": "Phalcon Box",
                 "url": "/environments-vagrant"
             }
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "Инструменты разработчика",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Установка",
                 "url": "/devtools-installation"
             },
             {
-                "text": "Usage",
+                "text": "Использование",
                 "url": "/devtools-usage"
             },
             {
-                "text": "Debug",
+                "text": "Отладка",
                 "url": "/debug"
             }
         ]
     },
     {
-        "text": "Tutorials",
+        "text": "Уроки",
         "url": "",
         "menu": [
             {
-                "text": "Performance",
+                "text": "Производительность",
                 "url": "/performance"
             },
             {
-                "text": "Basic",
+                "text": "Основы",
                 "url": "/tutorial-base"
             },
             {
@@ -135,13 +135,13 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Сценарий использования",
                 "url": "/use-case"
             }
         ]
     },
     {
-        "text": "Core",
+        "text": "Ядро",
         "url": "",
         "menu": [
             {
@@ -157,11 +157,11 @@
                 "url": "/application-micro"
             },
             {
-                "text": "Cli",
+                "text": "CLI",
                 "url": "/application-cli"
             },
             {
-                "text": "DI Container",
+                "text": "DI контейнер",
                 "url": "/di"
             },
             {
@@ -171,15 +171,15 @@
         ]
     },
     {
-        "text": "Services",
+        "text": "Сервисы",
         "url": "",
         "menu": [
             {
-                "text": "Cache",
+                "text": "Кэш",
                 "url": "/cache"
             },
             {
-                "text": "Config",
+                "text": "Конфигурация",
                 "url": "/config"
             },
             {
@@ -195,17 +195,17 @@
                 "url": "/logging"
             },
             {
-                "text": "Queue",
+                "text": "Очередь",
                 "url": "/queue"
             }
         ]
     },
     {
-        "text": "Database",
+        "text": "База данных",
         "url": "",
         "menu": [
             {
-                "text": "Layer",
+                "text": "Слой",
                 "url": "/db-layer"
             },
             {
@@ -217,7 +217,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "Модели",
                 "url": "/db-models"
             },
             {
@@ -225,35 +225,35 @@
                 "url": "/db-models-advanced"
             },
             {
-                "text": "Behaviors",
+                "text": "Поведения",
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Cache",
+                "text": "Кэш",
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "События",
                 "url": "/db-models-events"
             },
             {
-                "text": "Metadata",
+                "text": "Метаданные",
                 "url": "/db-models-metadata"
             },
             {
-                "text": "Relationships",
+                "text": "Связи",
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transactions",
+                "text": "Транзакции",
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "Валидаторы",
                 "url": "/db-models-validation"
             },
             {
-                "text": "Migrations",
+                "text": "Миграции",
                 "url": "/db-migrations"
             },
             {
@@ -263,15 +263,15 @@
         ]
     },
     {
-        "text": "Front End",
+        "text": "Фронтенд",
         "url": "",
         "menu": [
             {
-                "text": "Assets",
+                "text": "Медиа-ресурсы",
                 "url": "/assets"
             },
             {
-                "text": "Flash Messenger",
+                "text": "Всплывающие сообщения",
                 "url": "/flash"
             },
             {
@@ -279,15 +279,15 @@
                 "url": "/forms"
             },
             {
-                "text": "Image",
+                "text": "Изображения",
                 "url": "/image"
             },
             {
-                "text": "Tag",
+                "text": "Теги",
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "Представления",
                 "url": "/views"
             },
             {
@@ -297,19 +297,19 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "Бизнес-логика",
         "url": "",
         "menu": [
             {
-                "text": "Access Control Lists",
+                "text": "Контроль доступа",
                 "url": "/acl"
             },
             {
-                "text": "Annotations",
+                "text": "Аннотации",
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "Контроллеры",
                 "url": "/controllers"
             },
             {
@@ -317,27 +317,27 @@
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "Управление событиями",
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Фильтры",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "Маршрутизация",
                 "url": "/routing"
             },
             {
-                "text": "Sessions",
+                "text": "Сессии",
                 "url": "/session"
             },
             {
-                "text": "Url",
+                "text": "URL",
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "Валидация",
                 "url": "/validation"
             }
         ]
@@ -361,15 +361,15 @@
         ]
     },
     {
-        "text": "Security",
+        "text": "Безопасность",
         "url": "",
         "menu": [
             {
-                "text": "Crypto",
+                "text": "Шифрование",
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Безопасность",
                 "url": "/security"
             }
         ]
@@ -383,7 +383,7 @@
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Перевод",
                 "url": "/translate"
             }
         ]
