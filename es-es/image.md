@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -16,7 +18,7 @@ layout: article language: 'en' version: '4.0'
 
 ## Adapters
 
-Este componente hace uso de adaptadores para encapsular programas específicos de manipulación de imagen. Son compatibles los siguientes programas de manipulación de imágenes:
+This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
 | Clase                                                                 | Descripción                                                                          |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
@@ -27,7 +29,7 @@ Este componente hace uso de adaptadores para encapsular programas específicos d
 
 ### Factory
 
-Carga una clase de adaptador de imagen utilizando la opción de `adapter`.
+Loads an Image Adapter class using `adapter` option.
 
 ```php
 <?php
@@ -54,7 +56,7 @@ The [Phalcon\Image\AdapterInterface](api/Phalcon_Image_AdapterInterface) interfa
 
 ## Guardando y leyendo imágenes
 
-Antes de comenzar con las distintas características de los componentes de la imagen, vale la pena entender cómo guardar y representar estas imágenes.
+Before we begin with the various features of the image component, it's worth understanding how to save and render these images.
 
 ```php
 <?php
@@ -78,7 +80,7 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 $image->save('new-image.jpg');
 ```
 
-También puede cambiar el formato de la imagen:
+You can also change the format of the image:
 
 ```php
 <?php
@@ -91,7 +93,7 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 $image->save('image.png');
 ```
 
-Cuando se guarda como un archivo JPEG, puede especificar la calidad como segundo parámetro:
+When saving as a JPEG, you can also specify the quality as the second parameter:
 
 ```php
 <?php
@@ -108,7 +110,7 @@ $image->save('image.jpg', 80);
 
 ## Redimensionando imágenes
 
-Hay varios modos de redimensionamiento:
+There are several modes of resizing:
 
 * `\Phalcon\Image::WIDTH`
 * `\Phalcon\Image::HEIGHT`
@@ -122,7 +124,7 @@ Hay varios modos de redimensionamiento:
 
 ### `\Phalcon\Image::WIDTH`
 
-Automáticamente se generará la altura para mantener las proporciones del mismo; Si se especifica una altura, se ignorará.
+The height will automatically be generated to keep the proportions the same; if you specify a height, it will be ignored.
 
 ```php
 <?php
@@ -142,7 +144,7 @@ $image->save('resized-image.jpg');
 
 ### `\Phalcon\Image::HEIGHT`
 
-Se generará automáticamente el ancho para mantener las proporciones del mismo; Si se especifica un ancho, se ignorará.
+The width will automatically be generated to keep the proportions the same; if you specify a width, it will be ignored.
 
 ```php
 <?php
@@ -207,7 +209,7 @@ $image->save('resized-image.jpg');
 
 ## Recortar imágenes
 
-Por ejemplo, para obtener un cuadrado de 100x100 pixels del centro de la imagen:
+For example, to get a 100px by 100px square from the centre of the image:
 
 ```php
 <?php
@@ -243,7 +245,7 @@ $image->save('rotated-image.jpg');
 
 ## Volteando imágenes
 
-Puede voltear una imagen horizontalmente (utilizando la constante de `\Phalcon\Image::HORIZONTAL`) y verticalmente (con la constante `\Phalcon\Image::VERTICAL`):
+You can flip an image horizontally (using the `\Phalcon\Image::HORIZONTAL` constant) and vertically (using the `\Phalcon\Image::VERTICAL` constant):
 
 ```php
 <?php
@@ -262,7 +264,7 @@ $image->save('flipped-image.jpg');
 
 ## Afilado de imágenes
 
-El método `sharpen()` toma un solo parámetro, un número entero entre 0 (ningún efecto) y 100 (muy agudo):
+The `sharpen()` method takes a single parameter - an integer between 0 (no effect) and 100 (very sharp):
 
 ```php
 <?php
@@ -301,7 +303,7 @@ $image->watermark(
 $image->save('watermarked-image.jpg');
 ```
 
-Por supuesto, también puede manipular la imagen de marca de agua antes de aplicarla a la imagen principal:
+Of course, you can also manipulate the watermarked image before applying it to the main image:
 
 ```php
 <?php
@@ -334,7 +336,7 @@ $image->save('watermarked-image.jpg');
 
 ## Imágenes borrosas
 
-El método `blur()` toma un solo parámetro, un número entero entre 0 (ningún efecto) y 100 (muy borrosa):
+The `blur()` method takes a single parameter - an integer between 0 (no effect) and 100 (very blurry):
 
 ```php
 <?php
@@ -350,7 +352,7 @@ $image->save('blurred-image.jpg');
 
 ## Pixelando imágenes
 
-El método `pixelate()` toma un solo parámetro, cuanto mayor sea el número entero, el más pixelada la imagen que se convierte:
+The `pixelate()` method takes a single parameter - the higher the integer, the more pixelated the image becomes:
 
 ```php
 <?php
