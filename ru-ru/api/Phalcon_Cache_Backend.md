@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend'
 
 # Abstract class **Phalcon\Cache\Backend**
 
-*implements* [Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface)
+*implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
 
@@ -38,7 +38,7 @@ public **setLastKey** (*mixed* $lastKey)
 
 ...
 
-public **__construct** ([Phalcon\Cache\FrontendInterface](/4.0/en/api/Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
+public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
 Phalcon\Cache\Backend constructor
 
@@ -62,22 +62,22 @@ public *int* **getLifetime** ()
 
 Gets the last lifetime set
 
-abstract public **get** (*mixed* $keyName, [*mixed* $lifetime]) inherited from [Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface)
+abstract public **get** (*mixed* $keyName, [*mixed* $lifetime]) inherited from [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
 ...
 
-abstract public **save** ([*mixed* $keyName], [*mixed* $content], [*mixed* $lifetime], [*mixed* $stopBuffer]) inherited from [Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface)
+abstract public **save** ([*mixed* $keyName], [*mixed* $content], [*mixed* $lifetime], [*mixed* $stopBuffer]) inherited from [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
 ...
 
-abstract public **delete** (*mixed* $keyName) inherited from [Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface)
+abstract public **delete** (*mixed* $keyName) inherited from [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
 ...
 
-abstract public **queryKeys** ([*mixed* $prefix]) inherited from [Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface)
+abstract public **queryKeys** ([*mixed* $prefix]) inherited from [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
 ...
 
-abstract public **exists** ([*mixed* $keyName], [*mixed* $lifetime]) inherited from [Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface)
+abstract public **exists** ([*mixed* $keyName], [*mixed* $lifetime]) inherited from [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
 ...
