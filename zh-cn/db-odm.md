@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -279,13 +278,13 @@ $robots = Robots::find(
 
 可用的查询选项有：
 
-| Parameter    | 描述                                                                                                                                                                                           | 示例                                                      |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
-| `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`               |
-| `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | `'sort' => array('name' => -1, 'status' => 1)` |
-| `limit`      | 限制结果缩小到一定范围内查询的结果                                                                                                                                                                            | `'limit' => 10`                                      |
-| `skip`       | Skips a number of results                                                                                                                                                                    | `'skip' => 50`                                       |
+| Parameter    | 描述                                                                                                                             | 示例                                                      |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| `conditions` | 查找操作的搜索条件。 用于提取只有那些满足指定的条件的记录。 By default Phalcon_model assumes the first parameter are the conditions.                        | `'conditions' => array('$gt' => 1990)`            |
+| `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned | `'fields' => array('name' => true)`               |
+| `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward    | `'sort' => array('name' => -1, 'status' => 1)` |
+| `limit`      | 限制结果缩小到一定范围内查询的结果                                                                                                              | `'limit' => 10`                                      |
+| `skip`       | Skips a number of results                                                                                                      | `'skip' => 50`                                       |
 
 If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](https://www.php.net/manual/en/mongo.sqltomongo.php).
 
