@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -90,7 +89,7 @@ The `master` branch will always contain the latest stable version of Phalcon Box
 You can find the latest stable version on the [Github Release Page](https://github.com/phalcon/box/releases):
 
 ```bash
-# Clonar el lanzamiento deseado...
+# Clone the desired release...
 git checkout v2.4.0
 ```
 
@@ -193,7 +192,7 @@ sites:
       to:  /home/vagrant/workspace/phalcon/public
 ```
 
-You can use the `type` parameter to specify the type of Nginx configuration for the site. For example:
+You can use the `type` parameter to specify the type of Nginx configuration for the site. Por ejemplo:
 
 ```yaml
 sites:
@@ -557,7 +556,7 @@ You can update Phalcon Box in two simple steps.
 vagrant box update
 ```
 
-1. A continuación, necesitará actualizar el código de fuente de la Caja de Phalcon. Si clonaron el repositorio puede simplemente
+1. Next, you need to update the Phalcon Box source code. If you cloned the repository you can simply
 
 ```bash
 git pull origin master
@@ -619,7 +618,7 @@ vagrant plugin install vagrant-vbguest
 
 **Problem:**
 
-> Se produjo un error mientras se ejecuta el `VBoxManage`, un CLI utilizado por Vagrant para el control de VirtualBox. A continuación se muestra el comando y el stderr.
+> There was an error while executing `VBoxManage`, a CLI used by Vagrant for controlling VirtualBox. The command and stderr is shown below.
 > 
 > Comando: `["startvm", "9d2b95e1-0fdd-40f4-ad65-4b56eb4315f8", "--type", "headless"]`
 > 
