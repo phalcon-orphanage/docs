@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Tag\Select'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Tag\Select'
+---
 # Abstract class **Phalcon\Tag\Select**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/tag/select.zep" class="btn btn-default btn-sm">源码在GitHub</a>
