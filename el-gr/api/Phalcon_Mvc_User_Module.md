@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\User\Module'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\User\Module'
+---
 # Class **Phalcon\Mvc\User\Module**
 
 *extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
