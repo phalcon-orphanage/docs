@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Loader'
 
 # Class **Phalcon\Loader**
 
-*implements* [Phalcon\Events\EventsAwareInterface](/4.0/en/api/Phalcon_Events_EventsAwareInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/loader.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
@@ -39,7 +39,7 @@ $adapter = new \Example\Adapter\Some();
 
 ## 方法
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
 设置事件管理器
 
@@ -59,7 +59,7 @@ public **registerNamespaces** (*array* $namespaces, [*mixed* $merge])
 
 Register namespaces and their related directories
 
-public **setFileCheckingCallback** (*mixed* $callback = null): [Phalcon\Loader](/4.0/en/api/Phalcon_Loader)
+public **setFileCheckingCallback** (*mixed* $callback = null): [Phalcon\Loader](Phalcon_Loader)
 
 Sets the file check callback.
 
@@ -77,7 +77,7 @@ $loader->setFileCheckingCallback("stream_resolve_include_path");
 $loader->setFileCheckingCallback(null);
 ```
 
-A [Phalcon\Loader\Exception](/4.0/en/api/Phalcon_Loader_Exception) is thrown if the $callback parameter is not a `callable` or `null`;
+A [Phalcon\Loader\Exception](Phalcon_Loader_Exception) is thrown if the $callback parameter is not a `callable` or `null`;
 
 protected **prepareNamespace** (*array* $namespace)
 
