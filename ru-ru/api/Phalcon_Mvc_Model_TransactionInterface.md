@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\TransactionInterface'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\TransactionInterface'
+---
 # Interface **Phalcon\Mvc\Model\TransactionInterface**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/transactioninterface.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
 
 ## Methods
 
-abstract public **setTransactionManager** ([Phalcon\Mvc\Model\Transaction\ManagerInterface](/4.0/en/api/Phalcon_Mvc_Model_Transaction_ManagerInterface) $manager)
+abstract public **setTransactionManager** ([Phalcon\Mvc\Model\Transaction\ManagerInterface](Phalcon_Mvc_Model_Transaction_ManagerInterface) $manager)
 
 ...
 
@@ -50,6 +50,6 @@ abstract public **isValid** ()
 
 ...
 
-abstract public **setRollbackedRecord** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $record)
+abstract public **setRollbackedRecord** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $record)
 
 ...
