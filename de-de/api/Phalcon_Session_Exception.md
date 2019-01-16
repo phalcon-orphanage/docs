@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Session\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Session\Exception'
+---
 # Class **Phalcon\Session\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)
