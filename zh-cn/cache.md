@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -463,10 +462,10 @@ The available frontend adapters that are used as interfaces or input sources to 
 | 适配器                                                                       | 描述                                                                                                                                                             |
 | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Phalcon\Cache\Frontend\Output](api/Phalcon_Cache_Frontend_Output)     | 从标准的 PHP 输出中读取输入的数据。                                                                                                                                           |
-| [Phalcon\Cache\Frontend\Data](api/Phalcon_Cache_Frontend_Data)         | 它用来缓存任何类型的 PHP 数据 （大数组、 对象、 文本等）。数据序列化之前存储在后端。                                                                                                                 |
-| [Phalcon\Cache\Frontend\Base64](api/Phalcon_Cache_Frontend_Base64)     | 它用来缓存二进制数据。使用 `base64_encode` 序列化数据之前将存储在后端。                                                                                                                   |
+| [Phalcon\Cache\Frontend\Data](api/Phalcon_Cache_Frontend_Data)         | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                     |
+| [Phalcon\Cache\Frontend\Base64](api/Phalcon_Cache_Frontend_Base64)     | It's used to cache binary data. The data is serialized using `base64_encode` before be stored in the backend.                                                  |
 | [Phalcon\Cache\Frontend\Json](api/Phalcon_Cache_Frontend_Json)         | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks. |
-| [Phalcon\Cache\Frontend\Igbinary](api/Phalcon_Cache_Frontend_Igbinary) | 它用来缓存任何类型的 PHP 数据 （大数组、 对象、 文本等）。使用 `Igbinary` 序列化数据之前将存储在后端。                                                                                                  |
+| [Phalcon\Cache\Frontend\Igbinary](api/Phalcon_Cache_Frontend_Igbinary) | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using `Igbinary` before be stored in the backend.                 |
 | [Phalcon\Cache\Frontend\None](api/Phalcon_Cache_Frontend_None)         | 它用来缓存任何类型的 PHP 数据没有将其序列化。                                                                                                                                      |
 
 <a name='adapters-frontend-custom'></a>
