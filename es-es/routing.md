@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Ruteo
 
-El componente router le permite definir las rutas que se asignan a los controladores o gestores que deben recibir la solicitud. Un router simplemente procesa un URI para determinar esta información. El router tiene dos modos: MVC y match mode. El primer modo es ideal para trabajar con aplicaciones de MVC.
+The router component allows you to define routes that are mapped to controllers or handlers that should receive the request. A router simply parses a URI to determine this information. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
 
 <a name='defining'></a>
 
 ## Definición de rutas
 
-[Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) provides advanced routing capabilities. En el modo MVC, se puede definir rutas y asignarlas a controladores/acciones. Una ruta se define de la siguiente manera:
+[Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) provides advanced routing capabilities. In MVC mode, you can define routes and map them to controllers/actions that you require. A route is defined as follows:
 
 ```php
 <?php
@@ -1082,7 +1084,7 @@ foreach ($testRoutes as $testRoute) {
 
 ## Eventos
 
-Como muchos otros componentes, los enrutadores tambien tienen eventos. Nunguno de ellos puede detener la operación en curso. A continuación una lista de los eventos disponibles
+Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
 | Evento                     | Descripción                                            |
 | -------------------------- | ------------------------------------------------------ |
