@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Backend'
+---
 # Abstract class **Phalcon\Cache\Backend**
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-このクラスはバックエンドアダプタの共通機能を実装します。バックエンドキャッシュアダプタはこのクラスを拡張できます。
+This class implements common functionality for backend adapters. A backend cache adapter may extend this class
 
 ## メソッド
 
@@ -44,7 +44,7 @@ Phalcon\Cache\Backend constructor
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime])
 
-キャッシュを開始します。このkeynameは作成したフラグメントの特定に使用できます。
+キャッシュを開始します。 このkeynameは作成したフラグメントの特定に使用できます。
 
 public **stop** ([*mixed* $stopBuffer])
 
