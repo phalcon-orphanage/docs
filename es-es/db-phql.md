@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -957,7 +956,7 @@ Being a high-level language, PHQL gives developers the ability to personalize an
 
 * El PHQL es analizado y convertido en una Representación Intermedia (IR) que es independiente de la implementada por el sistema de base de datos de SQL
 * La IR se convierte en SQL válido según el sistema de base de datos asociado al modelo
-* Las declaraciones de PHQL se analizan una vez y almacenan en caché en la memoria. Las ejecuciones posteriores de la misma instrucción dan como resultado una ejecución ligeramente más rápida
+* PHQL statements are parsed once and cached in memory. Further executions of the same statement result in a slightly faster execution
 
 <a name='raw-sql'></a>
 
