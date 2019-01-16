@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\Cookie\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Http\Cookie\Exception'
+---
 # Class **Phalcon\Http\Cookie\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)
