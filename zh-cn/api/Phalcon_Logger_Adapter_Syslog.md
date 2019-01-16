@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Logger\Adapter\Syslog'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Logger\Adapter\Syslog'
+---
 # Class **Phalcon\Logger\Adapter\Syslog**
 
 *extends* abstract class [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
