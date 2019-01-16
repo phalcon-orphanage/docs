@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\ReferenceInterface'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\ReferenceInterface'
+---
 # Interface **Phalcon\Db\ReferenceInterface**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/referenceinterface.zep" class="btn btn-default btn-sm">源码在GitHub</a>
