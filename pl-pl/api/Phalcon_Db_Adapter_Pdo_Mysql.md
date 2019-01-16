@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\Adapter\Pdo\Mysql'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Adapter\Pdo\Mysql'
+---
 # Class **Phalcon\Db\Adapter\Pdo\Mysql**
 
 *extends* abstract class [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
