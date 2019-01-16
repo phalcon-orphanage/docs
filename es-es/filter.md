@@ -4,17 +4,19 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Filtrado y Limpieza
 
-Limpiar o desinfectar la entrada del usuario es una parte crítica del desarrollo de software. Confiar o dejar de desinfectar la entrada del usuario podría conducir a un acceso no autorizado al contenido de la aplicación, principalmente datos de los usuarios, o incluso al servidor de la aplicación donde está alojada.
+Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
 ![](/assets/images/content/filter-sql.png)
 
-[Imagen completa en XKCD](https://xkcd.com/327)
+[Full image on XKCD](https://xkcd.com/327)
 
 The [Phalcon\Filter](api/Phalcon_Filter) component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
 
@@ -22,7 +24,7 @@ The [Phalcon\Filter](api/Phalcon_Filter) component provides a set of commonly us
 
 ## Tipos de filtros incorporados
 
-Los siguientes filtros están incorporados en este componente:
+The following are the built-in filters provided by this component:
 
 | Nombre    | Descripción                                                                                                          |
 | --------- | -------------------------------------------------------------------------------------------------------------------- |
