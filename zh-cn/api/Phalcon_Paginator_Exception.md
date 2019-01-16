@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Paginator\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Paginator\Exception'
+---
 # Class **Phalcon\Paginator\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)
