@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -63,7 +62,7 @@ This component uses by default PHP itself as the template engine, therefore view
 
 | Nazwa             | Plik                          | Description                                                                                                                                                                                                                   |
 | ----------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Widok akcji       | app/views/posts/show.phtml    | To jest widok związany z konkretną akcją. Będzie wyświetlony wtedy, gdy akcja `show` zostanie wykonana.                                                                                                                       |
+| Widok akcji       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                             |
 | Layout kontrolera | app/views/layouts/posts.phtml | Ten widok związany jest z kontrolerem. Będzie on wyświetlany tylko dla każdej akcji wykonanej w ramach kontrolera "posts". Cały kod zaimplementowany w layoucie będzie ponownie użyty dla wszystkich akcji w tym kontrolerze. |
 | Layout główny     | app/views/index.phtml         | To jest główna akcja, która będzie wyświetlona dla każdego kontrolera lub akcji wykonanej w aplikacji.                                                                                                                        |
 
