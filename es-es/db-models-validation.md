@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -60,11 +62,11 @@ class Robots extends Model
 }
 ```
 
-En el ejemplo anterior se realiza una validación utilizando el validador integrado 'InclusionIn'. Comprueba el valor del campo `type` en una lista de dominios. Si el valor no está incluido en el método entonces el validador fallará y devolverá false.
+The above example performs a validation using the built-in validator 'InclusionIn'. It checks the value of the field `type` in a domain list. If the value is not included in the method then the validator will fail and return false.
 
 <h5 class='alert alert-warning'>For more information on validators, see the <a href="/4.0/en/validation">Validation documentation</a></h5>
 
-La idea de crear validadores es hacerlos reutilizables entre varios modelos. Un validador puede también ser tan simple como:
+The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
 
 ```php
 <?php
@@ -127,7 +129,7 @@ if ($robot->save() === false) {
 | `InvalidCreateAttempt` | Se produce cuando un registro que intenta crearse ya existe                                                                                 |
 | `InvalidUpdateAttempt` | Se produce cuando un registro que se intenta actualizar no existe                                                                           |
 
-El método `getMessages()` puede ser reemplazado en un modelo para reemplazar/traducir los mensajes generados automáticamente por el ORM:
+The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
 ```php
 <?php
@@ -167,7 +169,7 @@ class Robots extends Model
 
 ## Eventos de validación fallidos
 
-Otro tipo de eventos están disponibles cuando el proceso de validación de datos encuentra cualquier inconsistencia:
+Another type of events are available when the data validation process finds any inconsistency:
 
 | Operación                     | Nombre              | Explicación                                                                  |
 | ----------------------------- | ------------------- | ---------------------------------------------------------------------------- |
