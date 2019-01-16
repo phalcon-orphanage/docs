@@ -27,7 +27,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Genel Bakış",
+                "text": "Overview",
                 "url": "/contributions"
             },
             {
@@ -47,8 +47,8 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing guide",
-                "url": ""
+                "text": "Testing environment",
+                "url": "testing-environment"
             }
         ]
     },
@@ -233,7 +233,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Olaylar",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {
