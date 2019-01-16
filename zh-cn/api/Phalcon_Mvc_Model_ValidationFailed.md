@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\ValidationFailed'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\ValidationFailed'
+---
 # Class **Phalcon\Mvc\Model\ValidationFailed**
 
 *extends* class [Phalcon\Mvc\Model\Exception](Phalcon_Mvc_Model_Exception)
