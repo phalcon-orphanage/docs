@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\Column'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Column'
+---
 # Class **Phalcon\Db\Column**
 
 *implements* [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface)
