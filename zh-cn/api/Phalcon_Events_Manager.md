@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Events\Manager'
 
 # Class **Phalcon\Events\Manager**
 
-*implements* [Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface)
+*implements* [Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/events/manager.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
@@ -46,7 +46,7 @@ public **detachAll** ([*mixed* $type])
 
 Removes all events from the EventsManager
 
-final public *mixed* **fireQueue** ([SplPriorityQueue](https://php.net/manual/en/class.splpriorityqueue.php) | *array* $queue, [Phalcon\Events\Event](/4.0/en/api/Phalcon_Events_Event) $event)
+final public *mixed* **fireQueue** ([SplPriorityQueue](https://php.net/manual/en/class.splpriorityqueue.php) | *array* $queue, [Phalcon\Events\Event](Phalcon_Events_Event) $event)
 
 Internal handler to call a queue of events
 
