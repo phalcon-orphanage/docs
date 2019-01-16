@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\Reference'
 
 # Class **Phalcon\Db\Reference**
 
-*implements* [Phalcon\Db\ReferenceInterface](/4.0/en/api/Phalcon_Db_ReferenceInterface)
+*implements* [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/reference.zep" class="btn btn-default btn-sm">源码在GitHub</a>
 
