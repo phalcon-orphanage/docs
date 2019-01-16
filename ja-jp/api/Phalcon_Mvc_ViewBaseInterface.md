@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\ViewBaseInterface'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\ViewBaseInterface'
+---
 # Interface **Phalcon\Mvc\ViewBaseInterface**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/viewbaseinterface.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
