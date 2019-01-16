@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Escaper'
 
 # Class **Phalcon\Escaper**
 
-*implements* [Phalcon\EscaperInterface](/4.0/en/api/Phalcon_EscaperInterface)
+*implements* [Phalcon\EscaperInterface](Phalcon_EscaperInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/escaper.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
 
