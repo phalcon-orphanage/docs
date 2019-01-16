@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Assets\Filters\Jsm
 
 # Class **Phalcon\Assets\Filters\Jsmin**
 
-*implements* [Phalcon\Assets\FilterInterface](/4.0/en/api/Phalcon_Assets_FilterInterface)
+*implements* [Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/filters/jsmin.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
