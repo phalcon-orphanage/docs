@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -73,7 +72,7 @@ Now, there is a file called `app/config/loader.php` where all the auto-loading s
 
 // ...
 
-// Utilice el autocargador de composer para cargar todas las dependencias
+// Use composer autoloader to load vendor classes
 require_once BASE_PATH . '/vendor/autoload.php';
 ```
 
