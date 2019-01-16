@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -957,7 +956,7 @@ Being a high-level language, PHQL gives developers the ability to personalize an
 
 * 对 PHQL 进行解析并转换为中间表示 (IR), 该表示独立于数据库系统实现的 sql
 * IR 根据与模型关联的数据库系统转换为有效的 sql
-* PHQL 语句被分析一次, 并缓存在内存中。进一步执行同一语句可使执行速度稍快
+* PHQL statements are parsed once and cached in memory. Further executions of the same statement result in a slightly faster execution
 
 <a name='raw-sql'></a>
 
