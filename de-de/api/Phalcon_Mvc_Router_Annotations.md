@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Router\Annotations'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Router\Annotations'
+---
 # Class **Phalcon\Mvc\Router\Annotations**
 
 *extends* class [Phalcon\Mvc\Router](Phalcon_Mvc_Router)

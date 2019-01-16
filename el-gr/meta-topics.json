@@ -1,6 +1,6 @@
 [
     {
-        "text": "General",
+        "text": "Γενικά",
         "url": "/introduction",
         "menu": [
             {
@@ -8,26 +8,26 @@
                 "url": "/introduction"
             },
             {
-                "text": "Σημειώσεις έκδοσης",
+                "text": "Release Notes",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Αναβάθμιση",
+                "text": "Upgrade",
                 "url": ""
             },
             {
-                "text": "Σπόνσορες",
+                "text": "Sponsors",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Contributions",
+        "text": "Συνεισφορές",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "Επισκόπηση",
                 "url": "/contributions"
             },
             {
@@ -53,7 +53,7 @@
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "Ξεκινώντας",
         "url": "",
         "menu": [
             {
@@ -75,7 +75,7 @@
         ]
     },
     {
-        "text": "Environments",
+        "text": "Περιβάλλοντα",
         "url": "",
         "menu": [
             {
@@ -93,7 +93,7 @@
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "Εργαλεία ανάπτυξης",
         "url": "",
         "menu": [
             {
@@ -105,7 +105,7 @@
                 "url": "/devtools-usage"
             },
             {
-                "text": "Debug",
+                "text": "Εντοπισμός σφαλμάτων",
                 "url": "/debug"
             }
         ]
@@ -141,7 +141,7 @@
         ]
     },
     {
-        "text": "Core",
+        "text": "Πυρήνας",
         "url": "",
         "menu": [
             {
@@ -205,7 +205,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Layer",
+                "text": "Στρώμα",
                 "url": "/db-layer"
             },
             {
@@ -233,7 +233,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Γεγονότα",
                 "url": "/db-models-events"
             },
             {

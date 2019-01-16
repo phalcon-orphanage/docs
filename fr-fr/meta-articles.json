@@ -21,7 +21,7 @@
       "url": "access-controls"
     },
     {
-      "text": "Querying an ACL",
+      "text": "Interroger une ACL",
       "url": "querying"
     },
     {
@@ -59,7 +59,7 @@
       "url": "setup"
     },
     {
-      "text": "Adding Roles to the ACL",
+      "text": "Ajout de rôles à l’ACL",
       "url": "factory"
     },
     {

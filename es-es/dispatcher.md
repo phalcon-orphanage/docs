@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -58,12 +57,12 @@ The code above lacks validations, filters and additional checks, but it demonstr
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | --------------------- |
 | beforeDispatchLoop   | Activado antes de entrar en el bucle de despacho. En este momento el distribuidor no sabe si existen el controlador o las acciones a ejecutarse. El dispatcher sólo conoce la información pasada por el Router.   | Si                     | Oyentes               |
 | beforeDispatch       | Activado después de entrar en el bucle de despacho. En este momento el distribuidor no sabe si existen el controlador o las acciones a ejecutarse. El dispatcher sólo conoce la información pasada por el Router. | Si                     | Oyentes               |
-| beforeExecuteRoute   | Dispara antes de ejecutar el método de controlador/acción. En este punto el dispatcher ha sido inicializado el controlador y sabe que si existe la acción.                                                        | Si                     | Listeners/Controllers |
+| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                           | Si                     | Listeners/Controllers |
 | initialize           | Permite inicializar globalmente el controlador en la solicitud                                                                                                                                                    | No                     | Controladores         |
-| afterExecuteRoute    | Se activa después de ejecutar el método controlador/acción. No se puede detener la operación, sólo utilice este evento para hacer limpieza tras ejecutar la acción                                                | No                     | Listeners/Controllers |
+| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                             | No                     | Listeners/Controllers |
 | beforeNotFoundAction | Se activa cuando la acción no se encuentra en el controlador                                                                                                                                                      | Si                     | Oyentes               |
 | beforeException      | Disparado antes de que el dispatcher lance una excepción                                                                                                                                                          | Si                     | Oyentes               |
-| afterDispatch        | Se activa después de ejecutar el método controlador/acción. No se puede detener la operación, sólo utilice este evento para hacer limpieza tras ejecutar la acción                                                | Si                     | Oyentes               |
+| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                             | Si                     | Oyentes               |
 | afterDispatchLoop    | Activa después de salir del bucle de despacho                                                                                                                                                                     | No                     | Oyentes               |
 | afterBinding         | Se dispara después de que los modelos están enlazados pero antes de ejecutar la ruta                                                                                                                              | Si                     | Listeners/Controllers |
 

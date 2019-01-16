@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Annotations\Adapter\Memory'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Annotations\Adapter\Memory'
+---
 # Class **Phalcon\Annotations\Adapter\Memory**
 
 *extends* abstract class [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
@@ -12,7 +12,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Annotations\Adapte
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/adapter/memory.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-パースしたアノテーションをメモリに保存します。このアダプターは開発/テスト向けです。
+Stores the parsed annotations in memory. This adapter is the suitable development/testing
 
 ## メソッド
 

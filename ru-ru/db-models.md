@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -79,7 +78,7 @@ class RobotParts extends Model
 
 <a name='properties-setters-getters'></a>
 
-### Публичные свойства vs геттеры/сеттеры
+### Public properties vs. Setters/Getters
 
 Models can be implemented public properties, meaning that each property can be read/updated from any part of the code that has instantiated that model class:
 
@@ -315,10 +314,10 @@ $robots = Robots::find(
 | Параметр      | Описание                                                                                                                                                                                                                | Пример                                                               |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Условие поиска. Используется для выделения только тех записей, которые полностью удовлетворяют условиям поиска. By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Используется для указания списка столбцов возвращаемого в модели. Объект будет не полным при использовании этого параметра.                                                                                             | `'columns' => 'id, name'`                                         |
+| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                               | `'columns' => 'id, name'`                                         |
 | `bind`        | Используется вместе с условием поиска для подстановки значений вместо соответствующих псевдопеременных и экранирования значений для увеличения безопасности.                                                            | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
 | `bindTypes`   | При использовании подстановки значений вместо псевдопеременных, вы можете использовать этот параметр, для указания типа данных, что еще больше увеличит безопасность.                                                   | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
-| `order`       | Используется для сортировки результатов. Можно использовать несколько полей через запятую.                                                                                                                              | `'order' => 'name DESC, status'`                                  |
+| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                                              | `'order' => 'name DESC, status'`                                  |
 | `limit`       | Ограничивает результаты запроса.                                                                                                                                                                                        | `'limit' => 10`                                                   |
 | `offset`      | Смещает результаты запроса на определенное значение.                                                                                                                                                                    | `'offset' => 5`                                                   |
 | `group`       | Позволяет выбирать данные используя несколько записей и группировать результат по одному или нескольким столбцам.                                                                                                       | `'group' => 'name, status'`                                       |

@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -161,7 +160,7 @@ use Phalcon\Mvc\Router;
 
 $router = new Router();
 
-// ... Definir rutas
+// ... Define routes
 
 $uri = str_replace($_SERVER['SCRIPT_NAME'], '', $_SERVER['REQUEST_URI']);
 
@@ -199,7 +198,7 @@ Generate static routes:
 
 <a name='static-vs-dynamic-uri'></a>
 
-## URI Estáticas vs Dinámicas
+## Static vs. Dynamic URIs
 
 This component allow you to set up a different base URI for static resources in the application:
 

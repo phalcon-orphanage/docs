@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -160,17 +159,17 @@ You can pass multiple environment variables from an external file to a service's
 
 ### Переменные phpMyAdmin
 
-| Переменная окружения | Описание                                                                                        | По умолчанию |
-| -------------------- | ----------------------------------------------------------------------------------------------- | ------------ |
-| `PMA_ARBITRARY`      | Если установлено в 1, соединение с сервером баз данных будет разрешено.                         | 1            |
-| `PMA_HOST`           | Определяет адрес MySQL сервера.                                                                 | mysql        |
-| `PMA_HOSTS`          | Определяет список адресов MySQL серверов. Используется только если переменная `PMA_HOST` пуста. |              |
-| `PMA_PORT`           | Определяет порт MySQL сервера.                                                                  | 3306         |
-| `PMA_VERBOSE`        | Определяет имя MySQL сервера.                                                                   |              |
-| `PMA_VERBOSES`       | Определяет список имен MySQL серверов. Используется только если переменная `PMA_VERBOSE` пуста. |              |
-| `PMA_USER`           | Определяет имя пользователя для конфигурирования аутентификации.                                | phalcon      |
-| `PMA_PASSWORD`       | Определяет пароль пользователя для конфигурирования аутентификации.                             | secret       |
-| `PMA_ABSOLUTE_URI`   | Определяет полный адрес к phpMyAdmin (например, https://pma.example.net/).                      |              |
+| Переменная окружения | Описание                                                                                                  | По умолчанию |
+| -------------------- | --------------------------------------------------------------------------------------------------------- | ------------ |
+| `PMA_ARBITRARY`      | Если установлено в 1, соединение с сервером баз данных будет разрешено.                                   | 1            |
+| `PMA_HOST`           | Определяет адрес MySQL сервера.                                                                           | mysql        |
+| `PMA_HOSTS`          | Define comma separated list of address/host names of the MySQL servers. Used only if `PMA_HOST` is empty. |              |
+| `PMA_PORT`           | Определяет порт MySQL сервера.                                                                            | 3306         |
+| `PMA_VERBOSE`        | Определяет имя MySQL сервера.                                                                             |              |
+| `PMA_VERBOSES`       | Define comma separated list of verbose names of the MySQL servers. Used only if `PMA_VERBOSE` is empty.   |              |
+| `PMA_USER`           | Определяет имя пользователя для конфигурирования аутентификации.                                          | phalcon      |
+| `PMA_PASSWORD`       | Определяет пароль пользователя для конфигурирования аутентификации.                                       | secret       |
+| `PMA_ABSOLUTE_URI`   | Определяет полный адрес к phpMyAdmin (например, https://pma.example.net/).                                |              |
 
 *See also* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
 

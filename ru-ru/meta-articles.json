@@ -1,11 +1,11 @@
 {
   "acl": [
     {
-      "text": "Overview",
+      "text": "Введение",
       "url": "overview"
     },
     {
-      "text": "Creating an ACL",
+      "text": "Создание списков контроля доступа",
       "url": "setup"
     },
     {
@@ -17,15 +17,15 @@
       "url": "adding-subjects"
     },
     {
-      "text": "Defining Access Controls",
+      "text": "Определение контроля доступа",
       "url": "access-controls"
     },
     {
-      "text": "Querying an ACL",
+      "text": "Запросы к ACL",
       "url": "querying"
     },
     {
-      "text": "Function based access",
+      "text": "Доступ на основе пользовательских функций",
       "url": "function-based-access"
     },
     {
@@ -37,186 +37,186 @@
       "url": "operationss-inheritance"
     },
     {
-      "text": "Serializing ACL lists",
+      "text": "Сериализация ACL списков",
       "url": "serialization"
     },
     {
-      "text": "Events",
+      "text": "События",
       "url": "events"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Реализация собственных адаптеров",
       "url": "custom-adapters"
     }
   ],
   "annotations": [
     {
-      "text": "Overview",
+      "text": "Введение",
       "url": "overview"
     },
     {
-      "text": "Factory",
+      "text": "Фабрика",
       "url": "setup"
     },
     {
-      "text": "Adding Roles to the ACL",
+      "text": "Добавление ролей к ACL",
       "url": "factory"
     },
     {
-      "text": "Reading Annotations",
+      "text": "Чтение аннотаций",
       "url": "reading"
     },
     {
-      "text": "Types of Annotations",
+      "text": "Типы аннотаций",
       "url": "types"
     },
     {
-      "text": "Practical Usage",
+      "text": "Практическое использование",
       "url": "usage",
       "menu": [
         {
-          "text": "Cache Enabler with Annotations",
+          "text": "Кэширование с помощью аннотаций",
           "level": 2,
           "url": "usage-cache"
         },
         {
-          "text": "Private/Public areas with Annotations",
+          "text": "Контроль доступа и аннотации",
           "level": 2,
           "url": "usage-access-management"
         }
       ]
     },
     {
-      "text": "Annotations Adapters",
+      "text": "Адаптеры аннотаций",
       "url": "adapters",
       "menu": [
         {
-          "text": "Implementing your own adapters",
+          "text": "Реализация собственных адаптеров",
           "level": 2,
           "url": "adapters-custom"
         }
       ]
     },
     {
-      "text": "External Resources",
+      "text": "Дополнительная литература",
       "url": "resources"
     }
   ],
   "application-cli": [
     {
-      "text": "Creating a CLI Application",
+      "text": "Создание консольного приложения",
       "url": "creating-cli-application"
     },
     {
-      "text": "Structure",
+      "text": "Структура",
       "url": "structure"
     },
     {
-      "text": "Creating a Bootstrap",
+      "text": "Создание загрузочного файла",
       "url": "creating-bootstrap"
     },
     {
-      "text": "Tasks",
+      "text": "Задачи",
       "url": "tasks"
     },
     {
-      "text": "Processing action parameters",
+      "text": "Обработка параметров",
       "url": "processing-action-parameters"
     },
     {
-      "text": "Running tasks in a chain",
+      "text": "Запуск цепочки команд",
       "url": "running-tasks-chain"
     }
   ],
   "application-micro": [
     {
-      "text": "Creating a Micro Application",
+      "text": "Создание микроприложения",
       "url": "creating-micro-application"
     },
     {
-      "text": "Routing",
+      "text": "Маршрутизация",
       "url": "routing",
       "menu": [
         {
-          "text": "Setup",
+          "text": "Настройка",
           "level": 2,
           "url": "routing-setup",
           "menu": [
             {
-              "text": "Application object",
+              "text": "Объект приложения",
               "level": 3,
               "url": "routing-setup-application"
             },
             {
-              "text": "Router object",
+              "text": "Объект Router",
               "level": 3,
               "url": "routing-setup-router"
             }
           ]
         },
         {
-          "text": "Rewrite Rules",
+          "text": "Правила перезаписи",
           "level": 2,
           "url": "rewrite-rules"
         },
         {
-          "text": "Handlers",
+          "text": "Обработчики",
           "level": 2,
           "url": "routing-handlers",
           "menu": [
             {
-              "text": "Definitions",
+              "text": "Определения",
               "level": 3,
               "url": "routing-handlers-definitions",
               "menu": [
                 {
-                  "text": "Anonymous Function",
+                  "text": "Анонимная функция",
                   "level": 4,
                   "url": "routing-handlers-anonymous-function"
                 },
                 {
-                  "text": "Function",
+                  "text": "Функция",
                   "level": 4,
                   "url": "routing-handlers-function"
                 },
                 {
-                  "text": "Static Method",
+                  "text": "Статический метод",
                   "level": 4,
                   "url": "routing-handlers-static-method"
                 },
                 {
-                  "text": "Method in an Object",
+                  "text": "Метод объекта",
                   "level": 4,
                   "url": "routing-handlers-object-method"
                 },
                 {
-                  "text": "Controllers",
+                  "text": "Контроллеры",
                   "level": 4,
                   "url": "routing-handlers-controllers"
                 }
               ]
             },
             {
-              "text": "Lazy Loading",
+              "text": "Загрузка по требованию",
               "level": 3,
               "url": "routing-handlers-controllers-lazy-loading",
               "menu": [
                 {
-                  "text": "Use case",
+                  "text": "Сценарий использования",
                   "level": 4,
                   "url": "routing-handlers-controllers-lazy-loading-use-case"
                 }
               ]
             },
             {
-              "text": "Not Found (404)",
+              "text": "Не найдено (404)",
               "level": 3,
               "url": "routing-handlers-not-found"
             }
           ]
         },
         {
-          "text": "Methods - Verbs",
+          "text": "Методы-глаголы",
           "level": 2,
           "url": "routing-verbs",
           "menu": [
@@ -263,62 +263,62 @@
           ]
         },
         {
-          "text": "Collections",
+          "text": "Коллекции",
           "level": 2,
           "url": "routing-collections"
         },
         {
-          "text": "Parameters",
+          "text": "Параметры",
           "level": 2,
           "url": "routing-parameters"
         },
         {
-          "text": "Redirections",
+          "text": "Перенаправления",
           "level": 2,
           "url": "routing-redirections"
         },
         {
-          "text": "URLs for Routes",
+          "text": "Адреса для маршрутов",
           "level": 2,
           "url": "routing-urls-for-routes"
         }
       ]
     },
     {
-      "text": "Dependency Injector",
+      "text": "Внедрение зависимостей",
       "url": "dependency-injector"
     },
     {
-      "text": "Responses",
+      "text": "Ответы",
       "url": "responses",
       "menu": [
         {
-          "text": "Direct output",
+          "text": "Прямой вывод",
           "level": 2,
           "url": "responses-direct-output"
         },
         {
-          "text": "Including another file",
+          "text": "Подключение внешнего файла",
           "level": 2,
           "url": "responses-include"
         },
         {
-          "text": "Direct output JSON",
+          "text": "Возврат JSON",
           "level": 2,
           "url": "responses-direct-output-json"
         },
         {
-          "text": "New Response object",
+          "text": "Новый объект Response",
           "level": 2,
           "url": "responses-new-response-object"
         },
         {
-          "text": "Application Response",
+          "text": "Общий объект Response",
           "level": 2,
           "url": "responses-application-response"
         },
         {
-          "text": "Return Application Response",
+          "text": "Объект Response как возвращаемое значение",
           "level": 2,
           "url": "responses-return-application-response"
         },
@@ -330,21 +330,21 @@
       ]
     },
     {
-      "text": "Events",
+      "text": "События",
       "url": "events",
       "menu": [
         {
-          "text": "Available events",
+          "text": "Доступные события",
           "level": 2,
           "url": "events-available-events",
           "menu": [
             {
-              "text": "Authentication example",
+              "text": "Пример: Аутентификация",
               "level": 3,
               "url": "events-available-events-authentication"
             },
             {
-              "text": "Not found example",
+              "text": "Пример: Страница не найдена",
               "level": 3,
               "url": "events-available-events-not-found"
             }
@@ -357,7 +357,7 @@
       "url": "",
       "menu": [
         {
-          "text": "Attached events",
+          "text": "Прикреплённые события",
           "level": 2,
           "url": "",
           "menu": [
@@ -379,71 +379,71 @@
           ]
         },
         {
-          "text": "Implementation",
+          "text": "Реализация",
           "level": 2,
           "url": ""
         },
         {
-          "text": "Setup",
+          "text": "Настройка",
           "level": 2,
           "url": ""
         },
         {
-          "text": "Events in Middleware",
+          "text": "События в Middleware",
           "level": 2,
           "url": "",
           "menu": [
             {
-              "text": "API example",
+              "text": "Пример API",
               "level": 3,
               "url": ""
             },
             {
-              "text": "Firewall Middleware",
+              "text": "Firewall",
               "level": 3,
               "url": ""
             },
             {
-              "text": "Not Found Middleware",
+              "text": "Не найдено",
               "level": 3,
               "url": ""
             },
             {
-              "text": "Redirect Middleware",
+              "text": "Перенаправление",
               "level": 3,
               "url": ""
             },
             {
-              "text": "CORS Middleware",
+              "text": "CORS",
               "level": 3,
               "url": ""
             },
             {
-              "text": "Request Middleware",
+              "text": "Запрос",
               "level": 3,
               "url": ""
             },
             {
-              "text": "Response Middleware",
+              "text": "Ответ",
               "level": 3,
               "url": ""
             }
           ]
         },
         {
-          "text": "Models",
+          "text": "Модели",
           "url": ""
         },
         {
-          "text": "Injecting Model Instances",
+          "text": "Внедрение моделей",
           "url": ""
         },
         {
-          "text": "Views",
+          "text": "Представления",
           "url": ""
         },
         {
-          "text": "Error Handling",
+          "text": "Обработка ошибок",
           "url": ""
         }
       ]
@@ -451,204 +451,204 @@
   ],
   "application": [
     {
-      "text": "Overview",
+      "text": "Введение",
       "url": "overview"
     },
     {
-      "text": "Manual Bootstrapping",
+      "text": "Ручная обработка",
       "url": "manual-bootstrapping"
     },
     {
-      "text": "Single or Multi Module Applications",
+      "text": "Одномодульные и многомодульные приложения",
       "url": "single-vs-module",
       "menu": [
         {
-          "text": "Single Module",
+          "text": "Одномодульное приложение",
           "level": 2,
           "url": "single"
         },
         {
-          "text": "Multi Module",
+          "text": "Многомодульное приложение",
           "level": 2,
           "url": "module"
         }
       ]
     },
     {
-      "text": "Application Events",
+      "text": "События приложения",
       "url": "events"
     },
     {
-      "text": "External Resources",
+      "text": "Дополнительная литература",
       "url": "resources"
     }
   ],
   "assets": [
     {
-      "text": "Overview",
+      "text": "Введение",
       "url": "overview"
     },
     {
-      "text": "Adding Resources",
+      "text": "Добавление ресурсов",
       "url": "add"
     },
     {
-      "text": "Local/Remote resources",
+      "text": "Локальные/удалённые ресурсы",
       "url": "resources-local-remote"
     },
     {
-      "text": "Collections",
+      "text": "Коллекции",
       "url": "collections"
     },
     {
-      "text": "URL Prefixes",
+      "text": "Префиксы",
       "url": "url-prefixes"
     },
     {
-      "text": "Minification/Filtering",
+      "text": "Минификация/Фильтрация",
       "url": "minification-filtering",
       "menu": [
         {
-          "text": "Built-In Filters",
+          "text": "Встроенные фильтры",
           "level": 2,
           "url": "builtin-filters"
         },
         {
-          "text": "Custom Filters",
+          "text": "Пользовательские фильтры",
           "level": 2,
           "url": "custom-filters"
         }
       ]
     },
     {
-      "text": "Custom Output",
+      "text": "Пользовательский вывод",
       "url": ""
     },
     {
-      "text": "Improving performance",
+      "text": "Повышение производительности",
       "url": ""
     }
   ],
   "cache": [
     {
-      "text": "Improving Performance with Cache",
+      "text": "Улучшение производительности с помощью кэширования",
       "url": "overview"
     },
     {
-      "text": "When to implement cache?",
+      "text": "Где применять кэширование?",
       "url": "implementation"
     },
     {
-      "text": "Caching Behavior",
+      "text": "Поведение системы кэширования",
       "url": "caching-behavior"
     },
     {
-      "text": "Factory",
+      "text": "Фабрика",
       "url": "factory"
     },
     {
-      "text": "Caching Output Fragments",
+      "text": "Кэширование выходных фрагментов",
       "url": "output-fragments",
       "menu": [
         {
-          "text": "Caching Arbitrary Data",
+          "text": "Кэширование произвольных данных",
           "level": 2,
           "url": "arbitrary-data"
         },
         {
-          "text": "File Backend Example",
+          "text": "Пример файлового бэкэнда",
           "level": 2,
           "url": "backend-file-example"
         },
         {
-          "text": "Memcached Backend Example",
+          "text": "Пример использования бэкэнда Memcache",
           "level": 2,
           "url": "backend-memcached-example"
         }
       ]
     },
     {
-      "text": "Querying the cache",
+      "text": "Запрос данных из кэша",
       "url": "read"
     },
     {
-      "text": "Deleting data from the cache",
+      "text": "Удаление данных из кэша",
       "url": "delete"
     },
     {
-      "text": "Checking cache existence",
+      "text": "Проверяем наличие кэша",
       "url": "exists"
     },
     {
-      "text": "Lifetime",
+      "text": "Время жизни",
       "url": "lifetime"
     },
     {
-      "text": "Multi-Level Cache",
+      "text": "Многоуровневое кэширование",
       "url": "multi-level"
     },
     {
-      "text": "Frontend Adapters",
+      "text": "Фронтэнд адаптеры",
       "url": "adapters-frontend",
       "menu": [
         {
-          "text": "Implementing your own Frontend adapters",
+          "text": "Реализация собственных фронтэнд адаптеров",
           "level": 2,
           "url": "adapters-frontend-custom"
         }
       ]
     },
     {
-      "text": "Backend Adapters",
+      "text": "Бэкэнд адаптеры",
       "url": "adapters-backend",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Фабрика",
           "level": 2,
           "url": "adapters-backend-factory"
         },
         {
-          "text": "Implementing your own Backend adapters",
+          "text": "Реализация собственных бэкэнд адаптеров",
           "level": 2,
           "url": "adapters-backend-custom"
         },
         {
-          "text": "File Backend Options",
+          "text": "Параметры файлового бэкэнда",
           "level": 2,
           "url": "adapters-backend-file"
         },
         {
-          "text": "Libmemcached Backend Options",
+          "text": "Параметры Libmemcached бэкэнда",
           "level": 2,
           "url": "adapters-backend-libmemcached"
         },
         {
-          "text": "Memcache Backend Options",
+          "text": "Параметры Memcache бэкэнда",
           "level": 2,
           "url": "adapters-backend-memcache"
         },
         {
-          "text": "APC Backend Options",
+          "text": "Параметры APC бэкэнда",
           "level": 2,
           "url": "adapters-backend-apc"
         },
         {
-          "text": "APCU Backend Options",
+          "text": "Параметры APCu бэкэнда",
           "level": 2,
           "url": "adapters-backend-apcu"
         },
         {
-          "text": "Mongo Backend Options",
+          "text": "Параметры Mongo бэкэнда",
           "level": 2,
           "url": "adapters-backend-mongo"
         },
         {
-          "text": "XCache Backend Options",
+          "text": "Параметры XCache бэкэнда",
           "level": 2,
           "url": "adapters-backend-xcache"
         },
         {
-          "text": "Redis Backend Options",
+          "text": "Параметры Redis бэкэнда",
           "level": 2,
           "url": "adapters-backend-redis"
         }
@@ -657,26 +657,26 @@
   ],
   "config": [
     {
-      "text": "Reading Configurations",
+      "text": "Чтение конфигураций",
       "url": "overview",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Фабрика",
           "level": 2,
           "url": "factory"
         }
       ]
     },
     {
-      "text": "Native Arrays",
+      "text": "Нативные массивы",
       "url": "native-arrays"
     },
     {
-      "text": "File Adapters",
+      "text": "Файловые адаптеры",
       "url": "file-adapter"
     },
     {
-      "text": "Reading INI Files",
+      "text": "Чтение INI-файлов",
       "url": "ini-files"
     },
     {
@@ -684,62 +684,62 @@
       "url": "merging"
     },
     {
-      "text": "Nested Configuration",
+      "text": "Вложенная конфигурация",
       "url": "nested-configuration"
     },
     {
-      "text": "Injecting Configuration Dependency",
+      "text": "Внедрение зависимости конфигурации",
       "url": ""
     }
   ],
   "contributions": [
     {
-      "text": "Contributing to Phalcon",
+      "text": "Вклад в Phalcon",
       "url": "contributing"
     },
     {
-      "text": "Contributions",
+      "text": "Вклад",
       "url": "contributions"
     },
     {
-      "text": "Questions and Support",
+      "text": "Вопросы и ответы",
       "url": "file-adapter"
     },
     {
-      "text": "Bug Report Checklist",
+      "text": "Контрольный список отчета об ошибках",
       "url": "bug-report-checklist",
       "menu": [
         {
-          "text": "Generating a backtrace",
+          "text": "Генерация трассировки",
           "level": 2,
           "url": "bug-report-generating-backtrace"
         }
       ]
     },
     {
-      "text": "Pull Request Checklist",
+      "text": "Контрольный список пулл реквеста",
       "url": "pull-request-checklist"
     },
     {
-      "text": "Getting Support",
+      "text": "Получение поддержки",
       "url": "getting-support"
     },
     {
-      "text": "Requesting Features",
+      "text": "Предложение идей",
       "url": ""
     }
   ],
   "controllers": [
     {
-      "text": "Overview",
+      "text": "Введение",
       "url": "overview"
     },
     {
-      "text": "Using Controllers",
+      "text": "Использование контроллеров",
       "url": "using"
     },
     {
-      "text": "Dispatch Loop",
+      "text": "Цикл работы",
       "url": "dispatch-loop"
     },
     {
@@ -747,112 +747,112 @@
       "url": "initializing"
     },
     {
-      "text": "Injecting Services",
+      "text": "Внедрение сервисов",
       "url": "injecting-services"
     },
     {
-      "text": "Request and Response",
+      "text": "Запрос и ответ",
       "url": "request-response"
     },
     {
-      "text": "Session Data",
+      "text": "Данные сессий",
       "url": "session-data"
     },
     {
-      "text": "Using Services as Controllers",
+      "text": "Использование сервисов как контроллеров",
       "url": "services"
     },
     {
-      "text": "Events in Controllers",
+      "text": "События контроллеров",
       "url": "events"
     }
   ],
   "cookies": [
     {
-      "text": "Cookies Management",
+      "text": "Управление куками",
       "url": "overview"
     },
     {
-      "text": "Basic Usage",
+      "text": "Базовое использование",
       "url": "usage"
     },
     {
-      "text": "Encryption/Decryption of Cookies",
+      "text": "Шифрование/дешифрование кук",
       "url": "encryption-decryption"
     }
   ],
   "crypt": [
     {
-      "text": "Encryption/Decryption",
+      "text": "Шифрование/дешифрование",
       "url": "overview"
     },
     {
-      "text": "Basic Usage",
+      "text": "Базовое использование",
       "url": "usage"
     },
     {
-      "text": "Encryption Options",
+      "text": "Настройки шифрования",
       "url": "options"
     },
     {
-      "text": "Base64 Support",
+      "text": "Поддержка base64",
       "url": "base64"
     },
     {
-      "text": "Setting up an Encryption service",
+      "text": "Настройка сервиса шифрования",
       "url": "service"
     },
     {
-      "text": "Links",
+      "text": "Ссылки",
       "url": "links"
     }
   ],
   "db-layer": [
     {
-      "text": "Database Abstraction Layer",
+      "text": "Уровень абстракции базы данных",
       "url": "overview"
     },
     {
-      "text": "Database Adapters",
+      "text": "Адаптеры баз данных",
       "url": "adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Фабрика",
           "level": 2,
           "url": "adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Реализация собственных адаптеров",
           "level": 2,
           "url": "adapters-custom"
         }
       ]
     },
     {
-      "text": "Database Dialects",
+      "text": "Диалекты базы данных",
       "url": "dialects",
       "menu": [
         {
-          "text": "Implementing your own dialects",
+          "text": "Реализация собственных диалектов",
           "level": 2,
           "url": "dialects-custom"
         }
       ]
     },
     {
-      "text": "Connecting to Databases",
+      "text": "Подключение к базе данных",
       "url": "connection"
     },
     {
-      "text": "Setting up additional PDO options",
+      "text": "Настройка дополнительных параметров PDO",
       "url": "options"
     },
     {
-      "text": "Finding Rows",
+      "text": "Поиск строк",
       "url": "finding-rows"
     },
     {
-      "text": "Binding Parameters",
+      "text": "Подготавливаемые запросы",
       "url": "binding-parameters"
     },
     {
@@ -868,7 +868,7 @@
       "url": "events"
     },
     {
-      "text": "Profiling SQL Statements",
+      "text": "Профилирование SQL запросов",
       "url": "profiling"
     },
     {
@@ -907,46 +907,46 @@
   ],
   "db-migrations": [
     {
-      "text": "Database Migrations",
+      "text": "Миграции базы данных",
       "url": "overview"
     },
     {
-      "text": "Schema Dumping",
+      "text": "Сохранение схемы БД",
       "url": "schema-dumping"
     },
     {
-      "text": "Migration Class Anatomy",
+      "text": "Структура класса Migration",
       "url": "class-anatomy",
       "menu": [
         {
-          "text": "Defining Columns",
+          "text": "Определение столбцов",
           "level": 2,
           "url": "class-anatomy-columns"
         },
         {
-          "text": "Defining Indexes",
+          "text": "Определение Индексов",
           "level": 2,
           "url": "class-anatomy-indexes"
         },
         {
-          "text": "Defining References",
+          "text": "Определение Связей",
           "level": 2,
           "url": "class-anatomy-references"
         }
       ]
     },
     {
-      "text": "Writing Migrations",
+      "text": "Запись миграций",
       "url": "writing"
     },
     {
-      "text": "Running Migrations",
+      "text": "Запуск миграций",
       "url": "running"
     }
   ],
   "db-models-behaviors": [
     {
-      "text": "Model Behaviors",
+      "text": "Поведение модели",
       "url": "overview"
     },
     {
@@ -958,102 +958,102 @@
       "url": "softdelete"
     },
     {
-      "text": "Creating your own behaviors",
+      "text": "Создание собственных поведений",
       "url": "create-your-own-behaviors"
     },
     {
-      "text": "Using Traits as behaviors",
+      "text": "Использование трейтов, как поведений",
       "url": "traits-as-behaviors"
     }
   ],
   "db-models-cache": [
     {
-      "text": "ORM Caching",
+      "text": "Кэширование в ORM",
       "url": "overview"
     },
     {
-      "text": "Caching Resultsets",
+      "text": "Кэширование наборов данных",
       "url": "caching-resultsets"
     },
     {
-      "text": "Forcing Cache",
+      "text": "Форсирование кэша",
       "url": "forcing-cache"
     },
     {
-      "text": "Caching PHQL Queries",
+      "text": "Кэширование PHQL запросов",
       "url": "caching-phql-queries"
     },
     {
-      "text": "Reusable Related Records",
+      "text": "Многократное использование связанных записей",
       "url": "reusable-related-records"
     },
     {
-      "text": "Caching Related Records",
+      "text": "Кэширование связанных записей",
       "url": "caching-related-records"
     },
     {
-      "text": "Caching Related Records Recursively",
+      "text": "Рекурсивное кэшировоние связанных записей",
       "url": "caching-related-records-recursively"
     },
     {
-      "text": "Caching based on Conditions",
+      "text": "Кэширование на основе условий",
       "url": "caching-based-on-conditions"
     },
     {
-      "text": "Caching PHQL execution plan",
+      "text": "Кэширования плана выполнения PHQL",
       "url": "caching-phql-execution-plan"
     }
   ],
   "db-models-events": [
     {
-      "text": "Model Events",
+      "text": "События модели",
       "url": "overview"
     },
     {
-      "text": "Events and Events Manager",
+      "text": "События и управление событиями",
       "url": "events",
       "menu": [
         {
-          "text": "Implementing Events in the Model's class",
+          "text": "Реализация событий в классе модели",
           "level": 2,
           "url": "events-in-models"
         },
         {
-          "text": "Using a custom Events Manager",
+          "text": "Использование пользовательского менеджера событий",
           "level": 2,
           "url": "custom-events-manager"
         }
       ]
     },
     {
-      "text": "Logging Low-Level SQL Statements",
+      "text": "Логирование низкоуровневых SQL запросов",
       "url": "logging-sql-statements"
     },
     {
-      "text": "Profiling SQL Statements",
+      "text": "Профилирование SQL запросов",
       "url": "profiling-sql-statements"
     }
   ],
   "db-models-metadata": [
     {
-      "text": "Models Metadata",
+      "text": "Метаданные модели",
       "url": "overview"
     },
     {
-      "text": "Caching Metadata",
+      "text": "Кэширование метаданных",
       "url": "caching-metadata"
     },
     {
-      "text": "Metadata Strategies",
+      "text": "Стратегии метаданных",
       "url": "metadata-strategies",
       "menu": [
         {
-          "text": "Database Introspection Strategy",
+          "text": "Стратегия интроспекции базы данных",
           "level": 2,
           "url": "strategies-database-introspection",
           "menu": [
             {
-              "text": "Annotations Strategy",
+              "text": "Стратегия аннотаций",
               "level": 2,
               "url": "strategies-annotations"
             }
@@ -1062,31 +1062,31 @@
       ]
     },
     {
-      "text": "Manual Metadata",
+      "text": "Установка метаданных вручную",
       "url": "strategies-manual"
     }
   ],
   "db-models-relationships": [
     {
-      "text": "Model Relationships",
+      "text": "Отношения модели",
       "url": "overview"
     },
     {
-      "text": "Relationships between Models",
+      "text": "Отношения между моделями",
       "url": "relationships",
       "menu": [
         {
-          "text": "Unidirectional relationships",
+          "text": "Однонаправленные отношения",
           "level": 2,
           "url": "unidirectional"
         },
         {
-          "text": "Bidirectional relations",
+          "text": "Двунаправленные отношения",
           "level": 2,
           "url": "bidirectional"
         },
         {
-          "text": "Defining relationships",
+          "text": "Определение отношений",
           "level": 2,
           "url": "defining",
           "menu": [
@@ -1103,17 +1103,17 @@
           ]
         },
         {
-          "text": "Taking advantage of relationships",
+          "text": "Преимущества отношений",
           "level": 2,
           "url": "taking-advantage-of"
         },
         {
-          "text": "Aliasing Relationships",
+          "text": "Синонимы отношений",
           "level": 2,
           "url": "aliases",
           "menu": [
             {
-              "text": "Magic Getters vs. Explicit methods",
+              "text": "Магические методы против явных",
               "level": 3,
               "url": "getters-vs-methods"
             }
@@ -1122,31 +1122,31 @@
       ]
     },
     {
-      "text": "Virtual Foreign Keys",
+      "text": "Виртуальные внешние ключи",
       "url": "virtual-foreign-keys",
       "menu": [
         {
-          "text": "Cascade/Restrict actions",
+          "text": "Cascade/Restrict действия ",
           "level": 2,
           "url": "cascade-restrict-actions"
         }
       ]
     },
     {
-      "text": "Storing Related Records",
+      "text": "Связаное сохранение записей",
       "url": "storing-related-records"
     },
     {
-      "text": "Operations over Resultsets",
+      "text": "Операции над набором результатов",
       "url": "operations-over-resultsets",
       "menu": [
         {
-          "text": "Updating related records",
+          "text": "Обновление связанных записей",
           "level": 2,
           "url": "updating-related-records"
         },
         {
-          "text": "Deleting related records",
+          "text": "Удаление связанных записей",
           "level": 2,
           "url": "deleting-related-records"
         }
@@ -1155,130 +1155,130 @@
   ],
   "db-models-transactions": [
     {
-      "text": "Model Transactions",
+      "text": "Транзакции модели",
       "url": "overview"
     },
     {
-      "text": "Manual Transactions",
+      "text": "Ручные транзакции",
       "url": "manual"
     },
     {
-      "text": "Implicit Transactions",
+      "text": "Неявные транзакции",
       "url": "implicit"
     },
     {
-      "text": "Isolated Transactions",
+      "text": "Изолированные транзакции",
       "url": "isolated"
     }
   ],
   "db-models-validation": [
     {
-      "text": "Model Transactions",
+      "text": "Транзакции модели",
       "url": "overview"
     },
     {
-      "text": "Validating Data Integrity",
+      "text": "Проверка целостности данных",
       "url": "data-integrity"
     },
     {
-      "text": "Validation Messages",
+      "text": "Собщения об ошибках",
       "url": "messages"
     },
     {
-      "text": "Validation Failed Events",
+      "text": "События при ошибках валидации",
       "url": "failed-events"
     }
   ],
   "db-models": [
     {
-      "text": "Working with Models",
+      "text": "Работа с моделями",
       "url": "working-with"
     },
     {
-      "text": "Creating Models",
+      "text": "Создание моделей",
       "url": "creating",
       "menu": [
         {
-          "text": "Public properties vs. Setters/Getters",
+          "text": "Публичные свойства vs геттеры/сеттеры",
           "level": 2,
           "url": "properties-setters-getters"
         }
       ]
     },
     {
-      "text": "Understanding Records To Objects",
+      "text": "Понимание записей в объектах",
       "url": "records-to-objects"
     },
     {
-      "text": "Finding Records",
+      "text": "Поиск записей",
       "url": "finding-records",
       "menu": [
         {
-          "text": "Model Resultsets",
+          "text": "Возвращение результатов моделью",
           "level": 2,
           "url": "resultsets"
         },
         {
-          "text": "Filtering Resultsets",
+          "text": "Фильтрация результатов",
           "level": 2,
           "url": "filters"
         },
         {
-          "text": "Binding Parameters",
+          "text": "Подготавливаемые запросы",
           "level": 2,
           "url": "binding-parameters"
         }
       ]
     },
     {
-      "text": "Initializing/Preparing fetched records",
+      "text": "Инициализация/изменение полученных записей",
       "url": "preparing-records"
     },
     {
-      "text": "Generating Calculations",
+      "text": "Использование расчетов",
       "url": "calculations"
     },
     {
-      "text": "Creating/Updating Records",
+      "text": "Создание/обновление записей",
       "url": "create-update-records",
       "menu": [
         {
-          "text": "Create/Update with Confidence",
+          "text": "Создание/обновление с уверенностью",
           "level": 2,
           "url": "create-update-with-confidence"
         }
       ]
     },
     {
-      "text": "Deleting Records",
+      "text": "Удаление записей",
       "url": "delete-records"
     },
     {
-      "text": "Hydration Modes",
+      "text": "Режимы гидрации",
       "url": "hydration-modes"
     },
     {
-      "text": "Auto-generated identity columns",
+      "text": "Автоматически генерируемый столбец",
       "url": "identity-columns"
     },
     {
-      "text": "Skipping Columns",
+      "text": "Пропуск столбцов",
       "url": "skipping-columns"
     },
     {
-      "text": "Dynamic Updates",
+      "text": "Динамические обновления",
       "url": "dynamic-updates"
     },
     {
-      "text": "Independent Column Mapping",
+      "text": "Независимое сопоставление столбцов",
       "url": "column-mapping"
     },
     {
-      "text": "Record Snapshots",
+      "text": "Запись снимков",
       "url": "record-snapshots"
     },
     {
-      "text": "Pointing to a different schema",
+      "text": "Ссылка на другую схему",
       "url": "different-schemas"
     },
     {
@@ -1290,11 +1290,11 @@
       "url": "injecting-services-into-models"
     },
     {
-      "text": "Disabling/Enabling Features",
+      "text": "Отключение/включение возможностей",
       "url": "disabling-enabling-features"
     },
     {
-      "text": "Stand-Alone component",
+      "text": "Самостоятельный компонент",
       "url": "stand-alone-component"
     }
   ],
@@ -1304,7 +1304,7 @@
       "url": "overview"
     },
     {
-      "text": "Creating Models",
+      "text": "Создание моделей",
       "url": "creating-models"
     },
     {
@@ -1332,7 +1332,7 @@
       "url": "creating-updating",
       "menu": [
         {
-          "text": "Validation Messages",
+          "text": "Собщения об ошибках",
           "level": 2,
           "url": "validation-messages"
         },
@@ -1347,18 +1347,18 @@
           "url": "business-rules"
         },
         {
-          "text": "Validating Data Integrity",
+          "text": "Проверка целостности данных",
           "level": 2,
           "url": "data-integrity"
         }
       ]
     },
     {
-      "text": "Deleting Records",
+      "text": "Удаление записей",
       "url": "deleting-records"
     },
     {
-      "text": "Validation Failed Events",
+      "text": "События при ошибках валидации",
       "url": "validation-failed-events"
     },
     {
@@ -1384,7 +1384,7 @@
       "url": "data-adapters"
     },
     {
-      "text": "Factory",
+      "text": "Фабрика",
       "url": "factory"
     },
     {
@@ -1400,7 +1400,7 @@
       "url": "page-attributes"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Реализация собственных адаптеров",
       "url": "custom"
     }
   ],
@@ -1483,7 +1483,7 @@
       "url": "raw-sql"
     },
     {
-      "text": "Troubleshooting",
+      "text": "Устранение неполадок",
       "url": "troubleshooting"
     }
   ],
@@ -1515,11 +1515,11 @@
       "url": "overview"
     },
     {
-      "text": "Prerequisites",
+      "text": "Требования",
       "url": "prerequisites"
     },
     {
-      "text": "Installation",
+      "text": "Установка",
       "url": "installation",
       "menu": [
         {
@@ -1538,7 +1538,7 @@
           "url": "installation-windows",
           "menu": [
             {
-              "text": "Adding PHP and Tools to your system PATH",
+              "text": "Добавление PHP и Devtools в системную переменную PATH",
               "level": 3,
               "url": "installation-windows-system-path"
             }
@@ -1549,51 +1549,51 @@
   ],
   "devtools-usage": [
     {
-      "text": "Phalcon Developer Tools",
+      "text": "Инструменты разработчика Phalcon",
       "url": "overview"
     },
     {
-      "text": "Download",
+      "text": "Скачать",
       "url": "download"
     },
     {
-      "text": "Installation",
+      "text": "Установка",
       "url": "installation"
     },
     {
-      "text": "Available Commands",
+      "text": "Доступные команды",
       "url": "available-commands"
     },
     {
-      "text": "Generating a Project Skeleton",
+      "text": "Создание скелета проекта",
       "url": "project-skeleton"
     },
     {
-      "text": "Generating Controllers",
+      "text": "Создание контроллеров",
       "url": "generating-controllers"
     },
     {
-      "text": "Preparing Database Settings",
+      "text": "Настройка базы данных",
       "url": "database-settings"
     },
     {
-      "text": "Generating Models",
+      "text": "Создание моделей",
       "url": "generating-models"
     },
     {
-      "text": "Scaffold a CRUD",
+      "text": "Автоматическая генерация CRUD",
       "url": "crud"
     },
     {
-      "text": "Web Interface to Tools",
+      "text": "Веб интерфейс инструментов",
       "url": "web-interface"
     },
     {
-      "text": "Integrating Tools with PhpStorm IDE",
+      "text": "Интеграция в PhpStorm IDE",
       "url": "phpstorm-ide"
     },
     {
-      "text": "Conclusion",
+      "text": "Заключение",
       "url": "conclusion"
     }
   ],
@@ -1666,7 +1666,7 @@
       "url": "resolving-services",
       "menu": [
         {
-          "text": "Events",
+          "text": "События",
           "level": 2,
           "url": "events"
         }
@@ -1750,7 +1750,7 @@
           "url": "preparing-actions-removing-legacy-extensions"
         },
         {
-          "text": "Inject model instances",
+          "text": "Внедрение моделей",
           "level": 2,
           "url": "preparing-actions-inject-model-instances"
         }
@@ -1771,81 +1771,81 @@
       "url": "overview"
     },
     {
-      "text": "Dependencies",
+      "text": "Зависимости",
       "url": "dependencies"
     },
     {
-      "text": "Services",
+      "text": "Сервисы",
       "url": "services"
     },
     {
-      "text": "Installation",
+      "text": "Установка",
       "url": "installation",
       "menu": [
         {
-          "text": "With Composer (recommended)",
+          "text": "С помощью Composer (рекомендуется)",
           "level": 2,
           "url": "installation-composer"
         },
         {
-          "text": "With Git",
+          "text": "С помощью Git",
           "level": 2,
           "url": "installation-git"
         }
       ]
     },
     {
-      "text": "Configuration",
+      "text": "Конфигурация",
       "url": "configuration"
     },
     {
-      "text": "Usage",
+      "text": "Использование",
       "url": "usage"
     },
     {
-      "text": "Set up",
+      "text": "Настройка",
       "url": "setup"
     },
     {
-      "text": "Logs",
+      "text": "Логи",
       "url": "logs"
     },
     {
-      "text": "Environment variables",
+      "text": "Переменные окружения",
       "url": "environment-variables",
       "menu": [
         {
-          "text": "Web environment",
+          "text": "Окружение веб-сервера",
           "level": 2,
           "url": "environment-variables-web"
         },
         {
-          "text": "phpMyAdmin variables",
+          "text": "Переменные phpMyAdmin",
           "level": 2,
           "url": "environment-variables-phpmyadmin"
         }
       ]
     },
     {
-      "text": "Xdebug Remote debugger (PhpStorm)",
+      "text": "Удаленный отладчик Xdebug (PhpStorm)",
       "url": "xdebug"
     },
     {
-      "text": "Troubleshooting",
+      "text": "Устранение неполадок",
       "url": "troubleshooting",
       "menu": [
         {
-          "text": "Startup or linking errors",
+          "text": "Ошибки запуска или связывания",
           "level": 2,
           "url": "troubleshooting-startup"
         },
         {
-          "text": "Full reset",
+          "text": "Полный сброс",
           "level": 2,
           "url": "troubleshooting-full-reset"
         },
         {
-          "text": "Updating dependencies",
+          "text": "Обновление зависимостей",
           "level": 2,
           "url": "troubleshooting-dependencies"
         }
@@ -1862,7 +1862,7 @@
       "url": "overview"
     },
     {
-      "text": "Create a New Project",
+      "text": "Создание нового проекта",
       "url": "create-project"
     },
     {
@@ -1886,7 +1886,7 @@
       "url": "environment"
     },
     {
-      "text": "Phalcon and Nanobox",
+      "text": "Phalcon и Nanobox",
       "url": "conclusion"
     }
   ],
@@ -1896,7 +1896,7 @@
       "url": "overview"
     },
     {
-      "text": "Requirements",
+      "text": "Требования",
       "url": "requirements"
     },
     {
@@ -1904,23 +1904,23 @@
       "url": "packages-included"
     },
     {
-      "text": "Installation",
+      "text": "Установка",
       "url": "installation",
       "menu": [
         {
-          "text": "Installing the Vagrant Box",
+          "text": "Установка Vagrant Box",
           "level": 2,
           "url": "installation-vagrant-box"
         },
         {
-          "text": "Installing the Phalcon Box",
+          "text": "Установка Phalcon Box",
           "level": 2,
           "url": "installation-phalcon-box"
         }
       ]
     },
     {
-      "text": "Configuring",
+      "text": "Настройка",
       "url": "installation-configuration",
       "menu": [
         {
@@ -2004,7 +2004,7 @@
           "url": "daily-usage-additional-sites"
         },
         {
-          "text": "Environment variables",
+          "text": "Переменные окружения",
           "level": 2,
           "url": "daily-usage-environment-variables",
           "menu": [
@@ -2067,7 +2067,7 @@
       ]
     },
     {
-      "text": "Troubleshooting",
+      "text": "Устранение неполадок",
       "url": "troubleshooting"
     }
   ],
@@ -2191,7 +2191,7 @@
       "url": "adapters"
     },
     {
-      "text": "Usage",
+      "text": "Использование",
       "url": "usage"
     },
     {
@@ -2241,7 +2241,7 @@
       "url": "manager"
     },
     {
-      "text": "External Resources",
+      "text": "Дополнительная литература",
       "url": "external"
     }
   ],
@@ -2277,12 +2277,12 @@
       "url": "adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Фабрика",
           "level": 2,
           "url": "adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Реализация собственных адаптеров",
           "level": 2,
           "url": "adapters-custom"
         }
@@ -2349,21 +2349,21 @@
   ],
   "installation": [
     {
-      "text": "Requirements",
+      "text": "Требования",
       "url": "requirements",
       "menu": [
         {
-          "text": "Hardware",
+          "text": "Аппаратное обеспечение",
           "level": 2,
           "url": "requirements-hardware"
         },
         {
-          "text": "Software",
+          "text": "Программное обеспечение",
           "level": 2,
           "url": "requirements-software",
           "menu": [
             {
-              "text": "Optional depending on the needs of your application",
+              "text": "Дополнительно, в зависимости от потребностей вашего приложения",
               "level": 3,
               "url": "requirements-software-optional"
             }
@@ -2372,7 +2372,7 @@
       ]
     },
     {
-      "text": "Installation",
+      "text": "Установка",
       "url": "installation",
       "menu": [
         {
@@ -2386,22 +2386,22 @@
               "url": "installation-linux-deb",
               "menu": [
                 {
-                  "text": "Repository installation",
+                  "text": "Настройка репозитория",
                   "level": 4,
                   "url": "installation-linux-deb-repository"
                 },
                 {
-                  "text": "Стабильные релизы",
+                  "text": "Stable releases",
                   "level": 4,
                   "url": "installation-linux-debian-repository-stable"
                 },
                 {
-                  "text": "Ночные релизы",
+                  "text": "Nightly releases",
                   "level": 4,
                   "url": "installation-linux-debian-repository-nightly"
                 },
                 {
-                  "text": "Phalcon installation",
+                  "text": "Установка Phalcon",
                   "level": 4,
                   "url": "installation-linux-debian-phalcon",
                   "menu": [
@@ -2418,36 +2418,36 @@
                   ]
                 },
                 {
-                  "text": "Additional PPAs",
+                  "text": "Сторонние PPA-репозитории",
                   "level": 4,
                   "url": "installation-linux-debian-other-ppa"
                 }
               ]
             },
             {
-              "text": "RPM based distributions (CentOS, Fedora, etc.)",
+              "text": "RPM дистрибутивы (CentOS, Fedora, и т.д.)",
               "level": 3,
               "url": "installation-linux-rpm",
               "menu": [
                 {
-                  "text": "Repository installation",
+                  "text": "Настройка репозитория",
                   "level": 4,
                   "url": "installation-linux-rpm-repository"
                 },
                 {
-                  "text": "Stable releases",
+                  "text": "Стабильные релизы",
                   "level": 4,
                   "url": "installation-linux-rpm-repository-stable",
                   "menu": [
                     {
-                      "text": "Nightly releases",
+                      "text": "Ночные релизы",
                       "level": 5,
                       "url": "installation-linux-rpm-repository-nightly"
                     }
                   ]
                 },
                 {
-                  "text": "Phalcon installation",
+                  "text": "Установка Phalcon",
                   "level": 4,
                   "url": "installation-linux-rpm-phalcon",
                   "menu": [
@@ -2464,7 +2464,7 @@
                   ]
                 },
                 {
-                  "text": "Additional RPMs",
+                  "text": "Сторонние RPM-репозитории",
                   "level": 4,
                   "url": "installation-linux-rpm-other-rpm"
                 }
@@ -2505,12 +2505,12 @@
           "url": "installation-windows"
         },
         {
-          "text": "Compile from Sources",
+          "text": "Компиляция из исходников",
           "level": 2,
           "url": "installation-sources"
         },
         {
-          "text": "Advanced Compilation",
+          "text": "Расширенная компиляция",
           "level": 2,
           "url": "installation-sources-advanced"
         },
@@ -2524,7 +2524,7 @@
   ],
   "loader": [
     {
-      "text": "Requirements",
+      "text": "Требования",
       "url": "overview"
     },
     {
@@ -2560,7 +2560,7 @@
       "url": "events"
     },
     {
-      "text": "Troubleshooting",
+      "text": "Устранение неполадок",
       "url": "troubleshooting"
     }
   ],
@@ -2574,7 +2574,7 @@
       "url": "adapters"
     },
     {
-      "text": "Factory",
+      "text": "Фабрика",
       "level": 2,
       "url": "adapters-factory"
     },
@@ -2583,7 +2583,7 @@
       "url": "creating"
     },
     {
-      "text": "Transactions",
+      "text": "Транзакции",
       "url": "transactions"
     },
     {
@@ -2631,7 +2631,7 @@
           "url": "usage-firephp"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Реализация собственных адаптеров",
           "level": 2,
           "url": "usage-custom"
         }
@@ -2640,19 +2640,19 @@
   ],
   "mvc": [
     {
-      "text": "The MVC Architecture",
+      "text": "Архитектура MVC",
       "url": "architecture"
     },
     {
-      "text": "Models",
+      "text": "Модели",
       "url": "models"
     },
     {
-      "text": "Views",
+      "text": "Представления",
       "url": "views"
     },
     {
-      "text": "Controllers",
+      "text": "Контроллеры",
       "url": "controllers"
     }
   ],
@@ -2689,7 +2689,7 @@
           "url": "profiling-server-xhprof"
         },
         {
-          "text": "Profiling SQL Statements",
+          "text": "Профилирование SQL запросов",
           "level": 2,
           "url": "profiling-server-sql-statements"
         }
@@ -2753,7 +2753,7 @@
       "url": "overview"
     },
     {
-      "text": "Database",
+      "text": "База данных",
       "url": "database"
     },
     {
@@ -2793,7 +2793,7 @@
   ],
   "response": [
     {
-      "text": "Returning Responses",
+      "text": "Возврат ответов",
       "url": "overview"
     },
     {
@@ -2801,15 +2801,15 @@
       "url": "working-with-headers"
     },
     {
-      "text": "Making Redirections",
+      "text": "Создание перенаправлений",
       "url": "redirections"
     },
     {
-      "text": "HTTP Cache",
+      "text": "HTTP-кэш",
       "url": "http-cache",
       "menu": [
         {
-          "text": "Setting an Expiration Time",
+          "text": "Expires",
           "level": 2,
           "url": "http-cache-expiration-time"
         },
@@ -2828,7 +2828,7 @@
   ],
   "routing": [
     {
-      "text": "Routing",
+      "text": "Маршрутизация",
       "url": "overview"
     },
     {
@@ -2935,41 +2935,41 @@
   ],
   "security": [
     {
-      "text": "Security",
+      "text": "Безопасность",
       "url": "overview"
     },
     {
-      "text": "Password Hashing",
+      "text": "Хэширование паролей",
       "url": "hashing"
     },
     {
-      "text": "Cross-Site Request Forgery (CSRF) protection",
+      "text": "Защита от Cross-Site Request Forgery (CSRF)",
       "url": "csrf"
     },
     {
-      "text": "Setting up the component",
+      "text": "Настройка компонента",
       "url": "setup"
     },
     {
-      "text": "Random",
+      "text": "Компонент Random",
       "url": "random"
     },
     {
-      "text": "External Resources",
+      "text": "Дополнительная литература",
       "url": "resources"
     }
   ],
   "session": [
     {
-      "text": "Storing data in the Session",
+      "text": "Хранение данных в сессии",
       "url": "overview"
     },
     {
-      "text": "Starting the Session",
+      "text": "Запуск сессии",
       "url": "start",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Фабрика",
           "level": 2,
           "url": "start-factory"
         }
@@ -2980,27 +2980,27 @@
       "url": "overview"
     },
     {
-      "text": "Storing/Retrieving data in Session",
+      "text": "Получение и хранение данных в сессии",
       "url": "store"
     },
     {
-      "text": "Removing/Destroying Sessions",
+      "text": "Удаление/очистка сессий",
       "url": "remove-destroy"
     },
     {
-      "text": "Isolating Session Data between Applications",
+      "text": "Изоляция данных сеанса между приложениями",
       "url": "data-isolation"
     },
     {
-      "text": "Session Bags",
+      "text": "Наборы сессий",
       "url": "bags"
     },
     {
-      "text": "Persistent Data in Components",
+      "text": "Сохранение данных в компонентах",
       "url": "data-persistence"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Реализация собственных адаптеров",
       "url": "custom-adapters"
     }
   ],
@@ -3091,7 +3091,7 @@
   ],
   "translate": [
     {
-      "text": "Multi-lingual Support",
+      "text": "Поддержка многоязычности",
       "url": "overview"
     },
     {
@@ -3099,82 +3099,82 @@
       "url": "adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Фабрика",
           "level": 2,
           "url": "adapters-factory"
         }
       ]
     },
     {
-      "text": "Component Usage",
+      "text": "Использование компонента",
       "url": "usage"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Реализация собственных адаптеров",
       "url": "custom"
     }
   ],
   "tutorial-base": [
     {
-      "text": "View",
+      "text": "Представления",
       "url": "basic"
     },
     {
-      "text": "File structure",
+      "text": "Структура файлов",
       "url": "file-structure"
     },
     {
-      "text": "Bootstrap",
+      "text": "Начальная загрузка",
       "url": "bootstrap",
       "menu": [
         {
-          "text": "Autoloaders",
+          "text": "Автозагрузка",
           "level": 2,
           "url": "autoloaders"
         },
         {
-          "text": "Dependency Management",
+          "text": "Управление зависимостями",
           "level": 2,
           "url": "dependency-management"
         },
         {
-          "text": "Handling the application request",
+          "text": "Обработка входящих запросов",
           "level": 2,
           "url": "request"
         },
         {
-          "text": "Putting everything together",
+          "text": "Соберём все компоненты вместе",
           "level": 2,
           "url": "full-example"
         }
       ]
     },
     {
-      "text": "Creating a Controller",
+      "text": "Создание контроллера",
       "url": "controller"
     },
     {
-      "text": "Sending output to a view",
+      "text": "Отправка выходных данных в представление",
       "url": "view"
     },
     {
-      "text": "Designing a sign up form",
+      "text": "Проектирование формы регистрации",
       "url": "signup-form"
     },
     {
-      "text": "Creating a Model",
+      "text": "Создание модели",
       "url": "model"
     },
     {
-      "text": "Setting a Database Connection",
+      "text": "Настройка соединения с базой данных",
       "url": "database-connection"
     },
     {
-      "text": "Storing data using models",
+      "text": "Сохранение данных при работе с моделями",
       "url": "storing-data"
     },
     {
-      "text": "Conclusion",
+      "text": "Заключение",
       "url": "conclusion"
     }
   ],
@@ -3188,15 +3188,15 @@
       "url": "structure"
     },
     {
-      "text": "Routing",
+      "text": "Маршрутизация",
       "url": "routing"
     },
     {
-      "text": "Configuration",
+      "text": "Конфигурация",
       "url": "configuration"
     },
     {
-      "text": "Autoloaders",
+      "text": "Автозагрузка",
       "url": "autoloaders"
     },
     {
@@ -3270,7 +3270,7 @@
       "url": "implementation"
     },
     {
-      "text": "Creating a Model",
+      "text": "Создание модели",
       "url": "models"
     },
     {
@@ -3294,7 +3294,7 @@
       "url": "testing"
     },
     {
-      "text": "Conclusion",
+      "text": "Заключение",
       "url": "conclusion"
     }
   ],
@@ -3322,7 +3322,7 @@
       "url": "overview"
     },
     {
-      "text": "Requirements",
+      "text": "Требования",
       "url": "requirements"
     },
     {
@@ -3340,11 +3340,11 @@
       "url": "overview"
     },
     {
-      "text": "Integrating PHPUnit with Phalcon",
+      "text": "Интеграция PHPUnit с Phalcon",
       "url": "integration"
     },
     {
-      "text": "The PHPUnit helper file",
+      "text": "PHPUnit хелпер",
       "url": "unit-helper"
     },
     {
@@ -3352,7 +3352,7 @@
       "url": "phpunit-config"
     },
     {
-      "text": "Sample Unit Test",
+      "text": "Пример модульного теста",
       "url": "sample"
     }
   ],
@@ -3388,7 +3388,7 @@
   ],
   "validation": [
     {
-      "text": "Validation",
+      "text": "Валидация",
       "url": "overview"
     },
     {
@@ -3396,7 +3396,7 @@
       "url": "initializing"
     },
     {
-      "text": "Validators",
+      "text": "Валидаторы",
       "url": "validators"
     },
     {
@@ -3404,7 +3404,7 @@
       "url": "callback"
     },
     {
-      "text": "Validation Messages",
+      "text": "Собщения об ошибках",
       "url": "messages"
     },
     {
@@ -3430,98 +3430,98 @@
   ],
   "views": [
     {
-      "text": "Using Views",
+      "text": "Использование представлений",
       "url": "overview"
     },
     {
-      "text": "Integrating Views with Controllers",
+      "text": "Интеграция представлений с контроллерами",
       "url": "integrating-views-with-controllers"
     },
     {
-      "text": "Hierarchical Rendering",
+      "text": "Иерархическая отрисовка",
       "url": "hierarchical-rendering",
       "menu": [
         {
-          "text": "Using Templates",
+          "text": "Использование шаблонов",
           "level": 2,
           "url": "using-templates"
         },
         {
-          "text": "Control Rendering Levels",
+          "text": "Управление уровнями отрисовки",
           "level": 2,
           "url": "control-rendering-levels"
         },
         {
-          "text": "Disabling render levels",
+          "text": "Отключение уровней отрисовки",
           "level": 2,
           "url": "disabling-render-levels"
         },
         {
-          "text": "Picking Views",
+          "text": "Переопределение представлений",
           "level": 2,
           "url": "picking-views"
         },
         {
-          "text": "Disabling the view",
+          "text": "Отключение представления",
           "level": 2,
           "url": "disabling-view"
         }
       ]
     },
     {
-      "text": "Simple Rendering",
+      "text": "Простая отрисовка",
       "url": "simple-rendering"
     },
     {
-      "text": "Using Partials",
+      "text": "Части шаблонов",
       "url": "using-partials"
     },
     {
-      "text": "Transfer values from the controller to views",
+      "text": "Передача переменных контроллера",
       "url": "value-transfer"
     },
     {
-      "text": "Caching View Fragments",
+      "text": "Кэширование фрагментов представления",
       "url": "caching-fragments"
     },
     {
-      "text": "Template Engines",
+      "text": "Шаблонизаторы",
       "url": "template-engines",
       "menu": [
         {
-          "text": "Creating your own Template Engine Adapter",
+          "text": "Создание собственного адаптера для шаблонизатора",
           "level": 2,
           "url": "custom-template-engine"
         },
         {
-          "text": "Changing the Template Engine",
+          "text": "Изменение шаблонизатора",
           "level": 2,
           "url": "changing-template-engine"
         }
       ]
     },
     {
-      "text": "Injecting services in View",
+      "text": "Внедрение сервисов в представление",
       "url": "injecting-services"
     },
     {
-      "text": "Stand-Alone Component",
+      "text": "Отдельное использование компонента",
       "url": "stand-alone",
       "menu": [
         {
-          "text": "Hierarchical Rendering",
+          "text": "Иерархическая отрисовка",
           "level": 2,
           "url": "stand-alone-hierarchical-rendering"
         },
         {
-          "text": "Simple Rendering",
+          "text": "Простая отрисовка",
           "level": 2,
           "url": "stand-alone-simple-rendering"
         }
       ]
     },
     {
-      "text": "View Events",
+      "text": "События компонента представлений",
       "url": "events"
     }
   ],
@@ -3531,31 +3531,31 @@
       "url": "overview"
     },
     {
-      "text": "Introduction",
+      "text": "Введение",
       "url": "introduction"
     },
     {
-      "text": "Activating Volt",
+      "text": "Подключение Volt",
       "url": "setup"
     },
     {
-      "text": "Basic Usage",
+      "text": "Базовое использование",
       "url": "basic-usage"
     },
     {
-      "text": "Variables",
+      "text": "Переменные",
       "url": "variables"
     },
     {
-      "text": "Filters",
+      "text": "Фильтры",
       "url": "filters"
     },
     {
-      "text": "Comments",
+      "text": "Комментарии",
       "url": "comments"
     },
     {
-      "text": "List of Control Structures",
+      "text": "Список управляющих конструкций",
       "url": "control-structures",
       "menu": [
         {
@@ -3686,7 +3686,7 @@
           "url": "extending-functions"
         },
         {
-          "text": "Filters",
+          "text": "Фильтры",
           "level": 2,
           "url": "extending-filters"
         },
@@ -3712,11 +3712,11 @@
   ],
   "webserver-wamp": [
     {
-      "text": "Installation on WAMP",
+      "text": "Установка на WAMP",
       "url": "overview"
     },
     {
-      "text": "Download the right version of Phalcon",
+      "text": "Скачайте правильную версию Phalcon",
       "url": "phalcon"
     },
     {
@@ -3726,15 +3726,15 @@
   ],
   "webserver-xampp": [
     {
-      "text": "Installation on XAMPP",
+      "text": "Установка на XAMPP",
       "url": "overview"
     },
     {
-      "text": "Download the right version of Phalcon",
+      "text": "Скачайте правильную версию Phalcon",
       "url": "phalcon"
     },
     {
-      "text": "Screencast",
+      "text": "Скринкаст",
       "url": "screencast"
     },
     {

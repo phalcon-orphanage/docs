@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Dispatcher'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Dispatcher'
+---
 # Class **Phalcon\Mvc\Dispatcher**
 
 *extends* abstract class [Phalcon\Dispatcher](Phalcon_Dispatcher)

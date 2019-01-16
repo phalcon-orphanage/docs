@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -998,7 +997,7 @@ A [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application works closely with a [P
 
 | Название события   | Срабатывает                                                                  | Можно остановить операцию? |
 | ------------------ | ---------------------------------------------------------------------------- |:--------------------------:|
-| beforeHandleRoute  | Основной метод вызван; Маршруты ее не проверены                              |             Да             |
+| beforeHandleRoute  | Основной метод вызван; Маршруты еще не проверены                             |             Да             |
 | beforeExecuteRoute | Маршрут сопоставлен, обработчик верный, но еще не выполнен                   |             Да             |
 | afterExecuteRoute  | Обработчик только что закончил работать                                      |            Нет             |
 | beforeNotFound     | Маршрут не найден                                                            |             Да             |

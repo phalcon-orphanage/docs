@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\MetaData\Memcache'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\MetaData\Memcache'
+---
 # Class **Phalcon\Mvc\Model\MetaData\Memcache**
 
 *extends* abstract class [Phalcon\Mvc\Model\MetaData](Phalcon_Mvc_Model_MetaData)

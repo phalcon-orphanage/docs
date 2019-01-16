@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cli\Router\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cli\Router\Exception'
+---
 # Class **Phalcon\Cli\Router\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)

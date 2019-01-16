@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -159,17 +158,17 @@ You can pass multiple environment variables from an external file to a service's
 
 ### phpMyAdmin 变量
 
-| 环境变量               | 描述                                                          | 默认      |
-| ------------------ | ----------------------------------------------------------- | ------- |
-| `PMA_ARBITRARY`    | 当设置为1时，只有1个被允许到服务器的连接。                                      | 1       |
-| `PMA_HOST`         | 定义MySQL服务器地址/主机名。                                           | mysql   |
-| `PMA_HOSTS`        | 定义MySQL 服务器地址/主机名的逗号分隔列表。`PMA_HOST` 为空时才使用。                 |         |
-| `PMA_PORT`         | 定义MySQL服务器的端口。                                              | 3306    |
-| `PMA_VERBOSE`      | 定义MySQL服务器的详细名称。                                            |         |
-| `PMA_VERBOSES`     | 定义MySQL服务器的详细名称的逗号分隔列表。`PMA_VERBOSE` 为空时才使用。                |         |
-| `PMA_USER`         | 定义用户名用于配置身份验证方法。                                            | phalcon |
-| `PMA_PASSWORD`     | 定义密码用于配置身份验证方法。                                             | secret  |
-| `PMA_ABSOLUTE_URI` | 完全限定的路径 (例如 https://pma.example.net/) 在反向代理使 phpMyAdmin 可用。 |         |
+| 环境变量               | 描述                                                                                                        | 默认      |
+| ------------------ | --------------------------------------------------------------------------------------------------------- | ------- |
+| `PMA_ARBITRARY`    | 当设置为1时，只有1个被允许到服务器的连接。                                                                                    | 1       |
+| `PMA_HOST`         | 定义MySQL服务器地址/主机名。                                                                                         | mysql   |
+| `PMA_HOSTS`        | Define comma separated list of address/host names of the MySQL servers. Used only if `PMA_HOST` is empty. |         |
+| `PMA_PORT`         | 定义MySQL服务器的端口。                                                                                            | 3306    |
+| `PMA_VERBOSE`      | 定义MySQL服务器的详细名称。                                                                                          |         |
+| `PMA_VERBOSES`     | Define comma separated list of verbose names of the MySQL servers. Used only if `PMA_VERBOSE` is empty.   |         |
+| `PMA_USER`         | 定义用户名用于配置身份验证方法。                                                                                          | phalcon |
+| `PMA_PASSWORD`     | 定义密码用于配置身份验证方法。                                                                                           | secret  |
+| `PMA_ABSOLUTE_URI` | 完全限定的路径 (例如 https://pma.example.net/) 在反向代理使 phpMyAdmin 可用。                                               |         |
 
 *See also* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
 

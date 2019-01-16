@@ -1,7 +1,7 @@
 {
   "acl": [
     {
-      "text": "Overview",
+      "text": "Genel Bakış",
       "url": "overview"
     },
     {
@@ -17,15 +17,15 @@
       "url": "adding-subjects"
     },
     {
-      "text": "Defining Access Controls",
+      "text": "Erişim Kontrolleri Tanımlama",
       "url": "access-controls"
     },
     {
-      "text": "Querying an ACL",
+      "text": "ACL Sorgulama",
       "url": "querying"
     },
     {
-      "text": "Function based access",
+      "text": "Fonksiyona Dayalı Erişim",
       "url": "function-based-access"
     },
     {
@@ -37,21 +37,21 @@
       "url": "operationss-inheritance"
     },
     {
-      "text": "Serializing ACL lists",
+      "text": "ACL Listelerini Seri Hale Getirme",
       "url": "serialization"
     },
     {
-      "text": "Events",
+      "text": "Olaylar",
       "url": "events"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Kendi Bağdaştırıcılarını Uygulama",
       "url": "custom-adapters"
     }
   ],
   "annotations": [
     {
-      "text": "Overview",
+      "text": "Genel Bakış",
       "url": "overview"
     },
     {
@@ -59,7 +59,7 @@
       "url": "setup"
     },
     {
-      "text": "Adding Roles to the ACL",
+      "text": "ACL'ye Rol Ekleme",
       "url": "factory"
     },
     {
@@ -91,7 +91,7 @@
       "url": "adapters",
       "menu": [
         {
-          "text": "Implementing your own adapters",
+          "text": "Kendi Bağdaştırıcılarını Uygulama",
           "level": 2,
           "url": "adapters-custom"
         }
@@ -104,27 +104,27 @@
   ],
   "application-cli": [
     {
-      "text": "Creating a CLI Application",
+      "text": "CLI Uygulaması Oluşturma",
       "url": "creating-cli-application"
     },
     {
-      "text": "Structure",
+      "text": "Yapı",
       "url": "structure"
     },
     {
-      "text": "Creating a Bootstrap",
+      "text": "Bir Önyükleme Oluşturma",
       "url": "creating-bootstrap"
     },
     {
-      "text": "Tasks",
+      "text": "Görevler",
       "url": "tasks"
     },
     {
-      "text": "Processing action parameters",
+      "text": "Eylem parametrelerini işlemek",
       "url": "processing-action-parameters"
     },
     {
-      "text": "Running tasks in a chain",
+      "text": "Bir zincirdeki görevleri çalıştırma",
       "url": "running-tasks-chain"
     }
   ],
@@ -330,7 +330,7 @@
       ]
     },
     {
-      "text": "Events",
+      "text": "Olaylar",
       "url": "events",
       "menu": [
         {
@@ -451,7 +451,7 @@
   ],
   "application": [
     {
-      "text": "Overview",
+      "text": "Genel Bakış",
       "url": "overview"
     },
     {
@@ -485,11 +485,11 @@
   ],
   "assets": [
     {
-      "text": "Overview",
+      "text": "Genel Bakış",
       "url": "overview"
     },
     {
-      "text": "Adding Resources",
+      "text": "Kaynakları Ekleme",
       "url": "add"
     },
     {
@@ -618,7 +618,7 @@
           "url": "adapters-backend-file"
         },
         {
-          "text": "Libmemcached Backend Options",
+          "text": "Libmemcached Arka Plan Seçenekleri",
           "level": 2,
           "url": "adapters-backend-libmemcached"
         },
@@ -628,27 +628,27 @@
           "url": "adapters-backend-memcache"
         },
         {
-          "text": "APC Backend Options",
+          "text": "APC Arka Plan Seçenekleri",
           "level": 2,
           "url": "adapters-backend-apc"
         },
         {
-          "text": "APCU Backend Options",
+          "text": "APCU Arka Plan Seçenekleri",
           "level": 2,
           "url": "adapters-backend-apcu"
         },
         {
-          "text": "Mongo Backend Options",
+          "text": "Mongo Arka Plan Seçenekleri",
           "level": 2,
           "url": "adapters-backend-mongo"
         },
         {
-          "text": "XCache Backend Options",
+          "text": "XCache Arka Plan Seçenekleri",
           "level": 2,
           "url": "adapters-backend-xcache"
         },
         {
-          "text": "Redis Backend Options",
+          "text": "Redis Arka Plan Seçenekleri",
           "level": 2,
           "url": "adapters-backend-redis"
         }
@@ -657,7 +657,7 @@
   ],
   "config": [
     {
-      "text": "Reading Configurations",
+      "text": "Yapılandırmaları Okuma",
       "url": "overview",
       "menu": [
         {
@@ -668,7 +668,7 @@
       ]
     },
     {
-      "text": "Native Arrays",
+      "text": "Doğal Diziler",
       "url": "native-arrays"
     },
     {
@@ -731,15 +731,15 @@
   ],
   "controllers": [
     {
-      "text": "Overview",
+      "text": "Genel Bakış",
       "url": "overview"
     },
     {
-      "text": "Using Controllers",
+      "text": "Denetleyicilerin Kullanımı",
       "url": "using"
     },
     {
-      "text": "Dispatch Loop",
+      "text": "Görev Döngüsü",
       "url": "dispatch-loop"
     },
     {
@@ -747,23 +747,23 @@
       "url": "initializing"
     },
     {
-      "text": "Injecting Services",
+      "text": "Enjeksiyon Hizmetleri",
       "url": "injecting-services"
     },
     {
-      "text": "Request and Response",
+      "text": "İstek ve Yanıt",
       "url": "request-response"
     },
     {
-      "text": "Session Data",
+      "text": "Oturum Verileri",
       "url": "session-data"
     },
     {
-      "text": "Using Services as Controllers",
+      "text": "Hizmetleri Denetleyiciler Olarak Kullanma",
       "url": "services"
     },
     {
-      "text": "Events in Controllers",
+      "text": "Denetleyicilerdeki Olaylar",
       "url": "events"
     }
   ],
@@ -822,7 +822,7 @@
           "url": "adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Kendi Bağdaştırıcılarını Uygulama",
           "level": 2,
           "url": "adapters-custom"
         }
@@ -968,7 +968,7 @@
   ],
   "db-models-cache": [
     {
-      "text": "ORM Caching",
+      "text": "ORM Ön Belleğe Alma İşlemi",
       "url": "overview"
     },
     {
@@ -1362,7 +1362,7 @@
       "url": "validation-failed-events"
     },
     {
-      "text": "Implicit Ids vs. User Primary Keys",
+      "text": "Örtülü Kimliklere karşılık Öncelikli Kullanıcı Anahtarları",
       "url": "ids-vs-primary-keys"
     },
     {
@@ -1400,7 +1400,7 @@
       "url": "page-attributes"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Kendi Bağdaştırıcılarını Uygulama",
       "url": "custom"
     }
   ],
@@ -1643,12 +1643,12 @@
               "url": "constructor-injection"
             },
             {
-              "text": "Setter Injection",
+              "text": "Kurucu Enjeksiyonu",
               "level": 3,
               "url": "setter-injection"
             },
             {
-              "text": "Properties Injection",
+              "text": "Enjeksiyon Özellikleri",
               "level": 3,
               "url": "properties-injection"
             }
@@ -1666,7 +1666,7 @@
       "url": "resolving-services",
       "menu": [
         {
-          "text": "Events",
+          "text": "Olaylar",
           "level": 2,
           "url": "events"
         }
@@ -2282,7 +2282,7 @@
           "url": "adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Kendi Bağdaştırıcılarını Uygulama",
           "level": 2,
           "url": "adapters-custom"
         }
@@ -2631,7 +2631,7 @@
           "url": "usage-firephp"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Kendi Bağdaştırıcılarını Uygulama",
           "level": 2,
           "url": "usage-custom"
         }
@@ -3000,7 +3000,7 @@
       "url": "data-persistence"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Kendi Bağdaştırıcılarını Uygulama",
       "url": "custom-adapters"
     }
   ],
@@ -3110,7 +3110,7 @@
       "url": "usage"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Kendi Bağdaştırıcılarını Uygulama",
       "url": "custom"
     }
   ],
@@ -3666,7 +3666,7 @@
       "url": "template-inheritance",
       "menu": [
         {
-          "text": "Multiple Inheritance",
+          "text": "Çoklu Katılım",
           "level": 2,
           "url": "template-inheritance-multiple"
         }

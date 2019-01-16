@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -34,7 +33,7 @@ This component makes use of adapters to encapsulate specific database system det
 
 <a name='factory'></a>
 
-Loads PDO Adapter class using `adapter` option. For example:
+Loads PDO Adapter class using `adapter` option. Por ejemplo:
 
 ```php
 <?php
@@ -1060,19 +1059,19 @@ $connection->createTable(
 
 `Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class [Phalcon\Db\Column](api/Phalcon_Db_Column). The table below shows the options available to define a column:
 
-| Opción          | Descripción                                                                                                                         | Opcional |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below for a list)                                 |    No    |
-| `primary`       | True if the column is part of the table's primary key                                                                               |    Si    |
-| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                           |    Si    |
-| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                     |    Si    |
-| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                   |    Si    |
-| `notNull`       | ¿La columna puede almacenar valores nulos?                                                                                          |    Si    |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                              |    Si    |
-| `autoIncrement` | Con este atributo la columna se incrementará automáticamente con un entero. Solo una columna en la tabla puede tener este atributo. |    Si    |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                              |    Si    |
-| `first`         | La columna debe colocarse en primera posición en el orden de columnas                                                               |    Si    |
-| `after`         | La columna debe colocarse después de la columna indicada                                                                            |    Si    |
+| Opción          | Descripción                                                                                                                                | Opcional |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
+| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below for a list)                                        |    No    |
+| `primary`       | True if the column is part of the table's primary key                                                                                      |    Si    |
+| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |    Si    |
+| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |    Si    |
+| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |    Si    |
+| `notNull`       | ¿La columna puede almacenar valores nulos?                                                                                                 |    Si    |
+| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |    Si    |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |    Si    |
+| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |    Si    |
+| `first`         | La columna debe colocarse en primera posición en el orden de columnas                                                                      |    Si    |
+| `after`         | La columna debe colocarse después de la columna indicada                                                                                   |    Si    |
 
 [Phalcon\Db](api/Phalcon_Db) supports the following database column types:
 

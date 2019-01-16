@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -571,7 +570,7 @@ $similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 
 <a name='getters-vs-methods'></a>
 
-#### Getters mágicos vs métodos explícitos
+#### Magic Getters vs. Explicit methods
 
 Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). To overcome that, you can use a class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
 
@@ -915,7 +914,7 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 ## Operaciones sobre conjuntos de resultados
 
-If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
+If a resultset is composed of complete objects, model operations can be performed on those objects. Por ejemplo:
 
 ```php
 <?php

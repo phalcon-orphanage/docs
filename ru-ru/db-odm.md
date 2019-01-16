@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -279,13 +278,13 @@ $robots = Robots::find(
 
 Доступные параметры запроса:
 
-| Параметр     | Описание                                                                                                                                                                                     | Пример                                                  |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
-| `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`               |
-| `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | `'sort' => array('name' => -1, 'status' => 1)` |
-| `limit`      | Ограничивает результаты запроса.                                                                                                                                                             | `'limit' => 10`                                      |
-| `skip`       | Skips a number of results                                                                                                                                                                    | `'skip' => 50`                                       |
+| Параметр     | Описание                                                                                                                                                                                 | Пример                                                  |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `conditions` | Условие поиска. Используется для выделения только тех записей, которые полностью удовлетворяют условиям поиска. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
+| `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                           | `'fields' => array('name' => true)`               |
+| `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                              | `'sort' => array('name' => -1, 'status' => 1)` |
+| `limit`      | Ограничивает результаты запроса.                                                                                                                                                         | `'limit' => 10`                                      |
+| `skip`       | Skips a number of results                                                                                                                                                                | `'skip' => 50`                                       |
 
 If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](https://www.php.net/manual/en/mongo.sqltomongo.php).
 

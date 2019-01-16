@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -63,7 +62,7 @@ This component uses by default PHP itself as the template engine, therefore view
 
 | Nombre                    | Archivo                       | Descripción                                                                                                                                                                                                                       |
 | ------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Vista de la acción        | app/views/posts/show.phtml    | Se trata de la vista relacionada con la acción. Sólo se mostrará cuando se ejecute la acción `show`.                                                                                                                              |
+| Vista de la acción        | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                                 |
 | Plantilla del controlador | app/views/layouts/posts.phtml | Esta es la vista relacionada con el controlador. Sólo se mostrará para cada acción ejecutada en el controlador "posts". Se reutilizará todo el código puesto en ejecución en el diseño de todas las acciones en este controlador. |
 | Plantilla principal       | app/views/index.phtml         | Se trata de la acción principal que se mostrará para cada controlador o acción ejecutada dentro de la aplicación.                                                                                                                 |
 
@@ -343,7 +342,7 @@ The available render levels are:
 | `LEVEL_BEFORE_TEMPLATE` | Genera plantillas de presentación previas al diseño del controlador.        |   2   |
 | `LEVEL_LAYOUT`          | Genera la presentación en el diseño del controlador.                        |   3   |
 | `LEVEL_AFTER_TEMPLATE`  | Genera la presentación a las plantillas después del diseño del controlador. |   4   |
-| `LEVEL_MAIN_LAYOUT`     | Genera la presentación en el diseño principal. Archivo views/index.phtml    |   5   |
+| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml       |   5   |
 
 <a name='disabling-render-levels'></a>
 

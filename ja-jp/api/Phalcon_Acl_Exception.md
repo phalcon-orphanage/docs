@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Acl\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Acl\Exception'
+---
 # Class **Phalcon\Acl\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)

@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -36,7 +35,7 @@ Please ensure that you are sending your pull request to the correct branch and t
 
 ## Контрольный список отчета об ошибках
 
-- Убедитесь, что вы используете последнюю стабильную версию Phalcon, перед отправкой отчёта об ошибке. Ошибки в предыдущих релизах не будут рассматриваться основной командой фреймворка.
+- Make sure you are using the latest released version of Phalcon before submitting a bug report. Bugs in versions older than the latest released one will not be addressed by the core team.
 - Если вы нашли ошибку, добавьте как можно больше связанной информации — любые детали, которые помогут нам воспроизвести её. Это очень важно. Воспроизводимые ошибки имеют наивысший шанс быть исправленными. Эта информация должна быть в виде скрипта, небольшого приложения или падающего теста. Для получения дополнительной информации, пожалуйста, ознакомьтесь с разделом [Отправка воспроизводимого теста](https://github.com/phalcon/cphalcon/wiki/Submit-Reproducible-Test).
 - Пожалуйста, включите в ваш отчет дополнительную информацию, например ОС, версии PHP, Phalcon, веб-сервера, а так-же описание аппаратного обеспечения.
 - Если вы отправляете отчет об ошибке типа [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault), нам будет необходима трассировка. Пожалуйста, ознакомьтесь с разделом [Генерация трассировки](#bug-report-generating-backtrace) для получения дополнительной информации.
@@ -60,7 +59,7 @@ Please follow this guides to understand how to generate the backtrace:
 
 - Не отправляйте запросы на принятие изменений в `master` ветку. Перед отправкой запроса, сделайте ответвление из необходимой для изменений ветки и при необходимости сделайте перемещение (rebase) с соответствующей веткой. Если ваши изменения не возможно будет слить (merge) без конфликтов, вам будет предложено сделать перемещение (rebase).
 - Не отправляйте обновления подмодулей, файла `composer.lock` и т.д.
-- Ваш запрос на принятие изменений должен быть покрыт тестом. Дя более подробной информацией обратитесь к разделу [Руководство по тестированию](https://github.com/phalcon/cphalcon/blob/master/tests/README.md).
+- Add tests relevant to the fixed bug or new feature. See our [testing guide](https://github.com/phalcon/cphalcon/blob/master/tests/README.md) for more information
 - Phalcon написан на языке [Zephir](https://zephir-lang.com/). Пожалуйста, не отправляйте коммиты с изменениями C-файлов.
 - Make sure that the PHP code you write fits with the general style and coding standards of the [Accepted PHP Standards](https://www.php-fig.org/psr/)
 - Удалите любые изменения `ext/kernel`, `*.zep.c` и `*.zep.h` файлов перед отправкой запроса на изменение.

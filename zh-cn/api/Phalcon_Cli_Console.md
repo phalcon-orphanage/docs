@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cli\Console'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cli\Console'
+---
 # Class **Phalcon\Cli\Console**
 
 *extends* abstract class [Phalcon\Application](Phalcon_Application)

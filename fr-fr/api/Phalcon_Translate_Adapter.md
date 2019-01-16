@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Translate\Adapter'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Translate\Adapter'
+---
 # Abstract class **Phalcon\Translate\Adapter**
 
 *implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface)

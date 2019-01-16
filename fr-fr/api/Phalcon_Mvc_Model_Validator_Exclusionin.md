@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Validator\Exclusionin'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Validator\Exclusionin'
+---
 # Class **Phalcon\Mvc\Model\Validator\Exclusionin**
 
 *extends* abstract class [Phalcon\Mvc\Model\Validator](Phalcon_Mvc_Model_Validator)

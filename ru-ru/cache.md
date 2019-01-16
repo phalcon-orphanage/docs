@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -461,14 +460,14 @@ $cache->save('my-key', $data);
 
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
-| Адаптер                                                                   | Описание                                                                                                                                                          |
-| ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Phalcon\Cache\Frontend\Output](api/Phalcon_Cache_Frontend_Output)     | Считывает данные из стандартного PHP вывода.                                                                                                                      |
-| [Phalcon\Cache\Frontend\Data](api/Phalcon_Cache_Frontend_Data)         | Используется для кэширования любых данных в PHP (большие массивы, объекты, тексты и т.д.). Прежде чем сохранить данные, адаптер сериализирует их.                 |
-| [Phalcon\Cache\Frontend\Base64](api/Phalcon_Cache_Frontend_Base64)     | Используется для кэширования бинарных данных. Данные сериализируется с использованием `base64_encode`.                                                            |
-| [Phalcon\Cache\Frontend\Json](api/Phalcon_Cache_Frontend_Json)         | Данные перед кэширование сериализуются в JSON. Можно использовать для обмена данными с другими фреймворками.                                                      |
-| [Phalcon\Cache\Frontend\Igbinary](api/Phalcon_Cache_Frontend_Igbinary) | Он используется для кэширования любых данных PHP (большие массивы, объекты, тексты и т.д.). Данные сериализуются c помощью `Igbinary` перед сохранением в бэкэнд. |
-| [Phalcon\Cache\Frontend\None](api/Phalcon_Cache_Frontend_None)         | Используется для кэширования любых типов данных без сериализации.                                                                                                 |
+| Адаптер                                                                   | Описание                                                                                                                                                       |
+| ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Phalcon\Cache\Frontend\Output](api/Phalcon_Cache_Frontend_Output)     | Считывает данные из стандартного PHP вывода.                                                                                                                   |
+| [Phalcon\Cache\Frontend\Data](api/Phalcon_Cache_Frontend_Data)         | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                     |
+| [Phalcon\Cache\Frontend\Base64](api/Phalcon_Cache_Frontend_Base64)     | It's used to cache binary data. The data is serialized using `base64_encode` before be stored in the backend.                                                  |
+| [Phalcon\Cache\Frontend\Json](api/Phalcon_Cache_Frontend_Json)         | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks. |
+| [Phalcon\Cache\Frontend\Igbinary](api/Phalcon_Cache_Frontend_Igbinary) | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using `Igbinary` before be stored in the backend.                 |
+| [Phalcon\Cache\Frontend\None](api/Phalcon_Cache_Frontend_None)         | Используется для кэширования любых типов данных без сериализации.                                                                                              |
 
 <a name='adapters-frontend-custom'></a>
 

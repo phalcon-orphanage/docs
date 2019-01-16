@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Resultset\Complex'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Resultset\Complex'
+---
 # Class **Phalcon\Mvc\Model\Resultset\Complex**
 
 *extends* abstract class [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)

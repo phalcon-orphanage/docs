@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Validation\MessageInterface'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Validation\MessageInterface'
+---
 # Interface **Phalcon\Validation\MessageInterface**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/validation/messageinterface.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>

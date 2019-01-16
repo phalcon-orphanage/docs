@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -152,7 +151,7 @@ Then the messages would be printed as follows:
 
 <a name='implicit-flush-vs-session'></a>
 
-## Flush Implícito vs Sesión
+## Implicit Flush vs. Session
 
 Depending on the adapter used to send the messages, it could be producing output directly, or be temporarily storing the messages in session to be shown later. When should you use each? That usually depends on the type of redirection you do after sending the messages. For example, if you make a `forward` is not necessary to store the messages in session, but if you do a HTTP redirect then, they need to be stored in session:
 

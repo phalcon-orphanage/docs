@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Micro'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Micro'
+---
 # Class **Phalcon\Mvc\Micro**
 
 *extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)

@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Dispatcher\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Dispatcher\Exception'
+---
 # Class **Phalcon\Mvc\Dispatcher\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)

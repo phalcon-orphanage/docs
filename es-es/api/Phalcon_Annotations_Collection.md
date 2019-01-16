@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Annotations\Collection'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Annotations\Collection'
+---
 # Class **Phalcon\Annotations\Collection**
 
 *implements* [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [Countable](https://php.net/manual/en/class.countable.php)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Representa una colección de anotaciones. Esta clase permite recorrer fácilmente un grupo de anotaciones
+Represents a collection of annotations. This class allows to traverse a group of annotations easily
 
 ```php
 <?php

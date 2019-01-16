@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Annotations\Adapter\Xcache'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Annotations\Adapter\Xcache'
+---
 # Class **Phalcon\Annotations\Adapter\Xcache**
 
 *extends* abstract class [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)

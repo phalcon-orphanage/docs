@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -146,8 +145,7 @@ class PostsController extends Controller
         $day = $this->dispatcher->getParam('day');
 
         // ...
-    }
-}
+    } }
 ```
 
 Note that the values of the parameters are obtained from the dispatcher. This happens because it is the component that finally interacts with the drivers of your application. Moreover, there is also another way to create named parameters as part of the pattern:
@@ -182,8 +180,7 @@ class DocumentationController extends Controller
         $type = $this->dispatcher->getParam('type');
 
         // ...
-    } 
-}
+    } }
 ```
 
 <a name='defining-short-syntax'></a>

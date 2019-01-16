@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\Redis'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Backend\Redis'
+---
 # Class **Phalcon\Cache\Backend\Redis**
 
 *extends* abstract class [Phalcon\Cache\Backend](Phalcon_Cache_Backend)

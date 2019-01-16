@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -651,15 +650,15 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unex
 
 A special variable is available inside `for` loops providing you information about
 
-| Variable         | Description          |
-| ---------------- | -------------------- |
-| `loop.index`     | ループの現在の反復回数。（1始まり）   |
-| `loop.index0`    | ループの現在の反復回数。（0始まり）   |
-| `loop.revindex`  | ループの終わりからの反復回数（1始まり） |
-| `loop.revindex0` | ループの終わりからの反復回数（0始まり） |
-| `loop.first`     | ループの最初ならtrue。        |
-| `loop.last`      | ループの最後ならtrue。        |
-| `loop.length`    | ループするアイテムの数          |
+| Variable         | Description                                    |
+| ---------------- | ---------------------------------------------- |
+| `loop.index`     | The current iteration of the loop. (1 indexed) |
+| `loop.index0`    | The current iteration of the loop. (0 indexed) |
+| `loop.revindex`  | ループの終わりからの反復回数（1始まり）                           |
+| `loop.revindex0` | ループの終わりからの反復回数（0始まり）                           |
+| `loop.first`     | ループの最初ならtrue。                                  |
+| `loop.last`      | ループの最後ならtrue。                                  |
+| `loop.length`    | ループするアイテムの数                                    |
 
 Example:
 
@@ -853,7 +852,7 @@ Additional operators seen the following operators are available:
 | `is`              | ==（equals）と同じですが、テストも実行します                                                                       |
 | `in`              | 式が他の式に含まれている事をチェックする `if 'a' in 'abc'`                                                           |
 | `is not`          | != (not equals) と同じ                                                                              |
-| `'a' ? 'b' : 'c'` | 三項演算子。 PHPの三項演算子と同じ                                                                              |
+| `'a' ? 'b' : 'c'` | Ternary operator. The same as the PHP ternary operator                                           |
 | `++`              | 値を増やす                                                                                            |
 | `--`              | 値を減らす                                                                                            |
 
@@ -891,18 +890,18 @@ Tests can be used to test if a variable has a valid expected value. The operator
 
 The following built-in tests are available in Volt:
 
-| テスト           | Description                         |
-| ------------- | ----------------------------------- |
-| `defined`     | 変数が定義されているかどうかをチェックします (`isset()`)  |
-| `divisibleby` | 値が他の値で割り切れるかどうかをチェックします             |
-| `empty`       | 変数が空であるかどうかをチェックします                 |
-| `even`        | 数値が偶数であるかどうかをチェックします。               |
-| `iterable`    | 値が反復可能かどうかをチェックします。 'for' 文で取得できます  |
-| `numeric`     | 値が数値かどうかをチェックします                    |
-| `odd`         | 数値が奇数かどうかをチェックします                   |
-| `sameas`      | 値が他の値と等しいかどうかをチェックします               |
-| `scalar`      | 値がスカラー（配列またはオブジェクトではない）かどうかをチェックします |
-| `type`        | 値が指定された型かどうかをチェックします                |
+| テスト           | Description                                                          |
+| ------------- | -------------------------------------------------------------------- |
+| `defined`     | 変数が定義されているかどうかをチェックします (`isset()`)                                   |
+| `divisibleby` | 値が他の値で割り切れるかどうかをチェックします                                              |
+| `empty`       | 変数が空であるかどうかをチェックします                                                  |
+| `even`        | 数値が偶数であるかどうかをチェックします。                                                |
+| `iterable`    | Checks if a value is iterable. Can be traversed by a 'for' statement |
+| `numeric`     | 値が数値かどうかをチェックします                                                     |
+| `odd`         | 数値が奇数かどうかをチェックします                                                    |
+| `sameas`      | 値が他の値と等しいかどうかをチェックします                                                |
+| `scalar`      | 値がスカラー（配列またはオブジェクトではない）かどうかをチェックします                                  |
+| `type`        | 値が指定された型かどうかをチェックします                                                 |
 
 More examples:
 

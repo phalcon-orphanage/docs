@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -42,11 +41,11 @@ Once the application is in a production stage, it is not necessary to query the 
 | Адаптер      | Описание                                                                                                                                                                                                                                                                                                                                  | API                                                                                        |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | Apc          | This adapter uses the [Alternative PHP Cache (APC)](https://www.php.net/manual/en/book.apc.php) to store the table metadata. Вы можете задать время жизни метаданных с помощью параметров. Рекомендуемый способ хранения метаданных, когда приложение находится в продакшн режиме.                                                        | [Phalcon\Mvc\Model\MetaData\Apc](api/Phalcon_Mvc_Model_MetaData_Apc)                   |
-| Files        | Этот адаптер использует текстовые файлы для хранения метаданных. При его использовании нагрузка на диск увеличивается, а на базу данных — снижается.                                                                                                                                                                                      | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData_Files)               |
+| Files        | This adapter uses plain files to store metadata. This adapter reduces database queries but has an increased I/O with the file system.                                                                                                                                                                                                     | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData_Files)               |
 | Libmemcached | Этот адаптер использует [сервер Memcached](https://www.memcached.org/) для хранения таблицы метаданных. Параметры сервера, а также время жизни кэша указываются в параметрах. Рекомендуемый способ хранения метаданных, когда приложение находится в продакшн режиме.                                                                     | [Phalcon\Mvc\Model\MetaData\Libmemcached](api/Phalcon_Mvc_Model_MetaData_Libmemcached) |
 | Memcache     | This adapter uses [Memcache](https://php.net/manual/en/book.memcache.php) to store the table metadata. Вы можете задать время жизни метаданных с помощью параметров. Рекомендуемый способ хранения метаданных, когда приложение находится в продакшн режиме.                                                                              | `Phalcon\Mvc\Model\MetaData\Memcache`                                                  |
 | Memory       | Это адаптер по умолчанию. Метаданные кэшируются только на время выполнения запроса. По завершении запроса память, выделенная под метаданные, освобождается. Рекомендуемый способ хранения метаданных, когда приложение находится в стадии разработки.                                                                                     | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)             |
-| Redis        | Этот адаптер использует [сервер Redis](https://redis.io/) для хранения таблицы метаданных. Параметры сервера, а также время жизни кэша указываются в параметрах. Рекомендуемый способ хранения метаданных, когда приложение находится в продакшн режиме.                                                                                  | [Phalcon\Mvc\Model\MetaData\Redis](api/Phalcon_Mvc_Model_MetaData_Redis)               |
+| Redis        | This adapter uses [Redis](https://redis.io/) to store the table metadata. Параметры сервера, а также время жизни кэша указываются в параметрах. Рекомендуемый способ хранения метаданных, когда приложение находится в продакшн режиме.                                                                                                   | [Phalcon\Mvc\Model\MetaData\Redis](api/Phalcon_Mvc_Model_MetaData_Redis)               |
 | Session      | Этот адаптер сохраняет метаданные в суперглобальной переменной `$_SESSION`. Данный адаптер рекомендуется использовать только при небольшом количестве моделей. Метаданные обновляются каждый раз, когда начинается новая сессия. При этом перед использованием любой модели необходимо начать сессию с помощью функции `session_start()`. | [Phalcon\Mvc\Model\MetaData\Session](api/Phalcon_Mvc_Model_MetaData_Session)           |
 | XCache       | This adapter uses [XCache](https://xcache.lighttpd.net/) to store the table metadata. Вы можете задать время жизни метаданных с помощью параметров. Это один из рекомендуемых способов для хранения метаданных, когда приложение находится в продакшн режиме.                                                                             | [Phalcon\Mvc\Model\MetaData\Xcache](api/Phalcon_Mvc_Model_MetaData_Xcache)             |
 

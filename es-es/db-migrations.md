@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -149,12 +148,12 @@ class ProductsMigration_100 extends Migration
 
 The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.0.0. `morphTable()` receives an associative array with 4 possible sections:
 
-| Índice       | Descripción                                                                                                                                                            | Opcional |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | Una matriz con el conjunto de columnas de la tabla                                                                                                                     |    No    |
-| `indexes`    | Una matriz con el conjunto de índices de la tabla.                                                                                                                     |    Si    |
-| `references` | Una matriz con el conjunto de referencias de la tabla (claves foráneas).                                                                                               |    Si    |
-| `options`    | Un array con un conjunto de opciones de creación de la tabla. Estas opciones están a menudo relacionadas al sistema de base de datos en la que se generó la migración. |    Si    |
+| Índice       | Descripción                                                                                                                                 | Opcional |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
+| `columns`    | Una matriz con el conjunto de columnas de la tabla                                                                                          |    No    |
+| `indexes`    | Una matriz con el conjunto de índices de la tabla.                                                                                          |    Si    |
+| `references` | Una matriz con el conjunto de referencias de la tabla (claves foráneas).                                                                    |    Si    |
+| `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |    Si    |
 
 <a name='class-anatomy-columns'></a>
 
@@ -162,17 +161,17 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 
 [Phalcon\Db\Column](api/Phalcon_Db_Column) is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
-| Opción          | Descripción                                                                                                                         | Opcional |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                            |    No    |
-| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                               |    Si    |
-| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                            |    Si    |
-| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                     |    Si    |
-| `notNull`       | ¿La columna puede almacenar valores nulos?                                                                                          |    Si    |
-| `default`       | Define un valor predeterminado para una columna (sólo puede ser un valor real, no una función como `NOW()`)                         |    Si    |
-| `autoIncrement` | Con este atributo la columna se incrementará automáticamente con un entero. Solo una columna en la tabla puede tener este atributo. |    Si    |
-| `first`         | La columna debe colocarse en primera posición en el orden de columnas                                                               |    Si    |
-| `after`         | La columna debe colocarse después de la columna indicada                                                                            |    Si    |
+| Opción          | Descripción                                                                                                                                | Opcional |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
+| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                                   |    No    |
+| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      |    Si    |
+| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   |    Si    |
+| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            |    Si    |
+| `notNull`       | ¿La columna puede almacenar valores nulos?                                                                                                 |    Si    |
+| `default`       | Define un valor predeterminado para una columna (sólo puede ser un valor real, no una función como `NOW()`)                                |    Si    |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |    Si    |
+| `first`         | La columna debe colocarse en primera posición en el orden de columnas                                                                      |    Si    |
+| `after`         | La columna debe colocarse después de la columna indicada                                                                                   |    Si    |
 
 Database migrations support the following database column types:
 
@@ -207,14 +206,14 @@ Database migrations support the following database column types:
 
 [Phalcon\Db\Reference](api/Phalcon_Db_Reference) defines table references (also called foreign keys). The following options can be used to define a reference:
 
-| Índice              | Descripción                                                                                               | Opcional | Implementado en  |
-| ------------------- | --------------------------------------------------------------------------------------------------------- |:--------:| ---------------- |
-| `referencedTable`   | Es auto descriptivo. Se refiere al nombre de la tabla referenciada.                                       |    No    | Todos            |
-| `columns`           | Una matriz con el nombre de las columnas en la tabla que tiene la referencia                              |    No    | Todos            |
-| `referencedColumns` | Una matriz con el nombre de las columnas de la tabla de referencia                                        |    No    | Todos            |
-| `referencedSchema`  | La tabla de referencia está tal vez en otro esquema o base de datos. Esta opción le permite definir esto. |    Si    | Todos            |
-| `onDelete`          | Si se elimina el registro foráneo, realizar esta acción en el o los registros locales.                    |    Si    | MySQL PostgreSQL |
-| `onUpdate`          | Si se actualiza el registro foráneo, realizar esta acción en el o los registros locales.                  |    Si    | MySQL PostgreSQL |
+| Índice              | Descripción                                                                                         | Opcional | Implementado en  |
+| ------------------- | --------------------------------------------------------------------------------------------------- |:--------:| ---------------- |
+| `referencedTable`   | It's auto-descriptive. It refers to the name of the referenced table.                               |    No    | Todos            |
+| `columns`           | Una matriz con el nombre de las columnas en la tabla que tiene la referencia                        |    No    | Todos            |
+| `referencedColumns` | Una matriz con el nombre de las columnas de la tabla de referencia                                  |    No    | Todos            |
+| `referencedSchema`  | The referenced table maybe is on another schema or database. This option allows you to define that. |    Si    | Todos            |
+| `onDelete`          | Si se elimina el registro foráneo, realizar esta acción en el o los registros locales.              |    Si    | MySQL PostgreSQL |
+| `onUpdate`          | Si se actualiza el registro foráneo, realizar esta acción en el o los registros locales.            |    Si    | MySQL PostgreSQL |
 
 <a name='writing'></a>
 

@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Translate\Adapter\Csv'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Translate\Adapter\Csv'
+---
 # Class **Phalcon\Translate\Adapter\Csv**
 
 *extends* abstract class [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)

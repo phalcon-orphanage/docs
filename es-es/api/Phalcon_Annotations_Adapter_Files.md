@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Annotations\Adapter\Files'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Annotations\Adapter\Files'
+---
 # Class **Phalcon\Annotations\Adapter\Files**
 
 *extends* abstract class [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
@@ -12,7 +12,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Annotations\Adapte
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/adapter/files.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-Guarda las anotaciones analizadas en los archivos. Este adaptador es adecuado para producción
+Stores the parsed annotations in files. This adapter is suitable for production
 
 ```php
 <?php

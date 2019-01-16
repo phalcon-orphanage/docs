@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -79,7 +78,7 @@ class RobotParts extends Model
 
 <a name='properties-setters-getters'></a>
 
-### Propiedades públicas vs Setters / Getters
+### Public properties vs. Setters/Getters
 
 Models can be implemented public properties, meaning that each property can be read/updated from any part of the code that has instantiated that model class:
 
@@ -315,10 +314,10 @@ Las opciones disponibles de consulta son:
 | Parameter     | Descripción                                                                                                                                                                                                                                         | Ejemplo                                                              |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Condiciones de búsqueda para la operación de búsqueda. Se utiliza para extraer sólo los registros que cumplan con un criterio especificado. By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Devolverá las columnas especificadas aquí en lugar de las todas columnas del modelo. Cuando se utiliza esta opción se devuelve un objeto incompleto                                                                                                 | `'columns' => 'id, name'`                                         |
+| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                                                           | `'columns' => 'id, name'`                                         |
 | `bind`        | Se utiliza junto a las opciones, mediante la sustitución de marcadores y escapando los valores para aumentar la seguridad                                                                                                                           | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
 | `bindTypes`   | Al enlazar parámetros, puede utilizar este parámetro para definir el tipo de datos de los parámetros y aumentar aún más la seguridad                                                                                                                | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
-| `order`       | Se utiliza para ordenar el conjunto de resultados. Utilice uno o más campos separados por comas.                                                                                                                                                    | `'order' => 'name DESC, status'`                                  |
+| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                                                                          | `'order' => 'name DESC, status'`                                  |
 | `limit`       | Limitar los resultados de la consulta a cierto rango                                                                                                                                                                                                | `'limit' => 10`                                                   |
 | `offset`      | Desplazar los resultados de la consulta por una cierta cantidad                                                                                                                                                                                     | `'offset' => 5`                                                   |
 | `group`       | Permite recopilar datos a través de múltiples registros y agrupar los resultados de una o más columnas                                                                                                                                              | `'group' => 'name, status'`                                       |

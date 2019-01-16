@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -133,7 +132,7 @@ use Phalcon\Di\FactoryDefault;
 
 // ...
 
-// DIの生成
+// Create a DI
 $di = new FactoryDefault();
 ```
 

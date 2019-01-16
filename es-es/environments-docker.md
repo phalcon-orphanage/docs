@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -159,17 +158,17 @@ You can pass multiple environment variables from an external file to a service's
 
 ### Variables de phpMyAdmin
 
-| Variable de entorno | Descripción                                                                                                                       | Predeterminado |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------- |
-| `PMA_ARBITRARY`     | Cuándo se configura en 1 se permitirá la conexión con el servidor.                                                                | 1              |
-| `PMA_HOST`          | Definir dirección o nombre de host del servidor MySQL.                                                                            | mysql          |
-| `PMA_HOSTS`         | Definir una lista separada por comas de nombres de host/dirección de los servidores de MySQL. Usar sólo si `PMA_HOST` está vacía. |                |
-| `PMA_PORT`          | Definir el puerto del servidor MySQL.                                                                                             | 3306           |
-| `PMA_VERBOSE`       | Definir el nombre detallado del servidor MySQL.                                                                                   |                |
-| `PMA_VERBOSES`      | Definir una lista separada por comas de nombres detallados de los servidores de MySQL. Usar sólo si `PMA_VERBOSE` está vacía.     |                |
-| `PMA_USER`          | Definir el nombre de usuario para configuración el método de autenticación.                                                       | phalcon        |
-| `PMA_PASSWORD`      | Definir la contraseña a utilizar para configurar el método de autenticación.                                                      | secret         |
-| `PMA_ABSOLUTE_URI`  | Ruta completa de acceso (por ejemplo https://pma.example.net/) donde el proxy inverso hace que phpMyAdmin este disponible.        |                |
+| Variable de entorno | Descripción                                                                                                                | Predeterminado |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| `PMA_ARBITRARY`     | Cuándo se configura en 1 se permitirá la conexión con el servidor.                                                         | 1              |
+| `PMA_HOST`          | Definir dirección o nombre de host del servidor MySQL.                                                                     | mysql          |
+| `PMA_HOSTS`         | Define comma separated list of address/host names of the MySQL servers. Used only if `PMA_HOST` is empty.                  |                |
+| `PMA_PORT`          | Definir el puerto del servidor MySQL.                                                                                      | 3306           |
+| `PMA_VERBOSE`       | Definir el nombre detallado del servidor MySQL.                                                                            |                |
+| `PMA_VERBOSES`      | Define comma separated list of verbose names of the MySQL servers. Used only if `PMA_VERBOSE` is empty.                    |                |
+| `PMA_USER`          | Definir el nombre de usuario para configuración el método de autenticación.                                                | phalcon        |
+| `PMA_PASSWORD`      | Definir la contraseña a utilizar para configurar el método de autenticación.                                               | secret         |
+| `PMA_ABSOLUTE_URI`  | Ruta completa de acceso (por ejemplo https://pma.example.net/) donde el proxy inverso hace que phpMyAdmin este disponible. |                |
 
 *See also* * https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker * https://docs.phpmyadmin.net/en/latest/config.html#config * https://docs.phpmyadmin.net/en/latest/setup.html
 

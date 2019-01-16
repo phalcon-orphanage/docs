@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -79,7 +78,7 @@ class RobotParts extends Model
 
 <a name='properties-setters-getters'></a>
 
-### パブリックプロバティー VS セッター/ゲッター
+### Public properties vs. Setters/Getters
 
 Models can be implemented public properties, meaning that each property can be read/updated from any part of the code that has instantiated that model class:
 
@@ -315,10 +314,10 @@ $robots = Robots::find(
 | Parameter     | Description                                                                                                                                          | 例                                                                    |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | find時の検索条件。 指定された条件を満たすレコードのみを抽出するために使用されます。 By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | モデル内の完全な列の代わりに特定の列を返します。 このオプションを使用すると、不完全なオブジェクトが返されます。                                                                                             | `'columns' => 'id, name'`                                         |
+| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                            | `'columns' => 'id, name'`                                         |
 | `bind`        | bindは、プレースホルダをエスケープ値で置き換えるオプションと一緒に使用されるため、セキュリティが強化されます。                                                                                            | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
 | `bindTypes`   | パラメータをバインドする時にこのパラメータを使用すると、バインドされたパラメータをさらに型キャストして、セキュリティをさらに強化することができます。                                                                           | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
-| `order`       | 結果セットをソートするために使用されます。 1つまたは複数のフィールドをカンマで区切って使用します。                                                                                                   | `'order' => 'name DESC, status'`                                  |
+| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                           | `'order' => 'name DESC, status'`                                  |
 | `limit`       | クエリの結果を特定の範囲に制限します。                                                                                                                                  | `'limit' => 10`                                                   |
 | `offset`      | クエリの結果を一定量だけオフセットします。                                                                                                                                | `'offset' => 5`                                                   |
 | `group`       | 複数のレコードにわたってデータを収集し、結果を1つ以上の列でグループ化することができます。                                                                                                        | `'group' => 'name, status'`                                       |

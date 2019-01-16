@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Assets\Filters\Cssmin'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Assets\Filters\Cssmin'
+---
 # Class **Phalcon\Assets\Filters\Cssmin**
 
 *implements* [Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface)

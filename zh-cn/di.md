@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -973,10 +972,10 @@ $component = $di->get(
 
 [Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
 
-| 事件名称                 | 触发器                            | 可以停止操作吗？ |   触发条件    |
-| -------------------- | ------------------------------ |:--------:|:---------:|
-| beforeServiceResolve | 触发之前解决服务。侦听器接收服务名称和传递给它的参数。    |    否     | Listeners |
-| afterServiceResolve  | 触发后决心服务。侦听器接收服务名称、 实例和传递给它的参数。 |    否     | Listeners |
+| 事件名称                 | 触发器                                                                                                             | 可以停止操作吗？ |   触发条件    |
+| -------------------- | --------------------------------------------------------------------------------------------------------------- |:--------:|:---------:|
+| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |    否     | Listeners |
+| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |    否     | Listeners |
 
 <a name='shared-services'></a>
 

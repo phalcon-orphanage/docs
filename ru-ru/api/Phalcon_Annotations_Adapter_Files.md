@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Annotations\Adapter\Files'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Annotations\Adapter\Files'
+---
 # Class **Phalcon\Annotations\Adapter\Files**
 
 *extends* abstract class [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)

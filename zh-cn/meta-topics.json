@@ -1,6 +1,6 @@
 [
     {
-        "text": "General",
+        "text": "常规信息",
         "url": "/introduction",
         "menu": [
             {
@@ -8,12 +8,12 @@
                 "url": "/introduction"
             },
             {
-                "text": "发行说明",
+                "text": "Release Notes",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "升級",
+                "text": "Upgrade",
                 "url": ""
             },
             {
@@ -23,11 +23,11 @@
         ]
     },
     {
-        "text": "Contributions",
+        "text": "贡献者",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "概述",
                 "url": "/contributions"
             },
             {
@@ -101,7 +101,7 @@
                 "url": "/devtools-installation"
             },
             {
-                "text": "Usage",
+                "text": "使用",
                 "url": "/devtools-usage"
             },
             {
@@ -135,7 +135,7 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "使用案例",
                 "url": "/use-case"
             }
         ]
@@ -145,7 +145,7 @@
         "url": "",
         "menu": [
             {
-                "text": "API Index",
+                "text": "API 索引",
                 "url": "/api/"
             },
             {
@@ -161,7 +161,7 @@
                 "url": "/application-cli"
             },
             {
-                "text": "DI Container",
+                "text": "DI 容器",
                 "url": "/di"
             },
             {
@@ -171,7 +171,7 @@
         ]
     },
     {
-        "text": "Services",
+        "text": "服务",
         "url": "",
         "menu": [
             {
@@ -217,7 +217,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "模型",
                 "url": "/db-models"
             },
             {
@@ -233,7 +233,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "事件",
                 "url": "/db-models-events"
             },
             {
@@ -249,7 +249,7 @@
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "验证程序",
                 "url": "/db-models-validation"
             },
             {
@@ -309,7 +309,7 @@
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "控制器",
                 "url": "/controllers"
             },
             {
@@ -325,7 +325,7 @@
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "路由",
                 "url": "/routing"
             },
             {
@@ -337,7 +337,7 @@
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "验证",
                 "url": "/validation"
             }
         ]
@@ -361,7 +361,7 @@
         ]
     },
     {
-        "text": "Security",
+        "text": "安全",
         "url": "",
         "menu": [
             {
@@ -369,7 +369,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "安全",
                 "url": "/security"
             }
         ]

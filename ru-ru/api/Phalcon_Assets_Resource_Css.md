@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Assets\Resource\Css'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Assets\Resource\Css'
+---
 # Class **Phalcon\Assets\Resource\Css**
 
 *extends* class [Phalcon\Assets\Resource](Phalcon_Assets_Resource)

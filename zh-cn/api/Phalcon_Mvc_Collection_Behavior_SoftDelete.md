@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Collection\Behavior\SoftDelete'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Collection\Behavior\SoftDelete'
+---
 # Class **Phalcon\Mvc\Collection\Behavior\SoftDelete**
 
 *extends* abstract class [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)

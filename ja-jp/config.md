@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -106,12 +105,12 @@ $config = new Config($settings);
 
 The adapters available are:
 
-| Class                                                             | Description                                                 |
-| ----------------------------------------------------------------- | ----------------------------------------------------------- |
-| [Phalcon\Config\Adapter\Ini](api/Phalcon_Config_Adapter_Ini)   | INIファイルを使用して設定を保存します。 アダプタは内部的にPHP関数`parse_ini_file`を使用します。 |
-| [Phalcon\Config\Adapter\Json](api/Phalcon_Config_Adapter_Json) | JSONファイルを使用して設定を保存します。                                      |
-| [Phalcon\Config\Adapter\Php](api/Phalcon_Config_Adapter_Php)   | PHPの多次元配列を使用して設定を保存します。 このアダプターは最高のパフォーマンスを提供します。           |
-| [Phalcon\Config\Adapter\Yaml](api/Phalcon_Config_Adapter_Yaml) | YAMLファイルを使用して設定を保存します。                                      |
+| Class                                                             | Description                                                                                      |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| [Phalcon\Config\Adapter\Ini](api/Phalcon_Config_Adapter_Ini)   | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
+| [Phalcon\Config\Adapter\Json](api/Phalcon_Config_Adapter_Json) | JSONファイルを使用して設定を保存します。                                                                           |
+| [Phalcon\Config\Adapter\Php](api/Phalcon_Config_Adapter_Php)   | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
+| [Phalcon\Config\Adapter\Yaml](api/Phalcon_Config_Adapter_Yaml) | YAMLファイルを使用して設定を保存します。                                                                           |
 
 <a name='ini-files'></a>
 
