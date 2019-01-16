@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Crypt\Mismatch'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Crypt\Mismatch'
+---
 # Class **Phalcon\Crypt\Mismatch**
 
 *extends* class [Phalcon\Crypt\Exception](Phalcon_Crypt_Exception)
