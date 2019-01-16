@@ -4,25 +4,27 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Controladores
 
-Phalcon Compose es un entorno de desarrollo impulsado por la comunidad para los proyectos de Phalcon que se ejecutan en Docker. Su propósito es facilitar el arranque de aplicaciones Phalcon y ejecutarse en entornos de desarrollo o producción.
+Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
 
 <a name='dependencies'></a>
 
 ## Dependencias
 
-Para ejecutar esta pila en su máquina, necesita por lo menos: * Sistema operativo: Windows, Linux o OS X * [Docker Engine](https://docs.docker.com/installation/) > = 1.10.0 * [ Docker Compose](https://docs.docker.com/compose/install/) > = 1.6.2
+To run this stack on your machine, you need at least: * Operating System: Windows, Linux, or OS X * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
 <a name='services'></a>
 
 ## Servicios
 
-Los servicios incluidos son:
+Services included are:
 
 | Nombre del servicio | Descripción                                                                                                            |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -45,13 +47,13 @@ Los servicios incluidos son:
 
 ### Con Composer (recomendado)
 
-Usando Composer, se puede crear un nuevo proyecto de la siguiente forma:
+Using Composer, you can create a new project as follows:
 
 ```bash
 composer create-project phalcon/compose --prefer-dist <folder name>
 ```
 
-La salida debería ser similar a:
+Your output should be similar to this:
 
 ```php
 Example
@@ -71,7 +73,7 @@ Generating autoload files
 
 ### Con Git
 
-Otra forma de inicializar su proyecto es con Git.
+Another way to initialize your project is with Git.
 
 ```bash
  git clone git@github.com:phalcon/phalcon-compose.git
@@ -79,13 +81,13 @@ Otra forma de inicializar su proyecto es con Git.
 
 <h5 class='alert alert-warning'>Make sure that you copy <code>variables.env.example</code> to <code>variables.env</code> and adjust the settings in that file </h5>
 
-Añadir la aplicación Phalcon en la carpeta `application`.
+Add your Phalcon Application into `application` folder.
 
 <a name='configuration'></a>
 
 ## Configuración
 
-Añadir `phalcon.local` (o su nombre de host preferido) en el archivo `/etc/hosts` como se muestra a continuación:
+Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as follows:
 
 ```bash
 127.0.0.1 www.phalcon.local phalcon.local
@@ -95,22 +97,22 @@ Añadir `phalcon.local` (o su nombre de host preferido) en el archivo `/etc/host
 
 ## Uso
 
-Ahora puede construir, crear, iniciar y colocar contenedores para el entorno de su aplicación. Para construir los contenedores utilice los siguientes comandos dentro de la raíz del proyecto:
+You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
 
 ```php
 docker-compose build
 ```
 
-Para iniciar la aplicación y ejecutar los contenedores en segundo plano, utilice el siguiente comando dentro de la raíz del proyecto:
+To start the application and run the containers in the background, use following command inside project root:
 
 ```bash
 # You can use here your prefered project name with "-p my-app" parameter
 $ docker-compose up -d
 ```
 
-Ahora configura tu proyecto en el contenedor de la aplicación, usando las herramientas de desarrollador de Phalcon
+Now setup your project in the app container using the Phalcon Developer Tools
 
-Reemplazar el proyecto en **<project_app_1>** con el nombre de su directorio/proyecto (se muestra en la salida de `docker-compose up -d`)
+Replace project in **<project_app_1>** with the name of your project/directory (shown in the output of `docker-compose up -d`)
 
 $ `docker exec -t <project_app_1> phalcon project application simple`
 
@@ -120,7 +122,7 @@ Now you can now launch your application in your browser visiting `https://phalco
 
 ## Configurar
 
-Si su aplicación utiliza un caché de archivos o escribe registros de logs en archivos, puede configurar la memoria de caché y carpetas para los registros de la siguiente manera:
+If your application uses a file cache or writes logs to files, you can set up your cache and log folders as follows:
 
 | Directorio       | Ruta             |
 | ---------------- | ---------------- |
@@ -131,13 +133,13 @@ Si su aplicación utiliza un caché de archivos o escribe registros de logs en a
 
 ## Registro de logs
 
-Para la mayoría de los recipientes puede acceder a los registros utilizando el comando `docker logs <nombre_del_contenedor>` en tu ordenador.
+For most containers you can access the logs using the `docker logs <container_name>` command in your host machine.
 
 <a name='environment-variables'></a>
 
 ## Variables de entorno
 
-Usted puede pasar varias variables de entorno desde un archivo externo a los contenedores del servicio, editando el archivo `variables.env`.
+You can pass multiple environment variables from an external file to a service's containers by editing the `variables.env` file.
 
 <a name='environment-variables-web'></a>
 
@@ -175,7 +177,7 @@ Usted puede pasar varias variables de entorno desde un archivo externo a los con
 
 ## Depurador remoto Xdebug (PhpStorm)
 
-Para propósitos de depuración puede configurar Xdebug pasando los parámetros requeridos (ver variables.env).
+For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
 | Variable de entorno          | Descripción                                              | Predeterminado |
 | ---------------------------- | -------------------------------------------------------- | -------------- |
@@ -184,7 +186,7 @@ Para propósitos de depuración puede configurar Xdebug pasando los parámetros 
 | `XDEBUG_REMOTE_AUTOSTART`    | Valor de `php.ini` para `xdebug.remote_autostart`.       | Off            |
 | `XDEBUG_REMOTE_CONNECT_BACK` | Valor de `php.ini` para `xdebug.remote_connect_back`.    | Off            |
 
-*Nota* Puede encontrar su dirección IP local como se muestra a continuación:
+*NOTE* You can find your local IP address as follows:
 
 ```bash
 # Linux/MacOS
@@ -202,7 +204,7 @@ ipconfig
 
 ### Inicio o enlace de errores
 
-Si tienes cualquier problema de inicio, puede intentar reconstruir el contenedor de la aplicación. No habrá ninguna pérdida de datos., es un reinicio seguro:
+If you got any startup issues you can try to rebuild app container. There will be no loss of data., it is a safe reset:
 
 ```bash
 docker-compose stop
@@ -215,7 +217,7 @@ docker-compose up -d
 
 ### Reinicio completo
 
-Para restablecer todos los contenedores, eliminar todos los datos (mysql, elasticsearch, etcétera) pero no los archivos de proyectos en carpeta `aplicación`:
+To reset all containers, delete all data (mysql, elasticsearch, etc.) but not your project files in `application` folder:
 
 ```bash
 docker-compose stop
@@ -228,7 +230,7 @@ docker-compose up -d
 
 ### Actualización de dependencias
 
-A veces las imágenes de base (por ejemplo `phalconphp/php-apache: ubuntu-16.04`) se actualizan. Phalcon Compose depende de estas imágenes. Por lo tanto usted tendrá que actualizarlas y siempre es bueno hacerlo para asegurar que tenga la funcionalidad más reciente disponible. Los contenedores dependientes de estas imágenes tendrán que ser actualizados y reconstruidos:
+Sometimes the base images (for example `phalconphp/php-apache:ubuntu-16.04`) are updated. Phalcon Compose depends on these images. You will therefore need to update them and it is always a good thing to do so to ensure that you have the latest functionality available. The dependent containers to these images will need to be updated and rebuilt:
 
 ```bash
 docker pull mongo:4.0
@@ -243,15 +245,15 @@ docker pull elasticsearch:5.2-alpine
 docker pull phalconphp/php-apache:ubuntu-16.04
 ```
 
-Los usuarios de Linux/MacOS pueden utilizar `make` para realizar la tarea:
+Linux/MacOS users can use `make` to perform the task:
 
 ```bash
 make pull
 ```
 
-Luego tienes que reiniciar todos los contenedores, eliminar todos los datos, reconstruir los servicios y reiniciar la aplicación.
+Then you have to reset all containers, delete all data, rebuild services and restart application.
 
-Los usuarios de Linux/MacOS pueden utilizar `make` para realizar la tarea:
+Linux/MacOS users can use `make` to perform the task:
 
 ```bash
 make reset
