@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Forms\Element\Date'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Forms\Element\Date'
+---
 # Class **Phalcon\Forms\Element\Date**
 
 *extends* abstract class [Phalcon\Forms\Element](Phalcon_Forms_Element)
