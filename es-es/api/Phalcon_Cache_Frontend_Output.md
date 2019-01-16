@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Output'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Frontend\Output'
+---
 # Class **Phalcon\Cache\Frontend\Output**
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
@@ -34,7 +34,7 @@ Check whether if frontend is buffering output
 
 public **start** ()
 
-Iniciar la salida del frontend. Actualmente no hace nada
+Starts output frontend. Currently, does nothing
 
 public *string* **getContent** ()
 
