@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -1060,19 +1059,19 @@ $connection->createTable(
 
 `Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class [Phalcon\Db\Column](api/Phalcon_Db_Column). The table below shows the options available to define a column:
 
-| Параметр        | Описание                                                                                                                 | Опционально |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------ |:-----------:|
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below for a list)                      |     Нет     |
-| `primary`       | True if the column is part of the table's primary key                                                                    |     Да      |
-| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                |     Да      |
-| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                          |     Да      |
-| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                        |     Да      |
-| `notNull`       | Может ли столбец содержать значения Null?                                                                                |     Да      |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                   |     Да      |
-| `autoIncrement` | С данными атрибутом числовое поле будет заполняться автоматически. Только одно поле в таблице может иметь такой атрибут. |     Да      |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                   |     Да      |
-| `first`         | Столбец будет размещен первым в структуре таблицы                                                                        |     Да      |
-| `after`         | Название столбца, после которого будет размещен текущий столбец                                                          |     Да      |
+| Параметр        | Описание                                                                                                                                   | Опционально |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:-----------:|
+| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below for a list)                                        |     Нет     |
+| `primary`       | True if the column is part of the table's primary key                                                                                      |     Да      |
+| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |     Да      |
+| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |     Да      |
+| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |     Да      |
+| `notNull`       | Может ли столбец содержать значения Null?                                                                                                  |     Да      |
+| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |     Да      |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |     Да      |
+| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |     Да      |
+| `first`         | Столбец будет размещен первым в структуре таблицы                                                                                          |     Да      |
+| `after`         | Название столбца, после которого будет размещен текущий столбец                                                                            |     Да      |
 
 [Phalcon\Db](api/Phalcon_Db) supports the following database column types:
 
