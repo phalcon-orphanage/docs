@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Db\Dialect'
 
 # Abstract class **Phalcon\Db\Dialect**
 
-*implements* [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+*implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/dialect.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
@@ -205,86 +205,86 @@ protected **prepareQualified** (*mixed* $column, [*mixed* $domain], [*mixed* $es
 
 Prepares qualified for this RDBMS
 
-abstract public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](/4.0/en/api/Phalcon_Db_ColumnInterface) $column) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](/4.0/en/api/Phalcon_Db_ColumnInterface) $column) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](/4.0/en/api/Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](/4.0/en/api/Phalcon_Db_ColumnInterface) $currentColumn]) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $currentColumn]) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](/4.0/en/api/Phalcon_Db_IndexInterface) $index) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](/4.0/en/api/Phalcon_Db_IndexInterface) $index) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](/4.0/en/api/Phalcon_Db_ReferenceInterface) $reference) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface) $reference) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName]) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName]) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **dropTable** (*mixed* $tableName, *mixed* $schemaName) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **dropTable** (*mixed* $tableName, *mixed* $schemaName) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists]) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists]) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **tableExists** (*mixed* $tableName, [*mixed* $schemaName]) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **tableExists** (*mixed* $tableName, [*mixed* $schemaName]) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **viewExists** (*mixed* $viewName, [*mixed* $schemaName]) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **viewExists** (*mixed* $viewName, [*mixed* $schemaName]) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **describeColumns** (*mixed* $table, [*mixed* $schema]) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **describeColumns** (*mixed* $table, [*mixed* $schema]) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **listTables** ([*mixed* $schemaName]) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **listTables** ([*mixed* $schemaName]) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **describeIndexes** (*mixed* $table, [*mixed* $schema]) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **describeIndexes** (*mixed* $table, [*mixed* $schema]) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **describeReferences** (*mixed* $table, [*mixed* $schema]) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **describeReferences** (*mixed* $table, [*mixed* $schema]) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
 
-abstract public **tableOptions** (*mixed* $table, [*mixed* $schema]) inherited from [Phalcon\Db\DialectInterface](/4.0/en/api/Phalcon_Db_DialectInterface)
+abstract public **tableOptions** (*mixed* $table, [*mixed* $schema]) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
 ...
