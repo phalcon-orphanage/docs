@@ -10,10 +10,10 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Behavior
 
 ## 方法
 
-abstract public **notify** (*mixed* $type, [Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model)
+abstract public **notify** (*mixed* $type, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
 ...
 
-abstract public **missingMethod** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model, *mixed* $method, [*mixed* $arguments])
+abstract public **missingMethod** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $method, [*mixed* $arguments])
 
 ...
