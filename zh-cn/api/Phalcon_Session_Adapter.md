@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Session\Adapter'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Session\Adapter'
+---
 # Abstract class **Phalcon\Session\Adapter**
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
