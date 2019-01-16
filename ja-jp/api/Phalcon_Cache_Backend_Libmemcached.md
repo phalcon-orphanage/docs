@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\Libmemcached'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Backend\Libmemcached'
+---
 # Class **Phalcon\Cache\Backend\Libmemcached**
 
 *extends* abstract class [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
@@ -12,7 +12,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\Libm
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/libmemcached.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-Libmemcached バックエンドに 出力フラグメント、PHPのデータ、未加工のデータをキャッシュできます。 デフォルトの永続的な memcached 接続プールが使用されます。
+Allows to cache output fragments, PHP data or raw data to a libmemcached backend. Per default persistent memcached connection pools are used.
 
 ```php
 <?php
@@ -148,7 +148,7 @@ public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-キャッシュを開始します。このkeynameは作成したフラグメントの特定に使用できます。
+キャッシュを開始します。 このkeynameは作成したフラグメントの特定に使用できます。
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
