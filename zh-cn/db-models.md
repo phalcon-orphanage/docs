@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -315,10 +314,10 @@ $robots = Robots::find(
 | Parameter     | 描述                                                                                                                                           | 示例                                                                   |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | 查找操作的搜索条件。 用于提取只有那些满足指定的条件的记录。 By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions.       | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | 返回模型中的特定列而不是全部的列。使用此选项时返回不完整的对象                                                                                                              | `'columns' => 'id, name'`                                         |
+| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                    | `'columns' => 'id, name'`                                         |
 | `bind`        | 绑定选项，并替换占位符和使用转义值从而增加安全                                                                                                                      | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
 | `bindTypes`   | 当绑定参数，你可以使用此参数来定义附加铸造到增加更安全的绑定参数                                                                                                             | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
-| `order`       | 用来对结果集进行排序。使用以逗号分隔的一个或多个字段。                                                                                                                  | `'order' => 'name DESC, status'`                                  |
+| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                   | `'order' => 'name DESC, status'`                                  |
 | `limit`       | 限制结果缩小到一定范围内查询的结果                                                                                                                            | `'limit' => 10`                                                   |
 | `offset`      | 只查询结构的多少条                                                                                                                                    | `'offset' => 5`                                                   |
 | `group`       | 允许跨多个记录收集数据，并按一个或多个列进行分组结果                                                                                                                   | `'group' => 'name, status'`                                       |
