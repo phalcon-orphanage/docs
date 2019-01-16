@@ -1,9 +1,8 @@
-* * *
-
-layout: article language: 'en' version: '4.0'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+---
 ##### This article reflects v3.4 and has not yet been revised
 
 {:.alert .alert-danger}
@@ -16,7 +15,7 @@ layout: article language: 'en' version: '4.0'
 
 <a name='adapters'></a>
 
-## Adapters
+## Adaptadores
 
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
@@ -65,7 +64,7 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 // ...
 
-// Sobreescribir la imagen original
+// Overwrite the original image
 $image->save();
 ```
 
@@ -76,7 +75,7 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 // ...
 
-// Guardar como 'new-image.jpg'
+// Save to 'new-image.jpg'
 $image->save('new-image.jpg');
 ```
 
@@ -89,7 +88,7 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 // ...
 
-// Guardar como un archivo PNG
+// Save as a PNG file
 $image->save('image.png');
 ```
 
@@ -102,7 +101,7 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 // ...
 
-// Guardar como JPEG con calidad al 80%
+// Save as a JPEG with 80% quality
 $image->save('image.jpg', 80);
 ```
 
