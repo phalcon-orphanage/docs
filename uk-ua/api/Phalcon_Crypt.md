@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Crypt'
 
 # Class **Phalcon\Crypt**
 
-*implements* [Phalcon\CryptInterface](/4.0/en/api/Phalcon_CryptInterface)
+*implements* [Phalcon\CryptInterface](Phalcon_CryptInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/crypt.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -76,7 +76,7 @@ public **decrypt** (*mixed* $text [, *mixed* $key = null]): *string*
 
 Decrypts an encrypted text
 
-Throws [Phalcon\Crypt\Mismatch](/4.0/en/api/Phalcon_Crypt_Mismatch)
+Throws [Phalcon\Crypt\Mismatch](Phalcon_Crypt_Mismatch)
 
 ```php
 <?php
@@ -92,7 +92,7 @@ public **decryptBase64** (*string* $text [,*mixed* $key = null [,*boolean* $safe
 
 Decrypt a text that is coded as a base64 string
 
-Throws [Phalcon\Crypt\Mismatch](/4.0/en/api/Phalcon_Crypt_Mismatch)
+Throws [Phalcon\Crypt\Mismatch](Phalcon_Crypt_Mismatch)
 
 public **encrypt** (*mixed* $text [, *mixed* $key = null]): *string*
 
@@ -131,17 +131,17 @@ public **getKey** (): *string*
 
 Returns the encryption key
 
-public **setCipher** (*mixed* $cipher): *[Phalcon\Crypt](/4.0/en/api/Phalcon_Crypt)*
+public **setCipher** (*mixed* $cipher): *[Phalcon\Crypt](Phalcon_Crypt)*
 
 Sets the cipher algorithm for data encryption and decryption. The `aes-256-gcm` is the preferable cipher, but it is not usable until the openssl library is upgraded, which is available in PHP 7.1. The `aes-256-ctr` is arguably the best choice for cipher algorithm for current openssl library version.
 
-Throws: [Phalcon\Crypt\Exception](/4.0/en/api/Phalcon_Crypt_Exception)
+Throws: [Phalcon\Crypt\Exception](Phalcon_Crypt_Exception)
 
-public **setHashAlgo** (*string* $hashAlgo): *[Phalcon\Crypt](/4.0/en/api/Phalcon_Crypt)*
+public **setHashAlgo** (*string* $hashAlgo): *[Phalcon\Crypt](Phalcon_Crypt)*
 
-Set the name of hashing algorithm to calculate the message digest. Throws [Phalcon\Crypt\Exception](/4.0/en/api/Phalcon_Crypt_Exception) if the algorithm is not supported by the system
+Set the name of hashing algorithm to calculate the message digest. Throws [Phalcon\Crypt\Exception](Phalcon_Crypt_Exception) if the algorithm is not supported by the system
 
-public **setKey** (*mixed* $key): *[Phalcon\Crypt](/4.0/en/api/Phalcon_Crypt)*
+public **setKey** (*mixed* $key): *[Phalcon\Crypt](Phalcon_Crypt)*
 
 Sets the encryption key. The `$key` should have been previously generated in a cryptographically safe way.
 
@@ -151,13 +151,13 @@ Better (but still unsafe): `#1dj8$=dp?.ak//j1V$~%*0X`
 
 Good key: `T4\xb1\x8d\xa9\x98\x05\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3`
 
-See also: : [Phalcon\Security\Random](/4.0/en/api/Phalcon_Security_Random)
+See also: : [Phalcon\Security\Random](Phalcon_Security_Random)
 
-public **setPadding** (*mixed* $scheme): *[Phalcon\Crypt](/4.0/en/api/Phalcon_Crypt)*
+public **setPadding** (*mixed* $scheme): *[Phalcon\Crypt](Phalcon_Crypt)*
 
 Changes the padding scheme used
 
-public **useSigning** (*boolean* $useSigning): *[Phalcon\Crypt](/4.0/en/api/Phalcon_Crypt)*
+public **useSigning** (*boolean* $useSigning): *[Phalcon\Crypt](Phalcon_Crypt)*
 
 Sets if the calculating message digest must used (signing). **NOTE**: This feature will be enabled by default in Phalcon 4.0.0 or greater
 
@@ -184,22 +184,22 @@ protected **assertCipherIsAvailable** (*string* $cipher)
 
 Assert the cipher is available.
 
-Throws [Phalcon\Crypt\Exception](/4.0/en/api/Phalcon_Crypt_Exception)
+Throws [Phalcon\Crypt\Exception](Phalcon_Crypt_Exception)
 
 protected **assertHashAlgorithmAvailable** (*string* $hashAlgo)
 
 Assert the hash algorithm is available.
 
-Throws [Phalcon\Crypt\Exception](/4.0/en/api/Phalcon_Crypt_Exception)
+Throws [Phalcon\Crypt\Exception](Phalcon_Crypt_Exception)
 
 protected **getIvLength** (*string* $cipher): *int*
 
 Initialize available cipher algorithms.
 
-Throws [Phalcon\Crypt\Exception](/4.0/en/api/Phalcon_Crypt_Exception)
+Throws [Phalcon\Crypt\Exception](Phalcon_Crypt_Exception)
 
 protected **initializeAvailableCiphers** ()
 
 Initialize available cipher algorithms.
 
-Throws [Phalcon\Crypt\Exception](/4.0/en/api/Phalcon_Crypt_Exception)
+Throws [Phalcon\Crypt\Exception](Phalcon_Crypt_Exception)
