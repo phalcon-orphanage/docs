@@ -6,9 +6,9 @@ title: 'Phalcon\Db\Adapter\Pdo\Factory'
 ---
 # Class **Phalcon\Db\Adapter\Pdo\Factory**
 
-*extends* abstract class [Phalcon\Factory](/4.0/en/api/Phalcon_Factory)
+*extends* abstract class [Phalcon\Factory](Phalcon_Factory)
 
-*implements* [Phalcon\FactoryInterface](/4.0/en/api/Phalcon_FactoryInterface)
+*implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/adapter/pdo/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -33,8 +33,8 @@ $db = Factory::load($options);
 
 ## Methods
 
-public static **load** ([Phalcon\Config](/4.0/en/api/Phalcon_Config) | *array* $config)
+public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
-protected static **loadClass** (*mixed* $namespace, *mixed* $config) inherited from [Phalcon\Factory](/4.0/en/api/Phalcon_Factory)
+protected static **loadClass** (*mixed* $namespace, *mixed* $config) inherited from [Phalcon\Factory](Phalcon_Factory)
 
 ...
