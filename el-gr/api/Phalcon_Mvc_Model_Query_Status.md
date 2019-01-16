@@ -6,7 +6,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Mvc\Model\Query\St
 
 # Class **Phalcon\Mvc\Model\Query\Status**
 
-*implements* [Phalcon\Mvc\Model\Query\StatusInterface](/4.0/en/api/Phalcon_Mvc_Model_Query_StatusInterface)
+*implements* [Phalcon\Mvc\Model\Query\StatusInterface](Phalcon_Mvc_Model_Query_StatusInterface)
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/query/status.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
@@ -36,7 +36,7 @@ if ($status->success() === true) {
 
 ## Methods
 
-public **__construct** (*mixed* $success, [[Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $model])
+public **__construct** (*mixed* $success, [[Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model])
 
 public **getModel** ()
 
