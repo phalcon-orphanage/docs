@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Frontend\Igbinary'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Frontend\Igbinary'
+---
 # Class **Phalcon\Cache\Frontend\Igbinary**
 
 *extends* class [Phalcon\Cache\Frontend\Data](Phalcon_Cache_Frontend_Data)
@@ -75,7 +75,7 @@ public **isBuffering** ()
 
 public **start** ()
 
-フロントエンドの出力を開始します。実際には、何もしません。
+Starts output frontend. Actually, does nothing
 
 public *string* **getContent** ()
 
