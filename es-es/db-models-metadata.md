@@ -4,7 +4,9 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='models-metadata'></a>
 
@@ -12,7 +14,7 @@ layout: article language: 'en' version: '4.0'
 
 To speed up development [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) helps you to query fields and constraints from tables related to models. To achieve this, [Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc_Model_MetaData) is available to manage and cache table metadata.
 
-A veces es necesario obtener los atributos cuando se trabaja con modelos. Se puede obtener una instancia de metadatos de la siguiente manera:
+Sometimes it is necessary to get those attributes when working with models. You can get a metadata instance as follows:
 
 ```php
 <?php
@@ -35,7 +37,7 @@ print_r($dataTypes);
 
 ## Almacenamiento en caché de metadatos
 
-Una vez que la aplicación está en una etapa de producción, no es necesario consultar los metadatos de la tabla del sistema de base de datos cada vez que use la tabla. Esto podría hacerse almacenando en caché los metadatos, utilizando cualquiera de los siguientes adaptadores:
+Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the metadata using any of the following adapters:
 
 | Adaptador    | Descripción                                                                                                                                                                                                                                                                                                                                                                 | API                                                                                        |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -48,7 +50,7 @@ Una vez que la aplicación está en una etapa de producción, no es necesario co
 | Session      | Este adaptador almacena metadatos en la variable global `$_SESSION`. Este adaptador sólo se recomienda cuando la aplicación está utilizando realmente un pequeño número de modelos. Los metadatos se actualizan cada vez que inicie una nueva sesión. Esto también requiere el uso de `session_start()` para iniciar la sesión antes de utilizar cualquiera de los modelos. | [Phalcon\Mvc\Model\MetaData\Session](api/Phalcon_Mvc_Model_MetaData_Session)           |
 | XCache       | This adapter uses [XCache](https://xcache.lighttpd.net/) to store the table metadata. Puede especificar la duración de los metadatos con opciones. Esta es una de las maneras recomendadas para almacenar metadatos cuando la aplicación está en producción.                                                                                                                | [Phalcon\Mvc\Model\MetaData\Xcache](api/Phalcon_Mvc_Model_MetaData_Xcache)             |
 
-Como otras dependencias del ORM, se solicita el administrador de metadatos al contenedor de servicios:
+As other ORM's dependencies, the metadata manager is requested from the services container:
 
 ```php
 <?php
@@ -72,9 +74,9 @@ $di['modelsMetadata'] = function () {
 
 ## Estrategias de metadatos
 
-Como se mencionó anteriormente la estrategia por defecto para obtener metadatos del modelo es introspección de la base de datos. En esta estrategia, el esquema de información se utiliza para conocer los campos de una tabla, su clave primaria, campos que aceptan valores NULL, los tipos de datos, etcétera.
+As mentioned above the default strategy to obtain the model's metadata is database introspection. In this strategy, the information schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.
 
-Se puede cambiar la introspección de metadatos por defecto de la siguiente manera:
+You can change the default metadata introspection in the following way:
 
 ```php
 <?php
@@ -103,13 +105,13 @@ $di['modelsMetadata'] = function () {
 
 ### Estrategia de introspección de la base de datos
 
-Esta estrategia no requiere ninguna personalización y es utilizada implícitamente por todos los adaptadores de metadatos.
+This strategy doesn't require any customization and is implicitly used by all the metadata adapters.
 
 <a name='strategies-annotations'></a>
 
 ### Estrategia de anotaciones
 
-Esta estrategia hace uso de anotaciones `<anotations>` para describir las columnas en un modelo:
+This strategy makes use of `annotations <annotations>` to describe the columns in a model:
 
 ```php
 <?php
@@ -142,9 +144,9 @@ class Robots extends Model
 }
 ```
 
-Las anotaciones deben colocarse en las propiedades que se asignan a columnas en la fuente asignada. Las propiedades sin la anotación `@Column` se trataran como simples atributos de la clase.
+Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the `@Column` annotation are handled as simple class attributes.
 
-Son soportadas las siguientes anotaciones:
+The following annotations are supported:
 
 | Nombre   | Descripción                                                 |
 | -------- | ----------------------------------------------------------- |
@@ -152,7 +154,7 @@ Son soportadas las siguientes anotaciones:
 | Identity | El campo es una columna auto_increment/serial               |
 | Column   | Esto marca un atributo como una columna mapeada             |
 
-La anotación `@Column` admite los siguientes parámetros:
+The annotation `@Column` supports the following parameters:
 
 | Nombre               | Descripción                                                                                                                                                                      |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -165,7 +167,7 @@ La anotación `@Column` admite los siguientes parámetros:
 | allow_empty_string | Esta columna permite cadenas vacías                                                                                                                                              |
 | default              | Valor por defecto                                                                                                                                                                |
 
-La estrategia de anotaciones podría ser configurada de esta manera:
+The annotations strategy could be set up this way:
 
 ```php
 <?php
@@ -195,11 +197,11 @@ $di['modelsMetadata'] = function () {
 
 ## Metadata manual
 
-Usando las estrategias de introspección presentadas anteriormente, Phalcon puede obtener los metadatos para cada modelo automáticamente sin que el desarrollador tenga que configurarlos manualmente.
+Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically without the developer needing to set them manually.
 
-Sin embargo, el desarrollador también tiene la opción de definir los metadatos manualmente. Esta estrategia sobrescribe cualquier estrategia establecida en el gestor de metadatos. Las nuevas columnas añadidas/modificadas/eliminadas de/hacia la tabla asignada deben agregarse/modificarse/eliminarse también para que todo funcione correctamente.
+The developer also has the option of define the metadata manually. This strategy overrides any strategy set in the metadata manager. New columns added/modified/removed to/from the mapped table must be added/modified/removed also for everything to work properly.
 
-En el ejemplo siguiente se muestra cómo definir los metadatos manualmente:
+The following example shows how to define the metadata manually:
 
 ```php
 <?php
