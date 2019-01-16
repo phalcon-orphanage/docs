@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Validation'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Validation'
+---
 # Class **Phalcon\Validation**
 
 *extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
