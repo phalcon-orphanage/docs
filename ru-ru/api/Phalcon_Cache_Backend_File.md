@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Cache\Backend\File'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Backend\File'
+---
 # Class **Phalcon\Cache\Backend\File**
 
 *extends* abstract class [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
