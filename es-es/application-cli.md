@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='creating-cli-application'></a>
 
 # Crear una Aplicación de Línea de Comandos (CLI)
 
-Las aplicaciones CLI se ejecutan desde la linea de comandos. Estas son útiles para crear tareas programadas por crons, scripts, herramientas de comandos y más.
+CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
 <a name='structure'></a>
 
 ## Estructura
 
-La estructura mínima de una aplicación CLI se verá así:
+A minimal structure of a CLI application will look like this:
 
 * `app/config/config.php`
 * `app/tasks/MainTask.php`
@@ -26,9 +28,9 @@ La estructura mínima de una aplicación CLI se verá así:
 
 ## Creando un Archivo Principal de Ejecución
 
-Como en aplicaciones MVC normales, un archivo principal se utiliza para arrancar la ejecución de la aplicación. En lugar del archivo index.php que inicia las aplicaciones web, se utiliza un archivo llamado cli.php para que la aplicación arranque.
+As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
 
-A continuación el Archivo Principal de Arranque que se utiliza en este ejemplo.
+Below is a sample bootstrap that is being used for this example.
 
 ```php
 <?php
@@ -99,7 +101,7 @@ try {
 }
 ```
 
-Este fragmento de código se puede ejecutar utilizando:
+This piece of code can be run using:
 
 ```bash
 php app/cli.php
@@ -109,9 +111,9 @@ php app/cli.php
 
 ## Tasks (Tareas)
 
-Los Task o tareas funcionan de forma similar a los controladores. Cualquier aplicación CLI necesita al menos un MainTask y un mainAction y cada Task debe tener un mainAction que se ejecutará si no se indica alguna acción explícitamente.
+Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
-A continuación un ejemplo del archivo `app/tasks/MainTask.php`:
+Below is an example of the `app/tasks/MainTask.php` file:
 
 ```php
 <?php
@@ -131,9 +133,9 @@ class MainTask extends Task
 
 ## Procesar parámetros del Action
 
-Es posible pasar parámetros a los Action, el código ya está presente en el archivo principal del ejemplo.
+It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
 
-Si ejecuta la aplicación con los siguientes parámetros y acción:
+If you run the application with the following parameters and action:
 
 ```php
 <?php
@@ -163,7 +165,7 @@ class MainTask extends Task
 }
 ```
 
-A continuación podemos ejecutar el siguiente comando:
+We can then run the following command:
 
 ```bash
 php app/cli.php main test mundo universo
@@ -176,7 +178,7 @@ saludos cordiales, universo
 
 ## Ejecutando Tasks en cadena
 
-También es posible ejecutar tareas en cadena si es necesario. Para lograr esto se debe agregar la consola al DI:
+It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
 ```php
 <?php
@@ -200,7 +202,7 @@ try {
 }
 ```
 
-Luego puede utilizar la consola dentro de cualquier tarea. A continuación un ejemplo de un MainTask.php modificado:
+Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
 
 ```php
 <?php
