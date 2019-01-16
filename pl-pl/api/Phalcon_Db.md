@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Db'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db'
+---
 # Abstract class **Phalcon\Db**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db.zep" class="btn btn-default btn-sm">Source on GitHub</a>
