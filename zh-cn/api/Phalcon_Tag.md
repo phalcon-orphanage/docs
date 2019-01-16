@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Tag'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Tag'
+---
 # Class **Phalcon\Tag**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/tag.zep" class="btn btn-default btn-sm">源码在GitHub</a>
