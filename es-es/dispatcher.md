@@ -4,19 +4,21 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Despachando Controladores
 
-[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Entender su funcionamiento y capacidades nos ayuda a sacarle más provecho a los servicios prestados por el framework.
+[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
 
 <a name='dispatch-loop'></a>
 
 ## Bucle de despacho
 
-Esto es un proceso importante que tiene mucho que ver con el flujo MVC, especialmente con la parte de controlador. El trabajo se produce en el despachador de controladores (dispatcher). Los archivos del controlador son leídos, cargados e instanciados. Entonces se ejecutan las acciones requeridas. Si una acción reenvia (forward) a otro controlador/acción, el dispatcher comienza otra vez. To better illustrate this, the following example shows approximately the process performed within [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher):
+This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller dispatcher. The controller files are read, loaded, and instantiated. Then the required actions are executed. If an action forwards the flow to another controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed within [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher):
 
 ```php
 <?php
@@ -44,13 +46,13 @@ while (!$finished) {
 }
 ```
 
-El código anterior carece de validaciones, filtros y controles adicionales, pero demuestra el flujo normal de operación del dispatcher.
+The code above lacks validations, filters and additional checks, but it demonstrates the normal flow of operation in the dispatcher.
 
 <a name='dispatch-loop-events'></a>
 
 ### Eventos del bucle de despacho
 
-[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Los eventos se desencadenan mediante el tipo `dispatch`. Si algún evento devuelve `false` podría detener la operación activa. Son soportados los siguientes eventos:
+[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. Son soportados los siguientes eventos:
 
 | Nombre de evento     | Disparado                                                                                                                                                                                                         | ¿Detiene la operación? | Activa en             |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | --------------------- |
@@ -101,7 +103,7 @@ $di->set(
 );
 ```
 
-Un controlador instanciado automáticamente actúa como un detector de eventos de dispatch, así que usted puede implementar métodos como callbacks:
+An instantiated controller automatically acts as a listener for dispatch events, so you can implement methods as callbacks:
 
 ```php
 <?php
@@ -129,7 +131,7 @@ class PostsController extends Controller
 
 ## Reenvío a otras acciones
 
-El bucle de despacho nos permite cambiar el flujo de ejecución a otro controlador/acción. Esto es muy útil para comprobar si el usuario puede acceder a ciertas opciones, redirigir a los usuarios a otras pantallas o simplemente reutilizar código.
+The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can access to certain options, redirect users to other screens or simply reuse code.
 
 ```php
 <?php
@@ -158,9 +160,9 @@ class PostsController extends Controller
 }
 ```
 
-Tenga en cuenta que un `forward` no es lo mismo que hacer una redirección HTTP. Aunque al parecer consiguen el mismo resultado. El `forward` no vuelve a cargar la página actual, todo el redireccionamiento se produce en una sola solicitud, mientras que la redirección HTTP necesita de dos solicitudes para completar el proceso.
+Keep in mind that making a `forward` is not the same as making a HTTP redirect. Although they apparently got the same result. The `forward` doesn't reload the current page, all the redirection occurs in a single request, while the HTTP redirect needs two requests to complete the process.
 
-Más ejemplos de forward:
+More forwarding examples:
 
 ```php
 <?php
@@ -181,7 +183,7 @@ $this->dispatcher->forward(
 );
 ```
 
-Un `forward` acepta los siguientes parámetros:
+A `forward` action accepts the following parameters:
 
 | Parameter    | Descripción                                                 |
 | ------------ | ----------------------------------------------------------- |
@@ -194,7 +196,7 @@ Un `forward` acepta los siguientes parámetros:
 
 ### Usando el administrador de eventos
 
-Puede utilizar el evento `dispatcher::beforeForward` para cambiar módulos y redirigir de una forma más fácil y limpia:
+You can use the `dispatcher::beforeForward` event to change modules and redirect easier and "cleaner":
 
 ```php
 <?php
@@ -246,7 +248,7 @@ echo $dispatcher->getModuleName(); // mostrará 'backend'
 
 ## Preparando parámetros
 
-Thanks to the hook points provided by [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) you can easily adapt your application to any URL schema; i.e. you might want your URLs look like: `https://example.com/controller/key1/value1/key2/value`. Los parámetros se pasan con el orden que se definen en la dirección URL a las acciones, puede transformar y adoptar el esquema que Ud. desee:
+Thanks to the hook points provided by [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) you can easily adapt your application to any URL schema; i.e. you might want your URLs look like: `https://example.com/controller/key1/value1/key2/value`. Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to adopt the desired schema:
 
 ```php
 <?php
@@ -376,7 +378,7 @@ class PostsController extends Controller
 
 ## Preparación de acciones
 
-También puede definir un esquema arbitrario para acciones `before` en el bucle de despacho.
+You can also define an arbitrary schema for actions `before` in the dispatch loop.
 
 <a name='preparing-actions-camelizing-action-names'></a>
 
@@ -421,14 +423,14 @@ $di->set(
 
 ### Quitar extensiones
 
-Si la dirección URL original contiene siempre una extensión `.php`:
+If the original URL always contains a `.php` extension:
 
 ```php
 https://example.com/admin/products/show-latest-products.php
 https://example.com/admin/products/index.php
 ```
 
-Se puede quitar antes de despachar al controlador/acción:
+You can remove it before dispatch the controller/action combination:
 
 ```php
 <?php
@@ -470,9 +472,9 @@ $di->set(
 
 ### Inyectando instancias de modelos
 
-En este ejemplo, el desarrollador quiere inspeccionar los parámetros que recibirá una acción con el fin de inyectar dinámicamente instancias del modelo.
+In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically inject model instances.
 
-El controlador se ve de la siguiente manera:
+The controller looks like:
 
 ```php
 <?php
@@ -493,7 +495,7 @@ class PostsController extends Controller
 }
 ```
 
-El método `showAction` recibe una instancia del modelo `\Posts`, el desarrollador podría inspeccionar esto antes de despachar la acción preparando el parámetro acordemente:
+Method `showAction` receives an instance of the model `\Posts`, the developer could inspect this before dispatch the action preparing the parameter accordingly:
 
 ```php
 <?php
@@ -554,7 +556,7 @@ $di->set(
 );
 ```
 
-El ejemplo anterior ha sido simplificado. Un desarrollador puede mejorarlo para inyectar cualquier tipo de dependencia o modelo en las acciones antes de ser ejecutadas.
+The above example has been simplified. A developer can improve it to inject any kind of dependency or model in actions before be executed.
 
 From 3.1.x onwards the dispatcher also comes with an option to handle this internally for all models passed into a controller action by using [Phalcon\Mvc\Model\Binder](api/Phalcon_Mvc_Model_Binder).
 
@@ -573,7 +575,7 @@ return $dispatcher;
 
 It also introduces a new interface [Phalcon\Mvc\Model\Binder\BindableInterface](api/Phalcon_Mvc_Model_Binder_BindableInterface) which allows you to define the controllers associated models to allow models binding in base controllers.
 
-Por ejemplo, si tienes un controlador base `CrudController` y un `PostsController` que se extiende del anterior. El `CrudController` se verá algo como esto:
+For example, you have a base `CrudController` which your `PostsController` extends from. Your `CrudController` looks something like this:
 
 ```php
 use Phalcon\Mvc\Controller;
@@ -593,7 +595,7 @@ class CrudController extends Controller
 }
 ```
 
-En el `PostsController` se debe definir que modelo el controlador está asociado. This is done by implementing the [Phalcon\Mvc\Model\Binder\BindableInterface](api/Phalcon_Mvc_Model_Binder_BindableInterface) which will add the `getModelName()` method from which you can return the model name. Puede devolver un string con un nombre de modelo o un array asociativo donde clave es el nombre del parámetro y el valor el nombre del modelo.
+In your PostsController you need to define which model the controller is associated with. This is done by implementing the [Phalcon\Mvc\Model\Binder\BindableInterface](api/Phalcon_Mvc_Model_Binder_BindableInterface) which will add the `getModelName()` method from which you can return the model name. It can return string with just one model name or associative array where key is parameter name.
 
 ```php
 use Phalcon\Mvc\Model\Binder\BindableInterface;
@@ -608,9 +610,9 @@ class PostsController extends CrudController implements BindableInterface
 }
 ```
 
-Al declarar el modelo asociado con `PostsController` el vinculador (binder) puede comprobar en controlador padre el método `getModelName()` antes de pasar el modelo definido al action.
+By declaring the model associated with the `PostsController` the binder can check the controller for the `getModelName()` method before passing the defined model into the parent show action.
 
-Si la estructura del proyecto no utiliza un controlador padre, usted puede por supuesto todavía vincular el modelo directamente en la acción del controlador:
+If your project structure does not use any parent controller you can of course still bind the model directly into the controller action:
 
 ```php
 use Phalcon\Mvc\Controller;
@@ -696,7 +698,7 @@ $di->setShared(
 );
 ```
 
-Por supuesto, este método puede ser movido en clases plugin independientes, permitiendo que más de una clase tome acciones cuando una excepción se produce en el circuito de despacho:
+Of course, this method can be moved onto independent plugin classes, allowing more than one class take actions when an exception is produced in the dispatch loop:
 
 ```php
 <?php
