@@ -4,15 +4,17 @@ layout: article language: 'en' version: '4.0'
 
 * * *
 
-<h5 class="alert alert-warning">This article reflects v3.4 and has not yet been revised</h5>
+##### This article reflects v3.4 and has not yet been revised
+
+{:.alert .alert-danger}
 
 <a name='overview'></a>
 
 # Almacenamiento de datos en la sesión
 
-El componente de sesión proporciona contenedores orientados a objetos para acceder a datos de la sesión.
+The session component provides object-oriented wrappers to access session data.
 
-Las razones para utilizar este componente en lugar de sesiones "crudas":
+Reasons to use this component instead of raw-sessions:
 
 * Aislar fácilmente datos de sesión en las aplicaciones en el mismo dominio
 * Interceptar donde se establecen los datos de la sesión en su aplicación
@@ -22,7 +24,7 @@ Las razones para utilizar este componente en lugar de sesiones "crudas":
 
 ## Iniciando sesión
 
-Algunas aplicaciones requieren sesiones intensivas, casi cualquier acción que realiza requiere acceso a datos de la sesión. Hay otras que acceden a datos de la sesión casualmente. Gracias al contenedor de servicio, podemos asegurar que la sesión se accede sólo cuando sea claramente necesario:
+Some applications are session-intensive, almost any action that performs requires access to session data. There are others who access session data casually. Thanks to the service container, we can ensure that the session is accessed only when it's clearly needed:
 
 ```php
 <?php
@@ -46,7 +48,7 @@ $di->setShared(
 
 ## Factory
 
-Carga la clase de adaptador de sesión utilizando la opción `adapter`
+Loads Session Adapter class using `adapter` option
 
 ```php
 <?php
@@ -102,7 +104,7 @@ class UserController extends Controller
 
 ## Destrucción/eliminación de sesiones
 
-También es posible quitar variables específicas o destruir toda la sesión:
+It's also possible remove specific variables or destroy the whole session:
 
 ```php
 <?php
@@ -129,7 +131,7 @@ class UserController extends Controller
 
 ## Aislamiento de datos de la sesión entre aplicaciones
 
-A veces un usuario puede utilizar la misma aplicación dos veces en el mismo servidor, en la misma sesión. Seguramente, si utilizamos variables de sesión, queremos que cada aplicación tenga sus datos de sesión separados (aunque el mismo código y mismos nombres de variable). Para solucionar esto, puede añadir un prefijo para cada variable de sesión creada en una aplicación determinada:
+Sometimes a user can use the same application twice, on the same server, in the same session. Surely, if we use variables in session, we want that every application have separate session data (even though the same code and same variable names). To solve this, you can add a prefix for every session variable created in a certain application:
 
 ```php
 <?php
@@ -154,13 +156,13 @@ $di->set(
 );
 ```
 
-No es necesario agregar un ID único.
+Adding a unique ID is not necessary.
 
 <a name='bags'></a>
 
 ## Bolsas de sesión
 
-[Phalcon\Session\Bag](api/Phalcon_Session_Bag) is a component that helps separating session data into `namespaces`. Trabajando de esta forma que usted puede crear fácilmente grupos de variables de sesión en la aplicación. Sólo estableciendo las variables en la `bag`, se almacena automáticamente en sesión:
+[Phalcon\Session\Bag](api/Phalcon_Session_Bag) is a component that helps separating session data into `namespaces`. Working by this way you can easily create groups of session variables into the application. By only setting the variables in the `bag`, it's automatically stored in session:
 
 ```php
 <?php
@@ -179,7 +181,7 @@ $user->age  = 22;
 
 ## Datos persistentes en componentes
 
-Controller, components and classes that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) may inject a [Phalcon\Session\Bag](api/Phalcon_Session_Bag). Esta clase aísla variables para cada clase. Gracias a esto pueden persistir datos entre peticiones en cada clase de forma independiente.
+Controller, components and classes that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) may inject a [Phalcon\Session\Bag](api/Phalcon_Session_Bag). This class isolates variables for every class. Thanks to this you can persist data between requests in every class in an independent way.
 
 ```php
 <?php
@@ -203,7 +205,7 @@ class UserController extends Controller
 }
 ```
 
-En un componente:
+In a component:
 
 ```php
 <?php
@@ -225,7 +227,7 @@ class Security extends Component
 }
 ```
 
-Los datos agregados en la sesión (`$this->session`) están disponibles a través de la aplicación, mientras que el componente persistente (`$this->persistent`) sólo se puede acceder en el ámbito de la clase actual.
+The data added to the session (`$this->session`) are available throughout the application, while persistent (`$this->persistent`) can only be accessed in the scope of the current class.
 
 <a name='custom-adapters'></a>
 
@@ -233,4 +235,4 @@ Los datos agregados en la sesión (`$this->session`) están disponibles a travé
 
 The [Phalcon\Session\AdapterInterface](api/Phalcon_Session_AdapterInterface) interface must be implemented in order to create your own session adapters or extend the existing ones.
 
-Hay disponibles más adaptadores para estos componentes en la [Incubadora de Phalcon](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter)
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Session/Adapter)
