@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Acl\Adapter\Memory'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Acl\Adapter\Memory'
+---
 # Class **Phalcon\Acl\Adapter\Memory**
 
 *extends* abstract class [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
