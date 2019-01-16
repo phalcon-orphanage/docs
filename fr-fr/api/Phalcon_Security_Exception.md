@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Security\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Security\Exception'
+---
 # Class **Phalcon\Security\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)
