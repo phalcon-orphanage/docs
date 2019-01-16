@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Http\Request\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Http\Request\Exception'
+---
 # Class **Phalcon\Http\Request\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)
