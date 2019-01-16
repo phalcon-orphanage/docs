@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Config\Adapter\Json'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Config\Adapter\Json'
+---
 # Class **Phalcon\Config\Adapter\Json**
 
 *extends* class [Phalcon\Config](Phalcon_Config)
