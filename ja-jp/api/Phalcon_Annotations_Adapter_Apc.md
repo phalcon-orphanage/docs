@@ -1,9 +1,9 @@
-* * *
-
-layout: article language: 'en' version: '4.0' title: 'Phalcon\Annotations\Adapter\Apc'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Annotations\Adapter\Apc'
+---
 # Class **Phalcon\Annotations\Adapter\Apc**
 
 *extends* abstract class [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
@@ -12,7 +12,7 @@ layout: article language: 'en' version: '4.0' title: 'Phalcon\Annotations\Adapte
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/adapter/apc.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
-パースしたアノテーションをAPCに保存します。このアダプターはプロダクション向けです。
+Stores the parsed annotations in APC. このアダプタはプロダクション向けです。
 
 ```php
 <?php
