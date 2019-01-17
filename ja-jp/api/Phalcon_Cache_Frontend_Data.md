@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'ja-jp' version: '4.0' title: 'Phalcon\Cache\Frontend\Data'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Frontend\Data'
+---
 # Class **Phalcon\Cache\Frontend\Data**
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/data.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/data.zep)
 
 シリアライズした形式でネイティブのPHPデータをキャッシュできます。
 
@@ -76,7 +76,7 @@ public **isBuffering** ()
 
 public **start** ()
 
-フロントエンドの出力を開始します。実際には、何もしません。
+Starts output frontend. Actually, does nothing
 
 public *string* **getContent** ()
 
